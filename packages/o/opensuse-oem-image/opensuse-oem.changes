@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Sep 11 08:36:31 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Remove Setup baseproduct and ldconfig from config.sh 
+- Drop duplicate selinux pattern entry
+
+-------------------------------------------------------------------
+Wed Sep 10 12:19:59 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Initial OEM image with GNOME flavor with self-install and raw
+  images
+
+  * GNOME flavor with self-install and raw image
+  * Originally made for Starlabs.systems
+  * Reduced jeos-firstboot to root password
+  * GDM via gnome-initial-setup handles user and language selection
+

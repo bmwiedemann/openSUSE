@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- OBS-Profiles: @BUILD_FLAVOR@ -->
+<!-- OBS-Milestone: %current_milestone -->
+<image schemaversion="7.4" name="Tumbleweed-OEM" displayname="openSUSE Tumbleweed">
+    <description type="system">
+        <author>openSUSE</author>
+        <contact>crc@suse.com</contact>
+        <specification>openSUSE Tumbleweed OEM image</specification>
+    </description>
+    <profiles>
+        <profile name="GNOME" description="openSUSE Tumbleweed OEM image" arch="x86_64" />
+    </profiles>
+    <preferences profiles="GNOME">
+        <version>1.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <bootsplash-theme>bgrt</bootsplash-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type image="oem" filesystem="btrfs" firmware="uefi" initrd_system="dracut"
+            installiso="true" efipartsize="512" btrfs_root_is_snapshot="true">
+            <bootloader name="grub2" console="gfxterm" />
+            <systemdisk>
+                <volume name="home" />
+                <volume name="tmp" />
+                <volume name="opt" />
+                <volume name="srv" />
+                <volume name="boot/grub2/i386-pc" />
+                <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi" />
+                <volume name="boot/writable" />
+                <volume name="usr/local" />
+                <volume name="var" copy_on_write="false" />
+            </systemdisk>
+            <oemconfig>
+                <oem-device-filter>/dev/ram</oem-device-filter>
+                <oem-multipath-scan>false</oem-multipath-scan>
+            </oemconfig>
+        </type>
+    </preferences>
+    <repository type="rpm-md">
+        <source path="obsrepositories:/" />
+    </repository>
+    <packages type="image" patternType="plusRecommended">
+        <!-- Taken from Minimal image -->
+        <package name="patterns-base-base" />
+        <package name="patterns-base-selinux" />
+        <package name="selinux-policy-targeted" /> <!-- only suggested in patterns-base-selinux on
+        openSUSE -->
+        <package name="audit" />
+        <package name="aaa_base-extras" />
+        <package name="acl" />
+        <package name="chrony" />
+        <package name="curl" />
+        <package name="dracut" />
+        <package name="fipscheck" />
+        <package name="group(mail)" />
+        <!-- Previously pam_cracklib was part of pam, but the replacement is only recommended -->
+        <package name="pam_pwquality" />
+        <package name="cracklib-dict-small" /> <!-- Avoid the big 10MiB one -->
+        <package name="group(wheel)" />
+        <package name="iputils" />
+        <package name="issue-generator" />
+        <package name="vim-small" />
+        <package name="less" />
+        <package name="tar" />
+        <package name="parted" />
+        <package name="openSUSE-build-key" />
+        <package name="systemd" />
+        <package name="timezone" />
+        <package name="systemd-default-settings-branding-openSUSE" />
+        <package name="iproute2" />
+        <package name="openssh" />
+        <package name="rsync" />
+        <package name="dosfstools" />
+        <package name="lsof" />
+        <package name="zypper-needs-restarting" />
+        <package name="zypper-lifecycle-plugin" />
+        <package name="combustion &gt;= 1.2" />
+        <package name="NetworkManager" />
+        <package name="NetworkManager-branding-openSUSE" />
+        <package name="dracut-kiwi-oem-repart" />
+
+        <!-- kernel part -->
+        <package name="kernel-default" />
+        <package name="kernel-firmware-all" />
+      
+        <!-- ensure nice OEM splash screen splash=silent is in config.sh -->
+        <package name="plymouth" />
+        <package name="plymouth-branding-openSUSE" />
+        <package name="plymouth-theme-spinner" />
+        <package name="plymouth-theme-bgrt" />
+        <package name="plymouth-dracut" />
+        <package name="plymouth-plugin-label-ft" />
+        <package name="plymouth-plugin-two-step" />
+      
+        <!-- Agama part -->
+        <!-- Mandatory patterns -->
+        <package name="patterns-base-enhanced_base" />
+        <!-- User patterns -->
+        <package name="patterns-gnome-gnome" />
+        <package name="patterns-desktop-multimedia" />
+        <package name="patterns-office-office" />
+        <package name="patterns-cockpit" />
+        <!-- Mandatory packages -->
+        <!-- required for gdm.service -->
+        <package name="gdm-systemd" />
+        <package name="NetworkManager" />
+        <package name="openSUSE-repos-Tumbleweed" />
+        <package name="opensuse-migration-tool" />
+        <package name="sudo-policy-wheel-auth-self" />
+        <!-- Ensure this gets installed -->
+        <package name="myrlyn" />
+        <!-- Explicit for OEM image -->
+        <package name="dracut" />
+        <package name="dracut-kiwi-oem-repart" />
+        <package name="gnome-initial-setup" />
+        <!-- <package name="gnome-branding-openSUSE" /> -->
+        <package name="openSUSE-build-key" />
+        <!--multimedia package will be replaced on the first zypper online install -->
+        <package name="libopenh264-8" />
+        <!-- snapper -->
+        <package name="btrfsprogs" />
+        <package name="btrfsmaintenance" />
+
+        <!-- GRUB + btrfs integration -->
+        <package name="snapper-zypp-plugin" />
+        <package name="rollback-helper" />
+        <package name="snapper" />
+        <package name="grub2-snapper-plugin" />
+        <package name="shim" arch="aarch64,x86_64" />
+        <package name="grub2" />
+        <package name="grub2-branding-openSUSE" arch="aarch64,x86_64" />
+        <package name="grub2-arm64-efi" arch="aarch64" />
+        <package name="grub2-s390x-emu" arch="s390x" />
+        <package name="grub2-x86_64-efi" arch="x86_64" />
+        <package name="patterns-base-bootloader" />
+        <package name="grub2-powerpc-ieee1275" arch="ppc64le" />
+
+        <package name="ignition" />
+        <package name="combustion &gt;= 1.2" />
+        <package name="jeos-firstboot" />
+        <package name="growpart-generator" />
+        <package name="dracut-kiwi-oem-dump" />
+        <package name="dracut-kiwi-oem-repart" />
+    </packages>
+    <packages type="bootstrap">
+        <package name="filesystem" />
+        <package name="glibc-locale-base" />
+        <package name="ca-certificates-mozilla" />
+        <package name="openSUSE-release" />
+    </packages>
+</image>
