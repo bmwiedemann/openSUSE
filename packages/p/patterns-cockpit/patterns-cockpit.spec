@@ -17,7 +17,6 @@
 
 
 %bcond_with betatest
-
 Name:           patterns-cockpit
 Version:        16.0
 Release:        0
@@ -51,6 +50,9 @@ Requires:       cockpit-repos
 Requires:       (cockpit-subscriptions if suseconnect-ng)
 Requires:       (cockpit-firewalld if firewalld)
 Requires:       sudo
+BuildRequires:  patterns-rpm-macros
+%pattern_advsysmgmt
+
 
 %description
 Packages required to run the Cockpit system management service.

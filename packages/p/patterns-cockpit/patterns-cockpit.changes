@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:15:01 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- add %pattern_advsysmgmt to provide a pattern-category bsc#1247960
+
+-------------------------------------------------------------------
 Mon Jul 21 12:15:18 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Require cockpit-firewalld if firewalld is installed so Cockpit is

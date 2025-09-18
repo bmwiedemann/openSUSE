@@ -37,4 +37,12 @@
   allowed through the firewall jsc#PED-13228</comment>
     <requestid>1295243</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8243fcaebbdfe7b0fad5f084f565143b</srcmd5>
+    <version>16.0</version>
+    <time>1758222697</time>
+    <user>anag_factory</user>
+    <comment>- add %pattern_advsysmgmt to provide a pattern-category bsc#1247960</comment>
+    <requestid>1305753</requestid>
+  </revision>
 </revisionlist>
