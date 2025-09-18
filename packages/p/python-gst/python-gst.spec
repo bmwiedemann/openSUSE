@@ -1,7 +1,7 @@
 #
 # spec file for package python-gst
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gst
-Version:        1.26.4
+Version:        1.26.6
 Release:        0
 Summary:        Python Bindings for GStreamer
 License:        LGPL-2.1-or-later

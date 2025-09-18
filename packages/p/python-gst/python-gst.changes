@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 15 17:04:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.6:
+  + python: Handle buffer PTS/DTS/duration/offset/offset-end as
+    unsigned long long
+
+-------------------------------------------------------------------
 Fri Jul 25 11:48:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.4:
