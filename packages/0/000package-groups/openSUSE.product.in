@@ -238,6 +238,13 @@
        <!-- Create no product media, but a flavor release subpackage -->
     </media>
 
+    <media type="image"
+           flavor="oem" 
+           mediastyle="tumbleweed"
+           name="openSUSE-Tumbleweed-oem" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
   </mediasets>
 
   <xi:include href="NON_FTP_PACKAGES.group"/>

@@ -2293,4 +2293,12 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <time>1757517614</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="322" vrev="320">
+    <srcmd5>66245593e6f300cb2247e7847c135ccc</srcmd5>
+    <version>unknown</version>
+    <time>1758222492</time>
+    <user>anag_factory</user>
+    <comment>Add oem flavor to openSUSE-release</comment>
+    <requestid>1305767</requestid>
+  </revision>
 </revisionlist>
