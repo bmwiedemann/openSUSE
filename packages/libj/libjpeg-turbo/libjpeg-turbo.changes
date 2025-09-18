@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep 10 11:16:35 UTC 2025 - pgajdos@suse.com
+
+- version update to 3.1.2
+   * The libjpeg-turbo source tree has been reorganized.
+   * cjpeg no longer allows GIF input files to be converted into
+     12-bit-per-sample JPEG files.
+   * Added support for lossless JPEG images with 2 to 15 bits per
+     sample to the libjpeg and TurboJPEG APIs. 
+   * All deprecated constants and methods in the TurboJPEG Java API
+     have been removed.
+   * TJBench command-line arguments are now more consistent with
+     those of cjpeg, djpeg, and jpegtran. 
+   * Added a new TJBench option (-pixelformat gray) that can be
+     used to test the performance of compressing/decompressing
+     a grayscale JPEG image from/to a packed-pixel grayscale image.
+   *  Fixed an issue whereby, if TJPARAM_NOREALLOC was set, TurboJPEG
+      compression and lossless transformation functions ignored the
+      JPEG buffer size(s) passed to them and assumed that the JPEG
+      buffer(s) had been allocated to a worst-case size returned by
+     tj3JPEGBufSize(). 
+   * The TurboJPEG C and Java APIs have been improved.
+   * TJExample has been replaced with three programs (TJComp,
+     TJDecomp, and TJTran) that demonstrate how to approximate the
+     functionality of cjpeg, djpeg, and jpegtran using the TurboJPEG
+     C and Java APIs.
+- modified patches
+  * libjpeg-turbo-1.3.0-tiff-ojpeg.patch (refreshed)
+
+-------------------------------------------------------------------
 Sat Sep 28 16:49:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.4:

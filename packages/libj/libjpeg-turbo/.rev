@@ -1212,4 +1212,12 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
     was not `TJ.SAMP_444`. (forwarded request 1204571 from dirkmueller)</comment>
     <requestid>1204657</requestid>
   </revision>
+  <revision rev="75" vrev="82">
+    <srcmd5>c0b12f9573ff8fdf4cd49f7786054e40</srcmd5>
+    <version>unknown</version>
+    <time>1758222484</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1305360</requestid>
+  </revision>
 </revisionlist>

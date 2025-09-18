@@ -1,7 +1,7 @@
 #
 # spec file for package libjpeg-turbo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %define minor    3
 %define micro    2
 %define tmajor   0
-%define tminor   3
+%define tminor   4
 %define tmicro   0
 %define tlibver  %{tmajor}.%{tminor}.%{tmicro}
 %endif
@@ -39,7 +39,7 @@
 %endif
 %define libver   %{major}.%{minor}.%{micro}
 Name:           %{flavor}
-Version:        3.0.4
+Version:        3.1.2
 Release:        0
 Summary:        A SIMD-accelerated library for manipulating JPEG image files
 License:        BSD-3-Clause
@@ -196,8 +196,8 @@ rm -r %{buildroot}%{_libdir}/cmake
 
 %if "%{flavor}" == "libjpeg-turbo"
 %files
-%doc README.md change.log ChangeLog.md
-%doc usage.txt wizard.txt
+%doc README.md doc/change.log ChangeLog.md
+%doc doc/usage.txt doc/wizard.txt
 %{_bindir}/*
 %{_mandir}/man1/*
 %endif
@@ -218,7 +218,7 @@ rm -r %{buildroot}%{_libdir}/cmake
 %{_includedir}/*.h
 %{_libdir}/libjpeg.so
 %{_libdir}/pkgconfig/libjpeg.pc
-%doc coderules.txt jconfig.txt libjpeg.txt structure.txt tjexample.c
+%doc doc/coderules.txt src/jconfig.txt doc/libjpeg.txt doc/structure.txt src/example.c
 %if "%{flavor}" == "libjpeg-turbo"
 %{_libdir}/libturbojpeg.so
 %{_libdir}/pkgconfig/libturbojpeg.pc

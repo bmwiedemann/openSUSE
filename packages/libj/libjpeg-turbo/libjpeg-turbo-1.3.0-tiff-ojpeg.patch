@@ -1,6 +1,8 @@
---- a/jdhuff.c
-+++ b/jdhuff.c
-@@ -649,3 +649,35 @@
+Index: libjpeg-turbo-3.1.2/src/jdhuff.c
+===================================================================
+--- libjpeg-turbo-3.1.2.orig/src/jdhuff.c
++++ libjpeg-turbo-3.1.2/src/jdhuff.c
+@@ -834,3 +834,35 @@ jinit_huff_decoder(j_decompress_ptr cinf
      entropy->dc_derived_tbls[i] = entropy->ac_derived_tbls[i] = NULL;
    }
  }
