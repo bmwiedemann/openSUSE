@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Sep 18 10:11:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.125:
+  * add x permissions to providers after download (#2134)
+  * implement apply_requirements flag (#2133)
+  * fix environment interpolation during comment ops (#2131)
+
+-------------------------------------------------------------------
+Thu Sep 18 09:30:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.124:
+  * docs refactor ee (#2130)
+  * Feat/cache dependencies s3 prefix (#2129)
+  * config option to disable digger/apply status check (#2128)
+  * add index on status (#2127)
+  * move status checks to backend (#2126)
+  * add support for target branch of projects (#2125)
+  * refactor github controllers (#2124)
+  * feat/disable apply comment (#2123)
+  * allow user to create slack connect channel (#2122)
+
+-------------------------------------------------------------------
+Thu Sep 18 09:22:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.123:
+  * Fix/breardon2011/prevent not found curl (#2118)
+  * show error message on failure (#2121)
+  * document how to try ee version on saas (#2119)
+  * remove invalid bash, same check happens on 541
+
+-------------------------------------------------------------------
 Fri Aug 29 04:12:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.122:
