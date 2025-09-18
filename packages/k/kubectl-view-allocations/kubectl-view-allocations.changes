@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 18 08:56:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0:
+  * (cargo-release) version 1.0.0
+  * bump k8s-openapi (in sync with kube)
+  * Bump kube from 1.1.0 to 2.0.1
+  * Bump chrono from 0.4.41 to 0.4.42
+  * Bump serde_json from 1.0.143 to 1.0.145
+  * Bump clap from 4.5.46 to 4.5.47
+  * Bump clap from 4.5.45 to 4.5.46
+  * Bump tracing-subscriber from 0.3.19 to 0.3.20
+  * Bump jdx/mise-action from 2 to 3
+  * Bump serde_json from 1.0.142 to 1.0.143
+  * Bump thiserror from 2.0.15 to 2.0.16
+  * Bump thiserror from 2.0.14 to 2.0.15
+  * Bump actions/checkout from 4 to 5
+  * update deps, rust & tune mise
+
+-------------------------------------------------------------------
 Sun Aug 03 14:26:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.4:

@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">0.23.4</param>
+    <param name="revision">1.0.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual">
