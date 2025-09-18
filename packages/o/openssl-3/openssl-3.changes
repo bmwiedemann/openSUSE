@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 17 00:56:31 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 3.5.3:
+  * Added FIPS 140-3 PCT on DH key generation.
+  * Fixed the synthesised OPENSSL_VERSION_NUMBER.
+- Rebase patches:
+  * openssl-DH-Disable-FIPS-186-4-type-parameters-in-FIPS-mode.patch
+  * openssl-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
+  * openssl-FIPS-limit-rsa-encrypt.patch
+
+-------------------------------------------------------------------
 Tue Aug  5 16:34:57 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 3.5.2:

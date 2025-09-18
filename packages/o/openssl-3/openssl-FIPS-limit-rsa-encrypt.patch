@@ -18,10 +18,10 @@ From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
  6 files changed, 164 insertions(+), 43 deletions(-)
  mode change 100644 => 100755 test/recipes/80-test_ssl_old.t
 
-Index: openssl-3.5.0-beta1/providers/common/securitycheck.c
+Index: openssl-3.5.3/providers/common/securitycheck.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/providers/common/securitycheck.c
-+++ openssl-3.5.0-beta1/providers/common/securitycheck.c
+--- openssl-3.5.3.orig/providers/common/securitycheck.c
++++ openssl-3.5.3/providers/common/securitycheck.c
 @@ -64,6 +64,7 @@ int ossl_rsa_key_op_get_protect(const RS
   * Set protect = 1 for encryption or signing operations, or 0 otherwise. See
   * https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf.
@@ -30,10 +30,10 @@ Index: openssl-3.5.0-beta1/providers/common/securitycheck.c
  int ossl_rsa_check_key_size(const RSA *rsa, int protect)
  {
      int sz = RSA_bits(rsa);
-Index: openssl-3.5.0-beta1/providers/fips/include/fips_indicator_params.inc
+Index: openssl-3.5.3/providers/fips/include/fips_indicator_params.inc
 ===================================================================
---- openssl-3.5.0-beta1.orig/providers/fips/include/fips_indicator_params.inc
-+++ openssl-3.5.0-beta1/providers/fips/include/fips_indicator_params.inc
+--- openssl-3.5.3.orig/providers/fips/include/fips_indicator_params.inc
++++ openssl-3.5.3/providers/fips/include/fips_indicator_params.inc
 @@ -13,7 +13,7 @@ OSSL_FIPS_PARAM(sskdf_digest_check, SSKD
  OSSL_FIPS_PARAM(x963kdf_digest_check, X963KDF_DIGEST_CHECK, 0)
  OSSL_FIPS_PARAM(dsa_sign_disallowed, DSA_SIGN_DISABLED, 0)
@@ -43,13 +43,13 @@ Index: openssl-3.5.0-beta1/providers/fips/include/fips_indicator_params.inc
  OSSL_FIPS_PARAM(rsa_pss_saltlen_check, RSA_PSS_SALTLEN_CHECK, 0)
  OSSL_FIPS_PARAM(rsa_sign_x931_disallowed, RSA_SIGN_X931_PAD_DISABLED, 0)
  OSSL_FIPS_PARAM(hkdf_key_check, HKDF_KEY_CHECK, 0)
-Index: openssl-3.5.0-beta1/providers/implementations/asymciphers/rsa_enc.c
+Index: openssl-3.5.3/providers/implementations/asymciphers/rsa_enc.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/providers/implementations/asymciphers/rsa_enc.c
-+++ openssl-3.5.0-beta1/providers/implementations/asymciphers/rsa_enc.c
-@@ -168,6 +168,18 @@ static int rsa_encrypt(void *vprsactx, u
+--- openssl-3.5.3.orig/providers/implementations/asymciphers/rsa_enc.c
++++ openssl-3.5.3/providers/implementations/asymciphers/rsa_enc.c
+@@ -174,6 +174,18 @@ static int rsa_encrypt(void *vprsactx, u
+         return 0;
      }
- #endif
  
 +# ifdef FIPS_MODULE
 +    if (prsactx->pad_mode == RSA_NO_PADDING) {
@@ -64,9 +64,9 @@ Index: openssl-3.5.0-beta1/providers/implementations/asymciphers/rsa_enc.c
 +# endif
 +
      if (out == NULL) {
-         size_t len = RSA_size(prsactx->rsa);
- 
-@@ -230,6 +242,20 @@ static int rsa_decrypt(void *vprsactx, u
+         *outlen = len;
+         return 1;
+@@ -235,6 +247,20 @@ static int rsa_decrypt(void *vprsactx, u
      if (!ossl_prov_is_running())
          return 0;
  
@@ -87,10 +87,10 @@ Index: openssl-3.5.0-beta1/providers/implementations/asymciphers/rsa_enc.c
      if (prsactx->pad_mode == RSA_PKCS1_WITH_TLS_PADDING) {
          if (out == NULL) {
              *outlen = SSL_MAX_MASTER_KEY_LENGTH;
-Index: openssl-3.5.0-beta1/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
+Index: openssl-3.5.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
-+++ openssl-3.5.0-beta1/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
+--- openssl-3.5.3.orig/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
++++ openssl-3.5.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
 @@ -248,13 +248,13 @@ Input = 64b0e9f9892371110c40ba5739dc0974
  Output = 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
  
@@ -910,11 +910,11 @@ Index: openssl-3.5.0-beta1/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  Decrypt=RSA-OAEP-9
  Ctrl = rsa_padding_mode:oaep
  Ctrl = rsa_mgf1_md:sha1
-Index: openssl-3.5.0-beta1/test/recipes/80-test_cms.t
+Index: openssl-3.5.3/test/recipes/80-test_cms.t
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/recipes/80-test_cms.t
-+++ openssl-3.5.0-beta1/test/recipes/80-test_cms.t
-@@ -250,7 +250,7 @@ my @smime_pkcs7_tests = (
+--- openssl-3.5.3.orig/test/recipes/80-test_cms.t
++++ openssl-3.5.3/test/recipes/80-test_cms.t
+@@ -267,7 +267,7 @@ my @smime_pkcs7_tests = (
  
  if ($no_fips || $old_fips) {
      push(@smime_pkcs7_tests,
@@ -923,7 +923,7 @@ Index: openssl-3.5.0-beta1/test/recipes/80-test_cms.t
             [ "{cmd1}", @prov, "-encrypt", "-in", $smcont,
               "-aes256", "-stream", "-out", "{output}.cms",
               $smrsa1,
-@@ -1267,6 +1267,9 @@ sub check_availability {
+@@ -1284,6 +1284,9 @@ sub check_availability {
      return "$tnam: skipped, DSA disabled\n"
          if ($no_dsa && $tnam =~ / DSA/);
  
@@ -933,10 +933,10 @@ Index: openssl-3.5.0-beta1/test/recipes/80-test_cms.t
      return "";
  }
  
-Index: openssl-3.5.0-beta1/test/recipes/80-test_ssl_old.t
+Index: openssl-3.5.3/test/recipes/80-test_ssl_old.t
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/recipes/80-test_ssl_old.t
-+++ openssl-3.5.0-beta1/test/recipes/80-test_ssl_old.t
+--- openssl-3.5.3.orig/test/recipes/80-test_ssl_old.t
++++ openssl-3.5.3/test/recipes/80-test_ssl_old.t
 @@ -561,6 +561,18 @@ sub testssl {
              # the default choice if TLSv1.3 enabled
              my $flag = $protocol eq "-tls1_3" ? "" : $protocol;

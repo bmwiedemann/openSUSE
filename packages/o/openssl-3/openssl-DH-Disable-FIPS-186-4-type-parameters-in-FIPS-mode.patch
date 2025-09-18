@@ -38,10 +38,10 @@ NOTE: Dropped changes in test/recipes/80-test_cms.t
  test/recipes/80-test_ssl_old.t               |  3 +
  11 files changed, 116 insertions(+), 18 deletions(-)
 
-Index: openssl-3.5.0-beta1/crypto/dh/dh_backend.c
+Index: openssl-3.5.3/crypto/dh/dh_backend.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/crypto/dh/dh_backend.c
-+++ openssl-3.5.0-beta1/crypto/dh/dh_backend.c
+--- openssl-3.5.3.orig/crypto/dh/dh_backend.c
++++ openssl-3.5.3/crypto/dh/dh_backend.c
 @@ -47,6 +47,16 @@ int ossl_dh_params_fromdata(DH *dh, cons
      if (!dh_ffc_params_fromdata(dh, params))
          return 0;
@@ -59,11 +59,11 @@ Index: openssl-3.5.0-beta1/crypto/dh/dh_backend.c
      param_priv_len =
          OSSL_PARAM_locate_const(params, OSSL_PKEY_PARAM_DH_PRIV_LEN);
      if (param_priv_len != NULL
-Index: openssl-3.5.0-beta1/crypto/dh/dh_check.c
+Index: openssl-3.5.3/crypto/dh/dh_check.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/crypto/dh/dh_check.c
-+++ openssl-3.5.0-beta1/crypto/dh/dh_check.c
-@@ -57,13 +57,15 @@ int DH_check_params(const DH *dh, int *r
+--- openssl-3.5.3.orig/crypto/dh/dh_check.c
++++ openssl-3.5.3/crypto/dh/dh_check.c
+@@ -58,13 +58,15 @@ int DH_check_params(const DH *dh, int *r
      nid = DH_get_nid((DH *)dh);
      if (nid != NID_undef)
          return 1;
@@ -84,10 +84,10 @@ Index: openssl-3.5.0-beta1/crypto/dh/dh_check.c
  }
  #else
  int DH_check_params(const DH *dh, int *ret)
-Index: openssl-3.5.0-beta1/crypto/dh/dh_gen.c
+Index: openssl-3.5.3/crypto/dh/dh_gen.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/crypto/dh/dh_gen.c
-+++ openssl-3.5.0-beta1/crypto/dh/dh_gen.c
+--- openssl-3.5.3.orig/crypto/dh/dh_gen.c
++++ openssl-3.5.3/crypto/dh/dh_gen.c
 @@ -39,18 +39,26 @@ static int dh_builtin_genparams(DH *ret,
  int ossl_dh_generate_ffc_parameters(DH *dh, int type, int pbits, int qbits,
                                      BN_GENCB *cb)
@@ -117,10 +117,10 @@ Index: openssl-3.5.0-beta1/crypto/dh/dh_gen.c
      if (ret > 0)
          dh->dirty_cnt++;
      return ret;
-Index: openssl-3.5.0-beta1/crypto/dh/dh_key.c
+Index: openssl-3.5.3/crypto/dh/dh_key.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/crypto/dh/dh_key.c
-+++ openssl-3.5.0-beta1/crypto/dh/dh_key.c
+--- openssl-3.5.3.orig/crypto/dh/dh_key.c
++++ openssl-3.5.3/crypto/dh/dh_key.c
 @@ -336,8 +336,12 @@ static int generate_key(DH *dh)
                  goto err;
          } else {
@@ -135,8 +135,8 @@ Index: openssl-3.5.0-beta1/crypto/dh/dh_key.c
 +            goto err;
  #else
              if (dh->params.q == NULL) {
-                 /* secret exponent length, must satisfy 2^(l-1) <= p */
-@@ -358,9 +362,7 @@ static int generate_key(DH *dh)
+                 /* secret exponent length, must satisfy 2^l < (p-1)/2 */
+@@ -360,9 +364,7 @@ static int generate_key(DH *dh)
                      if (!BN_clear_bit(priv_key, 0))
                          goto err;
                  }
@@ -147,7 +147,7 @@ Index: openssl-3.5.0-beta1/crypto/dh/dh_key.c
                  /* Do a partial check for invalid p, q, g */
                  if (!ossl_ffc_params_simple_validate(dh->libctx, &dh->params,
                                                       FFC_PARAM_TYPE_DH, NULL))
-@@ -376,6 +378,7 @@ static int generate_key(DH *dh)
+@@ -378,6 +380,7 @@ static int generate_key(DH *dh)
                                                     priv_key))
                      goto err;
              }
@@ -155,10 +155,10 @@ Index: openssl-3.5.0-beta1/crypto/dh/dh_key.c
          }
      }
  
-Index: openssl-3.5.0-beta1/crypto/dh/dh_pmeth.c
+Index: openssl-3.5.3/crypto/dh/dh_pmeth.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/crypto/dh/dh_pmeth.c
-+++ openssl-3.5.0-beta1/crypto/dh/dh_pmeth.c
+--- openssl-3.5.3.orig/crypto/dh/dh_pmeth.c
++++ openssl-3.5.3/crypto/dh/dh_pmeth.c
 @@ -303,13 +303,17 @@ static DH *ffc_params_generate(OSSL_LIB_
                                                  prime_len, subprime_len, &res,
                                                  pcb);
@@ -180,11 +180,11 @@ Index: openssl-3.5.0-beta1/crypto/dh/dh_pmeth.c
      if (rv <= 0) {
          DH_free(ret);
          return NULL;
-Index: openssl-3.5.0-beta1/providers/implementations/keymgmt/dh_kmgmt.c
+Index: openssl-3.5.3/providers/implementations/keymgmt/dh_kmgmt.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/providers/implementations/keymgmt/dh_kmgmt.c
-+++ openssl-3.5.0-beta1/providers/implementations/keymgmt/dh_kmgmt.c
-@@ -420,6 +420,11 @@ static int dh_validate(const void *keyda
+--- openssl-3.5.3.orig/providers/implementations/keymgmt/dh_kmgmt.c
++++ openssl-3.5.3/providers/implementations/keymgmt/dh_kmgmt.c
+@@ -422,6 +422,11 @@ static int dh_validate(const void *keyda
      if ((selection & DH_POSSIBLE_SELECTIONS) == 0)
          return 1; /* nothing to validate */
  
@@ -196,10 +196,10 @@ Index: openssl-3.5.0-beta1/providers/implementations/keymgmt/dh_kmgmt.c
      if ((selection & OSSL_KEYMGMT_SELECT_DOMAIN_PARAMETERS) != 0) {
          /*
           * Both of these functions check parameters. DH_check_params_ex()
-Index: openssl-3.5.0-beta1/test/endecode_test.c
+Index: openssl-3.5.3/test/endecode_test.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/endecode_test.c
-+++ openssl-3.5.0-beta1/test/endecode_test.c
+--- openssl-3.5.3.orig/test/endecode_test.c
++++ openssl-3.5.3/test/endecode_test.c
 @@ -85,10 +85,10 @@ static EVP_PKEY *make_template(const cha
       * for testing only. Use a minimum key size of 2048 for security purposes.
       */
@@ -213,10 +213,10 @@ Index: openssl-3.5.0-beta1/test/endecode_test.c
  # endif
  
      /*
-Index: openssl-3.5.0-beta1/test/evp_libctx_test.c
+Index: openssl-3.5.3/test/evp_libctx_test.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/evp_libctx_test.c
-+++ openssl-3.5.0-beta1/test/evp_libctx_test.c
+--- openssl-3.5.3.orig/test/evp_libctx_test.c
++++ openssl-3.5.3/test/evp_libctx_test.c
 @@ -222,7 +222,7 @@ static int do_dh_param_keygen(int tstid,
  
      if (!TEST_ptr(gen_ctx = EVP_PKEY_CTX_new_from_pkey(libctx, pkey_parm, NULL))
@@ -226,10 +226,10 @@ Index: openssl-3.5.0-beta1/test/evp_libctx_test.c
          goto err;
  
      if (expected) {
-Index: openssl-3.5.0-beta1/test/helpers/predefined_dhparams.c
+Index: openssl-3.5.3/test/helpers/predefined_dhparams.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/helpers/predefined_dhparams.c
-+++ openssl-3.5.0-beta1/test/helpers/predefined_dhparams.c
+--- openssl-3.5.3.orig/test/helpers/predefined_dhparams.c
++++ openssl-3.5.3/test/helpers/predefined_dhparams.c
 @@ -116,6 +116,68 @@ EVP_PKEY *get_dhx512(OSSL_LIB_CTX *libct
                            dhx512_q, sizeof(dhx512_q));
  }
@@ -299,10 +299,10 @@ Index: openssl-3.5.0-beta1/test/helpers/predefined_dhparams.c
  EVP_PKEY *get_dh1024dsa(OSSL_LIB_CTX *libctx)
  {
      static unsigned char dh1024_p[] = {
-Index: openssl-3.5.0-beta1/test/helpers/predefined_dhparams.h
+Index: openssl-3.5.3/test/helpers/predefined_dhparams.h
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/helpers/predefined_dhparams.h
-+++ openssl-3.5.0-beta1/test/helpers/predefined_dhparams.h
+--- openssl-3.5.3.orig/test/helpers/predefined_dhparams.h
++++ openssl-3.5.3/test/helpers/predefined_dhparams.h
 @@ -12,6 +12,7 @@
  #ifndef OPENSSL_NO_DH
  EVP_PKEY *get_dh512(OSSL_LIB_CTX *libctx);
@@ -311,10 +311,10 @@ Index: openssl-3.5.0-beta1/test/helpers/predefined_dhparams.h
  EVP_PKEY *get_dh1024dsa(OSSL_LIB_CTX *libct);
  EVP_PKEY *get_dh2048(OSSL_LIB_CTX *libctx);
  EVP_PKEY *get_dh4096(OSSL_LIB_CTX *libctx);
-Index: openssl-3.5.0-beta1/test/recipes/80-test_ssl_old.t
+Index: openssl-3.5.3/test/recipes/80-test_ssl_old.t
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/recipes/80-test_ssl_old.t
-+++ openssl-3.5.0-beta1/test/recipes/80-test_ssl_old.t
+--- openssl-3.5.3.orig/test/recipes/80-test_ssl_old.t
++++ openssl-3.5.3/test/recipes/80-test_ssl_old.t
 @@ -458,6 +458,9 @@ sub testssl {
              skip "skipping dhe1024dsa test", 1
                  if ($no_dh);

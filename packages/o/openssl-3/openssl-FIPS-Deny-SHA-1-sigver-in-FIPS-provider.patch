@@ -1,7 +1,7 @@
-Index: openssl-3.5.0/providers/implementations/signature/dsa_sig.c
+Index: openssl-3.5.3/providers/implementations/signature/dsa_sig.c
 ===================================================================
---- openssl-3.5.0.orig/providers/implementations/signature/dsa_sig.c
-+++ openssl-3.5.0/providers/implementations/signature/dsa_sig.c
+--- openssl-3.5.3.orig/providers/implementations/signature/dsa_sig.c
++++ openssl-3.5.3/providers/implementations/signature/dsa_sig.c
 @@ -187,9 +187,7 @@ static int dsa_setup_md(PROV_DSA_CTX *ct
          }
  #ifdef FIPS_MODULE
@@ -13,10 +13,10 @@ Index: openssl-3.5.0/providers/implementations/signature/dsa_sig.c
  
              if (!ossl_fips_ind_digest_sign_check(OSSL_FIPS_IND_GET(ctx),
                                                   OSSL_FIPS_IND_SETTABLE1,
-Index: openssl-3.5.0/providers/implementations/signature/ecdsa_sig.c
+Index: openssl-3.5.3/providers/implementations/signature/ecdsa_sig.c
 ===================================================================
---- openssl-3.5.0.orig/providers/implementations/signature/ecdsa_sig.c
-+++ openssl-3.5.0/providers/implementations/signature/ecdsa_sig.c
+--- openssl-3.5.3.orig/providers/implementations/signature/ecdsa_sig.c
++++ openssl-3.5.3/providers/implementations/signature/ecdsa_sig.c
 @@ -215,9 +215,7 @@ static int ecdsa_setup_md(PROV_ECDSA_CTX
  
  #ifdef FIPS_MODULE
@@ -28,10 +28,10 @@ Index: openssl-3.5.0/providers/implementations/signature/ecdsa_sig.c
  
          if (!ossl_fips_ind_digest_sign_check(OSSL_FIPS_IND_GET(ctx),
                                               OSSL_FIPS_IND_SETTABLE1,
-Index: openssl-3.5.0/providers/implementations/signature/rsa_sig.c
+Index: openssl-3.5.3/providers/implementations/signature/rsa_sig.c
 ===================================================================
---- openssl-3.5.0.orig/providers/implementations/signature/rsa_sig.c
-+++ openssl-3.5.0/providers/implementations/signature/rsa_sig.c
+--- openssl-3.5.3.orig/providers/implementations/signature/rsa_sig.c
++++ openssl-3.5.3/providers/implementations/signature/rsa_sig.c
 @@ -407,9 +407,7 @@ static int rsa_setup_md(PROV_RSA_CTX *ct
          }
  #ifdef FIPS_MODULE
@@ -59,10 +59,10 @@ Index: openssl-3.5.0/providers/implementations/signature/rsa_sig.c
      }
  
      if (pmgf1mdname != NULL
-Index: openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_ecdsa.txt
+Index: openssl-3.5.3/test/recipes/30-test_evp_data/evppkey_ecdsa.txt
 ===================================================================
---- openssl-3.5.0.orig/test/recipes/30-test_evp_data/evppkey_ecdsa.txt
-+++ openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_ecdsa.txt
+--- openssl-3.5.3.orig/test/recipes/30-test_evp_data/evppkey_ecdsa.txt
++++ openssl-3.5.3/test/recipes/30-test_evp_data/evppkey_ecdsa.txt
 @@ -37,12 +37,14 @@ PrivPubKeyPair = P-256:P-256-PUBLIC
  
  Title = ECDSA tests
@@ -133,12 +133,12 @@ Index: openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_ecdsa.txt
 -Result = KEYOP_MISMATCH
 +Result = PKEY_CTRL_ERROR
  
- Title = XOF disallowed
- 
-Index: openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_ecdsa_sigalg.txt
+ FIPSversion = >=3.6.0
+ Sign = P-256
+Index: openssl-3.5.3/test/recipes/30-test_evp_data/evppkey_ecdsa_sigalg.txt
 ===================================================================
---- openssl-3.5.0.orig/test/recipes/30-test_evp_data/evppkey_ecdsa_sigalg.txt
-+++ openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_ecdsa_sigalg.txt
+--- openssl-3.5.3.orig/test/recipes/30-test_evp_data/evppkey_ecdsa_sigalg.txt
++++ openssl-3.5.3/test/recipes/30-test_evp_data/evppkey_ecdsa_sigalg.txt
 @@ -37,34 +37,34 @@ PrivPubKeyPair = P-256:P-256-PUBLIC
  
  Title = ECDSA tests
@@ -260,10 +260,10 @@ Index: openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_ecdsa_sigalg.txt
  Input = "0123456789ABCDEF1234"
 -Result = KEYOP_MISMATCH
 +Result = KEYOP_INIT_ERROR
-Index: openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
+Index: openssl-3.5.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
 ===================================================================
---- openssl-3.5.0.orig/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
-+++ openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
+--- openssl-3.5.3.orig/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
++++ openssl-3.5.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
 @@ -96,6 +96,7 @@ NDL6WCBbets=
  
  Title = RSA tests
@@ -616,10 +616,10 @@ Index: openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  
  Availablein = fips
  FIPSversion = >=3.4.0
-Index: openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_rsa.txt
+Index: openssl-3.5.3/test/recipes/30-test_evp_data/evppkey_rsa.txt
 ===================================================================
---- openssl-3.5.0.orig/test/recipes/30-test_evp_data/evppkey_rsa.txt
-+++ openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_rsa.txt
+--- openssl-3.5.3.orig/test/recipes/30-test_evp_data/evppkey_rsa.txt
++++ openssl-3.5.3/test/recipes/30-test_evp_data/evppkey_rsa.txt
 @@ -268,8 +268,8 @@ TwIDAQAB
  
  PrivPubKeyPair = RSA-PSS:RSA-PSS-DEFAULT
@@ -933,11 +933,11 @@ Index: openssl-3.5.0/test/recipes/30-test_evp_data/evppkey_rsa.txt
  Verify=RSA-PSS-8
  Ctrl = rsa_padding_mode:pss
  Ctrl = rsa_mgf1_md:sha1
-Index: openssl-3.5.0/test/recipes/80-test_cms.t
+Index: openssl-3.5.3/test/recipes/80-test_cms.t
 ===================================================================
---- openssl-3.5.0.orig/test/recipes/80-test_cms.t
-+++ openssl-3.5.0/test/recipes/80-test_cms.t
-@@ -174,7 +174,7 @@ my @smime_pkcs7_tests = (
+--- openssl-3.5.3.orig/test/recipes/80-test_cms.t
++++ openssl-3.5.3/test/recipes/80-test_cms.t
+@@ -183,7 +183,7 @@ my @smime_pkcs7_tests = (
        [ "{cmd1}", @defaultprov, "-sign", "-in", $smcont, "-md", "sha1",
          "-certfile", $smroot,
          "-signer", $smrsa1, "-out", "{output}.cms" ],
@@ -946,7 +946,7 @@ Index: openssl-3.5.0/test/recipes/80-test_cms.t
          "-CAfile", $smroot, "-out", "{output}.txt" ],
        \&final_compare
      ],
-@@ -182,7 +182,7 @@ my @smime_pkcs7_tests = (
+@@ -191,7 +191,7 @@ my @smime_pkcs7_tests = (
      [ "signed zero-length content S/MIME format, RSA key SHA1",
        [ "{cmd1}", @defaultprov, "-sign", "-in", $smcont_zero, "-md", "sha1",
          "-certfile", $smroot, "-signer", $smrsa1, "-out", "{output}.cms" ],
@@ -955,10 +955,10 @@ Index: openssl-3.5.0/test/recipes/80-test_cms.t
          "-CAfile", $smroot, "-out", "{output}.txt" ],
        \&zero_compare
      ],
-Index: openssl-3.5.0/test/recipes/80-test_ssl_old.t
+Index: openssl-3.5.3/test/recipes/80-test_ssl_old.t
 ===================================================================
---- openssl-3.5.0.orig/test/recipes/80-test_ssl_old.t
-+++ openssl-3.5.0/test/recipes/80-test_ssl_old.t
+--- openssl-3.5.3.orig/test/recipes/80-test_ssl_old.t
++++ openssl-3.5.3/test/recipes/80-test_ssl_old.t
 @@ -465,6 +465,9 @@ sub testssl {
                 'test sslv2/sslv3 with 1024bit DHE via BIO pair');
            }
@@ -977,10 +977,10 @@ Index: openssl-3.5.0/test/recipes/80-test_ssl_old.t
  
          SKIP: {
              skip "No IPv4 available on this machine", 4
-Index: openssl-3.5.0/apps/openssl.cnf
+Index: openssl-3.5.3/apps/openssl.cnf
 ===================================================================
---- openssl-3.5.0.orig/apps/openssl.cnf
-+++ openssl-3.5.0/apps/openssl.cnf
+--- openssl-3.5.3.orig/apps/openssl.cnf
++++ openssl-3.5.3/apps/openssl.cnf
 @@ -119,7 +119,7 @@ cert_opt 	= ca_default		# Certificate fi
  
  default_days	= 365			# how long to certify for

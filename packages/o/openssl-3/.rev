@@ -464,4 +464,18 @@
     <comment></comment>
     <requestid>1297961</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3772b99f1d88ec76b86c1aab98acdf16</srcmd5>
+    <version>3.5.3</version>
+    <time>1758222474</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.5.3:
+  * Added FIPS 140-3 PCT on DH key generation.
+  * Fixed the synthesised OPENSSL_VERSION_NUMBER.
+- Rebase patches:
+  * openssl-DH-Disable-FIPS-186-4-type-parameters-in-FIPS-mode.patch
+  * openssl-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
+  * openssl-FIPS-limit-rsa-encrypt.patch</comment>
+    <requestid>1305335</requestid>
+  </revision>
 </revisionlist>

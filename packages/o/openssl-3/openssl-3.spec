@@ -38,7 +38,7 @@
 %define livepatchable 1
 
 Name:           openssl-3
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
