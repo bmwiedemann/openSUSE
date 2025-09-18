@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Sep 17 13:55:44 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- UPdate to 1.40.32
+  * api-change:``budgets``: [``botocore``] Add support for custom time periods in budget configuration
+  * api-change:``ivs-realtime``: [``botocore``] IVS now offers customers the ability to control
+    the positioning of participants in both grid and PiP layouts based on custom attribute values
+    in participant tokens.
+  * api-change:``logs``: [``botocore``] Cloudwatch Logs added support for 2 new API parameters
+    in metric and subscription filter APIs to filter log events based on system field values
+    and emit system field values as dimensions and send them to customer destination as additional metadata.
+  * api-change:``osis``: [``botocore``] Adds support for cross-account ingestion for push-based sources.
+    This includes resource policies for sharing pipelines across accounts and features
+    for managing pipeline endpoints which enable accessing pipelines across different VPCs,
+    including VPCs in other accounts.
+
+-------------------------------------------------------------------
+Tue Sep 16 12:02:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.40.31
+  * api-change:``ce``: [``botocore``] Added endpoint support for eusc-de-east-1 region.
+  * api-change:``medical-imaging``: [``botocore``] Added support for OpenID Connect (OIDC) custom
+    authorizer
+  * api-change:``observabilityadmin``: [``botocore``] CloudWatch Observability Admin adds the ability
+    to enable telemetry centralization in customers' Organizations. The release introduces new APIs to
+    manage centralization rules, which define settings to replicate telemetry data to a central
+    destination in the customers' Organization.
+  * api-change:``s3control``: [``botocore``] Introduce three new encryption filters: EncryptionType
+    (SSE-S3, SSE-KMS, DSSE-KMS, SSE-C, NOT-SSE), KmsKeyArn (for SSE-KMS and DSSE-KMS), and
+    BucketKeyEnabled (for SSE-KMS).
+  * api-change:``sms``: [``botocore``] The sms client has been removed following the deprecation of
+    the service.
+- from version 1.40.30
+  * api-change:``payment-cryptography``: [``botocore``] Add support for certificates to be signed by
+    3rd party certificate authorities.  New API GetCertificateSigningRequest API and support for
+    providing certificates at run-time for tr-34 import/export
+- from version 1.40.29
+  * api-change:``amp``: [``botocore``] Add Vended Logs APIs for Amazon Prometheus Managed Collector
+  * api-change:``datazone``: [``botocore``] adding IAM principal id to IAM user profile details
+  * api-change:``ecs``: [``botocore``] This release supports hook details for Amazon ECS lifecycle
+    hooks.
+  * api-change:``emr-containers``: [``botocore``] Added nodeLabel support in container provider to
+    aid hardware isolation support for virtual cluster and security configuration.
+  * api-change:``evs``: [``botocore``] CreateEnvironment API now supports parameters (isHcxPublic &
+    hcxNetworkAclId) for HCX migration via public internet, adding flexibility for migration scenarios.
+    New APIs have been added for associating (AssociateEipToVlan) & disassociating
+    (DisassociateEipFromVlan) Elastic IP (EIP) addresses.
+  * api-change:``guardduty``: [``botocore``] Updated Java SDK implementation of entity set status in
+    GuardDuty API.
+  * api-change:``medialive``: [``botocore``] AWS Elemental MediaLive adds a new feature in
+    MediaPackage output group that enables MediaPackage V2 users to control HLS-related parameters
+    directly in MediaLive. These parameter settings are then reflected in MediaPackage outputs,
+    providing more streamlined control over HLS configurations.
+  * api-change:``quicksight``: [``botocore``] This release adds support for Account level custom
+    permissions, additional Dashboard Options, and Null support for Q&A.
+  * api-change:``rds``: [``botocore``] Adds support for end-to-end IAM authentication in RDS Proxy
+    for MySQL, MariaDB, and PostgreSQL engines.
+- from version 1.40.28
+  * api-change:``networkflowmonitor``: [``botocore``] Added new enum value (AWS::Region) for type
+    field under MonitorLocalResource and MonitorRemoteResource. Workload Insights and Monitor top
+    contributors queries now support a new DestinationCategory (INTER_REGION).
+  * api-change:``payment-cryptography``: [``botocore``] AWS Payment Cryptography Service now supports
+    Multi-Region key replication. Customers can choose to automatically distribute keys across AWS
+    Regions.
+- from version 1.40.27
+  * api-change:``autoscaling``: [``botocore``] Added WaitForTransitioningInstances parameter to the
+    CancelInstanceRefresh API, allowing the caller to cancel an instance refresh without waiting for
+    on-going launches and terminations.
+  * api-change:``cloudwatch``: [``botocore``] Added a new API - DescribeAlarmContributors API, to
+    retrieve alarm contributors in ALARM state. Added support in DescribeAlarmHistory API to query
+    alarm contributor history
+  * api-change:``connect``: [``botocore``] SDK release for user defined predefined attributes.
+  * api-change:``datazone``: [``botocore``] Adds support for custom blueprints
+  * api-change:``mediapackagev2``: [``botocore``] Added CUE tag SCTE output to MediaPackageV2 HLS and
+    LL-HLS manifests.
+  * api-change:``organizations``: [``botocore``] Documentation updates for AWS Organizations APIs.
+  * api-change:``sagemaker``: [``botocore``] Released IPv6 support with dual-stack domain options on
+    SageMaker Studio and introduced support for p6-b200.48xlarge instance type on SageMaker Studio for
+    JupyterLab and CodeEditor applications.
+- from version 1.40.26
+  * api-change:``iotsitewise``: [``botocore``] Add ComputationModelVersion support in IoT SiteWise
+    APIs
+  * api-change:``s3``: [``botocore``] This release includes backward compatibility work on the
+    "Expires" parameter.
+  * api-change:``securityhub``: [``botocore``] This release adds the RESOURCE_NOT_FOUND error code as
+    a possible value in responses to the following operations: BatchGetStandardsControlAssociations,
+    BatchUpdateStandardsControlAssociations, and BatchGetSecurityControls.
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Sep  8 10:37:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.40.25
