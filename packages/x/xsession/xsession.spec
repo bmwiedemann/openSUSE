@@ -1,7 +1,7 @@
 #
 # spec file for package xsession
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 Name:           xsession
+BuildRequires:  fdupes
 BuildRequires:  imake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
@@ -56,10 +57,13 @@ Examples may be found under /usr/share/doc/packages/xsession/examples.
 
 %build
 xmkmf -a
-make CCOPTIONS="%{optflags} -std=gnu17"
+make CCOPTIONS="%{optflags} -std=gnu17" \
+	MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
 
 %install
-%make_install all install.man
+%make_install all install.man \
+	MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
+%fdupes -s %{buildroot}%{_datadir}
 
 %files
 %doc CHANGES ChangeLog INSTALL README examples

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 11 08:26:41 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build even with broken imake/xmkmf setup 
+
+-------------------------------------------------------------------
 Thu Jul  3 08:49:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Explicitly set -std=gnu17, since GCC 15 moved to implicit C23.
