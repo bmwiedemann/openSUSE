@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 18 08:56:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.33.0:
+  * Notable Changes
+    - New template variables Labels and Annotations
+      You can now use Labels and Annotations in your templates.
+        stern -n kube-system -l component --template '{{printf "%-25s %s" .Labels.component .Message}}{{"\n"}}'
+  * Changes
+    - Update dependencies for Kubernetes 1.34 (#349) d6a0679
+      (Takashi Kusumi)
+    - Fix asdf installation typo (#348) 5946e7f (Guruprasad Bhat)
+    - 338: fix: move highlighting after formatting (#339) 6d915a8
+      (Peter)
+    - Add support for labels & annotations in templates (#344)
+      3cd85b4 (Nicholas Hurden)
+
+-------------------------------------------------------------------
 Tue Jan 21 06:10:13 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.32.0:

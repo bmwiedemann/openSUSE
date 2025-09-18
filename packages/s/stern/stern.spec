@@ -1,7 +1,7 @@
 #
 # spec file for package stern
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           stern
-Version:        1.32.0
+Version:        1.33.0
 Release:        0
 Summary:        Multi pod and container log tailing for Kubernetes
 License:        Apache-2.0
 URL:            https://github.com/stern/stern
 Source:         stern-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.23.5
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Stern allows you to tail multiple pods on Kubernetes and multiple containers
