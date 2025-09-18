@@ -17,7 +17,7 @@
 
 
 Name:           wolfictl
-Version:        0.38.14
+Version:        0.38.16
 Release:        0
 Summary:        A CLI used to work with the Wolfi OSS project
 License:        Apache-2.0
