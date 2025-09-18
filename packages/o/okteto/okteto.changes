@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:27:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.0:
+  * New Feature
+    - Allow to override security context ReadOnlyRootFilesystem
+      property on dev containers by @ifbyol in #4759
+  * Bug Fix
+    - DEV-1107: Initialize the divert deployer in the command
+      struct for up and test commands by @ifbyol in #4756
+    - DEV-1127: Fix --wait flag on okteto deploy command when
+      deploying a subset of services from a compose by @ifbyol in
+      #4762
+
+-------------------------------------------------------------------
 Fri Aug 22 11:25:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.10.1:
