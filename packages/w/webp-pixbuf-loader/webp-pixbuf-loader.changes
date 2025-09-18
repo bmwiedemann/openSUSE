@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 17 19:07:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gdk-pixbuf-thumbnailer Requires: only needed for directory
+  ownership (and deprecated).
+
+-------------------------------------------------------------------
 Tue Aug  6 01:36:36 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enable tests

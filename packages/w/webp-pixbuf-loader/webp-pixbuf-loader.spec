@@ -1,7 +1,7 @@
 #
 # spec file for package webp-pixbuf-loader
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) > 2.22.0
 BuildRequires:  pkgconfig(libwebp) >= 1.3.2
 Requires:       gdk-pixbuf-query-loaders
-Requires:       gdk-pixbuf-thumbnailer
 %gdk_pixbuf_loader_requires
 
 %description

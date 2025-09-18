@@ -24,4 +24,13 @@
     <comment></comment>
     <requestid>1191823</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4c0c5b501517e7e4ad4aaa0ecaf1d0f1</srcmd5>
+    <version>0.2.7</version>
+    <time>1758222557</time>
+    <user>anag_factory</user>
+    <comment>- Drop gdk-pixbuf-thumbnailer Requires: only needed for directory  ownership (and deprecated).
+</comment>
+    <requestid>1305592</requestid>
+  </revision>
 </revisionlist>
