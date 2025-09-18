@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 17 16:25:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.2
+  * RpcIq: Fix only-whitespace strings are stripped
+  * CMake: Add `BUILD_WITH_QT6` option instead of `QT_VERSION_MAJOR`
+  * JingleIq: Replace reason attribute with optional<Reason>
+  * New voice call example
+  * Implement XEP-0320: Use of DTLS-SRTP in Jingle Sessions
+  * Security and stability improvements by parsing whole stream
+    through QXmlStreamReader internally and creating QDomElements
+    manually
+  * Client/Server: Close connection on unexpected element received
+  * OutgoingClient: Re-create socket on connection errors to avoid
+    race conditions
+  * Big parsing/serialization overhaul
+  * New internal Iq<T> type, separating parsing of IQ and payload
+  * Task: Inline TaskData and use std::optional to avoid
+    additional heap allocation
+  * PubSubIq: Add notify attribute for retraction
+  Breaking changes:
+  * JingleIq::RtpSessionStateMuting: 'isMute' is not initialized
+    by default anymore
+  * ExternalServiceDiscoveryIq: Change port type from `int` to
+    `quint16` to match XEP-0215
+- Stop building the Qt 5 flavor
+
+-------------------------------------------------------------------
 Sun May 25 11:24:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.10.4
