@@ -200,4 +200,14 @@
   * Using sfml from externals source.</comment>
     <requestid>1287146</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>be25872b2b325080071e7a4ee43f6e95</srcmd5>
+    <version>2509</version>
+    <time>1758222547</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2509
+  * https://github.com/dolphin-emu/dolphin/compare/2506a...2509
+  * Used SDL3 from dependencies and watcher from externals source.</comment>
+    <requestid>1305583</requestid>
+  </revision>
 </revisionlist>

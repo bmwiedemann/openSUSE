@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 17 20:27:46 UTC 2025 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- Updated to 2509
+  * https://github.com/dolphin-emu/dolphin/compare/2506a...2509
+  * Used SDL3 from dependencies and watcher from externals source.
+
+-------------------------------------------------------------------
 Fri Jun 20 06:22:35 UTC 2025 - Kyle Scheuing <kyle@kylescheuing.com>
 
 - Updated to 2506a
