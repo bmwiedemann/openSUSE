@@ -1,7 +1,7 @@
 #
 # spec file for package ghostview
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,17 +53,22 @@ X11 interface to ghostscript.
 
 %build
 xmkmf -a
-make CCOPTIONS="--std=gnu99 %{optflags}" %{?_smp_mflags}
+make CCOPTIONS="--std=gnu99 %{optflags}" %{?_smp_mflags} \
+	MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
 
 %install
-make install     DESTDIR=%{buildroot}
-make install.man DESTDIR=%{buildroot}
+make install     DESTDIR=%{buildroot} \
+	MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
+make install.man DESTDIR=%{buildroot} \
+	MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
 %suse_update_desktop_file -i ghostview Office Viewer
+rm -r %{buildroot}/etc
+rm -r %{buildroot}/usr/lib/X11
 
 %files
 %defattr(-,root,root)
-/usr/share/applications/ghostview.desktop
-/usr/share/pixmaps/ghostview.png
+%{_datadir}/applications/ghostview.desktop
+%{_datadir}/pixmaps/ghostview.png
 %{_bindir}/ghostview
 %dir %{_appdefdir}
 %config %{_appdefdir}/Ghostview
