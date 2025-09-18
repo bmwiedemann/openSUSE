@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Sep 17 06:47:34 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 2.4.14:
+  See https://github.com/openprinting/cups/releases
+  The hotfix release brings fix for installation process
+  of localized templates and CUPS web UI home pages.
+- Version upgrade to 2.4.13:
+  See https://github.com/openprinting/cups/releases
+  The release 2.4.13 brings two CVE fixes
+  fix for important CVE-2025-58060
+  "Authentication bypass with AuthType Negotiate" (bsc#1249049)
+  and fix for moderate CVE-2025-58364
+  "Remote DoS via null dereference" (bsc#1249128)
+  together with several bug fixes.
+  The release includes a new feature - new attribute
+  for printer and job objects - print-as-raster - which
+  allows enforce rasterization of the file for
+  IPP Everywhere/AirPrint printers, which supports PDF
+  and raster document formats. The feature is useful for
+  working around internal PDF issues in the printer firmware,
+  for example missing diacritic when printing a PDF.
+  Detailed list (from CHANGES.md):
+  * Blocked authentication using alternate methods
+    in cupsd (CVE-2025-58060)
+  * Fixed extension tag handling in 'ipp_read_io()'
+    in libcups (CVE-2025-58364)
+  * Added 'print-as-raster' printer and job attributes
+    for forcing rasterization (Issue #1282)
+  * Updated documentation (Issue #1086)
+  * Updated IPP backend to try a sanitized user name if the
+    printer/server does not like the value (Issue #1145)
+  * Updated the scheduler to send the "printer-added"
+    or "printer-modified" events  whenever an IPP Everywhere PPD
+    is installed (Issue #1244)
+  * Updated the scheduler to send the "printer-modified" event
+    whenever the system default printer is changed (Issue #1246)
+  * Fixed a memory leak in 'httpClose' (Issue #1223)
+  * Fixed missing commas in 'ippCreateRequestedArray'
+    (Issue #1234)
+  * Fixed subscription issues in the scheduler and D-Bus notifier
+    (Issue #1235)
+  * Fixed media-default reporting for custom sizes (Issue #1238)
+  * Fixed support for IPP/PPD options with periods or underscores
+    (Issue #1249)
+  * Fixed parsing of real numbers in PPD compiler source files
+    (Issue #1263)
+  * Fixed scheduler freezing with zombie clients (Issue #1264)
+  * Fixed support for the server name in the ErrorLog filename
+    (Issue #1277)
+  * Fixed job cleanup after daemon restart (Issue #1315)
+  * Fixed handling of buggy DYMO USB printer serial numbers
+   (Issue #1338)
+  * Fixed unreachable block in IPP backend (Issue #1351)
+  * Fixed memory leak in _cupsConvertOptions (Issue #1354)
+  Issues are those at https://github.com/OpenPrinting/cups/issues
+- Adapted downgrade-autoconf-requirement.patch for CUPS 2.4.14
+
+-------------------------------------------------------------------
 Thu Apr 10 13:37:02 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 2.4.12:

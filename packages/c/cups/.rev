@@ -1361,4 +1361,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1270574</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>4cfcb34922e905b40f1093819ed20001</srcmd5>
+    <version>2.4.14</version>
+    <time>1758222480</time>
+    <user>anag_factory</user>
+    <comment>CUPS version upgrade to 2.4.14 fixes CVE-2025-58060 bsc#1249049 and CVE-2025-58364 bsc#1249128 (forwarded request 1305299 from jsmeix)</comment>
+    <requestid>1305300</requestid>
+  </revision>
 </revisionlist>
