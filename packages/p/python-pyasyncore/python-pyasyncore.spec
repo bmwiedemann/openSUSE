@@ -18,6 +18,7 @@
 
 # Requires Python 3.11 or above
 %define skip_python310 1
+%{?sle15_python_module_pythons}
 Name:           python-pyasyncore
 Version:        1.0.4
 Release:        0
