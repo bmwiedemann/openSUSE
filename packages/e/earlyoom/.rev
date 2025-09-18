@@ -180,4 +180,15 @@
   * Fixed crash with -p flag in config and IPAddressDeny syntax.</comment>
     <requestid>1173527</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a963f80cf7dca87b64ab0396e36886d4</srcmd5>
+    <version>1.9.0</version>
+    <time>1758222545</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 1.9.0
+  * Add -P /path/to/script option to execute before killing something
+  * More debug logging for -n and -N
+  * Also log oom_score_adj when killing something</comment>
+    <requestid>1305581</requestid>
+  </revision>
 </revisionlist>

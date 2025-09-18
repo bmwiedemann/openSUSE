@@ -1,7 +1,7 @@
 #
 # spec file for package earlyoom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           earlyoom
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        Early OOM Daemon for Linux
 License:        MIT

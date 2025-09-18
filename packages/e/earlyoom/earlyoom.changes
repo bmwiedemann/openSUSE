@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 17 20:47:50 UTC 2025 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- Updated to 1.9.0
+  * Add -P /path/to/script option to execute before killing something
+  * More debug logging for -n and -N
+  * Also log oom_score_adj when killing something
+
+-------------------------------------------------------------------
 Sun May 12 19:42:33 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Manual optimizations in spec-file.
