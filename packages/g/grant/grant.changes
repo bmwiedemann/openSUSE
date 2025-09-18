@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Sep 18 10:29:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.2:
+  * fix: globs were not being parsed correctly from config (#274)
+  * feat: add OSI warning text (#273)
+  * feat: add coloring to risk output (#272)
+  * fix: update grant so it can consume it's own json as source &&
+    stdin (#271)
+  * chore: generate demo via taskfile `make demo` (#270)
+  * docs: vhs gif (#269)
+  * docs: modify license settings and enhance README clarity (#267)
+
+-------------------------------------------------------------------
+Thu Sep 18 05:22:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.1:
+  * Bug Fixes
+    - update version and verbose in new grant [#265 @spiffcs]
+
+-------------------------------------------------------------------
+Thu Sep 18 05:14:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.0:
+  * Warning
+    - v0.3.0 has a brand new config that is not compatible with
+      prior versions <= v0.2.9. Please make sure to read the new
+      documentation on configuration setup before upgrading.
+  * Added Features
+    - rework and simplify configuration to allow for deny on (no
+      licenses) [#249 @spiffcs]
+    - update list with new ui/detail [#256 @spiffcs]
+    - update check with links and new user ergonomics [#259
+      @spiffcs]
+    - Add a --dry-run / --allow-failure to grant check [#214]
+  * Bug Fixes
+    - update grant to process only common license file names [#237
+      @spiffcs]
+    - Remove blanks from badge gaps [#258 @popey]
+    - stdin-fix [#260 @spiffcs]
+    - simplify tui in lieu of clio upgrade [#262 @spiffcs]
+    - panic: send on closed channel [#71]
+  * Additional Changes
+    - Risk category [#257 @spiffcs]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#254)
+    - chore(deps): bump modernc.org/sqlite from 1.38.2 to 1.39.0
+      (#253)
+    - chore(deps): bump github.com/charmbracelet/bubbletea from
+      1.3.6 to 1.3.9 (#252)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.7.8
+      to 1.7.9 (#239)
+    - chore(deps): bump github.com/anchore/syft from
+      1.31.1-0.20250818141439-ba2eb5701fb4 to 1.32.0 (#243)
+    - chore(deps): bump github.com/ulikunitz/xz from 0.5.12 to
+      0.5.14 (#246)
+    - chore(deps): bump github.com/anchore/stereoscope from 0.1.8
+      to 0.1.9 (#242)
+    - chore(deps): bump github.com/stretchr/testify from 1.10.0 to
+      1.11.1 (#244)
+    - chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.0
+      (#247)
+    - chore(deps): bump github.com/gookit/color from 1.5.4 to 1.6.0
+      (#245)
+    - chore(deps): bump github.com/anchore/syft from 1.30.0 to
+      1.31.0 (#236)
+
+-------------------------------------------------------------------
 Sun Aug 10 07:34:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.9:
