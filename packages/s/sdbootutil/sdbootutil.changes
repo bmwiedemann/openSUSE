@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 17 14:34:52 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250917.7aab076:
+  * Revert "PCR#15 workaround for LVM devices"
+  * measure-pcr-generator: escape the device name
+  * Fix boot_root for systemd 258
+
+-------------------------------------------------------------------
 Tue Sep 09 07:22:59 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250909.8b2878e:

@@ -652,4 +652,16 @@
     <comment></comment>
     <requestid>1303300</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>946ce10b65320aaabb87ad12efcfc19b</srcmd5>
+    <version>1+git20250917.7aab076</version>
+    <time>1758222486</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1+git20250917.7aab076:
+  * Revert &quot;PCR#15 workaround for LVM devices&quot;
+  * measure-pcr-generator: escape the device name
+  * Fix boot_root for systemd 258
+</comment>
+    <requestid>1305407</requestid>
+  </revision>
 </revisionlist>
