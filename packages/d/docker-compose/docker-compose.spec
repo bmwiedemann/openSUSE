@@ -17,14 +17,14 @@
 
 
 Name:           docker-compose
-Version:        2.39.2
+Version:        2.39.3
 Release:        0
 Summary:        Define and run multi-container applications with Docker
 License:        Apache-2.0
 URL:            https://github.com/docker/compose
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.23.6
+BuildRequires:  go1.24 >= 1.24.7
 # can be used with podman by setting
 # DOCKER_SOCK and DOCKER_HOST
 Requires:       (docker or podman)
