@@ -1,4 +1,235 @@
 -------------------------------------------------------------------
+Thu Sep 18 08:57:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.0:
+  * New Features - Stable
+    - oras is compliant with OCI distribution-spec v1.1.1
+    - Show OS and architecture in oras version
+    - Add alias oras manifest get for oras manifest fetch
+  * New Features - Preview
+    - Improve tree view in oras discover
+      - Display annotations by default
+      - Colorize tree view
+  * New Features - Experimental
+    - Introduce portable backup and restore of OCI artifacts,
+      images, and repositories
+      - oras backup: New command to back up artifacts from remote
+        registries into local OCI image layouts, either as
+        directories or tar archives.
+      - oras restore: New command to restore artifacts from local
+        OCI image layouts (directories or tar archives) back to
+        remote registries.
+    - Introduce multi-arch image/artifact management
+      - Add the oras manifest index command set to manage OCI image
+        index manifests
+        - oras manifest index create to create a new index from
+          existing manifests
+        - oras manifest index update to update an existing index
+          manifest
+      - Add --artifact-platform to oras push to push artifacts with
+        platform information
+      - Add --format to oras repo ls and oras repo tags with text,
+        json, and go-template options
+      - Support fully qualified references for OCI image layout via
+        --oci-layout-path
+    - Refine the oras discover output for the json and go-template
+      formats
+      - BREAKING CHANGE: Rename the manifests field to referrers
+      - Add subject manifest details to the json output
+    - oras discover now displays referrers recursively by default;
+      the maximum recursion depth can be controlled via the --depth
+      flag
+  * Feature Promotions
+    - Promote the following commands and flags from Preview to
+      Stable:
+      - oras attach
+      - oras attach --platform
+      - oras pull --include-subject
+    - Promote oras resolve from Experimental to Preview
+  * Deprecations - Stable
+    - Deprecate the -v, --verbose flag (verbose output is now
+      enabled by default)
+  * Deprecations - Preview
+    - BREAKING CHANGE Remove the global --no-tty flag
+      - --no-tty remains available on individual TTY-capable
+        commands
+  * Deprecations - Experimental
+    - Deprecate the table option of the --format flag in oras
+      discover
+  * Bug Fixes
+    - Fix #1436: oras tag creates referrers tags unexpectedly
+    - Fix #1442: invalid progress bar shown for empty layers
+    - Fix #1494: invalid reference in the formatted output of oras
+      pull
+    - Fix #1593: unable to download an artifact twice if it
+      contains symbolic links
+    - Fix #1599: Auth token scope not correctly added when using
+      --debug or --no-tty with oras push
+    - Fix #1623: Should show KB instead of kB in the progress bar
+    - Fix #1728: oras cp now correctly copies the root index when
+      the index has no referrers
+    - Fix #1795, #1825: redundant blank lines in terminal output
+  * Other Changes
+    - Add support for the loong64 architecture
+    - Upgrade to Go 1.25.0
+    - Enhance UX:
+      - Improve diagnostic experience through --debug logs
+      - Improve error messages
+    - Improve documentation
+    - Optimize code structure
+    - Update dependencies
+    - Minor security enhancements
+  * Dependencies
+    - build(deps): bump actions/checkout from 4 to 5 (#1814)
+    - build(deps): bump apache/skywalking-eyes from 0.6.0 to 0.7.0
+      (#1617)
+    - build(deps): bump github.com/Masterminds/sprig/v3 from 3.2.3
+      to 3.3.0 (#1491)
+    - build(deps): bump github.com/containerd/console from 1.0.4 to
+      1.0.5 (#1743)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.19.0 to
+      2.19.1 in /test/e2e (#1462)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.19.1 to
+      2.20.0 in /test/e2e (#1471)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.20.0 to
+      2.20.1 in /test/e2e (#1486)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.20.1 to
+      2.20.2 in /test/e2e (#1488)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.20.2 to
+      2.21.0 in /test/e2e (#1522)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.21.0 to
+      2.22.0 in /test/e2e (#1532)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.22.0 to
+      2.22.1 in /test/e2e (#1596)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.22.1 to
+      2.22.2 in /test/e2e (#1601)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.22.2 to
+      2.23.0 in /test/e2e (#1647)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.23.0 to
+      2.23.1 in /test/e2e (#1662)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.23.1 to
+      2.23.2 in /test/e2e (#1663)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.23.3 to
+      2.23.4 in /test/e2e (#1690)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.23.4 to
+      2.24.0 in /test/e2e (#1816)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.24.0 to
+      2.25.0 in /test/e2e (#1826)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.25.0 to
+      2.25.1 in /test/e2e (#1828)
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.25.1 to
+      2.25.2 in /test/e2e (#1836)
+    - build(deps): bump github.com/onsi/gomega from 1.33.1 to
+      1.34.0 in /test/e2e (#1458)
+    - build(deps): bump github.com/onsi/gomega from 1.34.1 to
+      1.34.2 in /test/e2e (#1489)
+    - build(deps): bump github.com/onsi/gomega from 1.34.2 to
+      1.35.0 in /test/e2e (#1521)
+    - build(deps): bump github.com/onsi/gomega from 1.35.0 to
+      1.35.1 in /test/e2e (#1523)
+    - build(deps): bump github.com/onsi/gomega from 1.35.1 to
+      1.36.0 in /test/e2e (#1546)
+    - build(deps): bump github.com/onsi/gomega from 1.36.0 to
+      1.36.1 in /test/e2e (#1580)
+    - build(deps): bump github.com/onsi/gomega from 1.36.1 to
+      1.36.2 in /test/e2e (#1598)
+    - build(deps): bump github.com/onsi/gomega from 1.36.2 to
+      1.36.3 in /test/e2e (#1667)
+    - build(deps): bump github.com/onsi/gomega from 1.36.3 to
+      1.37.0 in /test/e2e (#1685)
+    - build(deps): bump github.com/onsi/gomega from 1.37.0 to
+      1.38.0 in /test/e2e (#1789)
+    - build(deps): bump github.com/onsi/gomega from 1.38.0 to
+      1.38.1 in /test/e2e (#1829)
+    - build(deps): bump github.com/opencontainers/image-spec from
+      1.1.0 to 1.1.1 (#1642)
+    - build(deps): bump github.com/opencontainers/image-spec from
+      1.1.0 to 1.1.1 in /test/e2e (#1643)
+    - build(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+      (#1410)
+    - build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+      (#1622)
+    - build(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+      (#1837)
+    - build(deps): bump github.com/spf13/pflag from 1.0.6 to 1.0.7
+      (#1785)
+    - build(deps): bump golang and dependencies (#1572)
+    - build(deps): bump golang.org/x/crypto from 0.26.0 to 0.31.0
+      (#1585)
+    - build(deps): bump golang.org/x/net from 0.35.0 to 0.36.0 in
+      /test/e2e (#1655)
+    - build(deps): bump golang.org/x/net from 0.37.0 to 0.38.0 in
+      /test/e2e (#1697)
+    - build(deps): bump golang.org/x/sync from 0.10.0 to 0.11.0
+      (#1614)
+    - build(deps): bump golang.org/x/sync from 0.11.0 to 0.12.0
+      (#1645)
+    - build(deps): bump golang.org/x/sync from 0.12.0 to 0.13.0
+      (#1691)
+    - build(deps): bump golang.org/x/sync from 0.13.0 to 0.14.0
+      (#1720)
+    - build(deps): bump golang.org/x/sync from 0.14.0 to 0.15.0
+      (#1750)
+    - build(deps): bump golang.org/x/sync from 0.15.0 to 0.16.0
+      (#1781)
+    - build(deps): bump golang.org/x/sync from 0.7.0 to 0.8.0
+      (#1468)
+    - build(deps): bump golang.org/x/sync from 0.8.0 to 0.9.0
+      (#1527)
+    - build(deps): bump golang.org/x/sync from 0.9.0 to 0.10.0
+      (#1566)
+    - build(deps): bump golang.org/x/term from 0.20.0 to 0.21.0
+      (#1399)
+    - build(deps): bump golang.org/x/term from 0.21.0 to 0.22.0
+      (#1440)
+    - build(deps): bump golang.org/x/term from 0.22.0 to 0.23.0
+      (#1470)
+    - build(deps): bump golang.org/x/term from 0.23.0 to 0.24.0
+      (#1495)
+    - build(deps): bump golang.org/x/term from 0.24.0 to 0.25.0
+      (#1512)
+    - build(deps): bump golang.org/x/term from 0.25.0 to 0.26.0
+      (#1526)
+    - build(deps): bump golang.org/x/term from 0.26.0 to 0.27.0
+      (#1565)
+    - build(deps): bump golang.org/x/term from 0.27.0 to 0.28.0
+      (#1603)
+    - build(deps): bump golang.org/x/term from 0.28.0 to 0.29.0
+      (#1615)
+    - build(deps): bump golang.org/x/term from 0.29.0 to 0.30.0
+      (#1646)
+    - build(deps): bump golang.org/x/term from 0.30.0 to 0.31.0
+      (#1692)
+    - build(deps): bump golang.org/x/term from 0.31.0 to 0.32.0
+      (#1721)
+    - build(deps): bump golang.org/x/term from 0.32.0 to 0.33.0
+      (#1780)
+    - build(deps): bump golang.org/x/term from 0.33.0 to 0.34.0
+      (#1800)
+    - build(deps): bump golangci/golangci-lint-action from 6 to 8
+      (#1717)
+    - build(deps): bump library/alpine from 3.21.3 to 3.22.0
+      (#1765)
+    - build(deps): bump library/alpine from 3.22.0 to 3.22.1
+      (#1786)
+    - build(deps): bump library/golang from 1.24.2-alpine to
+      1.24.4-alpine (#1764)
+    - build(deps): bump library/golang from 1.24.4-alpine to
+      1.24.5-alpine (#1782)
+    - build(deps): bump library/golang from 1.24.5-alpine to
+      1.24.6-alpine (#1804)
+    - build(deps): bump oras-go to the latest commit which fixes
+      the "compare and swap" error (#1702)
+    - build(deps): bump oras.land/oras-go/v2 from 2.5.0 to 2.6.0 in
+      /test/e2e (#1724)
+    - build(deps): bump oras.land/oras-go/v2 from
+      2.5.1-0.20250417082913-f7a6126986d9 to 2.6.0 (#1725)
+    - build(deps): upgrade go crypto module to v0.36.0 (#1671)
+    - build(go): upgrade go version and dependencies (#1796)
+    - build(go): upgrade go version to 1.24.2 (#1703)
+    - build(go): upgrade to Go 1.25.0 (#1817)
+
+-------------------------------------------------------------------
 Tue Apr 29 08:00:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.3:
