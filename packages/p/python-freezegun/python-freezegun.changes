@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 17 12:10:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.5
+  * Allow parametrized arguments called 'func' (Broken in 1.5.4)
+
+-------------------------------------------------------------------
 Tue Aug  5 18:46:39 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Make tests more verbose.
