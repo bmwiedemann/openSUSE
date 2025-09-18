@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Thu Sep 18 07:26:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.72.0:
+  * chore: flag claude and mcp features as experimental
+  * feat(cluster agent): introduce revoke command
+  * fix: normalized all commands chars
+  * refactor(login): use url.Parse instead of regex to validate
+    hostname
+
+-------------------------------------------------------------------
+Thu Sep 18 07:22:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.71.2:
+  * feat(duo claude): improve error message when duo claude token
+    retrieval is forbidden
+  * chore: optimize MCP tool descriptions and reduce token usage
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.145.0
+
+-------------------------------------------------------------------
+Thu Sep 18 07:16:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.71.1:
+  * Revert "chore: enable signing for all (test)"
+  * chore: enable signing for all (test)
+  * fix: tweak signature name to avoid bin/
+
+-------------------------------------------------------------------
+Thu Sep 18 07:11:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.71.0:
+  * a61ec841: fix: add checksums to signing (Stan Hu)
+
+-------------------------------------------------------------------
+Thu Sep 18 07:01:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.70.0 (1.69.0 does not exist):
+  * fix(release): ignore .gitlab-secrets
+  * feat: sign all macOS and Windows binaries in goreleaser
+  * feat(duo claude): add MCP server integration for enhanced
+    Claude Code functionality
+  * fix: glab ci status fails for an MR branch, when Merged Results
+    Pipelines are enabled
+  * docs: Fix malformed link in CONTRIBUTING
+  * feat: sign Windows installer
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.144.1
+  * feat: sign Windows glab.exe
+  * chore: Use go 1.25.1
+  * chore: Better explain hosts + Self-Managed for 'repo create'
+  * chore(deps): update module k8s.io/client-go to v0.34.1
+  * fix(auth): allow dash in hostname URI
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.143.3
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.143.2
+  * chore: Remove period from "EXPERIMENTAL" string
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.143.1
+  * docs: Revise docs for 'release create' command
+  * chore(deps): update module golang.org/x/oauth2 to v0.31.0
+  * chore(deps): update module github.com/spf13/viper to v1.21.0
+  * feat(opentofu init): support OAuth2 token auth
+  * chore(deps): update module golang.org/x/crypto to v0.42.0
+  * fix(debug http): deep-copy body for request dump
+  * chore(deps): update module oss.terrastruct.com/d2 to v0.7.1
+  * chore(deps): update module golang.org/x/sync to v0.17.0
+  * chore(deps): update module github.com/coder/websocket to
+    v1.8.14
+  * fix: Subsequent job traces fail to load after the first call to
+    RunTraceSha()
+  * feat: add automatic documentation generation for root command
+  * chore(cluster/graph): add HelmRelease metadata
+
+-------------------------------------------------------------------
+Sun Sep 14 11:55:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.68.0:
+  * Changelog
+    - 78c7dc2f: feat(agent bootstrap): support configuring commit
+      author (Timo Furrer tfurrer@gitlab.com)
+    - ab9c7f09: feat(agent): implement token list command (Timo
+      Furrer tfurrer@gitlab.com)
+    - 3a4d34d5: feat(duo/claude): Added support for Claude Code
+      (Shekhar Patnaik spatnaik@gitlab.com)
+    - a1809f2b: feat(issue-list): sort and order functionality
+      (Filip Aleksic faleksic@gitlab.com)
+    - 240f6800: feat(mr): add URL parsing support for mr (Munish
+      munishkumar631@gmail.com)
+    - 76692fd8: feat(release): remove experimental status from
+      --use-package-registry flag (Timo Furrer tfurrer@gitlab.com)
+    - 5101d572: feat(schedule-id): print schedule id on creation
+      (Filip Aleksic faleksic@gitlab.com)
+    - 6e81bd0d: fix(cluster/agent/get_token): clean up lock on OS
+      signal (Mikhail Mazurskiy mmazurskiy@gitlab.com)
+    - 376f3ffa: fix(commands): fixes to commands and env vars
+      (Filip Aleksic faleksic@gitlab.com)
+    - 713ea1b7: fix(env-var): respect GITLAB_HOST environment
+      variable in all commands (Timo Furrer tfurrer@gitlab.com)
+    - 8a6f45d7: fix(help): preserve newlines in glamour output (Jay
+      McCure jmccure@gitlab.com)
+    - d2c2e9da: fix(mr ci): use gitlab api to fetch default branch
+      with fallback to main when... (Munish
+      munishkumar631@gmail.com)
+    - 6adb5415: fix: resolve host mismatch bug in repository
+      resolution (Alex Romanov alex@romanov.ws)
+    - 2fc5d0c6: refactor(cluster/agent/get_token): ensure the right
+      error is returned (Mikhail Mazurskiy mmazurskiy@gitlab.com)
+  * Dependencies
+    - chore(deps): update module github.com/docker/cli to
+      v28.4.0+incompatible
+    - chore(deps): update module github.com/spf13/pflag to v1.0.10
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v0.142.6
+    - chore(deps): update module github.com/spf13/cobra to v1.10.1
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v0.142.4
+    - chore(deps): update module k8s.io/client-go to v0.34.0
+    - chore(deps): update module github.com/stretchr/testify to
+      v1.11.1
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v0.142.2
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v0.142.1
+    - chore(deps): update module github.com/stretchr/testify to
+      v1.11.0
+    - chore(deps): update module github.com/gdamore/tcell/v2 to
+      v2.9.0
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v0.142.0
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v0.141.2
+    - chore(deps): update mock/mockgen to v0.6.0
+    - chore(deps): update golangci-lint to v2.4.0
+    - chore(deps): bump go to v1.25.0 in .tool-versions and
+      .gitlab-ci.yml
+    - chore(deps): bump go to v1.25.0
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v0.141.1
+    - chore(deps): bump effectively used mockgen version
+    - chore(deps): update module go.uber.org/mock to v0.6.0
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v0.139.2
+    - chore(deps): update dependency golangci-lint to v2.4.0
+
+-------------------------------------------------------------------
 Mon Aug 18 13:03:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.67.0:
