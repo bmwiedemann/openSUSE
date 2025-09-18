@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:20:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.44.1:
+  This bugfix release mainly fixes an issue when using Inspektor
+  Gadget as a library. For the release tag v0.44.0 we pushed a tag
+  twice and https://proxy.golang.org/ cached it with a wrong
+  commit.
+  * Documentation
+    - docs: fix broken links in image based gadget design docs
+    - docs: fix broken links about grpc api
+    - docs: fix broken links about benchmarking builtin gadgets
+
+-------------------------------------------------------------------
 Tue Sep 02 05:49:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.44.0:
