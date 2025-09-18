@@ -4214,4 +4214,41 @@
   * fix(ext/node): use custom allocator for brotli (#30277)</comment>
     <requestid>1302351</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>95219f84abd094d5ee318a50816aaf25</srcmd5>
+    <version>2.4.5</version>
+    <time>1758222716</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.5:
+  * 2.4.5 (#30476)
+  * feat(install): more informative deno install output (#30387)
+  * perf(ext/net): change the default TCP backlog to 512 (#30471)
+  * feat(unstable/install): `DENO_INSTALL_ARCH` env var (#30473)
+  * fix(lsp): silence tsc debug failures for inlay hints (#30456)
+  * chore: make `specs::outdated::pre_release_latest_tag` less flaky (#30474)
+  * fix: enable keyring features and dont clear token when config is missing (#30468)
+  * fix(publish): handle precompile in jsx publishing (#30466)
+  * fix(ext/node): validate callback on `fs.mkdtemp` and `fs.stat` (#30454)
+  * refactor: add deno_maybe_sync crate (#30459)
+  * fix(unstable): parsing regex in selector with character class (#30462)
+  * fix(lsp): fix import specifiers in file rename changes (#30458)
+  * fix(fmt): do not remove parens for jsdoc with `@satisfies` (#30453)
+  * fix(ext/node): TLS emit close event on parent socket (#30451)
+  * test: add ability to ignore Node compat tests (#30439)
+  * fix(cache): cache excluded modules explicitly provided on the command line (#30442)
+  * fix(resolver): update &quot;with --unstable-sloppy-imports&quot; message to use &quot;--sloppy-imports&quot; (#30421)
+  * fix(ext/node): bad compression caused by invalid brotli params (#30437)
+  * fix(ext/node): `os.setPriority` and `os.getPriority` compatibility (#30383)
+  * fix(std/fs): implement `chmod` on windows (#30436)
+  * feat(lsp): pull-based diagnostics (#30325)
+  * fix(ext/node): export `promises` from stream (#30427)
+  * fix(ext/node): mTLS support for `node:tls` (#30426)
+  * fix(node/fs): cp should not create subfolder when both source and target are directories (#30408)
+  * fix(unstable): fix json repl bugs (#30415)
+  * fix(test): set cwd when running node compatibility tests (#30422)
+  * fix(ext/node): tls upgrades for used sockets (#30418)
+  * chore: update keyring to v3.6.3 (#30390)
+  * refactor(ext/node): rewrite net.Socket and net.Server to use ES5 class (#30419)</comment>
+    <requestid>1305786</requestid>
+  </revision>
 </revisionlist>
