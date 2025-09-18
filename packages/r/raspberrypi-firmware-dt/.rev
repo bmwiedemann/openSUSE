@@ -469,4 +469,13 @@ and packages them up for the RPi firmware to use.</comment>
     <comment>add RPi5 support</comment>
     <requestid>1302566</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>54759f16462e1a169e5022a0fe638a1b</srcmd5>
+    <version>2025.05.14</version>
+    <time>1758222483</time>
+    <user>anag_factory</user>
+    <comment>- Amend the RP1 ethernet node to work with upstream driver
+* 0001-Amend-the-RP1-ethernet-node-to-work-with-upstream-dr.patch-</comment>
+    <requestid>1305328</requestid>
+  </revision>
 </revisionlist>

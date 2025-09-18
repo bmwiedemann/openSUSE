@@ -39,6 +39,7 @@ Patch4:         0001-dts-rp1-Wrap-RP1-node-into-nexus-node-as-expected-by.patch
 Patch5:         0001-ARM-dts-bcm2712-Remove-DMA-support.patch
 Patch6:         0001-ARM-dts-bcm2712-Slow-down-eMMC-interface.patch
 Patch7:         bcm2712-fix-compatible.patch
+Patch8:         0001-Amend-the-RP1-ethernet-node-to-work-with-upstream-dr.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
