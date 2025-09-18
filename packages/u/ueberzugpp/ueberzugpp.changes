@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 12 04:33:23 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.9.7+git20250611.55d96e8:
+  * bump version
+  * add missing mutex header
+  * Fix build on NetBSD.
+
+-------------------------------------------------------------------
+Thu Dec 26 22:05:27 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.9.6+git20241210.bc95e73:
+  * add ueberzug conflicts to deb packaging
+
+-------------------------------------------------------------------
 Thu Oct 17 15:05:13 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 2.9.6+git20241007.eea57da:
