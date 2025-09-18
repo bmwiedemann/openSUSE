@@ -97,4 +97,16 @@ This version builds properly. Sorry for submitting one that did not (it was buil
     <comment></comment>
     <requestid>1230313</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>715860549a230585ce8da348ad95bfa0</srcmd5>
+    <version>4.10.0</version>
+    <time>1758222740</time>
+    <user>anag_factory</user>
+    <comment>-  Update to v4.10.0
+  * Rebase on a v6.12.34 kernel
+  * x86_64: enable VIRTIO_GPU
+  * Add TDX support
+</comment>
+    <requestid>1305835</requestid>
+  </revision>
 </revisionlist>

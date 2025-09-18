@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 19 22:47:32 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+-  Update to v4.10.0
+  * Rebase on a v6.12.34 kernel
+  * x86_64: enable VIRTIO_GPU
+  * Add TDX support
+
+-------------------------------------------------------------------
 Tue Nov 19 21:49:06 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to v4.5.1

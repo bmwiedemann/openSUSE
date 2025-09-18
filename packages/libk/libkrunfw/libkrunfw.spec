@@ -1,7 +1,7 @@
 #
 # spec file for package libkrunfw
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sev 1
 
-%global kernel linux-6.6.59
+%global kernel linux-6.12.34
 
 %ifnarch x86_64
 %define sev 0
@@ -33,7 +33,7 @@ directly inject those mappings into the guest without any kind of additional \
 work nor processing.
 
 Name:           libkrunfw
-Version:        4.5.1
+Version:        4.10.0
 Release:        0
 Summary:        A dynamic library bundling a Linux kernel in a convenient storage format
 License:        GPL-2.0-only AND LGPL-2.1-only
