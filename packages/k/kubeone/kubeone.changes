@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 18 06:58:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.2:
+  * Bug or Regression
+    - Default canal_iface_regex only for hetzner (#3798,
+      @kubermatic-bot)
+    - Fix Nutanix credentials (#3788, @kubermatic-bot)
+    - Fixes the Hubbele Relay Connection Issues with the Cilium
+      Agent, SSL Connection is fixed by mounting the Server
+      Certificates in the Cilium Agent Container (#3803,
+      @kubermatic-bot)
+    - Make it possible to configure FLANNELD_IFACE (#3792,
+      @kubermatic-bot)
+
+-------------------------------------------------------------------
 Fri Jul 25 04:57:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.1:
