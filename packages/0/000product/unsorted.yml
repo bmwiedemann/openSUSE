@@ -11242,9 +11242,7 @@ unsorted:
   - libQCoro6Qml0 
   - libQCoro6Quick0 
   - libQCoro6WebSockets0 
-  - libQXmppQt5-5 
-  - libQXmppQt5-devel 
-  - libQXmppQt6-5 
+  - libQXmppQt6-6 
   - libQXmppQt6-devel 
   - libQgpsmm31 
   - libQt53DAnimation-devel 
@@ -15154,7 +15152,7 @@ unsorted:
   - libpapi 
   - libpappl1 
   - libparanoia1_0 
-  - libparaview5_13 
+  - libparaview6_0 
   - libpari-gmp-tls9 
   - libparlatype-devel 
   - libparlatype7 
@@ -15645,7 +15643,6 @@ unsorted:
   - libqwt6-qt6-6_3 
   - libqwtplot3d-qt5-0 
   - libqxmledit-0_9_17-0 
-  - libqxmpp-devel 
   - libqxmpp-doc 
   - libqxp-devel 
   - libqxp-doc 
@@ -15877,7 +15874,6 @@ unsorted:
   - librest0_7-devel 
   - libretls-devel 
   - libretls-libtls28 
-  - libretro-gtk-2-0 
   - librevenge-devel 
   - librevenge-doc 
   - librevenge-generators-0_0-0 
@@ -20218,6 +20214,7 @@ unsorted:
   - openSUSE-release-livecd-x11 
   - openSUSE-release-livecd-xfce 
   - openSUSE-release-mini 
+  - openSUSE-release-oem 
   - openSUSE-release-tools 
   - openSUSE-release-tools-abichecker 
   - openSUSE-release-tools-announcer 
@@ -36028,8 +36025,6 @@ unsorted:
   - restic-zsh-completion 
   - restorecond 
   - retext 
-  - retro-gtk 
-  - retro-gtk-devel 
   - retroarch 
   - retry 
   - retsnoop 
@@ -48243,7 +48238,6 @@ unsorted:
   - typelib-1_0-Qmi-1_0 
   - typelib-1_0-Qrtr-1_0 
   - typelib-1_0-Rest-0_7 
-  - typelib-1_0-Retro-2-0 
   - typelib-1_0-RygelCore-2_8 
   - typelib-1_0-RygelRenderer-2_8 
   - typelib-1_0-RygelRendererGst-2_8 

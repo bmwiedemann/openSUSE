@@ -4,7 +4,7 @@
     <product>
       <vendor>openSUSE</vendor>
       <name>openSUSE</name>
-      <version>20250917</version>
+      <version>20250918</version>
       <release>0</release>
 
       <productline>openSUSE</productline>
@@ -235,6 +235,13 @@
            flavor="appliance-custom" 
            mediastyle="tumbleweed"
            name="openSUSE-Tumbleweed-appliance-custom" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="oem" 
+           mediastyle="tumbleweed"
+           name="openSUSE-Tumbleweed-oem" >
        <!-- Create no product media, but a flavor release subpackage -->
     </media>
 
