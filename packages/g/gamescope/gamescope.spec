@@ -71,7 +71,6 @@ BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  glslang-devel
 BuildRequires:  xorg-x11-server-wayland
 BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(freerdp2)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(lcms2)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 17 12:34:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Remove pkgconfig(freerdp2) BuildRequires: there is no mention of
+  freerdp in the source tree on either gamescope or wlroots.
+
+-------------------------------------------------------------------
 Tue Aug 12 14:40:47 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 3.16.15:

@@ -231,4 +231,16 @@ Popular video game compositor, also allows spoofing a virtual screen for compati
 (🤖: Submission of gamescope via https://src.opensuse.org/pool/gamescope/pulls/12 by ateixeira)</comment>
     <requestid>1299103</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>7e98209aff0e6341b8c1201e8a3f7e4b</srcmd5>
+    <version>3.16.15</version>
+    <time>1758222530</time>
+    <user>anag_factory</user>
+    <comment>Remove pkgconfig(freerdp2) BuildRequires:
+
+   There is no mention of freerdp in the source tree on either gamescope or wlroots.
+
+(🤖: Submission of gamescope via https://src.opensuse.org/pool/gamescope/pulls/13 by dirkmueller)</comment>
+    <requestid>1305546</requestid>
+  </revision>
 </revisionlist>
