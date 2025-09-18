@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 18 13:01:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.2:
+  * build(deps): Bump google-github-actions/auth from 2.1.12 to
+    3.0.0 by @dependabot[bot] in #2601
+  * build(deps): Bump github/codeql-action from 3.29.11 to 3.30.0
+    in the all group by @dependabot[bot] in #2602
+  * build(deps): Bump the all group with 3 updates by
+    @dependabot[bot] in #2599
+  * optimize performance of regex operations by @bobcallaway in
+    #2603
+  * move to direct decoding instead of mapstructure by @bobcallaway
+    in #2598
+  * build(deps): Bump github.com/go-openapi/swag from 0.23.1 to
+    0.24.1 by @dependabot[bot] in #2600
+  * build(deps): Bump golang from 1.24.6 to 1.25.0 in the all group
+    by @dependabot[bot] in #2587
+  * process type contents serially by @bobcallaway in #2604
+  * use pubsub client to check IAM permissions by @bobcallaway in
+    #2605
+  * add changelog for v1.4.2 by @bobcallaway in #2606
+
+-------------------------------------------------------------------
 Mon Sep 01 11:06:50 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - Update to version 1.4.1 (jsc#SLE-23476)::

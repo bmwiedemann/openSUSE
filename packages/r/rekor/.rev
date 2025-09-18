@@ -486,4 +486,12 @@
   * return correct error if GetLeafAndProofByHash fails (#2574) (forwarded request 1302193 from msmeissn)</comment>
     <requestid>1302197</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>68b3dd527974078dd51eb8c8a65b8f31</srcmd5>
+    <version>1.4.2</version>
+    <time>1758222726</time>
+    <user>anag_factory</user>
+    <comment>update to 1.4.2 (forwarded request 1305801 from ojkastl_buildservice)</comment>
+    <requestid>1305808</requestid>
+  </revision>
 </revisionlist>
