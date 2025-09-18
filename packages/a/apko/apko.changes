@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:39:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.11:
+  * build(deps): bump step-security/harden-runner from 2.13.0 to
+    2.13.1 (#1855)
+  * build(deps): bump google.golang.org/api from 0.248.0 to 0.249.0
+    (#1850)
+  * build(deps): bump k8s.io/apimachinery from 0.34.0 to 0.34.1
+    (#1854)
+  * build(deps): bump github/codeql-action from 3.30.1 to 3.30.3
+    (#1857)
+
+-------------------------------------------------------------------
+Thu Sep 18 05:38:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.10:
+  * bug-fix: handles usrmerge base image correctly (#1856)
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.37.0 to
+    1.38.0 (#1838)
+  * build(deps): bump golang.org/x/sys from 0.35.0 to 0.36.0
+    (#1847)
+  * build(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+    (#1837)
+  * build(deps): bump actions/setup-go from 5.5.0 to 6.0.0 (#1843)
+  * build(deps): bump github/codeql-action from 3.29.11 to 3.30.1
+    (#1844)
+  * build(deps): bump golang.org/x/time from 0.12.0 to 0.13.0
+    (#1846)
+  * build(deps): bump golang.org/x/sync from 0.16.0 to 0.17.0
+    (#1848)
+  * build(deps): bump golang.org/x/oauth2 from 0.30.0 to 0.31.0
+    (#1849)
+  * build(deps): bump chainguard-dev/actions from 1.4.12 to 1.4.14
+    (#1845)
+
+-------------------------------------------------------------------
+Thu Sep 18 05:35:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.9:
+  * Update release.md to use release workflow (#1842)
+
+-------------------------------------------------------------------
+Thu Sep 18 05:32:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.8:
+  * Reduce the log noise from auto-auth failures. (#1835)
+  * build(deps): bump k8s.io/apimachinery from 0.33.4 to 0.34.0
+    (#1833)
+  * build(deps): bump github.com/u-root/u-root from 0.14.0 to
+    0.15.0 (#1828)
+
+-------------------------------------------------------------------
 Tue Sep 02 05:39:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.7:
