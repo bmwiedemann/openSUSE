@@ -1,7 +1,7 @@
 #
 # spec file for package argocd-autopilot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           argocd-autopilot
-Version:        0.4.19
+Version:        0.4.20
 Release:        0
 Summary:        Opinionated way of installing Argo-CD
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         argocd-autopilot-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 New users to GitOps and Argo CD are not often sure how they should structure
