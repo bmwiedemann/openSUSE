@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 18 10:39:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.14.0:
+  * Remove tests for k8s <= 1.26
+  * fix tests
+  * Update dependencies
+
+-------------------------------------------------------------------
+Thu Sep 18 10:29:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.13.0:
+  * Added unit tests
+  * Implement GVR filtering
+
+-------------------------------------------------------------------
 Wed Apr 09 04:48:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.12.0:
