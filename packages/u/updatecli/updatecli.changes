@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:43:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.107.0:
+  * Changes
+    - chore: test project telemetry using Scarf.io @olblak (#5972)
+  * Features
+    - feat: Allow to use regex in Golang module matchingRule
+      @olblak (#5986)
+    - feat(file,golang): improve changelog generation with capture
+      groups @ryancurrah (#5987)
+    - feat(golang): support replace instruction in Go mod file
+      @olblak (#5963)
+  * Bug Fixes
+    - fix: helm changelog capitalize function @olblak (#5955)
+  * Maintenance
+    - deps(go): bump module github.com/spf13/cobra to v1.10.1
+      @updateclibot[bot] (#5988)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#5995)
+    - deps: Bump Golang version to 1.25.1 @updateclibot[bot]
+      (#5964)
+    - deps(go): bump module github.com/moby/buildkit to v0.24.0
+      @updateclibot[bot] (#5962)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#5952)
+
+-------------------------------------------------------------------
 Thu Aug 28 05:10:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.106.0:
