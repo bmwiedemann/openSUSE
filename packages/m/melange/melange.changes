@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:37:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.4:
+  * Update README.md (#1888)
+  * fix(user accounts): don't crash if user without gid is
+    specified
+  * Qemu runner: debug initial connection (#2154)
+
+-------------------------------------------------------------------
+Thu Sep 18 05:35:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.3:
+  * sca: fix SCA for go-fips-1.25 (#2153)
+  * docs/BUILD-FILE.md: improve formatting
+  * docs/BUILD-FILE.md: expand information about enviroments
+  * docs/BUILD-FILE.md: add information about defining accounts
+  * e2e-tests: add check for default user in builds/tests
+  * qemu runner: add control connection on ssh build port
+  * qemu runner: rename SSH connection info
+  * bubblewrap: when running as custom UID, use corrsponding GID
+  * tests: add checks for run-as root and non-root users
+
+-------------------------------------------------------------------
+Thu Sep 18 05:32:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.2:
+  * qemu runner: strip newline from kernel version (#2149)
+  * qemu runner: report kernel version (#2132)
+  * chore: bump apko to v0.30.8 (#2148)
+  * Propagate environment between uses and pipelines (#2139)
+  * pipelines/go/build: Add ignore-untracked-files to prevent some
+    +dirty builds (#2146)
+
+-------------------------------------------------------------------
 Tue Sep 02 05:39:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.31.1:
