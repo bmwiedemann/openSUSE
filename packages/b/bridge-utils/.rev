@@ -237,4 +237,12 @@ as for the header file and lib, it's always been packaged into the bridge-utils 
     <comment></comment>
     <requestid>1149288</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>401ea4268b568e5730f4ce143a16aaab</srcmd5>
+    <version>1.7.1</version>
+    <time>1758222558</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1305593</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 11 00:06:43 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Provide support for bridge-utils-dummy (bsc#1242048).
+
+-------------------------------------------------------------------
 Thu Feb 22 10:14:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

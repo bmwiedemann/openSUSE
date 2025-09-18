@@ -1,7 +1,7 @@
 #
 # spec file for package bridge-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Patch1:         %{name}-1.5-optflags.patch
 Patch2:         bridge-utils-1.5-ip6.patch
 BuildRequires:  automake
 BuildRequires:  libsysfs
+Obsoletes:      %{name}-dummy
 
 %description
 This package contains utilities for configuring the Linux ethernet
