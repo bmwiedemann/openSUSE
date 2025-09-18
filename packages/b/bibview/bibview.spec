@@ -1,7 +1,7 @@
 #
 # spec file for package bibview
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ Group:          Productivity/Publishing/TeX/Utilities
 Source:         bibview-2.2.tar.gz
 Patch0:         bibview-2.2.dif
 Patch1:         bibview-C99.dif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define _x11data    %{_datadir}/X11
 %define _appdefdir  %{_x11data}/app-defaults
 
@@ -45,14 +44,19 @@ manipulated, created, and searched.
 %build
     CFLAGS="%{optflags} --std=gnu99 $(getconf LFS_CFLAGS)"
     xmkmf -a
-    make XAWLIB=-lXaw3d %{?_smp_mflags} CFLAGS="$CFLAGS"
+    make XAWLIB=-lXaw3d %{?_smp_mflags} CFLAGS="$CFLAGS" \
+	MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
 
 %install
-    make DESTDIR=%{buildroot} install
-    make DESTDIR=%{buildroot} install.man
+    make DESTDIR=%{buildroot} install \
+	MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
+    make DESTDIR=%{buildroot} install.man \
+	MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
     mkdir -p %{buildroot}%{_x11data}/de/app-defaults
     install -c -m 0444 BibView.ger.ad   %{buildroot}%{_x11data}/de/app-defaults/BibView
     install -c -m 0444 BibView-color.ad %{buildroot}%{_x11data}/de/app-defaults/BibView-color
+    rm -r %{buildroot}/etc
+    rm -r %{buildroot}/usr/lib/X11
 
 %files
 %defattr(-,root,root,755)

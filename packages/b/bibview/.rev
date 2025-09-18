@@ -160,4 +160,12 @@ the package is ready when we switch the default compiler.  Thanks. (forwarded re
     <comment>- Make it build again</comment>
     <requestid>1286062</requestid>
   </revision>
+  <revision rev="23" vrev="1013">
+    <srcmd5>ef857f4d15ab93d719b857c582484e10</srcmd5>
+    <version>2.2</version>
+    <time>1758222674</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1305703</requestid>
+  </revision>
 </revisionlist>
