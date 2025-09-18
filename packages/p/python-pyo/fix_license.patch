@@ -1,0 +1,32 @@
+From 0fec2cc45aba7aa085a4eba6d58adb619db023e9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Tue, 20 May 2025 15:18:54 +0000
+Subject: [PATCH] fix: correct lincese indication per standard
+
+References: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license
+---
+ pyproject.toml |    4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+Index: pyo-1.0.6/pyproject.toml
+===================================================================
+--- pyo-1.0.6.orig/pyproject.toml	2025-03-04 13:41:38.000000000 +0100
++++ pyo-1.0.6/pyproject.toml	2025-09-17 19:50:52.351458283 +0200
+@@ -10,7 +10,7 @@
+ readme = "README.md"
+ requires-python = ">=3.9, <4"
+ keywords = ["audio", "sound", "dsp", "synthesis", "signal-processing", "music"]
+-license = {text = "LGPLv3+"}
++license = "LGPL-3.0-or-later"
+ classifiers = [
+     # How mature is this project? Common values are
+     #   3 - Alpha
+@@ -26,8 +26,6 @@
+     "Operating System :: MacOS :: MacOS X",
+     "Operating System :: Microsoft :: Windows",
+     "Operating System :: POSIX :: Linux",
+-    # Pick your license as you wish (should match "license" above)
+-    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+     # Topics
+     "Topic :: Multimedia :: Sound/Audio",
+     "Topic :: Multimedia :: Sound/Audio :: Analysis",

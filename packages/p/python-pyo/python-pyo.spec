@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,16 +23,21 @@
 %endif
 
 Name:           python-pyo
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Python digital signal processing module
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            http://ajaxsoundstudio.com/software/pyo/
-Source:         https://files.pythonhosted.org/packages/source/p/pyo/pyo-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/belangeo/pyo/master/LICENSE
-# PATCH-FIX-UPSTREAM - Fix multiple incorrect declarations and signatures of callback functions
-Patch:          https://github.com/belangeo/pyo/pull/277.patch
+# Source:         https://files.pythonhosted.org/packages/source/p/pyo/pyo-%%{version}.tar.gz
+Source:         https://github.com/belangeo/pyo/archive/refs/tags/%{version}.tar.gz#/pyo-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_license.patch gh#belangeo/pyo!302 mcepl@suse.com
+# correct lincese indication per standard
+# https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license
+Patch0:         fix_license.patch
+# PATCH-FIX-UPSTREAM rpm_build.patch gh#belangeo/pyo#288 mcepl@suse.com
+# fix building errors, submitted as gh#belangeo/pyo!313
+Patch1:         rpm_build.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -64,13 +69,12 @@ PYO is a Python module written in C to help digital signal processing
 script creation.
 
 %prep
-%setup -q -n pyo-%{version}
-%autopatch -p1
-cp %{SOURCE1} .
+%autosetup -p1 -n pyo-%{version}
 
 %build
 export CFLAGS="%{optflags}"
-%{pyproject_wheel -C "--build-option=--use-jack" -C "--build-option=--use-double" .}
+export PIP_CONFIG_SETTINGS="--build-option=--use-jack --use-double"
+%pyproject_wheel
 
 %install
 %pyproject_install

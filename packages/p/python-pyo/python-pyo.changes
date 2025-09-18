@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 17 07:06:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.0.6:
+  - Updated documentation
+  - Fixed stdout overrides (issue #261)
+  - Clip MIDI input in midiToHz and MToF, and make NoteinRec doc more acc…
+  - Fixed Linseg and Expseg accuracy (issue #264).
+  - replace deprecated mock by unittest.mock
+  - Fix lo_blob and lo_message types
+  - Expr: Added a third argument to let statement to be able to set an in…
+  - Use libsnfile to retrieve aiff markers instead of the deprecated aifc…
+  - Update manylinux script.
+  - Updated libsndfile version in manylinux build.
+  - Updated SfMarker objects documentation.
+  - Fixed warning in vbap function signature.
+  - Removed unused variable in vbap implementation.
+- Remove upstreamed patches:
+  - 277.patch
+  - LICENSE file
+- Add rpm_build.patch to remove building errors.
+  - rpm_build.patch (gh#belangeo/pyo!313)
+  - fix_license.patch (gh#belangeo/pyo!302)
+
+-------------------------------------------------------------------
 Wed May 21 07:28:23 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use libalternatives

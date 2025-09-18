@@ -81,4 +81,31 @@
 - Switch building to use of PEP517 backend.</comment>
     <requestid>1278976</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8263ef87b2f6a1423c249dd275e30d99</srcmd5>
+    <version>1.0.6</version>
+    <time>1758222549</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.6:
+  - Updated documentation
+  - Fixed stdout overrides (issue #261)
+  - Clip MIDI input in midiToHz and MToF, and make NoteinRec doc more acc…
+  - Fixed Linseg and Expseg accuracy (issue #264).
+  - replace deprecated mock by unittest.mock
+  - Fix lo_blob and lo_message types
+  - Expr: Added a third argument to let statement to be able to set an in…
+  - Use libsnfile to retrieve aiff markers instead of the deprecated aifc…
+  - Update manylinux script.
+  - Updated libsndfile version in manylinux build.
+  - Updated SfMarker objects documentation.
+  - Fixed warning in vbap function signature.
+  - Removed unused variable in vbap implementation.
+- Remove upstreamed patches:
+  - 277.patch
+  - LICENSE file
+- Add rpm_build.patch to remove building errors.
+  - rpm_build.patch (gh#belangeo/pyo!313)
+  - fix_license.patch (gh#belangeo/pyo!302)</comment>
+    <requestid>1305580</requestid>
+  </revision>
 </revisionlist>
