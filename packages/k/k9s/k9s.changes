@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 18 07:29:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.10:
+  * Resolved Issues
+    - #3541 ServiceAccount RBAC Rules not displayed if RoleBinding
+      subject doesn't specify namespace
+    - #3535 Current Release process will cause code changes been
+      reverted
+    - #3525 k9s suspends when launching foreground plugin
+    - #3495 Regression: filtering no long works with aliases
+    - #3478 High Disk and CPU usage when imageScans Is enabled in
+      K9s
+    - #3470 Aliases for pods with unequal (!=) label filters not
+      working
+    - #3466 Shared GPU (nvidia.com/gpu.shared) is shown as n/a on
+      K9s node view
+    - #3455 memory command not found
+
+-------------------------------------------------------------------
 Thu Jul 17 05:52:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.9:
