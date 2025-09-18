@@ -1,7 +1,7 @@
 #
 # spec file for package cilium-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name cilium
 
 Name:           cilium-cli
-Version:        0.18.6
+Version:        0.18.7
 Release:        0
 Summary:        CLI to install, manage & troubleshoot Kubernetes clusters running Cilium
 License:        Apache-2.0
@@ -30,8 +30,8 @@ Source1:        vendor.tar.gz
 Source11:       https://raw.githubusercontent.com/cilium/cilium/main/stable.txt
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 CLI to install, manage and troubleshoot Kubernetes clusters running Cilium
