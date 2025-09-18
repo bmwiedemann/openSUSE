@@ -1,7 +1,7 @@
 #
 # spec file for package python-panel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,9 @@
 %bcond_with servertests
 
 # truncate trailing suffix
-%define distversion 1.7.1
+%define distversion 1.8.1
 Name:           python-panel%{psuffix}
-Version:        1.7.1
+Version:        1.8.1
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -50,14 +50,13 @@ Source99:       python-panel-rpmlintrc
 # PATCH-FEATURE-OPENSUSE opensuse-js-fixes.patch boo#1231254 gh#openSUSE/obs-service-node_modules#41
 Patch0:         opensuse-js-fixes.patch
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module bokeh >= 3.5.0 with %python-bokeh < 3.7}
+BuildRequires:  %{python_module bokeh >= 3.7.0 with %python-bokeh < 3.9}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module param >= 2.1.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyviz-comms >= 2.0.0}
+BuildRequires:  %{python_module pyviz_comms >= 0.7.4}
 BuildRequires:  %{python_module requests}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
@@ -74,7 +73,7 @@ Requires:       python-pyviz_comms >= 2.0.0
 Requires:       python-requests
 Requires:       python-tqdm
 Requires:       python-typing_extensions
-Requires:       (python-bokeh >= 3.5.0 with python-bokeh < 3.7)
+Requires:       (python-bokeh >= 3.7.0 with python-bokeh < 3.9)
 Requires:       (python-param >= 2.1 with python-param < 3)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
