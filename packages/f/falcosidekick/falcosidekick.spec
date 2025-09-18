@@ -1,7 +1,7 @@
 #
 # spec file for package falcosidekick
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           falcosidekick
-Version:        2.31.1
+Version:        2.32.0
 Release:        0
 Summary:        A simple daemon for connecting Falco to your ecosystem
 License:        Apache-2.0
