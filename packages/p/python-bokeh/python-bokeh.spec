@@ -1,7 +1,7 @@
 #
 # spec file for package python-bokeh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bokeh%{psuffix}
-Version:        3.6.2
+Version:        3.8.0
 Release:        0
 Summary:        Interactive plots and applications in the browser from Python
 License:        BSD-3-Clause
@@ -43,27 +43,19 @@ Source0:        https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{v
 Source1:        https://github.com/bokeh/bokeh/archive/refs/tags/%{version}.tar.gz#/bokeh-%{version}-gh.tar.gz
 # Only present in the GH tarball, not extracted during non-test builds
 Source2:        https://raw.githubusercontent.com/bokeh/bokeh/%{version}/docs/CHANGELOG
-BuildRequires:  %{python_module Jinja2 >= 2.9}
-BuildRequires:  %{python_module Pillow >= 7.1.0}
-BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module colorama}
-BuildRequires:  %{python_module contourpy >= 1.2}
-BuildRequires:  %{python_module numpy >= 1.16}
-BuildRequires:  %{python_module packaging >= 16.8}
-BuildRequires:  %{python_module pandas >= 1.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git-versioning}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tornado >= 6.2}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module xyzservices >= 2021.9.1 }
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.9
 Requires:       python-Pillow >= 7.1.0
 Requires:       python-PyYAML >= 3.10
 Requires:       python-contourpy >= 1.2
+Requires:       python-narwhals >= 1.13
 Requires:       python-numpy >= 1.16
 Requires:       python-packaging >= 16.8
 Requires:       python-pandas >= 1.2
