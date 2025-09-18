@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Sep 16 13:22:56 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.61.0:
+  * Apply additional X509 validation checks on certificates sourced from trust store
+  * Reorganizing compatibility tests, rework certificates for better groking
+  * Additional X.509 Behavior Compatibility Tests
+  * Add Support for IPv4 and IPv6 X.509 Certificate Name Constraints
+  * Merge main to x509
+  * Reintroduce support for validating DNS commonName subjects when name constraints are present.
+  * Support client-side hostname checks with leading .
+  * Verify leaf certificate public key rather then leaving it to the caller
+  * Support for explicit curve parameter on EC public keys where parameters match supported curves
+  * Add x86 Keccak implementation
+  * Gate EC explicit curve parameters for X.509 behind flag
+  * Update CPU Jitter Entropy dependency to version 3.6.3
+  * Fix benchmarking issues with FIPS main
+  * Add standalone MLKEM supported groups
+  * Document and statically assert counters can't overflow
+  * TLS Transfer Serialization Improvements
+  * Fix ternary operator in github workflow
+  * Merge x509 branch into main
+  * Address clang-ci comments on new x509 code
+  * Implement snapsafe fallback entropy source
+  * Rand small fixes
+  * Import s2n-bignum 2025-09-05-04
+  * Refactor iOS CI script
+  * Re-import mlkem-native for addition of CFI directives
+  * Fix typo in ssl_transfer_asn1
+  * Fix for zig build
+  * Update SSLProxy patch
+  * ML-DSA service indicator
+  * Add aes-xts AArch64 implementation that will eventually be imported from s2n-bignum.
+  * Fix Keccak MY_ASSEMBLER_IS_TOO_OLD_FOR_512AVX flag
+  * Increase SSLBuffer size to INT_MAX
+  * Wrap compiler when FIPS w/ clang v20+
+  * Test ACCP in FIPS mode as well as non-FIPS
+  * fix: Allow zero-length passwords in PEM key decryption
+  * Use CheckCCompilerFlag to test -Wno-cast-function-type
+  * Make X509 CodeBuild webhook more resilient
+- update to version 1.60.0:
+  * Anchor CodeBuild account-id patterns
+  * Implement read/write timeouts for BIO datagram
+  * Migrate from CodeBuild account actor filter to pull request comment filter
+    based on GitHub permissions
+  * Implement ragdoll
+  * Add expandedKey ASN.1 encoding for KEM keys
+
+-------------------------------------------------------------------
 Fri Aug 29 11:30:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.59.0:

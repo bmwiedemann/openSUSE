@@ -117,4 +117,41 @@
   * Add CFI directives in md5-armv8.pl (forwarded request 1301924 from rrahl0)</comment>
     <requestid>1301925</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fff2a7225de187166999761ba024b982</srcmd5>
+    <version>1.61.0</version>
+    <time>1758222497</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.61.0:
+  * Apply additional X509 validation checks on certificates sourced from trust store
+  * Reorganizing compatibility tests, rework certificates for better groking
+  * Additional X.509 Behavior Compatibility Tests
+  * Add Support for IPv4 and IPv6 X.509 Certificate Name Constraints
+  * Merge main to x509
+  * Reintroduce support for validating DNS commonName subjects when name constraints are present.
+  * Support client-side hostname checks with leading .
+  * Verify leaf certificate public key rather then leaving it to the caller
+  * Support for explicit curve parameter on EC public keys where parameters match supported curves
+  * Add x86 Keccak implementation
+  * Gate EC explicit curve parameters for X.509 behind flag
+  * Update CPU Jitter Entropy dependency to version 3.6.3
+  * Fix benchmarking issues with FIPS main
+  * Add standalone MLKEM supported groups
+  * Document and statically assert counters can't overflow
+  * TLS Transfer Serialization Improvements
+  * Fix ternary operator in github workflow
+  * Merge x509 branch into main
+  * Address clang-ci comments on new x509 code
+  * Implement snapsafe fallback entropy source
+  * Rand small fixes
+  * Import s2n-bignum 2025-09-05-04
+  * Refactor iOS CI script
+  * Re-import mlkem-native for addition of CFI directives
+  * Fix typo in ssl_transfer_asn1
+  * Fix for zig build
+  * Update SSLProxy patch
+  * ML-DSA service indicator
+  * Add aes-xts AArch64 implementation that will eventually be imported from s2n-bignum. (forwarded request 1305212 from rrahl0)</comment>
+    <requestid>1305213</requestid>
+  </revision>
 </revisionlist>
