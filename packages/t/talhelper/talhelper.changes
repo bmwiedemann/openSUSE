@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:06:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.35:
+  * docs: update CLI reference documentation (#1193)
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.8.4
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.34.1
+  * chore(deps): update dependency siderolabs/talos to v1.11.1
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.11.1
+  * fix(deps): update module golang.org/x/mod to v0.28.0
+  * feat(nix): this needs to be update too
+  * feat(flake): update go to 1.25.0
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.12.0-alpha.0
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.11
+  * fix(deps): update module github.com/gookit/validate to v1.5.6
+  * chore(schema): update talos-extensions.yaml JSON schema (#1184)
+  * chore(container)!: Update mcr.microsoft.com/devcontainers/go
+    Docker tag to v2
+  * chore(github-action)!: Update actions/setup-go action to v6
+  * chore(schema): update talos-extensions.yaml JSON schema (#1183)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1181)
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:1.24-bookworm docker digest
+    to 1fbd360 (#1178)
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.12.0
+  * feat: add 1.12 to supported-version
+  * chore(schema): update talos-extensions.yaml JSON schema (#1176)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.34
+  * feat: update Scoop for talhelper version v3.0.34
+  * feat: update flake (#1173)
+
+-------------------------------------------------------------------
 Tue Sep 02 05:54:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.34:
