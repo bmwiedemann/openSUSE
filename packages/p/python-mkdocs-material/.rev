@@ -757,4 +757,14 @@ update to 9.5.26</comment>
     <comment></comment>
     <requestid>1301191</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>7276c793463fdd615c02598136030bdc</srcmd5>
+    <version>9.6.20</version>
+    <time>1758222696</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1305704 from ojkastl_buildservice
+
+update to 9.6.20</comment>
+    <requestid>1305751</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
-Version:        9.6.18
+Version:        9.6.20
 Release:        0
 Summary:        Material theme for mkdocs
 License:        MIT
@@ -43,7 +43,7 @@ BuildRequires:  %{python_module trove-classifiers >= 2023.10.18}
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L21
 BuildRequires:  %{python_module Jinja2 >= 3.1}
 BuildRequires:  %{python_module Markdown >= 3.4}
-BuildRequires:  %{python_module mkdocs >= 1.5.3 with %python-mkdocs < 2}
+BuildRequires:  %{python_module mkdocs >= 1.6 with %python-mkdocs < 2}
 BuildRequires:  %{python_module mkdocs-material-extensions >= 1.3}
 BuildRequires:  %{python_module pygments >= 2.16}
 BuildRequires:  %{python_module pymdown-extensions >= 10.3}
@@ -67,7 +67,7 @@ Requires:       python-Markdown >= 3.4
 Requires:       python-mkdocs-material-extensions >= 1.1
 Requires:       python-pygments >= 2.16
 Requires:       python-pymdown-extensions >= 10.3
-Requires:       (python-mkdocs >= 1.5.3 with python-mkdocs < 2)
+Requires:       (python-mkdocs >= 1.6 with python-mkdocs < 2)
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L36
 # Temporarily pin click until this is resolved in MkDocs, see
 # https://github.com/mkdocs/mkdocs/issues/4014#issuecomment-3146508306
