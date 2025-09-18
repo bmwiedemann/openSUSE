@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Sep 18 13:33:58 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- Update to version 2.6.0:
+  - Require exclusively a SigningConfig or service URLs when signing (#4403)
+  - Add a terminal spinner while signing with sigstore-go (#4402)
+  - Bump sigstore-go, support alternative hash algorithms with keys (#4386)
+  - Add support for SigningConfig in sign/attest (#4371)
+  - Support self-managed keys when signing with sigstore-go (#4368)
+  - Remove SHA256 assumption in sign-blob/verify-blob (#4050)
+  - introduce dockerfile to pin the go version to decouple go version from go.mod (#4369)
+  - refactor: extract function to write referrer attestations (#4357)
+  - Break import cycle with e2e build tag (#4370)
+  - Update conformance test binary for signing config (#4367)
+  - update builder image to use go1.25 (#4366)
+  - Don't load content from TUF if trusted root path is specified (#4347)
+  - Don't require timestamps when verifying with a key (#4337)
+  - Fixes to cosign sign / verify for the new bundle format (#4346)
+  - update builder to use go1.24.6 (#4334)
+  - bump golangci-lint to v2.3.x (#4333)
+  - Have cosign sign support bundle format (#4316)
+  - Add support for SigningConfig for sign-blob/attest-blob, support Rekor v2 (#4319)
+  - Verify subject with bundle only when checking claims (#4320)
+  - Add to `attest-blob` the ability to supply a complete in-toto statement, and add to `verify-blob-attestation` the ability to verify with just a digest (#4306)
+
+-------------------------------------------------------------------
 Fri Jul 18 11:54:31 UTC 2025 - meissner@suse.com
 
 - Update to version 2.5.3 (jsc#SLE-23879)
