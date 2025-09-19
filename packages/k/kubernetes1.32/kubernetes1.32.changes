@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 18 13:55:40 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.9:
+  * Fix missing control plane health check timeout
+  * Bump images, dependencies and versions to go 1.23.12 and distroless iptables
+  * Mask Linux thermal interrupt info in /proc and /sys.
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.23.12`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.32.9/build/dependencies.yaml#L117-L119
+
+- Exclude build for Arch: armv6 armv7, bsc#1188544
+
+- wrap kubernetes (server- and client-)side components in if/else conditionals, such that:
+  On openSUSE build all (no PIE on s390x), elsewhere build only kubectl (no PIE on s390x).
+
+-------------------------------------------------------------------
 Thu Aug 14 08:24:51 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.32.8:

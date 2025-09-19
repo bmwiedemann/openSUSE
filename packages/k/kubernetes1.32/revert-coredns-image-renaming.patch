@@ -7,10 +7,10 @@ Subject: [PATCH] Patch openSUSE revert coredns image renaming
  cmd/kubeadm/app/images/images.go | 5 -----
  1 file changed, 5 deletions(-)
 
-Index: kubernetes-1.31.0/cmd/kubeadm/app/images/images.go
+Index: kubernetes-1.32.9/cmd/kubeadm/app/images/images.go
 ===================================================================
---- kubernetes-1.31.0.orig/cmd/kubeadm/app/images/images.go
-+++ kubernetes-1.31.0/cmd/kubeadm/app/images/images.go
+--- kubernetes-1.32.9.orig/cmd/kubeadm/app/images/images.go
++++ kubernetes-1.32.9/cmd/kubeadm/app/images/images.go
 @@ -22,7 +22,6 @@ import (
  	"k8s.io/klog/v2"
  
