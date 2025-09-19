@@ -1295,4 +1295,13 @@
   to get formats created and xmlto runing again (boo#1248830)</comment>
     <requestid>1302358</requestid>
   </revision>
+  <revision rev="108" vrev="111">
+    <srcmd5>18f7f579b868f30407426a71d8a4c8ab</srcmd5>
+    <version>unknown</version>
+    <time>1758288807</time>
+    <user>anag_factory</user>
+    <comment>- Add boost2.dif 
+  * Make texlive build with boost 1.89 (boo#1249956)</comment>
+    <requestid>1305693</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,6 @@
 #
 # spec file for package texlive
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -151,7 +150,6 @@ BuildRequires:  libboost_thread1_75_0-devel
 %else
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 %endif
 BuildRequires:  libjpeg-devel
@@ -308,6 +306,8 @@ Patch50:        luametatex.dif
 Patch62:        source-psutils-kpathsea.dif
 # fix build with boost 1.88
 Patch70:        boost.dif
+# fix build with boost 1.89
+Patch71:        boost2.dif
 # Missed luajit fix for ppc/ppc64/ppc64le and riscv64
 Prefix:         %{_bindir}
 
@@ -4459,6 +4459,7 @@ rm -vf t/*.fastsort
 popd
 %endif
 %patch -P70 -p0
+%patch -P71 -p0
 
 %patch -P62 -p0 -b .kpserr
 

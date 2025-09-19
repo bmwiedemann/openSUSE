@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 18 07:17:29 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add boost2.dif 
+  * Make texlive build with boost 1.89 (boo#1249956)
+
+-------------------------------------------------------------------
 Tue Sep  2 07:37:00 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Increase pool_size and pool_free for both xmltex and pdfxmltex
