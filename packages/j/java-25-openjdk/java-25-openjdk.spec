@@ -1,7 +1,7 @@
 #
 # spec file for package java-25-openjdk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -160,6 +160,7 @@ Patch12:        reproducible-jlink.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
 Patch15:        system-pcsclite.patch
+Patch16:        fips.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
@@ -392,6 +393,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %if %{with_system_pcsc}
 %patch -P 15 -p1
 %endif
+
+%patch -P 16 -p1
 
 %patch -P 20 -p1
 
@@ -828,7 +831,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libprefs.so
 %{_jvmdir}/%{sdkdir}/lib/librmi.so
 %{_jvmdir}/%{sdkdir}/lib/libsctp.so
-#{_jvmdir}/%{sdkdir}/lib/libsystemconf.so
+%{_jvmdir}/%{sdkdir}/lib/libsystemconf.so
 %ifarch x86_64
 %{_jvmdir}/%{sdkdir}/lib/libjsvml.so
 %{_jvmdir}/%{sdkdir}/lib/libsimdsort.so
@@ -849,7 +852,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/*/classes*.jsa
 
 %config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blocked.certs
-#config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.fips.cfg
+%config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.fips.cfg
 #{_jvmdir}/%{sdkdir}/lib/security/default.policy
 %{_jvmdir}/%{sdkdir}/lib/security/public_suffix_list.dat
 

@@ -1,5 +1,6 @@
 <package name="java-25-openjdk" project="openSUSE:Factory">
   <title>java-25-openjdk</title>
   <description>The OpenJDK 25 runtime environment.</description>
+  <devel project="Java:Factory" package="java-25-openjdk"/>
   <url>https://openjdk.java.net/</url>
 </package>

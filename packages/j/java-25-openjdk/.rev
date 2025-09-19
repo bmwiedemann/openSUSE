@@ -7,4 +7,12 @@
     <comment>OpenJDK 25 should be released today</comment>
     <requestid>1305135</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4be916732a30c7b60bf0e0aa09ae13bb</srcmd5>
+    <version>25.0.0.0</version>
+    <time>1758294647</time>
+    <user>anag_factory</user>
+    <comment>add fips support</comment>
+    <requestid>1305989</requestid>
+  </revision>
 </revisionlist>
