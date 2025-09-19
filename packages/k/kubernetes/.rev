@@ -1153,4 +1153,22 @@ fix source validator errors (date: invalid date ‘ Tue Nov 26 11:10:35 UTC 2019
   * kubernetes (versionminus2) - 1.31.12</comment>
     <requestid>1299399</requestid>
   </revision>
+  <revision rev="119" vrev="59">
+    <srcmd5>b73e6c4452a7cee347d7c7f884e0dcbc</srcmd5>
+    <version>unknown</version>
+    <time>1758288825</time>
+    <user>anag_factory</user>
+    <comment>- Bump meta package versions:
+* kubernetes (baseversion) - 1.34
+* kubernetes (version) - 1.34.1
+* kubernetes (baseversionminus1) - 1.33
+* kubernetes (versionminus1) - 1.33.5
+* kubernetes (baseversionminus2) - 1.32
+* kubernetes (versionminus2) - 1.32.9
+* kubernetes (baseversionminus3) - 1.31
+* kubernetes (versionminus3) - 1.31.13
+* Etcd (etcdversion) - 3.6.4
+* Etcd (etcdversionminus1) – 3.5.21</comment>
+    <requestid>1305871</requestid>
+  </revision>
 </revisionlist>
