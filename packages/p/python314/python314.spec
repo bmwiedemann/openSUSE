@@ -162,8 +162,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.0~rc2
-%define         tarversion 3.14.0rc2
+Version:        3.14.0~rc3
+%define         tarversion 3.14.0rc3
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -745,6 +745,7 @@ do
 done
 
 # Idle is not packaged in base due to the appstream-glib dependency
+# and even more because of the dependency on tkinter and thus Tcl/Tk
 # move idle config into /etc
 install -d -m 755 %{buildroot}%{_sysconfdir}/idle%{python_abi}
 (

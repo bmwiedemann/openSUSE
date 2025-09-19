@@ -2509,4 +2509,94 @@
   (bsc#1244680, gh#python/cpython#138131)</comment>
     <requestid>1304274</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>10196ce495ef381517c18230032db43f</srcmd5>
+    <version>3.14.0~rc3</version>
+    <time>1758288830</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.14.0~rc3:
+  - Tools/Demos
+    - gh-137873: The iOS test runner has been simplified,
+      resolving some issues that have been observed using
+      the runner in GitHub Actions and Azure Pipelines test
+      environments.
+  - Security
+    - gh-135661: Fix CDATA section parsing in
+      html.parser.HTMLParser according to the HTML5 standard: ]
+      ]&gt; and ]] &gt; no longer end the CDATA section. Add private
+      method _set_support_cdata() which can be used to specify
+      how to parse &lt;[CDATA[ — as a CDATA section in foreign
+      content (SVG or MathML) or as a bogus comment in the HTML
+      namespace.
+  - Library
+    - gh-138998: Update bundled libexpat to 2.7.2
+    - gh-118803: Add back collections.abc.ByteString and
+      typing.ByteString. Both had been removed in prior alpha,
+      beta and release candidates for Python 3.14, but their
+      removal has now been postponed to Python 3.17.
+    - gh-137226: Fix typing.get_type_hints() calls on generic
+      typing.TypedDict classes defined with string annotations.
+    - gh-138804: Raise TypeError instead of AttributeError when
+      an argument of incorrect type is passed to shlex.quote().
+      This restores the behavior of the function prior to 3.14.
+    - gh-128636: Fix crash in PyREPL when os.environ is
+      overwritten with an invalid value for mac
+    - gh-138514: Raise ValueError when a multi-character string
+      is passed to the echo_char parameter of getpass.getpass().
+      Patch by Benjamin Johnson.
+    - gh-138515: email is added to Emscripten build.
+    - gh-99948: ctypes.util.find_library() now works in
+      Emscripten build.
+    - gh-138253: Add the block parameter in the put() and
+      get() methods of the concurrent.interpreters queues for
+      compatibility with the queue.Queue interface.
+    - gh-138133: Prevent infinite traceback loop when sending
+      CTRL^C to Python through strace.
+    - gh-134869: Fix an issue where pressing Ctrl+C during tab
+      completion in the REPL would leave the autocompletion menu
+      in a corrupted state.
+    - gh-90548: Fix musl detection for platform.libc_ver() on
+      Alpine Linux if compiled with –strip-all.
+    - gh-136134: SMTP.auth_cram_md5() now raises an SMTPException
+      instead of a ValueError if Python has been built without
+      MD5 support. In particular, SMTP clients will not attempt
+      to use this method even if the remote server is assumed to
+      support it. Patch by Bénédikt Tran.
+    - gh-136134: IMAP4.login_cram_md5 now raises an IMAP4.error
+      if CRAM-MD5 authentication is not supported. Patch by
+      Bénédikt Tran.
+    - gh-134953: Expand _colorize theme with keyword_constant and
+      implement in repl.
+  - Core and Builtins
+    - gh-71810: Raise OverflowError for (-1).to_bytes() for
+      signed conversions when bytes count is zero. Patch by
+      Sergey B Kirpichev.
+    - gh-138192: Fix contextvars initialization so that all
+      subinterpreters are assigned the MISSING value.
+    - gh-138479: Fix a crash when a generic object’s
+      __typing_subst__ returns an object that isn’t a tuple.
+    - gh-138372: Fix SyntaxWarning emitted for erroneous
+      subscript expressions involving template string literals.
+      Patch by Brian Schubert.
+    - gh-138318: The default REPL now avoids highlighting
+      built-in names (for instance set or format()) when they
+      are used as attribute names (for instance in value.set or
+      text.format).
+    - gh-138349: Fix crash in certain cases where a module
+      contains both a module-level annotation and a
+      comprehension.
+    - gh-137384: Fix a crash when using the warnings module in a
+      finalizer at shutdown. Patch by Kumar Aditya.
+    - gh-137883: Fix runaway recursion when calling a function
+      with keyword arguments.
+    - gh-137079: Fix keyword typo recognition when parsing files.
+      Patch by Pablo Galindo.
+    - gh-137728: Fix the JIT’s handling of many local variables.
+      This previously caused a segfault.
+    - gh-137576: Fix for incorrect source code being shown in
+      tracebacks from the Basic REPL when PYTHONSTARTUP is given.
+      Patch by Adam Hartz.
+</comment>
+    <requestid>1305881</requestid>
+  </revision>
 </revisionlist>
