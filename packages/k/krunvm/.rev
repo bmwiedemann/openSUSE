@@ -93,4 +93,31 @@
     <comment></comment>
     <requestid>1103276</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5b3033a433ca90dcf1fc4c44af68999e</srcmd5>
+    <version>0.2.4+git3cdfe0f</version>
+    <time>1758288818</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.4+git3cdfe0f:
+  * Bump version to 0.2.4
+  * start: Only map volumes if required on macOS
+  * Add inspect command
+  * create: forbid empty names
+  * add docs + change variable name
+  * set env in VM from start args
+  * Move commands to a module
+  * Instead of a free function for each command make it a method
+  * Refactor argument parsing using new clap 4.x version
+  * Resolve clippy warning for macOS target
+  * Fix compilation for macOS target
+  * Run cargo clippy more times with each supported platform separately
+  * Fix compilation on aarch64 due to i8/u8 mismatch
+  * Resolve clippy warnings and use correct types in bindings.
+  * Resolve warnings about unnecessary mut
+  * README: Add asciidoctor dependency to building from source instructions
+  * Makefile: Remove INIT_BINARY because there is no such thing
+- Tweak the service file a (little) bit
+</comment>
+    <requestid>1305854</requestid>
+  </revision>
 </revisionlist>

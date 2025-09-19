@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 18 08:30:13 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 0.2.4+git3cdfe0f:
+  * Bump version to 0.2.4
+  * start: Only map volumes if required on macOS
+  * Add inspect command
+  * create: forbid empty names
+  * add docs + change variable name
+  * set env in VM from start args
+  * Move commands to a module
+  * Instead of a free function for each command make it a method
+  * Refactor argument parsing using new clap 4.x version
+  * Resolve clippy warning for macOS target
+  * Fix compilation for macOS target
+  * Run cargo clippy more times with each supported platform separately
+  * Fix compilation on aarch64 due to i8/u8 mismatch
+  * Resolve clippy warnings and use correct types in bindings.
+  * Resolve warnings about unnecessary mut
+  * README: Add asciidoctor dependency to building from source instructions
+  * Makefile: Remove INIT_BINARY because there is no such thing
+- Tweak the service file a (little) bit
+
+-------------------------------------------------------------------
 Thu Aug 10 07:25:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use build_rustflags instead of deprecated __rustflags.

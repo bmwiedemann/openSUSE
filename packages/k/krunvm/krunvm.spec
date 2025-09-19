@@ -1,7 +1,7 @@
 #
 # spec file for package krunvm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           krunvm
-Version:        0.2.3+git12dac81
+Version:        0.2.4+git3cdfe0f
 Release:        0
 Summary:        Manage lightweight VMs created from OCI images
 License:        Apache-2.0
 URL:            https://github.com/containers/krunvm
 Source0:        krunvm-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cargo-packaging
 BuildRequires:  libkrun-devel
@@ -43,8 +42,6 @@ Manage lightweight VMs created from OCI images
 
 %prep
 %setup -qa1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 export RUSTFLAGS="%{build_rustflags}"
