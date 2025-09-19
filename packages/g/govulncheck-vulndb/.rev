@@ -1217,4 +1217,16 @@
   * GO-2025-3961 CVE-2025-4953 GHSA-m68q-4hqr-mc6f (forwarded request 1305590 from jfkw)</comment>
     <requestid>1305591</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>9fc58701736c9231c51b99846c2a2075</srcmd5>
+    <version>0.0.20250918T182144</version>
+    <time>1758288842</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20250918T182144 2025-09-18T18:21:44Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3915 CVE-2025-5187 GHSA-4x4m-3c2p-qppc
+  * GO-2025-3956 CVE-2025-47906 CVE-2025-47906 (forwarded request 1305890 from jfkw)</comment>
+    <requestid>1305891</requestid>
+  </revision>
 </revisionlist>
