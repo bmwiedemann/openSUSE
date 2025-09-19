@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:27:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.33.0:
+  * Added Features
+    - Modify RpmDBEntry to include modularityLabel for cyclonedx
+      [#4212 @sfc-gh-rmaj]
+    - Add locations onto packages read from Java native image SBOMs
+      [#4186 @rudsberg]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#4220)
+    - chore(deps): update tools to latest versions (#4215)
+    - chore(deps): bump zizmorcore/zizmor-action from 0.1.2 to
+      0.2.0 (#4216)
+    - chore(deps): bump 8398a7/action-slack from 3.18.0 to 3.19.0
+      (#4217)
+    - chore(deps): bump sigstore/cosign-installer from 3.9.2 to
+      3.10.0 (#4218)
+    - chore(deps): bump modernc.org/sqlite from 1.38.2 to 1.39.0
+      (#4219)
+    - chore(deps): bump github.com/charmbracelet/bubbletea from
+      1.3.8 to 1.3.9 (#4214)
+    - chore(deps): bump github.com/spf13/afero from 1.14.0 to
+      1.15.0 (#4202)
+    - chore(deps): bump github.com/charmbracelet/bubbletea from
+      1.3.6 to 1.3.8 (#4203)
+    - chore(deps): bump github.com/vbatts/go-mtree from 0.5.4 to
+      0.6.0 (#4204)
+    - chore(deps): update tools to latest versions (#4200)
+    - chore(deps): bump github/codeql-action from 3.30.1 to 3.30.3
+      (#4210)
+    - chore(deps): bump golang.org/x/tools from 0.36.0 to 0.37.0
+      (#4211)
+    - chore(deps): update tools to latest versions (#4194)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.7.10
+      to 1.8.0 (#4197)
+    - chore(deps): bump golang.org/x/mod from 0.27.0 to 0.28.0
+      (#4198)
+    - chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+      (#4182)
+    - chore(deps): bump actions/setup-go from 5.5.0 to 6.0.0
+      (#4188)
+    - chore(deps): bump actions/setup-go in
+      /.github/actions/bootstrap (#4189)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.7.9
+      to 1.7.10 (#4190)
+    - chore(deps): bump github/codeql-action from 3.30.0 to 3.30.1
+      (#4191)
+    - chore(deps): bump actions/github-script from 7 to 8 (#4192)
+    - chore(deps): bump github.com/stretchr/testify from 1.11.0 to
+      1.11.1 (#4173)
+    - chore(deps): update tools to latest versions (#4185)
+    - chore(deps): bump github.com/ulikunitz/xz from 0.5.12 to
+      0.5.14 (#4178)
+    - chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.0
+      (#4180)
+    - chore(deps): bump github/codeql-action from 3.29.11 to 3.30.0
+      (#4181)
+    - chore(deps): bump github.com/anchore/stereoscope (#4174)
+    - chore(deps): bump github.com/gookit/color from 1.5.4 to 1.6.0
+      (#4176)
+    - chore(deps): bump golang.org/x/tools from 0.35.0 to 0.36.0
+      (#4172)
+
+-------------------------------------------------------------------
 Thu Aug 28 04:45:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.32.0:
