@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24be7d6cd51cb5bd361fa6a65e00ccfb</srcmd5>
+    <version>1.12.1</version>
+    <time>1758288822</time>
+    <user>anag_factory</user>
+    <comment>Initial package version 1.12.1
+  * Version specified in kubernetes v1.34.1 - https://github.com/kubernetes/kubernetes/blob/v1.34.1/build/dependencies.yaml#L32-L34
+  * Changelog – https://github.com/coredns/coredns/releases/tag/v1.12.1</comment>
+    <requestid>1305862</requestid>
+  </revision>
+</revisionlist>
