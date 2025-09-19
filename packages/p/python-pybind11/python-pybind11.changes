@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 17 15:21:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.0.1
+  * Pybind11 3.0 includes an ABI bump, the first required bump in
+    many years on Unix
+  * This release contains the smart-holder branch, multi-phase init
+    and subinterpreter support, py::native_enum, an interface to
+    warnings, typing improvements, and more
+  * CMake now defaults to FindPython mode
+  * Support for Python 3.14, 3.14t, GraalPy, and PyPy 3.11 has been
+    added, while legacy support for Python 3.7, PyPy 3.8/3.9, and
+    CMake <3.15 has been removed
+  * Please see upstream changelog for a more detailed info
+
+-------------------------------------------------------------------
 Mon Sep 16 08:13:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.6:

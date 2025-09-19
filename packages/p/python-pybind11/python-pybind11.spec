@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybind11
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,16 +34,16 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-pybind11%{psuffix}
-Version:        2.13.6
+Version:        3.0.1
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
 URL:            https://github.com/pybind/pybind11
 Source:         https://github.com/pybind/pybind11/archive/v%{version}.tar.gz#/pybind11-%{version}.tar.gz
 Source99:       python-pybind11-rpmlintrc
-BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module scikit-build-core >= 0.11.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
@@ -178,12 +178,13 @@ end
 
 %if !%{with test}
 %files %{python_files}
-%doc README.rst docs/changelog.rst
+%doc README.rst docs/changelog.md
 %license LICENSE
 %python_alternative %{_bindir}/pybind11-config
 %{python_sitelib}/pybind11
 %exclude %{python_sitelib}/pybind11/share/cmake
 %exclude %{python_sitelib}/pybind11/include
+%exclude %{python_sitelib}/pybind11/share/pkgconfig
 %{python_sitelib}/pybind11-%{version}*-info
 
 %files -n %{name}-common-devel
