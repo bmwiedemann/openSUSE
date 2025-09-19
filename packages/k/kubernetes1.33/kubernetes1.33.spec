@@ -22,7 +22,7 @@
 %define baseversionminus1 1.32
 
 Name:           kubernetes%{baseversion}
-Version:        1.33.4
+Version:        1.33.5
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,14 +51,14 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.24.5
+BuildRequires:  go >= 1.24.6
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) = 1.24
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
-ExcludeArch:    %{ix86} s390 ppc64
+ExcludeArch:    %{ix86} s390 ppc64 %{arm}
 
 %description
 Kubernetes is a system for automating deployment, scaling, and
@@ -233,14 +233,28 @@ export KUBE_GIT_VERSION=v%{version}
 #TEST
 export FORCE_HOST_GO=y
 
-%ifarch s390x
-# `-buildmode=pie` with "internal linking" is not yet supported on linux/s390x platform
-# https://github.com/golang/go/blob/a63907808d14679c723e566cb83acc76fc8cafc2/src/internal/platform/supported.go#L223-L232
-# https://github.com/golang/go/issues/64875#issuecomment-1870734528
-make WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd/kube-proxy cmd/kubelet cmd/kubectl cmd/kubeadm"
+
+%if (0%{?sle_version} == 0 || 0%{?is_opensuse})
+  %ifarch s390x
+    # On openSUSE s390x, build all, but without PIE
+    # `-buildmode=pie` with "internal linking" is not yet supported on linux/s390x platform
+    # https://github.com/golang/go/blob/a63907808d14679c723e566cb83acc76fc8cafc2/src/internal/platform/supported.go#L223-L232
+    # https://github.com/golang/go/issues/64875#issuecomment-1870734528
+    make WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd/kube-proxy cmd/kubelet cmd/kubectl cmd/kubeadm"
+  %else
+    # On openSUSE (non-s390x), build all with PIE
+    make WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd/kube-proxy cmd/kubelet cmd/kubectl cmd/kubeadm" GOFLAGS="-buildmode=pie"
+  %endif
 %else
-make WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd/kube-proxy cmd/kubelet cmd/kubectl cmd/kubeadm" GOFLAGS="-buildmode=pie"
+  %ifarch s390x
+    # On non-openSUSE s390x, only build kubectl but without PIE
+    make WHAT="cmd/kubectl"
+  %else
+    # On non-openSUSE (non-s390x), only build kubectl with PIE
+    make WHAT="cmd/kubectl" GOFLAGS="-buildmode=pie"
+  %endif
 %endif
+
 
 # The majority of the documentation has already been moved into
 # http://kubernetes.io/docs/admin, and most of the files stored in the `docs`
@@ -249,9 +263,11 @@ make WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd
 # let's do that and run `genmanpages.sh`.
 ./hack/generate-docs.sh || true
 pushd docs
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 pushd admin
 cp kube-apiserver.md kube-controller-manager.md kube-proxy.md kube-scheduler.md kubelet.md ..
 popd
+%endif
 cp %{SOURCE2} genmanpages.sh
 bash genmanpages.sh
 popd
@@ -266,6 +282,7 @@ output_path="_output/local/bin/linux/%{go_arch}"
 
 install -m 755 -d %{buildroot}%{_bindir}
 
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 echo "+++ INSTALLING kubeadm"
 install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/kubeadm
 
@@ -275,17 +292,21 @@ for bin in "${binaries[@]}"; do
   install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/${bin}
 done
 
-for bin in kubelet kubectl; do
-  echo "+++ INSTALLING ${bin} with %{baseversion} suffix"
-  install -p -m 755 ${output_path}/${bin} %{buildroot}%{_bindir}/${bin}%{baseversion}
-done
+echo "+++ INSTALLING kubelet with %{baseversion} suffix"
+install -p -m 755 ${output_path}/kubelet %{buildroot}%{_bindir}/kubelet%{baseversion}
+%endif
 
+echo "+++ INSTALLING kubectl with %{baseversion} suffix"
+install -p -m 755 ${output_path}/kubectl %{buildroot}%{_bindir}/kubectl%{baseversion}
+
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 echo "+++ INSTALLING kubelet multi-version loader"
 install -p -m 755 %{SOURCE3} %{buildroot}%{_bindir}/kubelet
 
 # create sysconfig.kubelet-kubernetes in fullupdir
 sed -i -e 's|BASE_VERSION|%{baseversion}|g' %{SOURCE22}
 install -D -m 0644 %{SOURCE22} %{buildroot}%{_fillupdir}/sysconfig.kubelet-kubernetes%{baseversion}
+%endif
 
 # install the bash completion
 install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions/
@@ -304,6 +325,7 @@ find .    -name '.gitignore' -type f -delete
 find hack -name '*.sh.orig' -type f -delete
 find hack -name '.golint_*' -type f -delete
 
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 # systemd service
 install -d -m 0755 %{buildroot}%{_unitdir}
 install -m 0644 -t %{buildroot}%{_unitdir}/ %{SOURCE10}
@@ -315,7 +337,13 @@ ln -sf service "%{buildroot}%{_sbindir}/rckubelet"
 # install manpages
 install -d %{buildroot}%{_mandir}/man1
 install -p -m 644 docs/man/man1/* %{buildroot}%{_mandir}/man1
+%else
+# install kubectl manpages
+install -d %{buildroot}%{_mandir}/man1
+install -p -m 644 docs/man/man1/kubectl* %{buildroot}%{_mandir}/man1
+%endif
 
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 # create config folder
 install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}
 
@@ -342,6 +370,7 @@ install -m 0644 -t %{buildroot}%{_sysctldir} %{SOURCE24}
 install -d -m 0755 %{buildroot}%{_unitdir}/kubelet.service.d
 sed -i -e 's|PATH_TO_FLEXVOLUME|%{volume_plugin_dir}|g' %{SOURCE25}
 install -m 0644 -t %{buildroot}%{_unitdir}/kubelet.service.d/ %{SOURCE25}
+%endif
 
 # alternatives
 ln -s -f %{_sysconfdir}/alternatives/kubectl %{buildroot}%{_bindir}/kubectl
@@ -357,6 +386,7 @@ if [ ! -f %{_bindir}/kubectl%{baseversion} ] ; then
   update-alternatives --remove kubectl %{_bindir}/kubectl%{baseversion}
 fi
 
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 %pre kubelet-common
 %service_add_pre kubelet.service
 
@@ -453,6 +483,7 @@ fi
 %license LICENSE
 %{_bindir}/kubeadm
 %{_mandir}/man1/kubeadm*
+%endif
 
 %files client
 %doc README.md CONTRIBUTING.md
