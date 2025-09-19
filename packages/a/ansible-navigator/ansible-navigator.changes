@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep 19 12:58:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.9.0:
+  * Fixes
+    - fix: ruff, mypy and pylint violations (#2040) @ssbarnea
+    - fix: replace dependabot with renovate (#2035) @ssbarnea
+  * Maintenance
+    - chore(deps): update all dependencies (#2041) @renovate[bot]
+    - chore(deps): update all dependencies (#2039) @renovate[bot]
+    - chore(deps): update all dependencies (#2036) @renovate[bot]
+    - Bump the dependencies group across 1 directory with 30
+      updates (#2029) @dependabot[bot]
+    - Configure Renovate (#2028) @renovate[bot]
+    - Bump codecov/codecov-action from 5.5.0 to 5.5.1 (#2030)
+      @dependabot[bot]
+    - Bump actions/setup-python from 5 to 6 (#2031)
+      @dependabot[bot]
+    - [pre-commit.ci] pre-commit autoupdate (#2032)
+      @pre-commit-ci[bot]
+    - Bump codecov/codecov-action from 5.4.3 to 5.5.0 (#2024)
+      @dependabot[bot]
+    - [pre-commit.ci] pre-commit autoupdate (#2027)
+      @pre-commit-ci[bot]
+    - [pre-commit.ci] pre-commit autoupdate (#2023)
+      @pre-commit-ci[bot]
+
+-------------------------------------------------------------------
 Thu Aug 21 13:53:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.8.0:
