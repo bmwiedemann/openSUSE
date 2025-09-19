@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          142
-%define mainver        %major.0.1
-%define orig_version   142.0.1
+%define major          143
+%define mainver        %major.0
+%define orig_version   143.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -113,8 +113,8 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.36
-BuildRequires:  mozilla-nss-devel >= 3.114
+BuildRequires:  mozilla-nspr-devel >= 4.37
+BuildRequires:  mozilla-nss-devel >= 3.115.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -212,7 +212,6 @@ Source19:       google-api-key
 Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
 Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit
-Patch1:         mozilla-nongnome-proxies.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
 Patch6:         mozilla-s390-context.patch

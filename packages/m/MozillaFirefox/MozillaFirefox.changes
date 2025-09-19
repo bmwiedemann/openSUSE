@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Sep 14 11:23:03 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 143.0
+  https://www.firefox.com/en-US/firefox/143.0/releasenotes
+  MFSA 2025-73 (bsc#1249391)
+  * CVE-2025-10527 (bmo#1984825)
+    Sandbox escape due to use-after-free in the Graphics: Canvas2D component
+  * CVE-2025-10528 (bmo#1986185)
+    Sandbox escape due to undefined behavior, invalid pointer in
+    the Graphics: Canvas2D component
+  * CVE-2025-10529 (bmo#1970490)
+    Same-origin policy bypass in the Layout component
+  * CVE-2025-10530 (bmo#1974025)
+    Spoofing issue in the WebAuthn component in Firefox for Android
+  * CVE-2025-10531 (bmo#1978453)
+    Mitigation bypass in the Web Compatibility: Tooling component
+  * CVE-2025-10532 (bmo#1979502)
+    Incorrect boundary conditions in the JavaScript: GC component
+  * CVE-2025-10533 (bmo#1980788)
+    Integer overflow in the SVG component
+  * CVE-2025-10534 (bmo#1665334)
+    Spoofing issue in the Site Permissions component
+  * CVE-2025-10535 (bmo#1979918)
+    Information disclosure, mitigation bypass in the Privacy
+    component in Firefox for Android
+  * CVE-2025-10536 (bmo#1981502)
+    Information disclosure in the Networking: Cache component
+  * CVE-2025-10537 (bmo#1938220, bmo#1980730, bmo#1981280,
+    bmo#1981283, bmo#1984505, bmo#1985067)
+    Memory safety bugs fixed in Firefox ESR 140.3, Thunderbird
+    ESR 140.3, Firefox 143 and Thunderbird 143
+- requires
+  NSPR 4.37
+  NSS 3.115.1
+- remove obsolete mozilla-nongnome-proxies.patch
+
+-------------------------------------------------------------------
+Fri Sep  5 10:48:18 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update MozillaFirefox.desktop from a fresh Factory/Tumbleweed
+  build.
+
+-------------------------------------------------------------------
 Sat Aug 30 09:00:47 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 142.0.1
