@@ -1,0 +1,89 @@
+From ab44e3b801b01c1d2b1f39f696760e3649824e50 Mon Sep 17 00:00:00 2001
+From: Richard Russon <rich@flatcap.org>
+Date: Thu, 11 Sep 2025 18:17:11 +0100
+Subject: [PATCH] test: fix build for re-entrant ncurses
+
+In the some of the tests, we set COLOR_PAIRS to artificially limit the
+number of colours available.
+
+If ncurses has been built with NCURSES_REENTRANT set, altering the
+variable isn't possible, so skip the tests.
+
+This affects two tests:
+- test_ansi_color
+- test_attr_colors
+---
+ test/color/ansi.c   | 1 -
+ test/color/attr.c   | 9 +++++++++
+ test/color/curses.c | 7 ++++++-
+ 3 files changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/test/color/ansi.c b/test/color/ansi.c
+index 9f1a0e3aefb..3a33d9fe2f3 100644
+--- a/test/color/ansi.c
++++ b/test/color/ansi.c
+@@ -47,7 +47,6 @@ void test_ansi_color(void)
+   TEST_CHECK(cs_register_variables(NeoMutt->sub->cs, Vars));
+ 
+   curses_colors_init();
+-  COLOR_PAIRS = 256;
+ 
+   const char *str = NULL;
+   int rc;
+diff --git a/test/color/attr.c b/test/color/attr.c
+index f0a28176deb..9627371437f 100644
+--- a/test/color/attr.c
++++ b/test/color/attr.c
+@@ -56,7 +56,12 @@ struct ModifyTest
+ 
+ void test_attr_colors(void)
+ {
++#if NCURSES_REENTRANT == 1
++  return;
++#else
+   COLOR_PAIRS = 32;
++#endif
++
+   curses_colors_init();
+   TEST_CHECK(cs_register_variables(NeoMutt->sub->cs, Vars));
+ 
+@@ -155,7 +160,9 @@ void test_attr_colors(void)
+   }
+ 
+   {
++#if NCURSES_REENTRANT == 0
+     COLORS = 256;
++#endif
+ 
+     struct ModifyTest Tests[] = {
+       // clang-format off
+@@ -185,7 +192,9 @@ void test_attr_colors(void)
+   }
+ 
+   {
++#if NCURSES_REENTRANT == 0
+     COLORS = 8;
++#endif
+ 
+     struct ModifyTest Tests[] = {
+       // clang-format off
+diff --git a/test/color/curses.c b/test/color/curses.c
+index df7e727808a..d60307e54d0 100644
+--- a/test/color/curses.c
++++ b/test/color/curses.c
+@@ -34,9 +34,14 @@ ARRAY_HEAD(CursesColorArray, struct CursesColor *);
+ 
+ void test_curses_colors(void)
+ {
++#if NCURSES_REENTRANT == 1
++  return;
++#else
++  COLOR_PAIRS = 32;
++#endif
++
+   MuttLogger = log_disp_null;
+ 
+-  COLOR_PAIRS = 32;
+   curses_colors_init();
+ 
+   {

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Sep 12 10:40:53 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Add %check section and run tests
+  - Add obs_scm service to fetch test files repository
+  - Add 0001-test-fix-build-for-re-entrant-ncurses.patch to fix test build
+
+-------------------------------------------------------------------
+Thu Sep 11 09:43:39 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20250905:
+  - Security
+    * ncrypt/crypt.c: Protect Message-ID
+  - Features
+    * Provide an option to confirm on an empty To
+  - Contrib
+    * Add ayu-dark-256 colorscheme
+  - Bug Fixes
+    * Handle a non-existing message_cache_dir
+    * Decouple $crypt_encryption_info and $crypt_protected_headers_weed from $devel_security
+    * Return success after querying for config
+  - Changed Config
+    Add: confirm_empty_to = no
+    Confirm when sending an e-mail with an empty To:
+  - Translations
+    100% German
+    100% Turkish
+    99%  Hungarian
+    98%  Lithuanian
+    89%  French
+  - Code
+    * tweak observer event types
+    * Use the standard countof instead of our mutt_array_size()
+    * Update types in test dummy code
+    * remove useless const qualifier from log_queue_get()
+    * Make sure ctype(3) function arguments are valid
+    * Fix warning about unused function and data
+    * Include term.h and [n]curses.h consistently
+- Update upstream GPG key in neomutt.keyring
+- Add _service file
+- Enable features:
+  - sqlite support (for autocrypt)
+  - lz4 and zstd support (for header cache compression)
+- Revamp package BuildRequires
+  - Remove unnecessary gawk BuildRequires
+  - Add tcl BuildRequires
+  - Add BuildRequires for newly enabled features (lz4, zstd)
+  - Use pkgconfig() for BuildRequires where possible
+- Switch to modern RPM autotools macros (%autosetup, %configure, %make_build)
+
+-------------------------------------------------------------------
 Thu May 15 16:58:27 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 20250510:

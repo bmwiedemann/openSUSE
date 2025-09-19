@@ -379,4 +379,12 @@ so there is no usability hurdle for existing mutt users.
     * Check for DocBook XSL</comment>
     <requestid>1277864</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d2373cc683413a6ea3eba1a69525ec9a</srcmd5>
+    <version>20250905</version>
+    <time>1758288887</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1305980</requestid>
+  </revision>
 </revisionlist>

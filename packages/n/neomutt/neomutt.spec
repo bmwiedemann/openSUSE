@@ -1,7 +1,7 @@
 #
 # spec file for package neomutt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           neomutt
-Version:        20250510
+Version:        20250905
 Release:        0
 Summary:        A command line mail reader (or MUA), a fork of Mutt with added features
 License:        GPL-2.0-or-later
@@ -26,31 +26,38 @@ URL:            https://neomutt.org
 Source:         https://github.com/neomutt/neomutt/archive/%{version}.tar.gz
 Source2:        https://github.com/neomutt/neomutt/releases/download/%{version}/%{version}.tar.gz.sig
 Source3:        https://flatcap.org/id/richard.russon.neomutt.asc#/%{name}.keyring
+# NOTE: This archive version needs to be updated manually every time the services
+# are re-run and the upstream version of the neomutt-test-files repo has changed
+Source4:	neomutt-test-files-git20241201.7404f44.tar.gz
+# PATCH-FIX-UPSTREAM 0001-test-fix-build-for-re-entrant-ncurses.patch https://github.com/neomutt/neomutt/pull/4668 TODO: This has been fixed upstream and should be in the next release
+Patch1:		https://github.com/neomutt/neomutt/pull/4668.patch#/0001-test-fix-build-for-re-entrant-ncurses.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  cyrus-sasl-devel
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  gawk
 BuildRequires:  gdbm-devel
 BuildRequires:  gettext
-BuildRequires:  krb5-devel
 BuildRequires:  libdb-4_8-devel
-BuildRequires:  libgnutls-devel
-BuildRequires:  libgpgme-devel
-BuildRequires:  libidn2-devel
-BuildRequires:  libkyotocabinet-devel
 BuildRequires:  libtool
-BuildRequires:  lmdb-devel
-BuildRequires:  lua-devel
-BuildRequires:  ncurses-devel
 BuildRequires:  notmuch-devel
-BuildRequires:  openssl-devel
-BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  sqlite-devel
+BuildRequires:  tcl
 BuildRequires:  w3m
 BuildRequires:  xsltproc
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(gpgme)
+BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(kyotocabinet)
+BuildRequires:  pkgconfig(libidn2)
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(libsasl2)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(lmdb)
+BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(zlib)
 Recommends:     cyrus-sasl-plain
 Recommends:     neomutt-doc
 Recommends:     neomutt-lang
@@ -85,27 +92,29 @@ and requirements.
 %lang_package macro
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-export CFLAGS="%{optflags}"
-./configure	--prefix=%{_prefix}			\
-		--docdir=%{_docdir}/neomutt	\
-		--with-mailpath=%{_localstatedir}/mail	\
-		--kyotocabinet			\
-		--lua				\
-		--lmdb				\
-		--gnutls			\
-		--gpgme				\
-		--autocrypt			\
-		--notmuch			\
-		--sasl				\
-		--gss				\
-		--idn2				\
-		--pcre2				\
-		--zlib
+export CC=gcc
+%configure \
+	--autocrypt		        	\
+	--docdir=%{_docdir}/neomutt	        \
+	--gnutls		        	\
+	--gpgme			        	\
+	--gss				        \
+	--kyotocabinet			        \
+	--lmdb				        \
+	--lua				        \
+	--lz4				        \
+	--notmuch		        	\
+	--pcre2				        \
+	--sasl				        \
+	--sqlite			        \
+	--with-mailpath=%{_localstatedir}/mail	\
+	--zlib                                  \
+	--zstd
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -118,6 +127,15 @@ rm -rf %{buildroot}%{_datadir}/%{name}/account-command/macos-keychain/
 # Fix Python interpreter path
 # https://en.opensuse.org/openSUSE:Packaging_Python#Dependency_on_/usr/bin/python3
 %python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/oauth2/*
+
+%check
+export NEOMUTT_TEST_DIR="$PWD/neomutt-test-files"
+mkdir -p "$NEOMUTT_TEST_DIR"
+tar -xvf %{SOURCE4} -C "$NEOMUTT_TEST_DIR" --strip-components 1
+pushd "$NEOMUTT_TEST_DIR"
+./setup.sh
+popd
+%make_build test
 
 %files
 %config(noreplace) %{_sysconfdir}/neomuttrc
