@@ -939,4 +939,13 @@
     <comment></comment>
     <requestid>1303520</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>d0ffb79b574e846af965bec44e070640</srcmd5>
+    <version>32.0</version>
+    <time>1758288811</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patch to fix build on armv9:
+  * protobuf-gh23194.patch (forwarded request 1304318 from Guillaume_G)</comment>
+    <requestid>1305713</requestid>
+  </revision>
 </revisionlist>

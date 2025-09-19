@@ -1,7 +1,7 @@
 #
 # spec file for package protobuf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -74,6 +74,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://github.com/protocolbuffers/protobuf/releases/download/v%{version}/%{tarname}-%{version}.tar.gz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM - https://github.com/protocolbuffers/protobuf/pull/23194
+Patch1:         protobuf-gh23194.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?with_gcc}-c++
