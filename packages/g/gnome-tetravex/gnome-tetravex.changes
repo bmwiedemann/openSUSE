@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 18 17:24:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.3:
+  + Fix drag and drop not releasing tile
+  + Fix off by one error in score overlay
+  + Fix compilation error with newer Meson versions
+  + Fix crash with newer Vala versions
+  + Improve label alignment in score overlay
+  + Increase size of Scores dialog
+  + Modernize appdata
+  + Use appstreamcli to validate appdata
+  + Updated translations.
+- Drop patches fixed upstream:
+  + 991ed9c9592047704efa436a34b84d392c9562d4.patch
+  + 20.patch
+
+-------------------------------------------------------------------
 Wed Feb  2 12:05:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 991ed9c9592047704efa436a34b84d392c9562d4.patch: Reference of

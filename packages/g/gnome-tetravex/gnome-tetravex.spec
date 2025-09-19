@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-tetravex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           gnome-tetravex
-Version:        3.38.2
+Version:        3.38.3
 Release:        0
 Summary:        Tetravex Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/Tetravex
 Source0:        https://download.gnome.org/sources/gnome-tetravex/3.38/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 991ed9c9592047704efa436a34b84d392c9562d4.patch -- Reference of [GtkChild] fields is handled by GtkBuilder, type must be unowned
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-tetravex/-/commit/991ed9c9592047704efa436a34b84d392c9562d4.patch
-# PATCH-FIX-UPSTREAM 20.patch -- Fix build with meson 0.60.0 and newer
-Patch1:         https://gitlab.gnome.org/GNOME/gnome-tetravex/-/merge_requests/20.patch
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
