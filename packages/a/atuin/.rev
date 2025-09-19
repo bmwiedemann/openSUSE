@@ -1307,4 +1307,51 @@
     <comment></comment>
     <requestid>1301197</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6676a7a160742f3e6be85c6567428cd9</srcmd5>
+    <version>18.8.0</version>
+    <time>1758288819</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 18.8.0:
+  * chore(release): prepare for release 18.8.0 (#2858)
+  * feat: add IDX_CACHE_ROLLOUT (#2850)
+  * fix(build): enable sqlite feature for sqlite server (#2848)
+  * fix: ensure the idx cache is cleaned on deletion, only insert if records are inserted (#2841)
+  * fix: use transaction for idx consistency checking (#2840)
+  * feat: add inline_height_shell_up_key_binding option (#2817)
+  * nushell: fix `get -i` deprecation (#2829)
+  * fix: Make login exit 1 if already logged in (#2832)
+  * feat: Support multi part commands (Fixes #2836) (#2837)
+  * feat: add info for 'official' plugins (#2835)
+  * feat: command chaining (#2834)
+  * chore: update to rust 1.88 (#2815)
+  * Update indicatif to 0.18.0 (#2833)
+- bump cargo version to 1.88
+- Update to version 18.7.1
+  * chore(release): prepare for release 18.7.1 (#2826)
+  * fix: add check for postgresql prefix (#2825)
+  * chore: update changelog
+- Update to version 18.7.0
+  * chore(release): prepare for release 18.7.0 (#2823)
+  * chore(deps): bump debian (#2811)
+  * chore(deps): bump lukemathwalker/cargo-chef (#2812)
+  * fix: refuse &quot;--dupkeep 0&quot; (#2807)
+  * chore(deps): bump lukemathwalker/cargo-chef (#2765)
+  * chore(deps): bump debian (#2794)
+  * feat: Add sqlite server support for self-hosting (#2770)
+  * fix(search): prevent panic on malformed format strings (#2776) (#2777)
+  * fix: `atuin.nu` enchancements (#2778)
+  * fix: Don't print errors in `zsh_autosuggest` helper (#2780)
+  * fix(doctor): mention the required ble.sh version (#2774)
+  * chore(deps): bump debian (#2772)
+  * fix(api): Allow trailing slashes in sync_address (#2760)
+  * Formatting
+  * fix: clarify that HISTFILE, if used, must be exported (#2758)
+  * chore(ci): Install toolchain that matches rust-toolchain.toml (#2759)
+  * chore: Allow setting script DB path (#2750)
+  * chore(deps): bump tower from 0.4.13 to 0.5.2 (#2734)
+  * chore(deps): bump debian (#2736)
+</comment>
+    <requestid>1305856</requestid>
+  </revision>
 </revisionlist>

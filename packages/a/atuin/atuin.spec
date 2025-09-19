@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        18.6.1
+Version:        18.8.0
 Release:        0
 Summary:        Magical shell history
 License:        MIT
@@ -27,7 +27,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
-BuildRequires:  cargo >= 1.85
+BuildRequires:  cargo >= 1.88
 BuildRequires:  cargo-packaging
 BuildRequires:  protobuf-devel
 BuildRequires:  zstd
