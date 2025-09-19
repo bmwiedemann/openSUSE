@@ -214,4 +214,13 @@
     <comment>- Switch to pyroject macros.</comment>
     <requestid>1285975</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>464e8555b0fc81deabdec2aa7596750b</srcmd5>
+    <version>3.0.2</version>
+    <time>1758288801</time>
+    <user>anag_factory</user>
+    <comment>- Correct BuildRequires for the test flavor.
+- No longer skip a test.</comment>
+    <requestid>1305595</requestid>
+  </revision>
 </revisionlist>

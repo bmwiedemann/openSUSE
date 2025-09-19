@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 18 01:55:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct BuildRequires for the test flavor.
+- No longer skip a test.
+
+-------------------------------------------------------------------
 Mon Jun 16 06:12:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.

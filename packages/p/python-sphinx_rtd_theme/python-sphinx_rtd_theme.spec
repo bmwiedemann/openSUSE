@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx_rtd_theme
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,16 +38,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 1.6
+Requires:       python-Sphinx >= 6
 Requires:       python-docutils
 Requires:       python-sphinxcontrib-jquery >= 4.0
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module readthedocs-sphinx-ext}
-BuildRequires:  %{python_module sphinxcontrib-jquery >= 4.0}
+BuildRequires:  %{python_module sphinx_rtd_theme = %{version}}
 %endif
 %python_subpackages
 
@@ -79,8 +76,7 @@ sed -i "/'build_py'/d" setup.py
 
 %if %{with test}
 %check
-# https://github.com/readthedocs/sphinx_rtd_theme/issues/1558
-%pytest -k "not test_basic"
+%pytest
 %endif
 
 %if !%{with test}
