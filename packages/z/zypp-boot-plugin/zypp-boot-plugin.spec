@@ -24,12 +24,13 @@ License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://github.com/openSUSE/zypp-boot-plugin
 Source:         zypp-boot-plugin-%{version}.tar.xz
-BuildRequires:  boost-devel
+# PATCH-FIX-UPSTREAM - remove system library which is headers only
+Patch1:         https://github.com/openSUSE/zypp-boot-plugin/pull/8.patch
+BuildRequires:  boost-devel > 1.69.0
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gcc-c++
 BuildRequires:  grep
 BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libeconf-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  meson
@@ -44,7 +45,7 @@ This package contains a plugin for zypp that checks if a reboot is needed after
 package installation/update.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

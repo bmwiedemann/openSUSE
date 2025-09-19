@@ -1,0 +1,22 @@
+From 9c52eadd085e542c2f254768849db1727ba9a098 Mon Sep 17 00:00:00 2001
+From: Arjen de Korte <build+github@de-korte.org>
+Date: Mon, 15 Sep 2025 22:43:02 +0200
+Subject: [PATCH] Update meson.build
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index bf815d1..4b8c9e8 100755
+--- a/meson.build
++++ b/meson.build
+@@ -23,7 +23,7 @@ boot_plugin_src = files(
+ )
+ 
+ libeconf_dep = dependency('libeconf')
+-boost_dep = dependency('boost', modules : ['system', 'filesystem'])
++boost_dep = dependency('boost', modules : ['filesystem'])
+ json_dep = dependency('json')
+ 
+ pk_prefix = get_option('prefix')

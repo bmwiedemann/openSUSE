@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 15 20:48:40 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build with Boost 1.89.0 (system is headers only)
+  + 8.patch
+
+-------------------------------------------------------------------
 Mon May 26 12:48:41 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Changed license from AGPL-3.0-or-later to GPL-2.0-or-later.
