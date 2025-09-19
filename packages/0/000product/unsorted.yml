@@ -2560,14 +2560,14 @@ unsorted:
   - coreboot-utils 
   - coredns 
   - coredns-extras 
-  - coredns-for-k8s1.30 
-  - coredns-for-k8s1.30-extras 
   - coredns-for-k8s1.31 
   - coredns-for-k8s1.31-extras 
   - coredns-for-k8s1.32 
   - coredns-for-k8s1.32-extras 
   - coredns-for-k8s1.33 
   - coredns-for-k8s1.33-extras 
+  - coredns-for-k8s1.34 
+  - coredns-for-k8s1.34-extras 
   - coreos-installer 
   - corepack-default 
   - corepack22 
@@ -3751,10 +3751,10 @@ unsorted:
   - espresso 
   - etc-update 
   - etcd 
-  - etcd-for-k8s1.30 
   - etcd-for-k8s1.31 
   - etcd-for-k8s1.32 
   - etcd-for-k8s1.33 
+  - etcd-for-k8s1.34 
   - etcdctl 
   - etcdutl 
   - etckeeper 
@@ -10568,6 +10568,17 @@ unsorted:
   - kubernetes1.33-kubelet-common 
   - kubernetes1.33-proxy 
   - kubernetes1.33-scheduler 
+  - kubernetes1.34-apiserver 
+  - kubernetes1.34-client 
+  - kubernetes1.34-client-bash-completion 
+  - kubernetes1.34-client-common 
+  - kubernetes1.34-client-fish-completion 
+  - kubernetes1.34-controller-manager 
+  - kubernetes1.34-kubeadm 
+  - kubernetes1.34-kubelet 
+  - kubernetes1.34-kubelet-common 
+  - kubernetes1.34-proxy 
+  - kubernetes1.34-scheduler 
   - kubescape 
   - kubeseal 
   - kubesec 
@@ -19045,6 +19056,7 @@ unsorted:
   - mruby-devel 
   - ms-gsl-devel 
   - mscgen 
+  - msedit 
   - msgpack-c-devel 
   - msgpack-cxx-devel 
   - msgraph-devel 
