@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a3d6a7b648d16e6129b3cb3746296a48</srcmd5>
+    <version>3.6.4</version>
+    <time>1758288826</time>
+    <user>anag_factory</user>
+    <comment>Initial package version 3.6.4:
+* Version specified in kubernetes v1.34.1 - https://github.com/kubernetes/kubernetes/blob/v1.34.1/build/dependencies.yaml#L65-L66
+* full changelog - https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.6.md#v364-2025-07-25</comment>
+    <requestid>1305905</requestid>
+  </revision>
+</revisionlist>
