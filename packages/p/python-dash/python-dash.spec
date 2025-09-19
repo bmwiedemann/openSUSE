@@ -18,16 +18,19 @@
 
 # We can't test currenty, see below.
 %bcond_with test
-%define distver 2.18.2
+%define distver 3.2
 %{?sle15_python_module_pythons}
 Name:           python-dash
-Version:        2.18.2
+Version:        3.2.0
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
 URL:            https://github.com/plotly/dash
-# PyPI package does not contain unit tests. GitHub does, but we don't test right now
-Source:         https://files.pythonhosted.org/packages/source/d/dash/dash-%{version}.tar.gz
+# PyPI package does not contain unit tests. GitHub does, but does not contain the js stuff,
+# but we don't test right now: trying to build from js sources and use local-npm-registry fails
+# due to "independent" component packages installed in a weird order
+Source0:         https://files.pythonhosted.org/packages/source/d/dash/dash-%{version}.tar.gz
+#Source1:         https://github.com/plotly/dash/archive/refs/tags/v%{version}.tar.gz#/dash-%%{version}-gh.tar.gz
 Source99:       python-dash.rpmlintrc
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module Flask >= 1.0.4}
@@ -68,6 +71,7 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module mock}  ## <-- not available anymore!
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-sugar}
@@ -101,6 +105,7 @@ for python-dash
 
 %prep
 %setup -q -n dash-%{version}
+# -b 1
 sed -i -e '/^#!\//, 1d' dash/extract-meta.js
 chmod -x dash/extract-meta.js
 find . -name .gitkeep -delete
