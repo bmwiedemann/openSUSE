@@ -1,7 +1,7 @@
 #
 # spec file for package garage
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           garage
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        S3-compatible object store for small self-hosted geo-distributed deployments
 License:        AGPL-3.0-only

@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Sep 18 23:43:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.1.0:
+  A single breaking change was included in the admin API, due to a
+  constraint of the Go SDK generator:
+
+  storage_nodes_ok is renamed to storage_nodes_up in
+  GetClusterHealthResponse, to fix generated SDK code (#1111)
+
+  There are no other breaking changes when migrating from Garage
+  v2.0.0.
+
+  - Features:
+    - api: add introspect endpoint (#1091, #1092)
+    - log access keys used in HTTP requests (#1061, #1124)
+    - helm chart: add commonLabel to all resources and pod
+      templates (#1135)
+  - Bug fixes:
+    - fix panic in garage status (#1131, #1145)
+    - fix server panic caused by garage json-api Metrics (#1132,
+      #1144)
+    - fix openapi spec (#1071, #1081, #1082, #1139, #1160, #1162)
+    - hide keys without any permissions from admin api (#1123)
+    - add error case for layout not ready, and fail earlier in many
+      places (#1107, #1159)
+    - take consistency_mode (degraded/dangerous) into account in
+      fullcopy tables (#1143)
+    - fix GetBucketCORS return code if there are no policies
+      (#1096)
+    - fix AbortMultipartUpload return code (#1095)
+    - fix checksums with empty strings (#1116)
+    - telemetry: remove broken panel override in grafana dashboard
+      (#1075)
+  - Changes:
+    - doc improvements (#1070, #1072, #1074, #1085, #1098, #1101,
+      #1117)
+    - flake: add dev script dependencies to devShellFull (#1134)
+    - woodpecker CI: require the nix=enabled label on workers
+      (#1153)
+
+  Changes included from the v1.3.0 release
+  - Features:
+    - add garage repair clear-resync-queue (#1151, #1165)
+    - add experimental support for Fjall db engine (#906)
+    - log access keys used in HTTP requests (#1122, #1061)
+  - Bug fixes:
+    - block manager: limit simultaneous block reads from disk
+      (#1157)
+    - garage_db: fix some unsoundness in lmdb adapter unsafe
+      (#1099)
+    - handle ECONNABORTED (#1120)
+    - don't die on SIGHUP (#1121)
+    - fix panic when cluster_layout cannot be saved (#1150, #1158)
+    - garage_db: fix error handling logic (#1138, #1163)
+  - Other:
+    - garage_db: update rusqlite and snapshot using VACUUM INTO
+      (#1129, #1146, #1164)
+    - garage_db: refactoring (#1141, #1142)
+    - woodpecker CI: require the nix=enabled label on workers
+      (#1152)
+    - doc improvements (#1117, #1118, #1119)
+
+-------------------------------------------------------------------
 Sun Jun 15 06:16:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.0.0:
