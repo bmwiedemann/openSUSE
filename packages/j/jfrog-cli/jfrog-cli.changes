@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 19 05:34:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.79.0:
+  * Exciting New Features 🎉
+    - Flexpack by @agrasth in #3057
+    - Support for docker login by @fluxxBot in #3077
+    - Added collect env and collect git task in bp by @fluxxBot in
+      #3105
+
+-------------------------------------------------------------------
 Sun Sep 14 11:55:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.78.9:
