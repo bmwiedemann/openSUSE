@@ -17,7 +17,7 @@
 
 
 Name:           kumactl
-Version:        2.11.5
+Version:        2.12.0
 Release:        0
 Summary:        CLI for the Kuma service mesh
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.24.5
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Kuma is a modern Envoy-based service mesh that can run on every cloud, in a
