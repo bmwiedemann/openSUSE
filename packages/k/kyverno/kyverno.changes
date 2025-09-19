@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 19 05:20:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.15.2:
+  * fix: pass userInfo to VAPs and MAPs in the CLI (#13920)
+    (#14024)
+
+-------------------------------------------------------------------
 Tue Aug 19 07:27:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.15.1:

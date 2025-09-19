@@ -17,7 +17,7 @@
 
 
 Name:           kyverno
-Version:        1.15.1
+Version:        1.15.2
 Release:        0
 Summary:        CLI and kubectl plugin for Kyverno
 License:        Apache-2.0
