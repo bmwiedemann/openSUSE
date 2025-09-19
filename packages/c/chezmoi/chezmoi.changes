@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 19 15:13:08 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.65.1:
+  - Features
+    * feat: Switch to znkr.io/diff for builtin diff
+    * feat: Merge podman command into docker command
+    * feat: Replace --package with --package-manager in docker, podman, and ssh commands
+
+-------------------------------------------------------------------
 Tue Aug 26 15:47:37 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.65.0:

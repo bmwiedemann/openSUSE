@@ -951,4 +951,17 @@
 </comment>
     <requestid>1301464</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>305620606cb37588028209b24fcf9c77</srcmd5>
+    <version>2.65.1</version>
+    <time>1758304324</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.65.1:
+  - Features
+    * feat: Switch to znkr.io/diff for builtin diff
+    * feat: Merge podman command into docker command
+    * feat: Replace --package with --package-manager in docker, podman, and ssh commands
+</comment>
+    <requestid>1306037</requestid>
+  </revision>
 </revisionlist>
