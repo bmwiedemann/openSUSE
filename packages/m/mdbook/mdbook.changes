@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 18 12:39:15 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.4.47:
+  * Merge pull request #2587 from ehuss/bump-version
+  * Merge pull request #2586 from ehuss/fix-search-subchapter
+  * Update to 0.4.47
+  * Fix search not showing in sub-directories
+
+-------------------------------------------------------------------
 Thu Jun 19 08:39:46 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.4.46:
@@ -330,4 +339,3 @@ Mon Nov  7 03:28:17 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 Sat Nov  5 11:42:04 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial spec for mdbook 0.4.21
-

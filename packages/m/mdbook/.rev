@@ -263,4 +263,242 @@
   * Merge pull request #2551 from ehuss/bump-version</comment>
     <requestid>1287664</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a5f5917330e7c547daddae20e44185b4</srcmd5>
+    <version>0.4.47</version>
+    <time>1758288844</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.47:
+  * Merge pull request #2587 from ehuss/bump-version
+  * Merge pull request #2586 from ehuss/fix-search-subchapter
+  * Update to 0.4.47
+  * Fix search not showing in sub-directories
+- Update to version 0.4.46:
+  * Merge pull request #2578 from ehuss/bump-version
+  * Update to 0.4.46
+  * Merge pull request #2571 from szabgab/missing_backends_are_fatal
+  * Merge pull request #2569 from szabgab/suffix_items_cannot_be_followed_by_a_list
+  * Check content of the error message.
+  * check content of the error message
+  * Merge pull request #2566 from szabgab/remove-dots-from-docs
+  * remove unnecessary dots from docs
+  * Merge pull request #2561 from szabgab/test-failure-in-summary
+  * Merge pull request #2563 from jofas/patch-1
+  * Enhanced wording for editable code blocks docs
+  * Test failure in SUMMARY.md when item is not a link
+  * Merge pull request #2557 from ehuss/fix-playground-edition
+  * Fix playground edition detection
+  * Merge pull request #1368 from notriddle/hash-files
+  * More code simplification
+  * Some clippy cleanup
+  * Remove some code duplication
+  * Fix, and test, the no-js toc sidebar with hashed resources
+  * Use full patch description for hex
+  * Update sha2 to latest
+  * Rewrite test to use tempfile
+  * Update some comments and formatting
+  * Merge pull request #2551 from ehuss/bump-version
+  * Update to 0.4.45
+- Update to version 0.4.45:
+  * Merge pull request #2551 from ehuss/bump-version
+  * Update to 0.4.45
+  * Merge pull request #2524 from WaffleLapkin/first-last-of-type-footnote
+  * Merge pull request #2550 from ehuss/fix-expected-source-path
+  * Fix issue with None source_path
+  * Add test for a chapter with no source path
+  * Merge pull request #2548 from tamird/patch-1
+  * README.md: update workflow status badge
+  * Merge pull request #2545 from ehuss/rustdoc-missing-error
+  * Add context when `rustdoc` command is not found
+  * Merge pull request #2540 from ehuss/bump-version
+- Update to version 0.4.44:
+  * Merge pull request #2540 from ehuss/bump-version
+  * Update to 0.4.44
+  * Merge pull request #2539 from ehuss/update-notify
+  * Bump rust-version to 1.77
+  * Update notify to 8.0.0
+  * Merge pull request #2538 from ehuss/update-dependencies
+  * Update dependencies
+  * Merge pull request #2533 from ehuss/search-chapter-settings
+  * Add output.html.search.chapter
+  * Merge pull request #2458 from dcampbell24/display-for-clean
+  * Merge pull request #2530 from max-heller/rust-hidelines
+  * Merge pull request #2532 from notriddle/sync-toggle
+  * Prevent the real sidebar position from becoming unsynced from the JS
+  * Merge pull request #2531 from GuillaumeGomez/regression-test-2529
+  * Add GUI regression test for #2529
+  * Update browser-ui-test version to 0.19.0
+  * Merge pull request #2529 from GuillaumeGomez/fix-sidebar-display
+  * fix: make line hiding in Rust code blocks consistent with `rustdoc`
+  * Fix display of sidebar when JS is disabled
+  * Merge pull request #2523 from marcoieni/ubuntu-22
+  * ci: move ubuntu-20 jobs to ubuntu-22
+  * Merge pull request #2476 from GuillaumeGomez/gui-tests
+  * Merge pull request #2517 from notriddle/master
+  * Ignore fragment when figuring out sidebar items
+  * Disable sandbox when running GUI tests
+  * Run GUI tests as a separate testsuite
+  * Add base for GUI tests
+  * Merge pull request #2500 from rukai/release_for_aarch64_macos
+  * Add aarch64-apple-darwin release target
+  * Merge pull request #2497 from ehuss/bump-version
+- Update to version 0.4.43:
+  * Merge pull request #2497 from ehuss/bump-version
+  * Update to 0.4.43
+  * Merge pull request #2495 from ehuss/stabilize-2024
+  * Stabilize 2024 flag
+  * Merge pull request #2486 from eureka-cpu/eureka-cpu/2485
+  * fix init --title option failure when git user is not configured
+  * Add regression test for mdbook init title with no git config
+  * Merge pull request #2478 from rust-lang/ehuss-patch-1
+  * Add note about updating `index.hbs`
+- Update to version 0.4.42:
+  Fixes
+  * Chapter list folding.
+- Updates from version 0.4.41:
+  Added
+  * Added preliminary support for Rust 2024 edition.
+  * Added a full example of the remove-emphasis preprocessor.
+  Changed
+  * Adjusted styling of clipboard/play icons.
+  * Attr and section rules now have specific code highlighting.
+  * The sidebar is now loaded from a common file, significantly
+    reducing the book size when there are many chapters.
+Fixed
+  * Improved theme support when JavaScript is disabled.
+  * Fixed broken themes when localStorage has an invalid theme id.
+  * Adjusted the line-height of superscripts (and footnotes) to
+    avoid adding extra space between lines.
+- Update to version 0.4.40:
+  * Reverted the update to pulldown-cmark which broke the semver API.
+- Fix FTBFS by updating how we use obs-service-cargo to automate
+  vendoring of dependencies.
+- Update to version 0.4.36:
+  * Added
+    - Added Nim to the default highlighted languages.
+    - Added a small indicator for the sidebar resize handle.
+  * Changed
+    - Updated dependencies. MSRV raised to 1.70.0.
+  * Fixed
+    - Fixed blank column in print page when the sidebar was visible.
+    - Fixed indentation of code blocks when Javascript is disabled.
+    - Fixed a panic when mdbook serve or mdbook watch were given certain kinds of paths.
+- Update vendored dependencies.
+- Update to version 0.4.35:
+  * added the book.text-direction setting for explicit support for right-to-left
+    languages.
+  * added rel=prefetch to the &quot;next&quot; links to potentially improve browser performance
+  * added a .warning css class which is styled for displaying warning blocks.
+  * better support of the sidebar when JS is disabled.
+- Replace obsoleted &quot;disabled&quot; with &quot;manual&quot; service option.
+- Update to version 0.4.34:
+  * Add workaround for macOS notify problem.
+  * Don't use distinct background for code in headers when printing
+  * Add note to not update toml.
+- Update to version 0.4.32:
+  * Update to 0.4.32
+  * Rewrite asset deploy.
+  * deploy: Set the default shell so it doesn't need to be repeated.
+  * Rename make-release.sh to make-release-asset.sh
+  * Automatically publish to crates.io on new release
+  * Update msrv to 1.66.
+- Update to version 0.4.31:
+  * Document that strikethrough can also use a single tilde.
+  * Update proc-macro2
+  * Fix some spellings
+  * Fix flicker when setting sidebar scroll position
+- Update vendored dependencies.
+- Update vendored dependencies.
+- Update to version 0.4.30:
+  * Apply some code style changes.
+  * Expand on hidelines documentation.
+  * Explicitly document the `hidelines` key.
+  * Support hidden lines in languages other than Rust
+  * Fix search for custom heading attributes
+  * Add an integration test for heading attributes
+  * Update pulldown-cmark to 0.9.3
+  * Add a test to the test_book for custom heading attributes
+  * Don't include empty class attribute.
+  * Update documentation for heading attributes
+  * docs suggestion
+  * Add working heading extension
+  * Update test_book highlight.md
+- Update to version 0.4.29:
+  * Update to 0.4.29
+  * Set minimum versions in Cargo.toml
+  * Update clap
+  * Update some indirect dependencies
+  * Apply clippy::match_like_matches_macro
+  * Apply clippy::manual_while_let_some
+  * Apply clippy::needless_borrowed_reference
+  * Apply clippy::let_unit_value
+  * Apply clippy::borrow_deref_ref
+  * Apply clippy::needless_borrow
+  * Raise MSRV to 1.65
+  * Update some direct dependencies
+  * Don't copy the stock fonts if the user has overridden fonts.css.
+  * Don't warn on copy-fonts=true (the default) when fonts.css is overridden.
+  * Update renderers.md
+  * Refactor the warning message related to copy_fonts so that a user simply configures it
+  * Switch from gitignore to ignore
+  * Update init.md
+  * Bump h2 from 0.3.15 to 0.3.17
+  * style(tests): Fixed issues reported by clippy
+  * docs(cli): Add docs for --force
+  * fix(cli): init --force skips confirmation prompts
+  * Convert links from http to https protocol
+- Update vendored dependencies.
+- Update to version 0.4.28:
+  * change overflow-x hidden to clip
+  * Update continuous-integration.md
+  * Default the sidebar to visible in large screens
+  * Run preprocessors in `mdbook test`
+- Update vendored dependencies.
+- Restrict to tier 1 architectures.
+- Update to version 0.4.27:
+  * Update to 0.4.27
+  * Also make sure releases use --locked
+  * Make sure CI runs with --locked
+  * Revert &quot;bump 'toml' dependency&quot;
+  * Remove spammy `debug!` log from `path_to_root`
+  * Update to 0.4.26
+  * Update some direct dependencies
+  * Add some comments about overflow-x
+  * bump 'toml' dependency
+  * Fix incorrect version command
+  * Remove dependency to time 0.1.44
+  * fix overflow-x on mobile
+  * Remove the WebKit-specific scrollbar styling altogether
+  * Add issue templates and update contributor docs
+  * Make fonts part of the theme.
+  * Fix MDBOOK_BOOK environment variable example
+  * Thin scrollbars in Chrome and Safari to make them less assertive (#1483)
+- Enable all-features flag.
+- Update vendored dependencies.
+- Update _constraints file.
+- Update to version 0.4.25:
+  * Fix test with multiple library paths
+  * Switch to older ubuntu image
+  * upgrade clap to 4.0
+  * Update notify
+  * Update topological-sort
+  * Update select
+  * Update env_logger
+  * Update assert_cmd
+  * Bump MSRV to 1.60
+  * Update dependencies
+  * update for hidden only on clipboard
+- Update _constraints file
+- Update to version 0.4.22+g4:
+  * fix: random  ref in
+  * fix msrv in docs
+  * Update to 0.4.22
+  * Fix broken doc link
+  * Show the currently selected theme.
+  * Fix clipping in theme popup
+- Add _constraints and increase memory to 12G.
+- Initial spec for mdbook 0.4.21
+</comment>
+    <requestid>1305896</requestid>
+  </revision>
 </revisionlist>
