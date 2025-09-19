@@ -4,7 +4,7 @@ Date: Sat, 7 Dec 2024 21:54:44 -0500
 Subject: [PATCH] cpu_info_helpers: Add helper function to retrieve present CPU
  core list
 
-Patch-mainline: expected 1.3.14
+Upstream: merged, expected in 1.3.14
 Git-commit: d6a771d970b0286edfaf50cfdff2673c92df6a47
 
 Introduce get_present_core_list helper function to accurately parse
@@ -170,5 +170,5 @@ index c063fff..77e6ad7 100644
  extern int __get_one_smt_state(int core, int threads_per_cpu);
  extern int __do_smt(bool numeric, int cpus_in_system, int threads_per_cpu,
 -- 
-2.50.0
+2.51.0
 

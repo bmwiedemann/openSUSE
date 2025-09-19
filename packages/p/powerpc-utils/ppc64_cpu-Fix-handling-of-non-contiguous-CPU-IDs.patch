@@ -3,8 +3,8 @@ From: Aboorva Devarajan <aboorvad@linux.ibm.com>
 Date: Wed, 1 Jan 2025 22:56:07 -0500
 Subject: [PATCH] ppc64_cpu: Fix handling of non-contiguous CPU IDs
 
-Patch-mainline: expected 1.3.14
-Git-commit: ae2cfe74ce0256a0c18478d9d0550f4cc88658cb 
+Upstream: merged, expected in 1.3.14
+Git-commit: ae2cfe74ce0256a0c18478d9d0550f4cc88658cb
 
 In ppc64le environments, adding or removing CPUs dynamically through
 DLPAR can create gaps in CPU IDs, such as `0-103,120-151`, in this
@@ -755,5 +755,5 @@ index 4017240..0233d29 100644
  {
  	printf(
 -- 
-2.50.0
+2.51.0
 

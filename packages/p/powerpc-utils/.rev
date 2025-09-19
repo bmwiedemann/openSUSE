@@ -1286,4 +1286,12 @@
   * Remove std-gnu17.patch</comment>
     <requestid>1297482</requestid>
   </revision>
+  <revision rev="154" vrev="9">
+    <srcmd5>67cf03bdc2f6bb48373af8aa183762d7</srcmd5>
+    <version>1.3.13</version>
+    <time>1758288812</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1305723</requestid>
+  </revision>
 </revisionlist>

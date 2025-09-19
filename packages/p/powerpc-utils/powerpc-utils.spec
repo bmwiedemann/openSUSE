@@ -1,7 +1,7 @@
 #
 # spec file for package powerpc-utils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ Patch10:        ppc64_cpu-Fix-handling-of-non-contiguous-CPU-IDs.patch
 Patch11:        pseries_platform.h-Fix-ifdef-guard-typo.patch
 Patch12:        sys_ident-Quiet-strncpy-warning.patch
 Patch13:        nvram.c-Correct-librtas-function-prototypes.patch
+Patch14:        smtstate-Start-smtstate-service-after-network-target.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

@@ -1,14 +1,36 @@
-From d22ad5c4a715fdc9e95dd37d9e7cae18fa22bd4a Mon Sep 17 00:00:00 2001
+From 2a139fc7f640b50d4a65127c1c25cad9267d66e9 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Mon, 4 Aug 2025 13:11:00 +0200
-Subject: [PATCH] pseries_platform.h: Fix ifdef guard typo
+Subject: [PATCH 2/4] pseries_platform.h: Fix ifdef guard typo
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
+Upstream: merged, expected in 1.3.14
+Git-commit: 2a139fc7f640b50d4a65127c1c25cad9267d66e9
+
+Fix build breakage due to typo of PLATFORM_H.
+
+In file included from src/vcpustat.c:34:
+./src/common/pseries_platform.h:21: warning: header guard ‘PLATFORM_H’ followed by ‘#define’ of a different macro [-Wheader-guard]
+   21 | #ifndef PLATFORM_H
+./src/common/pseries_platform.h:22: note: ‘PLARFORM_H’ is defined here; did you mean ‘PLATFORM_H’?
+   22 | #define PLARFORM_H
+In file included from src/activate_fw.c:70:
+./src/common/pseries_platform.h:21: warning: header guard ‘PLATFORM_H’ followed by ‘#define’ of a different macro [-Wheader-guard]
+   21 | #ifndef PLATFORM_H
+./src/common/pseries_platform.h:22: note: ‘PLARFORM_H’ is defined here; did you mean ‘PLATFORM_H’?
+   22 | #define PLARFORM_H
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+[tyreld: add commit log description]
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
 ---
  src/common/pseries_platform.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/common/pseries_platform.h b/src/common/pseries_platform.h
-index 440c3e60d58d..257fc62c9386 100644
+index 440c3e6..5fa12ff 100644
 --- a/src/common/pseries_platform.h
 +++ b/src/common/pseries_platform.h
 @@ -19,7 +19,7 @@
@@ -21,5 +43,5 @@ index 440c3e60d58d..257fc62c9386 100644
  #define PLATFORM_FILE	"/proc/cpuinfo"
  
 -- 
-2.50.1
+2.51.0
 

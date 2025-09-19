@@ -1,0 +1,70 @@
+From e2e22b2bd554acd8f2eb0301005d79b4ff0906ec Mon Sep 17 00:00:00 2001
+From: Srikar Dronamraju <srikar@linux.ibm.com>
+Date: Tue, 2 Sep 2025 21:14:16 +0530
+Subject: [PATCH] smtstate: Start smtstate service after network target
+
+While setting smtstate on boot, pc64_cpu may fail to set smt mode if there
+is pci probe happening which disables cpu hotplug.
+
+smtstate[14016]: /sys/devices/system/cpu/smt/control: Device or resource busy
+smtstate[14017]: Error updating SMT=4
+systemd[1]: smtstate.service: Main process exited, code=exited, status=1/FAILURE
+systemd[1]: smtstate.service: Failed with result 'exit-code'.
+systemd[1]: Failed to start SMT automatic initialization service.
+
+Here are traces from cpu_down_maps_locked showing cpu_hotplug_disabled=1
+and cpu_down_maps_locked returning -EBUSY causing ppc64_cpu command to
+fail while setting smt mode.
+
+ppc64_cpu  6302 [037]    19.370155: probe:cpu_down_maps_locked: (c000000000160b18) cpu_hotplug_disabled=1
+ppc64_cpu  6302 [037]    19.370164: probe:cpu_down_maps_locked__return: (c000000000160b18 <- c000000000162508) retval=0xfffffffffffffff0
+
+At the time of ppc64_cpu failure, tracing cpu_hotplug_enable() shows the
+likely reason why cpu_hotplug_disabled=1 (A network driver was trying to
+probe a pci device).
+
+(udev-worker)  5478 [016]    19.613108:           probe:cpu_hotplug_enable: (c00000000015dba8)
+	c00000000015dba8 cpu_hotplug_enable+0x8 (/boot/vmlinux)
+	c0000000008fa7a8 pci_device_probe+0x1f8 (/boot/vmlinux)
+	c000000000a02440 really_probe+0x2f0 (/boot/vmlinux)
+	c000000000a0294c __driver_probe_device+0x1bc (/boot/vmlinux)
+	c000000000a029f0 driver_probe_device+0x60 (/boot/vmlinux)
+	c000000000a031f8 __driver_attach+0xf8 (/boot/vmlinux)
+	c0000000009fead4 bus_for_each_dev+0xb4 (/boot/vmlinux)
+	c000000000a01744 driver_attach+0x34 (/boot/vmlinux)
+	c000000000a00b18 bus_add_driver+0x218 (/boot/vmlinux)
+	c000000000a04278 driver_register+0x98 (/boot/vmlinux)
+	c0000000008f7d68 __pci_register_driver+0x68 (/boot/vmlinux)
+	c0080000fb98ee7c [unknown] ([i40e])
+	c000000000012690 do_one_initcall+0x60 (/boot/vmlinux)
+	c00000000027af94 do_init_module+0x84 (/boot/vmlinux)
+	c000000000278c0c load_module+0x2bfc (/boot/vmlinux)
+	c0000000002798e0 __do_sys_init_module+0x210 (/boot/vmlinux)
+
+Hence to make smtstate more robust, this change ensures smtstate.service
+is only called after network initialization and hence avoid all other
+instances which could be disabling cpu_hotlug_disabled.
+
+Suggested-by: "Nysal Jan K.A" <nysal@linux.ibm.com>
+Suggested-by: Shrikanth Hegde <sshegde@linux.ibm.com>
+Signed-off-by: Srikar Dronamraju <srikar@linux.ibm.com>
+---
+ systemd/smtstate.service.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/systemd/smtstate.service.in b/systemd/smtstate.service.in
+index c285365..ba3f3d3 100644
+--- a/systemd/smtstate.service.in
++++ b/systemd/smtstate.service.in
+@@ -3,7 +3,7 @@ Description=SMT automatic initialization service
+ Documentation=man:smtstate(8)
+ Conflicts=shutdown.target
+ Before=shutdown.target
+-After=sysinit.target
++After=network.target
+ DefaultDependencies=no
+ 
+ [Service]
+-- 
+2.51.0
+
