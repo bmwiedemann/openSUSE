@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 17 15:52:25 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.11.6
+  * Bump pyproject-metadata to handle form feeds on Python < 3.12.8
+  * Bump pytest version and include pytest-xdist
+  * Parse the CMake file-api during configuration
+  * fix: add scripts to _DICT_STR_FIELDS for dynamic metadata
+  * Officially support Python 3.14
+
+-------------------------------------------------------------------
 Tue Mar  4 13:18:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.11.0

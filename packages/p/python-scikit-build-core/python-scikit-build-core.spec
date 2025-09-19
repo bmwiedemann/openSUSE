@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-build-core
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-scikit-build-core%{psuffix}
-Version:        0.11.0
+Version:        0.11.6
 Release:        0
 Summary:        Build backend for CMake based projects
 License:        Apache-2.0
@@ -37,12 +37,12 @@ Patch1:         scikit-build-core-offline-wheelhouse.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module packaging >= 21.3}
+BuildRequires:  %{python_module packaging >= 23.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       cmake >= 3.15
-Requires:       python-packaging >= 21.3
+Requires:       python-packaging >= 23.2
 Requires:       python-pathspec >= 0.10.1
 Recommends:     ninja
 Recommends:     python-rich
@@ -55,6 +55,7 @@ BuildRequires:  %{python_module distlib >= 0.3.5}
 BuildRequires:  %{python_module pybind11-devel >= 2.11}
 BuildRequires:  %{python_module pytest >= 7.2}
 BuildRequires:  %{python_module pytest-subprocess >= 1.5.0}
+BuildRequires:  %{python_module pytest-xdist >= 3.1}
 BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module scikit-build-core = %{version}}
 BuildRequires:  %{python_module setuptools}
@@ -111,7 +112,7 @@ export PYTEST_DEBUG_TEMPROOT=./tmp
 donttestmark="isolated"
 # different hash due to different build environment:
 donttest="test_pep517_sdist_hash or test_pep518_sdist"
-%pytest -m "not ($donttestmark)" -k "not ($donttest)"
+%pytest -n auto -m "not ($donttestmark)" -k "not ($donttest)"
 %endif
 
 %if !%{with test}
