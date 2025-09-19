@@ -1,0 +1,13 @@
+<services>
+	<service name="cargo_vendor" mode="manual">
+		<param name="url">https://github.com/microsoft/edit</param>
+		<param name="revision">v1.2.0</param>
+		<param name="versionrewriteregex">^v?(.*)</param>
+		<param name="versionrewritepattern">$1</param>
+		<param name="set-name">msedit</param>
+		<param name="changesgenerate">true</param>
+		<param name="changesoutfile">msedit.changes</param>
+		<param name="changesauthor">Soc Virnyl Estela</param>
+		<param name="changesemail">uncomfyhalomacro@opensuse.org</param>
+	</service>
+</services>

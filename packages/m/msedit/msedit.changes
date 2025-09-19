@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Tue Jul 15 00:37:16 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Specfile cleanup and run %suse_update_desktop_file
+
+-------------------------------------------------------------------
+Mon Jul 14 11:38:20 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Add the desktop file, svg icon, and manpage
+
+-------------------------------------------------------------------
+Mon Jul 14 08:02:15 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Initial spec for msedit at version 1.2.0:
+  * build: update WinGet publish workflow to use env instead of --token (#467)
+  * Bump to 1.2.0 (#466)
+  * Make file picker autocompletion case-insensitive (#464)
+  * Rename "Document Picker" to "Go to File" (#456)
+  * Large clipboard handling overhaul (#405)
+  * Fix another ICU Find & Replace hang (#459)
+  * Add filename autocompletion to Open/Save dialog (#185)
+  * Make sure margin gets updated (#436)
+  * Fix UB in scratch_arena (#455)
+  * Fix state management of the file picker list (#454)
+  * Fix Find & Replace with empty replacements (#457)
+  * Add support for Alt+Up in the File Picker (#458)
+  * Fix modals not clearing attributes (#460)
+  * Do not render View menu when no documents are active (#447)
+  * Jump to the next search result with F3 (#453)
+  * Add a CodeLLDB launch option for VSCode (#444)
+  * Fix `Vec<T>` formatting in docs (#435)
+  * Fix mismatched-lifetime-syntaxes clippy warnings (#451)
+  * Add filtering & Use MIME aliases for the encoding picker (#255)
+  * Use long blocking reads for setup_terminal (#424)
+  * Codify an official recommendation for package names (#423)
+  * Add specialized SIMD line seeking routines (#408)
+  * Close documents after saving them (#429)
+  * Implement support for Ambiguous = Wide (#406)
+  * Add readme/categories to Cargo.toml (#415)
+  * Remove redundant heap allocation in `DisplayablePathBuf::from_string` (#336)
+  * Remove dependency on os_string_truncate (#421)
+  * Add a rudimentary .desktop file (#420)
+  * Add `LineCache` to optimize newlines lookup (#352)
+  * Use colon `:` Instead of forward slash `/` for clarity (#354)
+  * buffer: show control char visualizers in yellow (#378)
+  * Fix the fallback theme colors (#417)
+  * Experiment with a 100ms timeout on ESC (#416)
+  * Don't reset Xterm's meta-sends-escape on exit (#413)
+  * Fix cursor_move_to_visual not moving backward (#412)
+  * Add buffer benchmarks (#403)
+  * Fix a virtual memory leak on Windows (#404)
+  * Replace winres with winresource (#407)
+  * Improved grammar for German LargeClipboardWarning (#384)
+  * Fix inconsistent ellipses in localization (#282)
+  * menu: hide "Close Editor" if there is no open editor (#376)
+  * ci: rename and add [push] to triggers (#365)
+  * Add a CI check for PRs (#360)
