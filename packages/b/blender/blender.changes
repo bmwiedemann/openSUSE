@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Thu Sep 18 23:03:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.3
+  - Fix #144096: Undo history unknown action on editing curve map
+  - Fix: 3D text line end misses last character
+  - Fix #145711: Packed images may fail to export with USD
+  - Fix #144332: VSE solo preview does not work
+  - Fix: MaterialX export can end up with duplicate node names
+  - Fix #145691: Geometry Nodes: anonymous attributes not always
+    propagated in Set Mesh Normal node
+  - Fix #145449: Workaround wrongly generated Intel Linux driver
+    version
+  - Fix #145666: Crash separating all curves
+  - Fix #145498: Cryptomatte assets are not selectable by name
+  - Fix #145439: Artifacts in Movie Distortion with half precision
+  - Fix #145244: FBX importer does not import textures from some
+    files
+  - Fix #145590: translations causing driver expressions to fail
+  - Build: resolve linking error on *BSD systems
+  - Fix #145560: Invalid curve flag set in legacy curve pen tool
+  - Fix: GPU: Wrong default size for compute local group size
+  - Fix #144980 - glTF - Fix importing empty glTF files, without
+    nodes or scenes
+  - Fix #145340: Object.to_mesh API change with subdivision and
+    shape keys
+  - Fix: viewer shortcut description mentions compositor only
+  - Anim: fix crash when loading F-Curve with unknown modifier
+  - Fix #112936: Asset shelf breaks when changing preview size
+  - Fix #145116: new FBX importer does not handle geometry
+    transform + instancing properly
+  - Copy Global Transforms: SKIP_SAVE on paste
+  - Fix #145403: Viewport Compositor error always persists
+  - Nodes: further optimize socket usage inferencing for many group
+    inputs
+  - Nodes: optimize socket usage inferencing for many group inputs
+  - Fix #145228: Wrong material when copying grease pencil strokes
+  - Correct error updating the tests in last commit
+  - Fix: incorrect handling of 3x3 matrices with RNA get/set
+    callbacks
+  - Fix #145375: Crash in Viewport Render Animation
+  - Fix #145259: Grease Pencil: Bail when no frame is selected for
+    SVG export
+  - Fix #144414: Nodes: crash opening 5.0 closure nodes in 4.5
+  - Fix #145297: Grease Pencil crash when joining objects
+  - Fix #145287: Don't touch original mesh when converting to
+    grease pencil
+  - Fix #144751: NDOF, pan/zoom reversed in orthographic views, in
+    fly mode
+  - Fix #145070: Clay Strips 'Sculpt Plane' option doesn't work
+  - Fix #145300: Value node displayed value has an offset to the
+    right
+  - Fix #144760: Some (Input) Nodes not changeable in Properties
+    Editor
+  - Fix #145108: Split selection removes edges
+  - Fix #144700: Incorrect operator model draw example
+  - Fix #144383: Limited dissolve creates duplicate faces
+  - Fix #142381: EEVEE: Freeze playing back a certain animation
+  - Fix #142738, #136688: Workbench: Inconsistent matcap rendering
+  - Python: Improve `bpy.data.user_map()` argument documentation
+  - Fix #144864: UI freezes with lots of Action slots (in the
+    Outliner) part 2
+  - Fix #143697: UI freezes with lots of Action slots (in the
+    Outliner)
+  - Fix #143635: Grease Pencil: Use only editable points in
+    `use_connected_only`
+  - Fix: ACES 2.0 studio config sets image files to ACES2065-1
+    incorrectly
+  - Fix #144982: Crash when scrubbing retimed strips
+  - Fix #144701: Wrong falling fluid behaviour
+  - Fix #86512: Fire simulation without smoke not affected by force
+    field
+  - Fix #104074: Cloth simulation presets missing internal springs
+    and pressure
+  - Fix: resolve memory leak in previous fix for #144958
+  - Fix #144958: Crash changing screens with a menu open
+  - Fix: EEVEE: Memory leak when drawing Volume objects
+  - Fix #144916: Transform crash pressing tab disabling axis
+    constraint
+  - Fix #142137: Dynamic paint crashes when evaluating poses
+  - Cleanup: various minor changes
+    BKE_object_modifier_update_subframe
+  - Fix #144840: Crash unlinking object from outliner unused data
+    mode
+  - Fix #144175: assert when adding texture paint slot
+  - Fix #143983: crash when shader node from properties editor
+  - Fix #144814: Cycles OSL crash accessing geom:name string
+    attribute
+  - Fix #143958: Dynamic paint crash due to thread-unsafe brush
+    mesh writing
+  - Fix #144910: Cycles missing AO temporarily when kernel features
+    change
+  - Fix #143841: Cycles OptiX error adding AO shader with viewport
+    render
+  - Fix #144858: Invalid text selection in the Python console
+  - Fix #144599: Cycles OSL node with external script does not
+    update
+  - Fix #144441: EEVEE: Wrong projection matrix with Walk
+    Navigation + Overscan
+  - Fix #143857: View3D smooth interpolation produces invalid
+    rv3d.dist values
+  - Fix #144636: EEVEE Invalid hit during raytracing
+  - Cycles: Add support for building with CUDA 13.0 and OptiX 9.0
+  - Cycles: Add ROCm 7 runtime to hipew search list
+  - Fix: Workbench: Broken render tests after AA fix
+  - Fix #143662: Crash with Cycles persistent data and file
+    thumbnail generation
+  - Fix: support loading blend files with text from v1.70 (#2)
+  - Fix: error displaying 3D text for v1.70 blend files
+  - Fix #144970: Crash selecting the text on a linked duplicated
+    text object
+  - Refactor: move run-time flags from CharInfo::flag to CharTrans
+  - Refactor: move font-curve initialization & validation out of
+    evaluation
+  - Refactor: move the evaluated font size into EditFont
+  - Cleanup: pass a curve to BKE_vfont_select_* instead of an
+    object
+  - Cleanup: remove unused Curve::lines & disabled RNA definition
+  - Fix #144281: Missing redraw for Unified Paint Setting toggles
+  - Fix #142110: Vulkan: Only last planar probe is visible
+  - Fix #144614: Vulkan: Disable optimization for large shaders
+  - Fix #144625: Vulkan: Blacklist NVIDIA 580.76.05 on Linux
+  - Fix: Vulkan: Submission runner crash on start
+  - Fix #143802: Grease Pencil: Divide blend mode not working in
+    viewport
+  - Fix #145138: Preserve "thickness" RNA access for line art
+    modifier
+  - Fix: UVSculpt brush size not converted correctly for 5.0
+    changes
+  - [4.5 LTS] Fix: frozen mathutils Vector & Matrix types could be
+    resized
+  - [4.5 LTS] Fix #143838: hotkey customization's aren't saved for
+    custom operator
+  - Fix: Grease Pencil: Smooth sculpt brush not working with
+    handles and mask
+  - [4.5 LTS] Fix memory leak when loading libraries fails from
+    Python
+
+-------------------------------------------------------------------
 Sun Sep  7 01:57:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.5.2
