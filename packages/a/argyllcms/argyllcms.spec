@@ -1,7 +1,8 @@
 #
 # spec file for package argyllcms
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define tarname Argyll
 
 Name:           argyllcms
-Version:        3.3.0
+Version:        3.4.1
 Release:        0
 Summary:        ICC compatible color management system
 License:        AGPL-3.0-only AND GPL-2.0-or-later AND MIT

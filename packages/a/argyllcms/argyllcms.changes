@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Sep 17 18:58:06 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 3.4.1:
+  * Enabled support for JETI specbos extra adapter heads.
+  * Turned off erroneous strip read debugging in munki driver.
+  * Fixed printtarg -T option to work again.
+  * Add delay to ArgyllCMS_install_USB.exe and ArgyllCMS_uninstall_USB.exe exit
+    so that messages can be read.
+  * Changed chartread unexpected patch value warning threshold to dE 95 when no
+    targen -c profile.
+
+-------------------------------------------------------------------
+Tue Aug 12 16:04:28 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 3.4.0:
+  * Added support for Spyder and SpyderPRO (2024)
+  * Renamed proposed CIE 2012 2 and 10 degree to standard CIE 2015 2 and 10
+    degree observers, as per CIE 170-2:2015.
+  * Added -Y c: option to colprof and invprofcheck to allow setting/overriding
+    alibration curves for setting final ink limits.
+  * Added -Y c: option to xicclu to allow setting/overriding calibration curves
+    for setting final ink limits, and added -T flag to show ink limits.
+  * Fixed Spyder X and X2 to not make Device Disconect noise (if such sounds are
+    enabled) on MSWin.
+  * Fixed bug in colprof -nI failing for CMYK profiles.
+  * Enhanced strip reader patch recognition to reject strips that don't start
+    and end on the media, as well as adding some speed compensation to the patch
+    recognition for non-zerbra ruler measurements.
+  * Fixed bug in i1Pro3 strip reading where it would return bad values if the
+    zerbra stripe wasn't used.
+  * Changed chartread so that it will issue warnings of possible bad row or patch
+    reading even when .ti2 reference measurement is not accurate (i.e. no
+    preconditioning profile used in targen.)
+  * Increased emphasis of making sure that there is contrast between patches at the
+    end of rows in printtarg patch ordering for strip instruments.
+  * Added -C parameter to targen to allow overriding any calibration curves found
+    in the ICC profile, used to estimage the total ink limit from that in the ICC
+    profile. Also better enforces final raw computes ink limits.
+  * Modified ccxxmake so that it checks that it has actually found a white seeming
+    patch to use as the L*a*b* white reference, and the patch to de-weight. If
+    there is no white patch (i.e. just RGB patches) then it will use D65 as the
+    L*a*b* conversion reference. ccxxmake will fail if there are less than 3 patches.
+  * Fixed ICC profile writing so that it clips rather than failing when writing a
+    ColorantTable PCS value that is out of range. A warning to stderr will be issued.
+  * Changed ColorMunki driver so that it is more forgiving about unexpected version
+    string lengths.
+  * Fixed dispcal and dispread so that they won't error out if there is no instrument
+    but the -M parameter is provided.
+
+-------------------------------------------------------------------
 Fri Sep 27 17:40:00 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 3.3.0:
@@ -788,8 +838,8 @@ Mon Aug  9 15:58:06 UTC 2010 - fcrozat@novell.com
 Thu Aug  5 16:21:44 UTC 2010 - fcrozat@novell.com
 
 - Update to latest release and move icclib to a separate package
-------------------------------------------------------------------
 
+------------------------------------------------------------------
 Mon Apr 20 08:34:10 CET 2009 - Vladimir Nadvornik <nadvornik@novell.com>
 - ported to openSUSE
 
