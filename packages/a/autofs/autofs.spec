@@ -53,8 +53,6 @@ Patch100:       autofs-5.1.1-suse-auto_master_default.patch
 Patch101:       autofs-5.1.1-debuginfo-fix.patch
 # PATCH-EXTEND-OPENSUSE autofs-dbus-udisks-monitor.patch
 Patch102:       autofs-5.1.1-dbus-udisks-monitor.patch
-# PATCH-FIX-OPENSUSE autofs-use-libldap_r-instead-of-libldap-for-thread-safety.patch [bsc#955477]
-Patch104:       autofs-use-libldap_r-instead-of-libldap-for-thread-safety.patch
 # bsc#1175238 - Use /usr/etc/nsswitch.conf if /etc/nsswitch.conf is not available
 Patch106:       autofs-nsswitch-usr-etc.patch
 # bsc#1207881 - Obsolete and incorrect manual page details for autofs(8)
@@ -105,7 +103,6 @@ cp %{SOURCE5} .
 %patch -P 100 -p1
 %patch -P 101 -p1
 %patch -P 102 -p1
-%patch -P 104 -p1
 %patch -P 106 -p1
 %patch -P 108 -p1
 %patch -P 109 -p1

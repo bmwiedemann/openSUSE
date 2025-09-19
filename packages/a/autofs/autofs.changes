@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 18 01:31:04 UTC 2025 - David Disseldorp <ddiss@suse.com>
+
+- Link against ldap.so instead of ldap_r.so; the former now provides
+  thread-safety and the latter is a symlink which may not exist
+  (bsc#1249966)
+  * drop autofs-use-libldap_r-instead-of-libldap-for-thread-safety.patch
+
+-------------------------------------------------------------------
 Wed Jul 16 20:29:16 UTC 2025 - David Disseldorp <ddiss@suse.com>
 
 - Fix autofs-5.1.1-dbus-udisks-monitor.patch (bsc#1246612) to account for:
