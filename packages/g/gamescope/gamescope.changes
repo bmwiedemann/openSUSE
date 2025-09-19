@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 18 14:31:25 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.16.17:
+  * steamcompmgr: Hold wlserver_lock around handle_presented_xdg
+  * steamcompmgr: Disarm VRR timer
+  * steamcompmgr: Never limit the FPS for the appid of the current VR Scene App
+  * repaint on focus dirty
+  * fix screenshot timeout in 2d/ui
+
+-------------------------------------------------------------------
 Wed Sep 17 12:34:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Remove pkgconfig(freerdp2) BuildRequires: there is no mention of

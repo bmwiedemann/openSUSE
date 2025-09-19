@@ -243,4 +243,24 @@ Popular video game compositor, also allows spoofing a virtual screen for compati
 (🤖: Submission of gamescope via https://src.opensuse.org/pool/gamescope/pulls/13 by dirkmueller)</comment>
     <requestid>1305546</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a0e02772862f5242e7e8019039704f40</srcmd5>
+    <version>3.16.17</version>
+    <time>1758304322</time>
+    <user>anag_factory</user>
+    <comment>Update to version 3.16.17 and merge changes from PR #13
+
+ Update to version 3.16.17
+
+* steamcompmgr: Hold wlserver_lock around handle_presented_xdg
+* steamcompmgr: Disarm VRR timer
+* steamcompmgr: Never limit the FPS for the appid of the current VR Scene App
+* repaint on focus dirty
+* fix screenshot timeout in 2d/ui
+
+This PR also manually merges the changes from #13 . It was accepted in Factory but the changes were lost in the git repo because the source branch was deleted before the PR was merged (see https://src.opensuse.org/pool/gamescope/pulls/13#issuecomment-27364). Not sure if this should be solved in some other way.
+
+(🤖: Submission of gamescope via https://src.opensuse.org/pool/gamescope/pulls/14 by ateixeira)</comment>
+    <requestid>1306027</requestid>
+  </revision>
 </revisionlist>
