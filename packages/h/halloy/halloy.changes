@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Sep 18 18:20:32 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2025.9:
+  + Added:
+    - Added different unread icons for highlights vs regular
+      unread messages
+    - Setting to change icons for unread messages and unread
+      highlight messages
+    - Setting to change server icon size
+    - Setting to control spacing between messages in buffers
+    - Ability to specific multiple themes which then gets picked
+      randomly at launch
+    - Notification indicator on sidebar menu for warning & error
+      log messages
+    - Ability to mark as read on buffer close only if scrolled to
+      the bottom of the buffer (new default behavior)
+    - /part, /topic, /mode, /kick, and /ctcp commands can have
+      their target(s) argument skipped when it can be inferred from
+      context (e.g. /topic will target the current channel by
+      default when used in a channel buffer)
+    - /cleartopic command to remove a channel's topic (will target
+      the current channel by default when used in a channel buffer)
+    - Ability to hide and theme kick server messages
+    - Setting to control whether or not to restore on launch the
+      panes that were open when Halloy last closed
+    - Setting for split axis chosen as the shorter dimension of the
+      focused pane (new default behavior)
+    - Setting for split axis chosen as the shorter dimension of the
+      largest splittable pane
+    - soju.im/bouncer-networks support
+    - Setting to hide the backlog divider when all messages in the
+      buffer have been read
+    - Setting to specify whether nickname highlighting is case
+      sensitive
+    - Setting to hide topic changes
+  + Fixed:
+    - Receiving files over DCC will no longer stall when sender
+      stops accepting received receipts
+    - Attempting to navigate to the next/previous unread buffer,
+      when there is no such buffer, will no longer clear the buffer
+    - Window position is now validated, preventing windows from
+      opening on disconnected monitors
+    - When kicked from a channel the kick message will be broadcast
+      in the server buffer (which remains open) as well as in the
+      channel history (which is closed on kick)
+    - Preview images with large dimensions will not be displayed if
+      larger than the allowed buffer size
+    - Do not activate the mark as read buffer when blocked/hidden
+      messages are unread in the buffer
+    - Nickname highlighting is case insensitive by default (and
+      uses the server's specified casemapping)
+    - Nickname changes properly broadcast in all channels user is
+      in
+    - Page up/down behavior moves by consistent page length, and
+      will no longer get stuck at the top of a buffer
+    - file_transfer.save_directory is now affected by path
+      substitutions (tilde expansion & relative path prefixing)
+  + Changed:
+    - Relative paths in configuration files are now prefixed with
+      config dir
+- add libxcb-devel BuildRequires: needed to build v2025.9
+
+-------------------------------------------------------------------
 Thu Jul 31 19:47:18 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2025.8:
