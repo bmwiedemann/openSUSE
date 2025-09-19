@@ -121,4 +121,12 @@ https://github.com/kubernetes/kubernetes/issues/130786</comment>
     <comment>Monthly Patch Release – Aug, 2025: Update to version 1.31.12</comment>
     <requestid>1299398</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ac1ec78b1bed09a1461293d78d142aa9</srcmd5>
+    <version>1.31.13</version>
+    <time>1758288824</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – Sept, 2025: Update to version 1.31.13</comment>
+    <requestid>1305869</requestid>
+  </revision>
 </revisionlist>
