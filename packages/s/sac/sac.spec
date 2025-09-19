@@ -1,7 +1,7 @@
 #
 # spec file for package sac
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,8 +65,10 @@ ant \
 jar \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
     --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
-%endif
     --update --manifest=%{SOURCE2} --file=build/lib/sac.jar
+%else
+    umf %{SOURCE2} build/lib/sac.jar
+%endif
 
 install -d -m 0755 %{buildroot}%{_javadir}
 install -p -m 0644 ./build/lib/sac.jar %{buildroot}%{_javadir}/%{name}.jar

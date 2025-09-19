@@ -102,4 +102,12 @@
     <comment></comment>
     <requestid>1202984</requestid>
   </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>ab59226ec0850e0fa57669e938400a0b</srcmd5>
+    <version>1.3</version>
+    <time>1758288803</time>
+    <user>anag_factory</user>
+    <comment>Fix build with older JDKs where jar tool does not have long options</comment>
+    <requestid>1305651</requestid>
+  </revision>
 </revisionlist>

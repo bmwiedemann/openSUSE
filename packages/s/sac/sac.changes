@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 18 06:10:42 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with older JDKs where jar tool does not have long options
+
+-------------------------------------------------------------------
 Tue Sep 24 13:44:01 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible jar mtime
