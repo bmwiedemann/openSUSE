@@ -1,0 +1,40 @@
+From b38f3f60d5b157edcf4d8bd1fd3ed02d417889e0 Mon Sep 17 00:00:00 2001
+From: Adhemerval Zanella <adhemerval.zanella@linaro.org>
+Date: Fri, 1 Aug 2025 15:00:25 -0300
+Subject: [PATCH] nptl: Fix SYSCALL_CANCEL for return values larger than
+ INT_MAX (BZ 33245)
+
+The SYSCALL_CANCEL calls __syscall_cancel, which in turn
+calls __internal_syscall_cancel with an 'int' return instead of the
+expected 'long int'.  This causes issues with syscalls that return
+values larger than INT_MAX, such as copy_file_range [1].
+
+Checked on x86_64-linux-gnu.
+
+[1] https://debbugs.gnu.org/cgi/bugreport.cgi?bug=79139
+
+Reviewed-by: Andreas K. Huettel <dilfridge@gentoo.org>
+(cherry picked from commit 7107bebf19286f42dcb0a97581137a5893c16206)
+---
+ NEWS                | 1 +
+ nptl/cancellation.c | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/nptl/cancellation.c b/nptl/cancellation.c
+index 156e63dcf0..bed0383a23 100644
+--- a/nptl/cancellation.c
++++ b/nptl/cancellation.c
+@@ -72,8 +72,8 @@ __syscall_cancel (__syscall_arg_t a1, __syscall_arg_t a2,
+ 		  __syscall_arg_t a5, __syscall_arg_t a6,
+ 		  __SYSCALL_CANCEL7_ARG_DEF __syscall_arg_t nr)
+ {
+-  int r = __internal_syscall_cancel (a1, a2, a3, a4, a5, a6,
+-				     __SYSCALL_CANCEL7_ARG nr);
++  long int r = __internal_syscall_cancel (a1, a2, a3, a4, a5, a6,
++					  __SYSCALL_CANCEL7_ARG nr);
+   return __glibc_unlikely (INTERNAL_SYSCALL_ERROR_P (r))
+ 	 ? SYSCALL_ERROR_LABEL (INTERNAL_SYSCALL_ERRNO (r))
+ 	 : r;
+-- 
+2.51.0
+

@@ -3193,4 +3193,19 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     (SME), setjmp and sigsetjmp will disable the ZA state of SME (forwarded request 1296372 from Andreas_Schwab)</comment>
     <requestid>1296373</requestid>
   </revision>
+  <revision rev="301" vrev="2">
+    <srcmd5>1d86b9fac864ed90b52caeae02f0c65c</srcmd5>
+    <version>2.42</version>
+    <time>1758288816</time>
+    <user>anag_factory</user>
+    <comment>- inet-fortified-namespace.patch: inet-fortified: fix namespace violation
+  (BZ #33227)
+- abort-fork-lock-init.patch: stdlib: resolve a double lock init issue
+  after fork (BZ #32994)
+- ld.so-load-segment-gaps.patch: elf: Handle ld.so with LOAD segment gaps
+  in _dl_find_object (BZ #31943)
+- cancelable-syscall-return-value.patch: nptl: Fix SYSCALL_CANCEL for
+  return values larger than INT_MAX (BZ #33245) (forwarded request 1305694 from Andreas_Schwab)</comment>
+    <requestid>1305695</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,66 @@
+From d0f72b96f2e91e1aa93f7e826c71f74078ada7d0 Mon Sep 17 00:00:00 2001
+From: "H.J. Lu" <hjl.tools@gmail.com>
+Date: Mon, 28 Jul 2025 12:16:11 -0700
+Subject: [PATCH] i386: Add GLIBC_ABI_GNU_TLS version [BZ #33221]
+
+On i386, programs and shared libraries with __thread usage may fail
+silently at run-time against glibc without the TLS run-time fix for:
+
+https://sourceware.org/bugzilla/show_bug.cgi?id=32996
+
+Add GLIBC_ABI_GNU_TLS version to indicate that glibc has the working
+GNU TLS run-time.  Linker can add the GLIBC_ABI_GNU_TLS version to
+binaries which depend on the working TLS run-time so that such programs
+and shared libraries will fail to load and run at run-time against
+libc.so without the GLIBC_ABI_GNU_TLS version, instead of fail silently
+at random.
+
+This fixes BZ #33221.
+
+Signed-off-by: H.J. Lu <hjl.tools@gmail.com>
+Reviewed-by: Sam James <sam@gentoo.org>
+(cherry picked from commit ed1b7a5a489ab555a27fad9c101ebe2e1c1ba881)
+---
+ sysdeps/i386/Makefile | 9 +++++++++
+ sysdeps/i386/Versions | 5 +++++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/sysdeps/i386/Makefile b/sysdeps/i386/Makefile
+index ee6470d78e..c0c017b899 100644
+--- a/sysdeps/i386/Makefile
++++ b/sysdeps/i386/Makefile
+@@ -60,6 +60,15 @@ $(objpfx)tst-ld-sse-use.out: ../sysdeps/i386/tst-ld-sse-use.sh $(objpfx)ld.so
+ 	@echo "Checking ld.so for SSE register use.  This will take a few seconds..."
+ 	$(BASH) $< $(objpfx) '$(NM)' '$(OBJDUMP)' '$(READELF)' > $@; \
+ 	$(evaluate-test)
++
++tests-special += $(objpfx)check-gnu-tls.out
++
++$(objpfx)check-gnu-tls.out: $(common-objpfx)libc.so
++	LC_ALL=C $(READELF) -V -W $< \
++		| sed -ne '/.gnu.version_d/, /.gnu.version_r/ p' \
++		| grep GLIBC_ABI_GNU_TLS > $@; \
++	$(evaluate-test)
++generated += check-gnu-tls.out
+ else
+ CFLAGS-.os += $(if $(filter rtld-%.os,$(@F)), $(rtld-CFLAGS))
+ endif
+diff --git a/sysdeps/i386/Versions b/sysdeps/i386/Versions
+index 36e23b466a..9c84c8ef04 100644
+--- a/sysdeps/i386/Versions
++++ b/sysdeps/i386/Versions
+@@ -28,6 +28,11 @@ libc {
+   GLIBC_2.13 {
+     __fentry__;
+   }
++  GLIBC_ABI_GNU_TLS {
++    # This symbol is used only for empty version map and will be removed
++    # by scripts/versions.awk.
++    __placeholder_only_for_empty_version_map;
++  }
+ }
+ libm {
+   GLIBC_2.1 {
+-- 
+2.51.0
+

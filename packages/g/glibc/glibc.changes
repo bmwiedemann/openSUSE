@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Sep 15 14:37:58 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- inet-fortified-namespace.patch: inet-fortified: fix namespace violation
+  (BZ #33227)
+- abort-fork-lock-init.patch: stdlib: resolve a double lock init issue
+  after fork (BZ #32994)
+- ld.so-load-segment-gaps.patch: elf: Handle ld.so with LOAD segment gaps
+  in _dl_find_object (BZ #31943)
+- cancelable-syscall-return-value.patch: nptl: Fix SYSCALL_CANCEL for
+  return values larger than INT_MAX (BZ #33245)
+- ctype-tls-IE.patch: Use TLS initial-exec model for __libc_tsd_CTYPE_*
+  thread variables (BZ #33234)
+- i386-gnu-tls-abi-tag.patch: i386: Add GLIBC_ABI_GNU_TLS version (BZ
+  #33221)
+- x86-64-gnu2-tls-abi-tag.patch: x86-64: Add GLIBC_ABI_GNU2_TLS version
+  (BZ #33129)
+- x86-64-dt-x86-64-plt-abi-tag.patch: x86-64: Add GLIBC_ABI_DT_X86_64_PLT
+  (BZ #33212)
+- i386-gnu2-tls-abi-tag.patch: i386: Also add GLIBC_ABI_GNU2_TLS version
+  (BZ #33129)
+- aarch64-sve-powf.patch: AArch64: Fix SVE powf routine (BZ #33299)
+
+-------------------------------------------------------------------
+Fri Sep  5 11:07:57 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- For cross builds use the version-suffixed gcc and g++ executable
+  names.
+
+-------------------------------------------------------------------
 Tue Jul 29 06:06:49 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Update to glibc 2.42

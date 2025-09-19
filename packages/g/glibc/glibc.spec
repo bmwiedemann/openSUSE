@@ -1,7 +1,7 @@
 #
 # spec file for package glibc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -336,6 +336,26 @@ Patch306:       glibc-fix-double-loopback.diff
 %if %{without snapshot}
 ###
 # Patches from upstream
+# PATCH-FIX-UPSTREAM inet-fortified: fix namespace violation (BZ #33227)
+Patch1000:      inet-fortified-namespace.patch
+# PATCH-FIX-UPSTREAM stdlib: resolve a double lock init issue after fork (BZ #32994)
+Patch1001:      abort-fork-lock-init.patch
+# PATCH-FIX-UPSTREAM elf: Handle ld.so with LOAD segment gaps in _dl_find_object (BZ #31943)
+Patch1002:      ld.so-load-segment-gaps.patch
+# PATCH-FIX-UPSTREAM nptl: Fix SYSCALL_CANCEL for return values larger than INT_MAX (BZ #33245)
+Patch1003:      cancelable-syscall-return-value.patch
+# PATCH-FIX-UPSTREAM Use TLS initial-exec model for __libc_tsd_CTYPE_* thread variables (BZ #33234)
+Patch1004:      ctype-tls-IE.patch
+# PATCH-FIX-UPSTREAM i386: Add GLIBC_ABI_GNU_TLS version (BZ #33221)
+Patch1005:      i386-gnu-tls-abi-tag.patch
+# PATCH-FIX-UPSTREAM x86-64: Add GLIBC_ABI_GNU2_TLS version (BZ #33129)
+Patch1006:      x86-64-gnu2-tls-abi-tag.patch
+# PATCH-FIX-UPSTREAM x86-64: Add GLIBC_ABI_DT_X86_64_PLT (BZ #33212)
+Patch1007:      x86-64-dt-x86-64-plt-abi-tag.patch
+# PATCH-FIX-UPSTREAM i386: Also add GLIBC_ABI_GNU2_TLS version (BZ #33129)
+Patch1008:      i386-gnu2-tls-abi-tag.patch
+# PATCH-FIX-UPSTREAM AArch64: Fix SVE powf routine (BZ #33299)
+Patch1009:      aarch64-sve-powf.patch
 ###
 %endif
 
@@ -644,8 +664,8 @@ BuildCCplus="%__cxx"
 #now overwrite for some architectures
 #
 %if %{build_cross}
-BuildCC=%{cross_cpu}-suse-linux-gcc
-BuildCCplus=%{cross_cpu}-suse-linux-g++
+BuildCC=%{cross_cpu}-suse-linux-gcc-%{!?with_gcc:%{gcc_version}}%{?with_gcc}
+BuildCCplus=%{cross_cpu}-suse-linux-g++-%{!?with_gcc:%{gcc_version}}%{?with_gcc}
 %else
 %ifarch sparc64
 	BuildFlags="-O2 -mcpu=ultrasparc -mvis -fcall-used-g6"

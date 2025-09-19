@@ -1,0 +1,70 @@
+From 3970785bebcc3f1de4460072f3a041d178f64846 Mon Sep 17 00:00:00 2001
+From: "H.J. Lu" <hjl.tools@gmail.com>
+Date: Mon, 28 Jul 2025 12:18:22 -0700
+Subject: [PATCH] x86-64: Add GLIBC_ABI_GNU2_TLS version [BZ #33129]
+
+Programs and shared libraries compiled with -mtls-dialect=gnu2 may fail
+silently at run-time against glibc without the GNU2 TLS run-time fix
+for:
+
+https://sourceware.org/bugzilla/show_bug.cgi?id=31372
+
+Add GLIBC_ABI_GNU2_TLS version to indicate that glibc has the working
+GNU2 TLS run-time.  Linker can add the GLIBC_ABI_GNU2_TLS version to
+binaries which depend on the working GNU2 TLS run-time:
+
+https://sourceware.org/bugzilla/show_bug.cgi?id=33130
+
+so that such programs and shared libraries will fail to load and run at
+run-time against libc.so without the GLIBC_ABI_GNU2_TLS version, instead
+of fail silently at random.
+
+This fixes BZ #33129.
+
+Signed-off-by: H.J. Lu <hjl.tools@gmail.com>
+Reviewed-by: Sam James <sam@gentoo.org>
+(cherry picked from commit 9df8fa397d515dc86ff5565f6c45625e672d539e)
+---
+ sysdeps/x86_64/Makefile | 9 +++++++++
+ sysdeps/x86_64/Versions | 5 +++++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/sysdeps/x86_64/Makefile b/sysdeps/x86_64/Makefile
+index c3e1065c81..3ab8c1ed0f 100644
+--- a/sysdeps/x86_64/Makefile
++++ b/sysdeps/x86_64/Makefile
+@@ -212,6 +212,15 @@ LDFLAGS-tst-plt-rewrite2 = -Wl,-z,now
+ LDFLAGS-tst-plt-rewritemod2.so = -Wl,-z,now,-z,undefs
+ tst-plt-rewrite2-ENV = GLIBC_TUNABLES=glibc.cpu.plt_rewrite=2
+ $(objpfx)tst-plt-rewrite2: $(objpfx)tst-plt-rewritemod2.so
++
++tests-special += $(objpfx)check-gnu2-tls.out
++
++$(objpfx)check-gnu2-tls.out: $(common-objpfx)libc.so
++	LC_ALL=C $(READELF) -V -W $< \
++		| sed -ne '/.gnu.version_d/, /.gnu.version_r/ p' \
++		| grep GLIBC_ABI_GNU2_TLS > $@; \
++	$(evaluate-test)
++generated += check-gnu2-tls.out
+ endif
+ 
+ test-internal-extras += tst-gnu2-tls2mod1
+diff --git a/sysdeps/x86_64/Versions b/sysdeps/x86_64/Versions
+index e94758b236..a63c11bcb2 100644
+--- a/sysdeps/x86_64/Versions
++++ b/sysdeps/x86_64/Versions
+@@ -5,6 +5,11 @@ libc {
+   GLIBC_2.13 {
+     __fentry__;
+   }
++  GLIBC_ABI_GNU2_TLS {
++    # This symbol is used only for empty version map and will be removed
++    # by scripts/versions.awk.
++    __placeholder_only_for_empty_version_map;
++  }
+ }
+ libm {
+   GLIBC_2.1 {
+-- 
+2.51.0
+
