@@ -779,4 +779,20 @@ require it nevertheless
   * major parts of the source code were reformatted</comment>
     <requestid>1226641</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>e359a5b8295d872c395f714a0404db5a</srcmd5>
+    <version>4.37</version>
+    <time>1758288804</time>
+    <user>anag_factory</user>
+    <comment>- update to version 4.37
+  * bmo#1890927 - PR_GetUniqueIdentity asserts on the 32767th call
+  * bmo#1880254 - error LNK2019: unresolved external
+                  symbol _InterlockedCompareExchange
+  * bmo#1905990 - initclk deadline elapsed macOS
+  * bmo#1921087 - Remove prwin.h (formerly known as prwin16.h)
+  * bmo#1939333 - Use builtin atomic functions on RISC-V32/64
+  * bmo#1917446 - PR_FormatTimeUSEnglish() doesn't support &quot;%e&quot;
+                  format specifier</comment>
+    <requestid>1305691</requestid>
+  </revision>
 </revisionlist>
