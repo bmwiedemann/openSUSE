@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 19 05:32:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.50.11:
+  * Resolved Issues
+    - #3567 Extra slash '/' added when filtering from the command
+      prompt
+    - #3566 unable to switch context or use k9s after upgrade to
+      0.50.10
+
+-------------------------------------------------------------------
 Thu Sep 18 07:29:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.10:
