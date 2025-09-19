@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 16 13:39:29 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to current stable go1.25
+  Refs boo#1244485 go1.25 release tracking
+
+-------------------------------------------------------------------
 Sun Mar 16 14:50:05 UTC 2025 - JS <obs.coke518@passinbox.com>
 
 - Enable for loongarch64

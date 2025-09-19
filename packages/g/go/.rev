@@ -1024,4 +1024,13 @@ go#29903 crypto/elliptic: CPU DoS vulnerability affecting P-521 and P-384 (forwa
     <comment>- Enable for loongarch64 (forwarded request 1253517 from jsulig)</comment>
     <requestid>1253544</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>47870b414c601404178b22272624362d</srcmd5>
+    <version>1.25</version>
+    <time>1758288800</time>
+    <user>anag_factory</user>
+    <comment>- Update to current stable go1.25
+  Refs boo#1244485 go1.25 release tracking (forwarded request 1305533 from jfkw)</comment>
+    <requestid>1305553</requestid>
+  </revision>
 </revisionlist>
