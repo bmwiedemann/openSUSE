@@ -50,22 +50,20 @@
     HOME=${PWD} \
     %octave --eval "pkg list" \
     echo "============= Test Start ===============" \
-    [ -e %{octpkg}-%{version} ] || tar xaf %{__octave_build_file} \
-    find %{octpkg}-%{version} -name '*.m' -o -name '*.*-tst' || true \
-    for fpath in $(find %{octpkg}-%{version} -name '*.m' -o -name '*.*-tst') ; do \
-      if grep -q '%%! *test' $fpath ; then \
-        filename="${fpath##*/}" ; \
+    find %{buildroot}%{octpackages_dir} %{buildroot}%{octlib_dir} '(' -name '*.m' -o -name '*.*-tst' ')' '(' -exec grep -q '%%! *test' '{}' ';' -printf 'test: %%P\\n' -o -printf 'skip: %%P\\n' ')' || true \
+    for fpath in $(find %{buildroot}%{octpackages_dir} %{buildroot}%{octlib_dir} '(' -name '*.m' -o -name '*.*-tst' ')' -exec grep -q '%%! *test' '{}' ';' -printf '%%P ') ; do \
+        filename="${fpath##%{octpkg}-%{version}/}" ; \
         basename="${filename%.m}" ; \
+        logname=test-"${filename//[\\/@]/_}".log ; \
         if echo $basename | grep -q -v -E '^(%{octskiptests})$' ; then \
-          %octave --eval "pkg load %{octpkg}; test $basename" > test-${basename}.log ; \
-          if grep -s 'test *failed' test-${basename}.log ; then \
+          %octave --eval "pkg load %{octpkg}; test $basename" > ${logname} ; \
+          if grep -s 'test *failed' ${logname} ; then \
             echo "Failed tests for %{octpkg}-%{version}" ; \
-            cat test-${basename}.log ; \
+            cat ${logname} ; \
           else \
-            grep -i test test-${basename}.log || true \
+            grep -i test ${logname} || true \
           fi ; \
         fi ; \
-      fi ; \
     done \
     echo "============= Test Summary =============" \
     grep -i test test-*.log || true \
