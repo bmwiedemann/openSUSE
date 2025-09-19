@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Thu Sep 18 12:39:34 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Version update to 3.5.7
+  * Bug fixes:
+    + Improved performance under JDK 8. #2223
+- Version update to 3.5.8
+  * List of changes:
+    + Avoid NullPointerException when mapping an empty string to
+      java.lang.Character. #2368
+    + Fixed an incorrect argument when initializing static object.
+      This resolves a compatibility issue with quarkus-mybatis.
+      #2284
+    + Performance improvements. #2297 #2335 #2340
+- Version update to 3.5.9
+  * List of changes:
+    + Add nullable to <foreach />. If enabled, it skips the
+      iteration when the collection is null instead of throwing an
+      exception. To enable this feature globally, set
+      nullableOnForEach=true in the config. #1883
+- Version update to 3.5.10
+  * Bug fixes:
+    + Unexpected illegal reflective access warning (or
+      InaccessibleObjectException on Java 16+) when calling method
+      in OGNL expression. #2392
+    + IllegalAccessException when auto-mapping Records (JEP-359)
+      #2195
+    ° 'interrupted' status is not set when
+       PooledConnection#getConnection() is interrupted. #2503
+  * Enhancements:
+    + A new option argNameBasedConstructorAutoMapping is added. If
+      enabled, constructor argument names are used to look up
+      columns when auto-mapping. #2192
+    + Added a new property skipSetAutoCommitOnClose to
+      JdbcTransactionFactory. Skipping setAutoCommit() call could
+      improve performance with some drivers. #2426
+    + <idArg /> can now be listed after <arg /> in <constructor />.
+      #2541
+- Version update to 3.5.11
+  * Bug fixes:
+    + OGNL could throw IllegalArgumentException when invoking
+      inherited method. #2609
+    + returnInstanceForEmptyRow is not applied to constructor
+      auto-mapping. #2665
+- Version update to 3.5.12
+  * User impactful changes
+    + #2703 Referencing collection parameter by name fails fixing
+      #2693
+    + #2709 Fix a race condition caused by other threads calling
+      mapper methods while mapped tables are being constructed
+    + #2727 Enable ability to provide custom configuration to
+      XMLConfigBuilder
+    + #2731 Adding mapper could fail under JPMS
+    + #2741 Add 'affectedData' attribute to @select,
+      @SelectProvider, and <select />
+    + #2767 Resolve resultType by namespace and id when not
+      provided resultType and resultMap
+    + #2804 Search readable property when resolving constructor arg
+      type by name
+    + Minor correction: 'boolean' can never be null (primative)
+    + General library updates
+    + Uses parameters option for compiler now (needed by spring boot
+      3) (for reflection needs)
+  * Code cleanup
+    + #2816 Use open rewrite to partially cleanup java code
+    + #2817 Add private constructors per open rewrite
+    + #2819 Add final where appropriate per open rewrite
+    + #2825 Cleanup if statement breaks / return logic
+    + #2826 Eclipse based cleanup
+  * Build
+    + #2820 Remove test ci group profile in favor of more direct
+      usage on GH-Actions and update deprecated surefire along in
+      overview in README.md
+    + Adjustments to build so shaded ognl and javassist no longer
+      throw warnings
+    + Build with jdk 21-ea as well now
+    + Various test cleanup, updates, and additions
+    + Turn on auto formatting of all java code including note to
+      contributors on readme to skip formatting when necessary in
+      code blocks
+    + Tests may use jdk 11 now while retaining jdk 8 runtime
+    + Pom cleanup / better clarification on parameters
+  * Documentation
+    + Various documentation updates
+- Version update to 3.5.13
+  * Bug fix:
+    + Unable to resolve result type when the target property has
+      a getter with different return type #2834
+- Version update to 3.5.14
+  * Bug fixes:
+    + Registered type handler is not used for anonymous enums #2956
+    + Discriminator does not work in constructor mapping #2913
+- Version update to 3.5.15
+  * Changes
+    + XNode#toString() should output all child nodes. See #3001 and
+      associated tickets on this issue
+    + Fix performance of mappedColumnNames.contains by using 'set'
+      rather than 'list'. See #3023
+    + Fix osgi issue with javassist. See #3031
+    + Updated shaded OGNL to 3.4.2. See #3035
+    + Add support method for generating dynamic sql on SQL class.
+      See #2887
+    + General library updates
+    + General document updates
+  * Build
+    + We now show builds from java 11, 17, 21, and 22 on Github
+      Actions. Code is still java 8 compatible at this time.
+    + Update vulnerable hsqldb to 2.7.2 fixing our tests that now
+      work due to newer support. Note, users were never affected by
+      this but at least one user pull request was attempted opened
+      in addition to both renovate and dependabot and various
+      reporting on it.
+    + Now using more properties to define versions in pom to lower
+      the frequency of pull requests from renovate
+- Version update to 3.5.16
+  * Security:
+    + Prevent Invocation from being used by vulnerable applications.
+      #3115
+  * Bugs:
+    + When database ID resolution is failed, invalid bound statement
+      is used. #3040
+  * Enhancements:
+    + It is now possible to write a custom map wrapper to customize
+      how to map column name with dots or brackets. #13 #3062
+  * Performance:
+    + Improved compatibility with Virtual Threads introduced by
+      Loom.
+    + Reduced memory footprint when performing the default (i.e.
+      order based) constructor auto-mapping. #3113
+  * Build:
+    + Include the shaded libraries (OGNL and Javassist) in the
+      sources.jar.
+- Version update to 3.5.17
+  * Bugs:
+    + VendorDatabaseIdProvider#getDatabaseId() should return product
+      name when properties is empty #3297
+    + Update NClobTypeHandler to use methods for national character
+      set #3298
+  * Enhancements:
+    + Allow DefaultSqlSessionFactory to provide a custom
+      SqlSession #3128
+- Version update to 3.5.18
+  * Regressions
+    + Fixed issue in 3.5.17 #3334
+  * New
+    + Ignore empty xnode per #3349
+    + Share expression validator #3339
+    + Throw helpful error instead of IndexOutOfBoundsException
+      (automapping) #3327
+    + Optimize mapper builder #3252
+  * Tests
+    + Add TransactionFactory, Transaction test cases #3277
+  * Build
+    + Reworked pom to match current java 17 build usage
+    + Moved all tests to newer java standards
+    + Cleaned up github actions
+    + Run 'site' branch only on release commits
+- Version update to 3.5.19
+  * Revert Regression introduced by #3349.
+- Removed patch:
+  * mybatis-3.5.3-commons-ognl.patch
+    + not needed, since we are building against ognl:ognl artifact
+    + bsc#1248252, CVE-2025-53192
+- Added patch:
+  * no-script-in-comment.patch
+    + fix some occurrences in the Javadoc comments that some JDK
+      versions interprete as Javascript. The Javadoc generation
+      fails in those cases.
+
+-------------------------------------------------------------------
 Wed Apr 24 09:15:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Make the apache-commons-ognl a non-optional dependency

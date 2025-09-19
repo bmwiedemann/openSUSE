@@ -1,7 +1,7 @@
 #
 # spec file for package mybatis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,27 @@
 #
 
 
-%bcond_with test
 Name:           mybatis
-Version:        3.5.6
+Version:        3.5.19
 Release:        0
 Summary:        SQL Mapping Framework for Java
 # http://code.google.com/p/mybatis/
 License:        Apache-2.0
 URL:            https://www.mybatis.org/
 Source0:        https://github.com/mybatis/mybatis-3/archive/%{name}-%{version}.tar.gz
-Patch0:         mybatis-3.5.3-commons-ognl.patch
+Patch0:         no-script-in-comment.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(cglib:cglib)
+BuildRequires:  mvn(ch.qos.reload4j:reload4j)
 BuildRequires:  mvn(commons-logging:commons-logging)
-BuildRequires:  mvn(log4j:log4j)
-BuildRequires:  mvn(org.apache.commons:commons-ognl)
-BuildRequires:  mvn(org.apache.logging.log4j:log4j-core)
+BuildRequires:  mvn(net.bytebuddy:byte-buddy-agent)
+BuildRequires:  mvn(ognl:ognl)
+BuildRequires:  mvn(org.apache.logging.log4j:log4j-api)
 BuildRequires:  mvn(org.apache.maven.wagon:wagon-ssh)
 BuildRequires:  mvn(org.javassist:javassist)
 BuildRequires:  mvn(org.mybatis:mybatis-parent:pom:)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
-BuildRequires:  mvn(org.slf4j:slf4j-log4j12)
-#!BuildRequires: slf4j-reload4j
 Provides:       apache-mybatis = %{version}
 Obsoletes:      apache-mybatis < %{version}
 BuildArch:      noarch
@@ -71,13 +69,15 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n %{name}-3-%{name}-%{version}
-
-%pom_remove_dep ognl:ognl
-%pom_add_dep org.apache.commons:commons-ognl:4.0-SNAPSHOT
 %patch -P 0 -p1
+rm .mvn/extensions.xml format.xml
 
-%pom_remove_plugin :maven-pdf-plugin
+#pom_remove_plugin :maven-pdf-plugin
 %pom_remove_plugin :maven-shade-plugin
+
+%pom_remove_dep :mssql-jdbc
+
+%pom_xpath_remove "pom:dependency[pom:artifactId[text()='ognl']]/pom:optional"
 
 sed -i 's/\r//' LICENSE NOTICE
 
@@ -94,7 +94,6 @@ sed -i 's/\r//' LICENSE NOTICE
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dproject.build.sourceEncoding=UTF-8
 
 %install

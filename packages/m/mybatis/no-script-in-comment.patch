@@ -1,0 +1,13 @@
+--- mybatis-3-mybatis-3.5.19/src/main/java/org/apache/ibatis/annotations/Select.java	2025-09-18 16:08:19.794480299 +0200
++++ mybatis-3-mybatis-3.5.19/src/main/java/org/apache/ibatis/annotations/Select.java	2025-09-18 16:10:06.140546344 +0200
+@@ -41,8 +41,8 @@
+  *
+  * <pre>{@code
+  * public interface UserMapper {
+- *   @Select({ "<script>", "select * from users", "where name = #{name}",
+- *       "<if test=\"age != null\"> age = #{age} </if>", "</script>" })
++ *   @Select({ "&lt;script&gt;", "select * from users", "where name = #{name}",
++ *       "&lt;if test=\"age != null\"&gt; age = #{age} &lt;/if&gt;", "&lt;/script&gt;" })
+  *   User select(@NotNull String name, @Nullable Integer age);
+  * }
+  * }</pre>
