@@ -1,7 +1,7 @@
 #
 # spec file for package gdbm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define lname	libgdbm6
 %define lcompat libgdbm_compat4
 Name:           gdbm
-Version:        1.24
+Version:        1.26
 Release:        0
 Summary:        GNU dbm key/data database
 License:        GPL-3.0-or-later
@@ -31,8 +31,6 @@ Source2:        baselibs.conf
 Source4:        %{name}.keyring
 # PATCH-FIX-SUSE: remove the build date from src/version.c
 Patch4:         gdbm-no-build-date.patch
-# build with gcc15
-Patch5:         gdbm-gcc15.patch
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  readline-devel

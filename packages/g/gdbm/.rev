@@ -451,4 +451,12 @@ See the COPYING file (forwarded request 151441 from babelworx)</comment>
   + gdbm-gcc15.patch (forwarded request 1251172 from pgajdos)</comment>
     <requestid>1251173</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>fe373007974e3add1c638ea4624669ef</srcmd5>
+    <version>1.26</version>
+    <time>1758288816</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1305394</requestid>
+  </revision>
 </revisionlist>
