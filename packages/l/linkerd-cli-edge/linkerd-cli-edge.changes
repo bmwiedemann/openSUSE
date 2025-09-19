@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 19 05:19:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.9.3:
+  No CLI-related changes in the changelog
+  * Dependencies
+    - build(deps): bump tj-actions/changed-files (#14503)
+    - build(deps): bump json-patch from 4.0.0 to 4.1.0 (#14508)
+    - build(deps): bump the serde group with 3 updates (#14505)
+    - build(deps): bump windows-core from 0.61.2 to 0.62.0 (#14507)
+    - build(deps): bump hyper-util from 0.1.16 to 0.1.17 (#14506)
+    - chore(deps): introduce a `pest` dependabot group (#14504)
+    - chore(deps): introduce a `serde` dependabot group (#14497)
+    - build(deps): bump indexmap from 2.11.1 to 2.11.3 (#14502)
+    - build(deps): bump pest_generator from 2.8.1 to 2.8.2 (#14501)
+    - build(deps): bump pest_meta from 2.8.1 to 2.8.2 (#14500)
+    - build(deps): bump pest_derive from 2.8.1 to 2.8.2 (#14499)
+    - build(deps): bump rustls-webpki from 0.103.5 to 0.103.6
+      (#14498)
+    - build(deps): bump serde from 1.0.219 to 1.0.223 (#14495)
+    - build(deps): bump pest from 2.8.1 to 2.8.2 (#14494)
+    - build(deps): bump iana-time-zone from 0.1.63 to 0.1.64
+      (#14493)
+    - build(deps): bump serde_json from 1.0.143 to 1.0.145 (#14492)
+    - build(deps): bump cc from 1.2.36 to 1.2.37 (#14491)
+
+-------------------------------------------------------------------
 Thu Sep 18 05:55:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.9.2:
