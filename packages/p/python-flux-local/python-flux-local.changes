@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Sep 19 05:19:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.10.0:
+  * chore(deps): update dependency typing-extensions to v4.15.0 by
+    @renovate[bot] in #997
+  * chore(deps): update dependency pytest-cov to v7 by @renovate[bot]
+    in #1005
+  * feat: add EnvoyProxy and Plan to supported image types by @onedr0p
+    in #1004
+  * chore(deps): update docker.io/alpine/helm docker tag to v3.19.0 by
+    @renovate[bot] in #1007
+
+-------------------------------------------------------------------
+Fri Sep 19 05:11:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.8.0:
+  * Add registry-config to diff/test action by @vaughnw128 in #984
+  * chore(deps): update dependency coverage to v7.10.2 by
+    @renovate[bot] in #983
+  * chore(deps): update pre-commit hook
+    charliermarsh/ruff-pre-commit to v0.12.7 by @renovate[bot] in
+    #978
+  * chore(deps): update dependency ruff to v0.12.8 by
+    @renovate[bot] in #985
+  * chore(deps): update actions/checkout action to v5 by
+    @renovate[bot] in #988
+  * chore(deps): update pre-commit hook pre-commit/pre-commit-hooks
+    to v6 by @renovate[bot] in #987
+  * chore(deps): update ubuntu docker tag to noble-20250716 by
+    @renovate[bot] in #990
+  * chore(deps): update docker.io/alpine/helm docker tag to v3.18.5
+    by @renovate[bot] in #991
+  * chore(deps): update dependency types-pyyaml to v6.0.12.20250822
+    by @renovate[bot] in #994
+  * chore(deps): update dependency types-aiofiles to
+    v24.1.0.20250822 by @renovate[bot] in #993
+  * chore(deps): update dependency coverage to v7.10.6 by
+    @renovate[bot] in #998
+  * chore(deps): update docker.io/alpine/helm docker tag to v3.18.6
+    by @renovate[bot] in #996
+  * chore(deps): update actions/setup-python action to v6 by
+    @renovate[bot] in #1002
+  * chore(deps): update codecov/codecov-action action to v5.5.1 by
+    @renovate[bot] in #992
+  * fix: increase timeout from 20.0 to 60.0 seconds by @onedr0p in
+    #1003
+
+-------------------------------------------------------------------
 Thu Aug  7 05:28:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.8.0:
