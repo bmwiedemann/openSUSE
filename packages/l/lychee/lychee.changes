@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 25 09:57:42 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.20.1:
+  * chore: release v0.20.1 (#1813)
+  * Always check files explicitly if specified by user or matched by user glob (#1816)
+  * chore(docs): update TOC
+  * Add content write permissions (#1814)
+  * Bump the dependencies group across 1 directory with 3 updates (#1812)
+  * Update changelog
+
+-------------------------------------------------------------------
 Fri Aug 22 08:46:09 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.20.0:
