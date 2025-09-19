@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 18 13:18:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop rygel-devel BuildRequires, what pragha checks for is
+  pkgconfig(rygel-server-2.6), and currently rygel-devel provides
+  pkgconfig(rygel-server-2.8).
+
+-------------------------------------------------------------------
 Thu Feb  1 08:58:57 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Fix build for Leap 15.6
