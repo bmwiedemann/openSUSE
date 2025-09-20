@@ -154,4 +154,12 @@
   * Add aes-xts AArch64 implementation that will eventually be imported from s2n-bignum. (forwarded request 1305212 from rrahl0)</comment>
     <requestid>1305213</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c378f9fc3dcb2eedc9b4e345768c1e62</srcmd5>
+    <version>1.61.2</version>
+    <time>1758398703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1306144</requestid>
+  </revision>
 </revisionlist>
