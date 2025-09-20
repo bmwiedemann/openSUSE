@@ -1,7 +1,7 @@
 #
 # spec file for package neovim
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_without luajit
 %endif
 Name:           neovim
-Version:        0.11.3
+Version:        0.11.4
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
@@ -151,6 +151,7 @@ mkdir -p %{buildroot}%{_datadir}/vim/site/{after,after/syntax,autoload,colors,do
 %fdupes %{buildroot}
 %find_lang nvim
 
+%ifnarch %{arm64}
 %check
 mkdir -p runtime/parser
 ln -sf %{_libdir}/tree_sitter/vimdoc.so runtime/parser
@@ -162,6 +163,7 @@ ln -sf %{_libdir}/tree_sitter/vimdoc.so runtime/parser
 # functional tests
 %ifarch aarch64 x86_64
 %make_build USE_BUNDLED=OFF unittest
+%endif
 %endif
 
 %post

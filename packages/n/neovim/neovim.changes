@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep 16 12:00:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.11.4:
+  * fix(lsp/health): ensure valid table before concatenating
+  * fix(lsp/health): always use vim.inspect to show root_markers
+  * docs(tutor): Chinese (zh-CN) translation
+  * fix(lsp): close floating preview window correctly
+  * fix(tutor): use invalidate field in nvim_buf_set_extmark()
+  * fix(iter): ArrayIter:last returns nil when filtered to empty
+  * fix(clipboard): correct blockwise register width computation
+  * fix(cmdline): :checkhealth completion with multiple args
+  * fix(snippet): setting end_right_gravity
+  * fix(api): nvim_create_user_command addr option should allow ranges
+  * fix(lsp): show title when global winborder is set
+  * vim-patch:9.1.1599: :bnext doesn't go to unlisted help buffers
+  * fix(float): cursor visible in "hidden" floating window
+  * fix(treesitter): inconsistent highlight of multiline combined injection
+  * fix(api): fix not capturing output in cmdline mode
+  * feat(provider): detect venv python via "pynvim-python" tool
+  * fix(treesitter): run FileType autocmds in the context of <abuf>
+  * fix(folds): error when deleting lines at end of buffer
+  * fix(diff): set default diff flags properly
+  * fix(health): accept TERM=tmux-direct
+  * docs(lsp): mention lsp/after/ in faq
+  * fix(lua): report error in Lua Funcref callback properly
+  * fix(health): update advice for Python
+- update suse-spec-template
+
+-------------------------------------------------------------------
 Wed Jul 16 07:38:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.11.3:
