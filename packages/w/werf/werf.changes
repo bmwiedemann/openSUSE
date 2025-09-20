@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 20 08:31:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.47.5:
+  * Features
+    - add warning for dev mode in ci (#7046) (bd3ebd9)
+  * Bug Fixes
+    - build, stapel: restrict from to reference itself (#7057)
+      (6c09dcf)
+    - build: add from backward compatibility fix (9610260)
+    - build: add nameless image backward compatibility fix
+      (6c7e6d8)
+    - buildah,host-cleanup: do requested changes (fa0830a)
+    - build: reject stage that is no longer available (dc0c5f4)
+    - host-cleanup, docker: protect "tempID:latest" docker tag from
+      parallel "werf host cleanup" process (#7049) (f465863)
+    - host-cleanup: clarify cleanupReport using (5e161d0)
+    - host-cleanup: respect --dry-run option for gitdata gc
+      (8e3ae09)
+    - host-cleanup: respect host locks for containers cleanup
+      (18ae7f9)
+    - host-cleanup: respect host locks for images cleanup (a64d4ff)
+  * Miscellaneous Chores
+    - release: force release 2.47.5 (8399ed0)
+
+-------------------------------------------------------------------
 Thu Sep 18 13:16:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.47.4:
