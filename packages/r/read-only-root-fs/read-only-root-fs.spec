@@ -68,7 +68,10 @@ have a writable /root or /home, additional fstab entries can be added.
 cp -a etc usr %{buildroot}
 
 %post
-if [ "$1" = 1 -a "`findmnt -n -o FSTYPE -l /`" = "btrfs" ] ; then
+# Create /etc subvolume for fresh installations
+# Exception: The host's file system for KIWI builds may also be btrfs, but for KIWI
+# (indicator: /.kconfig is present) the script will be called later in disk.sh.
+if [ "$1" = 1 ] && [ "`findmnt -n -o FSTYPE -l /`" = "btrfs" ] && [ ! -e /.kconfig ]; then
     %{_libexecdir}/setup-etc-subvol
 fi
 if [ ! -e /boot/writable -a "`findmnt -n -o FSTYPE -l /`" = "btrfs" ]; then

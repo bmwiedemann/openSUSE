@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 19 09:20:04 UTC 2025 - Ignaz Forster <iforster@suse.com>
+
+- Add additional check in %post to prevent generating the btrfs
+  /etc subvolume during a KIWI run
+  [bsc#1250133] [gh#openSUSE/read-only-root-fs#27]
+
+-------------------------------------------------------------------
 Thu Aug 07 13:17:48 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Migrate from ro to ro=vfs (boo#1156421)
