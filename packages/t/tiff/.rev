@@ -1081,4 +1081,41 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     + tiff-CVE-2025-8961.patch</comment>
     <requestid>1303201</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>971ba72cdff631f3f265f3c0554cbcfa</srcmd5>
+    <version>4.7.1</version>
+    <time>1758398628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.7.1:
+  Software configuration changes:
+  * Define HAVE_JPEGTURBO_DUAL_MODE_8_12 and LERC_STATIC in tif_config.h.
+  * CMake: define WORDS_BIGENDIAN via tif_config.h
+  * doc/CMakeLists.txt: remove useless cmake_minimum_required()
+  * CMake: fix build with LLVM/Clang 17 (fixes issue #651)
+  * CMake: set CMP0074 new policy
+  * Set LINKER_LANGUAGE for C targets with C deps
+  * Export tiffxx cmake target (fixes issue #674)
+  * autogen.sh: Enable verbose wget.
+  * configure.ac: Syntax updates for Autoconf 2.71
+  * autogen.sh: Re-implement based on autoreconf. Failure to update
+    config.guess/config.sub does not return error (fixes issue #672)
+  * CMake: fix CMake 4.0 warning when minimum required version is &lt; 3.10.
+  * CMake: Add build option tiff-static (fixes issue #709)
+  Library changes:
+  * Add TIFFOpenOptionsSetWarnAboutUnknownTags() for explicit control
+    about emitting warnings for unknown tags. No longer emit warnings
+    about unknown tags by default
+  * tif_predict.c: speed-up decompression in some cases.
+  Bug fixes:
+  * tif_fax3: For fax group 3 data if no EOL is detected, reading is
+    retried without synchronisation for EOLs. (fixes issue #54)
+  * Updating TIFFMergeFieldInfo() with read_count=write_count=0 for
+    FIELD_IGNORE. Updating TIFFMergeFieldInfo() with read_count=write_count=0 for
+    FIELD_IGNORE. Improving handling when field_name = NULL. (fixes issue #532)
+  * tiff.h: add COMPRESSION_JXL_DNG_1_7=52546 as used for JPEGXL compression in
+    the DNG 1.7 specification
+  * TIFFWriteDirectorySec: Increment string length for ASCII tags for codec tags
+    defined with FIELD_xxx bits, as it is done for FIELD_CUSTOM tags. (fixes issue #648)</comment>
+    <requestid>1305886</requestid>
+  </revision>
 </revisionlist>
