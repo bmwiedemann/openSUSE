@@ -26,4 +26,12 @@ The tarball must be currently downloaded like this because upstream misses some 
     <comment></comment>
     <requestid>1302012</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>816afabcded52e78ed9d82c59a2597a0</srcmd5>
+    <version>0.2.0~main.266</version>
+    <time>1758398648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1306049</requestid>
+  </revision>
 </revisionlist>

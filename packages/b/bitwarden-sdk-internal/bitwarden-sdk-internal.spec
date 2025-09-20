@@ -17,7 +17,7 @@
 
 
 Name:           bitwarden-sdk-internal
-Version:        0.2.0~main.242
+Version:        0.2.0~main.266
 %global toolchain clang
 # Remove requires on type_fest
 %global __requires_exclude ^npm(.*)
@@ -28,7 +28,7 @@ License:        Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND BSD-3-Clause AND GPL-
 Group:          System/Libraries
 Url:            https://github.com/bitwarden/sdk-internal
 # Created by create-tarball.sh
-Source0:        sdk-internal-0.2.0-main.242.tar.zst
+Source0:        sdk-internal-0.2.0-main.266.tar.zst
 Patch0:         remove-nonfree.patch
 
 #Is applied before vendor step as it adds additional dependencies.
