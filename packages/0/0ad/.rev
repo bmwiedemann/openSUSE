@@ -212,4 +212,14 @@
 </comment>
     <requestid>1294846</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>eaabdb70d87f2c5b7aec198ac4b87f07</srcmd5>
+    <version>0.27.1</version>
+    <time>1758398661</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with Boost 1.89.0 (Boost.System is headers only since 1.69.0)
+  + 0002-remove-boost-system-library.patch
+</comment>
+    <requestid>1306072</requestid>
+  </revision>
 </revisionlist>

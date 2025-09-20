@@ -44,11 +44,17 @@ Source:         https://releases.wildfiregames.com/%{name}-%{version}-unix-build
 Source1:        premake-disable-rpath.patch
 Source100:      0ad-rpmlintrc
 Patch1:         0001-Enable-building-on-arbitrary-architectures.patch
+%if 0%{?suse_version} >= 1600
+Patch2:         0002-remove-boost-system-library.patch
+BuildRequires:  boost-devel >= 1.69.0
+%endif
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libXcursor-devel
 BuildRequires:  libboost_filesystem-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
