@@ -95,4 +95,12 @@
     <comment>3.5.19</comment>
     <requestid>1305948</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>48684f01723703b1ff393eb593102fe7</srcmd5>
+    <version>3.5.19</version>
+    <time>1758398705</time>
+    <user>dimstar_suse</user>
+    <comment>Fix patch</comment>
+    <requestid>1306149</requestid>
+  </revision>
 </revisionlist>

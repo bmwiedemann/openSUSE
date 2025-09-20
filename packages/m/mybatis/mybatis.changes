@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 20 15:54:47 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * no-script-in-comment.patch
+    + modify to actually produce useful javadoc
+
+-------------------------------------------------------------------
 Thu Sep 18 12:39:34 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Version update to 3.5.7
