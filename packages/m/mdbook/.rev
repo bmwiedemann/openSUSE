@@ -501,4 +501,56 @@ Fixed
 </comment>
     <requestid>1305896</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f0c10bc2cc92b1554a06b1f3c98c0172</srcmd5>
+    <version>0.4.48</version>
+    <time>1758398705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.48:
+  * Merge pull request #2629 from ehuss/bump-version
+  * Update to 0.4.48
+  * Merge pull request #2625 from GuillaumeGomez/simplify-resources-location
+  * Finish moving resources around
+  * Move JS files into `front-end/js`
+  * Move css and font files into `front-end`
+  * Move template files into `front-end/templates` folder
+  * Merge pull request #2576 from tmandry/default-auto-switch
+  * Fix eslint errors
+  * Add &quot;Auto&quot; option to theme menu
+  * Switch theme when preferred color scheme changes
+  * Merge pull request #2613 from szabgab/avoid-duplicate-entries
+  * Merge pull request #2627 from szabgab/test/empty-cli
+  * test the command line without any parameters #1568
+  * Merge pull request #2626 from ehuss/footnote-backrefs-style
+  * Add footnote backreferences, and update styling
+  * Merge pull request #2616 from rust-lang/ehuss-patch-2
+  * Add more triagebot features
+  * Merge pull request #2554 from GuillaumeGomez/eslint
+  * Merge pull request #2609 from szabgab/gh-pages-explanation
+  * Use `serde_json` instead of `json` to get `browser-ui-test` version
+  * Add information on eslint and how to install and run it
+  * Add eslint check in the CI
+  * Fix eslint warnings
+  * Merge pull request #2552 from GuillaumeGomez/deduplicate-search-indexes
+  * Remove `fail-on-request-error` in GUI tests as they are not needed anymore
+  * Improve warning message when search index is too big
+  * Remove JSON search file
+  * Avoid using the same file twice in SUMMARY.md
+  * add explanation I learned in #2606
+  * Merge pull request #2604 from szabgab/test/arrow-keys
+  * Merge pull request #2602 from szabgab/gui-tests
+  * try the last pages as well
+  * Add GUI test to check the left and right arrow keys
+  * Select all the GUI tests if no filter was provided
+  * Merge pull request #2579 from szabgab/ask_the_preprocessor_to_blow_up
+  * Merge pull request #2589 from szabgab/test/cant_open_summary_md
+  * Merge pull request #2590 from GuillaumeGomez/filter-gui-tests
+  * Allow to run only some specific GUI tests
+  * try to fix expected error on windows
+  * Merge pull request #2587 from ehuss/bump-version
+  * Merge pull request #2586 from ehuss/fix-search-subchapter
+  * Update to 0.4.47
+</comment>
+    <requestid>1306151</requestid>
+  </revision>
 </revisionlist>
