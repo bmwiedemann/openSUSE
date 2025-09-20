@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 19 14:05:53 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758276418.9dda31e:
+  * Document max_interval (and quiet) in (assert_)script_run
+  * testapi: allow passing max_interval through (assert_)script_run
+  * t/consoles-s3270.t: fix with IPC::Run 20250809.0
+  * backend: Simplify json_fails collection with map
+  * backend: Simplify check_socket with early-return
+  * backend: Simplify do_capture by moving loop one level up
+
+-------------------------------------------------------------------
 Wed Sep 17 15:14:18 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1758095301.2731a7d:
