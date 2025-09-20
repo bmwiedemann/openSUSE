@@ -1,7 +1,7 @@
 #
 # spec file for package wsdd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wsdd
-Version:        0.8
+Version:        0.9
 Release:        0
 Summary:        A Web Service Discovery host daemon
 License:        MIT

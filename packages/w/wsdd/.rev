@@ -111,4 +111,31 @@
     <comment></comment>
     <requestid>1178923</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>65d87aa3d65031f3c4a8d85652b38225</srcmd5>
+    <version>0.9</version>
+    <time>1758398635</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9:
+  * Add command line argument to set source port for multicast
+    message for better firewall interoperability
+  * Add initial support for SunOS (#223), without dynamic
+    address/interface monitoring. Thanks to Carsten Grzemba.
+  * Add Socket-activated systemd service (#218). Thanks to
+    Alessandro Astone.
+  * Devices are now recorded based on their URI provided in the
+    endpoint reference address, which is not neccessarily a UUID.
+    This also affects API (see #226).
+  * make `/etc/default/wsdd` optional for systemd (see #212)
+  * Remove support for Python 3.7 and 3.8 in Github workflows.
+  * Clean conection turn-down for Python pre-3.13. Thanks to
+    Alessandro Astone
+  * Handle TimeoutError in metadata exchange.
+  * Proper handling of endpoint addresses as URIs, not UUIDs, see
+    #226.
+
+- Fix build for Leap 15.6
+  * Fixed error when interface address is removed (#62)</comment>
+    <requestid>1306032</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 19 14:47:06 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9:
+  * Add command line argument to set source port for multicast
+    message for better firewall interoperability
+  * Add initial support for SunOS (#223), without dynamic
+    address/interface monitoring. Thanks to Carsten Grzemba.
+  * Add Socket-activated systemd service (#218). Thanks to
+    Alessandro Astone.
+  * Devices are now recorded based on their URI provided in the
+    endpoint reference address, which is not neccessarily a UUID.
+    This also affects API (see #226).
+  * make `/etc/default/wsdd` optional for systemd (see #212)
+  * Remove support for Python 3.7 and 3.8 in Github workflows.
+  * Clean conection turn-down for Python pre-3.13. Thanks to
+    Alessandro Astone
+  * Handle TimeoutError in metadata exchange.
+  * Proper handling of endpoint addresses as URIs, not UUIDs, see
+    #226.
+
+-------------------------------------------------------------------
 Wed Jun  5 18:56:57 UTC 2024 - Herbert Graeber <herbert@graeber-clan.de>
 
-- Fix build for Leap 15.6 
+- Fix build for Leap 15.6
 
 -------------------------------------------------------------------
 Wed Apr  3 10:52:13 UTC 2024 - Herbert Graeber <herbert@graeber-clan.de>
@@ -176,7 +197,7 @@ Tue Oct 20 18:11:22 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
     PIDs, e.g., when Docker is used.
   * Prevent exceptions due to invalid incoming messages.
   * HTTP server address family wrong when interface address is added (#62)
-  * Fixed error when interface address is removed (#62) 
+  * Fixed error when interface address is removed (#62)
 
 -------------------------------------------------------------------
 Sat Aug 29 13:41:40 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
