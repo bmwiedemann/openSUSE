@@ -1078,7 +1078,7 @@ BuildRequires:  %{python_module setuptools}
 
 Requires:       salt = %{version}
 %if 0%{?singlespec_compat}
-Recommends:     %{python_module CherryPy}
+Requires:       %{python_module CherryPy}
 Requires:       %{python_module Genshi}
 Requires:       %{python_module Mako}
 %if !0%{?suse_version} > 1600 || 0%{?centos}
@@ -1098,7 +1098,7 @@ Requires:       %{python_module testinfra}
 Requires:       %{python_module yamllint}
 Requires:       %{python_module pip}
 %else
-Recommends:     python-CherryPy
+Requires:       python-CherryPy
 Requires:       python-Genshi
 Requires:       python-Mako
 %if !0%{?suse_version} > 1600 || 0%{?centos}
