@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 20 08:34:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.3:
+  * Chore
+    - Upgrade machine-controller version to v1.62.1 and
+      operating-system-manager version to v1.7.6 (#3818, @archups)
+  * Bug or Regression
+    - Fix validation to pass when ChartURL is given (#3824,
+      @kubermatic-bot)
+
+-------------------------------------------------------------------
 Thu Sep 18 06:58:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.2:
