@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep 20 14:56:00 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 11.1.1:
+  * fix: outputs are only set when the job is successful
+  * document that DOCKER_HOST should be used instead of
+    --container-daemon-socket
+- update to version 11.1.0:
+  * feat: validate --directory alternative to --repository to not clone
+  * feat: the forgejo context is equivalent to the github context
+  * fix: schema validation must accept aliases and merges
+  * fix: forgejo-runner validate exit with error when validation fails
+  * fix: do not save .runner unless it is modified
+  * fix: remove LXC working directory when it completes
+  * fix: send job outputs & job result to Forgejo in sync with each other
+  * fix: if the Forgejo instance failed a job, cancel it
+  * fix: enforce job..timeout-minutes
+  * fix: use a fixed runner name for old (<= v1.20) Forgejo instances
+  * fix: docker-compose example: allow the runner to keep its labels
+
+-------------------------------------------------------------------
 Wed Sep 17 09:49:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 11.0.0:
