@@ -1,11 +1,17 @@
---- bitwarden-2025.5.1/libs/angular/src/scss/webfonts.css.orig	2025-06-04 21:36:27.000000000 +0200
-+++ bitwarden-2025.5.1/libs/angular/src/scss/webfonts.css	2025-06-26 21:56:31.756077843 +0200
-@@ -1,8 +0,0 @@
+--- clients/libs/components/src/theme.css.orig	2025-09-19 14:26:43.197678180 +0200
++++ clients/libs/components/src/theme.css	2025-09-19 16:14:58.223662119 +0200
+@@ -6,14 +6,6 @@
+ /**
+  * Font faces
+  */
 -@font-face {
 -  font-family: Roboto;
 -  src:
--    url("webfonts/roboto.woff2") format("woff2 supports variations"),
--    url("webfonts/roboto.woff2") format("woff2-variations");
+-    url("~@bitwarden/components/src/webfonts/roboto.woff2") format("woff2 supports variations"),
+-    url("~@bitwarden/components/src/webfonts/roboto.woff2") format("woff2-variations");
 -  font-display: swap;
 -  font-weight: 100 900;
 -}
+ 
+ /**
+  * CSS variables

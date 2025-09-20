@@ -32,6 +32,12 @@ mkdir -pv .cargo
 cargo vendor-filterer --platform='*-unknown-linux-gnu' --platform='*-unknown-linux-gnueabihf' --all-features > .cargo/config
 popd
 
+echo ">>>>>> Remove sqlite vendor"
+rm -v  apps/desktop/desktop_native/vendor/libsqlite3-sys/sqlite3/sqlite3*
+rm -v  apps/desktop/desktop_native/vendor/libsqlite3-sys/sqlcipher/sqlite3*
+
+
+
 echo ">>>>>> Remove non-free binaries"
 find . -type f -name "*.wasm" -print -delete
 find . -type f -name "*.wasm.js" -print -delete

@@ -20,11 +20,11 @@
 #not running the tests on OBS — extremely flaky
 %bcond_with test_rust
 
-%global sdk_internal_req_version 0.2.0~main.242
+%global sdk_internal_req_version 0.2.0~main.266
 
 
 Name:       bitwarden
-Version:    2025.8.2
+Version:    2025.9.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -99,6 +99,7 @@ BuildRequires: nodejs-packaging
 BuildRequires: nodejs-bitwarden-sdk-internal = %sdk_internal_req_version
 BuildRequires: nodejs-electron-devel
 BuildRequires: sed
+BuildRequires: sqlite-devel
 BuildRequires: zstd
 #Tools used by npm
 BuildRequires: gcc-c++
@@ -139,7 +140,7 @@ rm -rvf node_modules/@bitwarden/sdk-internal
 cp -arvLT {%{nodejs_sitelib},node_modules}/@bitwarden/sdk-internal
 
 #remove bundled font
-rm -v libs/angular/src/scss/webfonts/roboto.woff2
+rm -v libs/components/src/webfonts/roboto.woff2
 
 #fix exe path
 sed -i 's[XXXLIBDIRXXX[%{_libdir}[g' apps/desktop/src/main/native-messaging.main.ts
@@ -168,6 +169,8 @@ wayland-protocols \
 libloading \
 pkcs5 \
 aes-gcm \
+libsqlite3-sys \
+vcpkg \
 ; do
 pushd vendor/$i
 jq -cj '.files={}' .cargo-checksum.json >tmp && mv tmp .cargo-checksum.json && popd
@@ -193,6 +196,10 @@ export CFLAGS="%{optflags} -fpic -fno-semantic-interposition -fvisibility=hidden
 export CXXFLAGS="%{optflags} -fpic -fno-semantic-interposition -fvisibility=hidden"
 export LDFLAGS="%{?build_ldflags}"
 export MAKEFLAGS="%{_smp_mflags}"
+export CRATE_CC_NO_DEFAULTS=1
+export CARGO_PROFILE_RELEASE_DEBUG=2
+export CC_ENABLE_DEBUG_OUTPUT=1
+export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 
 %if 0%{?suse_version}
 auditable='auditable -vv'
@@ -305,6 +312,10 @@ export CFLAGS="%{optflags} -fpic -fno-semantic-interposition -fvisibility=hidden
 export CXXFLAGS="%{optflags} -fpic -fno-semantic-interposition -fvisibility=hidden"
 export LDFLAGS="%{?build_ldflags}"
 export MAKEFLAGS="%{_smp_mflags}"
+export CRATE_CC_NO_DEFAULTS=1
+export CARGO_PROFILE_RELEASE_DEBUG=2
+export CC_ENABLE_DEBUG_OUTPUT=1
+export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 %if 0%{?suse_version}
 auditable='auditable -vv'
 %endif
