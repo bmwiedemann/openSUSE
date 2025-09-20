@@ -1138,4 +1138,13 @@
     <comment>KDE release gear 25.08.1</comment>
     <requestid>1303854</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>78b830241be4f2b5281c9002a762833f</srcmd5>
+    <version>25.08.1</version>
+    <time>1758398637</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete build conditions and requirements
+  (related: boo#1249599)</comment>
+    <requestid>1306040</requestid>
+  </revision>
 </revisionlist>

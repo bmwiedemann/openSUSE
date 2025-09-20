@@ -20,11 +20,6 @@
 %define qt6_version 6.8.0
 %define kpim6_version 6.5.1
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
-%bcond_without etebase
-%endif
-
-%bcond_with kolabxml
 %bcond_without released
 Name:           kdepim-runtime
 Version:        25.08.1
@@ -39,15 +34,7 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  libboost_thread-devel
-BuildRequires:  libboost_system-devel
-%if %{with etebase}
 BuildRequires:  libetebase-devel
-%endif
-%if %{with kolabxml}
-BuildRequires:  libkolabxml-devel >= 1.1
-%endif
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -127,9 +114,6 @@ use PIM applications.
 %{_kf6_applicationsdir}/org.kde.akonadi_ews_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_google_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_imap_resource.desktop
-%if %{with kolabxml}
-%{_kf6_applicationsdir}/org.kde.akonadi_kolab_resource.desktop
-%endif
 %{_kf6_applicationsdir}/org.kde.akonadi_openxchange_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_vcard_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_vcarddir_resource.desktop
@@ -139,9 +123,7 @@ use PIM applications.
 %{_kf6_dbusinterfacesdir}/org.kde.Akonadi.MixedMaildir.Settings.xml
 %{_kf6_debugdir}/kdepim-runtime.categories
 %{_kf6_debugdir}/kdepim-runtime.renamecategories
-%if %{with etebase}
 %{_kf6_iconsdir}/hicolor/*/apps/akonadi-etesync.png
-%endif
 %{_kf6_iconsdir}/hicolor/*/apps/akonadi-ews.png
 %{_kf6_iconsdir}/hicolor/*/apps/ox.png
 %{_kf6_iconsdir}/hicolor/*/apps/account*.png
