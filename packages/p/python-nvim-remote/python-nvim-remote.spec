@@ -1,7 +1,7 @@
 #
 # spec file for package python-nvim-remote
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-neovim

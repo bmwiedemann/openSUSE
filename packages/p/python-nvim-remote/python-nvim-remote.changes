@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 19 21:15:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add BR python-typing-extensions, as it does not get pulled in
+  automatically anymore
+
+-------------------------------------------------------------------
 Tue Nov 26 23:37:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 4.2.0:
