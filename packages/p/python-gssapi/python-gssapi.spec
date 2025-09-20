@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-gssapi
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        A Python interface to RFC 2743/2744 (plus common extensions)
 License:        ISC
@@ -48,6 +48,8 @@ usable with other GSSAPI mechanisms.
 %prep
 %autosetup -p1 -n gssapi-%{version}
 sed -i "s/'gssapi.tests'//" setup.py
+# Remove zero-length files from source tree
+rm -f gssapi/raw/{ext_rfc6680_comp_oid.pyi,mech_krb5.pyi}
 
 mv gssapi/tests .
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 18 12:07:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.10.0
+  * Update macOS build versions
+  * Fix return type for name property in Credentials class
+  * Remove deprecated license classifier
+  * Update Python requirements and pin Cython
+- Remove zero-length files from source tree
+
+-------------------------------------------------------------------
 Fri Oct 25 10:12:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.9.0
