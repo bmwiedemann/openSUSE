@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 17 19:54:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 5.1.27
+  * Fixed another hang introduced in apcu 5.1.25, which can occur when
+    defragmentation is triggered under load.
+  * The report_memleaks INI directive has been removed from all tests as
+    it will be deprecated in PHP 8.5.
+
+-------------------------------------------------------------------
 Fri Aug  8 19:23:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 5.1.26
