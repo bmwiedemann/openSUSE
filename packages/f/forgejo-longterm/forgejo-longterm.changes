@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Sep 20 11:33:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 11.0.6:
+  * Do not display the title of unsubscribed issues or pull requests in the
+    notification web page
+  * fix: package cleanup rules are not applied when there are more than 200
+    packages
+  * fix: LFS GC is never running because of a bug in the parsing of the INI file
+  * chore: build-release must close the cascading pull request
+
+-------------------------------------------------------------------
+Tue Sep 16 13:58:23 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 11.0.5:
+  * Update dependency mermaid to v11.10.0
+  * Update module github.com/ulikunitz/xz to v0.5.15
+- update to version 11.0.4:
+  * fix: validate CSRF on non-safe methods All PUT/DELETE routes
+  * fix: use credential helpers for git clones When performing a git clone that
+    requires credentials
+  * fix: consistently enforce 2FA on OpenID 2.0
+  * fix: delete old auth token upon replacing primary email
+  * fix: require password login for creation of new token
+  * fix: ensure GetUserByEmail only considers validated emails
+  * fix: don't allow credentials in migrate/push mirror URL
+  * fix: only redirect to a new owner (organization or user) if the user has
+    permissions to view the new owner
+
+-------------------------------------------------------------------
 Sat Jul 26 15:41:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 11.0.3:
