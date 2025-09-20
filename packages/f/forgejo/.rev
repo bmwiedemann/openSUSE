@@ -607,4 +607,41 @@
   * global styling for the kbd tag (forwarded request 1295900 from rrahl0)</comment>
     <requestid>1295901</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>66e2c48dfe2a83aa0e2f9e3dea70108d</srcmd5>
+    <version>12.0.4</version>
+    <time>1758398682</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 12.0.4:
+  * Do not display the title of unsubscribed issues or pull requests in the
+    notification web page
+  * fix: package cleanup rules are not applied when there are more than 200
+    packages
+  * fix: [quota.default].TOTAL config setting supports unit suffixes
+  * fix: quotas double counting repo size when calculating size:all
+  * fix: LFS GC is never running because of a bug in the parsing of the INI file
+  * fix(api): set default pagination and Link header for repoListTags
+  * chore: build-release must close the cascading pull request
+
+- update to version 12.0.3:
+  * Update dependency mermaid to v11.10.0 [SECURITY]
+  * fix(ui): clear fields when canceling adding ssh key
+  * fix(api): deactivate issue api for disabled or external issue-tracker
+  * fix: migration failing when importing either issues or PRs but not the other
+  * fix: do better parsing of file modes
+  * Update module github.com/ulikunitz/xz to v0.5.15
+- update to version 12.0.2:
+  * fix: email comments are removed from email addresses
+  * fix: validate CSRF on non-safe methods All PUT/DELETE
+  * fix: use credential helpers for git clones When performing a git clone that
+    requires credentials
+  * fix: consistently enforce 2FA on OpenID 2.0
+  * fix: delete old auth token upon replacing primary email When the primary
+    email is changed before it is validated
+  * fix: require password login for creation of new token
+  * fix: ensure GetUserByEmail only considers validated emails
+  * fix: don't allow credentials in migrate/push mirror URL
+  * fix: only redirect to a new owner (organization or user) if the user has (forwarded request 1306119 from rrahl0)</comment>
+    <requestid>1306120</requestid>
+  </revision>
 </revisionlist>
