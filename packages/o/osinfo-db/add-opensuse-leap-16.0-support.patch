@@ -1,7 +1,7 @@
-Index: osinfo-db-20250124/os/opensuse.org/opensuse-16.0.xml
+Index: osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 ===================================================================
 --- /dev/null
-+++ osinfo-db-20250124/os/opensuse.org/opensuse-16.0.xml
++++ osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 @@ -0,0 +1,153 @@
 +<?xml version="1.0"?>
 +<libosinfo version="0.0.1">
@@ -35,7 +35,7 @@ Index: osinfo-db-20250124/os/opensuse.org/opensuse-16.0.xml
 +    <distro>opensuse</distro>
 +    <upgrades id="http://opensuse.org/opensuse/15.6"/>
 +    <derives-from id="http://opensuse.org/opensuse/15.6"/>
-+    <release-date>2024-06-12</release-date>
++    <release-date>2025-10-01</release-date>
 +    <firmware arch="x86_64" type="efi"/>
 +    <variant id="netinst">
 +      <name>openSUSE Leap 16.0</name>
@@ -49,9 +49,9 @@ Index: osinfo-db-20250124/os/opensuse.org/opensuse-16.0.xml
 +    </variant>
 +    <!-- DVD -->
 +    <media arch="x86_64">
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer-Leap.x86_64-Leap.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-x86_64.install.iso</url>
 +      <iso>
-+        <volume-id>Install-openSUSE-x86_64</volume-id>
++        <volume-id>Install-Leap-16.0-x86_64</volume-id>
 +        <system-id></system-id>
 +        <publisher-id>SUSE LINUX GmbH</publisher-id>
 +      </iso>
@@ -61,9 +61,9 @@ Index: osinfo-db-20250124/os/opensuse.org/opensuse-16.0.xml
 +    <!-- Network -->
 +    <media arch="x86_64">
 +      <variant id="netinst"/>
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer-Leap.x86_64-Leap-PXE.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer.x86_64-Leap_16.0.iso</url>
 +      <iso>
-+        <volume-id>agama*</volume-id>
++        <volume-id>Install-Leap-16.0-x86_64</volume-id>
 +        <system-id></system-id>
 +        <publisher-id>SUSE LINUX GmbH</publisher-id>
 +      </iso>
@@ -72,9 +72,9 @@ Index: osinfo-db-20250124/os/opensuse.org/opensuse-16.0.xml
 +    </media>
 +    <!-- DVD -->
 +    <media arch="aarch64">
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer-Leap.aarch64-Leap.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-aarch64.install.iso</url>
 +      <iso>
-+        <volume-id>Install-openSUSE-aarch64</volume-id>
++        <volume-id>Install-Leap-16.0-aarch64</volume-id>
 +        <system-id></system-id>
 +        <publisher-id>SUSE LINUX GmbH</publisher-id>
 +      </iso>
@@ -84,9 +84,9 @@ Index: osinfo-db-20250124/os/opensuse.org/opensuse-16.0.xml
 +    <!-- Network -->
 +    <media arch="aarch64">
 +      <variant id="netinst"/>
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer-Leap.aarch64-Leap-PXE.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer.aarch64-Leap_16.0.iso</url>
 +      <iso>
-+        <volume-id>agama*</volume-id>
++        <volume-id>Install-Leap-16.0-aarch64</volume-id>
 +        <system-id></system-id>
 +        <publisher-id>SUSE LINUX GmbH</publisher-id>
 +      </iso>
@@ -95,9 +95,9 @@ Index: osinfo-db-20250124/os/opensuse.org/opensuse-16.0.xml
 +    </media>
 +    <!-- DVD -->
 +    <media arch="ppc64le">
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer-Leap.ppc64le-Leap.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-ppc64le.install.iso</url>
 +      <iso>
-+        <volume-id>Install-openSUSE-ppc64le</volume-id>
++        <volume-id>Install-Leap-16.0-ppc64le</volume-id>
 +        <system-id></system-id>
 +        <publisher-id>SUSE LINUX GmbH</publisher-id>
 +      </iso>
@@ -107,9 +107,9 @@ Index: osinfo-db-20250124/os/opensuse.org/opensuse-16.0.xml
 +    <!-- Network -->
 +    <media arch="ppc64le">
 +      <variant id="netinst"/>
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer-Leap.ppc64le-Leap-PXE.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer.ppc64le-Leap_16.0.iso</url>
 +      <iso>
-+        <volume-id>agama*</volume-id>
++        <volume-id>Install-Leap-16.0-ppc64le</volume-id>
 +        <system-id></system-id>
 +        <publisher-id>SUSE LINUX GmbH</publisher-id>
 +      </iso>
@@ -118,9 +118,9 @@ Index: osinfo-db-20250124/os/opensuse.org/opensuse-16.0.xml
 +    </media>
 +    <!-- DVD -->
 +    <media arch="s390x">
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer-Leap.s390x-Leap.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-s390x.install.iso</url>
 +      <iso>
-+        <volume-id>Install-openSUSE-s390x</volume-id>
++        <volume-id>Install-Leap-16.0-s390x</volume-id>
 +        <system-id></system-id>
 +        <publisher-id>SUSE LINUX GmbH</publisher-id>
 +      </iso>
@@ -130,9 +130,9 @@ Index: osinfo-db-20250124/os/opensuse.org/opensuse-16.0.xml
 +    <!-- Network -->
 +    <media arch="s390x">
 +      <variant id="netinst"/>
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer-Leap.s390x-Leap-PXE.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer.s390x-Leap_16.0.iso</url>
 +      <iso>
-+        <volume-id>agama*</volume-id>
++        <volume-id>Install-Leap-16.0-s390x</volume-id>
 +        <system-id></system-id>
 +        <publisher-id>SUSE LINUX GmbH</publisher-id>
 +      </iso>

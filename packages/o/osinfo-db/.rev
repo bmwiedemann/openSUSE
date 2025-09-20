@@ -672,4 +672,12 @@
     <comment>Update osinfo-db database version to 20250606</comment>
     <requestid>1285637</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>cbb600e0b36085cfdc44d1900b3011a7</srcmd5>
+    <version>20250606</version>
+    <time>1758398638</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1306043</requestid>
+  </revision>
 </revisionlist>

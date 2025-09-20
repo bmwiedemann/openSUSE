@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 10 13:52:10 MDT 2025 - carnold@suse.com
+
+- Fix the definition of Leap 16.0 to match the current names of the
+  Leap 16.0 ISOs and the Volume IDs contained within those ISOs.
+  (bsc#1236401)
+  add-opensuse-leap-16.0-support.patch
+
+-------------------------------------------------------------------
 Fri Jun 13 12:59:23 MDT 2025 - carnold@suse.com
 
 - Update to database version 20250606 (jsc#PED-12706)
