@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 18 12:57:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.4
+  * Add fenced directive break rule in list parser, #412  -  by @lepture in #412 (ea3ec)
+  * Prevent remove unicode whitespace when parsing atx heading  -  by @lepture (9e720)
+
+-------------------------------------------------------------------
 Mon Apr  7 13:36:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.1.3
