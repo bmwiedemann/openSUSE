@@ -646,4 +646,12 @@
     <comment>RC, but since we already run the unstable one.... (forwarded request 1299183 from iznogood)</comment>
     <requestid>1299267</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>34d02fe762b4cfc46c93c927e5952c6f</srcmd5>
+    <version>4.2.0</version>
+    <time>1758398629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1305933</requestid>
+  </revision>
 </revisionlist>

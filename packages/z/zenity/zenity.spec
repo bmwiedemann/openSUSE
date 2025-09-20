@@ -17,7 +17,7 @@
 
 
 Name:           zenity
-Version:        4.1.99
+Version:        4.2.0
 Release:        0
 Summary:        GNOME Command Line Dialog Utility
 License:        LGPL-2.1-or-later
