@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 20 13:12:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.5
+  * Fixed verification sessions getting stuck in some cases
+  * Pass more information about network errors when mxc: requests
+    fail
+  * Massively improve E2EE performance when many devices are
+    registered on an account
+
+-------------------------------------------------------------------
 Wed Aug 13 06:45:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.9.4
