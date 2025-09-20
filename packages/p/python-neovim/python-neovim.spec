@@ -1,7 +1,7 @@
 #
 # spec file for package python-neovim
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 %define modname pynvim
 %{?sle15_python_module_pythons}
 Name:           python-neovim
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        Python client to Neovim
 License:        Apache-2.0
 Group:          Productivity/Text/Editors
 URL:            https://github.com/neovim/pynvim
-Source:         https://github.com/neovim/%{modname}/archive/%{version}/%{modname}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module greenlet}
+BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
@@ -38,13 +40,11 @@ BuildRequires:  python-rpm-macros
 Requires:       neovim
 Requires:       python-greenlet
 Requires:       python-msgpack
-Requires:       python-typing_extensions
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-nvim
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module greenlet}
-BuildRequires:  %{python_module msgpack}
-# /SECTION
+
 %python_subpackages
 
 %description
@@ -58,13 +58,24 @@ Library for scripting Nvim processes through its msgpack-rpc API.
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/%{modname}-python
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
+
+%post
+%python_install_alternative %{modname}-python
+
+%postun
+%python_uninstall_alternative %{modname}-python
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/neovim
+%python_alternative %{_bindir}/%{modname}-python
 %{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}-%{version}*-info
+%{python_sitelib}/%{modname}-%{version}.dist-info
+%{python_sitelib}/neovim
 
 %changelog

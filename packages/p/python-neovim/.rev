@@ -223,4 +223,21 @@
     <comment></comment>
     <requestid>1227687</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>96cf239aff24a2a36d55e62a813f3241</srcmd5>
+    <version>0.6.0</version>
+    <time>1758398659</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.0:
+  * Microoptimize the walk() function
+  * fix: remove the use of asyncio.get_child_watcher() for python3.14
+  * fix: improve EOFError exception when remote nvim crashes
+  * feat: Nvim can detect venv python via &quot;pynvim-python&quot; tool
+- enable tests
+- be more specific in the files section
+- remove python-typing extensions as a dependency, as it's only required
+  if python is lower than 3.12
+</comment>
+    <requestid>1306068</requestid>
+  </revision>
 </revisionlist>

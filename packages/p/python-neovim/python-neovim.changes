@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 18 09:53:43 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.6.0:
+  * Microoptimize the walk() function
+  * fix: remove the use of asyncio.get_child_watcher() for python3.14
+  * fix: improve EOFError exception when remote nvim crashes
+  * feat: Nvim can detect venv python via "pynvim-python" tool
+- enable tests
+- be more specific in the files section
+- remove python-typing extensions as a dependency, as it's only required
+  if python is lower than 3.12
+
+-------------------------------------------------------------------
 Tue Nov 26 23:33:08 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.5.2:
