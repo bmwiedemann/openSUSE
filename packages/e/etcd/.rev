@@ -421,4 +421,12 @@
     <comment>Update to version 3.6.4 (forwarded request 1296103 from eroca)</comment>
     <requestid>1296104</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>890f1768212c6beee7c910ddf9d76fa3</srcmd5>
+    <version>3.6.5</version>
+    <time>1758398655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1306064</requestid>
+  </revision>
 </revisionlist>

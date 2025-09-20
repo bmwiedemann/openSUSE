@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 19 20:28:42 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.6.5:
+  * Bump go to 1.24.7
+  * fix 20271: protect backend usage from concurrent applySnapshot and defrag
+  * Re-check that the lease still exists during the renew process
+  * Add an e2e test to reproduce lease Renew returns a wrong response
+  * server: Fix TestLogRotation error message in Go 1.24
+  * dependency: bump github.com/golangci/golangci-lint from v1.63.4 to v1.64.8
+  * Bump bbolt to v1.4.3
+  * Remove checking confState during schema migration
+  * Remove the --experimental-snapshot-catch-up-entries from help
+
+-------------------------------------------------------------------
 Mon Jul 28 12:16:38 UTC 2025 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.6.4:
