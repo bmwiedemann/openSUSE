@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 19 12:45:53 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.762.g8903c5e2:
+  * fix(dracut.sh): check that custom fw search path exists before reading it
+  * fix(fs-lib): include modules for charsets for working vfat support
+  * fix(lsinitrd, dracut-initramfs-restore): detect initrd for BLS Type #1 entries (bsc#1248271)
+
+-------------------------------------------------------------------
 Thu Sep 11 12:54:38 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.757.g0d1d426d:

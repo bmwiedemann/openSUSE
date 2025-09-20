@@ -436,3 +436,5 @@ fa17b6fb fix(systemd-udevd): handle root=gpt-auto for systemd-v258
 52155dde fix(dracut): library directory creation in --kernel-only
 1b11affd fix(74nvmf): only set netroot if it's yet empty
 f879b04d fix(74nvmf): make sure autoconnect script is run at least once
+51bd1331 fix(fs-lib): include modules for charsets for working vfat support
+89dcdd91 fix(dracut.sh): check that custom fw search patch exists before reading it
