@@ -15,9 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           rqlite
-Version:        9.0.2
+Version:        9.1.0
 Release:        0
 Summary:        Distributed relational database built on SQLite
 License:        MIT
