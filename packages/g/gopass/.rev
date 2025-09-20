@@ -100,4 +100,23 @@
   - [testing] use /usr/bin/env cat instead of /bin/cat (#3160)</comment>
     <requestid>1305040</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5811405f8213447fc1bbd7f06e02e68c</srcmd5>
+    <version>1.15.18</version>
+    <time>1758398653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.18:
+  - [fix] Enable Windows builders (#3237)
+  - [fix] Fix recipient check error (#3235)
+  - [fix] Update gitconfig to v0.0.3 to pull in Windows fixes
+    (#3236)
+  - [fix] Use Go 1.24 instead of Go 1.25 (#3226)
+  - docs: Add note about pass compatibility (#3229)
+  - feat: Add reorg command (#3232)
+  - feat: Allow to customize commit messages (#3231)
+  - feat: Improve usability of 'gopass mounts add' command (#3238)
+  - fix(config): Make core.exportkeys handling consistent (#3228)
+  - fix(gpg): Opportunistic key comparison on import (#3230)</comment>
+    <requestid>1306053</requestid>
+  </revision>
 </revisionlist>
