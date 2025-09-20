@@ -18,16 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-napalm
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Network Automation and Programmability Abstraction Layer
 License:        Apache-2.0
 URL:            https://github.com/napalm-automation/napalm
 Source:         https://github.com/napalm-automation/napalm/archive/%{version}.tar.gz#/napalm-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#napalm-automation/napalm#2155
-Patch0:         python-napalm-no-mock.patch
-# PATCH-FIX-UPSTREAM gh#napalm-automation/napalm#2137
-Patch1:         support-python-313.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -86,6 +82,7 @@ interact with different router vendor devices using a unified API.
 %prep
 %autosetup -p1 -n napalm-%{version}
 sed -i '1{/env python/d}' napalm/pyIOSXR/*.py
+rm napalm/junos/templates/schedule_probes.j2
 
 %build
 %pyproject_wheel

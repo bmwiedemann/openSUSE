@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Sep 18 13:46:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.1.0
+  * fix: documentation build
+  * fix: documentation build (#2066)
+  * Fixes #2086 stripping whitespace
+  * Bump types-setuptools from 69.2.0.20240317 to 69.5.0.20240519
+  * Bump pytest from 7.3.1 to 8.2.1
+  * Bump sphinx from 7.2.6 to 7.3.7
+  * Bump black from 24.3.0 to 24.4.2
+  * Bump mypy from 1.9.0 to 1.10.0
+  * Closes #2028: Fix typo
+  * Bump jinja2 from 3.1.3 to 3.1.4
+  * Bump types-six from 1.16.21.20240311 to 1.16.21.20240513
+  * Bump coveralls from 3.3.1 to 4.0.1
+  * Bump ansible from 9.4.0 to 9.6.0
+  * Bump types-requests from 2.31.0.20240406 to 2.32.0.20240521
+  * Bump types-setuptools from 69.5.0.20240519 to 69.5.0.20240522
+  * Rework eos.get_bgp_neighbor
+  * added pyenv .python-version file to the gitignore
+  * Small fixes for nxos_ssh
+  * Improve nxos_ssh version handling
+  * Bump ansible version in docs requirements
+  * Draft: Update eos CLI vrf command
+  * use plain dict in IOSDriver.get_bgp_neighbors_detail()
+  * Support NTP server details in base, EOS
+  * Bump urllib3 from 2.2.1 to 2.2.2
+  * Bump types-requests from 2.32.0.20240521 to 2.32.0.20240712
+  * Bump pytest from 8.2.1 to 8.3.2
+  * Bump mypy from 1.10.0 to 1.11.1
+  * Bump types-pyyaml from 6.0.12.20240311 to 6.0.12.20240808
+  * Bump types-requests from 2.32.0.20240712 to 2.32.0.20241016
+  * Bump pytest from 8.3.2 to 8.3.4
+  * Bump urllib3 from 2.2.2 to 2.3.0
+  * Bump ansible from 9.6.1 to 11.2.0
+  * Bump markupsafe from 2.1.5 to 3.0.2
+  * Bump ansible from 11.2.0 to 11.3.0
+  * Bump ttp-templates from 0.3.6 to 0.3.7
+  * Bump jinja2 from 3.1.4 to 3.1.5
+  * Bump types-pyyaml from 6.0.12.20240808 to 6.0.12.20241230
+  * Bump types-six from 1.16.21.20240513 to 1.17.0.20241205
+  * Bump pytest from 8.3.4 to 8.3.5
+  * Bump mock from 5.1.0 to 5.2.0
+  * [EOS] Fix confirm_commit for ssh transport
+  * Discard unexpected NTP strings
+  * Remove external mock dependency
+  * Bump jinja2 from 3.1.5 to 3.1.6
+  * Add support for PY3.13; use vendored version of telnetlib
+  * Bump pytest-cov from 5.0.0 to 6.0.0
+  * Bump mypy from 1.11.1 to 1.15.0
+  * Bump sphinx from 7.3.7 to 8.2.3
+  * Bump types-six from 1.17.0.20241205 to 1.17.0.20250304
+  * Bump types-requests from 2.32.0.20241016 to 2.32.0.20250306
+  * Rename ssh_config_file to ssh_config for iosxr_netconf driver
+  * [eos] fix banner when transport is ssh
+  * Explicitly close IOSXR connection
+  * Remove calls to deprecated pkg_resources
+  * pytest wrapper should return None, not result
+  * Remove transitive dependency scp from requirements.txt
+  * Fix pyez dependency issue
+  * Dependabot updates
+  * More dependabot updates
+  * Prep for napalm 5.1.0 release
+  * Release 5.1.0 (attempt 2)
+- Drop python-napalm-no-mock.patch, merged upstream
+- Drop support-python-313.patch, merged upstream
+- Remove zero-length file from source tree
+
+-------------------------------------------------------------------
 Tue Apr 15 11:37:04 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Enable sle15_python_module_pythons (project is Python 3.8+)
