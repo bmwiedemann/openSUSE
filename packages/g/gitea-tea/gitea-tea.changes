@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Sep 19 20:33:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix version to something simpler
+
+-------------------------------------------------------------------
+Fri Sep 19 12:41:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.11.0:
+  * Fix yaml output single quote (#814)
+  * generate man page (#811)
+  * feat: add validation for object-format flag in repo create
+    command (#741)
+  * Fix release version (#815)
+  * update gitea sdk to v0.22 (#813)
+  * don't fallback login directly (#806)
+  * Check duplicated login name in interact mode when creating new
+    login (#803)
+  * Fix bug when output json with special chars (#801)
+  * add debug mode and update readme (#805)
+  * update go.mod to retract the wrong tag v1.3.3 (#802)
+  * revert completion scripts removal (#808)
+  * Remove pagination from context (#807)
+  * Continue auth when failed to open browser (#794)
+  * Fix bug (#793)
+  * Fix tea login add with ssh public key bug (#789)
+  * Add temporary authentication via environment variables (#639)
+  * Fix attachment size (#787)
+  * deploy image when tagging (#792)
+  * Add Zip URL for release list (#788)
+  * Use bubbletea instead of survey for interacting with TUI (#786)
+  * capitalize a few items
+  * rm out of date comparison file
+  * README: Document logging in to gitea (#790)
+  * remove autocomplete command (#782)
+  * chore(deps): update ghcr.io/devcontainers/features/git-lfs
+    docker tag to v1.2.5 (#773)
+  * replace arch package url (#783)
+  * fix: Reenable -p and --limit switches (#778)
+
+-------------------------------------------------------------------
 Mon Sep 15 16:22:12 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Install up-to-date autocompletion files.
