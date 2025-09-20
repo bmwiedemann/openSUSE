@@ -116,11 +116,13 @@ This package provides development files for fcitx5-chinese-addons.
 %autosetup
 
 %build
-%if 0%{?suse_version} == 1500
-export CC=gcc-8
-export CXX=g++-8
-%endif
+%if 0%{?suse_version} < 1600
+%cmake -DUSE_WEBKIT=OFF \
+       -DCMAKE_C_COMPILER=gcc-13 \
+       -DCMAKE_CXX_COMPILER=g++-13
+%else
 %cmake -DUSE_WEBKIT=OFF
+%endif
 %make_build
 
 %install
