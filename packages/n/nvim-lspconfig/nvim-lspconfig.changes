@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Sep 20 14:42:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 2.5.0:
+  * feat(vue_ls): support ts_ls
+  * fix(vue_ls): correctly check if ts_clients exist
+  * fix(golangci_lint_ls): support v2 wrapper script
+  * fix(docker_language_server): set language id for compose files
+  * fix(texlab): adapt commands to fit 0.11+
+  * feat(codebook): add Java and Lua filetypes
+  * fix: vim.lsp.get_log_path() -> vim.lsp.log.get_filename()
+  * feat(codebook): add gitcommit filetype
+  * fix(clangd): old config style still including proto filetype
+  * feat(roslyn_ls): support slnx
+  * docs(hyprls): Install from hyprland-community org
+  * feat(yamlls): Added document formatting support
+  * feat: improve monorepo support for Typescript and ESLint LSP
+  * fix: vtsls does not start in monorepo with bun.lock
+  * fix(ts/js): servers do not start when bun.lock exists
+  * fix: type annotations
+  * refactor(yamlls): Non-hacky way to enable formatting
+  * fix(ts_ls): server not starting if there is no typescript
+  * fix: do not add type annotation to docgen
+  * fix: ts/js LSPs require lockfile
+  * fix(pyright): command :LspPyrightOrganizeImports fails
+
+-------------------------------------------------------------------
 Wed Jul 30 05:00:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 2.4.0:

@@ -297,4 +297,12 @@
   * feat(clangd): remove proto filetype support, reverting (#2125) (forwarded request 1296587 from rrahl0)</comment>
     <requestid>1296588</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a0f5e78819449de1d9328fc75fb15d85</srcmd5>
+    <version>2.5.0</version>
+    <time>1758398700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1306140</requestid>
+  </revision>
 </revisionlist>
