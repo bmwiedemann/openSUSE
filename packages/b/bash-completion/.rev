@@ -635,4 +635,13 @@
     <comment>- Drop completions for kmod; kmod&gt;=34 provides its own now. (forwarded request 1248155 from jengelh)</comment>
     <requestid>1248294</requestid>
   </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>0ea9abb2017d38366763cc2da0b81ff1</srcmd5>
+    <version>2.12.0</version>
+    <time>1758398627</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch bug1246923.patch
+  * Skip colon from device names for ethtool (bsc#1246923)</comment>
+    <requestid>1305804</requestid>
+  </revision>
 </revisionlist>

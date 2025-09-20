@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 18 13:02:46 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch bug1246923.patch
+  * Skip colon from device names for ethtool (bsc#1246923) 
+
+-------------------------------------------------------------------
 Mon Feb 24 13:44:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop completions for kmod; kmod>=34 provides its own now.

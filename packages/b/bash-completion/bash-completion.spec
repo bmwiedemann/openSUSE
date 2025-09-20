@@ -1,7 +1,7 @@
 #
 # spec file for package bash-completion
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,8 @@ Patch13:        boo1190929-9af4afd0.patch
 Patch14:        bsc1199724-modules.patch
 # PATCH-FIX-SUSE boo#1221414 -- shells/bash-completion: Bug
 Patch15:        boo1221414-scp.patch
+# PATCH-FIX-UPSTREAM bsc#1246923 --  [SLES 16.0] The network name is end with ":" via ethtool auto-completion
+Patch16:        bug1246923.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildArch:      noarch

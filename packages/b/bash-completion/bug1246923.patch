@@ -1,0 +1,24 @@
+From a452aee8fb58720ecfadbdaad95277ac9d9072ac Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ville=20Skytt=C3=A4?= <ville.skytta@iki.fi>
+Date: Thu, 2 May 2024 21:22:09 +0300
+Subject: [PATCH] fix(available_interfaces): strip only trailing colon from
+ entries
+
+Leave other punctuation alone, at least for now.
+
+Closes https://github.com/scop/bash-completion/issues/1133
+---
+ bash_completion |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/bash_completion
++++ b/bash_completion	2025-09-18 13:01:19.130576676 +0000
+@@ -1738,7 +1738,7 @@ _comp_compgen_available_interfaces()
+         fi
+     } 2>/dev/null | _comp_awk \
+         '/^[^ \t]/ { if ($1 ~ /^[0-9]+:/) { print $2 } else { print $1 } }')" &&
+-        _comp_compgen -U generated set "${generated[@]}"
++        _comp_compgen -U generated set "${generated[@]%:}"
+ }
+ 
+ # Echo number of CPUs, falling back to 1 on failure.
