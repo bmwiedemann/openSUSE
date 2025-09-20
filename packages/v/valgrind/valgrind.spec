@@ -1,7 +1,7 @@
 #
 # spec file for package valgrind
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %endif
 %bcond_without docs
 Name:           valgrind%{?psuffix}
-Version:        3.24.0
+Version:        3.25.1
 Release:        0
 Summary:        Memory Management Debugger
 License:        GFDL-1.2-only AND GPL-2.0-or-later
@@ -43,6 +43,7 @@ Source2:        valgrind.keyring
 Patch0:         valgrind.xen.patch
 # bko#276780 missing implementation for PINSRD
 Patch1:         VEX-x86-pinsrd.patch
+Patch2:         0001-Bug-503241-s390x-Support-z17-changes-to-the-NNPA-ins.patch
 Patch10:        dhat-use-datadir.patch
 BuildRequires:  automake
 BuildRequires:  pkgconfig
@@ -373,6 +374,12 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %{_libexecdir}/valgrind/powerpc-altivec32l.xml
 %{_libexecdir}/valgrind/powerpc-altivec64l-valgrind.xml
 %{_libexecdir}/valgrind/powerpc-altivec64l.xml
+%{_libexecdir}/valgrind/riscv64-cpu.xml
+%{_libexecdir}/valgrind/riscv64-cpu-valgrind-s*.xml
+%{_libexecdir}/valgrind/riscv64-fpu-valgrind-s*.xml
+%{_libexecdir}/valgrind/riscv64-fpu.xml
+%{_libexecdir}/valgrind/riscv64-linux.xml
+%{_libexecdir}/valgrind/riscv64-linux-valgrind.xml
 
 %else
 

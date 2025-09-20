@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Sep 19 14:11:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.25.1:
+  * 503098  Incorrect NAN-boxing for float registers in RISC-V
+  * 503641  close_range syscalls started failing with 3.25.0
+  * 503914  mount syscall param filesystemtype may be NULL
+  * 504177  FILE DESCRIPTORS banner shows when closing some
+    inherited fds
+  * 504265  FreeBSD: missing syscall wrappers for fchroot and
+    setcred
+  * 504466  Double close causes SEGV
+  * The valgrind gdbserver now supports the GDB remote protocol
+    packet 'x addr,len' (available in GDB release >= 16).
+    The x packet can reduce the time taken by GDB to read
+    memory from valgrind.
+  * Valgrind now supports zstd compressed debug sections.
+  * The Linux Test Project (ltp) is integrated in the testsuite
+    try 'make ltpchecks' (this will take a while and will point out
+    various missing syscalls and valgrind crashes!)
+  * Added RISCV64 support for Linux. Specifically for the RV64GC
+    instruction set.
+  * Numerous bug fixes for Illumos, in particular fixed a
+    Valgrind crash whenever a signal handler was called.
+  * The --track-fds=yes and --track-fds=all options now treat all
+    inherited file descriptors the same as 0, 1, 2
+    (stdin/out/err).
+    And when the stdin/out/err descriptors are reassigned they
+    are now treated as normal (non-inherited) file descriptors.
+  * A new option --modify-fds=high can be used together with
+    --track-fds=yes to create new file descriptors with the
+    highest possible number (and then decreasing) instead of always
+    using the lowest possible number (which is required by POSIX).
+    This will help catch issues where a file descriptor number
+    might normally be reused between a close and another open call.
+  * There is a change to warnings about calls to
+    pthread_cond_signal and pthread_cond_broadcast when the
+    associated mutex is unlocked. Previously
+    Helgrind would always warn about this. Now this error is
+    controlled by a command line option,
+    --check-cond-signal-mutex=yes|no.  The default is
+    no. This change has been made because some C and C++
+    standard libraries use
+    pthread_cond_signal/pthread_cond_broadcast in this way.
+    Users are obliged to use suppressions if they wish to avoid this
+    noise.
+- add
+  0001-Bug-503241-s390x-Support-z17-changes-to-the-NNPA-ins.patch
+  (jsc#PED-13403)
+
+-------------------------------------------------------------------
 Thu Jan 30 12:53:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.24.0 (jsc#PED-10260):

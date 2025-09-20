@@ -1565,4 +1565,41 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment>- update to 3.23.0 (jsc#PED-10260) (bsc#1243671):</comment>
     <requestid>1280825</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>79ab16d9233ced061117fd1104cedcd0</srcmd5>
+    <version>3.25.1</version>
+    <time>1758398634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.25.1:
+  * 503098  Incorrect NAN-boxing for float registers in RISC-V
+  * 503641  close_range syscalls started failing with 3.25.0
+  * 503914  mount syscall param filesystemtype may be NULL
+  * 504177  FILE DESCRIPTORS banner shows when closing some
+    inherited fds
+  * 504265  FreeBSD: missing syscall wrappers for fchroot and
+    setcred
+  * 504466  Double close causes SEGV
+  * The valgrind gdbserver now supports the GDB remote protocol
+    packet 'x addr,len' (available in GDB release &gt;= 16).
+    The x packet can reduce the time taken by GDB to read
+    memory from valgrind.
+  * Valgrind now supports zstd compressed debug sections.
+  * The Linux Test Project (ltp) is integrated in the testsuite
+    try 'make ltpchecks' (this will take a while and will point out
+    various missing syscalls and valgrind crashes!)
+  * Added RISCV64 support for Linux. Specifically for the RV64GC
+    instruction set.
+  * Numerous bug fixes for Illumos, in particular fixed a
+    Valgrind crash whenever a signal handler was called.
+  * The --track-fds=yes and --track-fds=all options now treat all
+    inherited file descriptors the same as 0, 1, 2
+    (stdin/out/err).
+    And when the stdin/out/err descriptors are reassigned they
+    are now treated as normal (non-inherited) file descriptors.
+  * A new option --modify-fds=high can be used together with
+    --track-fds=yes to create new file descriptors with the
+    highest possible number (and then decreasing) instead of always
+    using the lowest possible number (which is required by POSIX).</comment>
+    <requestid>1306030</requestid>
+  </revision>
 </revisionlist>
