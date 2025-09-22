@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 20 21:11:35 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250916.1.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250916.1
+  * Add TruffleRuby and TruffleRuby GraalVM 25.0.0 by @eregon in #2570
+- Changes from version 20250916:
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250916
+  * Added 3.4.6
+  * Drop the default package mirror by @jeremy in #2569
+    Official Ruby releases were already fetched from their original location at `cache.ruby-lang.org`, but starting from this release, all the other packages such as OpenSSL, TruffleRuby, JRuby, etc. are also downloaded from their original locations (`github.com` and `repo1.maven.org`, respectively) instead of from ruby-build's old CloudFront mirror.
+- Changes from version 20250908:
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250908
+  * Fix using system openssl v1.x via pkg-config by @mislav in #2568
+
+-------------------------------------------------------------------
 Fri Aug 29 13:27:13 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20250829.
