@@ -15,4 +15,12 @@
     <comment>Forward the current version of sshamble to Factory</comment>
     <requestid>1205565</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6032b7960d839b810a85a1743e1317e2</srcmd5>
+    <version>0.3.3</version>
+    <time>1758551973</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1306288</requestid>
+  </revision>
 </revisionlist>

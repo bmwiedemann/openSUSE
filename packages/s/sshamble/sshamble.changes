@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Sep 12 17:48:01 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.3
+  This release improves interact handling and introduces two new
+  command-line options:
+  * --one-session-only This boolean option instructs sshamble to
+    skip additional checks after the first successful session for
+    that target. This is helpful for devices where many methods
+    bypass authentication.
+  * --session-poke This string option defines what bytes to send
+    into new sessions to elicit responses. This field can be plain
+    ascii or escaped hex strings. For exampleshow
+    version\r\n\x0a\x0d will send a show version command followed
+    by two CRLFs. Please take into account your local shell
+    handling when using this feature (place the argument in
+    single-quotes, etc.).
+  * Clarify that all output is JSONL (NDJSON) and update
+    dependencies.
+  * Update analyzers.
+- Update to version 0.2.1
+  * Dependency updates.
+- Update to version 0.2.0
+  * Switch to https://github.com/runZeroInc/excrypto for forked
+    dependencies.
+  * Automatic badkeys.info blocklist lookups.
+  * Additional authentication bypass methods.
+  * Wider algorithm and host key support.
+  * Experimental blind exec vuln checks.
+  * Target filtering with --skip-versions.
+
+-------------------------------------------------------------------
 Tue Oct  1 20:00:58 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.0.5
