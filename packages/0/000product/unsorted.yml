@@ -613,10 +613,7 @@ unsorted:
   - ansible-test 
   - ansible-variables 
   - ansifilter 
-  - ansifilter-bash-completion 
-  - ansifilter-fish-completion 
   - ansifilter-gui 
-  - ansifilter-zsh-completion 
   - ansilove 
   - ansilove-term 
   - ant 
@@ -2697,6 +2694,7 @@ unsorted:
   - cracklib-devel 
   - cracklib-devel-32bit 
   - cracklib-dict-small 
+  - crackpkcs12 
   - cramfs-tools 
   - cramfsswap 
   - crane 
@@ -7772,6 +7770,7 @@ unsorted:
   - goreleaser 
   - gos-wallpapers 
   - gosec 
+  - goshs 
   - goss 
   - gotestsum 
   - gotosocial 
@@ -8026,7 +8025,6 @@ unsorted:
   - gstreamer-plugins-libav-32bit 
   - gstreamer-plugins-libcamera 
   - gstreamer-plugins-rs 
-  - gstreamer-plugins-rs-devel 
   - gstreamer-plugins-ugly-32bit 
   - gstreamer-plugins-vaapi 
   - gstreamer-rtsp-server-devel 
@@ -10148,7 +10146,7 @@ unsorted:
   - kiriki 
   - kiriki-lang 
   - kismet 
-  - kismet-capture-bt-geiger 
+  - kismet-capture-antsdr-droneid 
   - kismet-capture-freaklabs-zigbee 
   - kismet-capture-linux-bluetooth 
   - kismet-capture-linux-wifi 
@@ -10156,10 +10154,11 @@ unsorted:
   - kismet-capture-nrf-52840 
   - kismet-capture-nrf-mousejack 
   - kismet-capture-nrf-nxp-kw41z 
+  - kismet-capture-radiacode-usb 
   - kismet-capture-rz-killerbee 
   - kismet-capture-sdr-rtl433 
   - kismet-capture-sdr-rtladsb 
-  - kismet-capture-sdr-rtlamr 
+  - kismet-capture-serial-radview 
   - kismet-capture-ti-cc-2531 
   - kismet-capture-ti-cc2540 
   - kismet-common 
@@ -10522,17 +10521,6 @@ unsorted:
   - kubernetes-scheduler-minus1 
   - kubernetes-scheduler-minus2 
   - kubernetes-scheduler-minus3 
-  - kubernetes1.30-apiserver 
-  - kubernetes1.30-client 
-  - kubernetes1.30-client-bash-completion 
-  - kubernetes1.30-client-common 
-  - kubernetes1.30-client-fish-completion 
-  - kubernetes1.30-controller-manager 
-  - kubernetes1.30-kubeadm 
-  - kubernetes1.30-kubelet 
-  - kubernetes1.30-kubelet-common 
-  - kubernetes1.30-proxy 
-  - kubernetes1.30-scheduler 
   - kubernetes1.31-apiserver 
   - kubernetes1.31-client 
   - kubernetes1.31-client-bash-completion 
@@ -12069,7 +12057,7 @@ unsorted:
   - libbacktrace-devel 
   - libbamf3-2 
   - libbandicoot1 
-  - libbaresip20 
+  - libbaresip22 
   - libbarvinok23 
   - libbase-javadoc 
   - libbaseencode-devel 
@@ -12878,7 +12866,7 @@ unsorted:
   - libdwarf-devel-static 
   - libdwarf-doc 
   - libdwarf-tools 
-  - libdwarf0 
+  - libdwarf2 
   - libdwarfs0_13_0 
   - libdwarves1 
   - libdxflib-3_26_4-1 
@@ -13289,6 +13277,10 @@ unsorted:
   - libfwps1 
   - libfwsi-devel 
   - libfwsi1 
+  - libfyaml 
+  - libfyaml-devel 
+  - libfyaml-fy-tool 
+  - libfyaml0 
   - libgadu-devel 
   - libgadu3 
   - libgamemode-devel 
@@ -15196,6 +15188,7 @@ unsorted:
   - libpcsclite1-32bit 
   - libpcscspy0 
   - libpcscspy0-32bit 
+  - libpe1 
   - libpeas-2-0 
   - libpeas-devel 
   - libpeas2-devel 
@@ -15695,7 +15688,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre2-11 
-  - libre32 
+  - libre37 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
@@ -26871,7 +26864,6 @@ unsorted:
   - python311-re-assert 
   - python311-reactivex 
   - python311-readme_renderer 
-  - python311-readthedocs-sphinx-ext 
   - python311-rebulk 
   - python311-recommonmark 
   - python311-reconfigure 
@@ -30663,7 +30655,6 @@ unsorted:
   - python312-re-assert 
   - python312-reactivex 
   - python312-readme_renderer 
-  - python312-readthedocs-sphinx-ext 
   - python312-rebulk 
   - python312-recommonmark 
   - python312-reconfigure 
@@ -34400,7 +34391,6 @@ unsorted:
   - python313-re-assert 
   - python313-reactivex 
   - python313-readme_renderer 
-  - python313-readthedocs-sphinx-ext 
   - python313-rebulk 
   - python313-recommonmark 
   - python313-reconfigure 
@@ -35903,6 +35893,7 @@ unsorted:
   - readline-doc 
   - readline5-devel 
   - readline6-devel 
+  - readpe 
   - readrec0 
   - readstat-devel 
   - realmd 
@@ -36172,6 +36163,7 @@ unsorted:
   - rocm-rpm-macros-modules 
   - rocm-smi 
   - rocm-smi-devel 
+  - rocminfo 
   - rocs 
   - rocs-devel 
   - rocs-lang 
@@ -37093,6 +37085,9 @@ unsorted:
   - skelcd-openSUSE 
   - skelcd-openSUSE-non-OSS 
   - ski 
+  - skim 
+  - skim-bash-completion 
+  - skim-zsh-completion 
   - skkdic-extra 
   - skladnik 
   - skladnik-lang 
@@ -49177,6 +49172,7 @@ unsorted:
   - xbean 
   - xbean-javadoc 
   - xbiff 
+  - xbill 
   - xbindkeys 
   - xbitmaps-devel 
   - xbomb 
