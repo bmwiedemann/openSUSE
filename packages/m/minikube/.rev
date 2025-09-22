@@ -764,4 +764,12 @@
     <comment>- update to 1.35.0 (bsc#1234528, CVE-2024-45337):</comment>
     <requestid>1300137</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>bfcca166721ad15b530f080196ac0475</srcmd5>
+    <version>1.37.0</version>
+    <time>1758552010</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306415</requestid>
+  </revision>
 </revisionlist>
