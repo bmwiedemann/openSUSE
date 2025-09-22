@@ -1,4 +1,406 @@
 -------------------------------------------------------------------
+Fri Sep 19 13:06:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.2:
+  * Minor Changes
+    - ansible-test - Implement new authentication methods for
+      accessing the Ansible Core CI service.
+  * Bugfixes
+    - The ansible_failed_task variable is now correctly exposed in a
+      rescue section, even when a failing handler is triggered by the
+      flush_handlers task in the corresponding block (#85682)
+    - ternary filter - evaluate values lazily (#85743)
+
+-------------------------------------------------------------------
+Tue Aug 26 05:15:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.1:
+  * Minor Changes
+    - AnsibleModule - Add temporary internal monkeypatch-able hook
+      to alter module result serialization by splitting
+      serialization from '_return_formatted' into
+      '_record_module_result'.
+    - ansible-test - Improve formatting of generated coverage
+      config file.
+    - ansible-test - Use OS packages to satisfy controller
+      requirements on FreeBSD 13.5 during managed instance
+      bootstrapping.
+    - encrypt - check datatype of salt_size in password_hash
+      filter.
+    - service_facts - handle keyerror exceptions with warning.
+    - service_facts - warn user about missing service details
+      instead of ignoring.
+  * Bugfixes
+    - ansible-test - Always exclude the tests/output/ directory
+      from a collection's code coverage. (#84244)
+    - ansible-test - Limit package install retries during managed
+      remote instance bootstrapping.
+    - ansible-test - Use a consistent coverage config for all
+      collection testing.
+    - argspec validation - The str argspec type treats None values
+      as empty string for better consistency with pre-2.19
+      templating conversions.
+    - conditionals - When displaying a broken conditional error or
+      deprecation warning, the origin of the non-boolean result is
+      included (if available), and the raw result is omitted.
+    - failed_when - When using failed_when to suppress an error,
+      the exception key in the result is renamed to
+      failed_when_suppressed_exception. This prevents the error
+      from being displayed by callbacks after being suppressed.
+      (#85505)
+    - import_tasks - fix templating parent include arguments.
+    - plugins config, get_option_and_origin now correctly displays
+      the value and origin of the option.
+    - template lookup - Skip finalization on the internal
+      templating operation to allow markers to be returned and
+      handled by, e.g. the default filter. Previously, finalization
+      tripped markers, causing an exception to end processing of
+      the current template pipeline. (#85674)
+    - templating - Avoid tripping markers within Jinja generated
+      code. (#85674)
+    - templating - Ensure filter plugin result processing occurs
+      under the correct call context. (#85585)
+    - templating - Fix slicing of tuples in templating (#85606).
+    - templating - Multi-node template results coerce embedded None
+      nodes to empty string (instead of rendering literal None to
+      the output).
+    - templating - Undefined marker values sourced from the Jinja
+      getattr->getitem fallback are now accessed correctly, raising
+      AnsibleUndefinedVariable for user plugins that do not
+      understand markers. Previously, these values were erroneously
+      returned to user plugin code that had not opted in to marker
+      acceptance.
+    - tqm - use display.error_as_warning instead of
+      display.warning_as_error.
+    - tqm - use display.error_as_warning instead of self.warning.
+
+-------------------------------------------------------------------
+Tue Aug 26 05:07:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.0:
+  Large update, please see the full changelog for the full list of
+  bugfixes and minor changes
+  https://github.com/ansible/ansible/blob/v2.19.0/changelogs/CHANGELOG-v2.19.rst
+  * Major Changes
+    - Jinja plugins - Jinja builtin filter and test plugins are now
+      accessible via their fully-qualified names
+      ansible.builtin.{name}.
+    - Task Execution / Forks - Forks no longer inherit stdio from
+      the parent ansible-playbook process. stdout, stderr, and
+      stdin within a worker are detached from the terminal, and
+      non-functional. All needs to access stdio from a fork for
+      controller side plugins requires use of Display.
+    - ansible-test - Packages beneath module_utils can now contain
+      __init__.py files.
+    - variables - The type system underlying Ansible's variable
+      storage has been significantly overhauled and formalized.
+      Attempts to store unsupported Python object types in
+      variables now more consistently yields early warnings or
+      errors.
+    - variables - To support new Ansible features, many variable
+      objects are now represented by subclasses of their respective
+      native Python types. In most cases, they behave
+      indistinguishably from their original types, but some Python
+      libraries do not handle builtin object subclasses properly.
+      Custom plugins that interact with such libraries may require
+      changes to convert and pass the native types.
+  * Breaking Changes / Porting Guide
+    - Support for the toml library has been removed from TOML
+      inventory parsing and dumping. Use tomli for parsing on
+      Python 3.10. Python 3.11 and later have built-in support for
+      parsing. Use tomli-w to support outputting inventory in TOML
+      format.
+    - assert - The quiet argument must be a commonly-accepted
+      boolean value. Previously, unrecognized values were silently
+      treated as False.
+    - conditionals - Conditional expressions that result in
+      non-boolean values are now an error by default. Such results
+      often indicate unintentional use of templates where they are
+      not supported, resulting in a conditional that is always
+      true. When this option is enabled, conditional expressions
+      which are a literal None or empty string will evaluate as
+      true, for backwards compatibility. The error can be
+      temporarily changed to a deprecation warning by enabling the
+      ALLOW_BROKEN_CONDITIONALS config option.
+    - first_found lookup - When specifying files or paths as a
+      templated list containing undefined values, the undefined
+      list elements will be discarded with a warning. Previously,
+      the entire list would be discarded without any warning.
+    - internals - The AnsibleLoader and AnsibleDumper classes for
+      working with YAML are now factory functions and cannot be
+      extended.
+    - internals - The ansible.utils.native_jinja Python module has
+      been removed.
+    - lookup plugins - Lookup plugins called as with_(lookup) will
+      no longer have the _subdir attribute set.
+    - lookup plugins - terms will always be passed to run as the
+      first positional arg, where previously it was sometimes
+      passed as a keyword arg when using with_ syntax.
+    - loops - Omit placeholders no longer leak between loop item
+      templating and task templating. Previously, omit placeholders
+      could remain embedded in loop items after templating and be
+      used as an omit for task templating. Now, values resolving to
+      omit are dropped immediately when loop items are templated.
+      To turn missing values into an omit for task templating, use
+      | default(omit). This solution is backward-compatible with
+      previous versions of ansible-core.
+    - modules - Ansible modules using sys.excepthook must use a
+      standard try/except instead.
+    - plugins - Any plugin that sources or creates templates must
+      properly tag them as trusted.
+    - plugins - Custom Jinja plugins that accept undefined
+      top-level arguments must opt in to receiving them.
+    - plugins - Custom Jinja plugins that use environment.getitem
+      to retrieve undefined values will now trigger a MarkerError
+      exception. This exception must be handled to allow the plugin
+      to return a Marker, or the plugin must opt-in to accepting
+      Marker values.
+    - public API - The ansible.vars.fact_cache.FactCache wrapper
+      has been removed.
+    - serialization of omit sentinel - Serialization of variables
+      containing omit sentinels (e.g., by the to_json and to_yaml
+      filters or ansible-inventory) will fail if the variable has
+      not completed templating. Previously, serialization succeeded
+      with placeholder strings emitted in the serialized output.
+    - set_fact - The string values "yes", "no", "true" and "false"
+      were previously converted (ignoring case) to boolean values
+      when not using Jinja2 native mode. Since Jinja2 native mode
+      is always used, this conversion no longer occurs. When
+      boolean values are required, native boolean syntax should be
+      used where variables are defined, such as in YAML. When
+      native boolean syntax is not an option, the bool filter can
+      be used to parse string values into booleans.
+    - template lookup - The convert_data option is deprecated and
+      no longer has any effect. Use the from_json filter on the
+      lookup result instead.
+    - templating - Access to _ prefixed attributes and methods, and
+      methods with known side effects, is no longer permitted. In
+      cases where a matching mapping key is present, the associated
+      value will be returned instead of an error. This increases
+      template environment isolation and ensures more consistent
+      behavior between the . and [] operators.
+    - templating - Conditionals and lookups which use embedded
+      inline templates in Jinja string constants now display a
+      warning. These templates should be converted to their
+      expression equivalent.
+    - templating - Many Jinja plugins (filters, lookups, tests) and
+      methods previously silently ignored undefined inputs, which
+      often masked subtle errors. Passing an undefined argument to
+      a Jinja plugin or method that does not declare undefined
+      support now results in an undefined value.
+    - templating - Templates are always rendered in Jinja2 native
+      mode. As a result, non-string values are no longer
+      automatically converted to strings.
+    - templating - Templates resulting in None are no longer
+      automatically converted to an empty string.
+    - templating - Templates with embedded inline templates that
+      were not contained within a Jinja string constant now result
+      in an error, as support for multi-pass templating was removed
+      for security reasons. In most cases, such templates can be
+      easily rewritten to avoid the use of embedded inline
+      templates.
+    - templating - The allow_unsafe_lookups option no longer has
+      any effect. Lookup plugins are responsible for tagging
+      strings containing templates to allow evaluation as a
+      template.
+    - templating - The result of the range() global function cannot
+      be returned from a template- it should always be passed to a
+      filter (e.g., random). Previously, range objects returned
+      from an intermediate template were always converted to a
+      list, which is inconsistent with inline consumption of range
+      objects.
+    - templating - #jinja2: overrides in templates with invalid
+      override names or types are now templating errors.
+  * Deprecated Features
+    - CLI - The --inventory-file option alias is deprecated. Use
+      the -i or --inventory option instead.
+    - Jinja test plugins - Returning a non-boolean result from a
+      Jinja test plugin is deprecated.
+    - Passing a warnings` or ``deprecations key to exit_json or
+      fail_json is deprecated. Use AnsibleModule.warn or
+      AnsibleModule.deprecate instead.
+    - Strategy Plugins - Use of strategy plugins not provided in
+      ansible.builtin are deprecated and do not carry any backwards
+      compatibility guarantees going forward. A future release will
+      remove the ability to use external strategy plugins. No
+      alternative for third party strategy plugins is currently
+      planned.
+    - The ShellModule.checksum method is now deprecated and will be
+      removed in ansible-core 2.23. Use
+      ActionBase._execute_remote_stat() instead.
+    - The ansible.module_utils.common.collections.count() function
+      is deprecated and will be removed in ansible-core 2.23. Use
+      collections.Counter() from the Python standard library
+      instead.
+    - YAML parsing - Usage of the YAML 1.1 !!omap and !!pairs tags
+      is deprecated. Use standard mappings instead.
+    - YAML parsing - Usage of the undocumented !vault-encrypted
+      YAML tag is deprecated. Use !vault instead.
+    - ansible.compat.importlib_resources is deprecated and will be
+      removed in ansible-core 2.23. Use importlib.resources from
+      the Python standard library instead.
+    - ansible.module_utils.compat.datetime - The datetime
+      compatibility shims are now deprecated. They are scheduled to
+      be removed in ansible-core v2.21. This includes UTC,
+      utcfromtimestamp() and utcnow importable from said module
+      (#81874).
+    - bool filter - Support for coercing unrecognized input values
+      (including None) has been deprecated. Consult the filter
+      documentation for acceptable values, or consider use of the
+      truthy and falsy tests.
+    - cache plugins - The ansible.plugins.cache.base Python module
+      is deprecated. Use ansible.plugins.cache instead.
+    - callback plugins - The v2_on_any callback method is
+      deprecated. Use specific callback methods instead.
+    - callback plugins - The v1 callback API (callback methods not
+      prefixed with v2_) is deprecated. Use v2_ prefixed methods
+      instead.
+    - conditionals - Conditionals using Jinja templating delimiters
+      (e.g., {{, {%) should be rewritten as expressions without
+      delimiters, unless the entire conditional value is a single
+      template that resolves to a trusted string expression. This
+      is useful for dynamic indirection of conditional expressions,
+      but is limited to trusted literal string expressions.
+    - config - The ACTION_WARNINGS config has no effect. It
+      previously disabled command warnings, which have since been
+      removed.
+    - config - The DEFAULT_ALLOW_UNSAFE_LOOKUPS configuration
+      option is deprecated and no longer has any effect. Ansible
+      templating no longer encounters situations where use of
+      lookup plugins is considered "unsafe".
+    - config - The DEFAULT_JINJA2_NATIVE option has no effect.
+      Jinja2 native mode is now the default and only option.
+    - config - The DEFAULT_NULL_REPRESENTATION option has no
+      effect. Null values are no longer automatically converted to
+      another value during templating of single variable
+      references.
+    - config - The DEFAULT_UNDEFINED_VAR_BEHAVIOR configuration
+      option is deprecated and no longer has any effect. Attempting
+      to use an undefined variable where undefined values are
+      unexpected is now always an error. This behavior was enabled
+      by default in previous versions, and disabling it yielded
+      inconsistent results.
+    - config - The STRING_TYPE_FILTERS configuration option is
+      deprecated and no longer has any effect. Since the template
+      engine now always preserves native types, there is no longer
+      a risk of unintended conversion from strings to native types.
+    - config - Using the DEFAULT_JINJA2_EXTENSIONS configuration
+      option to enable Jinja2 extensions is deprecated. Previously,
+      custom Jinja extensions were disabled by default, as they can
+      destabilize the Ansible templating environment. Templates
+      should only make use of filter, test and lookup plugins.
+    - config - Using the DEFAULT_MANAGED_STR configuration option
+      to customize the value of the ansible_managed variable is
+      deprecated. The ansible_managed variable can now be set the
+      same as any other variable.
+    - display - The Display.get_deprecation_message method has been
+      deprecated. Call Display.deprecated to display a deprecation
+      message, or call it with removed=True to raise an
+      AnsibleError.
+    - file loading - Loading text files with DataLoader containing
+      data that cannot be decoded under the expected encoding is
+      deprecated. In most cases the encoding must be UTF-8,
+      although some plugins allow choosing a different encoding.
+      Previously, invalid data was silently wrapped in Unicode
+      surrogate escape sequences, often resulting in later errors
+      or other data corruption.
+    - first_found lookup - Splitting of file paths on ,;: is
+      deprecated. Pass a list of paths instead. The split method on
+      strings can be used to split variables into a list as needed.
+    - interpreter discovery - The auto_legacy and
+      auto_legacy_silent options for INTERPRETER_PYTHON are
+      deprecated. Use auto or auto_silent options instead, as they
+      have the same effect.
+    - inventory plugins - Setting invalid Ansible variable names in
+      inventory plugins is deprecated.
+    - oneline callback - The oneline callback and its associated
+      ad-hoc CLI args (-o, --one-line) are deprecated.
+    - paramiko - The paramiko connection plugin has been deprecated
+      with planned removal in 2.21.
+    - playbook - The timedout.frame task result value (injected
+      when a task timeout occurs) is deprecated. Include error in
+      the DISPLAY_TRACEBACK config value to capture a full Python
+      traceback for timed out actions.
+    - playbook syntax - Specifying the task args keyword without a
+      value is deprecated.
+    - playbook syntax - Using key=value args and the task args
+      keyword on the same task is deprecated.
+    - playbook syntax - Using a mapping with the action keyword is
+      deprecated. (#84101)
+    - playbook variables - The play_hosts variable has been
+      deprecated, use ansible_play_batch instead.
+    - plugin error handling - The AnsibleError constructor arg
+      suppress_extended_error is deprecated. Using
+      suppress_extended_error=True has the same effect as
+      show_content=False.
+    - plugins - Accessing plugins with _-prefixed filenames without
+      the _ prefix is deprecated.
+    - public API - The ansible.errors.AnsibleFilterTypeError
+      exception type has been deprecated. Use AnsibleTypeError
+      instead.
+    - public API - The ansible.errors._AnsibleActionDone exception
+      type has been deprecated. Action plugins should return a task
+      result dictionary in success cases instead of raising.
+    - public API - The ansible.module_utils.common.json.json_dump
+      function is deprecated. Call Python stdlib json.dumps
+      instead, with cls set to an Ansible profile encoder type from
+      ansible.module_utils.common.json.get_encoder.
+    - template lookup - The jinja2_native option is no longer used
+      in the Ansible Core code base. Jinja2 native mode is now the
+      default and only option.
+    - templating - Support for enabling Jinja2 extensions (not
+      plugins) has been deprecated.
+    - templating - The disable_lookups option has no effect, since
+      plugins must be updated to apply trust before any templating
+      can be performed.
+    - tree callback - The tree callback and its associated ad-hoc
+      CLI args (-t, --tree) are deprecated.
+  * Removed Features (previously deprecated)
+    - Remove deprecated plural form of collection path (#84156).
+    - Removed deprecated STRING_CONVERSION_ACTION (#84220).
+    - encrypt - passing unsupported passlib hashtype now raises
+      AnsibleFilterError.
+    - manager - remove deprecated include_delegate_to parameter
+      from get_vars API.
+    - modules - Modules returning non-UTF8 strings now result in an
+      error. The MODULE_STRICT_UTF8_RESPONSE setting can be used to
+      disable this check.
+    - removed deprecated pycompat24 and compat.importlib.
+    - selector - remove deprecated compat.selector related files
+      (#84155).
+    - windows - removed common module functions
+      ConvertFrom-AnsibleJson, Format-AnsibleException from Windows
+      modules as they are not used and add unneeded complexity to
+      the code.
+  * Security Fixes
+    - include_vars action - Ensure that result masking is correctly
+      requested when vault-encrypted files are read.
+      (CVE-2024-8775)
+    - task result processing - Ensure that action-sourced result
+      masking (_ansible_no_log=True) is preserved. (CVE-2024-8775)
+    - templating - Ansible's template engine no longer processes
+      Jinja templates in strings unless they are marked as coming
+      from a trusted source. Untrusted strings containing Jinja
+      template markers are ignored with a warning. Examples of
+      trusted sources include playbooks, vars files, and many
+      inventory sources. Examples of untrusted sources include
+      module results and facts. Plugins which have not been updated
+      to preserve trust while manipulating strings may
+      inadvertently cause them to lose their trusted status.
+    - templating - Changes to conditional expression handling
+      removed numerous instances of insecure multi-pass templating
+      (which could result in execution of untrusted template
+      expressions).
+    - user action won't allow ssh-keygen, chown and chmod to run on
+      existing ssh public key file, avoiding traversal on existing
+      symlinks (CVE-2024-9902).
+- remove patch 771f7ad29ca4d259761eaa88673c2e32f6412bbe.patch that
+  is included upstream
+- remove patch unarchive-test-fix.patch that is included upstream
+- remove patch suse-distribution-fix.patch that is included
+  upstream
+
+-------------------------------------------------------------------
 Thu Aug 21 06:32:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.8:
