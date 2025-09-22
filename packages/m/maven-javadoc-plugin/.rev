@@ -185,4 +185,12 @@ put into adi:2</comment>
     <comment>3.11.3</comment>
     <requestid>1299963</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>942a0a810b2b3357fae701b31778ecff</srcmd5>
+    <version>3.12.0</version>
+    <time>1758552005</time>
+    <user>anag_factory</user>
+    <comment>3.12.0</comment>
+    <requestid>1306377</requestid>
+  </revision>
 </revisionlist>
