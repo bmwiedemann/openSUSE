@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 19 11:36:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.11.0
+  * Support Django 6.0.
+- from version 6.10.0
+  * Support Python 3.14.
+
+-------------------------------------------------------------------
 Fri Feb 28 09:19:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 6.9.0
