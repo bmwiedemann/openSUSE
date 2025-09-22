@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Sep 15 13:55:27 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Commenting out code for RSMI_STATIC
+  * Removing rocm_smi_lib-rocm-6.4.3.tar.gz
+  * Adding 'Recommends: rocm-smi'
+- Update to version 1.4.4+git20250910.bdddfc4:
+  * Enable vim movement in help menu (#1242)
+  * Remove reduntant symbols in tree view (#948)
+  * Use /sys/dev/block/MAJOR:MINOR instead of /sys/block/NAME for disk I/O
+  * Don't terminate on GPU access failure
+  * fix: setcap cap_dac_read_search was overriding cap_perfmon
+  * Fix musl builds missing artifacts
+  * chore(deps): update actions/checkout action to v5
+  * chore(deps): update actions/checkout action to v5
+  * Update README.md
+  * feat: display CPU power draw & fix GPU+load avg overwriting core info
+  * refactor: remove reduntant casts and avoid conversions
+  * Revert unnecessary locale changes and remove debug line.
+
+-------------------------------------------------------------------
+Thu Aug 07 15:08:30 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating ROCm to v6.4.3
+- Update to version 1.4.4+git20250805.a05192f:
+  * fix: disable locale when writing config file
+  * Update CODE_OF_CONDUCT.md
+  * match formatting for units
+  * fix layout issue when enc/dec meters are unavailable
+  * disable encode/decode monitoring on AMD and Intel GPUs
+  * impl encode/decode monitoring for Nvidia
+  * Add utilisation meters for GPU hardware video encoder and decoder
+  * linux-batt: Battery Time-to-full
+  * Convert ascii escape codes in mountpoint names before reading statvfs.
+  * Fix presets erroring with gpu* usage.
+  * Clarify where btop loads themes from
+  * Update "cpu responsive" to "cpu direct" in README.md (#1199)
+
+-------------------------------------------------------------------
 Thu Jul 24 05:19:16 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating ROCm to v6.4.2
