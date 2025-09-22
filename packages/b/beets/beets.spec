@@ -39,7 +39,6 @@ BuildRequires:  python3-confuse >= 1.5.0
 BuildRequires:  python3-devel >= 3.8.0
 BuildRequires:  python3-jellyfish
 BuildRequires:  python3-mediafile >= 0.12.0
-BuildRequires:  python3-munkres
 BuildRequires:  python3-musicbrainzngs >= 0.4
 BuildRequires:  python3-pip
 BuildRequires:  python3-poetry-core
@@ -61,11 +60,13 @@ Requires:       python3-PyYAML
 Requires:       python3-Unidecode
 Requires:       python3-confuse >= 1.5.0
 Requires:       python3-jellyfish
+Requires:       python3-lap
 Requires:       python3-mediafile >= 0.12.0
-Requires:       python3-munkres
 Requires:       python3-musicbrainzngs >= 0.4
 Requires:       python3-musicbrainzngs >= 0.4
+Requires:       python3-numpy
 Requires:       python3-platformdirs
+Requires:       python3-sqlite3
 Recommends:     ffmpeg
 Recommends:     python3-Flask
 Recommends:     python3-Flask-Cors
