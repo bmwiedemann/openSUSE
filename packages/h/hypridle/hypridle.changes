@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 10 20:04:30 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.1.7:
+  - core: log when ScreenSaver interface is already registered by
+    @PaideiaDilemma in #133
+  - clang-tidy: fix some errors by @Honkazel in #143
+  - feat: support source option for additional config files by
+    @martabal in #144
+  - core: guard against dbus logind interface not existing and
+    check if on_(un)lock_cmd is empty by @PaideiaDilemma in #151
+  - Add ability to ignore Wayland idle inhibitors by @ChrisHixon in
+    #155
+  - Ignore idle inhibition per-listener by @ChrisHixon in #158
+  - nix: use gcc15 by @FridayFaerie in #159
+  - Add a --help option by @ShyAssassin in #160
+
+-------------------------------------------------------------------
+Tue Jun  3 12:25:40 UTC 2025 - Michal Hrusecky <michal@hrusecky.net>
+
+- Update to version 0.1.6:
+  * Added --version
+  * Added support for hyprland-lock-notify protocol
+  * core: implement hyprlock-lock-notify-v1 functionality (gh#hyprwm/hypridle#122)
+  * clang-tidy and comp fixes (gh#hyprwm/hypridle#126)
+  * core: fix sleep delay and simplify process spawning (gh#hyprwm/hypridle#127)
+  * assets: update example.conf (gh#hyprwm/hypridle#137)
+
+-------------------------------------------------------------------
 Tue Dec 10 21:13:41 UTC 2024 - malcolmlewis@opensuse.org
 
 - Update to version 0.1.5:

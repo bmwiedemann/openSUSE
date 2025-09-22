@@ -1,7 +1,7 @@
 #
 # spec file for package hypridle
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hypridle
-Version:        0.1.5
+Version:        0.1.7
 Release:        0
 Summary:        Hyprland's idle daemon
 License:        BSD-3-Clause
@@ -28,9 +28,11 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 ## Added for directory ownership
 BuildRequires:  hyprland
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(hyprland-protocols)
 BuildRequires:  pkgconfig(hyprlang) >= 0.4.2
 BuildRequires:  pkgconfig(hyprutils)
+BuildRequires:  pkgconfig(hyprwayland-scanner)
 BuildRequires:  pkgconfig(sdbus-c++)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -51,7 +53,7 @@ Hyprland's idle daemon
 
 %install
 %cmake_install
-install -Dm 0644 %{SOURCE1} %buildroot/%_docdir/%name/hypridle.conf.example
+install -Dm 0644 %{SOURCE1} %{buildroot}/%{_docdir}/%{name}/hypridle.conf.example
 
 %files
 %license LICENSE
