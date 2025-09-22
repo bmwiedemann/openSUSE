@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 13 17:15:34 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2
+  * Use high resolution counter to reduce jittering.
+  * Added pseudoset RANDOM20 with 20 random levels.
+  * Separate submenu for mouse options.
+  * Added default retro theme Classic.
+  * Added classic layout for old themes.
+  * Switch font colors for classic themes.
+  * Tooltips fade in.
+  * Added fade out effect.
+
+-------------------------------------------------------------------
 Sat May 17 14:57:50 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.11
