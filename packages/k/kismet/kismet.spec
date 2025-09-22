@@ -2,6 +2,7 @@
 # spec file for package kismet
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +21,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2023-07-R2
+%define realver 2025-09-R1
 Name:           kismet
-Version:        2023_07_R2
+Version:        2025_09_R1
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -46,19 +47,18 @@ BuildRequires:  libpcap-devel
 BuildRequires:  libsensors4-devel
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  protobuf-c
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(libmosquitto)
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libpcre2-8)
-BuildRequires:  pkgconfig(libprotobuf-c)
+BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libwebsockets) >= 3.2.0
-BuildRequires:  pkgconfig(protobuf) >= 25.0.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
@@ -66,17 +66,18 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  libbtbb-devel
 BuildRequires:  ubertooth-devel
 %endif
-Recommends:     kismet-capture-bt-geiger
+Recommends:     kismet-capture-antsdr-droneid
 Recommends:     kismet-capture-freaklabs-zigbee
 Recommends:     kismet-capture-linux-bluetooth
 Recommends:     kismet-capture-linux-wifi
 Recommends:     kismet-capture-nrf-51822
 Recommends:     kismet-capture-nrf-52840
 Recommends:     kismet-capture-nrf-mousejack
+Recommends:     kismet-capture-radiacode-usb
 Recommends:     kismet-capture-rz-killerbee
 Recommends:     kismet-capture-sdr-rtl433
 Recommends:     kismet-capture-sdr-rtladsb
-Recommends:     kismet-capture-sdr-rtlamr
+Recommends:     kismet-capture-serial-radview
 Recommends:     kismet-capture-ti-cc2540
 Recommends:     kismet-logtools
 Requires(pre):  %{name}-common = %{version}
@@ -85,6 +86,8 @@ Requires(pre):  shadow
 %if 0%{with ubertooth}
 Recommends:     kismet-capture-ubertooth-one
 %endif
+Obsoletes:      capture-bt-geiger < %version
+Obsoletes:      capture-sdr-rtlamr < %version
 %{?systemd_ordering}
 
 %global homedir %{_localstatedir}/lib/%{name}
@@ -158,49 +161,22 @@ This subpackage contains Kismet Linux WiFi capture helper.
 %package capture-sdr-rtl433
 Summary:        Kismet SDR rtl433 capture helper
 Group:          Productivity/Networking/Diagnostic
-Requires:       python3-protobuf >= 3.0.0
-Requires:       python3-websockets
-Requires:       rtl_433
-BuildArch:      noarch
 
 %description capture-sdr-rtl433
 Kismet is a wireless network and device detector, sniffer, wardriving
 tool, and WIDS (wireless intrusion detection) framework.
 
 This subpackage contains Kismet SDR rtl433 capture helper.
-https://kismetwireless.net/docs/readme/datasources_sdr_rtl433/
-
-%package capture-sdr-rtlamr
-Summary:        Kismet SDR rtlamr capture helper
-Group:          Productivity/Networking/Diagnostic
-Requires:       python3-numpy
-Requires:       python3-protobuf >= 3.0.0
-Requires:       python3-websockets
-Recommends:     rtl_amr
-BuildArch:      noarch
-
-%description capture-sdr-rtlamr
-Kismet is a wireless network and device detector, sniffer, wardriving
-tool, and WIDS (wireless intrusion detection) framework.
-
-This subpackage contains Kismet SDR rtlamr capture helper.
-https://kismetwireless.net/docs/readme/datasources_sdr_rtlamr/
 
 %package capture-sdr-rtladsb
 Summary:        Kismet SDR rtladsb capture helper
 Group:          Productivity/Networking/Diagnostic
-Requires:       python3-numpy
-Requires:       python3-protobuf >= 3.0.0
-Requires:       python3-websockets
-Requires:       rtl-sdr
-BuildArch:      noarch
 
 %description capture-sdr-rtladsb
 Kismet is a wireless network and device detector, sniffer, wardriving
 tool, and WIDS (wireless intrusion detection) framework.
 
 This subpackage contains the SDR rtladsb capture helper.
-https://kismetwireless.net/docs/readme/datasources_sdr_rtladsb/
 
 %package capture-nrf-mousejack
 Summary:        Kismet nRF MouseJack capture helper
@@ -212,7 +188,6 @@ Kismet is a wireless network and device detector, sniffer, wardriving
 tool, and WIDS (wireless intrusion detection) framework.
 
 This subpackage contains the nRF MouseJack capture helper.
-https://kismetwireless.net/docs/readme/datasources_nrf_mousejack/
 
 %package capture-rz-killerbee
 Summary:        Kismet Killerbee Sniffer capture helper
@@ -230,7 +205,6 @@ Summary:        Kismet Freaklabs Zigbee capture helper
 Group:          Productivity/Networking/Diagnostic
 Requires:       python3-protobuf >= 3.0.0
 Requires:       python3-pyserial
-BuildArch:      noarch
 
 %description capture-freaklabs-zigbee
 Kismet is a wireless network and device detector, sniffer, wardriving
@@ -291,17 +265,6 @@ tool, and WIDS (wireless intrusion detection) framework.
 This subpackage contains the NXP KW41Z BTLE and Zigbee Sniffer capture
 helper.
 
-%package capture-bt-geiger
-Summary:        Kismet BTLE geiger counter capture helper
-Group:          Productivity/Networking/Diagnostic
-BuildArch:      noarch
-
-%description capture-bt-geiger
-Kismet is a wireless network and device detector, sniffer, wardriving
-tool, and WIDS (wireless intrusion detection) framework.
-
-This subpackage contains the BTLE geiger counter capture helper.
-
 %if 0%{with ubertooth}
 %package capture-ubertooth-one
 Summary:        Kismet Ubertooth One (BTLE) capture helper
@@ -313,6 +276,38 @@ tool, and WIDS (wireless intrusion detection) framework.
 
 This subpackage contains the Ubertooth One (BTLE) capture helper.
 %endif
+
+%package capture-antsdr-droneid
+Summary:        Kismet AntSDR DJI DroneID driver
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-antsdr-droneid
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the AntSDR DJI DroneID capture helper.
+
+%package capture-radiacode-usb
+Summary:        Kismet Radiacode USB Geiger counter driver
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-radiacode-usb
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the Radiacode USB Geiger counter capture
+helper.
+
+%package capture-serial-radview
+Summary:        Kismet Radview geiger counter capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-serial-radview
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the Radview geiger counter capture
+helper.
 
 %package devel
 Summary:        Development files for kismet
@@ -327,25 +322,22 @@ This subpackage contains files files for developing applications that
 want to make use of kismet.
 
 %prep
-%setup -q -n kismet-kismet-%{realver}
-%patch -P 0 -p1
+%autosetup -p1 -n kismet-kismet-%{realver}
 # HACK: Add python DESTDIR support for python stuff
 find . -type f -name "Makefile*" -exec sed -i 's|setup.py install|setup.py install --root=$(DESTDIR)|g' {} \;
 # Fix wrong-script-end-of-line-encoding
 sed -i 's/\r$//' http_data/css/layout.css
 # rpmlint will complain about missing shebangs otherwise
 chmod a-x http_data/css/*.css
-%patch -P 1 -p1
 
 %build
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 export CC=gcc-12
 export CXX=g++-12
 %endif
 %limit_build -m 2500
 %configure \
     --sysconfdir=%{_sysconfdir}/kismet \
-    --enable-btgeiger \
     --disable-wifi-coconut \
     --disable-optimization \
     --enable-require-pcre2 \
@@ -457,19 +449,12 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 
 %files capture-freaklabs-zigbee
 %{_bindir}/kismet_cap_freaklabs_zigbee
-%{python3_sitelib}/KismetCaptureFreaklabsZigbee*
 
 %files capture-sdr-rtladsb
 %{_bindir}/kismet_cap_sdr_rtladsb
-%{python3_sitelib}/KismetCaptureRtladsb*
-
-%files capture-sdr-rtlamr
-%{_bindir}/kismet_cap_sdr_rtlamr
-%{python3_sitelib}/KismetCaptureRtlamr*
 
 %files capture-sdr-rtl433
 %{_bindir}/kismet_cap_sdr_rtl433
-%{python3_sitelib}/KismetCaptureRtl433*
 
 %files capture-ti-cc2540
 %{_bindir}/kismet_cap_ti_cc_2540
@@ -486,14 +471,19 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %files capture-nrf-nxp-kw41z
 %{_bindir}/kismet_cap_nxp_kw41z
 
-%files capture-bt-geiger
-%{_bindir}/kismet_cap_bt_geiger
-%{python3_sitelib}/KismetCaptureBtGeiger*
-
 %if 0%{with ubertooth}
 %files capture-ubertooth-one
 %{_bindir}/kismet_cap_ubertooth_one
 %endif
+
+%files capture-antsdr-droneid
+%{_bindir}/kismet_cap_antsdr_droneid
+
+%files capture-radiacode-usb
+%{_bindir}/kismet_cap_radiacode_usb
+
+%files capture-serial-radview
+%{_bindir}/kismet_cap_serial_radview
 
 %files devel
 %{_libdir}/pkgconfig/kismet.pc

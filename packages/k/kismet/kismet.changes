@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 10 18:58:55 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2025-09-R1
+  Biggest changes
+  * A new table display library in the UI adds more reliable
+    pagination, sizing, and display. Columns can be added, removed,
+    resized, and rearranged in the main display panel directly. The
+    display is much more efficient, and shouldn’t exhibit the
+    strange sizing behavior which happened sometimes.
+  * Python dependency removed for all datasources. Python keeps
+    changing the asyncio syntax and making other small breaking
+    changes, making packaging Python based tools outside of pip
+    problematic to say the least. RTLSDR and similar sources are
+    now rewritten in pure C.
+  * All new datasource/ipc protocol. This replaces the protobufs
+    based protocol, removes another complex library dependency,
+    and adds speed enhancements.
+  * Lots of improvements to reduce RAM and CPU use, especially in
+    the fastest packet processing paths.
+  Full changelog
+  * https://www.kismetwireless.net/posts/kismet-2025-09-r1/
+- Update patch
+  * kismet-fix-build.patch
+- Drop obsolete subpackages
+  * kismet-capture-bt-geiger
+  * kismet-capture-sdr-rtlamr
+- Add subpackages for new capture plugins
+  * kismet-capture-antsdr-droneid
+  * kismet-capture-radiacode-usb
+  * kismet-capture-serial-radview
+
+-------------------------------------------------------------------
 Mon Jun  9 09:05:26 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to version 2023-07-R2
