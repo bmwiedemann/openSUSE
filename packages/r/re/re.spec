@@ -1,7 +1,7 @@
 #
 # spec file for package re
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%global sover   32
+%global sover   37
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        3.21.1
+Version:        4.1.0
 Release:        0
 Summary:        Library for real-time communications with async I/O support
 License:        BSD-3-Clause

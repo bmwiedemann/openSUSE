@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 13 07:46:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.0
+  Major changes since 3.21.1:
+  * Increasing supported Compiler Versions (better C11/C23 Support).
+  * Dropping official OpenSSL 1.1.1 support.
+  * Dropping obsolete API functions.
+  Detailed Changes:
+  * https://github.com/baresip/re/releases/tag/v4.1.0
+  * https://github.com/baresip/re/releases/tag/v4.0.0
+  * https://github.com/baresip/re/releases/tag/v3.24.0
+  * https://github.com/baresip/re/releases/tag/v3.23.0
+  * https://github.com/baresip/re/releases/tag/v3.22.0
+
+-------------------------------------------------------------------
 Sat Apr  5 08:43:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.21.1:
