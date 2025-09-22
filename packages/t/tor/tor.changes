@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 17 06:19:42 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- 0.4.8.18
+  * CVE-2025-4444: onion service descriptor resource consumption
+    issue (boo#1250101)
+
+-------------------------------------------------------------------
 Tue Jul  1 03:12:54 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - 0.4.8.17
   * Minor features and bugfixes
+  * use quantum-resistant MLKEM-768 cipher
 
 -------------------------------------------------------------------
 Mon Apr 21 16:20:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
