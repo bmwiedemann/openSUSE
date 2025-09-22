@@ -29,4 +29,13 @@
   * Add `digest` functions that support the new buffer protocol</comment>
     <requestid>1290775</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c78b3b125c0bf29a302ea2c91f8583d1</srcmd5>
+    <version>5.2.0</version>
+    <time>1758551985</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.2.0:
+  * Add support for Python 3.14, including 3.14t (no-GIL) wheels.</comment>
+    <requestid>1306364</requestid>
+  </revision>
 </revisionlist>

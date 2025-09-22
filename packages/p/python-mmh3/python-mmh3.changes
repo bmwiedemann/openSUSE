@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 21 19:36:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * Add support for Python 3.14, including 3.14t (no-GIL) wheels.
+
+-------------------------------------------------------------------
 Sat Jul  5 10:48:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:
