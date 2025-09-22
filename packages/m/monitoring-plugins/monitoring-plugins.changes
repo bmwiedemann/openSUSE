@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 17 12:46:50 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Remove BuildRequires dhcp-devel because it is EOL.
+
+-------------------------------------------------------------------
 Fri Mar 28 01:13:14 UTC 2025 - William Brown <william.brown@suse.com>
 
 - Backport MTU checking support for fping, and v4/v6 handling improvements

@@ -78,7 +78,6 @@ Patch200:       0001-Backport-fping-MTU-and-ipv4-6-handling-improvements.patch
 
 BuildRequires:  automake
 BuildRequires:  bind-utils
-BuildRequires:  dhcp-devel
 BuildRequires:  fping
 %if 0%{?suse_version}
 PreReq:         permissions

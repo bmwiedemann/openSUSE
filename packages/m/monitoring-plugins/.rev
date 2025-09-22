@@ -415,4 +415,12 @@ New patches:
   * 0001-Backport-fping-MTU-and-ipv4-6-handling-improvements.patch (forwarded request 1264789 from firstyear)</comment>
     <requestid>1266405</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>ab8ef7fec37c9c51ff06fee0e4e45a3a</srcmd5>
+    <version>2.4.0</version>
+    <time>1758552081</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1306545</requestid>
+  </revision>
 </revisionlist>
