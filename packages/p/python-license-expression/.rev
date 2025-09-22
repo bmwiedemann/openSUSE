@@ -85,4 +85,13 @@
   * Update license list to latest ScanCode</comment>
     <requestid>1290767</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6e7806ee22ed281223125100f88bc951</srcmd5>
+    <version>30.4.4</version>
+    <time>1758551983</time>
+    <user>anag_factory</user>
+    <comment>- update to 30.4.4:
+  * Update license list to latest ScanCode and SPDX 3.27</comment>
+    <requestid>1306356</requestid>
+  </revision>
 </revisionlist>
