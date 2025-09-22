@@ -1,0 +1,10 @@
+<package name="goshs" project="openSUSE:Factory">
+  <title>A simple HTTP server</title>
+  <description>goshs is a replacement for Python's SimpleHTTPServer.
+It allows uploading and downloading via HTTP/S with either
+self-signed certificate or user provided certificate and
+you can use HTTP basic auth.
+
+</description>
+  <url>https://hesec.de/tags/goshs/</url>
+</package>

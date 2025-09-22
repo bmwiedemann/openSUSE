@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Mon Sep 22 09:47:28 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.1
+  * You can now disable mDNS.
+  * Clipboard order is now reversed.
+  * You can now specify a different upload folder.
+  * Smaller bugfixes.
+- Update to version 1.1.0
+  New Features
+  * When using authentication (basic auth or cert auth) you can
+    now share files using a download limit or a time limit. So
+    anyone with the link can now download the file (or a folder as
+    zip file) when clicking the link, even without authentication.
+  Styleup
+  * There is now a QRCode generator for general file or folder
+    links, so you can easily grab files on a mobile device.
+
+-------------------------------------------------------------------
+Tue Jun  3 15:37:02 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.0
+  * Feature: When using authentication (basic auth or cert auth)
+    you can now share files using a download limit or a time limit.
+    So anyone with the link can now download the file (or a folder
+    as zip file) when posessing the link.
+  * Also there is now a QRCode generator for general file or folder
+    links, so you can easily grab files on a mobile device.
+
+-------------------------------------------------------------------
+Thu May 29 08:22:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 1.0.9
+  * Add Whitelist function with proxy awareness.
+
+-------------------------------------------------------------------
+Wed May 21 12:57:23 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.8
+- Run tests
+- Add patch
+  * goshs-disable-tests-that-needs-network-access.patch
+
+-------------------------------------------------------------------
+Tue May 13 19:19:58 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.6
+
+-------------------------------------------------------------------
+Sun May 11 08:16:12 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.5
+
+-------------------------------------------------------------------
+Mon Apr 28 17:48:34 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.3
+
+-------------------------------------------------------------------
+Fri Mar  7 09:03:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.2
+
+-------------------------------------------------------------------
+Fri Nov 22 19:47:40 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.1
+
+-------------------------------------------------------------------
+Fri Nov 15 15:06:24 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.0
+
+-------------------------------------------------------------------
+Thu Oct 17 18:04:31 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.2
+
+-------------------------------------------------------------------
+Sat Jul  6 09:47:11 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.0
+
+-------------------------------------------------------------------
+Sun Jun 30 17:09:35 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.9
+
+-------------------------------------------------------------------
+Tue Apr 30 18:24:32 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.8
+
+-------------------------------------------------------------------
+Thu Apr 11 17:25:12 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.7
+
+-------------------------------------------------------------------
+Sat Sep  2 09:56:24 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.6
+
+-------------------------------------------------------------------
+Sat Jan 14 20:45:20 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.0
+
+-------------------------------------------------------------------
+Thu Oct 13 16:03:57 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.1.9
+
+-------------------------------------------------------------------
+Tue Nov  9 16:41:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.1.6
+
+-------------------------------------------------------------------
+Wed Oct 13 20:08:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.1.5
+
+-------------------------------------------------------------------
+Thu Jul  8 16:19:08 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.1.0
