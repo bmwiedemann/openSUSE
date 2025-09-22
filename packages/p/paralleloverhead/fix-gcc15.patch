@@ -1,0 +1,13 @@
+diff --git a/src/audio.h b/src/audio.h
+index 3283051..6e092d4 100644
+--- a/src/audio.h
++++ b/src/audio.h
+@@ -2,7 +2,7 @@
+  * SPDX-License-Identifier: MIT
+  */
+ 
+-void pause_music();
++void pause_music(char pause);
+ void reset_music();
+ void play_move_sound();
+ void play_death_sound();
