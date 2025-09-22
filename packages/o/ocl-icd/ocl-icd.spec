@@ -1,7 +1,7 @@
 #
 # spec file for package ocl-icd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocl-icd
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        OpenCL ICD Bindings
 License:        BSD-2-Clause
@@ -86,9 +86,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf instdocs
 mv %{buildroot}%{_datadir}/doc/%{name} instdocs
 
-%post -n libOpenCL1 -p /sbin/ldconfig
-
-%postun -n libOpenCL1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libOpenCL1
 
 %check
 %make_build check
