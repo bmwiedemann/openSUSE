@@ -29,7 +29,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           OpenIPMI
-Version:        2.0.36.56+git.0a3a991
+Version:        2.0.37.1+git.ed1a49ee
 Release:        0
 Summary:        Service processor access via IPMI
 License:        LGPL-2.1-or-later

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 15 09:00:07 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 2.0.37.1+git.ed1a49ee:
+  * Some broken BMCs use an invalid padding length of 16
+  * Move to version 2.0.37
+  * lanserv: Add sysinfo.h to the makefile include list
+  * lanserv: Set length on get chassis capability response
+  * ipmi_sim: On a watchdog reset, stop the timer before starting
+  * lanserv: Add platform event command handling
+
+-------------------------------------------------------------------
 Fri Apr 11 12:28:45 UTC 2025 - trenn@suse.de
 
 - Update to version 2.0.36.56+git.0a3a991:

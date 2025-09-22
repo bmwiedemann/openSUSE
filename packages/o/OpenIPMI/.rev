@@ -449,4 +449,12 @@ could not be forwarded to Factory (incl. the recent gcc14 fixes) (forwarded requ
     <comment></comment>
     <requestid>1269190</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>13e3a45d6e652b318796c6d140ca5265</srcmd5>
+    <version>2.0.37.1+git.ed1a49ee</version>
+    <time>1758552046</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1306447</requestid>
+  </revision>
 </revisionlist>
