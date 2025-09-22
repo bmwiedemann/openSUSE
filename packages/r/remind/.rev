@@ -849,4 +849,18 @@
   cut the string in the middle of a UTF-8 sequence.  This has been</comment>
     <requestid>1304503</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>7f7bb893b85805c5a11ca574aceebe82</srcmd5>
+    <version>6.1.2</version>
+    <time>1758556350</time>
+    <user>anag_factory</user>
+    <comment>* VERSION 6.1 Patch 2 - 2025-09-19
+- BUG FIX: remind: A reminder on a specific fixed date and time that
+  uses the TZ feature could erroneously issue a &quot;Can't compute trigger&quot;
+  error.  This has been fixed.
+- CHANGE: remind: The default for --max-expr-complexity is 10,000,000
+  (ten million) instead of unlimited.  This should not affect any
+  real-world Remind scripts.</comment>
+    <requestid>1306552</requestid>
+  </revision>
 </revisionlist>

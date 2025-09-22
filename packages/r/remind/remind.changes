@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 22 13:17:03 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+* VERSION 6.1 Patch 2 - 2025-09-19
+
+- BUG FIX: remind: A reminder on a specific fixed date and time that
+  uses the TZ feature could erroneously issue a "Can't compute trigger"
+  error.  This has been fixed.
+
+- CHANGE: remind: The default for --max-expr-complexity is 10,000,000
+  (ten million) instead of unlimited.  This should not affect any
+  real-world Remind scripts.
+
+-------------------------------------------------------------------
 Sat Sep 13 07:42:24 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 * VERSION 6.1 Patch 1 - 2025-09-12
