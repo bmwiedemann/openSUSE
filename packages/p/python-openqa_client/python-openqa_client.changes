@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 21 19:28:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.1:
+  * Fix `openqa_request` for table endpoints that now require
+    JSON
+  * Use Sequence instead of List type hints (KuxaBeast)
+
+-------------------------------------------------------------------
 Mon May  5 20:58:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:

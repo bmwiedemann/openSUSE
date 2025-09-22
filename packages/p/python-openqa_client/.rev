@@ -82,4 +82,15 @@
   * Add new `get_latest_build` method (asmorodskyi)</comment>
     <requestid>1274713</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f30bf2941521f1b292a968c251d94f46</srcmd5>
+    <version>4.3.1</version>
+    <time>1758551981</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.1:
+  * Fix `openqa_request` for table endpoints that now require
+    JSON
+  * Use Sequence instead of List type hints (KuxaBeast)</comment>
+    <requestid>1306355</requestid>
+  </revision>
 </revisionlist>
