@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 17 11:28:49 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Migrate from meson to cargo build system
+  * upstream is deprecating meson in favor of cargo and make:
+    https://github.com/sched-ext/scx/discussions/2731
+
+-------------------------------------------------------------------
 Thu Sep 11 14:08:34 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 1.0.16:

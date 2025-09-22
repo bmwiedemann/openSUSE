@@ -28,13 +28,13 @@ URL:            https://github.com/sched-ext/scx
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
 BuildRequires:  bpftool >= 7.5.0
+BuildRequires:  cargo-packaging
 BuildRequires:  clang >= %{llvm_min_ver}
+BuildRequires:  git
 BuildRequires:  jq
 BuildRequires:  libbpf-devel >= %{libbpf_min_ver}
 BuildRequires:  lld
 BuildRequires:  llvm >= %{llvm_min_ver}
-BuildRequires:  meson >= 1.2.0
-BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  rust+cargo >= 1.82
 BuildRequires:  zstd
@@ -58,17 +58,42 @@ Header files needed to develop a sched-ext scheduler in C.
 %autosetup -p1 -a1
 
 %build
-%meson \
-  -Doffline=true \
-  -Dbpftool=%{_sbindir}/bpftool \
-  -Dlibbpf_a=disabled \
-  -Dopenrc=disabled \
-  -Denable_stress=false \
-  %{?nil}
-%meson_build
+%cargo_build
 
 %install
-%meson_install
+export CARGO_HOME=$PWD/.cargo
+
+for path in ./tools/scx_loader \
+	./tools/scxctl \
+	./tools/scxtop \
+	./tools/scxcash \
+	./scheds/rust/scx_p2dq \
+	./scheds/rust/scx_tickless \
+	./scheds/rust/scx_chaos \
+	./scheds/rust/scx_rusty \
+	./scheds/rust/scx_flash \
+	./scheds/rust/scx_rustland \
+	./scheds/rust/scx_mitosis \
+	./scheds/rust/scx_rlfifo \
+	./scheds/rust/scx_wd40 \
+	./scheds/rust/scx_lavd \
+	./scheds/rust/scx_cosmos \
+	./scheds/rust/scx_layered \
+	./scheds/rust/scx_bpfland; do
+pushd "${path}"
+%{cargo_install}
+popd
+done
+
+install -Dm644 services/systemd/scx.service \
+    %{buildroot}%{_unitdir}/scx.service
+
+install -Dm644 services/scx \
+    %{buildroot}%{_sysconfdir}/default/scx
+
+mkdir -p %{buildroot}%{_includedir}/%{name}
+install -Dm644 scheds/include/scx/*.h \
+    %{buildroot}%{_includedir}/%{name}
 
 %pre
 %service_add_pre scx.service
@@ -86,7 +111,6 @@ Header files needed to develop a sched-ext scheduler in C.
 %license LICENSE
 %doc README.md OVERVIEW.md
 %{_bindir}/scx{cash,ctl,top,_*}
-%{_bindir}/vmlinux_docify
 %{_unitdir}/scx.service
 %config(noreplace) %{_sysconfdir}/default/%{name}
 
