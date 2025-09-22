@@ -19,7 +19,7 @@
 
 %define lname libcowsql0
 Name:           cowsql
-Version:        1.15.8
+Version:        1.15.9
 Release:        0
 Summary:        Embeddable, replicated and fault tolerant SQL engine
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
