@@ -1,8 +1,25 @@
-Index: texinfo-7.1/tp/Texinfo/Convert/DocBook.pm
-===================================================================
---- texinfo-7.1.orig/tp/Texinfo/Convert/DocBook.pm
-+++ texinfo-7.1/tp/Texinfo/Convert/DocBook.pm
-@@ -340,7 +340,7 @@ sub output($$)
+From 01d33e3b1121906f57f612ade39f6fa26e288760 Mon Sep 17 00:00:00 2001
+From: Jan Fooken <jan.fooken@suse.com>
+Date: Tue, 2 Sep 2025 10:31:31 +0200
+Subject: [PATCH] Fix precedence problems for Perl 5.42
+
+The test suite doesn't run successfully under Perl 5.42, because Perl
+rightfully flags possible precedence precedence problems in two string
+equality checks.  This commit fixes these problems by replacing a
+negated equal check with a non-equal check.
+
+This patch was first introduced by Dominique Leuenberger (dimstar)
+during the upgrade to Perl 5.42 and updated to apply to the texinfo-7.2
+---
+ tp/Texinfo/Convert/Converter.pm | 2 +-
+ tp/Texinfo/Convert/LaTeX.pm     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tp/Texinfo/Convert/Converter.pm b/tp/Texinfo/Convert/Converter.pm
+index 5e14a9e086..89e623be79 100644
+--- a/tp/Texinfo/Convert/Converter.pm
++++ b/tp/Texinfo/Convert/Converter.pm
+@@ -386,7 +386,7 @@ sub output_tree($$)
  
    my $fh;
    my $encoded_output_file;
@@ -11,24 +28,11 @@ Index: texinfo-7.1/tp/Texinfo/Convert/DocBook.pm
      my $path_encoding;
      ($encoded_output_file, $path_encoding)
        = $self->encoded_output_file_name($output_file);
-Index: texinfo-7.1/tp/Texinfo/Convert/Info.pm
-===================================================================
---- texinfo-7.1.orig/tp/Texinfo/Convert/Info.pm
-+++ texinfo-7.1/tp/Texinfo/Convert/Info.pm
-@@ -100,7 +100,7 @@ sub output($)
-   my $tree_units = Texinfo::Structuring::split_by_node($root);
- 
-   my $fh;
--  if (! $output_file eq '') {
-+  if ($output_file ne '') {
-     if ($self->get_conf('VERBOSE')) {
-       print STDERR "Output file $output_file\n";
-     }
-Index: texinfo-7.1/tp/Texinfo/Convert/LaTeX.pm
-===================================================================
---- texinfo-7.1.orig/tp/Texinfo/Convert/LaTeX.pm
-+++ texinfo-7.1/tp/Texinfo/Convert/LaTeX.pm
-@@ -1065,7 +1065,7 @@ sub output($$)
+diff --git a/tp/Texinfo/Convert/LaTeX.pm b/tp/Texinfo/Convert/LaTeX.pm
+index ae947d1e5e..f4ba076602 100644
+--- a/tp/Texinfo/Convert/LaTeX.pm
++++ b/tp/Texinfo/Convert/LaTeX.pm
+@@ -1085,7 +1085,7 @@ sub output($$)
  
    my $fh;
    my $encoded_output_file;
@@ -37,16 +41,6 @@ Index: texinfo-7.1/tp/Texinfo/Convert/LaTeX.pm
      my $path_encoding;
      ($encoded_output_file, $path_encoding)
        = $self->encoded_output_file_name($output_file);
-Index: texinfo-7.1/tp/Texinfo/Convert/TexinfoMarkup.pm
-===================================================================
---- texinfo-7.1.orig/tp/Texinfo/Convert/TexinfoMarkup.pm
-+++ texinfo-7.1/tp/Texinfo/Convert/TexinfoMarkup.pm
-@@ -298,7 +298,7 @@ sub output($$)
- 
-   my $fh;
-   my $encoded_output_file;
--  if (! $output_file eq '') {
-+  if ($output_file ne '') {
-     my $path_encoding;
-     ($encoded_output_file, $path_encoding)
-       = $self->encoded_output_file_name($output_file);
+-- 
+2.51.0
+

@@ -1,4 +1,7 @@
 addFilter(".*W:.*ghost-files-without-postin.*")
-addFilter(".*W:.*info-files-without-install-info-post.*")
 addFilter(".*W:.*name-repeated-in-summary.*")
-addFilter(".*W:.*no-binary.*")
+// texinfo's sub-package makeinfo has shared objects, it calls via Perl
+// These shared objects are not architecture independent
+addFilter("texinfo\..*E:.*no-binary.*")
+addFilter("makeinfo\..*E:.*devel-file-in-non-devel-package.*")
+

@@ -723,4 +723,12 @@
     <comment></comment>
     <requestid>1293113</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>6f928506bbca5bef517a811877891a14</srcmd5>
+    <version>7.2</version>
+    <time>1758551899</time>
+    <user>anag_factory</user>
+    <comment>Update to texinfo 7.2. For more info please refer to the changelog</comment>
+    <requestid>1305339</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package texinfo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 # perl modules are not installed in global path
-%global __provides_exclude ^(libtool|perl)\\(
+%global __provides_exclude ^perl\\(
 Name:           texinfo
-Version:        7.1
+Version:        7.2
 Release:        0
 Summary:        Tools for creating documentation from texinfo sources
 License:        GPL-3.0-or-later
@@ -31,29 +31,42 @@ Source42:       %{name}-rpmlintrc
 Patch0:         texinfo-zlib.patch
 Patch1:         install-info_exitcode.patch
 Patch2:         texinfo-perl-5.42.patch
-BuildRequires:  automake
+BuildRequires:  gawk
 BuildRequires:  glibc-locale
 BuildRequires:  help2man
 BuildRequires:  libbz2-devel
 BuildRequires:  libzio-devel >= 1.09
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
-BuildRequires:  perl-Text-Unidecode
 BuildRequires:  perl-macros
 BuildRequires:  zlib-devel
-BuildRequires:  perl(Locale::gettext)
+BuildRequires:  perl(Data::Compare)
+BuildRequires:  perl(File::Spec)
+BuildRequires:  perl(Test::Deep)
+BuildRequires:  perl(Unicode::Normalize)
+Requires:       /usr/bin/awk
+Requires:       /usr/bin/cmp
+Requires:       /usr/bin/diff
+Requires:       /usr/bin/grep
+Requires:       /usr/bin/sed
+Requires:       /usr/bin/tar
+Requires:       /usr/bin/uniq
 Requires:       makeinfo = %{version}
 Requires:       perl
-Requires:       perl-Text-Unidecode
-Requires:       perl-gettext
+Requires:       texlive-biber
 Requires:       texlive-bibtex
+Requires:       texlive-dvipdfmx
+Requires:       texlive-dvips
 Requires:       texlive-latex
 Requires:       texlive-makeindex
 Requires:       texlive-pdftex
 Requires:       texlive-tex
 Requires:       texlive-texinfo
+Requires:       perl(Encode)
+Requires:       perl(File::Spec)
 Recommends:     texi2html
 Recommends:     texi2roff
+Recommends:     texlive-thumbpdf
 
 %description
 Texinfo is a documentation system that uses a single source file to
@@ -89,8 +102,11 @@ reader" to read the manuals.
 
 %package     -n makeinfo
 Summary:        Translator for converting texinfo documents to info format
-# /usr/share/texinfo/Texinfo/Convert/NodeNameNormalization.pm uses Text::Unidecode
-Requires:       perl(Text::Unidecode)
+Requires:       gettext-runtime >= 0.12.2
+Requires:       perl(Encode)
+Requires:       perl(File::Spec)
+Requires:       perl(Unicode::Normalize)
+Recommends:     perl(File::ShareDir)
 %requires_eq    perl
 Suggests:       texinfo
 Provides:       texinfo:%{_bindir}/makeinfo
@@ -106,22 +122,16 @@ or standalone GNU Info.
 %lang_package -n makeinfo
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
-LANG=en_GB.UTF-8
-export LANG
-## -std=gnu17 can be dropped w/ release 7.2
-export CFLAGS=-std=gnu17
 %configure \
-	--with-external-Text-Unidecode \
 	--enable-perl-xs
 %make_build
 
 %install
 %make_install
-rm -f %{buildroot}%{_libdir}/texinfo/*.a
+rm -f %{buildroot}%{_libdir}/texi2any/*.a
 if cmp  %{buildroot}%{_bindir}/pdftexi2dvi %{buildroot}%{_bindir}/texi2pdf
 then
     rm -vf %{buildroot}%{_bindir}/pdftexi2dvi
@@ -133,6 +143,7 @@ then
     ln -sf texi2pdf.1%{?ext_man} %{buildroot}%{_mandir}/man1/pdftexi2dvi.1%{?ext_man}
 fi
 
+# For SUSE systems pre 15.5, install to /sbin, otherwise install to /usr/sbin
 %if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/sbin
 mv %{buildroot}%{_bindir}/install-info %{buildroot}/sbin/
@@ -147,8 +158,6 @@ ln -sf ../sbin/install-info %{buildroot}%{_bindir}/install-info
 %find_lang %{name}_document %{name}_document.lang
 
 %check
-LANG=en_GB.UTF-8
-export LANG
 make %{?_smp_mflags} check
 
 %global trigger_functions %{expand:
@@ -214,7 +223,7 @@ end
 %{_bindir}/texi2pdf
 %{_bindir}/texindex
 %{_bindir}/pdftexi2dvi
-%{_infodir}/texinfo*%{ext_info}
+%{_infodir}/texinfo.info*%{ext_info}
 %{_mandir}/man1/pod2texi.1%{?ext_man}
 %{_mandir}/man1/texindex.1%{?ext_man}
 %{_mandir}/man1/texi2dvi.1%{?ext_man}
@@ -229,12 +238,14 @@ end
 %defattr(-,root,root,0755)
 %{_bindir}/makeinfo
 %{_bindir}/texi2any
-%{_infodir}/texi2any_*%{ext_info}
+%{_infodir}/texi2any_api.info%{ext_info}
+%{_infodir}/texi2any_internals.info%{ext_info}
 %{_mandir}/man1/makeinfo.1%{?ext_man}
 %{_mandir}/man1/texi2any.1%{?ext_man}
-%{_libdir}/texinfo
+%{_libdir}/texi2any
 %exclude %{_datadir}/texinfo/texindex.awk
-%{_datadir}/texinfo/
+%{_datadir}/texinfo
+%{_datadir}/texi2any
 
 %files -n info-lang -f %{name}.lang
 
