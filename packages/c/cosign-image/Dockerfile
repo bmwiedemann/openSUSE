@@ -17,7 +17,7 @@
 
 #!BuildTag: opensuse/cosign:%%cosign_version%%-%RELEASE%
 #!BuildTag: opensuse/cosign:%%cosign_version%%
-#!BuildTag: opensuse/cosign:2.5
+#!BuildTag: opensuse/cosign:2.6
 #!BuildTag: opensuse/cosign:2
 #!BuildTag: opensuse/cosign:latest
 
@@ -31,7 +31,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of cosign that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' cosign | \
-    cut -d '.' -f -2)" = "2.5" ]
+    cut -d '.' -f -2)" = "2.6" ]
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; rm -f {/target,}/etc/shadow-
 FROM opensuse/bci/bci-micro:latest

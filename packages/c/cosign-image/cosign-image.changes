@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 21 19:21:31 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- adjust for cosign version 2.6
+
+-------------------------------------------------------------------
 Thu Jul 31 11:18:59 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove shadow backup from container
