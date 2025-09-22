@@ -1,0 +1,8 @@
+<package name="skim" project="openSUSE:Factory">
+  <title>A fuzzy finder for the command line</title>
+  <description>Half of our life is spent on navigation: files, lines, commands… You need skim!
+It is a general fuzzy finder that saves you time.
+
+</description>
+  <url>https://github.com/lotabout/skim</url>
+</package>
