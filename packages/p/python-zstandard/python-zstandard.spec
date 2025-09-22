@@ -52,10 +52,11 @@ Zstandard bindings for Python
 
 %build
 export CFLAGS="%{optflags}"
-%python_build --system-zstd
+%define py_setup_args "--system-zstd"
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

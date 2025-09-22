@@ -174,4 +174,12 @@
 </comment>
     <requestid>1305093</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7b0d5f67d3d6d828b5a2ac6f9e28d939</srcmd5>
+    <version>0.24.0</version>
+    <time>1758551923</time>
+    <user>anag_factory</user>
+    <comment>- Switch from %python_{build,install} to %pyproject_* macros. (forwarded request 1305262 from mcepl)</comment>
+    <requestid>1306187</requestid>
+  </revision>
 </revisionlist>
