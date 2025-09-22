@@ -1,4 +1,186 @@
 -------------------------------------------------------------------
+Wed Apr 30 23:58:58 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.2:
+  - Playback
+    - Support for partial ties at repeats and jumps (#26178)
+    - Support for arpeggios with swing rhythm (#22495)
+    - Fixed regressions in tie and portamento playback in repeated
+      sections (#27472, #27661, #27287)
+    - Fixed regression where clicking the same measure would not
+      return playback to the start of that measure (#27362)
+    - Fixed regression where jumps would be taken multiple times
+      when system markings are enabled on multiple staves (#27647)
+  - Engraving
+    - Improved slur layout across large time signatures (#27631)
+    - Chord symbols no longer collide with each other horizontally
+      or vertically (#27229, #27139)
+    - Beat anchor visualizations (blue stripes) are no longer shown
+      in printed or exported scores (#27454)
+    - Voltas and rehearsal marks only anchor to barlines, not to
+      beat positions within a measure (#27471)
+    - Large time signatures added in the score no longer appear
+      large in the parts (unless the large style is also enabled in
+      the parts) (#27277)
+    - Length of 4-measure repeat extender lines is now calculated
+      correctly (#27305)
+    - Time signatures changes at repeats are indicated after the
+      barline when opening pre-4.5 scores (#27382)
+    - Irregular measures (excluded from the measure count) are
+      recognized as such when opening MuseScore 1 scores (PR
+      #27746)
+    - Visibility property of courtesy time and key signatures is
+      preserved on saving and loading scores (#27381)
+    - Fixed creation of partial ties across repeats and jumps, and
+      improved performance (#27303, PR #27356)
+    - Incoming partial slurs can now be created from clefs, time or
+      key signatures to the first note of a system (#27325)
+    - Fixed regression creating incoming partial slurs from an
+      end-repeat barline to a subsequent note (#27325)
+    - Fixed regression where empty lines added to header or footer
+      text in Format > Style were not rendered on the page (#27519)
+    - Fixed regression where brass/woodwind falls collided with
+      augmentation dots (#26086)
+    - Fixed regression where string data was missing for the Bass
+      Viol (tablature) instrument (PR #27380)
+  - Guitar
+    - Fixed regression where fretboard diagrams were undesirably
+      modified to reflect changes made to chord symbol attached to
+      the same note (#27284)
+    - Fixed regression where fret conflicts in were highlighted red
+      in printed/exported tablature rather than in MuseScore Studio
+      (#27605)
+    - Fixed regression where staff lines were not masked by fret
+      numbers in the tablature staff settings dialog and continuous
+      view (#27405, #27442)
+    - Fixed regression in the ability to extend barlines between
+      linked and unlinked staves (#27455)
+  - Percussion
+    - When entering notes with the mouse, the percussion note popup
+      now only appears when Shift is held, not Ctrl or other
+      modifiers (PR #27778)
+    - The Percussion panel no longer allows navigation keys or
+      numbers to be used in pad shortcuts (#27355)
+    - The Percussion panel will start docked rather than undocked
+      after updating from a pre-4.5 version (#27106)
+  - Interaction
+    - System markings (e.g. tempos, voltas, rehearsal marks) are no
+      longer duplicated when a time signature is changed (#27228,
+      #27400)
+    - System markings are always added to an instrument's topmost
+      staff when pasted (affects grand/multi-stave instruments)
+      (#27690)
+    - Turning off multi-measure rests, or making a hidden staff
+      visible, now unlocks systems that contained multi-measure
+      rests (#27242)
+    - Text elements follow the mouse cursor more closely when
+      dragged across staves and systems (#27101)
+    - Accidentals are retained when changing the duration of notes
+      after leaving input by duration mode (#27460)
+    - Fixed regression where hiding a staff's voice in the Layout
+      panel would remove the staff from the Layout panel altogether
+      (#27752)
+    - Fixed regression where fingerings couldn't be nudged (i.e.
+      moved) with the cursor keys immediately after being entered
+      (#27219)
+    - Fixed regression where pressing Return on a text marking
+      would create a system break instead of entering text edit
+      mode (#27347)
+    - Fixed regression where accidentals attached to notes in the
+      same chord could not be re-ordered horizontally (#27374)
+    - Fixed regression in ability to create ties across a 'gap'
+      (i.e. between non-consecutive notes) (#27445)
+    - Fixed regression where right click > Select > Similar in
+      range was unable to select spanner elements such as slurs
+      (#27548)
+    - Fixed regression where right click > Select > More referred
+      to the first element in the range rather than the
+      right-clicked element (#27126)
+    - Fixed regression where switching from one VSTi to another
+      wouldn't close the first VSTi's window (#27335)
+    - Fixed regression where resetting all preferences would not
+      reset changes made in the same visit to the Preferences
+      dialog (#27414)
+    - Fixed regression where the hyphen-minus (-) key didn't work
+      for lyrics entry with non-English keyboards on Windows (issue
+      still present on macOS) (#16314)
+  - UI
+    - More detailed action descriptions are displayed in the
+      History panel (PR #27236)
+    - Help > Online handbook now points to the new Handbook hosted
+      in GitBook (#27234)
+    - Units like 'px' (pixels), 'mm' (millimetres) and 'in'
+      (inches) have been made translatable (#27418)
+    - The ampersand ('&') character has been made translatable in
+      the Layout panel (PR #27756)
+    - 'Swing' and 'Straight' markings have been made bold in the
+      Tempo palette (#27188)
+    - Fixed regression where range selection rectangle was drawn in
+      the wrong place when hidden staves are present (#27394)
+    - Fixed regression where undoing hiding of an instrument would
+      not reopen the 'eye' visibility icon in the Layout panel
+      (#27791)
+    - Small UI tweaks in various dialogs: Transpose (#26896,
+      #26170), Preferences (#27388, #27365), Page Settings (PR
+      #27373)
+  - Accessibility
+    - Fixed regression where screen readers wouldn't announce the
+      name and first item of a menu (e.g. "File, New") as it was
+      opened (#27079)
+    - Fixed regression in keyboard control over the anacrusis /
+      pickup measure dropdown in the New Score dialog (#27278)
+    - Fixed regression in 6-key braille input where it was not
+      possible to type interval signs to create chords (#27581)
+  - Stability
+    - Fixed crash on dragging the first measure of a score and
+      dropping it back in its original position (#27575)
+    - Fixed crash when splitting a measure near a lyrics line and
+      the end of a system (#26369)
+    - Fixed crash after replacing two single-measure repeats with
+      one two-measure repeat (#27731)
+    - Fixed crashes after clearing (i.e. deleting the contents of)
+      a measure with partial ties and attempting to undo (e.g. with
+      Ctrl+Z) (#27618)
+    - Fixed crashes when closing a score after dragging or deleting
+      a measure with partial ties (#27714, #27406, #27407)
+    - Fixed crash when closing a score after unchecking all options
+      in the partial tie popup (#27738)
+    - Fixed crash when exchanging partially-tied notes between
+      voices within a repeated section (#27252)
+    - Fixed crash after deleting a start-repeat barline with a
+      partial tie and attempting to undo (e.g. with Ctrl+Z)
+      (#27723)
+    - Fixed crash after creating a partial tie in the score and
+      then selecting it in the parts (#27710)
+    - Fixed crash after making a partially-tied note invisible and
+      attempting to undo (e.g. with Ctrl+Z) (#27718)
+    - Fixed crash when adding instrument change text from the More
+      popup in the palettes (#27233)
+    - Fixed crash adding tie to a selected range that contains two
+      non-consecutive notes of the same pitch (#27654)
+    - Fixed crash after entering an ornament with interval below
+      (e.g. mordent) and changing style to Always show cue note
+      (#27749)
+    - Fixed crash when opening the Layout panel while an empty
+      system text element is present (and disabled creation of such
+      elements) (#27448)
+    - Fixed crash when pasting in continuous view after copying and
+      exchanging notes between voices in normal view (#27433)
+    - Fixed crash when accessing the Mixer's three-dots menu > View
+      > Restore the default layout on macOS (#26976)
+    - Fixed crash on pasting multi-voice passage in continuous view
+      (#27433)
+    - Fixed crash when dragging a note-anchored line (found in the
+      Lines palette; once entered, it's no longer possible to drag
+      these lines) (#27663)
+    - Fixed crash and disappearing clef triggered when hidden
+      staves are present in the Layout panel (#27443)
+    - Fixed freeze when opening MuseScore 3 files with invalid
+      notes on TAB staves (#27736)
+    - Fixed regression in performance when pasting spanner elements
+      (e.g. lines, hairpins, slurs, etc.) (#27399)
+
+-------------------------------------------------------------------
 Thu Apr 10 22:25:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Replace upstream change with Mandriva's patch
