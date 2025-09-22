@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Sep 22 10:09:05 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.81
+  * Add Saint Helena, Ascension and Tristan da Cunha holidays
+  * Add Sudan holidays
+  * Update Chinese Lunisolar calendar: extend Winter Solstice support
+  * Update Philippines holidays: add 2026 holidays
+  * Update Spain holidays: add Dec 3 holiday in Navarre
+  * Update countries with Eastern holidays: add estimated holidays labels
+  * Update release notes generator
+  * Simplify N802 suppression for common.py
+- from version 0.80
+  * Refactor Australia holidays
+  * Refactor Macau holidays: holiday categories standardization
+  * Add Comoros holidays
+  * Add Eritrea holidays
+  * Add National Stock Exchange of India (NSE) holidays
+  * Add Rwanda holidays
+  * Add Somalia holidays
+  * Add South Sudan holidays
+  * Add Tajikistan holidays
+  * Add Uganda holidays
+  * Add estimated_label to all countries with Islamic holidays
+  * Fix Hindu Lunisolar calendar
+  * Fix Islamic holidays tests
+  * Fix TestAllInSameYear methods
+  * Update Bosnia and Herzegovina holidays
+  * Update Burundi holidays, add l10n support
+  * Update Canada holidays: add National Day for Truth and Reconciliation in MB
+  * Update Georgia holidays: add August 29, 2025 special holiday
+  * Update Guinea-Bissau holidays
+  * Update Nigeria holidays, add l10n support
+  * Update Singapore holidays: remove duplicate holidays label assignment
+  * Update Tanzania holidays: extend holidays support to 1965
+  * Update common::CommonTests: expand label tests to financial entities
+  * Add .zenodo.json
+  * Add common::TestCase::assertHolidayNameCount method
+  * Add metadata package version mismatch hint
+  * Add missing docstring for __init__ method
+  * Expose entity additional codes
+  * Test Case Name Standardization
+  * Unify imports
+  * Use aux repository data for downloads badge
+- from version 0.79
+  * Add Bhutan holidays
+  * Add Gambia holidays
+  * Add Guinea-Bissau holidays
+  * Add Iraq holidays
+  * Add Kiribati holidays
+  * Add Liberia holidays
+  * Add South Georgia and the South Sandwich Islands holidays
+  * Add Syrian Arab Republic holidays
+  * Add Turkmenistan holidays
+  * Update Azerbaijan holidays: fix observed Islamic holidays
+  * Update Bahrain holidays
+  * Update Bhutan holidays: reference link archival
+  * Update Canada holidays: adjust introduction year of National Aboriginal Day in NT
+  * Update Chile holidays: abolition of Dec 31 bank holiday
+  * Update Chile holidays: add special holidays
+  * Update Ethiopia holidays, add ETHIOPIAN_CALENDAR support,
+    Julian Date Drift adjustment pre-1899 and post-2099
+  * Update Turkmenistan holidays
+  * Update badges: add downloads badge temporary fix
+  * Update pre-commit: add pyproject-fmt
+  * Update release notes generator
+  * Add HolidayBase::is_weekend method
+  * Implement confirmed years range support for custom calendars
+  * Remove setup.py
+  * Split tests/test_holiday_groups.py
+- from version 0.78
+  * Add Pitcairn Islands holidays
+  * Update Egypt holidays
+  * Update Egypt holidays: update remaining .po files changes
+  * Update Germany holidays: add Augsburg Peace Festival for Augsburg
+  * Update Indonesia holidays: add August 18, 2025 holiday
+  * Update Luxembourg holidays: add bank holidays
+  * Update Pakistan holidays: 2025 Ashura and Eid al-Adha dates
+  * Update Saudi Arabia holidays
+  * Update docstrings of public classes and methods
+  * Add Python 3.14 (beta) to CI/CD
+  * Input handling improvements for get_nth_working_day
+
+-------------------------------------------------------------------
 Fri Aug  1 14:07:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.77
