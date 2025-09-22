@@ -1,8 +1,8 @@
 Index: make.c
 ===================================================================
---- make.c.orig	2009-04-13 12:54:38.000000000 +0200
-+++ make.c	2010-09-03 23:28:58.575337000 +0200
-@@ -621,8 +621,7 @@ int main(int argc, char **argv) {
+--- make.c.orig
++++ make.c
+@@ -627,8 +627,7 @@ int main(int argc, char **argv) {
                  verbose++;
                  break;
              case 'V':
@@ -14,9 +14,9 @@ Index: make.c
              case 'z':
 Index: client.c
 ===================================================================
---- client.c.orig	2009-01-22 22:03:18.000000000 +0100
-+++ client.c	2010-09-03 23:29:36.120262000 +0200
-@@ -491,8 +491,7 @@ int main(int argc, char **argv) {
+--- client.c.orig
++++ client.c
+@@ -508,8 +508,7 @@ int main(int argc, char **argv) {
                  seedfiles = append_ptrlist(&nseedfiles, seedfiles, optarg);
                  break;
              case 'V':
