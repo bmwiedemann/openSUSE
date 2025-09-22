@@ -1,7 +1,7 @@
 #
 # spec file for package lldpd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lldpd
-Version:        1.0.19
+Version:        1.0.20
 Release:        0
 Summary:        Implementation of IEEE 802.1ab (LLDP)
 # We have some GPL linux headers in include/linux, they are used on
@@ -178,5 +178,6 @@ getent passwd %{lldpd_user} >/dev/null || \
 %{_libdir}/pkgconfig/lldpctl.pc
 %{_includedir}/lldpctl.h
 %{_includedir}/lldp-const.h
+%{_includedir}/lldpctl.hpp
 
 %changelog

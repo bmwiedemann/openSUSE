@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 13 11:49:25 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20
+  Changes:
+  * Enable fast start unconditionally (and move its configuration
+    in "configure lldp").
+  * Make VLAN advertisements configurable.
+  Fix:
+  * Do not break zero-copy traffic on Linux.
+  * Fix crash on rapid addition/removal of interfaces.
+  * Fix management address selection when pattern is a negative
+    IP address.
+
+-------------------------------------------------------------------
 Mon Jan 13 21:55:32 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.19
