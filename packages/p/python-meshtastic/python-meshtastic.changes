@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 21 14:36:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.3:
+  * Added Logging Handler Names & windows pytest support
+- update to 2.7.2:
+  * Added Github CONTRIBUTING.md file
+  * Fix Getting and Setting Excluded Modules: Ringtone and Canned
+    Messages
+  * protobufs: v2.7.8
+
+-------------------------------------------------------------------
 Wed Sep 10 09:00:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.7.1

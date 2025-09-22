@@ -107,4 +107,18 @@
     <comment></comment>
     <requestid>1303560</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e75bb954de9d867123516dbc70d5a3c1</srcmd5>
+    <version>2.7.3</version>
+    <time>1758551980</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.7.3:
+  * Added Logging Handler Names &amp; windows pytest support
+- update to 2.7.2:
+  * Added Github CONTRIBUTING.md file
+  * Fix Getting and Setting Excluded Modules: Ringtone and Canned
+    Messages
+  * protobufs: v2.7.8</comment>
+    <requestid>1306303</requestid>
+  </revision>
 </revisionlist>

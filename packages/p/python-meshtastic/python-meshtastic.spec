@@ -1,7 +1,7 @@
 #
 # spec file for package python-meshtastic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-meshtastic
-Version:        2.7.1
+Version:        2.7.3
 Release:        0
 Summary:        A Python client for use with Meshtastic devices
 License:        GPL-3.0-only
