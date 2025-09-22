@@ -513,4 +513,27 @@
     <comment></comment>
     <requestid>1293278</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d8695a6deeba804347da61b262e85e51</srcmd5>
+    <version>3.0.6+20250919.gdf9c147</version>
+    <time>1758551903</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.6+20250919.gdf9c147:
+  * test: fix NEON tests
+  * depth: fix border handling in byte-word left shift conversion
+
+- Update to 3.0.6+20250814.g1f53009
+  * colorspace: fix AVX-512 sRGB/709 with negative input
+    (introduced in 2.8)
+  * resize: fix AVX-512 downscaling with certain tap counts
+    (introduced in 2.6)
+- Switch to snapshots of master because the branch on which
+  releases are tagged lacks a lot of fixes that are in master while
+  both share the same version identifier.
+- Drop Patches
+  * cmake-googletest.patch
+  * zimg-gcc15.patch
+  * zimg-s390x-unit-tests.patch</comment>
+    <requestid>1306077</requestid>
+  </revision>
 </revisionlist>

@@ -1,15 +1,15 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/sekrit-twc/zimg.git</param>
     <param name="scm">git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionformat">@PARENT_TAG@+%cd.g%h</param>
     <param name="versionrewrite-pattern">release-([0-9\.]*)</param>
-    <param name="revision">release-3.0.5</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">
       <param name="file">*.tar</param>
-      <param name="compression">xz</param>
+      <param name="compression">zst</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

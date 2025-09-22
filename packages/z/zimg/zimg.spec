@@ -1,7 +1,7 @@
 #
 # spec file for package zimg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,13 @@
 
 %define         sover 2
 Name:           zimg
-Version:        3.0.5
+Version:        3.0.6+20250919.gdf9c147
 Release:        0
 Summary:        Scaling, colorspace conversion, and dithering library
 License:        WTFPL
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/sekrit-twc/zimg
-Source0:        zimg-%{version}.tar.xz
+Source0:        zimg-%{version}.tar.zst
 Source99:       baselibs.conf
-Patch0:         zimg-s390x-unit-tests.patch
-# https://github.com/sekrit-twc/zimg/issues/214
-Patch1:         zimg-gcc15.patch
-Patch2:         cmake-googletest.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -43,7 +38,6 @@ basics of scaling, colorspace conversion, and depth conversion.
 
 %package -n libzimg%{sover}
 Summary:        Scaling, colorspace conversion, and dithering library
-Group:          System/Libraries
 
 %description -n libzimg%{sover}
 The "z" image library implements the commonly required image processing
@@ -51,7 +45,6 @@ basics of scaling, colorspace conversion, and depth conversion.
 
 %package devel
 Summary:        Development files for libzimg%{sover}
-Group:          Development/Libraries/C and C++
 Requires:       libzimg%{sover} = %{version}
 
 %description devel
@@ -59,7 +52,7 @@ The libzimg-devel package contains libraries and header files for
 developing applications that use libzimg%{sover}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 autoreconf -fiv
