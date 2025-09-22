@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 21 16:49:31 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.11.0
+  * Add zmq_timers support.
+  * Add file descriptor support for poller.
+  * Feature/expose monitor socket for active poller.
+  * Allow generic sequence of poller events.
+  * Add configurable sockopt for raw router sockets.
+  * Add on_monitor_stopped function for monitor_t.
+  * Add ZMQ_BUSY_POLL option.
+  * Fix -Wold-style-cast compilation warning.
+  * Remove space in custom string literal.
+
+-------------------------------------------------------------------
 Sun Mar  9 16:06:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.10.0:
