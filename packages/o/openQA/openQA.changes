@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 22 15:12:15 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758551670.e3aa50f9:
+  * Don't redirect screenshots, thumbs and needles to files_domain
+  * Cleanup .gitignore files
+  * Update Dockerfile to setup proxy via script/configure-web-proxy
+  * Redirect test assets to file_domain if configured
+  * Make sure assets are generated before listing them
+
+-------------------------------------------------------------------
 Sat Sep 20 20:13:19 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1758307053.75367131:
