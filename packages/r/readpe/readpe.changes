@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Tue Sep 16 19:01:52 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Use %{_datadir}/zsh/site-functions for zsh-completion
+
+-------------------------------------------------------------------
+Tue Sep 16 09:41:26 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Rename package: pev -> readpe
+- Update to version 0.85.1
+  * Update now reporting the right version (v0.85)
+- Update to version 0.85
+  * Some more additions including some undocumented PE features.
+  * Recognize PL and PX signatures for PE EXE files.
+  * Add some missing RT_ constants.
+  * Recognize reproducible hash stored in TimeDateStamp.
+  * Add IMAGE_DEBUG_DIRECTORY structure definition.
+  * Parse and print hints (name indexes) from the export table.
+  * Print hints (name indexes) from import table in hexadecimal
+    notation.
+  * Add IMAGE_FILE_MACHINE_TAHOE.
+  * Print library name if it is stored also when the library has
+    no exports.
+  * Extend description of flags.
+  * Recognize PE32 binaries with zero type of optional header.
+  Bugfixes:
+  * Fix bug in libpe ordinal mask handling.
+  * Fix --help output spacing.
+  * Fix ofs2section name.
+  * Fix pehash printing wrong characters (due to memory not
+    being properly cleaned)
+- Update to version 0.84
+  * Just a small release to add a new test executable.
+- Update to version 0.83
+  * Fix 8 character long section names being cut off.
+  * Various improvements for readpe.
+  * Removed all exit() calls from libpe.
+    Fix printing section names that are 8 bytes long.
+  * Remove _FORTIFY_SOURCE definitions.
+  * Fix and improve tests.
+- Update to version 0.82
+  * repack: allocate 1 more byte for NULL character.
+  * Avoid undefining _FORTIFY_SOURCE unnecessarily.
+  * Sort Makefile inputs to make build reproducible.
+  * Fix spurious pescan references in peldd man page.
+  * Close memory leaks in #176.
+  * Merge libpe into this repository.
+  * Fixing a possible UB inside of asprintf.
+  * Fix readpe date output in.
+  * Add machine types.
+  * Fix UTF-16LE strings not being detected properly.
+- Use %ldscriptlets macro
+- Drop libpe-devel. It is useless without headers describing
+  the API.
+
+-------------------------------------------------------------------
+Sun Jan 31 15:06:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.81
+  New features
+  * peldd: new tool to check library dependencies from PE files.
+  * peres: be able to extract and restore icons from resources.
+  * peres: print both file and product versions.
+  * readpe: exported function now displays Address and Name.
+  * readpe: imported function now displays Hint and Name.
+  Improvements
+  * Added support for OpenSSL 1.1.
+  * peres: New resources directory parser, which has been moved
+    to libpe.
+  * readpe: section output renamed and rearranged according to PE
+    specification.
+  Fixes
+  * output/json: properly escape controle codes.
+  * pehash: multiple security fixes.
+  * fix multiple memory leaks.
+  * plugins: fix readdir bug.
+  * readpe: check if timestamp is valid.
+  * pepack: remove bad packer signatures.
+  * readpe: fixed ordinal to name resolution in print_export.
+  * output/json: fix invalid JSON output.
+  * readpe: non-existent and/or non-mapped characteristic names
+    were causing invalid JSON output.
+  * readpe: fix output of section size. Large values were
+    printed as negative due to the improper format specifier.
+  * readpe: properly read section names.
+  * fix binary garbage on stderr when open() fails.
+- Create subpackages for the libpe library
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Tue Jan 10 18:53:02 UTC 2017 - mardnh@gmx.de
+
+- initial package
+
