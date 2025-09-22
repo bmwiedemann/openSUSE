@@ -241,4 +241,22 @@ of Markdown.</comment>
     <comment></comment>
     <requestid>1246711</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4f5a1bd446b8e6e5b0a5a116c4446786</srcmd5>
+    <version>2.5.4</version>
+    <time>1758551984</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.5.4:
+  * [pull #617] Add MarkdownFileLinks extra
+  * [pull #622] Add missing block tags to regex
+  * [pull #623] Don't escape plus signs in URLs
+  * [pull #626] Fix XSS when encoding incomplete tags
+  * [pull #628] Fix TypeError in MiddleWordEm extra when options
+    was None
+  * [pull #630] Fix nbsp breaking tables
+  * [pull #634] Fix ReDoS in HTML tokenizer regex
+
+  * [pull #613] Fix smarty pants extra not triggering when it should (#611)</comment>
+    <requestid>1306359</requestid>
+  </revision>
 </revisionlist>

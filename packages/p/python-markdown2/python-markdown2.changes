@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 21 19:34:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.4:
+  * [pull #617] Add MarkdownFileLinks extra
+  * [pull #622] Add missing block tags to regex
+  * [pull #623] Don't escape plus signs in URLs
+  * [pull #626] Fix XSS when encoding incomplete tags
+  * [pull #628] Fix TypeError in MiddleWordEm extra when options
+    was None
+  * [pull #630] Fix nbsp breaking tables
+  * [pull #634] Fix ReDoS in HTML tokenizer regex
+
+-------------------------------------------------------------------
 Tue Feb 18 13:40:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.5.3
@@ -13,7 +26,7 @@ Wed Jan  8 16:23:14 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
   * [pull #607] Fix middle-word-em extra preventing strongs from being recognized (#606)
   * [pull #609] Add option to output to file in CLI (#608)
   * [pull #612] Fix footnote labels appearing out-of-order (#536)
-  * [pull #613] Fix smarty pants extra not triggering when it should (#611) 
+  * [pull #613] Fix smarty pants extra not triggering when it should (#611)
 
 -------------------------------------------------------------------
 Tue Oct 29 21:34:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
