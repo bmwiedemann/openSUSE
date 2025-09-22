@@ -358,4 +358,14 @@
     <comment></comment>
     <requestid>1298225</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>80fcffc3238e8bc2f3acbd4b5854d6b5</srcmd5>
+    <version>5.1.13</version>
+    <time>1758551986</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.1.13
+  * see upstream changelog:
+    https://github.com/getmoto/moto/blob/5.1.13/CHANGELOG.md</comment>
+    <requestid>1306384</requestid>
+  </revision>
 </revisionlist>

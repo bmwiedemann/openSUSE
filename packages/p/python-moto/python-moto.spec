@@ -1,7 +1,7 @@
 #
 # spec file for package python-moto
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-moto
-Version:        5.1.8
+Version:        5.1.13
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/getmoto/moto
 Source:         https://files.pythonhosted.org/packages/source/m/moto/moto-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.6.0}
 BuildRequires:  %{python_module wheel}
@@ -34,7 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.10.1
 Requires:       python-Werkzeug >= 0.5
 Requires:       python-boto3 >= 1.9.201
-Requires:       python-botocore >= 1.14.0
+Requires:       python-botocore >= 1.20.88
 Requires:       python-cryptography >= 35.0.0
 Requires:       python-requests >= 2.5
 Requires:       python-responses >= 0.15.0
@@ -54,7 +53,7 @@ BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module antlr4-python3-runtime}
 BuildRequires:  %{python_module aws-xray-sdk >= 0.93}
 BuildRequires:  %{python_module boto3 >= 1.9.201}
-BuildRequires:  %{python_module botocore >= 1.14.0}
+BuildRequires:  %{python_module botocore >= 1.20.88}
 BuildRequires:  %{python_module cfn-lint >= 0.40.0}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cryptography >= 35.0.0}
