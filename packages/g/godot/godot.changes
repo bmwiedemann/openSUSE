@@ -1,3 +1,34 @@
+-------------------------------------------------------------------
+Tue Sep 16 12:00:00 UTC 2025 - cunix@mail.de
+
+- Update to 4.5
+  * Release announcement: https://godotengine.org/releases/4.5/
+  * Breaking changes: https://github.com/godotengine/godot/pulls?q=is%3Apr+is%3Amerged+label%3A%22breaks+compat%22+milestone%3A4.5
+  * Migration guide: https://docs.godotengine.org/en/latest/tutorials/migrating/upgrading_to_godot_4.5.html
+  * Stencil buffer
+  * Screen reader
+  * Script backtracing and custom loggers
+  * Shader baker
+  * Internationalization live preview
+  * Chunk tilemap physics
+  * Mute game toggle
+  * Editor language can switch on-demand
+  * Export variables as Variant
+  * Script color picker
+  * DPI-aware icons
+  * FoldableContainer
+  * GDScript: Abstract classes and methods
+  * Reintroducing batch editing of assets
+  * SDL3 gamepad input driver
+  * Dedicated 2D navigation server
+  * Specular occlusion from ambient light
+  * Bent normal maps support
+  * Wayland: Implement native sub-windows
+  * Use SSE 4.2 as a baseline when compiling Godot
+  * Remove PrefersNonDefaultGPU from linux desktop file
+  * and much more: https://godotengine.github.io/godot-interactive-changelog/#4.5
+
+-------------------------------------------------------------------
 Wed Mar 26 12:00:00 UTC 2025 - cunix@mail.de
 
 - Update to 4.4.1

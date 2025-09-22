@@ -26,10 +26,10 @@
 
 # building with default gcc 7.5 fails since 4.1 on Leap
 # https://github.com/godotengine/godot/issues/79352
-%define compiler_version_leap 10
+%define compiler_version_leap 13
 
 Name:           godot
-Version:        4.4.1
+Version:        4.5
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -40,13 +40,16 @@ Source1:        https://github.com/godotengine/%{name}/releases/download/%{versi
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-%if %{suse_version} > 1500
+%if %{suse_version} > 1600
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %else
 BuildRequires:  gcc%{compiler_version_leap}
 BuildRequires:  gcc%{compiler_version_leap}-c++
 %endif
+# pkgconfig broken for freetype2 ?
+BuildRequires:  freetype2-devel >= 2.13
+BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scons > 4.5
@@ -57,13 +60,21 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
+BuildRequires:  pkgconfig(graphite2)
+BuildRequires:  pkgconfig(libbrotlicommon)
+BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libdecor-0)
 BuildRequires:  pkgconfig(libpcre2-32)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libwslay)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(miniupnpc)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opusfile)
+BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(speech-dispatcher)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(theoradec)
@@ -77,8 +88,9 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
+BuildRequires:  pkgconfig(zlib)
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1600
 # Does not work currently:
 # BuildRequires:  embree-devel-static >= 3.13.0
 
@@ -90,27 +102,15 @@ BuildRequires:  pkgconfig(xrender)
 #   in freetype2 version 2.10.2
 # By default this seems to be currently only available in Tumbleweed (v2.12.1).
 # As of 20220808 Leap 15.2, .3 and .4 report freetype2 version as 2.10.1
-BuildRequires:  pkgconfig(freetype2) >= 2.10.2
+
 # Using bundled freetype2 throws build errors, if
 #   we don't use bundled libpng and zlib as well.
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  mbedtls-devel
-BuildRequires:  pkgconfig(graphite2)
-BuildRequires:  pkgconfig(libbrotlicommon)
-BuildRequires:  pkgconfig(libbrotlidec)
-BuildRequires:  pkgconfig(libwslay)
-BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(miniupnpc)
-BuildRequires:  pkgconfig(zlib)
+
+# with 4.5 on 20250916 build failure with bundled freetype for 15.6
+# is the system version used - svg related error is reported
+# unbundled with distro provided 2.10.4 does not work because brotli
+# => no Leap builds
 %else
-%if 0%{?is_opensuse}
-# SLES seems not to have wslay and miniupnpc
-BuildRequires:  libminiupnpc-devel
-BuildRequires:  pkgconfig(libwslay)
-%if 0%{?sle_version} >= 150200
-BuildRequires:  mbedtls-devel
-%endif
-%endif
 %endif
 
 Requires:       ca-certificates
@@ -134,50 +134,54 @@ Provides:       bundled(FastNoiseLite)
 Provides:       bundled(JetBrainsMono_Regular)
 Provides:       bundled(RVO2-3D)
 Provides:       bundled(Tangent_Space_Normal_Maps)
+Provides:       bundled(accesskit) = 0.17.0
 Provides:       bundled(amd-fsr) = 1.0.2
 Provides:       bundled(amd-fsr2) = 2.2.1
 Provides:       bundled(angle)
-Provides:       bundled(astcenc) = 4.8.0
-Provides:       bundled(basis_universal) = 1.50.0
-Provides:       bundled(clipper2) = 1.4.0
+Provides:       bundled(astcenc) = 5.3.0
+Provides:       bundled(basis_universal) = 1.60.0
+Provides:       bundled(clipper2) = 1.5.4
 Provides:       bundled(cvtt)
 Provides:       bundled(d3d12ma) = 2.1.0
 Provides:       bundled(directx_headers) = 1.611.1
-Provides:       bundled(doctest) = 2.4.11
+Provides:       bundled(doctest) = 2.4.12
 Provides:       bundled(etcpak) = 2.0
 Provides:       bundled(glad) = 2.0.4
 # same version for glslang, spirv-reflect, volk and vulkan needed
 Provides:       bundled(glslang) = sdk-1.3.283.0
 Provides:       bundled(google-droid-fonts)
+Provides:       bundled(grisu2)
 # gdextension crash with unbundled harfbuzz or icu4c
 # https://github.com/godotengine/godot/issues/91401
-Provides:       bundled(harfbuzz) = 10.1.0
-Provides:       bundled(icu4c) = 76.1
+Provides:       bundled(harfbuzz) = 11.3.2
+Provides:       bundled(icu4c) = 77.1
 Provides:       bundled(ifaddrs-android)
-Provides:       bundled(jolt_physics) = 5.2.1
-Provides:       bundled(jpeg-compressor) = 2.00
+Provides:       bundled(jolt_physics) = 5.3.0
 Provides:       bundled(libbacktrace)
-Provides:       bundled(libktx) = 4.3.2
-Provides:       bundled(manifold) = 3.0.1
-Provides:       bundled(meshoptimizer) = 0.22
+Provides:       bundled(libjpeg-turbo) = 3.1.0
+Provides:       bundled(libktx) = 4.4.0
+Provides:       bundled(manifold)
+Provides:       bundled(meshoptimizer) = 0.24
 Provides:       bundled(mingw-std-threads)
 Provides:       bundled(minimp3)
-Provides:       bundled(msdfgen) = 1.12
+Provides:       bundled(msdfgen) = 1.12.1
 Provides:       bundled(noto-sans-fonts)
 Provides:       bundled(nvapi) = R525
-Provides:       bundled(openxr) = 1.1.41
+Provides:       bundled(openxr) = 1.1.49
 Provides:       bundled(pcg)
 Provides:       bundled(polyclipping)
 Provides:       bundled(polypartition)
 Provides:       bundled(pvrtccompressor)
 Provides:       bundled(qoa)
+Provides:       bundled(smaa)
 Provides:       bundled(smaz)
 Provides:       bundled(spirv-cross)
 Provides:       bundled(spirv-reflect) = sdk-1.3.283.0
 Provides:       bundled(stb)
-Provides:       bundled(thorvg) = 0.15.10
-Provides:       bundled(tinyexr) = 1.0.9
-Provides:       bundled(ufbx) = 0.15.0
+Provides:       bundled(swappy-frame-pacing)
+Provides:       bundled(thorvg) = 0.15.13
+Provides:       bundled(tinyexr) = 1.0.12
+Provides:       bundled(ufbx) = 0.20.0
 Provides:       bundled(vhacd)
 Provides:       bundled(volk) = sdk-1.3.283.0
 Provides:       bundled(vulkan) = sdk-1.3.283.0
@@ -194,26 +198,17 @@ Provides:       bundled(xatlas)
 # Currently build fails with Distro (unbundled) embree on Tumbleweed although
 # the required version is available.
 # Perhaps because it is build with special flags (static) for blender.
-Provides:       bundled(embree) = 4.3.1
+Provides:       bundled(embree) = 4.4.0
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1600
 %else
-Provides:       bundled(brotli) = 1.1.0
-
 # see comments for freetype2, libpng and zlib Factory BuildRequires
-Provides:       bundled(freetype2) = 2.13.2
-Provides:       bundled(graphite) = 1.3.14
-Provides:       bundled(libpng) = 1.6.45
-Provides:       bundled(libzstd) = 1.5.6
-Provides:       bundled(zlib) = 1.3.1
-%if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 3.6.3
-%endif
-%if !0%{?is_opensuse}
-# SLES seems not to have miniupnpc and wslay
-Provides:       bundled(libwslay) = 1.1.1
-Provides:       bundled(miniupnpc) = 2.2.8
-%endif
+#Provides:       bundled(brotli) = 1.1.0
+#Provides:       bundled(freetype2) = 2.13.3
+#Provides:       bundled(graphite) = 1.3.14
+#Provides:       bundled(libpng) = 1.6.48
+#Provides:       bundled(libzstd) = 1.5.7
+#Provides:       bundled(zlib) = 1.3.1
 %endif
 
 # Build currently fails on armv7l
@@ -257,21 +252,6 @@ cp thirdparty/README.md thirdparty_README.md
 # actual doc location in openSUSE
 sed -i 's/\/usr\/share\/doc\/godot\//\/usr\/share\/doc\/packages\/godot\//' misc/dist/linux/godot.6
 
-if [[ -z "$(desktop-file-validate misc/dist/linux/org.godotengine.Godot.desktop)" ]];
- then
-  # desktop-file-utils version >= 0.25
-  echo desktop-file-utils is up to date and recognizes PrefersNonDefaultGPU.
-  # rpmlint complains nevertheless with older rpmlint-mini.
-  # Tumbleweed is fixed with update of rpmlint-mini.
-  # see https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys
-  # Perhaps because rpmlint-mini includes as of today (18.09.2020)
-  # desktop-file-utils-0.24 while we checked for available default version >= 0.25
- else
-  echo PrefersNonDefaultGPU not recognized.
-  # rpmlint considers file invalid without "X-" prefix
-  sed -i 's/PrefersNonDefaultGPU=true/X-PrefersNonDefaultGPU=true/' misc/dist/linux/org.godotengine.Godot.desktop
-fi
-
 # disarm shebang
 sed -i '1s/#!/##/' misc/dist/shell/godot.bash-completion
 
@@ -280,19 +260,18 @@ cp misc/dist/shell/godot.bash-completion misc/dist/shell/godot-runner
 sed -i '$s/_complete_godot_bash godot/_complete_godot_bash godot-runner/' misc/dist/shell/godot-runner
 
 # set update check default to disabled
-sed -i 's/EngineUpdateLabel::UpdateMode default_update_mode = EngineUpdateLabel::UpdateMode::NEWEST_UNSTABLE;/EngineUpdateLabel::UpdateMode default_update_mode = EngineUpdateLabel::UpdateMode::DISABLED;/' editor/editor_settings.cpp
-sed -i 's/default_update_mode = EngineUpdateLabel::UpdateMode::NEWEST_STABLE;/default_update_mode = EngineUpdateLabel::UpdateMode::DISABLED;/' editor/editor_settings.cpp
+sed -i 's/EngineUpdateLabel::UpdateMode default_update_mode = EngineUpdateLabel::UpdateMode::NEWEST_UNSTABLE;/EngineUpdateLabel::UpdateMode default_update_mode = EngineUpdateLabel::UpdateMode::DISABLED;/' editor/settings/editor_settings.cpp
+sed -i 's/default_update_mode = EngineUpdateLabel::UpdateMode::NEWEST_STABLE;/default_update_mode = EngineUpdateLabel::UpdateMode::DISABLED;/' editor/settings/editor_settings.cpp
 
 %build
 # Configuring build to use some distribution libraries
-unbundle_libs=('certs' 'libogg' 'libtheora' 'libvorbis' \
-               'libwebp' 'pcre2')
+unbundle_libs=('brotli' 'certs' 'freetype' 'libogg' 'libpng' 'libtheora' \
+               'libvorbis' 'libwebp' 'mbedtls' 'miniupnpc' 'pcre2' 'sdl' \
+               'wslay' 'zlib' 'zstd')
 
 # Adding distribution name to build name
 %if 0%{?suse_version}
   %if 0%{?is_opensuse}
-    # Unbundle more libs for openSUSE
-    unbundle_libs+=('miniupnpc' 'wslay')
     export BUILD_NAME="openSUSE"
   %else
     export BUILD_NAME="SUSE"
@@ -300,13 +279,9 @@ unbundle_libs=('certs' 'libogg' 'libtheora' 'libvorbis' \
 %endif
 
 # Unbundle more libs for Tumbleweed
-%if %{suse_version} > 1500
-unbundle_libs+=('brotli' 'freetype' 'graphite' 'libpng' 'mbedtls' 'zlib' 'zstd')
+%if %{suse_version} > 1600
+#unbundle_libs+=('brotli' 'freetype' 'graphite' 'libpng' 'zlib' 'zstd')
 %else
-# Unbundle more libs for coming Leap
-%if 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
-unbundle_libs+=('mbedtls')
-%endif
 %endif
 
 system_libs=""
@@ -337,7 +312,7 @@ use_lto="none"
 %define cc_flags %{optflags}
 %endif
 
-%if %{suse_version} > 1500
+%if %{suse_version} > 1600
 %define ccflags %{cc_flags}
 compiler=""
 linkflags=""
