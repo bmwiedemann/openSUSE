@@ -20,14 +20,10 @@
 %define _name gst-plugins-rs
 %define gst_branch 1.0
 
-%dnl #%%ifarch s390 s390x ppc ppc64
 %bcond_with aws
-%dnl #%%else
-%dnl #%%bcond_without aws
-%dnl #%%endif
 
 Name:           gstreamer-plugins-rs
-Version:        1.26.5+git11.949807a4
+Version:        1.26.6+git20.e287e869
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -38,7 +34,7 @@ Source:         %{_name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
 Source4:        gstreamer-plugins-rs.appdata.xml
 
-BuildRequires:  cargo-c >= 0.9.21
+BuildRequires:  cargo-c >= 0.10.12
 BuildRequires:  cargo-packaging >= 1.2.0+3
 BuildRequires:  clang
 BuildRequires:  git
@@ -74,22 +70,6 @@ plug-ins.
 
 This package provides various plugins written in Rust.
 
-%package devel
-Summary:        GStreamer Streaming-Media Framework Plug-Ins development files
-Group:          Development/Libraries/Other
-Requires:       %{name} = %{version}
-
-%description devel
-GStreamer is a streaming media framework based on graphs of filters
-that operate on media data. Applications using this library can do
-anything media-related, from real-time sound processing to playing
-videos. Its plug-in-based architecture means that new data types or
-processing capabilities can be added simply by installing new
-plug-ins.
-
-This package contains the pkgconfig development files for the rust
-plugins.
-
 %prep
 %autosetup -n %{_name}-%{version} -a2 -p1
 
@@ -122,8 +102,6 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 %endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstcdg.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstclaxon.so
-# Disable csound for now, bring issue upstream
-#%%{_libdir}/gstreamer-%%{gst_branch}/libgstcsound.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdav1d.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstelevenlabs.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfallbackswitch.so
@@ -174,8 +152,5 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-rs.appdata.xml
 %{_bindir}/gst-webrtc-signalling-server
-
-%files devel
-%{_libdir}/pkgconfig/*.pc
 
 %changelog

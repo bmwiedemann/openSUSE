@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sun Sep 21 12:11:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.6+git20.e287e869:
+  * Fix some new clippy 1.90 warnings
+  * colordetect: Don't use deprecated color_name API
+  * deny: Update
+  * quinn: Update to web-transport-quinn 0.8
+  * skia: Update to skia-safe 0.88
+  * Update Cargo.lock
+  * Allow windows-sys 0.61 too
+  * intersink: add sync property
+  * meson: Fix .pc files installation and simplify build output
+    handling. This also fixes the .pc file install directory and
+    ensures that the .pc files are only installed when static
+    builds is enabled.
+- Drop devel subpackage following upstream changes.
+
+-------------------------------------------------------------------
+Mon Sep 15 16:50:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.6:
+  + aws: Ensure task stopping on paused-to-ready state change
+  + fallbacksrc:
+    - Don't panic during retries if the element was shut down in
+      parallel
+    - Don't restart source if the element is just being shut down
+    - Fix some custom source deadlocks
+    - Fix sources only being restarted once
+  + gtk4: Try importing dmabufs withouth DMA_DRM caps
+  + inter: Give the appsrc/appsink a name that has the parent
+    element as prefix
+  + mp4: Skip tests using x264enc if it does not exist
+  + rtpgccbwe: avoid clamp() panic when min_bitrate > max_bitrate
+  + rtpmp4gdepay2: allow only constantduration with neither
+    constantsize nor sizelength set
+  + rtprecv: fix race condition on first buffer
+  + speechmatics: Specify rustls as an explicit dependency
+  + spotify: update to librespot 0.7
+  + threadshare:
+    - add a blocking adapter element
+    - always use block_on_or_add_subtask
+    - audiotestsrc: fix setting samples-per-buffer...
+    - blocking_adapter: fix Since marker in docs
+    - fix resources not available when preparing asynchronously
+    - fix ts-inter test one_to_one_up_first
+    - have: have Task log its obj
+    - intersink: return from blocking tasks when stopping
+    - inter: update doc example
+    - runtime/pad: lower log level pushing Buffer to flushing pad
+    - separate blocking & throttling schedulers
+    - update examples
+    - Update to getifaddrs 0.5
+    - Fix macOS build post getifaddrs 0.5 update
+    - Bump up getiffaddrs to 0.1.5 and revert "udp: avoid
+      getifaddrs in android"
+    - Reapply "udp: avoid getifaddrs in android"
+  + transcriberbin: Fix some deadlocks
+  + Update dependencies
+  + webrtc: Migrate to warp 0.4 and switch to tokio-rustls
+  + webrtc/signalling: Fix setting of host address
+  + ci: add script to check readme against plugins list
+  + Fix various new clippy 1.89 warnings
+  + Don't suggest running cargo cinstall after cargo cbuild
+  + meson: Isolate built plugins from cargo target directory
+
+-------------------------------------------------------------------
 Thu Aug 14 11:33:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.5+git11.949807a4 (boo#1248053,

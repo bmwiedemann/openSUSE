@@ -3,9 +3,9 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git</param>
     <param name="filename">gst-plugins-rs</param>
-    <param name="versionformat">1.26.5+git@TAG_OFFSET@.%h</param>
-    <param name="revision">949807a4b02033551d48407e2721c5337cce5290</param>
-<!--	<param name="revision">refs/tags/gstreamer-1.26.5</param> --> 
+    <param name="versionformat">1.26.6+git@TAG_OFFSET@.%h</param>
+    <param name="revision">e287e869f3ff94c813b841ad932786e975c365bc</param>
+<!--	<param name="revision">refs/tags/gstreamer-1.26.6</param> --> 
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
   </service>
@@ -18,7 +18,7 @@
   <service name="cargo_vendor" mode="manual">
 	  <param name="srcdir">gst-plugins-rs</param>
 	  <param name="compression">zst</param>
-	  <param name="update">false</param>
+	  <param name="update">true</param>
 	  <param name="i-accept-the-risk">RUSTSEC-2023-0071</param>
   </service>
 </services>
