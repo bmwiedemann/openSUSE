@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 22 09:08:35 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.0.1:
+  * Fix a potential use-after-free issue when flushing interrupts on x86
+    UEFI systems.
+  * Prefer using the 32-bit Linux protocol unless it is strictly
+    necessary to use the 64-bit protocol due to allocation constraints.
+    This is due to reports of the 32-bit protocol being more reliable
+    on certain rare systems where the 64-bit protocol crashes or hangs.
+
+-------------------------------------------------------------------
 Mon Sep 15 20:13:38 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.0.0:
