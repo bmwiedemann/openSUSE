@@ -454,4 +454,19 @@
 </comment>
     <requestid>1303004</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>693a58ccd8961faf18561410eb658a75</srcmd5>
+    <version>0.19.1</version>
+    <time>1758551909</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.1
+  * Ensure that Optional[list] values work correctly with callbacks.
+  * Support typing.Literal to define a set of predefined choices.
+  * Allow setting an environment variable to None in CliRunner.invoke.
+- Update to 0.18.0
+  * Ensure compatibility with Click 8.3.0 by restoring the original
+    value_is_missing function.
+</comment>
+    <requestid>1306168</requestid>
+  </revision>
 </revisionlist>
