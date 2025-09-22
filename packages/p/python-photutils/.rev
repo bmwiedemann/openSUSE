@@ -729,4 +729,208 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1269012</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>becdacca8a4f381f0f088354837c5d85</srcmd5>
+    <version>2.3.0</version>
+    <time>1758551988</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.0:
+  * The minimum required NumPy is now 1.25.
+  * The minimum required SciPy is now 1.11.1.
+  * The minimum required Matplotlib is now 3.8.
+  * The minimum required scikit-image is now 0.21.
+  * photutils.isophote build_ellipse_model is now Cythonized and
+    considerably faster. [#2046] build_ellipse_model also has an
+    additional optional keyword argument sma_interval, which was
+    previously hardcoded. [#2046]
+  * build_ellipse_model is now Cythonized and considerably
+    faster.
+  * build_ellipse_model also has an additional optional keyword
+    argument sma_interval, which was previously hardcoded.
+  * photutils.psf PSFPhotometry and IterativePSFPhotometry now
+    raise an error if the input error array contains non-finite
+    or zero values. [#2022] GriddedPSFModel can now be used with
+    a single input ePSF model, which will be equivalent to
+    ImagePSF. [#2034] The finder callable input to PSFPhotometry
+    and IterativePSFPhotometry is no longer restricted to have x
+    and y column names of 'xcentroid' and 'ycentroid'. The
+    allowed column names are now the same as those allowed in the
+    init_params table. [#2072] Added a group_warning_threshold
+    keyword to PSFPhotometry and IterativePSFPhotometry. [#2081]
+    The PSFPhotometry and IterativePSFPhotometry classes no
+    longer fail for invalid sources, defined as those that have
+    no overlap with the input data, are completely masked, or
+    have too few unmasked pixels for a fit.  These classes have
+    new flags (64, 128, 256, respectively) for these invalid
+    conditions. [#2084, #2085] The PSFPhotometry and
+    IterativePSFPhotometry classes have new
+    results_to_init_params and results_to_model_params methods
+    for outputting fit results in different formats. [#2084] When
+    using Astropy 7.0+, the PSFPhotometry and
+    IterativePSFPhotometry fitter object now modifies the PSF
+    model in place instead of creating a copy, improving
+    performance and significantly reducing memory usage in some
+    cases. [#2093] PSFPhotometry and IterativePSFPhotometry now
+    return a reduced chi-squared statistic (reduced_chi2 column
+    in the results table). [#2086] The PSF photometry classes now
+    use a dynamically generated &quot;flat&quot; model instead of a
+    compound model for grouped sources. This eliminates recursion
+    limits and significantly reduces memory usage for large
+    groups. [#2100]
+  * PSFPhotometry and IterativePSFPhotometry now raise an error
+    if the input error array contains non-finite or zero values.
+  * GriddedPSFModel can now be used with a single input ePSF
+    model, which will be equivalent to ImagePSF.
+  * The finder callable input to PSFPhotometry and
+    IterativePSFPhotometry is no longer restricted to have x and
+    y column names of 'xcentroid' and 'ycentroid'. The allowed
+    column names are now the same as those allowed in the
+    init_params table.
+  * Added a group_warning_threshold keyword to PSFPhotometry and
+    IterativePSFPhotometry.
+  * The PSFPhotometry and IterativePSFPhotometry classes no
+    longer fail for invalid sources, defined as those that have
+    no overlap with the input data, are completely masked, or
+    have too few unmasked pixels for a fit.  These classes have
+    new flags (64, 128, 256, respectively) for these invalid
+    conditions.
+  * The PSFPhotometry and IterativePSFPhotometry classes have new
+    results_to_init_params and results_to_model_params methods
+    for outputting fit results in different formats.
+  * When using Astropy 7.0+, the PSFPhotometry and
+    IterativePSFPhotometry fitter object now modifies the PSF
+    model in place instead of creating a copy, improving
+    performance and significantly reducing memory usage in some
+    cases.
+  * PSFPhotometry and IterativePSFPhotometry now return a reduced
+    chi-squared statistic (reduced_chi2 column in the results
+    table).
+  * The PSF photometry classes now use a dynamically generated
+    &quot;flat&quot; model instead of a compound model for grouped sources.
+    This eliminates recursion limits and significantly reduces
+    memory usage for large groups.
+  * photutils.segmentation An optional array keyword was added to
+    the SourceCatalog make_cutouts method. [#2023] Added a group
+    keyword to the SegmentationImage to_regions method. [#2060,
+    #2065] Added a decode_psf_flags utility function for decoding
+    PSF photometry bit flags. [#2090] Added a PSF_FLAGS object to
+    hold all PSF photometry bit flags in one place. PSF_FLAGS
+    provides readable, named constants for each bit flag and
+    helper utilities for decoding bit flags. [#2091]
+  * An optional array keyword was added to the SourceCatalog
+    make_cutouts method.
+  * Added a group keyword to the SegmentationImage to_regions
+    method.
+  * Added a decode_psf_flags utility function for decoding PSF
+    photometry bit flags.
+  * Added a PSF_FLAGS object to hold all PSF photometry bit flags
+    in one place. PSF_FLAGS provides readable, named constants
+    for each bit flag and helper utilities for decoding bit
+    flags.
+  * photutils.centroids Fixed an issue with the initial Gaussian
+    theta units in centroid_2dg. [#2013] Fixed a corner-case
+    issue where zero-sum arrays with ndim &gt; 2 input to
+    centroid_com would return only two np.nan coordinates instead
+    of matching the dimensionality of the input array. [#2045]
+  * Fixed an issue with the initial Gaussian theta units in
+    centroid_2dg.
+  * Fixed a corner-case issue where zero-sum arrays with ndim &gt; 2
+    input to centroid_com would return only two np.nan
+    coordinates instead of matching the dimensionality of the
+    input array.
+  * photutils.datasets Fixed a bug in make_model_image where the
+    output image would not have units in the case where the input
+    params had units and none of the models overlapped the image
+    shape. [#2082] Fixed a bug in make_model_image where an error
+    would be raised if any row in the input parameters table
+    contained non-finite model parameters. Such sources are now
+    silently ignored. [#2083]
+  * Fixed a bug in make_model_image where the output image would
+    not have units in the case where the input params had units
+    and none of the models overlapped the image shape.
+  * Fixed a bug in make_model_image where an error would be
+    raised if any row in the input parameters table contained
+    non-finite model parameters. Such sources are now silently
+    ignored.
+  * photutils.psf Fixed a bug in fit_2dgaussian and fit_fwhm
+    where the fit would fail if there were NaN values in the
+    input data. [#2030] Fixed the check in GriddedPSFModel for
+    rectangular pixel grids. [#2035] Fixed a bug in PSFPhotometry
+    where the 'group_id' column would be ignored if included in
+    the init_params table. [#2070] Fixed a bug in PSFPhotometry
+    where the output flux_err column would not have units if the
+    input data had units and the flux model parameter was fixed
+    in value. [#2072] Fixed a bug in PSFPhotometry and
+    IterativePSFPhotometry where an error would be raised if the
+    x or y columns in init_params had units. [#2079] Fixed a bug
+    in PSFPhotometry and IterativePSFPhotometry for the boundary
+    conditions where flag=2 would be set. [#2080] Fixed a bug in
+    EPSFBuilder where the output PSF would have the wrong shape
+    if the input stars were non-square cutouts. [#2089, #2092]
+    Fixed a bug in the calculation of the PSFPhotometry and
+    IterativePSFPhotometry qfit and cfit to not include the fit
+    weights. [#2099]
+  * Fixed a bug in fit_2dgaussian and fit_fwhm where the fit
+    would fail if there were NaN values in the input data.
+  * Fixed the check in GriddedPSFModel for rectangular pixel
+    grids.
+  * Fixed a bug in PSFPhotometry where the 'group_id' column
+    would be ignored if included in the init_params table.
+  * Fixed a bug in PSFPhotometry where the output flux_err column
+    would not have units if the input data had units and the flux
+    model parameter was fixed in value.
+  * Fixed a bug in PSFPhotometry and IterativePSFPhotometry where
+    an error would be raised if the x or y columns in init_params
+    had units.
+  * Fixed a bug in PSFPhotometry and IterativePSFPhotometry for
+    the boundary conditions where flag=2 would be set.
+  * Fixed a bug in EPSFBuilder where the output PSF would have
+    the wrong shape if the input stars were non-square cutouts.
+  * Fixed a bug in the calculation of the PSFPhotometry and
+    IterativePSFPhotometry qfit and cfit to not include the fit
+    weights.
+  * photutils.segmentation Fixed an issue where a newly-defined
+    extra property of a SourceCatalog with overwrite=True would
+    not be added to the extra_properties attribute. [#2039] Fixed
+    an issue where the SegmentationImage segments attribute would
+    fail if any source segment was non-contiguous. [#2060]
+  * Fixed an issue where a newly-defined extra property of a
+    SourceCatalog with overwrite=True would not be added to the
+    extra_properties attribute.
+  * Fixed an issue where the SegmentationImage segments attribute
+    would fail if any source segment was non-contiguous.
+  * photutils.background An explicit ValueError is now raised if
+    the input data to Background2D contains all non-finite
+    values. [#2062]
+  * An explicit ValueError is now raised if the input data to
+    Background2D contains all non-finite values.
+  * photutils.psf The GriddedPSFModel data and grid_xypos
+    attributes are now read-only. [#2036] The PSFPhotometry
+    fit_param attribute is now deprecated. Use the new
+    results_to_init_params method instead. [#2084] The deprecated
+    PSFPhotometry fit_results attribute has been removed. [#2084]
+  * The GriddedPSFModel data and grid_xypos attributes are now
+    read-only.
+  * The PSFPhotometry fit_param attribute is now deprecated. Use
+    the new results_to_init_params method instead.
+  * The deprecated PSFPhotometry fit_results attribute has been
+    removed.
+  * photutils.segmentation The SegmentationImage polygons list
+    may now include either Shapely Polygon or MultiPolygon (non-
+    contiguous) objects. [#2060] The SegmentationImage to_patches
+    and plot_patches methods now return
+    matplotlib.patches.PathPatch objects. [#2060] The
+    SegmentationImage to_regions method now returns
+    PolygonPixelRegion regions that have the segment label stored
+    in the object meta dictionary. [#2060]
+  * The SegmentationImage polygons list may now include either
+    Shapely Polygon or MultiPolygon (non-contiguous) objects.
+  * The SegmentationImage to_patches and plot_patches methods now
+    return matplotlib.patches.PathPatch objects.
+  * The SegmentationImage to_regions method now returns
+    PolygonPixelRegion regions that have the segment label stored
+    in the object meta dictionary.
+</comment>
+    <requestid>1306463</requestid>
+  </revision>
 </revisionlist>
