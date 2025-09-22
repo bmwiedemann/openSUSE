@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-setproctitle
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        Python module to allow customization of the process title
 License:        BSD-3-Clause
@@ -60,7 +60,7 @@ export CFLAGS="%{optflags}"
 
 %files %{python_files}
 %doc HISTORY.rst README.rst
-%license COPYRIGHT
+%license LICENSE
 %{python_sitearch}/setproctitle
 %{python_sitearch}/setproctitle-%{version}.dist-info
 
