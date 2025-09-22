@@ -25,15 +25,13 @@
 %bcond_with test
 %endif
 Name:           python-pyogrio%{psuffix}
-Version:        0.9.0
+Version:        0.11.1
 Release:        0
 Summary:        Vectorized spatial vector file format I/O using GDAL/OGR
 License:        MIT
 URL:            https://github.com/geopandas/pyogrio
 Source:         https://files.pythonhosted.org/packages/source/p/pyogrio/pyogrio-%{version}.tar.gz
 Source99:       python-pyogrio.rpmlintrc
-# PATCH-FIX-UPSTREAM https://github.com/geopandas/pyogrio/pull/479 TST: skip multisurface test with arrow to avoid crash
-Patch:          skip-test.patch
 BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
@@ -86,8 +84,6 @@ than multiple steps of converting to and from Python data types within Python.
 %if !%{with test}
 %pyproject_install
 %{python_expand #
-rm  %{buildroot}%{$python_sitearch}/pyogrio/arrow_bridge.h
-rm  %{buildroot}%{$python_sitearch}/pyogrio/_io.pxd
 sed -i /arrow_bridge\.h/d %{buildroot}%{$python_sitearch}/pyogrio-%{version}.dist-info/RECORD
 sed -i /_io\.pxd/d %{buildroot}%{$python_sitearch}/pyogrio-%{version}.dist-info/RECORD
 %fdupes %{buildroot}%{$python_sitearch}

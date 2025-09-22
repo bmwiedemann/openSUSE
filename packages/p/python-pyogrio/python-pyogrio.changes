@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Sep 22 08:54:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.11.1
+  * Compatibility with Shapely >= 2.1 to avoid triggering a deprecation warning at
+    import (#542).
+  * Fix reading with a `skip_features` larger than the available number of
+    features to ensure this consistently returns an empty result for all file
+    formats (#550).
+- from version 0.11.0
+  * Capture all errors logged by gdal when opening a file fails (#495).
+  * Add support to read and write ".gpkg.zip" (GDAL >= 3.7), ".shp.zip", and ".shz"
+    files (#527).
+  * Compatibility with the string dtype in the upcoming pandas 3.0 release (#493).
+  * Fix WKB writing on big-endian systems (#497).
+  * Fix writing fids to e.g. GPKG file with `use_arrow` (#511).
+  * Fix error in `write_dataframe` when writing an empty or all-None object
+    column with `use_arrow` (#512).
+  * The GDAL library included in the wheels is upgraded from 3.9.2 to 3.10.3 (#499).
+- from version 0.10.0
+  * Add support to read, write, list, and remove `/vsimem/` files (#457).
+  * Raise specific error when trying to read non-UTF-8 file with
+    `use_arrow=True` (#490).
+  * Silence warning from `write_dataframe` with `GeoSeries.notna()` (#435).
+  * Enable mask & bbox filter when geometry column not read (#431).
+  * Raise `NotImplementedError` when user attempts to write to an open file handle (#442).
+  * Prevent seek on read from compressed inputs (#443).
+  * For the conda-forge package, change the dependency from `libgdal` to
+    `libgdal-core`. This package is significantly smaller as it doesn't contain
+    some large GDAL plugins. Extra plugins can be installed as seperate conda
+    packages if needed: more info [here](https://gdal.org/download.html#conda).
+    This also leads to `pyproj` becoming an optional dependency; you will need
+    to install `pyproj` in order to support spatial reference systems (#452).
+  * The GDAL library included in the wheels is updated from 3.8.5 to GDAL 3.9.2 (#466).
+  * pyogrio now requires a minimum version of Python >= 3.9 (#473).
+  * Wheels are now available for Python 3.13.
+- Drop skip-test.patch, merged upstream
+- Stop removing pyogrio/arrow_bridge.h and pyogrio/_io.pxd from source tree
+
+-------------------------------------------------------------------
 Mon Feb 24 15:03:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream skip-test.patch to fix build
