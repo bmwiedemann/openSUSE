@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 20 08:09:09 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.10.12
+  * Proper checking for the start of an SPF record.
+  * Improve error messages and fix typos (Close issue #182).
+  * Remove warning when no MX records are found.
+- Update to version 5.10.8
+  * Return the proper error message when checking an SOA record
+    for a domain that exist.
+- Update to version 5.10.7
+  * Set use_signals=False when using timeout decorator to allow it
+    to be used in multithreaded applications such as web
+    applications.
+
+-------------------------------------------------------------------
 Fri Sep 12 18:38:37 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.10.6
