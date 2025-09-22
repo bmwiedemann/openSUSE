@@ -605,4 +605,26 @@
   * Update github action to release v2.22.7 (forwarded request 1300042 from ph03nix)</comment>
     <requestid>1300062</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>af76f0642c914f5e5c7ee1822953f2d7</srcmd5>
+    <version>2.22.9</version>
+    <time>1758562163</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.22.9:
+  * Update cosign to v2.6.0 and go in the CI to latest version
+  * fix(autofix): unnecessary conversion
+  * feat(autofix): update gemini sdk and add anthropic claude
+  * feat(G304): add os.Root remediation hint (Autofix) when Go &gt;= 1.24
+  * chore(deps): update all dependencies
+  * refactor(G304): remove unused trackJoin helper; no functional change
+  * style: gofmt rules/readfile.go
+  * test(g304): add samples for var perm and var flag with cleaned path\n\n- Ensure G304 does not fire when only non-path args (flag/perm) are variables\n- Both samples use filepath.Clean on the path arg\n- Rules suite remains green (42 passed)
+  * rules(G304): analyze only path arg; ignore flag/perm vars; track Clean and safe Join; fix nil-context panic\n\n- Limit G304 checks to first arg (path) for os.Open/OpenFile/ReadFile, avoiding false positives when flag/perm are variables\n- Track filepath.Clean so cleaned identifiers are treated as safe\n- Consider safe joins: filepath.Join(const|resolvedBase, Clean(var)|cleanedIdent)\n- Record Join(...) assigned to identifiers and allow if later cleaned\n- Fix panic by passing non-nil context in trackJoinAssignStmt\n- All rules tests: 42 passed
+  * rules(G202): detect SQL concat in ValueSpec declarations; add test sample\n\n- Handle var query string = 'SELECT ...' + user style declarations\n- Reuse existing binary expr detection on ValueSpec.Values\n- Add postgres sample mirroring issue #1309 report\n- Rules tests: 42 passed
+  * chore(deps): update all dependencies
+  * chore(deps): update all dependencies
+  * chore(deps): update all dependencies
+  * Update gosec version to v2.22.8 in the Github action (forwarded request 1306529 from ph03nix)</comment>
+    <requestid>1306580</requestid>
+  </revision>
 </revisionlist>
