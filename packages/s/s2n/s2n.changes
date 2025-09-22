@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 19 08:33:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.26
+  * chore(nix): Move nix integ jobs to ec2 fleets (#5461)
+  * chore: Adds build file to get new codebuild project running in CI (#5476)
+  * build(deps): bump the all-gha-updates group across
+    1 directory with 3 updates (#5479)
+  * chore(nix): switch to nixpkgs libressl (#5467)
+  * chore(release): release s2n-tls v0.3.25 (#5486)
+  * ci: tweak ruff ci failure message (#5485)
+  * refactor: signature scheme name adjustment (#5472)
+  * feat: add method to get signature scheme name (#5471)
+  * Fix HKDF on big-endian (#5478)
+  * refactor(tls-harness): avoid implicit shutdown of ossl connection (#5474)
+  * fix: no server signature scheme expected with rsa kex (#5481)
+  * feat: add pure mlkem_1024 definition (#5468)
+  * feat(integration): add utilities for capability assertions (#5475)
+  * build(deps): bump nixbuild/nix-quick-install-action from 32 to 33
+    in /.github/workflows in the all-gha-updates group (#5487)
+  * feat: 'latest' option for strict policy (#5488)
+  * chore: pin to older pytest-rerunfailures (#5494)
+  * refactor: move new default policies to separate file (#5492)
+  * feat: basic security policy builder interface (#5493)
+  * chore: bump instance size for Valgrind (#5500)
+  * chore(nix): Flip awslc to upstream flake. (#5317)
+  * ci: only use git fetch for nix jobs (#5506)
+  * feat: add async public key support (#5473)
+
+-------------------------------------------------------------------
 Tue Sep  2 08:18:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.25
