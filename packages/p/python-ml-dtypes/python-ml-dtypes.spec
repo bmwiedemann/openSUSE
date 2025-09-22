@@ -1,7 +1,7 @@
 #
 # spec file for package python-ml-dtypes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           python-ml-dtypes
-Version:        0.5.0
+Version:        0.5.3
 Release:        0
 Summary:        stand-alone implementation of several NumPy dtype extensions
 License:        Apache-2.0
 URL:            https://github.com/jax-ml/ml_dtypes
 Source:         https://files.pythonhosted.org/packages/source/m/ml-dtypes/ml_dtypes-%{version}.tar.gz
 Source1:        https://github.com/jax-ml/ml_dtypes/archive/refs/tags/v%{version}.tar.gz#/ml-dtypes-%{version}-gh.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module abseil}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 2.0}
 # /SECTION

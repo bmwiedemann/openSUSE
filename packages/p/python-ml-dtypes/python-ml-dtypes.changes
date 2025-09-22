@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 21 14:42:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.3:
+  * NPY_NEEDS_PYAPI was removed from the dtype flags. This should
+    improve the speed of array operations, but it does mean
+    that values pickled using previous versions of ml_dtypes are
+    incompatible with the current release and should be regenerated
+    with the current release.
+  * Fixed GCC compilation issues related to ambiguous casts.
+  * Fixed sign bit handling for float4 and float6 types.
+  * Wheels now support Python 3.13 free-threading.
+  * Wheels now support the Power architecture.
+
+-------------------------------------------------------------------
 Wed Nov 20 11:50:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (0.5.0)
