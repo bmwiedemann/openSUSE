@@ -1,7 +1,7 @@
 #
 # spec file for package lnav
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2010-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -19,7 +19,7 @@
 
 
 Name:           lnav
-Version:        0.12.4
+Version:        0.13.1
 Release:        0
 Summary:        Logfile Navigator
 License:        BSD-2-Clause
@@ -27,7 +27,6 @@ Group:          System/Monitoring
 URL:            https://lnav.org
 #Git-Clone:     https://github.com/tstack/lnav.git
 Source:         https://github.com/tstack/lnav/releases/download/v%{version}/%{name}-%{version}.tar.bz2
-Patch0:         lnav-0.12.4-nonvoid-return.patch
 BuildRequires:  c++_compiler
 BuildRequires:  libunistring-devel
 BuildRequires:  pkgconfig

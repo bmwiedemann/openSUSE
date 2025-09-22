@@ -1,4 +1,182 @@
 -------------------------------------------------------------------
+Tue Sep  9 05:16:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  Features:
+  * Initial support for Windows. Configuration should be stored
+    in %APPDATA%. The binary is built using msys2. So, it
+    depends on msys-2.0.dll being in the same directory. No other
+    dependencies should be needed.
+  * Removed dependency on ncurses during the build. The terminfo
+    files are still used during runtime, but fallback terminfo
+    files for common terminals are included in the binary.
+  * Added the postgres_log format. In addition, you can use
+    :annotate on a statement error line (e.g. syntax error
+    at or near "null" at character 522) to attach an annotation
+    with the statement and a pointer to the location of the error.
+  * Added the mysql_gen_log, mysql_error_log, and mysql_slow_log
+    formats. There is also a mysql_slow_stats search table
+    that captures the various statistics available in a slow
+    query log message (e.g. query_time, lock_time, ...).
+  * Added laravel_log format.
+  * Annotation handlers can now be lnav scripts if the "handler"
+    field starts with a pipe (|).
+  * The <span> tag in a Markdown now supports
+    white-space: nowrap in the style attribute.
+  * Anchors can be added to Markdown using <a name="...">.
+    Anchors show up in the breadcrumb bar and can be addressed
+    using the :goto command.
+  Interface changes:
+  * If all the content in the LOG/TEXT views is filtered out,
+    a notice will be displayed that describes the filters that
+    are in effect.
+  * The chart in the SPECTRO view is now shifted to the right
+    so it does not cover the timestamp.
+  Bug Fixes:
+  * Fix a crash on startup for some environments.
+  * Fix a spurious screen flash on some prompts.
+  * Fix an issue with completion of script names.
+  * Handle abbreviated timezones (e.g. PDT/PST) in timestamps.
+  * Improve HTML handling in Markdown files.
+  * Fixed various issues in the SPECTRO view.
+  * Minor performance improvements.
+
+-------------------------------------------------------------------
+Fri Jul 25 06:23:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  Interface changes:
+  * The prompt is now a custom implementation instead of readline.
+    Some highlights:
+    + In the DB prompt: pressing CTRL+L will reformat the query and
+      switch the prompt to multi-line mode; error locations will be
+      highlighted.
+    + In multi-line mode, you can click and drag the status bar above
+      the prompt to resize the prompt.
+    + Pressing CTRL+O in the prompt will transfer the prompt to
+      contents to Visual Studio Code or the default text editor on
+      macOS.
+      You can then edit the file and run it from the | prompt with:
+      |saved-prompt
+    + When editing a regular expression, like the search prompt or
+      for a filter, if the current pattern matches a line in the
+      view, the following word will be suggested.
+      For example, if the view has the text "foo bar baz" and you
+      type "foo ", the prompt will suggest "bar" and you can then
+      press TAB to complete.
+    + In the history listing, an icon indicates if the command or
+      query succeeded or failed.
+    + Mouse input works as expected: left-click positions the cursor
+      in a given location, and a click-drag will select text.
+      A right-click will copy the selected text to the system clipboard.
+  * Pressing F1 in the prompt will show the help text for the
+    prompt itself.
+    The size of the prompt panel is expanded for readability.
+  * When reading from stdin, the files used to store the content
+    will be rotated when they cross the /tuning/piper/max-size
+    threshold.
+    Previously, the name of the file in the TEXT view would just
+    be "stdin", but now it includes the rotation number.
+  * The LOG and TEXT views will now display a message if they
+    contain no content to make it clear to the user that they
+    need to switch views or :open a file.
+  * The HIST view now supports bookmarks, so you can use the usual
+    hotkeys to move to the next/previous time segment with
+    errors/warnings/marks.
+  * In table cells, control characters are replaced with Unicode
+    symbols and highlighted with the 'hidden' style from the theme.
+  * The Shift + B hotkey will now jump to the start of a log
+    message in the LOG view if the currently focused line is in the
+    middle of a multi-line log message.
+  * When the :hide-unmarked-lines command is used in the LOG
+    view, if any line in a message is marked, the entire message
+    will be shown.
+  Features:
+  * The :comment command will now switch the prompt to multi-line
+    mode and does syntax highlighting for Markdown directives in the
+    comment.
+    The rendered Markdown will also now be shown in the preview panel.
+  * lnav code blocks in Markdown content now have a play button (▶)
+    next to commands that you can click on to run the command.
+  * Scrolling right in the LOG view when at the start of a message
+    can hide the timestamp/level fields in the message and insert a
+    shorter timestamp column on the left side.
+    The column should take less space than the existing field and
+    aligns all timestamps across all log formats.
+    This feature is gated by the /ui/views/log/time-column
+    setting, with the following values:
+    + disabled: scrolling right works as normal and does not insert
+      the time column.
+    + enabled: scrolling right enables the time column.
+    + default: the time column is enabled and the default on startup.
+  * Added a fuzzy_match() SQL function that compares a pattern to
+    a string and returns a score.
+    The algorithm used is the same as in lnav itself.
+  * Added a match_rowid column to search tables to make it easier
+    to join multiple search tables together.
+    For example, when multiple log messages occur together in the
+    same sequence.
+    You can create search tables for each line and then join them
+    to query over the whole group of messages.
+  * Added a :write-debug-log-to command that can be used to write
+    lnav's internal debug log to a file.
+  * Added a :clear-adjusted-log-time command to clear the time offset
+    set by the :adjust-log-time command.
+  * Added a measure_with_units SQLite collation function that can
+    compare numbers with unit suffixes, like "10KB" or "1.2ms".
+    The :create-search-table command will also use this collation
+    function for capture patterns that are likely to capture a number
+    with a unit.
+  * Log messages now have permalinks that can be used to reference them
+    from other locations.
+    The permalink for a message is shown in the parser details overlay
+    (activated by pressing p).
+    Selecting the "Permalink:" line in the overlay and then pressing
+    c will copy the link to your clipboard.
+    The link is also available in the log_line_link column of the
+    log tables.
+    These permalinks can be used with the :goto command to move to
+    the log message.
+    They can also be used in log message comments as targets for
+    Markdown links, which can be clicked to jump to the message.
+  * The CTRL + O shortcut is now bound to the :prev-location
+    command, so you can jump back to a previous location.
+  * Render task marks in markdown.
+  * The demultiplexing feature has been extended to support JSON-lines
+    input files. For example, an export of search results from Graylog
+    can automatically be split into separate streams based on the
+    source property.
+  * Added an lnav_focused_msg SQL VIEW that returns a single row
+    with the columns from the all_logs table for the currently
+    focused log message. An UPDATE of the mutable columns will
+    update the corresponding row in the all_logs table.
+  * Add timestamp format %9 for nanoseconds from the epoch.
+  * Added the "modus-operandi" light-colored theme.
+  * The colors used for highlights and identifiers are now checked
+    for high contrast against the current theme's background color.
+  * Added the "pino_log" format for the Pino Node.js logger.
+  * Added the "zap_console_log" format for the Go Zap logger.
+  * Added the "spdlog_log" format for the C++ spdlog logger.
+  Bug Fixes:
+  * Should start up in tmux and line drawing should show up now as well.
+  * The default terminal colors will now be used in the default theme.
+    So, a light background with a dark foreground will be respected.
+  * Improved performance of searches with lots of hits.
+  * Improved performance for compressed files.
+  * Improved performance for the timeline view.
+  * Copying a column with a text value in the DB overlay view.
+  * Generic logs read from stdin or exec'd were not working properly.
+  * The :export-session-to command will now include :open commands
+    for log files that were piped in to lnav or executed with the :sh
+    command.
+  * The :set-file-timezone command was not working correctly in some
+    cases.
+  * The location of views should be restored from the session when filters
+    are active.
+  * Themes have been cleaned up a bit to fix issues with contrast.
+- Drop upstreamed lnav-0.12.4-nonvoid-return.patch
+
+-------------------------------------------------------------------
 Fri May 23 19:41:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.12.4:
