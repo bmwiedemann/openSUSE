@@ -17,7 +17,7 @@
 
 
 Name:           par2cmdline
-Version:        0.8.1
+Version:        1.0.0
 Release:        0
 Summary:        A PAR 2.0 compatible file creation, verification, and repair tool
 License:        GPL-2.0-or-later
@@ -54,7 +54,7 @@ chmod -x ChangeLog configure.ac INSTALL Makefile.am NEWS stamp-h.in
 %make_build check
 
 %files
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README.md
 %license COPYING
 %{_bindir}/par2
 %{_bindir}/par2create

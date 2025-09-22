@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 13 03:54:12 UTC 2025 - anenasa <anenasaa@yahoo.com>
+
+- Update to version 1.0.0:
+  * fix: enforce -qq silent
+  * Install relative symlinks instead of absolute ones
+  * Allow Creating Files With Over 100% Redundancy
+  * Avoid copying back memory in FileChecksummer when data is valid
+  * CRC32/MD5 optimisations
+  * add exitcodes to manfile
+  * Issue 150 recursive no files from rootpath
+  * Updates from turbo
+  * Issue 128 Problem with empty (0 Bytes) files
+  * Quick bail if the base par2 file already exists
+  * Issue 113 Hang with -n=256
+  * When number of recovery files is set, you get "File already exists"
+  * Add simple "permissions" check while creating
+  * diskfile, replace stat use with lstat
+
+-------------------------------------------------------------------
 Mon Sep 14 11:21:18 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Provide par2 as it makes dependencies of other package more clear
