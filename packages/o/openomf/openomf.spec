@@ -1,7 +1,7 @@
 #
 # spec file for package openomf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           openomf
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Open Source remake of "One Must Fall 2097"
 License:        MIT

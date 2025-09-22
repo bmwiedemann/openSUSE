@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 13 17:19:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.4
+  * Hit mechanics overhaul.
+  * Add input buffer to the debug display.
+  * Ignore haptic subsystem on initialization failure.
+  * Fix Winpose After Heel Stomp.
+  * Embed the random seed in the REC file as action type 96.
+  * Katana Turnaround.
+  * Control Chronos Teleport.
+  * Stun and Knockdown Behavior Adjustment.
+  * Netplay custom game settings, usernames in lobby matches,
+    desync bugs.
+
+-------------------------------------------------------------------
 Sun Jun 22 09:50:48 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.3
