@@ -2,7 +2,7 @@
 # spec file for package niri
 #
 # Copyright (c) 2025 mantarimay
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,16 @@
 
 %bcond_without test
 Name:           niri
-Version:        25.05.1
+Version:        25.08+41
 Release:        0
 Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
 URL:            https://github.com/YaLTeR/niri
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}-vendored-dependencies.tar.xz
+#i will use this again for next release
+#Source0:        #{url}/archive/v#{version}/#{name}-#{version}.tar.gz
+#Source1:        #{url}/releases/download/v#{version}/#{name}-#{version}-vendored-dependencies.tar.xz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
@@ -36,6 +39,7 @@ BuildRequires:  rust >= 1.80.0
 BuildRequires:  wayland-devel
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libinput)
@@ -66,8 +70,8 @@ Opening a new window never causes existing windows to resize.
 
 %prep
 %autosetup -a1 -p1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
+##mkdir .cargo
+#cp #{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
@@ -98,7 +102,7 @@ install -Dm644 target/release/_%{name} -t \
 
 %files
 %license LICENSE
-%doc README.md resources/default-config.kdl wiki
+%doc README.md resources/default-config.kdl docs/wiki
 %{_bindir}/niri
 %{_bindir}/niri-session
 %dir %{_datadir}/wayland-sessions

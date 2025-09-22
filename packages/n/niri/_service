@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="localonly">
+    <param name="url">https://github.com/YaLTeR/niri.git</param>
+    <param name="scm">git</param>
+    <param name="revision">main</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+  <param name="srcdir">niri</param>
+  <param name="update">false</param>
+  </service>
+</services>
+

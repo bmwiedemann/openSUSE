@@ -118,4 +118,71 @@
     <comment></comment>
     <requestid>1280351</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aba8beaff4da3e1354423f2d5e437887</srcmd5>
+    <version>25.08+41</version>
+    <time>1758551926</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.08+41:
+  * Update libdisplay-info and Smithay (popup destruction protocol
+    check, constraints check)
+  * Move workspace options check to workspace tests
+  * layout/workspace: Rearrange checks
+  * Fix DnD icon offset from surface cursor
+  * Revert &quot;revert nushell completion for flake.nix&quot;
+  * nix: Bump flake.lock
+  * Fix layer-shell initial commit logic
+  * Update Smithay (last_acked refactor, Qt layer-shell popup grab
+    fix, popup ordering fix)
+  * Add unmap-from-floating test
+  * tests/client: Check and panic on protocol error
+  * Add sending initial configure trace log
+  * Downgrade lack of our initial configure from error! to debug!
+  * Improve commit handler trace logging
+  * layout/scrolling: Remove more redundant animate args
+  * layout/scrolling: Remove now-redundant animate arg
+  * layout/tile: Animate un/fullscreen resize
+  * layout/tile: Remove unused function
+  * layout/tile: Extract two variables
+  * layout/scrolling: Animate tiles_origin changing on 
+    un/fullscreen
+  * layout/scrolling: Track pending vs. current fullscreen for
+    Columns
+  * layout/scrolling: Store view_offset_before_fullscreen when
+    column actually goes fullscreen
+  * tests/fullscreen: Add broken slow client unfullscreen view
+    offset restoration test
+  * tests: Move complete_animations() to Fixture
+  * layout/tests/fullscreen: Add broken removing tile view pos
+    restore test
+  * Add unfullscreen view offset restoration tests
+  * layout/tests: Extract fullscreen tests to submodule
+  * Make hot corners configurable, including per-output (#2108)
+  * Include play/stop/prev/next media keys in the default config.
+  * layout: End DnD gesture when toggling interactive move to
+    floating
+  * layout: Fix crash when a window opens next-to an only
+    interactively moved window with no outputs
+  * layout/tests: Mark operations_dont_panic as slow
+  * niri.spec.rpkg: Add xwayland-satellite dependency
+  * Update cargo-rpm version
+  * Don't clear DISPLAY/WAYLAND_DISPLAY/WAYLAND_SOCKET on WSL with
+    --session
+  * wiki: Remove rofi-wayland mention
+  * wiki: Add Name and Logo page
+  * wiki: Set vertical-align: middle for tables
+  * wiki/Accessibility: Mention more current limitations
+  * wiki/Xwayland: Added a mention of Native Wayland for gaming
+    compat
+  * wiki/Accessibility: Clarify workspace announcement
+  * wiki/Accessibility: Mention xfce4-appfinder
+- Change source to main branch for a while to fix libdisplay-info
+  issue
+- Add BuildRequires for pkgconfig(egl) to fix the testsuite:
+  https://build.opensuse.org/request/show/1304126#comment-2188986
+- Update to version 25.08:
+  https://github.com/YaLTeR/niri/releases/tag/v25.08
+</comment>
+    <requestid>1306148</requestid>
+  </revision>
 </revisionlist>
