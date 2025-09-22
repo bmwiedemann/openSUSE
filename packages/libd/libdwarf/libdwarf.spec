@@ -1,7 +1,7 @@
 #
 # spec file for package libdwarf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,19 @@
 
 
 Name:           libdwarf
-Version:        0.11.1
+Version:        2.1.0
 Release:        0
 Summary:        Access DWARF debugging information
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://prevanders.net/dwarf.html
 Source:         https://github.com/davea42/libdwarf-code/releases/download/v%{version}/libdwarf-%{version}.tar.xz
+Patch0:         https://src.fedoraproject.org/rpms/libdwarf/raw/rawhide/f/libdwarf-both.patch
 BuildRequires:  binutils-devel
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  libelf-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 
@@ -33,13 +37,13 @@ BuildRequires:  pkgconfig(zlib)
 libdwarf is a library of functions to provide read/write DWARF
 debugging records.
 
-%package -n libdwarf0
+%package -n libdwarf2
 Summary:        Library to access DWARF information in object files
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Conflicts:      libdwarf1
 
-%description -n libdwarf0
+%description -n libdwarf2
 Library of functions to provide creation of DWARF debugging
 information records, DWARF line number information, DWARF address
 range and pubnames information, weak names information, and DWARF
@@ -49,7 +53,7 @@ frame description information.
 Summary:        Development files for libdwarf
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libdwarf0 = %{version}
+Requires:       libdwarf2 = %{version}
 Requires:       libelf-devel
 
 %description devel
@@ -85,6 +89,7 @@ Contains dwarfdump, a tool to access DWARF debug information.
 Summary:        Documentation for libdwarf
 License:        GPL-2.0-or-later
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description doc
 Documentation for libdwarf.
@@ -94,37 +99,39 @@ Documentation for libdwarf.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export CFLAGS="%{optflags}"
-CFLAGS="$CFLAGS -fPIC" LDFLAGS="-pie" %configure --enable-shared
-%make_build
+%meson -Ddwarfgen=true --default-library=both
+%meson_build
 
 %install
-%make_install
-mkdir %{buildroot}%{_includedir}/libdwarf
-cp -l %{buildroot}%{_includedir}/libdwarf-0/*.h %{buildroot}%{_includedir}/libdwarf
+%meson_install
 
-%post -n libdwarf0 -p /sbin/ldconfig
-%postun -n libdwarf0 -p /sbin/ldconfig
+%check
+%meson_test
 
-%files -n libdwarf0
+%ldconfig_scriptlets -n libdwarf2
+
+%files -n libdwarf2
 %license src/lib/libdwarf/LIBDWARFCOPYRIGHT src/lib/libdwarf/LGPL.txt
-%{_libdir}/libdwarf.so.0*
+%{_libdir}/libdwarf.so.2*
+%{_libdir}/libdwarfp.so.2*
 
 %files devel
-%{_libdir}/libdwarf.la
+%{_includedir}/libdwarf-2
 %{_libdir}/libdwarf.so
+%{_libdir}/libdwarfp.so
 %{_libdir}/pkgconfig/libdwarf.pc
-%{_includedir}/libdwarf
-%{_includedir}/libdwarf-0
 
 %files devel-static
 %{_libdir}/libdwarf.a
+%{_libdir}/libdwarfp.a
 
 %files tools
 %license src/bin/dwarfdump/GPL.txt
 %doc src/bin/dwarfdump/README
 %{_bindir}/dwarfdump
-%{_mandir}/man1/dwarfdump*
+%{_bindir}/dwarfgen
+%{_mandir}/man1/dwarfdump.1%{?ext_man}
+%{_mandir}/man1/dwarfgen.1%{?ext_man}
 %dir %{_datadir}/dwarfdump
 %{_datadir}/dwarfdump/dwarfdump.conf
 
