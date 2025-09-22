@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Sep 10 09:14:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add automake to BuildRequires
+- Add autoconf to BuildRequires
+- Add permissions to Requires(pre)
+- Disable GTk support, enable Athena widget support
+- Import patches from Debian
+  * 01_makefile_in.diff
+  * 02_hurd_logos.diff
+  * 03_fix_ftbfs.diff
+  * 04_implicit_declaration.diff
+- Install xbill.scores.default into /var/games/xbill
+- Remove version conditional for group(games) and
+  user(games) from Requires
+- Replace %setup -q with %autosetup -p1
+- Run autoreconf to regenerate configure script
+- Strip --localstatedir paramter from %configure line
+
+-------------------------------------------------------------------
+Sat Aug  5 07:39:23 UTC 2017 - rpm@fthiessen.de
+
+- Require group and user "games" on newer openSUSE systems.
+
+-------------------------------------------------------------------
+Mon Feb 10 18:35:11 UTC 2014 - dap.darkness@gmail.com
+
+- "error: Not a directory: "/var/games/xbill/scores"
+  was fixed via dir macro removing from files list.
+
+-------------------------------------------------------------------
+Fri Apr 19 07:44:43 UTC 2013 - joop.boonen@opensuse.org
+
+- Adapted the License according to the spdx standard
+
+-------------------------------------------------------------------
+Mon Feb 20 05:37:30 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Sun Jan 14 00:00:00 UTC 2007 - knuckles@gmail.com
+
+- added/adapted to openSUSE buildservice

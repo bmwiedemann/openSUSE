@@ -1,0 +1,48 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: Include missing headers to fix implicit-declaration warning
+ - str(n)casecmp is defined in <strings.h>
+ - as a strings.h also exists in the source directory and the source directory
+   is added to the search path, the system-wide strings.h was not found
+   -> drop the source directory from source path
+ - make sure util.h can be included by looking in the source directory
+Bug-Debian: https://bugs.debian.org/1066574
+
+--- a/Bucket.c
++++ b/Bucket.c
+@@ -1,4 +1,4 @@
+-#include <util.h>
++#include "util.h"
+ 
+ #include "Bucket.h"
+ #include "Cable.h"
+--- a/Game.c
++++ b/Game.c
+@@ -1,6 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <strings.h>
+ #include <string.h>
+ #include <time.h>
+ 
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -20,7 +20,7 @@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 
+-ALL_CFLAGS =	$(CFLAGS) $(CPPFLAGS) -I$(srcdir)
++ALL_CFLAGS =	$(CFLAGS) $(CPPFLAGS)
+ ALL_LDFLAGS =	$(CFLAGS) $(LDFLAGS)
+ IMAGE_DEFINES=-DIMAGES=\"${datadir}/xbill\"
+ SCORE_DEFINES=-DSCOREFILE=\"${localstatedir}/xbill.scores\"
+--- a/UI.c
++++ b/UI.c
+@@ -1,6 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <strings.h>
+ 
+ #include "strings.h"
+ #include "types.h"
