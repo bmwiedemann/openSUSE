@@ -279,4 +279,19 @@ I tested the upgrade path and this will not break anybody relying on the package
 </comment>
     <requestid>1303003</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>65e6e94e15206117b3dd03a390ecf553</srcmd5>
+    <version>0.19.1</version>
+    <time>1758551908</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.1
+  * Ensure that Optional[list] values work correctly with callbacks.
+  * Support typing.Literal to define a set of predefined choices.
+  * Allow setting an environment variable to None in CliRunner.invoke.
+- Update to 0.18.0
+  * Ensure compatibility with Click 8.3.0 by restoring the original
+    value_is_missing function.
+</comment>
+    <requestid>1306167</requestid>
+  </revision>
 </revisionlist>

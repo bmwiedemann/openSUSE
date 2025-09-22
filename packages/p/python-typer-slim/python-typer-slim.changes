@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 20 18:24:01 UTC 2025 - Matthias Bach <marix@marix.org> - 0.19.1
+
+- Update to 0.19.1
+  * Ensure that Optional[list] values work correctly with callbacks.
+  * Support typing.Literal to define a set of predefined choices.
+  * Allow setting an environment variable to None in CliRunner.invoke.
+
+-------------------------------------------------------------------
+Fri Sep 19 22:51:43 UTC 2025 - Matthias Bach <marix@marix.org> - 0.18.0
+
+- Update to 0.18.0
+  * Ensure compatibility with Click 8.3.0 by restoring the original
+    value_is_missing function.
+
+-------------------------------------------------------------------
 Sat Sep  6 08:48:36 UTC 2025 - Matthias Bach <marix@marix.org> - 0.17.4
 
 - Update to 0.17.4
