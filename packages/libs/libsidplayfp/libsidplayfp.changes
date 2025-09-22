@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 19 17:43:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15.1
+  * resid/residfp: remove accidental DC offset.
+  * residfp: clock voice 3 even if muted.
+  * resid: fix silenced tunes.
+  * fixed load performance regression.
+
+-------------------------------------------------------------------
 Tue Jul  1 15:22:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.15.0

@@ -199,4 +199,16 @@ GStreamer.</comment>
     <comment></comment>
     <requestid>1289960</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4fa6fd005fa472a09fa5852b65910f28</srcmd5>
+    <version>2.15.1</version>
+    <time>1758552037</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.15.1
+  * resid/residfp: remove accidental DC offset.
+  * residfp: clock voice 3 even if muted.
+  * resid: fix silenced tunes.
+  * fixed load performance regression.</comment>
+    <requestid>1306333</requestid>
+  </revision>
 </revisionlist>
