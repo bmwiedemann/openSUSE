@@ -1,8 +1,8 @@
 #
 # spec file for package yamagi-quake2-ctf
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           yamagi-quake2-ctf
-Version:        1.10
+Version:        1.12
 Release:        0
 Summary:        Quake II - Three Wave Capture The Flag for yamagi-quake2
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            https://www.yamagi.org/quake2/
 Source:         http://deponie.yamagi.org/quake2/quake2-ctf-%{version}.tar.xz
 Source1:        yquake2-ctf.desktop
 # https://github.com/yquake2/ctf/issues/20
-Patch0:         yamagi-quake2-ctf-gcc15.patch
+#Patch0:         yamagi-quake2-ctf-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  update-desktop-files
@@ -65,7 +65,7 @@ chmod 755 %{buildroot}%{_bindir}/yquake2-ctf
 
 %files
 %license LICENSE
-%doc CHANGELOG README
+%doc CHANGELOG README.md
 %{_bindir}/yquake2-ctf
 %dir %{_libexecdir}/yamagi-quake2/ctf
 %{_libexecdir}/yamagi-quake2/ctf/game.so

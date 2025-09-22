@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 14 19:07:44 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12
+  * Fix mod incompatibilities when Yamagi Quake II is complied
+    in C23 mode.
+- Update to version 1.11
+  * Fix build in C23 mode.
+- Drop not longer needed patch:
+  * yamagi-quake2-ctf-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Feb 13 10:25:56 UTC 2025 - pgajdos@suse.com
 
 - added patches
