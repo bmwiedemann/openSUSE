@@ -53,4 +53,13 @@
   * Support Python 3.13.</comment>
     <requestid>1218840</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>41bf5c1b768e3ca1c5baa0e4a4a51d01</srcmd5>
+    <version>2.10.0</version>
+    <time>1758551983</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.10.0:
+  * Support Python 3.14.</comment>
+    <requestid>1306357</requestid>
+  </revision>
 </revisionlist>
