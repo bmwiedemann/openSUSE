@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser.
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +18,8 @@
 #
 
 
-%bcond_without gui
 Name:           ansifilter
-Version:        2.21
+Version:        2.22
 Release:        0
 Summary:        ANSI Terminal Escape Code Converter
 License:        GPL-3.0-or-later
@@ -28,108 +28,69 @@ URL:            http://www.andre-simon.de/
 Source:         http://www.andre-simon.de/zip/ansifilter-%{version}.tar.bz2
 Source2:        http://www.andre-simon.de/zip/ansifilter-%{version}.tar.bz2.asc
 Source99:       ansifilter.keyring
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.30
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Widgets)
+# these were split until 2.21
+Obsoletes:      %{name}-bash-completion < %{version}
+Provides:       %{name}-bash-completion = %{version}
+Obsoletes:      %{name}-fish-completion < %{version}
+Provides:       %{name}-fish-completion = %{version}
+Obsoletes:      %{name}-zsh-completion < %{version}
+Provides:       %{name}-zsh-completion = %{version}
 
 %description
-Ansifilter handles text files containing ANSI terminal escape codes.
-The command sequences may be stripped or be interpreted to generate formatted
+Ansifilter handles text files containing ANSI terminal escape codes.  The
+command sequences may be stripped or be interpreted to generate formatted
 output (HTML, RTF, TeX, LaTeX, BBCode).
 
-%if %{with gui}
 %package gui
 Summary:        ANSI Terminal Escape Code Converter - Qt GUI
 Group:          Development/Tools/Other
-BuildRequires:  libqt5-qtbase-devel
 Requires:       %{name} = %{version}
 
 %description gui
 This package provides a Qt Graphical User Interface to run %{name}.
-%endif
-
-%package bash-completion
-Summary:        Bash completion for %{name}
-Group:          System/Shells
-Requires:       %{name}
-Requires:       bash-completion
-Supplements:    (bash-completion and %{name})
-BuildArch:      noarch
-
-%description bash-completion
-This package provides Bash command-line completion support for %{name}.
-
-%package fish-completion
-Summary:        Fish completion for %{name}
-Group:          System/Shells
-Requires:       %{name}
-Requires:       fish
-Supplements:    (fish and %{name})
-BuildArch:      noarch
-
-%description fish-completion
-This package provides Fish command-line completion support for %{name}.
-
-%package zsh-completion
-Summary:        Zsh completion for %{name}
-Group:          System/Shells
-Requires:       %{name}
-Requires:       zsh
-Supplements:    (zsh and %{name})
-BuildArch:      noarch
-
-%description zsh-completion
-This package provides Zsh command-line completion support for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-make \
-  CFLAGS="%{optflags} -fPIC" \
-  CXXFLAGS="%{optflags} -std=c++17 -fPIC" \
-  QMAKE="qmake-qt5" \
-  all \
-%if %{with gui}
-  all-gui \
-%endif
-  %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-make \
-  DESTDIR=%{buildroot} \
-  doc_dir="%{_docdir}/%{name}" \
-  install \
-%if %{with gui}
-  install-gui
-%endif
+%cmake_install
+# installed via macro
+rm %{buildroot}%{_datadir}/doc/COPYING
+# not needed
+rm %{buildroot}%{_datadir}/doc/INSTALL
+# should be patched up in CMakeLists but I'm lazy right now
+mkdir -p %{buildroot}%{_docdir}/%{name}
+mv %{buildroot}%{_datadir}/doc/*.adoc %{buildroot}%{_docdir}/%{name}
 
-rm %{buildroot}%{_docdir}/%{name}/INSTALL
+%check
+%ctest
 
 %files
-%dir %{_docdir}/%{name}
-%{_docdir}/%{name}/COPYING
-%{_docdir}/%{name}/ChangeLog.adoc
-%{_docdir}/%{name}/README.adoc
+%license COPYING
 %{_bindir}/ansifilter
-%{_mandir}/man1/ansifilter.1%{ext_man}
-
-%if %{with gui}
-%files gui
-%{_bindir}/ansifilter-gui
-%{_datadir}/applications/ansifilter.desktop
-%{_datadir}/pixmaps/ansifilter.xpm
-%endif
-
-%files bash-completion
+%{_docdir}/%{name}
+%{_mandir}/man1/ansifilter.1%{?ext_man}
 %{_datadir}/bash-completion/completions/%{name}
-
-%files fish-completion
 %dir %{_datadir}/fish
 %dir %{_datadir}/fish/vendor_completions.d
 %{_datadir}/fish/vendor_completions.d/%{name}.fish
-
-%files zsh-completion
-%dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_%{name}
+
+%files gui
+%license COPYING
+%{_bindir}/ansifilter-gui
+%{_datadir}/applications/ansifilter.desktop
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/256x256
+%dir %{_datadir}/icons/hicolor/256x256/apps
+%{_datadir}/icons/hicolor/256x256/apps/ansifilter.xpm
 
 %changelog

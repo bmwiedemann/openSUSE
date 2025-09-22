@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 13 08:26:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.22:
+ * CLI: add `--tee` and `--append` options for text output
+ * GUI: add toggle button in the GUI to hide the options panel
+ * CLI: add option `--line-append`
+ * fix open span tag with CR as opening sequence
+- Switch package to cmake, use Qt6
+- move shell completions into CLI package
+
+-------------------------------------------------------------------
 Mon Sep  9 06:41:55 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 2.21:
