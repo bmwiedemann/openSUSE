@@ -1,7 +1,7 @@
 #
 # spec file for package tcpreplay
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://tcpreplay.appneta.com/
 Source0:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# CVE-2025-8746 [bsc#1247917], improper input validation and memory bounds checking when processing certain malformed configuration files
+Patch0:         tcpreplay-CVE-2025-8746.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  libdnet-devel
 BuildRequires:  libpcap-devel
@@ -46,9 +48,10 @@ Systems, and is meanwhile capable of replaying to web servers. It
 supports switches, routers and IP Flow/NetFlow appliances.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+export CFLAGS="%{optflags} -std=gnu11"
 %configure \
   --enable-dynamic-link
 %make_build
