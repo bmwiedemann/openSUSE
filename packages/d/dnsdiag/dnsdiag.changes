@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 21 10:26:34 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.0
+  New Features
+  * DNS over HTTP/3 (DoH3) Support: Added support for RFC 9114 DNS
+    over HTTP3 protocol using -3 or --doh3 option in dnsping.
+  * Improved Error Handling: Enhanced error handling for DoH3
+    connection failures.
+  Breaking Changes
+  * Python 3.9 Support Dropped: Minimum Python version is now 3.10
+    due to dnspython 2.8.0 requirements.
+  Improvements
+  * DoQ and DoH3 Enhancements:
+    + Upgraded to dnspython 2.8.0 which provides improved DoQ (DNS
+      over QUIC) and DoH3 error handling.
+  * Display Enhancements:
+    + Fixed RTT display that was broken in previous release.
+    + Improved response time display.
+    + Better display of DNS response flags.
+    + Fixed EDE (Extended DNS Error) payload display to show empty
+      string instead of "None".
+    + Added quotes around EDE payload strings for better visibility
+
+-------------------------------------------------------------------
 Sat Oct 26 19:31:45 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.0

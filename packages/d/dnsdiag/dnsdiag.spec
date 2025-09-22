@@ -1,8 +1,8 @@
 #
 # spec file for package dnsdiag
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2017-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,23 +19,24 @@
 
 %bcond_without test
 Name:           dnsdiag
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        DNS request auditing toolset
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 #Git-Clone:     https://github.com/farrokhi/dnsdiag.git
 URL:            https://dnsdiag.org/
-Source:         https://files.pythonhosted.org/packages/source/d/dnsdiag/dnsdiag-%{version}.tar.gz
+Source:         https://github.com/farrokhi/dnsdiag/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        dnseval.1
 Source2:        dnsping.1
 Source3:        dnstraceroute.1
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
+Requires:       python3-aioquic >= 1.2.0
 Requires:       python3-cryptography >= 42.0.5
 Requires:       python3-cymruwhois >= 1.6
-Requires:       python3-dnspython >= 2.6.1
+Requires:       python3-dnspython >= 2.8.0
 Requires:       python3-h2 >= 4.1.0
 Requires:       python3-httpx >= 0.27.0
 BuildArch:      noarch
@@ -65,8 +66,8 @@ different DNS servers from a performance (latency) and reliability
 of a resolver.
 
 %prep
-%setup -q -n dnsdiag-%{version}
-sed -e '/^#!\//, 1d' -i util/*.py
+%autosetup -n dnsdiag-%{version}
+sed -e '/^#!\//, 1d' -i dnsdiag/*.py
 
 %build
 %python3_build
@@ -91,6 +92,6 @@ install -m0644 %{SOURCE3} %{buildroot}%{_mandir}/man1/
 %{_mandir}/man1/dnseval.1%{?ext_man}
 %{_mandir}/man1/dnstraceroute.1%{?ext_man}
 %{_mandir}/man1/dnsping.1%{?ext_man}
-%{python3_sitelib}/*
+%{python3_sitelib}/dnsdiag*
 
 %changelog
