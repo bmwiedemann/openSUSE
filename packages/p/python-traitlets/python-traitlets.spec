@@ -1,7 +1,7 @@
 #
 # spec file for package python-traitlets
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,8 @@ sed -i 's/"--color=yes",//' pyproject.toml
 %check
 # no mypy testing in Ring1
 # skip test_complete_custom_completers because of gh#ipython/traitlets#911
-%pytest --ignore tests/test_typing.py -k 'not test_complete_custom_completers'
+# test_complete_simple_app and test_complete_subcommands_subapp1 fail with Python 3.14 https://github.com/pytest-dev/pytest-cov/issues/719
+%pytest --ignore tests/test_typing.py -k 'not (test_complete_custom_completers or test_complete_simple_app or test_complete_subcommands_subapp1)'
 
 %files %{python_files}
 %doc README.md

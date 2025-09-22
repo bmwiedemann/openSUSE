@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 19 10:42:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Skip tests failing with Python 3.14
+
+-------------------------------------------------------------------
 Sat Oct  5 21:34:51 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip test_complete_custom_completers test because it is failing
