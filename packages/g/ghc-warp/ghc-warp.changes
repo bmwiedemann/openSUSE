@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 13 19:29:59 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.4.9.
+  ## 3.4.9
+
+  * New flag `include-warp-version` can be disabled to remove dependency on `Paths_warp`.
+    [#1044](https://github.com/yesodweb/wai/pull/1044)
+
+-------------------------------------------------------------------
 Tue Jun  3 08:07:10 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update warp to version 3.4.8.
