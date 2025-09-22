@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Jun 26 17:50:11 UTC 2025 - aline.werner@suse.com
+
+- Update to version 1.91.0:
+  * release: 1.91.0 (#2423)
+  * release: 1.90.0 (#2420)
+  * release: 1.89.0
+  * feat(client): add support for aiohttp
+  * fix(tests): fix: tests which call HTTP endpoints directly with the example parameters
+  * chore(readme): update badges
+  * release: 1.88.0
+  * chore(ci): enable for pull requests
+  * chore(internal): minor formatting
+  * feat(api): manual updates
+  * release: 1.87.0 (#2410)
+  * release: 1.86.0 (#2405)
+  * release: 1.85.0
+  * feat(api): Add tools and structured outputs to evals
+  * fix(responses): support raw responses for `parse()`
+  * release: 1.84.0 (#2395)
+  * release: 1.83.0 (#2393)
+  * release: 1.82.1
+  * fix(responses): don't include `parsed_arguments` when re-serialising
+  * chore(internal): fix release workflows
+  * codegen metadata
+  * release: 1.82.0 (#2372)
+  * release: 1.81.0 (#2368)
+  * release: 1.80.0 (#2367)
+  * release: 1.79.0
+  * feat(api): further updates for evals API
+  * fix: fix create audio transcription endpoint
+  * feat(api): Updating Assistants and Evals API schemas
+  * feat(api): manual updates
+  * feat(api): responses x eval api
+  * chore(ci): fix installation instructions
+  * chore(ci): upload sdks to package manager
+  * release: 1.78.1
+  * fix(internal): fix linting due to broken __test__ annotation
+  * fix(package): support direct resource imports
+  * release: 1.78.0
+  * feat(api): Add reinforcement fine-tuning api support
+  * chore(internal): update proxy tests
+  * fix: ignore errors in isinstance() calls on LazyProxy subclasses (#2343)
+  * chore: use lazy imports for resources
+  * chore: use lazy imports for module level client
+  * release: 1.77.0
+  * feat(api): add image sizes, reasoning encryption
+  * chore: only strip leading whitespace
+  * fix(parsing): handle whitespace only strings (#2007)
+  * release: 1.76.2
+  * chore(api): API spec cleanup
+  * release: 1.76.1
+  * chore: broadly detect json family of content-type headers
+  * chore(ci): only use depot for staging repos
+  * chore(ci): run on more branches and use depot runners
+  * release: 1.76.0
+  * feat(api): adding new image model support
+  * chore(internal): minor formatting changes
+  * fix(pydantic v1): more robust ModelField.annotation check
+  * fix(pydantic v1): more robust `ModelField.annotation` check (#2163)
+  * chore(internal): refactor retries to not use recursion
+  * chore(internal): fix list file params
+  * chore(internal): import reformatting
+  * chore(ci): add timeout thresholds for CI jobs
+  * chore: update completion parse signature
+  * chore(internal): update models test
+  * release: 1.75.0
+  * feat(api): add o3 and o4-mini model IDs
+  * release: 1.74.1
+  * chore(internal): base client updates
+  * chore(internal): bump pyright version
+  * release: 1.74.0
+  * feat(api): adding gpt-4.1 family of model IDs
+  * chore(client): minor internal fixes
+  * chore(internal): update pyright settings
+  * fix(chat): skip azure async filter events (#2255)
+
+-------------------------------------------------------------------
 Thu Apr 17 10:30:36 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update to 1.73.0

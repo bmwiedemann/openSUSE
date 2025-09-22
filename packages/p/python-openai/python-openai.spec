@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openai
-Version:        1.73.0
+Version:        1.91.0
 Release:        0
 Summary:        OpenAI bindings for python
 License:        Apache-2.0
@@ -40,7 +40,7 @@ Requires:       python-sniffio
 Requires:       python-tqdm > 4
 Requires:       python-typing_extensions
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # SECTION test-requirements
 BuildRequires:  %{python_module dirty-equals >= 0.6.0}
 BuildRequires:  %{python_module distro >= 1.7.0}
@@ -53,6 +53,7 @@ BuildRequires:  %{python_module nest-asyncio}
 BuildRequires:  %{python_module pydantic >= 1.9.0}
 BuildRequires:  %{python_module pyright >= 1.1.359}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module respx}
 BuildRequires:  %{python_module rich >= 13.7.1}
@@ -77,7 +78,7 @@ You can find usage examples for the OpenAI Python library in
  https://github.com/openai/openai-cookbook/.
 
 %prep
-%autosetup -p1 -n openai-python-%{version}
+%autosetup -p1 -n openai-%{version}
 
 %build
 %pyproject_wheel
