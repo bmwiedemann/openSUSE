@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 19 09:53:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.1.0
+  * Update maintainers in pyproject.toml
+  * Drop support for Python < 3.9
+  * Update poetry deps
+  * Migrate from poetry to flit
+  * Add pep8 target
+  * Support default values for fields.
+  * Don't override values set in the constructor.
+  * Allow default values in nested properties.
+  * Fix nested properties with initalization values.
+  * Add tests for default values.
+  * tox: Run pep8 by default
+- Update BuildRequires from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue Sep 26 13:38:50 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Fix dependencies and remove deprecated python packaging patterns

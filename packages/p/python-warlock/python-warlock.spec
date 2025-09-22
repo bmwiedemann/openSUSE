@@ -15,20 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-warlock
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Python object model built on top of JSON schema
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/bcwaldon/warlock
 Source:         https://github.com/bcwaldon/warlock/archive/%{version}.tar.gz#/warlock-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module jsonpatch >= 1}
 BuildRequires:  %{python_module jsonschema >= 4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module pytest-cov >= 3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jsonpatch >= 1
