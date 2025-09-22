@@ -1,6 +1,7 @@
 #
 # spec file for package nfs-utils
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 SUSE LLC and contributors
 #
@@ -23,7 +24,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -44,8 +45,6 @@ Source24:       rpc-statd-notify.options.conf
 Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
-Patch0:         nfs-utils-Fix-build-with-glibc-2.42.patch
-Patch1:         nfs-utils-nfsdctl-fix-lockd-config-during-autostart.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -319,6 +318,7 @@ fi
 %dir %{_systemdgeneratordir}
 %{_systemdgeneratordir}/nfs-server-generator
 %{_systemdgeneratordir}/rpc-pipefs-generator
+%{_systemdgeneratordir}/nfsroot-generator
 %{_mandir}/man5/idmapd.conf.5%{ext_man}
 %{_mandir}/man5/nfs.5%{ext_man}
 %{_mandir}/man5/nfs.conf.5%{ext_man}

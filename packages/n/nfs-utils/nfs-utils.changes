@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep 15 19:17:31 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to 2.8.4:
+  https://kernel.org/pub/linux/utils/nfs-utils/2.8.4/2.8.4-Changelog
+  https://lore.kernel.org/linux-nfs/6f271c01-cd4b-456b-80ac-77a96b99a1fe@redhat.com/
+  * rpc-statd.service: define dependency on both rpcbind.service and rpcbind.socket
+  * nfsrahead: modify get_device_info logic
+  * Fix build with glibc-2.42
+  * nfsroot-generator: do not fail if nfsroot is not configured
+  * systemd: Add a generator to mount /sysroot via NFSv4 in the initrd
+  * systemd: Allow nfs-idmapd.service to be started without the server
+  * configure.ac: AC_PROG_GCC_TRADITIONAL is obsolete.
+  * nfsdctl: Warning Clean Up
+  * gssd:fix the possible buffer overflow in get_full_hostname
+  * nfsdcld:Fix a memory leak
+  * nfsdctl: fix lockd config during autostart
+  * nfsdctl: debug logging fixups
+  * rpcctl: Add support for `rpcctl switch add-xprt`
+  * rpcctl: Display new rpc_clnt sysfs attributes
+  * rpcctl: Add support for the xprtsec sysfs attribute
+  * rpcctl: Rename {read,write}_addr_file()
+- Add new binary file /usr/lib/systemd/system-generators/nfsroot-generator
+- Remove patches from upstream
+  * nfs-utils-Fix-build-with-glibc-2.42.patch
+  * nfs-utils-nfsdctl-fix-lockd-config-during-autostart.patch
+
+-------------------------------------------------------------------
 Thu Jul 31 22:10:40 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 2.8.3:
