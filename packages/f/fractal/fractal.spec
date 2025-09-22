@@ -44,8 +44,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  rust-grass
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
-BuildRequires:  pkgconfig(glycin-gtk4-1)
-BuildRequires:  pkgconfig(gstgtk4)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-base-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{gstreamer_version}
