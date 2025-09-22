@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 22 05:11:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.12:
+  * build(deps): bump chainguard-dev/actions from 1.4.14 to 1.4.15
+    (#1858)
+  * build(deps): bump sigstore/cosign-installer from 3.9.2 to
+    3.10.0 (#1859)
+
+-------------------------------------------------------------------
 Thu Sep 18 05:39:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.11:
