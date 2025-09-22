@@ -1,7 +1,7 @@
-Index: librime-1.10.0+git20240229.4ee471e/CMakeLists.txt
+Index: librime-1.14.0/CMakeLists.txt
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/CMakeLists.txt
-+++ librime-1.10.0+git20240229.4ee471e/CMakeLists.txt
+--- librime-1.14.0.orig/CMakeLists.txt
++++ librime-1.14.0/CMakeLists.txt
 @@ -60,7 +60,7 @@ if(MSVC)
  endif()
  
@@ -11,10 +11,10 @@ Index: librime-1.10.0+git20240229.4ee471e/CMakeLists.txt
  else()
    find_package(Boost 1.77.0)
  endif()
-Index: librime-1.10.0+git20240229.4ee471e/plugins/plugins_module.cc
+Index: librime-1.14.0/plugins/plugins_module.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/plugins/plugins_module.cc
-+++ librime-1.10.0+git20240229.4ee471e/plugins/plugins_module.cc
+--- librime-1.14.0.orig/plugins/plugins_module.cc
++++ librime-1.14.0/plugins/plugins_module.cc
 @@ -6,7 +6,7 @@
  #include <algorithm>
  #include <boost/algorithm/string.hpp>
@@ -33,10 +33,10 @@ Index: librime-1.10.0+git20240229.4ee471e/plugins/plugins_module.cc
  
  namespace rime {
  
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/common.h
+Index: librime-1.14.0/src/rime/common.h
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/common.h
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/common.h
+--- librime-1.14.0.orig/src/rime/common.h
++++ librime-1.14.0/src/rime/common.h
 @@ -9,7 +9,7 @@
  
  #include <rime/build_config.h>
@@ -46,7 +46,7 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/common.h
  #include <functional>
  #include <list>
  #include <map>
-@@ -80,8 +80,9 @@ inline an<T> New(Args&&... args) {
+@@ -79,8 +79,9 @@ inline an<T> New(Args&&... args) {
  using boost::signals2::connection;
  using boost::signals2::signal;
  
@@ -58,7 +58,7 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/common.h
  
   public:
    path() : fs_path() {}
-@@ -90,9 +91,9 @@ class path : public std::filesystem::pat
+@@ -89,9 +90,9 @@ class path : public std::filesystem::pat
  #ifdef _WIN32
    // convert utf-8 string to native encoding path.
    explicit path(const std::string& utf8_path)
@@ -70,10 +70,20 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/common.h
  #else
    // disable implicit conversion from string to path for development purpose.
    explicit path(const std::string& utf8_path) : fs_path(utf8_path) {}
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/config/build_info_plugin.cc
+@@ -126,6 +127,9 @@ class path : public std::filesystem::pat
+   friend path operator/(const fs_path& lhs, const char* rhs) {
+     return path(lhs) /= path(rhs);
+   }
++  const std::string & u8string() const {
++    return this->string();
++  }
+ #ifdef RIME_ENABLE_LOGGING
+   friend std::ostream& operator<<(std::ostream& os, const path& p) {
+     return os << p.u8string();
+Index: librime-1.14.0/src/rime/config/build_info_plugin.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/config/build_info_plugin.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/config/build_info_plugin.cc
+--- librime-1.14.0.orig/src/rime/config/build_info_plugin.cc
++++ librime-1.14.0/src/rime/config/build_info_plugin.cc
 @@ -2,7 +2,7 @@
  // Copyright RIME Developers
  // Distributed under the BSD License
@@ -92,10 +102,10 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/config/build_info_plugin.cc
    });
  #endif
    return true;
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/config/config_data.cc
+Index: librime-1.14.0/src/rime/config/config_data.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/config/config_data.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/config/config_data.cc
+--- librime-1.14.0.orig/src/rime/config/config_data.cc
++++ librime-1.14.0/src/rime/config/config_data.cc
 @@ -7,7 +7,7 @@
  #include <fstream>
  #include <sstream>
@@ -105,19 +115,21 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/config/config_data.cc
  #include <yaml-cpp/yaml.h>
  #include <rime/config/config_compiler.h>
  #include <rime/config/config_cow_ref.h>
-@@ -61,7 +61,7 @@ bool ConfigData::LoadFromFile(const path
+@@ -65,8 +65,8 @@ bool ConfigData::LoadFromFile(const path
    file_path_ = file_path;
    modified_ = false;
    root.reset();
 -  if (!std::filesystem::exists(file_path)) {
+-    if (!boost::ends_with(file_path.u8string(), ".custom.yaml"))
 +  if (!boost::filesystem::exists(file_path)) {
-     LOG(WARNING) << "nonexistent config file '" << file_path << "'.";
++    if (!boost::ends_with(file_path.string(), ".custom.yaml"))
+       LOG(WARNING) << "nonexistent config file '" << file_path << "'.";
      return false;
    }
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/db.cc
+Index: librime-1.14.0/src/rime/dict/db.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/db.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/db.cc
+--- librime-1.14.0.orig/src/rime/dict/db.cc
++++ librime-1.14.0/src/rime/dict/db.cc
 @@ -5,7 +5,7 @@
  // 2011-11-02 GONG Chen <chen.sst@gmail.com>
  //
@@ -145,10 +157,10 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/db.cc
  }
  
  bool Db::CreateMetadata() {
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/dict_compiler.cc
+Index: librime-1.14.0/src/rime/dict/dict_compiler.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/dict_compiler.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/dict_compiler.cc
+--- librime-1.14.0.orig/src/rime/dict/dict_compiler.cc
++++ librime-1.14.0/src/rime/dict/dict_compiler.cc
 @@ -4,7 +4,7 @@
  //
  // 2011-11-27 GONG Chen <chen.sst@gmail.com>
@@ -194,10 +206,10 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/dict_compiler.cc
    return target_resolver->ResolvePath(resource_id);
  }
  
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/dictionary.cc
+Index: librime-1.14.0/src/rime/dict/dictionary.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/dictionary.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/dictionary.cc
+--- librime-1.14.0.orig/src/rime/dict/dictionary.cc
++++ librime-1.14.0/src/rime/dict/dictionary.cc
 @@ -4,7 +4,7 @@
  //
  // 2011-07-05 GONG Chen <chen.sst@gmail.com>
@@ -207,7 +219,7 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/dictionary.cc
  #include <rime/algo/syllabifier.h>
  #include <rime/common.h>
  #include <rime/dict/dictionary.h>
-@@ -306,8 +306,8 @@ bool Dictionary::Decode(const Code& code
+@@ -352,8 +352,8 @@ bool Dictionary::Decode(const Code& code
  }
  
  bool Dictionary::Exists() const {
@@ -218,10 +230,10 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/dictionary.cc
  }
  
  bool Dictionary::Remove() {
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/mapped_file.cc
+Index: librime-1.14.0/src/rime/dict/mapped_file.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/mapped_file.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/mapped_file.cc
+--- librime-1.14.0.orig/src/rime/dict/mapped_file.cc
++++ librime-1.14.0/src/rime/dict/mapped_file.cc
 @@ -7,7 +7,7 @@
  // 2011-06-30 GONG Chen <chen.sst@gmail.com>
  //
@@ -249,10 +261,23 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/mapped_file.cc
    } catch (...) {
      return false;
    }
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/user_db_recovery_task.cc
+Index: librime-1.14.0/src/rime/dict/user_db.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/user_db_recovery_task.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/user_db_recovery_task.cc
+--- librime-1.14.0.orig/src/rime/dict/user_db.cc
++++ librime-1.14.0/src/rime/dict/user_db.cc
+@@ -107,7 +107,7 @@ bool UserDbHelper::UpdateUserInfo() {
+ }
+ 
+ bool UserDbHelper::IsUniformFormat(const path& file_path) {
+-  return boost::ends_with(file_path.filename().u8string(),
++  return boost::ends_with(file_path.filename().string(),
+                           plain_userdb_extension);
+ }
+ 
+Index: librime-1.14.0/src/rime/dict/user_db_recovery_task.cc
+===================================================================
+--- librime-1.14.0.orig/src/rime/dict/user_db_recovery_task.cc
++++ librime-1.14.0/src/rime/dict/user_db_recovery_task.cc
 @@ -5,7 +5,7 @@
  // 2013-04-22 GONG Chen <chen.sst@gmail.com>
  //
@@ -290,10 +315,32 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/user_db_recovery_task.cc
        return;  // not found
      }
    }
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/customizer.cc
+Index: librime-1.14.0/src/rime/gear/simplifier.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/lever/customizer.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/lever/customizer.cc
+--- librime-1.14.0.orig/src/rime/gear/simplifier.cc
++++ librime-1.14.0/src/rime/gear/simplifier.cc
+@@ -36,7 +36,7 @@ class Opencc {
+     opencc::Config config;
+     try {
+       // opencc accepts file path encoded in UTF-8.
+-      converter_ = config.NewFromFile(config_path.u8string());
++      converter_ = config.NewFromFile(config_path.string());
+ 
+       const list<opencc::ConversionPtr> conversions =
+           converter_->GetConversionChain()->GetConversions();
+@@ -305,7 +305,7 @@ Simplifier* SimplifierComponent::Create(
+     return new Simplifier(ticket, opencc);
+   }
+   path opencc_config_path = path(opencc_config);
+-  if (opencc_config_path.extension().u8string() == ".ini") {
++  if (opencc_config_path.extension().string() == ".ini") {
+     LOG(ERROR) << "please upgrade opencc_config to an opencc 1.0 config file.";
+     return nullptr;
+   }
+Index: librime-1.14.0/src/rime/lever/customizer.cc
+===================================================================
+--- librime-1.14.0.orig/src/rime/lever/customizer.cc
++++ librime-1.14.0/src/rime/lever/customizer.cc
 @@ -4,14 +4,14 @@
  //
  // 2011-12-12 GONG Chen <chen.sst@gmail.com>
@@ -320,10 +367,10 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/customizer.cc
      } catch (...) {
        LOG(ERROR) << "Error copying config file '" << source_path_
                   << "' to user directory.";
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
+Index: librime-1.14.0/src/rime/lever/deployment_tasks.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/lever/deployment_tasks.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
+--- librime-1.14.0.orig/src/rime/lever/deployment_tasks.cc
++++ librime-1.14.0/src/rime/lever/deployment_tasks.cc
 @@ -9,7 +9,7 @@
  
  #include <algorithm>
@@ -333,16 +380,16 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
  #include <boost/uuid/random_generator.hpp>
  #include <boost/uuid/uuid.hpp>
  #include <boost/uuid/uuid_io.hpp>
-@@ -31,7 +31,7 @@
- 
- using namespace std::placeholders;
+@@ -29,7 +29,7 @@
+ #include <windows.h>
+ #endif
  
 -namespace fs = std::filesystem;
 +namespace fs = boost::filesystem;
  
  namespace rime {
  
-@@ -49,7 +49,7 @@ bool DetectModifications::Run(Deployer*
+@@ -47,16 +47,16 @@ bool DetectModifications::Run(Deployer*
      for (auto dir : data_dirs_) {
        path p = fs::canonical(dir);
        last_modified = (std::max)(last_modified,
@@ -351,8 +398,11 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
        if (fs::is_directory(p)) {
          for (fs::directory_iterator iter(p), end; iter != end; ++iter) {
            path entry(iter->path());
-@@ -58,7 +58,7 @@ bool DetectModifications::Run(Deployer*
-               entry.filename().string() != "user.yaml") {
+           if (fs::is_regular_file(fs::canonical(entry)) &&
+-              entry.extension().u8string() == ".yaml" &&
+-              entry.filename().u8string() != "user.yaml") {
++              entry.extension().string() == ".yaml" &&
++              entry.filename().string() != "user.yaml") {
              last_modified =
                  (std::max)(last_modified,
 -                           filesystem::to_time_t(fs::last_write_time(entry)));
@@ -360,7 +410,7 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
            }
          }
        }
-@@ -87,7 +87,7 @@ bool InstallationUpdate::Run(Deployer* d
+@@ -85,7 +85,7 @@ bool InstallationUpdate::Run(Deployer* d
    const path& user_data_path(deployer->user_data_dir);
    if (!fs::exists(user_data_path)) {
      LOG(INFO) << "creating user data dir: " << user_data_path;
@@ -369,7 +419,7 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
      if (!fs::create_directories(user_data_path, ec)) {
        LOG(ERROR) << "Error creating user data dir: " << user_data_path;
      }
-@@ -261,7 +261,7 @@ SchemaUpdate::SchemaUpdate(TaskInitializ
+@@ -263,7 +263,7 @@ SchemaUpdate::SchemaUpdate(TaskInitializ
  }
  
  static bool MaybeCreateDirectory(path dir) {
@@ -378,7 +428,7 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
    if (fs::create_directories(dir, ec)) {
      return true;
    }
-@@ -312,7 +312,7 @@ static bool TrashDeprecatedUserCopy(cons
+@@ -314,7 +314,7 @@ static bool TrashDeprecatedUserCopy(cons
        return false;
      }
      path backup = trash / user_copy.filename();
@@ -387,7 +437,7 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
      fs::rename(user_copy, backup, ec);
      if (ec) {
        LOG(ERROR) << "error trashing file " << user_copy;
-@@ -417,7 +417,7 @@ static bool ConfigNeedsUpdate(Config* co
+@@ -419,7 +419,7 @@ static bool ConfigNeedsUpdate(Config* co
        continue;
      }
      if (recorded_time !=
@@ -396,7 +446,16 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
        LOG(INFO) << "source file " << (recorded_time ? "changed: " : "added: ")
                  << source_file;
        return true;
-@@ -481,7 +481,7 @@ bool SymlinkingPrebuiltDictionaries::Run
+@@ -460,7 +460,7 @@ bool PrebuildAllSchemas::Run(Deployer* d
+   for (fs::directory_iterator iter(shared_data_path), end; iter != end;
+        ++iter) {
+     path entry(iter->path());
+-    if (boost::ends_with(entry.filename().u8string(), ".schema.yaml")) {
++    if (boost::ends_with(entry.filename().string(), ".schema.yaml")) {
+       the<DeploymentTask> t(new SchemaUpdate(entry));
+       if (!t->Run(deployer))
+         success = false;
+@@ -483,7 +483,7 @@ bool SymlinkingPrebuiltDictionaries::Run
      if (fs::is_symlink(entry)) {
        try {
          // a symlink becomes dangling if the target file is no longer provided
@@ -405,7 +464,25 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
          auto target_path = fs::canonical(entry, ec);
          bool bad_link = bool(ec);
          bool linked_to_shared_data =
-@@ -564,8 +564,8 @@ bool BackupConfigFiles::Run(Deployer* de
+@@ -525,7 +525,7 @@ bool UserDictSync::Run(Deployer* deploye
+ }
+ 
+ static bool IsCustomizedCopy(const path& file_path) {
+-  auto file_name = file_path.filename().u8string();
++  auto file_name = file_path.filename().string();
+   if (boost::ends_with(file_name, ".yaml") &&
+       !boost::ends_with(file_name, ".custom.yaml")) {
+     Config config;
+@@ -556,7 +556,7 @@ bool BackupConfigFiles::Run(Deployer* de
+     path entry(iter->path());
+     if (!fs::is_regular_file(entry))
+       continue;
+-    auto file_extension = entry.extension().u8string();
++    auto file_extension = entry.extension().string();
+     bool is_yaml_file = file_extension == ".yaml";
+     bool is_text_file = file_extension == ".txt";
+     if (!is_yaml_file && !is_text_file)
+@@ -570,8 +570,8 @@ bool BackupConfigFiles::Run(Deployer* de
        ++skipped;  // customized copy
        continue;
      }
@@ -416,7 +493,16 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
      if (ec) {
        LOG(ERROR) << "error backing up file " << backup;
        ++failure;
-@@ -599,7 +599,7 @@ bool CleanupTrash::Run(Deployer* deploye
+@@ -596,7 +596,7 @@ bool CleanupTrash::Run(Deployer* deploye
+     path entry(iter->path());
+     if (!fs::is_regular_file(entry))
+       continue;
+-    auto file_name = entry.filename().u8string();
++    auto file_name = entry.filename().string();
+     if (file_name == "rime.log" || boost::ends_with(file_name, ".bin") ||
+         boost::ends_with(file_name, ".reverse.kct") ||
+         boost::ends_with(file_name, ".userdb.kct.old") ||
+@@ -605,7 +605,7 @@ bool CleanupTrash::Run(Deployer* deploye
          return false;
        }
        path backup = trash / entry.filename();
@@ -425,28 +511,30 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
        fs::rename(entry, backup, ec);
        if (ec) {
          LOG(ERROR) << "error clean up file " << entry;
-@@ -634,7 +634,7 @@ bool CleanOldLogFiles::Run(Deployer* dep
-   for (auto& dir : google::GetLoggingDirectories()) {
-     auto perms = fs::status(dir).permissions();
-     if ((perms & (fs::perms::owner_write | fs::perms::group_write |
--                  fs::perms::others_write)) != fs::perms::none) {
-+                  fs::perms::others_write)) != fs::perms::no_perms) {
-       dirs.push_back(dir);
-     }
-   }
-@@ -647,7 +647,7 @@ bool CleanOldLogFiles::Run(Deployer* dep
-     // preparing files
-     for (const auto& entry : fs::directory_iterator(dir)) {
-       const string& file_name(entry.path().filename().string());
--      if (entry.is_regular_file() && !entry.is_symlink() &&
-+      if (fs::is_regular_file(entry.path()) && !fs::is_symlink(entry.path()) &&
-           boost::starts_with(file_name, "rime.") &&
-           !boost::contains(file_name, today)) {
-         files.push_back(entry.path());
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/switcher_settings.cc
+@@ -650,15 +650,15 @@ bool CleanOldLogFiles::Run(Deployer* dep
+     try {
+       // preparing files
+       for (const auto& entry : fs::directory_iterator(dir)) {
+-        const string& file_name(entry.path().filename().u8string());
+-        if (entry.is_regular_file() && !entry.is_symlink() &&
++        const string& file_name(entry.path().filename().string());
++        if (fs::is_regular_file(entry.path()) && !fs::is_symlink(entry.path()) &&
+             boost::starts_with(file_name, app_name) &&
+             boost::ends_with(file_name, ".log") &&
+             !boost::contains(file_name, today)) {
+           files_to_remove.push_back(entry.path());
+-        } else if (entry.is_symlink()) {
++        } else if (fs::is_symlink(entry.path())) {
+           auto target = fs::read_symlink(entry.path());
+-          const string& target_file_name(target.filename().u8string());
++          const string& target_file_name(target.filename().string());
+           if (boost::starts_with(target_file_name, app_name) &&
+               boost::ends_with(target_file_name, ".log")) {
+             files_in_use.insert(target);
+Index: librime-1.14.0/src/rime/lever/switcher_settings.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/lever/switcher_settings.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/lever/switcher_settings.cc
+--- librime-1.14.0.orig/src/rime/lever/switcher_settings.cc
++++ librime-1.14.0/src/rime/lever/switcher_settings.cc
 @@ -6,12 +6,12 @@
  //
  #include <utility>
@@ -462,10 +550,10 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/switcher_settings.cc
  
  namespace rime {
  
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/user_dict_manager.cc
+Index: librime-1.14.0/src/rime/lever/user_dict_manager.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/lever/user_dict_manager.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/lever/user_dict_manager.cc
+--- librime-1.14.0.orig/src/rime/lever/user_dict_manager.cc
++++ librime-1.14.0/src/rime/lever/user_dict_manager.cc
 @@ -6,7 +6,7 @@
  //
  #include <fstream>
@@ -511,10 +599,10 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/user_dict_manager.cc
      if (!fs::create_directories(sync_dir, ec)) {
        LOG(ERROR) << "error creating directory '" << sync_dir << "'.";
        return false;
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/resource.cc
+Index: librime-1.14.0/src/rime/resource.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/resource.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/resource.cc
+--- librime-1.14.0.orig/src/rime/resource.cc
++++ librime-1.14.0/src/rime/resource.cc
 @@ -4,13 +4,13 @@
  //
  
@@ -552,36 +640,10 @@ Index: librime-1.10.0+git20240229.4ee471e/src/rime/resource.cc
        return fallback_path;
      }
    }
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/user_db.cc
+Index: librime-1.14.0/test/resource_resolver_test.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/user_db.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/user_db.cc
-@@ -107,7 +107,7 @@ bool UserDbHelper::UpdateUserInfo() {
- }
- 
- bool UserDbHelper::IsUniformFormat(const path& file_path) {
--  return boost::ends_with(file_path.filename().u8string(),
-+  return boost::ends_with(file_path.filename().string(),
-                           plain_userdb_extension);
- }
- 
-Index: librime-1.10.0+git20240229.4ee471e/src/rime/gear/simplifier.cc
-===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/src/rime/gear/simplifier.cc
-+++ librime-1.10.0+git20240229.4ee471e/src/rime/gear/simplifier.cc
-@@ -36,7 +36,7 @@ class Opencc {
-     opencc::Config config;
-     try {
-       // opencc accepts file path encoded in UTF-8.
--      converter_ = config.NewFromFile(config_path.u8string());
-+      converter_ = config.NewFromFile(config_path.string());
- 
-       const list<opencc::ConversionPtr> conversions =
-           converter_->GetConversionChain()->GetConversions();
-Index: librime-1.10.0+git20240229.4ee471e/test/resource_resolver_test.cc
-===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/test/resource_resolver_test.cc
-+++ librime-1.10.0+git20240229.4ee471e/test/resource_resolver_test.cc
+--- librime-1.14.0.orig/test/resource_resolver_test.cc
++++ librime-1.14.0/test/resource_resolver_test.cc
 @@ -1,9 +1,9 @@
  #include <fstream>
 -#include <filesystem>
@@ -594,10 +656,10 @@ Index: librime-1.10.0+git20240229.4ee471e/test/resource_resolver_test.cc
  using namespace rime;
  
  static const ResourceType kMineralsType = ResourceType{
-Index: librime-1.10.0+git20240229.4ee471e/tools/rime_table_decompiler.cc
+Index: librime-1.14.0/tools/rime_table_decompiler.cc
 ===================================================================
---- librime-1.10.0+git20240229.4ee471e.orig/tools/rime_table_decompiler.cc
-+++ librime-1.10.0+git20240229.4ee471e/tools/rime_table_decompiler.cc
+--- librime-1.14.0.orig/tools/rime_table_decompiler.cc
++++ librime-1.14.0/tools/rime_table_decompiler.cc
 @@ -122,7 +122,7 @@ int main(int argc, char* argv[]) {
    fout << "# Rime dictionary\n\n";
    fout << "---\n"
