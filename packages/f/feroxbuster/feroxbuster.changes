@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 12 18:01:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.12.0
+  New Features
+  * Response Size Limiting (--response-size-limit).
+  * Unique Response Filtering (--unique).
+  * Auto Content-Type Headers (--data-json and --data-urlencoded).
+  * Dynamic Scan Limit Management.
+  Improvements
+  * Shell Completion Updates.
+  * Enhanced SSL Error Messaging.
+  * Updated Link Discovery.
+  Technical Changes
+  * Updated various dependencies to their latest versions for
+    security and performance improvements.
+  Configuration
+  * Added unique option to configuration file example.
+  * Added response_size_limit option to configuration file example.
+  * Enhanced banner display to show unique filtering and response
+    size limit status when enabled.
+
+-------------------------------------------------------------------
 Tue Sep 17 11:12:46 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.11.0
