@@ -149,4 +149,14 @@
 </comment>
     <requestid>1301084</requestid>
   </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>f45b641036652602fe8cef787b03f930</srcmd5>
+    <version>19.1.7</version>
+    <time>1758551994</time>
+    <user>anag_factory</user>
+    <comment>- Port back llvm-constant-folding-fp128-instrinsics.patch to fix
+  crash when constant folding fp128 intrinsics. (boo#1250228)
+</comment>
+    <requestid>1306321</requestid>
+  </revision>
 </revisionlist>

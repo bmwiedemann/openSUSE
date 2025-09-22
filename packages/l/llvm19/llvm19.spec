@@ -450,6 +450,8 @@ Patch30:        clang-fix-openmp-test-non-x86.patch
 Patch31:        clang-shlib-symbol-versioning.patch
 # PATCH-FIX-UPSTREAM: Remove interceptors for deprecated struct termio
 Patch32:        compiler-rt-remove-termio-interceptors.patch
+# PATCH-FIX-UPSTREAM: Fix crash in ConstantFolding on fp128 intrinsics.
+Patch33:        llvm-constant-folding-fp128-instrinsics.patch
 BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -892,6 +894,7 @@ This package contains the development files for Polly.
 %patch -P 24 -p1
 %patch -P 25 -p2
 %patch -P 28 -p2
+%patch -P 33 -p2
 
 pushd clang-%{_version}.src
 %patch -P 2 -p1
