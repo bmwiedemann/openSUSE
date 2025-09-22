@@ -1,7 +1,7 @@
 #
 # spec file for package baresip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%global sover   20
+%global sover   22
 %global libname lib%{name}%{sover}
 Name:           baresip
-Version:        3.21.0
+Version:        4.1.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause
@@ -171,7 +171,6 @@ sed 's|%{_prefix}/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/ctrl_tcp.so
 %{_libdir}/baresip/modules/debug_cmd.so
 %{_libdir}/baresip/modules/dtls_srtp.so
-%{_libdir}/baresip/modules/ebuacip.so
 %{_libdir}/baresip/modules/echo.so
 %{_libdir}/baresip/modules/evdev.so
 %{_libdir}/baresip/modules/g711.so

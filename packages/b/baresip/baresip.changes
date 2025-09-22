@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Sep 13 07:55:43 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.0
+  * This major release drops backward wrappers for the old
+    UA-events API. Applications now have to be ported to the new
+    baresip events API.
+  * Release v4.0.0 further includes breaking API renaming,
+    code/API cleanup and drops obsolete API functions.
+  Detailed changes since 3.21.0:
+  * https://github.com/baresip/baresip/releases/tag/v4.1.0
+  * https://github.com/baresip/baresip/releases/tag/v4.0.0
+  * https://github.com/baresip/baresip/releases/tag/v3.24.0
+  * https://github.com/baresip/baresip/releases/tag/v3.23.0
+  * https://github.com/baresip/baresip/releases/tag/v3.22.0
+
+-------------------------------------------------------------------
 Wed Apr 16 16:34:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.21.0:
