@@ -1,0 +1,20 @@
+Index: crackpkcs12-0.2.11/src/crackpkcs12.c
+===================================================================
+--- crackpkcs12-0.2.11.orig/src/crackpkcs12.c
++++ crackpkcs12-0.2.11/src/crackpkcs12.c
+@@ -359,6 +359,7 @@ void *print_output(void *ptr) {
+ 		fflush(stdout);
+ 		sum_old = sum;
+ 	} while (diff != 0);
++	return 0;
+ }
+ 
+ char* getbase(char *scs) {
+@@ -490,6 +491,7 @@ void *work_brute( void *ptr ) {
+ 				try(wthread, p12, wthread->count);
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ void generate(workerbrute *wthread, int pivot, PKCS12 *p12, unsigned long long *gcount) {
