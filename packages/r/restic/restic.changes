@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 21 19:59:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.18.1
+  - Fix #5324: Correctly handle backup --stdin-filename with
+    directory paths
+  - Fix #5325: Accept RESTIC_HOST environment variable in forget
+    command
+  - Fix #5342: Ignore "chmod not supported" errors when writing
+    files
+  - Fix #5344: Ignore EOPNOTSUPP errors for extended attributes
+  - Fix #5421: Fix rare crash if directory is removed during backup
+  - Fix #5429: Stop retrying uploads when rest-server runs out of
+    space
+  - Fix #5467: Improve handling of download retries in check
+    command
+
+  all details at https://github.com/restic/restic/releases/tag/v0.18.1
+- refreshed testsuite-use-python3.patch
+
+-------------------------------------------------------------------
 Mon Jul 21 01:26:02 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Upstream's build.go auto-sets CGO_ENABLED=0, producing static binaries. As a

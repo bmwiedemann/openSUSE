@@ -333,4 +333,28 @@
   --enable-cgo. This won't really affect users in practice. (forwarded request 1294746 from cyphar)</comment>
     <requestid>1294770</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>822c08aafa0173ec5f6890b5bd1ddc1b</srcmd5>
+    <version>0.18.1</version>
+    <time>1758552002</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1306368 from darix
+
+- update to 0.18.1
+  - Fix #5324: Correctly handle backup --stdin-filename with
+    directory paths
+  - Fix #5325: Accept RESTIC_HOST environment variable in forget
+    command
+  - Fix #5342: Ignore &quot;chmod not supported&quot; errors when writing
+    files
+  - Fix #5344: Ignore EOPNOTSUPP errors for extended attributes
+  - Fix #5421: Fix rare crash if directory is removed during backup
+  - Fix #5429: Stop retrying uploads when rest-server runs out of
+    space
+  - Fix #5467: Improve handling of download retries in check
+    command
+  all details at https://github.com/restic/restic/releases/tag/v0.18.1
+- refreshed testsuite-use-python3.patch</comment>
+    <requestid>1306369</requestid>
+  </revision>
 </revisionlist>

@@ -1,17 +1,17 @@
-Index: restic-0.18.0/cmd/restic/cmd_backup_integration_test.go
+Index: restic-0.18.1/cmd/restic/cmd_backup_integration_test.go
 ===================================================================
---- restic-0.18.0.orig/cmd/restic/cmd_backup_integration_test.go
-+++ restic-0.18.0/cmd/restic/cmd_backup_integration_test.go
-@@ -636,7 +636,7 @@ func TestStdinFromCommand(t *testing.T)
- 		StdinFilename: "stdin",
+--- restic-0.18.1.orig/cmd/restic/cmd_backup_integration_test.go
++++ restic-0.18.1/cmd/restic/cmd_backup_integration_test.go
+@@ -637,7 +637,7 @@ func TestStdinFromCommand(t *testing.T)
+ 		StdinFilename: "stdin/subdir/file",
  	}
  
 -	testRunBackup(t, filepath.Dir(env.testdata), []string{"python", "-c", "import sys; print('something'); sys.exit(0)"}, opts, env.gopts)
 +	testRunBackup(t, filepath.Dir(env.testdata), []string{"python3", "-c", "import sys; print('something'); sys.exit(0)"}, opts, env.gopts)
- 	testListSnapshots(t, env.gopts, 1)
- 
- 	testRunCheck(t, env.gopts)
-@@ -652,7 +652,7 @@ func TestStdinFromCommandNoOutput(t *tes
+ 	snapshots := testListSnapshots(t, env.gopts, 1)
+ 	files := testRunLs(t, env.gopts, snapshots[0].String())
+ 	rtest.Assert(t, includes(files, "/stdin/subdir/file"), "file %q missing from snapshot, got %v", "stdin/subdir/file", files)
+@@ -655,7 +655,7 @@ func TestStdinFromCommandNoOutput(t *tes
  		StdinFilename: "stdin",
  	}
  
@@ -20,7 +20,7 @@ Index: restic-0.18.0/cmd/restic/cmd_backup_integration_test.go
  	rtest.Assert(t, err != nil && err.Error() == "at least one source file could not be read", "No data error expected")
  	testListSnapshots(t, env.gopts, 1)
  
-@@ -669,7 +669,7 @@ func TestStdinFromCommandFailExitCode(t
+@@ -672,7 +672,7 @@ func TestStdinFromCommandFailExitCode(t
  		StdinFilename: "stdin",
  	}
  
@@ -29,7 +29,7 @@ Index: restic-0.18.0/cmd/restic/cmd_backup_integration_test.go
  	rtest.Assert(t, err != nil, "Expected error while backing up")
  
  	testListSnapshots(t, env.gopts, 0)
-@@ -687,7 +687,7 @@ func TestStdinFromCommandFailNoOutputAnd
+@@ -690,7 +690,7 @@ func TestStdinFromCommandFailNoOutputAnd
  		StdinFilename: "stdin",
  	}
  
