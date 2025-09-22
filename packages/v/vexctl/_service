@@ -6,7 +6,7 @@
     <param name="revision">main</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     <param name="changesgenerate">enable</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-pattern">v(.*?)(\+git0\.?.*?)?$</param>
   </service>
   <service name="set_version" mode="manual">
   </service>

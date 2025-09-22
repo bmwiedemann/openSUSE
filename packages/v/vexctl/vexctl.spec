@@ -1,7 +1,7 @@
 #
 # spec file for package vexctl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vexctl
-Version:        0.3.0+git133.ff97560
+Version:        0.3.0+git181.33bac59
 Release:        0
 Summary:        CLI tool to create, transform and attest VEX metadata
 License:        Apache-2.0

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Sep 22 01:30:50 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.3.0+git181.33bac59:
+  * Bump sigstore/cosign-installer from 3.9.2 to 3.10.0 in the all group
+  * Fix break w/cosign 2.6.0
+  * Bump cosign & go-vex
+  * Bump the all group across 1 directory with 2 updates
+  * Fix 2.4 linter nits
+  * Bump softprops/action-gh-release from 2.3.2 to 2.3.3 in the all group
+  * Bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+  * Bump actions/setup-go from 5.5.0 to 6.0.0
+  * Bump github.com/stretchr/testify from 1.11.0 to 1.11.1 in the all group
+  * Bump github.com/stretchr/testify from 1.10.0 to 1.11.0
+  * Bump github.com/go-viper/mapstructure/v2 in the go_modules group
+  * Bump goreleaser/goreleaser-action from 6.3.0 to 6.4.0 in the all group
+  * update release-utils and fix pkg name
+  * Bump actions/checkout from 4.2.2 to 5.0.0
+  * Bump github.com/secure-systems-lab/go-securesystemslib in the all group
+  * Bump github.com/sigstore/rekor from 1.3.10 to 1.4.0
+  * Bump sigs.k8s.io/release-utils from 0.11.1 to 0.12.0
+  * Bump sigstore/cosign-installer from 3.9.1 to 3.9.2 in the all group
+  * Bump github.com/sigstore/cosign/v2 from 2.5.2 to 2.5.3 in the all group
+  * Bump github.com/go-viper/mapstructure/v2 in the go_modules group
+  * Bump sigstore/cosign-installer from 3.9.0 to 3.9.1 in the all group
+  * Bump github.com/sigstore/cosign/v2 from 2.5.1 to 2.5.2 in the all group
+  * Bump sigstore/cosign-installer from 3.8.2 to 3.9.0 in the all group
+  * Bump the all group with 2 updates
+  * migrate config to v2
+  * Bump golangci/golangci-lint-action from 6.5.2 to 8.0.0
+- Packaging improvements:
+  * _service tar_scm versionrewrite-pattern v(.*?)(\+git0\.?.*?)?$
+    which includes git offset only if offset exists. Useful for
+    packages which frequently need package updates in the interim
+    between upstream tagged releases.
+
+-------------------------------------------------------------------
 Mon Jun 16 21:57:19 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.3.0+git133.ff97560:
