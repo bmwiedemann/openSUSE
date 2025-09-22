@@ -319,16 +319,22 @@ done
 find src -name "*.bash" -exec install -Dm655 \{\} %{buildroot}%{_datadir}/go/%{go_label}/\{\} \;
 # VERSION file referenced by go tool dist and go tool distpack
 find . -name VERSION -exec install -Dm655 \{\} %{buildroot}%{_datadir}/go/%{go_label}/\{\} \;
-# Trace viewer html and javascript files have moved in recent Go versions
-# Prior to go1.19   misc/trace
-# go1.19 to go1.21  src/cmd/trace/static
-# go1.22            src/internal/trace/traceviewer/static
-# Static contains pprof trace viewer html javascript and markdown
-install -d  %{buildroot}%{_datadir}/go/%{go_label}/src/internal/trace/traceviewer/static
-install -Dm644 src/internal/trace/traceviewer/static/* %{buildroot}%{_datadir}/go/%{go_label}/src/internal/trace/traceviewer/static
-# pprof viewer html templates are needed for import runtime/pprof
-install -d  %{buildroot}%{_datadir}/go/%{go_label}/src/cmd/vendor/github.com/google/pprof/internal/driver/html
-install -Dm644 src/cmd/vendor/github.com/google/pprof/internal/driver/html/* %{buildroot}%{_datadir}/go/%{go_label}/src/cmd/vendor/github.com/google/pprof/internal/driver/html
+
+extra_dirs=(
+	# Trace viewer html and javascript files have moved in recent Go versions
+	# Prior to go1.19   misc/trace
+	# go1.19 to go1.21  src/cmd/trace/static
+	# go1.22            src/internal/trace/traceviewer/static
+	# Static contains pprof trace viewer html javascript and markdown
+	src/internal/trace/traceviewer/static
+	# pprof viewer html templates are needed for import runtime/pprof
+	src/cmd/vendor/github.com/google/pprof/internal/driver/html
+	# pprof svgpan javascript is embedded with go:embed
+	src/cmd/vendor/github.com/google/pprof/third_party/svgpan
+)
+for dir in "${extra_dirs[@]}"; do
+	find "$dir" -exec install -Dm644 {} "%{buildroot}%{_datadir}/go/%{go_label}/{}" \;
+done
 
 mkdir -p $GOROOT/src
 for i in $(ls %{buildroot}/usr/share/go/%{go_label}/src);do

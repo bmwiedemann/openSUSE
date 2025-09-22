@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 19 15:54:46 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Package svgpan.js to fix issues with "go tool pprof". boo#1249985
+
+-------------------------------------------------------------------
 Wed Sep  3 17:46:07 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.24.7 (released 2025-09-03) includes fixes to the go command,

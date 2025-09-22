@@ -240,4 +240,12 @@
   * Refs boo#1248082 drop unused gccgo bootstrap code in go1.22+ (forwarded request 1302803 from jfkw)</comment>
     <requestid>1302805</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3b41dd30d717772c0bd29b0b10d67070</srcmd5>
+    <version>1.24.7</version>
+    <time>1758551904</time>
+    <user>anag_factory</user>
+    <comment>- Package svgpan.js to fix issues with &quot;go tool pprof&quot;. boo#1249985 (forwarded request 1306078 from jfkw)</comment>
+    <requestid>1306079</requestid>
+  </revision>
 </revisionlist>
