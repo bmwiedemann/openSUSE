@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 18 19:44:14 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.16
+  * Fixes bugs in the input layer and in scrolling (#2875, #2878).
+- Update to version 3.0.15
+  * Fixes a bug on FreeBSD which could cause us to stop processing
+    input.
+- Update to version 3.0.14
+  * ncplane_family_destroy() has been added to the API.
+  * Added some foot capabilities. Recognize ghostty and bless its
+    quadrants/sextants implementations.
+  * A bug introduced sometime in 2022 that caused unpredictable
+    hangs on exit was resolved (#2837).
+  * Fix bug where we core out if printing a tab at the end of an
+    ncplane whose x dimension is not a multiple of the tab stop.
+  * Require CMake 3.21 (vs 3.14) and C17 (vs C11).
+- Update patch:
+  * notcurses-3.0.8-skip-xray.diff
+
+-------------------------------------------------------------------
 Tue Jan 14 19:54:23 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.13
