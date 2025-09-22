@@ -1,7 +1,7 @@
 #
 # spec file for package SecLists
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           SecLists
-Version:        2022.4
+Version:        2025.3
 Release:        0
 Summary:        SecLists is the security tester's companion
 License:        MIT
@@ -36,11 +36,9 @@ list that may be needed.
 This project is maintained by Daniel Miessler, Jason Haddix, and g0tmi1k.
 
 %prep
-
-%setup -q
+%autosetup
 
 %install
-
 mkdir -p %{buildroot}%{_datadir}/seclists
 cp -a * %{buildroot}%{_datadir}/seclists
 

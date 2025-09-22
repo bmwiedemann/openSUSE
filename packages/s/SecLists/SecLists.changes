@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Sep 19 13:56:17 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2025.3
+  Important changes
+  * Deprecated DirBuster wordlists
+    The dirbuster wordlists were made in 2007, and are now
+    considered obsolete. Instead, these wordlists are recommended
+    for testing modern web environments:
+    + Discovery/Web-Content/combined_words.txt
+    + Discovery/Web-Content/combined_directories.txt
+    The dirbuster wordlists will remain contained in SecLists, but
+    they now have the DirBuster-2007 prefix to highlight their age.
+  * Dangerous SQLi payloads
+    The SQL Injection wordlists contained in Fuzzing/Databases/SQLi
+    are not safe to use on production environments. Many of those
+    wordlists contain potentially destructive queries which may
+    permanently delete data on any databases they're used on. A
+    warning has been added to the README.md for that directory.
+
+-------------------------------------------------------------------
+Thu Sep 18 19:35:42 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2025.2
+  * Two new tools for creating and manipulating wordlists have
+    been added to the main readme:
+    * CeWL
+    * WL
+  * Two 10 Million+ wordlists have been added for subdomain
+    fuzzing/discovery.
+    * Discovery/DNS/FUZZSUBS_CYFARE_1.txt
+    * Discovery/DNS/FUZZSUBS_CYFARE_2.txt
+  * All words wordlists have been moved into the directory
+    Miscellaneous/Words/.
+  * And many other miscellaneous fixes and improvements.
+
+-------------------------------------------------------------------
+Sun Feb 23 11:18:32 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2025.1
+  * This release includes multiple updates from the community.
+
+-------------------------------------------------------------------
 Wed Dec  7 19:09:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip zipbombs as they break the testing and legal checks
