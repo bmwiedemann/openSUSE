@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 13 07:22:27 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Provide ptscotch-parmetis-<MPI_FLAVOR>-devel for the mpi
+  devel packages, since the parmetis sub-package was subsumed into
+  this package as part of the update to version 7.0.8.
+
+-------------------------------------------------------------------
 Wed Aug 27 08:40:20 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Rename binaries/man-files that may conflict with those from

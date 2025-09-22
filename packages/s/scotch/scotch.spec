@@ -124,6 +124,7 @@ Requires:       gcc-fortran
 BuildRequires:  scotch-devel
 Requires:       %{mpi_flavor}-devel
 Requires:       scotch-devel
+Provides:       %{pname}-%{metis}-%{mpi_flavor}-devel
  %else
 Provides:       scotch-devel = %{version}
  %endif
