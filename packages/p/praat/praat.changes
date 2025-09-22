@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 15 14:22:32 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.42:
+  * Calling Praat from the command line: the new switch
+    --send-or-form sends a script to a different already running
+    GUI instance of Praat, like --send does, but takes no
+    arguments (except for the name of the script file) and
+    presents a form on the screen if the script has a form in it.
+  * More detailed manual page for fileNames$# ().
+
+-------------------------------------------------------------------
 Fri Aug 22 06:24:58 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.41:
