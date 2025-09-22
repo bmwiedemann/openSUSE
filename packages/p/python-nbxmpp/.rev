@@ -504,4 +504,17 @@ Let somebody more skillfull review it. (forwarded request 195612 from DarkSS)</c
   * Dataforms: Fix init list fields with no options (#168)</comment>
     <requestid>1281100</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e8b200fcfcac9c93063b992ff6175cd1</srcmd5>
+    <version>6.3.0</version>
+    <time>1758551985</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.3.0:
+  * Allow to set stream language
+  * Better cache invalid xml regex
+  * HTTP: Log warning on cancel instead of raising exception
+  * SASL: Apply SASLPrep for PLAIN and SCRAM
+  * VCard4: Preserve unsupported elements</comment>
+    <requestid>1306363</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 21 19:36:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3.0:
+  * Allow to set stream language
+  * Better cache invalid xml regex
+  * HTTP: Log warning on cancel instead of raising exception
+  * SASL: Apply SASLPrep for PLAIN and SCRAM
+  * VCard4: Preserve unsupported elements
+
+-------------------------------------------------------------------
 Thu May 29 09:48:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.0:
