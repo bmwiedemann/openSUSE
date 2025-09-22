@@ -907,4 +907,41 @@
   * docs: update GitHub Action assets (#5967) (forwarded request 1299298 from jfkw)</comment>
     <requestid>1299299</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>befad0bd004b8af3dfe49d80619ff37c</srcmd5>
+    <version>2.5.0</version>
+    <time>1758552032</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * chore: prepare release
+  * build(deps): bump github.com/tetafro/godot from 1.5.2 to 1.5.4 (#6093)
+  * docs: improve nolint section (#6089)
+  * build(deps): bump github.com/gostaticanalysis/nilerr from 0.1.1 to a fork (#6087)
+  * build(deps): bump github.com/kulti/thelper from 0.6.3 to 0.7.1 (#6084)
+  * build(deps): bump github.com/Djarvur/go-err113 from 0.0.0-20210108212216-aea10b59be24 to 0.1.1 (#6086)
+  * build(deps): bump github.com/ldez/grignotin from 0.10.0 to 0.10.1 (#6085)
+  * Add unqueryvet linter (#6060)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.20.0 to 0.21.0 (#6079)
+  * build(deps): bump github.com/tetafro/godot from 1.5.1 to 1.5.2 (#6078)
+  * feat: add godoclint linter (#6062)
+  * build(deps): bump github.com/Antonboom/testifylint from 1.6.3 to 1.6.4 (#6077)
+  * dev: sync internal with `x/tools` (#6076)
+  * feat: add iotamixing linter (#5966)
+  * build(deps): bump github.com/Antonboom/errname from 1.1.0 to 1.1.1 (#6075)
+  * build(deps): bump github.com/Antonboom/nilnil from 1.1.0 to 1.1.1 (#6072)
+  * build(deps): bump github.com/Antonboom/testifylint from 1.6.1 to 1.6.3 (#6071)
+  * build(deps): bump golang.org/x/tools from 0.36.0 to 0.37.0 (#6074)
+  * build(deps): bump golang.org/x/mod from 0.27.0 to 0.28.0 (#6073)
+  * build(deps): bump actions/setup-go from 5 to 6 in the github-actions group (#6068)
+  * build(deps): bump the scripts group in /scripts/gen_github_action_config with 2 updates (#6067)
+  * fix: no export data must always be handled as a typecheck error (#6061)
+  * build(deps): bump golang.org/x/sys from 0.35.0 to 0.36.0 (#6064)
+  * build(deps): bump mvdan.cc/gofumpt from 0.8.0 to 0.9.1 (#6065)
+  * build(deps): bump golang.org/x/sync from 0.16.0 to 0.17.0 (#6063)
+  * build(deps): bump github.com/spf13/pflag from 1.0.9 to 1.0.10 (#6054)
+  * build(deps): bump github.com/bombsimon/wsl/v5 from 5.1.1 to 5.2.0 (#6055)
+  * dev: use repository link (#6051)
+  * build(deps): bump github.com/golangci/go-printf-func-name from 0.1.0 to 0.1.1 (#6048) (forwarded request 1306375 from jfkw)</comment>
+    <requestid>1306376</requestid>
+  </revision>
 </revisionlist>
