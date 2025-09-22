@@ -616,4 +616,12 @@
   * Support pydantic-core 2.39.0.</comment>
     <requestid>1299498</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>962fa43ddee6110f3657fd8d5fb024b0</srcmd5>
+    <version>2.11.9</version>
+    <time>1758551906</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1306150</requestid>
+  </revision>
 </revisionlist>

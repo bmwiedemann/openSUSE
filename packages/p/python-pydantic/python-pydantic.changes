@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 13 16:02:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.11.9:
+  * Backport v1.10.23 changes
+  * Fix mypy plugin for mypy 1.18
+
+-------------------------------------------------------------------
 Fri Aug 15 04:23:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pydantic-core-2.39.0.patch:
@@ -271,181 +278,181 @@ Wed Oct  2 22:06:18 UTC 2024 - Meera Belur <mbelur@suse.com>
 - update to 2.9.2.
   * history updates
   * v bump
-  * Fix `ZoneInfo` with various invalid types 
-  * Fix variance issue in `_IncEx` type alias, only allow `True` 
-  * Fix serialization schema generation when using `PlainValidator` 
-  * Adding notes on designing callable discriminators 
-  * Do not error when trying to evaluate annotations of private attributes 
+  * Fix `ZoneInfo` with various invalid types
+  * Fix variance issue in `_IncEx` type alias, only allow `True`
+  * Fix serialization schema generation when using `PlainValidator`
+  * Adding notes on designing callable discriminators
+  * Do not error when trying to evaluate annotations of private attributes
   * bump
-  * Fix evaluation of stringified annotations during namespace inspection 
-  * Use correct types namespace when building namedtuple core schemas 
-  * Fix `IncEx` type alias definition 
-  * Turn `tzdata` install requirement into optional `timezone` dependency 
-  * Fixing `annotated-types` bound 
-  * Fix `Predicate` issue in `v2.9.0` 
-  * Prep for v2.9 release 
-  * Fix lifecycle docs formatting 
-  * Add schema generation benchmarks for models with custom serializers 
-  * Add link for complex docs 
-  * Respect `schema_generator` config value in `TypeAdapter` 
-  * Ensure `__pydantic_complete__` is set when rebuilding dataclasses 
-  * Try fix for `coverage` with hidden files 
-  * Ensure coverage data artifact is correctly uploaded 
-  * Support signature for wrap validators without `info` 
-  * Reformat + add some benchmarks for annotated validators 
-  * 👥 Update Pydantic People 
-  * Fix typo in `orgs.toml` 
-  * Add benchmarks for schema generation with custom validators 
-  * Bump to `v2.9.0b2` 
-  * Reorganize types ns functions 
-  * Add in Hyperlint Base Style Guide + Spellcheck Configurations 
-  * Bump `pydantic-core` to `v2.23.1` and other minor v bumps 
-  * Use identity instead of equality after validating model in `__init__` 
-  * Update ns stack with already copied ns 
-  * Remove defaults filter for namespace 
-  * Improve concepts documentation related to models 
-  * Add benchmarks for direct model instantiation 
-  * Fix parent namespace issue with model rebuilds 
-  * Raise helpful warning when `self` isn't returned from model validator 
-  * Fix history.md typos 
-  * Minor reorganization of benchmarks 
-  * Add comment reflecting unexpected union cache behavior that affects validation order 
-  * Update release tweet to encourage usage for beta versions 
-  * Add benchmarks for categories: serialization, validation and schema generation 
-  * Fix a crash when cleaning the namespace in `ModelMetaclass` 
+  * Fix evaluation of stringified annotations during namespace inspection
+  * Use correct types namespace when building namedtuple core schemas
+  * Fix `IncEx` type alias definition
+  * Turn `tzdata` install requirement into optional `timezone` dependency
+  * Fixing `annotated-types` bound
+  * Fix `Predicate` issue in `v2.9.0`
+  * Prep for v2.9 release
+  * Fix lifecycle docs formatting
+  * Add schema generation benchmarks for models with custom serializers
+  * Add link for complex docs
+  * Respect `schema_generator` config value in `TypeAdapter`
+  * Ensure `__pydantic_complete__` is set when rebuilding dataclasses
+  * Try fix for `coverage` with hidden files
+  * Ensure coverage data artifact is correctly uploaded
+  * Support signature for wrap validators without `info`
+  * Reformat + add some benchmarks for annotated validators
+  * 👥 Update Pydantic People
+  * Fix typo in `orgs.toml`
+  * Add benchmarks for schema generation with custom validators
+  * Bump to `v2.9.0b2`
+  * Reorganize types ns functions
+  * Add in Hyperlint Base Style Guide + Spellcheck Configurations
+  * Bump `pydantic-core` to `v2.23.1` and other minor v bumps
+  * Use identity instead of equality after validating model in `__init__`
+  * Update ns stack with already copied ns
+  * Remove defaults filter for namespace
+  * Improve concepts documentation related to models
+  * Add benchmarks for direct model instantiation
+  * Fix parent namespace issue with model rebuilds
+  * Raise helpful warning when `self` isn't returned from model validator
+  * Fix history.md typos
+  * Minor reorganization of benchmarks
+  * Add comment reflecting unexpected union cache behavior that affects validation order
+  * Update release tweet to encourage usage for beta versions
+  * Add benchmarks for categories: serialization, validation and schema generation
+  * Fix a crash when cleaning the namespace in `ModelMetaclass`
   * Fix warnings assertions to use `pytest.warns
-  * Prep for v2.9.0b1 release 
-  * Add support for annotated_types.Not 
-  * Add 'wss' for allowed schemes in NatsDsn 
-  * Add missing imports in documentation example 
-  * Bump `v1` version stub to `v1.10.18` 
-  * Use `pppr` for insiders install 
-  * Apply misc. improvements to "Get started" documentation 
-  * Allow validators to customize validation JSON schema 
-  * Update `mkdocs-material` to `9.5.31` 
-  * Update and clean up several aspects of documentation tooling 
-  * Fix key error with custom serializer 
-  * Remove `initial_metadata` from internal metadata construct 
-  * Remove unused environment variables in CI 
-  * Make sure generated JSON Schemas are valid in tests 
-  * Fix invalid JSON Schemas being generated for functions in certain scenarios 
-  * Breaking Change: Fix JSON Schema generation for constrained dates 
-  * Deprecate passing a dict to the `Examples` class 
-  * Remove `typed_dict_cls` data from `CoreMetadata` 
-  * Fix JSON Schema generation of fields with plain validators in serialization mode 
-  * Fix JSON Schema `number` type for literal and enum schemas 
-  * Remove docs about pydantic plugins 
-  * Allow `WithJsonSchema` to inject `$ref`s w/ `http` or `https` links 
-  * Improve runtime errors for string constraints like `pattern` for incompatible types 
-  * Add support for stringified annotations when using `PrivateAttr` with `Annotated` 
-  * Fix core schema simplification when serialization schemas are involved in specific scenarios 
-  * Reorganize `BaseModel` annotations 
-  * Support PDM `v2.18.1` 
-  * Support complex number 
-  * Add initial architeture documentation 
-  * Handle `nullable` schemas with `serialization` schema available during JSON Schema generation 
-  * Blacklist default globals to support exotic user code with `__` prefixed annotations 
-  * Fix `ImportString` special cases 
-  * Add dsn for Snowflake 
-  * Temporary: cap `pdm` version for `mypy` tests 
-  * Temporary: use `pdm` v2.17.3 to unblock CI failures 
-  * Performance boost: skip caching parent namespaces in most cases 
-  * Do not compute JSON Schema default when plain serializers are used with `when_used` set to `'json-unless-none'` and the default value is `None` 
-  * Add warning for double `frozen` config setting on dataclass 
-  * Revert "Experimental feature: opt-in fast build 
-  * Remove default module globals from types namespace 
-  * Docs update and warning frozen defined both 
-  * Fix ip schema serialization logic 
-  * Improve documentation of the `@computed_field` decorator 
-  * Improve `pyright` tests, refactor model decorators signatures 
-  * Update tests for changes to core 
-  * Fix `PydanticDeprecatedSince26.since` argument 
-  * Use `is_annotated` consistently 
-  * Adding tests for TODO union serialization fixes 
-  * Update `griffe_doclinks` plugin and misc. docs improvements 
-  * Remove allOf JSON schema workarounds 
-  * Remove logic to handle unused `__get_pydantic_core_schema__` signature 
-  * Fix `frozen` enforcement for dataclasses 
-  * Experimental feature: opt-in fast build 
-  * Docs update for `types.py` 
-  * Fix evaluation of `__pydantic_extra__` annotation in specific circumstances 
-  * Removing old typing function 
-  * Simplify internal generics logic - remove generator overhead 
-  * Minor speedup / cleanup for internal `FieldInfo` functions 
-  * Bump `pydantic-core` to v2.21.0 
-  * Raise a better user error when failing to evaluate a forward reference 
-  * Add `Config.val_json_bytes` 
-  * Enable more lint rules 
+  * Prep for v2.9.0b1 release
+  * Add support for annotated_types.Not
+  * Add 'wss' for allowed schemes in NatsDsn
+  * Add missing imports in documentation example
+  * Bump `v1` version stub to `v1.10.18`
+  * Use `pppr` for insiders install
+  * Apply misc. improvements to "Get started" documentation
+  * Allow validators to customize validation JSON schema
+  * Update `mkdocs-material` to `9.5.31`
+  * Update and clean up several aspects of documentation tooling
+  * Fix key error with custom serializer
+  * Remove `initial_metadata` from internal metadata construct
+  * Remove unused environment variables in CI
+  * Make sure generated JSON Schemas are valid in tests
+  * Fix invalid JSON Schemas being generated for functions in certain scenarios
+  * Breaking Change: Fix JSON Schema generation for constrained dates
+  * Deprecate passing a dict to the `Examples` class
+  * Remove `typed_dict_cls` data from `CoreMetadata`
+  * Fix JSON Schema generation of fields with plain validators in serialization mode
+  * Fix JSON Schema `number` type for literal and enum schemas
+  * Remove docs about pydantic plugins
+  * Allow `WithJsonSchema` to inject `$ref`s w/ `http` or `https` links
+  * Improve runtime errors for string constraints like `pattern` for incompatible types
+  * Add support for stringified annotations when using `PrivateAttr` with `Annotated`
+  * Fix core schema simplification when serialization schemas are involved in specific scenarios
+  * Reorganize `BaseModel` annotations
+  * Support PDM `v2.18.1`
+  * Support complex number
+  * Add initial architeture documentation
+  * Handle `nullable` schemas with `serialization` schema available during JSON Schema generation
+  * Blacklist default globals to support exotic user code with `__` prefixed annotations
+  * Fix `ImportString` special cases
+  * Add dsn for Snowflake
+  * Temporary: cap `pdm` version for `mypy` tests
+  * Temporary: use `pdm` v2.17.3 to unblock CI failures
+  * Performance boost: skip caching parent namespaces in most cases
+  * Do not compute JSON Schema default when plain serializers are used with `when_used` set to `'json-unless-none'` and the default value is `None`
+  * Add warning for double `frozen` config setting on dataclass
+  * Revert "Experimental feature: opt-in fast build
+  * Remove default module globals from types namespace
+  * Docs update and warning frozen defined both
+  * Fix ip schema serialization logic
+  * Improve documentation of the `@computed_field` decorator
+  * Improve `pyright` tests, refactor model decorators signatures
+  * Update tests for changes to core
+  * Fix `PydanticDeprecatedSince26.since` argument
+  * Use `is_annotated` consistently
+  * Adding tests for TODO union serialization fixes
+  * Update `griffe_doclinks` plugin and misc. docs improvements
+  * Remove allOf JSON schema workarounds
+  * Remove logic to handle unused `__get_pydantic_core_schema__` signature
+  * Fix `frozen` enforcement for dataclasses
+  * Experimental feature: opt-in fast build
+  * Docs update for `types.py`
+  * Fix evaluation of `__pydantic_extra__` annotation in specific circumstances
+  * Removing old typing function
+  * Simplify internal generics logic - remove generator overhead
+  * Minor speedup / cleanup for internal `FieldInfo` functions
+  * Bump `pydantic-core` to v2.21.0
+  * Raise a better user error when failing to evaluate a forward reference
+  * Add `Config.val_json_bytes`
+  * Enable more lint rules
   * Clarify `model_serializer
-  * Fix `Mapping` and `MutableMapping` annotations to use mapping schema instead of dict schema 
-  * Bump CodSpeedHQ/action from 2 to 3 
-  * Bump dawidd6/action-download-artifact from 3 to 6 
-  * Move `import_module` import in `__getattr__` 
-  * Refactor application of deque annotations 
-  * Using cached internal import for `BaseModel` 
-  * 👥 Update Pydantic People 
-  * Initial start at improving import times for modules, using caching primarily 
-  * Add import / isinstance benchmarks 
-  * Move annotation compatibility errors to validation phase 
-  * Support compatibility with `pdm v2.17.0` 
-  * Apply `strict=True` to `__init__` in mypy plugin 
-  * Fix false positives on v1 models in mypy plugin for from_orm check requiring from_attributes=True config 
-  * Fix typing for `IPvAnyAddress` and `IPvAnyInterface` 
-  * ⚡️ Speed up method `ConfigWrapper.core_config` by 28% in `pydantic/_internal/_config.py` 
-  * ⚡️ Speed up function `apply_each_item_validators` by 100% in `pydantic/_internal/_generate_schema.py` 
-  * Refactor annotation injection for known 
-  * Fix Sequence ignoring discriminator 
-  * chore: fix entry in `.gitignore` to let `make format` work correctly 
-  * Move `decimal.Decimal` validation to `_generate_schema.py` 
-  * Move date schemas to `_generate_schema.py` 
-  * Simplify schema generation for uuid, url, and ip types 
-  * Fix dataclass ignoring default_factory passed in Annotated 
-  * Changed `BaseModel.model_validate_json` raises docstring to mention `ValidationError` instead of `ValueError` 
-  * ⚡️ Speed up method `GenerateSchema._unpack_refs_defs` by 26% in `pydantic/_internal/_generate_schema.py` 
-  * Move enum schema gen to `_generate_schema.py` for consistency 
-  * Add class name to "has conflict" warnings 
-  * `Counter` is handled as a mapping, not a sequence, fix `SequenceValidator` accordingly 
-  * Fix type annotations for some potentially generic `GenerateSchema.match_type` options 
-  * Simplify IP address schema in `_std_types_schema.py` 
-  * Fix typo in `invalid-annotated-type` error code 
-  * Fix _field_name_for_signature docstring 
-  * ⚡️ Speed up function `_field_name_for_signature` by 37% in `pydantic/_internal/_signature.py` 
-  * Add support for `ZoneInfo` 
-  * Fix a typo on Validators doc page 
-  * Adding new schema building benchmark 
-  * Handle frozen fields on a per-field basis 
-  * Allow usage of `type[Annotated[...]]` 
-  * typing: fix recursive typing of `main.IncEnx` 
-  * Fix `ComputedFieldInfo.wrapped_property` pointer when a property setter is assigned 
+  * Fix `Mapping` and `MutableMapping` annotations to use mapping schema instead of dict schema
+  * Bump CodSpeedHQ/action from 2 to 3
+  * Bump dawidd6/action-download-artifact from 3 to 6
+  * Move `import_module` import in `__getattr__`
+  * Refactor application of deque annotations
+  * Using cached internal import for `BaseModel`
+  * 👥 Update Pydantic People
+  * Initial start at improving import times for modules, using caching primarily
+  * Add import / isinstance benchmarks
+  * Move annotation compatibility errors to validation phase
+  * Support compatibility with `pdm v2.17.0`
+  * Apply `strict=True` to `__init__` in mypy plugin
+  * Fix false positives on v1 models in mypy plugin for from_orm check requiring from_attributes=True config
+  * Fix typing for `IPvAnyAddress` and `IPvAnyInterface`
+  * ⚡️ Speed up method `ConfigWrapper.core_config` by 28% in `pydantic/_internal/_config.py`
+  * ⚡️ Speed up function `apply_each_item_validators` by 100% in `pydantic/_internal/_generate_schema.py`
+  * Refactor annotation injection for known
+  * Fix Sequence ignoring discriminator
+  * chore: fix entry in `.gitignore` to let `make format` work correctly
+  * Move `decimal.Decimal` validation to `_generate_schema.py`
+  * Move date schemas to `_generate_schema.py`
+  * Simplify schema generation for uuid, url, and ip types
+  * Fix dataclass ignoring default_factory passed in Annotated
+  * Changed `BaseModel.model_validate_json` raises docstring to mention `ValidationError` instead of `ValueError`
+  * ⚡️ Speed up method `GenerateSchema._unpack_refs_defs` by 26% in `pydantic/_internal/_generate_schema.py`
+  * Move enum schema gen to `_generate_schema.py` for consistency
+  * Add class name to "has conflict" warnings
+  * `Counter` is handled as a mapping, not a sequence, fix `SequenceValidator` accordingly
+  * Fix type annotations for some potentially generic `GenerateSchema.match_type` options
+  * Simplify IP address schema in `_std_types_schema.py`
+  * Fix typo in `invalid-annotated-type` error code
+  * Fix _field_name_for_signature docstring
+  * ⚡️ Speed up function `_field_name_for_signature` by 37% in `pydantic/_internal/_signature.py`
+  * Add support for `ZoneInfo`
+  * Fix a typo on Validators doc page
+  * Adding new schema building benchmark
+  * Handle frozen fields on a per-field basis
+  * Allow usage of `type[Annotated[...]]`
+  * typing: fix recursive typing of `main.IncEnx`
+  * Fix `ComputedFieldInfo.wrapped_property` pointer when a property setter is assigned
   * ⚡️ Speed up `dataclass
-  * Replace str type annotation with Any in validator factories in documentation on validators 
-  * Fix typing issue with field_validator-decorated methods 
-  * Prevent type error for exotic BaseModel/RootModel inheritance 
+  * Replace str type annotation with Any in validator factories in documentation on validators
+  * Fix typing issue with field_validator-decorated methods
+  * Prevent type error for exotic BaseModel/RootModel inheritance
   * ⚡️ Speed up `ModelPrivateAttr.__set_name__
   * chore
   * ⚡️ Speed up `multiple_of_validator
-  * Update functional_serializers.py Typo in Docs Example Simple Fix 
-  * Update changelog to reflect breaking changes regarding PEP 570 
-  * Update history, bump version to alpha on `main` 
-  * Fix issue with assertion caused by pluggable schema validator 
-  * Fix #9706 PathLike with subtype 
-  * Adding coverage comment 
-  * docs: Add documentation for Semantic Version and Timezone Name 
-  * Bump `pydantic-core` to `v2.20.1`, `pydantic-extra-types` to `v2.9.0` 
-  * Remove spooky meetings file 
-  * Pedantic typo correction within explanation of Pydantic's root in 'pedantic' in index.md 
-  * Breaking Change: Merge `dict` type `json_schema_extra` 
-  * Fix list constraint json schema application 
-  * Respect use_enum_values on Literal types 
-  * Bump `ruff` to `v0.5.0` and `pyright` to `v1.1.369` 
-  * Fix breaking change in `to_snake` from v2.7 -> v2.8 
-  * Fix labeler, again 
-  * Hooky - switch to reviewers, labeler, fix ci bug 
+  * Update functional_serializers.py Typo in Docs Example Simple Fix
+  * Update changelog to reflect breaking changes regarding PEP 570
+  * Update history, bump version to alpha on `main`
+  * Fix issue with assertion caused by pluggable schema validator
+  * Fix #9706 PathLike with subtype
+  * Adding coverage comment
+  * docs: Add documentation for Semantic Version and Timezone Name
+  * Bump `pydantic-core` to `v2.20.1`, `pydantic-extra-types` to `v2.9.0`
+  * Remove spooky meetings file
+  * Pedantic typo correction within explanation of Pydantic's root in 'pedantic' in index.md
+  * Breaking Change: Merge `dict` type `json_schema_extra`
+  * Fix list constraint json schema application
+  * Respect use_enum_values on Literal types
+  * Bump `ruff` to `v0.5.0` and `pyright` to `v1.1.369`
+  * Fix breaking change in `to_snake` from v2.7 -> v2.8
+  * Fix labeler, again
+  * Hooky - switch to reviewers, labeler, fix ci bug
 
 -------------------------------------------------------------------
 Fri Sep 27 02:01:34 UTC 2024 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to 2.8.2. 
+- update to 2.8.2.
   * Fix issue with assertion caused by pluggable schema validator by @dmontagu in #9838
 
 -------------------------------------------------------------------

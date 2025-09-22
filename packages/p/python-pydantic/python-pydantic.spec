@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic%{psuffix}
-Version:        2.11.7
+Version:        2.11.9
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
