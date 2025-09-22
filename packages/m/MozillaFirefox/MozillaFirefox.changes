@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 20 18:43:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 143.0.1:
+  https://www.firefox.com/en-US/firefox/143.0.1/releasenotes
+  * Fixed a tab crash experienced by some users caused by DLL
+    injection (bmo#1872261)
+
+-------------------------------------------------------------------
 Sun Sep 14 11:23:03 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 143.0
