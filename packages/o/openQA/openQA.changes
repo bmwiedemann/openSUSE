@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 20 20:13:19 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758307053.75367131:
+  * docs: Fix shell syntax in development setup
+  * Replace argument assignment with signatures on ObsRsync
+
+-------------------------------------------------------------------
 Fri Sep 19 13:38:27 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1758276230.9cef0ea3:
