@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 19 07:35:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.5
+  * Change stale issue and discussion handling to run once a week
+    by @DmitriyMusatkin in (#1216)
+  * aws_explicit_aligned_allocator_new by @TingDaoK in (#1147)
+  * Add support for direct IO read from file. by @TingDaoK in (#1217)
+  * Import latest CJSON and libcbor. by @TingDaoK in (#1223)
+
+-------------------------------------------------------------------
 Fri Jul 11 10:30:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.4
