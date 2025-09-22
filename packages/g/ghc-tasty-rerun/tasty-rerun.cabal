@@ -1,7 +1,7 @@
 cabal-version:   2.2
 name:            tasty-rerun
 version:         1.1.20
-x-revision: 1
+x-revision: 2
 license:         BSD-3-Clause
 license-file:    LICENSE
 copyright:
@@ -39,7 +39,7 @@ library
     default-language: GHC2021
     ghc-options:      -Wall -Wcompat
     build-depends:
-        base >=4.17 && <4.22,
+        base >=4.17 && <4.23,
         containers >=0.5.0.0 && <0.9,
         filepath <1.6,
         mtl >=2.1.2 && <2.4,
