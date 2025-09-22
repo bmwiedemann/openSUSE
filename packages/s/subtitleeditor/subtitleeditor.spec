@@ -1,7 +1,7 @@
 #
 # spec file for package subtitleeditor
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _sover  0
+%define _fname  org.kitone.subtitleeditor
 Name:           subtitleeditor
-Version:        0.54.0
+Version:        0.55.0
 Release:        0
 Summary:        A GTK+3 tool to edit subtitles
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 # http://home.gna.org/subtitleeditor is now dead
 URL:            https://github.com/kitone/subtitleeditor
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  fdupes
-%if 0%{?suse_version} >= 1500
 BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%endif
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(enchant)
+BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.16.3
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
@@ -76,17 +72,13 @@ Support library for subtitleeditor, a GTK+3 tool to edit subtitles.
 %autosetup -p1
 
 %build
-export CC=gcc
-export CXX=g++
-test -x "$(type -p gcc-7)" && export CC=gcc-7
-test -x "$(type -p g++-7)" && export CXX=g++-7
 autoreconf -fiv
 %configure
 %make_build
 
 %install
 %make_install
-%suse_update_desktop_file -r %{name} GTK AudioVideo AudioVideoEditing
+%suse_update_desktop_file -r %{_fname} GTK AudioVideo AudioVideoEditing
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_datadir}
@@ -98,19 +90,18 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc ChangeLog README
 %license COPYING
 %{_bindir}/%{name}
-%{_datadir}/appdata/%{name}.appdata.xml
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{_fname}.desktop
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/menubar.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_datadir}/pixmaps/%{name}.svg
+%{_datadir}/metainfo/%{_fname}.appdata.xml
 %{_datadir}/%{name}/plugins-description/
 %{_datadir}/%{name}/plugins-share/
 %{_datadir}/%{name}/ui/
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/plugins
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files lang -f %{name}.lang
 

@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Sun Sep 21 14:12:17 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.55.0
+  New Features:
+  * Add option to sync subtitle selection with player position.
+  * New "Find by Time" plugin to find subtitle at current video
+    player position.
+  * New "Select Clipboard Overlap" command to select subtitles
+    that overlap timewise with clipboard.
+  * New "Paste Over Time" command that overwrites subtitle
+    timing from clipboard.
+  * New "Paste Unchanged" command that pastes subtitles without
+    changing their time codes.
+  * New "Idealize Duration" and "Idealize Duration From End"
+    commands.
+  * New "Slide Words" plugin to slide words between lines and
+    between subtitles.
+  * New "Slide Timings" action plugin.
+  * New "Select to End" command.
+  * Add preference for Ideal Characters Per Second on the Timing
+    page.
+  * Add option to make jumping to subtitle by typing its number
+    optional.
+  * Grouped paste methods into new "Paste Special" submenu.
+  User Interface Improvements:
+  * Show both audio and video in Open video dialog by default.
+  * Video player and waveform are visible by default to reduce
+    user confusion.
+  * Replace mplayer with mpv as default external video player
+    with better defaults.
+  * Move "Select Clipboard Overlap" to Selection menu.
+  * Added flash messages to various commands for better user
+    feedback.
+  * Add higher size icons.
+  * Improved "Set Subtitle Start from Player" to move whole
+    selection of subtitles.
+  Bug Fixes:
+  * Don't save empty entries to recent files list.
+  * Get text for replacement before replacing, not after find.
+  * Make Dialoguize and split subtitle also apply to translation.
+  * Make Find by Time and Select With Player include the
+    endpoint.
+  * Make find by time find the closest subtitle when player
+    position is between subtitles.
+  * Fixed bug in error checking where max chars per line checker
+    would hang.
+  * Fixed bug in slide words action where sliding last word
+    would affect other lines.
+  * Fixed slide timings plugin to prevent subtitles from being
+    shifted out of bounds.
+  * Fixed bestfit plugin to respect minimum subtitle duration.
+  * Fixed infinity loop on generate_untitled_name
+  * Fixed compilation with --disable-nls.
+  * Fix #13: Compiling - enchant dependency not met when
+    enchant-2 is installed
+  * Fixed build with old version of enchant.
+  * Fixed Wayland support in OpenGL video output.
+  * Hide video overlay when player gets unmapped.
+  * Don't allow shrinking the multimedia pane.
+  * Fixed bug.
+  Development & Modernization:
+  * Target C++14
+  * Modernize code: use nullptr instead of NULL, default member
+    initialization
+  * Use range-based for loops throughout codebase
+  * Use auto keyword for better code clarity
+  * Reformatted source files using clang-format
+  * Added .clang-format file for consistent formatting
+  * Reworked config API
+  * Refactored se::documents API around DocumentSystem
+  * Renamed se_debug* functions to se_dbg*
+  * Single-parameter constructors marked explicit
+  * Cleanup: removed obsolete files, improved comments and
+    licensing
+  Translation & Internationalization:
+  * Add Basque translation.
+  * Update translation files for missing strings.
+  Build System & Packaging:
+  * Update appstream metadata to current format.
+  * Move appstream metadata to new location.
+  * Use new format for application id.
+  * Stop installing SVG app icon in pixmaps directory.
+  * Fix metadata license in appdata.xml.
+  * Make build reproducible.
+  * Don't use absolute path for actionplugindevdir variable.
+
+-------------------------------------------------------------------
 Tue Sep 10 16:56:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace iso-codes-devel with pkgconfig(iso-codes) BuildRequires:
