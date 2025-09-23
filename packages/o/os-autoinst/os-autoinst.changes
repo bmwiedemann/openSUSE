@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 23 07:12:30 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758611445.fc0a714:
+  * os-autoinst-setup-multi-machine: Only call zypper when necessary
+  * os-autoinst-setup-multi-machine: Improve network interface check
+  * Document max_interval (and quiet) in (assert_)script_run
+  * testapi: allow passing max_interval through (assert_)script_run
+  * t/consoles-s3270.t: fix with IPC::Run 20250809.0
+
+-------------------------------------------------------------------
 Fri Sep 19 14:05:53 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1758276418.9dda31e:
