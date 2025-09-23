@@ -191,6 +191,9 @@ setsebool -P selinuxuser_execmod 1
 setsebool -P selinuxuser_execheap 1
 setsebool -P selinuxuser_execstack 1
 
+# gh#AeonDesktop/project#7
+systemctl mask systemd-growfs-root.service
+
 #======================================
 # tik specifics - all of the below has to be undone by tik's SelfInstallCleanup post module or systemd-repart-branding-Aeon to ExcludeFiles=
 #--------------------------------------

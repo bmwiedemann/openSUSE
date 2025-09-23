@@ -7,4 +7,12 @@
     <comment>to be merged with tik 1.4 sr1304115</comment>
     <requestid>1304117</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>33cde468af267b52b934bdf5e836a2e8</srcmd5>
+    <version>0.1.0</version>
+    <time>1758636491</time>
+    <user>anag_factory</user>
+    <comment>- Mask systemd-growfs-root.service (gh#AeonDesktop/project#7)</comment>
+    <requestid>1306701</requestid>
+  </revision>
 </revisionlist>
