@@ -509,4 +509,12 @@
   agama-autoinstall fails (related to bsc#1248779).</comment>
     <requestid>1301796</requestid>
   </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>fc5c9a44661f25b2ff8f2c16b27457c9</srcmd5>
+    <version>0</version>
+    <time>1758636476</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1306659</requestid>
+  </revision>
 </revisionlist>
