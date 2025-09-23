@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.112
+Version:        1.12.0
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        AGPL-3.0-only OR GPL-3.0-only
