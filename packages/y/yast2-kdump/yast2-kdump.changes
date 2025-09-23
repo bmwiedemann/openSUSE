@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 19 13:05:39 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Calling Bootloader.Write even in the installation workflow
+  for every change in the bootloader settings.
+  (bsc#1249370, bsc#1226676)
+- Do not warn if systemd-boot will be used for bootloader.
+- 5.0.6
+
+-------------------------------------------------------------------
 Tue May 20 11:29:08 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Fixed testsuite (a follow up of jsc#PED-10703)
