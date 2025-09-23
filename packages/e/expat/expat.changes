@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 22 14:54:27 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.7.2 [bsc#1249584]
+  * CVE-2025-59375 -- Disallow use of disproportional amounts of
+    dynamic memory from within an Expat parser
+  * xmlwf: Fix (internal) help generator
+  * xmlwf: Mention supported environment variables in
+    --help output
+  * see Changes for details
+
+-------------------------------------------------------------------
 Fri Mar 28 10:22:44 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.7.1

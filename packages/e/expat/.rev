@@ -733,4 +733,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1269185</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>ef9905413d76b6f3d936d1dae1932d75</srcmd5>
+    <version>2.7.2</version>
+    <time>1758636327</time>
+    <user>anag_factory</user>
+    <comment>- version update to 2.7.2 [bsc#1249584]
+  * CVE-2025-59375 -- Disallow use of disproportional amounts of
+    dynamic memory from within an Expat parser
+  * xmlwf: Fix (internal) help generator
+  * xmlwf: Mention supported environment variables in
+    --help output
+  * see Changes for details</comment>
+    <requestid>1306571</requestid>
+  </revision>
 </revisionlist>

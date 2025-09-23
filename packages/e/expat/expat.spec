@@ -1,7 +1,7 @@
 #
 # spec file for package expat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%global unversion 2_7_1
+%global unversion 2_7_2
 %define sover 1
 Name:           expat
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT
