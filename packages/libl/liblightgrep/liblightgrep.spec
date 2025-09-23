@@ -1,7 +1,7 @@
 #
 # spec file for package liblightgrep
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Multipattern regular expression searching for digital forensics
 License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/jonstewart/liblightgrep
+URL:            https://github.com/jonstewart/liblightgrep
 # The original archive contains tests : 155MB. As we don't run them, save space by removing them :
 # /pytest, /re_gen and /test
 #Source:         https://github.com/LightboxTech/liblightgrep/archive/v%{version}.tar.gz
@@ -36,7 +36,9 @@ BuildRequires:  automake
 BuildRequires:  bison
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_program_options-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libboost_thread-devel
 %else
 BuildRequires:  boost-devel

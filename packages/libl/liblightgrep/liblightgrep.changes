@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 23 11:34:23 CEST 2025 - aschnell@suse.com
+
+- libboost_system was removed upstream (bsc#1249900)
+
+-------------------------------------------------------------------
 Thu Feb 29 17:13:34 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
