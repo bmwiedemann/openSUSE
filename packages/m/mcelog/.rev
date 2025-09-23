@@ -853,4 +853,20 @@ D    add-f16h-support.patch
 - Fix a date issue in changelog (YEKT timezone unknown)</comment>
     <requestid>1303645</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>1374ae56e2a64417b4c5d8fd8ed109e3</srcmd5>
+    <version>206</version>
+    <time>1758653224</time>
+    <user>anag_factory</user>
+    <comment>- Remove last change to revert AMD patchset (bsc#1249588)
+A    Start-consolidating-AMD-specific-stuff.patch
+A    add_new_amd_cpu_defines
+A    add-f10h-support.patch
+A    add-f11h-support.patch
+A    add-f12h-support.patch
+A    add-f14h-support.patch
+A    add-f15h-support.patch
+A    add-f16h-support.patch</comment>
+    <requestid>1306649</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 23 06:40:56 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Remove last change to revert AMD patchset (bsc#1249588)
+A    Start-consolidating-AMD-specific-stuff.patch
+A    add_new_amd_cpu_defines
+A    add-f10h-support.patch
+A    add-f11h-support.patch
+A    add-f12h-support.patch
+A    add-f14h-support.patch
+A    add-f15h-support.patch
+A    add-f16h-support.patch
+
+-------------------------------------------------------------------
 Wed Sep 10 07:04:03 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Update to version 206:
