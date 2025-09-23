@@ -301,4 +301,13 @@ Thanks.</comment>
     <comment></comment>
     <requestid>1272856</requestid>
   </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>da4028e3ba7c742e8809ea0f858d441f</srcmd5>
+    <version>2.7.2</version>
+    <time>1758636360</time>
+    <user>anag_factory</user>
+    <comment>- libboost_system was removed upstream, fixes boo#1249973
+  * Patch adolc-remove-boost-system-library.patch</comment>
+    <requestid>1306469</requestid>
+  </revision>
 </revisionlist>

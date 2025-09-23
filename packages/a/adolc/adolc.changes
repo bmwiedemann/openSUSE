@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 20 12:00:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- libboost_system was removed upstream, fixes boo#1249973
+  * Patch adolc-remove-boost-system-library.patch
+
+-------------------------------------------------------------------
 Sat Apr 12 12:11:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop baselibs.conf, 32bit support is not needed anymore

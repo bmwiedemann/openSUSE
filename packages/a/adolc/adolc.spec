@@ -1,7 +1,7 @@
 #
 # spec file for package adolc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,14 @@ URL:            https://github.com/coin-or/ADOL-C
 Source0:        https://github.com/coin-or/ADOL-C/archive/releases/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # from https://github.com/coin-or/ADOL-C/pull/47.patch
 Patch1:         handle-lib64-for-riscv64.patch
+Patch2:         adolc-remove-boost-system-library.patch
 BuildRequires:  ColPack-devel
+BuildRequires:  automake
+BuildRequires:  boost-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_system-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 ADOL-C (Automatic Differentiation by OverLoading in C++) facilitates
@@ -75,7 +73,7 @@ This package provides the user's manual for ADOL-C.
 %autosetup -p1 -n ADOL-C-releases-%{version}
 
 %build
-# autoreconf -v --install --force
+autoreconf -v --install --force
 %configure
 %make_build
 # cd ADOL-C/doc

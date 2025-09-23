@@ -1,0 +1,13 @@
+diff -purN a/configure.ac b/configure.ac
+--- a/configure.ac	2020-02-01 21:29:37.000000000 +0100
++++ b/configure.ac	2025-09-20 13:36:16.485071534 +0200
+@@ -347,8 +347,7 @@ CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
+ AC_LANG_PUSH([C++])
+ AC_CHECK_HEADERS([boost/pool/pool_alloc.hpp])
+ AC_LANG_POP([C++])
+-AX_BOOST_SYSTEM
+-LDFLAGS="$LDFLAGS $BOOST_LDFLAGS $BOOST_SYSTEM_LIB"
++LDFLAGS="$LDFLAGS $BOOST_LDFLAGS"
+ fi
+ 
+ if test "x$want_boost" = xyes -a "x$boost_new" = xyes -a "x$ac_cv_header_boost_pool_pool_alloc_hpp" = xyes -a "x$link_system" = xyes ; then
