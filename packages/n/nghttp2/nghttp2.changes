@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 20 12:10:05 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- libboost_system was removed upstream
+
+-------------------------------------------------------------------
 Tue Jul 29 12:04:01 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Account for the libngtcp2 devel split for openssl and gnutls.

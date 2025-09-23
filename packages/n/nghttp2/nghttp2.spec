@@ -34,7 +34,6 @@ Source0:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}
 Source1:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz.asc
 Source2:        nghttp2.keyring
 Source3:        baselibs.conf
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cunit)

@@ -935,4 +935,12 @@
     <comment></comment>
     <requestid>1296505</requestid>
   </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>d1a6c8434a9702484a77bbcf5c41a40b</srcmd5>
+    <version>1.66.0</version>
+    <time>1758636359</time>
+    <user>anag_factory</user>
+    <comment>- libboost_system was removed upstream (forwarded request 1306126 from adkorte)</comment>
+    <requestid>1306466</requestid>
+  </revision>
 </revisionlist>
