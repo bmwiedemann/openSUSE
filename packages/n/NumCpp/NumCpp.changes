@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 23 11:27:17 CEST 2025 - aschnell@suse.com
+
+- libboost_system was removed upstream (bsc#1249900)
+
+-------------------------------------------------------------------
 Fri Jul 11 10:22:42 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.14.2:

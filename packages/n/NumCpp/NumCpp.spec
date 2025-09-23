@@ -1,7 +1,7 @@
 #
 # spec file for package NumCpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,9 @@ BuildRequires:  doxygen
 BuildRequires:  gtest
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_log-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libboost_thread-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -52,7 +54,9 @@ Requires:       libboost_headers-devel
 Requires:       libboost_log-devel
 Requires:       libboost_numpy3-devel
 Requires:       libboost_python3-devel
+%if 0%{?suse_version} < 1600
 Requires:       libboost_system-devel
+%endif
 Requires:       libboost_thread-devel
 Requires:       python3-pybind11-devel
 BuildArch:      noarch
