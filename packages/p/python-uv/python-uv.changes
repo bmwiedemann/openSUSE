@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Sep 22 15:21:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.19 
+* Bug fixes
+ * Make uv cache clean parallel process safe
+ * Fix implied platform_machine marker for win_arm64 platform tag
+
+-------------------------------------------------------------------
+Thu Sep 18 09:47:19 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- upate to 0.8.18
+ * Enhancements
+  * Add PyG packages to torch backend 
+  * Add handling for unnamed conda environments in base environment detection 
+  * Allow selection of debug build interpreters 
+  * Improve uv init defaults for native build backend cache keys 
+  * Error when pyproject.toml target does not exist for dependency groups 
+  * Infer check URL from publish URL when known 
+  * Support Gitlab CI/CD as a trusted publisher 
+  * Add GraalPy 25.0.0 with support for Python 3.12 
+  * Add --no-clear to uv venv to disable removal prompts 
+  * Add conflict detection between --only-group and --extra flags 
+  * Allow [project] to be missing from a pyproject.toml 
+  * Always treat conda environments named base and root as base environments 
+  * Improve log message when direct build for uv_build is skipped 
+  * Log when the cache is disabled 
+  * Show pyx organization name after authenticating 
+  * Use _CONDA_ROOT to detect Conda base environments 
+  * Include blake2b hash in uv publish upload form 
+  * Fix misleading debug message when removing environments in uv sync 
+ * Deprecations
+  * Deprecate tool.uv.dev-dependencies 
+ * Preview features
+  * Propagate preview flag to client for native-auth feature 
+  * Store native credentials for realms with the https scheme stripped 
+  * Use the root index URL when retrieving credentials from the native store 
+ * Bug fixes
+  * Fix uv sync --no-sources not switching from editable to registry installations 
+  * Avoid display of an empty string when a path is the working directory 
+  * Allow cached environment reuse with @latest 
+  * Allow escaping spaces in --env-file handling 
+  * Avoid ANSI codes in debug! messages 
+  * Improve BSD tag construction 
+  * Include SHA when listing lockfile changes 
+  * Invert the logic for determining if a path is a base conda environment 
+  * Load credentials for explicit members when lowering 
+  * Re-add triton as a torch backend package 
+  * Respect UV_INSECURE_NO_ZIP_VALIDATION=1 in duplicate header errors 
+ * Documentation
+  * Add GitHub Actions to PyPI trusted publishing example 
+  * Add Coiled integration documentation 
+  * Add verbose output to the getting help section 
+  * Document NO_PROXY support 
+  * Document cache-keys for native build backends 
+  * Add documentation for dependency group requires-python 
+
+-------------------------------------------------------------------
 Fri Sep 12 09:13:31 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update python-uv requirement for completion packages

@@ -1404,4 +1404,41 @@
   packages as recommendations in the base package.</comment>
     <requestid>1304273</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>81a0feaeb643720f5e95fbf6b8903f79</srcmd5>
+    <version>0.8.19</version>
+    <time>1758636446</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.19 
+* Bug fixes
+ * Make uv cache clean parallel process safe
+ * Fix implied platform_machine marker for win_arm64 platform tag
+
+- upate to 0.8.18
+ * Enhancements
+  * Add PyG packages to torch backend 
+  * Add handling for unnamed conda environments in base environment detection 
+  * Allow selection of debug build interpreters 
+  * Improve uv init defaults for native build backend cache keys 
+  * Error when pyproject.toml target does not exist for dependency groups 
+  * Infer check URL from publish URL when known 
+  * Support Gitlab CI/CD as a trusted publisher 
+  * Add GraalPy 25.0.0 with support for Python 3.12 
+  * Add --no-clear to uv venv to disable removal prompts 
+  * Add conflict detection between --only-group and --extra flags 
+  * Allow [project] to be missing from a pyproject.toml 
+  * Always treat conda environments named base and root as base environments 
+  * Improve log message when direct build for uv_build is skipped 
+  * Log when the cache is disabled 
+  * Show pyx organization name after authenticating 
+  * Use _CONDA_ROOT to detect Conda base environments 
+  * Include blake2b hash in uv publish upload form 
+  * Fix misleading debug message when removing environments in uv sync 
+ * Deprecations
+  * Deprecate tool.uv.dev-dependencies 
+ * Preview features
+  * Propagate preview flag to client for native-auth feature 
+  * Store native credentials for realms with the https scheme stripped</comment>
+    <requestid>1306573</requestid>
+  </revision>
 </revisionlist>
