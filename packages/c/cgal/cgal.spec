@@ -39,7 +39,6 @@ BuildRequires:  glu-devel
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
 BuildRequires:  libboost_atomic-devel >= 1.72
-BuildRequires:  libboost_system-devel >= 1.72
 BuildRequires:  libboost_thread-devel >= 1.72
 BuildRequires:  mpfr-devel
 BuildRequires:  xz
