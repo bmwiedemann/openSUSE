@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 23 08:47:49 UTC 2025 - Steffen Winterfeldt <snwint@suse.com>
+
+- turn off page flipping for i386-pc using VBE video backend (bsc#1245636)
+  * grub2-i386-pc-no-pageflipping.patch
+
+-------------------------------------------------------------------
+Mon Sep 22 07:15:00 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix boot hangs in setting up serial console when ACPI SPCR table is present
+  and redirection is disabled (bsc#1249088)
+  * 0001-term-ns8250-spcr-Return-if-redirection-is-disabled.patch
+
+-------------------------------------------------------------------
 Tue Sep  9 14:25:42 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Add support for `LoaderEntryDefault` EFI variable

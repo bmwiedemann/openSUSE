@@ -3168,4 +3168,17 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>1304184</requestid>
   </revision>
+  <revision rev="373" vrev="62">
+    <srcmd5>3c0f85f0d08a0678cb18683bc6f3c242</srcmd5>
+    <version>2.12</version>
+    <time>1758653228</time>
+    <user>anag_factory</user>
+    <comment>- turn off page flipping for i386-pc using VBE video backend (bsc#1245636)
+  * grub2-i386-pc-no-pageflipping.patch
+
+- Fix boot hangs in setting up serial console when ACPI SPCR table is present
+  and redirection is disabled (bsc#1249088)
+  * 0001-term-ns8250-spcr-Return-if-redirection-is-disabled.patch</comment>
+    <requestid>1306728</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,7 @@
 #
 # spec file for package grub2
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -516,6 +517,8 @@ Patch339:       0001-lib-crypto-Introduce-new-HMAC-functions-to-reuse-buf.patch
 Patch340:       0002-lib-pbkdf2-Optimize-PBKDF2-by-reusing-HMAC-handle.patch
 Patch341:       0001-kern-misc-Implement-faster-grub_memcpy-for-aligned-b.patch
 Patch342:       grub2-bls-loader-entry-default.patch
+Patch343:       0001-term-ns8250-spcr-Return-if-redirection-is-disabled.patch
+Patch344:       grub2-i386-pc-no-pageflipping.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

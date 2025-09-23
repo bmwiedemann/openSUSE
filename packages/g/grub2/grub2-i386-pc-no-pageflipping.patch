@@ -1,0 +1,20 @@
+In x86 Legacy BIOS mode, on some Lenovo machines, the grub menu is not
+visible, although it demonstrably has been drawn (bsc#1245636).
+
+A workaround to avoid this is to not use page flipping mode.
+
+This patch enforces that no page flipping is used in the VBE framebuffer
+backend for i386-pc.
+
+--- a/grub-core/video/i386/pc/vbe.c
++++ b/grub-core/video/i386/pc/vbe.c
+@@ -1137,7 +1137,8 @@ grub_video_vbe_setup (unsigned int width, unsigned int height,
+ 
+ 	page_size = framebuffer.mode_info.pitch * framebuffer.mode_info.height;
+ 
+-	if (vram_size >= 2 * page_size)
++	/* avoid page flipping mode (bsc#1245636) */
++	if (0 && vram_size >= 2 * page_size)
+ 	  err = grub_video_fb_setup (mode_type, mode_mask,
+ 				     &framebuffer.mode_info,
+ 				     framebuffer.ptr,
