@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sun Sep 21 15:03:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.37.0:
+  * Add experimental composite samplers
+  * Add new environment variables to the SDK `OTEL_PYTHON_EXPORTE
+    R_OTLP_{HTTP/GRPC}_{METRICS/TRACES/LOGS}_CREDENTIAL_PROVIDER`
+    that can be used to inject a `requests.Session` or
+    `grpc.ChannelCredentials` object into OTLP exporters created
+    during auto instrumentation #4689.
+  * Filter duplicate logs out of some internal `logger`'s logs on
+    the export logs path that might otherwise endlessly log or
+    cause a recursion depth exceeded issue in cases where logging
+    itself results in an exception. (#4695).
+  * docs: linked the examples with their github source code
+    location and added Prometheus example
+  * Permit to override default HTTP OTLP exporters headers
+  * semantic-conventions: Bump to 1.37.0
+  * opentelemetry-sdk: fix handling of OTEL_ATTRIBUTE_COUNT_LIMIT
+    in logs
+  * Performance: Cache `importlib_metadata.entry_points`
+  * opentelemetry-sdk: fix calling Logger.emit with an API
+    LogRecord instance
+- update to 1.36.0:
+  * Add missing Prometheus exporter documentation
+  * Overwrite logging.config.fileConfig and
+    logging.config.dictConfig to ensure the OTLP `LogHandler`
+    remains attached to the root logger. Fix a bug that can cause
+    a deadlock to occur over `logging._lock` in some cases
+    (#4636).
+  * otlp-http-exporter: set default value for param `timeout_sec`
+    in `_export` method
+  * Update OTLP gRPC/HTTP exporters: calling shutdown will now
+    interrupt exporters that are sleeping before a retry attempt,
+    and cause them to return failure immediately. Update
+    BatchSpan/LogRecordProcessors: shutdown will now complete
+    after 30 seconds of trying to finish exporting any buffered
+    telemetry, instead of continuing to export until all
+    telemetry was exported. (#4638).
+- update to 1.35.0:
+  * Update OTLP proto to v1.7 #4645.
+  * Add `event_name` as a top level field in the `LogRecord`.
+    Events are now simply logs with the `event_name` field set,
+    the logs SDK should be used to emit events (#4652).
+  * Update OTLP gRPC/HTTP exporters: the export timeout is now
+    inclusive of all retries and backoffs. A +/-20% jitter was
+    added to all backoffs. A pointless 32 second sleep that
+    occurred after all retries had completed/failed was removed.
+    (#4564).
+  * Update ConsoleLogExporter.export to handle LogRecord's
+    containing bytes type in the body (#4614).
+  * opentelemetry-sdk: Fix invalid `type: ignore` that causes
+    mypy to ignore the whole file
+  * Add `span_exporter` property back to `BatchSpanProcessor`
+    class
+  * Fix license field in pyproject.toml files
+  * Update logger level to NOTSET in logs example
+  * Logging API accepts optional `context`; deprecates
+    `trace_id`, `span_id`, `trace_flags`. (#4597) and
+  * sdk: use context instead of trace_id,span_id for initializing
+    LogRecord
+  * Rename LogRecordProcessor.emit to on_emit
+  * Logging API hide std_to_otel function to convert python
+    logging severity to otel severity
+  * proto: relax protobuf version requirement to support v6
+  * Bump semantic-conventions to 1.36.0
+  * Set expected User-Agent in HTTP headers for grpc OTLP
+    exporter
+
+-------------------------------------------------------------------
 Mon May 26 07:26:19 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.33.1
