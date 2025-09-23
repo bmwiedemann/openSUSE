@@ -53,4 +53,19 @@ sense to provide it as the main implementation.</comment>
   * ASPA check fix for AS_SET</comment>
     <requestid>1302727</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0d6411cba8043956bd16a6080a343d1b</srcmd5>
+    <version>3.1.4</version>
+    <time>1758642351</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.1.4
+  * BGP: Fixed crash on Notification with a message, CVE-2025-59688
+  * BGP: Fixed invalid memory access in pending TX flush
+  * BGP: Fixed a rare bug with listening socket delay
+  * Pipe: Disabled statisticts for stopping pipe
+  * Hash: Read-only assertions
+  * ROA Aggregator: Fixed crash on multiwithdraw
+  * Protocol: Fixed broken state announcements</comment>
+    <requestid>1306739</requestid>
+  </revision>
 </revisionlist>
