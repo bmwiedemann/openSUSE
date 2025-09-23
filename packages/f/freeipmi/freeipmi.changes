@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 16 07:05:40 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
+
+- freeimpi 1.6.16:
+  * Fix potential sensor reading miscalculation on systems where a
+    char is defined as unsigned (such as ARM) vs signed (such as x86).
+  * Fix gcc15 compilation errors.
+
+- drop freeipmi-1.6.15-gcc15.patch, upstreamed
+
+-------------------------------------------------------------------
 Fri May  2 08:56:11 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add freeipmi-1.6.15-gcc15.patch from upstream  to fix gcc15

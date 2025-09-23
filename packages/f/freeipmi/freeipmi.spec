@@ -1,7 +1,7 @@
 #
 # spec file for package freeipmi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2003-2008 FreeIPMI Core Team
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,18 +37,18 @@
 %{!?_initddir: %global _initddir %{_sysconfdir}/init.d}
 
 Name:           freeipmi
-Version:        1.6.15
+Version:        1.6.16
 Release:        %{release}
 URL:            http://www.gnu.org/software/freeipmi/
 Source0:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz.sig
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM
-Patch1:         freeipmi-1.6.15-gcc15.patch
 Summary:        IPMI Service Processor, BMC management tool
 License:        GPL-3.0-or-later
 Group:          System/Management
+%if 0%{?suse_version} > 1010
 BuildRequires:  fdupes
+%endif
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -179,7 +179,7 @@ Platform Management Interface specification.
 This package contains the libfreeipmi library.
 
 %prep
-%autosetup -p1 -n %{name}-%{srcversion}
+%autosetup -n %{name}-%{srcversion}
 
 %build
 # simple .spec expressions for SLE10
