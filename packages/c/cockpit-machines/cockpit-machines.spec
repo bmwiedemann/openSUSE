@@ -1,7 +1,7 @@
 #
 # spec file for package cockpit-machines
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-machines
-Version:        333
+Version:        339
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT
@@ -30,7 +30,7 @@ Source12:       update_version.sh
 Patch10:        hide-docs.patch
 Patch11:        load-css-overrides.patch
 Patch12:        uefi-default-firmware.patch
-Patch13:        nic-domain-not-found.patch
+Patch13:        hostadd-allow-device-form-to-overflow-on-X-axis.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 BuildRequires:  make
@@ -46,11 +46,12 @@ Requires:       libvirt-dbus >= 1.2.0
 Requires:       qemu-spice
 %endif
 Requires:       virt-install
+Requires:       libvirt
 # Optional components
 Recommends:     libosinfo
 Recommends:     python3-gobject-base
 #
-BuildRequires:  cockpit-devel >= 293
+BuildRequires:  cockpit-devel >= 346
 BuildRequires:  local-npm-registry
 BuildRequires:  sassc
 

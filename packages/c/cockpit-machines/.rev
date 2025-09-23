@@ -294,4 +294,38 @@
     <comment>- Explicitly set uefi as default firmware (bsc#1245145)</comment>
     <requestid>1294142</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>563c3ff11249b7f1c12d0749cc7a1a9a</srcmd5>
+    <version>339</version>
+    <time>1758636880</time>
+    <user>anag_factory</user>
+    <comment>- Don't set UEFI as default firmware for ppc64le and s390x
+  * Fixes bsc#1249828 and bsc#1249830
+
+- Add a hard require on libvirt bsc#1236149
+
+- add hostadd-allow-device-form-to-overflow-on-X-axis.patch fixes bsc#1248250
+
+- Update to 339
+  * 339
+    - Serial consoles now keep their content and stay alive
+    - No longer copies qemu.conf values into VM definitions
+  * 338
+    - Translation and dependency updates
+    - Detachable VNC console
+- removed nic-domain-not-found.patch that is now part of upstream
+
+- Update to 337
+  * 337
+    - Bug fixes and translation updates
+  * 336
+    - Graphical VNC and serial consoles improvements
+    - Control VNC console resizing and scaling
+    - Bug fixes and translation updates
+  * 335
+    - Bug fixes and translation updates
+  * 334
+    - Bug fixes and translation updates</comment>
+    <requestid>1306665</requestid>
+  </revision>
 </revisionlist>

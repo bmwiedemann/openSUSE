@@ -4,31 +4,41 @@ Date: Wed, 9 Jul 2025 11:11:07 +0300
 Subject: Explicitly set UEFI as default firmware
 
 ---
- src/libvirtApi/domain.ts | 2 ++
- 1 file changed, 2 insertions(+)
+ src/libvirtApi/domain.ts | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/src/libvirtApi/domain.ts b/src/libvirtApi/domain.ts
-index 88d39dab..61926d52 100644
+index 963d25f4..9ac69e77 100644
 --- a/src/libvirtApi/domain.ts
 +++ b/src/libvirtApi/domain.ts
-@@ -360,6 +360,7 @@ interface DomainSpec {
-     userPassword: string,
+@@ -361,6 +361,7 @@ interface DomainSpec {
+     userPassword: optString,
      vmName: string,
      sshKeys: string[],
-+    firmware: 'bios' | 'uefi'
++    firmware: 'bios' | 'uefi' | undefined
  }
  
  export async function domainCreate({
-@@ -415,6 +416,7 @@ export async function domainCreate({
+@@ -398,6 +399,9 @@ export async function domainCreate({
+
+     type DomainCreateScriptArgs = { connectionName: ConnectionName, type: string } & DomainSpec;
+
++    const arch = (await spawn(connectionName, ['uname', '-m'])).trim();
++    const defaultFirmware = ["ppc64le", "s390x"].includes(arch) ? undefined : "uefi";
++
+     const args: DomainCreateScriptArgs = {
+         connectionName,
+         memorySize,
+@@ -416,6 +420,7 @@ export async function domainCreate({
          userPassword,
          vmName,
          sshKeys,
-+        firmware: "uefi",
++        firmware: defaultFirmware,
      };
  
      logDebug(`CREATE_VM(${vmName}): install_machine.py '${JSON.stringify(args)}'`);
 -- 
-2.50.0
+2.51.0
 
 
 From a5dcfb74c517aea09f17bd3efc0ef750c335e39b Mon Sep 17 00:00:00 2001

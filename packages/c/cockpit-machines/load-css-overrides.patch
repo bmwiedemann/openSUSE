@@ -13,10 +13,10 @@ Index: cockpit-machines-292/src/index.html
 ===================================================================
 --- cockpit-machines-292.orig/src/index.html
 +++ cockpit-machines-292/src/index.html
-@@ -7,6 +7,7 @@
-     <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+@@ -8,6 +8,7 @@
+
      <link rel="stylesheet" href="index.css">
+     <link href="../../static/branding.css" rel="stylesheet" />
 +    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
  
      <script type="text/javascript" src="index.js"></script>

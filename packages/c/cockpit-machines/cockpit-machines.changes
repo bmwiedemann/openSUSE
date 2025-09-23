@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Sep 17 09:55:02 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Don't set UEFI as default firmware for ppc64le and s390x
+  * Fixes bsc#1249828 and bsc#1249830
+
+-------------------------------------------------------------------
+Tue Sep 16 09:33:50 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add a hard require on libvirt bsc#1236149
+
+-------------------------------------------------------------------
+Tue Sep 16 07:01:53 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- add hostadd-allow-device-form-to-overflow-on-X-axis.patch fixes bsc#1248250
+
+-------------------------------------------------------------------
+Thu Sep 11 10:25:20 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to 339
+  * 339
+    - Serial consoles now keep their content and stay alive
+    - No longer copies qemu.conf values into VM definitions
+  * 338
+    - Translation and dependency updates
+    - Detachable VNC console
+- removed nic-domain-not-found.patch that is now part of upstream
+
+-------------------------------------------------------------------
+Wed Aug 20 10:04:47 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 337
+  * 337
+    - Bug fixes and translation updates
+  * 336
+    - Graphical VNC and serial consoles improvements
+    - Control VNC console resizing and scaling
+    - Bug fixes and translation updates
+  * 335
+    - Bug fixes and translation updates
+  * 334
+    - Bug fixes and translation updates
+
+-------------------------------------------------------------------
 Wed Jul  9 08:18:07 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Explicitly set uefi as default firmware (bsc#1245145)
