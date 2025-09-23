@@ -88,4 +88,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>810248</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>87d37721e61e1a2c4fe67765009034d9</srcmd5>
+    <version>1.8.0</version>
+    <time>1758636479</time>
+    <user>anag_factory</user>
+    <comment>- Activate PCSC support, which is disabled by default</comment>
+    <requestid>1306686</requestid>
+  </revision>
 </revisionlist>

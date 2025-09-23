@@ -1,7 +1,7 @@
 #
 # spec file for package libnfc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,11 @@ Name:           libnfc
 Version:        1.8.0
 Release:        0
 Summary:        Library for Near Field Communication
-License:        LGPL-3.0-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://libnfc.org/
-
 #Git-Clone:	https://github.com/nfc-tools/libnfc
 Source:         https://github.com/nfc-tools/libnfc/releases/download/%name-%version/%name-%version.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkg-config
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libpcsclite)
@@ -56,7 +54,7 @@ target and as initiator.
 
 %package devel
 Summary:        Development files for the Near Field Communications library
-License:        LGPL-3.0-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
@@ -72,7 +70,7 @@ This package contains the libnfc development files.
 
 %package tools
 Summary:        Tools for Near Field Communication
-License:        LGPL-3.0-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          Hardware/Other
 
 %description tools
@@ -86,19 +84,20 @@ target and as initiator.
 This package contains the NFC utilities.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+# pcsc-support is disabled by default, but included
+# in the special driver-target 'all'
+%configure --disable-static --with-drivers=all
+%make_build
 
 %install
 %make_install
 rm -fv "%buildroot/%_libdir"/*.la
 mkdir -p "%buildroot/%_sysconfdir/nfc"
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files -n %lname
 %_libdir/libnfc.so.6*
