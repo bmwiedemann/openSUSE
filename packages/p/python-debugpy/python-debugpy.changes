@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 14 20:43:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.16:
+  * Fix bug in attach for 3.11 and lower on Windows
+- update to 1.8.15:
+  * Step Over, Step Into, not working when debugging Subprocesses
+  * Allow debugging child processes started through an
+    intermediary
+  * Attach to process on arm64 Mac
+  * Documentation typo
+  * 3.14 preliminary support
+
+-------------------------------------------------------------------
 Thu Jun  5 06:01:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -14,11 +27,11 @@ Mon Apr 28 15:12:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
 Mon Feb 10 15:07:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.8.12
-  * To simplify command line usage, an debugpy entry point has been 
+  * To simplify command line usage, an debugpy entry point has been
     added to the debugpy package.
-  * To simplify command line usage, switches can now be read from 
+  * To simplify command line usage, switches can now be read from
     the environment.
-  * Consuming PyDev.Debugger's sys.monitoring support to improve 
+  * Consuming PyDev.Debugger's sys.monitoring support to improve
     performance of debugging 3.12
   * Support for 3.13
   * Multithreading fixes
@@ -27,7 +40,7 @@ Mon Feb 10 15:07:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
 Thu Sep 26 10:32:41 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Drop unneeded Django test dependency
-- Skip one failing test on aarch64 
+- Skip one failing test on aarch64
 
 -------------------------------------------------------------------
 Sat Jun 29 19:34:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
