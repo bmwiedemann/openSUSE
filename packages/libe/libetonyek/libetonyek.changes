@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 23 05:50:49 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 0.1.13:
+  + Add missing Numbers function names (tdf#151166)
+- Drop libetonyek-deprecated-boost.patch: fixed upstream
+- Modify libetonyek-mdds-3.0.patch: drop the configure.ac part
+
+-------------------------------------------------------------------
 Thu Sep 11 00:49:22 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

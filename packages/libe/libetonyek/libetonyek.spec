@@ -22,7 +22,7 @@
 %define with_gcc 13
 %endif
 Name:           libetonyek
-Version:        0.1.12
+Version:        0.1.13
 Release:        0
 Summary:        Library for Apple Keynote presentations
 License:        MPL-2.0
@@ -30,10 +30,7 @@ Group:          Productivity/Publishing/Word
 URL:            https://wiki.documentfoundation.org/DLP/Libraries/libetonyek
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
 Patch0:         libetonyek-mdds-3.0.patch
-Patch1:         libetonyek-deprecated-boost.patch
-Patch2:         libetonyek-memcmp.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+Patch1:         libetonyek-memcmp.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?with_gcc}
@@ -42,7 +39,6 @@ BuildRequires:  glm-devel
 BuildRequires:  gperf
 BuildRequires:  help2man
 BuildRequires:  liblangtag-devel
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(cppunit)
@@ -99,7 +95,6 @@ This package contains tools to work with Apple Keynote presentations
 %autosetup -p1
 
 %build
-autoreconf -fvi
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 %if 0%{?with_gcc}
 export CXX=g++-%{with_gcc}

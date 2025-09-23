@@ -232,4 +232,12 @@
     <comment>Fix build on all supported openSUSE/SUSE versions</comment>
     <requestid>1303739</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5b6811d6e7d73d56c2f19d6324801954</srcmd5>
+    <version>0.1.13</version>
+    <time>1758653223</time>
+    <user>anag_factory</user>
+    <comment>0.1.13</comment>
+    <requestid>1306643</requestid>
+  </revision>
 </revisionlist>
