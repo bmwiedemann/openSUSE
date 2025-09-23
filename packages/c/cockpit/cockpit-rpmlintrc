@@ -1,4 +1,0 @@
-# False positive
-addFilter('explicit-lib-dependency.*libvirt-client');
-# will break cockpit functionality if we changed shebangs
-addFilter('env-script-interpreter')

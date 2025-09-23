@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 18 07:40:59 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Rewrite hide-pcp.patch to apply to SLFO based versions of micro
+
+-------------------------------------------------------------------
+Mon Sep  8 11:25:24 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to 346
+  * Changes since 344
+    - 346
+      * Support branding Cockpit pages
+      * Storage: Support for Stratis "V2" pools
+    - 345
+      * Translation and dependency updates
+      * Shorter IPv6 addresses
+      * IPv6 addresses for WireGuard
+
+-------------------------------------------------------------------
 Thu Aug 14 04:53:41 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to 344

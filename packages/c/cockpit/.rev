@@ -781,4 +781,22 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
 - Fix not falling back to PRETTY_NAME in SUSE_PRETTY_NAME patches bsc#1248446</comment>
     <requestid>1301547</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>0aa2785a1741a66ca2cfc4ff535ce1c0</srcmd5>
+    <version>346</version>
+    <time>1758653226</time>
+    <user>anag_factory</user>
+    <comment>- Update to 346
+  * Changes since 344
+    - 346
+      * Support branding Cockpit pages
+      * Storage: Support for Stratis &quot;V2&quot; pools
+    - 345
+      * Translation and dependency updates
+      * Shorter IPv6 addresses
+      * IPv6 addresses for WireGuard
+
+- Rewrite hide-pcp.patch to apply to SLFO based versions of micro</comment>
+    <requestid>1306662</requestid>
+  </revision>
 </revisionlist>
