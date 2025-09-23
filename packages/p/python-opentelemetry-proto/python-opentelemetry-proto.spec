@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-proto
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-proto
 # Please keep in sync with python-opentelemetry-exporter-otlp-*
-Version:        1.33.1
+Version:        1.37.0
 Release:        0
 Summary:        OpenTelemetry Python Proto
 License:        Apache-2.0
