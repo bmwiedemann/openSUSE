@@ -22,14 +22,13 @@
 %define with_gcc 13
 %endif
 Name:           libvisio
-Version:        0.1.8
+Version:        0.1.9
 Release:        0
 Summary:        Library for parsing the MS Visio file format structure
 License:        MPL-2.0
 Group:          Productivity/Publishing/Word
 URL:            https://www.freedesktop.org/wiki/Software/libvisio
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
-Patch0:         libvisio-optional.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?with_gcc}

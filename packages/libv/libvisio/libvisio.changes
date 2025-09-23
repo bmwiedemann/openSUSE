@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 22 12:24:26 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- version update to 0.1.9
+  * Implement displaying Angle TextField (tdf#126292)
+  * Correctly display Text Background for VSD 6 and 11 format
+    (tdf#126292)
+  * Better handling of theme colors (tdf#168475)
+- Removed patch:
+  * libvisio-optional.patch
+    + this version used std::optional instead
+
+-------------------------------------------------------------------
 Thu Sep 11 01:14:17 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
