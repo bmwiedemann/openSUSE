@@ -96,4 +96,19 @@
     <comment>- Add missing requirement on opentelemetry-sdk.</comment>
     <requestid>1281747</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>63ec814902c5ae388fdad3eeb6dfd74c</srcmd5>
+    <version>0.58b0</version>
+    <time>1758636338</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.58b0:
+  * Add experimental composite samplers
+  * Add new environment variables to the SDK
+    OTEL_PYTHON_EXPORTER_OTLP_{HTTP/GRPC}_{METRICS/TRACES/LOGS}_CREDENTIAL_PROVIDER
+    that can be used to inject a requests.Session or
+    grpc.ChannelCredentials object into OTLP exporters created
+    during auto instrumentation
+  * Permit to override default HTTP OTLP exporters headers</comment>
+    <requestid>1306352</requestid>
+  </revision>
 </revisionlist>
