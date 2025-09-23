@@ -499,4 +499,41 @@
 </comment>
     <requestid>1286790</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fdedf75835493851194150c2a3c75fa0</srcmd5>
+    <version>25.9.0</version>
+    <time>1758636353</time>
+    <user>anag_factory</user>
+    <comment>- update to 25.9.0:
+  * Remove support for pre-python 3.7 `await/async` as soft
+    keywords/variable names
+  * Fix crash while formatting a long `del` statement containing
+    tuples
+  * Fix crash while formatting expressions using the walrus
+    operator in complex `with` statements
+  * Handle `# fmt: skip` followed by a comment at the end of file
+  * Fix crash when a tuple appears in the `as` clause of a `with`
+    statement
+  * Fix crash when tuple is used as a context manager inside a
+    `with` statement
+  * Fix crash when formatting a `\` followed by a `
+` followed
+    by a comment
+  * Fix crash on a `\r
+  * Fix crash on `await ...` (where `...` is a literal
+    `Ellipsis`)
+  * Fix crash on parenthesized expression inside a type parameter
+    bound
+  * Fix crash when using line ranges excluding indented single
+    line decorated items
+  * (#4670)
+  * Fix a bug where one-liner functions/conditionals marked with
+    `# fmt: skip` would still be formatted
+  * Improve `multiline_string_handling` with ternaries and
+    dictionaries
+  * Fix a bug where `string_processing` would not split f-strings
+    directly after expressions
+  * Wrap the `in` clause of comprehensions across lines if</comment>
+    <requestid>1306430</requestid>
+  </revision>
 </revisionlist>

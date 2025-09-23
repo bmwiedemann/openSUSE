@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Sep 22 07:34:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.9.0:
+  * Remove support for pre-python 3.7 `await/async` as soft
+    keywords/variable names
+  * Fix crash while formatting a long `del` statement containing
+    tuples
+  * Fix crash while formatting expressions using the walrus
+    operator in complex `with` statements
+  * Handle `# fmt: skip` followed by a comment at the end of file
+  * Fix crash when a tuple appears in the `as` clause of a `with`
+    statement
+  * Fix crash when tuple is used as a context manager inside a
+    `with` statement
+  * Fix crash when formatting a `\` followed by a `` followed
+    by a comment
+  * Fix crash on a `\r
+  * Fix crash on `await ...` (where `...` is a literal
+    `Ellipsis`)
+  * Fix crash on parenthesized expression inside a type parameter
+    bound
+  * Fix crash when using line ranges excluding indented single
+    line decorated items
+  * (#4670)
+  * Fix a bug where one-liner functions/conditionals marked with
+    `# fmt: skip` would still be formatted
+  * Improve `multiline_string_handling` with ternaries and
+    dictionaries
+  * Fix a bug where `string_processing` would not split f-strings
+    directly after expressions
+  * Wrap the `in` clause of comprehensions across lines if
+    necessary
+  * Remove parentheses around multiple exception types in
+    `except` and `except*` without `as`.
+  * Rewrite tokenizer to improve performance and compliance
+  * Fix bug where certain unusual expressions (e.g., lambdas)
+    were not accepted in type parameter bounds and defaults.
+  * Avoid using an extra process when running with only one
+    worker
+- drop update-PEP-701.patch, click-820.patch: upstream
+
+-------------------------------------------------------------------
 Wed Jun 18 20:26:19 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Instead of skipping the test, apply upstream fix as
