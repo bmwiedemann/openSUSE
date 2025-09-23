@@ -66,11 +66,16 @@
 %bcond_without system_abseil_cpp
 %endif
 
+%if 0%{?suse_version} >= 1300
+%bcond_without system_harfbuzz
+%else
+%bcond_with system_harfbuzz
+%endif
+
 # Use system gpgme and curl on TW and SLE15-SP4 or newer
 %if 0%{?suse_version} > 1500
 %bcond_without system_gpgme
 %bcond_without system_curl
-%bcond_without system_harfbuzz
 %else
 # Hack in the bundled libs to not pop up on requires/provides to avoid
 # faking libreoffice provide some system packages
@@ -79,7 +84,6 @@
 %global __requires_exclude ^libgpgmepp\\.so.*$
 %bcond_with system_gpgme
 %bcond_with system_curl
-%bcond_with system_harfbuzz
 %endif
 %if 0%{?gcc_version} < 12
 %global with_gcc 12
@@ -126,6 +130,7 @@ Patch1:         scp2-user-config-suse.diff
 # FIXME: the right fix is to compile the help and produce the .db_, .ht_, and other files
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
+Patch4:         python-detection.patch
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
 Patch9:         fix_math_desktop_file.patch
@@ -133,6 +138,8 @@ Patch10:        fix_gtk_popover_on_3.20.patch
 Patch11:        fix_webp_on_sle12_sp5.patch
 # PATCH-FIX-SUSE Fix make distro-pack-install
 Patch15:        fix-sdk-idl.patch
+# PATCH-FIX-UPSTREAM
+Patch16:        boost-1_89_0.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -161,8 +168,8 @@ BuildRequires:  zxcvbn-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-8.11.1.tar.xz
-Provides:       bundled(curl) = 8.11.1
+Source2013:     %{external_url}/curl-8.14.1.tar.xz
+Provides:       bundled(curl) = 8.14.1
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -195,6 +202,7 @@ BuildRequires:  libloader
 BuildRequires:  librepository
 BuildRequires:  libserializer
 BuildRequires:  libtool
+BuildRequires:  libzstd-devel
 BuildRequires:  lpsolve-devel
 BuildRequires:  make
 BuildRequires:  openldap2-devel
@@ -230,13 +238,15 @@ BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 %if %{with system_harfbuzz}
 BuildRequires:  pkgconfig(graphite2) >= 0.9.3
-BuildRequires:  pkgconfig(harfbuzz) >= 2.6.8
-BuildRequires:  pkgconfig(harfbuzz-icu) >= 2.6.8
+BuildRequires:  pkgconfig(harfbuzz) >= 5.1.0
+BuildRequires:  pkgconfig(harfbuzz-icu) >= 5.1.0
 %else
-Source2025:     %{external_url}/harfbuzz-8.5.0.tar.xz
+Source2025:     %{external_url}/harfbuzz-11.4.3.tar.xz
 Source2026:     %{external_url}/graphite2-minimal-1.3.14.tgz
+Source2032:     %{external_url}/meson-1.8.0.tar.gz
 Provides:       bundled(graphite2) = 1.3.14
 Provides:       bundled(harfbuzz) = 8.5.0
+BuildRequires:  ninja
 %endif
 # Java-WebSocket
 Source3000:     %{external_url}/Java-WebSocket-1.6.0.tar.gz
@@ -311,21 +321,24 @@ Provides:       %{name}-icon-theme-oxygen = %{version}
 Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
-Source2020:     %{external_url}/boost_1_85_0.tar.xz
-Source2023:     %{external_url}/poppler-24.08.0.tar.xz
+Source2020:     %{external_url}/boost_1_89_0.tar.xz
+Source2023:     %{external_url}/poppler-25.08.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.12.tar.gz
 Source2030:     %{external_url}/tiff-4.7.0.tar.xz
-Provides:       bundled(boost) = 1.85.0
-Provides:       bundled(poppler) = 24.08.0
-Provides:       bundled(poppler-data) = 0.4.12
 Source2031:     %{external_url}/libcmis-0.6.2.tar.xz
+Provides:       bundled(boost) = 1.89.0
 Provides:       bundled(libcmis) = 0.6.2
+Provides:       bundled(poppler) = 25.08.0
+Provides:       bundled(poppler-data) = 0.4.12
+Provides:       bundled(tiff) = 4.7.0
 %else
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_locale-devel
+%if 0%{?suse_version} <= 1550
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libcmis-devel
 BuildRequires:  pkgconfig(libtiff-4) >= 4.0.10
 BuildRequires:  pkgconfig(poppler) >= 21.01.0
@@ -333,12 +346,12 @@ BuildRequires:  pkgconfig(poppler-cpp)
 %endif
 %if 0%{?suse_version} < 1500
 # Too old icu on the system
-Source2021:     %{external_url}/icu4c-74_2-src.tgz
-Source2022:     %{external_url}/icu4c-74_2-data.zip
+Source2021:     %{external_url}/icu4c-77_1-src.tgz
+Source2022:     %{external_url}/icu4c-77_1-data.zip
 Source2027:     %{external_url}/phc-winner-argon2-20190702.tar.gz
-Source2028:     %{external_url}/fontconfig-2.15.0.tar.xz
-Source2029:     %{external_url}/freetype-2.13.2.tar.xz
-Provides:       bundled(icu) = 74.2
+Source2028:     %{external_url}/fontconfig-2.17.1.tar.xz
+Source2029:     %{external_url}/freetype-2.13.3.tar.xz
+Provides:       bundled(icu) = 77.1
 BuildRequires:  libBox2D-devel
 BuildRequires:  libmysqlclient-devel
 Requires(post): update-desktop-files
@@ -362,12 +375,12 @@ BuildRequires:  python-rpm-macros
 %if %{with system_gpgme}
 BuildRequires:  libgpgmepp-devel >= 1.14
 %else
-Source1000:     %{external_url}/gpgme-1.24.0.tar.bz2
-Source1001:     %{external_url}/libgpg-error-1.51.tar.bz2
-Source1002:     %{external_url}/libassuan-3.0.1.tar.bz2
-Provides:       bundled(gpgme) = 1.24.0
-Provides:       bundled(libassuan) = 3.0.1
-Provides:       bundled(libgpg-error) = 1.51
+Source1000:     %{external_url}/gpgme-1.24.3.tar.bz2
+Source1001:     %{external_url}/libgpg-error-1.55.tar.bz2
+Source1002:     %{external_url}/libassuan-3.0.2.tar.bz2
+Provides:       bundled(gpgme) = 1.24.3
+Provides:       bundled(libassuan) = 3.0.2
+Provides:       bundled(libgpg-error) = 1.55
 %endif
 %if %{with firebird}
 BuildRequires:  pkgconfig(fbclient)
@@ -1094,6 +1107,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif # Leap 42/SLE-12
 %patch -P 2
 %patch -P 3
+%patch -P 4 -p1
 %patch -P 6 -p1
 %patch -P 9 -p1
 %if 0%{?suse_version} < 1500
@@ -1101,6 +1115,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch -P 11 -p1
 %endif
 %patch -P 15 -p1
+%patch -P 16 -p1
 %patch -P 990 -p1
 %patch -P 991 -p1
 %if 0%{?suse_version} < 1550
@@ -1229,7 +1244,11 @@ export NOCONFIGURE=yes
         --disable-kf5 \
         --disable-qt5 \
 %endif
+%if 0%{?suse_version} >= 1500
         --enable-introspection \
+%else
+        --disable-introspection \
+%endif
         --with-doxygen \
         --enable-release-build \
         --enable-split-app-modules \
@@ -1276,8 +1295,6 @@ export NOCONFIGURE=yes
         --without-system-argon2 \
         --without-system-icu \
         --without-system-openjpeg \
-        --without-system-fontconfig \
-        --without-system-freetype \
 %else
         --with-system-openjpeg \
 %endif
@@ -1526,11 +1543,13 @@ ln -s %{_libdir}/%{name}/program/liblibreofficekitgtk.so %{buildroot}%{_libdir}/
 mkdir -p %{buildroot}%{_includedir}/LibreOfficeKit/
 install -m 0644 include/LibreOfficeKit/* %{buildroot}%{_includedir}/LibreOfficeKit/
 
+%if 0%{?suse_version} >= 1500
 # typelib data
 mkdir -p %{buildroot}%{_libdir}/girepository-1.0/
 install -m 0644 workdir/CustomTarget/sysui/share/libreoffice/LOKDocView-0.1.typelib %{buildroot}%{_libdir}/girepository-1.0/
 mkdir -p %{buildroot}%{_datadir}/gir-1.0/
 install -m 0644 workdir/CustomTarget/sysui/share/libreoffice/LOKDocView-0.1.gir %{buildroot}%{_datadir}/gir-1.0/
+%endif
 
 # Symlink uno.py and unohelper.py so that python can find them
 # This is done after the cache files generating on purpose
@@ -1649,8 +1668,10 @@ exit 0
 %endif
 
 %files -n libreofficekit
+%if 0%{?suse_version} >= 1500
 %dir %{_libdir}/girepository-1.0
 %{_libdir}/girepository-1.0/LOKDocView-0.1.typelib
+%endif
 %{_libdir}/liblibreofficekitgtk.so
 %dir %{_libdir}/libreoffice/share/libreofficekit
 %{_libdir}/libreoffice/share/libreofficekit/handle_image_end.png
@@ -1658,8 +1679,10 @@ exit 0
 %{_libdir}/libreoffice/share/libreofficekit/handle_image_start.png
 
 %files -n libreofficekit-devel
+%if 0%{?suse_version} >= 1500
 %dir %{_datadir}/gir-1.0
 %{_datadir}/gir-1.0/LOKDocView-0.1.gir
+%endif
 %dir %{_includedir}/LibreOfficeKit
 %{_includedir}/LibreOfficeKit/*
 

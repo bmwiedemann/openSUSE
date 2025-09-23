@@ -1,0 +1,302 @@
+--- libreoffice-25.8.1.1/configure.ac	2025-09-22 14:13:25.041830340 +0200
++++ libreoffice-25.8.1.1/configure.ac	2025-09-22 14:14:49.646073237 +0200
+@@ -11454,18 +11454,9 @@
+ dnl Orcus
+ dnl ===================================================================
+ libo_CHECK_SYSTEM_MODULE([orcus],[ORCUS],[liborcus-0.20 >= 0.20.0])
+-if test "$with_system_orcus" != "yes"; then
+-    if test "$SYSTEM_BOOST" = "TRUE"; then
+-        dnl Link with Boost.System
+-        dnl This seems to be necessary since boost 1.50 (1.48 does not need it,
+-        dnl 1.49 is untested). The macro BOOST_THREAD_DONT_USE_SYSTEM mentioned
+-        dnl in documentation has no effect.
+-        AX_BOOST_SYSTEM
+-    fi
+-fi
++
+ dnl FIXME by renaming SYSTEM_LIBORCUS to SYSTEM_ORCUS in the build system world
+ SYSTEM_LIBORCUS=$SYSTEM_ORCUS
+-AC_SUBST([BOOST_SYSTEM_LIB])
+ AC_SUBST(SYSTEM_LIBORCUS)
+ 
+ dnl ===================================================================
+--- libreoffice-25.8.1.1/download.lst	2025-09-22 14:13:25.041777281 +0200
++++ libreoffice-25.8.1.1/download.lst	2025-09-22 14:13:43.018676839 +0200
+@@ -14,8 +14,8 @@
+ # so that git cherry-pick
+ # will not run into conflicts
+ # please repack the tarball using external/boost/repack_tarball.sh
+-BOOST_SHA256SUM := 5c67a448c562f1606e38203ba7ed7e8d7453581b6b9ca324e96205eae0da5ff8
+-BOOST_TARBALL := boost_1_88_0.tar.xz
++BOOST_SHA256SUM := b3a976c659961f1d7fae9a8e58d6729a11f5473abaf2ef0e623f53777c86475d
++BOOST_TARBALL := boost_1_89_0.tar.xz
+ # three static lines
+ # so that git cherry-pick
+ # will not run into conflicts
+--- libreoffice-25.8.1.1/external/boost/Module_boost.mk	2025-09-22 14:13:28.872533899 +0200
++++ libreoffice-25.8.1.1/external/boost/Module_boost.mk	2025-09-22 14:13:43.018824985 +0200
+@@ -13,7 +13,6 @@
+ 	StaticLibrary_boost_date_time \
+ 	StaticLibrary_boost_filesystem \
+ 	StaticLibrary_boost_locale \
+-	StaticLibrary_boost_system \
+ 	StaticLibrary_boost_iostreams \
+ 	UnpackedTarball_boost \
+ ))
+--- libreoffice-25.8.1.1/external/boost/StaticLibrary_boost_system.mk	2025-09-22 14:13:28.872428076 +0200
++++ libreoffice-25.8.1.1/external/boost/StaticLibrary_boost_system.mk	1970-01-01 01:00:00.000000000 +0100
+@@ -1,29 +0,0 @@
+-# -*- Mode: makefile-gmake; tab-width: 4; indent-tabs-mode: t -*-
+-#
+-# This file is part of the LibreOffice project.
+-#
+-# This Source Code Form is subject to the terms of the Mozilla Public
+-# License, v. 2.0. If a copy of the MPL was not distributed with this
+-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-#
+-
+-$(eval $(call gb_StaticLibrary_StaticLibrary,boost_system))
+-
+-$(eval $(call gb_StaticLibrary_use_unpacked,boost_system,boost))
+-
+-$(eval $(call gb_StaticLibrary_set_warnings_disabled,boost_system))
+-
+-# disable "auto link" "feature" on MSVC
+-$(eval $(call gb_StaticLibrary_add_defs,boost_system,\
+-	-DBOOST_ALL_NO_LIB \
+-))
+-
+-$(eval $(call gb_StaticLibrary_use_external,boost_system,boost_headers))
+-
+-$(eval $(call gb_StaticLibrary_set_generated_cxx_suffix,boost_system,cpp))
+-
+-$(eval $(call gb_StaticLibrary_add_generated_exception_objects,boost_system,\
+-	UnpackedTarball/boost/libs/system/src/error_code \
+-))
+-
+-# vim: set noet sw=4 ts=4:
+--- libreoffice-25.8.1.1/external/liborcus/ExternalProject_liborcus.mk	2025-09-22 14:13:28.855001846 +0200
++++ libreoffice-25.8.1.1/external/liborcus/ExternalProject_liborcus.mk	2025-09-22 14:13:43.019032964 +0200
+@@ -15,7 +15,6 @@
+     boost_headers \
+     boost_filesystem \
+     boost_iostreams \
+-    boost_system \
+ 	mdds_headers \
+     zlib \
+ ))
+@@ -41,7 +40,7 @@
+ ifneq ($(SYSTEM_BOOST),)
+ liborcus_LIBS+=$(BOOST_SYSTEM_LIB) $(BOOST_IOSTREAMS_LIB) $(BOOST_FILESYSTEM_LIB)
+ else
+-liborcus_LIBS+=-L$(gb_StaticLibrary_WORKDIR) -lboost_system -lboost_iostreams -lboost_filesystem
++liborcus_LIBS+=-L$(gb_StaticLibrary_WORKDIR) -lboost_iostreams -lboost_filesystem
+ endif
+ ifeq ($(OS),ANDROID)
+ liborcus_LIBS+=$(gb_STDLIBS)
+--- libreoffice-25.8.1.1/external/liborcus/Library_orcus.mk	2025-09-22 14:13:28.854964977 +0200
++++ libreoffice-25.8.1.1/external/liborcus/Library_orcus.mk	2025-09-22 14:13:43.019228720 +0200
+@@ -15,7 +15,6 @@
+ 	boost_headers \
+ 	boost_filesystem \
+ 	boost_iostreams \
+-	boost_system \
+ 	mdds_headers \
+ 	zlib \
+ ))
+--- libreoffice-25.8.1.1/external/liborcus/Library_orcus-parser.mk	2025-09-22 14:13:28.854984598 +0200
++++ libreoffice-25.8.1.1/external/liborcus/Library_orcus-parser.mk	2025-09-22 14:13:43.019124949 +0200
+@@ -14,7 +14,6 @@
+ $(eval $(call gb_Library_use_externals,orcus-parser,\
+ 	boost_headers \
+ 	boost_filesystem \
+-	boost_system \
+ 	mdds_headers \
+ 	zlib \
+ ))
+--- libreoffice-25.8.1.1/m4/ax_boost_system.m4	2025-09-22 14:13:26.500469831 +0200
++++ libreoffice-25.8.1.1/m4/ax_boost_system.m4	1970-01-01 01:00:00.000000000 +0100
+@@ -1,121 +0,0 @@
+-# ===========================================================================
+-#     https://www.gnu.org/software/autoconf-archive/ax_boost_system.html
+-# ===========================================================================
+-#
+-# SYNOPSIS
+-#
+-#   AX_BOOST_SYSTEM
+-#
+-# DESCRIPTION
+-#
+-#   Test for System library from the Boost C++ libraries. The macro requires
+-#   a preceding call to AX_BOOST_BASE. Further documentation is available at
+-#   <http://randspringer.de/boost/index.html>.
+-#
+-#   This macro calls:
+-#
+-#     AC_SUBST(BOOST_SYSTEM_LIB)
+-#
+-#   And sets:
+-#
+-#     HAVE_BOOST_SYSTEM
+-#
+-# LICENSE
+-#
+-#   Copyright (c) 2008 Thomas Porschberg <thomas@randspringer.de>
+-#   Copyright (c) 2008 Michael Tindal
+-#   Copyright (c) 2008 Daniel Casimiro <dan.casimiro@gmail.com>
+-#
+-#   Copying and distribution of this file, with or without modification, are
+-#   permitted in any medium without royalty provided the copyright notice
+-#   and this notice are preserved. This file is offered as-is, without any
+-#   warranty.
+-
+-#serial 20
+-
+-AC_DEFUN([AX_BOOST_SYSTEM],
+-[
+-	AC_ARG_WITH([boost-system],
+-	AS_HELP_STRING([--with-boost-system@<:@=special-lib@:>@],
+-                   [use the System library from boost - it is possible to specify a certain library for the linker
+-                        e.g. --with-boost-system=boost_system-gcc-mt ]),
+-        [
+-        if test "$withval" = "no"; then
+-			want_boost="no"
+-        elif test "$withval" = "yes"; then
+-            want_boost="yes"
+-            ax_boost_user_system_lib=""
+-        else
+-		    want_boost="yes"
+-		ax_boost_user_system_lib="$withval"
+-		fi
+-        ],
+-        [want_boost="yes"]
+-	)
+-
+-	if test "x$want_boost" = "xyes"; then
+-        AC_REQUIRE([AC_PROG_CC])
+-        AC_REQUIRE([AC_CANONICAL_BUILD])
+-		CPPFLAGS_SAVED="$CPPFLAGS"
+-		CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
+-		export CPPFLAGS
+-
+-		LDFLAGS_SAVED="$LDFLAGS"
+-		LDFLAGS="$LDFLAGS $BOOST_LDFLAGS"
+-		export LDFLAGS
+-
+-        AC_CACHE_CHECK(whether the Boost::System library is available,
+-					   ax_cv_boost_system,
+-        [AC_LANG_PUSH([C++])
+-			 CXXFLAGS_SAVE=$CXXFLAGS
+-			 CXXFLAGS=
+-
+-			 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[@%:@include <boost/system/error_code.hpp>]],
+-				    [[boost::system::error_category *a = 0;]])],
+-                   ax_cv_boost_system=yes, ax_cv_boost_system=no)
+-			 CXXFLAGS=$CXXFLAGS_SAVE
+-             AC_LANG_POP([C++])
+-		])
+-		if test "x$ax_cv_boost_system" = "xyes"; then
+-			AC_SUBST(BOOST_CPPFLAGS)
+-
+-			AC_DEFINE(HAVE_BOOST_SYSTEM,,[define if the Boost::System library is available])
+-            BOOSTLIBDIR=`echo $BOOST_LDFLAGS | sed -e 's/@<:@^\/@:>@*//'`
+-
+-			LDFLAGS_SAVE=$LDFLAGS
+-            if test "x$ax_boost_user_system_lib" = "x"; then
+-                for libextension in `ls -r $BOOSTLIBDIR/libboost_system* 2>/dev/null | sed 's,.*/lib,,' | sed 's,\..*,,'` ; do
+-                     ax_lib=${libextension}
+-				    AC_CHECK_LIB($ax_lib, exit,
+-                                 [BOOST_SYSTEM_LIB="-l$ax_lib"; AC_SUBST(BOOST_SYSTEM_LIB) link_system="yes"; break],
+-                                 [link_system="no"])
+-				done
+-                if test "x$link_system" != "xyes"; then
+-                for libextension in `ls -r $BOOSTLIBDIR/boost_system* 2>/dev/null | sed 's,.*/,,' | sed -e 's,\..*,,'` ; do
+-                     ax_lib=${libextension}
+-				    AC_CHECK_LIB($ax_lib, exit,
+-                                 [BOOST_SYSTEM_LIB="-l$ax_lib"; AC_SUBST(BOOST_SYSTEM_LIB) link_system="yes"; break],
+-                                 [link_system="no"])
+-				done
+-                fi
+-
+-            else
+-               for ax_lib in $ax_boost_user_system_lib boost_system-$ax_boost_user_system_lib; do
+-				      AC_CHECK_LIB($ax_lib, exit,
+-                                   [BOOST_SYSTEM_LIB="-l$ax_lib"; AC_SUBST(BOOST_SYSTEM_LIB) link_system="yes"; break],
+-                                   [link_system="no"])
+-                  done
+-
+-            fi
+-            if test "x$ax_lib" = "x"; then
+-                AC_MSG_ERROR(Could not find a version of the Boost::System library!)
+-            fi
+-			if test "x$link_system" = "xno"; then
+-				AC_MSG_ERROR(Could not link against $ax_lib !)
+-			fi
+-		fi
+-
+-		CPPFLAGS="$CPPFLAGS_SAVED"
+-	LDFLAGS="$LDFLAGS_SAVED"
+-	fi
+-])
+--- libreoffice-25.8.1.1/RepositoryExternal.mk	2025-09-22 14:13:25.042299860 +0200
++++ libreoffice-25.8.1.1/RepositoryExternal.mk	2025-09-22 14:13:43.014101360 +0200
+@@ -642,13 +642,6 @@
+ 
+ gb_ExternalProject__use_boost_iostreams :=
+ 
+-define gb_LinkTarget__use_boost_system
+-$(call gb_LinkTarget__use_boost_lib,$(1),$(BOOST_SYSTEM_LIB))
+-
+-endef
+-
+-gb_ExternalProject__use_boost_system :=
+-
+ define gb_LinkTarget__use_boost_headers
+ $(call gb_LinkTarget_set_include,$(1),\
+ 	$$(INCLUDE) \
+@@ -701,15 +694,6 @@
+ $(call gb_ExternalProject_use_static_libraries,$(1),boost_iostreams)
+ endef
+ 
+-define gb_LinkTarget__use_boost_system
+-$(call gb_LinkTarget__use_boost_lib,$(1),boost_system)
+-
+-endef
+-
+-define gb_ExternalProject__use_boost_system
+-$(call gb_ExternalProject_use_static_libraries,$(1),boost_system)
+-endef
+-
+ define gb_LinkTarget__use_boost_headers
+ $(call gb_LinkTarget_use_unpacked,$(1),boost)
+ $(call gb_LinkTarget_set_include,$(1),\
+--- libreoffice-25.8.1.1/solenv/gbuild/platform/com_GCC_defs.mk	2025-09-22 14:13:25.836830662 +0200
++++ libreoffice-25.8.1.1/solenv/gbuild/platform/com_GCC_defs.mk	2025-09-22 14:13:43.019495970 +0200
+@@ -46,7 +46,6 @@
+ gb_AFLAGS := $(AFLAGS)
+ 
+ gb_COMPILERDEFS := \
+-	-DBOOST_SYSTEM_NO_DEPRECATED \
+ 	-DCPPU_ENV=$(CPPU_ENV) \
+ 	$(if $(filter EMSCRIPTEN,$(OS)),-U_FORTIFY_SOURCE) \
+ 
+--- libreoffice-25.8.1.1/solenv/gbuild/platform/com_MSC_defs.mk	2025-09-22 14:13:25.836779011 +0200
++++ libreoffice-25.8.1.1/solenv/gbuild/platform/com_MSC_defs.mk	2025-09-22 14:13:43.019619007 +0200
+@@ -47,7 +47,6 @@
+ 
+ gb_COMPILERDEFS := \
+ 	-DBOOST_OPTIONAL_USE_OLD_DEFINITION_OF_NONE \
+-	-DBOOST_SYSTEM_NO_DEPRECATED \
+ 	-D_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING \
+ 	-D_SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING \
+ 	-D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING \
+--- libreoffice-25.8.1.1/vcl/commonfuzzer.mk	2025-09-22 14:13:25.356666892 +0200
++++ libreoffice-25.8.1.1/vcl/commonfuzzer.mk	2025-09-22 14:13:43.019748430 +0200
+@@ -14,7 +14,6 @@
+     orcus-parser \
+     boost_locale \
+     boost_filesystem \
+-    boost_system \
+     boost_iostreams \
+     curl \
+     dtoa \

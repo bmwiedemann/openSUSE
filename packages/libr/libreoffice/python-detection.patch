@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index ad4582421331..3f0b979794db 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -10574,7 +10574,7 @@ if test $enable_python = system; then
+         # This causes an error if no python command is found
+         # the version found here also sets PYTHON_FOR_BUILD below, so the python picked here
+         # needs to be suitable for meson/the harfbuzz build
+-        if test "$with_system_harfbuzz" = "yes" -o -n "$NEED_MESON" ; then
++        if test "$with_system_harfbuzz" != "yes" -o -n "$NEED_MESON" ; then
+             AM_PATH_PYTHON([3.7])
+         else
+             AM_PATH_PYTHON([3.3])

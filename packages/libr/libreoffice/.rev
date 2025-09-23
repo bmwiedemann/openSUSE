@@ -3739,4 +3739,12 @@ Petr</comment>
   * skia-m130-3c64459d5df2fa9794b277f0959ed8a92552bf4c.tar.xz -&gt; skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz</comment>
     <requestid>1302375</requestid>
   </revision>
+  <revision rev="313" vrev="2">
+    <srcmd5>cb8a24c49453fc84cd548d0384ff263f</srcmd5>
+    <version>25.8.1.1</version>
+    <time>1758636368</time>
+    <user>anag_factory</user>
+    <comment>Trying to fix build with boost 1.89.0 and more breakages</comment>
+    <requestid>1306544</requestid>
+  </revision>
 </revisionlist>

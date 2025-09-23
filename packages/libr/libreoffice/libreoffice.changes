@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 22 12:32:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with boost 1.89.0
+- Upgrade bundled libraries
+  * curl-8.11.1.tar.xz -> curl-8.14.1.tar.xz
+  * harfbuzz-8.5.0.tar.xz -> harfbuzz-11.4.3.tar.xz
+  * boost_1_85_0.tar.xz -> boost_1_89_0.tar.xz
+  * poppler-24.08.0.tar.xz -> poppler-25.08.0.tar.xz
+  * icu4c-74_2-src.tgz -> icu4c-77_1-src.tgz
+  * icu4c-74_2-data.zip -> icu4c-77_1-data.zip
+  * fontconfig-2.15.0.tar.xz -> fontconfig-2.17.1.tar.xz
+  * freetype-2.13.2.tar.xz -> freetype-2.13.3.tar.xz
+  * gpgme-1.24.0.tar.bz2 -> gpgme-1.24.3.tar.bz2
+  * libgpg-error-1.51.tar.bz2 -> libgpg-error-1.55.tar.bz2
+  * libassuan-3.0.1.tar.bz2 -> libassuan-3.0.2.tar.bz2
+- Fix build on SLE-12-SP5
+- Added patches:
+  * boost-1_89_0.patch
+    + upstream patch porting libreoffice to boost 1.89.0
+  * python-detection.patch
+    + fix to python detection upstream error
+
+-------------------------------------------------------------------
 Mon Sep  1 02:31:25 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 25.8.1.1:
@@ -10,7 +33,8 @@ Mon Sep  1 02:31:25 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
     https://wiki.documentfoundation.org/Releases/25.8.1/RC1
 - Update bundled libraries:
   * pdfium-6764.tar.bz2 -> pdfium-7012.tar.bz2
-  * skia-m130-3c64459d5df2fa9794b277f0959ed8a92552bf4c.tar.xz -> skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz
+  * skia-m130-3c64459d5df2fa9794b277f0959ed8a92552bf4c.tar.xz
+    -> skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz
 
 -------------------------------------------------------------------
 Mon Aug 18 01:50:18 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
