@@ -84,6 +84,8 @@ donttest+=" or test_celery"
 donttest+=" or test_subprocess_with_path_aliasing or test_central_subprocess"
 donttest+=" or test_dist_subprocess_not_collocated or test_cleanup_on_sigterm"
 donttest+=" or test_append_coverage_subprocess or test_dist_subprocess_collocated"
+# Broken with Python 3.14 https://github.com/pytest-dev/pytest-cov/issues/719
+donttest+=" or test_contexts"
 %pytest -v -k "not (${donttest})"
 %endif
 
