@@ -148,6 +148,7 @@ Patch106:       openssh-7.6p1-cleanup-selinux.patch
 Patch107:       openssh-send-extra-term-env.patch
 # upstream patch https://github.com/openssh/openssh-portable/pull/388
 Patch108:       openssh-9.6p1-pam-rhost.patch
+Patch109:       openssh-10.0p2-relax-openssl-version-check.patch
 # 200 - 300  --  Patches submitted to upstream
 # PATCH-FIX-UPSTREAM -- https://github.com/openssh/openssh-portable/pull/452 boo#1229010
 Patch200:       0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
@@ -500,6 +501,15 @@ for b in \
 done
 
 }}
+
+%check
+make file-tests
+make interop-tests
+make extra-tests
+make unit
+pushd openbsd-compat/regress
+make
+popd
 
 %pre server -f sshd.pre
 %if %{defined _distconfdir}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 22 08:44:33 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to relax the openssl 3.x version check so that we
+  don't identify a mismatch between released and pre-release
+  versions as incompatible when we already identify the whole
+  3.x versions as compatible (boo#1250115):
+  * openssh-10.0p2-relax-openssl-version-check.patch
+- Run some of the tests to check there are no regressions.
+
+-------------------------------------------------------------------
 Tue Sep  9 07:26:02 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
 
 - Update sshd@.service to match upstream more closely, to enable

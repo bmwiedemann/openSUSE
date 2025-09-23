@@ -1984,4 +1984,17 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
   (bsc#1249352). (forwarded request 1304675 from hpjansson)</comment>
     <requestid>1304676</requestid>
   </revision>
+  <revision rev="196" vrev="4">
+    <srcmd5>4d146aa45b14dc13dc60bf5ca61bdf1b</srcmd5>
+    <version>10.0p2</version>
+    <time>1758653222</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to relax the openssl 3.x version check so that we
+  don't identify a mismatch between released and pre-release
+  versions as incompatible when we already identify the whole
+  3.x versions as compatible (boo#1250115):
+  * openssh-10.0p2-relax-openssl-version-check.patch
+- Run some of the tests to check there are no regressions.</comment>
+    <requestid>1306629</requestid>
+  </revision>
 </revisionlist>
