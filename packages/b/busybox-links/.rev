@@ -313,4 +313,12 @@
     <comment></comment>
     <requestid>1302740</requestid>
   </revision>
+  <revision rev="39" vrev="39">
+    <srcmd5>ad7483c0d8e55ec2f95ee3709e513be6</srcmd5>
+    <version>MACRO</version>
+    <time>1758636362</time>
+    <user>anag_factory</user>
+    <comment>- Provide support for bridge-utils-dummy (bsc#1242048). (forwarded request 1304161 from sbrabec)</comment>
+    <requestid>1306472</requestid>
+  </revision>
 </revisionlist>

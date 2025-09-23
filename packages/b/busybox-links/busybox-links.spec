@@ -221,13 +221,14 @@ Conflicts:      diffutils
 This package contains the symlinks to replace diffutils with busybox.
 
 %package -n busybox-ether-wake
-Summary:        Busybox applets replacing ether-wake from net-tools
+Summary:        Busybox applets replacing ether-wake
 Requires:       busybox = %{version}
 Conflicts:      net-tools < 2.10+1
 Obsoletes:      net-tools-dummy-ether-wake
 
 %description -n busybox-ether-wake
-This package contains the symlinks to replace findutils with busybox.
+This package contains the symlink to replace ether-wake from older
+downstream versions of net-tools with busybox.
 
 %package -n busybox-findutils
 Summary:        Busybox applets replacing findutils
@@ -262,6 +263,7 @@ Requires:       busybox = %{version}
 Conflicts:      bridge-utils
 Conflicts:      iproute2
 Conflicts:      wicked-service
+Obsoletes:      bridge-utils-dummy
 
 %description -n busybox-iproute2
 This package contains the symlinks to replace iproute2 with busybox.
@@ -417,6 +419,7 @@ Summary:        Busybox applets replacing net-tools
 Requires:       busybox = %{version}
 Conflicts:      net-tools
 Conflicts:      net-tools-deprecated
+Obsoletes:      net-tools-dummy
 
 %description -n busybox-net-tools
 This package contains the symlinks to replace net-tools with busybox.
