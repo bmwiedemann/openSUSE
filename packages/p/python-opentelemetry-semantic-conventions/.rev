@@ -78,4 +78,25 @@
     * Bump semantic conventions to 1.33.0</comment>
     <requestid>1280590</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4b33cc4c0f1901248c06595aadb42fe1</srcmd5>
+    <version>0.58b0</version>
+    <time>1758636337</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.58b0:
+  * Add experimental composite samplers (#4714)
+  * Add new environment variables to the SDK
+    OTEL_PYTHON_EXPORTER_OTLP_{HTTP/GRPC}_{METRICS/TRACES/LOGS}_CREDENTIAL_PROVIDER
+    that can be used to inject a requests.Session or
+    grpc.ChannelCredentials object into OTLP exporters created
+    during auto instrumentation #4689.
+  * Filter duplicate logs out of some internal logger's logs on
+    the export logs path that might otherwise endlessly log or
+    cause a recursion depth exceeded issue in cases where logging
+    itself results in an exception. (#4695).
+  * docs: linked the examples with their github source code
+    location and added Prometheus example (#4728)
+  * Permit to override default HTTP OTLP exporters headers (#4634)</comment>
+    <requestid>1306351</requestid>
+  </revision>
 </revisionlist>
