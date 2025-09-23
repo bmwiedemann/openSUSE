@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep 23 10:52:45 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.51.1:
+  + As usual, a patch release backporting some fixes from main.
+  + Fixes backported:
+    - dispatchers: fix movecursor not updating client pos
+    - input: handle tablet active area scaling when axes swap due to
+      rotation
+    - windows: fix no decorate not disabling borders
+    - gestures: fix typo in float and fs
+    - renderer: clamp blur passes 1-8
+    - presentation: fix vrr check for reporting no refresh time
+    - solitary: fix check for config error
+    - animation: fix slide/slidefade to accept forced direction
+    - workspace: fix relative workspaces with monitor descs
+    - renderer: fix inconsistent border thickness for
+      roundingPower < 2
+    - monitors: auto apply suggested sale and notify the user
+    - vkeyboard: update cached mods before IME, add share_states = 2
+      config option
+- Removed fix-32bit.patch, as it was included upstream
+
+-------------------------------------------------------------------
 Thu Sep 11 14:28:03 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Added fix-32bit.patch to prevent build failure on ia86

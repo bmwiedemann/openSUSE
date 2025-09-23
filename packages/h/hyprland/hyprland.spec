@@ -23,7 +23,7 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.51.0
+Version:        0.51.1
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -33,7 +33,6 @@ Source99:       %{name}.rpmlintrc
 Patch1:         meson-missing-wayland-include.patch
 Patch2:         disable-donation-nag-popup.patch
 Patch3:         pkg-config-with-deps.patch
-Patch4:         fix-32bit.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 14
 BuildRequires:  git

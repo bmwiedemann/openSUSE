@@ -330,4 +330,12 @@ depends on 1159012</comment>
     <comment>Update to version 0.51.0</comment>
     <requestid>1304990</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e16461f3b10ac9e2c815ec7e3e5ba4f6</srcmd5>
+    <version>0.51.1</version>
+    <time>1758636488</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306704</requestid>
+  </revision>
 </revisionlist>
