@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 22 10:57:18 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch docutils022plus.patch to fix compatibility with
+  docutils >= 0.22
+  gh#sphinx-doc/sphinx#13548
+
+-------------------------------------------------------------------
 Thu Sep 11 08:42:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patches to fix tests with Python 3.14:

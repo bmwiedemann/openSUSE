@@ -1668,4 +1668,16 @@ IMPORTANT: It would be better to fix/update the test, so if you can fix this ple
     <comment></comment>
     <requestid>1304238</requestid>
   </revision>
+  <revision rev="113" vrev="4">
+    <srcmd5>91202706d7a73aa92f83158194912688</srcmd5>
+    <version>8.2.3</version>
+    <time>1758636394</time>
+    <user>anag_factory</user>
+    <comment>Fix the Staging:E with new python-docutils
+
+- Add upstream patch docutils022plus.patch to fix compatibility with
+  docutils &gt;= 0.22
+  gh#sphinx-doc/sphinx#13548</comment>
+    <requestid>1306500</requestid>
+  </revision>
 </revisionlist>

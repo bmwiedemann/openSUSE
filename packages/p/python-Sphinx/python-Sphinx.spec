@@ -55,6 +55,8 @@ Patch1:         autosummary.patch
 Patch2:         typing.patch
 # PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinx/commit/68d56109ff50dd81dd31d4a01e3dccbd006c50ee Tests: update LaTeX label test expectations from Docutils r10151
 Patch3:         docutils022.patch
+# PATCH-FIX-UPSTREAM docutils022plus.patch https://github.com/sphinx-doc/sphinx/pull/13548
+Patch4:         docutils022plus.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
