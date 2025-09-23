@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 23 11:02:47 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Bumped required hyprland version to 0.51.1
+- Ensure reproducible builds by sorting the plugins before iterating
+  over them
+
+-------------------------------------------------------------------
 Mon Sep 15 15:59:37 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.51.0:

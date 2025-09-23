@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define hypr_tgt 0.51.0
+%define hypr_tgt 0.51.1
 %define pkg_version 0.51.0
 
 Name:           hyprland-plugins
@@ -42,6 +42,9 @@ BuildRequires:  pkgconfig(pangocairo)
 	['hyprwinwrap'] = 'This plugin is a clone of xwinwrap, allows you to put any app as a\nwallpaper',
 	['xtra-dispatchers'] = 'This plugin adds some new dispatchers',
 }}
+%{lua: plugins_iter = {}
+for plugin,_ in pairs(plugins) do table.insert(plugins_iter, plugin) end
+table.sort(plugins_iter)}
 
 %define _description %{expand:
 Plugins allow users to add extra functionality to Hyprland.
@@ -49,7 +52,8 @@ Plugins allow users to add extra functionality to Hyprland.
 %description %{_description}
 
 %{lua:
-for plugin,desc in pairs(plugins) do
+for _, plugin in ipairs(plugins_iter) do
+	local desc = plugins[plugin]
 	print("%package -n hyprland-plugin-"..plugin.."\n")
 	print("Summary:\tHyprland plugin: "..plugin.."\n")
 	print(rpm.expand("%requires_ge hyprland\n"))
@@ -69,7 +73,7 @@ end
 %build
 %set_build_flags
 %{lua:
-for plugin,_ in pairs(plugins) do
+for _,plugin in ipairs(plugins_iter) do
 	print(rpm.expand("%make_build").." -C "..plugin.." all\n")
 end
 }
