@@ -311,4 +311,41 @@
     * Bump semantic conventions to 1.33.0</comment>
     <requestid>1280592</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>776d18020b58b058fb22bea7109d3c91</srcmd5>
+    <version>1.37.0</version>
+    <time>1758636334</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.37.0:
+  * Add experimental composite samplers
+  * Add new environment variables to the SDK `OTEL_PYTHON_EXPORTE
+    R_OTLP_{HTTP/GRPC}_{METRICS/TRACES/LOGS}_CREDENTIAL_PROVIDER`
+    that can be used to inject a `requests.Session` or
+    `grpc.ChannelCredentials` object into OTLP exporters created
+    during auto instrumentation #4689.
+  * Filter duplicate logs out of some internal `logger`'s logs on
+    the export logs path that might otherwise endlessly log or
+    cause a recursion depth exceeded issue in cases where logging
+    itself results in an exception. (#4695).
+  * docs: linked the examples with their github source code
+    location and added Prometheus example
+  * Permit to override default HTTP OTLP exporters headers
+  * semantic-conventions: Bump to 1.37.0
+  * opentelemetry-sdk: fix handling of OTEL_ATTRIBUTE_COUNT_LIMIT
+    in logs
+  * Performance: Cache `importlib_metadata.entry_points`
+  * opentelemetry-sdk: fix calling Logger.emit with an API
+    LogRecord instance
+- update to 1.36.0:
+  * Add missing Prometheus exporter documentation
+  * Overwrite logging.config.fileConfig and
+    logging.config.dictConfig to ensure the OTLP `LogHandler`
+    remains attached to the root logger. Fix a bug that can cause
+    a deadlock to occur over `logging._lock` in some cases
+    (#4636).
+  * otlp-http-exporter: set default value for param `timeout_sec`
+    in `_export` method
+  * Update OTLP gRPC/HTTP exporters: calling shutdown will now</comment>
+    <requestid>1306343</requestid>
+  </revision>
 </revisionlist>
