@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 22 09:52:43 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.90.8:
+  * Pre-filter GitHub v1 findings to prevent large numbers of validation requests (#4468)
+  * Add metrics to SaneHTTPClient (#4471)
+  * Revert "Improved and fixed copper detector (#4394)" (#4470)
+  * updated the flightlabs api detector (#4393)
+  * fix(deps): update module github.com/brianvoe/gofakeit/v7 to v7.6.0 (#4457)
+  * fix(deps): update module google.golang.org/protobuf to v1.36.9 (#4456)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.11.0 (#4455)
+  * fix(deps): update aws-sdk-go-v2 monorepo (#4433)
+  * Fix nondeterminism in custom detectors (#4446)
+
+-------------------------------------------------------------------
 Mon Sep 08 08:37:38 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.90.6:

@@ -2417,4 +2417,21 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * Added support for indeterminate verification for letter Q detectors (#4398) (forwarded request 1303158 from ph03nix)</comment>
     <requestid>1303194</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>60fb91a4f5ff884e2657ef1ee2cdafd2</srcmd5>
+    <version>3.90.8</version>
+    <time>1758636443</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.90.8:
+  * Pre-filter GitHub v1 findings to prevent large numbers of validation requests (#4468)
+  * Add metrics to SaneHTTPClient (#4471)
+  * Revert &quot;Improved and fixed copper detector (#4394)&quot; (#4470)
+  * updated the flightlabs api detector (#4393)
+  * fix(deps): update module github.com/brianvoe/gofakeit/v7 to v7.6.0 (#4457)
+  * fix(deps): update module google.golang.org/protobuf to v1.36.9 (#4456)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.11.0 (#4455)
+  * fix(deps): update aws-sdk-go-v2 monorepo (#4433)
+  * Fix nondeterminism in custom detectors (#4446) (forwarded request 1306461 from ph03nix)</comment>
+    <requestid>1306578</requestid>
+  </revision>
 </revisionlist>
