@@ -16,7 +16,7 @@
 #
 
 Name: cockpit-repos
-Version: 4.3
+Version: 4.4
 Release: 0%{?dist}
 Summary: A Cockpit module for managing system repositories
 URL: https://github.com/openSUSE/cockpit-repos
