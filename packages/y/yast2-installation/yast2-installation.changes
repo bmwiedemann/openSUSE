@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 19 12:08:48 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Writing kdump settings must be after writing bootloader settings.
+  Otherwise mkdumprd has no information about the installed kernel.
+  If kdump has to set bootloader settings, the bootloader write function
+  will be called again (bsc#1249370, bsc#1226676).
+- 5.0.18
+
+-------------------------------------------------------------------
 Tue Aug 12 13:45:09 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
 
 - Drop dependency and usage of initviocons (bsc#1247578)
