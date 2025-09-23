@@ -64,4 +64,41 @@
 - Remove unneeded BuildRequires on setuptools and wheel.</comment>
     <requestid>1281750</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7f0e8ce6883f5581286b39ec92b58436</srcmd5>
+    <version>0.58b0</version>
+    <time>1758636435</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.58b0:
+  * `opentelemetry-instrumentation-fastapi`: Fix middleware
+    ordering to cover all exception handling use cases.
+  * `opentelemetry-instrumentation-asgi`: Make all user hooks
+    failsafe and record exceptions in hooks.
+  * `opentelemetry-instrumentation-fastapi`: Fix memory leak in
+    `uninstrument_app()` by properly removing apps from the
+    tracking set
+  * `opentelemetry-instrumentation-tornado` Fix server (request)
+    duration metric calculation
+  * `opentelemetry-instrumentation-tornado`: Fix to properly skip
+    all server telemetry when URL excluded.
+  * `opentelemetry-instrumentation`: Avoid calls to
+    `context.detach` with `None` token.
+  * `opentelemetry-instrumentation-starlette`/`opentelemetry-
+    instrumentation-fastapi`: Fixes a crash when host-based
+    routing is used
+  * Fix documentation order of sections and headers for Django,
+    Flask, MySQL, mysqlclient, psycopg, psycopg2, pymysql,
+    sqlalchemy instrumentations.
+  * `opentelemetry-instrumentation-asgi` Fixed an issue where
+    FastAPI reports IP instead of URL.
+  * `opentelemetry-instrumentation-httpx`: fix missing metric
+    response attributes when tracing is disabled
+  * `opentelemetry-instrumentation-fastapi`:  Don't pass bounded
+    server_request_hook when using
+    `FastAPIInstrumentor.instrument()`
+  * `opentelemetry-util-genai` Add a utility to parse the
+    `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`
+    environment variable. Add `gen_ai_latest_experimental` as a</comment>
+    <requestid>1306348</requestid>
+  </revision>
 </revisionlist>
