@@ -39,8 +39,8 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(spdlog) >= 0.16.0
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
 %else
 BuildRequires:  boost-devel
 BuildRequires:  gcc11

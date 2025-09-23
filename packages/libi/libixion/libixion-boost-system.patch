@@ -8,6 +8,27 @@
 +Libs: -L${libdir} -lixion-@IXION_API_VERSION@ @BOOST_SYSTEM_LIBS@
  Cflags: -I${includedir}/libixion-@IXION_API_VERSION@
  
+--- libixion-0.20.0/m4/boost.m4	2025-09-22 12:48:38.624879211 +0200
++++ libixion-0.20.0/m4/boost.m4	2025-09-22 13:10:22.649572405 +0200
+@@ -1332,11 +1332,16 @@
+ # --------------------------------
+ # Look for Boost.System.  For the documentation of PREFERRED-RT-OPT, see the
+ # documentation of BOOST_FIND_LIB above.  This library was introduced in Boost
+-# 1.35.0.
++# 1.35.0 and is header only since 1.70.
+ BOOST_DEFUN([System],
+-[BOOST_FIND_LIB([system], [$1],
++[
++if test $boost_major_version -ge 170; then
++  BOOST_FIND_HEADER([boost/system/error_code.hpp])
++else
++  BOOST_FIND_LIB([system], [$1],
+                 [boost/system/error_code.hpp],
+                 [boost::system::error_code e; e.clear();], [], [], [$2])
++fi
+ ])# BOOST_SYSTEM
+ 
+ 
 --- libixion-0.20.0/src/Makefile.am	2025-09-10 23:27:21.340640878 +0200
 +++ libixion-0.20.0/src/Makefile.am	2025-09-10 23:27:29.557321908 +0200
 @@ -19,7 +19,7 @@
