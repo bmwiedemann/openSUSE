@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 22 11:34:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Don't require the libboost_system-devel stub removed in boost 1.89
+  on newer systems that don't really need it
+
+-------------------------------------------------------------------
 Wed Sep 10 20:23:47 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Use the %%gcc_version macro to detect whether gcc13 is needed

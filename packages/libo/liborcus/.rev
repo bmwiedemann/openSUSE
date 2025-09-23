@@ -486,4 +486,12 @@
     <comment>Fix build error for Leap</comment>
     <requestid>1303730</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>15783440507c97545c3ab868fe80f958</srcmd5>
+    <version>0.20.2</version>
+    <time>1758636366</time>
+    <user>anag_factory</user>
+    <comment>fix build with boost 1.89+</comment>
+    <requestid>1306497</requestid>
+  </revision>
 </revisionlist>

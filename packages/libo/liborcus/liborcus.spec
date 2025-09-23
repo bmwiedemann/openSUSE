@@ -48,7 +48,9 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
+%if 0%{?suse_version} <= 1550
 BuildRequires:  libboost_system-devel
+%endif
 %else
 BuildRequires:  boost-devel
 %endif
