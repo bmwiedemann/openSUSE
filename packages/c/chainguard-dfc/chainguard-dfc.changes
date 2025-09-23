@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 23 05:00:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.5:
+  * Update README.md for golang installation guidance by
+    @patrickjburke245 in #105
+  * update pkg mappings for shadow by @bhearn7 in #107
+  * update mappings for libpq by @bhearn7 in #110
+
+-------------------------------------------------------------------
 Fri Aug 01 09:02:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.4:
