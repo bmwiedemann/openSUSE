@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 23 09:45:46 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.1.0
+  * Add cisco_ios_show_cts_credentials.
+  * Add cisco_ios_show_cts_pacs.
+  * Fix cisco nxos show interface transceiver.
+  * Add Huawei VRP display ap all.
+  * Add cisco_ios sh sw for stackwise virtual/vss.
+  * Add aruba_os show hostname.
+  * Fix arista_eos sh vrf since RD column was removed.
+  * Fix sh int for NX-OS 7.x and support VFC int.
+  * Update nxos sh int trans for FC and 400Gb.
+  * Support colons in cisco_ios LLDP chassis IDs.
+  * Add values to cisco_xr bgp vrf all ipv4 uni sum.
+  * Add Mikrotik RouterOS 'interface bridge host print terse
+    without-paging'.
+
+-------------------------------------------------------------------
 Fri Sep 12 19:02:02 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.0.0
