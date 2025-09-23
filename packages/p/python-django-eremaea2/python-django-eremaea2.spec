@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-eremaea2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-django-eremaea2
-Version:        2.0.22
+Version:        2.1.1
 Release:        0
 Summary:        A simple Django application to store and show webcam snapshots
 License:        BSD-2-Clause
@@ -30,7 +30,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module django-filter}
 BuildRequires:  %{python_module djangorestframework >= 3.7.0}
+BuildRequires:  %{python_module drf-spectacular}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 # https://github.com/matwey/django-eremaea2/issues/15
@@ -44,12 +46,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       eremaea = %{version}
 Requires:       python-click
+Requires:       python-django-filter
 Requires:       python-djangorestframework >= 3.7.0
+Requires:       python-drf-spectacular
 Requires:       python-python-magic
 Requires:       python-requests
 Requires:       python-requests-toolbelt
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
