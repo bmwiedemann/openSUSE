@@ -30,9 +30,9 @@ BuildRequires:  suse-module-tools
 URL:            https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files
 Source0:        https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-%version.tar.gz
 Source1:        ucode-intel-rpmlintrc
-Supplements:    modalias(x86cpu:vendor%3A0000%3Afamily%3A*%3Amodel%3A*%3Afeature%3A*)
+Supplements:    (modalias(x86cpu:vendor%3A0000%3Afamily%3A*%3Amodel%3A*%3Afeature%3A*) and kernel)
 # new method ... note that only 1 : might be present, otherwise libzypp misinterprets it.
-Supplements:    modalias(cpu:type%3Ax86*ven0000*)
+Supplements:    (modalias(cpu:type%3Ax86*ven0000*) and kernel)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): coreutils
 Requires(postun): coreutils

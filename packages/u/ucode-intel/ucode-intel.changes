@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 22 14:15:14 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- switch the supplements to use supplements + kernel to allow
+  moving a installation to Intel hardware (bsc#1249138)
+
+-------------------------------------------------------------------
 Thu Aug 21 10:32:02 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - Intel CPU Microcode was updated to the 20250812 release (bsc#1248438)

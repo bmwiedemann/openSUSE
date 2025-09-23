@@ -1392,4 +1392,13 @@
   | EMR-SP         | A1       | 06-cf-02/87 | 210002a9 | 210002b3 | Xeon Scalable Gen5 (forwarded request 1301199 from msmeissn)</comment>
     <requestid>1301200</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>1a38d31bdb2fef73298194b21d3618cd</srcmd5>
+    <version>20250812</version>
+    <time>1758636415</time>
+    <user>anag_factory</user>
+    <comment>- switch the supplements to use supplements + kernel to allow
+  moving a installation to Intel hardware (bsc#1249138)</comment>
+    <requestid>1306572</requestid>
+  </revision>
 </revisionlist>
