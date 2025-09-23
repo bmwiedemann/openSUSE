@@ -106,4 +106,12 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1285332</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>f36f3f0c2c21218423592f08750da6a7</srcmd5>
+    <version>3.0.0</version>
+    <time>1758636344</time>
+    <user>anag_factory</user>
+    <comment>- add py314-deprecations.patch</comment>
+    <requestid>1306372</requestid>
+  </revision>
 </revisionlist>

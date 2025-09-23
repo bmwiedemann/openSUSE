@@ -1,7 +1,7 @@
 #
 # spec file for package python-asttokens
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,6 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-asttokens
 Version:        3.0.0
@@ -28,6 +26,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/gristlabs/asttokens
 Source:         https://files.pythonhosted.org/packages/source/a/asttokens/asttokens-%{version}.tar.gz
+Patch1:         https://github.com/gristlabs/asttokens/commit/bb1df1417159f6ad0ec5c6c8b27118d50b35f70a.patch#/py314-deprecations.patch
 BuildRequires:  %{python_module astroid}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -45,7 +44,7 @@ BuildArch:      noarch
 Annotate AST trees with source code positions
 
 %prep
-%autosetup -n asttokens-%{version}
+%autosetup -p1 -n asttokens-%{version}
 
 %build
 export LC_ALL=en_US.utf8

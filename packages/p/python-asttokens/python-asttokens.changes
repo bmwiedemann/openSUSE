@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 21 20:18:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add py314-deprecations.patch
+
+-------------------------------------------------------------------
 Fri Jun 13 05:35:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
