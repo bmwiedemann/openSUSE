@@ -3168,10 +3168,10 @@ unsorted:
   - dfu-util 
   - dh-autoreconf 
   - dh-make 
-  - dhcp-client 
   - dhcp-devel 
   - dhcp-doc 
   - dhcp-keama 
+  - dhcpcd 
   - dhcpd-pools 
   - dhewm3 
   - dhex 
@@ -3238,7 +3238,6 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
-  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -10363,6 +10362,8 @@ unsorted:
   - krusader-lang 
   - kryo 
   - kryo-javadoc 
+  - kryoptic 
+  - kryoptic-tools 
   - ksanecore-devel 
   - kscreenlocker6-devel 
   - kseexpr-devel 
@@ -13919,7 +13920,7 @@ unsorted:
   - libiio0 
   - libiir-devel 
   - libiir1 
-  - libilbc0 
+  - libilbc3 
   - libimagequant-devel 
   - libime-devel 
   - libime-dicts 
@@ -26782,6 +26783,7 @@ unsorted:
   - python311-pytimeparse 
   - python311-pytimeparse2 
   - python311-pytlv 
+  - python311-pytokens 
   - python311-pytoml 
   - python311-pytoolconfig 
   - python311-pytoolconfig-global 
@@ -26931,6 +26933,8 @@ unsorted:
   - python311-rnginline 
   - python311-robot-detection 
   - python311-robotframework 
+  - python311-robotframework-pythonlibcore 
+  - python311-robotframework-seleniumlibrary 
   - python311-roifile 
   - python311-rollbar 
   - python311-roman 
@@ -30572,6 +30576,7 @@ unsorted:
   - python312-pytimeparse 
   - python312-pytimeparse2 
   - python312-pytlv 
+  - python312-pytokens 
   - python312-pytoml 
   - python312-pytoolconfig 
   - python312-pytoolconfig-global 
@@ -30724,6 +30729,8 @@ unsorted:
   - python312-rnginline 
   - python312-robot-detection 
   - python312-robotframework 
+  - python312-robotframework-pythonlibcore 
+  - python312-robotframework-seleniumlibrary 
   - python312-roifile 
   - python312-rollbar 
   - python312-roman 
@@ -34310,6 +34317,7 @@ unsorted:
   - python313-pytimeparse 
   - python313-pytimeparse2 
   - python313-pytlv 
+  - python313-pytokens 
   - python313-pytoml 
   - python313-pytoolconfig 
   - python313-pytoolconfig-global 
@@ -34456,6 +34464,8 @@ unsorted:
   - python313-rnginline 
   - python313-robot-detection 
   - python313-robotframework 
+  - python313-robotframework-pythonlibcore 
+  - python313-robotframework-seleniumlibrary 
   - python313-roifile 
   - python313-rollbar 
   - python313-roman 
@@ -36942,6 +36952,8 @@ unsorted:
   - setconf 
   - sethdlc 
   - setools-gui 
+  - setools-test-console 
+  - setools-test-gui 
   - setroubleshoot 
   - setroubleshoot-doc 
   - setroubleshoot-plugins 
