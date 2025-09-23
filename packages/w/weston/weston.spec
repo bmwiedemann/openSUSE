@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} < 1600
+%define gcc_version 13
+%endif
+
 Name:           weston
 %define lname	libweston0
 %define major   14
@@ -32,7 +36,7 @@ Source2:        https://gitlab.freedesktop.org/wayland/weston/-/releases/%versio
 # PATCH-FIX-UPSTREAM -- weston-libdisplay-info-0.3.0.patch
 Patch0:         weston-libdisplay-info-0.3.0.patch
 BuildRequires:  Mesa-libGLESv3-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_version}-c++ >= %gcc_version
 BuildRequires:  glibc-devel >= 2.27
 BuildRequires:  libjpeg-devel
 BuildRequires:  libxml2-tools
@@ -46,7 +50,11 @@ BuildRequires:  pkgconfig(cairo-xcb)
 BuildRequires:  pkgconfig(colord) >= 0.1.27
 BuildRequires:  pkgconfig(dbus-1) >= 1.6
 BuildRequires:  pkgconfig(egl)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(freerdp3)
+%else
 BuildRequires:  pkgconfig(freerdp2)
+%endif
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(lcms2) >= 2.9
@@ -126,6 +134,15 @@ to develop plugins for Weston.
 %autosetup -p1
 
 %build
+# Leap 15.x's default gcc-7 is not knowledgable enough to see the constexpr-ness of:
+# >libweston/renderer-gl/gl-renderer.c:1369:5: error: initializer element is not constant
+# >{ x, z, y, 0, 0, 0, 0, 0 },
+# Either bump to newer gcc or un-static the matrix.
+#
+%if 0%{?gcc_version}
+export CC="gcc%{?gcc_version:-%{gcc_version}}" CXX="g++%{?gcc_version:-%{gcc_version}}"
+%endif
+
 # includedir intentional, cf. bugzilla.opensuse.org/795968
 %meson -Ddemo-clients=false -Dremoting=false -Dsimple-clients= \
 	-Dtest-junit-xml=false -Dpipewire=false -Dbackend-vnc=false \

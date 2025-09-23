@@ -319,4 +319,12 @@ For the future don't be shy to send patches upstream ;-) (forwarded request 5806
     <comment>boo#1248571</comment>
     <requestid>1301016</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>bc0f5074c60fae1047d82ac481854f83</srcmd5>
+    <version>14.0.2</version>
+    <time>1758636451</time>
+    <user>anag_factory</user>
+    <comment>go for freerdp3</comment>
+    <requestid>1306606</requestid>
+  </revision>
 </revisionlist>

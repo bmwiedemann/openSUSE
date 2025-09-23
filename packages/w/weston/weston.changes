@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 17 10:13:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(freerdp2) with pkgconfig(freerdp3)
+  BuildRequires, weston supports both, use the newer one.
+
+-------------------------------------------------------------------
 Wed Aug 20 13:29:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to allow usage of libdisplay 0.3.0:
