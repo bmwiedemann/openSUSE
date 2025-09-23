@@ -1,7 +1,7 @@
 #
 # spec file for package ilbc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,22 @@
 #
 
 
+%define sover 3
+%define libname libilbc%{sover}
+
 Name:           ilbc
 Summary:        Internet Low Bitrate Codec
-License:        GPL-2.0-or-later
-Group:          Productivity/Telephony/Utilities
-Version:        3951
+License:        BSD-3-Clause
+Group:          System/Libraries
+Version:        3.0.4
 Release:        0
-Source:         ilbc-rfc3951.tar.bz2
-URL:            http://download.savannah.nongnu.org/releases/linphone/1.3.x/source/ilbc-rfc3951.tar.gz
-BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Patch0:         %{name}-compilerwarnings.patch
-Patch1:         %{name}-libm.patch
+URL:            https://github.com/TimothyGu/libilbc
+Source:         https://github.com/TimothyGu/libilbc/archive/refs/tags/v%{version}.tar.gz#/libilbc-%{version}.tar.gz
+Patch0:         ilbc-cmake-cflags.patch
+Patch1:         ilbc-cmake-cpp17.patch
+BuildRequires:  abseil-cpp-devel
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 
 %description
 iLBC (internet Low Bitrate Codec) is a FREE speech codec suitable for
@@ -38,16 +42,13 @@ of 20 ms. The iLBC codec enables graceful speech quality degradation in
 the case of lost frames, which occurs in connection with lost or
 delayed IP packets.
 
-
-%define libilbc_name libilbc0
-
-%package -n %{libilbc_name}
+%package -n %{libname}
 Summary:        Internet Low Bitrate Codec
-Group:          Productivity/Telephony/Utilities
+Group:          System/Libraries
 Provides:       ilbc = %{version}
 Obsoletes:      ilbc <= %{version}
 
-%description -n %{libilbc_name}
+%description -n %{libname}
 iLBC (internet Low Bitrate Codec) is a FREE speech codec suitable for
 robust voice communication over IP. The codec is designed for narrow
 band speech and results in a payload bit rate of 13.33 kbit/s with an
@@ -59,40 +60,34 @@ delayed IP packets.
 %package devel
 Summary:        Libraries and Header Files to Develop Programs with iLBC Support
 Group:          Development/Libraries/C and C++
-Requires:       %{libilbc_name} = %{version}
+Requires:       %{libname} = %{version}
 
 %description devel
-Libraries and Header Files to Develop Programs with iLBC Support
+Libraries and Header Files to Develop Programs with iLBC Support.
 
 %prep
-%autosetup -p0 -n ilbc-rfc3951
+%autosetup -p1 -n libilbc-%{version}
 
 %build
-autoreconf -fi
-%configure --disable-static --with-pic
-make MYCFLAGS="$RPM_OPT_FLAGS"
+%cmake
+%cmake_build
 
 %install
-%makeinstall
-rm -f %{buildroot}%{_libdir}/*.la
+%cmake_install
+rm -Rv %{buildroot}%{_docdir}/ilbc
 
-%clean
-rm -rf $RPM_BUILD_ROOT
+%ldconfig_scriptlets -n %{libname}
 
-%post -n %{libilbc_name} -p /sbin/ldconfig
-
-%postun -n %{libilbc_name} -p /sbin/ldconfig
-
-%files -n %{libilbc_name}
-%defattr(-, root, root)
-%{_libdir}/lib%{name}.so.*
+%files -n %{libname}
+%license COPYING
+%doc README.md NEWS.md
+%{_libdir}/libilbc.so.%{sover}*
 
 %files devel
-%defattr(-, root, root)
-%{_includedir}/ilbc/iLBC_decode.h
-%{_includedir}/ilbc/iLBC_define.h
-%{_includedir}/ilbc/iLBC_encode.h
-%{_libdir}/lib%{name}.so
-%dir %{_includedir}/ilbc
+%{_bindir}/ilbc_test
+%{_includedir}/ilbc.h
+%{_includedir}/ilbc_export.h
+%{_libdir}/libilbc.so
+%{_libdir}/pkgconfig/libilbc.pc
 
 %changelog
