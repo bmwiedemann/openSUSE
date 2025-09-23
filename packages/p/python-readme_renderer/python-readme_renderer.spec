@@ -1,7 +1,7 @@
 #
 # spec file for package python-readme_renderer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,9 @@ long_description for packages.
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+# gh#pypa/readme_renderer#332
+donttest="test_cli_explicit_format"
+%pytest -k "not $donttest"
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 22 12:01:13 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip broken test with latest docutils, gh#pypa/readme_renderer#332
+
+-------------------------------------------------------------------
 Mon Jan 20 15:29:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add pygments.patch to fix test failure with Pygments 2.19

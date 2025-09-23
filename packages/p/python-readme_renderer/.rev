@@ -185,4 +185,14 @@
     <comment></comment>
     <requestid>1239132</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>337af3aec55de6d0b7387b5c420c3667</srcmd5>
+    <version>44.0</version>
+    <time>1758636396</time>
+    <user>anag_factory</user>
+    <comment>Fix the Staging:E with new python-docutils
+
+- Skip broken test with latest docutils, gh#pypa/readme_renderer#332</comment>
+    <requestid>1306508</requestid>
+  </revision>
 </revisionlist>
