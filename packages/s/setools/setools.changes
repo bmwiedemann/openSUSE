@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 22 15:01:38 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Simplify test multibuild flavor to fix broken build in Factory due to
+  debuginfo generation
+
+-------------------------------------------------------------------
 Thu Sep 11 08:19:16 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Move tests to a test multibuild flavor

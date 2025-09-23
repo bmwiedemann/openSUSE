@@ -461,4 +461,14 @@
 </comment>
     <requestid>1304046</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>c96de1fed0bd11267aa49f8c817c3a4a</srcmd5>
+    <version>4.6.0</version>
+    <time>1758636411</time>
+    <user>anag_factory</user>
+    <comment>- Simplify test multibuild flavor to fix broken build in Factory due to
+  debuginfo generation
+</comment>
+    <requestid>1306567</requestid>
+  </revision>
 </revisionlist>

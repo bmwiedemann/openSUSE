@@ -69,14 +69,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tox}
 BuildRequires:  checkpolicy
 %endif
-%if "%{flavor}" == ""
 Requires:       setools-console = %{version}-%{release}
 Requires:       setools-gui = %{version}-%{release}
 # needed since setools is not a python-main package, see
 # https://github.com/openSUSE/python-rpm-macros
 %define python_subpackage_only 1
 %python_subpackages
-%endif
 
 %description
 SETools is a collection of graphical tools, command-line tools, and
@@ -85,7 +83,6 @@ libraries designed to facilitate SELinux policy analysis.
 This meta-package depends upon the main packages necessary to run
 SETools.
 
-%if "%{flavor}" == ""
 %package console
 Summary:        Policy analysis command-line tools for SELinux
 License:        GPL-2.0-only
@@ -138,7 +135,6 @@ libraries designed to facilitate SELinux policy analysis.
 This package includes the following graphical tools:
 
   apol          policy analysis tool
-%endif
 
 %prep
 %setup -q -n %{software_name}
@@ -149,10 +145,8 @@ This package includes the following graphical tools:
 
 %install
 %pyproject_install
-%if "%{flavor}" == ""
 install -m 644 -D %{SOURCE2} %{buildroot}%{_docdir}/%{software_name}/README.SUSE
 %python_expand %fdupes -s %{buildroot}%{$python_sitearch}
-%endif
 
 %if "%{flavor}" == "test"
 %check
@@ -161,11 +155,8 @@ install -m 644 -D %{SOURCE2} %{buildroot}%{_docdir}/%{software_name}/README.SUSE
 # on the $PATH by the %%pytest macros
 rm -rf setools setoolsgui
 %pytest_arch -v
-# The test flavor should not package any files
-rm -rf %{buildroot}
 %endif
 
-%if "%{flavor}" == ""
 %files %{python_files setools}
 %defattr(-,root,root,-)
 %{python_sitearch}/setools
@@ -199,6 +190,5 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %{_bindir}/apol
 %{_mandir}/man1/apol.1.gz
-%endif
 
 %changelog
