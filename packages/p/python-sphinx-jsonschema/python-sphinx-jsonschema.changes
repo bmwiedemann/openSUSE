@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 19 02:35:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-docutils-0.22.patch:
+  * Support docutils 0.22 changes.
+
+-------------------------------------------------------------------
 Thu Jun 12 12:21:13 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

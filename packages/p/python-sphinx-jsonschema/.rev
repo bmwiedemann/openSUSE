@@ -47,4 +47,14 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1285144</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1f597bdfe292f1250ae8b0210fe4dc85</srcmd5>
+    <version>1.19.1</version>
+    <time>1758636404</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-docutils-0.22.patch:
+  * Support docutils 0.22 changes.
+</comment>
+    <requestid>1306528</requestid>
+  </revision>
 </revisionlist>

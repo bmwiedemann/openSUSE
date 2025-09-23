@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-jsonschema
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-3.0-only
 URL:            https://github.com/lnoor/sphinx-jsonschema
 # Tarballs from pypi.org are missing license files
 Source:         https://github.com/lnoor/sphinx-jsonschema/archive/refs/tags/v.%{version}.tar.gz#/sphinx-jsonschema-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#lnoor/sphinx-jsonschema#90
+Patch0:         support-docutils-0.22.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -48,7 +50,7 @@ BuildRequires:  %{python_module requests}
 Sphinx extension to display JSON Schema.
 
 %prep
-%setup -q -n sphinx-jsonschema-v.%{version}
+%autosetup -p1 -n sphinx-jsonschema-v.%{version}
 
 %build
 %pyproject_wheel
@@ -66,6 +68,6 @@ Sphinx extension to display JSON Schema.
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/sphinx[-_]jsonschema
-%{python_sitelib}/sphinx[-_]jsonschema-%{info_version}*-info
+%{python_sitelib}/sphinx[-_]jsonschema-%{info_version}.dist-info
 
 %changelog
