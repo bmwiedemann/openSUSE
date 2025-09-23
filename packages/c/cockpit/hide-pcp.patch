@@ -1,0 +1,77 @@
+diff --git a/pkg/metrics/metrics.jsx b/pkg/metrics/metrics.jsx
+index 80f1087..fda6049 100644
+--- a/pkg/metrics/metrics.jsx
++++ b/pkg/metrics/metrics.jsx
+@@ -17,7 +17,7 @@
+  * along with Cockpit; If not, see <https://www.gnu.org/licenses/>.
+  */
+ 
+-import React, { useState, createRef } from 'react';
++import React, { useState, createRef, useEffect } from 'react';
+ 
+ import { Alert } from "@patternfly/react-core/dist/esm/components/Alert/index.js";
+ import { Breadcrumb, BreadcrumbItem } from "@patternfly/react-core/dist/esm/components/Breadcrumb/index.js";
+@@ -1510,6 +1510,7 @@ const PCPConfigDialog = ({
+ const PCPConfig = ({ buttonVariant, firewalldRequest }) => {
+     const Dialogs = useDialogs();
+     const [packageInstallStatus, setPackageInstallStatus] = useState(null);
++    const [isMicroOs, setIsMicroOs] = useState(false);
+ 
+     const s_pmlogger = useObject(() => service.proxy("pmlogger.service"), null, []);
+     const s_pmproxy = useObject(() => service.proxy("pmproxy.service"), null, []);
+@@ -1531,6 +1532,12 @@ const PCPConfig = ({ buttonVariant, firewalldRequest }) => {
+           "redis-server exists", s_redis_server.exists, "state", s_redis_server.state,
+           "valkey exists", s_valkey.exists, "state", s_valkey.state);
+ 
++    useEffect(() => {
++        read_os_release().then((os_release) => {
++            setIsMicroOs(os_release?.ID_LIKE.includes("sle-micro") || os_release?.ID_LIKE.includes("microos"))
++        });
++    }, []);
++
+     if (!superuser.allowed)
+         return null;
+ 
+@@ -1543,8 +1550,13 @@ const PCPConfig = ({ buttonVariant, firewalldRequest }) => {
+                                       packageInstallCallback={() => setPackageInstallStatus("done")} />);
+     }
+ 
++    function is_micro_os() {
++        return ;
++    }
++
+     return (
+         <Button variant={buttonVariant} icon={<CogIcon />}
++                className={isMicroOs ? "pf-u-display-none" : ""}
+                 isDisabled={ invalidService(s_pmlogger) || invalidService(s_pmproxy) ||
+                              invalidService(s_redis) || invalidService(s_redis_server) || invalidService(s_valkey) }
+                 onClick={show_dialog}
+@@ -1578,6 +1590,7 @@ class MetricsHistory extends React.Component {
+             isBeibootBridge: false,
+             isPythonPCPInstalled: null,
+             selectedVisibility: this.columns.reduce((a, v) => ({ ...a, [v[0]]: true }), {}),
++            isMicroOs: false,
+             boots: [], // journalctl --list-boots as [{started: Date, ended: Date}]
+         };
+ 
+@@ -1609,6 +1622,10 @@ class MetricsHistory extends React.Component {
+ 
+     // load and render the last 24 hours (plus current one) initially; this needs numCpu initialized for correct scaling
+     initialLoadData() {
++        read_os_release().then((os_release) => {
++            this.setState({ isMicroOs: os_release?.ID_LIKE.includes("sle-micro") || os_release?.ID_LIKE.includes("microos") });
++        });
++
+         cockpit.spawn(["date", "+%s"])
+                 .then(out => {
+                     const now = parseInt(out.trim()) * 1000;
+@@ -1815,6 +1832,9 @@ class MetricsHistory extends React.Component {
+     }
+ 
+     render() {
++        if (this.state.isMicroOs)
++            return <></>;
++
+         // on a single machine, cockpit-pcp depends on pcp; but this may not be the case in the beiboot scenario,
+         // so additionally check if pcp is available on the logged in target machine
+         if (this.state.isPythonPCPInstalled === false || this.pmlogger_service.exists === false)

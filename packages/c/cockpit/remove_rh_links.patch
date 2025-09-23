@@ -1,0 +1,120 @@
+diff --git a/pkg/networkmanager/bond.jsx b/pkg/networkmanager/bond.jsx
+index f56f02961..cae872b00 100644
+--- a/pkg/networkmanager/bond.jsx
++++ b/pkg/networkmanager/bond.jsx
+@@ -24,7 +24,7 @@ import { FormGroup } from "@patternfly/react-core/dist/esm/components/Form/index
+ import { FormSelect, FormSelectOption } from "@patternfly/react-core/dist/esm/components/FormSelect/index.js";
+ import { Popover } from "@patternfly/react-core/dist/esm/components/Popover/index.js";
+ import { TextInput } from "@patternfly/react-core/dist/esm/components/TextInput/index.js";
+-import { ExternalLinkSquareAltIcon, HelpIcon } from '@patternfly/react-icons';
++import { HelpIcon } from '@patternfly/react-icons';
+ 
+ import { MacMenu, MemberInterfaceChoices, NetworkModal, Name, dialogSave } from './dialogs-common.jsx';
+ import { ModelContext } from './model-context.jsx';
+@@ -151,16 +151,6 @@ export const BondDialog = ({ connection, dev, settings }) => {
+                                       {_("A network bond combines multiple network interfaces into one logical interface with higher throughput or redundancy.")}
+                                   </div>
+                               }
+-                              footerContent={
+-                                  <Button component='a'
+-                                          rel="noopener noreferrer" target="_blank"
+-                                          variant='link'
+-                                          isInline
+-                                          icon={<ExternalLinkSquareAltIcon />} iconPosition="right"
+-                                          href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-network-bonding_configuring-and-managing-networking#proc_configuring-a-network-bond-by-using-the-rhel-web-console_configuring-network-bonding">
+-                                      {_("Learn more")}
+-                                  </Button>
+-                              }
+                           >
+                               <Button icon={<HelpIcon />} id="bond-help-popup-button" variant="plain" aria-label="Help" />
+                           </Popover>
+diff --git a/pkg/systemd/hwinfo.jsx b/pkg/systemd/hwinfo.jsx
+index d301f60a6..886bc6b0e 100644
+--- a/pkg/systemd/hwinfo.jsx
++++ b/pkg/systemd/hwinfo.jsx
+@@ -205,11 +205,6 @@ const CPUSecurityMitigationsDialog = () => {
+                             <DataListCell key="primary content">
+                                 <span>
+                                     <div className='nosmt-heading'>{ _("Disable simultaneous multithreading") } (nosmt)</div>
+-                                    <small className='nosmt-read-more-link'>
+-                                        <a href="https://access.redhat.com/security/vulnerabilities/L1TF" target="_blank" rel="noopener noreferrer">
+-                                            <ExternalLinkAltIcon /> { _("Read more...") }
+-                                        </a>
+-                                    </small>
+                                 </span>
+                             </DataListCell>,
+                         ]}
+diff --git a/pkg/systemd/overview-cards/cryptoPolicies.jsx b/pkg/systemd/overview-cards/cryptoPolicies.jsx
+index 6ee533993..aeb31ba16 100644
+--- a/pkg/systemd/overview-cards/cryptoPolicies.jsx
++++ b/pkg/systemd/overview-cards/cryptoPolicies.jsx
+@@ -143,7 +143,7 @@ const CryptoPolicyDialog = ({
+                     variant='link'
+                     isInline
+                     icon={<ExternalLinkSquareAltIcon />} iconPosition="right"
+-                    href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/security_hardening/using-the-system-wide-cryptographic-policies_security-hardening">
++                    href="https://documentation.suse.com/sle-micro/6.0/html/Micro-selinux/selinux-article.html">
+                 {_("Learn more")}
+             </Button>
+         </Flex>),
+@@ -184,16 +184,6 @@ const CryptoPolicyDialog = ({
+                     {_("Cryptographic Policies is a system component that configures the core cryptographic subsystems, covering the TLS, IPSec, SSH, DNSSec, and Kerberos protocols.")}
+                 </div>
+             }
+-            footerContent={
+-                <Button component='a'
+-                        rel="noopener noreferrer" target="_blank"
+-                        variant='link'
+-                        isInline
+-                        icon={<ExternalLinkSquareAltIcon />} iconPosition="right"
+-                        href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/security_hardening/using-the-system-wide-cryptographic-policies_security-hardening">
+-                    {_("Learn more")}
+-                </Button>
+-            }
+         >
+             <Button icon={<HelpIcon />} variant="plain" aria-label={_("Help")} />
+         </Popover>
+diff --git a/pkg/systemd/overview-cards/tuned-dialog.jsx b/pkg/systemd/overview-cards/tuned-dialog.jsx
+index b67631b7d..b36ad88e3 100644
+--- a/pkg/systemd/overview-cards/tuned-dialog.jsx
++++ b/pkg/systemd/overview-cards/tuned-dialog.jsx
+@@ -278,38 +278,13 @@ const TunedDialog = ({
+         };
+     }, [tunedService]);
+ 
+-    const help = (
+-        <Popover
+-            id="tuned-help"
+-            bodyContent={
+-                <div>
+-                    {_("Tuned is a service that monitors your system and optimizes the performance under certain workloads. The core of Tuned are profiles, which tune your system for different use cases.")}
+-                </div>
+-            }
+-            footerContent={
+-                <Button component='a'
+-                        rel="noopener noreferrer" target="_blank"
+-                        variant='link'
+-                        isInline
+-                        icon={<ExternalLinkSquareAltIcon />} iconPosition="right"
+-                        href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/monitoring_and_managing_system_status_and_performance/index">
+-                    {_("Learn more")}
+-                </Button>
+-            }
+-        >
+-            <Button icon={<HelpIcon />} variant="plain" aria-label={_("Help")} />
+-        </Popover>
+-    );
+-
+     return (
+         <Modal position="top" variant="medium"
+                className="ct-m-stretch-body"
+                isOpen
+                onClose={() => dialogResult.resolve()}
+         >
+-            <ModalHeader title={_("Change performance profile")}
+-                help={help}
+-            />
++            <ModalHeader title={_("Change performance profile")} />
+             <ModalBody>
+                 {error && <ModalError dialogError={typeof error == 'string' ? error : error.message} />}
+                 {loading && <EmptyStatePanel loading />}
