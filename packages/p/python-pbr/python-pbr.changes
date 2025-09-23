@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Sep 21 19:37:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.1:
+  * util: Deprecate description\_file
+  * util: Skip normalization of description if README opts
+    present
+  * util: Make handling of description\_file clearer
+  * util: Fix deprecation warnings
+  * Remove duplicate line in test\_generates\_c\_extensions
+  * Update setup.cfg usage docs to explain pbr vs setuptools
+    better
+  * Silence Python warnings
+  * Do not use the onerror parameter in shutil.rmtree()
+  * docs: Remove deprecated options
+  * tox: Stop calling 'setup.py'
+  * Deprecate 'tests\_require' option
+  * Deprecate various '[backwards\_compat]' options
+  * Deprecate various '[metadata]' options
+  * Deprecate '[files]' section
+  * Deprecate '[entry\_points]' section
+  * docs: Update usage guide and README
+  * Move functional tests to their own directory
+  * Move distutils commands to \_compat
+  * Use sysconfig for sitedir path in test\_wsgi in py3
+  * Remove support for custom compilers
+  * Move fixtures to their own module
+  * Remove 'test' distutils command override
+  * Cleanup removal of 'build\_sphinx' command doc
+  * Use packaging where possible
+  * Use importlib.metadata where possible
+  * Tweak loading distribution version
+  * Centralise Python 2/3 compat code
+  * Add \_\_future\_\_ imports
+  * Resolve post-black issues
+  * Add black
+  * docs: Remove use of sphinxcontrib-apidoc
+  * Don't pin setuptools for all tests
+  * pre-commit: Bump versions
+  * tests: Skip tests that break on newer setuptools
+  * Add openstack-tox-py313 job
+  * tests: Set GNUPGHOME in tests
+  * tests: Add hint if running integration tests locally
+  * Modernize tests to use EXT\_SUFFIX, fix PyPy
+
+-------------------------------------------------------------------
 Thu Aug 21 10:03:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only
