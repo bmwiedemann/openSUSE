@@ -124,4 +124,12 @@
   * Bugfix for issue #1434</comment>
     <requestid>1205380</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6ba4f8de8e682ea2ce1fbbc9995c0eca</srcmd5>
+    <version>1.2.2</version>
+    <time>1758636333</time>
+    <user>anag_factory</user>
+    <comment>- add py314-functools-partial.patch</comment>
+    <requestid>1306310</requestid>
+  </revision>
 </revisionlist>

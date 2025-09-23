@@ -1,7 +1,7 @@
 #
 # spec file for package python-lark
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/lark-parser/lark
 Source:         https://github.com/lark-parser/lark/archive/%{version}.tar.gz#/lark-%{version}.tar.gz
+Patch1:         https://github.com/lark-parser/lark/commit/4809ce89ca005b71f6db930c4aabf6496a502795.patch#/py314-functools-partial.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module regex}
@@ -46,7 +47,7 @@ Lark is a general-purpose parsing library for Python.
 With Lark, one can parse any context-free grammar with little code.
 
 %prep
-%setup -q -n lark-%{version}
+%autosetup -p1 -n lark-%{version}
 
 %build
 %pyproject_wheel
