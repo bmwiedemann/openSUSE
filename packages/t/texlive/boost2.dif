@@ -4,7 +4,7 @@
  #include <atomic>
  #include <functional>
  #include <boost/asio.hpp>
-+#include <boost/date_time/posix_time/posix_time_duration.hpp>
++#include <boost/asio/deadline_timer.hpp>
  
  template<typename Duration = boost::posix_time::milliseconds>
  class SimpleTimer

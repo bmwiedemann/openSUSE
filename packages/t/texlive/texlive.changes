@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 20 12:04:50 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix boost2.dif build with boost 1.89.0 (boo#1249956)
+  * deadline_timer was removed from the boost/asio.hpp convenience
+    header
+
+-------------------------------------------------------------------
 Thu Sep 18 07:17:29 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add boost2.dif 

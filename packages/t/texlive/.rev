@@ -1304,4 +1304,14 @@
   * Make texlive build with boost 1.89 (boo#1249956)</comment>
     <requestid>1305693</requestid>
   </revision>
+  <revision rev="109" vrev="112">
+    <srcmd5>3b2235663f828e7dfbee4aae69dd6089</srcmd5>
+    <version>unknown</version>
+    <time>1758636382</time>
+    <user>anag_factory</user>
+    <comment>- Fix boost2.dif build with boost 1.89.0 (boo#1249956)
+  * deadline_timer was removed from the boost/asio.hpp convenience
+    header</comment>
+    <requestid>1306554</requestid>
+  </revision>
 </revisionlist>
