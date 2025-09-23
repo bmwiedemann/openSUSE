@@ -91,7 +91,9 @@ BuildRequires:  distribution-release
 BuildRequires:  util-linux
 Requires:       bash
 %if 0%{?suse_version} >= 1600
-Requires:       dhcpcd
+# Micro 6+ is identified in the Build Service with 1600 as SUSE version but
+# it does not provide dhcpcd
+Requires:       (dhcpcd or dhcp-client)
 %else
 Requires:       dhcp-client
 %endif

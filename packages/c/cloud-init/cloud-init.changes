@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Jul 22 16:56:58 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
 
-- Update to version 25.1.3 (bsc#1245403)
+- Update to version 25.1.3 (bsc#1245401,bsc#1245403)
   + Forward port
     - cloud-init-no-openstack-guess.patch
   + docs: provide example3 for PAM and ssh_pwauth behavior (#27)

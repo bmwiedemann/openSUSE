@@ -1290,4 +1290,12 @@ From 25.1.2
   + fix: ensure MAAS datasource retries on failure (#6167)</comment>
     <requestid>1295166</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>4ae9709206be51b343a0379d249507ad</srcmd5>
+    <version>25.1.3</version>
+    <time>1758653227</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1306721</requestid>
+  </revision>
 </revisionlist>
