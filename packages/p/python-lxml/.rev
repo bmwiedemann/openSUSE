@@ -1183,4 +1183,25 @@ Send to Staging:E.
     removed completely.</comment>
     <requestid>1294982</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>ccb0f9dd829807b672ed3096b9fed235</srcmd5>
+    <version>6.0.1</version>
+    <time>1758636334</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.1:
+  * LP#2116333: ``lxml.sax._getNsTag()`` could fail with an
+    exception on malformed input.
+  * GH#467: Some test adaptations were made for libxml2 2.15.
+  *   Patch by Nick Wellnhofer.
+  * LP2119510, GH#473: A Python compatibility test was fixed for
+    Python 3.14+.
+  * GH#471: Wheels for &quot;riscv64&quot; on recent Python versions were
+    added.
+  * GH#469: The wheel build no longer requires the ``wheel``
+    package unconditionally.
+  * Binary wheels use the library version libxml2 2.14.5.
+  * Windows binary wheels continue to use a security patched
+    library version libxml2 2.11.9.</comment>
+    <requestid>1306341</requestid>
+  </revision>
 </revisionlist>

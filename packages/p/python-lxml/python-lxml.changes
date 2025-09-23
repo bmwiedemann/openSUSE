@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep 21 19:23:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.1:
+  * LP#2116333: ``lxml.sax._getNsTag()`` could fail with an
+    exception on malformed input.
+  * GH#467: Some test adaptations were made for libxml2 2.15.
+  *   Patch by Nick Wellnhofer.
+  * LP2119510, GH#473: A Python compatibility test was fixed for
+    Python 3.14+.
+  * GH#471: Wheels for "riscv64" on recent Python versions were
+    added.
+  * GH#469: The wheel build no longer requires the ``wheel``
+    package unconditionally.
+  * Binary wheels use the library version libxml2 2.14.5.
+  * Windows binary wheels continue to use a security patched
+    library version libxml2 2.11.9.
+
+-------------------------------------------------------------------
 Tue Jul 22 06:12:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.0.0:

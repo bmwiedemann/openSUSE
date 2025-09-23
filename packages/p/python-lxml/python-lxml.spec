@@ -1,7 +1,7 @@
 #
 # spec file for package python-lxml
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lxml
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
