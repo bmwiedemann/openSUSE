@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 23 05:00:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.87.5:
+  * runner-pool experiment
+    - Runner Pool Performance: Optimized execution flow for faster
+      and more efficient unit scheduling
+    - Benchmarks: Introduced initial benchmark tests to measure
+      runner-pool performance under different scenarios
+  * What's Changed
+    - chore: runner-pool benchmarks (#4855)
+    - chore: Offboarding AJ (#4865)
+    - Cleanup (#4859)
+    - Adding social images (#4856)
+    - Update subhead (#4854)
+    - Adding meta tags (#4849)
+    - docs: updated runner-pool experiment status (#4852)
+
+-------------------------------------------------------------------
 Sun Sep 21 13:46:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.87.4:
