@@ -129,4 +129,15 @@
     <comment></comment>
     <requestid>1237808</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8895b76ee730b23f76f264c1f20afea1</srcmd5>
+    <version>1.4.9</version>
+    <time>1758636341</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.9:
+  * add support for Python 3.14 PR #196 #198
+  * include Python.h, or headers including Python.h, before
+    system headers</comment>
+    <requestid>1306360</requestid>
+  </revision>
 </revisionlist>

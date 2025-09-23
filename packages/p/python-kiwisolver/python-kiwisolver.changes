@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 21 19:35:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.9:
+  * add support for Python 3.14 PR #196 #198
+  * include Python.h, or headers including Python.h, before
+    system headers
+
+-------------------------------------------------------------------
 Tue Jan 14 10:16:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.4.8
