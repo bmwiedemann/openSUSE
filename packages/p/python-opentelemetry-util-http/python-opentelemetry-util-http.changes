@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Sep 21 15:08:22 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.58b0:
+  * `opentelemetry-instrumentation-fastapi`: Fix middleware
+    ordering to cover all exception handling use cases.
+  * `opentelemetry-instrumentation-asgi`: Make all user hooks
+    failsafe and record exceptions in hooks.
+  * `opentelemetry-instrumentation-fastapi`: Fix memory leak in
+    `uninstrument_app()` by properly removing apps from the
+    tracking set
+  * `opentelemetry-instrumentation-tornado` Fix server (request)
+    duration metric calculation
+  * `opentelemetry-instrumentation-tornado`: Fix to properly skip
+    all server telemetry when URL excluded.
+  * `opentelemetry-instrumentation`: Avoid calls to
+    `context.detach` with `None` token.
+  * `opentelemetry-instrumentation-starlette`/`opentelemetry-
+    instrumentation-fastapi`: Fixes a crash when host-based
+    routing is used
+  * Fix documentation order of sections and headers for Django,
+    Flask, MySQL, mysqlclient, psycopg, psycopg2, pymysql,
+    sqlalchemy instrumentations.
+  * `opentelemetry-instrumentation-asgi` Fixed an issue where
+    FastAPI reports IP instead of URL.
+  * `opentelemetry-instrumentation-httpx`: fix missing metric
+    response attributes when tracing is disabled
+  * `opentelemetry-instrumentation-fastapi`:  Don't pass bounded
+    server_request_hook when using
+    `FastAPIInstrumentor.instrument()`
+- update to 0.57b0:
+  * `opentelemetry-instrumentation`: Fix dependency conflict
+    detection when instrumented packages are not installed by
+    moving check back to before instrumentors are loaded. Add
+    "instruments-any" feature for instrumentations that target
+    multiple packages.
+  * `opentelemetry-instrumentation-psycopg2` Utilize instruments-
+    any functionality.
+  * `opentelemetry-instrumentation-kafka-python` Utilize
+    instruments-any functionality.
+- update to 0.56b0:
+  * `opentelemetry-instrumentation-pika` Added instrumentation
+    for All `SelectConnection` adapters
+  * `opentelemetry-instrumentation-tornado` Add support for
+    `WebSocketHandler` instrumentation
+  * `opentelemetry-util-http` Added support for redacting
+    specific url query string values and url credentials in
+    instrumentations
+  * `opentelemetry-instrumentation-pymongo` `aggregate` and
+    `getMore` capture statements support
+
+-------------------------------------------------------------------
 Mon Jun  2 06:15:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.54b1:

@@ -65,4 +65,41 @@
 - Adjust {Build,}Requires to reflect reality.</comment>
     <requestid>1281749</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5ec591826aca8d339e78d67df91e8a08</srcmd5>
+    <version>0.58b0</version>
+    <time>1758636438</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.58b0:
+  * `opentelemetry-instrumentation-fastapi`: Fix middleware
+    ordering to cover all exception handling use cases.
+  * `opentelemetry-instrumentation-asgi`: Make all user hooks
+    failsafe and record exceptions in hooks.
+  * `opentelemetry-instrumentation-fastapi`: Fix memory leak in
+    `uninstrument_app()` by properly removing apps from the
+    tracking set
+  * `opentelemetry-instrumentation-tornado` Fix server (request)
+    duration metric calculation
+  * `opentelemetry-instrumentation-tornado`: Fix to properly skip
+    all server telemetry when URL excluded.
+  * `opentelemetry-instrumentation`: Avoid calls to
+    `context.detach` with `None` token.
+  * `opentelemetry-instrumentation-starlette`/`opentelemetry-
+    instrumentation-fastapi`: Fixes a crash when host-based
+    routing is used
+  * Fix documentation order of sections and headers for Django,
+    Flask, MySQL, mysqlclient, psycopg, psycopg2, pymysql,
+    sqlalchemy instrumentations.
+  * `opentelemetry-instrumentation-asgi` Fixed an issue where
+    FastAPI reports IP instead of URL.
+  * `opentelemetry-instrumentation-httpx`: fix missing metric
+    response attributes when tracing is disabled
+  * `opentelemetry-instrumentation-fastapi`:  Don't pass bounded
+    server_request_hook when using
+    `FastAPIInstrumentor.instrument()`
+- update to 0.57b0:
+  * `opentelemetry-instrumentation`: Fix dependency conflict
+    detection when instrumented packages are not installed by</comment>
+    <requestid>1306353</requestid>
+  </revision>
 </revisionlist>
