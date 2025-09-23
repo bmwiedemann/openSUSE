@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-instrumentation-fastapi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-instrumentation-fastapi%{?psuffix}
-Version:        0.54b1
+Version:        0.58b0
 Release:        0
 Summary:        OpenTelemetry FastAPI Instrumentation
 License:        Apache-2.0

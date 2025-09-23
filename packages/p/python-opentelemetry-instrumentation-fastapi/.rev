@@ -35,4 +35,24 @@
 - Remove BuildRequires on setuptools and wheel.</comment>
     <requestid>1281752</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f574003e5bad40377269efba193a2036</srcmd5>
+    <version>0.58b0</version>
+    <time>1758636436</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.58b0:
+  * `opentelemetry-instrumentation-fastapi`: Fix middleware
+    ordering to cover all exception handling use cases.
+  * `opentelemetry-instrumentation-fastapi`: Fix memory leak in
+    `uninstrument_app()` by properly removing apps from the
+    tracking set
+  * `opentelemetry-instrumentation-fastapi`:  Don't pass bounded
+    server_request_hook when using
+    `FastAPIInstrumentor.instrument()`
+  * `opentelemetry-instrumentation-fastapi`: fix wrapping of
+    middlewares
+  * `opentelemetry-instrumentation-fastapi`: Drop support for
+    FastAPI versions earlier than `0.92`</comment>
+    <requestid>1306349</requestid>
+  </revision>
 </revisionlist>
