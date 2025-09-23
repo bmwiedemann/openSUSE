@@ -17617,4 +17617,18 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <user>dimstar_suse</user>
     <comment>Drop duplicate entry</comment>
   </revision>
+  <revision rev="2759" vrev="2759">
+    <srcmd5>0d160feb4a814b6966c1fa4ee845a844</srcmd5>
+    <version>unknown</version>
+    <time>1758630444</time>
+    <user>dimstar_suse</user>
+    <comment>Clean up duplicate</comment>
+  </revision>
+  <revision rev="2760" vrev="2760">
+    <srcmd5>920780c25cd5e334b7b0d226a1d47678</srcmd5>
+    <version>unknown</version>
+    <time>1758630557</time>
+    <user>staging-bot</user>
+    <comment>Automatic update</comment>
+  </revision>
 </revisionlist>
