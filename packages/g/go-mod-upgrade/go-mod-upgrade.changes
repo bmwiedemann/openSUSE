@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 23 07:24:13 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 0.12.0:
+  * fix: linting and vulnerability issues
+  * feat: add --list flag to display module upgrades without interactivity
+  * chore: bump dependencies
+  * fix: lint errors
+  * feat: Vulnerability checking
+  * fix: colors in listing
+  * fix: color explanation in the readme
+  * Fix build status
+  * Update checkout and install nix GitHub Actions
+  * Use nix to track dev dependencies
+
+-------------------------------------------------------------------
 Thu May 22 07:50:03 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Fixed _service: Switch revision from main to actual version

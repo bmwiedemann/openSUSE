@@ -44,4 +44,22 @@
     <comment>- Fixed _service: Switch revision from main to actual version (forwarded request 1279213 from ph03nix)</comment>
     <requestid>1280312</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c58ae2a6ec0ae24a44d2a35d94c8507e</srcmd5>
+    <version>0.12.0</version>
+    <time>1758653171</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.12.0:
+  * fix: linting and vulnerability issues
+  * feat: add --list flag to display module upgrades without interactivity
+  * chore: bump dependencies
+  * fix: lint errors
+  * feat: Vulnerability checking
+  * fix: colors in listing
+  * fix: color explanation in the readme
+  * Fix build status
+  * Update checkout and install nix GitHub Actions
+  * Use nix to track dev dependencies (forwarded request 1306652 from ph03nix)</comment>
+    <requestid>1306756</requestid>
+  </revision>
 </revisionlist>

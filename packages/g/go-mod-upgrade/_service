@@ -3,7 +3,7 @@
     <param name="filename">go-mod-upgrade</param>
     <param name="url">https://github.com/oligot/go-mod-upgrade.git</param>
     <param name="scm">git</param>
-    <param name="revision">v0.11.0</param>
+    <param name="revision">v0.12.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
