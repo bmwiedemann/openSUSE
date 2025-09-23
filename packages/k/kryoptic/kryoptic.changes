@@ -1,0 +1,165 @@
+-------------------------------------------------------------------
+Mon Sep 22 17:51:58 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Install p11-kit module config with the main package
+
+-------------------------------------------------------------------
+Fri Sep 19 13:28:23 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.3.1:
+  * Remove large test vectors from release artifacts
+
+-------------------------------------------------------------------
+Thu Sep 18 17:25:52 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Upadte to 1.3.0:
+  * Changelog 1.1 fix
+  * Initial support for ML-DSA
+  * Rework how OpenSSL sources are used
+  * tests: Drop pkcs11-tool dependency of migrate test
+  * Support SignatureVerify APIs with all algorithms
+  * Bump bindgen dependency version to follow rawhide
+  * Add better support for array of attributes
+  * Minor, non-substantial improvements to the README.md
+  * Fix Montgomery Key Generation b
+  * Improve documentation for using a static build of OpenSSL
+  * Fix example configuration file
+  * Support building on different OpenSSL versions
+  * Update some FIPS indicators
+  * Fix ML-DSA Keygen
+  * Fixes for ML-KEM and Encapsulate API
+  * Fix Public Ec Montgomery point storage
+  * Add more documentation strings and cleanup changes
+  * Make token info a little more useful
+  * Arch-specific build fixes
+  * Fix PrivateKeyInfo ASN.1 structure
+  * Change some build time variables and configs
+  * Add Key wrapping support and tests for all EC keys
+  * More doc strings
+  * tests: Avoid failures when configuration file is present in default path
+  * Fix initialization of info in uninitialized token
+  * Cargo: Bump cryptoki version to match version in Fedora
+  * Stop using the paste crate
+  * Remove unused conformance binary
+  * deps: bump asn1 to v0.21
+  * Add support fo FFDH key generation and derivation
+  * FFDH: Ensure secret_len is big enough
+  * Add some basic infrastructure to perform tracing
+  * Drop jsondb
+  * Fix buffer length check in AES update functions
+  * Release 1.2
+  * Update spec file after 1.2.0 release to match Fedora
+  * Implement TLS 1.2 EMS derive
+  * Switch cargo setup to a workspace with several packages
+  * Refactor code and add easier to use abstractions at the ossl package level
+  * Add OssCipher abstraction for symmetric ciphers
+  * Support Sp800 ECDH KDF flavor
+  * Make PKCS#11 3.2 the default interface
+  * More ossl package abstraction for Pkey operations
+  * Compile-time disabling SHA1 for OpenSSL backend
+  * Fix is_approved() to properly check input keys
+  * Implement simple KDFs
+  * Rename and restructure some of the crates we recently crated
+  * Add fips checks for KDFs additional input keys
+  * Allow variance in FFDH derived key maximum size
+  * Fix signing with CKM_SHA512_RSA_PKCS
+  * Add OpenJDK continuous integration
+  * Add config option to filter mechanisms
+  * Reduce max key sizes to avoid overflow
+  * openjdk-integration.yml: Run on pull_request and push
+  * Tweak test matrix to test more configuarations
+  * Improve some ossl interfaces
+  * Implement Drop to cleanse sensitive key data
+  * Add Fips Checkcs to EdDSA code
+  * Add support for Brainpool curves
+  * Some ossl API work, mostly polishing
+  * Minor rework of dummy integrity check
+  * openjdk-integration.yml: Warn on container/source version mismatch
+  * Add jtreg-kryoptic.sh OpenJDK test script
+  * Zeroize key material exported from EvpPkey
+  * Do not fail fetches on unknown attributes
+  * Fix pkcs11 header definition
+  * Add support for OCB, OsslCipher::block_size, and RSA helpers for implementations of RFC9580
+  * Ossl: Ensure libctx is freed on drop
+  * Do not allow setting never-settable attributes (+avoid new warnings caused
+  * Add missing OBJECT_VALIDATION attributes to objects
+  * ossl: Allow passing propq to the key creation API
+  * Add support for SLH-DSA
+  * Change ossl lisence to ASL 2.0
+  * ossl: Add support for legacy algorithms (DSA, 3DES) (under legacy feature)
+  * Add CKM_EXTRACT_KEY_FROM_KEY to SimpleKDF
+  * Add methods to load OpenSSL configuration
+  * Import fix for pkcs11 3.2 header
+  * Fix self reference in load_configuration API
+  * Handle imports where only the Seed is provided
+  * Add function to load legacy provider
+  * ossl: Implement remaining legacy algorithms needed for OpenPGP
+
+-------------------------------------------------------------------
+Mon Jun  9 18:25:29 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.2.0:
+  * Initial support for ML-DSA
+  * Rework how OpenSSL sources are used
+  * tests: Drop pkcs11-tool dependency of migrate test
+  * Support SignatureVerify APIs with all algorithms
+  * Bump bindgen dependency version to follow rawhide
+  * Add better support for array of attributes
+  * Minor, non-substantial improvements to the README.md
+  * Fix Montgomery Key Generation
+  * Improve documentation for using a static build of OpenSSL
+  * Fix example configuration file
+  * Support building on different OpenSSL versions
+  * Update some FIPS indicators
+  * Fix ML-DSA Keygen
+  * Fixes for ML-KEM and Encapsulate API
+  * Fix Public Ec Montgomery point storage
+  * Add more documentation strings and cleanup changes
+  * Make token info a little more useful
+  * Arch-specific build fixes
+  * Fix PrivateKeyInfo ASN.1 structure
+  * Change some build time variables and configs
+  * Add Key wrapping support and tests for all EC keys
+  * More doc strings
+  * tests: Avoid failures when configuration file is present in default path
+  * Fix initialization of info in uninitialized token
+  * Cargo: Bump cryptoki version to match version in Fedora
+  * Stop using the paste crate
+  * Remove unused conformance binary
+  * deps: bump asn1 to v0.21
+  * Add support fo FFDH key generation and derivation
+  * FFDH: Ensure secret_len is big enough
+  * Add some basic infrastructure to perform tracing
+  * Drop jsondb
+  * Fix buffer length check in AES update functions
+  * For a full list of changes see: https://github.com/latchset/kryoptic/releases/tag/v1.2.0
+- Update _service
+
+-------------------------------------------------------------------
+Mon Apr 14 19:54:56 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.1.0:
+  * Switch to Rust 2024 edition
+  * Deal with length query issues
+  * Fix storing and reading default DATE attributes
+  * aes: Restrict AES-GCM to at least 1B tag length
+  * Introduce CKF_MULTI_MESSAGE flag
+  * Fix incorrect error returned on un-initialized operations
+  * Ensure token store objects can be extracted if the right booleans are set
+  * Replace SHA1 test signature
+  * Rebase openssl submodule to 3.5 (prerelease) by
+  * Pkcs11 3.2 Draft
+  * Add Encapsulation/Decapsulation and ML-KEM support
+  * Fix check for object sensitivity as per spec
+  * Add Stricter FIPS options to configuration
+  * Allow digesting AES keys and add test coverage
+  * ecdh: Fix max ECDH output size
+  * Fix C_WrapKey size query
+  * Minor cleanups in tests and rust warning fixes
+  * For a full list of changes see: https://github.com/latchset/kryoptic/releases/tag/v1.1.0
+
+-------------------------------------------------------------------
+Wed Mar 12 13:32:39 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Initial package of version: 1.0.0:
+  * For a full list of changes see: https://github.com/latchset/kryoptic/blob/v1.0.0/CHANGELOG.md
