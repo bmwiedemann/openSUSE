@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 23 12:27:39 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 3.14.1
+  * New features and improvements
+    + Improve DeltaList behavior for large projects
+    + Allow to not use --module-version for the Java compiler
+  * Bug Fixes
+    + Add generatedSourcesPath back to the maven project
+    + MCOMPILER-538: Do not add target/generated-sources/annotations
+     to the source roots
+  * Dependency updates
+    + Enforce asm version used here, to not depend on brittle
+      transitive
+    + Bump mavenVersion from 3.9.9 to 3.9.11
+    + Bump org.apache.maven.plugins:maven-plugins from 43 to 45
+    + Bump org.codehaus.plexus:plexus-java from 1.4.0 to 1.5.0
+- Modified patch:
+  * maven-compiler-plugin-bootstrap-resources.patch
+    + regenerate in cycle by itself
+
+-------------------------------------------------------------------
 Fri Feb 21 12:24:20 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 3.14.0
