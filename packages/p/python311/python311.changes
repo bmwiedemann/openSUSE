@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 19 14:38:03 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop AppStream buildrequires and don't run appstreamcli validate
+  as part of the build process: the appdata.xml is not updated by
+  source directly, so we have more contol. Having Appstream or the
+  deprecated appstream-glib result in a build cycle.
+
+-------------------------------------------------------------------
+Thu Sep 18 08:15:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require AppStream to validate appdata file instead of deprecated
+  appstream-glib.
+- Update idle3.appdata.xml to pass the more pedantic appstreamcli.
+
+-------------------------------------------------------------------
 Fri Aug  1 20:09:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2025-8194-tarfile-no-neg-offsets.patch which now

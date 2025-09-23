@@ -1,7 +1,7 @@
 #
 # spec file for package python311
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -226,8 +226,6 @@ BuildRequires:  python3-python-docs-theme >= 2022.1
 %endif
 %endif
 %if %{with general}
-# required for idle3 (.desktop and .appdata.xml files)
-BuildRequires:  appstream-glib
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
 BuildRequires:  gettext
@@ -685,7 +683,6 @@ install -m 644 -D -t %{buildroot}%{_datadir}/applications idle%{python_version}.
 cp %{SOURCE20} idle%{python_version}.appdata.xml
 sed -i -e 's:idle3.desktop:idle%{python_version}.desktop:g' idle%{python_version}.appdata.xml
 install -m 644 -D -t %{buildroot}%{_datadir}/metainfo idle%{python_version}.appdata.xml
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/idle%{python_version}.appdata.xml
 
 %fdupes %{buildroot}/%{_libdir}/python%{python_version}
 %endif
