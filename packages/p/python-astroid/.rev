@@ -664,4 +664,12 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment></comment>
     <requestid>1295268</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>762a27d469bcefd69e0e0c01ac9ecc55</srcmd5>
+    <version>3.3.11</version>
+    <time>1758636340</time>
+    <user>anag_factory</user>
+    <comment>- add py314-failing-tests.patch</comment>
+    <requestid>1306358</requestid>
+  </revision>
 </revisionlist>

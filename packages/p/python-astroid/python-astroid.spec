@@ -1,7 +1,7 @@
 #
 # spec file for package python-astroid
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later
 URL:            https://github.com/pycqa/astroid
 Source:         https://github.com/PyCQA/astroid/archive/refs/tags/v%{version}.tar.gz#/astroid-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/pylint-dev/astroid/pull/2731.patch
+Patch1:         py314-failing-tests.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pip}
@@ -35,9 +37,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 311
-Requires:       python-typing-extensions >= 3.10
-%endif
 %python_subpackages
 
 %description
@@ -54,8 +53,7 @@ scopes. Furthermore, astroid builds partial trees by inspecting living
 objects.
 
 %prep
-%setup -q -n astroid-%{version}
-%autopatch -p1
+%autosetup -p1 -n astroid-%{version}
 
 %build
 %pyproject_wheel
