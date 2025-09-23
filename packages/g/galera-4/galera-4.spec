@@ -1,7 +1,7 @@
 #
 # spec file for package galera-4
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,9 @@ URL:            https://galeracluster.com/
 Source:         galera-%{version}.tar.xz
 Source2:        garb-user.conf
 Patch0:         galera-3-25.3.10_fix_startup_scripts.patch
+%if 0%{?suse_version} >= 1600
+Patch1:         galera-boost.patch
+%endif
 Patch2:         fix-cmake-install.patch
 BuildRequires:  boost-devel
 BuildRequires:  check-devel
@@ -50,7 +53,9 @@ Conflicts:      galera-3
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 %endif
 BuildRequires:  cmake
 # for fileownership of galeradir

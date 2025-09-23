@@ -118,4 +118,13 @@
     <comment></comment>
     <requestid>1284196</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e513167a7432361b57789ef6a6e9dbe9</srcmd5>
+    <version>26.4.22</version>
+    <time>1758636357</time>
+    <user>anag_factory</user>
+    <comment>- libboost_system was removed upstream, fixes boo#1249900
+  * Patch galera-boost.patch</comment>
+    <requestid>1306455</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,12 @@
+diff -purN a/cmake/boost.cmake b/cmake/boost.cmake
+--- a/cmake/boost.cmake	2025-03-27 19:26:19.000000000 +0100
++++ b/cmake/boost.cmake	2025-09-20 13:29:49.802302973 +0200
+@@ -4,7 +4,7 @@
+ 
+ set(Boost_USE_MULTITHREAD ON)
+ set(Boost_USE_STATIC_LIBS ${GALERA_STATIC})
+-find_package(Boost 1.41 COMPONENTS filesystem program_options system)
++find_package(Boost 1.41 COMPONENTS filesystem program_options)
+ if (NOT Boost_FOUND)
+   if (Boost_USE_STATIC_LIBS)
+     message(ERROR
