@@ -1,7 +1,7 @@
 #
 # spec file for package gap-rcwa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-rcwa
-Version:        4.7.1
+Version:        4.8.0
 Release:        0
 Summary:        GAP: Residue-Class-Wise Affine Groups
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            https://gap-packages.github.io/rcwa/
 Source:         https://github.com/gap-packages/rcwa/releases/download/v%version/rcwa-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.9.1
+Requires:       gap-core >= 4.12
 Requires:       gap-fr >= 2.2.1
 Requires:       gap-gapdoc >= 1.5.1
 Requires:       gap-grape >= 4.7
