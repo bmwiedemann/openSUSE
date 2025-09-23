@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 22 12:53:08 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-candidate-does-not-hide-automatically.patch
+  * Fix PageUp/PageDown buttons with hidding candidate popup
+
+-------------------------------------------------------------------
 Mon Sep 15 13:45:03 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Add an initial setup feature for Plasma Wayland

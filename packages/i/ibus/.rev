@@ -1188,4 +1188,13 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     <comment></comment>
     <requestid>1304984</requestid>
   </revision>
+  <revision rev="133" vrev="4">
+    <srcmd5>c8736277fc0904a0cbd3b86b1051abab</srcmd5>
+    <version>1.5.32</version>
+    <time>1758636406</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-candidate-does-not-hide-automatically.patch
+  * Fix PageUp/PageDown buttons with hidding candidate popup (forwarded request 1306535 from hillwood)</comment>
+    <requestid>1306536</requestid>
+  </revision>
 </revisionlist>

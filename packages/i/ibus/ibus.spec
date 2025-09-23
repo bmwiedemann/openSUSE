@@ -1,7 +1,7 @@
 #
 # spec file for package ibus
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,6 +73,9 @@ Patch12:        ibus-disable-engines-preload-in-GNOME.patch
 # Qt5 does not be update to the new version and patch for ibus on Leap 15,
 # it still needs this patch on leap 15. (boo#1187202)
 Patch15:        ibus-socket-name-compatibility.patch
+# Fix PageUp/PageDown buttons with hidding candidate popup
+# https://github.com/fujiwarat/ibus/commit/f9592f30a2c2ac9f3b331eddf00845d9584e3bdc
+Patch16:        fix-candidate-does-not-hide-automatically.patch
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
@@ -232,6 +235,7 @@ cp -r %{SOURCE11} .
 %if 0%{?suse_version} <= 1500
 %patch -P 15 -p1
 %endif
+%patch -P 16 -p1
 
 %build
 %configure --disable-static \
