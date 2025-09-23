@@ -25,6 +25,7 @@ Group:          Productivity/Networking/Talk/Clients
 URL:            https://github.com/Nheko-Reborn/%{name}
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix_scrolling.patch
+Patch1:         fix_reply_rendering.patch
 BuildRequires:  appstream-glib
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.13.0

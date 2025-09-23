@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1298779</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a8ea8332916367eed74fa466dde144d9</srcmd5>
+    <version>0.12.1</version>
+    <time>1758636484</time>
+    <user>anag_factory</user>
+    <comment>- Backport fix_reply_rendering.patch for fixing reply renderig</comment>
+    <requestid>1306699</requestid>
+  </revision>
 </revisionlist>
