@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 22 13:08:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 27.1.0
+  * 27.1.0 restores prior behavior where the constant `zmq.DRAFT_API` represents
+    the actual availability of the draft API. This requires _both_ libzmq and
+    pyzmq to be built with drafts enabled, not just libzmq.
+    Restores behavior prior to pyzmq 23.
+  * In pyzmq 23-27.0, `zmq.DRAFT_API` was a synonym for `zmq.has("draft")`.
+    It is relatively rare that these two definitions differ, but not impossible
+    (e.g. libzmq built with drafts enabled, but pyzmq not).
+- from version 27.0.2
+  * 27.0.2 fixes a bug where bind/connect could fail with "Invalid Argument" (EINVAL)
+    when Python is run in devmode or with `PYTHONMALLOC=debug`.
+- from version 27.0.1
+  * 27.0.1 adds wheels for android and free-threaded Python 3.14 (314t) thanks to
+    cibuildwheel 3.1, and adds wheels for free-threaded Python for Windows on ARM.
+  * There are no changes to pyzmq code in this release.
+- Add new zmq/backend/cffi/*.c files to devel package
+- Remove .gitignore files from source tree
+
+-------------------------------------------------------------------
 Mon Jul  7 10:27:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 27.0.0

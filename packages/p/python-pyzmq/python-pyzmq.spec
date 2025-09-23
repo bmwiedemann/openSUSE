@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyzmq
-Version:        27.0.0
+Version:        27.1.0
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        BSD-3-Clause AND LGPL-3.0-or-later
@@ -95,6 +95,7 @@ cp %{SOURCE1} ./
 
 # Fix non-executable script rpmlint warning:
 find examples zmq -name "*.py" -exec sed -i "s|#\!\/usr\/bin\/env python||" {} \;
+find . -name ".gitignore" -exec rm {} \;
 chmod -x examples/pubsub/topics_pub.py examples/pubsub/topics_sub.py
 
 %build
@@ -122,11 +123,13 @@ SKIPPED_TESTS+=" or test_null or test_int_sockopts"
 %doc AUTHORS.md README.md examples
 %{python_sitearch}/zmq
 %{python_sitearch}/pyzmq-%{version}.dist-info
+%exclude %{python_sitearch}/zmq/backend/cffi/*.c
 %exclude %{python_sitearch}/zmq/utils/*.h
 %exclude %{python_sitearch}/zmq/backend/cffi/_cdefs.h
 
 %files %{python_files devel}
 %{python_sitearch}/zmq/utils/*.h
+%{python_sitearch}/zmq/backend/cffi/*.c
 %{python_sitearch}/zmq/backend/cffi/_cdefs.h
 
 %changelog

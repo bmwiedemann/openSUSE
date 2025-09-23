@@ -540,4 +540,12 @@ update to latest version</comment>
   * Many smaller changes, see upstream chngelog</comment>
     <requestid>1291147</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f2924e4c00e5af2e8c6738168b90b7bf</srcmd5>
+    <version>27.1.0</version>
+    <time>1758636413</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306568</requestid>
+  </revision>
 </revisionlist>
