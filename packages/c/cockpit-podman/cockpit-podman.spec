@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-podman
-Version:        107
+Version:        113
 Release:        0
 Summary:        Cockpit component for Podman containers
 License:        LGPL-2.1-or-later
