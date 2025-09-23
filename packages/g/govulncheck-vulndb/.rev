@@ -1229,4 +1229,15 @@
   * GO-2025-3956 CVE-2025-47906 CVE-2025-47906 (forwarded request 1305890 from jfkw)</comment>
     <requestid>1305891</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>7547d761ae32b11f14514802947d5eea</srcmd5>
+    <version>0.0.20250922T204835</version>
+    <time>1758642393</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20250922T204835 2025-09-22T20:48:35Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3955 CVE-2025-47910 CVE-2025-47910 (forwarded request 1306763 from jfkw)</comment>
+    <requestid>1306764</requestid>
+  </revision>
 </revisionlist>
