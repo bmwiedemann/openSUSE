@@ -480,4 +480,12 @@
     <comment>- Update translations (bsc#1249378)</comment>
     <requestid>1304246</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9d97896f5d0778b38b702409d03038a0</srcmd5>
+    <version>17.devel350.11998276e</version>
+    <time>1758636460</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1306642</requestid>
+  </revision>
 </revisionlist>
