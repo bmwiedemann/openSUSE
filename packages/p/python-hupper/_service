@@ -3,6 +3,7 @@
     <param name="url">https://github.com/Pylons/hupper</param>
     <param name="scm">git</param>
     <param name="exclude">docs/*</param>
+    <param name="exclude">CONTRIBUTORS.txt</param>
     <param name="version">1.12.1</param>
     <param name="revision">1.12.1</param>
   </service>

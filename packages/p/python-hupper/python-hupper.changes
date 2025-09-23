@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 19 17:17:41 UTC 2025 - Aline Werner <aline.werner@suse.com>
+
+- Remove CONTRIBUTORS.txt file causing license issues. 
+
+-------------------------------------------------------------------
 Mon Mar 24 07:28:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Don't use license in the dist-info directory. 

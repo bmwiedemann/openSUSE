@@ -36,7 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-watchdog
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
@@ -59,7 +59,8 @@ When files are changed the process is restarted.
 %python_clone -a %{buildroot}%{_bindir}/hupper
 
 %check
-%pytest
+# Disable tests that require an older version of pytest-cov
+%pytest --ignore "tests/test_it.py"
 
 %post
 %python_install_alternative hupper
