@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue Sep 23 10:39:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.0:
+  New features and their explanations can be found in the release
+  notes. You can also find the roadmap there.
+  https://github.com/grafana/k6/releases/tag/v1.3.0
+  * Deprecations
+    - A new summary mode disabled has been introduced to replace
+      the "no summary" option #5118
+      The --no-summary flag and its corresponding environment
+      variable K6_NO_SUMMARY have been deprecated in favor of the
+      new disabled summary mode. This change unifies the
+      configuration experience for controlling the end-of-test
+      summary. You can now disable the end-of-test summary with
+      either --summary-mode=disabled or K6_SUMMARY_MODE=disabled.
+    - The legacy summary mode has been deprecated #5138
+      The legacy summary mode was introduced in k6 v1.0, when the
+      end-of-test summary was revamped with the addition of two new
+      modes: compact and full.  Its purpose was to ease the
+      transition for users who relied heavily on the old summary
+      format. However, we’ve now reached the point where it’s time
+      to deprecate it. The plan is to fully remove it in k6 v2.0,
+      so please migrate to either compact or full to ensure
+      readiness for the next major release.
+  * UX improvements and enhancements
+    - #5117 Unifies unauthenticated errors for Cloud commands.
+    - #5125 Changes a warn log to a debug when a worker type is
+      used on a website under test.
+    - #5111 Adds retries to actionability based APIs (locator) when
+      elements aren't visible.
+    - #5004 Removes undefined headers from route.continue/fulfill.
+    - #4984 Adds link to documentation in k6 --help output. Thank
+      you, @Nishant891 for the change.
+  * Bug fixes
+    - #5079 Fixes version of k6 when it is built with xk6.
+    - #5057 Fixes a panic on the deprecated k6 login cloud command.
+      Thanks @indygriffiths for reporting it!
+    - #5059 Fixes group order in end of test summary when scenarios
+      are used.
+    - #5081 Fixes auto extension resolution only working if binary
+      is called k6 after a fix in v1.2.2.
+    - #5089 Fixes gRPC calls not using loaded types and erroring
+      out, especially around the usage of Any.
+    - #5071, #5086, #5163 Fixes click action in browser module when
+      working in iframes and CORS.
+    - #5084 Fixes a browser module issue when adopting elements
+      from util to main execution contexts in Chromium.
+    - #5178 Fixes a subtle metric labelling issue in Prometheus RW
+      output.
+    - #5200 Fixes a bug where clearTimeout would not recalculate
+      the timer but instead will run the next timer earlier if it
+      used to remove the earliest one.
+  * Maintenance and internal improvements
+    - #5165 Fixes arguments order for multiple
+      {require|assert}.{Equal|NotEqual} and equivalent calls.
+    - #5157 Fixes the test TestURLSkipRequest for Chrome 140+.
+    - #5074, #5078 Uses common.IsNullish through the code instead
+      of other variants of it or custom helpers.
+    - #5072, #5107, #5108 Update k6packager debian to latest LTS
+      and fixes due to the update.
+    - #5051, #5052, #5053 Adds tests and refactors getBy* and
+      waitForURL implementations.
+    - #5101 Updates times to nanoseconds to make tests less flakey
+      in CI.
+    - #5122 Migrates to use a new code signing process for Windows
+      binaries instead of using the static code-signing
+      certificate. Thanks @martincostello for the contribution!
+    - #5048 Updates release issue template after v1.2.0
+    - #5046 Adds architecture overview and code authoring
+      instructions for Claude Code and alike.
+
+-------------------------------------------------------------------
 Thu Aug 28 04:46:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.3:
