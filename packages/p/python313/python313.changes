@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 22 06:41:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop AppStream: this results in a different cycle than
+  appstream-glib. As the appdata.xml is controlled by ourselves, we
+  can get away with just manually validating it when changing it.
+
+-------------------------------------------------------------------
+Thu Sep 18 08:15:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require AppStream to validate appdata file instead of deprecated
+  appstream-glib.
+- Update idle3.appdata.xml to pass the more pedantic appstreamcli.
+
+-------------------------------------------------------------------
 Tue Sep  9 10:11:58 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add gh138131-exclude-pycache-from-digest.patch fixing reproducible

@@ -287,8 +287,6 @@ ExcludeArch:    aarch64
 %endif
 
 %if %{with general}
-# required for idle3 (.desktop and .appdata.xml files)
-BuildRequires:  appstream-glib
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
 BuildRequires:  gettext
@@ -780,7 +778,6 @@ install -m 644 -D -t %{buildroot}%{_datadir}/applications idle%{python_abi}.desk
 cp %{SOURCE20} idle%{python_abi}.appdata.xml
 sed -i -e 's:idle3.desktop:idle%{python_abi}.desktop:g' idle%{python_abi}.appdata.xml
 install -m 644 -D -t %{buildroot}%{_datadir}/metainfo idle%{python_abi}.appdata.xml
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/idle%{python_abi}.appdata.xml
 
 %fdupes %{buildroot}/%{_libdir}/python%{python_abi}
 %endif
