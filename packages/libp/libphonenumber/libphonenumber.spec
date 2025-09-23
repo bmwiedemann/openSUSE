@@ -2,6 +2,7 @@
 # spec file for package libphonenumber
 #
 # Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define lib_ver 9
 %define lib_ver2 9.0
 Name:           libphonenumber
-Version:        9.0.10
+Version:        9.0.14
 Release:        0
 Summary:        Library for parsing, formatting, and validating international phone numbers
 License:        Apache-2.0
@@ -82,8 +83,13 @@ that use libphonenumber.
 cd cpp
 # Enabling the geocoder breaks quite a lot due to broken cmakelists
 # (https://github.com/google/libphonenumber/pull/2556)
-%cmake -DBUILD_STATIC_LIB=OFF -DBUILD_SHARED_LIB=ON -DBUILD_TESTING=ON -DBUILD_GEOCODER=OFF -DREGENERATE_METADATA=OFF
-%make_jobs
+%cmake \
+	-DBUILD_STATIC_LIB=OFF \
+	-DBUILD_TESTING=ON \
+	-DBUILD_GEOCODER=OFF \
+	-DREGENERATE_METADATA=OFF \
+	%{nil}
+%cmake_build
 
 %install
 cd cpp
@@ -91,10 +97,9 @@ cd cpp
 
 %check
 cd cpp/build
-%make_jobs tests
+%make_build tests
 
-%post -n %{name}%{lib_ver} -p /sbin/ldconfig
-%postun -n %{name}%{lib_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{lib_ver}
 
 %files -n %{name}%{lib_ver}
 %license LICENSE*
@@ -102,6 +107,7 @@ cd cpp/build
 %{_libdir}/libphonenumber.so.%{lib_ver2}
 
 %files devel
+%license LICENSE*
 %{_libdir}/libphonenumber.so
 %{_includedir}/phonenumbers/
 %dir %{_libdir}/cmake/

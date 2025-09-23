@@ -114,4 +114,12 @@
   * Use libboost_headers-devel instead of libboost_system-devel (forwarded request 1305309 from favogt)</comment>
     <requestid>1305314</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c76751f39a917ffbc88b491d2884cdd2</srcmd5>
+    <version>9.0.14</version>
+    <time>1758636399</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306516</requestid>
+  </revision>
 </revisionlist>

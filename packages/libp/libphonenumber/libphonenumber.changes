@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 17 08:50:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 9.0.14:
+  * AUpdated phone metadata for region code(s): CZ, DE, IT, LI, LV,
+    ME, SG, US, BT, DE, GY, IL, OM, PA, SG, SR, UY, GB, GG, GM, GY,
+    IM, JE, DO, EH, IL, JP, MA, MN, OM, PG, SG, US
+  * Updated short number metadata for region code(s): DE, UY, JP
+  * New geocoding data for country calling code(s):
+    1686 (en), 975 (en), 61 (en), 81 (en, ja)
+  * Updated geocoding data for country calling code(s):
+    39 (en, it), 61 (en), 34 (en, es)
+  * Updated carrier data for country calling code(s):
+    46 (en), 65 (en), 420 (en), 998 (en), 30 (en), 41 (en),
+    49 (en), 65 (en), 86 (en, zh), 372 (en), 597 (en),
+    968 (en), 975 (en), 220 (en), 370 (en), 592 (en), 27 (en),
+    32 (en), 65 (en), 81 (en), 675 (en), 968 (en), 976 (en),
+    996 (en)
+  * Updated / refreshed time zone meta data
+
+-------------------------------------------------------------------
 Mon Sep 15 13:40:22 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - No longer rely on libboost_system-devel as separate package:
