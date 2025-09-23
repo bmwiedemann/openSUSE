@@ -5,8 +5,8 @@
   <artifactId>bcprov-jdk18on</artifactId>
   <packaging>jar</packaging>
   <name>Bouncy Castle Provider</name>
-  <version>1.81</version>
-  <description>The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms. This jar contains the JCA/JCE provider and low-level API for the BC Java version 1.81 for Java 8 and later.</description>
+  <version>1.82</version>
+  <description>The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms. This jar contains the  JCA/JCE provider and low-level API for the BC Java version 1.82 for Java 1.8 and later.</description>
   <url>https://www.bouncycastle.org/download/bouncy-castle-java/</url>
   <licenses>
     <license>

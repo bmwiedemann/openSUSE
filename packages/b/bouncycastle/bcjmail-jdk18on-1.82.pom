@@ -5,8 +5,8 @@
   <artifactId>bcjmail-jdk18on</artifactId>
   <packaging>jar</packaging>
   <name>Bouncy Castle JavaMail Jakarta S/MIME APIs</name>
-  <version>1.81</version>
-  <description>The Bouncy Castle Java APIs for doing S/MIME with the Jakarta Mail APIs. The APIs are designed primarily to be used in conjunction with the BC Java provider.</description>
+  <version>1.82</version>
+  <description>The  Bouncy Castle Java APIs for doing S/MIME with the Jakarta Mail APIs. The APIs are designed primarily to be used in conjunction with the BC Java provider for Java 1.8 and later.</description>
   <url>https://www.bouncycastle.org/download/bouncy-castle-java/</url>
   <licenses>
     <license>
@@ -33,7 +33,7 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcpkix-jdk18on</artifactId>
-      <version>[1.81,1.82)</version>
+      <version>1.82</version>
       <type>jar</type>
     </dependency>
   </dependencies>

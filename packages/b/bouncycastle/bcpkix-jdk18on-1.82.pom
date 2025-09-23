@@ -2,11 +2,11 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.bouncycastle</groupId>
-  <artifactId>bctls-jdk18on</artifactId>
+  <artifactId>bcpkix-jdk18on</artifactId>
   <packaging>jar</packaging>
-  <name>Bouncy Castle TLS/JSSE APIs</name>
-  <version>1.81</version>
-  <description>The Bouncy Castle Java APIs for the TLS, including a JSSE provider. The APIs are designed primarily to be used in conjunction with the BC Java provider but may also be used with other providers providing cryptographic services.</description>
+  <name>Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF APIs</name>
+  <version>1.82</version>
+  <description>The Bouncy Castle Java APIs for CMS, PKCS, EAC, TSP, CMP, CRMF, OCSP, and certificate generation. This jar contains  APIs for Java 1.8 and later. The APIs are designed primarily to be used in conjunction with the BC Java provider but may also be used with other providers providing cryptographic services.</description>
   <url>https://www.bouncycastle.org/download/bouncy-castle-java/</url>
   <licenses>
     <license>
@@ -33,7 +33,7 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcutil-jdk18on</artifactId>
-      <version>[1.81,1.82)</version>
+      <version>1.82</version>
       <type>jar</type>
     </dependency>
   </dependencies>
