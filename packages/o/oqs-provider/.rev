@@ -163,4 +163,15 @@
     <comment></comment>
     <requestid>1303590</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>832b60a8c1f1c0ef59838617005aec50</srcmd5>
+    <version>0.10.0</version>
+    <time>1758636473</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.10.0:
+  * Add SNOVA signatures
+  * Switch to dev mode
+  * Remove Composite Signature logic, templating, and documentation (forwarded request 1306621 from lmulling)</comment>
+    <requestid>1306669</requestid>
+  </revision>
 </revisionlist>

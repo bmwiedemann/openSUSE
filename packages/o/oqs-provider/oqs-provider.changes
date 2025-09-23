@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 21 18:16:22 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- updated to 0.10.0:
+  * Add SNOVA signatures
+  * Switch to dev mode
+  * Remove Composite Signature logic, templating, and documentation
+
+-------------------------------------------------------------------
 Wed Sep  3 10:34:10 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - disable openssl.cnf which blocks some of our tests (bsc#1249081)
