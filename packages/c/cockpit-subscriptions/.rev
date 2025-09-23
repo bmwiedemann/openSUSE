@@ -59,4 +59,14 @@
   * Fix state not updating between superuser state changes bsc#1243212</comment>
     <requestid>1289299</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4049fe40388691ac00c955f08139eb2e</srcmd5>
+    <version>13</version>
+    <time>1758653229</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 13
+  * Translation updates
+  * Dependency updates</comment>
+    <requestid>1306667</requestid>
+  </revision>
 </revisionlist>
