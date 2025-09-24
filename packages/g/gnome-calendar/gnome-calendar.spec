@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-calendar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-calendar
-Version:        48.1
+Version:        49.0.1
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
@@ -25,17 +25,18 @@ Group:          Productivity/Office/Organizers
 URL:            https://wiki.gnome.org/Design/Apps/Calendar
 Source0:        %{name}-%{version}.tar.zst
 
+BuildRequires:  blueprint-compiler
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(geocode-glib-2.0) >= 3.26.2
-BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4
-BuildRequires:  pkgconfig(glib-2.0) >= 2.43.4
+BuildRequires:  pkgconfig(gio-2.0) >= 2.80.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.2.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.21.2
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.15.2
 BuildRequires:  pkgconfig(gweather4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.alpha
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.45.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.45.1
 BuildRequires:  pkgconfig(libedataserverui4-1.0) >= 3.45.1
