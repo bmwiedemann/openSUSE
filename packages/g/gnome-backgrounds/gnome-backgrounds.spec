@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-backgrounds
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-backgrounds
-Version:        48.2.1
+Version:        49.0
 Release:        0
 Summary:        GNOME Backgrounds
 License:        CC-BY-SA-3.0
@@ -27,12 +27,7 @@ Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-# jpeg-xl pixbuf loader
-Requires:       gdk-pixbuf-loader-jxl
-# svg pixbuf loader
-Requires:       gdk-pixbuf-loader-rsvg
-# webp pixbuf loader
-Requires:       webp-pixbuf-loader
+Requires:       glycin-loaders
 BuildArch:      noarch
 Obsoletes:      %{name}-lang < %{version}
 
