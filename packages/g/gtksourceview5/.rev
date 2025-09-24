@@ -173,4 +173,12 @@
     <comment>New stable rel (forwarded request 1253464 from iznogood)</comment>
     <requestid>1253712</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>547960f9f215aea27c70905364952931</srcmd5>
+    <version>5.18.0</version>
+    <time>1758720096</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304928 from dimstar)</comment>
+    <requestid>1305476</requestid>
+  </revision>
 </revisionlist>

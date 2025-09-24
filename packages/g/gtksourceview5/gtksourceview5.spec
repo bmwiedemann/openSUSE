@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview5
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview5
-Version:        5.16.0
+Version:        5.18.0
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
@@ -34,8 +34,8 @@ BuildRequires:  valgrind
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(fribidi) >= 0.19.7
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.72
-BuildRequires:  pkgconfig(glib-2.0) >= 2.72
+BuildRequires:  pkgconfig(gio-2.0) >= 2.76
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76
 BuildRequires:  pkgconfig(gtk4) >= 4.6
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.21
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
