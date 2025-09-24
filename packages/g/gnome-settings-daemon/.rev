@@ -1643,4 +1643,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>Fix date format in old changelog entries (forwarded request 1277777 from dimstar)</comment>
     <requestid>1278237</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>32f960b91ebf2b303df41836b975103d</srcmd5>
+    <version>49.0</version>
+    <time>1758720067</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304909 from dimstar)</comment>
+    <requestid>1305459</requestid>
+  </revision>
 </revisionlist>

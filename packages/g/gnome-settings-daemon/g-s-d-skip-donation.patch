@@ -1,0 +1,19 @@
+We understand the need for GNOME to collect funds - but we also believe that nagging a user like this
+is not the right way
+
+As part of our new 'welcome screen' we will gladly incorporate a 'Support GNOME' page with
+a link to donate
+
+diff --git a/plugins/housekeeping/gsd-donation-reminder.c b/plugins/housekeeping/gsd-donation-reminder.c
+index 48266075..cbd2b14f 100644
+--- a/plugins/housekeeping/gsd-donation-reminder.c
++++ b/plugins/housekeeping/gsd-donation-reminder.c
+@@ -107,7 +107,7 @@ check_show_notification (GSettings *settings)
+ 
+ 	if ((now - HALF_A_YEAR_IN_USEC) > timestamp) {
+ 		g_settings_set_int64 (settings, DONATE_LAST_SHOWN_KEY, now);
+-		show_notification ();
++		// show_notification ();
+ 	}
+ }
+ 

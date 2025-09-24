@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:44:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Power: Avoid polling light sensor if ambient light setting is
+    disabled
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Sep  1 14:09:49 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Update to GNOME Session changes
+  + Power:
+    - Fix check for shell-managed brightness
+    - Refactor light sensor enablement
+  + A11y-settings: Manage Orca lifetime
+  + Updated translations
+- Drop  pkgconfig(pango) BuildRequires: no longer needed
+
+-------------------------------------------------------------------
+Fri Aug 29 08:25:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + Drop dependency on GTK4
+  + Add xwayland/x11 build options
+  + Power:
+    - Do not treat all notifications as critical
+    - Let backlight auto-dimming in control of GNOME Shell
+  + Housekeeping: Add new donation reminder notification
+- Changes from version 49.alpha.1:
+  + Keyboard: Drop keyboard bell GSettings schema leftovers
+- Changes from version 49.alpha:
+  + Update to GTK4
+  + Power: Use new Mutter backlight D-Bus interface
+  + Wacom: Drop support to update per-button OLED screens in Wacom
+    Intuos 4 model with descriptive actions. This tablet model will
+    still be functional, but the tiny screens besides the pad
+    buttons will remain blank.
+  + Updated translations
+- Adjust buildrequires, following upstream changes:
+  - Replace libcanberra-gtk with libcanberra
+  - Replace gnome-desktop-3.0 with gnome-desktop-4
+  - Drop pkgconfig(gtk+-3.0)
+- Add g-s-d-skip-donation.patch: We do believe in supporting
+  opensource projects, but not in pestering users with popups in
+  this form. We will, however, add a 'Support GNOME' page into our
+  welcome/tour application to make up for it.
+
+-------------------------------------------------------------------
 Sat Apr 19 07:10:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:

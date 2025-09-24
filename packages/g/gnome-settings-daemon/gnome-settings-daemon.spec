@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-settings-daemon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,10 @@
 %bcond_without wacom
 %endif
 
-%define base_ver 48
+%define base_ver 49
 
 Name:           gnome-settings-daemon
-Version:        48.1
+Version:        49.0
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -44,6 +44,8 @@ Patch0:         gnome-settings-daemon-initial-keyboard.patch
 Patch1:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch
 # PATCH-FIX-UPSTREAM 0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch glgo#GNOME/gnome-settings-daemon#780, bsc#1226423, CVE-2024-38394 sckang@suse.com -- usb-protection: Treat hubs and HID devices like any other USB gadget
 Patch4:         0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch
+# PATCH-FEATURE-OPENSUSE -- Sorry GNOME, but pestering users like this is not welcome. We will add a Support GNOME into our welcome app thogh
+Patch5:         g-s-d-skip-donation.patch
 
 ## SLE/LEAP-only patches start at 1000
 # PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
@@ -68,14 +70,13 @@ BuildRequires:  pkgconfig(geocode-glib-2.0) >= 3.10.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.70
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.11.1
+BuildRequires:  pkgconfig(gnome-desktop-4) >= 3.11.1
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 46.beta
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.3
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(gweather4)
 BuildRequires:  pkgconfig(kbproto)
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libcanberra-gtk3)
+BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.3.1
 BuildRequires:  pkgconfig(libnm) >= 1.0
 BuildRequires:  pkgconfig(libnotify) >= 0.7.3
@@ -83,7 +84,6 @@ BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 2.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.36.2
 BuildRequires:  pkgconfig(mm-glib) >= 1.0
-BuildRequires:  pkgconfig(pango) >= 1.20.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
 BuildRequires:  pkgconfig(systemd) >= 243
 BuildRequires:  pkgconfig(udev)
@@ -160,10 +160,6 @@ contact the settings daemon via its DBus interface.
 %install
 %meson_install
 
-%if %{without wacom}
-rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
-%endif
-
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
@@ -174,72 +170,56 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %license COPYING COPYING.LIB
 %doc NEWS
 %{_datadir}/gnome-settings-daemon/
-%{_libexecdir}/gsd-backlight-helper
 %{_libexecdir}/gsd-printer
 %dir %{_libdir}/gnome-settings-daemon-%{base_ver}/
 %{_libdir}/gnome-settings-daemon-%{base_ver}/libgsd.so
 # Explicitly list all the plugins so we know we don't lose any
 
 %{_libexecdir}/gsd-a11y-settings
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.A11ySettings.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.A11ySettings.service
 %{_userunitdir}/org.gnome.SettingsDaemon.A11ySettings.target
 %{_libexecdir}/gsd-color
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Color.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Color.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Color.target
 %{_libexecdir}/gsd-datetime
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Datetime.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Datetime.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Datetime.target
 %{_libexecdir}/gsd-housekeeping
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Housekeeping.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Housekeeping.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Housekeeping.target
 %{_libexecdir}/gsd-keyboard
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Keyboard.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Keyboard.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Keyboard.target
 %{_libexecdir}/gsd-media-keys
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.MediaKeys.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.MediaKeys.service
 %{_userunitdir}/org.gnome.SettingsDaemon.MediaKeys.target
 %{_libexecdir}/gsd-power
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Power.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Power.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Power.target
 %{_libexecdir}/gsd-print-notifications
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.PrintNotifications.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.PrintNotifications.service
 %{_userunitdir}/org.gnome.SettingsDaemon.PrintNotifications.target
 %{_libexecdir}/gsd-rfkill
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Rfkill.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Rfkill.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Rfkill.target
 %{_libexecdir}/gsd-screensaver-proxy
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.ScreensaverProxy.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.ScreensaverProxy.service
 %{_userunitdir}/org.gnome.SettingsDaemon.ScreensaverProxy.target
 %{_libexecdir}/gsd-sharing
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Sharing.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Sharing.target
 %if %{with smartcard}
 %{_libexecdir}/gsd-smartcard
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Smartcard.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Smartcard.target
 %endif
 %{_libexecdir}/gsd-sound
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Sound.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Sound.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Sound.target
 %{_libexecdir}/gsd-wwan
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wwan.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Wwan.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Wwan.target
 %{_libexecdir}/gsd-xsettings
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.XSettings.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.XSettings.service
 %{_userunitdir}/org.gnome.SettingsDaemon.XSettings.target
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.enums.xml
@@ -254,19 +234,10 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.sharing.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.wwan.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.xsettings.gschema.xml
-%{_datadir}/polkit-1/actions/org.gnome.settings-daemon.plugins.power.policy
 # Own the directory since we can't depend on gconf providing them
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/gnome-settings-daemon.convert
-%if %{with wacom}
-%{_datadir}/polkit-1/actions/org.gnome.settings-daemon.plugins.wacom.policy
-%{_libexecdir}/gsd-wacom-oled-helper
-%{_libexecdir}/gsd-wacom
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
-%{_userunitdir}/org.gnome.SettingsDaemon.Wacom.service
-%{_userunitdir}/org.gnome.SettingsDaemon.Wacom.target
-%endif
 %if %{with wayland}
 %dir %{_sysconfdir}/xdg/Xwayland-session.d
 %{_sysconfdir}/xdg/Xwayland-session.d/00-xrdb
@@ -276,7 +247,6 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_userunitdir}/gnome-session-x11-services.target.wants/org.gnome.SettingsDaemon.XSettings.service
 %dir %{_userunitdir}/gnome-session-x11-services-ready.target.wants/
 %{_userunitdir}/gnome-session-x11-services-ready.target.wants/org.gnome.SettingsDaemon.XSettings.service
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.UsbProtection.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.UsbProtection.service
 %{_userunitdir}/org.gnome.SettingsDaemon.UsbProtection.target
 %{_libexecdir}/gsd-usb-protection
