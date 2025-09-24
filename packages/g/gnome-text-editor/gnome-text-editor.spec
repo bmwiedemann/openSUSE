@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-text-editor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-text-editor
-Version:        48.3
+Version:        49.0
 Release:        0
 Summary:        GNOME Text Editor
 License:        GPL-3.0-or-later

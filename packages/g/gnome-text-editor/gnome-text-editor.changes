@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Sep 13 08:46:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Fix modal state when showing font dialog
+  + Build/CI updates
+
+-------------------------------------------------------------------
+Tue Sep  2 08:22:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Performance improvements to the open popover
+  + Use new shortcuts dialog from libadwaita
+  + Drop direct use of Cairo
+  + updated translations
+
+-------------------------------------------------------------------
+Fri Aug 29 11:13:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.alpha:
+  + Improve document filtering for search
+  + Improve session save
+  + Activate application if no window is present
+  + Fix auto-save combined with session-restore behavior
+  + Handle gtk-decoration-layout for tab closing
+  + Fix label updates in properties when Save As is used
+  + Reload document when encoding dialog is used
+  + Fix a potential leak of pages
+
+-------------------------------------------------------------------
 Fri May 30 06:01:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.3:
