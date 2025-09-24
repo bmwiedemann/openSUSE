@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-themes-extra
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,6 @@ URL:            http://www.gnome.org
 Source:         http://download.gnome.org/sources/gnome-themes-extra/3.28/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
-# Needed to convert svg to gresource
-BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
@@ -52,8 +50,8 @@ BuildArch:      noarch
 %description -n metatheme-adwaita-common
 Adwaita is the default GNOME theme in GNOME 3.
 
-# Note: it's really a metatheme, and not just a gtk2 theme as we require metatheme-adwaita-common
 
+# Note: it's really a metatheme, and not just a gtk2 theme as we require metatheme-adwaita-common
 %package -n gtk2-metatheme-adwaita
 Summary:        GTK+ 2 support for the Adwaita GNOME theme
 Group:          System/GUI/GNOME
@@ -67,8 +65,8 @@ BuildArch:      noarch
 %description -n gtk2-metatheme-adwaita
 Adwaita is the default GNOME theme in GNOME 3.
 
-# Note: it's really a metatheme, and not just a gtk3 theme as we require metatheme-adwaita-common
 
+# Note: it's really a metatheme, and not just a gtk3 theme as we require metatheme-adwaita-common
 %package -n gtk3-metatheme-adwaita
 Summary:        GTK+ 3 support for the Adwaita GNOME theme
 Group:          System/GUI/GNOME

@@ -33,4 +33,12 @@
   i586 only enabled in LegacyX86). (forwarded request 1155214 from dimstar)</comment>
     <requestid>1155234</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8411cf26af0445b6356837354941a3b3</srcmd5>
+    <version>3.28</version>
+    <time>1758720077</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304917 from dimstar)</comment>
+    <requestid>1305466</requestid>
+  </revision>
 </revisionlist>
