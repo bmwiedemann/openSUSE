@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sat Sep 13 08:32:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.8.0:
+  + AdwSpinner: Switch to progressbar accessible role
+  + AdwSwipeTracker: Fix memory leak
+  + Demo: Fix 2 memory leaks
+  + Docs: Typo fixes
+  + Updated translations
+
+-------------------------------------------------------------------
+Sun Aug 31 15:05:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.rc:
+  + Add copy-func and free-func annotations to boxed types
+  + AdwAlertDialog/AdwMessageDialog: Clarify behavior around
+    :default-response
+  + AdwApplication: Enable support for CSS media queries in the
+    autoloaded styles
+  + AdwShortcutLabel: Fix RTL layout
+  + AdwShortcutsDialog: Fix 2 memory leaks
+  + AdwToastOverlay:
+    - Fix disappear animation not playing on dismiss_all()
+    - Make the action button in toasts insensitive after a click
+  + AdwWrapLayout: Fx allocation of a single child in RTL languages
+    or with align > 0
+  + Build: Require GTK 4.19.4
+  + Docs:
+    - Fix AdwShortcutLabel and AdwShortcutsDialog screenshots in
+      dark
+    - Fix close button style on screenshots
+  + Stylesheet:
+    - Update GtkShortcutLabel style to match AdwShortcutLabel
+    - Switch to media queries instead of separate CSS variants
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 26 07:39:42 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.8.beta:
+  + AdwShortcutLabel: Differentiate keypad keys better
+  + AdwShortcutsDialog:
+    - Show navigation pills for large dialogs
+    - Set a title
+    - Focus search bar with Ctrl+F
+    - Fix action-name fetching when presented as a window
+    - Fix search row activation
+    - Fix markup handling
+  + AdwTabBar: Fix focusing start/end action widgets
+  + AdwWrapBox: Add remove_all()
+  + Build: Evaluate dependencies early
+  + Demo: Switch to AdwShortcutLabel
+  + Stylesheet:
+    - Add .document style class using the document font
+    - Increase line height for .body and .caption
+    - Add hover/active styles to GtkFlowBox children
+    - Stop shipping symbolic PNG assets
+    - Fix .devel striping with new GTK
+    - Adapt window controls styles to GTK styles
+- changes from version 1.8.alpha:
+  + Add AdwShortcutsDialog
+  + Add AdwShortcutLabel
+  + Fix a crash with empty window layouts
+  + Avoid needlessly resassigning CSS classes for dynamic shadows
+  + AdwAlertDialog/AdwMessageDialog: Fix a warning with long headings
+  + AdwApplication: Automatically set up app.shortcuts action if
+    shortcuts-dialog.ui is present
+  + AdwBreakpointBin: Preserve focus when switching breakpoints
+  + AdwCarousel:
+    - Support keyboard navigation
+    - Fix a critical when disposing it after scrolling with mouse wheel
+  + AdwExpanderRow: Fix grab_focus() behavior
+  + AdwNavigationView: fix :visible-page-tag notifications
+  + AdwPreferencesGroup:
+    - Add bind_model()
+    - Add get_row()
+    - Allow rows that aren't AdwPreferencesRow
+  + AdwPreferencesPage:
+    - Add insert()
+    - Add get_group()
+    - Fix font name docs
+    - Move yellow/green boundary for accent color
+    - Support high contrast on macOS
+    - Fix accessible role in documentation
+  + Adaptive preview:
+    - Add context to shell and device preset translatable strings
+    - Change screenshot tooltip
+  + Build:
+    - Don't install internal static library
+    - Fix build with older gobject-introspection versions
+  + Demo:
+    - Add a shortcut for opening preferences
+    - Adjust GtkWindowControls styles for GTK 4.18.4 changes
+    - Optimize window and dialog shadows
+    - Fix list DND styles
+    - Fix .property for expander rows
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Aug  2 12:00:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.7.6:

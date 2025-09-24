@@ -475,4 +475,12 @@
   + Various fixes (forwarded request 1297158 from iznogood)</comment>
     <requestid>1297630</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d0daf32afd5d536d88e154f912d9210a</srcmd5>
+    <version>1.8.0</version>
+    <time>1758720097</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304931 from dimstar)</comment>
+    <requestid>1305478</requestid>
+  </revision>
 </revisionlist>

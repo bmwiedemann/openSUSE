@@ -1,7 +1,7 @@
 #
 # spec file for package libadwaita
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libadwaita
-Version:        1.7.6
+Version:        1.8.0
 Release:        0
 Summary:        Building blocks for modern GNOME applications
 License:        LGPL-2.1-or-later
@@ -32,9 +32,9 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(appstream)
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.72
+BuildRequires:  pkgconfig(glib-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.13.4
+BuildRequires:  pkgconfig(gtk4) >= 4.19.4
 %lang_package
 
 %description
