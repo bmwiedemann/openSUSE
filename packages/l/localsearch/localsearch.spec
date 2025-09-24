@@ -1,7 +1,7 @@
 #
 # spec file for package localsearch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define tinysparql_basever 3.8
 
 Name:           localsearch
-Version:        3.9.0
+Version:        3.10.0
 Release:        0
 Summary:        Search tool and indexer using tinysparql
 License:        GPL-2.0-or-later
@@ -39,9 +39,9 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(enca) >= 1.9
 BuildRequires:  pkgconfig(exempi-2.0) >= 2.1.0
 BuildRequires:  pkgconfig(gexiv2)
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.62.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.62.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.76.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.76.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
@@ -124,10 +124,8 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker3.Miner.Files.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.freedesktop.TrackerMiners3.enums.xml
 %dir %{_datadir}/localsearch3
-%dir %{_datadir}/localsearch3/domain-ontologies
 %dir %{_datadir}/localsearch3/extract-rules
 %dir %{_datadir}/localsearch3/miners
-%{_datadir}/localsearch3/domain-ontologies/default.rule
 %{_datadir}/localsearch3/extract-rules/10-abw.rule
 %{_datadir}/localsearch3/extract-rules/10-bmp.rule
 %{_datadir}/localsearch3/extract-rules/10-comics.rule
@@ -206,7 +204,6 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_libexecdir}/localsearch-extractor-3
 %{_libexecdir}/localsearch-writeback-3
 %{_mandir}/man1/localsearch-3.1%{?ext_man}
-%{_mandir}/man1/localsearch-daemon.1%{?ext_man}
 %{_mandir}/man1/localsearch-extract.1%{?ext_man}
 %{_mandir}/man1/localsearch-index.1%{?ext_man}
 %{_mandir}/man1/localsearch-info.1%{?ext_man}
@@ -219,6 +216,9 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_userunitdir}/localsearch-3.service
 %{_userunitdir}/localsearch-control-3.service
 %{_userunitdir}/localsearch-writeback-3.service
+%{_datadir}/bash-completion/completions/localsearch
+%{_mandir}/man1/localsearch-inhibit.1%{?ext_man}
+%{_mandir}/man1/localsearch.1%{?ext_man}
 
 %files lang -f %{name}3.lang
 

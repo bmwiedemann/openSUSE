@@ -41,4 +41,12 @@
   + Updated translations. (forwarded request 1253890 from iznogood)</comment>
     <requestid>1253987</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>126f398f2d99aae7e825c0924b0e9ffe</srcmd5>
+    <version>3.10.0</version>
+    <time>1758720103</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304940 from dimstar)</comment>
+    <requestid>1305482</requestid>
+  </revision>
 </revisionlist>
