@@ -1,7 +1,7 @@
 #
 # spec file for package typst
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -114,17 +114,23 @@ echo "[patch.crates-io.hayagriva]" >> Cargo.toml
 echo "path = \"%{hayagriva_vendor_dir}\"" >> Cargo.toml
 RUSTFLAGS=%{rustflags} %{cargo_build} --manifest-path=%{hayagriva_vendor_dir}/Cargo.toml --features cli
 
+# We need to run update again, because cargo_test-macro now contains --locked as well,
+# which makes the check-section fail.
+# See https://bugzilla.opensuse.org/show_bug.cgi?id=1246346
+%{__cargo} update --offline --workspace
+
 %check
 %if 0%{?force_gcc_version}
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
-%{cargo_test} --workspace
+# Also build in release-mode so we don't fully rebuild the package
+%{cargo_test} --workspace --release
 
 %install
 install -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 target/release/typst %{buildroot}%{_bindir}/%{name}
-install -m 0755 %{hayagriva_vendor_dir}/target/release/hayagriva %{buildroot}%{_bindir}/hayagriva
+install -m 0755 target/release/hayagriva %{buildroot}%{_bindir}/hayagriva
 
 # Shell completions
 install -Dm644 -T %{_builddir}/%{name}-%{version}/artifacts/%{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
