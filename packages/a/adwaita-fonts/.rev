@@ -7,4 +7,15 @@
     <comment>New package</comment>
     <requestid>1248327</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a7ad9df5e2fac056b9fd4f11148eeff7</srcmd5>
+    <version>49.0</version>
+    <time>1758720124</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.0:
+  + mono: Add hash verification
+  + license: Change to OFL
+- Change License to OFL, following upstream (forwarded request 1305150 from dimstar)</comment>
+    <requestid>1305507</requestid>
+  </revision>
 </revisionlist>

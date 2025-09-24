@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 16 11:46:10 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + mono: Add hash verification
+  + license: Change to OFL
+- Change License to OFL, following upstream
+
+-------------------------------------------------------------------
 Wed Jan 29 20:06:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Initial packaging for openSUSE.

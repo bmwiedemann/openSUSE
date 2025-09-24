@@ -1,7 +1,7 @@
 #
 # spec file for package adwaita-fonts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           adwaita-fonts
-Version:        48.2
+Version:        49.0
 Release:        0
 Summary:        Adwaita Fonts
-License:        GPL-3.0-or-later
+License:        OFL-1.1
 URL:            https://gitlab.gnome.org/GNOME/adwaita-fonts
-Source:         https://download.gnome.org/sources/adwaita-fonts/48/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/adwaita-fonts/49/%{name}-%{version}.tar.xz
 
 # needed for directory ownership
 BuildRequires:  fontconfig
@@ -62,4 +62,3 @@ customized to match Inter.
 %{_fontsdir}/Adwaita/AdwaitaSans-Regular.ttf
 
 %changelog
-
