@@ -1,7 +1,7 @@
 #
 # spec file for package gcr3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch1:         gcr-bsc932232-use-libgcrypt-allocators.patch
 
 # For directory ownership
 BuildRequires:  dbus-1
+BuildRequires:  fdupes
 BuildRequires:  gettext-devel >= 0.19.8
 BuildRequires:  gobject-introspection-devel >= 1.34
 BuildRequires:  libgcrypt-devel >= 1.4.5
@@ -79,6 +80,7 @@ Group:          System/Libraries
 Provides:       %{_name}-data = %{version}
 Obsoletes:      %{_name}-data <= %{version}
 Conflicts:      %{_name}-data
+BuildArch:      noarch
 
 %description data
 This package provides the GSettings schemas and a collection of icons
@@ -197,6 +199,14 @@ Requires:       typelib-1_0-Gck-1 = %{version}
 GCK is a library for accessing PKCS#11 modules like smart cards, in a
 (G)object oriented way.
 
+%package devel-docs
+Summary:        Development documents for gcr and gck
+Group:          Development/Libraries/GNOME
+BuildArch:      noarch
+
+%description devel-docs
+Development documents for gcr and gck.
+
 %lang_package
 
 %prep
@@ -213,6 +223,7 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %install
 %meson_install
 %find_lang %{_name}
+%fdupes -s %{buildroot}/%{_datadir}/doc/
 
 %ldconfig_scriptlets -n libgcr-3-1
 %ldconfig_scriptlets -n libgck-1-0
@@ -270,15 +281,14 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %{_libdir}/girepository-1.0/GcrUi-3.typelib
 
 %files -n libgcr3-devel
-%doc %{_datadir}/doc/gcr*/
 %{_libdir}/libgcr-base-3.so
 %{_libdir}/libgcr-ui-3.so
 %{_libdir}/pkgconfig/gcr-3.pc
 %{_libdir}/pkgconfig/gcr-base-3.pc
 %{_libdir}/pkgconfig/gcr-ui-3.pc
-%dir %{_includedir}/gcr-3
-%{_includedir}/gcr-3
+%{_includedir}/gcr-3/
 %{_datadir}/gir-1.0/GcrUi-3.gir
+%{_datadir}/gir-1.0/Gcr-3.gir
 
 %files -n libgck-1-0
 %license COPYING
@@ -289,13 +299,15 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %{_libdir}/girepository-1.0/Gck-1.typelib
 
 %files -n libgck1-devel
-%doc %{_datadir}/doc/gck*/
 %{_libdir}/libgck-1.so
 %{_libdir}/pkgconfig/gck-1.pc
 %{_includedir}/gck-1/
 %{_datadir}/gir-1.0/Gck-1.gir
-%{_datadir}/gir-1.0/Gcr-3.gir
 %{_datadir}/vala/vapi/
+
+%files devel-docs
+%doc %{_datadir}/doc/gcr*/
+%doc %{_datadir}/doc/gck*/
 
 %files lang -f %{_name}.lang
 

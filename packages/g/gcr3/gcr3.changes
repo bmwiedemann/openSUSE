@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug  9 10:20:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fdupes BuildRequires and macro, remove duplicate files.
+- Split out devel documentation into new devel-doc sub-package.
+- Change gcr3-data sub-package to noarch.
+- Move Gcr-3.gir file to the correct libgcr3-devel package, it was
+  placed in libgck1-devel before.
+
+-------------------------------------------------------------------
 Fri May 23 09:34:59 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.
