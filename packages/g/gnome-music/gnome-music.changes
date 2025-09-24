@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:41:24 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0.2:
+  + Fix flatpak build.
+- Changes from version 49.0.1:
+  + Fix issue in metainfo.
+- Changes from version 49.0:
+  + Fix type in error message
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Sep  1 14:17:41 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Fix order of playlist queries on dnd
+  + Handle empty fields for Grl.Media creation
+  + Extend asyncio use in playlists
+
+-------------------------------------------------------------------
+Sat Aug 30 08:57:41 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + Improve handling of failures in the art pipeline
+  + Add D-Bus service file
+
+-------------------------------------------------------------------
 Thu Aug 21 15:49:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:

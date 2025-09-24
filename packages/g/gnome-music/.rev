@@ -729,4 +729,12 @@
     <comment></comment>
     <requestid>1300944</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>664a29a14a9d9abdd7870e5def5a5a73</srcmd5>
+    <version>49.0.2</version>
+    <time>1758720064</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304903 from dimstar)</comment>
+    <requestid>1305455</requestid>
+  </revision>
 </revisionlist>

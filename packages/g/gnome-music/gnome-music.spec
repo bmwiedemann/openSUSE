@@ -17,7 +17,7 @@
 
 
 Name:           gnome-music
-Version:        48.1
+Version:        49.0.2
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
@@ -99,6 +99,7 @@ Music player and management application for GNOME.
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/gnome-music
 %{_datadir}/applications/org.gnome.Music.desktop
+%{_datadir}/dbus-1/services/org.gnome.Music.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Music.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Music*
 %{_datadir}/metainfo/org.gnome.Music.metainfo.xml
