@@ -1432,4 +1432,12 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment></comment>
     <requestid>1290038</requestid>
   </revision>
+  <revision rev="194" vrev="18">
+    <srcmd5>b8e26208deef963234925a9fe5cb394e</srcmd5>
+    <version>2.24.33</version>
+    <time>1758720083</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304923 from dimstar)</comment>
+    <requestid>1305471</requestid>
+  </revision>
 </revisionlist>

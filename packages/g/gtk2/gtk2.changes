@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  9 10:38:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit glycin-loaders BuildRequires: provide image loaders
+  to be used by gdk-pixbuf.
+
+-------------------------------------------------------------------
 Wed Jul  2 17:30:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Rebase automake-1.17.patch to allow usage of automake-1.18.x

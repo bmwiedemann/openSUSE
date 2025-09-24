@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,7 @@ BuildRequires:  cups-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdk-pixbuf-devel
+BuildRequires:  glycin-loaders
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  libtiff-devel
