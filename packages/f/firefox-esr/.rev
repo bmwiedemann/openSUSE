@@ -155,4 +155,22 @@
     <comment></comment>
     <requestid>1305194</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>72e88c00b898f22437b5e84c7cda649f</srcmd5>
+    <version>140.3.1</version>
+    <time>1758720237</time>
+    <user>anag_factory</user>
+    <comment>- Firefox Extended Support Release 140.3.1 ESR
+  * Fixed: Improved reliability when HTTP/3 connections fail:
+    Firefox no longer forces HTTP/2 during fallback, allowing the
+    server to choose the protocol and preventing stalls on some
+    sites. (bmo#1980812)
+- Firefox Extended Support Release 140.3.1 ESR
+  * Fixed: Improved reliability when HTTP/3 connections fail:
+    Firefox no longer forces HTTP/2 during fallback, allowing the
+    server to choose the protocol and preventing stalls on some
+    sites. (bmo#1980812)
+</comment>
+    <requestid>1306784</requestid>
+  </revision>
 </revisionlist>
