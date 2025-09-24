@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-initial-setup
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-initial-setup
-Version:        48.0
+Version:        49.0
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
@@ -85,13 +85,6 @@ Initial assistant, helping you to get the system up and running.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 
-%if !0%{?sle_version}
-# Move autostart file to /usr/etc
- mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
- mv %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop %{buildroot}%{_distconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
- mv %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop %{buildroot}%{_distconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
-%endif
-
 %pre -f %{name}.pre
 
 %files
@@ -107,30 +100,22 @@ Initial assistant, helping you to get the system up and running.
 %{_datadir}/polkit-1/rules.d/20-gnome-initial-setup.rules
 %{_libexecdir}/gnome-initial-setup
 %{_libexecdir}/gnome-initial-setup-copy-worker
-
 %dir %{_datadir}/dconf
 %dir %{_datadir}/dconf/profile
 %{_datadir}/dconf/profile/gnome-initial-setup
 %dir %{_datadir}/gnome-initial-setup
 %{_datadir}/gnome-initial-setup/initial-setup-dconf-defaults
-%if !0%{?sle_version}
-%{_distconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
-%{_distconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
-%else
-%{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
-%{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
-%endif
 %if !0%{?sle_version} || 0%{?sle_version} >= 160000
 %{_userunitdir}/gnome-initial-setup-copy-worker.service
 %{_userunitdir}/gnome-initial-setup-first-login.service
-%dir %{_userunitdir}/gnome-session@gnome-initial-setup.target.d
-%{_userunitdir}/gnome-session@gnome-initial-setup.target.d/session.conf
-%dir %{_userunitdir}/basic.target.wants
-%dir %{_userunitdir}/gnome-session.target.wants
-%{_userunitdir}/basic.target.wants/gnome-initial-setup-copy-worker.service
 %{_userunitdir}/gnome-session.target.wants/gnome-initial-setup-first-login.service
 %{_sysusersdir}/gnome-initial-setup.conf
 %endif
+%{_userunitdir}/gnome-initial-setup.service
+%dir %{_userunitdir}/gnome-session@gnome-initial-setup.target.d
+%{_userunitdir}/gnome-session@gnome-initial-setup.target.d/gnome-initial-setup.conf
+%dir %{_userunitdir}/graphical-session-pre.target.wants
+%{_userunitdir}/graphical-session-pre.target.wants/gnome-initial-setup-copy-worker.service
 
 %files lang -f %{name}.lang
 

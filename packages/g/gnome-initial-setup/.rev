@@ -325,4 +325,36 @@ Resub it :-)</comment>
     <comment>New stable branch release (forwarded request 1253064 from iznogood)</comment>
     <requestid>1253074</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c723388b94572d3ee1c279c3eaf9f244</srcmd5>
+    <version>49.0</version>
+    <time>1758720223</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.0:
+  + Restore minimal desktop file to show app icon
+  + Add spoken levels to the password quality
+  + Updated translations.
+
+- Update to version 49.beta.1:
+  + Drop gnome-keyring support. This is no longer used
+
+- Update to version 49.beta:
+  + Many accessibility issues have been fixed
+    + Adapt to systemd-only gnome-session and GDM dynamic users
+    + a11y:
+      - Notify bad username
+      - Make local user page accessible
+      - Add accessibility to the password page
+      - Add accessibility to the language selection page
+      - Add accessibility support to the keyboard page
+      - some extra accessibility to the Summary page
+      - Add accessibility to parental controls page
+      - read description in location services
+      - add accessibility to the Timezone page
+- Changes from version 49.alpha:
+  + data: Drop dependency on Wacom g-s-d plugin
+- Changes from version 48.1:
+  + Updated translations (forwarded request 1305209 from iznogood)</comment>
+    <requestid>1305513</requestid>
+  </revision>
 </revisionlist>
