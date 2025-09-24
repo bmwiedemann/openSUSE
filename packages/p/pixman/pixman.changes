@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 17 12:19:38 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.46.4:
+  + RISC-V: Use hwprobe interface to check for RVV 1.0
+
+-------------------------------------------------------------------
 Wed Jul 16 19:20:34 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Disable LTO on riscv64 due to gcc bug 110812

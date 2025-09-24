@@ -543,4 +543,12 @@ But since we have been since august, I'm subbing the next version also. Should y
     <comment>- Disable LTO on riscv64 due to gcc bug 110812 (forwarded request 1293890 from Andreas_Schwab)</comment>
     <requestid>1295785</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>33ac1b4989d50248ed7ccb1f8cb8226a</srcmd5>
+    <version>0.46.4</version>
+    <time>1758720131</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.46.4 (forwarded request 1305370 from dimstar)</comment>
+    <requestid>1305523</requestid>
+  </revision>
 </revisionlist>

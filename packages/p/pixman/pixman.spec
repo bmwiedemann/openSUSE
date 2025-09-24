@@ -1,7 +1,7 @@
 #
 # spec file for package pixman
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pixman
-Version:        0.46.2
+Version:        0.46.4
 Release:        0
 Summary:        Pixel manipulation library
 License:        MIT
