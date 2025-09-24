@@ -1,8 +1,8 @@
-Index: gdm-46.2/daemon/gdm-display.c
+Index: gdm-49.beta/daemon/gdm-display.c
 ===================================================================
---- gdm-46.2.orig/daemon/gdm-display.c
-+++ gdm-46.2/daemon/gdm-display.c
-@@ -1538,12 +1538,12 @@ can_create_environment (const char *sess
+--- gdm-49.beta.orig/daemon/gdm-display.c
++++ gdm-49.beta/daemon/gdm-display.c
+@@ -1554,12 +1554,12 @@ can_create_environment (const char *sess
          return session_exists;
  }
  
@@ -18,7 +18,7 @@ Index: gdm-46.2/daemon/gdm-display.c
                  return TRUE;
  
          return FALSE;
-@@ -1625,7 +1625,7 @@ wants_initial_setup (GdmDisplay *self)
+@@ -1641,7 +1641,7 @@ wants_initial_setup (GdmDisplay *self)
  
          priv = gdm_display_get_instance_private (self);
  
@@ -27,20 +27,20 @@ Index: gdm-46.2/daemon/gdm-display.c
                  return FALSE;
          }
  
-Index: gdm-46.2/daemon/gdm-manager.c
+Index: gdm-49.beta/daemon/gdm-manager.c
 ===================================================================
---- gdm-46.2.orig/daemon/gdm-manager.c
-+++ gdm-46.2/daemon/gdm-manager.c
+--- gdm-49.beta.orig/daemon/gdm-manager.c
++++ gdm-49.beta/daemon/gdm-manager.c
 @@ -62,7 +62,7 @@
+ #define GDM_MANAGER_PATH          GDM_DBUS_PATH "/Manager"
  #define GDM_MANAGER_DISPLAYS_PATH GDM_DBUS_PATH "/Displays"
  
- #define INITIAL_SETUP_USERNAME "gnome-initial-setup"
 -#define ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT GDM_RUN_DIR "/gdm.ran-initial-setup"
 +#define BLOCK_INITIAL_SETUP LOCALSTATEDIR "/lib/gdm/block-initial-setup"
+ #define INITIAL_SETUP_EXPORT_DIR GDM_RUN_DIR "/gnome-initial-setup"
  
  typedef struct
- {
-@@ -1847,6 +1847,7 @@ on_start_user_session (StartUserSessionO
+@@ -1837,6 +1837,7 @@ on_start_user_session (StartUserSessionO
          gboolean fail_if_already_switched = TRUE;
          GdmDisplay *display;
          const char *session_id;
@@ -48,7 +48,7 @@ Index: gdm-46.2/daemon/gdm-manager.c
  
          g_debug ("GdmManager: start or jump to session");
  
-@@ -1889,22 +1890,21 @@ on_start_user_session (StartUserSessionO
+@@ -1879,22 +1880,21 @@ on_start_user_session (StartUserSessionO
                                "doing-initial-setup", &doing_initial_setup,
                                NULL);
  
@@ -81,11 +81,11 @@ Index: gdm-46.2/daemon/gdm-manager.c
                  } else {
                          g_debug ("GdmManager: session has its display server, reusing our server for another login screen");
                  }
-Index: gdm-46.2/daemon/meson.build
+Index: gdm-49.beta/daemon/meson.build
 ===================================================================
---- gdm-46.2.orig/daemon/meson.build
-+++ gdm-46.2/daemon/meson.build
-@@ -227,6 +227,7 @@ endif
+--- gdm-49.beta.orig/daemon/meson.build
++++ gdm-49.beta/daemon/meson.build
+@@ -235,6 +235,7 @@ endif
  
  gdm_daemon = executable('gdm',
    [ gdm_daemon_sources, gdm_daemon_gen_sources ],

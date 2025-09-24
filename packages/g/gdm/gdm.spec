@@ -27,7 +27,7 @@
 %endif
 
 Name:           gdm
-Version:        48.0
+Version:        49.0.1
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
@@ -57,9 +57,6 @@ Source14:       gdm-fingerprint-sle.pamd
 Source15:       gdm-smartcard-sle.pamd
 # Configuration for pulseaudio
 Source20:       default.pa
-# WARNING: do not remove/significantly change patch0 without updating the relevant patch in accountsservice too
-# PATCH-FIX-OPENSUSE gdm-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
-Patch0:         gdm-s390-not-require-g-s-d_wacom.patch
 # PATCH-FIX-OPENSUSE  gdm-sysconfig-settings.patch bnc432360 bsc#919723 hpj@novell.com -- Read autologin options from /etc/sysconfig/displaymanager; note that accountsservice has a similar patch (accountsservice-sysconfig.patch)
 Patch1:         gdm-sysconfig-settings.patch
 # PATCH-FIX-OPENSUSE gdm-suse-xsession.patch vuntz@novell.com -- Use the /etc/X11/xdm/* scripts
@@ -70,10 +67,6 @@ Patch4:         gdm-xauthlocalhostname.patch
 Patch5:         gdm-switch-to-tty1.patch
 # PATCH-FIX-OPENSUSE gdm-initial-setup-hardening.patch boo#1140851, glgo#GNOME/gnome-initial-setup#76 fezhang@suse.com -- Prevent gnome-initial-setup running if any regular user has perviously logged into the system
 Patch6:         gdm-initial-setup-hardening.patch
-# PATCH-FIX-UPSTREAM gdm-settings-utils_rename-variable.patch -- Rename variable to fix build with gcc 15
-Patch7:         gdm-settings-utils_rename-variable.patch
-# PATCH-FIX-UPSTREAM gdm-fix-wrong-path-gdm-config.patch bsc#1232669, glgo#GNOME/gdm!282 alynx.zhou@suse.com -- Add missing slash when gdm-config building dconf database path
-Patch8:         gdm-fix-wrong-path-gdm-config.patch
 # PATCH-FIX-UPSTREAM gdm-plymouth-quit-wait.patch bsc#1243439 xwang@suse.com -- Disable plymouth-quit-wait.service
 Patch9:         gdm-plymouth-quit-wait.patch
 
@@ -254,10 +247,6 @@ running display manager.
 ### NON-SLE patches start from 0 to 999
 %autopatch -p1 -m 1 -M 999
 
-%ifarch s390 s390x
-%patch -P 0 -p1
-%endif
-
 ### SLE and Leap only patches start at 1000
 %if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
 ## Use this when there's no need to skip patches.
@@ -274,7 +263,7 @@ running display manager.
         -Dipv6=true \
         -Dpam-mod-dir=%{_pam_moduledir} \
         -Ddbus-sys=%{_datadir}/dbus-1/system.d \
-	-Ddistro=generic \
+        -Ddistro=generic \
         -Dplymouth=enabled \
         -Drun-dir=/run/gdm \
 %if %{enable_split_authentication}
@@ -457,16 +446,13 @@ fi
 %_config_norepl %{_pam_vendordir}/gdm-password
 %_config_norepl %{_pam_vendordir}/gdm-launch-environment
 %{_datadir}/dbus-1/system.d/gdm.conf
-%if 0%{?is_opensuse}
-%{_udevrulesdir}/61-gdm.rules
-%endif
 %{_datadir}/polkit-1/rules.d/20-gdm.rules
 %{_tmpfilesdir}/gdm.conf
 %{_sysusersdir}/gdm.conf
 %dir %{_prefix}/lib/systemd/logind.conf.d
 %{_prefix}/lib/systemd/logind.conf.d/reserveVT.conf
 %dir %{_userunitdir}/gnome-session@gnome-login.target.d
-%{_userunitdir}/gnome-session@gnome-login.target.d/session.conf
+%{_userunitdir}/gnome-session@gnome-login.target.d/gnome-login.session.conf
 
 %files xdm-integration
 # /etc/xinit.d/xdm integration

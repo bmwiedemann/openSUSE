@@ -2254,4 +2254,41 @@
   potentially happen on offline upgrades.</comment>
     <requestid>1304073</requestid>
   </revision>
+  <revision rev="289" vrev="1">
+    <srcmd5>66912e52c62490bcc8f5d527dbfde32e</srcmd5>
+    <version>49.0.1</version>
+    <time>1758720128</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.0.1:
+  + Follow-up for permissions issue fix, making the fix work in
+    more environments
+
+- Update to version 49.0:
+  + Fix build failures when built without plymouth support
+  + Fix permissions issue on the GDM work dir (/var/lib/gdm) that
+    broke settings persistence
+  + Updated translations
+
+- Update to version 49.rc:
+  + Fixed a bug in PAM config files, introduced by transition to
+    dynamic users
+  + Added logic to retry preferred display server (usually Wayland)
+    before falling back (usually to X11)
+  + Fixed a bug where Plymouth keeps running if no display is
+    plugged into the system. This would prevent bootup from
+    completing and would prevent the user from logging in on a
+    serial console
+  + Fixed GDM's session file loading logic to search directories in
+    correct precedence order
+  + Fix simpledrm device detection to match the kernel's new device
+    naming scheme
+  + Re-enabled X11 support by default. We found it difficult to
+    cleanly separate GDM's ability to launch modern X11 sessions
+    (which we intended to keep enabled in GNOME 49) from the rest
+    of GDM's X11 integration (which we intended to disable but
+    leave intact for GNOME 49). We still plan to remove GDM's full
+    X11 integration in a future version, and leave only the ability
+    to launch modern X11 sessions. (forwarded request 1305256 from iznogood)</comment>
+    <requestid>1305517</requestid>
+  </revision>
 </revisionlist>
