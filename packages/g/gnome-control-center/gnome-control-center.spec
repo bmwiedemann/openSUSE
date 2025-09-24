@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        48.4
+Version:        49.0
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -35,9 +35,6 @@ URL:            https://apps.gnome.org/app/org.gnome.Settings
 Source0:        %{name}-%{version}.tar.zst
 Source1:        libgxdp-0.gitmodule.tar.zst
 Source99:       %{name}-rpmlintrc
-
-# PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running
-Patch1:         gnome-control-center-disable-error-message-for-NM.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-system-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -48,6 +45,7 @@ Patch1002:      gnome-control-center-more-power-button-actions.patch
 Patch1003:      gnome-control-center-bring-back-firewall-zone.patch
 
 BuildRequires:  /usr/bin/Xvfb
+BuildRequires:  blueprint-compiler
 BuildRequires:  cups-devel >= 1.4
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -241,12 +239,40 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %files
 %license COPYING
 %doc NEWS README.md
-%{_bindir}/*
-%{_datadir}/metainfo/org.gnome.Settings.appdata.xml
+%{_bindir}/%{name}
+%{_datadir}/metainfo/org.gnome.Settings.metainfo.xml
 %exclude %{_datadir}/applications/gnome-color-panel.desktop
 %exclude %{_datadir}/applications/gnome-online-accounts-panel.desktop
 %exclude %{_datadir}/applications/gnome-users-panel.desktop
-%{_datadir}/applications/*.desktop
+%{_datadir}/applications/gnome-about-panel.desktop
+%{_datadir}/applications/gnome-applications-panel.desktop
+%{_datadir}/applications/gnome-background-panel.desktop
+%ifnarch s390x
+%{_datadir}/applications/gnome-bluetooth-panel.desktop
+%endif
+%{_datadir}/applications/gnome-datetime-panel.desktop
+%{_datadir}/applications/gnome-display-panel.desktop
+%{_datadir}/applications/gnome-keyboard-panel.desktop
+%{_datadir}/applications/gnome-mouse-panel.desktop
+%{_datadir}/applications/gnome-multitasking-panel.desktop
+%{_datadir}/applications/gnome-network-panel.desktop
+%{_datadir}/applications/gnome-notifications-panel.desktop
+%{_datadir}/applications/gnome-power-panel.desktop
+%{_datadir}/applications/gnome-printers-panel.desktop
+%{_datadir}/applications/gnome-privacy-panel.desktop
+%{_datadir}/applications/gnome-region-panel.desktop
+%{_datadir}/applications/gnome-search-panel.desktop
+%{_datadir}/applications/gnome-sharing-panel.desktop
+%{_datadir}/applications/gnome-sound-panel.desktop
+%{_datadir}/applications/gnome-system-panel.desktop
+%{_datadir}/applications/gnome-universal-access-panel.desktop
+%ifnarch s390x
+%{_datadir}/applications/gnome-wacom-panel.desktop
+%endif
+%{_datadir}/applications/gnome-wellbeing-panel.desktop
+%{_datadir}/applications/gnome-wifi-panel.desktop
+%{_datadir}/applications/gnome-wwan-panel.desktop
+%{_datadir}/applications/org.gnome.Settings.desktop
 %{_datadir}/bash-completion/completions/gnome-control-center
 %{_libexecdir}/gnome-control-center-global-shortcuts-provider
 %{_datadir}/dbus-1/interfaces/org.gnome.GlobalShortcutsRebind.xml

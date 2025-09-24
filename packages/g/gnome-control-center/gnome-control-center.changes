@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Mon Sep 15 13:03:24 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Mobile Networks: Fix crash with APNs without a name label
+  + Sound: Fix unreadable profile combo row label
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Sep  1 12:41:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Fix yelp app name (requires yelp 49.beta)
+  + Fix a couple of compiler warnings in the time editor widget
+  + About:
+    - Use IMAGE_VERSION from /etc/os-release for "OS Build" row
+    - Fix NVIDIA GPU name display if get_renderer_from_switcheroo
+      failed
+  + Accessibility: Add button to launch Orca preferences
+  + Color:  Use explicit color calibration API
+  + Keyboard: Fix issue with focus on search entry in the Shortcuts
+    settings
+  + Power: Replace SettingsDaemon.Power.Screen with
+    Shell.Brightness
+  + System:
+    - Fix handling of failure to disable systemd services
+    - Add missing include guard
+  + User Accounts: Handle UTF-8 characters in invalid username
+    error message
+
+-------------------------------------------------------------------
+Fri Aug 29 09:06:06 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + Rename appdata file to metainfo
+  + Use AdwShortcutsDialog to show keyboard shortcuts
+  + About: Add "Support GNOME" with Donate button
+  + Display:
+    - Remove minimum display size
+    - Remove unnecessary display config abstraction
+  + Online Accounts: Disable markup in notification toasts for
+    properly showing URLs
+  + Printers: Rename dialog title to "Active Jobs"
+  + Sound: Fix sound device and profile selection
+- Changes from version 49.alpha:
+  + Build without X11 support by default (-Dx11 Meson build option)
+  + Port nearly all UI definition files to Blueprint
+  + Fix various compiler and Meson warnings
+  + Plug several memory leaks
+  + Ensure valid ID in ActivateResult of search-provider
+  + Many accessibility improvements, with clearer labeling and
+    better keyboard navigation
+  + Add rounded borders to illustrations
+  + Wrap settings panel names in small window sizes
+  + Call g_type_ensure for a custom class
+  + Unify search entries across several dialogs
+  + Remove .desktop suffix from our app ID
+  + Common components: Refactor split-row code
+  + Apps:
+    - Set bold style to the app name
+    - Hide preference group if no permissions are shown
+    - Show global shortcuts count in the "Global shortcuts" row
+    - Avoid markup tags
+    - Use WrapBox for buttons "open" and "details"
+  + Color management:
+    - Make it clear that only display calibration is supported
+    - Use AdwDialog.force_close for dialog
+    - Remove extra line at the bottom of the device list
+  + Displays:
+    - Don't round all scales to 25% increments
+    - Drop the HDR Brigthness slider (now controlled by backlight setting)
+  + Global shortcuts:
+    - Reword how we refer to the app's settings page
+    - Don't crash on an invalid app ID
+  + Keyboard: Fix duplicated "Search" entries in the Custom Shortcuts
+  + Mouse & Touchpad: Add pointing stick configuration
+  + Network:
+    - Fix bad memory access in wsec_size_group_clear()
+    - Fix infinite loop in WireGuard page
+    - Add initial eps bearer settings (LTE) to APN dialog
+  + Notifications: Fix crash when modifying app settings multiple times
+  + Online Accounts: Remove the old Windows Live provider
+  + Power:
+    - Set suspend notice message visible by default
+    - Change power saver icon to leaf (matching GNOME Shell)
+  + Printers: Run printer details response callback when closing dialog
+  + Sound:
+    - Move output test button above the output device row
+    - Change default alert sound
+    - Port device and configuration dropdowns to AdwComboRow
+    - Fix cut off of speaker test button border on hover
+  + System:
+    - Improve password generation logic
+    - Use EFF's Wordlists for Random Passphrases for password generator
+  + Wacom:
+    - Get motion history from tablets in test drawing area
+    - Remove the X11-based noinst calibration helper
+  + Wellbeing:
+    - Don't make screen time row activatable
+    - Fix NAN handling for chart labels
+    - Fix chart height calculation for partially filled week
+    - Fix a typo in an enum name
+  + Users: Don't crash when failing to crop avatar images
+- Drop gnome-control-center-disable-error-message-for-NM.patch: no
+  longer applicable.
+- Add blueprint-compiler BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Sun Aug  3 08:34:29 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.4:
