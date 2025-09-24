@@ -1,7 +1,7 @@
 #
 # spec file for package java-17-openj9
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -107,7 +107,6 @@ Source14:       TestCryptoLevel.java
 # Ensure ECDSA is working
 Source15:       TestECDSA.java
 Source100:      openj9-nogit.patch.in
-Source1000:     %{name}-rpmlintrc
 # Restrict access to java-atk-wrapper classes
 Patch1:         java-atk-wrapper-security.patch
 # Allow multiple initialization of PKCS11 libraries
@@ -117,6 +116,8 @@ Patch3:         openssl-OSSL_LIB_CTX.patch
 Patch4:         openj9-openssl.patch
 # Fix: implicit-pointer-decl
 Patch5:         implicit-pointer-decl.patch
+#
+Patch6:         omr-libdwarf-2.patch
 #
 Patch10:        system-pcsclite.patch
 #
@@ -362,6 +363,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 %if %{with_system_pcsc}
 %patch -P 10 -p1
