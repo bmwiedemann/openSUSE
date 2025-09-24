@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:22:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Sep  1 14:02:55 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Fix build with meson >1.9.0
+  + Support keypad page up/down keys in relevant keycombos
+  + Updated translations
+- Drop gsettings-desktop-schemas-meson-1.9.patch: fixed upstream
+
+-------------------------------------------------------------------
+Thu Aug 28 13:09:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + Increase document font size to 12pt
+  + Use xdg-terminal-exec as default terminal launcher
+- Changes from version 49.alpha:
+  + Switch to JXL for background image
+  + Add option to configure restart/shutdown options being
+    available in the lockscreen.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug 11 12:07:37 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gsettings-desktop-schemas-meson-1.9.patch: Fix build against

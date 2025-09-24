@@ -628,4 +628,12 @@
   meson 1.9.0rc2 (glgo#gsettings-desktop-schemas!113) (forwarded request 1298815 from dimstar)</comment>
     <requestid>1298878</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>cf5b0a8fb2ef749e3d2cd9f3b8b192db</srcmd5>
+    <version>49.0</version>
+    <time>1758720081</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304922 from dimstar)</comment>
+    <requestid>1305470</requestid>
+  </revision>
 </revisionlist>
