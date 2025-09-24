@@ -1,7 +1,7 @@
 #
 # spec file for package bettercap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           bettercap
-Version:        2.41.1
+Version:        2.41.4
 Release:        0
 Summary:        Swiss army knife for network attacks and monitoring
 License:        GPL-3.0-or-later

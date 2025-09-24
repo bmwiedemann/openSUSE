@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1295280</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee3fdcf3ee463618fe3aa7c0e36cf201</srcmd5>
+    <version>2.41.4</version>
+    <time>1758720258</time>
+    <user>anag_factory</user>
+    <comment>Forward the current version of bettercap to Factory</comment>
+    <requestid>1306785</requestid>
+  </revision>
 </revisionlist>

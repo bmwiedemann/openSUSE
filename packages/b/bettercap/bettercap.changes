@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Sep 20 08:05:06 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.41.4:
+  * releasing version 2.41.4
+  * hotfix: hotfix 2 for tcp.proxy
+
+-------------------------------------------------------------------
+Wed Sep 10 19:32:44 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.41.4:
+  New Features
+  * Add default username and password for the API to simplify
+    initial setup and access control.
+  Fixes
+  * Corrected tcp.proxy onData return value handling (fixes #788)
+    to ensure proper flow control in TCP proxy callbacks.
+  * Ensured consistent behavior between HTTP and HTTPS servers.
+  * Enforced callback signature checks to prevent runtime errors
+    with invalid handlers.
+  Miscellaneous
+  * Fixed minor typos and improved wording.
+
+-------------------------------------------------------------------
 Wed Jul 16 07:20:43 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.41.1:
