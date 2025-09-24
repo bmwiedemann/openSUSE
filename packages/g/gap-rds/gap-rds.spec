@@ -1,7 +1,7 @@
 #
 # spec file for package gap-rds
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-rds
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        GAP: A package for searching relative difference sets
 License:        GPL-2.0-or-later

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 23 23:30:15 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9
+  * renamed `PRank@RDS` to `RDS_PRank`
+  * renamed `FOO` to `BAR`
+
+-------------------------------------------------------------------
 Sun Feb 12 11:33:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8
