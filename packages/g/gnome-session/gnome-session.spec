@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-session
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define basever 48
+%define basever 49
 
 Name:           gnome-session
-Version:        48.0
+Version:        49.0
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
@@ -29,10 +29,6 @@ URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.zst
 Source1:        gnome
 Source2:        gnome.desktop
-# PATCH-FIX-UPSTREAM gnome-session-better-handle-empty-xdg_session_type.patch bsc#1084756 bgo#794256 yfjiang@suse.com -- solution provided by msrb@suse.com using a more reasonable way to handle gpu acceleration check
-Patch0:         gnome-session-better-handle-empty-xdg_session_type.patch
-# PATCH-FIX-OPENSUSE gnome-session-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
-Patch2:         gnome-session-s390-not-require-g-s-d_wacom.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -45,9 +41,9 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.46.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.46.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.46.0
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.24.2
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.82.0
+BuildRequires:  pkgconfig(gnome-desktop-4) >= 3.24.2
+BuildRequires:  pkgconfig(gtk4) >= 3.22.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.10
 BuildRequires:  pkgconfig(libsystemd) >= 209
@@ -57,12 +53,13 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xtrans)
 Requires:       %{name}-core = %{version}
-Requires:       (gnome-session-wayland or gnome-session-xsession)
-Suggests:       gnome-session-wayland
+Requires:       gnome-session-wayland
 # gnome-session-default-session merged into gnome-session; the alternative - fallback-session - disappeared
 # with GNOME 3.8
 Provides:       %{name}-default-session = %{version}
-Obsoletes:      %{name}-default-session <= %{version}
+Obsoletes:      %{name}-default-session < %{version}
+# With the change to GNOME 49, the XSession is no longer a thing
+Obsoletes:      gnome-session-xsession < 49
 
 %description
 This package provides the basic session tools, like session management
@@ -74,6 +71,8 @@ Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
 Requires:       gnome-settings-daemon
 Requires:       xorg-x11-server-wayland
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 
 %description wayland
 This package contains the definition of the default GNOME session on Wayland.
@@ -90,29 +89,16 @@ This package contains a minimal version of gnome-session, that can be
 used for specific cases. The gnome-session package is needed for a fully
 functional GNOME desktop.
 
-%package xsession
-Summary:        Desktop file for X11 GNOME Session
-Provides:       gnome-session:%{_datadir}/xsessions/gnome.desktop
-Requires:       %{name} = %{version}
-Requires:       gnome-shell
-Requires:       xorg-x11-server
-
-%description xsession
-Desktop file to add GNOME (X11) to display manager session menu.
-
 %lang_package
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%ifarch s390 s390x
-%patch -P 2 -p1
-%endif
+%autosetup -p1
 
 %build
 %meson \
 	-D docbook=false \
 	-D systemduserunitdir=%{_userunitdir} \
+	-D mimeapps=false \
 	%{nil}
 %meson_build
 
@@ -121,36 +107,17 @@ Desktop file to add GNOME (X11) to display manager session menu.
 # install startup script and xsession file
 install -d -m755 %{buildroot}%{_bindir}
 install -m755 %{SOURCE1} %{buildroot}%{_bindir}/gnome
-install -d -m755 %{buildroot}%{_datadir}/xsessions
-install -m644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/gnome.desktop
 %find_lang %{name}-%{basever} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
 # Prepare for 'default.desktop' being update-alternative handled, boo#1039756
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
-ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 touch %{buildroot}%{_sysconfdir}/alternatives/default-waylandsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_datadir}/wayland-sessions/default.desktop
-
-%post xsession
-%{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
-  default-xsession.desktop %{_datadir}/xsessions/gnome.desktop 25
-
-%postun xsession
-[ -f %{_datadir}/xsessions/gnome.desktop ] || %{_sbindir}/update-alternatives \
-  --remove default-xsession.desktop %{_datadir}/xsessions/gnome.desktop
 
 %files
 %{_bindir}/gnome
 %{_datadir}/gnome-session/sessions/gnome.session
-%{_datadir}/gnome-session/sessions/gnome-dummy.session
-
-%files xsession
-%{_datadir}/xsessions/default.desktop
-%{_datadir}/xsessions/gnome.desktop
-%{_datadir}/xsessions/gnome-xorg.desktop
-%ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 
 %post wayland
 %{_sbindir}/update-alternatives --install %{_datadir}/wayland-sessions/default.desktop \
@@ -171,7 +138,7 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 
 %files core
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README.md
+%doc NEWS README.md
 %{_bindir}/gnome-session
 %{_bindir}/gnome-session-inhibit
 %{_bindir}/gnome-session-quit
@@ -183,18 +150,9 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_mandir}/man1/gnome-session.1%{?ext_man}
 %{_mandir}/man1/gnome-session-inhibit.1%{?ext_man}
 %{_mandir}/man1/gnome-session-quit.1%{?ext_man}
-%{_libexecdir}/gnome-session-binary
-# Helper for the session definitions, to know if hardware is accelerated
-%{_libexecdir}/gnome-session-check-accelerated
-%{_libexecdir}/gnome-session-check-accelerated-gl-helper
-%{_libexecdir}/gnome-session-check-accelerated-gles-helper
 %{_libexecdir}/gnome-session-ctl
-%{_libexecdir}/gnome-session-failed
-%{_datadir}/gnome-session/hardware-compatibility
-%dir %{_userunitdir}/gnome-launched-.scope.d
-%{_userunitdir}/gnome-launched-.scope.d/override.conf
-%{_userunitdir}/gnome-session-failed.service
-%{_userunitdir}/gnome-session-failed.target
+%{_libexecdir}/gnome-session-init-worker
+%{_libexecdir}/gnome-session-service
 %{_userunitdir}/gnome-session-initialized.target
 %{_userunitdir}/gnome-session-manager.target
 %{_userunitdir}/gnome-session-manager@.service
@@ -207,10 +165,13 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_userunitdir}/gnome-session-wayland@.target
 %{_userunitdir}/gnome-session-x11-services-ready.target
 %{_userunitdir}/gnome-session-x11-services.target
-%{_userunitdir}/gnome-session-x11.target
-%{_userunitdir}/gnome-session-x11@.target
 %{_userunitdir}/gnome-session.target
 %{_userunitdir}/gnome-session@.target
+%dir %{_userunitdir}/app-flatpak-.scope.d
+%{_userunitdir}/app-flatpak-.scope.d/override.conf
+%dir %{_userunitdir}/app-gnome-.scope.d
+%{_userunitdir}/app-gnome-.scope.d/override.conf
+%{_userunitdir}/gnome-session-basic-services.target
 %dir %{_userunitdir}/gnome-session@gnome.target.d
 %{_userunitdir}/gnome-session@gnome.target.d/gnome.session.conf
 

@@ -1631,4 +1631,12 @@ Index: gnome-session.changes
 - Bump basever define to 48, following upstream changes. (forwarded request 1268781 from iznogood)</comment>
     <requestid>1269669</requestid>
   </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>b40d257a90872fa7a2a6c12f5bd7c720</srcmd5>
+    <version>49.0</version>
+    <time>1758720119</time>
+    <user>anag_factory</user>
+    <comment>Update to GNOME 49 (forwarded request 1305083 from dimstar)</comment>
+    <requestid>1305498</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Tue Sep 16 06:15:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Fixed build with musl libc
+  + Fixed some memory corruption bugs that led to
+    gnome-session-init-worker crashing on logout
+  + Fixed a memory leak in gnome-session-init-worker
+  + Allowed Qt apps to use the Wayland text-input protocol, instead
+    of forcing them to use the direct ibus integration plugin
+  + Updated translations
+
+-------------------------------------------------------------------
+Sat Aug 30 10:40:48 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Disabled the org.freedesktop.ScreenSaver proxy service on the
+    login screen
+  + Separated out the systemd-specific code from the gnome-session
+    leader process into a dedicated executable. This makes it
+    easier to integrate distributions that use alternative init
+    systems with gnome-session
+  + Updated translations
+
+-------------------------------------------------------------------
+Fri Aug 29 07:44:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + gnome-session is no longer started via a shell script, and
+    instead all of the necessary setup is done in C.
+  + gnome-session's builtin service manager has been completely
+    removed. Service management will now be handled entirely by the
+    operating system's native service manager (i.e. systemd).
+    See the following blog post for more information:
+    https://blogs.gnome.org/adrianvovk/2025/06/10/gnome-systemd-dependencies
+  + The "fail whale" dialog has been removed
+  + Various unused APIs and interfaces were removed, including:
+    - The org.gnome.SessionManager.Client and o.g.SM.App D-Bus interfaces
+    - Various D-Bus APIs related to the service manager
+    - Various .desktop and .session file keys that were used only by the
+      builtin service manager
+    - Fallback sessions, since there's no way to fall back anymore
+  + The code was significantly refactored
+  + gnome-session now provides a gnome-session-basic-services.target,
+    that sessions like the GDM greeter and gnome-initial-setup can
+    use to avoid listing all of the basic GNOME session services
+    (like all the gnome-settings-daemon plugins)
+  + The --autostart command line option was removed, and instead
+    kiosk sessions should set Kiosk=true in their session
+    definition file.
+  + Updated GNOME's mimetype defaults to drop Evince (which was
+    replaced with Papers)
+- Changes from version 49.alpha.1:
+  + Fix POTFILES to stop listing deleted files
+  + Stop requiring the gnome-settings-daemon Wacom plugin, which doesn't exist anymore
+  + Ensure that we start localsearch when starting a GNOME session via systemd
+- Changes from version 49.alpha.0:
+  + Removed XSMP
+  + Removed session restore functionality
+  + X11 sessions are disabled by default
+  + Added a default mimeapps list for GNOME's core apps
+  + gsd-xsettings now starts on demand in Wayland
+  + Dropped gnome-dummy session
+  + Allow Inhibit() with no app ID
+  + Unset all LC_* variables that are bound to REGION
+  + Ported fail whale to gtk4
+  + Dropped session selector GUI
+  + Dropped the hardware acceleration check
+  + gnome-session-inhibit: Propagate parent death
+  + gnome-session-inhibit: Fixup terminal handling
+- Drop gnome-session-better-handle-empty-xdg_session_type.patch: no
+  longer applicable
+- bump basever to 49: follow upstream versioning
+- Pass -Dmimeapps=false to meson: we maintain our default list in
+  glib2-branding.
+- drop gnome-session-xsession subpackage, obsoleted by the main
+  package
+- Drop gnome-session-s390-not-require-g-s-d_wacom.patch: no longer
+  needed
+- Have the main package require gnome-session-wayland: this could
+  probably be folded back into the main package (unless xsession
+  reappears)
+- Add long-missing requires(post,postun) update-alternatives
+
+-------------------------------------------------------------------
 Sat Apr 12 09:33:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:
