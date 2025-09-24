@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 17 11:28:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.3.24:
+  + Bugfixes:
+    - Allow calling xb_silo_query_build_index() with no text set
+    - Do not reverse the order of attrs when using
+      xb_node_attr_iter_next()
+
+-------------------------------------------------------------------
 Tue Sep  2 18:26:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.23:
