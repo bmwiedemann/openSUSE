@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openj9
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,6 +85,9 @@
 %global imagestarget images
 %endif
 %global bits 64
+%if 0%{?gcc_version} < 7
+%define with_gcc 7
+%endif
 Name:           java-1_8_0-openj9
 Version:        %{javaver}.%{updatever}
 Release:        0
@@ -102,7 +105,6 @@ Source12:       policytool.desktop.in
 # Ensure we aren't using the limited crypto policy
 Source14:       TestCryptoLevel.java
 Source100:      openj9-nogit.patch.in
-Source1000:     %{name}-rpmlintrc
 # RPM/distribution specific patches
 # Restrict access to java-atk-wrapper classes
 Patch1:         java-atk-wrapper-security.patch
@@ -110,6 +112,8 @@ Patch1:         java-atk-wrapper-security.patch
 Patch2:         multiple-pkcs11-library-init.patch
 # Disable doclint for compatibility
 Patch3:         disable-doclint-by-default.patch
+# Fix build with libdwarf 2.x
+Patch4:         omr-libdwarf-2.patch
 # Patches for system libraries
 Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
@@ -127,6 +131,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  fontconfig
 BuildRequires:  freetype2-devel
+BuildRequires:  gcc%{?with_gcc}
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  giflib-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  java-ca-certificates
@@ -190,13 +196,6 @@ Provides:       jre1.6.x
 Provides:       jre1.7.x
 Provides:       jre1.8.x
 ExclusiveArch:  x86_64 ppc64le s390x aarch64
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc >= 7
-BuildRequires:  gcc-c++ >= 7
-%endif
 %if %{bootcycle}
 BuildRequires:  java-devel >= 1.7
 BuildConflicts: java >= 1.9
@@ -353,6 +352,7 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
+%patch -P 4 -p1
 
 cat %{SOURCE100} \
     | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \
@@ -390,11 +390,11 @@ EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
 %endif
 
 bash configure \
-%if 0%{?suse_version} < 1500
-    CPP=cpp-7 \
-    CXX=g++-7 \
-    CC=gcc-7 \
-    NM=gcc-nm-7 \
+%if 0%{?with_gcc}
+    CPP=cpp-%{with_gcc} \
+    CXX=g++-%{with_gcc} \
+    CC=gcc-%{with_gcc} \
+    NM=gcc-nm-%{with_gcc} \
 %endif
     --with-extra-cflags="$EXTRA_CFLAGS" \
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
@@ -650,8 +650,6 @@ update-alternatives \
   --slave %{_bindir}/rmiregistry rmiregistry %{jrebindir}/rmiregistry \
   --slave %{_bindir}/servertool servertool %{jrebindir}/servertool \
   --slave %{_bindir}/tnameserv tnameserv %{jrebindir}/tnameserv \
-  --slave %{_bindir}/pack200 pack200 %{jrebindir}/pack200 \
-  --slave %{_bindir}/unpack200 unpack200 %{jrebindir}/unpack200 \
   --slave %{_mandir}/man1/java.1$ext java.1$ext \
   %{_mandir}/man1/java-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/keytool.1$ext keytool.1$ext \
@@ -668,10 +666,6 @@ update-alternatives \
   %{_mandir}/man1/servertool-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/tnameserv.1$ext tnameserv.1$ext \
   %{_mandir}/man1/tnameserv-%{sdklnk}.1$ext  \
-  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
-  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
-  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   --slave %{_datadir}/applications/policytool.desktop policytool.desktop \
   %{_jvmdir}/%{jredir}/lib/desktop/policytool.desktop \
   || :

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 24 07:27:32 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * omr-libdwarf-2.patch
+    + fix build with libdwarf 2.x where the includes are in
+      libdwarf-2 subdirectory
+
+-------------------------------------------------------------------
+Sat Aug 30 15:07:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove pack200 and unpack200 from alternatives
+
+-------------------------------------------------------------------
 Sat Jul 26 21:23:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 8u462 build 08 with OpenJ9 0.53.0 virtual
