@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Sep 13 08:37:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Sep  2 09:57:10 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Restore long press behavior to v48
+  + Add button size workaround for gtk >= 4.19.2
+  + Fix fixed cells opening the picker
+  + Fix clear button sensitivity after undo/redo on the value
+    picker
+  + Fix stuck focus during pause
+  + Updated translations
+
+-------------------------------------------------------------------
+Fri Aug 29 11:11:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + Popdown the picker and unselect the grid on pausing
+  + Track keyboard input for focus handling with a 5 seconds timeout
+  + Fix clock not resuming on closing keyboard shortcuts
+  + Fix lock tooltip color in light mode
+- Changes from version 49.alpha
+  + Add a simple highscore implementation (#3)
+  + Add a lock button to the earmark picker and change the default
+    behavior of the number picker buttons to popdown the picker
+  + Use tabular figures for numbers
+  + Always show the selected cell for keyboard users, and show it to
+    mouse and touch users only when the cell is clicked
+  + Start the focus at the center of the grid
+  + Let the grid be unselected by pressing escape or clicking outside
+  + Update ctrl+keys to cycle through cells linearly (#5)
+  + Update tab behavior to cycle through the grid only once (#5)
+  + Add a special interaction for matching number highlighting wherein
+    clicking on a non-empty cell will only trigger the number picker on
+    the second click
+  + Add autosave every 5 minutes
+  + Add strike-through for earmark warnings
+  + Add large zoom size for earmarks
+  + Add animation to pause and autoclean earmarks
+  + Add headerbar transition effect, shadows and revealer
+  + Cap grid margin size at 25 and top offset at 40
+  + Update the light mode colors to be a bit brighter
+  + Update matching number highlighting to be less aggressive
+  + Change pink accent color in light mode
+  + Update teal accent color to be a bit more green
+  + Update earmark highlighting to the new accent color palette
+  + Remove unfullscreen button
+  + Remove the details section in the about page
+  + Fix clock moving
+  + Updated translations:
+  
+-------------------------------------------------------------------
 Fri Apr 11 17:16:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:

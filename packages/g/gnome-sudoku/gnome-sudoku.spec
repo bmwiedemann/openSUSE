@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-sudoku
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-sudoku
-Version:        48.1
+Version:        49.0
 Release:        0
 Summary:        Sudoku Game for GNOME
 License:        GPL-3.0-or-later
@@ -36,11 +36,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.35.7.24
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gtk4) >= 4.10.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.80.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.80.0
+BuildRequires:  pkgconfig(gtk4) >= 4.18.0
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7
 BuildRequires:  pkgconfig(qqwing) >= 1.3.4
 
 %description

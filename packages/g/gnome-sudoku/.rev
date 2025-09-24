@@ -476,4 +476,12 @@
   + Fix trapped focus during pause. (forwarded request 1268674 from iznogood)</comment>
     <requestid>1269667</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>fdb9799207e9b062bcbf8a7a868fbfdb</srcmd5>
+    <version>49.0</version>
+    <time>1758720201</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304913 from dimstar)</comment>
+    <requestid>1305463</requestid>
+  </revision>
 </revisionlist>
