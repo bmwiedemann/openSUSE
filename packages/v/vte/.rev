@@ -1393,4 +1393,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1289811</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>321d6bce850c7bba2e10bac5a45c8131</srcmd5>
+    <version>0.82.0</version>
+    <time>1758720113</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304957 from dimstar)</comment>
+    <requestid>1305494</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package vte
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with     glade_support
 
 Name:           vte
-Version:        0.80.3
+Version:        0.82.0
 Release:        0
 Summary:        Terminal Emulator Library
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
@@ -52,6 +52,7 @@ BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  (python3-dataclasses if python3-base < 3.7)
+BuildRequires:  pkgconfig(fmt) >= 11.0.0
 BuildRequires:  pkgconfig(fribidi) >= 1.0.0
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
@@ -67,6 +68,7 @@ BuildRequires:  pkgconfig(liblz4) >= 1.9
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.21
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pango) >= 1.22.0
+BuildRequires:  pkgconfig(simdutf) >= 6.2.0
 BuildRequires:  pkgconfig(vapigen) >= 0.24
 BuildRequires:  pkgconfig(zlib)
 

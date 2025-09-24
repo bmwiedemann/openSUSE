@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:34:10 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.82.0:
+  * build: Fix gitlab project ID
+  * build: Dist all subprojects
+  * build: Version 0.82.0
+  * a11y: fix potential underrun for AccessibleText invalidation
+  * vteaccess-gtk4: Implement granular notifications upon scrolling
+  * vte-access-gtk4: Fix line counting during a line query
+  * vteaccess-gtk4: Return a range per text attribute
+
+-------------------------------------------------------------------
+Wed Sep 03 07:09:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.81.90:
+  * emulation: Fix XTRQTCAP response for Backspace key
+  * minifont: Comment out debug code
+  * parser: Fix build with gcc 14
+
+-------------------------------------------------------------------
+Tue Sep 02 08:25:06 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.81.90:
+  * lib: Remove custom terminfo
+  * all: Remove SIXEL support from stable branch
+  * lib: Remove VteProperties from branch
+  * emulation: Implement colour palette reports
+  * lib: Add missing API export
+  * parser: Remove redundant parser state
+  * lib: Use improved sequence builder throughout
+  * parser: Make SequenceBuilder more builder like
+  * app: Warn when requesting test mode in non-debug build
+  * emulation: Implement XTERM_RQTCAP
+  * lib: Add base16 utility
+  * lib: Assert sanity
+  * widget: Add missing catch to a deprecated function
+  * widget: Fix a null check
+  * lib: uniwidth: More tests
+  * lib: spawn: Clarify code
+  * draw: gtk4: Initialise all members
+  * vte.sh: Improve portability before bash/zsh check
+  * emulation: Add some DECSET modes from contour
+  * widget: Show preedit even if cursor is invisible
+  * emulation: Fix OSC 111
+  * widget: a11y: Enable a11y by default on gtk4 also
+  * parser: glue: Use fast_float to parse OSC numbers
+  * emulation: DECSLRM is implemented
+  * emulation: Don't allow BEL termination of the progress sequence
+  * sixel: test: Fix string length
+  * app: Rename desktop file same as app ID
+  * widget: gtk4: Fix critical warning on a11y init
+  * lib: Add properties API
+  * lib: Move some files around
+
+-------------------------------------------------------------------
 Sun Jun 29 07:28:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.80.3:
