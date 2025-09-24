@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 16 13:40:46 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.50.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.50.1/src/CHANGES.md
+
+-------------------------------------------------------------------
 Wed Sep  3 19:07:05 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update hledger-ui to version 1.50.

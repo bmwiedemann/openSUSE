@@ -19,7 +19,7 @@
 %global pkg_name hledger-ui
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        1.50
+Version:        1.50.1
 Release:        0
 Summary:        Terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
@@ -72,6 +72,8 @@ BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-safe-prof
 BuildRequires:  ghc-split-devel
 BuildRequires:  ghc-split-prof
+BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-text-zipper-devel
