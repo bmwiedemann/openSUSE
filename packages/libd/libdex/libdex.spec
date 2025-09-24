@@ -1,7 +1,7 @@
 #
 # spec file for package libdex
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with profiling
 
 Name:           libdex
-Version:        0.10.1
+Version:        1.0.0
 Release:        0
 Summary:        Library supporting "Deferred Execution" for GNOME and GTK
 License:        LGPL-2.1-or-later
