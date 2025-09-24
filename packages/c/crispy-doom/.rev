@@ -31,4 +31,12 @@
     <comment>gcc15 support</comment>
     <requestid>1286324</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f699ef8117e9b0c5045189a9e7a4ccfd</srcmd5>
+    <version>7.1</version>
+    <time>1758720266</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.1</comment>
+    <requestid>1306815</requestid>
+  </revision>
 </revisionlist>

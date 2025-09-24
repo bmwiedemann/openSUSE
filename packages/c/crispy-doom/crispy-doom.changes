@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 23 22:52:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1
+  * Added support for Heretic 2025, Hexen 2025, and for
+    KEX masterlevels.wad.
+  * Heretic/Hexen: added A11Y functions, map markers, Crispy HUD,
+    translucency options.
+  * Added support for non-power-of-2 wide textures.
+  * Added IDDST, IDDKT, IDDIT cheats, ported from Woof.
+  * Added support for Gib health feature from DOOM Retro.
+  * Fix regression in uncapped automap mouse panning introduced by
+    fast polling changes.
+- Delete c99.patch, c23-gcc15.patch (merged)
+
+-------------------------------------------------------------------
 Tue Jun 17 10:11:01 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add c99.patch, c23-gcc15.patch
