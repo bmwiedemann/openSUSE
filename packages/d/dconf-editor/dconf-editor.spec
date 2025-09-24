@@ -1,7 +1,7 @@
 #
 # spec file for package dconf-editor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dconf-editor
-Version:        45.0.1
+Version:        49.0
 Release:        0
 Summary:        Graphical editor for the dconf key-based configuration system
 License:        GPL-3.0-or-later
@@ -60,14 +60,14 @@ This package provides a graphical editor for the dconf database.
 %check
 %meson_test
 appstream-util validate-relax --nonet \
-	%{buildroot}%{_datadir}/metainfo/ca.desrt.dconf-editor.appdata.xml
+	%{buildroot}%{_datadir}/metainfo/ca.desrt.dconf-editor.metainfo.xml
 desktop-file-validate \
 	%{buildroot}%{_datadir}/applications/ca.desrt.dconf-editor.desktop
 
 %files
 %license COPYING
 %{_bindir}/dconf-editor
-%{_datadir}/metainfo/ca.desrt.dconf-editor.appdata.xml
+%{_datadir}/metainfo/ca.desrt.dconf-editor.metainfo.xml
 %{_datadir}/applications/ca.desrt.dconf-editor.desktop
 %{_datadir}/bash-completion/completions/dconf-editor
 %{_datadir}/dbus-1/services/ca.desrt.dconf-editor.service

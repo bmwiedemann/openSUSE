@@ -336,4 +336,12 @@
     <comment>- Convert to source service for easier updating. (forwarded request 1139276 from dimstar)</comment>
     <requestid>1139291</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>367b1bdf72b804f9792b1fe7f381b5e5</srcmd5>
+    <version>49.0</version>
+    <time>1758720183</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304868 from dimstar)</comment>
+    <requestid>1305437</requestid>
+  </revision>
 </revisionlist>
