@@ -117,4 +117,12 @@
 </comment>
     <requestid>1304464</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>ef8262e6151ad4a1c7ab3e44fdd4537b</srcmd5>
+    <version>20231005</version>
+    <time>1758720301</time>
+    <user>anag_factory</user>
+    <comment>- Disable wall messages in logind (gh#AeonDesktop/project#8)</comment>
+    <requestid>1306855</requestid>
+  </revision>
 </revisionlist>
