@@ -1,7 +1,7 @@
 #
 # spec file for package python-gobject
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 # It produces a dependency cycle: avahi - gtk3-devel - python-dbus-python
 #%%define gdk_real_package %%(rpm -q --qf '%%{NAME}' -f $(readlink %%{_libdir}/libgdk-3.so -f))
 # This figures in an error message
-%global __requires_exclude typelib\\(%%namespaces\\)
+%global __requires_exclude typelib.*(namespace|GioWin32).*
 %global __requires_exclude_from ^%{_libdir}/python.*/site-packages/gi/__init__.py$
 %define _name   pygobject
 %define glib_version 2.80.0
@@ -34,7 +34,7 @@
 %define libffi_version 3.0
 %{?sle15_python_module_pythons}
 Name:           python-gobject
-Version:        3.52.3
+Version:        3.54.2
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later

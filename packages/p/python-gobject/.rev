@@ -859,4 +859,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
   error (boo#1240549) (forwarded request 1266325 from cboltz)</comment>
     <requestid>1266887</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>94657313c16db98be3c792532ab6338f</srcmd5>
+    <version>3.54.2</version>
+    <time>1758720109</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304948 from dimstar)</comment>
+    <requestid>1305487</requestid>
+  </revision>
 </revisionlist>

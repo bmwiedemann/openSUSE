@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Sep 13 08:29:50 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.54.2:
+  + Prefix platform specific symbols with platform name
+
+-------------------------------------------------------------------
+Fri Sep 12 15:03:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.54.1:
+  + Excempt GioPlatform namespaces from required version check
+
+-------------------------------------------------------------------
+Mon Sep  8 06:23:08 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.54.0:
+  + Fix compatibility with Python 3.14
+  + Add platform specific symbols back to Gio module
+  + Include docs from old GNOME wiki
+  + Add override for `GLib.MainContext.query()`
+  + Fix optional inout parameter marshalling
+
+-------------------------------------------------------------------
+Tue Sep  2 16:49:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.53.0:
+  + Drop Python upper limit
+  + Add `__enum|flags_values__` back to GEnum and GFlags
+  + Fix asyncio event loop selector with Python 3.13
+  + Support `Gtk.Template` on sub-classed Python classes
+  + Use GI Repository singleton if GLib >= 2.85
+  + Expose finish_func on function info to determine if a function
+    can be used as awaitable
+  + Documentation updates
+  + `ParamSpec` objects now return the expected enum type
+  + Fix `Gio.ActionMap` override for `Gio.Application`
+  + Fix regression for functions with multiple callbacks
+  + Cleanup: callable argument cache
+  + Format Python and C code
+  + Fix compatibility with GLib 2.84
+  + (chore) clean up array cache code
+  + Added an option to skip automatic initialization of GTK and GDK
+  + Add more variables to the .pc files
+  + gobject.handler_block_by_func and friends now accept methods
+  + set __module__ on gobject derived types
+
+-------------------------------------------------------------------
 Tue Apr  1 20:36:38 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - Re-add BuildRequires pkgconfig(gobject-introspection-1.0) to
