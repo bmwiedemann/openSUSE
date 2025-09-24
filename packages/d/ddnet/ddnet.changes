@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Wed Sep 17 16:14:58 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 19.4:
+  * [Client] Touch controls editor
+  * [Client] Support live playback of demos while they are being
+    recorded
+  * [Client] Add preinputs - improve antiping player prediction
+  * [Editor] Keyboard support for fonts
+  * [Client] Automatic quad clipping
+  * [Client] Add tex coords lookup table in order to improve map
+    loading times
+  * [Client] Render 0.7 skins in server browser
+  * [Client] Add debug render option
+  * [Client] Optimize quad rendering by grouping quads
+  * [Client] Improve skin handling performance
+  * [Client] Improve debug graphs
+  * [Client] Make binds prints the original bind command
+  * [Client] Fix initial server browser refresh being delayed
+  * [Client] Add cl_chat_background_color
+  * [Client] Fix and improve demo tuning handling
+  * [Client] Enable FrozenLastTick only if prediction supported
+  * [Client] Add message to explain how to disable debug graphs
+  * [Client] Fix StrongWeak indicator for spec char
+  * [Client] Refactor swapchain sync object handling
+  * [Client] Show error message in server browser when no master
+    server found
+  * [Client] Predict freeze skin only for local player
+  * [Client] Fix hook collision line when a player is next to
+    a tele
+  * [Client] Fix community icon pixel border rendering
+  * [Client] Fix invalid stopper prediction
+  * [Client] Fix overlays using wrong visual on borders
+  * [Client] Make demo recorder always record local camera setting
+  * [Client] Delay g_Config.m_UiMousesens update until scrollbar
+    release
+  * [Client] Fix rescue resets switches
+  * [Client] Fallback to 127.0.0.1 or [::1] when resolving
+    localhost
+  * [Client] Show more details in popup when graphics failed to be
+    initialized
+  * [Client] Prevent loading server maps and recording demos with
+    invalid names
+  * [Client] Fix laser bounce delay affecting other laser types
+    beside rifle
+  * [Client&Server] Add support for Websockets with IPv6, network
+    cleanup
+  * [Client&Server] Add support for MSVC Edit & Continue
+    (Hot Reload)
+  * [Client&Server] Fix handling of empty commands separated by
+    semicolons
+  * [Editor] Add button to lock mouse to a single axis in editor
+  * [Editor] Add preview of selected game tile in editor tile
+    popup
+  * [Editor] Fix incomplete editor grid
+  * [Editor] Fix non-destructive brush with unused tiles
+  * [Editor] Improve envelope editor color bar
+  * [Editor] Fix color being transparent when editing multiple
+    layers
+  * [Editor] Only allow editor undo/redo when there is no active
+    item
+  * [Editor&Client] Implement more precise group clipping
+  * [Editor] Record brush draw action when releasing mouse
+    outside of editor
+  * [Server] Allow switching teams after finish
+  * [Server] Use words instead of numbers for access level
+    commands
+  * [Server] Add ability to disable sv_practice_by_default without
+    server restart
+  * [Server] Adjust high bandwidth mode for individual clients
+  * [Server] Fix connection-oriented 0.7 packets being unpacked
+    twice
+  * [Server] Add broadcast_pl rcon command
+  * [Server] Fix afk state being reset on death
+  * [Server] Fix r/w sql server parameters
+  * [Server] Make killer of protected kill get strong hook on
+    respawn
+  * [Server] Add practice command 'back'
+
+-------------------------------------------------------------------
 Mon Jun 23 18:28:48 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 19.3:
