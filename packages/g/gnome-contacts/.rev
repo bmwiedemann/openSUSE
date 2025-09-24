@@ -622,4 +622,20 @@
   + Updated translations. (forwarded request 1253486 from iznogood)</comment>
     <requestid>1253723</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>a4f887def9228b3c0b308abcb7af678c</srcmd5>
+    <version>49.0</version>
+    <time>1758720127</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.0:
+  + Updated translations.
+
+- Update to version 49.beta:
+  + The UI files have been ported to Blueprint, a more
+    developer-friendly way of declaring interfaces in GTK
+  + The shortcuts dialog now follows a new modern pattern in the
+    GNOME ecosystem
+- Add blueprint-compiler BuildRequires: new dependency. (forwarded request 1305219 from iznogood)</comment>
+    <requestid>1305514</requestid>
+  </revision>
 </revisionlist>
