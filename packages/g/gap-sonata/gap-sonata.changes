@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 23 22:49:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9.7
+  * Replace calls to AUTO by DeclareAutoreadableVariables
+
+-------------------------------------------------------------------
 Tue Dec 20 23:17:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.9.6
