@@ -1,7 +1,7 @@
 #
 # spec file for package simple-scan
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           simple-scan
-Version:        48.1
+Version:        49.0
 Release:        0
 Summary:        Simple Scanning Utility
 License:        GPL-3.0-or-later
@@ -69,6 +69,9 @@ interface is well tested.
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
+%check
+%meson_test
+
 %files
 %license COPYING
 %doc NEWS README.md
@@ -77,7 +80,7 @@ interface is well tested.
 %{_datadir}/applications/org.gnome.SimpleScan.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.SimpleScan.gschema.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%{_datadir}/metainfo/org.gnome.SimpleScan.appdata.xml
+%{_datadir}/metainfo/org.gnome.SimpleScan.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/*.svg
 
 %files lang -f %{name}.lang

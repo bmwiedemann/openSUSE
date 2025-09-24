@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep  5 06:19:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Fix horizontal scrollbar
+  + Continue batch flatbed scans when SANE returns NO_DOCS after
+    first page
+  + Change component type to "desktop-application"
+  + Rename appdata to metainfo
+  + Run postprocessing after save and display errors separately
+  + Move postprocessing to its own function
+  + Fixed matching saved scanner after finishing scanners discovery
+  + Add numerical measure for brightness and contrast
+  + Updated translations
+- Enable tests suite
+
+-------------------------------------------------------------------
 Fri Jun  6 13:33:05 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
 
 - Update to version 48.1:
