@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:19:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Updated translations
+- Do not run test suite on 32bit architectures, as the test suite
+  is not written with 32bit arches in mind.
+
+-------------------------------------------------------------------
+Mon Sep  1 14:20:27 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Function handling fixes
+  + Only allow 2 to 16 number bases
+  + Improve very large number handling performance
+  + Fixed Planck constant name typo
+  + Ignore case in auto-complete
+  + Fixed keyboard shortcut for preferences dialog
+  + Bits panel enhancements
+  + Updated translations
+
+-------------------------------------------------------------------
+Sat Aug 30 11:11:42 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + Don't use development vala API
+  + Fix buttons 10^x and 2^x button behaviour
+  + Fixed base conversion
+  + Port to AdwShortcutsDialog
+  + Support floating point for bit field
+  + Only allow entering numbers in financial dialogs
+  + Added Sri Lanka Rupees to supported currencies
+  + Added dialog to show conversion rate download date and source
+  + Added all UN treasury supported currencies
+  + Added categories to function popover
+  + Fixed electron volts conversion
+  + Added function for endianness swap
+  + Make bit shift repeatable
+  + Enhancements for logarithm function handling
+  + Show error when function arguments length is incorrect
+  + Fixed unit conversion not working inside functions
+  + Fixed incorrect display for complex numbers in some cases
+  + Added a redo button to the header bar
+  + Ported UI to Blueprint
+  + Fixed history item focusing on click
+  + Search provider improvements
+  + Improved decimal handling on command line
+  + Added support for special cut/copy/paste keyboard shortcuts
+- Changes from version 49.alpha:
+  + Allow input and output of sexagesimal (DMS) values
+  + Improved error handling for trigonometric functions
+  + Added support for permutation and combination
+  + Added support for arbitrary root function
+  + Added support for greatest common divisor and least common
+    multiplier
+  + Improved log function handling
+  + Added a button to indicate angle units used
+  + Added support for selection parts of previous calculations
+  + Added backspace button
+  + Added constants to the variable popover
+  + Added support for repeating last operation
+  + Added wrapping of long history entries
+  + Added Egyptian Pound currency
+  + Fixed right shift with negative numbers
+  + Fixed Polish Złoty currency name #478
+  + Fixed incorrect pressure unit conversions
+  + Improved operator buttons
+  + Reworked button grouping for each mode
+  + Improved adaptive windows for smaller/larger screens
+  + Improved help and shortcuts
+  + Improved accessibility
+  + Added support for NAND, NOR and XNOR operators
+  + Improved function handling with buttons and selections
+  + Added preference to disable currencies in auto-complete
+  + Added preference to show currency codes in converter
+  + Added support for marking currencies as favorites
+  + Various variable and function popover improvements
+  + Added British Pint and Gallon units
+  + Fixed handling of very small numbers and improved error
+    handling
+  + Added some statistical functions
+- Add blueprint-compiler BuildRequires: new dependency
+
+-------------------------------------------------------------------
 Sat Apr 12 18:21:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:

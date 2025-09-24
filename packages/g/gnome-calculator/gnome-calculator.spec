@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-calculator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define gcisover 1-0_0_0
 
 Name:           gnome-calculator
-Version:        48.1
+Version:        49.0
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later
@@ -30,6 +30,7 @@ Source0:        %{name}-%{version}.tar.zst
 BuildSystem:    meson
 BuildOption:    -Ddisable-introspection=true
 
+BuildRequires:  blueprint-compiler
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.52.0
@@ -86,6 +87,13 @@ developing applications that use %{name}.
 %install -a
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
+
+%check
+%ifnarch %ix86 %arm
+%meson_test
+%else
+echo Test ignored on 32bit architectures, see https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/503
+%endif
 
 %ldconfig_scriptlets -n libgcalc-%{sover}
 %ldconfig_scriptlets -n libgci-%{gcisover}
