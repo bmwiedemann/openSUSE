@@ -1510,4 +1510,15 @@
     <comment></comment>
     <requestid>1294068</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>d713e40ee9cdb73d286a23be2e4350d9</srcmd5>
+    <version>49.1</version>
+    <time>1758720155</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.1:
+  + Orca would not launch in environments which lack BrlAPI.
+  + Toggling CapsLock via double-click was not being spoken.
+  + KeyEcho in terminals was failing in some environments. (forwarded request 1306155 from iznogood)</comment>
+    <requestid>1306434</requestid>
+  </revision>
 </revisionlist>

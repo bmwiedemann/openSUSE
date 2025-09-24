@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sat Sep 20 17:40:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Orca would not launch in environments which lack BrlAPI.
+  + Toggling CapsLock via double-click was not being spoken.
+  + KeyEcho in terminals was failing in some environments.
+
+-------------------------------------------------------------------
+Wed Sep 17 13:04:16 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + New Features:
+   - Orca-controlled caret navigation is now available in all text
+     objects; not just web content. To toggle it, try Orca + F12.
+     Note that there are still improvements to be made and bugs to
+     be fixed.
+   - Support for more commands and settings have been added to the
+     D-Bus "Remote Controller".
+  + Other Changes:
+    - Restore OnlyShowIn=GNOME to the orca-autostart.desktop file
+      so that Orca v49 and later can be autostarted in earlier
+      versions of GNOME. Execute Orca with `--replace` so that when
+      autostart is used, any previously-running versions of Orca
+      are terminated first.
+    - Present static text descriptions associated with GtkList
+      ancestors.
+    - Speak system messages with "some" punctuation rather than
+      "no" punctuation to ensure symbols like percentage are spoken
+    - Treat unicode mark characters as diacritics for the purpose
+      of key echo so that combining characters are spoken.
+    - Fix echoing of keypad keys when NumLock is on.
+    - Fix incorrect identification of keys by always using keysyms
+      rather than keycodes.
+    - Improve the presentation of voice names in Preferences by
+      using the variant name when one is provided and sorting the
+      list that populates the combo box.
+    - Fix several flat review bugs.
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Sep  1 12:23:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + New Features:
+    - Orca now has a systemd user service.
+    - Structural Navigation is now available in all apps; not just
+      web content. To toggle it, try Orca + Z. Note that there are
+      still many improvements to be made and some bugs to be fixed.
+  + Many commands are now available via the still-work-in-progress
+    D-Bus "Remote Controller."
+  + Other Changes:
+    - Support "politeness" level in the accessible "announcement" event.
+    - Improve performance of finding "clickables" in web content.
+    - Improve line identification of web content with sub/superscripts.
+    - Use SIGUSR1 to show the preferences dialog for the running Orca.
+      Also provide a D-Bus command to accomplish the same thing.
+    - Fix several issues related to shutting down Orca when a speech
+      server was unresponsive.
+    - Work around some hypertext/hyperlink implementation brokenness that
+      was causing Orca to get stuck in certain Chromium content.
+    - Fix several bugs in Say All's rewind/fast-forward support.
+    - General code clean up, fixes for tracebacks, etc.
+- Changes from version 49.alpha:
+  + Updated Dependencies:
+    - The minimum version of AT-SPI2 is now 2.52.
+    - Dasbus is now a required dependency.
+  + New Features:
+    - Orca now has a very basic, very work-in-progress and unstable
+      D-Bus "Remote Controller". Support for executing commands and
+      adjusting settings is currently quite limited. But now that
+      the plumbing is in place, support can be increased and should
+      be quite extensive by the 49.0 release.
+  + Orca's support for the error-message/error-for relations is now
+    global (before it was just for web apps).
+  + Orca will announce grammar errors similar to what is done for
+    spelling errors. Note: this requires app/toolkit exposure of
+    the presence of the error.
+  + Orca now has an "experimental" setting to only speak
+    indentation if it changed.
+  + Other Changes:
+    - The flat review code was significantly refactored and bugs
+      found in the process fixed.
+    - Fix bug causing the default script to become activated when
+      it should not.
+  + Fix several chattiness issues.
+  + Updated translations
+- BuildRequires: python3-dasbus: new dependency.
+- Drop orca-large-set-oom.patch: fixed upstream
+
+-------------------------------------------------------------------
 Wed Jul 16 18:37:13 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add orca-large-set-oom.patch: fix possible out-of-memory when
