@@ -352,4 +352,23 @@
     <comment> (forwarded request 1279641 from iznogood)</comment>
     <requestid>1280039</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>7c1404cd802bdfad457e6ce78392c233</srcmd5>
+    <version>49.0</version>
+    <time>1758720125</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.0:
+  + meson: Add glib-compile-schemas test
+  + meson: Add appstreamcli-validate test
+  + meson: Add desktop-file-validate test
+  + application: Fix icon name
+- Adjust _service to not add +0 suffix when on tag
+
+- Update to version 49.rc:
+  + Replace links to the wiki and bugzilla
+  + desktop: Remove the X-GNOME-Utilities category
+  + Put each main window into its own group
+  + Updated translations (forwarded request 1305188 from dimstar)</comment>
+    <requestid>1305509</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-logs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gnome-logs
-Version:        45.0
+Version:        49.0
 Release:        0
 Summary:        GNOME System Log Viewer
 License:        GPL-3.0-or-later
