@@ -1358,4 +1358,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1295695</requestid>
   </revision>
+  <revision rev="174" vrev="40">
+    <srcmd5>ab3c3615215fc2c04489fb45eba7a2ea</srcmd5>
+    <version>0.8</version>
+    <time>1758720117</time>
+    <user>anag_factory</user>
+    <comment>Add avahi-CVE-2024-52615.patch: Backport 4e2e1ea from upstream, Resolve fixed source ports for wide-area DNS queries cause DNS responses be injected. (CVE-2024-52615, bsc#1233421) (forwarded request 1304974 from qzhao)</comment>
+    <requestid>1305497</requestid>
+  </revision>
 </revisionlist>

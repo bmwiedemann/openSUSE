@@ -133,6 +133,8 @@ Patch36:        avahi-filter-bogus-services.patch
 Patch37:        avahi-CVE-2024-52616.patch
 # PATCH-FIX-UPSTREAM 0001-Enable-building-with-Qt6.patch alarrosa@suse.com -- Port to build with qt6 (https://github.com/avahi/avahi/pull/704)
 Patch38:        0001-Enable-building-with-Qt6.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2024-52615.patch CVE-2024-52615 bsc#1233421 qzhao@suse.com -- Resolve fixed source ports for wide-area DNS queries cause DNS responses be injected.
+Patch39:        avahi-CVE-2024-52615.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -447,13 +449,8 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-
-
-
-
-
-
 # This is the avahi-discover command, only provided for the primary python3 flavor
+
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python

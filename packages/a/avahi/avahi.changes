@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 15 14:32:04 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add avahi-CVE-2024-52615.patch:
+  Backport 4e2e1ea from upstream, Resolve fixed source ports for
+  wide-area DNS queries cause DNS responses be injected.
+  (CVE-2024-52615, bsc#1233421)
+
+-------------------------------------------------------------------
 Fri May 30 09:51:51 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch submitted to upstream at
