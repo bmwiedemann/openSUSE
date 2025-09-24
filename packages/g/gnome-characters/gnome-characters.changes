@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 12 06:27:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + flatpak: Update noto emoji font
+  + Updated translations
+
+-------------------------------------------------------------------
+Wed Sep  3 11:24:06 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + appdata: Set component to "desktop-application"
+  + appdata: Add branding
+  + appdata: Remove kudos
+  + Update to CLDR 47
+  + Updated translations
+
+-------------------------------------------------------------------
 Fri Mar 14 18:12:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

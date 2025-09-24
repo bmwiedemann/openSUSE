@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-characters
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-characters
-Version:        48.0
+Version:        49.0
 Release:        0
 Summary:        Character Map
 License:        GPL-3.0-or-later
