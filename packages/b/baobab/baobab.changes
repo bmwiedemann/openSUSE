@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 12 06:22:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Improve Scanning Speed and Memory Usage
+  + Updated translations
+- Drop baobab-Improve-Scaning-Speed_cpu.patch: fixed upstream
+
+-------------------------------------------------------------------
 Sat Apr 12 09:04:53 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add baobab-Improve-Scaning-Speed_cpu.patch: Improve Scaning Speed

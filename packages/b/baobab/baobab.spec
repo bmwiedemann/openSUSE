@@ -1,7 +1,7 @@
 #
 # spec file for package baobab
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,15 +20,13 @@
 %define glib2_version 2.44
 
 Name:           baobab
-Version:        48.0
+Version:        49.0
 Release:        0
 Summary:        Disk Usage Analyzer
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/DiskUsageAnalyzer
 Source0:        %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM baobab-Improve-Scaning-Speed_cpu.patch -- Improve Scaning Speed and Memory Usage
-Patch0:         baobab-Improve-Scaning-Speed_cpu.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
