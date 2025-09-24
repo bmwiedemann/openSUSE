@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Sep 13 08:36:06 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Fix various 32-bit builds
+  + Fix a warning with AdwShortcutLabel being assigned a NULL value
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Sep  2 09:42:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Scrollbar improvements
+  + Hover improvements
+  + Port to AdwShortcutsDialog
+  + Support for inline git blame
+  + Interactivity improvements during startup
+  + Translation updates
+- Changes from version 49.alpha:
+  + Arduino support has landed
+  + Improved manuals integration
+  + Port to girepository-2.0
+  + Support for Astro language server
+  + Adaptive preview toggle when running projects
+  + Add support for YAML flatpak manifests
+  + Custom font fixes to track system font changes
+  + Terminal search fixes
+  + Various robustness fixes
+  + Meson template updates
+- Add pkgconfig(girepository-2.0) BuildRequires: follow upstream
+  changes
+
+-------------------------------------------------------------------
 Wed Jul  9 08:31:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.2:

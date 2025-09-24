@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-builder
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 # Update this on every major/minor bump
-%define basever 48
-%define glib_version 2.75
+%define basever 49
+%define glib_version 2.85
 
 Name:           gnome-builder
-Version:        48.2
+Version:        49.0
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -51,14 +51,15 @@ BuildRequires:  pkgconfig(flatpak) >= 1.10.2
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(girepository-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.74
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gom-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.10
-BuildRequires:  pkgconfig(gtksourceview-5) >= 5.15
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.17
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(jsonrpc-glib-1.0) >= 3.43.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.alpha
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libcmark) >= 0.29.0
 BuildRequires:  pkgconfig(libdex-1) >= 0.2
 BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 1.1.0
@@ -69,8 +70,9 @@ BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(sysprof-6)
 BuildRequires:  pkgconfig(sysprof-capture-4) >= 45.0
-BuildRequires:  pkgconfig(template-glib-1.0) >= 3.36.1
+BuildRequires:  pkgconfig(template-glib-1.0) >= 3.37.1
 BuildRequires:  pkgconfig(vte-2.91-gtk4) >= 0.70.0
+BuildRequires:  pkgconfig(yaml-0.1)
 Requires:       autoconf
 Requires:       automake
 Requires:       libtool
@@ -138,7 +140,7 @@ rm -fr %{buildroot}%{python3_sitearch}/gi/overrides/__pycache__/Ide.cpython-35.o
 rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Builder.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Builder.metainfo.xml
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Builder.desktop
 
 %files
@@ -150,7 +152,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Builder.des
 %{_libexecdir}/%{name}-clang
 %{_libexecdir}/%{name}-flatpak
 %{_libexecdir}/%{name}-git
-%{_datadir}/metainfo/org.gnome.Builder.appdata.xml
+%{_datadir}/metainfo/org.gnome.Builder.metainfo.xml
 %{_datadir}/applications/org.gnome.Builder.desktop
 %{_datadir}/dbus-1/services/org.gnome.Builder.service
 %{_datadir}/%{name}/
