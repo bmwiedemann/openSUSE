@@ -24,7 +24,7 @@
 %bcond_with vulkan
 %endif
 Name:           warzone2100
-Version:        4.5.5
+Version:        4.6.0
 Release:        0
 Summary:        Innovative 3D real-time strategy
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.1-only
@@ -32,16 +32,15 @@ Group:          Amusements/Games/Strategy/Real Time
 URL:            http://wz2100.net/
 Source:         https://github.com/Warzone2100/warzone2100/releases/download/%{version}/warzone2100_src.tar.xz
 Source99:       %{name}.changes
-# PATCH-FIX-UPSTREAM warzone2100-SQLiteCPP-gcc15.patch - Fix building with gcc15 - https://src.fedoraproject.org/rpms/warzone2100/raw/rawhide/f/SQLiteCPP-gcc15.patch
-Patch0:         warzone2100-SQLiteCPP-gcc15.patch
 BuildRequires:  asciidoc
-BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libzip-tools
 BuildRequires:  physfs-devel
 BuildRequires:  pkg-config
 BuildRequires:  unzip
@@ -52,10 +51,12 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libsodium)
+BuildRequires:  pkgconfig(libsodium) >= 1.0.14
+BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3) >= 3.14
 BuildRequires:  pkgconfig(theora)
@@ -64,7 +65,7 @@ BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  rubygem(asciidoctor)
 %if %{with vulkan}
 BuildRequires:  shaderc
-BuildRequires:  vulkan-headers >= 1.2.154
+BuildRequires:  vulkan-headers >= 1.2.290
 BuildRequires:  pkgconfig(vulkan)
 %endif
 Requires:       %{name}-data = %{version}
@@ -125,7 +126,7 @@ find .  -name '*.cpp' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake .. \
 %if %{without vulkan}
-        -DWZ_ENABLE_BACKEND_VULKAN=Off \
+        -DWZ_ENABLE_BACKEND_VULKAN=OFF \
 %endif
         -DBUILD_SHARED_LIBS=OFF \
         -DCMAKE_BUILD_TYPE=Release \

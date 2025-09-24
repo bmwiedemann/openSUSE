@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Tue Sep 16 20:21:09 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 4.6.0
+  General Highlights:
+  * Revamped Options Menus
+    - Revamped & reorganized options menus available in the title
+      and in-game
+    - Fixes usability issues, adds many new options, makes it
+      easier to change controls
+  * Improved High-Quality Water
+    - Massively improved high-quality water effects
+  * Improved Graphics Initialization
+    - Automatically attempts multiple graphics backends on
+      first-run (or if initialization fails)
+    - Defaults to Vulkan in more cases, when possible
+  * Add: Improve research items tooltips with categories and time
+  * Add: Attempt to break infinitely circling units out of a
+    movement loop
+  * Add: Various mouse edge scrolling fixes, and new "Automatic"
+    Trap Cursor mode
+  * Add: Performance improvements for loading, path-finding,
+    target selection, networking, and high-object-count situations
+  * Add: Add "Audio Cues" options section, toggle for
+    "Group Reporting" audio cue
+  * Change: Bump repair spread area from 6 to 10 tiles
+  * Fix: Can’t build if the droid is centered on the tile
+  * Fix: Added check for droid distance when working on structure
+  * Fix: Target selection sometimes preferring targets that can't
+    be hit behind terrain
+  * Fix: Units sometimes do not retreat
+  * Fix: Prevent splash damage from giving exp when damaging
+    friendly objects
+  * Fix: Graphics pop-in due to quick object clipping
+  * Fix: Various model graphics issues (seams, shadows,
+    connector positioning)
+  * Fix: Transporters no longer catch fire when flying over fire
+  * And many other bug & crash fixes
+  Multiplayer Highlights:
+  * Spectator Host
+    - Easily host as a spectator
+  * Blind Lobbies & Games
+    - In a blind lobby: Players’ true identities are hidden from
+      everyone (except the host) - until the game starts
+    - In a blind game: Players’ true identities are hidden from
+      everyone (except the host) - until the game ends
+  * Revamped Lobby Game Browser
+    - New design, more filtering options, more room information,
+      and increased responsiveness
+  * Fix: Premature game loss with mp end conditions
+  * Fix: Tighten template design validity checks to prevent
+    creating tanks with VTOL weapons
+  * Fix: Prevent MP penetrating weapons causing friendly fire
+  Campaign Highlights:
+  * Additional Tweak Options for Original Campaign
+    - Insane Spawns
+      * Fully realizing Insane with additional spawns and behavior
+        on most missions
+      * Available in Insane difficulty (with option "Insane
+        Spawns") and on lower difficulties (with option
+        "Non-Insane Spawns")
+    -  Infinite Time
+      * Missions have no timer where possible (Timer Power Bonus
+        replaced with a small power reward if enabled)
+    - Victory Hints
+      * Displays a console message every few minutes showing
+        victory related information
+    - Finale Fun
+      * Activate Final Gamma mission bonus content
+    - Gamma Bonus
+      * Extra Gamma mission making use of a map created by the
+       original development team
+    - Fast EXP Gain
+      * Increases unit experience point gain by 2x
+    - Tower Wars
+      * Player gets significantly stronger structures
+  * Update Fractured Kingdom to v1.4 release
+  * Add: Give ACs some basic splash damage
+  * Add: Specify missing research names so research appears in
+    the Stats objects
+  * Add: "Defending Your Base" guide topic
+  * Fix: Upgrade obsolete units on-map to appropriate ones
+  * Fix: libcampaign: Release partial factory groups when their
+    factory gets destroyed
+  * Fix: libcampaign: Fix losing after winning when timing a
+    victory precisely at the end of the mission timer on offworld
+    missions
+  * Fix VTOL Rail Gun not shooting air units
+  * Fix: Prevent campaign Gauss Cannon friendly splash damage
+  * Numerous balance tweaks and changes (see full changelog)
+  And some multiplayer balance tweaks:
+  * Add Particle Gun Laser weapon (PR #4248)
+  * Adjust Emplacement-PlasmaCannon cost 200 -> 350, buildPoints
+    400 -> 500
+  * Increase spinAngle for Tracks in MP 45->65 to allow better
+    unit packing
+  View the full 4.6.0 changelog
+  * https://github.com/Warzone2100/warzone2100/raw/4.6.0/ChangeLog
+- Add BuildRequires libzip-tools, pkgconfig(libzip) and 
+  pkgconfig(protobuf)
+- Update BuildRequires for pkgconfig(libsodium) and vulkan-headers
+- Drop warzone2100-SQLiteCPP-gcc15.patch, fixed upstream
+
+-------------------------------------------------------------------
 Tue Jun 24 04:59:49 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add warzone2100-SQLiteCPP-gcc15.patch, fix building with gcc15
