@@ -2578,4 +2578,16 @@
     <comment></comment>
     <requestid>1302196</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>d3577c80853749777c982c024a5a86f3</srcmd5>
+    <version>3.58.0</version>
+    <time>1758720231</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.58.0:
+  * util: xte: Fix config file rewrite with desktop action names
+  * util: xte: Check the default terminal in system-data-dirs
+  * util: xte: Handle parsing ids with desktop action names
+  * Updated translations. (forwarded request 1306422 from iznogood)</comment>
+    <requestid>1306429</requestid>
+  </revision>
 </revisionlist>
