@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:32:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Sep  1 12:43:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Fixes for flatpak manifest
+  + Use versioned libyelp and generate pkg-config
+  + Updated translations
+- Changes from version 49.beta:
+  + Port to Gtk 4 and Adwaita
+  + Modernize data files
+- Adjust BuildRequires, following upstream changes:
+  + Removed: pkgconfig(appstream-glib), pkgconfig(gtk+-3.0),
+    pkgconfig(webkit2gtk-4.1),
+    pkgconfig(webkit2gtk-web-extension-4.1)
+  + Added: AppStream, desktop-file-utils, pkgconfig(gtk4),
+    pkgconfig(libadwaita-1), pkgconfig(webkitgtk-6.0),
+    pkgconfig(webkitgtk-web-process-extension-6.0)
+
+-------------------------------------------------------------------
 Sun Jun 15 08:07:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.3:
