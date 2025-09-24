@@ -392,4 +392,31 @@
     - glgo/GNOME/gnome-nibbles#75 (forwarded request 1270184 from iznogood)</comment>
     <requestid>1270272</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3c0bc83c4de8db94a895fe6a08fe1c22</srcmd5>
+    <version>4.4.1</version>
+    <time>1758720226</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.4.1:
+  + Fix issue #77, Please remove debian from .gitignore.
+
+- Update to version 4.4.0:
+  + Fix download location in release notification email.
+
+- Update to version 4.4.rc2:
+  + Fix problem with enable fake bonuses toggle button
+  + Fix libgnome-games-support
+
+- Update to version 4.4.rc1:
+  + Build dependency changes;
+    - libgnome-games-support &gt;= 3.0 (now a copylib)
+    - libadwaita (&gt;= 1.5.0) has changed from optional to mandatory,
+      consequently the configuration option use_libadwaita has been
+      removed.
+- Changes from version 4.3:
+  + Fix the reported points needed to get on to the leaderboard.
+  + As this branch was never released get it via git
+- Drop -Duse_libadwaita=true meson option: no longer needed (forwarded request 1305282 from iznogood)</comment>
+    <requestid>1305518</requestid>
+  </revision>
 </revisionlist>

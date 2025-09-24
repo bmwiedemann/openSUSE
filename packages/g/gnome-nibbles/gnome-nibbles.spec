@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-nibbles
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-nibbles
-Version:        4.2.2
+Version:        4.4.1
 Release:        0
 Summary:        Worm Game for GNOME
 License:        GPL-3.0-or-later
@@ -25,7 +25,6 @@ Group:          Amusements/Games/Action/Arcade
 URL:            https://gitlab.gnome.org/GNOME/gnome-nibbles/-/wikis/home
 Source0:        %{name}-%{version}.tar.zst
 BuildSystem:    meson
-BuildOption:    -Duse_libadwaita=true
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -42,11 +41,13 @@ causes a loss of points. When all points are lost, the player loses.
 %lang_package
 
 %generate_buildrequires
+export BUILDREQ_IGNORE_DEP="gtk5"
 %meson_buildrequires
 
 %install -a
 %fdupes %{buildroot}/%{_datadir}
 %find_lang %{name} %{?no_lang_C}
+%find_lang %{name}_libgnome-games-support %{?no_lang_C}
 
 %files
 %license COPYING
@@ -58,9 +59,9 @@ causes a loss of points. When all points are lost, the player loses.
 %{_datadir}/dbus-1/services/org.gnome.Nibbles.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Nibbles.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Nibbles*.*
-%{_datadir}/metainfo/org.gnome.Nibbles.appdata.xml
+%{_datadir}/metainfo/org.gnome.Nibbles.metainfo.xml
 %{_mandir}/man6/%{name}.6%{?ext_man}
 
-%files lang -f %{name}.lang
+%files lang -f %{name}.lang -f %{name}_libgnome-games-support.lang
 
 %changelog
