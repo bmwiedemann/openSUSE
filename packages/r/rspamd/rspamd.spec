@@ -1,7 +1,7 @@
 #
 # spec file for package rspamd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,11 +56,11 @@
 %global _wwwdir /srv/www/webapps
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
-%global force_gcc_version 9
+%global force_gcc_version 14
 %endif
 
 Name:           rspamd
-Version:        3.12.1
+Version:        3.13.0
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -361,7 +361,6 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 
 %dir %{_sysconfdir}/rspamd/
 %config %{_sysconfdir}/rspamd/actions.conf
-%config %{_sysconfdir}/rspamd/cgp.inc
 %config %{_sysconfdir}/rspamd/common.conf
 %config %{_sysconfdir}/rspamd/composites.conf
 %config %{_sysconfdir}/rspamd/groups.conf
@@ -566,6 +565,8 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/tableshape.lua
 %{_datadir}/rspamd/lualib/lua_bayes_redis.lua
 %{_datadir}/rspamd/lualib/lua_cache.lua
+%{_datadir}/rspamd/lualib/llm_common.lua
+%{_datadir}/rspamd/lualib/lua_cta.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_content
 %{_datadir}/rspamd/lualib/lua_content/ical.lua
@@ -643,6 +644,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %dir %{_datadir}/rspamd/lualib/plugins
 %{_datadir}/rspamd/lualib/plugins/dmarc.lua
 %{_datadir}/rspamd/lualib/plugins/neural.lua
+%{_datadir}/rspamd/lualib/plugins/neural/
 %{_datadir}/rspamd/lualib/plugins/rbl.lua
 %{_datadir}/rspamd/lualib/plugins/ratelimit.lua
 

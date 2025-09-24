@@ -1,9 +1,9 @@
-Index: rspamd-3.7.5/conf/rspamd.conf
+Index: rspamd-3.13.0/conf/rspamd.conf
 ===================================================================
---- rspamd-3.7.5.orig/conf/rspamd.conf
-+++ rspamd-3.7.5/conf/rspamd.conf
-@@ -34,7 +34,8 @@ lang_detection {
- .include(try=true; priority=1,duplicate=merge) "$LOCAL_CONFDIR/local.d/cgp.inc"
+--- rspamd-3.13.0.orig/conf/rspamd.conf
++++ rspamd-3.13.0/conf/rspamd.conf
+@@ -31,7 +31,8 @@ lang_detection {
+ }
  
  logging {
 -    type = "file";

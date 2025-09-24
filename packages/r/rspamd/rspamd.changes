@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Sep 17 09:22:04 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.13.0
+  - 1. Multiclass Bayes Classification ([#5547](#5547))
+    - Bayesian classifiers now support multi-class
+      differentiation—labels like spam, ham, transactional,
+      newsletters, phishing, and more (2-20 classes supported).
+    - Efficient: all classes for a message handled in a single
+      Redis call.
+    - Backward compatible with old config (is_spam); new config
+      enables named classes and labels.
+    - Autolearn and Lua API support multiclass workflows.
+    - Fully class-aware Redis caching.
+      Examples:
+      rspamc learn_class:transactional receipt.eml or rspamc
+      learn_class:newsletter newsletter.eml
+    - Lua API: task:get_multiclass_result() gives class
+      probabilities and confidence.
+  - 2. Neural Module Overhaul ([#5579](#5579))
+    - Complete rework into a provider-based architecture: combines
+      symbols, LLM embeddings (OpenAI, etc.), and planned providers
+      (Bayes/FastText, in the future).
+    - Pluggable fusion—multiple feature types can be combined for
+      richer, more accurate classification.
+    - Trained normalization (unit/zscore/none), used consistently
+      at training/inference.
+    - Redis-backed caching for LLM embeddings to control
+      cost/latency.
+    - Configurable via providers, versioned for safe upgrades,
+      fully backwards compatible.
+  - 3. Multimap Selectors & Regex Enhancements ([#5615](#5615))
+    - Powerful, SA-style “selector” rules in multimap module for
+      regex filtering on message fields.
+    - Dedicated selector field, integrated with Hyperscan and regex
+      cache.
+    - Example: selector FROM_CORP from:domain =~ /corp\.example$/i
+  - 4. MIME & HTML Feature Extraction ([#5619](#5619),
+    [#5608](#5608))
+    - MIME parser detects part types automatically.
+    - HTML parser project extracts more features for downstream
+      modules.
+  - 5. HTTP, DNS, Upstream Improvements ([#5614](#5614),
+    [#5603](#5603), [#5601](#5601))
+    - Flexible HTTP timeout config and handling.
+    - Upstream reliability: probe mode, less need for forced
+      revive.
+    - DNS nameserver resolution moved to getaddrinfo.
+  - 6. Modernization & Maintenance ([#5592](#5592), [#5598](#5598),
+    [#5580](#5580), others)
+    - Standardized on C++20; builds, test, and CI improvements (ARM
+      support, modern fallback maps).
+    - Regular code cleaning, bugfixes, and RPM tweaks.
+  - 7. WebUI & UX ([#5606](#5606), [#5607](#5607))
+    - E2E scan test flows in WebUI.
+    - Bootstrap upgrade, Bayes class management from the web
+      interface.
+  - 8. GPT & LLM Integrations ([#5612](#5612), [#5572](#5572))
+    - Improved handling of GPT model parameters and prompts.
+    - Initial support for OpenAI GPT-5 and other models.
+- refresh patch rspamd-conf.patch
+
+-------------------------------------------------------------------
 Tue Jun 17 09:47:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.12.1
