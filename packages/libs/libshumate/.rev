@@ -156,4 +156,12 @@
     <comment>New stable release (forwarded request 1253323 from iznogood)</comment>
     <requestid>1253378</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bdd2de2cc7910160125ea621662eecd2</srcmd5>
+    <version>1.5.0.1</version>
+    <time>1758720101</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304939 from dimstar)</comment>
+    <requestid>1305481</requestid>
+  </revision>
 </revisionlist>
