@@ -279,15 +279,6 @@
  	pid=$!
 --- src/cmd/ksh93/tests/locale.sh
 +++ src/cmd/ksh93/tests/locale.sh	2011-05-24 14:46:02.000000000 +0000
-@@ -62,7 +62,7 @@ done
- # this locale is supported by ast on all platforms
- # EU for { decimal_point="," thousands_sep="." }
- 
--locale=C_EU.UTF-8
-+locale=de_DE.UTF-8
- 
- export LC_ALL=C
- 
 @@ -111,11 +111,11 @@ set -- $($SHELL -c "
  	unset LC_CTYPE
  	export LANG=$locale

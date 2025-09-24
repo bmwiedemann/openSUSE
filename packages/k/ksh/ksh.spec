@@ -1,7 +1,7 @@
 #
 # spec file for package ksh
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -479,7 +479,7 @@ fi
   RPM_OPT_FLAGS=$(echo "${RPM_OPT_FLAGS}"|sed -r 's/([[:blank:]]+)-g[[:digit:]]+/\1-g2/g;s/([[:blank:]]+)-g([[:blank:]]+|$)/\1-g2\2/g')
   UNIVERSE=att
   LDFLAGS="-lm"
-  LDSOFLG=""
+  LDSOFLG="-lm"
   cflags -std=gnu99				RPM_OPT_FLAGS
   cflags -fPIC					RPM_OPT_FLAGS
   cflags -fno-strict-aliasing			RPM_OPT_FLAGS
@@ -886,7 +886,12 @@ fi
 %config %attr(0644,root,root) %{_sysconfdir}/permissions.d/ksh
 %config %attr(0644,root,root) %{_sysconfdir}/permissions.d/ksh.paranoid
 %endif
-%doc LICENSE EPL-1.0 CPL-1.0 src/cmd/ksh93/COMPATIBILITY src/cmd/ksh93/RELEASE*
+%if %{defined license} && 0%{?suse_version} > 1315
+%license LICENSE EPL-1.0 CPL-1.0
+%else
+%doc LICENSE EPL-1.0 CPL-1.0
+%endif
+%doc src/cmd/ksh93/COMPATIBILITY src/cmd/ksh93/RELEASE*
 %doc Builtins PROMO OBSOLETE MEMORANDUM
 %{_bindir}/ksh
 %if %{with libalternatives}
@@ -931,7 +936,12 @@ fi
 
 %files -n ksh-devel
 %defattr(-,root,root)
-%doc LICENSE Warning
+%if %{defined license} && 0%{?suse_version} > 1315
+%license LICENSE
+%else
+%doc LICENSE
+%endif
+%doc Warning
 %dir %{_libdir}/ast/
 %{_libdir}/ast/*.so
 %{_libdir}/ast/*.a

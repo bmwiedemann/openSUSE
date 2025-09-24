@@ -1143,4 +1143,12 @@
   variant [bsc#1245908]</comment>
     <requestid>1299826</requestid>
   </revision>
+  <revision rev="119" vrev="12">
+    <srcmd5>7cf878a05df9090b68db07e85b14c36a</srcmd5>
+    <version>93vu</version>
+    <time>1758726793</time>
+    <user>anag_factory</user>
+    <comment>- Fix bug boo#1225398 that is link libast.so against -lm</comment>
+    <requestid>1306964</requestid>
+  </revision>
 </revisionlist>

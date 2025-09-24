@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 24 11:21:55 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Fix bug boo#1225398 that is link libast.so against -lm 
+
+-------------------------------------------------------------------
 Fri Aug 15 12:23:01 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Switch over to libalternatives for etags to provide a ksh
