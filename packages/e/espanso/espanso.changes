@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 24 07:29:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.7:
+  * Add SignPath to sponsors by @AucaCoyan in #2465
+  * Update flake by @github-actions[bot] in #2461
+  * Fix macos build tasks by @AucaCoyan in #2466
+  * Change panic to warning for console attachment error (fix
+    #2464) by @alumik in #2468
+  * comment out failing step in the CI by @AucaCoyan in #2469
+  * Update flake by @github-actions[bot] in #2467
+  * fix failing Windows CI due to missing iscc by @AucaCoyan in
+    #2472
+  * release v2.2.6 by @AucaCoyan in #2473
+  * add the install inno setup in create-release ci by @AucaCoyan
+    in #2476
+  * release v2.2.7 by @AucaCoyan in #2478
+
+-------------------------------------------------------------------
 Fri Sep 19 11:25:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.5 (2.2.4 was not released):
