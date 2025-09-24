@@ -5344,4 +5344,19 @@
       suppress click-detection.</comment>
     <requestid>1304810</requestid>
   </revision>
+  <revision rev="310" vrev="83">
+    <srcmd5>826694b8af25a44367adb9bb73b62f6d</srcmd5>
+    <version>unknown</version>
+    <time>1758720031</time>
+    <user>anag_factory</user>
+    <comment>- Add a SUSE helper program and its manual page
+  * termerase reports the erase character used in the terminfo
+    data base for environment variable TERM (the kbs entry).
+
+- Add ncurses patch 20250920
+  + add configure check for &lt;sys/fsuid.h&gt;, build-fix for flatpacks
+    (report by Stas Sergeev).
+  + update config.guess, config.sub</comment>
+    <requestid>1306716</requestid>
+  </revision>
 </revisionlist>

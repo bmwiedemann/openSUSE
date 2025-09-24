@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 23 11:38:34 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add a SUSE helper program and its manual page
+  * termerase reports the erase character used in the terminfo
+    data base for environment variable TERM (the kbs entry).
+
+-------------------------------------------------------------------
+Mon Sep 22 06:30:56 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250920
+  + add configure check for <sys/fsuid.h>, build-fix for flatpacks
+    (report by Stas Sergeev).
+  + update config.guess, config.sub
+
+-------------------------------------------------------------------
 Mon Sep 15 08:28:37 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250913

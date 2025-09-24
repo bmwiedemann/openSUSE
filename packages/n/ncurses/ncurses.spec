@@ -105,6 +105,8 @@ Source9:        https://www.invisible-island.net/archives/ncurses/ncurses-%{base
 Source10:       https://www.invisible-island.net/archives/ncurses/current/tack-%{tackvers}-%{tacklvl}.tgz.asc
 Source11:       ncurses.keyring
 Source12:       ncursesnt
+Source42:       termerase.c
+Source43:       termerase.1
 Patch0:         ncurses-6.4.dif
 Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
@@ -1052,6 +1054,13 @@ export CFLAGS_SHARED
 #
     install -m 0755 %{S:12} %{buildroot}%{_bindir}/ncursesnt
 
+#
+# Install termerase helper program with manual page
+#
+gcc -Wall ${RPM_OPT_FLAGS} -o %{buildroot}%{_bindir}/termerase %{S:42} \
+    -I %{buildroot}%{_incdir} -L %{buildroot}%{_libdir} -ltinfo
+install -m 0644 %{S:43} %{buildroot}%{_mandir}/man1/termerase.1
+
 %check
 %if 0%{?_crossbuild}
 echo No test here
@@ -1091,10 +1100,12 @@ popd
 %defattr(-,root,root)
 %{_sysconfdir}/termcap
 %config %{_miscdir}/termcap
+%{_bindir}/termerase
 %dir %{_sysconfdir}/terminfo
 %dir %{_datadir}/tabset/
 %dir %{_datadir}/terminfo/
 %dir %{_datadir}/terminfo/*/
+%doc %{_mandir}/man1/termerase.1%{ext_man}
 
 %files -n terminfo-screen -f screen.list
 %defattr(-,root,root)

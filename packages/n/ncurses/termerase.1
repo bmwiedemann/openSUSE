@@ -1,0 +1,45 @@
+.\"***************************************************************************
+.\" Copyright 2025 Werner Fink                                               *
+.\" Copyright 1998-2016,2017 Free Software Foundation, Inc.                  *
+.\"***************************************************************************
+.ie \n(.g \{\
+.ds `` \(lq
+.ds '' \(rq
+.ds ^  \(ha
+.\}
+.el \{\
+.ie t .ds `` ``
+.el   .ds `` ""
+.ie t .ds '' ''
+.el   .ds '' ""
+.ds       ^  ^
+.\}
+.
+.de bP
+.ie n  .IP \(bu 4
+.el    .IP \(bu 2
+..
+.
+.TH termerase 1 2025-09-23 "ncurses" "User commands"
+.SH NAME
+termerase \- reports the erase character found in terminfo database for variable TERM
+.SH SYNOPSIS
+\fBtermerase\fP [\fB\-h|--help\fP] [\fB\-t \fIterminal-type\fP|--term \fIterminal-type\fP]
+.SH DESCRIPTION
+This program reports the erase character, known as
+.B capname kbs
+of the used terminfo database for the environment variable
+.BR TERM .
+The environment variable
+.B TERM
+can be overwritten by the option \*(``\fB\-t\fP\*('' or as long option \*(``\fB\-\-term\fP\*(''
+which requires a valid terminal-type of the terminfo database.
+.SH COMPATIBILITY
+The program \fBtermerase\fP is a SUSE extension.
+.SH FILES
+.TP
+.I /usr/share/terminfo
+compiled terminal description database directory
+.SH SEE ALSO
+\fB\%tset\fP(1),
+\fB\%stty\fP(1),
