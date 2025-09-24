@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 10 15:30:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gdk-pixbuf-loader-rsvg BuildRequires: glycin-loaders comes
+  in via libgtk3 already and handles this case.
+
+-------------------------------------------------------------------
 Mon May 27 09:47:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Initial package, version 46.2.

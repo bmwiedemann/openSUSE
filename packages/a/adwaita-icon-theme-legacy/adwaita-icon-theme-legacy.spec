@@ -1,7 +1,7 @@
 #
-# spec file for package adwaita-icon-theme
+# spec file for package adwaita-icon-theme-legacy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ URL:            https://gitlab.gnome.org/GNOME/adwaita-icon-theme-legacy
 Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
-BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  gtk3-tools >= 3.24.2
 BuildRequires:  meson >= 0.64.0
 BuildRequires:  pkgconfig
@@ -58,6 +57,5 @@ rm -r %{buildroot}%{_datadir}/licenses/adwaita-icon-theme
 %ghost %{_datadir}/icons/AdwaitaLegacy/icon-theme.cache
 %{_datadir}/icons/AdwaitaLegacy/
 %{_datadir}/pkgconfig/adwaita-icon-theme-legacy.pc
-
 
 %changelog

@@ -7,4 +7,12 @@
     <comment>New compat package</comment>
     <requestid>1205520</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3d68691565841a1c6daca7a042f295b9</srcmd5>
+    <version>46.2</version>
+    <time>1758720181</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304862 from dimstar)</comment>
+    <requestid>1305432</requestid>
+  </revision>
 </revisionlist>
