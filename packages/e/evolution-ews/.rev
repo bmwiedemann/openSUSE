@@ -1338,4 +1338,12 @@
     - m365: GOA account rejects creating meetings (forwarded request 1279664 from iznogood)</comment>
     <requestid>1280045</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>231de3685ca3ce12e5cdba4f7428a318</srcmd5>
+    <version>3.58.0</version>
+    <time>1758720051</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304873 from dimstar)</comment>
+    <requestid>1305441</requestid>
+  </revision>
 </revisionlist>

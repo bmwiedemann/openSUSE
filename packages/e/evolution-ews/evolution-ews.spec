@@ -1,7 +1,7 @@
 #
 # spec file for package evolution-ews
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution-ews
-Version:        3.56.2
+Version:        3.58.0
 Release:        0
 Summary:        Exchange Connector for Evolution, compatible with Exchange 2007 and later
 License:        LGPL-2.1-only
@@ -91,6 +91,7 @@ using exchange web services protocol.
 %{_libdir}/evolution-data-server/camel-providers/libcamelmicrosoft365.urls
 %{_libdir}/evolution-data-server/registry-modules/module-ews-backend.so
 %{_libdir}/evolution-data-server/registry-modules/module-microsoft365-backend.so
+%{_libdir}/evolution-ews/libcamelmicrosoft365-priv.so
 %{_libdir}/evolution-ews/libevolution-ews-common.so
 %{_libdir}/evolution-ews/libevolution-microsoft365.so
 %{_libdir}/evolution/modules/module-ews-configuration.so

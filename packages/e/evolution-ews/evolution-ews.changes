@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 12 14:58:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.58.0:
+  + Bug Fixes: m365: "Follow up" status not set
+  + Updated translations
+
+-------------------------------------------------------------------
+Sat Aug 30 10:08:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.57.3:
+  + m365: E-mails/folders not always in sync with the server
+  + m365: Better detect when delta token is rejected by the server
+- Changes from version EWS 3.57.2:
+  + m365: Allow setting Out of Office message
+- Changes from version 3.57.1:
+  + m365: Also load photos of Organizational Users
+  + Cannot accept meeting invitations (duplicated attendee)
+  + m365: GOA account rejects creating meetings
+  + Foreign Folders: Look up DisplayName for GUID-like Mailbox Name
+  + Updated translations
+
+-------------------------------------------------------------------
 Fri May 23 19:28:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.56.2:
