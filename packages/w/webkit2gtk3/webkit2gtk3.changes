@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Sep 21 14:47:41 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Remove _constraints override for armv6l and armv7l. They were
+  less restrictive than the default and look to be unneeded now.
+
+-------------------------------------------------------------------
+Thu Sep 18 13:31:49 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-i586-build-fix.patch: fix the build on i586.
+- Force the garbage collector to run more often when compiling on
+  i586. Needed to avoid running out of memory.
+
+-------------------------------------------------------------------
+Wed Sep 17 11:38:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.0:
+  + Improved rendering performance by recording each layer once and
+    replaying every dirty region in different worker threads.
+  + Enable damage propagation to the UI process by default.
+  + CSS property font-variant-emoji is now enabled by default.
+  + Font synthesis properties (bold/italic) are now properly
+    handled.
+  + Ensure web view is focused on tap gesture.
+  + Added new API to get the theme color of a WebKitWebView.
+
+-------------------------------------------------------------------
+Mon Sep  8 21:28:20 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Disable skia on ppc64le for now. It currently makes the build
+  fail.
+
+-------------------------------------------------------------------
+Mon Sep  8 12:13:23 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.49.90:
+  + Add support for font collection / fragment identifiers.
+  + Fix web process deadlock on exit.
+  + Fix stuttering when playing WebP animations
+  + Fix CSS animations with cubic-bezier timing function.
+  + Do not start the MemoryPressureMonitor if it’s disabled
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Sep  4 17:40:37 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.48.6:

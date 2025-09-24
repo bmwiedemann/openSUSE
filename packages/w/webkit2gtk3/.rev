@@ -1985,4 +1985,13 @@ don't affect Linux. (forwarded request 1226975 from mgorse)</comment>
     <comment></comment>
     <requestid>1302840</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>0fa6f700a18b062be79b41c8f5057af8</srcmd5>
+    <version>2.50.0</version>
+    <time>1758720160</time>
+    <user>anag_factory</user>
+    <comment>- Remove _constraints override for armv6l and armv7l. They were
+  less restrictive than the default and look to be unneeded now. (forwarded request 1306313 from mgorse)</comment>
+    <requestid>1306436</requestid>
+  </revision>
 </revisionlist>

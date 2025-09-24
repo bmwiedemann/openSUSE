@@ -1,0 +1,21 @@
+diff --git a/Source/JavaScriptCore/llint/LowLevelInterpreter.asm b/Source/J=
+avaScriptCore/llint/LowLevelInterpreter.asm
+index af53fe269664..237fd6aab9c8 100644
+--- a/Source/JavaScriptCore/llint/LowLevelInterpreter.asm
++++ b/Source/JavaScriptCore/llint/LowLevelInterpreter.asm
+@@ -2958,6 +2958,13 @@ _wasm_ipint_call_return_location_wide16:
+ _wasm_ipint_call_return_location_wide32:
+     crash()
+
++if C_LOOP and not JSVALUE64
++_op_instanceof_return_location:
++_op_instanceof_return_location_wide16:
++_op_instanceof_return_location_wide32:
++    crash()
++end
++
+ end # WEBASSEMBLY
+
+ include? LowLevelInterpreterAdditions
+```
+

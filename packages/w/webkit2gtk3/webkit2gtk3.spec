@@ -1,7 +1,7 @@
 #
 # spec file for package webkit2gtk3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,7 +76,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.48.6
+Version:        2.50.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -88,6 +88,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
 Patch0:         reproducibility.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-i586-build-fix.patch webkit#299018 mgorse@suse.com -- fix the build on i586.
+Patch1:         webkit2gtk3-i586-build-fix.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -466,6 +468,10 @@ fi
 export PYTHON=%{_bindir}/python3
 # Use linker flags to reduce memory consumption
 %global optflags %(echo %{optflags} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads | sed 's/-g /-g1 /')
+%ifarch i586
+# Force the garbage collector to run more often, to reduce memory consumption
+%global optflags %{optflags} --param ggc-min-expand=30
+%endif
 %cmake \
   -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
@@ -487,6 +493,9 @@ export PYTHON=%{_bindir}/python3
   -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
+%ifarch ppc64le
+  -DUSE_SKIA=OFF \
+%endif
 %if %{_usesoup2}
   -DUSE_SOUP2=ON \
 %endif
