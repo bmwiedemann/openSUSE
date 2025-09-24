@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-mahjongg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-mahjongg
-Version:        48.1
+Version:        49.0.1
 Release:        0
 Summary:        Mahjong Solitaire Game for GNOME
 License:        GPL-2.0-or-later
@@ -54,12 +54,10 @@ corresponding tiles and taking them out of play.
 %license COPYING
 %doc NEWS
 %{_bindir}/%{name}
-%{_datadir}/%{name}/
 %{_datadir}/metainfo/org.gnome.Mahjongg.metainfo.xml
 %{_datadir}/applications/org.gnome.Mahjongg.desktop
 %{_datadir}/dbus-1/services/org.gnome.Mahjongg.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Mahjongg.gschema.xml
-%{_datadir}/help/C/%{name}/
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Mahjongg*
 %{_mandir}/man6/%{name}.6%{?ext_man}
 
