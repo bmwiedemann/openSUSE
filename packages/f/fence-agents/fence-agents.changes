@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 23 19:36:41 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.16.0+git.1758188595.5a0c09a2:
+  * fence_ibm_powervs: update description of api-type parameter to show correct default value
+  * spec: dont Require python3-msrestazure on RHEL10+
+
+-------------------------------------------------------------------
 Thu Sep 04 08:06:38 UTC 2025 - varkoly@suse.com
 
 - Update to version 4.16.0+git.1755594293.5cf006ff:

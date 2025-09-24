@@ -1241,4 +1241,14 @@
   * fence_ibm_vpc: add apikey file support</comment>
     <requestid>1302690</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>df29731bddc8eb8add38415397c365ea</srcmd5>
+    <version>4.16.0+git.1758188595.5a0c09a2</version>
+    <time>1758720271</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.16.0+git.1758188595.5a0c09a2:
+  * fence_ibm_powervs: update description of api-type parameter to show correct default value
+  * spec: dont Require python3-msrestazure on RHEL10+</comment>
+    <requestid>1306823</requestid>
+  </revision>
 </revisionlist>

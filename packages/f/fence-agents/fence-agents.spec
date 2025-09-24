@@ -1,7 +1,7 @@
 #
 # spec file for package fence-agents
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define agent_list aliyun alom apc apc_snmp aws azure_arm bladecenter brocade cisco_mds cisco_ucs drac5 dummy eaton_snmp eaton_ssh emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_powervs ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump lpar mpath netio nutanix_ahv powerman pve raritan rcd_serial redfish rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti zvm
 Name:           fence-agents
 Summary:        Set of unified programs capable of host isolation ("fencing")
-Version:        4.16.0+git.1755594293.5cf006ff
+Version:        4.16.0+git.1758188595.5a0c09a2
 Release:        0
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Clustering/HA
@@ -370,7 +370,8 @@ Fence agents for APC devices that are accessed via the SNMP protocol.
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Summary:        Fence agent for Amazon AWS
 Requires:       fence-agents-common = %{version}-%{release}
-Requires:       python3-boto3
+Requires:       python3-boto3 >= 1.39.12
+Requires:       python3-botocore >= 1.39.12
 BuildArch:      noarch
 Conflicts:      %{name} < %{version}-%{release}
 
