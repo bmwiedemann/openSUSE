@@ -1,7 +1,7 @@
 #
 # spec file for package sakura
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sakura
-Version:        3.8.8
+Version:        3.8.9
 Release:        0
 Summary:        Terminal Emulator based on the VTE Library
 License:        GPL-2.0-or-later
@@ -34,9 +34,9 @@ BuildRequires:  intltool
 BuildRequires:  libstdc++-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0) >= 2.20
+BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(vte-2.91) >= 0.38
+BuildRequires:  pkgconfig(vte-2.91) >= 0.50
 
 %description
 sakura is a vte-based terminal emulator. It aims to provide a terminal

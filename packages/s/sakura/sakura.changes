@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 14 16:39:28 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.8.9:
+  * Move orig_argc and orig_argv to sakura global struct
+  * Add keyword field to desktop file
+  * Don't give Gdk-CRITICAL error for non-set keyboard shortcuts
+  * feature: allow adjusting VTE line height from configuration
+  * sakura_key_press_cb(): do not return early if switch_tab_accelerator is
+    detected
+  * Add keybinding to open a new window (by spawning a new instance of Sakura)
+
+-------------------------------------------------------------------
 Sun Oct 13 14:30:51 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.8.8:
