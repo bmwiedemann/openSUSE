@@ -247,4 +247,41 @@
     <comment> (forwarded request 1279619 from iznogood)</comment>
     <requestid>1280028</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4871204a39d30d14db5cbdb1917d7db7</srcmd5>
+    <version>49.0.1</version>
+    <time>1758720225</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.0.1:
+  + Updated POTFILES.in and POTFILES.skip
+  + Fixed installation of sounds
+  + Fixed a bug where the game area could be swiped and tapped on
+    during pause
+  + Updated translations.
+- Changes from version 49.rc.4:
+  + Fixed metainfo release names
+- Changes from version 49.rc.2:
+  + Fixed broken release builds
+- Changes from version 49.rc.1:
+  + Fixed a bug where a player could try to rotate a piece after
+    game over
+  + Updated libgnome-games-support (fixes a bug where the lib is
+    installed seperately from Quadrapassel)
+- Changes from version 49.rc:
+  + Fixed POTFILES.in to not include deleted files
+  + Fixed a bug where game pieces could be rotated so that they
+    appeared above the game area
+  + Updated meson version
+  + Changed the libgnome-games-support dependency to use it as a
+    meson subproject
+- Changes from version 49.beta:
+  + Made the multi-line reward more balanced
+  + Made the scoring use libgnome-games-support
+  + Replaced the score dialog with the one from
+    libgnome-games-support
+  + Made the game area and block preview hidden on pause
+  + Renamed appdata to metainfo and changed component type to
+    'desktop-application' (forwarded request 1305230 from iznogood)</comment>
+    <requestid>1305515</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package quadrapassel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,22 @@
 
 
 Name:           quadrapassel
-Version:        40.2
+Version:        49.0.1
 Release:        0
 Summary:        Tetris Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Other
 URL:            https://live.gnome.org/Quadrapassel
-Source0:        https://download.gnome.org/sources/quadrapassel/40/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
+BuildSystem:    meson
 
+BuildRequires:  blueprint-compiler
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  itstool
 BuildRequires:  meson
-BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.24.0
-BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(clutter-1.0) >= 1.0.0
-BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 0.91.6
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gsound) >= 1.0.2
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
-BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(manette-0.2)
+BuildRequires:  rpm_macro(meson_buildrequires)
 
 %description
 Quadrapassel is a version of Tetris, the classic game of interlocking
@@ -47,33 +43,35 @@ player gains points
 
 %lang_package
 
-%prep
-%autosetup -p1
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-%meson
-%meson_build
-
-%install
-%meson_install
+%install -a
 %find_lang %{name} %{?no_lang_C}
+%find_lang %{name}_libgnome-games-support %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
-
-%check
-%meson_test
 
 %files
 %license COPYING
 %doc NEWS
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
-%{_datadir}/%{name}/
-%{_datadir}/metainfo/org.gnome.Quadrapassel.appdata.xml
+%{_datadir}/metainfo/org.gnome.Quadrapassel.metainfo.xml
 %{_datadir}/applications/org.gnome.Quadrapassel.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Quadrapassel.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Quadrapassel*
 %{_mandir}/man6/%{name}.6%{?ext_man}
+%{_datadir}/dbus-1/services/org.gnome.Quadrapassel.service
+%dir %{_datadir}/sounds/quadrapassel
+%{_datadir}/sounds/quadrapassel/gameover.ogg
+%{_datadir}/sounds/quadrapassel/land.ogg
+%{_datadir}/sounds/quadrapassel/lines1.ogg
+%{_datadir}/sounds/quadrapassel/lines2.ogg
+%{_datadir}/sounds/quadrapassel/lines3.ogg
+%{_datadir}/sounds/quadrapassel/quadrapassel.ogg
+%{_datadir}/sounds/quadrapassel/slide.ogg
+%{_datadir}/sounds/quadrapassel/turn.ogg
 
-%files lang -f %{name}.lang
+%files lang -f %{name}.lang -f %{name}_libgnome-games-support.lang
 
 %changelog
