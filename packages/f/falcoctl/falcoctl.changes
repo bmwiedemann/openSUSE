@@ -1,23 +1,4 @@
 -------------------------------------------------------------------
-Wed Sep 24 12:36:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
-
-- Update to version 0.11.4:
-  * chore(deps): Bump k8s.io/client-go from 0.32.3 to 0.33.4
-  * chore(deps): Bump github.com/gookit/color from 1.5.4 to 1.6.0
-  * chore(deps): Bump sigstore/cosign-installer in the actions
-    group
-  * chore(deps): Bump aws-actions/configure-aws-credentials
-  * chore(deps): Bump actions/setup-go from 5.5.0 to 6.0.0
-  * chore(deps): Bump github.com/stretchr/testify from 1.10.0 to
-    1.11.0
-  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/s3
-  * chore(deps): Bump k8s.io/api from 0.32.3 to 0.33.4
-  * chore(deps): Bump golang.org/x/term from 0.32.0 to 0.34.0
-  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/config
-  * chore(deps): Bump k8s.io/apimachinery from 0.32.3 to 0.33.4
-  * chore(deps): Bump github.com/go-viper/mapstructure/v2
-
--------------------------------------------------------------------
 Thu Aug 21 11:05:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.3:
