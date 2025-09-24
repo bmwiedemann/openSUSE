@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 24 07:05:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.126:
+  * fix docs formatting by @motatoes in #2138
+  * fix import by @motatoes in #2137
+  * bugfix: Respect skip_merge_check during apply requirements
+    check on backend by @motatoes in #2141
+  * Taco Release Pipeline by @breardon2011 in #2143
+  * adjust target by @breardon2011 in #2146
+  * remove outdated command, comments by @breardon2011 in #2147
+  * adjust to match dir structure by @breardon2011 in #2148
+  * non functional change to test release by @breardon2011 in #2149
+  * Fix nil pointer dereference in GetGithubAppInstallationLink
+    calls by @MrKeiKun in #2191
+  * chore: add essential around mutations by @breardon2011 in #2189
+  * rename the configuration option by @motatoes in #2249
+
+-------------------------------------------------------------------
 Thu Sep 18 10:11:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.125:
