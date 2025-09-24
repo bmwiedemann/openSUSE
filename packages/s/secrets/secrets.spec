@@ -1,7 +1,7 @@
 #
 # spec file for package secrets
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define         psuffix %nil
 %endif
 Name:           secrets%{psuffix}
-Version:        11.1.1
+Version:        12.0
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-only
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.73.1
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.66.0
 BuildRequires:  pkgconfig(gtk4) >= 4.15.3
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.7
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.beta
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.52.0
 
 Requires:       opensc
