@@ -1,7 +1,7 @@
 #
 # spec file for package template-glib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           template-glib
-Version:        3.36.3
+Version:        3.38.0
 Release:        0
 Summary:        Library for generating text based on a template and user defined state
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/template-glib/
-Source0:        https://download.gnome.org/sources/template-glib/3.36/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.51.0
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
@@ -89,7 +89,7 @@ This package provides the development files.
 	-Dprofiling=false \
 	-Dintrospection=enabled \
 	-Dvapi=true \
-	-Dgtk_doc=true \
+	-Ddocs=true \
 	%{nil}
 %meson_build
 
@@ -109,7 +109,7 @@ This package provides the development files.
 
 %files devel
 %doc README.md
-%doc %{_datadir}/gtk-doc/html/template-glib/
+%doc %{_datadir}/doc/template-glib-1.0/
 %dir %{_includedir}/template-glib-1.0
 %{_includedir}/template-glib-1.0/*.h
 %{_datadir}/gir-1.0/Template-1.0.gir
