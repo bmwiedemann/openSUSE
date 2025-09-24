@@ -1,7 +1,7 @@
 #
 # spec file for package python-cairocffi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xcffib >= 0.4.0}
 BuildRequires:  cairo
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       cairo
 Requires:       python-cffi >= 1.1.0
 Requires:       python-xcffib >= 0.3.2
@@ -42,9 +44,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  dejavu-fonts
-BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf
-BuildRequires:  python-rpm-macros
+BuildRequires:  glycin-loaders
 BuildRequires:  xvfb-run
 # /SECTION
 %python_subpackages

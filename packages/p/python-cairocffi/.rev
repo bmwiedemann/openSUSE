@@ -245,4 +245,12 @@
 </comment>
     <requestid>1205100</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>72cd2045f4809eccdc2110db107cca91</srcmd5>
+    <version>1.7.1</version>
+    <time>1758720142</time>
+    <user>anag_factory</user>
+    <comment>- Add missing dependency on some image loader (forwarded request 1305752 from mcalabkova)</comment>
+    <requestid>1305777</requestid>
+  </revision>
 </revisionlist>

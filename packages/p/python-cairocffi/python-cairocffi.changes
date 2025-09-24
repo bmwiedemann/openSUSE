@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 18 09:25:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add missing dependency on some image loader
+
+-------------------------------------------------------------------
 Wed Oct  2 08:12:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Readd disabling test_xcb tests. Please, don’t reenable until
