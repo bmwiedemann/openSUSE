@@ -29,10 +29,10 @@
 %endif
 %define title_version 0.4.14
 %define title_version_url %{title_version}
-%define objects_version 1.7.2
+%define objects_version 1.7.3
 %define openmusic_version 1.6.1
 %define opensound_version 1.0.6
-%define openrct2_version 0.4.25
+%define openrct2_version 0.4.26
 
 Name:           openrct2
 Version:        %{openrct2_version}
@@ -64,6 +64,7 @@ BuildRequires:  pkgconfig(icu-uc) >= 59.0
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(libzip) >= 1.0
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(openssl) >= 1.0.0
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(speexdsp)
