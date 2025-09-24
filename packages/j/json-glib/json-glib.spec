@@ -1,7 +1,7 @@
 #
 # spec file for package json-glib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           json-glib
-Version:        1.10.6
+Version:        1.10.8
 Release:        0
 Summary:        Library for JavaScript Object Notation format
 License:        LGPL-2.1-or-later

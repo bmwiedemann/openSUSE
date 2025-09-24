@@ -429,4 +429,14 @@
     <comment></comment>
     <requestid>1229845</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>3883929624517427078286373ecb8abd</srcmd5>
+    <version>1.10.8</version>
+    <time>1758720038</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.10.8:
+  + Add missing escape.
+  + Fix static builds. (forwarded request 1304580 from iznogood)</comment>
+    <requestid>1305430</requestid>
+  </revision>
 </revisionlist>
