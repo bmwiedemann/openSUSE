@@ -17,7 +17,7 @@
 
 
 Name:           gnome-maps
-Version:        48.7
+Version:        49.1
 Release:        0
 Summary:        Maps Application for GNOME
 License:        Apache-2.0 AND CC-BY-3.0 AND GPL-2.0-or-later AND BSD-3-Clause AND ISC AND MIT
@@ -46,12 +46,12 @@ BuildRequires:  pkgconfig(gtk4) >= 3.22.0
 BuildRequires:  pkgconfig(gweather4) >= 3.90.0
 #
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(rest-1.0) >= 0.7.90
-BuildRequires:  pkgconfig(shumate-1.0) >= 1.4.alpha
+BuildRequires:  pkgconfig(shumate-1.0) >= 1.5.alpha
 Recommends:     dbus(org.freedesktop.GeoClue2)
 
 %description
@@ -83,7 +83,7 @@ rm %{buildroot}%{_libdir}/%{name}/libgnome-maps.so
 %doc NEWS
 %{_bindir}/%{name}
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.Maps.appdata.xml
+%{_datadir}/metainfo/org.gnome.Maps.metainfo.xml
 %{_datadir}/applications/org.gnome.Maps.desktop
 %{_datadir}/dbus-1/services/org.gnome.Maps.service
 %{_datadir}/%{name}/

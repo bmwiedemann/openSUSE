@@ -910,4 +910,12 @@
     <comment></comment>
     <requestid>1302190</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>671823d560e24085cde75a554a1177b8</srcmd5>
+    <version>49.1</version>
+    <time>1758720150</time>
+    <user>anag_factory</user>
+    <comment>Update to 49.1 (forwarded request 1306116 from dimstar)</comment>
+    <requestid>1306426</requestid>
+  </revision>
 </revisionlist>

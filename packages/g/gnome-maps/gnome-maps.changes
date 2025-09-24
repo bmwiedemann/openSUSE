@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Sep 20 11:25:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.1:
+  + Fix regression preventing showing raw coordinate and opening
+    geo: URIs
+
+-------------------------------------------------------------------
+Fri Sep 12 15:00:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Use GioUnix to check availability of Weather and Clocks in Send
+    To dialog
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Sep  2 16:22:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Fix rendering preview image in Export View dialog after changes
+    in latests GTK
+  + Show user avatar in OSM account dialog when set
+- Changes from version 49.beta:
+  + Show release notes in about dialog
+  + Add additional icons for public phones and clocks
+  + Port to AdwShortcutsDialog for showing the keyboard shortcuts
+    help
+  + Botton-align marker when selecting an icon (so that the bubble
+    is pointing to the coordinates of the POI)
+  + Cancel ongoing routing requests when clearing, or changing the
+    search parameters
+  + Update Transitous to use the MOTIS v3 plan endpoint
+  + Show highway shields in place details for road labels and
+    markers when available
+  + Add POI search option for vegan and vegetarian restaurants
+- Changes from version 49.alpha:
+  + Fix calculating time zone offset for public transit itineraries
+    from MOTIS
+  + Change keyboard shortcut for rotating the map to avoid
+    conflicts with editing shortcuts in GTK entry widgets
+  + Add more translator comments
+  + Add option to override measurement system (metric or imperial)
+    from the system default
+  + Allow typing in raw coordinates more conveniently in the search
+    bar
+  + Use descriptive worbs for the routing mode tooltips
+  + Set main menu as primary menu
+  + Allow geo: URIs with a query parameter for search
+  + Show outlines on landuse geographic features
+  + Add more specialized POI icons
+  + Use the AdwaitaSans font in the map style
+  + Allow clicking on house numbers and road labels
+  + Show highway exit numbers in place details
+  + Mirror the "Directions" button icon in left-hand-traffic
+    regions
+  + Show furigana names for places in Japanese locale when
+    available
+  + Correctly show place type description for some types of offices
+    (e.g. government offices)
+  + Show localized rail/metro station symbols in some places
+  + Use correct address format in Paraguay
+  + Correctly show place type description for landuse places
+    (e.g. brownfields)
+  + Adjust OSM POI edit dialog to make in better fit phone screens
+
+-------------------------------------------------------------------
 Sun Aug 31 07:51:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.7:
