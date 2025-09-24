@@ -1626,4 +1626,12 @@
   (bsc#1246114 CVE-2025-7345 glgo@GNOME/gdk-pixbuf!217). (forwarded request 1300133 from mgorse)</comment>
     <requestid>1300264</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>ad4290192925183e72f0effd52bf27eb</srcmd5>
+    <version>2.44.1</version>
+    <time>1758720152</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1306118 from dimstar)</comment>
+    <requestid>1306428</requestid>
+  </revision>
 </revisionlist>

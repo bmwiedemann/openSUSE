@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Sep 18 16:25:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unused rpmlintrc.
+
+-------------------------------------------------------------------
+Thu Sep 18 06:40:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Keep owning the directory structure
+  %{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}/loaders,
+  so all the existing loader packages do not have to do it.
+
+-------------------------------------------------------------------
+Mon Sep 15 06:45:40 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.44.1:
+  + Re-enable animation tests
+  + Fix leak in load_animation_with_glycin
+
+-------------------------------------------------------------------
+Tue Sep  9 06:24:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.44.0:
+  + build: Fix cross-building
+  + build: Don't build documentation by default
+  + glycin: Implement animation
+  + Updated translations
+
+-------------------------------------------------------------------
+Thu Sep  4 09:14:37 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.43.5:
+  + The animation-related APIs have been deprecated
+  + jpeg: Fix a crash related to icc data (CVE-2025-7345)
+  + glycin: Save jpeg without alpha
+  + glycin: Simplify wrapping code and avoid a copy
+  + glycin: Support exif orientation
+  + glycin: Set sandbox mode for saving
+  + Plug some memory leaks
+  + build: Disabled the thumbnailer by default on Linux
+  + Prefer builtin modules
+- Changes from version 2.43.3:
+  + Add a native loader for Android builds
+  + Use the glycin loader for SVG as well.
+  + Change the default build options to be 'auto' for all loader
+    options.
+  + Change the default value for the builtin_loaders option to
+    'default'.  On Linux, we interpret 'default' as 'glycin'
+  + Require Meson 1.5 to build gdk-pixbuf
+  + Use glycin for saving. The following formats are supported:
+    png, jpeg, tiff, webp, ico, bmp. For png, jpeg and tiff, the
+    most common options are supported when saving.
+  + Fix introspection annotations for loading and saving GdkPixbuf
+    from and to streams asynchronously
+- Changes from version 2.43.2:
+  + Make the thumbnailer optional
+  + Add a glycin loader. Glycin is a sandboxed image loading
+    framework that is written in rust, and supports more image
+    formats than gdk-pixbuf ever did.
+  + Deprecate "gtk_doc" configuration option; to conform with the
+    rest of the GNOME core libraries, use "documentation" instead
+  + Remove the long-since deprecated "docs" configuration option
+  + Require Meson 1.0 to build gdk-pixbuf
+  + Deprecate the XPM-related API; the XPM loader is disabled by
+    default, and we have better API for loading those kinds of
+    assets, though nobody should be shipping XPM files in 2025
+- Build with the exact options as recommended by upstream:
+  -Dandroid=disabled
+  -Dpng=disabled
+  -Dtiff=disabled
+  -Djpeg=disabled
+  -Dgif=disabled
+  -Dothers=disabled
+  -Dglycin=enabled
+  -Dbuiltin_loaders='glycin'
+  -Dthumbnailer=disabled
+- Disable test suite: due to the use of glycin/bubblewrap, we
+  cannot pass the test suite inside the OBS build root
+- Drop gdk-pixbuf-fix-decoder-written-bytes-reporting.patch,
+  and gdk-pixbuf-jpeg-icc-data.patch: fixed upstream
+- Drop thumbnailer subpackage: no longer built by default on linux
+  in favor of glycin.
+
+-------------------------------------------------------------------
 Mon Aug 18 19:04:26 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add gdk-pixbuf-jpeg-icc-data.patch: be more careful with icc data

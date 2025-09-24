@@ -1,7 +1,7 @@
 #
 # spec file for package gdk-pixbuf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           gdk-pixbuf
-Version:        2.42.12
+Version:        2.44.1
 Release:        0
 Summary:        An image loading library
 License:        LGPL-2.1-or-later
@@ -29,14 +29,9 @@ URL:            https://www.gnome.org/
 Source0:        %{name}-%{version}.tar.zst
 Source1:        macros.gdk-pixbuf
 Source2:        README.SUSE
-Source3:        gdk-pixbuf-rpmlintrc
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM gdk-pixbuf-jpeg-slow.patch -- https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/merge_requests/174
 Patch0:         gdk-pixbuf-jpeg-slow.patch
-# PATCH-FIX-UPSTREAM gdk-pixbuf-fix-decoder-written-bytes-reporting.patch bsc#1245227 alynx.zhou@suse.com -- Fix wrong written bytes reported by decoder
-Patch1:         gdk-pixbuf-fix-decoder-written-bytes-reporting.patch
-# PATCH-FIX-UPSTREAM gdk-pixbuf-jpeg-icc-data.patch bsc#1246114 mgorse@suse.com -- jpeg: Be more careful with icc data.
-Patch2:         gdk-pixbuf-jpeg-icc-data.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docutils
@@ -47,6 +42,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(glycin-2)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libpng)
 
@@ -62,6 +58,8 @@ Group:          System/Libraries
 Requires(post): gdk-pixbuf-query-loaders
 Conflicts:      gtk2 < 2.21.3
 Provides:       %{name} = %{version}
+# Thumbmailer subpackage was dropped with 2.43.3
+Obsoletes:      %{name}-thumbnailer < %{version}
 
 %description  -n libgdk_pixbuf-2_0-0
 gdk-pixbuf is an image loading library that can be extended by loadable
@@ -102,18 +100,6 @@ Clutter.
 This package contains the utility to create the cache file needed for
 loadable modules.
 
-%package thumbnailer
-Summary:        System helper creating thumbnails
-Group:          System/X11/Utilities
-Supplements:    libgdk_pixbuf-2_0-0
-
-%description thumbnailer
-gdk-pixbuf is an image loading library that can be extended by loadable
-modules for new image formats. It is used by toolkits such as GTK+ or
-Clutter.
-
-This package contains the thumbnailer utility.
-
 %package devel
 Summary:        Development files for gdk-pixbuf, an image loading library
 Group:          Development/Languages/C and C++
@@ -138,14 +124,24 @@ cp -a %{SOURCE2} .
 %meson \
 	-Dinstalled_tests=false \
 	-Dothers=enabled \
+        -Dandroid=disabled \
+        -Dpng=disabled                \
+        -Dtiff=disabled               \
+        -Djpeg=disabled               \
+        -Dgif=disabled                \
+        -Dothers=disabled             \
+        -Dglycin=enabled              \
+        -Dbuiltin_loaders='glycin'    \
+        -Dthumbnailer=disabled        \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
+# prepare disk layout for external loaders
+mkdir -p %{buildroot}%{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}/loaders
 rm -rf %{buildroot}{%{_libexecdir},%{_datadir}}/installed-tests/
 %find_lang %{name}
-touch %{buildroot}%{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}/loaders.cache
 %if "%{_lib}" == "lib64"
   mv %{buildroot}%{_bindir}/gdk-pixbuf-query-loaders %{buildroot}%{_bindir}/gdk-pixbuf-query-loaders-64
   mv %{buildroot}%{_mandir}/man1/gdk-pixbuf-query-loaders.1 %{buildroot}%{_mandir}/man1/gdk-pixbuf-query-loaders-64.1
@@ -170,7 +166,8 @@ cp %{SOURCE1} %{buildroot}%{_rpmmacrodir}
 
 %ifarch x86_64
 %check
-%meson_test
+echo Meson test skipped, as glyin/bubblewrap does not work inside the OBS workers
+%dnl %meson_test
 %endif
 
 %post -n libgdk_pixbuf-2_0-0
@@ -217,8 +214,6 @@ fi
 %dir %{_libdir}/gdk-pixbuf-2.0
 %dir %{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}
 %dir %{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}/loaders
-%{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}/loaders/*.so
-%ghost %{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}/loaders.cache
 
 %files -n typelib-1_0-GdkPixbuf-2_0
 %{_libdir}/girepository-1.0/GdkPixbuf-2.0.typelib
@@ -229,11 +224,6 @@ fi
 %files query-loaders
 %{_bindir}/gdk-pixbuf-query-loaders*
 %{_mandir}/man1/gdk-pixbuf-query-loaders*.1*
-
-%files thumbnailer
-%{_bindir}/gdk-pixbuf-thumbnailer
-%dir %{_datadir}/thumbnailers
-%{_datadir}/thumbnailers/gdk-pixbuf-thumbnailer.thumbnailer
 
 %files devel
 %{_bindir}/gdk-pixbuf-csource
