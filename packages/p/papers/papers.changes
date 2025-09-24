@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:26:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Two use-after-free issues in libview
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Sep  1 14:08:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Various memory leak fix
+  + Simplify section names in shortcuts dialog
+  + Switch to image-rs in thumbnailer due to sandbox limitation
+
+-------------------------------------------------------------------
+Fri Aug 29 11:30:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + Switch to use AdwShortcutDialog
+  + Screen reader support
+  + UI rework of annotation properties dialog
+  + Renamed to Document Viewer
+  + Save on CTRL+SHIFT+S as well
+- Changes from version 49.alpha:
+  + Improved annotation UI logic
+  + Better support for fractional
+  + Performance optimizations for selection
+  + Migrate to Blueprint
+  + Port thumbnailer to Rust
+  + Move document mutex locks to the backend
+  + PpsDocumentPoint refactor
+  + Add spell checking support for multiline form fields
+  + Various search improvements
+  + Add troubleshooting page to the About dialog
+- Add blueprint-compiler BuildRequires: new dependency
+
+-------------------------------------------------------------------
 Wed Jul 23 07:05:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.5:

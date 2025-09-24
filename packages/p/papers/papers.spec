@@ -1,7 +1,7 @@
 #
 # spec file for package papers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,16 +20,17 @@
 %bcond_without test
 %define major_ver 4
 %define api_ver %{major_ver}_0
-%define plugin_ver 5
+%define plugin_ver 6
 %define appid org.gnome.Papers
 Name:           papers
-Version:        48.5
+Version:        49.0
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
-URL:            https://gitlab.gnome.org/GNOME/Incubator/papers
+URL:            https://gitlab.gnome.org/GNOME/papers
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -67,10 +68,10 @@ Summary:        GNOME Document Viewer System Library
 Papers is a document viewer capable of displaying single-page and multi-page
 document formats like PDF and PostScript.
 
-%package -n libppsview%{api_ver}-%{major_ver}
+%package -n libppsview%{api_ver}-5
 Summary:        GNOME Document Viewer System Library
 
-%description -n libppsview%{api_ver}-%{major_ver}
+%description -n libppsview%{api_ver}-5
 Papers is a document viewer capable of displaying single-page and multi-page
 document formats like PDF and PostScript.
 
@@ -157,7 +158,7 @@ A extension for support document on nautilus.
 %find_lang %{name}
 
 %ldconfig_scriptlets -n libppsdocument%{api_ver}-%{plugin_ver}
-%ldconfig_scriptlets -n libppsview%{api_ver}-%{major_ver}
+%ldconfig_scriptlets -n libppsview%{api_ver}-5
 
 %check
 %if %{with test}
@@ -181,8 +182,8 @@ A extension for support document on nautilus.
 %files -n libppsdocument%{api_ver}-%{plugin_ver}
 %{_libdir}/libppsdocument-%{major_ver}.0.so.%{plugin_ver}*
 
-%files -n libppsview%{api_ver}-%{major_ver}
-%{_libdir}/libppsview-%{major_ver}.0.so.%{major_ver}*
+%files -n libppsview%{api_ver}-5
+%{_libdir}/libppsview-%{major_ver}.0.so.5*
 
 %files -n typelib-1_0-PapersDocument-%{api_ver}
 %{_libdir}/girepository-1.0/PapersDocument-%{major_ver}.0.typelib
@@ -200,23 +201,23 @@ A extension for support document on nautilus.
 %dir %{_libdir}/papers/
 %dir %{_libdir}/papers/%{plugin_ver}
 %dir %{_libdir}/papers/%{plugin_ver}/backends
-%{_datadir}/metainfo/papers-comicsdocument.metainfo.xml
-%{_libdir}/papers/%{plugin_ver}/backends/comicsdocument.papers-backend
+%{_datadir}/metainfo/org.gnome.Papers.ComicsDocument.metainfo.xml
+%{_libdir}/papers/%{plugin_ver}/backends/org.gnome.Papers.ComicsDocument.papers-backend
 %{_libdir}/papers/%{plugin_ver}/backends/libcomicsdocument.so
 
 %files plugin-djvudocument
-%{_datadir}/metainfo/papers-djvudocument.metainfo.xml
-%{_libdir}/papers/%{plugin_ver}/backends/djvudocument.papers-backend
+%{_datadir}/metainfo/org.gnome.Papers.DjvuDocument.metainfo.xml
+%{_libdir}/papers/%{plugin_ver}/backends/org.gnome.Papers.DjvuDocument.papers-backend
 %{_libdir}/papers/%{plugin_ver}/backends/libdjvudocument.so
 
 %files plugin-pdfdocument
-%{_datadir}/metainfo/papers-pdfdocument.metainfo.xml
-%{_libdir}/papers/%{plugin_ver}/backends/pdfdocument.papers-backend
+%{_datadir}/metainfo/org.gnome.Papers.PdfDocument.metainfo.xml
+%{_libdir}/papers/%{plugin_ver}/backends/org.gnome.Papers.PdfDocument.papers-backend
 %{_libdir}/papers/%{plugin_ver}/backends/libpdfdocument.so
 
 %files plugin-tiffdocument
-%{_datadir}/metainfo/papers-tiffdocument.metainfo.xml
-%{_libdir}/papers/%{plugin_ver}/backends/tiffdocument.papers-backend
+%{_datadir}/metainfo/org.gnome.Papers.TiffDocument.metainfo.xml
+%{_libdir}/papers/%{plugin_ver}/backends/org.gnome.Papers.TiffDocument.papers-backend
 %{_libdir}/papers/%{plugin_ver}/backends/libtiffdocument.so
 
 %files -n nautilus-extension-papers
