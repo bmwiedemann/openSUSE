@@ -1776,4 +1776,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>1289816</requestid>
   </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>49123c598ceb0228a5639e42e197a344</srcmd5>
+    <version>49.0</version>
+    <time>1758720120</time>
+    <user>anag_factory</user>
+    <comment>Update to GNOME 49 (forwarded request 1305084 from dimstar)</comment>
+    <requestid>1305500</requestid>
+  </revision>
 </revisionlist>

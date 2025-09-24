@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue Sep 16 06:16:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Enhancements: Add tests for replacing files
+  + Bugfixes:
+    - Fix hidden state of edited files
+    - Fix thumbnail canceling
+    - Fix moving of starred files
+  + Cleanups:
+    - Use GSettings memory backend for tests
+    - Skip thumbnail tests without sandbox
+    - Fix multiple leaks
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Sep  1 14:15:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Enhancements:
+    - Add Thumbnailing Tests
+    - Show files in MTP-backed directories
+    - Remove artificial delay for already loaded or search
+      directories
+    - Add slash to the path entered by pressing ~
+  + Bugfixes:
+    - Update file thumbnail after thumbnail creation
+    - Place background menu opened from keyboard correctly in RTL
+    - Fix app chooser default focus again
+  + Cleanups:
+    - FilesView simplifications
+    - Suppress some static analyzer warnings
+    - Add nautilus list aliases
+    - Integrate sidebar code properly
+    - Rework more search-related code
+  + Updated translations
+- Add mutter BuildRequires and launch meson test suite with mutter
+  as display server
+- Don't run the test suite on s390x: the virtual mutter and Mesa do
+  not play right together.
+
+-------------------------------------------------------------------
+Fri Aug 29 11:40:41 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  * Enhancements:
+    - Redesigned search popover
+    - Add coverage test to CI
+    - Add tests for archive operations
+    - Add tests for showing hidden files
+    - Use headless wayland for running CI tests
+    - Improve extension documentation
+    - Copy network addresses in network view
+    - Don't open starred on drag and drop hover
+    - Add 'Context Menu' shortcut to help-overlay 
+  + Bugfixes:
+    - Fix appchooser default focus
+    - Fix broken localsearch test
+- Changes from version 49.alpha:
+  + Use dashed border and scissor icon for cut files
+  + Use transparency for hidden files
+  + Modernize and make batch rename dialog adaptive
+  + Use ICU for date formatting
+  + Use AdwDialog for app chooser dialog
+  + Replace long press touch gesture with enhanced folder menu
+  + Add "Ctrl + dot" shortcut for opening current dir in console
+  + Announce file star state with a11y
+  + Sort local mounts in the sidebar by device name
+  + Hide rename in sidebar when not available
+  + Add tooltip to the stop button in floating bar
+  + New icon for finished operations
+  + Updated translations
+
+-------------------------------------------------------------------
 Mon Jun 30 06:37:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.3:
