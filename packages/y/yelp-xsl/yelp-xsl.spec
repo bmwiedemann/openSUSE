@@ -1,7 +1,7 @@
 #
 # spec file for package yelp-xsl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           yelp-xsl
-Version:        42.4
+Version:        49.0
 Release:        0
 Summary:        XSL stylesheets for the yelp help browser
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Yelp
-Source0:        https://download.gnome.org/sources/yelp-xsl/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/yelp-xsl/49/%{name}-%{version}.tar.xz
 Source99:       yelp-xsl-rpmlintrc
 
 BuildRequires:  itstool >= 1.2.0
