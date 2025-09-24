@@ -59,4 +59,12 @@
     <comment>Pointless bump, but lets do it anyway (forwarded request 1253849 from iznogood)</comment>
     <requestid>1253851</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>121814eaa0d57082a613358f2b804376</srcmd5>
+    <version>49.0</version>
+    <time>1758720111</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304954 from dimstar)</comment>
+    <requestid>1305491</requestid>
+  </revision>
 </revisionlist>

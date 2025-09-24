@@ -1,7 +1,7 @@
 #
 # spec file for package tecla-keyboard-layout-viewer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tecla-keyboard-layout-viewer
-Version:        48.0.2
+Version:        49.0
 Release:        0
 Summary:        A keyboard layout viewer
 License:        GPL-2.0-or-later
