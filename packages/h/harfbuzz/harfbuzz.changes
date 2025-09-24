@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 22 17:10:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 11.5.1:
+  + Optimized partial-instancing of fonts with a large number of
+    axes. Now over two times faster.
+  + Fix C++ STL atomics implementation.
+
+-------------------------------------------------------------------
+Sat Sep 13 08:40:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 11.5.0:
+  + Update to Unicode 17.0.0.
+  + Subsetter optimizations.
+  + Bug fixes for “AAT” shaping, and other shaping micro
+    optimizations.
+
+-------------------------------------------------------------------
 Sat Aug 30 08:51:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 11.4.5:

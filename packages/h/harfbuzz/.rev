@@ -1285,4 +1285,15 @@ New stable rel</comment>
     optimizations. (forwarded request 1302007 from iznogood)</comment>
     <requestid>1302016</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>b0e007c756fbce181865066412b21a8d</srcmd5>
+    <version>11.5.1</version>
+    <time>1758720162</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11.5.1:
+  + Optimized partial-instancing of fonts with a large number of
+    axes. Now over two times faster.
+  + Fix C++ STL atomics implementation. (forwarded request 1306586 from iznogood)</comment>
+    <requestid>1306711</requestid>
+  </revision>
 </revisionlist>
