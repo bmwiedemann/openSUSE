@@ -1,7 +1,7 @@
 #
 # spec file for package appstream-glib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014 Dominique Leuenberger, Amsterdam, The Netherlands
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -51,8 +51,6 @@ BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(yaml-0.1)
 Requires:       gcab
-# Required in order to be able to convert .svg icons
-Requires:       gdk-pixbuf-loader-rsvg
 Requires:       pngquant >= 2.8
 # Due to patch1 only swcatalog will be populated.
 # Older libs would not find any info anymore.

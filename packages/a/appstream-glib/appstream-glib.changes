@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 18 10:28:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gdk-pixbuf-loader-rsvg Requires: gdk-pixbuf can use
+  different loaders, like e.g. glycin nowadays.
+
+-------------------------------------------------------------------
 Sun Aug 25 14:03:55 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.8.3:

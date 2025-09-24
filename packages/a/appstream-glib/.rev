@@ -866,4 +866,13 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
     <comment></comment>
     <requestid>1197298</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>568577ba72455b7d754ce84635c832b7</srcmd5>
+    <version>0.8.3</version>
+    <time>1758720141</time>
+    <user>anag_factory</user>
+    <comment>- Drop gdk-pixbuf-loader-rsvg Requires: gdk-pixbuf can use
+  different loaders, like e.g. glycin nowadays.</comment>
+    <requestid>1305765</requestid>
+  </revision>
 </revisionlist>
