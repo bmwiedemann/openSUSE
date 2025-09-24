@@ -1,7 +1,7 @@
 #
 # spec file for package evolution-data-server
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global with_docs 0
 
 # Shared Library soNUMs, to make it easier for updates
-%define so_camel 64
+%define so_camel 66
 %define so_ebackend 11
 %define so_edataserver 27
 %define so_edataserverui 4
@@ -32,7 +32,7 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.56.2
+Version:        3.58.0
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
@@ -397,6 +397,7 @@ sed -i 's/icu-i18n/icu-uc &/' CMakeLists.txt
 %{_libexecdir}/evolution-data-server/
 %endif
 %{_userunitdir}/evolution-addressbook-factory.service
+%{_userunitdir}/evolution-alarm-notify.service
 %{_userunitdir}/evolution-calendar-factory.service
 %{_userunitdir}/evolution-source-registry.service
 %{_userunitdir}/evolution-user-prompter.service

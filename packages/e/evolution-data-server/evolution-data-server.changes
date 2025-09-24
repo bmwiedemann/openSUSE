@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep 12 14:56:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.58.0:
+  + Bug Fixes: test-cal-component-bag: Fails to run with source
+    tree only
+  + Miscellaneous: IMAP: Disable PREVIEW fetch on FETCH error
+  + Updated translations
+
+-------------------------------------------------------------------
+Sat Aug 30 09:28:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.57.3:
+  + Calendar: Deleting "This and Future Occurrences" instances can
+    duplicate events
+  + IMAP: Sometimes removes message from local summary in error
+  + alarm-notify: Add a systemd service (Adrian Vovk)
+- Changes from version 3.57.2:
+  + The libcamel API dropped CamelObject, it was not needed anymore.
+  + EReminderWatcher: Debug-print what changes had been received from the calendars
+- Changes from version 3.57.1:
+  + The libcamel API had been changed in several ways, some
+    deprecated symbols had been removed, some API functions renamed
+    and their return values changed (mostly from "transfer full" to
+    "transfer container").
+  + libecal: Add utility functions to read and convert time to given timezone
+
+-------------------------------------------------------------------
 Fri May 23 19:20:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.56.2:

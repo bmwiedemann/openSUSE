@@ -2463,4 +2463,12 @@ New stable rel</comment>
       fails (forwarded request 1279662 from iznogood)</comment>
     <requestid>1280042</requestid>
   </revision>
+  <revision rev="267" vrev="1">
+    <srcmd5>da30fced88bec36767d35d6254f98919</srcmd5>
+    <version>3.58.0</version>
+    <time>1758720048</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304872 from dimstar)</comment>
+    <requestid>1305440</requestid>
+  </revision>
 </revisionlist>
