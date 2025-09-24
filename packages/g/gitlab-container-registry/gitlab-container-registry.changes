@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Sep 24 07:04:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.28.0:
+  * Features
+    - add metrics for number of total and applied migrations
+      (b0f4639)
+    - api: enable DLB for OCI read blob endpoint (7da3001)
+    - make gcs_next driver the main storage driver for gcs
+      (ddafd4e)
+    - registry: import-command: skip recently pre imported
+      repositories (187d77f)
+  * Bug Fixes
+    - log level parsing should ignore unknown log levels (196650b)
+    - make too many retries situations more explicit (0b8ce13)
+  * Dependencies
+    - build(deps): update module github.com/spf13/viper to v1.21.0
+    - build(deps): update module github.com/spf13/cobra to v1.10.1
+    - build(deps): update module github.com/redis/go-redis/v9 to
+      v9.14.0
+    - build(deps): update module github.com/getsentry/sentry-go to
+      v0.35.3
+    - build(deps): update module cloud.google.com/go/storage to
+      v1.56.2
+    - build(deps): update module
+      github.com/azure/azure-sdk-for-go/sdk/azcore to v1.19.1
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/config to v1.31.8
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.9.7
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/service/s3 to v1.88.1
+    - build(deps): update module github.com/getsentry/sentry-go to
+      v0.35.2
+    - build(deps): update module github.com/jackc/pgx/v5 to v5.7.6
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/config to v1.31.7
+    - build(deps): update module
+      github.com/prometheus/client_golang to v1.23.2
+    - build(deps): update module github.com/getsentry/sentry-go to
+      v0.35.1
+    - build(deps): update module
+      github.com/azure/azure-sdk-for-go/sdk/azidentity to v1.11.0
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/service/s3 to v1.87.3
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/config to v1.31.6
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.9.6
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.18.10
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/service/s3 to v1.87.2
+    - build(deps): update module
+      github.com/azure/azure-sdk-for-go/sdk/azcore to v1.19.0
+
+-------------------------------------------------------------------
 Fri Aug 29 04:04:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.27.0:
