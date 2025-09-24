@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 23 19:35:25 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758621990.22a2baa:
+  * t: Use consistent Mojo::File in 08-autotest as well
+  * os-autoinst-setup-multi-machine: Simplify determine_ethernet_interface
+  * os-autoinst-setup-multi-machine: Only call zypper when necessary
+  * os-autoinst-setup-multi-machine: Improve network interface check
+  * Document max_interval (and quiet) in (assert_)script_run
+  * testapi: allow passing max_interval through (assert_)script_run
+
+-------------------------------------------------------------------
 Tue Sep 23 07:12:30 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1758611445.fc0a714:
