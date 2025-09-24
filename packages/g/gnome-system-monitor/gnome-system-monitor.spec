@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-system-monitor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-system-monitor
-Version:        48.1
+Version:        49.0
 Release:        0
 Summary:        A process monitor for the GNOME desktop
 License:        GPL-2.0-or-later
@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig(libgtop-2.0) >= 2.41.2
 BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.35
 BuildRequires:  pkgconfig(libsystemd) >= 44
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.0
 
 %description
 GNOME-system-monitor is a process and system monitor for the GNOME
@@ -58,7 +57,6 @@ processor time, memory, and disk space are being used.
 
 %build
 %meson \
-	-Dwnck=false \
 	-Dsystemd=true \
 	%{nil}
 %meson_build
