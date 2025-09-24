@@ -1,0 +1,2 @@
+addFilter("devel-file-in-non-devel-package.*/usr/share/tinygo/.*")
+addFilter("zero-length /usr/share/tinygo/lib/musl/.*")

@@ -50,4 +50,41 @@ It reuses libraries used by the Go language tools alongside LLVM to provide an a
 - Sort changelog ordering from multiple concurrent changes (forwarded request 1242000 from jfkw)</comment>
     <requestid>1242001</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fad2b6585f03b1dadd42e6f9e439516b</srcmd5>
+    <version>0.39.0</version>
+    <time>1758726780</time>
+    <user>anag_factory</user>
+    <comment>Update to version 0.39.0:
+  * all: prepare for release 0.39.0
+  * targets: set default stanck size to 8k for rp2040/rp2350 based boards where this was not already the case.
+  * fix: update version of clang to 17 to accomodate latest Go 1.25 docker base image
+  * fix: disable test-newest since CircleCI seems unable to download due to rate-limits on Dockerhub
+  * chore: update all CI builds to test Go 1.25 release
+  * net: update to latest tinygo net package
+  * feat: add metro-rp2350 board definition (#4989)
+  * feat: enable multi-core scheduler for rp2350
+  * runtime: ensure time.Sleep(d) sleeps at least d
+  * flash: add -o flag support to save built binary (Fixes #4937) (#4942)
+  * chore: update all CI builds to test Go 1.25rc3
+  * all: add Go 1.25 support
+  * runtime: stub out weak pointer support
+  * testing: stub out testing.B.Loop
+  * compiler: implement internal/abi.Escape
+  * runtime: implement dummy AddCleanup
+  * sync: implement sync.Swap
+  * reflect: implement Method.IsExported
+  * ci: rename some jobs to avoid churn on every Go/LLVM version bump
+  * ci: make the goroutines test less racy
+  * internal/task: use -stack-size flag when starting a new thread
+  * internal/task: add SA_RESTART flag to GC interrupts
+  * main: show the compiler erro (if any) for `tinygo test -c`
+  * chore: correct GOOS=js name in error messages for WASM
+  * Makefile: Install missing dlmalloc files
+  * internal/gclayout: make gclayout values constants
+  * Add flag to skip Renesas SVD builds
+  * stm32: add support for the STM32L031G6U6
+  * tests: de-flake goroutines test (forwarded request 1306907 from bmwiedemann)</comment>
+    <requestid>1306927</requestid>
+  </revision>
 </revisionlist>

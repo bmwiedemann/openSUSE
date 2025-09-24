@@ -18,7 +18,7 @@
 
 
 Name:           tinygo
-Version:        0.35.0
+Version:        0.39.0
 Release:        0
 Summary:        Go toolchain targeting embedded devices and webassembly
 License:        Apache-2.0
@@ -26,12 +26,20 @@ Group:          Development/Languages/Go
 URL:            https://tinygo.org
 Source:         tinygo-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# extracted from llvm19 sources because we need .c files at runtime:
+Source2:        llvm-compiler-rt-builtins.tar.gz
+Source3:        tinygo.rpmlintrc
 Patch0:         go-llvm-makefile-llvm-config.patch
-BuildRequires:  clang18-devel
+Requires:       clang20
+Requires:       go1.25
+Requires:       lld20
+BuildRequires:  clang20-devel
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  llvm18-devel
+BuildRequires:  llvm20-devel
 BuildRequires:  golang(API) >= 1.19
 # for test:
+BuildRequires:  lld20
 BuildRequires:  nodejs >= 20
 
 %description
@@ -50,6 +58,7 @@ https://tinygo.org
 
 %prep
 %autosetup -p1 -a1
+tar xf %{S:2}
 
 %build
 %ifnarch ppc64
@@ -58,16 +67,33 @@ export GOFLAGS="-buildmode=pie"
 go build
 
 %check
+cat >hello.go <<EOF
+package main
+import "fmt"
+func main() {
+   fmt.Println("hello world")
+}
+EOF
+export TINYGOROOT=%{buildroot}%{_datadir}/%{name}
+%{buildroot}%{_bindir}/%{name} build hello.go
+./hello
 export LDFLAGS="-lLLVM -lclang"
 export CGO_LDFLAGS="-lLLVM -lclang"
 make test || true
 
 %install
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 %{name} "%{buildroot}%{_bindir}/%{name}"
+mkdir -p %{buildroot}%{_datadir}/%{name}/lib
+cp -a --parent src lib/{musl,compiler-rt-builtins,bdwgc} %{buildroot}%{_datadir}/%{name}/
+# make rpmlint happy:
+find %{buildroot}%{_datadir}/%{name}/ -iname '.[a-z]*' -type f -delete # drop hidden files
+rm -rf %{buildroot}%{_datadir}/%{name}/lib/musl/{tools,configure}
+%fdupes %{buildroot}%{_datadir}/%{name}/
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%{_datadir}/%{name}
 
 %changelog
