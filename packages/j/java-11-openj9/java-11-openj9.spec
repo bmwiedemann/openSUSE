@@ -1,7 +1,7 @@
 #
 # spec file for package java-11-openj9
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %global updatever       28
 %global patchver        0
 %global buildver        6
-%global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
+%global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk%{featurever}/archive
 %global root_revision   36f5ad584831ac9f27a3eb656f82fa0b8c8c7bcd
 %global root_branch     v0.53.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
@@ -98,7 +98,6 @@ Source14:       TestCryptoLevel.java
 # Ensure ECDSA is working
 Source15:       TestECDSA.java
 Source100:      openj9-nogit.patch.in
-Source1000:     %{name}-rpmlintrc
 # Restrict access to java-atk-wrapper classes
 Patch1:         java-atk-wrapper-security.patch
 # Allow multiple initialization of PKCS11 libraries
@@ -108,6 +107,8 @@ Patch3:         openssl-OSSL_LIB_CTX.patch
 Patch4:         openj9-openssl.patch
 # Fix: implicit-pointer-decl
 Patch5:         implicit-pointer-decl.patch
+#
+Patch6:         omr-libdwarf-2.patch
 #
 Patch10:        system-pcsclite.patch
 #
@@ -328,7 +329,7 @@ BuildArch:      noarch
 The OpenJDK %{featurever} API documentation.
 
 %prep
-%setup -q -n openj9-openjdk-jdk11-%{root_revision} -a 1 -a 2
+%setup -q -n openj9-openjdk-jdk%{featurever}-%{root_revision} -a 1 -a 2
 
 # Set up the build tree using the subrepository tarballs
 pwd
@@ -350,6 +351,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 %if %{with_system_pcsc}
 %patch -P 10 -p1
@@ -569,24 +571,18 @@ update-alternatives \
   --slave %{_jvmdir}/jre jre %{_jvmdir}/%{jrelnk} \
   --slave %{_bindir}/jjs jjs %{jrebindir}/jjs \
   --slave %{_bindir}/keytool keytool %{jrebindir}/keytool \
-  --slave %{_bindir}/pack200 pack200 %{jrebindir}/pack200 \
   --slave %{_bindir}/rmid rmid %{jrebindir}/rmid \
   --slave %{_bindir}/rmiregistry rmiregistry %{jrebindir}/rmiregistry \
-  --slave %{_bindir}/unpack200 unpack200 %{jrebindir}/unpack200 \
   --slave %{_mandir}/man1/java.1$ext java.1$ext \
   %{_mandir}/man1/java-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jjs.1$ext jjs.1$ext \
   %{_mandir}/man1/jjs-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/keytool.1$ext keytool.1$ext \
   %{_mandir}/man1/keytool-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
-  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmid.1$ext rmid.1$ext \
   %{_mandir}/man1/rmid-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmiregistry.1$ext rmiregistry.1$ext \
   %{_mandir}/man1/rmiregistry-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
-  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   || :
 
 update-alternatives \
