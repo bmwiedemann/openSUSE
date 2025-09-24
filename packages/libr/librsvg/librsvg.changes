@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Sep  9 10:46:49 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer build gdk-pixbuf loader, as glycin takes over here.
+  + Pass -Dpixbuf-loader=disabled to meson
+  + Drop gdk-pixbuf-loader-rsvg subpackage (obsoleted by
+    glycin-loaders)
+
+-------------------------------------------------------------------
+Tue Sep  9 08:05:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.61.1:
+  + librsvg crate version 2.61.1
+  + librsvg-rebind crate version 0.2.1
+  + Don't use GIO-based file sniffing so referencing external files
+    works reliably on Windows.
+  + Fixed miscellaneous lints in the CI's shell scripts and in the
+    pull-container-image.sh script for development.
+  + Update Rust dependencies.
+- Enable cargo_test macro again, add adwaita-fonts BuildRequires,
+  needed until upstream fixes an oversight in test setup.
+
+-------------------------------------------------------------------
+Fri Aug 15 05:45:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.61.0:
+  + Improved performance when using an application-supplied
+    stylesheet for an SVG handle - do cascading only once in that
+    case instead of twice.
+  + Don't panic if there are no fonts installed - this happens
+    easily in Alpine containers.
+  + Update to gtk-rs-core 0.21.
+  + Vastly improved infrastructure to generate the development
+    guide and the rsvg-convert manual page.
+  + Start implementing the SVG2 text stack.
+  + Lots of internal cleanups to make it easier to remove Cairo in
+    the future.
+
+-------------------------------------------------------------------
 Wed Mar 19 07:19:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.60.0:

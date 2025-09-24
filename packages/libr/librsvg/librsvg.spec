@@ -1,7 +1,7 @@
 #
 # spec file for package librsvg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,8 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.60.0
+### FIXME ### - Please check on every versionupgrade if adwaita-fonts are still needed for tests
+Version:        2.61.1
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.1-or-later AND MIT
@@ -30,8 +31,11 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source99:       baselibs.conf
 
-BuildRequires:  cargo-c
-BuildRequires:  cargo-packaging >= 1.2.0+3
+# Needed for tests (pdf)
+BuildRequires:  adwaita-fonts
+#
+BuildRequires:  cargo-c >= 0.10.12
+BuildRequires:  cargo-packaging >= 1.3.0
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -100,20 +104,6 @@ Obsoletes:      librsvg2-devel < %{version}
 This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
-%package -n gdk-pixbuf-loader-rsvg
-Summary:        A gdk-pixbuf loader for SVG using librsvg
-License:        LGPL-2.0-or-later
-Group:          System/Libraries
-Supplements:    (librsvg-2-%{librsvg_sover} and gdk-pixbuf)
-%{gdk_pixbuf_loader_requires}
-
-%description -n gdk-pixbuf-loader-rsvg
-This package contains a library to render SVG (scalable vector
-graphics) data. This format has been specified by the W3C (see
-http://www.w3c.org).
-
-This package provides a librsvg-based gdk-pixbuf loader.
-
 %package -n rsvg-convert
 Summary:        SVG Convert using the GNOME Render SVG library
 License:        LGPL-2.0-or-later
@@ -125,21 +115,13 @@ This package contains a tool to convert SVG (scalable vector
 graphics) data. This format has been specified by the W3C (see
 http://www.w3c.org).
 
-%package -n rsvg-thumbnailer
-Summary:        SVG thumbnailer using the GNOME Render SVG library
-License:        LGPL-2.0-or-later
-Group:          Productivity/Graphics/Other
-BuildArch:      noarch
-
-%description -n rsvg-thumbnailer
-This package contains a thumbnailer to render SVG (scalable vector
-graphics) data.
-
 %prep
 %autosetup -p1 -a1
 
 %build
-%meson
+%meson \
+	-Dpixbuf-loader=disabled \
+	%{nil}
 %meson_build
 
 %install
@@ -147,20 +129,10 @@ graphics) data.
 
 %ldconfig_scriptlets -n librsvg-2-%{librsvg_sover}
 
-%post -n gdk-pixbuf-loader-rsvg
-%{gdk_pixbuf_loader_post}
-
-%postun -n gdk-pixbuf-loader-rsvg
-%{gdk_pixbuf_loader_postun}
-
 %check
 export LANG=C
 %ifarch x86_64 %{?x86_64}
-# 2023-01-15: the pdf-related tests are failing (bsc#1207167)
-# 2025-02-11 DISABLE ALL TESTS, UNSTABLE PERIOD ###FIXME###
-%dnl %{cargo_test} -- \
-%dnl	--skip pdf_has_text --skip pdf_has_link \
-	%{nil}
+%{cargo_test}
 %endif
 
 %files -n librsvg-2-%{librsvg_sover}
@@ -171,16 +143,9 @@ export LANG=C
 %files -n typelib-1_0-Rsvg-2_0
 %{_libdir}/girepository-1.0/Rsvg-2.0.typelib
 
-%files -n gdk-pixbuf-loader-rsvg
-%{_libdir}/gdk-pixbuf-2.0/*/loaders/libpixbufloader_svg.so
-
 %files -n rsvg-convert
 %{_bindir}/rsvg-convert
 %{_mandir}/man1/rsvg-convert.1%{?ext_man}
-
-%files -n rsvg-thumbnailer
-%dir %{_datadir}/thumbnailers
-%{_datadir}/thumbnailers/librsvg.thumbnailer
 
 %files devel
 %doc AUTHORS
