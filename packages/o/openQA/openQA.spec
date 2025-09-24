@@ -99,7 +99,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1758551670.e3aa50f9
+Version:        5.1758632540.ed64f555
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -328,7 +328,7 @@ statistics.
 %prep
 %setup -q
 sed -e 's,/bin/env python,/bin/python,' -i script/openqa-label-all
-local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps --no-package-lock
+local-npm-registry %{_sourcedir} install --omit=dev --legacy-peer-deps --no-package-lock --ignore-scripts
 
 %build
 %make_build

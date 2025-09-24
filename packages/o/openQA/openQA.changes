@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 23 14:13:26 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758632540.ed64f555:
+  * Check for consistent zypper setting for auto/continuous-update
+  * Ignore scripts when installing NPM packages in RPM builds
+  * Avoid installing NPM dev deps unnecessarily in RPM builds
+  * Avoid installing NPM dev deps unnecessarily in `Makefile`
+
+-------------------------------------------------------------------
 Mon Sep 22 15:12:15 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1758551670.e3aa50f9:
