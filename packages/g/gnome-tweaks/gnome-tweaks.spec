@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-tweaks
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2011 Luis Medinas, Lisbon, Portugal.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gnome-tweaks
-Version:        46.1
+Version:        49.0
 Release:        0
 Summary:        A tool to customize advanced GNOME 3 options
 License:        CC0-1.0 AND GPL-3.0-or-later
@@ -81,6 +81,9 @@ rm -rf %{buildroot}/%{python3_sitelib}/gtweak/tweaks/__pycache__/*.pyc
 %find_lang %{name} %{?no_lang_C}
 %python3_fix_shebang
 
+%check
+%meson_test
+
 %files
 %license LICENSES/*
 %doc AUTHORS NEWS README.md
@@ -89,6 +92,7 @@ rm -rf %{buildroot}/%{python3_sitelib}/gtweak/tweaks/__pycache__/*.pyc
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.tweaks.appdata.xml
 %{_datadir}/applications/org.gnome.tweaks.desktop
+%{_datadir}/dbus-1/services/org.gnome.tweaks.service
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/org.gnome.tweak*
 %{_datadir}/glib-2.0/schemas/org.gnome.tweaks.gschema.xml

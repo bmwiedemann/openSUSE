@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 12 06:29:03 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + GNOME Tweaks 49.0 comes with no changes since 49.rc.
+
+-------------------------------------------------------------------
+Tue Sep  2 09:38:00 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + widgets: Fix gsettings which are loaded from non-system
+    directories
+  + appearance: Display Shell-related errors as a subtitle
+  + Ensure GSettingsTweakFontRow saves the updated preference
+  + Update links in app metadata
+  + Add metainfo, desktop and gschema tests
+  + Add D-Bus service file
+  + flatpak: Allow dconf to work inside sandbox
+  + data: Change component type to "desktop-application"
+  + Ctrl Q does not close the Tweaks application
+  + Gnome Tweaks 46.beta not saving new font selection
+  + Updated translations
+- Add check section and run meson_test macro, run tests during
+  build.
+
+-------------------------------------------------------------------
 Thu May  2 07:15:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:
