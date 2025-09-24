@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 24 07:18:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.6:
+  * Made the check for a running Teleport process in the
+    install-node.sh script more robust. #59495
+  * Fixed tctl edit producing an error when trying to modify a Bot
+    resource. #59481
+  * Improved app access error messages in case of network
+    error. #59467
+  * Fixed database IAM configurator potentially getting stuck and
+    never recovering. #59418
+  * Fixed tsh config binary path after managed updates. #59385
+
+-------------------------------------------------------------------
 Fri Sep 19 07:49:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.7.5:
