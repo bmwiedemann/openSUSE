@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Sep 12 14:57:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.58.0:
+  + Bug Fixes:
+    - Partially quoting HTML email drops embedded pictures
+    - itip-formatter: Show attendee mail according to user
+      preference
+    - EWebView: Set "unicode-bidi" style only in Evolution's
+      iframe-s
+  + Miscellaneous: test-web-view-jsc: Correct JavaScript dictionary
+    object creation (WebKitGTK 2.49.4)
+  + Updated translations
+
+-------------------------------------------------------------------
+Sat Aug 30 09:56:57 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.57.3:
+  + Zoom email editor
+  + MessageList: Ellipsize column 'Location' in the middle
+  + Fix "Crash after saving advanced search"
+- Changes from version 3.57.2:
+  + Mail Folders in Dark Blue Colour have low Contrast in Dark Mode
+  + text-highlight: Use dark style for dark theme
+  + Mail: Add "Go to Containing Folder" action in search folders
+- Changes from version 3.57.1:
+  + Change folder color when new messages are added
+  + Calendar: Change organizer in 'Edit as New'
+  + Some images do not display within RSS/ATOM feed articles
+  + Ensure "New" button action in Calendar view
+  + Open a new window: Two windows open instead of one
+  + Calendar: Cannot show/hide Tasks and Memos pane
+  + Calendar: Year and List views: Hide mini-calendar container
+  + Mail: Avoid message list double regeneration on folder change
+  + EStockRequest: Use symbolic icons if preferred and available
+  + Mail: Use insert-image for "Load Images" and remote content
+    icon in the WebView
+  + Updated translations
+- Drop evolution-fix-gtk-call-from-other-thread.patch: fixed
+  upstream
+
+-------------------------------------------------------------------
 Tue Jun 24 03:39:39 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add evolution-fix-gtk-call-from-other-thread.patch: Fix crash

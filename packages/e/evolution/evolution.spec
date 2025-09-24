@@ -1,7 +1,7 @@
 #
 # spec file for package evolution
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.56.2
+Version:        3.58.0
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
@@ -29,8 +29,6 @@ License:        CC-BY-SA-3.0 AND LGPL-2.0-only AND LGPL-3.0-only AND OLDAP-2.8 A
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution/
 Source0:        %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM evolution-fix-gtk-call-from-other-thread.patch bsc#1243898 alynx.zhou@suse.com -- Fix crash because of GTK call from other thread
-Patch0:         evolution-fix-gtk-call-from-other-thread.patch
 
 BuildRequires:  bison
 BuildRequires:  bogofilter
@@ -201,7 +199,7 @@ to develop applications that require these.
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/icons/hicolor/*/apps/evolution.svg
 %{_datadir}/icons/hicolor/*/apps/evolution-symbolic.svg
-%{_datadir}/metainfo/org.gnome.Evolution.appdata.xml
+%{_datadir}/metainfo/org.gnome.Evolution.metainfo.xml
 %dir %{_libdir}/evolution/
 %{_libdir}/evolution/*.so
 %dir %{_libdir}/evolution/modules
