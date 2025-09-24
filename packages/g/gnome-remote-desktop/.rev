@@ -336,4 +336,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
   + Reduce latency when PipeWire stream uses shared memories. (forwarded request 1269233 from iznogood)</comment>
     <requestid>1269689</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d805d92e355df928ac2180401ddbe5a8</srcmd5>
+    <version>49.0</version>
+    <time>1758720197</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304907 from dimstar)</comment>
+    <requestid>1305458</requestid>
+  </revision>
 </revisionlist>

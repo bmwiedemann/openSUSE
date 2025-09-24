@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:43:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Handle Vulkan dma-buf format compatibility issues
+  + Fix crash
+  + Updated translations
+
+-------------------------------------------------------------------
+Sat Aug 30 09:02:44 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Allow systemd service management of all units via grdctl
+  + Misc bug fixes & cleanups
+  + Add support for relative pointer movements via RDP
+  + Add support for extending desktop with virtual monitor via RDP
+- Changes from version 49.alpha:
+  + Add touch support
+  + Fix failure to connect on some NVIDIA systems
+  + Plumb locked keyboard modifiers via libei
+  + Documentation improvements
+  + Fix crash
+  + Plug leak
+  + Misc cleanups & improvements
+
+-------------------------------------------------------------------
 Mon Apr 14 10:45:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:

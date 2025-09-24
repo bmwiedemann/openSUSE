@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-remote-desktop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%global systemd_unit       gnome-remote-desktop.service
-%define freerdp_version    3.1.0
+%global systemd_unit       gnome-remote-desktop.service gnome-remote-desktop-configuration.service
+%define freerdp_version    3.15.0
 %define glib_version       2.75.0
 %define gstreamer_version  1.10.0
 %define polkit_req >= 122
 
 Name:           gnome-remote-desktop
-Version:        48.1
+Version:        49.0
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
@@ -61,7 +61,7 @@ BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libdrm)
-BuildRequires:  pkgconfig(libei-1.0) >= 1.2.0
+BuildRequires:  pkgconfig(libei-1.0) >= 1.3.901
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.0
 BuildRequires:  pkgconfig(libsecret-1)
