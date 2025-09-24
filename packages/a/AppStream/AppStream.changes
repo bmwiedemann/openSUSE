@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 10 13:43:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-enable test suite: inject the nobwrap.helper from bubblewrap
+  into ~/bin
+- Add glycin-loaders and bubblewrap BuildRequires: needed to pass
+  the test suite
+
+-------------------------------------------------------------------
+Tue Sep  9 11:14:09 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not run test suite: gdk-image laoders have switched to
+  glycin-loaders, which use bubblewrap. bwrap in turn is not
+  functional in OBS.
+- Drop gdk-pixbuf-loader-rsvg BuildRequires: only needed by the
+  test suite.
+
+-------------------------------------------------------------------
 Thu Aug 14 18:14:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.0.6

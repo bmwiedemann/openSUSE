@@ -57,7 +57,12 @@ BuildRequires:  gcc13
 BuildRequires:  gcc13-PIE
 BuildRequires:  gcc13-c++
 %endif
+%if 0%{?suse_version} > 1600
+BuildRequires:  bubblewrap
+BuildRequires:  glycin-loaders
+%else
 BuildRequires:  gdk-pixbuf-loader-rsvg
+%endif
 BuildRequires:  gettext-devel
 BuildRequires:  gperf
 BuildRequires:  itstool
@@ -145,7 +150,11 @@ The main library for AppStream.
 Summary:        Support for appstreamcli compose
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Requires:       AppStream = %{version}
+%if 0%{?suse_version} > 1600
+Requires:       glycin-loaders
+%else
 Requires:       gdk-pixbuf-loader-rsvg
+%endif
 
 %description compose
 This package contains all necessary files, libraries,
@@ -214,6 +223,11 @@ GObject introspection bindings for interfaces provided by AppStream.
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
+%if 0%{?suse_version} > 1600
+test -d ~/bin || mkdir ~/bin
+cp %{_datadir}/doc/packages/bubblewrap/nobwrap.helper ~/bin/bwrap
+chmod 755 ~/bin/bwrap
+%endif
 
 %build
 %define common_options -Ddocs=false -Dapidocs=false -Dstemming=false
@@ -255,6 +269,7 @@ rm -r %{buildroot}%{_libdir}/pkgconfig
 %endif
 
 %check
+export PATH=~/bin:$PATH
 %meson_test
 
 %if 0%{?qt5}
