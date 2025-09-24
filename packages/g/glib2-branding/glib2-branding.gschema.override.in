@@ -78,7 +78,7 @@ shutdown = ['<Control><Alt>Delete']
 
 [org.gnome.shell]
 ## Default apps shown in the gnome-shell dash
-@@IF_openSUSE@@favorite-apps = [ 'firefox.desktop', 'org.gnome.Evolution.desktop', 'empathy.desktop', 'gnome-music.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'org.gnome.Nautilus.desktop' ]
+@@IF_openSUSE@@favorite-apps = [ 'firefox.desktop', 'org.gnome.Evolution.desktop', 'empathy.desktop', 'org.gnome.Music.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'org.gnome.Nautilus.desktop' ]
 @@IF_SLE@@favorite-apps = [ 'firefox.desktop', 'evolution.desktop', 'pidgin.desktop', 'gnome-photos.desktop', 'libreoffice-startcenter.desktop', 'org.gnome.Nautilus.desktop', 'yelp.desktop' ]
 @@IF_SLE@@## Default extensions that are enabled
 @@IF_SLE@@enabled-extensions = [ 'alternative-status-menu@gnome-shell-extensions.gcampax.github.com' ]
