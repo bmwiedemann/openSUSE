@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep 16 11:25:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Disable fade-in animations based on GNOME desktop setting
+
+-------------------------------------------------------------------
+Tue Sep  2 16:17:09 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Add `set-window-type` configuration option for window management
+  + Refactor the window configuration code
+  + Fix GrabAccelerators support
+  + Add media keys support in systemd sessions
+  + Allow inhibiting shortcuts in compositor
+  + Fix memory leaks by properly freeing objects on disposal
+  + Enable remote session support in systemd sessions
+
+-------------------------------------------------------------------
+Sat Aug 30 10:35:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.alpha.1.2:
+  + No change since 49.alpha.1, fix the CI for release.
+- Changes from version 49.alpha.1.1:
+  + No change, fix CI for release.
+- Changes from version 49.alpha.1:
+  + Fix compiler warnings
+  + Fix a crash if there is no X11Layouts
+  + Add a new "set-on-monitor" configuration option
+  + Add support for window tags in configuration
+  + Updates for libmutter 17 (GNOME 49)
+  + Update the documentation for the configuration file
+- Bump mutter_api to 17, following upstream changes.
+
+-------------------------------------------------------------------
 Mon Mar 17 15:05:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

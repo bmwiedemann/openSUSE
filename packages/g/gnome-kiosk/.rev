@@ -71,4 +71,12 @@
     <comment></comment>
     <requestid>1253864</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dde4228340253754b8d423c989ccca7d</srcmd5>
+    <version>49.0</version>
+    <time>1758720220</time>
+    <user>anag_factory</user>
+    <comment>Update to 49.0 (forwarded request 1305140 from dimstar)</comment>
+    <requestid>1305506</requestid>
+  </revision>
 </revisionlist>

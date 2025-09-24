@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-kiosk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define mutter_api 16
+%define mutter_api 17
 
 Name:           gnome-kiosk
-Version:        48.0
+Version:        49.0
 Release:        0
 Summary:        Mutter based compositor for kiosks
 License:        GPL-2.0-or-later
@@ -80,7 +80,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Kiosk.Searc
 %{_userunitdir}/org.gnome.Kiosk.Script.service
 %{_userunitdir}/org.gnome.Kiosk.target
 %{_userunitdir}/org.gnome.Kiosk@wayland.service
-%{_userunitdir}/org.gnome.Kiosk@x11.service
 %dir %{_userunitdir}/gnome-session@org.gnome.Kiosk.SearchApp.target.d
 %{_userunitdir}/gnome-session@org.gnome.Kiosk.SearchApp.target.d/session.conf
 %{_userunitdir}/org.gnome.Kiosk.SearchApp.service
@@ -91,7 +90,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Kiosk.Searc
 %{_datadir}/gnome-session/sessions/gnome-kiosk-script.session
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/gnome-kiosk-script-wayland.desktop
-%{_datadir}/xsessions/gnome-kiosk-script-xorg.desktop
 %dir %{_datadir}/dconf
 %dir %{_datadir}/dconf/profile
 %dir %{_datadir}/gnome-kiosk
@@ -102,6 +100,5 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Kiosk.Searc
 %{_datadir}/applications/org.gnome.Kiosk.SearchApp.desktop
 %{_datadir}/gnome-session/sessions/org.gnome.Kiosk.SearchApp.session
 %{_datadir}/wayland-sessions/org.gnome.Kiosk.SearchApp.Session.desktop
-%{_datadir}/xsessions/org.gnome.Kiosk.SearchApp.Session.desktop
 
 %changelog
