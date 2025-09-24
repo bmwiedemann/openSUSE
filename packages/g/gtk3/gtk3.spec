@@ -30,7 +30,7 @@
 %define __provides_exclude_from ^%{_libdir}/gtk-3.0
 
 Name:           gtk3
-Version:        3.24.50
+Version:        3.24.50+git18.ef9abe706a
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -103,9 +103,9 @@ Summary:        The GTK+ toolkit library (version 3)
 Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
 Requires:       %{name}-schema >= %{version}
-# Require gdk-pixbuf-loader-rsvg - bsc#1007453. We require adwaita-icon-theme
+# Require glycin-loaders - bsc#1007453. We require adwaita-icon-theme
 # so we need something to load the svg icons.
-Requires:       gdk-pixbuf-loader-rsvg
+Requires:       glycin-loaders
 # While hicolor is not a Requires strictly speaking, we put it as
 # such instead of as a Recommends because many applications just
 # assume it's there and we need to have a low-level package to
