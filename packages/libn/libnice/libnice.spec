@@ -1,7 +1,7 @@
 #
 # spec file for package libnice
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,16 @@
 
 
 Name:           libnice
-Version:        0.1.22
+Version:        0.1.22+7
 Release:        0
 Summary:        Interactive Connectivity Establishment implementation
 License:        LGPL-2.1-only OR MPL-1.1
 Group:          Development/Libraries/GNOME
 URL:            https://nice.freedesktop.org/
-Source:         %{url}/releases/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.zst
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM libnice-port-gupnp-igd-bump.patch -- Port to new gupnp-igd
 Patch1:         libnice-port-gupnp-igd-bump.patch
-# PATCH-FIX-UPSTREAM c47a7ea6289187857a38e0118bd8528cab9171c9.patch -- meson: Add glib debug, assert and check options
-Patch2:         https://gitlab.freedesktop.org/libnice/libnice/-/commit/c47a7ea6289187857a38e0118bd8528cab9171c9.patch
-# PATCH-FIX-UPSTREAM 37eeeb1a750bf2dd6d5769d759069e95dd1b8493.patch -- test-new-trickle: Remove cancellable as a wakeup mechanism
-Patch3:         https://gitlab.freedesktop.org/libnice/libnice/-/commit/37eeeb1a750bf2dd6d5769d759069e95dd1b8493.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig

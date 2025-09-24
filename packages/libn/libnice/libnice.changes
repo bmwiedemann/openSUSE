@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 10 08:00:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.22+7:
+  * agent: stop leaking StunResolverData
+  * test-new-trickle: Remove cancellable as a wakeup mechanism
+  * Fix TCP concurrent sending problem
+  * meson: Add glib debug, assert and check options
+  * COPYING / README: Add SPDX-License-Identifier for added clarity
+  * agent: Only accept remote candidates with non-zero priority
+  * tests: Reduce the printing a little to please libxml
+  * Change padding to be rfc8489 conform
+- Switch to git checkout via source service.
+- Drop patches fixed upstream:
+  * 37eeeb1a750bf2dd6d5769d759069e95dd1b8493.patch
+  * c47a7ea6289187857a38e0118bd8528cab9171c9.patch
+
+-------------------------------------------------------------------
 Mon Dec  9 14:55:31 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Increase test timeout on s390x. test-send-recv can be slow and
