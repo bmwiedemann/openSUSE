@@ -344,4 +344,27 @@
     <comment></comment>
     <requestid>1231704</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b2c657c92b83e3509f59b41e1bc6b831</srcmd5>
+    <version>1.4.6</version>
+    <time>1758720234</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.6:
+  + Support specifying appstream compose URL policy with
+    --compose-url-policy argument
+  + Support fetching and checking out Git LFS objects
+  + Prevent deleting current working directory, state directory or their
+    parents with --force-clean
+  + Create appstream ref branches in locally exported repo
+  + Log SDK, runtime and base versions and commits used with
+    --verbose
+  + Pass --no-gpg-sign to git commit when committing archives
+    inside state directory
+  + Pass --no-gpg-sign to git am when applying patches
+  + Fix the meson build with -Dinstalled_tests=true
+  + Fix the screenshot ref commit test to work offline
+  + Improvements to docs and CI
+- Add git-lfs Recommends. (forwarded request 1306587 from iznogood)</comment>
+    <requestid>1306712</requestid>
+  </revision>
 </revisionlist>

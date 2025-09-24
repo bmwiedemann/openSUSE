@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Sep 22 17:20:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.6:
+  + Support specifying appstream compose URL policy with
+    --compose-url-policy argument
+  + Support fetching and checking out Git LFS objects
+  + Prevent deleting current working directory, state directory or their
+    parents with --force-clean
+  + Create appstream ref branches in locally exported repo
+  + Log SDK, runtime and base versions and commits used with
+    --verbose
+  + Pass --no-gpg-sign to git commit when committing archives
+    inside state directory
+  + Pass --no-gpg-sign to git am when applying patches
+  + Fix the meson build with -Dinstalled_tests=true
+  + Fix the screenshot ref commit test to work offline
+  + Improvements to docs and CI
+- Add git-lfs Recommends.
+
+-------------------------------------------------------------------
+Wed Sep 17 11:21:23 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.5:
+  + Support automatically installing common license files for
+    modules
+  + Add license-files option to define license files to install per
+    module
+  + Support committing mirrored media as screenshot ref to exported
+    repo
+  + Enable authenticated downloads via netrc
+  + Create CACHEDIR.TAG file in state dir
+  + Create gitignore file in state dir
+  + Switch to bsdunzip from unzip
+  + Install both platform and sdk from combined runtime manifest
+  + Improvements to docs and CI
+
+-------------------------------------------------------------------
 Tue Dec 17 13:57:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require AppStream-compose instead of

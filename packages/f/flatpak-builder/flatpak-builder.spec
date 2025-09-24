@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak-builder
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_without system_debugedit
 %endif
 Name:           flatpak-builder
-Version:        1.4.4
+Version:        1.4.6
 Release:        0
 Summary:        Tool to build flatpaks from source
 License:        LGPL-2.1-or-later
@@ -63,6 +63,7 @@ Requires:       %{_bindir}/strip
 Requires:       %{_bindir}/tar
 Requires:       %{_bindir}/unzip
 Requires:       flatpak >= %{flatpak_version}
+Recommends:     git-lfs
 # it is enough to have debugedit insatlled for meson to detect it and use the system version
 %if %{with system_debugedit}
 BuildRequires:  debugedit
