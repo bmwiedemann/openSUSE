@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Sep 20 17:44:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.20.0:
+  + Gdk: PixbufAnimation, PixbufAnimationIter: Deprecate these
+    classes. GdkPixbufAnimation and GdkPixbufAnimationIter are
+    deprecated since gdk-pixbuf 2.44.
+  + PixbufLoader: Deprecate get_animation().
+
+-------------------------------------------------------------------
+Mon Sep  1 11:54:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.19.1:
+  + Gdk: Event: Add get_relative_direction() and enum
+    ScrollRelativeDirection.
+  + Gsk: Transform: Add matrix_2d().
+  + Gtk:
+    - Application: Deprecate property_register_session().
+    - CssProvider: Add property_prefers_color_scheme() and
+      property_prefers_contrast().
+    - Entry: Add set/get_menu_entry_icon_text(),
+      property_menu_entry_icon_primary_text() and
+      property_menu_entry_icon_secondary_text().
+    - Add enum InterfaceColorScheme and InterfaceContrast.
+    - FilterListModel: Add get/set/property_watch_items().
+    - Settings: Add property_gtk_interface_color_scheme()
+      and property_gtk_interface_contrast().
+  + Documentation:
+  + Add images used in documentation copied by gmmproc.
+  + Gtk::DrawingArea, Gtk::GLArea: Update the class descriptions.
+- Changes from version 4.19.0:
+  + Gdk:
+    - Deprecate Gdk::Cairo::set_source_pixbuf().
+    - Texture: Deprecate create_for_pixbuf().
+    - Pixbuf: Deprecate create_from_xpm_data().
+    - ColorState: Add equivalent().
+    - MemoryTextureBuilder: Add get/set_stride_for_plane() and get/set_offset().
+    - TextureDownloader: Add download_bytes_with_planes().
+    - Toplevel: Add enum TitlebarGesture, enum Toplevel::Capabilities,
+      titlebar_gesture(), get/property_capabilities(), get/set/property_gravity().
+  + Gsk: Add RoundedRect, Transform and enums BlendMode, Corner,
+    FillRule, MaskMode, ScalingFilter, Transform::Category/
+  + Gtk:
+    - Add Fixed::set/get_child_transform()
+    - Add FixedLayout and FixedLayoutChild
+    - Calendar: Deprecate select_day(), property_year/month/day(),
+      add set/property_date().
+    - FileFilter: Deprecate add_pixbuf_formats().
+    - IconPaintable: Deprecate get/property_icon_name(),
+      is_symbolic(), property_is_symbolic().
+    - UriLauncher.hg: Add can_launch().
+    - Window: Add enum WindowGravity, get/set/property_gravity().
+  + Demos: Avoid deprecated Pixbuf methods where possible.
+
+-------------------------------------------------------------------
 Sun Mar 23 18:18:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.18.0:

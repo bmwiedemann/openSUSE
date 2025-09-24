@@ -111,4 +111,16 @@
     <comment>New stable release (forwarded request 1255433 from iznogood)</comment>
     <requestid>1255572</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d4dbfd8edb4e10ac1c9fc246fa777fe1</srcmd5>
+    <version>4.20.0</version>
+    <time>1758720158</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.20.0:
+  + Gdk: PixbufAnimation, PixbufAnimationIter: Deprecate these
+    classes. GdkPixbufAnimation and GdkPixbufAnimationIter are
+    deprecated since gdk-pixbuf 2.44.
+  + PixbufLoader: Deprecate get_animation(). (forwarded request 1306157 from iznogood)</comment>
+    <requestid>1306435</requestid>
+  </revision>
 </revisionlist>

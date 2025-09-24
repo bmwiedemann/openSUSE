@@ -1,7 +1,7 @@
 #
 # spec file for package gtkmm4
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define _name gtkmm
 
 Name:           gtkmm4
-Version:        4.18.0
+Version:        4.20.0
 Release:        0
 Summary:        C++ Interface for GTK4 (a GUI Library for X)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/gtkmm/4.18/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtkmm/4.20/%{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
