@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 17 13:29:03 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0+97:
+  + Port to gjs-1.85/girepository-2.0
+  + main: Require libadwaita-1.8
+- Drop appstream-glib BuildRequires: no longer needed
+- Add pkgconfig(girepository-2.0) BuildRequires: new dependency
+
+-------------------------------------------------------------------
 Tue Sep 17 13:04:58 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.0+18:

@@ -466,4 +466,16 @@
     <comment></comment>
     <requestid>1201636</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f1766b4743c005313daad103bee6c8d2</srcmd5>
+    <version>46.0+97</version>
+    <time>1758720135</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 46.0+97:
+  + Port to gjs-1.85/girepository-2.0
+  + main: Require libadwaita-1.8
+- Drop appstream-glib BuildRequires: no longer needed
+- Add pkgconfig(girepository-2.0) BuildRequires: new dependency (forwarded request 1305419 from dimstar)</comment>
+    <requestid>1305529</requestid>
+  </revision>
 </revisionlist>

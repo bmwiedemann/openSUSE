@@ -1,7 +1,7 @@
 #
 # spec file for package polari
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           polari
-Version:        46.0+18
+Version:        46.0+97
 Release:        0
 Summary:        An IRC Client for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -27,16 +27,16 @@ URL:            https://wiki.gnome.org/Apps/Polari
 Source0:        %{name}-%{version}.tar.zst
 Source99:       polari-rpmlintrc
 
-BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  gjs >= 1.57.3
 BuildRequires:  json-glib-devel
-BuildRequires:  meson >= 0.53.0
+BuildRequires:  meson >= 1.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.69.2
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
+BuildRequires:  pkgconfig(gio-2.0) >= 2.85.1
+BuildRequires:  pkgconfig(girepository-2.0) >= 2.85.1
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.85.1
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(pango)
@@ -74,7 +74,7 @@ with GNOME 3.
 
 %files
 %license COPYING
-%doc AUTHORS NEWS
+%doc NEWS
 %doc %{_datadir}/help/C/%{name}
 %{_bindir}/polari
 %{_datadir}/applications/org.gnome.Polari.desktop
