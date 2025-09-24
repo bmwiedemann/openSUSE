@@ -1,7 +1,7 @@
 #
 # spec file for package loupe
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           loupe
-Version:        48.1
+Version:        49.0
 Release:        0
 Summary:        A simple image viewer application
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk4) >= 4.13.6
 BuildRequires:  pkgconfig(gweather4) >= 4.0.0
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.beta
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.0
 BuildRequires:  pkgconfig(libheif) >= 1.14.2
 BuildRequires:  pkgconfig(libseccomp) >= 2.5.0
 Requires:       glycin-loaders
