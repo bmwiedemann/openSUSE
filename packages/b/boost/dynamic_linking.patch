@@ -45,19 +45,6 @@ Index: boost_1_80_0/libs/chrono/build/Jamfile.v2
 -    <link>static:<define>BOOST_CHRONO_STATIC_LINK=1 # tell source we're building static lib's
 +    # <link>static:<define>BOOST_CHRONO_STATIC_LINK=1 # tell source we're building static lib's
      ;
-Index: boost_1_80_0/libs/system/build/Jamfile.v2
-===================================================================
---- boost_1_80_0.orig/libs/system/build/Jamfile.v2
-+++ boost_1_80_0/libs/system/build/Jamfile.v2
-@@ -11,7 +11,7 @@
-       <include>../include
-       <library>$(boost_dependencies)
-       <link>shared:<define>BOOST_SYSTEM_DYN_LINK=1
--      <link>static:<define>BOOST_SYSTEM_STATIC_LINK=1
-+      # <link>static:<define>BOOST_SYSTEM_STATIC_LINK=1
-       <define>BOOST_SYSTEM_NO_LIB=1
-     ;
-
 Index: boost_1_80_0/libs/timer/build/Jamfile.v2
 ===================================================================
 --- boost_1_83_0.orig/libs/timer/build/Jamfile.v2

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 04 08:48:57 CEST 2025 - aschnell@suse.com
+
+- update to 1.89.0
+  * new libraries:
+    + Bloom (Header-only Bloom filter library)
+  * breaking changes:
+    - stub library for boost-system has been removed
+  * for details on all changes see,
+    https://www.boost.org/releases/1.89.0/
+- dynamic-linking.patch: updated
+- boost-no-exception.patch: updated
+
+-------------------------------------------------------------------
 Tue Sep 02 16:57:30 CEST 2025 - aschnell@suse.com
 
 - require shared library package in versioned libboost_url-devel

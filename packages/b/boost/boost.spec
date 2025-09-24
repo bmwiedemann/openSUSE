@@ -19,8 +19,8 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.88.0
-%define _ver 1_88_0
+%define ver 1.89.0
+%define _ver 1_89_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -72,9 +72,9 @@ ExclusiveArch:  do_not_build
 %define base_name boost%{?name_suffix}
 
 Name:           %{base_name}
-Version:        1.88.0
+Version:        1.89.0
 Release:        0
-%define library_version 1_88_0
+%define library_version 1_89_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
@@ -184,7 +184,6 @@ Requires:       libboost_program_options%{library_version}-devel
 Requires:       libboost_random%{library_version}-devel
 Requires:       libboost_regex%{library_version}-devel
 Requires:       libboost_serialization%{library_version}-devel
-Requires:       libboost_system%{library_version}-devel
 Requires:       libboost_test%{library_version}-devel
 Requires:       libboost_thread%{library_version}-devel
 Requires:       libboost_timer%{library_version}-devel
@@ -353,7 +352,6 @@ Summary:        Development headers for Boost.Contract
 Group:          Development/Libraries/C and C++
 Requires:       libboost_contract%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
-Requires:       libboost_system%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      libboost_contract-devel-impl
 Conflicts:      libboost_contract1_66_0-devel
@@ -453,7 +451,6 @@ Group:          Development/Libraries/C and C++
 Requires:       libboost_atomic%{library_version}-devel = %{version}
 Requires:       libboost_filesystem%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
-Requires:       libboost_system%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_filesystem-devel-impl
@@ -538,6 +535,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_log%{library_version} = %{version}
 Requires:       libboost_random%{library_version}-devel = %{version}
 Requires:       libboost_regex%{library_version}-devel = %{version}
+Requires:       libboost_serialization%{library_version}-devel = %{version}
 Requires:       libboost_thread%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_log-devel-impl
@@ -834,28 +832,6 @@ This package contains development headers for Boost.Stacktrace library.
 Boost.Stacktrace is a simple C++03 library that provide information
 about call sequence in a human-readable form.
 
-%package     -n libboost_system%{library_version}
-Summary:        Boost.System runtime library
-Group:          System/Libraries
-Requires:       boost-license%{library_version}
-
-%description -n libboost_system%{library_version}
-This package contains the Boost.System stub library.
-
-%package     -n libboost_system%{library_version}-devel
-Summary:        Development headers for Boost.System library
-Group:          Development/Libraries/C and C++
-Requires:       libboost_headers%{library_version}-devel = %{version}
-Requires:       libboost_system%{library_version} = %{version}
-Conflicts:      boost-devel < 1.63
-Conflicts:      libboost_system-devel-impl
-Conflicts:      libboost_system1_66_0-devel
-Provides:       libboost_system-devel-impl = %{version}
-
-%description -n libboost_system%{library_version}-devel
-This package contained Boost.System development library. It is no
-longer required as the library is headers only.
-
 %package     -n libboost_thread%{library_version}
 Summary:        Boost.Thread runtime libraries
 Group:          System/Libraries
@@ -867,7 +843,9 @@ This package contains the Boost.Thread runtime library.
 %package     -n libboost_thread%{library_version}-devel
 Summary:        Development headers for Boost.Thread library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_atomic%{library_version}-devel = %{version}
 Requires:       libboost_chrono%{library_version}-devel = %{version}
+Requires:       libboost_container%{library_version}-devel = %{version}
 Requires:       libboost_date_time%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_thread%{library_version} = %{version}
@@ -957,7 +935,6 @@ Summary:        Development headers for Boost.Random library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_random%{library_version} = %{version}
-Requires:       libboost_system%{library_version}-devel = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_random-devel-impl
 Conflicts:      libboost_random1_66_0-devel
@@ -1002,7 +979,6 @@ Requires:       libboost_charconv%{library_version}-devel = %{version}
 Requires:       libboost_chrono%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_locale%{library_version} = %{version}
-Requires:       libboost_system%{library_version}-devel = %{version}
 Requires:       libboost_thread%{library_version}-devel = %{version}
 Requires:       libicu-devel
 Conflicts:      boost-devel < 1.63
@@ -1048,7 +1024,6 @@ Summary:        Development headers for Boost.TypeErasure library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_chrono%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
-Requires:       libboost_system%{library_version}-devel = %{version}
 Requires:       libboost_thread%{library_version}-devel = %{version}
 Requires:       libboost_type_erasure%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
@@ -1401,10 +1376,6 @@ rm -r %{buildroot}%{_libdir}/cmake/boost_container-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_container.so*
 rm -r %{buildroot}%{_libdir}/cmake/boost_graph-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_graph.so*
-# If no library was needed to be built, system was built to avoid building everything.
-# If needs to be removed from the extra package in that case
-rm -Rf %{buildroot}%{_libdir}/cmake/boost_system-%{version}
-rm -Rf %{buildroot}%{_libdir}/libboost_system.so*
 
 rm -r %{buildroot}%{_includedir}/boost
 rm -f %{buildroot}%{_libdir}/libboost_{w,}serialization*
@@ -1436,7 +1407,6 @@ rmdir --ignore-fail-on-non-empty %{buildroot}%{_libdir}
 %ldconfig_scriptlets -n libboost_nowide%{library_version}
 %ldconfig_scriptlets -n libboost_graph%{library_version}
 %ldconfig_scriptlets -n libboost_stacktrace%{library_version}
-%ldconfig_scriptlets -n libboost_system%{library_version}
 %ldconfig_scriptlets -n libboost_wave%{library_version}
 %ldconfig_scriptlets -n libboost_url%{library_version}
 %ldconfig_scriptlets -n libboost_random%{library_version}
@@ -1721,14 +1691,6 @@ rmdir --ignore-fail-on-non-empty %{buildroot}%{_libdir}
 %{_libdir}/libboost_stacktrace_addr2line.so
 %{_libdir}/libboost_stacktrace_basic.so
 %{_libdir}/libboost_stacktrace_noop.so
-
-%files -n libboost_system%{library_version}
-%{_libdir}/libboost_system.so.%{version}
-
-%files -n libboost_system%{library_version}-devel
-%dir %{_libdir}/cmake/boost_system-%{version}
-%{_libdir}/cmake/boost_system-%{version}/*
-%{_libdir}/libboost_system.so
 
 %files -n libboost_thread%{library_version}
 %{_libdir}/libboost_thread.so.%{version}
