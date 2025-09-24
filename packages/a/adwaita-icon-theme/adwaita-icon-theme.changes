@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 12 15:15:16 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + No changes since version 49.rc
+
+-------------------------------------------------------------------
+Wed Sep 10 15:29:26 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gdk-pixbuf-loader-rsvg BuildRequires: glycin-loaders comes
+  in via libgtk3 already and handles this case.
+
+-------------------------------------------------------------------
+Tue Sep  2 09:26:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + symbolic: night light
+  + symbolic: battery rendered as square
+
+-------------------------------------------------------------------
+Tue Aug 26 07:31:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + symbolic: plugged variants of battery status
+  + symbolic: vpn metaphor
+  + symbolic: gtk rendering optimizations
+  + cursors: fleur -> all-resize
+  + cursors: DND cleanup
+
+-------------------------------------------------------------------
 Tue Jun 17 15:12:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:
