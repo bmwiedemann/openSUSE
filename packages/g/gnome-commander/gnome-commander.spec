@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-commander
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            http://gcmd.github.io/
 Source:         https://download.gnome.org/sources/gnome-commander/1.18/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         gnome-commander-glycin-loaders.patch
 
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc11

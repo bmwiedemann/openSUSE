@@ -1,0 +1,15 @@
+Index: gnome-commander-1.18.3/meson.build
+===================================================================
+--- gnome-commander-1.18.3.orig/meson.build
++++ gnome-commander-1.18.3/meson.build
+@@ -100,10 +100,6 @@ common_deps = [
+   glib, gmodule, gio, gobject, gtk
+ ]
+ 
+-# Require that gdk-pixbuf can load xpm files
+-pixbuf_module_dir = pixbuf.get_variable(pkgconfig: 'gdk_pixbuf_moduledir')
+-cpp.find_library('pixbufloader-xpm', dirs: pixbuf_module_dir, required: true)
+-
+ if glib_2_70.found()
+   conf_data.set('GLIB_2_70', '@0@'.format(glib_2_70.found().to_int()), description : 'Define to 1 if you have glib >= 2.70')
+ endif
