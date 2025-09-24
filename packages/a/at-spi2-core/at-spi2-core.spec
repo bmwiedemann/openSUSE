@@ -1,7 +1,7 @@
 #
 # spec file for package at-spi2-core
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define atspiconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}
 
 Name:           at-spi2-core
-Version:        2.56.4
+Version:        2.58.0
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
@@ -183,6 +183,11 @@ mv %{buildroot}%{_sysconfdir}/xdg/Xwayland-session.d/* %{buildroot}%{_distconfdi
 %dir %{_libdir}/gtk-2.0
 %dir %{_libdir}/gtk-2.0/modules
 %{_libdir}/gtk-2.0/modules/libatk-bridge.so
+%dir %{python3_sitearch}/gi
+%dir %{python3_sitearch}/gi/overrides
+%dir %{python3_sitearch}/gi/overrides/__pycache__
+%{python3_sitearch}/gi/overrides/Atspi.py
+%{python3_sitearch}/gi/overrides/__pycache__/Atspi.cpython-313.pyc
 
 %files -n libatspi0
 %{_libdir}/libatspi.so.0*

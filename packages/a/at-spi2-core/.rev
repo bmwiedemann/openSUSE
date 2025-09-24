@@ -2757,4 +2757,12 @@
   + at-spi2-core-plug-crash.patch (forwarded request 1297160 from iznogood)</comment>
     <requestid>1297631</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>9f1dedf026960e30a338c4513c5bc3b5</srcmd5>
+    <version>2.58.0</version>
+    <time>1758720040</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304864 from dimstar)</comment>
+    <requestid>1305434</requestid>
+  </revision>
 </revisionlist>
