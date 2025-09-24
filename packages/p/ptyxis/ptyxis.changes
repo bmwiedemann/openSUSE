@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Sep 13 08:31:32 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Fix padding around visual-bell when tabs are visible
+  + Increase contrast for solarized titlebar foreground
+  + Updated translations
+
+-------------------------------------------------------------------
+Fri Aug 29 11:08:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Fix some incorrect README information
+  + Fix theming to track changes in libadwaita
+  + Use new AdwShortcutLabel in preferences UI
+  + Add palette titles to preview
+  + Improve custom URL regex wording
+- Changes from version 49.alpha:
+  + New searchable menu for containers and profiles (via Alt+comma)
+  + Various .desktop file integration points
+  + Add --fullscreen option to start Ptyxis fullscreen
+  + Avoid saving state twice during shutdown
+  + Add --import-palette command line argument
+  + Improved handling of --standalone and --execute to support specifying
+    a non-default application-id.
+  + Various palette updates
+  + Handle mailto: URLs
+  + Check for X_OK before potential chdir
+  + Remove bold-is-bright from preferences UI (but maintain GSetting)
+  + Updated documentation
+
+-------------------------------------------------------------------
 Tue Jul  8 07:28:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.5:
