@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Sep  5 15:16:30 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.86.0:
+  + Rework how platform-specific introspected GIO APIs have to be
+    imported to fix problems with backwards-compatibility provision
+    for it, by removing duplicate platform-specific symbols from
+    `Gio-2.0`.
+  + Fix file existence queries on Solaris, broken due to unexpected
+    flags handling within `faccessat()`
+  + Updated translations
+
+-------------------------------------------------------------------
+Wed Aug 27 06:50:24 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.85.4:
+  + Follow symlink (instead of overwriting it) when updating
+    `mimeapps.list`
+- Changes from version 2.85.3:
+  + Fix encoding of output from `g_print()` and `g_printerr()` when
+    locale is set to `.utf8` on Windows.
+- Changes from version 2.85.2:
+  + New Linux PSI based backend for `GMemoryMonitor` as an option
+    to use instead of the existing Low Memory Monitor daemon
+    backend.
+- Changes from version 2.85.1:
+  + Re-add the option of a singleton to `GIRepository`.
+  + Add support for the `e` flag (O_CLOEXEC) to `g_fopen()`
+  + Make the `sysprof` Meson option yield when using GLib as a
+    subproject
+  + Use the Meson built-in `localedir` option
+- Changes from version 2.85.0:
+  + Preserve mode for existing file when creating a temporary file
+    for atomic updates with g_file_set_contents()
+  + Fix race conditions between g_main_context_unref() and
+    g_source_*() methods
+  + Allow file handles inside nested containers when using the
+    `gdbus call` command
+  + Fix DNS resolution of local addresses in offline mode
+  + Various performance improvements to GObject locking
+  + Prefer matches occurring earlier in the string when searching
+    `GDesktopAppInfo`s, improving search for apps in gnome-shell
+  + Fix thread safety of `GClosure` flags
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Aug  8 18:05:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.84.4:
