@@ -1,7 +1,7 @@
 #
 # spec file for package gthumb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gthumb
-Version:        3.12.7
+Version:        3.12.8
 Release:        0
 # FIXME: Add libchamplain BuildRequires once the map feature is considered stable.
 Summary:        An Image Viewer and Browser for GNOME
@@ -52,7 +52,6 @@ BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
-BuildRequires:  pkgconfig(json-glib-1.0) >= 0.15.0
 BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libbrasero-burn3) >= 3.2.0
 BuildRequires:  pkgconfig(libheif) >= 1.11
@@ -60,15 +59,8 @@ BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libraw) >= 0.14
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.34.0
-BuildRequires:  pkgconfig(libsecret-1) >= 0.11
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
 BuildRequires:  pkgconfig(libwebp) >= 0.2.0
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} < 1315
-BuildRequires:  pkgconfig(webkit2gtk-3.0)
-%else
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
-%endif
 
 %description
 gThumb lets you browse your hard disk, showing you thumbnails of image
@@ -115,7 +107,7 @@ slide shows, set your desktop background, and more.
 %{_libexecdir}/gthumb/
 %if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1590
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/org.gnome.gThumb.appdata.xml
+%{_datadir}/metainfo/org.gnome.gThumb.metainfo.xml
 %endif
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/org.gnome.gThumb*

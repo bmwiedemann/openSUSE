@@ -1032,4 +1032,41 @@
     <comment>Fix date format in old changelog entries (forwarded request 1277781 from dimstar)</comment>
     <requestid>1278254</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>87194b7f7d9ab4e02f876256eb5de73d</srcmd5>
+    <version>3.12.8</version>
+    <time>1758720177</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.12.8:
+  + Features:
+    - Added extension to view the GPS position on openstreetmap.org
+    - Image viewer: added options to hide the frame
+    - Image viewer: use a darker gray for the background
+    - Video viewer: rotate videos respecting the orientation tag
+    - Allow to sort files by creation time
+    - TIFF loader: apply the embedded ICC profile
+    - PNG loader: apply the color space specified in EXIF data
+    - AVIF saver: save the color profile as well
+    - Make WEBP and TIFF rotation lossless by setting the EXIF
+      orientation tag
+    - Tranform the profile to sRGB before saving an image with a
+      profile
+  + Bugfixes:
+    - Fixed reading of the color space in EXIF tags
+    - Added support for the AdobeRGB profile
+    - Do not show the next image after saving metadata or tags
+    - Do not panic when reading a broken thumbnail (png error)
+    - Fixed date and tag selectors on Wayland
+    - Desktop background: fixed crash when the file is not an image
+    - Desktop background: fixed the undo button always insensitive
+    - Do not reset the modification time after saving the metadata
+    - Fixed &quot;Do not overwrite any file&quot; option skipping the rest of
+      the files
+    - Fixed thumbnails not updated after saving an image
+  + Updated translations
+- Drop no longer needed BuildRequires: pkgconfig(json-glib-1.0),
+  pkgconfig(libsecret-1), pkgconfig(libsoup-2.4), and
+  pkgconfig(webkit2gtk-3.0) respective pkgconfig(webkit2gtk-4.0), (forwarded request 1305141 from dimstar)</comment>
+    <requestid>1305428</requestid>
+  </revision>
 </revisionlist>
