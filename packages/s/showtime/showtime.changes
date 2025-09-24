@@ -1,8 +1,34 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:31:58 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Updated translations
+
+-------------------------------------------------------------------
 Wed Sep 10 11:44:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gstreamer-plugins-ugly and gstreame-plugins-libav: Ensure we
   recommend having codecs for audio and videoformats.
+
+-------------------------------------------------------------------
+Tue Sep  2 10:46:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Playback now resumes after seeking
+  + Improved the layout of the options menu
+  + The “Repeat” option now persists across a restart of the
+    application
+  + Improved the experience when using multiple windows
+  + Fixed an issue with reopening the options menu
+  + Fixed not being able to seek by scrolling
+  + Fixed not being able to play symlinked videos
+  + Fixed the previous playback position sometimes not restoring
+  + Fixed buttons having too small of a clickable area
+  + Tweaked the styling of the interface
+  + Various improvements on the backend
+- Replace plain blueprint-compiler BuildRequires with
+  pkgconfig(blueprint-compiler): meson checks for the pkgconfig
+  file
 
 -------------------------------------------------------------------
 Sun May  4 06:27:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>

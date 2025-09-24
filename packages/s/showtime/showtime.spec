@@ -19,21 +19,21 @@
 %define appid org.gnome.Showtime
 
 Name:           showtime
-Version:        48.1
+Version:        49.0
 Release:        0
 Summary:        Video player
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/Incubator/showtime
 Source:         %{name}-%{version}.tar
 
-BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(blueprint-compiler)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.14.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.beta
+BuildRequires:  pkgconfig(gtk4) >= 4.18.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 Requires:       gstreamer-plugins-rs
 Recommends:     gstreame-plugins-libav
 Recommends:     gstreamer-plugins-ugly
@@ -71,6 +71,7 @@ for a straightforward viewing experience.
 %dir %{python3_sitelib}/%{name}
 %{python3_sitelib}/%{name}/*
 %{_datadir}/applications/%{appid}.desktop
+%{_datadir}/dbus-1/services/org.gnome.Showtime.service
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
 %{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
