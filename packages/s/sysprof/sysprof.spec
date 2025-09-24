@@ -22,7 +22,7 @@
 %define glib_version 2.76.0
 
 Name:           sysprof
-Version:        48.1
+Version:        49.0
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -149,6 +149,7 @@ export CXX=g++-11
 %{_datadir}/dbus-1/interfaces/org.gnome.Sysprof3.Service.xml
 %dir %{_datadir}/dbus-1/system.d
 %{_datadir}/dbus-1/system.d/org.gnome.Sysprof3.conf
+%{_datadir}/dbus-1/services/org.gnome.Sysprof.service
 %{_datadir}/dbus-1/system-services/org.gnome.Sysprof3.service
 %{_datadir}/polkit-1/actions/org.gnome.sysprof3.policy
 %{_libdir}/libsysprof-memory-%{apiver}.so
@@ -164,7 +165,7 @@ export CXX=g++-11
 %{_bindir}/sysprof
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/*/*
-%{_datadir}/metainfo/org.gnome.Sysprof.appdata.xml
+%{_datadir}/metainfo/org.gnome.Sysprof.metainfo.xml
 %{_datadir}/mime/packages/sysprof-mime.xml
 
 %files -n libsysprof-%{apiver}-%{sover}

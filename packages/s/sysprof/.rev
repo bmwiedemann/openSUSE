@@ -346,4 +346,33 @@
     <comment></comment>
     <requestid>1301826</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>aec0c63a9c459f30ac59542de9cf680e</srcmd5>
+    <version>49.0</version>
+    <time>1758720218</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.0:
+  + Disable unloading of libraries linking libsysprof-capture as it
+    uses TLS in intrusive ways
+  + Updated translations.
+- Update to version 49.rc:
+  + Ensure libdex is initialized in various tools.
+  + Add support for building introspection and documentation. This
+    really is just used for developers of Sysprof, so it is
+    unlikely that distributions will want to install this.
+  + Make debuginfod symbolizer work with recent GObject changes.
+  + Fix warnings when building with Clang
+  + Use app metadata instead of appinfo
+  + Ensure counters clear ring buffer before writing new values
+- Changes from version 49.alpha:
+  + Various improvements to the greeter window
+  + New filtering for various types of marks
+  + Instrument improvements
+  + Ability to avoid using sysprofd in some specific use cases
+  + Desktop file/action integration improvements
+  + mmap fixes for HPPA architecture
+  + Improve ELF loader search directories
+  + Updated translations. (forwarded request 1305104 from iznogood)</comment>
+    <requestid>1305504</requestid>
+  </revision>
 </revisionlist>
