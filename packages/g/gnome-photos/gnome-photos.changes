@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  9 10:42:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire glycin-loaders instead of gdk-pixbuf-loader-rsvg:
+  most loaders have moved to glycin.
+
+-------------------------------------------------------------------
 Sun Sep  8 08:17:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace tracker with localsearch Requires following the rename of

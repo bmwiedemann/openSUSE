@@ -535,4 +535,12 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205454</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>b1cd76b76d16f50127b3c6d0263df376</srcmd5>
+    <version>44.0+23</version>
+    <time>1758720066</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304906 from dimstar)</comment>
+    <requestid>1305457</requestid>
+  </revision>
 </revisionlist>

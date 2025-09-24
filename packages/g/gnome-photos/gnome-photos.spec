@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-photos
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,11 +29,10 @@ Patch0:         gnome-photos-on-demand-activate-dleyna.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  meson >= 0.50.0
-# Technically seen, glib2-tools would require this, but it introduces a loop there. So explictly require here
-BuildRequires:  gdk-pixbuf-loader-rsvg
+BuildRequires:  glycin-loaders
 BuildRequires:  itstool
 BuildRequires:  libjpeg-devel
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  (pkgconfig(babl) or pkgconfig(babl-0.1))
