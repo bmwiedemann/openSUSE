@@ -1,7 +1,7 @@
 #
 # spec file for package gnote
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define base_version 48
+%define base_version 49
 %define glib_version 2.74
 
 Name:           gnote
-Version:        48.1
+Version:        49.rc
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
