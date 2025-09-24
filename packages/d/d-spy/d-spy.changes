@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 15 14:52:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.1:
+  + Fixes for CI
+
+-------------------------------------------------------------------
+Sat Sep 13 08:27:03 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Sep  2 07:48:13 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + A new interface design that is more adaptable to exploring
+    complex D-Bus peers as well as working on more constrained
+    display devices.
+- Add pkgconfig(libdex-1) BuildRequires: new dependency
+
+-------------------------------------------------------------------
 Sat Mar 15 21:17:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

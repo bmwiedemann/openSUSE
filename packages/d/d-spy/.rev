@@ -48,4 +48,12 @@
   + Updated translations. (forwarded request 1253407 from iznogood)</comment>
     <requestid>1253704</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d3f5d98e50a82f243e10311c006824a4</srcmd5>
+    <version>49.1</version>
+    <time>1758720183</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304866 from dimstar)</comment>
+    <requestid>1305436</requestid>
+  </revision>
 </revisionlist>
