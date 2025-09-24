@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 15 14:53:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Set an explicit tag to package in _service
+
+-------------------------------------------------------------------
 Thu Mar  7 09:32:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add nautilus-image-converter-fix-translations.patch: Fix build
