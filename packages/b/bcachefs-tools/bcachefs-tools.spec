@@ -1,7 +1,7 @@
 #
 # spec file for package bcachefs-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bcachefs-tools
-Version:        1.25.3
+Version:        1.31.1
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-or-later
@@ -42,6 +42,12 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} >= 1690
+BuildRequires:  %kernel_module_package_buildreqs
+BuildRequires:  kernel-devel
+BuildRequires:  kernel-syms
+%kernel_module_package -n bcachefs -x xen -p %_sourcedir/bcachefs-preamble
+%endif
 
 %description
 Bcachefs is a filesystem for Linux, with an emphasis on reliability
@@ -77,28 +83,36 @@ export CXXFLAGS="$CFLAGS"
 export EXTRA_CFLAGS="$CFLAGS"
 %make_build PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir"
 
+%if 0%{?suse_version} >= 1690
+%make_build install_dkms DKMSDIR="/tmp/kb"
+cd /tmp/kb
+for kmp_flavor in %{?flavors_to_build}; do
+        rm -Rf "../obj-$kmp_flavor"
+        cp -a . "../obj-$kmp_flavor"
+        cd "../obj-$kmp_flavor/"
+        %make_build KDIR="/usr/src/linux-obj/%_target_cpu/$kmp_flavor"
+        cd -
+done
+%endif
+
 %install
-%make_install PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir"
+%make_install PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir" DKMSDIR=/tmpdel
+rm -Rf "%buildroot/tmpdel"
 # this ain't no debian
 rm -Rf "%buildroot/etc/initramfs-tools" "%buildroot/%_datadir/initramfs-tools"
 
-%pre
-%service_add_pre bcachefsck_all.service bcachefsck_all_fail.service
-
-%post
-%service_add_post bcachefsck_all.service bcachefsck_all_fail.service
-
-%preun
-%service_del_preun bcachefsck_all.service bcachefsck_all_fail.service
-
-%postun
-%service_del_postun bcachefsck_all.service bcachefsck_all_fail.service
+%if 0%{?suse_version} >= 1690
+cd /tmp/kb
+for kmp_flavor in %flavors_to_build; do
+	cd "../obj-$kmp_flavor/"
+        %make_build -C "/usr/src/linux-obj/%_target_cpu/$kmp_flavor" \
+		M="$PWD" INSTALL_MOD_PATH="%buildroot" modules_install
+	cd -
+done
+%endif
 
 %files
 %_sbindir/*bcache*
-%_unitdir/bcachefsck*
-%_unitdir/system-bcachefsck*
-%_libexecdir/bcachefsck*
 %_udevrulesdir/64-bcachefs.rules
 %_mandir/man8/*.8*
 %license COPYING

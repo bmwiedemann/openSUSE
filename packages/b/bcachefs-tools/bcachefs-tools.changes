@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 23 13:09:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.31.1
+  * Enforce a soft minimum limit of 64k for bucket size
+  * Add v2 ioctls that return error strings
+  * Commands called with no arguments now print usage
+  * scrub: Return code now indicates corrected/uncorrected errors
+
+-------------------------------------------------------------------
 Fri Aug 29 13:13:02 UTC 2025 - Petr Vorel <pvorel@suse.cz>
 
 - Update to release 1.25.3
