@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Wed Sep 17 10:13:44 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 4.2.09:
+  + fmt segmentation fault fixed
+- Update to 4.2.08:
+  + Export ADIF defaults: fix missing right click - save defaults
+  + Mouse wheel action: correct code for consistent mouse wheel
+    action
+      . mouse wheel forward - increase value
+      . mouse wheen backward - decrease value
+  + Configure.ac mod: Update to build configure.ac
+  + Configuration confirmation: update immediately to make current
+    selection operable.
+  + CW update
+    * change to FIR lowpass filter
+    * remove character hesitation; cw using flrig dtr/rts keying
+    * add user configurable 'weight' setting
+    * correct "retain freq lock" usage
+      . the logic was being applied in the wrong place in the code
+    * correct CW wpm sync between various keyline controls
+    * add CW keyline control using GPIO pin
+      . only applicable to PI computers
+    * add code for CW bandwidth control via mousewheel
+    * add user selectable embedded CW bandwidth controls
+    * start at sweet spot if so configured
+  + Fl_Preferences bug
+    * fix incorrect code for fltk 4.x preferences file
+      . notify code was not using the correct file name
+    * change all references 'w1hkj.com' to 'w1hkj.org'
+  + Soundcard Generate
+    * fix sound NULL record flush routine.
+      . failed to force snd_file reference object to zero.
+      . caused MALLOC error in snd_file library.
+  + xmlrpc get_trx_state: change to same logic used in get_trx_status
+  + NAVTEX special char / reverse
+    * add ITA2 translation tables to NAVTEX, SITOR2
+    * correct decode/encode of NAVTEX/SITOR2 Rv mode.
+  + nsis script: some systems require explicit placement of locale
+    files
+  + scope colors
+    * fltk library issue moving from fltk 1.3.9 to fltk 1.4.3
+      . fl_scale and fl_circle parameter lists are incompatible.
+      . modified code to preclude using fl_scale to allow
+      one code source to compile and function correctly with
+      either library.
+  + TX_PWR macro
+    * add processing options
+      . number of samples for averaging
+      . number of samples to select peak
+      . report average / peak power
+  + GCC 15 changes
+    * Changed regex 'C' declarations to current standards.
+    * Commented out frequency2 list legacy code, causes incorrect
+      assignment.
+    * Minor changes to mode parsing.
+    * Added qso_browser clear() function to prevent list doubling
+      on each frequency2 file reading.
+    * Modified code to prevent duplicate entries.
+    * fixes required to compile without errors/warnings on gcc-15
+  + mode_state file: correct location for >= fltk-1.4.0
+  + OFDM modes  Comment out from all menus
+    . pending development work by KL4YFD
+  + Redefine nanosleep
+  + Update greek po translation files
+  + ITA2 chars
+    * modify table to include '+'
+    * modify table to swap ';' and '='
+
+-------------------------------------------------------------------
+Sat Jun 14 14:59:01 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 4.2.07:
+  * Update cty dat: use big cty dat posted on 9 Jun 2025
+  * Audio macros: add
+    . <GEN_START>
+    . <GEN_STOP>
+    . <GEN_PAUSE> - toggle
+  * Update manual,add information for <AUDIO:filename> macro tag
+    . transmit the audio file given by full pathname 'filename'
+    . file may be encoded as wav or mpeg
+  * OFDM modes removed from application pending further development
+    by John, KL4YFD.
+    . code still intact, just commented out
+  * Squelch by mode: update to set code
+  * TTY ITA2: allow user to select USTTY or ITA2 for Baudot shifted
+    characters
+  * save and restore frequency lock status between session
+  * run_script: dd new command line parameter
+    . script <fullpathname filename>
+  * all references to www.w1hkj.com changed to www.w1hkj.org
+  * microHAM interface: modify the WinKeyer interface config dialog
+    to include microHAM as requiring the emualation bypass control
+    enabled
+  * SCAMP ADIF: Change SCAMP adif designation to
+    . mode MFSK
+    . submode SCAMPFSK
+  * RSID squelch: correct RsID detection behavior
+  * MFSK afc
+    + Increase AFC low pass filter range to 500.
+    + add configuration item allowing user to adjust the decay
+      averaging of the AFC tracking.
+  * THOR-25: add new THOR modem
+  * WEFAX
+    + restore LPM selection
+    +  increase range of bandwidth selection
+  * band mode: fix save/load of tx level
+  * fmt time scale: add 4, 8, 16, 24 and 48 hour scales
+  * scamp: port SCAMP from github fldigi/scamp repository
+  * RsID start/stop: reduce start/stop filtering interval of
+    transmit signal
+  * HELL modes: Make all modes equal for duplicate test. Include
+    mode designations prior to ADIF conformance code change.
+  * ui_colors: fix bugs introduced by previous commit
+
+-------------------------------------------------------------------
 Sat Jun 14 14:59:01 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 4.2.07:
