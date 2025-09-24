@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:22:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Add action to view source code of a translation in browser
+  + Add a setting to omit adding copyright to the header
+  + Use AdwShortcutLabels in translation memory
+  + Improve "Notes" dialog
+  + Port to AdwShortcutsDialog
+  + Make app D-Bus activatable
+  + Plug multiple memory leaks
+  + Update translations
+- Drop pkgconfig(libgda-6.0) BuildRequires: no longer needed
+- Add pkgconfig(sqlite3) BuildRequires: new dependency
+
+-------------------------------------------------------------------
 Sun Apr  6 10:21:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(libdazzle-1.0) BuildRequires: No longer needed,

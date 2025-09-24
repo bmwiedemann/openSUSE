@@ -1,7 +1,7 @@
 #
 # spec file for package gtranslator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gtranslator
-Version:        48.0
+Version:        49.0
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.36.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.71.3
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.13.0
 BuildRequires:  pkgconfig(gtk-doc)
@@ -43,11 +43,11 @@ BuildRequires:  pkgconfig(gtk4) >= 4.12.0
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.4.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.alpha
-BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
+BuildRequires:  pkgconfig(sqlite3)
 Requires:       gsettings-desktop-schemas
 Requires:       iso-codes
 Requires:       libadwaita-1-0 >= 1.5.0
@@ -83,6 +83,7 @@ find %{buildroot} -type f -name "gtr-marshal.h" -delete -print
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/*.desktop
+%{_datadir}/dbus-1/services/org.gnome.Gtranslator.service
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_datadir}/gtksourceview-5/language-specs/*.lang
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Gtranslator*.svg
