@@ -51,7 +51,9 @@ BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_random-devel
 BuildRequires:  libboost_regex-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libboost_thread-devel
 BuildRequires:  lmdb-devel
 BuildRequires:  lmdbxx-devel

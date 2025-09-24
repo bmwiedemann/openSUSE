@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 24 11:32:18 CEST 2025 - aschnell@suse.com
+
+- libboost_system was removed upstream (bsc#1249900)
+
+-------------------------------------------------------------------
 Tue Sep 23 10:46:14 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Backport fix_reply_rendering.patch for fixing reply renderig

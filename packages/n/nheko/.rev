@@ -31,4 +31,12 @@
     <comment>- Backport fix_reply_rendering.patch for fixing reply renderig</comment>
     <requestid>1306699</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>29f08e9b6adf45be38f10bd063ab13ac</srcmd5>
+    <version>0.12.1</version>
+    <time>1758720323</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306885</requestid>
+  </revision>
 </revisionlist>
