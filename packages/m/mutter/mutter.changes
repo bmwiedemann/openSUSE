@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:37:27 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Improve compliance of pointer-warp protocol implementation
+  + Fix unminimizing in multi-monitor setups
+  + Fix coordinates in crossing events
+  + Update viewport after virtual monitor size changes
+  + Fix "ghost" modifier key presses in clients
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Sep  2 08:08:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require glycin-loaders: needed to load background images
+
+-------------------------------------------------------------------
+Mon Sep  1 08:07:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Fix windows sometimes not unmaximizing on drag
+  + Add ICtCp Tone Mapping
+  + Add custom service client
+  + Add support for ICC profiles
+  + Ensure input capture sessions have the requested devices
+  + Advertise Broadcast RGB support
+  + Support wl_seat v10
+  + Use glycin for loading background images
+  + Improve picking fractional scaling factors
+  + Flip wayland popups even if they won't fully fit afterwards
+  + Add color calibration D-Bus API
+  + Improve consistency of keyboard modifier state
+  + Make meta_window_{get,set}_maximize_flags() public again
+  + Fix fd leak during screencasting
+  + Fix captured devices getting stuck when client disconnects
+  + Allow the cursor to move at maximum refresh rate with VRR
+  + Still constrain fullscreen wayland windows with size limits
+  + Add launchers to devkit
+  + Revamp initial wayland window configuration
+  + Add support for variations of YCbCr formats
+  + Do not switch from tablet cursor to pointer on keyboard events
+  + Place initially-maximized windows on the correct monitor
+  + Replace click/tap/pan actions with gesture-based actions
+  + Drop logical ClutterInputDevice from public API
+  + Fix reading and updating the privacy screen property
+  + Release the accelerometer from iio-sensor-proxy when unused
+  + Always respect position hint when mapping as fullscreen
+  + Add pure MRU order stragegy to tab list
+  + Don't constrain size limits when applying wayland commits
+  + Suspend windows when screen shield is active
+  + Use the right PID for wayland clients
+  + Use extended sRGB for blending by default
+  + Fixed crashes
+- Add pkgconfig(libadwaita-1) and pkgconfig(glycin-2)
+  BuildRequires: new dependencies
+- Drop mutter-implement-text-input-v1.patch: no longer applicable
+
+-------------------------------------------------------------------
+Thu Aug 28 11:33:57 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + Reintroduce snippet caching
+  + Implement the wl_fixes interface
+  + Create MetaWaylandClient for every wl_client
+  + Fix DND from X11 clients using tablet stylus
+  + Respect implicit grab for popup surfaces
+  + Fix handling of pad button actions of tablets
+  + Implement the pointer warp protocol
+  + Fixed crash
+  + Misc. bug fixes and cleanups
+- Changes from version 49.alpha:
+  + Add speed limit to Visual alerts
+  + Make logical monitors more persistent
+  + Bias less strongly towards smaller scaling factors
+  + Add support for 10/12/16 bit SW decoder YUV formats
+  + Fix behavior of windows that get activated before mapped
+  + Expose LogicalMonitors in public API
+  + Fix incorrect cursor over Xwayland clients
+  + Separate trackpoint speed settings from mouse
+  + Fix auto-maximized wayland windows
+  + Fix hi-res scroll events getting converted to flip-flopping
+    discrete events
+  + Avoid creating a frame for the root window
+  + Apply touchpad acceleration profile on startup
+  + Add (un)inhibit API to control cursor visibility
+  + Fall back to updating activation environment ourselves
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations
+
+-------------------------------------------------------------------
 Mon Jul 14 17:08:53 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Drop mutter-SLE-bell.patch. It no longer applies with --fuzz=0,

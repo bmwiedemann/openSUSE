@@ -1,7 +1,7 @@
 #
 # spec file for package mutter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %bcond_with profiler
 
-%define api_major 16
+%define api_major 17
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 
 Name:           mutter
-Version:        48.4
+Version:        49.0
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -38,8 +38,6 @@ Patch1:         mutter-disable-cvt-s390x.patch
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 # PATCH-FIX-OPENSUSE 0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch glgo#GNOME/mutter#3302 bsc#1219546 alynx.zhou@suse.com -- Fix partial update on VT switch
 Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
-#PATCH-FEATURE-OPENSUSE mutter-implement-text-input-v1.patch glgo#GNOME/mutter!3751 bsc#1219505 alynx.zhou@suse.com -- Allow input method to work in Wayland Chromium
-Patch5:         mutter-implement-text-input-v1.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
@@ -61,6 +59,7 @@ BuildRequires:  pkgconfig(gbm) >= 21.3
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.69.0
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.81.1
+BuildRequires:  pkgconfig(glycin-2)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
@@ -69,6 +68,7 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 47.beta
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(lcms2) >= 2.6
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
@@ -110,6 +110,7 @@ BuildRequires:  pkgconfig(xrandr) >= 1.5.0
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xwayland)
+Requires:       glycin-loaders
 Requires:       gnome-settings-daemon
 Provides:       windowmanager
 # Obsolete the now private typelib.
@@ -174,10 +175,18 @@ popd
 %license COPYING
 %doc NEWS
 %{_mandir}/man1/mutter.1%{?ext_man}
+%{_mandir}/man1/gnome-service-client.1%{?ext_man}
+%{_bindir}/gnome-service-client
 %{_bindir}/mutter
-%{_libexecdir}/mutter-restart-helper
+%{_libexecdir}/mutter-backlight-helper
+%{_libexecdir}/mutter-devkit
 %{_libexecdir}/mutter-x11-frames
 %{_udevrulesdir}/61-mutter.rules
+%{_datadir}/applications/org.gnome.Mutter.Mdk.desktop
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Mutter.Mdk.Devel.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Mutter.Mdk.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Mutter.Mdk-symbolic.svg
+%{_datadir}/polkit-1/actions/org.gnome.mutter.backlight-helper.policy
 
 # These so files are not split out since they are private to mutter
 %{_libdir}/mutter-%{api_major}/libmutter-clutter-%{api_major}.so.*
@@ -205,6 +214,7 @@ popd
 %{_datadir}/gnome-control-center/keybindings/50-mutter-wayland.xml
 %{_datadir}/GConf/gsettings/mutter-schemas.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.mutter.devkit.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
 
 %{_bindir}/gdctl
