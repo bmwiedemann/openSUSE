@@ -1,7 +1,7 @@
 #
 # spec file for package python-imageio-ffmpeg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-imageio-ffmpeg
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        FFMPEG wrapper for Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/imageio/imageio-ffmpeg
-Source:         https://files.pythonhosted.org/packages/source/i/imageio-ffmpeg/imageio-ffmpeg-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/i/imageio-ffmpeg/imageio_ffmpeg-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  ffmpeg-4
+BuildRequires:  ffmpeg
 BuildRequires:  python-rpm-macros
-Requires:       ffmpeg-4
+Requires:       ffmpeg
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,7 +40,7 @@ BuildArch:      noarch
 FFMPEG wrapper for working with video files in Python.
 
 %prep
-%setup -q -n imageio-ffmpeg-%{version}
+%autosetup -n imageio_ffmpeg-%{version}
 
 %build
 %pyproject_wheel

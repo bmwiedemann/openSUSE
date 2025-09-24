@@ -75,4 +75,12 @@
   * Add a null filter to re-enable frame count</comment>
     <requestid>1181701</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7b1de3c66fc0319acc115976b975de67</srcmd5>
+    <version>0.6.0</version>
+    <time>1758720303</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306859</requestid>
+  </revision>
 </revisionlist>
