@@ -883,4 +883,25 @@
     <comment></comment>
     <requestid>1252746</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>8aabcdf0529bc6863d961f40f5f471b3</srcmd5>
+    <version>2.86.0</version>
+    <time>1758720154</time>
+    <user>anag_factory</user>
+    <comment>- Update to verrsion 2.86.0:
+  + gmmproc: tools/defs_gen/docextract: Improve extraction of enum
+    enumerators. New enumerators in glib, gtk, pango are usually
+    documented with one enumerator per documentation block.
+- Changes from version 2.85.0 (unstable):
+  + Glib: Date: Add get_week_of_year() and get_weeks_in_year().
+  + Gio:
+    - InetAddress: Add get/property_scope_id(),
+      get/property_flowinfo(), create(bytes, family, flowinfo,
+      scope_id).
+    - ZlibCompressor: Add get/set/property_os().
+  + Build:
+    - Meson build: Use the Python installation that Meson uses.
+    - Require glib &gt;= 2.85.2 (forwarded request 1305959 from iznogood)</comment>
+    <requestid>1306433</requestid>
+  </revision>
 </revisionlist>

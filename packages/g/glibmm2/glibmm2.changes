@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 19 08:56:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to verrsion 2.86.0:
+  + gmmproc: tools/defs_gen/docextract: Improve extraction of enum
+    enumerators. New enumerators in glib, gtk, pango are usually
+    documented with one enumerator per documentation block.
+- Changes from version 2.85.0 (unstable):
+  + Glib: Date: Add get_week_of_year() and get_weeks_in_year().
+  + Gio:
+    - InetAddress: Add get/property_scope_id(),
+      get/property_flowinfo(), create(bytes, family, flowinfo,
+      scope_id).
+    - ZlibCompressor: Add get/set/property_os().
+  + Build:
+    - Meson build: Use the Python installation that Meson uses.
+    - Require glib >= 2.85.2
+
+-------------------------------------------------------------------
 Wed Mar 12 08:26:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.84.0:

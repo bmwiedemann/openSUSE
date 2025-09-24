@@ -1,7 +1,7 @@
 #
 # spec file for package glibmm2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@
 %define _name glibmm
 
 Name:           glibmm2
-Version:        2.84.0
+Version:        2.86.0
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/glibmm/2.84/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glibmm/2.86/%{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -37,7 +37,7 @@ BuildRequires:  m4
 BuildRequires:  meson >= 0.62
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.83.4
+BuildRequires:  pkgconfig(glib-2.0) >= 2.85.2
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(sigc++-3.0) >= 2.99.5
