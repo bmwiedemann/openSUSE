@@ -9,7 +9,7 @@ See https://gitlab.gnome.org/GNOME/vala/issues/1121
  1 file changed, 19 insertions(+), 19 deletions(-)
 
 diff --git a/src/overlayed-list.vala b/src/overlayed-list.vala
-index ef5db6f..209b044 100644
+index ef5db6f3..209b0440 100644
 --- a/src/overlayed-list.vala
 +++ b/src/overlayed-list.vala
 @@ -89,11 +89,11 @@ private abstract class OverlayedList : Overlay, AdaptativeWidget

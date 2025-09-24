@@ -333,4 +333,12 @@
     <comment>GNOME 40 - here we come (forwarded request 880983 from dimstar)</comment>
     <requestid>881152</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>708d7ff85568ff049fb9b23f853ba062</srcmd5>
+    <version>3.38.1</version>
+    <time>1758720221</time>
+    <user>anag_factory</user>
+    <comment>Lets try this again :-) (forwarded request 1305203 from iznogood)</comment>
+    <requestid>1305510</requestid>
+  </revision>
 </revisionlist>

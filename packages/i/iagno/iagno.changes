@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  9 10:41:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit glycin-loaders BuildRequires: provide image loaders
+  to gdk-pixbuf that iagno uses.
+
+-------------------------------------------------------------------
 Thu Feb 18 16:24:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add b37eacaf1485cda54d0fa4b2d2423f3d8c620af1.patch: Fix build

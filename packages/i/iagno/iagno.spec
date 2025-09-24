@@ -1,7 +1,7 @@
 #
 # spec file for package iagno
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        https://download.gnome.org/sources/iagno/3.38/%{name}-%{version}
 # PATCH-FIX-UPSTREAM b37eacaf1485cda54d0fa4b2d2423f3d8c620af1.patch dimstar@opensuse.org -- Fix build with Vala 0.51
 Patch0:         https://gitlab.gnome.org/GNOME/iagno/-/commit/b37eacaf1485cda54d0fa4b2d2423f3d8c620af1.patch
 BuildRequires:  fdupes
+BuildRequires:  glycin-loaders
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
