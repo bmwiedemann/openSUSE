@@ -887,4 +887,12 @@
     - goadaemon: complete GTasks to avoid a scary debug warning (forwarded request 1297117 from iznogood)</comment>
     <requestid>1297629</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>7d7067f5113ebbc020e41efb8744ef69</srcmd5>
+    <version>3.56.0</version>
+    <time>1758720064</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304905 from dimstar)</comment>
+    <requestid>1305456</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-online-accounts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-online-accounts
-Version:        3.54.5
+Version:        3.56.0
 Release:        0
 Summary:        GNOME service to access online accounts
 License:        LGPL-2.0-or-later
@@ -107,7 +107,6 @@ libraries in GNOME can access the user's online accounts.
 	-D imap_smtp=true \
 	-D kerberos=true \
 	-D owncloud=true \
-	-D windows_live=true \
 	-D fedora=false \
 	-D man=true \
 	%{nil}
@@ -125,7 +124,6 @@ libraries in GNOME can access the user's online accounts.
 %doc NEWS
 %{_libexecdir}/goa-daemon
 %{_datadir}/dbus-1/services/org.gnome.OnlineAccounts.service
-%{_datadir}/glib-2.0/schemas/org.gnome.online-accounts.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/goa-account*.svg
 %{_mandir}/man8/goa-daemon.8%{?ext_man}
 %dir %{_libdir}/goa-1.0
