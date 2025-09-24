@@ -444,4 +444,12 @@
     <comment></comment>
     <requestid>1255590</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>cc6769399c2134900320558af2e89212</srcmd5>
+    <version>3.24.10</version>
+    <time>1758720094</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304926 from dimstar)</comment>
+    <requestid>1305474</requestid>
+  </revision>
 </revisionlist>

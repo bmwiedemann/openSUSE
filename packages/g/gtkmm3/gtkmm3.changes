@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  9 10:50:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit glycin-loaders BuildRequires: provide image loaders
+  to gdk-pixbuf.
+
+-------------------------------------------------------------------
 Mon Mar 24 09:02:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.10:

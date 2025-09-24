@@ -1,7 +1,7 @@
 #
 # spec file for package gtkmm3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source0:        https://download.gnome.org/sources/gtkmm/3.24/%{_name}-%{version
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+BuildRequires:  glycin-loaders
 BuildRequires:  graphviz
 BuildRequires:  meson >= 0.60
 BuildRequires:  pkgconfig
