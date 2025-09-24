@@ -10,9 +10,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define soname 4_67
+%define soname 4_69
 Name:           libzia
-Version:        4.67
+Version:        4.69
 Release:        0
 Summary:        Libraries for tucnak
 License:        GPL-2.0-or-later
@@ -60,7 +60,10 @@ This package contains files needed for development with %{name}.
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -print -delete
+find %{buildroot} -type f -name "*.la" -delete -print
+rm -rf %{buildroot}%{_datadir}/%{name}/doc
+rm %{buildroot}%{_datadir}/%{name}/settings
+rmdir %{buildroot}%{_datadir}/%{name}
 
 %check
 %make_build check
@@ -70,7 +73,6 @@ find %{buildroot} -type f -name "*.la" -print -delete
 %files -n %{name}-%{soname}
 %license COPYING
 %{_libdir}/libzia-%{version}.so
-%{_datadir}/libzia/
 
 %files devel
 %license COPYING

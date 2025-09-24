@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 23 19:45:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.69:
+  * companion release to tucnak 4.69, developer visible fixes
+- drop doc files as they conflict upon update install tests
+
+-------------------------------------------------------------------
 Thu Feb 13 07:56:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.67:
