@@ -893,4 +893,18 @@
     <comment></comment>
     <requestid>1275534</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>1fbf329a7c8d951b14438d4c6af25e16</srcmd5>
+    <version>49.0</version>
+    <time>1758720222</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.0:
+  + Updated translations.
+
+- Update to version 49.rc:
+  + Default virtual machine storage disks to 30 GiB (from 20 Gib)
+  + Add vala 'CCode' attribute for null terminated string array
+  + Updated translations (forwarded request 1305204 from iznogood)</comment>
+    <requestid>1305512</requestid>
+  </revision>
 </revisionlist>
