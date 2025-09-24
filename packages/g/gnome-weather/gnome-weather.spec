@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-weather
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
+%global __requires_exclude GLib
 %define full_name org.gnome.Weather
 Name:           gnome-weather
-Version:        48.0
+Version:        49.0
 Release:        0
 Summary:        Weather App for GNOME
 License:        GPL-2.0-or-later
@@ -34,6 +35,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  intltool >= 0.26
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  typescript
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -87,7 +89,7 @@ search results from GNOME Weather.
 %license COPYING.md
 %doc NEWS README.md
 %{_bindir}/%{name}
-%{_datadir}/metainfo/org.gnome.Weather.appdata.xml
+%{_datadir}/metainfo/org.gnome.Weather.metainfo.xml
 %{_datadir}/applications/org.gnome.Weather.desktop
 %{_datadir}/%{full_name}/
 %{_datadir}/dbus-1/services/org.gnome.Weather.service

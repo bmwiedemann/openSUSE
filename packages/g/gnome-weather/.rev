@@ -432,4 +432,12 @@
     <comment>New stable branch release (forwarded request 1253150 from iznogood)</comment>
     <requestid>1253369</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6de99c8e6302ece8041b1692577bcc8c</srcmd5>
+    <version>49.0</version>
+    <time>1758720205</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304919 from dimstar)</comment>
+    <requestid>1305468</requestid>
+  </revision>
 </revisionlist>
