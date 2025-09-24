@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 24 07:27:32 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * omr-libdwarf-2.patch
+    + fix build with libdwarf 2.x where the includes are in
+      libdwarf-2 subdirectory
+
+-------------------------------------------------------------------
 Sat Jul 26 20:58:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 21.0.8 with OpenJ9 0.53.0 virtual machine

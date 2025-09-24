@@ -87,4 +87,12 @@
     <comment>July 2025 CPU: OpenJDK 21.0.8 with OpenJ9 0.53.0</comment>
     <requestid>1295919</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e39b32786d72d38633bfd07418333e41</srcmd5>
+    <version>21.0.8.0</version>
+    <time>1758726776</time>
+    <user>anag_factory</user>
+    <comment>fix build with libdwarf 2.x</comment>
+    <requestid>1306924</requestid>
+  </revision>
 </revisionlist>
