@@ -17,7 +17,7 @@
 
 
 Name:           gnome-console
-Version:        48.1
+Version:        49.0
 Release:        0
 Summary:        A minimal terminal for GNOME
 License:        GPL-3.0-only
@@ -29,6 +29,7 @@ BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  libxml2-tools
 BuildRequires:  meson >= 0.59.0
+BuildRequires:  mutter
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.76
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.76
@@ -67,8 +68,11 @@ needs a terminal.
 %meson_install
 %find_lang kgx %{?no_lang_C} %{name}.lang
 
+%ifnarch s390x
 %check
-%meson_test
+export XDG_RUNTIME_DIR="$(mktemp -p $(pwd) -d xdg-runtime-XXXXXX)"
+dbus-run-session -- mutter --headless --wayland --no-x11 --virtual-monitor 1024x768 -- %{shrink:%meson_test}
+%endif
 
 %files
 %license COPYING

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 15 13:10:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Updated translations
+- Changes from version 49.rc:
+  + We have headed to the big screen with a much anticipated
+    fullscreen mode, in part made possible by the ever-improving
+    libadwaita.
+  + A big focus this cycle has been error handling, to which end we
+    now better report errors to the user, complete with debug
+    information for bug reports, and there also — helped by much
+    expanded unit testing — should be far fewer opportunities for
+    things going awry in the first place.
+- Add mutter BuildRequires and launch meson test suite with mutter
+  as display server.
+- Don't run the test suite on s390x: the virtual mutter and Mesa do
+  not play right together.
+
+-------------------------------------------------------------------
 Sat Sep 13 20:54:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:
