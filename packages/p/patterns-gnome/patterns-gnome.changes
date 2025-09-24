@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Sep 18 14:50:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pattern gnome_x11: GNOME 49 no longer ships an X11 session.
+
+-------------------------------------------------------------------
+Sat Sep 13 10:19:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace vinagre and remmina Recommends with gnome-connections.
+
+-------------------------------------------------------------------
+Thu Sep 11 18:43:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Lower system-config-printer Recommends to Suggests, as
+  gnome-control-center already have a
+  system-config-printer-dbus-service Recommends, that provides more
+  or less all that is needed for printer configuration of modern
+  printers.
+
+-------------------------------------------------------------------
+Wed Sep 10 12:04:17 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop polari Recommends: IRC is no longer a default instant
+  message protocol.
+- Drop transmission-gtk Recommends: Having a torrentclient is no
+  longer a must have.
+
+-------------------------------------------------------------------
+Wed Sep  3 11:01:15 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Recommend snapshot instead of cheese: snapshot is the one that's
+  still developed and took over from cheese.
+
+-------------------------------------------------------------------
 Wed Aug 20 06:59:32 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Recommend opensuse-welcome-launcher instead of opensuse-welcome:

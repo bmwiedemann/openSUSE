@@ -35,14 +35,7 @@ This particular package contains all the Gnome patterns.
 
 
 
-
-
-
-
-
-
 ################################################################################
-
 %package gnome
 %pattern_graphicalenvironments
 Summary:        GNOME Desktop Environment (Wayland)
@@ -53,6 +46,8 @@ Provides:       pattern-order() = 1010
 Provides:       pattern-visible()
 Requires:       gnome-session-wayland
 Requires:       pattern() = gnome_basic
+# gnome_x11 has been removed with GNOME 49
+Obsoletes:      patterns-gnome-gnome_x11
 
 %description gnome
 The GNOME desktop environment is an intuitive and attractive desktop for users.
@@ -61,34 +56,6 @@ This pattern installs components for GNOME to run with Wayland and X11 technolog
 %files gnome
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/gnome.txt
-
-################################################################################
-
-%if 0%{?is_opensuse}
-%package gnome_x11
-%pattern_graphicalenvironments
-Summary:        GNOME Desktop Environment (X11)
-Group:          Metapackages
-Provides:       pattern() = gnome_x11
-Provides:       pattern-icon() = pattern-gnome-xorg
-Provides:       pattern-order() = 1020
-Provides:       pattern-visible()
-Requires:       gnome-session-xsession
-Requires:       pattern() = gnome_basic
-Requires:       pattern() = x11
-
-################################################################################
-
-%description gnome_x11
-The GNOME desktop environment is an intuitive and attractive desktop for users.
-This pattern installs a full featured GNOME desktop environment, including
-Office suite, E-Mail client, Web Browser, File Manager, running with X11
-technology.
-
-%files gnome_x11
-%dir %{_docdir}/patterns
-%{_docdir}/patterns/gnome_x11.txt
-%endif
 
 ################################################################################
 
@@ -148,8 +115,7 @@ Recommends:     pattern() = x11_yast
 # bijiben == gnome-notes
 # Disable (temp?) gnome-notes while we wait for upstream to fix the now 6 months old bug with it crashing in its search-provider
 #Recommends:     bijiben
-# no longer need to hard require cheese for g-c-c user panel
-Recommends:     cheese
+Recommends:     snapshot
 Recommends:     dconf-editor
 %if 0%{?suse_version} >= 01600
 Recommends:     gnome-papers
@@ -188,11 +154,7 @@ Obsoletes:      patterns-openSUSE-gnome < %{version}
 Provides:       patterns-sled-Default
 Obsoletes:      patterns-sled-Default < %{version}
 %endif
-%if 0%{?is_opensuse}
-Recommends:     vinagre
-%else
-Recommends:     remmina
-%endif
+Recommends:     gnome-connections
 %if !0%{?is_opensuse}
 Recommends:     gnome-initial-setup
 %endif
@@ -233,7 +195,7 @@ Recommends:     sushi
 # Packages that really make sense
 #
 # Tool for advanced configuration of printers
-Recommends:     system-config-printer
+Suggests:       system-config-printer
 Suggests:       gnome-color-manager %dnl bnc#698250
 %else
 Recommends:     NetworkManager-openconnect-gnome
@@ -536,12 +498,6 @@ Recommends:     evolution
 #
 # Official upstream
 #
-Recommends:     polari
-# bnc#530416
-Recommends:     transmission-gtk
-#
-# Official upstream
-#
 # bnc#366894
 Suggests:       epiphany
 Suggests:       evolution-plugin-rss
@@ -657,10 +613,10 @@ Requires:       pattern() = gnome_basis
 # Disable (temp?) gnome-notes while we wait for upstream to fix the now 6 months old bug with it crashing in its search-provider
 #Recommends:     bijiben
 Recommends:     baobab
-Recommends:     cheese
 Recommends:     gdk-pixbuf-thumbnailer
 Recommends:     gnome-calculator
 Recommends:     gnome-characters
+Recommends:     snapshot
 %if 0%{?sle_version}
 Recommends:     gedit
 %else
@@ -760,7 +716,7 @@ done
 
 %if 0%{?is_opensuse}
 for i in devel_gnome \
-    gnome_games gnome_ide gnome_x11 gnome_multimedia \
+    gnome_games gnome_ide gnome_multimedia \
     gnome_office \
     gnome_utilities \
 %if 0%{?suse_version} > 1600
