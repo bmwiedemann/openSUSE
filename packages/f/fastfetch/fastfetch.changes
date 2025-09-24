@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 23 20:10:22 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.53.0:
+  * CI: fix release action
+  * Packaging: updates debian stuff [ci skip]
+  * Release: v2.53.0
+  * CPU (Android): adds support for new Qualcomm and MediaTek SoC codes
+  * Doc: update changelog [ci skip]
+  * CPU (Linux): adds support for new ARM C1 series CPU part IDs
+  * Zpool: increase libzfs so version to 6
+  * CI: upgrades runner of intel macOS
+  * CPU (Windows): refines ARMv8.4-A detection to require LSE2
+
+-------------------------------------------------------------------
 Fri Sep 05 21:38:11 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.52.0:
