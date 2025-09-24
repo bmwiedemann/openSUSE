@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-mines
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-mines
-Version:        48.1
+Version:        49.0.1
 Release:        0
 Summary:        Minesweeper Game for GNOME
 License:        GPL-3.0-or-later
@@ -35,8 +35,7 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(libgnome-games-support-2)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(vapigen)
 
@@ -56,6 +55,7 @@ mines while receiving clues for the location of the mines.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
+%find_lang gnome-mines_libgnome-games-support %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
 %check
@@ -74,6 +74,6 @@ mines while receiving clues for the location of the mines.
 %{_datadir}/metainfo/org.gnome.Mines.metainfo.xml
 %{_datadir}/dbus-1/services/org.gnome.Mines.service
 
-%files lang -f %{name}.lang
+%files lang -f %{name}.lang -f gnome-mines_libgnome-games-support.lang
 
 %changelog

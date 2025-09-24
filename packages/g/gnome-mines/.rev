@@ -305,4 +305,33 @@
   + Make the application d-bus activatable (forwarded request 1268811 from iznogood)</comment>
     <requestid>1269678</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8d8fc6c375bc1f4d937d26357a3eb1e3</srcmd5>
+    <version>49.0.1</version>
+    <time>1758720217</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.0.1:
+  + Update libgnome-games
+- Update to version 49.0:
+  + Update libgnome-games
+  + Updated translations
+- Update to version 49.rc:
+  + Updated screenshot
+  + Use libgnome-games as subproject
+  + Unparent minefield view aspect frame
+- Drop pkgconfig(libgnome-games-support-2) BuildRequires: no longer
+  needed, as gnome-games-support became a copylib.
+- Update to version 49.beta:
+  * Added new theme
+  * Replaced timer icon
+  * Use libadwaita and support dark theme
+  * Use custom modulon instead of standard operator
+  * Fix invalid cast after libadwaita port
+  * Fix about dialog, fix help url
+  * Fix broken resizing
+  * Port to AdwShortcutsDialog
+  * Use new score dialog
+  + Updated translations (forwarded request 1305101 from iznogood)</comment>
+    <requestid>1305502</requestid>
+  </revision>
 </revisionlist>
