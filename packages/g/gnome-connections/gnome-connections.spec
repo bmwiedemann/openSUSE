@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-connections
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           gnome-connections
-Version:        48.0
+Version:        49.0
 Release:        0
 Summary:        A remote desktop client for GNOME
 License:        GPL-3.0-or-later
 URL:            https://wiki.gnome.org/Apps/Connections
 Source:         %{name}-%{version}.tar.zst
 
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -39,7 +39,8 @@ BuildRequires:  pkgconfig(gtk-vnc-2.0) > 0.4.4
 BuildRequires:  pkgconfig(libhandy-1) >= 1.6.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
-BuildRequires:  pkgconfig(winpr2) >= 2.0.0
+BuildRequires:  pkgconfig(spice-client-gtk-3.0)
+BuildRequires:  pkgconfig(winpr3) >= 3.0.0
 
 %description
 A remote desktop client for the GNOME desktop environment.

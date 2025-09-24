@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Sep 17 10:24:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace appstream-glib with AppStream BuildRequires: meson_test
+  uses AppStream now.
+
+-------------------------------------------------------------------
+Wed Sep 17 09:23:44 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace pkgconfig(winpr2) BuildRequires for pkgconfig(winpr3):
+  this was a missed dependency for the migration to freerdp3.
+
+-------------------------------------------------------------------
+Sat Sep 13 08:38:13 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Updated translations
+
+-------------------------------------------------------------------
+Fri Sep  5 06:16:55 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Added button tooltips to the topbar
+  + Added saving of user-preferred window size
+  + Allow shrinking display size down to 360x294
+  + Allow building without spice-gtk3
+  + Handle existing SPICE connections when SPICE is disabled
+  + Updated translations
+
+-------------------------------------------------------------------
+Wed Sep  3 11:23:09 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + Added support for SPICE
+  + Added shortcuts window
+  + Fixed build by temporarily disabling OpenH264
+  + Improved text in authentication dialog
+  + Present main window on activation
+  + Set prgname and icon for-the-window.patch
+  + Ignore vscode settings
+  + Add python six module due to flatpak
+  + Disable C compiler warnings for generated code
+  + Add translator comment for keywords
+  + Updated translations
+- Add pkgconfig(spice-client-gtk-3.0) BuildRequires: new dependency
+
+-------------------------------------------------------------------
 Mon Mar 17 12:57:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 48.0:

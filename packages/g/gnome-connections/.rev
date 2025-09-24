@@ -130,4 +130,37 @@
   + Updated translations. (forwarded request 1253780 from dimstar)</comment>
     <requestid>1253789</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a93c98f2294bb3f1c1c212e2e64794a0</srcmd5>
+    <version>49.0</version>
+    <time>1758720227</time>
+    <user>anag_factory</user>
+    <comment>- Replace appstream-glib with AppStream BuildRequires: meson_test
+  uses AppStream now.
+- Replace pkgconfig(winpr2) BuildRequires for pkgconfig(winpr3):
+  this was a missed dependency for the migration to freerdp3.
+- Update to version 49.0:
+  + Updated translations
+- Update to version 49.rc:
+  + Added button tooltips to the topbar
+  + Added saving of user-preferred window size
+  + Allow shrinking display size down to 360x294
+  + Allow building without spice-gtk3
+  + Handle existing SPICE connections when SPICE is disabled
+  + Updated translations
+- Update to version 49.beta:
+  + Added support for SPICE
+  + Added shortcuts window
+  + Fixed build by temporarily disabling OpenH264
+  + Improved text in authentication dialog
+  + Present main window on activation
+  + Set prgname and icon for-the-window.patch
+  + Ignore vscode settings
+  + Add python six module due to flatpak
+  + Disable C compiler warnings for generated code
+  + Add translator comment for keywords
+  + Updated translations
+- Add pkgconfig(spice-client-gtk-3.0) BuildRequires: new dependency (forwarded request 1305349 from iznogood)</comment>
+    <requestid>1305520</requestid>
+  </revision>
 </revisionlist>
