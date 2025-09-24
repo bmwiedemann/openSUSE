@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 13 08:27:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + help-overlay: Fix F10 shortcut not showing
+  + world-location-dialog: Set the search entry as the default
+    focus widget
+  + Updated translations
+
+-------------------------------------------------------------------
 Fri Mar 14 18:20:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:
