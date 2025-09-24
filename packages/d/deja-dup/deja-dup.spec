@@ -1,7 +1,7 @@
 #
 # spec file for package deja-dup
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           deja-dup
-Version:        48.0
+Version:        49.0
 Release:        0
 Summary:        Simple backup tool and frontend for duplicity
 License:        GPL-3.0-or-later
@@ -25,24 +25,24 @@ Group:          Productivity/Archiving/Backup
 URL:            https://wiki.gnome.org/Apps/DejaDup
 Source0:        %{name}-%{version}.tar.zst
 BuildRequires:  appstream-glib
+BuildRequires:  blueprint-compiler
 BuildRequires:  dbus-1
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  glib2-tools
-BuildRequires:  libgpg-error-devel
-BuildRequires:  meson >= 0.64
+BuildRequires:  meson >= 1.1
 BuildRequires:  pkgconfig
 BuildRequires:  restic
 BuildRequires:  vala >= 0.16.0
 BuildRequires:  xdg-user-dirs
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gio-2.0) >= 2.70
+BuildRequires:  pkgconfig(gio-2.0) >= 2.80
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gtk4) >= 4.12
+BuildRequires:  pkgconfig(gtk4) >= 4.18
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-3.0)
@@ -94,6 +94,9 @@ Features:
 # put the files in the right subpackage
 %dir %{_libexecdir}/deja-dup
 %{_libexecdir}/deja-dup/deja-dup-monitor
+%{_libexecdir}/deja-dup/deja-dup-find-fusermount
+%{_libexecdir}/deja-dup/fusermount
+%{_libexecdir}/deja-dup/fusermount3
 %{_datadir}/applications/org.gnome.DejaDup.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.DejaDup.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.DejaDup*

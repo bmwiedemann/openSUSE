@@ -748,4 +748,12 @@ So preferably for 13.1 as well.</comment>
     <comment>Fix build via enabling the new restic support, seems upstream did not test without the new optional support.... (forwarded request 1255595 from iznogood)</comment>
     <requestid>1255596</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>932650ea2d3fff07a57306665547591b</srcmd5>
+    <version>49.0</version>
+    <time>1758720179</time>
+    <user>anag_factory</user>
+    <comment>Update to 49.0 (forwarded request 1305294 from dimstar)</comment>
+    <requestid>1305429</requestid>
+  </revision>
 </revisionlist>

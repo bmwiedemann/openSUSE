@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Sep 17 06:50:10 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Rclone: when running under flatpak, look for config in
+    ~/.config/rclone/
+  + Restic:
+    - fix bashism in fusermount script that mounts restore files
+    - surface some errors that were slipping through the cracks
+  + Duplicity: fix possibility of accidentally changing password
+    for new full
+  + backups, with newer versions of duplicity
+
+-------------------------------------------------------------------
+Tue Sep  2 13:38:44 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta:
+  + Use new shortcuts dialog, use nice & ionice more, and warn
+    earlier if an Rclone remote is invalid
+- Changes from version 49.alpha:
+  + Restic is now always enabled by default, the UI has had an
+    overhaul, and restoring with Restic now uses your native file
+    manager
+- Add blueprint-compiler BuildRequires: new dependency
+- Drop libgpg-error-devel BuildRequires: no longer needed
+
+-------------------------------------------------------------------
 Sat Mar 22 11:22:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:
