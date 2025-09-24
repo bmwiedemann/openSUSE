@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Sep 12 06:24:09 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Need profile migrator to add OpenSearch capability to existing
+    predefined DuckDuckGo, Bing, and Google search engines
+  + The caret position after typing Ctrl+k
+  + REGRESSION: favicons have black square background instead of
+    transparent background
+  + ci: update check-potfiles to handle Blueprint (Michael Catanzaro)
+  + shell: fix leak in ephy_shell_before_emit() (Michael Catanzaro)
+  + Fix missing thumbnails (Jan-Michael Brummer)
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Sep  2 09:58:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  - Suggestions dropdown opens outside window in new incognito window
+  - Permission request button looks stupid
+  - Clicking downloads links causes crash
+  - Address bar dropdown appears when using "search the web"
+  - Address bar dropdown appears when using "open link in new tab"
+  - shell: fix session state being discarded with new GLib
+  - Change add bookmark item label if bookmark exists
+  - Explicit set position of suggestions popover
+  - Always focus location entry when opening new window
+  - bookmarks-dialog: Add a tooltip to the close button
+  - Fix web app crash on startup
+  - Handle edge case when undoing bookmark removal from window
+  - Unparent suggestion popover in dispose
+  - Fix cycling through address bar suggestions regression
+  - Fix screenshots being created as HTML
+- Changes from version 49.beta:
+  - Text cursor position not saved when switching tabs
+  - Features preferences pane design ideas
+  - Missing download icon in narrow mode
+  - Quit menu item is visible for non-background web app
+  - Loading spinner displays in location entry even when tab bar is
+    visible
+  - Crash when opening preferences dialog after deleting default
+    search engine
+  - Exiting bookmarks sidebar makes forward/back buttons clickable
+  - Cannot reset location entry with Escape
+  - Web app run in background setting is broken outside Flatpak
+  - bookmark import creates duplicated entries
+- Changes from version 49.alpha:
+  + This release contains a major redesign of the address bar
+  - Do not close any windows, and do not close the EphySession,
+    before user has responded to all unsubmitted form warning dialogs
+  - Option for separate search engine in Incognito
+  - Deletion of bigger numbers of bookmarks is unintuitive
+  - No success/failure indication after clearing personal data
+  - Inconsistently possible to delete only configured language
+  - switch immediately to new tab option does not work when middle
+    clicking
+  - Add kiosk mode
+  - Review use of run_downloads_in_background() in ephy-window.c
+  - Rejecting a modified form close confirmation warning has
+    different results depending on how window is closed
+  - help: pref-cookies.page contains some outdated information
+  - Support adding opensearch XML search engine with autodiscovery
+    pages"), not full-page-height transparent thumbnails
+- Drop epiphany-bookmark-tags-crash.patch: fixed upstream
+- Add python3-docutils BuildRequires: rst2man is a new dependency
+- Add blueprint-compiler BuildRequires: new dependency
+
+-------------------------------------------------------------------
 Fri Jul 11 19:46:31 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add epiphany-bookmark-tags-crash.patch: fix a crash when editing

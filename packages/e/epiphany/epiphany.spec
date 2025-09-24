@@ -1,7 +1,7 @@
 #
 # spec file for package epiphany
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           epiphany
-Version:        48.5
+Version:        49.0
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
 Source0:        %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM epiphany-bookmark-tags-crash.patch mgorse@suse.com -- fix a crash when editing bookmark tags.
-Patch0:         epiphany-bookmark-tags-crash.patch
 
+BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3-docutils
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo) >= 1.2
 BuildRequires:  pkgconfig(gck-2)
@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(hogweed) >= 3.2
 BuildRequires:  pkgconfig(icu-uc) >= 4.6
 BuildRequires:  pkgconfig(iso-codes) >= 0.35
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.alpha
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.19.0
@@ -124,7 +124,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/epiphany
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.Epiphany.appdata.xml
+%{_datadir}/metainfo/org.gnome.Epiphany.metainfo.xml
 %{_datadir}/applications/org.gnome.Epiphany.desktop
 %exclude %{_datadir}/epiphany/default-bookmarks.rdf
 %{_datadir}/epiphany/
