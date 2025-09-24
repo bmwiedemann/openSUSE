@@ -1079,4 +1079,12 @@ New upstream release</comment>
   + Updated translations. (forwarded request 1284320 from iznogood)</comment>
     <requestid>1284679</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>1352f9d1be3ad00632fc9273cc3ff21c</srcmd5>
+    <version>4.20.1</version>
+    <time>1758720088</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304925 from dimstar)</comment>
+    <requestid>1305473</requestid>
+  </revision>
 </revisionlist>

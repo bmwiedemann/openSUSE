@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Sep  9 06:34:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.20.1:
+  + Bugs fixed:
+    - Second Drag-and-Drop operation causes Gtk-CRITICAL messages
+      at every event
+    - columnview focus problem with menus
+    - GtkTextView with css padding shows offscreen widgets in upper
+      left corner
+    - Occasional crashes in gsk_gl_device_setup_samplers()
+    - Gtk.Entry: Cursor disappears when reaching right border
+    - GTK_THEME environment variable not working properly with
+      GTK4-4.20
+
+-------------------------------------------------------------------
+Sat Aug 30 09:01:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.20.0:
+  + YUV support in the video playback widget
+  + Better rendering for symbolic icons
+  + CSS media queries for color scheme and contrast
+  + Path intersection
+  + Rely on portals for session management
+  + Accessibility improvements for entries, file selection dialogs,
+    and more
+  + Better support for Wayland, macOS, Android, and Windows
+  + Updated translations.
+- Add pkgconfig(librsvg-2.0) BuildRequires: New dependency.
+- Move gtk4-path-tool to devel-tools sub-package.
+
+-------------------------------------------------------------------
 Tue Jun 10 06:55:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.18.6:

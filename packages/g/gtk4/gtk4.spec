@@ -1,7 +1,7 @@
 #
 # spec file for package gtk4
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2010 Dominique Leuenebrger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@
 %endif
 
 Name:           gtk4
-Version:        4.18.6
+Version:        4.20.1
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -80,6 +80,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
 BuildRequires:  pkgconfig(graphene-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.10.0
+BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(vulkan)
 %if %{with gst}
 BuildRequires:  pkgconfig(gstreamer-gl-1.0)
@@ -287,13 +288,13 @@ export CFLAGS="%{optflags} -Wno-int-conversion"
 install -m 644 -D %{SOURCE2} %{buildroot}%{_datadir}/gtk-4.0/settings.ini
 # create modules directory that should have been created during the build
 if test ! -d %{buildroot}%{_libdir}/gtk-4.0/modules; then
-  mkdir %{buildroot}%{_libdir}/gtk-4.0/modules
+  mkdir -p %{buildroot}%{_libdir}/gtk-4.0/modules
 else
   echo 'Remove this no-longer-needed modulesdir hack.'
 fi
 # create theming-engines directory that should have been created during the build
 if test ! -d %{buildroot}%{_libdir}/gtk-4.0/%{gtk_binary_version}/theming-engines; then
-  mkdir %{buildroot}%{_libdir}/gtk-4.0/%{gtk_binary_version}/theming-engines
+  mkdir -p %{buildroot}%{_libdir}/gtk-4.0/%{gtk_binary_version}/theming-engines
 else
   echo 'Remove this no-longer-needed themingdir hack.'
 fi
@@ -310,14 +311,6 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %doc AUTHORS NEWS
 %dir %{_libdir}/gtk-4.0
 %dir %{_libdir}/gtk-4.0/%{gtk_binary_version}
-%dir %{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/
-%{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/libprintbackend-cups.so
-%{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/libprintbackend-file.so
-%if %{with gst}
-%dir %{_libdir}/gtk-4.0/%{gtk_binary_version}/media/
-#%%{_libdir}/gtk-4.0/%%{gtk_binary_version}/media/libmedia-ffmpeg.so
-%{_libdir}/gtk-4.0/%{gtk_binary_version}/media/libmedia-gstreamer.so
-%endif
 %dir %{_libdir}/gtk-4.0/%{gtk_binary_version}/theming-engines/
 %dir %{_libdir}/gtk-4.0/modules
 %{_libdir}/libgtk-4.so.*
@@ -332,7 +325,6 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %files tools
 %{_bindir}/gtk4-broadwayd
 %{_bindir}/gtk4-launch
-%{_bindir}/gtk4-path-tool
 %{_bindir}/gtk4-query-settings
 %{_bindir}/gtk4-update-icon-cache
 %dir %{_datadir}/gtk-4.0/emoji
@@ -348,15 +340,24 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_datadir}/locale/en_CA/
 
 %files devel-tools
+%{_bindir}/gtk4-path-tool
+%{_datadir}/bash-completion/completions/gtk4-path-tool
 %{_bindir}/gtk4-builder-tool
+%{_datadir}/bash-completion/completions/gtk4-builder-tool
 %{_bindir}/gtk4-demo
+%{_datadir}/bash-completion/completions/gtk4-demo
 %{_bindir}/gtk4-demo-application
 %{_bindir}/gtk4-encode-symbolic-svg
 %{_bindir}/gtk4-image-tool
+%{_datadir}/bash-completion/completions/gtk4-image-tool
 %{_bindir}/gtk4-node-editor
+%{_datadir}/bash-completion/completions/gtk4-node-editor
 %{_bindir}/gtk4-print-editor
+%{_datadir}/bash-completion/completions/gtk4-print-editor
 %{_bindir}/gtk4-rendernode-tool
+%{_datadir}/bash-completion/completions/gtk4-rendernode-tool
 %{_bindir}/gtk4-widget-factory
+%{_datadir}/bash-completion/completions/gtk4-widget-factory
 %{_datadir}/applications/org.gtk.Demo4.desktop
 %{_datadir}/applications/org.gtk.gtk4.NodeEditor.desktop
 %{_datadir}/applications/org.gtk.PrintEditor4.desktop
