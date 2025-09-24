@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 24 14:13:16 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758711845.e5c02221:
+  * script: Allow to configure openQA mode
+  * t: run at least once Memorylimit register with max_rss_limit > 0
+  * Replace argument assignation with signatures on MemoryLimit
+
+-------------------------------------------------------------------
 Tue Sep 23 14:13:26 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1758632540.ed64f555:
