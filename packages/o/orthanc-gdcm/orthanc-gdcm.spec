@@ -2,7 +2,7 @@
 # spec file for package orthanc-gdcm
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2020-2024 Dr. Axel Braun
+# Copyright (c) 2020-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           orthanc-gdcm
 Summary:        GDCM plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.7
+Version:        1.8
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/orthanc-gdcm/OrthancGdcm-%{version}.tar.gz

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 23 14:32:30 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.8
+  * Prevent transcoding of DICOM images with empty 
+    SharedFunctionalGroupsSequence (5200,9229), as this might crash GDCM.
+  * The built-in Orthanc transcoder being usually more stable, the default
+    value of the "RestrictTransferSyntaxes" configuration has been updated
+    to configure the GDCM plugin for J2K transfer syntaxes only since these
+    transfer syntaxes are currently not supported by the built-in Orthanc
+    transcoder.
+    - If "RestrictTransferSyntaxes" is not specified in your configuration,
+      it is now equivalent to
+        "RestrictTransferSyntaxes" : [
+          "1.2.840.10008.1.2.4.90",   // JPEG 2000 Image Compression (Lossless Only)
+          "1.2.840.10008.1.2.4.91",   // JPEG 2000 Image Compression
+          "1.2.840.10008.1.2.4.92",   // JPEG 2000 Part 2 Multicomponent Image Compression (Lossless Only)
+          "1.2.840.10008.1.2.4.93"    // JPEG 2000 Part 2 Multicomponent Image Compression
+        ]
+      which was the recommended configuration.
+    - If "RestrictTransferSyntaxes" is defined but empty, the GDCM plugin will
+      now be used to transcode ALL transfer syntaxes (this was the default 
+      behaviour up to version 1.7) 
+
+-------------------------------------------------------------------
 Wed Sep 10 09:23:38 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - remove libboost_system-devel for TW (removed in boost 1.89) 
