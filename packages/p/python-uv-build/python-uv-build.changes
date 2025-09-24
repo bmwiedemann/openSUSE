@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Sep 24 02:20:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 0.8.22.
+- Add patch no-git-patch-builds.patch:
+  * Do not rely on git checkouts to build.

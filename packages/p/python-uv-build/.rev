@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34d65286348d7c5e46f459490c94ca13</srcmd5>
+    <version>0.8.22</version>
+    <time>1758720268</time>
+    <user>anag_factory</user>
+    <comment>- Initial release of 0.8.22.
+- Add patch no-git-patch-builds.patch:
+  * Do not rely on git checkouts to build.</comment>
+    <requestid>1306820</requestid>
+  </revision>
+</revisionlist>
