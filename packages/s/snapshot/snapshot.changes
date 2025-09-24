@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Sep 13 08:30:50 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Updated cargo dependencies
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Sep  1 22:10:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.rc:
+  + Make app DBus-activatable
+  + Improve how GstCaps were created
+  + Update glycin to 3.0.3.rc and gtk-rs to 0.21
+  + Updated translations.
+- Changes from version 49.beta:
+  + Prefer H264/MP4 format if possible
+  + Use native GTK's YUV support if available
+  + Mirrored QR codes can now be scanned
+  + Support for hardware video encoding
+  + Bump zvariant to 5.6.0
+  + Improve gesture handling
+  + Remove video-format gsetting
+  + Disallow changing recording settings while recording
+  + Updated translations.
+- Changes from version 49.alpha:
+  + Port shortcuts dialog to AdwShortcutsDialog
+  + Remove meson option to run without portals
+  + Show release notes on about dialog
+  + Add warning when there are missing GStreamer plugins
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 15 21:00:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0.1:

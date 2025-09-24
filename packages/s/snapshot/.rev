@@ -89,4 +89,12 @@ New package for GNOME</comment>
   + Fix dist-vendor script. (forwarded request 1253404 from iznogood)</comment>
     <requestid>1253701</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>20b2a742341cd323def3b0cc6382dae3</srcmd5>
+    <version>49.0</version>
+    <time>1758720215</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304952 from dimstar)</comment>
+    <requestid>1305490</requestid>
+  </revision>
 </revisionlist>

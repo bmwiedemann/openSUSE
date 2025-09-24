@@ -1,7 +1,7 @@
 #
 # spec file for package snapshot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define gstreamer_version 1.20
 
 Name:           snapshot
-Version:        48.0.1
+Version:        49.0
 Release:        0
 Summary:        Take pictures and videos
 License:        GPL-3.0-or-later
@@ -75,6 +75,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Snapshot.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Snapshot-symbolic.svg
 %{_datadir}/metainfo/org.gnome.Snapshot.metainfo.xml
+%{_datadir}/dbus-1/services/org.gnome.Snapshot.service
 # resources.gresource should probably not be packaged, but never mind this early in the development
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/resources.gresource
