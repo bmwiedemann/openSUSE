@@ -57,4 +57,14 @@
     <comment>preparation for boost 1.89 (forwarded request 1303617 from DocB)</comment>
     <requestid>1304034</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f59fb14091aba4ffb55a42dbf8587aa6</srcmd5>
+    <version>1.3</version>
+    <time>1758720319</time>
+    <user>anag_factory</user>
+    <comment>- version 1.3
+  * Upgrade to VolView 4.4.0
+</comment>
+    <requestid>1306869</requestid>
+  </revision>
 </revisionlist>
