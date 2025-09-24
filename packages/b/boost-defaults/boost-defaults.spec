@@ -16,9 +16,9 @@
 #
 
 
-%define boost_version 1_88_0
+%define boost_version 1_89_0
 Name:           boost-defaults
-Version:        1.88.0
+Version:        1.89.0
 Release:        0
 Summary:        Default Boost C++ Libraries
 License:        MIT
@@ -353,16 +353,6 @@ about call sequence in a human-readable form.
 
 This package installs the default Boost version of the library.
 
-%package     -n libboost_system-devel
-Summary:        Development headers for Boost.System library
-Group:          Development/Libraries/C and C++
-Requires:       libboost_system%{boost_version}-devel
-
-%description -n libboost_system-devel
-This package contains development headers for Boost.System library.
-
-This package installs the default Boost version of the library.
-
 %package     -n libboost_thread-devel
 Summary:        Development headers for Boost.Thread library
 Group:          Development/Libraries/C and C++
@@ -557,13 +547,13 @@ cp %{SOURCE1} .
 %files -n libboost_stacktrace-devel
 %doc README
 
-%files -n libboost_system-devel
-%doc README
-
 %files -n libboost_thread-devel
 %doc README
 
 %files -n libboost_wave-devel
+%doc README
+
+%files -n libboost_url-devel
 %doc README
 
 %files -n libboost_url-devel
