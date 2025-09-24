@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Sep 12 15:01:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Flag flatpak gpg-agent socket permission as potentially unsafe
+  + Do not animate featured carousel when animations are disabled
+  + Updated translations
+
+-------------------------------------------------------------------
+Sat Aug 30 09:07:44 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc:
+  + Show past updates in rpm-ostree plugin
+  + Always include Flatpak system installation
+  + Correct total review counter
+  + Support external release notes in AppStream data
+  + Support light/dark screenshots in AppStream data
+- Changes from version 49.beta:
+  + Fix read of hardware support tags from app metainfo
+  + Switch to systemd-based startup
+- Changes from version 49.alpha:
+  + Improve memory fragmentation after checking for updates
+  + Rewrite threading model for better performance
+  + Provide feedback in the UI after submitting a review
+  + Fix crash on application shutdown
+  + Disallow running gnome-software as root user
+  + Updated translations
+
+-------------------------------------------------------------------
 Fri Aug  1 08:04:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.4:

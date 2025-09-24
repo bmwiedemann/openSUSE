@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-software
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define gs_plugin_api 22
+%define gs_plugin_api 23
 %bcond_with profiling
 
 Name:           gnome-software
-Version:        48.4
+Version:        49.0
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
@@ -118,11 +118,6 @@ the GNOME software store.
 
 # Remove any piece of doc that ends up in non-standard locations and use the doc macro instead
 rm %{buildroot}%{_datadir}/doc/%{name}/README.md
-%if !0%{?sle_version} || 0%{?sle_version} >= 160000
-# Move autostart file to /usr/etc
-mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
-mv %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop %{buildroot}%{_distconfdir}/xdg/autostart/org.gnome.Software.desktop
-%endif
 
 cat >> %{buildroot}%{_datadir}/glib-2.0/schemas/20_org.gnome.software-opensuse.gschema.override << FOE
 [org.gnome.software]
@@ -154,11 +149,7 @@ FOE
 %{_libexecdir}/gnome-software-cmd
 %{_libexecdir}/gnome-software-restarter
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%if !0%{?sle_version} || 0%{?sle_version} >= 160000
-%{_distconfdir}/xdg/autostart/org.gnome.Software.desktop
-%else
-%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop
-%endif
+%{_userunitdir}/gnome-software.service
 
 %dir %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/
 %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_dpkg.so
