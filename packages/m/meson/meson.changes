@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 23 07:50:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.1:
+  + coredata: check for per-subproject compiler options
+  + Document internal dep support in pkgconfig.generate requires arg
+  + Fix not passing user option args to scan-build build
+  + get_llvm_tool_names: add llvm 21
+  + Check for header only Boost libraries
+- Drop get_llvm_tool_names-llvm21.patch and 14976.patch: fixed
+  upstream
+- Update meson.keyring: add the key of Eli Schwartz as trusted
+
+-------------------------------------------------------------------
+Sat Sep 20 21:07:26 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Add 14976.patch: check for header only Boost libraries.
+
+-------------------------------------------------------------------
 Thu Sep 11 20:12:22 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add get_llvm_tool_names-llvm21.patch to accept LLVM 21.

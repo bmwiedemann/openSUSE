@@ -35,7 +35,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -54,8 +54,6 @@ Patch2:         14001.patch
 Patch3:         reproducible.patch
 # PATCH-FIX-UPSTREAM -- rpm macros do not allow to override verbosity
 Patch4:         meson-issue-15992.patch
-# PATCH-FIX-UPSTREAM get_llvm_tool_names-llvm21.patch -- Accept LLVM 21.1.
-Patch5:         get_llvm_tool_names-llvm21.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -105,7 +103,9 @@ BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_regex-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
