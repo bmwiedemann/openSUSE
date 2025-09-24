@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 13 08:32:15 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10.2:
+  + Allow toggle buttons to autodiscover PanelDock
+  + Fix incorrect CSS styling of bottom corner buttons
+
+-------------------------------------------------------------------
 Sun Aug 31 07:46:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.10.1:
