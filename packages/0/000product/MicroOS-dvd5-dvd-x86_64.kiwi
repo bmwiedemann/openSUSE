@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20250923" schemaversion="4.1">
+<image name="OBS__MicroOS___20250924" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250923</productvar>
+      <productvar name="VERSION">20250924</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250923,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250924,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250923/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250924/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -87,7 +87,7 @@
       <repopackage name="bluez-firmware"/>
       <repopackage name="bluez-qt-imports"/>
       <repopackage name="bolt"/>
-      <repopackage name="boost-license1_88_0"/>
+      <repopackage name="boost-license1_89_0"/>
       <repopackage name="branding-openSUSE"/>
       <repopackage name="breeze6"/>
       <repopackage name="breeze6-cursors"/>
@@ -209,7 +209,6 @@
       <repopackage name="fwupd-efi"/>
       <repopackage name="gawk"/>
       <repopackage name="gcab"/>
-      <repopackage name="gdk-pixbuf-loader-rsvg"/>
       <repopackage name="gdk-pixbuf-query-loaders"/>
       <repopackage name="gettext-runtime"/>
       <repopackage name="ghostscript"/>
@@ -221,6 +220,7 @@
       <repopackage name="glibc"/>
       <repopackage name="glibc-locale"/>
       <repopackage name="glibc-locale-base"/>
+      <repopackage name="glycin-loaders"/>
       <repopackage name="google-carlito-fonts"/>
       <repopackage name="google-noto-coloremoji-fonts"/>
       <repopackage name="google-noto-sans-cjk-fonts"/>
@@ -560,8 +560,8 @@
       <repopackage name="libblogger2"/>
       <repopackage name="libbluetooth3"/>
       <repopackage name="libbluray2"/>
-      <repopackage name="libboost_filesystem1_88_0"/>
-      <repopackage name="libboost_thread1_88_0"/>
+      <repopackage name="libboost_filesystem1_89_0"/>
+      <repopackage name="libboost_thread1_89_0"/>
       <repopackage name="libbpf1"/>
       <repopackage name="libbrotlicommon1"/>
       <repopackage name="libbrotlidec1"/>
@@ -695,6 +695,7 @@
       <repopackage name="libglibmm-2_4-1"/>
       <repopackage name="libglslang15"/>
       <repopackage name="libglvnd"/>
+      <repopackage name="libglycin-2-0"/>
       <repopackage name="libgme0"/>
       <repopackage name="libgmodule-2_0-0"/>
       <repopackage name="libgmp10"/>
@@ -1741,6 +1742,7 @@
       <repopackage name="tukit-snapper-plugin"/>
       <repopackage name="tukitd"/>
       <repopackage name="typelib-1_0-Atk-1_0"/>
+      <repopackage name="typelib-1_0-Atspi-2_0"/>
       <repopackage name="typelib-1_0-Fwupd-2_0"/>
       <repopackage name="typelib-1_0-GdkPixbuf-2_0"/>
       <repopackage name="typelib-1_0-Gio-2_0"/>

@@ -344,7 +344,6 @@ unsorted:
   - WSL-DistroLauncher 
   - WSL-DistroLauncher-debug 
   - WebKitGTK-4.0-lang 
-  - WebKitGTK-6.0-lang 
   - WindowMaker-devel 
   - WindowMaker-themes 
   - WoeUSB 
@@ -798,6 +797,7 @@ unsorted:
   - apko-bash-completion 
   - apko-fish-completion 
   - apko-zsh-completion 
+  - apotris 
   - app-builder 
   - apparmor-rpm-macros 
   - appeditor 
@@ -1343,6 +1343,7 @@ unsorted:
   - bbe 
   - bbswitch 
   - bbswitch-kmp-default 
+  - bcachefs-kmp-default 
   - bcachefs-tools 
   - bcal 
   - bcc-devel 
@@ -1533,10 +1534,10 @@ unsorted:
   - boomaga-lang 
   - boost-devel 
   - boost-jam 
-  - boost1_88_0-doc-html 
-  - boost1_88_0-doc-pdf 
-  - boost1_88_0-jam 
-  - boost1_88_0-quickbook 
+  - boost1_89_0-doc-html 
+  - boost1_89_0-doc-pdf 
+  - boost1_89_0-jam 
+  - boost1_89_0-quickbook 
   - booth 
   - booth-test 
   - bootiso 
@@ -2113,7 +2114,9 @@ unsorted:
   - checker-qual 
   - checker-qual-javadoc 
   - checksec 
+  - cheese 
   - cheese-devel 
+  - cheese-lang 
   - chemical-mime-data 
   - cherrytree 
   - cherrytree-lang 
@@ -4431,6 +4434,7 @@ unsorted:
   - freetype2-devel-32bit 
   - freetype2-profile-tti35 
   - freexl-devel 
+  - frei0r-plugins 
   - frei0r-plugins-devel 
   - frei0r-plugins-opencv 
   - frescobaldi 
@@ -4860,6 +4864,7 @@ unsorted:
   - gcovr 
   - gcovr-doc 
   - gcr-doc 
+  - gcr3-devel-docs 
   - gcr3-viewer 
   - gcrane 
   - gcrane-bash-completion 
@@ -4884,7 +4889,6 @@ unsorted:
   - gdk-pixbuf-devel 
   - gdk-pixbuf-devel-32bit 
   - gdk-pixbuf-loader-libavif 
-  - gdk-pixbuf-loader-rsvg-32bit 
   - gdk-pixbuf-query-loaders-32bit 
   - gdk-pixbuf-xlib-devel 
   - gdm-branding-Aeon 
@@ -7167,7 +7171,6 @@ unsorted:
   - gluegen2-devel 
   - glusterfs 
   - glusterfs-devel 
-  - glycin-loaders-devel 
   - glyr-devel 
   - glyrc 
   - gmic 
@@ -7212,8 +7215,6 @@ unsorted:
   - gnome-commander 
   - gnome-commander-lang 
   - gnome-common 
-  - gnome-connections 
-  - gnome-connections-lang 
   - gnome-control-center-devel 
   - gnome-devel-docs 
   - gnome-devel-docs-lang 
@@ -7274,7 +7275,6 @@ unsorted:
   - gnome-screenshot-lang 
   - gnome-settings-daemon-devel 
   - gnome-shell-classic 
-  - gnome-shell-classic-xsession 
   - gnome-shell-devel 
   - gnome-shell-extension-customize-ibus 
   - gnome-shell-extension-desktop-icons 
@@ -7316,6 +7316,7 @@ unsorted:
   - gnome-usage 
   - gnome-usage-lang 
   - gnome-user-docs-lang 
+  - gnome-video-effects 
   - gnome-video-effects-devel 
   - gnomekbd-tools 
   - gnote 
@@ -8023,7 +8024,6 @@ unsorted:
   - gstreamer-plugins-good-qtqml6 
   - gstreamer-plugins-libav-32bit 
   - gstreamer-plugins-libcamera 
-  - gstreamer-plugins-rs 
   - gstreamer-plugins-ugly-32bit 
   - gstreamer-plugins-vaapi 
   - gstreamer-rtsp-server-devel 
@@ -8385,7 +8385,10 @@ unsorted:
   - health-check 
   - health-check-bash-completion 
   - health-checker-testing 
+  - heaptrack 
   - heaptrack-devel 
+  - heaptrack-gui 
+  - heaptrack-lang 
   - heatshrink 
   - heatshrink-devel 
   - hedgewars 
@@ -11076,6 +11079,7 @@ unsorted:
   - libIlmThread-3_3-32-32bit 
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
+  - libKChart2 
   - libKChart6-3 
   - libKChart6-3-lang 
   - libKDb3-4 
@@ -11109,6 +11113,7 @@ unsorted:
   - libKF5Su5 
   - libKF5Su5-lang 
   - libKF5Syndication5 
+  - libKF5ThreadWeaver5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
   - libKGantt2 
@@ -11989,11 +11994,13 @@ unsorted:
   - libavahi-glib-devel 
   - libavahi-glib1-32bit 
   - libavahi-gobject-devel 
+  - libavahi-gobject0 
   - libavahi-libevent1 
   - libavahi-qt5-1 
   - libavahi-qt5-devel 
   - libavahi-qt6-1 
   - libavahi-qt6-devel 
+  - libavahi-ui-gtk3-0 
   - libavc1394-0-32bit 
   - libavc1394-devel 
   - libavc1394-devel-32bit 
@@ -12054,6 +12061,7 @@ unsorted:
   - libazguestattestation1 
   - libb2-devel 
   - libb64 
+  - libb64-0 
   - libb64-devel 
   - libbacktrace-devel 
   - libbamf3-2 
@@ -12156,154 +12164,151 @@ unsorted:
   - libbobcat6 
   - libboinc8 
   - libboost_atomic-devel 
-  - libboost_atomic1_88_0 
-  - libboost_atomic1_88_0-32bit 
-  - libboost_atomic1_88_0-devel 
-  - libboost_atomic1_88_0-x86-64-v3 
-  - libboost_charconv1_88_0 
-  - libboost_charconv1_88_0-32bit 
-  - libboost_charconv1_88_0-devel 
-  - libboost_charconv1_88_0-x86-64-v3 
+  - libboost_atomic1_89_0 
+  - libboost_atomic1_89_0-32bit 
+  - libboost_atomic1_89_0-devel 
+  - libboost_atomic1_89_0-x86-64-v3 
+  - libboost_charconv1_89_0 
+  - libboost_charconv1_89_0-32bit 
+  - libboost_charconv1_89_0-devel 
+  - libboost_charconv1_89_0-x86-64-v3 
   - libboost_chrono-devel 
-  - libboost_chrono1_88_0 
-  - libboost_chrono1_88_0-devel 
+  - libboost_chrono1_89_0 
+  - libboost_chrono1_89_0-devel 
   - libboost_container-devel 
-  - libboost_container1_88_0 
-  - libboost_container1_88_0-32bit 
-  - libboost_container1_88_0-devel 
-  - libboost_container1_88_0-x86-64-v3 
+  - libboost_container1_89_0 
+  - libboost_container1_89_0-32bit 
+  - libboost_container1_89_0-devel 
+  - libboost_container1_89_0-x86-64-v3 
   - libboost_context-devel 
-  - libboost_context1_88_0 
-  - libboost_context1_88_0-32bit 
-  - libboost_context1_88_0-devel 
-  - libboost_context1_88_0-x86-64-v3 
+  - libboost_context1_89_0 
+  - libboost_context1_89_0-32bit 
+  - libboost_context1_89_0-devel 
+  - libboost_context1_89_0-x86-64-v3 
   - libboost_contract-devel 
-  - libboost_contract1_88_0 
-  - libboost_contract1_88_0-devel 
+  - libboost_contract1_89_0 
+  - libboost_contract1_89_0-devel 
   - libboost_coroutine-devel 
-  - libboost_coroutine1_88_0 
-  - libboost_coroutine1_88_0-32bit 
-  - libboost_coroutine1_88_0-devel 
-  - libboost_coroutine1_88_0-x86-64-v3 
+  - libboost_coroutine1_89_0 
+  - libboost_coroutine1_89_0-32bit 
+  - libboost_coroutine1_89_0-devel 
+  - libboost_coroutine1_89_0-x86-64-v3 
   - libboost_date_time-devel 
-  - libboost_date_time1_88_0 
-  - libboost_date_time1_88_0-32bit 
-  - libboost_date_time1_88_0-devel 
-  - libboost_date_time1_88_0-x86-64-v3 
+  - libboost_date_time1_89_0 
+  - libboost_date_time1_89_0-32bit 
+  - libboost_date_time1_89_0-devel 
+  - libboost_date_time1_89_0-x86-64-v3 
   - libboost_fiber-devel 
-  - libboost_fiber1_88_0 
-  - libboost_fiber1_88_0-32bit 
-  - libboost_fiber1_88_0-devel 
-  - libboost_fiber1_88_0-x86-64-v3 
+  - libboost_fiber1_89_0 
+  - libboost_fiber1_89_0-32bit 
+  - libboost_fiber1_89_0-devel 
+  - libboost_fiber1_89_0-x86-64-v3 
   - libboost_filesystem-devel 
-  - libboost_filesystem1_88_0-32bit 
-  - libboost_filesystem1_88_0-devel 
+  - libboost_filesystem1_89_0-32bit 
+  - libboost_filesystem1_89_0-devel 
   - libboost_graph-devel 
-  - libboost_graph1_88_0 
-  - libboost_graph1_88_0-32bit 
-  - libboost_graph1_88_0-devel 
-  - libboost_graph1_88_0-x86-64-v3 
+  - libboost_graph1_89_0 
+  - libboost_graph1_89_0-32bit 
+  - libboost_graph1_89_0-devel 
+  - libboost_graph1_89_0-x86-64-v3 
   - libboost_graph_parallel-devel 
-  - libboost_graph_parallel1_88_0 
-  - libboost_graph_parallel1_88_0-devel 
-  - libboost_graph_parallel1_88_0-x86-64-v3 
+  - libboost_graph_parallel1_89_0 
+  - libboost_graph_parallel1_89_0-devel 
+  - libboost_graph_parallel1_89_0-x86-64-v3 
   - libboost_headers-devel 
-  - libboost_headers1_88_0-devel 
+  - libboost_headers1_89_0-devel 
   - libboost_iostreams-devel 
-  - libboost_iostreams1_88_0-32bit 
-  - libboost_iostreams1_88_0-devel 
-  - libboost_json1_88_0 
-  - libboost_json1_88_0-32bit 
-  - libboost_json1_88_0-devel 
-  - libboost_json1_88_0-x86-64-v3 
+  - libboost_iostreams1_89_0-32bit 
+  - libboost_iostreams1_89_0-devel 
+  - libboost_json1_89_0 
+  - libboost_json1_89_0-32bit 
+  - libboost_json1_89_0-devel 
+  - libboost_json1_89_0-x86-64-v3 
   - libboost_locale-devel 
-  - libboost_locale1_88_0-32bit 
-  - libboost_locale1_88_0-devel 
+  - libboost_locale1_89_0-32bit 
+  - libboost_locale1_89_0-devel 
   - libboost_log-devel 
-  - libboost_log1_88_0 
-  - libboost_log1_88_0-devel 
+  - libboost_log1_89_0 
+  - libboost_log1_89_0-devel 
   - libboost_math-devel 
-  - libboost_math1_88_0 
-  - libboost_math1_88_0-32bit 
-  - libboost_math1_88_0-devel 
-  - libboost_math1_88_0-x86-64-v3 
+  - libboost_math1_89_0 
+  - libboost_math1_89_0-32bit 
+  - libboost_math1_89_0-devel 
+  - libboost_math1_89_0-x86-64-v3 
   - libboost_mpi-devel 
-  - libboost_mpi1_88_0 
-  - libboost_mpi1_88_0-devel 
-  - libboost_mpi1_88_0-x86-64-v3 
-  - libboost_mpi_python-py3-1_88_0 
-  - libboost_mpi_python-py3-1_88_0-devel 
+  - libboost_mpi1_89_0 
+  - libboost_mpi1_89_0-devel 
+  - libboost_mpi1_89_0-x86-64-v3 
+  - libboost_mpi_python-py3-1_89_0 
+  - libboost_mpi_python-py3-1_89_0-devel 
   - libboost_mpi_python3-devel 
   - libboost_nowide-devel 
-  - libboost_nowide1_88_0 
-  - libboost_nowide1_88_0-32bit 
-  - libboost_nowide1_88_0-devel 
-  - libboost_nowide1_88_0-x86-64-v3 
-  - libboost_numpy-py3-1_88_0 
-  - libboost_numpy-py3-1_88_0-devel 
+  - libboost_nowide1_89_0 
+  - libboost_nowide1_89_0-32bit 
+  - libboost_nowide1_89_0-devel 
+  - libboost_nowide1_89_0-x86-64-v3 
+  - libboost_numpy-py3-1_89_0 
+  - libboost_numpy-py3-1_89_0-devel 
   - libboost_numpy3-devel 
   - libboost_process-devel 
-  - libboost_process1_88_0 
-  - libboost_process1_88_0-32bit 
-  - libboost_process1_88_0-devel 
-  - libboost_process1_88_0-x86-64-v3 
+  - libboost_process1_89_0 
+  - libboost_process1_89_0-32bit 
+  - libboost_process1_89_0-devel 
+  - libboost_process1_89_0-x86-64-v3 
   - libboost_program_options-devel 
-  - libboost_program_options1_88_0-32bit 
-  - libboost_program_options1_88_0-devel 
-  - libboost_python-py3-1_88_0-32bit 
-  - libboost_python-py3-1_88_0-devel 
+  - libboost_program_options1_89_0 
+  - libboost_program_options1_89_0-32bit 
+  - libboost_program_options1_89_0-devel 
+  - libboost_program_options1_89_0-x86-64-v3 
+  - libboost_python-py3-1_89_0-32bit 
+  - libboost_python-py3-1_89_0-devel 
   - libboost_python3-devel 
   - libboost_random-devel 
-  - libboost_random1_88_0 
-  - libboost_random1_88_0-32bit 
-  - libboost_random1_88_0-devel 
-  - libboost_random1_88_0-x86-64-v3 
+  - libboost_random1_89_0 
+  - libboost_random1_89_0-32bit 
+  - libboost_random1_89_0-devel 
+  - libboost_random1_89_0-x86-64-v3 
   - libboost_regex-devel 
-  - libboost_regex1_88_0 
-  - libboost_regex1_88_0-32bit 
-  - libboost_regex1_88_0-devel 
-  - libboost_regex1_88_0-x86-64-v3 
+  - libboost_regex1_89_0 
+  - libboost_regex1_89_0-32bit 
+  - libboost_regex1_89_0-devel 
+  - libboost_regex1_89_0-x86-64-v3 
   - libboost_serialization-devel 
-  - libboost_serialization1_88_0 
-  - libboost_serialization1_88_0-32bit 
-  - libboost_serialization1_88_0-devel 
-  - libboost_serialization1_88_0-x86-64-v3 
+  - libboost_serialization1_89_0 
+  - libboost_serialization1_89_0-32bit 
+  - libboost_serialization1_89_0-devel 
+  - libboost_serialization1_89_0-x86-64-v3 
   - libboost_stacktrace-devel 
-  - libboost_stacktrace1_88_0 
-  - libboost_stacktrace1_88_0-32bit 
-  - libboost_stacktrace1_88_0-devel 
-  - libboost_stacktrace1_88_0-x86-64-v3 
-  - libboost_system-devel 
-  - libboost_system1_88_0 
-  - libboost_system1_88_0-32bit 
-  - libboost_system1_88_0-devel 
-  - libboost_system1_88_0-x86-64-v3 
+  - libboost_stacktrace1_89_0 
+  - libboost_stacktrace1_89_0-32bit 
+  - libboost_stacktrace1_89_0-devel 
+  - libboost_stacktrace1_89_0-x86-64-v3 
   - libboost_test-devel 
-  - libboost_test1_88_0 
-  - libboost_test1_88_0-32bit 
-  - libboost_test1_88_0-devel 
-  - libboost_test1_88_0-x86-64-v3 
+  - libboost_test1_89_0 
+  - libboost_test1_89_0-32bit 
+  - libboost_test1_89_0-devel 
+  - libboost_test1_89_0-x86-64-v3 
   - libboost_thread-devel 
-  - libboost_thread1_88_0-32bit 
-  - libboost_thread1_88_0-devel 
+  - libboost_thread1_89_0-32bit 
+  - libboost_thread1_89_0-devel 
   - libboost_timer-devel 
-  - libboost_timer1_88_0 
-  - libboost_timer1_88_0-devel 
+  - libboost_timer1_89_0 
+  - libboost_timer1_89_0-devel 
   - libboost_type_erasure-devel 
-  - libboost_type_erasure1_88_0 
-  - libboost_type_erasure1_88_0-32bit 
-  - libboost_type_erasure1_88_0-devel 
-  - libboost_type_erasure1_88_0-x86-64-v3 
+  - libboost_type_erasure1_89_0 
+  - libboost_type_erasure1_89_0-32bit 
+  - libboost_type_erasure1_89_0-devel 
+  - libboost_type_erasure1_89_0-x86-64-v3 
   - libboost_url-devel 
-  - libboost_url1_88_0 
-  - libboost_url1_88_0-32bit 
-  - libboost_url1_88_0-devel 
-  - libboost_url1_88_0-x86-64-v3 
+  - libboost_url1_89_0 
+  - libboost_url1_89_0-32bit 
+  - libboost_url1_89_0-devel 
+  - libboost_url1_89_0-x86-64-v3 
   - libboost_wave-devel 
-  - libboost_wave1_88_0 
-  - libboost_wave1_88_0-32bit 
-  - libboost_wave1_88_0-devel 
-  - libboost_wave1_88_0-x86-64-v3 
+  - libboost_wave1_89_0 
+  - libboost_wave1_89_0-32bit 
+  - libboost_wave1_89_0-devel 
+  - libboost_wave1_89_0-x86-64-v3 
   - libboringssl1 
   - libbotan-3-9 
   - libbotan-devel 
@@ -12477,6 +12482,7 @@ unsorted:
   - libchck0 
   - libchealpix0 
   - libcheck0 
+  - libcheese-gtk25 
   - libchewing-devel 
   - libchipcard 
   - libchipcard-devel 
@@ -13304,6 +13310,7 @@ unsorted:
   - libgarcon-devel 
   - libgarcon-doc 
   - libgavl-devel 
+  - libgavl1 
   - libgbm-devel 
   - libgbm-devel-32bit 
   - libgbm1-32bit 
@@ -13456,8 +13463,10 @@ unsorted:
   - libglvnd-32bit 
   - libglvnd-devel 
   - libglvnd-devel-32bit 
-  - libglycin-1-0 
-  - libglycin-gtk4-1-0 
+  - libglycin-2-0-32bit 
+  - libglycin-devel 
+  - libglycin-gtk4-2-0 
+  - libglycin-gtk4-devel 
   - libgme-devel 
   - libgme0-32bit 
   - libgmic-devel 
@@ -13653,6 +13662,7 @@ unsorted:
   - libgstpbutils-1_0-0-32bit 
   - libgstphotography-1_0-0-32bit 
   - libgstplay-1_0-0-32bit 
+  - libgstplayer-1_0-0 
   - libgstplayer-1_0-0-32bit 
   - libgstreamer-1_0-0-32bit 
   - libgstreamerd-3-0 
@@ -13664,6 +13674,7 @@ unsorted:
   - libgstsctp-1_0-0-32bit 
   - libgstsdp-1_0-0-32bit 
   - libgsttag-1_0-0-32bit 
+  - libgsttranscoder-1_0-0 
   - libgsttranscoder-1_0-0-32bit 
   - libgsturidownloader-1_0-0-32bit 
   - libgstva-1_0-0-32bit 
@@ -13747,7 +13758,6 @@ unsorted:
   - libgviewrender-2_2-2 
   - libgviewv4l2core-2_2-2 
   - libgviewv4l2core-lang 
-  - libgvncpulse-1_0-0 
   - libgvpr2 
   - libgweather4-devel 
   - libgwengui-cpp79 
@@ -14028,7 +14038,6 @@ unsorted:
   - libjasper7-32bit 
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18 
-  - libjavascriptcoregtk-6_0-1 
   - libjaylink-devel 
   - libjbig-devel 
   - libjbig-devel-32bit 
@@ -14074,6 +14083,7 @@ unsorted:
   - libkcddb-devel 
   - libkcddb-lang 
   - libkcddb-qt6-devel 
+  - libkchart-lang 
   - libkcompactdisc-qt6-devel 
   - libkdcraw 
   - libkdcraw-devel 
@@ -14549,6 +14559,7 @@ unsorted:
   - libmimetic0 
   - libminisat2 
   - libminiupnpc-devel 
+  - libminiupnpc17 
   - libminizinc-devel 
   - libminizip-ng4 
   - libminizip1-32bit 
@@ -14569,6 +14580,7 @@ unsorted:
   - libmirserver65 
   - libmirserverplatform23 
   - libmirwayland5 
+  - libmission-control-plugins0 
   - libmjpegutils-2_2-0-32bit 
   - libmjpegutils-devel 
   - libmlt++-7-7 
@@ -14613,6 +14625,7 @@ unsorted:
   - libmowgli-2-0 
   - libmowgli2-devel 
   - libmozjs-115-0 
+  - libmozjs-128-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit 
   - libmp4tag-devel 
@@ -15320,8 +15333,8 @@ unsorted:
   - libppl14 
   - libppl_c4 
   - libpplite5 
-  - libppsdocument4_0-5 
-  - libppsview4_0-4 
+  - libppsdocument4_0-6 
+  - libppsview4_0-5 
   - libpq5-32bit 
   - libpqos-devel 
   - libpqos6 
@@ -16389,6 +16402,8 @@ unsorted:
   - libteeacl0 
   - libteec2 
   - libtelepathy-farstream3 
+  - libtelepathy-glib0 
+  - libtelepathy-logger3 
   - libtemplate_glib-1_0-0 
   - libteredo5 
   - libtermcap2 
@@ -16852,7 +16867,6 @@ unsorted:
   - libwebcam-devel 
   - libwebcam0 
   - libwebkit2gtk-4_0-37 
-  - libwebkitgtk-6_0-4 
   - libwebp-devel 
   - libwebp-devel-32bit 
   - libwebp7-32bit 
@@ -17228,7 +17242,7 @@ unsorted:
   - libzen-devel 
   - libzen0 
   - libzfp1 
-  - libzia-4_67 
+  - libzia-4_69 
   - libzia-devel 
   - libzim-devel 
   - libzim9 
@@ -18940,6 +18954,8 @@ unsorted:
   - mozjs115-devel 
   - mozjs128 
   - mozjs128-devel 
+  - mozjs140 
+  - mozjs140-devel 
   - mozldap-devel 
   - mozldap-libs 
   - mozldap-tools 
@@ -22910,6 +22926,8 @@ unsorted:
   - poke-devel 
   - poke-dwarf 
   - poke-elf 
+  - polari 
+  - polari-lang 
   - polaris 
   - polaris-bash-completion 
   - polaris-fish-completion 
@@ -23566,6 +23584,7 @@ unsorted:
   - python3-ansible-compat 
   - python3-ara 
   - python3-arpack-ng 
+  - python3-atspi 
   - python3-automaton 
   - python3-avahi-gtk 
   - python3-avocado 
@@ -23585,7 +23604,7 @@ unsorted:
   - python3-barbicanclient 
   - python3-bcc 
   - python3-boost_parallel_mpi 
-  - python3-boost_parallel_mpi1_88_0 
+  - python3-boost_parallel_mpi1_89_0 
   - python3-botan 
   - python3-bump2version 
   - python3-bytesize 
@@ -24232,7 +24251,6 @@ unsorted:
   - python311-atom 
   - python311-atomicwrites 
   - python311-atpublic 
-  - python311-atspi 
   - python311-attr 
   - python311-aubio 
   - python311-audible 
@@ -27393,6 +27411,7 @@ unsorted:
   - python311-usfm2osis 
   - python311-uuid6 
   - python311-uv 
+  - python311-uv-build 
   - python311-uvicorn 
   - python311-uvloop 
   - python311-uwsgi-python3 
@@ -27972,7 +27991,6 @@ unsorted:
   - python312-atom 
   - python312-atomicwrites 
   - python312-atpublic 
-  - python312-atspi 
   - python312-attr 
   - python312-attrs 
   - python312-aubio 
@@ -31200,6 +31218,7 @@ unsorted:
   - python312-usfm2osis 
   - python312-uuid6 
   - python312-uv 
+  - python312-uv-build 
   - python312-uvicorn 
   - python312-uvloop 
   - python312-uwsgi-python3 
@@ -31768,7 +31787,6 @@ unsorted:
   - python313-atom 
   - python313-atomicwrites 
   - python313-atpublic 
-  - python313-atspi 
   - python313-attr 
   - python313-aubio 
   - python313-audible 
@@ -34930,6 +34948,7 @@ unsorted:
   - python313-usfm2osis 
   - python313-uuid6 
   - python313-uv 
+  - python313-uv-build 
   - python313-uvicorn 
   - python313-uvloop 
   - python313-uwsgi-python3 
@@ -37048,6 +37067,7 @@ unsorted:
   - sile-zsh-completion 
   - silver-surfer 
   - simde-devel 
+  - simdutf-devel 
   - simh 
   - simple-ccsm 
   - simple-ccsm-lang 
@@ -37188,8 +37208,6 @@ unsorted:
   - snapper-testsuite 
   - snappy-devel 
   - snapraid 
-  - snapshot 
-  - snapshot-lang 
   - snd 
   - snd_sf2 
   - sndio 
@@ -37905,7 +37923,11 @@ unsorted:
   - telepathy-farstream-devel 
   - telepathy-glib-devel 
   - telepathy-glib-doc 
+  - telepathy-idle 
+  - telepathy-logger 
   - telepathy-logger-devel 
+  - telepathy-logger-schema 
+  - telepathy-mission-control 
   - telepathy-mission-control-devel 
   - telepathy-rakia 
   - telepathy-rakia-devel 
@@ -47729,7 +47751,10 @@ unsorted:
   - translator 
   - translator-lang 
   - transmission 
+  - transmission-common 
   - transmission-daemon 
+  - transmission-gtk 
+  - transmission-gtk-lang 
   - transmission-qt 
   - transmission-qt-lang 
   - transset 
@@ -48109,7 +48134,6 @@ unsorted:
   - typelib-1_0-GData-0_0 
   - typelib-1_0-GES-1_0 
   - typelib-1_0-GExiv2-0_10 
-  - typelib-1_0-GIRepository-3_0 
   - typelib-1_0-GLibUnix-2_0 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
@@ -48146,8 +48170,8 @@ unsorted:
   - typelib-1_0-GitgExt-1_0 
   - typelib-1_0-Gkbd-3_0 
   - typelib-1_0-Gladeui-2_0 
-  - typelib-1_0-GlyGtk4_1 
-  - typelib-1_0-Gly_1 
+  - typelib-1_0-GlyGtk-2 
+  - typelib-1_0-Gly_2 
   - typelib-1_0-Gm-0 
   - typelib-1_0-GnomeAutoar-0_1 
   - typelib-1_0-GnomeAutoarGtk-0_1 
@@ -48165,6 +48189,7 @@ unsorted:
   - typelib-1_0-GrlNet-0_3 
   - typelib-1_0-GrlPls-0_3 
   - typelib-1_0-Gsf-1 
+  - typelib-1_0-Gspell-1 
   - typelib-1_0-Gst-1_0-32bit 
   - typelib-1_0-GstAllocators-1_0 
   - typelib-1_0-GstAnalytics-1_0 
@@ -48241,7 +48266,7 @@ unsorted:
   - typelib-1_0-Msg-1 
   - typelib-1_0-Muffin-0_0 
   - typelib-1_0-NMA-1_0 
-  - typelib-1_0-Nautilus-4_0 
+  - typelib-1_0-Nautilus-4_1 
   - typelib-1_0-Nemo-3_0 
   - typelib-1_0-Nice-0_1 
   - typelib-1_0-OSTree-1_0 
@@ -48270,6 +48295,7 @@ unsorted:
   - typelib-1_0-SpiceClientGlib-2_0 
   - typelib-1_0-SpiceClientGtk-3_0 
   - typelib-1_0-TelepathyFarstream-0_6 
+  - typelib-1_0-TelepathyGlib-0_12 
   - typelib-1_0-TelepathyLogger-0_2 
   - typelib-1_0-Template-1_0 
   - typelib-1_0-Thunarx-3_0 
@@ -48715,6 +48741,8 @@ unsorted:
   - vim-poke 
   - vimb 
   - vimiv-qt 
+  - vinagre 
+  - vinagre-lang 
   - vinci 
   - vino 
   - vino-lang 
@@ -48952,7 +48980,6 @@ unsorted:
   - webkit2gtk3-soup2-minibrowser 
   - webkit2gtk4-devel 
   - webkit2gtk4-minibrowser 
-  - webkitgtk-6_0-injected-bundles 
   - weblate 
   - weblug 
   - webrepl 

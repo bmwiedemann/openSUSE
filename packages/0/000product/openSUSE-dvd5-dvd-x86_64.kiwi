@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20250923" schemaversion="4.1">
+<image name="OBS__openSUSE___20250924" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250923</productvar>
+      <productvar name="VERSION">20250924</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250923,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250924,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250923/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250924/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -191,7 +191,7 @@
       <repopackage name="bluez-obexd"/>
       <repopackage name="bluez-zsh-completion"/>
       <repopackage name="bolt"/>
-      <repopackage name="boost-license1_88_0"/>
+      <repopackage name="boost-license1_89_0"/>
       <repopackage name="branding-openSUSE"/>
       <repopackage name="breeze6"/>
       <repopackage name="breeze6-cursors"/>
@@ -240,8 +240,6 @@
       <repopackage name="certmonger"/>
       <repopackage name="checkmedia"/>
       <repopackage name="checkpolicy"/>
-      <repopackage name="cheese"/>
-      <repopackage name="cheese-lang"/>
       <repopackage name="chewing-data"/>
       <repopackage name="chrony"/>
       <repopackage name="chrony-pool-openSUSE"/>
@@ -467,7 +465,6 @@
       <repopackage name="fprintd-pam"/>
       <repopackage name="fprintd-pam-32bit"/>
       <repopackage name="freecell-solver-presets"/>
-      <repopackage name="frei0r-plugins"/>
       <repopackage name="fribidi"/>
       <repopackage name="fuse"/>
       <repopackage name="fuse-exfat"/>
@@ -505,9 +502,7 @@
       <repopackage name="gdk-pixbuf-loader-jxl"/>
       <repopackage name="gdk-pixbuf-loader-libheif"/>
       <repopackage name="gdk-pixbuf-loader-libopenraw"/>
-      <repopackage name="gdk-pixbuf-loader-rsvg"/>
       <repopackage name="gdk-pixbuf-query-loaders"/>
-      <repopackage name="gdk-pixbuf-thumbnailer"/>
       <repopackage name="gdm"/>
       <repopackage name="gdm-branding-openSUSE"/>
       <repopackage name="gdm-lang"/>
@@ -567,6 +562,8 @@
       <repopackage name="gnome-clocks-lang"/>
       <repopackage name="gnome-color-manager"/>
       <repopackage name="gnome-color-manager-lang"/>
+      <repopackage name="gnome-connections"/>
+      <repopackage name="gnome-connections-lang"/>
       <repopackage name="gnome-console"/>
       <repopackage name="gnome-console-lang"/>
       <repopackage name="gnome-contacts"/>
@@ -611,7 +608,6 @@
       <repopackage name="gnome-session-core"/>
       <repopackage name="gnome-session-lang"/>
       <repopackage name="gnome-session-wayland"/>
-      <repopackage name="gnome-session-xsession"/>
       <repopackage name="gnome-settings-daemon"/>
       <repopackage name="gnome-settings-daemon-lang"/>
       <repopackage name="gnome-shell"/>
@@ -641,7 +637,6 @@
       <repopackage name="gnome-user-docs"/>
       <repopackage name="gnome-user-share"/>
       <repopackage name="gnome-user-share-lang"/>
-      <repopackage name="gnome-video-effects"/>
       <repopackage name="gnome-weather"/>
       <repopackage name="gnome-weather-lang"/>
       <repopackage name="gnutls"/>
@@ -696,6 +691,7 @@
       <repopackage name="gstreamer-plugins-good-gtk"/>
       <repopackage name="gstreamer-plugins-good-lang"/>
       <repopackage name="gstreamer-plugins-libav"/>
+      <repopackage name="gstreamer-plugins-rs"/>
       <repopackage name="gstreamer-plugins-ugly"/>
       <repopackage name="gstreamer-plugins-ugly-lang"/>
       <repopackage name="gstreamer-utils"/>
@@ -754,9 +750,6 @@
       <repopackage name="gzip"/>
       <repopackage name="hack-fonts"/>
       <repopackage name="hdparm"/>
-      <repopackage name="heaptrack"/>
-      <repopackage name="heaptrack-gui"/>
-      <repopackage name="heaptrack-lang"/>
       <repopackage name="hicolor-icon-theme"/>
       <repopackage name="hicolor-icon-theme-branding-openSUSE"/>
       <repopackage name="hostname"/>
@@ -1292,8 +1285,6 @@
       <repopackage name="libavahi-common3-32bit"/>
       <repopackage name="libavahi-core7"/>
       <repopackage name="libavahi-glib1"/>
-      <repopackage name="libavahi-gobject0"/>
-      <repopackage name="libavahi-ui-gtk3-0"/>
       <repopackage name="libavc1394-0"/>
       <repopackage name="libavcodec61"/>
       <repopackage name="libavfilter10"/>
@@ -1305,7 +1296,6 @@
       <repopackage name="libayatana-ido3-0_4-0"/>
       <repopackage name="libayatana-indicator3-7"/>
       <repopackage name="libb2-1"/>
-      <repopackage name="libb64-0"/>
       <repopackage name="libbabl-0_1-0"/>
       <repopackage name="libbabl-0_1-0-x86-64-v3"/>
       <repopackage name="libbacktrace0"/>
@@ -1331,18 +1321,16 @@
       <repopackage name="libblogger2"/>
       <repopackage name="libbluetooth3"/>
       <repopackage name="libbluray2"/>
-      <repopackage name="libboost_filesystem1_88_0"/>
-      <repopackage name="libboost_filesystem1_88_0-x86-64-v3"/>
-      <repopackage name="libboost_iostreams1_88_0"/>
-      <repopackage name="libboost_iostreams1_88_0-x86-64-v3"/>
-      <repopackage name="libboost_locale1_88_0"/>
-      <repopackage name="libboost_locale1_88_0-x86-64-v3"/>
-      <repopackage name="libboost_program_options1_88_0"/>
-      <repopackage name="libboost_program_options1_88_0-x86-64-v3"/>
-      <repopackage name="libboost_python-py3-1_88_0"/>
-      <repopackage name="libboost_python-py3-1_88_0-x86-64-v3"/>
-      <repopackage name="libboost_thread1_88_0"/>
-      <repopackage name="libboost_thread1_88_0-x86-64-v3"/>
+      <repopackage name="libboost_filesystem1_89_0"/>
+      <repopackage name="libboost_filesystem1_89_0-x86-64-v3"/>
+      <repopackage name="libboost_iostreams1_89_0"/>
+      <repopackage name="libboost_iostreams1_89_0-x86-64-v3"/>
+      <repopackage name="libboost_locale1_89_0"/>
+      <repopackage name="libboost_locale1_89_0-x86-64-v3"/>
+      <repopackage name="libboost_python-py3-1_89_0"/>
+      <repopackage name="libboost_python-py3-1_89_0-x86-64-v3"/>
+      <repopackage name="libboost_thread1_89_0"/>
+      <repopackage name="libboost_thread1_89_0-x86-64-v3"/>
       <repopackage name="libbox2d2"/>
       <repopackage name="libbpf1"/>
       <repopackage name="libbrlapi0_8"/>
@@ -1369,7 +1357,7 @@
       <repopackage name="libcairomm-1_0-1"/>
       <repopackage name="libcairomm-1_16-1"/>
       <repopackage name="libcamd3"/>
-      <repopackage name="libcamel-1_2-64"/>
+      <repopackage name="libcamel-1_2-66"/>
       <repopackage name="libcamera-base0_5"/>
       <repopackage name="libcamera0_5"/>
       <repopackage name="libcanberra-gtk-module-common"/>
@@ -1398,7 +1386,6 @@
       <repopackage name="libcfitsio10"/>
       <repopackage name="libcgraph6"/>
       <repopackage name="libcheese-common"/>
-      <repopackage name="libcheese-gtk25"/>
       <repopackage name="libcheese8"/>
       <repopackage name="libchewing3"/>
       <repopackage name="libcholmod5"/>
@@ -1600,7 +1587,6 @@
       <repopackage name="libgarcon-branding-openSUSE"/>
       <repopackage name="libgarcon-data"/>
       <repopackage name="libgarcon-lang"/>
-      <repopackage name="libgavl1"/>
       <repopackage name="libgbm1"/>
       <repopackage name="libgc1"/>
       <repopackage name="libgcab-1_0-0"/>
@@ -1656,6 +1642,7 @@
       <repopackage name="libGLU1"/>
       <repopackage name="libglut3"/>
       <repopackage name="libglvnd"/>
+      <repopackage name="libglycin-2-0"/>
       <repopackage name="libglyr1"/>
       <repopackage name="libgme0"/>
       <repopackage name="libgmodule-2_0-0"/>
@@ -1736,7 +1723,6 @@
       <repopackage name="libgstpbutils-1_0-0"/>
       <repopackage name="libgstphotography-1_0-0"/>
       <repopackage name="libgstplay-1_0-0"/>
-      <repopackage name="libgstplayer-1_0-0"/>
       <repopackage name="libgstreamer-1_0-0"/>
       <repopackage name="libgstriff-1_0-0"/>
       <repopackage name="libgstrtp-1_0-0"/>
@@ -1744,7 +1730,6 @@
       <repopackage name="libgstsctp-1_0-0"/>
       <repopackage name="libgstsdp-1_0-0"/>
       <repopackage name="libgsttag-1_0-0"/>
-      <repopackage name="libgsttranscoder-1_0-0"/>
       <repopackage name="libgsturidownloader-1_0-0"/>
       <repopackage name="libgstva-1_0-0"/>
       <repopackage name="libgstvideo-1_0-0"/>
@@ -1775,6 +1760,7 @@
       <repopackage name="libgusb2"/>
       <repopackage name="libgvc6"/>
       <repopackage name="libgvnc-1_0-0"/>
+      <repopackage name="libgvncpulse-1_0-0"/>
       <repopackage name="libgweather-4-0"/>
       <repopackage name="libgweather4-lang"/>
       <repopackage name="libgxps2"/>
@@ -1852,6 +1838,7 @@
       <repopackage name="libjansson4-32bit"/>
       <repopackage name="libjasper7"/>
       <repopackage name="libjavascriptcoregtk-4_1-0"/>
+      <repopackage name="libjavascriptcoregtk-6_0-1"/>
       <repopackage name="libjaylink"/>
       <repopackage name="libjaylink0"/>
       <repopackage name="libjbig2"/>
@@ -1875,8 +1862,6 @@
       <repopackage name="libkcddb-qt6"/>
       <repopackage name="libkcddb-qt6-lang"/>
       <repopackage name="libKCddb5"/>
-      <repopackage name="libkchart-lang"/>
-      <repopackage name="libKChart2"/>
       <repopackage name="libkColorPicker-Qt6-0"/>
       <repopackage name="libkcompactdisc-lang"/>
       <repopackage name="libKCompactDisc6-5"/>
@@ -1958,7 +1943,6 @@
       <repopackage name="libKF5SyntaxHighlighting5-lang"/>
       <repopackage name="libKF5TextWidgets5"/>
       <repopackage name="libKF5TextWidgets5-lang"/>
-      <repopackage name="libKF5ThreadWeaver5"/>
       <repopackage name="libKF5Wallet5"/>
       <repopackage name="libKF5WidgetsAddons5"/>
       <repopackage name="libKF5WidgetsAddons5-lang"/>
@@ -2265,10 +2249,8 @@
       <repopackage name="libmetalink3"/>
       <repopackage name="libmicrodns1"/>
       <repopackage name="libmilter1_0"/>
-      <repopackage name="libminiupnpc17"/>
       <repopackage name="libminizip1"/>
       <repopackage name="libminizip1-x86-64-v3"/>
-      <repopackage name="libmission-control-plugins0"/>
       <repopackage name="libmjpegutils-2_2-0"/>
       <repopackage name="libmlx4-1"/>
       <repopackage name="libmlx5-1"/>
@@ -2279,7 +2261,7 @@
       <repopackage name="libmodulemd2"/>
       <repopackage name="libmount1"/>
       <repopackage name="libmousepad0"/>
-      <repopackage name="libmozjs-128-0"/>
+      <repopackage name="libmozjs-140-0"/>
       <repopackage name="libmp3lame0"/>
       <repopackage name="libmp3lame0-x86-64-v3"/>
       <repopackage name="libmpath0"/>
@@ -2708,6 +2690,7 @@
       <repopackage name="libsigc-2_0-0"/>
       <repopackage name="libsigc-3_0-0"/>
       <repopackage name="libsignon-qt6-1"/>
+      <repopackage name="libsimdutf24"/>
       <repopackage name="libslang2"/>
       <repopackage name="libslirp0"/>
       <repopackage name="libslp1"/>
@@ -2793,8 +2776,6 @@
       <repopackage name="libtbb12"/>
       <repopackage name="libtdb1"/>
       <repopackage name="libtdb1-32bit"/>
-      <repopackage name="libtelepathy-glib0"/>
-      <repopackage name="libtelepathy-logger3"/>
       <repopackage name="libtevent0"/>
       <repopackage name="libtevent0-32bit"/>
       <repopackage name="libtextstyle0"/>
@@ -2924,6 +2905,7 @@
       <repopackage name="libwayland-egl1"/>
       <repopackage name="libwayland-server0"/>
       <repopackage name="libwebkit2gtk-4_1-0"/>
+      <repopackage name="libwebkitgtk-6_0-4"/>
       <repopackage name="libwebp-tools"/>
       <repopackage name="libwebp7"/>
       <repopackage name="libwebpdemux2"/>
@@ -3039,7 +3021,7 @@
       <repopackage name="libyajl2"/>
       <repopackage name="libyaml-0-2"/>
       <repopackage name="libyaml-cpp0_8"/>
-      <repopackage name="libyelp0"/>
+      <repopackage name="libyelp-1-0"/>
       <repopackage name="libyui-ncurses-pkg16"/>
       <repopackage name="libyui-ncurses16"/>
       <repopackage name="libyui-qt-graph16"/>
@@ -3375,7 +3357,6 @@
       <repopackage name="patterns-gnome-gnome_multimedia"/>
       <repopackage name="patterns-gnome-gnome_office"/>
       <repopackage name="patterns-gnome-gnome_utilities"/>
-      <repopackage name="patterns-gnome-gnome_x11"/>
       <repopackage name="patterns-gnome-gnome_yast"/>
       <repopackage name="patterns-gnome-sw_management_gnome"/>
       <repopackage name="patterns-kde-kde"/>
@@ -3609,8 +3590,6 @@
       <repopackage name="plymouth-theme-spinner"/>
       <repopackage name="pmdk"/>
       <repopackage name="pngquant"/>
-      <repopackage name="polari"/>
-      <repopackage name="polari-lang"/>
       <repopackage name="policycoreutils"/>
       <repopackage name="policycoreutils-lang"/>
       <repopackage name="policycoreutils-python-utils"/>
@@ -3919,7 +3898,6 @@
       <repopackage name="rpcbind"/>
       <repopackage name="rpm"/>
       <repopackage name="rpm-config-SUSE"/>
-      <repopackage name="rsvg-thumbnailer"/>
       <repopackage name="rsync"/>
       <repopackage name="rsyslog"/>
       <repopackage name="rt2860"/>
@@ -4016,6 +3994,8 @@
       <repopackage name="snapper"/>
       <repopackage name="snapper-lang"/>
       <repopackage name="snapper-zypp-plugin"/>
+      <repopackage name="snapshot"/>
+      <repopackage name="snapshot-lang"/>
       <repopackage name="snmp-mibs"/>
       <repopackage name="socat"/>
       <repopackage name="solid-imports"/>
@@ -4123,10 +4103,6 @@
       <repopackage name="technisat-usb2-firmware"/>
       <repopackage name="tecla-keyboard-layout-viewer"/>
       <repopackage name="tecla-keyboard-layout-viewer-lang"/>
-      <repopackage name="telepathy-idle"/>
-      <repopackage name="telepathy-logger"/>
-      <repopackage name="telepathy-logger-schema"/>
-      <repopackage name="telepathy-mission-control"/>
       <repopackage name="terminfo"/>
       <repopackage name="terminfo-base"/>
       <repopackage name="terminfo-iterm"/>
@@ -4170,9 +4146,6 @@
       <repopackage name="tpm2.0-tools"/>
       <repopackage name="traceroute"/>
       <repopackage name="translate-shell"/>
-      <repopackage name="transmission-common"/>
-      <repopackage name="transmission-gtk"/>
-      <repopackage name="transmission-gtk-lang"/>
       <repopackage name="trash_kcm"/>
       <repopackage name="tree"/>
       <repopackage name="tumbler"/>
@@ -4202,6 +4175,7 @@
       <repopackage name="typelib-1_0-Geoclue-2_0"/>
       <repopackage name="typelib-1_0-GeocodeGlib-2_0"/>
       <repopackage name="typelib-1_0-Gio-2_0"/>
+      <repopackage name="typelib-1_0-GIRepository-3_0"/>
       <repopackage name="typelib-1_0-GjsPrivate-1_0"/>
       <repopackage name="typelib-1_0-GLib-2_0"/>
       <repopackage name="typelib-1_0-GMenu-3_0"/>
@@ -4212,7 +4186,6 @@
       <repopackage name="typelib-1_0-GObject-2_0"/>
       <repopackage name="typelib-1_0-Graphene-1_0"/>
       <repopackage name="typelib-1_0-Grl-0_3"/>
-      <repopackage name="typelib-1_0-Gspell-1"/>
       <repopackage name="typelib-1_0-Gst-1_0"/>
       <repopackage name="typelib-1_0-GstAudio-1_0"/>
       <repopackage name="typelib-1_0-GstPbutils-1_0"/>
@@ -4249,7 +4222,6 @@
       <repopackage name="typelib-1_0-Shumate-1_0"/>
       <repopackage name="typelib-1_0-Soup-3_0"/>
       <repopackage name="typelib-1_0-Spiel-1_0"/>
-      <repopackage name="typelib-1_0-TelepathyGlib-0_12"/>
       <repopackage name="typelib-1_0-Tepl-6"/>
       <repopackage name="typelib-1_0-TotemPlParser-1_0"/>
       <repopackage name="typelib-1_0-Tracker-3_0"/>
@@ -4303,8 +4275,6 @@
       <repopackage name="vim"/>
       <repopackage name="vim-data"/>
       <repopackage name="vim-data-common"/>
-      <repopackage name="vinagre"/>
-      <repopackage name="vinagre-lang"/>
       <repopackage name="virt-what"/>
       <repopackage name="virtiofsd"/>
       <repopackage name="virtualbox-guest-tools"/>
@@ -4330,6 +4300,8 @@
       <repopackage name="wb-cifs-idmap-plugin"/>
       <repopackage name="webkit2gtk-4_1-injected-bundles"/>
       <repopackage name="WebKitGTK-4.1-lang"/>
+      <repopackage name="WebKitGTK-6.0-lang"/>
+      <repopackage name="webkitgtk-6_0-injected-bundles"/>
       <repopackage name="webp-pixbuf-loader"/>
       <repopackage name="wget"/>
       <repopackage name="wget-lang"/>
