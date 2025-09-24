@@ -109,4 +109,20 @@
   removal of la files, no longer built since port to meson. (forwarded request 1302108 from iznogood)</comment>
     <requestid>1302230</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>29a6878afa92c0350a65ba55872c9c63</srcmd5>
+    <version>0.5.4</version>
+    <time>1758720139</time>
+    <user>anag_factory</user>
+    <comment>- Add bubblewrap BuildRequires and inject nobwrap.helper into
+  ~/bin. This allows us to enable to test suite again, as it
+  disarms bubblewrap inside OBS.
+- Add glycin-loaders BuildRequires: gdk-pixbuf gave up all loaders
+  in favor of glycin, which supports more formats.
+- Following the above, disable meson_test macro, as test suite
+  cannot pass, as glycin-loaders are bubblewrapped, but that is not
+  supported in OBS.
+</comment>
+    <requestid>1305665</requestid>
+  </revision>
 </revisionlist>

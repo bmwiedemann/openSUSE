@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/gom/
 Source:         https://download.gnome.org/sources/gom/0.5/%{name}-%{version}.tar.xz
+BuildRequires:  bubblewrap
+BuildRequires:  glycin-loaders
 BuildRequires:  meson >= 0.38.1
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
@@ -75,6 +77,9 @@ Development files for the GObject Data Mapper.
 
 %prep
 %autosetup -p1
+test -d ~/bin || mkdir -p ~/bin
+cp %{_datadir}/doc/packages/bubblewrap/nobwrap.helper ~/bin/bwrap
+chmod 755 ~/bin/bwrap
 
 %build
 %meson
