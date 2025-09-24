@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 21 08:19:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.69:
+  * Update date+time after QSONR received
+  * Allow 144 MHz and 432 MHz on EDI import
+  * Minimal aircract wingspan filter
+  * Airplane details visible in AS info
+  * Persistent bandwidth during mode change
+- drop reproducible.patch, included upstream
+
+-------------------------------------------------------------------
 Wed Feb 19 20:42:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with console mouse support and rtlsdr support

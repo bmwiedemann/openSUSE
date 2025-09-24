@@ -12,18 +12,13 @@
 
 
 Name:           tucnak
-Version:        4.67
+Version:        4.69
 Release:        0
 Summary:        VHF and microwave contest log
 License:        GPL-2.0-or-later
 Group:          Productivity/Hamradio/Logging
 URL:            https://tucnak.nagano.cz/
 Source:         https://tucnak.nagano.cz/%{name}-%{version}.tar.gz
-Patch0:         reproducible.patch
-# for reproducible.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-#
 BuildRequires:  gpm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -49,9 +44,6 @@ sound recorder and more. User interface is based on Taclog.
 %autosetup -p1
 
 %build
-# for reproducible.patch
-autoreconf -fiv
-#
 export CFLAGS="%{optflags} -fcommon"
 %configure \
 	--with-gpm \
