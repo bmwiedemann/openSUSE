@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gjs.git</param>
-    <param name="revision">1.84.2</param>
+    <param name="revision">1.86.0</param>
     <!-- Using +TAG_OFFSET breaks the test suite - https://gitlab.gnome.org/GNOME/gjs/-/issues/646 -->
     <param name="versionformat">@PARENT_TAG@.g@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*).g0</param>

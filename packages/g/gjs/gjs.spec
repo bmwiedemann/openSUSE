@@ -1,7 +1,7 @@
 #
 # spec file for package gjs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 %bcond_with profiling
+%global __requires_exclude typelib\\(GioWin32\\)
 
 Name:           gjs
-Version:        1.84.2
+Version:        1.86.0
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
@@ -41,15 +42,16 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(cairo-xlib)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.58.0
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.53.4
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.85.1
+BuildRequires:  pkgconfig(girepository-2.0) >= 2.85.1
+BuildRequires:  pkgconfig(glib-2.0) >= 2.85.1
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.85.1
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.85.1
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libffi)
-BuildRequires:  pkgconfig(mozjs-128)
+BuildRequires:  pkgconfig(mozjs-140)
 %if %{with profiling}
 BuildRequires:  pkgconfig(sysprof-capture-4)
 %endif

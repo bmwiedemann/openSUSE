@@ -1838,4 +1838,12 @@ New stable rel</comment>
 - Exclude s390x arch from testing, to unstable/slow to test ok. (forwarded request 1269165 from iznogood)</comment>
     <requestid>1269688</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>8d112d15a33c87389566a039031c8b8d</srcmd5>
+    <version>1.86.0</version>
+    <time>1758720130</time>
+    <user>anag_factory</user>
+    <comment>Stable rel; test suite could be re-enabled (forwarded request 1305297 from dimstar)</comment>
+    <requestid>1305519</requestid>
+  </revision>
 </revisionlist>
