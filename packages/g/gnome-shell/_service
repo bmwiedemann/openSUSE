@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-shell.git</param>
-    <param name="revision">48.4</param>
+    <param name="revision">49.0</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -13,6 +13,12 @@
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/libgnome-volume-control.git</param>
     <param name="revision">5f9768a2eac29c1ed56f1fbb449a77a3523683b6</param>
+    <param name="versionformat">0.gitmodule</param>
+  </service>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://gitlab.gnome.org/GNOME/libshew.git</param>
+    <param name="revision">ed782477cb5164320ae4f731d49bc5d475ab2a52</param>
     <param name="versionformat">0.gitmodule</param>
   </service>
   <service name="tar" mode="buildtime"/>

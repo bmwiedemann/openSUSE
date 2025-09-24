@@ -1,7 +1,6 @@
 #
 # spec file for package gnome-shell
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +17,11 @@
 
 
 %global __requires_exclude typelib\\(Meta|MetaTest|Soup|St|Cogl|Clutter|TelepathyGlib\\)
-%define mutter_api 16
-%define mutter_req 48.alpha
+%define mutter_api 17
+%define mutter_req 49.0
 
 Name:           gnome-shell
-Version:        48.4
+Version:        49.0
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -32,6 +31,7 @@ URL:            https://wiki.gnome.org/Projects/GnomeShell
 # Source url disabled as we are using a git checkout via source service
 Source0:        %{name}-%{version}.tar.zst
 Source1:        libgnome-volume-control-0.gitmodule.tar.zst
+Source2:        libshew-0.gitmodule.tar.zst
 
 # SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.
 Source100:      noise-texture.png
@@ -78,9 +78,9 @@ BuildRequires:  pkgconfig(gcr-4) >= 3.90.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.71.1
+BuildRequires:  pkgconfig(gio-2.0) >= 2.86.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.86.0
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.85.90
 BuildRequires:  pkgconfig(gnome-autoar-0)
 BuildRequires:  pkgconfig(gnome-bluetooth-3.0)
 BuildRequires:  pkgconfig(gnome-desktop-4)
@@ -114,7 +114,6 @@ BuildRequires:  pkgconfig(mutter-cogl-%{mutter_api}) >= %{mutter_req}
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
-Requires:       gdk-pixbuf-loader-rsvg
 Requires:       gstreamer-plugin-pipewire
 # "System settings" menu item
 Requires:       gnome-control-center
@@ -182,6 +181,8 @@ This package contains an optional extensions app for managing GNOME Shell extens
 pushd subprojects
 tar xf %{SOURCE1}
 mv libgnome-volume-control-0.gitmodule gvc
+tar xf %{SOURCE2}
+mv libshew-0.gitmodule libshew
 popd
 %autopatch -p1 -M 999
 
@@ -216,6 +217,9 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.Devel.svg
 %python3_fix_shebang
 
+%check
+%meson_test
+
 %files
 %license COPYING
 %doc README.md NEWS
@@ -236,7 +240,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_libdir}/gnome-shell/libshell-%{mutter_api}.so
 %{_libdir}/gnome-shell/libgvc.so
 %{_libdir}/gnome-shell/libst-%{mutter_api}.so
-%{_datadir}/applications/org.gnome.Shell.desktop
 %{_datadir}/applications/org.gnome.Shell.PortalHelper.desktop
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.ScreenTime.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Introspect.xml
@@ -264,7 +267,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_mandir}/man?/gnome-shell.?%{ext_man}
 %{_userunitdir}/org.gnome.Shell.target
 %{_userunitdir}/org.gnome.Shell@wayland.service
-%{_userunitdir}/org.gnome.Shell@x11.service
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 %dir %{_libdir}/gnome-shell/girepository-1.0
@@ -292,6 +294,7 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Shell.CaptivePortal-symbolic.svg
 %{_userunitdir}/org.gnome.Shell-disable-extensions.service
 %{_datadir}/applications/org.gnome.Shell.Extensions.desktop
+%{_datadir}/dbus-1/interfaces/org.gnome.Shell.Brightness.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Extensions.xml
 %{_datadir}/dbus-1/services/org.gnome.Shell.Extensions.service
 %{_datadir}/gnome-shell/org.gnome.Shell.Extensions
@@ -303,8 +306,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %doc %{_datadir}/doc/shell/
 %doc %{_datadir}/doc/st/
 %{_datadir}/gnome-shell/*.gir
-%dir %{_datadir}/gnome-shell/gir-1.0
-%{_datadir}/gnome-shell/gir-1.0/Shew-0.gir
 
 %files calendar
 %{_libexecdir}/gnome-shell/gnome-shell-calendar-server

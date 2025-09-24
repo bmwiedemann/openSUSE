@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:38:57 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.0:
+  + Fix misplaced background menu
+  + Fix toggling buttons via keyboard
+  + Fix brightness controls not working after suspend
+  + Fix layout of app search results in RTL locales
+  + Fix pointer a11y timeout animation
+  + Fix notification banners sometimes getting stuck
+  + Fixed crash
+  + Misc. bug fixes and cleanups
+  + Updated translations
+
+-------------------------------------------------------------------
+Wed Sep 10 08:30:51 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer gdk-pixbuf-loader-rsvg: replaced by glycin-loader,
+  which in turn is required by mutter already.
+
+-------------------------------------------------------------------
+Mon Sep  1 09:16:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.rc
+  + Prefer physical scroll directions on sliders
+  + Tweak some animations
+  + Add dedicated a11y labels to quick settings menu buttons
+  + Fix connecting to WPA(2) Enterprise networks
+  + Improve order in which extensions are enabled/disabled
+  + Account for scaling when setting cursor location from ibus
+  + Do not reset the unlock prompt on every tap
+  + Improve legacy tray icon support
+  + Move to ClutterGesture
+  + Improve styling of media notifications on lock screen
+  + Indicate when battery charging limits are in place
+  + Use a clearer icon for active wifi connections without AP
+  + Fixed crashes
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+
+-------------------------------------------------------------------
+Thu Aug 28 14:04:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.beta.1:
+  + Port to gjs-1.85/girepository-2.0
+  + Change brightness scale stepUp/stepDown to 5%
+  + Animate "Searching..."
+  + Show media controls on lock screen
+  + Misc. bug fixes and cleanups
+- Changes from version 49.beta:
+  + Fix showing pointer on motion on lock screen
+  + Replace Evince with Papers in Utilities folder
+  + Improve keyboard navigation in Extensions app
+  + Use new libadwaita ShortcutsDialog in extensions app
+  + Optionally allow restart/shutdown on lock screen
+  + Fix taking interactive screenshots via D-Bus
+  + Improve icon assets in accessibility menu on login screen
+  + Group screenshot/screencast notifications
+  + Fix pointer scaling glitches in magnifier
+  + Fix drawing glitch in sliders in RTL
+  + Overhaul UI for extension pref errors
+  + Show per-monitor brightness sliders in quick settings
+  + Misc. bug fixes and cleanups
+- Changes from version 49.alpha.1:
+  + Add support for pad dials
+  + Show workspace switcher OSD on all monitors
+  + Add missing accessibility labels in various components
+  + Add "gnome-extensions upload" command
+  + Allow users to correct keyring password after failure
+  + Handle unknown power-profiles in quick settings
+  + Move do-not-disturb into quick settings
+  + Add dedicated accessibility menu on login screen
+  + Misc. bug fixes and cleanups
+- Changes from version 49.alpha.0:
+  + Only enable surrounding-text IM capability when needed
+  + Fix launching command from terminal in run dialog
+  + Ignore offset changes caused by suspend for screen time
+  + Fix app folders sometimes not closing after outside clicks
+  + Check all modifiers for modifier-scroll
+  * Notify gnome-session when we're ready
+  + Support running shell via --devkit
+  + Fix visibility of emoji key in on-screen-keyboard
+  + Stop using ratio character for time
+  + Port to new MetaBacklight API
+  + Fixed crash
+  + Misc. bug fixes and cleanups
+  + Updated translations
+- Add libshew submodule to the sources.
+
+-------------------------------------------------------------------
 Thu Aug 14 07:13:57 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gnome-shell-can-not-load-calendars.patch: Avoid error log
