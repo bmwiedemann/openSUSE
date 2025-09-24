@@ -2180,4 +2180,12 @@
     <comment></comment>
     <requestid>1283013</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>ed2cadc7e0e6da0b815e8f6cc3005408</srcmd5>
+    <version>1.86.0</version>
+    <time>1758720080</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304920 from dimstar)</comment>
+    <requestid>1305469</requestid>
+  </revision>
 </revisionlist>

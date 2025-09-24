@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:29:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.86.0:
+  + giscanner: Added ability to add wrapper script arguments
+  + g-ir-tools: Support reading @rspfiles for arguments
+  + Update gobject-introspection-tests
+  + giscanner: support alignof expressions
+  + dumper: Fix introspection binaries missing rpaths for
+    uninstalled ELF shlibs
+  + meson: Fix fs.copyfile semantics breaking GIR build with
+    Ninja 1.12+
+  + giscanner: Deduplicate arguments and use response files for MSVC
+  + scanner: Prefer some getters over others
+  + girepository: Initialize the async functions parameters
+
+-------------------------------------------------------------------
 Thu Jun  5 07:53:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add explicit python3-setuptools BuildRequires: this was already
