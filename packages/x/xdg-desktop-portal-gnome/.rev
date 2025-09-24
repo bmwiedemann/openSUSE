@@ -227,4 +227,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1265260</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6ac36ab93a72c1fc2b9d2c53660b8331</srcmd5>
+    <version>49.0</version>
+    <time>1758720114</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304958 from dimstar)</comment>
+    <requestid>1305495</requestid>
+  </revision>
 </revisionlist>
