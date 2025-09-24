@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Sep 24 07:09:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 22.0.0:
+  * BREAKING CHANGES
+    - Renamed the codeberg connector to forgejo since it supports
+      all Forgejo-based forges. Codeberg itself runs on Forgejo
+      (#5447).
+    - Start the setup assistant with git town init instead of git
+      town config setup, matching Git's git init (#5269).
+    - git town hack no longer converts an existing branch into a
+      feature branch. Use the new feature command instead (#5516).
+    - The contribute, feature, observe, park, and prototype
+      commands no longer signal a problem when you run them on a
+      branch that already has the desired type.
+    - Removed the long-deprecated kill command. Use delete instead.
+  * New Features
+    - Added support for Azure DevOps (#1657).
+    - Introduced the push-branches setting to control whether Git
+      Town pushes local changes to tracking branches automatically.
+      Disable it if you prefer to push manually (#5541).
+    - Introduced the auto-sync setting to control whether hack,
+      append, and prepend sync existing branches before creating a
+      new one (#5540).
+    - set-parent: added the --none flag to create perennial
+      branches programmatically.
+  * Bug Fixes
+    - Fixed git town branch in repos with a detached HEAD (#5565).
+  * Dependecies
+    - Go 1.24 (#5559)
+
+-------------------------------------------------------------------
 Sun Sep 14 12:26:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 21.5.0:
