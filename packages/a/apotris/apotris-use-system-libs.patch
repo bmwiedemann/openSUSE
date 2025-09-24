@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index 3555c17..c949de7 100644
+--- a/meson.build
++++ b/meson.build
+@@ -210,7 +210,7 @@ if host_machine.system() != 'gba' and host_machine.system() != 'n3ds'
+         soloud = dependency('SoLoud', static : true, default_options : ['default_library=static'], fallback : ['SoLoud', 'soloud_dep'])
+     else
+         # Other required dependencies
+-        openmpt = dependency('openmpt', static : true, default_options : ['default_library=static'], fallback : ['openmpt', 'openmpt_dep'])
++        openmpt = dependency('libopenmpt', static : true, default_options : ['default_library=static'], fallback : ['openmpt', 'openmpt_dep'])
+         tilengine = dependency('Tilengine', static : true, default_options : ['default_library=static'], fallback : ['Tilengine', 'tilengine_dep'])
+         if host_machine.system() == 'darwin'
+             sdl2_dep = subproject('sdl2', default_options : ['use_audio_jack=disabled', 'default_library=static', 'test=false']).get_variable('sdl2_dep')

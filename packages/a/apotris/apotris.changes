@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Sun Jun 22 13:06:55 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 4.1.0
+- Add patches
+  * Apotris-fix-tileenngine.patch
+  * Apotris-install.patch
+  * Apotris-use-system-libs.patch
+  * Soloud-use-system-libs.patch

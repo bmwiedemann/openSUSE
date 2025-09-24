@@ -1,0 +1,26 @@
+diff --git a/include/soloud_openmpt.h b/include/soloud_openmpt.h
+index 0c7622d..178a79c 100644
+--- a/subprojects/SoLoud/include/soloud_openmpt.h
++++ b/subprojects/SoLoud/include/soloud_openmpt.h
+@@ -26,7 +26,7 @@ freely, subject to the following restrictions:
+ #define OPENMPT_H
+ 
+ #include "soloud.h"
+-#include <libopenmpt.h>
++#include <libopenmpt/libopenmpt.h>
+ 
+ namespace SoLoud
+ {
+diff --git a/meson.build b/meson.build
+index 462b846..e9bd185 100644
+--- a/subprojects/SoLoud/meson.build
++++ b/subprojects/SoLoud/meson.build
+@@ -43,7 +43,7 @@ sources = files(
+ 
+ opus = dependency('opus', fallback : ['opus', 'opus_dep'])
+ ogg = dependency('ogg', fallback : ['ogg', 'libogg_dep'])
+-openmpt = dependency('openmpt', default_options : ['default_library=static'], fallback : ['openmpt', 'openmpt_dep'])
++openmpt = dependency('libopenmpt', default_options : ['default_library=static'], fallback : ['openmpt', 'openmpt_dep'])
+ 
+ deps = [
+     ogg,

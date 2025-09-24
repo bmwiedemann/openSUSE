@@ -1,0 +1,45 @@
+diff --git a/subprojects/Tilengine/src/LoadBitmap.c b/src/LoadBitmap.c
+index 633ace3..c396828 100644
+--- a/subprojects/Tilengine/src/LoadBitmap.c
++++ b/subprojects/Tilengine/src/LoadBitmap.c
+@@ -257,8 +257,8 @@ TLN_Bitmap TLN_LoadBitmap (const char* filename)
+ }
+ 
+ /* Loads PNG using libpng 1.2 */
+-static TLN_Bitmap LoadPNG (const char* filename)
+-{
++//static TLN_Bitmap LoadPNG (const char* filename)
++//{
+ 	/* TLN_Bitmap bitmap = NULL; */
+ 	/* FILE* fp; */
+ 	/* png_struct* png; */
+@@ -331,7 +331,7 @@ static TLN_Bitmap LoadPNG (const char* filename)
+ 	/* FileClose(fp); */
+ 	/* png_destroy_read_struct (&png, &info, NULL); */
+ 	/* return bitmap; */
+-}
++//}
+ 
+ /* loads BMP */
+ static TLN_Bitmap LoadBMP (const char* filename)
+diff --git a/subprojects/Tilengine/src/LoadTilemap.c b/src/LoadTilemap.c
+index 5fce9b1..3dbb085 100644
+--- a/subprojects/Tilengine/src/LoadTilemap.c
++++ b/subprojects/Tilengine/src/LoadTilemap.c
+@@ -285,8 +285,8 @@ static int csvdecode (const char* in, int numtiles, uint32_t *data)
+ }
+ 
+ /* decompress a zipped string */
+-static int decompress (uint8_t* in, int in_size, uint8_t* out, int out_size)
+-{
++//static int decompress (uint8_t* in, int in_size, uint8_t* out, int out_size)
++//{
+ 	/* int ret; */
+ 	/* z_stream strm; */
+ 
+@@ -332,4 +332,4 @@ static int decompress (uint8_t* in, int in_size, uint8_t* out, int out_size)
+ 	/* /\* clean up and return *\/ */
+ 	/* (void)inflateEnd(&strm); */
+ 	/* return ret == Z_STREAM_END ? Z_OK : Z_DATA_ERROR; */
+-}
++//}
