@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extensions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        48.3
+Version:        49.0
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
@@ -82,17 +82,6 @@ menu, and provides the ability to hibernate.
 This package provides the extensions required to switch to
 gnome-shell classic.
 
-%package -n gnome-shell-classic-xsession
-Summary:        Xsession(X11) desktop session
-Requires:       gnome-session-xsession
-Requires:       gnome-shell-classic
-Requires:       gnome-shell-extensions-common
-Provides:       gnome-shell-classic:%{_datadir}/xsessions/gnome-classic-xorg.desktop
-BuildArch:      noarch
-
-%description -n gnome-shell-classic-xsession
-This package allows GNOME Shell to run the session on Xorg (X11).
-
 %package -n gnome-shell-extension-user-theme
 Summary:        Allow the user to change GNOME Shell Themes
 Group:          System/GUI/GNOME
@@ -138,8 +127,6 @@ sed -i -e 's/openSUSE/SUSE Linux Enterprise/g' README.SUSE
 %if 0%{?sle_version}
 # Prepare for 'default.desktop' being update-alternative handled, boo#1039756
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
-ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 touch %{buildroot}%{_sysconfdir}/alternatives/default-waylandsession.desktop
 install -d -m755 %{buildroot}%{_datadir}/wayland-sessions
 ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_datadir}/wayland-sessions/default.desktop
@@ -170,14 +157,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/default.desktop
 %ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
-%endif
-
-%files -n gnome-shell-classic-xsession
-%{_datadir}/xsessions/gnome-classic-xorg.desktop
-%{_datadir}/xsessions/gnome-classic.desktop
-%if 0%{?sle_version}
-%{_datadir}/xsessions/default.desktop
-%ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %endif
 
 %files -n gnome-shell-extension-user-theme
