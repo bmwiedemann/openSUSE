@@ -48,4 +48,12 @@
   + Fixes for issues reported by OSS Fuzz (forwarded request 1270938 from iznogood)</comment>
     <requestid>1271338</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bf5feccfdf12ff9224284ce3d3685415</srcmd5>
+    <version>3.10.0</version>
+    <time>1758720111</time>
+    <user>anag_factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1304956 from dimstar)</comment>
+    <requestid>1305493</requestid>
+  </revision>
 </revisionlist>

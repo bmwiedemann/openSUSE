@@ -1,7 +1,7 @@
 #
 # spec file for package tinysparql
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define RPMtinysparqlAPI 3_0
 
 Name:           tinysparql
-Version:        3.9.2
+Version:        3.10.0
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
@@ -37,6 +37,7 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  graphviz
 BuildRequires:  intltool
 BuildRequires:  libgupnp-dlna-devel >= 0.9.4
+BuildRequires:  libstemmer-devel
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -134,7 +135,6 @@ This subpackage contains the headers to make use of its libraries.
 %build
 %meson \
 	-Ddocs=true \
-	-Dstemmer=disabled \
 	%{nil}
 %meson_build
 

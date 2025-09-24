@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:34:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.10.0:
+  + Relax TrackerNamespaceManager impositions on having a single
+    prefix pointing to a same URI, and to avoid changes in
+    prefixes. This is not consistent with RDF standards.
+  + Fixes to libstemmer subproject fallback for git snapshot users
+    with --wrap-mode=nodownload
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Sep  1 18:13:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.10.rc:
+  + Validation improvements to JSON-LD parsing
+  + Fixes to database resource refcounting introduced in 3.10.alpha
+  + Add meson subproject for libstemmer
+  + Updated translations.
+- Changes from version 3.10.beta:
+  + Changed the database format, so that all graphs are stored in
+    a single database file. This reduces the maximum theoretical
+    database size to 32 TB (Down from 320 TB), but dramatically
+    boosts the maximum amount of graphs that could be created in
+    a single database/endpoint (14 Million, up from 10. Not
+    millions, just ten).
+- Changes from version 3.10.alpha:
+  + Improved performance during database updates
+  + Minimized memory allocations during updates
+  + Fixes to @base handling in Turtle format
+  + Memory leak fixes
+  + Improved performance at handling pathologically long queries
+    with syntax errors
+  + String translation fixes
+  + Documentation improvements
+  + Updated translations.
+- Add libstemmer-devel BuildRequires: No longer optional, stop
+  passing stemmer=disabled to meson setup.
+
+-------------------------------------------------------------------
 Sat Apr 19 08:04:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.9.2:
