@@ -1,7 +1,7 @@
 #
 # spec file for package python-atspi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,22 +30,22 @@ ExcludeArch:    %arm ppc64le
 BuildArch:      noarch
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%global pythons python3
 %define _name   pyatspi
 Name:           python-atspi%{psuffix}
-Version:        2.46.1
+Version:        2.58.0
 Release:        0
 Summary:        Python bindings for the Assistive Technology Service Provider Interface
 License:        LGPL-2.0-only
 Group:          Development/Libraries/Python
 URL:            https://gitlab.gnome.org/GNOME/pyatspi2
-Source0:        https://download.gnome.org/sources/pyatspi/2.46/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/pyatspi/2.58/%{_name}-%{version}.tar.xz
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module gobject >= 2.90.1}
 BuildRequires:  %{python_module gobject-devel >= 2.90.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  meson
 # Needed to have typelib() Requires.
 BuildRequires:  gobject-introspection
 BuildRequires:  python-rpm-macros
@@ -87,34 +87,17 @@ This package contains the python bindings for AT-SPI.
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
-# Configure for out-of-tree builds
-%define _configure ../configure
-
-%{python_expand mkdir build_%{$python_bin_suffix}
-pushd build_%{$python_bin_suffix}
-export PYTHON=%_bindir/$python
-%configure %{?configureargs}
-make %{?_smp_mflags}
-popd
-}
+%meson
+%meson_build
 
 %install
 %if ! %{with test}
-%{python_expand pushd build_%{$python_bin_suffix}
-%make_install
-popd
-}
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%meson_install
 %endif
 
 %if %{with test}
 %check
-# does not work with -z now due to some library overriding
-export SUSE_ZNOW=0
-%{python_expand pushd build_%{$python_bin_suffix}/tests
-dbus-run-session make %{?_smp_mflags} check CFLAGS="-Wno-return-type" || (cat pyatspi/test-suite.log && exit 1)
-popd
-}
+%meson_test
 %endif
 
 %if ! %{with test}

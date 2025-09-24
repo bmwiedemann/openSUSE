@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 17 11:27:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.58.0:
+  + Install image.py (fixes regression from 2.57.0).
+
+-------------------------------------------------------------------
+Sat Aug 30 11:06:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.57.0:
+  + Fix an incompatibility with the new libatspi Python overrides.
+  + Port to Meson.
+
+-------------------------------------------------------------------
 Wed Feb 28 17:22:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.46.1:
