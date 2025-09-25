@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Sep 18 06:42:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- switch to using the "normal" python macros %pyproject_wheel and
+  %pyproject_install
+- update to 25.9.0:
+  * Fixes
+    - Remove patterns validation checks (#4772) @alisonlhart
+    - Reapply "fix: adopt uv.lock and dependency-groups (#4757)"
+      (#4761) @Qalthos
+    - Revert "fix: adopt uv.lock and dependency-groups (#4757)"
+      (#4760) @Qalthos
+    - fix: adopt uv.lock and dependency-groups (#4757) @ssbarnea
+    - fix: avoid warnings about PATH with uv installations (#4714)
+      @SecT0uch
+    - fix: clarify error message related to --fix arguments (#4720)
+      @simonLeary42
+    - fix: change patterns schema location (#4755) @ssbarnea
+    - fix: recognize Debian 14 (Forky) as a platform (#4726)
+      @mcdonnnj
+    - Prevent false positive pattern detection in filenames
+      containing "pattern.json" (#4743) @shatakshiiii
+    - Require ansible-core 2.19 when used as a pre-commit hook
+      (#4744) @ssbarnea
+    - Exclude non-linted files in summary (#4725) @simonLeary42
+    - Fix rule summary for error messages (#4740) @simonLeary42
+  * Maintenance
+    - chore(deps): update all dependencies (#4773) @renovate[bot]
+    - chore(deps): update all dependencies (#4771) @renovate[bot]
+    - chore(deps): update all dependencies (#4770) @renovate[bot]
+    - chore(deps): update all dependencies (#4769) @renovate[bot]
+    - chore(deps): update all dependencies (#4768) @renovate[bot]
+    - chore(deps): update all dependencies (#4766) @renovate[bot]
+    - chore: replace prettier with biome (#4765) @ssbarnea
+    - chore: fix renovate config (#4764) @ssbarnea
+    - chore: configure renovate (#4753) @ssbarnea
+    - chore: update hook configs (#4752) @ssbarnea
+    - chore: pre-commit autoupdate (#4708) @pre-commit-ci[bot]
+    - Bump codecov/codecov-action from 5.4.3 to 5.5.0 (#4738)
+      @dependabot[bot]
+    - Bump actions/checkout from 4 to 5 (#4718) @dependabot[bot]
+    - Bump actions/download-artifact from 4 to 5 (#4711)
+      @dependabot[bot]
+    - Jinja test fixes (#4742) @anusshukla
+
+-------------------------------------------------------------------
 Fri Aug 22 04:47:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.8.2:

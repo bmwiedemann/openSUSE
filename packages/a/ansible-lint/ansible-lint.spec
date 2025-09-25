@@ -38,9 +38,8 @@
 %endif
 
 %global lib_name ansiblelint
-%{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        25.8.2
+Version:        25.9.0
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -67,44 +66,37 @@ BuildRequires:  %{ansible_python}-flake8
 
 # Add runtime requirements (unless required for tests)
 # to make sure this only builds if they are present
-# https://github.com/ansible/ansible-lint/blob/main/.config/requirements.in
+# https://github.com/ansible/ansible-lint/blob/main/pyproject.toml#L79
 BuildRequires:  ansible-core >= 2.16.11
 BuildRequires:  %{ansible_python}-ansible-compat >= 25.8.0
-BuildRequires:  %{ansible_python}-black >= 23.10.1
-BuildRequires:  %{ansible_python}-bracex >= 2.5.post1
-BuildRequires:  %{ansible_python}-enrich >= 1.2.7
+BuildRequires:  %{ansible_python}-black >= 24.3.0
 BuildRequires:  %{ansible_python}-filelock >= 3.8.2
-BuildRequires:  %{ansible_python}-jsonschema >= 4.17.3
-BuildRequires:  %{ansible_python}-packaging >= 23.1
+BuildRequires:  %{ansible_python}-importlib_metadata >= 8.7.0
+BuildRequires:  %{ansible_python}-jsonschema >= 4.10.0
+BuildRequires:  %{ansible_python}-packaging >= 22.0
+BuildRequires:  %{ansible_python}-pathspec >= 0.10.3
 BuildRequires:  %{ansible_python}-PyYAML >= 6.0.2
 BuildRequires:  %{ansible_python}-referencing >= 0.36.2
-BuildRequires:  %{ansible_python}-requests >= 2.31.0
-BuildRequires:  %{ansible_python}-rich >= 13.5.2
 BuildRequires:  %{ansible_python}-ruamel.yaml >= 0.18.11
 BuildRequires:  %{ansible_python}-subprocess-tee >= 0.4.1
-BuildRequires:  %{ansible_python}-tenacity
-BuildRequires:  %{ansible_python}-wcmatch >= 8.4.1
+BuildRequires:  %{ansible_python}-wcmatch >= 8.5.0
 BuildRequires:  %{ansible_python}-yamllint >= 1.34.0
 
 #
 # https://github.com/ansible/ansible-lint/blob/main/.config/requirements.in
 Requires:       ansible-core >= 2.16.11
 Requires:       %{ansible_python}-ansible-compat >= 25.8.0
-Requires:       %{ansible_python}-black >= 23.10.1
-Requires:       %{ansible_python}-bracex >= 2.5.post1
-Requires:       %{ansible_python}-enrich >= 1.2.7
-Requires:       %{ansible_python}-filelock  >= 3.8.2
-Requires:       %{ansible_python}-importlib-metadata
-Requires:       %{ansible_python}-jsonschema >= 4.17.3
-Requires:       %{ansible_python}-packaging >= 23.1
-Requires:       %{ansible_python}-PyYAML  >= 6.0.2
+Requires:       %{ansible_python}-black >= 24.3.0
+Requires:       %{ansible_python}-filelock >= 3.8.2
+Requires:       %{ansible_python}-importlib_metadata >= 8.7.0
+Requires:       %{ansible_python}-jsonschema >= 4.10.0
+Requires:       %{ansible_python}-packaging >= 22.0
+Requires:       %{ansible_python}-pathspec >= 0.10.3
+Requires:       %{ansible_python}-PyYAML >= 6.0.2
 Requires:       %{ansible_python}-referencing >= 0.36.2
-Requires:       %{ansible_python}-requests >= 2.31.0
-Requires:       %{ansible_python}-rich >= 13.5.2
 Requires:       %{ansible_python}-ruamel.yaml >= 0.18.11
 Requires:       %{ansible_python}-subprocess-tee >= 0.4.1
-Requires:       %{ansible_python}-tenacity
-Requires:       %{ansible_python}-wcmatch >= 8.4.1
+Requires:       %{ansible_python}-wcmatch >= 8.5.0
 Requires:       %{ansible_python}-yamllint >= 1.34.0
 
 %description
@@ -112,22 +104,13 @@ Checks playbooks for practices and behavior that could potentially be improved.
 
 %prep
 %setup -n %{name}-%{version}
-sed -i '/^dynamic/ s/"version", //' pyproject.toml
-sed -i '/^description/a version = "%{version}"' pyproject.toml
 sed -i '1{/\/usr\/bin\/env python/d;}' src/ansiblelint/__main__.py
-sed -i '/__version__ =/ s/0.1.dev1/%{version}/' src/ansiblelint/version.py
 
 %build
-%{ansible_python_executable} -mpip wheel --no-deps --disable-pip-version-check --use-pep517 --no-build-isolation --progress-bar off --verbose --wheel-dir ./build/ .
-mkdir -p ./dist
-cp ./build/ansible_lint-*-none-any.whl ./dist/
+%pyproject_wheel
 
 %install
-
-%{ansible_python_executable} -mpip install --root %{buildroot} --disable-pip-version-check --no-compile --no-deps --progress-bar off --ignore-installed --no-index --verbose --find-links build/ansible_lint-*.whl ansible_lint==%{version}
-find %{buildroot}/%{ansible_python_sitelib} -name '*.pyc' -delete
-%{ansible_python_executable} -m compileall %{buildroot}/%{ansible_python_sitelib}
-%{ansible_python_executable} -O -m compileall %{buildroot}/%{ansible_python_sitelib}
+%pyproject_install
 cp -vr src/ansiblelint/schemas %{buildroot}/%{ansible_python_sitelib}/%{lib_name}/
 cp -vr src/ansiblelint/data %{buildroot}/%{ansible_python_sitelib}/%{lib_name}/
 
@@ -138,6 +121,6 @@ cp -vr src/ansiblelint/data %{buildroot}/%{ansible_python_sitelib}/%{lib_name}/
 %license COPYING
 %{_bindir}/ansible-lint
 %{ansible_python_sitelib}/%{lib_name}/
-%{ansible_python_sitelib}/ansible_lint-%{version}.dist-info/
+%{ansible_python_sitelib}/ansible_lint-*.dist-info/
 
 %changelog
