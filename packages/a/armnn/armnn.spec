@@ -1,7 +1,7 @@
 #
 # spec file for package armnn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,7 +85,6 @@ BuildRequires:  boost-devel >= 1.59
 %else
 BuildRequires:  libboost_filesystem-devel >= 1.59
 BuildRequires:  libboost_program_options-devel >= 1.59
-BuildRequires:  libboost_system-devel >= 1.59
 BuildRequires:  libboost_test-devel >= 1.59
 %endif
 %if %{with armnn_flatbuffers}

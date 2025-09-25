@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 25 06:50:02 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel, removed on boost 1.89 
+  (bsc#1249599)
+
+-------------------------------------------------------------------
 Mon Sep 15 16:07:22 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Switch from Mesa-libOpenCL to Mesa-libRusticlOpenCL
