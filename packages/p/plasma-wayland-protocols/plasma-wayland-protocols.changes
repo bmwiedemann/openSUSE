@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 23 12:01:56 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.19.0:
+  * fake-input: add keysym request
+  * output device, output management: add Sharpness Strength settings
+  * plasma-virtual-desktop: Add position property
+  * plasma-virtual-desktop: Make virtual desktop updates globally atomic
+
+-------------------------------------------------------------------
 Thu May 15 08:16:51 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.18.0:

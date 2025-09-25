@@ -162,4 +162,16 @@
   * output device, -management: add a replication source setting (forwarded request 1277671 from Vogtinator)</comment>
     <requestid>1277712</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6918ee6d23edce39a0869c6eeeaffc0c</srcmd5>
+    <version>1.19.0</version>
+    <time>1758818651</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.19.0:
+  * fake-input: add keysym request
+  * output device, output management: add Sharpness Strength settings
+  * plasma-virtual-desktop: Add position property
+  * plasma-virtual-desktop: Make virtual desktop updates globally atomic (forwarded request 1306754 from Vogtinator)</comment>
+    <requestid>1306769</requestid>
+  </revision>
 </revisionlist>
