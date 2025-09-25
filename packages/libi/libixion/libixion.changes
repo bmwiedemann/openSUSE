@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Sep 22 11:22:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
-- Fix build with boost 1.89.0
+- Fix build with boost 1.89.0 (bsc#1249978)
 - Modified patch:
   * libixion-boost-system.patch
     + modify the m4/boost.m4 to account for libboost_filesystem stub

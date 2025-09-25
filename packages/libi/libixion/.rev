@@ -303,4 +303,12 @@
     <comment>fix build with boost 1.89</comment>
     <requestid>1306493</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>46d6f278a792d3c592a708a97a4d0402</srcmd5>
+    <version>0.20.0</version>
+    <time>1758818659</time>
+    <user>anag_factory</user>
+    <comment>add bug number</comment>
+    <requestid>1307044</requestid>
+  </revision>
 </revisionlist>
