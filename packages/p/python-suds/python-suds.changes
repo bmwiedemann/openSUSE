@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 25 11:02:54 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Replace %{sle15allpythons} with %{?sle15_python_module_pythons}, the
+  package doesn't build with python < 3.7 so it doesn't make sense to
+  try to build for python3 in SLE 15.
+
+-------------------------------------------------------------------
 Mon Jun 16 06:12:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.

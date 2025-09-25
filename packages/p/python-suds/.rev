@@ -40,4 +40,14 @@
     <comment>- Switch to pyroject macros.</comment>
     <requestid>1285979</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>594a2bc4d1b5f67700c76f2c5a26843c</srcmd5>
+    <version>1.2.0</version>
+    <time>1758818752</time>
+    <user>anag_factory</user>
+    <comment>- Replace %{sle15allpythons} with %{?sle15_python_module_pythons}, the
+  package doesn't build with python &lt; 3.7 so it doesn't make sense to
+  try to build for python3 in SLE 15.</comment>
+    <requestid>1307081</requestid>
+  </revision>
 </revisionlist>
