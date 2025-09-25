@@ -568,4 +568,12 @@
     <comment>- Update to release 11.2.0</comment>
     <requestid>1274170</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>39b36915774c3e5c92025138baea1a76</srcmd5>
+    <version>12.0.0</version>
+    <time>1758818646</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 12.0.0</comment>
+    <requestid>1306987</requestid>
+  </revision>
 </revisionlist>

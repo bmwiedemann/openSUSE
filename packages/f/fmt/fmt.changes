@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 17 17:46:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 12.0.0
+  * Added constexpr support to fmt::format.
+  * Added FMT_STATIC_FORMAT that allows formatting into a string of
+    the exact required size at compile time.
+  * Improved C++20 module support.
+  * Removed deprecated `has_formatter` API (use is_formattable
+    instead).
+  * Removed deprecated `basic_format_args::parse_context_type`,
+    `basic_format_args::formatter_type` and similar aliases in
+    context types.
+  * Removed wide stream overload of `fmt::printf`, and wide stream
+    overloads of `fmt::print` that take text styles.
+  * Removed `is_*char` traits.
+  * Removed `fmt::localtime`.
+
+-------------------------------------------------------------------
 Sat May  3 16:57:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.2.0
