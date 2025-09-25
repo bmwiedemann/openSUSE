@@ -26,7 +26,7 @@
 %define vo_min_ver 0.9.6
 %define pk_min_ver 1.1.0
 Name:           Radicale
-Version:        3.5.5
+Version:        3.5.6
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
@@ -88,6 +88,7 @@ test -f setup.py || echo 'import setuptools; setuptools.setup()' > setup.py
 %python3_install
 install -m 0750 -d %{buildroot}%{pkg_config}/ %{buildroot}%{pkg_home}/
 install -m 0640 config %{buildroot}%{pkg_config}/config
+install -m 0640 rights %{buildroot}%{pkg_config}/rights
 install -m 0755 -d %{buildroot}%{_sbindir}/
 install -D -m 444 %{SOURCE1} %{buildroot}%{_unitdir}/%{pkg_name}.service
 install -D -m 644 %{SOURCE3} %{buildroot}%{_prefix}/lib/firewalld/services/%{pkg_name}.xml
@@ -107,7 +108,6 @@ pytest
 %service_add_pre %{pkg_name}.service
 
 %post
-test -e %{pkg_config}/rights || touch %{pkg_config}/rights
 test -e %{pkg_config}/users  || touch %{pkg_config}/users
 %service_add_post %{pkg_name}.service
 %firewalld_reload
@@ -130,8 +130,7 @@ test -e %{pkg_config}/users  || touch %{pkg_config}/users
 %dir %attr(-,%{pkg_user_group},%{pkg_user_group}) %{pkg_home}/
 %dir %attr(-,%{pkg_user_group},%{pkg_user_group}) %{pkg_home}/collections
 
-# Register configuration files
-%ghost %config(noreplace) %attr(660,%{pkg_user_group},%{pkg_user_group}) %{pkg_config}/rights
+# Register users config file (no "users" example, contrary to "rights")
 %ghost %config(noreplace) %attr(660,%{pkg_user_group},%{pkg_user_group}) %{pkg_config}/users
 
 # User/group creation with sysusers.d(5)

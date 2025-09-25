@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 17 15:02:38 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+
+- Use the provided "rights" example file as the base config file (instead of an empty one)
+- Update to 3.5.6
+  * Fix: broken start when UID does not exist (potential container startup case)
+  * Improve: user/group retrievement for running service and directories
+  * Extend/Improve: [auth] ldap: group membership lookup
+  * Add: [auth] remote_ip_source: set the remote IP source for auth algorithms
+
+-------------------------------------------------------------------
 Fri Aug 22 07:57:21 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
 
 - Set "radicale" as the syslog identifier (replacing the generic "python3") when started via systemd
