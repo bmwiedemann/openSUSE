@@ -16,7 +16,7 @@
 #
 
 Name:           hydra
-Version:        9.5
+Version:        9.6
 Release:        0
 Summary:        A network logon cracker with support for many different services
 License:        AGPL-3.0-only
@@ -29,7 +29,11 @@ BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(apr-1)
 BuildRequires:  pkgconfig(apr-util-1)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(freerdp3)
+%else
 BuildRequires:  pkgconfig(freerdp2)
+%endif
 BuildRequires:  pkgconfig(gail)
 BuildRequires:  pkgconfig(gdk-2.0)
 BuildRequires:  pkgconfig(gdk-x11-2.0)

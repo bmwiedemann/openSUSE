@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 17 11:59:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add conditional pkgconfig(freerdp3) BuildRequires, support for
+  freerdp3 was added in version 9.6. Build with latest freerdp for
+  current versions of openSUSE and SLE.
+
+-------------------------------------------------------------------
+Fri Sep 12 19:29:48 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.6
+  * freerdp v2 -> v3.
+  * compile fixes (eg. gcc-15).
+  * pop3 capability fix.
+  * mysql library upgrade.
+  * http-form fixes.
+  * postgres custom port support.
+  * smb better expired support.
+  * ssh legacy cipher support.
+  * http 403 support.
+- Update patch:
+  * fix-prototype-mismatches.patch
+
+-------------------------------------------------------------------
 Mon Jul 21 14:24:05 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Add patch fix-prototype-mismatches.patch

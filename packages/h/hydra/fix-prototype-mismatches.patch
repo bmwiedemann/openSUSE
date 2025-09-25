@@ -32,16 +32,3 @@ index 3b92c42..4900250 100644
  
  void on_quit1_activate(GtkMenuItem *menuitem, gpointer user_data);
  
-diff --git a/hydra-mod.c b/hydra-mod.c
-index de86f66..5c7c158 100644
---- a/hydra-mod.c
-+++ b/hydra-mod.c
-@@ -60,7 +60,7 @@ RSA *rsa = NULL;
- int32_t my_select(int32_t fd, fd_set *fdread, fd_set *fdwrite, fd_set *fdex, long sec, long usec);
- 
- /* ----------------- alarming functions ---------------- */
--void alarming() {
-+void alarming(int sig) {
-   fail++;
-   alarm_went_off++;
- 
