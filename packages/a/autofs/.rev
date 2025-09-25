@@ -1188,4 +1188,12 @@ Update 5.0.6 upstream patches to 20111210 (bnc#741878)</comment>
     <comment></comment>
     <requestid>1305600</requestid>
   </revision>
+  <revision rev="140" vrev="9">
+    <srcmd5>89fb87a2f4f1937790fb64932b446708</srcmd5>
+    <version>5.1.9</version>
+    <time>1758818629</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306891</requestid>
+  </revision>
 </revisionlist>

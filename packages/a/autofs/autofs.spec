@@ -1,7 +1,7 @@
 #
 # spec file for package autofs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
@@ -130,8 +129,6 @@ SUSE_ASNEEDED=0
 install -d -m 755 %{buildroot}%{_sysconfdir}/auto.master.d
 install -D -m 644 %{SOURCE1} %{buildroot}%{_fillupdir}/sysconfig.autofs
 install -D -m 755 %{SOURCE7} %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d/autofs
-ln -s %{_mandir}/man8/autofs.8.gz %{buildroot}/%{_mandir}/man8/rcautofs.8.gz
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcautofs
 %if %{with_udisks}
 install -D -m 644 %{SOURCE42} %{buildroot}%{_datadir}/dbus-1/system.d/org.freedesktop.AutoMount.conf
 %endif
@@ -178,7 +175,6 @@ rm -f %{buildroot}%{_sysconfdir}/sysconfig/autofs
 %{_mandir}/man5/*
 %{_mandir}/man8/*
 %{_sbindir}/automount
-%{_sbindir}/rcautofs
 %{_unitdir}/autofs.service
 
 %changelog
