@@ -336,4 +336,15 @@
     <comment></comment>
     <requestid>1306770</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>e3318803700c34afdf7a8e8a45ce117c</srcmd5>
+    <version>6.0.2</version>
+    <time>1758818725</time>
+    <user>anag_factory</user>
+    <comment>- Also removed Requires on libboost_system-devel. This has been 
+  deprecated on boost 1.89. (bsc#1249599)
+
+- libboost_system was removed upstream (bsc#1249599)</comment>
+    <requestid>1307048</requestid>
+  </revision>
 </revisionlist>

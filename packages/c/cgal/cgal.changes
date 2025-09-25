@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 25 07:07:06 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Also removed Requires on libboost_system-devel. This has been 
+  deprecated on boost 1.89. (bsc#1249599)
+
+-------------------------------------------------------------------
 Tue Sep 23 14:12:37 CEST 2025 - aschnell@suse.com
 
-- libboost_system was removed upstream (bsc#1249900)
+- libboost_system was removed upstream (bsc#1249599)
 
 -------------------------------------------------------------------
 Wed Sep 17 20:29:01 UTC 2025 - Michael Vetter <mvetter@suse.com>

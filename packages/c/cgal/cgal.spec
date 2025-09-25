@@ -68,7 +68,6 @@ Requires:       cmake
 Requires:       gmp-devel
 Requires:       lapack
 Requires:       libboost_atomic-devel >= 1.72
-Requires:       libboost_system-devel >= 1.72
 Requires:       libboost_thread-devel >= 1.72
 Requires:       mpfr-devel
 Requires:       zlib-devel
