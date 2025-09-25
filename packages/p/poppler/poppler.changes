@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 10 08:05:24 UTC 2025 - pgajdos@suse.com
+
+- version update to 25.09.1:
+  * Speed improvements when reusing the same document with different output devices
+  * Speed improvements when reading from network file systems
+  * Internal code improvements
+  * Fix generated .pc files when using old gpgme
+- version update to 25.09.0:
+  * Speed improvements when reusing the same document with different output devices
+  * Speed improvements when reading from network file systems
+  * Internal code improvements
+  * Fix crashes in malformed documents
+  * fix ODR issue with enum
+  * pdftohtml: Fix text positioning. (Regressed in 25.07.0)
+  * Better pkgconfig support for static builds
+- deleted patches
+  * reduce-boost-required-version.patch (upstreamed)
+  * reduce-libtiff-required-version.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Aug  5 09:57:10 UTC 2025 - pgajdos@suse.com
 
 - version update to 25.08.0

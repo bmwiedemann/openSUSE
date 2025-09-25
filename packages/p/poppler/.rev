@@ -2278,4 +2278,29 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1297696</requestid>
   </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>00c237e74884344da1e3da45159594b8</srcmd5>
+    <version>25.09.1</version>
+    <time>1758818646</time>
+    <user>anag_factory</user>
+    <comment>Only inkscape should fail to build and there is a patch already.
+
+- version update to 25.09.1:
+  * Speed improvements when reusing the same document with different output devices
+  * Speed improvements when reading from network file systems
+  * Internal code improvements
+  * Fix generated .pc files when using old gpgme
+- version update to 25.09.0:
+  * Speed improvements when reusing the same document with different output devices
+  * Speed improvements when reading from network file systems
+  * Internal code improvements
+  * Fix crashes in malformed documents
+  * fix ODR issue with enum
+  * pdftohtml: Fix text positioning. (Regressed in 25.07.0)
+  * Better pkgconfig support for static builds
+- deleted patches
+  * reduce-boost-required-version.patch (upstreamed)
+  * reduce-libtiff-required-version.patch (upstreamed)</comment>
+    <requestid>1305409</requestid>
+  </revision>
 </revisionlist>
