@@ -1,0 +1,107 @@
+Index: pyhamcrest-2.1.0/tests/hamcrest_unit_test/core/future_test.py
+===================================================================
+--- pyhamcrest-2.1.0.orig/tests/hamcrest_unit_test/core/future_test.py
++++ pyhamcrest-2.1.0/tests/hamcrest_unit_test/core/future_test.py
+@@ -41,20 +41,20 @@ class FutureExceptionTest(MatcherTest):
+                 await resolved(raise_exception()),
+             )
+ 
+-        asyncio.get_event_loop().run_until_complete(test())
++        asyncio.new_event_loop().run_until_complete(test())
+ 
+     def testDoesNotMatchIfActualIsNotAFuture(self):
+         async def test():
+             self.assert_does_not_match("Not a future", future_raising(TypeError), 23)
+ 
+-        asyncio.get_event_loop().run_until_complete(test())
++        asyncio.new_event_loop().run_until_complete(test())
+ 
+     def testDoesNotMatchIfFutureIsNotDone(self):
+-        future = asyncio.Future()
++        future = asyncio.Future(loop=asyncio.new_event_loop())
+         self.assert_does_not_match("Unresolved future", future_raising(TypeError), future)
+ 
+     def testDoesNotMatchIfFutureIsCancelled(self):
+-        future = asyncio.Future()
++        future = asyncio.Future(loop=asyncio.new_event_loop())
+         future.cancel()
+         self.assert_does_not_match("Cancelled future", future_raising(TypeError), future)
+ 
+@@ -73,7 +73,7 @@ class FutureExceptionTest(MatcherTest):
+                 expected_message, future_raising(TypeError), await resolved(raise_exception())
+             )
+ 
+-        asyncio.get_event_loop().run_until_complete(test())
++        asyncio.new_event_loop().run_until_complete(test())
+ 
+     @pytest.mark.skipif(sys.version_info < (3, 7), reason="Message differs between Python versions")
+     def testDoesNotMatchIfFutureHasTheWrongExceptionTypePy37(self):
+@@ -88,7 +88,7 @@ class FutureExceptionTest(MatcherTest):
+                 expected_message, future_raising(TypeError), await resolved(raise_exception())
+             )
+ 
+-        asyncio.get_event_loop().run_until_complete(test())
++        asyncio.new_event_loop().run_until_complete(test())
+ 
+     def testMatchesIfFutureHasASubclassOfTheExpectedException(self):
+         async def test():
+@@ -98,7 +98,7 @@ class FutureExceptionTest(MatcherTest):
+                 await resolved(raise_exception()),
+             )
+ 
+-        asyncio.get_event_loop().run_until_complete(test())
++        asyncio.new_event_loop().run_until_complete(test())
+ 
+     def testDoesNotMatchIfFutureDoesNotHaveException(self):
+         async def test():
+@@ -106,7 +106,7 @@ class FutureExceptionTest(MatcherTest):
+                 "No exception", future_raising(ValueError), await resolved(no_exception())
+             )
+ 
+-        asyncio.get_event_loop().run_until_complete(test())
++        asyncio.new_event_loop().run_until_complete(test())
+ 
+     def testDoesNotMatchExceptionIfRegularExpressionDoesNotMatch(self):
+         async def test():
+@@ -121,7 +121,7 @@ class FutureExceptionTest(MatcherTest):
+                 await resolved(raise_exception()),
+             )
+ 
+-        asyncio.get_event_loop().run_until_complete(test())
++        asyncio.new_event_loop().run_until_complete(test())
+ 
+     def testMatchesRegularExpressionToStringifiedException(self):
+         async def test():
+@@ -137,7 +137,7 @@ class FutureExceptionTest(MatcherTest):
+                 await resolved(raise_exception(3, 1, 4)),
+             )
+ 
+-        asyncio.get_event_loop().run_until_complete(test())
++        asyncio.new_event_loop().run_until_complete(test())
+ 
+     def testMachesIfExceptionMatchesAdditionalMatchers(self):
+         async def test():
+@@ -147,7 +147,7 @@ class FutureExceptionTest(MatcherTest):
+                 await resolved(raise_exception_with_properties(prip="prop")),
+             )
+ 
+-        asyncio.get_event_loop().run_until_complete(test())
++        asyncio.new_event_loop().run_until_complete(test())
+ 
+     def testDoesNotMatchIfAdditionalMatchersDoesNotMatch(self):
+         async def test():
+@@ -162,7 +162,7 @@ class FutureExceptionTest(MatcherTest):
+                 await resolved(raise_exception_with_properties(prip="prop")),
+             )
+ 
+-        asyncio.get_event_loop().run_until_complete(test())
++        asyncio.new_event_loop().run_until_complete(test())
+ 
+     def testDoesNotMatchIfNeitherPatternOrMatcherMatch(self):
+         async def test():
+@@ -181,4 +181,4 @@ class FutureExceptionTest(MatcherTest):
+                 await resolved(raise_exception_with_properties(prip="prop")),
+             )
+ 
+-        asyncio.get_event_loop().run_until_complete(test())
++        asyncio.new_event_loop().run_until_complete(test())

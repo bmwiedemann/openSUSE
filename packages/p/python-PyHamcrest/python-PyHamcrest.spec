@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyHamcrest
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/hamcrest/PyHamcrest
 Source:         https://files.pythonhosted.org/packages/source/p/pyhamcrest/pyhamcrest-%{version}.tar.gz
 Patch0:         0001-Add-boolean-matchers.patch
+# PATCH-FIX-UPSTREAM https://github.com/hamcrest/PyHamcrest/pull/270 use asyncio.new_event_loop in tests for compatibility with Python 3.14
+Patch1:         py314.patch
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module hypothesis >= 1.11}

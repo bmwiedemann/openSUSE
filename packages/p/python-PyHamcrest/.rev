@@ -86,4 +86,13 @@
 - Because of gh#hamcrest/PyHamcrest#123 we have to remove</comment>
     <requestid>1141945</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>22d15950ccb0dcf37494096b84bf551f</srcmd5>
+    <version>2.1.0</version>
+    <time>1758818630</time>
+    <user>anag_factory</user>
+    <comment>- Add py314.patch to fix tests with Python 3.14
+</comment>
+    <requestid>1306900</requestid>
+  </revision>
 </revisionlist>
