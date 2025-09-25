@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 24 09:21:26 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add docutils-022.patch to support docutils >= 0.22
+
+-------------------------------------------------------------------
 Fri Sep 12 09:47:22 UTC 2025 - Sean Baggaley <sean@csnxs.uk>
 
 - Mercurial 7.1.1

@@ -49,6 +49,8 @@ Source99:       mercurial-rpmlintrc
 Patch0:         mercurial-hgk-path-fix.diff
 # PATCH-FIX-OPENSUSE mercurial-locale-path-fix.patch saschpe@suse.de -- locales are found in /usr/share/locale
 Patch2:         mercurial-locale-path-fix.patch
+# PATCH-FIX-OPENSUSE docutils-022.patch daniel.garcia@suse.com -- Adapt to docutils 0.22
+Patch3:         docutils-022.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 8.1}
@@ -134,6 +136,7 @@ find . -type f -exec sed -i -e '1{/#!/s/env //}' '{}' \;
 %setup -q -a 80
 %endif
 
+%patch -P 3 -p1
 chmod 644 hgweb.cgi
 
 %build
