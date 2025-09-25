@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 25 06:56:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.2.13
+  https://krita.org/en/posts/2025/krita-5.2.13-released/
+  * Fixes CVE-2025-59820
+- Drop patches:
+  * 5d44af277b005692241a09f30e11bb0d16166823.patch
+  * 0001-Fix-build-with-libheif-1.20.patch
+  * 0001-Fix-compilation-with-heif-1.20.2.patch
+
+-------------------------------------------------------------------
 Wed Aug 20 07:35:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.2.11

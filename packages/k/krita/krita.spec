@@ -29,7 +29,7 @@
 %define pyver python311
 %endif
 Name:           krita
-Version:        5.2.11
+Version:        5.2.13
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
@@ -41,26 +41,15 @@ Source2:        krita.keyring
 %endif
 # PATCH-FIX-UPSTREAM
 Patch0:         0004-Fix-build-with-sip6.8.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         5d44af277b005692241a09f30e11bb0d16166823.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-build-with-libheif-1.20.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-Fix-compilation-with-heif-1.20.2.patch
 BuildRequires:  %{pyver}-devel
 BuildRequires:  %{pyver}-qt5-devel
 BuildRequires:  %{pyver}-sip-devel
 BuildRequires:  OpenEXR-devel
+BuildRequires:  boost-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel
 BuildRequires:  giflib-devel
 BuildRequires:  gsl-devel
-%if 0%{?suse_version} > 1500
-BuildRequires:  libboost_system-devel
-%else
-BuildRequires:  libboost_system1_75_0-devel
-#!BuildIgnore:  libboost_headers1_66_0-devel
-%endif
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel
@@ -144,6 +133,8 @@ Development headers and libraries for Krita.
 
 %prep
 %autosetup -p1
+
+sed -i 's#COMPONENTS system##' CMakeLists.txt
 
 %build
 %cmake_kf5 -d build -- -DKRITA_ENABLE_PCH:BOOL=OFF
