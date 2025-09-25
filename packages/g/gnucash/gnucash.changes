@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 25 10:00:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gnucash-boost-1.89.patch: Fix build against boost 1.89
+- Drop libboost_system-devel-impl: no longer existing (boo#1250512)
+
+-------------------------------------------------------------------
 Wed Jul 16 13:45:37 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 5.12:

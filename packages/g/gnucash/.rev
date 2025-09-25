@@ -1147,4 +1147,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1295953</requestid>
   </revision>
+  <revision rev="115" vrev="3">
+    <srcmd5>01094bb2caa9d79d092974e174428c6a</srcmd5>
+    <version>5.12</version>
+    <time>1758818763</time>
+    <user>anag_factory</user>
+    <comment>- Add gnucash-boost-1.89.patch: Fix build against boost 1.89
+- Drop libboost_system-devel-impl: no longer existing (boo#1250512) (forwarded request 1307089 from dimstar)</comment>
+    <requestid>1307127</requestid>
+  </revision>
 </revisionlist>

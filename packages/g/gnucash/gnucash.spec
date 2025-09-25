@@ -1,7 +1,7 @@
 #
 # spec file for package gnucash
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,7 @@ Patch0:         gnucash-cpan-warning.patch
 # PATCH-FIX-UPSTREAM gnucash-libm.patch gh#gnucash/gnucash#632 dimstar@opensuse.org -- Link libm: gnucash uses e.g. log10 without explicitly requesting libm
 Patch1:         gnucash-libm.patch
 Patch2:         gnucash-4.1-fix-gtest-path.patch
+Patch3:         gnucash-boost-1.89.patch
 
 BuildRequires:  cmake >= 3.14
 BuildRequires:  doxygen
@@ -66,7 +67,6 @@ BuildRequires:  libboost_headers-devel-impl >= 1.67.0
 BuildRequires:  libboost_locale-devel-impl >= 1.67.0
 BuildRequires:  libboost_program_options-devel-impl >= 1.67.0
 BuildRequires:  libboost_regex-devel-impl >= 1.67.0
-BuildRequires:  libboost_system-devel-impl >= 1.67.0
 BuildRequires:  libdbi-drivers-dbd-sqlite3
 BuildRequires:  libicu-devel
 BuildRequires:  makeinfo
