@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyquery
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,11 @@ XML and HTML manipulation.
 %check
 # Disable tests which perform live fetch
 # test_selector_html uses XML namespaces, which are broken with libxml2 2.10.4+
-%pytest -k 'not (test_get or test_selector_html)' tests
+# test_val_for_textarea libxml2-2.14 https://github.com/gawel/pyquery/issues/257
+# test_replaceWith libxml2-2.14 https://github.com/gawel/pyquery/issues/257
+# test_post libxml2-2.14 https://github.com/gawel/pyquery/issues/257
+# test_session libxml2-2.14 https://github.com/gawel/pyquery/issues/257
+%pytest -k 'not (test_get or test_selector_html or test_val_for_textarea or test_replaceWith or test_post or test_session)' tests
 %endif
 
 %if !%{with test}

@@ -241,4 +241,12 @@ Can't create the python3 package in dlp, so whoever pulls this would have to do 
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284643</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>e0f71b250f8a0716feaffb32dda32867</srcmd5>
+    <version>2.0.1</version>
+    <time>1758818631</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306905</requestid>
+  </revision>
 </revisionlist>
