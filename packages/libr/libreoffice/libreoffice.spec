@@ -150,6 +150,8 @@ Patch992:       python34-no-f-strings.patch
 Patch995:       reproducible-clucene.patch
 # Add .key (Apple Keynote) files to Bash completion (tdf#167995)
 Patch996:       bash-completion-key.patch
+# https://github.com/LibreOffice/core/commit/b4e581f3e3ded8d13065e6c21777eca1f229e53d
+Patch997:       poppler-25.09.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -322,13 +324,13 @@ Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
 Source2020:     %{external_url}/boost_1_89_0.tar.xz
-Source2023:     %{external_url}/poppler-25.08.0.tar.xz
+Source2023:     %{external_url}/poppler-25.09.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.12.tar.gz
 Source2030:     %{external_url}/tiff-4.7.0.tar.xz
 Source2031:     %{external_url}/libcmis-0.6.2.tar.xz
 Provides:       bundled(boost) = 1.89.0
 Provides:       bundled(libcmis) = 0.6.2
-Provides:       bundled(poppler) = 25.08.0
+Provides:       bundled(poppler) = 25.09.0
 Provides:       bundled(poppler-data) = 0.4.12
 Provides:       bundled(tiff) = 4.7.0
 %else
@@ -1122,6 +1124,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch -P 992 -p1
 %endif
 %patch -P 996 -p1
+%patch -P 997 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330

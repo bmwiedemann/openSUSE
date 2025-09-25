@@ -3747,4 +3747,12 @@ Petr</comment>
     <comment>Trying to fix build with boost 1.89.0 and more breakages</comment>
     <requestid>1306544</requestid>
   </revision>
+  <revision rev="314" vrev="3">
+    <srcmd5>acbc3e0ce4209d9fb14a89acb968f5d3</srcmd5>
+    <version>25.8.1.1</version>
+    <time>1758818653</time>
+    <user>anag_factory</user>
+    <comment>Port to poppler 25.09 (still works with older ones)</comment>
+    <requestid>1306810</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 23 11:06:44 UTC 2025 - pgajdos@suse.com
+
+- Added patch:
+  * poppler-25.09.patch
+    + upstream patch porting libreoffice to poppler 25.09.0
+- upgrade bundled poppler-25.08.0.tar.xz -> poppler-25.09.0.tar.xz
+
+-------------------------------------------------------------------
 Mon Sep 22 12:32:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with boost 1.89.0
