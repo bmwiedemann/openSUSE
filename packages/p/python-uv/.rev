@@ -1441,4 +1441,30 @@
   * Store native credentials for realms with the https scheme stripped</comment>
     <requestid>1306573</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e216c9a8941f95a3e3f6acf0376eb7b7</srcmd5>
+    <version>0.8.22</version>
+    <time>1758818759</time>
+    <user>anag_factory</user>
+    <comment>- update 0.8.22
+ * Security
+  * Upgrade astral-tokio-tar to 0.5.5 which hardens tar archive extraction 
+ * Preview features
+  * Add support for S3 request signing 
+  * Allow upgrading pre-release versions of the same minor Python version 
+ * Enhancements
+  * Refresh lockfile when --refresh is provided 
+  * Add --force flag for uv cache clean 
+  * Improve resolution errors with proxied packages 
+ * Bug fixes
+  * Hide freethreaded+debug Python downloads in uv python list 
+  * Retain the cache lock and temporary caches during uv run and uvx 
+ * Documentation
+  * Add package level conflicts to the conflicting dependencies docs 
+  * Document pyodide support 
+  * Document support for free-threaded and debug Python versions 
+  * Expand the contribution docs on issue selection 
+  * Tweak title for viewing version in project guide</comment>
+    <requestid>1307125</requestid>
+  </revision>
 </revisionlist>

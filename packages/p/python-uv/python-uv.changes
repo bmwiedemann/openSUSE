@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 25 13:48:30 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update 0.8.22
+ * Security
+  * Upgrade astral-tokio-tar to 0.5.5 which hardens tar archive extraction 
+ * Preview features
+  * Add support for S3 request signing 
+  * Allow upgrading pre-release versions of the same minor Python version 
+ * Enhancements
+  * Refresh lockfile when --refresh is provided 
+  * Add --force flag for uv cache clean 
+  * Improve resolution errors with proxied packages 
+ * Bug fixes
+  * Hide freethreaded+debug Python downloads in uv python list 
+  * Retain the cache lock and temporary caches during uv run and uvx 
+ * Documentation
+  * Add package level conflicts to the conflicting dependencies docs 
+  * Document pyodide support 
+  * Document support for free-threaded and debug Python versions 
+  * Expand the contribution docs on issue selection 
+  * Tweak title for viewing version in project guide 
+
+-------------------------------------------------------------------
 Mon Sep 22 15:21:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.19 
