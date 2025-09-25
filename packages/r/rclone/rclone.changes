@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Sep 24 19:58:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.71.1:
+  * Version v1.71.1
+  * pacer: fix deadlock with --max-connections
+  * Revert "azureblob: fix deadlock with --max-connections with InvalidBlockOrBlob errors"
+  * march: fix deadlock when using --fast-list on syncs - fixes #8811
+  * docs: HDFS: erasure coding limitation #8808
+  * local: fix rmdir "Access is denied" on windows - fixes #8363
+  * bisync: fix error handling for renamed conflicts
+  * docs: pcloud: update root_folder_id instructions
+  * operations: fix partial name collisions for non --inplace copies
+  * drive: docs: update making your own client ID instructions
+  * internetarchive: fix server side copy files with spaces
+  * lib/rest: add URLPathEscapeAll to URL escape as many chars as possible
+  * docs: add link to MEGA S4 from MEGA page
+  * docs: clarify subcommand description in rclone usage
+  * docs: fix description of regex syntax of name transform
+  * docs: add some more details about supported regex syntax
+  * makefile: fix lib/transform docs not getting updated
+  * vfs: fix SIGHUP killing serve instead of flushing directory caches
+  * docs: remove broken links from rc to commands
+  * docs: add example of how to add date as suffix
+  * box: fix about after change in API return - fixes #8776
+  * docs: fix incorrectly escaped windows path separators
+  * build: restore error handling in gendocs
+  * combine: propagate SlowHash feature
+  * docs/oracleobjectstorage: add introduction before external links and remove broken link
+  * docs: fix markdown lint issues in backend docs
+  * docs: fix markdown lint issues in command docs
+  * docs: update markdown code block json indent size 2
+  * mount: do not log successful unmount as an error - fixes #8766
+  * Start v1.71.1-DEV development
+
+-------------------------------------------------------------------
 Fri Aug 22 20:49:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.71.0:
