@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 25 05:23:24 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 5.4:  
+  * Memory allocation safety checks for event storage (thanks David.A for the bug report)
+  * Fix off-by-one boundary check in seqmap code (thanks David.A for the bug report)
+  * The minimum value for the period (-p flag) is now 0.001 milliseconds
+
+-------------------------------------------------------------------
 Sun Jan  5 20:30:22 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 5.3:
