@@ -1,7 +1,7 @@
 #
 # spec file for package dealii
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
-%define sover 9.7.0
+%define sover 9.7.1
 %define shlibver %(echo %{sover} | tr "." "_")
 %define srcname dealii
 
@@ -83,7 +83,7 @@
 %endif
 
 Name:           %{pname}
-Version:        9.7.0
+Version:        9.7.1
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later
@@ -102,9 +102,9 @@ BuildRequires:  gmsh-devel
 BuildRequires:  hdf5%{?my_suffix}-devel
 BuildRequires:  kokkos-devel >= 4
 BuildRequires:  lapack-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_serialization-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  memory-constraints
 BuildRequires:  metis-devel

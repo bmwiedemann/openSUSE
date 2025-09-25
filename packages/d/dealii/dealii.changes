@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 21 19:16:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.7.1:
+  * fixes the default parameters for MatrixOut
+    (gh#dealii/dealii#18803).
+  * fixes a line orientation bug encountered with FESystem
+    (gh#dealii/dealii#18833).
+  * fixes an issue with the face handling in 1D in MatrixFree
+    (gh#dealii/dealii#18835).
+- Drop stub library libboost_system-devel BuildRequires in favour
+  of libboost_headers-devel. 
+
+-------------------------------------------------------------------
 Mon Aug  4 18:12:02 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.7.0:
