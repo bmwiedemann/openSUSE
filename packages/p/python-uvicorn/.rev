@@ -338,4 +338,12 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301305</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>24fea65830677ffbb8c1c9d742aecf05</srcmd5>
+    <version>0.36.0</version>
+    <time>1758818649</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306745</requestid>
+  </revision>
 </revisionlist>

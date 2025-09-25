@@ -1,0 +1,156 @@
+From 208a37a4de8f2fd6697dc3eaf076bac7442f5628 Mon Sep 17 00:00:00 2001
+From: Thomas Grainger <tagrain@gmail.com>
+Date: Sat, 14 Oct 2023 11:48:19 +0100
+Subject: [PATCH 01/19] use asyncio.run(..., loop_factory) to avoid
+ asyncio.set_event_loop_policy
+
+---
+ tests/test_auto_detection.py | 11 ++---
+ uvicorn/_compat.py           | 86 ++++++++++++++++++++++++++++++++++++
+ uvicorn/config.py            | 17 +++----
+ uvicorn/loops/asyncio.py     | 13 ++++--
+ uvicorn/loops/auto.py        | 18 +++++---
+ uvicorn/loops/uvloop.py      |  9 +++-
+ uvicorn/main.py              |  4 +-
+ uvicorn/server.py            |  4 +-
+ uvicorn/workers.py           |  6 +--
+ 9 files changed, 138 insertions(+), 30 deletions(-)
+ create mode 100644 uvicorn/_compat.py
+
+Index: uvicorn-0.36.0/tests/test_auto_detection.py
+===================================================================
+--- uvicorn-0.36.0.orig/tests/test_auto_detection.py
++++ uvicorn-0.36.0/tests/test_auto_detection.py
+@@ -1,6 +1,7 @@
+ import asyncio
+ import contextlib
+ import importlib
++import sys
+ 
+ import pytest
+ 
+@@ -12,9 +13,14 @@ from uvicorn.server import ServerState
+ 
+ try:
+     importlib.import_module("uvloop")
+-    expected_loop = "uvloop"  # pragma: py-win32
+ except ImportError:  # pragma: py-not-win32
+     expected_loop = "asyncio"
++except AttributeError:  # pragma: py-lt-314  # pragma: py-win32
++    if sys.version_info < (3, 14):  # pragma: no cover
++        raise
++    expected_loop = "asyncio"
++else:  # pragma: py-win32  # pragma: py-gte-314
++    expected_loop = "uvloop"
+ 
+ try:
+     importlib.import_module("httptools")
+Index: uvicorn-0.36.0/uvicorn/_compat.py
+===================================================================
+--- uvicorn-0.36.0.orig/uvicorn/_compat.py
++++ uvicorn-0.36.0/uvicorn/_compat.py
+@@ -5,6 +5,13 @@ import sys
+ from collections.abc import Callable, Coroutine
+ from typing import Any, TypeVar
+ 
++__all__ = ["asyncio_run", "iscoroutinefunction"]
++
++if sys.version_info >= (3, 14):
++    from inspect import iscoroutinefunction
++else:
++    from asyncio import iscoroutinefunction
++
+ _T = TypeVar("_T")
+ 
+ if sys.version_info >= (3, 12):
+Index: uvicorn-0.36.0/uvicorn/config.py
+===================================================================
+--- uvicorn-0.36.0.orig/uvicorn/config.py
++++ uvicorn-0.36.0/uvicorn/config.py
+@@ -16,6 +16,7 @@ from typing import IO, Any, Callable, Li
+ 
+ import click
+ 
++from uvicorn._compat import iscoroutinefunction
+ from uvicorn._types import ASGIApplication
+ from uvicorn.importer import ImportFromStringError, import_from_string
+ from uvicorn.logging import TRACE_LOG_LEVEL
+Index: uvicorn-0.36.0/uvicorn/loops/auto.py
+===================================================================
+--- uvicorn-0.36.0.orig/uvicorn/loops/auto.py
++++ uvicorn-0.36.0/uvicorn/loops/auto.py
+@@ -1,17 +1,23 @@
+ from __future__ import annotations
+ 
+ import asyncio
++import sys
+ from collections.abc import Callable
+ 
+ 
+-def auto_loop_factory(use_subprocess: bool = False) -> Callable[[], asyncio.AbstractEventLoop]:
++def auto_loop_factory(use_subprocess: bool = False) -> Callable[[], asyncio.AbstractEventLoop]:  # pragma: no cover
+     try:
+         import uvloop  # noqa
+     except ImportError:  # pragma: no cover
+-        from uvicorn.loops.asyncio import asyncio_loop_factory as loop_factory
+-
+-        return loop_factory(use_subprocess=use_subprocess)
++        pass
++    except AttributeError:  # pragma: no cover
++        if sys.version_info < (3, 14):
++            raise
+     else:  # pragma: no cover
+         from uvicorn.loops.uvloop import uvloop_loop_factory
+ 
+         return uvloop_loop_factory(use_subprocess=use_subprocess)
++
++    from uvicorn.loops.asyncio import asyncio_loop_factory as loop_factory
++
++    return loop_factory(use_subprocess=use_subprocess)
+Index: uvicorn-0.36.0/pyproject.toml
+===================================================================
+--- uvicorn-0.36.0.orig/pyproject.toml
++++ uvicorn-0.36.0/pyproject.toml
+@@ -25,6 +25,7 @@ classifiers = [
+     "Programming Language :: Python :: 3.11",
+     "Programming Language :: Python :: 3.12",
+     "Programming Language :: Python :: 3.13",
++    "Programming Language :: Python :: 3.14",
+     "Programming Language :: Python :: Implementation :: CPython",
+     "Programming Language :: Python :: Implementation :: PyPy",
+     "Topic :: Internet :: WWW/HTTP",
+@@ -160,6 +161,7 @@ exclude_lines = [
+     "tests/supervisors/test_multiprocess.py",
+ ]
+ "sys_platform != 'win32'" = ["uvicorn/loops/asyncio.py"]
++"sys_version_info >= (3, 14)" = ["uvicorn/loops/uvloop.py"]
+ 
+ [tool.coverage.coverage_conditional_plugin.rules]
+ py-win32 = "sys_platform == 'win32'"
+@@ -173,3 +175,5 @@ py-gte-310 = "sys_version_info >= (3, 10
+ py-lt-310 = "sys_version_info < (3, 10)"
+ py-gte-311 = "sys_version_info >= (3, 11)"
+ py-lt-311 = "sys_version_info < (3, 11)"
++py-gte-314 = "sys_version_info >= (3, 14)"
++py-lt-314 = "sys_version_info < (3, 14)"
+Index: uvicorn-0.36.0/tests/test_compat.py
+===================================================================
+--- uvicorn-0.36.0.orig/tests/test_compat.py
++++ uvicorn-0.36.0/tests/test_compat.py
+@@ -1,6 +1,7 @@
+ from __future__ import annotations
+ 
+ import asyncio
++import sys
+ from asyncio import AbstractEventLoop
+ 
+ import pytest
+@@ -23,7 +24,7 @@ def test_asyncio_run__custom_loop_factor
+ 
+ 
+ def test_asyncio_run__passing_a_non_awaitable_callback_should_throw_error() -> None:
+-    with pytest.raises(ValueError):
++    with pytest.raises(TypeError if sys.version_info >= (3, 14) else ValueError):
+         asyncio_run(
+             lambda: None,  # type: ignore
+             loop_factory=CustomLoop,

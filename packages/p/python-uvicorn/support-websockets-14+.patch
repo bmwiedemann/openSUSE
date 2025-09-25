@@ -1,15 +1,11 @@
-Index: uvicorn-0.34.2/pyproject.toml
+Index: uvicorn-0.36.0/pyproject.toml
 ===================================================================
---- uvicorn-0.34.2.orig/pyproject.toml
-+++ uvicorn-0.34.2/pyproject.toml
-@@ -92,6 +92,11 @@ filterwarnings = [
-     "ignore:Uvicorn's native WSGI implementation is deprecated.*:DeprecationWarning",
-     "ignore: 'cgi' is deprecated and slated for removal in Python 3.13:DeprecationWarning",
-     "ignore: remove second argument of ws_handler:DeprecationWarning:websockets",
-+    # Websockets 14+
-+    "ignore: websockets.server.WebSocketServerProtocol is deprecated:DeprecationWarning",
-+    "ignore: websockets.legacy is deprecated.*:DeprecationWarning",
-+    "ignore: websockets.client.connect is deprecated:DeprecationWarning",
+--- uvicorn-0.36.0.orig/pyproject.toml
++++ uvicorn-0.36.0/pyproject.toml
+@@ -130,6 +130,7 @@ filterwarnings = [
+     "ignore: websockets.legacy is deprecated.*:DeprecationWarning",
+     "ignore: websockets.server.WebSocketServerProtocol is deprecated.*:DeprecationWarning",
+     "ignore: websockets.client.connect is deprecated.*:DeprecationWarning",
 +    "ignore: websockets.exceptions.InvalidStatusCode is deprecated:DeprecationWarning",
  ]
  

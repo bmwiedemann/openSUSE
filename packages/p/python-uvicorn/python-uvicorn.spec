@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-uvicorn
-Version:        0.34.2
+Version:        0.36.0
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
@@ -31,6 +31,8 @@ URL:            https://github.com/encode/uvicorn
 Source:         https://github.com/encode/uvicorn/archive/%{version}.tar.gz#/uvicorn-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Ignore the large amount of DeprecationWarnings that websockets 14 gave us
 Patch0:         support-websockets-14+.patch
+# PATCH-FIX-UPSTREAM small part of https://github.com/Kludex/uvicorn/pull/2548 test on 3.14
+Patch1:         py314.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
