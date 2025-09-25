@@ -1,7 +1,7 @@
 #
 # spec file for package kstars
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Internal QML import
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 Name:           kstars
-Version:        3.7.7
+Version:        3.7.8
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -40,8 +40,8 @@ Source2:        kstars.keyring
 Patch0:         0001-Fix-installation-with-Qt6.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  curl-devel
-BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  libXISF-devel
 BuildRequires:  libnova-devel
 BuildRequires:  pkgconfig
@@ -59,8 +59,8 @@ BuildRequires:  cmake(KF6Plotting)
 BuildRequires:  cmake(KF6WidgetsAddons)
 BuildRequires:  cmake(KF6XmlGui)
 BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6DataVisualization)
 BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6DataVisualization)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Keychain)
 BuildRequires:  cmake(Qt6Network)
@@ -80,9 +80,9 @@ BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libindi) >= 2.0.0
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(wcslib)
-Requires:       qt6-sql-sqlite
 Requires:       qt6-declarative-imports
 Requires:       qt6-positioning-imports
+Requires:       qt6-sql-sqlite
 Recommends:     /usr/bin/dbus-send
 %if 0%{?suse_version} > 1500
 Recommends:     indi
