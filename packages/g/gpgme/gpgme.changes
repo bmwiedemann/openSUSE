@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 23 19:54:19 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.0.1:
+   * gnupg-manage-keys: New tool as a framework for adding features
+     which would normally be implemented by a script.  Right now it
+     supports the commands "identify" and "delete-expired-keys".
+   * Extend the internal gpgsm_assuan_simple_command to consume diag
+     output.  This fixes a possible lockup
+   * developer visible fixes and portability fixes
+
+-------------------------------------------------------------------
 Fri Jun 13 19:44:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.0.0:

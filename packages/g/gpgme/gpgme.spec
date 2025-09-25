@@ -19,7 +19,7 @@
 
 %define sover 45
 Name:           gpgme
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -95,6 +95,7 @@ GPGME_DEBUG=2:mygpgme.log %make_build check || cat $(find -name mygpgme.log -typ
 
 %files
 %license COPYING COPYING.LESSER LICENSES
+%{_bindir}/gnupg-key-manage
 %{_bindir}/gpgme-json
 %{_bindir}/gpgme-tool
 %dir %{_datadir}/common-lisp

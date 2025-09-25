@@ -10,5 +10,5 @@ Because the direct use of GnuPG from an application can be a
 complicated programming task, it is suggested that all software should
 try to use GPGME instead. This way bug fixes or improvements can be
 done at a central place and every application benefits from this.</description>
-  <devel project="Base:System" package="gpgme"/>
+  <devel project="security:privacy" package="gpgme"/>
 </package>
