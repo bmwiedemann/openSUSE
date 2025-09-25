@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 24 14:06:03 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.65.2:
+  - Fixes
+    * fix: Fix persistent state mode in edit-config-template command
+    * fix: Make init --apply run apply pre and post hooks
+    * fix: Revert to github.com/sergi/go-diff for diff
+  - Documentation
+    * docs: Fix rcm details
+
+-------------------------------------------------------------------
 Fri Sep 19 15:13:08 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.65.1:

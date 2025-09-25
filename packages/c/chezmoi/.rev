@@ -964,4 +964,19 @@
 </comment>
     <requestid>1306037</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>48237b09f7ad32f85a643de120ad727a</srcmd5>
+    <version>2.65.2</version>
+    <time>1758818703</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.65.2:
+  - Fixes
+    * fix: Fix persistent state mode in edit-config-template command
+    * fix: Make init --apply run apply pre and post hooks
+    * fix: Revert to github.com/sergi/go-diff for diff
+  - Documentation
+    * docs: Fix rcm details
+</comment>
+    <requestid>1306954</requestid>
+  </revision>
 </revisionlist>
