@@ -377,4 +377,12 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
 https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-beta-3-released-3118/</comment>
     <requestid>1299469</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>db6fa32d8d28e82ecfc827acd2ddadc9</srcmd5>
+    <version>14.19</version>
+    <time>1758818766</time>
+    <user>anag_factory</user>
+    <comment>- Sync spec file from version 18.</comment>
+    <requestid>1307158</requestid>
+  </revision>
 </revisionlist>
