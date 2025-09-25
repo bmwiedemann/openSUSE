@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 24 08:54:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.2.1
+  * fix: check for pytest compatibility
+  * fix: SentinelNodeFinder uses now mangled_name
+  * 3.14 support
+- Drop support-pytest-8.4.patch, merged upstream
+
+-------------------------------------------------------------------
 Wed Jul  9 06:44:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pytest-8.4.patch:

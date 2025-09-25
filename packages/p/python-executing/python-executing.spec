@@ -1,7 +1,7 @@
 #
 # spec file for package python-executing
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-executing%{psuffix}
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Get the currently executing AST node of a frame, and other information
 License:        MIT
 URL:            https://github.com/alexmojaki/executing
 Source:         https://files.pythonhosted.org/packages/source/e/executing/executing-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM One commit from gh#alexmojaki/executing#97
-Patch0:         support-pytest-8.4.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 4.0.0}
