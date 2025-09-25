@@ -1,7 +1,7 @@
 #
 # spec file for package coreutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %global psuffix %{nil}
 %endif
 Name:           coreutils%{?psuffix}
-Version:        9.7
+Version:        9.8
 Release:        0
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later
@@ -44,11 +44,8 @@ Patch1:         coreutils-remove_hostname_documentation.patch
 Patch3:         coreutils-remove_kill_documentation.patch
 Patch4:         coreutils-i18n.patch
 Patch8:         coreutils-sysinfo.patch
-Patch10:        coreutils-9.7-sort-CVE-2025-5278.patch
 # OBS / RPMLINT require /usr/bin/timeout to be built with the -fpie option.
 Patch100:       coreutils-build-timeout-as-pie.patch
-# There is no network in the build root so make the test succeed
-Patch112:       coreutils-getaddrinfo.patch
 # Assorted fixes
 Patch113:       coreutils-misc.patch
 # Skip 2 valgrind'ed sort tests on ppc/ppc64 which would fail due to
@@ -143,16 +140,14 @@ This package contains the documentation for the GNU Core Utilities.
 
 %prep
 %setup -q -n coreutils-%{version}
-%patch -P 4 -p1
+%patch -P 4
 %patch -P 1
 %patch -P 3
 %patch -P 8
-%patch -P 10 -p1
 #
 %if 0%{?suse_version} <= 1320
 %patch -P 100
 %endif
-%patch -P 112
 %patch -P 113
 
 %patch -P 300

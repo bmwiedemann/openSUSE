@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Tue Sep 23 19:39:43 UTC 2025 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Update to 9.8:
+  Bug fixes
+  * 'b2sum' will diagnose --length values that are too big.
+    Previously it would have silently assumed 512 for any larger values.
+    [bug introduced in coreutils-9.6]
+  * 'base32' and 'base64' when decoding will again diagnose partially
+    padded data that ends with a newline.
+    [bug introduced in coreutils-9.5]
+  * 'basenc -d -i' will now strip '=' characters from the input
+    in encodings where padding characters are not valid.
+    [bug introduced with the basenc program in coreutils-8.31]
+  * 'cp -p' had spurious "Operation not supported" failures when
+    copying to non-NFS files from NFSv4 files with trivial ACLs.
+    [bug introduced in coreutils-9.6]
+  * 'cp --sparse=always' missed some opportunities to create holes.
+    That is, although the copies had the correct data, sometimes
+    data zeros used extents rather than holes.
+    [This bug was present in "the beginning".]
+  * cp missed opportunities to create holes when copying from file
+    systems like squashfs that support SEEK_HOLE only trivially.
+    [bug introduced in coreutils-9.0]
+  * cp, install, and mv now avoid possible data corruption on
+    glibc 2.41 and 2.42 systems when copy_file_range is used with ranges > 2GiB,
+    avoiding https://sourceware.org/PR33245
+    [bug triggered since coreutils-9.0]
+  * 'date' supports specifying multiple named formats with the last taking
+    precedence.  Previously multiple specifications would induce an error.
+    [bug introduced in coreutils-5.90]
+  * 'dd oflag=seek_bytes' no longer mistakenly reports errors when the
+    output file exists on GNU/Hurd.
+    [bug introduced in coreutils-8.16]
+  * 'fold' no longer exhausts memory when processing large inputs
+    with a very large --width argument.
+    [This bug was present in "the beginning".]
+  * 'install -d' now produces the correct diagnostic upon failure
+    to create a directory.  Previously it would have produced
+    a confusing error about changing permissions.
+    [This bug was present in "the beginning".]
+  * "ls --size --block-size=\'k" could misalign output in locales
+    with multi-byte thousands grouping characters.
+    [This bug was present in "the beginning".]
+  * 'nohup' avoids implementation defined behavior setting umask,
+    avoiding a FORTIFY runtime failure on Bionic libc.
+    [This bug was present in "the beginning".]
+  * 'od --strings' with '-N' now works correctly.  Previously od might
+    write a NUL byte after a heap buffer, or output invalid addresses.
+    [These bugs were present in "the beginning".]
+  * 'od -w0' will now issue a diagnostic and exit gracefully.
+    Previously it would have aborted.
+    [bug introduced in coreutils-9.3]
+  * 'od -w' no longer silently mishandles enormous widths like 3037000500.
+    Instead, it either outputs correctly or diagnoses a too-large width.
+    [This bug was present in "the beginning".]
+  * 'od +N.' (where N is a decimal number) works again as per POSIX.
+    [bug introduced in textutils-2.0]
+  * 'od /dev/null ++0' no longer mistakenly treats the ++0 as an offset.
+    [This bug was present in "the beginning".]
+  * 'sort' with key character offsets of SIZE_MAX, could induce
+    a read of 1 byte before an allocated heap buffer. For example:
+    'sort +0.18446744073709551615R input' on 64 bit systems.
+    [bug introduced in coreutils-7.2]
+  * stdbuf now works on AIX.  Previously it would have been ineffective.
+    [bug introduced with the stdbuf program in coreutils-7.5]
+  * 'tail -n NUM' no longer can output more than NUM lines if stdin
+    is a largish regular file with a nonzero initial offset, and grows
+    while 'tail' is reading it.
+    [This bug was present in "the beginning".]
+  * 'tail -f -n +NUM' no longer mishandles NUM values >= UINTMAX_MAX
+    when the input is seekable.
+    [bug introduced in coreutils-9.6]
+  * 'tail --pid' avoids some unlikely races if the kernel reuses PIDs.
+    [bug introduced in coreutils-9.5]
+  * 'tty' now exits with status 4 with a special diagnostic if ttyname
+    fails even though standard input is a tty.  Formerly it quietly
+    pretended that standard input was not a tty.
+    [This bug was present in "the beginning".]
+  New Features
+  * basenc supports the --base58 option to encode and decode
+    the visually unambiguous Base58 encoding.
+  * 'cksum -a' now supports the 'sha3' argument, to use the SHA3-224,
+    SHA3-256, SHA3-384, SHA3-512 message digest algorithms depending on
+    the argument passed to the required --length (-l) option.
+  * 'cksum -a' now supports the 'sha2' argument, as a more consistent
+    interface than the existing 'sha224', 'sha256', 'sha384', 'sha512'
+    arguments, which are now selected with the --length (-l) option.
+  * 'date' now outputs dates in the country's native calendar for the
+    Iranian locale (fa_IR) and for the Ethiopian locale (am_ET), and also
+    does so more consistently for the Thailand locale (th_TH.UTF-8).
+  * fold now supports multi-byte characters, honoring their column width.
+    Also the --characters (-c) option was added to wrap at a certain
+    number of characters, similarly to --bytes in uni-byte locales.
+  * nproc now honors any cgroup v2 configured CPU quotas,
+    which may reduce the effective number of processors available.
+  * stty supports setting arbitrary baud rates on supported systems,
+    like Hurd, Linux with glibc >= 2.42, and some BSDs.
+    Also on other systems the full set of supported baud rates
+    is determined at build time if possible.
+  * Commands that support hardware acceleration like cksum and wc
+    can now disable this acceleration at runtime through the
+    commonly used GLIBC_TUNABLES environment variable.  For example
+    to disable the use of AVX512 instructions in cksum, you can:
+      export GLIBC_TUNABLES='glibc.cpu.hwcaps=-AVX512F'
+  Changes to conform better to POSIX.1-2024
+  * readlink now defaults to being verbose if the POSIXLY_CORRECT
+    environment variable is set.
+  * realpath now supports -E, which specifies the default behavior.
+    The corresponding long option is --canonicalize.
+  * tsort now accepts and ignores -w.
+  Improvements
+  * 'factor' is now much faster at identifying large prime numbers,
+    and significantly faster on composite numbers greater than 2^128.
+  * fold now exits immediately upon receiving a write error,
+    which is significant when reading large / unbounded inputs.
+  * 'seq' is more accurate with large integer start values.
+    Previously 'seq 18446744073709551617 inf | head -n1' would
+    output the number before the user specified start value.
+  Build-related
+  * cksum was not compilable by Apple LLVM 10.0.0 x86-64, which
+    lacks support for checking for the VPCLMULQDQ instruction.
+    [bug introduced in coreutils-9.6]
+- coreutils-9.7-sort-CVE-2025-5278.patch: Remove now-upstream patch.
+- coreutils-getaddrinfo.patch: Likewise.
+- coreutils-i18n.patch: Refresh patch.
+  Remove i18n part for fold(1).
+  Remove the mbchar part as it is now already pulled in upstream
+  indirectly via the manywarnings gnulib module.
+- Refresh all other patches.
+
+-------------------------------------------------------------------
 Mon Jun  2 09:30:09 UTC 2025 - rw@suse.com
 
 - coreutils-9.7-sort-CVE-2025-5278.patch: Add upstream patch:

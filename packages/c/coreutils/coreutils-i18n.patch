@@ -7,17 +7,13 @@ Subject: [PATCH] coreutils-i18n.patch
  bootstrap.conf              |    2 
  configure.ac                |    6 
  lib/linebuffer.h            |    8 
- lib/mbchar.c                |   23 +
- lib/mbchar.h                |  383 +++++++++++++++++++++
  lib/mbfile.c                |   20 +
  lib/mbfile.h                |  283 +++++++++++++++
- m4/mbchar.m4                |   15 
  m4/mbfile.m4                |   16 
  src/cut.c                   |  508 ++++++++++++++++++++++++++--
  src/expand-common.c         |  114 ++++++
  src/expand-common.h         |   12 
  src/expand.c                |   90 ++++-
- src/fold.c                  |  311 +++++++++++++++--
  src/local.mk                |    4 
  src/pr.c                    |  443 ++++++++++++++++++++++--
  src/sort.c                  |  790 +++++++++++++++++++++++++++++++++++++++++---
@@ -27,30 +23,26 @@ Subject: [PATCH] coreutils-i18n.patch
  tests/i18n/sort.sh          |   29 +
  tests/local.mk              |    4 
  tests/misc/expand.pl        |   42 ++
- tests/misc/fold.pl          |   50 ++
  tests/misc/sort-mb-tests.sh |   45 ++
  tests/misc/unexpand.pl      |   39 ++
  tests/pr/pr-tests.pl        |   49 ++
  tests/sort/sort-merge.pl    |   42 ++
  tests/sort/sort.pl          |   40 ++
  tests/unexpand/mb.sh        |  172 +++++++++
- 30 files changed, 3632 insertions(+), 195 deletions(-)
- create mode 100644 lib/mbchar.c
- create mode 100644 lib/mbchar.h
+ 25 files changed, 2878 insertions(+), 167 deletions(-)
  create mode 100644 lib/mbfile.c
  create mode 100644 lib/mbfile.h
- create mode 100644 m4/mbchar.m4
  create mode 100644 m4/mbfile.m4
  create mode 100755 tests/expand/mb.sh
  create mode 100755 tests/i18n/sort.sh
  create mode 100755 tests/misc/sort-mb-tests.sh
  create mode 100755 tests/unexpand/mb.sh
 
-Index: coreutils-9.7/bootstrap.conf
+Index: bootstrap.conf
 ===================================================================
---- coreutils-9.7.orig/bootstrap.conf
-+++ coreutils-9.7/bootstrap.conf
-@@ -166,6 +166,8 @@ gnulib_modules="
+--- bootstrap.conf.orig
++++ bootstrap.conf
+@@ -169,6 +169,8 @@ gnulib_modules="
    maintainer-makefile
    malloc-gnu
    manywarnings
@@ -59,11 +51,11 @@ Index: coreutils-9.7/bootstrap.conf
    mbrlen
    mbrtoc32
    mbrtowc
-Index: coreutils-9.7/configure.ac
+Index: configure.ac
 ===================================================================
---- coreutils-9.7.orig/configure.ac
-+++ coreutils-9.7/configure.ac
-@@ -504,6 +504,12 @@ fi
+--- configure.ac.orig
++++ configure.ac
+@@ -465,6 +465,12 @@ fi
  # I'm leaving it here for now.  This whole thing needs to be modernized...
  gl_WINSIZE_IN_PTEM
  
@@ -76,10 +68,10 @@ Index: coreutils-9.7/configure.ac
  gl_HEADER_TIOCGWINSZ_IN_TERMIOS_H
  
  if test $gl_cv_sys_tiocgwinsz_needs_termios_h = no && \
-Index: coreutils-9.7/lib/linebuffer.h
+Index: lib/linebuffer.h
 ===================================================================
---- coreutils-9.7.orig/lib/linebuffer.h
-+++ coreutils-9.7/lib/linebuffer.h
+--- lib/linebuffer.h.orig
++++ lib/linebuffer.h
 @@ -27,6 +27,11 @@ extern "C" {
  #endif
  
@@ -102,426 +94,10 @@ Index: coreutils-9.7/lib/linebuffer.h
  };
  
  /* Initialize linebuffer LINEBUFFER for use. */
-Index: coreutils-9.7/lib/mbchar.c
+Index: lib/mbfile.c
 ===================================================================
 --- /dev/null
-+++ coreutils-9.7/lib/mbchar.c
-@@ -0,0 +1,23 @@
-+/* Copyright (C) 2001, 2006, 2009-2025 Free Software Foundation, Inc.
-+
-+   This file is free software: you can redistribute it and/or modify
-+   it under the terms of the GNU Lesser General Public License as
-+   published by the Free Software Foundation; either version 2.1 of the
-+   License, or (at your option) any later version.
-+
-+   This file is distributed in the hope that it will be useful,
-+   but WITHOUT ANY WARRANTY; without even the implied warranty of
-+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+   GNU Lesser General Public License for more details.
-+
-+   You should have received a copy of the GNU Lesser General Public License
-+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
-+
-+
-+#include <config.h>
-+
-+#define MBCHAR_INLINE _GL_EXTERN_INLINE
-+
-+#include <limits.h>
-+
-+#include "mbchar.h"
-Index: coreutils-9.7/lib/mbchar.h
-===================================================================
---- /dev/null
-+++ coreutils-9.7/lib/mbchar.h
-@@ -0,0 +1,383 @@
-+/* Multibyte character data type.
-+   Copyright (C) 2001, 2005-2007, 2009-2025 Free Software Foundation, Inc.
-+
-+   This file is free software: you can redistribute it and/or modify
-+   it under the terms of the GNU Lesser General Public License as
-+   published by the Free Software Foundation; either version 2.1 of the
-+   License, or (at your option) any later version.
-+
-+   This file is distributed in the hope that it will be useful,
-+   but WITHOUT ANY WARRANTY; without even the implied warranty of
-+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+   GNU Lesser General Public License for more details.
-+
-+   You should have received a copy of the GNU Lesser General Public License
-+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
-+
-+/* Written by Bruno Haible <bruno@clisp.org>.  */
-+
-+/* A multibyte character is a short subsequence of a char* string,
-+   representing a single 32-bit wide character.
-+
-+   We use multibyte characters instead of 32-bit wide characters because
-+   of the following goals:
-+   1) correct multibyte handling, i.e. operate according to the LC_CTYPE
-+      locale,
-+   2) ease of maintenance, i.e. the maintainer needs not know all details
-+      of the ISO C 99 standard,
-+   3) don't fail grossly if the input is not in the encoding set by the
-+      locale, because often different encodings are in use in the same
-+      countries (ISO-8859-1/UTF-8, EUC-JP/Shift_JIS, ...),
-+   4) fast in the case of ASCII characters.
-+
-+   Multibyte characters are only accessed through the mb* macros.
-+
-+   mb_ptr (mbc)
-+     return a pointer to the beginning of the multibyte sequence.
-+
-+   mb_len (mbc)
-+     returns the number of bytes occupied by the multibyte sequence.
-+     Always > 0.
-+
-+   mb_iseq (mbc, sc)
-+     returns true if mbc is the standard ASCII character sc.
-+
-+   mb_isnul (mbc)
-+     returns true if mbc is the nul character.
-+
-+   mb_cmp (mbc1, mbc2)
-+     returns a positive, zero, or negative value depending on whether mbc1
-+     sorts after, same or before mbc2.
-+
-+   mb_casecmp (mbc1, mbc2)
-+     returns a positive, zero, or negative value depending on whether mbc1
-+     sorts after, same or before mbc2, modulo upper/lowercase conversion.
-+
-+   mb_equal (mbc1, mbc2)
-+     returns true if mbc1 and mbc2 are equal.
-+
-+   mb_caseequal (mbc1, mbc2)
-+     returns true if mbc1 and mbc2 are equal modulo upper/lowercase conversion.
-+
-+   mb_isalnum (mbc)
-+     returns true if mbc is alphanumeric.
-+
-+   mb_isalpha (mbc)
-+     returns true if mbc is alphabetic.
-+
-+   mb_isascii(mbc)
-+     returns true if mbc is plain ASCII.
-+
-+   mb_isblank (mbc)
-+     returns true if mbc is a blank.
-+
-+   mb_iscntrl (mbc)
-+     returns true if mbc is a control character.
-+
-+   mb_isdigit (mbc)
-+     returns true if mbc is a decimal digit.
-+
-+   mb_isgraph (mbc)
-+     returns true if mbc is a graphic character.
-+
-+   mb_islower (mbc)
-+     returns true if mbc is lowercase.
-+
-+   mb_isprint (mbc)
-+     returns true if mbc is a printable character.
-+
-+   mb_ispunct (mbc)
-+     returns true if mbc is a punctuation character.
-+
-+   mb_isspace (mbc)
-+     returns true if mbc is a space character.
-+
-+   mb_isupper (mbc)
-+     returns true if mbc is uppercase.
-+
-+   mb_isxdigit (mbc)
-+     returns true if mbc is a hexadecimal digit.
-+
-+   mb_width (mbc)
-+     returns the number of columns on the output device occupied by mbc.
-+     Always >= 0.
-+
-+   mb_putc (mbc, stream)
-+     outputs mbc on stream, a byte oriented FILE stream opened for output.
-+
-+   mb_setascii (&mbc, sc)
-+     assigns the standard ASCII character sc to mbc.
-+     (Only available if the 'mbfile' module is in use.)
-+
-+   mb_copy (&destmbc, &srcmbc)
-+     copies srcmbc to destmbc.
-+
-+   Here are the function prototypes of the macros.
-+
-+   extern const char *  mb_ptr (const mbchar_t mbc);
-+   extern size_t        mb_len (const mbchar_t mbc);
-+   extern bool          mb_iseq (const mbchar_t mbc, char sc);
-+   extern bool          mb_isnul (const mbchar_t mbc);
-+   extern int           mb_cmp (const mbchar_t mbc1, const mbchar_t mbc2);
-+   extern int           mb_casecmp (const mbchar_t mbc1, const mbchar_t mbc2);
-+   extern bool          mb_equal (const mbchar_t mbc1, const mbchar_t mbc2);
-+   extern bool          mb_caseequal (const mbchar_t mbc1, const mbchar_t mbc2);
-+   extern bool          mb_isalnum (const mbchar_t mbc);
-+   extern bool          mb_isalpha (const mbchar_t mbc);
-+   extern bool          mb_isascii (const mbchar_t mbc);
-+   extern bool          mb_isblank (const mbchar_t mbc);
-+   extern bool          mb_iscntrl (const mbchar_t mbc);
-+   extern bool          mb_isdigit (const mbchar_t mbc);
-+   extern bool          mb_isgraph (const mbchar_t mbc);
-+   extern bool          mb_islower (const mbchar_t mbc);
-+   extern bool          mb_isprint (const mbchar_t mbc);
-+   extern bool          mb_ispunct (const mbchar_t mbc);
-+   extern bool          mb_isspace (const mbchar_t mbc);
-+   extern bool          mb_isupper (const mbchar_t mbc);
-+   extern bool          mb_isxdigit (const mbchar_t mbc);
-+   extern int           mb_width (const mbchar_t mbc);
-+   extern void          mb_putc (const mbchar_t mbc, FILE *stream);
-+   extern void          mb_setascii (mbchar_t *new, char sc);
-+   extern void          mb_copy (mbchar_t *new, const mbchar_t *old);
-+ */
-+
-+#ifndef _MBCHAR_H
-+#define _MBCHAR_H 1
-+
-+/* This file uses _GL_INLINE_HEADER_BEGIN, _GL_INLINE.  */
-+#if !_GL_CONFIG_H_INCLUDED
-+ #error "Please include config.h first."
-+#endif
-+
-+#include <string.h>
-+#include <uchar.h>
-+
-+_GL_INLINE_HEADER_BEGIN
-+#ifndef MBCHAR_INLINE
-+# define MBCHAR_INLINE _GL_INLINE
-+#endif
-+
-+#ifdef __cplusplus
-+extern "C" {
-+#endif
-+
-+
-+/* The longest multibyte characters, nowadays, are 4 bytes long.
-+   Regardless of the values of MB_CUR_MAX and MB_LEN_MAX.  */
-+#define MBCHAR_BUF_SIZE 4
-+
-+struct mbchar
-+{
-+  const char *ptr;      /* pointer to current character */
-+  size_t bytes;         /* number of bytes of current character, > 0 */
-+  bool wc_valid;        /* true if wc is a valid 32-bit wide character */
-+  char32_t wc;          /* if wc_valid: the current character */
-+#if defined GNULIB_MBFILE
-+  char buf[MBCHAR_BUF_SIZE]; /* room for the bytes, used for file input only */
-+#endif
-+};
-+
-+/* EOF (not a real character) is represented with bytes = 0 and
-+   wc_valid = false.  */
-+
-+typedef struct mbchar mbchar_t;
-+
-+/* Access the current character.  */
-+#define mb_ptr(mbc) ((mbc).ptr)
-+#define mb_len(mbc) ((mbc).bytes)
-+
-+/* Comparison of characters.  */
-+#define mb_iseq(mbc, sc) ((mbc).wc_valid && (mbc).wc == (sc))
-+#define mb_isnul(mbc) ((mbc).wc_valid && (mbc).wc == 0)
-+#define mb_cmp(mbc1, mbc2) \
-+  ((mbc1).wc_valid                                                      \
-+   ? ((mbc2).wc_valid                                                   \
-+      ? _GL_CMP ((mbc1).wc, (mbc2).wc)                                  \
-+      : -1)                                                             \
-+   : ((mbc2).wc_valid                                                   \
-+      ? 1                                                               \
-+      : (mbc1).bytes == (mbc2).bytes                                    \
-+        ? memcmp ((mbc1).ptr, (mbc2).ptr, (mbc1).bytes)                 \
-+        : (mbc1).bytes < (mbc2).bytes                                   \
-+          ? (memcmp ((mbc1).ptr, (mbc2).ptr, (mbc1).bytes) > 0 ? 1 : -1) \
-+          : (memcmp ((mbc1).ptr, (mbc2).ptr, (mbc2).bytes) >= 0 ? 1 : -1)))
-+#define mb_casecmp(mbc1, mbc2) \
-+  ((mbc1).wc_valid                                                      \
-+   ? ((mbc2).wc_valid                                                   \
-+      ? _GL_CMP (c32tolower ((mbc1).wc), c32tolower ((mbc2).wc))        \
-+      : -1)                                                             \
-+   : ((mbc2).wc_valid                                                   \
-+      ? 1                                                               \
-+      : (mbc1).bytes == (mbc2).bytes                                    \
-+        ? memcmp ((mbc1).ptr, (mbc2).ptr, (mbc1).bytes)                 \
-+        : (mbc1).bytes < (mbc2).bytes                                   \
-+          ? (memcmp ((mbc1).ptr, (mbc2).ptr, (mbc1).bytes) > 0 ? 1 : -1) \
-+          : (memcmp ((mbc1).ptr, (mbc2).ptr, (mbc2).bytes) >= 0 ? 1 : -1)))
-+#define mb_equal(mbc1, mbc2) \
-+  ((mbc1).wc_valid && (mbc2).wc_valid                                   \
-+   ? (mbc1).wc == (mbc2).wc                                             \
-+   : (mbc1).bytes == (mbc2).bytes                                       \
-+     && memcmp ((mbc1).ptr, (mbc2).ptr, (mbc1).bytes) == 0)
-+#define mb_caseequal(mbc1, mbc2) \
-+  ((mbc1).wc_valid && (mbc2).wc_valid                                   \
-+   ? c32tolower ((mbc1).wc) == c32tolower ((mbc2).wc)                   \
-+   : (mbc1).bytes == (mbc2).bytes                                       \
-+     && memcmp ((mbc1).ptr, (mbc2).ptr, (mbc1).bytes) == 0)
-+
-+/* <ctype.h>, <wctype.h> classification.  */
-+#define mb_isascii(mbc) \
-+  ((mbc).wc_valid && (mbc).wc >= 0 && (mbc).wc <= 127)
-+#define mb_isalnum(mbc) ((mbc).wc_valid && c32isalnum ((mbc).wc))
-+#define mb_isalpha(mbc) ((mbc).wc_valid && c32isalpha ((mbc).wc))
-+#define mb_isblank(mbc) ((mbc).wc_valid && c32isblank ((mbc).wc))
-+#define mb_iscntrl(mbc) ((mbc).wc_valid && c32iscntrl ((mbc).wc))
-+#define mb_isdigit(mbc) ((mbc).wc_valid && c32isdigit ((mbc).wc))
-+#define mb_isgraph(mbc) ((mbc).wc_valid && c32isgraph ((mbc).wc))
-+#define mb_islower(mbc) ((mbc).wc_valid && c32islower ((mbc).wc))
-+#define mb_isprint(mbc) ((mbc).wc_valid && c32isprint ((mbc).wc))
-+#define mb_ispunct(mbc) ((mbc).wc_valid && c32ispunct ((mbc).wc))
-+#define mb_isspace(mbc) ((mbc).wc_valid && c32isspace ((mbc).wc))
-+#define mb_isupper(mbc) ((mbc).wc_valid && c32isupper ((mbc).wc))
-+#define mb_isxdigit(mbc) ((mbc).wc_valid && c32isxdigit ((mbc).wc))
-+
-+/* Extra <wchar.h> function.  */
-+
-+/* Unprintable characters appear as a small box of width 1.  */
-+#define MB_UNPRINTABLE_WIDTH 1
-+
-+MBCHAR_INLINE int
-+mb_width_aux (char32_t wc)
-+{
-+  int w = c32width (wc);
-+  /* For unprintable characters, arbitrarily return 0 for control characters
-+     and MB_UNPRINTABLE_WIDTH otherwise.  */
-+  return (w >= 0 ? w : c32iscntrl (wc) ? 0 : MB_UNPRINTABLE_WIDTH);
-+}
-+
-+#define mb_width(mbc) \
-+  ((mbc).wc_valid ? mb_width_aux ((mbc).wc) : MB_UNPRINTABLE_WIDTH)
-+
-+/* Output.  */
-+#define mb_putc(mbc, stream)  fwrite ((mbc).ptr, 1, (mbc).bytes, (stream))
-+
-+#if defined GNULIB_MBFILE
-+/* Assignment.  */
-+# define mb_setascii(mbc, sc) \
-+   ((mbc)->ptr = (mbc)->buf, (mbc)->bytes = 1, (mbc)->wc_valid = 1, \
-+    (mbc)->wc = (mbc)->buf[0] = (sc))
-+#endif
-+
-+/* Copying a character.  */
-+MBCHAR_INLINE void
-+mb_copy (mbchar_t *new_mbc, const mbchar_t *old_mbc)
-+{
-+#if defined GNULIB_MBFILE
-+  if (old_mbc->ptr == &old_mbc->buf[0])
-+    {
-+      memcpy (&new_mbc->buf[0], &old_mbc->buf[0], old_mbc->bytes);
-+      new_mbc->ptr = &new_mbc->buf[0];
-+    }
-+  else
-+#endif
-+    new_mbc->ptr = old_mbc->ptr;
-+  new_mbc->bytes = old_mbc->bytes;
-+  if ((new_mbc->wc_valid = old_mbc->wc_valid))
-+    new_mbc->wc = old_mbc->wc;
-+}
-+
-+
-+/* is_basic(c) tests whether the single-byte character c is
-+   - in the ISO C "basic character set" or is one of '@', '$', and '`'
-+     which ISO C 23 § 5.2.1.1.(1) guarantees to be single-byte and in
-+     practice are safe to treat as basic in the execution character set,
-+     or
-+   - in the POSIX "portable character set", which
-+     <https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap06.html>
-+     equally guarantees to be single-byte.
-+   This is a convenience function, and is in this file only to share code
-+   between mbiter.h, mbuiter.h, and mbfile.h.  */
-+#if (' ' == 32) && ('!' == 33) && ('"' == 34) && ('#' == 35) \
-+    && ('$' == 36) && ('%' == 37) && ('&' == 38) && ('\'' == 39) \
-+    && ('(' == 40) && (')' == 41) && ('*' == 42) && ('+' == 43) \
-+    && (',' == 44) && ('-' == 45) && ('.' == 46) && ('/' == 47) \
-+    && ('0' == 48) && ('1' == 49) && ('2' == 50) && ('3' == 51) \
-+    && ('4' == 52) && ('5' == 53) && ('6' == 54) && ('7' == 55) \
-+    && ('8' == 56) && ('9' == 57) && (':' == 58) && (';' == 59) \
-+    && ('<' == 60) && ('=' == 61) && ('>' == 62) && ('?' == 63) \
-+    && ('@' == 64) && ('A' == 65) && ('B' == 66) && ('C' == 67) \
-+    && ('D' == 68) && ('E' == 69) && ('F' == 70) && ('G' == 71) \
-+    && ('H' == 72) && ('I' == 73) && ('J' == 74) && ('K' == 75) \
-+    && ('L' == 76) && ('M' == 77) && ('N' == 78) && ('O' == 79) \
-+    && ('P' == 80) && ('Q' == 81) && ('R' == 82) && ('S' == 83) \
-+    && ('T' == 84) && ('U' == 85) && ('V' == 86) && ('W' == 87) \
-+    && ('X' == 88) && ('Y' == 89) && ('Z' == 90) && ('[' == 91) \
-+    && ('\\' == 92) && (']' == 93) && ('^' == 94) && ('_' == 95) \
-+    && ('`' == 96) && ('a' == 97) && ('b' == 98) && ('c' == 99) \
-+    && ('d' == 100) && ('e' == 101) && ('f' == 102) && ('g' == 103) \
-+    && ('h' == 104) && ('i' == 105) && ('j' == 106) && ('k' == 107) \
-+    && ('l' == 108) && ('m' == 109) && ('n' == 110) && ('o' == 111) \
-+    && ('p' == 112) && ('q' == 113) && ('r' == 114) && ('s' == 115) \
-+    && ('t' == 116) && ('u' == 117) && ('v' == 118) && ('w' == 119) \
-+    && ('x' == 120) && ('y' == 121) && ('z' == 122) && ('{' == 123) \
-+    && ('|' == 124) && ('}' == 125) && ('~' == 126)
-+/* The character set is ISO-646, not EBCDIC. */
-+# define IS_BASIC_ASCII 1
-+
-+/* All locale encodings (see localcharset.h) map the characters 0x00..0x7F
-+   to U+0000..U+007F, like ASCII, except for
-+     CP864      different mapping of '%'
-+     SHIFT_JIS  different mappings of 0x5C, 0x7E
-+     JOHAB      different mapping of 0x5C
-+   However, these characters in the range 0x20..0x7E are in the ISO C
-+   "basic character set" and in the POSIX "portable character set", which
-+   ISO C and POSIX guarantee to be single-byte.  Thus, locales with these
-+   encodings are not POSIX compliant.  And they are most likely not in use
-+   any more (as of 2023).  */
-+# define is_basic(c) ((unsigned char) (c) < 0x80)
-+
-+#else
-+
-+MBCHAR_INLINE bool
-+is_basic (char c)
-+{
-+  switch (c)
-+    {
-+    case '\0':
-+    case '\007': case '\010':
-+    case '\t': case '\n': case '\v': case '\f': case '\r':
-+    case ' ': case '!': case '"': case '#': case '$': case '%':
-+    case '&': case '\'': case '(': case ')': case '*':
-+    case '+': case ',': case '-': case '.': case '/':
-+    case '0': case '1': case '2': case '3': case '4':
-+    case '5': case '6': case '7': case '8': case '9':
-+    case ':': case ';': case '<': case '=': case '>':
-+    case '?': case '@':
-+    case 'A': case 'B': case 'C': case 'D': case 'E':
-+    case 'F': case 'G': case 'H': case 'I': case 'J':
-+    case 'K': case 'L': case 'M': case 'N': case 'O':
-+    case 'P': case 'Q': case 'R': case 'S': case 'T':
-+    case 'U': case 'V': case 'W': case 'X': case 'Y':
-+    case 'Z':
-+    case '[': case '\\': case ']': case '^': case '_': case '`':
-+    case 'a': case 'b': case 'c': case 'd': case 'e':
-+    case 'f': case 'g': case 'h': case 'i': case 'j':
-+    case 'k': case 'l': case 'm': case 'n': case 'o':
-+    case 'p': case 'q': case 'r': case 's': case 't':
-+    case 'u': case 'v': case 'w': case 'x': case 'y':
-+    case 'z': case '{': case '|': case '}': case '~':
-+      return 1;
-+    default:
-+      return 0;
-+    }
-+}
-+
-+#endif
-+
-+
-+#ifdef __cplusplus
-+}
-+#endif
-+
-+_GL_INLINE_HEADER_END
-+
-+#endif /* _MBCHAR_H */
-Index: coreutils-9.7/lib/mbfile.c
-===================================================================
---- /dev/null
-+++ coreutils-9.7/lib/mbfile.c
++++ lib/mbfile.c
 @@ -0,0 +1,20 @@
 +/* Multibyte character I/O: macros for multi-byte encodings.
 +   Copyright (C) 2012-2025 Free Software Foundation, Inc.
@@ -543,10 +119,10 @@ Index: coreutils-9.7/lib/mbfile.c
 +
 +#define MBFILE_INLINE _GL_EXTERN_INLINE
 +#include "mbfile.h"
-Index: coreutils-9.7/lib/mbfile.h
+Index: lib/mbfile.h
 ===================================================================
 --- /dev/null
-+++ coreutils-9.7/lib/mbfile.h
++++ lib/mbfile.h
 @@ -0,0 +1,283 @@
 +/* Multibyte character I/O: macros for multi-byte encodings.
 +   Copyright (C) 2001, 2005, 2009-2025 Free Software Foundation, Inc.
@@ -831,30 +407,10 @@ Index: coreutils-9.7/lib/mbfile.h
 +_GL_INLINE_HEADER_END
 +
 +#endif /* _MBFILE_H */
-Index: coreutils-9.7/m4/mbchar.m4
+Index: m4/mbfile.m4
 ===================================================================
 --- /dev/null
-+++ coreutils-9.7/m4/mbchar.m4
-@@ -0,0 +1,15 @@
-+# mbchar.m4
-+# serial 9
-+dnl Copyright (C) 2005-2007, 2009-2025 Free Software Foundation, Inc.
-+dnl This file is free software; the Free Software Foundation
-+dnl gives unlimited permission to copy and/or distribute it,
-+dnl with or without modifications, as long as this notice is preserved.
-+dnl This file is offered as-is, without any warranty.
-+
-+dnl autoconf tests required for use of mbchar.m4
-+dnl From Bruno Haible.
-+
-+AC_DEFUN([gl_MBCHAR],
-+[
-+  AC_REQUIRE([AC_USE_SYSTEM_EXTENSIONS])
-+])
-Index: coreutils-9.7/m4/mbfile.m4
-===================================================================
---- /dev/null
-+++ coreutils-9.7/m4/mbfile.m4
++++ m4/mbfile.m4
 @@ -0,0 +1,16 @@
 +# mbfile.m4
 +# serial 7
@@ -872,10 +428,10 @@ Index: coreutils-9.7/m4/mbfile.m4
 +  AC_REQUIRE([AC_TYPE_MBSTATE_T])
 +  :
 +])
-Index: coreutils-9.7/src/cut.c
+Index: src/cut.c
 ===================================================================
---- coreutils-9.7.orig/src/cut.c
-+++ coreutils-9.7/src/cut.c
+--- src/cut.c.orig
++++ src/cut.c
 @@ -27,6 +27,11 @@
  #include <stdio.h>
  #include <getopt.h>
@@ -1532,10 +1088,10 @@ Index: coreutils-9.7/src/cut.c
  
  
    if (have_read_stdin && fclose (stdin) == EOF)
-Index: coreutils-9.7/src/expand-common.c
+Index: src/expand-common.c
 ===================================================================
---- coreutils-9.7.orig/src/expand-common.c
-+++ coreutils-9.7/src/expand-common.c
+--- src/expand-common.c.orig
++++ src/expand-common.c
 @@ -19,6 +19,7 @@
  #include <ctype.h>
  #include <stdio.h>
@@ -1664,10 +1220,10 @@ Index: coreutils-9.7/src/expand-common.c
  /* Add the comma or blank separated list of tab stops STOPS
     to the list of tab stops.  */
  extern void
-Index: coreutils-9.7/src/expand-common.h
+Index: src/expand-common.h
 ===================================================================
---- coreutils-9.7.orig/src/expand-common.h
-+++ coreutils-9.7/src/expand-common.h
+--- src/expand-common.h.orig
++++ src/expand-common.h
 @@ -29,6 +29,18 @@ extern idx_t max_column_width;
  /* The desired exit status.  */
  extern int exit_status;
@@ -1687,10 +1243,10 @@ Index: coreutils-9.7/src/expand-common.h
  /* Add tab stop TABVAL to the end of 'tab_list'.  */
  extern void
  add_tab_stop (colno tabval);
-Index: coreutils-9.7/src/expand.c
+Index: src/expand.c
 ===================================================================
---- coreutils-9.7.orig/src/expand.c
-+++ coreutils-9.7/src/expand.c
+--- src/expand.c.orig
++++ src/expand.c
 @@ -38,6 +38,9 @@
  #include <stdio.h>
  #include <getopt.h>
@@ -1842,414 +1398,11 @@ Index: coreutils-9.7/src/expand.c
      }
  }
  
-Index: coreutils-9.7/src/fold.c
+Index: src/local.mk
 ===================================================================
---- coreutils-9.7.orig/src/fold.c
-+++ coreutils-9.7/src/fold.c
-@@ -23,10 +23,32 @@
- #include <getopt.h>
- #include <sys/types.h>
- 
-+/* Get mbstate_t, mbrtowc(), wcwidth().  */
-+#if HAVE_WCHAR_H
-+# include <wchar.h>
-+#endif
-+
-+/* Get iswprint(), iswblank(), wcwidth().  */
-+#if HAVE_WCTYPE_H
-+# include <wctype.h>
-+#endif
-+
- #include "system.h"
- #include "fadvise.h"
- #include "xdectoint.h"
- 
-+/* MB_LEN_MAX is incorrectly defined to be 1 in at least one GCC
-+      installation; work around this configuration error.  */
-+#if !defined MB_LEN_MAX || MB_LEN_MAX < 2
-+# undef MB_LEN_MAX
-+# define MB_LEN_MAX 16
-+#endif
-+
-+/* Some systems, like BeOS, have multibyte encodings but lack mbstate_t.  */
-+#if HAVE_MBRTOWC && defined mbstate_t
-+# define mbrtowc(pwc, s, n, ps) (mbrtowc) (pwc, s, n, 0)
-+#endif
-+
- #define TAB_WIDTH 8
- 
- /* The official name of this program (e.g., no 'g' prefix).  */
-@@ -34,20 +56,41 @@
- 
- #define AUTHORS proper_name ("David MacKenzie")
- 
-+#define FATAL_ERROR(Message)                                            \
-+  do                                                                    \
-+    {                                                                   \
-+      error (0, 0, (Message));                                          \
-+      usage (2);                                                        \
-+    }                                                                   \
-+  while (0)
-+
-+enum operating_mode
-+{
-+  /* Fold texts by columns that are at the given positions. */
-+  column_mode,
-+
-+  /* Fold texts by bytes that are at the given positions. */
-+  byte_mode,
-+
-+  /* Fold texts by characters that are at the given positions. */
-+  character_mode,
-+};
-+
-+/* The argument shows current mode. (Default: column_mode) */
-+static enum operating_mode operating_mode;
-+
- /* If nonzero, try to break on whitespace. */
- static bool break_spaces;
- 
--/* If nonzero, count bytes, not column positions. */
--static bool count_bytes;
--
- /* If nonzero, at least one of the files we read was standard input. */
- static bool have_read_stdin;
- 
--static char const shortopts[] = "bsw:0::1::2::3::4::5::6::7::8::9::";
-+static char const shortopts[] = "bcsw:0::1::2::3::4::5::6::7::8::9::";
- 
- static struct option const longopts[] =
- {
-   {"bytes", no_argument, nullptr, 'b'},
-+  {"characters", no_argument, nullptr, 'c'},
-   {"spaces", no_argument, nullptr, 's'},
-   {"width", required_argument, nullptr, 'w'},
-   {GETOPT_HELP_OPTION_DECL},
-@@ -75,6 +118,7 @@ Wrap input lines in each FILE, writing t
- 
-       fputs (_("\
-   -b, --bytes         count bytes rather than columns\n\
-+  -c, --characters    count characters rather than columns\n\
-   -s, --spaces        break at spaces\n\
-   -w, --width=WIDTH   use WIDTH columns instead of 80\n\
- "), stdout);
-@@ -92,7 +136,7 @@ Wrap input lines in each FILE, writing t
- static size_t
- adjust_column (size_t column, char c)
- {
--  if (!count_bytes)
-+  if (operating_mode != byte_mode)
-     {
-       if (c == '\b')
-         {
-@@ -115,30 +159,14 @@ adjust_column (size_t column, char c)
-    to stdout, with maximum line length WIDTH.
-    Return true if successful.  */
- 
--static bool
--fold_file (char const *filename, size_t width)
-+static void
-+fold_text (FILE *istream, size_t width, int *saved_errno)
- {
--  FILE *istream;
-   int c;
-   size_t column = 0;		/* Screen column where next char will go. */
-   idx_t offset_out = 0;		/* Index in 'line_out' for next char. */
-   static char *line_out = nullptr;
-   static idx_t allocated_out = 0;
--  int saved_errno;
--
--  if (STREQ (filename, "-"))
--    {
--      istream = stdin;
--      have_read_stdin = true;
--    }
--  else
--    istream = fopen (filename, "r");
--
--  if (istream == nullptr)
--    {
--      error (0, errno, "%s", quotef (filename));
--      return false;
--    }
- 
-   fadvise (istream, FADVISE_SEQUENTIAL);
- 
-@@ -168,6 +196,15 @@ fold_file (char const *filename, size_t
-               bool found_blank = false;
-               idx_t logical_end = offset_out;
- 
-+              /* If LINE_OUT has no wide character,
-+                 put a new wide character in LINE_OUT
-+                 if column is bigger than width. */
-+              if (offset_out == 0)
-+                {
-+                  line_out[offset_out++] = c;
-+                  continue;
-+                }
-+
-               /* Look for the last blank. */
-               while (logical_end)
-                 {
-@@ -212,13 +249,224 @@ fold_file (char const *filename, size_t
-       line_out[offset_out++] = c;
-     }
- 
--  saved_errno = errno;
-+  *saved_errno = errno;
-+  if (!ferror (istream))
-+    *saved_errno = 0;
-+
-+  if (offset_out)
-+    fwrite (line_out, sizeof (char), offset_out, stdout);
-+
-+}
-+
-+#if HAVE_MBRTOWC
-+static void
-+fold_multibyte_text (FILE *istream, size_t width, int *saved_errno)
-+{
-+  char buf[MB_LEN_MAX + BUFSIZ];  /* For spooling a read byte sequence. */
-+  size_t buflen = 0;        /* The length of the byte sequence in buf. */
-+  char *bufpos = buf;         /* Next read position of BUF. */
-+  wint_t wc;                /* A gotten wide character. */
-+  size_t mblength;        /* The byte size of a multibyte character which shows
-+                           as same character as WC. */
-+  mbstate_t state, state_bak;        /* State of the stream. */
-+  int convfail = 0;                /* 1, when conversion is failed. Otherwise 0. */
-+
-+  static char *line_out = NULL;
-+  idx_t offset_out = 0;        /* Index in `line_out' for next char. */
-+  static idx_t allocated_out = 0;
-+
-+  int increment;
-+  size_t column = 0;
-+
-+  size_t last_blank_pos;
-+  size_t last_blank_column;
-+  int is_blank_seen;
-+  int last_blank_increment = 0;
-+  int is_bs_following_last_blank;
-+  size_t bs_following_last_blank_num;
-+  int is_cr_after_last_blank;
-+
-+#define CLEAR_FLAGS                                \
-+   do                                                \
-+     {                                                \
-+        last_blank_pos = 0;                        \
-+        last_blank_column = 0;                        \
-+        is_blank_seen = 0;                        \
-+        is_bs_following_last_blank = 0;                \
-+        bs_following_last_blank_num = 0;        \
-+        is_cr_after_last_blank = 0;                \
-+     }                                                \
-+   while (0)
-+
-+#define START_NEW_LINE                        \
-+   do                                        \
-+     {                                        \
-+      putchar ('\n');                        \
-+      column = 0;                        \
-+      offset_out = 0;                        \
-+      CLEAR_FLAGS;                        \
-+    }                                        \
-+   while (0)
-+
-+  CLEAR_FLAGS;
-+  memset (&state, '\0', sizeof(mbstate_t));
-+
-+  for (;; bufpos += mblength, buflen -= mblength)
-+    {
-+      if (buflen < MB_LEN_MAX && !feof (istream) && !ferror (istream))
-+        {
-+          memmove (buf, bufpos, buflen);
-+          buflen += fread (buf + buflen, sizeof(char), BUFSIZ, istream);
-+          bufpos = buf;
-+        }
-+
-+      if (buflen < 1)
-+        break;
-+
-+      /* Get a wide character. */
-+      state_bak = state;
-+      mblength = mbrtowc ((wchar_t *)&wc, bufpos, buflen, &state);
-+
-+      switch (mblength)
-+        {
-+        case (size_t)-1:
-+        case (size_t)-2:
-+          convfail++;
-+          state = state_bak;
-+          /* Fall through. */
-+
-+        case 0:
-+          mblength = 1;
-+          break;
-+        }
-+
-+rescan:
-+      if (convfail)
-+        increment = 1;
-+      else if (wc == L'\n')
-+        {
-+          /* preserve newline */
-+          fwrite (line_out, sizeof(char), offset_out, stdout);
-+          START_NEW_LINE;
-+          continue;
-+        }
-+      else if (operating_mode == byte_mode)                  /* byte mode */
-+        increment = mblength;
-+      else if (operating_mode == character_mode)        /* character mode */
-+        increment = 1;
-+      else                                                 /* column mode */
-+        {
-+          switch (wc)
-+            {
-+            case L'\b':
-+              increment = (column > 0) ? -1 : 0;
-+              break;
-+
-+            case L'\r':
-+              increment = -1 * column;
-+              break;
-+
-+            case L'\t':
-+              increment = 8 - column % 8;
-+              break;
-+
-+            default:
-+              increment = wcwidth (wc);
-+              increment = (increment < 0) ? 0 : increment;
-+            }
-+        }
-+
-+      if (column + increment > width && break_spaces && last_blank_pos)
-+        {
-+          fwrite (line_out, sizeof(char), last_blank_pos, stdout);
-+          putchar ('\n');
-+
-+          offset_out = offset_out - last_blank_pos;
-+          column = column - last_blank_column + ((is_cr_after_last_blank)
-+              ? last_blank_increment : bs_following_last_blank_num);
-+          memmove (line_out, line_out + last_blank_pos, offset_out);
-+          CLEAR_FLAGS;
-+          goto rescan;
-+        }
-+
-+      if (column + increment > width && column != 0)
-+        {
-+          fwrite (line_out, sizeof(char), offset_out, stdout);
-+          START_NEW_LINE;
-+          goto rescan;
-+        }
-+
-+      if (allocated_out - offset_out <= mblength)
-+        {
-+          line_out = xpalloc (line_out, &allocated_out, 1, -1, sizeof *line_out);
-+        }
-+
-+      memcpy (line_out + offset_out, bufpos, mblength);
-+      offset_out += mblength;
-+      column += increment;
-+
-+      if (is_blank_seen && !convfail && wc == L'\r')
-+        is_cr_after_last_blank = 1;
-+
-+      if (is_bs_following_last_blank && !convfail && wc == L'\b')
-+        ++bs_following_last_blank_num;
-+      else
-+        is_bs_following_last_blank = 0;
-+
-+      if (break_spaces && !convfail && iswblank (wc))
-+        {
-+          last_blank_pos = offset_out;
-+          last_blank_column = column;
-+          is_blank_seen = 1;
-+          last_blank_increment = increment;
-+          is_bs_following_last_blank = 1;
-+          bs_following_last_blank_num = 0;
-+          is_cr_after_last_blank = 0;
-+        }
-+    }
-+
-+  *saved_errno = errno;
-   if (!ferror (istream))
--    saved_errno = 0;
-+    *saved_errno = 0;
- 
-   if (offset_out)
-     fwrite (line_out, sizeof (char), offset_out, stdout);
- 
-+}
-+#endif
-+
-+/* Fold file FILENAME, or standard input if FILENAME is "-",
-+   to stdout, with maximum line length WIDTH.
-+   Return true if successful. */
-+
-+static bool
-+fold_file (char const *filename, size_t width)
-+{
-+  FILE *istream;
-+  int saved_errno;
-+
-+  if (STREQ (filename, "-"))
-+    {
-+      istream = stdin;
-+      have_read_stdin = true;
-+    }
-+  else
-+    istream = fopen (filename, "r");
-+
-+  if (istream == nullptr)
-+    {
-+      error (0, errno, "%s", filename);
-+      return false;
-+    }
-+
-+  /* Define how ISTREAM is being folded. */
-+#if HAVE_MBRTOWC
-+  if (MB_CUR_MAX > 1)
-+    fold_multibyte_text (istream, width, &saved_errno);
-+  else
-+#endif
-+    fold_text (istream, width, &saved_errno);
-+
-   if (STREQ (filename, "-"))
-     clearerr (istream);
-   else if (fclose (istream) != 0 && !saved_errno)
-@@ -249,7 +497,8 @@ main (int argc, char **argv)
- 
-   atexit (close_stdout);
- 
--  break_spaces = count_bytes = have_read_stdin = false;
-+  operating_mode = column_mode;
-+  break_spaces = have_read_stdin = false;
- 
-   while ((optc = getopt_long (argc, argv, shortopts, longopts, nullptr)) != -1)
-     {
-@@ -258,7 +507,15 @@ main (int argc, char **argv)
-       switch (optc)
-         {
-         case 'b':		/* Count bytes rather than columns. */
--          count_bytes = true;
-+          if (operating_mode != column_mode)
-+            FATAL_ERROR (_("only one way of folding may be specified"));
-+          operating_mode = byte_mode;
-+          break;
-+
-+        case 'c':
-+          if (operating_mode != column_mode)
-+            FATAL_ERROR (_("only one way of folding may be specified"));
-+          operating_mode = character_mode;
-           break;
- 
-         case 's':		/* Break at word boundaries. */
-Index: coreutils-9.7/src/local.mk
-===================================================================
---- coreutils-9.7.orig/src/local.mk
-+++ coreutils-9.7/src/local.mk
-@@ -476,8 +476,8 @@ src_base32_CPPFLAGS = -DBASE_TYPE=32 $(A
+--- src/local.mk.orig
++++ src/local.mk
+@@ -479,8 +479,8 @@ src_base32_CPPFLAGS = -DBASE_TYPE=32 $(A
  src_basenc_SOURCES = src/basenc.c
  src_basenc_CPPFLAGS = -DBASE_TYPE=42 $(AM_CPPFLAGS)
  
@@ -2260,10 +1413,10 @@ Index: coreutils-9.7/src/local.mk
  
  src_wc_SOURCES = src/wc.c
  if USE_AVX2_WC_LINECOUNT
-Index: coreutils-9.7/src/pr.c
+Index: src/pr.c
 ===================================================================
---- coreutils-9.7.orig/src/pr.c
-+++ coreutils-9.7/src/pr.c
+--- src/pr.c.orig
++++ src/pr.c
 @@ -312,6 +312,24 @@
  #include <ctype.h>
  #include <getopt.h>
@@ -3031,10 +2184,10 @@ Index: coreutils-9.7/src/pr.c
  /* We've just printed some files and need to clean up things before
     looking for more options and printing the next batch of files.
  
-Index: coreutils-9.7/src/sort.c
+Index: src/sort.c
 ===================================================================
---- coreutils-9.7.orig/src/sort.c
-+++ coreutils-9.7/src/sort.c
+--- src/sort.c.orig
++++ src/sort.c
 @@ -29,6 +29,14 @@
  #include <sys/types.h>
  #include <sys/wait.h>
@@ -3289,7 +2442,7 @@ Index: coreutils-9.7/src/sort.c
            ++ptr;
          if (ptr < lim)
            ++ptr;
-@@ -1649,12 +1798,71 @@ begfield (struct line const *line, struc
+@@ -1653,12 +1802,71 @@ begfield (struct line const *line, struc
    return ptr;
  }
  
@@ -3362,7 +2515,7 @@ Index: coreutils-9.7/src/sort.c
  {
    char *ptr = line->text, *lim = ptr + line->length - 1;
    size_t eword = key->eword, echar = key->echar;
-@@ -1669,10 +1877,10 @@ limfield (struct line const *line, struc
+@@ -1673,10 +1881,10 @@ limfield (struct line const *line, struc
       'beginning' is the first character following the delimiting TAB.
       Otherwise, leave PTR pointing at the first 'blank' character after
       the preceding field.  */
@@ -3375,7 +2528,7 @@ Index: coreutils-9.7/src/sort.c
            ++ptr;
          if (ptr < lim && (eword || echar))
            ++ptr;
-@@ -1718,10 +1926,10 @@ limfield (struct line const *line, struc
+@@ -1722,10 +1930,10 @@ limfield (struct line const *line, struc
       */
  
    /* Make LIM point to the end of (one byte past) the current field.  */
@@ -3388,7 +2541,7 @@ Index: coreutils-9.7/src/sort.c
        if (newlim)
          lim = newlim;
      }
-@@ -1752,6 +1960,130 @@ limfield (struct line const *line, struc
+@@ -1760,6 +1968,130 @@ limfield (struct line const *line, struc
    return ptr;
  }
  
@@ -3519,7 +2672,7 @@ Index: coreutils-9.7/src/sort.c
  /* Fill BUF reading from FP, moving buf->left bytes from the end
     of buf->buf to the beginning first.  If EOF is reached and the
     file wasn't terminated by a newline, supply one.  Set up BUF's line
-@@ -1838,8 +2170,22 @@ fillbuf (struct buffer *buf, FILE *fp, c
+@@ -1846,8 +2178,22 @@ fillbuf (struct buffer *buf, FILE *fp, c
                    else
                      {
                        if (key->skipsblanks)
@@ -3544,7 +2697,7 @@ Index: coreutils-9.7/src/sort.c
                        line->keybeg = line_start;
                      }
                  }
-@@ -1977,12 +2323,10 @@ find_unit_order (char const *number)
+@@ -1985,12 +2331,10 @@ find_unit_order (char const *number)
  
  ATTRIBUTE_PURE
  static int
@@ -3560,7 +2713,7 @@ Index: coreutils-9.7/src/sort.c
  
    int diff = find_unit_order (a) - find_unit_order (b);
    return (diff ? diff : strnumcmp (a, b, decimal_point, thousands_sep));
-@@ -1994,7 +2338,7 @@ human_numcompare (char const *a, char co
+@@ -2002,7 +2346,7 @@ human_numcompare (char const *a, char co
  
  ATTRIBUTE_PURE
  static int
@@ -3569,7 +2722,7 @@ Index: coreutils-9.7/src/sort.c
  {
    while (blanks[to_uchar (*a)])
      a++;
-@@ -2004,6 +2348,25 @@ numcompare (char const *a, char const *b
+@@ -2012,6 +2356,25 @@ numcompare (char const *a, char const *b
    return strnumcmp (a, b, decimal_point, thousands_sep);
  }
  
@@ -3595,7 +2748,7 @@ Index: coreutils-9.7/src/sort.c
  static int
  nan_compare (long double a, long double b)
  {
-@@ -2045,7 +2408,7 @@ general_numcompare (char const *sa, char
+@@ -2053,7 +2416,7 @@ general_numcompare (char const *sa, char
     Return 0 if the name in S is not recognized.  */
  
  static int
@@ -3604,7 +2757,7 @@ Index: coreutils-9.7/src/sort.c
  {
    size_t lo = 0;
    size_t hi = MONTHS_PER_YEAR;
-@@ -2384,15 +2747,14 @@ debug_key (struct line const *line, stru
+@@ -2392,15 +2755,14 @@ debug_key (struct line const *line, stru
            char saved = *lim;
            *lim = '\0';
  
@@ -3622,7 +2775,7 @@ Index: coreutils-9.7/src/sort.c
            else if (key->general_numeric)
              ignore_value (strtold (beg, &tighter_lim));
            else if (key->numeric || key->human_numeric)
-@@ -2538,7 +2900,7 @@ key_warnings (struct keyfield const *gke
+@@ -2546,7 +2908,7 @@ key_warnings (struct keyfield const *gke
        /* Warn about significant leading blanks.  */
        bool implicit_skip = key_numeric (key) || key->month;
        bool line_offset = key->eword == 0 && key->echar != 0; /* -k1.x,1.y  */
@@ -3631,7 +2784,7 @@ Index: coreutils-9.7/src/sort.c
            && ((!key->skipsblanks && !implicit_skip)
                || (!key->skipsblanks && key->schar)
                || (!key->skipeblanks && key->echar)))
-@@ -2586,9 +2948,9 @@ key_warnings (struct keyfield const *gke
+@@ -2594,9 +2956,9 @@ key_warnings (struct keyfield const *gke
    bool number_locale_warned = false;
    if (basic_numeric_field_span)
      {
@@ -3644,7 +2797,7 @@ Index: coreutils-9.7/src/sort.c
          {
            error (0, 0,
                   _("field separator %s is treated as a "
-@@ -2599,9 +2961,9 @@ key_warnings (struct keyfield const *gke
+@@ -2607,9 +2969,9 @@ key_warnings (struct keyfield const *gke
      }
    if (basic_numeric_field_span || general_numeric_field_span)
      {
@@ -3657,7 +2810,7 @@ Index: coreutils-9.7/src/sort.c
          {
            error (0, 0,
                   _("field separator %s is treated as a "
-@@ -2609,19 +2971,19 @@ key_warnings (struct keyfield const *gke
+@@ -2617,19 +2979,19 @@ key_warnings (struct keyfield const *gke
                   quote (((char []) {decimal_point, 0})));
            number_locale_warned = true;
          }
@@ -3681,8 +2834,8 @@ Index: coreutils-9.7/src/sort.c
          }
      }
  
-@@ -2673,11 +3035,87 @@ diff_reversed (int diff, bool reversed)
-   return reversed ? (diff < 0) - (diff > 0) : diff;
+@@ -2681,11 +3043,87 @@ diff_reversed (int diff, bool reversed)
+   return reversed ? _GL_CMP (0, diff) : diff;
  }
  
 +#if HAVE_MBRTOWC
@@ -3770,7 +2923,7 @@ Index: coreutils-9.7/src/sort.c
  {
    struct keyfield *key = keylist;
  
-@@ -2758,7 +3196,7 @@ keycompare (struct line const *a, struct
+@@ -2766,7 +3204,7 @@ keycompare (struct line const *a, struct
            else if (key->human_numeric)
              diff = human_numcompare (ta, tb);
            else if (key->month)
@@ -3779,7 +2932,7 @@ Index: coreutils-9.7/src/sort.c
            else if (key->random)
              diff = compare_random (ta, tlena, tb, tlenb);
            else if (key->version)
-@@ -2868,6 +3306,211 @@ keycompare (struct line const *a, struct
+@@ -2876,6 +3314,211 @@ keycompare (struct line const *a, struct
    return diff_reversed (diff, key->reverse);
  }
  
@@ -3991,7 +3144,7 @@ Index: coreutils-9.7/src/sort.c
  /* Compare two lines A and B, returning negative, zero, or positive
     depending on whether A compares less than, equal to, or greater than B. */
  
-@@ -2895,7 +3538,7 @@ compare (struct line const *a, struct li
+@@ -2903,7 +3546,7 @@ compare (struct line const *a, struct li
      diff = - NONZERO (blen);
    else if (blen == 0)
      diff = 1;
@@ -4000,7 +3153,7 @@ Index: coreutils-9.7/src/sort.c
      {
        /* xmemcoll0 is a performance enhancement as
           it will not unconditionally write '\0' after the
-@@ -4283,6 +4926,7 @@ set_ordering (char const *s, struct keyf
+@@ -4289,6 +4932,7 @@ set_ordering (char const *s, struct keyf
            break;
          case 'f':
            key->translate = fold_toupper;
@@ -4008,7 +3161,7 @@ Index: coreutils-9.7/src/sort.c
            break;
          case 'g':
            key->general_numeric = true;
-@@ -4362,7 +5006,7 @@ main (int argc, char **argv)
+@@ -4368,7 +5012,7 @@ main (int argc, char **argv)
    initialize_exit_failure (SORT_FAILURE);
  
    hard_LC_COLLATE = hard_locale (LC_COLLATE);
@@ -4017,7 +3170,7 @@ Index: coreutils-9.7/src/sort.c
    hard_LC_TIME = hard_locale (LC_TIME);
  #endif
  
-@@ -4385,6 +5029,29 @@ main (int argc, char **argv)
+@@ -4391,6 +5035,29 @@ main (int argc, char **argv)
        thousands_sep = NON_CHAR;
    }
  
@@ -4047,7 +3200,7 @@ Index: coreutils-9.7/src/sort.c
    have_read_stdin = false;
    inittables ();
  
-@@ -4655,13 +5322,34 @@ main (int argc, char **argv)
+@@ -4661,13 +5328,34 @@ main (int argc, char **argv)
  
          case 't':
            {
@@ -4080,13 +3233,13 @@ Index: coreutils-9.7/src/sort.c
 +#endif
 +            if (newtab_length == 1 && optarg[1])
                {
-                 if (STREQ (optarg, "\\0"))
+                 if (streq (optarg, "\\0"))
 -                  newtab = '\0';
 +                  newtab[0] = '\0';
                  else
                    {
                      /* Provoke with 'sort -txx'.  Complain about
-@@ -4672,9 +5360,11 @@ main (int argc, char **argv)
+@@ -4678,9 +5366,11 @@ main (int argc, char **argv)
                             quote (optarg));
                    }
                }
@@ -4100,10 +3253,10 @@ Index: coreutils-9.7/src/sort.c
            }
            break;
  
-Index: coreutils-9.7/src/unexpand.c
+Index: src/unexpand.c
 ===================================================================
---- coreutils-9.7.orig/src/unexpand.c
-+++ coreutils-9.7/src/unexpand.c
+--- src/unexpand.c.orig
++++ src/unexpand.c
 @@ -39,6 +39,9 @@
  #include <stdio.h>
  #include <getopt.h>
@@ -4304,10 +3457,10 @@ Index: coreutils-9.7/src/unexpand.c
      }
  }
  
-Index: coreutils-9.7/tests/Coreutils.pm
+Index: tests/Coreutils.pm
 ===================================================================
---- coreutils-9.7.orig/tests/Coreutils.pm
-+++ coreutils-9.7/tests/Coreutils.pm
+--- tests/Coreutils.pm.orig
++++ tests/Coreutils.pm
 @@ -269,6 +269,9 @@ sub run_tests ($$$$$)
        # Yes, this is an arbitrary limit.  If it causes trouble,
        # consider removing it.
@@ -4318,10 +3471,10 @@ Index: coreutils-9.7/tests/Coreutils.pm
        if ($max < length $test_name)
          {
            warn "$program_name: $test_name: test name is too long (> $max)\n";
-Index: coreutils-9.7/tests/expand/mb.sh
+Index: tests/expand/mb.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.7/tests/expand/mb.sh
++++ tests/expand/mb.sh
 @@ -0,0 +1,183 @@
 +#!/bin/sh
 +
@@ -4506,10 +3659,10 @@ Index: coreutils-9.7/tests/expand/mb.sh
 +compare exp out > /dev/null 2>&1 || fail=1
 +
 +exit $fail
-Index: coreutils-9.7/tests/i18n/sort.sh
+Index: tests/i18n/sort.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.7/tests/i18n/sort.sh
++++ tests/i18n/sort.sh
 @@ -0,0 +1,29 @@
 +#!/bin/sh
 +# Verify sort's multi-byte support.
@@ -4540,12 +3693,12 @@ Index: coreutils-9.7/tests/i18n/sort.sh
 +
 +
 +Exit $fail
-Index: coreutils-9.7/tests/local.mk
+Index: tests/local.mk
 ===================================================================
---- coreutils-9.7.orig/tests/local.mk
-+++ coreutils-9.7/tests/local.mk
-@@ -390,6 +390,8 @@ all_tests =					\
-   tests/sort/sort-discrim.sh			\
+--- tests/local.mk.orig
++++ tests/local.mk
+@@ -404,6 +404,8 @@ all_tests =					\
+   tests/sort/sort-field-limit.sh		\
    tests/sort/sort-files0-from.pl		\
    tests/sort/sort-float.sh			\
 +  tests/misc/sort-mb-tests.sh			\
@@ -4553,7 +3706,7 @@ Index: coreutils-9.7/tests/local.mk
    tests/sort/sort-h-thousands-sep.sh		\
    tests/sort/sort-merge.pl			\
    tests/sort/sort-merge-fdlimit.sh		\
-@@ -594,6 +596,7 @@ all_tests =					\
+@@ -609,6 +611,7 @@ all_tests =					\
    tests/du/threshold.sh				\
    tests/du/trailing-slash.sh			\
    tests/du/two-args.sh				\
@@ -4561,7 +3714,7 @@ Index: coreutils-9.7/tests/local.mk
    tests/id/gnu-zero-uids.sh			\
    tests/id/no-context.sh			\
    tests/id/context.sh				\
-@@ -750,6 +753,7 @@ all_tests =					\
+@@ -765,6 +768,7 @@ all_tests =					\
    tests/touch/read-only.sh			\
    tests/touch/relative.sh			\
    tests/touch/trailing-slash.sh			\
@@ -4569,10 +3722,10 @@ Index: coreutils-9.7/tests/local.mk
    $(all_root_tests)
  
  # See tests/factor/create-test.sh.
-Index: coreutils-9.7/tests/misc/expand.pl
+Index: tests/misc/expand.pl
 ===================================================================
---- coreutils-9.7.orig/tests/misc/expand.pl
-+++ coreutils-9.7/tests/misc/expand.pl
+--- tests/misc/expand.pl.orig
++++ tests/misc/expand.pl
 @@ -27,6 +27,15 @@ my $prog = 'expand';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -4636,80 +3789,10 @@ Index: coreutils-9.7/tests/misc/expand.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.7/tests/misc/fold.pl
-===================================================================
---- coreutils-9.7.orig/tests/misc/fold.pl
-+++ coreutils-9.7/tests/misc/fold.pl
-@@ -20,9 +20,17 @@ use strict;
- 
- (my $program_name = $0) =~ s|.*/||;
- 
-+my $prog = 'fold';
-+my $try = "Try \`$prog --help' for more information.\n";
-+my $inval = "$prog: invalid byte, character or field list\n$try";
-+
- # Turn off localization of executable's output.
- @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
--my $prog = 'fold';
-+
-+# uncommented to enable multibyte paths
-+my $mb_locale = $ENV{LOCALE_FR_UTF8};
-+! defined $mb_locale || $mb_locale eq 'none'
-+ and $mb_locale = 'C';
- 
- my @Tests =
-   (
-@@ -44,6 +52,46 @@ my @Tests =
-      {OUT=>"123456\n7890\nabcdef\nghij\n123456\n7890"}],
-   );
- 
-+# Add _POSIX2_VERSION=199209 to the environment of each test
-+# that uses an old-style option like +1.
-+if ($mb_locale ne 'C')
-+  {
-+    # Duplicate each test vector, appending "-mb" to the test name and
-+    # inserting {ENV => "LC_ALL=$mb_locale"} in the copy, so that we
-+    # provide coverage for the distro-added multi-byte code paths.
-+    my @new;
-+    foreach my $t (@Tests)
-+      {
-+        my @new_t = @$t;
-+        my $test_name = shift @new_t;
-+
-+        # Depending on whether fold is multi-byte-patched,
-+        # it emits different diagnostics:
-+        #   non-MB: invalid byte or field list
-+        #   MB:     invalid byte, character or field list
-+        # Adjust the expected error output accordingly.
-+        if (grep {ref $_ eq 'HASH' && exists $_->{ERR} && $_->{ERR} eq $inval}
-+            (@new_t))
-+          {
-+            my $sub = {ERR_SUBST => 's/, character//'};
-+            push @new_t, $sub;
-+            push @$t, $sub;
-+          }
-+        push @new, ["$test_name-mb", @new_t, {ENV => "LC_ALL=$mb_locale"}];
-+      }
-+    push @Tests, @new;
-+  }
-+
-+@Tests = triple_test \@Tests;
-+
-+# Remember that triple_test creates from each test with exactly one "IN"
-+# file two more tests (.p and .r suffix on name) corresponding to reading
-+# input from a file and from a pipe.  The pipe-reading test would fail
-+# due to a race condition about 1 in 20 times.
-+# Remove the IN_PIPE version of the "output-is-input" test above.
-+# The others aren't susceptible because they have three inputs each.
-+@Tests = grep {$_->[0] ne 'output-is-input.p'} @Tests;
-+
- my $save_temps = $ENV{DEBUG};
- my $verbose = $ENV{VERBOSE};
- 
-Index: coreutils-9.7/tests/misc/sort-mb-tests.sh
+Index: tests/misc/sort-mb-tests.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.7/tests/misc/sort-mb-tests.sh
++++ tests/misc/sort-mb-tests.sh
 @@ -0,0 +1,45 @@
 +#!/bin/sh
 +# Verify sort's multi-byte support.
@@ -4756,10 +3839,10 @@ Index: coreutils-9.7/tests/misc/sort-mb-tests.sh
 +compare exp out || { fail=1; cat out; }
 +
 +Exit $fail
-Index: coreutils-9.7/tests/misc/unexpand.pl
+Index: tests/misc/unexpand.pl
 ===================================================================
---- coreutils-9.7.orig/tests/misc/unexpand.pl
-+++ coreutils-9.7/tests/misc/unexpand.pl
+--- tests/misc/unexpand.pl.orig
++++ tests/misc/unexpand.pl
 @@ -27,6 +27,14 @@ my $limits = getlimits ();
  
  my $prog = 'unexpand';
@@ -4813,10 +3896,10 @@ Index: coreutils-9.7/tests/misc/unexpand.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.7/tests/pr/pr-tests.pl
+Index: tests/pr/pr-tests.pl
 ===================================================================
---- coreutils-9.7.orig/tests/pr/pr-tests.pl
-+++ coreutils-9.7/tests/pr/pr-tests.pl
+--- tests/pr/pr-tests.pl.orig
++++ tests/pr/pr-tests.pl
 @@ -24,6 +24,15 @@ use strict;
  my $prog = 'pr';
  my $normalize_strerror = "s/': .*/'/";
@@ -4882,10 +3965,10 @@ Index: coreutils-9.7/tests/pr/pr-tests.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.7/tests/sort/sort-merge.pl
+Index: tests/sort/sort-merge.pl
 ===================================================================
---- coreutils-9.7.orig/tests/sort/sort-merge.pl
-+++ coreutils-9.7/tests/sort/sort-merge.pl
+--- tests/sort/sort-merge.pl.orig
++++ tests/sort/sort-merge.pl
 @@ -26,6 +26,15 @@ my $prog = 'sort';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -4942,10 +4025,10 @@ Index: coreutils-9.7/tests/sort/sort-merge.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.7/tests/sort/sort.pl
+Index: tests/sort/sort.pl
 ===================================================================
---- coreutils-9.7.orig/tests/sort/sort.pl
-+++ coreutils-9.7/tests/sort/sort.pl
+--- tests/sort/sort.pl.orig
++++ tests/sort/sort.pl
 @@ -24,10 +24,15 @@ my $prog = 'sort';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -4963,7 +4046,7 @@ Index: coreutils-9.7/tests/sort/sort.pl
  # Since each test is run with a file name and with redirected stdin,
  # the name in the diagnostic is either the file name or "-".
  # Normalize each diagnostic to use '-'.
-@@ -423,6 +428,38 @@ foreach my $t (@Tests)
+@@ -428,6 +433,38 @@ foreach my $t (@Tests)
        }
    }
  
@@ -5002,7 +4085,7 @@ Index: coreutils-9.7/tests/sort/sort.pl
  @Tests = triple_test \@Tests;
  
  # Remember that triple_test creates from each test with exactly one "IN"
-@@ -432,6 +469,7 @@ foreach my $t (@Tests)
+@@ -437,6 +474,7 @@ foreach my $t (@Tests)
  # Remove the IN_PIPE version of the "output-is-input" test above.
  # The others aren't susceptible because they have three inputs each.
  @Tests = grep {$_->[0] ne 'output-is-input.p'} @Tests;
@@ -5010,10 +4093,10 @@ Index: coreutils-9.7/tests/sort/sort.pl
  
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
-Index: coreutils-9.7/tests/unexpand/mb.sh
+Index: tests/unexpand/mb.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.7/tests/unexpand/mb.sh
++++ tests/unexpand/mb.sh
 @@ -0,0 +1,172 @@
 +#!/bin/sh
 +
