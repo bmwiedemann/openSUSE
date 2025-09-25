@@ -1634,4 +1634,14 @@
     <comment> (forwarded request 1306118 from dimstar)</comment>
     <requestid>1306428</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>3e9588d6d695e9fcc5c028d43d13e60c</srcmd5>
+    <version>2.44.2</version>
+    <time>1758818636</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.44.2:
+  + glycin: Ignore unknowns keys when saving
+  + Updated translations. (forwarded request 1306803 from iznogood)</comment>
+    <requestid>1306956</requestid>
+  </revision>
 </revisionlist>
