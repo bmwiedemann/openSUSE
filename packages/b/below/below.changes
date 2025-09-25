@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Sep 24 20:22:08 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.11.0~0:
+  * Release 0.11.0
+  * Update crate tempfile 3.15 -> 3.22 (#8262)
+  * Upgrade rtnetlink and friends
+  * Edition 2024 cleanup: rename `expr_2021` -> `expr`
+  * Update tokio 1.46-1 -> 1.47.1 and tokio-openssl 1.6.1 -> 1.6.5
+  * Use __type macro in BPF map definitions
+  * Point ethtool crate to specific revision
+  * Add raw-value feature to serde-json
+  * Adding collectd and sysstat tool to comparsion docs (#8259)
+  * Update clap (4.5.41 -> 4.5.42) /clap_complete (4.5.50 -> 4.5.55)
+  * Add ViewRc::process_view_default_tree to select the default process view style between tree/flat
+  * Upgrade to 0.30
+  * Update serde 1.0.185 -> 1.0.219
+  * adding crossterm serde for scxtop import
+  * third-party/rust: Make once-cell usable in no-std
+  * Make libbpf-rs 0.26.0-beta.0 the default
+  * Fix commented out code
+  * Implement process tree view
+  * Support memory.oom.group cgroup property
+  * apply rustfix lints
+  * Use into_path() instead of keep()
+  * Update futures 0.3.30 -> 0.3.31
+  * Update bytes 1.9.0 -> 1.10
+  * Update bitflags
+  * Update clap4 4.5.38 -> 4.5.41
+  * Show process processor
+
+-------------------------------------------------------------------
 Wed Jul 23 17:46:09 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.10.0~0:
