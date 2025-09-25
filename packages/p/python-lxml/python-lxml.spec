@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lxml
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
