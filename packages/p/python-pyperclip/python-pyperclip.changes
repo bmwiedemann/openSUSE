@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 23 09:10:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.10.0
+  * docs: fix simple typo, deteremine -> determine
+  * Remove PyGtk references
+  * Remove PyQt4 references
+  * Update docs to remove references to pygtk, PyQt4
+  * Remove try-except ladder
+  * Update index.rst
+  * wayland: request text type to wl-paste This fixes UnicodeDecodeError
+    while the clipboards contains images or other types of content
+  * Fixed wsl encoding
+  * Fixed wsl encoding
+  * Add instructions for Wayland
+  * Updated pytest and dependencies
+  * Removing detox dependency (I'm rethinking the testing setup.)
+  * Removing references to gtk module since we dropped it.
+  * make wayland work without DISPLAY variable
+  * Adding new authors.
+  * Mention Wayland in error message
+  * Update __init__.py
+- Refresh tests.patch
+
+-------------------------------------------------------------------
 Wed Jun 11 05:49:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

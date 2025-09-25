@@ -1,8 +1,7 @@
-Index: pyperclip-1.9.0/tests/test_pyperclip.py
-===================================================================
---- pyperclip-1.9.0.orig/tests/test_pyperclip.py
-+++ pyperclip-1.9.0/tests/test_pyperclip.py
-@@ -8,7 +8,7 @@ import platform
+diff -Nru pyperclip-1.10.0.orig/tests/test_pyperclip.py pyperclip-1.10.0/tests/test_pyperclip.py
+--- pyperclip-1.10.0.orig/tests/test_pyperclip.py	2025-09-18 02:38:44.000000000 +0200
++++ pyperclip-1.10.0/tests/test_pyperclip.py	2025-09-23 11:10:26.440769794 +0200
+@@ -8,7 +8,7 @@
  #import sys
  #sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
  
@@ -11,7 +10,7 @@ Index: pyperclip-1.9.0/tests/test_pyperclip.py
  from pyperclip import (init_osx_pbcopy_clipboard, init_osx_pyobjc_clipboard,
                                    init_dev_clipboard_clipboard,
                                    init_qt_clipboard,
-@@ -134,16 +134,6 @@ class TestOSX(_TestClipboard):
+@@ -134,16 +134,6 @@
              clipboard = init_osx_pyobjc_clipboard()
  
  

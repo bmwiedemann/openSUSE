@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyperclip
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        A clipboard module for Python
 License:        BSD-3-Clause
