@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-server
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,6 +74,7 @@ BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pluggy >= 0.6.0}
 BuildRequires:  %{python_module py >= 1.4.23}
 BuildRequires:  %{python_module pyramid >= 2}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module repoze.lru >= 0.6}
 BuildRequires:  %{python_module ruamel.yaml >= 0.15.94}

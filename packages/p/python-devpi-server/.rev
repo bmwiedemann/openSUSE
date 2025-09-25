@@ -177,4 +177,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1178483</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3a627439640c4d2e44c1b98751d43f54</srcmd5>
+    <version>6.11.0</version>
+    <time>1758818716</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
+    <requestid>1307018</requestid>
+  </revision>
 </revisionlist>
