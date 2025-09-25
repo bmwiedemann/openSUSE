@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Sep 25 13:47:05 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.16.0
+  * Changes of version 2.16.0
+    + bugfix: fix cert auth failed bug
+    + GH-664: Skip MAC negotiation if an AEAD cipher was negotiated
+    + GH-663: Fix a race in IoSession creation
+    + Also test sshd-mina using mina-core 2.2.4
+    + ScpShell fixes; SFTP append mode for buggy servers
+    + fix sources.jar Reproducible Builds issue
+    + GH-700: Fix race in AbstractCloseable.doCloseImmediately()
+    + GH-705: Make ChannelToPortHandler accessible to user code
+    + GH-709: Handle keep-alive channel messages sent by an old
+      OpenSSH server
+    + GH-727: supply default port for proxyJump if no
+      HostConfigEntry
+    + GH-733: Fix SftpRemotePathChannel.transferTo
+    + GH-725: Added commandTimeoutMillis in executeRemoteCommand
+    + GH-774: Fix WritePendingException
+    + #771 Avoid NoClassDefFoundError:
+      net/i2p/crypto/eddsa/EdDSAPublicKey
+    + GH-516: Fix filesystem-id parsing in getFileSystem(URI)
+    + GH-754: Don't close DefaultForwarder on bind error
+    + Close repository after usage in GitPackCommand
+    + Trigger ClientChannelEvent.Timeout and
+      ClientSessionEvent.TIMEOUT independently to host's program
+      cycle times
+  * Changes of version 2.15.0
+    + GH-618: Fix reading an OpenSshCertificate from a Buffer
+    + Add interface to configure details of JGit's pack
+      implementation
+    + ML-KEM key exchanges using Bouncy Castle 1.79
+    + GH-628: Fix reading directories with trailing blanks in the
+      name
+    + GH-626: Enable Streaming.Async for ChannelDirectTcpip
+    + Sftp server ‘ls’ command timeout
+    + GH-636: Handle unknown key types in known_hosts
+    + GH-643: provide interfaces for caching file attributes on
+      paths
+    + Bouncy Castle EdDSA / Ed25519 Support
+    + Abstract revoked key handling in KnownHostsServerKeyVerifier
+- Removed patch:
+  * apache-sshd-javadoc.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Fri Jun 20 10:20:32 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix an incompletely interpolated dependency with maven 4.0.0-rc-4
@@ -11,7 +57,7 @@ Thu Mar 27 15:20:27 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Thu Oct 17 07:53:50 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
-- Updated to upstrem version 2.14.0
+- Updated to upstream version 2.14.0
 - Changes in version 2.14.0
   * Bug Fixes
     + GH-524 Performance improvements

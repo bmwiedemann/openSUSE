@@ -1,7 +1,7 @@
 #
 # spec file for package apache-sshd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with extras
 %endif
 %global homedir %{_datadir}/apache-sshd
-Version:        2.14.0
+Version:        2.16.0
 Release:        0
 Summary:        Apache SSHD
 # One file has ISC licensing:
@@ -32,22 +32,20 @@ License:        Apache-2.0 AND ISC
 Group:          Development/Libraries/Java
 URL:            https://mina.apache.org/sshd-project
 Source0:        https://archive.apache.org/dist/mina/sshd/%{version}/apache-sshd-%{version}-src.tar.gz
-Patch0:         apache-sshd-javadoc.patch
-Patch1:         file-name-mapping.patch
-Patch2:         password-no-echo.patch
+Patch0:         file-name-mapping.patch
+Patch1:         password-no-echo.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(net.i2p.crypto:eddsa)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-remote-resources-plugin)
-BuildRequires:  mvn(org.apache.maven.surefire:surefire-junit47)
 BuildRequires:  mvn(org.apache.maven:maven-archiver)
 BuildRequires:  mvn(org.apache.tomcat:tomcat-jni)
 BuildRequires:  mvn(org.apache:apache-jar-resource-bundle)
 BuildRequires:  mvn(org.apache:apache:pom:) >= 30
 BuildRequires:  mvn(org.bouncycastle:bcpg-jdk18on)
 BuildRequires:  mvn(org.bouncycastle:bcpkix-jdk18on)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
 BuildRequires:  mvn(org.slf4j:jcl-over-slf4j)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
@@ -59,14 +57,13 @@ BuildRequires:  mvn(io.netty:netty-transport)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
 BuildRequires:  mvn(org.apache.sshd:sshd-common) = %{version}
 BuildRequires:  mvn(org.apache.sshd:sshd-core) = %{version}
+BuildRequires:  mvn(org.apache.sshd:sshd-osgi) = %{version}
 BuildRequires:  mvn(org.apache.sshd:sshd-putty) = %{version}
 BuildRequires:  mvn(org.apache.sshd:sshd-scp) = %{version}
 BuildRequires:  mvn(org.apache.sshd:sshd-sftp) = %{version}
-BuildRequires:  mvn(org.assertj:assertj-core)
 BuildRequires:  mvn(org.bouncycastle:bcprov-jdk18on)
 BuildRequires:  mvn(org.bouncycastle:bcutil-jdk18on)
 BuildRequires:  mvn(org.c02e.jpgpj:jpgpj)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
 BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit)
 BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit.pgm)
 BuildRequires:  mvn(org.slf4j:slf4j-jdk14)
@@ -75,7 +72,6 @@ BuildRequires:  mvn(org.slf4j:slf4j-jdk14)
 Name:           apache-sshd
 BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
 %endif
 
 %description
@@ -120,7 +116,6 @@ This package provides %{name}.
 
 %patch -P 0 -p1
 %patch -P 1 -p1
-%patch -P 2 -p1
 
 %pom_change_dep -r tomcat:tomcat-apr org.apache.tomcat:tomcat-jni
 
