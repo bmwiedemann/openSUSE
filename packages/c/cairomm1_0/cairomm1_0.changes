@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 24 11:42:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.14.5:
+  + Documentation:
+    - Context: Fix some typos
+    - Update Visual Studio build docs
+    - Remove AUTHORS and MAINTAINERS; add info to README.md
+  + Meson build:
+    - Detect if we build from a git subtree
+    - Don't copy files with configure_file()
+    - Fix the evaluation of is_git_build on Windows
+    - The boost-shared option defaults to true
+- For more changes since 1.12.2, see packaged NEWS file
+- Switch to meson build system:
+  + Add meson BuildRequires
+  + replace configure/make/make_install with meson equivalents
+- Add graphviz and xsltproc BuildRequires: new dependencies to
+  build documentation
+- Mark doc subpackage as noarch
+- Add check section and run meson test
+
+-------------------------------------------------------------------
 Fri May 23 08:03:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires.

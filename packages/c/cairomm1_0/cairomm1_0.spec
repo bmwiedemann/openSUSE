@@ -1,7 +1,7 @@
 #
 # spec file for package cairomm1_0
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,19 @@
 
 %define _name   cairomm
 Name:           cairomm1_0
-Version:        1.12.2
+Version:        1.14.5
 Release:        0
 Summary:        C++ Interface for Cairo
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            http://cairographics.org
-Source:         http://cairographics.org/releases/%{_name}-%{version}.tar.gz
-# needs doxygen for the documentation
-BuildRequires:  doxygen
+Source:         http://cairographics.org/releases/%{_name}-%{version}.tar.xz
 BuildRequires:  c++_compiler
+BuildRequires:  doxygen
+BuildRequires:  graphviz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(sigc++-2.0) >= 2.5.1
 
@@ -54,40 +56,44 @@ applications that want to make use of cairomm1_0.
 %package doc
 Summary:        Documentation for the Cairo C++ interface
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 This package provides documentation for the Cairo C++ interface.
 
 %prep
 %autosetup -n %{_name}-%{version}
+chmod -x NEWS
 
 %build
-%configure --disable-static
-%make_build
+%meson -Dbuild-documentation=true
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
+
+%check
+%meson_test
 
 %ldconfig_scriptlets -n libcairomm-1_0-1
 
 %files -n libcairomm-1_0-1
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc ChangeLog NEWS
 %{_libdir}/*.so.*
 
 %files devel
 %{_libdir}/*.so
 %dir %{_libdir}/cairomm-1.0/
 %{_libdir}/cairomm-1.0/include
-%{_libdir}/pkgconfig/*.pc
-%{_includedir}/*
+%{_libdir}/pkgconfig/cairomm*-1.0.pc
+%{_includedir}/cairomm-1.0/
 
 %files doc
-%{_datadir}/devhelp/books/cairomm-1.0
-%{_datadir}/doc/cairomm-1.0
-# Avoid BuildRequires on devhelp
 %dir %{_datadir}/devhelp
 %dir %{_datadir}/devhelp/books
+%dir %{_datadir}/devhelp/books/cairomm-1.0/
+%{_datadir}/devhelp/books/cairomm-1.0/cairomm-1.0.devhelp2
+%{_datadir}/doc/cairomm-1.0/
 
 %changelog
