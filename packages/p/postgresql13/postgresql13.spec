@@ -46,6 +46,7 @@
 %if "@BUILD_FLAVOR@" == "mini"
 %define devel devel-mini
 %define mini 1
+%define buildlibs 1
 Name:           %pgname-mini
 %else
 %define devel devel
@@ -65,6 +66,12 @@ Name:           %pgname
 %bcond_with derived
 %else
 %bcond_without derived
+%endif
+
+%if %pgmajor >= 18
+%bcond_without curl
+%bcond_without uring
+%bcond_without numa
 %endif
 
 %if 0%{?suse_version} >= 1500
@@ -150,11 +157,20 @@ BuildRequires:  (cmake(Clang) >= %{oldest_supported_llvm_ver} with cmake(Clang) 
 BuildRequires:  (cmake(LLVM)  >= %{oldest_supported_llvm_ver} with cmake(LLVM)  < %{latest_supported_llvm_ver_plus_one})
 %endif
 BuildRequires:  libxslt-devel
-BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
+BuildRequires:  (pkgconfig(ldap) or openldap2-devel)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsystemd)
+%if %{with curl}
+BuildRequires:  pkgconfig(libcurl)
+%endif
+%if %{with uring}
+BuildRequires:  pkgconfig(liburing)
+%endif
+%if %{with numa}
+BuildRequires:  pkgconfig(numa)
+%endif
 BuildRequires:  pkgconfig(systemd)
 #!BuildIgnore:  %pgname
 #!BuildIgnore:  %pgname-server
@@ -557,6 +573,15 @@ PACKAGE_TARNAME=%pgname %configure \
         --with-uuid=e2fs \
         --with-libxml \
         --with-libxslt \
+%if %{with curl}
+        --with-libcurl \
+%endif
+%if %{with uring}
+        --with-liburing \
+%endif
+%if %{with numa}
+        --with-libnuma \
+%endif
 %if %{with liblz4}
         --with-lz4 \
 %endif
@@ -638,9 +663,8 @@ ls %buildroot%pglibdir/lib* |
 mv %buildroot%pglibdir/pkgconfig %buildroot%_libdir
 find %buildroot%_libdir/pkgconfig -type f -exec sed -i 's, -L%pglibdir,,' '{}' +
 
-# Don't ship static libraries,
-# libpgport.a and libpgcommon.a are needed, though.
-rm -f $(ls %buildroot/%_libdir/*.a %buildroot%pglibdir/*.a | grep -F -v -e libpgport.a -e libpgcommon.a)
+# Don't ship static libraries, some of then are needed, though.
+rm -f $(ls %buildroot/%_libdir/*.a %buildroot%pglibdir/*.a | grep -F -v -e libpgport.a -e libpgcommon.a -e libpgfeutils.a)
 
 %if !%mini
 #
@@ -759,7 +783,7 @@ sed -i '/^LIBS = /s/= .*/=/' %buildroot/%pglibdir/pgxs/src/Makefile.global
 
 # Make sure we can also link agaist newer versions
 pushd %buildroot%_libdir
-for f in *.so; do
+for f in $( find -type l -name \*.so ) ; do
     ln -sf $f.? $f
 done
 %if 0
@@ -794,7 +818,7 @@ cat > libpq.files <<EOF
 %pgdatadir/pg_service.conf.sample
 %endif
 EOF
-find %buildroot -name 'libpq*.so.*' -printf '/%%P\n' >> libpq.files
+find %buildroot \( -name 'libpq*.so.*' -o -name 'libpq-oauth*.so' \) -printf '/%%P\n' >> libpq.files
 %find_lang libpq5-$VLANG libpq.files
 
 cat > libecpg.files <<EOF
@@ -976,7 +1000,10 @@ fi
 %dir %pgbindir
 %_bindir/ecpg
 %_libdir/pkgconfig/*
-%_libdir/lib*.so
+%_libdir/libecpg.so
+%_libdir/libecpg_compat.so
+%_libdir/libpgtypes.so
+%_libdir/libpq.so
 %pgincludedir
 
 %if %{with server_devel}
