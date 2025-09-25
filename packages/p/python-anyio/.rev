@@ -470,4 +470,12 @@ SR for python stack proposal</comment>
   + Fixed return annotation of __aexit__ on async context managers.</comment>
     <requestid>1299192</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a04c8494c5ecfa0b337c7405dfafa158</srcmd5>
+    <version>4.11.0</version>
+    <time>1758818630</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306903</requestid>
+  </revision>
 </revisionlist>

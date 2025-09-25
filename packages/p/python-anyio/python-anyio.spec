@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-anyio%{psuffix}
-Version:        4.10.0
+Version:        4.11.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
@@ -47,7 +47,7 @@ BuildRequires:  %{python_module psutil >= 5.9}
 BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-mock >= 3.6.1}
 BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module trio}
+BuildRequires:  %{python_module trio >= 0.31.0}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module truststore}
 BuildRequires:  %{python_module uvloop}
@@ -62,7 +62,7 @@ Requires:       python-typing_extensions >= 4.5
 %if 0%{?python_version_nodots} < 311
 Requires:       python-exceptiongroup
 %endif
-Suggests:       python-trio >= 0.26.1
+Suggests:       python-trio >= 0.31.0
 BuildArch:      noarch
 %python_subpackages
 
