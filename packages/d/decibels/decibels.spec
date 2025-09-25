@@ -20,7 +20,7 @@
 %define sname   gi-typescript-definitions
 %define scommit dbbaa0527556cd3ce5434c4a5072cd99348eff7a
 Name:           decibels
-Version:        48.0
+Version:        49.0
 Release:        0
 Summary:        Play audio files with a waveform
 License:        GPL-3.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  typescript
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gjs-1.0)
 BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  typelib(Adw)
 Requires:       typelib(GstPlay)
 Provides:       bundled(gi-types)

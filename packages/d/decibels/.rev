@@ -52,4 +52,25 @@
 </comment>
     <requestid>1253426</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7fd4b273623d90242f02e830e540407b</srcmd5>
+    <version>49.0</version>
+    <time>1758818723</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.0
+  * Missing trailing new line
+  * fix: reset position when skipping past the end of audio
+  * fix: correctly avoid excess draws on waveform scale position
+    update
+  * Fix translate url
+  * metainfo: fix dark brand color
+  * Force playback buttons and timeline to be Left-To-Right
+  * Port to AdwShortcutsDialog
+  * Put each main window into its own group
+  * Update translation
+- Add pkgconfig(libadwaita-1) BuildRequires: fix build
+  requirements version 49.0
+</comment>
+    <requestid>1307009</requestid>
+  </revision>
 </revisionlist>
