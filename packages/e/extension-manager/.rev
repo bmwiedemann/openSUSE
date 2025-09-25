@@ -158,4 +158,12 @@
 - switch over to the download_files service (forwarded request 1283846 from rrahl0)</comment>
     <requestid>1283847</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7c8b820b86e92b79cd1326ba49e08e35</srcmd5>
+    <version>0.6.4</version>
+    <time>1758818713</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306995</requestid>
+  </revision>
 </revisionlist>
