@@ -229,4 +229,12 @@
 https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-beta-3-released-3118/</comment>
     <requestid>1299471</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>605157c343f2dd4bb8ee59c9ad62e6cc</srcmd5>
+    <version>16.10</version>
+    <time>1758818768</time>
+    <user>anag_factory</user>
+    <comment>- Sync spec file from version 18.</comment>
+    <requestid>1307160</requestid>
+  </revision>
 </revisionlist>
