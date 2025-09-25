@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-recipes
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Design/Apps/Recipes
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         https://gitlab.gnome.org/GNOME/recipes/-/merge_requests/47.patch#/gnome-recipes-libsoup3.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
@@ -41,8 +42,8 @@ BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra)
-BuildRequires:  pkgconfig(libsoup-2.4)
-BuildRequires:  pkgconfig(rest-0.7)
+BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(rest-1.0)
 
 %description
 GNOME Recipes is an easy-to-use application that will help you to discover what to cook

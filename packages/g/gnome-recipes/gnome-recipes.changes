@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 24 12:28:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Port to libsoup 3.0 and librest 1.0 API:
+  + Add gnome-recipes-libsoup3.patch: upstream submitted patch
+  + Replace pkgconfig(libsoup-2.4) BuildRequires with
+    pkgconfig(libsoup-3.0), and pkgconfig(rest-0.7) with
+    pkgconfig(rest-1.0).
+
+-------------------------------------------------------------------
 Fri May 23 12:15:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.

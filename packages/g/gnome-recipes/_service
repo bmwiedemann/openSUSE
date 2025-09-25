@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/GNOME/recipes.git</param>
     <param name="scm">git</param>
     <param name="revision">5b5526abf68c5e4337ba5d97a621af259c998c6d</param>
@@ -14,5 +14,5 @@
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version" />
+  <service mode="manual" name="set_version" />
 </services>
