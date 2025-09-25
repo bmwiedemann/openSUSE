@@ -72,7 +72,7 @@
 %endif
 
 Name:           libzypp
-Version:        17.37.17
+Version:        17.37.18
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -389,7 +389,7 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/zypp-history.lr %{buildroot}%{_distco
 %endif
 
 %check
-pushd build/tests
+pushd build
 LD_LIBRARY_PATH="$(pwd)/../zypp:$LD_LIBRARY_PATH" ctest --output-on-failure .
 popd
 
