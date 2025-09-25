@@ -4,7 +4,7 @@
     <param name="url">https://github.com/openSUSE/gnome-tour.git</param>
     <param name="scm">git</param>
     <param name="revision">opensuse</param>
-    <param name="versionformat">48.1.openSUSE+git%cd.%h</param>
+    <param name="versionformat">49.0.openSUSE+git%cd.%h</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
 <!--   <param name="changesgenerate">enable</param> -->

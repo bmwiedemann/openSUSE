@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-tour
-Version:        48.1.openSUSE+git20250811.6a9a0df
+Version:        49.0.openSUSE+git20250923.480cff6
 Release:        0
 Summary:        GNOME Tour & Greeter
 License:        GPL-3.0-or-later
@@ -27,7 +27,6 @@ Group:          System/GUI/GNOME
 URL:            https://github.com/openSUSE/gnome-tour
 Source0:        %{name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
-Patch0:         gnome-tour-fix-vi-translation.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
@@ -37,9 +36,24 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.56
 BuildRequires:  pkgconfig(glib-2.0) >= 2.64
 BuildRequires:  pkgconfig(gtk4) >= 4.4
 BuildRequires:  pkgconfig(libadwaita-1) >= 1
+Requires:       %{name}-data = %{version}
 
 %description
 A guided tour and greeter for GNOME.
+
+%package minimal
+Summary:        GNOME Tour minimal
+Requires:       %{name}-data = %{version}
+
+%description minimal
+A minimal guided tour and greeter for GNOME.
+
+%package data
+Summary:        GNOME Tour data
+BuildArch:      noarch
+
+%description data
+GNOME Tour & Greeter data files
 
 %lang_package
 
@@ -66,12 +80,18 @@ export RUSTFLAGS=%{rustflags}
 %license LICENSE.md
 %doc README.md
 %{_bindir}/gnome-tour
+%{_datadir}/metainfo/org.gnome.Tour.metainfo.xml
 %{_datadir}/applications/org.gnome.Tour.desktop
+%{_datadir}/dbus-1/services/org.gnome.Tour.service
+
+%files minimal
+%{_bindir}/gnome-tour-minimal
+
+%files data
 %{_datadir}/icons/hicolor/scalable/apps/*
 %{_datadir}/icons/hicolor/symbolic/apps/*
-%dir %{_datadir}/%{name}
 %{_datadir}/%{name}/resources.gresource
-%{_datadir}/metainfo/org.gnome.Tour.metainfo.xml
+%dir %{_datadir}/%{name}
 
 %files lang -f %{name}.lang
 

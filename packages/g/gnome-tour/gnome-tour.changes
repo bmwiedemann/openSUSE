@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 23 11:39:12 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 49.0:
+  * dist-vendor: Sync with template
+  * Add D-Bus service file
+  * Don't set prgname
+  * Translations updates
+- Add gnome-tour-minimal subpackage
+- Remove gnome-tour-fix-vi-translation.patch, not needed anymore.
+
+-------------------------------------------------------------------
 Mon Aug 11 14:42:43 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to latest version in https://github.com/openSUSE/gnome-tour:

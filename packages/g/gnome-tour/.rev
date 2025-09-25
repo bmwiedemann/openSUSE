@@ -92,4 +92,18 @@
     <comment></comment>
     <requestid>1299088</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5dcb3bcd10df2071c180b7e9558afeaa</srcmd5>
+    <version>49.0.openSUSE+git20250923.480cff6</version>
+    <time>1758818701</time>
+    <user>anag_factory</user>
+    <comment>- Update to 49.0:
+  * dist-vendor: Sync with template
+  * Add D-Bus service file
+  * Don't set prgname
+  * Translations updates
+- Add gnome-tour-minimal subpackage
+- Remove gnome-tour-fix-vi-translation.patch, not needed anymore. (forwarded request 1306944 from dimstar)</comment>
+    <requestid>1306962</requestid>
+  </revision>
 </revisionlist>
