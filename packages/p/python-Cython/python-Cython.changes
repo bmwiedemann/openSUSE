@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 22 12:31:13 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.1.4
+  * Declarations for the new PyUnstable_*() refcounting C-API functions in Py3.14
+    were added.
+  * The monitoring code could crash on tracing.
+  * Initialising the monitoring code could fail with a CPython exception.
+  * Optimised integer shifting triggered undefined behaviour in C.
+  * Deallocating objects that inherit from external types defined in pxd files
+    could run into an infinite loop.
+  * A reference to metaclasses could be leaked on instantiation.
+  * (Unlikely) error handling during empty builtin container tests was ineffective.
+  * Generated *_api.h files used potentially unknown Cython configuration macros.
+  * cythonize() avoids parallel compiler runs on systems using spawn() in
+    multiprocessing.
+  * The @cython.ufunc decorator was missing in type checker stubs.
+
+-------------------------------------------------------------------
 Wed Aug 13 12:01:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.1.3

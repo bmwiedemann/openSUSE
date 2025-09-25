@@ -1308,4 +1308,12 @@
   - Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1299348</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>0991e19a2ce8c6040ad51e66e6fcae63</srcmd5>
+    <version>3.1.4</version>
+    <time>1758818648</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306743</requestid>
+  </revision>
 </revisionlist>
