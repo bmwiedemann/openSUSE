@@ -66,6 +66,7 @@
 %define node_version %(rpm -q --qf "%%{version}" nodejs%{node_ver})
 # LLVM version
 %define llvm_version 19
+%define llvm_version_long 19.1.7
 # RUST version
 %define rust_version 1.86
 # GCC version
@@ -117,7 +118,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        140.0.7339.127
+Version:        140.0.7339.207
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -439,39 +440,27 @@ BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 %if %{with system_zstd}
 BuildRequires:  pkgconfig(libzstd) >= 1.5.5
 %endif
+# compiler selection
 %if %{with clang}
-%if 0%{?suse_version} <= 1500
+# clang/llvm case
 BuildRequires:  clang%{llvm_version}
 %if %{with libstdcpp}
 BuildRequires:  libstdc++6-devel-gcc%{gcc_version}
 %else
 BuildRequires:  clang%{llvm_version}-devel
-#BuildRequires:  libc++-devel
-BuildRequires:  libc++.so >= %{llvm_version}
+BuildRequires:  libc++.so = %{llvm_version_long}
+BuildRequires:  libc++1 = %{llvm_version_long}
+BuildRequires:  libc++abi.so = %{llvm_version_long}
+BuildRequires:  libc++abi1 = %{llvm_version_long}
 %endif
 BuildRequires:  lld%{llvm_version}
 BuildRequires:  llvm%{llvm_version}
 #!BuildIgnore:  gcc
 %else
-BuildRequires:  clang
-%if %{with libstdcpp}
-BuildRequires:  libstdc++-devel
-%else
-BuildRequires:  libc++-devel
-%endif
-BuildRequires:  lld
-BuildRequires:  llvm
-%endif
-%endif
-%if %{without clang}
+# gcc case
 BuildRequires:  binutils-gold
-%if 0%{?suse_version} <= 1500
 BuildRequires:  gcc%{gcc_version}
 BuildRequires:  gcc%{gcc_version}-c++
-%else
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-%endif
 %endif
 %if 0%{?suse_version} >= 1699
 #!BuildIgnore:  rpmlint rpmlint-Factory rpmlint-mini

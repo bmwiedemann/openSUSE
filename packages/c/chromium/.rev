@@ -5881,4 +5881,13 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>chromium 140.0.7339.127 (boo#1249388)</comment>
     <requestid>1303512</requestid>
   </revision>
+  <revision rev="479" vrev="1">
+    <srcmd5>59bceef556fd66df80522c619d60dda5</srcmd5>
+    <version>140.0.7339.207</version>
+    <time>1758818692</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 140.0.7339.207 (boo#1250472)
+- Chromium 140.0.7339.185 (stable released 2025-09-17) boo#1249999</comment>
+    <requestid>1306950</requestid>
+  </revision>
 </revisionlist>
