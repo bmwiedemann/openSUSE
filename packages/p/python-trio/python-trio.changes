@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 23 11:04:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.31.0
+  * Cancelled strings can now display the source and reason for a cancellation.
+    Trio-internal sources of cancellation will set this string, and CancelScope.cancel
+    now has a reason string parameter that can be used to attach info to any Cancelled
+    to help in debugging. (#3232)
+  * Make ctrl+c work in more situations in the Trio REPL (python -m trio). (#3007)
+  * Allow pickling trio.Cancelled, as they can show up when you want to pickle something
+    else. This does not rule out pickling other NoPublicConstructor objects -- create an
+    issue if necessary. (#3248)
+  * Decrease import time on Windows by around 10%. (#3263)
+  * Handle unwrapping SystemExit/KeyboardInterrupt exception gracefully in utility function
+    raise_single_exception_from_group that reraises last exception from group. (#3275)
+  * Ensure that the DTLS server does not mutate SSL context. (#3277)
+  * Avoid having trio.as_safe_channel raise if closing the generator wrapped GeneratorExit
+    in a BaseExceptionGroup. (#3324)
+  * Implement bool(trio.Event) and have it raise a DeprecationWarning and tell users to use
+    trio.Event.is_set instead. This is an alternative to mypy --enable-error-code=truthy-bool
+    for users who don't use type checking. (#3322)
+  * When misnesting nurseries you now get a helpful RuntimeError instead of a catastrophic
+    TrioInternalError. (#3307)
+- Drop pyopenssl-25-1-compatibility.patch, merged upstream
+- Remove shebang from trio/_tools/sync_requirements.py
+
+-------------------------------------------------------------------
 Thu Jul 17 20:26:22 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add pyopenssl-25-1-compatibility.patch to ignore deprecation
