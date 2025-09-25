@@ -1,7 +1,7 @@
 #
 # spec file for package hpx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,7 +39,6 @@ BuildRequires:  libboost_filesystem-devel >= 1.71
 BuildRequires:  libboost_iostreams-devel >= 1.71
 BuildRequires:  libboost_program_options-devel >= 1.71
 BuildRequires:  libboost_regex-devel >= 1.71
-BuildRequires:  libboost_system-devel >= 1.71
 %ifarch aarch64 %{arm}
 BuildRequires:  libboost_chrono-devel >= 1.71
 BuildRequires:  libboost_context-devel >= 1.71

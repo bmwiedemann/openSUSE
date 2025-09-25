@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 24 09:29:37 CEST 2025 - aschnell@suse.com
+
+- libboost_system was removed upstream (bsc#1249900)
+
+-------------------------------------------------------------------
 Tue Jun 25 14:29:37 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Udpate to 1.10.0
