@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-stripe
-Version:        12.5.0
+Version:        12.5.1
 Release:        0
 Summary:        Python bindings for the Stripe API
 License:        MIT

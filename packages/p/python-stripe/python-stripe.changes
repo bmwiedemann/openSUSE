@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 25 11:28:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 12.5.1
+  * #1563 fix: Paginate backwards if `starting_after == None`
+  * Addresses an #1562 where List iteration would be forwards when
+    `starting_after` was set to `None` but backwards if it was not
+    set at all. Now, it will paginate backwards in both cases.
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Fri Sep  5 20:08:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 12.5.0:
