@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 24 19:21:41 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20250924T192141 2025-09-24T19:21:41Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3962 CVE-2025-59341 GHSA-49pv-gwxp-532r
+  * GO-2025-3963 CVE-2025-59348 GHSA-2qgr-gfvj-qpcr
+  * GO-2025-3964 CVE-2025-59349 GHSA-8425-8r2f-mrv6
+  * GO-2025-3965 CVE-2025-59345 GHSA-89vc-vf32-ch59
+  * GO-2025-3966 CVE-2025-59347 GHSA-98x5-jw98-6c97
+  * GO-2025-3967 CVE-2025-59342 GHSA-g2h5-cvvr-7gmw
+  * GO-2025-3968 CVE-2025-59346 GHSA-g2rq-jv54-wcpr
+  * GO-2025-3969 CVE-2025-59353 GHSA-255v-qv84-29p5
+  * GO-2025-3970 CVE-2025-59351 GHSA-4mhv-8rh3-4ghw
+  * GO-2025-3971 CVE-2025-59352 GHSA-79hx-3fp8-hj66
+  * GO-2025-3972 CVE-2025-59350 GHSA-c2fc-9q9c-5486
+  * GO-2025-3973 CVE-2025-59354 GHSA-hx2h-vjw2-8r54
+  * GO-2025-3974 CVE-2025-59410 GHSA-mcvp-rpgg-9273
+  * GO-2025-3976 CVE-2025-10630 GHSA-g4rr-88fc-26fj
+  * GO-2025-3977 CVE-2025-9079 GHSA-qx3f-6vq3-8j8m
+  * GO-2025-3978 CVE-2025-9081 GHSA-f72g-52v7-mg3p
+
+-------------------------------------------------------------------
 Mon Sep 22 20:48:35 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.0.20250922T204835 2025-09-22T20:48:35Z.
