@@ -644,4 +644,13 @@
   * Skip colon from device names for ethtool (bsc#1246923)</comment>
     <requestid>1305804</requestid>
   </revision>
+  <revision rev="63" vrev="6">
+    <srcmd5>51aac1d6fed44791c685e4193d8b9477</srcmd5>
+    <version>2.12.0</version>
+    <time>1758818691</time>
+    <user>anag_factory</user>
+    <comment>- &quot;interdiff&quot; shipped as part of patchutils since version 0.4.3,
+  so drop it here (forwarded request 1306736 from sndirsch)</comment>
+    <requestid>1306737</requestid>
+  </revision>
 </revisionlist>

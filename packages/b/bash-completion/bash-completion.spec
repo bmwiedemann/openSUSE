@@ -135,6 +135,8 @@ del="$del secret-tool"
 del="$del _adb"
 # shipped as part of kmod
 del="$del insmod insmod.static modinfo modprobe rmmod"
+# shipped as part of patchutils
+del="$del interdiff"
 
 for i in $del; do
 	rm -fv "%{buildroot}%{_datadir}/bash-completion/completions/$i"

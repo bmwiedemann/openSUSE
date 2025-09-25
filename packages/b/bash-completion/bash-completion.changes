@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 23 11:42:26 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- "interdiff" shipped as part of patchutils since version 0.4.3,
+  so drop it here
+
+-------------------------------------------------------------------
 Thu Sep 18 13:02:46 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch bug1246923.patch
