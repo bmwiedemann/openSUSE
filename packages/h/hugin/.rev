@@ -698,4 +698,14 @@
 * Drop use of deprecated %suse_update_desktop_file macro. (forwarded request 1269276 from badshah400)</comment>
     <requestid>1269324</requestid>
   </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>87049564deb23c7dd4cb934754cd0210</srcmd5>
+    <version>2024.0.1</version>
+    <time>1758818770</time>
+    <user>anag_factory</user>
+    <comment>- Remove BuildRequires on libboost_system-devel, removed on boost 1.89
+  (bsc#1249599)
+  * Patch boost.patch (forwarded request 1307152 from anag_factory)</comment>
+    <requestid>1307153</requestid>
+  </revision>
 </revisionlist>

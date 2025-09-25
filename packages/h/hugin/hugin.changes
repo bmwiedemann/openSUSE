@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 25 14:01:03 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel, removed on boost 1.89
+  (bsc#1249599)
+  * Patch boost.patch
+
+-------------------------------------------------------------------
 Mon Apr 14 08:39:36 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Build with EGL support on Tumbleweed, as wxwidgets is also
@@ -361,7 +368,7 @@ Fri Dec  5 10:36:30 UTC 2014 - dimstar@opensuse.org
   taken from upstream.
 
 -------------------------------------------------------------------
-Fri Oct 10 11:39:33 NOVT 2014 - salsergey@gmail.com
+Fri Oct 10 04:39:33 UTC 2014 - salsergey@gmail.com
 
 - Updated to version 2014.0.0
   * inherit many of the libpano improvements (of version 2.9.19)
