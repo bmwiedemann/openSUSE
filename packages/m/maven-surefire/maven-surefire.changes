@@ -262,7 +262,7 @@ Thu Feb 22 07:58:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 - Upgrade to 2.22.2
   * Bugs:
     + SUREFIRE-1614: JUnit Runner that writes to System.out
-      corrupts Surefire’s STDOUT when using JUnit’s Vintage Engine
+      corrupts Surefire's STDOUT when using JUnit's Vintage Engine
 - Upgrade to 2.22.1
   * Bugs:
     + SUREFIRE-1532: MIME type for javascript is now officially
@@ -278,7 +278,7 @@ Thu Feb 22 07:58:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
       should not be simpleContent.
     + SUREFIRE-1561: Logs in Parallel Tests are mixed up when
       forkMode=never or forkCount=0
-    + SUREFIRE-1564: Can’t override platform version through
+    + SUREFIRE-1564: Can't override platform version through
       project/plugin dependencies
     + SUREFIRE-1579: Forks mixed up characters in standard output
   * Improvements:

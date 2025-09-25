@@ -128,4 +128,12 @@ put into adi:2</comment>
     <comment>3.5.4</comment>
     <requestid>1304794</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>6971865eb383b8570957b4c738173291</srcmd5>
+    <version>3.5.4</version>
+    <time>1758818759</time>
+    <user>anag_factory</user>
+    <comment>Avoid useless utf-8 in changes</comment>
+    <requestid>1307122</requestid>
+  </revision>
 </revisionlist>
