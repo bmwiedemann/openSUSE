@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 24 19:26:15 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * eclipse-swt-no-werror.patch
+    + disable the default -Werror for the 4.29 version
+    + fixes build with some deprecated glib/gtk+ functions
+
+-------------------------------------------------------------------
 Tue Jul 22 11:36:43 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Use the existing %%{__isa_bits} macro instead of crafting one

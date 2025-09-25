@@ -46,7 +46,8 @@ Patch0:         eclipse-swt-avoid-javascript-at-build-%{major_version}_%{minor_v
 Patch1:         eclipse-swt-rm-eclipse-tasks-and-customize-build.patch
 Patch2:         eclipse-swt-fedora-build-native.patch
 Patch3:         eclipse-gcc10.patch
-Patch4:         eclipse-swt-gcc15-%{major_version}_%{minor_version}.patch
+Patch4:         eclipse-swt-no-werror.patch
+Patch5:         eclipse-swt-gcc15-%{major_version}_%{minor_version}.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -82,8 +83,10 @@ This package contains the API documentation for %{name}.
 %patch -P 2 -p1
 %if %{__isa_bits} == 32
 %patch -P 3 -p2
-%endif
+%else
 %patch -P 4 -p1
+%endif
+%patch -P 5 -p1
 mkdir -p %{swtsrcdir}/tasks
 cp %{SOURCE1} %{swtsrcdir}/tasks
 cp %{SOURCE2} %{SOURCE3} .

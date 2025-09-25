@@ -1,0 +1,13 @@
+--- "eclipse.platform.swt-R4_29/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/make_linux.mak"	2025-09-24 21:11:37.566539301 +0200
++++ "eclipse.platform.swt-R4_29/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/make_linux.mak"	2025-09-24 21:21:23.142923302 +0200
+@@ -109,10 +109,6 @@
+ 		${SWT_PTR_CFLAGS}
+ LFLAGS = -shared -fPIC ${SWT_LFLAGS}
+ 
+-# Treat all warnings as errors. If your new code produces a warning, please
+-# take time to properly understand and fix/silence it as necessary.
+-CFLAGS += -Werror
+-
+ ifndef NO_STRIP
+ 	# -s = Remove all symbol table and relocation information from the executable.
+ 	#      i.e, more efficent code, but removes debug information. Should not be used if you want to debug.

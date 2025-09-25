@@ -87,4 +87,12 @@
     <comment>cleanup</comment>
     <requestid>1295072</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>6820290010f952a1b770e4922365726e</srcmd5>
+    <version>4.29</version>
+    <time>1758818709</time>
+    <user>anag_factory</user>
+    <comment>fix build with the new gtk+</comment>
+    <requestid>1306991</requestid>
+  </revision>
 </revisionlist>
