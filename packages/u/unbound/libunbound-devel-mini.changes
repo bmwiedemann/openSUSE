@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Wed Sep 24 10:54:29 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 1.24.0:
+  Features:
+  * Increase default to num-queries-per-thread: 2048, when unbound
+    is compiled with libevent. It makes saturation of the task
+    queue more resource intensive and less practical.
+  * Auto-configure '-slabs' values.
+  * Change default for so-sndbuf to 1m, to mitigate a cross-layer
+    issue where the UDP socket send buffers are exhausted waiting
+    for ARP/NDP resolution.
+  * Adjusted so-sndbuf default to 4m.
+  * Add extra statistic to track the number of signature validation
+    operations. Adds 'num.valops' to extended statistics.
+  * [FR] Disable TLSv1.2.
+  * unbound-control cache_lookup prints the cached rrsets and
+    messages for those.
+  * unbound-control cache_lookup +t allows tld and root names. And
+    subnet cache contents are printed.
+  * [FR] zone status for Unbound auth-zones.
+
+  Bug Fixes:
+  * Fix assertion failure testcode/unitverify.c:202.
+  * Use macros for the fr_check_changed* functions.
+  * Fix for parallel build of dnstap protoc-c output.
+  * Fix dnstap to use protoc.
+  * Sync unbound and unbound-checkconf log output for unknown
+    modules.
+  * Fix forward-zone "name: ." conflicts with auth-zone "name: ."
+    in 1.23.0, but worked in 1.22.0.
+  * Fix unsafe usage of atoi() while parsing the configuration
+    file.
+  * Fix auth nsec3 code. Fixes NSEC3 code to not break on broken
+    auth zones that include unsigned out of zone (above apex) data.
+    Could lead to hang while trying to prove a wildcard answer.
+  * Fix NULL pointer deref in az_find_nsec_cover() (latent bug) by
+    adding a log_assert() to safeguard future development.
+  * Fix log-destaddr fail on long ipv6 addresses.
+  * Fix config of slab values when there is no config file.
+  * Fix for cname chain length with qtype ANY and qname
+    minimisation.
+  * RST man pages. It introduces restructuredText man pages to sync
+    the online and source code man page documentation. The
+    templated man pages (*.in) are still part of the repo but
+    generated with docutils from their .rst counterpart.
+    Documentation on how to generate those (mainly for core
+    developers) is in README.man.
+  * Add more checks about respip in unbound-checkconf. Also fixes
+    unbound-checkconf not reporting RPZ configuration error.
+  * [FR] Improve fuzzing of unbound by adapting the netbound
+    program.
+  * Small manpage corrections for the 'disable-dnssec-lame-check'
+    option.
+  * Fix unbound-anchor certificate file read for line ends and end
+    of file.
+  * Fix comment for the dname_remove_label_limit_len function.
+  * iana portlist updated.
+  * Fix bitwise operators in conditional expressions with
+    parentheses.
+  * Fix conditional expressions with parentheses for bitwise and.
+  * Fix header return value description for skip_pkt_rrs and
+    parse_edns_from_query_pkt.
+  * Fix to check control-interface addresses in unbound-checkconf.
+  * Fix Windows 32-bit binaries download seems to be missing dll
+    dependency.
+  * Fix for consistent use of local zone CNAME alias for configured
+    auth zones. Now it also applies to downstream configured auth
+    zones.
+  * Fix DNS over QUIC depends on a very outdated version of ngtcp2.
+    Fixed so it works with ngtcp2 1.13.0 and OpenSSL 3.5.0.
+  * edns-subnet: fix NULL_AFTER_DEREF on subnetmod.
+  * Fix rrset cache create allocation failure case.
+  * Fix EDE 6 is attached to insecure cached answers when client
+    sends the CD bit.
+  * Fix forward-first: ssl handshake failed on root nameservers.
+  * Turn off fetch-policy for delegation when looking into parent
+    side name servers that may not update the addresses and hit
+    NXNS limits.
+  * Replay test (added tcp_transport to outnet_serviced_query).
+  * Generate ltmain.sh and configure again.
+  * Fix is 'sock-queue-timeout' a linux only feature.
+  * Implement sock-queue-timeout for FreeBSD as well.
+  * Fix layout of comm_point_udp_ancil_callback.
+  * Fix to improve dnstap discovery on Fedora.
+  * Fix detection of SSL_CTX_set_tmp_ecdh function.
+  * Fix configure cant find SSL_is_quic in OpenSSL 3.5.1.
+  * Test num.valops in existing stat_values.tdir.
+  * Add num.valops in the unbound-control man page.
+  * Add unit tests for non-ecs aggregation.
+  * Fix to not set rlimits in the unit tests.
+  * iana portlist updated.
+  * Redis checks for server down and throttles reconnects.
+  * Fix redis cachedb module gettimeofday init failure.
+  * Fix testbound test program to accurately output packets from
+    hex.
+  * Fix incorrectly reclaimed tcp handler can cause data corruption
+    and segfault.
+  * Fix to use assertions for consistency checks in reclaimed tcp
+    handlers.
+  * Fix edns subnet, so that the subquery without subnet is stored
+    in global cache if the querier used 0.0.0.0/0 and the name and
+    address do not receive subnet treatment. If the name and
+    address are configured for subnet, it is stored in the subnet
+    cache.
+  * Fix dname_str for printout of long names.
+  * Fix that edns-subnet failure to create a subquery errors as
+    servfail, and not formerror.
+  * Fix to whitespace in dname_str.
+  * Fix that unbound-control dump_cache releases the cache locks
+    every so often, so that the server stays responsive.
+  * Fix to remove debug from cache_lookup.
+  * Fix to unlock cache_lookup message for malformed records.
+  * Fix to increase responsiveness of dump_cache.
+  * Fix to decouple file descriptor activity and cache lookups in
+    dump_cache.
+  * Fix cache_lookup subnet printout to wipe zero part of the
+    prefix.
+  * Fix cache_lookup subnet print to not print messages without
+    rrsets and perform in-depth check on node in the addrtree.
+  * Fix to check for extraneous command arguments for
+    unbound-control, when the command takes no arguments but there
+    are arguments present.
+  * Fix contrib/unbound.service comment path for systemd network
+    configuration.
+  * Fix compile warnings for DoH compile on windows.
+  * Fix sha1 enable environment variable in test code on windows.
+  * Fix that the zone acquired timestamp is set after the zonefile
+    is read.
+  * Fix unbound-control dump_cache for double unlock of lruhash
+    table.
+  * Fix setup_listen_sslctx warning for nettle compile.
+  * Limit the number of consecutive reads on an HTTP/2 session.
+  * Fix to free edns options scratch in ratelimit case.
+  * Fix outdated Python2 code in unbound/pythonmod/examples/log.py.
+  * Fix memory leak in 'msgparse.c' in
+    'parse_edns_options_from_query(...)'.
+  * Fix indentation in tcp-mss option parsing.
+  * Fix make depend.
+  * Update documentation for using "SET ... EX" in Redis.
+  * Document max buffer sizes for Redis commands.
+  * Update man pages.
+  * Fix CNAME chains are sometimes not followed when RPZs add a
+    local CNAME rewrite.
+  * Update contrib/aaaa-filter-iterator.patch so it applies on
+    1.24.0.
+  * Small debug output improvement when attaching an EDE.
+  * Fix to print warning for when so-sndbuf setsockopt is not
+    granted.
+  * Too many quotes for the EDE message debug printout.
+
+-------------------------------------------------------------------
 Sun Aug 10 18:26:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.23.1:

@@ -13,6 +13,5 @@ as a server, but are linked into an application) are easily possible.
 This package is just for my personal use. If you want to submit it to factory you become the maintainer.
 
 </description>
-  <devel project="server:dns" package="unbound"/>
   <url>http://www.unbound.net/</url>
 </package>

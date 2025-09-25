@@ -22,7 +22,7 @@
 %bcond_without hardened_build
 #
 Name:           libunbound-devel-mini
-Version:        1.23.1
+Version:        1.24.0
 #!BcntSyncTag: unbound
 Release:        0
 Summary:        Just a devel package for build loops
