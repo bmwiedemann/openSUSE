@@ -1679,4 +1679,19 @@
   * releaser: Prepare repository for 0.150.0-DEV (forwarded request 1303243 from jfkw)</comment>
     <requestid>1303244</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>f2cd87e14295cdb1164c5e5a2d35b051</srcmd5>
+    <version>0.150.1</version>
+    <time>1758818774</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.150.1:
+  * releaser: Bump versions for release of 0.150.1
+  * hugolib: Change duplicate content path warning to an info log
+  * hugolib: Restore integration test
+  * commands: Map --minify CLI flag to the correct configuration key
+  * snap: Add desktop plug
+  * test(deps): Update setup-ruby action to v1.257.0
+  * releaser: Prepare repository for 0.151.0-DEV (forwarded request 1307180 from jfkw)</comment>
+    <requestid>1307181</requestid>
+  </revision>
 </revisionlist>

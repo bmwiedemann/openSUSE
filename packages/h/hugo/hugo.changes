@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 25 14:29:16 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.150.1:
+  * releaser: Bump versions for release of 0.150.1
+  * hugolib: Change duplicate content path warning to an info log
+  * hugolib: Restore integration test
+  * commands: Map --minify CLI flag to the correct configuration key
+  * snap: Add desktop plug
+  * test(deps): Update setup-ruby action to v1.257.0
+  * releaser: Prepare repository for 0.151.0-DEV
+
+-------------------------------------------------------------------
 Mon Sep 08 15:08:50 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.150.0:
