@@ -1,7 +1,7 @@
 #
 # spec file for package python-whitenoise
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,11 @@ BuildArch:      noarch
 Static file serving for WSGI applications.
 
 %prep
-%setup -q -n whitenoise-%{version}
+%autosetup -p1 -n whitenoise-%{version}
+%if 0%{?suse_version} && 0%{?suse_version} <= 1600
+sed -i '/license-files/d' pyproject.toml
+sed -i 's/license = "MIT"/license = { text = "MIT" }/' pyproject.toml
+%endif
 
 %build
 %pyproject_wheel

@@ -187,4 +187,12 @@
     <comment></comment>
     <requestid>1306441</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6147d1e40dabb3d6a15f33616ec841bb</srcmd5>
+    <version>6.11.0</version>
+    <time>1758818753</time>
+    <user>anag_factory</user>
+    <comment>- Fix build for Leap 15.7</comment>
+    <requestid>1307085</requestid>
+  </revision>
 </revisionlist>
