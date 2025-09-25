@@ -395,4 +395,41 @@
   * chore: auto-update generated files (forwarded request 1305715 from ph03nix)</comment>
     <requestid>1305778</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8257d527524e2c631230ce1cbb477b2b</srcmd5>
+    <version>2.12.3</version>
+    <time>1758818769</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.12.3:
+  * fix(makeself): keep full binary name
+  * fix(makeself): keep script name
+  * ci: fix generate job
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.88.1 to 1.88.2 (#6113)
+  * chore(deps): bump actions/checkout from 4.2.2 to 5.0.0 (#6111)
+  * ci: scorecard.yml pin fix
+  * ci: better pinning
+  * ci: fix nightly.yml
+  * ci: fix nightly.yml
+  * chore(deps): bump ossf/scorecard-action from 2.4.1 to 2.4.2 (#6112)
+  * fix: lint
+  * test: improve fuzz tests
+  * test: fuzz
+  * test: fuzz tests for tmpl, artifact
+  * ci: fix build.yml
+  * ci: fix docs.yml and generate.yml
+  * chore(deps): bump actions/upload-artifact from 4.6.1 to 4.6.2 (#6110)
+  * ci: fix nightly.yml
+  * ci: fix gitleaks.yml
+  * ci: fix gitleaks.yml
+  * ci: fix grype.yml
+  * ci: build.yml perms
+  * docs: pin mkdocs-material image, add it to dependabot
+  * ci(sec): improve workflows perms
+  * ci(sec): improve workflows
+  * ci: scorecard job
+  * ci: cleanup openssf action
+  * ci: add openssf action
+  * ci: add openssf action (forwarded request 1307123 from ph03nix)</comment>
+    <requestid>1307151</requestid>
+  </revision>
 </revisionlist>

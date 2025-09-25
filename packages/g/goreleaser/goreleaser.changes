@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Sep 25 13:31:49 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.12.3:
+  * fix(makeself): keep full binary name
+  * fix(makeself): keep script name
+  * ci: fix generate job
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.88.1 to 1.88.2 (#6113)
+  * chore(deps): bump actions/checkout from 4.2.2 to 5.0.0 (#6111)
+  * ci: scorecard.yml pin fix
+  * ci: better pinning
+  * ci: fix nightly.yml
+  * ci: fix nightly.yml
+  * chore(deps): bump ossf/scorecard-action from 2.4.1 to 2.4.2 (#6112)
+  * fix: lint
+  * test: improve fuzz tests
+  * test: fuzz
+  * test: fuzz tests for tmpl, artifact
+  * ci: fix build.yml
+  * ci: fix docs.yml and generate.yml
+  * chore(deps): bump actions/upload-artifact from 4.6.1 to 4.6.2 (#6110)
+  * ci: fix nightly.yml
+  * ci: fix gitleaks.yml
+  * ci: fix gitleaks.yml
+  * ci: fix grype.yml
+  * ci: build.yml perms
+  * docs: pin mkdocs-material image, add it to dependabot
+  * ci(sec): improve workflows perms
+  * ci(sec): improve workflows
+  * ci: scorecard job
+  * ci: cleanup openssf action
+  * ci: add openssf action
+  * ci: add openssf action
+  * chore: schema update
+  * docs: fix title
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.147.0 to 0.148.0 (#6109)
+  * docs: icons on smaller screens
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.146.0 to 0.147.0 (#6108)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.39.1 to 0.40.0 (#6107)
+  * chore(deps): bump cachix/install-nix-action from 31.6.1 to 31.6.2 (#6106)
+  * docs(sec): threat model
+  * chore: auto-update generated files
+  * ci: moderator cleanup
+  * docs: fedora move exclude to repo config (#6103)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.145.0 to 0.146.0 (#6100)
+  * chore(deps): bump github.com/charmbracelet/fang from 0.4.1 to 0.4.2 (#6101)
+  * chore(deps): bump cargo-bins/cargo-binstall from cf49c6dbd5eb6865966cf4fae3ab1ecfb82ed87e to 6c16d05d76228d6ebb51c9db4595e86015d8df9d (#6099)
+  * docs: fix inconsistency about symlink in nfpm.md (#6094)
+  * fix(sbom): --enrich=all should be the default (#6095)
+  * chore(deps): bump cargo-bins/cargo-binstall from d020f1115f5ef21c966a766b15e98f8aad36a049 to cf49c6dbd5eb6865966cf4fae3ab1ecfb82ed87e (#6097)
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Thu Sep 18 07:17:28 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.12.2:
