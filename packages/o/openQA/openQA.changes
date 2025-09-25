@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 24 16:13:41 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758729450.b88c0b40:
+  * Reject jobs if worker is broken when receiving a new job
+
+-------------------------------------------------------------------
 Wed Sep 24 14:13:16 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1758711845.e5c02221:
