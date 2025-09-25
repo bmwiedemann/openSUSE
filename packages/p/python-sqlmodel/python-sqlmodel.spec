@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sqlmodel%{psuffix}
-Version:        0.0.24
+Version:        0.0.25
 Release:        0
 Summary:        SQL databases in Python, designed for simplicity, compatibility, and robustness
 License:        MIT
