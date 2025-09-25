@@ -2291,4 +2291,13 @@
     to launch modern X11 sessions. (forwarded request 1305256 from iznogood)</comment>
     <requestid>1305517</requestid>
   </revision>
+  <revision rev="290" vrev="2">
+    <srcmd5>f5e8800b0c5e02581207d9e2bb4c5a5e</srcmd5>
+    <version>49.0.1</version>
+    <time>1758818635</time>
+    <user>anag_factory</user>
+    <comment>- Add gdm-service-keytable.patch: set KEYMAP to XkbLayout for GNOME
+  when using gdm-systemd instead of xdm (bsc#1248831, bsc#1250366). (forwarded request 1306710 from dimstar)</comment>
+    <requestid>1306955</requestid>
+  </revision>
 </revisionlist>

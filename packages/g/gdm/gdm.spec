@@ -57,6 +57,7 @@ Source14:       gdm-fingerprint-sle.pamd
 Source15:       gdm-smartcard-sle.pamd
 # Configuration for pulseaudio
 Source20:       default.pa
+Source21:       keytable.in
 # PATCH-FIX-OPENSUSE  gdm-sysconfig-settings.patch bnc432360 bsc#919723 hpj@novell.com -- Read autologin options from /etc/sysconfig/displaymanager; note that accountsservice has a similar patch (accountsservice-sysconfig.patch)
 Patch1:         gdm-sysconfig-settings.patch
 # PATCH-FIX-OPENSUSE gdm-suse-xsession.patch vuntz@novell.com -- Use the /etc/X11/xdm/* scripts
@@ -69,6 +70,8 @@ Patch5:         gdm-switch-to-tty1.patch
 Patch6:         gdm-initial-setup-hardening.patch
 # PATCH-FIX-UPSTREAM gdm-plymouth-quit-wait.patch bsc#1243439 xwang@suse.com -- Disable plymouth-quit-wait.service
 Patch9:         gdm-plymouth-quit-wait.patch
+# PATCH-FIX-OPENSUSE gdm-service-keytable.patch bsc#1248831 bsc#1250366 yfjiang@suse.com -- set KEYMAP to XkbLayout for GNOME
+Patch10:        gdm-service-keytable.patch
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
@@ -344,6 +347,8 @@ install -m 644 %{SOURCE11} %{buildroot}%{_sysusersdir}/gdm.conf
 install -D -m 644 %{SOURCE20} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.pulse/default.pa
 %endif
 
+install -m 755 %{SOURCE21} %{buildroot}%{_libexecdir}/gdm/keytable
+
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}/help
 
@@ -482,6 +487,7 @@ fi
 
 %files systemd
 %{_unitdir}/gdm.service
+%{_libexecdir}/gdm/keytable
 
 %files -n gdmflexiserver
 %{_bindir}/gdmflexiserver

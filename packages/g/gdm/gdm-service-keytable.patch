@@ -1,0 +1,12 @@
+Index: gdm-48.0/data/gdm.service.in
+===================================================================
+--- gdm-48.0.orig/data/gdm.service.in
++++ gdm-48.0/data/gdm.service.in
+@@ -20,6 +20,7 @@ After=rc-local.service plymouth-start.se
+ OnFailure=plymouth-quit.service
+ 
+ [Service]
++ExecStartPre=-/usr/libexec/gdm/keytable
+ ExecStart=${sbindir}/gdm
+ KillMode=mixed
+ Restart=always

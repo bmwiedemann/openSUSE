@@ -1,0 +1,64 @@
+#! /bin/bash
+
+if [ $UID -ne 0 ]; then
+  echo "You need to be root to run this program"
+  exit 0
+fi
+
+vconsole_conf_file=/etc/vconsole.conf
+previous_x11conf_file=/etc/X11/xorg.conf.d/90-keytable.conf
+systemd_x11conf_file=/etc/X11/xorg.conf.d/00-keyboard.conf
+keyboard_map_systemd=/usr/share/systemd/kbd-model-map
+
+function setkeyboard {
+  echo "Command: localectl set-keymap $1 $2"
+  # xorg.conf.d snippet is only written if a valid snippet is already
+  # available, so create an us sample if neccessary
+  if [ ! -f $systemd_x11conf_file ]; then
+    localectl set-x11-keymap us
+  fi
+  
+  # check systemd mapping
+  NEWKEYMAP=$(echo "$1" | sed "s/ $//" )
+  opts=$(grep -P "^$NEWKEYMAP\t" "$keyboard_map_systemd" | sed -re "s/[^\t]*//" -e "s/[\t]+/ /g" )
+  if [ -z "$opts" ]; then
+     echo "W: Cannot find mapping for $NEWKEYMAP in $keyboard_map_systemd"
+     echo "W: This will result in an 'us' X keyboard layout as default"
+  else
+     echo "I: Using systemd $keyboard_map_systemd mapping"
+  fi
+  
+  localectl set-keymap $1 $2
+  if [ -f $systemd_x11conf_file ]; then
+    if [ -f $previous_x11conf_file ]; then
+      if  [ $systemd_x11conf_file -nt $previous_x11conf_file ]; then
+        rm -f $previous_x11conf_file
+      fi
+    fi
+    exit 0
+  else
+    echo "$systemd_x11conf_file has not been created!" 
+  fi
+}
+
+if [ -f $vconsole_conf_file ]; then
+  echo "$vconsole_conf_file available"
+  . $vconsole_conf_file
+  if [ ! -z $KEYMAP ]; then
+    if [ -z $XKBLAYOUT ]; then
+      echo "KEYMAP: $KEYMAP"
+      setkeyboard $KEYMAP $KEYMAP_TOGGLE
+    else
+      echo "XKBLAYOUT: $XKBLAYOUT"
+      echo "XKBLAYOUT is already set. Better don't touch X11 keyboard configuration."
+      exit 0
+    fi
+  else
+    echo "KEYMAP not set"
+  fi 
+else
+  echo "$vconsole_conf_file not available"
+fi
+
+echo "Keyboard layout could not be set"
+exit 1
