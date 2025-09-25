@@ -494,4 +494,12 @@
     <comment>fix build with boost 1.89+</comment>
     <requestid>1306497</requestid>
   </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>a52644b362cf85389db6fc12bac58ef9</srcmd5>
+    <version>0.20.2</version>
+    <time>1758818660</time>
+    <user>anag_factory</user>
+    <comment>add bug number</comment>
+    <requestid>1307045</requestid>
+  </revision>
 </revisionlist>
