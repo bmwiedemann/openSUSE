@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Sep 25 06:00:34 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Add version constraint for bison since `-Wcounterexamples` support is
+  required
+
+-------------------------------------------------------------------
+Wed Sep 24 08:52:20 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Add xxd as build dependency
+- Update to 0.24.0
+  * Breaking Changes
+    * Drop majority of DWARF support (hence LLDB is no longer required as a
+      build depdency), only uprobe argument parsing remains.
+    * Removed config option 'symbol_source' - it no longer has any effect
+    * Rawtracepoints now require kernel BTF
+    * Ustack and kstack symbols are automatically enhanced with debug info
+      if available
+    * Error by default if any probe fails to attach
+    * Require BPF_MAP_TYPE_RINGBUF to be available
+    * Require kernel uprobe ref counting to be available for USDTs with
+      semaphores
+    * strcontains and has_key now return boolean values instead of 1 and 0
+    * JSON serialization for unsupported and unknown types (e.g. float) may
+      now use null now rather than the empty string
+    * Text mode now emits all non-script generated output (e.g., errors,
+      attached notifications) to stderr instead of stdout
+  * Added
+    * Add ncpus builtin to get the number of CPUs.
+    * Use blazesym for user space address symbolization
+    * Add simple block expressions
+    * Add map declaration syntax (behind an "unstable" config flag)
+    * Add license config to specify BPF license
+    * Rawtracepoints can now use args builtin and list params
+    * Add ability to specify rawtracepoint modules
+    * Add 'show_debug_info' config for blazesym
+    * Add hygienic macros (behind an "unstable" config flag)
+    * Add warning when unset or empty positional parameters are used
+    * Support accessing up to 255 USDT probe args
+    * Add new builtin "usermode"
+    * Warn on discarded return values for specific builtin functions
+    * For loops now support .. ranges
+    * For loops now support break and continue
+    * Add pid and tid functions for choosing between the initial or the
+      current namespace
+    * Add boolean values (true and false)
+    * Add duration literals - suffixes include: ns, us, ms, s, m, h, d
+    * Add getopt function to handle named command line program arguments
+    * Add socket_cookie function to get the cookie of a socket
+    * Introduce tseries for capturing time series data
+    * Add ability to attach to running BPF programs and sub-programs via
+      fentry:bpf:prog_name or fentry:bpf:prog_id:prog_name
+    * Add BENCH for creating microbenchmarks
+    * Add 'assert' and 'ppid' to the macro standard library
+    * Add 'errorf' for printing error messages with the source location
+    * Add ability to call most builtins with call-style syntax e.g. comm()
+    * Allow non-constant array access
+    * Add '0' flag for printf to fill with leading 0s
+    * Add support for LLVM 21
+  * Changed
+    * kprobe: support verbose mode listing
+    * -p CLI flag now applies to all probes (except BEGIN/END)
+    * Introduce automatic session probes
+    * Positional params can be used in any part of a probe string
+    * Add signed type checking for map assignments
+    * Add signed type checking for map keys
+    * delete now returns 1 if successful, 0 if not
+    * if delete fails it will only print a warning if return value is not
+      handled
+    * Change "Attaching N probes..." to "Attached N probes"
+    * runqlat.bt: ignore idle task
+    * Only cache symbols from targeted process
+    * Automatically exit if only BEGIN/END probes are specified
+    * Moved docs for builtins, functions, and map functions into stdlib.md
+      and moved language docs into language.md
+    * Make probe provider names case insensitive
+  * Fixed
+    * Correctly handle type mismatches in map assignments.
+    * Improve watchpoint attachment and multi-probe reporting.
+    * Fix reading of `__data_loc` tracepoint arguments.
+    * Parse BTF for implicit kernel modules in kprobes.
+  * Tools
+    * opensnoop.bt: support openat2 syscall
+    * killsnoop.bt: display signal name instead of value
+    * killsnoop.bt: support tkill() and tgkill()
+    * Remove tools example usage txt files and move info to comments
+    * Fix biosnoop.bt to print comm from block_io_start probe
+- Remove tools/doc/ as tracked package files (gh#bpftrace/bpftrace#4187)
+
+-------------------------------------------------------------------
 Tue Jun 10 06:09:39 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 0.23.5

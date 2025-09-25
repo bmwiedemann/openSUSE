@@ -1,7 +1,7 @@
 #
 # spec file for package bpftrace
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@
 %endif
 
 Name:           bpftrace
-Version:        0.23.5
+Version:        0.24.0
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
@@ -59,16 +59,17 @@ Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/
 BuildRequires:  %cc_package
 BuildRequires:  binutils
 BuildRequires:  binutils-devel
-BuildRequires:  bison
+# Required for -Wcounterexamples since gh#bpftrace/bpftrace#4124
+BuildRequires:  bison >= 3.7
 BuildRequires:  clang%{llvm_major_version}-devel
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  libbpf-devel
 BuildRequires:  libxml2-devel
-BuildRequires:  lldb%{llvm_major_version}-devel
 BuildRequires:  llvm%{llvm_major_version}-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
+BuildRequires:  xxd
 BuildRequires:  cmake(cereal)
 BuildRequires:  pkgconfig(libbcc) >= 0.11
 BuildRequires:  pkgconfig(libelf)
@@ -139,8 +140,6 @@ chmod +x %{buildroot}%{_datadir}/bpftrace/tools/old/*.bt
 %{_datadir}/bpftrace/tools/*.bt
 %dir %{_datadir}/bpftrace/tools/old
 %{_datadir}/bpftrace/tools/old/*.bt
-%dir %{_datadir}/bpftrace/tools/doc
-%{_datadir}/bpftrace/tools/doc/*_example.txt
 %{_mandir}/man8/*.8%{?ext_man}
 %exclude %{_mandir}/man8/bpftrace.8%{ext_man}
 
