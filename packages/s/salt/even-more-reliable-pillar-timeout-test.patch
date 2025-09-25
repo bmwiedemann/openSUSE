@@ -1,0 +1,65 @@
+From dc3027bab4925228cacde00ae626bf651d0a0c3b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 17 Sep 2025 09:56:44 +0200
+Subject: [PATCH] Even more reliable pillar timeout test
+
+* Even more reliable pillar timeout test
+
+* Use sys.executable on test_pillar_timeout test
+
+---------
+
+Co-authored-by: Daniel A. Wozniak <dwozniak@vmware.com>
+---
+ .../integration/minion/test_return_retries.py  | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/tests/pytests/integration/minion/test_return_retries.py b/tests/pytests/integration/minion/test_return_retries.py
+index 45dea9c4c76..9b71bed58c5 100644
+--- a/tests/pytests/integration/minion/test_return_retries.py
++++ b/tests/pytests/integration/minion/test_return_retries.py
+@@ -5,6 +5,7 @@ import pytest
+ from saltfactories.utils import random_string
+ 
+ from tests.support.helpers import dedent
++import salt.utils.files
+ 
+ 
+ @pytest.fixture(scope="function")
+@@ -57,14 +58,13 @@ def test_publish_retry(salt_master, salt_minion_retry, salt_cli, salt_run_cli):
+ 
+ @pytest.mark.slow_test
+ @pytest.mark.flaky(max_runs=4)
+-def test_pillar_timeout(salt_master_factory):
+-    cmd = (
+-        sys.executable
+-        + ' -c "import time; time.sleep(4.8); print(\'{\\"foo\\": \\"bar\\"}\');"'
+-    ).strip()
++def test_pillar_timeout(salt_master_factory, tmp_path):
++    with salt.utils.files.fopen(tmp_path / "script.py", "w") as fp:
++        fp.write('print(\'{"foo": "bar"}\');\n')
++
+     master_overrides = {
+         "ext_pillar": [
+-            {"cmd_json": cmd},
++            {"cmd_json": f"{sys.executable} {tmp_path / 'script.py'}"},
+         ],
+         "auto_accept": True,
+         "worker_threads": 3,
+@@ -110,7 +110,11 @@ def test_pillar_timeout(salt_master_factory):
+     sls_tempfile = master.state_tree.base.temp_file(
+         "{}.sls".format(sls_name), sls_contents
+     )
+-    with master.started(), minion1.started(), minion2.started(), minion3.started(), minion4.started(), sls_tempfile:
++    with master.started(), minion1.started(), minion2.started(), minion3.started(), minion4.started(), (
++        sls_tempfile
++    ):
++        with salt.utils.files.fopen(tmp_path / "script.py", "w") as fp:
++            fp.write('import time; time.sleep(6); print(\'{"foo": "bang"}\');\n')
+         proc = cli.run("state.sls", sls_name, minion_tgt="*")
+         # At least one minion should have a Pillar timeout
+         print(proc)
+-- 
+2.51.0
+

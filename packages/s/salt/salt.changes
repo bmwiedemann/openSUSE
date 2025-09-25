@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 17 08:15:33 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Make test_pillar_timeout test more reliable
+- Modify README and other doc files for openSUSE
+
+- Added:
+  * even-more-reliable-pillar-timeout-test.patch
+  * modify-readme-for-opensuse-728.patch
+
+-------------------------------------------------------------------
 Fri Sep 12 08:54:38 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Set python-CherryPy as required for python-salt-testsuite
