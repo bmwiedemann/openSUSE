@@ -33,9 +33,8 @@ not make sense.
 
 This particular package contains all the Gnome patterns.
 
-
-
 ################################################################################
+
 %package gnome
 %pattern_graphicalenvironments
 Summary:        GNOME Desktop Environment (Wayland)
@@ -105,9 +104,6 @@ Requires:       seahorse
 Recommends:     totem
 Recommends:     pattern() = gnome_imaging
 Recommends:     pattern() = office
-%if 0%{?suse_version} > 1600
-Recommends:     pattern() = x11_yast
-%endif
 %endif
 #
 # Official upstream
@@ -306,8 +302,6 @@ Base packages for the GNOME desktop environment.
 %files gnome_basis
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/gnome_basis.txt
-
-################################################################################
 
 ################################################################################
 
@@ -665,6 +659,10 @@ Provides:       pattern-order() = 1260
 Obsoletes:      patterns-openSUSE-gnome_yast < %{version}
 Requires:       libyui-qt-pkg
 Requires:       yast2-control-center-qt
+%if 0%{?suse_version} > 1600
+Recommends:     pattern() = x11_yast
+%endif
+
 Supplements:    packageand(patterns-gnome-gnome:patterns-yast-yast2_basis)
 
 %description gnome_yast
@@ -689,7 +687,7 @@ Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1780
 Obsoletes:      patterns-openSUSE-sw_management_gnome < %{version}
 Requires:       pattern() = sw_management
-# gnome-packagekit needed for openQA - and allows fainer grained updates than Software
+# gnome-packagekit needed for openQA - and allows finer grained updates than Software
 Recommends:     gnome-packagekit
 Recommends:     gnome-software
 Supplements:    packageand(patterns-gnome-gnome_basis:patterns-base-sw_management)

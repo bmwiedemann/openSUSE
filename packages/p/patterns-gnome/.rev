@@ -512,4 +512,14 @@
     <comment></comment>
     <requestid>1305845</requestid>
   </revision>
+  <revision rev="57" vrev="7">
+    <srcmd5>610ee16b7e35b55bbf7cbb489bbe16d8</srcmd5>
+    <version>20250310</version>
+    <time>1758818634</time>
+    <user>anag_factory</user>
+    <comment>- Move pattern() = x11_yast Recommends to gnome_yast metapackage,
+  for some reason it was in gnome_basic metapackage.
+</comment>
+    <requestid>1306947</requestid>
+  </revision>
 </revisionlist>

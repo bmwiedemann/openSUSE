@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 19 08:25:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Move pattern() = x11_yast Recommends to gnome_yast metapackage,
+  for some reason it was in gnome_basic metapackage.
+
+-------------------------------------------------------------------
 Thu Sep 18 14:50:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pattern gnome_x11: GNOME 49 no longer ships an X11 session.
