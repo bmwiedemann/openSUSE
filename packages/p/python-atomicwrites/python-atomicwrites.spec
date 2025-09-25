@@ -1,7 +1,7 @@
 #
 # spec file for package python-atomicwrites
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@
 %define psuffix %{nil}
 %bcond_with doc
 %endif
+
+%{?sle15_python_module_pythons}
 Name:           python-atomicwrites%{psuffix}
 Version:        1.4.1
 Release:        0
@@ -41,9 +43,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with doc}
+BuildRequires:  %{modern_python}-Sphinx
 BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  python3-Sphinx
 Provides:       %{python_module atomicwrites-doc = %{version}}
 %endif
 %python_subpackages

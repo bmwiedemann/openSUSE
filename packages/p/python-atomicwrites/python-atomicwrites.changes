@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 25 10:40:31 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build for modern python in SLE15
+
+-------------------------------------------------------------------
 Fri Jun 13 05:35:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

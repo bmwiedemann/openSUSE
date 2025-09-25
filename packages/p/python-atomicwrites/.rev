@@ -137,4 +137,12 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1285334</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>dbb3800f01233710a90ed3738a7eb181</srcmd5>
+    <version>1.4.1</version>
+    <time>1758818740</time>
+    <user>anag_factory</user>
+    <comment>- Build for modern python in SLE15</comment>
+    <requestid>1307090</requestid>
+  </revision>
 </revisionlist>
