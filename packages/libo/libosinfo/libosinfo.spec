@@ -1,7 +1,7 @@
 #
 # spec file for package libosinfo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,8 +25,10 @@ Release:        0
 Summary:        Operating system and hypervisor information management library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://releases.pagure.org/libosinfo
-Source0:        %{url}/%{name}-%{version}.tar.xz
+URL:            https://gitlab.com/libosinfo/libosinfo
+Source0:        https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
+# https://gitlab.com/libosinfo/libosinfo/-/commit/0adf38535637ec668e658d43f04f60f11f51574f
+Patch0:         libosinfo-libxml2-2.14.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  hwdata

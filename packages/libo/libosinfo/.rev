@@ -472,4 +472,12 @@ New package for Factory, dependency for gnome-boxes. Hardware seems to be the be
     <comment>Update libosinfo to version 1.12.0</comment>
     <requestid>1227839</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>55c64980ff11c198f98ebfc2faed78a1</srcmd5>
+    <version>1.12.0</version>
+    <time>1758818645</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1306963</requestid>
+  </revision>
 </revisionlist>

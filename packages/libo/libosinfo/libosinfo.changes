@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 23 11:55:47 UTC 2025 - pgajdos@suse.com
+
+- fix build with new libxml2
+- added patches
+  https://gitlab.com/libosinfo/libosinfo/-/commit/0adf38535637ec668e658d43f04f60f11f51574f
+  * libosinfo-libxml2-2.14.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 11:20:36 MST 2024 - carnold@suse.com
 
 - Update to version 1.12.0 (jsc#PED-8910)
