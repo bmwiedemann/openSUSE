@@ -53,4 +53,15 @@
 - Update Requires from setup.py (forwarded request 1303336 from glaubitz)</comment>
     <requestid>1303636</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b5fa8a81cfa200feeabd4aab682d1a15</srcmd5>
+    <version>1.0.1</version>
+    <time>1758818705</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1306976 from glaubitz)</comment>
+    <requestid>1306977</requestid>
+  </revision>
 </revisionlist>

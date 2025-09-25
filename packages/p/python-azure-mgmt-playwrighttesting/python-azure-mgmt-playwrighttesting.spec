@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-playwrighttesting
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Microsoft Azure MyService Management Client Library for Python
 License:        MIT
