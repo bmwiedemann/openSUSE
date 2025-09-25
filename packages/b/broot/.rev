@@ -83,4 +83,13 @@
 (🤖: Submission of broot via https://src.opensuse.org/pool/broot/pulls/3 by MSirringhaus)</comment>
     <requestid>1270303</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b188e3cbb0261f600982546726f293a7</srcmd5>
+    <version>1.49.1</version>
+    <time>1758818752</time>
+    <user>anag_factory</user>
+    <comment>- Bump to v1.49.1
+- Move away from scmsync</comment>
+    <requestid>1307077</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="disabled" />
   <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">broot-1.46.0.tar.gz</param>
+     <param name="srctar">broot-1.49.1.tar.gz</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
      <param name="filter">true</param>
