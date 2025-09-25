@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 24 13:20:39 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.138.2
+  - Fix a performance regression related to the experimental
+    Delayed Events (MSC4140) feature. (#18926)
+
+-------------------------------------------------------------------
 Tue Sep  9 12:56:44 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.138.0

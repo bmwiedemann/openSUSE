@@ -1436,4 +1436,14 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.138.0</comment>
     <requestid>1303352</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>cac18605729b6da2837e4d12907a6581</srcmd5>
+    <version>1.138.2</version>
+    <time>1758818694</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.138.2
+  - Fix a performance regression related to the experimental
+    Delayed Events (MSC4140) feature. (#18926)</comment>
+    <requestid>1306939</requestid>
+  </revision>
 </revisionlist>
