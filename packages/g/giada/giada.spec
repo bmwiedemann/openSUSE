@@ -1,7 +1,7 @@
 #
 # spec file for package giada
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -19,7 +19,7 @@
 
 
 Name:           giada
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Sampler Audio Tool
 License:        (AGPL-3.0-only OR GPL-2.0-or-later) AND GPL-3.0-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0 AND OFL-1.1 AND Zlib

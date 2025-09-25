@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 24 13:06:53 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.3.0:
+  * This release introduces support for multiple audio outputs 
+    (more than stereo). It is now possible to have multiple audio channels, 
+    each of which sends the signal to an external hardware output or internally
+    to another software for multitrack recording of your live performances.
+  * Improved JACK support allowing for multiple output connections;
+  * UI: improved and beautified Plug-in Browser window;
+  * Update FLTK to 1.4.4;
+  * Refactoring and code gardening.
+
+-------------------------------------------------------------------
 Sun Jul 06 07:24:48 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 1.2.1:

@@ -2,9 +2,9 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/monocasual/giada.git</param>
-    <param name="revision">1.2.1</param>
+    <param name="revision">1.3.0</param>
     <param name="submodules">enable</param>
-    <param name="version">1.2.1</param>
+    <param name="version">1.3.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>

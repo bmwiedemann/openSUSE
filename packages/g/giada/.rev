@@ -179,4 +179,21 @@
   * Refactoring and code gardening</comment>
     <requestid>1291293</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>31f3aa8aba69bcb8c92a4132cce9ff9f</srcmd5>
+    <version>1.3.0</version>
+    <time>1758818740</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.0:
+  * This release introduces support for multiple audio outputs 
+    (more than stereo). It is now possible to have multiple audio channels, 
+    each of which sends the signal to an external hardware output or internally
+    to another software for multitrack recording of your live performances.
+  * Improved JACK support allowing for multiple output connections;
+  * UI: improved and beautified Plug-in Browser window;
+  * Update FLTK to 1.4.4;
+  * Refactoring and code gardening.
+</comment>
+    <requestid>1307073</requestid>
+  </revision>
 </revisionlist>
