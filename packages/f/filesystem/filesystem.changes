@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 24 10:51:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own base directory layout of polkit.
+
+-------------------------------------------------------------------
 Tue Jan 28 10:26:57 CET 2025 - ro@suse.de
 
 - add Provides: may-perform-usrmerge (bsc#1236481) 
@@ -633,7 +638,6 @@ Sat Oct 20 09:03:48 UTC 2012 - coolo@suse.com
 - remove get_version_number.sh, it's unused since ages
 
 -------------------------------------------------------------------
-
 Mon Oct 15 10:47:36 UTC 2012 - aj@suse.de
 
 - Revert last change since aaa_base removed /usr/lib/tmpfiles.d.
