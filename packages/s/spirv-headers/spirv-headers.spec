@@ -30,9 +30,9 @@
 %endif
 
 Name:           spirv-headers
-Version:        1.6.4+sdk321
+Version:        1.6.4+sdk321+gc8ad050
 %define innerver 1.4.321
-%define rev 2a611a970fdbc41ac2e3e328802aed9985352dca
+%define rev c8ad050fcb29e42a2f57d9f59e97488f465c436d
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT

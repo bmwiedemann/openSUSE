@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 23 10:17:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.6.4+sdk321+gc8ad050 (Git c8ad050)
+  * Added SPV_QCOM_cooperative_matrix_conversion,
+    SPV_INTEL_function_variants
+
+-------------------------------------------------------------------
 Thu Jul 17 06:36:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.321.0 (Git 2a611a9); i.e. bump at the
