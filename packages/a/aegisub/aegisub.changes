@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 24 13:44:40 CEST 2025 - aschnell@suse.com
+
+- libboost_system was removed upstream (bsc#1249599)
+
+-------------------------------------------------------------------
 Tue May 13 10:11:43 UTC 2025 - Héctor Orón Martínez <hector.oron@gmail.com>
 
 - Disable ppc64le since there is no luajit support.

@@ -2,7 +2,7 @@
 # spec file for package aegisub
 #
 # Copyright (c) 2025 mantarimay
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.aegisub.org/
 Source0:        https://github.com/TypesettingTools/Aegisub/archive/v%{version}/Aegisub-%{version}.tar.gz
-BuildRequires:  meson
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
@@ -35,15 +34,12 @@ BuildRequires:  libboost_filesystem-devel >= 1.70.0
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libicu-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(openal)
-BuildRequires:  pkgconfig(uchardet)
-BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(ffms2)
 BuildRequires:  pkgconfig(fftw3) >= 3.3
 BuildRequires:  pkgconfig(fontconfig) >= 2.4
@@ -52,6 +48,9 @@ BuildRequires:  pkgconfig(hunspell) >= 1.2.0
 BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.9
 BuildRequires:  pkgconfig(luajit)
+BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(uchardet)
 BuildRequires:  pkgconfig(zlib)
 ExcludeArch:    ppc64le
 
