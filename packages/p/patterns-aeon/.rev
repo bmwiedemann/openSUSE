@@ -203,4 +203,13 @@
     <comment>- Remove tpm2.0-abrmd as it's deprecated (boo#1248991)</comment>
     <requestid>1302227</requestid>
   </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>8f7eab15978c9eae81cde92aa23ccf28</srcmd5>
+    <version>5.0</version>
+    <time>1758818733</time>
+    <user>anag_factory</user>
+    <comment>- Replace gdk-pixbuf-thumbnailer with Glycin
+- Replace gdk-pixbuf-thumbnailer with Glycin</comment>
+    <requestid>1307061</requestid>
+  </revision>
 </revisionlist>

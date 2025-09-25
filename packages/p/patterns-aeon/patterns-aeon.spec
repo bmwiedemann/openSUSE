@@ -281,7 +281,7 @@ Requires:       gnome-online-accounts
 Requires:       gnome-shell-calendar
 # For seeing thumbnails in Nautilus
 Requires:       jxl-thumbnailer
-Requires:       gdk-pixbuf-thumbnailer
+Requires:       glycin-loaders
 Requires:       gsf-office-thumbnailer
 Requires:       rsvg-thumbnailer
 # So that GNOME shell extensions can be installed

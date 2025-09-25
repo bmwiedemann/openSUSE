@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 25 07:53:23 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Replace gdk-pixbuf-thumbnailer with Glycin 
+
+-------------------------------------------------------------------
 Mon Sep  1 14:10:46 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Remove tpm2.0-abrmd as it's deprecated (boo#1248991)
