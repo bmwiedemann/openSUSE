@@ -474,7 +474,6 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/pre-up.d
-%{_prefix}/lib/NetworkManager/dispatcher.d/pre-up.d/90-nm-cloud-setup.sh
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/pre-down.d
 %dir %{_prefix}/lib/NetworkManager/VPN
 %dir %{_prefix}/lib/firewalld
@@ -543,6 +542,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_unitdir}/nm-cloud-setup.timer
 %{_prefix}/lib/NetworkManager/dispatcher.d/90-nm-cloud-setup.sh
 %{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d/90-nm-cloud-setup.sh
+%{_prefix}/lib/NetworkManager/dispatcher.d/pre-up.d/90-nm-cloud-setup.sh
 %{_mandir}/man8/nm-cloud-setup.8%{?ext_man}
 
 %files config-server

@@ -2493,4 +2493,13 @@ New stable release</comment>
 - Add pkgconfig(libnvme) BuildRequires: New dependency. (forwarded request 1299771 from iznogood)</comment>
     <requestid>1299898</requestid>
   </revision>
+  <revision rev="285" vrev="2">
+    <srcmd5>2645ab643da932079199d77c3caa3537</srcmd5>
+    <version>1.54.0</version>
+    <time>1758818637</time>
+    <user>anag_factory</user>
+    <comment>- Move dispatcher.d/pre-up.d/90-nm-cloud-setup.sh to cloud-setup
+  subpackage(bsc#1250086). (forwarded request 1306834 from JonathanKang)</comment>
+    <requestid>1306957</requestid>
+  </revision>
 </revisionlist>
