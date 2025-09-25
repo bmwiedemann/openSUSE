@@ -327,4 +327,12 @@
 https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-beta-3-released-3118/</comment>
     <requestid>1299470</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>46f37bad334d1493a49ff160a22c9c0d</srcmd5>
+    <version>15.14</version>
+    <time>1758818767</time>
+    <user>anag_factory</user>
+    <comment>- Sync spec file from version 18.</comment>
+    <requestid>1307159</requestid>
+  </revision>
 </revisionlist>
