@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 23 10:43:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.4~rc1
+  * Add support for SPV_INTEL_function_variants, SPV_ARM_graph,
+    SPV_INTEL_inline_assembly,
+    SPV_QCOM_cooperative_matrix_conversion
+  * Add BFloat16 encoding support
+  * Add support for OpTypeGraphARM and tensors to type manager
+
+-------------------------------------------------------------------
 Fri Jun 27 16:13:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.3~rc1
