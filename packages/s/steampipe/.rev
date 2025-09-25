@@ -132,4 +132,38 @@
   * add test: symlinked binary (forwarded request 1291496 from ph03nix)</comment>
     <requestid>1291498</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>043cb80536de4b33e73c9b4c3a9909a8</srcmd5>
+    <version>2.2.0</version>
+    <time>1758818771</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.2.0:
+  * v2.2.0
+  * FDW v2.1.3
+  * Update pipe-fittings and steampipe-plugin-sdk
+  * [dep][go](deps): Bump github.com/Masterminds/semver/v3 (#4601)
+  * [dep][go](deps): Bump github.com/hashicorp/hcl/v2 from 2.23.0 to 2.24.0 (#4606)
+  * [dep][actions](deps): Bump docker/login-action from 3.4.0 to 3.5.0 (#4627)
+  * [dep][actions](deps): Bump actions/download-artifact from 4.3.0 to 5.0.0 (#4631)
+  * [dep][actions](deps): Bump actions/cache from 4.2.3 to 4.2.4 (#4634)
+  * [dep][actions](deps): Bump goreleaser/goreleaser-action (#4637)
+  * [dep][go](deps): Bump github.com/hashicorp/go-getter from 1.7.8 to 1.7.9 (#4641)
+  * [dep][go](deps): Bump golang.org/x/text from 0.26.0 to 0.29.0 (#4650)
+  * [dep][go](deps): Bump github.com/ulikunitz/xz from 0.5.12 to 0.5.14 (#4645)
+  * [dep][go](deps): Bump github.com/go-viper/mapstructure/v2 from 2.3.0 to 2.4.0
+  * Enhance StartServices function to include warning for existing Steampipe service connection on the same port (#4625)
+  * Add support for using function calls in config (#4639)
+  * Add GitHub Actions workflow to assign newly opened issues to the project tracker (#4638)
+  * Update badge links in README.md (#4652)
+  * Update plugin installation logic to skip configuration during plugin updates (#4630)
+  * Update plugin removal message for clarity on unneeded connections and associated plugins (#4624)
+  * Update release workflow to use version input for GitHub repository reference (#4632)
+  * Add latest tag to the released DB images in GHCR (#4617)
+  * Fix issue where steampipe login was not respecting PIPES_INSTALL_DIR env var (#4616)
+  * chore: slack notifications for post-release test workflow (#4615)
+  * Implement smoke test trigger in release workflow (#4605)
+  * Fix release workflow
+  * Add smoke test workflow (#4602) (forwarded request 1307126 from ph03nix)</comment>
+    <requestid>1307154</requestid>
+  </revision>
 </revisionlist>
