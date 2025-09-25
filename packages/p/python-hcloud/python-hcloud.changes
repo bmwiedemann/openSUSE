@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 25 11:18:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.0
+  * add category property to server type (#549)
+  * rename `ClientEntityBase` to `ResourceClientBase` (#532)
+- from version 2.5.4
+  * typo in `LoadBalancerHealthCheckHttp` class name (#511)
+  * equality for some domain classes (#510)
+  * use valid license identifier (SPDX) (#514)
+- from version 2.5.3
+  * invalid placement group id casting (#501)
+  * handle string id when checking has_id_or_name (#504)
+- from version 2.5.2
+  * listing page result always provide meta (#496)
+- from version 2.5.1
+  * missing slots and api_properties for FirewallResourceLabelSelector (#492)
+- from version 2.5.0
+  * improve exception messages (#488)
+  * Use Python 3.11 on SLE-15 by default
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Thu Apr 17 08:19:19 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - update to 2.4.0

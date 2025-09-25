@@ -15,15 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-hcloud
-Version:        2.4.0
+Version:        2.6.0
 Release:        0
 Summary:        Hetzner Cloud Python library
 License:        MIT
 URL:            https://github.com/hetznercloud/hcloud-python
 Source:         https://files.pythonhosted.org/packages/source/h/hcloud/hcloud-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
