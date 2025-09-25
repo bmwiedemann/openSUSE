@@ -1994,4 +1994,15 @@ don't affect Linux. (forwarded request 1226975 from mgorse)</comment>
   less restrictive than the default and look to be unneeded now. (forwarded request 1306313 from mgorse)</comment>
     <requestid>1306436</requestid>
   </revision>
+  <revision rev="229" vrev="2">
+    <srcmd5>b2924d691e4c8ed03549d492abd4b30a</srcmd5>
+    <version>2.50.0</version>
+    <time>1758818642</time>
+    <user>anag_factory</user>
+    <comment>- Also pass ggc-min-expand=30 and disable LTO on arm.
+- Update webkit2gtk3-i586-build-fix.patch to correspond to what was
+  committed to the upstream branch.
+Add CVE refs (forwarded request 1306932 from mgorse)</comment>
+    <requestid>1306960</requestid>
+  </revision>
 </revisionlist>

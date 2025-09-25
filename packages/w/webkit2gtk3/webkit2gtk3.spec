@@ -71,7 +71,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 # Disable LTO on select targets
-%ifarch %{ix86} ppc64le
+%ifarch %{ix86} ppc64le %arm
 %global _lto_cflags %{nil}
 %endif
 
@@ -468,7 +468,7 @@ fi
 export PYTHON=%{_bindir}/python3
 # Use linker flags to reduce memory consumption
 %global optflags %(echo %{optflags} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads | sed 's/-g /-g1 /')
-%ifarch i586
+%ifarch i586 %arm
 # Force the garbage collector to run more often, to reduce memory consumption
 %global optflags %{optflags} --param ggc-min-expand=30
 %endif
