@@ -17,7 +17,7 @@
 
 
 Name:           obs-service-format_spec_file
-Version:        20250907
+Version:        20250918
 Release:        0
 Summary:        An OBS source service: reformats a spec file to SUSE standard
 License:        GPL-2.0-only
