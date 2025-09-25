@@ -1,7 +1,7 @@
 #
 # spec file for package python-jedi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,8 @@ skiptests+=" or test_speed"
 skiptests+=" or test_init_extension_module"
 # This fails on 15.4_py39 server-side but not locally (!?)
 skiptests+=" or test_get_default_environment_when_embedded"
+# few instances of test_string_annotation fail with Python 3.14 https://github.com/davidhalter/jedi/pull/2070
+skiptests+=" or (test_string_annotation and (8 or 9 or 10 or 11)) or test_compiled_signature_annotation_string"
 %pytest -k "not ($skiptests)"
 
 %files %{python_files}
