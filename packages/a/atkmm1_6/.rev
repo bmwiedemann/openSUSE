@@ -66,4 +66,21 @@
   i586 only enabled in LegacyX86). (forwarded request 1155231 from dimstar)</comment>
     <requestid>1155247</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8af039a8ba83f75c9e6e8d6a89aaf63c</srcmd5>
+    <version>2.28.4</version>
+    <time>1758818642</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.28.4:
+  + Documentation:
+    - atkmm.h: Update link to ATK
+    - Add README.win32.md with Win32 build documentation
+    - Remove AUTHORS and add general information to README.md
+  + Meson build:
+    - Detect if we build from a git subtree
+    - Don't copy files with configure_file()
+    - Fix the evaluation of is_git_build on Windows
+    - Don't fail if warning_level=everything (forwarded request 1306928 from dimstar)</comment>
+    <requestid>1306958</requestid>
+  </revision>
 </revisionlist>

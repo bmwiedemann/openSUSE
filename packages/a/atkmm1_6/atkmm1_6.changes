@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 24 12:18:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.28.4:
+  + Documentation:
+    - atkmm.h: Update link to ATK
+    - Add README.win32.md with Win32 build documentation
+    - Remove AUTHORS and add general information to README.md
+  + Meson build:
+    - Detect if we build from a git subtree
+    - Don't copy files with configure_file()
+    - Fix the evaluation of is_git_build on Windows
+    - Don't fail if warning_level=everything
+
+-------------------------------------------------------------------
 Tue Mar  5 14:14:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: the -32bit packages are no longer needed and

@@ -1,7 +1,7 @@
 #
 # spec file for package atkmm1_6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name   atkmm
 Name:           atkmm1_6
 
-Version:        2.28.3
+Version:        2.28.4
 Release:        0
 Summary:        C++ Binding for the ATK library
 License:        LGPL-2.1-or-later
@@ -79,7 +79,7 @@ This module is part of the GNOME C++ bindings effort.
 
 %files -n libatkmm-1_6-1
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README.md
+%doc ChangeLog NEWS README.md
 %{_libdir}/libatkmm-1.6.so.*
 
 %files devel
