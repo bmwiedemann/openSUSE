@@ -1186,4 +1186,13 @@
     <comment></comment>
     <requestid>1306582</requestid>
   </revision>
+  <revision rev="148" vrev="3">
+    <srcmd5>8f826d56af5904f5a04dbe50fd394027</srcmd5>
+    <version>1.4.2+git48.4b73df015e</version>
+    <time>1758818671</time>
+    <user>anag_factory</user>
+    <comment>- Add python3-tinycss2 Requires: Needed for perspective extension
+  (boo#1249736). (forwarded request 1306782 from iznogood)</comment>
+    <requestid>1306853</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 23 16:59:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add python3-tinycss2 Requires: Needed for perspective extension
+  (boo#1249736).
+
+-------------------------------------------------------------------
 Mon Sep 22 14:39:07 UTC 2025 - pgajdos@suse.com
 
 - fix building with Poppler 25.09.0

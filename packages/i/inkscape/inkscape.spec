@@ -102,6 +102,7 @@ Requires:       python3-appdirs
 Requires:       python3-lxml
 Requires:       python3-numpy
 Requires:       python3-scour
+Requires:       python3-tinycss2
 Requires:       python3-xml
 Enhances:       %{name}
 Supplements:    (%{name} and python3-lxml and python3-numpy and python3-scour and python3-xml)
