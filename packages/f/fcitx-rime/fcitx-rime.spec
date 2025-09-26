@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-rime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx-rime
 Source:         http://download.fcitx-im.org/fcitx-rime/%{name}-%{version}.tar.xz
 Patch0:         fcitx-rime-0.3.2-rime-sync-user-data.patch
+Patch1:         fix-rime-process-key.patch
 BuildRequires:  brise
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel

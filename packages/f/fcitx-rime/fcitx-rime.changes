@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 26 03:07:42 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- add fix-rime-process-key.patch, fix TW build w/
+  newer librime
+
+-------------------------------------------------------------------
 Thu May  1 01:31:19 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - Set -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix build with cmake4
