@@ -469,4 +469,14 @@
 </comment>
     <requestid>1306168</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>553d3fc15bc4f9ef18aebcab024bb18c</srcmd5>
+    <version>0.19.2</version>
+    <time>1758918259</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.2
+  * Fix list convertor with an empty list default factory.
+</comment>
+    <requestid>1307199</requestid>
+  </revision>
 </revisionlist>

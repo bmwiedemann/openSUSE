@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 24 19:25:40 UTC 2025 - Matthias Bach <marix@marix.org> - 0.19.2
+
+- Update to 0.19.2
+  * Fix list convertor with an empty list default factory.
+
+-------------------------------------------------------------------
 Sat Sep 20 18:42:14 UTC 2025 - Matthias Bach <marix@marix.org> - 0.19.1
 
 - Update to 0.19.1
