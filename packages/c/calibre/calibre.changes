@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Sep 26 12:31:19 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.11.1
+  * Bug Fixes
+    - Windows: Fix regression in (8.11.0) causing conversion to be
+      broken when metadata contains non-BMP characters
+
+-------------------------------------------------------------------
+Fri Sep 26 05:06:05 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.11.0
+
+- Update to 8.11.0
+  * New Features
+    - E-book viewer: Add an "Ask AI" tab to the dictionary lookup
+      panel. Allows you to query AI about the currently selected
+      text.
+    - Preferences: Show the keyboard shortcut for each category in
+      preferences in the tooltip
+  * Bug Fixes
+    - E-book viewer: Fix modifying an existing highlight causing
+      duplicates to be created in some books
+    - E-book viewer: Fix very large e-books sometimes having a few
+      non working links on Windows
+    - PDB Input: Fix failure to convert some PDB files with sightly
+      malformed headers
+    - Fix error when trying to add the first icon rule to the Tag
+      browser
+    - E-book viewer: Fix Esc key not closing footnote popup when
+      the popup has keyboard focus
+    - E-book viewer: Fix placement of selection handles in some
+      books when modifying an existing highlight
+    - Windows build: Sign the .pyd DLLs in addition to the .dll DLLs
+
+-------------------------------------------------------------------
 Mon Sep 15 13:24:42 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.10.0
 
 - Update to 8.10.0
