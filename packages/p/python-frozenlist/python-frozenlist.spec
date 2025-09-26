@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-frozenlist
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Python list-like structure which implements MutableSequence
 License:        Apache-2.0
