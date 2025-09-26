@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 26 12:19:23 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 6.0.2
+  * Windows: drop un-needed assert
+  * EFI: do not send disconnect when not connected
+
+-------------------------------------------------------------------
 Wed Jun 18 06:29:45 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 6.0.0
