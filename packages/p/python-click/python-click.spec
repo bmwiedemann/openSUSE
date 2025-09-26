@@ -1,7 +1,7 @@
 #
 # spec file for package python-click
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click
-Version:        8.2.1
+Version:        8.3.0
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
 URL:            https://github.com/pallets/click
 Source:         https://files.pythonhosted.org/packages/source/c/click/click-%{version}.tar.gz
-## see github.com/pallets/click/issues/2939, github.com/pallets/click/pull/2940
-Patch0:         click-8.2.1-clirunner.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}

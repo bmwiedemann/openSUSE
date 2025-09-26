@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 26 04:26:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.3.0:
+  * Improved flag option handling: Reworked the relationship between
+    flag_value and default parameters for better consistency.
+  * Show correct auto complete value for nargs option in combination with
+    flag option.
+  * Fix handling of quoted and escaped parameters in Fish autocompletion.
+  * Properly forward exception information to resources registered with
+    click.core.Context.with_resource().
+  * Fix regression related to EOF handling in CliRunner.
+- Drop patch click-8.2.1-clirunner.patch, included upstream.
+
+-------------------------------------------------------------------
+Sat Aug  9 07:09:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+Revert to 8.2.1, version 8.2.2 was yanked because Unintended change in
+behavior of boolean options and None
+https://pypi.org/project/click/8.2.2/
+(and if I read `osc log` I would know dgarcia did this already)
+
+-------------------------------------------------------------------
 Tue Jun  8 15:09:58 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add click-8.2.1-clirunner.patch to fix clirunner breaking other
