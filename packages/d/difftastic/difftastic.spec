@@ -1,7 +1,7 @@
 #
 # spec file for package difftastic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2023 munix9@googlemail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,14 @@
 #
 
 
+%if 0%{?suse_version} <= 1600
+%bcond_with     docs
+%else
+%bcond_without  docs
+%endif
+
 Name:           difftastic
-Version:        0.64.0
+Version:        0.65.0
 Release:        0
 Summary:        A structural diff that understands syntax
 License:        Apache-2.0 AND MIT
@@ -31,10 +37,10 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  jq
 BuildRequires:  libstdc++6-devel-gcc13
-BuildRequires:  rust >= 1.74.1
+BuildRequires:  rust >= 1.75.0
 BuildRequires:  shared-mime-info
 Requires:       shared-mime-info
-%if 0%{?suse_version} >= 1600
+%if %{with docs}
 Suggests:       %{name}-doc
 %endif
 ExclusiveArch:  %{rust_tier1_arches}
@@ -42,7 +48,7 @@ ExclusiveArch:  %{rust_tier1_arches}
 %description
 Difftastic is a structural diff tool that compares files based on their syntax.
 
-%if 0%{?suse_version} >= 1600
+%if %{with docs}
 %package doc
 Summary:        Documentation for difftastic
 BuildRequires:  mdbook
@@ -58,7 +64,7 @@ This package contains the documentation for difftastic.
 %build
 %{cargo_build}
 
-%if 0%{?suse_version} >= 1600
+%if %{with docs}
 cd manual
 mdbook build
 %endif
@@ -67,7 +73,7 @@ mdbook build
 install -D -m 0755 -t %{buildroot}%{_bindir} target/release/difft
 install -D -m 0644 -t %{buildroot}%{_mandir}/man1 difft.1
 
-%if 0%{?suse_version} >= 1600
+%if %{with docs}
 rm -v manual/book/.nojekyll
 %fdupes -s manual/book
 %endif
@@ -81,7 +87,7 @@ rm -v manual/book/.nojekyll
 %{_bindir}/difft
 %{_mandir}/man1/difft.1%{?ext_man}
 
-%if 0%{?suse_version} >= 1600
+%if %{with docs}
 %files doc
 %license LICENSE
 %doc manual/book
