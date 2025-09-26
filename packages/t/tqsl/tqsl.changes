@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 26 15:19:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.8.2:
+  * Fix an issue where some QSOs would not be signed when an ADIF
+    file contained a mismatched gridsquare
+  * Remove checking of the content of MY_COUNTRY freeform field
+
+-------------------------------------------------------------------
 Mon May  5 19:56:59 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.8.1:
