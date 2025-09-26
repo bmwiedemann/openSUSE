@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 18 19:03:42 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.2
+  * Modify grading for incomplete chain.
+  * Add sectigo CA E46 and R46 for Linux.pem.
+  * Make code2network() faster by using bash instead of tr.
+  * Fix not working --disable-rating switch.
+  * feat: bump ssllabs rating guide to 2009r.
+  * Fix displayed message when IPv6 needs to be tested too.
+  * Fix garbled screen when HTTP Age is not a non-negative int.
+
+-------------------------------------------------------------------
 Wed Jun 18 11:29:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.1
