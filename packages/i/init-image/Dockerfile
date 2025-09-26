@@ -23,7 +23,7 @@
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends systemd gzip openSUSE-release openSUSE-release-appliance-docker
+    zypper -n install --no-recommends systemd systemd-default-settings-branding-openSUSE gzip openSUSE-release openSUSE-release-appliance-docker
 RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; rm -f {/target,}/etc/shadow-
 
