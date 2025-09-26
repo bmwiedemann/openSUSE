@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 25 14:47:35 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Fix test multibuild flavor
+  - Change the test flavor so that it does not produce any RPMs, avoiding
+    duplicate binaries across the setools and setools-test packages
+  - Disable debuginfo generation for the test flavor, so that it does not break
+    due to the missing files.
+
+-------------------------------------------------------------------
 Mon Sep 22 15:01:38 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Simplify test multibuild flavor to fix broken build in Factory due to

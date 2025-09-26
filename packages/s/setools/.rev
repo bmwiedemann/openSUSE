@@ -471,4 +471,17 @@
 </comment>
     <requestid>1306567</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>1f46f97368210d35e2abf216d4032df4</srcmd5>
+    <version>4.6.0</version>
+    <time>1758918235</time>
+    <user>anag_factory</user>
+    <comment>- Fix test multibuild flavor
+  - Change the test flavor so that it does not produce any RPMs, avoiding
+    duplicate binaries across the setools and setools-test packages
+  - Disable debuginfo generation for the test flavor, so that it does not break
+    due to the missing files.
+</comment>
+    <requestid>1307312</requestid>
+  </revision>
 </revisionlist>

@@ -33,6 +33,15 @@
 %endif
 
 %if "%{flavor}" == "test"
+# The test flavor does not package any files, it only builds the software and
+# runs the tests. To simplify test execution, the software is actually
+# installed in the buildroot first. After the tests have passed, the buildroot
+# is deleted. As debuginfo generation is done based on the contents of the
+# buildroot after the install section, and before the check section, the final
+# debuginfo step will expect to find the now deleted files in the buildroot.
+# Disable debuginfo generation in the test flavor to avoid these issues.
+# Since the test flavor does not produce any RPMs, this is not a problem.
+%define debug_package %{nil}
 %if 0%{?suse_version} <= 1600
 # Test dependencies such as python-PyQt6, python-NetworkX, python-pytest-qt
 # are not found in other distributions.
@@ -69,12 +78,14 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tox}
 BuildRequires:  checkpolicy
 %endif
+%if "%{flavor}" != "test"
 Requires:       setools-console = %{version}-%{release}
 Requires:       setools-gui = %{version}-%{release}
 # needed since setools is not a python-main package, see
 # https://github.com/openSUSE/python-rpm-macros
 %define python_subpackage_only 1
 %python_subpackages
+%endif
 
 %description
 SETools is a collection of graphical tools, command-line tools, and
@@ -83,6 +94,7 @@ libraries designed to facilitate SELinux policy analysis.
 This meta-package depends upon the main packages necessary to run
 SETools.
 
+%if "%{flavor}" != "test"
 %package console
 Summary:        Policy analysis command-line tools for SELinux
 License:        GPL-2.0-only
@@ -135,6 +147,7 @@ libraries designed to facilitate SELinux policy analysis.
 This package includes the following graphical tools:
 
   apol          policy analysis tool
+%endif
 
 %prep
 %setup -q -n %{software_name}
@@ -145,18 +158,23 @@ This package includes the following graphical tools:
 
 %install
 %pyproject_install
+%if "%{flavor}" != "test"
 install -m 644 -D %{SOURCE2} %{buildroot}%{_docdir}/%{software_name}/README.SUSE
 %python_expand %fdupes -s %{buildroot}%{$python_sitearch}
-
-%if "%{flavor}" == "test"
-%check
-# Remove the module directories to prevent Python loading the modules from $CWD.
-# This way, the modules are actually loaded from %%buildroot, which is inserted
-# on the $PATH by the %%pytest macros
-rm -rf setools setoolsgui
-%pytest_arch -v
 %endif
 
+%check
+%if "%{flavor}" == "test"
+# Remove the module directories to prevent Python loading the modules from CWD.
+# This way, the modules are actually loaded from the buildroot, which is
+# inserted on the PATH by the pytest macros
+rm -rf setools setoolsgui
+%pytest_arch -v
+# The test flavor should not package any files
+rm -rf %{buildroot}
+%endif
+
+%if "%{flavor}" != "test"
 %files %{python_files setools}
 %defattr(-,root,root,-)
 %{python_sitearch}/setools
@@ -190,5 +208,6 @@ rm -rf setools setoolsgui
 %defattr(-,root,root,-)
 %{_bindir}/apol
 %{_mandir}/man1/apol.1.gz
+%endif
 
 %changelog
