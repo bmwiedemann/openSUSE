@@ -89,4 +89,22 @@
   * Fix issues that could cause 'pgaudit stack is not empty' errors.</comment>
     <requestid>1291429</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>d34f98ed39f37547602a73bced780807</srcmd5>
+    <version>unknown</version>
+    <time>1758919743</time>
+    <user>anag_factory</user>
+    <comment>- Add support for pg 18 by adding the 18.0 version
+  - bug fixes:
+    - Error when required hooks are skipped.
+  - Improvements:
+    - SELECT FOR UPDATE object logging improvement.
+    - Disable logging in parallel workers.
+    - Use strpbrk() instead of strstr() where applicable.
+    - Fix search_path for trigger functions.
+    - Minor code optimizations.
+  - Features:
+    - PostgreSQL 18 support.</comment>
+    <requestid>1307188</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 25 16:11:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add support for pg 18 by adding the 18.0 version
+  - bug fixes:
+    - Error when required hooks are skipped.
+  - Improvements:
+    - SELECT FOR UPDATE object logging improvement.
+    - Disable logging in parallel workers.
+    - Use strpbrk() instead of strstr() where applicable.
+    - Fix search_path for trigger functions.
+    - Minor code optimizations.
+  - Features:
+    - PostgreSQL 18 support.
+
+-------------------------------------------------------------------
 Tue Jul  8 07:21:54 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Update to 17.1, 16.1, 1.7.1, 1.6.3, 1.5.3:
