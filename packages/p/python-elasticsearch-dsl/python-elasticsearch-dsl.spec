@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-elasticsearch-dsl
-Version:        8.17.0
+Version:        8.17.1
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0

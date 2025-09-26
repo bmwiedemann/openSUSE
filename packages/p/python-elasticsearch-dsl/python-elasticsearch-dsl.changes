@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 26 06:48:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.17.1
+  * Added support for the point and shape fields (#1963)
+  * Corrected typing hints for the FunctionScore query (#1960)
+
+-------------------------------------------------------------------
 Wed Jan  8 09:35:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 8.17.0:
