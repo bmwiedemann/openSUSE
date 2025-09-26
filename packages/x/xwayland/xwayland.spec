@@ -1,7 +1,7 @@
 #
 # spec file for package xwayland
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,10 @@ Group:          System/X11/Servers/XF86_4
 Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
 Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
+Patch0:         U_randr_Do_not_leak_provider_property.patch
+Patch1:         U_xwayland_Dispatch_tablet_tool_tip_events.patch
+Patch2:         U_glamor_Fix_dual_blend_on_GLES3.patch
+Patch3:         U_xwayland_Dont_run_key_behaviors_and_actions.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja

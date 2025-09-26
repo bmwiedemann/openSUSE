@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 25 08:37:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream bugfix patches:
+  * U_randr_Do_not_leak_provider_property.patch
+  * U_xwayland_Dispatch_tablet_tool_tip_events.patch
+  * U_glamor_Fix_dual_blend_on_GLES3.patch
+  * U_xwayland_Dont_run_key_behaviors_and_actions.patch
+
+-------------------------------------------------------------------
 Thu Jun 19 06:09:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 24.1.8:

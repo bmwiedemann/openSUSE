@@ -1,0 +1,132 @@
+From 482623371fe661cb1ce1565abfc38d2ba30a6f6e Mon Sep 17 00:00:00 2001
+From: Julian Orth <ju.orth@gmail.com>
+Date: Sat, 11 Jan 2025 17:50:12 +0100
+Subject: [PATCH] xwayland: Don't run key behaviors and actions
+
+Consider the following keymap:
+
+```xkb
+xkb_keymap {
+    xkb_keycodes {
+        <compose> = 135;
+    };
+    xkb_symbols {
+        key <compose> {
+            [ SetGroup(group = +1) ]
+        };
+    };
+};
+```
+
+When the user presses the compose key, the following happens:
+
+1. The compositor forwards the key to Xwayland.
+2. Xwayland executes the SetGroup action and sets the base_group to 1
+   and the effective group to 1.
+3. The compositor updates its own state and sends the effective group,
+   1, to Xwayland.
+4. Xwayland sets the locked group to 1 and the effective group to
+   1 + 1 = 2.
+
+This is wrong since pressing compose should set the effective group to 1
+but to X applications the effective group appears to be 2.
+
+This commit makes it so that Xwayland completely ignores the key
+behaviors and actions of the keymap and only updates the modifier and
+group components in response to the wayland modifiers events.
+
+Signed-off-by: Julian Orth <ju.orth@gmail.com>
+(cherry picked from commit 45c1d22ff6fe484b0088128a997e33b81bc8282d)
+
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2060>
+---
+ hw/xwayland/xwayland-input.c | 7 +++++--
+ include/inputstr.h           | 2 ++
+ xkb/xkbActions.c             | 9 ++++++---
+ xkb/xkbPrKeyEv.c             | 2 +-
+ 4 files changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/hw/xwayland/xwayland-input.c b/hw/xwayland/xwayland-input.c
+index d5bce37835..51efdb5fb8 100644
+--- a/hw/xwayland/xwayland-input.c
++++ b/hw/xwayland/xwayland-input.c
+@@ -1284,11 +1284,12 @@ keyboard_handle_modifiers(void *data, struct wl_keyboard *keyboard,
+         old_state = dev->key->xkbInfo->state;
+         new_state = &dev->key->xkbInfo->state;
+ 
++        new_state->base_group = 0;
++        new_state->latched_group = 0;
+         new_state->locked_group = group & XkbAllGroupsMask;
+         new_state->base_mods = mods_depressed & XkbAllModifiersMask;
++        new_state->latched_mods = mods_latched & XkbAllModifiersMask;
+         new_state->locked_mods = mods_locked & XkbAllModifiersMask;
+-        XkbLatchModifiers(dev, XkbAllModifiersMask,
+-                          mods_latched & XkbAllModifiersMask);
+ 
+         XkbComputeDerivedState(dev->key->xkbInfo);
+ 
+@@ -1676,6 +1677,7 @@ add_device(struct xwl_seat *xwl_seat,
+     dev->public.devicePrivate = xwl_seat;
+     dev->type = SLAVE;
+     dev->spriteInfo->spriteOwner = FALSE;
++    dev->ignoreXkbActionsBehaviors = TRUE;
+ 
+     return dev;
+ }
+@@ -3597,6 +3599,7 @@ InitInput(int argc, char *argv[])
+ 
+     mieqInit();
+ 
++    inputInfo.keyboard->ignoreXkbActionsBehaviors = TRUE;
+     xwl_screen->input_registry = wl_display_get_registry(xwl_screen->display);
+     wl_registry_add_listener(xwl_screen->input_registry, &input_listener,
+                              xwl_screen);
+diff --git a/include/inputstr.h b/include/inputstr.h
+index 24dd48841e..269399e1d2 100644
+--- a/include/inputstr.h
++++ b/include/inputstr.h
+@@ -631,6 +631,8 @@ typedef struct _DeviceIntRec {
+     DeviceSendEventsProc sendEventsProc;
+ 
+     struct _SyncCounter *idle_counter;
++
++    Bool ignoreXkbActionsBehaviors; /* TRUE if keys don't trigger behaviors and actions */
+ } DeviceIntRec;
+ 
+ typedef struct {
+diff --git a/xkb/xkbActions.c b/xkb/xkbActions.c
+index 5e9a6b6d6e..8dd9d7da01 100644
+--- a/xkb/xkbActions.c
++++ b/xkb/xkbActions.c
+@@ -1368,9 +1368,12 @@ XkbHandleActions(DeviceIntPtr dev, DeviceIntPtr kbd, DeviceEvent *event)
+                   (event->type == ET_ButtonPress));
+ 
+     if (pressEvent) {
+-        if (keyEvent)
+-            act = XkbGetKeyAction(xkbi, &xkbi->state, key);
+-        else {
++        if (keyEvent) {
++            if (kbd->ignoreXkbActionsBehaviors)
++                act.type = XkbSA_NoAction;
++            else
++                act = XkbGetKeyAction(xkbi, &xkbi->state, key);
++        } else {
+             act = XkbGetButtonAction(kbd, dev, key);
+             key |= BTN_ACT_FLAG;
+         }
+diff --git a/xkb/xkbPrKeyEv.c b/xkb/xkbPrKeyEv.c
+index d2c7e33f42..53a31b7272 100644
+--- a/xkb/xkbPrKeyEv.c
++++ b/xkb/xkbPrKeyEv.c
+@@ -68,7 +68,7 @@ XkbProcessKeyboardEvent(DeviceEvent *event, DeviceIntPtr keybd)
+     /* do anything to implement the behavior, but it *does* report that */
+     /* key is hardwired */
+ 
+-    if (!(behavior.type & XkbKB_Permanent)) {
++    if (!keybd->ignoreXkbActionsBehaviors && !(behavior.type & XkbKB_Permanent)) {
+         switch (behavior.type) {
+         case XkbKB_Default:
+             /* Neither of these should happen in practice, but ignore them
+-- 
+GitLab
+
