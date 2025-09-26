@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package icinga-php-library
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -20,7 +20,7 @@
 %global module_name icinga-php-library
 %global basedir %{_datadir}/icinga-php/ipl
 Name:           %{module_name}
-Version:        0.14.1
+Version:        0.17.0
 Release:        %{revision}%{?dist}
 Summary:        Icinga PHP Library for Icinga Web 2
 License:        MIT
@@ -29,6 +29,8 @@ URL:            https://icinga.com
 Source0:        https://github.com/Icinga/%{module_name}/archive/v%{version}/%{module_name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
+Requires:       icingaweb2 >= 2.9
+Requires:       php >= 8.2
 Requires:       php-gettext
 Requires:       php-intl
 Requires:       php-json
