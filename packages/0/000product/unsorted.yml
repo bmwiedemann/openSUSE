@@ -6909,6 +6909,7 @@ unsorted:
   - giflib-devel-32bit 
   - giflib-progs 
   - gifsicle 
+  - gimp 
   - gimp-devel 
   - gimp-extension-goat-excercises 
   - gimp-help 
@@ -6935,7 +6936,9 @@ unsorted:
   - gimp-help-sv 
   - gimp-help-zh 
   - gimp-lang 
+  - gimp-plugin-aa 
   - gimp-plugin-gmic 
+  - gimp-plugin-python3 
   - gimp-plugin-resynthesizer 
   - gimp-vala 
   - ginac 
@@ -8849,6 +8852,7 @@ unsorted:
   - ini4j 
   - ini4j-javadoc 
   - inkscape-extensions-fig 
+  - inkscape-extensions-gimp 
   - inkscape-extensions-scribus 
   - inn-devel 
   - innoextract 
@@ -9891,7 +9895,6 @@ unsorted:
   - kdsoap-qt6-devel 
   - kdsoap-ws-discovery-client-devel 
   - kdstatemachineeditor-devel 
-  - kdstatemachineeditor-qt6-devel 
   - kdumpid 
   - kea 
   - kea-devel 
@@ -11067,12 +11070,12 @@ unsorted:
   - libIPSec_MB2 
   - libIccXML-devel 
   - libIccXML2 
-  - libIex-3_3-32-32bit 
+  - libIex-3_4-33-32bit 
   - libIlmCtl1_5_3 
   - libIlmCtlMath1_5_3 
   - libIlmCtlSimd1_5_3 
   - libIlmImfCtl1_5_3 
-  - libIlmThread-3_3-32-32bit 
+  - libIlmThread-3_4-33-32bit 
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
   - libKChart2 
@@ -11136,7 +11139,6 @@ unsorted:
   - libLASi2 
   - libLHAPDF-6_5_5 
   - libLLVM15 
-  - libLLVM18 
   - libLLVM18-32bit 
   - libLLVM19 
   - libLLVM19-32bit 
@@ -11189,11 +11191,11 @@ unsorted:
   - libOpenCL1 
   - libOpenCL1-32bit 
   - libOpenColorIO2_4 
-  - libOpenEXR-3_3-32-32bit 
-  - libOpenEXRCore-3_3-32-32bit 
-  - libOpenEXRUtil-3_3-32 
-  - libOpenEXRUtil-3_3-32-32bit 
-  - libOpenEXRUtil-3_3-32-x86-64-v3 
+  - libOpenEXR-3_4-33-32bit 
+  - libOpenEXRCore-3_4-33-32bit 
+  - libOpenEXRUtil-3_4-33 
+  - libOpenEXRUtil-3_4-33-32bit 
+  - libOpenEXRUtil-3_4-33-x86-64-v3 
   - libOpenIPMI0 
   - libOpenIPMIui1 
   - libOpenImageDenoise2 
@@ -13418,6 +13420,8 @@ unsorted:
   - libgig-devel 
   - libgig-tools 
   - libgig11 
+  - libgimp-3_0-0 
+  - libgimpui-3_0-0 
   - libginac13 
   - libgio-2_0-0-32bit 
   - libgiomm-2_4-1-32bit 
@@ -13453,7 +13457,7 @@ unsorted:
   - libglog2 
   - libgloox18 
   - libglpk40 
-  - libglslang15-32bit 
+  - libglslang16-32bit 
   - libglusterfs0 
   - libglut3-32bit 
   - libglvnd-32bit 
@@ -14098,13 +14102,9 @@ unsorted:
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
   - libkdstatemachineeditor_core-qt6-2 
-  - libkdstatemachineeditor_core2 
   - libkdstatemachineeditor_debuginterfaceclient-qt6-2 
-  - libkdstatemachineeditor_debuginterfaceclient2 
   - libkdstatemachineeditor_debuginterfacesource-qt6-static 
-  - libkdstatemachineeditor_debuginterfacesource-static 
   - libkdstatemachineeditor_view-qt6-2 
-  - libkdstatemachineeditor_view2 
   - libkdumpfile-devel 
   - libkdumpfile12 
   - libkea-asiodns62 
@@ -14526,7 +14526,7 @@ unsorted:
   - libmetal-devel 
   - libmetal1 
   - libmetalink-devel 
-  - libmetee6_0_0_0 
+  - libmetee6_0_2_0 
   - libmetis5 
   - libmetrics-devel 
   - libmetrics0 
@@ -14700,6 +14700,8 @@ unsorted:
   - libmypaint-devel 
   - libmypaint-gegl-devel 
   - libmypaint-gegl0 
+  - libmypaint-lang 
+  - libmypaint0 
   - libmysofa-devel 
   - libmysofa1-32bit 
   - libnanomsg6 
@@ -14992,7 +14994,7 @@ unsorted:
   - libopenhpi4 
   - libopenhtj2k0 
   - libopenjp2-7-32bit 
-  - libopenjph0_23 
+  - libopenjph0_23-32bit 
   - libopenlibm4 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -15882,9 +15884,7 @@ unsorted:
   - libressl 
   - libressl-devel 
   - libressl-devel-doc 
-  - librest-0_7-0 
   - librest-devel 
-  - librest0_7-devel 
   - libretls-devel 
   - libretls-libtls28 
   - librevenge-devel 
@@ -22971,7 +22971,6 @@ unsorted:
   - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
-  - postgresql-llvmjit 
   - postgresql-llvmjit-devel 
   - postgresql-plperl 
   - postgresql-plpython 
@@ -23076,8 +23075,9 @@ unsorted:
   - postgresql16-server-devel 
   - postgresql16-test 
   - postgresql16-timescaledb 
+  - postgresql17 
+  - postgresql17-contrib 
   - postgresql17-devel 
-  - postgresql17-devel-mini 
   - postgresql17-docs 
   - postgresql17-libversion 
   - postgresql17-llvmjit 
@@ -23096,9 +23096,24 @@ unsorted:
   - postgresql17-pltcl 
   - postgresql17-postgis 
   - postgresql17-postgis-utils 
+  - postgresql17-server 
   - postgresql17-server-devel 
   - postgresql17-test 
   - postgresql17-timescaledb 
+  - postgresql18-devel 
+  - postgresql18-devel-mini 
+  - postgresql18-docs 
+  - postgresql18-libversion 
+  - postgresql18-llvmjit-devel 
+  - postgresql18-orafce 
+  - postgresql18-pgaudit 
+  - postgresql18-plperl 
+  - postgresql18-plpython 
+  - postgresql18-plr 
+  - postgresql18-plr-doc 
+  - postgresql18-pltcl 
+  - postgresql18-server-devel 
+  - postgresql18-test 
   - postgrey 
   - postorius 
   - postorius-web 
@@ -36858,6 +36873,7 @@ unsorted:
   - scons 
   - scotch 
   - scotch-devel 
+  - scrcpy 
   - scream 
   - screen-message 
   - screencast 
@@ -36968,8 +36984,6 @@ unsorted:
   - setconf 
   - sethdlc 
   - setools-gui 
-  - setools-test-console 
-  - setools-test-gui 
   - setroubleshoot 
   - setroubleshoot-doc 
   - setroubleshoot-plugins 
@@ -48074,6 +48088,7 @@ unsorted:
   - typelib-1_0-AyatanaAppIndicator-0_1 
   - typelib-1_0-AyatanaAppIndicator3-0_1 
   - typelib-1_0-AyatanaIdo3-0_4 
+  - typelib-1_0-Babl-0_1 
   - typelib-1_0-Bamf-3_0 
   - typelib-1_0-Birb-1_0 
   - typelib-1_0-BlockDev-3_0 
@@ -48159,6 +48174,7 @@ unsorted:
   - typelib-1_0-Gdaui-6_0 
   - typelib-1_0-GdkPixdata-2_0 
   - typelib-1_0-Gee-0_8 
+  - typelib-1_0-Gegl-0_4 
   - typelib-1_0-GeocodeGlib-1_0 
   - typelib-1_0-Gepub-0_7 
   - typelib-1_0-Gfls-1 
@@ -48281,7 +48297,6 @@ unsorted:
   - typelib-1_0-Poppler-0_18 
   - typelib-1_0-Qmi-1_0 
   - typelib-1_0-Qrtr-1_0 
-  - typelib-1_0-Rest-0_7 
   - typelib-1_0-RygelCore-2_8 
   - typelib-1_0-RygelRenderer-2_8 
   - typelib-1_0-RygelRendererGst-2_8 

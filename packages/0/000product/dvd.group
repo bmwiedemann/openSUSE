@@ -522,9 +522,6 @@
     <package name="ghostscript-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gigolo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gigolo-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="gimp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gimp-plugin-aa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="gimp-plugin-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gio-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="girepository-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="git" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -803,7 +800,6 @@
     <package name="info-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="inkscape" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="inkscape-extensions-extra" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
-    <package name="inkscape-extensions-gimp" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="inkscape-lang" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="inn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="intel-vaapi-driver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -1194,10 +1190,10 @@
     <package name="libGraphicsMagick3-config" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libHX32" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libICE6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libIex-3_3-32" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libIex-3_3-32-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libIlmThread-3_3-32" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libIlmThread-3_3-32-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libIex-3_4-33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libIex-3_4-33-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libIlmThread-3_4-33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libIlmThread-3_4-33-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libImath-3_1-29" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libImlib2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libJudy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1462,14 +1458,15 @@
     <package name="libKWaylandClient6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKirigamiAddonsStatefulApp6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKirigamiPlatform6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libLLVM18" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="libLLVM21" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libLayerShellQtInterface6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libMagickCore-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libMagickWand-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libOpenEXR-3_3-32" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libOpenEXR-3_3-32-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libOpenEXRCore-3_3-32" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libOpenEXRCore-3_3-32-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libOpenEXR-3_4-33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libOpenEXR-3_4-33-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libOpenEXRCore-3_4-33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libOpenEXRCore-3_4-33-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libPlasma5Support6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma5Support6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1695,7 +1692,7 @@
     <package name="libaom3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libapparmor1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libappindicator3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="libappstream-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libappstream-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libappstream5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libapr-util1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="libapr1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
@@ -1738,7 +1735,7 @@
     <package name="libb2-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbabl-0_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbabl-0_1-0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libbacktrace0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libbacktrace0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbase" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbasicobjects0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libbd_btrfs3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -1822,7 +1819,7 @@
     <package name="libcdr-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcdrdeflt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcdt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="libcfitsio10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libcfitsio10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcgraph6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libcheese-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libcheese8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2061,8 +2058,6 @@
     <package name="libgexiv2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgfortran5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgif7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libgimp-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgimpui-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgio-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgiomm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libgiomm-2_68-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2074,7 +2069,7 @@
     <package name="libglib-2_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libglibmm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libglibmm-2_68-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libglslang15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libglslang16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libglut3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libglvnd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libglycin-2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2441,8 +2436,6 @@
     <package name="libmusicbrainz5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libmwaw-0_3-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libmygpo-qt6-1" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
-    <package name="libmypaint-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libmypaint0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmysofa1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libmythes-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnautilus-extension4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2501,6 +2494,7 @@
     <package name="libopeniscsiusr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libopenjp2-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenjp2-7-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libopenjph0_23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopenmpt0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenobex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libopenraw9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2944,7 +2938,7 @@
     <package name="libwireplumber-0_5-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwlembed-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libwlembed-gtk3-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="libwmf-0_2-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libwmf-0_2-7" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libwnck-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwnck-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwoff2common1_0_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3557,10 +3551,12 @@
     <package name="postfix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="postgresql" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="postgresql-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
-    <package name="postgresql17" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
-    <package name="postgresql17-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
-    <package name="postgresql17-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql18" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
+    <package name="postgresql18-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql18-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql18-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="pothana2000-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="power-profiles-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="powerdevil6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4112,7 +4108,6 @@
     <package name="typelib-1_0-AppIndicator3-0_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="typelib-1_0-Atk-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-Atspi-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="typelib-1_0-Babl-0_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Cheese-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="typelib-1_0-Clutter-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="typelib-1_0-Cogl-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -4131,7 +4126,6 @@
     <package name="typelib-1_0-Gcr-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GdkPixbuf-2_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-Gdm-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="typelib-1_0-Gegl-0_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Geoclue-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GeocodeGlib-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Gio-2_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
