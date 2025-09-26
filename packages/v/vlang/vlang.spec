@@ -25,7 +25,7 @@
 %global vexe        %{vexe_root}/%{name}
 
 Name:           vlang
-Version:        0.4.11
+Version:        0.4.12
 Release:        0
 Summary:        The V Programming Language
 License:        MIT AND BSD-2-Clause
@@ -33,6 +33,7 @@ URL:            https://vlang.io/
 Source0:        https://github.com/%{name}/v/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/%{name}/vc/raw/%{vc_gitrev}/v.c
 Source99:       vlang-rpmlintrc
+Patch0:         https://github.com/vlang/v/pull/25370.diff#/fix-already-unsafe.patch
 BuildRequires:  c_compiler
 BuildRequires:  diffutils
 BuildRequires:  fdupes
@@ -62,7 +63,6 @@ This package contains examples for the V Programming Language.
 
 %prep
 %autosetup -n v-%{version} -p1
-cp %{SOURCE1} v.c
 
 # Remove .gitignore files
 find . -type f -name '.gitignore' -print -delete
@@ -89,7 +89,7 @@ export STAGE1_FLAGS='-no-parallel'
 export STAGE2_FLAGS='-prod -nocache'
 
 # stage 0: build the V compiler from the transpiled C code
-${CC} ${CFLAGS} ${LDFLAGS} ${STAGE0_FLAGS} -o %{name}-stage0 v.c
+${CC} ${CFLAGS} ${LDFLAGS} ${STAGE0_FLAGS} -o %{name}-stage0 %{SOURCE1}
 # stage 1: build without parallelism
 ./%{name}-stage0 ${VFLAGS} ${STAGE1_FLAGS} -o %{name}-stage1 cmd/v
 # stage 2: build with parallelism and -prod

@@ -8,4 +8,27 @@
 focus on simplicity and maintainability</comment>
     <requestid>1296667</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6a651527c09bcdc34f3105e8d2ccad3e</srcmd5>
+    <version>0.4.12</version>
+    <time>1758918280</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.12:
+  * Support a new CPU architecture s390x (#24107)
+  * Add initial support for ppc64le (#24287)
+  * Add initial support for loongarch64 (#24343)
+  * Support js&quot;string literal&quot; for JavaScript strings (#24653)
+  * VLS mode in the parser for the new language server in pure V
+  * Remove deprecations made before 2024-11-06
+  * Add a deprecation note for any arg, prevent any from being
+    used as map key,value or array type (#24277)
+  * Improvents/fixes to Checker, Parser, Comptime, Compiler internals,
+    Standard library, Web, ORM and Database drivers
+  * Native, C and JavaScript backend changes
+- See https://github.com/vlang/v/releases/tag/0.4.11 for full details
+- add fix-already-unsafe.patch to fix compilation error
+
+- Do not copy v.c while building</comment>
+    <requestid>1307211</requestid>
+  </revision>
 </revisionlist>

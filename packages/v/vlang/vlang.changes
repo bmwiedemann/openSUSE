@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 21 23:55:48 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.4.12:
+  * Support a new CPU architecture s390x (#24107)
+  * Add initial support for ppc64le (#24287)
+  * Add initial support for loongarch64 (#24343)
+  * Support js"string literal" for JavaScript strings (#24653)
+  * VLS mode in the parser for the new language server in pure V
+  * Remove deprecations made before 2024-11-06
+  * Add a deprecation note for any arg, prevent any from being
+    used as map key,value or array type (#24277)
+  * Improvents/fixes to Checker, Parser, Comptime, Compiler internals,
+    Standard library, Web, ORM and Database drivers
+  * Native, C and JavaScript backend changes
+- See https://github.com/vlang/v/releases/tag/0.4.11 for full details
+- add fix-already-unsafe.patch to fix compilation error
+
+-------------------------------------------------------------------
+Wed Aug  6 12:35:01 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Do not copy v.c while building 
+
+-------------------------------------------------------------------
 Wed Jul 30 20:51:53 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Do not strip executables to make debuginfo work 
