@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 26 07:29:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.2.0
+  * Bump embedded Graphviz to 13.1.0
+  * Remove Qt 5 support to simplify maintenance
+  * Fix build with Qt 6.10
+- Drop the Qt 5 flavor
+
+-------------------------------------------------------------------
 Fri May 16 06:04:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.1.0
