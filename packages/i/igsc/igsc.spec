@@ -16,13 +16,12 @@
 #
 
 Name:           igsc
-Version:        0.9.5
+Version:        1.0.0
 Release:        0
 Summary:        Intel Graphics System Controller Firmware Update Utility
 License:        Apache-2.0
 URL:            https://github.com/intel/igsc
 Source:         https://github.com/intel/igsc/archive/refs/tags/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-Use-CMAKE_INSTALL_LIBDIR-when-installing-cmake-files.patch
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
@@ -53,7 +52,7 @@ Headers and cmake files for the igsc library.
 
 %files
 %{_bindir}/igsc
-%{_libdir}/libigsc.so.0*
+%{_libdir}/libigsc.so.1*
 
 %files devel
 %{_includedir}/igsc_lib.h

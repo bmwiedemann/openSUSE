@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 26 12:37:25 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.0
+  * CMake: move Conan requirement out of preset
+  * cli: Prefix the debugging with a more suitable name
+  * cli: retrieve firmware version before oprom and fw data update
+  * cli: add oprom devid enforcement explanations
+  * cli: add missed out of memory print
+  * lib: drop duplicate perf checkpoint
+  * lib: fix strings
+  * lib: fix structures definition coding style
+  * lib: add comment describing oprom update logic
+- Remove 0001-Use-CMAKE_INSTALL_LIBDIR-when-installing-cmake-files.patch 
+  * Fix is in upstream and no longer needed
+
+-------------------------------------------------------------------
 Mon Mar 17 09:33:08 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Rename the tarball to %{name}-%{version}.tar.gz

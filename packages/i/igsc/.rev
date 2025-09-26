@@ -7,4 +7,12 @@
     <comment>New package. Package contains a utility for updating the Intel Graphics System Controller Firmware via the intel-metee interface library..</comment>
     <requestid>1254024</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ea82ac46a0d80bf28f0ff351dff95e8b</srcmd5>
+    <version>1.0.0</version>
+    <time>1758918347</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1307386</requestid>
+  </revision>
 </revisionlist>
