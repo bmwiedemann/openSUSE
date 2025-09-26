@@ -97,4 +97,12 @@
     <comment></comment>
     <requestid>1272219</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>ebf4bd4f7acd7eb0fd4b067e09d79e1f</srcmd5>
+    <version>0.4.2</version>
+    <time>1758918337</time>
+    <user>anag_factory</user>
+    <comment>- libboost_system was removed upstream (bsc#1249599)</comment>
+    <requestid>1307360</requestid>
+  </revision>
 </revisionlist>

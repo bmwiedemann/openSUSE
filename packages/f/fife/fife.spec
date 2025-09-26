@@ -1,7 +1,7 @@
 #
 # spec file for package fife
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2011 Nelson Marques <nmarques@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,8 +44,8 @@ BuildRequires:  tinyxml-devel
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(python3)
@@ -55,7 +55,9 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_regex-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 %else
 BuildRequires:  boost-devel
 %endif
