@@ -305,4 +305,14 @@
     <comment>- Update file list after KDE Frameworks 6.18 release</comment>
     <requestid>1304514</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>b38f2e3a8720f5cfbe59bd674ce454a5</srcmd5>
+    <version>6.4.5</version>
+    <time>1758918251</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to fix crash caused by a qtdeclarative change
+  (kde#509192, QTBUG-140018):
+  * 0001-applets-mediacontroller-Workaround-for-common-crash-.patch (forwarded request 1307062 from Vogtinator)</comment>
+    <requestid>1307065</requestid>
+  </revision>
 </revisionlist>
