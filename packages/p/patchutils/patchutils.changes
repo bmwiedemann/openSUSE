@@ -1,28 +1,4 @@
 -------------------------------------------------------------------
-Sun Sep 21 16:01:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
-
-- update to 0.4.3:
-  * Add --in-place option to more tools for editing files in place
-  * Add --color option to interdiff with automatic terminal
-    detection
-  * Improve PCRE2 support
-  * Add support for CRLF line endings in patch files
-  * Fix interdiff to reverse line counts correctly when reversing
-    patches
-  * Add bash completions
-  * Various bug fixes and code correctness fixes
-  * Add new --as-numbered-lines options: original-before and
-    original-after
-  * Fix rediff to preserve diff command headers in multi-file
-    patches
-  * Fix recountdiff corruption of new file headers when git
-    signature lines are present
-- remove unnecessary build dependencies
-- build with xmlto to generate documentation
-- package bash completions, build with pcre2 support
-- add upstream signing key and validate source signature
-
--------------------------------------------------------------------
 Mon Nov 27 10:54:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove dependency on /usr/bin/python3, making scripts to depends on

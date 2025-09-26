@@ -214,4 +214,11 @@
     <comment></comment>
     <requestid>1306327</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>deb0f04c45781209dca580354c39009a</srcmd5>
+    <version>0.4.2</version>
+    <time>1758871568</time>
+    <user>anag_factory</user>
+    <comment>Revert. It introduces xmlto and somehow this wasn't detected when building in Staging</comment>
+  </revision>
 </revisionlist>

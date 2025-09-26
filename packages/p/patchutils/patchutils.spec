@@ -2,7 +2,6 @@
 # spec file for package patchutils
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +17,17 @@
 
 
 Name:           patchutils
-Version:        0.4.3
+Version:        0.4.2
 Release:        0
 Summary:        A Collection of Tools for Manipulating Patch Files
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-URL:            https://cyberelk.net/tim/software/patchutils/
+URL:            http://cyberelk.net/tim/software/patchutils/
 Source0:        http://cyberelk.net/tim/data/patchutils/stable/%{name}-%{version}.tar.xz
 Source1:        http://cyberelk.net/tim/data/patchutils/stable/%{name}-%{version}.tar.xz.sig
-# https://fedoraproject.org/wiki/User:Twaugh 0x4629AFE960EC20BEC12E3104B7C20D079491EA63
-Source2:        %{name}.keyring
 Patch2:         rediff-hunk-init-fix.diff
-BuildRequires:  pkgconfig
+BuildRequires:  automake
 BuildRequires:  python-rpm-macros
-BuildRequires:  xmlto
-BuildRequires:  pkgconfig(libpcre2-8)
 Requires:       diffutils
 Requires:       patch
 
@@ -58,11 +53,14 @@ files in a patch. Rediff corrects hand-edited patches.
 
 %install
 %make_install
-%{python3_fix_shebang}
+install -m 0755 -d %{buildroot}%{_mandir}/man1/
+install -m 0644 -t %{buildroot}%{_mandir}/man1/ doc/*.1
+
+%python3_fix_shebang
 
 %files
 %license COPYING
-%doc AUTHORS BUGS NEWS TODO
+%doc BUGS README
 %{_bindir}/combinediff
 %{_bindir}/dehtmldiff
 %{_bindir}/editdiff
@@ -83,6 +81,5 @@ files in a patch. Rediff corrects hand-edited patches.
 %exclude %{_bindir}/svndiffview
 %{_bindir}/unwrapdiff
 %{_mandir}/man1/*.1%{?ext_man}
-%{_datadir}/bash-completion/completions/*
 
 %changelog
