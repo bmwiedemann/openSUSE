@@ -1,7 +1,7 @@
 #
 # spec file for package openvdb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2024 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,7 +44,6 @@ Patch1:         fix-tool-building.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc%{?gcc_major}-c++ >= 9.3.1
 BuildRequires:  libboost_iostreams-devel-impl >= 1.80
-BuildRequires:  libboost_system-devel-impl >= 1.80
 BuildRequires:  memory-constraints
 %if %{with openvdb_ax}
 BuildRequires:  cmake(LLVM) < 16
