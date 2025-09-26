@@ -19,7 +19,7 @@
 %global distname Tumbleweed
 %endif
 
-%if 0%{?suse_version} && 0%{?sle_version} && 0%{?is_opensuse}
+%if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
 %global distname Leap
 %endif
 

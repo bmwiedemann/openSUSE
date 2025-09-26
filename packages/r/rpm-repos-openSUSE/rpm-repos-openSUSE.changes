@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 26 11:52:21 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Adjust keys according to the current openSUSE-build-key
+- Fix Leap distname can not be true since sle_version macro is no
+  longer available in 16 codestream
+
+-------------------------------------------------------------------
 Tue Apr  8 10:33:52 UTC 2025 - Dan Čermák <dcermak@suse.com>
 
 - Adjust openSUSE key, see sr#1252009
