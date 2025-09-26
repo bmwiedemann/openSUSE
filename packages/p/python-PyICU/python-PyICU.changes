@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 25 10:46:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.15.3
+  * switch pl2cpa to new[]
+  * replaced uses of calloc with std::unique_ptr<[]>
+  * changed pl2cpa into template returning std::unique_ptr
+  * switch to is_trivially_copyable for sake of g++ 15+
+  * added wrapper for ES_PUNCTUATION
+  * added wrapper for UProperty.DEPRECATED
+  * drop trainling space from INVALID_CODE wrapper
+- Drop pyicu-2.15-gcc15.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue May  6 09:30:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.15.2
