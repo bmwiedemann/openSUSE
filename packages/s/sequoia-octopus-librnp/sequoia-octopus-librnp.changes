@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 25 20:01:55 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
+
+- use 'BuildRequires: rust' to avoid conflict with the recent changes in
+  cargo-packaging
+
+-------------------------------------------------------------------
 Wed Aug  6 18:06:21 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.11.1
