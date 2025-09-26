@@ -4,23 +4,23 @@ Date:   Thu Sep 6 15:14:58 2012 +0800
 
     Medium: stonith: Expose IDs of stonith resources to stonith agents through "$CRM_meta_st_device_id" environment variable
 
-Index: pacemaker-3.0.0+20250114.9931db7727/daemons/fenced/fenced_commands.c
+Index: pacemaker-3.0.0+20250416.6085fd03bf/daemons/fenced/fenced_commands.c
 ===================================================================
---- pacemaker-3.0.0+20250114.9931db7727.orig/daemons/fenced/fenced_commands.c
-+++ pacemaker-3.0.0+20250114.9931db7727/daemons/fenced/fenced_commands.c
-@@ -1085,6 +1085,7 @@ build_device_from_xml(xmlNode *dev)
+--- pacemaker-3.0.0+20250416.6085fd03bf.orig/daemons/fenced/fenced_commands.c
++++ pacemaker-3.0.0+20250416.6085fd03bf/daemons/fenced/fenced_commands.c
+@@ -1115,6 +1115,7 @@ build_device_from_xml(const xmlNode *dev
                   (const char *) device->on_target_actions->str);
      }
  
 +    g_hash_table_insert(device->params, strdup(CRM_META "_" PCMK__XE_ST_DEVICE_ID), strdup(device->id));
      device->work = mainloop_add_trigger(G_PRIORITY_HIGH, stonith_device_dispatch, device);
-     /* TODO: Hook up priority */
  
-Index: pacemaker-3.0.0+20250114.9931db7727/lib/fencing/st_actions.c
+     return device;
+Index: pacemaker-3.0.0+20250416.6085fd03bf/lib/fencing/st_actions.c
 ===================================================================
---- pacemaker-3.0.0+20250114.9931db7727.orig/lib/fencing/st_actions.c
-+++ pacemaker-3.0.0+20250114.9931db7727/lib/fencing/st_actions.c
-@@ -31,6 +31,7 @@ struct stonith_action_s {
+--- pacemaker-3.0.0+20250416.6085fd03bf.orig/lib/fencing/st_actions.c
++++ pacemaker-3.0.0+20250416.6085fd03bf/lib/fencing/st_actions.c
+@@ -33,6 +33,7 @@ struct stonith_action_s {
      char *agent;
      char *action;
      GHashTable *args;
@@ -28,7 +28,7 @@ Index: pacemaker-3.0.0+20250114.9931db7727/lib/fencing/st_actions.c
      int timeout;
      bool async;
      void *userdata;
-@@ -225,6 +226,7 @@ stonith__destroy_action(stonith_action_t
+@@ -215,6 +216,7 @@ stonith__destroy_action(stonith_action_t
              services_action_free(action->svc_action);
          }
          pcmk__reset_result(&(action->result));
@@ -36,7 +36,7 @@ Index: pacemaker-3.0.0+20250114.9931db7727/lib/fencing/st_actions.c
          free(action);
      }
  }
-@@ -283,6 +285,8 @@ stonith__action_create(const char *agent
+@@ -272,6 +274,8 @@ stonith__action_create(const char *agent
      if (device_args) {
          char buffer[512];
          const char *value = NULL;
@@ -45,7 +45,7 @@ Index: pacemaker-3.0.0+20250114.9931db7727/lib/fencing/st_actions.c
  
          snprintf(buffer, sizeof(buffer), "pcmk_%s_retries", action_name);
          value = g_hash_table_lookup(device_args, buffer);
-@@ -290,6 +294,11 @@ stonith__action_create(const char *agent
+@@ -279,6 +283,11 @@ stonith__action_create(const char *agent
          if (value) {
              action->max_retries = atoi(value);
          }
@@ -57,7 +57,7 @@ Index: pacemaker-3.0.0+20250114.9931db7727/lib/fencing/st_actions.c
      }
  
      return action;
-@@ -648,6 +657,10 @@ internal_stonith_action_execute(stonith_
+@@ -640,6 +649,10 @@ internal_stonith_action_execute(stonith_
          return -E2BIG;
      }
  
@@ -68,10 +68,10 @@ Index: pacemaker-3.0.0+20250114.9931db7727/lib/fencing/st_actions.c
      /* keep retries from executing out of control and free previous results */
      if (is_retry) {
          pcmk__reset_result(&(action->result));
-Index: pacemaker-3.0.0+20250114.9931db7727/lib/services/services_linux.c
+Index: pacemaker-3.0.0+20250416.6085fd03bf/lib/services/services_linux.c
 ===================================================================
---- pacemaker-3.0.0+20250114.9931db7727.orig/lib/services/services_linux.c
-+++ pacemaker-3.0.0+20250114.9931db7727/lib/services/services_linux.c
+--- pacemaker-3.0.0+20250416.6085fd03bf.orig/lib/services/services_linux.c
++++ pacemaker-3.0.0+20250416.6085fd03bf/lib/services/services_linux.c
 @@ -25,6 +25,9 @@
  #include "crm/services.h"
  #include "crm/services_internal.h"

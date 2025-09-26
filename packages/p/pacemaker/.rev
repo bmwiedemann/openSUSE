@@ -2529,4 +2529,12 @@
 - libcrmcommon: Match literal dots in schema transform filter (forwarded request 1266030 from yan_gao)</comment>
     <requestid>1266031</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>8dad2c01e45cebf1312f867143bd2a53</srcmd5>
+    <version>3.0.1+20250807.16e74fc4da</version>
+    <time>1758918254</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.1+20250807.16e74fc4da (Pacemaker-3.0.1): (forwarded request 1307107 from yan_gao)</comment>
+    <requestid>1307108</requestid>
+  </revision>
 </revisionlist>

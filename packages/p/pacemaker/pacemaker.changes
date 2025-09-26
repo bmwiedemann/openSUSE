@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Aug 07 17:54:32 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20250807.16e74fc4da (Pacemaker-3.0.1):
+- libpacemaker: Do not retry on ECONNREFUSED in tools. (gh#ClusterLabs/pacemaker#3934)
+
+-------------------------------------------------------------------
+Fri Jul 25 14:49:52 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250722.1244f61942 (Pacemaker-3.0.1-rc2):
+- cts: Remove --valgrind-tests
+- cts: Leave valgrind results around if they're not empty.
+
+-------------------------------------------------------------------
+Fri Jul 25 14:30:26 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250620.9a5e54bae8 (Pacemaker-3.0.1-rc1):
+- NLS: update translations before 3.0.1-rc1
+
+-------------------------------------------------------------------
+Thu Jun 26 14:49:02 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250619.2b217949d6:
+- libpacemaker: Prevent CIB growth during crm_simulate --profile
+- libpacemaker: Fix memory leak in pcmk__group_apply_location() (gh#ClusterLabs/pacemaker#3892)
+- daemons: Fix a toctou bug when fetching additional schemas.
+- daemons: Fix a bug iterating in get_op_total_timeout. (gh#ClusterLabs/pacemaker#3891)
+- Address coverity issues.
+- Address certain clang static analysis errors.
+- libs: Fix cppcheck warnings.
+- libcrmcommon: bump feature set to 3.20.1
+- scheduler: Require a cluster option for old remote fencing behavior.
+- scheduler: Don't always fence online remote nodes.
+- daemons: Convert schedulerd to support multipart IPC messages.
+- daemons: Convert attrd to support multipart IPC messages.
+- daemons: Convert pacemakerd to support multipart IPC messages.
+- daemons: Convert execd to support multipart IPC messages.
+- daemons: Convert fenced to support multipart IPC messages.
+- daemons: Convert controld to support multipart IPC messages.
+- daemons: Convert based to support multipart IPC messages.
+- libcrmcommon: Retry on EAGAIN in crm_ipcs_flush_events.
+
+-------------------------------------------------------------------
+Wed Jun 25 17:00:28 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250606.628ffeb705:
+- libcrmcommon: Add retries on connect to avoid fatal errors when sub-daemons communicate (gh#ClusterLabs/pacemaker#3878)
+
+-------------------------------------------------------------------
+Wed Jun 25 16:39:19 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250530.db9dc3455e:
+- libcrmservice: consider a monitor pending if LoadUnit receives no reply from systemd (bsc#1232276, gh#ClusterLabs/pacemaker#3880)
+
+-------------------------------------------------------------------
+Wed Jun 25 16:10:26 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250521.2dfc2f60f5:
+- libcrmcommon: All parts of a multipart event should have the same ID
+- libcrmcommon: Don't immediately overwrite request ID.
+- libcrmcommon: Check the client buffer in crm_ipc_buffer.
+- libcrmcommon: Handle sending multi-part IPC server events.
+- libcrmcommon: crm_ipc_read can receive large IPC messages.
+- libcrmcommon: Elements should never match if IDs differ
+- libcrmcommon: Consistently free iov on error.
+- libcrmcommon: Always free temp node in mark_child_deleted()
+- libcrmcommon: Fix XML matching when marking changes
+
+-------------------------------------------------------------------
+Fri May 30 16:02:19 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250416.6085fd03bf:
+- fencer: Don't remove device if child is deleted
+- controller: Populate nodes from peer cache if can't from cluster
+
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+  * bug-812269_pacemaker-fencing-device-register-messages.patch
+
+-------------------------------------------------------------------
 Tue Apr 01 06:29:48 UTC 2025 - Yan Gao <ygao@suse.com>
 
 - Update to version 3.0.0+20250331.008a7d1784:
