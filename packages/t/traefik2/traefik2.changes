@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 26 12:39:36 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated changelog
+
+-------------------------------------------------------------------
 Fri Aug 29 14:38:09 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Removed old update scripts which fixes boo#1245204 for traefik reloease v2.
+- Removed old update scripts which fixes boo#1245204 resp CVE-2025-46810
+  for traefik reloease v2.
 
 - Version 2.11.29
   * acme
