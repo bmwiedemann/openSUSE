@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 25 17:40:00 UTC 2025 - Jan Baier <jbaier@suse.com>
+
+- update to 13.27
+  * Dh_Buildsystems.pm: add `fortran` as 3rd party buildsystem.
+  * dh_assistant: Document `none` as output of `which-build-system`
+  * single-binary: Recommend `debputy` to migrate config files in c14
+  * Mention `debputy` auto-migration in upgrade checklist for c14
+  * Dh_Lib.pm: Use `cp --update=none` instead `-n` (Closes: #1061610)
+  * Remove the `qmake-qt4` build system as it had no users remaining
+  * Dh_Lib.pm: Prettify some shell escapes to make them easier to read
+  * dh_md5sums: Remove `-x` / `--include-conffiles`. It was never the
+    correct thing to do and the option(s) had no users according to
+    codesearch.d.n.
+
+-------------------------------------------------------------------
 Thu Aug 28 14:41:13 UTC 2025 - Jan Baier <jbaier@suse.com>
 
 - update to 13.26
