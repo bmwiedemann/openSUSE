@@ -182,4 +182,14 @@
 https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-beta-3-released-3118/</comment>
     <requestid>1299472</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f1ad7f358ffa9913e62811bd5450688d</srcmd5>
+    <version>17.6</version>
+    <time>1758918256</time>
+    <user>anag_factory</user>
+    <comment>- Sync spec file with version 18.
+
+- switch library to pg 18</comment>
+    <requestid>1307161</requestid>
+  </revision>
 </revisionlist>

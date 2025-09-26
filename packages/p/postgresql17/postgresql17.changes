@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  4 15:02:24 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Sync spec file with version 18.
+
+-------------------------------------------------------------------
+Sun Aug 24 00:44:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch library to pg 18
+
+-------------------------------------------------------------------
 Thu Aug 14 19:50:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 17.6
