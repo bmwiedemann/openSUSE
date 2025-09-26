@@ -1,7 +1,7 @@
 #
 # spec file for package openexr
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,23 +19,30 @@
 %define prjname      openexr
 # perhaps you want to build against corresponding Imath build
 %define debug_build 0
-%define sonum 32
-%global so_suffix -3_3
+%global so_suffix -3_4
+%define sonum 33
+%if 0%{?suse_version} == 1500
+%global force_gcc_version 14
+%endif
+
 Name:           openexr
-Version:        3.3.5
+Version:        3.4.0
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.openexr.com/
-Source0:        https://github.com/openexr/openexr/archive/v%{version}.tar.gz
+Source0:        https://github.com/AcademySoftwareFoundation/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
+Patch1:         ojph-0.23.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  freeglut-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Imath)
 BuildRequires:  pkgconfig(libdeflate)
+BuildRequires:  pkgconfig(openjph)
 BuildRequires:  pkgconfig(zlib)
 Obsoletes:      OpenEXR <= 1.6.1
 Provides:       OpenEXR = %{version}
@@ -150,6 +157,10 @@ This package contains documentation.
 %autosetup -p1
 
 %build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
 export PTHREAD_LIBS="-lpthread"
 %if %{debug_build}
 export CXXFLAGS="%{optflags} -O0"

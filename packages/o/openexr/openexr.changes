@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 19 15:41:52 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add ojph-0.23.patch to fix building against openjph >= 0.23.0
+  https://github.com/AcademySoftwareFoundation/openexr/issues/2130
+- fix upstream URL
+
+-------------------------------------------------------------------
+Wed Sep 10 10:05:27 UTC 2025 - pgajdos@suse.com
+
+- version update to 3.4.0
+  * Additional compression option to the OpenEXR file format for
+    lossless compression with High Throughput JPEG-2000 (HTJ2K).
+  * New colorInteropID standard attribute.
+  * New bytes attribute type.
+  * TBB as a global thread provider.
+  * Using openexr via cmake add_subdirectory now works properly.
+  * The Python module now allows an empty part name for a single-part file
+  * The header_only option for Python module's OpenEXR.File now works properly.
+
+-------------------------------------------------------------------
+Wed Aug  6 11:06:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix build on code 15 by forcing gcc 14
+
+-------------------------------------------------------------------
 Mon Aug  4 08:29:48 UTC 2025 - pgajdos@suse.com
 
 - version update 
