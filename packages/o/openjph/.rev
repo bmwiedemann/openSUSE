@@ -81,4 +81,14 @@
   * Fix compilation for Windows on ARM #205</comment>
     <requestid>1305317</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>279b8a48330af530edc6d3ee4bc5564f</srcmd5>
+    <version>0.23.1</version>
+    <time>1758918245</time>
+    <user>anag_factory</user>
+    <comment>- Add baselibs.conf: openexr provides -32bit packages and newly
+  links openjph. As a consequence, this package also needs to
+  provide biarch packages. (forwarded request 1306895 from dimstar)</comment>
+    <requestid>1307328</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 24 10:27:13 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: openexr provides -32bit packages and newly
+  links openjph. As a consequence, this package also needs to
+  provide biarch packages.
+
+-------------------------------------------------------------------
 Wed Sep 17 08:46:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.23.1:

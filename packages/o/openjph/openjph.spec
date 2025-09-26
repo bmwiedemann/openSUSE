@@ -24,6 +24,7 @@ License:        BSD-2-Clause
 Group:          Productivity/Graphics/Convertors
 URL:            https://github.com/aous72/OpenJPH
 Source:         https://github.com/aous72/OpenJPH/archive/refs/tags/%{version}.tar.gz
+Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  libtiff-devel
