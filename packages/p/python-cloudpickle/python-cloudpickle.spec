@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudpickle
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Extended pickling support for Python objects
 License:        BSD-3-Clause
 URL:            https://github.com/cloudpipe/cloudpickle
 Source:         https://github.com/cloudpipe/cloudpickle/archive/refs/tags/v{%version}.tar.gz#/cloudpickle-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM gh#cloudpipe/cloudpickle#570
+Patch0:         support-python-314.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}

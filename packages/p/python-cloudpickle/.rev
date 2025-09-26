@@ -306,4 +306,13 @@
     <comment></comment>
     <requestid>1239864</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e349bab8e109a39c145a9fc35e4d61fc</srcmd5>
+    <version>3.1.1</version>
+    <time>1758918249</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-314.patch:
+  * Fix a test to pass under Python 3.14.</comment>
+    <requestid>1307024</requestid>
+  </revision>
 </revisionlist>

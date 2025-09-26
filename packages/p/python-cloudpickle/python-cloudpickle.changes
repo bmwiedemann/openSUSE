@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 25 05:14:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-314.patch:
+  * Fix a test to pass under Python 3.14.
+
+-------------------------------------------------------------------
 Thu Jan 23 11:08:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.1.1
