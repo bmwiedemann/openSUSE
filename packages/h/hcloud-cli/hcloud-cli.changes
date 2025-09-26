@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 26 05:31:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.53.0:
+  Server Types now depend on Locations.
+  We added a new locations property to the Server Types resource.
+  The new property defines a list of supported Locations and
+  additional per Locations details such as deprecations
+  information.
+  We deprecated the deprecation property from the Server Types
+  resource. The property will gradually be phased out as per
+  Locations deprecations are being announced. Please use the new
+  per Locations deprecation information instead.
+  * Features
+    - add category property to server type (#1150)
+    - per location server types (#1166)
+  * Dependencies
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.25.0 (#1168)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.24.0 (#1162)
+    - deps: update module github.com/spf13/viper to v1.21.0 (#1156)
+    - deps: update module golang.org/x/crypto to v0.42.0 (#1154)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.23.0 (#1149)
+
+-------------------------------------------------------------------
 Thu Sep 18 06:33:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.52.0:
