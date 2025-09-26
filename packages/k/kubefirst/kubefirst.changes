@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 26 05:48:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.0:
+  https://github.com/konstructio/kubefirst/releases/tag/v2.10.0
+  * virtual clusters in any physical host
+  * cross-version upstream cluster template support
+  * removal of dependency on bitnami images
+  * crossplane stability improvements
+  * management provisioning stability improvements
+  * ensuring finalizer, sync, and backoff are set across all gitops
+
+-------------------------------------------------------------------
 Thu Aug 28 07:44:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.9.1:

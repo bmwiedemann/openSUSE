@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/kubefirst/kubefirst</param>
-              <param name="changesrevision">b613a7cb28c97a5a7131815ea142c549b87e40d9</param></service></servicedata>
+              <param name="changesrevision">b613a7cb28c97a5a7131815ea142c549b87e40d9</param></service><service name="tar_scm">
+                <param name="url">https://github.com/konstructio/kubefirst</param>
+              <param name="changesrevision">6246ad8c9070d0ea7c3dd431924ddbcfc036b403</param></service></servicedata>
