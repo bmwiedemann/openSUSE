@@ -1,7 +1,7 @@
 #
 # spec file for package renderdoc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           renderdoc
-Version:        1.39
+Version:        1.40
 Release:        0
 Summary:        A frame-capture based graphics debugger
 License:        MIT
@@ -85,7 +85,8 @@ mkdir %{_builddir}/%{name}-%{version}/build && cd %{_builddir}/%{name}-%{version
   -DENABLE_QRENDERDOC=ON \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DBUILD_VERSION_STABLE=ON \
-  -DCMAKE_INSTALL_RPATH=""
+  -DCMAKE_INSTALL_RPATH="" \
+  -DPCRE_HEADER=YES
 %cmake_build
 
 %install

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Sep 26 11:52:48 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.40
+  * All: Fix compilation of application API header with pedantic C mode.
+  * UI: Added the ability to cancel a download in progress.
+  * UI: Display an explicit note for resource usage when the resource is
+    not tracked, rather than showing an empty panel.
+  * D3D: More clearly display read-only DSVs in the pipeline state.
+  * D3D12: Root signature viewer shows space + register for root
+    parameters.
+  * Vulkan: Add support for NonSemantic.DebugBreak as a breakpoint,
+    however on most current drivers this instruction causes an
+    unconditional GPU crash so is not useful for debugging.
+  * Vulkan: Add support for core version 1.4 and the following
+    extensions:
+    - VK_EXT_descriptor_buffer
+    - VK_KHR_surface_maintenance1
+    - VK_KHR_swapchain_maintenance1
+    - VK_EXT_host_image_copy
+    - VK_KHR_map_memory2
+    - VK_KHR_shader_bfloat16
+    - VK_KHR_unified_image_layouts
+    - VK_EXT/KHR_present_mode_fifo_latest_ready
+    - VK_KHR_present_id/wait2
+    - VK_KHR_maintenance6 to VK_KHR_maintenance9
+    - VK_EXT_pipeline_robustness
+    - VK_EXT_pipeline_protected_access
+- Pass -DPCRE_HEADER to cmake to prevent building against pcre instead
+  of pcre2
+
+-------------------------------------------------------------------
 Fri Jul 11 10:03:28 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Update to version 1.39
