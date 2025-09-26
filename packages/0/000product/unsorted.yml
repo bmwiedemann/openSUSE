@@ -7312,7 +7312,9 @@ unsorted:
   - gnome-themes-extras 
   - gnome-themes-lang 
   - gnome-tour 
+  - gnome-tour-data 
   - gnome-tour-lang 
+  - gnome-tour-minimal 
   - gnome-usage 
   - gnome-usage-lang 
   - gnome-user-docs-lang 
@@ -8151,6 +8153,7 @@ unsorted:
   - gtk4-devel 
   - gtk4-devel-tools 
   - gtk4-docs 
+  - gtk4-layer-shell-devel 
   - gtk4-metatheme-adapta 
   - gtk4-metatheme-arc 
   - gtk4-metatheme-dracula 
@@ -9207,13 +9210,6 @@ unsorted:
   - java-21-openjdk-javadoc 
   - java-21-openjdk-jmods 
   - java-21-openjdk-src 
-  - java-24-openjdk 
-  - java-24-openjdk-demo 
-  - java-24-openjdk-devel 
-  - java-24-openjdk-headless 
-  - java-24-openjdk-javadoc 
-  - java-24-openjdk-jmods 
-  - java-24-openjdk-src 
   - java-25-openjdk 
   - java-25-openjdk-demo 
   - java-25-openjdk-devel 
@@ -11489,7 +11485,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2025_3_rc1-32bit 
+  - libSPIRV-Tools-2025_4_rc1-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -12754,9 +12750,9 @@ unsorted:
   - libdca0-32bit 
   - libdcmtk19 
   - libddcutil-devel 
-  - libdeal_II9_7_0 
-  - libdeal_II9_7_0-openmpi4 
-  - libdeal_II9_7_0-openmpi5 
+  - libdeal_II9_7_1 
+  - libdeal_II9_7_1-openmpi4 
+  - libdeal_II9_7_1-openmpi5 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -13163,8 +13159,8 @@ unsorted:
   - libfmos-devel 
   - libfmos1 
   - libfmt10 
-  - libfmt11 
-  - libfmt11-32bit 
+  - libfmt12 
+  - libfmt12-32bit 
   - libfmt9 
   - libfole-devel 
   - libfole1 
@@ -13688,6 +13684,7 @@ unsorted:
   - libgtk-2_0-0-32bit 
   - libgtk-3-0-32bit 
   - libgtk-session-lock0 
+  - libgtk4-layer-shell0 
   - libgtkd-3-0 
   - libgtkdatabox-0_9_3-1 
   - libgtkdatabox-devel 
@@ -15313,7 +15310,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler152-32bit 
+  - libpoppler153-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -48219,6 +48216,8 @@ unsorted:
   - typelib-1_0-GstVulkanXCB-1_0 
   - typelib-1_0-GstWebRTC-1_0 
   - typelib-1_0-Gtk-2_0 
+  - typelib-1_0-Gtk4LayerShell-1_0 
+  - typelib-1_0-Gtk4SessionLock-1_0 
   - typelib-1_0-GtkLayerShell-0_1 
   - typelib-1_0-GtkSessionLock-0_1 
   - typelib-1_0-GtkSource-3_0 

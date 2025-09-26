@@ -70,7 +70,7 @@
     <package name="adobe-sourcehansans-tw-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="adobe-sourcehanserif-cn-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="adobe-sourcehanserif-tw-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="adobe-sourcesans3-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="adobe-sourcesans3-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="adobe-sourcesanspro-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="adobe-sourceserifpro-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="adwaita-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -646,7 +646,7 @@
     <package name="google-noto-sans-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="google-noto-sans-symbols-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="google-noto-sans-symbols2-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="google-opensans-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="google-opensans-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="google-poppins-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="google-roboto-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gpart" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1489,7 +1489,7 @@
     <package name="libQt5QuickTemplates2-5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt5Sql5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt5Sql5-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libQt5Svg5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libQt5Svg5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libQt5Test5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt5TextToSpeech5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt5WaylandClient5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1591,7 +1591,7 @@
     <package name="libSDL3-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSDL_gfx16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libSPIRV-Tools-2025_3_rc1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libSPIRV-Tools-2025_4_rc1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSoundTouch1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libSvtAv1Enc3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libUsageEnvironment3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1821,9 +1821,9 @@
     <package name="libcdio_paranoia2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libcdr-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcdrdeflt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libcdt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libcdt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libcfitsio10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libcgraph6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libcgraph6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libcheese-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libcheese8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libchewing3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2190,7 +2190,7 @@
     <package name="libgupnp-dlna-backend-gstreamer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgupnp-igd-1_6-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgusb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgvc6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgvc6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libgvnc-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgvncpulse-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgweather-4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2531,7 +2531,7 @@
     <package name="libparted-fs-resize0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libparted2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libpath_utils1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="libpathplan4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libpathplan4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libpcap1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcaudio0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpci3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2576,7 +2576,7 @@
     <package name="libpoppler-cpp2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt6-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpoppler152" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libpoppler153" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpopt0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libportal-gtk3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2984,7 +2984,7 @@
     <package name="libxcb1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxcrypt-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libxcvt0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libxdot4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libxdot4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libxdp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libxfce4kbd-private-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxfce4panel-2_0-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -3022,11 +3022,11 @@
     <package name="libyaml-cpp0_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyelp-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libyui-ncurses-pkg16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libyui-ncurses16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyui-qt-graph16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyui-qt-pkg16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyui-qt16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyui16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libyui-ncurses16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="libyui-qt-graph16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="libyui-qt-pkg16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="libyui-qt16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="libyui16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libyuv0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libz-ng-compat1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libz1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3337,7 +3337,7 @@
     <package name="patterns-xfce-xfce_basis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="patterns-xfce-xfce_laptop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce_laptop -->
     <!-- patterns-xfce-xfce_office not found on x86_64-->
-    <package name="patterns-yast-x11_yast" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="patterns-yast-x11_yast" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="patterns-yast-yast2_basis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="patterns-yast-yast2_desktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="patterns-yast-yast2_install_wf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_install_wf -->
@@ -4505,7 +4505,7 @@
     <package name="yast2-printer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="yast2-proxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="yast2-python3-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="yast2-qt-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="yast2-qt-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="yast2-ruby-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-samba-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="yast2-samba-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
