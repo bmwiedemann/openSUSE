@@ -1,0 +1,8 @@
+<package name="postgresql18" project="openSUSE:Factory">
+  <title>PostgreSQL 18 testing package</title>
+  <description>PostgreSQL is an advanced object-relational database management system
+that supports an extended subset of the SQL standard, including
+transactions, foreign keys, subqueries, triggers, and user-defined
+types and functions.</description>
+  <url>https://www.postgresql.org/</url>
+</package>
