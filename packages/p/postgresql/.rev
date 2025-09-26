@@ -621,4 +621,14 @@
   the dependency again and call fillup only if it is installed.</comment>
     <requestid>1224220</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>04f7ad6a87e7a45a6f15e3e518d7971c</srcmd5>
+    <version>18</version>
+    <time>1758918256</time>
+    <user>anag_factory</user>
+    <comment>- Bump major and default to 18 for Factory and TW.
+
+- Bump default to 17 for SLE-15-SP7.</comment>
+    <requestid>1307156</requestid>
+  </revision>
 </revisionlist>

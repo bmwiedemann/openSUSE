@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql
 #
-# Copyright (c) 2016 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define pgmajor 17
-%define defaultpackage postgresql17
+
+%define pgmajor 18
+%define defaultpackage postgresql18
 
 %if ! %{defined _rpmmacrodir}
 %define _rpmmacrodir %{_rpmconfigdir}/macros.d
@@ -54,7 +55,7 @@ License:        PostgreSQL
 Group:          Productivity/Databases/Tools
 Version:        %pgmajor
 Release:        0
-Url:            https://www.postgresql.org/
+URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       postgresql-noarch = %version-%release
 Requires:       postgresql-implementation
@@ -63,6 +64,9 @@ Recommends:     %defaultpackage
 # In June 2020 we changed the package layout for PostgreSQL and
 # conflict with older releases to get a clean cut-over.
 Conflicts:      postgresql < 9
+Conflicts:      postgresql10 < 10.13
+Conflicts:      postgresql11 < 11.8
+Conflicts:      postgresql12 < 12.3
 Conflicts:      postgresql90
 Conflicts:      postgresql91
 Conflicts:      postgresql92
@@ -70,9 +74,6 @@ Conflicts:      postgresql93
 Conflicts:      postgresql94 < 9.4.26
 Conflicts:      postgresql95 < 9.5.22
 Conflicts:      postgresql96 < 9.6.18
-Conflicts:      postgresql10 < 10.13
-Conflicts:      postgresql11 < 11.8
-Conflicts:      postgresql12 < 12.3
 BuildArch:      noarch
 Source0:        postgresql-init
 Source1:        postgresql-sysconfig
@@ -133,7 +134,6 @@ BuildRequires:  pkgconfig(systemd)
 Requires(postun): %insserv_prereq
 %endif
 
-
 %description server
 PostgreSQL is an advanced object-relational database management system
 that supports an extended subset of the SQL standard, including
@@ -186,8 +186,8 @@ Summary:        Helper package to pull all dependencies to build with llvm suppo
 Group:          Productivity/Databases/Servers
 Provides:       postgresql-llvmjit-devel-noarch = %version-%release
 Requires:       postgresql = %version-%release
-Requires:       postgresql-server-devel-noarch
 Requires:       postgresql-llvmjit-devel-implementation
+Requires:       postgresql-server-devel-noarch
 
 %description llvmjit-devel
 PostgreSQL is an advanced object-relational database management system
@@ -381,13 +381,13 @@ install -D -m 0644 %{SOURCE8} %{buildroot}%{_rpmmacrodir}/macros.%{name}
 install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{name}-server.conf
 %endif
 
-
 %define eflag /run/postgresql-was-enabled
 %define aflag /run/postgresql-was-running
 
 %if %{with sysusers}
 %pre server -f %{name}-server.pre
 %else
+
 %pre server
 getent group postgres > /dev/null ||
 	groupadd -g 26 -o -r postgres
