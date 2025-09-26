@@ -15,4 +15,12 @@
     <comment>- Mask systemd-growfs-root.service (gh#AeonDesktop/project#7)</comment>
     <requestid>1306701</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d332f8dd299bded328d5a00aaa140eeb</srcmd5>
+    <version>0.1.0</version>
+    <time>1758918307</time>
+    <user>anag_factory</user>
+    <comment>- Remove changes to GNOME Software autostart as GNOME 49 should no longer need it</comment>
+    <requestid>1307308</requestid>
+  </revision>
 </revisionlist>

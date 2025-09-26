@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 26 08:07:08 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Remove changes to GNOME Software autostart as GNOME 49 should no longer need it 
+
+-------------------------------------------------------------------
 Tue Sep 23 11:08:53 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Mask systemd-growfs-root.service (gh#AeonDesktop/project#7) 

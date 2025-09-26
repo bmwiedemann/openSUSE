@@ -217,9 +217,6 @@ EOF
 
 chown tik:users /ignition
 
-cp /usr/etc/xdg/autostart/org.gnome.Software.desktop /home/tik/.config/autostart/
-echo "X-GNOME-Autostart-enabled=false" >> /home/tik/.config/autostart/org.gnome.Software.desktop
-
 mkdir -p /home/tik/.local/share/applications/
 chown -R tik:users /home/tik/.local/
 cat >> /home/tik/.local/share/applications/org.opensuse.tik.desktop << "EOF"
