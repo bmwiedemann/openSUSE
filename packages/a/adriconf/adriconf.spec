@@ -1,7 +1,7 @@
 #
 # spec file for package adriconf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           adriconf
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        Advanced DRI Configurator
 License:        GPL-3.0-only
@@ -32,7 +32,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_filesystem-devel >= 1.60
 BuildRequires:  libboost_locale-devel >= 1.60
-BuildRequires:  libboost_system-devel >= 1.60
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atkmm-2.36)

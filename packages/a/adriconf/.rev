@@ -123,4 +123,18 @@
   * Updated dependencies</comment>
     <requestid>1188980</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1040e633d05da3fee98039fc1fd45bef</srcmd5>
+    <version>2.7.3</version>
+    <time>1758918312</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.7.3:
+  * Fix appstream data
+  * Fix compilation with GCC15
+- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249921)
+
+- Update to version 2.7.2:</comment>
+    <requestid>1307330</requestid>
+  </revision>
 </revisionlist>

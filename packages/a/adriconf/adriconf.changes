@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 26 08:21:49 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to version 2.7.3:
+  * Fix appstream data
+  * Fix compilation with GCC15
+- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249921)
+
+-------------------------------------------------------------------
 Mon Jul 22 09:53:33 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to version 2.7.11:
+- Update to version 2.7.2:
   * Updated dependencies
 
 -------------------------------------------------------------------
