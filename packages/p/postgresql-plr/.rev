@@ -175,4 +175,19 @@ Fri Feb  13 13:13:13 UTC 2015 - bruno@ioda-net.ch
   - fix some warnings of uninitialized variables (#158)</comment>
     <requestid>1245886</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e1f88cd77bd59a25288dd51395364398</srcmd5>
+    <version>8.4.8</version>
+    <time>1758919742</time>
+    <user>anag_factory</user>
+    <comment>- enable pg 18
+
+- Update to 3.4.8
+  - Rename aggregate function &quot;gamma&quot; to &quot;gamma1&quot; to avoid clash
+    with PG18 function &quot;gamma&quot;
+- refreshed patch patch-Makefile-ldflags.patch
+
+Fri Dec  21 07:35:00 UTC 2015 - bruno@ioda-net.ch</comment>
+    <requestid>1307185</requestid>
+  </revision>
 </revisionlist>

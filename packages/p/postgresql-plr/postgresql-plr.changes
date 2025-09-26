@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 25 15:58:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 18
+
+-------------------------------------------------------------------
+Thu Sep 25 15:54:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.4.8
+  - Rename aggregate function "gamma" to "gamma1" to avoid clash
+    with PG18 function "gamma"
+- refreshed patch patch-Makefile-ldflags.patch
+
+-------------------------------------------------------------------
 Fri Feb 14 12:16:18 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Stop building for EOL postgresql12.
@@ -157,8 +170,8 @@ Wed Jan 11 17:13:28 UTC 2017 - bruno@ioda-net.ch
   + Rename postgresql-plr.changes.in to postgresql-plr.changes to
     ease osc vc edition, adapt pre_checking.sh to this change.
 
-Fri Dec  21 07:35:00 UTC 2015 - bruno@ioda-net.ch
 -------------------------------------------------------------------
+Fri Dec  21 07:35:00 UTC 2015 - bruno@ioda-net.ch
 
 - Fix postun/postin ldconfig call (see comment in sr#345782)
 
