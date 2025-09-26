@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package icinga-php-thirdparty
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -20,7 +20,7 @@
 %global module_name icinga-php-thirdparty
 %global basedir %{_datadir}/icinga-php/vendor
 Name:           %{module_name}
-Version:        0.12.1
+Version:        0.13.1
 Release:        %{revision}%{?dist}
 Summary:        Icinga PHP Thirdparty for Icinga Web 2
 License:        MIT
@@ -29,6 +29,7 @@ URL:            https://icinga.com
 Source0:        https://github.com/Icinga/%{module_name}/archive/v%{version}/%{module_name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
+Requires:       php >= 8.2
 Requires:       php-curl
 Requires:       php-iconv
 Requires:       php-json
