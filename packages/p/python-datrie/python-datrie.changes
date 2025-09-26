@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 26 06:36:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.8.3
+  * pytest-runner is not needed for building the package
+  * Fix AlphaMap definition in cdatrie.pxd
+  * BLD: update identifiers
+- Drop 99.patch, merged upstream
+- Remove sed expression to strip pytest-runner dependency
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue May 28 08:57:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix build with GCC 14

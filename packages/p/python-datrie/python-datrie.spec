@@ -15,17 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-datrie
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Trie data structure for Python
 License:        LGPL-2.1-or-later
 URL:            https://github.com/kmike/datrie
 Source:         https://files.pythonhosted.org/packages/source/d/datrie/datrie-%{version}.tar.gz
 Patch0:         datrie-bigendian.patch
-# PATCH-FIX-UPSTREAM - Fix AlphaMap definition in cdatrie.pxd
-Patch1:         https://github.com/pytries/datrie/pull/99.patch
 BuildRequires:  %{python_module Cython >= 0.26.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
@@ -42,8 +40,6 @@ A trie data structure for Python (2.x and 3.x). Uses libdatrie.
 
 %prep
 %autosetup -p1 -n datrie-%{version}
-# https://github.com/pytries/datrie/pull/89
-sed -i 's:pytest-runner::' setup.py
 
 %build
 pushd src
