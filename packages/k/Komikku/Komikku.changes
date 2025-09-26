@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Sep 20 14:28:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.88.0:
+  * [UX] Refined visuals, taking advantage of GNOME 49
+  * [UI] Switching to Glycin (image loading framework)
+  * [Reader] Webtoon pager: Fixed small gap between pages
+  * [Servers] EZmanga (EN): Update
+  * [Servers] Grise Bouille (FR): Update
+  * [Servers] MangaCrab (ES): Update
+  * [Servers] Neko Scans (ES): Disabled
+  * [Servers] Qi Scans (Night scans): Update
+  * [L10n] Updated French, Portuguese, Portuguese (Brazil) and Ukrainian
+    translations
+- we now depend on glycin for loading the images
+
+-------------------------------------------------------------------
 Tue Sep 16 09:37:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.87.0:

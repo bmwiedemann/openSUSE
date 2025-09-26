@@ -18,7 +18,7 @@
 
 %define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        1.87.0
+Version:        1.88.0
 Release:        0
 Summary:        A manga reader for GNOME
 # appdata.xml is CC-BY-4.0
@@ -35,9 +35,10 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(blueprint-compiler)
+BuildRequires:  pkgconfig(glycin-gtk4-2) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.7
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(python3)
 Requires:       WebKitGTK-6.0
@@ -118,7 +119,7 @@ Keys features
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
 %{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
-%{_datadir}/metainfo/%{appid}.appdata.xml
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 %{_datadir}/komikku
 %{_datadir}/dbus-1/services/%{appid}.service
 %{python_sitelib}/komikku

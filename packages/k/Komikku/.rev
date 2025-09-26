@@ -597,4 +597,23 @@
     (Brazil) translations (forwarded request 1305123 from rrahl0)</comment>
     <requestid>1305142</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>189681a90420a4d99988b038ba68f1b1</srcmd5>
+    <version>1.88.0</version>
+    <time>1758918304</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.88.0:
+  * [UX] Refined visuals, taking advantage of GNOME 49
+  * [UI] Switching to Glycin (image loading framework)
+  * [Reader] Webtoon pager: Fixed small gap between pages
+  * [Servers] EZmanga (EN): Update
+  * [Servers] Grise Bouille (FR): Update
+  * [Servers] MangaCrab (ES): Update
+  * [Servers] Neko Scans (ES): Disabled
+  * [Servers] Qi Scans (Night scans): Update
+  * [L10n] Updated French, Portuguese, Portuguese (Brazil) and Ukrainian
+    translations
+- we now depend on glycin for loading the images (forwarded request 1306997 from rrahl0)</comment>
+    <requestid>1307173</requestid>
+  </revision>
 </revisionlist>
