@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 26 03:24:11 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Fix `%files` list in .spec file for upstream 
+  (excluded *appdata.xml)
+
+-------------------------------------------------------------------
 Wed Jan 29 20:18:24 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Fix dependency issue in .spec with hicolor-icon-theme

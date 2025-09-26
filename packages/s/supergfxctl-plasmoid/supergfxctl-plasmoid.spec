@@ -1,7 +1,7 @@
 #
 # spec file for package supergfxctl-plasmoid
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,7 +72,6 @@ Features:
 %files -f %{name}.lang
 %license LICENSE
 %doc README.md
-%{_kf6_appstreamdir}/dev.jhyub.supergfxctl.appdata.xml
 %{_kf6_iconsdir}/hicolor/scalable/status/supergfxctl-plasmoid-dgpu-active.svg
 %{_kf6_iconsdir}/hicolor/scalable/status/supergfxctl-plasmoid-dgpu-off.svg
 %{_kf6_iconsdir}/hicolor/scalable/status/supergfxctl-plasmoid-dgpu-suspended.svg
