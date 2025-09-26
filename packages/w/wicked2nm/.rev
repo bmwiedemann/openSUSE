@@ -45,4 +45,21 @@
     [bsc#1248010]</comment>
     <requestid>1300292</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5174b92f3b2b187ae6e994110e8a6133</srcmd5>
+    <version>1.3.0</version>
+    <time>1758918318</time>
+    <user>anag_factory</user>
+    <comment>- Update to v1.3.0
+  * Issue only a info when dhcp.update is non default 
+  * Add ipv4_static broadcast 
+  * Apply dhcp settings to mirror wicked client id 
+  * Fix test.sh, fail if migration succeed but expect fail 
+  * Fix sysctl handling 
+  * Avoid cloning in parsing of route 
+  * Fix continue migration to show all warnings beforehand 
+  * Improve warning messages - show interface, element names 
+  * Remove unwrap in route parsing</comment>
+    <requestid>1307345</requestid>
+  </revision>
 </revisionlist>

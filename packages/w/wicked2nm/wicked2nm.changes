@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 26 09:53:05 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to v1.3.0
+  * Issue only a info when dhcp.update is non default 
+  * Add ipv4_static broadcast 
+  * Apply dhcp settings to mirror wicked client id 
+  * Fix test.sh, fail if migration succeed but expect fail 
+  * Fix sysctl handling 
+  * Avoid cloning in parsing of route 
+  * Fix continue migration to show all warnings beforehand 
+  * Improve warning messages - show interface, element names 
+  * Remove unwrap in route parsing 
+
+-------------------------------------------------------------------
 Mon Aug 18 14:30:41 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to v1.2.1
