@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 26 05:31:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.79.1:
+  * Exciting New Features
+    - JA-17729 - Add support for disable-token-refresh flag by
+      @arshjotk in #3132
+  * Improvements
+    - Fix npm native workspace by @fluxxBot in #3115
+  * Bug Fixes
+    - Fixed build info recording npm workspaces by @fluxxBot in
+      #3124
+  * Other Changes
+    - Fine tune tests trigger by @ehl-jf in #3120
+    - JGC-414 - Remove line breaks in Authorization header for
+      Gitlab by @cyrilc-pro in #3110
+    - JGC-405 - Add survey link by @RemiBou in #3122 use env var
+      JFROG_CLI_HIDE_SURVEY=true to hide it
+    - Fix darwin binary build by @RemiBou in #3138
+
+-------------------------------------------------------------------
 Fri Sep 19 05:34:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.79.0:
