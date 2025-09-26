@@ -273,4 +273,13 @@
     <comment>- Update to release 2025.3</comment>
     <requestid>1288940</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>a2d2a7dad6fed8e803f0a127a0fba4e6</srcmd5>
+    <version>2025.3</version>
+    <time>1758918234</time>
+    <user>anag_factory</user>
+    <comment>- Edit 0001-Use-system-third-party-libs.patch to work with
+  glslang 16</comment>
+    <requestid>1307302</requestid>
+  </revision>
 </revisionlist>

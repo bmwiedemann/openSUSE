@@ -36,10 +36,10 @@ Patch1:         0001-Use-system-third-party-libs.patch
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  gcc%{?gcc_version} >= 13
 BuildRequires:  gcc%{?gcc_version}-c++ >= 13
-BuildRequires:  glslang-devel >= 15.1
+BuildRequires:  glslang-devel >= 16
 BuildRequires:  glslang-nonstd-devel
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.6.4+sdk304
+BuildRequires:  spirv-headers >= 1.6.4+sdk321
 BuildRequires:  spirv-tools-devel >= 2025.1~rc1
 
 %description

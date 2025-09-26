@@ -29,11 +29,10 @@ Index: shaderc-2024.0/libshaderc/CMakeLists.txt
 ===================================================================
 --- shaderc-2024.0.orig/libshaderc/CMakeLists.txt
 +++ shaderc-2024.0/libshaderc/CMakeLists.txt
-@@ -67,6 +67,8 @@ set(SHADERC_LIBS
+@@ -67,6 +67,7 @@ set(SHADERC_LIBS
    shaderc_util
    SPIRV # from glslang
    SPIRV-Tools
-+  SPVRemapper
 +  HLSL
  )
  
