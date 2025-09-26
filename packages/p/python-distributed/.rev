@@ -1183,4 +1183,14 @@
     <comment></comment>
     <requestid>1305367</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>a1d8b9743ad6b7a20e20bd499daa07b7</srcmd5>
+    <version>2025.9.1</version>
+    <time>1758918271</time>
+    <user>anag_factory</user>
+    <comment>- Skip two tests causing frequent timeouts
+  * gh#dask/distributed#9052
+</comment>
+    <requestid>1307086</requestid>
+  </revision>
 </revisionlist>

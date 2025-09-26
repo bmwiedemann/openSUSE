@@ -190,8 +190,10 @@ donttest+=" or (test_client and test_quiet_close_process)"
 donttest+=" or (test_statistical_profiling_cycle)"
 # pytest7 on py312: returns len==2 instead of 1
 donttest+=" or test_computation_object_code_dask_compute"
-# flakey on 3.10
+# flaky on 3.10
 donttest+=" or (test_client_worker)"
+# flaky timeouts: https://github.com/dask/distributed/issues/9052
+donttest+=" or (test_tls_functional and (test_nanny or test_retire_workers))"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # OverflowError -- https://github.com/dask/distributed/issues/5252
   donttest+=" or test_ensure_spilled_immediately"

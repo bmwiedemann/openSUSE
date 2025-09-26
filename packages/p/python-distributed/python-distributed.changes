@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 25 09:53:38 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Skip two tests causing frequent timeouts
+  * gh#dask/distributed#9052
+
+-------------------------------------------------------------------
 Wed Sep 17 10:42:04 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2025.9.1
