@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 15 16:05:07 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Use manual instead of localonly in _service
+- Build against CZMQ only for OpenSUSE, this lib is not avail in
+  SLE
+- Update to version 1.3.8.0+git.f9a23c3:
+  * 1.3.8 versioning
+  * Scrubbed stale copyright notices from source
+  * Update LICENSE.md
+
+-------------------------------------------------------------------
 Wed Feb 21 10:26:45 UTC 2024 - Thomas Renninger <trenn@suse.de>
 
 - Build against latest OpenSSL library (jsc#1219881)

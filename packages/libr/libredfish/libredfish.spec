@@ -14,11 +14,15 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-
 %define 	MAJOR 1
+%define         CZMQ 1
+%if 0%{?is_opensuse}
+%define         CZMQ 1
+%else
+%define         CZMQ 0
+%endif
 Name:           libredfish
-Version:        1.3.7.2+git.64ca9b4
+Version:        1.3.8.0+git.f9a23c3
 Release:        0%{?dist}
 Summary:        Redfish C Client Library
 License:        BSD-3-Clause
@@ -30,16 +34,18 @@ Patch2:         0002-Make-use-of-standard-variables-for-installation.patch
 Patch3:         0003-Default-to-DEBUG-builds.patch
 Patch4:         0004-link-with-pthread-and-crypto.patch
 BuildRequires:  cmake
-BuildRequires:  czmq
-BuildRequires:  czmq-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
-BuildRequires:  libczmq4
 BuildRequires:  libjansson-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libopenssl3
 BuildRequires:  readline-devel
 Requires:       readline
+%if 0%{CZMQ} == 1
+BuildRequires:  czmq
+BuildRequires:  czmq-devel
+BuildRequires:  libczmq4
+%endif
 
 %description
 libRedfish is a C client library that allows for Creation of Entities (POST), Read of Entities (GET), Update of Entities (PATCH), Deletion of Entities (DELETE), running Actions (POST), receiving events, and providing some basic query abilities.

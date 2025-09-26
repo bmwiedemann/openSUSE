@@ -1,5 +1,5 @@
 <services>
-  <service mode="localonly" name="obs_scm">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/DMTF/libredfish.git</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
@@ -11,5 +11,5 @@
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
-  <service mode="localonly" name="set_version"/>
+  <service name="set_version" mode="manual"/>
 </services>
