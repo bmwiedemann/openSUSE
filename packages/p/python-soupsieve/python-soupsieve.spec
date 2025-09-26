@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-soupsieve%{psuffix}
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        A modern CSS selector implementation for BeautifulSoup
 License:        MIT
