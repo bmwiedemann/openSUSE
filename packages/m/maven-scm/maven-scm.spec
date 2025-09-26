@@ -1,7 +1,7 @@
 #
 # spec file for package maven-scm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,42 +18,51 @@
 
 
 Name:           maven-scm
-Version:        1.13.0
+Version:        2.2.1
 Release:        0
 Summary:        Common API for doing SCM operations
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/scm
 Source0:        http://archive.apache.org/dist/maven/scm/%{name}-%{version}-source-release.zip
-# Patch to migrate to new plexus default container
-# This has been sent upstream: https://issues.apache.org/jira/browse/SCM-731
-Patch0:         maven-scm-1.12.0-sec-dispatcher-2.0.patch
-Patch1:         0001-Port-maven-scm-to-latest-version-of-plexus-default.patch
+Patch0:         0001-Don-t-depend-on-apache-sshd-test-jars.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
+BuildRequires:  mvn(com.google.inject:guice::no_aop:)
 BuildRequires:  mvn(commons-io:commons-io)
+BuildRequires:  mvn(javax.inject:javax.inject)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.commons:commons-lang3)
+BuildRequires:  mvn(org.apache.commons:commons-text)
+BuildRequires:  mvn(org.apache.maven.plugin-testing:maven-plugin-testing-harness)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-invoker-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.shared:file-management)
-BuildRequires:  mvn(org.apache.maven:maven-compat)
+BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-settings)
+BuildRequires:  mvn(org.apache.maven:maven-settings-builder)
+BuildRequires:  mvn(org.apache.sshd:sshd-git)
+BuildRequires:  mvn(org.bouncycastle:bcpkix-jdk15on)
 BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-classworlds)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-interactivity-api)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-sec-dispatcher)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit)
-BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit.ssh.jsch)
-BuildRequires:  mvn(org.sonatype.plexus:plexus-sec-dispatcher)
-#!BuildRequires: jgit
+BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit.ssh.apache)
+BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
+BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
+BuildRequires:  mvn(org.hamcrest:hamcrest-core)
+BuildRequires:  mvn(org.slf4j:jcl-over-slf4j)
+BuildRequires:  mvn(org.slf4j:slf4j-api)
+BuildRequires:  mvn(org.slf4j:slf4j-simple)
 BuildArch:      noarch
 
 %description
@@ -77,43 +86,11 @@ Javadoc for %{name}.
 
 %prep
 %setup -q
-
 %patch -P 0 -p1
-%patch -P 1 -p1
 
-# Remove unnecessary animal sniffer
-%pom_remove_plugin org.codehaus.mojo:animal-sniffer-maven-plugin
-
-%pom_remove_plugin :maven-enforcer-plugin
-
-# Remove providers-integrity from build (we don't have mks-api)
-%pom_disable_module maven-scm-provider-integrity maven-scm-providers
-
-# Partially remove cvs support for removal of netbeans-cvsclient
-# It still works with cvsexe provider
-%pom_remove_dep org.apache.maven.scm:maven-scm-provider-cvsjava maven-scm-client
-%pom_disable_module maven-scm-provider-cvsjava maven-scm-providers/maven-scm-providers-cvs
-sed -i s/cvsjava.CvsJava/cvsexe.CvsExe/ maven-scm-client/src/main/resources/META-INF/plexus/components.xml
-
-# Port to commons-lang3
-%pom_change_dep -r :commons-lang org.apache.commons:commons-lang3:3.8.1
-sed -i "s/org\.apache\.commons\.lang\./org.apache.commons.lang3./" \
-    maven-scm-providers/maven-scm-providers-git/maven-scm-provider-gitexe/src/main/java/org/apache/maven/scm/provider/git/gitexe/command/status/GitStatusConsumer.java \
-    maven-scm-providers/maven-scm-providers-svn/maven-scm-provider-svnexe/src/main/java/org/apache/maven/scm/provider/svn/svnexe/command/checkout/SvnCheckOutConsumer.java \
-    maven-scm-providers/maven-scm-providers-svn/maven-scm-provider-svnexe/src/main/java/org/apache/maven/scm/provider/svn/svnexe/command/remoteinfo/SvnRemoteInfoCommand.java
-
-# Tests are skipped anyways, so remove dependency on mockito.
-%pom_remove_dep org.mockito: maven-scm-providers/maven-scm-provider-jazz
-%pom_remove_dep org.mockito: maven-scm-providers/maven-scm-provider-accurev
-
-%pom_add_dep org.eclipse.jgit:org.eclipse.jgit.ssh.jsch maven-scm-providers/maven-scm-providers-git/maven-scm-provider-jgit
-
-%pom_xpath_remove "pom:build/pom:pluginManagement/pom:plugins/pom:plugin[pom:artifactId = 'maven-plugin-plugin']/pom:version" maven-scm-plugin
-
-%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0
+%pom_remove_plugin -r :animal-sniffer-maven-plugin
 
 # Put TCK tests into a separate sub-package
-%{mvn_package} :%{name}-provider-cvstest test
 %{mvn_package} :%{name}-provider-gittest test
 %{mvn_package} :%{name}-provider-svntest test
 %{mvn_package} :%{name}-test test

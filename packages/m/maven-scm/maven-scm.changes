@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Wed Sep 24 19:40:22 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Changes of 2.2.1
+  * New features and improvements
+    + Add method to ScmManager to get an ScmRepository from an
+      existing directory
+    + Reduce log noise
+    + Reduce amount of log junk emitted
+    + Support "no-verify" with JGit commits
+    + Rework sign option for Git tag/commit
+    + SCM-1011: Consider interactive flag for SvnExeScmProvider
+    + Git: Observe interactive flag
+    + New option to be able to disable sign for commit/tag to be
+      able use this with jgit when you have gpgsign configured in
+      ~/.gitconfig
+    + Add shallow parameter to checkout mojo
+    + Add Apache 2.0 LICENSE file
+  * Bug Fixes
+    + Replace "git whatchanged" by "git log"
+    + Avoid raw RuntimeException
+    + JGit: Propagate exceptions when pushing tags/branches
+    + Git: Use environment variables when pushing tags/branches to
+      remote
+    + SCM-1029: Fix empty commits on JGit checkin
+  * Documentation updates
+    + Document SCM authentication means
+    + Feature/apt to md
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + MNGSITE-540: Use correct plugin for reporting
+    + Remove mention of deprecated SCM provider which have been
+      removed in 2.0.0
+  * Maintenance
+    + Deprecate ConsumerUtils
+    + cleanup runtime exceptions
+    + feat: enable prevent branch protection rules
+    + Throw is enough
+    + Replace raw runtime exceptions with GeneralSecurityException
+    + remove not used plugins from pom
+    + Enable Github issues
+    + Make asserts meaningful
+    + Convert from plexus to guice injection
+    + Remove dead commented code
+    + Unabbreviate cl variable names
+    + Declare used dependencies
+    + Prefer try with resources
+  * Dependency updates
+    + Use SSHD 2.16.0
+    + Update to Maven Parent 45
+    + Bump org.apache.commons:commons-text from 1.11.0 to 1.14.0
+    + Bump commons-io:commons-io from 2.16.10 to 2.20.0
+    + Bump org.apache.maven.shared:file-management from 3.1.0 to
+      3.2.0
+    + Bump org.apache.commons:commons-lang3 from 3.14.0 to 3.18.0
+    + Bump org.codehaus.plexus:plexus-interactivity-api from 1.3 to
+      1.4
+    + Bump org.codehaus.plexus:plexus-classworlds from 2.8.0 to
+      2.9.0
+    + Bump org.hamcrest:hamcrest-core from 2.2 to 3.0
+    + Bump org.codehaus.mojo:animal-sniffer-maven-plugin from 1.23
+      to 1.24
+- Changes of 2.1.0
+  * Bug
+    + SCM-914: InfoItem.lastChangedDate is leaky abstraction
+    + SCM-939: Assume SCM is present
+    + SCM-1016: Build fails with JDK21
+    + SCM-1022: jgit push failure is not failing the build
+    + SCM-1024: maven-scm-plugin tests do not properly check for
+      existence of svn command
+  * Dependency upgrade
+    + SCM-1017: Update commons-io:commons-io to 2.16.0
+    + SCM-1018: Require Maven 3.6.3+
+    + SCM-1019: Update org.codehaus.plexus:plexus-classworlds to
+      2.8.0
+    + SCM-1020: Update org.apache.commons:commons-text 1.11.0
+    + SCM-1021: Update org.apache.commons:commons-lang3 3.14.0
+    + SCM-1023: Upgrade components
+- Changes of 2.0.1
+  * Bug
+    + SCM-1009: Wrong scope of maven-compat
+  * Dependency upgrade
+    + SCM-1008: Undeclare unused dependencies
+- Changes of 2.0.0
+  * Dependency upgrade
+    + SCM-1005: Upgrade Parent to 39
+    + SCM-1006: Upgrade components
+- Added patch:
+  * 0001-Don-t-depend-on-apache-sshd-test-jars.patch
+    + Do not depend on apache-sshd test-jars. Copy over minimal
+      classes from apache-sshd and put them in the same package as
+      the gittest classes.
+- Removed patches:
+  * 0001-Port-maven-scm-to-latest-version-of-plexus-default.patch
+  * maven-scm-1.12.0-sec-dispatcher-2.0.patch
+    + Not needed with this version
+
+-------------------------------------------------------------------
 Thu Oct 10 13:21:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Version update to 1.13.0
