@@ -120,6 +120,11 @@ fi
 EOF
 
 cat >>/etc/fstab.script <<"EOF"
+# Add umask=0077 to the ESP (boo#1250510)
+gawk -i inplace '$2 == "/boot/efi" && $4 == "defaults" { $4 = $4",umask=0077" } { print $0 }' /etc/fstab
+EOF
+
+cat >>/etc/fstab.script <<"EOF"
 # Relabel /etc. While kiwi already relabelled it earlier, there are some files created later (boo#1210604).
 # The "gawk -i inplace" above also removes the label on /etc/fstab.
 if [ -e /etc/selinux/config ]; then
