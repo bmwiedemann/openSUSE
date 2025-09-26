@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 26 11:42:03 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20250926:
+  * Add /opt/.snapshots to the snapper file context (bsc#1232226)
+  * Zypper moves files in /var/tmp to /var/cache (bsc#1249052, bsc#1249435)
+
+-------------------------------------------------------------------
 Tue Sep 09 15:39:38 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20250909 (bsc#1249209):
