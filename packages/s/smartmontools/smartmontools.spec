@@ -1,7 +1,7 @@
 #
 # spec file for package smartmontools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -130,7 +130,6 @@ EOF
 cp smartd.service %{buildroot}/%{_unitdir}
 cp %{SOURCE8} %{buildroot}/%{_unitdir}
 cp %{SOURCE9} %{buildroot}/%{_unitdir}
-ln -sf %{_sbindir}/service  %{buildroot}%{_sbindir}/rcsmartd
 # INSTALL file is intended only for packagers.
 rm %{buildroot}%{_defaultdocdir}/%{name}/INSTALL
 # Create empty ghost files for files created by update-smart-drivedb.

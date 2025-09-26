@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 24 10:14:42 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop rcsmartd symlink [jsc#PED-266]
+
+-------------------------------------------------------------------
 Thu May  1 10:09:20 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.5
@@ -306,7 +311,7 @@ Mon Dec 19 14:49:48 CET 2016 - sbrabec@suse.com
   https://lists.opensuse.org/opensuse-packaging/2013-05/msg00102.html
 
 -------------------------------------------------------------------
-Wed Dec  7 14:57:37 CET 2016- aginies@suse.com
+Wed Dec  7 14:57:37 CET 2016 - aginies@suse.com
 
 - update to 6.5 version
   * Experimental support for NVMe devices on FreeBSD, Linux and Windows.
