@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1229564</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ee9e0b678129c5efbc09523fbc10f7ef</srcmd5>
+    <version>0.23.1</version>
+    <time>1758918261</time>
+    <user>anag_factory</user>
+    <comment>- Add patch tree-sitter-ruby-0.23.1-dependencies.patch
+  * Work around CVE-2025-5889 (boo#1244345) even if brace-expansion
+    is not used in tree-sitter-ruby
+  * Fix CVE-2025-59343 (boo#1250517) by requiring tar-fs 2.1.4
+- Use %check section to run test rule of Makefile</comment>
+    <requestid>1307269</requestid>
+  </revision>
 </revisionlist>

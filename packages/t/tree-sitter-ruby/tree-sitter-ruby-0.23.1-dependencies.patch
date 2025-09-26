@@ -1,0 +1,50 @@
+---
+ package-lock.json |   16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+--- package-lock.json
++++ package-lock.json	2025-09-25 14:03:41.577356773 +0000
+@@ -321,9 +321,9 @@
+       ]
+     },
+     "node_modules/brace-expansion": {
+-      "version": "1.1.11",
+-      "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz",
+-      "integrity": "sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==",
++      "version": "1.1.12",
++      "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.12.tgz",
++      "integrity": "sha512-9T9UjW3r0UW5c1Q7GTwllptXwhvYmEzFhzMfZ9H7FQWt+uZePjZPjBP/W1ZEyZ1twGWom5/56TF4lPcqjnDHcg==",
+       "dev": true,
+       "dependencies": {
+         "balanced-match": "^1.0.0",
+@@ -963,7 +963,7 @@
+       "integrity": "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==",
+       "dev": true,
+       "dependencies": {
+-        "brace-expansion": "^1.1.7"
++        "brace-expansion": "^1.1.12"
+       },
+       "engines": {
+         "node": "*"
+@@ -1148,7 +1148,7 @@
+         "node-abi": "^3.3.0",
+         "npm-run-path": "^3.1.0",
+         "pump": "^3.0.0",
+-        "tar-fs": "^2.1.0"
++        "tar-fs": "^2.1.4"
+       },
+       "bin": {
+         "prebuildify": "bin.js"
+@@ -1336,9 +1336,9 @@
+       }
+     },
+     "node_modules/tar-fs": {
+-      "version": "2.1.1",
+-      "resolved": "https://registry.npmjs.org/tar-fs/-/tar-fs-2.1.1.tgz",
+-      "integrity": "sha512-V0r2Y9scmbDRLCNex/+hYzvp/zyYjvFbHPNgVTKfQvVrb6guiE/fxP+XblDNR011utopbkex2nM4dHNV6GDsng==",
++      "version": "2.1.4",
++      "resolved": "https://registry.npmjs.org/tar-fs/-/tar-fs-2.1.4.tgz",
++      "integrity": "sha512-mDAjwmZdh7LTT6pNleZ05Yt65HC3E+NiQzl672vQG38jIrehtJk/J3mNwIg+vShQPcLF/LV7CMnDW6vjj6sfYQ==",
+       "dev": true,
+       "dependencies": {
+         "chownr": "^1.1.1",

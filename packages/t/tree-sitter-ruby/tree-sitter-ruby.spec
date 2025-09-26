@@ -24,6 +24,7 @@ Summary:        Ruby grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter/tree-sitter-ruby
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         tree-sitter-ruby-%{version}-dependencies.patch
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
@@ -44,6 +45,9 @@ BuildRequires:  tree-sitter
 #neovim stuff
 install -d %{buildroot}%{_libdir}/tree_sitter
 ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
+
+%check
+make test
 
 %files
 %license LICENSE
