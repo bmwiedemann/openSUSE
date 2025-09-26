@@ -230,4 +230,24 @@
     <comment></comment>
     <requestid>1282667</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3997341fce179c959529d2ce45028a08</srcmd5>
+    <version>4.14.5+git0.86c6e48</version>
+    <time>1758919744</time>
+    <user>anag_factory</user>
+    <comment>- enable pg 18
+
+- Update to version 4.14.5+git0.86c6e48:
+  * prepare for 4.14.5
+  * regression tests for fix oracle.replace_empty_strings and oracle.replace_null_strings
+  * Fix in function oracle.replace_empty_strings detection of empty string of type character(n). Fix in function oracle.replace_null_strings generating empty string of type character(n).
+  * the names of roles created by regress tests should to use prefix &quot;regress_&quot;
+  * fix build on master (pg19)
+  * fix formatting
+  * fix formatting
+  * post pgindent sync
+  * pgindent formatting
+  * typedef list for pgindent</comment>
+    <requestid>1307192</requestid>
+  </revision>
 </revisionlist>
