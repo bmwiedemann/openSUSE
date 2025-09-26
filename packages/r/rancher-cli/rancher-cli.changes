@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 26 05:30:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.12.2:
+  * Cli messaging enhancement (#473)
+  * Prerelease dependency bumps for v2.12.2 (#478)
+  * Bump Rancher CLI version to v2.12.2 (#485)
+
+-------------------------------------------------------------------
 Fri Aug 29 04:14:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.12.1:
