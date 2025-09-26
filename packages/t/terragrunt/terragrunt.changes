@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 26 05:30:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.87.7:
+  * Bug Fixes
+    - Partial cache population fix
+      Resolved an issue that prevented the HCL partial cache from
+      being fully populated
+  * What's Changed
+    - chore: Fix for HclCache population in PartialParseConfigFile
+      by @denis256 in #4877
+
+-------------------------------------------------------------------
 Thu Sep 25 05:06:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.87.6:
