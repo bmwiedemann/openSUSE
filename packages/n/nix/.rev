@@ -120,4 +120,17 @@ support for software auditability among other things</comment>
     <comment>- Update to 2.31.1:</comment>
     <requestid>1302792</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e2b6c2820e8dae81fada463f58fb2f4</srcmd5>
+    <version>2.31.2</version>
+    <time>1758918279</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.31.2:
+  - Temporary build directories created during derivation builds no
+    longer include the derivation name in their path to avoid build
+    failures when the derivation name is too long. This change
+    ensures pred ictable prefix lengths for build directories under
+    `/nix/var/nix/builds`</comment>
+    <requestid>1307210</requestid>
+  </revision>
 </revisionlist>

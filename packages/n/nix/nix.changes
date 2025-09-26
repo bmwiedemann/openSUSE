@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 18 13:04:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.31.2:
+  - Temporary build directories created during derivation builds no
+    longer include the derivation name in their path to avoid build
+    failures when the derivation name is too long. This change
+    ensures pred ictable prefix lengths for build directories under
+    `/nix/var/nix/builds`
+
+-------------------------------------------------------------------
 Tue Sep  2 09:38:03 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.31.1:
