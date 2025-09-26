@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 26 06:51:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.17.5
+  * Binary wheels incorporate libexiv2 v0.28.7
+- from version 0.17.4
+  * Binary wheels incorporate libexiv2 v0.28.5
+
+-------------------------------------------------------------------
 Mon Feb 24 10:47:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.17.3
