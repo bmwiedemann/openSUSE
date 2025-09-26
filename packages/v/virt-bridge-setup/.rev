@@ -78,4 +78,26 @@
   * Fix issue with master_interface check</comment>
     <requestid>1279501</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>203abbe89bc2245643656cc5dd3e5e2f</srcmd5>
+    <version>2.4</version>
+    <time>1758918317</time>
+    <user>anag_factory</user>
+    <comment>version 2.4:
+* add vlan_filtering, vlan_default_pvid options
+* check forward delay value
+* add support for multicast-snooping
+* show more details on bridge config
+* add a dry-run mode
+* select a default interface with an IPV4 adress
+version 2.1:
+* select a default slave interface if none choosen
+* add stp-priority option
+* add an interactive mode with completion
+version 2.0:
+* major change to use NetworkManager API instead of nmcli
+* by default the tool now clone the MAC address of the slace interface
+* its mandatory to select the slave interface </comment>
+    <requestid>1307334</requestid>
+  </revision>
 </revisionlist>

@@ -16,19 +16,20 @@
 #
 
 Name:           virt-bridge-setup
-Version:        1.1
+Version:        2.4
 Release:        1%{?dist}
 Summary:        Script to setup virtual bridges
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/aginies/virt-bridge-setup
-Source0:        https://github.com/aginies/virt-bridge-setup/archive/refs/tags/%{version}.tar.gz
+Source0:        https://github.com/aginies/virt-bridge-setup/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 Requires:       NetworkManager
+Requires: 	python3-dbus-python
 BuildRequires:       make
 
 %description
-virt-bridge-setup is a script to automate the setup of virtual bridges using NetworkManager.
+virt-bridge-setup is a script to automate the setup of virtual bridges using NetworkManager and dbus.
 It simplifies the process of creating and managing network bridges for virtualization environments.
 
 %prep
@@ -42,8 +43,6 @@ It simplifies the process of creating and managing network bridges for virtualiz
 %files
 %license LICENSE
 %doc README.md
-%{_sysconfdir}
 %attr(0755,root,root) %{_sbindir}/%{name}
-%attr(0644,root,root) %{_sysconfdir}/systemd/network/98-default-bridge.link
 
 %changelog
