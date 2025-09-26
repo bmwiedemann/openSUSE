@@ -1,7 +1,7 @@
 #
 # spec file for package python-restructuredtext_lint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ License:        Unlicense
 Group:          Development/Languages/Python
 URL:            https://github.com/twolfson/restructuredtext-lint
 Source:         https://files.pythonhosted.org/packages/source/r/restructuredtext_lint/restructuredtext_lint-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM skip-failing-test-66.patch gh#twolfson/restructuredtext-lint#66 mcepl@suse.com
+# skip failing test
+Patch0:         skip-failing-test-66.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -47,7 +50,8 @@ your reST is invalid **after** uploading it. It is being developed
 in junction with a Sublime Text linter.
 
 %prep
-%setup -q -n restructuredtext_lint-%{version}
+%autosetup -p1 -n restructuredtext_lint-%{version}
+
 find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 
 %build

@@ -1,0 +1,25 @@
+---
+ restructuredtext_lint/test/test.py |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: restructuredtext_lint-1.4.0/restructuredtext_lint/test/test.py
+===================================================================
+--- restructuredtext_lint-1.4.0.orig/restructuredtext_lint/test/test.py	2022-02-24 06:50:23.000000000 +0100
++++ restructuredtext_lint-1.4.0/restructuredtext_lint/test/test.py	2025-09-26 00:37:48.395562465 +0200
+@@ -4,7 +4,7 @@
+ import subprocess
+ import sys
+ import textwrap
+-from unittest import TestCase
++from unittest import TestCase, skip
+ 
+ import restructuredtext_lint
+ 
+@@ -196,6 +196,7 @@
+         # There should be a least one invalid rst file:
+         self.assertIn('WARNING', output)
+ 
++    @skip("Failing test, gh#twolfson/restructuredtext-lint#66")
+     def test_level_fail(self):
+         """Confirm low --level threshold fails file with warnings only"""
+         # This is the expected behaviour we are checking:

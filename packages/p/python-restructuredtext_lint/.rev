@@ -67,4 +67,15 @@
     <comment>- Convert to pip-based build and libalternatives</comment>
     <requestid>1284845</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>4133ffd3faa182e6c9a6a3b297c5cb36</srcmd5>
+    <version>1.4.0</version>
+    <time>1758918284</time>
+    <user>anag_factory</user>
+    <comment>- Add skip-failing-test-66.patch skipping failing test
+  (gh#twolfson/restructuredtext-lint#66) skipping failing test
+  test.test.TestRestructuredtextLintCLI.test_level_fail
+</comment>
+    <requestid>1307228</requestid>
+  </revision>
 </revisionlist>

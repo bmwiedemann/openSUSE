@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 25 22:41:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add skip-failing-test-66.patch skipping failing test
+  (gh#twolfson/restructuredtext-lint#66) skipping failing test
+  test.test.TestRestructuredtextLintCLI.test_level_fail
+
+-------------------------------------------------------------------
 Wed Jun 11 13:07:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build and libalternatives
