@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 26 11:11:18 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.23.0
+  - now requires at least icinga-php-thirdparty v0.12.1
+  - requires at least PHP 7.4
+  - supports PHP 8.4
+  - supports react/promise 3.x
+  - supports psr/log 1.x and 3.x, ships none
+  - fixed issue with ill-configured systems w/o locales
+  - compatibility with upcoming ipl interface changes
+  - improved error handling in curl/async
+  - avoids ghost changes in storables
+  - improve error handling in protocol/json-rpc
+  - raised max parallel connections in curl/async
+
+-------------------------------------------------------------------
 Thu Feb  8 15:48:24 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.22.0
