@@ -16,13 +16,13 @@
 #
 
 
-%define lname libglslang15
+%define lname libglslang16
 %if 0%{?suse_version} < 1600
 %define gcc_version 13
 %endif
 
 Name:           glslang
-Version:        15.4.0
+Version:        16.0.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc%{?gcc_version} >= 13
 BuildRequires:  gcc%{?gcc_version}-c++ >= 13
 BuildRequires:  python3-base
-BuildRequires:  spirv-tools-devel >= 2025.3~rc1
+BuildRequires:  spirv-tools-devel >= 2025.4~rc1
 
 %description
 glslang is a compiler front end for the OpenGL ES and OpenGL shading
@@ -146,11 +146,10 @@ done
 %ldconfig_scriptlets -n %lname
 
 %files -n %lname
-%_libdir/*.so.15*
+%_libdir/*.so.16*
 
 %files devel -f devel.files
 %_bindir/gls*
-%_bindir/spirv*
 %_libdir/cmake/
 %_libdir/libGenericCodeGen.so
 %_libdir/libHLSL.so
@@ -158,7 +157,6 @@ done
 %_libdir/libOGLCompiler.so
 %_libdir/libOSDependent.so
 %_libdir/libSPIRV.so
-%_libdir/libSPVRemapper.so
 %_libdir/libglslang.so
 %_libdir/libglslang-default-resource-limits.so
 
