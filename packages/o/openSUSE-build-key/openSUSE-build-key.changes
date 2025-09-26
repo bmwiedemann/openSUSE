@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 26 11:08:15 UTC 2025 - Max Lin <mlin@suse.com>
+
+- fix Backports 15 key is not packaged
+
+-------------------------------------------------------------------
 Tue Jul 22 14:48:52 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - obsolete gpg-pubkey-ded64f3b, the openSUSE buildservice global

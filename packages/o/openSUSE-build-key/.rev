@@ -463,4 +463,12 @@ However, it would be good to have these out before we do switch. (forwarded requ
   key which was used mistakenly for repository signing. (forwarded request 1295131 from msmeissn)</comment>
     <requestid>1295146</requestid>
   </revision>
+  <revision rev="52" vrev="61">
+    <srcmd5>ba9e06365720ea2a9f514c0946fbb0f4</srcmd5>
+    <version>1.0</version>
+    <time>1758918242</time>
+    <user>anag_factory</user>
+    <comment>fix Backports 15 key is not packaged (forwarded request 1307367 from mlin7442)</comment>
+    <requestid>1307368</requestid>
+  </revision>
 </revisionlist>
