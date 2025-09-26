@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 25 17:12:45 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758814503.03d923a4:
+  * Use Mojo::File in Worker for is_qemu_running
+  * Use Mojo::File in Worker for meminfo
+  * Document archiving of important jobs
+
+-------------------------------------------------------------------
 Wed Sep 24 16:13:41 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1758729450.b88c0b40:
