@@ -294,4 +294,14 @@ I tested the upgrade path and this will not break anybody relying on the package
 </comment>
     <requestid>1306167</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b020003c31aa7a00cd6aa0662abb22e3</srcmd5>
+    <version>0.19.2</version>
+    <time>1758918259</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.2
+  * Fix list convertor with an empty list default factory.
+</comment>
+    <requestid>1307200</requestid>
+  </revision>
 </revisionlist>
