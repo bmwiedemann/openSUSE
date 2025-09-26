@@ -1,0 +1,4 @@
+<package name="openjdk-25-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI OpenJDK 25 runtime</title>
+  <description>OpenJDK 25 runtime container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
