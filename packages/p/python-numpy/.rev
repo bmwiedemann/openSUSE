@@ -1392,4 +1392,21 @@ This was now merged upstream, so I added relevant metadata
     <comment></comment>
     <requestid>1299205</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>a399a0958e391b6fa969213391d0d4f6</srcmd5>
+    <version>2.3.3</version>
+    <time>1758918236</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.3
+  * BUG: Fix test_configtool_pkgconfigdir to resolve PKG_CONFIG_DIR
+  * BLD: allow targeting webassembly without emscripten
+  * BUG: Always return a real dtype from linalg.cond
+  * BLD: update vendored Meson to 1.8.3
+  * TYP: ndarray.fill() takes no keyword arguments
+  * BLD: Add missing &lt;unordered_map&gt; include
+  * TYP: fix np.bool method declarations
+- Drop reproducible.patch, merged upstream
+</comment>
+    <requestid>1307320</requestid>
+  </revision>
 </revisionlist>

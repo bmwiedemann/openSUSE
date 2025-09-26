@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 25 12:58:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.3.3
+  * BUG: Fix test_configtool_pkgconfigdir to resolve PKG_CONFIG_DIR
+  * BLD: allow targeting webassembly without emscripten
+  * BUG: Always return a real dtype from linalg.cond
+  * BLD: update vendored Meson to 1.8.3
+  * TYP: ndarray.fill() takes no keyword arguments
+  * BLD: Add missing <unordered_map> include
+  * TYP: fix np.bool method declarations
+- Drop reproducible.patch, merged upstream
+
+-------------------------------------------------------------------
 Wed Aug 13 08:24:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.3.2
