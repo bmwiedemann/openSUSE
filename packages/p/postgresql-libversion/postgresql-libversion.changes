@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 25 16:07:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 18
+
+-------------------------------------------------------------------
 Fri Feb 14 12:14:45 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Stop building for EOL postgresql12.

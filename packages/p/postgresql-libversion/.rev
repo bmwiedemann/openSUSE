@@ -33,4 +33,12 @@
 - enable pg17</comment>
     <requestid>1245884</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>604919668f083c659693acffe2bf165f</srcmd5>
+    <version>2.0.1</version>
+    <time>1758919743</time>
+    <user>anag_factory</user>
+    <comment>- enable pg 18</comment>
+    <requestid>1307186</requestid>
+  </revision>
 </revisionlist>
