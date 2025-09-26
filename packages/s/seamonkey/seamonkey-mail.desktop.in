@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Network;Email;GTK;
+_Name=SeaMonkey Mail
+_GenericName=Mail Client
+_Comment=Read Mail with SeaMonkey
+Exec=seamonkey -mail
+Icon=seamonkey
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/mailto;
+

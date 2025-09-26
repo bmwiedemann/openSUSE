@@ -50,10 +50,10 @@
 %bcond_with     gold
 
 
-%define progname %{name}
+%define progname       %{name}
 %define sources_subdir %{name}-%{version}
-%define prefix /usr
-%define progdir %_libdir/%{progname}
+%define progdir        %_libdir/%{progname}
+%define gnome_dir      %{_prefix}
 ### build options end
 
 %define releasedate 20250605000000
@@ -68,13 +68,21 @@ URL:            https://www.seamonkey-project.org/
 
 Source0:        https://archive.mozilla.org/pub/seamonkey/releases/%{version}/source/seamonkey-%{version}.source.tar.xz
 Source1:        https://archive.mozilla.org/pub/seamonkey/releases/%{version}/source/seamonkey-%{version}.source-l10n.tar.xz
-Source2:        seamonkey-desktop.tar.bz2
-Source3:        spellcheck.js
-Source4:        mozilla.sh.in
-Source5:        suse-default-prefs.js
-Source6:        seamonkey-rpmlintrc
-Source7:        seamonkey-appdata.tar.bz2
-Source8:        seamonkey-GNUmakefile
+Source2:        spellcheck.js
+Source3:        mozilla.sh.in
+Source4:        suse-default-prefs.js
+Source5:        seamonkey-rpmlintrc
+Source6:        seamonkey-appdata.tar.bz2
+Source7:        seamonkey-GNUmakefile
+Source8:        seamonkey.desktop.in
+Source9:        seamonkey-composer.desktop.in
+Source10:       seamonkey-mail.desktop.in
+# Read-made desktop files for products that don't support
+# %%translate_suse_desktop.  You can be prompted for the update during the
+# build.
+Source11:       seamonkey.desktop
+Source12:       seamonkey-composer.desktop
+Source13:       seamonkey-mail.desktop
 
 Patch1:         seamonkey-2.0.0-nongnome-proxies.patch
 Patch2:         seamonkey-2.1.0-bmo634334.patch
@@ -117,7 +125,9 @@ BuildRequires:  memory-constraints
 BuildRequires:  python311-base
 BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
+%if 0%{?suse_version} > 1560
+BuildRequires:  translate-suse-desktop
+%endif
 BuildRequires:  xorg-x11-libXt-devel
 BuildRequires:  yasm
 BuildRequires:  zip
@@ -270,8 +280,7 @@ of SeaMonkey.
 
 
 %prep
-
-%setup -q -b 2 -b 7 -c
+%setup -q -b 6 -c
 
 mv %{sources_subdir} mozilla
 
@@ -282,7 +291,7 @@ mv %{sources_subdir} mozilla
 
 cd mozilla
 
-cp %{SOURCE8} GNUmakefile
+cp %{SOURCE7} GNUmakefile
 
 %patch -P 1 -p1
 %patch -P 2 -p2
@@ -382,8 +391,40 @@ ac_add_options --enable-calendar
 
 EOF
 
+# Prepare desktop files
+%if 0%{?suse_version} > 1560
+cp %{SOURCE8} seamonkey.desktop.in
+cp %{SOURCE9} seamonkey-composer.desktop.in
+cp %{SOURCE10} seamonkey-mail.desktop.in
+%else
+cp %{SOURCE11} seamonkey.desktop
+cp %{SOURCE12} seamonkey-composer.desktop
+cp %{SOURCE13} seamonkey-mail.desktop
+%endif
 
 %build
+
+cd mozilla
+
+# Build desktop files
+%if 0%{?suse_version} > 1560
+%translate_suse_desktop seamonkey.desktop
+%translate_suse_desktop seamonkey-composer.desktop
+%translate_suse_desktop seamonkey-mail.desktop
+if ! (
+      diff seamonkey.desktop %{SOURCE11} ||
+      diff seamonkey-composer.desktop %{SOURCE12} ||
+      diff seamonkey-mail.desktop %{SOURCE13}
+    ); then
+cat <<EOF
+One or more desktop file translations have been changed.  Please
+update the seamonkey*.desktop RPM source files to get translations for
+older products.
+EOF
+  # Commenting out for now per https://build.opensuse.org/request/show/1306584#comment-2191023
+  # exit 1
+fi
+%endif
 
 export MOZ_BUILD_DATE=%{releasedate}
 export MOZILLA_OFFICIAL=1
@@ -443,7 +484,6 @@ export CXXFLAGS=$MOZ_OPT_FLAGS
 export LDFLAGS=$MOZ_LD_FLAGS
 
 %limit_build -m 2000
-cd mozilla
 make %{?_smp_mflags}
 
 %if %{with localizations}
@@ -455,61 +495,63 @@ make -j1 locales
 
 cd mozilla
 
-make install DESTDIR=$RPM_BUILD_ROOT
+make install DESTDIR=%{buildroot}
 
-for ext in $RPM_BUILD_ROOT/%{progdir}/extensions/langpack-*@seamonkey.mozilla.org.xpi
+for ext in %{buildroot}/%{progdir}/extensions/langpack-*@seamonkey.mozilla.org.xpi
 do
     lang=${ext##*langpack-}
     lang=${lang%@*}
     lang=${lang/-/_}
-    echo "%%lang($lang) ${ext#$RPM_BUILD_ROOT}"
+    echo "%%lang($lang) ${ext#%{buildroot}}"
 done >../seamonkey.lang
 
 # overwrite the mozilla start-script and link it to /usr/bin
-mkdir --parents $RPM_BUILD_ROOT%{_bindir}
-sed "s:%%PREFIX:%{prefix}:g
-s:%%PROGDIR:%{progdir}:g
-s:%%APPNAME:seamonkey:g" \
-   %{SOURCE4} > $RPM_BUILD_ROOT%{progdir}/%{progname}.sh
-chmod 755 $RPM_BUILD_ROOT%{progdir}/%{progname}.sh
-ln -sf ../..%{progdir}/%{progname}.sh $RPM_BUILD_ROOT%{_bindir}/%{progname}
+mkdir --parents %{buildroot}%{_bindir}
+sed "s:%%PREFIX:%{_prefix}:g
+    s:%%PROGDIR:%{progdir}:g
+    s:%%APPNAME:seamonkey:g" \
+    %{SOURCE3} > %{buildroot}%{progdir}/%{progname}.sh
+chmod 755 %{buildroot}%{progdir}/%{progname}.sh
+ln -sf ../..%{progdir}/%{progname}.sh %{buildroot}%{_bindir}/%{progname}
 # apply SUSE defaults
 sed -e 's,RPM_VERSION,%{version}-%{release},g' \
-   %{SOURCE5} > suse-default-prefs
-cp suse-default-prefs $RPM_BUILD_ROOT%{progdir}/defaults/pref/all-openSUSE.js
+    %{SOURCE4} > suse-default-prefs
+install -D -m 0644 suse-default-prefs %{buildroot}%{progdir}/defaults/pref/all-openSUSE.js
 rm suse-default-prefs
-install -m 644 %{SOURCE3} %{buildroot}%{progdir}/defaults/pref/
-# Desktop definition
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-install -m 644 $RPM_BUILD_DIR/*.desktop \
-               $RPM_BUILD_ROOT%{_datadir}/applications
-mkdir -p $RPM_BUILD_ROOT/usr/share/pixmaps/
-install -m 644 $RPM_BUILD_DIR/*.png $RPM_BUILD_ROOT%{_datadir}/pixmaps/
-#
-%suse_update_desktop_file seamonkey          Network WebBrowser GTK
-%suse_update_desktop_file seamonkey-mail     Network Email GTK
-%suse_update_desktop_file seamonkey-composer Network WebDevelopment GTK
+install -D -m 0644 %{SOURCE2} %{buildroot}%{progdir}/defaults/pref/spellcheck.js
+# Desktop files and icons
+install -D -m 0644 seamonkey.desktop %{buildroot}%{_datadir}/applications/seamonkey.desktop
+install -D -m 0644 seamonkey-composer.desktop %{buildroot}%{_datadir}/applications/seamonkey-composer.desktop
+install -D -m 0644 seamonkey-mail.desktop %{buildroot}%{_datadir}/applications/seamonkey-mail.desktop
+for size in 16 22 24 32 48 64 128 256; do
+    install -D -m 0644 comm/suite/branding/seamonkey/default${size}.png \
+            %{buildroot}%{gnome_dir}/share/icons/hicolor/${size}x${size}/apps/seamonkey.png
+done
+install -D -m 0644 comm/suite/branding/seamonkey/icons/svg/seamonkey.svg \
+        %{buildroot}%{gnome_dir}/share/icons/hicolor/scalable/apps/seamonkey.svg
+
 # excludes
-rm -f $RPM_BUILD_ROOT%{progdir}/license.txt
-rm -f $RPM_BUILD_ROOT%{progdir}/README
-rm -f $RPM_BUILD_ROOT%{progdir}/removed-files
-rm -f $RPM_BUILD_ROOT%{progdir}/run-mozilla.sh
-rm -f $RPM_BUILD_ROOT%{progdir}/seamonkey
-rm -f $RPM_BUILD_ROOT%{progdir}/precomplete
-rm -f $RPM_BUILD_ROOT%{progdir}/updater
-rm -f $RPM_BUILD_ROOT%{progdir}/updater.ini
-rm -f $RPM_BUILD_ROOT%{progdir}/update.locale
-rm -f $RPM_BUILD_ROOT%{progdir}/update-settings.ini
-rm -f $RPM_BUILD_ROOT%{progdir}/icons/updater.png
-rm -f $RPM_BUILD_ROOT%{progdir}/dictionaries/*
+rm -f %{buildroot}%{progdir}/license.txt
+rm -f %{buildroot}%{progdir}/README
+rm -f %{buildroot}%{progdir}/removed-files
+rm -f %{buildroot}%{progdir}/run-mozilla.sh
+rm -f %{buildroot}%{progdir}/seamonkey
+rm -f %{buildroot}%{progdir}/precomplete
+rm -f %{buildroot}%{progdir}/updater
+rm -f %{buildroot}%{progdir}/updater.ini
+rm -f %{buildroot}%{progdir}/update.locale
+rm -f %{buildroot}%{progdir}/update-settings.ini
+rm -f %{buildroot}%{progdir}/icons/updater.png
+rm -f %{buildroot}%{progdir}/dictionaries/*
 # Some sites use different partitions for /usr/(lib|lib64) and /usr/share.  Since you
 # can't create hardlinks across partitions, we'll do this more than once.
-%fdupes $RPM_BUILD_ROOT%{progdir}
-%fdupes $RPM_BUILD_ROOT%{_datadir}
+%fdupes %{buildroot}%{progdir}
+%fdupes %{buildroot}%{_datadir}
 
 #INSTALL APPDATA FILES
-mkdir -p %{buildroot}%{_datadir}/appdata
-install -m0644 -t %{buildroot}%{_datadir}/appdata/ $RPM_BUILD_DIR/*.appdata.xml
+install -D -m 0644 $RPM_BUILD_DIR/seamonkey.appdata.xml %{buildroot}%{_datadir}/appdata/seamonkey.appdata.xml
+install -D -m 0644 $RPM_BUILD_DIR/seamonkey-composer.appdata.xml %{buildroot}%{_datadir}/appdata/seamonkey-composer.appdata.xml
+install -D -m 0644 $RPM_BUILD_DIR/seamonkey-mail.appdata.xml %{buildroot}%{_datadir}/appdata/seamonkey-mail.appdata.xml
 
 %files -f seamonkey.lang
 %defattr(-,root,root)
@@ -537,7 +579,7 @@ install -m0644 -t %{buildroot}%{_datadir}/appdata/ $RPM_BUILD_DIR/*.appdata.xml
 %{progdir}/seamonkey-bin
 %{progdir}/libmozgtk.so
 %{_datadir}/applications/*.desktop
-%{_datadir}/pixmaps/*.png
+%{gnome_dir}/share/icons/hicolor/
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/*.appdata.xml
 %{_mandir}/*/*

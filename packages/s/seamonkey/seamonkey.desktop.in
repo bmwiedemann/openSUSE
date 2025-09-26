@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Network;WebBrowser;GTK;
+_Name=SeaMonkey
+_GenericName=Web Browser
+_Comment=SeaMonkey browser
+TryExec=seamonkey
+Exec=seamonkey %u
+Icon=seamonkey
+Terminal=false
+MimeType=text/html;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
+Type=Application
+

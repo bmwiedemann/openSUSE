@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 29 17:56:48 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- remove unused icons
+- replace single-size PNG desktop icon with multi-sized versions
+  from source
+- install scalable SVG icon from source
+- migrate from deprecated update-desktop-files workflow per
+  https://en.opensuse.org/openSUSE:Update-desktop-files_deprecation
+- replace some unsafe `cp` in the spec file with `install`
+
+-------------------------------------------------------------------
 Wed Aug 27 23:34:52 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - remove SUSE_ASNEEDED from spec file

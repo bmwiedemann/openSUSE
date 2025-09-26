@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Network;WebDevelopment;GTK;
+_Name=SeaMonkey Composer
+_GenericName=Web Page Creation
+_Comment=Create web pages with SeaMonkey
+Exec=seamonkey -edit
+Icon=seamonkey
+Terminal=false
+Type=Application
+
