@@ -145,4 +145,26 @@ Prepare for RPM 4.20</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1296822</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>579749bbfc262f3069e1944277de72f5</srcmd5>
+    <version>5.9.0.git21.a73f509</version>
+    <time>1758918261</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.9.0.git21.a73f509:
+  * docs/release-notes: update for release 5.10.0
+  * cargo: update dependencies
+  * microsoft/azure: Add XML attribute alias for serde-xml-rs Fedora compat
+  * docs/release-notes: Add entry for Azure SharedConfig XML parsing fix
+  * microsoft/azure: Fix SharedConfig parsing of XML attributes
+  * microsoft/azure: Mock goalstate.SharedConfig output in tests
+  * providers/azure: switch SSH key retrieval from certs endpoint to IMDS
+    as azure stopped providing keys in the old one, fixes bsc#1250471
+  * build(deps): bump the build group with 8 updates
+  * build(deps): bump slab from 0.4.10 to 0.4.11
+  * build(deps): bump actions/checkout from 4 to 5
+  * upcloud: implement UpCloud provider
+  * build(deps): bump the build group with 4 updates
+  * Sync repo templates ⚙</comment>
+    <requestid>1307155</requestid>
+  </revision>
 </revisionlist>

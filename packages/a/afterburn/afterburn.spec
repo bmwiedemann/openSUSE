@@ -1,7 +1,7 @@
 #
 # spec file for package afterburn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global dracutmodulesdir %(pkg-config --variable=dracutmodulesdir dracut || echo '/usr/lib/dracut/modules.d')
 
 Name:           afterburn
-Version:        5.9.0
+Version:        5.9.0.git21.a73f509
 Release:        0
 Summary:        A cloud provider agent
 License:        Apache-2.0
