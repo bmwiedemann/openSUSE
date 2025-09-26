@@ -1382,4 +1382,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
   package. (forwarded request 1302152 from dimstar)</comment>
     <requestid>1302250</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>5688410b01d37e80492b3f3ce4cef5da</srcmd5>
+    <version>5.6.1</version>
+    <time>1758918232</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1307243</requestid>
+  </revision>
 </revisionlist>

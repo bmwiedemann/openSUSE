@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 25 12:44:24 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 5.6.1:
+  * Bump to v5.6.1
+  * Final release notes for v5.6.1
+  * update tests duo to CRUN#1767 to support both values
+  * Fix a locking bug in that could cause a double-unlock
+  * Add R! to systemd-tmpfiles script for all /tmp dirs
+  * [v5.6] Bump c/buildah v1.41.4, c/storage 1.59.1, and ...
+  * kube play: don't follow volume symlinks onto the host
+  * Bump xz to v0.5.15 to pick up a CVE fix
+  * Preliminary release notes for v5.6.1
+  * do not pass [no]copy as bind mounts options to runtime
+  * do not pass volume-opt as bind mounts options to runtime
+  * tests: Get rid of netcat on the host and use Bash's /dev/tcp
+  * tests: Replace ncat for socat
+  * test/e2e: actually start container in startContainer
+  * fix(libpod): truncate long hostnames to correct maximum length
+  * Add a release note for 5.6 Rosetta being disabled-by-default
+  * windows: do not convert unconfined seccomp path
+  * podman events: show network create/remove event with journald
+  * Bump Podman to v5.6.1-dev
+
+-------------------------------------------------------------------
 Mon Sep  1 07:27:55 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend apparmor-parser and apparmor-abstractions: if
