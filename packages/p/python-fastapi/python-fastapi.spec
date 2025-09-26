@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastapi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,14 +31,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-fastapi%{psuffix}
-Version:        0.115.13
+Version:        0.117.1
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
-URL:            https://github.com/tiangolo/fastapi
+URL:            https://github.com/fastapi/fastapi
 Source:         https://files.pythonhosted.org/packages/source/f/fastapi/fastapi-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support starlette 0.47
-Patch0:         support-starlette-0.47.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
@@ -46,7 +44,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.8.2
 Requires:       python-typing_extensions >= 4.8.0
-Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.48.0)
+Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.49.0)
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts

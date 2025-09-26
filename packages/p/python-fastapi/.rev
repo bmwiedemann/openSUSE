@@ -536,4 +536,32 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300291</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ae3c485a3d5cdd2e0d74517e106ce9dd</srcmd5>
+    <version>0.117.1</version>
+    <time>1758918250</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.117.1:
+  * Features
+    + Allow None as return type for bodiless responses.
+    + Allow array values for OpenAPI schema type field.
+    + Add OpenAPI external_docs parameter to FastAPI.
+    + Add support for deploying to FastAPI Cloud with fastapi deploy.
+  * Upgrades
+    + Upgrade Starlette supported version range to &gt;=0.40.0,&lt;0.49.0.
+  * Fixes
+    + Fix validation error when File is declared after Form parameter.
+    + Fix default_factory for response model field with Pydantic V1.
+    + Fix inconsistent processing of model docstring formfeed char with
+      Pydantic V1.
+    + Fix jsonable_encoder alters json_encoders of Pydantic v1 objects.
+    + Reenable allow_arbitrary_types when only 1 argument is used on the API
+      endpoint.
+    + Fix inspect.getcoroutinefunction() can break testing with
+      unittest.mock.patch().
+    + Fix support for unions when using Form.
+- Update URL.
+- Drop patch support-starlette-0.47.patch, no longer required.</comment>
+    <requestid>1307029</requestid>
+  </revision>
 </revisionlist>
