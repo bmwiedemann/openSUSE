@@ -191,4 +191,12 @@ test: Fix expected cc-gnu predefined macro ordering
 (🤖: Submission of CastXML via https://src.opensuse.org/pool/CastXML/pulls/4 by badshah400)</comment>
     <requestid>1245596</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>782068bf7d18c851a30d84287e8903fe</srcmd5>
+    <version>0.6.13</version>
+    <time>1758918270</time>
+    <user>anag_factory</user>
+    <comment>Update to version 0.6.13</comment>
+    <requestid>1307170</requestid>
+  </revision>
 </revisionlist>
