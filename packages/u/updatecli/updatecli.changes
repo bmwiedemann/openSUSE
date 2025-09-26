@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Sep 26 05:46:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.108.0:
+  * Features
+    - Add assignee field support to Gitea Pull Request Action to
+      achieve parity with GitHub implementation @localleon (#6084)
+    - feat: allow to squash commit @olblak (#6032)
+  * Bug Fixes
+    - fix(shell): handle empty environment value @olblak (#6024)
+  * Maintenance
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.31.10 @updateclibot[bot] (#6143)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.18 @updateclibot[bot] (#6139)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.17.71
+      @updateclibot[bot] (#6132)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.254.0
+      @updateclibot[bot] (#6123)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2 to v1.39.1
+      @updateclibot[bot] (#6114)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.251.2
+      @updateclibot[bot] (#6101)
+    - chore(deps): update aws-sdk-go library to v2 @olblak (#6021)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.7.0 @updateclibot[bot] (#6070)
+    - deps(go): bump module golang.org/x/oauth2 to v0.31.0
+      @updateclibot[bot] (#6059)
+    - deps(go): bump module github.com/muesli/mango-cobra to v1.3.0
+      @updateclibot[bot] (#6054)
+    - deps(go): bump module golang.org/x/mod to v0.28.0
+      @updateclibot[bot] (#6045)
+    - deps(go): bump module helm.sh/helm/v3 to v3.19.0
+      @updateclibot[bot] (#6041)
+    - deps(go): bump module golang.org/x/net to v0.44.0
+      @updateclibot[bot] (#6028)
+    - deps(go): bump module github.com/zclconf/go-cty to v1.17.0
+      @updateclibot[bot] (#6010)
+
+
+-------------------------------------------------------------------
 Thu Sep 18 05:43:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.107.0:
