@@ -1,0 +1,12 @@
+diff -urEbwB buildnumber-maven-plugin-3.2.1.orig/src/main/java/org/codehaus/mojo/build/Utils.java buildnumber-maven-plugin-3.2.1/src/main/java/org/codehaus/mojo/build/Utils.java
+--- buildnumber-maven-plugin-3.2.1.orig/src/main/java/org/codehaus/mojo/build/Utils.java	2025-09-22 08:31:09.890835582 +0200
++++ buildnumber-maven-plugin-3.2.1/src/main/java/org/codehaus/mojo/build/Utils.java	2025-09-22 08:31:34.550049799 +0200
+@@ -25,7 +25,7 @@
+ import java.util.Date;
+ import java.util.TimeZone;
+ 
+-import org.apache.commons.lang.StringUtils;
++import org.apache.commons.lang3.StringUtils;
+ 
+ public class Utils {
+     private Utils() {}

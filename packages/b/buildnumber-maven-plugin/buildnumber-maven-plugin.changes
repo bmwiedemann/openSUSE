@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Thu Sep 25 15:20:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.2.1
+- Changes of 3.2.1
+  * Bump release-drafter/release-drafter from 5 to 6
+  * New features and improvements
+    + Add configuration to be able to use the plugin without scm
+      info in pom
+  * Dependency updates
+    + Bump org.codehaus.mojo:mojo-parent from 74 to 85
+    + Bump com.google.code.gson:gson from 2.10.1 to 2.11.0
+    + Bump org.codehaus.plexus:plexus-xml from 3.0.0 to 3.0.1
+    + Bump maven.scm.version from 2.0.1 to 2.1.0
+    + Bump org.codehaus.plexus:plexus-utils from 4.0.0 to 4.0.1
+    + Bump org.codehaus.mojo:extra-enforcer-rules from 1.7.0 to
+      1.8.0
+    + Bump apache/maven-gh-actions-shared from 3 to 4
+    + Require Maven 3.6.3+
+    + Bump plexus-utils from 3.5.1 to 4.0.0
+    + Bump actions/stale from 8 to 9
+    + Bump org.apache.maven.plugins:maven-enforcer-plugin from
+      3.3.0 to 3.4.1
+- Changes of 3.2.0
+  This version upgrade to Apache Maven SCM Api 2.x which means
+  removing support of a few scm tools such: CVS, Bazaar, Starteam
+  and Perforce.
+  * New features and improvements
+    + Upgrade to scm 2.0.1, ignore test relying on
+      svn.codehaus.org
+  * Dependency updates
+    + Bump extra-enforcer-rules from 1.6.2 to 1.7.0
+- Changes of 3.1.0
+  * New features and improvements
+    + Require Maven 3.5.4+
+  * Bug Fixes
+    + Log message should reflect the default property name
+    + create-metadata goal should not be an aggregated mojo
+  * Dependency updates
+    + Bump parent to 74, refresh site descriptor
+    + Bump gson from 2.8.9 to 2.10.1
+    + Bump maven-enforcer-plugin from 3.1.0 to 3.3.0
+    + Bump extra-enforcer-rules from 1.4 to 1.6.2
+    + Bump svnkit from 1.10.3 to 1.10.11
+    + Bump plexus-utils from 3.4.1 to 3.5.1
+    + Bump apache/maven-gh-actions-shared from 2 to 3
+    + Bump actions/stale from 4 to 8
+    + Bump mojo-parent from 65 to 70
+    + Bump maven.scm.version from 1.12.0 to 1.13.0
+    + Bump maven-scm-provider-svnjava from 2.1.2 to 2.2.1
+    + Bump actions/setup-java from 2.4.0 to 3
+    + Bump actions/checkout from 2.4.0 to 3
+    + Declare Maven Core dependencies as provided
+    + Bump release-drafter/release-drafter from 5.15.0 to
+      5.16.1
+  * Maintenance
+    + Exclude plexus-container-default from plugin dependencies
+    + Use only major version (v5) of release drafter
+    + Configure Release Drafter for Semantic Versioning
+    + Switch "Build Status" badge in README to GitHub actions
+  * Build
+    + use gh shared actions from ASF
+- Changes of 3.0.0
+  * Changes
+    + Update maven-scm, fix #96
+    + Updated Travis CI config
+    + Unify timestampFormat parameter between Create*Mojo
+    + Fix integration tests
+    + Use released parent pom 50 (instead of snapshot)
+    + Remove superfluous escape
+    + fix git command error git rev-pasre -> git rev-parse
+    + HGChangeset goal
+    + Added support for json output format additionally to
+      properties.
+    + Fix issue with SVN branch when svn info is run in subfolder
+    + Support getting branch info from Mercurial (Hg)
+    + Add project site URL to POM
+    + Fix small typo in CreateMojo#providerImplementations
+      description
+    + fixed a trivial typo in one of the usage examples
+    + Add basic Git Integration Test
+    + README.md: make sure IT tests are executed
+  * New features and improvements
+    + java 8 as a minimum
+    + Add github actions, dependabot and release drafter
+  * Dependency updates
+    + Bump actions/setup-java from 2.3.0 to 2.4.0
+    + Bump mojo-parent from 63 to 65
+    + Bump extra-enforcer-rules from 1.0-beta-4 to 1.4
+    + Bump plexus-utils from 3.0.24 to 3.4.1
+    + Bump actions/stale from 3 to 4
+    + Bump actions/checkout from 2.3.4 to 2.4.0
+    + Bump takari.plugin.testing.version from 2.9.2 to 3.0.0
+    + Bump svnkit from 1.8.12 to 1.10.3
+    + Bump gson from 2.8.0 to 2.8.9
+    + Bump maven.scm.version from 1.11.2 to 1.12.0
+- Added patch:
+  * commons-lang3.patch
+    + Use apache-commons-lang3 instead of apache-commons-lang
+      for StringUtils
+
+-------------------------------------------------------------------
 Mon Sep 25 09:35:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on maven2

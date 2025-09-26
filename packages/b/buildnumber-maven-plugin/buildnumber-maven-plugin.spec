@@ -1,7 +1,7 @@
 #
 # spec file for package buildnumber-maven-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           buildnumber-maven-plugin
-Version:        1.3
+Version:        3.2.1
 Release:        0
 Summary:        Build Number Maven Plugin
 License:        Apache-2.0 AND MIT
-URL:            http://svn.codehaus.org/mojo/tags/buildnumber-maven-plugin-%{version}
+URL:            https://www.mojohaus.org/buildnumber-maven-plugin/
 Source0:        https://repo1.maven.org/maven2/org/codehaus/mojo/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
+Patch0:         commons-lang3.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -33,13 +34,8 @@ BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.scm:maven-scm-api)
 BuildRequires:  mvn(org.apache.maven.scm:maven-scm-manager-plexus)
-BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-bazaar)
-BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-clearcase)
-BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-cvsexe)
 BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-gitexe)
 BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-hg)
-BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-perforce)
-BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-starteam)
 BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-svn-commons)
 BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-svnexe)
 BuildRequires:  mvn(org.apache.maven:maven-compat)
@@ -78,33 +74,23 @@ API documentation for %{name}.
 %prep
 %setup -q
 cp -p %{SOURCE1} .
-
-# migrate to maven 3
-%pom_xpath_set pom:properties/pom:maven.api.version 3.8.6
-%pom_change_dep :maven-project :maven-compat
-
-%pom_xpath_set pom:properties/pom:maven.compiler.source 1.8
-%pom_xpath_set pom:properties/pom:maven.compiler.target 1.8
-%pom_xpath_set pom:properties/pom:mojo.java.target 8
+%patch -P 0 -p1
 
 %pom_remove_dep com.google.code.maven-scm-provider-svnjava:maven-scm-provider-svnjava
 %pom_remove_dep org.tmatesoft.svnkit:svnkit
 %pom_remove_plugin :maven-enforcer-plugin
-%pom_remove_plugin :maven-invoker-plugin
 
 %build
-%{mvn_build} -f -- -Dsource=8
+%{mvn_build} -f -- -P!run-its -Dsource=8
 
 %install
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license LICENSE.txt
-%doc LICENSE-2.0.txt
+%license LICENSE.txt LICENSE-2.0.txt
 
 %files javadoc -f .mfiles-javadoc
-%license LICENSE.txt
-%doc LICENSE-2.0.txt
+%license LICENSE.txt LICENSE-2.0.txt
 
 %changelog
