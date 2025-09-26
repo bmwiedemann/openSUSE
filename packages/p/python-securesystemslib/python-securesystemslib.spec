@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-securesystemslib
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Cryptographic and general routines for Secure Systems Lab
 License:        MIT
