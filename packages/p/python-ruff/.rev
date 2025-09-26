@@ -2605,4 +2605,41 @@
   * Update README.md with Albumentations new repository URL</comment>
     <requestid>1306058</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>9d8e96c47edb59df13b98cbb36fb6c08</srcmd5>
+    <version>0.13.2</version>
+    <time>1758918238</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.13.2:
+  * [`flake8-async`] Implement `blocking-path-method`
+  * [`flake8-bugbear`] Implement `map-without-explicit-strict`
+  * [`flake8-bultins`] Detect class-scope builtin shadowing in
+    decorators, default args, and attribute initializers (`A003`)
+  * [`ruff`] Implement `logging-eager-conversion` (`RUF065`)
+  * Include `.pyw` files by default when linting and formatting
+
+  * [flake8-simplify] Detect unnecessary None default for additional key expression types (SIM910)
+  * [flake8-use-pathlib] Add fix for PTH123
+  * [flake8-use-pathlib] Fix PTH101, PTH104, PTH105, PTH121 fixes
+  * [flake8-use-pathlib] Make PTH111 fix unsafe because it can change behavior
+  * [pycodestyle] Fix E301 to only trigger for functions immediately within a class
+  * [refurb] Mark single-item-membership-test fix as always unsafe (FURB171)
+  * Handle t-strings for token-based rules and suppression comments
+  * [flake8-bandit] Fix truthiness: dict-only ** displays not truthy for shell (S602, S604, S609)
+  * [flake8-simplify] Fix diagnostic to show correct method name for str.rsplit calls (SIM905)
+  * [flynt] Use triple quotes for joined raw strings with newlines (FLY002)
+  * [pyupgrade] Fix false positive when class name is shadowed by local variable (UP008)
+  * [pyupgrade] Prevent infinite loop with I002 and UP026
+  * [ruff] Recognize t-strings, generators, and lambdas in invalid-index-type (RUF016)
+  * [RUF102] Respect rule redirects in invalid rule code detection
+  * [flake8-bugbear] Mark the fix for unreliable-callable-check as always unsafe (B004)
+  * [ruff] Allow dataclass attribute value instantiation from nested frozen dataclass (RUF009)
+  * Add fixes to output-format=sarif
+  * Treat panics as fatal diagnostics, sort panics last
+  * [ruff] Add analyze.string-imports-min-dots to settings
+  * Update README.md with Albumentations new repository URL
+  * [pyupgrade] Enable UP043 in stub files
+  * [pyupgrade] Apply UP008 only when the __class__ cell exists</comment>
+    <requestid>1307347</requestid>
+  </revision>
 </revisionlist>

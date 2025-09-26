@@ -1,32 +1,43 @@
 -------------------------------------------------------------------
+Fri Sep 26 10:07:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.2:
+  * [`flake8-async`] Implement `blocking-path-method`
+  * [`flake8-bugbear`] Implement `map-without-explicit-strict`
+  * [`flake8-bultins`] Detect class-scope builtin shadowing in
+    decorators, default args, and attribute initializers (`A003`)
+  * [`ruff`] Implement `logging-eager-conversion` (`RUF065`)
+  * Include `.pyw` files by default when linting and formatting
+
+-------------------------------------------------------------------
 Fri Sep 19 19:26:06 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.13.1
  * Preview features
-  * [flake8-simplify] Detect unnecessary None default for additional key expression types (SIM910) 
-  * [flake8-use-pathlib] Add fix for PTH123 
-  * [flake8-use-pathlib] Fix PTH101, PTH104, PTH105, PTH121 fixes 
-  * [flake8-use-pathlib] Make PTH111 fix unsafe because it can change behavior 
-  * [pycodestyle] Fix E301 to only trigger for functions immediately within a class 
-  * [refurb] Mark single-item-membership-test fix as always unsafe (FURB171) 
+  * [flake8-simplify] Detect unnecessary None default for additional key expression types (SIM910)
+  * [flake8-use-pathlib] Add fix for PTH123
+  * [flake8-use-pathlib] Fix PTH101, PTH104, PTH105, PTH121 fixes
+  * [flake8-use-pathlib] Make PTH111 fix unsafe because it can change behavior
+  * [pycodestyle] Fix E301 to only trigger for functions immediately within a class
+  * [refurb] Mark single-item-membership-test fix as always unsafe (FURB171)
  * Bug fixes
-  * Handle t-strings for token-based rules and suppression comments 
-  * [flake8-bandit] Fix truthiness: dict-only ** displays not truthy for shell (S602, S604, S609) 
-  * [flake8-simplify] Fix diagnostic to show correct method name for str.rsplit calls (SIM905) 
-  * [flynt] Use triple quotes for joined raw strings with newlines (FLY002) 
-  * [pyupgrade] Fix false positive when class name is shadowed by local variable (UP008) 
-  * [pyupgrade] Prevent infinite loop with I002 and UP026 
-  * [ruff] Recognize t-strings, generators, and lambdas in invalid-index-type (RUF016) 
+  * Handle t-strings for token-based rules and suppression comments
+  * [flake8-bandit] Fix truthiness: dict-only ** displays not truthy for shell (S602, S604, S609)
+  * [flake8-simplify] Fix diagnostic to show correct method name for str.rsplit calls (SIM905)
+  * [flynt] Use triple quotes for joined raw strings with newlines (FLY002)
+  * [pyupgrade] Fix false positive when class name is shadowed by local variable (UP008)
+  * [pyupgrade] Prevent infinite loop with I002 and UP026
+  * [ruff] Recognize t-strings, generators, and lambdas in invalid-index-type (RUF016)
  * Rule changes
-  * [RUF102] Respect rule redirects in invalid rule code detection 
-  * [flake8-bugbear] Mark the fix for unreliable-callable-check as always unsafe (B004) 
-  * [ruff] Allow dataclass attribute value instantiation from nested frozen dataclass (RUF009) 
+  * [RUF102] Respect rule redirects in invalid rule code detection
+  * [flake8-bugbear] Mark the fix for unreliable-callable-check as always unsafe (B004)
+  * [ruff] Allow dataclass attribute value instantiation from nested frozen dataclass (RUF009)
  * CLI
-  * Add fixes to output-format=sarif 
-  * Treat panics as fatal diagnostics, sort panics last 
+  * Add fixes to output-format=sarif
+  * Treat panics as fatal diagnostics, sort panics last
  * Documentation
-  * [ruff] Add analyze.string-imports-min-dots to settings 
-  * Update README.md with Albumentations new repository URL 
+  * [ruff] Add analyze.string-imports-min-dots to settings
+  * Update README.md with Albumentations new repository URL
 
 -------------------------------------------------------------------
 Thu Sep 11 00:23:58 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -66,14 +77,14 @@ Thu Sep 11 00:23:58 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
   * bidirectional-unicode (PLE2502) now also checks for U+061C (Arabic Letter Mark).
   * The fix for multiple-with-statements (SIM117) is now marked as always safe.
  * Preview features
-  * [pyupgrade] Enable UP043 in stub files 
+  * [pyupgrade] Enable UP043 in stub files
  * Bug fixes
-  * [pyupgrade] Apply UP008 only when the __class__ cell exists 
-  * [ruff] Fix empty f-string detection in in-empty-collection (RUF060) 
+  * [pyupgrade] Apply UP008 only when the __class__ cell exists
+  * [ruff] Fix empty f-string detection in in-empty-collection (RUF060)
  * Server
-  * Add support for using uv as an alternative formatter backend 
+  * Add support for using uv as an alternative formatter backend
  * Documentation
-  * [pep8-naming] Fix formatting of __all__ (N816) 
+  * [pep8-naming] Fix formatting of __all__ (N816)
 
 -------------------------------------------------------------------
 Fri Sep  5 09:19:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
