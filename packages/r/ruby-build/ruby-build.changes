@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 26 10:55:39 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250925.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250925
+  * Fixes "integer expression expected" error by @mislav in #2573
+
+-------------------------------------------------------------------
 Sat Sep 20 21:11:35 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20250916.1.
