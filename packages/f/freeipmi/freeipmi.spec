@@ -194,6 +194,9 @@ This package contains the libfreeipmi library.
 %define docpath %{_docdir}/%{name}
 %endif
 
+# put %doc from %files below into the right dir
+%define defaultdocdir %{docpath}
+
 %define configure_systemd --with-systemdsystemunitdir=%{_unitdir}
 
 %configure --program-prefix=%{?_program_prefix:%{_program_prefix}} \
@@ -219,20 +222,24 @@ mkdir -p %{buildroot}/%{_sysconfdir}/rc.d/init.d
 make install DESTDIR=%{buildroot}
 %endif
 
-mkdir -p %{buildroot}%{_datadir}/doc/packages/freeipmi-bmc-watchdog
-mv %{buildroot}%{_datadir}/doc/packages/freeipmi/*bmc-watchdog* %{buildroot}%{_datadir}/doc/packages/freeipmi-bmc-watchdog
-mkdir -p %{buildroot}%{_datadir}/doc/packages/freeipmi-ipmiseld
-mv %{buildroot}%{_datadir}/doc/packages/freeipmi/*ipmiseld* %{buildroot}%{_datadir}/doc/packages/freeipmi-ipmiseld
+# clean up doc files, move stuff to sub-directories
+#  prevent 'mv'ing a sub-dir into itself
+mkdir -p %{buildroot}%{docpath}/freeipmi-bmc
+mv %{buildroot}%{docpath}/*bmc-watchdog* %{buildroot}%{docpath}/freeipmi-bmc
+mv %{buildroot}%{docpath}/freeipmi-bmc %{buildroot}%{docpath}/freeipmi-bmc-watchdog
+mkdir -p %{buildroot}%{docpath}/freeipmi-ipmi
+mv %{buildroot}%{docpath}/*ipmiseld* %{buildroot}%{docpath}/freeipmi-ipmi
+mv %{buildroot}%{docpath}/freeipmi-ipmi* %{buildroot}%{docpath}/freeipmi-ipmiseld
 
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcbmc-watchdog
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcipmidetectd
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcipmiseld
 
 # Silent build check warning
-rm -f %{buildroot}%{_datadir}/doc/packages/freeipmi/INSTALL
-rm -rf %{buildroot}%{_datadir}/doc/packages/freeipmi/contrib
-rm -rf %{buildroot}%{_datadir}/doc/packages/freeipmi/freeipmi-design.txt
-rm -rf %{buildroot}%{_datadir}/doc/packages/freeipmi/freeipmi-testing.txt
+rm -f %{buildroot}%{docpath}/INSTALL
+rm -rf %{buildroot}%{docpath}/contrib
+rm -rf %{buildroot}%{docpath}/freeipmi-design.txt
+rm -rf %{buildroot}%{docpath}/freeipmi-testing.txt
 
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 # remove /etc/init.d -> /etc/rc.d/init.d
@@ -510,10 +517,10 @@ rm -rf %{_localstatedir}/cache/ipmiseld/*
 
 %files bmc-watchdog
 %defattr(-,root,root)
-%dir %{_docdir}/freeipmi-bmc-watchdog
-%license %{_docdir}/freeipmi-bmc-watchdog/COPYING.bmc-watchdog
-%license %{_docdir}/freeipmi-bmc-watchdog/DISCLAIMER.bmc-watchdog
-%license %{_docdir}/freeipmi-bmc-watchdog/DISCLAIMER.bmc-watchdog.UC
+%dir %{docpath}/freeipmi-bmc-watchdog
+%license %{docpath}/freeipmi-bmc-watchdog/COPYING.bmc-watchdog
+%license %{docpath}/freeipmi-bmc-watchdog/DISCLAIMER.bmc-watchdog
+%license %{docpath}/freeipmi-bmc-watchdog/DISCLAIMER.bmc-watchdog.UC
 %{_unitdir}/bmc-watchdog.service
 %if 0%{?suse_version}
 %attr(0444,root,root) %{_fillupdir}/sysconfig.bmc-watchdog
@@ -542,9 +549,9 @@ rm -rf %{_localstatedir}/cache/ipmiseld/*
 %{_sbindir}/rcipmiseld
 %{_mandir}/man5/ipmiseld.conf.5*
 %{_mandir}/man8/ipmiseld.8*
-%dir %{_docdir}/freeipmi-ipmiseld
-%license %{_docdir}/freeipmi-ipmiseld/COPYING.ipmiseld
-%license %{_docdir}/freeipmi-ipmiseld/DISCLAIMER.ipmiseld
+%dir %{docpath}/freeipmi-ipmiseld
+%license %{docpath}/freeipmi-ipmiseld/COPYING.ipmiseld
+%license %{docpath}/freeipmi-ipmiseld/DISCLAIMER.ipmiseld
 
 %files -n libipmiconsole%{libipmiconsole_soname}
 %defattr(-,root,root)
