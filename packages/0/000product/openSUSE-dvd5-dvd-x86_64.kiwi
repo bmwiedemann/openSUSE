@@ -522,6 +522,9 @@
       <repopackage name="ghostscript-x11"/>
       <repopackage name="gigolo"/>
       <repopackage name="gigolo-lang"/>
+      <repopackage name="gimp"/>
+      <repopackage name="gimp-plugin-aa"/>
+      <repopackage name="gimp-plugin-python3"/>
       <repopackage name="gio-branding-openSUSE"/>
       <repopackage name="girepository-1_0"/>
       <repopackage name="git"/>
@@ -802,6 +805,7 @@
       <repopackage name="info-lang"/>
       <repopackage name="inkscape"/>
       <repopackage name="inkscape-extensions-extra"/>
+      <repopackage name="inkscape-extensions-gimp"/>
       <repopackage name="inkscape-lang"/>
       <repopackage name="inn"/>
       <repopackage name="intel-vaapi-driver"/>
@@ -1621,6 +1625,8 @@
       <repopackage name="libgexiv2-2"/>
       <repopackage name="libgfortran5"/>
       <repopackage name="libgif7"/>
+      <repopackage name="libgimp-3_0-0"/>
+      <repopackage name="libgimpui-3_0-0"/>
       <repopackage name="libgio-2_0-0"/>
       <repopackage name="libgiomm-2_4-1"/>
       <repopackage name="libgiomm-2_68-1"/>
@@ -2278,6 +2284,8 @@
       <repopackage name="libmusicbrainz5-1"/>
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmygpo-qt6-1"/>
+      <repopackage name="libmypaint-lang"/>
+      <repopackage name="libmypaint0"/>
       <repopackage name="libmysofa1"/>
       <repopackage name="libmythes-1_2-0"/>
       <repopackage name="libnautilus-extension4"/>
@@ -4155,6 +4163,7 @@
       <repopackage name="typelib-1_0-AppIndicator3-0_1"/>
       <repopackage name="typelib-1_0-Atk-1_0"/>
       <repopackage name="typelib-1_0-Atspi-2_0"/>
+      <repopackage name="typelib-1_0-Babl-0_1"/>
       <repopackage name="typelib-1_0-Cheese-3_0"/>
       <repopackage name="typelib-1_0-Clutter-1_0"/>
       <repopackage name="typelib-1_0-Cogl-1_0"/>
@@ -4166,6 +4175,7 @@
       <repopackage name="typelib-1_0-Gcr-4"/>
       <repopackage name="typelib-1_0-GdkPixbuf-2_0"/>
       <repopackage name="typelib-1_0-Gdm-1_0"/>
+      <repopackage name="typelib-1_0-Gegl-0_4"/>
       <repopackage name="typelib-1_0-Geoclue-2_0"/>
       <repopackage name="typelib-1_0-GeocodeGlib-2_0"/>
       <repopackage name="typelib-1_0-Gio-2_0"/>

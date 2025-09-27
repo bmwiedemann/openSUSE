@@ -6909,7 +6909,6 @@ unsorted:
   - giflib-devel-32bit 
   - giflib-progs 
   - gifsicle 
-  - gimp 
   - gimp-devel 
   - gimp-extension-goat-excercises 
   - gimp-help 
@@ -6936,9 +6935,7 @@ unsorted:
   - gimp-help-sv 
   - gimp-help-zh 
   - gimp-lang 
-  - gimp-plugin-aa 
   - gimp-plugin-gmic 
-  - gimp-plugin-python3 
   - gimp-plugin-resynthesizer 
   - gimp-vala 
   - ginac 
@@ -8852,7 +8849,6 @@ unsorted:
   - ini4j 
   - ini4j-javadoc 
   - inkscape-extensions-fig 
-  - inkscape-extensions-gimp 
   - inkscape-extensions-scribus 
   - inn-devel 
   - innoextract 
@@ -13420,8 +13416,6 @@ unsorted:
   - libgig-devel 
   - libgig-tools 
   - libgig11 
-  - libgimp-3_0-0 
-  - libgimpui-3_0-0 
   - libginac13 
   - libgio-2_0-0-32bit 
   - libgiomm-2_4-1-32bit 
@@ -14700,8 +14694,6 @@ unsorted:
   - libmypaint-devel 
   - libmypaint-gegl-devel 
   - libmypaint-gegl0 
-  - libmypaint-lang 
-  - libmypaint0 
   - libmysofa-devel 
   - libmysofa1-32bit 
   - libnanomsg6 
@@ -48088,7 +48080,6 @@ unsorted:
   - typelib-1_0-AyatanaAppIndicator-0_1 
   - typelib-1_0-AyatanaAppIndicator3-0_1 
   - typelib-1_0-AyatanaIdo3-0_4 
-  - typelib-1_0-Babl-0_1 
   - typelib-1_0-Bamf-3_0 
   - typelib-1_0-Birb-1_0 
   - typelib-1_0-BlockDev-3_0 
@@ -48174,7 +48165,6 @@ unsorted:
   - typelib-1_0-Gdaui-6_0 
   - typelib-1_0-GdkPixdata-2_0 
   - typelib-1_0-Gee-0_8 
-  - typelib-1_0-Gegl-0_4 
   - typelib-1_0-GeocodeGlib-1_0 
   - typelib-1_0-Gepub-0_7 
   - typelib-1_0-Gfls-1 
