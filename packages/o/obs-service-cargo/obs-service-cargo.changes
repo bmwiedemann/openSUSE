@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 21 15:15:25 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.1.1:
+  * chore: release v7.1.1
+  * clippy: apply clippy fixes
+  * chore: update Cargo.lock
+  * refactor: add toml_manifest in lib.rs
+  * refactor: use toml_manifest module now
+  * fix: forgot to reset the default options when doing precise or recursive updates
+  * refactor: put the toml reader logic to toml_manifest.rs
+  * chore: ignore workspace vscode config
+
+-------------------------------------------------------------------
 Mon Sep  1 13:17:24 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Switch back dependency to openssl from libressl. Otherwise, this will
