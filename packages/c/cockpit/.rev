@@ -799,4 +799,12 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
 - Rewrite hide-pcp.patch to apply to SLFO based versions of micro</comment>
     <requestid>1306662</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>a173a24417a4c4e2f714b01eabca4525</srcmd5>
+    <version>346</version>
+    <time>1759173128</time>
+    <user>anag_factory</user>
+    <comment>- add requirement on python3-pcp if pcp is installed bsc#1239759</comment>
+    <requestid>1307703</requestid>
+  </revision>
 </revisionlist>
