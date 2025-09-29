@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 25 13:10:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream backport (boo#1249045)
+  * qtwebengine_ffmpeg8.patch
+
+-------------------------------------------------------------------
 Fri Sep  5 14:49:50 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Add patch:

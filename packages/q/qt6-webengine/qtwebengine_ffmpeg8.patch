@@ -1,0 +1,182 @@
+From 5ffb9a369777dbcf2ed6378926bad628e0358ceb Mon Sep 17 00:00:00 2001
+From: Moss Heim <moss.heim@qt.io>
+Date: Wed, 17 Sep 2025 12:34:34 +0200
+Subject: [Backport] Roll src/third_party/ffmpeg/ 01f23648c..dcdd0fa51 (552
+ commits)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Cherry-pick of patch originally reviewed on
+https://chromium-review.googlesource.com/c/chromium/src/+/6506529
+This CL rolls ffmpeg for M138.
+
+This roll includes the removal of many deprecated APIs: some FF_*
+macros were consolidated as equivalent AV_* macros under
+libavcodec/def.h
+
+https://chromium.googlesource.com/chromium/third_party/ffmpeg.git/+log/01f23648c6b8..dcdd0fa51b65
+
+$ git log 01f23648c..dcdd0fa51 --date=short --no-merges --format='%ad %ae %s'
+2025-05-01 tguilbert Remove deprecated av_stream_get_side_data()
+2025-05-01 tguilbert README.chromium file
+2025-05-01 tguilbert GN Configuration
+2025-04-29 jamrial avcodec/cbs_apv: don't return an error when reading empty buffers
+2025-04-27 sw fate: Add test for APV 422-10 profile
+(...)
+2025-03-18 andreas.rheinhardt avcodec/Makefile: Only compile executor when VVC decoder is enabled
+2025-03-18 andreas.rheinhardt avcodec/vvc/Makefile: Move VVC decoder->h2645data dep to lavc/Makefile
+2025-03-17 ffmpeg ffbuild: use response files only if ar accepts them
+2025-03-18 timo avcodec/tableprint_vlc: fix build with --enable-hardcoded-tables
+2025-03-18 timo avcodec/Makefile: fix build of exr decoder in odd configs
+
+Created with:
+  roll-dep src/third_party/ffmpeg
+
+Fixes: QTBUG-139704
+Bug: 415118707
+Change-Id: Iae943ce996031d5a6f7dbbd2915ad9cfabadf4d6
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/6506529
+Reviewed-by: Dale Curtis <dalecurtis@chromium.org>
+Commit-Queue: Dale Curtis <dalecurtis@chromium.org>
+Auto-Submit: Thomas Guilbert <tguilbert@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1455010}
+Reviewed-on: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/676535
+Reviewed-by: Michael Brüning <michael.bruning@qt.io>
+(cherry picked from commit fc6fe48cb2a7de3ec7f6b94a42aa5d888cbd8b36)
+Reviewed-on: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/678642
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/3rdparty/chromium/media/ffmpeg/ffmpeg_common.cc             | 44 +++++++++++-----------
+ .../filters/ffmpeg_aac_bitstream_converter.cc      | 12 +++---
+ 2 files changed, 28 insertions(+), 28 deletions(-)
+
+diff --git a/src/3rdparty/chromium/media/ffmpeg/ffmpeg_common.cc b/src/3rdparty/chromium/media/ffmpeg/ffmpeg_common.cc
+index 28bd440f238..95ba258d4f8 100644
+--- a/src/3rdparty/chromium/media/ffmpeg/ffmpeg_common.cc
++++ b/src/3rdparty/chromium/media/ffmpeg/ffmpeg_common.cc
+@@ -286,22 +286,22 @@ AVCodecID VideoCodecToCodecID(VideoCodec video_codec) {
+ static VideoCodecProfile ProfileIDToVideoCodecProfile(int profile) {
+   // Clear out the CONSTRAINED & INTRA flags which are strict subsets of the
+   // corresponding profiles with which they're used.
+-  profile &= ~FF_PROFILE_H264_CONSTRAINED;
+-  profile &= ~FF_PROFILE_H264_INTRA;
++  profile &= ~AV_PROFILE_H264_CONSTRAINED;
++  profile &= ~AV_PROFILE_H264_INTRA;
+   switch (profile) {
+-    case FF_PROFILE_H264_BASELINE:
++    case AV_PROFILE_H264_BASELINE:
+       return H264PROFILE_BASELINE;
+-    case FF_PROFILE_H264_MAIN:
++    case AV_PROFILE_H264_MAIN:
+       return H264PROFILE_MAIN;
+-    case FF_PROFILE_H264_EXTENDED:
++    case AV_PROFILE_H264_EXTENDED:
+       return H264PROFILE_EXTENDED;
+-    case FF_PROFILE_H264_HIGH:
++    case AV_PROFILE_H264_HIGH:
+       return H264PROFILE_HIGH;
+-    case FF_PROFILE_H264_HIGH_10:
++    case AV_PROFILE_H264_HIGH_10:
+       return H264PROFILE_HIGH10PROFILE;
+-    case FF_PROFILE_H264_HIGH_422:
++    case AV_PROFILE_H264_HIGH_422:
+       return H264PROFILE_HIGH422PROFILE;
+-    case FF_PROFILE_H264_HIGH_444_PREDICTIVE:
++    case AV_PROFILE_H264_HIGH_444_PREDICTIVE:
+       return H264PROFILE_HIGH444PREDICTIVEPROFILE;
+     default:
+       DVLOG(1) << "Unknown profile id: " << profile;
+@@ -312,23 +312,23 @@ static VideoCodecProfile ProfileIDToVideoCodecProfile(int profile) {
+ static int VideoCodecProfileToProfileID(VideoCodecProfile profile) {
+   switch (profile) {
+     case H264PROFILE_BASELINE:
+-      return FF_PROFILE_H264_BASELINE;
++      return AV_PROFILE_H264_BASELINE;
+     case H264PROFILE_MAIN:
+-      return FF_PROFILE_H264_MAIN;
++      return AV_PROFILE_H264_MAIN;
+     case H264PROFILE_EXTENDED:
+-      return FF_PROFILE_H264_EXTENDED;
++      return AV_PROFILE_H264_EXTENDED;
+     case H264PROFILE_HIGH:
+-      return FF_PROFILE_H264_HIGH;
++      return AV_PROFILE_H264_HIGH;
+     case H264PROFILE_HIGH10PROFILE:
+-      return FF_PROFILE_H264_HIGH_10;
++      return AV_PROFILE_H264_HIGH_10;
+     case H264PROFILE_HIGH422PROFILE:
+-      return FF_PROFILE_H264_HIGH_422;
++      return AV_PROFILE_H264_HIGH_422;
+     case H264PROFILE_HIGH444PREDICTIVEPROFILE:
+-      return FF_PROFILE_H264_HIGH_444_PREDICTIVE;
++      return AV_PROFILE_H264_HIGH_444_PREDICTIVE;
+     default:
+       DVLOG(1) << "Unknown VideoCodecProfile: " << profile;
+   }
+-  return FF_PROFILE_UNKNOWN;
++  return AV_PROFILE_UNKNOWN;
+ }
+ 
+ SampleFormat AVSampleFormatToSampleFormat(AVSampleFormat sample_format,
+@@ -479,7 +479,7 @@ bool AVCodecContextToAudioDecoderConfig(const AVCodecContext* codec_context,
+     // TODO(dalecurtis): Just use the profile from the codec context if ffmpeg
+     // ever starts supporting xHE-AAC.
+     // FFmpeg provides the (defined_profile - 1) for AVCodecContext::profile
+-    if (codec_context->profile == FF_PROFILE_UNKNOWN ||
++    if (codec_context->profile == AV_PROFILE_UNKNOWN ||
+         codec_context->profile == mp4::AAC::kXHeAAcType - 1) {
+       // Errors aren't fatal here, so just drop any MediaLog messages.
+       NullMediaLog media_log;
+@@ -701,16 +701,16 @@ bool AVStreamToVideoDecoderConfig(const AVStream* stream,
+       break;
+     case VideoCodec::kVP9:
+       switch (codec_context->profile) {
+-        case FF_PROFILE_VP9_0:
++        case AV_PROFILE_VP9_0:
+           profile = VP9PROFILE_PROFILE0;
+           break;
+-        case FF_PROFILE_VP9_1:
++        case AV_PROFILE_VP9_1:
+           profile = VP9PROFILE_PROFILE1;
+           break;
+-        case FF_PROFILE_VP9_2:
++        case AV_PROFILE_VP9_2:
+           profile = VP9PROFILE_PROFILE2;
+           break;
+-        case FF_PROFILE_VP9_3:
++        case AV_PROFILE_VP9_3:
+           profile = VP9PROFILE_PROFILE3;
+           break;
+         default:
+diff --git a/src/3rdparty/chromium/media/filters/ffmpeg_aac_bitstream_converter.cc b/src/3rdparty/chromium/media/filters/ffmpeg_aac_bitstream_converter.cc
+index d84e7842cba..6cc1b18211c 100644
+--- a/src/3rdparty/chromium/media/filters/ffmpeg_aac_bitstream_converter.cc
++++ b/src/3rdparty/chromium/media/filters/ffmpeg_aac_bitstream_converter.cc
+@@ -68,17 +68,17 @@ bool GenerateAdtsHeader(int codec,
+   hdr[1] |= 1;
+ 
+   switch (audio_profile) {
+-    case FF_PROFILE_AAC_MAIN:
++    case AV_PROFILE_AAC_MAIN:
+       break;
+-    case FF_PROFILE_AAC_HE:
+-    case FF_PROFILE_AAC_HE_V2:
+-    case FF_PROFILE_AAC_LOW:
++    case AV_PROFILE_AAC_HE:
++    case AV_PROFILE_AAC_HE_V2:
++    case AV_PROFILE_AAC_LOW:
+       hdr[2] |= (1 << 6);
+       break;
+-    case FF_PROFILE_AAC_SSR:
++    case AV_PROFILE_AAC_SSR:
+       hdr[2] |= (2 << 6);
+       break;
+-    case FF_PROFILE_AAC_LTP:
++    case AV_PROFILE_AAC_LTP:
+       hdr[2] |= (3 << 6);
+       break;
+     default:
+-- 
+cgit v1.2.3
+

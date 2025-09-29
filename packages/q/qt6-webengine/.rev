@@ -377,4 +377,13 @@
   * QtWebEngine_6.9.2_QTBUG-139424.patch (QTBUG-139424, boo#1249354)</comment>
     <requestid>1303309</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>2214f4497cd18d9573a8c72b61c39b24</srcmd5>
+    <version>6.9.2</version>
+    <time>1759173101</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream backport (boo#1249045)
+  * qtwebengine_ffmpeg8.patch</comment>
+    <requestid>1307144</requestid>
+  </revision>
 </revisionlist>
