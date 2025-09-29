@@ -1638,4 +1638,12 @@
     <comment></comment>
     <requestid>1284487</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a064bedf7d38b47008128ae4c0e361d7</srcmd5>
+    <version>1.6.2</version>
+    <time>1759156659</time>
+    <user>anag_factory</user>
+    <comment>Update to version 1.6.2 (forwarded request 1307461 from xanders)</comment>
+    <requestid>1307747</requestid>
+  </revision>
 </revisionlist>
