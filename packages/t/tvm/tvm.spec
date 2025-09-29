@@ -21,6 +21,7 @@
 # System dmlc is too old - https://github.com/apache/tvm/issues/17459#issuecomment-2429144716
 %bcond_with system_dmlc
 %define dmlc_version 3031e4a
+%define libbacktrace_version 08f7c7e
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
@@ -40,7 +41,7 @@
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
-Version:        0.19.0
+Version:        0.21.0
 Release:        0
 Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
@@ -48,14 +49,16 @@ URL:            https://tvm.apache.org/
 Source:         https://github.com/apache/tvm/archive/refs/tags/v%{version}.tar.gz#/tvm-%{version}.tar.gz
 # License2: MIT
 Source2:        https://github.com/dmlc/dmlc-core/archive/%{dmlc_version}.tar.gz#/dmlc-core.tar.gz
+# License3: BSD-3-Clause
+Source3:        https://github.com/tlc-pack/libbacktrace/archive/%{libbacktrace_version}.tar.gz#/libbacktrace.tar.gz
 # PATCH-FIX-OPENSUSE lib-finder-python-cmake.patch -- custom cmake path
 Patch1:         lib-finder-python-cmake.patch
-# PATCH-FIX-OPENSUSE tvm-fix-openblas.patch -- We use openblas headers instead of netlib cblas
-Patch2:         tvm-fix-openblas.patch
 # PATCH-FIX-OPENSUSE tvm-disable-vulkan-test-check.patch -- Cannot test in OBS despite enabled in library
-Patch3:         tvm-disable-vulkan-test-check.patch
+Patch2:         tvm-disable-vulkan-test-check.patch
 # PATCH-FIX-UPSTREAM 18202.patch -- https://github.com/apache/tvm/pull/18202
-Patch4:         18202.patch
+Patch3:         18202.patch
+# PATCH-FIX-UPSTREAM 18204_backported.patch -- https://github.com/apache/tvm/pull/18204
+Patch4:         18204_backported.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module cloudpickle}
@@ -75,7 +78,7 @@ BuildRequires:  ComputeLibrary-devel
 %endif
 BuildRequires:  antlr4-java
 BuildRequires:  cmake
-BuildRequires:  dlpack-devel >= 0.7
+BuildRequires:  dlpack-devel >= 1.1
 %if %{with system_dmlc}
 BuildRequires:  dmlc-core-devel
 %endif
@@ -153,6 +156,7 @@ pushd 3rdparty
 %if %{without system_dmlc}
 tar xf %{SOURCE2} && rmdir dmlc-core && mv dmlc-core-* dmlc-core
 %endif
+tar xf %{SOURCE3} && rmdir libbacktrace && mv libbacktrace-* libbacktrace
 popd
 
 # Workaround - https://discuss.tvm.ai/t/build-fails-on-tvm-0-6-0-0-6-1-with-gcc10-and-gcc7/7462/5?u=ggardet
@@ -202,7 +206,6 @@ popd
   -DUSE_SORT=ON \
   -DUSE_THREADS=ON \
   -DUSE_VULKAN=ON \
-  -DUSE_LIBBACKTRACE=OFF \
   -DUSE_ANTLR="/usr/share/java/antlr4/antlr4-runtime.jar" \
   -DINSTALL_DEV=ON
 %cmake_build
@@ -221,19 +224,24 @@ rm -f %{buildroot}%{_includedir}/endian.h
 export TVM_LIBRARY_PATH="$(pwd)/%{__builddir}"
 pushd python
 %python_install
-%python_expand chmod 0755 %{buildroot}%{$python_sitearch}/tvm/driver/tvmc/main.py %{buildroot}%{$python_sitearch}/tvm/contrib/torch/pytorch_tvm.py
 popd
 # Remove /usr/tvm/*.so
 rm -rf %{buildroot}%{_prefix}/tvm
+# Do not package static lib
+rm -f %{buildroot}%{_libdir}/libtvm_ffi_static.a
 # Remove src,include,3rdparty dirs
 %python_expand rm -rf %{buildroot}/%{$python_sitearch}/tvm/{src,include,3rdparty}/
 %if %{without system_dmlc}
 rm -rf %{buildroot}%{_includedir}/dmlc
 %endif
-# Remove .cpp file
-%python_expand rm %{buildroot}/%{$python_sitearch}/tvm/_ffi/_cython/core.cpp
-# tvmc shebang should be default python, not highest available version
-sed -i -r 's|#!/usr/bin/python3(.*)|#!/usr/bin/python3|' %{buildroot}%{_bindir}/tvmc
+# Regenerate tvmc which is not provided anymore
+# https://tvm.apache.org/docs/v0.8.0/tutorial/tvmc_command_line_driver.html#using-tvmc
+mkdir -p %{buildroot}%{_bindir}
+cat > %{buildroot}%{_bindir}/tvmc <<-EOF
+#!/usr/bin/sh
+python3 -m tvm.driver.tvmc $@
+EOF
+chmod +x %{buildroot}%{_bindir}/tvmc
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

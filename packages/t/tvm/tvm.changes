@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 24 06:30:43 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.21.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.21.0
+- Skipped 0.20.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.20.0
+- Backport upstream patch to fix build with llvm21:
+  * 18204_backported.patch
+- Refresh patch:
+  * lib-finder-python-cmake.patch
+- Remove unneeded patch:
+  * tvm-fix-openblas.patch
+
+-------------------------------------------------------------------
 Tue Aug 26 16:24:03 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to re-enable cpptest:
