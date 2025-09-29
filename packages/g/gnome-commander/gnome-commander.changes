@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 28 11:43:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.4:
+  + This release fixes the following bugs:
+    - Test failures with googletest 1.17
+    - Update in metainfo.xml to adapt to the renamed Yelp ID
+  + Updated docs.
+
+-------------------------------------------------------------------
 Tue Sep  9 12:09:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gnome-commander-glycin-loaders.patch: Fix build with using

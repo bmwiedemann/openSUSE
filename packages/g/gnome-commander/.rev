@@ -194,4 +194,16 @@
     <comment>Scripted push from GNOME:Next (forwarded request 1304853 from dimstar)</comment>
     <requestid>1305423</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a9ee3b780fad035ee031a1a6f018791b</srcmd5>
+    <version>1.18.4</version>
+    <time>1759156661</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.18.4:
+  + This release fixes the following bugs:
+    - Test failures with googletest 1.17
+    - Update in metainfo.xml to adapt to the renamed Yelp ID
+  + Updated docs. (forwarded request 1307564 from iznogood)</comment>
+    <requestid>1307748</requestid>
+  </revision>
 </revisionlist>
