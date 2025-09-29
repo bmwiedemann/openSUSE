@@ -1,7 +1,7 @@
 #
 # spec file for package python-gspread
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gspread
-Version:        6.1.4
+Version:        6.2.1
 Release:        0
 Summary:        Google Spreadsheets Python API
 License:        MIT

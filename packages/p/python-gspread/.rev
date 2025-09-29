@@ -301,4 +301,41 @@
     https://github.com/burnash/gspread/pull/1512</comment>
     <requestid>1219198</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6bac64573490fefee8d6dfc4deabf23c</srcmd5>
+    <version>6.2.1</version>
+    <time>1759156655</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.2.1:
+  * Fix public API auth snippet
+  * Clarify the first step: authentication
+  * Fix typo in community.rst
+  * rearrange flow to remove reference to creds
+  * switch safety for pip-audit
+  * Include the duplicate column names in error message
+  * Add property expiry in gspread client
+  * Bump typing-extensions from 4.11.0 to 4.12.0
+  * Fix code block formatting typo in README
+  * Type part of test suite utils
+  * Remove passing exception as args to super in APIError
+  * Fix docstring about BackOffHTTPClient
+  * Fix comment to reflect correct google-auth package version
+    requirement
+  * Doc/community addons orm package
+  * fix: fix type annotation for default_blank
+  * Bump mypy from 1.11.1 to 1.11.2
+  * better handler API error parsing.
+  * Add test on receiving an invalid JSON in the APIError
+    exception handler.
+  * [feature] Add 'expand_table' feature
+  * Created a batch_merge function [Issue #1473]
+  * Added a range option to Worksheet.get_notes [Issue #1482]
+  * Documentation update for
+    gspread.worksheet.Worksheet.get_all_records
+  * add example for batch_merge
+  * explicitly list exported package symbols
+
+- update to 6.2.1:</comment>
+    <requestid>1307735</requestid>
+  </revision>
 </revisionlist>
