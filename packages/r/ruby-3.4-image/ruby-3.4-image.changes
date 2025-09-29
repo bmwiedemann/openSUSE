@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 29 09:32:29 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove non-reproducible files from container
+
+-------------------------------------------------------------------
 Wed Aug 27 14:49:07 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - install the right gem2rpm so that we do not have ruby 2.5 in the container
