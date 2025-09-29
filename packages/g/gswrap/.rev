@@ -94,4 +94,12 @@
     <comment>- Allow also abstract X11 socket</comment>
     <requestid>1145407</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>b524e49bd5336d1afeda68f8b8bee4d8</srcmd5>
+    <version>0.1</version>
+    <time>1759156304</time>
+    <user>anag_factory</user>
+    <comment>.</comment>
+    <requestid>1305220</requestid>
+  </revision>
 </revisionlist>
