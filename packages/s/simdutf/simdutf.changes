@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Sep 23 10:45:09 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 7.4.0:
+  + improving support for legacy GCC and validate_utf16_as_ascii
+- Changes from version 7.3.6:
+  + trim_partial_utf16() should handle length=1 regularly
+- Changes from version 7.3.5:
+  + Improving the performance of simdutf::find and adding a
+    benchmark for simdutf::find.
+- Changes from version 7.3.4:
+  + Read count is incorrect when using
+    last_chunk_handling::stop_before_partial
+- Changes from version 7.3.3:
+  + This patch release fixes minor documentation issues, an issue
+    with UTF-8 BOM detection and an issue with stop_before_partial
+    last chunk handling.
+- Changes from version 7.3.2:
+  + adding tests to check feature macros
+  + adding a nice to_well_formed benchmark
+- Changes from version 7.3.1:
+  + Fix macOS build by replacing --gc-sections with -dead_strip
+  + reduce the binary size under macos
+  + adds some documentation for std::span overloads
+  + Support macOS cross-compilation with Clang in osxcross
+  + adding emscripten build test
+  + Fix MSVC noexcept analysis warnings
+  + Implement lsx + lasx find function
+  + CMake: Guard shell-based tests with SIMDUTF_TESTS
+  + Implement rvv find function
+- Changes from version 7.3.0:
+  + _safe variant of convert_utf16_to_utf8
+
+-------------------------------------------------------------------
 Tue Sep  2 09:05:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Initial packaging for openSUSE.

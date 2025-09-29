@@ -16,16 +16,16 @@
 #
 
 
-%define lib_ver 24.0.0
-%define so_ver 24
+%define lib_ver 26.0.0
+%define so_ver 26
 Name:       simdutf
-Version:    7.2.1
+Version:    7.4.0
 Release:    0
 Summary:    Unicode validation and transcoding at billions of characters per second
 
 License:    Apache-2.0 AND BSD-3-Clause
 URL:        https://github.com/simdutf/simdutf
-Source0:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:    %{name}-%{version}.tar.zst
 
 BuildRequires:  cmake
 BuildRequires:  c++_compiler
