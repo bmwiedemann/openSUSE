@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-spidev
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Python module for interfacing with SPI devices
 License:        MIT
