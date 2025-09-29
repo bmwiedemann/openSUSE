@@ -74,4 +74,14 @@
     try to find it. [jnns]</comment>
     <requestid>1131191</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>87d59dd6b795febee854d893bea0bd59</srcmd5>
+    <version>6.1.2</version>
+    <time>1759156654</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.1.2:
+  * Add support for isort 6.0.0. [SukiCZ]
+  * Drop python 3.8, and add python 3.13. [SukiCZ]</comment>
+    <requestid>1307732</requestid>
+  </revision>
 </revisionlist>

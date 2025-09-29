@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-isort
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8-isort
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Plugin integrating isort in flake8
 License:        GPL-2.0-only
