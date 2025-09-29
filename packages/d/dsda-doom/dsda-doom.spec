@@ -1,7 +1,7 @@
 #
 # spec file for package dsda-doom
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           dsda-doom
-Version:        0.29.3
+Version:        0.29.4
 Release:        0
 Summary:        DOOM source port with Hexen support and demo compatibility
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            https://github.com/kraflab/dsda-doom
-
 #Changelog:     https://github.com/kraflab/dsda-doom/tree/master/patch_notes
 #Announce:      https://www.doomworld.com/forum/topic/118074-dsda-doom-source-port-v0243/
 Source:         https://github.com/kraflab/dsda-doom/archive/refs/tags/v%version.tar.gz
@@ -31,7 +30,7 @@ Patch1:         prboom-hbar-all.diff
 Patch2:         prboom-hbar-gradient.diff
 BuildRequires:  Mesa-devel
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.17
 BuildRequires:  fluidsynth
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
@@ -43,11 +42,12 @@ BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(libopenmpt)
+BuildRequires:  pkgconfig(libxmp)
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(portmidi)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sndfile) >= 1.0.29
 BuildRequires:  pkgconfig(vorbis)
 %if 0%{?suse_version} >= 1600
 # CMake Error at [portmidi-devel]:/usr/lib64/cmake/PortMidi/PortMidiTargets.cmake:100 (message):
