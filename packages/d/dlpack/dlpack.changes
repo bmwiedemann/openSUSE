@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 24 07:46:28 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.1:
+  * Added support for F8
+  * Added support for F4
+  * Added support for F6
+- Skipped 1.0:
+  * Introduce versioning DLManagedTensorVersioned
+  * flags about exported tensor
+  * This release acompanies array api changes, see the note below
+    Starting Python array API standard v2023, a new max_version
+    argument is added to __dlpack__ for the consumer to signal the
+    producer the maximal supported DLPack version. Starting DLPack
+    1.0, the DLManagedTensorVersioned struct should be used and
+    the existing DLManagedTensor struct is considered deprecated,
+    though a library should try to support both during the
+    transition period if possible.
+
+-------------------------------------------------------------------
 Sat Jan 28 19:50:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8:

@@ -23,4 +23,27 @@
     <comment></comment>
     <requestid>1061994</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92d650f9bdd9c85d6b5573b37dc6330e</srcmd5>
+    <version>1.1</version>
+    <time>1759156441</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1:
+  * Added support for F8
+  * Added support for F4
+  * Added support for F6
+- Skipped 1.0:
+  * Introduce versioning DLManagedTensorVersioned
+  * flags about exported tensor
+  * This release acompanies array api changes, see the note below
+    Starting Python array API standard v2023, a new max_version
+    argument is added to __dlpack__ for the consumer to signal the
+    producer the maximal supported DLPack version. Starting DLPack
+    1.0, the DLManagedTensorVersioned struct should be used and
+    the existing DLManagedTensor struct is considered deprecated,
+    though a library should try to support both during the
+    transition period if possible.
+</comment>
+    <requestid>1307762</requestid>
+  </revision>
 </revisionlist>
