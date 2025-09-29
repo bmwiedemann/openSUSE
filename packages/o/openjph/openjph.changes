@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 29 05:49:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.1:
+  * Fix compilation failure on MinGW #210
+
+-------------------------------------------------------------------
+Mon Sep 29 05:48:34 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.0:
+  * Use aligned memory allocation for mem_outfile #200
+  * Set the needed C++ standard at configuration time #206
+  * Install 64bit library in /lib64 instead of /lib #207
+
+-------------------------------------------------------------------
 Wed Sep 24 10:27:13 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add baselibs.conf: openexr provides -32bit packages and newly

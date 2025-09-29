@@ -91,4 +91,18 @@
   provide biarch packages. (forwarded request 1306895 from dimstar)</comment>
     <requestid>1307328</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3e30d6bb8828574df4be757800b00e8a</srcmd5>
+    <version>0.24.1</version>
+    <time>1759156298</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.24.1:
+  * Fix compilation failure on MinGW #210
+
+- Update to 0.24.0:
+  * Use aligned memory allocation for mem_outfile #200
+  * Set the needed C++ standard at configuration time #206
+  * Install 64bit library in /lib64 instead of /lib #207</comment>
+    <requestid>1307651</requestid>
+  </revision>
 </revisionlist>
