@@ -431,4 +431,16 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <comment></comment>
     <requestid>1274904</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0f48a213e3a6d29ca86f45f69d1f9820</srcmd5>
+    <version>0.28.0</version>
+    <time>1759156664</time>
+    <user>anag_factory</user>
+    <comment>- Fix max version of gnome-shell.
+
+- Update to 0.28.0:
+  * Support for GNOME Shell 49
+  * Updated German translation</comment>
+    <requestid>1307859</requestid>
+  </revision>
 </revisionlist>

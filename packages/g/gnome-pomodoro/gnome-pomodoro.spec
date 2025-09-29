@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-pomodoro
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-pomodoro
-Version:        0.27.0
+Version:        0.28.0
 Release:        0
 Summary:        A time management utility for GNOME
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  gettext-devel >= 0.19.6
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28
-BuildRequires:  (gnome-shell >= 46 with gnome-shell < 49)
+BuildRequires:  (gnome-shell >= 46 with gnome-shell < 50)
 BuildRequires:  pkgconfig(appstream-glib) >= 0.7.3
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(sqlite3)
 Requires:       gstreamer
 Requires:       gtk3 >= 3.20.0
 Requires:       hicolor-icon-theme
-Requires:       (gnome-shell >= 46 with gnome-shell < 49)
+Requires:       (gnome-shell >= 46 with gnome-shell < 50)
 Recommends:     gstreamer-plugins-base
 
 %description
