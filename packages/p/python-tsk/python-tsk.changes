@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 22 10:38:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Limit Python files matched in %files section
+
+-------------------------------------------------------------------
 Fri Aug  1 14:49:21 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Add fix-rename-bool-variable.patch gcc 15 support

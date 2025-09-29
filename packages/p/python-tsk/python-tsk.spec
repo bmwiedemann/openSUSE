@@ -34,7 +34,9 @@ Source3:        python-tsk.keyring
 #PATCH-FIX-UPSTREAM fix-rename-bool-variable.patch taken from https://github.com/py4n6/pytsk/pull/111/
 Patch0:         fix-rename-bool-variable.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
@@ -60,10 +62,10 @@ The Sleuthkit is a forensic filesystem analysis framework (http://www.sleuthkit.
 
 %build
 CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -75,6 +77,7 @@ $python ./run_tests.py
 %files %{python_files}
 %doc README
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/pytsk3-%{version}.dist-info
+%{python_sitearch}/pytsk3.*.so
 
 %changelog

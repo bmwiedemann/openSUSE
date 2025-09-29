@@ -108,4 +108,12 @@ python bindings for sleuthkit.  Required by plaso.</comment>
     <comment>- update to 20250729</comment>
     <requestid>1297555</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>32662b0519c0daa0aeaeefbd09e0fa48</srcmd5>
+    <version>20250729</version>
+    <time>1759156649</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1307754</requestid>
+  </revision>
 </revisionlist>
