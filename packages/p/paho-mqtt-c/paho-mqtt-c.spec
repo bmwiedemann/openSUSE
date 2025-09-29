@@ -18,15 +18,12 @@
 
 %define sover 1
 Name:           paho-mqtt-c
-Version:        1.3.14
+Version:        1.3.15
 Release:        0
 Summary:        MQTT C Client
 License:        BSD-3-Clause AND EPL-1.0
 URL:            https://eclipse.org/paho/clients/c/
 Source:         https://github.com/eclipse/paho.mqtt.c/archive/v%{version}.tar.gz#/paho.mqtt.c-%{version}.tar.gz
-Patch1:         fix-build-gcc15.patch
-Patch2:         fix-reason-code-handling.patch
-Patch3:         fix-char-range.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
