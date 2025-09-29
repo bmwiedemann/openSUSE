@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Thu Sep 25 10:25:07 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 21.0.0
+  ## Bug Fixes
+  * GH-44366 - [Python][Acero] RecordBatch.filter on expression
+    raises error if result set is empty (#46057)
+  * GH-45292 - [Python] test_dtypes hypotesis test fails
+    sporadically (#46029)
+  * GH-46080 - [Python][Docs] Provide guidance for tzdata related
+    issues if installing with pip (#46591)
+  * GH-46121 - [Python] Add missing column_index argument to
+    ArrowReaderProperties::read_dictionary's Cython binding
+    (#46122)
+  * GH-46174 - [Python] Failing tests in python minimal builds
+    (#46175)
+  * GH-46238 - [Release][Python] Use array to avoid empty argument
+    in dev/release/post-11-python.sh (#46239)
+  * GH-46343 - [CI][Python] Remove workaround for gdb packaging
+    issue (#46848)
+  * GH-46344 - [CI][Python] Skip doctest for s3.get_file_info to
+    avoid bucket restrictions (#46345)
+  * GH-46355 - [Python] Fix table.to_struct_array with an empty
+    table (#46357)
+  * GH-46481 - [C++][Python] Allow nullable schema in FlightInfo
+    (#46489)
+  * GH-46516 - [CI][Python] Force Cython>3.1.1 for docs builds
+    (#46770)
+  * GH-46606 - [Python] Do not require numpy when normalizing slice
+    (#46732)
+  * GH-46611 - [Python][C++] Allow building float16 arrays without
+    numpy (#46618)
+  * GH-46729 - [Python] Allow constructing InMemoryDataset from
+    RecordBatchReader (#46731)
+  * GH-46811 - [C++][Python] Fix crash on
+    FileReaderImpl::GetRecordBatchReader (#46931)
+  ## New Features and Improvements
+  * GH-26818 - [C++][Python] Preserve order when writing dataset
+    multi-threaded (#44470)
+  * GH-38914 - [Python] Add
+    EncryptionConfiguration.uniform_encryption (#46347)
+  * GH-39294 - [C++][Python] DLPack on Tensor class (#42118)
+  * GH-40754 - [Python] Expose tls_ca_file_path to S3FileSystem
+    (#45881)
+  * GH-41496 - [Python][Azure][Docs] Turn on azure on debian-docs
+    (#46892)
+  * GH-41672 - [Python][Doc] Clarify docstring of
+    FixedSizeListArray.values that it ignores the offset (#46144)
+  * GH-42012 - [Python] Add Schema with_field or set_field method
+    (#46348)
+  * GH-43041 - [C++][Python] Read/write Parquet BYTE_ARRAY as
+    Large/View types directly (#46532)
+  * GH-43807 - [C++][Python] Add UUID extension type conversion
+    support to/from Parquet (#45866)
+  * GH-44500 - [Python][Parquet] Map Parquet logical types to Arrow
+    extension types by default (#46772)
+  * GH-44900 - [Python] Support explicit fsspec+{protocol} and
+    hf:// filesystem URIs (#45089)
+  * GH-45229 - [Python] Migrate from scipy.spmatrix to
+    scipy.sparray (#46423)
+  * GH-45229 - [Python] skip scipy.sparse roundtrip tests for
+    float16 (#46413)
+  * GH-45531 - [Python] Add the dim_names argument to
+    from_numpy_ndarray (#46170)
+  * GH-45619 - [Python] Use f-string instead of string.format
+    (#45629)
+  * GH-45653 - [Python] Scalar subclasses should implement Python
+    protocols (#45818)
+  * GH-45750 - [C++][Python][Parquet] Implement Content-Defined
+    Chunking for the Parquet writer (#45360)
+  * GH-45957 - [C++][Python] Expose allow_delayed_open on
+    S3FileSystem (#46078)
+  * GH-46019 - [Python] Raise TypeError on feather read_table if
+    columns is not a Sequence (#46038)
+  * GH-46054 - [Python][Packaging] Re-enable pandas on Windows
+    free-threaded wheel (#46109)
+  * GH-46058 - [Python] Run Python in AppVeyor outside of source
+    directory (#46059)
+  * GH-46130 - [Python] Remove use_legacy_format in favour of
+    setting IpcWriteOptions (#46131)
+  * GH-46198 - [Python] Remove deprecated PyExtensionType (#46199)
+  * GH-46222 - [Python] Allow to specify footer metadata when
+    opening IPC file for writing (#46354)
+  * GH-46349 - [Python] Move parquet definitions to
+    pyarrow/includes/libparquet.pxd (#46437)
+  * GH-46373 - [Python] Exercise fallback case on tests for
+    parquet.read_table in case dataset is not available (#46550)
+  * GH-46544 - [CI][Dev][Python] Use pre-commit for autopep8
+    (#46552)
+  * GH-46545 - [CI][Dev][Python] Update pre-commit for cython-lint
+    (#46580)
+  * GH-46546 - [CI][Dev][Python] Use pre-commit for numpydoc
+    (#46595)
+  * GH-46572 - [Python] expose filter option to python for join
+    (#46566)
+  * GH-46633 - [Docs][C++][Python] Update CombineChunks
+    documentation to specify that binary columns can be combined
+    into multiple chunks (#46638)
+  * GH-46652 - [Python][Docs] Update language for row_group_size
+    parameter (#46653)
+  * GH-46676 - [C++][Python][Parquet] Allow reading Parquet LIST
+    data as LargeList directly (#46678)
+  * GH-46683 - [C++][Python] Add utf8_zero_fill compute function
+    for sign-aware zero padding (#46815)
+  * GH-46771 - [Python][C++] Implement pa.arange function to
+    generate array sequences (#46778)
+  * GH-46833 - [Python] Expose ConfigureManagedIdentityCredential
+    and ConfigureClientSecretCredential to AzureFileSystem on
+    PyArrow (#46837)
+  * GH-46959 - [Python][Packaging] Drop support for manylinux2014
+    (#46965)
+
+-------------------------------------------------------------------
 Fri Jun 13 18:22:38 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 20.0.0

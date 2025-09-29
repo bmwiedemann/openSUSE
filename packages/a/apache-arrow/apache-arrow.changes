@@ -1,4 +1,329 @@
 -------------------------------------------------------------------
+Fri Sep 26 16:52:42 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+-  Remove boost::system dependency for Tumbleweed
+  * Add arrow-boost-system-1.89-boo1249599.patch
+  * gh#boostorg/system#132
+  * boo#1249599
+
+-------------------------------------------------------------------
+Thu Sep 25 10:24:04 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 21.0.0
+  ## Bug Fixes
+  * GH-32276 - [C++][FlightRPC] Add option to align RecordBatch
+    buffers given to IPC reader (#44279)
+  * GH-35166 - [C++][Compute] Increase precision of decimals in sum
+    aggregates (#44184)
+  * GH-40756 - [C++] Remove dead Boost urls (#46452)
+  * GH-45532 - [C++] RunEndEncodedBuilder should clear dimensions
+    after a Finish() call (#45533)
+  * GH-45534 - [C++] Test: RunEndEncodeTableColumns should update
+    REE columns' schema types (#45535)
+  * GH-45608 - [C++][Flight] Fix compilation for clang (#46264)
+  * GH-45735 - [C++] Broken tests for extract_regex compute funcion
+    (#45900)
+  * GH-45853 - [C++][Dev] Fix Meson compilation issues in Docker
+    builds (#45858)
+  * GH-46011 - [C++] Hide DCHECK family from public headers
+    (#46015)
+  * GH-46025 - [C++] Use ARROW_CUDA_EXPORT instead of ARROW_EXPORT
+    for libarrow_cuda (#46030)
+  * GH-46052 - [C++][Benchmarking] Don't build grouper benchmark
+    without ARROW_COMPUTE=ON (#46053)
+  * GH-46070 - [C++] Remove duplicate storage_type in JsonExtension
+    (#46071)
+  * GH-46084 - [C++] Always use ARROW_VCPKG to detect vcpkg mode
+    (#46467)
+  * GH-46090 - [C++] Set default IPC option to enabled in Meson
+    (#46114)
+  * GH-46094 - [C++][Docs] Add note to RleDecoder::Get's doc
+    comment (#46874)
+  * GH-46146 - [C++] Merge metadata in SchemaBuidler::AddMetadata
+    (#46654)
+  * GH-46149 - [C++] Opening dataset fails with sshfs-3.7.3 due to
+    F_RDADVISE error (#46346)
+  * GH-46157 - [C++] Move test utility RunEndEncodeTableColumns
+    that uses REE to test_util_internal on acero instead of common
+    gtest_util (#46161)
+  * GH-46192 - [C++] Add substrait dep to third party download
+    script (#46191)
+  * GH-46197 - [C++] Tests use legacy timezones (#46201)
+  * GH-46214 - [C++] Improve S3 client initialization (#46723)
+  * GH-46224 - [C++][Acero] Fix the hang in asof join (#46300)
+  * GH-46231 - [C++][CMake] Fix arrow_bundled_dependencies to be
+    externally accessible by FetchContent (#46232)
+  * GH-46233 - [C++] Fix missing nested braces in QueuedTask
+    initialization (#46234)
+  * GH-46268 - [C++] Improve ArrayData docstrings (#46271)
+  * GH-46270 - [C++][Parquet] Clarify GeoStatistics docstring
+    (#46649)
+  * GH-46299 - [C++][Compute] Don't use static inline const for
+    default options (#46303)
+  * GH-46306 - [C++][Parquet] Should use LoadEnumSafe for geo enum
+    (#46307)
+  * GH-46314 - [C++][Parquet] Fix valgrind error when collecting
+    parameterized tests for MakeWKBPoint (#46320)
+  * GH-46326 - [C++][Parquet] Fix stack overflow in rapidjson value
+    comparison to integer (#46327)
+  * GH-46359 - [C++][Thirdparty] Bump Apache ORC to 2.1.2 (#46360)
+  * GH-46394 - [C++][R] gcc-UBSAN errors on CRAN (#46397)
+  * GH-46395 - [C++][Statistics] Use EqualOptions for min and max
+    in arrow::ArrayStatistics::Equals() (#46422)
+  * GH-46407 - [C++] Fix IPC serialization of sliced list arrays
+    (#46408)
+  * GH-46414 - [C++] Fix GCS filesystem getFileInfo method (#46416)
+  * GH-46417 - [C++][Parquet] Fix UB in LoadEnumSafe for
+    EdgeInterpolationAlgorithm (#46418)
+  * GH-46419 - [C++] Remove duplicate declaration and sync arg
+    names on acero test_util_internal functions (#45400)
+  * GH-46420 - [C++][Dataset] Fix DatasetWriter deadlock on
+    writting batch greater than max_rows_queued (#46139)
+  * GH-46424 - [C++][Parquet] Fix erroneous unit test skip (#46425)
+  * GH-46435 - [Parquet][C++] Fix uninitialized value in writer
+    test (#46533)
+  * GH-46478 - [C++] Implement recent JSON changes into Meson
+    configuration (#46479)
+  * GH-46481 - [C++][Python] Allow nullable schema in FlightInfo
+    (#46489)
+  * GH-46512 - [CI][C++] Install the llvm package explicitly on
+    MSYS2 (#46525)
+  * GH-46564 - [C++] Export ARROW_VCPKG in ArrowConfig.cmake
+    (#46565)
+  * GH-46576 - [C++] Suppress codecvt_utf8 deprecation warning
+    (#46622)
+  * GH-46589 - [C++] Fix utf8_is_digit to support full Unicode
+    digit range (#46590)
+  * GH-46599 - [C++][Doc][Parquet] Update supported types
+    documentation (#46620)
+  * GH-46611 - [Python][C++] Allow building float16 arrays without
+    numpy (#46618)
+  * GH-46623 - [C++][Compute] Fix the failure of large memory test
+    in arrow-compute-row-test (#46635)
+  * GH-46659 - [C++] Fix export of extension arrays with binary
+    view/string view storage (#46660)
+  * GH-46674 - [C++] Construct Array from ExtensionType Scalar
+    (#46675)
+  * GH-46684 - [C++] Fix Meson configuration issue on Windows
+    (#46685)
+  * GH-46704 - [C++] Fix OSS-Fuzz build failure (#46706)
+  * GH-46708 - [C++][Gandiva] Added zero return values for
+    castDECIMAL_utf8 (#46709)
+  * GH-46710 - [C++] Fix ownership and lifetime issues in Dataset
+    Writer (#46711)
+  * GH-46724 - [C++][Parquet] OSSFuzz: Prevent from Bad-cast in
+    handling statistics (#46725)
+  * GH-46761 - [C++] Add executable detection on FreeBSD (#46759)
+  * GH-46764 - [C++][Gandiva] Fix wrong .bc depends (#46765)
+  * GH-46777 - [C++] Use SimplifyIsIn only when the value_set of
+    the expression is lower than a threshold (#46859)
+  * GH-46811 - [C++][Python] Fix crash on
+    FileReaderImpl::GetRecordBatchReader (#46931)
+  * GH-46827 - [C++] Update Meson Configuration for compute shared
+    lib (#46839)
+  * GH-46831 - [C++][R] Remove some pending references to CMake <
+    3.25 (docs + minor CMake references) (#46834)
+  * GH-46841 - [C++][Gandiva] Fix date trunc edge case (#46842)
+  * GH-46863 - [CI][C++] Suppress a false positive UBSAN error in
+    AWS SDK for C++ (#46870)
+  * GH-46871 - [C++][Parquet] Restore implementation of 3
+    arrow::FileReader::GetRecordBatchReader() functions (#46868)
+  * GH-46888 - [C++] Remove override of default buildtype in Meson
+    config (#46919)
+  * GH-46915 - [C++][Compute] Initialize Compute kernels on
+    benchmarks that require extra kernels (#46922)
+  * GH-46934 - [C++][Parquet] Trying to fix ub in AttachStatistics
+    (#46940)
+  * GH-46986 - [CI][C++] Fix a build error with C++20 (#46987)
+  * GH-46988 - [C++][Parquet] Fix FLBA DecodeArrow multiply
+    overflow (#46991)
+  * GH-46995 - [CI][R][C++] Use system memory allocator in
+    sanitizer jobs (#47007)
+  * GH-46998 - [C++] Fix mockfs.cc compiling error with C++23
+    (#46999)
+  * GH-47015 - [CI][C++] Use mold on conda-cpp to work around
+    issues with GNU ld (#47028)
+  * GH-47033 - [C++][Compute] Never use custom gtest main with MSVC
+    (#47049)
+  * GH-47037 - [CI][C++] Fix Fedora 39 CI jobs (#47038)
+  ## New Features and Improvements
+  * GH-25025 - [C++] Move non core compute kernels into separate
+    shared library (#46261)
+  * GH-26818 - [C++][Python] Preserve order when writing dataset
+    multi-threaded (#44470)
+  * GH-36753 - [C++] Properly pretty-print and diff HalfFloatArrays
+    (#46857)
+  * GH-37027 - [C++] Add float16 kernels to if-else and
+    vector-replace functions (#46446)
+  * GH-37677 - [C++][FlightRPC] Allow FlightInfo.schema to be
+    nullable
+  * GH-37891 - [C++][Parquet] Refine several classes in Parquet
+    encryption (#46202)
+  * GH-37891 - [C++] Followup Buffer change to use sptr move
+    (#46027)
+  * GH-39294 - [C++][Python] DLPack on Tensor class (#42118)
+  * GH-40278 - [C++] Support casting string to duration in CSV
+    converter (#46035)
+  * GH-40343 - [C++] Move S3FileSystem to the registry (#41559)
+  * GH-43041 - [C++][Python] Read/write Parquet BYTE_ARRAY as
+    Large/View types directly (#46532)
+  * GH-43807 - [C++][Python] Add UUID extension type conversion
+    support to/from Parquet (#45866)
+  * GH-43891 - [C++][Parquet] Faster reading of
+    FIXED_LEN_BYTE_ARRAY data (#46886)
+  * GH-45028 - [C++][Compute] Allow cast to reorder struct fields
+    (#45246)
+  * GH-45083 - [C++] Add HalfFloat kernels for is_nan, is_inf,
+    is_finite, negate, negate_checked, sign (#46866)
+  * GH-45195 - [C++] Update bundled AWS SDK for C++ to 1.11.587
+    (#45306)
+  * GH-45522 - [Parquet][C++] Parquet GEOMETRY and GEOGRAPHY
+    logical type implementations (#45459)
+  * GH-45664 - [C++] Allow
+    LargeString,LargeBinary,FixedSizeBinary,StringView and
+    BinaryView for RecordBatch::MakeStatisticsArray() (#46031)
+  * GH-45750 - [C++][Python][Parquet] Implement Content-Defined
+    Chunking for the Parquet writer (#45360)
+  * GH-45794 - [C++] Add array directory to Meson configuration
+    (#45795)
+  * GH-45796 - [C++] Add integration directory to Meson
+    configuration (#45797)
+  * GH-45798 - [C++] Add extension directory to Meson (#45799)
+  * GH-45800 - [C++] Implement util configuration in Meson (#45824)
+  * GH-45829 - [C++] Add compute directory to Meson configuration
+    (#45830)
+  * GH-45833 - [C++] Add JSON directory to Meson configuration
+    (#45834)
+  * GH-45865 - [C++] Create dedicated benchmark dependency in Meson
+    (#45909)
+  * GH-45908 - [C++][Docs] Rename and expose basic
+    {Array,...}FromJSON helpers as public APIs (#46180)
+  * GH-45957 - [C++][Python] Expose allow_delayed_open on
+    S3FileSystem (#46078)
+  * GH-45978 - [C++] Bump bundled mimalloc version (#45979)
+  * GH-45991 - [C++] Bump bundled nlohmann_json to v3.12.0 (#46112)
+  * GH-45992 - [C++] Bump bundled utf8proc version to 2.10.0
+    (#46032)
+  * GH-46091 - [C++] Use feature options in Meson configuration
+    (#46204)
+  * GH-46092 - [C++] Add filesystem related options to Meson
+    (#46101)
+  * GH-46104 - GH-45937: [C++][Parquet] Logical type definition for
+    variant
+  * GH-46115 - [C++] Implement compression libraries in Meson
+    (#46358)
+  * GH-46116 - [C++] Implement IPC directory in Meson (#46117)
+  * GH-46118 - [C++] Add tensor directory to Meson (#46119)
+  * GH-46132 - [C++][Parquet] Remove deprecated parquet APIs from
+    19.0.0 (#46133)
+  * GH-46141 - [C++] Add flight directory to Meson configuration
+    (#46142)
+  * GH-46153 - [C++] Implement acero directory in Meson (#46154)
+  * GH-46155 - [C++] Implement Tensorflow directory in Meson
+    (#46156)
+  * GH-46163 - [C++] Add vendored directory to Meson (#46164)
+  * GH-46196 - [C++] Remove ARROW_USE_PRECOMPILED_HEADERS and
+    related logic (#46200)
+  * GH-46207 - [C++] Rename arrow::util::StringBuilder and move to
+    internal namespace (#46813)
+  * GH-46209 - [Documentation][C++][Compute] Add cpp developer
+    documentation for row table (#46210)
+  * GH-46215 - [C++][Docs] Add README for Meson subprojects
+    directory (#46216)
+  * GH-46217 - [C++][Parquet] Update the timestamp of
+    parquet::encryption::TwoLevelCacheWithExpiration correctly
+    (#46283)
+  * GH-46219 - [C++][Parquet] Remove PARQUET_MINIMAL_DEPENDENCY
+    option (#46274)
+  * GH-46285 - [C++] Add support for Decimal32/64 and HalfFloat to
+    run_end_encode/run_end_decode (#46286)
+  * GH-46318 - [Docs][C++] Add Extension Array/Type documents
+    (#46319)
+  * GH-46321 - [C++][Doc] Better explain ArrayData IsValid and
+    GetNullCount (#46332)
+  * GH-46338 - [C++] Add compile step for Meson in cpp_build.sh
+    (#46339)
+  * GH-46367 - [C++] Prevent Meson from using git info if built as
+    subproject (#46368)
+  * GH-46386 - [C++] Ensure using our CMake packages not
+    Find*.cmake (#46387)
+  * GH-46388 - [C++] Check Snappy::snappy{,-static} in
+    FindSnappyAlt.cmake (#46389)
+  * GH-46396 - [C++][Documentation][Statistics] Revise the
+    documentation to clarify that arrow::ArrayStatistics is ignored
+    during arrow::Array comparisons (#46470)
+  * GH-46403 - [C++] Add support for limiting element size when
+    printing data (#46536)
+  * GH-46439 - [C++] Use result pattern for all FromJSONString
+    Helpers (#46696)
+  * GH-46439 - [C++] Rename internal Converter class in
+    from_string.cc (#46697)
+  * GH-46439 - [C++] Remove unneeded namespace prefix in
+    test_util_internal.h (#46695)
+  * GH-46444 - [Documentation][C++][Acero] Move internal Swiss
+    table doc into public C++ developer doc (#46445)
+  * GH-46459 - [C++] Make some arrow/util headers internal (#46721)
+  * GH-46462 - [C++][Parquet] Expose currently thrown
+    EncodedStatistics when checking is_stats_set (#46463)
+  * GH-46473 - [C++][Docs] Fix typos in decimal comments (#46474)
+  * GH-46475 - [Documentation][C++][Compute] Consolidate Acero
+    developer docs (#46476)
+  * GH-46477 - [C++] Use vendored flatbuffers in Meson
+    configuration (#46484)
+  * GH-46487 - [C++] Refactor lz4 from ExternalProject to
+    FetchContent (#46390)
+  * GH-46499 - [CI][Crossbow][C++] Use apache/arrow for Meson
+    (#46501)
+  * GH-46508 - [C++] Upgrade OpenTelemetry cpp to avoid build error
+    on recent Clang (#46509)
+  * GH-46522 - [C++][FlightRPC] Add Arrow Flight SQL ODBC driver
+    (#40939)
+  * GH-46529 - [C++] Convert static inline type trait functions to
+    constexpr (#46559)
+  * GH-46537 - [Docs][C++] Add RunEndEncodedArray, FlatArray, and
+    PrimitiveArray API Docs (#46540)
+  * GH-46551 - [C++] Use std::string_view for type schema API
+    (#46553)
+  * GH-46633 - [Docs][C++][Python] Update CombineChunks
+    documentation to specify that binary columns can be combined
+    into multiple chunks (#46638)
+  * GH-46665 - [CI][Crossbow][C++] Use apache/arrow for Alpine
+    Linux (#46666)
+  * GH-46676 - [C++][Python][Parquet] Allow reading Parquet LIST
+    data as LargeList directly (#46678)
+  * GH-46679 - [C++][Meson] Use WrapDB entry for gflags instead of
+    CMake wrapper (#46680)
+  * GH-46683 - [C++][Python] Add utf8_zero_fill compute function
+    for sign-aware zero padding (#46815)
+  * GH-46714 - [C++] Use hidden symbol visibility in Meson
+    configuration (#46715)
+  * GH-46740 - [C++] Update bundled Thrift
+  * GH-46745 - [C++] Update bundled Boost to 1.88.0 and Apache
+    Thrift to 0.22.0 (#46912)
+  * GH-46746 - [C++] Assume AWS SDK >= 1.11.0 (#46742)
+  * GH-46748 - [C++] Initial port on AIX (#46749)
+  * GH-46767 - [C++] Enable EqualOptions::use_atol_ for
+    arrow::Array, arrow::Scalar, arrow::RecordBatch, and
+    arrow::ChuckedArray (#46779)
+  * GH-46771 - [Python][C++] Implement pa.arange function to
+    generate array sequences (#46778)
+  * GH-46785 - [CI][Dev][C++] Suppress needless outputs of cpplint
+    with pre-commit (#46786)
+  * GH-46788 - [C++][Parquet] Enable SIMD for byte stream split
+    with 2 streams (#46789)
+  * GH-46791 - [C++] Add Status::OrElse, IntoStatus<T> and ToStatus
+    (#46792)
+  * GH-46843 - [C++] Don't use unity build for bundled AWS SDK for
+    C++ (#46845)
+  * GH-46864 - [C++] Add half-float test for ArrayFromJSONString
+    (#46865)
+  * GH-46869 - [C++][Parquet] Deprecate arrow::Status
+    parquet::arrow::FileReadeder::GetRecordBatchReader() (#46932)
+  * GH-47025 - [C++][Docs] Increase minimum gcc for building from
+    7.1 to 9 (#47026)
+- Drop apache-arrow-19.0.1-mimalloc-version.patch
+
+-------------------------------------------------------------------
 Fri Jun 13 18:22:55 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 20.0.0

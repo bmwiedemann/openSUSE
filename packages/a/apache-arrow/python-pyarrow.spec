@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyarrow
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with xsimd
 %define plainpython python
 # See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit d2a13712303498963395318a4eb42872e66aead7
+%define arrow_testing_commit fbf6b703dc93d17d75fa3664c5aa2c7873ebaf06
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
 %define parquet_testing_commit 18d17540097fca7c40be3d42c167e6bfad90763c
 %if %{suse_version} <= 1500
@@ -28,7 +28,7 @@
 %define gccver 13
 %endif
 Name:           python-pyarrow
-Version:        20.0.0
+Version:        21.0.0
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -39,7 +39,7 @@ Source1:        arrow-testing-%{version}.tar.gz
 Source2:        parquet-testing-%{version}.tar.gz
 Source99:       python-pyarrow.rpmlintrc
 BuildRequires:  %{python_module Cython >= 3}
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}

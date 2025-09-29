@@ -1,7 +1,7 @@
 #
 # spec file for package apache-arrow
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,16 +29,15 @@
 %define gccver 13
 %endif
 
-%define sonum   2000
+%define sonum   2100
 # See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit d2a13712303498963395318a4eb42872e66aead7
+%define arrow_testing_commit fbf6b703dc93d17d75fa3664c5aa2c7873ebaf06
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
 %define parquet_testing_commit 18d17540097fca7c40be3d42c167e6bfad90763c
 # See cpp/thirdparty/versions.txt, replace by BuildRequires: pkgconfig(mimalloc) as soon as gh#apache/arrow#42211 is resolved
-# mimalloc version bumped, see Patch100
-%define arrow_mimalloc_build_version v2.0.9
+%define arrow_mimalloc_build_version v2.2.4
 Name:           apache-arrow
-Version:        20.0.0
+Version:        21.0.0
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -49,7 +48,8 @@ Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.
 Source1:        https://github.com/apache/arrow-testing/archive/%{arrow_testing_commit}.tar.gz#/arrow-testing-%{version}.tar.gz
 Source2:        https://github.com/apache/parquet-testing/archive/%{parquet_testing_commit}.tar.gz#/parquet-testing-%{version}.tar.gz
 Source3:        https://github.com/microsoft/mimalloc/archive/%{arrow_mimalloc_build_version}.tar.gz#/mimalloc-%{arrow_mimalloc_build_version}.tar.gz
-Patch100:       apache-arrow-19.0.1-mimalloc-version.patch
+# PATCH-FIX-OPENSUSE arrow-boost-system-1.89-boo1249599.patch gh#boostorg/system#132, boo#1249599
+Patch1:         arrow-boost-system-1.89-boo1249599.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.25
 BuildRequires:  fdupes
@@ -58,8 +58,11 @@ BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  libboost_context-devel
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_process-devel
-BuildRequires:  libboost_system-devel >= 1.64.0
+%if 0%{?suse_version} < 1699
+BuildRequires:  libboost_system-devel
+%endif
 %if %{with static}
 BuildRequires:  libzstd-devel-static
 %endif
@@ -67,27 +70,27 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  (cmake(lz4) >= 1.10 or (pkgconfig(liblz4) >= 1.8.3 with pkgconfig(liblz4) < 1.10))
-BuildRequires:  cmake(Snappy) >= 1.1.7
+BuildRequires:  cmake(Snappy) >= 1.2.2
 BuildRequires:  cmake(absl)
 BuildRequires:  cmake(double-conversion) >= 3.1.5
 BuildRequires:  cmake(re2)
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(bzip2) >= 1.0.8
-BuildRequires:  pkgconfig(gflags) >= 2.2.0
-BuildRequires:  pkgconfig(grpc++) >= 1.20.0
-BuildRequires:  pkgconfig(libbrotlicommon) >= 1.0.7
-BuildRequires:  pkgconfig(libbrotlidec) >= 1.0.7
-BuildRequires:  pkgconfig(libbrotlienc) >= 1.0.7
-BuildRequires:  pkgconfig(libcares) >= 1.15.0
-BuildRequires:  pkgconfig(libglog) >= 0.3.5
+BuildRequires:  pkgconfig(gflags) >= 2.2.2
+BuildRequires:  pkgconfig(grpc++) >= 1.46.3
+BuildRequires:  pkgconfig(libbrotlicommon) >= 1.0.9
+BuildRequires:  pkgconfig(libbrotlidec) >= 1.0.9
+BuildRequires:  pkgconfig(libbrotlienc) >= 1.0.9
+BuildRequires:  pkgconfig(libcares) >= 1.17.2
+BuildRequires:  pkgconfig(libglog) >= 0.5.0
 BuildRequires:  pkgconfig(libopenssl)
 BuildRequires:  pkgconfig(liburiparser) >= 0.9.3
-BuildRequires:  pkgconfig(libutf8proc)
-BuildRequires:  pkgconfig(libzstd) >= 1.4.3
-BuildRequires:  pkgconfig(protobuf) >= 3.7.1
-BuildRequires:  pkgconfig(sqlite3) >= 3.45.2
-BuildRequires:  pkgconfig(thrift) >= 0.11.0
-BuildRequires:  pkgconfig(zlib) >= 1.2.11
+BuildRequires:  pkgconfig(libutf8proc) >= 2.10.0
+BuildRequires:  pkgconfig(libzstd) >= 1.5.7
+BuildRequires:  pkgconfig(protobuf) >= 21.3
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(thrift) >= 0.22.0
+BuildRequires:  pkgconfig(zlib) >= 1.3.1
 %if %{with tests}
 BuildRequires:  timezone
 BuildRequires:  pkgconfig(gmock) >= 1.10
@@ -129,6 +132,20 @@ libraries and zero-copy streaming messaging and interprocess
 communication.
 
 This package provides the shared library for the Acero streaming execution engine
+
+%package     -n libarrow_compute%{sonum}
+Summary:        Development platform for in-memory data - shared library
+Group:          System/Libraries
+
+%description -n libarrow_compute%{sonum}
+Apache Arrow is a cross-language development platform for in-memory
+data. It specifies a standardized language-independent columnar memory
+format for flat and hierarchical data, organized for efficient
+analytic operations on modern hardware. It also provides computational
+libraries and zero-copy streaming messaging and interprocess
+communication.
+
+This package provides the shared library for the C++ Compute module
 
 %package     -n libarrow_flight%{sonum}
 Summary:        Development platform for in-memory data - shared library
@@ -191,6 +208,7 @@ Summary:        Development platform for in-memory data - development files
 Group:          Development/Libraries/C and C++
 Requires:       libarrow%{sonum} = %{version}
 Requires:       libarrow_acero%{sonum} = %{version}
+Requires:       libarrow_compute%{sonum} = %{version}
 Requires:       libarrow_dataset%{sonum} = %{version}
 %if %{with flight}
 Requires:       libarrow_flight%{sonum} = %{version}
@@ -199,6 +217,7 @@ Requires:       libarrow_flight_sql%{sonum} = %{version}
 %if %{with static}
 Suggests:       %{name}-devel-static = %{version}
 Suggests:       %{name}-acero-devel-static = %{version}
+Suggests:       %{name}-compute-devel-static = %{version}
 Suggests:       %{name}-dataset-devel-static = %{version}
 %if %{with flight}
 Suggests:       %{name}-flight-devel-static = %{version}
@@ -247,6 +266,21 @@ libraries and zero-copy streaming messaging and interprocess
 communication.
 
 This package provides the static library for the Acero streaming execution engine
+
+%package        compute-devel-static
+Summary:        Development platform for in-memory data - development files
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-devel = %{version}
+
+%description    compute-devel-static
+Apache Arrow is a cross-language development platform for in-memory
+data. It specifies a standardized language-independent columnar memory
+format for flat and hierarchical data, organized for efficient
+analytic operations on modern hardware. It also provides computational
+libraries and zero-copy streaming messaging and interprocess
+communication.
+
+This package provides the static library for the C++ Compute module
 
 %package        flight-devel-static
 Summary:        Development platform for in-memory data - development files
@@ -343,7 +377,9 @@ This package provides utilities for working with the Parquet format.
 
 %prep
 %setup -q -n arrow-apache-arrow-%{version} -a1 -a2
-%autopatch -p1
+%if 0%{?suse_version} >= 1699
+%patch -P1 -p1
+%endif
 # https://github.com/protocolbuffers/protobuf/issues/12292
 sed -i 's/find_package(Protobuf/find_package(Protobuf CONFIG/' cpp/cmake_modules/FindProtobufAlt.cmake
 
@@ -458,6 +494,8 @@ popd
 %postun -n libarrow%{sonum}   -p /sbin/ldconfig
 %post   -n libarrow_acero%{sonum}  -p /sbin/ldconfig
 %postun -n libarrow_acero%{sonum}  -p /sbin/ldconfig
+%post   -n libarrow_compute%{sonum}  -p /sbin/ldconfig
+%postun -n libarrow_compute%{sonum}  -p /sbin/ldconfig
 %if %{with flight}
 %post   -n libarrow_flight%{sonum}  -p /sbin/ldconfig
 %postun -n libarrow_flight%{sonum}  -p /sbin/ldconfig
@@ -481,6 +519,10 @@ popd
 %files -n libarrow_acero%{sonum}
 %license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow_acero.so.*
+
+%files -n libarrow_compute%{sonum}
+%license LICENSE.txt NOTICE.txt
+%{_libdir}/libarrow_compute.so.*
 
 %if %{with flight}
 %files -n libarrow_flight%{sonum}
@@ -507,6 +549,7 @@ popd
 %{_libdir}/cmake/Arrow*
 %{_libdir}/libarrow.so
 %{_libdir}/libarrow_acero.so
+%{_libdir}/libarrow_compute.so
 %{_libdir}/libarrow_dataset.so
 %if %{with flight}
 %{_libdir}/libarrow_flight.so
@@ -529,6 +572,10 @@ popd
 %files acero-devel-static
 %license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow_acero.a
+
+%files compute-devel-static
+%license LICENSE.txt NOTICE.txt
+%{_libdir}/libarrow_compute.a
 
 %files dataset-devel-static
 %license LICENSE.txt NOTICE.txt

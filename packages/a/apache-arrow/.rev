@@ -653,4 +653,41 @@ apache-arrow is being used more and more by python numeric packages like pandas 
   * GH-45362 - [C++] Fix identity cast for time and list scalar</comment>
     <requestid>1285645</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b776cc53001048bdcac574d513d72ac2</srcmd5>
+    <version>21.0.0</version>
+    <time>1759156327</time>
+    <user>anag_factory</user>
+    <comment>-  Remove boost::system dependency for Tumbleweed
+  * Add arrow-boost-system-1.89-boo1249599.patch
+  * gh#boostorg/system#132
+  * boo#1249599
+
+- Update to 21.0.0
+  ## Bug Fixes
+  * GH-32276 - [C++][FlightRPC] Add option to align RecordBatch
+    buffers given to IPC reader (#44279)
+  * GH-35166 - [C++][Compute] Increase precision of decimals in sum
+    aggregates (#44184)
+  * GH-40756 - [C++] Remove dead Boost urls (#46452)
+  * GH-45532 - [C++] RunEndEncodedBuilder should clear dimensions
+    after a Finish() call (#45533)
+  * GH-45534 - [C++] Test: RunEndEncodeTableColumns should update
+    REE columns' schema types (#45535)
+  * GH-45608 - [C++][Flight] Fix compilation for clang (#46264)
+  * GH-45735 - [C++] Broken tests for extract_regex compute funcion
+    (#45900)
+  * GH-45853 - [C++][Dev] Fix Meson compilation issues in Docker
+    builds (#45858)
+  * GH-46011 - [C++] Hide DCHECK family from public headers
+    (#46015)
+  * GH-46025 - [C++] Use ARROW_CUDA_EXPORT instead of ARROW_EXPORT
+    for libarrow_cuda (#46030)
+  * GH-46052 - [C++][Benchmarking] Don't build grouper benchmark
+    without ARROW_COMPUTE=ON (#46053)
+  * GH-46070 - [C++] Remove duplicate storage_type in JsonExtension
+    (#46071)
+  * GH-46084 - [C++] Always use ARROW_VCPKG to detect vcpkg mode</comment>
+    <requestid>1307560</requestid>
+  </revision>
 </revisionlist>
