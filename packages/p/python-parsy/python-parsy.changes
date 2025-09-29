@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 29 13:22:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2
+  * Dropped support for Python 3.7, 3.8 which are past EOL
+  * Various docs and type hint updates
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed May 29 21:02:29 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file.
