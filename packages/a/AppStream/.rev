@@ -593,4 +593,32 @@ Features:
     <comment></comment>
     <requestid>1305683</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f005738a839f5e5e5b804c321ff871ca</srcmd5>
+    <version>1.1.0</version>
+    <time>1759173115</time>
+    <user>anag_factory</user>
+    <comment>- Drop the nobwrap.helper again: glycin 2.0.1 found a solution to
+  avoid the bwrap when run inside CIs/BuildEnvironments. As such,
+  we can run the test suite without the nobwrap.wrapper again.
+
+- Update to 1.1.0
+  * Port YAML parsing to libfyaml
+  * Port YAML emission to libfyaml
+  * compose: Port to libfyaml
+  * yaml: Reduce string copies when comparing main keys, compare lengths first
+  * yaml: Reduce copies when filling locale tables and string list
+  * compose: Add support for JPEG-XL
+  * compose: Make the AscImage API more generic
+  * compose: Seal away all GdkPixbuf and AscCanvas references from public API
+  * validator: Fix possible double dereference of the same issue instance
+  * tests: Pass tests with older versions of libfyaml
+  * Fix a few double-free issues in error conditions
+  * compose: Fix possible race condition when fetching pangrams
+  * compose: Draw better background shapes and center text properly for font icons
+  * parser: Guard against &quot;tag&quot; elements with NULL values
+  * yaml: Allow duplicate keys when parsing data (speeds up parsing dramatically)
+  * cache: Fix potential use-after-free issue when counting components</comment>
+    <requestid>1307676</requestid>
+  </revision>
 </revisionlist>

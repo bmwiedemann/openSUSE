@@ -40,7 +40,7 @@ ExclusiveArch:  donotbuild
 %define libAppStreamQt_sover 3
 %define libappstream_compose_sover 0
 Name:           AppStream%{?pkg_suffix}
-Version:        1.0.6
+Version:        1.1.0
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -81,12 +81,12 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libfyaml)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(xmlb) >= 0.3.14
-BuildRequires:  pkgconfig(yaml-0.1)
 Recommends:     curl
 %if %{with vala}
 BuildRequires:  vala
@@ -223,11 +223,6 @@ GObject introspection bindings for interfaces provided by AppStream.
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
-%if 0%{?suse_version} > 1600
-test -d ~/bin || mkdir ~/bin
-cp %{_datadir}/doc/packages/bubblewrap/nobwrap.helper ~/bin/bwrap
-chmod 755 ~/bin/bwrap
-%endif
 
 %build
 %define common_options -Ddocs=false -Dapidocs=false -Dstemming=false
