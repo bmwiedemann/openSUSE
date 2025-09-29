@@ -64,4 +64,20 @@
     Corentin Smith in PR #537.</comment>
     <requestid>1225100</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cccb4281e51bde8c13edc54855e9ad06</srcmd5>
+    <version>4.31.0</version>
+    <time>1759156647</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.31.0:
+  * Support Django 6.0.
+  * Support Python 3.14.
+  * Support fingerprinting SQL strings containing multiple
+    queries. Thanks to q0w in PR #669.
+  * Fix test name detection when a test function contains a
+    variable called request. Thanks to Konstantin Alekseev for
+    the initial patch in PR #659.
+  * Support Django 5.2.</comment>
+    <requestid>1307716</requestid>
+  </revision>
 </revisionlist>

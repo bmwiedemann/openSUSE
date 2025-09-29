@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:20:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.31.0:
+  * Support Django 6.0.
+  * Support Python 3.14.
+  * Support fingerprinting SQL strings containing multiple
+    queries. Thanks to q0w in PR #669.
+  * Fix test name detection when a test function contains a
+    variable called request. Thanks to Konstantin Alekseev for
+    the initial patch in PR #659.
+  * Support Django 5.2.
+
+-------------------------------------------------------------------
 Tue Nov 19 12:45:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.27.0:

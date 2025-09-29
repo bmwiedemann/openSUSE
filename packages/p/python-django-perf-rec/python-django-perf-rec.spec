@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-perf-rec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-perf-rec
-Version:        4.27.0
+Version:        4.31.0
 Release:        0
 Summary:        Keep detailed records of the performance of your Django code
 License:        MIT
