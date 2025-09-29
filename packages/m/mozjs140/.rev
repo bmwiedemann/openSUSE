@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1305539</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dfc4d3a3644489e81fc1d74dfb531cb2</srcmd5>
+    <version>140.3.1</version>
+    <time>1759156276</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 140.3.1:
+  + Improved reliability when HTTP/3 connections fail: no longer
+    force HTTP/2 during fallback, allowing the server to choose the
+    protocol and preventing stalls on some sites
+</comment>
+    <requestid>1307545</requestid>
+  </revision>
 </revisionlist>
