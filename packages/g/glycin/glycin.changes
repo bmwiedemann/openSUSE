@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Sep 28 22:29:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.0.2:
+  This release contains the following new component versions:
+
+  - glycin-heif 2.0.2
+  - glycin-jpeg2000 2.0.2
+  - glycin-jxl 2.0.2
+  - glycin-raw 2.0.2
+  - glycin-svg 2.0.2
+  - glycin-utils 4.0.2
+
+  - Loaders in 2.0.1 required specifying the loop_animation field
+    explicitly, making it incompatible with previous
+    glycin/libglycin versions. The loop_animation is no assumed to
+    be false when not present, as originally intended.
+
+-------------------------------------------------------------------
+Sun Sep 28 22:29:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.0.1:
+  This release contains the following new component versions:
+
+  - glycin-image-rs 2.0.1
+  - glycin-utils 4.0.1
+  - glycin 3.0.1
+  - libglycin 2.0.1
+  - libglycin-gtk4 2.0.1
+
+  - glycin/libglycin: Add API to disable animation looping.
+  - glycin/sandbox: Detect if bwrap can't be used due to syscalls
+    being blocked. This is an indication of running in an already
+    sandboxed environment like libgnome-desktop thumbnailer or a
+    CI. In this case we fall back to unsandboxed mode.
+
+  - Close all unused FDs in fork. Before we were sharing all FDs
+    that don't have CLOEXEC set. In Rust that's usually not a
+    problem because that's set by default. But when used by C in
+    libglycin this is much more unclear. This is an attempt at
+    fixing Firefox issues.
+  - There was no timeout spawned that would ensure that unused
+    loaders are killed after they have been unused for the
+    specified maximum retention time.
+  - glycin/sandobx: Canonicalize fontconfig paths before passing to
+    --ro-bind-try as source because wrap fails on symlinks
+    otherwise.
+  - glycin: u16_to_u8 testcase on big endian machines
+  - heif: Overwrite matrix coefficients (YCbCr) in CICP since
+    currently RGB is forced and GSK gl and cairo don't support
+    YCbCr. This fixes wrong colors in HEIC and AVIF images.
+
+-------------------------------------------------------------------
 Thu Sep 18 14:48:15 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add baselibs.conf: gdk-pixbuf-2_0-0-32bit requires libglycin-2-0.

@@ -1,5 +1,5 @@
 #
-# spec file for package glycin-loaders
+# spec file for package glycin
 #
 # Copyright (c) 2025 SUSE LLC and contributors
 #
@@ -25,7 +25,7 @@ Name:           %{flavor}
 %endif
 %define _name glycin
 
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        Sandboxed image rendering
 License:        LGPL-2.1-or-later OR MPL-2.0

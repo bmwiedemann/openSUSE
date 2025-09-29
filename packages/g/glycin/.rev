@@ -7,4 +7,41 @@
     <comment></comment>
     <requestid>1305846</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c599487d80d5f32e651f25abe1ed572a</srcmd5>
+    <version>2.0.2</version>
+    <time>1759173126</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.2:
+  This release contains the following new component versions:
+  - glycin-heif 2.0.2
+  - glycin-jpeg2000 2.0.2
+  - glycin-jxl 2.0.2
+  - glycin-raw 2.0.2
+  - glycin-svg 2.0.2
+  - glycin-utils 4.0.2
+  - Loaders in 2.0.1 required specifying the loop_animation field
+    explicitly, making it incompatible with previous
+    glycin/libglycin versions. The loop_animation is no assumed to
+    be false when not present, as originally intended.
+
+- Update to version 2.0.1:
+  This release contains the following new component versions:
+  - glycin-image-rs 2.0.1
+  - glycin-utils 4.0.1
+  - glycin 3.0.1
+  - libglycin 2.0.1
+  - libglycin-gtk4 2.0.1
+  - glycin/libglycin: Add API to disable animation looping.
+  - glycin/sandbox: Detect if bwrap can't be used due to syscalls
+    being blocked. This is an indication of running in an already
+    sandboxed environment like libgnome-desktop thumbnailer or a
+    CI. In this case we fall back to unsandboxed mode.
+  - Close all unused FDs in fork. Before we were sharing all FDs
+    that don't have CLOEXEC set. In Rust that's usually not a
+    problem because that's set by default. But when used by C in
+    libglycin this is much more unclear. This is an attempt at
+    fixing Firefox issues.</comment>
+    <requestid>1307702</requestid>
+  </revision>
 </revisionlist>
