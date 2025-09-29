@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 28 15:07:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.1:
+  https://github.com/konstructio/kubefirst/releases/tag/v2.10.1
+  * container image patch on kubefirst oss console app
+
+-------------------------------------------------------------------
 Fri Sep 26 05:48:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.10.0:
