@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 28 14:55:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.50.13:
+  * Resolved Issues
+    - #3587 UI doesn't show any updates when restarting a
+      Deployment
+    - #3585 abbreviation sec for secret not working
+    - #3584 Show managed fields doesn't show them
+    - #3583 Cannot open shell to pods without node read access as
+      of 0.50.12
+    - #3577 Log view is broken as of v0.50.10
+    - #3574 Aliases for pods with label filters not working
+
+-------------------------------------------------------------------
 Sat Sep 20 08:36:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.50.12:
