@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 29 07:37:56 UTC 2025 - dmueller@suse.com
+
+- Update to version 20250923:
+  * Update test case for changes in 1ccd56d0
+  * Empty section may contain empty lines instead of setting 'after_lines'
+  * Update test case for changes in 51da0388
+  * Fix _split_final_comments hack
+
+-------------------------------------------------------------------
 Thu Sep 18 06:49:39 UTC 2025 - dmueller@suse.com
 
 - Update to version 20250918:

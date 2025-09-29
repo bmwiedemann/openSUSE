@@ -834,4 +834,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1307047</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>cc65ae8ade541a17011e6d397c6867f1</srcmd5>
+    <version>20250923</version>
+    <time>1759156427</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250923:
+  * Update test case for changes in 1ccd56d0
+  * Empty section may contain empty lines instead of setting 'after_lines'
+  * Update test case for changes in 51da0388
+  * Fix _split_final_comments hack</comment>
+    <requestid>1307669</requestid>
+  </revision>
 </revisionlist>
