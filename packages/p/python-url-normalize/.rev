@@ -47,4 +47,12 @@
 - Drop patch url-normalize-pr28-poetry-core.patch, now included.</comment>
     <requestid>1268502</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c885d1d40dafe8c5a1cf506edecfb47</srcmd5>
+    <version>2.2.1</version>
+    <time>1759171413</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1307878</requestid>
+  </revision>
 </revisionlist>

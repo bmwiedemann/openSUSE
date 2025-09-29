@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 29 12:34:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2.1
+  * Include `py.typed` marker file for PEP 561 compatibility.
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Fri Apr 11 05:09:53 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.2.0:
