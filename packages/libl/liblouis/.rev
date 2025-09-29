@@ -598,4 +598,27 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     documentation is no longer packaged with the released tarball. (forwarded request 1283994 from iznogood)</comment>
     <requestid>1284678</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>11de8ff62ee29892eba1dea593679f41</srcmd5>
+    <version>3.35.0</version>
+    <time>1759156257</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.35.0:
+  + This release brings quite a few technical improvements. We've
+    enhanced support for memory management in the API, added
+    support for math characters in ~match~ rules, expanded the
+    Python bindings to include metadata API support, and made it
+    possible to set the log level via the ~LOUIS_LOGLEVEL~
+    environment variable.
+    There are also substantial updates to various language tables,
+    including improvements to Portuguese 8-dot braille, Hebrew
+    back-translation, Norwegian 8-dot support, UEB forward
+    translation, and Hungarian braille. We've added support for
+    Rokuten Kanji (Japanese Kanji Braille). Russian, Ukrainian,
+    and Belarusian literary braille tables have received updates
+    to their space handling rules, and the Danish tables have seen
+    fixes related to typos and hyphenation.
+</comment>
+    <requestid>1307251</requestid>
+  </revision>
 </revisionlist>

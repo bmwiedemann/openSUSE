@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 26 00:33:18 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.35.0:
+  + This release brings quite a few technical improvements. We've
+    enhanced support for memory management in the API, added
+    support for math characters in ~match~ rules, expanded the
+    Python bindings to include metadata API support, and made it
+    possible to set the log level via the ~LOUIS_LOGLEVEL~
+    environment variable.
+    There are also substantial updates to various language tables,
+    including improvements to Portuguese 8-dot braille, Hebrew
+    back-translation, Norwegian 8-dot support, UEB forward
+    translation, and Hungarian braille. We've added support for
+    Rokuten Kanji (Japanese Kanji Braille). Russian, Ukrainian,
+    and Belarusian literary braille tables have received updates
+    to their space handling rules, and the Danish tables have seen
+    fixes related to typos and hyphenation.
+
+-------------------------------------------------------------------
 Sun Jun  8 20:22:10 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.34.0:
