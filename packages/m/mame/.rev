@@ -306,4 +306,13 @@
     <comment>- _constraints: build on s390x needs at least 11 GB of RAM</comment>
     <requestid>1303260</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f55d9e6cafc7535eaf38abbbecf6017a</srcmd5>
+    <version>0.281</version>
+    <time>1759156319</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 0.281
+  * /usr/share/doc/packages/mame/whatsnew-0.281.txt</comment>
+    <requestid>1307444</requestid>
+  </revision>
 </revisionlist>
