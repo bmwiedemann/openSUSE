@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 25 22:21:54 UTC 2025 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Add macro that checks if a certain package is the most recent one.
+
+-------------------------------------------------------------------
 Wed Apr  2 20:27:16 UTC 2025 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Update to comply with gcc-15.

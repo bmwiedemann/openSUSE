@@ -26,3 +26,7 @@ end }
     tar -cJf %{tar_lp_package_name} -C ipa-clones --owner root --group root --sort name %{tar_lp_basename} \
     cp %{tar_lp_package_name} %{_topdir}/OTHER \
   %endif
+
+# Macro to make sure we always get the most recent version of a certain
+# library.
+%requires_ge_with_release() %{expand:%(t=$(echo '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}-%%{release}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not"); test -n "$t" || echo "%%{error: %%%%{requires_ge_with_release %*} does not resolve}"; echo "$t")}

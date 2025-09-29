@@ -48,4 +48,12 @@
     <comment></comment>
     <requestid>1266695</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>067636a386a9c5742ccb0e18c78d2e39</srcmd5>
+    <version>1.0</version>
+    <time>1759156235</time>
+    <user>anag_factory</user>
+    <comment>- Add macro that checks if a certain package is the most recent one.</comment>
+    <requestid>1307231</requestid>
+  </revision>
 </revisionlist>
