@@ -1,8 +1,8 @@
 #
 # spec file for package gensio
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%global sover 10
-%global sover_cpp 10
-%global libname libgensio10
+%global sover 14
+%global sover_cpp 14
+%global libname libgensio14
 %global libname_cpp libgensiocpp%{sover_cpp}
 %if 0%{?suse_version} > 1500
 %bcond_without openipmi
@@ -27,7 +27,7 @@
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        2.8.10
+Version:        3.0.0
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0
@@ -92,6 +92,14 @@ Group:          System/Libraries
 This is gensio (pronounced gen'-see-oh), a framework for giving a
 consistent view of various stream (and packet) I/O types - mdns support
 
+%package -n libgensio_openipmi_oshandler%{sover}
+Summary:        Library to abstract stream and packet I/O
+Group:          System/Libraries
+
+%description -n libgensio_openipmi_oshandler%{sover}
+This is gensio (pronounced gen'-see-oh), a framework for giving a
+consistent view of various stream (and packet) I/O types - ipmi support
+
 %package -n libgensio_python_swig%{sover}
 Summary:        Library to abstract stream and packet I/O
 Group:          System/Libraries
@@ -154,7 +162,6 @@ abscration.
 %setup -q
 
 %build
-export CFLAGS="%optflags -fcommon"
 autoreconf -fiv
 %configure --disable-static
 %make_build
@@ -163,16 +170,12 @@ autoreconf -fiv
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
-%post -n libgensioosh%{sover} -p /sbin/ldconfig
-%postun -n libgensioosh%{sover} -p /sbin/ldconfig
-%post -n libgensiomdns%{sover} -p /sbin/ldconfig
-%postun -n libgensiomdns%{sover} -p /sbin/ldconfig
-%post -n libgensio_python_swig%{sover} -p /sbin/ldconfig
-%postun -n libgensio_python_swig%{sover} -p /sbin/ldconfig
-%post -n %{libname_cpp} -p /sbin/ldconfig
-%postun -n %{libname_cpp} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
+%ldconfig_scriptlets -n libgensioosh%{sover}
+%ldconfig_scriptlets -n libgensiomdns%{sover}
+%ldconfig_scriptlets -n libgensio_openipmi_oshandler%{sover}
+%ldconfig_scriptlets -n libgensio_python_swig%{sover}
+%ldconfig_scriptlets -n %{libname_cpp}
 
 %files
 %license COPYING COPYING.LIB
@@ -193,7 +196,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/gtlssh.1%{?ext_man}
 %{_mandir}/man1/gtlssync.1%{?ext_man}
 %{_mandir}/man5/gensio.5%{?ext_man}
-%{_mandir}/man5/sergensio.5%{?ext_man}
 
 %files -n %{libname}
 %{_libdir}/libgensio.so.%{sover_cpp}*
@@ -208,6 +210,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libgensiomdns.so.%{sover}*
 %{_libdir}/libgensiomdnscpp.so.%{sover}*
 
+%files -n libgensio_openipmi_oshandler%{sover}
+%{_libdir}/libgensio_openipmi_oshandler.so.%{sover}*
+%{_libdir}/libgensio_openipmi_oshandler.so.%{sover}*
+
 %files -n libgensio_python_swig%{sover}
 %{_libdir}/libgensio_python_swig.so.%{sover}*
 
@@ -219,7 +225,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libgensio*.so
 %{_libdir}/pkgconfig/libgensio*.pc
 %{_mandir}/man3/gensio_*3%{?ext_man}
-%{_mandir}/man3/sergensio_*3%{?ext_man}
 %{_mandir}/man3/str_to_gensio*.3%{?ext_man}
 
 %files -n python3-gensio
