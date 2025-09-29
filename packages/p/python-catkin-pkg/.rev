@@ -122,4 +122,27 @@
 </comment>
     <requestid>1282805</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1d5dad63bcf122bde770c4859fae3066</srcmd5>
+    <version>1.1.0</version>
+    <time>1759156639</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.0:
+  * Declare dependency on setuptools in stdeb. #360
+  * Update Ubuntu and Debian platforms supported by catkin_pkg.
+    #359
+  * Move flake8 import into test. #361
+  * Switch to a raw string for the prepare_release cli. #362
+  * Switch to ros-infrastructure centralized CI. #363
+  * Support PEP 338 invocation of catkin_pkg modules. #367
+  * Use platform-agnostic path manipulation in test_packages.py.
+    #366
+  * Deprecate the bare catkin_* scripts. #368
+  * Fix symlink resolution on Windows w/short filenames. #365
+  * Enable tests on Windows. #364
+  * Fix AttributeError with docutils &gt;= 0.18. #352
+  * Remove spurious global declaration. #375
+  * Replace pkg_resources usage with packaging. #374</comment>
+    <requestid>1307717</requestid>
+  </revision>
 </revisionlist>

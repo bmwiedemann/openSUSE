@@ -1,7 +1,7 @@
 #
 # spec file for package python-catkin-pkg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %define commands create_pkg find_pkg generate_changelog package_version prepare_release tag_changelog test_changelog
 Name:           python-catkin-pkg
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Catkin package library
 License:        BSD-3-Clause

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:21:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Declare dependency on setuptools in stdeb. #360
+  * Update Ubuntu and Debian platforms supported by catkin_pkg.
+    #359
+  * Move flake8 import into test. #361
+  * Switch to a raw string for the prepare_release cli. #362
+  * Switch to ros-infrastructure centralized CI. #363
+  * Support PEP 338 invocation of catkin_pkg modules. #367
+  * Use platform-agnostic path manipulation in test_packages.py.
+    #366
+  * Deprecate the bare catkin_* scripts. #368
+  * Fix symlink resolution on Windows w/short filenames. #365
+  * Enable tests on Windows. #364
+  * Fix AttributeError with docutils >= 0.18. #352
+  * Remove spurious global declaration. #375
+  * Replace pkg_resources usage with packaging. #374
+
+-------------------------------------------------------------------
 Wed Jun  4 14:46:54 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - fix usage of libalternatives
