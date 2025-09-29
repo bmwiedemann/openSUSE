@@ -100,6 +100,8 @@ Source2:        openSUSE.gpl
 Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
 Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2025-10924.patch CVE-2025-10924 bsc#1250499 alynx.zhou@suse.com -- Fix integer overflow while parsing FF files 
+Patch4:         gimp-CVE-2025-10924.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 25 10:29:33 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gimp-CVE-2025-10924.patch: Fix integer overflow while parsing
+  FF files. (CVE-2025-10924, bsc#1250499)
+
+-------------------------------------------------------------------
 Mon May 19 06:52:00 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.0.4:
