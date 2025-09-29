@@ -1207,4 +1207,28 @@ run -osc service localrun format_spec_file to fix copyright
     <comment></comment>
     <requestid>1302937</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e182791ea0b9f5229e8428712f7bdc48</srcmd5>
+    <version>2.41</version>
+    <time>1759156413</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.41:
+  Added:
+  * Error message for when operation is not supported in the current view
+  * Fallback to libxml2's encoding autodetection when Newsboat's fails (#3070)
+  * Import feed titles from OPML (#3063)
+  * Ported some helper programs that generate parts of the documentation from C++ to
+    AWK, which was already used for some other helper scripts
+  * Switched from curl_proxytype to long int for compatibility with curl
+    8.16.0+
+  * Updated translations
+  * Bumped minimum supported Rust version to 1.85.0
+  * Updated vendored library expected-lite to 0.9.0
+  Fixed:
+  * Crash in :dumpconfig after :set was used to toggle or reset a non-existent
+    option (#3104)
+  * Crash in RSS parsers if there is no &quot;channel&quot; element
+  * Error messages being written to stdout rather than stderr</comment>
+    <requestid>1307652</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 29 06:04:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.41:
+  Added:
+  * Error message for when operation is not supported in the current view
+  * Fallback to libxml2's encoding autodetection when Newsboat's fails (#3070)
+  * Import feed titles from OPML (#3063)
+  * Ported some helper programs that generate parts of the documentation from C++ to
+    AWK, which was already used for some other helper scripts
+  * Switched from curl_proxytype to long int for compatibility with curl
+    8.16.0+
+  * Updated translations
+  * Bumped minimum supported Rust version to 1.85.0
+  * Updated vendored library expected-lite to 0.9.0
+  Fixed:
+  * Crash in :dumpconfig after :set was used to toggle or reset a non-existent
+    option (#3104)
+  * Crash in RSS parsers if there is no "channel" element
+  * Error messages being written to stdout rather than stderr
+
+-------------------------------------------------------------------
 Fri Sep  5 12:58:18 UTC 2025 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - spec: mv web-browser to Suggests so that the user need not explicitely invoke the zypper --recommends flag
