@@ -1,7 +1,7 @@
 #
 # spec file for package uhd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libname libuhd4_8_0
+%define libname libuhd4_9_0
 Name:           uhd
-Version:        4.8.0.0
+Version:        4.9.0.0
 Release:        0
 Summary:        The driver for USRP SDR boards
 License:        GPL-3.0-or-later
@@ -26,9 +26,8 @@ URL:            https://files.ettus.com/manual/
 Source0:        https://github.com/EttusResearch/uhd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{version}/uhd-images_%{version}.tar.xz
 Patch0:         reproducible.patch
-# PATCH_FIX_UPSTREAM uhd-new-boost.patch -- https://github.com/EttusResearch/uhd/commit/2725c664ce617ec949670d449fe6172b7661a3bd
-Patch1:         uhd-new-boost.patch
-Patch2:         uhd-fix-build-gcc15.patch
+# This has been fixed upstream and this patch will need to be removed in next release.
+Patch1:         boost.patch
 
 BuildRequires:  cmake >= 3.5
 BuildRequires:  docutils
@@ -51,7 +50,6 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_serialization-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
 
@@ -181,10 +179,6 @@ sed -i 's/BUS==/SUBSYSTEM==/;s/SYSFS{/ATTRS{/;s/MODE:="0666"/GROUP:="usrp", MODE
 install -m 0644 -D %{buildroot}%{_libdir}/uhd/utils/uhd-usrp.rules %{buildroot}%{_udevrulesdir}/10-usrp-uhd.rules
 rm %{buildroot}%{_libdir}/uhd/utils/uhd-usrp.rules
 
-## Move documentation to the default docdir
-mkdir -p  %{buildroot}%{_docdir}/uhd
-mv %{buildroot}%{_datadir}/doc/uhd %{buildroot}%{_docdir}/
-
 ## Move executable files to the default bindir
 mv %{buildroot}%{_libdir}/uhd/utils/*[!.rules] %{buildroot}%{_bindir}
 %if 0%{?suse_version} >= 1600
@@ -209,7 +203,7 @@ mv %{buildroot}%{_libdir}/uhd/utils/query_gpsdo_sensors %{buildroot}%{_bindir}
 ## extract firmware
 mkdir -p %{buildroot}%{_datadir}/uhd/images
 tar -xxvf %{SOURCE1} --transform="s,^uhd-images_%{version}/,," --show-transformed-names -C %{buildroot}%{_datadir}/uhd/images/
-rm -R %{buildroot}%{_datadir}/uhd/images/winusb_driver/
+#rm -R %{buildroot}%{_datadir}/uhd/images/winusb_driver/
 
 # find dupes
 %fdupes -s %{buildroot}%{_prefix}

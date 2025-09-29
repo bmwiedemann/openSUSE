@@ -1,0 +1,11 @@
+diff -Nrua uhd-4.9.0.0.orig/host/CMakeLists.txt uhd-4.9.0.0/host/CMakeLists.txt
+--- uhd-4.9.0.0.orig/host/CMakeLists.txt	2025-09-01 15:24:04.000000000 +0200
++++ uhd-4.9.0.0/host/CMakeLists.txt	2025-09-29 13:27:38.331231692 +0200
+@@ -321,7 +321,6 @@
+     date_time
+     filesystem
+     program_options
+-    system
+     serialization
+     thread
+     unit_test_framework
