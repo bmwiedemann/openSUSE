@@ -32,7 +32,9 @@ Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/%{na
 Source1:        indi-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libboost_thread-devel
 %if 0%{?sle_version} > 150500 || 0%{?suse_version} >= 1600
 BuildRequires:  cfitsio-devel

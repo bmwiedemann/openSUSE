@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 28 16:52:12 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Boost.System has been header only since Boost 1.69.0
+
+-------------------------------------------------------------------
 Mon Aug 25 09:27:38 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.1.5.1:
