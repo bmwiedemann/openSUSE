@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 26 12:10:49 UTC 2025 - Rubhan Azeem <rubhan.azeem@suse.com>
+
+- update to version 2.2.18
+   * [CVE-2025-59830](https://github.com/rack/rack/security/advisories/GHSA-625h-95r8-8xpm) Unbounded parameter parsing in `Rack::QueryParser` can lead to memory exhaustion via semicolon-separated parameters.
+
+-------------------------------------------------------------------
 Thu Jun 12 15:23:43 UTC 2025 - Eduardo Navarro <enavarro@suse.com>
 
 - update to version 2.2.17
