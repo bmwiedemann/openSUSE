@@ -335,4 +335,12 @@
     <comment>fix build with new glibc</comment>
     <requestid>1301357</requestid>
   </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>5f3574036fa602f9f7b87f2cacf508c1</srcmd5>
+    <version>17.0.16.0</version>
+    <time>1759156346</time>
+    <user>anag_factory</user>
+    <comment>Use gcc_version to decide about compiler</comment>
+    <requestid>1307557</requestid>
+  </revision>
 </revisionlist>

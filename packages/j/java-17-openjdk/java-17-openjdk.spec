@@ -125,6 +125,9 @@
 %global tapsetroot %{_datadir}/systemtap
 %global tapsetdir %{tapsetroot}/tapset/%{_build_cpu}
 %endif
+%if 0%{?gcc_version} < 7 || 0%{?suse_version} < 1500
+%define with_gcc 7
+%endif
 Name:           java-%{featurever}-openjdk
 Version:        %{package_version}
 Release:        0
@@ -191,6 +194,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
+BuildRequires:  gcc%{?with_gcc}
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  java-ca-certificates
@@ -243,13 +248,6 @@ Provides:       jre1.6.x
 Provides:       jre1.7.x
 Provides:       jre1.8.x
 Provides:       jre1.9.x
-%endif
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc >= 7
-BuildRequires:  gcc-c++ >= 7
 %endif
 %if %{with_system_lcms}
 BuildRequires:  liblcms2-devel
@@ -472,11 +470,11 @@ mkdir -p %{buildoutputdir}
 pushd %{buildoutputdir}
 
 bash ../configure \
-%if 0%{?suse_version} < 1500
-    CPP=cpp-7 \
-    CXX=g++-7 \
-    CC=gcc-7 \
-    NM=gcc-nm-7 \
+%if 0%{?with_gcc}
+    CPP=cpp-%{with_gcc} \
+    CXX=g++-%{with_gcc} \
+    CC=gcc-%{with_gcc} \
+    NM=gcc-nm-%{with_gcc} \
 %endif
 %if %{is_release}
     --with-version-pre="" \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 28 11:01:03 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Use gcc_version to decide about compiler
+
+-------------------------------------------------------------------
 Fri Aug 22 07:06:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - jdk-8354941.patch: JDK-8354941: Build failure with glibc 2.42 due to
