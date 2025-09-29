@@ -271,4 +271,12 @@ Hope everyone find this sattisfactory now.</comment>
     <comment>bringing back geronimo-j2ee-connector-1_5-api that might be needed outside factory</comment>
     <requestid>1119267</requestid>
   </revision>
+  <revision rev="38" vrev="41">
+    <srcmd5>fd877700cbdd7518a74bd086bc0c5d6f</srcmd5>
+    <version>1.2</version>
+    <time>1759173131</time>
+    <user>anag_factory</user>
+    <comment>Don't require update-alternatives</comment>
+    <requestid>1307705</requestid>
+  </revision>
 </revisionlist>

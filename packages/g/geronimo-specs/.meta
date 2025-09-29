@@ -4,5 +4,4 @@
 J2EE-Specifications Note: You should use the subpackages for the
 Specifications that you actually need.	The ones installed by the main
 package are deprecated and will disapear in future releases.</description>
-  <devel project="Java:packages" package="geronimo-specs"/>
 </package>
