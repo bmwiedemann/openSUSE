@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 29 13:53:31 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1250643, bsc#1250644)
+  * s390-tools-libekmfweb-Fix-generation-of-certificate-or-CSR-with-RSA-PSS-instead-of-RSA.patch
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Thu Aug 21 12:44:20 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1248264)
