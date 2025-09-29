@@ -68,8 +68,6 @@ Patch4:         gdm-xauthlocalhostname.patch
 Patch5:         gdm-switch-to-tty1.patch
 # PATCH-FIX-OPENSUSE gdm-initial-setup-hardening.patch boo#1140851, glgo#GNOME/gnome-initial-setup#76 fezhang@suse.com -- Prevent gnome-initial-setup running if any regular user has perviously logged into the system
 Patch6:         gdm-initial-setup-hardening.patch
-# PATCH-FIX-UPSTREAM gdm-plymouth-quit-wait.patch bsc#1243439 xwang@suse.com -- Disable plymouth-quit-wait.service
-Patch9:         gdm-plymouth-quit-wait.patch
 # PATCH-FIX-OPENSUSE gdm-service-keytable.patch bsc#1248831 bsc#1250366 yfjiang@suse.com -- set KEYMAP to XkbLayout for GNOME
 Patch10:        gdm-service-keytable.patch
 
@@ -124,11 +122,9 @@ Requires:       gnome-shell
 # xdm package ships systemd display-manager service and other common scripts
 # between display managers (bsc#1084655)
 Requires:       (gdm-xdm-integration or gdm-systemd)
-%if !0%{?is_opensuse}
 Suggests:       gdm-systemd
-%else
-Suggests:       gdm-xdm-integration
-%endif
+# whenever xdm is installed, we need to be sure to integrate into it
+Requires:       (gdm-xdm-integration if xdm)
 Requires(post): dconf
 Requires(pre):  group(video)
 Recommends:     iso-codes

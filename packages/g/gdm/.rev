@@ -2300,4 +2300,12 @@
   when using gdm-systemd instead of xdm (bsc#1248831, bsc#1250366). (forwarded request 1306710 from dimstar)</comment>
     <requestid>1306955</requestid>
   </revision>
+  <revision rev="291" vrev="3">
+    <srcmd5>3d72de948debc46a2fcd8c849b01c8e1</srcmd5>
+    <version>49.0.1</version>
+    <time>1759156302</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1307728</requestid>
+  </revision>
 </revisionlist>

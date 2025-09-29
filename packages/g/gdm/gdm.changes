@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:14:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require gdm-xdm-integration when xdm is installed: otherwise we
+  end up with a non-functional setup of xdm.
+
+-------------------------------------------------------------------
+Thu Sep 25 06:40:13 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Drop gdm-plymouth-quit-wait.patch: Fixed by commit d2c0213b.
+
+-------------------------------------------------------------------
+Wed Sep 24 15:22:46 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Suggest gdm-systemd in openSUSE too, just as we do on SLE. We
+  should be ready for that switch in Tumbleweed (not yet migrating
+  existing users from xdm to gdm native; this only affects new
+  installations)
+
+-------------------------------------------------------------------
 Tue Sep 23 08:52:11 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
 
 - Add gdm-service-keytable.patch: set KEYMAP to XkbLayout for GNOME
