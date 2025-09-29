@@ -2,6 +2,7 @@
 # spec file for package ghostscript
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,15 +24,20 @@
 %global psuffix %{nil}
 %bcond_without  apparmor
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           ghostscript%{psuffix}
-Version:        10.05.1
+Version:        10.06.0
 Release:        0
 Summary:        The Ghostscript interpreter for PostScript and PDF
 License:        AGPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://www.ghostscript.com/
 # Use "osc service manualrun" to fetch Source0:
-Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10051/ghostscript-%{version}.tar.gz
+Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10060/ghostscript-%{version}.tar.gz
 # How to manually (i.e. without "osc service") find the Source0 URL at Ghostscript upstream
 # (example for the Ghostscript 10.05.1 release):
 # Go to https://www.ghostscript.com
@@ -45,6 +51,11 @@ Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/d
 # -> "release notes" https://ghostscript.readthedocs.io/en/gs10.05.1/News.html
 Source10:       apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
+# Patch1 ghostscript-10.06.0-Fix_32-bit_build.patch is the upstream commit
+# https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/patch/?id=3c0be6e4fcffa63e4a5a1b0aec057cebc4d2562f
+# to fix https://bugs.ghostscript.com/show_bug.cgi?id=708824
+# "ghostscript 10.06.0 compilation failure on 32-bit archs":
+Patch1:         ghostscript-10.06.0-Fix_32-bit_build.patch
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Source100...Source999 is for sources from SUSE which are not intended for upstream:
@@ -62,10 +73,15 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 BuildRequires:  update-alternatives
-BuildRequires:  zlib-devel
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+%endif
+BuildRequires:  zlib-devel
 # Provide the additional RPM Provides of the ghostscript-library package
 # (ghostscript_x11 is provided by the ghostscript-x11 sub-package, see below).
 # The "Provides: ghostscript_any" is there to support "BuildRequires: ghostscript_any"
@@ -165,7 +181,11 @@ This package contains the development files for Ghostscript.
 
 %prep
 %setup -q -n ghostscript-%{version}
-
+# Patch1 ghostscript-10.06.0-Fix_32-bit_build.patch is the upstream commit
+# https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/patch/?id=3c0be6e4fcffa63e4a5a1b0aec057cebc4d2562f
+# to fix https://bugs.ghostscript.com/show_bug.cgi?id=708824
+# "ghostscript 10.06.0 compilation failure on 32-bit archs":
+%patch -P 1 -p1
 # Patch101 ijs_exec_server_dont_use_sh.patch fixes IJS printing problem
 # additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
 %patch -P 101 -p1
@@ -342,10 +362,20 @@ install -D -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/apparmor.d/ghostscript
 %endif
 
 # Move /usr/bin/gs to /usr/bin/gs.bin to be able to use update-alternatives
-install -d %{buildroot}%{_sysconfdir}/alternatives
 mv %{buildroot}%{_bindir}/gs %{buildroot}%{_bindir}/gs.bin
+%if %{with libalternatives}
+mkdir -p %{buildroot}%{_datadir}/libalternatives/gs
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/gs
+cat > %{buildroot}%{_datadir}/libalternatives/gs/10.conf <<-EOF
+	binary=%{_bindir}/gs.bin
+	man=gs.1
+	group=gs
+	EOF
+%else
+install -d %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_bindir}/gs.bin %{buildroot}%{_sysconfdir}/alternatives/gs
 ln -sf %{_sysconfdir}/alternatives/gs %{buildroot}%{_bindir}/gs
+%endif
 
 %post
 /sbin/ldconfig
@@ -354,20 +384,30 @@ ln -sf %{_sysconfdir}/alternatives/gs %{buildroot}%{_bindir}/gs
 %apparmor_reload %{_sysconfdir}/apparmor.d/ghostscript
 %endif
 %endif
+%if ! %{with libalternatives}
 %{_sbindir}/update-alternatives \
   --install %{_bindir}/gs gs %{_bindir}/gs.bin 15
+%endif
 
 %postun -p /sbin/ldconfig
 
+%if ! %{with libalternatives}
 %preun
 if test $1 -eq 0 ; then
     %{_sbindir}/update-alternatives \
     --remove gs %{_bindir}/gs.bin
 fi
+%endif
 
 %files
 %license LICENSE
+%if %{with libalternatives}
+%dir %{_datadir}/libalternatives/
+%dir %{_datadir}/libalternatives/gs/
+%{_datadir}/libalternatives/gs/10.conf
+%else
 %ghost %config %{_sysconfdir}/alternatives/gs
+%endif
 %{_bindir}/dvipdf
 %{_bindir}/eps2eps
 %{_bindir}/gs

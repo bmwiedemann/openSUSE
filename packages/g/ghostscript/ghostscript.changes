@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 16 13:45:31 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 10.06.0
+  See 'Recent Changes in Ghostscript' at Ghostscript upstream
+  https://ghostscript.readthedocs.io/en/gs10.06.0/News.html
+  * This release addresses CVEs: TBC
+  * The 10.06.0 removes the non-standard operator "selectdevice"
+    (cf. the entry below dated Tue Apr  1 09:56:06 UTC 2025)
+- ghostscript-10.06.0-Fix_32-bit_build.patch is the upstream commit
+  https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/patch/?id=3c0be6e4fcffa63e4a5a1b0aec057cebc4d2562f
+  to fix https://bugs.ghostscript.com/show_bug.cgi?id=708824
+  "ghostscript 10.06.0 compilation failure on 32-bit archs"
+
+-------------------------------------------------------------------
+Tue Sep 16 08:15:18 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Switch over to libalternatives for ghostscript to provide a gs
+  variant (bsc#1245896)
+
+-------------------------------------------------------------------
 Mon Aug  4 07:14:46 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 10.05.1
