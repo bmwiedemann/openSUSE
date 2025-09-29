@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycrdt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,26 @@
 
 
 Name:           python-pycrdt
-Version:        0.12.26
+Version:        0.12.37
 Release:        0
 Summary:        Python bindings for Yrs
 License:        MIT
 URL:            https://github.com/y-crdt/pycrdt
 Source0:        pycrdt-%{version}.tar.xz
 Source1:        vendor.tar.xz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module maturin >= 1.4.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-anyio >= 4.4 with python-anyio < 5)
-Requires:       (python-importlib-metadata >= 3.6 if python-base < 3.10)
 Requires:       (python-typing_extensions >= 4.14.0 if python-base < 3.11)
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 8}
 BuildRequires:  %{python_module anyio >= 4.4.0 with %python-anyio < 5}
 BuildRequires:  %{python_module exceptiongroup if %python-base < 3.11}
-BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10}
-BuildRequires:  %{python_module trio >= 0.25.1 with %python-trio < 0.31}
+BuildRequires:  %{python_module trio >= 0.25.1 with %python-trio < 0.32}
 BuildRequires:  %{python_module typing_extensions >= 4.14.0 if %python-base < 3.11}
 # /SECTION
 %python_subpackages

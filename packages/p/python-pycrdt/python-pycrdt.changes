@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:35:31 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.37
+  * Drop Python 3.9 support.
+  * Drop dependency on importlib_metadata.
+  * Support async callbacks in observe_subdocs.
+  * Allow iterating over a document events by registering async
+    callbacks when async transactions are used.
+- Release 0.12.36
+  * Support document change async callbacks.
+  * Allow get_state and get_update to use an existing transaction.
+- Release 0.12.35
+  * Bump trio to <0.32.
+- Release 0.12.34
+  * Add snapshot support.
+  * Install multiple Pythons to not rely on Windows hosted Python
+    cache.
+- Release 0.12.32
+  * Fix skip_gc in Doc.
+- Release 0.12.31
+  * Expose skip_gc in Doc.
+- Release 0.12.30
+  * Allow turning garbage collection off.
+- Release 0.12.29
+  * Improve performance of map.__contains__.
+- Release 0.12.28
+  * Upgrade pyo3 to v0.26.0.
+- Release 0.12.27
+  * Support XML insert_embed shared types.
+  * Fix UndoManager with XmlFragment.
+
+-------------------------------------------------------------------
 Sat Aug  2 16:49:14 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.26

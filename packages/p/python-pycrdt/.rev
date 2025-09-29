@@ -159,4 +159,39 @@
   * Bump trio to &lt;0.31.</comment>
     <requestid>1297168</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ca9e9e6c2b5016333dd7c5f8a6841098</srcmd5>
+    <version>0.12.37</version>
+    <time>1759156652</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.37
+  * Drop Python 3.9 support.
+  * Drop dependency on importlib_metadata.
+  * Support async callbacks in observe_subdocs.
+  * Allow iterating over a document events by registering async
+    callbacks when async transactions are used.
+- Release 0.12.36
+  * Support document change async callbacks.
+  * Allow get_state and get_update to use an existing transaction.
+- Release 0.12.35
+  * Bump trio to &lt;0.32.
+- Release 0.12.34
+  * Add snapshot support.
+  * Install multiple Pythons to not rely on Windows hosted Python
+    cache.
+- Release 0.12.32
+  * Fix skip_gc in Doc.
+- Release 0.12.31
+  * Expose skip_gc in Doc.
+- Release 0.12.30
+  * Allow turning garbage collection off.
+- Release 0.12.29
+  * Improve performance of map.__contains__.
+- Release 0.12.28
+  * Upgrade pyo3 to v0.26.0.
+- Release 0.12.27
+  * Support XML insert_embed shared types.
+  * Fix UndoManager with XmlFragment.</comment>
+    <requestid>1307734</requestid>
+  </revision>
 </revisionlist>
