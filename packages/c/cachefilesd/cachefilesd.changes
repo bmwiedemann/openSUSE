@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  8 07:44:57 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch cachefilesd-nohang-at-reboot.patch
+  * Try to start before network file systems
+  * Should also stop after network file systems but before network
+
+-------------------------------------------------------------------
 Wed Mar 19 21:18:39 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
 
 - Fix cachefilesd startup failure (bsc#1239807)

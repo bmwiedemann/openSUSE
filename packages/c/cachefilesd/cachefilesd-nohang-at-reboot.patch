@@ -1,0 +1,31 @@
+It helps a lot if the caching management daemon
+goes down before remote network file systems and
+the network it self.  Otherwise one have to wait
+at shutdown up to the point where systemd kills
+the daemon due to the timeout:
+
+[*     ] A stop job is running for Local network file caching management daemon (6min / 6min)
+
+
+---
+ cachefilesd.service |    8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+--- cachefilesd.service
++++ cachefilesd.service	2025-09-08 07:15:41.715782827 +0000
+@@ -1,7 +1,15 @@
+ [Unit]
+ Description=Local network file caching management daemon
++Before=remote-fs.target
++Before=autofs.service
+ 
+ [Service]
++Restart=no
++IgnoreSIGPIPE=no
++KillMode=process
++RemainAfterExit=yes
++RuntimeDirectory=cachefilesd
++ExecStartPre=-/sbin/modprobe -qab cachefiles
+ ExecStart=/usr/sbin/cachefilesd -s -n
+ 
+ [Install]

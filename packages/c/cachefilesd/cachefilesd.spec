@@ -1,7 +1,7 @@
 #
 # spec file for package cachefilesd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source:         http://people.redhat.com/~dhowells/fscache/%{name}-%{version}.ta
 Patch0:         cachefilesd-autotools.patch
 Patch1:         cachefilesd-config.patch
 Patch2:         cachefilesd-monitoring-howto-update.patch
+Patch3:         cachefilesd-nohang-at-reboot.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
@@ -42,6 +43,7 @@ caching framework for mounted filesystems.
 %patch -P 0
 %patch -P 1
 %patch -P 2 -p1
+%patch -P 3 -p0
 
 %build
 autoreconf -fiv
