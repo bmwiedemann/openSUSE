@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-huggingface-hub
-Version:        0.26.3
+Version:        0.33.1
 Release:        0
 Summary:        Client library for interaction with the huggingface hub
 License:        Apache-2.0
@@ -58,17 +58,21 @@ Client library to download and publish models, datasets and other repos on the h
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/huggingface-cli
+%python_clone -a %{buildroot}%{_bindir}/tiny-agents
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
 %python_install_alternative huggingface-cli
+%python_install_alternative tiny-agents
 
 %postun
 %python_uninstall_alternative huggingface-cli
+%python_uninstall_alternative tiny-agents
 
 %files %{python_files}
 %python_alternative %{_bindir}/huggingface-cli
 %{python_sitelib}/huggingface_hub
 %{python_sitelib}/huggingface_hub-%{version}.dist-info
+%python_alternative %{_bindir}/tiny-agents
 
 %changelog

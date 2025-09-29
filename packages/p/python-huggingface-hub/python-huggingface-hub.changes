@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 19 18:58:08 UTC 2025 - Stefan Haas <stefan.haas@suse.com>
+
+- Update to 0.33.1
+  * [Tiny agents] Add tool call to messages
+  * fix: update payload preparation to merge parameters into the output dictionary
+  * fix(inference_endpoints): use GET healthRoute instead of GET / to check status
+  * Recursive filter_none in Inference Providers  
+
+-------------------------------------------------------------------
 Fri Aug  1 04:58:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
