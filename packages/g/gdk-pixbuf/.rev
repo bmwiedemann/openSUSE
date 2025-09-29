@@ -1644,4 +1644,13 @@
   + Updated translations. (forwarded request 1306803 from iznogood)</comment>
     <requestid>1306956</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>5f8aad8c4cb6fd5f7a7410cfc7d9776e</srcmd5>
+    <version>2.44.2</version>
+    <time>1759173123</time>
+    <user>anag_factory</user>
+    <comment>- Enable 'other' loaders, which includes ani, bmp, ico, pnm and xpm
+  (boo#1250583) (forwarded request 1307663 from dimstar)</comment>
+    <requestid>1307701</requestid>
+  </revision>
 </revisionlist>

@@ -129,7 +129,7 @@ cp -a %{SOURCE2} .
         -Dtiff=disabled               \
         -Djpeg=disabled               \
         -Dgif=disabled                \
-        -Dothers=disabled             \
+        -Dothers=enabled              \
         -Dglycin=enabled              \
         -Dbuiltin_loaders='glycin'    \
         -Dthumbnailer=disabled        \
@@ -214,6 +214,15 @@ fi
 %dir %{_libdir}/gdk-pixbuf-2.0
 %dir %{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}
 %dir %{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}/loaders
+%{_libdir}/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ani.so
+%{_libdir}/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-bmp.so
+%{_libdir}/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-icns.so
+%{_libdir}/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ico.so
+%{_libdir}/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-pnm.so
+%{_libdir}/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-qtif.so
+%{_libdir}/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tga.so
+%{_libdir}/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xbm.so
+%{_libdir}/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xpm.so
 
 %files -n typelib-1_0-GdkPixbuf-2_0
 %{_libdir}/girepository-1.0/GdkPixbuf-2.0.typelib
