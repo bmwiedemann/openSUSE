@@ -9,6 +9,9 @@ Wed Sep  3 18:52:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
     character names
   * PdfXMPPAcket: Make GetDescription() const correct
   * PdfMemDocument: Fixed upgrade to PDF2.0 in a incremental update
+  * PdfTokenizer: Fixed free-after-use after failing to parse
+    content while reading literal tokens.
+    (bsc#1249105)
 - drop cmake variables unused in the project
 
 -------------------------------------------------------------------
