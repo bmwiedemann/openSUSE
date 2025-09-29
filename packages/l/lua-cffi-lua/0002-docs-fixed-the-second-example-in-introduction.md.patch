@@ -1,0 +1,29 @@
+From ea51b4816bf331495295eae8cb78cc0761a0ea39 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Wed, 27 Aug 2025 01:38:47 +0200
+Subject: [PATCH 2/2] docs: fixed the second example in introduction.md
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Matěj Cepl <mcepl@cepl.eu>
+---
+ docs/introduction.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/introduction.md b/docs/introduction.md
+index 615e050..99816bf 100644
+--- a/docs/introduction.md
++++ b/docs/introduction.md
+@@ -94,7 +94,7 @@ local pt = point(3, 4)
+ print(pt.x, pt.y) -- 3, 4
+ print(#pt) -- 5
+ print(pt:area()) -- 25
+-local pt2 = a + point(0.5, 8)
++local pt2 = pt + point(0.5, 8)
+ print(#pt2) -- 12.5
+ ```
+ 
+-- 
+2.51.0
+

@@ -1,0 +1,25 @@
+From c5e92e107aff93693d0b472c4c10402ba23a4652 Mon Sep 17 00:00:00 2001
+From: Richard Thanki <richardthanki@gmail.com>
+Date: Thu, 2 Mar 2023 04:52:01 +0000
+Subject: [PATCH 1/2] Corrects 1st example in introduction.md
+
+---
+ docs/introduction.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/introduction.md b/docs/introduction.md
+index 4454254..615e050 100644
+--- a/docs/introduction.md
++++ b/docs/introduction.md
+@@ -24,7 +24,7 @@ local cffi = require("cffi")
+ cffi.cdef [[
+     int printf(char const *fmt, ...);
+ ]]
+-ffi.C.printf("hello %s\n", "world")
++cffi.C.printf("hello %s\n", "world")
+ ```
+ 
+ Note how this is pretty much identical to the example on the LuaJIT website.
+-- 
+2.51.0
+

@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Aug 26 23:47:19 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add two patches fixing typos in documentation:
+  - 0001-Corrects-1st-example-in-introduction.md.patch
+  - 0002-docs-fixed-the-second-example-in-introduction.md.patch
+
+-------------------------------------------------------------------
+Tue Aug 26 22:10:40 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.3+git.1748465608.9f2acc9:
+  * copyright update
+  * fix lib::close on windows
+  * src/platform.hh: fix or1k build
+  * ci: try setting LSAN_OPTIONS
+  * ci: also try pip without --break-system-packages
+  * ci: reorder arguments for pip
+  * ci: disable lsan for sanitized builds for now
+  * ci: allow pip to "break" system
+  * ci: use macos-latest
+  * handle __new metamethod
+
+-------------------------------------------------------------------
+Tue Aug 26 22:08:06 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Initial packaging effort for lua-cffi 0.2.3
