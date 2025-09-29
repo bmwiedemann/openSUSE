@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 29 09:32:28 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove non-reproducible files from container
+
+-------------------------------------------------------------------
 Sun Sep 21 19:21:31 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - adjust for cosign version 2.6
