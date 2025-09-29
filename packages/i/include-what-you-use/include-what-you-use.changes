@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 27 21:43:00 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.25, update LLVM/Clang to version 21.
+  * Add support for GNU __cleanup__ attribute.
+  * Improved handling of member pointers.
+  * Improved reporting of C arrays.
+  * Much improved understanding of builtin type traits.
+  * New --export_mappings option to generate external mappings from
+    internal (breaking change).
+  * New --exclude option to skip individual source files.
+  * Improved libc and POSIX mappings.
+- Rebase iwyu_include_picker.patch.
+
+-------------------------------------------------------------------
 Sat Jul 12 13:33:28 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Skip adding (unnecessary) RPATH.

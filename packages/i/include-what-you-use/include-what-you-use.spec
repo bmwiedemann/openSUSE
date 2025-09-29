@@ -1,7 +1,7 @@
 #
 # spec file for package include-what-you-use
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define _llvm_version 20
+%define _llvm_version 21
 
 Name:           include-what-you-use
-Version:        0.24
+Version:        0.25
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
@@ -69,11 +69,6 @@ refactoring tool.
 sed -i s#lib/#lib\${LLVM_LIBDIR_SUFFIX}/#g CMakeLists.txt
 
 %build
-# Remove obsolete files - this is now hardcoded into iwyu_include_picker.cc.
-rm gcc.libc.imp gcc.symbols.imp gcc.stl.headers.imp stl.c.headers.imp
-# This also obsoletes iwyu.gcc.imp.
-rm iwyu.gcc.imp
-
 %cmake -DIWYU_LLVM_ROOT_PATH=%{_libdir} \
     -DCMAKE_SKIP_RPATH:BOOL=ON \
 %if %{suse_version} <= 1500

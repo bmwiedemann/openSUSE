@@ -1,8 +1,8 @@
 diff --git a/iwyu_include_picker.cc b/iwyu_include_picker.cc
-index 126e215..98b5ea0 100644
+index fdb7364..1aa49f5 100644
 --- a/iwyu_include_picker.cc
 +++ b/iwyu_include_picker.cc
-@@ -78,14 +78,14 @@ struct IncludeMapEntry {      // A POD so we can make the input static
+@@ -82,14 +82,14 @@ struct IncludeMapEntry {      // A POD so we can make the input static
  namespace {
  
  // Listed below are all IWYU's native symbol and include mappings,
@@ -19,7 +19,7 @@ index 126e215..98b5ea0 100644
    // I ignored all entries that only appeared once on the list (eg uint32_t).
    // I then added in NULL, which according to [diff.null] C.2.2.3, can
    // be defined in <clocale>, <cstddef>, <cstdio>, <cstdlib>,
-@@ -271,6 +271,23 @@ const IncludeMapEntry stdlib_cxx_symbol_map[] = {
+@@ -339,6 +339,23 @@ const IncludeMapEntry stdlib_cxx_symbol_map[] = {
    { "std::size_t", kPrivate, "<ctime>", kPublic },
    { "std::size_t", kPrivate, "<cuchar>", kPublic },
    { "std::size_t", kPrivate, "<cwchar>", kPublic },
@@ -43,7 +43,7 @@ index 126e215..98b5ea0 100644
  };
  
  // Symbol -> include mappings for GNU libstdc++
-@@ -281,51 +298,63 @@ const IncludeMapEntry libstdcpp_symbol_map[] = {
+@@ -349,51 +366,63 @@ const IncludeMapEntry libstdcpp_symbol_map[] = {
  
  const IncludeMapEntry libc_include_map[] = {
    // Private -> public include mappings for GNU libc
@@ -59,18 +59,18 @@ index 126e215..98b5ea0 100644
    { "<bits/cmathcalls.h>", kPrivate, "<complex.h>", kPublic },
    { "<bits/confname.h>", kPrivate, "<unistd.h>", kPublic },
 +  { "<bits/cpu-set.h>", kPrivate, "<sched.h>", kPublic },
-+  { "<bits/dirent_ext.h>", kPrivate, "<dirent.h>", kPublic },
    { "<bits/dirent.h>", kPrivate, "<dirent.h>", kPublic },
-   { "<bits/dlfcn.h>", kPrivate, "<dlfcn.h>", kPublic },
++  { "<bits/dirent_ext.h>", kPrivate, "<dirent.h>", kPublic },
 +  { "<bits/dl_find_object.h>", kPrivate, "<dlfcn.h>", kPublic },
+   { "<bits/dlfcn.h>", kPrivate, "<dlfcn.h>", kPublic },
    { "<bits/elfclass.h>", kPrivate, "<link.h>", kPublic },
    { "<bits/endian.h>", kPrivate, "<endian.h>", kPublic },
    { "<bits/environments.h>", kPrivate, "<unistd.h>", kPublic },
    { "<bits/epoll.h>", kPrivate, "<sys/epoll.h>", kPublic },
 +  { "<bits/err-ldbl.h>", kPrivate, "<err.h>", kPublic },
    { "<bits/errno.h>", kPrivate, "<errno.h>", kPublic },
-   { "<bits/error.h>", kPrivate, "<error.h>", kPublic },
 +  { "<bits/error-ldbl.h>", kPrivate, "<error.h>", kPublic },
+   { "<bits/error.h>", kPrivate, "<error.h>", kPublic },
    { "<bits/eventfd.h>", kPrivate, "<sys/eventfd.h>", kPublic },
    { "<bits/fcntl.h>", kPrivate, "<fcntl.h>", kPublic },
    { "<bits/fcntl2.h>", kPrivate, "<fcntl.h>", kPublic },
@@ -102,16 +102,16 @@ index 126e215..98b5ea0 100644
    { "<bits/locale.h>", kPrivate, "<locale.h>", kPublic },
 -  { "<bits/math-finite.h>", kPrivate, "<math.h>", kPublic },
 +  { "<bits/long-double.h>", kPrivate, "<sys/cdefs.h>", kPublic },
++  { "<bits/math-vector.h>", kPrivate, "<math.h>", kPublic },
 +  { "<bits/mathcalls-helper-functions.h>", kPrivate, "<math.h>", kPublic },
++  { "<bits/mathcalls-narrow.h>", kPrivate, "<math.h>", kPublic },
    { "<bits/mathcalls.h>", kPrivate, "<math.h>", kPublic },
 -  { "<bits/mathdef.h>", kPrivate, "<math.h>", kPublic },
 -  { "<bits/mathinline.h>", kPrivate, "<math.h>", kPublic },
-+  { "<bits/mathcalls-narrow.h>", kPrivate, "<math.h>", kPublic },
 +  { "<bits/mathdef.h>", kPrivate, "<complex.h>", kPublic },
-+  { "<bits/math-vector.h>", kPrivate, "<math.h>", kPublic },
-+  { "<bits/mman_ext.h>", kPrivate, "<sys/mman.h>", kPublic },
    { "<bits/mman.h>", kPrivate, "<sys/mman.h>", kPublic },
 -  { "<bits/mman-shared.h>", kPrivate, "<sys/mman.h>", kPublic },
++  { "<bits/mman_ext.h>", kPrivate, "<sys/mman.h>", kPublic },
    { "<bits/monetary-ldbl.h>", kPrivate, "<monetary.h>", kPublic },
    { "<bits/mqueue.h>", kPrivate, "<mqueue.h>", kPublic },
    { "<bits/mqueue2.h>", kPrivate, "<mqueue.h>", kPublic },
@@ -120,14 +120,14 @@ index 126e215..98b5ea0 100644
    { "<bits/netdb.h>", kPrivate, "<netdb.h>", kPublic },
    { "<bits/param.h>", kPrivate, "<sys/param.h>", kPublic },
    { "<bits/poll.h>", kPrivate, "<sys/poll.h>", kPrivate },
-@@ -334,67 +363,108 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -402,8 +431,15 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/posix2_lim.h>", kPrivate, "<limits.h>", kPublic },
    { "<bits/posix_opt.h>", kPrivate, "<unistd.h>", kPublic },
    { "<bits/printf-ldbl.h>", kPrivate, "<printf.h>", kPublic },
 +  { "<bits/procfs-extra.h>", kPrivate, "<sys/procfs.h>", kPublic },
-+  { "<bits/procfs.h>", kPrivate, "<sys/procfs.h>", kPublic },
 +  { "<bits/procfs-id.h>", kPrivate, "<sys/procfs.h>", kPublic },
 +  { "<bits/procfs-prregset.h>", kPrivate, "<sys/procfs.h>", kPublic },
++  { "<bits/procfs.h>", kPrivate, "<sys/procfs.h>", kPublic },
 +  { "<bits/pthread_stack_min-dynamic.h>", kPrivate, "<pthread.h>", kPublic },
    { "<bits/pthreadtypes.h>", kPrivate, "<pthread.h>", kPublic },
 +  { "<bits/ptrace-shared.h>", kPrivate, "<sys/ptrace.h>", kPublic },
@@ -136,11 +136,7 @@ index 126e215..98b5ea0 100644
    { "<bits/sched.h>", kPrivate, "<sched.h>", kPublic },
    { "<bits/select.h>", kPrivate, "<sys/select.h>", kPublic },
    { "<bits/select2.h>", kPrivate, "<sys/select.h>", kPublic },
--  { "<bits/sem.h>", kPrivate, "<sys/sem.h>", kPublic },
-   { "<bits/semaphore.h>", kPrivate, "<semaphore.h>", kPublic },
-+  { "<bits/sem.h>", kPrivate, "<sys/sem.h>", kPublic },
-   { "<bits/setjmp.h>", kPrivate, "<setjmp.h>", kPublic },
-   { "<bits/setjmp2.h>", kPrivate, "<setjmp.h>", kPublic },
+@@ -414,42 +450,44 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/shm.h>", kPrivate, "<sys/shm.h>", kPublic },
    { "<bits/sigaction.h>", kPrivate, "<signal.h>", kPublic },
    { "<bits/sigcontext.h>", kPrivate, "<signal.h>", kPublic },
@@ -165,19 +161,19 @@ index 126e215..98b5ea0 100644
    { "<bits/stat.h>", kPrivate, "<sys/stat.h>", kPublic },
    { "<bits/statfs.h>", kPrivate, "<sys/statfs.h>", kPublic },
    { "<bits/statvfs.h>", kPrivate, "<sys/statvfs.h>", kPublic },
--  { "<bits/stdio-ldbl.h>", kPrivate, "<stdio.h>", kPublic },
--  { "<bits/stdio-lock.h>", kPrivate, "<libio.h>", kPublic },
+   { "<bits/statx-generic.h>", kPrivate, "<sys/stat.h>", kPublic },
 +  { "<bits/statx.h>", kPrivate, "<sys/stat.h>", kPublic },
 +  { "<bits/stdint-intn.h>", kPrivate, "<stdint.h>", kPublic },
 +  { "<bits/stdint-uintn.h>", kPrivate, "<stdint.h>", kPublic },
+   { "<bits/stdio-ldbl.h>", kPrivate, "<stdio.h>", kPublic },
+-  { "<bits/stdio-lock.h>", kPrivate, "<libio.h>", kPublic },
    { "<bits/stdio.h>", kPrivate, "<stdio.h>", kPublic },
-   { "<bits/stdio2.h>", kPrivate, "<stdio.h>", kPublic },
 +  { "<bits/stdio2-decl.h>", kPrivate, "<stdio.h>", kPublic },
-+  { "<bits/stdio-ldbl.h>", kPrivate, "<stdio.h>", kPublic },
+   { "<bits/stdio2.h>", kPrivate, "<stdio.h>", kPublic },
    { "<bits/stdio_lim.h>", kPrivate, "<stdio.h>", kPublic },
    { "<bits/stdlib-bsearch.h>", kPrivate, "<stdlib.h>", kPublic },
    { "<bits/stdlib-float.h>", kPrivate, "<stdlib.h>", kPublic },
--  { "<bits/stdlib-ldbl.h>", kPrivate, "<stdlib.h>", kPublic },
+   { "<bits/stdlib-ldbl.h>", kPrivate, "<stdlib.h>", kPublic },
    { "<bits/stdlib.h>", kPrivate, "<stdlib.h>", kPublic },
 -  { "<bits/string.h>", kPrivate, "<string.h>", kPublic },
 -  { "<bits/string2.h>", kPrivate, "<string.h>", kPublic },
@@ -186,19 +182,21 @@ index 126e215..98b5ea0 100644
 -  { "<bits/struct_stat.h>", kPrivate, "<sys/stat.h>", kPublic },
 -  { "<bits/struct_stat.h>", kPrivate, "<ftw.h>", kPublic },
 -  { "<bits/sys_errlist.h>", kPrivate, "<stdio.h>", kPublic },
-+  { "<bits/stdlib-ldbl.h>", kPrivate, "<stdlib.h>", kPublic },
 +  { "<bits/string_fortified.h>", kPrivate, "<string.h>", kPublic },
 +  { "<bits/strings_fortified.h>", kPrivate, "<strings.h>", kPublic },
    { "<bits/syscall.h>", kPrivate, "<sys/syscall.h>", kPublic },
 -  { "<bits/sysctl.h>", kPrivate, "<sys/sysctl.h>", kPublic },
-+  { "<bits/syslog.h>", kPrivate, "<sys/syslog.h>", kPrivate },
    { "<bits/syslog-ldbl.h>", kPrivate, "<sys/syslog.h>", kPrivate },
    { "<bits/syslog-path.h>", kPrivate, "<sys/syslog.h>", kPrivate },
--  { "<bits/syslog.h>", kPrivate, "<sys/syslog.h>", kPrivate },
--  { "<bits/termios-c_lflag.h>", kPrivate, "<termios.h>", kPublic },
--  { "<bits/termios-struct.h>", kPrivate, "<termios.h>", kPublic },
--  { "<bits/termios-tcflow.h>", kPrivate, "<termios.h>", kPublic },
+   { "<bits/syslog.h>", kPrivate, "<sys/syslog.h>", kPrivate },
++  { "<bits/syslog.h>", kPrivate, "<sys/syslog.h>", kPrivate },
 +  { "<bits/sysmacros.h>", kPrivate, "<sys/sysmacros.h>", kPublic },
+   { "<bits/termios-c_cc.h>", kPrivate, "<termios.h>", kPublic },
+   { "<bits/termios-c_cflag.h>", kPrivate, "<termios.h>", kPublic },
+   { "<bits/termios-c_iflag.h>", kPrivate, "<termios.h>", kPublic },
+@@ -459,16 +497,52 @@ const IncludeMapEntry libc_include_map[] = {
+   { "<bits/termios-struct.h>", kPrivate, "<termios.h>", kPublic },
+   { "<bits/termios-tcflow.h>", kPrivate, "<termios.h>", kPublic },
    { "<bits/termios.h>", kPrivate, "<termios.h>", kPublic },
 +  { "<bits/thread-shared-types.h>", kPrivate, "<threads.h>", kPublic },
    { "<bits/time.h>", kPrivate, "<time.h>", kPublic },
@@ -206,17 +204,18 @@ index 126e215..98b5ea0 100644
    { "<bits/timerfd.h>", kPrivate, "<sys/timerfd.h>", kPublic },
 +  { "<bits/timesize.h>", kPrivate, "<features-time64.h>", kPublic },
    { "<bits/timex.h>", kPrivate, "<sys/timex.h>", kPublic },
-+  { "<bits/types/clockid_t.h>", kPrivate, "<sys/types.h>", kPublic },
-+  { "<bits/types/clock_t.h>", kPrivate, "<time.h>", kPublic },
-+  { "<bits/types/cookie_io_functions_t.h>", kPrivate, "<stdio.h>", kPublic },
-+  { "<bits/types/error_t.h>", kPrivate, "<errno.h>", kPublic },
+   { "<bits/types.h>", kPrivate, "<sys/types.h>", kPublic },
 +  { "<bits/types/FILE.h>", kPrivate, "<stdio.h>", kPublic },
 +  { "<bits/types/__FILE.h>", kPrivate, "<stdio.h>", kPublic },
 +  { "<bits/types/__fpos64_t.h>", kPrivate, "<stdio.h>", kPublic },
 +  { "<bits/types/__fpos_t.h>", kPrivate, "<stdio.h>", kPublic },
-   { "<bits/types.h>", kPrivate, "<sys/types.h>", kPublic },
-+  { "<bits/types/locale_t.h>", kPrivate, "<locale.h>", kPublic },
 +  { "<bits/types/__mbstate_t.h>", kPrivate, "<gconv.h>", kPublic },
++  { "<bits/types/__sigset_t.h>", kPrivate, "<sys/poll.h>", kPrivate },
++  { "<bits/types/clock_t.h>", kPrivate, "<time.h>", kPublic },
++  { "<bits/types/clockid_t.h>", kPrivate, "<sys/types.h>", kPublic },
++  { "<bits/types/cookie_io_functions_t.h>", kPrivate, "<stdio.h>", kPublic },
++  { "<bits/types/error_t.h>", kPrivate, "<errno.h>", kPublic },
++  { "<bits/types/locale_t.h>", kPrivate, "<locale.h>", kPublic },
 +  { "<bits/types/mbstate_t.h>", kPrivate, "<uchar.h>", kPublic },
 +  { "<bits/types/res_state.h>", kPrivate, "<resolv.h>", kPublic },
 +  { "<bits/types/sig_atomic_t.h>", kPrivate, "<signal.h>", kPublic },
@@ -226,13 +225,12 @@ index 126e215..98b5ea0 100644
 -  { "<bits/uio.h>", kPrivate, "<sys/uio.h>", kPublic },
 +  { "<bits/types/sigset_t.h>", kPrivate, "<signal.h>", kPublic },
 +  { "<bits/types/sigval_t.h>", kPrivate, "<signal.h>", kPublic },
-+  { "<bits/types/__sigset_t.h>", kPrivate, "<sys/poll.h>", kPrivate },
 +  { "<bits/types/stack_t.h>", kPrivate, "<signal.h>", kPublic },
 +  { "<bits/types/struct_FILE.h>", kPrivate, "<stdio.h>", kPublic },
++  { "<bits/types/struct___jmp_buf_tag.h>", kPrivate, "<setjmp.h>", kPublic },
 +  { "<bits/types/struct_iovec.h>", kPrivate, "<sys/socket.h>", kPublic },
 +  { "<bits/types/struct_iovec.h>", kPrivate, "<sys/uio.h>", kPublic },
 +  { "<bits/types/struct_itimerspec.h>", kPrivate, "<sys/timerfd.h>", kPublic },
-+  { "<bits/types/struct___jmp_buf_tag.h>", kPrivate, "<setjmp.h>", kPublic },
 +  { "<bits/types/struct_osockaddr.h>", kPrivate, "<sys/socket.h>", kPublic },
 +  { "<bits/types/struct_rusage.h>", kPrivate, "<sys/wait.h>", kPublic },
 +  { "<bits/types/struct_sigstack.h>", kPrivate, "<signal.h>", kPublic },
@@ -247,13 +245,13 @@ index 126e215..98b5ea0 100644
 +  { "<bits/uintn-identity.h>", kPrivate, "<endian.h>", kPublic },
 +  { "<bits/uio-ext.h>", kPrivate, "<sys/uio.h>", kPublic },
 +  { "<bits/uio_lim.h>", kPrivate, "<sys/uio.h>", kPublic },
-+  { "<bits/unistd_ext.h>", kPrivate, "<unistd.h>", kPublic },
    { "<bits/unistd.h>", kPrivate, "<unistd.h>", kPublic },
 -  { "<bits/ustat.h>", kPrivate, "<sys/ustat.h>", kPrivate },
++  { "<bits/unistd_ext.h>", kPrivate, "<unistd.h>", kPublic },
    { "<bits/utmp.h>", kPrivate, "<utmp.h>", kPublic },
    { "<bits/utmpx.h>", kPrivate, "<utmpx.h>", kPublic },
    { "<bits/utsname.h>", kPrivate, "<sys/utsname.h>", kPublic },
-@@ -403,61 +473,155 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -477,61 +551,155 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/wchar-ldbl.h>", kPrivate, "<wchar.h>", kPublic },
    { "<bits/wchar.h>", kPrivate, "<wchar.h>", kPublic },
    { "<bits/wchar2.h>", kPrivate, "<wchar.h>", kPublic },
@@ -425,7 +423,7 @@ index 126e215..98b5ea0 100644
    // Top-level #includes that just forward to another file:
    // $ for i in /usr/include/*; do [ -f $i ] && [ `wc -l < $i` = 1 ] && echo $i; done
    // (poll.h, syscall.h, syslog.h, ustat.h, wait.h).
-@@ -474,8 +638,9 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -557,8 +725,9 @@ const IncludeMapEntry libc_include_map[] = {
    // $ for i in /usr/include/bits/*; do for dir in asm linux; do grep -H -e $dir/`basename $i` $i; done; done
    { "<linux/errno.h>", kPrivate, "<bits/errno.h>", kPrivate },
    { "<asm/ioctls.h>", kPrivate, "<bits/ioctls.h>", kPrivate },
@@ -436,7 +434,7 @@ index 126e215..98b5ea0 100644
    // Some asm files have 32- and 64-bit variants:
    // $ ls /usr/include/asm/*_{32,64}.h
    { "<asm/posix_types_32.h>", kPrivate, "<asm/posix_types.h>", kPublic },
-@@ -505,7 +670,7 @@ const IncludeMapEntry stdlib_c_include_map[] = {
+@@ -594,7 +763,7 @@ const IncludeMapEntry stdlib_c_include_map[] = {
    // <cassert> back to <assert.h>.  (If you *did* want to replace
    // assert.h with cassert, you'd change it to a public->private
    // mapping.)  Here is how I identified the files to map:
@@ -445,7 +443,7 @@ index 126e215..98b5ea0 100644
    //
    // These headers are defined in [headers.cpp.c].
    // https://github.com/cplusplus/draft/blob/c+%2B20/source/lib-intro.tex
-@@ -642,25 +807,29 @@ const IncludeMapEntry stdlib_cpp_include_map[] = {
+@@ -728,25 +897,29 @@ const IncludeMapEntry stdlib_cpp_include_map[] = {
    // #including each other (eg <iostream> #includes <istream>).  We
    // are pretty forgiving: if a user specifies any public header, we
    // generally don't require the others.
@@ -478,7 +476,7 @@ index 126e215..98b5ea0 100644
  //
  // Do not edit!
  const IncludeMapEntry libstdcpp_include_map[] = {
-@@ -713,9 +882,8 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -799,9 +972,8 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/stdc++.h>", kPrivate, "<bits/extc++.h>", kPrivate },
    { "<bits/stdc++.h>", kPrivate, "<bits/stdtr1c++.h>", kPrivate },
    { "<bits/stdtr1c++.h>", kPrivate, "<bits/extc++.h>", kPrivate },
