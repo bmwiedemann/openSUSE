@@ -148,4 +148,24 @@
     <comment>- add CVE-2025-22868.patch (bsc#1239277, CVE-2025-22868)</comment>
     <requestid>1253941</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5a397ddbd71319aadfa4b62604d8b35d</srcmd5>
+    <version>0.20.6</version>
+    <time>1759156637</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.20.6:
+  * Ensure that tag name is not empty if name contains colon
+  * Bump some deps
+- update to 0.20.5:
+  * build(deps): bump docker/docker to v28.0.0+incompatible
+  * Migrate linter to v2
+  * bump go version + bump deps
+  * implement TextMarshaler/JSONMarshaler more consistently
+  * Update CodeQL permissions
+  * Update goreleaser permissions
+  * Update provenance action in release
+  * Update validator action
+- drop CVE-2025-22868.patch (merged upstream)</comment>
+    <requestid>1307712</requestid>
+  </revision>
 </revisionlist>

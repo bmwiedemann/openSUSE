@@ -1,7 +1,7 @@
 #
 # spec file for package go-containerregistry
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           go-containerregistry
-Version:        0.20.3
+Version:        0.20.6
 Release:        0
 Summary:        Container Library and tools for working with container registries
 License:        Apache-2.0
@@ -26,9 +26,8 @@ Group:          System/Management
 URL:            https://github.com/google/go-containerregistry
 Source:         https://github.com/google/go-containerregistry/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch1:         CVE-2025-22868.patch
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.23
+BuildRequires:  golang(API) = 1.24
 Conflicts:      distribution-registry
 
 %description
