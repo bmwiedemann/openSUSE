@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 20 08:21:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.1+git.20250902:
+  * CMakeLists: extend cmake_minimum_required range
+  * README.md: Populate it with the usual content
+
+-------------------------------------------------------------------
 Fri Nov 03 10:34:31 UTC 2023 - mardnh@gmx.de
 
 - Update to version 0.2.0+git.20231103:
