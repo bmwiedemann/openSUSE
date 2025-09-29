@@ -1,7 +1,7 @@
 #
 # spec file for package libnxz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global soversion 0
 %define libname %{name}%{soversion}
 Name:           libnxz
-Version:        0.64
+Version:        0.64+git4.2f1ae54
 Release:        0
 Summary:        Zlib implementation for POWER processors
 License:        Apache-2.0 OR GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/%{name}/power-gzip
-Source:         %{url}/archive/v%{version}.tar.gz#:/%{name}-%{version}.tar.gz
+URL:            https://github.com/libnxz/power-gzip
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  dos2unix
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
@@ -52,11 +52,11 @@ libnxz implements a zlib-compatible API for Linux userspace programs that exploi
 This package contains the development files for %{name}.
 
 %prep
-%autosetup -p1 -n power-gzip-%{version}
+%autosetup -p1
 dos2unix doc/Addendum-NX-GZIP-for-PowerVM.txt
 
 %build
-export CFLAGS="-ffat-lto-objects %optflags"
+export CFLAGS="-ffat-lto-objects %{optflags}"
 %configure --enable-zlib-api
 %make_build
 

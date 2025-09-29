@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 22 08:45:03 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix URL in spec file
+- Update to version 0.64+git4.2f1ae54:
+  * lib/nx_crc : Fix compile error with gcc15
+  * Changed README.md instructions to substitute zlib
+
+-------------------------------------------------------------------
 Fri Dec 15 09:35:03 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update summary to have a more sensible explanation
