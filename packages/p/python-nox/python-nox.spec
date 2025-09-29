@@ -1,7 +1,7 @@
 #
 # spec file for package python-nox
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global padded_version 2024.04.15
 Name:           python-nox
-Version:        2024.10.9
+Version:        2025.5.1
 Release:        0
 Summary:        Flexible test automation
 License:        Apache-2.0

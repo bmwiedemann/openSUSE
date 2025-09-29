@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 21 14:44:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.05.01:
+  * This is a bugfix release that primarily adds support for uv
+    0.7+. A few other small fixes were made.
+- update to 2025.02.09:
+  * This release improves PEP 723 support, including adding
+    dependencies to the noxfile itself ("plugins"). It adds the
+    long-awaited "requires" option, allowing sessions to require
+    other sessions. And it brings further improvements to the
+    `pyproject.toml` support, including helpers for dependency-
+    groups and Python version lists.
+  * More typing and test improvements
+  * Some extra simplifications from Ruff
+  * Use dependency-groups
+  * Pull out env creation into helper method
+  * Pulled out `get_virtualenv` & better typing
+  * Fix broken mock on CPython 3.12.8+ in tests
+
+-------------------------------------------------------------------
 Thu Dec 19 15:26:17 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Add missing requirements
