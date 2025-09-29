@@ -191,4 +191,17 @@
   * Print TLS version after successful connection.</comment>
     <requestid>1303132</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f2ce739c372d726f871a4f1e0f991def</srcmd5>
+    <version>0.5.3</version>
+    <time>1759156398</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5.3:
+  Added:
+  * Print warning if certificate expires in less than 14 days (only xmpp and xmpps connections).
+  Changed:
+  * Improve BOSH connection speed.
+  * BOSH + Websocket: Show warning if connection is unencrypted.</comment>
+    <requestid>1307648</requestid>
+  </revision>
 </revisionlist>
