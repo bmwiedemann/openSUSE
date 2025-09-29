@@ -1,0 +1,27 @@
+Index: bash-git-prompt-2.7.1/gitprompt.sh
+===================================================================
+--- bash-git-prompt-2.7.1.orig/gitprompt.sh
++++ bash-git-prompt-2.7.1/gitprompt.sh
+@@ -466,8 +466,11 @@ function createPrivateIndex {
+   else
+     __GIT_INDEX_FILE="$GIT_INDEX_FILE"
+   fi
+-  __GIT_INDEX_PRIVATE="/tmp/git-index-private$$"
++  __GIT_INDEX_PRIVATE=`mktemp "/tmp/git-index-private-$$.XXXX"`
+   command cp "$__GIT_INDEX_FILE" "$__GIT_INDEX_PRIVATE" 2>/dev/null
++  if [ $? -ne 0 ]; then
++    return
++  fi
+   echo "$__GIT_INDEX_PRIVATE"
+ }
+ 
+@@ -500,6 +503,9 @@ function updatePrompt() {
+   local GIT_INDEX_PRIVATE="$(createPrivateIndex)"
+   #important to define GIT_INDEX_FILE as local: This way it only affects this function (and below) - even with the export afterwards
+   local GIT_INDEX_FILE
++  if [ -z "$GIT_INDEX_PRIVATE" ]; then
++    return
++  fi
+   export GIT_INDEX_FILE="$GIT_INDEX_PRIVATE"
+ 
+   local -a git_status_fields

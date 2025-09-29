@@ -1,7 +1,7 @@
 #
 # spec file for package bash-git-prompt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
 URL:            https://github.com/magicmonty/bash-git-prompt
 Source0:        https://github.com/magicmonty/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         use-safe-tempfile.diff
 Requires:       git-core
 Requires(post): %fillup_prereq
 BuildArch:      noarch
@@ -40,6 +41,7 @@ install. It will disable the prompt accordingly after uninstall.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 sed -i -e 's,#!/usr/bin/env bash,#!/bin/bash,' $(find . -name \*.sh)
