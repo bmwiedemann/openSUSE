@@ -101,4 +101,15 @@
   * Switch to hatch, replacing pdm and tox</comment>
     <requestid>1223207</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e7ad112245d017da4d92ac80820eff39</srcmd5>
+    <version>8.2.0</version>
+    <time>1759156666</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.2.0:
+  * Add support for Python 3.13 and 3.14
+  * remove support for Python 3.8.
+  * Modernize type hints.</comment>
+    <requestid>1307746</requestid>
+  </revision>
 </revisionlist>
