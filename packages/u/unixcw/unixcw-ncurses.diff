@@ -1,0 +1,92 @@
+diff -urN unixcw-3.6.1_orig/configure unixcw-3.6.1/configure
+--- unixcw-3.6.1_orig/configure	2023-11-17 20:03:57.000000000 +0100
++++ unixcw-3.6.1/configure	2024-02-27 00:29:20.525502155 +0100
+@@ -1499,7 +1499,7 @@
+   --disable-cwgen         do not build cwgen
+   --disable-cw            do not build cw (application with command line user
+                           interface)
+-  --disable-cwcp          do not build cwcp (application with curses user
++  --disable-cwcp          do not build cwcp (application with ncurses user
+                           interface)
+   --disable-xcwcp         do not build xcwcp (application with Qt5 user
+                           interface)
+@@ -18883,14 +18883,14 @@
+ if test "$enable_cwcp" = "no" ; then
+    WITH_CWCP='no'
+ else
+-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for initscr in -lcurses" >&5
+-printf %s "checking for initscr in -lcurses... " >&6; }
+-if test ${ac_cv_lib_curses_initscr+y}
++    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for initscr in -lncurses" >&5
++printf %s "checking for initscr in -lncurses... " >&6; }
++if test ${ac_cv_lib_ncurses_initscr+y}
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lcurses  $LIBS"
++LIBS="-lncurses  $LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -18908,30 +18908,30 @@
+ _ACEOF
+ if ac_fn_c_try_link "$LINENO"
+ then :
+-  ac_cv_lib_curses_initscr=yes
++  ac_cv_lib_ncurses_initscr=yes
+ else $as_nop
+-  ac_cv_lib_curses_initscr=no
++  ac_cv_lib_ncurses_initscr=no
+ fi
+ rm -f core conftest.err conftest.$ac_objext conftest.beam \
+     conftest$ac_exeext conftest.$ac_ext
+ LIBS=$ac_check_lib_save_LIBS
+ fi
+-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_curses_initscr" >&5
+-printf "%s\n" "$ac_cv_lib_curses_initscr" >&6; }
+-if test "x$ac_cv_lib_curses_initscr" = xyes
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ncurses_initscr" >&5
++printf "%s\n" "$ac_cv_lib_ncurses_initscr" >&6; }
++if test "x$ac_cv_lib_ncurses_initscr" = xyes
+ then :
+   printf "%s\n" "#define HAVE_LIBCURSES 1" >>confdefs.h
+ 
+-  LIBS="-lcurses $LIBS"
++  LIBS="-lncurses $LIBS"
+ 
+ fi
+ 
+-    if test $ac_cv_lib_curses_initscr = 'yes' ; then
++    if test $ac_cv_lib_ncurses_initscr = 'yes' ; then
+ 	WITH_CWCP='yes'
+     else
+ 	WITH_CWCP='no'
+-	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Cannot find libcurses - unable to build cwcp" >&5
+-printf "%s\n" "$as_me: WARNING: Cannot find libcurses - unable to build cwcp" >&2;}
++	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Cannot find libncurses - unable to build cwcp" >&5
++printf "%s\n" "$as_me: WARNING: Cannot find libncurses - unable to build cwcp" >&2;}
+     fi
+ fi
+ 
+@@ -19731,7 +19731,7 @@
+ 
+ 
+ # Decide on which subdirectories to build; substitute into SRC_SUBDIRS.
+-# Build cwcp if curses is available, and xcwcp if Qt is available.
++# Build cwcp if ncurses is available, and xcwcp if Qt is available.
+ # libcw tests depend on static library from cwutils, so cwutils goes before libcw.
+ SRC_SUBDIRS="test_framework cwutils libcw"
+ 
+diff -urN unixcw-3.6.1_orig/src/cwcp/Makefile.in unixcw-3.6.1/src/cwcp/Makefile.in
+--- unixcw-3.6.1_orig/src/cwcp/Makefile.in	2023-11-18 10:32:32.000000000 +0100
++++ unixcw-3.6.1/src/cwcp/Makefile.in	2024-02-27 00:30:04.646435250 +0100
+@@ -375,7 +375,7 @@
+ # Target-specific linker flags (objects to link). Order is important:
+ # first static library then dynamic. Otherwise linker may not find
+ # symbols from the dynamic library.
+-cwcp_LDADD = $(top_builddir)/src/cwutils/lib_cwcp.a -lcurses $(INTL_LIB) -L$(top_builddir)/src/libcw/.libs -lcw
++cwcp_LDADD = $(top_builddir)/src/cwutils/lib_cwcp.a -lncurses $(INTL_LIB) -L$(top_builddir)/src/libcw/.libs -lcw
+ 
+ # copy man page to proper directory during installation
+ man_MANS = cwcp.1

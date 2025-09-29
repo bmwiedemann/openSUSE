@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Sat Sep 27 11:34:37 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fixup for Factory submission, packaging warnings fixes
+- add unixcw-ncurses.diff
+
+-------------------------------------------------------------------
+Wed Oct  2 17:34:05 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Updated to version 3.6.1
+  + see NEWS for changes
+- Patch ncurses.parch removed (applied upstream)
+- Disabled static library build
+- Specfile updated
+- Fixed build for Tumbleweed and Factory
+
+-------------------------------------------------------------------
+Mon Nov 16 12:04:31 UTC 2015 - dl8fcl@t-online.de
+
+- update to version 3.5.0 - not yet ready
+  pulseaudio for xcwp not working
+
+-------------------------------------------------------------------
+Mon Aug 18 19:20:13 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.3.1
+  fixing a problem with cwdaemon
+
+-------------------------------------------------------------------
+Mon Jan  6 22:16:42 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.3.0 
+
+-------------------------------------------------------------------
+Mon Sep 23 22:07:06 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.2.0
+
+-------------------------------------------------------------------
+* Sat Oct 4 2008 - dl9pf@gmx.de
+- fix build for factory
+* Thu May 24 2007 - dl9pf@gmx.de
+- Import into buildservice 
+

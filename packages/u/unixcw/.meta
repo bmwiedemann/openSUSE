@@ -1,0 +1,4 @@
+<package name="unixcw" project="openSUSE:Factory">
+  <title>unixcw</title>
+  <description>Unixcw is a project providing libcw library and a set of programs using the library: cw, cwgen, cwcp and xcwcp. The programs are intended for people who want to learn receiving and sending Morse code. Unixcw is developed and tested on GNU/Linux system.</description>
+</package>
