@@ -159,4 +159,12 @@
     <comment></comment>
     <requestid>1296294</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>fd93f5700c64c7b08c9dd908ff57613d</srcmd5>
+    <version>21.0.8.0</version>
+    <time>1759156290</time>
+    <user>anag_factory</user>
+    <comment>Refresh the config.sub and config.guess files</comment>
+    <requestid>1307558</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 28 11:05:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Refresh the config.sub and config.guess files
+
+-------------------------------------------------------------------
 Tue Jul 29 07:03:50 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
-- jdk-8354941.patch: JDK-8354941: Build failure with glibc 2.42 due to
-  uabs() name collision
+- jdk-8354941.patch: JDK-8354941: Build failure with glibc 2.42 due
+  to uabs() name collision
 
 -------------------------------------------------------------------
 Mon Jul 21 10:59:48 UTC 2025 - Fridrich Strba <fstrba@suse.com>
