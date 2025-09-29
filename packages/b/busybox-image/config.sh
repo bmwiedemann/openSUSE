@@ -20,13 +20,13 @@ fi
 sed -i 's|/bin/bash|/bin/sh|' /etc/passwd
 
 # not making sense in a zypper-free image
-rm -v /var/lib/zypp/AutoInstalled
+rm -vf /var/lib/zypp/AutoInstalled
 
 # includes device and inode numbers that change on deploy
-rm -v /var/cache/ldconfig/aux-cache
+rm -vf /var/cache/ldconfig/aux-cache
 
 # Will be recreated by the next rpm(1) run as root user
-rm -v /usr/lib/sysimage/rpm/Index.db
+rm -vf /usr/lib/sysimage/rpm/Index.db
 
 
 #=======================================
@@ -36,6 +36,15 @@ if command -v zypper > /dev/null; then
     zypper -n clean -a
 fi
 
-rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; rm -f {/target,}/etc/shadow-
+#=============================================
+# Clean up logs and temporary files if present
+#---------------------------------------------
+rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
+    rm -rf {/target,}/run/*; \
+    rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
+    rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
+    rm -f {/target,}/var/cache/ldconfig/aux-cache; \
+    command -v zypper >/dev/null 2>&1 || rm -f /var/lib/zypp/AutoInstalled
+
 
 exit 0
