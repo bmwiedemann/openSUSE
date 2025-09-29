@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 25 18:57:34 UTC 2025 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- coreutils-9.8-tail-large-num-of-files.patch: Add upstream patch:
+  https://cgit.git.sv.gnu.org/cgit/coreutils.git/commit/?id=914972e80dbf82aac9ffe
+  tail: fix tailing larger number of lines in regular files [rh#2398008]
+
+-------------------------------------------------------------------
 Tue Sep 23 19:39:43 UTC 2025 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - Update to 9.8:
