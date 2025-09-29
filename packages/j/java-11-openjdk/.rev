@@ -647,4 +647,12 @@
     <comment>fix build with new glibc</comment>
     <requestid>1301356</requestid>
   </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>204e71f2e97e148cbaa8cbfb70a84695</srcmd5>
+    <version>11.0.28.0</version>
+    <time>1759156343</time>
+    <user>anag_factory</user>
+    <comment>Remove unpack200 and pack200 from alternatives</comment>
+    <requestid>1307555</requestid>
+  </revision>
 </revisionlist>

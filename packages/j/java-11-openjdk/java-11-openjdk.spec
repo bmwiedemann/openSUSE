@@ -983,24 +983,18 @@ update-alternatives \
   --slave %{_jvmdir}/jre jre %{_jvmdir}/%{jrelnk} \
   --slave %{_bindir}/jjs jjs %{jrebindir}/jjs \
   --slave %{_bindir}/keytool keytool %{jrebindir}/keytool \
-  --slave %{_bindir}/pack200 pack200 %{jrebindir}/pack200 \
   --slave %{_bindir}/rmid rmid %{jrebindir}/rmid \
   --slave %{_bindir}/rmiregistry rmiregistry %{jrebindir}/rmiregistry \
-  --slave %{_bindir}/unpack200 unpack200 %{jrebindir}/unpack200 \
   --slave %{_mandir}/man1/java.1$ext java.1$ext \
   %{_mandir}/man1/java-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jjs.1$ext jjs.1$ext \
   %{_mandir}/man1/jjs-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/keytool.1$ext keytool.1$ext \
   %{_mandir}/man1/keytool-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
-  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmid.1$ext rmid.1$ext \
   %{_mandir}/man1/rmid-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmiregistry.1$ext rmiregistry.1$ext \
   %{_mandir}/man1/rmiregistry-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
-  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   || :
 
 update-alternatives \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 30 15:05:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove pack200 and unpack200 from alternatives
+
+-------------------------------------------------------------------
 Fri Aug 22 07:11:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - jdk-8354941.patch: JDK-8354941: Build failure with glibc 2.42 due to
