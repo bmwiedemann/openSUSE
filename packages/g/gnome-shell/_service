@@ -3,11 +3,11 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-shell.git</param>
-    <param name="revision">49.0</param>
+    <param name="revision">e54aa588c1604b63e2f051e20c1ecb3e601beb5c</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">disable</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>

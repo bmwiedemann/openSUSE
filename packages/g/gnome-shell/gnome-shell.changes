@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 24 11:56:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.0+9:
+  * slider: Use the sprite of the touch event, not the pointer
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 15 06:38:57 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:

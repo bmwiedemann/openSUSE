@@ -2563,4 +2563,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>Scripted push from GNOME:Next (forwarded request 1304910 from dimstar)</comment>
     <requestid>1305460</requestid>
   </revision>
+  <revision rev="279" vrev="1">
+    <srcmd5>871d8df48aa477443c24338e8c9afbcc</srcmd5>
+    <version>49.0+9</version>
+    <time>1759156252</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1307247</requestid>
+  </revision>
 </revisionlist>
