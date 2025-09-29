@@ -1,7 +1,7 @@
 #
 # spec file for package python-humanize
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global modname humanize
 Name:           python-humanize
-Version:        4.12.2
+Version:        4.13.0
 Release:        0
 Summary:        Python humanize utilities
 License:        MIT

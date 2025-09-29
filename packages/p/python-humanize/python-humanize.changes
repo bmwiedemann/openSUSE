@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:56:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.0:
+  * Optimise `naturalsize` algorithm by using `math.log` (#253)
+  * Fix `precisedelta` rounding (#254) @dangillet
+- update to 4.12.3:
+  * Fix regression in `naturalsize` for `float` and `str` (#250)
+  * Improvements for French translation (#248)
+
+-------------------------------------------------------------------
 Tue Apr  1 12:14:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.12.2
@@ -48,13 +58,13 @@ Wed Oct  9 15:00:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 Wed Sep  4 12:12:21 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - update to 4.10.0:
-  * Remove shebang from filesize.py (#188) 
-  * Fix test failures on systems with 32-bit time_t (#177) 
-  * Fix handling of negative time deltas (#173) 
-  * Fix naturaldelta sub second precision (#169) 
-  * Reword the French translation of very small amount of time (#162) 
-  * Fix Arabic localization (#160) 
-  * metric: Fix precision format (#159)  
+  * Remove shebang from filesize.py (#188)
+  * Fix test failures on systems with 32-bit time_t (#177)
+  * Fix handling of negative time deltas (#173)
+  * Fix naturaldelta sub second precision (#169)
+  * Reword the French translation of very small amount of time (#162)
+  * Fix Arabic localization (#160)
+  * metric: Fix precision format (#159)
 
 -------------------------------------------------------------------
 Mon Nov 27 19:01:58 UTC 2023 - Dirk Müller <dmueller@suse.com>

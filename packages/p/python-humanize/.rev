@@ -217,4 +217,25 @@
     <comment></comment>
     <requestid>1266132</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3600a42026f9f25f8a76aff32194647e</srcmd5>
+    <version>4.13.0</version>
+    <time>1759156657</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.13.0:
+  * Optimise `naturalsize` algorithm by using `math.log` (#253)
+  * Fix `precisedelta` rounding (#254) @dangillet
+- update to 4.12.3:
+  * Fix regression in `naturalsize` for `float` and `str` (#250)
+  * Improvements for French translation (#248)
+
+  * Remove shebang from filesize.py (#188)
+  * Fix test failures on systems with 32-bit time_t (#177)
+  * Fix handling of negative time deltas (#173)
+  * Fix naturaldelta sub second precision (#169)
+  * Reword the French translation of very small amount of time (#162)
+  * Fix Arabic localization (#160)
+  * metric: Fix precision format (#159)</comment>
+    <requestid>1307743</requestid>
+  </revision>
 </revisionlist>
