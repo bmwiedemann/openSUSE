@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 26 20:03:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.1.9:
+  * Add mstl3_pack_ppupdate_flushidle() for packing idle streams in
+    combination with the use of MSF_PPUPDATETIME during trace list
+    additions.
+  * Convert mstl3_addmsr() from a macro to a real (thin) function.
+
+-------------------------------------------------------------------
 Mon Sep 15 16:32:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.1.8:
