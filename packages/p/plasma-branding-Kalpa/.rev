@@ -108,4 +108,14 @@
   plasma-discover-update was dropped in Plasma 6.4</comment>
     <requestid>1288204</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b9cf9951c7000d45fa5aadf78f5cb2b8</srcmd5>
+    <version>20250926</version>
+    <time>1759156271</time>
+    <user>anag_factory</user>
+    <comment>- Bump version to 20250926
+- Moved transactional-update-notifier override to functional
+  location</comment>
+    <requestid>1307446</requestid>
+  </revision>
 </revisionlist>

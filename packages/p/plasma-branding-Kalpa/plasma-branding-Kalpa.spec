@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-branding-Kalpa
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021 SUSE Software Solutions GmbH
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           plasma-branding-Kalpa
-Version:        20250624
+Version:        20250926
 Release:        0
 Summary:        Kalpa Desktop default settings
 License:        BSD-3-Clause
@@ -81,8 +81,8 @@ install -d %{buildroot}%{_datadir}/polkit-1/rules.d/
 install -m0444 usr/share/polkit-1/rules.d/49-kalpa.rules %{buildroot}%{_datadir}/polkit-1/rules.d/49-kalpa.rules
 install -d %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/
 install -m0644 usr/lib/sddm/sddm.conf.d/10-wayland.conf %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-wayland.conf
-install -d %{buildroot}%{_prefix}/lib/systemd/user/transactional-update-notifier.d/
-install -m0644 usr/lib/systemd/user/transactional-update-notifier.d/set-notification-priority.conf %{buildroot}%{_prefix}/lib/systemd/user/transactional-update-notifier.d/set-notification-priority.conf
+install -d %{buildroot}%{_prefix}/lib/systemd/user/transactional-update-notifier.service.d/
+install -m0644 usr/lib/systemd/user/transactional-update-notifier.service.d/set-notification-priority.conf %{buildroot}%{_prefix}/lib/systemd/user/transactional-update-notifier.service.d/set-notification-priority.conf
 
 %pre
 %systemd_user_pre distrobox-upgrade-all.service
@@ -121,7 +121,7 @@ install -m0644 usr/lib/systemd/user/transactional-update-notifier.d/set-notifica
 %dir %{_prefix}/lib/sddm
 %dir %{_prefix}/lib/sddm/sddm.conf.d
 %{_prefix}/lib/sddm/sddm.conf.d/10-wayland.conf
-%dir %{_userunitdir}/transactional-update-notifier.d
-%{_userunitdir}/transactional-update-notifier.d/set-notification-priority.conf
+%dir %{_userunitdir}/transactional-update-notifier.service.d
+%{_userunitdir}/transactional-update-notifier.service.d/set-notification-priority.conf
 
 %changelog
