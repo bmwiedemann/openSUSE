@@ -117,4 +117,17 @@
   * Use verbose during uploads for debugging</comment>
     <requestid>1292434</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>350d7a1bb493dd1aae20fb70dba7f375</srcmd5>
+    <version>9.1.0</version>
+    <time>1759156643</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.1.0:
+  * Added support for a configurable timeout and retry spec, and
+    raw response return for `JsonEndpoint`
+- update to 9.0.0:
+  * Upgrade code of conduct to Contributor Covenant v2.1
+  * Drop Python 3.9 support and use ruff for formatting</comment>
+    <requestid>1307722</requestid>
+  </revision>
 </revisionlist>

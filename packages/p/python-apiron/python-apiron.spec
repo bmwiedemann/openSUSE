@@ -1,7 +1,7 @@
 #
 # spec file for package python-apiron
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2022 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-apiron
-Version:        8.0.2
+Version:        9.1.0
 Release:        0
 Summary:        Apiron helps you cook a tasty client for RESTful APIs
 License:        MIT

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:27:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1.0:
+  * Added support for a configurable timeout and retry spec, and
+    raw response return for `JsonEndpoint`
+- update to 9.0.0:
+  * Upgrade code of conduct to Contributor Covenant v2.1
+  * Drop Python 3.9 support and use ruff for formatting
+
+-------------------------------------------------------------------
 Sat Jul 12 17:24:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.0.2:
