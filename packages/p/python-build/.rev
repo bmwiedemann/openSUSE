@@ -167,4 +167,24 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301251</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c96a2d008a8d6ce57fcd5e2912fce261</srcmd5>
+    <version>1.3.0</version>
+    <time>1759173116</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.0:
+  * Add --config-json
+  * Drop Python 3.8
+  * Test on Python 3.14, colorful help on 3.14+
+  * Fix ModuleNotFoundError when pip is not installed
+  * Disable use of pip install --python for debundled pip
+  * Don't pass no-wheel to virtualenv if it would warn
+  * Optimize our tests to run faster
+  * Allow running our tests without virtualenv
+  * Fix issues in our tests
+  * Use SPDX identifiers for our license metadata
+  * Use dependency-groups for our development
+  * Mention conda and update uv mention in README/docs</comment>
+    <requestid>1307679</requestid>
+  </revision>
 </revisionlist>

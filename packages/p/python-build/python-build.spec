@@ -33,7 +33,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-build%{psuffix}
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Simple PEP517 package builder
 License:        MIT
