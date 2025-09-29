@@ -214,4 +214,20 @@
     updating the C source.</comment>
     <requestid>1292507</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bd3078d809ad71a2670d2760d41a0638</srcmd5>
+    <version>3.6.20</version>
+    <time>1759156675</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.20:
+  * Fix rho units in two docstrings
+  * Remove nightly version of numpy
+  * Pin twine
+  * Remove micromamba from the CIs
+  * Fix URLs redirects
+  * Add sa_ct_interp and tracer_ct_interp functions to GSW-Python
+  * Add zizmor checks
+  * bump cibuildwheel and manylinux</comment>
+    <requestid>1307764</requestid>
+  </revision>
 </revisionlist>
