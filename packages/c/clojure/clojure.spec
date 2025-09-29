@@ -17,7 +17,7 @@
 
 
 Name:           clojure
-Version:        1.12.2.1565
+Version:        1.12.3.1577
 Release:        0
 Summary:        A dynamic programming language that targets the JVM
 License:        EPL-1.0
