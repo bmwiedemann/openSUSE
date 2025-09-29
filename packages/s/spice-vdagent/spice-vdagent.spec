@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(spice-protocol) >= 0.14.3
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Supplements:    modalias(xorg-x11-server:virtio:d00000003v*)
+Supplements:    (xwayland and modalias(virtio:d00000003v*))
 %{?systemd_requires}
 
 %description

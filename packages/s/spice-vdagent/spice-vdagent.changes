@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 19 13:57:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add (xwayland and modalias(virtio:d00000003v*)) Supplements: we
+  can not expect xorg-x11-server to always present anymore.
+
+-------------------------------------------------------------------
 Thu Feb  9 08:31:17 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Drop allow-enable-on-boot-spice-vdagentd.service.patch. udev takes
