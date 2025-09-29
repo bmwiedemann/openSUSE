@@ -172,4 +172,13 @@
   * Support Python 3.13.</comment>
     <requestid>1219200</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1cfb73c348407dc2cf91092bb490ee7b</srcmd5>
+    <version>3.17.0</version>
+    <time>1759156674</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.17.0:
+  * Support Python 3.14.</comment>
+    <requestid>1307767</requestid>
+  </revision>
 </revisionlist>
