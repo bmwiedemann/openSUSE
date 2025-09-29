@@ -19,7 +19,7 @@
 
 %define force_gcc_version 13
 Name:           timg
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Terminal image viewer
 License:        GPL-2.0-only

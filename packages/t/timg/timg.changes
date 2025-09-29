@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 28 19:25:07 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.6.3
+  * Remove call to deprecated function in ffmpeg for easier
+    compilation on modern systems.
+  * Fix a crash in terminal background color detection that can
+    happen over a slow ssh connection.
+
+-------------------------------------------------------------------
 Mon May 12 18:20:27 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 1.6.2
