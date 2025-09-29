@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(pygobject-3.0) >= 3.18
 # the gsettings tool is used to know if a11y is enabled
 Requires:       glib2-tools
 Requires:       python3-brlapi
+Requires:       python3-dasbus
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-louis

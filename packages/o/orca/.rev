@@ -1521,4 +1521,12 @@
   + KeyEcho in terminals was failing in some environments. (forwarded request 1306155 from iznogood)</comment>
     <requestid>1306434</requestid>
   </revision>
+  <revision rev="189" vrev="2">
+    <srcmd5>a2593a8bc9a536d2674d11e188e18ba0</srcmd5>
+    <version>49.1</version>
+    <time>1759173119</time>
+    <user>anag_factory</user>
+    <comment>- Add python3-dasbus to Requires. It is a run-time requirement. (forwarded request 1307613 from mgorse)</comment>
+    <requestid>1307700</requestid>
+  </revision>
 </revisionlist>
