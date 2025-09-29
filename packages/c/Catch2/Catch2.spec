@@ -18,14 +18,12 @@
 
 %define __builder ninja
 Name:           Catch2
-Version:        3.9.1
+Version:        3.10.0
 Release:        0
 Summary:        A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD
 License:        BSL-1.0
 URL:            https://github.com/catchorg/%{name}
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://github.com/catchorg/Catch2/commit/7cad6d75390668ad2b6bec8432a2e408a992e1bf.patch#/Catch2-pkgconfig-install-destdir.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++ >= 6
 BuildRequires:  ninja
