@@ -1,7 +1,7 @@
 #
 # spec file for package ComputeLibrary
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
 Name:           ComputeLibrary
-Version:        52.0.0
+Version:        52.4.0
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT
