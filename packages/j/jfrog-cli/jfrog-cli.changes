@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 29 05:11:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.79.2:
+  * Bug Fixes
+    - VCS Params Alignment by @EyalDelarea in #3137
+  * Other Changes
+    - Use CI env var for hidding survey by @RemiBou in #3139
+
+-------------------------------------------------------------------
 Fri Sep 26 05:31:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.79.1:
