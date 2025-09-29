@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 21 18:37:52 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  * Added Bytekiller & Clones (ANC, JEK).
+  * Added JAMPacker.
+  * Added PMC.
+  * Added Pack-Ice.
+  * Added options to copy timestamps from compressed files (-p).
+  * Reduced blast radius for decompression bombs by reducing
+    default maximum limits.
+  * Lots of minor fixes.
+
+-------------------------------------------------------------------
 Sun Jun  9 15:55:05 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.2.0:
