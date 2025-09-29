@@ -155,4 +155,13 @@
     <comment></comment>
     <requestid>1281298</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ed8ed5ac2ae197944706366ac9d7c697</srcmd5>
+    <version>2.10.0</version>
+    <time>1759156651</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.10.0:
+  * Added type stubs</comment>
+    <requestid>1307755</requestid>
+  </revision>
 </revisionlist>
