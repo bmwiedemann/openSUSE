@@ -17,7 +17,7 @@
 
 
 Name:           gap-digraphs
-Version:        1.12.1
+Version:        1.13.0
 Release:        0
 Summary:        GAP: Digraphs and multigraphs
 License:        GPL-3.0-or-later
@@ -25,7 +25,6 @@ Group:          Productivity/Scientific/Math
 URL:            https://digraphs.github.io/Digraphs/
 #Git-Clone:     https://github.com/digraphs/Digraphs
 Source:         https://github.com/digraphs/Digraphs/releases/download/v%version/digraphs-%version.tar.gz
-Patch1:         eaps4.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -64,14 +63,14 @@ fi
 find . -type f -name "*~" -print -delete
 
 %install
+# delete sources and build artifacts, user is not expected to rebuild in distribution tree
+rm -Rf autom4te.cache src cnf config* m4 autogen.sh aclocal.m4 *.la Makefile*
+rm -Rf extern/edge* extern/bliss*/[a-z]* extern/bliss*/.deps extern/bliss*/.libs extern/bliss*/.clang*
 %gappkg_simple_install
 cd "%buildroot/$fmoddir/"
 find . -type f -name .dirstamp -print -delete
 # delete tests and assets
 rm -Rf tst data/symmetric-closure.ds6.gz data/test-1.d6
-# delete sources and build artifacts, user is not expected to rebuild in distribution tree
-rm -Rf autom4te.cache src cnf config* m4 autogen.sh aclocal.m4 *.la Makefile*
-rm -Rf extern/edge* extern/bliss*/[a-z]* extern/bliss*/.deps extern/bliss*/.libs extern/bliss*/.clang*
 %fdupes %buildroot/%_prefix
 
 %files -f %name.files

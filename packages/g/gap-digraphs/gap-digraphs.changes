@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 26 16:20:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.13.0
+  * EAPS 4.x support
+  * Improved the performance of `IsTwoEdgeTransitive`
+- Delete eaps4.patch (merged)
+
+-------------------------------------------------------------------
 Thu Sep 11 07:53:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.12.1
