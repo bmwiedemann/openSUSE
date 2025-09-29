@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-oidc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global pypi_name flask-oidc
 Name:           python-%{pypi_name}
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        OpenID Connect support for Flask
 License:        BSD-2-Clause

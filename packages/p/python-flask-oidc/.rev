@@ -78,4 +78,16 @@
 - Drop patch authlib.patch, included upstream.</comment>
     <requestid>1274786</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f4b03301773120a11371d31ee242ddf7</srcmd5>
+    <version>2.4.0</version>
+    <time>1759156680</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.0:
+  * Add `unique_id` method to User
+  * Fix open redirect in login and logout urls
+  * Remove outdated `metadata` field in Packit config
+  * Switch to the non-deprecated Packit job type</comment>
+    <requestid>1307773</requestid>
+  </revision>
 </revisionlist>
