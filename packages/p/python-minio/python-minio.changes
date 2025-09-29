@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 29 07:42:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 7.2.17
+  * MinioAdmin: allow specifying policies as dict besides file
+    by @Alveel in #1480
+  * fix too-many-positional-arguments error and other issues
+    by @balamurugana in #1504
+  * Credentials: redact password in URL by @balamurugana in #1511
+
+-------------------------------------------------------------------
 Fri Aug 15 07:27:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 7.2.16
