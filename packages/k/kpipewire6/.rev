@@ -239,4 +239,12 @@
     <comment> (forwarded request 1303396 from Vogtinator)</comment>
     <requestid>1303467</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>7e726b71acc8e63bfe17111b8b2872b0</srcmd5>
+    <version>6.4.5</version>
+    <time>1759173114</time>
+    <user>anag_factory</user>
+    <comment>- Add 0001-Fix-build-with-ffmpeg-8.0.patch: Fix build with ffmpeg 8.0 (boo#1249045).</comment>
+    <requestid>1307468</requestid>
+  </revision>
 </revisionlist>

@@ -37,6 +37,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM 0001-Fix-build-with-ffmpeg-8.0.patch -- Fix build with ffmpeg 8.0
+Patch0:         0001-Fix-build-with-ffmpeg-8.0.patch
 BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
