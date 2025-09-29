@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3bb10a91d5e821354fdabbd55389a03</srcmd5>
+    <version>25.0.0.0</version>
+    <time>1759156350</time>
+    <user>anag_factory</user>
+    <comment>Intial packaging of OpenJDK 25 with OpenJ9 0.55.0 virtual machine</comment>
+    <requestid>1307559</requestid>
+  </revision>
+</revisionlist>
