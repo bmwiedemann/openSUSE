@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 26 20:07:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.46.1:
+  * Fixed QSO filter incorrectly displays inserted date
+  * Fixed Logbook Search Icon is not centered
+  * Fixed Using CQRLog API Key for Clublog
+  * Fixed Online Service Password leaking via debug files
+  * Fixed Tabs are not shown properly
+  * Fixed inability to edit Power in QSO Detail
+
+-------------------------------------------------------------------
 Fri Sep 12 17:48:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.46.0:
