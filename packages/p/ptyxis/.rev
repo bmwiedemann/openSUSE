@@ -166,4 +166,17 @@
     <comment>Scripted push from GNOME:Next (forwarded request 1304946 from dimstar)</comment>
     <requestid>1305486</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e829cd1f7e6b82d6c2bd3261483c5a9e</srcmd5>
+    <version>49.1</version>
+    <time>1759173137</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.1:
+  + Check for --working-directory when applying --new-window option
+    when there is a session to restore
+  + Fix overly large headerbar due to CSS for visual bell
+  + Use `desktop-application` for metainfo component type
+  + Updated translations. (forwarded request 1307480 from iznogood)</comment>
+    <requestid>1307901</requestid>
+  </revision>
 </revisionlist>

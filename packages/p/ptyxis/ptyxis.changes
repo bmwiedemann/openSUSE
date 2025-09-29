@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 27 08:51:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Check for --working-directory when applying --new-window option
+    when there is a session to restore
+  + Fix overly large headerbar due to CSS for visual bell
+  + Use `desktop-application` for metainfo component type
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 13 08:31:32 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:

@@ -17,7 +17,7 @@
 
 
 Name:           ptyxis
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        A terminal for GNOME with first-class support for containers
 License:        GPL-3.0-or-later
@@ -29,7 +29,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.80
 BuildRequires:  pkgconfig(gtk4) >= 4.14
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(vte-2.91-gtk4) >= 0.79
 
