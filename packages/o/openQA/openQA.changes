@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 26 21:12:56 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758910696.7549bb98:
+  * Replace argument assignment with signatures on ObsRsync/Task
+  * Enable automatic dependabot updates again after improvements
+  * docs: Add instructions for a continuous dashboard setup
+  * Replace argument assignment with signatures Folders package
+  * Fully cover WebAPI::Plugin::ObsRsync::Controller::Folders
+  * script: Also use OPENQA_WEBUI_MODE for related services
+
+-------------------------------------------------------------------
 Thu Sep 25 17:12:45 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1758814503.03d923a4:
