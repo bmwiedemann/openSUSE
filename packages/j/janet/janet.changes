@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Sep 20 17:28:21 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Add fix-version-in-meson-dot-build.patch. Seems maintainer forgot to change the version string.
+
+-------------------------------------------------------------------
+Sat Sep 20 17:19:45 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.39.0:
+  * Expand scope of code that works with ev/deadline again
+  * Remove unix domain socket after test
+  * Tweak doc for mapcat, count, keep, all, some
+  * Fix mapcat and keep docstrings
+  * Fix absence of pthread_cancel in Android
+  * Try to fix cfun registry size check for cross-thread messages
+  * Tweak docstrings for better handling
+  * Remove some underline bits from doc-format
+  * Use strnlen when checking for null byte
+  * Patch try to accept (try body ([] catch-body))
+  * Support complex dependency coordinates in bundle/install
+  * Clarify :fresh usage in import
+  * net/server: improve error for truthy handler and type :datagram
+  * Fix: Correctly flag UDP streams in net/connect #1620
+  * Add net/socket for unbound socket creation for #1622
+  * Fix LDFLAGS Usage in Makefile
+  * Use CLOCKS_PER_SEC instead of CLOCKS_PER_SECOND
+  * Read System Clock for Monotonic Time
+  * illumos support
+
+-------------------------------------------------------------------
 Sun Jun  8 12:49:45 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Use lua scriptlets to define somajor and sominor macros.

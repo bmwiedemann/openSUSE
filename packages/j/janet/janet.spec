@@ -1,7 +1,7 @@
 #
 # spec file for package janet
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           janet
-Version:        1.38.0
+Version:        1.39.0
 %{lua:
 local version = rpm.expand("%{version}")
 local i = 1
@@ -42,6 +42,7 @@ Summary:        Lisp-like functional and imperative programming language
 License:        MIT
 URL:            https://janet-lang.org
 Source0:        https://github.com/janet-lang/janet/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         fix-version-in-meson-dot-build.patch
 BuildRequires:  meson
 BuildRequires:  ninja
 
@@ -85,7 +86,7 @@ This package contains the development files for the Janet programming language.
 It contains static libraries for -static linking which is highly discouraged.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export CFLAGS="%optflags -ffat-lto-objects"
