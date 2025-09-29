@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 21 15:12:17 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.0.1:
+  * Update skim to 0.18
+
+-------------------------------------------------------------------
 Sun Mar 23 01:41:55 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Remove `rm .cargo/config` line. The file does not exist anymore.
