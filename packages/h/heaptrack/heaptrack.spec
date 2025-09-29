@@ -34,12 +34,13 @@ Source2:        heaptrack.keyring
 Patch0:         0001-cmake-Fix-C-compatibility-of-libunwind-probes.patch
 # PATCH-FIX-UPSTREAM -- CMake 4 compat
 Patch1:         0001-Use-system-robin-map.patch
+# PATCH-FIX-UPSTREAM -- boost 1.89 compat
+Patch2:         0001-CMake-Make-the-boost-system-component-optional.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libboost_container-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libdwarf-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  pkgconfig

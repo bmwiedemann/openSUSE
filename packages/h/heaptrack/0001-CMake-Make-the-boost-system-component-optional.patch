@@ -1,0 +1,41 @@
+From 4a3e3e3b01472260e8ab6ecabe089e3871b0a94b Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Mon, 29 Sep 2025 09:36:18 +0200
+Subject: [PATCH] CMake: Make the boost-system component optional
+
+The boost-system stub was dropped in boost 1.89. If the minimum version is
+lower than 1.69, marking the component optional is the recommended way.
+---
+ CMakeLists.txt             | 2 +-
+ src/analyze/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 84cc5fa..2f6d232 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,7 +32,7 @@ if (APPIMAGE_BUILD)
+ endif()
+ 
+ include(FeatureSummary)
+-find_package(Boost 1.60.0 ${REQUIRED_IN_APPIMAGE} COMPONENTS system filesystem iostreams container)
++find_package(Boost 1.60.0 ${REQUIRED_IN_APPIMAGE} COMPONENTS filesystem iostreams container OPTIONAL_COMPONENTS system)
+ set_package_properties(Boost PROPERTIES TYPE RECOMMENDED PURPOSE "Boost container libraries can greatly improve performance (via pmr allocators)")
+ find_package(Threads REQUIRED)
+ find_package(ZLIB REQUIRED)
+diff --git a/src/analyze/CMakeLists.txt b/src/analyze/CMakeLists.txt
+index c3cc788..95d5e01 100644
+--- a/src/analyze/CMakeLists.txt
++++ b/src/analyze/CMakeLists.txt
+@@ -2,7 +2,7 @@ if (ECM_FOUND)
+     include(ECMEnableSanitizers)
+ endif()
+ 
+-find_package(Boost 1.41.0 REQUIRED COMPONENTS iostreams program_options system filesystem)
++find_package(Boost 1.41.0 REQUIRED COMPONENTS iostreams program_options filesystem OPTIONAL_COMPONENTS system)
+ 
+ configure_file(analyze_config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/analyze_config.h)
+ 
+-- 
+2.51.0
+

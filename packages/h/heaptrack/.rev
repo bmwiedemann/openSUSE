@@ -148,4 +148,13 @@
   * 0001-Use-system-robin-map.patch</comment>
     <requestid>1266163</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>8766a98109f873a7078bdf4ea5670006</srcmd5>
+    <version>1.5.0</version>
+    <time>1759156634</time>
+    <user>anag_factory</user>
+    <comment>- Add patch:
+  * 0001-CMake-Make-the-boost-system-component-optional.patch</comment>
+    <requestid>1307709</requestid>
+  </revision>
 </revisionlist>
