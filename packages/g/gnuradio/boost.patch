@@ -1,0 +1,24 @@
+diff -Nrua gnuradio-3.10.12.0.orig/cmake/Modules/GnuradioConfig.cmake.in gnuradio-3.10.12.0/cmake/Modules/GnuradioConfig.cmake.in
+--- gnuradio-3.10.12.0.orig/cmake/Modules/GnuradioConfig.cmake.in	2025-02-20 02:23:56.000000000 +0100
++++ gnuradio-3.10.12.0/cmake/Modules/GnuradioConfig.cmake.in	2025-09-29 15:11:20.408983441 +0200
+@@ -13,7 +13,7 @@
+ find_dependency(spdlog)
+ find_dependency(MPLIB)
+ 
+-set(BOOST_REQUIRED_COMPONENTS date_time program_options system regex thread)
++set(BOOST_REQUIRED_COMPONENTS date_time program_options regex thread)
+ 
+ if(NOT ENABLE_TESTING)
+     set(ENABLE_TESTING
+diff -Nrua gnuradio-3.10.12.0.orig/cmake/Modules/GrBoost.cmake gnuradio-3.10.12.0/cmake/Modules/GrBoost.cmake
+--- gnuradio-3.10.12.0.orig/cmake/Modules/GrBoost.cmake	2025-02-20 02:23:56.000000000 +0100
++++ gnuradio-3.10.12.0/cmake/Modules/GrBoost.cmake	2025-09-29 15:22:33.750864668 +0200
+@@ -14,7 +14,7 @@
+ # Setup Boost and handle some system specific things
+ ########################################################################
+ 
+-set(BOOST_REQUIRED_COMPONENTS date_time program_options system regex thread)
++set(BOOST_REQUIRED_COMPONENTS date_time program_options regex thread)
+ 
+ if(UNIX
+    AND NOT BOOST_ROOT

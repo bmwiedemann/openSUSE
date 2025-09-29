@@ -1,7 +1,7 @@
 #
 # spec file for package gnuradio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source4:        grc_to_37.sh
 Source99:       %{name}-rpmlintrc
 Patch0:         missing_library.patch
 Patch1:         gnuradio-not-install-freedesktop-files.patch
+Patch2:         boost.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake >= 3.16.3
 BuildRequires:  codec2-devel
@@ -46,7 +47,6 @@ BuildRequires:  libSDL-devel
 BuildRequires:  libad9361-iio-devel
 BuildRequires:  libboost_atomic-devel >= 1.69
 BuildRequires:  libboost_filesystem-devel >= 1.69
-BuildRequires:  libboost_system-devel >= 1.69
 BuildRequires:  libgsm-devel
 BuildRequires:  libiio-devel
 BuildRequires:  libjack-devel
@@ -204,6 +204,7 @@ zsh command line completion support for %{name}.
 %setup -q
 %patch -P 0 -p1
 %patch -P 1 -p1 -R
+%patch -P 2 -p1
 
 # protect the template files from %%cmake macro magic / mangling
 find  gr-utils/modtool/templates/gr-newmod -name CMakeLists.txt -ls -exec mv '{}' '{}.tmpl' \;
