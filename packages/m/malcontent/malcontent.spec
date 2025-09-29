@@ -1,7 +1,7 @@
 #
 # spec file for package malcontent
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           malcontent
-Version:        0.12.0
+Version:        0.13.1
 Release:        0
 Summary:        Parental control system
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://gitlab.freedesktop.org/pwithnall/malcontent
-Source:         https://tecnocode.co.uk/downloads/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  itstool
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.54.2
 BuildRequires:  pkgconfig(glib-testing-0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
 BuildRequires:  pkgconfig(polkit-gobject-1)
 
 %description
@@ -160,7 +160,7 @@ mv %{buildroot}%{_datadir}/polkit-1/rules.d/com.endlessm.ParentalControls.rules 
 
 %files control
 %{_bindir}/malcontent-control
-%{_datadir}/metainfo/org.freedesktop.MalcontentControl.appdata.xml
+%{_datadir}/metainfo/org.freedesktop.MalcontentControl.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/org.freedesktop.MalcontentControl*
 %{_datadir}/applications/org.freedesktop.MalcontentControl.desktop
 

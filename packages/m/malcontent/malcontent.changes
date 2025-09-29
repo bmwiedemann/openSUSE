@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 24 14:02:00 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.13.1:
+  + Bugs fixed:
+    - #103 Crashes on fedora when switching from one kid's account
+      to another's, (or any click on carousel's icons)
+    - !244 malcontent-control: Fix callback argument list
+
+-------------------------------------------------------------------
+Wed Sep 24 13:59:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.13.0:
+  + Bugs fixed:
+    - #48 Parental controls app: show the launcher, or merge into
+      Settings?
+    - !176 malcontent-control: Update metainfo file
+    - !179 docs: Add list of legal references for relevant
+      countries’ laws
+    - !183 application: Fix opening Settings
+    - !184 malcontent-control: Call setlocale() earlier to fix
+      early i18n
+    - !185 restrict-applications-selector: Fix pending changes
+      being lost on search
+    - !186 libmalcontent-ui: Port to libadwaita 1.6
+    - !187 app-filter: Fix logic for allowlist filtering on GAppInfo
+  + Updated translations
+
+-------------------------------------------------------------------
 Wed May 15 06:05:35 UTC 2024 - ming li <mli@suse.com>
 
 - Update to 0.12.0:
