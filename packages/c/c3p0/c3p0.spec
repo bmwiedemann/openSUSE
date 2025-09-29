@@ -33,7 +33,6 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  mchange-commons >= %{mchange_commons_min_version}
-Provides:       hibernate_jdbc_cache
 BuildArch:      noarch
 %if !0%{?rhel}
 BuildRequires:  ant-nodeps
@@ -44,9 +43,6 @@ BuildRequires:  xmvn-tools
 %if 0%{?rhel}
 Requires(post): chkconfig
 Requires(postun): chkconfig
-%else
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %endif
 
 %description
@@ -100,25 +96,9 @@ mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -pr build/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-# hibernate_jdbc_cache ghost symlink
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/hibernate_jdbc_cache.jar \
-  %{buildroot}%{_javadir}/hibernate_jdbc_cache.jar
-
-%post
-update-alternatives --install %{_javadir}/hibernate_jdbc_cache.jar \
-  hibernate_jdbc_cache %{_javadir}/%{name}.jar 20
-
-%preun
-if [ "$1" = 0 ] ; then
-  update-alternatives --remove hibernate_jdbc_cache %{_javadir}/%{name}.jar
-fi
-
 %files -f .mfiles
 %license src/dist-static/LICENSE
 %doc src/doc/index.html
-%{_javadir}/hibernate_jdbc_cache.jar
-%ghost %{_sysconfdir}/alternatives/hibernate_jdbc_cache.jar
 
 %files javadoc
 %{_javadocdir}/%{name}
