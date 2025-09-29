@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 22 21:46:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.18.5:
+  + meson: Make the libmanette support explicitly configurable.
+  + core: Avoid re-registration of URI scheme handlers.
+  + wl:
+    - Fix mouse button release events, always passing the button
+      number.
+    - Fix the key repeat timeout.
+    - Handle mouse button modifiers.
+
+-------------------------------------------------------------------
 Wed Feb 19 13:40:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.18.4:
