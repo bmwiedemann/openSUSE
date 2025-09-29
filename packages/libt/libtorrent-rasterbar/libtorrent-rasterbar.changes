@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 28 02:28:00 UTC 2025 - Michael Gumsley <gumsley_6@hotmail.com>
+
+- Remove libboost_system-devel from spec file for Tumbleweed.
+  * No longer required and broken since libboost 1.89.
+
+-------------------------------------------------------------------
 Tue Jan 28 13:10:35 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.11

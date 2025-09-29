@@ -834,4 +834,14 @@
     <comment></comment>
     <requestid>1240831</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>9c6e148ca6d0219e7deb940ff814d28b</srcmd5>
+    <version>2.0.11</version>
+    <time>1759171406</time>
+    <user>anag_factory</user>
+    <comment>- Remove libboost_system-devel from spec file for Tumbleweed.
+  * No longer required and broken since libboost 1.89.
+</comment>
+    <requestid>1307778</requestid>
+  </revision>
 </revisionlist>

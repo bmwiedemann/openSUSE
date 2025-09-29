@@ -37,7 +37,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_random-devel
-BuildRequires:  libboost_system-devel
 %else
 BuildRequires:  libboost_chrono1_75_0-devel
 BuildRequires:  libboost_python-py3-1_75_0-devel
