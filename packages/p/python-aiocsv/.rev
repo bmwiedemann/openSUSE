@@ -25,4 +25,19 @@
 - Skip a test broken by cPython changes.</comment>
     <requestid>1298705</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20c56f27a4e365cbdff85e4e90d8ddf8</srcmd5>
+    <version>1.4.0</version>
+    <time>1759156641</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.0:
+  * Allow numeric fields to start with escapechar
+  * Fix Dialect typing (wtf cpython)
+  * drop 3.8 support
+  * backport PyModule_Add
+  * Fix seg faults when Parser_new fails partway-through
+  * Consider CPython bug #113732 when running on 3.12
+  * fix type checking issues with new quote settings</comment>
+    <requestid>1307719</requestid>
+  </revision>
 </revisionlist>

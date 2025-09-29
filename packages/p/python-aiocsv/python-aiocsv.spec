@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiocsv
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Asynchronous CSV reading/writing in Python
 License:        MIT
