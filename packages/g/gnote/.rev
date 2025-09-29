@@ -872,4 +872,14 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
   + Updated translations. (forwarded request 1306338 from iznogood)</comment>
     <requestid>1306438</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>1a25b239c1c2f38247c40cabe54ea9a3</srcmd5>
+    <version>49.0</version>
+    <time>1759156663</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.0:
+  + Fix website link.
+  + Updated translations. (forwarded request 1307600 from iznogood)</comment>
+    <requestid>1307749</requestid>
+  </revision>
 </revisionlist>
