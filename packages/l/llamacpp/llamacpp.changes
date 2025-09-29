@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Sep 27 16:54:06 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to b6605:
+  * Added docker protocol support and resumable downloads for
+    llama-server
+  * New models: LLaDA-7b-MoE, Grok-2, GroveMoE, OLMo3, LiquidAI
+    LFM2-2.6B
+  * Added conversion support for GraniteHybrid (non-hybrid attn)
+    and Llama4ForCausalLM
+  * llama: support for qwen3 reranker, T5 unequal encoder-decoder
+    layers, seq limit bumped 64 → 256
+  * Bench improvements: list devices, multiple devices, n-cpu-moe
+  * Vulkan: conv_transpose_2d, GET_ROWS, iGPU device selection,
+    buffer optimizations, shader fixes, OOM handling
+  * ggml: semantic versioning, backend/device extensions,
+    optimizations, fixes for embedding, quantization, padding
+  * ggml-cpu: SIMD support (MXFP4 for s390x), cpumask respect,
+    ARM INT8 checks
+  * Common: fixes for memory corruption, offline mode without curl,
+    switch to cpp-httplib
+  * Server: SSE/OpenAI error handling, usage stats opt-in, external
+    test server, removed LLAMA_SERVER_SSL
+  * WebUI: migrated to SvelteKit, hash-based routing, chunk
+    handling fixes
+  * Fixes across model-conversion, rpc, media, devops, embedding
+    docs, typos
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b6269...b6428
+
+-------------------------------------------------------------------
 Tue Sep  9 12:00:15 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 6428
