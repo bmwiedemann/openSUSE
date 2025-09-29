@@ -66,4 +66,13 @@
   * Address gh#AeonDesktop/project#6 and gh#AeonDesktop/project#7</comment>
     <requestid>1306719</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c0decae96628859e3602748be3069d7</srcmd5>
+    <version>1.0.9</version>
+    <time>1759171421</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.9:
+  * Correct tpm2-measure-pcr typo</comment>
+    <requestid>1307891</requestid>
+  </revision>
 </revisionlist>
