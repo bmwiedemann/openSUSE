@@ -1820,4 +1820,15 @@ also obs request: #660553
     removing shebang from functions.netconfig library file.</comment>
     <requestid>1305139</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>66422777518a21cb21469162077d3e3b</srcmd5>
+    <version>0.90.3</version>
+    <time>1759173129</time>
+    <user>anag_factory</user>
+    <comment>- version 0.90.3
+  - Merged changes applied via obs system.
+    - Drop rcnetwork symlink [jsc#PED-266]
+  - Add missing jsc reference to changes file</comment>
+    <requestid>1307704</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 29 08:48:10 UTC 2025 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.90.3
+  - Merged changes applied via obs system.
+
+-------------------------------------------------------------------
+Wed Sep 24 09:45:00 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop rcnetwork symlink [jsc#PED-266]
+
+-------------------------------------------------------------------
 Tue Sep 16 08:29:08 UTC 2025 - Marius Tomaschewski <mt@suse.com>
 
 - version 0.90.2
@@ -83,7 +94,7 @@ Tue Jun  8 14:27:32 UTC 2021 - Marius Tomaschewski <mt@suse.com>
 -------------------------------------------------------------------
 Mon Apr 26 11:32:24 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
-- spec: Drop hard dependency on /sbin/ifup
+- spec: Drop hard dependency on /sbin/ifup (jsc#SMO-84)
 - spec: Suggest instead of recommend wicked-service
 - spec: Mention that the .spec file is in git as well
 

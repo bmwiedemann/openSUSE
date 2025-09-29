@@ -1,7 +1,7 @@
 #
 # spec file for package sysconfig
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@
 %endif
 
 Name:           sysconfig
-Version:        0.90.2
+Version:        0.90.3
 Release:        0
 Summary:        The configuration scheme for traditional network scripts
 License:        GPL-2.0-or-later
@@ -121,7 +121,6 @@ ln -s %{_libexecdir}/netconfig/functions.netconfig \
 mkdir -p %{buildroot}/sbin
 ln -s %{_sbindir}/netconfig %{buildroot}/sbin/netconfig
 %endif
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcnetwork
 rm -f %{buildroot}%{_docdir}/sysconfig/COPYING
 
 mkdir -p %{buildroot}%{_tmpfilesdir}
@@ -149,7 +148,6 @@ EOF
 %doc %{_docdir}/sysconfig/Contents
 %{_fillupdir}/sysconfig.dhcp-network
 %{_fillupdir}/sysconfig.config-network
-%{_sbindir}/rcnetwork
 %if %{with ifuser}
 %{_sbindir}/ifuser
 %endif
