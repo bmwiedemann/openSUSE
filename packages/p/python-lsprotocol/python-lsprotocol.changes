@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep 21 14:40:37 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.0.0:
+  * Update to latest LSP spec with type name changes
+  * Adds type alias for result types
+  * Dotnet change uint to long
+  * Update LSP to latest spec
+  * Update to latest LSP spec with type name changes
+  * [all][breaking] Use stable name generation from LSP spec model by @karthiknadig in #368
+  * [all] Add TextDocumentContent support
+  * [python] Adds type alias for result types
+  * [python] Make the method fields of requests, responses and
+    notifications literals
+  * [python] Add customization to CompletionItemKind
+
+-------------------------------------------------------------------
 Sat Jan 20 19:23:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.0.1:

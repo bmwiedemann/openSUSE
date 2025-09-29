@@ -28,4 +28,12 @@
   * Fix bug with `WorkspaceSymbol` structuring hook</comment>
     <requestid>1140197</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a2b08e85aad003bb7c1f6f80b0b6ce4d</srcmd5>
+    <version>2025.0.0</version>
+    <time>1759156363</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1307577</requestid>
+  </revision>
 </revisionlist>
