@@ -55,6 +55,7 @@ BuildRequires:  rubygem(asciidoctor)
 BuildRequires:  javapackages-filesystem
 %else
 Requires:       javapackages-filesystem = %{version}-%{release}
+Requires:       findutils
 %endif
 # Used on too many places
 Provides:       jpackage-utils = %{version}

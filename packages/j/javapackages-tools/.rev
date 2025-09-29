@@ -447,4 +447,12 @@
     <comment>6.4.1</comment>
     <requestid>1296198</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>9e78b24ee7aa7328d9fa4b72f65b610a</srcmd5>
+    <version>6.4.1</version>
+    <time>1759156289</time>
+    <user>anag_factory</user>
+    <comment>Require findutils for working build-classpath (bsc#1245969)</comment>
+    <requestid>1307554</requestid>
+  </revision>
 </revisionlist>
