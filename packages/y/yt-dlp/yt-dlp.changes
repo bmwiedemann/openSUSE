@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 27 06:53:33 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to release 2025.09.26
+  * twitch: vod: Fix live_status detection
+  * yt: Fix player JS overrides
+  * yt: Improve PO token logging
+  * yt: Player client maintenance
+  * yt: Replace tv_simply with web_safari in default clients
+- Fix Leap 15.6 build
+
+-------------------------------------------------------------------
 Tue Sep 23 08:02:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.09.23

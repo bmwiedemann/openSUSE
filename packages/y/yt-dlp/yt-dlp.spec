@@ -25,7 +25,7 @@
 %endif
 
 Name:           yt-dlp
-Version:        2025.09.23
+Version:        2025.09.26
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
@@ -82,6 +82,12 @@ The direct Python interface into yt-dlp.
 
 %prep
 %autosetup -p1 -n %name
+# remove shebang
+find . -type f -name "*.py" -exec sed -i '/^#!/d' {} +
+
+# fix Leap 15.6 build w.r.t. python-hatchling
+sed -e '/3\.14/d' -e '/^license\-files/d' \
+    -i pyproject.toml
 
 %build
 rm -f youtube-dl yt-dlp
@@ -89,6 +95,9 @@ rm -f youtube-dl yt-dlp
 # A self-decompressing yt-dlp is built only when python_build is not
 # exercised; else yt-dlp is a loader.
 #
+%if 0%{?suse_version} < 1600
+export PYTHON=%__python312
+%endif
 %pyproject_wheel
 %make_build yt-dlp
 
