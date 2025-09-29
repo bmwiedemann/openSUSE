@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-streamdeck
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        Library to control Elgato StreamDeck devices
 License:        MIT

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 29 12:10:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9.8
+  * Documentation fixes (StreamDeck 6 key module is also supported since 0.9.7)
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue Aug  5 10:50:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.9.7
