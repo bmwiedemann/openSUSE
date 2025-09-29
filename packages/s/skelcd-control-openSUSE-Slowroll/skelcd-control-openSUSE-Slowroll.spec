@@ -1,7 +1,7 @@
 #
 # spec file for package skelcd-control-openSUSE-Slowroll
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 #
 ######################################################################
 Name:           skelcd-control-openSUSE-Slowroll
-Version:        20240529
+Version:        20250620
 Release:        0
 Summary:        The openSUSE Slowroll Installation Control file
 License:        MIT
@@ -38,8 +38,7 @@ Source:         skelcd-control-openSUSE-Slowroll-%{version}.tar.bz2
 BuildRequires:  libxml2-tools
 # xsltproc
 BuildRequires:  libxslt-tools
-# Added 'lsm' section (jsc#SLE-22069)
-BuildRequires:  yast2-installation-control >= 4.4.7
+BuildRequires:  yast2-installation-control >= 5.0.1
 ######################################################################
 #
 # Here is the list of Yast packages which are needed in the
@@ -101,13 +100,14 @@ Requires:       release-notes
 %endif
 
 %description
-This package contains the control file used for the openSUSE Slowroll installation.
+This package contains the control file used for openSUSE Slowroll installation.
 
 %prep
 
 %setup -q -n skelcd-control-openSUSE-Slowroll-%{version}
 
 %build
+make %{?_smp_mflags} -C control
 
 %check
 make %{?_smp_mflags} -C control check
