@@ -1782,6 +1782,7 @@ unsorted:
   - busybox-netcat 
   - busybox-patch 
   - busybox-policycoreutils 
+  - busybox-procps 
   - busybox-selinux-tools 
   - busybox-sh 
   - busybox-sha3sum 
@@ -4895,7 +4896,6 @@ unsorted:
   - gdm-branding-MicroOS 
   - gdm-branding-upstream 
   - gdm-devel 
-  - gdm-systemd 
   - gdmd 
   - gdouros-abydos-fonts 
   - gdouros-abydos-fonts-doc 
@@ -8388,10 +8388,7 @@ unsorted:
   - health-check 
   - health-check-bash-completion 
   - health-checker-testing 
-  - heaptrack 
   - heaptrack-devel 
-  - heaptrack-gui 
-  - heaptrack-lang 
   - heatshrink 
   - heatshrink-devel 
   - hedgewars 
@@ -9210,6 +9207,13 @@ unsorted:
   - java-21-openjdk-javadoc 
   - java-21-openjdk-jmods 
   - java-21-openjdk-src 
+  - java-25-openj9 
+  - java-25-openj9-demo 
+  - java-25-openj9-devel 
+  - java-25-openj9-headless 
+  - java-25-openj9-javadoc 
+  - java-25-openj9-jmods 
+  - java-25-openj9-src 
   - java-25-openjdk 
   - java-25-openjdk-demo 
   - java-25-openjdk-devel 
@@ -11074,7 +11078,6 @@ unsorted:
   - libIlmThread-3_4-33-32bit 
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
-  - libKChart2 
   - libKChart6-3 
   - libKChart6-3-lang 
   - libKDb3-4 
@@ -11108,7 +11111,6 @@ unsorted:
   - libKF5Su5 
   - libKF5Su5-lang 
   - libKF5Syndication5 
-  - libKF5ThreadWeaver5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
   - libKGantt2 
@@ -11918,11 +11920,12 @@ unsorted:
   - libarmnnTestUtils3-opencl 
   - libarpack2 
   - libarprec0 
-  - libarrow2000 
-  - libarrow_acero2000 
-  - libarrow_dataset2000 
-  - libarrow_flight2000 
-  - libarrow_flight_sql2000 
+  - libarrow2100 
+  - libarrow_acero2100 
+  - libarrow_compute2100 
+  - libarrow_dataset2100 
+  - libarrow_flight2100 
+  - libarrow_flight_sql2100 
   - libart_lgpl-devel 
   - libart_lgpl_2-2 
   - libasan4 
@@ -12250,10 +12253,8 @@ unsorted:
   - libboost_process1_89_0-devel 
   - libboost_process1_89_0-x86-64-v3 
   - libboost_program_options-devel 
-  - libboost_program_options1_89_0 
   - libboost_program_options1_89_0-32bit 
   - libboost_program_options1_89_0-devel 
-  - libboost_program_options1_89_0-x86-64-v3 
   - libboost_python-py3-1_89_0-32bit 
   - libboost_python-py3-1_89_0-devel 
   - libboost_python3-devel 
@@ -12674,6 +12675,7 @@ unsorted:
   - libcurses1 
   - libcvc-devel 
   - libcvc0 
+  - libcw8 
   - libcxsparse4 
   - libcxx-gtk-utils-2-2_2-0 
   - libcxx-gtk-utils-2-devel 
@@ -13281,7 +13283,6 @@ unsorted:
   - libfyaml 
   - libfyaml-devel 
   - libfyaml-fy-tool 
-  - libfyaml0 
   - libgadu-devel 
   - libgadu3 
   - libgamemode-devel 
@@ -13380,11 +13381,12 @@ unsorted:
   - libgenders0 
   - libgendersplusplus2 
   - libgeners0 
-  - libgensio10 
-  - libgensio_python_swig10 
-  - libgensiocpp10 
-  - libgensiomdns10 
-  - libgensioosh10 
+  - libgensio14 
+  - libgensio_openipmi_oshandler14 
+  - libgensio_python_swig14 
+  - libgensiocpp14 
+  - libgensiomdns14 
+  - libgensioosh14 
   - libgeocode-glib0 
   - libgeos3_13_1 
   - libgeos_c1 
@@ -14027,7 +14029,7 @@ unsorted:
   - libjacknet0-32bit 
   - libjackserver0 
   - libjackserver0-32bit 
-  - libjanet1_38 
+  - libjanet1_39 
   - libjansson-devel 
   - libjasper-devel 
   - libjasper7-32bit 
@@ -14078,7 +14080,6 @@ unsorted:
   - libkcddb-devel 
   - libkcddb-lang 
   - libkcddb-qt6-devel 
-  - libkchart-lang 
   - libkcompactdisc-qt6-devel 
   - libkdcraw 
   - libkdcraw-devel 
@@ -14967,7 +14968,6 @@ unsorted:
   - libopencsd1 
   - libopencsd_c_api1 
   - libopencsg1 
-  - libopencv3_4 
   - libopencv_aruco412 
   - libopencv_face412 
   - libopencv_gapi412 
@@ -14986,7 +14986,7 @@ unsorted:
   - libopenhpi4 
   - libopenhtj2k0 
   - libopenjp2-7-32bit 
-  - libopenjph0_23-32bit 
+  - libopenjph0_24-32bit 
   - libopenlibm4 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -15164,7 +15164,7 @@ unsorted:
   - libparlatype7 
   - libparpack2-openmpi4 
   - libparpack2-openmpi5 
-  - libparquet2000 
+  - libparquet2100 
   - libparserutils-devel 
   - libparserutils0 
   - libpartio1 
@@ -15903,7 +15903,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_8_5 
+  - librssguard-4_8_6 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -16572,7 +16572,7 @@ unsorted:
   - libudunits2-0 
   - libuev-devel 
   - libuev3 
-  - libuhd4_8_0 
+  - libuhd4_9_0 
   - libuhttpmock-1_0-1 
   - libulfius2_7 
   - libulockmgr1 
@@ -17622,6 +17622,8 @@ unsorted:
   - lua51-argparse 
   - lua51-busted 
   - lua51-cassowary 
+  - lua51-cffi-lua 
+  - lua51-cffi-lua-doc 
   - lua51-cjson 
   - lua51-cldr 
   - lua51-cliargs 
@@ -17689,6 +17691,8 @@ unsorted:
   - lua53-argparse 
   - lua53-busted 
   - lua53-cassowary 
+  - lua53-cffi-lua 
+  - lua53-cffi-lua-doc 
   - lua53-cjson 
   - lua53-cldr 
   - lua53-cliargs 
@@ -17756,6 +17760,8 @@ unsorted:
   - lua54-argparse 
   - lua54-busted 
   - lua54-cassowary 
+  - lua54-cffi-lua 
+  - lua54-cffi-lua-doc 
   - lua54-cjson 
   - lua54-cldr 
   - lua54-cliargs 
@@ -20307,9 +20313,6 @@ unsorted:
   - opencv-nogui-devel 
   - opencv-qt6 
   - opencv-qt6-devel 
-  - opencv3 
-  - opencv3-devel 
-  - opencv3-doc 
   - opencv4-cascades-data 
   - opendkim 
   - opendkim-devel 
@@ -23763,7 +23766,6 @@ unsorted:
   - python3-octaviaclient 
   - python3-onionshare 
   - python3-openbabel 
-  - python3-opencv3 
   - python3-openqa_review 
   - python3-openshot 
   - python3-openstack-doc-tools 
@@ -32482,7 +32484,6 @@ unsorted:
   - python313-dacite 
   - python313-daemonize 
   - python313-daiquiri 
-  - python313-dasbus 
   - python313-dash 
   - python313-dash-core-components 
   - python313-dash-html-components 
@@ -36701,7 +36702,7 @@ unsorted:
   - rygel-devel 
   - rygel-lang 
   - rygel-plugin-gstreamer-renderer 
-  - rygel-plugin-tracker 
+  - rygel-plugin-localsearch 
   - rypper 
   - ryzenadj 
   - rz-cutter 
@@ -48456,6 +48457,8 @@ unsorted:
   - unixODBC-32bit 
   - unixODBC-devel 
   - unixODBC-devel-32bit 
+  - unixcw 
+  - unixcw-devel 
   - unknown-horizons 
   - unknown-horizons-lang 
   - unmass 
