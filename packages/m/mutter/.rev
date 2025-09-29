@@ -2293,4 +2293,12 @@ New stable rel</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 1304942 from dimstar)</comment>
     <requestid>1305484</requestid>
   </revision>
+  <revision rev="255" vrev="1">
+    <srcmd5>fa62065094e585ea60686bf2377fc877</srcmd5>
+    <version>49.0+43</version>
+    <time>1759156248</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1307246</requestid>
+  </revision>
 </revisionlist>

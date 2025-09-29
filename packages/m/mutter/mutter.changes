@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 24 11:51:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.0+43:
+  * clutter: Bail out in gesture event handler on sprite-less events
+  * core/delete: Check if window is unmanaging before deleting
+  * backend/native: Steal errors when setting keymap
+  * tests/popup-positions: Test placement rule constraints
+  * tests/test-client: Allow poping up with constraint rules
+  * tests/test-runner: Add test client API to pass command as GStrv
+  * window/wayland: Work around broken initial non-empty popup commit
+  * tests/xdg-activation: Ack configured serial
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 15 06:37:27 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
