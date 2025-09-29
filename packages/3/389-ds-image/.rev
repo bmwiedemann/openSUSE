@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of 389-ds-image</comment>
     <requestid>1305157</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>39794f59cee43b4aab8f3337dfb98904</srcmd5>
+    <version>unknown</version>
+    <time>1759156722</time>
+    <user>anag_factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1307829</requestid>
+  </revision>
 </revisionlist>
