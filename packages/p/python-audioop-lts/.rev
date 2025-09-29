@@ -7,4 +7,16 @@
     <comment>- initial packaging (v0.2.1), needed by python-pydub</comment>
     <requestid>1230256</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>67cda9a3f1ebff8e25c958725b413437</srcmd5>
+    <version>0.2.2</version>
+    <time>1759156642</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.2.2:
+  * copy over audioop docs from 3.12
+  * fixed minor spelling error in readme
+  * update devcontainer image and add dependabot for devcontainers
+  * change embolded text to warning label</comment>
+    <requestid>1307721</requestid>
+  </revision>
 </revisionlist>

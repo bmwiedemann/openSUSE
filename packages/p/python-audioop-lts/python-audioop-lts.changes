@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:25:59 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.2:
+  * copy over audioop docs from 3.12
+  * fixed minor spelling error in readme
+  * update devcontainer image and add dependabot for devcontainers
+  * change embolded text to warning label
+
+-------------------------------------------------------------------
 Wed Dec 11 10:54:35 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - initial packaging (v0.2.1), needed by python-pydub

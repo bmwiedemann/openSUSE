@@ -1,7 +1,7 @@
 #
 # spec file for package python-audioop-lts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python313
 Name:           python-audioop-lts
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        LTS Port of Python audioop
 License:        PSF-2.0
