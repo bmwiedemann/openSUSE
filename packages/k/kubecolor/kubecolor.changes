@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Sep 28 14:51:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.2:
+  * Vulnerabilities
+    - GO-2025-3787 / GHSA-fv92-fjc5-jj9h
+    - GO-2025-3750 / CVE-2025-0913
+    - GO-2025-3956 / CVE-2025-47906
+  * Fixes
+    - Fix kubectl logs parsing of klog caller with dashes by
+      @applejag in #252
+    - Fix kubectl logs parsing of dates with comma delimiter by
+      @applejag in #253
+    - Add missing error status colorizing by @noetarbouriech in
+      #259
+  * Dependencies
+    - Bump k8s.io/apimachinery from 0.32.3 to 0.33.0 in the all
+      group by @dependabot[bot] in #245
+    - Bump actions/attest-build-provenance from 2.2.3 to 2.3.0 in
+      the all group by @dependabot[bot] in #246
+    - Bump k8s.io/apimachinery from 0.33.0 to 0.33.1 in the all
+      group by @dependabot[bot] in #250
+    - Bump actions/attest-build-provenance from 2.3.0 to 2.4.0 in
+      the all group by @dependabot[bot] in #256
+    - Bump k8s.io/apimachinery from 0.33.1 to 0.33.2 in the all
+      group by @dependabot[bot] in #257
+    - Update Go v1.24.0 -> v1.24.5 & mapstructure v2.2.1 -> v2.4.0
+      to fix vulnerability by @applejag in #262
+    - Bump k8s.io/apimachinery from 0.33.2 to 0.33.3 in the all
+      group by @dependabot[bot] in #261
+    - Bump actions/download-artifact from 4 to 5 in the all group
+      by @dependabot[bot] in #263
+    - Bump k8s.io/apimachinery from 0.33.3 to 0.33.4 in the all
+      group by @dependabot[bot] in #264
+    - Bump actions/checkout from 4 to 5 in the all group by
+      @dependabot[bot] in #265
+    - Bump actions/attest-build-provenance from 2.4.0 to 3.0.0 in
+      the all group by @dependabot[bot] in #266
+    - Bump the all group with 2 updates by @dependabot[bot] in #267
+    - Bump the all group with 2 updates by @dependabot[bot] in #268
+    - Bump the all group with 2 updates by @dependabot[bot] in #269
+    - Update Go to 1.24.7 to fix vuln GO-2025-3956 / CVE-2025-47906
+      by @applejag in #271
+  * Other
+    - Fix release workflow by @applejag in #238
+    - Fix tagging by @applejag in #239
+    - Fix artifacts in release.yml by @applejag in #240
+    - Fix upload assets to release by @applejag in #241
+    - Fix publish command by @applejag in #242
+    - Add missing release asset checksums by @applejag in #244
+    - Fix CI badge in README.md by @applejag in #251
+    - Fix release workflow after actions/download-artifacts update
+      by @applejag in #272
+
+-------------------------------------------------------------------
 Thu Apr 24 15:08:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.1:
