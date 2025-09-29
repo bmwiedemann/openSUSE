@@ -1,0 +1,25 @@
+From: <ej@inai.de>
+Date: 2025-09-29 09:24:26.262746656 +0200
+
+ffmpeg never used the remapper so... so why link it in the first place?!
+---
+ configure |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: ffmpeg-4.4.6/configure
+===================================================================
+--- ffmpeg-4.4.6.orig/configure
++++ ffmpeg-4.4.6/configure
+@@ -6391,10 +6391,10 @@ enabled libfreetype       && require_pkg
+ enabled libfribidi        && require_pkg_config libfribidi fribidi fribidi.h fribidi_version_info
+ enabled libglslang && { check_lib libglslang glslang/Include/glslang_c_interface.h glslang_initialize_process \
+                             -lglslang -lMachineIndependent -lOSDependent -lHLSL -lOGLCompiler -lGenericCodeGen \
+-                            -lSPVRemapper -lSPIRV -lSPIRV-Tools-opt -lSPIRV-Tools -lpthread -lstdc++ -lm ||
++                            -lSPIRV -lSPIRV-Tools-opt -lSPIRV-Tools -lpthread -lstdc++ -lm ||
+                         require libglslang glslang/Include/glslang_c_interface.h glslang_initialize_process \
+                             -lglslang -lOSDependent -lHLSL -lOGLCompiler \
+-                            -lSPVRemapper -lSPIRV -lSPIRV-Tools-opt -lSPIRV-Tools -lpthread -lstdc++ -lm; }
++                            -lSPIRV -lSPIRV-Tools-opt -lSPIRV-Tools -lpthread -lstdc++ -lm; }
+ enabled libgme            && { check_pkg_config libgme libgme gme/gme.h gme_new_emu ||
+                                require libgme gme/gme.h gme_new_emu -lgme -lstdc++; }
+ enabled libgsm            && { for gsm_hdr in "gsm.h" "gsm/gsm.h"; do

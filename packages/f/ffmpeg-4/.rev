@@ -798,4 +798,12 @@
     <comment>bsc ref udpate</comment>
     <requestid>1299358</requestid>
   </revision>
+  <revision rev="87" vrev="7">
+    <srcmd5>9bb31520eb2bdeee247a6333130caed1</srcmd5>
+    <version>4.4.6</version>
+    <time>1759156425</time>
+    <user>anag_factory</user>
+    <comment>- Add glslang16.patch to resolve FTBFS</comment>
+    <requestid>1307666</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 29 07:25:31 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add glslang16.patch to resolve FTBFS
+
+-------------------------------------------------------------------
 Wed Jul 23 07:01:22 UTC 2025 - SongChuan Kang <sckang@suse.com>
 
 - Add ffmpeg-4-CVE-2025-7700.patch: Add check for the return value
