@@ -1,7 +1,7 @@
 #
 # spec file for package rygel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,18 +21,18 @@
 %define typelibver 2_8
 
 Name:           rygel
-Version:        0.44.2
+Version:        45.0
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://live.gnome.org/Rygel
 Source0:        %{name}-%{version}.tar.zst
-
+Patch0:         rygel-set-soversion.patch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.33.4
 BuildRequires:  libunistring-devel
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  vala >= 0.36.0
@@ -48,7 +48,7 @@ BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.0
 BuildRequires:  pkgconfig(gstreamer-app-1.0) >= 1.0
 BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.0
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
+BuildRequires:  pkgconfig(gtk4) >= 4.14
 BuildRequires:  pkgconfig(gupnp-1.6) >= 1.1
 BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.12.8
 BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
@@ -199,18 +199,20 @@ pictures, and control of media player on your home network.
 This package provides a standalone MediaRenderer plugin, based on the
 GStreamer playbin3 element.
 
-%package plugin-tracker
-Summary:        Tracker plugin for the Rygel UPnP/DLNA media server
+%package plugin-localsearch
+Summary:        Localsearch plugin for the Rygel UPnP/DLNA media server
 Group:          Productivity/Multimedia/Other
 Requires:       %{name} = %{version}
-Requires:       tracker
-Supplements:    (%{name} and tracker)
+Requires:       localsearch
+Supplements:    (%{name} and localsearch)
+Provides:       rygel-plugin-tracker = %{version}
+Obsoletes:      rygel-plugin-tracker < 45.0
 
-%description plugin-tracker
+%description plugin-localsearch
 Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
-This package provides a plugin using tracker to export media found on
+This package provides a plugin using localsearch to export media found on
 the local machine.
 
 %lang_package
@@ -226,7 +228,7 @@ the local machine.
 	-Dtests=false \
 	-Dgstreamer=enabled \
 	-Dgtk=enabled \
-	-Dplugins=external,gst-launch,media-export,mpris,playbin,ruih,tracker3 \
+	-Dplugins=external,gst-launch,media-export,mpris,playbin,ruih,localsearch \
 	%{nil}
 %meson_build
 
@@ -350,9 +352,9 @@ the local machine.
 %{_libdir}/rygel-%{apiver}/plugins/librygel-playbin.so
 %{_libdir}/rygel-%{apiver}/plugins/playbin.plugin
 
-%files plugin-tracker
-%{_libdir}/rygel-%{apiver}/plugins/librygel-tracker3.so
-%{_libdir}/rygel-%{apiver}/plugins/tracker3.plugin
+%files plugin-localsearch
+%{_libdir}/rygel-%{apiver}/plugins/librygel-localsearch.so
+%{_libdir}/rygel-%{apiver}/plugins/localsearch.plugin
 
 %files lang -f %{name}.lang
 
