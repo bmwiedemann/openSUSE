@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 29 07:13:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.1
+  * Fix #94, where objects returned from a custom encoder were
+    not being indented properly.
+
+-------------------------------------------------------------------
 Sun Jun  8 22:42:48 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - update to 0.12.0
