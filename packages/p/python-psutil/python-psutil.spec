@@ -23,14 +23,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-psutil
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
 URL:            https://github.com/giampaolo/psutil
 Source:         https://files.pythonhosted.org/packages/source/p/psutil/psutil-%{version}.tar.gz
-# PATCH-FIX-SLE adopt change of used memory of procps
-Patch4:         mem-used-bsc1181475.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

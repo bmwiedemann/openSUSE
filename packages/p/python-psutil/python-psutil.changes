@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Sep 26 08:06:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 7.1.0
+  * 2581_, [Windows]: publish ARM64 wheels.  (patch by Matthieu Darbois)
+  * 2571_, [FreeBSD]: Dropped support for FreeBSD 8 and earlier. FreeBSD 8 was
+    maintained from 2009 to 2013.
+  * 2575_: introduced `dprint` CLI tool to format .yml and .md files.
+  * 2473_, [macOS]: Fix build issue on macOS 11 and lower.
+  * 2494_, [Windows]: All APIs dealing with paths, such as
+    `Process.memory_maps()`_, `Process.exe()`_ and `Process.open_files()`_ does
+    not properly handle UNC paths. Paths such as ``\\??\\C:\\Windows\\Temp`` and
+    ``'\\Device\\HarddiskVolume1\\Windows\\Temp'`` are now converted to
+    ``C:\\Windows\\Temp``.  (patch by Ben Peddell)
+  * 2506_, [Windows]: Windows service APIs had issues with unicode services using
+    special characters in their name.
+  * 2514_, [Linux]: `Process.cwd()`_ sometimes fail with `FileNotFoundError` due
+    to a race condition.
+  * 2526_, [Linux]: `Process.create_time()`_, which is used to univocally
+    identify a process over time, is subject to system clock updates, and as such
+    can lead to `Process.is_running()`_ returning a wrong result. A monotonic
+    creation time is now used instead.  (patch by Jonathan Kohler)
+  * 2528_, [Linux]: `Process.children()`_ may raise ``PermissionError``. It will
+    now raise `AccessDenied`_ instead.
+  * 2540_, [macOS]: `boot_time()`_ is off by 45 seconds (C precision issue).
+  * 2541_, 2570_, 2578_ [Linux], [macOS], [NetBSD]: `Process.create_time()`_ does
+    not reflect system clock updates.
+  * 2542_: if system clock is updated `Process.children()`_ and
+    `Process.parent()`_ may not be able to return the right information.
+  * 2545_: [Illumos]: Fix handling of MIB2_UDP_ENTRY in `net_connections()`_.
+  * 2552_, [Windows]: `boot_time()`_ didn't take into account the time spent
+    during suspend / hibernation.
+  * 2560_, [Linux]: `Process.memory_maps()`_ may crash with `IndexError` on
+    RISCV64 due to a malformed `/proc/{PID}/smaps` file.  (patch by Julien
+    Stephan)
+  * 2586_, [macOS], [CRITICAL]: fixed different places in C code which can
+    trigger a segfault.
+  * 2604_, [Linux]: `virtual_memory()`_ "used" memory does not match recent
+    versions of ``free`` CLI utility.  (patch by Isaac K. Ko)
+  * 2605_, [Linux]: `psutil.sensors_battery()` reports a negative amount for
+    seconds left.
+  * 2607_, [Windows]: ``WindowsService.description()`` method may fail with
+    ``ERROR_NOT_FOUND``. Now it returns an empty string instead.
+  * 2610:, [macOS], [CRITICAL]: fix `cpu_freq()`_ segfault on ARM architectures.
+  * 2571_: dropped support for FreeBSD 8 and earlier.
+- Drop mem-used-bsc1181475.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu May 29 08:05:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.0:
