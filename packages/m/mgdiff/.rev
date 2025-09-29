@@ -56,4 +56,12 @@
     <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1149785 from pgajdos)</comment>
     <requestid>1151763</requestid>
   </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>9a86d73685f70705c693001abdb942e3</srcmd5>
+    <version>1.0.1</version>
+    <time>1759156666</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1307752</requestid>
+  </revision>
 </revisionlist>

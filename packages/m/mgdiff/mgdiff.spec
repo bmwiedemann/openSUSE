@@ -1,7 +1,7 @@
 #
 # spec file for package mgdiff
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,8 +83,10 @@ make CCOPTIONS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf %{buildroot}
-make DESTDIR=%{buildroot} install
-make DESTDIR=%{buildroot} install.man
+make DESTDIR=%{buildroot} install MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
+make DESTDIR=%{buildroot} install.man MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
+rm -fr %{buildroot}/etc
+rm -fr %{buildroot}/usr/lib/X11
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_x11data}/mgdiff
 mkdir -p %{buildroot}%{_mandir}/man1
@@ -100,7 +102,7 @@ install -m 0644 debian/rmgdiff.1x	%{buildroot}%{_mandir}/man1/
 %files
 %defattr(-,root,root)
 %doc README
-/usr/share/applications/*.desktop
+%{_datadir}/applications/*.desktop
 %{_bindir}/*diff
 %dir %{_x11data}/mgdiff
 %dir %{_x11data}/app-defaults
