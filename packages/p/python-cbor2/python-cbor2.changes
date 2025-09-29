@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:21:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.7.0:
+  * Added support for Python 3.14 (no free-threading support yet,
+    sorry)
+  * Dropped support for Python 3.8
+  * Added support for encoding indefinite containers
+  * Added complex number support (tag 43000)
+
+-------------------------------------------------------------------
 Tue Aug 12 08:01:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the libalternatives transition conditional

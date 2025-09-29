@@ -175,4 +175,17 @@
     <comment>- Make the libalternatives transition conditional</comment>
     <requestid>1298978</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>16146f0e2311a54f16bfdfce79a56ec8</srcmd5>
+    <version>5.7.0</version>
+    <time>1759156640</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.7.0:
+  * Added support for Python 3.14 (no free-threading support yet,
+    sorry)
+  * Dropped support for Python 3.8
+  * Added support for encoding indefinite containers
+  * Added complex number support (tag 43000)</comment>
+    <requestid>1307718</requestid>
+  </revision>
 </revisionlist>
