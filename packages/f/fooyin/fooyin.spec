@@ -1,7 +1,7 @@
 #
 # spec file for package fooyin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           fooyin
-Version:        0.8.1
+Version:        0.9.2
 Release:        0
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
 URL:            https://www.fooyin.org/
 Source0:        https://github.com/fooyin/fooyin/archive/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-Qt_NoBrush.patch -- based on commits e44e08a and 7e1463b
-Patch0:         fix-Qt_NoBrush.patch
+
 BuildRequires:  c++_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
