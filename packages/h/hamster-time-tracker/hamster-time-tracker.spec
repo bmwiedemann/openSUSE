@@ -1,7 +1,7 @@
 #
 # spec file for package hamster-time-tracker
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # ext_gnome_version: latest GNOME shell version supported
 # min_gnome_version: earliest GNOME shell version supported
 %if 0%{?suse_version} > 1600
-%global ext_gnome_version 48
+%global ext_gnome_version 49
 %global min_gnome_version 46
 %else
 %if 0%{?suse_version} == 1600
@@ -159,7 +159,9 @@ Patch180:       0180-metadata.json-Mark-compatible-with-GNOME-Shell-47.patch
 # GNOME 48
 Patch181:       0181-Make-hamster-shell-extension-compatible-with-GNOME-4.patch
 Patch182:       0182-Remove-GNOME-45-from-the-list-of-supported-releases.patch
-
+# GNOME 49
+Patch183:       0183-Add-option-to-hide-the-summary.patch
+Patch184:       0184-Mark-GNOME-49-as-supported.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 # For detecting typelib() dependencies
@@ -322,6 +324,9 @@ cd hamster-shell-extension-%{ext_version}
 # GNOME 48 support
 %patch -P 181 -p1
 %patch -P 182 -p1
+# GNOME 49 support
+%patch -P 183 -p1
+%patch -P 184 -p1
 %endif
 
 %if 0%{?suse_version} < 1550 || 0%{?sle_version} < 150200

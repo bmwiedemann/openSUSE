@@ -1,0 +1,61 @@
+From d2f92757da83bfa357c23fe929d752e7db54face Mon Sep 17 00:00:00 2001
+From: 3wc <3wc.github@doesthisthing.work>
+Date: Sat, 16 Nov 2024 18:15:38 -0500
+Subject: [PATCH 183/184] Add option to hide the summary
+
+---
+ ...nome.shell.extensions.project-hamster.gschema.xml |  6 ++++++
+ extension/widgets/factsBox.js                        | 12 +++++++++---
+ 2 files changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/data/schemas/org.gnome.shell.extensions.project-hamster.gschema.xml b/data/schemas/org.gnome.shell.extensions.project-hamster.gschema.xml
+index 5122c39..2d7a954 100644
+--- a/data/schemas/org.gnome.shell.extensions.project-hamster.gschema.xml
++++ b/data/schemas/org.gnome.shell.extensions.project-hamster.gschema.xml
+@@ -13,6 +13,12 @@
+             <description>Sets the panel appearance. 0 - label, 1 - icon, 2 - label and icon.</description>
+         </key>
+ 
++        <key name="show-summary" type="b">
++            <default>true</default>
++            <summary>Display categories summary.</summary>
++            <description>Whether to display a summary of today's categories.</description>
++        </key>
++
+         <key type="as" name="show-hamster-dropdown">
+             <default><![CDATA[['<Super>t']]]></default>
+             <summary>Global key combination to show the drop-down.</summary>
+diff --git a/extension/widgets/factsBox.js b/extension/widgets/factsBox.js
+index 9f07c39..7d8ffbf 100644
+--- a/extension/widgets/factsBox.js
++++ b/extension/widgets/factsBox.js
+@@ -70,9 +70,13 @@ class FactsBox extends PopupMenu.PopupBaseMenuItem {
+         this.todaysFactsWidget = new TodaysFactsWidget(this._controller, panelWidget);
+         main_box.add_child(this.todaysFactsWidget);
+ 
++        this._settings = controller.settings;
++
+         // Setup category summery
+-        this.summaryLabel = new CategoryTotalsWidget();
+-        main_box.add_child(this.summaryLabel);
++        if (this._settings.get_boolean("show-summary")) {
++            this.summaryLabel = new CategoryTotalsWidget();
++            main_box.add_child(this.summaryLabel);
++        }
+         // Setup total time
+         this.totalTimeLabel = new TotalTimeWidget();
+         main_box.add_child(this.totalTimeLabel);
+@@ -85,7 +89,9 @@ class FactsBox extends PopupMenu.PopupBaseMenuItem {
+     refresh(facts, ongoingFact) {
+         this.todaysFactsWidget.refresh(facts, ongoingFact);
+         this.totalTimeLabel.refresh(facts);
+-        this.summaryLabel.refresh(facts);
++        if (this._settings.get_boolean("show-summary")) {
++            this.summaryLabel.refresh(facts);
++        }
+ 
+     }
+ 
+-- 
+2.51.0
+

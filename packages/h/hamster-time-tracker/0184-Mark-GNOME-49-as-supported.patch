@@ -1,0 +1,26 @@
+From bb2243ce9f89c25eaf86f27782833cfbb5e206d3 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <martin_wilck@gmx.de>
+Date: Mon, 29 Sep 2025 10:35:17 +0200
+Subject: [PATCH 184/184] Mark GNOME 49 as supported
+
+---
+ data/metadata.json.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index 675e360..ff16f6f 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -12,7 +12,8 @@
+     "shell-version": [
+       "46",
+       "47",
+-      "48"
++      "48",
++      "49"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+-- 
+2.51.0
+

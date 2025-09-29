@@ -266,4 +266,15 @@
 - Fix GNOME support for 15.6 (GNOME 45) (forwarded request 1256330 from mwilck)</comment>
     <requestid>1256420</requestid>
   </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>55faef9da7e115096be8c1fd2d61a666</srcmd5>
+    <version>unknown</version>
+    <time>1759156636</time>
+    <user>anag_factory</user>
+    <comment>- Update to GNOME 49
+  * 0184-Mark-GNOME-49-as-supported.patch
+- Add option to hide the summary
+  * add 0183-Add-option-to-hide-the-summary.patch</comment>
+    <requestid>1307725</requestid>
+  </revision>
 </revisionlist>
