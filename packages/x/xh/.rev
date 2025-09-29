@@ -113,4 +113,16 @@
   * Improve rustls errors for invalid certificates, see #413</comment>
     <requestid>1277327</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c5af50e356a8c2d01391e7a952a90323</srcmd5>
+    <version>0.25.0</version>
+    <time>1759156419</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.25.0:
+  Features:
+  * Add --unix-socket for calling Unix Domain Sockets, see #427
+  * Support binding to interface name on macOS, see #421
+  * Add experimental HTTP/3 support, see #425</comment>
+    <requestid>1307654</requestid>
+  </revision>
 </revisionlist>

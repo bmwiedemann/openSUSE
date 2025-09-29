@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 29 06:09:08 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.0:
+  Features:
+  * Add --unix-socket for calling Unix Domain Sockets, see #427
+  * Support binding to interface name on macOS, see #421
+  * Add experimental HTTP/3 support, see #425
+
+-------------------------------------------------------------------
 Wed May 14 07:15:40 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.24.1:
