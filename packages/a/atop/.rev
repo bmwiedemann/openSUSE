@@ -236,4 +236,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1297338</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fc68c71071be166cc980395cd8433d31</srcmd5>
+    <version>2.12.1</version>
+    <time>1759156402</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.12.1:
+  * Fix not writing log file #346</comment>
+    <requestid>1307638</requestid>
+  </revision>
 </revisionlist>
