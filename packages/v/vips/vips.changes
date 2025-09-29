@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 22 10:36:39 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 8.17.2:
+  * rank: fix an off-by-one error [larsmaxfield]
+  * popplerload, svgload: validate page size [Yang Luo]
+  * pdfiumload: allow both dpi and scale to be set [kleisauke]
+  * svgload: honor DPI when scaling elements with non-pixel units [kleisauke]
+  * disable redundant Highway AVX512 targets [kleisauke]
+  * openslideload_source: flag operation as "nocache" [kleisauke]
+  * remove vipsprofile.1 man page from install [kleisauke]
+  * tiffload: ensure processing halts for memory-related errors [lovell]
+  * tiffload: increase memory limit from 20MB to 50MB [lovell]
+  * fix vapi build [stydxm]
+  * tiffsave: include sample format when copying tiff data [manthey]
+
+-------------------------------------------------------------------
 Wed Jul 16 18:22:50 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - BuildRequires: libspng-devel instead of pkgconfig(spng)

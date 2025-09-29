@@ -23,7 +23,7 @@
 %define short_version_ 8.0
 %define somajor 42
 Name:           vips
-Version:        8.17.1
+Version:        8.17.2
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
@@ -204,7 +204,7 @@ install -Dm644 completions/vips-completion.bash %{buildroot}%{_datadir}/bash-com
 %files tools
 %license LICENSE
 %{_bindir}/vips{,edit,header,thumbnail}
-%{_mandir}/man1/vips{,edit,header,profile,thumbnail}.1%{ext_man}
+%{_mandir}/man1/vips{,edit,header,thumbnail}.1%{ext_man}
 
 %files doc
 %license LICENSE
