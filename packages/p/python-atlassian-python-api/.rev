@@ -161,4 +161,38 @@
   * Commit Object addition to Pull Requests</comment>
     <requestid>1289115</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>88b4fef628631ad268b9de274dc3c9c0</srcmd5>
+    <version>4.0.7</version>
+    <time>1759156638</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.7:
+  * Search endpoint for Jira DC isn't working with /search/jql
+- update to 4.0.6:
+  * Bitbucket: Add AppUser enrollments for User class appears
+  * adjustment of jql search
+- update to 4.0.5:
+  * [Confluence]: Prepare dedicated module
+  * chore: add an example to jira_add_comment.py
+  * [Bitbucket] Adding filterText REST parameter for Get pull
+    requests for
+  * Visualization for the atlassian-python-api codebase
+  * [Confluence] Sanitize attachment filenames to prevent
+    download failures
+  * [Doc] [Jira] Update info about jira.get_issue_tree_recursive
+    method
+  * [Confluence] Update confluence/__init__.py with add space
+    permissions
+  * [Wrapper ]Update errors.py for JSON-RPC Errors
+  * Update license identifier
+  * Make using session the default
+  * [Jira] Update jira.py by adding
+    set_issue_status_by_transition_name
+  * [Bitbucket] Added Download class to retrieve pipeline-
+    generated artifacts
+
+  * Bugfixes
+  * Migrate header variable into rest client</comment>
+    <requestid>1307715</requestid>
+  </revision>
 </revisionlist>

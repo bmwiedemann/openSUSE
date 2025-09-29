@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:19:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.7:
+  * Search endpoint for Jira DC isn't working with /search/jql
+- update to 4.0.6:
+  * Bitbucket: Add AppUser enrollments for User class appears
+  * adjustment of jql search
+- update to 4.0.5:
+  * [Confluence]: Prepare dedicated module
+  * chore: add an example to jira_add_comment.py
+  * [Bitbucket] Adding filterText REST parameter for Get pull
+    requests for
+  * Visualization for the atlassian-python-api codebase
+  * [Confluence] Sanitize attachment filenames to prevent
+    download failures
+  * [Doc] [Jira] Update info about jira.get_issue_tree_recursive
+    method
+  * [Confluence] Update confluence/__init__.py with add space
+    permissions
+  * [Wrapper ]Update errors.py for JSON-RPC Errors
+  * Update license identifier
+  * Make using session the default
+  * [Jira] Update jira.py by adding
+    set_issue_status_by_transition_name
+  * [Bitbucket] Added Download class to retrieve pipeline-
+    generated artifacts
+
+-------------------------------------------------------------------
 Mon Jun 30 03:44:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.4:
@@ -274,7 +302,7 @@ Tue Nov 10 04:22:12 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * add more docs
   * Cleanup rest-client
   * Review methods
-  * Bugfixes 
+  * Bugfixes
 
 -------------------------------------------------------------------
 Fri Sep 11 02:34:29 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
@@ -283,7 +311,7 @@ Fri Sep 11 02:34:29 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * [RestClient] Cleanup base class and fix init order in derived class
   * Add review remark -> add *args.
   * Jira: add create project method
-  * Migrate header variable into rest client 
+  * Migrate header variable into rest client
 
 -------------------------------------------------------------------
 Thu Jun 25 02:57:27 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>

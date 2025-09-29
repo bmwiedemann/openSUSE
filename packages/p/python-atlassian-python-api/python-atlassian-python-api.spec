@@ -1,7 +1,7 @@
 #
 # spec file for package python-atlassian-python-api
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-atlassian-python-api
-Version:        4.0.4
+Version:        4.0.7
 Release:        0
 Summary:        Python Atlassian REST API Wrapper
 License:        Apache-2.0
