@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig
 %if %{suse_version} == 1600 && !0%{?is_opensuse}
 ExclusiveArch:  aarch64 x86_64 ppc64le s390x
 %else
-ExclusiveArch:  aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl
+ExclusiveArch:  aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl riscv64
 %endif
 %if "%{flavor}" == ""
 Requires:       (glibc >= %{glibc_main_version}.%{glibc_major_version} with glibc < %{glibc_main_version}.%{lua:print(rpm.expand("%{glibc_major_version}")+1)})
@@ -274,6 +274,9 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %endif
 %ifarch %{arm}
 %{_libexecdir}/valgrind/*-arm-linux
+%endif
+%ifarch riscv64
+%{_libexecdir}/valgrind/*-riscv64-linux
 %endif
 %dir %{_datadir}/valgrind
 %{_datadir}/valgrind/dh_view*

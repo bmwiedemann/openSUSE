@@ -1602,4 +1602,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     using the lowest possible number (which is required by POSIX).</comment>
     <requestid>1306030</requestid>
   </revision>
+  <revision rev="156" vrev="2">
+    <srcmd5>ba99136e4d34bd9d442b739fd54690eb</srcmd5>
+    <version>3.25.1</version>
+    <time>1759173117</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1307698</requestid>
+  </revision>
 </revisionlist>
