@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Sep 28 04:59:44 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.43.0:
+  * New support for creating and switching to Sessions easily, allowing users
+    to define and use sessions/projects efficiently (#8911)
+  * Add a configurable scrollbar for the kitty scrollback (#8945)
+  * A new protocol for multiple cursors in the terminal (#8927)
+  * macOS: Allow the window title bar to be semi-transparent when
+    background_opacity is less than one and macos_titlebar_color is set to
+    background (#8906)
+  * A new cursor_trail_color setting to independently control the color of
+    cursor trails (#8830)
+  * macOS: Add the default Cmd+L mapping from Terminal.app to erase the last
+    command and its output (#6040)
+  * Fix background_opacity being non-linear especially with light color themes.
+    Note that this might require you to adjust the value of this setting to get
+    back your current look. (#8869)
+  * Add support for blinking text. Text marked as blinking now blinks in exact
+    rhythm with the cursor. The blinking animation and max duration are
+    controlled by cursor_blink_interval and cursor_stop_blinking_after. (#8551)
+  * Allow using a custom python function to draw tab titles in the tab bar,
+    see tab_title_template
+  * Wayland: Fix incorrect window size calculation when transitioning from
+    full screen to non-full screen with client side decorations (#8826)
+  * macOS: Fix hiding quick access terminal window not restoring focus to
+    previously active application (#8840)
+  * macOS: Fix showing the quick access terminal on a space other than the
+    space it was last active on, after full screening some application causes
+    the quick access terminal to appear on the old space (#8740)
+  * macOS: When toggling open the quick access terminal move it to the
+    currently active monitor (the monitor with the mouse pointer on it) (#9003)
+  * macOS: Fix closing an OS Window when another OS Window is minimized causing
+    the minimized window to be un-minimized (#8913)
+  * Allow using backspace to move the cursor onto the previous line in cooked
+    mode. This is indicated by the bw property in kitty’s terminfo (#8841)
+  * Watchers: A new event for global watchers corresponding to the tab bar
+    being changed (#8842)
+  * Fix a regression in 0.40.0 that broke handling of the VS16 variation
+    selector when it caused a character to flow to the next line (#8848)
+  * Fix rendering of underlines when using larger text sizes with the space
+    and en-space characters (#8950)
+  * Fix updating panel configuration on visibility toggle and via remote
+    control not working (#8984)
+  * Improve rendering of rounded rectangles (#9000)
+  * Wayland: Update bundled copy of libwayland to 1.24 from 1.23.1 because
+    the just released mesa 25.2.0 breaks with libwayland < 1.24 (#8884)
+  * macOS: Pass the Cmd+C shortcut to the application running in the terminal
+    when no text is selected (#8946)
+  * macOS: Workaround for bug in macOS Tahoe that caused closed OS Windows to
+    remain as invisible rectangles that intercept mouse events (#8952)
+  * macOS: Workaround for bug in macOS Tahoe that caused OS Windows that are
+    fullscreen on a monitor that is disconnected while macOS is asleep to
+    crash kitty (#8983)
+
+-------------------------------------------------------------------
 Wed Jul 16 05:22:32 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.42.2:
