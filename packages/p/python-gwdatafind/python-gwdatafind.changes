@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 29 04:35:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.0:
+  * Support multiple APIs (!88)
+  * Deprecation support for Omega-format cache output (!115)
+  * Switch from ligo-segments to igwn-segments (API changes) (!99)
+  * Remove old HTTPConnection interface (!101)
+  * Add Cache object for HTCondor file transfer (!102)
+  * Add verbose logging (!110)
+  * Update requirements for pip install (!111)
+
+-------------------------------------------------------------------
 Wed Jun 18 04:41:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
