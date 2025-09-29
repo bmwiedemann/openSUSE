@@ -1,7 +1,7 @@
 #
 # spec file for package sops
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           sops
-Version:        3.10.2
+Version:        3.11.0
 Release:        0
 Summary:        Simple and flexible tool for managing secrets
 License:        MPL-2.0

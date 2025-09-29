@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Mon Sep 29 04:59:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.0:
+  * Bump version to 3.11.0.
+  * Add changelog for 3.11.0.
+  * Address review comments.
+  * Move dotenv.IsComplexValue to stores.
+  * Do not put sensitive value into error message when the key can
+    be printed as well.
+  * Apply review suggestions.
+  * AZKV: Also allow to omit version for AZKV keys specified in key
+    groups.
+  * Make SingleValueStore extend Store instead of the other way
+    around.
+  * Ignore encryption selection options for binary store (and warn
+    when they are used).
+  * build(deps): Bump the go group across 1 directory with 10
+    updates
+  * Get rid of conf variable.
+  * When encrypting, load the config only once.
+  * build(deps): Bump the go group across 1 directory with 21
+    updates
+  * Build with Go 1.24 and 1.25, release with 1.25.
+  * Improve formulations.
+  * Add YAML keys for all keys in a key group.
+  * Get rid of some unrelated tabs.
+  * Document (most of) the SOPS config format.
+  * build(deps): Bump anchore/sbom-action in the ci group
+  * build(deps): Bump the rust group in /functional-tests with 2
+    updates
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the rust group in /functional-tests with 4
+    updates
+  * Fix grammar.
+  * Always load age identities from all locations, and report
+    unused locations in error messages.
+  * Fix mention of macOS XDG_CONFIG_HOME fallback.
+  * Allow for non-string values in exec-env
+  * Avoid panic when values are numbers
+  * Fix argument order.
+  * Move ValToString to stores.
+  * Improve formatting of floats.
+  * Add tests.
+  * Fix converting integers to strings. Also improve time.Time
+    formatting.
+  * Update azkv/keysource.go
+  * build(deps): Bump the ci group with 2 updates
+  * fix: correct destination validation logic to detect all
+    conflicts
+  * Switch from deprecated gopkg.in/yaml.v3 to go.yaml.in/yaml/v3
+  * feat(azkv): Skipping key-version will get latest key
+  * Allow to configure --enable-local-keyservice and --keyservice
+    through env variables.
+  * Remove paragraph on GPG/PGP keyservers.
+  * build(deps): Bump github/codeql-action in the ci group
+  * build(deps): Bump the rust group in /functional-tests with 2
+    updates
+  * build(deps): Bump the go group with 14 updates
+  * build(deps): Bump github.com/go-viper/mapstructure/v2
+  * build(deps): Bump the ci group with 4 updates
+  * build(deps): Bump the go group with 9 updates
+  * build(deps): Bump the ci group with 4 updates
+  * build(deps): Bump the go group with 15 updates
+  * Fix keyservice client for unix domain sockets
+  * Fix example.yaml.
+  * Addressing felixfontein's latest review. Adds a key type field
+    to the ParseKeyField fn.
+  * Resolves #1864. Adds Native List as an option for configuring
+    keys in addition to the trailing comma option already given.
+  * Resolves #1864. Adds Native List as an option for configuring
+    keys in addition to the trailing comma option already given.
+  * Collect age identity loading errors and only report if
+    decryption failed.
+  * Document #1876 and --value-stdin.
+  * Add --value-stdin option to 'sops set'.
+  * Ensure temporary file for editing is only read-writable by
+    owner.
+  * Mention all stores in various places.
+  * build(deps): Bump the ci group with 3 updates
+  * build(deps): Bump serde_json in /functional-tests in the rust
+    group
+  * build(deps): Bump the go group with 12 updates
+  * update completion command usage description
+  * add source link for completion snippet
+  * Also parse floating point numbers if they represent integers.
+  * Store floating point number without decimal places.
+  * Fix Shamir threshold encoding for INI and ENV files.
+  * double backticks on configuration directory list 2/2
+  * double backticks on configuration directory list 1/2
+  * Document XDG_CONFIG_HOME support on mac
+  * Add "--value-file" option to "sops set [...]"
+  * build(deps): Bump the go group with 6 updates
+  * add completion script. Resolves #1868
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the go group with 3 updates
+  * Correct Windows path to store keys.txt
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the go group with 4 updates
+  * build(deps): Bump github.com/go-viper/mapstructure/v2
+  * Fix Typo in README.rst
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the go group with 8 updates
+  * build(deps): Bump the ci group across 1 directory with 3
+    updates
+  * build(deps): Bump the go group with 12 updates
+  * build(deps): Bump github.com/cloudflare/circl from 1.6.0 to
+    1.6.1
+  * build(deps): Bump github/codeql-action in the ci group
+  * build(deps): Bump the go group with 12 updates
+  * build(deps): Bump alpine in /.release in the docker group
+  * build(deps): Bump the go group with 4 updates
+  * Remove unmatched '`' from README.rst
+  * build(deps): Bump the go group with 7 updates
+  * Update authors in main.go
+  * Allow injecting custom HTTP client for AWS, Azure, GCP and
+    HashiCorp Vault
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the go group with 5 updates
+  * Introduce EncryptContext and DecryptContext for AWS, Azure,
+    GCP, PGP and HashiCorp Vault
+  * Apply suggestions from code review.
+  * build(deps): Bump actions/setup-go from 5.4.0 to 5.5.0 in the
+    ci group
+  * build(deps): Bump tempfile in /functional-tests in the rust
+    group
+  * build(deps): Bump the go group with 8 updates
+  * build(deps): Bump the ci group with 4 updates
+  * build(deps): Bump the go group with 5 updates
+  * build(deps): Bump the go group with 4 updates
+  * add newline before sublist start
+  * add newline before sublist start
+  * use bullet points for structure
+
+-------------------------------------------------------------------
 Wed Apr 16 15:44:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.10.2:
