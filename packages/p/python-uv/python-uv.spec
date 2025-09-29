@@ -1,7 +1,6 @@
 #
 # spec file for package python-uv
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -63,9 +62,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
 Obsoletes:      uv < %{version}
 Provides:       uv = %{version}
-Recommends:     uv-bash-completion = %{version}
-Recommends:     uv-fish-completion = %{version}
-Recommends:     uv-zsh-completion = %{version}
 Requires:       alts
 Requires:       python3
 

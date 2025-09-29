@@ -1467,4 +1467,14 @@
   * Tweak title for viewing version in project guide</comment>
     <requestid>1307125</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>8a629072b8f574c797355056fcb08181</srcmd5>
+    <version>0.8.22</version>
+    <time>1759156434</time>
+    <user>anag_factory</user>
+    <comment>- Remove uv-bash-completion, uv-fish-completion and uv-zsh-completion
+  packages as recommendations in the base package.
+  bsc#1249637</comment>
+    <requestid>1307673</requestid>
+  </revision>
 </revisionlist>

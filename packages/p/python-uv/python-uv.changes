@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 29 08:05:11 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove uv-bash-completion, uv-fish-completion and uv-zsh-completion
+  packages as recommendations in the base package.
+  bsc#1249637
+
+-------------------------------------------------------------------
 Thu Sep 25 13:48:30 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update 0.8.22
