@@ -5629,4 +5629,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 10.14 release</comment>
     <requestid>1304769</requestid>
   </revision>
+  <revision rev="471" vrev="2">
+    <srcmd5>f1c47d79277d0937bf30bebda54c3b67</srcmd5>
+    <version>10.15</version>
+    <time>1759156325</time>
+    <user>anag_factory</user>
+    <comment>- fixed aarch64 packagelist</comment>
+    <requestid>1307473</requestid>
+  </revision>
 </revisionlist>

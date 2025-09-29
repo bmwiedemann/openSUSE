@@ -404,6 +404,8 @@ ln -sf /usr/lib64/wine/x86_64-unix /usr/lib/wine/
 %{_bindir}/wine
 #{_bindir}/wine-preloader
 %{_mandir}/man?/wine.?%{?ext_man}
+# .a is in -devel
+%exclude %{_winelibdir}/wine/aarch64-windows/*.a
 %if !%{wow64}
 %{_winelibdir}/wine/aarch64-windows
 %endif
