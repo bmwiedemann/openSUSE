@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-bugbear
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8-bugbear
-Version:        24.2.6
+Version:        24.12.12
 Release:        0
 Summary:        A plugin for flake8 finding likely bugs and design problems in your program
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/flake8-bugbear
-Source:         https://files.pythonhosted.org/packages/source/f/flake8-bugbear/flake8-bugbear-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/flake8-bugbear/flake8_bugbear-%{version}.tar.gz
 BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flake8 >= 6.0.0}
@@ -47,7 +47,7 @@ program.  Contains warnings that don't belong in pyflakes and
 pycodestyle.
 
 %prep
-%setup -q -n flake8-bugbear-%{version}
+%setup -q -n flake8_bugbear-%{version}
 
 %build
 %pyproject_wheel

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:48:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.12.12:
+  * B012 and B025 now also handle try/except*
+  * Skip B028 if warnings.warn is called with ``*args`` or
+    ``**kwargs``
+  * Add B911: itertools.batched without strict=
+  * Readme has anchors per check (they do not seem to render on
+    GitHub tho)
+- update to 24.10.31:
+  * B041: New dictionary same key AND value check
+  * B037: Fix typo in error message
+  * B024: No longer treats assigned class variables as abstract
+  * Bump required attrs version to 22.2.0
+- update to 24.8.19:
+  * B910: implement to suggest using Counter() instead of
+    defaultdict(int)
+  * B901: Do not trigger with explicit Generator return type
+  * B008: add some comments, rename b008_extend_immutable_calls
+  * B040: exception with note added not reraised or used
+  * B039, Add ``ContextVar`` with mutable literal or function
+    call as default
+  * B040: Add Exception with added note not reraised.
+  * Run tests in Python 3.13
+  * Type annotated code
+  * Replace hash with unsafe_hash
+- update to 24.4.26:
+  * B909: Fix false positive affecting containers of mutables
+- update to 24.4.21:
+  * B950: Add pragma comment to line length ignores
+  * B909: Add more cases to detect + more container mutating
+    functions
+
+-------------------------------------------------------------------
 Tue May 27 11:51:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
