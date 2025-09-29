@@ -1067,4 +1067,12 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
 - Drop not needed patch Pillow-13-compat.patch</comment>
     <requestid>1300071</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>d71b2a988a95da44bf48bf1624363a5b</srcmd5>
+    <version>3.10.6</version>
+    <time>1759156243</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1307110</requestid>
+  </revision>
 </revisionlist>

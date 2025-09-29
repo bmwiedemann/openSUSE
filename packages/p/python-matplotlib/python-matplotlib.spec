@@ -46,7 +46,7 @@ ExclusiveArch:  x86_64 aarch64
 
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.10.5
+Version:        3.10.6
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -356,6 +356,8 @@ skip_tests+=" or png or svg or pdf"
 %endif
 # test failure with texlive 2025 https://github.com/matplotlib/matplotlib/issues/29790
 skip_tests+=" or (test_backend_pgf and test_rcupdate)"
+# test failures with newer ghostscript
+skip_tests+=" or test_bbox_inches_tight_raster[pdf] or test_interp_nearest_vs_none[pdf]"
 
 # Fails in SLFO:Main
 %if 0%{?suse_version} <= %SLE_VERSION

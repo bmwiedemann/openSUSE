@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 25 12:01:16 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip a couple of tests that fails with the latest ghostscript
+
+-------------------------------------------------------------------
+Thu Sep 18 11:39:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.10.6
+  * Fix regression of hi-dpi support for Qt
+  * Fix race condition in TexManager.make_dvi & make_png
+  * Various documentation and other bugfixes
+
+-------------------------------------------------------------------
 Mon Aug 18 11:18:14 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.10.5
