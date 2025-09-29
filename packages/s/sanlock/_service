@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">sanlock</param>
-    <param name="revision">651d101aab40bb75cf348ab667eba04d6d771c21</param>
+    <param name="revision">70c268a07273da78a4aadd14c40ffb75138ccebe</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://pagure.io/sanlock</param>

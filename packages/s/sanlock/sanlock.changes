@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 17 19:22:37 UTC 2025 - jfehlig@suse.com
+
+- Update to version 4.0.0:
+  * release 4.0.0
+  * sanlock: add sanlock_get_hosts SANLK_GET_HOST_LOCAL
+  * sanlock: add new sanlock_read_lockspace_host function
+  * sanlock: add update for lockspace io timeout to set_config
+  * sanlock: return shared owner info for acquire2
+  * sanlock: fix acquire2 owner data recv
+  * sanlock: add direct init_host to initialize one delta lease
+  * sanlock: fix missing fd close after send_header error
+  * sanlock: use host_state_str to print flags
+  * sanlock: fix renewal history error and timeout
+  * sanlock: add new acquire function that returns lease owner
+  * Add man-pages as documentation in systemd service files
+  * systemd services: syslog.target -> syslog.socket
+  * sanlock: retry release on EIO
+  * misc: Typo fixes, courtesy of Codespell
+  * sanlock: fix setting checksum for direct write_leader
+  * sanlock: new NODELAY flag for add_lockspace
+  * systemd-wdmd: work around race with udev setting softdog label
+
+-------------------------------------------------------------------
 Fri Jul 11 05:59:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install the python module.

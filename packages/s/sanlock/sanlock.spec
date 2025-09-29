@@ -40,7 +40,7 @@
 %endif
 %define pname   sanlock
 Name:           %{pprefix}%{pname}
-Version:        3.9.5
+Version:        4.0.0
 Release:        0
 %if ! %{with python}
 Summary:        A shared disk lock manager
