@@ -1,3 +1,20 @@
+
+-------------------------------------------------------------------
+Sun Sep 28 14:35:01 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 4.8.6
+This is (probably) the last release from 4.x line of RSS Guard. A new 5.x
+version is under development
+
+  * Added ability to turn off/on font anti-aliasing for the whole app
+  * Fixed random QThread-related crashes
+  * Fixed Article list/viewer behavior when feeds with very long descriptions
+    are selected.
+
+- dropped patch fix_missing_returns.patch as merged into upstream
+- ran spec_cleaner
+
+
 -------------------------------------------------------------------
 Thu May 29 21:00:46 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 

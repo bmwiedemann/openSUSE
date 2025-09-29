@@ -1,7 +1,7 @@
-Index: rssguard-4.8.1/localization/CMakeLists.txt
+Index: rssguard-4.8.6/localization/CMakeLists.txt
 ===================================================================
---- rssguard-4.8.1.orig/localization/CMakeLists.txt
-+++ rssguard-4.8.1/localization/CMakeLists.txt
+--- rssguard-4.8.6.orig/localization/CMakeLists.txt
++++ rssguard-4.8.6/localization/CMakeLists.txt
 @@ -8,7 +8,7 @@ if(UPDATE_TRANSLATIONS AND BUILD_WITH_QT
      "${CMAKE_SOURCE_DIR}/src/librssguard*/*.h"
      "${CMAKE_SOURCE_DIR}/src/librssguard*/*.ui")
@@ -27,11 +27,11 @@ Index: rssguard-4.8.1/localization/CMakeLists.txt
 -  add_dependencies(rssguard rssguard_lrelease)
 +  add_dependencies(rssguard-${APP_VERSION} rssguard_lrelease)
  endif()
-Index: rssguard-4.8.1/src/librssguard/CMakeLists.txt
+Index: rssguard-4.8.6/src/librssguard/CMakeLists.txt
 ===================================================================
---- rssguard-4.8.1.orig/src/librssguard/CMakeLists.txt
-+++ rssguard-4.8.1/src/librssguard/CMakeLists.txt
-@@ -503,11 +503,11 @@ if(WIN32)
+--- rssguard-4.8.6.orig/src/librssguard/CMakeLists.txt
++++ rssguard-4.8.6/src/librssguard/CMakeLists.txt
+@@ -506,11 +506,11 @@ if(WIN32)
    list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
  endif()
  
@@ -45,7 +45,7 @@ Index: rssguard-4.8.1/src/librssguard/CMakeLists.txt
      PRIVATE
      FORCE_BUNDLE_ICONS
    )
-@@ -515,7 +515,7 @@ if(FORCE_BUNDLE_ICONS)
+@@ -518,7 +518,7 @@ if(FORCE_BUNDLE_ICONS)
    message(STATUS "Forcibly bundling icon themes.")
  endif()
  
@@ -54,7 +54,7 @@ Index: rssguard-4.8.1/src/librssguard/CMakeLists.txt
    PUBLIC
    ${CMAKE_CURRENT_SOURCE_DIR}
    ${CMAKE_CURRENT_SOURCE_DIR}/gui
-@@ -531,24 +531,24 @@ target_include_directories(rssguard
+@@ -534,24 +534,24 @@ target_include_directories(rssguard
  )
  
  if(SQLite3_FOUND)
@@ -83,7 +83,7 @@ Index: rssguard-4.8.1/src/librssguard/CMakeLists.txt
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui
    Qt${QT_VERSION_MAJOR}::Network
-@@ -560,97 +560,97 @@ target_link_libraries(rssguard PUBLIC
+@@ -563,97 +563,97 @@ target_link_libraries(rssguard PUBLIC
  )
  
  if(QT_VERSION_MAJOR EQUAL 6)
@@ -198,10 +198,10 @@ Index: rssguard-4.8.1/src/librssguard/CMakeLists.txt
    PRIVATE
    RSSGUARD_DLLSPEC=Q_DECL_EXPORT
    RSSGUARD_LIBDIR="${CMAKE_INSTALL_LIBDIR}"
-Index: rssguard-4.8.1/src/rssguard/CMakeLists.txt
+Index: rssguard-4.8.6/src/rssguard/CMakeLists.txt
 ===================================================================
---- rssguard-4.8.1.orig/src/rssguard/CMakeLists.txt
-+++ rssguard-4.8.1/src/rssguard/CMakeLists.txt
+--- rssguard-4.8.6.orig/src/rssguard/CMakeLists.txt
++++ rssguard-4.8.6/src/rssguard/CMakeLists.txt
 @@ -21,7 +21,7 @@ target_link_libraries(app PUBLIC
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui
@@ -211,10 +211,10 @@ Index: rssguard-4.8.1/src/rssguard/CMakeLists.txt
  )
  
  if(QT_VERSION_MAJOR EQUAL 6)
-Index: rssguard-4.8.1/src/cmake_plugins.cmake
+Index: rssguard-4.8.6/src/cmake_plugins.cmake
 ===================================================================
---- rssguard-4.8.1.orig/src/cmake_plugins.cmake
-+++ rssguard-4.8.1/src/cmake_plugins.cmake
+--- rssguard-4.8.6.orig/src/cmake_plugins.cmake
++++ rssguard-4.8.6/src/cmake_plugins.cmake
 @@ -15,7 +15,7 @@ function(prepare_rssguard_plugin plugin_
    add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
  

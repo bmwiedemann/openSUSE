@@ -1,7 +1,7 @@
 #
 # spec file for package rssguard
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,21 @@
 #
 
 
-%define libver  4_8_5
+%define libver  4_8_6
 Name:           rssguard
-Version:        4.8.5
+Version:        4.8.6
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
-Group:          Productivity/Networking/News/Clients
 License:        AGPL-3.0-or-later AND GPL-3.0-only
+Group:          Productivity/Networking/News/Clients
 URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
 # PATCH-FIX-OPENSUSE rssguard-4.8.1-add_library_version.patch aloisio@gmx.com -- add version to shared library
 Patch0:         rssguard-4.8.1-add_library_version.patch
-# PATCH-FIX-OPENSUSE https://github.com/martinrotter/rssguard/pull/1740
-Patch1:         fix_missing_returns.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core) >= 6.3.0
 BuildRequires:  cmake(Qt6Core5Compat)
@@ -85,10 +84,10 @@ find src/librssguard -name "*.h" -exec chmod -x {} \;
     -DENABLE_MEDIAPLAYER_LIBMPV:BOOL=OFF \
 %endif
     -DUSE_SYSTEM_SQLITE:BOOL=ON
-%qt6_build
+%{qt6_build}
 
 %install
-%qt6_install
+%{qt6_install}
 # install autostart
 mkdir -pv %{buildroot}%{_datadir}/autostart
 %fdupes -s %{buildroot}
