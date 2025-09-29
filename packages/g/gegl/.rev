@@ -753,4 +753,15 @@
     fixes a crash when using a libc that has a non-clobbering free. (forwarded request 1278316 from polslinux)</comment>
     <requestid>1278395</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>5c7f50fa9bfddef32745a0e1e1fb985e</srcmd5>
+    <version>0.4.62</version>
+    <time>1759173099</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1307118 from iznogood
+
+- Add eda8ba51.patch: operations: Support FFMPEG 8 on ff-load
+  (boo#1249045).</comment>
+    <requestid>1307129</requestid>
+  </revision>
 </revisionlist>

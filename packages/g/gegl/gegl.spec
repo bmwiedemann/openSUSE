@@ -1,7 +1,7 @@
 #
 # spec file for package gegl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ URL:            https://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source1:        normalize-gir.pl
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM eda8ba51.patch -- operations: Support FFMPEG 8 on ff-load
+Patch0:         https://gitlab.gnome.org/GNOME/gegl/-/commit/eda8ba51.patch
 
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 25 12:51:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add eda8ba51.patch: operations: Support FFMPEG 8 on ff-load
+  (boo#1249045).
+
+-------------------------------------------------------------------
 Mon May 19 07:17:49 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.4.62:
