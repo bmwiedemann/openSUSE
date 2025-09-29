@@ -54,4 +54,13 @@
   * Fix docstring examples not correctly rendered on GitHub.</comment>
     <requestid>1181695</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ebe39115ecf68792c3103fef82d04c68</srcmd5>
+    <version>2025.1.1</version>
+    <time>1759156648</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.1.1:
+  * Drop support for Python 3.9, support Python 3.13.</comment>
+    <requestid>1307739</requestid>
+  </revision>
 </revisionlist>
