@@ -1,7 +1,7 @@
 #
 # spec file for package jisp2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        The Java Indexed Serialization Package
 License:        Libpng
 Group:          Development/Libraries/Java
-URL:            http://www.coyotegulch.com/jisp/
+URL:            https://www.coyotegulch.com/jisp/
 Source0:        jisp-2.5.1-source.tar.bz2
 Patch0:         jisp2-2.5.1-java5-enum.patch
 Patch1:         jisp2-2.5.1-javac-flags.patch
@@ -33,9 +33,6 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  make
 Requires:       javapackages-tools
-Requires(post): update-alternatives
-Requires(pre):  update-alternatives
-Provides:       hibernate_in_process_cache
 BuildArch:      noarch
 
 %description
@@ -75,47 +72,27 @@ export CLASSPATH=
 
 %install
 # jars
-mkdir -p %{buildroot}%{_javadir}
-cp -p jisp.jar \
-  %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 jisp.jar \
+  %{buildroot}%{_javadir}/%{name}.jar
+
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -pr docs/* %{buildroot}%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name}
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr docs/* %{buildroot}%{_javadocdir}/%{name}
 # demo
-mkdir -p %{buildroot}%{_datadir}/%{name}-%{version}/lib
-cp jisp-demo.jar %{buildroot}%{_datadir}/%{name}-%{version}/lib
-cp *.java %{buildroot}%{_datadir}/%{name}-%{version}
-cp *.txt %{buildroot}%{_datadir}/%{name}-%{version}
-# hibernate_in_process_cache ghost symlink
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
-ln -sf %{_sysconfdir}/alternatives/hibernate_in_process_cache.jar %{buildroot}%{_javadir}/hibernate_in_process_cache.jar
-
-%post
-%{_sbindir}/update-alternatives --install %{_javadir}/hibernate_in_process_cache.jar \
-  hibernate_in_process_cache %{_javadir}/%{name}.jar 30
-
-%preun
-if [ "$1" = "0" ]; then
-  %{_sbindir}/update-alternatives --remove hibernate_in_process_cache %{_javadir}/%{name}.jar
-fi
+install -dm 0755 %{buildroot}%{_datadir}/%{name}/lib
+install -pm 0644 jisp-demo.jar %{buildroot}%{_datadir}/%{name}/lib
+install -pm 0644 *.java %{buildroot}%{_datadir}/%{name}
+install -pm 0644 *.txt %{buildroot}%{_datadir}/%{name}
 
 %files
-%defattr(0644,root,root,0755)
 %doc svfl.txt
-%{_javadir}/%{name}-%{version}.jar
 %{_javadir}/%{name}.jar
-%{_javadir}/hibernate_in_process_cache.jar
-%ghost %{_sysconfdir}/alternatives/hibernate_in_process_cache.jar
 
 %files demo
-%defattr(0644,root,root,0755)
-%{_datadir}/%{name}-%{version}
+%{_datadir}/%{name}
 
 %files javadoc
-%defattr(0644,root,root,0755)
-%{_javadocdir}/%{name}-%{version}
 %{_javadocdir}/%{name}
 
 %changelog

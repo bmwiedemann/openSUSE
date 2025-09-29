@@ -142,4 +142,12 @@
     <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
     <requestid>1202707</requestid>
   </revision>
+  <revision rev="21" vrev="31">
+    <srcmd5>d268aace91d8da08ab0b65659392be43</srcmd5>
+    <version>2.5.1</version>
+    <time>1759156331</time>
+    <user>anag_factory</user>
+    <comment>Don't provide the hibernate_in_process_cache alternative link</comment>
+    <requestid>1307494</requestid>
+  </revision>
 </revisionlist>
