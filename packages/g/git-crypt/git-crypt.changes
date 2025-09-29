@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 26 19:36:59 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.8.0
+  - Remove OpenSSL 1.0 support, fix compilation with OpenSSL 3.
+  - Avoid use of problematic short GPG key IDs.
+
+-------------------------------------------------------------------
 Sat Feb 11 11:10:29 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - fixed building with openssl-3

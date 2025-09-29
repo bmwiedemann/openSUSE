@@ -1,7 +1,7 @@
 #
 # spec file for package git-crypt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-crypt
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Transparent file encryption in git
 License:        GPL-3.0-or-later
@@ -45,12 +45,6 @@ down your entire repository.
 %setup -q
 
 %build
-CXXFLAGS="-std=c++11 %{optflags}"
-# https://github.com/AGWA/git-crypt/issues/232
-%if %{pkg_version_cmp libopenssl-devel 3} != -1
-CXXFLAGS="${CXXFLAGS} -DOPENSSL_API_COMPAT=0x30000000L"
-%endif
-export CXXFLAGS
 make %{?_smp_mflags} \
     ENABLE_MAN=yes
 
