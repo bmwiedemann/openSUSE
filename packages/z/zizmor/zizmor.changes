@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Sep 28 15:02:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.1:
+  * Bug Fixes
+    - Fixed a bug where the ref-version-mismatch would incorrectly
+      show the wrong commit SHAs in its findings (#1183)
+
+-------------------------------------------------------------------
+Sun Sep 28 14:51:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.0:
+  * New Features
+    - New audit: ref-version-mismatch detects mismatches between
+      hash-pinned action references and their version comments
+      (#972)
+  * Enhancements
+    - zizmor no longer uses the "Unknown" severity or confidence
+      levels for any findings. All findings previously categorized
+      at these levels are now given a more meaningful level (#1164)
+    - The use-trusted-publishing audit now detects various Trusted
+      Publishing patterns for the npm ecosystem (#1161)
+    - The unsound-condition audit now supports auto-fixes for many
+      findings (#1089)
+    - zizmor's error handling has been restructured, improving the
+      quality of error messages and their associated suggestions
+      (#1169)
+  * Bug Fixes
+    - Fixed a bug where the cache-poisoning audit would fail to
+      detect some cache usage variants in newer versions of
+      actions/setup-node (#1152)
+    - Fixed a bug where the obfuscation audit would incorrectly
+      flag some subexpressions as constant-reducible when they were
+      not (#1170)
+  * Deprecations
+    - The unknown values for --min-severity and --min-confidence
+      are now deprecated. These values were already no-ops (and
+      have been since introduction), and will be removed in a
+      future release (#1164)
+    - Until removal, using these values will emit a warning.
+
+-------------------------------------------------------------------
 Sun Sep 14 11:54:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.13.0:
