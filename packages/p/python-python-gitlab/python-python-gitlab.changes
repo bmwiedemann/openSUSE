@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 28 17:25:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.4.0:
+  * Chores
+    - deps: Update actions/setup-python action to v6 (89cdb78)
+    - deps: Update actions/stale action to v10 (1cc8cad)
+    - deps: Update all non-major dependencies (0c56567)
+    - deps: Update all non-major dependencies (06f62a2)
+    - deps: Update all non-major dependencies (9d4ee07)
+  * Features
+    - users: Implement missing arguments in users 'list' (99923d4)
+    - users: Sort 'user list' arguments against documentation
+      (99923d4)
+
+-------------------------------------------------------------------
 Thu Aug 28 04:57:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.3.0:
