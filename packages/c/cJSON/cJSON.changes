@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 21 04:50:28 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.19
+  * Check for NULL in cJSON_DetachItemViaPointer.
+  * Check overlap before calling strcpy in cJSON_SetValuestring.
+  * Fix Max recursion depth for cJSON_Duplicate to prevent stack
+    exhaustion.
+  * Allocate memory for the temporary buffer when paring numbers.
+    This fixes CVE-2023-26819.
+  * Fix the incorrect check in decode_array_index_from_pointer.
+    This fixes CVE-2025-57052
+- Remove not longer needed patch:
+  * cJSON-1.7.18-misc_tests.patch
+
+-------------------------------------------------------------------
 Wed Jun  5 16:34:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - unconditionally apply the revert NULL pointer test
