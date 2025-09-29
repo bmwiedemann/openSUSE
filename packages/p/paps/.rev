@@ -99,4 +99,13 @@
     <comment></comment>
     <requestid>1239974</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>a50589ce92556153b1ed1c0b1af1cb55</srcmd5>
+    <version>0.8.0</version>
+    <time>1759156406</time>
+    <user>anag_factory</user>
+    <comment>- Add patch paps-0.8.0-localtime.patch
+  * Fix missing localtime in (lib)fmt</comment>
+    <requestid>1307655</requestid>
+  </revision>
 </revisionlist>

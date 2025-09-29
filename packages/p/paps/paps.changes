@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 29 06:18:47 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch paps-0.8.0-localtime.patch
+  * Fix missing localtime in (lib)fmt
+
+-------------------------------------------------------------------
 Thu Jan 23 18:28:21 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing python-rpm-macros BR.

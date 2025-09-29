@@ -1,7 +1,7 @@
 #
 # spec file for package paps
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Patch1:         71.patch
 # PATCH-FIX-UPSTREAM no-python2.patch gh#dov/paps!75 mcepl@suse.com
 # Remove dependency on python 2
 Patch2:         no-python2.patch
+Patch3:         paps-0.8.0-localtime.patch
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  python-rpm-macros
@@ -52,6 +53,7 @@ paps is a command line program for converting Unicode text encoded in UTF-8 to p
 
 %build
 %add_optflags -D_XOPEN_SOURCE
+%add_optflags -std=c++17
 %meson
 %meson_build
 
