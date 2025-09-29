@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 29 09:32:28 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove non-reproducible files from container
+
+-------------------------------------------------------------------
 Tue Sep 16 10:03:25 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - adjust for helm 3.19
