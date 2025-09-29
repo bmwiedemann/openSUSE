@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-python-dotenv
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Python library for .env support
 License:        BSD-3-Clause
