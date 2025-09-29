@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 29 04:42:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.13:
+  * build(deps): bump google.golang.org/api from 0.249.0 to 0.250.0
+    (#1869)
+  * build(deps): bump github/codeql-action from 3.30.3 to 3.30.4
+    (#1867)
+  * Stop defensively cloning giant maps (#1865)
+  * build(deps): bump sigs.k8s.io/release-utils from 0.12.1 to
+    0.12.2 (#1864)
+  * build(deps): bump chainguard-dev/actions from 1.4.15 to 1.5.1
+    (#1863)
+
+-------------------------------------------------------------------
 Mon Sep 22 05:11:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.12:
