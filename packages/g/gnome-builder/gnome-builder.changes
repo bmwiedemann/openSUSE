@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 16 20:59:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add mutter BuildRequires and launch meson test suite with mutter
+  as display server. Drop appstream-glib BuildRequires: Not needed,
+  as meson test suite uses AppStream.
+- Don't run the test suite on s390x: the virtual mutter and Mesa do
+  not play right together.
+- Move some docs to doc sub-packge.
+- Remove obsolete rpmlint filter no longer needed.
+
+-------------------------------------------------------------------
 Sat Sep 13 08:36:06 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:

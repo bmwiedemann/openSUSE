@@ -694,4 +694,18 @@
     <comment>Scripted push from GNOME:Next (forwarded request 1304886 from dimstar)</comment>
     <requestid>1305446</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>d7ac8ab4875ce3c6ed28a8421d008aa5</srcmd5>
+    <version>49.0</version>
+    <time>1759173134</time>
+    <user>anag_factory</user>
+    <comment>- Add mutter BuildRequires and launch meson test suite with mutter
+  as display server. Drop appstream-glib BuildRequires: Not needed,
+  as meson test suite uses AppStream.
+- Don't run the test suite on s390x: the virtual mutter and Mesa do
+  not play right together.
+- Move some docs to doc sub-packge.
+- Remove obsolete rpmlint filter no longer needed. (forwarded request 1307477 from iznogood)</comment>
+    <requestid>1307899</requestid>
+  </revision>
 </revisionlist>

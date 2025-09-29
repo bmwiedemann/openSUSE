@@ -33,13 +33,13 @@ Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE Dirty-quick-hackfix-typelibs.patch -- Nuke away bogus typelibs dependencies
 Patch0:         Dirty-quick-hackfix-typelibs.patch
 
-BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  llvm-clang-devel >= 3.5
 BuildRequires:  meson >= 1.4.0
+BuildRequires:  mutter
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-gobject
@@ -139,14 +139,15 @@ rm -fr %{buildroot}%{python3_sitearch}/gi/overrides/__pycache__/Ide.cpython-35.o
 # file varied for every build
 rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 
+%ifnarch s390x
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Builder.metainfo.xml
-desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Builder.desktop
+export XDG_RUNTIME_DIR="$(mktemp -p $(pwd) -d xdg-runtime-XXXXXX)"
+dbus-run-session -- mutter --headless --wayland --no-x11 --virtual-monitor 1024x768 -- %{shrink:%meson_test}
+%endif
 
 %files
 %license COPYING
-%doc AUTHORS CONTRIBUTING.md NEWS README.md
-%doc %{_datadir}/doc/%{name}/
+%doc NEWS README.md
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_libexecdir}/%{name}-clang
@@ -162,6 +163,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Builder.des
 %{_libdir}/pkgconfig/gnome-builder-%{basever}*.pc
 
 %files doc
+%doc AUTHORS CONTRIBUTING.md
+%doc %{_datadir}/doc/%{name}/
 %doc %{_datadir}/doc/libide/
 
 %files lang -f %{name}.lang
