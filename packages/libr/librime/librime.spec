@@ -35,7 +35,9 @@ BuildRequires:  leveldb-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_regex-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libcapnp-devel >= 0.7.0
 BuildRequires:  libkyotocabinet-devel
 BuildRequires:  marisa-devel
