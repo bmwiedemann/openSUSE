@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 28 06:38:11 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Don't require update-alternatives
+
+-------------------------------------------------------------------
 Tue Feb 20 10:46:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

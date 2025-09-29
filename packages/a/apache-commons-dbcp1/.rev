@@ -39,4 +39,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1147964</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>d969e8a0d6afd2299fa8836082115a9a</srcmd5>
+    <version>1.4</version>
+    <time>1759156339</time>
+    <user>anag_factory</user>
+    <comment>Don't require update-alternatives</comment>
+    <requestid>1307538</requestid>
+  </revision>
 </revisionlist>

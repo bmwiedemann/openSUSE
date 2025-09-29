@@ -41,8 +41,6 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdbc-stdext >= 2.0
 BuildRequires:  junit >= 3.8.1
 BuildRequires:  xerces-j2
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
