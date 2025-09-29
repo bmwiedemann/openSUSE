@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 29 06:36:25 UTC 2025 - Jan Baier <jbaier@suse.com>
+
+- update to 13.28
+  * Add support for `X-Doc-Main-Package` field
+  * dh_assistant: Fix `--target-compat` not supporting experimental
+    compat levels.
+  * debhelper.pod: Clarify subst limit is per token
+  * dh_assistant: Fix formatting for upgrade checklist
+  * dh_missing: do not give suggestions about equivalent paths
+
+-------------------------------------------------------------------
 Thu Sep 25 17:40:00 UTC 2025 - Jan Baier <jbaier@suse.com>
 
 - update to 13.27
