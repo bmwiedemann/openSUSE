@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 28 00:46:42 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.65.2:
+  * Fix incorrect truncation of --info-command with --info=inline-right (#4479)
+  * [bash 3] Fix CTRL-T and ALT-C to preserve the last yank (#4496)
+  * Do not unset FZF_DEFAULT_* variables when using winpty (#4497) (#4400)
+  * Fix rendering of items with tabs when using a non-default ellipsis (#4505)
+
+-------------------------------------------------------------------
 Sun Aug  3 19:55:36 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.65.1:
