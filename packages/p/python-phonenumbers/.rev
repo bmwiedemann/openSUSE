@@ -410,4 +410,13 @@
     <comment></comment>
     <requestid>1299240</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>5da28f32d7c4fbdca61cf5c9ecbfb739</srcmd5>
+    <version>9.0.15</version>
+    <time>1759246886</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.0.15:
+  * Merge upstream 9.0.15 phonenumber updates</comment>
+    <requestid>1308065</requestid>
+  </revision>
 </revisionlist>
