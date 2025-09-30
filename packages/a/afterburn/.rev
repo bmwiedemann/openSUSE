@@ -167,4 +167,18 @@ Prepare for RPM 4.20</comment>
   * Sync repo templates ⚙</comment>
     <requestid>1307155</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9bff6cee34aaff1175ad2947a48f8588</srcmd5>
+    <version>5.9.0.git21.a73f509</version>
+    <time>1759246734</time>
+    <user>anag_factory</user>
+    <comment>- Add bugzilla references to past changelog
+
+    this includes an update of the dependency idna, which
+    fixes CVE-2024-12224 AKA bsc#1243850
+    fixes RUSTSEC-2025-0022 AKA CVE-2025-3416 AKA bsc#1242665
+    though not vulnerable as unused but lib had CVE-2025-5791 AKA bsc#1244199
+    fixes RUSTSEC-2022-0013 AKA CVE-2022-24713 AKA bsc#1196972</comment>
+    <requestid>1307962</requestid>
+  </revision>
 </revisionlist>

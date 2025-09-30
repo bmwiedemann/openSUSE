@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 29 17:56:53 UTC 2025 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- Add bugzilla references to past changelog
+
+-------------------------------------------------------------------
 Thu Sep 25 12:59:35 UTC 2025 - Jan Zerebecki <jan.suse@zerebecki.de>
 
 - Update to version 5.9.0.git21.a73f509:
@@ -53,6 +58,8 @@ Mon May 19 09:58:00 UTC 2025 - jan.suse@zerebecki.de
   * cargo: Afterburn release 5.8.0
   * docs/release-notes: update for release 5.8.0
   * cargo: update dependencies
+    this includes an update of the dependency idna, which
+    fixes CVE-2024-12224 AKA bsc#1243850
   * packit: add initial support
 
 -------------------------------------------------------------------
@@ -71,7 +78,7 @@ Wed May 07 15:52:01 UTC 2025 - jan.suse@zerebecki.de
   * build(deps): bump crossbeam-channel from 0.5.13 to 0.5.15
   * build(deps): bump tokio from 1.40.0 to 1.44.2
   * build(deps): bump openssl from 0.10.71 to 0.10.72
-    fixes RUSTSEC-2025-0022 AKA CVE-2025-3416
+    fixes RUSTSEC-2025-0022 AKA CVE-2025-3416 AKA bsc#1242665
   * build(deps): bump zbus from 4.4.0 to 5.5.0
   * mod.rs: Fix clippy lint errors
   * release-notes.md: add release notes for rust version update
@@ -231,7 +238,7 @@ Wed May 07 15:04:32 UTC 2025 - jan.suse@zerebecki.de
   * build(deps): bump mockito from 1.1.0 to 1.2.0
   * providers: add support for scaleway
   * Move away from deprecated `users` to `uzers`
-    though not vulnerable as unused but lib had CVE-2025-5791
+    though not vulnerable as unused but lib had CVE-2025-5791 AKA bsc#1244199
   * Sync repo templates ⚙
   * providers/hetzner: add support for Hetzner Cloud
   * build(deps): bump clap from 4.4.1 to 4.4.2
@@ -548,7 +555,7 @@ Mon May 23 12:09:40 UTC 2022 - jan.suse@zerebecki.de
   * kubevirt: Add KubeVirt platform support
   * *.service: add/update Documentation field
   * build(deps): bump regex from 1.5.4 to 1.5.5
-    fixes RUSTSEC-2022-0013 AKA CVE-2022-24713
+    fixes RUSTSEC-2022-0013 AKA CVE-2022-24713 AKA bsc#1196972
   * build(deps): bump reqwest from 0.11.9 to 0.11.10
   * github/release-checklist: Remove Windows binaries from vendored sources
   * build(deps): bump anyhow from 1.0.55 to 1.0.56
