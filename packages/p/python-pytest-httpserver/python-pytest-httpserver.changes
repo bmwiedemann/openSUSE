@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 29 20:16:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.3:
+  * Run server threads with daemon flag, preventing shutdown
+    issues. #411
+  * Python versions earlier than 3.9 have been deprecated in
+    order to make the code more type safe. Python 3.8 has reached
+    EOL on 2024-10-07.
+  * Add a new expect method to the HTTPServer object which allows
+    developers to provide their own request matcher object.
+
+-------------------------------------------------------------------
 Sun Aug 18 17:18:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:
