@@ -94,4 +94,24 @@ When accepted remove https://build.opensuse.org/package/show/openSUSE:Factory/py
 </comment>
     <requestid>1239555</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>216001886d5e454adf02b9ab73e244b1</srcmd5>
+    <version>1.0.1</version>
+    <time>1759246971</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.1:
+  * Fix handling of empty string data given to Deb822.iter_paragraphs.
+  * The 1.0.0 release of python-debian :)
+  * Upload to unstable (and release to pypi).
+  * Update typing imports to keep new mypy happy.
+  * Handle non-UTF-8 data in gpgv output from sequoia-generated data
+  * Permit filenames and Path objects in Deb822.iter_paragraphs()
+
+- Update to version 0.1.49
+- Update to 0.1.48
+- Update to 0.1.47
+  * Add support for zstd compression in .deb files
+  * Extend Deb822 parser to allow underscores in the field name</comment>
+    <requestid>1308122</requestid>
+  </revision>
 </revisionlist>

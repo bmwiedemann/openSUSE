@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-debian
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017 Free Software Foundation Europe e.V.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-python-debian
-Version:        0.1.52
+Version:        1.0.1
 Release:        0
 Summary:        Debian package related modules
 License:        GPL-3.0-or-later
