@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Sep 30 07:45:39 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Rename elementary-xfce-gdb-pixbuf+glycin-loaders-workaround.patch
+  into elementary-xfce-gdk-pixbuf+glycin-loaders-workaround.patch
+
+-------------------------------------------------------------------
+Mon Sep 29 03:15:43 UTC 2025 - maurizio.galli@suse.com
+
+- Update to version 0.21+git12.dff5c11f with the following highlights:
+  * Major New Feature: HiDPI Support
+  * Application Icons: Many application icons were added or redesigned from
+    scratch
+  * File Type Icons (Mimetypes): icons for different file types were added
+    or updated
+  * System & Status Icons: A major effort was made to colorize and unify
+    the panel and status indicator icons.
+  * Theme Removal: The -darker and -darkest theme variants have been removed
+  * File Deletion: A massive number of unused, duplicate, and broken symlinks
+    were removed across all icon categories.
+  * App Icon Removal: Icons for old or less common applications were removed
+    to streamline the theme.
+  * Better Standards Compliance: The theme was updated to improve compliance 
+    with the FreeDesktop.org Icon Specification.
+  * License Update: The project's license was updated to GPLv3.
+- Rebased elementary-xfce-gdb-pixbuf+glycin-loaders-workaround.patch
+
+-------------------------------------------------------------------
+Sun Sep 28 09:41:29 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- _service: Change "localonly" into "manual".
+- Add elementary-xfce-gdb-pixbuf+glycin-loaders-workaround.patch
+- Use autosetup instead of setup to get the new patch automatically
+  applied.
+
+-------------------------------------------------------------------
 Mon Aug 28 06:52:55 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - BuildRequire bitstream-vera-fonts for SVG text rendering

@@ -1,0 +1,18 @@
+diff -rup a/svgtopng/pngtheme.sh b/svgtopng/pngtheme.sh
+--- a/svgtopng/pngtheme.sh	2025-09-29 11:21:07.201841022 +0800
++++ b/svgtopng/pngtheme.sh	2025-09-29 11:37:00.306667812 +0800
+@@ -27,8 +27,9 @@ echo " * Deleting svg files"
+ find "$icondir" -iname '*.svg' -not \( -wholename "*/scalable/*" -o -wholename "*/symbolic/*" -o -wholename "*-symbolic.svg" -o -wholename "*-symbolic-rtl.svg" -o -wholename "*/animations/*process-*" \) -delete
+ 
+ #ignore the output if the theme depends on another one (e.g. elementary-xfce-dark needs to be converted before elementary-xfce)
+-echo " * Checking dangling symlinks"
+-if find -L "elementary-xfce" -type l -exec /bin/ls -go {} \; | grep .; then
+-  echo "Found some dangling symlinks, please go fix those.";
+-  exit 1;
+-fi
++# Introduction of gdk-pixbuf-2.44 together with the new glycin-loaders-2.0.0
++# results in some icons not having the right size:
++#  Message: 15:45:20.670: Skipping build/elementary-xfce/actions/16/list-remove.png, size too big (17x17 instead of 16x16)
++# Remove them instantly:
++echo " * Checking and cleaning up dangling symlinks"
++find -L "$icondir" -type l -exec rm -vf {} \;

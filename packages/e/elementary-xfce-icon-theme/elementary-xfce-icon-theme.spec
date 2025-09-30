@@ -1,7 +1,7 @@
 #
 # spec file for package elementary-xfce-icon-theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define _name elementary-xfce
 Name:           elementary-xfce-icon-theme
-Version:        0.15.2+git0.2e2ca316
+Version:        0.21+git12.dff5c11f
 Release:        0
 Summary:        Icon theme inspired by Tango and Elementary
-License:        GPL-2.0-only
+License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/shimmerproject/elementary-xfce
 Source:         %{_name}-%{version}.tar.xz
+Patch01:        elementary-xfce-gdk-pixbuf+glycin-loaders-workaround.patch
 BuildRequires:  bitstream-vera-fonts
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
@@ -45,7 +46,7 @@ which took place because the team decided to
 drop a lot of desktop-specific symlinks.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -n %{_name}-%{version} -p1
 
 %build
 %configure
@@ -55,10 +56,7 @@ drop a lot of desktop-specific symlinks.
 %make_install
 
 # Cleanup unused docs
-rm %{buildroot}%{_datadir}/icons/%{_name}{,-dark,-darker}/{CONTRIBUTORS,AUTHORS,README.md,LICENSE}
-
-# We don't want to install Darkest as it's not very useful
-rm -rf %{buildroot}%{_datadir}/icons/%{_name}-darkest/
+rm %{buildroot}%{_datadir}/icons/%{_name}{,-dark,-hidpi}/{CONTRIBUTORS,AUTHORS,README.md,LICENSE}
 
 # fix duplicate files
 %fdupes -s %{buildroot}%{_datadir}/icons/
@@ -67,7 +65,7 @@ rm -rf %{buildroot}%{_datadir}/icons/%{_name}-darkest/
 %doc AUTHORS CONTRIBUTORS README.md
 %license LICENSE
 %{_datadir}/icons/elementary-xfce/
+%{_datadir}/icons/elementary-xfce-hidpi/
 %{_datadir}/icons/elementary-xfce-dark/
-%{_datadir}/icons/elementary-xfce-darker/
 
 %changelog
