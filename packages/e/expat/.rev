@@ -747,4 +747,23 @@
   * see Changes for details</comment>
     <requestid>1306571</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>94cd2d92d675a720945618bd4ed575a4</srcmd5>
+    <version>2.7.3</version>
+    <time>1759246460</time>
+    <user>anag_factory</user>
+    <comment>- version update to 2.7.3
+  * Fix alignment of internal allocations for some non-amd64
+    architectures (e.g. sparc32); fixes up on the fix to
+    CVE-2025-59375 (of Expat 2.7.2)
+  * Fix a class of false positives where input should have been
+    rejected with error XML_ERROR_ASYNC_ENTITY; regression from
+    CVE-2024-8176 (of Expat 2.7.0)
+  * Prove and regression-proof absence of integer overflow
+    from function expat_realloc
+  * Remove &quot;harmless&quot; cast that truncated a size_t to unsigned
+  * xmlwf: Resolve use of functions XML_GetErrorLineNumber
+    and XML_GetErrorColumnNumber (forwarded request 1307469 from mathletic)</comment>
+    <requestid>1307863</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Sep 27 09:21:33 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- version update to 2.7.3
+  * Fix alignment of internal allocations for some non-amd64
+    architectures (e.g. sparc32); fixes up on the fix to
+    CVE-2025-59375 (of Expat 2.7.2)
+  * Fix a class of false positives where input should have been
+    rejected with error XML_ERROR_ASYNC_ENTITY; regression from
+    CVE-2024-8176 (of Expat 2.7.0)
+  * Prove and regression-proof absence of integer overflow
+    from function expat_realloc
+  * Remove "harmless" cast that truncated a size_t to unsigned
+  * xmlwf: Resolve use of functions XML_GetErrorLineNumber
+    and XML_GetErrorColumnNumber
+
+-------------------------------------------------------------------
 Mon Sep 22 14:54:27 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.7.2 [bsc#1249584]
