@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 30 05:14:37 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Update to version 0.15.2:
+  * Bump Neovide to 0.15.2, Neovide-derive to 0.1.4 (#3229)
+  * Update Skia to 0.88.0 (#3228)
+  * Fix the CI caching (#3227)
+  * chore: Improve the CI caching behaviour (#3226)
+  * fix: add Go and Rust to Info.plist (#3222)
+  * fix: T-junctions in native box drawings (#3211) (#3219)
+  * Revert "feat: add Lua API of IME event handling (#3110)" (#3218)
+  * fix: remove unimplemented theme setting from the config file (#3208)
+  * feat: add Lua API of IME event handling (#3110)
+  * Allow mouse drags to continue even when the mouse has left the bounds of the window (#3203)
+  * chore: Upgrade and clean up dependencies (#3205)
+  * chore: Delete unused release Github action (#3201)
+  * upgrade deps winit, glutin, objc2. clean macos codes. (#3119)
+  * chore: fix formatting and clippy warnings (#3172)
+  * Check for window focus when showing or hiding cursor (#3135)
+  * doc: Add doc comments to RedrawEvent (#3112)
+  * Fix title-hidden default value and clarify srgb platform defaults in documentation (#3141)
+  * fix: publishing to crates-io (#3171)
+- Updated bundled dependency:
+  * skia-m135-0.83.1.tar.gz -> skia-m140-0.87.4.tar.gz
+- Drop 0001-Fix-build-for-archlinux-latest.patch and 0002-skia-binding-patching.patch
+
+-------------------------------------------------------------------
 Tue Jul 22 13:38:59 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
 
 - Update to version 0.15.1:
