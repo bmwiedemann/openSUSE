@@ -772,4 +772,13 @@
   * Remove DNF references from README.md</comment>
     <requestid>1302701</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>7dd699a729f62773044a88e882b028b3</srcmd5>
+    <version>5.8.8</version>
+    <time>1759247013</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.8.8
+  * Fix adding openh264 repo on leap 16.0</comment>
+    <requestid>1308176</requestid>
+  </revision>
 </revisionlist>
