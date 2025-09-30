@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 30 08:04:55 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel, 
+  removed on boost 1.89 (bsc#1249599)
+
+-------------------------------------------------------------------
 Mon Mar 10 09:01:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.11.3:
