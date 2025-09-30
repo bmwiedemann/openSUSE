@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 29 11:36:05 UTC 2025 - Boychev <svetlin.boychev@suse.com>
+
+- updated to 0.1.78 (jsc#ECO-3319)
+    - Enable SCE content for problematic rules that can traverse the whole filesystem
+    - Remove unnecessary Jinja2 macros in control files
+    - Update RHEL 8 STIG to V2R4 and RHEL 9 STIG to V2R5
+    - Add Debian 13 profile for ANSSI BP 28 (enhanced)
+    - Create SLEM5 General profile
+    - Create SL Micro 6 product and general profile
+    - Update SLE15 STIG version to V2R5
+    - Update SLE12 STIG version to V3R3
+    - Update SLEM5 STIG version to V1R2
+- Remove the cis profiles from all products
+
+-------------------------------------------------------------------
 Thu Aug 21 08:24:36 UTC 2025 - Boychev <svetlin.boychev@suse.com>
 
 - Remove the cis profiles from the tarball 

@@ -543,4 +543,22 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
 - Add check if cis profiles exists in the tarball</comment>
     <requestid>1300811</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0982479d4133ad271fdf0ab74d130712</srcmd5>
+    <version>0.1.78</version>
+    <time>1759246984</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.1.78 (jsc#ECO-3319)
+    - Enable SCE content for problematic rules that can traverse the whole filesystem
+    - Remove unnecessary Jinja2 macros in control files
+    - Update RHEL 8 STIG to V2R4 and RHEL 9 STIG to V2R5
+    - Add Debian 13 profile for ANSSI BP 28 (enhanced)
+    - Create SLEM5 General profile
+    - Create SL Micro 6 product and general profile
+    - Update SLE15 STIG version to V2R5
+    - Update SLE12 STIG version to V3R3
+    - Update SLEM5 STIG version to V1R2
+- Remove the cis profiles from all products</comment>
+    <requestid>1308157</requestid>
+  </revision>
 </revisionlist>

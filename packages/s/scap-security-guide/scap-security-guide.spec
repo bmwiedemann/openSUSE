@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.77
+Version:        0.1.78
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -50,7 +50,7 @@ URL:            https://github.com/ComplianceAsCode/content
 %if "%{_vendor}" == "debbuild"
 Packager:       SUSE Security Team <security@suse.de>
 %endif
-Source:         v%{version}.tar.gz
+Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
 
 # explicit require what is needed by the detection logic in the scripts
 Requires:       coreutils
@@ -218,62 +218,65 @@ Note that the included profiles are community supplied and not officially suppor
 %prep
 %setup -q -n content-%version
 
-# Fail if any cis*.profile exists in the tarball under products/
+# Remove CIS profiles
+find products -type f -name 'cis*.profile' -delete
+
+# Fail if any cis*.profile exists in under products/
 if find products -type f -name 'cis*.profile' | grep -q .; then
-    echo "ERROR: CIS profiles found in the tarball under products/:"
+    echo "ERROR: CIS profiles found under products/:"
     find products -type f -name 'cis*.profile'
     exit 1
 fi
 
 %build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-      -DCMAKE_INSTALL_MANDIR=%{_mandir} \
-      -DSSG_PRODUCT_CHROMIUM=OFF \
-	 -DSSG_PRODUCT_ALINUX2=OFF \
-	 -DSSG_PRODUCT_ALINUX3=OFF \
-         -DSSG_PRODUCT_ALMALINUX9=ON \
-	 -DSSG_PRODUCT_AL2023=OFF \
-	 -DSSG_PRODUCT_DEBIAN9=ON \
-	 -DSSG_PRODUCT_DEBIAN10=ON \
-	 -DSSG_PRODUCT_DEFAULT=ON \
-	 -DSSG_PRODUCT_EXAMPLE=OFF \
-	 -DSSG_PRODUCT_FEDORA=ON \
-	 -DSSG_PRODUCT_FIREFOX=OFF \
-	 -DSSG_PRODUCT_FUSE6=OFF \
-	 -DSSG_PRODUCT_JRE=OFF \
-	 -DSSG_PRODUCT_MACOS1015=OFF \
-	 -DSSG_PRODUCT_OCP4=OFF \
-	 -DSSG_PRODUCT_KYLINSERVER10=OFF \
-	 -DSSG_PRODUCT_OL7=ON \
-	 -DSSG_PRODUCT_OL8=ON \
-	 -DSSG_PRODUCT_OL9=ON \
-	 -DSSG_PRODUCT_OPENSUSE=ON \
-	 -DSSG_PRODUCT_OPENEMBEDDED=OFF \
-	 -DSSG_PRODUCT_RHCOS4=ON \
-	 -DSSG_PRODUCT_RHEL8=ON \
-	 -DSSG_PRODUCT_RHEL9=ON \
-	 -DSSG_PRODUCT_RHEL10=ON \
-	 -DSSG_PRODUCT_CS10=ON \
-	 -DSSG_PRODUCT_RHOSP10=ON \
-	 -DSSG_PRODUCT_RHOSP13=ON \
-	 -DSSG_PRODUCT_RHV4=ON \
-         -DSSG_PRODUCT_TENCENTOS4=ON \
-	 -DSSG_PRODUCT_SLE12=ON \
-	 -DSSG_PRODUCT_SLE15=ON \
-         -DSSG_PRODUCT_SLMICRO5=ON \
-	 -DSSG_PRODUCT_UBUNTU1604=ON \
-	 -DSSG_PRODUCT_UBUNTU1804=ON \
-	 -DSSG_PRODUCT_UBUNTU2004=ON \
-	 -DSSG_PRODUCT_UBUNTU2204=ON \
-	 -DSSG_PRODUCT_UOS20=OFF \
-         -DSSG_PRODUCT_VSEL=OFF \
-         -DSSG_PRODUCT_EKS=OFF \
-         -DSSG_PRODUCT_WRLINUX8=OFF \
-         -DSSG_PRODUCT_WRLINUX1019=OFF \
-         -DSSG_PRODUCT_ANOLIS8=OFF \
-         -DSSG_PRODUCT_ANOLIS23=OFF \
-         ../
+cmake   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+        -DCMAKE_INSTALL_MANDIR=%{_mandir} \
+        -DSSG_PRODUCT_CHROMIUM=OFF \
+	    -DSSG_PRODUCT_ALINUX2=OFF \
+	    -DSSG_PRODUCT_ALINUX3=OFF \
+        -DSSG_PRODUCT_ALMALINUX9=ON \
+        -DSSG_PRODUCT_AL2023=OFF \
+        -DSSG_PRODUCT_DEBIAN9=ON \
+        -DSSG_PRODUCT_DEBIAN10=ON \
+        -DSSG_PRODUCT_DEFAULT=ON \
+        -DSSG_PRODUCT_EXAMPLE=OFF \
+        -DSSG_PRODUCT_FEDORA=ON \
+        -DSSG_PRODUCT_FIREFOX=OFF \
+        -DSSG_PRODUCT_FUSE6=OFF \
+        -DSSG_PRODUCT_JRE=OFF \
+        -DSSG_PRODUCT_MACOS1015=OFF \
+        -DSSG_PRODUCT_OCP4=OFF \
+        -DSSG_PRODUCT_KYLINSERVER10=OFF \
+        -DSSG_PRODUCT_OL7=ON \
+        -DSSG_PRODUCT_OL8=ON \
+        -DSSG_PRODUCT_OL9=ON \
+        -DSSG_PRODUCT_OPENSUSE=ON \
+        -DSSG_PRODUCT_OPENEMBEDDED=OFF \
+        -DSSG_PRODUCT_RHCOS4=ON \
+        -DSSG_PRODUCT_RHEL8=ON \
+        -DSSG_PRODUCT_RHEL9=ON \
+        -DSSG_PRODUCT_RHEL10=ON \
+        -DSSG_PRODUCT_CS10=ON \
+        -DSSG_PRODUCT_RHOSP10=ON \
+        -DSSG_PRODUCT_RHOSP13=ON \
+        -DSSG_PRODUCT_RHV4=ON \
+        -DSSG_PRODUCT_TENCENTOS4=ON \
+        -DSSG_PRODUCT_SLE12=ON \
+        -DSSG_PRODUCT_SLE15=ON \
+        -DSSG_PRODUCT_SLMICRO5=ON \
+        -DSSG_PRODUCT_UBUNTU1604=ON \
+        -DSSG_PRODUCT_UBUNTU1804=ON \
+        -DSSG_PRODUCT_UBUNTU2004=ON \
+        -DSSG_PRODUCT_UBUNTU2204=ON \
+        -DSSG_PRODUCT_UOS20=OFF \
+        -DSSG_PRODUCT_VSEL=OFF \
+        -DSSG_PRODUCT_EKS=OFF \
+        -DSSG_PRODUCT_WRLINUX8=OFF \
+        -DSSG_PRODUCT_WRLINUX1019=OFF \
+        -DSSG_PRODUCT_ANOLIS8=OFF \
+        -DSSG_PRODUCT_ANOLIS23=OFF \
+        ../
 make
 
 %install
