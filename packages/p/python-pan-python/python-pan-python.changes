@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Sep 29 20:21:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.0:
+  * Support vsys for import_file().
+  * pan.xapi.py: In import_file() use dummy string for filename
+    when not specified and file is bytes; it's a required
+    argument.
+  * tests/test_xapi_fw_pano_import.py: Fix so test_01 is run and
+    works with Panorama.
+  * tests/test_wfapi_cld_web_artifacts.py: Update URL, 0.0.0.0
+    now has 404 status.
+  * tests/test_wfapi_cld_submit_url.py: Wait up to 300 seconds
+    for report to be available.
+  * tests/test_wfapi_cld_appl_verdict.py: Fix test_04 to work
+    until bug fixed.
+  * tests/wfapi_mixin.py: commit missing test file.
+  * Add support for type=import API request.
+  * Rename test filename, log() method does not support Panorama
+    to device redirection.
+  * Use 11.1 documentation links.
+  * pan.xapi, pan.xapi.rst, panxapi.rst: Modified version of
+    https://github.com/kevinsteves/pan-python/pull/54 from
+    Matthew Kazmar. type=export request supports target argument.
+  * tests/test_xapi_fw_tgt_multi_config.py: PAN-196392 is fixed.
+  * tests/test_xapi_fw_tgt_multi_config.py: Error message
+    changed.
+  * pan.config: Support 11.1.0 config for set format.
+  * pan.config: Support 11.0.0 config for set format.
+  * pan.wfapi: Add C2 verdict.
+  * pan.wfapi, pan.rc: Add agent argument to constructor.  Agent
+    is used to specify the API key type for Prisma API keys.  Can
+    be specified in .panrc; no command line argument at this
+    time.
+  * pan.wfapi: Remove handling for no ssl.CertificateError.
+  * pan.wfapi: Remove handling of Python 2.7 HTTP reason.
+  * pan.wfapi: Remove checks for Python version around ssl
+    module.
+  * pan.wfapi, panwfapi.py: Add support for url parameter to
+    report() and verdict().
+  * pan.wfapi: Remove old check for ssl.SSLContext().
+  * Fix some pycodestyle issues.
+  * pan.wfapi, panwfapi.py: Add support for the get URL web
+    artifacts API request.
+  * Add unit tests for the WildFire API.
+  * Use 11.0 documentation links.
+  * pan.xapi: Modified version of
+    https://github.com/kevinsteves/pan-python/pull/47 from Justin
+    Bradfield. Use urlopen() as a context manager Immediately
+    read() response Set object 'pan_body' attribute to read()
+    result
+  * Use urlopen() as a context manager
+  * Immediately read() response
+  * Set object 'pan_body' attribute to read() result
+  * panxapi.py: IOError merged into OSError as of Python 3.3.
+  * pan.xapi: Panorama to device redirection (target=) is allowed
+    for type=report.
+  * Add support for type=config&action=multi-config XML API
+    request which provides a mechanism to perform multiple
+    configuration API requests with transactional support.
+  * pan.xapi: Remove PAN-OS 8.0 TLS warning from 2017.
+  * Add tests for PAN-OS XML API.
+  * NOTE: Python 3 only release; Python 2 support is removed.  In
+    general will plan to support the supported Python releases
+    (with bug and security updates); currently >= 3.7.
+  * Switch to pyproject.toml based build system.
+  * pan.afapi, pan.afapi.rst: Workaround for autofocus API bug.
+    Use af_in_progress to determine search completion. At some
+    point, af_message was changed from "complete" to "success" to
+    indicate search completion.
+  * pan.config: Support 10.0.0 and 10.1.0 config for set format.
+  * Use 10.1 documentation links.
+  * pan.config: Support 10.2.0 config for set format.
+  * Use 10.2 documentation links.
+
+-------------------------------------------------------------------
 Mon Jun  9 14:23:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

@@ -39,4 +39,41 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1284218</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5505b1c004e9c78ea826ccccc1d25156</srcmd5>
+    <version>0.25.0</version>
+    <time>1759246872</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.25.0:
+  * Support vsys for import_file().
+  * pan.xapi.py: In import_file() use dummy string for filename
+    when not specified and file is bytes; it's a required
+    argument.
+  * tests/test_xapi_fw_pano_import.py: Fix so test_01 is run and
+    works with Panorama.
+  * tests/test_wfapi_cld_web_artifacts.py: Update URL, 0.0.0.0
+    now has 404 status.
+  * tests/test_wfapi_cld_submit_url.py: Wait up to 300 seconds
+    for report to be available.
+  * tests/test_wfapi_cld_appl_verdict.py: Fix test_04 to work
+    until bug fixed.
+  * tests/wfapi_mixin.py: commit missing test file.
+  * Add support for type=import API request.
+  * Rename test filename, log() method does not support Panorama
+    to device redirection.
+  * Use 11.1 documentation links.
+  * pan.xapi, pan.xapi.rst, panxapi.rst: Modified version of
+    https://github.com/kevinsteves/pan-python/pull/54 from
+    Matthew Kazmar. type=export request supports target argument.
+  * tests/test_xapi_fw_tgt_multi_config.py: PAN-196392 is fixed.
+  * tests/test_xapi_fw_tgt_multi_config.py: Error message
+    changed.
+  * pan.config: Support 11.1.0 config for set format.
+  * pan.config: Support 11.0.0 config for set format.
+  * pan.wfapi: Add C2 verdict.
+  * pan.wfapi, pan.rc: Add agent argument to constructor.  Agent
+    is used to specify the API key type for Prisma API keys.  Can
+    be specified in .panrc; no command line argument at this</comment>
+    <requestid>1308045</requestid>
+  </revision>
 </revisionlist>

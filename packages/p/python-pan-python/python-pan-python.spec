@@ -1,7 +1,7 @@
 #
 # spec file for package python-pan-python
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017-2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_without libalternatives
 Name:           python-pan-python
-Version:        0.16.0
+Version:        0.25.0
 Release:        0
 Summary:        Multi-tool set for Palo Alto Networks PAN-OS, Panorama, WildFire and AutoFocus
 License:        ISC
