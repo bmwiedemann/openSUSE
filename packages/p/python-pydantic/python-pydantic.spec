@@ -39,6 +39,8 @@ Patch0:         bump-pydantic-core-2.35.1.patch
 Patch1:         field-name-validator-core-schemas.patch
 # PATCH-FIX-UPSTREAM Based on gh#pydantic/pydantic#11883
 Patch2:         support-pydantic-core-2.39.0.patch
+# PATCH-FIX-UPSTREAM https://github.com/pydantic/pydantic/pull/11991 Add initial support for Python 3.14
+Patch3:         py314.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
