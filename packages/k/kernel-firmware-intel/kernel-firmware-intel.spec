@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 46730bc6b99956131a9e9818c3592fca883482ce
+%define git_version b611a67511d127842b097f57f02445d94e635b91
 
 Name:           kernel-firmware-intel
-Version:        20250912
+Version:        20250928
 Release:        0
 Summary:        Kernel firmware files for Intel-platform device drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250912.tar.gz#/kernel-firmware-tools-20250912.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250929.tar.gz#/kernel-firmware-tools-20250929.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -51,6 +51,7 @@ Supplements:    modalias(acpi*:INTC1058%3A*)
 Supplements:    modalias(acpi*:INTC1094%3A*)
 Supplements:    modalias(acpi*:INTC10D0%3A*)
 Supplements:    modalias(auxiliary:intel_ipu6.isys)
+Supplements:    modalias(auxiliary:intel_ipu7.isys)
 Supplements:    modalias(pci:v00008086d000002FCsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000435sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000006FCsv*sd*bc*sc*i*)
@@ -105,6 +106,7 @@ Supplements:    modalias(pci:v00008086d0000AD1Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000B03Esv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000E345sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000E445sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000FD3Esv*sd*bc*sc*i*)
 
 %description
 This package contains kernel firmware files for Intel-platform device drivers.

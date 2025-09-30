@@ -142,4 +142,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel/ish: Add firmware for LENOVO THINKPAD X1 2-in-1 Gen 10</comment>
     <requestid>1305077</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7211d6acd51550330b3698d4bf5a56e3</srcmd5>
+    <version>20250928</version>
+    <time>1759246802</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.17
+
+- Update to version 20250928 (git commit b611a67511d1):
+  * intel/ish:Add ISH firmware file for Intel Lunar Lake platform</comment>
+    <requestid>1307942</requestid>
+  </revision>
 </revisionlist>

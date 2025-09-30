@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 29 16:18:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases for 6.17
+
+-------------------------------------------------------------------
+Mon Sep 29 06:56:18 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250928 (git commit b611a67511d1):
+  * intel/ish:Add ISH firmware file for Intel Lunar Lake platform
+
+-------------------------------------------------------------------
 Fri Sep 12 06:11:38 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250912 (git commit 46730bc6b999):
