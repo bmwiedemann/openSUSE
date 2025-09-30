@@ -52,6 +52,12 @@
  %endif
 %endif
 
+%ifarch %arm %ix86
+%{!?with_libbpf_tools: %global with_libbpf_tools 0}
+%else
+%{!?with_libbpf_tools: %global with_libbpf_tools 1}
+%endif
+
 Name:           bcc
 Version:        0.35.0
 Release:        0
@@ -160,6 +166,16 @@ BuildArch:      noarch
 %description docs
 Documentation on how to write programs with the BPF Compiler Collection.
 
+%if %{with_libbpf_tools}
+%package -n libbpf-tools
+Summary:        Tracing libbpf tools from the BPF Compiler Collection
+BuildRequires:  bpftool
+BuildRequires:  libbpf-devel-static
+
+%description -n libbpf-tools
+libbpf-driven eBPF tracing tools from the BPF Compiler Collection
+%endif
+
 %prep
 %autosetup -p1
 
@@ -211,6 +227,14 @@ find tools/ examples/ -type f -exec \
 find tools/ examples/ -type f -exec \
 	sed -i '1s|/bin/python$|/bin/python3|g' {} +
 
+%if %{with_libbpf_tools}
+pushd libbpf-tools
+%make_build LIBBPF_OBJ=%{_libdir}/libbpf.a \
+            BPFTOOL=%{_sbindir}/bpftool \
+            CFLAGS="%{optflags}"
+popd
+%endif
+
 %install
 pushd build
 %make_install
@@ -221,6 +245,24 @@ rm -f %{buildroot}/%{_bindir}/bps
 %endif
 
 popd
+
+%if %{with_libbpf_tools}
+pushd libbpf-tools
+# package libbpf-tools with 'bpf-' prefix (iovisor/bcc#3263)
+%make_install bindir=%{_sbindir}
+(
+    cd %{buildroot}/%{_sbindir}
+    for file in *; do
+        mv $file bpf-$file
+    done
+    # some are symlinks, update them too
+    for file in `find . -type l`; do
+        dest=$(readlink "$file")
+        ln -s -f bpf-$dest $file
+    done
+)
+popd
+%endif
 
 # Remove the static libraries
 rm -f %{buildroot}/%{_libdir}/libbcc*.a
@@ -268,5 +310,10 @@ rm -f %{buildroot}/%{_libdir}/libbcc*.a
 %doc README.md FAQ.txt
 %doc docs/kernel-versions.md docs/reference_guide.md
 %doc docs/tutorial_bcc_python_developer.md docs/tutorial.md
+
+%if %{with_libbpf_tools}
+%files -n libbpf-tools
+%{_sbindir}/bpf-*
+%endif
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 24 01:59:23 UTC 2025 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Add libbpf-tools subpackage
+  - tools are prefixed with 'bpf-' (iovisor/bcc#3263)
+  - disabled for unsupported AArch32/IA-32 variant
+
+-------------------------------------------------------------------
 Mon Aug 25 16:14:11 UTC 2025 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Add _constraints to avoid OOM on OBS workers (bsc#1248638)
