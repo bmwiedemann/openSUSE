@@ -1051,4 +1051,13 @@
 </comment>
     <requestid>1290677</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>08040c4b5e1493f7242686fb5e3408b8</srcmd5>
+    <version>0.9.50rc1</version>
+    <time>1759246990</time>
+    <user>anag_factory</user>
+    <comment>- fix failure to compile due to libboost_system-devel being gone
+- update to version 0.50rc1</comment>
+    <requestid>1307765</requestid>
+  </revision>
 </revisionlist>

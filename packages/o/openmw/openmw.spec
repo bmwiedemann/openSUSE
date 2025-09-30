@@ -1,7 +1,7 @@
 #
 # spec file for package openmw
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,24 +21,26 @@
 # are not compatible with it
 # 1.69 is the first boost version that is supposed to work with C++ 20:
 %define min_boost_version 1.69
+# RCs have archive_ver different than version
+%define archive_ver 50-rc1
 Name:           openmw
-Version:        0.49.0
+Version:        0.9.50rc1
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
 Group:          Amusements/Games/RPG
 URL:            https://www.openmw.org
-Source:         https://github.com/OpenMW/openmw/archive/refs/tags/%{name}-%{version}.tar.gz
+Source:         https://github.com/OpenMW/openmw/archive/refs/tags/%{name}-%{archive_ver}.tar.gz
 Source2:        %{name}.rpmlintrc
 BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libboost_filesystem-devel >= %{min_boost_version}
+BuildRequires:  libboost_headers-devel >= %{min_boost_version}
 BuildRequires:  libboost_iostreams-devel >= %{min_boost_version}
 BuildRequires:  libboost_program_options-devel >= %{min_boost_version}
 BuildRequires:  libboost_regex-devel >= %{min_boost_version}
-BuildRequires:  libboost_system-devel >= %{min_boost_version}
 BuildRequires:  tinyxml-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt6Core)
@@ -105,7 +107,7 @@ The OpenCS is not based on the editing tool which came with the original Morrowi
  * customisable GUI
 
 %prep
-%autosetup -p1 -n %{name}-%{name}-%{version}
+%autosetup -p1 -n %{name}-%{name}-%{archive_ver}
 cp 'files/data/fonts/DejaVuFontLicense.txt' ./DejaVuFontLicense.txt
 
 ## fix __DATE__ and __TIME__
@@ -118,6 +120,10 @@ STATIC_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %
 for file in tables.tex main.tex recordtypes.tex filters.tex creating_file.tex files_and_directories.tex windows.tex; do
 	sed -i "s/\r$//" "manual/opencs/$file"
 done
+
+# remove references to boost system
+sed -i s/system\)$/\)/ CMakeLists.txt
+sed -i s/Boost::system// components/CMakeLists.txt
 
 %build
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}

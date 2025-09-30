@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:39:16 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- fix failure to compile due to libboost_system-devel being gone
+- Update to version 0.50rc1
+  * AI and Pathfinding
+    - [#5331] When Command effects stop, the affected actor will wander around their new location
+    - [#6029] Hostile actors will no longer engage in combat with the player if they have >=75% Chameleon active
+    - [#6029] The awareness rolls of non-hostile actors are now cached for 5 seconds to allow easier gain of Sneak experience
+    - [#7871] Immobile actors such as the Kwama Queen in Morrowind are allowed to initiate combat, however futile that would be
+    - [#7979] Incapacitated (paralysed or knocked down) NPCs can no longer use combat actions, so they won't yell taunts or drink potions to get themselves out of their predicament
+    - [#8433] Improved Wander pathfinding: actors will try to avoid moving into unreachable path grid nodes when possible
+    - [#8612] Actors no longer harvest herbalism-enabled plants non-stop when the Activate package is used
+  * Configuration and VFS
+    - [#8077] Setting files are now saved when you exit the settings window, rather than only when you exit the game
+	- [#8599] Non-ASCII paths using native encodings are properly supported in Morrowind BSA format
+  * ESM Format and Saved Games
+    - [#8333] Reading quest status subrecords no longer causes the rest of the quest record data to be discarded
+  * Gameplay fixes
+    - [#6039] Next Spell now skips over items that belong to the same stack as the current item (it would previously get stuck if there were multiple copies)
+    - [#7622] Ranged attacks will now hit underwater if you're up close to a target (this matches Morrowind)
+    - [#7649] Sounds and visual effects of resisted effects no longer play
+    - [#7693] Potions and ingredients no longer visually end up back in the inventory for a single frame before getting picked up again for convenient consumption (0.49.0 regression)
+    - [#7996] Instant (zero-duration) effects can now act immediately. For example, instant Cure Poison can immediately cure the instant Poison preceding it
+    - [#8303] Underwater spell projectiles cast by objects will explode rather than immediately disappear (this matches Morrowind)
+    - [#8340] Multi-effect enchantment service price is now noticeably lower and should match Morrowind; it's now based on the accumulated strength of the final effect rather than the enchantment's overall strength
+    - [#8371] Silence no longer affects powers
+    - [#8383] Bound helm and boot effects cast on beast race characters are now interrupted immediately
+    - [#8399] Jail-induced major/minor skill increases count as level progress
+    - [#8404] Actors will no longer equip items to all slots when they want to replace their equipped light with a more appropriate shield. This allows the prevent merchant equipping option to work more intuitively for exterior merchants
+    - [#8446] Travel prices are calculated more accurately when the player has multiple followers: instead of calculating the offered price based on the base price for one character and multiplying it, the base price is multiplied first and then used for the offer
+    - [#8459] Spell prices are autocalculated properly for autocalculated spells
+    - [#8485] Base diseases bypass disease resistance
+    - [#8500] Fight rating adjustment crime reaction accounts for the number of items in the stolen stack
+    - [#8519] Pickpocket crimes will no longer be erroneously detected twice sometimes
+    - [#8540] Effects with no magnitude can no longer be resisted partially
+    - [#8557] Charm no longer influences the disposition clamping range
+    - [#8606] Floating-point imprecision should be less likely to mess with container capacity
+    - [#8615] Increased waiting/resting progress speed to better match Morrowind (tuned based on the expected framerate of 60 FPS)
+    - [#8680] Permanent effects are no longer erroneously restored on dead actors, e.g., when the player rests
+  * Graphics fixes
+    - [#4437] Base transformations and root bone included in the skinning data are properly used
+    - [#7799] Harvesting herbalism-enabled plants will no longer trigger expensive object paging chunk regeneration
+    - [#8341] Magic glow will no longer disable parallax on the affected geometry
+    - [#8375] Moon phase cycle should now match Morrowind, e.g., "skip" days less often
+    - [#8447] Non-vanilla threshold-based turning is no longer used for the player, fixing werewolf swimming turning animation getting stuck
+    - [#8490] Water normals exposed to post-processing no longer sometimes disappear when refraction is disabled
+    - [#8560] Global filtering settings are properly used for overridden textures of spawned magic VFX
+    - [#8593] Mipmaps are properly generated for post-processing render targets
+    - [#8598] Post-processing shaders are properly loaded from BSA files
+    - [#8610] Terrain normal maps now use the correct (DirectX or -Y) vertical convention
+    - Parallax should behave correctly for flipped geometry
+  * Scripting: mwscript
+    * New Features
+	  - [#3769] GetSpellEffects now detects enchantments, similar to how a Morrowind Code Patch option works
+      - [#8509] FillJournal debug instruction, which adds all topics and journal entries into the journal
+    * Fixes
+      - [#4885] Disabling actors through dialogue scripting should no longer cause crashes
+      - [#8245] ShowVars debug instruction now lists the global scripts
+      - [#8318] Improved dialogue filtering: filters are handled more consistently for creatures,
+	            while missing global variables no longer break the dialogue window
+      - [#8414] Water Walking effect no longer makes the player collide with water when collision is disabled
+      - [#8432] Moving between an interior and an exterior properly spawns in the (postponed)
+	            collision shapes of objects spawned by scripting
+      - [#8466] ShowMap now requires a non-empty argument
+  * Scripting: OpenMW-Lua
+    * Now Dehardcoded
+      - [#8399] Jail skill impact
+      - [#8642] Various mechanics triggered when attacks hit the target: armour condition damage and hit sound, damage adjustment due to difficulty and armour rating, blood VFX spawning and miss sound playback. Shield hit redistribution tweak copied from Morrowind Code Patch is now optional
+    * New APIs and Interfaces
+      - [#6976] core.weather: weather API, which allows manipulating various built-in weather settings
+      - [#7879] core.regions: region record bindings
+      - [#7966] types.Player.journal: API for player journal entries for both topics and quests
+      - [#8112] core.land: API for terrain, which currently lets you recover the terrain height and texture for the default exterior
+      - [#8320] core.mwscripts: API for mwscript script records, which allows recovering their source
+      - [#8642] Combat: interface for interacting with the combat system, primarily attacks (as a part of on-hit mechanics dehardcoding)
+    * New Bindings and Utility Functions
+      - [#8285] postprocessing.getChain(): the chain of active post-processing shaders
+      - [#8334] types.Player.addTopic(player, topicId): mwscript AddTopic equivalent; adds a topic that the given player will be able to ask characters about
+      - [#8355] Interfaces.UI.isWindowVisible(windowName): returns whether the given UI window is currently visible
+      - [#8629] Cell.pathGrid: the path grid record relevant to the cell, i.e., the traversable path links and nodes
+    * New Events
+      - [#8597] AddVfx, PlaySound3d, BreakInvisibility, Unequip, Hit, ModifyItemCondition, ShowMessage, SpawnVfx, ConsumeItem, Lock and Unlock events (mostly self-explanatory, see documentation)
+    * Other New Features
+      - [#8654] Custom NPC records can now be created
+    * Fixes
+      - [#7693] ItemUsage interface returns the item to its original stack if it could not be equipped or consumed, instead of moving it to the player's inventory
+      - [#8012] OnUpdate engine handlers are now called with a simulation time of zero for paused frames, which allows scripts to react more conveniently to events happening out of normal simulation. For example, combat music properly reacts to combat starting and ending during dialogue again. Note: this is a breaking change! Scripts cannot assume the simulation time is always positive any more
+      - [#8582] Local scripts started by another script no longer start out inactive
+      - [#8614] Fixed a sol3-side memory leak when indexing user-defined types
+      - [#8650] Checking if a container is resolved no longer initialises its contents, which could previously cause herbalism-enabled containers to be automatically harvested
+  * Sound
+    - [#7813] The Doppler effect is now enabled for the 3D audio. The Doppler effect is a real-life phenomenon that shifts the sound's pitch depending on its velocity relative to the listener
+
+-------------------------------------------------------------------
 Fri Jul  4 11:31:55 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 0.49.0 final
