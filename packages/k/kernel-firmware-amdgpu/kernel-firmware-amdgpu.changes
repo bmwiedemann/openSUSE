@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 26 16:10:20 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250926 (git commit fad361e997ee):
+  * amdgpu: DMCUB updates for various ASICs
+  * Revert "amdgpu: update gc 10.3.6 firmware"
+
+-------------------------------------------------------------------
+Sat Sep 20 06:28:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250919 (git commit 493de17dee99):
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
 Wed Sep 17 07:51:40 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250916 (git commit add225168d0d):

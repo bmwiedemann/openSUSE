@@ -387,4 +387,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: update VCN 4.0.4 firmware</comment>
     <requestid>1305350</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a1a25809622184762d162c712af5dbfd</srcmd5>
+    <version>20250926</version>
+    <time>1759246794</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250926 (git commit fad361e997ee):
+  * amdgpu: DMCUB updates for various ASICs
+  * Revert &quot;amdgpu: update gc 10.3.6 firmware&quot;
+
+- Update to version 20250919 (git commit 493de17dee99):
+  * amdgpu: DMCUB updates for various ASICs</comment>
+    <requestid>1307938</requestid>
+  </revision>
 </revisionlist>
