@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 30 09:17:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.0:
+  * Added official support for Python 3.13.
+  * Dropped support for EOL Python 3.8.
+  * Dropped support for EOL PySide 2.
+  * Type annotations are now provided. Note that because the Qt
+    library used is defined at runtime, Qt classes are currently
+    annotated as Any.
+  * Fixed PySide6 exceptions / warnings about being unable to
+    disconnect signals with qtbot.waitSignal (#552, #558).
+  * Reduced the likelyhood of trouble when using
+    qtbot.waitSignal(s) and qtbot.waitCallback where the
+    signal/callback is emitted from a non-main thread. In theory,
+    more problems remain and this isn't a proper fix yet. In
+    practice, it seems impossible to provoke any problems in
+    pytest-qt's testsuite.
+- remove fix-pyside6-test.patch
+
+-------------------------------------------------------------------
 Thu Jun  5 10:11:48 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Drop tests for python3-pyside2 and python-qt5 as Standard Qt 5

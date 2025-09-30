@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-qt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,14 +42,13 @@ BuildRequires:  %{python_module pyside6}
 BuildConflicts: %{python_module PyQt6}
 %endif
 Name:           python-pytest-qt%{psuffix}
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        Pytest support for PyQt and PySide applications
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-qt
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-qt/pytest-qt-%{version}.tar.gz
-Patch0:         fix-pyside6-test.patch
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-qt/pytest_qt-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -61,6 +60,7 @@ BuildRequires:  python-rpm-macros >= 20210608
 # https://github.com/pytest-dev/pytest-qt/issues/317
 Requires:       bitstream-vera-fonts
 Requires:       python-pytest >= 3.0
+Requires:       python-typing-extensions
 Suggests:       python-PyQt6
 Suggests:       python-pyside6
 BuildArch:      noarch
@@ -79,7 +79,7 @@ creation as needed and provides methods to simulate user interaction,
 like key presses and mouse clicks.
 
 %prep
-%autosetup -p1 -n pytest-qt-%{version}
+%autosetup -p1 -n pytest_qt-%{version}
 dos2unix LICENSE
 # https://github.com/pytest-dev/pytest-qt/pull/419#discussion_r1240198866
 sed -i /xfail_strict/d setup.cfg
