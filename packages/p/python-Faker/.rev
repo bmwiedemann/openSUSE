@@ -770,4 +770,15 @@
     <comment></comment>
     <requestid>1303585</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>cde87f957fdbb9eafb214b5710b1be8e</srcmd5>
+    <version>37.8.0</version>
+    <time>1759246499</time>
+    <user>anag_factory</user>
+    <comment>- update to 37.8.0:
+  * Add Automotive providers for `ja_JP` locale.
+  * Add Nigerian name locales (`yo_NG`, `ha_NG`, `ig_NG`,
+    `en_NG`).</comment>
+    <requestid>1307768</requestid>
+  </revision>
 </revisionlist>
