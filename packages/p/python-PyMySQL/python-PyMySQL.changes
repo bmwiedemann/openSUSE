@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 29 21:06:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * Prevent UnboundLocalError in very rare situation.
+  * Close underlying `SocketIO` soon when Connection is closed
+    for PyPy.
+  * Fix importing PyMySQL fail on CPython 3.13 when
+    `getpass.getuser()` raises OSEError.
+  * Make charset name "utf8" case insensitive.
+  * `Connection.kill()` uses `KILL` query instead of
+    `COM_KILL`command to support MySQL 8.4.
+  * Fix SSL error on CPython 3.13 caused by strict TLS default
+    setting. https://github.com/PyMySQL/PyMySQL/pull/1198
+  * Fix auth switch request handling.
+
+-------------------------------------------------------------------
 Tue Apr 29 11:17:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update filelist to be compatible with older setuptools

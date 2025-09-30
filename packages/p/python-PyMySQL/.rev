@@ -300,4 +300,23 @@ Requires python-setuptools 78 to build successfully.
 - disable testing for Leaps</comment>
     <requestid>1273418</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>86165650b7d440c7282a1717c0c981e8</srcmd5>
+    <version>1.1.2</version>
+    <time>1759246888</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.2:
+  * Prevent UnboundLocalError in very rare situation.
+  * Close underlying `SocketIO` soon when Connection is closed
+    for PyPy.
+  * Fix importing PyMySQL fail on CPython 3.13 when
+    `getpass.getuser()` raises OSEError.
+  * Make charset name &quot;utf8&quot; case insensitive.
+  * `Connection.kill()` uses `KILL` query instead of
+    `COM_KILL`command to support MySQL 8.4.
+  * Fix SSL error on CPython 3.13 caused by strict TLS default
+    setting. https://github.com/PyMySQL/PyMySQL/pull/1198
+  * Fix auth switch request handling.</comment>
+    <requestid>1308066</requestid>
+  </revision>
 </revisionlist>
