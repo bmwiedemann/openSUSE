@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-mock
-Version:        3.15.0
+Version:        3.15.1
 Release:        0
 Summary:        Thin-wrapper around the mock package for easier use with pytest
 License:        MIT

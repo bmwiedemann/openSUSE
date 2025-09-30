@@ -345,4 +345,15 @@
 - Drop python-py requirement, no longer required.</comment>
     <requestid>1303678</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c0e74e95f679b01da84e5a4421e5b6e7</srcmd5>
+    <version>3.15.1</version>
+    <time>1759247309</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.15.1:
+  * #529: Fixed itertools._tee object has no attribute error --
+    now duplicate_iterators=True must be passed to mocker.spy to
+    duplicate iterators.</comment>
+    <requestid>1308060</requestid>
+  </revision>
 </revisionlist>
