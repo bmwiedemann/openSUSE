@@ -73,4 +73,14 @@
     ``Q_RETURN_ARG()`` change) (fixes #128)</comment>
     <requestid>1181936</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>da3b144dac6ad27a61e699fd0ab8decc</srcmd5>
+    <version>1.6.2</version>
+    <time>1759246880</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.2:
+  * Do not call PyEval_InitThreads(); not needed since Python 3.7
+  * Fixed PyOtherSideQtRCImporter for submodule imports</comment>
+    <requestid>1308062</requestid>
+  </revision>
 </revisionlist>

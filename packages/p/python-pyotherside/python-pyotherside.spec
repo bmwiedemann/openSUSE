@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyotherside
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define srcname pyotherside
 %bcond_without test
 Name:           python-pyotherside
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Asynchronous Python 3 Bindings for Qt 5
 License:        ISC

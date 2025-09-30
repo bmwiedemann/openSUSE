@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 29 20:50:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.2:
+  * Do not call PyEval_InitThreads(); not needed since Python 3.7
+  * Fixed PyOtherSideQtRCImporter for submodule imports
+
+-------------------------------------------------------------------
 Thu Jun 20 13:03:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.1:
