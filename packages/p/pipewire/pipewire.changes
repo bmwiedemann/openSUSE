@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 22 07:58:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.8+git4.8f35e18d1:
+  * systemd: remove RestrictNamespaces from service file
+  * control: fix event compare function
+  * impl-node: only do unprepare once
+  * Revert "impl-node: improve the node unprepare function"
+
+-------------------------------------------------------------------
 Fri Sep 12 08:36:20 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.4.8:

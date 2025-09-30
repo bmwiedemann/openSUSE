@@ -1,7 +1,7 @@
 #
 # spec file for package pipewire
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
 # All modifications and additions to the file contributed by third parties
@@ -69,7 +69,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.4.8
+Version:        1.4.8+git4.8f35e18d1
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
