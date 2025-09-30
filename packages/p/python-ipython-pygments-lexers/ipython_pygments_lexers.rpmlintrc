@@ -1,0 +1,2 @@
+# The %magic is %% escaped
+addFilter("unexpanded-macro %description")
