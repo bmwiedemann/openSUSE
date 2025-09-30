@@ -54,6 +54,9 @@ Patch9:         plymouth-screen-twice-scale-on-160DPI-higher.patch
 Patch10:        plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
 # PATCH-FIX-SLE plymouth-support-multi-monitor-hotplugin.patch bsc#1231214 qzhao@suse.com -- support the 2nd monitor hotplugin to the system to display the same content with the first monitor.
 Patch13:        plymouth-support-multi-monitor-hotplugin.patch
+# PATCH-FIX-SLE plymouth-select_fb_for_vmware.patch bsc#1234643 qzhao@suse.com -- use frame-buffer in vmware VM platform.
+Patch100:       plymouth-select_fb_for_vmware.patch
+
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
@@ -361,7 +364,21 @@ Plymouth.
 
 %prep
 %setup -q
-%autopatch -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 13 -p1
+%if !0%{?is_opensuse}
+%patch -P 100 -p1
+%endif
 autoreconf -ivf
 
 %build

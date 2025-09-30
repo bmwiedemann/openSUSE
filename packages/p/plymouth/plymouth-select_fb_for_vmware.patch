@@ -1,0 +1,59 @@
+--- a/src/libply-splash-core/ply-device-manager.c
++++ b/src/libply-splash-core/ply-device-manager.c
+@@ -43,6 +43,11 @@
+ #define SUBSYSTEM_DRM "drm"
+ #define SUBSYSTEM_FRAME_BUFFER "graphics"
+ 
++#define BUFF_SIZE 256
++#define DMI_PRODUCT_NAME_FILE "/sys/class/dmi/id/product_name"
++#define EXPECT_DMI_NAME_VMWARE "VMware Virtual Platform"
++#define EXPECT_DMI_NAME_QEMU "Standard PC (Q35 + ICH9, 2009)"
++
+ #ifdef HAVE_UDEV
+ static void create_devices_from_udev (ply_device_manager_t *manager);
+ #endif
+@@ -296,6 +301,32 @@
+         return false;
+ }
+ 
++typedef enum {
++        MATCH = 1,
++        MISMATCH = 0,
++        UNKNOW = -1,
++} product_name_match_result_t;
++
++static product_name_match_result_t check_product_name (char *expect_name)
++{
++        char buff_product_name[BUFF_SIZE];
++        FILE *product_file_handler = fopen(DMI_PRODUCT_NAME_FILE, "r");
++        if (product_file_handler == NULL)
++                return UNKNOW;
++
++        if (fgets (buff_product_name, BUFF_SIZE, product_file_handler)) {
++                fclose (product_file_handler);
++                buff_product_name[strcspn(buff_product_name, "\n")] = '\0';
++                ply_trace("System DMI product name: ", buff_product_name);
++                if (strcmp(buff_product_name, expect_name) == 0)
++                        return MATCH;
++                else
++                        return MISMATCH;
++        }
++        fclose (product_file_handler);
++        return UNKNOW;
++}
++
+ static bool
+ create_devices_for_udev_device (ply_device_manager_t *manager,
+                                 struct udev_device   *device)
+@@ -353,6 +384,11 @@
+                                 ply_trace ("ignoring, since there's a DRM device associated with it");
+                 }
+ 
++                if (check_product_name(EXPECT_DMI_NAME_VMWARE)) {
++                        ply_trace("When running on Vmware platform, use framebuffer as the customer want.");
++                        renderer_type = PLY_RENDERER_TYPE_FRAME_BUFFER;
++                }
++
+                 if (renderer_type != PLY_RENDERER_TYPE_NONE) {
+                         ply_terminal_t *terminal = NULL;
+ 

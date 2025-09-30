@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 18 10:28:13 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-select_fb_for_vmware.patch:
+  Use frame-buffer in vmware VM platform, Since the system use vesa,
+  plymouth DRM driver intial out of time, and the cutomer also
+  feedback frame-buffer works fine.
+  (bsc#1234643)
+
+-------------------------------------------------------------------
 Wed Dec  4 14:03:31 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Remove plymouth-only_use_fb_for_cirrus_bochs.patch: Bochs and cirrus
