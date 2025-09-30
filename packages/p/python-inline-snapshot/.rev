@@ -101,4 +101,41 @@ and python-pydantic-settings</comment>
 - Add no-readline.patch to fix test error in pydantic-core</comment>
     <requestid>1280586</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>df1646f205217978e6a42f17c4d061b6</srcmd5>
+    <version>0.29.1</version>
+    <time>1759247317</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.29.1:
+  * Added
+    + Added get_snapshot_value()
+    + Added inline_snapshot.extra.Transformed and
+      inline_snapshot.extra.transformation which can be used to transform
+      values inside of snapshots.
+    + exposed `@declare_unmanaged` which allows you to create your own
+      unmanaged types.
+    + New `external()` implementation with support for different data
+      formats.
+    + Ability to declare custom external formats with @register_format.
+    + external() can now be used without snapshot().
+    + Add/fix reproducible standard repr for functions
+  * Changed
+    + You now have to specify test-dir in your pyproject.toml when you save
+      your tests in a folder other than `tests/` in your project root.
+    + **BREAKING CHANGE**: You now have to declare format aliases if you used
+      outsource() with a different suffix than .txt or .bin in the past.
+    + Added extra information to the reported failure when snapshots are
+      fixed or created.
+  * Fixed
+    + handle cases where pytest_unconfigure is called but not
+      pytest_configure
+    + pyproject.toml is now also located based on the current directory and
+      the pytest-root.
+    + Terminal with is preserved.
+    + solved incompatibility with pytest_pretty.
+    + external_file() now follows the aliases defined by
+      register_format_alias().
+    + fixed the representation of empty strings in sub-snapshots from</comment>
+    <requestid>1308081</requestid>
+  </revision>
 </revisionlist>

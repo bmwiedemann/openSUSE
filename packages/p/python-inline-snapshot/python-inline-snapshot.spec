@@ -1,7 +1,7 @@
 #
 # spec file for package python-inline-snapshot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-inline-snapshot%{psuffix}
-Version:        0.23.1
+Version:        0.29.1
 Release:        0
 Summary:        Create and update inline snapshots in your Python code
 License:        MIT
 URL:            https://github.com/15r10nk/inline-snapshot/
 Source:         https://files.pythonhosted.org/packages/source/i/inline-snapshot/inline_snapshot-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/15r10nk/inline-snapshot/pull/245 also accept ImportError when attempting to import readline
-Patch:          no-readline.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
@@ -57,7 +56,8 @@ BuildRequires:  %{python_module time-machine >= 2.10.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-asttokens >= 2.0.5
-Requires:       python-executing >= 2.0.0
+Requires:       python-executing >= 2.2.0
+Requires:       python-pytest >= 8.3.4
 Requires:       python-rich >= 13.7.1
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 2.0.0

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Sep 30 04:27:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.29.1:
+  * Added
+    + Added get_snapshot_value()
+    + Added inline_snapshot.extra.Transformed and
+      inline_snapshot.extra.transformation which can be used to transform
+      values inside of snapshots.
+    + exposed `@declare_unmanaged` which allows you to create your own
+      unmanaged types.
+    + New `external()` implementation with support for different data
+      formats.
+    + Ability to declare custom external formats with @register_format.
+    + external() can now be used without snapshot().
+    + Add/fix reproducible standard repr for functions
+  * Changed
+    + You now have to specify test-dir in your pyproject.toml when you save
+      your tests in a folder other than `tests/` in your project root.
+    + **BREAKING CHANGE**: You now have to declare format aliases if you used
+      outsource() with a different suffix than .txt or .bin in the past.
+    + Added extra information to the reported failure when snapshots are
+      fixed or created.
+  * Fixed
+    + handle cases where pytest_unconfigure is called but not
+      pytest_configure
+    + pyproject.toml is now also located based on the current directory and
+      the pytest-root.
+    + Terminal with is preserved.
+    + solved incompatibility with pytest_pretty.
+    + external_file() now follows the aliases defined by
+      register_format_alias().
+    + fixed the representation of empty strings in sub-snapshots from
+      triple-quotes to single-quotes.
+    + fix: changed format-command default to "".
+    + The readline module doesn't have to be installed on non-windows
+      systems.
+- Dropped patch no-readline.patch, included upstream.
+
+-------------------------------------------------------------------
 Mon May 26 14:14:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.23.1
