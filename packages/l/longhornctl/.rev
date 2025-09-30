@@ -39,4 +39,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1299222</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79f1eba6f8b01c1c9e0a2f8234d37aaa</srcmd5>
+    <version>1.10.0</version>
+    <time>1759246840</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.10.0:
+  * release: update version file for v1.10.0
+  * release: update version file for v1.10.0-rc4
+  * fix(deps): update github.com/longhorn/go-common-libs digest to 16313e7
+  * release: update version file for v1.10.0-rc3
+  * refactor: parse DaemonSet parameters in common function
+  * docs: update docs
+  * feat: add option to configure image pull secret
+  * fix: add support for k3s-agent and rke2-agent in kubelet service restart
+  * release: update version file for v1.10.0-rc2
+  * fix(deps): update patch digest dependencies
+  * feat: cleanup rbac if creation fails
+  * feat: add hugepages capacity check
+  * feat: optionally restart kubelet service when hugepages-2Mi is insufficient
+  * fix(trim): default namespace value to &quot;longhorn-system&quot;
+  * fix(check): synchronize loaded modules for 'check' and 'install'
+  * fix(deps): update patch digest dependencies
+  * build: comment out doc validation due to release failure
+  * release: update version file for v1.10.0-rc1
+  * feat: add image registry global option
+  * feat: implement BuildImageName func
+  * fix(deps): update minor dependencies
+  * chore(deps): update registry.suse.com/bci/golang docker tag to v1.25
+  * fix(deps): update github.com/longhorn/go-common-libs digest to eaa5ddd
+  * feat(checker): add cpu check for arm64
+  * fix(deps): update patch digest dependencies
+  * chore(deps): update dependency go to v1.25.0
+  * fix(deps): update patch digest dependencies
+  * docs: update docs
+  * fix: rename --kube-config to --kubeconfig</comment>
+    <requestid>1307920</requestid>
+  </revision>
 </revisionlist>
