@@ -67,4 +67,17 @@ VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, so
     which includes git offset only if offset exists. Useful for (forwarded request 1306380 from jfkw)</comment>
     <requestid>1306381</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>02136b666daf42ffb99e30782e1d6595</srcmd5>
+    <version>0.4.0</version>
+    <time>1759246856</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.0:
+  * update go, goreleaser and update/clean ci
+  * Bump kubernetes-sigs/release-actions in the all group
+  * Bump sigs.k8s.io/release-utils from 0.12.1 to 0.12.2 in the all group
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.25 matching go.mod (forwarded request 1307934 from jfkw)</comment>
+    <requestid>1307935</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           vexctl
-Version:        0.3.0+git181.33bac59
+Version:        0.4.0
 Release:        0
 Summary:        CLI tool to create, transform and attest VEX metadata
 License:        Apache-2.0
@@ -25,7 +25,7 @@ Group:          Productivity/Security
 URL:            https://github.com/openvex/vexctl
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 
 %description
 vexctl is a CLI tool to create, apply, and attest VEX (Vulnerability
