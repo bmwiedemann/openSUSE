@@ -1,7 +1,7 @@
 #
 # spec file for package libunwind
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 # Note the wrong version number from upstream
 Name:           libunwind
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        Call chain detection library
 License:        MIT

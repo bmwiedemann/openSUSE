@@ -460,4 +460,12 @@ Patches submitted to libunwind-devel.
     <comment></comment>
     <requestid>1281863</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>bf82acf30f8d7ddaa6ebd7df41cbeadb</srcmd5>
+    <version>1.8.3</version>
+    <time>1759246504</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1307780</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 22 11:06:05 UTC 2025 - Pedro Monreal Gonzalez <pmonreal@suse.com>
+
+- Update to 1.8.3:
+  * Made -nostdlib depend on exception support (fixes missing
+    atomic symbols) by @bregma in #913
+  * Backport _UPT_ptrauth_insn_mask fixes to v1.8-stable by @phongn in #899
+  * Fix off-by-one in aarch64 unw_backtrace() by @bregma in #918
+  * Update libunwind.keyring file
+
+-------------------------------------------------------------------
 Fri May 30 17:44:37 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - 0001-Fix-unw_is_signal_frame-for-RISC-V.patch: Fix unw_is_signal_frame
