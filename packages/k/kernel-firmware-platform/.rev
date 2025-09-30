@@ -140,4 +140,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * panthor: Add firmware for more Mali GPUs</comment>
     <requestid>1299820</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3b3492312ef8abe16e1e2ed825ea6272</srcmd5>
+    <version>20250922</version>
+    <time>1759246812</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.17
+
+- Update to version 20250922 (git commit ef58001fa35e):
+  * powervr: update firmware for Imagination Technologies BXS-4-64 GPU</comment>
+    <requestid>1307946</requestid>
+  </revision>
 </revisionlist>

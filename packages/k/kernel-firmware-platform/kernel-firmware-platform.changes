@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 29 16:18:59 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases for 6.17
+
+-------------------------------------------------------------------
+Mon Sep 22 13:35:08 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250922 (git commit ef58001fa35e):
+  * powervr: update firmware for Imagination Technologies BXS-4-64 GPU
+
+-------------------------------------------------------------------
 Tue Aug 12 07:07:31 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250811 (git commit 08ee93ff8ffa):

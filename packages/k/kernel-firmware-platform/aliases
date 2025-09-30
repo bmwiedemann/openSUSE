@@ -11,6 +11,7 @@ amd_pmf: acpi*:AMDI0102%3A*
 amd_pmf: acpi*:AMDI0103%3A*
 amd_pmf: acpi*:AMDI0105%3A*
 amd_pmf: acpi*:AMDI0107%3A*
+amd_pmf: acpi*:AMDI0108%3A*
 amdxdna: pci:v00001022d00001502sv*sd*bc*sc*i*
 amdxdna: pci:v00001022d000017F0sv*sd*bc*sc*i*
 ast: pci:v00001A03d00002000sv*sd*bc03sc*i*
