@@ -1,7 +1,7 @@
 #
 # spec file for package fprintd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildRequires:  python3-cairo
 BuildRequires:  python3-dbus-python
 BuildRequires:  python3-dbusmock
 BuildRequires:  python3-libpamtest
-BuildRequires:  python3-pydbus
 BuildRequires:  typelib-1_0-FPrint-2_0
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0)

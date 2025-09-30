@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 22 08:14:57 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed BuildRequires python3-pydbus
+
+-------------------------------------------------------------------
 Sun Sep 29 15:48:19 UTC 2024 - Christian Galeffi <chri@gallochri.com>
 
 - update to 1.94.4
@@ -363,7 +368,7 @@ Tue Jul 21 06:07:13 CET 2009 - Bastien Nocera <bnocera@redhat.com>
 - Merge polkit patch and fix for polkit patch
 
 -------------------------------------------------------------------
-* Thu Jul  9 2009 Matthias Clasen <mclasen@redhat.com> 0.1-12.git04fd09cfa
+Thu Jul 09 00:00:00 CET 2009 - Matthias Clasen <mclasen@redhat.com>
 - Fix the pam module (#510152)
 
 -------------------------------------------------------------------
