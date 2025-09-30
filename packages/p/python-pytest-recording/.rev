@@ -16,4 +16,13 @@
   * Limit generated cassette names to prevent OSError. `#172`_</comment>
     <requestid>1273215</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>41058b3b45701d753dfbe17832622d14</srcmd5>
+    <version>0.13.4</version>
+    <time>1759246912</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.13.4:
+  * AttributeError on Windows. `#172`_</comment>
+    <requestid>1308071</requestid>
+  </revision>
 </revisionlist>

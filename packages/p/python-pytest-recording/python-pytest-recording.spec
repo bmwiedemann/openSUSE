@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-recording
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-pytest-recording
-Version:        0.13.3
+Version:        0.13.4
 Release:        0
 Summary:        A pytest plugin that allows you recording of network interactions via VCRpy
 License:        MIT

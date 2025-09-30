@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 29 21:25:22 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.4:
+  * AttributeError on Windows. `#172`_
+
+-------------------------------------------------------------------
 Mon Apr 28 16:47:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.3:
