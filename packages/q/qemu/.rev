@@ -4599,4 +4599,16 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1305265</requestid>
   </revision>
+  <revision rev="299" vrev="2">
+    <srcmd5>69a4d4d073c2c73c2ad6d7e6c216fe1f</srcmd5>
+    <version>10.1.0</version>
+    <time>1759246518</time>
+    <user>anag_factory</user>
+    <comment>- Resolve a repo-has-moved service running issue:
+  * .gitmodules: move u-boot mirrors to qemu-project-mirrors
+- Fix bsc#1230042:
+  * [openSUSE] rpm/spec: qemu-vgabios is required on ppc (bsc#1230042)
+</comment>
+    <requestid>1307874</requestid>
+  </revision>
 </revisionlist>

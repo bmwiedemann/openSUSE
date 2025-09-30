@@ -1185,7 +1185,7 @@ Group:          System/Emulators/PC
 Requires:       %name = %{version}
 Requires:       qemu-SLOF
 Requires:       qemu-ipxe
-Recommends:     qemu-vgabios
+Requires:       qemu-vgabios
 
 %description ppc
 %{generic_qemu_description}
