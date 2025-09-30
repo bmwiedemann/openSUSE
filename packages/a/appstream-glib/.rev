@@ -875,4 +875,10 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
   different loaders, like e.g. glycin nowadays.</comment>
     <requestid>1305765</requestid>
   </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>9a60aa15eb0b6e51b71ca912a55d7e46</srcmd5>
+    <version>0.8.3</version>
+    <time>1759212346</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

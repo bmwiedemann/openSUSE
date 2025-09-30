@@ -118,6 +118,7 @@ Summary:        Appstream processor employed by kiwi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Requires:       appstream-glib >= %{version}
 Requires:       openSUSE-appdata-extra
+Requires:       glycin-loaders
 
 %description -n openSUSE-appstream-process
 A wrapper around appstream-builder, called by kiwi in order to produce AppStream metadata
