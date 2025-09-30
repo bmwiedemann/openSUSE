@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 30 11:39:24 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel, 
+  removed on boost 1.89 (bsc#1249599)
+  * Add patch boost.patch
+
+-------------------------------------------------------------------
 Sat Mar 29 13:12:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove unused pcre build dependency

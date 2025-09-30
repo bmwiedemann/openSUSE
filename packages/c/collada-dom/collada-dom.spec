@@ -1,7 +1,7 @@
 #
 # spec file for package collada-dom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,10 +26,10 @@ License:        MIT
 URL:            https://github.com/rdiankov/collada-dom
 Source:         %{name}-%{version}.tar.gz
 Patch0:         silence-warnings.patch
+Patch1:         boost.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(uriparser)
 BuildRequires:  pkgconfig(libxml-2.0)
