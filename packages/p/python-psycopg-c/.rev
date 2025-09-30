@@ -140,4 +140,24 @@
   * Add support for binary hstore (:ticket:`#1030`).</comment>
     <requestid>1281099</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>105161ae42c13a75fe465f10e224b96a</srcmd5>
+    <version>3.2.10</version>
+    <time>1759246900</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.10:
+  * Fix TypeError shadowing CancelledError upon task cancellation
+    during pipeline execution (ticket #1005).
+  * Fix memory leak when lambda/local functions are used as
+    argument for set_json_dumps(), set_json_loads() (ticket #1108).
+  * Fix coordination of executemany() with other concurrent
+    operations on other cursors (ticket #1130).
+  * Fix leak receiving notifications if the notifies() generator
+    is not called (ticket #1091).
+  * Using both the generator and handlers to receive notifications
+    on the same connection is therefore deprecated and will now
+    generate a runtime warning.
+  * Add support for Python 3.14 (ticket #1053).</comment>
+    <requestid>1308108</requestid>
+  </revision>
 </revisionlist>
