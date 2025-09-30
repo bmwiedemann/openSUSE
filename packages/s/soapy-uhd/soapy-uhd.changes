@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 30 12:03:26 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+  * Patch boost.patch
+
+-------------------------------------------------------------------
 Wed May  7 11:26:42 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes

@@ -1,0 +1,10 @@
+--- SoapyUHD/CMakeLists.txt
++++ SoapyUHD/CMakeLists.txt
+@@ -110,7 +110,6 @@
+ # Although not required on my system, some users have linking issues without
+ SET(BOOST_REQUIRED_COMPONENTS
+     thread
+-    system
+ )
+ 
+ if(UNIX AND NOT BOOST_ROOT AND EXISTS "/usr/lib64")

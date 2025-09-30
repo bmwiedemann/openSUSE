@@ -1,7 +1,7 @@
 #
 # spec file for package soapy-uhd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,7 @@ Group:          Hardware/Other
 URL:            https://github.com/pothosware/SoapyUHD/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyUHD.git
 Source:         https://github.com/pothosware/SoapyUHD/archive/%{name}-%{version}.tar.gz
+Patch0:         boost.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
@@ -37,7 +38,6 @@ BuildRequires:  pkgconfig(uhd)
 %if 0%{?suse_version} > 1500
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 %endif
 
@@ -59,7 +59,7 @@ Soapy UHD - Soapy SDR devices for UHD.
 A UHD module that supports Soapy devices within the UHD API.
 
 %prep
-%setup -q -n SoapyUHD
+%autosetup -p1 -n SoapyUHD
 
 %build
 # Remove cmake4 error due to not setting
