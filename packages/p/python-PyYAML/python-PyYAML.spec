@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyYAML
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyYAML
-Version:        6.0.2
+Version:        6.0.3
 Release:        0
 Summary:        YAML parser and emitter for Python
 License:        MIT

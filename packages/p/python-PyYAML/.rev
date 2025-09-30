@@ -332,4 +332,14 @@
     <comment></comment>
     <requestid>1270976</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>275ed6c7478615af6defe1a0c72b1075</srcmd5>
+    <version>6.0.3</version>
+    <time>1759247311</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.3:
+  * https://github.com/yaml/pyyaml/pull/864 -- Support for Python
+    3.14 and free-threading (experimental)</comment>
+    <requestid>1308072</requestid>
+  </revision>
 </revisionlist>
