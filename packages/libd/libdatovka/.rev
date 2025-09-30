@@ -119,4 +119,16 @@
   * 10 MB increments.</comment>
     <requestid>1268323</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>df02e8d210dae29cb33f7f9de1c5ece5</srcmd5>
+    <version>0.7.2</version>
+    <time>1759246942</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.2
+  * Added functions for the ISDS service ArchiveISDSDocument.
+
+    reduce memory reallocation. The size of the buffer is increased in
+    10 MB increments.</comment>
+    <requestid>1308080</requestid>
+  </revision>
 </revisionlist>

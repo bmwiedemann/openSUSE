@@ -18,7 +18,7 @@
 
 %define libname %{name}8
 Name:           libdatovka
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Library for accessing the Czech Data Boxes
 License:        GPL-3.0-or-later

@@ -1,10 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 30 04:07:30 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.7.2
+  * Added functions for the ISDS service ArchiveISDSDocument.
+
+-------------------------------------------------------------------
 Thu Apr 10 08:30:37 UTC 2025 - Jiri Slaby <jslaby@suse.com>
 
 - update to 0.7.1
   * Reserving a 10 MB buffer when reading HTTP data from libcurl to
-  * reduce memory reallocation. The size of the buffer is increased in
-  * 10 MB increments.
+    reduce memory reallocation. The size of the buffer is increased in
+    10 MB increments.
 
 -------------------------------------------------------------------
 Mon Sep 30 05:26:10 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
