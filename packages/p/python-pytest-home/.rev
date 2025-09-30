@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1198912</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3a44d03a2c444be2cf6616d5ac2e2363</srcmd5>
+    <version>0.6.0</version>
+    <time>1759247306</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.0:
+  * Renamed the plugin to simply 'home' for easy
+    enabling/disabling.</comment>
+    <requestid>1308044</requestid>
+  </revision>
 </revisionlist>
