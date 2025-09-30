@@ -161,4 +161,32 @@
     <comment></comment>
     <requestid>1271889</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b095f6d9ac5ec6ec22a740242a366519</srcmd5>
+    <version>4.0.1</version>
+    <time>1759246904</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.1:
+  * Remove the random state caching, which would grow without
+    bound, leaking memory in long test runs. The caching was
+    added to slightly speed up re-using the same (final) seed,
+    but since the final seed is now different for each test, it
+    has no effect. PR #690.
+  * Modify Numpy seed restriction, replacing hashing with a
+    modulo operation. The extra work to hash is unnecessary now
+    that we generate a final seed per test with CRC32. This
+    change saves ~500ns per test when Numpy is installed. PR
+    #691.
+  * Support Python 3.14.
+  * Use a different random seed per test, based on the test ID.
+    This change should mean that tests exercise more random data
+    values in a given run, and that any randomly-generated
+    identifiers have a lower chance of collision when stored in a
+    shared resource like a database. PR #687. Thanks to Bryce
+    Drennan for the suggestion in Issue #600 and initial
+    implementation in PR #617.
+  * Move from MD5 to CRC32 for hashing test IDs, as it’s 5x
+    faster and we don’t need cryptographic security. Issue #686.</comment>
+    <requestid>1308063</requestid>
+  </revision>
 </revisionlist>
