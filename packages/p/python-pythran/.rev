@@ -267,4 +267,14 @@ now with fixed empty debuginfo extraction</comment>
     <comment></comment>
     <requestid>1300343</requestid>
   </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>6ce36c729ff6092c6690452febe9d639</srcmd5>
+    <version>0.18.0</version>
+    <time>1759247314</time>
+    <user>anag_factory</user>
+    <comment>- prepare for py314 tests
+
+- Add upstream np-fromstring.patch and np-frombuffer.patch to fix</comment>
+    <requestid>1308073</requestid>
+  </revision>
 </revisionlist>

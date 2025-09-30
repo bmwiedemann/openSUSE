@@ -1,7 +1,7 @@
 #
 # spec file for package python-pythran
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,9 @@
 %endif
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
+%endif
+%if "%{flavor}" != "test-py314"
+%define skip_python314 1
 %endif
 # Skip empty buildsets on tumbleweed, or non py311 flavors on sle15_python_module_pythons, or any testing on leap 16
 %if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311}) || (0%{?is_opensuse} && 0%{?suse_version} == 1600)

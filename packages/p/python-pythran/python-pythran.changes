@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 29 21:32:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- prepare for py314 tests
+
+-------------------------------------------------------------------
 Tue Aug 19 07:47:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Drop np-frombuffer.patch and np-fromstring.patch and substitute
@@ -8,7 +13,7 @@ Tue Aug 19 07:47:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Thu Aug 14 08:37:43 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
-- Add upstream np-fromstring.patch and np-frombuffer.patch to fix 
+- Add upstream np-fromstring.patch and np-frombuffer.patch to fix
   tests with NumPy 2.3, skip one additional failing test
 
 -------------------------------------------------------------------
