@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 22 19:26:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20250814.1 (Abseil LTS branch, Aug 2025, Patch 1):
+  * Fix CHECK_<OP> ambiguous overload for operator<< in older
+    versions of GCC
+  * Fix CHECK_<OP> compilation failures on older versions of GCC
+    which eagerly tries to instantiate std::underlying_type for
+    non-enum types
+  * Add missing rules_cc loads
+
+-------------------------------------------------------------------
 Mon Aug 18 20:33:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 20250814.0:
