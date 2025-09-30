@@ -87,4 +87,14 @@
     <comment></comment>
     <requestid>1264955</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>d167bb24c73ad1a57fd01611365ccfb8</srcmd5>
+    <version>0.2.5</version>
+    <time>1759247011</time>
+    <user>anag_factory</user>
+    <comment>- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+  * Patch boost.patch (forwarded request 1308180 from anag_factory)</comment>
+    <requestid>1308181</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 30 12:16:47 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+  * Patch boost.patch
+
+-------------------------------------------------------------------
 Thu Mar 27 19:01:22 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - SOAPY_SDR_ABI_VERSION bump -> "0.8-3"

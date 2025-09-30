@@ -1,7 +1,7 @@
 #
 # spec file for package soapy-osmo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,7 @@ URL:            https://github.com/pothosware/SoapyOsmo/wiki
 Source:         https://github.com/pothosware/SoapyOsmo/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         soapy_osmosdr_rfspace_disable.patch
+Patch1:         boost.patch
 BuildRequires:  cmake >= 3.5
 %if 0%{with mod_freesrp}
 BuildRequires:  freesrp-devel
@@ -39,7 +40,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SoapySDR)
