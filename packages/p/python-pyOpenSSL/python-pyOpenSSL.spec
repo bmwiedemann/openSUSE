@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyOpenSSL
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyOpenSSL%{psuffix}
-Version:        25.1.0
+Version:        25.3.0
 Release:        0
 Summary:        Python wrapper module around the OpenSSL library
 License:        Apache-2.0
@@ -42,7 +42,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi
-Requires:       (python-cryptography >= 41.0.5 with python-cryptography < 46)
+Requires:       (python-cryptography >= 45.0.7 with python-cryptography < 47)
 %if %{python_version_nodots} < 313
 Requires:       python-typing-extensions >= 4.9
 %endif
@@ -51,7 +51,7 @@ Provides:       pyopenssl = %{version}-%release
 %if %{without test}
 BuildArch:      noarch
 %else
-BuildRequires:  %{python_module cryptography >= 41.0.5 with %python-cryptography < 46}
+BuildRequires:  %{python_module cryptography >= 45.0.7 with %python-cryptography < 47}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyOpenSSL >= %version}
 BuildRequires:  %{python_module pytest >= 3.0.1}
