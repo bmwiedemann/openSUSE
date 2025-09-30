@@ -1,7 +1,7 @@
 #
 # spec file for package readline6
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
-BuildRequires:  patchutils
 BuildRequires:  screen
 BuildRequires:  sed
 %define         rl_vers   6.3
@@ -89,15 +88,8 @@ typeset -i level
 pushd ../readline-%{rl_vers}
 for patch in ../readline-%{rl_vers}-patches/*; do
     test -e $patch || break
-    let level=0 || true
-    file=$(lsdiff --files=1 $patch)
-    if test ! -e $file ; then
-	file=${file#*/}
-	let level++ || true
-    fi
-    sed -ri '/^\*\*\* \.\./{ s@\.\./readline-%{rl_vers}[^/]*/@@ }' $patch
     echo Patch $patch
-    patch -s -p$level < $patch
+    patch -s -p0 < $patch
 done
 %patch -P 21 -p2 -b .zerotty
 %patch -P 22 -p2 -b .wrap
@@ -186,6 +178,7 @@ done
   #
   # Never ever put -DMUST_UNBLOCK_CHLD herein as this breaks bash
   #
+  cflags -std=gnu17              CFLAGS
   cflags -Wuninitialized         CFLAGS
   cflags -Wextra                 CFLAGS
   cflags -Wno-unprototyped-calls CFLAGS

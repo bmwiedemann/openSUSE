@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 29 15:44:08 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop use of patchutils: the patch tarball seems to contain only
+  patches to be applied -p0. This allows us to shorten the build
+  cycle.
+
+-------------------------------------------------------------------
+Mon Sep 29 11:19:15 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Make it compile even with gcc15 
+
+-------------------------------------------------------------------
 Tue Jan 28 12:13:59 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Rename readline-6.2-endpw.dif to readline-6.2-endpw.nodif
