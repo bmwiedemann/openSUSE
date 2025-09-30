@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyGithub
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,6 @@ Requires:       python-urllib3 >= 1.26.0
 Provides:       python-pygithub = %{version}-%{release}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module httpretty}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages

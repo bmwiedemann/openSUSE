@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 30 07:28:07 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Drop no-longer-needed dependency on httpretty, dropped in 2.6.0
+  * https://github.com/PyGithub/PyGithub/pull/3087
+
+-------------------------------------------------------------------
 Mon Apr 14 06:16:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.

@@ -420,4 +420,13 @@
     @tanannie22 in #3091</comment>
     <requestid>1269109</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>eaf5fe1a864ce5769e848a7ecb1c963d</srcmd5>
+    <version>2.6.1</version>
+    <time>1759246962</time>
+    <user>anag_factory</user>
+    <comment>- Drop no-longer-needed dependency on httpretty, dropped in 2.6.0
+  * https://github.com/PyGithub/PyGithub/pull/3087</comment>
+    <requestid>1308111</requestid>
+  </revision>
 </revisionlist>
