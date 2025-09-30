@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:38:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+-update to 2.21.2:
+  * correct the escaping of periods in the ipv6 format regex
+
+-------------------------------------------------------------------
 Thu Dec  5 09:35:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.21.1:

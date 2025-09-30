@@ -122,4 +122,13 @@
     breaking change) - when used, results are twice as fast</comment>
     <requestid>1228480</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d6065029ebe7fa3f9f44d14a63d70d35</srcmd5>
+    <version>2.21.2</version>
+    <time>1759246478</time>
+    <user>anag_factory</user>
+    <comment>-update to 2.21.2:
+  * correct the escaping of periods in the ipv6 format regex</comment>
+    <requestid>1307730</requestid>
+  </revision>
 </revisionlist>
