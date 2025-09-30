@@ -3379,6 +3379,7 @@ unsorted:
   - dpkg-devel 
   - dpkg-lang 
   - dqlite-devel 
+  - dr_libs-devel 
   - draco 
   - draco-devel 
   - dracut-extra 
@@ -12310,6 +12311,7 @@ unsorted:
   - libbox2d-devel 
   - libbpf-devel 
   - libbpf-devel-static 
+  - libbpf-tools 
   - libbpf1-32bit 
   - libbpftune0_1_3 
   - libbraiding-devel 
@@ -18684,6 +18686,7 @@ unsorted:
   - mingw64-zlib-devel 
   - mingw64-zlib1 
   - mingzat-fonts 
+  - miniaudio-devel 
   - minicom 
   - minicom-lang 
   - minidlna 
@@ -23101,6 +23104,7 @@ unsorted:
   - postgresql18-libversion 
   - postgresql18-llvmjit-devel 
   - postgresql18-orafce 
+  - postgresql18-pgagent 
   - postgresql18-pgaudit 
   - postgresql18-plperl 
   - postgresql18-plpython 
@@ -25590,6 +25594,7 @@ unsorted:
   - python311-ipyparallel 
   - python311-ipytablewidgets 
   - python311-ipython 
+  - python311-ipython-pygments-lexers 
   - python311-ipython_genutils 
   - python311-ipyvue 
   - python311-ipyvuetify 
@@ -27234,6 +27239,7 @@ unsorted:
   - python311-system-hotkey310 
   - python311-system_hotkey 
   - python311-systemd 
+  - python311-sysv_ipc 
   - python311-tableauserverclient 
   - python311-tabledata 
   - python311-tableprint 
@@ -29360,6 +29366,7 @@ unsorted:
   - python312-ipyparallel 
   - python312-ipytablewidgets 
   - python312-ipython 
+  - python312-ipython-pygments-lexers 
   - python312-ipython_genutils 
   - python312-ipyvue 
   - python312-ipyvuetify 
@@ -31037,6 +31044,7 @@ unsorted:
   - python312-system-hotkey310 
   - python312-system_hotkey 
   - python312-systemd 
+  - python312-sysv_ipc 
   - python312-tableauserverclient 
   - python312-tabledata 
   - python312-tableprint 
@@ -33127,6 +33135,7 @@ unsorted:
   - python313-ipyparallel 
   - python313-ipytablewidgets 
   - python313-ipython 
+  - python313-ipython-pygments-lexers 
   - python313-ipython_genutils 
   - python313-ipyvue 
   - python313-ipyvuetify 
@@ -34772,6 +34781,7 @@ unsorted:
   - python313-system-hotkey310 
   - python313-system_hotkey 
   - python313-systemd 
+  - python313-sysv_ipc 
   - python313-tableauserverclient 
   - python313-tabledata 
   - python313-tableprint 
