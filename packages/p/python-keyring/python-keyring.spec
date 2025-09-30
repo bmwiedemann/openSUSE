@@ -1,7 +1,7 @@
 #
 # spec file for package python-keyring
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-keyring%{psuffix}
-Version:        25.2.1
+Version:        25.6.0
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT
@@ -65,6 +65,7 @@ Requires:       python-importlib-metadata >= 4.11.4
 %endif
 %if %{with test}
 BuildRequires:  %{python_module keyring = %{version}}
+BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest >= 3.5}
 %endif
 %python_subpackages

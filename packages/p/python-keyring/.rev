@@ -703,4 +703,30 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300741</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>a25f8411b42a90b369cad43ccd2b469f</srcmd5>
+    <version>25.6.0</version>
+    <time>1759246486</time>
+    <user>anag_factory</user>
+    <comment>- update to 25.6.0:
+  * Avoid logging a warning when config does not specify a
+    backend.
+  * When parsing keyring_path from the config, the home directory
+    is now expanded from ~.
+  * In get_credential, now returns None when the indicated
+    username is not found.
+  * Fixed ValueError for AnonymousCredentials in CLI.
+  * Refined type spec and interfaces on credential objects.
+    Introduced AnonymousCredential to model a secret without a
+    username.
+  * Deprecated support for empty usernames. Now all backends will
+    reject an empty string as input for the 'username' field when
+    setting a password. Later this deprecation will become a more
+    visible user warning and even later an error. If this warning
+    is triggered in your environment, please consider using a
+    static value (even 'username') or comment in the issue and
+    describe the use-case that demands support for empty
+    usernames.</comment>
+    <requestid>1307742</requestid>
+  </revision>
 </revisionlist>
