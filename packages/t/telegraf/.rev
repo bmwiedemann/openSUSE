@@ -639,4 +639,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
   https://github.com/influxdata/telegraf/issues/17607 (forwarded request 1304052 from darix)</comment>
     <requestid>1304152</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>31316219acf1cdc77501d365a9983819</srcmd5>
+    <version>1.36.2</version>
+    <time>1759249480</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.36.2: (forwarded request 1308160 from darix)</comment>
+    <requestid>1308202</requestid>
+  </revision>
 </revisionlist>
