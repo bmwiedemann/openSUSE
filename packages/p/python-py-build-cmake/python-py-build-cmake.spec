@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-build-cmake
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-py-build-cmake
-Version:        0.4.3
+Version:        0.5.0
 Release:        0
 Summary:        Modern, PEP 517 compliant build backend for creating Python packages with
 License:        MIT

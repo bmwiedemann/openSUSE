@@ -49,4 +49,23 @@
     <comment>- Loosen {Build,}Requires.</comment>
     <requestid>1277271</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3cfde35fea255a3412a18cda37695cad</srcmd5>
+    <version>0.5.0</version>
+    <time>1759246898</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.0:
+  * PEP 639 license metadata support (see
+    `examples/minimal#configuration`)
+  * Improved CMake 4.0 FindPython support (including
+    `Python_ARTIFACTS_PREFIX`, see https://tttapa.github.io/py-
+    build-cmake/usage/find-python.html#locating-two-python-
+    interpreters)
+  * Improved free-threading support
+  * Pyodide support (see https://tttapa.github.io/py-build-
+    cmake/usage/cross-compilation.html#pyodide)
+  * Enable Python 3.14 builds and tests
+  * Update core dependencies (distlib, pyproject-metadata)</comment>
+    <requestid>1308107</requestid>
+  </revision>
 </revisionlist>
