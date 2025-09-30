@@ -1,7 +1,7 @@
 #
 # spec file for package gmmlib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global somajor 12
 %global libname libigdgmm%{somajor}
 Name:           gmmlib
-Version:        22.8.1
+Version:        22.8.2
 Release:        0
 Summary:        Intel Graphics Memory Management Library Package
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/gmmlib
-Source0:        intel-gmmlib-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/intel-%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

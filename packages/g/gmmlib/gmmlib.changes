@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 26 05:54:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 22.8.2:
+  * Add assertions before pointer access (#257)
+  * Fix duplicate format check to YUV Surface Check (#254)
+  * Fix duplicate assignment of Unaligned Height in Planar Offset
+    Address (#253)
+
+-------------------------------------------------------------------
 Tue Jul 22 08:19:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 22.8.1:
