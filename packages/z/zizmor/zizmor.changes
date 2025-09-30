@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 30 05:23:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.2:
+  * Bug Fixes
+    - Fixed a bug where the use-trusted-publishing audit would
+      produce-false positive findings for some run: blocks that
+      implicitly performed trusted publishing (#1191)
+
+-------------------------------------------------------------------
 Sun Sep 28 15:02:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.1:
