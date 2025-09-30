@@ -126,4 +126,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * i915: Update GUC to v70.49.4 for ADL-P, DG1, DG2, MTL, TGL</comment>
     <requestid>1302681</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>83dacd6688f32e4a5167ea0d11470716</srcmd5>
+    <version>20250903</version>
+    <time>1759246800</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.17</comment>
+    <requestid>1307941</requestid>
+  </revision>
 </revisionlist>
