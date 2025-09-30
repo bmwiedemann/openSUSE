@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 29 16:13:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.14:
+  * Add support for meson.options
+  * fix: add robot filetype
+
+-------------------------------------------------------------------
 Tue Aug 12 13:48:11 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - migrate to libalternatives
