@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 29 20:22:03 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31.0:
+  * Some pieces of the configuration API were refactored
+    or pushed fully into the CLI layer.
+  * The old LTV validation functionality
+    has now been deprecated and may be removed in a future release.
+
+-------------------------------------------------------------------
 Wed Sep  3 05:21:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.30.0:

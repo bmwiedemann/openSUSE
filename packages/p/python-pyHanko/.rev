@@ -70,4 +70,16 @@ Requires python-setuptools 78 to build successfully.
 - Ship docs and license in the built packages.</comment>
     <requestid>1302533</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>99fd53da6371aae849f7b6d0167db12f</srcmd5>
+    <version>0.31.0</version>
+    <time>1759246875</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.31.0:
+  * Some pieces of the configuration API were refactored
+    or pushed fully into the CLI layer.
+  * The old LTV validation functionality
+    has now been deprecated and may be removed in a future release.</comment>
+    <requestid>1308046</requestid>
+  </revision>
 </revisionlist>
