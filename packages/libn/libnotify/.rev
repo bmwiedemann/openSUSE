@@ -400,4 +400,23 @@ No GPL-2.0+ files found in the package. The Fedora package is also licensed unde
 - Add docbook5-xsl-stylesheets, now needed for manpages. (forwarded request 1265357 from iznogood)</comment>
     <requestid>1265724</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>d4243fe8df750f186c8fe5f48cf7826e</srcmd5>
+    <version>0.8.7</version>
+    <time>1759246755</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.7:
+  + tests: Run non-interactive tests in headless mode
+  + test-image: Use a local asset instead of relying on invalid
+    icon theme
+  + notification:
+    - Add ability to get a GAppLaunchContext on activation
+    - Allow using a desktop file as is from a snap if readable
+    - Do not use the desktop file logic for icons
+    - Remove app name warning in sandboxes
+  + notify:
+    - Ignore the snap UUID to compute the snap application
+    - Support snap application that contains a dot in their name (forwarded request 1307289 from iznogood)</comment>
+    <requestid>1307897</requestid>
+  </revision>
 </revisionlist>

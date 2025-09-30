@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 26 06:41:17 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.8.7:
+  + tests: Run non-interactive tests in headless mode
+  + test-image: Use a local asset instead of relying on invalid
+    icon theme
+  + notification:
+    - Add ability to get a GAppLaunchContext on activation
+    - Allow using a desktop file as is from a snap if readable
+    - Do not use the desktop file logic for icons
+    - Remove app name warning in sandboxes
+  + notify:
+    - Ignore the snap UUID to compute the snap application
+    - Support snap application that contains a dot in their name
+
+-------------------------------------------------------------------
 Fri Mar 28 17:57:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.8.6:
