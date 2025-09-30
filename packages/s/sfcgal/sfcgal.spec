@@ -1,7 +1,7 @@
 #
 # spec file for package sfcgal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann (tigerfoot)
 #
 # All modifications and additions to the file contributed by third parties
@@ -41,6 +41,7 @@ License:        LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://sfcgal.gitlab.io/SFCGAL/
 Source0:        https://gitlab.com/sfcgal/SFCGAL/-/archive/v%{version}/SFCGAL-v%{version}.tar.bz2
+Patch0:         boost.patch
 BuildRequires:  cmake
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
@@ -49,7 +50,6 @@ BuildRequires:  libboost_filesystem-devel >= 1.72
 BuildRequires:  libboost_headers-devel >= 1.72
 BuildRequires:  libboost_program_options-devel >= 1.72
 BuildRequires:  libboost_serialization-devel >= 1.72
-BuildRequires:  libboost_system-devel >= 1.72
 BuildRequires:  libboost_test-devel >= 1.72
 BuildRequires:  libboost_thread-devel >= 1.72
 BuildRequires:  libboost_timer-devel >= 1.72
@@ -113,7 +113,7 @@ Requires:       %{_libname} = %{version}
 Content headers & files to envelopment files for %{_libname}
 
 %prep
-%setup -q -n %{source_name}-v%{version}
+%autosetup -p1 -n %{source_name}-v%{version}
 
 %build
 %limit_build -m 6400

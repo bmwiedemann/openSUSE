@@ -104,4 +104,14 @@ Thanks for your review and help to make it first citizen in Factory</comment>
 </comment>
     <requestid>1253769</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>dca44fb1c08e9053a20571828036783f</srcmd5>
+    <version>2.0.0</version>
+    <time>1759247014</time>
+    <user>anag_factory</user>
+    <comment>- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+  * Patch boost.patch (forwarded request 1308191 from anag_factory)</comment>
+    <requestid>1308192</requestid>
+  </revision>
 </revisionlist>

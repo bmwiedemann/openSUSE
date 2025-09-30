@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 30 12:24:58 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+  * Patch boost.patch
+
+-------------------------------------------------------------------
 Thu Mar  6 13:38:55 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - update minimum boost to 1.72
