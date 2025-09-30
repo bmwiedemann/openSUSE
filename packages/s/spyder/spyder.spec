@@ -1,7 +1,7 @@
 #
 # spec file for package spyder
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # You MUST checkout the app in your live system and play with it before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        6.0.7
+Version:        6.0.8
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT

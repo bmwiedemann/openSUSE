@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 29 16:30:54 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.0.8
+  ## Important fixes
+  * Fix input method positioning for the Editor and IPython
+    Console.
+  ## API changes
+  *  Add spyder_conf_version and old_spyder_conf_version properties
+     to SpyderConfigurationAccessor.
+  ## Issues Closed
+  *  Issue 24561 - Input method is not located in the right
+     position in Spyder 6 (PR 24575 by @athompson673)
+  ## Pull Requests Merged
+  * PR 24888 - PR: Recreate run config parameters if necessary
+    (Profiler), by @ccordoba12
+  * PR 24693 - PR: Update translations from Crowdin, by @spyder-bot
+  * PR 24575 - PR: Fix input method positioning (Editor/IPython
+    console), by @athompson673 (24561)
+
+-------------------------------------------------------------------
 Wed Jul 23 08:46:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Bump python-python-lsp-server

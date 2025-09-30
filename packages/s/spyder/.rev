@@ -885,4 +885,27 @@ rename the package from spyder3 to spyder.
     gh#spyder-ide/spyder#24761 (forwarded request 1295255 from bnavigator)</comment>
     <requestid>1295258</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>9767d9ceb35d666eab8af63581d02020</srcmd5>
+    <version>6.0.8</version>
+    <time>1759246869</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.8
+  ## Important fixes
+  * Fix input method positioning for the Editor and IPython
+    Console.
+  ## API changes
+  *  Add spyder_conf_version and old_spyder_conf_version properties
+     to SpyderConfigurationAccessor.
+  ## Issues Closed
+  *  Issue 24561 - Input method is not located in the right
+     position in Spyder 6 (PR 24575 by @athompson673)
+  ## Pull Requests Merged
+  * PR 24888 - PR: Recreate run config parameters if necessary
+    (Profiler), by @ccordoba12
+  * PR 24693 - PR: Update translations from Crowdin, by @spyder-bot
+  * PR 24575 - PR: Fix input method positioning (Editor/IPython
+    console), by @athompson673 (24561) (forwarded request 1307958 from bnavigator)</comment>
+    <requestid>1307959</requestid>
+  </revision>
 </revisionlist>
