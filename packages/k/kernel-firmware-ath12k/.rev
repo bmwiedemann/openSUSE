@@ -61,4 +61,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath12k: WCN7850 hw2.0@ncm865: add to WLAN.IOE_HMT.1.1-00018-QCAHMTSWPL_V1.0_V2.0_SILICONZ-1</comment>
     <requestid>1302679</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6e6ec8bf486d2cadb9a7a6455602921b</srcmd5>
+    <version>20250919</version>
+    <time>1759246796</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250919 (git commit 493de17dee99):
+  * ath12k: WCN7850 hw2.0: update board-2.bin</comment>
+    <requestid>1307939</requestid>
+  </revision>
 </revisionlist>
