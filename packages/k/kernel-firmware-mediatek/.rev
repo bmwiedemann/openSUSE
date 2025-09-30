@@ -190,4 +190,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: update firmware for MT7922 WiFi device</comment>
     <requestid>1305078</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>48fd256b023ba815d0f014be6d492a97</srcmd5>
+    <version>20250926</version>
+    <time>1759246806</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250926 (git commit fad361e997ee):
+  * mediatek: mtk_wed: drop links for mt7988</comment>
+    <requestid>1307944</requestid>
+  </revision>
 </revisionlist>
