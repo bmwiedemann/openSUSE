@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:29:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.2:
+  * Adds support for Python 3.14.
+  * Fixes wsgi.errors file descriptor in WsgiToAsgi adapter.
+
+-------------------------------------------------------------------
 Thu Jul 17 08:40:37 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.9.1:

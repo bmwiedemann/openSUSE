@@ -185,4 +185,14 @@
     already finished consumers in your tests. (#505)</comment>
     <requestid>1294058</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>334e58fe9263c13fae46e2121f382ffa</srcmd5>
+    <version>3.9.2</version>
+    <time>1759246469</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.9.2:
+  * Adds support for Python 3.14.
+  * Fixes wsgi.errors file descriptor in WsgiToAsgi adapter.</comment>
+    <requestid>1307724</requestid>
+  </revision>
 </revisionlist>
