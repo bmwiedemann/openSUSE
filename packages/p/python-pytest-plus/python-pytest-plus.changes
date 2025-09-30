@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 29 20:26:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * Make log collection more resilient (#42) @ssbarnea
+- update to 0.8.0:
+  * Make checks just a runtime warning (#37) @ssbarnea
+  * Remove support for py39 and add support for py313 (#39)
+    @ssbarnea
+
+-------------------------------------------------------------------
 Mon Apr 15 09:41:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.0:

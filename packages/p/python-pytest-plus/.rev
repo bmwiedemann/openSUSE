@@ -58,4 +58,17 @@
   * Mention number of errors found</comment>
     <requestid>1167783</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d770a147cb8da126c3a870e3fb16cb92</srcmd5>
+    <version>0.8.1</version>
+    <time>1759246903</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.1:
+  * Make log collection more resilient (#42) @ssbarnea
+- update to 0.8.0:
+  * Make checks just a runtime warning (#37) @ssbarnea
+  * Remove support for py39 and add support for py313 (#39)
+    @ssbarnea</comment>
+    <requestid>1308058</requestid>
+  </revision>
 </revisionlist>

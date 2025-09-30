@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-plus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-plus
-Version:        0.7.0
+Version:        0.8.1
 Release:        0
 Summary:        Extension for pytest to enforce minimum tests pass
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pycontribs/pytest-plus
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-plus/pytest-plus-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-plus/pytest_plus-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 63.0.0}
 BuildRequires:  %{python_module wheel}
@@ -43,7 +43,7 @@ BuildArch:      noarch
 PyTest Plus extends pytest functionality to enforce PYTEST_REQPASS tests passed.
 
 %prep
-%setup -q -n pytest-plus-%{version}
+%setup -q -n pytest_plus-%{version}
 
 %build
 %pyproject_wheel
