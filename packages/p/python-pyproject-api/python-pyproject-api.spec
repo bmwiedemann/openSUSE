@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproject-api
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-api
-Version:        1.8.0
+Version:        1.9.1
 Release:        0
 Summary:        API to interact with the python pyproject.toml based projects
 License:        MIT

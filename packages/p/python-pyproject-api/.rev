@@ -65,4 +65,16 @@
   - Extrat build_&lt;wheel|editable&gt; from</comment>
     <requestid>1291241</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b28bfa7f5cf3ad9897a96b32b3aa2b09</srcmd5>
+    <version>1.9.1</version>
+    <time>1759246877</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.1:
+  * Fix the CI
+  * Wheel is not part of the default requries
+- update to 1.9.0:
+  * Create FUNDING.yml</comment>
+    <requestid>1308061</requestid>
+  </revision>
 </revisionlist>
