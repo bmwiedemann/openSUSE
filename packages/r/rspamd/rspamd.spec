@@ -28,7 +28,7 @@
 
 %global lua_abi_version 51
 
-%ifarch %{ix86} x86_64
+%ifarch %{ix86} x86_64 aarch64
   %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
     %bcond_without hyperscan
   %endif
@@ -60,7 +60,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.13.0
+Version:        3.13.1
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0

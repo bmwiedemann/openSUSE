@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Sep 30 10:36:54 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.13.1
+  - Added
+    - Archive module: Full support for encrypted ZIP archives,
+      including both ZipCrypto and AES encryption; both reading and
+      writing of AES-encrypted ZIP archives is supported with
+      updated Lua bindings using libarchive for flexible
+      compatibility with all standard ZIP encryption schemes
+    - Encrypted maps: Support for encrypted maps to enable new map
+      distribution scenarios
+    - Redis TLS: Configurable TLS connections in Redis backend for
+      improved compatibility in secure environments
+  - Improved
+    - MIME encoding refactoring: Major overhauls and multiple fixes
+      for MIME encoding logic, including improved handling and
+      decoding of UTF-8 in MIME headers, resulting in more robust
+      email processing and better compatibility
+    - Learning system: Numerous fixes to learn checks and autolearn
+      flag handling, prevention of duplicate message learning, and
+      extended multiclass learning test coverage
+    - Map helpers alignment: Map helpers now enforced to be aligned
+      to 64 bytes to prevent unaligned memory access errors on
+      certain platforms
+    - CLI enhancements: Enhanced secretbox CLI and additional
+      security test coverage
+    - Platform compatibility: Improved compatibility with Lua
+      versions above 5.1 and better support for 32-bit platforms
+  - Fixed
+    - Critical fixes: Fixed bug when converting zero-length strings
+      to numbers
+    - XML parsing: Fixed XML prolog detection in lua_magic module
+    - Build issues: Fixed build issues on 32-bit platforms
+    - Empty input handling: Addressed issues with empty input
+      handling in lua_magic
+    - Test stability: Improved stability of automated testing with
+      multiple miscellaneous test fixes
+    - Compatibility: Minor compatibility improvements and bugfixes
+      (buffer allocation, missing cmath include, etc.)
+
+   This release introduces archive module extensibility with full
+   encrypted archive support including AES, new map distribution
+   capabilities, secure integration options with Redis TLS, robust
+   email and message processing improvements, and bugfixes for
+   broader platform compatibility. This is recommended as a major
+   stability and feature update.
+
+-------------------------------------------------------------------
+Fri Sep 26 08:00:07 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 by enabling hyperscan support
+
+-------------------------------------------------------------------
 Wed Sep 17 09:22:04 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.13.0
