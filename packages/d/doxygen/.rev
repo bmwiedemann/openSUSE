@@ -2487,4 +2487,12 @@
 On Leap15/SLE15 a newer GCC is needed to build against Qt6. On SLE15 the default clang7 is too old for doxygen with libclang support, use clang17 instead. (forwarded request 1295341 from fsirl)</comment>
     <requestid>1296037</requestid>
   </revision>
+  <revision rev="107" vrev="3">
+    <srcmd5>7bffba062a000b17d75201b37b2a8eef</srcmd5>
+    <version>1.14.0</version>
+    <time>1759246511</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1307861 from pgajdos)</comment>
+    <requestid>1307862</requestid>
+  </revision>
 </revisionlist>

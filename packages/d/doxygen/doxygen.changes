@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 24 07:49:18 UTC 2025 - pgajdos@suse.com
+
+- upstream links to github repository
+- set TEST_FLAGS="--xmlxsd"
+  (https://github.com/doxygen/doxygen/issues/11772)
+
+-------------------------------------------------------------------
 Wed Jul 23 12:39:02 UTC 2025 - Franz Sirl <franz.sirl-obs@lauterbach.com>
 
 - Restore build on openSUSE 15.6 and SLE15 SP6/SP7

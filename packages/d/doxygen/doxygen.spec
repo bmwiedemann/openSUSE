@@ -1,7 +1,7 @@
 #
 # spec file for package doxygen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%global rdir Release_1_14_0
 Name:           doxygen
 Version:        1.14.0
 Release:        0
@@ -22,8 +24,8 @@ Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Doc Generators
-URL:            https://www.doxygen.nl/
-Source0:        https://www.doxygen.nl/files/doxygen-%{version}.src.tar.gz
+URL:            https://github.com/doxygen/doxygen
+Source0:        https://github.com/doxygen/doxygen/releases/download/%{rdir}/doxygen-%{version}.src.tar.gz
 # suse specific
 Patch1:         %{name}-no-lowercase-man-names.patch
 Patch2:         reproducible.patch
@@ -46,7 +48,6 @@ BuildRequires:  python3-xml
 # web trivialy for all versions of doxygen
 Obsoletes:      doxygen-doc
 
-
 %description
 Doxygen is the de facto standard tool for generating documentation
 from annotated C++ sources, but it also supports other popular
@@ -56,8 +57,7 @@ and to some extent D. Doxygen also supports the hardware description
 language VHDL.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake \

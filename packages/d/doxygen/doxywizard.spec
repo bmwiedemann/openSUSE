@@ -1,7 +1,7 @@
 #
 # spec file for package doxywizard
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global rdir Release_1_14_0
 Name:           doxywizard
 Version:        1.14.0
 Release:        0
@@ -23,8 +24,8 @@ Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Doc Generators
-URL:            https://www.doxygen.nl/
-Source:         https://www.doxygen.nl/files/doxygen-%{version}.src.tar.gz
+URL:            https://github.com/doxygen/doxygen
+Source:         https://github.com/doxygen/doxygen/releases/download/%{rdir}/doxygen-%{version}.src.tar.gz
 Source1:        doxywizard.desktop
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14
@@ -73,6 +74,9 @@ configuration files.
 export LANG=C.UTF-8
 # testing doxygen package here to avoid build
 # cycle between latex and doxygen
+#
+# TEST_FLAGS: otherwise 009_bug fails (https://github.com/doxygen/doxygen/issues/11772)
+export TEST_FLAGS="--xmlxsd"
 %ctest
 
 %install
