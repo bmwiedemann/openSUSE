@@ -1,7 +1,7 @@
 Index: src/xml_depyx.c
 ===================================================================
---- src/xml_depyx.c.orig
-+++ src/xml_depyx.c
+--- a/src/xml_depyx.c.orig
++++ b/src/xml_depyx.c
 @@ -105,6 +105,7 @@ pyxDePyx(char *file)
  {
     static char line[INSZ];

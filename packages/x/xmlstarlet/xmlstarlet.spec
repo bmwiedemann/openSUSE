@@ -1,7 +1,7 @@
 #
 # spec file for package xmlstarlet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://sourceforge.net/projects/xmlstar/
 Source:         http://prdownloads.sourceforge.net/xmlstar/xmlstarlet-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch2:         %{name}-xml_depyx.c.diff
+Patch3:         %{name}-libxml2-2.14.patch
 BuildRequires:  libxml2-devel >= 2.6.27
 BuildRequires:  libxslt-devel >= 1.1.9
 BuildRequires:  pkgconfig
@@ -38,7 +39,7 @@ set of shell commands in similar way it is done for plain text files using
 'grep', 'sed', 'awk', 'tr', 'diff', or 'patch'.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -W -Wall"

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 23 11:18:15 UTC 2025 - pgajdos@suse.com
+
+- fix build with libxml2 2.14
+- modified patches
+  * xmlstarlet-xml_depyx.c.diff (-p1)
+- added patches
+  * xmlstarlet-libxml2-2.14.patch
+
+-------------------------------------------------------------------
 Wed Jun  7 11:12:36 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file 
@@ -277,6 +286,4 @@ Mon Sep  1 10:56:53 CEST 2003 - ke@suse.de
 Thu Aug 28 14:57:43 CEST 2003 - toms@suse.de
 
 - New package: xmlstarlet 0.5.1
-
--------------------------------------------------------------------
 

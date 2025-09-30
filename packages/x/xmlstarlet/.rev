@@ -218,4 +218,12 @@
 - Remove unused rpmlintrc filter</comment>
     <requestid>1091257</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>3617665e18f0c01b09cd512bc8b98133</srcmd5>
+    <version>1.6.1</version>
+    <time>1759246496</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1307766</requestid>
+  </revision>
 </revisionlist>
