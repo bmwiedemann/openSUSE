@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 22 10:04:56 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.21
+
+- Update to 2.95.21
+  * Fix #737: Adjust meta description length in #740
+  * Enable language switcher in #741
+  * Fix language for DC-*all deliverables in #744
+  * Update hide-lang-switcher.js, e98948b
+
+-------------------------------------------------------------------
+Fri Sep 19 14:19:51 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.20
+
+- Update to 2.95.20
+  * Change head title structure in #736
+  * Raise Cloudfront URLs (shared-header) to 1.5 in #738
+
+-------------------------------------------------------------------
+Wed Sep 17 13:37:46 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.19
+
+- Update to 2.95.19
+  Hide language switcher in #734
+
+-------------------------------------------------------------------
 Wed Sep 10 06:19:21 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.18
 
 - Update to 2.95.18
