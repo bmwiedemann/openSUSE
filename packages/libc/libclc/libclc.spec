@@ -37,8 +37,8 @@ BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
 %else
  %if 0%{?sle_version} >= 150600
-BuildRequires:  clang20-devel
-BuildRequires:  llvm20-devel
+BuildRequires:  clang21-devel
+BuildRequires:  llvm21-devel
  %endif
 %endif
 BuildRequires:  python3-base
