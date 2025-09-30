@@ -1,7 +1,7 @@
 #
 # spec file for package OpenSceneGraph
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,7 +97,9 @@ BuildRequires:  pkgconfig(xrandr)
 %if %{with collada}
 BuildRequires:  collada-dom-devel
 BuildRequires:  libboost_filesystem-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 %endif
 %if %{with dcmtk}
 BuildRequires:  cmake(DCMTK)

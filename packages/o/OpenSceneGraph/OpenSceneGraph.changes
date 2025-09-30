@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 24 08:07:11 CEST 2025 - aschnell@suse.com
+
+- libboost_system was removed upstream (bsc#1249900)
+
+-------------------------------------------------------------------
 Fri Dec 13 13:03:39 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with OpenCASCADE 7.8, add
