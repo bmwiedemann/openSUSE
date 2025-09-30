@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 6fc20e018cca0ab954fe249afb60ac5af69f102a
+%define git_version 85f43f0fce274957f5d44964b04f5861b5457b48
 
 Name:           kernel-firmware-qlogic
-Version:        20250717
+Version:        20250926
 Release:        0
 Summary:        Kernel firmware files for QLogic network drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250718.tar.gz#/kernel-firmware-tools-20250718.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250912.tar.gz#/kernel-firmware-tools-20250912.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
