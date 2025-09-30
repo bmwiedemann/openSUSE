@@ -2,7 +2,7 @@
 # spec file for package libunistring
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define sover	5
 Name:           libunistring
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        GNU Unicode string library
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
@@ -27,7 +27,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/libunistring/
 Source0:        http://ftp.gnu.org/gnu/libunistring/libunistring-%{version}.tar.xz
 Source1:        http://ftp.gnu.org/gnu/libunistring/libunistring-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=1871/%{name}.keyring
+# https://savannah.gnu.org/users/haible
+Source2:        %{name}.keyring
 Source3:        baselibs.conf
 
 %description

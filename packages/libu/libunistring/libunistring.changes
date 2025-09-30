@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 28 06:49:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4:
+  * The data tables and algorithms have been updated to Unicode
+    version 17.0.0
+  * Fixed a bug: The functions u*_grapheme_next and
+    u*_grapheme_prev did not work right for strings with Indic
+    characters, Emojis, or regional indicators
+
+-------------------------------------------------------------------
 Thu Oct 17 16:44:32 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.3:
