@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 30 07:36:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Drop no-longer needed dependency on httpretty, fixed in 4.6.0
+  * https://github.com/python-social-auth/social-core/pull/1063
+
+-------------------------------------------------------------------
 Mon Aug 18 19:16:52 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Add pyproject-license.patch to work around setup failure on Leap

@@ -486,4 +486,13 @@
     <comment></comment>
     <requestid>1300232</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>cdd2e0e63011c106a7142ccd78d16e11</srcmd5>
+    <version>4.7.0</version>
+    <time>1759246969</time>
+    <user>anag_factory</user>
+    <comment>- Drop no-longer needed dependency on httpretty, fixed in 4.6.0
+  * https://github.com/python-social-auth/social-core/pull/1063</comment>
+    <requestid>1308114</requestid>
+  </revision>
 </revisionlist>

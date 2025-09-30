@@ -46,7 +46,6 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module google-auth}
-BuildRequires:  %{python_module httpretty >= 0.9.6}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module typing_extensions}
 #/SECTION
