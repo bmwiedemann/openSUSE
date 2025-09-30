@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Sep 29 10:19:28 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.13:
+  * Disable connection pooling if the cursor lib is in use, the two
+    conflict over the manipulation of driver function entry points
+  * small patch to odbc/isql to have a -i option that removes the
+    help text, but does not disable prompts like the -b option.
+    This patch also prevents isql from crashing when no $HOME is set.
+  * Prevent the DM from going via the W functions, bipassing the
+    cursor lib if in use
+  * Added better support for cross compiling in exe/Makefile.am
+  * Refactor in SQLCancel and a endian fix at the same time
+  * Add check for Solaris version of getpwuid_r
+  * Make definition of TCHAR match WCHAR
+  * Added some missing error logging in SQLSpecialColumns[W]
+  * Set driver_name in SQLBrowseConnect(W) to "" to prevent
+    seg fault if lib not found
+  * Various mem buffers fixes. Thanks chipitsine
+  * Fix race condition with threaded applications where
+    SQLGetPrivateProfileString can fail due to collision with
+    loading driver library during connection
+  * Added some ODBC 4 types to sql.h
+  * Fix sizeof( ptr ) error in extract_diag_error()
+  * Add missing check and call to SQL_ATTR_RESET_CONNECTION in SQLConnect
+  * Deal with arbitrary length passwords in pooled connections
+  * Fix some buffer overflows in SQLError(W) and SQLGetDiagRec(W)
+  * Fix bug with setting Env Attribute via DMEnvAttr
+- Remove upstreamed patch:
+  * unixODBC-gcc14.patch
+- Add unixODBC-2.3.13-yyparse.patch which fixes a regression
+  See gh/lurcher/unixODBC#219
+
+-------------------------------------------------------------------
 Thu Apr 10 21:18:32 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu17 to CFLAGS to fix gcc15 compile time errors

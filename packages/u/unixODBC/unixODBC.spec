@@ -1,7 +1,7 @@
 #
 # spec file for package unixODBC
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           unixODBC
-Version:        2.3.12
+Version:        2.3.13
 Release:        0
 Summary:        ODBC driver manager with some drivers included
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,8 +28,8 @@ Source1:        baselibs.conf
 Source2:        unixODBC-rpmlintrc
 Patch0:         unixODBC-paths.patch
 Patch1:         unixODC-etc-location.patch
-# bsc#1221709 gh#157
-Patch2:         unixODBC-gcc14.patch
+# https://github.com/lurcher/unixODBC/issues/219#issuecomment-3346262798
+Patch2:         unixODBC-2.3.13-yyparse.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  gcc-c++
