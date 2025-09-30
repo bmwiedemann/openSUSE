@@ -186,7 +186,9 @@ Requires(post): %fillup_prereq
 Requires(post): udev
 Requires(post): shadow
 Recommends:     %{name}-rootless-extras
+%if 0%{?is_opensuse}
 Recommends:     git-core >= 1.7
+%endif
 ExcludeArch:    s390 ppc
 
 %description

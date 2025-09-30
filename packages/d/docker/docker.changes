@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 29 05:25:36 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Remove git-core recommends on SLE. Most SLE systems have
+  installRecommends=yes by default and thus end up installing git with Docker.
+  bsc#1250508
+
+  This feature is mostly intended for developers ("docker build git://") so
+  most users already have the dependency installed, and the error when git is
+  missing is fairly straightforward (so they can easily figure out what they
+  need to install).
+
+-------------------------------------------------------------------
 Thu Sep  4 08:37:24 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to docker-buildx v0.28.0. Upstream changelog:
