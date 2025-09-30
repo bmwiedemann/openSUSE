@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql-pgagent
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ ExclusiveArch:  do_not_build
 %define         pg_version %(pg_config --version | sed -e 's/.*[[:space:]]//' -e 's/\\.[0-9]*$//' -e 's/\\.//')
 
 Name:           %{pgname}-%{sname}
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        Job scheduler for PostgreSQL
 License:        PostgreSQL
@@ -67,6 +67,7 @@ Source2:        %{sname}.service.in
 Source3:        %{sname}.logrotate.in
 Source4:        %{sname}.conf.in
 Source5:        README.SUSE
+Patch0:         boost.patch
 BuildRequires:  %{pgname}-server
 BuildRequires:  %{pgname}-server-devel
 BuildRequires:  boost-devel
@@ -75,7 +76,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  systemd-rpm-macros
 Requires(pre):  shadow
@@ -88,7 +88,7 @@ pgAgent is a job scheduler for PostgreSQL which may be managed
 using pgAdmin.
 
 %prep
-%autosetup -n %{sname}-%{sname}-%{version}
+%autosetup -p1 -n %{sname}-%{sname}-%{version}
 
 cp %{SOURCE2} %{name}.service
 cp %{SOURCE3} %{name}.logrotate

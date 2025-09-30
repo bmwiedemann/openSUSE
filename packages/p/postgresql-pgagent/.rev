@@ -91,4 +91,14 @@
 - enable pg17</comment>
     <requestid>1245885</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d6739d129deb27d65a0296901826514d</srcmd5>
+    <version>4.2.3</version>
+    <time>1759246836</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1308189 from anag_factory
+
+- Add patch boost.patch to not look for boost system.</comment>
+    <requestid>1308190</requestid>
+  </revision>
 </revisionlist>

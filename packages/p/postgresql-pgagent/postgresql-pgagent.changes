@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Sep 30 12:43:47 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add patch boost.patch to not look for boost system.
+
+-------------------------------------------------------------------
+Thu Sep 25 16:45:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Drop unused BuildRequires for boost system
+
+-------------------------------------------------------------------
+Thu Sep 25 16:05:58 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 18
+
+-------------------------------------------------------------------
+Thu Sep 25 16:01:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.2.3 (CVE-2025-0218 boo#1235477)
+  When batch jobs are executed by pgAgent, a script is created in a
+  temporary directory and then executed. In versions of pgAgent
+  prior to 4.2.3, an insufficiently seeded random number generator
+  is used when generating the directory name, leading to the
+  possibility for a local attacker to pre-create the directory and
+  thus prevent pgAgent from executing jobs, disrupting scheduled
+  tasks.
+
+  The pgAdmin project thanks Wolfgang Frisch from SUSE for
+  reporting this issue.
+
+-------------------------------------------------------------------
 Fri Feb 14 12:15:44 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Stop building for EOL postgresql12.
@@ -64,7 +94,7 @@ Fri Sep 25 16:06:14 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 - enable pg13
 
 -------------------------------------------------------------------
--Fri Aug  7 13:16:29 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+Fri Aug  7 13:16:29 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
  
 - Do not build postgresql11 and postgresql12 flavors where they're
   not available.
