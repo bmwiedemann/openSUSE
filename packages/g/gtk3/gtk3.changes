@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 30 06:10:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.51:
+  + Wayland:
+    - Force window titles to be valid utf8
+    - Flush tablet events when neccessary
+  + X11: Avoid a use-after-free with threads
+  + Images: Replace a few calls to gdk_pixbuf_get_pixels with
+    read_pixels to avoid thread-safety issues
+  + GL: Try harder to keep the GL context current
+  + Input: Make compose file parsing more robust
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep 10 14:57:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require glycin-loaders instead of gdk-pixbuf-loader-rsvg.

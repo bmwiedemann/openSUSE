@@ -30,7 +30,7 @@
 %define __provides_exclude_from ^%{_libdir}/gtk-3.0
 
 Name:           gtk3
-Version:        3.24.50+git18.ef9abe706a
+Version:        3.24.51
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
