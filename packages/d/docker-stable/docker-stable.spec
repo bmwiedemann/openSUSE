@@ -1,7 +1,7 @@
 #
 # spec file for package docker-stable
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -224,7 +224,9 @@ Requires(post): shadow
 # different storage-driver than devicemapper
 Recommends:     lvm2 >= 2.2.89
 Recommends:     %{name}-rootless-extras
+%if 0%{?is_opensuse}
 Recommends:     git-core >= 1.7
+%endif
 ExcludeArch:    s390 ppc
 
 %description
