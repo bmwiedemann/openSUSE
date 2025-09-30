@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 30 05:38:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.7:
+  * Fixed auto-approvals in the Datadog Incident Management
+    integration by updating the on-call API client. #59669
+  * Fixed auto-approvals in the Datadog Incident Management
+    integration to ignore case sensitivity in user emails. #59669
+  * Fixed tsh play not returning an error when playing a session
+    fails. #59626
+  * Fixed an issue in Teleport Connect where clicking 'Restart' to
+    apply an update could close the window without actually
+    restarting the app. #59593
+  * Introduced application-proxy service to tbot for HTTP proxying
+    to applications protected by Teleport. #59588
+  * Fixed persistence of metadata.description field for the Bot
+    resource. #59571
+  * Fixed a crash in Teleport's Windows Desktop Service introduced
+    in 17.7.3. Compaction of certain shared directory read/write
+    audit events could result in a stack overflow error. #59514
+  * Enabled Oracle Cloud joining in Machine ID's tbot client.
+    #59041
+  * Fixed an issue that prevented connecting to agents over peered
+    tunnels when proxy peering was enabled. #59557
+
+-------------------------------------------------------------------
 Wed Sep 24 07:18:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.7.6:
