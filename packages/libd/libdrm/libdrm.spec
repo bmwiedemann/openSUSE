@@ -1,7 +1,7 @@
 #
 # spec file for package libdrm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,11 @@
 %bcond_without valgrind_support
 %else
 %bcond_with valgrind_support
+%endif
+
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%define meson_build /usr/bin/meson compile -C %{_vpath_builddir} %{_smp_mflags} --verbose
+%define meson_install /usr/bin/meson install -C %{_vpath_builddir} --no-rebuild --destdir=%{buildroot}
 %endif
 
 Name:           libdrm
