@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Sep 24 16:53:26 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 4.6.1 
+  General:
+  * Fix: Add various buggy drivers to the Vulkan driver blocklist
+  * Fix: Rebuilding search paths and reloading local mods after
+    leaving joined lobby or multiplayer game
+  * Fix: Call countUpdate at init, not unsynchronized at top of
+    gameLoop
+  Campaign:
+  * Fix: Improve campaign coordinate generators
+  Multiplayer:
+  * Add: hostAutoLagKickAggressiveness config value
+  * Add: Share more host options with clients, so clients can
+    display the state
+  * Fix: Apply commander distance check to getDroidEffectiveLevel,
+    other tweaks to avoid exploits
+  * Fix: Improve not-ready check / kick / warning
+  Networking:
+  * Fix: netplay: Use shared/weak_ptr for WzConnectionProvider,
+    refactor shutdown handling
+  Translations:
+  * Change: Translation updates
+- Disable build for i586 because it does fail
+  
+-------------------------------------------------------------------
 Tue Sep 16 20:21:09 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 4.6.0
