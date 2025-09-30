@@ -20,7 +20,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           gdk-pixbuf
-Version:        2.44.2
+Version:        2.44.3
 Release:        0
 Summary:        An image loading library
 License:        LGPL-2.1-or-later
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(glycin-2)
+BuildRequires:  pkgconfig(glycin-2) >= 2.0.1
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libpng)
 

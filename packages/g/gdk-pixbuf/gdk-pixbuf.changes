@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 30 06:14:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.44.3:
+  + glycin:
+    - Fix an off-by-one-error in option handling
+    - Handle outdated uses of the prepare callback
+    - Consolidate image and animation loading
+    - Handle animations better, using new glycin API
+  + build: Require glycin 2.0.1
+
+-------------------------------------------------------------------
 Mon Sep 29 07:09:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable 'other' loaders, which includes ani, bmp, ico, pnm and xpm
