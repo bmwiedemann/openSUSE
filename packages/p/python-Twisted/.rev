@@ -1682,4 +1682,12 @@
     <comment>- Make the libalternatives transition conditional</comment>
     <requestid>1299062</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>d78284f28869da6aae16a6c4555eef44</srcmd5>
+    <version>25.5.0</version>
+    <time>1759246476</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1307729</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Twisted
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Twisted%{psuffix}
-Version:        24.10.0
+Version:        25.5.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
@@ -49,6 +49,8 @@ Patch3:         1521_delegate_parseqs_stdlib_bpo42967.patch
 Patch5:         no-cython_test_exception_raiser.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch6:         remove-dependency-version-upper-bounds.patch
+# PATCH-FIX-UPSTREAM https://github.com/twisted/twisted/issues/12430 Add support for Python 3.14
+Patch7:         py314.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module incremental >= 24.7.0}

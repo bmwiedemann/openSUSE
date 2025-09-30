@@ -1,0 +1,50 @@
+Index: twisted-25.5.0/src/twisted/internet/asyncioreactor.py
+===================================================================
+--- twisted-25.5.0.orig/src/twisted/internet/asyncioreactor.py
++++ twisted-25.5.0/src/twisted/internet/asyncioreactor.py
+@@ -9,7 +9,7 @@ asyncio-based reactor implementation.
+ 
+ import errno
+ import sys
+-from asyncio import AbstractEventLoop, get_event_loop
++from asyncio import AbstractEventLoop, get_running_loop, new_event_loop, set_event_loop
+ from typing import Dict, Optional, Type
+ 
+ from zope.interface import implementer
+@@ -47,7 +47,11 @@ class AsyncioSelectorReactor(PosixReacto
+ 
+     def __init__(self, eventloop: Optional[AbstractEventLoop] = None):
+         if eventloop is None:
+-            _eventloop: AbstractEventLoop = get_event_loop()
++            try:
++                _eventloop: AbstractEventLoop = get_running_loop()
++            except RuntimeError:
++                _eventloop: AbstractEventLoop = new_event_loop()
++            set_event_loop(_eventloop)
+         else:
+             _eventloop = eventloop
+ 
+Index: twisted-25.5.0/src/twisted/web/test/test_webclient.py
+===================================================================
+--- twisted-25.5.0.orig/src/twisted/web/test/test_webclient.py
++++ twisted-25.5.0/src/twisted/web/test/test_webclient.py
+@@ -5,7 +5,8 @@
+ Tests L{twisted.web.client} helper APIs
+ """
+ 
+-
++import sys
++from unittest import SkipTest
+ from urllib.parse import urlparse
+ 
+ from twisted.trial import unittest
+@@ -23,6 +24,9 @@ class URLJoinTests(unittest.TestCase):
+         resulting URL if neither the base nor the new path include a fragment
+         identifier.
+         """
++        if sys.version_info[1] == 14:
++            raise SkipTest("https://github.com/twisted/twisted/issues/12427")
++
+         self.assertEqual(
+             client._urljoin(b"http://foo.com/bar", b"/quux"), b"http://foo.com/quux"
+         )

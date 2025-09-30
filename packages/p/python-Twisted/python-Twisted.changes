@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 26 09:06:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 25.5.0
+  * twisted.internet.interfaces.IReactorMulticast now accept IPv6
+    literals and allow for IPv6 multicast.
+  * TCP throughput when sending data is slightly faster.
+  * twisted.trial.unittest.TestCase.defer* methods were removed and
+    converted to private methods.
+  * Deprecations and removals in twisted.internet.defer
+  * twisted.conch.client.direct.SSHClientTransport.verifyHostKey no
+    longer crashes with an encoding error while attempting to verify
+    the peer's IP address.
+  * The twisted.web.websockets module has been added, adding a
+    websockets server and client based on the wsproto library.
+- Add py314.patch to fix or skip tests failing with Python 3.14
+
+-------------------------------------------------------------------
 Tue Aug 12 12:32:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the libalternatives transition conditional

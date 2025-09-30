@@ -2,21 +2,21 @@
  src/twisted/test/test_udp.py |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: twisted-24.3.0/src/twisted/test/test_udp.py
+Index: twisted-25.5.0/src/twisted/test/test_udp.py
 ===================================================================
---- twisted-24.3.0.orig/src/twisted/test/test_udp.py
-+++ twisted-24.3.0/src/twisted/test/test_udp.py
-@@ -8,7 +8,7 @@ Tests for implementations of L{IReactorU
- 
- 
- import os
+--- twisted-25.5.0.orig/src/twisted/test/test_udp.py
++++ twisted-25.5.0/src/twisted/test/test_udp.py
+@@ -22,7 +22,7 @@ from socket import (
+     inet_pton,
+     socket,
+ )
 -from unittest import skipIf
 +from unittest import skipIf, SkipTest
  
  from twisted.internet import defer, error, interfaces, protocol, reactor, udp
- from twisted.internet.defer import Deferred, gatherResults, maybeDeferred
-@@ -578,6 +578,7 @@ class MulticastTests(TestCase):
-         skip = "This reactor does not support multicast"
+ from twisted.internet.address import IPv4Address, IPv6Address
+@@ -638,6 +638,7 @@ class MulticastTests(TestCase):
+     wrongAddressFamily: str = "::1"
  
      def setUp(self):
 +        raise SkipTest("Multicast networking doesn't work with OBS")
