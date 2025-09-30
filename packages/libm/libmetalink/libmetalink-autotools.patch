@@ -1,7 +1,7 @@
 Index: configure.ac
 ===================================================================
---- configure.ac.orig
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -22,9 +22,6 @@
  AC_PREREQ(2.61)
  AC_INIT([libmetalink], [0.1.3], [t-tujikawa@users.sourceforge.net])
@@ -26,8 +26,8 @@ Index: configure.ac
  # Package version
 Index: lib/libexpat_metalink_parser.c
 ===================================================================
---- lib/libexpat_metalink_parser.c.orig
-+++ lib/libexpat_metalink_parser.c
+--- a/lib/libexpat_metalink_parser.c
++++ b/lib/libexpat_metalink_parser.c
 @@ -130,7 +130,7 @@ METALINK_PUBLIC
  metalink_parse_file(const char* filename, metalink_t** res)
  {
@@ -39,8 +39,8 @@ Index: lib/libexpat_metalink_parser.c
    r = metalink_parse_fp(docfp, res);
 Index: lib/Makefile.am
 ===================================================================
---- lib/Makefile.am.orig
-+++ lib/Makefile.am
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
 @@ -1,7 +1,7 @@
  SUBDIRS = includes
  
@@ -62,8 +62,8 @@ Index: lib/Makefile.am
 +	@EXPAT_LIBS@
 Index: test/Makefile.am
 ===================================================================
---- test/Makefile.am.orig
-+++ test/Makefile.am
+--- a/test/Makefile.am
++++ b/test/Makefile.am
 @@ -11,7 +11,7 @@ metalinktest_SOURCES = \
  metalinktest_LDADD = ${top_builddir}/lib/libmetalink.la
  metalinktest_LDFLAGS = -static  @CUNIT_LIBS@

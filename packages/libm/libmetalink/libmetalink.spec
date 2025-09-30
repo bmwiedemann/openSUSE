@@ -1,7 +1,7 @@
 #
 # spec file for package libmetalink
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,9 +23,11 @@ Release:        0
 Summary:        Metalink Library
 License:        MIT
 Group:          System/Libraries
-Url:            https://launchpad.net/libmetalink
+URL:            https://launchpad.net/libmetalink
 Source:         https://launchpad.net/libmetalink/trunk/libmetalink-%{version}/+download/%{name}-%{version}.tar.xz
 Patch0:         libmetalink-autotools.patch
+# https://github.com/metalink-dev/libmetalink/pull/4
+Patch1:         libmetalink-remove-deprecated-AM_PATH_XML2-macro.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} > 1310
@@ -67,7 +69,7 @@ provide the programs written in C to add Metalink functionality such as parsing
 Metalink XML files.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 autoreconf -fiv

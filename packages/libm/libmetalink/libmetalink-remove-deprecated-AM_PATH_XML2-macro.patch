@@ -1,0 +1,43 @@
+From 56075a3c5ee7f38a03d2a645f406dc0b8620efdd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20K=C5=82oczko?= <kloczek@github.com>
+Date: Thu, 12 Oct 2023 12:19:16 +0000
+Subject: [PATCH] remove use deprecated AM_PATH_XML2 aclocal macro
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Remove use deprecated AM_PATH_XML2 and use PKG_CHECK_MODULES and
+PKG_PROG_PKG_CONFIG aclocal macros.
+
+Signed-off-by: Tomasz Kłoczko <kloczek@github.com>
+---
+ configure.ac    | 7 ++++---
+ lib/Makefile.am | 7 ++++---
+ 2 files changed, 8 insertions(+), 6 deletions(-)
+
+Index: libmetalink-0.1.3/configure.ac
+===================================================================
+--- libmetalink-0.1.3.orig/configure.ac
++++ libmetalink-0.1.3/configure.ac
+@@ -34,6 +34,7 @@ AC_CANONICAL_TARGET
+ 
+ AM_INIT_AUTOMAKE()
+ AC_CONFIG_MACRO_DIR([m4])
++PKG_PROG_PKG_CONFIG
+ 
+ # Special host-dependent stuff
+ case ${host} in
+@@ -89,10 +90,10 @@ if test "x$with_libexpat" = "xyes"; then
+ fi
+ 
+ if test "x$with_libxml2" = "xyes" && test "x$have_libexpat" != "xyes"; then
+-   AM_PATH_XML2([2.6.24], [have_libxml2=yes])
+-   if test "x$have_libxml2" = "xyes"; then
++   PKG_CHECK_MODULES([XML], [libxml-2.0 >= 2.6.24], [
+       AC_DEFINE([HAVE_LIBXML2], [1], [Define to 1 if you have libxml2.])
+-   fi
++      have_libxml2=yes
++   ])
+ fi
+ 
+ if test "x$have_libexpat" != "xyes" && test "x$have_libxml2" != "xyes"; then
