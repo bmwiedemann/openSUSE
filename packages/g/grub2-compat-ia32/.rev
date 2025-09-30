@@ -32,4 +32,13 @@ so it's not present nor built in SLES 16.0
     <comment>- Do not call update-bootloader --del-option on upgrade</comment>
     <requestid>1288620</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bc6e68b0e0aa7125f0ab27262767a9de</srcmd5>
+    <version>1</version>
+    <time>1759249462</time>
+    <user>anag_factory</user>
+    <comment>- Drop update-bootloader --get as it returns 0
+  even if the variable is unset</comment>
+    <requestid>1307971</requestid>
+  </revision>
 </revisionlist>

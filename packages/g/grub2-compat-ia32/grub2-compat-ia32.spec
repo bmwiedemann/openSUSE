@@ -25,6 +25,7 @@ URL:            https://en.opensuse.org/GRUB#Enabling_32bit_x86_support_in_Kerne
 Source1:        README.md
 Requires:       glibc-32bit
 Requires:       update-bootloader
+BuildRequires:       update-bootloader
 BuildArch:      noarch
 ExclusiveArch:  x86_64
 
@@ -45,17 +46,16 @@ cp -a %{SOURCE1} .
 %doc README.md
 
 %post
-if ! %{_sbindir}/update-bootloader --get-option "ia32_emulation=1" &>/dev/null; then
-    %{_sbindir}/update-bootloader --add-option "ia32_emulation=1" || :
-fi
-%{_sbindir}/update-bootloader --config || :
+
+%{_sbindir}/update-bootloader --add-option "ia32_emulation=1"
+%{_sbindir}/update-bootloader --config
 echo "IA32 emulation has been enabled. Please reboot to apply changes."
 
 %postun
 # Only delete the option on uninstall, not upgrade
 if [ "$1" -eq 0 ]; then
-    %{_sbindir}/update-bootloader --del-option "ia32_emulation=1" || :
-    %{_sbindir}/update-bootloader --config || :
+    %{_sbindir}/update-bootloader --del-option "ia32_emulation=1"
+    %{_sbindir}/update-bootloader --config
     echo "IA32 emulation has been removed. Please reboot to apply changes."
 fi
 
