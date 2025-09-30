@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%define meson_build /usr/bin/meson compile -C %{_vpath_builddir} %{_smp_mflags} --verbose
+%define meson_install /usr/bin/meson install -C %{_vpath_builddir} --no-rebuild --destdir=%{buildroot}
+%endif
+
 %if 0%{?suse_version} < 1550
   %define _distconfdir %{_prefix}%{_sysconfdir}
 %endif

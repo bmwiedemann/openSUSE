@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 22 15:38:38 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- redefine %meson_build/%meson_install on Leap 15.6 in order to fix
+  build
+
+-------------------------------------------------------------------
 Thu Aug 21 11:20:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add U_av1-trace.patch: Add tracing for AV1 picture info.
