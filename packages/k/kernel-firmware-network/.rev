@@ -101,4 +101,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: update firmware for en8811h 2.5G ethernet phy</comment>
     <requestid>1305079</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>668caa710facd653595ddbc20609553a</srcmd5>
+    <version>20250912</version>
+    <time>1759246810</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.17</comment>
+    <requestid>1307945</requestid>
+  </revision>
 </revisionlist>
