@@ -185,4 +185,13 @@
   * Added missing splat in stubs -- by :user:`Avasam`</comment>
     <requestid>1292508</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9dd560f10ecc0a80db8b6e03b3c087e5</srcmd5>
+    <version>4.3.0</version>
+    <time>1759246480</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.0:
+  * Add none_as function.</comment>
+    <requestid>1307736</requestid>
+  </revision>
 </revisionlist>
