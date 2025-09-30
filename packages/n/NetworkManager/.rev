@@ -2502,4 +2502,17 @@ New stable release</comment>
   subpackage(bsc#1250086). (forwarded request 1306834 from JonathanKang)</comment>
     <requestid>1306957</requestid>
   </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>3cdb3c2c9bdd792874190f3417f32b61</srcmd5>
+    <version>1.54.1</version>
+    <time>1759246757</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.54.1:
+  + Make that global-dns configuration overwrites DNS searches and
+    options from connections, instead of merging all together.
+  + Add support for a new rd.net.dhcp.client-id option in
+    nm-initrd-generator.
+  + Minor bug fixes. (forwarded request 1307476 from iznogood)</comment>
+    <requestid>1307898</requestid>
+  </revision>
 </revisionlist>

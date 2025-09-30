@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 27 11:18:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.54.1:
+  + Make that global-dns configuration overwrites DNS searches and
+    options from connections, instead of merging all together.
+  + Add support for a new rd.net.dhcp.client-id option in
+    nm-initrd-generator.
+  + Minor bug fixes.
+
+-------------------------------------------------------------------
 Mon Sep 22 01:25:54 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Move dispatcher.d/pre-up.d/90-nm-cloud-setup.sh to cloud-setup
