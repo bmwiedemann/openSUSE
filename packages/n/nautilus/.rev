@@ -1784,4 +1784,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment>Update to GNOME 49 (forwarded request 1305084 from dimstar)</comment>
     <requestid>1305500</requestid>
   </revision>
+  <revision rev="225" vrev="2">
+    <srcmd5>30404ee2fd3c8ee9134146ca3b1234b8</srcmd5>
+    <version>49.0</version>
+    <time>1759246767</time>
+    <user>anag_factory</user>
+    <comment>- Add 29d793b.patch: app-chooser: Adjust to GTK 4.20's list view. (forwarded request 1307478 from iznogood)</comment>
+    <requestid>1307900</requestid>
+  </revision>
 </revisionlist>
