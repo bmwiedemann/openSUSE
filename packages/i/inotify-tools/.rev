@@ -133,4 +133,12 @@
 - initial package</comment>
     <requestid>1135769</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>29cd3c5d20860ecab8c14ec8d427eb82</srcmd5>
+    <version>4.23.9.0</version>
+    <time>1759246863</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.22.1.0 (bsc#1249617):</comment>
+    <requestid>1307937</requestid>
+  </revision>
 </revisionlist>

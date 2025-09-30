@@ -26,7 +26,7 @@ Sun Jun 19 14:04:47 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Sat May  7 12:48:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.22.1.0:
+- update to 3.22.1.0 (bsc#1249617):
   * print to stderr if you fail to fopen file
   * Properly terminate escaped CSV strings. (#158)
   * Fix printing of filename when watching a file
