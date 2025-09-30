@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 29 15:13:06 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759149505.49c40b0b:
+  * Use always the latest PostgreSQL image in Compose and documentation
+  * Update the PostgreSQL version in the contributing documentation
+  * Update PostgreSQL data path in Docker Compose file after updating to v18
+  * Specify PostgreSQL version in Docker Compose configuration explicitly
+  * mergify: Allow more time for dependabot update reaction
+  * Remove version property from docker-compose
+  * README: Fix openQA badge after switch to UEFI
+  * build(deps-dev): bump eslint from 9.35.0 to 9.36.0
+
+-------------------------------------------------------------------
 Fri Sep 26 21:12:56 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1758910696.7549bb98:
