@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 26 05:46:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 25.3.4:
+  + PTL New Changes:
+    - Fixed AV1 encoding bitstream corruption for TU1 mode.
+    - Fixed a hang issue on AV1 encoding TU7 mode.
+
+-------------------------------------------------------------------
 Tue Jul 22 08:31:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 25.2.6:
