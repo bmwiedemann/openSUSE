@@ -95,4 +95,13 @@
     <comment></comment>
     <requestid>1295102</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>814dcb55787d5a55c599dc87338b5a94</srcmd5>
+    <version>6.0.1</version>
+    <time>1759246501</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.1:
+  * Removed type declarations as suggested by Gemini.</comment>
+    <requestid>1307772</requestid>
+  </revision>
 </revisionlist>
