@@ -629,4 +629,12 @@ Features:
     <comment>Revert to 1.0.0 - fails to load images </comment>
     <requestid>1308082</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>f005738a839f5e5e5b804c321ff871ca</srcmd5>
+    <version>1.1.0</version>
+    <time>1759212225</time>
+    <user>dimstar_suse</user>
+    <comment>This was not the reason for the product but fail.- so back to 1.1.0</comment>
+    <requestid>1308094</requestid>
+  </revision>
 </revisionlist>
