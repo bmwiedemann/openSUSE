@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 30 05:24:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.88.1:
+  * feat: Use better parsing for --auth-provider-cmd by @yhakbar in
+    #4881
+  * fix: Fixing race condition for TestTerragruntExcludesFile by
+    @yhakbar in #4809
+  * fix: Fixing report flags by @yhakbar in #4899
+  * fix: Fixing .tf vs .tofu extension parity by @yhakbar in #4794
+  * chore: Add data.tf to iam directory in refactoring guide by
+    @vit100-trader in #4888
+  * chore: Refactoring GitHub client into dedicated package by
+    @yhakbar in #4879
+  * build(deps): bump the js-dependencies group across 1 directory
+    with 7 updates by @dependabot[bot] in #4878
+  * docs: Update 01-quick-start.mdx by @vit100 in #4883
+  * docs: CI for Terralith to Terragrunt Guide by @yhakbar in #4811
+  * docs: Update OG images by @karlcarstensen in #4889
+
+-------------------------------------------------------------------
 Sun Sep 28 14:53:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.88.0:
