@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 26 06:39:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.27
+  * docs(usage guide): description connection serialization (#5504)
+  * test(integv2): trim bloated cases (#5453)
+  * test: Adds test for serializing a previously-serialized connection (#5495)
+  * chore: bindings release 0.3.26 (#5509)
+  * build(deps): bump the all-gha-updates group in /.github/workflows
+    with 4 updates (#5497)
+  * ci: fix clippy (#5516)
+  * chore: delete files in preparation for refactor (#5517)
+  * chore(ci): Update older integ job to prep for deprecation (#5501)
+  * ci: pin libloading which requires MSRV 1.71 (#5520)
+  * chore(ci): add openssl-1.0.2-fips gcc-4.8 job (#5512)
+  * chore(ci): add sanitizer jobs for openssl-1.0.2-fips (#5508)
+  * ci: remove duplicate buildspec (#5228)
+  * feat: Add key update to ktls feature (#5484)
+
+-------------------------------------------------------------------
 Fri Sep 19 08:33:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.26
