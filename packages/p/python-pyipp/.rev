@@ -119,4 +119,14 @@
 - Add missing Requires.</comment>
     <requestid>1299289</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>83a6b74394d477a9a6dd6fb60b1f021d</srcmd5>
+    <version>0.17.2</version>
+    <time>1759246895</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.17.2:
+  * Fix printer `printer-state-reasons` attributes spelling
+    mistakes @kosuke-zhang</comment>
+    <requestid>1308106</requestid>
+  </revision>
 </revisionlist>
