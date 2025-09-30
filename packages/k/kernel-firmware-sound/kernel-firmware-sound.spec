@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 32563e28ea680b03ed52931d7cce946f3319c726
+%define git_version fad361e997ee8e031c88907fd025ab6cd00dbedc
 
 Name:           kernel-firmware-sound
-Version:        20250905
+Version:        20250926
 Release:        0
 Summary:        Kernel firmware files for various sound drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250907.tar.gz#/kernel-firmware-tools-20250907.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250929.tar.gz#/kernel-firmware-tools-20250929.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -66,6 +66,8 @@ Supplements:    modalias(acpi*:INT8866%3A*)
 Supplements:    modalias(acpi*:LPE0F28%3A*)
 Supplements:    modalias(acpi*:PNPB006%3A*)
 Supplements:    modalias(acpi*:TIAS2781%3A*)
+Supplements:    modalias(acpi*:TXNW2770%3A*)
+Supplements:    modalias(acpi*:TXNW2781%3A*)
 Supplements:    modalias(hdaudio:v11020011r*a01*)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8186-dsp)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8186-dspC*)
@@ -77,6 +79,8 @@ Supplements:    modalias(of:N*T*Cqcom%2Cqcm6490-idp-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcm6490-idp-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcs6490-rb3gen2-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcs6490-rb3gen2-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cqcs8275-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Cqcs8275-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcs9075-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcs9075-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcs9100-sndcard)

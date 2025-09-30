@@ -241,4 +241,18 @@ After this PR, there will be a delete request for kernel-firmware.
   * cs35l56: Rename firmware for Thinkbook 16P Gen6 (17AA3921) without multiple speakers</comment>
     <requestid>1305081</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e71cbe94280bf8c66b106aa44d3383b4</srcmd5>
+    <version>20250926</version>
+    <time>1759246816</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.17
+
+- Update to version 20250926 (git commit fad361e997ee):
+  * qcom: Add audio topology and ADSP firmware for qcs6490-radxa-dragon-q6a
+
+- Update to version 20250919 (git commit 493de17dee99):
+  * qcom: move LEMANS EVK firmware to correct location</comment>
+    <requestid>1307949</requestid>
+  </revision>
 </revisionlist>
