@@ -62,4 +62,15 @@
     <comment></comment>
     <requestid>1248408</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4ad9b5ab3380e7de2f3322015adae145</srcmd5>
+    <version>0.24.0</version>
+    <time>1759246907</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.24.0:
+  * Add pysol_cards.gen_multi_cli for generating ranges of deals.
+  * Add tests and documentation for &quot;pysol_cards.cwrap&quot; .
+  * Add &quot;pysol_cards.cwrap&quot; .</comment>
+    <requestid>1308069</requestid>
+  </revision>
 </revisionlist>

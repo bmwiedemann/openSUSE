@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysol-cards
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pysol-cards
-Version:        0.18.1
+Version:        0.24.0
 Release:        0
 Summary:        Python module for pysol-cards
 License:        Apache-2.0
