@@ -95,4 +95,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move all iwlwifi top level files to intel/ directory</comment>
     <requestid>1302683</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f6bbae646c38bf70112ac954905216c5</srcmd5>
+    <version>20250903</version>
+    <time>1759246805</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.17
+
+- Update to version 20250903 (git commit c784990ba3d2):
+  * iwlwifi: add Bz-HR FW for core90-93 release</comment>
+    <requestid>1307943</requestid>
+  </revision>
 </revisionlist>

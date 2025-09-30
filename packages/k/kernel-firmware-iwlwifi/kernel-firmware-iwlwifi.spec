@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 64596902d2db6f99eabdfea7b18c36125e343bb1
+%define git_version c784990ba3d2cdf0a5f6e26e4785ff48238ec01e
 
 Name:           kernel-firmware-iwlwifi
-Version:        20250829
+Version:        20250903
 Release:        0
 Summary:        Kernel firmware files for Intel wireless drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250805.tar.gz#/kernel-firmware-tools-20250805.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250929.tar.gz#/kernel-firmware-tools-20250929.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -535,6 +535,7 @@ Supplements:    modalias(pci:v00008086d0000A840sv*sd000040C4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A840sv*sd000040E0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A840sv*sd00004110bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A840sv*sd00004314bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000D240sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000D340sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000E340sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000E440sv*sd*bc*sc*i*)

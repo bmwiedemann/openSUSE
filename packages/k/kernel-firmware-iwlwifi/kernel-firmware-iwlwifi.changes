@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 29 16:18:57 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases for 6.17
+
+-------------------------------------------------------------------
+Wed Sep  3 15:22:41 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250903 (git commit c784990ba3d2):
+  * iwlwifi: add Bz-HR FW for core90-93 release
+
+-------------------------------------------------------------------
 Fri Aug 29 12:14:50 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250829 (git commit 64596902d2db):
