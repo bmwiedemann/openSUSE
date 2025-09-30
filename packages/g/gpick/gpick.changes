@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 30 11:00:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gpick-boost-without-systemd.patch: Require boost 1.69, which
+  was the first to make libboost_system a stub
+- Drop libboost_system-devel BuildRequires
+
+-------------------------------------------------------------------
 Thu Jun 13 18:11:36 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Switch to CMake

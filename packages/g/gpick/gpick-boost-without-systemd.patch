@@ -1,0 +1,13 @@
+Index: gpick-0.3/CMakeLists.txt
+===================================================================
+--- gpick-0.3.orig/CMakeLists.txt
++++ gpick-0.3/CMakeLists.txt
+@@ -20,7 +20,7 @@ list(REMOVE_ITEM SOURCES source/Color.cp
+ include(Version)
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/source/version/Version.cpp.in" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/Version.cpp" @ONLY)
+ list(APPEND SOURCES "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/Version.cpp")
+-find_package(Boost 1.58 COMPONENTS filesystem system unit_test_framework REQUIRED)
++find_package(Boost 1.69 COMPONENTS filesystem unit_test_framework REQUIRED)
+ find_package(PkgConfig)
+ if (PkgConfig_FOUND)
+ 	if (USE_GTK3)

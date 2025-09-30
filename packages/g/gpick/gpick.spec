@@ -1,7 +1,7 @@
 #
 # spec file for package gpick
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,12 +34,13 @@ Patch2:         fix-version-check.patch
 Patch3:         import-missing-scons.patch
 # PATCH-FIX-UPSTREAM revert-cpp-lua.patch gh#thezbyg/gpick#217 smolsheep@opensuse.org -- Don't use nonexistant lua-c++
 Patch4:         revert-cpp-lua.patch
+# PATCH-FIX-UPSTREAM gpick-boost-without-systemd.patch -- Bump boost dep to 1.69, where system is header-only
+Patch5:         gpick-boost-without-systemd.patch
 BuildRequires:  boost-devel
 BuildRequires:  expat
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 # hicolor-icon-theme BuildRequires for directory ownership
 BuildRequires:  hicolor-icon-theme
