@@ -65,4 +65,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * brcm: Fix symlinks for Khadas VIM SDIO wifi config</comment>
     <requestid>1288145</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>56112e520731baefe171bbb78040f51f</srcmd5>
+    <version>20250623</version>
+    <time>1759246796</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.17</comment>
+    <requestid>1307940</requestid>
+  </revision>
 </revisionlist>

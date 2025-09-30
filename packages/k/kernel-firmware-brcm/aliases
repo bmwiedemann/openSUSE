@@ -19,6 +19,7 @@ brcmfmac: pci:v000014E4d000043ECsv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d000043EFsv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d0000440Dsv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d00004415sv*sd*bc02sc80i*
+brcmfmac: pci:v000014E4d00004417sv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d00004425sv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d00004433sv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d00004464sv*sd*bc02sc80i*
@@ -47,6 +48,7 @@ brcmfmac: sdio:c*v02D0dA9A4*
 brcmfmac: sdio:c*v02D0dA9A6*
 brcmfmac: sdio:c*v02D0dA9AF*
 brcmfmac: sdio:c*v02D0dA9BF*
+brcmfmac: sdio:c*v02D0dAAE7*
 brcmfmac: sdio:c*v02D0dAAE8*
 brcmfmac: sdio:c*v04B4dBD3D*
 brcmfmac: usb:v043Ep3101d*dc*dsc*dp*ic*isc*ip*in*
