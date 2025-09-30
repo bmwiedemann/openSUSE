@@ -100,4 +100,21 @@ version 2.0:
 * its mandatory to select the slave interface </comment>
     <requestid>1307334</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>45c92cf7b0c0ab3e4c5e4c22d7323449</srcmd5>
+    <version>2.6</version>
+    <time>1759247003</time>
+    <user>anag_factory</user>
+    <comment>version 2.6:
+  * use typing module
+  * improve check_interface_exist
+  * remove run_command, use dbus to check if NM is running
+  * various fix around dry-run
+  * fix typo on vlan setting. Improve getting brdige info
+  * concatenate do_(activate/deactivate/delete) functions
+  * use external function to get ipv4 config and bridge settings
+  * various mypy and pylint fixes
+</comment>
+    <requestid>1308166</requestid>
+  </revision>
 </revisionlist>

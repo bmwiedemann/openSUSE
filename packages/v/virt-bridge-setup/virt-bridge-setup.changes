@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 29 11:58:07 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+version 2.6:
+  * use typing module
+  * improve check_interface_exist
+  * remove run_command, use dbus to check if NM is running
+  * various fix around dry-run
+  * fix typo on vlan setting. Improve getting brdige info
+  * concatenate do_(activate/deactivate/delete) functions
+  * use external function to get ipv4 config and bridge settings
+  * various mypy and pylint fixes
+
+
+-------------------------------------------------------------------
 Thu Sep 25 12:23:03 UTC 2025 - Antoine Ginies <aginies@suse.com>
 
 version 2.4:
