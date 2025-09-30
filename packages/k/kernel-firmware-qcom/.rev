@@ -221,4 +221,24 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: add CDSP firmware for qcs615 platform</comment>
     <requestid>1305080</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4ff6c256df8c30a671831faf4cfd1985</srcmd5>
+    <version>20250926</version>
+    <time>1759246812</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.17
+
+- Update to version 20250926 (git commit 85f43f0fce27):
+  * qcom: Update aic100 firmware files
+
+- Update to version 20250926 (git commit fad361e997ee):
+  * qcom: Add audio topology and ADSP firmware for qcs6490-radxa-dragon-q6a
+
+- Update to version 20250922 (git commit ef58001fa35e):
+  * qcom: Update DSP firmware for qcs8300 platform.
+
+- Update to version 20250919 (git commit 493de17dee99):
+  * qcom: Update DSP firmware for sa8775p platform.</comment>
+    <requestid>1307947</requestid>
+  </revision>
 </revisionlist>

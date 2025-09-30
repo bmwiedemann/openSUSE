@@ -106,6 +106,10 @@ msm: of:N*T*Cqcom%2Csm8650-dpu
 msm: of:N*T*Cqcom%2Csm8650-dpuC*
 msm: of:N*T*Cqcom%2Csm8650-mdss
 msm: of:N*T*Cqcom%2Csm8650-mdssC*
+msm: of:N*T*Cqcom%2Csm8750-dpu
+msm: of:N*T*Cqcom%2Csm8750-dpuC*
+msm: of:N*T*Cqcom%2Csm8750-mdss
+msm: of:N*T*Cqcom%2Csm8750-mdssC*
 msm: of:N*T*Cqcom%2Cx1e80100-dpu
 msm: of:N*T*Cqcom%2Cx1e80100-dpuC*
 msm: of:N*T*Cqcom%2Cx1e80100-mdss

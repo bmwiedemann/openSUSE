@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 32563e28ea680b03ed52931d7cce946f3319c726
+%define git_version 85f43f0fce274957f5d44964b04f5861b5457b48
 
 Name:           kernel-firmware-qcom
-Version:        20250905
+Version:        20250926
 Release:        0
 Summary:        Kernel firmware files for Qualcomm device drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250907.tar.gz#/kernel-firmware-tools-20250907.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250929.tar.gz#/kernel-firmware-tools-20250929.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -310,6 +310,10 @@ Supplements:    modalias(of:N*T*Cqcom%2Csm8650-mdss)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8650-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8650-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8650-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Csm8750-dpu)
+Supplements:    modalias(of:N*T*Cqcom%2Csm8750-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom%2Csm8750-mdss)
+Supplements:    modalias(of:N*T*Cqcom%2Csm8750-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8750-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8750-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cx1e80100-adsp-pas)
