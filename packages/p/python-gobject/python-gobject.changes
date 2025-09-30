@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 28 21:33:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.3:
+  + Do not skip symbols both in Gio and in platform specific
+
+-------------------------------------------------------------------
 Sat Sep 13 08:29:50 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.54.2:

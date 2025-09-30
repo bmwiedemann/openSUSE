@@ -867,4 +867,13 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 1304948 from dimstar)</comment>
     <requestid>1305487</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>6174d034337bd65f82d9de1907ed4bd8</srcmd5>
+    <version>3.54.3</version>
+    <time>1759246775</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.54.3:
+  + Do not skip symbols both in Gio and in platform specific (forwarded request 1307609 from iznogood)</comment>
+    <requestid>1307902</requestid>
+  </revision>
 </revisionlist>
