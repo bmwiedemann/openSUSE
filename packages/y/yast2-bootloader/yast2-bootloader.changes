@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 29 11:27:55 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Update: Reports error if the bootloader is changed to grub2-bls
+  (bnc#1246734).
+- 5.0.26
+
+-------------------------------------------------------------------
 Wed Aug 13 09:36:06 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - "update nvram" option added in grub2-bls and systemd-boot.
