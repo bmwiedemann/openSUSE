@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fasteners
-Version:        0.19
+Version:        0.20
 Release:        0
 Summary:        A python package that provides useful locks
 License:        Apache-2.0
