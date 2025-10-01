@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 26 18:53:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.6.0:
+  * Fix issues regarding group creation, leaving chats and
+    invitations
+  * Optimize automatic requests and message graph merges
+
+-------------------------------------------------------------------
 Mon Jan 13 22:48:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.5.2:

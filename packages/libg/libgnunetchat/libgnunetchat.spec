@@ -17,7 +17,7 @@
 
 
 Name:           libgnunetchat
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        Library for applications to utilize the Messenger service of GNUnet
 License:        AGPL-3.0-or-later
@@ -28,15 +28,16 @@ Source2:        https://ftp.gnu.org/pub/gnu/gnunet/%{name}-%{version}.tar.gz.sig
 Source3:        %{name}.keyring
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gnunetarm) >= 0.21.2
-BuildRequires:  pkgconfig(gnunetfs) >= 0.21.2
-BuildRequires:  pkgconfig(gnunetgns) >= 0.21.2
-BuildRequires:  pkgconfig(gnunetidentity) >= 0.21.2
-BuildRequires:  pkgconfig(gnunetmessenger) >= 0.21.2
-BuildRequires:  pkgconfig(gnunetnamestore) >= 0.21.2
-BuildRequires:  pkgconfig(gnunetreclaim) >= 0.21.2
-BuildRequires:  pkgconfig(gnunetregex) >= 0.21.2
-BuildRequires:  pkgconfig(gnunetutil) >= 0.21.2
+BuildRequires:  pkgconfig(gnunetarm)
+BuildRequires:  pkgconfig(gnunetfs)
+BuildRequires:  pkgconfig(gnunetgns)
+BuildRequires:  pkgconfig(gnunetgnsrecord)
+BuildRequires:  pkgconfig(gnunetidentity)
+BuildRequires:  pkgconfig(gnunetmessenger)
+BuildRequires:  pkgconfig(gnunetnamestore)
+BuildRequires:  pkgconfig(gnunetreclaim)
+BuildRequires:  pkgconfig(gnunetregex)
+BuildRequires:  pkgconfig(gnunetutil)
 
 %description
 This library is an abstraction layer using the client API from different GNUnet
