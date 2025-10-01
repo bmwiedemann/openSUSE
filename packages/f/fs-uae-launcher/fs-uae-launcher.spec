@@ -17,7 +17,7 @@
 
 
 Name:           fs-uae-launcher
-Version:        3.2.20
+Version:        3.2.35
 Release:        0
 Summary:        Graphical configuration frontend and launcher for FS-UAE
 License:        GPL-2.0-or-later
@@ -30,7 +30,11 @@ BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       fs-uae
 Requires:       python3-opengl
+%if 0%{?suse_version} < 1600
 Requires:       python3-qt5
+%else
+Requires:       python3-PyQt6
+%endif
 Requires:       python3-requests
 Recommends:     python3-lhafile
 BuildArch:      noarch

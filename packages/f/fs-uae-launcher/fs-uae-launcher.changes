@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 24 07:46:01 UTC 2025 - Wolfgang Bauer <wbauer1@a1.net>
+
+- Update to version 3.2.35
+  * Dark mode fix for Windows (more reliable detection of dark mode).
+  * Bumping version to 3.2.35 to synchronize version with FS-UAE.
+- from version 3.2.23
+  * Minor workaround for macOS 12 running on too old hardware (?)
+- from version 3.2.22
+  * Fix fs-uae-launcher.exe icon on Windows.
+  * On macOS, open FS-UAE.app via "open" and not by running the executable directly (fixes focus).
+  * FS-UAE executable was not found correctly in side-by-side configuration.
+- from version 3.2.21
+  * Restore support for older Python versions.
+  * Make the launcher compatible with PyQt5 also.
+- Require python3-PyQt6 instead of python3-qt5 on Tumbleweed and Leap 16
+
+-------------------------------------------------------------------
 Mon Sep  8 22:41:05 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.2.20
