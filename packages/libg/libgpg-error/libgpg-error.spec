@@ -1,7 +1,7 @@
 #
 # spec file for package libgpg-error
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,8 +56,10 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libgpg-error0 = %{version}
+%if 0%{?suse_version} < 1600
 Requires(post): info
 Requires(preun): info
+%endif
 
 %description devel
 Files needed for software development using libgpg-error.
