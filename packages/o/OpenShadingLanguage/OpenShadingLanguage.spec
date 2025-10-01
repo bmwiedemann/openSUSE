@@ -1,7 +1,7 @@
 #
 # spec file for package OpenShadingLanguage
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,6 @@ BuildRequires:  cmake >= 3.15
 BuildRequires:  flex
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libboost_filesystem%{?force_boost_version}-devel
-BuildRequires:  libboost_system%{?force_boost_version}-devel
 BuildRequires:  libboost_thread%{?force_boost_version}-devel
 BuildRequires:  (cmake(Clang) >= %{min_llvm_version} with cmake(Clang) =< %{max_llvm_version})
 BuildRequires:  (cmake(LLVM)  >= %{min_llvm_version} with cmake(LLVM)  =< %{max_llvm_version})

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  1 14:03:06 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+
+-------------------------------------------------------------------
 Tue Jul 15 16:21:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Lock the python and gcc versions to the same versions as blender
