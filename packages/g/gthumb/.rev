@@ -1069,4 +1069,12 @@
   pkgconfig(webkit2gtk-3.0) respective pkgconfig(webkit2gtk-4.0), (forwarded request 1305141 from dimstar)</comment>
     <requestid>1305428</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>6fdf25cbf2572c041f2f3adc0939c22f</srcmd5>
+    <version>3.12.8+1</version>
+    <time>1759337749</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1308206</requestid>
+  </revision>
 </revisionlist>
