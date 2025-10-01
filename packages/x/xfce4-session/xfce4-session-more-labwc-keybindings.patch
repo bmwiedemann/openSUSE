@@ -1,15 +1,27 @@
 Add more default key bindings for labwc
 
+- Mic-mute: toggle audio capture
 - Display (VideoModeSwitch) or Super-P: display setup dialog
 - PrintScreen: screen-shooter
+- Super_L (Windows key): open root menu
 
 ---
- labwc/labwc-rc.xml |   12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ labwc/labwc-rc.xml |   18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
 --- a/labwc/labwc-rc.xml
 +++ b/labwc/labwc-rc.xml
-@@ -66,6 +66,18 @@
+@@ -45,6 +45,9 @@
+     <keybind key="XF86_AudioMute">
+       <action name="Execute" command="amixer sset Master toggle" />
+     </keybind>
++    <keybind key="XF86_AudioMicMute">
++      <action name="Execute" command="amixer sset Capture toggle" />
++    </keybind>
+     <keybind key="W-q">
+       <action name="Close" />
+     </keybind>
+@@ -66,6 +69,21 @@
      <keybind key="W-4">
        <action name="GoToDesktop" to="4" />
      </keybind>
@@ -24,6 +36,9 @@ Add more default key bindings for labwc
 +    </keybind>
 +    <keybind key="XF86_PowerOff">
 +      <action name="Execute" command="xfce4-session-logout" />
++    </keybind>
++    <keybind key="Super_L" onRelease="yes">
++      <action name="Execute" command="xfce4-popup-whiskermenu" />
 +    </keybind>
    </keyboard>
  
