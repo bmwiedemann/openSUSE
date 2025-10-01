@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Oct 01 11:53:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.43.0:
+  * chore(deps): update renovatebot/github-action action to
+    v43.0.14 (#1011)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/authorization
+    (#1007)
+  * fix(deps): update stackit sdk modules (#999)
+  * fix: yaml output of servers userdata is bytearray instead of
+    base64 (#998)
+  * chore(deps): update module golang.org/x/tools to v0.44.0 (#986)
+  * chore(deps): bump renovatebot/github-action from 43.0.12 to
+    43.0.13 (#994)
+  * chore(flags): add unit test for string to string flag parsing
+    (#983)
+  * chore(deps): bump golang.org/x/oauth2 from 0.30.0 to 0.31.0
+    (#970)
+  * chore(deps): bump golang.org/x/mod from 0.27.0 to 0.28.0 (#971)
+  * chore(deps): bump golang.org/x/text from 0.28.0 to 0.29.0
+    (#972)
+  * chore(deps): bump golang.org/x/term from 0.34.0 to 0.35.0
+    (#987)
+  * chore(deps): bump k8s.io/client-go from 0.32.3 to 0.34.1 (#984)
+  * fix(ske/login): use region from kubeconfig (#989)
+  * chore(deps): bump renovatebot/github-action from 43.0.11 to
+    43.0.12 (#990)
+  * fix: use refresh tokens in curl commands for user token flow
+    (#981)
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/services/iaas to v0.30.0
+    (#988)
+
+-------------------------------------------------------------------
 Sun Sep 14 12:38:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.42.0:
