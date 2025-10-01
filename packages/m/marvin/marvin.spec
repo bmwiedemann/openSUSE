@@ -1,7 +1,7 @@
 #
 # spec file for package marvin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           marvin
-Version:        0.2.10
+Version:        0.2.11
 Release:        0
 Summary:        Scans a k8s cluster for misconfigurations and vulnerabilities
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         marvin-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go1.24 >= 1.24.7
 BuildRequires:  zsh
 
 %description
