@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
-Version:        9.6.20
+Version:        9.6.21
 Release:        0
 Summary:        Material theme for mkdocs
 License:        MIT
@@ -43,14 +43,11 @@ BuildRequires:  %{python_module trove-classifiers >= 2023.10.18}
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L21
 BuildRequires:  %{python_module Jinja2 >= 3.1}
 BuildRequires:  %{python_module Markdown >= 3.4}
+BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module mkdocs >= 1.6 with %python-mkdocs < 2}
 BuildRequires:  %{python_module mkdocs-material-extensions >= 1.3}
 BuildRequires:  %{python_module pygments >= 2.16}
 BuildRequires:  %{python_module pymdown-extensions >= 10.3}
-# https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L36
-# Temporarily pin click until this is resolved in MkDocs, see
-# https://github.com/mkdocs/mkdocs/issues/4014#issuecomment-3146508306
-BuildRequires:  %{python_module click < 8.2.2}
 # Requirements for plugins
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29
 BuildRequires:  %{python_module Babel >= 2.10}
@@ -64,14 +61,11 @@ BuildRequires:  python-rpm-macros
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L21
 Requires:       python-Jinja2 >= 3.1
 Requires:       python-Markdown >= 3.4
+Requires:       python-click
 Requires:       python-mkdocs-material-extensions >= 1.1
 Requires:       python-pygments >= 2.16
 Requires:       python-pymdown-extensions >= 10.3
 Requires:       (python-mkdocs >= 1.6 with python-mkdocs < 2)
-# https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L36
-# Temporarily pin click until this is resolved in MkDocs, see
-# https://github.com/mkdocs/mkdocs/issues/4014#issuecomment-3146508306
-Requires:       python-click < 8.2.2
 # Requirements for plugins
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29
 Requires:       python-Babel >= 2.10
