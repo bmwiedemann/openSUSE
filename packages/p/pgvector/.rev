@@ -25,4 +25,12 @@ Add reproducible.patch to avoid compile-time CPU-detection (boo#1100677)</commen
     <comment></comment>
     <requestid>1304244</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7f612a0ef7cedb7e2663e32f719aac59</srcmd5>
+    <version>0.8.1</version>
+    <time>1759337790</time>
+    <user>anag_factory</user>
+    <comment>- enable pg 18</comment>
+    <requestid>1308367</requestid>
+  </revision>
 </revisionlist>
