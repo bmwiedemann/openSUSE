@@ -1,0 +1,4 @@
+<package name="kubevirt-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed KubeVirt virt-api container</title>
+  <description>KubeVirt virt-api container container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>

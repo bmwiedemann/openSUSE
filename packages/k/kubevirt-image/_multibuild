@@ -1,0 +1,10 @@
+<multibuild>
+    <package>api</package>
+    <package>controller</package>
+    <package>exportproxy</package>
+    <package>exportserver</package>
+    <package>handler</package>
+    <package>launcher</package>
+    <package>operator</package>
+    <package>pr-helper</package>
+</multibuild>
