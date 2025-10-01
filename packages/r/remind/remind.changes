@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct  1 08:39:00 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+* VERSION 6.1 Patch 3 - 2025-09-30
+
+- IMPROVEMENT: remind: Issue a warning that SCANFROM should be used
+  with ADDOMIT in cases where Remind detects a movable OMIT.
+
+- NEW FEATURE: remind: Add $WarningLevel system variable.  This lets
+  you suppress warnings added by new versions of Remind until you have
+  a chance to update your remind scripts.
+
+- BUG FIX / IMPROVEMENT: include/holidays/*.rem: Simplify the logic
+  used for moving holidays before/after weekends.  Also fixes bugs
+  found in the logic used to move New Year's Day.  Thanks to Nimrod
+  Levy for pointing out the New Year's Day bug.
+
+- IMPROVEMENT: include/holidays/jewish.rem: This file was reworked by
+  Nimrod Levy to simplify logic and optionally add the counting of the
+  Omer.
+
+- BUG FIX: remind: "remind -c" would add an unnecessary blank line for
+  completely-empty calendar rows if you used the "-w,0,0" option.
+  This is now fixed.  Bug pointed out by Tim Chase. 
+
+-------------------------------------------------------------------
 Mon Sep 22 13:17:03 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 * VERSION 6.1 Patch 2 - 2025-09-19
