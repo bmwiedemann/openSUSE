@@ -1,7 +1,7 @@
 #
 # spec file for package python39
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -198,6 +198,8 @@ Patch52:        CVE-2025-6069-quad-complex-HTMLParser.patch
 # PATCH-FIX-UPSTREAM CVE-2025-8194-tarfile-no-neg-offsets.patch bsc#1247249 mcepl@suse.com
 # tarfile now validates archives to ensure member offsets are non-negative
 Patch53:        CVE-2025-8194-tarfile-no-neg-offsets.patch
+# PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
+Patch54:        gh139257-Support-docutils-0.22.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -471,6 +473,7 @@ other applications.
 %patch -p1 -P 51
 %patch -p1 -P 52
 %patch -p1 -P 53
+%patch -p1 -P 54
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

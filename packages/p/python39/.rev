@@ -1504,4 +1504,13 @@
 </comment>
     <requestid>1297167</requestid>
   </revision>
+  <revision rev="80" vrev="5">
+    <srcmd5>76b24b8fd174f1a3424a0a184a31a34d</srcmd5>
+    <version>3.9.23</version>
+    <time>1759337778</time>
+    <user>anag_factory</user>
+    <comment>- Add gh139257-Support-docutils-0.22.patch to fix build with latest
+  docutils (&gt;=0.22) gh#python/cpython#139257</comment>
+    <requestid>1308251</requestid>
+  </revision>
 </revisionlist>
