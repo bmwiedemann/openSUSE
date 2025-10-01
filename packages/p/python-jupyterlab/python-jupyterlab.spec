@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 4.4.5
+%define distversion 4.4.9
 Name:           python-jupyterlab
-Version:        4.4.5
+Version:        4.4.9
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause

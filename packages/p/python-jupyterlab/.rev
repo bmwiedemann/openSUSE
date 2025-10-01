@@ -1203,4 +1203,41 @@
     Contrast theme #17618 (@MUFFANUJ)</comment>
     <requestid>1294598</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a537ed3c141d566d5b55e6c4a55f8fb0</srcmd5>
+    <version>4.4.9</version>
+    <time>1759337817</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.4.9:
+  - Bugs fixed
+    - Correctly dispose TerminalManager even if terminals are not
+      available
+    - Fix scrolling to targets within notebook
+- Update to 4.4.8:
+  - Bugs fixed
+    - Debugger: Only send the configurationDone message once as
+      per the DAP
+    - Fix output prompt overlay height for large outputs
+    - Prevent overlay of content from other columns when renaming
+      a file in the file browser
+    - Fix notebook toolbar item order
+    - Harden anchor links for latex rendering, add more tests
+      (CVE-2025-59842, bsc#1250605)
+  - Maintenance and upkeep improvements
+    - Ignore npmjs.com in check-links
+  - Documentation improvements
+    - Add JupyterCon banner and Jupyter colors
+- Update to 4.4.7:
+  - Enhancements made
+    - Update to mermaid 11.10, marked 16.2
+  - Bugs fixed
+    - Change default line wrap in default editor config
+    - Select file and accept dialog on file double click in
+      FileDialog.getOpenFiles
+    - Fix broken toolbar updates due to missing 'clear' cases in
+      switch statements for ObservableList
+    - Send code to console
+    - Clear incomplete execution metadata when splitting running</comment>
+    <requestid>1308326</requestid>
+  </revision>
 </revisionlist>

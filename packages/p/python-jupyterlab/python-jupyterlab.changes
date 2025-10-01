@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Oct  1 07:47:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.4.9:
+  - Bugs fixed
+    - Correctly dispose TerminalManager even if terminals are not
+      available
+    - Fix scrolling to targets within notebook
+- Update to 4.4.8:
+  - Bugs fixed
+    - Debugger: Only send the configurationDone message once as
+      per the DAP
+    - Fix output prompt overlay height for large outputs
+    - Prevent overlay of content from other columns when renaming
+      a file in the file browser
+    - Fix notebook toolbar item order
+    - Harden anchor links for latex rendering, add more tests
+      (CVE-2025-59842, bsc#1250605)
+  - Maintenance and upkeep improvements
+    - Ignore npmjs.com in check-links
+  - Documentation improvements
+    - Add JupyterCon banner and Jupyter colors
+- Update to 4.4.7:
+  - Enhancements made
+    - Update to mermaid 11.10, marked 16.2
+  - Bugs fixed
+    - Change default line wrap in default editor config
+    - Select file and accept dialog on file double click in
+      FileDialog.getOpenFiles
+    - Fix broken toolbar updates due to missing 'clear' cases in
+      switch statements for ObservableList
+    - Send code to console
+    - Clear incomplete execution metadata when splitting running
+      cells
+    - Don't create empty page_config in sys_prefix when disabled
+      is empty
+  - Documentation improvements
+    - Improve language/grammar in extensions documentation
+    - Reorganise and improve discoverability in documentation
+     
+    - Replace deprecated toolbarRegistry.registerFactory with
+      toolbarRegistry.addFactory in docs
+- Update to 4.4.6:
+  - Bugs fixed
+    - Preserve original cell during split to maintain kernel
+      connections
+    - Fix file browser navigation with preferredDir
+    - Fix anchor navigation on sanitized HTML
+    - Fix tab order for status bar items
+    - Fix uncoalesced cell stream outputs clearing
+    - Fix error when deleting a markdown cell with heading
+    - Fix initial column sizes in FileDialog.getOpenFiles dialog
+     
+    - Exclude version 6.30.0 of ipykernel, which add a regression
+      on the debugger
+  - Maintenance and upkeep improvements
+    - Avoid ipykernel 7.0.0a2 in CI
+    - Add logs to the server startup in the js-testing tests
+     
+    - Bump form-data from 4.0.2 to 4.0.4
+    - Pin to httpx<1
+    - Add more retries on the frequently failing test
+  - Documentation improvements
+    - Fix file browser navigation with preferredDir
+    - Fix anchor navigation on sanitized HTML
+    - Improve documentation for jupyter.lab.transform
+
+-------------------------------------------------------------------
 Sun Jul 20 14:55:09 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.4.5
