@@ -32,7 +32,7 @@
 %global immutabledict_version         4.2.1
 %global idna_version                  3.8
 %global ijson_version                 3.3.0
-%global jsonschema_version            4.25.0
+%global jsonschema_version            4.25.1
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
 %global msgpack_version               1.1.0
@@ -57,8 +57,8 @@
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.5.0
-# TOOD: 1.6.1
-%global Authlib_version               1.6.0
+# TOOD: 1.6.3
+%global Authlib_version               1.6.1
 %global lxml_version                  6.0.0
 # TODO: 2.34.1
 %global sentry_sdk_version            2.20.0
@@ -158,7 +158,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.138.2
+Version:        1.139.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Wed Oct  1 09:55:29 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.139.0
+  /register requests from old application service implementations
+  may break when using MAS
+
+  If you are using Matrix Authentication Service (MAS), as of this
+  release any Application Services that do not set
+  inhibit_login=true when calling POST /_matrix/client/v3/register
+  will receive the error
+  IO.ELEMENT.MSC4190.M_APPSERVICE_LOGIN_UNSUPPORTED in response.
+
+  Please see the upgrade notes for more information.
+
+  https://element-hq.github.io/synapse/develop/upgrade.html#register-requests-from-old-application-service-implementations-may-break-when-using-mas
+
+  - Features
+    - Add experimental support for MSC4308: Thread Subscriptions
+      extension to Sliding Sync when MSC4306: Thread Subscriptions
+      and MSC4186: Simplified Sliding Sync are enabled. (#18695)
+    - Update push rules for experimental MSC4306: Thread
+      Subscriptions to follow a newer draft. (#18846)
+    - Add get_media_upload_limits_for_user and
+      on_media_upload_limit_exceeded module API callbacks to the
+      media repository. (#18848)
+    - Support MSC4169 for backwards-compatible redaction sending
+      using the /send endpoint. Contributed by @SpiritCroc @
+      Beeper. (#18898)
+    - Add an in-memory cache to
+      _get_e2e_cross_signing_signatures_for_devices to reduce DB
+      load. (#18899)
+    - Update MSC4190 support to return correct errors and allow
+      appservices to reset cross-signing keys without
+      user-interactive authentication. Contributed by @tulir @
+      Beeper. (#18946)
+  - Bugfixes
+    - Fix a bug introduced in 1.139.0rc1 where
+      `run_coroutine_in_background(...)` incorrectly handling
+      logcontext (#18964)
+    - Ensure all PDUs sent via /send pass canonical JSON checks.
+      (#18641)
+    - Fix bug where we did not send invite revocations over
+      federation. (#18823)
+    - Fix prefixed support for MSC4133. (#18875)
+    - Fix open redirect in legacy SSO flow with the idp query
+      parameter. (#18909)
+    - Fix a performance regression related to the experimental
+      Delayed Events (MSC4140) feature. (#18926)
+  - Updates to the Docker image
+    - Suppress "Applying schema" log noise bulk when
+      SYNAPSE_LOG_TESTING is set. (#18878)
+  - Improved Documentation
+    - Clarify Python dependency constraints in our deprecation
+      policy. (#18856)
+    - Clarify necessary jwt_config parameter in OIDC documentation
+      for authentik. Contributed by @maxkratz. (#18931)
+  - Deprecations and Removals
+    - Remove obsolete and experimental /sync/e2ee endpoint.
+      (#18583)
+  - Internal Changes
+    - Fix LaterGauge metrics to collect from all servers. (#18791)
+    - Configure Synapse to run MSC4306: Thread Subscriptions
+      Complement tests. (#18819)
+    - Remove sentinel logcontext usage where we log in setup, start
+      and exit. (#18870)
+    - Use the Enum's value for the dictionary key when responding
+      to an admin request for experimental features. (#18874)
+    - Start background tasks after we fork the process (daemonize).
+      (#18886)
+    - Better explain how we manage the logcontext in
+      run_in_background(...) and run_as_background_process(...).
+      (#18900, #18906)
+    - Remove sentinel logcontext usage in Clock utilities like
+      looping_call and call_later. (#18907)
+    - Replace usages of the deprecated pkg_resources interface in
+      preparation of setuptools dropping it soon. (#18910)
+    - Split loading config from homeserver setup. (#18933)
+    - Fix run_in_background not being awaited properly in some
+      tests causing LoggingContext problems. (#18937)
+    - Fix run_as_background_process not being awaited properly
+      causing LoggingContext problems in experimental MSC4140:
+      Delayed events implementation. (#18938)
+    - Introduce Clock.call_when_running(...) to wrap startup code
+      in a logcontext, ensuring we can identify which server
+      generated the logs. (#18944)
+    - Introduce Clock.add_system_event_trigger(...) to wrap system
+      event callback code in a logcontext, ensuring we can identify
+      which server generated the logs. (#18945)
+  - Updates to locked dependencies
+    - Bump actions/setup-go from 5.5.0 to 6.0.0. (#18891)
+    - Bump actions/setup-python from 5.6.0 to 6.0.0. (#18890)
+    - Bump authlib from 1.6.1 to 1.6.3. (#18921)
+    - Bump jsonschema from 4.25.0 to 4.25.1. (#18897)
+    - Bump log from 0.4.27 to 0.4.28. (#18892)
+    - Bump phonenumbers from 9.0.12 to 9.0.13. (#18893)
+    - Bump pydantic from 2.11.7 to 2.11.9. (#18922)
+    - Bump serde from 1.0.219 to 1.0.223. (#18920)
+    - Bump serde_json from 1.0.143 to 1.0.145. (#18919)
+    - Bump sigstore/cosign-installer from 3.9.2 to 3.10.0. (#18917)
+    - Bump towncrier from 24.8.0 to 25.8.0. (#18894)
+    - Bump types-psycopg2 from 2.9.21.20250809 to 2.9.21.20250915.
+      (#18918)
+    - Bump types-requests from 2.32.4.20250611 to 2.32.4.20250809.
+      (#18895)
+    - Bump types-setuptools from 80.9.0.20250809 to
+      80.9.0.20250822. (#18924)
+
+-------------------------------------------------------------------
 Wed Sep 24 13:20:39 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.138.2

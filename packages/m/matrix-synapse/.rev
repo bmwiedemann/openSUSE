@@ -1446,4 +1446,14 @@ mostly-working synapse than nothing at all) and the package has been update to
     Delayed Events (MSC4140) feature. (#18926)</comment>
     <requestid>1306939</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>69dce7f90c045607b867d6049c945cc8</srcmd5>
+    <version>1.139.0</version>
+    <time>1759337855</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1308370 from darix
+
+- Update to 1.139.0</comment>
+    <requestid>1308371</requestid>
+  </revision>
 </revisionlist>
