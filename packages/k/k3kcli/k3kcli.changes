@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 01 11:54:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.5:
+    - Fix subpath field by @galal-hussein in #441
+    - Add resources sync configuration by @galal-hussein in #431
+    - Add k3k controller coverage data by @enrichman in #452
+    - Fix PVC sync and sync defaults by @galal-hussein in #458
+    - fix broken k3kcli docs path by @xelab04 in #463
+    - Add imagepullsecrets to controller, server, and agents by
+      @galal-hussein in #455
+    - Add validation for single expose mode by @enrichman in #466
+    - Splitting tests by @enrichman in #461
+
+-------------------------------------------------------------------
 Thu Aug 28 10:35:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.4:
