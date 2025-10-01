@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct  1 08:00:48 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update _service file to reflect version format
+
+-------------------------------------------------------------------
+Wed Oct 01 06:54:25 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version v0.11:
+  * ci: update {upload/download}-artifact actions to v4
+  * retsnoop: v0.11 release
+  * mass_attacher: detect bogus /proc/kallsyms data and give suggestions
+  * mass_attacher: work around kernel's objpool -ENOMEM bug for multi-kprobes
+  * logic: override BTF info for BPF helpers
+  * retsnoop: warn about entry function being non-failing
+  * mass_attacher: blacklist some more dangerous-to-attach functions
+  * libbpf: update libbpf submodule
+  * mass_attacher: extend denylist of dangerous attachable functions
+  * fnargs: follow up refactoring
+  * fnargs: add ARM64 support
+  * retsnoop: make it more apparent that function args capture is missing
+  * .gitignore: ignore compile_commands.json
+  * Replace the deprecated memmap with the maintained memmap2
+  * scripts: add CONFIG_BPF_JIT=y to kernel config for vmlinux.h generator
+
+-------------------------------------------------------------------
 Fri Jul 18 07:44:25 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Initial packaging for retsnoop v0.10.1

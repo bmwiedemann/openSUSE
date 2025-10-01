@@ -17,7 +17,7 @@
 
 
 Name:           retsnoop
-Version:        0.10.1
+Version:        0.11
 Release:        0
 Summary:        Investigate kernel error call stacks
 License:        BSD-2-Clause

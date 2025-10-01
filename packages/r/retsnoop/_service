@@ -3,8 +3,8 @@
     <param name="url">https://github.com/anakryiko/retsnoop</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.10.1</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="revision">v0.11</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+)</param>
     <param name="changesgenerate">enable</param>
     <param name="submodules">enable</param>
   </service>
@@ -13,9 +13,7 @@
     <param name="file">*.tar</param>
     <param name="compression">zst</param>
   </service>
-  <service mode="manual" name="set_version">
-    <param name="basename">retsnoop</param>
-  </service>
+  <service mode="disabled" name="set_version" />
   <service name="cargo_vendor" mode="manual">
      <param name="src">retsnoop/sidecar</param>
      <param name="compression">zst</param>
