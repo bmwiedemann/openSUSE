@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Sep 30 12:27:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix typo in License line
+- fix rpmlint
+- provide the main package, so -lang is installable
+
+-------------------------------------------------------------------
+Mon Sep 22 14:37:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging
