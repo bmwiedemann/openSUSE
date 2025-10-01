@@ -355,4 +355,18 @@
     <comment>- remove fix-CVE-2025-58058.patch, fixed upstream (forwarded request 1305110 from rrahl0)</comment>
     <requestid>1305111</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0bf5aa4fc1e9b5abb7cafb76263df3b3</srcmd5>
+    <version>1.88.3</version>
+    <time>1759337882</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.88.3:
+  * cmd/tailscale/cli: add ts2021 debug flag to set a dial plan
+  * control/controlhttp: simplify, fix race dialing, remove priority concept
+- update to version 1.88.2:
+  * k8s-operator: reset service status before append
+- require the minimum go version directly, in comparison to using the golang(API)
+  symbol (forwarded request 1308396 from rrahl0)</comment>
+    <requestid>1308397</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  1 11:55:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.88.3:
+  * cmd/tailscale/cli: add ts2021 debug flag to set a dial plan
+  * control/controlhttp: simplify, fix race dialing, remove priority concept
+- update to version 1.88.2:
+  * k8s-operator: reset service status before append
+- require the minimum go version directly, in comparison to using the golang(API)
+  symbol
+
+-------------------------------------------------------------------
 Fri Sep 12 11:11:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.88.1:
