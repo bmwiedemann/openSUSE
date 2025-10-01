@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 29 06:52:07 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add gh139257-Support-docutils-0.22.patch to fix build with latest
+  docutils (>=0.22) gh#python/cpython#139257
+
+-------------------------------------------------------------------
 Mon Sep 22 06:41:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop AppStream: this results in a different cycle than

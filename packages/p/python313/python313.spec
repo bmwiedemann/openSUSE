@@ -233,6 +233,8 @@ Patch42:        gh126985-mv-pyvenv.cfg2getpath.patch
 Patch43:        bsc1243155-sphinx-non-determinism.patch
 # PATCH-FIX-UPSTREAM gh138131-exclude-pycache-from-digest.patch bsc#1244680 daniel.garcia@suse.com
 Patch44:        gh138131-exclude-pycache-from-digest.patch
+# PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
+Patch45:        gh139257-Support-docutils-0.22.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
