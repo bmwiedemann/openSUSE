@@ -1146,4 +1146,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1307130</requestid>
   </revision>
+  <revision rev="67" vrev="6">
+    <srcmd5>ce49a24cb134a9fbc37e21fc176717a7</srcmd5>
+    <version>3.10.18</version>
+    <time>1759337781</time>
+    <user>anag_factory</user>
+    <comment>- Add gh139257-Support-docutils-0.22.patch to fix build with latest
+  docutils (&gt;=0.22) gh#python/cpython#139257</comment>
+    <requestid>1308252</requestid>
+  </revision>
 </revisionlist>

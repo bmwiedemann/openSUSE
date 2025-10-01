@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 29 06:52:07 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add gh139257-Support-docutils-0.22.patch to fix build with latest
+  docutils (>=0.22) gh#python/cpython#139257
+
+-------------------------------------------------------------------
 Thu Sep 18 08:15:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require AppStream to validate appdata file instead of deprecated
