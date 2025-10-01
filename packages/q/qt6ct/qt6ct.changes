@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 30 17:11:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.11
+Qt 6.10 support
+  * disabled cmake warnings about private Qt headers
+  * allow to override Qt plugin directory
+  * don't rely on label font for saving font settings
+  * always fallback to the QGenericUnixTheme
+
+-------------------------------------------------------------------
 Tue Mar 11 10:00:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.10

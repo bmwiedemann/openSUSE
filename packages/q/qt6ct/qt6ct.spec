@@ -1,7 +1,7 @@
 #
 # spec file for package qt6ct
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qt6ct
-Version:        0.10
+Version:        0.11
 Release:        0
 Summary:        Qt 6 Configuration Tool
 License:        BSD-2-Clause
