@@ -1,7 +1,7 @@
 #
 # spec file for package edict
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           edict
-Version:        20230511
+Version:        20251001
 Release:        0
 Summary:        The Japanese Dictionary from the EDRDG project (EDICT format)
 License:        CC-BY-SA-3.0 AND CC-BY-SA-4.0
@@ -60,7 +60,6 @@ Other formats are in the edict2 and jmdict packages.
 %package eucjp
 Summary:        The Japanese Dictionary from the EDRDG project (EDICT-EUCJP format)
 Group:          System/I18n/Japanese
-Provides:       locale(ja)
 
 %description eucjp
 JMdict/EDICT is a machine-readable multilingual Japanese dictionary.
@@ -73,7 +72,6 @@ contains the "edict"/EUC-JP variant.
 %package -n edict2
 Summary:        The Japanese Dictionary from the EDRDG project (edict2 format)
 Group:          System/I18n/Japanese
-Provides:       locale(ja)
 
 %description -n edict2
 JMdict/EDICT is a machine-readable multilingual Japanese dictionary.
@@ -88,7 +86,6 @@ of the JMdict word dictionary.
 %package -n jmdict
 Summary:        The Japanese Dictionary from the EDRDG project (JMdict format)
 Group:          System/I18n/Japanese
-Provides:       locale(ja)
 
 %description -n jmdict
 JMdict/EDICT is a machine-readable multilingual Japanese dictionary.

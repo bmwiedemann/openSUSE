@@ -127,4 +127,13 @@
     <comment>- Update to snapshot 20230511</comment>
     <requestid>1086582</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>35f4816df76f7ff248b3b421d84c830e</srcmd5>
+    <version>20251001</version>
+    <time>1759337805</time>
+    <user>anag_factory</user>
+    <comment>- Stop marking up edict as essential for locale(ja).
+- Update to snapshot 20251001</comment>
+    <requestid>1308317</requestid>
+  </revision>
 </revisionlist>
