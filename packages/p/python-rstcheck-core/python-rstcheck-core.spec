@@ -1,7 +1,7 @@
 #
 # spec file for package python-rstcheck-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-rstcheck-core
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Checks syntax of reStructuredText and code blocks nested within it
 License:        MIT
 URL:            https://github.com/rstcheck/rstcheck-core
-Source:         https://files.pythonhosted.org/packages/source/r/rstcheck-core/rstcheck-core-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/rstcheck_core/rstcheck_core-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
@@ -30,7 +31,7 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module docutils >= 0.7}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module Sphinx >= 4}
+BuildRequires:  %{python_module Sphinx >= 6}
 BuildRequires:  %{python_module pydantic >= 2}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -48,7 +49,7 @@ BuildArch:      noarch
 Checks syntax of reStructuredText and code blocks nested within it
 
 %prep
-%autosetup -p1 -n rstcheck-core-%{version}
+%autosetup -p1 -n rstcheck_core-%{version}
 
 %build
 %pyproject_wheel

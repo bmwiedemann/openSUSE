@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct  1 09:29:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.2
+  * Update configs for dev tooling (#96)
+  * Bump default python version to 3.12 (#96)
+  * Dropped support for python 3.8
+  * Added python 3.13 to tox config as preparation
+    for adding the version to the test pool. (#109)
+  * Dropped support for sphinx 5 (#110)
+  * Added python 3.13 to CI test pool (#110)
+  * Add sphinx 8 to test pool for python version > 3.9 (#111)
+- Adjust upstream source name in spec file
+- Update BuildRequires from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Mon Apr 15 09:04:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:
