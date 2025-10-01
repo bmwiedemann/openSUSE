@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 24 13:13:38 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 10.0.2:
+  * chore: bump to version 10.0.2
+  * ci: rename build.yml to ci.yml
+  * clippy: apply clippy fixes
+  * fix: canonicalize path before stripping prefix
+
+-------------------------------------------------------------------
 Wed Jun 25 13:50:51 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 10.0.1:

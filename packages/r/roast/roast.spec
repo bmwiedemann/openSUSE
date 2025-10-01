@@ -1,7 +1,7 @@
 #
 # spec file for package roast
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           roast
-Version:        10.0.1
+Version:        10.0.2
 Release:        0
 Summary:        Simpler tar archiver and extractor
 License:        MPL-2.0

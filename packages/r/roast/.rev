@@ -523,4 +523,12 @@ package called `obs-service-recomprizz`.</comment>
   * docs: add a section about reproducibility</comment>
     <requestid>1288559</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d83d2c3b770e8b924695200fa409e69c</srcmd5>
+    <version>10.0.2</version>
+    <time>1759337899</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1308419</requestid>
+  </revision>
 </revisionlist>
