@@ -16,17 +16,16 @@
 #
 
 
-%define lname   libpolymake4_14
+%define lname   libpolymake4_15
 Name:           polymake
-Version:        4.14
+Version:        4.15
 Release:        0
 Summary:        Application for studying combinatorics and geometry of convex polytopes
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://polymake.org/
 
-Source:         https://github.com/polymake/polymake/releases/download/V4.14/polymake-4.14-minimal.tar.bz2
-Source:         polymake-4.14-minimal.tar.bz2
+Source:         https://github.com/polymake/polymake/releases/download/V%version/polymake-%version-minimal.tar.bz2
 Source9:        %name-rpmlintrc
 Patch2:         sympol-system.patch
 Patch3:         perl.patch
@@ -47,7 +46,7 @@ BuildRequires:  perl(Term::ReadKey)
 BuildRequires:  perl(Term::ReadLine::Gnu)
 BuildRequires:  perl(XML::SAX)
 BuildRequires:  pkgconfig(Singular)
-BuildRequires:  pkgconfig(cddlib)
+BuildRequires:  pkgconfig(cddgmp)
 BuildRequires:  pkgconfig(flint)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(mpfr)
