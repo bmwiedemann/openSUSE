@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 30 17:35:31 UTC 2025 - david.mulder@suse.com
+
+- Update to version 1.3.0+git.0.f8cabb7:
+  * Resolve errant "Hello key missing." messages
+  * Version 1.3.0
+  * Fix group static mapping
+  * Move aad-tool idmap cache clear to the idmap cmd
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 11 updates
+  * deps(rust): bump the all-cargo-updates group with 6 updates
+  * Fix RHEL8 package signing
+  * Fix Hello PIN lookup when an alias domain
+  * Raise maximum group lookup from 100 to 999
+  * Always work with lowercase account names
+  * Revert the self-hosted runner name
+  * deps(rust): bump the all-cargo-updates group with 23 updates
+
+-------------------------------------------------------------------
 Tue Sep 02 18:58:34 UTC 2025 - david.mulder@suse.com
 
 - Update to version 1.2.2+git.0.2d04bca:
