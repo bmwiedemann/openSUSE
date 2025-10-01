@@ -350,8 +350,7 @@
     <package name="dvd+rw-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="e2fsprogs" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="edict-eucjp" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="edict2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="edict-eucjp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="eekboard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="efont-unicode-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

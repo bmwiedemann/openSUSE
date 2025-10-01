@@ -3543,6 +3543,7 @@ unsorted:
   - edge-addition-planarity-suite 
   - edge-addition-planarity-suite-devel 
   - edict 
+  - edict2 
   - edid-decode 
   - editorconfig 
   - editorconfig-checker 
@@ -11826,6 +11827,10 @@ unsorted:
   - libada15-32bit 
   - libada7 
   - libada7-32bit 
+  - libadapta-1-0 
+  - libadapta-devel 
+  - libadapta-docs 
+  - libadapta-lang 
   - libaddrxlat-devel 
   - libaddrxlat3 
   - libadios2-2_10 
@@ -13523,6 +13528,7 @@ unsorted:
   - libgnt0 
   - libgnuastro21 
   - libgnudos2 
+  - libgnunetabd0 
   - libgnunetarm2 
   - libgnunetblock0 
   - libgnunetblockgroup0 
@@ -13531,6 +13537,7 @@ unsorted:
   - libgnunetchat-devel 
   - libgnunetconsensus0 
   - libgnunetcore0 
+  - libgnunetcoreunderlaydummy0 
   - libgnunetcurl0 
   - libgnunetdatacache0 
   - libgnunetdatastore1 
@@ -13544,20 +13551,24 @@ unsorted:
   - libgnunetgtk4 
   - libgnunethello0 
   - libgnunetidentity1 
-  - libgnunetjson0 
+  - libgnunetjson3 
   - libgnunetmessenger0 
+  - libgnunetmhd0 
   - libgnunetnamecache0 
   - libgnunetnamestore0 
+  - libgnunetnat2 
   - libgnunetnatauto0 
   - libgnunetnatnew2 
   - libgnunetnse0 
   - libgnunetpeerstore0 
+  - libgnunetpils0 
   - libgnunetpq5 
   - libgnunetreclaim0 
   - libgnunetregex3 
   - libgnunetregexblock1 
   - libgnunetrest0 
   - libgnunetrevocation0 
+  - libgnunetrps0 
   - libgnunetscalarproduct0 
   - libgnunetsecretsharing0 
   - libgnunetset0 
@@ -13568,6 +13579,7 @@ unsorted:
   - libgnunettestbed0 
   - libgnunettesting3 
   - libgnunettestingarm0 
+  - libgnunettestingcore0 
   - libgnunettestingtestbed0 
   - libgnunettestingtransport0 
   - libgnunettransportapplication0 
@@ -14117,8 +14129,8 @@ unsorted:
   - libkdcraw 
   - libkdcraw-devel 
   - libkdcraw-qt6-devel 
-  - libkddockwidgets-qt6-2_2 
-  - libkddockwidgets2_2 
+  - libkddockwidgets-qt6-3 
+  - libkddockwidgets3 
   - libkdecoration2-devel 
   - libkdecorations2-5 
   - libkdecorations2-5-lang 
@@ -16347,7 +16359,7 @@ unsorted:
   - libsuperlu7 
   - libsuperlu7-32bit 
   - libsurgescript0_6_1 
-  - libsuricata8_0_0 
+  - libsuricata8_0_1 
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
@@ -23149,6 +23161,7 @@ unsorted:
   - postgresql18-orafce 
   - postgresql18-pgagent 
   - postgresql18-pgaudit 
+  - postgresql18-pgvector 
   - postgresql18-plperl 
   - postgresql18-plpython 
   - postgresql18-plr 
@@ -48129,6 +48142,7 @@ unsorted:
   - twups 
   - txt2man 
   - typelib-1_0-Accounts-1_0 
+  - typelib-1_0-Adap-1 
   - typelib-1_0-AppStream-1.0 
   - typelib-1_0-AppStream-compose-1.0 
   - typelib-1_0-AppStreamGlib-1_0 
