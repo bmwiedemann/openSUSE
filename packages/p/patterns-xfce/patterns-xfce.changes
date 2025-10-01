@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  1 12:28:26 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Correct supplements of patterns-xfce_laptop* to match with
+  patterns-desktop-mobile instead of patterns-desktop-laptop
+  (bsc#1248802)
+
+-------------------------------------------------------------------
 Thu Aug 28 07:30:11 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Move alsa-utils recommends from laptop_wayland to to basis_wayland

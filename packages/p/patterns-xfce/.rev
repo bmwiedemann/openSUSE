@@ -206,4 +206,14 @@
   provides the functionality (and it's not used as default) (forwarded request 1301743 from tiwai)</comment>
     <requestid>1301758</requestid>
   </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>53b81e88ccacbc44e55980afda909fd3</srcmd5>
+    <version>20230212</version>
+    <time>1759337906</time>
+    <user>anag_factory</user>
+    <comment>- Correct supplements of patterns-xfce_laptop* to match with
+  patterns-desktop-mobile instead of patterns-desktop-laptop
+  (bsc#1248802) (forwarded request 1308398 from tiwai)</comment>
+    <requestid>1308424</requestid>
+  </revision>
 </revisionlist>

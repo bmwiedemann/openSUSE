@@ -502,7 +502,7 @@ Provides:       pattern() = xfce_laptop
 Provides:       pattern-extends() = laptop
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 5180
-Supplements:    packageand(patterns-xfce-xfce:patterns-desktop-laptop)
+Supplements:    packageand(patterns-xfce-xfce:patterns-desktop-mobile)
 Requires:       pattern() = xfce
 Requires:       pattern() = xfce_basis
 Provides:       patterns-openSUSE-xfce_laptop = %{version}
@@ -524,7 +524,7 @@ Group:          Metapackages
 Provides:       pattern() = xfce_laptop_wayland
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 5181
-Supplements:    packageand(patterns-xfce-xfce_wayland:patterns-desktop-laptop)
+Supplements:    packageand(patterns-xfce-xfce_wayland:patterns-desktop-mobile)
 # Not extending `xfce_laptop` or `xfce` to avoid X11 pull-in
 Requires:       pattern() = xfce_wayland
 Requires:       pattern() = xfce_basis_wayland
