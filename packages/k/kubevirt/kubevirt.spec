@@ -19,7 +19,7 @@
 %define _exclusive_arch x86_64 aarch64
 
 Name:           kubevirt
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
