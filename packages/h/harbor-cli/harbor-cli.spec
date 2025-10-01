@@ -19,7 +19,7 @@
 %define executable_name harbor
 
 Name:           harbor-cli
-Version:        0.0.11
+Version:        0.0.12
 Release:        0
 Summary:        CLI for the Harbor cloud native registry
 License:        Apache-2.0
