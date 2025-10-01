@@ -224,6 +224,8 @@ Patch40:        fix-test-recursion-limit-15.6.patch
 Patch41:        bsc1243155-sphinx-non-determinism.patch
 # PATCH-FIX-UPSTREAM gh138131-exclude-pycache-from-digest.patch bsc#1244680 daniel.garcia@suse.com
 Patch44:        gh138131-exclude-pycache-from-digest.patch
+# PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
+Patch45:        gh139257-Support-docutils-0.22.patch
 #### Python 3.14 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -237,6 +239,7 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libffi)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  gdk-pixbuf-loader-rsvg
@@ -738,7 +741,7 @@ for library in \
     _testclinic _testclinic_limited xxlimited xxlimited_35 _remote_debugging \
     _testlimitedcapi _xxtestfuzz _elementtree pyexpat _md5 _sha1 \
     _interpchannels _interpqueues _interpreters \
-    _sha2 _blake2 _sha3 _uuid _zoneinfo \
+    _sha2 _blake2 _sha3 _uuid _zstd _zoneinfo \
     _testsinglephase xxsubtype
 do
     eval rm "%{buildroot}%{sitedir}/lib-dynload/$library.*"
@@ -1084,6 +1087,7 @@ fi
 %{dynlib xxsubtype}
 %{dynlib zlib}
 %{dynlib _zoneinfo}
+%{dynlib _zstd}
 # hashlib fallback modules
 %{dynlib _blake2}
 %{dynlib _md5}

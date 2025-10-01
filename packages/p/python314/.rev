@@ -2599,4 +2599,15 @@
 </comment>
     <requestid>1305881</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>58fdf6497b242405fa2643e5b1b6f076</srcmd5>
+    <version>3.14.0~rc3</version>
+    <time>1759337783</time>
+    <user>anag_factory</user>
+    <comment>- Add _zstd to the built package and libzstd as BuildRequries, boo#1250659
+
+- Add gh139257-Support-docutils-0.22.patch to fix build with latest
+  docutils (&gt;=0.22) gh#python/cpython#139257</comment>
+    <requestid>1308302</requestid>
+  </revision>
 </revisionlist>
