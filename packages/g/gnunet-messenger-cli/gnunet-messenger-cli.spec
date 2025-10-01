@@ -17,7 +17,7 @@
 
 
 Name:           gnunet-messenger-cli
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        Terminal application using the GNUnet Messenger service
 License:        AGPL-3.0-or-later
@@ -31,7 +31,7 @@ Patch0:         exit_curses.patch
 %endif
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gnunetchat) >= 0.5.0
+BuildRequires:  pkgconfig(gnunetchat) >= 0.6.0
 BuildRequires:  pkgconfig(gnunetutil)
 BuildRequires:  pkgconfig(ncurses)
 
@@ -47,6 +47,9 @@ A terminal application using the GNUnet Messenger service.
 
 %install
 %meson_install
+
+%check
+%meson_test
 
 %files
 %license COPYING

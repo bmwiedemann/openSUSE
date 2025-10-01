@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 26 18:55:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 0.4.0:
+  * Fixes compatibility with libgnunetchat 0.6.0
+  * Improves dialogs with text prompts
+  * Add option to open notes chat
+
+-------------------------------------------------------------------
 Mon Jan 13 22:51:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.3.1:
