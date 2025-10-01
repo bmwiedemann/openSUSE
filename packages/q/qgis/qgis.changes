@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 30 12:56:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python3-packaging to eliminate error during startup
+  (boo#1250676).
+
+-------------------------------------------------------------------
 Fri Aug 15 16:12:21 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.44.2

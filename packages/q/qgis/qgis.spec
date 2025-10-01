@@ -1,7 +1,7 @@
 #
 # spec file for package qgis
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -142,6 +142,7 @@ Requires:       %{mypython}-OWSLib
 Requires:       %{mypython}-PyYAML
 Requires:       %{mypython}-Pygments
 Requires:       %{mypython}-numpy
+Requires:       %{mypython}-packaging
 Requires:       %{mypython}-psycopg2
 Requires:       pdal
 # Those are not picked by obs
