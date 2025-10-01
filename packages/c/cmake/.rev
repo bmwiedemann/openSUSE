@@ -2441,4 +2441,15 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>1303596</requestid>
   </revision>
+  <revision rev="271" vrev="2">
+    <srcmd5>eb6897e08f94fffd29319b702fdad827</srcmd5>
+    <version>4.1.1</version>
+    <time>1759337732</time>
+    <user>anag_factory</user>
+    <comment>- add avoid-using-undocumented-type.patch to fix build with curl
+  8.16
+- disable lto as there are two byacc definitions in two different
+  compilation units and they conflict.</comment>
+    <requestid>1308113</requestid>
+  </revision>
 </revisionlist>

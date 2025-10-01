@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 30 07:25:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add avoid-using-undocumented-type.patch to fix build with curl
+  8.16
+- disable lto as there are two byacc definitions in two different
+  compilation units and they conflict.
+
+-------------------------------------------------------------------
 Fri Aug 29 07:59:32 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Update to 4.1.1
@@ -60,9 +68,9 @@ Mon Jun 16 21:14:47 UTC 2025 - Christoph G <foss@grueninger.de>
 
 -------------------------------------------------------------------
 Wed May 28 18:49:13 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
- 
+
  - Replace usage of %jobs for reproducible builds (boo#1237231)
- 
+
 -------------------------------------------------------------------
 Tue May 20 20:45:39 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 

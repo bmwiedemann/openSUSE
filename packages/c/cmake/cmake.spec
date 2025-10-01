@@ -1,7 +1,7 @@
 #
 # spec file for package cmake
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -69,6 +69,7 @@ Source99:       README.SUSE
 Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
+Patch2:         avoid-using-undocumented-type.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -159,8 +160,8 @@ export PATH+=":%{_qt6_libexecdir}"
 %if %{with mini}
 # this is serial, so it takes too much time for the mini package
 %define _find_debuginfo_dwz_opts %{nil}
-%define _lto_cflags %{nil}
 %endif
+%define _lto_cflags %{nil}
 export CFLAGS="%{optflags}"
 export CXXFLAGS="$CFLAGS"
 %if %{with gui}
