@@ -7,9 +7,8 @@ description_paragraphs: 4
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
-#  bar.patch:
+patches:
+  0001-Replace-deprecated-Mojo-File-spew-with-spurt.patch: -p1 PATCH-FIX-UPSTREAM https://github.com/jhthorsen/mojolicious-plugin-webpack/pull/17
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-

@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>997343</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>96895fe849529524ae1dae8f48622174</srcmd5>
+    <version>1.02</version>
+    <time>1759337893</time>
+    <user>anag_factory</user>
+    <comment>Add 0001-Replace-deprecated-Mojo-File-spew-with-spurt.patch. See https://github.com/jhthorsen/mojolicious-plugin-webpack/pull/17</comment>
+    <requestid>1308408</requestid>
+  </revision>
 </revisionlist>

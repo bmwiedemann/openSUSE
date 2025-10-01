@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 30 20:24:13 UTC 2025 - Oliver Kurz <okurz@suse.com>
+
+- Add 0001-Replace-deprecated-Mojo-File-spew-with-spurt.patch. See
+  https://github.com/jhthorsen/mojolicious-plugin-webpack/pull/17
+
+-------------------------------------------------------------------
 Sat Jul 30 03:07:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.02

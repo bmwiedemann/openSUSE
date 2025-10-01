@@ -25,6 +25,9 @@ Summary:        Mojolicious ♥ Webpack
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JH/JHTHORSEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
+# PATCH-FIX-UPSTREAM https://github.com/jhthorsen/mojolicious-plugin-webpack/pull/17
+Patch0:         0001-Replace-deprecated-Mojo-File-spew-with-spurt.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -50,7 +53,7 @@ Webpack.
 * 2.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
