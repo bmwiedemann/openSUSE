@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 26 18:59:20 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.11.0
+  * Utilize new features from libgnunetchat 0.6.0
+  * Implement private notes chat
+  * Update symbolic icons
+  * Adjust appdata and user interface
+  * Fix thread locking issues
+  * Improve readability of invitations
+
+-------------------------------------------------------------------
 Sat Jan 11 09:36:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.10.2:

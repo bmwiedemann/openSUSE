@@ -17,7 +17,7 @@
 
 
 Name:           gnunet-messenger-gtk
-Version:        0.10.2
+Version:        0.11.0
 Release:        0
 Summary:        GUI for GNUnet Messenger service
 License:        AGPL-3.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  libunistring-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gnunetchat) >= 0.5.1
+BuildRequires:  pkgconfig(gnunetchat) >= 0.6.0
 BuildRequires:  pkgconfig(gnunetutil)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-rtp-1.0)
