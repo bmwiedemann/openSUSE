@@ -1,7 +1,7 @@
 #
 # spec file for package python-hiredis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hiredis
-Version:        2.3.2
+Version:        3.2.1
 Release:        0
 Summary:        Python wrapper for hiredis
 License:        BSD-3-Clause
@@ -27,18 +27,16 @@ Source:         https://files.pythonhosted.org/packages/source/h/hiredis/hiredis
 # PATCH-FIX-UPSTREAM drop-vendor-sources.patch gh#redis/hiredis-py#90 mcepl@suse.com
 # Allow to use platform hiredis libs on build
 Patch0:         drop-vendor-sources.patch
-# PATCH-FIX-UPSTREAM 159-sdsalloc-to-alloc.patch gh#redis/hiredis-py#158 mcepl@suse.com
-# Don't use sdsalloc, we actually don't need it
-Patch1:         159-sdsalloc-to-alloc.patch
 # PATCH-FIX-UPSTREAM 161-use-system-hiredis.patch gh#redis/hiredis-py#158 mcepl@suse.com
 # use system hiredis instead
 Patch2:         161-use-system-hiredis.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  hiredis-devel >= 1.0.0
+BuildRequires:  hiredis-devel >= 1.3.0
 BuildRequires:  python-rpm-macros
 %python_subpackages
 
@@ -58,9 +56,8 @@ rm -r vendor/hiredis
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-# %%check
-# export PYTHONPATH=%%{buildroot}%%{$python_sitearch}
-# %%python_exec test.py
+%check
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE
