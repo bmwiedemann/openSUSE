@@ -16,7 +16,7 @@
 #
 
 
-%define gfx_version 580.82.07
+%define gfx_version 580.95.05
 %define cuda_version 580.82.07
 
 %global flavor @BUILD_FLAVOR@%{?nil}
@@ -57,12 +57,13 @@ License:        GPL-2.0-only AND MIT
 Group:          System/Kernel
 URL:            https://github.com/NVIDIA/open-gpu-kernel-modules/
 #Source0:        https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{version}.tar.gz#/open-gpu-kernel-modules-%{version}.tar.gz
-Source0:        open-gpu-kernel-modules-%{version}.tar.gz
+Source0:        open-gpu-kernel-modules-%{version}.tar.xz
 # This is defined at build, not for 'osc service run download_files` or
 # factory_auto. This both sources are seen outside of the build but only
 # the matching one will be included in the srpm for the respective flavor.
 %if %{undefined linux_arch}
-Source16:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{cuda_version}.tar.gz#/open-gpu-kernel-modules-%{cuda_version}.tar.gz
+#Source16:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{cuda_version}.tar.xz#/open-gpu-kernel-modules-%{cuda_version}.tar.xz
+Source16:       open-gpu-kernel-modules-%{cuda_version}.tar.xz
 Source18:       pci_ids-%{cuda_version}
 %endif
 Source1:        my-find-supplements
@@ -113,7 +114,8 @@ ExclusiveArch:  x86_64 aarch64
 %define _sourcedir /home/abuild/rpmbuild/SOURCES
 %endif
 
-%(sed -e '/^%%post\>/ r %_sourcedir/kmp-post.sh' %kmp_template_name > %_builddir/nvidia-kmp-template)
+# also get rid of multiversion (jsc#PED-12049)
+%(sed -e '/^%%post\>/ r %_sourcedir/kmp-post.sh' %kmp_template_name | grep -v   -e ^Conflicts: -e "^Provides:[[:space:]]*multiversion.*" > %_builddir/nvidia-kmp-template)
 %(echo "%triggerin -p /bin/bash -n %%{-n*}-kmp-%1 -- nvidia-common-G06 = %{version}"      >> %_builddir/nvidia-kmp-template)
 %(cat %_sourcedir/kmp-trigger.sh                                                          >> %_builddir/nvidia-kmp-template)
 #  NOTE: kernel_module_package macro affects preference among nvidia, nvidia-open
@@ -208,7 +210,8 @@ done
 export BRP_PESIGN_FILES="*.ko"
 export BRP_PESIGN_COMPRESS_MODULE=%{compress_modules}
 export INSTALL_MOD_PATH=%{buildroot}
-export INSTALL_MOD_DIR=%{kernel_module_package_moddir}/%{name}-%{version}
+# back to updates/ subdir (jsc#PED-12049)
+export INSTALL_MOD_DIR=%{kernel_module_package_moddir}
 for flavor in %{flavors_to_build}; do
 	pushd obj/$flavor
 	if [ -d /usr/src/linux-$flavor ]; then

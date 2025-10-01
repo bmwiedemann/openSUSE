@@ -884,4 +884,21 @@
   in order to fix PCI HW Supplements for TW (boo#1249814)</comment>
     <requestid>1305387</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>c7639b863e3148e2e8ea93ac56d2d541</srcmd5>
+    <version>580.95.05</version>
+    <time>1759337839</time>
+    <user>anag_factory</user>
+    <comment>- fixed 'osc service run download_files'
+
+- update to version 580.95.05 (boo#1250536)
+
+- get rid of multiversion for the KMPs, since it only brought/brings
+  us trouble and no benefit at all (jsc#PED-12049)
+  * remove any ^Conflicts and ^Provides: multiversion from
+    /usr/lib/rpm/kernel-module-subpackage
+  * set INSTALL_MOD_DIR back to %{kernel_module_package_moddir}, i.e.
+    updates/ subdir</comment>
+    <requestid>1308347</requestid>
+  </revision>
 </revisionlist>

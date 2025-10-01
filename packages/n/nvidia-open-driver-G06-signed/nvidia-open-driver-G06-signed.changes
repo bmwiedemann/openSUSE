@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  1 08:54:42 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed 'osc service run download_files'
+
+-------------------------------------------------------------------
+Thu Sep 25 20:55:45 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 580.95.05 (boo#1250536)
+
+-------------------------------------------------------------------
+Tue Sep 23 09:37:01 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- get rid of multiversion for the KMPs, since it only brought/brings
+  us trouble and no benefit at all (jsc#PED-12049)
+  * remove any ^Conflicts and ^Provides: multiversion from
+    /usr/lib/rpm/kernel-module-subpackage
+  * set INSTALL_MOD_DIR back to %{kernel_module_package_moddir}, i.e.
+    updates/ subdir
+
+-------------------------------------------------------------------
 Wed Sep 17 12:49:38 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - pesign-spec-macros: added definition for %__kernel_supplements,
