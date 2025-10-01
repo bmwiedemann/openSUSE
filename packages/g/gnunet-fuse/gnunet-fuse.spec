@@ -1,7 +1,7 @@
 #
 # spec file for package gnunet-fuse
 #
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gnunet-fuse
-Version:        0.23.0
+Version:        0.25.0
 Release:        0
 Summary:        GNUnet FUSE interface
 License:        GPL-3.0-only
