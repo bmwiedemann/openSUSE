@@ -1,7 +1,7 @@
 #
 # spec file for package kddockwidgets
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,17 +24,18 @@
 %define qt6 1
 %define pkg_suffix -qt6
 %endif
-%define soversion 2_2
+%define soversion 3
 %define rname kddockwidgets
 Name:           kddockwidgets%{?pkg_suffix}
-Version:        2.2.5
+Version:        2.3.0
 Release:        0
 Summary:        Qt dock widget library, suitable for replacing QDockWidget
 License:        GPL-2.0-only OR GPL-3.0-only
 URL:            https://www.kdab.com/development-resources/qt-tools/kddockwidgets
 Source:         https://github.com/KDAB/KDDockWidgets/releases/download/v%{version}/%{rname}-%{version}.tar.gz
-Source1:        https://github.com/KDAB/KDDockWidgets/releases/download/v%{version}/%{rname}-%{version}.tar.gz.asc
-Source2:        kddockwidgets.keyring
+# kddockwidgets 2.3.0 doesn't have its signature file
+# Source1:        https://github.com/KDAB/KDDockWidgets/releases/download/v%%{version}/%%{rname}-%%{version}.tar.gz.asc
+# Source2:        kddockwidgets.keyring
 BuildRequires:  cmake(nlohmann_json)
 %if 0%{?qt5}
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -59,8 +60,7 @@ BuildRequires:  cmake(Qt6Widgets)
 %endif
 %if 0%{?suse_version} > 1500
 # fmt is too old in 15.5/15.6, spdlog can't be used
-# FIXME: 2024/07/24: disabled until https://github.com/KDAB/KDDockWidgets/issues/520 is fixed
-# BuildRequires:  cmake(spdlog) >= 1.8.0
+BuildRequires:  cmake(spdlog) >= 1.8.0
 %else
 # Full c++-17 support needed
 BuildRequires:  gcc13-PIE
@@ -118,12 +118,12 @@ export CXX=g++-13
 %endif
 
 %if 0%{?qt5}
-%cmake %{?extra_opts}
+%cmake  -DKDDockWidgets_QT6:BOOL=OFF %{?extra_opts}
 %cmake_build
 %endif
 
 %if 0%{?qt6}
-%cmake_qt6 -DKDDockWidgets_QT6:BOOL=ON %{?extra_opts}
+%cmake_qt6 %{?extra_opts}
 %{qt6_build}
 %endif
 
