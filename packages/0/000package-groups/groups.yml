@@ -44,10 +44,12 @@ common_locks:
   - libLLVM15: [locked]
   - libLLVM16: [locked]
   - libLLVM19: [locked]
+  - libLLVM20: [locked]
   - clang17: [locked]
   - clang20: [locked]
+  - clang21: [locked]
   - gnome-backgrounds: [locked]
-  - gcc12: [locked]
+  - gcc13: [locked]
   - gcc14: [locked]
   - postgresql16-llvmjit: [locked]
   - postgresql17-llvmjit: [locked]
@@ -278,6 +280,9 @@ dvd:
 
   # https://bugzilla.opensuse.org/show_bug.cgi?id=1249231
   - fcitx-sunpinyin: [locked]
+
+  # Block jmdict - only on the DVD due to supplements: locale(ja); saves 15MB
+  - jmdict: [locked]
 
   ## and more space needed - dimstar - 20220112
   - gutenprint: [locked]
