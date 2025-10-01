@@ -512,4 +512,20 @@
   * Update golang.org/x/net from v0.37.0 to v0.38.0 (forwarded request 1302396 from glaubitz)</comment>
     <requestid>1302400</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a8d527eccc3440e5ce51326b4ad4414b</srcmd5>
+    <version>3.3.3185.0</version>
+    <time>1759337879</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.3185.0
+  * Add IMDS retry count to account for EC2 droplet refresh
+  * Fix duplicate uid error logging in MDS module
+  * Update aws:Domainjoin plugin logging from Log4Net to NLog
+  * Upgrade Go version to 1.24.7
+  * Update github.com/go-git/go-git/v5 to 5.15.0
+  * Update golang.org/x/crypto to v0.37.0
+  * Update golang.org/x/net to v0.39.0
+  * Update golang.org/x/sys to v0.32.0 (forwarded request 1308352 from glaubitz)</comment>
+    <requestid>1308394</requestid>
+  </revision>
 </revisionlist>
