@@ -1,7 +1,7 @@
 #
 # spec file for package gpg2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -133,8 +133,8 @@ install -m 644 doc/examples/gpgconf.conf %{buildroot}%{_sysconfdir}/gnupg
 # delete to prevent fdupes from creating cross-partition hardlink
 rm -rf %{buildroot}%{_docdir}/gpg2/examples/gpgconf.conf
 
-# remove info dir
-rm %{buildroot}%{_infodir}/dir
+# remove info dir if exists
+rm -f %{buildroot}%{_infodir}/dir
 
 # compat symlinks
 ln -sf gpg %{buildroot}%{_bindir}/gpg2

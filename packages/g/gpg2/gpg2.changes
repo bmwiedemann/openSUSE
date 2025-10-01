@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 30 10:53:09 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the infodir directory if it exists.
+
+-------------------------------------------------------------------
 Tue Sep  2 15:19:25 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.5.12:
