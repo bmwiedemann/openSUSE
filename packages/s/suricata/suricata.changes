@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 30 13:11:00 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Syncronize suricata.keyring with the published version.
+
+-------------------------------------------------------------------
+Sat Sep 27 17:41:23 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Remove Group: spec property
+
+-------------------------------------------------------------------
+Fri Sep 26 12:49:01 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 8.0.1:
+  * Various security, performance, accuracy, and stability issues
+    have been fixed.
+  * CVE-2025-59147: HIGH
+  * CVE-2025-59148: HIGH
+  * CVE-2025-59149: MODERATE
+  * CVE-2025-59150: HIGH
+- The OISF signing key has been updated to have a later expiration
+  date.
+- https://forum.suricata.io/t/suricata-8-0-1-and-7-0-12-released/6018
+
+-------------------------------------------------------------------
 Fri Jul 18 11:26:30 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Enable source package signature verification

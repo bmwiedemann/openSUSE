@@ -7,4 +7,25 @@
     <comment>Suricata is a network Intrusion Detection System, Intrusion Prevention System and Network Security Monitoring engine developed by the OISF and the Suricata community.</comment>
     <requestid>1295973</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5bb04628658323985230d5aad3367920</srcmd5>
+    <version>8.0.1</version>
+    <time>1759337753</time>
+    <user>anag_factory</user>
+    <comment>- Syncronize suricata.keyring with the published version.
+
+- Remove Group: spec property
+
+- Update to version 8.0.1:
+  * Various security, performance, accuracy, and stability issues
+    have been fixed.
+  * CVE-2025-59147: HIGH
+  * CVE-2025-59148: HIGH
+  * CVE-2025-59149: MODERATE
+  * CVE-2025-59150: HIGH
+- The OISF signing key has been updated to have a later expiration
+  date.
+- https://forum.suricata.io/t/suricata-8-0-1-and-7-0-12-released/6018</comment>
+    <requestid>1308215</requestid>
+  </revision>
 </revisionlist>

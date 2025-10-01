@@ -16,7 +16,7 @@
 #
 
 
-%define soname 8_0_0
+%define soname 8_0_1
 
 # Handling libxdp support
 %if (0%{?suse_version} <= 1500) && (0%{?sle_version} <= 150500) && (0%{?is_opensuse})
@@ -47,15 +47,14 @@
 %endif
 
 Name:           suricata
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        Open Source Next Generation Intrusion Detection and Prevention Engine
 License:        GPL-2.0-only
 URL:            https://www.openinfosecfoundation.org/
 Source0:        %{URL}/download/%{name}-%{version}.tar.gz
 Source1:        %{URL}/download/%{name}-%{version}.tar.gz.sig
-# See https://keyserver.ubuntu.com/pks/lookup?search=2BA9C98CCDF1E93A&fingerprint=on&op=index
-Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xb36fdaf2607e10e8ffa89e5e2ba9c98ccdf1e93a#/%{name}.keyring
+Source2:        https://www.openinfosecfoundation.org/downloads/OISF.pub#/%{name}.keyring
 Source3:        suricata.service
 Source4:        suricata.sysconfig
 Source5:        suricata.logrotate
@@ -127,7 +126,6 @@ Consortium Members.
 
 %package -n libsuricata%{soname}
 Summary:        Open Source Next Generation Intrusion Detection and Prevention Engine Library
-Group:          Development/Libraries/C and C++
 
 %description -n libsuricata%{soname}
 The Suricata Engine is an Open Source Next Generation Intrusion Detection and
