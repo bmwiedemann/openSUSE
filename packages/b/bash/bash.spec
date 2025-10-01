@@ -1,7 +1,7 @@
 #
 # spec file for package bash
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,7 +93,6 @@ BuildRequires:  fdupes
 BuildRequires:  glibc-locale
 BuildRequires:  glibc-locale-base
 BuildRequires:  makeinfo
-BuildRequires:  patchutils
 BuildRequires:  pkgconfig
 BuildRequires:  screen
 BuildRequires:  sed
@@ -250,16 +249,8 @@ set +x
 for patch in ../bash-%{bversion}-patches/*-*[0-9]; do
     test -e $patch || break
 
-    let level=0 || true
-    file=$(lsdiff --files=1 $patch)
-    if test ! -e $file ; then
-	file=${file#*/}
-	let level++ || true
-    fi
-    test -e $file || exit 1
-    sed -ri '/^\*\*\* \.\./{ s@\.\./bash-%{bversion}[^/]*/@@ }' $patch
     echo Patch $patch
-    patch -s -p$level < $patch
+    patch -s -p0 < $patch
 done
 set -x
 %patch -P1   -b .manual

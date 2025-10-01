@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 29 15:32:45 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- DRop use of patchutils: the patch tarball seems to contain only
+  patches to be applied -p0. This allows us to shorten the build
+  cycle.
+
+-------------------------------------------------------------------
 Fri Aug  1 06:00:45 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Take refreshed source tar ball with uptodate (g)po files

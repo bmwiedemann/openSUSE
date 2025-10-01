@@ -2126,4 +2126,12 @@ g. Print an error message if a regular expression used with [[ fails to compile.
 h. The `umask' builtin now has additional features for full POSIX conformance.</comment>
     <requestid>1296985</requestid>
   </revision>
+  <revision rev="201" vrev="2">
+    <srcmd5>a653ed8eef9a40665ea1626a7dff602f</srcmd5>
+    <version>5.3.MACRO</version>
+    <time>1759337734</time>
+    <user>anag_factory</user>
+    <comment>To discuss: this would simplyfy our Bootstrap cycle; patchutils just gains new deps on xmlto, which pulls docbook-xsl, docbook-4, libxslt, sgml-skel, and unzip into ring0 - for something we might easily avoid (forwarded request 1307921 from dimstar)</comment>
+    <requestid>1308134</requestid>
+  </revision>
 </revisionlist>
