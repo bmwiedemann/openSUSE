@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 30 16:13:28 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759248257.70b23b32:
+  * Increase number of successful checks in Mergify config again
+  * Disable Helm Chart CI checks temporarily
+  * Consider all jobs for cleanup, not just jobs that were executed
+  * Verify job deletion when dependent job present
+
+-------------------------------------------------------------------
 Mon Sep 29 15:13:06 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1759149505.49c40b0b:
