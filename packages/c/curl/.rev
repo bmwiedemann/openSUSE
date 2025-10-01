@@ -2034,4 +2034,41 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>1294773</requestid>
   </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>622f3ee36eb524349f54f0ad0c306b2b</srcmd5>
+    <version>8.16.0</version>
+    <time>1759337730</time>
+    <user>anag_factory</user>
+    <comment>
+- curl: http: handle user-defined connection headers [bsc#1249448]
+  * Add curl-handle_user-defined_connection_headers.patch
+
+- Update to 8.16.0:
+  * Security fixes:
+    - [bsc#1249191, CVE-2025-9086] Out of bounds read for cookie path
+    - [bsc#1249348, CVE-2025-10148] Predictable WebSocket mask
+  * Changes:
+    - curl: add --follow and --out-null
+    - curl: add --parallel-max-host to limit concurrent connections per host
+    - curl: make --retry-delay and --retry-max-time accept decimal seconds
+    - hostip: cache negative name resolves
+    - ip happy eyeballing: keep attempts running
+    - multi: add curl_multi_get_offt
+    - multi: add CURLMOPT_NETWORK_CHANGED to signal network changed
+    - netrc: use the NETRC environment variable (first) if set
+    - smtp: allow suffix behind a mail address for RFC 3461
+    - tls: make default TLS version be minimum 1.2
+    - tool_getparam: add support for `--longopt=value`
+    - vquic: drop msh3
+    - websocket: support CURLOPT_READFUNCTION
+  * Bugfixes:
+    - _PROTOCOLS.md: mention file:// is only for absolute paths
+    - acinclude: --with-ca-fallback only works with OpenSSL
+    - bufq: add integer overflow checks before chunk allocations
+    - cmake: fix `ENABLE_UNIX_SOCKETS=OFF` with pre-fill enabled on unix
+    - cmake: fix setting LTO properties on the wrong targets
+    - configure: tidy up internal names in ngtcp2 ossl detection logic
+    - connectdata: remove primary+secondary ip_quadruple</comment>
+    <requestid>1307305</requestid>
+  </revision>
 </revisionlist>
