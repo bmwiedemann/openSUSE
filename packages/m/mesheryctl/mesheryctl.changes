@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Oct  1 12:52:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.134:
+  * 30f8215 [mesheryctl] chore: remove unused path from system
+    check operator: formatting
+  * a9651ce [mesheryctl] Remove redundant error guard clause.
+  * df455b5 [mesheryctl] chore: remove unused path from system
+    check operator
+  * 96355ed [mesheryctl] chore: system check operator: add check
+    that custom resource broker contains status.endpoint object
+  * 828b7a3 [mesheryctl] chore: system check operator: add check
+    that custom resource broker contains status.endpoint object:
+    move values to consts
+  * 3a5df0f [mesheryctl] chore: system check operator: add check
+    that custom resource broker contains status.endpoint object:
+    update context
+  * 91e6072 [mesheryctl] chore: system check operator: add check
+    that custom resource broker contains status.endpoint object:
+    update error handling
+  * fe69702 chore(mesheryctl): enhance experimental workspace
+    create error
+  * debec79 chore(mesheryctl): use schema driven for workspace
+    create subcommand
+  * 3adfef8 fix defaults
+  * 90b2ae8 fix get provider properties
+  * 502ad40 fix helm commands
+  * 944561a fix helm commands
+  * 958e1ce fix lint
+  * 0d5f5a8 fix resetting capabilies and going into broken state
+    and add error fallback
+  * f3bdf84 fix wrong hyperlink in the registry doc
+  * 36d6223 fix(mesheryctl): fix system command test failing
+
+-------------------------------------------------------------------
 Thu Sep 18 09:10:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.133:
