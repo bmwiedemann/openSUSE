@@ -1,7 +1,7 @@
 #
 # spec file for package gnunet-gtk
 #
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 4
 Name:           gnunet-gtk
-Version:        0.23.1
+Version:        0.24.0
 Release:        0
 Summary:        GTK interface to GNUnet
 License:        GPL-3.0-or-later
@@ -26,14 +26,13 @@ URL:            https://www.gnunet.org/
 Source0:        https://ftp.gnu.org/pub/gnu/gnunet/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/gnunet/%{name}-%{version}.tar.gz.sig
 # https://gnunet.org/~schanzen/3D11063C10F98D14BD24D1470B0998EF86F59B6A
-# also https://grothoff.org/christian/
-Source2:        https://grothoff.org/christian/grothoff.asc#/%{name}.keyring
+Source2:        %{name}.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.8
-BuildRequires:  pkgconfig(gnunetcore) >= 0.23
+BuildRequires:  pkgconfig(gnunetcore)
 BuildRequires:  pkgconfig(gnunetfs)
 BuildRequires:  pkgconfig(gnunetstatistics)
-BuildRequires:  pkgconfig(gnunetutil) >= 0.9.0
+BuildRequires:  pkgconfig(gnunetutil)
 BuildRequires:  pkgconfig(gtk+-3.0)
 Requires:       gnunet
 
@@ -78,11 +77,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/gnunet-fs-gtk
 %{_bindir}/gnunet-setup
 %{_bindir}/gnunet-statistics-gtk
+%{_bindir}/gnunet-namestore-gtk
 %{_datadir}/gnunet
 %{_mandir}/man1/*.1%{?ext_man}
 %{_datadir}/applications/*.desktop
 %{_datadir}/gnunet-gtk
 %{_datadir}/icons/hicolor/
+%{_libdir}/gnunet-gtk
 
 %files -n libgnunetgtk%{sover}
 %license COPYING
