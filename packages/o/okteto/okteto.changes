@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 01 08:04:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.12.0:
+  * New Feature
+    - Jlo/update syncthing to 2.0.x by @jLopezbarb in #4774
+    - feat: support endpoint_mode by @jpf-okteto in #4783
+    - Add GraphQL knownHostsConfig support for remote deployments
+      by @oktetobot in #4781
+  * Bug Fix
+    - fix: wait for sse by @jLopezbarb in #4760
+
+-------------------------------------------------------------------
 Thu Sep 18 05:27:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.0:

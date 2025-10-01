@@ -17,7 +17,7 @@
 
 
 Name:           okteto
-Version:        3.11.0
+Version:        3.12.0
 Release:        0
 Summary:        Develop your applications directly in your Kubernetes Cluster
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         okteto-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.18
+BuildRequires:  go1.24 >= 1.24.7
 BuildRequires:  zsh
 
 %description
