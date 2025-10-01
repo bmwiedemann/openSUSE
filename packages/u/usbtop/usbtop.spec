@@ -1,7 +1,7 @@
 #
 # spec file for package usbtop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,6 @@ URL:            https://github.com/aguinet/usbtop
 Source0:        https://github.com/aguinet/usbtop/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_atomic-devel >= 1.48.0
-BuildRequires:  libboost_system-devel >= 1.48.0
 BuildRequires:  libboost_thread-devel >= 1.48.0
 BuildRequires:  libpcap-devel
 

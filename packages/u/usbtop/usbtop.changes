@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 23 15:29:45 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- remove unneeded boost dependencies
+
+-------------------------------------------------------------------
+Tue Sep 23 15:57:08 CEST 2025 - aschnell@suse.com
+
+- libboost_system was removed upstream (bsc#1249900)
+
+-------------------------------------------------------------------
 Fri Mar 21 23:55:40 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
