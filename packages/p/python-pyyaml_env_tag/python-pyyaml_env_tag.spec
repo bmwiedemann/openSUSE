@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyyaml_env_tag
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyyaml_env_tag
-Version:        0.1
+Version:        1.1
 Release:        0
 Summary:        A custom YAML tag for referencing environment variables in YAML files
 License:        MIT
@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyyaml_env_tag/
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
@@ -37,7 +39,7 @@ BuildArch:      noarch
 A custom YAML tag for referencing environment variables in YAML files.
 
 %prep
-%setup -q -n pyyaml_env_tag-%{version}
+%autosetup -n pyyaml_env_tag-%{version}
 
 %build
 %pyproject_wheel
@@ -45,15 +47,15 @@ A custom YAML tag for referencing environment variables in YAML files.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/__pycache__
 
 %check
-%pyunittest -v
+%pytest
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/pyyaml_env_tag*
 %{python_sitelib}/yaml_env_tag*
-%{python_sitelib}/__pycache__/yaml_env_tag*
 
 %changelog
