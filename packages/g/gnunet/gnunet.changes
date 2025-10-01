@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 25 18:36:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNUnet 0.25.1:
+  * util: Change to assigned HPKE codepoint for DHKEM+Elligator.
+  * util: Removed authkem from HPKE implementation
+  * core: New AKE implementation.
+  * pils: New service.
+  * gns: Various improvements to performance and DNS migration tooling.
+  * identity: Delete previously removed GNUNET_IDENTITY_get/set API from header
+  * libmhd: Fix critical bug in compression implementation.
+  * JSON: split off libgnunetmhd from libgnunetjson, renaming
+    various GNUNET_JSON_-symbols to GNUNET_MHD_-.
+    Removes dependency of libgnunetjson on libmicrohttpd
+  * bug fixes
+- switch to meson build system
+- add gnunet-0.25.1-underlaydummy-soname.patch
+
+-------------------------------------------------------------------
 Tue Dec 17 16:58:55 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNUnet 0.23.1:

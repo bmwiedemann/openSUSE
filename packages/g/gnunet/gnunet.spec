@@ -1,9 +1,9 @@
 #
 # spec file for package gnunet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 
 Name:           gnunet
-Version:        0.23.1
+Version:        0.25.1
 Release:        0
 Summary:        Security focused Peer-to-Peer Framework
 License:        AGPL-3.0-or-later
@@ -28,14 +28,14 @@ URL:            https://www.gnunet.org/
 Source0:        https://ftp.gnu.org/pub/gnu/gnunet/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/gnunet/%{name}-%{version}.tar.gz.sig
 # https://gnunet.org/~schanzen/3D11063C10F98D14BD24D1470B0998EF86F59B6A
-# also https://grothoff.org/christian/
-Source2:        https://grothoff.org/christian/grothoff.asc#/%{name}.keyring
+Source2:        %{name}.keyring
+Patch0:         gnunet-0.25.1-underlaydummy-soname.patch
 BuildRequires:  libtool >= 2.2
 BuildRequires:  libunistring-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  python3-Sphinx
 BuildRequires:  sysuser-tools
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gnutls) >= 3.2.12
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libcurl) >= 7.34.0
@@ -67,12 +67,14 @@ GNUnet is a part of the GNU project (https://www.gnu.org/).
 # Will be run through two generator macros: once in -devel
 # and again to generate individual packages
 %define gnunet_libs \
+%gnunet_libpackage -l gnunetabd -s 0\
 %gnunet_libpackage -l gnunetarm -s 2\
 %gnunet_libpackage -l gnunetblockgroup -s 0\
 %gnunet_libpackage -l gnunetblock -s 0\
 %gnunet_libpackage -l gnunetcadet -s 7\
 %gnunet_libpackage -l gnunetconsensus -s 0\
 %gnunet_libpackage -l gnunetcore -s 0\
+%gnunet_libpackage -l gnunetcoreunderlaydummy -s 0\
 %gnunet_libpackage -l gnunetcurl -s 0\
 %gnunet_libpackage -l gnunetdatacache -s 0\
 %gnunet_libpackage -l gnunetdatastore -s 1\
@@ -85,20 +87,24 @@ GNUnet is a part of the GNU project (https://www.gnu.org/).
 %gnunet_libpackage -l gnunetgns -s 0\
 %gnunet_libpackage -l gnunethello -s 0\
 %gnunet_libpackage -l gnunetidentity -s 1\
-%gnunet_libpackage -l gnunetjson -s 0\
+%gnunet_libpackage -l gnunetjson -s 3\
 %gnunet_libpackage -l gnunetmessenger -s 0\
+%gnunet_libpackage -l gnunetmhd -s 0\
 %gnunet_libpackage -l gnunetnamecache -s 0\
 %gnunet_libpackage -l gnunetnamestore -s 0\
 %gnunet_libpackage -l gnunetnatauto -s 0\
 %gnunet_libpackage -l gnunetnatnew -s 2\
+%gnunet_libpackage -l gnunetnat -s 2\
 %gnunet_libpackage -l gnunetnse -s 0\
 %gnunet_libpackage -l gnunetpeerstore -s 0\
+%gnunet_libpackage -l gnunetpils -s 0\
 %gnunet_libpackage -l gnunetpq -s 5\
 %gnunet_libpackage -l gnunetreclaim -s 0\
 %gnunet_libpackage -l gnunetregexblock -s 1\
 %gnunet_libpackage -l gnunetregex -s 3\
 %gnunet_libpackage -l gnunetrest -s 0\
 %gnunet_libpackage -l gnunetrevocation -s 0\
+%gnunet_libpackage -l gnunetrps -s 0\
 %gnunet_libpackage -l gnunetscalarproduct -s 0\
 %gnunet_libpackage -l gnunetsecretsharing -s 0\
 %gnunet_libpackage -l gnunetseti -s 0\
@@ -108,6 +114,7 @@ GNUnet is a part of the GNU project (https://www.gnu.org/).
 %gnunet_libpackage -l gnunetstatistics -s 2\
 %gnunet_libpackage -l gnunettestbed -s 0\
 %gnunet_libpackage -l gnunettestingarm -s 0\
+%gnunet_libpackage -l gnunettestingcore -s 0\
 %gnunet_libpackage -l gnunettesting -s 3\
 %gnunet_libpackage -l gnunettestingtestbed -s 0\
 %gnunet_libpackage -l gnunettestingtransport -s 0\
@@ -158,14 +165,12 @@ This package contains the lib%{-l*} library for GNUnet. \
 %autosetup -p1
 
 %build
-%configure \
-	--libexecdir=%{_prefix}/lib/gnunet/libexec/ \
-	%{nil}
-%make_build
+%meson
+%meson_build
 %sysusers_generate_pre contrib/services/systemd/sysusers-gnunet.conf gnunet system-user-gnunet.conf
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # license files installed via file list
 rm -rf %{buildroot}%{_datadir}/doc/gnunet
@@ -175,7 +180,6 @@ rm -rf %{buildroot}%{_datadir}/gnunet/services/openrc
 install -D -m 644 contrib/services/systemd/sysusers-gnunet.conf	%{buildroot}/%{_sysusersdir}/system-user-gnunet.conf
 install -D -m 644 contrib/services/systemd/gnunet.service	%{buildroot}/%{_unitdir}/gnunet.service
 
-%suse_update_desktop_file gnunet-uri
 %find_lang %{name}
 
 %pre -f gnunet.pre
@@ -193,7 +197,55 @@ install -D -m 644 contrib/services/systemd/gnunet.service	%{buildroot}/%{_unitdi
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README*
-%{_bindir}/*
+%{_bindir}/gnunet-abd
+%{_bindir}/gnunet-arm
+%{_bindir}/gnunet-auto-share
+%{_bindir}/gnunet-base32
+%{_bindir}/gnunet-bugreport
+%{_bindir}/gnunet-cadet
+%{_bindir}/gnunet-config
+%{_bindir}/gnunet-core
+%{_bindir}/gnunet-datastore
+%{_bindir}/gnunet-dht-get
+%{_bindir}/gnunet-dht-hello
+%{_bindir}/gnunet-dht-monitor
+%{_bindir}/gnunet-dht-put
+%{_bindir}/gnunet-did
+%{_bindir}/gnunet-directory
+%{_bindir}/gnunet-download
+%{_bindir}/gnunet-ecc
+%{_bindir}/gnunet-fs
+%{_bindir}/gnunet-gns
+%{_bindir}/gnunet-gns-proxy-setup-ca
+%{_bindir}/gnunet-hello
+%{_bindir}/gnunet-identity
+%{_bindir}/gnunet-messenger
+%{_bindir}/gnunet-namecache
+%{_bindir}/gnunet-namestore
+%{_bindir}/gnunet-namestore-dbtool
+%{_bindir}/gnunet-namestore-zonefile
+%{_bindir}/gnunet-nat
+%{_bindir}/gnunet-nat-auto
+%{_bindir}/gnunet-nat-server
+%{_bindir}/gnunet-nse
+%{_bindir}/gnunet-pils
+%{_bindir}/gnunet-publish
+%{_bindir}/gnunet-qr
+%{_bindir}/gnunet-reclaim
+%{_bindir}/gnunet-resolver
+%{_bindir}/gnunet-revocation
+%{_bindir}/gnunet-rps
+%{_bindir}/gnunet-scalarproduct
+%{_bindir}/gnunet-scrypt
+%{_bindir}/gnunet-search
+%{_bindir}/gnunet-statistics
+%{_bindir}/gnunet-testbed
+%{_bindir}/gnunet-testing-netjail-launcher
+%{_bindir}/gnunet-transport-certificate-creation
+%{_bindir}/gnunet-unindex
+%{_bindir}/gnunet-uri
+%{_bindir}/gnunet-vpn
+%{_bindir}/gnunet-zoneimport
 %{_libdir}/gnunet
 %{_datadir}/gnunet
 %{_mandir}/man1/*.1%{?ext_man}
@@ -208,7 +260,6 @@ install -D -m 644 contrib/services/systemd/gnunet.service	%{buildroot}/%{_unitdi
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/%{name}*.pc
 %{_libdir}/*.so
-%{_datadir}/aclocal/gnunet.m4
 
 %files lang -f %{name}.lang
 %license COPYING

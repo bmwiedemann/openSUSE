@@ -1,0 +1,14 @@
+diff -ru gnunet-0.25.1.orig/src/service/core/meson.build gnunet-0.25.1/src/service/core/meson.build
+--- gnunet-0.25.1.orig/src/service/core/meson.build	2025-09-24 23:01:44.882691674 +0200
++++ gnunet-0.25.1/src/service/core/meson.build	2025-09-24 23:02:41.287272227 +0200
+@@ -67,8 +67,8 @@
+ libgnunetcoreunderlaydummy = library(
+     'gnunetcoreunderlaydummy',
+     ['gnunet_core_underlay_dummy.c'],
+-    soversion: '0.0.0',
+-    version: '0.0.0',
++    soversion: '0',
++    version: '0',
+     install_rpath: rpath_option,
+     dependencies: [libgnunetutil_dep, libgnunettesting_dep],
+     include_directories: [incdir, configuration_inc],
