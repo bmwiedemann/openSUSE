@@ -1712,4 +1712,12 @@
     <comment>- Update to version 3.2.4+git0.98813a13e:</comment>
     <requestid>1299269</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>3402eaeaad52811fb85e82ab2dc4f201</srcmd5>
+    <version>3.2.5+git0.ba0fd6b8e</version>
+    <time>1759337851</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1308350</requestid>
+  </revision>
 </revisionlist>

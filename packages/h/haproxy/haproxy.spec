@@ -72,7 +72,7 @@
 %endif
 
 Name:           haproxy
-Version:        3.2.4+git0.98813a13e
+Version:        3.2.5+git0.ba0fd6b8e
 Release:        0
 #
 Summary:        The Reliable, High Performance TCP/HTTP Load Balancer
