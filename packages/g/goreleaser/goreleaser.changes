@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Oct 01 13:33:55 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.12.5:
+  * chore(deps): bump squidfunk/mkdocs-material from `86d21da` to `00f9276` in /www (#6135)
+  * chore(deps): bump mkdocs-material from 9.6.20 to 9.6.21 in /www (#6134)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.41.0 to 0.41.1 (#6132)
+  * chore(deps): bump github.com/charmbracelet/fang from 0.4.2 to 0.4.3 (#6133)
+  * chore(deps): bump astral-sh/setup-uv from 6.7.0 to 6.8.0 (#6131)
+  * chore(deps): bump ossf/scorecard-action from 2.4.2 to 2.4.3 (#6130)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * fix(makeself): path to script, better tests
+  * fix(deps): update fang, fix error handler
+  * chore(deps): bump docker/login-action from 3.5.0 to 3.6.0 (#6127)
+  * fix: error handling in github actions
+  * fix(docker/v2): handle bad COPY/ADD
+  * fix(docker/v2): more logs
+  * chore(deps): bump mkdocs-include-markdown-plugin from 7.1.7 to 7.2.0 in /www (#6125)
+  * chore(deps): bump actions/dependency-review-action from 4.7.3 to 4.8.0 (#6121)
+  * ci: fix gitleaks job
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.88.2 to 1.88.3 (#6126)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.148.0 to 0.148.1 (#6124)
+  * chore(deps): bump github/codeql-action from 3.30.4 to 3.30.5 (#6123)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.40.0 to 0.41.0 (#6122)
+  * chore(deps): bump cargo-bins/cargo-binstall from 1.15.5 to 1.15.6 (#6120)
+  * chore(deps): bump github/codeql-action from 3.30.3 to 3.30.4 (#6117)
+  * chore(deps): bump actions/cache from 4.2.4 to 4.3.0 (#6115)
+  * chore(deps): bump cachix/install-nix-action from 31.6.2 to 31.7.0 (#6114)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Thu Sep 25 13:31:49 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.12.3:
