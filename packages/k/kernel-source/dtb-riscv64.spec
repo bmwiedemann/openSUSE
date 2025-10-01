@@ -16,18 +16,18 @@
 #
 
 
-%define srcversion 6.16
-%define patchversion 6.16.9
+%define srcversion 6.17
+%define patchversion 6.17.0
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        6.16.9
+Version:        6.17.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g249a64d
+Release:        <RELEASE>.g8490d9f
 %else
 Release:        0
 %endif
@@ -62,24 +62,11 @@ Source47:       modversions
 Source48:       macros.kernel-source
 Source49:       kernel-module-subpackage
 Source50:       kabi.pl
-Source51:       mkspec
 Source52:       kernel-source%variant.changes
-Source53:       kernel-source.spec.in
-Source54:       kernel-binary.spec.in
-Source55:       kernel-syms.spec.in
-Source56:       kernel-docs.spec.in
 Source57:       kernel-cert-subpackage
-Source58:       constraints.in
 Source60:       config.sh
-Source61:       compute-PATCHVERSION.sh
-Source62:       old-flavors
 Source63:       arch-symbols
-Source64:       package-descriptions
 Source65:       kernel-spec-macros
-Source70:       kernel-obs-build.spec.in
-Source71:       kernel-obs-qa.spec.in
-Source73:       dtb.spec.in.in
-Source74:       mkspec-dtb
 Source75:       release-projects
 Source76:       check-module-license
 Source78:       modules.fips
@@ -127,24 +114,11 @@ NoSource:       47
 NoSource:       48
 NoSource:       49
 NoSource:       50
-NoSource:       51
 NoSource:       52
-NoSource:       53
-NoSource:       54
-NoSource:       55
-NoSource:       56
 NoSource:       57
-NoSource:       58
 NoSource:       60
-NoSource:       61
-NoSource:       62
 NoSource:       63
-NoSource:       64
 NoSource:       65
-NoSource:       70
-NoSource:       71
-NoSource:       73
-NoSource:       74
 NoSource:       75
 NoSource:       76
 NoSource:       78

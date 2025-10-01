@@ -7160,4 +7160,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.16.9 &amp; drm &amp; scripts fixes; bugs: bsc#1012628 bsc#1233640 bsc#1244729 bsc#1248121 bsc#1249390 bsc#1250189 bsc#1250337</comment>
     <requestid>1307299</requestid>
   </revision>
+  <revision rev="801" vrev="1">
+    <srcmd5>b1eaaf59a7a0ebba539eb3505479a7e3</srcmd5>
+    <version>6.17.0</version>
+    <time>1759337746</time>
+    <user>anag_factory</user>
+    <comment>6.17 with spec fixed; bugs: boo#1248109 bsc#1012628 bsc#1205447 bsc#1230062 bsc#1243677 bsc#1243678 bsc#1248109 bsc#1249186 bsc#1249346 bsc#1249377 bsc#1250507 bsc#1250522</comment>
+    <requestid>1308292</requestid>
+  </revision>
 </revisionlist>

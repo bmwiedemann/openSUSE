@@ -16,21 +16,21 @@
 #
 
 
-%define srcversion 6.16
-%define patchversion 6.16.9
-%define git_commit 249a64db1a53c082251c40fe2439c432c853a7ff
+%define srcversion 6.17
+%define patchversion 6.17.0
+%define git_commit 8490d9fb9ad8deab2079bb469502f71a97ffb5e6
 %define variant %{nil}
 %define gcc_package gcc
 %define gcc_compiler gcc
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source
-Version:        6.16.9
+Version:        6.17.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g249a64d
+Release:        <RELEASE>.g8490d9f
 %else
 Release:        0
 %endif
@@ -44,6 +44,7 @@ BuildRequires:  bash-sh
 %endif
 BuildRequires:  coreutils
 BuildRequires:  fdupes
+BuildRequires:  python3-base
 BuildRequires:  sed
 BuildArch:      noarch
 Prefix:         /usr/src
@@ -79,24 +80,11 @@ Source47:       modversions
 Source48:       macros.kernel-source
 Source49:       kernel-module-subpackage
 Source50:       kabi.pl
-Source51:       mkspec
 Source52:       kernel-source%variant.changes
-Source53:       kernel-source.spec.in
-Source54:       kernel-binary.spec.in
-Source55:       kernel-syms.spec.in
-Source56:       kernel-docs.spec.in
 Source57:       kernel-cert-subpackage
-Source58:       constraints.in
 Source60:       config.sh
-Source61:       compute-PATCHVERSION.sh
-Source62:       old-flavors
 Source63:       arch-symbols
-Source64:       package-descriptions
 Source65:       kernel-spec-macros
-Source70:       kernel-obs-build.spec.in
-Source71:       kernel-obs-qa.spec.in
-Source73:       dtb.spec.in.in
-Source74:       mkspec-dtb
 Source75:       release-projects
 Source76:       check-module-license
 Source78:       modules.fips
