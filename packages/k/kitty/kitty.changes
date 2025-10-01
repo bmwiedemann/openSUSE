@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct  1 06:28:09 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.43.1:
+  * ssh kitten: Allow specifying a password and/or TOTP authentication secret
+    to automate interactive logins in scenarios where public key authentication
+    is not supported (#9020)
+  * macOS: Fix a bug where the color of a transparent titlebar was off when
+    running in the release build versus the build from source. Also fix using a
+    transparent titlebar causing the background opacity to be doubled.
+  * Fix a regression in the previous release that caused the incorrect tab to
+    be active when loading a session (#9025)
+  * macOS: Workaround for bug in macOS Tahoe that caused closed OS Windows to
+    remain as invisible rectangles that intercept mouse events (#8952)
+  * macOS: Fix a regression in the previous release that broke automatic
+    switching of dark/light mode when setting macos_titlebar_color to an
+    arbitrary color (#9034)
+  * goto_session: Add --sort-by=alphabetical to have the interactive session
+    picker list the sessions in a fixed order rather than by most recent (#9033)
+  * Fix a regression in the previous release that caused the cursor trail to
+    not be hidden properly (#9039)
+  * Session files: Fix a regression in the previous release that broke matching
+    on windows in the current tab (#9037)
+  * Fix a regression in the previous release that broke clearing screen lines
+    when in margin mode (#9049)
+
+-------------------------------------------------------------------
 Sun Sep 28 04:59:44 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.43.0:
