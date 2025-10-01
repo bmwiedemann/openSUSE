@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 24 11:45:03 CEST 2025 - aschnell@suse.com
+
+- libboost_system was removed upstream (bsc#1249900)
+
+-------------------------------------------------------------------
 Mon Feb 10 15:36:23 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Disable LTO on riscv64
