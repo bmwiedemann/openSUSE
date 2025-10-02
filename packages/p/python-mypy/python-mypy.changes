@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 29 12:33:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.18.2
+  * Fix crash on recursive alias
+  * Add additional guidance for stubtest errors when runtime is
+    object.__init__
+  * Fix handling of None values in f-string expressions in mypyc
+
+-------------------------------------------------------------------
 Fri Sep 12 08:57:49 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.18.1:

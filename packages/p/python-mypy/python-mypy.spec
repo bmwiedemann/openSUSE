@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-mypy
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -75,6 +75,7 @@ BuildRequires:  %{python_module psutil >= 4}
 BuildRequires:  %{python_module pytest >= 8.1}
 BuildRequires:  %{python_module pytest-forked >= 1.3}
 BuildRequires:  %{python_module pytest-xdist >= 1.34}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module virtualenv >= 20.6}
 BuildRequires:  gcc-c++
 %endif
