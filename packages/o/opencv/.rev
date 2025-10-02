@@ -1488,4 +1488,12 @@
     <comment></comment>
     <requestid>1300993</requestid>
   </revision>
+  <revision rev="109" vrev="3">
+    <srcmd5>596bf19a6cbffa82668c84d70dc12f8a</srcmd5>
+    <version>4.12.0</version>
+    <time>1759425562</time>
+    <user>anag_factory</user>
+    <comment>- Add 86df531.patch: FFmpeg 8.0 support (boo#1249045). (forwarded request 1307179 from iznogood)</comment>
+    <requestid>1308208</requestid>
+  </revision>
 </revisionlist>

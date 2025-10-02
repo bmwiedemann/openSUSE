@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 25 14:49:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 86df531.patch: FFmpeg 8.0 support (boo#1249045).
+
+-------------------------------------------------------------------
 Wed Aug  6 12:07:59 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add opencv-ppc64le-power9.patch, fix missing vec_cvfo on POWER9 due

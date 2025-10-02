@@ -79,6 +79,8 @@ Patch0:         opencv-qt6_9-highgui-linking-test.patch
 # PATCH-FIX-UPSTREAM opencv-ppc64le-power9.patch hillwood@opensuse.org - Fix missing vec_cvfo on POWER9 due to unavailable VSX float64 conversion
 # https://github.com/opencv/opencv/pull/27633
 Patch1:         opencv-ppc64le-power9.patch
+# PATCH-FIX-UPSTREAM 86df531.patch -- FFmpeg 8.0 support.
+Patch2:         https://github.com/opencv/opencv/commit/86df531.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
