@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 26 11:39:17 UTC 2025 - Ali Abdallah <ali.abdallah@suse.de>
+
+- Add support of sssd Information Pipe (bsc#1246696)
+- 5.0.3
+
+-------------------------------------------------------------------
 Tue Jan 28 12:47:15 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
 
 - Remove nscd-related code (bsc#1236308)
