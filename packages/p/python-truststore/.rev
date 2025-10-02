@@ -66,4 +66,20 @@
     Python implementations (CPython and PyPy).</comment>
     <requestid>1248088</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>80f2f0bb36c8f14ea30fa74c25f4ab6c</srcmd5>
+    <version>0.10.4</version>
+    <time>1759425556</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.4:
+  * Fixed a thread-safety issue when configuring the internal
+    `ssl.SSLContext` object.
+  * Added support for the system certificate bundle in Fedora 43
+    and later.
+  * Release failed to publish to PyPI due to outdated build
+    tools.
+  * Created new release (0.10.3) after updating `build` to
+    1.2.2.post1.</comment>
+    <requestid>1308185</requestid>
+  </revision>
 </revisionlist>

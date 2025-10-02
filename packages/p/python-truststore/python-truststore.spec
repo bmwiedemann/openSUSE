@@ -1,7 +1,7 @@
 #
 # spec file for package python-truststore
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-truststore
-Version:        0.10.1
+Version:        0.10.4
 Release:        0
 Summary:        Verify certificates using OS trust stores
 License:        MIT

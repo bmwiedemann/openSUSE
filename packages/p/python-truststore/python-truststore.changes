@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 30 12:32:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.4:
+  * Fixed a thread-safety issue when configuring the internal
+    `ssl.SSLContext` object.
+  * Added support for the system certificate bundle in Fedora 43
+    and later.
+  * Release failed to publish to PyPI due to outdated build
+    tools.
+  * Created new release (0.10.3) after updating `build` to
+    1.2.2.post1.
+
+-------------------------------------------------------------------
 Mon Feb 24 10:44:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.1:
