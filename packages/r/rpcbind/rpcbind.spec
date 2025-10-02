@@ -1,7 +1,7 @@
 #
 # spec file for package rpcbind
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,9 +79,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/
 # sysusers.d config
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
-# create symlink for rcrpcbind
-mkdir -p %{buildroot}/%{_sbindir}
-ln -s service %{buildroot}%{_sbindir}/rc%{name}
 ln -s %{_bindir}/rpcinfo %{buildroot}%{_sbindir}/rpcinfo
 %if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
@@ -115,7 +112,6 @@ ln -s %{_sbindir}/%{name} %{buildroot}/sbin/%{name}
 %{_sbindir}/%{name}
 %{_bindir}/rpcinfo
 %{_sbindir}/rpcinfo
-%{_sbindir}/rc%{name}
 %{_mandir}/*/*
 %{_fillupdir}/sysconfig.%{name}
 %{_sysusersdir}/rpc-user.conf
