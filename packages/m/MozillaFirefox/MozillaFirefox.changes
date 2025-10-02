@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 30 16:43:10 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 143.0.3
+  https://www.firefox.com/en-US/firefox/143.0.3/releasenotes
+  MFSA 2025-80 (bsc#1250678
+  * CVE-2025-11152 (bmo#1987246)
+    Sandbox escape due to integer overflow in the Graphics: Canvas2D component
+  * CVE-2025-11153 (bmo#1987481)
+    JIT miscompilation in the JavaScript Engine: JIT component
+
+-------------------------------------------------------------------
 Sat Sep 20 18:43:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 143.0.1:

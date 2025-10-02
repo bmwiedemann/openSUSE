@@ -7737,4 +7737,18 @@
     <comment></comment>
     <requestid>1306176</requestid>
   </revision>
+  <revision rev="467" vrev="1">
+    <srcmd5>07e75b1adb256f1a4d85ed9f97f0fa15</srcmd5>
+    <version>143.0.3</version>
+    <time>1759425577</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 143.0.3
+  https://www.firefox.com/en-US/firefox/143.0.3/releasenotes
+  MFSA 2025-80 (bsc#1250678
+  * CVE-2025-11152 (bmo#1987246)
+    Sandbox escape due to integer overflow in the Graphics: Canvas2D component
+  * CVE-2025-11153 (bmo#1987481)
+    JIT miscompilation in the JavaScript Engine: JIT component</comment>
+    <requestid>1308346</requestid>
+  </revision>
 </revisionlist>
