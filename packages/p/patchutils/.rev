@@ -221,4 +221,31 @@
     <user>anag_factory</user>
     <comment>Revert. It introduces xmlto and somehow this wasn't detected when building in Staging</comment>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>c20843439a3e7b10f174bb79866a0c16</srcmd5>
+    <version>0.4.3</version>
+    <time>1759425680</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.3:
+  * Add --in-place option to more tools for editing files in place
+  * Add --color option to interdiff with automatic terminal
+    detection
+  * Improve PCRE2 support
+  * Add support for CRLF line endings in patch files
+  * Fix interdiff to reverse line counts correctly when reversing
+    patches
+  * Add bash completions
+  * Various bug fixes and code correctness fixes
+  * Add new --as-numbered-lines options: original-before and
+    original-after
+  * Fix rediff to preserve diff command headers in multi-file
+    patches
+  * Fix recountdiff corruption of new file headers when git
+    signature lines are present
+- remove unnecessary build dependencies
+- build with xmlto to generate documentation
+- package bash completions, build with pcre2 support
+- add upstream signing key and validate source signature</comment>
+    <requestid>1307295</requestid>
+  </revision>
 </revisionlist>
