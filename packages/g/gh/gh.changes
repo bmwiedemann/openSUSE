@@ -1,4 +1,322 @@
 -------------------------------------------------------------------
+Tue Sep 30 10:18:57 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.81.0:
+  * test(auth status): correctly replace JSON-escaped paths
+  * update the description
+  * refactor: use strings.FieldsFuncSeq to reduce memory allocations
+  * fix(pr checkout): add alias `co`
+  * remove hidden value for release verify cmd
+  * fix latest tag for relase verify asset
+  * docs(auth status): explain `--json` will always exit with zero
+  * fix(auth status): return JSON entries under `hosts`
+  * fixup! examples
+  * fix error missing in json output
+  * examples
+  * remove showToken from authEntry
+  * address copilot comment on parameter order
+  * add examples
+  * simplify exporter usage
+  * remove includeScope
+  * do not mutate opts.ShowToken
+  * move displayToken to String method
+  * move flag validation to RunE
+  * refactor without VisitAll
+  * introduce AddJSONFlagsWithoutShorthand
+  * fix show token when using json
+  * fix exit code
+  * revert showToken change
+  * mutually exclusive flags
+  * flag duplicate check
+  * add ExpectCommandToSupportJSONFields
+  * do not export authState
+  * handle -t conflict
+  * do not fetch scope if not necessary
+  * json flags
+  * auth state enum
+  * Refactor entry to a single type
+  * Fix missing assertions
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.24 matching go.mod
+
+-------------------------------------------------------------------
+Tue Sep 23 16:40:48 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.80.0:
+  * chore: update third-party licenses
+  * ci: pin release runner to Windows 2022
+  * Add math package import to sessions.go
+  * Add TODO for better integer handling in GetPullRequestDatabaseID
+  * chore: update third-party licenses
+  * update the test
+  * Update pkg/cmd/attestation/api/client.go
+  * add initiator_type for attestations
+  * fix(agent-task/capi): return proper error message when resp is not a JSON
+  * test(agent-task view): populate `Session.Name` in all test cases
+  * fix(agent-task view): improve session overview
+  * refactor(agent-task view): merge empty println calls with next
+  * fix(agent-task view): re-fetch session to get all pieces of data
+  * fix(agent-task/capi): remove fallback to viewer when user id is zero
+  * test(agent-tassk/capi): update `ListSessionsByResourceID` tests
+  * docs(agent-task/capi): add TODO note for dropping local ID generation
+  * fix(agent-task/capi): fetch viewer when resource session user id is zero
+  * fix(agent-task/capi): handle unpopulated resource session `LastUpdatedAt`
+  * refactor(agent-task/capi): keep `resource` private
+  * update agents resource route
+  * fix(agent-task view): improve session error
+  * fix(agent-task view): display session error
+  * fix(agent-task/capi): add `WorkflowRunID` field to `Session`
+  * refactor(agent-task/capi): remove unused slice
+  * fix(agent-task/capi): add `Error` field to `Session`
+  * fix(agent-task create): block empty problem statement arg
+  * fix(agent-task create): use pager when following logs
+  * fix(agent-task create): avoid prompting when problem statement is provided
+  * fix(agent-task list): show capitalised session state
+  * fix(agent-task/shared): fix session state value
+  * docs(agent-task list): add "(preview)" note to cmd docs
+  * chore(agent-task/shared): regenerate `LogRenderer` mock
+  * test(agent-task/capi): assert session with zero resource ID are kept
+  * fix(agent-task/capi): keep sessions with no resource attached
+  * refactor(agent-task list): remove unused `BaseRepo` from `ListOptions`
+  * docs(agent-task/capi): fix test case explanation
+  * Fix session deduplication and add test for paging
+  * Remove repo-scoped session listing and related code
+  * docs(agent-task): use `heredoc.Doc`
+  * docs(pr/shared): add a `TODO` on decoupling PR finder from IO
+  * fix(agent-task view): display zero premium requests
+  * fix(agent-task/shared): make capitalised status names consistent
+  * Update pkg/cmd/agent-task/agent_task.go
+  * Update pkg/cmd/agent-task/agent_task.go
+  * Enhance agent-task command help and usage info
+  * Refactor comments in stripDiffFormat function
+  * Remove obsolete log-3 test data files
+  * fix(agent-task view): omit session overview in log mode
+  * fix(agent-task view): display premium requests used
+  * fix(agent-task/capi): add `PremiumRequests` field to `Session`
+  * fix(agent-task view): display session duration
+  * fix(agent-task view): display completed sessions as "Ready for review"
+  * fix(agent-task view): disable PR finder progress indicator
+  * test(pr/shared): assert `FindOptions.DisableProgress` is respected
+  * fix(pr/shared): add `DisableProgress` field to `FindOptions`
+  * Refactor stripDiffFormat guard clause logic
+  * Use filepath.Ext to detect file extension in markdown renderer
+  * Improve log rendering error handling and test coverage
+  * Prefix rendered shell commands with '$ ' in logs
+  * Clarify comment on CRLF normalization in tests
+  * Refactor generic tool call titles map to package scope
+  * Add pager support to log output in printLogs
+  * test(agent-task create): add test for `--follow`
+  * docs(agent-task create): add example for `--follow` flag
+  * feat(agent-task create): add `--follow` flag
+  * refactor(agent-task create): extract session URL polling into a func
+  * Add TODO for bash-related tool call details
+  * Update comment for reasoning text formatting
+  * Enable Bash session tool handling in log rendering
+  * Rename testdata log files for clarity
+  * Normalize line endings in log testdata files too
+  * Fix line ending conversion in tests
+  * Add note for updating testdata files in log tests
+  * Make log tests OS-agnostic by normalizing line endings
+  * Fix comment for GetSessionLogs method
+  * Add and improve function documentation in log.go
+  * Update log test expectation files
+  * Rename renderToolCall to renderToolCallTitle
+  * Rename relativePath to relativeFilePath in log rendering
+  * Refactor markdown rendering helper function names
+  * Improve log rendering and tool call handling
+  * Refactor JSON content rendering in log entries
+  * Various log rendering improvements
+  * feat(agent-task view): add `--log` and `--follow` flags
+  * feat(agent-task view): add `--log` and `--follow` flags
+  * fix(agent-task/shared): add log renderer
+  * feat(agent-task/capi): add `GetSessionLogs` method
+  * Add error type assertion to createRun tests
+  * Add test for non-interactive problem statement input
+  * Update test to use edited task description
+  * Remove unused stdin field from create command tests
+  * Refactor create command tests and add base branch case
+  * refactor(pr/shared): rename `rest` to `tail`
+  * refactor(agent-task/shared): enhance symbol names
+  * Update command examples for agent-task create
+  * Refactor agent-task create to improve file input handling
+  * fix(pr/shared): ensure `ParseURL` regexp is backward-compatible
+  * refactor(agent-task/shared): extract uuid pattern
+  * refactor(agent-task view): rename `resourceID` to `prID`
+  * feat(agent-task view): support PR `/agent-sessions/*` URL as argument
+  * fix(agent-task/shared): add `ParsePullRequestAgentSessionURL`
+  * fix(pr/shared): add rest return value to `ParseURL`
+  * docs(agent-task view): improve `--help` docs
+  * refactor(agent-task create): assign `Config` at instantiation
+  * fix(agent-task create): only prompt for problem statement if not provided
+  * fix(agent-task view): stop progress indicator before opening browser
+  * test(agent-task view): enhance naming and stubs
+  * test(agent-task view): add `--web` mode tests
+  * feat(agent-task view): add `--web` mode
+  * refactor: move Copilot Agents home URL to capi
+  * fix(agent-task/capi): also return PR URL from `GetPullRequestDatabaseID`
+  * Still prompt for task desc with -F
+  * Add interactive prompt for task description in agent-task create
+  * Fix default value in session selection prompt
+  * Show session name instead of ID in agent-task list
+  * docs(agent-task view): explain test case rationale
+  * docs(agent-task view): explain when condition is met
+  * docs(agent-task/capi): remove redundant comment
+  * test(agent-task/capi): fix test case args
+  * fix(agent-task/capi): skip unpopulated resource ID when hydrating
+  * docs(agent-task/shared): add godoc to `SessionStateString`
+  * test(agent-task view): update tests
+  * fix(agent-task view): use lower limit for fetching sessions
+  * fix(agent-task view): use `CapiClient.GetPullRequestDatabaseID`
+  * fix(agent-task/capi): add `GetPullRequestDatabaseID` to `CapiClient` interface
+  * test(agent-task/capi): add tests for `GetPullRequestDatabaseID`
+  * feat(agent-task/capi): add `GetPullRequestDatabaseID` method
+  * test(agent-task/capi): add tests for `GetSessionByResourceID`
+  * feat(agent-task view): support PR arg
+  * fix(agent-task/shared): add `SessionSymbol` func
+  * test(agent-task/shared): add test for `IsSessionID`
+  * fix(agent-task/shared): add `IsSessionID`
+  * test(pr/shared): add test for `ParseFullReference`
+  * fix(pr/shared): add `ParseFullReference` func
+  * feat(agent-task/capi): add `ListSessionsByResourceID` method to `CapiClient` interface
+  * feat(agent-task/capi): add `ListSessionsByResourceID`
+  * test(agent-task view): add tests for the `view` command
+  * feat(agent-task view): add `view` command
+  * test(agent-task list): remove unused `stubs`
+  * feat(agent-task/capi): add `GetSession` method to `CapiClient` interface
+  * test(agent-task/capi): add tests for `GetSession`
+  * feat(agent-task/capi): add `GetSession` method
+  * refactor(agent-task/capi): populate PRs `IsDraft`
+  * refactor(agent-task/capi): hydrate user data
+  * test(agent-task create): quote file paths to pass CI on Windows
+  * refactor(agent-task list): simplify cmd initialisation
+  * refactor(agent-task create): remove redundant `if`
+  * test(agent-task create): use `CapiClientMock`
+  * fix(agent-task create): simplify command initialisation
+  * test(agent-task list): update `TestNewCmdCreate`
+  * fix(agent-task create): allow no positional arg
+  * test(agent-task list): apply test args anyway
+  * test(agent-task list): use `CapiClientMock`
+  * test(agent-task list): update `TestNewCmdList`
+  * refactor(agent-task/capi): drop embedding of unexported struct
+  * test(agent-task/capi): add `CapiClientMock`
+  * test(agent-task/capi): add `go:generate` directive to gen mock
+  * test(agent-task/capi): add tests for job-related methods
+  * test(agent-task/capi): add tests for session-related methods
+  * fix(agent-task/capi): handle non-JSON error response
+  * fix(agent-task/capi): improve returned errs
+  * refactor(agent-task/capi): improve pagination
+  * refactor(agent-task list): use shared `CapiClientFunc`
+  * fix(agent-task/shared): add `CapiClientFunc` helper
+  * Improve agent-task create command help text
+  * Refactor test case struct in create_test.go
+  * Add base branch option to agent task creation
+  * Support reading task description from stdin
+  * Increase backoff timing for agent task creation
+  * Add file input support to agent-task create command
+  * Update error messages and test repo handling in agent-task create
+  * Simplify error handling in CreateJob response
+  * Simplify stdout assertion in createRun test
+  * Improve job error handling and update tests
+  * Use Job struct in request
+  * Escape URL path parameters in GetJob request
+  * Escape owner and repo in job creation URL
+  * Escape URL path segments in agent session links
+  * Remove nil check for job in agentSessionWebURL
+  * Update test to expect 500 error response
+  * Update error message in createRun test
+  * Remove redundant 'error:' prefix from repo error
+  * Update command usage for agent task creation
+  * Update agent-task create command argument handling
+  * Add agent task creation command and job API
+  * Add pager support to agent-task list output
+  * Replace panic with require.FailNow in test
+  * Add test for web mode with repo flag in listRun
+  * Add comment on web dashboard filtering limitation
+  * Add test case for negative limit in list command
+  * Return NoResultsError when no agent tasks found
+  * Add comment explaining error handling in listRun
+  * Simplify time calculation in listRun test
+  * Simplify BaseRepo assignment in list command
+  * Handle repo resolution errors gracefully in agent-task list
+  * Add --web flag to agent-task list command
+  * Show default limit in agent-task list flag help
+  * Add limit flag to agent-task list command
+  * Add repo-scoped agent session listing support
+  * Refactor session state color logic to shared package
+  * Optimize session pull request hydration logic
+  * Refactor error handling in generatePullRequestNodeID
+  * Update API query name for session PR fetch
+  * Refactor variable names in ListSessionsForViewer
+  * Remove commented-out fields from sessionPullRequest
+  * Refactor agent-task list command client initialization
+  * Refactor session filtering in listRun function
+  * Fix import alias for shared package in agent-task list
+  * Add agent task listing command and CAPI client
+  * Refactor agent task tests into table-driven format
+  * Refactor test to use require.Empty assertion
+  * Show help on agent-task command execution
+  * Add agent-task command with OAuth token validation
+
+-------------------------------------------------------------------
+Mon Sep  8 19:32:22 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.79.0:
+  * fix(featuredetection): remove redundant `AdvancedIssueSearchWebInIssuesTab` field
+  * docs(featuredetection): remove unknown dates
+  * docs(search prs): mention advanced issue search syntax support
+  * docs(search issues): mention advanced issue search syntax support
+  * docs(pr list): mention advanced issue search syntax support
+  * docs(issue list): mention advanced issue search syntax support
+  * refactor(search): rename `Query.String` to `StandardSearchString`
+  * test(search): improve test cases
+  * chore(deps): bump actions/stale from 9 to 10
+  * chore(deps): bump actions/setup-go from 5 to 6
+  * Bump sigstore/rekor to v1.4.1
+  * Remove mention of public preview in trustedroot.go
+  * docs(featuredetection): add godoc for min GHES version for advanced issue search
+  * docs(issue pr): fix incorrect formatting
+  * docs(issue list): fix incorrect formatting
+  * docs: add cleanup/future TODO marks for advanced issue search changes
+  * docs(pr list): explain use of advanced issue search syntax
+  * docs(issue list): explain use of advanced issue search syntax
+  * test(issue/pr list): assert integration with advanced issue search
+  * test(pr shared): assert `ListURLWithQuery` works with advanced search syntax
+  * refactor(issue/pr list): support advanced issue search
+  * docs(search): improve `Searcher.URL` method docs
+  * docs(search prs): mention advanced issue search takeover
+  * docs(search issues): mention advanced issue search takeover
+  * docs(search): improve docs for  `Query.String` and `Query.AdvancedIssueSearchString` methods
+  * refactor(search): improve special qualifier grouping
+  * test(search): test advanced search support
+  * fix(search): use advanced issue search when available
+  * refactor: improve mock feature detector names
+  * refactor(search): sort qualifiers in query
+  * test(search): provide feature detection dependency
+  * fix(search): add feature detection dependency
+  * test(search): explain why `is:` and `in:` qualifiers used in test case
+  * fix(search): sort qualifiers in advacned issue search syntax
+  * test(search): add tests for `AdvancedIssueSearchString` method
+  * fix(search): add `AdvancedIssueSearchString` method
+  * test(featuredetection): add tests for advanced issue search detection
+  * fix(featuredetection): add feature detection for advanced issue search
+  * test(cache delete): combine test cases for invalid/non-existent refs
+  * test(cache delete): replace `HTTP 204` with `200` to match API behaviour
+  * docs(cache delete): explain different API responses
+  * test(cache delete): add test case for key arg and `--all`
+  * refactor(cache delete): simplify error handling
+  * refactor(cache delete): simplify condition
+  * fix(cache): validate `--ref` flag usage with cache ID
+  * fix(cache): prevent using `--ref` flag with cache ID
+  * refactor(cache): extract cache ID parsing logic
+  * fix(cache): update error message for missing cache key with `--ref` flag
+  * chore(cache): improve help text for `--ref` flag in cache deletion
+  * test(cache): add tests for `--ref` flag in cache deletion
+  * feat(cache): add support for `--ref` flag in cache deletion
+  * refactor: use slices.Equal to simplify code (#11364)
+  * feat: `gh auth` Automatically copy one-time OAuth code to clipboard (#11518)
+  * docs(release create): difference `--generate-notes` and `--notes-from-tag` (#11534)
+
+-------------------------------------------------------------------
 Mon Aug 25 15:13:05 UTC 2025 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.78.0:
@@ -103,7 +421,7 @@ Sun Jul 20 10:22:25 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.76.0:
   * Copilot Pro+ / Enterprise subscribers can now assign issues to
-    Copilot during issue creation 
+    Copilot during issue creation
   * Display immutable field in release view command
   * Do not fetch logs for skipped jobs
   * Transform extension and filename qualifiers into path qualifier
@@ -437,7 +755,7 @@ Sat May 03 15:15:17 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
   * Fix pr create when push.default tracking and no merge ref
 
 - Update to version 2.71.1:
-  * Fix pr create when branch name contains slashes 
+  * Fix pr create when branch name contains slashes
 
 - Update to version 2.71.0:
   * gh pr create: Support Git's @{push} revision syntax for determining
