@@ -1,7 +1,7 @@
 #
 # spec file for package guitarix
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,20 +20,21 @@
 %bcond_with ladspa
 
 Name:           guitarix
-Version:        0.46.0
+Version:        0.47.0
 Release:        0
 Summary:        Simple Linux amplifier for jack
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://guitarix.sourceforge.net/
 Source:         https://github.com/brummer10/guitarix/releases/download/V%{version}/guitarix2-%{version}.tar.xz
+Patch0:         guitarix_no_boost_system.patch
 # Patches from Fedora
 # Patch0:         guitarix-cstdint-include.patch
 # Patch1:         guitarix-mismatched-delete.patch
 # Patch2:         guitarix-python-3.11-ftbfs.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} <= 1600
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -46,7 +47,9 @@ BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
+%if 0%{?suse_version} <= 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libboost_thread-devel
 %if %{with ladspa}
 BuildRequires:  ladspa-devel
@@ -157,8 +160,8 @@ Bestplugins Mega Pack 1+3 contains dozens of guitar sounds from famous bands.
 
 %build
 %if 0%{?suse_version} <= 1600
-export CC=gcc-12
-export CXX=g++-12
+export CC=gcc-13
+export CXX=g++-13
 %endif
 for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 export LDFLAGS="-ldl"

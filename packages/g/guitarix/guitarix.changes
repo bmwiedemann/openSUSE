@@ -1,3 +1,25 @@
+Thu Oct  2 08:04:23 UTC 2025 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 0.47.0 and added guitarix_no_boost_system.patch
+  to enable build without the liboost_system stub library.
+- Upstream changes:
+    *Allow to run in non-realtime environment
+    *Fix download online presets
+    *Allow to switch neural models via MIDI controller
+    *Fix tuner thread arguments by @mojyack
+    *Allow to build LV2 plugs (headless) for macos by proboofficial
+    *Fix compile falgs for build on aarch64 by tristantarrant
+    *Fix check for x86-64-v3 support
+    *implement gain per band controls for MultiBandDistortin and
+     MultiBandClipper
+    *fixes compatibility with the mold linker by edwloef
+    *Implement delta delay to neural multi loaders
+    *Implement parallel processing for neural models
+    *Fix build on FreeBSD by lbartoletti
+    *Implement new limiter by frm-dsp
+    *improve contrast of text in preset list by ckolumbus
+    *Fix some issues with clang
+
 -------------------------------------------------------------------
 Mon Mar 11 21:31:30 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
@@ -598,86 +620,9 @@ Sat Aug  8 23:08:04 CEST 2009 - mseben@novell.com
 - added patch for gtk 2.14.4 in openSUSE_11.1 (doesn't contain gtk_menu_item_get/set_label)
 
 -------------------------------------------------------------------
-Tue May 26 2009 Toni Graffy <toni@links2linux.de> - 0.04.5.1-0.pm.1
+Tue May 26 17:50:10 UTC 2009 - <toni@links2linux.de>
 - update to 0.04.5.1
   * fix wrong porthandling in dsp
   * add latency menu by James Warden
   * impruve midi out
 
--------------------------------------------------------------------
-Thu May 21 2009 Toni Graffy <toni@links2linux.de> - 0.04.4.1-0.pm.1
-- update to 0.04.4.1
-- Some new effect's in the amp section, overworked tuner and midi out.
-
--------------------------------------------------------------------
-Wed May 06 2009 Toni Graffy <toni@links2linux.de> - 0.04.3.1-0.pm.1
-- update to 0.04.3.1
-
--------------------------------------------------------------------
-Tue May 05 2009 Toni Graffy <toni@links2linux.de> - 0.04.2.1-0.pm.1
-- update to 0.04.2.1
-
--------------------------------------------------------------------
-Tue Apr 28 2009 Toni Graffy <toni@links2linux.de> - 0.04.1.1-0.pm.1
-- update to 0.04.1.1
-
--------------------------------------------------------------------
-Thu Apr 23 2009 Toni Graffy <toni@links2linux.de> - 0.04.0.1-0.pm.1
-- update to 0.04.0.1
-
--------------------------------------------------------------------
-Thu Mar 26 2009 Toni Graffy <toni@links2linux.de> - 0.03.9.1-0.pm.1
-- update to 0.03.9.1
-
--------------------------------------------------------------------
-Wed Mar 18 2009 Toni Graffy <toni@links2linux.de> - 0.03.8.1-0.pm.1
-- update to 0.03.8.1
-- added sub-package ladspa-guitarix
-
--------------------------------------------------------------------
-Wed Feb 11 2009 Toni Graffy <toni@links2linux.de> - 0.03.7.1-0.pm.1
-- update to 0.03.7.1
-
--------------------------------------------------------------------
-Thu Feb 05 2009 Toni Graffy <toni@links2linux.de> - 0.03.6.1-0.pm.1
-- update to 0.03.6.1
-
--------------------------------------------------------------------
-Wed Feb 04 2009 Toni Graffy <toni@links2linux.de> - 0.03.5.1-0.pm.1
-- update to 0.03.5.1
-
--------------------------------------------------------------------
-Tue Feb 03 2009 Toni Graffy <toni@links2linux.de> - 0.03.4.1-0.pm.1
-- update to 0.03.4.1
-
--------------------------------------------------------------------
-Wed Jan 14 2009 Toni Graffy <toni@links2linux.de> - 0.03.3.1-0.pm.1
-- update to 0.03.3.1
-
--------------------------------------------------------------------
-Thu Dec 04 2008 Toni Graffy <toni@links2linux.de> - 0.03.a-0.pm.1
-- update to 0.03.a
-
--------------------------------------------------------------------
-Sun Nov 23 2008 Toni Graffy <toni@links2linux.de> - 0.03.0-0.pm.1
-- update to 0.03.0
-
--------------------------------------------------------------------
-Mon Nov 10 2008 Toni Graffy <toni@links2linux.de> - 0.02.9a-0.pm.1
-- update to 0.02.9a
-
--------------------------------------------------------------------
-Sat Nov 08 2008 Toni Graffy <toni@links2linux.de> - 0.02.9-0.pm.1
-- update to 0.02.9
-
--------------------------------------------------------------------
-Thu Nov 06 2008 Toni Graffy <toni@links2linux.de> - 0.02.8-0.pm.1
-- update to 0.02.8
-
--------------------------------------------------------------------
-Sun Nov 02 2008 Toni Graffy <toni@links2linux.de> - 0.02.7-0.pm.1
-- update to 0.02.7
-
--------------------------------------------------------------------
-Fri Aug 08 2008 Toni Graffy <toni@links2linux.de> - 0.02.4-0.pm.1
-- initial package 0.02.4
