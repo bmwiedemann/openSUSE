@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-mail
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ Summary:        A lightweight email reader for the Pantheon desktop
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/mail
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         adapt-to-new-ecal.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  cmake
@@ -68,7 +69,10 @@ This package ships only the apparmor profile for %{name}
 %lang_package
 
 %prep
-%autosetup -n mail-%{version}
+%autosetup -N -n mail-%{version}
+%if 0%{?suse_version} >= 1699
+%autopatch -p1
+%endif
 
 %build
 export CFLAGS="%{optflags} -Wno-error=return-type"

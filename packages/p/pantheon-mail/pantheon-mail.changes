@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  1 23:35:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add adapt-to-new-ecal.patch for fixing the breaking changes in
+  the new ecal version
+
+-------------------------------------------------------------------
 Fri Nov  1 21:04:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - remove %suse_update_desktop_file, as it's deprecated

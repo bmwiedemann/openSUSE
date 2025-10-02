@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1223034</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>56c6584bb5ab27ad9b841a9cde6d3e3b</srcmd5>
+    <version>8.0.0</version>
+    <time>1759425645</time>
+    <user>anag_factory</user>
+    <comment>- add adapt-to-new-ecal.patch for fixing the breaking changes in
+  the new ecal version (forwarded request 1308486 from rrahl0)</comment>
+    <requestid>1308487</requestid>
+  </revision>
 </revisionlist>
