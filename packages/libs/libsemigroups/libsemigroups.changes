@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  2 09:11:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.0
+  * Balance presentation
+  * `is_obviously_infinite(Kambites)` respects generating pairs
+  * Check `is_obviously_infinite` before running in
+    `Congruence::number_of_classes`
+  * Bipartition benchmarks
+  * Add an option to compile with external backward
+  * Improve reporting for Todd-Coxeter
+  * todd-coxeter: fix bug in `reduce`
+  * word-graph: improve standardization performance
+
+-------------------------------------------------------------------
 Wed Aug 13 00:32:27 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.3

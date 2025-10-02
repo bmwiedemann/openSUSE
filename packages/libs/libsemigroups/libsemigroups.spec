@@ -18,7 +18,7 @@
 
 Name:           libsemigroups
 %define lname	libsemigroups3
-Version:        3.1.3
+Version:        3.2.0
 Release:        0
 Summary:        Library with algorithms for computing finite and finitely presented semigroups
 License:        GPL-3.0-or-later
@@ -27,6 +27,7 @@ URL:            https://github.com/libsemigroups/libsemigroups
 #Source:         https://github.com/libsemigroups/libsemigroups/releases/download/v%version/%name-%version.tar.gz
 Source:         https://github.com/libsemigroups/libsemigroups/archive/refs/tags/v%version.tar.gz
 BuildRequires:  automake
+BuildRequires:  backward-cpp-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(eigen3)
@@ -64,13 +65,15 @@ This subpackage provides the development headers for it.
 
 %prep
 %autosetup -p1
+rm -Rf third_party/backward-cpp
 
 %build
 autoreconf -fi
 # hpcombi requires AVX-256, which is not guaranteed to exist everywhere
 %configure --disable-static --disable-hpcombi \
 	--enable-eigen --with-external-eigen \
-	--enable-fmt --with-external-fmt
+	--enable-fmt --with-external-fmt \
+	--with-external-backward
 %make_build
 
 %install
