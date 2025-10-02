@@ -1,7 +1,7 @@
 #
 # spec file for package optipng
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define asan_build     0
 Name:           optipng
-Version:        0.7.8
+Version:        7.9.1
 Release:        0
 Summary:        A PNG File Compressor
 License:        Zlib
@@ -64,7 +64,7 @@ sed -i 's:\(ALL_LIBS = \)\(.*\):\1-lasan \2:' src/optipng/Makefile
 %make_build check
 
 %files
-%doc README.txt doc
+%doc README.md doc
 %{_bindir}/optipng
 %{_mandir}/man1/optipng.1%{?ext_man}
 

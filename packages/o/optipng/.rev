@@ -351,4 +351,26 @@
   * Refactored the structured exception handling. (forwarded request 1124858 from iDesmI)</comment>
     <requestid>1125547</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3be362a66886c4a61f1a53d159960a0f</srcmd5>
+    <version>7.9.1</version>
+    <time>1759425551</time>
+    <user>anag_factory</user>
+    <comment>- version update to 7.9.1
+ * fixed a corner case in the RGB-to-palette reduction code,
+   in which a dangling tRNS chunk (i.e. a tRNS chunk containing an
+   RGB triplet that doesn't actually exist in the RGB-encoded image)
+   should have been discarded (but wasn't).
+   [Re-reported by Dan Fandrich]
+ * Enabled the making of a SIMD-optimized build of libpng on select
+   target platforms. Currently, this is enabled by default on ARM64
+   and X86-64.
+ * Added a CMake file, an alternative to the configure build script.
+ * Deprecated the configure build script.
+ * Removed the support for 16-bit platforms.
+ * Removed the option -log.
+ * Rewrote the user manual in AsciiDoc format.
+ * Got bored of 0-dot-version numbers.</comment>
+    <requestid>1308154</requestid>
+  </revision>
 </revisionlist>

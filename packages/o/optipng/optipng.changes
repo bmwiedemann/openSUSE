@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 30 09:58:20 UTC 2025 - pgajdos@suse.com
+
+- version update to 7.9.1
+ * fixed a corner case in the RGB-to-palette reduction code,
+   in which a dangling tRNS chunk (i.e. a tRNS chunk containing an
+   RGB triplet that doesn't actually exist in the RGB-encoded image)
+   should have been discarded (but wasn't).
+   [Re-reported by Dan Fandrich]
+ * Enabled the making of a SIMD-optimized build of libpng on select
+   target platforms. Currently, this is enabled by default on ARM64
+   and X86-64.
+ * Added a CMake file, an alternative to the configure build script.
+ * Deprecated the configure build script.
+ * Removed the support for 16-bit platforms.
+ * Removed the option -log.
+ * Rewrote the user manual in AsciiDoc format.
+ * Got bored of 0-dot-version numbers.
+
+-------------------------------------------------------------------
 Fri Nov 10 11:12:58 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to 0.7.8:
