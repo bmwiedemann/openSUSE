@@ -5,7 +5,7 @@ description_paragraphs: 1
 #  - source1
 #  - source2
 patches:
-  perl-XML-LibXML-fix-testsuite-with-libxml2-2.13.patch: -p1
+  perl-XML-LibXML-fix-testsuite-with-libxml2-2.14.patch: -p1 PATCH-FIX-UPSTREAM https://github.com/shlomif/perl-XML-LibXML/pull/87
 #  bar.patch:
 preamble: |-
  BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0

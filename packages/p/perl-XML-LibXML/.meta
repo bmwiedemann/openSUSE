@@ -4,5 +4,4 @@
 provides interfaces for parsing and manipulating XML files. This module allows
 Perl programmers to make use of the highly capable validating XML parser and
 the high performance DOM implementation.</description>
-  <devel project="devel:languages:perl" package="perl-XML-LibXML"/>
 </package>

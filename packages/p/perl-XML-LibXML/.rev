@@ -662,4 +662,16 @@ newSVpvn() call. (forwarded request 122259 from k0da)</comment>
     <comment>Get fully determistic builds, even with --nocheck (boo#1227364) (forwarded request 1288338 from bmwiedemann)</comment>
     <requestid>1288666</requestid>
   </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>d85b4396badc64252421c7faa6b5beb3</srcmd5>
+    <version>2.0210</version>
+    <time>1759425545</time>
+    <user>anag_factory</user>
+    <comment>- fix build with libxml2 2.14
+- deleted patches
+  * perl-XML-LibXML-fix-testsuite-with-libxml2-2.13.patch (adopted to 2.14)
+- added patches
+  * perl-XML-LibXML-fix-testsuite-with-libxml2-2.14.patch</comment>
+    <requestid>1308465</requestid>
+  </revision>
 </revisionlist>

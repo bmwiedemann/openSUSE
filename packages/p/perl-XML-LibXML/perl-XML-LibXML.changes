@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 24 11:55:34 UTC 2025 - pgajdos@suse.com
+
+- fix build with libxml2 2.14
+- deleted patches
+  * perl-XML-LibXML-fix-testsuite-with-libxml2-2.13.patch (adopted to 2.14)
+- added patches
+  * perl-XML-LibXML-fix-testsuite-with-libxml2-2.14.patch
+
+-------------------------------------------------------------------
 Tue Jun 24 14:33:45 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Get fully determistic builds, even with --nocheck (boo#1227364)
