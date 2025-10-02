@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Wed Sep  3 06:57:15 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.1.1
+  1.1.1
+    Venus
+      * add support for
+         . VK_EXT_blend_operation_advanced
+         . VK_EXT_host_image_copy
+         . VK_EXT_sample_locations
+         . VK_KHR_acceleration_structure
+         . VK_KHR_dynamic_rendering_local_read
+         . VK_KHR_maintenance6
+         . VK_KHR_maintenance7
+         . VK_KHR_ray_query
+         . VK_KHR_ray_tracing_maintenance1
+         . VK_KHR_ray_tracing_position_fetch
+         . VK_KHR_ray_tracing_pipeline
+         . allow to passthrough Vulkan 1.4 support
+      * make virgl_render_server and venus work also without HAVE_MEMFD_CREATE
+    virgl/vrend fixes and changes:
+      * fix modifier query overflow
+      * support R16G16B16X16_UNORM
+      * don't use resource IDs when checking index buffer update requirement
+      * actually propagate the MAX_VERTEX_OUTPUT_COMPONENTS for GLES>=3.0
+      * propagate the GL_MAX_stage_SHADER_STORAGE_BLOCKS for each stage
+      * virgl: fix fd leak in resource map
+      * Fix int-conversion fatal build error with GCC-14
+      * virgl: Add error messages to virgl_renderer_init()
+      * vtest: perfetto tracing support
+      * don't choke when the host driver re-uses OpenGL IDs
+    Improve support on FreeBSD and Android
+    DRM
+      * fence: Clear last fence after submission
+      * msm:
+         . add new caps
+         . update UAPI header
+         . improve error msg
+         . fix fence-sharing
+      * amdgpu:
+         . remove redundant SIZE_MAX checks
+         . return original error code to guest from amdgpu_ccmd_bo_query_info()
+         . relax error handling of libdrm API failures
+         . handle dumb resources gracefully in amdgpu_ccmd_bo_query_info()
+  1.1.0
+    Support for amdgpu native contexts (Requires umerged changes to qemu, libdrm, and mesa
+    Venus:
+    * Enable support for new extensions:
+         . EXT_attachment_feedback_loop_layout
+         . VK_KHR_maintenance5
+         . VK_KHR_fragment_shading_rate support
+         . VK_EXT_external_memory_acquire_unmodified
+         . VK_KHR_format_feature_flags2
+    * Fixes and improvements:
+         . Fix a prior ring wait seqno validation
+         . handle ring fatal error more robustly
+         . hide priority request logging behind debug build
+         . lock device tracked object list
+         . log more on ring fatal
+         . only set ring thread prio if requested
+         . optimize to avoid locking each encoder write
+         . set forwarded nice priority for ring threads
+    virgl/vrend:
+    * create transient dmabuf in resource_map
+    * fix "error: implicit declaration of function 'close'" for Windows
+    * fix "fatal error: poll.h: No such file or directory" for Windows
+    * Correct error value returned by virgl_fence_set_fd_locked()
+    * virgl_protocol: Use parenthesis in macros
+    * virgl_util: Add hash_table_search()
+    * virgl_util: hide slow trace behind debug build
+    * Require 4-byte alignment for all virglrenderer commands
+    * consider drm_initialized too
+    * Add XRGB2101010 support
+    * Check whether we actually got a valid OpenGL/GLES context
+    * Properly seperate the mirror_clamp feat reporting
+    * Support R16G16B16X16_FLOAT as GBM buffer
+    * Improve interaction between 24 bit formats used with GBM and OpenGL
+    * clean up error reporting in vrend_renderer_init
+    * conditionally build using gbm_bo_get_map_info()
+    * fix incorrect limit sent for max samplers
+    * reset dirty mask after binding samplers
+    * stop clobbering the texture bindings
+    * warn on missing sampler_view.texture
+    * workaround non-conformant sampler view pattern
+    * winsys_gbm: initialize pointer map_data before calling gbm_bo_map
+    * decode: print error if format is not correct
+    * shader: Never return out-of-range from varying_bit_from_semantic_and_index
+    * shader: Remove unnecessary condition
+    * util: Fix compiling set_dmabuf_name() using older kernel headers
+    * renderer: Verify that the iov has enough space for the texture data
+    Improve compatibility with MS Windows:
+    * Fix resource_get_info_ext() failing for d3d resources
+    * Fixed logical operation handling so that the logic-op function is updated whenever needed.
+    * tgsi: fix "error: 'uint' undeclared" for Windows
+    Add a fuzzer that sets up valid states to be able to test more code
+    build changes:
+    * Support Darwin hosts
+    * Disable strict aliasing
+
+-------------------------------------------------------------------
 Sun Mar 17 11:48:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:

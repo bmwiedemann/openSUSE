@@ -1,7 +1,7 @@
 #
 # spec file for package virglrenderer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %define         libname lib%{name}1
 Name:           virglrenderer
-Version:        1.0.1
+Version:        1.1.1
 Release:        0
 Summary:        Virgl Rendering library
 License:        MIT
@@ -33,6 +33,7 @@ Source0:        https://gitlab.freedesktop.org/virgl/%{name}/-/archive/%{name}-%
 BuildRequires:  Mesa-devel
 BuildRequires:  meson >= 0.46
 BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  python3-PyYAML
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(epoxy) >= 1.5.4
 BuildRequires:  pkgconfig(gbm) >= 18.0.0
