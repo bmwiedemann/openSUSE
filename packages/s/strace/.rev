@@ -1694,4 +1694,18 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     <comment></comment>
     <requestid>1299115</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>0e1cc19d9d6357cd906a8e0b667ac166</srcmd5>
+    <version>6.17</version>
+    <time>1759425542</time>
+    <user>anag_factory</user>
+    <comment>- Update to strace 6.17
+  * Implemented decoding of file_getattr and file_setattr syscalls.
+  * Implemented decoding of SO_INQ socket option.
+  * Updated lists of BPF_*, BTN_*, BTRFS_*, DEVCONF_*, ETHTOOL_*, FALLOC_*,
+    KEXEC_*, KEY_*, KVM_*, NETCONFA_*, NFT_*, PR_*, SCM_*, V4L2_*, and XDP_*
+    constants.
+  * Updated lists of ioctl commands from Linux 6.17. (forwarded request 1308451 from AndreasSchwab)</comment>
+    <requestid>1308452</requestid>
+  </revision>
 </revisionlist>
