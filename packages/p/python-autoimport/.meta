@@ -1,0 +1,6 @@
+<package name="python-autoimport" project="openSUSE:Factory">
+  <title>Autoimport missing python libraries</title>
+  <description>Module to help automatically import missing python libraries when developing
+code.</description>
+  <url>https://github.com/lyz-code/autoimport</url>
+</package>

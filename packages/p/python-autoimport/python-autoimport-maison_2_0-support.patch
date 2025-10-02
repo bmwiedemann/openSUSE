@@ -1,0 +1,69 @@
+From 988b6a0c3ef93639d6fe464fbe9ffb5836da76ec Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Mon, 26 Aug 2024 23:46:11 +0100
+Subject: [PATCH] fix: Support maison 2.0.0
+
+Closes #258
+---
+ src/autoimport/entrypoints/cli.py | 28 +++++++++++++++++++++++-----
+ 1 file changed, 23 insertions(+), 5 deletions(-)
+
+diff --git a/src/autoimport/entrypoints/cli.py b/src/autoimport/entrypoints/cli.py
+index 5703699..56aca8c 100644
+--- a/src/autoimport/entrypoints/cli.py
++++ b/src/autoimport/entrypoints/cli.py
+@@ -2,14 +2,13 @@
+ 
+ import logging
+ from pathlib import Path
+-from typing import IO, Any, List, Optional, Sequence, Tuple, Union
++from typing import IO, Any, Dict, List, Optional, Sequence, Tuple, Union
+ 
+ import click
+ 
+ # Migrate away from xdg to xdg-base-dirs once only Python >= 3.10 is supported
+ # https://github.com/lyz-code/autoimport/issues/239
+ import xdg
+-from maison.config import ProjectConfig
+ 
+ from autoimport import services, version
+ 
+@@ -55,6 +54,27 @@ def convert(
+             return get_files(str(path))
+ 
+ 
++def get_config(
++    package_name: str, source_files: Optional[List[str]] = None
++) -> Dict[str, Any]:
++    """Get the configuration for a package."""
++    # pylint: disable=import-outside-toplevel
++    try:
++        from maison.config import UserConfig  # type: ignore[attr-defined,unused-ignore]
++
++        return UserConfig(
++            package_name=package_name, source_files=source_files, merge_configs=True
++        ).values
++    except ImportError:
++        from maison.config import (  # type: ignore[attr-defined,unused-ignore]
++            ProjectConfig,
++        )
++
++        return ProjectConfig(
++            project_name=package_name, source_files=source_files, merge_configs=True
++        ).to_dict()
++
++
+ @click.command()
+ @click.version_option(version="", message=version.version_info())
+ @click.option("--config-file", default=None)
+@@ -85,9 +105,7 @@ def cli(
+     if config_file is not None:
+         config_files.append(config_file)
+ 
+-    config = ProjectConfig(
+-        project_name="autoimport", source_files=config_files, merge_configs=True
+-    ).to_dict()
++    config = get_config(package_name="autoimport", source_files=config_files)
+ 
+     # Process inputs
+     flattened_files = flatten(files)

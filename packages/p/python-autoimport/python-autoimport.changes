@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Aug 13 14:53:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Add python-autoimport-maison_2_0-support.patch: Add support for
+  maison >= 2.0; upstream PR (gh#lyz-code/autoimport#259).
+- Add python-autoimport-rename-xdg-module.patch: Adapt to upstream
+  renaming of xdg module to xdg_base_dirs
+  (gh#lyz-code/autoimport#239).

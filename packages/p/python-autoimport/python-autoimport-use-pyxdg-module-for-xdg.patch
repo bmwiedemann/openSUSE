@@ -1,0 +1,42 @@
+---
+ pyproject.toml                    |    2 +-
+ src/autoimport/entrypoints/cli.py |    6 ++----
+ 2 files changed, 3 insertions(+), 5 deletions(-)
+
+Index: autoimport-1.6.1/src/autoimport/entrypoints/cli.py
+===================================================================
+--- autoimport-1.6.1.orig/src/autoimport/entrypoints/cli.py
++++ autoimport-1.6.1/src/autoimport/entrypoints/cli.py
+@@ -6,9 +6,7 @@ from typing import IO, Any, Dict, List,
+ 
+ import click
+ 
+-# Migrate away from xdg to xdg-base-dirs once only Python >= 3.10 is supported
+-# https://github.com/lyz-code/autoimport/issues/239
+-import xdg
++from xdg.BaseDirectory import xdg_config_home
+ 
+ from autoimport import services, version
+ 
+@@ -96,7 +94,7 @@ def cli(
+     # Compose configuration
+     config_files: List[str] = []
+ 
+-    global_config_path = xdg.xdg_config_home() / "autoimport" / "config.toml"
++    global_config_path = Path(xdg_config_home) / "autoimport" / "config.toml"
+     if global_config_path.is_file():
+         config_files.append(str(global_config_path))
+ 
+Index: autoimport-1.6.1/pyproject.toml
+===================================================================
+--- autoimport-1.6.1.orig/pyproject.toml
++++ autoimport-1.6.1/pyproject.toml
+@@ -306,7 +306,7 @@ module = [
+     "pyprojroot",
+     "sh",
+     "virtualenv",
+-    "xdg",
++    "pyxdg",
+ ]
+ ignore_missing_imports = true
+ 
