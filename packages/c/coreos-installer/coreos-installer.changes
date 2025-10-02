@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Oct 02 07:22:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.25.0:
+  * Major changes:
+    - Add Fedora 44 signing key; drop Fedora 41 signing key
+  * Minor changes:
+    - Restore formatting of progress reporting to pre 0.24.0
+      behavior.
+  * Internal changes:
+    - Add initial TMT tests and a new workflow to execute tests on
+      PRs
+    - Use release profile for smaller binaries in CI testing
+    - Support cryptsetup-2.8.0's UUIDs naming of dm-integrity
+      devices
+    - rootmap: Inject root=/dev/disk/by-uuid/dm-mpath-$UUID when on
+      multipath
+    - rootmap: Inject mpath.wwid=$WWID when on multipath
+  * Packaging changes:
+    - Updated core dependencies, including a major upgrade to clap
+      from v3 to v4 and new versions of nix, pnet, and sha2.
+    - build(deps): bump clap_mangen from 0.2.26 to 0.2.27
+    - build(deps): bump reqwest from 0.12.19 to 0.12.20
+    - build(deps): bump serde_with from 3.12.0 to 3.13.0
+    - build(deps): bump nmstate from 2.2.45 to 2.2.46
+    - build(deps): bump libc from 0.2.172 to 0.2.174
+    - build(deps): bump reqwest from 0.12.18 to 0.12.19
+    - build(deps): bump flate2 from 1.1.1 to 1.1.2
+    - build(deps): bump uuid from 1.16.0 to 1.17.0
+    - build(deps): bump reqwest from 0.12.15 to 0.12.18
+    - build(deps): bump openssl from 0.10.72 to 0.10.73
+    - build(deps): bump nmstate from 2.2.43 to 2.2.45
+    - build(deps): bump libc from 0.2.171 to 0.2.172
+    - build(deps): bump rand from 0.8.5 to 0.9.1
+
+-------------------------------------------------------------------
 Wed Apr 16 17:59:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.24.0:
