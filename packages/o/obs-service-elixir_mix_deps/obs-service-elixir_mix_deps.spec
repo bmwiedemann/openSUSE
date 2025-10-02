@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-elixir_mix_deps
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 Name:           obs-service-elixir_mix_deps
 #               This will be set by osc services, that will run after this.
-Version:        0.3.0~0
+Version:        0.3.1~0
 Release:        0
 Summary:        OBS Source Service for Elixir software packaging
 License:        GPL-2.0-only
 URL:            https://github.com/openSUSE/obs-service-elixir_mix_deps
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Source100:      README.md
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libzstd)
