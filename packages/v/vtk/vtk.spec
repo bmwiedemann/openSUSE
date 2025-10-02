@@ -32,26 +32,29 @@
 %define pkgname vtk
 
 # pugixml in Leap 15.x is too old
-# fmt in Leap 15.x and 16.x is too old
+# fmt in Leap 15.x is too old
 # Need haru/hpdf version with HPDF_SHADING, i.e. >= 2.4.0
 # PEGTL >= 3.0 not supported, https://gitlab.kitware.com/vtk/vtk/-/issues/18151
-# netcdf in Leap 15.6 has hdf5 version conflicts
 %if 0%{?suse_version} <= 1500
 %bcond_with    fast_float
 %bcond_with    haru
-%bcond_with    netcdf
 %bcond_with    fmt
 %bcond_with    pugixml
 %else
 %bcond_without fast_float
 %bcond_without haru
-%bcond_without netcdf
 %bcond_without pugixml
+# fmt in Factory is too new
+%if 0%{?suse_version} <= 1600
 %bcond_without fmt
+%else
+%bcond_with fmt
+%endif
 %define have_strip_nondeterminism 1
 %endif
 
 %bcond_with    system_pegtl
+%bcond_without netcdf
 %bcond_without gl2ps
 %bcond_without java
 
@@ -92,7 +95,7 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.5.0
+Version:        9.5.2
 Release:        0
 %define series  9.5
 Summary:        The Visualization Toolkit - A high level 3D visualization library
@@ -120,8 +123,6 @@ Patch18:        0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch
 Patch19:        0001-Add-missing-libm-link-library-for-bundled-ExodusII.patch
 # PATCH-FIX-OPENSUSE
 Patch20:        0001-Fix-missing-GLAD-symbol-mangling-in-Rendering-GL2PSO.patch
-# PATCH-FIX-UPSTREAM -- Support java bindings for modules IO Avmesh and LANLX3D
-Patch21:        0001-java-support-java-bindings-IO-Avmesh-and-LANLX3D.patch
 BuildRequires:  cgns-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.12
@@ -182,6 +183,7 @@ BuildRequires:  graphviz
 %endif
 %if %{with fmt}
 BuildRequires:  fmt-devel > 11.0
+BuildConflicts: fmt-devel >= 12
 %endif
 %if %{with gl2ps}
 BuildRequires:  gl2ps-devel > 1.4.0

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  1 13:48:54 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 9.5.2, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/v9.5.2/Documentation/release/9.5.md
+- Build with internal libfmt in factory, since the version 12 there
+  is not compatible with this version of vtk
+
+-------------------------------------------------------------------
+Fri Aug 29 14:56:06 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.5.1, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/v9.5.1/Documentation/release/9.5.md
+- Drop upstream patches:
+  * 0001-java-support-java-bindings-IO-Avmesh-and-LANLX3D.patch
+- Use system netcdf for SLE15SP7, as it builds fine. Leap/SLE15.6
+  is not buildable due to several more missing dependencies,
+  and 16.0 is around the corner.
+
+-------------------------------------------------------------------
 Mon Aug 25 16:09:04 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove references to qml plugin dir. The QQmlVTKPlugin has been
