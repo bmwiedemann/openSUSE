@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 01 20:06:21 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759328765.e7438f7:
+  * Allow redirects in needle NeedleDownloader
+  * Don't overwrite firewall xml
+  * Add UEFI support for ipxe kernel boot
+  * t: Use consistent Mojo::File in 08-autotest as well
+  * os-autoinst-setup-multi-machine: Simplify determine_ethernet_interface
+
+-------------------------------------------------------------------
 Mon Sep 29 15:17:41 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1759134946.e08d7c7:
