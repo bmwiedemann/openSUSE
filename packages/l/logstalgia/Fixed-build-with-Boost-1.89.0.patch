@@ -1,0 +1,250 @@
+From 823a1a4dbdba8f682e2d31851c11e369e50aa0f7 Mon Sep 17 00:00:00 2001
+From: Andrew Caudwell <acaudwell@gmail.com>
+Date: Thu, 14 Aug 2025 12:10:06 +1200
+Subject: [PATCH] Fixed build with Boost 1.89.0 by no longer linking boost
+ system.
+
+Increased minimum required version of Boost to 1.69.
+
+Updated ax_boost_base.m4 macro
+---
+ ChangeLog             |   4 ++
+ INSTALL               |   2 +-
+ configure.ac          |   5 +-
+ m4/ax_boost_base.m4   |   8 +--
+ m4/ax_boost_system.m4 | 121 ------------------------------------------
+ src/settings.h        |   2 +-
+ 6 files changed, 13 insertions(+), 129 deletions(-)
+ delete mode 100644 m4/ax_boost_system.m4
+
+diff --git a/ChangeLog b/ChangeLog
+index 73e7e26..9abeb88 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,7 @@
++1.1.5:
++ * Fixed build with Boost 1.89.0 by no longer linking boost system.
++ * Increased minimum required version of Boost to 1.69.
++
+ 1.1.4:
+  * Added experimental support for Wayland (beroset).
+  * Updated autoconf macros.
+diff --git a/INSTALL b/INSTALL
+index faae801..17b42ff 100644
+--- a/INSTALL
++++ b/INSTALL
+@@ -18,7 +18,7 @@ Logstalgia requires the following libraries to compile (package names may vary):
+     Freetype 2 (libfreetype6-dev)
+     GLEW (libglew-dev)
+     GLM >= 0.9.3 (libglm-dev)
+-    Boost Filesystem >= 1.46 (libboost-filesystem-dev)
++    Boost Filesystem >= 1.69 (libboost-filesystem-dev)
+     PNG >= 1.2 (libpng12-dev)
+ 
+ 2. Building
+diff --git a/configure.ac b/configure.ac
+index 382fa7e..bcc107f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@
+ 
+ AC_PREREQ(2.61)
+ 
+-AC_INIT(Logstalgia, 1.1.4, [acaudwell@gmail.com])
++AC_INIT(Logstalgia, 1.1.5, [acaudwell@gmail.com])
+ AC_CONFIG_AUX_DIR([build-aux])
+ AC_CONFIG_SRCDIR([src/main.cpp])
+ 
+@@ -45,8 +45,7 @@ AC_CHECK_FUNCS([IMG_LoadPNG_RW], , AC_MSG_ERROR([SDL2_image with PNG support req
+ AC_CHECK_FUNCS([IMG_LoadJPG_RW], , AC_MSG_ERROR([SDL2_image with JPEG support required. Please see INSTALL]))
+ 
+ #BOOST
+-AX_BOOST_BASE([1.46], , AC_MSG_ERROR(Boost Filesystem >= 1.46 is required. Please see INSTALL))
+-AX_BOOST_SYSTEM
++AX_BOOST_BASE([1.69], , AC_MSG_ERROR(Boost Filesystem >= 1.69 is required. Please see INSTALL))
+ AX_BOOST_FILESYSTEM
+ 
+ CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
+diff --git a/m4/ax_boost_base.m4 b/m4/ax_boost_base.m4
+index 6c944b1..9d5a08c 100644
+--- a/m4/ax_boost_base.m4
++++ b/m4/ax_boost_base.m4
+@@ -10,7 +10,7 @@
+ #
+ #   Test for the Boost C++ libraries of a particular version (or newer)
+ #
+-#   If no path to the installed boost library is given the macro searchs
++#   If no path to the installed boost library is given the macro searches
+ #   under /usr, /usr/local, /opt, /opt/local and /opt/homebrew and evaluates
+ #   the $BOOST_ROOT environment variable. Further documentation is available
+ #   at <http://randspringer.de/boost/index.html>.
+@@ -33,7 +33,7 @@
+ #   and this notice are preserved. This file is offered as-is, without any
+ #   warranty.
+ 
+-#serial 51
++#serial 55
+ 
+ # example boost program (need to pass version)
+ m4_define([_AX_BOOST_BASE_PROGRAM],
+@@ -114,7 +114,7 @@ AC_DEFUN([_AX_BOOST_BASE_RUNDETECT],[
+     AS_CASE([${host_cpu}],
+       [x86_64],[libsubdirs="lib64 libx32 lib lib64"],
+       [mips*64*],[libsubdirs="lib64 lib32 lib lib64"],
+-      [ppc64|powerpc64|s390x|sparc64|aarch64|ppc64le|powerpc64le|riscv64|e2k],[libsubdirs="lib64 lib lib64"],
++      [ppc64|powerpc64|s390x|sparc64|aarch64|ppc64le|powerpc64le|riscv64|e2k|loongarch64],[libsubdirs="lib64 lib lib64"],
+       [libsubdirs="lib"]
+     )
+ 
+@@ -289,6 +289,8 @@ AC_DEFUN([_AX_BOOST_BASE_RUNDETECT],[
+         else
+             AC_MSG_NOTICE([Your boost libraries seems to old (version $_version).])
+         fi
++        BOOST_LDFLAGS=""
++        BOOST_CPPFLAGS=""
+         # execute ACTION-IF-NOT-FOUND (if present):
+         ifelse([$3], , :, [$3])
+     else
+diff --git a/m4/ax_boost_system.m4 b/m4/ax_boost_system.m4
+deleted file mode 100644
+index 323e2a6..0000000
+--- a/m4/ax_boost_system.m4
++++ /dev/null
+@@ -1,121 +0,0 @@
+-# ===========================================================================
+-#     https://www.gnu.org/software/autoconf-archive/ax_boost_system.html
+-# ===========================================================================
+-#
+-# SYNOPSIS
+-#
+-#   AX_BOOST_SYSTEM
+-#
+-# DESCRIPTION
+-#
+-#   Test for System library from the Boost C++ libraries. The macro requires
+-#   a preceding call to AX_BOOST_BASE. Further documentation is available at
+-#   <http://randspringer.de/boost/index.html>.
+-#
+-#   This macro calls:
+-#
+-#     AC_SUBST(BOOST_SYSTEM_LIB)
+-#
+-#   And sets:
+-#
+-#     HAVE_BOOST_SYSTEM
+-#
+-# LICENSE
+-#
+-#   Copyright (c) 2008 Thomas Porschberg <thomas@randspringer.de>
+-#   Copyright (c) 2008 Michael Tindal
+-#   Copyright (c) 2008 Daniel Casimiro <dan.casimiro@gmail.com>
+-#
+-#   Copying and distribution of this file, with or without modification, are
+-#   permitted in any medium without royalty provided the copyright notice
+-#   and this notice are preserved. This file is offered as-is, without any
+-#   warranty.
+-
+-#serial 20
+-
+-AC_DEFUN([AX_BOOST_SYSTEM],
+-[
+-	AC_ARG_WITH([boost-system],
+-	AS_HELP_STRING([--with-boost-system@<:@=special-lib@:>@],
+-                   [use the System library from boost - it is possible to specify a certain library for the linker
+-                        e.g. --with-boost-system=boost_system-gcc-mt ]),
+-        [
+-        if test "$withval" = "no"; then
+-			want_boost="no"
+-        elif test "$withval" = "yes"; then
+-            want_boost="yes"
+-            ax_boost_user_system_lib=""
+-        else
+-		    want_boost="yes"
+-		ax_boost_user_system_lib="$withval"
+-		fi
+-        ],
+-        [want_boost="yes"]
+-	)
+-
+-	if test "x$want_boost" = "xyes"; then
+-        AC_REQUIRE([AC_PROG_CC])
+-        AC_REQUIRE([AC_CANONICAL_BUILD])
+-		CPPFLAGS_SAVED="$CPPFLAGS"
+-		CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
+-		export CPPFLAGS
+-
+-		LDFLAGS_SAVED="$LDFLAGS"
+-		LDFLAGS="$LDFLAGS $BOOST_LDFLAGS"
+-		export LDFLAGS
+-
+-        AC_CACHE_CHECK(whether the Boost::System library is available,
+-					   ax_cv_boost_system,
+-        [AC_LANG_PUSH([C++])
+-			 CXXFLAGS_SAVE=$CXXFLAGS
+-			 CXXFLAGS=
+-
+-			 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[@%:@include <boost/system/error_code.hpp>]],
+-				    [[boost::system::error_category *a = 0;]])],
+-                   ax_cv_boost_system=yes, ax_cv_boost_system=no)
+-			 CXXFLAGS=$CXXFLAGS_SAVE
+-             AC_LANG_POP([C++])
+-		])
+-		if test "x$ax_cv_boost_system" = "xyes"; then
+-			AC_SUBST(BOOST_CPPFLAGS)
+-
+-			AC_DEFINE(HAVE_BOOST_SYSTEM,,[define if the Boost::System library is available])
+-            BOOSTLIBDIR=`echo $BOOST_LDFLAGS | sed -e 's/@<:@^\/@:>@*//'`
+-
+-			LDFLAGS_SAVE=$LDFLAGS
+-            if test "x$ax_boost_user_system_lib" = "x"; then
+-                for libextension in `ls -r $BOOSTLIBDIR/libboost_system* 2>/dev/null | sed 's,.*/lib,,' | sed 's,\..*,,'` ; do
+-                     ax_lib=${libextension}
+-				    AC_CHECK_LIB($ax_lib, exit,
+-                                 [BOOST_SYSTEM_LIB="-l$ax_lib"; AC_SUBST(BOOST_SYSTEM_LIB) link_system="yes"; break],
+-                                 [link_system="no"])
+-				done
+-                if test "x$link_system" != "xyes"; then
+-                for libextension in `ls -r $BOOSTLIBDIR/boost_system* 2>/dev/null | sed 's,.*/,,' | sed -e 's,\..*,,'` ; do
+-                     ax_lib=${libextension}
+-				    AC_CHECK_LIB($ax_lib, exit,
+-                                 [BOOST_SYSTEM_LIB="-l$ax_lib"; AC_SUBST(BOOST_SYSTEM_LIB) link_system="yes"; break],
+-                                 [link_system="no"])
+-				done
+-                fi
+-
+-            else
+-               for ax_lib in $ax_boost_user_system_lib boost_system-$ax_boost_user_system_lib; do
+-				      AC_CHECK_LIB($ax_lib, exit,
+-                                   [BOOST_SYSTEM_LIB="-l$ax_lib"; AC_SUBST(BOOST_SYSTEM_LIB) link_system="yes"; break],
+-                                   [link_system="no"])
+-                  done
+-
+-            fi
+-            if test "x$ax_lib" = "x"; then
+-                AC_MSG_ERROR(Could not find a version of the Boost::System library!)
+-            fi
+-			if test "x$link_system" = "xno"; then
+-				AC_MSG_ERROR(Could not link against $ax_lib !)
+-			fi
+-		fi
+-
+-		CPPFLAGS="$CPPFLAGS_SAVED"
+-	LDFLAGS="$LDFLAGS_SAVED"
+-	fi
+-])
+diff --git a/src/settings.h b/src/settings.h
+index 7fd4999..b5b0d0d 100644
+--- a/src/settings.h
++++ b/src/settings.h
+@@ -18,7 +18,7 @@
+ #ifndef LOGSTALGIA_SETTINGS_H
+ #define LOGSTALGIA_SETTINGS_H
+ 
+-#define LOGSTALGIA_VERSION "1.1.4"
++#define LOGSTALGIA_VERSION "1.1.5"
+ 
+ #include "core/settings.h"
+ 
+-- 
+2.51.0
+

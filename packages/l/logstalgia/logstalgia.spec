@@ -1,7 +1,7 @@
 #
 # spec file for package logstalgia
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,10 @@ License:        GPL-3.0-or-later
 Group:          Amusements/Toys/Other
 URL:            https://logstalgia.io/
 Source:         https://github.com/acaudwell/Logstalgia/releases/download/logstalgia-%{version}/%{name}-%{version}.tar.gz
+Patch0:         Fixed-build-with-Boost-1.89.0.patch
 BuildRequires:  Mesa-libGLU-devel
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  ftgl-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
@@ -39,7 +42,6 @@ Requires:       freefont
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_filesystem-devel >= 1.46
 BuildRequires:  libboost_headers-devel >= 1.46
-BuildRequires:  libboost_system-devel >= 1.46
 %else
 BuildRequires:  boost-devel >= 1.46
 %endif
@@ -54,9 +56,11 @@ hit by the paddle while unsuccessful ones (eg 404 - File Not Found)
 are missed and pass through.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+# Autoreconf needed after patching the configuration files
+autoreconf -fvi
 %configure \
   --enable-ttf-font-dir=%{_datadir}/fonts/truetype
 %make_build
