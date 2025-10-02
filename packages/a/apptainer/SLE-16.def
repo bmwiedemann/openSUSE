@@ -1,10 +1,10 @@
 BootStrap: zypper
-OSVersion: 15.6
+OSVersion: 16.0
 Include: zypper
-Product: SLES/15.6/x86_64
+Product: SLES/16.0/x86_64
 User: EMAIL
 Regcode: REGCODE
-MirrorURL: https://updates.suse.com/SUSE/Products/SLE-BCI/15-SP6/x86_64/product/
+MirrorURL: https://updates.suse.com/SUSE/Products/SLE-Product-SLES/16.0/x86_64/product
 # Just base modules here, other modules are installed in post
 Modules: \n\
 sle-module-basesystem,\n\
