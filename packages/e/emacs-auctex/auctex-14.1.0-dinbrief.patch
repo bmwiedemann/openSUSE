@@ -1,0 +1,17 @@
+---
+ style/dinbrief.el |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- style/dinbrief.el
++++ style/dinbrief.el	2025-10-02 11:14:41.048677856 +0000
+@@ -45,8 +45,8 @@
+  "dinbrief"
+  (lambda ()
+    (LaTeX-add-environments
+-    '("letter" LaTeX-dinbrief-env-recipient)
+-    "dinquote")
++    '("dinquote")
++    '("letter" LaTeX-dinbrief-env-recipient))
+    (add-hook 'LaTeX-document-style-hook
+              #'LaTeX-dinbrief-style)
+    (setq LaTeX-default-document-environment "letter")

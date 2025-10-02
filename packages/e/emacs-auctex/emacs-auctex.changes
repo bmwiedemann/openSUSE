@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Oct  2 11:24:31 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to AUCTeX ELPA version 14.1.0
+  - Add new commands ~LaTeX-make-inline~ which converts the display math
+    environment at point to inline math and the more general
+    ~LaTeX-modify-math~ which converts the mathematical construct at point
+    into one with different kind of delimiter or another environment.
+  - Add new support files =style/embedfile.el=, =style/figureversions.el=,
+    =style/needspace.el=, =style/tablericons.el= and =style/wrapstuff.el=.
+  - AUCTeX now requires GNU Emacs 28.1 or higher.
+  - Fix unwanted expansion of abbrevs during filling when ~abbrev-mode~ is
+    enabled.
+  - Fix the command-line options passed to latexmk when processing files
+    with xetex in order to run the viewer correctly.
+  - Fix removing of stale verbatim entries in auto-parsed file once the
+    corresponding package isn't used in the .tex file anymore.  Complete
+    removal may require two invocations of =C-u C-c C-n=.
+  - Improve support for folding of citations macros.  The current folding
+    =[c]= is changed to a more descriptive version, using author names and
+    publication years, like =[Ne21]= or =[ABC99]=.  These are extracted
+    from any bib files referenced in the document or specified by the user
+    option ~TeX-fold-bib-file~.
+  - Add support for folding of =\begin{env}= and =\end{env}= macros.  The
+    replacement specifiers are controlled by the custom option
+    ~TeX-fold-begin-end-spec-list~.
+  - Add new custom option ~TeX-fold-alert-color~ which determines the
+    color used when folding the ~\alert~ macro, defaults to ~red~.
+  - Add new support files =style/glossaries-extra.el=,
+    =style/glossaries.el=, =style/inlinegraphicx.el=, =style/minted2.el=
+    (=style/minted.el= is updated to package v3.1.2) and
+    =style/stocksize.el=.
+  - Add preliminary support for parsing =\graphicspath= in
+    =style/graphicx.el=.
+  - Change the default value of ~LaTeX-insert-into-comments~ from ~t~ to
+    ~nil~.
+- Add patch auctex-14.1.0-dinbrief.patch
+  * Correct usage of (LaTeX-add-environments) 
+
+-------------------------------------------------------------------
 Thu Mar 27 15:24:24 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Switch over to TeXLive 2025 

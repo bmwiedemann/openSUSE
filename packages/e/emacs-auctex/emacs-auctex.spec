@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-auctex
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ BuildRequires:  texlive-latex >= %tlversion
 BuildRequires:  texlive-tex >= %tlversion
 BuildRequires:  texlive-texinfo >= %tlversion
 %endif
-Version:        14.0.7
+Version:        14.1.0
 Release:        0
 Summary:        AUC TeX: An Emacs Extension
 License:        GPL-3.0-or-later
@@ -59,6 +59,7 @@ URL:            https://www.gnu.org/software/auctex
 # PATCH-FEATURE-UPSTREAM dvips.patch
 Patch0:         dvips.patch
 Patch1:         auctex-14.0.7-texinfo.patch
+Patch2:         auctex-14.1.0-dinbrief.patch
 BuildArch:      noarch
 
 %description
@@ -78,6 +79,7 @@ in the info file auctex in emacs info-mode.
 %setup -n auctex-%{version}
 %patch -P0
 %patch -P1
+%patch -P2
 
 %build
     unset ${!LC_*}
