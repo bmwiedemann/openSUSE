@@ -27,7 +27,7 @@ Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz.sha256sum
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_atomic-devel
 BuildRequires:  meson
 BuildRequires:  wayland-devel
 BuildRequires:  pkgconfig

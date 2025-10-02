@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  2 03:30:41 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Replaced BuildRequires from libboost_system-devel 
+  to libboost_atomic-devel.
+
+-------------------------------------------------------------------
 Thu Sep  4 04:59:39 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.10.0:
