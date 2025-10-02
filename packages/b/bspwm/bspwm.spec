@@ -1,7 +1,7 @@
 #
 # spec file for package bspwm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017 Luke Jones, luke.nukem.jones@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           bspwm
-Version:        0.9.10
+Version:        0.9.11
 Release:        0
 Summary:        A tiling window manager based on binary space partitioning
 License:        BSD-2-Clause
