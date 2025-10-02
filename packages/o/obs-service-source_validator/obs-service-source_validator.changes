@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 01 09:53:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.42+2:
+  * Ignore Debian special files during unmentioned-sources check
+
+-------------------------------------------------------------------
 Mon May 19 09:31:29 UTC 2025 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 0.42:

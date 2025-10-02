@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-source_validator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           obs-service-source_validator
-Version:        0.42
+Version:        0.42+2
 Release:        0
 Summary:        An OBS source service: running all the osc source-validator checks
 License:        GPL-2.0-or-later

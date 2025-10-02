@@ -839,4 +839,13 @@ last submission had wrong tar ball for unknown reason</comment>
   * helpers/check_dates_in_changes: Only match if -------- is at the line start</comment>
     <requestid>1278369</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>08a2cc9ee14246c970ae416d70021f69</srcmd5>
+    <version>0.42+2</version>
+    <time>1759425658</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.42+2:
+  * Ignore Debian special files during unmentioned-sources check (forwarded request 1308369 from dimstar)</comment>
+    <requestid>1308519</requestid>
+  </revision>
 </revisionlist>
