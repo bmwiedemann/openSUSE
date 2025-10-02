@@ -1713,4 +1713,13 @@ C API
     <comment></comment>
     <requestid>1306450</requestid>
   </revision>
+  <revision rev="59" vrev="6">
+    <srcmd5>6895319a6ad51a7d5241d64267f345c5</srcmd5>
+    <version>3.11.13</version>
+    <time>1759425571</time>
+    <user>anag_factory</user>
+    <comment>- Add gh139257-Support-docutils-0.22.patch to fix build with latest
+  docutils (&gt;=0.22) gh#python/cpython#139257</comment>
+    <requestid>1308253</requestid>
+  </revision>
 </revisionlist>
