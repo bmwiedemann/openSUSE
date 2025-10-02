@@ -1022,4 +1022,12 @@
     <comment></comment>
     <requestid>1287041</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>00e5fec336993bba7e712fb34afc1911</srcmd5>
+    <version>2.15.0</version>
+    <time>1759425650</time>
+    <user>anag_factory</user>
+    <comment>Fix build.</comment>
+    <requestid>1308492</requestid>
+  </revision>
 </revisionlist>

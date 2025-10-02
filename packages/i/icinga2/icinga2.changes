@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 27 17:43:34 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Boost.System has been header only since Boost 1.69.0
+  - Add 76fa0d9e8054f405dc3d1e39a4b48f21e86afdf0.patch
+
+-------------------------------------------------------------------
 Thu Jun 19 08:50:18 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update ot 2.15.0
