@@ -59,7 +59,6 @@ BuildRequires:  glew%{?with_use_egl:_EGL}-devel
 BuildRequires:  glm-devel >= 0.9.8
 BuildRequires:  libboost_filesystem-devel-impl
 BuildRequires:  libboost_locale-devel-impl
-BuildRequires:  libboost_system-devel-impl >= 1.71
 BuildRequires:  libboost_test-devel-impl
 BuildRequires:  libngspice-devel
 BuildRequires:  memory-constraints
