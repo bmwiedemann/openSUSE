@@ -1,7 +1,7 @@
 #
 # spec file for package python-scipy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@
 # TODO explore debundling Boost for standard
 
 Name:           python-scipy%{?psuffix}
-Version:        1.16.1
+Version:        1.16.2
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
