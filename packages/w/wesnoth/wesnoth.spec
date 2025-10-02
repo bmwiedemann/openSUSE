@@ -1,7 +1,7 @@
 #
 # spec file for package wesnoth
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://www.wesnoth.org/
 Source:         http://files.wesnoth.org/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE wesnoth-cmake-fix-find-readline.patch - cmake 3.20 (used on leap) can't find readline via pkg_check_modules
 Patch0:         wesnoth-cmake-fix-find-readline.patch
+Patch1:         boost.patch
 BuildRequires:  cmake >= 3.14
 BuildRequires:  dejavu
 BuildRequires:  fdupes
@@ -60,7 +61,6 @@ BuildRequires:  libboost_locale-devel >= %{boost_min_version}
 BuildRequires:  libboost_program_options-devel >= %{boost_min_version}
 BuildRequires:  libboost_random-devel >= %{boost_min_version}
 BuildRequires:  libboost_regex-devel >= %{boost_min_version}
-BuildRequires:  libboost_system-devel >= %{boost_min_version}
 BuildRequires:  libboost_thread-devel >= %{boost_min_version}
 %endif
 BuildRequires:  libopenssl-3-devel
@@ -132,6 +132,7 @@ This package solely contains the basic file structure in order to have it owned 
 
 %prep
 %setup -q
+%patch -P 1 -p1
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 %patch -P 0 -p1
 %endif

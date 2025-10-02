@@ -1,0 +1,47 @@
+diff -Nrua wesnoth-1.18.5.orig/CMakeLists.txt wesnoth-1.18.5/CMakeLists.txt
+--- wesnoth-1.18.5.orig/CMakeLists.txt
++++ wesnoth-1.18.5/CMakeLists.txt
+@@ -93,7 +93,7 @@
+ 	find_library(SECURITY_LIBRARY Security REQUIRED)
+ endif()
+ 
+-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
++find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex thread random coroutine locale filesystem graph)
+ find_package(ICU REQUIRED COMPONENTS data i18n uc)
+ 
+ # no, gettext executables are not required when NLS is deactivated
+diff -Nrua wesnoth-1.18.5.orig/src/CMakeLists.txt wesnoth-1.18.5/src/CMakeLists.txt
+--- wesnoth-1.18.5.orig/src/CMakeLists.txt
++++ wesnoth-1.18.5/src/CMakeLists.txt
+@@ -248,7 +248,6 @@
+ 		Boost::iostreams
+ 		Boost::program_options
+ 		Boost::regex
+-		Boost::system
+ 		Boost::random
+ 		Boost::coroutine
+ 		Boost::locale
+@@ -295,7 +294,6 @@
+ 		Boost::iostreams
+ 		Boost::program_options
+ 		Boost::regex
+-		Boost::system
+ 		Boost::random
+ 		Boost::coroutine
+ 		Boost::locale
+@@ -344,7 +342,6 @@
+ 		Boost::iostreams
+ 		Boost::program_options
+ 		Boost::regex
+-		Boost::system
+ 		Boost::random
+ 		Boost::coroutine
+ 		Boost::locale
+@@ -385,7 +382,6 @@
+ 		Boost::iostreams
+ 		Boost::program_options
+ 		Boost::regex
+-		Boost::system
+ 		Boost::random
+ 		Boost::coroutine
+ 		Boost::locale

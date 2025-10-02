@@ -487,4 +487,14 @@ A model Open Source game.</comment>
     <comment> (forwarded request 1286058 from dimstar)</comment>
     <requestid>1286059</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>ec25474658d8b1a174a846d610588c3b</srcmd5>
+    <version>1.18.5</version>
+    <time>1759425720</time>
+    <user>anag_factory</user>
+    <comment>- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+  * Patch boost.patch (forwarded request 1308591 from anag_factory)</comment>
+    <requestid>1308592</requestid>
+  </revision>
 </revisionlist>

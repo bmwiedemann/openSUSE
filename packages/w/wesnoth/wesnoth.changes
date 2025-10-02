@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  2 10:32:20 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+  * Patch boost.patch
+
+-------------------------------------------------------------------
 Wed Jun 11 06:48:32 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 1.18.5:
