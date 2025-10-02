@@ -1,7 +1,7 @@
 #
 # spec file for package libpeas2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,12 @@
 %bcond_with     vapi
 
 Name:           libpeas2
-Version:        2.0.7
+Version:        2.2.0
 Release:        0
 Summary:        GObject-based Plugin Engine version 2
 License:        LGPL-2.1-or-later
 URL:            https://wiki.gnome.org/Projects/Libpeas
-Source0:        https://download.gnome.org/sources/libpeas/2.0/libpeas-%{version}.tar.xz
+Source0:        libpeas-%{version}.tar.zst
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
@@ -41,6 +41,7 @@ BuildRequires:  gettext-devel
 BuildRequires:  meson >= 0.62.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(girepository-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gmodule-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gobject-2.0) >= %{glib_version}
@@ -50,7 +51,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.39.0
 %endif
 %if %{with gjs}
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.77.1
-BuildRequires:  pkgconfig(mozjs-128)
+BuildRequires:  pkgconfig(mozjs-140)
 %endif
 %if %{with gtkdoc}
 BuildRequires:  pkgconfig(gi-docgen) >= 2021.7
