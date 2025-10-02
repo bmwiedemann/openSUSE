@@ -76,7 +76,6 @@ install -m 644 -D %{SOURCE3} %{buildroot}%{_prefix}/lib/firewalld/services/wsdd.
 install -m 644 -D etc/firewalld/services/wsdd-http.xml %{buildroot}%{_prefix}/lib/firewalld/services/wsdd-http.xml
 install -m 644 -D %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.wsdd
 install -m 755 -d %{buildroot}%{_sbindir}
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d/
 install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}
 mkdir -p %{buildroot}/run/wsdd
@@ -107,7 +106,6 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
 %doc README.md
 %{_sbindir}/%{name}
 %{_mandir}/man8/wsdd.8%{?ext_man}
-%{_sbindir}/rc%{name}
 %{_unitdir}/wsdd.service
 %{_libexecdir}/wsdd-init.sh
 %{_tmpfilesdir}/wsdd.conf

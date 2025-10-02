@@ -138,4 +138,12 @@
   * Fixed error when interface address is removed (#62)</comment>
     <requestid>1306032</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0b4694b1209b19241b161e7fcbce4f1d</srcmd5>
+    <version>0.9</version>
+    <time>1759425524</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1308383</requestid>
+  </revision>
 </revisionlist>
