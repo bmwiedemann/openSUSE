@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 01 20:43:21 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251001.d4b9783:
+  * Be consistently not using abbreviations in zypper
+  * Refactor upgrade for not just Tumbleweed
+  * Update migration matrix
+  * Add support from MicroOS-Slowroll -> MicroOS
+  * Enable MicroOS-Slowroll migration target
+  * fix: remove the check for x86-64-v3 flag `movbe` from the v2 check
+  * Update README to remove duplicate warning
+  * Revise experimental usage warning in README
+  * Update screenshot
+  * Keep only Experimental in the title
+
+-------------------------------------------------------------------
 Fri Sep 12 13:22:56 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20250815.344dba5:

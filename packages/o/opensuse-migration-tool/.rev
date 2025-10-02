@@ -95,4 +95,22 @@ migrations as well as point release upgrades
   * Install custom dialogrc with a green theme</comment>
     <requestid>1304806</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0b7e28dd156c3bd89c9a3191b9ef7d10</srcmd5>
+    <version>20251001.d4b9783</version>
+    <time>1759425640</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251001.d4b9783:
+  * Be consistently not using abbreviations in zypper
+  * Refactor upgrade for not just Tumbleweed
+  * Update migration matrix
+  * Add support from MicroOS-Slowroll -&gt; MicroOS
+  * Enable MicroOS-Slowroll migration target
+  * fix: remove the check for x86-64-v3 flag `movbe` from the v2 check
+  * Update README to remove duplicate warning
+  * Revise experimental usage warning in README
+  * Update screenshot
+  * Keep only Experimental in the title</comment>
+    <requestid>1308483</requestid>
+  </revision>
 </revisionlist>
