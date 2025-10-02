@@ -605,4 +605,41 @@
  * Using QStyledItemDelegate to draw checkboxes into tag delegate.</comment>
     <requestid>1268324</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>fed9691255216434764fd73938754558</srcmd5>
+    <version>4.27.0</version>
+    <time>1759425609</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.27.0
+ * Added --conf-basedir and --conf-dir command line options. Those can be used
+   to override the default location of the configuration directory.
+ * Passing e-mail content into e-mail client via xdg-email if available on
+   Linux.
+ * Updated cryptographic code to be able to process archive timestamps of the
+   CMS containers.
+ * Removed timestamp information text from general message information in the
+   main window.
+ * Signature detail dialogue shows all available timestamps including possible
+   archive timestamps.
+ * Use latest timestamp data originating from message CMS containers in
+   overviews.
+ * Able to export data into format that can be imported into mobile
+   application.
+ * Fixed problem in ProgressBarProxyModel. Progress bar is returned only for
+   the DisplayRole.
+ * Added options to change the database directory. The user is allowed to open
+   an already existing database in a different directory. Options to delete
+   the databases in the old location have been added. A button to select
+   the default location has been added.
+ * Extended message signature and timestamp detail dialogue. All available
+   timestamps are being displayed.
+ * Added timestamp tracking mechanism. User explicitly selects messages to be
+   tracked. The application notifies whether some timestamps of tracked
+   messages are going to expire. The user must manually start the restamping
+   operation.
+ * Temporarily disabled the check message timestamps operation as it did
+   generate only a text overview. It needs integration into the new restamping
+   dialogue.</comment>
+    <requestid>1308444</requestid>
+  </revision>
 </revisionlist>

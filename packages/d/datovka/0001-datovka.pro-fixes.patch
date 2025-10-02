@@ -1,0 +1,45 @@
+From 65e37bdf69e6f6a09b3706e675a3949c8b8f61c4 Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 30 Sep 2025 07:11:00 +0200
+Subject: [PATCH] datovka.pro: fixes
+
+* do not install AUTHORS & COPYING
+* use CXXFLAGS
+---
+ datovka.pro | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/datovka.pro b/datovka.pro
+index 96153dca6e75..2fbfb64c1660 100644
+--- a/datovka.pro
++++ b/datovka.pro
+@@ -124,11 +124,6 @@ unix:!macx {
+ 	localisation.files += locale/datovka_cs.qm \
+ 		locale/datovka_en.qm
+ 
+-	additional.path = "$${TEXT_FILES_INST_DIR}"
+-	additional.files = \
+-		AUTHORS \
+-		COPYING
+-
+ 	DEFINES += DATADIR=\\\"$$DATADIR\\\" \
+ 		PKGDATADIR=\\\"$$PKGDATADIR\\\" \
+ 		LOCALE_INST_DIR="\"\\\"$${LOCALE_INST_DIR}\\\"\"" \
+@@ -146,12 +141,11 @@ unix:!macx {
+ 			icon64 \
+ 			icon128 \
+ 			icon256 \
+-			localisation \
+-			additional
++			localisation
+ 	}
+ }
+ 
+-QMAKE_CXXFLAGS = -g -O0
++QMAKE_CXXFLAGS = $$(CXXFLAGS)
+ isEqual(QT_MAJOR_VERSION, 5) {
+ 	QMAKE_CXXFLAGS += -std=c++11
+ }
+-- 
+2.51.0
+
