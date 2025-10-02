@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Oct 01 11:52:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.29.0:
+  Changelog
+    - build: Bump version to 1.29.0 (#1384)
+    - deps: Selectively bump policy-evaluator to 0.30.1 (#1379)
+    - build: Bump version to 1.29.0-rc3 (#1378)
+    - build: Bump to 1.29.0-rc2 (#1376)
+    - build: Bump version to 1.29.0 (#1372)
+  * Maintenance
+    - build(deps): update github-actions (#1383)
+    - build(deps): update taiki-e/install-action action to v2.62.12
+      (#1382)
+    - build(deps): update taiki-e/install-action action to v2.62.11
+      (#1381)
+    - build(deps): update taiki-e/install-action action to v2.62.10
+      (#1380)
+    - build(deps): update github-actions (#1377)
+    - build(deps): update taiki-e/install-action action to v2.62.6
+      (#1375)
+    - build(deps): update taiki-e/install-action action to v2.62.5
+      (#1373)
+    - chore(deps): update policy-evaluator (#1371)
+    - build(deps): update taiki-e/install-action action to v2.62.2
+      (#1370)
+    - build(deps): update all patch level dependencies (#1367)
+    - build(deps): update taiki-e/install-action action to v2.62.1
+      (#1369)
+    - build(deps): update taiki-e/install-action action to v2.61.12
+      (#1368)
+    - build(deps): update taiki-e/install-action action to v2.61.9
+      (#1366)
+    - build(deps): update taiki-e/install-action action to v2.61.8
+      (#1365)
+    - build(deps): update all patch level dependencies (#1364)
+    - chore: update policy-evaluator. (#1363)
+    - build(deps): update github-actions (#1361)
+    - build(deps): update all patch level dependencies (#1362)
+    - build(deps): update all patch level dependencies to v1.0.221
+      (#1360)
+    - build(deps): update github-actions (#1359)
+    - build(deps): update rust crate tempfile to v3.22.0 (#1358)
+    - build(deps): update rust crate k8s-openapi to 0.26.0 (#1356)
+    - build(deps): update taiki-e/install-action action to v2.60.0
+      (#1357)
+    - build(deps): update github-actions (#1354)
+    - build(deps): update github-actions (#1352)
+    - chore(deps): update actions/github-script action to v8
+      (#1353)
+    - build(deps): update github-actions (#1350)
+    - build(deps): update crate-ci/typos action to v1.36.0 (#1349)
+    - build(deps): update all patch level dependencies (#1348)
+    - build(deps): update github-actions (#1347)
+    - build(deps): update rust crate time to v0.3.42 (#1346)
+    - chore(deps): update actions/attest-build-provenance action to
+      v3 (#1345)
+    - build(deps): update rust crate termimad to 0.34.0 (#1344)
+    - build(deps): update github-actions (#1343)
+    - build(deps): update rust crate tracing-subscriber to v0.3.20
+      [security] (#1342)
+
+-------------------------------------------------------------------
 Tue Sep 02 05:46:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.28.1:
