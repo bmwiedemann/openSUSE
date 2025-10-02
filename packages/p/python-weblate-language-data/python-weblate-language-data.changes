@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  2 06:50:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 2025.8
+  * Use BCP 47 language tag for tlh_Piqd
+  * Add Hokkien writing systems
+  * Adds Hungarian (hu) to DOCUMENTATION_LANGUAGES in docs.py
+  * add tamil language
+  * correctly copy date when udating POT files
+  * add alias for zh_SIMPLIFIED
+  * update list of RTL languages
+
+-------------------------------------------------------------------
 Tue Apr 29 11:55:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 2025.5
