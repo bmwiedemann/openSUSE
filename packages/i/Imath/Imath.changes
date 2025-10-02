@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct  1 09:02:05 UTC 2025 - pgajdos@suse.com
+
+- version update to 3.2.1
+  * IMATH_VERSION_RELEASE_TYPE was inadvertently set to -dev; it's
+    been reset to the empty string. This string appears as a preprocessor
+    symbol for informational purposes.
+  * Default installation folder for PyImath is include/Imath, not
+    include/PyImath. This inadvertently changed in v3.2.0. Note the
+    folder can be configured via the PYIMATH_OUTPUT_SUBDIR CMake option.
+  * Fix broken pkg-config PyImath.pc
+  * Update find_package(Boost) to work with CMake 4.x
+  * Fix undefined behavior in the Vec* class operator[] (PR #449).
+  * Fix call to _mm_cvtps_ph in half.h, Windows build failure
+  * Updated and simplified SO versioning policy: this release adopts
+    a policy of appending the MAJOR.MINOR.PATCH software release
+    name to the SONAME to form the real name of the shared library.
+  * Add uninstall target
+  * Add iOS cross-compilation support
+  * Add support for HIP (AMD's Heterogeneous-compute Interface for Portability)
+  * Fix handling of /EHsc flag
+  * Required cmake version is now 3.14
+- modified sources
+  * baselibs.conf
+
+-------------------------------------------------------------------
 Fri Jan 17 07:04:20 UTC 2025 - ming li <mli@suse.com>
 
 - update to 3.1.12:
