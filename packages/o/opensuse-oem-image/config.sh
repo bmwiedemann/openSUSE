@@ -51,8 +51,9 @@ rm -f /etc/machine-id \
 systemctl set-default graphical.target
 
 # Leap 16 specific
+if rpm -q --whatprovides gdm-systemd >/dev/null; then
 systemctl enable gdm.service
-
+fi
 #======================================
 # Add missing gpg keys to rpm
 #--------------------------------------
@@ -154,6 +155,8 @@ chmod a+x /etc/fstab.script
 # which basically only asks for root password
 #--------------------------------------
 if rpm -q --whatprovides jeos-firstboot >/dev/null; then
+# Disable most of plugins only on gnome-variant where gnome-initial-setup does the job
+if rpm -q --whatprovides gdm >/dev/null; then
 
 cat > /etc/jeos-firstboot.conf << 'EOF'
 JEOS_TIMEZONE='UTC'
@@ -181,6 +184,7 @@ for mod in "${modules[@]}"; do
   mkdir -p "$(dirname "$dest")"
   ln -sf /dev/null "$dest"
 done
+fi
 
 # Enable jeos-firstboot
 mkdir -p /var/lib/YaST2
@@ -190,5 +194,9 @@ systemctl mask systemd-firstboot.service
 systemctl enable jeos-firstboot.service
 
 fi
+
+# Explicitly enable NetworkManager
+# Network was off without it
+systemctl enable NetworkManager
 
 exit 0

@@ -12,4 +12,16 @@
 * gnome-initial-setup handling user and language</comment>
     <requestid>1305398</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>27c57c04a1ea465e321deae6d845e4e2</srcmd5>
+    <version>1.0.0</version>
+    <time>1759425603</time>
+    <user>anag_factory</user>
+    <comment>- Explicitly enable NetworkManager
+* Seems like since we don't run jeos-firstboot
+  the service is not started and networking doesn't work
+
+- Add KDE Plasma flavor</comment>
+    <requestid>1308441</requestid>
+  </revision>
 </revisionlist>

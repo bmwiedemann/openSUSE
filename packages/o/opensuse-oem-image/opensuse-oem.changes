@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  1 15:08:43 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Explicitly enable NetworkManager
+
+* Seems like since we don't run jeos-firstboot
+  the service is not started and networking doesn't work
+
+-------------------------------------------------------------------
+Thu Sep 25 20:52:32 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add KDE Plasma flavor
+-------------------------------------------------------------------
 Thu Sep 11 08:36:31 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Remove Setup baseproduct and ldconfig from config.sh 
