@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  1 13:01:51 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Fix build error with newer fmt.
+  Add patch f8e158bc72986e46b93d05358c29db0c10f2fe9f.patch.
+
+-------------------------------------------------------------------
 Tue Aug 19 08:55:26 UTC 2025 - ecsos <ecsos@opensuse.org> - 2.6.1
 
 - Update to 2.6.1

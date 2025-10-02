@@ -34,6 +34,8 @@ Source10:       %{name}-vhost-apache.conf
 Source11:       %{name}-vhost-nginx.conf
 Source90:       README.SUSE
 Patch0:         harden_gerbera.service.patch
+# PATCH-FIX-UPSTREAM: Update to fmt 12.0.0
+Patch10:        f8e158bc72986e46b93d05358c29db0c10f2fe9f.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  ccache
 BuildRequires:  cmake >= 3.13
@@ -42,9 +44,10 @@ BuildRequires:  file-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
+BuildRequires:  (pkgconfig(fmt) >= 9.1.0 and pkgconfig(fmt) <= 12.0.0)
+BuildRequires:  (pkgconfig(spdlog) >= 1.11.0 and pkgconfig(spdlog) <= 1.15.3)
 BuildRequires:  pkgconfig(duktape) >= 2.6.0
 BuildRequires:  pkgconfig(exiv2) >= 0.26
-BuildRequires:  pkgconfig(fmt) >= 9.1.0
 BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gmock_main)
 BuildRequires:  pkgconfig(gtest)
@@ -61,7 +64,6 @@ BuildRequires:  pkgconfig(libmatroska) >= 1.6.3
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libupnp) >= 1.14.6
 BuildRequires:  pkgconfig(pugixml) >= 1.10
-BuildRequires:  pkgconfig(spdlog) >= 1.11.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.35.5
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(taglib) >= 1.12
