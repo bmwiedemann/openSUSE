@@ -1,5 +1,18 @@
 -------------------------------------------------------------------
-Fri Sep 26 12:31:19 UTC 2025 - ecsos <ecsos@opensuse.org>
+Wed Oct  1 16:05:25 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.12.0
+
+- Update to 8.12.0
+  * New Features
+    - Tolino driver: Support for latest Tolino firmware 5.11.230427
+    - Ollama AI: Allow setting arbitrary HTTP headers to send with
+      every request
+  * Bug Fixes
+    - Fix a regression in the previous release that broke
+      conversion of HTML that does not parse as XHTML
+    - Ollama AI: Fix configuration of custom URL not working
+
+-------------------------------------------------------------------
+Fri Sep 26 12:31:19 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.11.1
 
 - Update to 8.11.1
   * Bug Fixes

@@ -3307,4 +3307,13 @@ Think &quot;osc service runall download_files&quot; are buggy!
     <comment></comment>
     <requestid>1307384</requestid>
   </revision>
+  <revision rev="345" vrev="1">
+    <srcmd5>359a091ec291dd5690806906a0caeec4</srcmd5>
+    <version>8.12.0</version>
+    <time>1759425612</time>
+    <user>anag_factory</user>
+    <comment>- Update to 8.12.0
+</comment>
+    <requestid>1308457</requestid>
+  </revision>
 </revisionlist>
