@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 01 17:12:54 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759329378.3b8e8685:
+  * Reduce the number of required checks for Mergify again
+  * Ensure a failing cache service is seen as such by the worker/scheduler
+
+-------------------------------------------------------------------
 Tue Sep 30 16:13:28 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1759248257.70b23b32:
