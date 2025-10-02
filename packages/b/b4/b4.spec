@@ -24,7 +24,7 @@
 %global pprefix python311
 %endif
 Name:           b4
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct  1 16:09:50 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.14.3:
+  * Don't strip trailing blank lines in patches when not needed
+  * fix show-info in another branch
+  * stop generating full object IDs for non-binary diffs
+  * better handle invalid timezone values
+  * Create patches with --default-prefix (when git version supports it)
+  * Add --find-renames to git-show to counteract local configs
+  * Fix misleading error message on cherry-picked patches
+  * be more careful when applying trailers to non-prep branches
+  * Don't quote trailers containing brackets
+  * Support smtpauth=none in sendemail configs
+  * when querying by change-id, don't add author and subject
+  * clean up after git-filter-repo runs in recent git-filter-repo versions
+
+-------------------------------------------------------------------
 Wed Sep 18 05:13:21 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.14.2:
