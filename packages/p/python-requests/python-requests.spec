@@ -26,17 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-requests%{psuffix}
-Version:        2.32.4
+Version:        2.32.5
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
 URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#psf/requests#6731
-Patch0:         inject-default-ca-bundles.patch
-# PATCH-FIX-UPSTREAM revert-caching-default-sslcontext.patch gh#psf/requests#6767
-Patch1:         revert-caching-default-sslcontext.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

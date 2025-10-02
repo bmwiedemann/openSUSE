@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  1 09:42:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.32.5
+  * The SSLContext caching feature originally introduced in 2.32.0 has
+    created a new class of issues in Requests that have had negative
+    impact across a number of use cases. The Requests team has decided
+    to revert this feature as long term maintenance of it is proving
+    to be unsustainable in its current iteration.
+  * Added support for Python 3.14.
+  * Dropped support for Python 3.8 following its end of support.
+- Drop inject-default-ca-bundles.patch, fixed upstream
+- Drop revert-caching-default-sslcontext.patch, merged upstream
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Mon Jul 14 09:20:12 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add revert-caching-default-sslcontext.patch upstream patch to avoid
