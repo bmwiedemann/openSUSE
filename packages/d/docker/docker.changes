@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 29 11:15:30 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove git-core recommends also on openSUSE: the below argument
+  is valid for those users too.
+
+-------------------------------------------------------------------
 Mon Sep 29 05:25:36 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Remove git-core recommends on SLE. Most SLE systems have
