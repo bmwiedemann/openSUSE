@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Wed Oct  1 14:59:47 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Revert change that enables gsettings-pulse-schema. This creates
+  a file conflict with libpulse-mainloop-glib0 because they both
+  try to install the org.freedesktop.pulseaudio.gschema.xml file.
+
+-------------------------------------------------------------------
+Wed Oct 01 06:29:33 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.4.8+git68.636cbae9b:
+  * avahi: handle fd allocation errors
+  * alsa: Use the minimum period size as headroom for SOF cards
+  * adapter: fix Start of adapter
+  * alsa: don't fail if 3 periods_min fails (boo#1250381)
+  * spa: libcamera: source: fix typo in log message
+  * spa: libcamera: source: query frame buffer planes just once
+  * spa: libcamera: source: simplify `spa_libcamera_clear_buffers()`
+  * spa: libcamera: source: keep `libcamera::FrameBufferAllocator`
+  * spa: libcamera: source: clear buffers when format is changed
+  * spa: libcamera: source: handle try-only format unset
+  * spa: libcamera: source: do not emit param change if try-only
+  * spa: libcamera: source: extract presence of `SPA_NODE_PARAM_FLAG_TEST_ONLY`
+  * spa: libcamera: source: remove format config shortcut
+  * spa: libcamera: source: set chunk flags on error
+  * spa: libcamera: source: process requests on data loop
+  * spa: libcamera: source: process all requests in the ring buffer
+  * spa: libcamera: source: reset ring buffer when stopping
+  * spa: libcamera: source: move request completion data to `impl`
+  * spa: libcamera: source: store the request pointer in ring buffer
+  * spa: libcamera: source: remove `impl::pendingRequests`
+  * spa: libcamera: source: persistent requests <-> buffer association
+  * spa: libcamera: source: allocBuffers(): more error checking
+  * spa: libcamera: source: allocBuffers(): restore on failure
+  * spa: libcamera: source: freeBuffers(): call when format is unset
+  * spa: libcamera: source: freeBuffers(): split pending request removal
+  * spa: libcamera: source: propagate error when setting format
+  * spa: libcamera: source: port_set_format(): remove goto
+  * spa: libcamera: source: use dynamic builder for controls
+  * spa: libcamera: source: provide value labels if available
+  * spa: libcamera: source: handle enum controls better
+  * spa: libcamera: source: unify control range logic
+  * spa: libcamera: source: ignore array controls
+  * spa: libcamera: source: rework bool control type info
+  * spa: libcamera: source: move control enumeration to loop
+  * spa: libcamera: source: separate type info generation
+  * spa: libcamera: manager: keep `libcamera::CameraManager`
+  * spa: libcamera: manager: factor out hotplug event submission
+  * spa: libcamera: source: create eventfd before starting camera
+  * spa: libcamera: source: generate camera config right away
+  * spa: libcamera: source: remove `SPA_PROP_device{,Name}`
+  * spa: libcamera: source: do not close fd
+  * spa: libcamera: source: remove unused `enum_fmt` member
+  * spa: libcamera: source: prop_id_to_control(): do range check first
+  * spa: libcamera: source: fix mapping of `libcamera::ColorSpace::TransferFunction::Linear`
+  * spa: libcamera: source: simplify color space conversion
+  * spa: libcamera: source: avoid iterator overrun when enumerating controls
+  * spa: libcamera: manager: fix id allocation
+  * spa: libcamera: use `nullptr` instead of `NULL`
+  * spa: libcamera: use C++ style casts
+  * spa: libcamera: use anon ns instead of `static`
+  * spa: libcamera: device: remove empty line
+  * spa: libcamera: source: inline `mmap_init()`
+  * spa: libcamera: source: set "corrupted" flag if applicable
+  * spa: libcamera: source: use `union` for transferring control value
+  * spa: libcamera: source: simplify control mapping
+  * spa: libcamera: source: do not make expensive queries multiple times
+  * spa: libcamera: source: simplify format lookup
+  * spa: libcamera: source: use enum types
+  * spa: libcamera: source: handle camera acquire failure
+  * spa: libcamera: inline `libcamera-utils.cpp`
+  * spa: libcamera: clean up includes
+  * spa: libcamera: use lock when acquiring `CameraManager`
+  * spa: libcamera: add colorimetry support
+  * libcamera: Default to auto-focus & auto-exposure
+
+-------------------------------------------------------------------
+Wed Oct  1 05:22:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop passing gsettings-pulse-schema=disabled to meson setup, all
+  buildependencies are in place already, follow upstream default,
+  build gsettings schema support.
+
+-------------------------------------------------------------------
 Mon Sep 22 07:58:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.8+git4.8f35e18d1:
