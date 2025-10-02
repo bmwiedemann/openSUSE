@@ -78,4 +78,12 @@
     <comment>python 311 for Leap 15.6</comment>
     <requestid>1154269</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2153c2b2cbc1bb4ff9e706e8c2355a8d</srcmd5>
+    <version>0.9.16</version>
+    <time>1759425693</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1308565</requestid>
+  </revision>
 </revisionlist>

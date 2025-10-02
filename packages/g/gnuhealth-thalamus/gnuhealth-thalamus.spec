@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth-thalamus
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2017-2024 Dr. Axel Braun
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2017-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,15 @@
 
 %bcond_without test 1
 
-%if 0%{?suse_version} >= 1550
 %define pythons python3
 %define mypython python3
-%define mysitelib %python3_sitelib
-%else
+%define mysitelib %python_sitelib
+
 %{?sle15_python_module_pythons}
-%define mypython %pythons
-%define mysitelib %{expand:%%%{mypython}_sitelib}
-%endif
 
 %define modname thalamus
 Name:           gnuhealth-%{modname}
-Version:        0.9.14
+Version:        0.9.16
 Release:        0
 Summary:        The GNU Health Federation Message and Authentication Server
 License:        GPL-3.0-or-later
