@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 23 13:37:34 UTC 2025 - pgajdos@suse.com
+
+- httpd testsuite of svn revision 1928711, fixes the failure
+  caused by libxml2 version update to 2.14
+
+-------------------------------------------------------------------
 Wed Jul 23 12:39:31 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.4.65

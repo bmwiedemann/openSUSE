@@ -1,7 +1,7 @@
 #
 # spec file for package apache2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global upstream_name   httpd
 %global testsuite_name  %{upstream_name}-framework
-%global tversion        svn1921782
+%global tversion        svn1928711
 %global flavor          @BUILD_FLAVOR@%{nil}
 %define mpm             %{nil}
 %if "%{flavor}" == "prefork" || "%{flavor}" == "test_prefork"
