@@ -812,9 +812,8 @@ unsorted:
   - appstream-qt6-devel 
   - apptainer 
   - apptainer-leap 
-  - apptainer-sle15_5 
-  - apptainer-sle15_6 
   - apptainer-sle15_7 
+  - apptainer-sle16 
   - appx-util 
   - apr-devel 
   - apr-util-devel 
@@ -8464,7 +8463,6 @@ unsorted:
   - hfst-ospell 
   - hfst-ospell-devel 
   - hfsutils 
-  - hhdate-devel 
   - hibiscus 
   - hicolor-icon-theme-devel 
   - hid-tmff2 
@@ -11100,7 +11098,7 @@ unsorted:
   - libIlmCtlSimd1_5_3 
   - libIlmImfCtl1_5_3 
   - libIlmThread-3_4-33-32bit 
-  - libImath-3_1-29-32bit 
+  - libImath-3_2-30-32bit 
   - libIrrlicht1_8 
   - libKChart2 
   - libKChart6-3 
@@ -11159,6 +11157,7 @@ unsorted:
   - libKWeatherCore6 
   - libKWeatherCore6-lang 
   - libKasten4 
+  - libKirigamiApp6 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_5 
@@ -12735,7 +12734,6 @@ unsorted:
   - libdar64-6000 
   - libdat2-2 
   - libdataquay0 
-  - libdate-tz3 
   - libdatovka 
   - libdatovka-devel 
   - libdatovka8 
@@ -24331,6 +24329,7 @@ unsorted:
   - python311-autocommand 
   - python311-autodocsumm 
   - python311-autoflake 
+  - python311-autoimport 
   - python311-autopage 
   - python311-autopep8 
   - python311-autoray 
@@ -25941,6 +25940,7 @@ unsorted:
   - python311-magicalimport 
   - python311-mailman3-fedmsg-plugin 
   - python311-mailmanclient 
+  - python311-maison 
   - python311-makefun 
   - python311-mando 
   - python311-manuel 
@@ -26620,6 +26620,7 @@ unsorted:
   - python311-pyproject-hooks 
   - python311-pyproject-metadata 
   - python311-pyproject-parser 
+  - python311-pyprojroot 
   - python311-pypsexec 
   - python311-pypubsub 
   - python311-pypuppetdb 
@@ -28074,6 +28075,7 @@ unsorted:
   - python312-autocommand 
   - python312-autodocsumm 
   - python312-autoflake 
+  - python312-autoimport 
   - python312-autopage 
   - python312-autopep8 
   - python312-autoray 
@@ -29715,6 +29717,7 @@ unsorted:
   - python312-magicalimport 
   - python312-mailman3-fedmsg-plugin 
   - python312-mailmanclient 
+  - python312-maison 
   - python312-makefun 
   - python312-mando 
   - python312-manuel 
@@ -30415,6 +30418,7 @@ unsorted:
   - python312-pyproject-hooks 
   - python312-pyproject-metadata 
   - python312-pyproject-parser 
+  - python312-pyprojroot 
   - python312-pypsexec 
   - python312-pypubsub 
   - python312-pypuppetdb 
@@ -31873,6 +31877,7 @@ unsorted:
   - python313-autocommand 
   - python313-autodocsumm 
   - python313-autoflake 
+  - python313-autoimport 
   - python313-autopage 
   - python313-autopep8 
   - python313-autoray 
@@ -33476,6 +33481,7 @@ unsorted:
   - python313-magicalimport 
   - python313-mailman3-fedmsg-plugin 
   - python313-mailmanclient 
+  - python313-maison 
   - python313-makefun 
   - python313-mando 
   - python313-manuel 
@@ -34160,6 +34166,7 @@ unsorted:
   - python313-pyproject-hooks 
   - python313-pyproject-metadata 
   - python313-pyproject-parser 
+  - python313-pyprojroot 
   - python313-pypsexec 
   - python313-pypubsub 
   - python313-pypuppetdb 
