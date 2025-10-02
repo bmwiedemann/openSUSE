@@ -2040,4 +2040,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>1305162</requestid>
   </revision>
+  <revision rev="153" vrev="4">
+    <srcmd5>0ef3664c6d050562d3c715d1254c6c1d</srcmd5>
+    <version>11.8.3</version>
+    <time>1759425598</time>
+    <user>anag_factory</user>
+    <comment>add bug number</comment>
+    <requestid>1308567</requestid>
+  </revision>
 </revisionlist>
