@@ -6472,4 +6472,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1307952</requestid>
   </revision>
+  <revision rev="554" vrev="1">
+    <srcmd5>e5c0f1dfb3a2325d82184e3073b9208a</srcmd5>
+    <version>25.2.4</version>
+    <time>1759425528</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 25.2.4
+  --&gt;  https://docs.mesa3d.org/relnotes/25.2.4</comment>
+    <requestid>1308403</requestid>
+  </revision>
 </revisionlist>
