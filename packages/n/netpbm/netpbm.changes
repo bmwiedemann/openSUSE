@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 30 09:39:07 UTC 2025 - pgajdos@suse.com
+
+- version update to 11.12.0
+  * pamtris: fix unrecognized command or crash on line with no
+    command.  Broken in Netpbm 10.85 (December 2018).
+  * ppmcmap.h: fix C++ compilation.  Broken at least since Netpbm
+    10.35 (August 2006).
+  * Make ppmdfont.h work in C++ compile.  Always broken (ppmdfont.h
+    was new some time before Netpbm 10.35 (August 2006)).
+
+-------------------------------------------------------------------
 Tue Jul 15 11:21:43 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove the doc and man pages for pamtojpeg2k since the binary

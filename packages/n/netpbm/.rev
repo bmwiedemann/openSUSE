@@ -1026,4 +1026,18 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
     <comment></comment>
     <requestid>1293422</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>28a555f429b0dcbf64fc5e25f6e6a654</srcmd5>
+    <version>11.12.0</version>
+    <time>1759425549</time>
+    <user>anag_factory</user>
+    <comment>- version update to 11.12.0
+  * pamtris: fix unrecognized command or crash on line with no
+    command.  Broken in Netpbm 10.85 (December 2018).
+  * ppmcmap.h: fix C++ compilation.  Broken at least since Netpbm
+    10.35 (August 2006).
+  * Make ppmdfont.h work in C++ compile.  Always broken (ppmdfont.h
+    was new some time before Netpbm 10.35 (August 2006)).</comment>
+    <requestid>1308151</requestid>
+  </revision>
 </revisionlist>
