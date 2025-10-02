@@ -293,4 +293,12 @@ This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subp
     <comment>- disabled osmesa support, which has been removed with Mesa 25.1.0</comment>
     <requestid>1276579</requestid>
   </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>680aff9f42415c1a54384412dd1bf5dc</srcmd5>
+    <version>9.0.0</version>
+    <time>1759425565</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1308220</requestid>
+  </revision>
 </revisionlist>

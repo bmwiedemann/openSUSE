@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 23 15:18:09 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- redefine %meson_build/%meson_install on Leap 15.6 in order to fix
+  build
+
+-------------------------------------------------------------------
 Sat May 10 21:05:29 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - disabled osmesa support, which has been removed with Mesa 25.1.0
