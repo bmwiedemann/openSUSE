@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 16 12:44:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.30.1
+  * Fixed --exclude-path flag not available in remove operations. (#3165) (#3159)
+  * Fixed regression where AzCopy was not honoring concurrency value
+    in copy operations (#3192)
+  * Fixed the incorrect JSON output format of the warning message when
+    there are multiple AzCopy processes running. (#3188) (#3182)
+  * Fixed latest_version.txt from being wrongly created in users
+    current directory. (#3179)(#3176)
+  * Fixed AzCopy crashing during sync operation from a nil pointer deref
+    in the destination authentication policy. (#3186) (#3109) (#3156) (#3175)
+  * Golang 1.24.2 -> 1.24.6 (CVE-2025-47907) (#3154)
+
+-------------------------------------------------------------------
 Sat Sep  6 09:13:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 10.30.0

@@ -15,4 +15,22 @@
     <comment>Command line tool to handle Azure storage copy operations</comment>
     <requestid>1303064</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>57eda1a4c8239dd132a909d2fd235460</srcmd5>
+    <version>10.30.1</version>
+    <time>1759425664</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.30.1
+  * Fixed --exclude-path flag not available in remove operations. (#3165) (#3159)
+  * Fixed regression where AzCopy was not honoring concurrency value
+    in copy operations (#3192)
+  * Fixed the incorrect JSON output format of the warning message when
+    there are multiple AzCopy processes running. (#3188) (#3182)
+  * Fixed latest_version.txt from being wrongly created in users
+    current directory. (#3179)(#3176)
+  * Fixed AzCopy crashing during sync operation from a nil pointer deref
+    in the destination authentication policy. (#3186) (#3109) (#3156) (#3175)
+  * Golang 1.24.2 -&gt; 1.24.6 (CVE-2025-47907) (#3154)</comment>
+    <requestid>1308523</requestid>
+  </revision>
 </revisionlist>

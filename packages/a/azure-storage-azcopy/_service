@@ -3,8 +3,8 @@
     <param name="url">https://github.com/Azure/azure-storage-azcopy</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">v10.30.0</param>
-    <param name="revision">v10.30.0</param>
+    <param name="versionformat">v10.30.1</param>
+    <param name="revision">v10.30.1</param>
     <param name="changesgenerate">disable</param>
   </service>
   <service name="recompress" mode="disabled">
@@ -15,6 +15,6 @@
     <param name="basename">azure-storage-azcopy</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">azure-storage-azcopy-v10.30.0.tar.gz</param>
+    <param name="archive">azure-storage-azcopy-v10.30.1.tar.gz</param>
   </service>
 </services>
