@@ -71,4 +71,13 @@
     <comment>- Update to release 7.3</comment>
     <requestid>1244561</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>418d5fc432668cc103b2fe0f5889130c</srcmd5>
+    <version>7.3</version>
+    <time>1759425653</time>
+    <user>anag_factory</user>
+    <comment>- Remove deprecated buildrequire on libboost_system-devel
+  for Tumbleweed.</comment>
+    <requestid>1308496</requestid>
+  </revision>
 </revisionlist>

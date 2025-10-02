@@ -32,7 +32,9 @@ Patch2:         lrs-compile.diff
 Patch3:         lrs-types.diff
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
+%if 0%{?suse_version} && 0%{?suse_version} < 1690
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libtool >= 2
 
