@@ -472,4 +472,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>1256004</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>d4bf4036362487f7e3d0dfdf542dc934</srcmd5>
+    <version>9.7.0</version>
+    <time>1759425699</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1308578</requestid>
+  </revision>
 </revisionlist>

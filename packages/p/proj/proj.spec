@@ -1,7 +1,7 @@
 #
 # spec file for package proj
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define data_version 1.21
+%define data_version 1.23
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.6.0
+Version:        9.7.0
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -28,7 +28,6 @@ URL:            https://proj.org/
 # Download from GitHub, osgeo.org appears to be slow and flaky at the moment
 Source0:        https://github.com/OSGeo/PROJ/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/OSGeo/PROJ-data/releases/download/%{data_version}.0/%{name}-data-%{data_version}.tar.gz
-Patch0:         v9.6.0-fix-build.patch
 BuildRequires:  cmake >= 3.16
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc13-c++
@@ -194,6 +193,7 @@ rm -rf %{buildroot}%{_datadir}/doc/${name}
 %{_datadir}/%{name}/world
 %{_datadir}/%{name}/si_gurs_README.txt
 %{_datadir}/%{name}/si_gurs_SLO-VRP2016-Koper.tif
+%{_datadir}/%{name}/si_gurs_SLO-VTP2024.tif
 %{_datadir}/bash-completion/completions/projinfo
 
 %files -n %{libname}
