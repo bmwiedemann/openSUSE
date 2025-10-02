@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 23 18:38:41 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 1.13.1
+  * Compatibility with older distros for Linux ARM version
+  * Restore "multiple rules generate" error with dyndep
+- adapt ninja-disable-maxprocs-test.patch and ninja-re2c-g.patch
+
+-------------------------------------------------------------------
 Wed Jun 18 19:34:41 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 1.13.0
