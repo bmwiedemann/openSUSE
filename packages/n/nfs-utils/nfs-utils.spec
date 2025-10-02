@@ -1,8 +1,6 @@
 #
 # spec file for package nfs-utils
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -169,8 +167,6 @@ install -D -m 644 %{SOURCE26} %{buildroot}%{_prefix}%{_sysconfdir}/nfs.conf
 mkdir -p -m 755 %{buildroot}%{_prefix}%{_sysconfdir}/nfs.conf.d
 mkdir -p -m 755 %{buildroot}%{_sysconfdir}/nfs.conf.d
 install -D -m 644 %{SOURCE27} %{buildroot}%{_prefix}/lib/tmpfiles.d/nfs-kernel-server.conf
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcnfs-server
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcnfs-client
 # sysconfig-data
 mkdir -p %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE4} %{buildroot}%{_fillupdir}
@@ -284,7 +280,6 @@ fi
 %{_sbindir}/nfsdcld
 %{_sbindir}/nfsidmap
 %{_sbindir}/nfsstat
-%{_sbindir}/rcnfs-client
 %{_sbindir}/rpc.gssd
 %{_sbindir}/rpc.idmapd
 %{_sbindir}/rpc.statd
@@ -368,7 +363,6 @@ fi
 %{_prefix}/lib/tmpfiles.d/nfs-kernel-server.conf
 %{_sbindir}/exportfs
 %{_sbindir}/fsidd
-%{_sbindir}/rcnfs-server
 %{_sbindir}/rpc.mountd
 %{_sbindir}/rpc.nfsd
 %{_sbindir}/nfsdcltrack
