@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-email-validator
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        A robust email syntax and deliverability validation library for Python
 License:        CC0-1.0
