@@ -1287,4 +1287,12 @@ D fixes-a-template-rendering-error.patch
     <comment></comment>
     <requestid>1290120</requestid>
   </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>bcad9f301b96b7c76b12f5e63db156c2</srcmd5>
+    <version>3.3.7</version>
+    <time>1759425730</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1308588</requestid>
+  </revision>
 </revisionlist>
