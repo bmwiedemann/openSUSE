@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  2 09:41:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.7 (bsc#1250485, bsc#1250487)
+  * CVE-2025-59681: Potential SQL injection in QuerySet.annotate(), alias(),
+    aggregate(), and extra() on MySQL and MariaDB
+  * CVE-2025-59682: Potential partial directory-traversal via archive.extract()
+  * Fixed a regression in Django 5.2 that reduced the color contrast of the
+    label of filter_horizontal and filter_vertical widgets within a TabularInline
+
+-------------------------------------------------------------------
 Thu Sep  4 10:02:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.6 (bsc#1248810)
