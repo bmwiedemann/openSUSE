@@ -30,8 +30,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.3.0
-%define orig_version   140.3.0
+%define mainver        %major.3.1
+%define orig_version   140.3.1
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}

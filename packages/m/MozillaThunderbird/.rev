@@ -6082,4 +6082,14 @@ I cannot test locally unfortunately.
     ESR 140.3, Firefox 143 and Thunderbird 143</comment>
     <requestid>1305384</requestid>
   </revision>
+  <revision rev="373" vrev="1">
+    <srcmd5>576db4f356115223b682e6b58e3c4892</srcmd5>
+    <version>140.3.1</version>
+    <time>1759499112</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Thunderbird 140.3.1 ESR
+  * several bugfixes listed here
+    https://www.thunderbird.net/en-US/thunderbird/140.3.1esr/releasenotes</comment>
+    <requestid>1308792</requestid>
+  </revision>
 </revisionlist>
