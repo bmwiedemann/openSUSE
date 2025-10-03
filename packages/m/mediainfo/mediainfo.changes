@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep 30 18:00:00 UTC 2025 - Maxime Gervais <maxime@mediaarea.net>
+
+- Update to version 25.09
+  Added features:
+  * Italian, Russian translations update
+  * ADM: Dolby E profile for emission conformance checker
+  * AAC: show when PNS is ued
+  * MPEG-TS: map message_id code to the stored message
+    character string
+  * AC-4: Enhancement to Presentation Role display
+  * AC-4: Add Bitstream level and Presentation level
+  * MXF: support of experimental ARRI ULs
+  * WavPack: fix duration for long duration
+  * WAV: detection of C2PA + display of thumbnails characteristics
+  * MasteringDisplay_Luminance: split Min and Max
+  * Dolby Vision: Fill colour, transfer & matrix for profile 5
+    (thanks to cjee21)
+  * JPEG: Detect lossless (thanks to cjee21)
+  * MPEG-TS: update DVB descriptors and service types for
+    NGVC and NGA (thanks to paulhiggs)
+  * Reset MXF status based on footer partition
+    (thanks to ammonriley)
+  * VP9: VP9 in MP4 support (thanks to cjee21)
+  * SphericalVideo: use StereoMode instead of of SourceCount
+  * I2400, Fix crashes with some malformed files
+  Fixed bugs:
+  * MaxCLL/MaxFALL: value without unit in the XML/JSON output
+  * Fix infinite loop in UTF8 (e.g. JavaScript) build
+  * HDR: fix random crash with multiple HDR formats
+  * PAC: Fix duration/timestamps
+  * Spherical Video 2 support, fix BF4 support with
+    0.32 readout, update
+
+-------------------------------------------------------------------
 Wed Jul 30 22:00:00 UTC 2025 - Maxime Gervais <maxime@mediaarea.net>
 
 - Update to version 25.07
