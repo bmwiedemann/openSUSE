@@ -104,4 +104,19 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300749</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>685a3d7cf59661d87778ca83369d2781</srcmd5>
+    <version>4.0.1</version>
+    <time>1759498992</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.1:
+  * Minor fix for sphinx 8.2 compat
+  * Fix type of MockIncludeDirective’s klass parameter
+  * Support python&gt;=3.10, sphinx &gt;=7,&lt;9, docutils&gt;=0.19,&lt;0.22
+  * Improve footnote def/ref warnings and translations
+- Add patch support-docutils-0.22.patch:
+  * Support docutils output changes.
+- Sprinkle in pytest-param-files, since it's packaged now.</comment>
+    <requestid>1308493</requestid>
+  </revision>
 </revisionlist>

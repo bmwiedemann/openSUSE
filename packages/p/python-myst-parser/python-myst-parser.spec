@@ -1,7 +1,7 @@
 #
 # spec file for package python-myst-parser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-myst-parser
-Version:        3.0.1
+Version:        4.0.1
 Release:        0
 Summary:        An extended commonmark compliant parser, with bridges to docutils & sphinx
 License:        MIT
@@ -31,11 +31,14 @@ URL:            https://myst-parser.readthedocs.io/
 Source:         https://github.com/executablebooks/MyST-Parser/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PyPI tarball does not contain tests
 #Source:         https://files.pythonhosted.org/packages/source/m/myst-parser/myst-parser-%%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Regenerate failing files with --regen-file-failure
+Patch0:         support-docutils-0.22.patch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module docutils >= 0.18 with %python-docutils < 0.22}
+BuildRequires:  %{python_module docutils >= 0.18 with %python-docutils < 0.23}
 BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module linkify-it-py}
 BuildRequires:  %{python_module markdown-it-py}
 BuildRequires:  %{python_module mdit-py-plugins}
 BuildRequires:  %{python_module pip}
@@ -59,6 +62,7 @@ Requires(postun): update-alternatives
 # SECTION tests
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module pygments}
+BuildRequires:  %{python_module pytest-param-files}
 BuildRequires:  %{python_module pytest-regressions}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -79,7 +83,7 @@ This is the reference implementation of MyST Markdown, as well as a collection o
 It contains an extended CommonMark (https://commonmark.org)-compliant parser using markdown-it-py (https://markdown-it-py.readthedocs.io/), as well as a Sphinx (https://www.sphinx-doc.org) extension that allows to write MyST Markdown in Sphinx.
 
 %prep
-%setup -q -n MyST-Parser-%{version}
+%autosetup -p1 -n MyST-Parser-%{version}
 rm docs/.gitignore
 
 %build
@@ -108,13 +112,7 @@ rm docs/.gitignore
 ignore="--ignore=tests/test_renderers/test_fixtures_sphinx.py"
 ignore+=" --ignore=tests/test_renderers/test_myst_refs.py"
 ignore+=" --ignore=tests/test_sphinx/test_sphinx_builds.py"
-# no python-pytest-param-files package
-ignore+=" --ignore=tests/test_renderers/test_myst_config.py"
-
-# no python-pytest-param-files package
-donttest="test_parsing or test_errors or test_render or test_html_to_nodes or test_html_ast or test_html_round_trip"
-
-%pytest $ignore -k "not ($donttest)"
+%pytest $ignore
 
 %pre
 %python_libalternatives_reset_alternative myst-anchors
@@ -127,7 +125,7 @@ donttest="test_parsing or test_errors or test_render or test_html_to_nodes or te
 
 %files %{python_files}
 %{python_sitelib}/myst_parser/
-%{python_sitelib}/myst_parser-%{version}*-info
+%{python_sitelib}/myst_parser-%{version}.dist-info
 %license LICENSE
 %doc CHANGELOG.md README.md
 %python_alternative %{_bindir}/myst-anchors

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  2 04:36:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.1:
+  * Minor fix for sphinx 8.2 compat
+  * Fix type of MockIncludeDirective’s klass parameter
+  * Support python>=3.10, sphinx >=7,<9, docutils>=0.19,<0.22
+  * Improve footnote def/ref warnings and translations
+- Add patch support-docutils-0.22.patch:
+  * Support docutils output changes.
+- Sprinkle in pytest-param-files, since it's packaged now.
+
+-------------------------------------------------------------------
 Thu Aug 21 09:47:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

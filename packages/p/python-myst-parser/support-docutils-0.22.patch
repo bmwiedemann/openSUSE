@@ -1,0 +1,265 @@
+diff -urNP MyST-Parser-4.0.1.orig/tests/test_renderers/fixtures/docutil_link_resolution.md MyST-Parser-4.0.1/tests/test_renderers/fixtures/docutil_link_resolution.md
+--- MyST-Parser-4.0.1.orig/tests/test_renderers/fixtures/docutil_link_resolution.md	2025-02-12 10:49:14.000000000 +0000
++++ MyST-Parser-4.0.1/tests/test_renderers/fixtures/docutil_link_resolution.md	2025-10-02 04:20:54.949806711 +0000
+@@ -24,23 +24,23 @@
+ .
+ <document source="<src>/index.md">
+     <paragraph>
+-        <reference id_link="True" refid="test">
++        <reference id_link="1" refid="test">
+             <system_message level="2" line="1" source="<src>/index.md" type="WARNING">
+                 <paragraph>
+                     'myst' reference target not found: 'test' [myst.xref_missing]
+ 
+-        <reference id_link="True" refid="test">
++        <reference id_link="1" refid="test">
+             <system_message level="2" line="1" source="<src>/index.md" type="WARNING">
+                 <paragraph>
+                     'myst' reference target not found: 'test' [myst.xref_missing]
+ 
+-        <reference id_link="True" refid="test">
++        <reference id_link="1" refid="test">
+             explicit
+             <system_message level="2" line="1" source="<src>/index.md" type="WARNING">
+                 <paragraph>
+                     'myst' reference target not found: 'test' [myst.xref_missing]
+ 
+-        <reference id_link="True" refid="name%20with%20spaces">
++        <reference id_link="1" refid="name%20with%20spaces">
+             <system_message level="2" line="1" source="<src>/index.md" type="WARNING">
+                 <paragraph>
+                     'myst' reference target not found: 'name with spaces' [myst.xref_missing]
+@@ -76,15 +76,15 @@
+             <title>
+                 Non-anchor heading
+             <paragraph>
+-                <reference id_link="True" refid="title">
++                <reference id_link="1" refid="title">
+                     <inline classes="std std-ref">
+                         Title
+ 
+-                <reference id_link="True" refid="longer-title-with-nested-syntax">
++                <reference id_link="1" refid="longer-title-with-nested-syntax">
+                     <inline classes="std std-ref">
+                         Longer title with nested (syntax)
+ 
+-                <reference id_link="True" refid="title">
++                <reference id_link="1" refid="title">
+                     explicit
+ .
+ 
+@@ -102,15 +102,15 @@
+         Test
+     <target refid="target">
+     <paragraph>
+-        <reference id_link="True" refid="target">
++        <reference id_link="1" refid="target">
+             <inline classes="std std-ref">
+                 Test
+ 
+-        <reference id_link="True" refid="target">
++        <reference id_link="1" refid="target">
+             <inline classes="std std-ref">
+                 Test
+ 
+-        <reference id_link="True" refid="target">
++        <reference id_link="1" refid="target">
+             explicit
+ .
+ 
+@@ -128,12 +128,9 @@
+         Test
+     <subtitle ids="other test-1" names="other test">
+         Other
+-    <system_message backrefs="test-1" level="1" line="3" source="<src>/index.md" type="INFO">
+-        <paragraph>
+-            Duplicate implicit target name: "test".
+     <target refid="test-1">
+     <paragraph>
+-        <reference id_link="True" refid="test-1">
++        <reference id_link="1" refid="test-1">
+             <inline classes="std std-ref">
+                 Other
+ .
+@@ -150,7 +147,7 @@
+     <paragraph ids="name-with-spaces" names="name\ with\ spaces">
+         Paragraph
+     <paragraph>
+-        <reference id_link="True" refid="name-with-spaces">
++        <reference id_link="1" refid="name-with-spaces">
+             <inline classes="std std-ref">
+                 #name with spaces
+ .
+@@ -192,14 +189,14 @@
+                         <paragraph>
+                             d
+     <paragraph>
+-        <reference id_link="True" refid="table">
++        <reference id_link="1" refid="table">
+             <inline classes="std std-ref">
+                 caption
+ 
+-        <reference id_link="True" refid="table">
++        <reference id_link="1" refid="table">
+             <inline classes="std std-ref">
+                 caption
+ 
+-        <reference id_link="True" refid="table">
++        <reference id_link="1" refid="table">
+             explicit
+ .
+diff -urNP MyST-Parser-4.0.1.orig/tests/test_renderers/fixtures/docutil_syntax_extensions.txt MyST-Parser-4.0.1/tests/test_renderers/fixtures/docutil_syntax_extensions.txt
+--- MyST-Parser-4.0.1.orig/tests/test_renderers/fixtures/docutil_syntax_extensions.txt	2025-02-12 10:49:14.000000000 +0000
++++ MyST-Parser-4.0.1/tests/test_renderers/fixtures/docutil_syntax_extensions.txt	2025-10-02 04:20:55.090824403 +0000
+@@ -25,12 +25,12 @@
+             foo
+             bar
+          b
+-    <math_block nowrap="False" number="True" xml:space="preserve">
++    <math_block nowrap="0" number="True" xml:space="preserve">
+         foo
+-    <math_block nowrap="False" number="True" xml:space="preserve">
++    <math_block nowrap="0" number="True" xml:space="preserve">
+ 
+         a = 1
+-    <math_block ids="label" names="label" nowrap="False" number="True" xml:space="preserve">
++    <math_block ids="label" names="label" nowrap="0" number="True" xml:space="preserve">
+ 
+         b = 2
+ .
+@@ -48,13 +48,13 @@
+ \end{equation*}
+ .
+ <document source="<string>">
+-    <math_block classes="amsmath" nowrap="True" numbered="True" xml:space="preserve">
++    <math_block classes="amsmath" nowrap="1" numbered="1" xml:space="preserve">
+         \begin{equation} a \end{equation}
+-    <math_block classes="amsmath" nowrap="True" numbered="True" xml:space="preserve">
++    <math_block classes="amsmath" nowrap="1" numbered="1" xml:space="preserve">
+         \begin{equation}
+         a
+         \end{equation}
+-    <math_block classes="amsmath" nowrap="True" xml:space="preserve">
++    <math_block classes="amsmath" nowrap="1" xml:space="preserve">
+         \begin{equation*}
+         a
+         \end{equation*}
+diff -urNP MyST-Parser-4.0.1.orig/tests/test_renderers/fixtures/myst-config.txt MyST-Parser-4.0.1/tests/test_renderers/fixtures/myst-config.txt
+--- MyST-Parser-4.0.1.orig/tests/test_renderers/fixtures/myst-config.txt	2025-02-12 10:49:14.000000000 +0000
++++ MyST-Parser-4.0.1/tests/test_renderers/fixtures/myst-config.txt	2025-10-02 04:20:55.345046213 +0000
+@@ -219,7 +219,7 @@
+     <title>
+         My title
+     <paragraph>
+-        <reference id_link="True" refid="my-title">
++        <reference id_link="1" refid="my-title">
+             <inline classes="std std-ref">
+                 My title
+ .
+@@ -263,6 +263,12 @@
+ <document source="<string>">
+     <paragraph>
+         a
++    <section classes="system-messages">
++        <title>
++            Docutils System Messages
++        <system_message level="2" source="<string>" type="WARNING">
++            <paragraph>
++                The `attrs_image` extension is deprecated, please use `attrs_inline` instead. [myst.deprecated]
+ 
+ <string>:: (WARNING/2) The `attrs_image` extension is deprecated, please use `attrs_inline` instead. [myst.deprecated]
+ .
+@@ -381,7 +387,7 @@
+             Chris Sewell
+ .
+ 
+-[inv_link]
++[inv_link] 
+ .
+ <inv:#index>
+ [](inv:#index)
+@@ -397,42 +403,42 @@
+ .
+ <document source="<string>">
+     <paragraph>
+-        <reference internal="False" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
++        <reference internal="0" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
+             Title
+ 
+-        <reference internal="False" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
++        <reference internal="0" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
+             Title
+ 
+-        <reference internal="False" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
++        <reference internal="0" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
+             <emphasis>
+                 explicit
+ 
+-        <reference internal="False" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
++        <reference internal="0" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
+             Title
+ 
+-        <reference internal="False" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
++        <reference internal="0" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
+             Title
+ 
+-        <reference internal="False" inv_match="key:std:label:search" reftitle="Python" refuri="https://example.com/search.html">
++        <reference internal="0" inv_match="key:std:label:search" reftitle="Python" refuri="https://example.com/search.html">
+             Search Page
+ 
+-        <reference internal="False" inv_match="key:std:label:search" reftitle="Python" refuri="https://example.com/search.html">
++        <reference internal="0" inv_match="key:std:label:search" reftitle="Python" refuri="https://example.com/search.html">
+             Search Page
+ 
+-        <reference internal="False" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
++        <reference internal="0" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
+             Title
+ 
+-        <reference internal="False" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
++        <reference internal="0" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
+             Title
+ 
+-        <reference internal="False" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
++        <reference internal="0" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
+             Title
+ 
+-        <reference internal="False" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
++        <reference internal="0" inv_match="key:std:doc:index" reftitle="Python" refuri="https://example.com/index.html">
+             Title
+ .
+ 
+-[inv_link_error]
++[inv_link_error] 
+ .
+ <inv:#other>
+ 
+@@ -447,7 +453,7 @@
+         <system_message level="2" line="3" source="<string>" type="WARNING">
+             <paragraph>
+                 Multiple matches for '*:*:*:*index': key:std:label:genindex, key:std:label:modindex, key:std:label:py-modindex, ... [myst.iref_ambiguous]
+-        <reference internal="False" inv_match="key:std:label:genindex" reftitle="Python" refuri="https://example.com/genindex.html">
++        <reference internal="0" inv_match="key:std:label:genindex" reftitle="Python" refuri="https://example.com/genindex.html">
+             Index
+ 
+ <string>:1: (WARNING/2) No matches for '*:*:*:other' [myst.iref_missing]
+@@ -486,7 +492,7 @@
+             <title>
+                 other
+             <paragraph>
+-                <reference id_link="True" refid="title">
++                <reference id_link="1" refid="title">
+                     reversed
+ .
+ 
+diff -urNP MyST-Parser-4.0.1.orig/tests/test_renderers/fixtures/reporter_warnings.md MyST-Parser-4.0.1/tests/test_renderers/fixtures/reporter_warnings.md
+--- MyST-Parser-4.0.1.orig/tests/test_renderers/fixtures/reporter_warnings.md	2025-02-12 10:49:14.000000000 +0000
++++ MyST-Parser-4.0.1/tests/test_renderers/fixtures/reporter_warnings.md	2025-10-02 04:20:54.751283034 +0000
+@@ -116,7 +116,7 @@
+ 
+ [^a]
+ .
+-<string>:3: (ERROR/3) Too many autonumbered footnote references: only 0 corresponding footnotes available.
++<string>:3: (ERROR/3) Too many autonumbered footnote references: only 0 corresponding footnote available.
+ <string>:1: (ERROR/3) Unknown target name: "1".
+ <string>:3: (ERROR/3) Unknown target name: "a".
+ .
