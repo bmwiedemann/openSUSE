@@ -347,4 +347,25 @@
   * Use warnings rather than logging a warning for DecimalField.</comment>
     <requestid>1184013</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b176cc6193fda2a4b7968a547e06817e</srcmd5>
+    <version>3.16.1</version>
+    <time>1759499014</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1308361 from mcalabkova
+
+- update to 3.16.1
+    * Add official support for Django 5.2
+    * Add support for Python 3.13
+    * Support Django 2.1+ test client JSON data automatically serialized
+    * Fix unique together validator to respect condition's fields from
+      UniqueConstraint
+    * Added protections to AttributeError raised within properties
+    * Fix get_template_context to handle also lists
+    * Fix &quot;Converter is already registered&quot; deprecation warning
+    * Cleanup optional backports.zoneinfo dependency and conditions on
+      unsupported Python 3.8 and lower
+  - Add upstream pyproject.patch to modernize packaging</comment>
+    <requestid>1308666</requestid>
+  </revision>
 </revisionlist>

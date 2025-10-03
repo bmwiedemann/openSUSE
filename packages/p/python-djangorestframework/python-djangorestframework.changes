@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct  1 09:01:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.16.1
+  * Add official support for Django 5.2
+  * Add support for Python 3.13
+  * Support Django 2.1+ test client JSON data automatically serialized
+  * Fix unique together validator to respect condition's fields from
+    UniqueConstraint
+  * Added protections to AttributeError raised within properties
+  * Fix get_template_context to handle also lists
+  * Fix "Converter is already registered" deprecation warning
+  * Cleanup optional backports.zoneinfo dependency and conditions on
+    unsupported Python 3.8 and lower
+- Add upstream pyproject.patch to modernize packaging
+
+-------------------------------------------------------------------
 Sat Jun 29 16:41:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.15.2:

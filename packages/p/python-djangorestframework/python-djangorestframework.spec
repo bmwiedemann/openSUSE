@@ -1,7 +1,7 @@
 #
 # spec file for package python-djangorestframework
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,18 +26,21 @@
 %bcond_with test
 %endif
 Name:           python-djangorestframework%{psuffix}
-Version:        3.15.2
+Version:        3.16.1
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause
 URL:            https://www.django-rest-framework.org/
 Source:         https://github.com/encode/django-rest-framework/archive/%{version}.tar.gz#/djangorestframework-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/encode/django-rest-framework/pull/9056 Migrate packaging to pyproject.toml
+# just for packaging comfort
+Patch:          pyproject.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 3.0
+Requires:       python-Django >= 4.2
 %if 0%{?suse_version} > 1500
 Recommends:     python-Markdown
 %endif
@@ -48,7 +51,7 @@ Provides:       python-django-rest-framework = %{version}
 Obsoletes:      python-django-rest-framework < %{version}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Django >= 3.0}
+BuildRequires:  %{python_module Django >= 4.2}
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module Markdown >= 3.3}
 %endif
@@ -57,6 +60,7 @@ BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module django-guardian >= 2.4.0}
 BuildRequires:  %{python_module psycopg}
 BuildRequires:  %{python_module pytest-django >= 4.1.0}
+BuildRequires:  %{python_module pytz}
 %endif
 %python_subpackages
 
@@ -73,9 +77,9 @@ authentication and permission policies out of the box.
 %autosetup -p1 -n django-rest-framework-%{version}
 
 # Remove pytest params incompatible with older pytest on Leap
-sed -i '/addopts/d' setup.cfg
+sed -i '/addopts/d' pyproject.toml
 # Remove pytest params breaking Tumbleweed
-sed -i '/filterwarnings/d' setup.cfg
+sed -i '/filterwarnings/d' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -88,10 +92,8 @@ sed -i '/filterwarnings/d' setup.cfg
 
 %check
 %if %{with test}
-# Two tests failing due to incompatible output of Markdown 3.4 vs 3.3 pinned upstream
-# https://github.com/encode/django-rest-framework/discussions/7980
 # coreapi has been removed from Tumbleweed
-%pytest -rs -vv -k 'not ((TestViewNamesAndDescriptions and test_markdown) or (TestDocumentationRenderer and test_shell_code_example_rendering) or test_coreapi)'
+%pytest -rs -vv -k 'not (test_coreapi)'
 %endif
 
 %if !%{with test}
