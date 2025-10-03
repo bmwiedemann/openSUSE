@@ -2582,4 +2582,13 @@
 </comment>
     <requestid>1295333</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>989ef9e629ec84e9fe911c13a9833a34</srcmd5>
+    <version>7.1.0</version>
+    <time>1759502804</time>
+    <user>anag_factory</user>
+    <comment>- Add astropy-pr18335-jplephem.patch gh#astropy/astropy#18335
+</comment>
+    <requestid>1308856</requestid>
+  </revision>
 </revisionlist>

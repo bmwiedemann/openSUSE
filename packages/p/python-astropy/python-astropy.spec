@@ -1,7 +1,7 @@
 #
 # spec file for package python-astropy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,8 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
+# PATCH-FIX-UPSTREAM astropy-pr18335-jplephem.patch gh#astropy/astropy#18335
+Patch1:         https://github.com/astropy/astropy/pull/18335.patch#/astropy-pr18335-jplephem.patch
 # https://docs.astropy.org/en/stable/install.html#requirements
 BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 4}
 BuildRequires:  %{python_module devel >= 3.11}
