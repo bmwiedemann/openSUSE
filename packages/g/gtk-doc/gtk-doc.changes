@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  1 09:12:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.35.0:
+  + Small maintenance tasks.
+  + Meson: small update.
+  + Updated translations.
+- Switch to source service for tarball.
+
+-------------------------------------------------------------------
 Mon Apr 29 07:51:50 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

@@ -371,4 +371,12 @@ Required meson version is now in Factory (forwarded request 976110 from susnux)<
   %python3_fix_shebang_path and %python_fix_shebang macros, [bsc#1212476] (forwarded request 1170691 from pgajdos)</comment>
     <requestid>1170719</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9ba5ef5450c7c162a49da95541eb0a86</srcmd5>
+    <version>1.35.0</version>
+    <time>1759498946</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1308559</requestid>
+  </revision>
 </revisionlist>

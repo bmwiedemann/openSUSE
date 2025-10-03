@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-doc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           gtk-doc%{?psuffix}
-Version:        1.34.0
+Version:        1.35.0
 Release:        0
 %if "%{flavor}" == ""
 Summary:        GTK+ Documentation Generator
@@ -37,7 +37,7 @@ License:        GFDL-1.1-or-later
 Group:          Documentation/HTML
 %endif
 URL:            http://www.gtk.org/gtk-doc/
-Source0:        https://gitlab.gnome.org/GNOME/gtk-doc/-/archive/%{version}/gtk-doc-%{version}.tar.bz2
+Source0:        gtk-doc-%{version}.tar.zst
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxml2-tools
@@ -126,7 +126,7 @@ mkdir -p %{buildroot}%{_datadir}/gtk-doc/html
 %if "%{flavor}" == ""
 %files
 %license COPYING
-%doc AUTHORS NEWS README TODO
+%doc AUTHORS NEWS README
 %{_bindir}/gtkdoc-*
 %{_bindir}/gtkdocize
 %exclude %{_bindir}/gtkdoc-mkpdf
