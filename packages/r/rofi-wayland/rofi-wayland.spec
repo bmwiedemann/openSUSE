@@ -1,7 +1,7 @@
 #
 # spec file for package rofi-wayland
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rofi-wayland
-Version:        1.7.8+wayland1+git.1737536808.03a3a58
+Version:        1.7.9+wayland1+git.1757683229.9b0363ca
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
@@ -82,6 +82,7 @@ sed -i '1s,%{_bindir}/env bash,/bin/bash,' script/rofi-sensible-terminal \
 %{_mandir}/man1/rofi.1%{?ext_man}
 %{_mandir}/man1/rofi-sensible-terminal.1%{?ext_man}
 %{_mandir}/man1/rofi-theme-selector.1%{?ext_man}
+%{_mandir}/man5/rofi-actions.5%{?ext_man}
 %{_mandir}/man5/rofi-debugging.5%{?ext_man}
 %{_mandir}/man5/rofi-dmenu.5%{?ext_man}
 %{_mandir}/man5/rofi-keys.5%{?ext_man}

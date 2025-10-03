@@ -55,4 +55,57 @@
     <comment></comment>
     <requestid>1242158</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>13e785de56a39b3da5001d7b90200295</srcmd5>
+    <version>1.7.9+wayland1+git.1757683229.9b0363ca</version>
+    <time>1759499036</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.7.9+wayland1+git.1757683229.9b0363ca:
+  * Update issue templates
+  * Fix issue templates
+  * Update banner and issue templates after mainline release
+  * Add banner about merge to mainline
+  * Rofi 1.7.9+wayland1
+  * Fix a merge conflict resolution error
+  * Bump release to 1.7.9
+  * [MKDocs] Update Downloads page with missing releases.
+  * [MKDocs] More updates to menu structure.
+  * Add `rofi-actions` to website and update releasenotes.
+  * More releasenote updates.
+  * Add initial release notes for 1.7.9.
+  * Add -imdkit config to toggle imdkit at runtime (#2124)
+  * [Widget] Add 2 workaround for error in corner radius drawing
+  * [rofi-sensible-terminal] Add ghostty
+  * [scrollbar] Add theming for rounded corners (#2108)
+  * [DOC] Fix indenting of sub-bullets as mkdocs interpets them differently
+  * Fix typo in fullscreen-preview.rasi (#2113)
+  * Add theming to hide text cursor if no text is put in (#2106)
+  * [Build] Update dependencies for sr.ht.
+  * [DRUN] Add option to exclude categories from drun #2102 (#2104)
+  * Wayland: remove some dead code
+  * [XCB] Don't keep casting from int to double to int
+  * [Helper] Add a rofi_fallthrough macro to tell compiler fallthrough is intentional
+  * [View] xcb_clear_area  fixed wrong argument order.
+  * Wayland: fix key repeat rate
+  * [DRun] Better handling of corrupted cache file.
+  * Fix broken Pango link (#2096)
+  * [NKUtils] Drop support for binding Meta key.
+  * [WIP] [View] Allow cycling through matching methods (#2091)
+  * Update script to avoid possible issues.
+  * Update codeql flow version
+  * Fix wrong pointer `-replace` and small cleanup.
+  * [Textbox] Small signedness fixes for password mask code.
+  * [dmenu] Modified textbox password masking (#2067)
+  * feat: add smartcase support like vim (#2060)
+  * [Mode] Fix wrong documentation header.
+  * Revert &quot;[Window] Allow active window to be sorted on top.&quot;
+  * [Mode] Add some wrappers and use object via accessors.
+  * [WIP] Execute custom user commands or scripts on a variety of rofi events (#2053)
+  * Add option to enable the `kb-delete-entry` in script mode (#2087)
+  * [Window] Allow active window to be sorted on top.
+  * [Lexer] Allow for optional imports.
+  * Bump to 1.7.8-dev release.
+</comment>
+    <requestid>1308710</requestid>
+  </revision>
 </revisionlist>

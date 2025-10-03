@@ -1,13 +1,13 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="versionprefix">1.7.8+wayland1+git</param>
+    <param name="versionprefix">1.7.9+wayland1+git</param>
     <param name="url">https://github.com/lbonn/rofi.git</param>
     <param name="scm">git</param>
     <param name="revision">wayland</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
