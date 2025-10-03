@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 03 05:05:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.44.0:
+  * Added Features
+    - Enable the chainguard-libraries provider [#695 @wagoodman]
+  * Dependencies
+    - chore(deps): update tools to latest versions (#693)
+    - chore(deps): Bump actions/cache from 4.2.4 to 4.3.0 (#697)
+    - chore(deps): Bump github.com/openvex/go-vex from 0.2.6 to
+      0.2.7 (#692)
+    - chore(deps): Bump actions/cache in /.github/actions/bootstrap
+      (#698)
+    - chore(deps): Bump github.com/hashicorp/go-getter from 1.8.0
+      to 1.8.1 (#696)
+
+-------------------------------------------------------------------
 Thu Sep 18 07:32:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.43.0:
