@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  2 05:52:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.15
+  * Build system updates only: Allow to give an explicit prefix for
+    boost, and make sure m4ri cflags are properly correctly
+    propagated.
+
+-------------------------------------------------------------------
 Tue May 20 17:37:30 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.14

@@ -18,7 +18,7 @@
 
 %define lname	libbrial3
 Name:           brial
-Version:        1.2.14
+Version:        1.2.15
 Release:        0
 Summary:        The Polynomials over Boolean Rings Computer Algebra System
 License:        GPL-2.0-or-later
@@ -82,8 +82,7 @@ autoreconf -fi
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libbrial.so.3*
