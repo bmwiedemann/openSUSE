@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-redis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,29 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-redis
-Version:        5.4.0
+Version:        6.0.0
 Release:        0
 Summary:        A redis cache backend for Django
 License:        BSD-3-Clause
 URL:            https://github.com/jazzband/django-redis
-Source:         https://files.pythonhosted.org/packages/source/d/django-redis/django-redis-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 3.2}
+Source:         https://files.pythonhosted.org/packages/source/d/django_redis/django_redis-%{version}.tar.gz
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module lz4 >= 0.15}
-BuildRequires:  %{python_module msgpack >= 0.4.6}
+BuildRequires:  %{python_module msgpack >= 0.6.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock >= 3.0}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module redis >= 3}
+BuildRequires:  %{python_module redis >= 4.0.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
 BuildRequires:  redis
-Requires:       python-Django >= 3.2
-Requires:       python-lz4 >= 0.15
-Requires:       python-msgpack >= 0.4.6
-Requires:       python-redis >= 3
+Requires:       python-Django >= 4.2
+Requires:       python-redis >= 4.0.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,8 +48,7 @@ BuildArch:      noarch
 A redis cache backend for Django.
 
 %prep
-%setup -q -n django-redis-%{version}
-sed -i '/addopts/d' setup.cfg
+%setup -q -n django_redis-%{version}
 
 %build
 %pyproject_wheel
@@ -62,14 +60,7 @@ sed -i '/addopts/d' setup.cfg
 %check
 /usr/sbin/redis-server --port 6379 &
 export PYTHONPATH=${PWD}:${PWD}/tests
-%{python_expand \
-DJANGO_SETTINGS_MODULE=tests.settings.sqlite_sharding $python -m pytest -rs -v tests
-DJANGO_SETTINGS_MODULE=tests.settings.sqlite_herd $python -m pytest -rs -v tests
-DJANGO_SETTINGS_MODULE=tests.settings.sqlite_json $python -m pytest -rs -v tests
-DJANGO_SETTINGS_MODULE=tests.settings.sqlite_msgpack $python -m pytest -rs -v tests
-DJANGO_SETTINGS_MODULE=tests.settings.sqlite_zlib $python -m pytest -rs -v tests
-DJANGO_SETTINGS_MODULE=tests.settings.sqlite_lz4 $python -m pytest -rs -v tests
-}
+%pytest -rs -n auto tests
 killall redis-server
 
 %files %{python_files}

@@ -143,4 +143,22 @@
 - Switch to pyproject macros</comment>
     <requestid>1121341</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5a35503d620fe34d0064f4c86039001c</srcmd5>
+    <version>6.0.0</version>
+    <time>1759499012</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1308342 from mcalabkova
+
+- Update to 6.0.0
+    * Support HashMaps
+    * Support gzip compression
+    * Support for sets and support basic operations
+    * Drop support for django 3.2, python 3.6 and python 3.7
+    * Support pytest&gt;=7
+    * Added support for Python 3.13
+    * Speed up tests by using pytest-xdist and separating settings on
+      different redis databases. Dropped pytest-django.</comment>
+    <requestid>1308665</requestid>
+  </revision>
 </revisionlist>
