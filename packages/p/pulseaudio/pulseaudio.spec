@@ -605,7 +605,6 @@ exit 0
 %files -n libpulse-mainloop-glib%{soname}
 %{_libdir}/libpulse-mainloop-glib.so.%{soname}
 %{_libdir}/libpulse-mainloop-glib.so.%{soname}.*
-%{_datadir}/glib-2.0/schemas/org.freedesktop.pulseaudio.gschema.xml
 
 %files module-bluetooth
 %dir %{_libdir}/pulseaudio
@@ -625,6 +624,7 @@ exit 0
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/pulseaudio.convert
+%{_datadir}/glib-2.0/schemas/org.freedesktop.pulseaudio.gschema.xml
 
 %files module-lirc
 %dir %{_libdir}/pulseaudio
