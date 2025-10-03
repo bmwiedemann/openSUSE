@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Oct  3 07:58:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.20250918:
+  * update reference.md
+  * Include -fmodule-file flags in compile_commands.json
+  * Refactor C++ module dependency logic into a new utility
+  * Gitiles navigation bar
+  * Adds a len() function
+  * Avoid clashes of include_dir in rust-project.json.
+  * Check all targets to find duplicated outputs.
+  * infra/config: Remove luci.recipes.use_python3 experiment
+  * Handle empty outputs in WriteInputDepsStampOrPhonyAndGetDep
+  * build: Propagate module dependencies through group targets
+  * Deduplicate item in 'deps', 'sources' and related lists
+  * infra: Update comment for macOS version used in CQ/CI
+  * [Apple] Allow passing a manifest to the post-processing script
+  * Update link to buganizer in README.md
+  * [Apple] Fix `gn gen` when using swift and no_stamp_files
+  * [Apple] Remove deprecated aliases for `post_processing_$var`
+  * Revert "Allow newline in string literal"
+  * Use std::ranges::all_of in parse_tree_unittest
+  * infra: Correctly use macOS 13 instead of 11
+  * Update Xcode and macOS version in bots
+  * infra: Add shadow buckets to trigger led job
+  * Allow newline in string literal
+  * Revert "Update macOS version to 13 used in CQ/CI"
+  * Update macOS version to 13 used in CQ/CI
+  * Refactor command_format.cc
+  * Shorten targets from //path/to/foo:foo to //path/to/foo
+  * Modernize and improve parse_tree.cc
+  * Auto-format the codebase
+  * Remove hardcoded -fmodules-embed-all-files flag
+  * Reland "Use JSON escaping for JSON string output"
+
+-------------------------------------------------------------------
 Tue Jul 01 14:40:37 UTC 2025 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 0.20250619:

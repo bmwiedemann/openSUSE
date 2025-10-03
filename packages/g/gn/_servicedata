@@ -1,4 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://gn.googlesource.com/gn.git</param>
-              <param name="changesrevision">97b68a0bb62b7528bc3491c7949d6804223c2b82</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">https://gn.googlesource.com/gn.git</param>
+    <param name="changesrevision">81b24e01531ecf0eff12ec9359a555ec3944ec4e</param>
+  </service>
+</servicedata>
