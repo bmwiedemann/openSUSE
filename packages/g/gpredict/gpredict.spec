@@ -1,7 +1,7 @@
 #
 # spec file for package gpredict
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,21 +24,20 @@ License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
 URL:            http://gpredict.oz9aec.net/
 Source:         https://github.com/csete/gpredict/releases/download/v%{version}/gpredict-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM gpredict-goocanvas-3 -- very loosly inspired by https://github.com/csete/gpredict/commit/86fb71.patch#/
+Patch0:         gpredict-goocanvas3.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+BuildRequires:  libtool
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
-BuildRequires:  pkgconfig(goocanvas-2.0)
+BuildRequires:  pkgconfig(goocanvas-3.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcurl) >= 7.19
 BuildRequires:  pkgconfig(libgps)
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
 Recommends:     %{name}-lang
 Recommends:     hamlib
 
@@ -52,9 +51,10 @@ satellite, and provide you with detailed information about each pass.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+autoreconf -fiv
 export CFLAGS="%optflags -fcommon"
 %configure \
     --disable-silent-rules
@@ -65,16 +65,6 @@ make %{?_smp_mflags}
 %find_lang %{name}
 %suse_update_desktop_file -c gpredict Gpredict "Satellite tracking program" gpredict gpredict-icon "Network;HamRadio"
 %fdupes -s %{buildroot}
-
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %doc AUTHORS COPYING ChangeLog NEWS README
