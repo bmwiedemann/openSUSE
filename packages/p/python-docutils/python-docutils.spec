@@ -1,7 +1,7 @@
 #
 # spec file for package python-docutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %endif
 
 Name:           python-docutils%{psuffix}
-Version:        0.21.2
+Version:        0.22.2
 Release:        0
 Summary:        Python Documentation Utilities
 License:        BSD-2-Clause AND Python-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
@@ -84,10 +84,11 @@ find . -name \*.swp -delete
 sed -i '1{/^#!/d}' \
   docutils/__main__.py \
   docutils/parsers/commonmark_wrapper.py \
+  docutils/parsers/docutils_xml.py \
   docutils/parsers/recommonmark_wrapper.py \
-  docutils/utils/error_reporting.py \
   docutils/utils/math/math2html.py \
   docutils/utils/math/tex2unichar.py \
+  docutils/utils/math/mathalphabet2unichar.py \
   docutils/utils/smartquotes.py \
   docutils/writers/_html_base.py \
   docutils/writers/odf_odt/prepstyles.py \
@@ -102,7 +103,9 @@ sed -i '1{/^#!/d}' \
 for binary in docutils rst2html rst2latex rst2man rst2odt rst2pseudoxml rst2s5 rst2xetex rst2xml rst2html4 rst2html5 ; do
     %python_clone -a %{buildroot}%{_bindir}/$binary
 done
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand find %{buildroot}%{$python_sitelib} -name \*.py -executable -exec chmod -x '{}' \;
+%fdupes %{buildroot}%{$python_sitelib}
+}
 %endif
 
 %check
@@ -124,8 +127,8 @@ update-alternatives --query rst2html >/dev/null 2>&1 && update-alternatives --qu
 %python_uninstall_alternative docutils
 
 %files %{python_files}
-%license COPYING.txt licenses/*.txt
-%doc FAQ.txt HISTORY.txt README.txt THANKS.txt BUGS.txt docs/*
+%license COPYING.rst licenses/*.txt licenses/*.rst
+%doc FAQ.rst HISTORY.rst README.rst THANKS.rst BUGS.rst docs/*
 %python_alternative %{_bindir}/docutils
 %python_alternative %{_bindir}/rst2html
 %python_alternative %{_bindir}/rst2latex

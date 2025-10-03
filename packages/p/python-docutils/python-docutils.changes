@@ -1,4 +1,260 @@
 -------------------------------------------------------------------
+Mon Sep 22 10:26:15 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.22.2:
+  - Remove a spurious vim .swp-file to fix bug #513.
+
+-------------------------------------------------------------------
+Wed Sep 17 19:37:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.22.1:
+  - Only documentation fixes.
+    docutils/frontend.py, docutils/writers/
+        More consistent and concise command line help.
+    docutils/nodes.py
+      - nodes.Element.section_hierarchy() now returns only
+        elements with non-empty "parent" attribute.
+    docutils/parsers/rst/states.py
+      - Relax "section title" system messages from SEVERE to
+        ERROR.
+      - Fix behaviour with nested parsing into a detached node
+        (cf. bugs #508 and #509).
+      - New attribute NestedStateMachine.parent_state_machine.
+        Use case: update the "current node" of parent state
+        machine(s) after nested parsing.
+      - Better error messages for grid table markup errors (bug
+        #504), based on patch #214 by Jynn Nelson.
+    docutils/transforms/references.py
+      - Better error reports for hyperlinks with embedded URI or
+        alias.
+    docutils/writers/latex2e/__init__.py
+      - Add cross-reference anchors (\phantomsection\label{...})
+        for elements with IDs (fixes bug #503).
+      - Fix cross-reference anchor placement in figures, images,
+        literal-blocks, tables, and (sub)titles.
+      - Simplify code for images nested in reference or figure
+        elements.
+- Update to 0.22.0:
+    General
+      - We have started to add type hints to Docutils
+        (feature-request #87).
+      - This will be a complex programme of work and as such, for
+        the time being, these type hints are "provisional" and
+        should not be relied upon.
+      - By default, the Python interpreter treats type hints as
+        annotations. Python >= 3.10 is required with active type
+        hints (typing.TYPE_CHECKING == True).
+    docs/ref/docutils.dtd
+      - Allow multiple <term> elements in a
+        <definition_list_item>. Fixes feature-request #60
+      - The first element in a <figure> may also be a <reference>
+        (with nested "clickable" <image>).
+    docutils/core.py
+      - Removed Publisher.setup_option_parser() (internal,
+        obsolete).
+      - Allow a string value (component name or alias) in
+        the "reader", "parser", and "writer" arguments of
+        Publisher.__init__() and the publish_*() convenience
+        functions.
+    docutils/frontend.py
+      - Drop short options -i and -o for --input-encoding and
+        --output-encoding.
+      - Change the default input encoding from None (auto-detect)
+        to "utf-8".
+      - Change the default value of the root_prefix setting to
+        the empty string (no change to the behaviour).
+    docutils/io.py
+      - Change the default input encoding from None (auto-detect)
+        to "utf-8".
+    docutils/nodes.py
+      - Raise TypeError if the "rawsource" argument in
+        Element.__init__() is an Element instance. Catches errors
+        like nodes.hint(nodes.paragraph()).
+      - New element category classes SubStructural and
+        PureTextElement.
+      - Fix element categories.
+      - New method Element.validate(): raise
+        nodes.ValidationError if the element does not comply with
+        the "Docutils Document Model". Provisional.
+      - New "attribute validating functions" convert string
+        representations to correct data type, normalize values,
+        and raise ValueError for invalid attribute names or
+        values.
+      - New function parse_measure().
+      - Removed Element.set_class().
+      - Downgrade "duplicate ID" message level from SERIOUS to
+        ERROR.
+      - Fix recursion in Element.get_language_code().
+      - Do not insert <system_message> elements for duplicate
+        explicit targets if this results in an invalid doctree
+        (cf. bug #489).
+      - Don't include a "backlink" reference in system messages,
+        if the referenced element is an external target (not
+        visible in the output).
+      - Don't invalidate indirect targets with duplicate name,
+        if they refer to the same refname (similar to external
+        targets refering to the same URI).
+    docutils/parsers/docutils_xml.py
+      - New parser for Docutils XML sources. Provisional.
+    docutils/parsers/recommonmark_wrapper.py
+      - New method Parser.finish_parse() to clean up (before
+        validating).
+    docutils/parsers/rst/languages/
+      - Remove mistranslations of the "admonition" directive
+        name.
+    docutils/parsers/rst/languages/en.py
+      - Add alias "rst-class" for the "class" directive to
+        improve the compatibility with Sphinx.
+    docutils/parsers/rst/directives/__init__.py
+      - Support CSS3 length units. Fixes feature-request #57.
+    docutils/parsers/rst/directives/images.py
+      - New option "figname" for the "figure" directive. Fixes
+        feature-request #44.
+    docutils/parsers/rst/directives/misc.py
+      - Pass the included file's path to the parser when the
+        "include" directive is used with :parser: option. Enables
+        system messages with correct source/line info.
+      - Pass default settings to custom parser for included file.
+    docutils/parsers/rst/directives/references.py
+      - Remove "name" from TargetNotes.option_spec. The
+        "target-notes" directive generates one footnote element
+        per external target but "name" must be unique across the
+        document. So far, the name was silently dropped.
+    docutils/parsers/rst/directives/tables.py
+      - Removed CSVTable.decode_from_csv() and
+        CSVTable.encode_from_csv(). Not required with Python 3.
+    docutils/parsers/rst/roles.py
+      - Renamed normalized_role_options() to normalize_options()
+        (it is now also used for directive options).
+    docutils/parsers/rst/states.py
+      - Raise warning for empty footnotes and citations.
+      - Add source and line info to <enumerated-list> elements.
+        Fix line number of "start value not ordinal-1" INFO
+        message.
+      - Change section handling to not rely on exceptions and
+        reparsing. Based on patch #213 by Arne Skjærholt. Fixes
+        bug #346 (duplicate System Messages).
+      - Use types.SimpleNamespace instead of a local definition
+        for the auxilliary class states.Struct.
+      - Warn about duplicate name in references with embedded
+        internal targets. Fixes bug #502.
+      - "Downgrade" targets generated from hyperlink references
+        with embedded URI or alias from explicit to implicit (cf.
+        bug #502).
+    docutils/readers/__init__.py:
+      - Deprecate "parser_name" argument of Reader.__init__().
+    docutils/transforms/frontmatter.py
+      - Update DocInfo to work with corrected element categories.
+    docutils/transforms/misc.py:
+      - Fix for misc.Transitions: report an error if a
+        <transition> element follows a <meta> or <decoration>
+        element as this is invalid according to docutils.dtd.
+    docutils/transforms/references.py
+      - Make AnonymousHyperlinks transform idempotent.
+      - New transform CitationReferences. Marks
+        citation_references as resolved if BibTeX is used by the
+        backend (LaTeX).
+    docutils/transforms/writer_aux.py
+      - Removed Compound transform.
+    docutils/transforms/universal.py
+      - Messages transform now also handles "loose" system
+        messages generated by the parser.
+    docutils/utils/__init__.py
+      - Removed Reporter.set_conditions(). Set attributes via
+        configuration settings or directly.
+    docutils/utils/_roman_numerals.py
+      - New implementation or Roman numeral support. Replaces the
+        local copy of the roman.py package.
+    docutils/utils/error_reporting.py
+      - Removed. Obsolete in Python 3.
+    docutils/writers/docutils-xml.py
+      - Do not increase indentation of follow-up lines inside
+        inline elements. when formatting with indents.
+    docutils/writers/__init__.py
+      - New base class writers.DoctreeTranslator with auxiliary
+        method uri2path().
+    docutils/writers/_html_base.py
+      - Make MathML the default math_output.
+      - Revise image size handling methods, use "width" and
+        "height" attributes for unitless values.
+      - Add "px" to unitless table "width" values.
+      - Fix error when determining the document metadata title
+        from the source path and the internal source attribute is
+        None.
+    docutils/writers/html4css1/__init__.py
+      - Keep default math_output value "HTML math.css".
+      - Add "px" to unitless table "width" values.
+    docutils/writers/latex2e/__init__.py
+      - LaTeXTranslator.to_latex_length(): Handle CSS3 length
+        units. Remove optional argument pxunit (ignored since at
+        least 2012). Drop trailing zeroes from length values.
+        Move XeTeX-specific code to the "xetex" writer.
+      - Don't wrap references with custom reference-label in a
+        \hyperref command.
+      - Mark the main language when loading "babel".
+      - Provide an "unknown_references_resolver" (cf.
+        docutils/TransformSpec) for citation references resolved
+        with BibTeX (cf. use_bibtex setting).
+      - Support SVG image inclusion with the "svg" LaTeX package
+        (see the stylesheet configuration setting). Solves
+        feature-request #83
+      - Add "template" to the parts returned by
+        Writer.assemble_parts().
+      - Use standard dict for LaTeXTranslator.requirements and
+        LaTeXTranslator.fallbacks.
+      - Use <document> "title" attribute in pdfinfo.
+      - Encode <meta> element content in pdfinfo.
+      - Improve formatting of docinfo fields.
+      - LaTeXTranslator.pop_output_collector() now returns the
+        popped list.
+      - Replace Writer.bibtex_reference_resolver() with a
+        transform.
+      - LaTeXTranslator.visit_inline() now inserts labels for the
+        node's IDs.
+      - Disable footnote handling by the "hyperref" LaTeX package
+        (Docutils' \DUfootnotemark and \DUfootnotetext macros
+        implement hyperlinks and backlinks). Avoids "empty
+        anchor" warnings.
+      - Fix target position and re-style system messages.
+      - Don't merge paragraphs if there is a target between them.
+    docutils/writers/latex2e/docutils.sty
+      - Replace use of \ifthenelse{\isundefined... (from
+        "ifthen.sty") with the eTeX primitive \ifdefined.
+      - Add macros to emulate CSS3 length units unknown to LaTeX.
+    docutils/writers/manpage.py
+      - Remove code for unused emdash bullets.
+      - Print Docutils version in header comment (feature-request
+        #105).
+      - Stop converting text to full capitals (bug #481).
+      - Fix reference output (bug #497).
+      - Use macros .UR/.UE for hyperlink references unless the
+        new configuration setting text_references is True. The
+        current default is True (text references), it will change
+        to False (macro references) in Docutils 1.0.
+      - Do not drop text of internal targets.
+    docutils/writers/null.py
+      - null.Writer.translate() sets self.output to the empty
+        string.
+    docutils/writers/odf_odt/__init__.py
+      - Use "px" as fallback unit for unitless image size
+        attributes.
+      - Fix conversion factor of "pc" (pica) to "cm".
+      - Fix conversion of image width in "%" if the height is
+        specified.
+      - Adjust fallback DPI value (currently not used) to match
+        CSS units.
+      - Fix errors with *.xml style files (bug #494).
+      - Use <document> "title" attribute in document metadata.
+    pyproject.toml
+      - Add tox.ini to the "include" list (fixes bug #486).
+    tools/rst2odt.py
+      - Use core.publish_file() instead of
+        core.publish_file_to_binary().
+    tools/rst2odt_prepstyles.py
+      - Removed. Use python -m
+        docutils.writers.odf_odt.prepstyles.
+
+-------------------------------------------------------------------
 Fri Jan 17 09:00:56 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - fix alternatives
