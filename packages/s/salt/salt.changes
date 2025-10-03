@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  1 12:32:31 UTC 2025 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Add python3.11 as preferable for salt-ssh to avoid tests fails
+
+- Added:
+  * add-python3.11-as-preferable-for-salt-ssh-to-avoid-t.patch
+
+-------------------------------------------------------------------
 Wed Sep 17 08:15:33 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Make test_pillar_timeout test more reliable

@@ -1,0 +1,26 @@
+From ea87110248948eb61628cda607ae1af34e83fdfe Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 1 Oct 2025 14:19:27 +0200
+Subject: [PATCH] Add python3.11 as preferable for salt-ssh to avoid
+ tests fails
+
+---
+ salt/client/ssh/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
+index 1d8426b7c2..bfb7d3d1d1 100644
+--- a/salt/client/ssh/__init__.py
++++ b/salt/client/ssh/__init__.py
+@@ -157,7 +157,7 @@ SSH_PY_CODE='import base64;
+ if [ -n "$DEBUG" ]
+     then set -x
+ fi
+-PYTHON_CMDS="/var/tmp/venv-salt-minion/bin/python python3 /usr/libexec/platform-python python27 python2.7 python26 python2.6 python2 python"
++PYTHON_CMDS="/var/tmp/venv-salt-minion/bin/python python3.11 python3 /usr/libexec/platform-python python27 python2.7 python26 python2.6 python2 python"
+ for py_cmd in $PYTHON_CMDS
+ do
+     if command -v "$py_cmd" >/dev/null 2>&1 && "$py_cmd" -c "import sys; sys.exit(not (sys.version_info >= (2, 6)));"
+-- 
+2.51.0
+

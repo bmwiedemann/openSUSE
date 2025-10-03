@@ -2674,4 +2674,12 @@ let build start it or we will get libvirt errors.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1306873</requestid>
   </revision>
+  <revision rev="182" vrev="46">
+    <srcmd5>741952799756f4c013ebefda10116bf5</srcmd5>
+    <version>3006.0</version>
+    <time>1759498936</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1308530</requestid>
+  </revision>
 </revisionlist>
