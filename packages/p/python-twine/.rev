@@ -250,4 +250,27 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301302</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0d359bef3468755901f58a78f348602b</srcmd5>
+    <version>6.2.0</version>
+    <time>1759498927</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.2.0:
+  * Features:
+    + Refresh short-lived PyPI token in long running Trusted Publishing
+      uploads.
+  * Bugfixes
+    + Fix compatibility kludge for invalid License-File metadata entries
+      emitted by build backends to work also with packaging version 24.0.
+    + Fix a couple of incorrectly rendered error messages.
+    + twine now enforces keyring &gt;= 21.2.0.
+    + twine now catches configparser.Error to prevent accidental leaks of
+      secret tokens or passwords to the user's console.
+  * Deprecations and Removals:
+    + Remove hacks that support --skip-existing for indexes other than PyPI
+      and TestPyPI.
+    + Remove support for MD5 digests during uploads.
+- Drop patch skip-unsupported-Metadata-Version-test.patch, merged upstream.</comment>
+    <requestid>1305594</requestid>
+  </revision>
 </revisionlist>
