@@ -29,6 +29,7 @@ URL:            https://github.com/latchset
 Source0:        %{url}/%{name}/releases/download/v%{version}.0/%{name}-%{version}.tar.xz
 Source1:        %{url}/%{name}/releases/download/v%{version}.0/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch0:         disable_kryoptic_nss.patch
 BuildRequires:  meson
 BuildRequires:  openssl-devel >= 3.0.7
 BuildRequires:  pkgconfig
@@ -40,7 +41,7 @@ BuildRequires:  p11-kit-devel
 BuildRequires:  p11-kit-server
 BuildRequires:  pkgconfig(nss)
 %if 0%{?suse_version} >= 1699
-# BuildRequires:  kryoptic
+BuildRequires:  kryoptic
 BuildRequires:  softhsm-devel
 %endif
 

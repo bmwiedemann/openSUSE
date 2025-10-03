@@ -1,0 +1,50 @@
+Index: pkcs11-provider-1.1/tests/meson.build
+===================================================================
+--- pkcs11-provider-1.1.orig/tests/meson.build
++++ pkcs11-provider-1.1/tests/meson.build
+@@ -128,7 +128,7 @@ foreach t, sources : test_programs
+ endforeach
+ 
+ setup_script=find_program('setup.sh')
+-all_suites=['softokn', 'softhsm', 'kryoptic', 'kryoptic.nss']
++all_suites=['softokn', 'softhsm', 'kryoptic']
+ foreach suite : all_suites
+   test(
+     'setup',
+@@ -147,14 +147,14 @@ tests = {
+   'pubkey': {'suites': all_suites},
+   'certs': {'suites': all_suites},
+   'ecc': {'suites': all_suites},
+-  'edwards': {'suites': ['softhsm', 'kryoptic', 'kryoptic.nss']},
++  'edwards': {'suites': ['softhsm', 'kryoptic']},
+   'ecdh': {'suites': all_suites},
+   'democa': {'suites': all_suites, 'is_parallel': false},
+   'digest': {'suites': all_suites},
+   'fork': {'suites': all_suites},
+-  'oaepsha2': {'suites': ['softokn', 'kryoptic', 'kryoptic.nss']},
+-  'hkdf': {'suites': ['softokn', 'kryoptic', 'kryoptic.nss']},
+-  'imported' : {'suites': ['softokn', 'kryoptic', 'kryoptic.nss']},
++  'oaepsha2': {'suites': ['softokn', 'kryoptic']},
++  'hkdf': {'suites': ['softokn', 'kryoptic']},
++  'imported' : {'suites': ['softokn', 'kryoptic']},
+   'pem_encoder': {'suites': all_suites},
+   'rsa': {'suites': all_suites},
+   'rsapss': {'suites': all_suites},
+@@ -162,14 +162,14 @@ tests = {
+   'genkey': {'suites': all_suites},
+   'pkey': {'suites': all_suites},
+   'session': {'suites': all_suites},
+-  'skey': {'suites': ['softokn', 'kryoptic', 'kryoptic.nss']},
++  'skey': {'suites': ['softokn', 'kryoptic']},
+   'rand': {'suites': all_suites},
+   'readkeys': {'suites': all_suites},
+   'tls': {'suites': all_suites, 'is_parallel': false, 'timeout': 60},
+   'tlsfuzzer': {'suites': all_suites, 'timeout': 90},
+   'uri': {'suites': all_suites, 'timeout': 90},
+-  'ecxc': {'suites': ['softhsm', 'kryoptic', 'kryoptic.nss']},
+-  'cms': {'suites': ['softokn', 'kryoptic', 'kryoptic.nss']},
++  'ecxc': {'suites': ['softhsm', 'kryoptic']},
++  'cms': {'suites': ['softokn', 'kryoptic']},
+   'pinlock': {'suites': ['kryoptic']},
+ }
+ 
