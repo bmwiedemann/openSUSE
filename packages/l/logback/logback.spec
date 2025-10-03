@@ -1,7 +1,7 @@
 #
 # spec file for package logback
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 Name:           logback
-Version:        1.2.11
+Version:        1.2.13
 Release:        0
 Summary:        A Java logging library
 License:        EPL-1.0 OR LGPL-2.1-or-later
 URL:            https://logback.qos.ch/
 Source0:        %{name}-%{version}.tar.xz
-# Remove deprecated methods
-Patch0:         %{name}-1.2.8-jetty.patch
-Patch1:         logback-1.2.3-getCallerClass.patch
-Patch2:         logback-CVE-2024-12801-CVE-2024-12798.patch
-Patch3:         filtering.patch
+Patch0:         logback-1.2.3-getCallerClass.patch
+Patch1:         logback-CVE-2024-12801-CVE-2024-12798.patch
+Patch2:         filtering.patch
+Patch3:         logback-CVE-2025-11226.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.mail:mail)
@@ -41,7 +40,6 @@ BuildRequires:  mvn(org.apache.tomcat:tomcat-catalina)
 BuildRequires:  mvn(org.apache.tomcat:tomcat-coyote)
 BuildRequires:  mvn(org.codehaus.janino:janino)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-server)
-BuildRequires:  mvn(org.eclipse.jetty:jetty-util)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-ext)
@@ -88,10 +86,7 @@ chmod -x README.md LICENSE.txt
 find . -type f -exec chmod -x {} \;
 chmod +x %{name}-examples/src/main/resources/setClasspath.sh
 
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
+%autopatch -p1
 
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :findbugs-maven-plugin

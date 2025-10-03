@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/qos-ch/logback.git</param>
-		<param name="revision">v_1.2.11</param>
+		<param name="revision">v_1.2.13</param>
 		<param name="match-tag">v_*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">v_(.*)</param>

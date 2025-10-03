@@ -1,10 +1,36 @@
 -------------------------------------------------------------------
+Fri Oct  3 06:52:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.2.13
+  * Fixed NPE in ThrowableProxy if extractSupressedThrowables method
+    returns null. This fixes LOGBACK-1623
+  * Fixed incorrect use of HttpServletResponse.getStatus in
+    logback-access as reported in LOGBACK-1580
+  * Fixed incorrect use of HttpServletRequest.getParameterNames()
+    logback-access as reported in LOGBACK-1581
+  * Fixed incorrect SCP URL in Maven pom.xml. This issue was
+    reported in LOGBACK-1633
+  * Fixes for CVE-2023-6481 as well CVE-2023-6378 were back-ported
+    into the 1.2.x branch. Fixes will be effective only when run
+    under Java 9 and later.
+    Note that a successful exploitation of
+    CVE-2023-6378/CVE-2023-6381 requires that logback-receiver
+    component is enabled and also reachable by the attacker.
+- Removed patch:
+  * logback-1.2.8-jetty.patch
+    + not needed with this version
+- Added patch:
+  * logback-CVE-2025-11226.patch
+    + backport of upstream fix for bsc#1250715, CVE-2025-11226: ACE
+      vulnerability in conditional configuration file processing
+
+-------------------------------------------------------------------
 Fri Mar 28 06:06:29 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
   * filtering.patch
     + Newer maven-filtering versions will throw error when trying
-      to filte binary files and failing to do so. This avoids
+      to filter binary files and failing to do so. This avoids
       filtering on *.jks (Java Key Store) files.
 
 -------------------------------------------------------------------

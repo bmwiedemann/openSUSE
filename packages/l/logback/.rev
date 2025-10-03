@@ -79,4 +79,12 @@
     <comment>Fix errors with newer maven-filtering</comment>
     <requestid>1264940</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>692546b56394418a39418ee5e4f22453</srcmd5>
+    <version>1.2.13</version>
+    <time>1759499103</time>
+    <user>anag_factory</user>
+    <comment>1.2.13 + bsc#1250715, CVE-2025-11226</comment>
+    <requestid>1308795</requestid>
+  </revision>
 </revisionlist>
