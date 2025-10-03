@@ -1,7 +1,7 @@
 #
 # spec file for package FreeCAD
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,8 @@ Patch2:         0001-Implement-math.comb-fallback-for-Python-3.6.patch
 # PATCH-FIX-OPENSUSE
 Patch3:         0001-Mod-CAM-Add-missing-OpenGL-includes.patch
 # PATCH-FIX-UPSTREAM
+Patch8:         0001-fix-issue-23829-build-with-boost-v1.89-and-greater.patch
+# PATCH-FIX-UPSTREAM
 Patch9:         0001-Fix-variable-name-for-OpenGL-library.patch
 # PATCH-FIX-OPENSUSE
 Patch14:        freecad-opengl.patch
@@ -67,6 +69,8 @@ Patch14:        freecad-opengl.patch
 Patch16:        https://github.com/FreeCAD/FreeCAD/commit/6f23f01e509348a6755ad3c465a3d7ffd758ee03.patch#/Add-property-read-write-test.patch
 # PATCH-FIX-UPSTREAM
 Patch17:        https://github.com/FreeCAD/FreeCAD/commit/a0e1a31623e334d7186e687c33fad3887e91ee2e.patch#/Fix-test-failure-temporary-file-race.patch
+# PATCH-FIX-OPENSUSE
+Patch100:       disable-test46-test47.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -79,7 +83,6 @@ BuildRequires:  libboost_regex-devel >= 1.65
 BuildRequires:  libboost_signals-devel >= 1.65
 %endif
 BuildRequires:  libboost_serialization-devel >= 1.65
-BuildRequires:  libboost_system-devel >= 1.65
 BuildRequires:  libboost_thread-devel >= 1.65
 
 BuildRequires:  cmake

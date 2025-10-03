@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  1 17:42:45 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with boost 1.89.0, add
+  * 0001-fix-issue-23829-build-with-boost-v1.89-and-greater.patch
+- Disable test46 and test47
+  (https://github.com/FreeCAD/FreeCAD/issues/23498), add
+  * disable-test46-test47.patch
+
+-------------------------------------------------------------------
 Wed Aug  6 11:45:52 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.0.2

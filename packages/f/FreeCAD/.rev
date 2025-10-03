@@ -535,4 +535,12 @@ Build in science fails due to incompatible VTK 9.0, which is not yet in Tumblewe
     <comment></comment>
     <requestid>1298444</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>510906b05a207018856cf9ed51a44a89</srcmd5>
+    <version>1.0.2</version>
+    <time>1759499167</time>
+    <user>anag_factory</user>
+    <comment>Fix build with boost 1.89.0 and thus in Factory. The test problem https://github.com/FreeCAD/FreeCAD/issues/23498 still there though. (forwarded request 1308835 from fstrba)</comment>
+    <requestid>1308840</requestid>
+  </revision>
 </revisionlist>
