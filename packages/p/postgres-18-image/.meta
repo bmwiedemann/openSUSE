@@ -1,0 +1,4 @@
+<package name="postgres-18-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed PostgreSQL 18</title>
+  <description>PostgreSQL 18 container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
