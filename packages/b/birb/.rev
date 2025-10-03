@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1279013</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7709e7c2c89a66d5d18117a502f4b9e2</srcmd5>
+    <version>0.5.0</version>
+    <time>1759499078</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.5.0:
+  * Add missing Since tag
+  * Create Birb.LocalizedString
+  * Fix some issues with the queued output stream error (forwarded request 1308729 from rrahl0)</comment>
+    <requestid>1308730</requestid>
+  </revision>
 </revisionlist>

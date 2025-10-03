@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           birb
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A library of utilities for GLib based apps
 License:        LGPL-2.1-or-later
@@ -26,9 +26,9 @@ URL:            https://keep.imfreedom.org/birb/birb
 Source0:        https://downloads.sf.net/pidgin/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/pidgin/%{name}-%{version}.tar.xz.asc
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x40de1dc7288fe3f50ab938c548f66affd9bdb729#/%{name}.keyring
-BuildRequires:  meson >= 1.0.0
+BuildRequires:  meson >= 1.1.0
 BuildRequires:  pkgconfig
-BuildRequires:  python3-gi-docgen >= 2024.1
+BuildRequires:  python3-gi-docgen >= 2025.3
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)  >= 2.76
 BuildRequires:  pkgconfig(gobject-2.0)
