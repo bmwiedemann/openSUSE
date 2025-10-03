@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 03 05:07:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.80.0:
+  * Bug Fixes
+    - add timestamp as props for python pkg by @reshmifrog in #3144
+
+-------------------------------------------------------------------
 Mon Sep 29 05:11:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.79.2:
