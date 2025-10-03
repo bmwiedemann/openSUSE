@@ -130,4 +130,12 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
     <comment></comment>
     <requestid>1217232</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e368f8758bbcc43549f733ad0d8025f1</srcmd5>
+    <version>1.2.27</version>
+    <time>1759498940</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1308557</requestid>
+  </revision>
 </revisionlist>
