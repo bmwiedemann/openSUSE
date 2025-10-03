@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 25 11:24:57 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.16.3:
+  + Log messages to the logd service on Android, instead of using
+    the standard error stream.
+  + Fix the build with CMake 4.0 and newer.
+
+-------------------------------------------------------------------
 Wed Feb 19 13:29:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.2:
