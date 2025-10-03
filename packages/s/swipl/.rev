@@ -182,4 +182,22 @@ the list of changes is still too long to enumerate here.
   the list of changes is still too long to enumerate here.</comment>
     <requestid>1266454</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e6d66c21ac6d85164025c4e7b3d6435d</srcmd5>
+    <version>9.3.31</version>
+    <time>1759499040</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.3.31:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&amp;from=9.3.29&amp;to=9.3.31
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.
+
+- Update to 9.3.29:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&amp;from=9.3.21&amp;to=9.3.29
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.</comment>
+    <requestid>1308706</requestid>
+  </revision>
 </revisionlist>

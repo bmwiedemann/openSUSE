@@ -17,7 +17,7 @@
 
 
 Name:           swipl
-Version:        9.3.21
+Version:        9.3.31
 Release:        0
 Summary:        Prolog Compiler
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -121,7 +121,7 @@ CTEST_OPT_ARGS+=" --exclude-regex 'swipl:transaction'"
 %{_bindir}/pl
 %{_bindir}/swipl
 %{_bindir}/swipl-ld
-# %%{_bindir}/swipl-rc
+%{_bindir}/swipl-win
 %{_prefix}/lib/swipl
 %dir %{_prefix}/lib/cmake
 %{_prefix}/lib/cmake/swipl
