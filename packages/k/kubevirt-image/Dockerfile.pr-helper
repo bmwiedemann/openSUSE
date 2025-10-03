@@ -15,9 +15,9 @@
 
 #!UseOBSRepositories
 #!ExclusiveArch: x86_64
-#!BuildTag: opensuse/virt-pr-helper:%%kubevirt_ver%%-pr-helper-%RELEASE%
-#!BuildTag: opensuse/virt-pr-helper:%%kubevirt_ver%%-pr-helper
-#!BuildTag: opensuse/virt-pr-helper:1.6-pr-helper
+#!BuildTag: opensuse/virt-pr-helper:%%kubevirt_ver%%-%RELEASE%
+#!BuildTag: opensuse/virt-pr-helper:%%kubevirt_ver%%
+#!BuildTag: opensuse/virt-pr-helper:1.6
 #!BcntSyncTag: kubevirt-image
 
 FROM opensuse/bci/bci-micro:latest AS target
@@ -30,7 +30,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of kubevirt-pr-helper-conf that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' kubevirt-pr-helper-conf | \
-    cut -d '.' -f -3)" = "1.6.0" ]
+    cut -d '.' -f -3)" = "1.6.2" ]
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
@@ -50,8 +50,8 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="%%kubevirt_ver%%-pr-helper-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/virt-pr-helper:%%kubevirt_ver%%-pr-helper-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="%%kubevirt_ver%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/virt-pr-helper:%%kubevirt_ver%%-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"

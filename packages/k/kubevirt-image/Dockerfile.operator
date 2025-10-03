@@ -15,9 +15,9 @@
 
 #!UseOBSRepositories
 #!ExclusiveArch: x86_64
-#!BuildTag: opensuse/virt-operator:%%kubevirt_ver%%-operator-%RELEASE%
-#!BuildTag: opensuse/virt-operator:%%kubevirt_ver%%-operator
-#!BuildTag: opensuse/virt-operator:1.6-operator
+#!BuildTag: opensuse/virt-operator:%%kubevirt_ver%%-%RELEASE%
+#!BuildTag: opensuse/virt-operator:%%kubevirt_ver%%
+#!BuildTag: opensuse/virt-operator:1.6
 #!BcntSyncTag: kubevirt-image
 
 FROM opensuse/bci/bci-micro:latest AS target
@@ -30,7 +30,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of kubevirt-virt-operator that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' kubevirt-virt-operator | \
-    cut -d '.' -f -3)" = "1.6.0" ]
+    cut -d '.' -f -3)" = "1.6.2" ]
 RUN set -euo pipefail; useradd -u 1001 --create-home -s /bin/bash virt-operator
 
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
@@ -52,8 +52,8 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="%%kubevirt_ver%%-operator-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/virt-operator:%%kubevirt_ver%%-operator-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="%%kubevirt_ver%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/virt-operator:%%kubevirt_ver%%-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
