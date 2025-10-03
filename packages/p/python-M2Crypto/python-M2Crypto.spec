@@ -1,7 +1,7 @@
 #
 # spec file for package python-M2Crypto
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define oldpython python
 %{?sle15allpythons}
 Name:           python-M2Crypto
-Version:        0.45.1
+Version:        0.46.2
 Release:        0
 Summary:        Crypto and SSL toolkit for Python
 License:        BSD-2-Clause
@@ -97,7 +97,8 @@ donttest="test_verify_with_static_callback"
 %pytest_arch -k "not ($donttest)" tests
 
 %files %{python_files}
-%doc CHANGES LICENCE README.rst
+%license LICENSES/BSD-2-Clause.txt
+%doc CHANGES README.rst
 %{python_sitearch}/[Mm]2[Cc]rypto
 %{python_sitearch}/[Mm]2[Cc]rypto-%{version}*-info
 

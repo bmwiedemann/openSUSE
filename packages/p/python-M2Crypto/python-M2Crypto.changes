@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct  2 12:27:31 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.46.2:
+  - fix[m2xmlrpclib]: make the module compatible with Python 3.6
+
+-------------------------------------------------------------------
+Thu Oct  2 09:10:34 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.46.1:
+  - M2Crypto closes SSL connection on closing HTTPS Connection,
+    and some other related issues (#203, #278)
+  - Modernize C API by eliminating use of deprecated
+    PyBytes_AsStringAndSize and related functions with Python
+    Buffer Protocol (#375)
+  - Whole project is completely covered with type hints and is
+    checked by mypy (also while doing that, the whole project was
+    blackened) (#344)
+  - Add logging support to C extension code sending messages to
+    the Python logging
+  - Introducing first efforts to support Engine object (#229)
+  - Reworked and fixed M2Crypto.m2xmlrpclib module (#163)
+  - Reverted removal of demo/ subdirectory
+  - Improve SMIME documentation (#377)
+  - Some other minor bugs, improvements, and removal of dead code
+  - Correct license to BSD-2-Clause and update references
+  - Specify in setup.cfg that we require Python >= 3.6
+
+-------------------------------------------------------------------
 Wed Apr 23 15:10:46 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.45.1:
