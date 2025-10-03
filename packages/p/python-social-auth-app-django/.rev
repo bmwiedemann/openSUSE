@@ -137,4 +137,19 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282151</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>48b227c280f592882a4218afdc1d4e7b</srcmd5>
+    <version>5.5.1</version>
+    <time>1759499016</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1308517 from mcalabkova
+
+- update to 5.5.1
+    * Dropped support for older Django versions.
+    * Added non-empty constraind on uid.
+    * Added support for session restore with stricter SameSite cookie
+      policy.
+    * Fixed authentication with OpenID based services.</comment>
+    <requestid>1308667</requestid>
+  </revision>
 </revisionlist>

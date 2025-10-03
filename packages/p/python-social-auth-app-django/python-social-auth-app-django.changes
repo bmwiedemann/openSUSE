@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  2 06:35:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 5.5.1
+  * Dropped support for older Django versions.
+  * Added non-empty constraind on uid.
+  * Added support for session restore with stricter SameSite cookie
+    policy.
+  * Fixed authentication with OpenID based services.
+
+-------------------------------------------------------------------
 Tue Jun  3 06:48:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

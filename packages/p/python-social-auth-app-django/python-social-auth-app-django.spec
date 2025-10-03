@@ -1,7 +1,7 @@
 #
 # spec file for package python-social-auth-app-django
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,24 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-social-auth-app-django
-Version:        5.4.2
+Version:        5.5.1
 Release:        0
 Summary:        Python Social Authentication, Django integration
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-social-auth/social-app-django
-Source:         https://files.pythonhosted.org/packages/source/s/social-auth-app-django/social-auth-app-django-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 2.2}
+Source:         https://files.pythonhosted.org/packages/source/s/social_auth_app_django/social_auth_app_django-%{version}.tar.gz
+BuildRequires:  %{python_module Django >= 5.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module social-auth-core >= 4.1.0}
+BuildRequires:  %{python_module social-auth-core >= 4.4.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
-Requires:       python-python-jose
-Requires:       python-social-auth-core >= 4.1.0
+Requires:       python-Django >= 5.1
+Requires:       python-social-auth-core >= 4.4.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,7 +43,7 @@ it implements the needed functionality to integrate social-auth-core
 in a Django based project.
 
 %prep
-%setup -q -n social-auth-app-django-%{version}
+%setup -q -n social_auth_app_django-%{version}
 
 %build
 %pyproject_wheel
@@ -57,8 +54,6 @@ in a Django based project.
 
 %check
 export LANG=en_US.UTF8
-mkdir tests/templates
-echo -n test > tests/templates/test.html
 %python_exec manage.py test --verbosity 2
 
 %files %{python_files}
