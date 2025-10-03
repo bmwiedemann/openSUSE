@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Oct  1 05:36:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 12.1.0:
+  + Build fixes with GCC 15 on some 32 bit platforms.
+  + Fix misaligned pointer use.
+  + New API, hb_ot_layout_lookup_collect_glyph_alternates(), to
+    collect glyph substitutions from single and alternate
+    substitution lookups in one call, instead of getting
+    substitutions one by one using
+    hb_ot_layout_lookup_get_glyph_alternates().
+  + New API: +hb_ot_layout_lookup_collect_glyph_alternates()
+
+-------------------------------------------------------------------
+Sun Sep 28 06:53:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 12.0.0:
+  + The major feature of this release is that the Variable
+    Composites / Components (VARC table) addition to the ISO
+    OpenFontFormat has graduated from experimental, and is now
+    enabled by default. It can be disabled at compile time by
+    defining the HB_NO_VAR_COMPOSITESz macro.
+  + VARC table is a new way to store glyph outlines, that allows
+    for better shape reuse, and can reduce font file size for
+    Chinese, Japanese, Korean, and some other scripts drastically.
+    Some font design tools provide a similar feature to designers,
+    known as "smart components". This technology brings the same
+    idea to the compiled font file.
+  + The Fontra font editor already supports this technology. Note
+    that this new format involves just the HarfBuzz draw API and
+    does not affect shaping.
+  + Correctly handle markFilteringSet lookup field during
+    subsetting.
+  + Deduplicate features during subsetting.
+  + Disable “more” buffer messages that give more verbose output
+    when using buffer messages callbacks, as it has a performance
+    overhead. Users/tools that need the more verbose messages
+    should define HB_BUFFER_MESSAGE_MORE to 1 when building
+    HarfBuzz.
+  + Shaping and instancing optimizations.
+  + Fix subsetting issues when building with GCC 12.
+
+-------------------------------------------------------------------
 Mon Sep 22 17:10:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 11.5.1:

@@ -1296,4 +1296,12 @@ New stable rel</comment>
   + Fix C++ STL atomics implementation. (forwarded request 1306586 from iznogood)</comment>
     <requestid>1306711</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>0d6489daf910b8430fbede667a7a9b51</srcmd5>
+    <version>12.1.0</version>
+    <time>1759498949</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1308560</requestid>
+  </revision>
 </revisionlist>
