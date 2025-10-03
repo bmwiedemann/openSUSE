@@ -20,6 +20,7 @@
 #!BuildTag: opensuse/389-ds:3.1
 #!BuildTag: opensuse/389-ds:latest
 
+#!BuildRelease: 35
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
