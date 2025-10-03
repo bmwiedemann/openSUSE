@@ -1087,4 +1087,12 @@ New upstream release</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 1304925 from dimstar)</comment>
     <requestid>1305473</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>8a718fe0e9ed299b02fc333a3ba2ccd7</srcmd5>
+    <version>4.20.2</version>
+    <time>1759498954</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1308561</requestid>
+  </revision>
 </revisionlist>

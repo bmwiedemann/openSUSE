@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep 30 15:49:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.20.2:
+  + Bugs fixed:
+    - Only the first text-shadow value gets applied when there are
+      multiple (regression)
+    - Make sense of AtkHyperlink
+    - Opening Clipboard Demo triggers abort
+  + Changes:
+    - surface: Mark region as nullable in set_input_region
+    - settings: Call g_value_unset() after
+      _gtk_settings_parse_convert()
+    - wayland: Invert flipped transforms
+    - Fix upright text carets
+    - gsk: Drop an unused private flag
+    - Some small gsk fixes
+    - text: Apply all text shadows
+    - Backports for 4.20
+    - Add GtkAccessibleHypertext
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep  9 06:34:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.20.1:
