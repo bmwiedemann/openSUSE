@@ -2377,4 +2377,16 @@ for 12.3</comment>
 </comment>
     <requestid>1303220</requestid>
   </revision>
+  <revision rev="256" vrev="1">
+    <srcmd5>ced8a9909dca1cd6e38fe9b42ae0b3a0</srcmd5>
+    <version>1550+20251002.f34bfbd</version>
+    <time>1759498979</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20251002.f34bfbd:
+  * profiles: add systemd-machined v258 register-machine action (bsc#1250893)
+  * profiles: add systemd-homed v258 manage-signing-keys action (bsc#1250884)
+  * profiles: add systemd-resolved v258 addition (bsc#1250880)
+</comment>
+    <requestid>1308636</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 02 13:12:12 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20251002.f34bfbd:
+  * profiles: add systemd-machined v258 register-machine action (bsc#1250893)
+  * profiles: add systemd-homed v258 manage-signing-keys action (bsc#1250884)
+  * profiles: add systemd-resolved v258 addition (bsc#1250880)
+
+-------------------------------------------------------------------
 Thu Sep 04 15:29:34 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 1550+20250904.99b438e:
