@@ -1,7 +1,7 @@
 #
 # spec file for package gspell
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define shlib lib%{name}-1-3
 Name:           gspell
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        A spell checker library for GTK+ applications
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-URL:            https://wiki.gnome.org/Projects/gspell
-Source0:        https://download.gnome.org/sources/gspell/1.14/%{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/gspell
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  gtk-doc >= 1.25
 BuildRequires:  meson
