@@ -1,7 +1,7 @@
 #
 # spec file for package pulseeffects
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,9 @@ BuildRequires:  appstream-glib
 BuildRequires:  gcc-c++
 BuildRequires:  itstool
 BuildRequires:  libboost_filesystem-devel >= 1.72
+%if 0%{?suse_version} <= 1600
 BuildRequires:  libboost_system-devel >= 1.72
+%endif
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
