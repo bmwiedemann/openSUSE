@@ -1,7 +1,7 @@
 #
 # spec file for package supertux2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Amusements/Games/Action/Arcade
 URL:            https://supertux.github.io/
 Source:         https://github.com/SuperTux/supertux/releases/download/v%{version}/SuperTux-v%{version}-Source.tar.gz
 Patch0:         supertux2-gcc12.patch
+Patch1:         boost.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -35,7 +36,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_locale-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libphysfs-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_image)
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} > 1600
 BuildRequires:  glbinding-devel
-%else 
+%else
 BuildRequires:  pkgconfig(glew)
 %endif
 

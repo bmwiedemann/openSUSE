@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  2 10:28:53 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+  * Add patch boost.patch
+
+-------------------------------------------------------------------
 Tue Aug  5 16:36:53 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Use BuildRequires glbinding-devel only for Tumbleweed, fixes
