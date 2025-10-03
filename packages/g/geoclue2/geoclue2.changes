@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Sep 16 12:00:04 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Delete 0001-ichnaea-include-ssid.patch,
+  0002-ichnaea-replace-user-agent.patch,
+  0003-user-agent-os-info.patch: upstreamed
+- Remove set default to BeaconDB: now default in upstream
+- Update to version 2.8.0:
+  * Add comment for the Positon location service in default config
+  * Include the SSID in queries to the Ichnaea server to support BeaconDB
+  * Set User-Agent in web source queries and add OS info to it
+  * Allow disabling WiFi source and static source during compilation
+  * Show default Wifi URLs set on compile time in comments in the
+    default config
+  * Add BeaconDB URLs to comments in the default config
+  * Add a separate GeoIP location source:
+    + Add an 'ip' config section with selectable backend methods:
+      - ichnaea, gmaps, reallyfreegeoip
+    + Allow overriding URL and accuracy in ip methods with values from config
+    + Use BeaconDB as the backup GeoIP URL, if URLs are not defined in ip or web source configs
+    + Remove the GeoIP functionality from the web source, it now only handles queries with Wifi and 3G data
+  * Install sysusers.d file for the geoclue user
+  * Use BeaconDB as the compiled-in default server for locate and submit queries in the web source
+  * Forward xdp location start errors in the GClueSimple API
+  * Stricter NMEA coordinate parsing: Ignore NMEA coordinates without degree digits, reject coordinates with incorrect range etc.
+  * where-am-i: Output accuracy without unnecessary decimals
+  * Don't crash when running without enabled location sources but warn that location is not available
+  * Fix crash on removing a modem without location capabilities
+  * Make SOUP_STATUS_OK as the only successful response code from Ichnaea servers
+  * Gracefully handle empty response from Ichnaea server
+  * Add more details for network-nmea in the manpage
+
+-------------------------------------------------------------------
 Mon Feb 17 10:08:32 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move xdg/autostart filesto /usr/etc (boo#1237248).

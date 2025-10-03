@@ -17,9 +17,8 @@
 
 
 %define _name geoclue
-
 Name:           geoclue2
-Version:        2.7.2
+Version:        2.8.0
 Release:        0
 Summary:        GeoLocation Framework
 License:        GPL-2.0-or-later
@@ -28,30 +27,22 @@ URL:            https://gitlab.freedesktop.org/geoclue/geoclue
 Source0:        %{url}/-/archive/%{version}/geoclue-%{version}.tar.bz2
 Source1:        srvGeoClue.conf
 Source99:       geoclue2-rpmlintrc
-
-# Compliance with BeaconDB
-Patch0:         0001-ichnaea-include-ssid.patch
-Patch1:         0002-ichnaea-replace-user-agent.patch
-Patch2:         0003-user-agent-os-info.patch
-
-BuildRequires:  intltool >= 0.40.0
 BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  vala
-BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(avahi-client) >= 0.6.10
 BuildRequires:  pkgconfig(avahi-glib) >= 0.6.10
 BuildRequires:  pkgconfig(gio-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14
+BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14.0
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libsoup-3.0)
-BuildRequires:  pkgconfig(mm-glib) >= 1.6
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
+BuildRequires:  pkgconfig(mm-glib) >= 1.12
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(vapigen)
 # This daemon runs as srvGeoClue
 Requires:       user(srvGeoClue)
 # Virtual provides for the dbus service
@@ -100,8 +91,6 @@ communication mechanism to provide location information
 	-Dgtk-doc=false \
 	-Ddbus-srv-user=srvGeoClue \
 	-Ddbus-sys-dir=%{_datadir}/dbus-1/system.d \
-        -Ddefault-wifi-url="https://api.beacondb.net/v1/geolocate" \
-        -Ddefault-wifi-submit-url="https://api.beacondb.net/v2/geosubmit" \
 	%{nil}
 %meson_build
 %sysusers_generate_pre %{SOURCE1} srvGeoClue system-user-srvGeoClue.conf
@@ -110,8 +99,8 @@ communication mechanism to provide location information
 %meson_install
 
 # Rename polkit rule to have specific ordering capabilities - boo#1199767#c1
-mv %{buildroot}/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules \
-   %{buildroot}/usr/share/polkit-1/rules.d/50-org.freedesktop.GeoClue2.rules
+mv %{buildroot}%{_datadir}/polkit-1/rules.d/org.freedesktop.GeoClue2.rules \
+   %{buildroot}%{_datadir}/polkit-1/rules.d/50-org.freedesktop.GeoClue2.rules
 
 install -d %{buildroot}%{_localstatedir}/lib/srvGeoClue
 mkdir -p %{buildroot}%{_sysusersdir}
@@ -130,8 +119,8 @@ install -d %{buildroot}%{_sysconfdir}/geoclue/conf.d
 
 %files
 %license COPYING
-%doc README.md
-%{_mandir}/man5/geoclue.5%{ext_man}
+%doc README.md NEWS
+%{_mandir}/man5/geoclue.5%{?ext_man}
 # Not split per SLPP as the interface to the underlying daemon is
 # too strict to allow parallel installations
 %{_libdir}/libgeoclue-2.so.*
@@ -157,6 +146,7 @@ install -d %{buildroot}%{_sysconfdir}/geoclue/conf.d
 %files -n system-user-srvGeoClue
 %attr(0700,srvGeoClue,root) %{_localstatedir}/lib/srvGeoClue
 %{_sysusersdir}/system-user-srvGeoClue.conf
+%exclude %{_sysusersdir}/geoclue-sysusers.conf
 
 %files -n typelib-1_0-Geoclue-2_0
 %{_libdir}/girepository-1.0/Geoclue-2.0.typelib
