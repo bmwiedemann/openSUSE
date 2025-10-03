@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  2 07:03:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 2025.6
+  * Extended the messaging schema to include "category" field, as a
+    list of category and subcategory slugs.
+  * Added support for new pending units tracking in backups.
+  * Extended the memory to include a "status" and "comptext" field.
+  * Cleaned up dependencies.
+
+-------------------------------------------------------------------
 Wed Jun 18 11:44:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 2025.2
