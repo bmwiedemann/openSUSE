@@ -1,7 +1,7 @@
 #
 # spec file for package openEMS
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Patch3:         0003-Fix-nf2ff-load.patch
 Patch4:         0004-Add-correct-instruction-about-Octave-and-MATLAB-pack.patch
 # PATCH-FIX-UPSTREAM 0001-fix-cython-import.patch -- fix cython import
 Patch5:         0001-fix-cython-import.patch
+Patch6:         boost.patch
 BuildRequires:  %{python_module CSXCAD}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module h5py}
@@ -49,7 +50,6 @@ BuildRequires:  hdf5-devel
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_serialization-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  octave-devel
 BuildRequires:  python-rpm-macros

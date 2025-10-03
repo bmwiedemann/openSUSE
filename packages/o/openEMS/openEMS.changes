@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  3 08:05:36 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+  * Add patch boost.patch
+
+-------------------------------------------------------------------
 Mon Jun 16 13:24:42 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Add Python bindings
