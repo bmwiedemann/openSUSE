@@ -1837,4 +1837,21 @@
 </comment>
     <requestid>1297127</requestid>
   </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>7793c917fab12b7c4f7afd4447240acf</srcmd5>
+    <version>3.12.11</version>
+    <time>1759498961</time>
+    <user>anag_factory</user>
+    <comment>- Add gh139257-Support-docutils-0.22.patch to fix build with latest
+  docutils (&gt;=0.22) gh#python/cpython#139257
+
+- Drop AppStream: this results in a different cycle than
+  appstream-glib. As the appdata.xml is controlled by ourselves, we
+  can get away with just manually validating it when changing it.
+
+- Require AppStream to validate appdata file instead of deprecated
+  appstream-glib.
+- Update idle3.appdata.xml to pass the more pedantic appstreamcli.</comment>
+    <requestid>1308661</requestid>
+  </revision>
 </revisionlist>

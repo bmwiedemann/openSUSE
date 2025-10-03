@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 29 06:52:07 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add gh139257-Support-docutils-0.22.patch to fix build with latest
+  docutils (>=0.22) gh#python/cpython#139257
+
+-------------------------------------------------------------------
+Mon Sep 22 06:41:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop AppStream: this results in a different cycle than
+  appstream-glib. As the appdata.xml is controlled by ourselves, we
+  can get away with just manually validating it when changing it.
+
+-------------------------------------------------------------------
+Thu Sep 18 08:15:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require AppStream to validate appdata file instead of deprecated
+  appstream-glib.
+- Update idle3.appdata.xml to pass the more pedantic appstreamcli.
+
+-------------------------------------------------------------------
 Fri Aug  1 20:09:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2025-8194-tarfile-no-neg-offsets.patch which now

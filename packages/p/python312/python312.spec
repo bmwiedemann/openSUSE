@@ -1,7 +1,7 @@
 #
 # spec file for package python312
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -193,6 +193,8 @@ Patch46:        CVE-2025-6069-quad-complex-HTMLParser.patch
 # PATCH-FIX-UPSTREAM CVE-2025-8194-tarfile-no-neg-offsets.patch bsc#1247249 mcepl@suse.com
 # tarfile now validates archives to ensure member offsets are non-negative
 Patch47:        CVE-2025-8194-tarfile-no-neg-offsets.patch
+# PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
+Patch48:        gh139257-Support-docutils-0.22.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -229,8 +231,6 @@ BuildRequires:  python3-dataclasses
 %endif
 %endif
 %if %{with general}
-# required for idle3 (.desktop and .appdata.xml files)
-BuildRequires:  appstream-glib
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
 BuildRequires:  gettext
@@ -698,7 +698,6 @@ install -m 644 -D -t %{buildroot}%{_datadir}/applications idle%{python_version}.
 cp %{SOURCE20} idle%{python_version}.appdata.xml
 sed -i -e 's:idle3.desktop:idle%{python_version}.desktop:g' idle%{python_version}.appdata.xml
 install -m 644 -D -t %{buildroot}%{_datadir}/metainfo idle%{python_version}.appdata.xml
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/idle%{python_version}.appdata.xml
 
 %fdupes %{buildroot}/%{_libdir}/python%{python_version}
 %endif
