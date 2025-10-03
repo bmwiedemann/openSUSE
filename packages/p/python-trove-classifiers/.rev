@@ -172,4 +172,24 @@
   * fixup Django classifiers</comment>
     <requestid>1265490</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>10acb8574f77ad7b93bd9ab7a35a05bb</srcmd5>
+    <version>2025.9.11.17</version>
+    <time>1759498934</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2025.9.11.17:
+  * Add support for Odoo 19.0 in classifiers
+  * Add classifier: Framework InvenTree
+  * Add `&quot;Programming Language :: Zig&quot;` classifier
+  * Add Django 6 classifiers to trove_classifiers
+  * Add classifier for CUDA 13
+  * Add trove classifier for GraalPython
+  * feat: add free-threading classifiers
+  * Add several missing languages
+  * Add Trove classifier for Python 3.15
+  * Don't assume basename of sys.executable is &quot;python&quot;
+  * Add entry point to enable installing with pipx or uvx
+  * Add classifier for Wagtail 7</comment>
+    <requestid>1308490</requestid>
+  </revision>
 </revisionlist>

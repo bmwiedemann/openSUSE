@@ -1,7 +1,7 @@
 #
 # spec file for package python-trove-classifiers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,15 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %{?sle15_python_module_pythons}
 Name:           python-trove-classifiers%{?psuffix}
-Version:        2025.3.19.19
+Version:        2025.9.11.17
 Release:        0
 Summary:        Canonical source for classifiers on PyPI
 License:        Apache-2.0
@@ -41,8 +46,16 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module trove-classifiers = %{version}}
 %endif
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -57,6 +70,7 @@ Classifiers categorize projects per PEP 301. Use this package to validate classi
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/trove-classifiers
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -66,9 +80,20 @@ Classifiers categorize projects per PEP 301. Use this package to validate classi
 %endif
 
 %if !%{with test}
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative trove-classifiers
+
+%post
+%python_install_alternative trove-classifiers
+
+%postun
+%python_uninstall_alternative trove-classifiers
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
+%python_alternative %{_bindir}/trove-classifiers
 %{python_sitelib}/trove_classifiers
 %{python_sitelib}/trove_classifiers-%{version}.dist-info
 %endif

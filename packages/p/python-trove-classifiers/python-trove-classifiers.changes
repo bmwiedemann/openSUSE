@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct  2 01:23:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2025.9.11.17:
+  * Add support for Odoo 19.0 in classifiers
+  * Add classifier: Framework InvenTree
+  * Add `"Programming Language :: Zig"` classifier
+  * Add Django 6 classifiers to trove_classifiers
+  * Add classifier for CUDA 13
+  * Add trove classifier for GraalPython
+  * feat: add free-threading classifiers
+  * Add several missing languages
+  * Add Trove classifier for Python 3.15
+  * Don't assume basename of sys.executable is "python"
+  * Add entry point to enable installing with pipx or uvx
+  * Add classifier for Wagtail 7
+
+-------------------------------------------------------------------
 Sun Mar 30 08:16:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.3.19.19:
