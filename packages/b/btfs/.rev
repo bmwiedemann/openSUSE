@@ -134,4 +134,12 @@
     <comment></comment>
     <requestid>1281618</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>ed5452fc5de11e0050f734fd8a5458a9</srcmd5>
+    <version>3.1</version>
+    <time>1759499031</time>
+    <user>anag_factory</user>
+    <comment>- Drop unused libboost_system dependency</comment>
+    <requestid>1308701</requestid>
+  </revision>
 </revisionlist>

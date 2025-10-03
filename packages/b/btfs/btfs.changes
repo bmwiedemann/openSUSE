@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  2 19:04:41 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Drop unused libboost_system dependency
+
+-------------------------------------------------------------------
 Mon May 12 20:36:37 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.1:
