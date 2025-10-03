@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  2 11:24:08 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
+Wed Oct  1 08:13:59 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 83
+  * fix user visible spelling errors
+
+-------------------------------------------------------------------
 Thu Jun 12 08:48:41 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to version 82

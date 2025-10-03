@@ -1,7 +1,7 @@
 #
 # spec file for package ndctl
 #
-# Copyright (c) 2024 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2015 Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
 # systemd-rpm-macros is wrong in 15.3 and below
 %define _modprobedir /lib/modprobe.d
@@ -25,7 +26,7 @@
 %define lname libndctl6
 %define dname libndctl-devel
 Name:           ndctl
-Version:        82
+Version:        83
 Release:        0
 Summary:        Manage "libnvdimm" subsystem devices (Non-volatile Memory)
 License:        GPL-2.0-only
@@ -51,7 +52,7 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(uuid)
-ExclusiveArch:  x86_64 aarch64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le riscv64
 %{?systemd_requires}
 # required for documentation
 %if 0%{?suse_version} >= 1330
