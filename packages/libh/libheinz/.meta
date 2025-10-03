@@ -1,0 +1,5 @@
+<package name="libheinz" project="openSUSE:Factory">
+  <title>C++ base library of Heinz Maier-Leibnitz Zentrum</title>
+  <description>Header-only C++ base library of Heinz Maier-Leibnitz Zentrum.</description>
+  <url>https://jugit.fz-juelich.de/mlz/libheinz</url>
+</package>
