@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 02 11:53:33 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1699_20251002:
+  * profiles: add OpenSMTPD setuid/setgid binaries (bsc#1247781)
+  * profiles: drop starter-suid since Singularity is no longer packaged
+
+-------------------------------------------------------------------
 Mon Jan 20 09:00:54 UTC 2025 - wolfgang.frisch@suse.com
 
 - Update to version 1699_20250120:

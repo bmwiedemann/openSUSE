@@ -1630,4 +1630,15 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
     <comment></comment>
     <requestid>1238946</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>d55ea0422ac8c9738f5f0030ad5a52e6</srcmd5>
+    <version>1699_20251002</version>
+    <time>1759498922</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1699_20251002:
+  * profiles: add OpenSMTPD setuid/setgid binaries (bsc#1247781)
+  * profiles: drop starter-suid since Singularity is no longer packaged
+</comment>
+    <requestid>1308604</requestid>
+  </revision>
 </revisionlist>
