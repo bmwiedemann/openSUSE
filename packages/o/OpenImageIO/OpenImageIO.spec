@@ -16,6 +16,8 @@
 #
 
 
+%global __builder ninja
+
 %if 0%{?suse_version} > 1500
 %ifarch aarch64 %{arm}
 %bcond_with imageviewer
@@ -43,11 +45,11 @@
 %endif
 
 %global images_ts 20250119T083517
-%global so_ver 3_0
-%global major_minor_ver 3.0
+%global so_ver 3_1
+%global major_minor_ver 3.1
 
 Name:           OpenImageIO
-Version:        3.0.10.1
+Version:        3.1.6.1
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        Apache-2.0
@@ -60,6 +62,7 @@ Source1:        oiio-images-%{images_ts}.tar.xz
 #BuildRequires:  Field3D-devel
 BuildRequires:  cmake >= 3.18.2
 BuildRequires:  dcmtk-devel
+BuildRequires:  ninja
 %if %{with apidocs}
 BuildRequires:  doxygen
 %endif
@@ -79,7 +82,7 @@ BuildRequires:  openvdb-devel >= 9.0
 BuildRequires:  pkgconfig
 BuildRequires:  pugixml-devel
 %if %{with python_bindings}
-BuildRequires:  python3-devel >= 3.7
+BuildRequires:  python3-devel >= 3.9
 BuildRequires:  python3-pybind11-devel >= 2.7
 # required for testsuite
 BuildRequires:  python3-numpy
@@ -87,7 +90,7 @@ BuildRequires:  python3-numpy
 BuildRequires:  robin-map-devel >= 1.2.0
 BuildRequires:  tbb-devel
 BuildRequires:  txt2man
-BuildRequires:  pkgconfig(OpenColorIO) >= 2.2
+BuildRequires:  pkgconfig(OpenColorIO) >= 2.3
 BuildRequires:  pkgconfig(OpenEXR) >= 3.1
 %if %{with ptex}
 BuildRequires:  ptex-devel-static
@@ -95,6 +98,13 @@ BuildRequires:  ptex-devel-static
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(freetype2) >= 2.10
+# we need the full package to make the testsuite pass:
+# https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4919
+#!BuildConflicts: ffmpeg-4-mini-devel
+#!BuildConflicts: ffmpeg-5-mini-devel
+#!BuildConflicts: ffmpeg-6-mini-devel
+#!BuildConflicts: ffmpeg-7-mini-devel
+#!BuildConflicts: ffmpeg-8-mini-devel
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libjxl)
 %if %{with libheif}
@@ -281,9 +291,22 @@ export disabled_tests="heif|ptex|jpeg-ultrahdr|cmake-consumer|docs-examples-cpp|
 %files
 %doc %{_docdir}/%{name}/
 %license LICENSE.md
-%{_bindir}/*
+%{_bindir}/iconvert
+%{_bindir}/idiff
+%{_bindir}/igrep
+%{_bindir}/iinfo
+%{_bindir}/iv
+%{_bindir}/maketx
+%{_bindir}/oiiotool
+%{_bindir}/testtex
 %if %{with python_bindings}
-%{_mandir}/man1/*.1%{ext_man}
+%{_mandir}/man1/iconvert.1.*
+%{_mandir}/man1/idiff.1.*
+%{_mandir}/man1/igrep.1.*
+%{_mandir}/man1/iinfo.1.*
+%{_mandir}/man1/iv.1.*
+%{_mandir}/man1/maketx.1.*
+%{_mandir}/man1/oiiotool.1.*
 %endif
 
 %if %{with apidocs}
@@ -294,7 +317,7 @@ export disabled_tests="heif|ptex|jpeg-ultrahdr|cmake-consumer|docs-examples-cpp|
 %files devel
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/OpenImageIO.pc
-%{_libdir}/cmake
+%{_libdir}/cmake/OpenImageIO/
 %{_libdir}/libOpenImageIO.so
 %{_libdir}/libOpenImageIO_Util.so
 
