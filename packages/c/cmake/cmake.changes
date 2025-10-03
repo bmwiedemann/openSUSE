@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  2 05:45:56 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 4.1.2.
+  * Ninja: escape special characters in custom command comments
+  * GNUInstallDirs: Fix regression on -DCMAKE_INSTALL_<dir>=<default> in /usr
+  * FindPython: Ensure correct handling of Python_FIND_ABI variable
+- remove avoid-using-undocumented-type.patch part of upstream
+
+-------------------------------------------------------------------
 Tue Sep 30 07:25:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add avoid-using-undocumented-type.patch to fix build with curl

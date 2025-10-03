@@ -2452,4 +2452,12 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
   compilation units and they conflict.</comment>
     <requestid>1308113</requestid>
   </revision>
+  <revision rev="272" vrev="1">
+    <srcmd5>1285c8dbf709a0c376d0e24687596b8d</srcmd5>
+    <version>4.1.2</version>
+    <time>1759498924</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1308548</requestid>
+  </revision>
 </revisionlist>

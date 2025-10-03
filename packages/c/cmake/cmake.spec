@@ -45,14 +45,14 @@
 %else
 %bcond_with full
 %endif
-%define shortversion 4.1.1
+%define shortversion 4.1.2
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
 %define pyver 311
 %else
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -69,7 +69,6 @@ Source99:       README.SUSE
 Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
-Patch2:         avoid-using-undocumented-type.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
