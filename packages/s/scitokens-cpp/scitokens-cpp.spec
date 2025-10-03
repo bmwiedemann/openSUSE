@@ -1,7 +1,7 @@
 #
 # spec file for package scitokens-cpp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           scitokens-cpp
-Version:        0.6.3
+Version:        1.1.3
 Release:        0
 Summary:        C++ Implementation of the SciTokens Library
 License:        Apache-2.0
@@ -86,5 +86,12 @@ export CFLAGS="%optflags -Wno-error=deprecated-declarations"
 %{_libdir}/libSciTokens.so
 %{_includedir}/scitokens/scitokens.h
 %dir %{_includedir}/scitokens
+
+%files
+%{_bindir}/scitokens-create
+%{_bindir}/scitokens-list-access
+%{_bindir}/scitokens-test
+%{_bindir}/scitokens-test-access
+%{_bindir}/scitokens-verify
 
 %changelog
