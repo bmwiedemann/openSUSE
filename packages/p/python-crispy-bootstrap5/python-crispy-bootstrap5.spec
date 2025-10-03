@@ -1,7 +1,7 @@
 #
 # spec file for package python-crispy-bootstrap5
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-crispy-bootstrap5
-Version:        2025.4
+Version:        2025.6
 Release:        0
 Summary:        Bootstrap5 template pack for django-crispy-forms
 License:        MIT

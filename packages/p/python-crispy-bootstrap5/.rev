@@ -46,4 +46,16 @@
     <comment></comment>
     <requestid>1269572</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>86c57039b955e66a8fbff6e46d2d7e97</srcmd5>
+    <version>2025.6</version>
+    <time>1759499004</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1308320 from mcalabkova
+
+- update to 2025.6
+    * &lt;legend&gt; elements now have fs-6 class so they are the same font
+      size as &lt;labels&gt;.</comment>
+    <requestid>1308663</requestid>
+  </revision>
 </revisionlist>
