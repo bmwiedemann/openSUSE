@@ -660,4 +660,12 @@
     <comment>preparation for boost 1.89 (forwarded request 1303603 from DocB)</comment>
     <requestid>1304022</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>428af97609a358c543449cc2630d5a29</srcmd5>
+    <version>1.12.9</version>
+    <time>1759499173</time>
+    <user>anag_factory</user>
+    <comment>- Apply boost patch to the source tree, this is needed by plugins (forwarded request 1308850 from anag_factory)</comment>
+    <requestid>1308857</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  3 10:18:30 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Apply boost patch to the source tree, this is needed by plugins
+
+-------------------------------------------------------------------
+Wed Oct  1 14:34:39 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Stop trying to pull libboost_system-devel in all orthanc packages.
+  * Patch boost.patch
+
+-------------------------------------------------------------------
 Tue Sep  9 19:42:25 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - remove libboost_system-devel for TW (removed in boost 1.89)
