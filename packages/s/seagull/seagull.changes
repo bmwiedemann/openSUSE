@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 27 12:12:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.5.0:
+  * Add API for handling enums and flags
+  * Add helpers for handling GLib.DateTime values
+  * Fix a bug where parameters without a prefix would match properties even
+    though a prefix was provided
+
+-------------------------------------------------------------------
 Thu Jun 26 08:10:50 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.4.0:
