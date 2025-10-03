@@ -134,4 +134,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1287020</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>06c52c240ff72bce7035d75ee80e541c</srcmd5>
+    <version>1.14.11</version>
+    <time>1759499170</time>
+    <user>anag_factory</user>
+    <comment>- buildfix.patch: fix build
+
+- Update to version 1.14.11
+  * Fix for black screens on Intel Xe
+  * Fix for corruptions on Intel Xe
+  * Evdi debian package is now interchangeable with community
+    packages evdi-dkms and libevdi1
+  * Preliminary support for linux kernel 6.17
+  * EL10 support</comment>
+    <requestid>1308852</requestid>
+  </revision>
 </revisionlist>

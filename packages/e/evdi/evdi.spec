@@ -1,7 +1,7 @@
 #
 # spec file for package evdi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,15 @@
 
 Name:           evdi
 Release:        0
-Version:        1.14.10
+Version:        1.14.11
 Summary:        Extensible Virtual Display Interface (EVDI) is a Linux Kernel Module
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Kernel
 URL:            https://github.com/DisplayLink/evdi
-Source0:        evdi-%{version}.tar
+Source0:        evdi-%{version}.tar.gz
 Source1:        evdi-kmp-preamble
 Source2:        evdi-rpmlintrc
+Patch0:         buildfix.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pesign-obs-integration
 BuildRequires:  pkgconfig
@@ -68,7 +69,7 @@ a virtual display you can add, remove and receive screen updates for, in
 an application that uses the libevdi library.
 
 %prep
-%setup -q
+%autosetup -p 1
 
 %build
 pushd library

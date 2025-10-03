@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct  3 10:42:56 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix.patch: fix build
+
+-------------------------------------------------------------------
+Fri Oct  3 10:13:07 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.14.11
+  * Fix for black screens on Intel Xe
+  * Fix for corruptions on Intel Xe
+  * Evdi debian package is now interchangeable with community
+    packages evdi-dkms and libevdi1
+  * Preliminary support for linux kernel 6.17
+  * EL10 support
+
+-------------------------------------------------------------------
 Thu Jun 12 19:54:14 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed local build
