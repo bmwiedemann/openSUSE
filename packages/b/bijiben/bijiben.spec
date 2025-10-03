@@ -1,7 +1,7 @@
 #
 # spec file for package bijiben
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           bijiben
-Version:        40.1
+Version:        40.1+git499.b629192
 Release:        0
 Summary:        Note editor for GNOME
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Bijiben
-Source0:        https://download.gnome.org/sources/bijiben/40/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 158.patch -- Fix build with meson 0.61.0 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-notes/-/merge_requests/158.patch
-# PATCH-FIX-UPSTREAM bijiben-switch-to-soup3.patch -- Backport upstream switch to soup3
-Patch1:         bijiben-switch-to-soup3.patch
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -38,16 +34,17 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.3
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.92
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.92
-BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.26.0
+BuildRequires:  pkgconfig(webkitgtk-6.0)
+Provides:       gnome-notes = %{version}
 
 %description
 Bijiben is a note editor designed to remain simple to use.
@@ -94,7 +91,7 @@ search results from documents.
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Notes*
 %{_datadir}/mime/packages/org.gnome.Notes.xml
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/org.gnome.Notes.appdata.xml
+%{_datadir}/metainfo/org.gnome.Notes.metainfo.xml
 
 %files -n gnome-shell-search-provider-%{name}
 %{_datadir}/dbus-1/services/org.gnome.Notes.SearchProvider.service

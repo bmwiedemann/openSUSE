@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://gitlab.gnome.org/GNOME/gnome-notes.git</param>
+    <param name="revision">b629192b8adddddb9181500f02e43fcb6919f8b3</param>
+    <param name="versionformat">40.1+git@TAG_OFFSET@.%h</param>
+    <!--
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">BIJIBEN_(\d+)_(\d+)(\+0)?(.*)?</param>
+    <param name="versionrewrite-replacement">\1.\2\3\4</param>
+    -->
+    <param name="filename">bijiben</param>
+<!--    <param name="changesgenerate">enable</param> -->
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>

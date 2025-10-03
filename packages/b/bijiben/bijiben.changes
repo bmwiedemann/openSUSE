@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 18 14:19:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.1+git499.b629192:
+  + Port to gtk4
+  + Port to libadwaita.
+  + Port to webkitgtk-6.0
+  + Updated translations.
+- Changes to BuildRequries following upstreams ports:
+  + Add: pkgconfig(gtk4), pkgconfig(libadwaita-1) and
+    pkgconfig(webkitgtk-6.0)
+  + Drop: pkgconfig(gtk+-3.0), pkgconfig(libhandy-1) and
+    pkgconfig(webkit2gtk-4.1)
+- Drop patches fixed upstream:
+  + 158.patch
+  + bijiben-switch-to-soup3.patch
+
+-------------------------------------------------------------------
 Mon Aug 19 11:27:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext: allow OBS to
