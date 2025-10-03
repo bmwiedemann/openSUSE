@@ -1,7 +1,7 @@
 #
 # spec file for package spotify-easyrpm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           spotify-easyrpm
-Version:        3.0.6
+Version:        3.0.7
 Release:        0
 Summary:        Tool to download, convert and install the Spotify for Linux package
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/megamaced/spotify-easyrpm
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Requires:       createrepo_c
 Requires:       jq
 Requires:       rpm-build

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  2 15:48:39 UTC 2025 - David Mace <david@macemail.co.uk>
+
+- Remove support for obsolete update-desktop-files (broken anyway) @stanislav-brabec
+- Update spec file to match the current state @stanislav-brabec
+- Install icons properly, so it is properly displayed in all environments @stanislav-brabec
+- Fix f_cleanup() @stanislav-brabec
+- Do not run scheduled task on metered networks @stanislav-brabec
+
+-------------------------------------------------------------------
 Sat Mar  1 21:28:31 UTC 2025 - David Mace <david@macemail.co.uk>
 
 - Rebase spotify-client deps on the debian package
