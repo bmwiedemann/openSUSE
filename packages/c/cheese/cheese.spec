@@ -1,7 +1,7 @@
 #
 # spec file for package cheese
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,13 @@
 %define typelib_minor 0
 
 Name:           cheese
-Version:        44.1
+Version:        44.1+12
 Release:        0
 Summary:        Webcam Booth for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://wiki.gnome.org/Apps/Cheese
-Source0:        https://download.gnome.org/sources/cheese/44/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM cheese-c99.patch boo#1224002 mgorse@suse.com -- fix cast to invalid pointer type.
-Patch0:         cheese-c99.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://gitlab.gnome.org/GNOME/cheese/-/merge_requests/73.patch
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
