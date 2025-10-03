@@ -1,7 +1,7 @@
 #
 # spec file for package libcdada
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,7 +32,10 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  python3
+# qemu does not support ptrace
+%if !0%{?qemu_user_space_build}
 BuildRequires:  valgrind
+%endif
 
 %description
 Library that offers basic data structures (list, set, map, ..)
