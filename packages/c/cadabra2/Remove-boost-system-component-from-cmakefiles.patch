@@ -1,0 +1,69 @@
+From 0afcc652660a5c1101de6541b65f6b8869b7ce0a Mon Sep 17 00:00:00 2001
+From: Kasper Peeters <kasper.peeters@cadabra.science>
+Date: Wed, 24 Sep 2025 18:57:23 +0100
+Subject: [PATCH] Remove boost 'system' component from cmakefiles, as this is a
+ header-only component now, and the system stub has been removed in boost
+ 1.89.0.
+
+---
+ client_server/CMakeLists.txt   | 2 +-
+ core/CMakeLists.txt            | 2 +-
+ frontend/common/CMakeLists.txt | 2 +-
+ frontend/gtkmm/CMakeLists.txt  | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/client_server/CMakeLists.txt b/client_server/CMakeLists.txt
+index 271812ccbe..fe347d2928 100644
+--- a/client_server/CMakeLists.txt
++++ b/client_server/CMakeLists.txt
+@@ -36,7 +36,7 @@ find_package(Threads)
+ # websocket functionality) which was not stable before that version.
+ # Actually, it is probably not stable before 1.75.0, but if we go that
+ # high we cannot build on Ubuntu 20.04 anymore.
+-find_package(Boost 1.71.0 COMPONENTS system program_options date_time filesystem REQUIRED)
++find_package(Boost 1.71.0 COMPONENTS program_options date_time filesystem REQUIRED)
+ 
+ # OpenSSL needs to be linked in explicitly (probably because the boost
+ # material referring to it is all in headers?). If you use a cmake module,
+diff --git a/core/CMakeLists.txt b/core/CMakeLists.txt
+index 7f497a302b..9cc00a4ca0 100644
+--- a/core/CMakeLists.txt
++++ b/core/CMakeLists.txt
+@@ -34,7 +34,7 @@ configure_file(
+ #   # so no linking takes place
+ #   set(Boost_USE_STATIC_LIBS   ON)
+ # endif()
+-find_package(Boost 1.71.0 COMPONENTS system filesystem REQUIRED)
++find_package(Boost 1.71.0 COMPONENTS filesystem REQUIRED)
+ message(STATUS "Boost version ${Boost_VERSION}")
+ 
+ # Find glibmm (for base64)
+diff --git a/frontend/common/CMakeLists.txt b/frontend/common/CMakeLists.txt
+index 9bf9d0a155..e9af827643 100644
+--- a/frontend/common/CMakeLists.txt
++++ b/frontend/common/CMakeLists.txt
+@@ -16,7 +16,7 @@ endif(POLICY CMP0042)
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/../../cmake/modules")
+ 
+ find_package(Threads)
+-find_package(Boost 1.71.0 COMPONENTS system REQUIRED)
++find_package(Boost 1.71.0 REQUIRED)
+ set(Boost_USE_STATIC_LIBS OFF)
+ set(Boost_USE_MULTITHREADED ON)
+ set(Boost_USE_STATIC_RUNTIME OFF)
+diff --git a/frontend/gtkmm/CMakeLists.txt b/frontend/gtkmm/CMakeLists.txt
+index 191b9fc7d5..01bf560075 100644
+--- a/frontend/gtkmm/CMakeLists.txt
++++ b/frontend/gtkmm/CMakeLists.txt
+@@ -82,7 +82,7 @@ else()
+   find_package(GLIBMM3)
+   find_package(GTKMM3)
+ endif()
+-find_package(Boost 1.71.0 COMPONENTS system REQUIRED)
++find_package(Boost 1.71.0 REQUIRED)
+ set(Boost_USE_STATIC_LIBS OFF)
+ set(Boost_USE_MULTITHREADED ON)
+ set(Boost_USE_STATIC_RUNTIME OFF)
+-- 
+2.51.0
+

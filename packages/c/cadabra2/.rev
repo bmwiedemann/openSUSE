@@ -268,4 +268,14 @@
     <comment></comment>
     <requestid>1298608</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>a0cbd386b3183bd9b09a1d0a9ff29f59</srcmd5>
+    <version>2.5.14</version>
+    <time>1759499144</time>
+    <user>anag_factory</user>
+    <comment>- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+  * Add patch Remove-boost-system-component-from-cmakefiles.patch (forwarded request 1308809 from anag_factory)</comment>
+    <requestid>1308810</requestid>
+  </revision>
 </revisionlist>

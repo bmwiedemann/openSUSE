@@ -1,7 +1,7 @@
 #
 # spec file for package cadabra2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ URL:            https://cadabra.science/
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM cadabra2-disable-components-test.patch gh#kpeeters/cadabra2#212 badshah400@gmail.com -- Disable a test that crashes for unknown reasons
 Patch0:         cadabra2-disable-components-test.patch
+Patch1:         Remove-boost-system-component-from-cmakefiles.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module gobject-devel}
 BuildRequires:  %{python_module matplotlib}
@@ -59,7 +60,6 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros

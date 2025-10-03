@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  3 07:39:10 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel,
+  removed on boost 1.89 (bsc#1249599)
+  * Add patch Remove-boost-system-component-from-cmakefiles.patch
+
+-------------------------------------------------------------------
 Mon Aug  4 13:24:15 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.14:
