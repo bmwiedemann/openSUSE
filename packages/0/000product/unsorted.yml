@@ -1967,6 +1967,7 @@ unsorted:
   - cargo1.86 
   - cargo1.87 
   - cargo1.88 
+  - cargo1.90 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -11224,8 +11225,8 @@ unsorted:
   - libOpenImageDenoise2 
   - libOpenImageDenoise_core2_3_3 
   - libOpenImageDenoise_device_cpu2_3_3 
-  - libOpenImageIO3_0 
-  - libOpenImageIO_Util3_0 
+  - libOpenImageIO3_1 
+  - libOpenImageIO_Util3_1 
   - libOpenSceneGraph-devel 
   - libOpenSceneGraph161 
   - libOpenThreads-devel 
@@ -13865,6 +13866,7 @@ unsorted:
   - libheatshrink_dynalloc0_4_1 
   - libheif-devel 
   - libheif1-32bit 
+  - libheinz-devel 
   - libhfst55 
   - libhfst_c0 
   - libhfstospell11 
@@ -27562,6 +27564,7 @@ unsorted:
   - python311-wikipedia 
   - python311-wirerope 
   - python311-wmctrl 
+  - python311-wn 
   - python311-wolframalpha 
   - python311-wptools 
   - python311-wrapt 
@@ -31373,6 +31376,7 @@ unsorted:
   - python312-wikipedia 
   - python312-wirerope 
   - python312-wmctrl 
+  - python312-wn 
   - python312-wolframalpha 
   - python312-wptools 
   - python312-wrapt 
@@ -35107,6 +35111,7 @@ unsorted:
   - python313-wikipedia 
   - python313-wirerope 
   - python313-wmctrl 
+  - python313-wn 
   - python313-wolframalpha 
   - python313-wptools 
   - python313-wrapt 
@@ -36757,6 +36762,8 @@ unsorted:
   - rust1.87-src 
   - rust1.88 
   - rust1.88-src 
+  - rust1.90 
+  - rust1.90-src 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
@@ -36936,6 +36943,7 @@ unsorted:
   - scirenderer 
   - scirenderer-javadoc 
   - scite 
+  - scitokens-cpp 
   - scitokens-cpp-devel 
   - scm-manager-cli 
   - scons 
