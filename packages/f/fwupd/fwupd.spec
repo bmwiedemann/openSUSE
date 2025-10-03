@@ -30,7 +30,7 @@
 %bcond_with dell_support
 %endif
 
-%ifarch %{ix86} x86_64 aarch64
+%ifarch %{ix86} x86_64 aarch64 riscv64
 %bcond uefi_dbx 1
 %endif
 
