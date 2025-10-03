@@ -1,7 +1,7 @@
 #
 # spec file for package etherape
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           etherape
-Version:        0.9.20
+Version:        0.9.21
 Release:        0
 Summary:        A Graphical Network Monitor
 License:        GPL-2.0-or-later
@@ -25,20 +25,20 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://etherape.sourceforge.io/
 Source0:        https://prdownloads.sourceforge.net/etherape/%{name}-%{version}.tar.gz
 Patch0:         etherape-0.9.12-desktop.patch
-# https://sourceforge.net/p/etherape/bugs/112/
-Patch1:         etherape-gcc15.patch
 BuildRequires:  docbook_4
 BuildRequires:  fdupes
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(goocanvas-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(popt)
+%if 0%{?suse_version} < 1500
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
+Requires(postun): update-desktop-files
+%endif
 Requires:       xdg-utils
-Recommends:     %{name}-lang
 %if 0%{?is_opensuse}
 BuildRequires:  autoconf-archive
 %endif

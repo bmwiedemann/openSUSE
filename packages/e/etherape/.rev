@@ -324,4 +324,12 @@ Apologies for the delay in fixing it. (forwarded request 212315 from dimstar)</c
     <comment></comment>
     <requestid>1291304</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>da8284f06a3b61112a2dd3cd79d1ca3a</srcmd5>
+    <version>0.9.21</version>
+    <time>1759499033</time>
+    <user>anag_factory</user>
+    <comment>Update to latest version; one less goocanvas consumer (forwarded request 1308678 from dimstar)</comment>
+    <requestid>1308705</requestid>
+  </revision>
 </revisionlist>

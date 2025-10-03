@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct  2 15:50:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.9.21:
+  + GooCanvas was unsupported and getting really old, replaced by
+    GtkDrawingArea.
+  + --final-export is primarily meant to be used from other tools
+    as a way to get statistics data from a replay.
+  + Compatibility Warnings:
+    - removed GooCanvas dependency, drawing now done with plain Gtk
+    - new behavior for --final-export: exit after saving the XML dump
+  + Changes summary:
+    + Fix for gcc 15
+    + Assorted refactorings and small modernizations, including
+      autotools
+  + Updated translations
+- Drop etherape-gcc15.patch: fixed upstream
+- Do not recommend the -lang package: lang packages already have
+  more complex supplements, that trigger on zypper addlocale
+- Drop pkgconfig(goocanvas-2.0) BuildRequires: no longer needed
+
+-------------------------------------------------------------------
 Tue Jul  8 14:01:11 UTC 2025 - pgajdos@suse.com
 
 - added patches
