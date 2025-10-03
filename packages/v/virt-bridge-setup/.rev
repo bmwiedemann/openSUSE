@@ -117,4 +117,16 @@ version 2.0:
 </comment>
     <requestid>1308166</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>484d7298f2853a8019cdf1c8fd1e499a</srcmd5>
+    <version>2.8</version>
+    <time>1759499162</time>
+    <user>anag_factory</user>
+    <comment>version 2.8:
+  * use GetAll to avoid multiple dbus call
+  * Check slave interface exist before adding the bridge
+  * fix forward delay value (value should be 0-30)
+  * fix typo in vlan-default-pvid</comment>
+    <requestid>1308824</requestid>
+  </revision>
 </revisionlist>

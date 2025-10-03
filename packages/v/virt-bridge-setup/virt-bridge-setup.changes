@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  1 11:43:17 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+version 2.8:
+  * use GetAll to avoid multiple dbus call
+  * Check slave interface exist before adding the bridge
+  * fix forward delay value (value should be 0-30)
+  * fix typo in vlan-default-pvid
+
+-------------------------------------------------------------------
 Mon Sep 29 11:58:07 UTC 2025 - Antoine Ginies <aginies@suse.com>
 
 version 2.6:
@@ -6,7 +15,7 @@ version 2.6:
   * improve check_interface_exist
   * remove run_command, use dbus to check if NM is running
   * various fix around dry-run
-  * fix typo on vlan setting. Improve getting brdige info
+  * fix typo on vlan setting. Improve getting bridge info
   * concatenate do_(activate/deactivate/delete) functions
   * use external function to get ipv4 config and bridge settings
   * various mypy and pylint fixes

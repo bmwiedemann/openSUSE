@@ -16,7 +16,7 @@
 #
 
 Name:           virt-bridge-setup
-Version:        2.6
+Version:        2.8
 Release:        1%{?dist}
 Summary:        Script to setup virtual bridges
 License:        GPL-2.0-or-later
