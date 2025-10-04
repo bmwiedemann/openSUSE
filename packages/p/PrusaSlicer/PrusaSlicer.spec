@@ -39,8 +39,14 @@ URL:            https://www.prusa3d.com/prusaslicer/
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{prusa_slicer_tarball_version}.tar.gz#/%{name}-version_%{prusa_slicer_tarball_version}.tar.gz
 # PATCH-FIX-UPSTREAM PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch gh#prusa3d/PrusaSlicer#11769
 Patch1:         PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch
-# PATCH-FIX-UPSTREAM prusaslicer-2.8.1-boost-1.87.0-asio.patch gh#prusa3d/PrusaSlicer#13799 gentoo#946495
-Patch2:         prusaslicer-2.8.1-boost-1.87.0-asio.patch
+# PATCH-FIX-UPSTREAM prusaslicer-2.9.3-boost-1.89.0-asio.patch gh#prusa3d/PrusaSlicer#13799 gentoo#946495 + asio::deadline_timer to system_timer
+Patch2:         PrusaSlicer-2.9.3-boost-1.89.0-asio.patch
+# PATCH-FIX-UMSTREAM PrusaSlicer-2.9.2-issue14534-boost-1.88.patch gh#prusa3d/PrusaSlicer#14534 gentoo#955553
+Patch3:         PrusaSlicer-2.9.2-issue14534-boost-1.88.patch
+# PATCH-FIX-UPSTREAM PrusaSlicer-2.9.2-pr14650-url-schema.patch gh#prusa3d/PrusaSlicer#14650
+Patch4:         PrusaSlicer-2.9.2-pr14650-url-schema.patch
+# PATCH-FIX-UPSTREAM PrusaSlicer-2.9.3-boost-1.89.patch gh#prusa3d/PrusaSlicer#14899
+Patch5:         PrusaSlicer-2.9.3-boost-1.89.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.8.1-pr13761-fix-occtwrapper.patch gh#prusa3d/PrusaSlicer#13761
 Patch10:        PrusaSlicer-2.8.1-pr13761-fix-occtwrapper.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.6.0-octoprint-name-fix.patch -- cast lambda expression to same type
@@ -55,10 +61,6 @@ Patch16:        PrusaSlicer-2.9.1-pr14440-glad.patch
 Patch17:        PrusaSlicer-2.9.1-pr14214-egl-support.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.1-pr14263-secretstorage.patch gh#prusa3d/PrusaSlicer#14263
 Patch18:        PrusaSlicer-2.9.1-pr14263-secretstorage.patch
-# PATCH-FIX-DOWNSTREAMS PrusaSlicer-2.9.2-issue14534-boost-1.88.patch gh#prusa3d/PrusaSlicer#14534 gentoo#955553
-Patch19:        PrusaSlicer-2.9.2-issue14534-boost-1.88.patch
-# PATCH-FIX-UPSTREAM PrusaSlicer-2.9.2-pr14650-url-schema.patch gh#prusa3d/PrusaSlicer#14650
-Patch20:        PrusaSlicer-2.9.2-pr14650-url-schema.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 5.6
@@ -81,7 +83,6 @@ BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_log-devel
 BuildRequires:  libboost_nowide-devel
 BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel

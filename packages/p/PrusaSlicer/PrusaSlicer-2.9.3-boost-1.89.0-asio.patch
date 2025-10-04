@@ -1,6 +1,8 @@
 diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSender.cpp PrusaSlicer-version_2.8.1-dwok/src/libslic3r/GCodeSender.cpp
---- PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSender.cpp	2024-12-21 11:52:03.612595066 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/libslic3r/GCodeSender.cpp	2024-12-21 12:34:03.859507724 +0100
+Index: PrusaSlicer-version_2.9.3/src/libslic3r/GCodeSender.cpp
+===================================================================
+--- PrusaSlicer-version_2.9.3.orig/src/libslic3r/GCodeSender.cpp
++++ PrusaSlicer-version_2.9.3/src/libslic3r/GCodeSender.cpp
 @@ -113,7 +113,7 @@ GCodeSender::connect(std::string devname
      this->io.post(boost::bind(&GCodeSender::do_read, this));
      
@@ -10,9 +12,10 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSend
      this->background_thread.swap(t);
      
      // always send a M105 to check for connection because firmware might be silent on connect
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSender.hpp PrusaSlicer-version_2.8.1-dwok/src/libslic3r/GCodeSender.hpp
---- PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSender.hpp	2024-12-21 11:52:03.612595066 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/libslic3r/GCodeSender.hpp	2024-12-21 12:34:26.163427521 +0100
+Index: PrusaSlicer-version_2.9.3/src/libslic3r/GCodeSender.hpp
+===================================================================
+--- PrusaSlicer-version_2.9.3.orig/src/libslic3r/GCodeSender.hpp
++++ PrusaSlicer-version_2.9.3/src/libslic3r/GCodeSender.hpp
 @@ -40,7 +40,7 @@ class GCodeSender : private boost::nonco
      void reset();
      
@@ -22,9 +25,10 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSend
      asio::serial_port serial;
      boost::thread background_thread;
      boost::asio::streambuf read_buffer, write_buffer;
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/GUI/FirmwareDialog.cpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/GUI/FirmwareDialog.cpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/GUI/FirmwareDialog.cpp	2024-12-21 11:52:03.632594994 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/GUI/FirmwareDialog.cpp	2024-12-21 12:33:40.507591681 +0100
+Index: PrusaSlicer-version_2.9.3/src/slic3r/GUI/FirmwareDialog.cpp
+===================================================================
+--- PrusaSlicer-version_2.9.3.orig/src/slic3r/GUI/FirmwareDialog.cpp
++++ PrusaSlicer-version_2.9.3/src/slic3r/GUI/FirmwareDialog.cpp
 @@ -429,7 +429,7 @@ void FirmwareDialog::priv::avr109_wait_f
  
  void FirmwareDialog::priv::avr109_reboot(const SerialPortInfo &port)
@@ -34,10 +38,19 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/GUI/Firmware
  	Serial serial(io, port.port, 1200);
  	std::this_thread::sleep_for(std::chrono::milliseconds(50));
  }
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjour.cpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Bonjour.cpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjour.cpp	2024-12-21 11:52:03.644594950 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Bonjour.cpp	2024-12-21 12:47:16.560667015 +0100
-@@ -624,11 +624,11 @@ UdpSession::UdpSession(Bonjour::ReplyFn
+Index: PrusaSlicer-version_2.9.3/src/slic3r/Utils/Bonjour.cpp
+===================================================================
+--- PrusaSlicer-version_2.9.3.orig/src/slic3r/Utils/Bonjour.cpp
++++ PrusaSlicer-version_2.9.3/src/slic3r/Utils/Bonjour.cpp
+@@ -12,7 +12,6 @@
+ #include <map>
+ #include <thread>
+ #include <boost/endian/conversion.hpp>
+-#include <boost/date_time/posix_time/posix_time_duration.hpp>
+ #include <boost/format.hpp>
+ #include <boost/log/trivial.hpp>
+ #include <boost/bind/bind.hpp>
+@@ -624,11 +623,11 @@ UdpSession::UdpSession(Bonjour::ReplyFn
  	buffer.resize(DnsMessage::MAX_SIZE);
  }
  
@@ -52,7 +65,7 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  {
  	try {
  		// open socket
-@@ -658,11 +658,11 @@ UdpSocket::UdpSocket( Bonjour::ReplyFn r
+@@ -658,11 +657,11 @@ UdpSocket::UdpSocket( Bonjour::ReplyFn r
  }
  
  
@@ -67,7 +80,7 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  {
  	try {
  		// open socket
-@@ -714,7 +714,7 @@ void UdpSocket::receive_handler(SharedSe
+@@ -714,7 +713,7 @@ void UdpSocket::receive_handler(SharedSe
  	// let io_service to handle the datagram on session
  	// from boost documentation io_service::post:
  	// The io_service guarantees that the handler will only be called in a thread in which the run(), run_one(), poll() or poll_one() member functions is currently being invoked.
@@ -76,7 +89,7 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  	// immediately accept new datagrams
  	async_receive();
  }
-@@ -871,13 +871,13 @@ void Bonjour::priv::lookup_perform()
+@@ -871,13 +870,13 @@ void Bonjour::priv::lookup_perform()
  {
  	service_dn = (boost::format("_%1%._%2%.local") % service % protocol).str();
  
@@ -92,7 +105,7 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  	boost::system::error_code ec;
  	// ipv4 interfaces
  	auto results = resolver.resolve(udp::v4(), asio::ip::host_name(), "", ec);
-@@ -890,12 +890,12 @@ void Bonjour::priv::lookup_perform()
+@@ -890,12 +889,12 @@ void Bonjour::priv::lookup_perform()
  		// create ipv4 socket for each interface
  		// each will send to querry to for both ipv4 and ipv6
  		for (const auto& intrfc : interfaces) 		
@@ -107,7 +120,7 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  	// ipv6 interfaces
  	interfaces.clear();
  	//udp::resolver::query query(host, PORT, boost::asio::ip::resolver_query_base::numeric_service);
-@@ -910,9 +910,9 @@ void Bonjour::priv::lookup_perform()
+@@ -910,9 +909,9 @@ void Bonjour::priv::lookup_perform()
  		// create ipv6 socket for each interface
  		// each will send to querry to for both ipv4 and ipv6
  		for (const auto& intrfc : interfaces)
@@ -119,12 +132,12 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  	} else {
  		BOOST_LOG_TRIVIAL(info)<< "Failed to resolve ipv6 interfaces: " << ec.message();
  	}
-@@ -923,13 +923,13 @@ void Bonjour::priv::lookup_perform()
+@@ -923,20 +922,20 @@ void Bonjour::priv::lookup_perform()
  			socket->send();
  
  		// timer settings
 -		asio::deadline_timer timer(*io_service);
-+		asio::deadline_timer timer(*io_context);
++		asio::system_timer timer(*io_context);
  		retries--;
  		std::function<void(const error_code&)> timer_handler = [&](const error_code& error) {
  			// end 
@@ -135,8 +148,20 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  				if (completefn) {
  					completefn();
  				}
-@@ -947,7 +947,7 @@ void Bonjour::priv::lookup_perform()
- 		timer.expires_from_now(boost::posix_time::seconds(timeout));
+ 			// restart timer
+ 			} else {
+ 				retries--;
+-				timer.expires_from_now(boost::posix_time::seconds(timeout));
++				timer.expires_after(std::chrono::seconds(timeout));
+ 				timer.async_wait(timer_handler);
+ 				// trigger another round of queries
+ 				for (auto * socket : sockets)
+@@ -944,10 +943,10 @@ void Bonjour::priv::lookup_perform()
+ 			}
+ 		};
+ 		// start timer
+-		timer.expires_from_now(boost::posix_time::seconds(timeout));
++		timer.expires_after(std::chrono::seconds(timeout));
  		timer.async_wait(timer_handler);
  		// start io_service, it will run until it has something to do - so in this case until stop is called in timer
 -		io_service->run();
@@ -144,7 +169,7 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  	}
  	catch (std::exception& e) {
  		BOOST_LOG_TRIVIAL(error) << e.what();
-@@ -966,12 +966,12 @@ void Bonjour::priv::resolve_perform()
+@@ -966,12 +965,12 @@ void Bonjour::priv::resolve_perform()
  			rpls.push_back(reply);
  	};
  
@@ -159,7 +184,7 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  	boost::system::error_code ec;
  	// ipv4 interfaces
  	auto results = resolver.resolve(udp::v4(), asio::ip::host_name(), "", ec);
-@@ -984,12 +984,12 @@ void Bonjour::priv::resolve_perform()
+@@ -984,12 +983,12 @@ void Bonjour::priv::resolve_perform()
  		// create ipv4 socket for each interface
  		// each will send to querry to for both ipv4 and ipv6
  		for (const auto& intrfc : interfaces)
@@ -174,7 +199,7 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  
  	// ipv6 interfaces
  	interfaces.clear();
-@@ -1003,9 +1003,9 @@ void Bonjour::priv::resolve_perform()
+@@ -1003,9 +1002,9 @@ void Bonjour::priv::resolve_perform()
  		// create ipv6 socket for each interface
  		// each will send to querry to for both ipv4 and ipv6
  		for (const auto& intrfc : interfaces) 
@@ -186,12 +211,12 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  	} else {
  		BOOST_LOG_TRIVIAL(info) << "Failed to resolve ipv6 interfaces: " << ec.message();
  	}
-@@ -1016,14 +1016,14 @@ void Bonjour::priv::resolve_perform()
+@@ -1016,21 +1015,21 @@ void Bonjour::priv::resolve_perform()
  			socket->send();
  
  		// timer settings
 -		asio::deadline_timer timer(*io_service);
-+		asio::deadline_timer timer(*io_context);
++		asio::system_timer timer(*io_context);
  		retries--;
  		std::function<void(const error_code&)> timer_handler = [&](const error_code& error) {
  			int replies_count = replies.size();
@@ -203,8 +228,20 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  				if (replies_count > 0 && resolvefn) {
  					resolvefn(replies);
  				}
-@@ -1041,7 +1041,7 @@ void Bonjour::priv::resolve_perform()
- 		timer.expires_from_now(boost::posix_time::seconds(timeout));
+ 			// restart timer
+ 			} else {
+ 				retries--;
+-				timer.expires_from_now(boost::posix_time::seconds(timeout));
++				timer.expires_after(std::chrono::seconds(timeout));
+ 				timer.async_wait(timer_handler);
+ 				// trigger another round of queries
+ 				for (auto * socket : sockets)
+@@ -1038,10 +1037,10 @@ void Bonjour::priv::resolve_perform()
+ 			}
+ 		};
+ 		// start timer
+-		timer.expires_from_now(boost::posix_time::seconds(timeout));
++		timer.expires_after(std::chrono::seconds(timeout));
  		timer.async_wait(timer_handler);
  		// start io_service, it will run until it has something to do - so in this case until stop is called in timer
 -		io_service->run();
@@ -212,9 +249,10 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  	}
  	catch (std::exception& e) {
  		BOOST_LOG_TRIVIAL(error) << e.what();
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjour.hpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Bonjour.hpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjour.hpp	2024-12-21 11:52:03.644594950 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Bonjour.hpp	2024-12-21 12:23:16.573836269 +0100
+Index: PrusaSlicer-version_2.9.3/src/slic3r/Utils/Bonjour.hpp
+===================================================================
+--- PrusaSlicer-version_2.9.3.orig/src/slic3r/Utils/Bonjour.hpp
++++ PrusaSlicer-version_2.9.3/src/slic3r/Utils/Bonjour.hpp
 @@ -155,11 +155,11 @@ public:
  	UdpSocket(Bonjour::ReplyFn replyfn
  		, const boost::asio::ip::address& multicast_address
@@ -282,9 +320,10 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  		, hostname(hostname)
  
  	{
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial.cpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Serial.cpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial.cpp	2024-12-21 11:52:03.644594950 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Serial.cpp	2024-12-21 11:59:40.018945840 +0100
+Index: PrusaSlicer-version_2.9.3/src/slic3r/Utils/Serial.cpp
+===================================================================
+--- PrusaSlicer-version_2.9.3.orig/src/slic3r/Utils/Serial.cpp
++++ PrusaSlicer-version_2.9.3/src/slic3r/Utils/Serial.cpp
 @@ -282,12 +282,12 @@ std::vector<std::string> scan_serial_por
  namespace asio = boost::asio;
  using boost::system::error_code;
@@ -315,7 +354,7 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial
  		this->get_io_service();
  #endif
 -	asio::deadline_timer timer(io_service);
-+	asio::deadline_timer timer(io_context);
++	asio::system_timer timer(io_context);
  	char c = 0;
  	bool fail = false;
  
@@ -334,9 +373,10 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial
  
  		if (fail) {
  			return false;
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial.hpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Serial.hpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial.hpp	2024-12-21 11:52:03.644594950 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Serial.hpp	2024-12-21 11:55:33.283837413 +0100
+Index: PrusaSlicer-version_2.9.3/src/slic3r/Utils/Serial.hpp
+===================================================================
+--- PrusaSlicer-version_2.9.3.orig/src/slic3r/Utils/Serial.hpp
++++ PrusaSlicer-version_2.9.3/src/slic3r/Utils/Serial.hpp
 @@ -43,8 +43,8 @@ extern std::vector<SerialPortInfo> 	scan
  class Serial : public boost::asio::serial_port
  {
@@ -348,9 +388,10 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial
  	Serial(const Serial &) = delete;
  	Serial &operator=(const Serial &) = delete;
  	~Serial();
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/TCPConsole.cpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/TCPConsole.cpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/TCPConsole.cpp	2024-12-21 11:52:03.644594950 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/TCPConsole.cpp	2024-12-21 13:00:56.377754763 +0100
+Index: PrusaSlicer-version_2.9.3/src/slic3r/Utils/TCPConsole.cpp
+===================================================================
+--- PrusaSlicer-version_2.9.3.orig/src/slic3r/Utils/TCPConsole.cpp
++++ PrusaSlicer-version_2.9.3/src/slic3r/Utils/TCPConsole.cpp
 @@ -9,6 +9,7 @@
  #include <boost/asio/read_until.hpp>
  #include <boost/asio/steady_timer.hpp>

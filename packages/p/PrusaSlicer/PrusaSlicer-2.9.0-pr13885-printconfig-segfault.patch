@@ -8,11 +8,11 @@ Subject: [PATCH] Avoid null pointer dereference for partial configuration
  src/libslic3r/PrintConfig.cpp | 9 ++++++++-
  1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/src/libslic3r/PrintConfig.cpp b/src/libslic3r/PrintConfig.cpp
-index 907fdfb02a..efa9be9760 100644
---- a/src/libslic3r/PrintConfig.cpp
-+++ b/src/libslic3r/PrintConfig.cpp
-@@ -5130,7 +5130,14 @@ void DynamicPrintConfig::normalize_fdm()
+Index: PrusaSlicer-version_2.9.3/src/libslic3r/PrintConfig.cpp
+===================================================================
+--- PrusaSlicer-version_2.9.3.orig/src/libslic3r/PrintConfig.cpp
++++ PrusaSlicer-version_2.9.3/src/libslic3r/PrintConfig.cpp
+@@ -5275,7 +5275,14 @@ void DynamicPrintConfig::normalize_fdm()
          }
      }
  

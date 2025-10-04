@@ -510,4 +510,16 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
 </comment>
     <requestid>1304763</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>67fe6f0ed3ba3caf09ce65bdc6c52ba5</srcmd5>
+    <version>2.9.3</version>
+    <time>1759596669</time>
+    <user>dimstar_suse</user>
+    <comment>- Boost 1.89 compatibility:
+  * Add PrusaSlicer-2.9.3-boost-1.89.patch
+    gh#prusa3d/PrusaSlicer#14899
+  * Update prusaslicer-2.8.1-boost-1.87.0-asio.patch into
+    PrusaSlicer-2.9.3-boost-1.89.0-asio.patch</comment>
+    <requestid>1308858</requestid>
+  </revision>
 </revisionlist>

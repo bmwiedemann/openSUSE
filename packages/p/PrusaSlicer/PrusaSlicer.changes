@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  3 10:22:44 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Boost 1.89 compatibility:
+  * Add PrusaSlicer-2.9.3-boost-1.89.patch
+    gh#prusa3d/PrusaSlicer#14899
+  * Update prusaslicer-2.8.1-boost-1.87.0-asio.patch into
+    PrusaSlicer-2.9.3-boost-1.89.0-asio.patch
+
+-------------------------------------------------------------------
 Mon Sep  8 16:09:52 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 2.9.3
