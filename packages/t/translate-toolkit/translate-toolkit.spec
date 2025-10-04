@@ -50,13 +50,12 @@
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.15.5
+Version:        3.16.1
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
 URL:            https://toolkit.translatehouse.org/
-Source:         https://files.pythonhosted.org/packages/source/t/%{modname}/%{modname}-%{version}.tar.gz
-Patch0:         xliff-xsd-no-network.patch
+Source:         https://github.com/translate/translate/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module cheroot >= 9}
 BuildRequires:  %{python_module cwcwidth >= 0.1.10}
@@ -177,7 +176,7 @@ translations and perform various checks on translation files.
 %endif
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n translate-%{version}
 %autopatch -p1
 
 #Fix for shebang errors:
