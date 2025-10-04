@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 30 08:01:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.34.5
+  * CborDecoder initialize m_lastError in constructor by @sbaluja in (#783)
+
+-------------------------------------------------------------------
 Thu Sep 18 15:11:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.34.4
