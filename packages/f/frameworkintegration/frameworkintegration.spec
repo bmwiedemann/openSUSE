@@ -1,7 +1,7 @@
 #
 # spec file for package frameworkintegration
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  (cmake(AppStreamQt5) >= 1.0.0 or cmake(AppStreamQt) < 1.0.0)
 BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
@@ -47,7 +46,6 @@ BuildRequires:  cmake(KF5Package) >= %{_kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_version}
 BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
-BuildRequires:  cmake(packagekitqt5)
 
 %description
 Framework Integration is a set of plugins responsible for better

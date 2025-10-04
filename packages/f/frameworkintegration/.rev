@@ -1059,4 +1059,13 @@
     <comment>KDE Frameworks 5.116 (forwarded request 1173590 from krop)</comment>
     <requestid>1175112</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>5bdcddd361421176be113aa3ba70df89</srcmd5>
+    <version>5.116.0</version>
+    <time>1759596653</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop optional kpackage install handler support. AppStream 1.1.1
+  no longer supports Qt 5.</comment>
+    <requestid>1308899</requestid>
+  </revision>
 </revisionlist>

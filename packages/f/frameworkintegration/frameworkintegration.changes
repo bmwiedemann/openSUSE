@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  3 16:53:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Drop optional kpackage install handler support. AppStream 1.1.1
+  no longer supports Qt 5.
+
+-------------------------------------------------------------------
 Mon May  6 11:32:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.116.0
