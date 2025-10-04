@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  2 15:10:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.2:
+  + Restic: fix broken restore flow (again) by correcting
+    find-fusermount script
+- Changes from version 49.1:
+  + Correctly exclude some extra cache folders even if HOME is a
+    symlink
+  + Restic: fix broken restore flow by correctly finding fusermount
+    executable
+  + Duplicity: fix the Up browse button from triggering twice on a
+    single click or going insensitive when scrolling via gestures
+
+-------------------------------------------------------------------
 Wed Sep 17 06:50:10 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:

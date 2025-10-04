@@ -17,7 +17,7 @@
 
 
 Name:           deja-dup
-Version:        49.0
+Version:        49.2
 Release:        0
 Summary:        Simple backup tool and frontend for duplicity
 License:        GPL-3.0-or-later
