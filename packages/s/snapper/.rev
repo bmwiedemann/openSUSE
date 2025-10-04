@@ -1351,4 +1351,12 @@
     <comment>- updated to latest repository</comment>
     <requestid>1303356</requestid>
   </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>99274701c8261d953289d7d02d715ec0</srcmd5>
+    <version>0.13.0</version>
+    <time>1759596639</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1308814</requestid>
+  </revision>
 </revisionlist>
