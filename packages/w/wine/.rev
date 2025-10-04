@@ -5637,4 +5637,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>- fixed aarch64 packagelist</comment>
     <requestid>1307473</requestid>
   </revision>
+  <revision rev="472" vrev="1">
+    <srcmd5>2220944b277c80cf848c46ccdd7f7627</srcmd5>
+    <version>10.16</version>
+    <time>1759605648</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 10.16 release
+  - Fast synchronization support using NTSync.
+  - 16-bit apps supported in new WoW64 mode.
+  - Initial support for D3DKMT objects.
+  - WinMD (Windows Metadata) files generated and installed.
+  - Various bug fixes.
+- update staging to 10.15 release</comment>
+    <requestid>1308994</requestid>
+  </revision>
 </revisionlist>

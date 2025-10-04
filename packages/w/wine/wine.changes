@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct  4 10:14:48 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.16 release
+  - Fast synchronization support using NTSync.
+  - 16-bit apps supported in new WoW64 mode.
+  - Initial support for D3DKMT objects.
+  - WinMD (Windows Metadata) files generated and installed.
+  - Various bug fixes.
+- update staging to 10.15 release
+
+-------------------------------------------------------------------
 Sat Sep 27 09:52:22 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - fixed aarch64 packagelist
