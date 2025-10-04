@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Tue Sep 30 07:56:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.4.0:
+  + Added action to launch Flatseal with selected app id via DBus.
+  + Added support for the new USB devices permission.
+  + Fixed referencing deprecated symbolic icons.
+  + Fixed handling incomplete desktop files.
+  + Changed appdata to metainfo.
+  + Changed to Adw.ShortcutsDialog for better adaptive behavior.
+  + Changed to Libadwaita 1.8 for new widgets.
+  + Changed to GNOME 49 runtime for stability.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 09:43:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.3.1:
+  + Changed to GNOME 48 runtime for stability.
+- Changes from version 2.3.0:
+  + Added support for the new inherit-wayland-socket permission.
+  + Changed to AppStream 1.0.
+  + Changed to GNOME 47 runtime for stability.
+- For the remaining changes between 1.8.1 and 2.3.0 see packaged
+  CHANGELOG.md
+- Add pkgconfig(webkitgtk-6.0), pkgconfig(libadwaita-1) and
+  pkgconfig(appstrean) BuildRequires: sync with upstream
+- Drop pkgconfig(libhandy-1) and pkgconfig(gtk+-3.0) BuildRequires:
+  no longer needed
+
+-------------------------------------------------------------------
+Sat Feb  4 11:29:10 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.8.1
+  * Fixed tooltips on unsupported permissions rows.
+  * Fixed weird interactions with filesystem reset mode.
+  * Fixed French translation.
+  * Fixed Chinese (China) translation.
+  * Added support for new gpg-agent permission.
+  * Added Hebrew translation.
+  * Added Tamil translation.
+  * Changed Flatpak icon to the latest version.
+  * Changed globally overridden status icon to use a different color.
+  * Changed environment variables validation to allow spaces.
+  * Changed to GNOME-runtime AppStreamGlib installation.
+  * Changed to GNOME 43 runtime for stability.
+
+-------------------------------------------------------------------
+Wed Jun  1 10:50:05 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Remove flatseal-fixed-russian-translation.patch Is no longer needed
+- Update to version 1.8.0:
+  * Fixed issues with forbidden modes on removed filesystem permissions.
+  * Fixed a few typos in offline documentation.
+  * Fixed creation of overrides directory on non-Flatpak distributions.
+  * Fixed Polish translation.
+  * Added Bulgarian translation.
+  * Added Danish translation.
+  * Added Chinese (China) translation.
+  * Added support for system color schemes.
+  * Added support for taking global overrides into account.
+  * Added support for editing global overrides.
+  * Added support for highlighting overridden permissions.
+  * Changed shortcuts window to be modal.
+  * Changed documentation window to be modal.
+- Update to version 1.7.5:
+  * Fixed Russian translation.
+  * Fixed icons to look sharper.
+  * Fixed loading originally-negated permissions.
+  * Fixed instances of undefined overrides.
+  * Added Turkish translation.
+  * Added French translation.
+  * Added support for keyboard navigation.
+  * Added support for per-app-dev-shm permission.
+  * Added support for negated filesystem permissions.
+  * Changed more custom widgets for libhandy widgets.
+  * Changed to sorting applications by name.
+
+-------------------------------------------------------------------
+Wed Jun 30 04:15:32 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Add flatseal-fixed-russian-translation.patch 
+
+-------------------------------------------------------------------
+Wed Jun 30 03:59:55 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.7.4:
+  * Added Catalan translation.
+  * Added Russian translation.
+  * Added keywords to find this app more easily using desktop 
+    search.
+  * Fixed a few JS-usage and code-style issues.
+  * Fixed variables overrides not handling properly RUST-related 
+    exports.
+  * Fixed paths overrides mistakenly warning about directory names 
+    with spaces.
+  * Added a way to unset individual portal permissions.
+  * Added support to save and restore the main window state.
+  * Fixed crash when partial tables are present on the 
+    permission store.
+  * Fixed styling for the no applications found message.
+  * Added Ctrl+F accelerator for activating search.
+  * Changed reset behavior to forget portals decisions.
+  * Added initial support for portal permissions.
+  * Added offline documentation.
+  * Fixed show-details button freezing the application.
+  * Changed applications search option to be toggleable.
+
+-------------------------------------------------------------------
+Sat Feb 20 04:52:59 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 
