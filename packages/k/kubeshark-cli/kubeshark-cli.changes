@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 03 16:13:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.9.0:
+  * Bug Fixes & New Features
+    - Added a Helm property to control the duration before
+      Kubeshark automatically enters
+      [Dormant](https://docs.kubeshark.co/en/on_off_switch) mode to
+      conserve resources when idle. In Dormant mode, resource
+      consumption is minimized. This behavior can be disabled via
+      Helm. Kubeshark will not enter Dormant mode if any dashboard,
+      Agent logic script, or recording is active.
+    - The hostroot volume is now created only when the tracer is
+      deployed. tracer deployment is controlled by the
+      tap.tls=true/false setting.
+    - Introduced support for defining a custom ingress path via the
+      Helm value: tap.ingress.path.
+
+-------------------------------------------------------------------
 Tue Aug 19 07:12:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 52.8.1:
