@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Oct  1 18:16:47 CEST 2025 - ro@suse.de
+
+- Chromium 141.0.7390.54
+  (stable released 2025-09-30) (boo#1250780)
+  * CVE-2025-11205: Heap buffer overflow in WebGPU
+  * CVE-2025-11206: Heap buffer overflow in Video
+  * CVE-2025-11207: Side-channel information leakage in Storage
+  * CVE-2025-11208: Inappropriate implementation in Media
+  * CVE-2025-11209: Inappropriate implementation in Omnibox
+  * CVE-2025-11210: Side-channel information leakage in Tab
+  * CVE-2025-11211: Out of bounds read in Media
+  * CVE-2025-11212: Inappropriate implementation in Media
+  * CVE-2025-11213: Inappropriate implementation in Omnibox
+  * CVE-2025-11215: Off by one error in V8
+  * CVE-2025-11216: Inappropriate implementation in Storage
+  * CVE-2025-11219: Use after free in V8
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+- added patches:
+  chromium-141-csss_style_sheet.patch (from fedora)
+  chromium-141-use_libcxx_modules.patch (from fedora)
+  chromium-141-no_cxx_modules.patch
+  (one more fallout from clang modules)
+- modified patches: (context)
+  ppc-fedora-0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch
+  ppc-fedora-Sandbox-linux-services-credentials.cc-PPC.patch
+  ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch
+  ppc-fedora-add-ppc64-architecture-to-extensions.diff
+  ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
+  (updated from debian)
+  chromium-121-rust-clang_lib.patch (redone)
+- keeplibs:
+  added third_party/federated_compute (pulled in)
+  added third_party/oak (needed by federated_compute)
+
+-------------------------------------------------------------------
+Wed Sep 24 17:21:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 141.0.7390.37
+  (beta released 2025-09-24)
+- modified patches:
+  chromium-125-compiler.patch
+  chromium-133-bring_back_and_disable_allowlist.patch
+  chromium-140-keep-__rust_no_alloc_shim_is_unstable.patch
+- dropped patches:
+  ppc-fedora-fix-rustc.patch (obsolete)
+  chromium-135-add_map_droppable.patch
+
+-------------------------------------------------------------------
 Wed Sep 24 06:48:00 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 140.0.7339.207 (boo#1250472)

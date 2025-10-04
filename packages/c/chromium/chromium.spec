@@ -118,7 +118,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        140.0.7339.207
+Version:        141.0.7390.54
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -165,10 +165,12 @@ Patch369:       chromium-132-pdfium-explicit-template.patch
 Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
 Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
-Patch376:       chromium-135-add_map_droppable.patch
 Patch377:       chromium-139-deterministic.patch
 Patch378:       chromium-139-pdfium-openjpeg-CVE-2025-54874.patch
 Patch379:       chromium-140-keep-__rust_no_alloc_shim_is_unstable.patch
+Patch380:       chromium-141-use_libcxx_modules.patch
+Patch381:       chromium-141-csss_style_sheet.patch
+Patch382:       chromium-141-no_cxx_modules.patch
 # conditionally applied patches ppc64le only
 Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
 Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
@@ -210,7 +212,6 @@ Patch437:       ppc-fedora-0001-Implement-support-for-ppc64-on-Linux.patch
 Patch438:       ppc-fedora-0001-Implement-support-for-PPC64-on-Linux.patch
 Patch439:       ppc-fedora-0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
 Patch440:       ppc-fedora-fix-clang-selection.patch
-Patch441:       ppc-fedora-fix-rustc.patch
 Patch442:       ppc-fedora-fix-rust-linking.patch
 Patch443:       ppc-fedora-fix-breakpad-compile.patch
 Patch444:       ppc-fedora-fix-partition-alloc-compile.patch
@@ -647,6 +648,7 @@ keeplibs=(
     third_party/farmhash
     third_party/fast_float
     third_party/fdlibm
+    third_party/federated_compute
     third_party/fft2d
     third_party/flatbuffers
     third_party/fp16
@@ -673,6 +675,7 @@ keeplibs=(
     third_party/libaom/source/libaom/third_party/SVT-AV1
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
+    third_party/libc++
     third_party/libgav1
     third_party/libjingle
     third_party/libphonenumber
@@ -701,6 +704,7 @@ keeplibs=(
     third_party/nasm
     third_party/nearby
     third_party/node
+    third_party/oak
     third_party/omnibox_proto
     third_party/one_euro_filter
     third_party/openscreen

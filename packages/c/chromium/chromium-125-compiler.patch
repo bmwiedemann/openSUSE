@@ -1,6 +1,8 @@
---- chromium-140.0.7259.2/build/config/compiler/BUILD.gn	2025/06/27 14:34:16	1.1
-+++ chromium-140.0.7259.2/build/config/compiler/BUILD.gn	2025/06/27 14:36:19
-@@ -312,9 +312,7 @@
+Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
+===================================================================
+--- chromium-141.0.7378.3.orig/build/config/compiler/BUILD.gn
++++ chromium-141.0.7378.3/build/config/compiler/BUILD.gn
+@@ -337,9 +337,7 @@ config("compiler") {
  
    configs += [
      # See the definitions below.
@@ -10,7 +12,7 @@
      ":compiler_codegen",
      ":compiler_deterministic",
      ":clang_warning_suppression",
-@@ -603,66 +603,6 @@
+@@ -634,64 +632,6 @@ config("compiler") {
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -62,14 +64,12 @@
 -      cflags += [ "-ffp-contract=off" ]
 -    }
 -
--    # Enable ELF CREL (see crbug.com/357878242) for all platforms that use ELF
--    # (excluding toolchains that use an older version of LLVM).
+-    # Enable ELF CREL (see crbug.com/357878242) for all platforms that use ELF.
 -    # TODO(crbug.com/376278218): This causes segfault on Linux ARM builds.
 -    # It also causes segfault on Linux s390x:
 -    # https://github.com/llvm/llvm-project/issues/149511
 -    if (is_linux && use_lld && !llvm_android_mainline && current_cpu != "arm" &&
--        current_cpu != "s390x" &&
--        default_toolchain != "//build/toolchain/cros:target") {
+-        current_cpu != "s390x") {
 -      cflags += [ "-Wa,--crel,--allow-experimental-crel" ]
 -    }
 -  }
@@ -77,7 +77,7 @@
    # C11/C++11 compiler flags setup.
    # ---------------------------
    if (is_linux || is_chromeos || is_android || current_os == "aix") {
-@@ -1598,43 +1539,6 @@
+@@ -1642,43 +1582,6 @@ config("compiler_deterministic") {
      }
    }
  
@@ -121,7 +121,7 @@
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
    # really need it and it can mess up the RBE cache entries.
-@@ -1661,87 +1565,6 @@
+@@ -1705,87 +1608,6 @@ config("compiler_deterministic") {
    }
  }
  
@@ -209,7 +209,7 @@
  # Controls the usage of a warning suppression mapping (WSM) file to suppress
  # warnings based on the path of the file they come from. It's controlled by the
  # `clang_warning_suppression_file` gn argument , which points to a text file
-@@ -2229,10 +2052,6 @@
+@@ -2286,10 +2108,6 @@ config("chromium_code") {
      }
    } else {
      cflags = [ "-Wall" ]
@@ -220,7 +220,7 @@
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -2241,24 +2060,6 @@
+@@ -2298,24 +2116,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -236,7 +236,7 @@
 -      # ChromeOS's toolchain supports a high-quality _FORTIFY_SOURCE=3
 -      # implementation with a few custom glibc patches. Use that if it's
 -      # available.
--      if (is_chromeos_device && !lacros_use_chromium_toolchain) {
+-      if (is_chromeos_device) {
 -        fortify_level = "3"
 -      }
 -      defines += [ "_FORTIFY_SOURCE=" + fortify_level ]
@@ -245,7 +245,7 @@
      if (is_apple) {
        cflags_objc = [ "-Wimplicit-retain-self" ]
        cflags_objcc = [ "-Wimplicit-retain-self" ]
-@@ -2673,7 +2474,8 @@
+@@ -2735,7 +2535,8 @@ config("default_stack_frames") {
  # [0]: https://pinpoint-dot-chromeperf.appspot.com/job/147634a8be0000
  # [1]: https://pinpoint-dot-chromeperf.appspot.com/job/132bc772be0000
  # [2]: https://crrev.com/c/5447532
@@ -255,7 +255,7 @@
    if (is_win) {
      # clang-cl's /O2 corresponds to clang's -O3, and really want -O2 for
      # consistency with the other platforms.
-@@ -2722,7 +2524,8 @@
+@@ -2784,7 +2585,8 @@ config("optimize") {
  }
  
  # Turn off optimizations.
@@ -265,7 +265,7 @@
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2757,7 +2560,8 @@
+@@ -2819,7 +2621,8 @@ config("no_optimize") {
  # Turns up the optimization level. Used to explicitly enable -O2 instead of
  # -Os for select targets on platforms that use optimize_for_size. No-op
  # elsewhere.
@@ -275,7 +275,7 @@
    ldflags = common_optimize_on_ldflags
    if (is_win) {
      # Favor speed over size, /O2 must be before the common flags.
-@@ -2778,7 +2582,8 @@
+@@ -2840,7 +2643,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/41259697) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -285,7 +285,7 @@
    ldflags = common_optimize_on_ldflags
    if (is_win) {
      # Favor speed over size, /O2 must be before the common flags.
-@@ -2795,7 +2600,8 @@
+@@ -2857,7 +2661,8 @@ config("optimize_speed") {
    rustflags = [ "-Copt-level=3" ]
  }
  
@@ -295,7 +295,7 @@
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -2922,7 +2728,8 @@
+@@ -2984,7 +2789,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -305,7 +305,7 @@
    rustflags = []
    configs = []
    if (is_win) {
-@@ -3089,7 +2896,8 @@
+@@ -3140,7 +2946,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -315,7 +315,7 @@
    rustflags = []
    if (is_win) {
      # Functions, files, and line tables only.
-@@ -3165,7 +2973,8 @@
+@@ -3216,7 +3023,8 @@ config("minimal_symbols") {
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.

@@ -49,8 +49,8 @@ Index: chromium-136.0.7103.48/sandbox/linux/seccomp-bpf-helpers/syscall_paramete
 ===================================================================
 --- chromium-136.0.7103.48.orig/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
 +++ chromium-136.0.7103.48/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
-@@ -41,7 +41,7 @@
- #define MAP_DROPPABLE	0x08    // Zero memory under memory pressure.
+@@ -43,7 +43,7 @@
+ #define MAP_DROPPABLE 0x08  // Zero memory under memory pressure.
  #endif
  
 -#if BUILDFLAG(IS_LINUX) && !defined(__arm__) && !defined(__aarch64__) && \
@@ -631,3 +631,5 @@ Index: chromium-136.0.7103.48/sandbox/linux/services/syscall_wrappers.cc
    // CONFIG_CLONE_BACKWARDS defined.
    return syscall(__NR_clone, flags, child_stack, ptid, tls, ctid);
  #endif
+--- syscall_parameters_restrictions.cc	2025/10/01 15:32:29	1.1
++++ syscall_parameters_restrictions.cc	2025/10/01 15:32:47

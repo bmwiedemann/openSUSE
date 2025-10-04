@@ -4979,7 +4979,8 @@ Index: chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/rand/r
 ===================================================================
 --- chromium-138.0.7204.35.orig/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
 +++ chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
-@@ -431,6 +431,11 @@ bcm_infallible BCM_rand_bytes_with_addit
+Index: chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/sha/internal.h
+@@ -430,6 +430,11 @@
      // Take a read lock around accesses to |state->drbg|. This is needed to
      // avoid returning bad entropy if we race with
      // |rand_thread_state_clear_all|.
@@ -4990,8 +4991,7 @@ Index: chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/rand/r
 +    // kernel, syscalls made with |syscall| did not abort the transaction.
      CRYPTO_MUTEX_lock_read(&state->clear_drbg_lock);
  #endif
-     if (!CTR_DRBG_reseed(&state->drbg, seed, reseed_additional_data,
-Index: chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/sha/internal.h
+     if (!CTR_DRBG_reseed_ex(&state->drbg, seed, sizeof(seed),
 ===================================================================
 --- chromium-138.0.7204.35.orig/third_party/boringssl/src/crypto/fipsmodule/sha/internal.h
 +++ chromium-138.0.7204.35/third_party/boringssl/src/crypto/fipsmodule/sha/internal.h
