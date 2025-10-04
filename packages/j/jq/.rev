@@ -200,4 +200,12 @@
   * This change was reverted due to serious performance regression. (forwarded request 1289560 from mnhauke)</comment>
     <requestid>1289769</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f764385256b9e7bade39558b2ada2cfb</srcmd5>
+    <version>1.8.1</version>
+    <time>1759596641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1308830</requestid>
+  </revision>
 </revisionlist>

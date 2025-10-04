@@ -1,7 +1,7 @@
 #
 # spec file for package jq
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(oniguruma)
 # https://github.com/stedolan/jq/issues/1904
 Requires:       libjq%{jq_sover} = %{version}
-%ifarch aarch64 x86_64 ppc64le s390x
+%ifarch aarch64 x86_64 ppc64le s390x riscv64
 BuildRequires:  valgrind
 %endif
 
@@ -61,7 +61,7 @@ Development files (headers and libraries for jq).
 %build
 %configure \
   --disable-static \
-%ifarch aarch64 x86_64 ppc64le s390x
+%ifarch aarch64 x86_64 ppc64le s390x riscv64
   --enable-valgrind \
 %else
   --disable-valgrind \

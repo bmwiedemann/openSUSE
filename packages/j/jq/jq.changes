@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  2 11:14:15 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable valgrind on riscv64
+
+-------------------------------------------------------------------
 Tue Jul  1 15:18:11 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.1
