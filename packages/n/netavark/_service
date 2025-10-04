@@ -3,7 +3,7 @@
     <param name="url">https://github.com/containers/netavark.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v1.15.2</param>
+    <param name="revision">v1.16.1</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -18,7 +18,7 @@
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">netavark</param>
      <param name="compression">gz</param>
-     <param name="update">true</param>
+     <param name="update">false</param>
   </service>
   <service name="cargo_audit" mode="disabled">
      <param name="srcdir">netavark</param>

@@ -1,7 +1,7 @@
 #
 # spec file for package netavark
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major_minor %((v=%{version}; echo ${v%.*}))
 
 Name:           netavark
-Version:        1.15.2
+Version:        1.16.1
 Release:        0
 Summary:        Container network stack
 License:        Apache-2.0
