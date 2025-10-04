@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  3 20:47:21 UTC 2025 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Adding updated copyright notice
+- 0002-frr-logrotate.patch: rotating logfiles under the frr user
+
+-------------------------------------------------------------------
+Tue Sep 30 12:26:48 UTC 2025 - Marius Tomaschewski <mt@suse.com>
+
+- Drop rcfrr service symlink (jsc#PED-266)
+- Change to sysuser-tools and macros to create user+groups
+- rpmlint: add su option to logrotate file definitions
+- rpmlint: use python3_fix_shebang_path to adjust interpreter
+
+-------------------------------------------------------------------
 Fri Mar 21 20:34:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with pcre2

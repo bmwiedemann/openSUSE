@@ -1,7 +1,7 @@
 #
 # spec file for package frr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,6 +43,7 @@ Source:         https://github.com/FRRouting/frr/archive/refs/tags/%{name}-%{ver
 Source1:        %{name}-tmpfiles.d
 Patch0:         harden_frr.service.patch
 Patch1:         0001-disable-zmq-test.patch
+Patch2:         0002-frr-logrotate.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
@@ -74,14 +75,15 @@ BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  libprotoc25_1_0
 BuildRequires:  libyang1
 %endif
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libyang) >= 2.0.0
 BuildRequires:  pkgconfig(libzmq) >= 4.0.0
 BuildRequires:  pkgconfig(rtrlib) >= 0.5.0
 BuildRequires:  pkgconfig(sqlite3)
+%sysusers_requires
 Requires(post): %{install_info_prereq}
 Requires(pre):  %{install_info_prereq}
-Requires(pre):  shadow
 Requires(preun): %{install_info_prereq}
 Recommends:     logrotate
 Conflicts:      quagga
@@ -266,11 +268,21 @@ autoreconf -fiv
     --enable-grpc
 %endif
 
+echo "pwd: $(pwd)"
 make %{?_smp_mflags} MAKEINFO="makeinfo --no-split"
+
+# Create frr user/groups
+cat > %{name}-user.conf << __EOF__
+g %{frr_group}
+g %{frrvty_group}
+u %{frr_user} - "FRRouting suite" %{frr_home}
+m %{frr_user} %{frrvty_group}
+__EOF__
+%sysusers_generate_pre %{name}-user.conf %{name} %{name}-user.conf
 
 %install
 make DESTDIR=%{buildroot} INSTALL="install -p" CP="cp -p" install
-perl -p -i -e 's|#!/usr/bin/python|#!/usr/bin/python3|g' %{buildroot}/usr/lib/frr/{frr-reload.py,generate_support_bundle.py}
+%python3_fix_shebang_path %{buildroot}%{frr_daemondir}/*.py
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -306,8 +318,6 @@ install -d -m 0750 %{buildroot}%{_localstatedir}/log/frr
 install -D -m 0644 %{SOURCE1} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
 sed -e "s|@frr_statedir@|%{frr_statedir}|g" -i %{buildroot}/%{_tmpfilesdir}/%{name}.conf
 
-install -d %{buildroot}%{_sbindir}
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcfrr
 rm -f %{buildroot}%{frr_daemondir}/ssd
 
 cat > %{buildroot}%{_sysconfdir}/frr/frr.conf << __EOF__
@@ -322,14 +332,12 @@ cat > %{buildroot}%{_sysconfdir}/frr/vtysh.conf << __EOF__
 ! vtysh is using PAM authentication allowing root to use it.
 __EOF__
 
+install -D -m 0644 %{name}-user.conf %{buildroot}%{_sysusersdir}/%{name}-user.conf
+
 %check
 make %{?_smp_mflags} -C tests
 
-%pre
-# Create frr user/groups
-getent group %{frr_group} >/dev/null || groupadd -r %{frr_group}
-getent group %{frrvty_group} >/dev/null || groupadd -r %{frrvty_group}
-getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_group} -d %{frr_home} -s /sbin/nologin -c "FRRouting suite" %{frr_user}
+%pre -f %{name}.pre
 
 %service_add_pre %{name}.service
 %if 0%{?suse_version} > 1500
@@ -361,10 +369,12 @@ done
 
 %post   -n libfrr_pb0 -p /sbin/ldconfig
 %postun -n libfrr_pb0 -p /sbin/ldconfig
+
 %if %{with grpc}
 %post   -n libfrrgrpc_pb0 -p /sbin/ldconfig
 %postun -n libfrrgrpc_pb0 -p /sbin/ldconfig
 %endif
+
 %post   -n libfrrfpm_pb0 -p /sbin/ldconfig
 %postun -n libfrrfpm_pb0 -p /sbin/ldconfig
 
@@ -412,7 +422,6 @@ done
 %{_tmpfilesdir}/%{name}.conf
 %dir %attr(0750,%{frr_user},%{frr_group}) %{_localstatedir}/log/frr
 %dir %attr(0751,%{frr_user},%{frr_group}) %ghost %{frr_statedir}
-%{_sbindir}/rc%{name}
 %dir %attr(0750,%{frr_user},%{frr_group}) %{frr_home}
 %dir %{_prefix}/lib/frr
 %{_prefix}/lib/frr/fabricd
@@ -430,6 +439,7 @@ done
 %{frr_daemondir}/frr_babeltrace.py
 %{frr_daemondir}/frrcommon.sh
 %{frr_daemondir}/frrinit.sh
+%{frr_daemondir}/generate_support_bundle.py
 %{frr_daemondir}/isisd
 %{frr_daemondir}/ldpd
 %{frr_daemondir}/mgmtd
@@ -461,7 +471,7 @@ done
 %endif
 %{_libdir}/frr/modules/dplane_fpm_nl.so
 %{_libdir}/frr/modules/bgpd_bmp.so
-%{_prefix}/lib/frr/generate_support_bundle.py
+%{_sysusersdir}/%{name}-user.conf
 
 %files -n libfrr_pb0
 %{_libdir}/libfrr_pb.so.0*
