@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-firmware
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-firmware
-Version:        47.0
+Version:        49.0
 Release:        0
 Summary:        Install firmware on devices
 License:        GPL-2.0-or-later
@@ -65,6 +65,7 @@ supported by fwupd.
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Firmware.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Firmware-symbolic.svg
 %{_datadir}/glib-2.0/schemas/org.gnome.Firmware.gschema.xml
+%{_datadir}/dbus-1/services/org.gnome.Firmware.service
 %{_mandir}/man1/gnome-firmware.1%{?ext_man}
 
 %files lang -f %{name}.lang

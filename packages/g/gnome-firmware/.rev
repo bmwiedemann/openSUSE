@@ -97,4 +97,19 @@
     <comment> (forwarded request 1279633 from iznogood)</comment>
     <requestid>1280005</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>df9e2cd19aad574aaa5143660b7a638b</srcmd5>
+    <version>49.0</version>
+    <time>1759596667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 49.0:
+  * Add support for installing .cab archives.
+  * Provide a way to easily create device emulation data.
+  * Hide the emulation UI when compiling against old libfwupd.
+  * Migrate all UI to latest libadwaita widgets.
+  * Reload the device list if the daemon is restarted.
+  * Remember the last-selected device on restart.
+  * Show devices without a firmware version.</comment>
+    <requestid>1308867</requestid>
+  </revision>
 </revisionlist>
