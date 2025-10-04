@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 03 22:26:23 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 5.8.7.1+git20250805.cc1e66f:
+  * Fix build for Linux v6.17
+  * fix: Add radio_idx parameter where required
+
+-------------------------------------------------------------------
 Mon Aug 04 13:55:48 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 5.8.7.1+git20250803.c3192d7:

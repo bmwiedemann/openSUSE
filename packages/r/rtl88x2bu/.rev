@@ -89,4 +89,14 @@
   * Rename from_timer to timer_container_of</comment>
     <requestid>1297522</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>de5f71cff8a23dbada083b4306a4126a</srcmd5>
+    <version>5.8.7.1+git20250805.cc1e66f</version>
+    <time>1759596738</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.8.7.1+git20250805.cc1e66f:
+  * Fix build for Linux v6.17
+  * fix: Add radio_idx parameter where required</comment>
+    <requestid>1308928</requestid>
+  </revision>
 </revisionlist>
