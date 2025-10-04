@@ -1278,4 +1278,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment>Fix date format in old changelog entries (forwarded request 1277808 from dimstar)</comment>
     <requestid>1277957</requestid>
   </revision>
+  <revision rev="162" vrev="3">
+    <srcmd5>0922b12bb2063fa200a502961df48591</srcmd5>
+    <version>48.2</version>
+    <time>1759596635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1308804</requestid>
+  </revision>
 </revisionlist>

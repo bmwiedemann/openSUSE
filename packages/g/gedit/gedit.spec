@@ -29,6 +29,7 @@ Source0:        %{name}-%{version}.tar.zst
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
 
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 0.9.3
@@ -97,6 +98,9 @@ This subpackage contains the header files for creating gedit plugins.
 
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
+
+%check
+%meson_test
 
 %files
 %license COPYING

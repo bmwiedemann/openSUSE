@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  2 07:41:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add AppStream BuildRequires and check section with meson_test
+  macro, run tests during build.
+
+-------------------------------------------------------------------
 Thu Apr 17 08:16:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.2:
