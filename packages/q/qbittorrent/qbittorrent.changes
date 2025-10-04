@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  3 06:38:27 UTC 2025 - JS <obs.coke518@passinbox.com>
+
+- remove boost-system-devel for TW (removed in boost 1.89), fix boo#1250800
+
+-------------------------------------------------------------------
 Wed Jul  2 07:43:29 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.1.2

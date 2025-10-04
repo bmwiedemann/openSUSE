@@ -43,10 +43,13 @@ Patch4:         qbittorrent-Qt610.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+%if 0%{?suse_version} > 1600
+%else
 %if 0%{?suse_version} > 1500
 BuildRequires:  libboost_system-devel
 %else
 BuildRequires:  libboost_system1_75_0-devel
+%endif
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
