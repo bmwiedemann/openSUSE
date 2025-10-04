@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  3 07:12:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.1.1:
+  + Features: Add option to disable man page creation
+  + Bugfixes:
+    - Add explicit UTF-8 tests to check for libfyaml's unicode handling
+    - yaml: Drop implicit string quoting, make it explicit
+  + Mscellaneous: qt: Drop support for Qt5
+- Remove multibuild setup and drop all traces of qt5 from the spec
+  file: Qt5 is no longer supported
+
+-------------------------------------------------------------------
 Mon Sep 29 07:35:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop the nobwrap.helper again: glycin 2.0.1 found a solution to

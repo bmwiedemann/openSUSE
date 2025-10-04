@@ -16,21 +16,11 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%flavor" == "qt5"
-%define min_qt_version 5.15
-%define qt5 1
-%define pkg_suffix -qt5
-
-%if 0%{?suse_version} == 1600 && ! 0%{?is_opensuse}
-ExclusiveArch:  donotbuild
-%endif
-%else
 %define min_qt_version 6.2.4
 %if 0%{?sle_version} >= 150400 && 0%{?is_opensuse} || 0%{?sle_version} >= 150600 || 0%{?suse_version} > 1500
 %bcond_without vala
 %endif
-%endif
+
 # The default Leap compiler is too old for building AppStream-qt6. use the same compiler for both flavors
 %if 0%{?suse_version} == 1500
 %bcond_without gcc13
@@ -39,8 +29,8 @@ ExclusiveArch:  donotbuild
 %define libappstream_sover 5
 %define libAppStreamQt_sover 3
 %define libappstream_compose_sover 0
-Name:           AppStream%{?pkg_suffix}
-Version:        1.1.0
+Name:           AppStream
+Version:        1.1.1
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -69,13 +59,8 @@ BuildRequires:  itstool
 BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-%if 0%{?qt5}
-BuildRequires:  pkgconfig(Qt5Core) >= %{min_qt_version}
-BuildRequires:  pkgconfig(Qt5Test) >= %{min_qt_version}
-%else
 BuildRequires:  pkgconfig(Qt6Core) >= %{min_qt_version}
 BuildRequires:  pkgconfig(Qt6Test) >= %{min_qt_version}
-%endif
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
@@ -95,30 +80,6 @@ BuildRequires:  vala
 %description
 AppStream-Core makes it easy to access application information from the
 AppStream database over a nice GObject-based interface.
-
-%if 0%{?qt5}
-%package -n libAppStreamQt5-%{libAppStreamQt_sover}
-Summary:        Qt 5 bindings for AppStream
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-
-%description -n libAppStreamQt5-%{libAppStreamQt_sover}
-The Qt 5 bindings for AppStream.
-
-%package -n appstream-qt5-devel
-Summary:        Header files for AppStream's Qt 5 bindings
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Requires:       libAppStreamQt5-%{libAppStreamQt_sover} = %{version}
-Requires:       libappstream%{libappstream_sover} = %{version}
-# Renamed after the 1.0.0 release
-Provides:       libAppStreamQt-devel = %{version}
-Obsoletes:      libAppStreamQt-devel < %{version}
-
-%description -n appstream-qt5-devel
-This package contains all necessary include files, libraries,
-configuration files and development tools (with manual pages) needed to
-compile and link applications using the Qt bindings for AppStream.
-
-%else
 
 %package -n libAppStreamQt%{libAppStreamQt_sover}
 Summary:        Qt 6 bindings for AppStream
@@ -219,7 +180,6 @@ Group:          System/Libraries
 GObject introspection bindings for interfaces provided by AppStream.
 
 %lang_package
-%endif
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
@@ -232,11 +192,7 @@ GObject introspection bindings for interfaces provided by AppStream.
 %define build_vapi false
 %endif
 
-%if 0%{?qt5}
-%define options -Dqt=true -Dqt-versions=5 -Dvapi=false -Dcompose=false -Dgir=false
-%else
-%define options -Dqt=true -Dqt-versions=6 -Dcompose=true -Dvapi=%{build_vapi}
-%endif
+%define options -Dqt=true -Dcompose=true -Dvapi=%{build_vapi}
 
 %if %{with gcc13}
 export CC=gcc-13 CXX=g++-13
@@ -252,39 +208,15 @@ export CC=gcc-13 CXX=g++-13
 # Unneeded test file
 rm -r %{buildroot}%{_datadir}/installed-tests
 
-# Only keep the Qt5 library when using the qt5 flavor
-%if 0%{?qt5}
-rm %{buildroot}%{_bindir}/appstreamcli
-rm %{buildroot}%{_libdir}/libappstream.so*
-rm -r %{buildroot}%{_datadir}/{appstream,doc,gettext,locale,man,metainfo}
-rm -r %{buildroot}%{_includedir}/appstream
-rm -r %{buildroot}%{_libdir}/pkgconfig
-%else
 %find_lang appstream %{name}.lang
-%endif
 
 %check
 export PATH=~/bin:$PATH
 %meson_test
 
-%if 0%{?qt5}
-%ldconfig_scriptlets -n libAppStreamQt5-%{libAppStreamQt_sover}
-%else
 %ldconfig_scriptlets -n libappstream%{libappstream_sover}
 %ldconfig_scriptlets -n libAppStreamQt%{libAppStreamQt_sover}
 %ldconfig_scriptlets -n libappstream-compose%{libappstream_compose_sover}
-%endif
-
-%if 0%{?qt5}
-%files -n libAppStreamQt5-%{libAppStreamQt_sover}
-%{_libdir}/libAppStreamQt5.so.%{libAppStreamQt_sover}
-%{_libdir}/libAppStreamQt5.so.%{version}
-
-%files -n appstream-qt5-devel
-%{_includedir}/AppStreamQt5/
-%{_libdir}/cmake/AppStreamQt5/
-%{_libdir}/libAppStreamQt5.so
-%else
 
 %files lang -f %{name}.lang
 
@@ -347,6 +279,5 @@ export PATH=~/bin:$PATH
 
 %files -n typelib-1_0-AppStream-compose-1.0
 %{_libdir}/girepository-1.0/AppStreamCompose-1.0.typelib
-%endif
 
 %changelog
