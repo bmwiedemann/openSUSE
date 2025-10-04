@@ -1,7 +1,7 @@
 #
 # spec file for package DirectX-Headers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,13 @@
 #
 
 
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%define meson_build /usr/bin/meson compile -C %{_vpath_builddir} %{_smp_mflags} --verbose
+%define meson_install /usr/bin/meson install -C %{_vpath_builddir} --no-rebuild --destdir=%{buildroot}
+%endif
+
 Name:           DirectX-Headers
-Version:        1.616.0
+Version:        1.618.1
 Release:        0
 Summary:        DirectX Headers for Mesa
 License:        MIT
@@ -52,6 +57,8 @@ Make sure that you visit the DirectX Landing Page for more resources for DirectX
 %{_includedir}/directx
 %{_includedir}/dxguids
 %{_includedir}/wsl
+%dir %{_includedir}/composition
+%{_includedir}/composition/dcomp-preview.h
 %{_libdir}/pkgconfig/DirectX-Headers.pc
 %{_libdir}/libDirectX-Guids.a
 %{_libdir}/libd3dx12-format-properties.a
