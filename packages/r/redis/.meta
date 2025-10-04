@@ -8,5 +8,6 @@ with atomic operations to push/pop elements, add/remove elements, perform server
 side union, intersection, difference between sets, and so forth. Redis supports
 different kind of sorting abilities.
   </description>
+  <devel project="server:database" package="redis"/>
   <url>https://github.com/redis/redis</url>
 </package>

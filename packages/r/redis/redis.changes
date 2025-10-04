@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct  4 13:43:20 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 8.2.2 (boo#1250995)
+  * https://github.com/redis/redis/releases/tag/8.2.2
+  * Fixed Lua script may lead to remote code execution (CVE-2025-49844).
+  * Fixed Lua script may lead to integer overflow (CVE-2025-46817).
+  * Fixed Lua script can be executed in the context of another user
+    (CVE-2025-46818).
+  * Fixed LUA out-of-bound read (CVE-2025-46819).
+  * Fixed potential crash on Lua script or streams and HFE defrag.
+  * Fixed potential crash when using ACL rules.
+  * Added VSIM: new EPSILON argument to specify maximum distance.
+  * Added SVS-VAMANA: allow use of BUILD_INTEL_SVS_OPT flag.
+  * Added RESP3 serialization performance.
+  * Added INFO SEARCH: new SVS-VAMANA metrics.
+
+-------------------------------------------------------------------
 Mon Aug 18 17:07:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Updated to 8.2.1

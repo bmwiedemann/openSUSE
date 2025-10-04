@@ -1,7 +1,7 @@
 #
 # spec file for package redis
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        8.2.1
+Version:        8.2.2
 Release:        0
 Summary:        Persistent key-value database
 License:        AGPL-3.0-only
