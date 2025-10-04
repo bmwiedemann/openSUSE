@@ -1,7 +1,7 @@
 #
 # spec file for package maxima
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,17 @@
 # files break maxima's internal help.
 %define __os_install_post %{_prefix}/lib/rpm/brp-suse
 
+# Tests take too long and time-out (last check: version 5.48.1); disable
+%bcond_with tests
+
 Name:           maxima
-Version:        5.47.0
+Version:        5.48.1
 Release:        0
 Summary:        Symbolic Computation Program/Computer Algebra System
 License:        GPL-2.0-or-later
 URL:            https://maxima.sourceforge.net/
 Source0:        https://download.sourceforge.net/maxima/%{name}-%{version}.tar.gz
+Source1:        maxima.rpmlintrc
 Source2:        README.SUSE.packaging
 # PATCH-FIX-UPSTREAM maxima-python3.patch badshah400@gmail.com -- Use python3 instead of python(2) when importing vtk modules and building help; this allows maxima to be built with python3 instead of python2.
 Patch0:         maxima-python3.patch
@@ -46,18 +50,17 @@ BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  gzip
 BuildRequires:  makeinfo
+BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(libpq)
+
 Requires:       gnuplot
 Requires:       maxima_exec
 Requires:       plotutils
 Requires:       rlwrap
 Suggests:       maxima-exec-sbcl
 ExcludeArch:    ppc64 ppc64le
-%if 0%{?suse_version} <= 1500
-Requires(post): /sbin/install-info
-Requires(postun):/sbin/install-info
-%endif
+
 %if %{with clisp}
 BuildRequires:  clisp >= 2.34.0
 %endif
@@ -85,10 +88,8 @@ Summary:        Tcl/Tk interface to Maxima
 Requires:       maxima = %{version}
 Requires:       tk
 Provides:       xmaxima = %{version}
-%if 0%{?suse_version} <= 1500
-Requires(post): /sbin/install-info
-Requires(postun):/sbin/install-info
-%endif
+# Installs a shell script to bindir, not arch dependent
+BuildArch:      noarch
 
 %description xmaxima
 A graphical interface to the Maxima symbolic computation program. It
@@ -165,6 +166,7 @@ Provides translations for the %{name} package.
             %{?with_cmucl:--enable-cmucl} \
             %{?with_gcl:--enable-gcl} \
             %{?with_clisp:--enable-clisp} \
+            --enable-syntax-highlighting \
             --enable-gettext \
             --disable-recode \
             --enable-lang-de \
@@ -177,28 +179,16 @@ Provides translations for the %{name} package.
 %make_build
 
 %install
-%makeinstall install-info
-make \
-  prefix=%{?buildroot:%{buildroot}}%{_prefix} \
-  exec_prefix=%{?buildroot:%{buildroot}}%{_prefix} \
-  bindir=%{?buildroot:%{buildroot}}%{_bindir} \
-  sbindir=%{?buildroot:%{buildroot}}%{_sbindir} \
-  sysconfdir=%{?buildroot:%{buildroot}}%{_sysconfdir} \
-  datadir=%{?buildroot:%{buildroot}}%{_datadir} \
-  includedir=%{?buildroot:%{buildroot}}%{_includedir} \
-  libdir=%{?buildroot:%{buildroot}}%{_libdir} \
-  libexecdir=%{?buildroot:%{buildroot}}%{_libexecdir} \
-  localstatedir=%{?buildroot:%{buildroot}}%{_localstatedir} \
-  sharedstatedir=%{?buildroot:%{buildroot}}%{_sharedstatedir} \
-  mandir=%{?buildroot:%{buildroot}}%{_mandir} \
-  infodir=%{?buildroot:%{buildroot}}%{_infodir} \
-install-info
+%make_install install-info
+
+# Remove unnecessary hashbang
+sed -Ei '1{\@^#!/bin/sh@d}' %{buildroot}%{_datadir}/maxima/%{version}/share/translators/m2mj/antlr4
 
 #  Deal with info/dir
 rm -f %{buildroot}%{_infodir}/dir
 # set executable rights for example scripts
 chmod +x %{buildroot}%{_datadir}/%{name}/%{version}/share/contrib/lurkmathml/mathmltest
-# zip the manpage
+# compress manpages
 gzip %{buildroot}%{_mandir}/man1/maxima.1
 gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 # reduce space, create symlinks
@@ -206,32 +196,11 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 
 %fdupes %{buildroot}/%{_datadir}/
 
-%suse_update_desktop_file net.sourceforge.maxima.xmaxima
-
 %find_lang %{name} %{?no_lang_C}
 
-# FIXME CHECKS TAKE TOO LONG AND TIME-OUT (LAST CHECK: VERSION 5.45.0)
-#%%check
-#make check
-# /FIXME
-
-%if 0%{?suse_version} <= 1500
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/maxima.info
-
-%postun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/maxima.info
-
-%post xmaxima
-%install_info --info-dir=%{_infodir} %{_infodir}/xmaxima.info
-%mime_database_post
-%desktop_database_post
-
-%postun xmaxima
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/xmaxima.info
-%mime_database_postun
-%desktop_database_postun
-
+%if %{with tests}
+%check
+%make_build check
 %endif
 
 %files
@@ -281,9 +250,9 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %{_datadir}/maxima/%{version}/xmaxima/*
 %{_datadir}/mime/packages/x-mac.xml
 %{_datadir}/applications/*.desktop
+%{_datadir}/icons/*
 %{_datadir}/bash-completion/completions/xmaxima
 %{_datadir}/mime/packages/x-maxima-out.xml
-%{_datadir}/pixmaps/*
 %{_datadir}/metainfo/*.appdata.xml
 
 %if %{with clisp}

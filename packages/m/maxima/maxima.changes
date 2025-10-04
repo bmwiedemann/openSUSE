@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct  2 07:15:46 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add maxima.rpmlintrc to suppress false positive rpmlint
+  warnings/errors.
+- Make maxima-xmaxima package noarch: installs an executable
+  arch-independent script to %_bindir.
+
+-------------------------------------------------------------------
+Tue Sep 30 01:15:54 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 5.48.1:
+  * Many changes, see
+    <https://sourceforge.net/p/maxima/code/ci/master/tree/changelogs/ChangeLog-5.48.md>
+- Fixed some .spec due some directory moved with update
+- Drop old `suse_version <= 1500` support
+
+-------------------------------------------------------------------
 Fri Feb 23 11:01:23 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -1162,38 +1179,38 @@ Wed Dec 26 23:03:42 CET 2007 - lars@linux-schulserver.de
 - added %defattr to %files
 
 -------------------------------------------------------------------
-Sat Sep 08 00:00:00 CET 2007 Werner Hoch <werner.ho@gmx.de>
+Sat Sep 08 00:00:00 CET 2007 - Werner Hoch <werner.ho@gmx.de>
 
 - updated to version 5.13.0
 
 -------------------------------------------------------------------
-Fri May 18 00:00:00 CET 2007 Werner Hoch <werner.ho@gmx.de>
+Fri May 18 00:00:00 CET 2007 - Werner Hoch <werner.ho@gmx.de>
 
 - updated to version 5.12.0
 - clisp >= 2.34.0 required
 
 -------------------------------------------------------------------
-Mon Jan 29 00:00:00 CET 2007 Werner Hoch <werner.ho@gmx.de>
+Mon Jan 29 00:00:00 CET 2007 - Werner Hoch <werner.ho@gmx.de>
 
 - updated to version 5.11.0
 
 -------------------------------------------------------------------
-Wed Nov 01 00:00:00 CET 2006 Leon Freitag <leon@links2linux.de>
+Wed Nov 01 00:00:00 CET 2006 - Leon Freitag <leon@links2linux.de>
 
 - updated to version 5.10.0
 
 -------------------------------------------------------------------
-Fri Mar 24 00:00:00 CET 2006 Leon Freitag <leon_fraitak@mail.ru>
+Fri Mar 24 00:00:00 CET 2006 - Leon Freitag <leon_fraitak@mail.ru>
 
 - Update to version 5.9.3
 
 -------------------------------------------------------------------
-Tue Feb  7 00:00:00 CET 2006 Leon Freitag <leon_fraitak@mail.ru>
+Tue Feb  7 00:00:00 CET 2006 - Leon Freitag <leon_fraitak@mail.ru>
 
 - Initial release for Packman
 
 -------------------------------------------------------------------
-Sat Jan  4 00:00:00 CET 2003 James Amundson <amundson@fnal.gov>
+Sat Jan  4 00:00:00 CET 2003 - James Amundson <amundson@fnal.gov>
 
 - Added doc files
 - Added explicit clisp version
@@ -1203,7 +1220,7 @@ Sat Jan  4 00:00:00 CET 2003 James Amundson <amundson@fnal.gov>
 - Thanks to Rex Dieter for helpful suggestions
 
 -------------------------------------------------------------------
-Sun Sep  8 00:00:00 CET 2002 James Amundson <amundson@fnal.gov> 
+Sun Sep  8 00:00:00 CET 2002 - James Amundson <amundson@fnal.gov> 
 
 - Initial build.
 

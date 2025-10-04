@@ -1,0 +1,8 @@
+# maxima uses uncompressed info files as its inline documentation
+addFilter("infopage-not-compressed")
+
+# Caused by info files used for maxima's inline docs
+addFilter("maxima-lang\..* package-with-huge-docs")
+
+# Test file used for md5 checking
+addFilter("maxima.*: E: zero-length /usr/share/maxima/.*/share/stringproc/len-0-md5-d41d8c.txt")
