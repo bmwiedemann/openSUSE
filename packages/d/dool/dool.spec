@@ -17,7 +17,7 @@
 
 
 Name:           dool
-Version:        1.3.4
+Version:        1.3.8
 Release:        0
 Summary:        Versatile vmstat, iostat and ifstat replacement
 License:        GPL-2.0-only
