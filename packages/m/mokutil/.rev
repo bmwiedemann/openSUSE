@@ -290,4 +290,12 @@ bnc#809703: remove the key from the pending request if necessary (forwarded requ
 - spec file cleanup</comment>
     <requestid>1244408</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>5cd5b60204cce85eedfc04804d720a07</srcmd5>
+    <version>0.7.2</version>
+    <time>1759596631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1308783</requestid>
+  </revision>
 </revisionlist>

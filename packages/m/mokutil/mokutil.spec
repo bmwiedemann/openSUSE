@@ -1,7 +1,7 @@
 #
 # spec file for package mokutil
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildRequires:  keyutils-devel >= 1.5.0
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  pkgconfig
 Requires:       openssl
-ExclusiveArch:  x86_64 aarch64 ppc64le ppc64
+ExclusiveArch:  x86_64 aarch64 ppc64le ppc64 riscv64
 
 %description
 This program provides the means to enroll and erase the machine owner
