@@ -379,4 +379,12 @@ Required meson version is now in Factory (forwarded request 976110 from susnux)<
     <comment></comment>
     <requestid>1308559</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5ab7204fae8ece938b9b4158677389e9</srcmd5>
+    <version>1.35.1</version>
+    <time>1759596649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1308874</requestid>
+  </revision>
 </revisionlist>
