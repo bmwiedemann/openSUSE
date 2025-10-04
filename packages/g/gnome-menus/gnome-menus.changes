@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  3 09:44:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.38.1:
+  + No functional changes
+- Changes from version 3.38.0:
+  + Add GioUnix-2.0 dependency to introspect libmenu
+  + Updated translations
+
+-------------------------------------------------------------------
 Fri May 23 11:58:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.

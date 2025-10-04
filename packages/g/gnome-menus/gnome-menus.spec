@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-menus
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-menus
-Version:        3.36.0
+Version:        3.38.1
 Release:        0
 Summary:        The GNOME Desktop Menu
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            http://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-menus/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-menus/3.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -64,7 +64,7 @@ libgnome-menu library.
 Summary:        The GNOME Desktop Menu -- Upstream Menus Definitions
 Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
+Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
