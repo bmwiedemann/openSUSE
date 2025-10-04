@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct  3 07:50:16 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.7.2:
+  * Tracks can now be bookmarked with the b key.
+  * Bookmarks are saved to bookmarks.txt in the app’s data directory.
+  * UI shows a * next to bookmarked tracks.
+  * Bookmark state is persisted across sessions.
+  * Frame rate (--fps) is now adjustable from the CLI.
+  * UI shows download progress, mute status, and bookmark indicator.
+  * Track downloads now report progress via atomic counters.
+  * UI can show percentage during track loading.
+  * Explicit two-stage flow: download → decode → play.
+  * Improved ALSA silencing on Linux.
+  * Added --timeout flag (download timeout in seconds).
+  * --track_list alias for --tracks.
+  * Default tracklist switched from lofigirl → chillhop.
+  * Track info now shows display_name instead of raw file name.
+  * m → mute indicator visible in UI.
+  * improved Error Handling
+
+-------------------------------------------------------------------
 Sat Apr 12 07:59:13 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.6.0:
