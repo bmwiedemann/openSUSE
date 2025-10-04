@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Oct 03 13:37:06 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.2.6+git0.81568b2d1: (CVE-2025-11230 boo#1250983)
+  * [RELEASE] Released version 3.2.6
+  * BUG/MEDIUM: resolvers: break an infinite loop in resolv_get_ip_from_response()
+  * BUG/MINOR: h3: forbid 'Z' as well in header field names checks
+  * BUG/MINOR: h2: forbid 'Z' as well in header field names checks
+  * BUG/CRITICAL: mjson: fix possible DoS when parsing numbers
+  * DOC: config: clarify some known limitations of the json_query() converter
+  * BUG/MEDIUM: fwlc: Handle memory allocation failures.
+  * MEDIUM: fwlc: Make it so fwlc_srv_reposition works with unqueued srv
+  * MEDIUM: servers: Schedule the server requeue target on creation
+  * BUG/MEDIUM: stick-tables: Make sure not to free a pending entry
+  * MINOR: mt_list: Implement MT_LIST_POP_LOCKED()
+  * BUG/MEDIUM: ssl: ca-file directory mode must read every certificates of a file
+  * BUG/MINOR: pattern: Fix pattern lookup for map with opt@ prefix
+  * BUG/MINOR: acme: possible overflow in acme_will_expire()
+  * BUG/MINOR: acme: possible overflow on scheduling computation
+  * BUG/MINOR: pattern: Properly flag virtual maps as using samples
+  * BUG/MINOR: compression: Test payload size only if content-length is specified
+  * MINOR: ssl: add the ssl_bc_sni sample fetch function to retrieve backend SNI
+  * BUG/MEDIUM: wdt: improve stuck task detection accuracy
+  * MINOR: sched: pass the thread number to is_sched_alive()
+  * MINOR: sched: let's permit to share the local ctx between threads
+  * BUG/MEDIUM: acme: free() of i2d_X509_REQ() with AWS-LC
+  * BUG/MEDIUM: acme: cfg_postsection_acme() don't init correctly acme sections
+  * BUG/MINOR: acme: don't unlink from acme_ctx_destroy()
+  * CI: github: build halog on the vtest job
+  * BUILD: halog: misleading indentation in halog.c
+  * BUG/MINOR: pools: Fix the dump of pools info to deal with buffers limitations
+  * BUG/MEDIUM: stick-tables: Don't let table_process_entry() handle refcnt
+  * BUG/MINOR: acme/cli: wrong description for "acme challenge_ready"
+  * MEDIUM: resolvers: make the process_resolvers() task single-threaded
+  * MEDIUM: dns: bind the nameserver sockets to the initiating thread
+  * OPTIM: sink: reduce contention on sink_announce_dropped()
+  * BUG/MEDIUM: resolvers: Wake resolver task up whne unlinking a stream requester
+  * BUG/MEDIUM: resolvers: Accept to create resolution without hostname
+  * BUG/MEDIUM: resolvers: Make resolution owns its hostname_dn value
+  * BUG/MEDIUM: resolvers: Test for empty tree when getting a record from DNS answer
+  * BUG/MINOR: resolvers: Restore round-robin selection on records in DNS answers
+  * BUG/MEDIUM: resolvers: Properly cache do-resolv resolution
+  * MINOR: tools: don't emit "+0" for symbol names which exactly match known ones
+  * MINOR: activity: indicate the number of calls on "show tasks"
+  * MEDIUM: peers: move process_peer_sync() to a single thread
+  * MEDIUM: stick-table: move process_table_expire() to a single thread
+  * MEDIUM: peers: don't even try to process updates under contention
+  * MEDIUM: stick-tables: don't wait indefinitely in stktable_add_pend_updates()
+  * MEDIUM: stick-tables: give up on lock contention in process_table_expire()
+  * MEDIUM: stick-tables: relax stktable_trash_oldest() to only purge what is needed
+  * MINOR: stick-table: permit stksess_new() to temporarily allocate more entries
+  * DEBUG: peers: export functions that use locks
+  * MINOR: debug: report the time since last wakeup and call
+  * MINOR: debug: report the number of loops and ctxsw for each thread
+  * DEBUG: stream: count the number of passes in the connect loop
+  * MINOR: debug: report the process id in warnings and panics
+  * BUG/MINOR: tcpcheck: Don't use sni as pool-conn-name for non-SSL connections
+  * BUG/MINOR: server: Update healthcheck when server settings are changed via CLI
+  * BUG/MEDIUM: server: Use sni as pool connection name for SSL server only
+  * MINOR: server: Parse sni and pool-conn-name expressions in a dedicated function
+  * OPTIM: stick-tables: exit expiry faster when the update lock is held
+  * MINOR: stick-tables: limit the number of visited nodes during expiration
+
+-------------------------------------------------------------------
 Wed Sep 24 08:25:21 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 3.2.5+git0.ba0fd6b8e:

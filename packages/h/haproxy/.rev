@@ -1720,4 +1720,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1308350</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>e9f4c74128c117c92f088ee227b1e87a</srcmd5>
+    <version>3.2.6+git0.81568b2d1</version>
+    <time>1759596688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.6+git0.81568b2d1: (CVE-2025-11230 boo#1250983)</comment>
+    <requestid>1308873</requestid>
+  </revision>
 </revisionlist>
