@@ -53,8 +53,8 @@
 %endif
 
 # MANUAL: This needs to be updated with every docker update.
-%define docker_real_version 28.4.0
-%define docker_git_version 249d679a6
+%define docker_real_version 28.5.0
+%define docker_git_version cd048300a
 %define docker_version %{docker_real_version}_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
@@ -62,7 +62,7 @@
 
 %if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
-%define buildx_version 0.28.0
+%define buildx_version 0.29.0
 %endif
 
 # Used when generating the "build" information for Docker version. The value of
@@ -70,7 +70,7 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_commit_epoch 1756931329
+%define git_commit_epoch 1759332378
 
 Name:           docker%{flavour}
 Version:        %{docker_version}
@@ -109,6 +109,8 @@ Patch200:       0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
 Patch201:       0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # UPSTREAM: Revert of upstream patches to make apparmor work on SLE 12.
 Patch202:       0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+# UPSTREAM: Backport of <https://github.com/moby/moby/pull/51091>. (Fixes build.)
+Patch203:       0007-Add-back-vendor.sum.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -370,6 +372,8 @@ cp %{SOURCE130} .
 %patch -P201 -p1
 # Solves apparmor issues on SLE-12, but okay for newer SLE versions too.
 %patch -P202 -p1
+# Fixes broken vendor.sum for Docker v28.5.0 release.
+%patch -P203 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE160} %{name} docker.conf

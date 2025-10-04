@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  3 07:35:39 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 28.5.0-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/28/#2850>
+- Backport <https://github.com/moby/moby/pull/51091> to re-add vendor.sum,
+  fixing our builds.
+  + 0007-Add-back-vendor.sum.patch
+- Rebased patches:
+  * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+  * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * cli-0001-openSUSE-point-users-to-docker-buildx-package.patch
+  * cli-0002-SECRETS-SUSE-default-to-DOCKER_BUILDKIT-0-for-docker.patch
+
+-------------------------------------------------------------------
+Wed Oct  1 04:57:46 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx v0.29.0. Upstream changelog:
+  <https://github.com/docker/buildx/releases/tag/v0.29.0>
+
+-------------------------------------------------------------------
 Mon Sep 29 11:15:30 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove git-core recommends also on openSUSE: the below argument

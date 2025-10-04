@@ -1,7 +1,7 @@
-From be344f919f392cad31c96f53615d0010d7c1bab8 Mon Sep 17 00:00:00 2001
+From 51ffea9de90cb770928ae89007911a0e9a7c8a95 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Mon, 22 May 2023 15:44:54 +1000
-Subject: [PATCH 4/6] BUILD: SLE12: revert "graphdriver/btrfs: use kernel UAPI
+Subject: [PATCH 4/7] BUILD: SLE12: revert "graphdriver/btrfs: use kernel UAPI
  headers"
 
 This reverts commit 3208dcabdc8997340b255f5b880fef4e3f54580d.
