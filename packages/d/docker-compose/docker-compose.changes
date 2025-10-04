@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Oct 03 16:19:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.40.0:
+  * Improvements
+    - publish Compose application as compose.yaml + images by
+      @ndeloof in #13257
+  * Fixes
+    - resolve secrets based on env var before executing bake by
+      @ndeloof in #13237
+    - pass bake secrets by env by @ndeloof in #13249
+    - escape $ in bake.json as interpolation already has been
+      managed by cpmpose by @ndeloof in #13259
+  * Internal
+    - pkg/compose: remove uses of deprecated mitchellh/mapstructure
+      module by @thaJeztah in #13239
+    - pkg/watch: remove unused IsWindowsShortReadError by
+      @thaJeztah in #13052
+    - pkg/compose: build: remove permissions warning on Windows by
+      @thaJeztah in #13236
+    - pluginMain: remove uses of DockerCLI.Apply by @thaJeztah in
+      #13240
+    - use containerd registry client by @ndeloof in #13245
+    - provider services: use '--project-name=' notation by @glours
+      in #13250
+    - gha: update test-matrix: remove docker 26.x by @thaJeztah in
+      #13254
+    - pkg/compose: explicitly map AuthConfig fields instead of a
+      direct cast by @thaJeztah in #13253
+    - cmd/compose: fix minor linting issues by @thaJeztah in #13252
+    - use containerd client for OCI operations by @ndeloof in
+      #13251
+  * Dependencies
+    - build(deps): bump github.com/docker/docker, docker/cli
+      v28.5.0-rc.1 by @thaJeztah in #13241
+    - build(deps): bump github.com/docker/docker from
+      28.5.0-rc.1+incompatible to 28.5.0+incompatible by
+      @dependabot[bot] in #13260
+    - build(deps): bump github.com/docker/cli from
+      28.5.0-rc.1+incompatible to 28.5.0+incompatible by
+      @dependabot[bot] in #13261
+
+-------------------------------------------------------------------
 Fri Sep 19 11:23:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.39.4:
