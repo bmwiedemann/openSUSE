@@ -35,14 +35,12 @@ BuildRequires:  file-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel >= 1.74.0
 BuildRequires:  libboost_headers-devel >= 1.74.0
-BuildRequires:  libboost_system-devel >= 1.74.0
 BuildRequires:  pkgconfig(gmp)
 %else
 BuildRequires:  gcc13-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libboost_filesystem1_75_0-devel
 BuildRequires:  libboost_headers1_75_0-devel
-BuildRequires:  libboost_system1_75_0-devel
 %endif
 BuildRequires:  gettext-tools
 BuildRequires:  hicolor-icon-theme
