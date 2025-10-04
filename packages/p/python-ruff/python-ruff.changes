@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct  3 12:38:50 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.13.3:
+ * Preview features
+  * Display diffs for ruff format --check and add support for different output formats 
+  * [pyflakes] Handle some common submodule import situations for unused-import (F401) 
+  * [ruff] Do not flag %r + repr() combinations (RUF065) 
+ * Bug fixes
+  * [cli] Add conflict between --add-noqa and --diff options 
+  * [pylint] Exempt required imports from PLR0402 
+  * [pylint] Fix missing max-nested-blocks in settings display 
+  * [pyupgrade] Prevent infinite loop with I002 and UP026 
+ * Rule changes
+  * [flake8-simplify] Improve help message clarity (SIM105) 
+ * Documentation
+  * Add the The Basics title back to CONTRIBUTING.md 
+  * Fixed documentation for try_consider_else 
+  * [isort] Clarify dependency between order-by-type and case-sensitive settings 
+  * [pylint] Clarify fix safety to include left-hand hashability (PLR6201) 
+ * Other changes
+  * [playground] Fix quick fixes for empty ranges in playground 
+
+-------------------------------------------------------------------
 Fri Sep 26 10:07:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.2:
