@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 26 07:34:15 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to 20250804:
+ * scamper:
+  * fix regression from 20250106 where scamper might not write the final
+    measurement result and hang indefinitely, if you are unlucky.
+  * add do-not-probe file support, with -O dnp=file option, documented
+    in man page.  do-not-probe file support can be disabled with
+    --disable-scamper-dnp configure option.
+  * let traceroute with PMTUD use ICMP-echo probes, document in man page.
+  * document existence of ping -O mss=val option in man page.
+ * throughout:
+  * remove string_concaf from more places.
+ * Python module:
+  * no change to the module.
+  * in python interface file (scamper.pyi), fix types of
+    ScamperDealiasMidardiscRound.start and ScamperCtrl.do_midarest(addrs),
+    and make ScamperCtrl generic in parameter type to help with static
+    type checking.
+ * sc_remoted:
+  * catch TERM signal (in addition to INT and HUP)
+  * write pidfile after becoming daemon, when -D is used
+
+-------------------------------------------------------------------
 Tue Jul 29 15:29:39 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20250729:
@@ -91,6 +115,48 @@ Tue Jul  1 08:47:20 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
   * add neighbourdisc test case
   * misc:
   * benign changes to allow compilation on solaris
+* Update to version 20250603:
+ * scamper:
+  * add initial streaming implementation of trace and ping, document
+    existence in man page
+  * reload scamper config file with SIGHUP, document signal handling
+    in man page
+  * fix scamper_trace_reply_dup
+  * restructure recording of probes in do_trace_probe
+  * tbit: dl_* -> tbit_* so that we don't have a function named dl_data,
+    which causes a compiler error on solaris
+  * HEADS UP: it is my intention to remove the following command line
+    options from scamper in a future release, probably making them
+    available some other way:
+    -l listname (name to assign to default list)
+    -L listid (list id for default list)
+    -C cycleid (cycle id)
+ * libscamperfile:
+  * add scamper_[trace|ping|tracelb|dealias]_totext, which provide an
+    interface to get the same text rendering supplied by scamper
+  * add scamper_trace_pmtud_noteiter functions
+  * ensure pointers are not null before dereferencing them when rendering
+    path MTU text output
+  * fix json rendering of traceroute probes with no response after
+    stop_hop
+  * remove potential memory leak rendering MTU information in trace text
+  * bump libscamperfile version
+ * Python module:
+  * implement str() for ScamperPing, ScamperTrace, and ScamperTracelb,
+    which provides the same text rendering that would have been supplied
+    by scamper
+  * add ScamperTracePmtudNote and ScamperTracePmtud.notes()
+  * update docs: https://www.caida.org/catalog/software/scamper/python/
+ * tests:
+  * add unit_text to check text rendering
+  * add unit_json to check json rendering
+  * add fuzz_warts2text to find bugs in text rendering with malformed
+    warts
+  * add trace unit test case: traceroute probes with no response
+  * replace fuzz-tmux.sh with fuzz-tmux.pl, which better aligns with
+    my workflow
+ * misc:
+  * silence clang dead initialization warnings
 
 -------------------------------------------------------------------
 Tue May  6 06:49:32 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
