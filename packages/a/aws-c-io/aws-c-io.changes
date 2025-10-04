@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 30 08:03:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.22.1
+  * (Darwin) Fix leaks on setting unsupported cipher pref
+    by @xiazhvera in (#757)
+
+-------------------------------------------------------------------
 Fri Sep 12 11:55:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.22.0
