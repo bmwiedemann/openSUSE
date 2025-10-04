@@ -7168,4 +7168,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.17 with spec fixed; bugs: boo#1248109 bsc#1012628 bsc#1205447 bsc#1230062 bsc#1243677 bsc#1243678 bsc#1248109 bsc#1249186 bsc#1249346 bsc#1249377 bsc#1250507 bsc#1250522</comment>
     <requestid>1308292</requestid>
   </revision>
+  <revision rev="802" vrev="2">
+    <srcmd5>87d1cbc9160e0bbab0d91fe69b327c6e</srcmd5>
+    <version>6.17.0</version>
+    <time>1759596614</time>
+    <user>dimstar_suse</user>
+    <comment>fix FIPS with 6.17 (and make the metadata smaller by pulling in scripts); bugs: bsc#1250804</comment>
+    <requestid>1308547</requestid>
+  </revision>
 </revisionlist>

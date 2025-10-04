@@ -19,7 +19,7 @@
 
 %define srcversion 6.17
 %define patchversion 6.17.0
-%define git_commit 8490d9fb9ad8deab2079bb469502f71a97ffb5e6
+%define git_commit 190326b81a07dca9e5d33b0837e6faab6c75cd6f
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -42,7 +42,7 @@
 Name:           kernel-lpae
 Version:        6.17.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g8490d9f
+Release:        <RELEASE>.g190326b
 %else
 Release:        0
 %endif
