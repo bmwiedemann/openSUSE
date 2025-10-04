@@ -1,7 +1,7 @@
 #
 # spec file for package mpc-qt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,15 @@ Source0:        https://github.com/mpc-qt/mpc-qt/archive/refs/tags/v%{version}.t
 BuildRequires:  cmake
 # For dirs ownership
 BuildRequires:  hicolor-icon-theme
+%if 0%{?suse_version} > 1600
+BuildRequires:  libboost_headers-devel
+%else
 %if 0%{?suse_version} > 1500
 BuildRequires:  libboost_system-devel
 %else
 BuildRequires:  gcc13-c++
 BuildRequires:  libboost_system1_75_0-devel
+%endif
 %endif
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)

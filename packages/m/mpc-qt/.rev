@@ -204,4 +204,13 @@
     <comment></comment>
     <requestid>1290812</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>4aad18747e25735a63db21ba427d5725</srcmd5>
+    <version>25.07</version>
+    <time>1759596718</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not require libboost_system-devel in Factory 
+</comment>
+    <requestid>1308914</requestid>
+  </revision>
 </revisionlist>
