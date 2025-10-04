@@ -1,9 +1,9 @@
 Format: 1.0
 Source: qt5-pbf-image-plugin
-Version: 4.7-1
+Version: 5.0-1
 Binary: qt5-pbf-image-plugin
-Maintainer: Martin Tuma <tumic@cbox.cz>
+Maintainer: Martin Tuma <tumic@gpxsee.org>
 Architecture: any
-Build-Depends: debhelper (>= 9), qtbase5-dev, qtbase5-dev-tools, qt5-qmake, zlib1g-dev
+Build-Depends: debhelper (>= 9), qtbase5-dev, qtbase5-dev-tools, qt5-qmake
 Files:
- 00000000000000000000000000000000 0 QtPBFImagePlugin-4.7.tar.gz
+ 00000000000000000000000000000000 0 QtPBFImagePlugin-5.0.tar.gz
