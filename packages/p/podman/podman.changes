@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 03 05:26:38 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 5.6.2:
+  * Bump to v5.6.2
+  * Release notes for v5.6.2
+  * Vendor buildah@v1.41.5
+  * Handle SIGPIPE to prevent machine stuck in Starting state
+  * Bump Podman to v5.6.2-dev
+
+-------------------------------------------------------------------
+Mon Sep 29 12:48:31 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Add symlink to catatonit in /usr/libexec/podman (bsc#1248988)
+
+-------------------------------------------------------------------
 Thu Sep 25 12:44:24 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 5.6.1:
@@ -8,7 +23,7 @@ Thu Sep 25 12:44:24 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@
   * Fix a locking bug in that could cause a double-unlock
   * Add R! to systemd-tmpfiles script for all /tmp dirs
   * [v5.6] Bump c/buildah v1.41.4, c/storage 1.59.1, and ...
-  * kube play: don't follow volume symlinks onto the host
+  * kube play: don't follow volume symlinks onto the host (bsc#1249154)
   * Bump xz to v0.5.15 to pick up a CVE fix
   * Preliminary release notes for v5.6.1
   * do not pass [no]copy as bind mounts options to runtime

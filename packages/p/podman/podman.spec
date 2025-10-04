@@ -22,7 +22,7 @@
 %bcond_without  apparmor
 
 Name:           podman
-Version:        5.6.1
+Version:        5.6.2
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -52,6 +52,7 @@ BuildRequires:  golang(API) >= 1.23
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  catatonit
 # requirement for `podman machine`
 Recommends:     gvisor-tap-vsock
 Requires:       catatonit >= 0.1.7
@@ -168,6 +169,9 @@ rm %{buildroot}%{_user_tmpfilesdir}/podman-docker.conf
 mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
 install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 
+# create a softlink to catatonit and add it to buildroot
+ln -s %{_bindir}/catatonit %{buildroot}%{_libexecdir}/podman/catatonit
+
 %fdupes %{buildroot}/%{_datadir}
 %fdupes %{buildroot}/%{_systemd_util_dir}
 
@@ -188,6 +192,7 @@ install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 %dir %{_libexecdir}/podman
 %{_libexecdir}/podman/rootlessport
 %{_libexecdir}/podman/quadlet
+%{_libexecdir}/podman/catatonit
 # Completion
 %{_datadir}/bash-completion/completions/podman
 %{_datadir}/zsh/site-functions/_podman
