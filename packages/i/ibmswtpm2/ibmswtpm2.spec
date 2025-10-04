@@ -1,7 +1,7 @@
 #
 # spec file for package ibmswtpm2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,8 @@ URL:            https://github.com/kgoldman/ibmswtpm2
 Source:         https://github.com/kgoldman/ibmswtpm2/archive/rev%{download_version}.tar.gz#/%{name}-%{download_version}.tar.gz
 Patch0:         makefile.patch
 Patch1:         ibmswtpm2-TcpServerPosix-Fix-use-of-uninitialized-value.patch
-#PATCH-FIX-OPENSUSE bsc#1241037 Fix build with OpenSSL 3.5
-Patch2:         ibmswtpm2-Build-with-OpenSSL-3.5.patch
+#PATCH-FIX-OPENSUSE bsc#1250338 Fix build with OpenSSL 3.6
+Patch2:         ibmswtpm2-Build-with-New-OpenSSL.patch
 BuildRequires:  libopenssl-devel >= 1.0
 
 %description

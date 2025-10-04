@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  3 08:15:34 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with OpenSSL 3.6: [bsc#1250338]
+  * tpm: Update to OpenSSL 3.6 [gh#kgoldman/ibmswtpm2#22]
+  * Rename ibmswtpm2-Build-with-OpenSSL-3.5.patch to
+    ibmswtpm2-Build-with-New-OpenSSL.patch
+
+-------------------------------------------------------------------
 Fri Apr  4 22:48:46 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix build with OpenSSL 3.5: [bsc#1241037]

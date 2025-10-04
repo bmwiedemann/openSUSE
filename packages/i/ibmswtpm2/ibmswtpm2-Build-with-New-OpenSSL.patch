@@ -7,7 +7,7 @@ Index: ibmswtpm2-rev183-2024-03-27/src/BnToOsslMath.h
  #include <openssl/bn.h>
  
 -#if OPENSSL_VERSION_NUMBER >= 0x30200ff0L
-+#if OPENSSL_VERSION_NUMBER >= 0x30500ff0L
++#if OPENSSL_VERSION_NUMBER >= 0x30600ff0L
  // Check the bignum_st definition against the one below and either update the
  // version check or provide the new definition for this version.
  #  error Untested OpenSSL version
