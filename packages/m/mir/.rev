@@ -188,4 +188,16 @@ Will be a requirement for forthcoming miriway submission</comment>
     <comment></comment>
     <requestid>1305235</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1fb8f9b5070d85ec5ba0d0888bdc53f2</srcmd5>
+    <version>2.22.2</version>
+    <time>1759596743</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.22.2:
+  * Bugs Fixed:
+    - Revert &quot;Check DRM for supported formats
+      (gh#canonical/mir#3950)&quot; (gh#canonical/mir#4294)
+- Added 0001-Disable-boost_system.patch</comment>
+    <requestid>1308930</requestid>
+  </revision>
 </revisionlist>

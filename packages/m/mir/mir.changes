@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  3 23:34:59 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.22.2:
+  * Bugs Fixed:
+    - Revert "Check DRM for supported formats
+      (gh#canonical/mir#3950)" (gh#canonical/mir#4294)
+- Added 0001-Disable-boost_system.patch
+
+-------------------------------------------------------------------
 Tue Sep 16 15:04:03 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.22.1:

@@ -36,12 +36,14 @@
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.22.1
+Version:        2.22.2
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:            https://mir-server.io
 Source:         https://github.com/canonical/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE 0001-Disable-boost_system.patch <sfalken@opensuse.org>
+Patch0:         0001-Disable-boost_system.patch
 # PATCH-FIX-OPENSUSE 0002-remove-use-of-env-to-call-bash.patch
 Patch1:         0002-remove-use-of-env-to-call-bash.patch
 
@@ -60,7 +62,6 @@ BuildRequires:  libatomic1
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  python3
 BuildRequires:  python3-Pillow
