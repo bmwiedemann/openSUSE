@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 03 16:12:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version k8up-4.8.6:
+  * Fixes
+    - Remove bitnami image for cleanup jobs (#1086)
+
+-------------------------------------------------------------------
 Fri Aug 29 09:17:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.0:
