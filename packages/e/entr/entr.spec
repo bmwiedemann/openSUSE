@@ -1,7 +1,7 @@
 #
 # spec file for package entr
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2016 Daniel Lichtenberger
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,8 @@ Release:        0
 Summary:        A utility for running arbitrary commands when files change
 License:        ISC
 Group:          Development/Tools/Other
-URL:            https://bitbucket.org/eradman/entr
+URL:            https://eradman.com/entrproject/
+#Git-Clone:     https://github.com/eradman/entr.git
 Source:         http://eradman.com/entrproject/code/%{name}-%{version}.tar.gz
 Source1:        http://eradman.com/entrproject/code/%{name}-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
 Source99:       %{name}.keyring
