@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  3 21:07:22 CEST 2025 - tumic@gpxsee.org
+
+- Update to version 14.0
+  * Added support for map style selection for Mapsforge, Garmin IMG
+    and all MVT based maps (requires QtPBFImagePlugin v5).
+  * Added support for PMTiles maps.
+  * Mapsforge and MVT styles now use subdirectories of the "style"
+    directory.
+  * COROS maps now use *.csa as the atlas file.
+
+-------------------------------------------------------------------
 Sat Sep 20 15:36:06 CEST 2025 - tumic@gpxsee.org
 
 - Update to version 13.48

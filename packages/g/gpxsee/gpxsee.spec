@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        13.48
+Version:        14.0
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -37,6 +37,7 @@ BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  qt6-qtpositioning-devel
 BuildRequires:  qt6-qtsvg-devel
 BuildRequires:  qt6-qtserialport-devel
+BuildRequires:  zlib-devel
 BuildRequires:  qt6-linguist
 Recommends: qt6-qtimageformats
 Recommends: qt6-qtpbfimageformat
@@ -54,6 +55,7 @@ BuildRequires:  qt6-sql-devel
 BuildRequires:  qt6-svg-devel
 BuildRequires:  qt6-serialport-devel
 BuildRequires:  qt6-positioning-devel
+BuildRequires:  zlib-devel
 BuildRequires:  qt6-tools-linguist
 Recommends: qt6-sql-sqlite
 Recommends: qt6-imageformats
@@ -71,6 +73,11 @@ BuildRequires:  libqt6sql-devel
 BuildRequires:  libqt6svg-devel
 BuildRequires:  libqt6positioning-devel
 BuildRequires:  libqt6serialport-devel
+%ifarch x86_64
+BuildRequires:  lib64zlib-devel
+%else
+BuildRequires:  libzlib-devel
+%endif
 BuildRequires:  qttools6
 Recommends: qtimageformats6
 Recommends: libqt6-database-plugin-sqlite

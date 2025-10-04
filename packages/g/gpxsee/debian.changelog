@@ -1,3 +1,14 @@
+gpxsee (14.0) stable; urgency=low
+
+  * Added support for map style selection for Mapsforge, Garmin IMG
+    and all MVT based maps (requires QtPBFImagePlugin v5).
+  * Added support for PMTiles maps.
+  * Mapsforge and MVT styles now use subdirectories of the "style"
+    directory.
+  * COROS maps now use *.csa as the atlas file.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 03 Oct 2025 21:08:29 +0200
+
 gpxsee (13.48) stable; urgency=low
 
   * Added support for COROS maps.
