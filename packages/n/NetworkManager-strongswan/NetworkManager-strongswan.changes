@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  2 14:35:27 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.3:
+  + Fix configure/linker issue when not using GNU libtool
+  + Update URL in metainfo
+- Changes from version 1.6.2:
+  + Add support to configure local and remote traffic selectors
+- Changes from version 1.6.1:
+  + Migrated from intltool to gettext
+  + Remove dependency on gnome-common
+- Drop intltool BuildRequires: no longer needed
+
+-------------------------------------------------------------------
 Thu Mar 28 07:55:28 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add missing supplements(bsc#1220391):

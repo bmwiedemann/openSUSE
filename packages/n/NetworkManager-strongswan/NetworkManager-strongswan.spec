@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-strongswan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-strongswan
-Version:        1.6.0
+Version:        1.6.3
 Release:        0
 Summary:        NetworkManager VPN support for strongSwan
 License:        GPL-2.0-or-later
@@ -27,7 +27,6 @@ Source0:        https://download.strongswan.org/NetworkManager/%{name}-%{version
 Source1:        https://download.strongswan.org/NetworkManager/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source99:       README
-BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:  pkgconfig(gtk4)

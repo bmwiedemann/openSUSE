@@ -225,4 +225,20 @@ Update to 1.3.1 (forwarded request 231381 from Zaitor)</comment>
   + NMA subpackage: Main package and gnome-control-center (forwarded request 1163472 from JonathanKang)</comment>
     <requestid>1163507</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1e4a052cc0e9941db0bcc7f49c330b68</srcmd5>
+    <version>1.6.3</version>
+    <time>1759596630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.3:
+  + Fix configure/linker issue when not using GNU libtool
+  + Update URL in metainfo
+- Changes from version 1.6.2:
+  + Add support to configure local and remote traffic selectors
+- Changes from version 1.6.1:
+  + Migrated from intltool to gettext
+  + Remove dependency on gnome-common
+- Drop intltool BuildRequires: no longer needed (forwarded request 1308659 from dimstar)</comment>
+    <requestid>1308777</requestid>
+  </revision>
 </revisionlist>
