@@ -45,6 +45,8 @@ Patch0:         numpy.patch
 Patch1:         cmake.patch
 # PATCH-FIX-UPSTREAM https://github.com/espressomd/espresso/commit/2111342
 Patch2:         espresso-cython.patch
+# PATCH-FIX-OPENSUSE - Boost.System is headers only since 1.69.0
+Patch3:         espresso-boost-system.patch
 BuildRequires:  %{modern_python}-Cython < 3.0.13
 BuildRequires:  %{modern_python}-Sphinx
 BuildRequires:  %{modern_python}-devel
@@ -65,7 +67,9 @@ BuildRequires:  gsl-devel
 BuildRequires:  hdf5-%{mpiver}-devel
 BuildRequires:  libboost_filesystem%{boostver}-devel
 BuildRequires:  libboost_mpi%{boostver}-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system%{boostver}-devel
+%endif
 BuildRequires:  libboost_test%{boostver}-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
@@ -92,7 +96,11 @@ such as polymers, liquid crystals, colloids, ferrofluids and biological
 systems, for example DNA and lipid membranes.
 
 %prep
-%autosetup -p1 -n %{pkgname}
+%setup -q -n %{pkgname}
+%patch -P0 -P1 -P2 -p1
+%if 0%{?suse_version} >= 1600
+%patch -P3 -p1
+%endif
 # Fix shebang line for pypresso
 sed -i -E '1s@^#!%{_bindir}/env[[:blank:]]+sh@#!/bin/sh@' src/python/pypresso.cmakein
 # skip mpiio test - it fails if invoked with cmake, directly run with python3 -m unittest pass

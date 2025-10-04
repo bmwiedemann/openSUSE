@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  4 10:07:09 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Boost.System is headers only since 1.69.0
+  + espresso-boost-system.patch
+
+-------------------------------------------------------------------
 Fri Jul  4 15:38:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Rename to espresso.

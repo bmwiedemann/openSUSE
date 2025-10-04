@@ -7,4 +7,12 @@
     <comment>Rename python3-espressomd (delreq will follow after the acceptance).</comment>
     <requestid>1291041</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b1f71d9abe8dc4513ad5fd7534ec73f</srcmd5>
+    <version>4.2.2</version>
+    <time>1759605645</time>
+    <user>dimstar_suse</user>
+    <comment>patch application updated</comment>
+    <requestid>1308995</requestid>
+  </revision>
 </revisionlist>
