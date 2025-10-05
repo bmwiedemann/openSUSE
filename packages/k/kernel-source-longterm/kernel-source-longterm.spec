@@ -17,20 +17,20 @@
 
 
 %define srcversion 6.12
-%define patchversion 6.12.49
-%define git_commit 0ed133cb1ba3ab310ef1e4bea09094628dca38e3
+%define patchversion 6.12.50
+%define git_commit d3fdf10763796b91119248af3fc74e5848431911
 %define variant -longterm%{nil}
 %define gcc_package gcc
 %define gcc_compiler gcc
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source-longterm
-Version:        6.12.49
+Version:        6.12.50
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0ed133c
+Release:        <RELEASE>.gd3fdf10
 %else
 Release:        0
 %endif
@@ -44,6 +44,7 @@ BuildRequires:  bash-sh
 %endif
 BuildRequires:  coreutils
 BuildRequires:  fdupes
+BuildRequires:  python3-base
 BuildRequires:  sed
 BuildArch:      noarch
 Prefix:         /usr/src
@@ -79,24 +80,11 @@ Source47:       modversions
 Source48:       macros.kernel-source
 Source49:       kernel-module-subpackage
 Source50:       kabi.pl
-Source51:       mkspec
 Source52:       kernel-source%variant.changes
-Source53:       kernel-source.spec.in
-Source54:       kernel-binary.spec.in
-Source55:       kernel-syms.spec.in
-Source56:       kernel-docs.spec.in
 Source57:       kernel-cert-subpackage
-Source58:       constraints.in
 Source60:       config.sh
-Source61:       compute-PATCHVERSION.sh
-Source62:       old-flavors
 Source63:       arch-symbols
-Source64:       package-descriptions
 Source65:       kernel-spec-macros
-Source70:       kernel-obs-build.spec.in
-Source71:       kernel-obs-qa.spec.in
-Source73:       dtb.spec.in.in
-Source74:       mkspec-dtb
 Source75:       release-projects
 Source76:       check-module-license
 Source78:       modules.fips

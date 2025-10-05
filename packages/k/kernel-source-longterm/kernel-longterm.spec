@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.12
-%define patchversion 6.12.49
-%define git_commit 0ed133cb1ba3ab310ef1e4bea09094628dca38e3
+%define patchversion 6.12.50
+%define git_commit d3fdf10763796b91119248af3fc74e5848431911
 %define variant -longterm%{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -37,12 +37,12 @@
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-longterm
-Version:        6.12.49
+Version:        6.12.50
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0ed133c
+Release:        <RELEASE>.gd3fdf10
 %else
 Release:        0
 %endif
@@ -188,24 +188,11 @@ Source47:       modversions
 Source48:       macros.kernel-source
 Source49:       kernel-module-subpackage
 Source50:       kabi.pl
-Source51:       mkspec
 Source52:       kernel-source%variant.changes
-Source53:       kernel-source.spec.in
-Source54:       kernel-binary.spec.in
-Source55:       kernel-syms.spec.in
-Source56:       kernel-docs.spec.in
 Source57:       kernel-cert-subpackage
-Source58:       constraints.in
 Source60:       config.sh
-Source61:       compute-PATCHVERSION.sh
-Source62:       old-flavors
 Source63:       arch-symbols
-Source64:       package-descriptions
 Source65:       kernel-spec-macros
-Source70:       kernel-obs-build.spec.in
-Source71:       kernel-obs-qa.spec.in
-Source73:       dtb.spec.in.in
-Source74:       mkspec-dtb
 Source75:       release-projects
 Source76:       check-module-license
 Source78:       modules.fips
@@ -253,24 +240,11 @@ NoSource:       47
 NoSource:       48
 NoSource:       49
 NoSource:       50
-NoSource:       51
 NoSource:       52
-NoSource:       53
-NoSource:       54
-NoSource:       55
-NoSource:       56
 NoSource:       57
-NoSource:       58
 NoSource:       60
-NoSource:       61
-NoSource:       62
 NoSource:       63
-NoSource:       64
 NoSource:       65
-NoSource:       70
-NoSource:       71
-NoSource:       73
-NoSource:       74
 NoSource:       75
 NoSource:       76
 NoSource:       78
@@ -353,11 +327,18 @@ Requires(post): modutils
 # installation of bootloader and dracut related tools as if they were
 # required. This will ensure they're there for post scripts without hard
 # requiring them. (boo#1228659, boo#1240785)
+# But OrderWithRequires is not correctly implemented (bsc#1241513, bsc#1241353)
+# Workaround: Add extra suggests for the ordered package
 OrderWithRequires(post): udev
+Suggests: udev
 OrderWithRequires(post): systemd-boot
+Suggests: systemd-boot
 OrderWithRequires(post): perl-Bootloader
+Suggests: perl-Bootloader
 OrderWithRequires(post): update-bootloader
+Suggests: update-bootloader
 OrderWithRequires(post): dracut
+Suggests: dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release
@@ -489,11 +470,18 @@ Requires(post): modutils
 # installation of bootloader and dracut related tools as if they were
 # required. This will ensure they're there for post scripts without hard
 # requiring them. (boo#1228659, boo#1240785)
+# But OrderWithRequires is not correctly implemented (bsc#1241513, bsc#1241353)
+# Workaround: Add extra suggests for the ordered package
 OrderWithRequires(post): udev
+Suggests: udev
 OrderWithRequires(post): systemd-boot
+Suggests: systemd-boot
 OrderWithRequires(post): perl-Bootloader
+Suggests: perl-Bootloader
 OrderWithRequires(post): update-bootloader
+Suggests: update-bootloader
 OrderWithRequires(post): dracut
+Suggests: dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release
@@ -745,6 +733,7 @@ Provides:       %name-devel = %version-%source_rel
 Provides:       multiversion(kernel)
 %if ! %build_vanilla && ! %vanilla_only
 Requires:       kernel-devel%variant = %version-%source_rel
+Requires:       pesign-obs-integration
 Recommends:     make
 Recommends:     gcc
 Recommends:     perl
@@ -1309,6 +1298,22 @@ if echo %_project | grep -Eqx -f %_sourcedir/release-projects; then
 fi
 %endif
 
+
+CONFIG_SUSE_HAVE_STABLE_KABI=""
+SHSK_VAL="$(../scripts/config --state SUSE_HAVE_STABLE_KABI)"
+if test -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor -a $SHSK_VAL = "n" ; then
+	echo "CONFIG_SUSE_HAVE_STABLE_KABI=n is a mistake with KABI reference data." \
+	     "Create IGNORE-KABI-BADNESS to disable KABI checking."
+	exit 1
+elif test ! -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor \
+	-o 0%{?ignore_kabi_badness} -ne 0 \
+	-o -e %_sourcedir/IGNORE-KABI-BADNESS ; then
+	CONFIG_SUSE_HAVE_STABLE_KABI="--disable CONFIG_SUSE_HAVE_STABLE_KABI"
+elif test ! -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor -a $SHSK_VAL = "y" ; then
+	# only message, not an error
+	echo "Disable CONFIG_SUSE_HAVE_STABLE_KABI or supply KABI reference data in -%build_flavor."
+fi
+
 DEBUG_INFO_TYPE="$(grep "CONFIG_DEBUG_INFO_DWARF.*=y" .config)"
 DEBUG_INFO_TYPE="${DEBUG_INFO_TYPE%%=y}"
 DEBUG_INFO_TYPE="${DEBUG_INFO_TYPE##CONFIG_DEBUG_INFO_}"
@@ -1318,6 +1323,7 @@ echo "Kernel debuginfo type: ${DEBUG_INFO_TYPE}"
 	--set-str CONFIG_LOCALVERSION -%source_rel-%build_flavor \
 	--enable  CONFIG_SUSE_KERNEL \
 	$CONFIG_SUSE_KERNEL_RELEASED \
+	$CONFIG_SUSE_HAVE_STABLE_KABI \
 %if 0%{?__debug_package:1}
 	--enable  CONFIG_DEBUG_INFO
 %else
@@ -1723,13 +1729,12 @@ if [ %CONFIG_MODULES = y ]; then
             ksymtypes compare %{?_smp_mflags} \
                 --filter-symbol-list=%my_builddir/changed-exports \
                 %my_builddir/kabi/%cpu_arch/symtypes-%build_flavor \
-                %my_builddir/symtypes-%build_flavor
+                %my_builddir/symtypes-%build_flavor || true
         %endif
 
 	# %ignore_kabi_badness is defined in the Kernel:* projects in the
 	# OBS to be able to build the KOTD in spite of kabi errors
 	if [ 0%{?ignore_kabi_badness} -eq 0 -a \
-	     ! -e %my_builddir/kabi/%cpu_arch/ignore-%build_flavor -a \
 	     ! -e %_sourcedir/IGNORE-KABI-BADNESS ]; then
 	    echo "Create a file IGNORE-KABI-BADNESS in the kernel-source" \
 		 "directory to build this kernel even though its badness is" \

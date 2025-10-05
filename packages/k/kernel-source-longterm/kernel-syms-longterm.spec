@@ -16,22 +16,17 @@
 #
 
 
-%define git_commit 0ed133cb1ba3ab310ef1e4bea09094628dca38e3
+%define git_commit d3fdf10763796b91119248af3fc74e5848431911
 %define variant -longterm%{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-syms-longterm
-Version:        6.12.49
-%if %using_buildservice
+Version:        6.12.50
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0ed133c
+Release:        <RELEASE>.gd3fdf10
 %else
 Release:        0
-%endif
-%else
-%define kernel_source_release %(LC_ALL=C rpm -q kernel-devel%variant-%version --qf "%{RELEASE}" | grep -v 'not installed' || echo 0)
-Release:        %kernel_source_release
 %endif
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0-only
@@ -45,7 +40,6 @@ Source:         README.KSYMS
 %ifarch aarch64 x86_64
 Requires:       kernel-longterm-devel = %version-%source_rel
 %endif
-Requires:       pesign-obs-integration
 Requires:       kernel-devel%variant = %version-%source_rel
 Provides:       %name = %version-%source_rel
 Provides:       %name-srchash-%git_commit
