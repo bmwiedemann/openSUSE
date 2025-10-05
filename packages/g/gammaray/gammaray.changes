@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct  5 10:05:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.3.0
+  * Drop Qt 5 support
+  * Add support for LLVM MinGW on Windows
+  * Fix GammaRay UI not appearing sometimes on Windows
+  * Update LZ4 to v1.10.0
+  * Fix build with Qt 6.10
+
+-------------------------------------------------------------------
 Tue Aug 26 07:28:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.2.2
