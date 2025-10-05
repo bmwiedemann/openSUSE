@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Sat Oct  4 18:37:31 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.12.3:
+  * New models: DeepSeek-V3.1-Terminus, Kimi K2-Instruct-0905
+  * Fixed issue where tool calls provided as stringified JSON
+    would not be parsed correctly
+  * ollama push will now provide a URL to follow to sign in
+  * Fixed issues where qwen3-coder would output unicode characters
+    incorrectly
+  * Fix issue where loading a model with /load would crash
+- Update to version 0.12.2:
+  * A new web search API is now available in Ollama
+  * Models with Qwen3's architecture including MoE now run in
+    Ollama's new engine
+  * Fixed issue where built-in tools for gpt-oss were not being
+    rendered correctly
+  * Support multi-regex pretokenizers in Ollama's new engine
+  * Ollama's new engine can now load tensors by matching a prefix
+    or suffix
+- Update to version 0.12.1:
+  * New model: Qwen3 Embedding: state of the art open embedding
+    model by the Qwen team
+  * Qwen3-Coder now supports tool calling
+  * Fixed issue where Gemma3 QAT models would not output correct
+    tokens
+  * Fix issue where & characters in Qwen3-Coder would not be parsed
+    correctly when function calling
+  * Fixed issues where ollama signin would not work properly
+- Update to version 0.12.0:
+  * Cloud models are now available in preview
+  * Models with the Bert architecture now run on Ollama's engine
+  * Models with the Qwen 3 architecture now run on Ollama's engine
+  * Fixed issue where models would not be imported correctly with
+    ollama create
+  * Ollama will skip parsing the initial <think> if provided in
+    the prompt for /api/generate
+- Update to version 0.11.11:
+  * Improved memory usage when using gpt-oss
+  * Fixed error that would occur when attempting to import
+    safetensor files
+  * Improved memory estimates for hybrid and recurrent models
+  * Fixed error that would occur when when batch size was greater
+    than context length
+  * Flash attention & KV cache quantization validation fixes
+  * Add dimensions field to embed requests
+  * Enable new memory estimates in Ollama's new engine by default
+  * Ollama will no longer load split vision models in the Ollama engine
+
+-------------------------------------------------------------------
+Tue Sep  9 12:33:54 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.11.10:
+  * Added support for EmbeddingGemma, a new open embedding model
+- Update to version 0.11.9:
+  * Improved performance via overlapping GPU and CPU computations
+- Update to version 0.11.8:
+  * gpt-oss now has flash attention enabled by default for systems
+    that support it
+  * Improved load times for gpt-oss
+
+-------------------------------------------------------------------
+Mon Aug 25 21:33:35 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.11.7:
+  * DeepSeek-V3.1 is now available to run via Ollama.
+  * Fixed issue where multiple models would not be loaded on
+    CPU-only systems
+  * Ollama will now work with models who skip outputting the
+    initial <think> tag (e.g. DeepSeek-V3.1)
+  * Fixed issue where text would be emitted when there is no
+    opening <think> tag from a model
+  * Fixed issue where tool calls containing { or } would not be
+    parsed correctly
+
+- Update to version 0.11.6:
+  * Improved performance when using flash attention
+  * Fixed boundary case when encoding text using BPE
+
+- Update to version 0.11.5:
+  * Performance improvements for the gpt-oss models
+  * Improved memory management for scheduling models on GPUs,
+    leading to better VRAM utilization, model performance and less
+    out of memory errors. These new memory estimations can be
+    enabled with OLLAMA_NEW_ESTIMATES=1 ollama serve and will soon
+    be enabled by default.
+  * Improved multi-GPU scheduling and reduced VRAM allocation when
+    using more than 2 GPUs
+  * Fix error when parsing bad harmony tool calls
+  * OLLAMA_FLASH_ATTENTION=1 will also enable flash attention for
+    pure-CPU models
+  * Fixed OpenAI-compatible API not supporting reasoning_effort
+
+-------------------------------------------------------------------
 Thu Aug  7 23:09:57 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.11.4:

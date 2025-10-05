@@ -548,4 +548,16 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * Bug fixes</comment>
     <requestid>1298233</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>38bfc47ad0b5bd85b27ddc2a15c22fe4</srcmd5>
+    <version>0.12.3</version>
+    <time>1759679473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.3:
+- Update to version 0.12.2:
+- Update to version 0.12.1:
+- Update to version 0.12.0:
+- Update to version 0.11.11:</comment>
+    <requestid>1309021</requestid>
+  </revision>
 </revisionlist>

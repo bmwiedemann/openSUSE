@@ -21,7 +21,7 @@
 %endif
 
 Name:           ollama
-Version:        0.11.4
+Version:        0.12.3
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -77,7 +77,10 @@ export GOFLAGS="-mod=vendor"
 
 export GOFLAGS="${GOFLAGS} -v"
 
-%cmake -UOLLAMA_INSTALL_DIR -DOLLAMA_INSTALL_DIR=%{_libdir}/ollama
+%cmake \
+	-UCMAKE_INSTALL_BINDIR -DCMAKE_INSTALL_BINDIR=%{_libdir}/ollama \
+	-UOLLAMA_INSTALL_DIR -DOLLAMA_INSTALL_DIR=%{_libdir}/ollama \
+	%{nil}
 %cmake_build
 
 cd ..
@@ -118,10 +121,10 @@ go test -v ./...
 %service_del_postun %{name}.service
 
 %files
-%doc README.md
 %license LICENSE
 %{_docdir}/%{name}
 %{_bindir}/%{name}
+%{_libdir}/%{name}
 %{_unitdir}/%{name}.service
 %{_sysusersdir}/%{name}-user.conf
 %{_prefix}/lib/ollama
