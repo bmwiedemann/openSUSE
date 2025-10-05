@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Jun 19 18:30:46 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1:
+  * Use pregenerated bindings for WFA2 instead of generating them
+    at build time to avoid libclang dependency.
+  * Update WFA2-lib to 2.3.5 (this refers to the case where the
+    package is built as part of the crate.
+
+-------------------------------------------------------------------
+Fri Sep  1 11:09:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.1.0

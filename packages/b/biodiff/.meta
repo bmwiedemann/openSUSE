@@ -1,0 +1,25 @@
+<package name="biodiff" project="openSUSE:Factory">
+  <title>A tool for binary diffing</title>
+  <description>Hex diff viewer using alignment algorithms from biology.
+
+The tool is able to show two binary files side by side so that similar
+places will be at the same position on both sides and bytes missing
+from one side are padded. It uses bio-informatics algorithms from the
+rust-bio library (typically used for DNA sequence alignment) for that.
+
+Features
+ - Unaligned view for moving both sides independently as contiguous
+   byte segments.
+ - Aligned view for comparing corresponding bytes of both files.
+ - Many configurable byte representations (bases 2, 8, 10, 16;
+   mixed ascii/hex, braille, roman numerals).
+ - Right-to-left mode, horizontal and vertical split, ascii and bar
+   column.
+ - bytes per row, adjustable by pressing [, ], 0.
+ - Automatic determination of width by finding repetitions in
+   visible/selected bytes by pressing '='.
+ - Search using text, regex and hexagex.
+
+</description>
+  <url>https://github.com/8051Enthusiast/</url>
+</package>
