@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct  2 09:23:09 UTC 2025 - Dilawar Singh <dilawar.s.rajput@gmail.com>
+
+- Update to 5.1
+  *  add support for custom trash command in $NNN_TRASH
+  *  remember history of last 16 commands executed in the native prompt in the current session
+  *  count files from selection file when no file is selected during selection removal
+  *  show session name in help
+  *  show current entry in reversed bold
+  *  show current (non-auto) session name at save session prompt
+  *  show F in the status bar when filter is inactive in type-to-nav mode
+  *  restore correct filter function on session load, switch filter function on context changes
+  *  extend xreadline() with some by-word movement
+  *  added plugins gpgs and gpgv
+  *  add icon for lzip files, more emoji icons
+  *  suffix the current context number with * in help screen
+
+-------------------------------------------------------------------
 Fri Jun  6 11:05:14 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Remove leap_version macro

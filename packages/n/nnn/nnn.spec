@@ -17,7 +17,7 @@
 
 
 Name:           nnn
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Terminal based file browser
 License:        BSD-2-Clause
