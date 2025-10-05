@@ -1,7 +1,7 @@
 #
 # spec file for package p11-kit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define trustdir_cfg     %{pkidir_cfg}/trust
 %define trustdir_static  %{pkidir_static}/trust
 Name:           p11-kit
-Version:        0.25.5
+Version:        0.25.10
 Release:        0
 Summary:        Library to work with PKCS#11 modules
 License:        BSD-3-Clause
@@ -109,6 +109,7 @@ Unix domain socket.  Note that this feature is still experimental.
 %build
 %meson -Dtrust_paths=%{trustdir_cfg}:%{trustdir_static} \
        -Dbash_completion=disabled \
+       -Dzsh_completion=disabled \
        -Dgtk_doc=true -Dman=true
 %meson_build
 

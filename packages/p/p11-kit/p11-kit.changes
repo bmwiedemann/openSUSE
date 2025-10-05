@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct  4 14:00:50 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 0.25.10:
+    * rpc: Add module configuration option to specify server address [#707]
+    * rpc: Fix empty array attribute handling [#704]
+    * server: Remove libsystemd dependency for socket activation [#685]
+    * Avoid segfault if p11_library_init_impl/p11_library_uninit are called multiple times [#682]
+    * Add zsh completions [#674]
+    * pkcs11: Update pkcs11.h to version 3.1 [#671]
+    * pkcs11: Add IBM specific mechanisms [#669]
+    * server: Check SHELL if (and only if) neither --sh nor --csh is specified [#661]
+    * trust: Don't create file names longer then 255 [#659]
+    * trust: Sort paths for reproducible extract [#656]
+    * Build and test fixes [#647, #653, #654, #657, #660, #667, #673, #681, #683, #688, #694]
+    * Update translations [#663, #701]
+    * Build fixes from tarball with Meson [#714]
+    * subprojects/pkcs11-json: Update git submodule [PR#719]
+* Disable zsh completions
+
+See fullchangelog at: https://github.com/p11-glue/p11-kit/releases
+
+-------------------------------------------------------------------
 Fri Sep 13 07:50:13 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 0.25.5:
