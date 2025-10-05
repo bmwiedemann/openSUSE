@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Fri Oct 03 06:44:23 UTC 2025 - william.brown@suse.com
+
+- Update to version 3.1.3~git106.bea5091e3:
+  * Issue 6660 - UI - Improve replication log analysis charts and usability (#6968)
+  * Issue 6753 - Removing ticket 47653MMR test and porting to DSLdapObject (#6926)
+  * Issue 7021 - Units for changing MDB max size are not consistent across different tools (#7022)
+  * Issue 6753 - Removing ticket 49463 test and porting to DSLdapObject (#6899)
+  * Issue 6954 - do not delete referrals on chain_on_update backend
+  * Issue 6982 - UI - MemberOf shared config does not validate DN properly (#6983)
+  * Issue 6740 - Fix FIPS mode test failures in syncrepl, mapping tree, and resource limits (#6993)
+  * Issue 7018 - BUG - prevent stack depth being hit (#7019)
+  * Issue 7014 - memberOf - ignored deferred updates with LMDB
+  * Issue 7002 - restore is failing. (#7003)
+  * Issue 6758 - Fix WebUI monitoring test failure due to FormSelect component deprecation (#7004)
+  * Issue 6753 - Removing ticket 47869 test and porting to DSLdapObject (#7001)
+  * Issue 6753 - Port ticket 49073 test (#7005)
+  * Issue 7016 - fix NULL deref in send_referrals_from_entry() (#7017)
+  * Issue 6753 - Port ticket 47815 test (#7000)
+  * Issue 7010 - Fix certdir underflow in slapd_nss_init() (#7011)
+  * Issue 7012 - improve dscrl dbverify result when backend does not exists (#7013)
+  * Issue 6753 - Removing ticket 477828 test and porting to DSLdapObject (#6989)
+  * Issue 6753 - Removing ticket 47721 test and porting to DSLdapObject (#6973)
+  * Issue 6992 - Improve handling of mismatched ldif import (#6999)
+  * Issue 6997 - Logic error in get_bdb_impl_status prevents bdb2mdb execution (#6998)
+  * Issue 6810 - Deprecate PAM PTA plugin configuration attributes in base entry - fix memleak (#6988)
+  * Issue 6971 - bundle-rust-npm.py: TypeError: argument of type 'NoneType' is not iterable (#6972)
+  * Fix overflow in certmap filter/DN buffers (#6995)
+  * Issue 6753 - Port ticket 49386 test (#6987)
+  * Issue 6753 - Removing ticket 47787 test and porting to DSLdapObject (#6976)
+  * Issue 6753 - Port ticket 49072 test (#6984)
+  * Issue 6990 - UI - Replace deprecated Select components with new TypeaheadSelect (#6996)
+  * Issue 6990 - UI - Fix typeahead Select fields losing values on Enter keypress (#6991)
+  * Issue 6887 - Enhance logconv.py to add support for JSON access logs (#6889)
+  * Issue 6985 - Some logconv CI tests fail with BDB (#6986)
+  * Issue 6891 - JSON logging - add wrapper function that checks for NULL
+  * Issue 4835 - dsconf display an incomplete help with changelog setting (#6769)
+  * Issue 6753 - Port ticket 47963 & 49184 tests (#6970)
+  * Issue 6753 - Port ticket 47829 & 47833 tests
+  * Issue 6977 - UI - Show error message when trying to use unavailable ports (#6978)
+  * Issue 6956 - More UI fixes
+  * Issue 6626 - Fix version
+  * Issue 6900 - Rename test files for proper pytest discovery (#6909)
+  * Issue 6947 - Revise time skew check in healthcheck tool and add option to exclude checks
+  * Issue 6805 - RFE - Multiple backend entry cache tuning
+  * Issue 6753 - Port and fix ticket 47823 tests
+  * Issue 6843 - Add CI tests for logconv.py (#6856)
+  * Issue 6933 - When deferred memberof update is enabled after the server crashed it should not launch memberof fixup task by default (#6935)
+  * Issue  - UI - update Radio handlers and LDAP entries last modified time
+  * Issue 6810 - Deprecate PAM PTA plugin configuration attributes in base entry (#6832)
+  * Issue 6660 - UI - Fix minor typo (#6955)
+  * Issue 6753 - Port ticket 47808 test
+  * Issue 6910 - Fix latest coverity issues
+  * Issue 6753 - Removing ticket 50232 test and porting to DSLdapObject (#6861)
+  * Issue 6919 - numSubordinates/tombstoneNumSubordinates are inconsisten… (#6920)
+  * Issue 6430 - Fix build with bundled libdb
+  * Issue 6342 - buffer owerflow in the function parseVariant (#6927)
+  * Issue 6940 - dsconf monitor server fails with ldapi:// due to absent server ID (#6941)
+  * Issue 6936 - Make user/subtree policy creation idempotent (#6937)
+
+-------------------------------------------------------------------
+Tue Aug 19 02:36:53 UTC 2025 - william.brown@suse.com
+
+- Update python packaging to adhere to pyproject and newer guidelines
+- Update to version 3.1.3~git51.e14e23e0f:
+  * Migrate from PR_Poll to epoll and timerfd. (#6924)
+  * Issue 6928 - The parentId attribute is indexed with improper matching rule
+  * Issue 6753 - Removing ticket 49540 test and porting to DSLdapObject (#6877)
+  * Issue 6904 - Fix config_test.py::test_lmdb_config
+  * Issue 5120 - Fix compilation error
+  * Issue 6929 - Compilation failure with rust-1.89 on Fedora ELN
+  * Issue 6922 - AddressSanitizer: leaks found by acl test suite
+  * Issue 6519 - Add basic dsidm account tests
+  * Issue 6753 - Port ticket test 47573
+  * Issue 6875 - Fix dsidm tests
+  * Issues 6913, 6886, 6250 - Adjust xfail marks (#6914)
+  * Issue 6768 - ns-slapd crashes when a referral is added (#6780)
+  * Issue 6468 - CLI - Fix default error log level
+  * Issue 6181 - RFE - Allow system to manage uid/gid at startup
+  * Issue 6901 - Update changelog trimming logging - fix tests
+  * Issue 6778 - Memory leak in roles_cache_create_object_from_entry part 2
+  * Issue 6897 - Fix disk monitoring test failures and improve test maintainability (#6898)
+  * Issue 6884 - Mask password hashes in audit logs (#6885)
+  * Issue 6594 - Add test for numSubordinates replication consistency with tombstones (#6862)
+  * Issue 6250 - Add test for entryUSN overflow on failed add operations (#6821)
+  * Issue 6895 - Crash if repl keep alive entry can not be created
+  * Issue 6663 - Fix NULL subsystem crash in JSON error logging (#6883)
+  * Issue 6430 - implement read-only bdb (#6431)
+  * Issue 6901 - Update changelog trimming logging
+  * Issue 6880 - Fix ds_logs test suite failure
+  * Issue 6352 - Fix DeprecationWarning
+  * Issue 6800 - Rerun the check in verbose mode on failure
+  * Issue 6893 - Log user that is updated during password modify extended operation
+  * Issue 6772 - dsconf - Replicas with the "consumer" role allow for viewing and modification of their changelog. (#6773)
+  * Issue 6829 - Update parametrized docstring for tests
+  * Issue 6888 - Missing access JSON logging for TLS/Client auth
+  * Issue 6878 - Prevent repeated disconnect logs during shutdown (#6879)
+  * Issue 6872 - compressed log rotation creates files with world readable permission
+  * Issue 6859 - str2filter is not fully applying matching rules
+  * Issue 5733 - Remove outdated Dockerfiles
+  * Issue 6800 - Check for minimal supported Python version
+  * Issue 6868 - UI - schema attribute table expansion break after moving to a new page
+  * Issue 6865 - AddressSanitizer: leak in agmt_update_init_status
+  * Issue 6848 - AddressSanitizer: leak in do_search
+  * Issue 6850 - AddressSanitizer: memory leak in mdb_init
+  * Issue 6854 - Refactor for improved data management (#6855)
+  * Issue 6756 - CLI, UI - Properly handle disabled NDN cache (#6757)
+  * Issue 6857 - uiduniq: allow specifying match rules in the filter
+  * Issue 6852 - Move ds* CLI tools back to /sbin
+  * Issue 6753 - Port ticket tests 48294 & 48295
+  * Issue 6753 - Add 'add_exclude_subtree' and 'remove_exclude_subtree' methods to Attribute uniqueness plugin
+  * Issue 6841 - Cancel Actions when PR is updated
+  * Issue 6838 - lib389/replica.py is using nonexistent datetime.UTC in Python 3.9
+  * Issue 6822 - Backend creation cleanup and Database UI tab error handling (#6823)
+  * Issue 6782 - Improve paged result locking
+  * Issue 6829 - Update parametrized docstring for tests
+  * Bump version to 3.1.3
+  * Issue 6825 - RootDN Access Control Plugin with wildcards for IP addre… (#6826)
+  * Issue 6767 - Package lib389 on PyPI (#6786)
+  * Issue 6819 - Incorrect pwdpolicysubentry returned for an entry with user password policy
+  * Issue 6553 - Update concread to 0.5.6 (#6824)
+  * Issue 6758 - Fix failing webUI tests
+  * Issue 6753 - Port ticket 47640 test
+
+-------------------------------------------------------------------
+Thu Jun 12 06:52:37 UTC 2025 - william.brown@suse.com
+
+- bsc#1229948 - CVE-2024-43806 - rustix dir iter memory growth
+- Update to version 3.1.2~git106.54c1eb0e5:
+  * Issue 1081 - Add a CI test (#6063)
+  * Issue 6761 - Password modify extended operation should skip password policy checks when executed by root DN
+  * Issue 6753 - Port ticket test 48026
+  * Issue 6791 - crash in liblmdb during instance shutdown (#6793)
+  * Issue 6753 - Port ticket test 48370
+  * Issue 6753 - Port ticket test 48233
+  * Issue 6755 - RFE use of Session Tracking Control in replication agreement (#6766)
+  * Issue 6641 - modrdn fails when a user is member of multiple groups (#6643)
+  * Issue 6776 - Enabling audit log makes slapd coredump
+  * Issue 6534 - CI fails with Fedora 41 and DNF5
+  * Issue 6753 - Port ticket test 47619
+  * Issue 6787 - Improve error message when bulk import connection is closed
+  * Issue 6778 - Memory leak in roles_cache_create_object_from_entry
+  * Issue 4253 - Container bind mount schema
+  * Issue 6727 - RFE - database compaction interval should be persistent
+  * Issue 5120 - ns-slapd doesn't start in referral mode (#6763)
+
+-------------------------------------------------------------------
 Wed May  7 04:39:57 UTC 2025 - William Brown <william.brown@suse.com>
 
 - bsc#1242666 - CVE-2025-3416 - openssl use after free

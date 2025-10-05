@@ -1,7 +1,7 @@
 #
 # spec file for package 389-ds
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%define use_python python3
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pythons python3
 
 %define homedir %{_localstatedir}/lib/dirsrv
 %define logdir %{_localstatedir}/log/dirsrv
@@ -33,7 +31,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        3.1.2~git90.2bc7250be
+Version:        3.1.3~git106.bea5091e3
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -76,16 +74,17 @@ BuildRequires:  openldap2-devel
 # Libressl is incompatible with our rust cryptographic needs.
 BuildRequires:  openssl-devel
 # pam-devel is required by the pam passthru auth plug-in
-BuildRequires:  %use_python-argcomplete
-BuildRequires:  %use_python-argparse-manpage
-BuildRequires:  %use_python-cryptography
-BuildRequires:  %use_python-devel
-BuildRequires:  %use_python-ldap >= 3
-BuildRequires:  %use_python-psutil
-BuildRequires:  %use_python-pyasn1
-BuildRequires:  %use_python-pyasn1-modules
-BuildRequires:  %use_python-python-dateutil
-BuildRequires:  %use_python-setuptools
+BuildRequires:  %{python_module argcomplete}
+BuildRequires:  %{python_module argparse-manpage}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module ldap}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pyasn1-modules}
+BuildRequires:  %{python_module pyasn1}
+BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -176,16 +175,30 @@ SNMP Agent for the 389 Directory Server base package.
 Summary:        389 Directory Server administration tools and library
 License:        GPL-3.0-or-later AND MPL-2.0
 Group:          Development/Languages/Python
-Requires:       %{use_python}-argcomplete
-Requires:       %{use_python}-argparse-manpage
-Requires:       %{use_python}-cryptography
-Requires:       %{use_python}-distro
-Requires:       %{use_python}-ldap >= 3.0
-Requires:       %{use_python}-psutil
-Requires:       %{use_python}-pyasn1
-Requires:       %{use_python}-pyasn1-modules
-Requires:       %{use_python}-python-dateutil
-Requires:       %{use_python}-python-slugify
+BuildRequires:  %{python_module argcomplete}
+BuildRequires:  %{python_module argparse-manpage}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module distro}
+BuildRequires:  %{python_module ldap}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pyasn1-modules}
+BuildRequires:  %{python_module pyasn1}
+BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module python-slugify}
+Requires:       %{python_module argcomplete}
+Requires:       %{python_module argparse-manpage}
+Requires:       %{python_module cryptography}
+Requires:       %{python_module devel}
+Requires:       %{python_module distro}
+Requires:       %{python_module ldap}
+Requires:       %{python_module pip}
+Requires:       %{python_module psutil}
+Requires:       %{python_module pyasn1-modules}
+Requires:       %{python_module pyasn1}
+Requires:       %{python_module python-dateutil}
+Requires:       %{python_module python-slugify}
 Requires:       iproute2
 Requires:       krb5-client
 Requires:       mozilla-nss-tools
@@ -197,8 +210,8 @@ Recommends:     openldap2-client
 # These are recommended if you have selinux on your system
 # to allow some supplementary automated interactions during
 # setup, but it's not required.
-Recommends:     python3-selinux
-Recommends:     python3-policycoreutils
+Recommends:     %{python_module selinux}
+Recommends:     %{python_module policycoreutils}
 
 Provides:       python3-lib389 = %{version}-%{release}
 Obsoletes:      python-lib389 < %{version}-%{release}
@@ -240,7 +253,7 @@ df -h
 %sysusers_generate_pre %{SOURCE10} %{user_group} %{user_group}-user.conf
 # Make sure python3 is used in shebangs
 # FIX ME!!  This should be fixed in the source code !!!
-sed -r -i '1s|^#!\s*%{_bindir}.*python.*|#!%{_bindir}/%{use_python}|' ldap/admin/src/scripts/{*.py,ds-replcheck} src/lib389/cli/ds*
+sed -r -i '1s|^#!\s*%{_bindir}.*python.*|#!%{_bindir}/python3|' ldap/admin/src/scripts/{*.py,ds-replcheck} src/lib389/cli/ds*
 
 # 389-ds expects the vendor dir in the root.
 ln -s ./src/vendor ./vendor
@@ -266,7 +279,7 @@ export CFLAGS="%{optflags}" # -std=gnu99"
   --enable-rust-offline \
   --disable-perl \
   --libexecdir=%{_prefix}/lib/dirsrv/ \
-  --with-pythonexec="%{_bindir}/%{use_python}" \
+  --with-pythonexec="%{_bindir}/python3" \
   --with-systemd \
   --with-systemdgroupname=dirsrv.target \
   --with-systemdsystemunitdir="%{_unitdir}" \
@@ -275,16 +288,15 @@ export CFLAGS="%{optflags}" # -std=gnu99"
   --with-systemdgroupname=dirsrv.target \
 
 export XCFLAGS="$CFLAGS"
-make src/lib389/setup.py
 make %{?_smp_mflags}
 pushd src/lib389
-%python3_build
+%pyproject_wheel
 popd
 
 %install
 %make_install
 pushd src/lib389
-%python3_install
+%pyproject_install
 mv %{buildroot}/usr/libexec/dirsrv/dscontainer %{buildroot}%{_prefix}/lib/dirsrv/
 rmdir %{buildroot}/usr/libexec/dirsrv/
 popd
@@ -318,6 +330,12 @@ mv src/svrcore/README{,.svrcore}
 mv src/svrcore/LICENSE{,.svrcore}
 install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/
 install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/dirsrv@.service.d/krbkdcbefore.conf
+
+mv %{buildroot}%{_bindir}/openldap_to_ds %{buildroot}%{_sbindir}/openldap_to_ds
+mv %{buildroot}%{_bindir}/dsconf %{buildroot}%{_sbindir}/dsconf
+mv %{buildroot}%{_bindir}/dscreate %{buildroot}%{_sbindir}/dscreate
+mv %{buildroot}%{_bindir}/dsctl %{buildroot}%{_sbindir}/dsctl
+mv %{buildroot}%{_bindir}/dsidm %{buildroot}%{_sbindir}/dsidm
 
 # For the purposes of our krb integration, we enable this by default.
 mv %{buildroot}%{_datadir}/dirsrv/data/60kerberos.ldif %{buildroot}%{_datadir}/dirsrv/schema/60kerberos.ldif
@@ -422,6 +440,7 @@ exit 0
 %{_libdir}/dirsrv/libslapd.so
 %{_libdir}/dirsrv/libns-dshttpd.so
 %{_libdir}/dirsrv/libldaputil.so
+%{_libdir}/dirsrv/librobdb.so
 %{_libdir}/pkgconfig/dirsrv.pc
 %{_libdir}/pkgconfig/svrcore.pc
 
@@ -450,6 +469,6 @@ exit 0
 %{_mandir}/man8/dscreate.8.gz
 %{_mandir}/man8/dsctl.8.gz
 %{_mandir}/man8/dsidm.8.gz
-%{python3_sitelib}/lib389*
+%{python_sitelib}/lib389*
 
 %changelog
