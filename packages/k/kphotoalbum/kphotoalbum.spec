@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kphotoalbum
-Version:        6.0.1
+Version:        6.1.0
 Release:        0
 Summary:        A photo administration utility
 License:        GPL-2.0-or-later

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  5 09:13:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  https://www.kphotoalbum.org/2025/10/04/kphotoalbum-6.1.0-released/
+  * Fix purpose plugin support (kde#501885)
+  * Fix database corruption when using category names starting with numbers (kde#477533)
+  * Improve responsiveness of date bar
+  * Fix spurious entries in “Search for images and videos with incomplete dates” (kde#505023)
+  * Fix crash when interacting with a category after deleting it (kde#478015)
+
+-------------------------------------------------------------------
 Mon Jan  6 21:11:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.0.1
