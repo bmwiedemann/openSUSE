@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Oct  4 21:51:38 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 6690:
+  * ggml: bump to v0.9.4; fix graph reallocation and multi-chunk
+    dependencies
+  * ggml webgpu: add soft_max op; optimize rms_norm; extend
+    operator support
+  * ggml-riscv: add Spacemit backend
+  * vulkan: improve shader threading and incremental builds
+  * vulkan: fix FA coopmat1 array indexing and quantized flash
+    attention
+  * vulkan: replace maxMemoryAllocationSize, improve header
+    compatibility
+  * vulkan: add bounds checks in flash attention; 64-bit im2col
+    support
+  * rpc: add multi-device support; validate src buffer copies
+  * server: add context checkpointing for hybrid and recurrent
+    models
+  * chat: add Magistral thinking support; fix missing sibling
+    messages
+  * webui: fix payloads and routing; improve mobile and dialog
+    behavior
+  * model: implement Apertus; support GLM 4.6
+  * llama: fix shapes for BERT/MPT q/k norm; improve PLaMo2
+    loading
+  * common: introduce http.h client; disable progress bar without
+    tty
+  * common: remove common_has_curl(); simplify etag tracking
+  * opencl: support pad_ext and ne3 in get_rows
+  * various minor fixes for scrolling, sampling, and chat block
+    handling
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b6605...b6690
+
+-------------------------------------------------------------------
 Sat Sep 27 16:54:06 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to b6605:

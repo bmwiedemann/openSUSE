@@ -293,4 +293,14 @@
     <comment></comment>
     <requestid>1307499</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bdd03a89f45a73bb7d6969f665d73ead</srcmd5>
+    <version>6690</version>
+    <time>1759679476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6690:
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b6605...b6690</comment>
+    <requestid>1309029</requestid>
+  </revision>
 </revisionlist>
