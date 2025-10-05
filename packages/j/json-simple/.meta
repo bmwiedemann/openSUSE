@@ -14,6 +14,5 @@ to encode or decode JSON text.
   * Both of the source code and the binary are JDK1.2 compatible
 
 </description>
-  <devel project="Java:packages" package="json-simple"/>
   <url>https://code.google.com/p/json-simple/</url>
 </package>

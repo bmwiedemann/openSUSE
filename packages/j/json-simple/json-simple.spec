@@ -17,21 +17,15 @@
 
 
 Name:           json-simple
-Version:        1.1.1
+Version:        2.3.1
 Release:        0
 Summary:        Simple Java toolkit for JSON
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://code.google.com/p/json-simple/
-# svn export http://json-simple.googlecode.com/svn/tags/tag_release_1_1_1/ json-simple-1.1.1
-# tar czf json-simple-1.1.1-src-svn.tar.gz json-simple-1.1.1
-Source0:        json-simple-1.1.1-src-svn.tar.gz
-#https://code.google.com/p/json-simple/issues/detail?id=97
-Patch0:         json-simple-hash-java-1.8.patch
+Source0:        https://github.com/cliftonlabs/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildArch:      noarch
 
 %description
@@ -56,21 +50,20 @@ Group:          Development/Libraries/Java
 This package contains %{summary}.
 
 %prep
-%setup -q -n json-simple-%{version}
-find . -name '*.jar' -exec rm -f '{}' \;
-# All the files have dos line endings, remove them.
-find . -type f -exec sed -i 's/\r//' {} \;
-
-%patch -P 0 -p1
+%setup -q -n %{name}-%{name}-%{version}
 
 # Remove hard-coded compiler settings
 %pom_remove_plugin :maven-compiler-plugin
+# Do not regenerate the files
+%pom_remove_plugin :maven-jflex-plugin
+%pom_remove_plugin :nexus-staging-maven-plugin
+%pom_remove_plugin :maven-javadoc-plugin
 
 %{mvn_file} : %{name}
+%{mvn_alias} com.github.cliftonlabs: com.googlecode.json-simple:
 
 %build
 %{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dmaven.compiler.source=1.8 -Dmaven.compiler.target=1.8
 
 %install
@@ -79,10 +72,10 @@ find . -type f -exec sed -i 's/\r//' {} \;
 %fdupes %{buildroot}%{datadir}/javadoc
 
 %files -f .mfiles
-%license LICENSE.txt
-%doc AUTHORS.txt ChangeLog.txt README.txt
+%license LICENSE
+%doc CHANGELOG README
 
 %files javadoc -f .mfiles-javadoc
-%license LICENSE.txt
+%license LICENSE
 
 %changelog
