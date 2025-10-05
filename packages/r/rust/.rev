@@ -921,4 +921,12 @@ See SR#946556</comment>
     <comment>Needs to be reverted because  https://bugzilla.opensuse.org/show_bug.cgi?id=1248325</comment>
     <requestid>1300475</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>ebc25df92b7faae488f949c74aaf0696</srcmd5>
+    <version>1.90.0</version>
+    <time>1759679443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1308935</requestid>
+  </revision>
 </revisionlist>
