@@ -3,7 +3,6 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel 
   - 389-ds-snmp 
   - 3omns 
   - 3proxy 
@@ -1416,6 +1415,7 @@ unsorted:
   - binutils-devel-32bit 
   - binutils-gold 
   - binwalk 
+  - biodiff 
   - biome 
   - birb-devel 
   - birb-doc 
@@ -2999,7 +2999,6 @@ unsorted:
   - cyrus-sasl-bdb-plain 
   - cyrus-sasl-bdb-scram 
   - cyrus-sasl-crammd5-32bit 
-  - cyrus-sasl-devel 
   - cyrus-sasl-devel-32bit 
   - cyrus-sasl-digestmd5-32bit 
   - cyrus-sasl-gs2 
@@ -4571,12 +4570,8 @@ unsorted:
   - gamescope-session-steam 
   - gamescope-session-steam-generic 
   - gamescope-shaders 
-  - gammaray 
-  - gammaray-devel 
   - gammaray-qt6 
   - gammaray-qt6-devel 
-  - gammaray-qt6-shared-plugins 
-  - gammaray-shared-plugins 
   - gammastep 
   - gammastep-indicator 
   - gammu 
@@ -12991,7 +12986,6 @@ unsorted:
   - libevdi1 
   - libevemu3 
   - libevent-2_1-7-32bit 
-  - libevent-devel 
   - libevent-devel-static 
   - libeverest 
   - libeverest-x86-64-v3 
@@ -13332,10 +13326,7 @@ unsorted:
   - libgaminggear0 
   - libgaminggearfx0 
   - libgaminggearwidget0 
-  - libgammaray-3_2_2 
-  - libgammaray-qt6-3_2_2 
-  - libgammaray-shared-3_2_2 
-  - libgammaray-shared-qt6-3_2_2 
+  - libgammaray-qt6-3_3_0 
   - libgap9 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -18995,10 +18986,8 @@ unsorted:
   - mozaddon-devel 
   - mozilla-fira-fonts 
   - mozilla-nspr-32bit 
-  - mozilla-nspr-devel 
   - mozilla-nss-32bit 
   - mozilla-nss-certs-32bit 
-  - mozilla-nss-devel 
   - mozilla-nss-sysinit-32bit 
   - mozilla-zilla-slab-fonts 
   - mozjs115 
@@ -20406,7 +20395,6 @@ unsorted:
   - openldap2-back-sock 
   - openldap2-back-sql 
   - openldap2-contrib 
-  - openldap2-devel 
   - openldap2-devel-32bit 
   - openldap2-devel-static 
   - openldap2-doc 
@@ -32599,7 +32587,6 @@ unsorted:
   - python313-deprecation 
   - python313-deprecation-alias 
   - python313-derpconf 
-  - python313-devel 
   - python313-devpi-client 
   - python313-devpi-common 
   - python313-devpi-process 
