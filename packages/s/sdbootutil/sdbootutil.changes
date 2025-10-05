@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 03 15:04:15 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20251003.f402058:
+  * Do not mount /run/media in the chroot
+  * Normalize how to hide errors
+  * Ask the volume key only if --measure-pcr is set
+  * Abort any updating inside a transaction
+  * Bindmount /var/lib/systemd for tukit
+  * Revert "Do not ask the password while in a transaction"
+  * Only update PCR 15 if --measure-pcr is set
+  * Do not ask the password while in a transaction
+  * Add parameter for code tracing
+
+-------------------------------------------------------------------
 Wed Sep 17 14:34:52 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250917.7aab076:
