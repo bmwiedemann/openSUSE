@@ -901,4 +901,14 @@
   * pam_unix: fix {use|try}_first_pass and use_authtok</comment>
     <requestid>1301536</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>103b2c08855ab2d84dc04f2fb443d622</srcmd5>
+    <version>2.13+git.20251003</version>
+    <time>1759679438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.13+git.20251003:
+  * pam_sss: add all possible options
+  * Add support for 12 and 13 options</comment>
+    <requestid>1308923</requestid>
+  </revision>
 </revisionlist>
