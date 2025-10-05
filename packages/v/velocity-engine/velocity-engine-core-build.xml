@@ -22,9 +22,9 @@
   <property name="project.groupId" value="org.apache.velocity"/>
   <property name="project.artifactId" value="velocity-engine-core"/>
 
-  <property name="project.version" value="2.4"/>
+  <property name="project.version" value="2.4.1"/>
   <property name="spec.version" value="${project.version}"/>
-  <property name="bundle.version" value="${project.version}.0"/>
+  <property name="bundle.version" value="${project.version}"/>
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>

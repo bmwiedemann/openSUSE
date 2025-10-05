@@ -43,14 +43,13 @@ or as an integrated component of other systems. Velocity also provides\
 template services for the Turbine web application framework.\
 Velocity+Turbine provides a template service that will allow web\
 applications to be developed according to a true MVC model.
-Version:        2.4
+Version:        2.4.1
 Release:        0
 Summary:        Apache Velocity - Engine
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://velocity.apache.org/
 Source0:        %{base_name}-%{version}.tar.xz
-Patch0:         0001-Implement-the-new-method-from-StandardParserVisitor-.patch
 BuildRequires:  fdupes
 BuildArch:      noarch
 %if %{with core}

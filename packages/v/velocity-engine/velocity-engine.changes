@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  5 06:05:17 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Version 2.4.1:
+  * Fixes
+    + Finding the topmost method when introspecting a class should
+      stop at the first static or accessible method found (Fixes
+      VELOCITY-983)
+    + Direct evaluation of VTL code via RuntimeInstance.evaluate()
+      should update the current rendering template information for
+      local velocimacros to be visible in string literals
+      interpolation (Fixes VELOCITY-944)
+- Removed patch:
+  * 0001-Implement-the-new-method-from-StandardParserVisitor-.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Wed Oct  2 16:43:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Version 2.4:

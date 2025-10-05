@@ -21,6 +21,5 @@ Velocity+Turbine provides a template service that will allow web
 applications to be developed according to a true MVC model.
 
 </description>
-  <devel project="Java:packages" package="velocity-engine"/>
   <url>http://velocity.apache.org/</url>
 </package>
