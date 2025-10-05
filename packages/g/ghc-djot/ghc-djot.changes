@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 27 11:35:47 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update djot to version 0.1.2.3.
+  ## 0.1.2.3 -- 2025-09-27
+
+  * Fix swallowing of indentation in code under blockquote (#11).
+
+-------------------------------------------------------------------
 Sat Oct  5 02:07:07 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update djot to version 0.1.2.2.
