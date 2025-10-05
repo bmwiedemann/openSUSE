@@ -10,10 +10,10 @@ it.
  iotas/exporter.py | 30 ++++++++++++++++++++----------
  1 file changed, 20 insertions(+), 10 deletions(-)
 
-diff --git a/iotas/exporter.py b/iotas/exporter.py
-index 313d877..64e3a83 100644
---- a/iotas/exporter.py
-+++ b/iotas/exporter.py
+Index: iotas-0.12.0/iotas/exporter.py
+===================================================================
+--- iotas-0.12.0.orig/iotas/exporter.py
++++ iotas-0.12.0/iotas/exporter.py
 @@ -8,7 +8,10 @@ import shutil
  from typing import Optional
  import unicodedata
@@ -24,33 +24,38 @@ index 313d877..64e3a83 100644
 +except ModuleNotFoundError:
 +    pypandoc = None
  
- from iotas.html_generator import HtmlGenerator
- from iotas.note import Note
-@@ -122,16 +125,23 @@ class Exporter(GObject.Object):
+ from iotas.attachment_helpers import (
+     AttachmentsCopyOutcome,
+@@ -157,20 +160,24 @@ class Exporter(GObject.Object):
+         content = get_note_export_content(self.__note, prefix_note_id=True)
+         working_dir = os.path.abspath(os.path.join(get_attachments_dir(), os.pardir))
  
-     def __export_pandoc(self, out_format: str) -> None:
-         self.__active = True
 -        try:
 -            pypandoc.convert_text(
--                self.__note.content, out_format, format="gfm", outputfile=self.__location
+-                content,
+-                out_format,
+-                format="gfm+attributes+implicit_figures",
+-                outputfile=self.__location,
+-                cworkdir=working_dir,
 -            )
 -        except (RuntimeError, OSError) as e:
--            logging.warning(f"Failed to export {out_format} to {self.__location}: %s", e)
--            self.emit("failed", self.__out_format, str(e))
+-            logging.warning(f"Failed to export {out_format} to {self.__location}: {e}")
+-            self.emit("failed", str(e))
 +        if pypandoc:
 +            try:
 +                pypandoc.convert_text(
-+                    self.__note.content, out_format, format="gfm", outputfile=self.__location
++                    content,
++                    out_format,
++                    format="gfm+attributes+implicit_figures",
++                    outputfile=self.__location,
++                    cworkdir=working_dir,
 +                )
 +            except (RuntimeError, OSError) as e:
-+                logging.warning(f"Failed to export {out_format} to {self.__location}: %s", e)
-+                self.emit("failed", self.__out_format, str(e))
-+            else:
-+                logging.info(f"Exported {self.__out_format} to {self.__location}")
-+                self.emit("finished", self.__out_format, self.__location)
++                logging.warning(f"Failed to export {out_format} to {self.__location}: {e}")
++                self.emit("failed", str(e))
          else:
 -            logging.info(f"Exported {self.__out_format} to {self.__location}")
--            self.emit("finished", self.__out_format, self.__location)
+-            self.emit("finished", self.__location)
 +            logging.warning(
 +                f"Failed to export {out_format} to {self.__location}: "
 +                "Pypandoc is not installed on your system."
@@ -59,6 +64,3 @@ index 313d877..64e3a83 100644
          self.__active = False
  
      def __export_pdf(self) -> None:
--- 
-GitLab
-

@@ -17,7 +17,7 @@
 
 
 Name:           iotas
-Version:        0.11.2
+Version:        0.12.0
 Release:        0
 Summary:        Distraction-free note taking app with optional cloud sync
 License:        GPL-3.0-or-later
@@ -29,12 +29,12 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  python3
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(gtksourceview-5)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.76
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.66.0
+BuildRequires:  pkgconfig(gtk4) >= 4.20
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.6
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 Requires:       python3-gobject-Gdk
 Requires:       python3-linkify-it-py
 Requires:       python3-packaging
@@ -97,7 +97,7 @@ rm %{buildroot}%{python3_sitelib}/markdown_it_*/meson.*
 %{_datadir}/metainfo/org.gnome.World.Iotas.metainfo.xml
 %{_libexecdir}/iotas-search-provider
 %{python3_sitelib}/iotas/
-%{python3_sitelib}/markdown_it_img_lazyload_plugin/
+%{python3_sitelib}/markdown_it_img_figures_plugin/
 %{python3_sitelib}/markdown_it_modified_tasklists_plugin/
 
 %files -n gnome-shell-search-provider-%{name}
