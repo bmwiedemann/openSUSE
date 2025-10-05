@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  5 13:06:37 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.1.0:
+  * Expand safety checks of the `limine bios-install` command and replace
+    the `--force-mbr` flag with just `--force`.
+  * Add autodetection of the BIOS boot partition if no explicit partition
+    index is passed to `limine bios-install`.
+  * Only use ASCII characters for terminal output when graphical output
+    fails to initialise and the EFI standard output console is used
+    instead.
+  * Remove left-over logic that was meant to supplement the removed GPT
+    embedding feature.
+  * Remove workaround to allow building the RISC-V port with LLVM <=16.
+  * Update a bunch of output messages from the `limine` host tool.
+
+-------------------------------------------------------------------
 Mon Sep 22 09:08:35 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.0.1:
