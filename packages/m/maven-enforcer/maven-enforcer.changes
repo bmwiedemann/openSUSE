@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  5 14:33:20 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.6.2
+  * Bug Fixes
+    + Use SessionData for cache storage
+  * Documentation updates
+    + Update Version Ranges link in site.xml
+    + Fix formatting typo in dependencyConvergence.apt.vm
+    + Correct support parameters documentation for banned
+      repositories rule
+  * Maintenance
+    + Fixes #920 - Remove usage of Stack
+    + feat: enable prevent branch protection rules
+    + Fixes #917 - Remove usage of Hashtable
+
+-------------------------------------------------------------------
 Tue Jul 22 07:11:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 3.6.1
