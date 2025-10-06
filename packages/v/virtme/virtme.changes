@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 29 05:51:22 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.38:
+  * Fix the infamous Stale file handle (ESTALE) errors with virtiofsd
+  * Fix for systemctl daemon-reload when systemd support is enabled
+  * Fix for a kernel symlink issue affecting openSUSE/SLE
+  * README/docs improvements
+  * Various coding style cleanups
+
+-------------------------------------------------------------------
 Mon Aug 11 06:27:20 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.37:
