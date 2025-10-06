@@ -1,7 +1,7 @@
 #
 # spec file for package hylafax+
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global faxspool    %{_localstatedir}/spool/hylafax
 %define lib_version %(echo %{version} | tr \. _)
 Name:           hylafax+
-Version:        7.0.10
+Version:        7.0.11
 Release:        0
 Summary:        A fax server
 License:        BSD-3-Clause

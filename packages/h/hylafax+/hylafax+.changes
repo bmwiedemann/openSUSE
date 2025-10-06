@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct  4 07:55:48 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.0.11
+  * create seqf files with expected 0644 permissions (18 Apr 2025)
+  * correct skipped page counting for proxied jobs (14 Apr 2025)
+  * remove unnecessary switching pause on outbound handshaking loop (14 Apr 2025)
+  * add Class1FRHNeedsReset (11-12 Apr 2025)
+  * add Class1FullDuplexTrainingSync, +FAR=2 iaxmodem feature (20-21 Feb, 7 Mar 2025)
+  * adjust the wait time for the initial response when receiving (19 Feb 2025)
+  * cope with ECM Phase C carrier fast restart when receiving (12-13 Feb 2025)
+  * try to cope with broken TSI+DCS and CSI+DIS signals (10 Feb 2025)
+  * try to cope with some types of poor HDLC frame formatting (8 Feb 2025)
+  * correct recording of ntries, tottries, ndials, totdials when a proxy was used (4 Feb 2025)
+  * cope with +FRCNG results from iaxmodem (1, 12 Feb 2025)
+  * add Class1PhaseBRecvTimeoutCmd configuration parameter (30 Jan 2025)
+  * add Class1ExpectedPageSize configuration parameter (24 Jan 2025)
+
+-------------------------------------------------------------------
 Fri Jan 31 08:54:55 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 7.0.10
