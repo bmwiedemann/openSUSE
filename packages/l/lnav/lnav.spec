@@ -19,7 +19,7 @@
 
 
 Name:           lnav
-Version:        0.13.1
+Version:        0.13.2
 Release:        0
 Summary:        Logfile Navigator
 License:        BSD-2-Clause
