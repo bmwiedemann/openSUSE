@@ -20,7 +20,7 @@
 %define pythons %{use_python}
 
 Name:           opi
-Version:        5.8.8
+Version:        5.8.9
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only

@@ -781,4 +781,13 @@
   * Fix adding openh264 repo on leap 16.0</comment>
     <requestid>1308176</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>32635138878ffc63f7fc59312e267f20</srcmd5>
+    <version>5.8.9</version>
+    <time>1759766913</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 5.8.9
+  * Fix VERSION KeyError in Tumbleweed</comment>
+    <requestid>1309203</requestid>
+  </revision>
 </revisionlist>
