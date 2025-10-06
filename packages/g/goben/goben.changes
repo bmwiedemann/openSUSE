@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sat Oct  4 07:17:36 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.2
+  * Update dependencies
+- Run testsuite
+
+-------------------------------------------------------------------
+Mon Sep 15 20:03:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.1
+  * TLS enforcement and package refactoring.
+
+-------------------------------------------------------------------
+Thu Mar  2 09:19:00 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6
+  * adds distinct default buffer sizes for tcp/udp.
+
+-------------------------------------------------------------------
+Sun Jun  6 15:29:52 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.5

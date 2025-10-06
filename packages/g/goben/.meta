@@ -1,0 +1,7 @@
+<package name="goben" project="openSUSE:Factory">
+  <title>Measure TCP/UDP transport layer throughput between hosts</title>
+  <description>A tool to measure TCP/UDP transport layer throughput between hosts.
+
+</description>
+  <url>https://github.com/udhos/goben</url>
+</package>
