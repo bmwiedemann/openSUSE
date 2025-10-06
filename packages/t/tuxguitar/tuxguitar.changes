@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  6 09:38:41 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Require the same eclipse-swt version as present during the build
+
+-------------------------------------------------------------------
 Sun Aug 31 19:45:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

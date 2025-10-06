@@ -1,7 +1,7 @@
 #
 # spec file for package tuxguitar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,8 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.eclipse.swt:org.eclipse.swt)
 Requires:       apache-commons-compress
-Requires:       eclipse-swt >= 4.13
 Requires:       fluid-soundfont-gm
+%requires_ge    eclipse-swt
 Recommends:     snd_sf2
 Recommends:     timidity
 Recommends:     wqy-zenhei-fonts
