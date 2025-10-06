@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct  3 07:25:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.17.2:
+  + Minor improvements and bugfix release.
+  + Most notably resource usage (file handles) has been greatly reduced and
+    static build pkg-config have been fixed.
+    For users of xfreerdp RAILS/RemoteApp mode the switch to DesktopSession
+    mode has been fixed (working UAC screen)
+- Changes from version 3.17.1
+  + Minor improvements and bugfix release.
+    * most notably a memory leak was addressed
+    * fixed header files missing C++ guards
+    * xfreerdp as well as the SDL clients now support a system wide configuration file
+    * Heimdal kerberos support was improved
+    * builds with [MS-RDPEAR] now properly abort at configure if Heimdal is used
+      (this configuration was never supported, so ensure nobody compiles it that way)
+- Add 11876.patch: properly set requires fields for pkgconfig and
+  cmake files
+
+-------------------------------------------------------------------
 Sat Sep 13 10:10:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Enable openh264 support, we can build against the noopenh264 stub

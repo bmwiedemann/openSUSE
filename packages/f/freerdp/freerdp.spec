@@ -37,7 +37,7 @@
 %define uwac_package %{uwac_version}-%{uwac_version}
 
 Name:           freerdp
-Version:        3.17.0
+Version:        3.17.2
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -45,6 +45,7 @@ Group:          Productivity/Networking/Other
 URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
 Source1:        freerdp-rpmlintrc
+Patch0:         https://patch-diff.githubusercontent.com/raw/FreeRDP/FreeRDP/pull/11876.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -332,6 +333,9 @@ export CXX=g++-12
 %cmake_install
 %fdupes %{buildroot}%{_libdir}/cmake/
 
+%check
+%ctest
+
 %ldconfig_scriptlets -n lib%{name}%{libfreerdp_package}
 %ldconfig_scriptlets -n libwinpr%{libfreerdp_package}
 %ldconfig_scriptlets -n libuwac%{uwac_package}
@@ -366,9 +370,9 @@ export CXX=g++-12
 %files -n %{name}-proxy-plugins
 %dir %{_libdir}/%{name}%{major_version}
 %dir %{_libdir}/%{name}%{major_version}/proxy
-%{_libdir}/%{name}%{major_version}/proxy/proxy-bitmap-filter-plugin.so
-%{_libdir}/%{name}%{major_version}/proxy/proxy-demo-plugin.so
-%{_libdir}/%{name}%{major_version}/proxy/proxy-dyn-channel-dump-plugin.so
+%{_libdir}/%{name}%{major_version}/proxy/libproxy-bitmap-filter-plugin.so
+%{_libdir}/%{name}%{major_version}/proxy/libproxy-demo-plugin.so
+%{_libdir}/%{name}%{major_version}/proxy/libproxy-dyn-channel-dump-plugin.so
 
 %files -n lib%{name}%{libfreerdp_package}
 %license LICENSE
