@@ -2309,4 +2309,41 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1307923</requestid>
   </revision>
+  <revision rev="257" vrev="1">
+    <srcmd5>9f4f978eb385dd00392b1afe96aa94c6</srcmd5>
+    <version>49.0+68</version>
+    <time>1759766829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 49.0+68:
+  * window/wayland: Use constrained rect when deciding
+    configuration
+  * wayland/xdg-shell:
+    - Create window after setting resources
+    - Ensure applied window geometry is always non-empty
+    - Make invalid geometry warning more descriptive
+  * tests/wayland:
+    - Add test for invalid geometry with subsurface
+    - Add test case for client with invalid geometry
+  * wayland/shell-surface: Assume geometry empty if no buffer
+    attached
+  * wayland/surface: Make state-applied logs more informative
+  * tests:
+    - Add test checking maximized window position on workspace
+      changes
+    - Add some tests for wl_keyboard behavior
+  * core: Let key presses of special modifiers through
+  * clutter/frame-clock:
+    - Allow scheduling a clock tick despite a pending later tick
+    - For FRR schedule_later update, use next_update_time_us
+  * window: Fixup flagging META_MOVE_RESIZE_RECT_INVALID only when
+    invalid
+  * seat/native: Steal another error before returning in task
+  * wayland:
+    - Check modifier state from event prior to event delivery
+    - Always send configure event after xdg_popup::reposition
+    - Require pointer interaction prior to allowing pointer warp
+    - Add helper to check the order of two serials
+    - Check event type, use CLUTTER_KEY_STATE for modifiers during (forwarded request 1308894 from iznogood)</comment>
+    <requestid>1309288</requestid>
+  </revision>
 </revisionlist>
