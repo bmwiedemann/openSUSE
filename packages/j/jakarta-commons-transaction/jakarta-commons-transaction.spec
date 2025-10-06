@@ -56,7 +56,7 @@ compatible to JDK1.2 and should have minimal dependencies.
 find . -name "*.jar" | xargs rm
 
 %build
-export CLASSPATH=$(build-classpath commons-codec jta reload4j):`pwd`/build/classes
+export CLASSPATH=$(build-classpath commons-codec geronimo-jta-1.1-api reload4j):`pwd`/build/classes
 export OPT_JAR_LIST=:
 %{ant} \
     -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \

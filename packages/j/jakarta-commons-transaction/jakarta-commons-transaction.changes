@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  6 06:28:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Use geronimo-jta-1_1-api directly for the classpath, since jta
+  link was removed
+
+-------------------------------------------------------------------
 Sun Mar 20 15:00:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 1.8

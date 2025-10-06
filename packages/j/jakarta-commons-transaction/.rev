@@ -127,4 +127,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963279</requestid>
   </revision>
+  <revision rev="19" vrev="29">
+    <srcmd5>1a982e457bfa7170988d755e0490b151</srcmd5>
+    <version>1.1</version>
+    <time>1759766881</time>
+    <user>dimstar_suse</user>
+    <comment>Do not require the virtual jta provide</comment>
+    <requestid>1309149</requestid>
+  </revision>
 </revisionlist>
