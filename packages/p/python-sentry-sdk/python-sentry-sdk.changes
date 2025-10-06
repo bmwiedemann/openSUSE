@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct  3 08:42:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.39.0
+  * Fix incompatibility with new Strawberry version
+  * Add failed_request_status_codes to Litestar
+  * The enable_tracing option is now deprecated. Please use traces_sample_rate instead
+  * Add Statsig integration
+  * Fix(asyncio): Improve asyncio integration error handling
+  * Fix memory leak by not piling up breadcrumbs forever in Spark workers
+  * New Beta Feature Enable Sentry logs in logging Integration
+  * Change CODEOWNERS back to Python SDK owners
+  * Deprecate set_measurement() API
+  * Allow configuring keep_alive via environment variable
+  * Sentry logs for Loguru
+  * Fix CI, adapt to new redis-py release
+  * Add support for openai-agents
+  * Add top-level start- and end session methods
+  * Use span.data instead of measurements for token usage
+  * Considerably raise DEFAULT_MAX_VALUE_LENGTH
+  * The OpenAIIntegration now supports OpenAI Responses API
+  * The data captured will also show up in the new AI Agents Dashboard
+  * Langchain and Anthropic Integration now support the Sentry AI dashboard
+  * Add the unraisable exception integration
+  * Add support for langgraph
+  * Many more fixes and improvements, see upstream changelog
+  * Note: This is my last release. So long, and thanks for all the fish! by @antonpirker
+- Add upstream release.patch to fix failing test
+
+-------------------------------------------------------------------
 Fri Jan 24 18:35:13 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.20.0

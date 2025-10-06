@@ -474,4 +474,12 @@ Reduce dependencies from 260MiB to 14MiB.
     <comment></comment>
     <requestid>1240306</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>58ab09941d818b5253edc9f9429a39a9</srcmd5>
+    <version>2.39.0</version>
+    <time>1759766863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309117</requestid>
+  </revision>
 </revisionlist>

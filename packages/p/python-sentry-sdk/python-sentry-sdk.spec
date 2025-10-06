@@ -1,7 +1,7 @@
 #
 # spec file for package python-sentry-sdk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,14 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        2.20.0
+Version:        2.39.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
 URL:            https://github.com/getsentry/sentry-python
 Source0:        https://github.com/getsentry/sentry-python/archive/%{version}/sentry-python-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/getsentry/sentry-python/pull/4879 fix(tests): Don't assume release is set
+Patch:          release.patch
 BuildRequires:  %{python_module Django >= 2.0}
 BuildRequires:  %{python_module Flask >= 1.0}
 BuildRequires:  %{python_module MarkupSafe}
@@ -160,17 +162,8 @@ export PYTEST_ADDOPTS="-W ignore::DeprecationWarning"
 export DJANGO_SETTINGS_MODULE=tests.conftest
 # do not test integration (many package are missing at SUSE):
 rm -r tests/integrations
-# test_auto_enabling_integrations_catches_import_error asert False where False = ..., not sure
 IGNORED_CHECKS="(test_default_release and test_utils)"
-IGNORED_CHECKS="${IGNORED_CHECKS} or test_new_scopes_compat_event"
-IGNORED_CHECKS="${IGNORED_CHECKS} or test_transport_works"
-IGNORED_CHECKS="${IGNORED_CHECKS} or test_auto_enabling_integrations_catches_import_error"
-IGNORED_CHECKS="${IGNORED_CHECKS} or test_socks_proxy or test_utils"
-# https://github.com/getsentry/sentry-python/issues/3624
-IGNORED_CHECKS="${IGNORED_CHECKS} or test_redis_disabled_when_not_installed"
-# Related to this report gh#getsentry/sentry-python#576, looks like it
-# freeze also with python 3.13
-IGNORED_CHECKS="${IGNORED_CHECKS} or eventlet or greenlet"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_socks_proxy or test_datetime_from_isoformat"
 %pytest -rs -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}
