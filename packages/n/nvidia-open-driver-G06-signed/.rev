@@ -901,4 +901,12 @@
     updates/ subdir</comment>
     <requestid>1308347</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>738a74356be53fe37a4cb3fbeab2dbea</srcmd5>
+    <version>580.95.05</version>
+    <time>1759766919</time>
+    <user>dimstar_suse</user>
+    <comment>- update non-CUDA variant to 580.95.05</comment>
+    <requestid>1309261</requestid>
+  </revision>
 </revisionlist>

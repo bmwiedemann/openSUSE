@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  6 09:50:13 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 580.95.05
+
+-------------------------------------------------------------------
 Wed Oct  1 08:54:42 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed 'osc service run download_files'
