@@ -1,7 +1,7 @@
 #
 # spec file for package python-knowit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-knowit
-Version:        0.5.6
+Version:        0.5.11
 Release:        0
 Summary:        Extract information from video files
 License:        MIT
@@ -29,11 +29,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Requires:       python-Pint >= 0.20.1
+Requires:       python-PyYAML >= 6.0
 Requires:       python-babelfish >= 0.6.1
 Requires:       python-enzyme >= 0.5.2
-Requires:       python-Pint >= 0.20.1
 Requires:       python-pymediainfo >= 6.0.1
-Requires:       python-PyYAML >= 6.0
 Requires:       python-trakit >= 0.2.2
 
 BuildArch:      noarch
