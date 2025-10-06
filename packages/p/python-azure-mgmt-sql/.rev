@@ -393,4 +393,17 @@
 - Update Requires from setup.py (forwarded request 1296489 from glaubitz)</comment>
     <requestid>1296541</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8ef8d9088089361efe25c63f0d635970</srcmd5>
+    <version>4.0.0b23</version>
+    <time>1759766930</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.0.0b23
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove generated samples and tests from source
+- Update Requires from pyproject.toml (forwarded request 1309252 from glaubitz)</comment>
+    <requestid>1309257</requestid>
+  </revision>
 </revisionlist>
