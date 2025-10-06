@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  6 12:11:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Remove generated samples and tests from source
+- Update Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu May 23 09:49:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

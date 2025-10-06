@@ -150,4 +150,20 @@
 - Update Requires from setup.py (forwarded request 1176177 from glaubitz)</comment>
     <requestid>1176442</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>66902f9cc02d2aa68ef732c938cb8aac</srcmd5>
+    <version>3.0.0</version>
+    <time>1759766941</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Remove generated samples and tests from source
+- Update Requires from pyproject.toml (forwarded request 1309265 from glaubitz)</comment>
+    <requestid>1309270</requestid>
+  </revision>
 </revisionlist>
