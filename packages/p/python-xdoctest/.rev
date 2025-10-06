@@ -103,4 +103,20 @@
     xdoctest&lt;=1.1.6 for 3.6 or 3.7 support.</comment>
     <requestid>1202569</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5efc2e633e8cdb856b185317b4b9ed01</srcmd5>
+    <version>1.3.0</version>
+    <time>1759766937</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.0
+  * New `ASYNC` basic directive to hold the asyncio event loop
+    in any section of code. Useful for multitasking tests.
+  * Removed `16806_WORKAROUND` as it is not longer needed for Python 3.8+
+  * Removed deprecated --xdoc-force-dynamic and --allow-xdoc-dynamic flags
+  * Improved speed (~6x) of doctest collection when running in pytest
+  * Uses pytest plugin system to disable stdlib doctest instead of monkey patching.
+  * Fixed incorrect return type in docstrings
+  * The doctest parser no longer expand tabs to spaces (forwarded request 1309266 from glaubitz)</comment>
+    <requestid>1309271</requestid>
+  </revision>
 </revisionlist>

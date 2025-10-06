@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xdoctest
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Enhanced Python builtin doctest module
 License:        Apache-2.0
