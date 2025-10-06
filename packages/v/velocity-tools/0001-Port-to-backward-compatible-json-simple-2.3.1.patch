@@ -1,0 +1,59 @@
+From c7137be6f87c9b3d4087025a7e3f8cab10f5ea2c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Fri, 3 Oct 2025 19:51:47 +0200
+Subject: [PATCH] Port to backward compatible json-simple 2.3.1
+
+---
+ velocity-tools-generic/pom.xml                              | 2 +-
+ .../java/org/apache/velocity/tools/generic/JsonContent.java | 4 ++--
+ .../java/org/apache/velocity/tools/generic/JsonTool.java    | 6 +++---
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/velocity-tools-generic/pom.xml b/velocity-tools-generic/pom.xml
+index f5acb17a..d692cf46 100644
+--- a/velocity-tools-generic/pom.xml
++++ b/velocity-tools-generic/pom.xml
+@@ -58,7 +58,7 @@
+     <dependency>
+       <groupId>com.github.cliftonlabs</groupId>
+       <artifactId>json-simple</artifactId>
+-      <version>4.0.1</version>
++      <version>2.3.1</version>
+     </dependency>
+     <dependency>
+       <groupId>junit</groupId>
+diff --git a/velocity-tools-generic/src/main/java/org/apache/velocity/tools/generic/JsonContent.java b/velocity-tools-generic/src/main/java/org/apache/velocity/tools/generic/JsonContent.java
+index c2491283..37308361 100644
+--- a/velocity-tools-generic/src/main/java/org/apache/velocity/tools/generic/JsonContent.java
++++ b/velocity-tools-generic/src/main/java/org/apache/velocity/tools/generic/JsonContent.java
+@@ -22,8 +22,8 @@ package org.apache.velocity.tools.generic;
+ import java.util.Iterator;
+ import java.util.Set;
+ 
+-import com.github.cliftonlabs.json_simple.JsonArray;
+-import com.github.cliftonlabs.json_simple.JsonObject;
++import org.json.simple.JsonArray;
++import org.json.simple.JsonObject;
+ 
+ /**
+  * Container for *either* an array *or* an object
+diff --git a/velocity-tools-generic/src/main/java/org/apache/velocity/tools/generic/JsonTool.java b/velocity-tools-generic/src/main/java/org/apache/velocity/tools/generic/JsonTool.java
+index dd4ce0f9..f507b986 100644
+--- a/velocity-tools-generic/src/main/java/org/apache/velocity/tools/generic/JsonTool.java
++++ b/velocity-tools-generic/src/main/java/org/apache/velocity/tools/generic/JsonTool.java
+@@ -32,9 +32,9 @@ import org.apache.velocity.tools.config.InvalidScope;
+ import org.w3c.dom.Document;
+ import org.w3c.dom.Node;
+ 
+-import com.github.cliftonlabs.json_simple.JsonArray;
+-import com.github.cliftonlabs.json_simple.JsonObject;
+-import com.github.cliftonlabs.json_simple.Jsoner;
++import org.json.simple.JsonArray;
++import org.json.simple.JsonObject;
++import org.json.simple.Jsoner;
+ 
+ /**
+  * <p>Tool which can parse a JSON file.</p>
+-- 
+2.51.0
+
