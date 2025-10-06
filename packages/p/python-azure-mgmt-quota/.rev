@@ -80,4 +80,17 @@
 - Update Requires from setup.py (forwarded request 1248879 from glaubitz)</comment>
     <requestid>1248997</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9baf2840f6733aadf191c7604f7941fb</srcmd5>
+    <version>3.0.0</version>
+    <time>1759766939</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove generated samples and tests from source
+- Update Requires from pyproject.toml (forwarded request 1309264 from glaubitz)</comment>
+    <requestid>1309269</requestid>
+  </revision>
 </revisionlist>
