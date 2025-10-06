@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep 27 05:21:18 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add gimp-CVE-2025-10925.patch:
+  Fix GIMP ILBM file parsing stack-based buffer overflow remote code
+  execution vulnerability.
+  (CVE-2025-10925, ZDI-25-914, ZDI-CAN-27793, bsc#1250501)
+
+-------------------------------------------------------------------
+Sat Sep 27 03:12:55 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add gimp-CVE-2025-10922.patch:
+  Fix GIMP DCM file parsing heap-based buffer overflow remote code
+  execution vulnerability.
+  (CVE-2025-10922, ZDI-25-911, ZDI-CAN-27863, bsc#1250497)
+
+-------------------------------------------------------------------
+Sat Sep 27 02:46:19 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add gimp-CVE-2025-10920.patch:
+  Prevent overflow attack by checking if output >= max, not just
+  output > max.
+  (CVE-2025-10920, ZDI-25-909, ZDI-CAN-27684, bsc#1250495)
+
+-------------------------------------------------------------------
 Thu Sep 25 10:29:33 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gimp-CVE-2025-10924.patch: Fix integer overflow while parsing

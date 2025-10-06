@@ -2286,4 +2286,12 @@ General:
     <comment></comment>
     <requestid>1307201</requestid>
   </revision>
+  <revision rev="157" vrev="4">
+    <srcmd5>78f2a67a44d9019bb85c450009b9347a</srcmd5>
+    <version>3.0.4</version>
+    <time>1759766819</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1309048</requestid>
+  </revision>
 </revisionlist>

@@ -102,6 +102,12 @@ Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
 # PATCH-FIX-UPSTREAM gimp-CVE-2025-10924.patch CVE-2025-10924 bsc#1250499 alynx.zhou@suse.com -- Fix integer overflow while parsing FF files 
 Patch4:         gimp-CVE-2025-10924.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2025-10920.patch CVE-2025-10920 ZDI-25-909 ZDI-CAN-27684 bsc#1250495 qzhao@suse.com -- Prevent overflow attack by checking if output >= max, not just output > max.
+Patch5:         gimp-CVE-2025-10920.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2025-10922.patch CVE-2025-10922 ZDI-25-911 ZDI-CAN-27863 bsc#1250497 qzhao@suse.com -- Fix GIMP DCM file parsing heap-based buffer overflow remote code execution vulnerability.
+Patch6:         gimp-CVE-2025-10922.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2025-10925.patch CVE-2025-10925 ZDI-25-914 ZDI-CAN-27793 bsc#1250501 qzhao@suse.com -- Fix GIMP ILBM file parsing stack-based buffer overflow remote code execution vulnerability.
+Patch7:         gimp-CVE-2025-10925.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif
