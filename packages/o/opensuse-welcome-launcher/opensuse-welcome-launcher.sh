@@ -38,7 +38,7 @@ welcome_binary=""
 
 # Prefer Session specific greeter
 if [[ "$de" == *plasma* ]]; then
-    welcome_binary=$(command -v plasma-welcome)
+    welcome_binary=$(command -v opensuse-welcome)
 elif [[ "$de" == *gnome* ]]; then
     welcome_binary=$(command -v gnome-tour)
 fi
@@ -47,11 +47,6 @@ fi
 if [ -z "$welcome_binary" ]; then
     welcome_binary=$(command -v opensuse-welcome)
 fi
-
-# XXX: hack for the initial integration
-# keep legacy behavior and only trigger opensuse-welcome
-# rest would be the next step
-welcome_binary=$(command -v opensuse-welcome)
 
 if [ ! -z "$welcome_binary" ]; then
     $welcome_binary

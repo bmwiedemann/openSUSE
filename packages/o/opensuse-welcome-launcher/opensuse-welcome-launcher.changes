@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  2 13:28:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Be less hacky about the fallback, but rather explicitly assign
+  opensuse-welcome to KDE for now and switch GNOME to gnome-tour.
+- Require gnome-tour when gnome-session is installed.
+
+-------------------------------------------------------------------
 Tue Aug 19 07:46:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change autostart to always launch, but internally decide if we

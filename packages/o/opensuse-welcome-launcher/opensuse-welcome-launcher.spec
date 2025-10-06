@@ -1,7 +1,7 @@
 #
 # spec file for package opensuse-welcome-launcher
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,10 @@ Source1:        org.opensuse.opensuse_welcome_launcher.desktop
 Source3:        org.opensuse.opensuse_welcome_launcher.svg
 Source4:        org.opensuse.opensuse_welcome_launcher-symbolic.svg
 Recommends:     opensuse-welcome >= 0.1.10
+Requires:       (gnome-tour if gnome-session)
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hicolor-icon-theme-branding-openSUSE
-BuildArch: noarch
+BuildArch:      noarch
 
 %description
 A simple wrapper to spawn relevant welcome tool on given desktop
@@ -67,4 +68,5 @@ install -m 0644 %{SOURCE4} %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/o
 %dir %{_datadir}/opensuse-welcome-launcher
 %{_datadir}/icons/hicolor/scalable/apps/org.opensuse.opensuse_welcome_launcher.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.opensuse.opensuse_welcome_launcher-symbolic.svg
+
 %changelog
