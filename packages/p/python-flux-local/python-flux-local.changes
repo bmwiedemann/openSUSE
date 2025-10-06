@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct  6 05:49:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.10.1:
+  * What's Changed
+    - fix(docker): fix kustomize on arm64 containers by @gabe565 in
+      #1013
+  * Dev dependency updates
+    - chore(deps): update dependency types-pyyaml to v6.0.12.20250915
+      by @renovate[bot] in #1008
+    - chore(deps): update dependency mypy to v1.18.1 by @renovate[bot]
+      in #1006
+    - chore(deps): update pre-commit hook
+      charliermarsh/ruff-pre-commit to v0.13.1 by @renovate[bot] in
+      #1010
+    - chore(deps): update dependency pyyaml to v6.0.3 by
+      @renovate[bot] in #1011
+
+-------------------------------------------------------------------
 Fri Sep 19 05:19:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.10.0:
