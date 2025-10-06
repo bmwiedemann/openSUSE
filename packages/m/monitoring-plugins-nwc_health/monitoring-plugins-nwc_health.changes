@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Oct  5 06:20:07 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 12.8:
+  Changes since 11.5.1
+  * update GLPlugin, supports now --mode snmpget.
+  * bugfix in cisco licenses.
+  * add mode sdwan-control-connections.
+  * add mode sdwan-management-connections.
+  * add forgotten Lancom files.
+  * add Lancom SX.
+  * bugfix in detection od Cisco Ironport.
+  * bugfix in interface-health/errors/discards (uninitialized
+    warnings).
+  * update GLPlugin (CISCO-SMART-LIC).
+  * improve check-licenses for Cisco
+  * bugfix in Checkpoint powersupply presence.
+  * add Cisco Firepower devices.
+  * bugfix in Cisco stacks.
+  * update blacklist for HOST-RESOURCES-MIB (more
+    pseudo-filesystems).
+  * bugfix in interface-errors and interface-discards.
+  * bugfix/improve vpn-status for Cisco (use more caching).
+  * bugfix in Dell OS10 with non-replacable power supplies.
+  * bugfix in Cisco Sensors, truthvalue should not produce
+    perfdata.
+  * Cisco power monitoring fixes (thanks rlaager).
+  * add Dell OS10.
+  * bugfix in PaloAlto security-status.
+  * add Edgecore Sonic.
+  * pull request #341 from Napsty/tplink-sys, add TP-LINK
+    (JetStream).
+  * improve caching for cisco sdwan.
+  * add mode sdwan-control-vsmart-count.
+  * add mode sdwan-control-vmanage-count.
+  * add debug output for cisco cpus.
+  * bugfix in memory-usage, avoid uninitialized errors for cisco
+    with empty ceqfpMemoryResourceTable and broken
+    entPhysicalTable.
+  * bugfix in fortigate ha-status, they changed the cluster state
+    from m-word to primary.
+  * bugfix in sdwan-route-quality, missing
+    appRouteStatisticsAppProbeClassTable.
+  * add cisco qfp to mem/cpu checks.
+  * bugfix in vedgecount, initial run showed undef values.
+  * add mode vpn-status for Fortigate.
+  * evaluate thresholds for SDWAN jitter.
+  * add mode ha-status for Barracuda (better use ha-role).
+  * add F5 Velos.
+  * add hardware check for Cisco UCS.
+
+-------------------------------------------------------------------
 Tue Sep 10 18:21:26 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 11.5.1:

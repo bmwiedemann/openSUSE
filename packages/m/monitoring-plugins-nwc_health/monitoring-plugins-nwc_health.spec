@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-nwc_health
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define         realname check_nwc_health
 Name:           monitoring-plugins-nwc_health
-Version:        11.5.1
+Version:        12.8
 Release:        0
 Summary:        This plugin checks the health of network components and interfaces
 License:        GPL-2.0-or-later
@@ -47,7 +47,7 @@ This plugin checks the hardware health and various interface metrics of
 network components like switches and routers.
 
 %prep
-%setup -q -n %{realname}-%{version}
+%autosetup -n %{realname}-%{version}
 
 %build
 autoreconf -fiv
@@ -59,11 +59,10 @@ autoreconf -fiv
 	--with-degrees=celsius \
 	--enable-perfdata \
 	--enable-hwinfo
-make %{?_smp_mflags}
+%make_build
 
 %install
-mkdir -p %{buildroot}/%{nagios_plugindir}
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 install -D -m644 %{SOURCE1} %{buildroot}/%{pnp4nagios_templatedir}/check_nwc_health.php
 
 %files
