@@ -1,7 +1,7 @@
 #
 # spec file for package languagetool
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,6 +62,7 @@ BuildRequires:  mvn(org.mybatis:mybatis)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.softcatala:catalan-pos-dict)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
+Requires:       aho-corasick-double-array-trie
 Requires:       apache-commons-cli
 Requires:       apache-commons-codec
 Requires:       apache-commons-collections4
@@ -71,29 +72,39 @@ Requires:       apache-commons-lang3
 Requires:       apache-commons-logging
 Requires:       apache-commons-pool2
 Requires:       apache-commons-text
-Requires:       bcel
-Requires:       berkeleylm
 Requires:       beust-jcommander
 Requires:       catalan-pos-dict
 Requires:       german-pos-dict
+Requires:       glassfish-activation-api
+Requires:       glassfish-annotation-api
 Requires:       glassfish-fastinfoset
 Requires:       glassfish-jaxb-api
 Requires:       glassfish-jaxb-runtime
 Requires:       glassfish-jaxb-txw2
+Requires:       google-errorprone-annotations
 Requires:       guava
-Requires:       hamcrest-core
+Requires:       hamcrest
 Requires:       hppc
 Requires:       indriya
 Requires:       istack-commons-runtime
+Requires:       j2objc-annotations
 Requires:       jackson-annotations
 Requires:       jackson-core
 Requires:       jackson-databind
-Requires:       jaf
 Requires:       jafama
+Requires:       java-diff-utils
 Requires:       java-jwt
+Requires:       javassist
 Requires:       jetbrains-annotations
+Requires:       jline3-builtins
+Requires:       jline3-native
+Requires:       jline3-reader
+Requires:       jline3-style
+Requires:       jline3-terminal
+Requires:       jline3-terminal-jna
 Requires:       jna
-Requires:       jsr-305
+Requires:       jna-contrib
+Requires:       jspecify
 Requires:       junit
 Requires:       jwnl
 Requires:       jwordsplitter
@@ -110,6 +121,7 @@ Requires:       morfologik-stemming
 Requires:       mybatis
 Requires:       objectweb-asm
 Requires:       objenesis
+Requires:       ognl
 Requires:       opennlp-chunk-models
 Requires:       opennlp-maxent
 Requires:       opennlp-postag-models
@@ -121,13 +133,12 @@ Requires:       prometheus-simpleclient-java-common
 Requires:       prometheus-simpleclient-java-guava
 Requires:       prometheus-simpleclient-java-hotspot
 Requires:       prometheus-simpleclient-java-httpserver
+Requires:       prometheus-simpleclient-java-tracer-common
 Requires:       reflectasm
-Requires:       regexp
 Requires:       scala
 Requires:       segment
 Requires:       slf4j
 Requires:       stax-ex
-Requires:       typesafe-config
 Requires:       unit-api
 Requires:       uom-lib-common
 Requires:       xgboost

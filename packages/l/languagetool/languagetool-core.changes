@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  6 06:57:53 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix Requires so that they correspond to reality
+
+-------------------------------------------------------------------
 Wed Feb  5 06:11:49 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Make languagetool-core archful, because it requires system

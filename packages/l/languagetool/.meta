@@ -3,6 +3,5 @@
   <description>LanguageTool is a free and open-source grammar checker.
 
 </description>
-  <devel project="Java:packages" package="languagetool"/>
   <url>https://languagetool.org</url>
 </package>

@@ -79,4 +79,12 @@
     <comment>make core package archful</comment>
     <requestid>1243244</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>d544e1b747ef391e69fe2956535326f0</srcmd5>
+    <version>4.8</version>
+    <time>1759766885</time>
+    <user>dimstar_suse</user>
+    <comment>Fix requires</comment>
+    <requestid>1309275</requestid>
+  </revision>
 </revisionlist>

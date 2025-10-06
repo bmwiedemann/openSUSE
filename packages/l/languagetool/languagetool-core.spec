@@ -1,7 +1,7 @@
 #
 # spec file for package languagetool-core
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,14 +36,13 @@ Patch4:         languagetool-test-resource.patch
 BuildRequires:  fdupes
 BuildRequires:  hunspell-devel
 BuildRequires:  maven-local
-BuildRequires:  mvn(biz.k11i:xgboost-predictor)
+BuildRequires:  mvn(ai.h2o:xgboost-predictor)
 BuildRequires:  mvn(ch.qos.logback:logback-classic)
 BuildRequires:  mvn(com.carrotsearch:hppc)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(com.intellij:annotations)
 BuildRequires:  mvn(com.optimaize.languagedetector:language-detector)
-BuildRequires:  mvn(edu.berkeley.nlp:berkeleylm)
 BuildRequires:  mvn(javax.activation:javax.activation-api)
 BuildRequires:  mvn(javax.measure:unit-api)
 BuildRequires:  mvn(javax.xml.bind:jaxb-api)
