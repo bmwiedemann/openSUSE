@@ -47,6 +47,9 @@ BuildRequires:  libSDL-devel
 BuildRequires:  libad9361-iio-devel
 BuildRequires:  libboost_atomic-devel >= 1.69
 BuildRequires:  libboost_filesystem-devel >= 1.69
+%if 0%{?suse_version} <= 1600
+BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libgsm-devel
 BuildRequires:  libiio-devel
 BuildRequires:  libjack-devel
@@ -204,7 +207,9 @@ zsh command line completion support for %{name}.
 %setup -q
 %patch -P 0 -p1
 %patch -P 1 -p1 -R
+%if 0%{?suse_version} > 1600
 %patch -P 2 -p1
+%endif
 
 # protect the template files from %%cmake macro magic / mangling
 find  gr-utils/modtool/templates/gr-newmod -name CMakeLists.txt -ls -exec mv '{}' '{}.tmpl' \;

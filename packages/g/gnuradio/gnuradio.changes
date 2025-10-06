@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  2 13:52:39 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Restore libboost_system-devel for Leap 16.0 (boost 1.86)
+
+-------------------------------------------------------------------
 Mon Sep 29 09:11:09 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 -  Remove BuildRequires on libboost_system-devel,
