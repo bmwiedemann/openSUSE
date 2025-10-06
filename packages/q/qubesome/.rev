@@ -219,4 +219,26 @@
   * build(deps): bump github.com/go-git/go-git/v5 from 5.16.0 to 5.16.2 (forwarded request 1303191 from pjbgf)</comment>
     <requestid>1303193</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3fe113dda97203d5dcdb0464efb7767e</srcmd5>
+    <version>0.0.13</version>
+    <time>1759766868</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.13:
+  * build: Bump PROTOC to v32.1
+  * build: Bump golangci-lint to v2.5.0
+  * build: Remove redundant tenv linter
+  * Drop redundant //nolint
+  * headless: Disable mime handling The way that mime handling works at the moment, it is incompatible with headless mode. Therefore always disables it before sending the workload to the runner.
+  * profiles: Mount dbus system bus path
+  * run: Expose Wayland env variables to workloads
+  * start: Improve start of profile in Wayland
+  * Add fallback resolution In cases were xrandr or wlr-randr are not available, or return an error, fall back to a 1440x1080 resolution. This avoids silent failures which can be difficult to pinpoint.
+  * Add headless subcommand
+  * build(deps): bump the github-actions-updates group with 5 updates
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump google.golang.org/protobuf from 1.36.8 to 1.36.9
+  * build(deps): bump google.golang.org/grpc from 1.75.0 to 1.75.1 (forwarded request 1309118 from pjbgf)</comment>
+    <requestid>1309121</requestid>
+  </revision>
 </revisionlist>
