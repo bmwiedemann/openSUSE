@@ -1,0 +1,90 @@
+---
+ CMakeLists.txt     |    2 +-
+ editorconfig_lua.c |   34 ++++++++++++++++++++++++++++------
+ 2 files changed, 29 insertions(+), 7 deletions(-)
+
+Index: editorconfig-core-lua-0.3.0/CMakeLists.txt
+===================================================================
+--- editorconfig-core-lua-0.3.0.orig/CMakeLists.txt	2019-10-04 19:06:29.000000000 +0200
++++ editorconfig-core-lua-0.3.0/CMakeLists.txt	2025-10-05 23:46:24.364066893 +0200
+@@ -35,7 +35,7 @@
+ include(GNUInstallDirs)
+ 
+ find_package(EditorConfig REQUIRED)
+-set(Lua_FIND_VERSION 5.2) # minimum Lua version
++set(Lua_FIND_VERSION 5.1) # minimum Lua version
+ find_package(Lua REQUIRED)
+ 
+ set(CMAKE_C_STANDARD 99)
+Index: editorconfig-core-lua-0.3.0/editorconfig_lua.c
+===================================================================
+--- editorconfig-core-lua-0.3.0.orig/editorconfig_lua.c	2019-10-04 19:06:29.000000000 +0200
++++ editorconfig-core-lua-0.3.0/editorconfig_lua.c	2025-10-05 23:46:58.750059153 +0200
+@@ -6,10 +6,10 @@
+  * modification, are permitted provided that the following conditions are met:
+  *
+  * 1. Redistributions of source code must retain the above copyright notice,
+- *    this list of conditions and the following disclaimer.
++ * this list of conditions and the following disclaimer.
+  * 2. Redistributions in binary form must reproduce the above copyright notice,
+- *    this list of conditions and the following disclaimer in the documentation
+- *    and/or other materials provided with the distribution.
++ * this list of conditions and the following disclaimer in the documentation
++ * and/or other materials provided with the distribution.
+  *
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+@@ -36,6 +36,28 @@
+ #error "LEC_VERSION is not defined."
+ #endif
+ 
++#if LUA_VERSION_NUM < 502
++/*
++ * Lua 5.1 compatibility functions.
++ * Adapted from Lua 5.2.x source.
++ */
++static void
++luaL_setfuncs(lua_State *L, const luaL_Reg *l, int nup)
++{
++    luaL_checkstack(L, nup, "too many upvalues");
++    for (; l->name; l++) {
++        int i;
++        for (i = 0; i < nup; i++)
++            lua_pushvalue(L, -nup);
++        lua_pushcclosure(L, l->func, nup);
++        lua_setfield(L, -(nup + 2), l->name);
++    }
++    lua_pop(L, nup);
++}
++
++#define luaL_newlib(L, l) (lua_newtable(L), luaL_setfuncs(L, l, 0))
++#endif
++
+ /***
+  * Lua bindings to the EditorConfig C Core library.
+  * @module editorconfig
+@@ -94,7 +116,7 @@
+     editorconfig_handle eh;
+     int name_value_count;
+     const char *name, *value;
+-    lua_Integer idx = 1;
++    lua_Number idx = 1; /* Use lua_Number for Lua 5.1 compatibility */
+ 
+     eh = open_ec_handle(L);
+     assert(eh != NULL);
+@@ -108,7 +130,7 @@
+         lua_pushstring(L, name);
+         lua_pushstring(L, value);
+         lua_settable(L, 1);
+-        lua_pushinteger(L, idx);
++        lua_pushnumber(L, idx); /* Use lua_pushnumber for Lua 5.1 compatibility */
+         lua_pushstring(L, name);
+         lua_settable(L, 2);
+         idx += 1;
+@@ -149,4 +171,4 @@
+     luaL_newlib(L, editorconfig_reg);
+     add_version(L);
+     return 1;
+-}
++}
+\ No newline at end of file

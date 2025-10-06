@@ -26,6 +26,9 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/Other
 URL:            https://github.com/editorconfig/editorconfig-core-lua
 Source:         https://github.com/editorconfig/%{mod_name}/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM build-with-lua51.patch gh#editorconfig/editorconfig-core-lua!5 mcepl@suse.com
+# make package building with Lua 5.1
+Patch0:         build-with-lua51.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luafilesystem
 BuildRequires:  %{flavor}-penlight
@@ -52,7 +55,7 @@ editors. EditorConfig Lua Core provides the same functionality
 as the Editorconfig C Core library.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%autosetup -p1 -n %{mod_name}-%{version}
 
 %build
 %cmake -DECL_LIBDIR:PATH=%{lua_archdir} \

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  5 21:48:42 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add build-with-lua51.patch to make it possible to build with
+  Lua 5.1 (gh#editorconfig/editorconfig-core-lua!5).
+
+-------------------------------------------------------------------
 Mon May  9 14:58:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add LUA_INCLUDE_DIR cmake parameter.

@@ -31,4 +31,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>977554</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f406fe8653a73faa3f72e63afbd88c28</srcmd5>
+    <version>0.3.0</version>
+    <time>1759766908</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build-with-lua51.patch to make it possible to build with
+  Lua 5.1 (gh#editorconfig/editorconfig-core-lua!5).</comment>
+    <requestid>1309200</requestid>
+  </revision>
 </revisionlist>
