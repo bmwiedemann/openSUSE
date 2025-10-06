@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  6 10:52:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 12.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove generated samples and tests from source
+- Update Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri Jul 11 06:26:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

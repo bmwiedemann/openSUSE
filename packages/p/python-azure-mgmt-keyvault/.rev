@@ -271,4 +271,17 @@
 - Update Requires from setup.py (forwarded request 1291854 from glaubitz)</comment>
     <requestid>1291957</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8cc469b14c6908533ece922a908a213d</srcmd5>
+    <version>12.1.0</version>
+    <time>1759766925</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove generated samples and tests from source
+- Update Requires from pyproject.toml (forwarded request 1309249 from glaubitz)</comment>
+    <requestid>1309254</requestid>
+  </revision>
 </revisionlist>
