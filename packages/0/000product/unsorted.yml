@@ -699,6 +699,8 @@ unsorted:
   - apache-commons-dbcp1-javadoc 
   - apache-commons-digester 
   - apache-commons-digester-javadoc 
+  - apache-commons-digester3 
+  - apache-commons-digester3-javadoc 
   - apache-commons-el 
   - apache-commons-el-javadoc 
   - apache-commons-email 
@@ -7323,9 +7325,6 @@ unsorted:
   - gnome-themes 
   - gnome-themes-extras 
   - gnome-themes-lang 
-  - gnome-tour 
-  - gnome-tour-data 
-  - gnome-tour-lang 
   - gnome-tour-minimal 
   - gnome-usage 
   - gnome-usage-lang 
@@ -7473,6 +7472,7 @@ unsorted:
   - go1.9-doc 
   - go1.9-race 
   - goaccess 
+  - goben 
   - gobject-introspection 
   - gobject-introspection-devel 
   - gocr 
@@ -13071,7 +13071,7 @@ unsorted:
   - libfastlz1 
   - libfastlz1-x86-64-v3 
   - libfasttext0 
-  - libfaxutil7_0_10 
+  - libfaxutil7_0_11 
   - libfcache-devel 
   - libfcache1 
   - libfcft4 
@@ -13134,7 +13134,6 @@ unsorted:
   - libfishsound1 
   - libfityk4 
   - libfixbuf-devel 
-  - libfixbuf-tools 
   - libfixbuf9 
   - libfixposix-devel 
   - libfixposix4 
@@ -17680,6 +17679,7 @@ unsorted:
   - lua51-devel 
   - lua51-dkjson 
   - lua51-doc 
+  - lua51-editorconfig-core-lua 
   - lua51-fluent 
   - lua51-ldbus 
   - lua51-ldoc 
@@ -48735,6 +48735,10 @@ unsorted:
   - velocity-javadoc 
   - velocity-manual 
   - velocity-master 
+  - velocity-tools-generic 
+  - velocity-tools-javadoc 
+  - velocity-tools-view 
+  - velocity-tools-view-jsp 
   - velum-branding 
   - vendor-reset-kmp 
   - vendor-reset-kmp-default 
