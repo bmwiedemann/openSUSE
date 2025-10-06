@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  6 10:51:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 37.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove generated samples and tests from source
+- Update Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Mon Sep  1 10:43:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

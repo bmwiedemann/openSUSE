@@ -505,4 +505,17 @@
 - Update Requires from setup.py (forwarded request 1302186 from glaubitz)</comment>
     <requestid>1302410</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>68be4f1974a4513f33ef4a683570133f</srcmd5>
+    <version>37.0.0</version>
+    <time>1759766922</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 37.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove generated samples and tests from source
+- Update Requires from pyproject.toml (forwarded request 1309248 from glaubitz)</comment>
+    <requestid>1309253</requestid>
+  </revision>
 </revisionlist>
