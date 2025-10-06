@@ -471,4 +471,12 @@
     <comment>Upgrade to 9.3.0, fixes CVE-2025-30706, bsc#1241693</comment>
     <requestid>1272389</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>8aba8004fc48e9b3319651bcaa8971f6</srcmd5>
+    <version>9.3.0</version>
+    <time>1759766883</time>
+    <user>dimstar_suse</user>
+    <comment>Make installable again</comment>
+    <requestid>1309150</requestid>
+  </revision>
 </revisionlist>

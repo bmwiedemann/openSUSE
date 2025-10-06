@@ -45,7 +45,7 @@ BuildRequires:  protobuf-devel >= 26
 BuildRequires:  protobuf-java >= 26
 BuildRequires:  slf4j
 BuildRequires:  xz
-Requires:       jta >= 1.0
+Requires:       geronimo-jta-1_1-api
 Requires:       slf4j
 Provides:       mm.mysql = %{version}
 Obsoletes:      mm.mysql < %{version}
@@ -102,7 +102,7 @@ export CLASSPATH=$(build-classpath \
     commons-logging \
     slf4j \
     jdbc-stdext \
-    jta \
+    geronimo-jta-1.1-api \
     junit \
     reload4j \
     protobuf)

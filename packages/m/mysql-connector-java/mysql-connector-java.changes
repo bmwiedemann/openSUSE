@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  6 06:10:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require jta >= 1.0, but directly the geronimo-jta-1_1-api.
+  After the removal of update-alternatives from the geronimo-specs
+  package, the virtual provides were removed.
+
+-------------------------------------------------------------------
 Thu Apr 24 11:08:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to Version 9.3.0

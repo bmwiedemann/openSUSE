@@ -7,5 +7,4 @@ language easily build programs and applets that interact with MySQL and
 connect all corporate data, even in a heterogeneous environment. MySQL
 Connector/J is a Type IV JDBC driver and has a complete JDBC feature
 set that supports the capabilities of MySQL.</description>
-  <devel project="Java:packages" package="mysql-connector-java"/>
 </package>
