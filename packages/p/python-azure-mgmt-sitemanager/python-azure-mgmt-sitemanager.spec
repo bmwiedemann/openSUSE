@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 1.0.0b1
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-sitemanager
-Version:        1.0.0~b1
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Sitemanager Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_sitemanager/azure_mgmt_sitemanager-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_sitemanager/azure_mgmt_sitemanager-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -51,7 +49,9 @@ This is the Microsoft Azure Sitemanager Management Client Library.
 This package has been tested with Python 3.9+.
 
 %prep
-%setup -q -n azure_mgmt_sitemanager-%{realversion}
+%setup -q -n azure_mgmt_sitemanager-%{version}
+# see: https://github.com/Azure/azure-sdk-for-python/issues/43082
+rm -rf generated_samples generated_tests
 
 %build
 %pyproject_wheel
