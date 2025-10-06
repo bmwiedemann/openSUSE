@@ -21,7 +21,7 @@
 %define mutter_req 49.0
 
 Name:           gnome-shell
-Version:        49.0+9
+Version:        49.0+17
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -38,6 +38,9 @@ Source100:      noise-texture.png
 
 # PATCH-FIX-UPSTREAM gnome-shell-fix-cursor-on-hide-preedit.patch glgo#GNOME/gnome-shell!3318 alynx.zhou@suse.com -- Correctly reset cursor when hide preedit
 Patch1:         gnome-shell-fix-cursor-on-hide-preedit.patch
+
+# PATCH-FEATURE-OPENSUSE -- Do not ask to launch gnome-tour; openSUSE handles the logic in opensuse-welcome-launcher
+Patch100:       gnome-shell-no-gnome-tour.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.

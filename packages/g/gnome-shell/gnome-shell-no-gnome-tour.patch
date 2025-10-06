@@ -1,0 +1,13 @@
+diff --git a/js/ui/sessionMode.js b/js/ui/sessionMode.js
+index e45fce087..d041c1eff 100644
+--- a/js/ui/sessionMode.js
++++ b/js/ui/sessionMode.js
+@@ -79,7 +79,7 @@ const _modes = {
+     'user': {
+         hasOverview: true,
+         showCalendarEvents: true,
+-        showWelcomeDialog: true,
++        showWelcomeDialog: false,
+         allowSettings: true,
+         allowScreencast: true,
+         hasRunDialog: true,
