@@ -1,8 +1,8 @@
 #
 # spec file for package libfixbuf
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2013-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2013-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,15 @@
 
 %define sover 9
 Name:           libfixbuf
-Version:        2.4.2
+Version:        2.5.2
 Release:        0
 Summary:        Implementation of the IPFIX Protocol as a C library
 License:        LGPL-3.0-only
 Group:          System/Libraries
 URL:            https://tools.netsa.cert.org/fixbuf
 Source:         https://tools.netsa.cert.org/releases/%{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
-BuildRequires:  autoconf
-BuildRequires:  glib2-devel
-BuildRequires:  libtool
+BuildRequires:  glib2-devel >= 2.34.0
+BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 
 %description
@@ -67,25 +65,10 @@ IPFIX Exporting Processes may be built.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libfixbuf.
 
-%package tools
-Summary:        IPFIX file dumper
-Group:          Productivity/Networking/Diagnostic
-
-%description tools
-libfixbuf is a compliant implementation of the IPFIX Protocol, as defined in
-RFC 5101. It supports the information model defined in RFC 5102, extended as
-proposed by RFC 5103 to support information elements for representing biflows.
-libfixbuf supports UDP, TCP, SCTP, TLS over TCP, and Spread as transport
-protocols.
-
-ipfixDump is a command line tool for printing the contents of an IPFIX
-file as text.
-
 %prep
-%setup -q
+%autosetup
 
 %build
-autoreconf -fiv
 %configure
 %make_build
 
@@ -93,8 +76,7 @@ autoreconf -fiv
 %make_install
 rm %{buildroot}/%{_libdir}/*.{la,a}
 
-%post   -n libfixbuf%{sover} -p /sbin/ldconfig
-%postun -n libfixbuf%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libfixbuf%{sover}
 
 %files -n libfixbuf%{sover}
 %license LICENSE.txt
@@ -107,12 +89,5 @@ rm %{buildroot}/%{_libdir}/*.{la,a}
 %{_includedir}/fixbuf/*.h
 %{_libdir}/libfixbuf.so
 %{_libdir}/pkgconfig/libfixbuf.pc
-
-%files tools
-%license LICENSE.txt
-%{_bindir}/ipfixDump
-%{_datadir}/libfixbuf
-%{_datadir}/libfixbuf/cert_ipfix.xml
-%{_mandir}/man1/ipfixDump.1%{?ext_man}
 
 %changelog

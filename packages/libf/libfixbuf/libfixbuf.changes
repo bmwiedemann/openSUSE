@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct  4 14:56:04 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.2
+  * Fixed an issue where fixbuf could export empty IPFIX Record
+    Sets which the IPFIX standard does not allow and some
+    collectors reject.
+  * Eliminated a warning during NetFlow-v9 collection regarding
+    element sizes.
+- Update to version 2.5.1
+  * Changed writing to a TCP socket to re-attempt the write when
+    the initial attempt is incomplete.
+- Update to version 2.5.0
+  * Removed the ipfixDump application which is now part of the
+    fixbuf-tools package.
+  * Added the ability to specify the source IP address an exporter
+    will bind to.
+- Use %ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Fri Mar 21 21:45:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove unused pcre build dependency
