@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Mon Sep 29 11:39:11 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.5:
+  * Cleanup after release problems
+- update to 3.10.4:
+  * fix: add write permission for contents in release.yml (#2359)
+- update to 3.10.3:
+  * fix: update environment name for PyPI publishing in
+    release.yml
+- update to 3.10.2:
+  * fix: remove unused password input from PyPI publish action in
+    release (#2357) @studioj
+- update to 3.10.1:
+  * fix: fixes #2346 fields input argument for search should not
+    change behaviour (#2347) @studioj
+- update to 3.10.0:
+  * Bump codecov/codecov-action from 4 to 5
+  * Add enhanced_search_issues API for Jira Cloud using new
+    search/jql endpoint
+  * Fix docstring for Issue_delete() method
+  * Bump coactions/dynamic-matrix from 3 to 4
+  * Add missing pip test dependency
+  * Remove support for python 3.9
+  * Update linters
+  * GHA Maintenance
+  * Don't add empty json from default dictionary to GET payloads
+    to avoid 403 from jira API.
+  * Fix docs for `myself`
+  * Handle when jira is behind a proxy
+  * Expand comments method to include all available API options
+  * Allow users to search issues without retrieving fields
+  * Logging=False is not honored in _create_oauth_session #1777
+  * fix client timeout argument description
+  * Fix CI GitHub Action Workflow
+  * Fix tox config to create local Jira user for tests
+- update to 3.9.4:
+  * migrate setup.cfg to pyproject.toml
+  * removing BountySource from readme
+  * Adopt tox workflow using coactions/dynamic-matrix
+  * Fix docs jobs
+  * Remove support for py38 and enable py312 testing
+  * fix(parse-errors): ensure if block execution
+  * Remove pillow as a dependency
+  * Add pin/unpin & pinned_comments
+  * Provide overload type hints for search_issues variants
+  * fix CI
+  * fix: Wrong tox env for packaging after rename in 39d89ef2 by
+    @studioj and @wulmer in
+    https://github.com/pycontribs/jira/pull/1924
+  * fix: release.yml
+  * debug: run a verbose test pypi release to see the errors
+- update to 3.9.3:
+  * migrate setup.cfg to pyproject.toml
+  * bump deps
+  * removing BountySource from readme
+  * Fix several bugs reported by linters
+  * Adopt tox workflow using coactions/dynamic-matrix
+  * Fix docs jobs
+  * Remove support for py38 and enable py312 testing
+  * [pre-commit.ci] pre-commit autoupdate
+  * fix(parse-errors): ensure if block execution
+  * Remove pillow as a dependency
+  * Add pin/unpin & pinned_comments
+  * Provide overload type hints for search_issues variants
+  * fix: Wrong tox env for packaging after rename in 39d89ef2 by
+    @studioj and @wulmer in
+    https://github.com/pycontribs/jira/pull/1924
+  * fix: release.yml
+- update to 3.9.2:
+  * fix: Wrong tox env for packaging after rename in 39d89ef2
+  * removing BountySource from readme
+  * Fix several bugs reported by linters
+  * Adopt tox workflow using coactions/dynamic-matrix
+  * Fix docs jobs
+  * Remove support for py38 and enable py312 testing
+  * fix(parse-errors): ensure if block execution
+  * Remove pillow as a dependency
+  * Add pin/unpin & pinned_comments
+  * Provide overload type hints for search_issues variants
+  * change the branch of the pypi publisher release
+  * fix: Wrong tox env for packaging after rename in 39d89ef2 by
+    @studioj and @wulmer in
+- update to 3.9.1:
+  * change the branch of the pypi publisher release (#1909)
+  * Remove support for py38 and enable py312 testing (#1886)
+- update to 3.9.0:
+  * Remove support for py38 and enable py312 testing (#1886)
+  * Add pin/unpin & pinned_comments (#1888) @marci4
+  * migrate setup.cfg to pyproject.toml (#1776) @deronnax
+  * Remove pillow as a dependency (#1891) @ssbarnea
+  * fix(parse-errors): ensure if block execution (#1854) @kmosti
+  * Fix docs jobs (#1884) @ssbarnea
+  * Adopt tox workflow using coactions/dynamic-matrix (#1883)
+    @ssbarnea
+  * Fix several bugs reported by linters (#1882) @ssbarnea
+  * Provide overload type hints for search_issues variants
+
+-------------------------------------------------------------------
 Wed Jun 11 20:43:07 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Packaging sanity

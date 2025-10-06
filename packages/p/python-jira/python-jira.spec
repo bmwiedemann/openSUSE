@@ -1,7 +1,7 @@
 #
 # spec file for package python-jira
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-jira
-Version:        3.8.0
+Version:        3.10.5
 Release:        0
 Summary:        Python library for interacting with JIRA via REST APIs
 License:        BSD-3-Clause
