@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  1 14:41:06 UTC 2025 - Jordi Massaguer <jmassaguerpla@suse.com>
+
+- Update to 0.6.3
+  * Remove jsonschema-specifications version limit #149
+  * References docs example fix #178
+
+-------------------------------------------------------------------
 Thu Nov  9 10:28:51 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.6.2

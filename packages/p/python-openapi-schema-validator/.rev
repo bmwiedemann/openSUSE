@@ -98,4 +98,14 @@
   - Disable test_validators to fix build error.</comment>
     <requestid>1124423</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6eab6139c7279caf02c32ea9faa2ff94</srcmd5>
+    <version>0.6.3</version>
+    <time>1759766910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.3
+  * Remove jsonschema-specifications version limit #149
+  * References docs example fix #178</comment>
+    <requestid>1309210</requestid>
+  </revision>
 </revisionlist>
