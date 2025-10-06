@@ -138,4 +138,12 @@
     <comment>- avoid deprecated rpm syntax</comment>
     <requestid>1148460</requestid>
   </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>e1b9093d01f51a018b694aae999f1b8e</srcmd5>
+    <version>2.6.2</version>
+    <time>1759766894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309146</requestid>
+  </revision>
 </revisionlist>

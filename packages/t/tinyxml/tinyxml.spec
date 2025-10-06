@@ -1,7 +1,7 @@
 #
 # spec file for package tinyxml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source2:        Makefile.am
 Source3:        tinyxml.h.in
 Source4:        use_stl_def
 Source5:        Makefile.am.docs
+Source6:        tinyxml.pc
 Patch0:         tinyxml-c_headers.patch
 Patch1:         tinyxml-entity.patch
 Patch2:         tinyxml-2.62-fix-infinite-loop.patch
@@ -67,7 +68,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{lib_package} = %{version}
 Provides:       libtinyxml-devel = %{version}
 Obsoletes:      libtinyxml-devel < %{version}
-Suggests:       %{name}-%{docs}
+Suggests:       %{name}-docs
 
 %description    devel
 The libtinyxml-devel package contains libraries and header files for
@@ -78,6 +79,7 @@ Summary:        Documentaqtion for libtinyxml
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lib_package} = %{version}
+BuildArch:      noarch
 
 %description    docs
 This packages contains the HTML documentation and a tutorial for
@@ -103,6 +105,12 @@ make %{?_smp_mflags}
 %makeinstall
 rm -f %{buildroot}%{_libdir}/*.la
 
+sed -i -e 's:PREFIX:%{_prefix}:g' \
+       -e 's:LIBDIR:%{_libdir}:g' \
+	   -e 's:VERSION:%{version}:g' \
+	   %{S:6}
+install -m644 -Dt %{buildroot}/%{_libdir}/pkgconfig %{S:6}
+
 %post -n %{lib_package} -p /sbin/ldconfig
 
 %postun -n %{lib_package} -p /sbin/ldconfig
@@ -116,6 +124,7 @@ rm -f %{buildroot}%{_libdir}/*.la
 %defattr(-,root,root,-)
 %{_includedir}/*
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/tinyxml.pc
 
 %files docs
 %defattr(-,root,root,-)

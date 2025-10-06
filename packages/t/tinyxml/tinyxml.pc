@@ -1,0 +1,10 @@
+prefix=PREFIX
+exec_prefix=${prefix}
+libdir=LIBDIR
+includedir=${prefix}/include
+
+Name: TinyXML
+Description: simple, small, C++ XML parser
+Version: VERSION
+Libs: -L${libdir} -ltinyxml
+Cflags: -I${includedir}

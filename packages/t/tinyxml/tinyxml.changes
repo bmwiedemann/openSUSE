@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  4 12:20:12 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- added pkgconfig support (added tinyxml.pc template file)
+- fixed Suggests on tinyxml-docs not specified properly
+- changed tinyxml-docs package to noarch
+
+-------------------------------------------------------------------
 Wed Feb 21 09:43:36 CET 2024 - aschnell@suse.com
 
 - avoid deprecated rpm syntax
