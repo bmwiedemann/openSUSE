@@ -1,7 +1,7 @@
 #
 # spec file for package python-jplephem
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-jplephem
-Version:        2.22
+Version:        2.23
 Release:        0
 Summary:        Planet position predictor using a JPL ephemeris
 License:        MIT

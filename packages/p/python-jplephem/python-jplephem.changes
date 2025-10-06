@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 29 12:05:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23:
+  * An ephemeris created with the ``excerpt`` command, instead of simply
+    copying verbatim the comments area of the original ephemeris, now adds
+    text declaring “This is an ephemeris excerpt created by jplephem” and
+    recording the dates that the user asked for.
+  * The segments of an excerpt ephemeris now advertise exactly the start
+    date and end date that the user asked for, even if the underlying
+    polynomials cover a wider range of dates.
+  * A new ``-v`` (“verbose”) command-line option to the ``spk``
+    sub-command prints not only each segment’s descriptor, but the
+    dimensions and date range of its underlying polynomial array.
+
+-------------------------------------------------------------------
 Mon Apr 29 14:58:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.22
@@ -57,15 +72,15 @@ Mon Nov 16 14:06:39 UTC 2020 - Marketa Machova <mmachova@suse.com>
 Thu Jul  9 11:44:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 2.14
-  * Fall back to plain file I/O on platforms that support 
-    fileno() but that don’t support mmap(), like the Pyodide 
+  * Fall back to plain file I/O on platforms that support
+    fileno() but that don’t support mmap(), like the Pyodide
     platform.
 - Update to 2.13
-  * The exception raised when a segment is given a Julian date 
-    outside the segment’s date range is now an instance of the 
-    ValueError subclass OutOfRangeError that reminds the caller 
-    of the range of dates supported by the SPK segment, and 
-    carries an array attribute indicating which input dates were 
+  * The exception raised when a segment is given a Julian date
+    outside the segment’s date range is now an instance of the
+    ValueError subclass OutOfRangeError that reminds the caller
+    of the range of dates supported by the SPK segment, and
+    carries an array attribute indicating which input dates were
     at fault.
 
 -------------------------------------------------------------------
@@ -114,13 +129,13 @@ Fri Jan  4 16:33:04 UTC 2019 - Todd R <toddrme2178@gmail.com>
   * Start writing a comprehensive test of DAF class
   * Avoid antipattern of attribute that shows up later
   * Add routine for writing a new DAF file summary
-  * Switch DAF class to cached Struct objects 
+  * Switch DAF class to cached Struct objects
   * Introduce the idea of simply read()ing floats, too
   * Mark `ephem.py` as deprecated
   * Remove unused import
   * Make README test instructions more complete
   * Add note to README about how to run the tests
-  * Add link to Skyfield to README 
+  * Add link to Skyfield to README
 
 -------------------------------------------------------------------
 Wed May 24 16:36:53 UTC 2017 - toddrme2178@gmail.com
