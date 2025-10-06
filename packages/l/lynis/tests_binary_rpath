@@ -36,7 +36,7 @@
 	for FILE in $(find / -xdev -type f \( -perm -0100 -o -perm -0010 -o -perm -0001 \) 2>/dev/null)
 	do
 		((FILENUM++))
-		for RPATH_VAL in $(objdump -p "$FILE" 2>/dev/null | egrep -w '(RPATH|RUNPATH)' | awk '{ print $2 ":"}')
+		for RPATH_VAL in $(objdump -p "$FILE" 2>/dev/null | grep -E -w '(RPATH|RUNPATH)' | awk '{ print $2 ":"}')
 		do
 			if [ "${RPATH_VAL:0:7}" = "\$ORIGIN" ]; then continue; fi
 			while [ -n "$RPATH_VAL" ]

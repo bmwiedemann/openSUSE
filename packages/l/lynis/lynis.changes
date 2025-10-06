@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct  4 07:01:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tests_binary_rpath: remove usage of egrep boo#1250997
+
+-------------------------------------------------------------------
 Tue Jul 29 07:33:22 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 3.1.5
