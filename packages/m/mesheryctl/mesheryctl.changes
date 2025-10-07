@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Oct  7 06:03:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.135:
+  * General
+    - [dependecies] chore: upgrade meshsync and operator to latest
+      versions @n2h9 (#16063)
+    - Adding Kubernetes Architecture Design @AR-2910 (#16062)
+    - Feature/new relic architecture design 15984 @aviralgarg05
+      (#16004)
+    - [Meshery Design] Create a MERN stack design and publish it to
+      Meshery catalog @Sekar-C-Mca (#16035)
+    - Lightrun Architecture @PritamP20 (#16058)
+    - feat(design): Add Chaos Mesh architecture design
+      @JunaidAli-dev (#16059)
+    - [Model catalog] Import devspace-cloud model and build the
+      model OCI i… @azadDsync (#16029)
+    - Design : Add Kibana (Helm) Design @KatalKavya96 (#15992)
+    - Design: add ELKK design with kafka @KatalKavya96 (#16005)
+    - Design : Add Vald Helm chart design for Meshery Catalog
+      @KatalKavya96 (#16030)
+    - [Model catalog] Import dask-kubernetes-operator model and
+      build the m… @azadDsync (#16032)
+    - [Meshery Design] Create prometheus and grafana monitoring
+      stack as a design and publish it to Meshery catalog
+      @JeevaRamanathan (#16039)
+    - [Model catalog] Import community-operator-v2 model and build
+      the mode… @azadDsync (#16041)
+    - Create Terraform architecture design @AR-2910 (#16055)
+    - [Model catalog] Import codebase-operator model and build the
+      model OC… @azadDsync (#16052)
+    - Added Devops-Workflow design @AR-2910 (#16056)
+    - Update .aiexclude @simihablo (#16051)
+    - Create .aiexclude @yi-nuo426 (#16049)
+    - Update README.md @someone2508 (#16040)
+    - [Model catalog] Import cno model and build the model OCI
+      image @JeevaRamanathan (#16037)
+    - [Model catalog] Import dask-gateway model and build the model
+      OCI image @azadDsync (#16006)
+    - Fix Meshery Helm chart installation with
+      meshery-operator.enabled=true @Babbili (#15836)
+    - Update your-design-name.txt @Darshan174 (#15951)
+    - add hactoberfest contributions folder @Darshan174 (#15948)
+  * Meshery CLI
+    - fix(e2e bats): tests 05-model-view.bats fail @Fireentity
+      (#15902)
+  * Maintenance
+    - Bump pbkdf2 from 3.1.2 to 3.1.5 in /ui @dependabot (#15954)
+    - Bump axios from 1.9.0 to 1.12.2 in /ui @dependabot (#15956)
+    - Bump @sistent/sistent from 0.14.211 to 0.15.9 in /provider-ui
+      @dependabot (#15995)
+    - Bump github.com/prometheus/common from 0.63.0 to 0.66.1
+      @dependabot (#15997)
+    - Bump github.com/spf13/viper from 1.20.1 to 1.21.0 @dependabot
+      (#15999)
+    - update issue template @Darshan174 (#15964)
+    - fix(e2e bats): tests 05-model-view.bats fail @Fireentity
+      (#15902)
+    - Created a new template publishing models @Darshan174 (#15927)
+  * Documentation
+    - Bump rexml from 3.4.0 to 3.4.2 in /docs @dependabot (#15837)
+
+-------------------------------------------------------------------
 Wed Oct  1 12:52:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.134:
