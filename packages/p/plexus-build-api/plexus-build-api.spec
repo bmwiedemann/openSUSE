@@ -22,7 +22,7 @@ Release:        0
 Summary:        Plexus Build API
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            https://github.com/sonatype/sisu-build-api
+URL:            https://github.com/codehaus-plexus/plexus-build-api
 Source0:        https://github.com/codehaus-plexus/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
 BuildRequires:  ant

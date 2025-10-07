@@ -55,4 +55,12 @@
     <comment>Add dependency on objectweb-asm to build with sisu 0.9.0.M4</comment>
     <requestid>1282183</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>19d2726da8242dd01bf187635ddfd972</srcmd5>
+    <version>1.2.0</version>
+    <time>1759854520</time>
+    <user>dimstar_suse</user>
+    <comment>Fix wrong url</comment>
+    <requestid>1309597</requestid>
+  </revision>
 </revisionlist>
