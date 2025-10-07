@@ -1386,8 +1386,6 @@ unsorted:
   - benchmark-devel 
   - benji 
   - benzene 
-  - berkeleylm 
-  - berkeleylm-javadoc 
   - bestplugins 
   - bettercap 
   - beust-jcommander 
@@ -22863,6 +22861,8 @@ unsorted:
   - plexus-resources-javadoc 
   - plexus-sec-dispatcher 
   - plexus-sec-dispatcher-javadoc 
+  - plexus-testing 
+  - plexus-testing-javadoc 
   - plexus-utils 
   - plexus-utils-javadoc 
   - plexus-velocity 
@@ -26132,7 +26132,6 @@ unsorted:
   - python311-numpy1 
   - python311-numpy1-devel 
   - python311-numpydoc 
-  - python311-nvim-remote 
   - python311-nwdiag 
   - python311-o2sclpy 
   - python311-oauthlib 
@@ -26656,6 +26655,7 @@ unsorted:
   - python311-pytest 
   - python311-pytest-aiohttp 
   - python311-pytest-arraydiff 
+  - python311-pytest-asdf-plugin 
   - python311-pytest-astropy 
   - python311-pytest-astropy-header 
   - python311-pytest-asyncio 
@@ -30455,6 +30455,7 @@ unsorted:
   - python312-pytest 
   - python312-pytest-aiohttp 
   - python312-pytest-arraydiff 
+  - python312-pytest-asdf-plugin 
   - python312-pytest-astropy 
   - python312-pytest-astropy-header 
   - python312-pytest-asyncio 
@@ -34203,6 +34204,7 @@ unsorted:
   - python313-pytest 
   - python313-pytest-aiohttp 
   - python313-pytest-arraydiff 
+  - python313-pytest-asdf-plugin 
   - python313-pytest-astropy 
   - python313-pytest-astropy-header 
   - python313-pytest-asyncio 
