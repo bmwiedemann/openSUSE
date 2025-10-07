@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Sep 29 15:31:07 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20250929.
+  git-annex (10.20250929) upstream; urgency=medium
+
+    * enableremote: Allow type= to be provided when it does not change the
+      type of the special remote.
+    * importfeed: Fix encoding issues parsing feeds when built with OsPath.
+    * Fix build with ghc 9.0.2.
+    * Remove the Servant build flag; always build with support for
+      annex+http urls and git-annex p2phttp.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 29 Sep 2025 11:28:09 -0400
+
+-------------------------------------------------------------------
+Thu Sep 25 17:23:28 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20250925.
+  git-annex (10.20250925) upstream; urgency=medium
+
+    * Fix bug that made changes to a special remote sometimes be missed when
+      importing a tree from it. After upgrading, any such missed changes
+      will be included in the next tree imported from a special remote.
+      Fixes reversion introduced in version 10.20230626.
+    * Fix crash operating on filenames that are exactly 21 bytes long
+      and begin with a utf-8 character.
+    * Fix hang that could occur when using git-annex adjust on a branch with
+      a number of files greater than annex.queuesize.
+    * Fix bug that could cause an invalid utf-8 sequence to be used in a
+      temporary filename when the input filename was valid utf-8.
+    * Improve performance when used with a local git remote that has a
+      large working tree.
+    * drop: --fast support when dropping from a remote.
+    * Added annex.assistant.allowunlocked config.
+    * Add git-remote-p2p-annex and git-remote-tor-annex to standalone builds.
+    * enableremote: Disallow using type= to attempt to change the type of an
+      existing remote.
+    * Add build warnings when git-annex is built without the OsPath
+      build flag.
+    * version: Report on whether it was built with the OsPath build flag.
+    * Avoid leaking file descriptors to child processes started by git-annex
+      in some situations. Note that when not built with the OsPath build
+      flag, these leaks can still happen.
+    * git-annex.cabal: Turn on the OsPath build flag by default.
+    * p2phttp: Fix a hang that could occur when used with --directory,
+      and a repository in the directory got removed.
+    * Removed support for building with unmaintained cryptonite, use crypton.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 25 Sep 2025 13:20:38 -0400
+
+-------------------------------------------------------------------
 Fri Aug 29 15:44:09 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20250828.
