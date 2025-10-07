@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  7 11:49:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.61.4:
+  * Pin PyCA version in python integration tests
+  * Check compiler for 'linux/random.h'
+- update to version 1.61.3:
+  * Remove jitter entropy tests folder
+
+-------------------------------------------------------------------
 Sat Sep 20 14:52:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.61.2:

@@ -162,4 +162,16 @@
     <comment></comment>
     <requestid>1306144</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>56981ac52d4b71af73efd1a226c45e0c</srcmd5>
+    <version>1.61.4</version>
+    <time>1759854543</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.61.4:
+  * Pin PyCA version in python integration tests
+  * Check compiler for 'linux/random.h'
+- update to version 1.61.3:
+  * Remove jitter entropy tests folder (forwarded request 1309598 from rrahl0)</comment>
+    <requestid>1309599</requestid>
+  </revision>
 </revisionlist>
