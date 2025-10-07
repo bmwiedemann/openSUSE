@@ -1,7 +1,7 @@
 #
 # spec file for package maven-archetype
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-archetype
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        Maven project templating toolkit
 License:        Apache-2.0

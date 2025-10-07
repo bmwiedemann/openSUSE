@@ -95,4 +95,12 @@
     <comment>reproducible: another solution</comment>
     <requestid>1294854</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>39cf029a124d57fd121fa5b362b6fac1</srcmd5>
+    <version>3.4.1</version>
+    <time>1759854519</time>
+    <user>dimstar_suse</user>
+    <comment>3.4.1</comment>
+    <requestid>1309580</requestid>
+  </revision>
 </revisionlist>
