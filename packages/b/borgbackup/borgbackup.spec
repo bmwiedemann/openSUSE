@@ -1,7 +1,7 @@
 #
 # spec file for package borgbackup
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2016-2024 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -59,6 +59,8 @@ Source2:        %{name}.keyring
 Patch0:         borgbackup-1.1.4-sphinx-default-theme.patch
 # PATCH-FIX-UPSTREAM msgpack-allow-1.1.1.patch -- backport of commit f6724bfef
 Patch1:         msgpack-allow-1.1.1.patch
+# PATCH-FIX-UPSTREAM 0001-platform-linux-fetch-flags-before-FS_IOC_SETFLAGS.patch -- #9039
+Patch2:         0001-platform-linux-fetch-flags-before-FS_IOC_SETFLAGS.patch
 # SECTION build dependencies
 BuildRequires:  bash
 BuildRequires:  fdupes
@@ -191,6 +193,7 @@ This package contains the fish completion script for borgbackup.
 %patch -P 0 -p1
 %endif
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 %ifnarch %ix86 %arm
   # https://github.com/borgbackup/borg/issues/6996
