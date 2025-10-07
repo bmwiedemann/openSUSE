@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  7 08:13:41 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to 0.24.1
+  * Fix build with gcc-16
+  * ast: Avoid undefined behavior in literal folding
+  * Fix missing map key buffers for map aggregate functions
+  * Fix fentry/fexit recursion check
+  * Fix docs for PERCPU map types
+
+-------------------------------------------------------------------
 Thu Sep 25 06:00:34 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Add version constraint for bison since `-Wcounterexamples` support is
