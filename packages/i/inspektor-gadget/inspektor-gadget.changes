@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Oct 07 05:54:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.45.0:
+  * The most relevant changes in this release are:
+    - symbolizer: implement support for PIE (Position Independent
+      Executable) by @alban in #4921
+    - introduce generic packet filters and new gadget tcpdump by
+      @flyth in #4567
+    - pkg: signature-verifier: Add notation verifying. by
+      @eiffel-fl in #4901
+  * Breaking Changes
+    - undeploy: Remove legacy logic to deleted old IG deployments
+      by @burak-ok in #4876
+    - gadgets: trace_exec: use nbsp to join args by @matthyx in
+      #4933
+  * General Improvements
+    - Artifact Hub: Update gadgets version to v0.44.0 by
+      @github-actions[bot] in #4853
+    - Artifact Hub: Update gadgets version to v0.44.1 by
+      @github-actions[bot] in #4856
+    - gadget-service: improve logging of headless gadget instances
+      by @flyth in #4312
+    - deletePodCommand: Add regex to optionally include ns by
+      @burak-ok in #4861
+    - localmanager/kubemanager: Allow runtime/k8s filtering by
+      @mqasimsarfraz in #4697
+    - gadgets/traceloop: Normalize CPU field in integration test by
+      @burak-ok in #4875
+    - process-helpers: Put KB in variable name by
+      @mauriciovasquezbernal in #4893
+    - container-utils: Add WithExpectedExitCode by
+      @mauriciovasquezbernal in #4894
+    - Provide benchmark tools for Inspektor Gadget by
+      @mauriciovasquezbernal in #4730
+    - tree-wide: Remove some unused code by @mauriciovasquezbernal
+      in #4881
+    - examples: Add grpc_kubernetes by @mqasimsarfraz in #4768
+    - ustack: use operator lifecycle correctly by @alban in #4919
+    - tests: Make internal package public by @mauriciovasquezbernal
+      in #4922
+    - ustack,symbolizer: refactor to build on different platform by
+      @alban in #4920
+    - ustack: fix bias for Go PIE programs by @alban in #4932
+    - ustack: cache the base addresses by @alban in #4930
+    - ustack: add buildid field for client-side symbolization by
+      @alban in #4314
+    - pkg: signature: Make package more generic. by @eiffel-fl in
+      #4931
+    - use simple loop to check for EOF and EAGAIN while reading bpf
+      socket iterator by @ninadingole in #4944
+  * Bug Fixes
+    - github: Fix release notes to add all other changes. by
+      @eiffel-fl in #4869
+    - Fix ig run -h requiring sudo permissions by @Copilot in #4821
+    - gadgets/profile_cpu: Fix ig instructions by
+      @mauriciovasquezbernal in #4908
+    - kubectl-gadget: Fix undeploy method when gadget isnt' running
+      by @mauriciovasquezbernal in #4913
+  * Documentation Improvements
+    - docs: fix various broken links by @alban in #4854
+    - adopters: add AKS-MCP by @mqasimsarfraz in #4871
+    - docs: ignore link unsupported by
+      github-action-markdown-link-check by @alban in #4867
+    - signature-verifier: Fix test by @mauriciovasquezbernal in
+      #4880
+    - add Inspektor Gadget presentation with OpenTelemetry Demo &
+      OpenSearch by @ps48 in #4923
+    - docs/headless: Add warning for upgrading instances by
+      @mqasimsarfraz in #4937
+  * Testing and Continue Integration
+    - gadgets/trace_signal: Add sleep to integration test container
+      by @burak-ok in #4873
+    - pkg: signature-verifier: Add cosign unit tests. by @eiffel-fl
+      in #4838
+    - github actions: disable some cron jobs on forks by @alban in
+      #4892
+
+-------------------------------------------------------------------
 Thu Sep 18 05:20:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.44.1:
