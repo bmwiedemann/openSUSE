@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-PatchPerl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,26 @@
 
 %define cpan_name Devel-PatchPerl
 Name:           perl-Devel-PatchPerl
-Version:        2.80.0
+Version:        2.140.0
 Release:        0
-# 2.08 -> normalize -> 2.80.0
-%define cpan_version 2.08
+# 2.14 -> normalize -> 2.140.0
+%define cpan_version 2.14
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Patch perl source a la Devel::PPPort's buildperl.pl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(File::pushd) >= 1.0.0
+BuildRequires:  perl(File::pushd) >= 1.0
 BuildRequires:  perl(Module::Pluggable)
-Requires:       perl(File::pushd) >= 1.0.0
+Requires:       perl(File::pushd) >= 1.0
 Requires:       perl(Module::Pluggable)
 Provides:       perl(Devel::PatchPerl) = %{version}
 Provides:       perl(Devel::PatchPerl::Hints) = %{version}
 Provides:       perl(Devel::PatchPerl::Plugin) = %{version}
+Provides:       perl(Devel::PatchPerl::Plugin::TEST)
 %undefine       __perllib_provides
 %{perl_requires}
 
