@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct  3 09:25:04 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Fix version requirements 
+
+-------------------------------------------------------------------
+Tue Sep 30 14:32:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.62.1
+  * Remove new type system from numba
+  * Support for NumPy 2.3
+  * Revert the minimum supported NumPy version to 1.22
+  * Add NUMBA_CACHE_LOCATOR_CLASSES environment variable and InTreeCacheLocatorFsAgnostic
+  * Add support for ufunc.reduceat
+  * Add support for is identity operator on structref types
+- Drop merged patches:
+  * np-tobytes.patch
+  * np-frombuffer.patch
+  * numpy23.patch
+
+-------------------------------------------------------------------
 Tue Aug 19 09:24:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.61.2

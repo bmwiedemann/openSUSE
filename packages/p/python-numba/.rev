@@ -516,4 +516,24 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     <comment></comment>
     <requestid>1300538</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>2c569302c830221bf83efc2025bc7032</srcmd5>
+    <version>0.62.1</version>
+    <time>1759854370</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix version requirements 
+- Update to 0.62.1
+  * Remove new type system from numba
+  * Support for NumPy 2.3
+  * Revert the minimum supported NumPy version to 1.22
+  * Add NUMBA_CACHE_LOCATOR_CLASSES environment variable and InTreeCacheLocatorFsAgnostic
+  * Add support for ufunc.reduceat
+  * Add support for is identity operator on structref types
+- Drop merged patches:
+  * np-tobytes.patch
+  * np-frombuffer.patch
+  * numpy23.patch
+</comment>
+    <requestid>1309349</requestid>
+  </revision>
 </revisionlist>

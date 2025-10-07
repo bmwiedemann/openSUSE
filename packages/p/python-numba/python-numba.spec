@@ -1,7 +1,7 @@
 #
 # spec file for package python-numba
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define plainpython python
 # upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ver
-%define min_numpy_ver 1.24
+%define min_numpy_ver 1.22
 %define max_numpy_ver 2.4
 
 %{?sle15_python_module_pythons}
@@ -44,6 +44,8 @@ ExclusiveArch:  x86_64 %ix86 ppc64le %arm aarch64
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
 %endif
+# Python 3.14 not supported yet
+%define skip_python314 1
 # The obs server-side interpreter cannot use lua or rpm shrink
 %if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    " || ( "%pythons" == "python311" && 0%{?skip_python311} )
 ExclusiveArch:  donotbuild
@@ -54,7 +56,7 @@ ExcludeArch:    s390x ppc64 %ix86 %arm
 %endif
 %endif
 Name:           python-numba%{?psuffix}
-Version:        0.61.2
+Version:        0.62.1
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -63,12 +65,6 @@ URL:            https://numba.pydata.org/
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch0:         skip-failing-tests.patch
-# PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/10081
-Patch1:         np-tobytes.patch
-# PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/9926
-Patch2:         np-frombuffer.patch
-# PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/10147
-Patch3:         numpy23.patch
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module pip}
@@ -78,7 +74,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  (tbb-devel >= 2021)
-Requires:       (python-llvmlite >= 0.44 with python-llvmlite < 0.45)
+Requires:       (python-llvmlite >= 0.45 with python-llvmlite < 0.46)
 Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
