@@ -1,7 +1,7 @@
 #
 # spec file for package python-pikepdf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pikepdf
-Version:        9.4.2
+Version:        9.11.0
 Release:        0
 Summary:        Read and write PDFs with Python, powered by qpdf
 License:        MPL-2.0
@@ -36,8 +36,8 @@ BuildRequires:  %{python_module hypothesis >= 6.36}
 BuildRequires:  %{python_module lxml >= 4.8}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module psutil >= 5.9}
-BuildRequires:  %{python_module pybind11 >= 2.12.0}
-BuildRequires:  %{python_module pybind11-devel >= 2.12.0}
+BuildRequires:  %{python_module pybind11 >= 3.0.0}
+BuildRequires:  %{python_module pybind11-devel >= 3.0.0}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytest-cov >= 3.0.0}
 BuildRequires:  %{python_module pytest-forked}

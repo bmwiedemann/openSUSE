@@ -330,4 +330,12 @@
   * qpdf 11.9.1 is now used to build wheels.</comment>
     <requestid>1225560</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>035fa7e84d9773cb6284562d617208fe</srcmd5>
+    <version>9.11.0</version>
+    <time>1759854557</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1309606</requestid>
+  </revision>
 </revisionlist>
