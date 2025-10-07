@@ -1,7 +1,7 @@
 #
 # spec file for package openjpeg2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define library_name  libopenjp2-7
 %define base_version 2.5
 Name:           openjpeg2
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 Summary:        Opensource JPEG 2000 Codec Implementation
 License:        BSD-2-Clause

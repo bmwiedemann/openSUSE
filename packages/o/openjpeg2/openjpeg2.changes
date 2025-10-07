@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 29 05:44:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.4:
+  * No API/ABI break compared to v2.5.3
+  Bug fixes:
+  * opj_jp2_read_header: Check for error after parsing header. #1573
+  * pkgconfig: drop unused libraries from Libs.private #1591
+  * Fix CMake warning: Compatibility with CMake < 3.10 will be removed #1580
+  * Fixed ICC profile copy failure on write #1574
+
+-------------------------------------------------------------------
 Mon Dec 16 11:15:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.3:
