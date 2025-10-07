@@ -1,0 +1,33 @@
+From 1df479ec297e340bbe5f4913afce02f6c8427bd4 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 6 Oct 2025 16:41:46 +0200
+Subject: [PATCH] Use versioned python interpreter for salt-ssh
+
+---
+ salt/client/ssh/__init__.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
+index bfb7d3d1d1..86e4bcceb0 100644
+--- a/salt/client/ssh/__init__.py
++++ b/salt/client/ssh/__init__.py
+@@ -157,7 +157,7 @@ SSH_PY_CODE='import base64;
+ if [ -n "$DEBUG" ]
+     then set -x
+ fi
+-PYTHON_CMDS="/var/tmp/venv-salt-minion/bin/python python3.11 python3 /usr/libexec/platform-python python27 python2.7 python26 python2.6 python2 python"
++PYTHON_CMDS="/var/tmp/venv-salt-minion/bin/python {{PY3XX_CMD}}python3 /usr/libexec/platform-python python27 python2.7 python26 python2.6 python2 python"
+ for py_cmd in $PYTHON_CMDS
+ do
+     if command -v "$py_cmd" >/dev/null 2>&1 && "$py_cmd" -c "import sys; sys.exit(not (sys.version_info >= (2, 6)));"
+@@ -1533,6 +1533,7 @@ ARGS = {arguments}\n'''.format(
+                 SSH_PY_CODE=py_code_enc,
+                 HOST_PY_MAJOR=sys.version_info[0],
+                 SET_PATH=self.set_path,
++                PY3XX_CMD=f"python3.{sys.version_info.minor} " if sys.version_info >= (3, 11) else "",
+             )
+         else:
+             cmd = saltwinshell.gen_shim(py_code_enc)
+-- 
+2.51.0
+

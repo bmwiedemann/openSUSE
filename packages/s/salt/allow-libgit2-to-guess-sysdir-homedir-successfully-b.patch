@@ -1,0 +1,76 @@
+From 6a57e821f3e16981c01078dc7e928672a6f77b88 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Mon, 6 Oct 2025 09:34:17 +0100
+Subject: [PATCH] Allow libgit2 to guess sysdir homedir successfully
+ (bsc#1250520) (bsc#1227207) (#731)
+
+* Allow libgit2 to guess sysdir homedir successfully
+
+This prevents the generic error:
+
+_pygit2.GitError: error loading known_hosts:
+
+which is happening in certain pygit2/libgit2 versions
+
+* Fix pygit2 unit test to check HOME is injected
+---
+ salt/utils/gitfs.py                    | 19 ++++++++++++-------
+ tests/pytests/unit/utils/test_gitfs.py |  4 +++-
+ 2 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/salt/utils/gitfs.py b/salt/utils/gitfs.py
+index 2a8ecf1d0cb..d597c17b870 100644
+--- a/salt/utils/gitfs.py
++++ b/salt/utils/gitfs.py
+@@ -110,6 +110,15 @@ try:
+ 
+     with warnings.catch_warnings():
+         warnings.simplefilter("ignore")
++        if "HOME" not in os.environ:
++            # Make sure $HOME env variable is set before importing pygit2 to prevent
++            # _pygit2.GitError: error loading known_hosts in some libgit2 versions.
++            # The internal "git_sysdir__dirs" from libgit2, is initializated
++            # when importing pygit2. The $HOME env must be present to allow libgit2
++            # guessing function to successfully set the homedir in the initializated
++            # libgit2 stack.
++            # https://github.com/saltstack/salt/issues/64121
++            os.environ["HOME"] = os.path.expanduser("~")
+         import pygit2
+     PYGIT2_VERSION = Version(pygit2.__version__)
+     LIBGIT2_VERSION = Version(pygit2.LIBGIT2_VERSION)
+@@ -1890,13 +1899,9 @@ class Pygit2(GitProvider):
+         """
+         # https://github.com/libgit2/pygit2/issues/339
+         # https://github.com/libgit2/libgit2/issues/2122
+-        # https://github.com/saltstack/salt/issues/64121
+-        home = os.path.expanduser("~")
+-        if "HOME" not in os.environ:
+-            # Make sure $HOME env variable is set to prevent
+-            # _pygit2.GitError: error loading known_hosts in some libgit2 versions.
+-            os.environ["HOME"] = home
+-        pygit2.settings.search_path[pygit2.GIT_CONFIG_LEVEL_GLOBAL] = home
++        pygit2.settings.search_path[pygit2.GIT_CONFIG_LEVEL_GLOBAL] = (
++            os.path.expanduser("~")
++        )
+         new = False
+         if not os.listdir(self._cachedir):
+             # Repo cachedir is empty, initialize a new repo there
+diff --git a/tests/pytests/unit/utils/test_gitfs.py b/tests/pytests/unit/utils/test_gitfs.py
+index baedd9fd708..4ab8e7735f0 100644
+--- a/tests/pytests/unit/utils/test_gitfs.py
++++ b/tests/pytests/unit/utils/test_gitfs.py
+@@ -251,7 +251,9 @@ def test_checkout_pygit2_with_home_env_unset(_prepare_provider):
+     provider.credentials = None
+     with patched_environ(__cleanup__=["HOME"]):
+         assert "HOME" not in os.environ
+-        provider.init_remote()
++        import importlib
++
++        importlib.reload(salt.utils.gitfs)
+         assert "HOME" in os.environ
+ 
+ 
+-- 
+2.51.0
+
