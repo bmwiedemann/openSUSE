@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  6 08:54:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.3.0
+  * refactor: add reusable Cleaner API
+  * Bump ammonia to 4.1.1
+  * Expose CSS filtering options
+  * Add PEP 621 project metadata to pyproject.toml
+  * Add ALLOWED_URL_SCHEMES constant
+
+-------------------------------------------------------------------
 Mon Jun  2 13:40:20 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update vendor tarball to fix CVE-2024-12224 (bsc#1243866) 
