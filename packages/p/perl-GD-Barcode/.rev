@@ -129,4 +129,19 @@
 </comment>
     <requestid>1156545</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e07765a0d1db5ac892208e9f649bc55a</srcmd5>
+    <version>2.10.0</version>
+    <time>1759854362</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.10.0 (2.01)
+   see /usr/share/doc/packages/perl-GD-Barcode/Changes
+  2.01 2025-07-24
+  	- Fix unitialized value warning in QRcode.pm, contributed
+            by Dabe Murphy
+  	- Documentation improvements
+          - Test improvements, fixed issue where ISBN::Barcode test missed
+            depencendy on GD, reported by eserte</comment>
+    <requestid>1309344</requestid>
+  </revision>
 </revisionlist>
