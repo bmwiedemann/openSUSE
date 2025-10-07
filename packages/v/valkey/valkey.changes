@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Oct  5 10:07:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 8.1.4:
+  - Security fixes (boo#1250995):
+    * CVE-2025-49844: A Lua script may lead to remote code execution
+    * CVE-2025-46817: A Lua script may lead to integer overflow and potential RCE
+    * CVE-2025-46818: A Lua script can be executed in the context of another user
+    * CVE-2025-46819: LUA out-of-bound read
+  - Bug fixes:
+    * Fix accounting for dual channel RDB bytes in replication stats
+    * Fix EVAL to report unknown error when empty error table is provided
+    * Fix use-after-free when active expiration triggers hashtable to shrink
+    * Fix MEMORY USAGE to account for embedded keys
+    * Fix memory leak when shrinking a hashtable without entries
+    * Prevent potential assertion in active defrag handling large allocations
+    * Prevent bad memory access when NOTOUCH client gets unblocked
+    * Converge divergent shard-id persisted in nodes.conf to primary's shard id
+    * Fix client tracking memory overhead calculation
+    * Fix RDB load per slot memory pre-allocation when loading from RDB snapshot
+    * Don't use AVX2 instructions if the CPU doesn't support it
+    * Fix bug where active defrag may be unable to defrag sparsely filled pages
+- drop CVE-2025-49112.patch, included
+
+-------------------------------------------------------------------
 Tue Jul 15 21:47:08 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 8.1.3:
