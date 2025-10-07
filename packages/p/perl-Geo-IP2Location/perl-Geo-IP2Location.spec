@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Geo-IP2Location
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,44 +18,53 @@
 
 %define cpan_name Geo-IP2Location
 Name:           perl-Geo-IP2Location
-Version:        8.70
+Version:        8.800.0
 Release:        0
+# 8.80 -> normalize -> 8.800.0
+%define cpan_version 8.80
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 License:        MIT
 Summary:        Lookup of country, region, city, latitude, longitude, ZIP code, time zon[cut]
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/L/LO/LOCATION/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/L/LO/LOCATION/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Geo::IP2Location) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
-This Perl module provides fast lookup of country, region, city, latitude,
-longitude, ZIP code, time zone, ISP, domain name, connection type, IDD
-code, area code, weather station code and station, MCC, MNC, mobile carrier
-brand, elevation, usage type, IP address type, IAB advertising category,
-district, AS number and AS name from IP address using IP2Location database.
-This module uses a file based BIN database available at at
-https://www.ip2location.com/database/ip2location upon subscription. You can
-visit at https://www.ip2location.com/development-libraries to download BIN
-sample files. This database consists of IP address as keys and other
-information as values. It supports all IP addresses in IPv4 and IPv6.
+This Perl module provides a fast and simple way to look up geolocation and
+network information for an IP address using an IP2Location BIN database.
+
+It allows you to retrieve a wide range of data using IPv4 and IPv6
+addresses, including:
+
+ a) Geolocation: Country, Region, City, Latitude, Longitude, ZIP Code, Time Zone, District, Elevation
+ b) Network: ISP, Domain Name, Connection Type, IP Address Type, Usage Type
+ c) Carrier Information: Mobile Country Code (MCC), Mobile Network Code (MNC), Mobile Carrier Brand
+ d) Autonomous System (AS): AS Number, AS Name, AS Domain Name, AS Usage Type, AS CIDR
+ e) Additional Data: IDD Code, Area Code, Weather Station Code, Weather Station Name, IAB Advertising Category
 
 This module can be used in many types of project such as:
 
- 1) auto-select the geographically closest mirror server
- 2) analyze web server logs to determine the countries of visitors
- 3) credit card fraud detection
- 4) software export controls
- 5) display native language and currency
- 6) prevent password sharing and abuse of service
- 7) geotargeting in advertisement
+ 1) Selecting the geographically closest mirror for content delivery.
+ 2) Analyzing web server logs to determine the countries of your visitors.
+ 3) Detecting and preventing credit card fraud.
+ 4) Implementing software export controls.
+ 5) Displaying native languages and currencies to users.
+ 6) Preventing password sharing and service abuse.
+ 7) Geotargeting content and advertisements.
+
+To ensure high accuracy, the commercial databases are updated on a daily,
+weekly or semi-monthly basis.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
 # MANUAL BEGIN
 sed -i 's/\r$//' samples/WHERE_TO_DOWNLOAD_MORE_SAMPLES.TXT
 # MANUAL END

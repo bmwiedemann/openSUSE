@@ -26,4 +26,18 @@ Would be nice to have this package for MirrorCache, as an alternative to the Max
     <comment></comment>
     <requestid>1060471</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2b8ae515eb514f86c34d81836e1f5774</srcmd5>
+    <version>8.800.0</version>
+    <time>1759854365</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 8.800.0 (8.80)
+   see /usr/share/doc/packages/perl-Geo-IP2Location/Changes
+  8.80  Sun August 24 16:00:00 2025
+        Twenty-fourth release under the Geo::IP2Location
+        Added new function &quot;get_as_domain&quot;
+        Added new function &quot;get_as_usagetype&quot;
+        Added new function &quot;get_as_cidr&quot;</comment>
+    <requestid>1309345</requestid>
+  </revision>
 </revisionlist>

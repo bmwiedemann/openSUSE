@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 26 13:57:09 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.800.0 (8.80)
+   see /usr/share/doc/packages/perl-Geo-IP2Location/Changes
+
+  8.80  Sun August 24 16:00:00 2025
+        Twenty-fourth release under the Geo::IP2Location
+        Added new function "get_as_domain"
+        Added new function "get_as_usagetype"
+        Added new function "get_as_cidr"
+
+-------------------------------------------------------------------
 Wed Jan 18 16:05:24 UTC 2023 - Elisei Roca <eroca@suse.com>
 
 - Update to 8.70
