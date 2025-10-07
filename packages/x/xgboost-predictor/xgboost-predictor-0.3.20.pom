@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ai.h2o</groupId>
   <artifactId>xgboost-predictor</artifactId>
-  <version>0.3.3</version>
+  <version>0.3.20</version>
   <name>xgboost-predictor</name>
   <description>Pure Java implementation of XGBoost predictor for online prediction tasks</description>
   <url>https://github.com/h2oai/xgboost-predictor</url>
@@ -37,6 +37,12 @@
     <url>http://jira.h2o.ai</url>
   </issueManagement>
   <dependencies>
+    <dependency>
+      <groupId>ai.h2o</groupId>
+      <artifactId>h2o-tree-api</artifactId>
+      <version>0.3.20</version>
+      <scope>compile</scope>
+    </dependency>
     <dependency>
       <groupId>net.jafama</groupId>
       <artifactId>jafama</artifactId>

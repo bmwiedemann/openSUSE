@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct  6 13:42:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 0.3.20
+  * Changes
+    + Make the fix in PR backwards compatible in order to use it
+     in H2O-3 and provide same predictions for older MOJOs and pass
+     the compatibility test.
+    + Change the order of the floating point operation to match
+      prediction in native xgboost version 1.3.0 and newer
+    + Add support for reg:logistic and rank:ndcg oobjectives.
+    + Revert renaming of getWeight.
+    + Expose RegTreeNode stats.
+    + Fix loading an empty gblinear booster
+    + Upgrade to XGBoost v1.0.0 support.
+- Package now contains two artifacts:
+  * xgboost-predictor and
+  * h2o-tree-api
+- Remove unneeded alias
+
+-------------------------------------------------------------------
 Thu Oct 26 05:51:05 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8

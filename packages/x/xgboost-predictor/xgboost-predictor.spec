@@ -1,7 +1,7 @@
 #
 # spec file for package xgboost-predictor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           xgboost-predictor
-Version:        0.3.3
+Version:        0.3.20
 Release:        0
 Summary:        Pure Java implementation of Xgboost predictor for online prediction tasks
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/h2oai/%{name}
-Source0:        https://github.com/h2oai/%{name}/archive/v%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        https://repo1.maven.org/maven2/ai/h2o/%{name}/%{version}/%{name}-%{version}.pom
+Source2:        https://repo1.maven.org/maven2/ai/h2o/h2o-tree-api/%{version}/h2o-tree-api-%{version}.pom
+Source100:      aggregator.pom
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -42,11 +44,13 @@ Group:          Documentation/HTML
 %{summary}
 
 %prep
-%setup -q -n %{name}-%{version}/%{name}
+%setup -q
 
-cp %{SOURCE1} pom.xml
+cp %{SOURCE100} pom.xml
+cp %{SOURCE1} %{name}/pom.xml
+cp %{SOURCE2} h2o-tree-api/pom.xml
 
-%{mvn_alias} : biz.k11i:
+%mvn_package :aggregator __noinstall
 
 %build
 %{mvn_build} -f -- \
@@ -60,9 +64,9 @@ cp %{SOURCE1} pom.xml
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license ../LICENSE
+%license LICENSE
 
 %files javadoc -f .mfiles-javadoc
-%license ../LICENSE
+%license LICENSE
 
 %changelog
