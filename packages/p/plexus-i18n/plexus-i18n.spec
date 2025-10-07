@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-i18n
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,26 @@
 #
 
 
-%global base_ver 1.0
-%global beta_ver 10
-%global namedver %{base_ver}-beta-%{beta_ver}
 %global parent plexus
 %global subname i18n
-%bcond_with tests
 Name:           %{parent}-%{subname}
-Version:        1.0~beta10
+Version:        1.0.0
 Release:        0
 Summary:        Plexus I18N Component
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/plexus-i18n
-# svn export http://svn.codehaus.org/plexus/plexus-components/tags/plexus-i18n-1.0-beta-10/
-# tar cjf plexus-i18n-1.0-beta-10-src.tar.bz2 plexus-i18n-1.0-beta-10/
-Source0:        %{name}-%{namedver}-src.tar.bz2
+Source0:        https://repo1.maven.org/maven2/org/codehaus/%{parent}/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
-Patch0:         %{name}-migration-to-component-metadata.patch
 BuildRequires:  ant
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  plexus-metadata-generator
-BuildRequires:  plexus-utils
-BuildRequires:  sisu-plexus
+BuildRequires:  objectweb-asm
+BuildRequires:  sisu-inject
+BuildRequires:  slf4j
+BuildRequires:  unzip
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  guava
-BuildRequires:  xbean
-BuildConflicts: java-devel >= 9
-%endif
 
 %description
 Plexus contains end-to-end developer tools for writing applications.
@@ -63,34 +52,24 @@ Group:          Documentation/HTML
 Javadoc for %{name}.
 
 %prep
-%setup -q -n %{name}-%{namedver}
+%setup -q
 cp %{SOURCE1} build.xml
-%patch -P 0 -p1
-
-%pom_add_dep org.eclipse.sisu:org.eclipse.sisu.plexus:0.9.0.M2
 
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-    plexus/utils \
-    org.eclipse.sisu.plexus
-%if %{with tests}
-build-jar-repository -s lib \
-    guava/guava \
-    xbean/xbean-reflect \
-    plexus/classworlds
-%endif
+    atinject \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    slf4j/api
 
 %{ant} \
-%if %{without tests}
-  -Dtest.skip=true \
-%endif
   jar javadoc
 
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
-install -pm 0644 target/%{name}-%{namedver}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 %{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom

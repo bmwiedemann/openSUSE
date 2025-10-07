@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  7 12:32:39 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.0.0
+  * no changelog provided by upstream
+- Removed patch:
+  * plexus-i18n-migration-to-component-metadata.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Thu May 16 05:15:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use sisu-plexus instead of plexus-containers-container-default
