@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-Transport
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,32 @@
 #
 
 
-Name:           perl-Mail-Transport
-Version:        3.005
-Release:        0
 %define cpan_name Mail-Transport
-Summary:        Use Mail Transfer Agents (MTAs)
+Name:           perl-Mail-Transport
+Version:        3.6.0
+Release:        0
+# 3.006 -> normalize -> 3.6.0
+%define cpan_version 3.006
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Email message exchange
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Mail::Reporter) >= 3
 Requires:       perl(Mail::Reporter) >= 3
+Provides:       perl(Mail::Transport) = %{version}
+Provides:       perl(Mail::Transport::Exim) = %{version}
+Provides:       perl(Mail::Transport::Mailx) = %{version}
+Provides:       perl(Mail::Transport::Qmail) = %{version}
+Provides:       perl(Mail::Transport::Receive) = %{version}
+Provides:       perl(Mail::Transport::SMTP) = %{version}
+Provides:       perl(Mail::Transport::Send) = %{version}
+Provides:       perl(Mail::Transport::Sendmail) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -46,11 +56,11 @@ both sending and receiving.
 Extends "DESCRIPTION" in Mail::Reporter.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -61,7 +71,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc ChangeLog README README.md
 
 %changelog

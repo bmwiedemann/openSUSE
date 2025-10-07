@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 28 10:34:50 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.6.0 (3.006)
+   see /usr/share/doc/packages/perl-Mail-Transport/ChangeLog
+
+  version 3.006: Thu 21 Aug 10:23:14 CEST 2025
+
+  	Changes:
+  	- MailBox mid-life upgrade: require Perl minimal version 5.16
+
+  	Improvements:
+  	- ::SMTP 30% faster, 73% less computer power
+  	- add .gitignore
+  	- do not use bareword file-handles anymore.
+  	- use defined-or
+
+-------------------------------------------------------------------
 Tue Jul 28 09:43:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.005
