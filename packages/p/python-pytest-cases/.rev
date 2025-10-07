@@ -7,4 +7,12 @@
     <comment>new package python-pytest-cases, required for checks in python-click-extra</comment>
     <requestid>1227277</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a62f2bc2404cdcc96562673df498e311</srcmd5>
+    <version>3.9.1</version>
+    <time>1759854423</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1309392</requestid>
+  </revision>
 </revisionlist>

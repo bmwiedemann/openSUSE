@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 29 21:22:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.1:
+  * Fixed `AttributeError: 'MiniMetafunc' object has no attribute
+    '_params_directness'` when a case function is
+  * parametrized or requires a fixtures, with pytest 8.4.0. Fixed
+  * #365
+  * Fixed `ValueError: The provided fixture function does not
+    seem to be a fixture` with `@fixture_ref`  with pytest
+  * Dropped support for `python<3.9` and `pytest<6`.
+  * Fixed test suite for python 3.14, officializing the support
+    for this version.
+
+-------------------------------------------------------------------
 Wed Nov 20 14:41:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package python-pytest-cases, required for checks in

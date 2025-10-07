@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-cases
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-cases
-Version:        3.8.6
+Version:        3.9.1
 Release:        0
 Summary:        Separate test code from test cases in pytest
 License:        BSD-3-Clause
 URL:            https://github.com/smarie/python-pytest-cases
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cases/pytest_cases-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module decopatch}
+BuildRequires:  %{python_module makefun >= 1.15.1}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 39.2}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module decopatch}
-BuildRequires:  %{python_module makefun >= 1.15.1}
-BuildRequires:  %{python_module packaging}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 # BuildRequires:  python_module pytest
 # BuildRequires:  python_module pytest-steps
