@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct  7 12:04:24 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.24 
+ * Enhancements
+  * Add UV_SKIP_WHEEL_FILENAME_CHECK to allow installing invalid wheels
+  * Emit a message on cache clean and prune when lock is held
+  * Add --force flag for uv cache prune
+ * Documentation
+  * Document transparent x86_64 emulation on aarch64
+  * Document why we ban URLs from index dependencies
+  * Fix rendering of _CONDA_ROOT in reference
+  * Fix example of bumping beta version without patch bump
+ * Bug fixes
+  * Avoid rejecting already-installed URL distributions with --no-sources
+  * Confirm that the directory name is a valid Python install key during managed check
+  * Ignore origin when comparing installed tools
+  * Make cache control lookups robust to username
+  * Re-order lock validation checks by severity 
+  * Remove tracking of inferred dependency conflicts
+  * Respect --no-color on the CLI
+  * Deduplicate marker-specific dependencies in uv pip tree output
+
+-------------------------------------------------------------------
 Mon Sep 29 08:05:11 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove uv-bash-completion, uv-fish-completion and uv-zsh-completion

@@ -1477,4 +1477,30 @@
   bsc#1249637</comment>
     <requestid>1307673</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>89a71da6bcf7e8b4d2e7a5b3923986d5</srcmd5>
+    <version>0.8.24</version>
+    <time>1759854561</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.24 
+ * Enhancements
+  * Add UV_SKIP_WHEEL_FILENAME_CHECK to allow installing invalid wheels
+  * Emit a message on cache clean and prune when lock is held
+  * Add --force flag for uv cache prune
+ * Documentation
+  * Document transparent x86_64 emulation on aarch64
+  * Document why we ban URLs from index dependencies
+  * Fix rendering of _CONDA_ROOT in reference
+  * Fix example of bumping beta version without patch bump
+ * Bug fixes
+  * Avoid rejecting already-installed URL distributions with --no-sources
+  * Confirm that the directory name is a valid Python install key during managed check
+  * Ignore origin when comparing installed tools
+  * Make cache control lookups robust to username
+  * Re-order lock validation checks by severity 
+  * Remove tracking of inferred dependency conflicts
+  * Respect --no-color on the CLI
+  * Deduplicate marker-specific dependencies in uv pip tree output</comment>
+    <requestid>1309609</requestid>
+  </revision>
 </revisionlist>
