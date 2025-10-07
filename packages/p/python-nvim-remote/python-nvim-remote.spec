@@ -16,17 +16,18 @@
 #
 
 
-%define modname nvim_remote
+%define         modname nvim_remote
+%define         pythons python312 python313
 Name:           python-nvim-remote
-Version:        4.2.0
+Version:        5.0.0
 Release:        0
 Summary:        Neovim process control utility
 License:        MIT
 URL:            https://github.com/1995parham/nvim-remote
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module neovim}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -74,7 +75,7 @@ This package provides an executable called "nvr" which solves these cases:
 %files %{python_files}
 %python_alternative %{_bindir}/nvr
 %{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}-4.0.0.dist-info
+%{python_sitelib}/%{modname}-%{version}.dist-info
 %pycache_only %{python_sitelib}/%{modname}/__pycache__
 
 %changelog

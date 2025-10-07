@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  7 11:36:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 5.0.0:
+  * feat: update package information
+  * update tests
+
+-------------------------------------------------------------------
 Fri Sep 19 21:15:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add BR python-typing-extensions, as it does not get pulled in
