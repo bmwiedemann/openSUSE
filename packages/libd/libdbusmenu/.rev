@@ -121,4 +121,12 @@ Fix license </comment>
   moved from /usr/share/aclocal/ to /usr/share/gettext/m4</comment>
     <requestid>1293380</requestid>
   </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>aa45506afd4bfcf61fb0af71f0008f66</srcmd5>
+    <version>16.04.0</version>
+    <time>1759854340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309122</requestid>
+  </revision>
 </revisionlist>

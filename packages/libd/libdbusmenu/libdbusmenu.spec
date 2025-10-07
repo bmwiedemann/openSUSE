@@ -1,7 +1,7 @@
 #
 # spec file for package libdbusmenu
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,7 +89,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 %endif
 %if %{with testtools}
 BuildRequires:  pkgconfig(json-glib-1.0)
-%ifarch aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl
+%ifarch aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl riscv64
 BuildRequires:  pkgconfig(valgrind)
 %endif
 BuildRequires:  pkgconfig(x11)

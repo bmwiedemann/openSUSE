@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  2 14:51:19 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable valgrind on riscv64
+
+-------------------------------------------------------------------
 Fri Jul 11 13:42:44 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Work with newer gettext-runtime. In gettext 0.24.1 the m4 files
