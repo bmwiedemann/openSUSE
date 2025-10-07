@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Sep 30 21:02:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0
+  * eml2mt now transmits the RFC5322 representation into the
+    message store.
+  * midb now transmits the RFC5322 representations of messages
+    created via IMAP into the message store.
+  * oxcical: implement support for VTODO and VJOURNAL.
+  * mbop: add "freeze" and "thaw" commands.
+  * mbop: support UTC/zone suffixes for getfreebusy -a/-b
+    arguments.
+  * exmdb: new config directive ``exmdb_eph_prefix`` to put
+    ephmeral files like tables.sqlite3 on a local disk.
+  * exmdb: add a time index over messages to speed up common cases
+    of grommunio-web GetContentsTable requests.
+  * oxdisco: the AutoConfig mechanism now emits an EWS server
+    information block.
+  * oxcical: iCal events with a date in DTSTART & DTEND but without
+    X-MICROSOFT-CDO-ALLDAYEVENT are now transformed into Allday
+    events even if the event is longer than one day.
+  * delivery: emit MDN-RRT messages even with
+    ``lda_twostep_ruleproc`` is set.
+  * oxdisco: AutoConfig XML now features the incomingServer type
+    parameter in the right place.
+  * oxdisco: AutoConfig now emits outgoing server port 587 as type
+    smtp.
+  * ruleproc: auto-enter MRs into target calender even if the
+    sender is not going to get a response.
+  * ews: Avoid sending multiple ``<?xml ?>`` lines into the
+    notification stream HTTP response body.
+  * ews: trim "duplicate" recipients when a newly-created item has
+    recipients in both <mimeContent> and <To>/<Cc>.
+  * ews: prevent FAI messages from polluting the Normal Message Set
+    during ICS.
+
+-------------------------------------------------------------------
 Thu Jul 31 16:06:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.48

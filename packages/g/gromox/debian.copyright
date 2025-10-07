@@ -1,0 +1,50 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://grommunio.com/, https://github.com/grommunio/gromox
+Upstream-Name: gromox
+Upstream-Contact: grommunio <dev@grommunio.com>
+
+Files: *
+Copyright: Copyright 2019-2025 grommunio GmbH.
+License: AGPL-3 and GPL-3 and GPL-2
+ See LICENSE.txt for official license document.
+ .
+ Gromox incorporates code from the Samba project, which is subject
+ to the GPL-3, found /usr/share/common-licenses/GPL-3 on Debian based 
+ systems.
+ .
+ Gromox also incorporates programs from Steep, which carried the following
+ block of information. "Certain software" refers to the Samba parts
+ that Steep also included.
+ .
+ -----8<-----
+ .
+ This is a release of steep 1.0, brought to you by Yang Songyi.
+ This software is released under version 2 of the GNU General
+ Public License (GPLv2), as set forth below, with the following
+ additional permissions:
+ .
+ This distribution of steep 1.0 is distributed with certain software
+ that is licensed under separate terms, as designated in a particular
+ file or component or in the license documentation. Without limiting
+ your rights under the GPLv2, the authors of steep hereby grant you an
+ additional permission to link the program and your derivative works
+ with the separately licensed software that they have included with
+ the program.
+ .
+ Election of GPLv2
+ .
+ For the avoidance of doubt, except that if any license choice other
+ than GPL or LGPL is available it will apply instead, Yang Songyi elects
+ to use only the General Public License version 2 (GPLv2) at this time for
+ any software where a choice of GPL license versions is made available
+ with the language indicating that GPLv2 or any later version may be
+ used, or where a choice of which version of the GPL is applied is
+ otherwise unspecified.
+ .
+ ------>8-------------
+ .
+ GPL-2 can be found in /usr/share/common-licenses/GPL-2 on Debian based
+ systems.
+ .
+ GNU AFFERO GENERAL PUBLIC LICENSE version 3 (AGPL-3) text in adjoining
+ LICENSE.txt

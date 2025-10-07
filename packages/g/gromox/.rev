@@ -400,4 +400,12 @@
     <comment>- Update to release 2.48</comment>
     <requestid>1296846</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>6d0eb42da57b168327453c4198572de8</srcmd5>
+    <version>3.0</version>
+    <time>1759854587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.0</comment>
+    <requestid>1309655</requestid>
+  </revision>
 </revisionlist>

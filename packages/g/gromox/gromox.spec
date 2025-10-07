@@ -1,7 +1,7 @@
 #
 # spec file for package gromox
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.48
+Version:        3.0
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -55,7 +55,7 @@ BuildRequires:  group(gromox)
 BuildRequires:  pkgconfig(fmt) >= 8
 BuildRequires:  pkgconfig(jsoncpp) >= 1.4.0
 BuildRequires:  pkgconfig(krb5-gssapi)
-BuildRequires:  pkgconfig(libHX) >= 4.27
+BuildRequires:  pkgconfig(libHX) >= 4.28
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libesedb)

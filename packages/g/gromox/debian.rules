@@ -2,9 +2,17 @@
 export DH_VERBOSE=1
 phpdir := $(shell readlink -f $$(php-config --ini-path)/..)
 INSTDIR := debian/gromox
+unitdir := $(shell pkg-config systemd --variable systemdsystemunitdir)
 
-%:
-	dh $@ --parallel --with autoreconf
+%:	
+	-mkdir -p debian/source && echo "1.0" > debian/source/format
+	dh $@ --with autoreconf
+
+# Somehow autoconf is not picking up systemd unitdir correctly
+# we need to install system unit files in the correct place depending
+# on whether the distro is by default /usr merged or not
+override_dh_auto_configure:
+	dh_auto_configure -- --with-unitdir=$(unitdir)
 
 override_dh_auto_install:
 	dh_auto_install
@@ -29,3 +37,10 @@ override_dh_auto_install:
 	mv -v debian/gromox${phpdir}/cli/conf.d/mapi.ini debian/gromox${phpdir}/mods-available/
 	ln -s ${phpdir}/mods-available/mapi.ini debian/gromox${phpdir}/cli/conf.d/mapi.ini
 	ln -s ${phpdir}/mods-available/mapi.ini debian/gromox${phpdir}/fpm/conf.d/mapi.ini
+
+	# Remove run/gromox as its a mounted tmpfs
+	rm -rf debian/gromox/run debian/gromox/var/run || true
+
+# Add grommunio standard systemd service handling
+override_dh_installsystemd:
+	dh_installsystemd --no-start --no-enable --restart-after-upgrade

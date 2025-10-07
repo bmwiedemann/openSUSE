@@ -1,9 +1,9 @@
 Source: gromox
 Priority: optional
 Section: mail
-Maintainer: Gromox <null@gromox.com>
+Maintainer: Gromox <dev@gromox.com>
 Standards-Version: 4.5.0
-Build-Depends: debhelper-compat (= 12)
+Build-Depends: debhelper-compat (= 13)
 
 Package: gromox
 Architecture: any
@@ -11,10 +11,9 @@ Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, ${shlibs:Depends},
  php-cli, php-fpm, php-mysql, php-simplexml, php-soap,
  system-user-grommunio, system-user-gromox (>= 4), w3m,
- libhx32 (>= 4.27)
+ libhx32 (>= 4.28)
 Provides: php-mapi-gromox
 Description: Groupware server (backend) with RPCH, IMAP and Z-MAPI support
- .
  Gromox is the central groupware server component of grommunio. It is
  capable of serving as a replacement for Microsoft Exchange and
  compatibles. Connectivity options include Outlook Anywhere

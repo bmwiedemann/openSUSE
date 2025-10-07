@@ -1,0 +1,10 @@
+
+# OBS debtransform does things with debian/changelog 
+gromox source: no-nmu-in-changelog
+
+# OBS debtransform does things with debian/changelog 
+gromox source: source-nmu-has-incorrect-version-number
+
+# OBS debtransform versioning is not incomprehensible...
+gromox source: odd-historical-debian-changelog-version
+
