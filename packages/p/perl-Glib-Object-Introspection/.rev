@@ -128,4 +128,13 @@
 </comment>
     <requestid>1156479</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1777793d4008fb086cf0c23ca1950c96</srcmd5>
+    <version>0.52.0</version>
+    <time>1759854544</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.52.0 (0.052)
+   see /usr/share/doc/packages/perl-Glib-Object-Introspection/</comment>
+    <requestid>1309614</requestid>
+  </revision>
 </revisionlist>

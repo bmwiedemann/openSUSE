@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Glib-Object-Introspection
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,26 @@
 
 %define cpan_name Glib-Object-Introspection
 Name:           perl-Glib-Object-Introspection
-Version:        0.51.0
+Version:        0.52.0
 Release:        0
-%define cpan_version 0.051
+# 0.052 -> normalize -> 0.52.0
+%define cpan_version 0.052
 #Upstream:  This library is free software; you can redistribute it and/or modify it under the terms of the Lesser General Public License (LGPL). For more information, see http://www.fsf.org/licenses/lgpl.txt
 License:        LGPL-2.1-only
 Summary:        Dynamically create Perl language bindings
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::Depends) >= 0.3
+BuildRequires:  perl(ExtUtils::Depends) >= 0.300
 BuildRequires:  perl(ExtUtils::PkgConfig) >= 1
-BuildRequires:  perl(Glib) >= 1.32
-Requires:       perl(ExtUtils::Depends) >= 0.3
+BuildRequires:  perl(Glib) >= 1.320
+Requires:       perl(ExtUtils::Depends) >= 0.300
 Requires:       perl(ExtUtils::PkgConfig) >= 1
-Requires:       perl(Glib) >= 1.32
-Provides:       perl(Glib::Object::Introspection) = 0.51.0
-Provides:       perl(Glib::Object::Introspection::_FuncWrapper)
+Requires:       perl(Glib) >= 1.320
+Provides:       perl(Glib::Object::Introspection) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
@@ -48,7 +49,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 Dynamically create Perl language bindings
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
