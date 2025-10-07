@@ -1,0 +1,43 @@
+From 8f8e0c94617129b6009b9fdb844b38bd5948a8ce Mon Sep 17 00:00:00 2001
+From: "T. Franzel" <tfranzel@users.noreply.github.com>
+Date: Sun, 21 Sep 2025 19:33:56 +0200
+Subject: [PATCH] fix test for i18n changes on DRF (#1444)
+
+---
+ tests/test_i18n.py  | 2 ++
+ tests/test_i18n.yml | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_i18n.py b/tests/test_i18n.py
+index 15b771a1..19928f32 100644
+--- a/tests/test_i18n.py
++++ b/tests/test_i18n.py
+@@ -6,6 +6,7 @@
+ from django.urls import include, path
+ from django.utils import translation
+ from django.utils.translation import gettext_lazy as _
++from rest_framework import __version__ as DRF_VERSION  # type: ignore[attr-defined]
+ from rest_framework import mixins, routers, serializers, viewsets
+ from rest_framework.test import APIClient
+ 
+@@ -64,6 +65,7 @@ def create(self, request, *args, **kwargs):
+     'drf_spectacular.settings.spectacular_settings.DESCRIPTION',
+     _('Lazy translated description with missing translation')
+ )
++@pytest.mark.skipif(DRF_VERSION < '3.16.1', reason='DRF updated translations')
+ def test_i18n_strings(no_warnings):
+     with translation.override('de-de'):
+         schema = generate_schema(None, patterns=urlpatterns)
+diff --git a/tests/test_i18n.yml b/tests/test_i18n.yml
+index b5a8d022..66b1faca 100644
+--- a/tests/test_i18n.yml
++++ b/tests/test_i18n.yml
+@@ -106,7 +106,7 @@ paths:
+         name: id
+         schema:
+           type: integer
+-        description: A unique integer value identifying this Internätiönalisierung.
++        description: Ein eindeutiger Ganzzahl-Wert, der Internätiönalisierung identifiziert.
+         required: true
+       tags:
+       - x

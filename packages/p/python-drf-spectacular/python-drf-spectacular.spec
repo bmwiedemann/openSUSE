@@ -1,7 +1,7 @@
 #
 # spec file for package python-drf-spectacular
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        BSD-3-Clause
 URL:            https://github.com/tfranzel/drf-spectacular
 Source:         https://files.pythonhosted.org/packages/source/d/drf-spectacular/drf_spectacular-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/tfranzel/drf-spectacular/pull/1381 Django 5.2 and python 3.13 minor changes
-Patch:          py313.patch
+Patch0:         py313.patch
+# PATCH-FIX-UPSTREAM gh#tfranzel/drf-spectacular#1455
+Patch1:         support-drf-3.16.1.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

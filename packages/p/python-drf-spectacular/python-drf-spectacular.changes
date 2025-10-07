@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  7 05:54:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-drf-3.16.1.patch:
+  * Support djangorestframework 3.16.1 changes.
+
+-------------------------------------------------------------------
 Mon Apr 28 13:56:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patch py313.patch to add Python 3.13 compatibility

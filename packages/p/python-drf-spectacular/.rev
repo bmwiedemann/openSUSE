@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1273163</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c245bfc6f60d30a43e14c590d29c955b</srcmd5>
+    <version>0.28.0</version>
+    <time>1759854464</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-drf-3.16.1.patch:
+  * Support djangorestframework 3.16.1 changes.</comment>
+    <requestid>1309429</requestid>
+  </revision>
 </revisionlist>
