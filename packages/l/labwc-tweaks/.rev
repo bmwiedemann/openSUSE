@@ -26,4 +26,29 @@ the labwc wayland compositor</comment>
   * main: Fix &quot;qt.svg: Cannot open file&quot; mesage</comment>
     <requestid>1272979</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>01be26cd181fb3e21286485f8fcb7beb</srcmd5>
+    <version>0~git.20251003.53468f9</version>
+    <time>1759854377</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~git.20251003.53468f9:
+  * Only add nodes to rc.xml if values are different from default
+  * tests: add (void) to ignore ret value warning
+  * mkdir -p before creating config file
+  * Remove src/theme.c
+  * Add log.h for better logging
+  * main.cpp: minor style fix 2
+  * main.cpp: minor style fix
+  * maindialog.cpp: use a macro to simplify the code a bit
+  * Use the new findIconThemes() for cursors too
+  * Re-write theme_find() in C++
+  * Only update rc.xml on change from previous state
+  * Add Settings class
+  * Add &quot;Icon Theme&quot; combo
+  * Gracefully handle bad rc.xml
+  * Config.cmake: add project screenshot URL
+  * Add screenshot
+  * Weblate commits</comment>
+    <requestid>1309357</requestid>
+  </revision>
 </revisionlist>

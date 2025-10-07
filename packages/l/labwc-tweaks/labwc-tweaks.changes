@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 06 17:22:41 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 0~git.20251003.53468f9:
+  * Only add nodes to rc.xml if values are different from default
+  * tests: add (void) to ignore ret value warning
+  * mkdir -p before creating config file
+  * Remove src/theme.c
+  * Add log.h for better logging
+  * main.cpp: minor style fix 2
+  * main.cpp: minor style fix
+  * maindialog.cpp: use a macro to simplify the code a bit
+  * Use the new findIconThemes() for cursors too
+  * Re-write theme_find() in C++
+  * Only update rc.xml on change from previous state
+  * Add Settings class
+  * Add "Icon Theme" combo
+  * Gracefully handle bad rc.xml
+  * Config.cmake: add project screenshot URL
+  * Add screenshot
+  * Weblate commits
+
+-------------------------------------------------------------------
 Sun Apr 27 19:12:43 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 0~git.20250410.a7110e4:
