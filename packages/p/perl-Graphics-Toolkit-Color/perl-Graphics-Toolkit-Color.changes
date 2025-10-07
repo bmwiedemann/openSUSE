@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Mon Oct  6 18:44:17 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.972.0 (1.972)
+   see /usr/share/doc/packages/perl-Graphics-Toolkit-Color/Changes
+
+  1.972    2025-09-31    lichtkind
+  -------
+      * = small feature release = 2 fixes
+      * ? POD fixed / rewrote for methods "values", "name", "closest_name", "distance"
+      * ! public API cluster method test fix
+  1.971    2025-08-31    lichtkind
+  -------
+      * = small fix release = 3 fixes
+      * ? documented latest input format
+      * ? typos in POD
+      * ! more cluster method test fixes
+  1.97    2025-08-30    lichtkind
+  -------
+      * = small feature release + 1 fix
+      * + new input format: space_name => [ ....]
+      * + method "name" can now return names from a radius
+      * ~ renamed cluster argument: distance => minimal_distance
+      * ~ cluster argument "minimal_distance" got alias: "min_d"
+      * ~ cluster argument "radius" got alias: "r"
+      * ? removed bad chars from POD
+      * ? organize POD for color names better
+  1.961    2025-08-29    lichtkind
+  -------
+      * = fix stupidity release
+      * ? removed bad chars from POD
+  1.951    2025-08-29    lichtkind
+  -------
+      * = tiny POD fix release
+      * ? removed bad chars from POD
+  1.95    2025-08-29    lichtkind
+  -------
+      * = mid sized feature release + 3 fixes
+      * * added support of 3 color spaces: OKLAB, OKLCH, HunterLAB
+      * + methods "name" and "closest_name" can now return multiple names and full names
+      * ? rewrote some POD
+      * ? POD example code fixes
+      * ? fix POD links in GTC::Space::Hub lib
+      * ! fixed too tight set calc tests: Issue Pause:169094 found by SlavenRezic++
+      * ! remove unused "use Benchmark;" fixed by ppisar++
+
+-------------------------------------------------------------------
+Tue Aug 26 15:36:48 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.920.0 (1.92)
+   see /usr/share/doc/packages/perl-Graphics-Toolkit-Color/Changes
+
+
+  1.92    2025-08-20    lichtkind
+  -------
+      * = minor feature release
+      * + methods "name" and "closest_name" work on any scheme from Graphics::ColorNames
+      * ~ extended "CSS_string" format, commas are now optional
+      * ~ no space between axis value and suffix allowed
+      * ~ color space "CIELCHuv" got alias name "LCHuv"
+      * & converter value IO moved to standard tuple format
+      * ? POD syntax fixes
+
+  1.91    2025-08-12    lichtkind
+  -------
+      * = minor bug fix release
+      * ~ added aliases for renamed methods "add_value" and "set_value"
+      * ? POD syntax fixes
+      * ? rewrote parts of ::Color::Space POD
+
+  1.9     2025-08-12    lichtkind
+  -------
+      * = major feature release
+      * * added "cluster" and "invert" calculation method
+      * * added "closest_name" method
+      * * added support of 5 color spaces: NCol YUV CIELUV CIELCHab CIELCHuv,
+                                   rewrote CIEXYZ CIELAB
+      * + extended range definitions with explicit type names
+      * + color spaces can now define value precision,
+                                      value suffix ('%') and
+                                      value parsing regex
+      * ? added documentation for color space object and missing formats
+      * & moved code into Space::Format space attribute object class
+      * & removed Carp and Test::Warn as dependencies
+      * & moved color and color set calculators into own packages
+      * ~ reworked all calculator methods
+      * ~ renamed single color calculator method "blend" method to "mix"
+      * ~ renamed method "add" and "set" to "add_value" and "set_value"
+      * ~ renamed method "mix" argument "with" to "to"
+      * ~ renamed method "gradient" argument "dynamic" to "tilt"
+      * ~ default space of methods 'distance', 'mix' and 'gradient'
+          went from HSL to RGB, consistent with defaults (complement has to be HSL)
+
+-------------------------------------------------------------------
 Fri Mar  8 22:28:05 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

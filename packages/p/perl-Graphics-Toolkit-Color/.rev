@@ -56,4 +56,41 @@
 </comment>
     <requestid>1156481</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d44300533a57b0b53803b213158b4443</srcmd5>
+    <version>1.972.0</version>
+    <time>1759854367</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.972.0 (1.972)
+   see /usr/share/doc/packages/perl-Graphics-Toolkit-Color/Changes
+  1.972    2025-09-31    lichtkind
+  -------
+      * = small feature release = 2 fixes
+      * ? POD fixed / rewrote for methods &quot;values&quot;, &quot;name&quot;, &quot;closest_name&quot;, &quot;distance&quot;
+      * ! public API cluster method test fix
+  1.971    2025-08-31    lichtkind
+  -------
+      * = small fix release = 3 fixes
+      * ? documented latest input format
+      * ? typos in POD
+      * ! more cluster method test fixes
+  1.97    2025-08-30    lichtkind
+  -------
+      * = small feature release + 1 fix
+      * + new input format: space_name =&gt; [ ....]
+      * + method &quot;name&quot; can now return names from a radius
+      * ~ renamed cluster argument: distance =&gt; minimal_distance
+      * ~ cluster argument &quot;minimal_distance&quot; got alias: &quot;min_d&quot;
+      * ~ cluster argument &quot;radius&quot; got alias: &quot;r&quot;
+      * ? removed bad chars from POD
+      * ? organize POD for color names better
+  1.961    2025-08-29    lichtkind
+  -------
+      * = fix stupidity release
+      * ? removed bad chars from POD
+  1.951    2025-08-29    lichtkind
+  -------
+      * = tiny POD fix release</comment>
+    <requestid>1309617</requestid>
+  </revision>
 </revisionlist>
