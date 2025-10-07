@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 07 06:32:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.19.3:
+  * ci: refresh dev dependencies (#3092)
+  * ci: refresh dev dependencies (#3081)
+  * ci: refresh dev dependencies (#3066)
+  * ci: refresh dev dependencies (#3057)
+  * add 12 as version number (#3052)
+  * add core 2.19 docs to package docs (#3050) (#3051)
+  * Update the release table for Ansible 12 (#2963) (#3047)
+  * update latest version to Ansible 12 (#2964) (#3049)
+  * Add the Ansible community 11.10.0 porting guide (#3043) (#3045)
+  * Merge pull request #3040 from
+    ansible/release/porting-guide-12.0.0 (#3042)
+
+-------------------------------------------------------------------
 Fri Sep 19 13:24:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.19.2:
