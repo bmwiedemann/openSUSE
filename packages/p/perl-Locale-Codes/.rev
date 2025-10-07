@@ -141,4 +141,18 @@
     <comment></comment>
     <requestid>1286340</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6667e1c9110ef82a20fa29fbc4f30042</srcmd5>
+    <version>3.850.0</version>
+    <time>1759854548</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.850.0 (3.85)
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+  3.85  2025-09-02  sbeck
+    -  Fixed missing test
+           Missed testing for one error case in code2names that caused it to
+           return the incorrect value. GitHub #19
+    -  NEW CODE(s)</comment>
+    <requestid>1309619</requestid>
+  </revision>
 </revisionlist>

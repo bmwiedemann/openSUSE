@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  6 18:45:42 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.850.0 (3.85)
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.85  2025-09-02  sbeck
+    -  Fixed missing test
+           Missed testing for one error case in code2names that caused it to
+           return the incorrect value. GitHub #19
+
+    -  NEW CODE(s)
+
+-------------------------------------------------------------------
 Wed Jun 11 05:37:33 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.840.0 (3.84)
