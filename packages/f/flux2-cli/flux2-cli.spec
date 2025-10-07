@@ -1,7 +1,7 @@
 #
 # spec file for package flux2-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,16 @@
 
 # check these versions on updates
 # see flux2/manifests/bases/*/kustomization.yaml
-%define helm_controller_version             v1.3.0
-%define image_automation_controller_version v0.41.2
-%define image_reflector_controller_version  v0.35.2
-%define kustomize_controller_version        v1.6.1
-%define notification_controller_version     v1.6.0
-%define source_controller_version           v1.6.2
+%define helm_controller_version             v1.4.1
+%define image_automation_controller_version v1.0.1
+%define image_reflector_controller_version  v1.0.1
+%define kustomize_controller_version        v1.7.0
+%define notification_controller_version     v1.7.2
+%define source_controller_version           v1.7.1
+%define source_watcher_version              v2.0.1
 
 Name:           flux2-cli
-Version:        2.6.4
+Version:        2.7.1
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
@@ -47,12 +48,14 @@ Source19:       notification-controller.crds.yaml
 Source20:       notification-controller.deployment.yaml
 Source21:       source-controller.crds.yaml
 Source22:       source-controller.deployment.yaml
+Source23:       source-watcher.crds.yaml
+Source24:       source-watcher.deployment.yaml
 Source101:      Packaging_README.md
 Source102:      download_yaml.sh
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  git-core
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.25
 BuildRequires:  helm
 BuildRequires:  kustomize
 BuildRequires:  zsh
@@ -139,6 +142,11 @@ cp %{SOURCE22} ./manifests/bases/source-controller/
 sed -i 's_https://github.com/fluxcd/source-controller/releases/download/%{source_controller_version}/__g' manifests/bases/source-controller/kustomization.yaml
 cat manifests/bases/source-controller/kustomization.yaml
 
+cp %{SOURCE23} ./manifests/bases/source-watcher/
+cp %{SOURCE24} ./manifests/bases/source-watcher/
+sed -i 's_https://github.com/fluxcd/source-watcher/releases/download/%{source_watcher_version}/__g' manifests/bases/source-watcher/kustomization.yaml
+cat manifests/bases/source-watcher/kustomization.yaml
+
 ./manifests/scripts/bundle.sh
 
 go build \
@@ -162,6 +170,10 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
 # create the fish completion file
 mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/flux completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
+
+%check
+# version output without leading v
+%{buildroot}/%{_bindir}/%{executable_name} --version | grep %{version}
 
 %files
 %doc README.md

@@ -1,21 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    control-plane: source-watcher
+  name: source-watcher
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    app: source-watcher
+  type: ClusterIP
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
     control-plane: controller
-  name: image-automation-controller
+  name: source-watcher
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: image-automation-controller
+      app: source-watcher
+  strategy:
+    type: Recreate
   template:
     metadata:
       annotations:
         prometheus.io/port: "8080"
         prometheus.io/scrape: "true"
       labels:
-        app: image-automation-controller
+        app: source-watcher
     spec:
       containers:
       - args:
@@ -23,12 +41,14 @@ spec:
         - --log-level=info
         - --log-encoding=json
         - --enable-leader-election
+        - --storage-path=/data
+        - --storage-adv-addr=source-watcher.$(RUNTIME_NAMESPACE).svc.cluster.local.
         env:
         - name: RUNTIME_NAMESPACE
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: fluxcd/image-automation-controller:v1.0.1
+        image: fluxcd/source-watcher:v2.0.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -36,6 +56,9 @@ spec:
             port: healthz
         name: manager
         ports:
+        - containerPort: 9090
+          name: http
+          protocol: TCP
         - containerPort: 8080
           name: http-prom
           protocol: TCP
@@ -44,14 +67,14 @@ spec:
           protocol: TCP
         readinessProbe:
           httpGet:
-            path: /readyz
-            port: healthz
+            path: /
+            port: http
         resources:
           limits:
             cpu: 1000m
             memory: 1Gi
           requests:
-            cpu: 100m
+            cpu: 50m
             memory: 64Mi
         securityContext:
           allowPrivilegeEscalation: false
@@ -63,11 +86,15 @@ spec:
           seccompProfile:
             type: RuntimeDefault
         volumeMounts:
+        - mountPath: /data
+          name: data
         - mountPath: /tmp
-          name: temp
+          name: tmp
       securityContext:
         fsGroup: 1337
       terminationGracePeriodSeconds: 10
       volumes:
       - emptyDir: {}
-        name: temp
+        name: data
+      - emptyDir: {}
+        name: tmp
