@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct  7 06:33:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.3:
+  * Minor Changes
+    - fetch_file - add ca_path and cookies parameter arguments
+      (#85172).
+  * Bugfixes
+    - Windows async - Handle running PowerShell modules with
+      trailing data after the module result
+    - ansible-doc --list/--list_files/--metadata-dump - fixed
+      relative imports in nested filter/test plugin files (#85753).
+    - display - Fixed reference to undefined
+      '_DeferredWarningContext' when issuing early warnings during
+      startup. (#85886)
+    - run_command - Fixed premature selector unregistration on
+      empty read from stdout/stderr that caused truncated output or
+      hangs in rare situations.
+    - script inventory plugin will now show correct 'incorrect'
+      type when doing implicit conversions on groups.
+
+-------------------------------------------------------------------
 Fri Sep 19 13:06:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.19.2:
