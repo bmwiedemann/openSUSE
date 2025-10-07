@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Fri Oct  3 08:40:48 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.45.1
+  * version bump for windows wheels
+- Release notes for 0.45.0
+  * This release of llvmlite introduces support for LLVM 20. For
+    more information about the state of the support and breaking
+    changes, please see:
+    https://llvmlite.readthedocs.io/en/latest/user-guide/llvm20.html
+  * PR #1091: [NPM] Add hooks for llvm passes in llvmlite (gmarkall
+    yashssh)
+  * PR #1092: Move llvmlite to LLVM 20 (sklam swap357 yashssh esc)
+  * PR #1096: Added changelog for 0.44.0rc1 (kc611)
+  * PR #1101: Updated date and llvm versioning for 0.44.0rc1
+    (kc611)
+  * PR #1112: adding bullet to first RC checklist regarding LLVM
+    updates (esc)
+  * PR #1113: Merge pull request #1104 from
+    sklam/misc/osx_wheel_fix (kc611 esc)
+  * PR #1114: Merge pull request #1108 from sklam/fix/win_wheel
+    (kc611 esc)
+  * PR #1115: Update changelog for v0.44.0rc2 (kc611)
+  * PR #1124: Changed version number and release date (kc611)
+  * PR #1125: Fix flag condition when creating
+    SimpleLoopUnswitchLegacyPass (HighW4y2H3ll)
+  * PR #1128: Adding llvmdev win 64 conda builder (esc)
+  * PR #1129: llvmlite win-64 conda builder GHA (esc)
+  * PR #1130: Configure Renovate (renovate[bot] esc)
+  * PR #1131: llvmdev_linux-64_conda_builder.yml (esc)
+  * PR #1132: llvmlite_linux-64_conda_builder.yml (esc)
+  * PR #1133: Cherry-pick changes to the CHANGE_LOG to main (kc611)
+  * PR #1139: Add win-64 wheel builder GHA workflow (dbast swap357
+    esc)
+  * PR #1141: refactor llvmdev win builder (swap357)
+  * PR #1142: point conda build to correct package path (esc)
+  * PR #1143: remove release.yml – it’s stale and outdated (esc)
+  * PR #1144: Refactor recipe build flows (dbast)
+  * PR #1146: Extend pre-commit config (dbast)
+  * PR #1149: Rename llvmdev manylinux (esc)
+  * PR #1150: enable running workflow as part of pull-request (esc)
+  * PR #1151: fix flake8 issues (esc)
+  * PR #1152: adding pre-commit workflow (esc)
+  * PR #1154: execute dist tests for linux-64 conda pkgs via Azure
+    (esc)
+  * PR #1158: Opaque pointer fixes (rj-jesus gmarkall)
+  * PR #1159: Add IR layer typed pointers mode (rj-jesus gmarkall)
+  * PR #1160: Drop binding layer typed pointer support. (rj-jesus)
+  * PR #1163: Enable pass timings reporting with NewPassManager
+    (gmarkall yashssh)
+  * PR #1165: Fix the metadata deduplication (jiel-nv)
+  * PR #1177: fix typo in workflow options for llvmdev_build.yml
+    (swap357)
+  * PR #1187: gha/add llvmlite osx 64 wheel builder (swap357)
+  * PR #1188: bump min CMake (esc)
+  * PR #1189: bump Ubuntu to 24.04 (esc)
+  * PR #1190: gha/add llvmlite osx 64 conda builder (swap357)
+  * PR #1195: gha/add llvmlite osx-arm64 conda builder (swap357)
+  * PR #1196: Pin dependencies (renovate[bot])
+  * PR #1203: gha/add llvmlite osx-arm64 wheel builder workflow
+    (swap357)
+  * PR #1205: gha/add llvmlite_linux-64 wheel builder workflow
+    (swap357)
+  * PR #1206: gha/add llvmlite linux-arm64 wheel builder (swap357)
+  * PR #1209: remove singular clang-format check based on
+    ubuntu/apt (esc)
+  * PR #1211: gha/fix llvmlite linux workflows for version tags
+    (swap357)
+  * PR #1213: unify clang format check (esc)
+  * PR #1215: gha/add llvmlite linux-arm64 conda builder (swap357)
+  * PR #1216: gha/refactor llvmlite osx wheel workflows (swap357)
+  * PR #1217: gha/refactor llvmlite win-64 workflows (swap357)
+  * PR #1227: fix llvmdev_build.yml to resolve toolchain
+    incompatibility on osx-64 (swap357)
+  * PR #1231: azure-pipelines/win-2019 to 2025 (swap357)
+  * PR #1232: gha/llvmdev upgrade win-2019 to 2025 (swap357)
+  * PR #1233: gha/llvmlite upgrade win-2019 to 2025 (swap357)
+  * PR #1238: gha/restructure llvmdev ci (swap357)
+  * PR #1240: pin compilers on llvmlite and llvmdev
+    conda_build_config.yaml (swap357)
+  * PR #1250: Fix pass timing logic to stop printing to stdout.
+    (stuartarchibald)
+  * PR #1251: Fix various C++ issues and a linkage issue.
+    (stuartarchibald)
+  * PR #1252: Move llvmlite to solely CMake based build system.
+    (stuartarchibald)
+  * PR #1257: remove code climate integration (esc)
+  * PR #1260: llvmdev 20 build patches (swap357)
+  * PR #1262: llvmdev-20 recipe fixes (swap357)
+  * PR #1266: update compatability matrix in the README.rst to
+    reflect LLVM 20 (esc)
+  * PR #1267: adding llvm20 docs (esc)
+  * PR #1268: Release 0.45: CHANGE_LOG (esc)
+  * PR #1269: add sdist build and upload steps on wheel workflow
+    (swap357)
+  * PR #1278: Update deprecation page (sklam)
+  * PR #1287: change-log for 0.45.0 FINAL (esc)
+  * PR #1289: use explicit channel specification for llvmdev=20
+    installation (swap357 esc)
+
+-------------------------------------------------------------------
 Wed Feb  5 19:07:44 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.44.0:
