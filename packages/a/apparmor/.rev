@@ -3031,4 +3031,20 @@ Also note that the &quot;mailserver_setup&quot; test in https://openqa.opensuse.
   /usr/etc/krb5.conf (boo#1246689)</comment>
     <requestid>1294456</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>ff7c32b6c864a331160c6c734a7911ea</srcmd5>
+    <version>4.1.2</version>
+    <time>1759854338</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 4.1.2
+  - several fixes (including boo#1246743)
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.2
+    for the detailed upstream changelog
+- remove upstream(ed) patches:
+  - dovecot24.diff
+  - xkeyboard.diff
+
+- add dovecot24-part2.diff: more dovecot 2.4 permissions (boo#1247470) (forwarded request 1309113 from cboltz)</comment>
+    <requestid>1309114</requestid>
+  </revision>
 </revisionlist>

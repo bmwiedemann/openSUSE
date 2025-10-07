@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  5 14:07:15 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 4.1.2
+  - several fixes (including boo#1246743)
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.2
+    for the detailed upstream changelog
+- remove upstream(ed) patches:
+  - dovecot24.diff
+  - xkeyboard.diff
+
+-------------------------------------------------------------------
+Fri Aug  1 19:21:48 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- add dovecot24-part2.diff: more dovecot 2.4 permissions (boo#1247470)
+
+-------------------------------------------------------------------
 Fri Jul 18 21:15:55 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - add xkeyboard.diff to allow reading /usr/share/xkeyboard-config-2/

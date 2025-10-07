@@ -51,11 +51,11 @@
 %define CATALINA_HOME /usr/share/tomcat6
 %define JAR_FILE changeHatValve.jar
 
-%define tarversion v4.1.1
-%define pyeggversion 4.1.1
+%define tarversion v4.1.2
+%define pyeggversion 4.1.2
 
 Name:           apparmor
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -82,15 +82,11 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 # add path for precompiled cache (only done/applied if precompiled_cache is enabled)
 Patch7:         apparmor-enable-precompiled-cache.diff
 
-# dovecot24: doveconf writes /tmp/doveconf.* and /run/dovecot/dovecot.conf.binary (boo#1243008)
-# taken from https://gitlab.com/apparmor/apparmor/-/merge_requests/1733 (merged 2025-07-15 to master, 4.1 and 4.0 branch)
-Patch10:        dovecot24.diff
-
 # /usr/etc/krb5.conf - boo#1246689 - not submitted upstream yet since https://github.com/krb5/krb5/pull/1437/ is still open
 Patch11:        kerberosclient-usrmerge.diff
 
-# abstractions/X: allow reading /usr/share/xkeyboard-config-2/ - submitted upstream 2025-07-18 https://gitlab.com/apparmor/apparmor/-/merge_requests/1741
-Patch12:        xkeyboard.diff
+# dovecot24: more permissions from boo#1247470
+Patch13:        dovecot24-part2.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -360,9 +356,8 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %if %{with precompiled_cache}
 %patch -P 7
 %endif
-%patch -P 10 -p1
 %patch -P 11 -p1
-%patch -P 12 -p1
+%patch -P 13 -p1
 
 %build
 export SUSE_ASNEEDED=0
