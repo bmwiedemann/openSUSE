@@ -7,7 +7,7 @@
 
 
 This base container image is configured with FIPS mode enabled by default, but
-does not include any certified binaries.
+**does not** include any certified binaries.
 
 
 ## Usage
