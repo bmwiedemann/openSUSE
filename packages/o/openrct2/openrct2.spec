@@ -27,12 +27,12 @@
 %ifarch x86_64
 %define lib_suffix 64
 %endif
-%define title_version 0.4.14
+%define title_version 0.4.26
 %define title_version_url %{title_version}
 %define objects_version 1.7.3
 %define openmusic_version 1.6.1
 %define opensound_version 1.0.6
-%define openrct2_version 0.4.26
+%define openrct2_version 0.4.27
 
 Name:           openrct2
 Version:        %{openrct2_version}
@@ -197,7 +197,7 @@ rm -rf %{buildroot}%{_datadir}/doc
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/applications/*.desktop
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/openrct2.appdata.xml
+%{_datadir}/metainfo/io.openrct2.openrct2.appdata.xml
 %{_datadir}/mime/packages/openrct2.xml
 
 %files titlesequences
