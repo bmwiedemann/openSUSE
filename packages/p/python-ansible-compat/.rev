@@ -331,4 +331,12 @@ fix build
     <comment></comment>
     <requestid>1300526</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2d6ae8828c609af9ac546b68cfc8f7c3</srcmd5>
+    <version>25.8.2</version>
+    <time>1759854473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309425</requestid>
+  </revision>
 </revisionlist>

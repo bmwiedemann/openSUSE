@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  7 04:56:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.8.2:
+  * Fixes
+    - fix: add support for python 3.14 (#533) @ssbarnea
+    - fix: remove tox.ini and adopt pep-735 (#526) @ssbarnea
+  * Maintenance
+    - chore(deps): update all dependencies (#532) @renovate[bot]
+    - chore: hooks update (#531) @ssbarnea
+    - chore(deps): update all dependencies (#530) @renovate[bot]
+    - chore(deps): update all dependencies (#529) @renovate[bot]
+    - chore(deps): update all dependencies (#527) @renovate[bot]
+    - chore: configure renovate (#524) @ssbarnea
+    - chore: update hooks (#525) @ssbarnea
+    - Bump actions/checkout from 4 to 5 (#515) @dependabot[bot]
+
+-------------------------------------------------------------------
 Wed Aug 20 11:26:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.8.1:

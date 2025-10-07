@@ -1,7 +1,7 @@
 #
 # spec file for package python-ansible-compat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,22 +24,23 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        25.8.1
+Version:        25.8.2
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
 URL:            https://github.com/ansible-community/ansible-compat
 Source:         https://github.com/ansible-community/ansible-compat/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm >= 7.0.5}
+BuildRequires:  %{python_module setuptools >= 65.3.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test
 # https://github.com/ansible/ansible-compat/blob/main/.config/requirements.in
-BuildRequires:  ansible-core >= 2.14
-BuildRequires:  %{python_module PyYAML}
+BuildRequires:  ansible-core >= 2.16
+BuildRequires:  %{python_module PyYAML >= 6.0.2}
 BuildRequires:  %{python_module jsonschema >= 4.17.3}
+BuildRequires:  %{python_module packaging >= 25.0}
 BuildRequires:  %{python_module subprocess-tee >= 0.4.1}
 # https://github.com/ansible/ansible-compat/blob/main/.config/requirements-test.in
 BuildRequires:  %{python_module pytest}
@@ -50,9 +51,9 @@ BuildRequires:  %{python_module pytest-plus}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 Requires:       ansible-core >= 2.16
-Requires:       python-PyYAML
+Requires:       python-PyYAML >= 6.0.2
 Requires:       python-jsonschema >= 4.17.3
-Requires:       python-packaging
+Requires:       python-packaging >= 25.0
 Requires:       python-subprocess-tee >= 0.4.1
 %{?python_enable_dependency_generator}
 BuildArch:      noarch
@@ -63,6 +64,11 @@ Facilitate working with various versions of Ansible 2.9 and newer.
 
 %prep
 %setup -q -n ansible-compat-%{version}
+
+# for some reason 15.x errors out with an invalid duplicate license in pyproject.toml...
+%if 0%{?suse_version} < 1600
+sed -i '/license/d' pyproject.toml
+%endif
 
 %build
 %pyproject_wheel
