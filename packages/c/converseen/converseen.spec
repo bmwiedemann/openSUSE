@@ -1,7 +1,7 @@
 #
 # spec file for package converseen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           converseen
-Version:        0.9.11.1
+Version:        0.15.0.3
 Release:        0
 Summary:        Batch Image Conversion Tool
 License:        GPL-3.0-or-later
@@ -55,7 +55,7 @@ With converseen you can:
 
 %prep
 %setup -q
-chmod -x README.md COPYING
+chmod -x README.md COPYING.txt
 
 %build
 %cmake
@@ -81,7 +81,7 @@ Type=Application
 EOF
 
 %cmake_install
-rm -rf %{buildroot}%{_datadir}/kservices5/ 
+rm -rf %{buildroot}%{_datadir}/kservices5/
 
 # strip incorrect sRGB profile
 convert res/%{name}.png -strip res/%{name}.png
@@ -95,12 +95,13 @@ done
 %suse_update_desktop_file net.fasterland.%{name}
 
 %files
-%license COPYING
+%license COPYING.txt
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/net.fasterland.%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/%{name}.*
 %{_datadir}/metainfo/%{name}.appdata.xml
+%exclude %{_datadir}/kio/servicemenus/converseen_import.desktop
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}/
