@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct  7 06:05:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.17:
+  * Added support for Python 3.14 (#285)
+  * Improved generating JSON Schema references and titles for
+    generic dataclasses (#291)
+  * Fixed JSON Schema for a generic dataclass with a field type T
+    (#290)
+  * Fixed ignoring NotRequired when using from __future__ import
+    annotations (#292)
+  * Added support for user extra args in field_options function
+    (#286)
+  * Improved packaging by switching from setup.py to pyproject.toml
+    (#284)
+
+-------------------------------------------------------------------
 Wed May 21 05:13:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.16:

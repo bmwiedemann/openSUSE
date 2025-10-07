@@ -1,7 +1,7 @@
 #
 # spec file for package python-mashumaro
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mashumaro
-Version:        3.16
+Version:        3.17
 Release:        0
 Summary:        Fast and well tested serialization library
 License:        Apache-2.0
 URL:            https://github.com/Fatal1ty/mashumaro
 Source:         https://github.com/Fatal1ty/mashumaro/archive/refs/tags/v%{version}.tar.gz#/mashumaro-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # Add (optional) runtime dependencies as BuildRequires,
@@ -39,7 +39,7 @@ BuildRequires:  %{python_module tomli-w >= 1.0}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 6.2.1}
 BuildRequires:  %{python_module ciso8601 >= 2.1.3}
-BuildRequires:  %{python_module pendulum >= 2.1.2 if %python-base < 3.13}
+BuildRequires:  %{python_module pendulum >= 2.1.2}
 BuildRequires:  %{python_module pytest-mock >= 3.5.1}
 BuildRequires:  %{python_module pytest-xdist >= 3.5.0}
 # /SECTION
