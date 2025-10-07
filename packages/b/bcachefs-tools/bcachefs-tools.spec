@@ -17,16 +17,17 @@
 
 
 Name:           bcachefs-tools
-Version:        1.31.1
+Version:        1.31.7
 Release:        0
 Summary:        Configuration utilities for bcachefs
-License:        GPL-2.0-or-later
+License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only AND BSD-3-Clause AND (Apache-2.0 AND (Apache-2.0 OR MIT) AND (Apache-2.0 with LLVM-exception OR Apache-2.0 OR MIT) AND MIT AND MPL-2.0 AND (Unlicense OR MIT))
 Group:          System/Filesystems
 URL:            https://bcachefs.org/
 #Git-Clone:     https://evilpiepirate.org/git/bcachefs-tools.git
-Source0:        https://evilpiepirate.org/%name/%name-vendored-%version.tar.zst
-Source1:        https://evilpiepirate.org/%name/%name-vendored-%version.tar.sign
-Source2:        %{name}.keyring
+Source0:        https://evilpiepirate.org/bcachefs-tools/%name-vendored-%version.tar.zst
+Source1:        https://evilpiepirate.org/bcachefs-tools/%name-vendored-%version.tar.sign
+Source2:        %name.keyring
+Source3:        bcachefs-preamble
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  libaio-devel >= 0.3.111
@@ -103,7 +104,7 @@ rm -Rf "%buildroot/etc/initramfs-tools" "%buildroot/%_datadir/initramfs-tools"
 
 %if 0%{?suse_version} >= 1690
 cd /tmp/kb
-for kmp_flavor in %flavors_to_build; do
+for kmp_flavor in %{?flavors_to_build}; do
 	cd "../obj-$kmp_flavor/"
         %make_build -C "/usr/src/linux-obj/%_target_cpu/$kmp_flavor" \
 		M="$PWD" INSTALL_MOD_PATH="%buildroot" modules_install

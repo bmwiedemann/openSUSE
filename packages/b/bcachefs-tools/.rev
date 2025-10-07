@@ -179,4 +179,12 @@
     <comment>- Update to release 1.31.1</comment>
     <requestid>1306804</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a8e80f010e8305f7ecf3452d28f2a598</srcmd5>
+    <version>1.31.7</version>
+    <time>1759854578</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.31.7</comment>
+    <requestid>1309654</requestid>
+  </revision>
 </revisionlist>
