@@ -1,7 +1,7 @@
 #
 # spec file for package conftest
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           conftest
-Version:        0.62.0
+Version:        0.63.0
 Release:        0
 Summary:        Tool to write tests against structured configuration data
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Conftest helps you write tests against structured configuration data. Using
