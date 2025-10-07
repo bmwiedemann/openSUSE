@@ -1456,4 +1456,24 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.139.0</comment>
     <requestid>1308371</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>48318494e5d42ca138da6fdc4cb511d3</srcmd5>
+    <version>1.139.1</version>
+    <time>1759854581</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1309634 from darix
+
+- Update to 1.139.1 (boo#1251231)
+  - Security Fixes
+    - Fix CVE-2025-61672 / GHSA-fh66-fcv5-jjfr. Lack of validation
+      for device keys in Synapse before 1.139.1 allows an attacker
+      registered on the victim homeserver to degrade federation
+      functionality, unpredictably breaking outbound federation to
+      other homeservers. (#17097)
+  - Deprecations and Removals
+    - Drop support for unstable field names from the long-accepted
+      MSC2732 (Olm fallback keys) proposal. This change allows unit
+      tests to pass following the security patch above. (#18996)</comment>
+    <requestid>1309635</requestid>
+  </revision>
 </revisionlist>
