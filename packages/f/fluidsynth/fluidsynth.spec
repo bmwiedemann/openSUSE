@@ -16,16 +16,20 @@
 #
 
 
+%define gcem_hash 012ae73c6d0a2cb09ffe86475f5c6fba3926e200
+
 %define sover   3
 Name:           fluidsynth
-Version:        2.4.8
+Version:        2.5.0
 Release:        0
 Summary:        A Real-Time Software Synthesizer That Uses Soundfont(tm)
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Midi
-URL:            https://www.fluidsynth.orga/
+URL:            https://www.fluidsynth.org/
+#Git-Clone:     https://github.com/FluidSynth/fluidsynth.git
 Source0:        https://github.com/FluidSynth/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.conf
+Source2:        https://github.com/kthohr/gcem/archive/%{gcem_hash}.tar.gz#/gcem-%{gcem_hash}.tar.gz
 Source1000:     baselibs.conf
 BuildRequires:  cmake >= 3.13.0
 BuildRequires:  gcc-c++
@@ -33,12 +37,10 @@ BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(jack)
-BuildRequires:  pkgconfig(libinstpatch-1.0)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(sndfile)
 Recommends:     fluid-soundfont-gm
 %{?systemd_ordering}
@@ -69,9 +71,12 @@ This package contains the shared library for Fluidsynth.
 
 %prep
 %autosetup -p1
+tar -C gcem --strip-components=1 -x -f %{SOURCE2}
 
 %build
 %cmake \
+    -Dosal=cpp11 \
+    -Denable-dbus=0 \
     -DFLUID_DAEMON_ENV_FILE=%{_fillupdir}/sysconfig.%{name} \
     -DDEFAULT_SOUNDFONT=/usr/share/sounds/sf2/FluidR3_GM.sf2
 %cmake_build

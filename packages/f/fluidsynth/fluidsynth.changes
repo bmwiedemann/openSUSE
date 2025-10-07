@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Oct  5 19:26:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  New Features
+  * Add a C++11-based OS abstraction layer as a replacement for
+    glib, bringing these minor limitations when C++17 is
+    unavailable.
+  * Add native support for Downloadable Soundfont Format.
+  * Fluidsynth now recognizes the DMOD INFO-subchunk.
+  * A new positional flag has been introduced: -b, --bank-offset
+  Breaking Changes
+  * Support for SDL2 has been removed - pls. use SDL3 instead.
+  * The processing order of fluidsynth's configuration files has
+    been changed (#1573, refer to wiki for details).
+  * The legacy shell commands for reverb and chorus have been
+    removed (#1659, refer to UserManual for details).
+  Musically Breaking Changes
+  * It was discovered that fluidsynth was mapping some modulators
+    slightly inaccurately into their normalized range.
+  * Some Roland GS NPRN Params are now mapped to CC numbers.
+  * Fluidsynth now auto-detects whether Portamento Time is 7bit
+    or 14bit wide - this fixes the infamous Descent Game08 tune.
+  * Previously, fluidsynth's default behavior was to use
+    portamento only for those notes, that were played in a
+    successive / legato manner; to further improve the portamento
+    experience, this was changed and fluidsynth now plays
+    portamento for all notes by default.
+  Other Changes
+  * Fix drum kits not always being selected after SysEx GS Rythm
+    Part.
+  * The logic for parsing INFO chunks has been revised to improve
+    handling of unknown INFO-subchunks.
+  * Fix a race condition in fluid_synth_alloc_voice() public API
+    function (#1664).
+  * Fix installing static and shared libs cmake targets on the
+    same prefix (#1648).
+- Support for GLib and libinstpatch is deprecated.
+  * build with "-Dosal=cpp11 -Denable-libinstpatch=0"
+
+-------------------------------------------------------------------
 Fri Sep 12 19:36:41 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.8
