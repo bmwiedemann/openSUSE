@@ -1,7 +1,7 @@
 #
 # spec file for package pam_mount
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 Name:           pam_mount
 %define lname   libcryptmount0
-Version:        2.20
+Version:        2.21
 Release:        0
 Summary:        A PAM Module that can Mount Volumes for a User Session
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://inai.de/projects/pam_mount/
 
-Source:         http://downloads.sf.net/pam-mount/%name-%version.tar.xz
-Source9:        http://downloads.sf.net/pam-mount/%name-%version.tar.asc
+Source:         https://inai.de/files/pam_mount/%name-%version.tar.zst
+Source9:        https://inai.de/files/pam_mount/%name-%version.tar.asc
 Source1:        convert_pam_mount_conf.pl
 Source2:        convert_keyhash.pl
 Source3:        pam_mount.tmpfiles
@@ -42,9 +42,9 @@ BuildRequires:  man
 BuildRequires:  pam-devel >= 0.99
 BuildRequires:  perl-XML-Parser
 BuildRequires:  perl-XML-Writer
-BuildRequires:  pkgconfig >= 0.19
-BuildRequires:  xz
-BuildRequires:  pkgconfig(libHX) >= 3.12.1
+BuildRequires:  pkg-config >= 0.19
+BuildRequires:  zstd
+BuildRequires:  pkgconfig(libHX) >= 4.28
 BuildRequires:  pkgconfig(libcrypto) >= 0.9.7
 BuildRequires:  pkgconfig(libcryptsetup) >= 1.1.2
 BuildRequires:  pkgconfig(libpcre2-8)
@@ -109,8 +109,7 @@ and transparent use of the OS's crypto layer.
 %install
 %make_install
 b="%buildroot"
-# Remove static and libtool version
-rm -f $b%{_pam_moduledir}/*.{a,la} "$b/%_libdir"/*.la
+rm -fv "$b/%_libdir"/*.la
 #install the docs
 mkdir -p "$b/%_docdir/%name/examples"
 cp -a doc/bugs.rst doc/news.rst LICENSE* doc/faq.txt doc/todo.txt doc/options.txt "$b/%_docdir/%name/"
@@ -145,8 +144,7 @@ then
 	done
 fi
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_docdir/%name
