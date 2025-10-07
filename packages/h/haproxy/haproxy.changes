@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  7 13:31:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix apparmor profile:
+  - we need attach disconnected for the systemd notify socket
+  - more access for the cpu scheduling support in haproxy
+
+-------------------------------------------------------------------
 Fri Oct 03 13:37:06 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.2.6+git0.81568b2d1: (CVE-2025-11230 boo#1250983)
