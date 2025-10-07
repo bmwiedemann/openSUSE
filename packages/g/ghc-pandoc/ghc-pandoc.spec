@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.8
+Version:        3.8.1
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -196,11 +196,11 @@ The formats it can handle include
 
 - light markup formats (many variants of Markdown, reStructuredText, AsciiDoc,
 Org-mode, Muse, Textile, txt2tags, djot) - HTML formats (HTML 4 and 5) - Ebook
-formats (EPUB v2 and v3, FB2) - Documentation formats (GNU TexInfo, Haddock) -
-Roff formats (man, ms) - TeX formats (LaTeX, ConTeXt) - Typst - XML formats
-(DocBook 4 and 5, JATS, TEI Simple, OpenDocument) - Outline formats (OPML) -
-Bibliography formats (BibTeX, BibLaTeX, CSL JSON, CSL YAML, RIS) - Word
-processor formats (Docx, RTF, ODT) - Interactive notebook formats (Jupyter
+formats (EPUB v2 and v3, FB2) - Documentation formats (GNU TexInfo, Haddock,
+Vimdoc) - Roff formats (man, ms) - TeX formats (LaTeX, ConTeXt) - Typst - XML
+formats (DocBook 4 and 5, JATS, TEI Simple, OpenDocument) - Outline formats
+(OPML) - Bibliography formats (BibTeX, BibLaTeX, CSL JSON, CSL YAML, RIS) -
+Word processor formats (Docx, RTF, ODT) - Interactive notebook formats (Jupyter
 notebook ipynb) - Page layout formats (InDesign ICML) - Wiki markup formats
 (MediaWiki, DokuWiki, TikiWiki, TWiki, Vimwiki, XWiki, ZimWiki, Jira wiki,
 Creole) - Slide show formats (LaTeX Beamer, PowerPoint, Slidy, reveal.js,
@@ -422,6 +422,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.texinfo
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.textile
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.typst
+%{_datadir}/%{pkg_name}-%{version}/data/templates/default.vimdoc
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.xwiki
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.zimwiki
 %{_datadir}/%{pkg_name}-%{version}/data/templates/font-settings.latex
