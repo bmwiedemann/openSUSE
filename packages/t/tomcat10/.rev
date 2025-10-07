@@ -221,4 +221,12 @@
     <comment>10.1.44</comment>
     <requestid>1301289</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>7f8535e008d48b4bc36353360ae36d46</srcmd5>
+    <version>10.1.44</version>
+    <time>1759854452</time>
+    <user>dimstar_suse</user>
+    <comment>Do not use update-alternatives</comment>
+    <requestid>1309427</requestid>
+  </revision>
 </revisionlist>
