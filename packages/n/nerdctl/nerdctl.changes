@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 07 06:51:36 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 2.1.6:
+  * Add TestReservePorts
+  * build(deps): bump docker/login-action from 3.5.0 to 3.6.0
+  * rootful: reserve the ports on the host
+  * build(deps): bump actions/cache from 4.2.4 to 4.3.0
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * add healthcheck orchestration logic
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * Add TestRunCPUSharesCgroupV2
+  * TestRunCgroupV2: remove `--cpu-shares` checks
+  * fix:forbid to restart/start container created by kubernetes
+  * Changes:
+  * build(deps): bump the golang-x group across 1 directory with 6 updates
+  * build(deps): bump tonistiigi/xx from 1.6.1 to 1.7.0
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * support all-platforms flag with soci convert
+
+-------------------------------------------------------------------
 Fri Sep 26 09:39:59 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 2.1.4:
