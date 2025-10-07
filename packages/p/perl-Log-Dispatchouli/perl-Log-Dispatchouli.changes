@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  2 13:29:57 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 3.11.0 (3.011)
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  3.011     2025-07-28 11:43:33-04:00 America/New_York
+          - [ BREAKING CHANGE ]
+            This release converts all Logger methods to signatured-subs.  This
+            should not really break anything, unless methods are being called
+            erroneously, as strict arity checking will now notice the wrong
+            number of args.
+
+-------------------------------------------------------------------
 Thu Jul 17 05:40:14 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.10.0 (3.010)

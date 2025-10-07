@@ -18,15 +18,16 @@
 
 %define cpan_name Log-Dispatchouli
 Name:           perl-Log-Dispatchouli
-Version:        3.10.0
+Version:        3.11.0
 Release:        0
-# 3.010 -> normalize -> 3.10.0
-%define cpan_version 3.010
+# 3.011 -> normalize -> 3.11.0
+%define cpan_version 3.011
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple wrapper around Log::Dispatch
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
