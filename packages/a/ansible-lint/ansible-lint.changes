@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  1 12:55:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.9.1:
+  * Fixes
+    - fix: pin to python3.13 for the pre-commit hook (#4796)
+      @ssbarnea
+    - fix: add support for python 3.14 (#4795) @ssbarnea
+  * Maintenance
+    - chore: remove renovate hook (#4797) @ssbarnea
+    - chore: replace toml-sort with tombi (#4794) @ssbarnea
+    - chore(deps): update all dependencies (#4786) @renovate[bot]
+    - chore(deps): update all dependencies (#4783) @renovate[bot]
+    - chore(deps): update all dependencies (#4781) @renovate[bot]
+    - chore(deps): update all dependencies (#4780) @renovate[bot]
+    - chore(deps): update all dependencies (#4779) @renovate[bot]
+    - chore(deps): update all dependencies (#4778) @renovate[bot]
+    - chore(deps): update all dependencies (#4776) @renovate[bot]
+
+-------------------------------------------------------------------
 Thu Sep 18 06:42:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - switch to using the "normal" python macros %pyproject_wheel and
