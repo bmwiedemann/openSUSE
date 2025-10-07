@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Oct 06 15:26:04 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20251006:
+  * Allow sshd_session_t write to wtmpdb
+  * Support /usr/libexec/ssh as well as openssh folder
+  * Set xenstored_use_store_type_domain boolean true(bsc#1247875)
+  * Adjust guest and xguest users policy for sshd-session
+  * Allow valkey-server create and use netlink_rdma_socket
+  * Allow blueman get attributes of filesystems with extended attributes
+  * Update files_search_base_file_types()
+  * Allow geoclue get attributes of the /dev/shm filesystem
+  * Allow apcupsd get attributes of the /dev/shm filesystem
+  * Allow sshd-session read cockpit pid files
+  * Allow nfs generator create and use netlink sockets
+  * Conditionally allow virt guests to read certificates in user home directories
+  * xenstored_t needs CAP_SYS_ADMIN for XENSTORETYPE=domain (bsc#1247875)
+  * Allow nfs-generator create and use udp sockets
+  * Allow kdump search kdumpctl_tmp_t directories
+  * Allow init open and read user tmp files
+  * Fix the systemd_logind_stream_connect() interface
+  * Allow staff and sysadm execute iotop using sudo
+  * Allow sudodomains connect to systemd-logind over a unix socket
+  * /boot/efi is dosfs_t and kdump needs to access it (bsc#1249370)
+  * Add default contexts for sshd-seesion
+  * Define types for new openssh executables
+  * Fix systemd_manage_unit_symlinks() interface definition
+  * Support coreos installation methods
+  * Add a new type for systemd-ssh-issue PID files
+  * Allow gnome-remote-desktop connect to unreserved ports
+  * Allow mdadm the CAP_SYS_PTRACE capability
+  * Allow iptables manage its private fifo_files in /tmp
+  * Allow auditd manage its private run dirs
+  * Revert "Allow virt_domain write to virt_image_t files"
+- Syncing with upstream rawhide selinux-policy up to:
+  * 415b33792f9ea17d816a9e2602cddf21c16e7255
+- Update embedded container-selinux version to commit:
+  * edfbda465d37deb2a831330a2c3c65b557e6dff5 (version 2.242.0)
+
+-------------------------------------------------------------------
 Fri Sep 26 11:42:03 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20250926:
