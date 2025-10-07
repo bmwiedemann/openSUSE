@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Minion
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,26 @@
 
 %define cpan_name Minion
 Name:           perl-Minion
-Version:        10.310.0
+Version:        11.0.0
 Release:        0
-# 10.31 -> normalize -> 10.310.0
-%define cpan_version 10.31
+# 11.0 -> normalize -> 11.0.0
+%define cpan_version 11.0
 License:        Artistic-2.0
 Summary:        Job queue
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Mojolicious) >= 9.0
-BuildRequires:  perl(YAML::XS) >= 0.67
+BuildRequires:  perl(YAML::XS) >= 0.670
 Requires:       perl(Mojolicious) >= 9.0
-Requires:       perl(YAML::XS) >= 0.67
+Requires:       perl(YAML::XS) >= 0.670
+Provides:       perl(LinkCheck)
+Provides:       perl(LinkCheck::Controller::Links)
+Provides:       perl(LinkCheck::Task::CheckLinks)
 Provides:       perl(Minion) = %{version}
 Provides:       perl(Minion::Backend)
 Provides:       perl(Minion::Backend::Pg)
@@ -42,6 +46,7 @@ Provides:       perl(Minion::Command::minion::job)
 Provides:       perl(Minion::Command::minion::worker)
 Provides:       perl(Minion::Iterator)
 Provides:       perl(Minion::Job)
+Provides:       perl(Minion::Util)
 Provides:       perl(Minion::Worker)
 Provides:       perl(Mojolicious::Plugin::Minion)
 Provides:       perl(Mojolicious::Plugin::Minion::Admin)
@@ -66,7 +71,7 @@ everything else you can imagine that's not super fast.
 Take a look at our excellent documentation in Minion::Guide!
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

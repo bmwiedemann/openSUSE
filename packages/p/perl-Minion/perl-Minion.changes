@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 28 10:36:53 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 11.0.0 (11.0)
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  11.0 2025-08-21
+    - Minion::Backend::Pg now requires PostgreSQL 13.
+    - Removed experimetnal status from lax dependency support.
+    - Added support for task limits.
+    - Added Minion::Util module.
+    - Added spare remote control command, this allows workers to be paused again by combining jobs and spare.
+    - Fixed a problem where remote control commands would not immediately update the worker status.
+
+-------------------------------------------------------------------
 Sun Sep 22 05:31:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 10.310.0 (10.31)
