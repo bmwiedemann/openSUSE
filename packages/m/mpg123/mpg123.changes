@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  6 10:45:17 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.33.3
+  libmpg123:
+  * Consolidate and more consistently use .rodata switch in
+    macro.
+
+-------------------------------------------------------------------
 Wed Aug  6 06:26:58 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.33.2
