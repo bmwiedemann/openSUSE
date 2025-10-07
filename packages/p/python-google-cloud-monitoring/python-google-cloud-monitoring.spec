@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-monitoring
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-google-cloud-monitoring
 Version:        2.27.1
 Release:        0
@@ -23,19 +24,19 @@ Summary:        Google Cloud Monitoring API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-monitoring
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-monitoring/google_cloud_monitoring-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module google-api-core >= 1.34.1}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module proto-plus >= 1.22.3}
 BuildRequires:  %{python_module proto-plus >= 1.25.0}
 BuildRequires:  %{python_module protobuf >= 3.20.2}
+BuildRequires:  %{python_module pytest-asyncio}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-google-api-core >= 1.34.1
