@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MCE
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name MCE
 Name:           perl-MCE
-Version:        1.901.0
+Version:        1.902.0
 Release:        0
-# 1.901 -> normalize -> 1.901.0
-%define cpan_version 1.901
+# 1.902 -> normalize -> 1.902.0
+%define cpan_version 1.902
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Many-Core Engine for Perl providing parallel processing capabilities
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARIOROY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -66,8 +67,8 @@ Provides:       perl(MCE::Stream) = %{version}
 Provides:       perl(MCE::Subs) = %{version}
 Provides:       perl(MCE::Util) = %{version}
 %undefine       __perllib_provides
-Recommends:     perl(Sereal::Decoder) >= 3.015
-Recommends:     perl(Sereal::Encoder) >= 3.015
+Recommends:     perl(Sereal::Decoder) >= 3.15
+Recommends:     perl(Sereal::Encoder) >= 3.15
 %{perl_requires}
 
 %description
@@ -78,7 +79,7 @@ that model by adding the ability to chunk the next n elements from the
 input stream to the next available worker.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

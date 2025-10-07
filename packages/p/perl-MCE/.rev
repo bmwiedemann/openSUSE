@@ -288,4 +288,13 @@
     <comment></comment>
     <requestid>1236295</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>aa0b54b79de3a33fe7fc13f7f31bd1e0</srcmd5>
+    <version>1.902.0</version>
+    <time>1759854549</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.902.0 (1.902)
+   see /usr/share/doc/packages/perl-MCE/Changes</comment>
+    <requestid>1309620</requestid>
+  </revision>
 </revisionlist>
