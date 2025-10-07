@@ -264,4 +264,16 @@
   + Fixed build failure with Python 3.13. (forwarded request 1169185 from dimstar)</comment>
     <requestid>1169233</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3fd67eb9f2c1a77c2582cd63c005b3d1</srcmd5>
+    <version>4.1.0</version>
+    <time>1759854336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.0:
+  + Added support for Nautilus 49.
+  + Removed MenuItem.icon, MenuItem.priority, MenuItem.tip from
+    docs. These were unsupported for a long time and now Nautilus
+    officially deprecated them. (forwarded request 1309064 from iznogood)</comment>
+    <requestid>1309287</requestid>
+  </revision>
 </revisionlist>

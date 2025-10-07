@@ -1,7 +1,7 @@
 #
 # spec file for package python-nautilus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %define skip_python2 1
 
 Name:           python-nautilus
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        Python bindings for Nautilus
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://wiki.gnome.org/Projects/NautilusPython
-Source:         https://download.gnome.org/sources/nautilus-python/4.0/%{_name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/nautilus-python/4.1/%{_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE: fix-hwcaps.patch -- bsc#1212474
 Patch1:         fix-hwcaps.patch
 
