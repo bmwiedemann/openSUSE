@@ -28,7 +28,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml6
 
 %define so_ver -qt6-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-17739-g0d7a960ef4
+%define LEECHCRAFT_VERSION 0.6.70-17769-g4e68d7fcba
 
 %define db_postfix %{so_ver}
 %define gui_postfix %{so_ver}
@@ -49,7 +49,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.17739.g0d7a960ef4
+Version:        0.6.70+git.17769.g4e68d7fcba
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -58,6 +58,8 @@ URL:            https://leechcraft.org
 Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
+# PATCH-FIX-UPSTREAM not to require deprecated boost_system.
+Patch0:         leechcraft-0.6.70+git-boost_system.diff.patch
 
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
@@ -75,7 +77,6 @@ BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
 %if 0%{?suse_version} > 1600
@@ -2070,7 +2071,7 @@ A library providing some classes to be used with the
 XmlSettingsDialog LeechCraft subsystem.
 
 %prep
-%setup -q -n leechcraft-%{LEECHCRAFT_VERSION}
+%autosetup -p1 -n leechcraft-%{LEECHCRAFT_VERSION}
 
 #removing non-free icons
 rm -r src/plugins/azoth/share/azoth/iconsets/clients/default
