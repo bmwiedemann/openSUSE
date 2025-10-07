@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Sun Oct  5 15:53:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.9.0
+  * New features and improvements
+    + Use Resolver API in go-offline for dependencies resolving
+    + Use Resolver API in go-offline for plugins resolving
+    + Fixes #1522, add render-dependencies mojo
+    + Use Resolver API in resolve-plugin
+    + MDEP-964: unconditionally ignore dependencies known to be
+      loaded by reflection
+    + Update maven-dependency-analyzer to support Java24
+    + MDEP-972: copy-dependencies: copy signatures alongside
+      artifacts
+    + MDEP-776: Warn when multiple dependencies have the same file
+      name
+    + MDEP-966: Migrate AnalyzeDepMgt to Sisu
+    + MDEP-957: By default, don't report slf4j-simple as unused
+  * Bug Fixes
+    + ProjectBuildingRequest should not be modified
+    + Fix: markersDirectory is not working when unpack goal is
+      executed from command line
+    + Fix broken link for analyze-exclusions-mojo on usage-page
+    + MDEP-839: Avoid extra blank lines in file
+    + Update collect URL
+    + MDEP-689: Fixes ignored dependency filtering in go-offline
+      goal
+    + MDEP-960: Repair silent logging
+  * Documentation updates
+    + MDEP-933: Document dependency tree output formats
+    + Add additional comment to clarify the minimal supported
+      version of outputing dependency tree in JSON fromat.
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + Unix file separators
+  * Maintenance
+    + Simplify usage of RepositoryManager and DependencyResolver
+    + Use Resolver API in copy and unpack
+    + Update site descriptor to 2.0.0
+    + Enable prevent branch protection rules
+    + Fix [MDEP-931: Replace PrintWriter with Writer in
+      AbstractSerializing Visitor and subclasses
+    + Cleanups dependencies
+    + Copy edit parameter descriptions
+    + Small Javadoc clarifications
+    + MDEP-967: Change info to debug logging in
+      AbstractFromConfigurationMojo
+    + fix: remove duplicate maven-resolver-api and
+      maven-resolver-util dependencies in pom.xml
+    + Enable GH issues
+    + Remove redundant/unneeded code
+    + Add PR Automation and Stale actions
+    + Keep files in temporary directory to be deleted after test
+    + Drop unnecessary call
+    + Avoid deprecated ArtifactFactory
+    + MDEP-966: Convert remaining Mojos to Guice injection
+    + MDEP-966: Convert Analyze Mojos to Guice constructor injection
+    + MDEP-966: Prefer Guice injection
+    + MDEP-966: Migrate TreeMojo/CopyMojo/AnalyzeExclusionsMojo/
+      /UnpackMojo/CopyDependenciesMojo from Plexus to Sisu Guice
+    + MDEP-966: @component --> @Inject for DisplayAncestorsMojo
+    + Fixing flaky test in TestCopyDependenciesMojo
+    + MNG-2961: Remove workaround for fixed bug
+  * Build
+    + Build by Maven 4
+  * Dependency updates
+    + Bump Maven in dependencies to 3.9.11
+    + Bump commons-io:commons-io from 2.16.1 to 2.20.0
+    + Bump jettyVersion from 9.4.56.v20240826 to 9.4.58.v20250814
+    + Bump org.apache.commons:commons-lang3 from 3.17.0 to 3.19.0
+    + Bump org.apache.maven.plugins:maven-plugins from 43 to 45
+    + Bump org.codehaus.mojo:mrm-maven-plugin from 1.6.0 to 1.7.0
+    + Bump org.codehaus.plexus:plexus-archiver from 4.10.0 to 4.10.1
+    + Bump org.codehaus.plexus:plexus-i18n from 1.0-beta-10 to 1.0.0
+    + Bump org.jsoup:jsoup from 1.18.1 to 1.21.2
+    + MDEP-963: Bump
+      org.apache.maven.shared:maven-dependency-analyzer from 1.15.0
+      to 1.15.1
+
+-------------------------------------------------------------------
 Tue Oct 29 18:33:45 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to verion 3.8.1
