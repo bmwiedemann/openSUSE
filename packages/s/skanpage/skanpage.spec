@@ -53,13 +53,12 @@ BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # For OCR
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(tesseract) >= 4
 BuildRequires:  pkgconfig(lept)
-%endif
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kquickimageeditor6-imports >= 0.2
 Requires:       qt6-declarative-imports >= %{qt6_version}
+Recommends:     tesseract-ocr
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
@@ -86,11 +85,15 @@ Features:
 %install
 %kf6_install
 
+# Work around boo#1243103
+mkdir -p %{buildroot}%{_datadir}/tessdata
+
 %find_lang %{name}
 
 %files
 %license LICENSES/*
 %doc README.md
+%dir %{_datadir}/tessdata
 %{_kf6_applicationsdir}/org.kde.skanpage.desktop
 %{_kf6_appstreamdir}/org.kde.skanpage.appdata.xml
 %{_kf6_bindir}/skanpage

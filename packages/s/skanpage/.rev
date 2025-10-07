@@ -335,4 +335,14 @@
     <comment>KDE release gear 25.08.1</comment>
     <requestid>1304007</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>5cfcd5b32c1c3700d526d8495f81d7e1</srcmd5>
+    <version>25.08.1</version>
+    <time>1759854517</time>
+    <user>dimstar_suse</user>
+    <comment>- Work around a tesseract bug which causes a crash if
+  /usr/share/tessdata doesn't exist (but doesn't if it's empty) (boo#1243103)
+- Recommend installing tesseract-ocr</comment>
+    <requestid>1309664</requestid>
+  </revision>
 </revisionlist>
