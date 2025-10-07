@@ -3,5 +3,4 @@
   <description>MIME types are used in MIME entities, for instance as part of e-mail
 and HTTP traffic. Sometimes real knowledge about a mime-type is need. 
 This module will supply it.</description>
-  <devel project="devel:languages:perl" package="perl-MIME-Types"/>
 </package>

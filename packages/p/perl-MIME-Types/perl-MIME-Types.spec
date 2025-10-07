@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MIME-Types
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,21 @@
 
 %define cpan_name MIME-Types
 Name:           perl-MIME-Types
-Version:        2.280.0
+Version:        2.290.0
 Release:        0
-# 2.28 -> normalize -> 2.280.0
-%define cpan_version 2.28
+# 2.29 -> normalize -> 2.290.0
+%define cpan_version 2.29
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Definition of MIME types
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Test::More) >= 1
+BuildRequires:  perl(Test::Pod) >= 1
 Provides:       perl(MIME::Type) = %{version}
 Provides:       perl(MIME::Types) = %{version}
 Provides:       perl(MojoX::MIME::Types) = %{version}
@@ -42,9 +45,9 @@ and name changes are painful, so we stuck with the original name.
 
 Media types are used in many applications (for instance as part of e-mail
 and HTTP traffic) to indicate the type of content which is transmitted. or
-expected. Read RFC6838 at _https://www.rfc-editor.org/rfc/rfc6838_
-(registrations) and RFC9694 at _https://www.rfc-editor.org/rfc/rfc9694_
-(top-levels) for the specification.
+expected. Read at https://www.rfc-editor.org/rfc/rfc6838 (registrations)
+and at https://www.rfc-editor.org/rfc/rfc9694 (top-levels) for the
+specification.
 
 Sometimes detailed knowledge about a mime-type is need, however this module
 only knows about the file-name extensions which relate to some filetype. It
@@ -56,7 +59,7 @@ various sources. For instance, it contains *all IANA* types and the
 knowledge of Apache. Probably the most complete table on the net!
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -71,6 +74,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc ChangeLog README README.md
+%doc ChangeLog README.md
 
 %changelog

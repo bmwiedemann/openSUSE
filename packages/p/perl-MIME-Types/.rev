@@ -398,4 +398,13 @@
    see /usr/share/doc/packages/perl-MIME-Types/ChangeLog</comment>
     <requestid>1279795</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>9b1599e4c63b3aa48f88989853424e67</srcmd5>
+    <version>2.290.0</version>
+    <time>1759854553</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.290.0 (2.29)
+   see /usr/share/doc/packages/perl-MIME-Types/ChangeLog</comment>
+    <requestid>1309622</requestid>
+  </revision>
 </revisionlist>
