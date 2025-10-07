@@ -324,4 +324,24 @@
     <comment></comment>
     <requestid>1306142</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>08d59ebc31b1dfbebedef2e53ca5ca7a</srcmd5>
+    <version>11.1.2</version>
+    <time>1759854533</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 11.1.2:
+  * feat: support evaluating workflow-level concurrency blocks in jobparser
+  * fix(security): a multiline secret may be found in a single log entry
+  * fix: improve logging to diagnose mystery job terminations
+  * fix: modifying a cache secret does not invalidate cached entries
+  * fix: allow GC &amp; cache operations to operate concurrently
+  * fix: do not attempt to run the LXC stop script with self-hosted
+  * fix: event.pull_request.action == closed can use the cache of the base
+    repository
+  * fix: Correctly override the value of Forgejo-Cache-Host when
+    ACTIONS_CACHE_URL is overridden
+  * fix: a composite action must not change the result of the calling step
+    before it completes (forwarded request 1309603 from rrahl0)</comment>
+    <requestid>1309604</requestid>
+  </revision>
 </revisionlist>
