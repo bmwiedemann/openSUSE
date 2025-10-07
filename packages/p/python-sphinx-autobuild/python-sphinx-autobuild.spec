@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-autobuild
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-autobuild
-Version:        2024.10.3
+Version:        2025.8.25
 Release:        0
 Summary:        Rebuild Sphinx documentation on changes, with live-reload in the browser
 License:        MIT

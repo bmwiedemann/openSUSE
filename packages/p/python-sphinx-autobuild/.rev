@@ -62,4 +62,12 @@
   * Show the changed paths that triggered the rebuild.</comment>
     <requestid>1225393</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d9084b64dcc2ba5cd4576487323ab019</srcmd5>
+    <version>2025.8.25</version>
+    <time>1759854576</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1309630</requestid>
+  </revision>
 </revisionlist>
