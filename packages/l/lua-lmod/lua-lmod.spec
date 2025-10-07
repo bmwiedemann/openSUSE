@@ -150,7 +150,9 @@ export LUA_PATH="%{lua_path}"
     --datadir=%{lua_noarchdir} \
     --with-redirect=yes \
     --with-autoSwap=no \
-    --with-fastTCLInterp=no
+    --with-fastTCLInterp=no \
+    --with-lua=/usr/bin/lua \
+    --with-luac=/usr/bin/luac
 make
 find my_docs/ -name .gitignore -delete
 %endif

@@ -575,4 +575,12 @@
     <comment>- Remove python2 support. (forwarded request 1265189 from eeich)</comment>
     <requestid>1265193</requestid>
   </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>3a1f45b5915d4881c3eda4f437f39bf9</srcmd5>
+    <version>8.7.55</version>
+    <time>1759854502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309469</requestid>
+  </revision>
 </revisionlist>
