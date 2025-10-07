@@ -1,0 +1,12 @@
+diff -Pdpru tdesktop-6.1.3-full.orig/cmake/external/webrtc/CMakeLists.txt tdesktop-6.1.3-full/cmake/external/webrtc/CMakeLists.txt
+--- tdesktop-6.1.3-full.orig/cmake/external/webrtc/CMakeLists.txt	2025-08-22 20:17:08.000000000 +0300
++++ tdesktop-6.1.3-full/cmake/external/webrtc/CMakeLists.txt	2025-09-20 00:05:37.408267491 +0300
+@@ -9,7 +9,7 @@ add_library(desktop-app::external_webrtc
+ 
+ if (DESKTOP_APP_USE_PACKAGED OR LINUX)
+     find_package(tg_owt REQUIRED)
+-    target_link_libraries(external_webrtc INTERFACE tg_owt::tg_owt)
++    target_link_libraries(external_webrtc INTERFACE tg_owt::tg_owt opus vpx X11 Xcomposite Xdamage Xext Xfixes Xrandr Xrender Xtst)
+     return()
+ endif()
+ 

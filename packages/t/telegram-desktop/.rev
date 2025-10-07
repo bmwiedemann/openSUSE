@@ -1457,4 +1457,23 @@
     <comment>- Required kf6-kimageformats instead of qt6-imageformats to AVIF support.</comment>
     <requestid>1277435</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>ca31b1f0408a63c63266899788889ee6</srcmd5>
+    <version>6.1.4</version>
+    <time>1759854445</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed Qt-6.9.patch.
+- Renamed and changed dynamic-link-x.patch to telegram-desktop-webrtc-link.patch.
+- Updated ada to 3.3.0.
+- Updated owt to git20250501.
+- Added td to git20250919.
+- Updated telegram-desktop to 6.1.4
+  * Fixed missing Gio::DesktopAppInfo when building against GLib 2.86.
+  * Fixed crash on chat with sticers.
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.1.4
+  * Allow add to folder from recent / top chats.
+  * Fixed clear history of group chats.
+  * Fixed several crashes.</comment>
+    <requestid>1309409</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package telegram-desktop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
 %define api_id    611335
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
-%define ada_ver   3.2.4
-%define exp_ver   1.1.0
+%define ada_ver   3.3.0
 %define h264_ver  2.6.0
-%define owt_ver   git20250501
+%define owt_ver   git20250913
+%define td_ver    git20250919
 Name:           telegram-desktop
-Version:        5.13.1
+Version:        6.1.4
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -36,19 +36,22 @@ Source1:        https://github.com/ada-url/ada/archive/refs/tags/v%{ada_ver}.tar
 Source2:        openh264-headers-%{h264_ver}.tar.xz
 # n=tg_owt && cd /tmp && git clone --depth=1 https://github.com/desktop-app/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && git submodule update --init --depth=1 && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source3:        tg_owt-%{owt_ver}.tar.xz
-Patch0:         dynamic-link-x.patch
+# n=td && cd /tmp && git clone --depth=1 https://github.com/tdlib/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+Source4:        td-%{td_ver}.tar.xz
+Patch0:         %{name}-webrtc-link.patch
 Patch1:         tg_owt-h264-dlopen.patch
-Patch2:         Qt-6.9.patch
-BuildRequires:  appstream-glib
+BuildRequires:  QR-Code-generator-devel
+BuildRequires:  clang
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+#?1
 BuildRequires:  glibc-devel
+BuildRequires:  gperf
 BuildRequires:  kf6-kcoreaddons-devel
+#?1
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libdispatch-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  liblz4-devel
 BuildRequires:  mold
 BuildRequires:  ms-gsl-devel
 BuildRequires:  ninja
@@ -58,71 +61,113 @@ BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-waylandclient-private-devel
 BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  range-v3-devel
-BuildRequires:  unzip
 BuildRequires:  xxhash-devel
-BuildRequires:  xz
+#?1
 BuildRequires:  pkgconfig(Qt6Concurrent)
 BuildRequires:  pkgconfig(Qt6Core)
+#?1
 BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6OpenGL)
 BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
+#?1
 BuildRequires:  pkgconfig(Qt6Qml)
 BuildRequires:  pkgconfig(Qt6Quick)
+BuildRequires:  pkgconfig(Qt6QuickWidgets)
 BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6WaylandCompositor)
+#?1
 BuildRequires:  pkgconfig(Qt6WaylandClient)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
+#?1
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fmt)
+#?1
 BuildRequires:  pkgconfig(fontconfig)
+#?1
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glib-2.0)
+#?1
 BuildRequires:  pkgconfig(glibmm-2.68)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+#?1
 BuildRequires:  pkgconfig(gsl)
+#?1
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(jemalloc)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libheif)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libjxl)
+BuildRequires:  pkgconfig(liblz4)
+#?1
 BuildRequires:  pkgconfig(liblzma)
+#?1
 BuildRequires:  pkgconfig(libmng)
 BuildRequires:  pkgconfig(libpipewire-0.3)
+#?1
 BuildRequires:  pkgconfig(libpng)
+#?1
 BuildRequires:  pkgconfig(libproxy-1.0)
 BuildRequires:  pkgconfig(libpulse)
+#?1
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
+#?1
 BuildRequires:  pkgconfig(libtiff-4)
+#?1
 BuildRequires:  pkgconfig(libva)
+#?1
 BuildRequires:  pkgconfig(libva-glx)
+#?1
 BuildRequires:  pkgconfig(libva-x11)
+#?1
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(minizip)
+#?1
 BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
+#?1
 BuildRequires:  pkgconfig(portaudio-2.0)
+#?1
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(rnnoise)
+#?1
 BuildRequires:  pkgconfig(tslib)
+#?1
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vpx)
-BuildRequires:  pkgconfig(webkit2gtk-4.1)
+#?1
+BuildRequires:  pkgconfig(webkitgtk-6.0)
+#?1
 BuildRequires:  pkgconfig(webrtc-audio-processing-1)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcb)
+#?1
 BuildRequires:  pkgconfig(xcb-ewmh)
+#?1
 BuildRequires:  pkgconfig(xcb-icccm)
+#?1
 BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xcb-record)
+#?1
 BuildRequires:  pkgconfig(xcb-renderutil)
+BuildRequires:  pkgconfig(xcb-screensaver)
+#?1
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
@@ -130,6 +175,7 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
+#?1
 BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xtst)
@@ -147,85 +193,90 @@ always immediately published, whereas its server-side code is closed-source and 
 The service also provides APIs to independent developers.
 
 %prep
-%setup -q -n tdesktop-%{version}-full -b1 -b2 -b3
-%autopatch -p1 0 2
+%setup -q -n tdesktop-%{version}-full -b1 -b2 -b3 -b4
+%autopatch -p1 0
 
-mkdir -p ../Libraries/ada
-mv ../ada-%{ada_ver}/* ../Libraries/ada
+mv ../ada-%{ada_ver} Telegram/ThirdParty/ada
 
-mv Telegram/ThirdParty/expected ../Libraries
+mkdir -p Telegram/ThirdParty/openh264/include
+mv ../openh264-headers-%{h264_ver} Telegram/ThirdParty/openh264/include/wels
 
-mkdir -p ../Libraries/openh264/include/wels
-mv ../openh264-headers-%{h264_ver}/* ../Libraries/openh264/include/wels
-
-mkdir -p ../Libraries/tg_owt
-mv ../tg_owt-%{owt_ver}/* ../Libraries/tg_owt
-pushd ../Libraries/tg_owt
+mv ../tg_owt-%{owt_ver} Telegram/ThirdParty/tg_owt
+pushd Telegram/ThirdParty/tg_owt
 %autopatch -p1 1
 popd
 
-%build
-CFLAGS="%{optflags} -g1 -Wl,-v -fuse-ld=mold"
-export CMAKE_GENERATOR=Ninja
-mkdir -p %{_builddir}/Libraries/install
+mv ../td-%{td_ver} Telegram/ThirdParty/td
 
-cd %{_builddir}/Libraries/ada
+%build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+CFLAGS="%{optflags} -fPIC -g1 -Wl,-v -fuse-ld=mold"
+export CMAKE_GENERATOR=Ninja
+mkdir %{_builddir}/local
+
+cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/ada
 %cmake -LA \
       -DBUILD_SHARED_LIBS=OFF \
-      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_BUILD_TYPE="Release" \
       -DCMAKE_C_FLAGS="$CFLAGS" \
       -DCMAKE_CXX_FLAGS="$CFLAGS" \
-      -DCMAKE_INSTALL_PREFIX=%{_builddir}/Libraries/install
+      -DCMAKE_INSTALL_PREFIX="%{_builddir}/local"
 %cmake_build
 ninja install
 
-cd %{_builddir}/Libraries/expected
+cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/expected
 %cmake -LA \
-      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_BUILD_TYPE="Release" \
       -DCMAKE_C_FLAGS="$CFLAGS" \
       -DCMAKE_CXX_FLAGS="$CFLAGS" \
-      -DCMAKE_INSTALL_PREFIX=%{_builddir}/Libraries/install \
+      -DCMAKE_INSTALL_PREFIX="%{_builddir}/local" \
       -DEXPECTED_BUILD_PACKAGE=OFF \
       -DEXPECTED_BUILD_TESTS=OFF
 %cmake_build
 ninja install
 
-cd %{_builddir}/Libraries/tg_owt
+cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/tg_owt
 %cmake -LA \
       -DBUILD_SHARED_LIBS=OFF \
-      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_BUILD_TYPE="Release" \
       -DCMAKE_C_FLAGS="$CFLAGS" \
       -DCMAKE_CXX_FLAGS="$CFLAGS" \
-      -DCMAKE_INSTALL_PREFIX=%{_builddir}/Libraries/install \
+      -DCMAKE_INSTALL_PREFIX="%{_builddir}/local" \
       -DTG_OWT_DLOPEN_H264=ON \
-      -DTG_OWT_SPECIAL_TARGET=linux \
-      -DTG_OWT_LIBJPEG_INCLUDE_PATH=%{_includedir} \
-      -DTG_OWT_OPENH264_INCLUDE_PATH=%{_builddir}/Libraries/openh264/include \
-      -DTG_OWT_OPENSSL_INCLUDE_PATH=%{_includedir}/openssl \
-      -DTG_OWT_OPUS_INCLUDE_PATH=%{_includedir}/opus \
-      -DTG_OWT_FFMPEG_INCLUDE_PATH=%{_includedir}/ffmpeg \
-      -DTG_OWT_LIBVPX_INCLUDE_PATH=%{_includedir}/vpx
+      -DTG_OWT_FFMPEG_INCLUDE_PATH="%{_includedir}/ffmpeg" \
+      -DTG_OWT_LIBJPEG_INCLUDE_PATH="%{_includedir}" \
+      -DTG_OWT_LIBVPX_INCLUDE_PATH="%{_includedir}/vpx" \
+      -DTG_OWT_OPENH264_INCLUDE_PATH="../openh264/include" \
+      -DTG_OWT_OPENSSL_INCLUDE_PATH="%{_includedir}/openssl" \
+      -DTG_OWT_OPUS_INCLUDE_PATH="%{_includedir}/opus" \
+      -DTG_OWT_PACKAGED_BUILD=ON \
+      -DTG_OWT_SPECIAL_TARGET="linux"
+%cmake_build
+ninja install
+
+cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/td
+%cmake -LA \
+      -DBUILD_SHARED_LIBS=OFF \
+      -DBUILD_TESTING=OFF \
+      -DCMAKE_BUILD_TYPE="Release" \
+      -DCMAKE_C_FLAGS="$CFLAGS" \
+      -DCMAKE_CXX_FLAGS="$CFLAGS" \
+      -DCMAKE_INSTALL_PREFIX="%{_builddir}/local" \
+      -DTD_E2E_ONLY=ON
 %cmake_build
 ninja install
 
 cd %{_builddir}/tdesktop-%{version}-full
 %cmake -LA \
-      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_BUILD_TYPE="Release" \
       -DCMAKE_C_FLAGS="$CFLAGS" \
       -DCMAKE_CXX_FLAGS="$CFLAGS" \
-      -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-      -DCMAKE_PREFIX_PATH="%{_builddir}/Libraries/install/lib64/cmake;%{_builddir}/Libraries/install/share/cmake/tl-expected" \
-      -DDESKTOP_APP_QT6=ON \
-      -DQT_VERSION_MAJOR=6 \
-      -DTDESKTOP_API_ID=%{api_id} \
-      -DTDESKTOP_API_HASH=%{api_hash} \
-      -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
+      -DCMAKE_PREFIX_PATH="%{_builddir}/local/lib64/cmake;%{_builddir}/local/share/cmake" \
+      -DDESKTOP_APP_DISABLE_QT_PLUGINS=ON \
       -DDESKTOP_APP_USE_PACKAGED=ON \
-      -DDESKTOP_APP_QTWAYLANDCLIENT_PRIVATE_HEADERS=OFF \
       -DDESKTOP_APP_USE_PACKAGED_FONTS=ON \
-      -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
-      -DTDESKTOP_LAUNCHER_BASENAME=%{name} \
-      -DDESKTOP_APP_SPECIAL_TARGET=""
+      -DTDESKTOP_API_ID="%{api_id}" \
+      -DTDESKTOP_API_HASH="%{api_hash}"
 %cmake_build
 
 %install
@@ -234,11 +285,10 @@ cd %{_builddir}/tdesktop-%{version}-full
 %files
 %license LICENSE LEGAL
 %doc README.md changelog.txt
-%{_bindir}/%{name}
+%{_bindir}/Telegram
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.telegram.desktop.service
-%{_datadir}/icons/hicolor/*/apps/*.png
-%{_datadir}/icons/hicolor/*/apps/*.svg
+%{_datadir}/icons/hicolor/*/apps/*.{png,svg}
 %{_datadir}/metainfo/*.metainfo.xml
 
 %changelog
