@@ -108,4 +108,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1241017</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>df61c3fd841dfe001c17fc57e6ef15f7</srcmd5>
+    <version>3.4.7</version>
+    <time>1759854491</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch docutils-0.22.patch:
+  * Support docutils 0.22 changes.
+
+This should fix the build of OpenColorIO:ocio_tools</comment>
+    <requestid>1309459</requestid>
+  </revision>
 </revisionlist>

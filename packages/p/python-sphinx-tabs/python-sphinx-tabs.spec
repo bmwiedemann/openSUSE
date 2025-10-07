@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-tabs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ URL:            https://github.com/executablebooks/sphinx-tabs
 Source:         https://github.com/executablebooks/sphinx-tabs/archive/refs/tags/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#executablebooks/sphinx-tabs#200
 Patch0:         support-sphinx-8.1.patch
+# PATCH-FIX-UPSTREAM gh#executablebooks/sphinx-tabs#207
+Patch1:         docutils-0.22.patch
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module docutils}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  7 06:53:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch docutils-0.22.patch:
+  * Support docutils 0.22 changes.
+
+-------------------------------------------------------------------
 Wed Jan 22 01:07:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-sphinx-8.1.patch:
