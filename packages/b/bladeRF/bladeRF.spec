@@ -1,7 +1,7 @@
 #
 # spec file for package bladeRF
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2013-2015 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,22 +19,21 @@
 
 %define sover 2
 %define libname lib%{name}%{sover}
-%define libversion 2.5.0
-%define release_name 2023.02
+%define libversion 2.6.0
+%define release_name 2025.10
 %define bladerf_group bladerf
 %define use_syslog 0
+
 Name:           bladeRF
-Version:        2023.02
+Version:        2025.10
 Release:        0
 Summary:        SDR radio receiver
 License:        AGPL-3.0-or-later AND GPL-2.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://nuand.com/
 #Git-Clone:     https://github.com/Nuand/bladeRF.git
-Source0:        https://github.com/Nuand/bladeRF/archive/%{release_name}.tar.gz#/%{name}-%{release_name}.tar.xz
-Source1:        ad9361.tar.xz
+Source0:        %{name}-%{release_name}.tar.xz
 Patch0:         bladeRF-doxygen-no-timestamp.patch
-Patch1:         gcc14-fix-calloc-arg-order.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -43,8 +42,10 @@ BuildRequires:  git-core
 BuildRequires:  help2man
 BuildRequires:  pkgconfig
 BuildRequires:  tecla-devel
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(ncursesw)
 BuildRequires:  pkgconfig(udev)
 
 %description
@@ -80,6 +81,7 @@ Udev rules for bladeRF.
 %package devel
 Summary:        Development files for libbladeRF
 Group:          Development/Libraries/C and C++
+Version:        %{libversion}
 Requires:       %{libname} = %{libversion}
 
 %description devel
@@ -88,35 +90,30 @@ use of libbladerf.
 
 %prep
 %autosetup -p1 -n %{name}-%{release_name}
-ls
-pushd thirdparty/analogdevicesinc/no-OS
-tar -xJf %{SOURCE1}
-popd
 
 %build
 cd host
 %cmake \
+  -DTAGGED_RELEASE=ON \
   -DVERSION_INFO_EXTRA="" \
-  -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
   -DUDEV_RULES_PATH=%{_udevrulesdir} \
   -DBLADERF_GROUP=%{bladerf_group} \
 %if 0%{?use_syslog}
   -DENABLE_LIBBLADERF_SYSLOG=ON \
 %endif
   -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/lib%{name} \
-  -DBUILD_DOCUMENTATION=ON \
-  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+  -DBUILD_DOCUMENTATION=ON
 %cmake_build
 
 %install
 cd host
 %cmake_install
+%fdupes %{buildroot}%{_docdir}
 
 %check
 %ctest
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun  -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %pre udev
 getent group %{bladerf_group} >/dev/null || groupadd -r %{bladerf_group}
@@ -132,6 +129,8 @@ getent group %{bladerf_group} >/dev/null || groupadd -r %{bladerf_group}
 %doc README.md CONTRIBUTORS
 %{_bindir}/bladeRF-cli
 %{_bindir}/bladeRF-fsk
+%{_bindir}/bladeRF-power
+%{_bindir}/bladeRF-update
 %{_mandir}/man1/bladeRF-cli.1%{?ext_man}
 
 %files udev
@@ -149,5 +148,6 @@ getent group %{bladerf_group} >/dev/null || groupadd -r %{bladerf_group}
 %{_includedir}/bladeRF2.h
 %{_includedir}/libbladeRF.h
 %{_libdir}/pkgconfig/libbladeRF.pc
+%{_datadir}/cmake/bladeRF
 
 %changelog

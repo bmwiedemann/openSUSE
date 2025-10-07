@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Oct  7 05:59:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2025.10
+  libbladeRF:
+  * Add SC16Q11 packed format support for improved bandwidth
+    efficiency.
+  * Add comprehensive gain calibration system with CSV
+    import/export.
+  * Add RX reordering and prime worker before RX enable.
+  * Add oversample feature with configurable gain controls.
+  * Improve GPIF buffer size support with larger 2048 sample
+    buffers.
+  * Add extensive test suite and regression testing framework.
+  * Fix various sync TX/RX initialization and timing issues.
+  FPGA:
+  * Add SC16Q11 packed format support to FIFO reader and writer.
+  * Add larger GPIF buffer support for improved USB throughput.
+  * Fix RX/TX DMA request prioritization and meta timestamp
+    handling.
+  * Add system and FX3 PLL clock control blocks.
+  * Fix timing issues and improve signal integrity.
+  Tools:
+  * Add bladeRF-power utility for RF power measurements with
+    CLI interface.
+  * Add bladeRF-fsk project as separate submodule.
+  * Add bladeRF-update utility for firmware and FPGA updates.
+  * Add comprehensive hardware-in-the-loop testing framework.
+- Use tar_scm service to generate the source tarball.
+- Drop ad9361.tar.xz
+  - this is now included in the bladRF tarball.
+- Update patch:
+  * bladeRF-doxygen-no-timestamp.patch
+- Drop not longer needed patch:
+  * gcc14-fix-calloc-arg-order.patch
+- Use %ldconfig_scriptlets RPM macro
+
+-------------------------------------------------------------------
 Thu Mar 20 23:53:09 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
