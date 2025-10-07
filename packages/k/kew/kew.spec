@@ -19,7 +19,7 @@
 
 %bcond_without aac
 Name:           kew
-Version:        3.4.1
+Version:        3.5.1
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only
@@ -64,8 +64,9 @@ sed -i '1s|gcc|clang|' Makefile
 
 %files
 %license LICENSE
-%doc README* CHANGELOG.md
+%doc README* docs/CHANGELOG.md
 %{_bindir}/kew
+%{_datadir}/kew
 %{_mandir}/man1/kew.1%{?ext_man}
 
 %changelog

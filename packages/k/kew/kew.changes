@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct  6 19:01:39 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.5.1
+  * Theme colors, both TrueColor and 16-color palette theming.
+    Cycle by pressing 't'.
+  * Improved the search function so that albums are shown below an
+    artist hit.
+  * Added an icon indicating if the song is playing or paused
+    before the title at the top when the logo is hidden.
+  * Shows the playlist from the first song (if it's in view),
+    instead of always starting from the playing song.
+  * Improved the safety of various functions and addressed
+    potential vulnerabilities.
+  * Don't make a space for the cover if there is none on landscape
+    view.
+  * Improved the instructions in the help view.Fixed visualizer
+    crashing the app on ultrawide monitors.
+  * Added null check for when exporting an empty playlist to .m3u.
+  * Prevent flickering when scrolling on TTY and likely on some
+    other terminals as well.
+
+-------------------------------------------------------------------
 Wed Sep 10 04:56:02 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Fix enable aac support: change BuildRequires faad2 to faad2-devel
