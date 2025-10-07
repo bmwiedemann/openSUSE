@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct  6 18:47:59 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.50.0 (0.05)
+   see /usr/share/doc/packages/perl-MCP/Changes
+
+  0.05  2025-08-28
+    - Added supprot for prompts.
+    - Added MCP::Prompt class.
+    - Added get_prompt and list_pronmpts methods to MCP::Client.
+    - Added prompt method to MCP::Server.
+
+-------------------------------------------------------------------
 Tue Aug  5 13:19:20 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - initial package 0.40.0 (0.04)

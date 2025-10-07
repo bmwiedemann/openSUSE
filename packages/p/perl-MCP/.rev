@@ -7,4 +7,18 @@
     <comment>A new dependency for MCP support in openQA.</comment>
     <requestid>1302376</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>12f2a57240192c6110a0717d094f284d</srcmd5>
+    <version>0.50.0</version>
+    <time>1759854551</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.50.0 (0.05)
+   see /usr/share/doc/packages/perl-MCP/Changes
+  0.05  2025-08-28
+    - Added supprot for prompts.
+    - Added MCP::Prompt class.
+    - Added get_prompt and list_pronmpts methods to MCP::Client.
+    - Added prompt method to MCP::Server.</comment>
+    <requestid>1309621</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MCP
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define cpan_name MCP
 Name:           perl-MCP
-Version:        0.40.0
+Version:        0.50.0
 Release:        0
-# 0.04 -> normalize -> 0.40.0
-%define cpan_version 0.04
+# 0.05 -> normalize -> 0.50.0
+%define cpan_version 0.05
 License:        MIT
 Summary:        Connect Perl with AI using MCP (Model Context Protocol)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        MCP-0.04.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{cpan_version}.tar.gz
 Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
@@ -41,6 +41,7 @@ Requires:       perl(Mojolicious) >= 9.410
 Provides:       perl(MCP) = %{version}
 Provides:       perl(MCP::Client)
 Provides:       perl(MCP::Constants)
+Provides:       perl(MCP::Prompt)
 Provides:       perl(MCP::Server)
 Provides:       perl(MCP::Server::Transport)
 Provides:       perl(MCP::Server::Transport::HTTP)
@@ -51,9 +52,9 @@ Provides:       perl(MCP::Tool)
 
 %description
 Connect Perl with AI using the Model Context Protocol (MCP). Currently this
-module is focused on tool calling, but it will be extended to support other
-MCP features in the future. At its core, MCP is all about text processing,
-making it a great fit for Perl.
+module is focused on tool calling and prompts, but it will be extended to
+support other MCP features in the future. At its core, MCP is all about
+text processing, making it a great fit for Perl.
 
 Streamable HTTP Transport
     Use the MCP::Server/"to_action" method to add an MCP endpoint to any
