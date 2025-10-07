@@ -451,4 +451,12 @@
     <comment>Update to 3.5.3</comment>
     <requestid>1252722</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>524b9cbe718aeffd74a3b0c9f0bc0dd6</srcmd5>
+    <version>3.6.2</version>
+    <time>1759854493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309448</requestid>
+  </revision>
 </revisionlist>
