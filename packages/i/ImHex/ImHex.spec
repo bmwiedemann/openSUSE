@@ -1,7 +1,7 @@
 #
 # spec file for package ImHex
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
+%if 0%{?suse_version} > 1600
+BuildRequires:  fmt-10-devel
+%else
 BuildRequires:  pkgconfig(fmt)
+%endif
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
