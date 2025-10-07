@@ -1131,4 +1131,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>9.0.108</comment>
     <requestid>1301288</requestid>
   </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>00f5d81e7f998289f9427e4d3c5d0420</srcmd5>
+    <version>9.0.108</version>
+    <time>1759854449</time>
+    <user>dimstar_suse</user>
+    <comment>Do not use update-alternatives</comment>
+    <requestid>1309426</requestid>
+  </revision>
 </revisionlist>

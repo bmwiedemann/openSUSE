@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -175,13 +175,8 @@ The documentation of web application for Apache Tomcat.
 %package el-3_0-api
 Summary:        Expression Language v3.0 API
 Group:          Development/Libraries/Java
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 Conflicts:      %{name}-implementation-el-api
 Provides:       %{name}-el-%{elspec}-api = %{version}-%{release}
-Provides:       el_3_0_api = %{version}-%{release}
-Provides:       el_api = %{elspec}
-Obsoletes:      el_api < %{elspec}
 Obsoletes:      tomcat-el-2_2-api
 Provides:       %{name}-implementation-el-api = %{version}
 
@@ -203,8 +198,6 @@ Summary:        Apache Tomcat JSP API implementation classes
 Group:          Productivity/Networking/Web/Servers
 Requires:       mvn(org.apache.tomcat:tomcat-el-api)
 Requires:       mvn(org.apache.tomcat:tomcat-servlet-api)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Conflicts:      %{name}-implementation-jsp-api
 Provides:       %{name}-implementation-jsp-api = %{version}
 Provides:       %{name}-jsp-%{jspspec}-api
@@ -249,8 +242,6 @@ Libraries required to successfully run the Tomcat Web container
 %package servlet-4_0-api
 Summary:        Apache Tomcat Servlet API implementation classes
 Group:          Productivity/Networking/Web/Servers
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Conflicts:      %{name}-implementation-servlet-api
 Provides:       %{name}-servlet-%{servletspec}-api = %{version}-%{release}
 Provides:       servlet = %{servletspec}
@@ -577,15 +568,6 @@ echo "%{name}/catalina-ant" > %{buildroot}/%{_sysconfdir}/ant.d/catalina-ant
 #bnc#565901
 ln -sf %{_sbindir}/%{name} %{buildroot}/%{bindir}/catalina.sh
 
-# Install update-alternatives content
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/el_api %{buildroot}%{_javadir}/%{name}-el_api.jar
-ln -s -f %{_sysconfdir}/alternatives/el_1_0_api %{buildroot}%{_javadir}/%{name}-el_1_0_api.jar
-ln -s -f %{_sysconfdir}/alternatives/jsp %{buildroot}%{_javadir}/%{name}-jsp.jar
-# To avoid conflicts with servletapi4 and servletapi5 create a link to incorrect /etc/alternatives/servlet.jar.
-# It will be changed anyways to the correct symlink by update-alternatives.
-ln -s -f %{_sysconfdir}/alternatives/servlet.jar %{buildroot}%{_javadir}/servlet.jar
-
 %pre
 # add the tomcat user and group
 getent group tomcat >/dev/null || %{_sbindir}/groupadd -r tomcat
@@ -616,51 +598,6 @@ runuser -u tomcat -g tomcat -- xsltproc --output %{confdir}/server.xml %{confdir
 
 %postun jsvc
 %service_del_postun %{name}-jsvc.service
-
-%post el-3_0-api
-update-alternatives --install %{_javadir}/%{name}-el_api.jar el_api %{_javadir}/%{name}-el-%{elspec}-api.jar 20300
-update-alternatives --install %{_javadir}/%{name}-el_1_0_api.jar el_1_0_api %{_javadir}/%{name}-el-%{elspec}-api.jar 20300
-
-%preun el-3_0-api
-if [ $1 -eq 0 ] ; then
-    update-alternatives --remove el_api %{_javadir}/%{name}-el-%{elspec}-api.jar
-    update-alternatives --remove el_1_0_api %{_javadir}/%{name}-el-%{elspec}-api.jar
-fi
-
-%post jsp-2_3-api
-update-alternatives --install %{_javadir}/%{name}-jsp.jar jsp \
-    %{_javadir}/%{name}-jsp-%{jspspec}-api.jar 20200
-
-%postun jsp-2_3-api
-if [ $1 -eq 0 ] ; then
-    update-alternatives --remove jsp \
-        %{_javadir}/%{name}-jsp-%{jspspec}-api.jar
-fi
-
-%post servlet-4_0-api
-update-alternatives --install %{_javadir}/servlet.jar servlet \
-    %{_javadir}/%{name}-servlet-%{servletspec}-api.jar 30000
-# Fix for bsc#1092163.
-# Keep the /usr/share/java/tomcat-servlet.jar symlink for compatibility.
-# In case of update from an older version where /usr/share/java/tomcat-servlet.jar is an alternatives symlink
-# the update-alternatives in the new version will cause a rename tomcat-servlet.jar -> servlet.jar.
-# This makes sure the tomcat-servlet.jar is recreated if it's missing because of the rename.
-if [ ! -f %{_javadir}/%{name}-servlet.jar ]; then
-    echo "Recreating symlink %{_javadir}/%{name}-servlet.jar"
-    ln -s %{_javadir}/%{name}-servlet-%{servletspec}-api.jar %{_javadir}/%{name}-servlet.jar
-fi
-
-%postun servlet-4_0-api
-if [ $1 -eq 0 ] ; then
-    if [ ! -f %{_sysconfdir}/alternatives/servlet ]; then
-        # %{_sysconfdir}/alternatives/servlet was removed on uninstall.
-        # Create a broken symlink to make sure update-alternatives works correctly and falls back
-        # to servletapi5 or servletapi4 if they're installed.
-        ln -s %{_javadir}/%{name}-servlet-%{servletspec}-api.jar %{_sysconfdir}/alternatives/servlet
-    fi
-    update-alternatives --remove servlet \
-        %{_javadir}/%{name}-servlet-%{servletspec}-api.jar
-fi
 
 %post lib
 # those links are no longer needed
@@ -785,10 +722,6 @@ fi
 %{_javadir}/%{name}-el-%{elspec}-api.jar
 %{_javadir}/%{name}-el-api.jar
 %{libdir}/%{name}-el-%{elspec}-api.jar
-%{_javadir}/%{name}-el_1_0_api.jar
-%{_javadir}/%{name}-el_api.jar
-%ghost %{_sysconfdir}/alternatives/el_1_0_api
-%ghost %{_sysconfdir}/alternatives/el_api
 
 %files javadoc
 %doc %{_javadocdir}/%{name}
@@ -796,8 +729,6 @@ fi
 %files jsp-2_3-api -f output/dist/src/res/maven/.mfiles-jsp-api
 %{_javadir}/%{name}-jsp-%{jspspec}-api.jar
 %{_javadir}/%{name}-jsp-api.jar
-%{_javadir}/%{name}-jsp.jar
-%ghost %{_sysconfdir}/alternatives/jsp
 
 %files lib -f output/dist/src/res/maven/.mfiles
 %{libdir}
@@ -817,8 +748,6 @@ fi
 %{_javadir}/%{name}-servlet-%{servletspec}-api.jar
 %{_javadir}/%{name}-servlet-api.jar
 %{_javadir}/%{name}-servlet.jar
-%{_javadir}/servlet.jar
-%ghost %{_sysconfdir}/alternatives/servlet
 
 %files webapps
 %defattr(0644,root,tomcat,0755)
