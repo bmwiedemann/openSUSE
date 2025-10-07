@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.2.4
+Version:        1.3.2.5
 Release:        0
 Summary:        Pure Haskell Tagged DFA Backend for "Text.Regex" (regex-base)
 License:        BSD-3-Clause
