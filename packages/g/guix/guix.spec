@@ -1,7 +1,7 @@
 #
 # spec file for package guix
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2023 Jonathan Brielmaier <j.brielmaier@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -119,7 +119,7 @@ make
 %make_install
 %find_lang %{name}
 %find_lang guix-packages
-rm %{buildroot}%{_infodir}/dir
+rm -f %{buildroot}%{_infodir}/dir
 install -d -m 0755 %{buildroot}/gnu
 install -d -m 0755 %{buildroot}/gnu/store
 # only systemd is used, so upstart or sysv init files are not needed

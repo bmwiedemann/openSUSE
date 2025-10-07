@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  3 09:24:51 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the infodir directory if it exists.
+
+-------------------------------------------------------------------
 Tue Aug 26 16:04:41 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add dependencies on makeinfo and po4a
