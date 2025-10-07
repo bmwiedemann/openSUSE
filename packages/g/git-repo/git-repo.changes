@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 30 07:22:31 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.58:
+  * Revert "Fix shallow clones when upstream attribute is present"
+  * git_superproject: fix AttributeError in Superproject logging
+  * sync: Fix missing error details in interleaved summary
+  * sync: Record and propagate errors from deferred actions
+  * progress: Fix race condition causing fileno crash
+  * sync: Avoid duplicate projects in error text
+  * sync: always show sync result stderr_text on error
+  * Fix shallow clones when upstream attribute is present
+
+-------------------------------------------------------------------
 Thu Aug 07 06:55:50 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.57.3:
