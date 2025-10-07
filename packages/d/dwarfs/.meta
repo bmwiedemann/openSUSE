@@ -3,4 +3,5 @@
   <description>The Deduplicating Warp-speed Advanced Read-only File System.
 
 DwarFS is a deduplicating compressed read-only file system particularly suited for very redundant data. Compared to SquashFS, it is typically more efficient.</description>
+  <devel project="filesystems" package="dwarfs"/>
 </package>

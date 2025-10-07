@@ -25,6 +25,10 @@ Summary:        Deduplicating compressed read-only file system
 License:        GPL-3.0-or-later AND MIT
 URL:            https://github.com/mhx/dwarfs
 Source0:        https://github.com/mhx/dwarfs/releases/download/v%{version}/dwarfs-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM folly-remove-boost_system-dependency.patch gh#mhx/dwarfs#288 gh#facebook/folly#2489
+Patch0:         folly-remove-boost_system-dependency.patch
+# PATCH-FIX-UPSTREAM remove_hhdate_dependency.patch https://github.com/mhx/dwarfs/pull/289 TODO: Remove this patch once a new upstream version containing the PR has been released
+Patch1:         https://github.com/mhx/dwarfs/pull/289.patch#/remove_hhdate_dependency.patch
 BuildRequires:  bison
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
@@ -36,12 +40,10 @@ BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_process-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  ninja
 BuildRequires:  parallel-hashmap-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(date)
 BuildRequires:  cmake(double-conversion)
 BuildRequires:  cmake(range-v3)
 BuildRequires:  cmake(utf8cpp)
@@ -65,6 +67,10 @@ BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(nlohmann_json)
+# SECTION test requirements
+BuildRequires:  pkgconfig(gtest)
+BuildRequires:  pkgconfig(gmock)
+# /SECTION
 
 %description
 The Deduplicating Warp-speed Advanced Read-only File System.
@@ -105,7 +111,8 @@ This package contains the development files for DwarFS.
 
 %build
 %cmake \
-    -DCMAKE_EXE_LINKER_FLAGS="-lboost_system -lboost_filesystem -lboost_process"
+    -DCMAKE_EXE_LINKER_FLAGS="-lboost_filesystem -lboost_process" \
+    -DWITH_TESTS=ON -DPREFER_SYSTEM_GTEST=ON
 %cmake_build
 
 %install
@@ -114,6 +121,9 @@ This package contains the development files for DwarFS.
 # only mount helper should be in sbin
 mv %{buildroot}%{_sbindir}/dwarfs %{buildroot}%{_bindir}/dwarfs
 ln -sf %{_bindir}/dwarfs %{buildroot}%{_sbindir}/mount.dwarfs
+
+%check
+%ctest
 
 %files
 %license LICENSE

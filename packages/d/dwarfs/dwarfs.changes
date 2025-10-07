@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct  3 13:38:35 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Remove hhdate dependency
+  - Add remove_hhdate_dependency.patch: replace date library usage with
+    C++20 std::chrono
+- Add %check section and run tests
+  - Add test dependencies gtest and gmock
+
+-------------------------------------------------------------------
+Thu Oct  2 17:25:56 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Remove libboost_system-devel from BuildRequires
+- Add folly-remove-boost_system-dependency.patch
+  Fixes build with Boost >=1.89.0
+  gh#mhx/dwarfs#288
+  gh#facebook/folly#2489
+
+-------------------------------------------------------------------
 Tue Sep  2 22:55:02 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to version 0.13.0:
