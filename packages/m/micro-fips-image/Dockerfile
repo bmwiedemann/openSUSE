@@ -42,8 +42,8 @@ FROM scratch
 COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.micro-fips
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI FIPS-140-3 Micro"
-LABEL org.opencontainers.image.description="A FIPS enforcing micro environment for containers based on the openSUSE Tumbleweed Base Container Image."
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Micro FIPS-140-3 mode"
+LABEL org.opencontainers.image.description="A micro container in FIPS-140-3 mode for containers based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%OS_VERSION_ID_SP%-%RELEASE%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"

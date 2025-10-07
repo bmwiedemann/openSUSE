@@ -1,4 +1,4 @@
-# openSUSE Tumbleweed BCI FIPS-140-3 Micro: Suitable for deploying static binaries
+# openSUSE Tumbleweed BCI Micro FIPS-140-3 mode: Suitable for deploying static binaries
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 ## Description
@@ -9,7 +9,7 @@ use case for the image is deploying static binaries produced externally or
 during multi-stage builds.
 
 This base container image is configured with FIPS mode enabled by default, but
-does not include any certified binaries.
+**does not** include any certified binaries.
 
 ## Usage
 
