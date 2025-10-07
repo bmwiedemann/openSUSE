@@ -181,15 +181,11 @@ The documentation of web application for Apache Tomcat.
 %package el-%{elspec_major}_%{elspec_minor}-api
 Summary:        Expression Language v%{elspec} API
 Group:          Development/Libraries/Java
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 Conflicts:      %{app_name}-implementation-el-api
 Provides:       %{app_name}-el-%{elspec}-api = %{version}-%{release}
 Provides:       %{app_name}-implementation-el-api = %{version}
 Provides:       el_%{elspec_major}_%{elspec_minor}_api = %{version}-%{release}
-Provides:       el_api = %{elspec}
 Obsoletes:      %{app_name}-el-2_2-api < %{version}
-Obsoletes:      el_api < %{elspec}
 
 %description el-%{elspec_major}_%{elspec_minor}-api
 Expression Language API version %{elspec}.
@@ -207,15 +203,11 @@ Javadoc generated documentation files for Apache Tomcat.
 %package jsp-%{jspspec_major}_%{jspspec_minor}-api
 Summary:        Apache Tomcat JSP API implementation classes
 Group:          Productivity/Networking/Web/Servers
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Conflicts:      %{app_name}-implementation-jsp-api
 Provides:       %{app_name}-implementation-jsp-api = %{version}
 Provides:       %{app_name}-jsp-%{jspspec}-api
-Provides:       jsp = %{jspspec}
 Provides:       jsp%{jspspec_major}%{jspspec_minor}
 Obsoletes:      %{app_name}-jsp-2_2-api < %{version}
-Obsoletes:      jsp < %{jspspec}
 
 %description jsp-%{jspspec_major}_%{jspspec_minor}-api
 Apache Tomcat JSP API implementation classes version %{jspspec}
@@ -254,17 +246,13 @@ Libraries required to successfully run the Tomcat Web container
 %package servlet-%{servletspec_major}_%{servletspec_minor}-api
 Summary:        Apache Tomcat Servlet API implementation classes
 Group:          Productivity/Networking/Web/Servers
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Conflicts:      %{app_name}-implementation-servlet-api
 Provides:       %{app_name}-implementation-servlet-api = %{version}
 Provides:       %{app_name}-servlet-%{servletspec}-api = %{version}-%{release}
-Provides:       servlet = %{servletspec}
 Provides:       servlet11
 Provides:       servlet60
 Obsoletes:      %{app_name}-servlet-3_0-api < %{version}
 Obsoletes:      %{app_name}-servlet-3_1-api < %{version}
-Obsoletes:      servlet < %{servletspec}
 
 %description servlet-%{servletspec_major}_%{servletspec_minor}-api
 Apache Tomcat Servlet API implementation classes version %{servletspec}
@@ -588,14 +576,6 @@ echo "tomcat/catalina-ant" > %{buildroot}/%{_sysconfdir}/ant.d/catalina-ant
 #bnc#565901
 ln -sf %{_sbindir}/%{app_name} %{buildroot}/%{bindir}/catalina.sh
 
-# Install update-alternatives content
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/el_api %{buildroot}%{_javadir}/%{app_name}-el_api.jar
-ln -s -f %{_sysconfdir}/alternatives/jsp %{buildroot}%{_javadir}/%{app_name}-jsp.jar
-# To avoid conflicts with servletapi4 and servletapi5 create a link to incorrect /etc/alternatives/servlet.jar.
-# It will be changed anyways to the correct symlink by update-alternatives.
-ln -s -f %{_sysconfdir}/alternatives/servlet.jar %{buildroot}%{_javadir}/servlet.jar
-
 %pre
 # add the tomcat user and group
 getent group tomcat >/dev/null || %{_sbindir}/groupadd -r tomcat
@@ -626,49 +606,6 @@ runuser -u tomcat -g tomcat -- xsltproc --output %{confdir}/server.xml %{confdir
 
 %postun jsvc
 %service_del_postun %{app_name}-jsvc.service
-
-%post el-%{elspec_major}_%{elspec_minor}-api
-update-alternatives --install %{_javadir}/%{app_name}-el_api.jar el_api %{_javadir}/%{app_name}-el-%{elspec}-api.jar 20300
-
-%postun el-%{elspec_major}_%{elspec_minor}-api
-if [ $1 -eq 0 ] ; then
-    update-alternatives --remove el_api %{_javadir}/%{app_name}-el-%{elspec}-api.jar
-fi
-
-%post jsp-%{jspspec_major}_%{jspspec_minor}-api
-update-alternatives --install %{_javadir}/%{app_name}-jsp.jar jsp \
-    %{_javadir}/%{app_name}-jsp-%{jspspec}-api.jar 20200
-
-%postun jsp-%{jspspec_major}_%{jspspec_minor}-api
-if [ $1 -eq 0 ] ; then
-    update-alternatives --remove jsp \
-        %{_javadir}/%{app_name}-jsp-%{jspspec}-api.jar
-fi
-
-%post servlet-%{servletspec_major}_%{servletspec_minor}-api
-update-alternatives --install %{_javadir}/servlet.jar servlet \
-    %{_javadir}/%{app_name}-servlet-%{servletspec}-api.jar 30000
-# Fix for bsc#1092163.
-# Keep the /usr/share/java/tomcat-servlet.jar symlink for compatibility.
-# In case of update from an older version where /usr/share/java/tomcat-servlet.jar is an alternatives symlink
-# the update-alternatives in the new version will cause a rename tomcat-servlet.jar -> servlet.jar.
-# This makes sure the %{app_name}-servlet.jar is recreated if it's missing because of the rename.
-if [ ! -f %{_javadir}/%{app_name}-servlet.jar ]; then
-    echo "Recreating symlink %{_javadir}/%{app_name}-servlet.jar"
-    ln -s %{_javadir}/%{app_name}-servlet-%{servletspec}-api.jar %{_javadir}/%{app_name}-servlet.jar
-fi
-
-%postun servlet-%{servletspec_major}_%{servletspec_minor}-api
-if [ $1 -eq 0 ] ; then
-    if [ ! -f %{_sysconfdir}/alternatives/servlet ]; then
-        # servlet was removed on uninstall.
-        # Create a broken symlink to make sure update-alternatives works correctly and falls back
-        # to servletapi5 or servletapi4 if they're installed.
-        ln -s %{_javadir}/%{app_name}-servlet-%{servletspec}-api.jar %{_sysconfdir}/alternatives/servlet
-    fi
-    update-alternatives --remove servlet \
-        %{_javadir}/%{app_name}-servlet-%{servletspec}-api.jar
-fi
 
 %post lib
 # those links are no longer needed
@@ -792,11 +729,6 @@ fi
 %{_javadir}/%{app_name}-el-%{elspec}-api.jar
 %{_javadir}/%{app_name}-el-api.jar
 %{libdir}/%{app_name}-el-%{elspec}-api.jar
-%ghost %{_javadir}/%{app_name}-el_1_0_api.jar
-%ghost %{_javadir}/%{app_name}-el_api.jar
-%ghost %{_sysconfdir}/alternatives/%{app_name}-el_api.jar
-%ghost %{_sysconfdir}/alternatives/el_1_0_api
-%ghost %{_sysconfdir}/alternatives/el_api
 
 %files doc
 %doc %{_javadocdir}/%{app_name}
@@ -804,9 +736,6 @@ fi
 %files jsp-%{jspspec_major}_%{jspspec_minor}-api -f output/dist/src/res/maven/.mfiles-jsp-api
 %{_javadir}/%{app_name}-jsp-%{jspspec}-api.jar
 %{_javadir}/%{app_name}-jsp-api.jar
-%ghost %{_javadir}/%{app_name}-jsp.jar
-%ghost %{_sysconfdir}/alternatives/%{app_name}-jsp.jar
-%ghost %{_sysconfdir}/alternatives/jsp
 
 %files lib -f output/dist/src/res/maven/.mfiles
 %{libdir}
@@ -826,10 +755,6 @@ fi
 %{_javadir}/%{app_name}-servlet-%{servletspec}-api.jar
 %{_javadir}/%{app_name}-servlet-api.jar
 %{_javadir}/%{app_name}-servlet.jar
-%{_javadir}/servlet.jar
-%ghost %{_sysconfdir}/alternatives/tomcat-servlet.jar
-%ghost %attr(-,root,root) %{_sysconfdir}/alternatives/servlet.jar
-%ghost %attr(-,root,root) %{_sysconfdir}/alternatives/servlet
 
 %files webapps
 %defattr(0644,root,tomcat,0755)
