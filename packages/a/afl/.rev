@@ -1636,4 +1636,39 @@
     <comment>fix Leap 16.0 build (forwarded request 1297653 from mlin7442)</comment>
     <requestid>1297764</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>6c30e0d6a2f91ff77656f00ef6190672</srcmd5>
+    <version>4.34c</version>
+    <time>1759854564</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.34c
+  - IJON integration by @vi3tL0u1s - thanks a lot!!
+    - see docs/IJON.md on how to use it
+  - unicorn_mode:
+    - UnicornAFL v3!! thanks to @wtdcode!
+  - qemu_mode:
+    - fix compilation for a few platforms
+  - afl-fuzz
+    - larger improvements to CMPLOG, thanks to @am009
+    - scroll down before clearing the screen to not loose content
+    - minor bug fixes
+  - afl-showmap
+    - fix -C parameter breakage introduced in v4.33c
+  - afl-cc:
+    - enabled LLVM 22
+    - new env: AFL_COMPILER_LAUNCHER to allow ccache usage (thanks to @nbars)
+    - fix a offset calculation bug in AFL++ PCGUARD
+    - make AFL_DUMP_MAP_SIZE work for CLASSIC modes
+    - fix a crash when running with LLVM 20 when compiling PCGUARD with LTO
+    - fix deprecation warnings for LLVM 20+
+    - fix 128 bit support for cmplog-switches pass
+    - fix 32 bit cmplog support
+    - skip blocks for instrumentation that are already instrumented
+  - Building:
+    - new NO_UNICORN and NO_QEMU and NO_FRIDA build options
+    - build fixes for FreeBSD
+  - custom_mutators:
+    - added AIXCC Team Atlanta's zero-mq plugin to add testcases from remote (forwarded request 1309618 from msmeissn)</comment>
+    <requestid>1309626</requestid>
+  </revision>
 </revisionlist>
