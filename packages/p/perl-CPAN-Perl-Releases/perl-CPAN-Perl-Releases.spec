@@ -18,10 +18,10 @@
 
 %define cpan_name CPAN-Perl-Releases
 Name:           perl-CPAN-Perl-Releases
-Version:        5.202.508.200
+Version:        5.202.509.230
 Release:        0
-# 5.20250820 -> normalize -> 5.202.508.200
-%define cpan_version 5.20250820
+# 5.20250923 -> normalize -> 5.202.509.230
+%define cpan_version 5.20250923
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Mapping Perl releases on CPAN to the location of the tarballs
 URL:            https://metacpan.org/release/%{cpan_name}
