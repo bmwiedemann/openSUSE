@@ -1,0 +1,46 @@
+<services>
+  <service mode="buildtime" name="docker_label_helper"/>
+  <service mode="buildtime" name="kiwi_metainfo_helper"/>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.apiserver</param>
+    <param name="regex">%%cdi_ver%%</param>
+    <param name="package">obs-service-cdi_containers_meta</param>
+    <param name="parse-version">patch</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.cloner</param>
+    <param name="regex">%%cdi_ver%%</param>
+    <param name="package">obs-service-cdi_containers_meta</param>
+    <param name="parse-version">patch</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.controller</param>
+    <param name="regex">%%cdi_ver%%</param>
+    <param name="package">obs-service-cdi_containers_meta</param>
+    <param name="parse-version">patch</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.importer</param>
+    <param name="regex">%%cdi_ver%%</param>
+    <param name="package">obs-service-cdi_containers_meta</param>
+    <param name="parse-version">patch</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.operator</param>
+    <param name="regex">%%cdi_ver%%</param>
+    <param name="package">obs-service-cdi_containers_meta</param>
+    <param name="parse-version">patch</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.uploadproxy</param>
+    <param name="regex">%%cdi_ver%%</param>
+    <param name="package">obs-service-cdi_containers_meta</param>
+    <param name="parse-version">patch</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.uploadserver</param>
+    <param name="regex">%%cdi_ver%%</param>
+    <param name="package">obs-service-cdi_containers_meta</param>
+    <param name="parse-version">patch</param>
+  </service>
+</services>

@@ -1,0 +1,9 @@
+<multibuild>
+    <package>apiserver</package>
+    <package>cloner</package>
+    <package>controller</package>
+    <package>importer</package>
+    <package>operator</package>
+    <package>uploadproxy</package>
+    <package>uploadserver</package>
+</multibuild>
