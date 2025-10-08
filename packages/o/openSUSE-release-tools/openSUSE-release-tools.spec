@@ -21,7 +21,7 @@
 %define announcer_filename factory-package-news
 %define services osrt-slsa.target osrt-relpkggen@.timer osrt-relpkggen@.service osrt-pkglistgen@.timer osrt-pkglistgen@.service
 Name:           openSUSE-release-tools
-Version:        20250904.5c7b6442
+Version:        20251001.0ed4bc8b
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Oct 01 08:58:57 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251001.0ed4bc8b:
+  * container_cleaner.py: Use _result?view=binarylist
+  * container_cleaner.py: Make use of defaultdict
+
+-------------------------------------------------------------------
+Tue Sep 30 08:04:41 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250930.617a0826:
+  * gocd: Add SLES 16.1 pipelines.
+
+-------------------------------------------------------------------
+Mon Sep 29 13:04:45 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250929.6c5cb012:
+  * dashboard: look for 'templates' independly of working directory
+
+-------------------------------------------------------------------
+Mon Sep 29 11:59:52 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250929.8ef1733d:
+  * dashboard: full color in openQA stats
+  * dashboard: move Leap logic to the python script
+  * dashboard: remove dead code
+  * dashboard: use jinja2 templates directly
+
+-------------------------------------------------------------------
+Mon Sep 22 13:38:09 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250922.c808382c:
+  * container_cleaner.py: Warn about and ignore sources without binaries
+  * container_cleaner.py: Don't bother checking the "local" arch
+
+-------------------------------------------------------------------
 Thu Sep 04 13:25:15 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20250904.5c7b6442:
