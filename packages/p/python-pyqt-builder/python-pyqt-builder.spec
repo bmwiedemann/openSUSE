@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pyqt-builder
 Version:        1.18.2
@@ -23,26 +28,31 @@ Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        BSD-2-Clause
 URL:            https://github.com/Python-PyQt/PyQt-builder
-Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/pyqt_builder-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pyqt_builder/pyqt_builder-%{version}.tar.gz
 Source99:       python-pyqt-builder.rpmlintrc
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-%if 0%{suse_version} < 1600
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-packaging
+Requires:       python-sip-devel >= 6.7
+Provides:       python-PyQt-builder = %{version}-%{release}
+BuildArch:      noarch
+%if 0%{?suse_version} < 1600
 BuildRequires:  %{python_module setuptools >= 64}
 BuildRequires:  %{python_module setuptools_scm >= 7}
 %else
 BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module setuptools_scm >= 8}
 %endif
-BuildRequires:  %{python_module wheel}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires:       python-packaging
-Requires:       python-sip-devel >= 6.7
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Provides:       python-PyQt-builder = %{version}-%{release}
-BuildArch:      noarch
+%endif
 # SECTION Test Requirements
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module sip-devel >= 6.7}
@@ -61,7 +71,7 @@ sip-install or pip can then be used to build and install the project.
 %prep
 %autosetup -p1 -n pyqt_builder-%{version}
 # Make it work with setuptools < 77 and setuptools_scm < 8
-%if 0%{suse_version} < 1600
+%if 0%{?suse_version} < 1600
 sed -i pyproject.toml \
     -e 's/version_file/write_to/' \
     -e 's/license = .*/license = { file = "LICENSE" }/' \
@@ -75,6 +85,7 @@ sed -i pyproject.toml \
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyqt-bundle
 %python_clone -a %{buildroot}%{_bindir}/pyqt-qt-wheel
+%python_group_libalternatives pyqt-bundle pyqt-qt-wheel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -91,8 +102,12 @@ $python -c 'import pyqtbuild'
 %postun
 %python_uninstall_alternative pyqt-bundle
 
+%pre
+%python_libalternatives_reset_alternative pyqt-bundle
+
 %files %{python_files}
-%doc README.md LICENSE
+%license LICENSE
+%doc README.md
 %python_alternative %{_bindir}/pyqt-bundle
 %python_alternative %{_bindir}/pyqt-qt-wheel
 %{python_sitelib}/pyqtbuild
