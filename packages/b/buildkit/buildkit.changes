@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Tue Oct 07 06:43:54 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.25.0:
+  * build(deps): bump softprops/action-gh-release from 2.3.3 to 2.3.4
+  * vendor: github.com/docker/cli v28.5.0
+  * vendor: github.com/containerd/go-cni v1.1.13
+  * remotecache: fix inline cache used with multiple exporters
+  * solver: avoid failing cache export on subbranch error
+  * remotecache: skip result on not-found error
+  * chore: upgrade golang.org/x/exp to 20250911091902
+  * hack: fix no-cache-filter on release
+  * git: allow checksum of annotated tag ref match either tag or commit sha
+  * git: fix annotated tag pinning and cache keys
+  * Fix grpcerrors.AsGRPCStatus to ignore OK and Unknown status codes for joined errors
+  * Dockerfile: update nydus-service to v2.3.7
+  * vendor: github.com/containerd/nydus-snapshotter v0.15.4
+  * git: fix issue with checking out annotated tags by full ref
+
+-------------------------------------------------------------------
+Fri Sep 26 09:15:05 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.24.0:
+  * reformat heredocs example in reference.md to better show benefit
+  * alpine: fix issue with openssh pkg in 3.22
+  * dockerfile: skip customenv tests in dockerd worker
+  * hack: update hack/compose with newer otel collector
+  * update runc to v1.3.1
+  * dockerfile: promote --exclude flag from labs
+  * llb: add checksum option to llb.Image
+  * Update buildkitd.toml.md
+  * Update buildkitd.toml.md
+  * Update buildkitd.toml.md
+  * grpcerrors: Make sure Code And AsGRPCStatus handle errors.Join errors
+  * Added Dalec frontend to README.md
+  * grpcerrors: Ensure errors from errors.Join are preserved
+  * Rename `isolated` to `hypervIsolation`
+  * Support `isolated` option in containerd executor in Windows
+  * contenthash: do not follow nested symlinks when computing checksum
+  * handle querystring and subdir URLs when matching git material
+  * provenance: handle input:context frontend opt to set config source
+  * provenance: avoid missing args in history provenance
+  * dockerfile: fix history config for EXPOSE instruction
+  * remotecache: fix missing skipped result on diffop tests
+  * remotecache: fix possible panic when merging loop candidates
+  * remotecache: only load desc handlers if not set
+  * remotecache: use bestResult to determine what result to export
+  * remotecache: add merge keys for loops
+  * remotecache: pass deschandlers to cache export
+  * remotecache: fix remote selector candidates matching
+  * remotecache: fix provencnce image indexes lookup
+  * remotecache: fix backlinks carry from remote source
+  * remotecache: refactor to new cache export interface
+  * update xx to v1.7.0
+  * update binfmt to v10.0.4
+  * provenance: add custom fields support
+  * tools: utilize the new tool functionality introduced in go 1.24
+  * Fix rootless systemd install target
+  * update go to 1.25
+  * lint: gopls fixes
+  * hack: modernize-fix bake target
+  * chore: show all golangci-lint issues
+  * go.mod: bump to go 1.24
+  * llbsolver: don't set materials=false on inputs
+  * build(deps): bump minio-mc from v2022-05-04 to v2025-08-13
+  * build(deps): bump minio from v2022-05-03 to v2025-09-07
+  * build(deps): bump softprops/action-gh-release from 2.3.2 to 2.3.3
+  * fix subject for oci artifact of attestation manifest
+  * vendor: github.com/docker/cli v28.4.0
+  * git: enable more integration tests in sha256 mode
+  * git: add sha256 commits in provenance
+  * git: add sha256 commits support
+  * git: partial integration tests for SHA-256
+  * gateway: no such ref now prints the all refs properly
+  * build(deps): bump actions/github-script from 7 to 8
+  * build(deps): bump actions/labeler from 5 to 6
+  * build(deps): bump actions/setup-go from 5 to 6
+  * solver: Resolve infinite loop when record is ErrNotFound
+  * dockerfile: update cni to 1.8.0
+  * dockerfile: enable gitquerystring frontend capability
+  * docs: use latest "labs" for --parents and --exclude
+  * dockerfile: fix client init in testGitQueryString
+  * dfgitutil: don't initialize ref from checksum
+  * dfgitutil: allow valueless keep-git-dir and submodules options
+  * dockerfile: add submodules controls to git URLs
+  * dockerfile: allow keep-git-dir in Git URLs
+  * dockerfile: add tests for Git query URL checksums
+  * llb: document fragment parameter in llb.Git
+  * dockerfile: add tests for querystring Git URLs
+  * llb: update Git to allow normalized property passing
+  * dfgitutil: add querystring style URLs to dfgitutil
+  * git url: support query form
+  * git: fix subdir filter on submodule dir
+  * vendor: github.com/urfave/cli v1.22.17
+  * vendor: github.com/docker/cli v28.3.3
+  * vendor: go.etcd.io/bbolt v1.4.3
+  * vendor: update x/sync to v0.16.0
+  * dockerfile: show error when args used in COPY --from
+  * ci(validate): use matrix subaction
+  * replace github.com/hashicorp/go-multierror with errors.Join
+  * mv util/gitutil/git_ref.go frontend/dockerfile/dfgitutil/git_ref.go
+  * dockerfile: rule check for ip or host-port mapping in EXPOSE instruction
+  * dockerfile: rule check for protocol casing in EXPOSE instruction
+  * vendor: go.etcd.io/bbolt v1.4.2
+  * frontent/dockerfile: apply improvements from go-connections
+  * frontend/dockerfile: inline validateProto
+  * frontend/dockerfile: parsePortSpec: remove unused code
+  * frontend/dockerfile: parsePortSpecs: simplify
+  * frontend/dockerfile: fix linting issues
+  * frontend/dockerfile: fork nat.ParsePortSpecs
+  * cache: add cache debug plaintext for image manifest and http
+  * build(deps): bump actions/checkout from 4 to 5
+  * [cache] Fix descriptor duplication in getAvailableBlobs
+  * debug: combine links from parents intead of children
+  * use output specific digest in boltdb debug
+  * debug: allow debug from remote cache config
+  * Using --oci-worker-no-process-sandbox is discouraged
+  * Using --oci-worker-no-process-sandbox is discouraged
+  * vendor: github.com/docker/go-connections v0.6.0
+  * Dockerfile: update containerd v1 binary to v1.7.28
+  * Dockerfile: update containerd v2.0 binary to v2.0.6
+  * Dockerfile: update containerd v2 binary to v2.1.4
+  * vendor: github.com/containerd/containerd/v2 v2.1.4
+  * build(deps): bump actions/download-artifact from 4 to 5
+  * build(deps): bump github.com/docker/docker
+  * buildkitd: add flag to set max parallelism
+  * resolvconf: embed fixtures
+  * simplify resolvconf path resolution
+  * move resolvconf package to util
+  * dockerfile: docs for BUILDKIT_BUILD_NAME built-in build-arg
+  * executor/oci: migrate to moby/profiles/seccomp module
+  * executor/oci: use buildkit bklog instead of containerd/log
+  * executor/oci: resolvconf: use buildkit errdefs
+  * executor/oci: resolvconf: remove unused code
+  * executor/oci: use fork of libnetwork/resolvconf
+  * executor/oci: resolvconf: rewrite tests using testify
+  * executor/oci: add fork of moby resolvconf (does not compile)
+  * TestGetRemotes: fix race of laziness check
+  * dockerfile: fix created time taken from base image if named context used
+  * fix: corrected doc comment for llb.State.Env
+  * fix: tests: skip flaky integration tests on Windows
+  * fix: display error details on unexpected response status code errors
+  * docs: cdi autoallow and device entitlement
+  * testutil: update docker daemon config struct
+  * buildkitd: handle device insecure entitlement
+  * cachedigest: rename array types to list
+  * buildkitd: add cache store debugging endpoints
+  * add cache key debuginfo lookup
+
+-------------------------------------------------------------------
 Wed Jul 09 12:23:28 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.23.2:
