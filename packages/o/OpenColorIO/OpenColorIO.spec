@@ -1,7 +1,7 @@
 #
 # spec file for package OpenColorIO
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,14 @@
 # Ensure that libyaml-cpp version is the one that is built against
 # See boo#1160171
 %define yamlrequires %(rpm -q --requires yaml-cpp-devel | grep libyaml || echo aaa_base)
-%define so_ver 2_4
+%define so_ver 2_5
 %define pkg_name OpenColorIO
 %if %{without ocio_tools}
 Name:           OpenColorIO
 %else
 Name:           OpenColorIO-tools
 %endif
-Version:        2.4.2
+Version:        2.5.0
 Release:        0
 Summary:        Color Management Solution Geared Towards Motion Picture Production
 License:        BSD-3-Clause
@@ -55,8 +55,8 @@ BuildRequires:  pkgconfig(Imath) >= 3.1.1
 BuildRequires:  pkgconfig(minizip-ng) >= 4.0.4
 Recommends:     %{pkg_name}-doc = %{version}
 %if %{with ocio_tools}
-BuildRequires:  OpenImageIO
-BuildRequires:  OpenImageIO-devel
+BuildRequires:  OpenImageIO >= 3.1
+BuildRequires:  OpenImageIO-devel >= 3.1
 BuildRequires:  OpenImageIO-plugin-osl
 BuildRequires:  OpenShadingLanguage-devel
 BuildRequires:  python3-MarkupSafe

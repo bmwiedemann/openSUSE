@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri Oct  3 14:22:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- force new OpenImageIO
+
+-------------------------------------------------------------------
+Wed Oct  1 09:59:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.5.0
+  This is the main new feature release for this year and is the
+  base version for the CY2026 VFX Reference Platform (which
+  specifies 2.5.x).
+
+  The headline features this year are built-in ACES 2 configs,
+  Vulkan support, a hue curve transform, and a set of new color
+  space attributes designed to enhance interop.
+
+  In addition, there is a Preview Release of the config merging
+  feature. The workflow possibilities of this feature are
+  far-reaching and further modifications to the API and
+  functionality are anticipated, based on your feedback, before
+  this is finalized.
+
+  Ideally, application developers will introduce 2.5.0 into their
+  testing programs now and then update to the latest 2.5.x release
+  available before shipping next year.
+
+  This documentation page explains the new features in this
+  release.
+
+  https://opencolorio.readthedocs.io/en/latest/releases/ocio_2_5.html
+
+  - Major new features:
+    - PR #2176, Vulkan support
+    - PR #2193, Adding built-in ACES 2.0 configs
+    - PR #2177, Add hue curve transform
+    - PR #2165, Adding color space attribs: interop_id,
+      amf_transform & icc_profile_name
+    - PR #2171, Refactor RTD Python API doc generation
+    - PR #2179, Merge configs feature
+  - Bug fixes and minor enhancements:
+    - PR #2154, Fix pass-thru exponent composition issue
+    - PR #2189, Include color spaces with no categories in
+      menuHelper results by default
+    - PR #2083, Add view helper functions to Config class
+    - PR #2183, Add built-in displays that mirror rather than clamp
+      negative values
+    - PR #2186, Enhance active display/view list API
+    - PR #2181, Add the ability to serialize temporary displays
+    - PR #2198, Add setStringVar to Context Object Python Bindings
+    - PR #2147, Add Flame and VRED to website
+    - PR #2088, Add Disguise to list of supported applications
+    - PR #2138, Add AJA ColorBox as a supported application
+    - PR #2161, Feature/update landing feature image
+    - PR #2167, Renaming the view helper functions to follow the
+      OCIO conventions
+    - PR #2166, Add Python GPUProcessor example
+    - PR #2194, Adding interchange attributes to ViewTransforms and
+      Looks
+    - PR #2168, Update Python frozen docs
+    - PR #2202, Update documentation for 2.5 release
+  - Build process enhancements:
+    - PR #2192, Bump C++, dependencies and update CI workflows
+    - PR #2113, Fix deploy site workflow
+    - PR #2140, Fix build issue when using clang
+    - PR #2115, Use ARM-native runners for linux ARM Python wheels
+    - PR #2158, Adjust requirements.txt for documentation-building
+      ci step
+    - PR #2188, Attempt to fix new MacOS CI problem involving unit
+      tests on half values
+    - PR #2190, Fixes for the Wheel workflow
+    - PR #2184, CI fixes
+
+-------------------------------------------------------------------
 Tue Jul 15 17:30:22 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Allow newer OpenImageIO in ocio_tools
