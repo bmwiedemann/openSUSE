@@ -1,4 +1,4 @@
-From dc47e7ca10fded81f327cd304c8235e9598509b5 Mon Sep 17 00:00:00 2001
+From 35a4229c8b659a92591892014a7def330e4e9a1a Mon Sep 17 00:00:00 2001
 From: Mikolaj Izdebski <mizdebsk@redhat.com>
 Date: Sat, 23 Sep 2017 11:43:45 +0200
 Subject: [PATCH 1/2] Remove support for snappy
@@ -9,18 +9,18 @@ Subject: [PATCH 1/2] Remove support for snappy
  2 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/src/main/java/org/codehaus/plexus/archiver/tar/TarArchiver.java b/src/main/java/org/codehaus/plexus/archiver/tar/TarArchiver.java
-index ba53a1b9..070849c1 100644
+index 6c3eb116..b9c47225 100644
 --- a/src/main/java/org/codehaus/plexus/archiver/tar/TarArchiver.java
 +++ b/src/main/java/org/codehaus/plexus/archiver/tar/TarArchiver.java
-@@ -25,7 +25,6 @@
- import java.nio.file.Files;
+@@ -24,7 +24,6 @@
+ import java.io.OutputStream;
  import java.util.zip.GZIPOutputStream;
  
 -import io.airlift.compress.snappy.SnappyFramedOutputStream;
  import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
  import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
  import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
-@@ -426,7 +425,7 @@ private OutputStream compress(TarCompressionMethod tarCompressionMethod, final O
+@@ -425,7 +424,7 @@ private OutputStream compress(TarCompressionMethod tarCompressionMethod, final O
          } else if (TarCompressionMethod.bzip2.equals(tarCompressionMethod)) {
              return new BZip2CompressorOutputStream(bufferedOutputStream(ostream));
          } else if (TarCompressionMethod.snappy.equals(tarCompressionMethod)) {
@@ -30,7 +30,7 @@ index ba53a1b9..070849c1 100644
              return new XZCompressorOutputStream(bufferedOutputStream(ostream));
          } else if (TarCompressionMethod.zstd.equals(tarCompressionMethod)) {
 diff --git a/src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java b/src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java
-index 507cb6cb..0ae6e3b4 100644
+index 8ff360de..270bf954 100644
 --- a/src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java
 +++ b/src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java
 @@ -23,7 +23,6 @@
@@ -51,5 +51,5 @@ index 507cb6cb..0ae6e3b4 100644
              return new XZCompressorInputStream(istream);
          } else if (compression == UntarCompressionMethod.ZSTD) {
 -- 
-2.46.0
+2.51.0
 

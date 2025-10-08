@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  7 11:25:23 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.10.2
+  * New features and improvements
+    + Utilize VT if possible
+  * Bug Fixes
+    + check minimum timestamp: avoid negative Zip 5455 Extended
+      Timestamp
+  * Maintenance
+    + Cleanups of using deprecated methods
+    + symLinks:Enhance the compatibility of regen.sh
+    + Apply spotless re-formatting
+- Modified patch:
+  * 0001-Remove-support-for-snappy.patch
+    + rediff
+
+-------------------------------------------------------------------
 Tue Jun  3 08:21:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on objectweb-asm to build with sisu 0.9.0.M4
