@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IPC-Run
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,32 @@
 
 %define cpan_name IPC-Run
 Name:           perl-IPC-Run
-Version:        20231003.0.0
+Version:        20250809.0.0
 Release:        0
-%define cpan_version 20231003.0
+# 20250809.0 -> normalize -> 20250809.0.0
+%define cpan_version 20250809.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        System() and background procs w/ piping, redirs, ptys (Unix, Win32)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/N/NJ/NJM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(IO::Pty) >= 1.08
+BuildRequires:  perl(IO::Pty) >= 1.80
 BuildRequires:  perl(Readonly::Array)
-Requires:       perl(IO::Pty) >= 1.08
-Provides:       perl(IPC::Run) = 20231003.0.0
-Provides:       perl(IPC::Run::Debug) = 20231003.0.0
-Provides:       perl(IPC::Run::IO) = 20231003.0.0
-Provides:       perl(IPC::Run::Timer) = 20231003.0.0
-Provides:       perl(IPC::Run::Win32Helper) = 20231003.0.0
-Provides:       perl(IPC::Run::Win32IO) = 20231003.0.0
-Provides:       perl(IPC::Run::Win32Process) = 20231003.0.0
-Provides:       perl(IPC::Run::Win32Pump) = 20231003.0.0
+Requires:       perl(IO::Pty) >= 1.80
+Provides:       perl(IPC::Run) = %{version}
+Provides:       perl(IPC::Run::Debug) = %{version}
+Provides:       perl(IPC::Run::IO) = %{version}
+Provides:       perl(IPC::Run::Timer) = %{version}
+Provides:       perl(IPC::Run::Win32Helper) = %{version}
+Provides:       perl(IPC::Run::Win32IO) = %{version}
+Provides:       perl(IPC::Run::Win32Process) = %{version}
+Provides:       perl(IPC::Run::Win32Pump) = %{version}
 %undefine       __perllib_provides
-Recommends:     perl(IO::Pty) >= 1.08
+Recommends:     perl(IO::Pty) >= 1.80
 Recommends:     perl(Readonly)
 %{perl_requires}
 # MANUAL BEGIN
@@ -58,7 +60,7 @@ Various redirection operators reminiscent of those seen on common Unix and
 DOS command lines are provided.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN

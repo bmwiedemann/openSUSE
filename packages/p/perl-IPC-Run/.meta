@@ -4,5 +4,4 @@
 pipes, and pseudo-ttys.  Both system()-style and scripted usages are
 supported and may be mixed. Like-wise, functional and OO API styles are
 both supported and may be mixed.</description>
-  <devel project="devel:languages:perl" package="perl-IPC-Run"/>
 </package>

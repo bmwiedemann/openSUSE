@@ -314,4 +314,20 @@
 </comment>
     <requestid>1156551</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>338309bcfb593fab39845f9429a34f4e</srcmd5>
+    <version>20250809.0.0</version>
+    <time>1759939942</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20250809.0.0 (20250809.0)
+   see /usr/share/doc/packages/perl-IPC-Run/Changelog
+  20250809.0 Sat Aug 9 2025
+   - Tests are good in dev version. Releasing to stable.
+  20250715.0_01 Tue Jul 15 2025
+   - #172 - Reduce delays in detecting child exit
+   - #174 - Add quickstart section at the top of the docs
+   - #177 - Retry _read() on EINTR, instead of losing pipe contents.
+   - In test suite, work around bug in NetBSD 10.</comment>
+    <requestid>1309347</requestid>
+  </revision>
 </revisionlist>

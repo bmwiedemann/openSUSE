@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 28 10:29:09 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20250809.0.0 (20250809.0)
+   see /usr/share/doc/packages/perl-IPC-Run/Changelog
+
+  20250809.0 Sat Aug 9 2025
+   - Tests are good in dev version. Releasing to stable.
+
+  20250715.0_01 Tue Jul 15 2025
+   - #172 - Reduce delays in detecting child exit
+   - #174 - Add quickstart section at the top of the docs
+   - #177 - Retry _read() on EINTR, instead of losing pipe contents.
+   - In test suite, work around bug in NetBSD 10.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:34:05 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
