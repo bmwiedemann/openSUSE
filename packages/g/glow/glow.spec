@@ -1,7 +1,7 @@
 #
 # spec file for package glow
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 # vendoring obtained by `osc service manualrun`. See README.suse-maint.md for details.
 Source1:        vendor.tar.zst
 Source2:        README.suse-maint.md
+Source3:        fix-CVE-2025-47911_CVE-2025-58190.patch
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.23
@@ -76,7 +77,8 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -a1 -p1
+patch -d vendor/golang.org/x/net/ -p1 -i %{SOURCE3}
 
 %build
 %ifnarch ppc64

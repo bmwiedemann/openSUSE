@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  8 15:21:38 UTC 2025 - munix9@googlemail.com
+
+- Add fix-CVE-2025-47911_CVE-2025-58190.patch
+  * Fix "html: impose open element stack size limit"
+    - CVE-2025-47911 (gh#golang/go#75682) (bsc#1251462)
+    - https://github.com/golang/net/commit/59706cdaa8f95502fdec64b67b4c61d6ca58727d
+  * Fix "html: align in row insertion mode with spec"
+    - CVE-2025-58190 (gh#golang/go#70179) (bsc#1251720)
+    - https://github.com/golang/net/commit/6ec8895aa5f6594da7356da7d341b98133629009
+  * The patch was created using a diff from golang.org/x/net
+    version 0.40.0 to version 0.45.0
+
+-------------------------------------------------------------------
 Sun Jun  1 20:36:38 UTC 2025 - munix9@googlemail.com
 
 - Update to 2.1.1:
