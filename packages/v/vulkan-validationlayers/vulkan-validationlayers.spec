@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-validationlayers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} < 1600
 %define gcc_version 13
 %endif
 
 Name:           vulkan-validationlayers
-Version:        1.4.321
+Version:        1.4.328
 Release:        0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
@@ -36,7 +37,7 @@ BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  spirv-headers >= 1.6.4+sdk313+git19
-BuildRequires:  spirv-tools-devel >= 2025.3~rc1
+BuildRequires:  spirv-tools-devel >= 2025.4~rc1
 BuildRequires:  vulkan-headers >= %version
 BuildRequires:  vulkan-utility-libraries-devel >= %version
 BuildRequires:  pkgconfig(libxxhash)
