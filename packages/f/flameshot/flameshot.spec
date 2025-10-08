@@ -1,7 +1,7 @@
 #
 # spec file for package flameshot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,35 +17,36 @@
 
 
 Name:           flameshot
-Version:        12.1.0
+Version:        13.1.0
 Release:        0
 Summary:        Screenshot software
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/flameshot-org/flameshot#flameshot
 Source0:        https://github.com/flameshot-org/flameshot/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE flameshot-remove-update-check.patch -- Remove update check
-Patch0:         flameshot-remove-update-check.patch
-BuildRequires:  cmake
+Source1:        https://gitlab.com/mattbas/Qt-Color-Widgets/-/archive/3.0.0/Qt-Color-Widgets-3.0.0.tar.gz
+BuildRequires:  appstream-glib
+BuildRequires:  cmake >= 3.13.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  pkgconfig
+BuildRequires:  gcc-c++ >= 7
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5
-BuildRequires:  pkgconfig(Qt5DBus) >= 5
-BuildRequires:  pkgconfig(Qt5Gui) >= 5
-BuildRequires:  pkgconfig(Qt5Network) >= 5
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
-BuildRequires:  cmake(KF5GuiAddons) >= 5.89.0
-%endif
-Requires: libQt5Svg5
+BuildRequires:  cmake(Qt6Core) >= 6.0.0
+BuildRequires:  cmake(Qt6DBus) >= 6.0.0
+BuildRequires:  cmake(Qt6Gui) >= 6.0.0
+BuildRequires:  cmake(Qt6LinguistTools) >= 6.0.0
+BuildRequires:  cmake(Qt6Network) >= 6.0.0
+BuildRequires:  cmake(Qt6Svg) >= 6.0.0
+BuildRequires:  cmake(Qt6Widgets) >= 6.0.0
+Requires:       hicolor-icon-theme
+Requires:       libQt6Core6
+Requires:       libQt6Svg6
 Suggests:       %{name}-bash-completion
 Suggests:       %{name}-fish-completion
 Suggests:       %{name}-zsh-completion
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+BuildRequires:  kf6-kguiaddons-devel
+%endif
 
 %description
 A program to capture screenshots.
@@ -89,14 +90,20 @@ BuildArch:      noarch
 Fish command line completion support for %{name}.
 
 %prep
-%setup -q
+%autosetup -p0 -a1
+
+# Move dependency to external folder
+mkdir external
+mv Qt-Color-Widgets-3.0.0 external/Qt-Color-Widgets
 
 %build
+%cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS:BOOL=OFF \
+-DUSE_KDSINGLEAPPLICATION=OFF \
+-DDISABLE_UPDATE_CHECKER:BOOL=ON \
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
-%cmake -DUSE_WAYLAND_CLIPBOARD:BOOL=ON
-%else
-%cmake
+-DUSE_WAYLAND_CLIPBOARD:BOOL=ON \
 %endif
+
 %cmake_build
 
 %install
@@ -110,8 +117,7 @@ Fish command line completion support for %{name}.
 %{_datadir}/applications/org.flameshot.Flameshot.desktop
 %{_datadir}/dbus-1/interfaces/org.flameshot.Flameshot.xml
 %{_datadir}/dbus-1/services/org.flameshot.Flameshot.service
-%{_datadir}/icons/hicolor/*/apps/*.png
-%{_datadir}/icons/hicolor/scalable/apps/*.svg
+%{_datadir}/icons/hicolor*
 %{_datadir}/metainfo/org.flameshot.Flameshot.metainfo.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
 

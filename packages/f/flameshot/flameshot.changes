@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Oct  7 22:11:42 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Lint spec file
+- remove flameshot-remove-update-check.patch
+  * use DISABLE_UPDATE_CHECKER variable instead
+
+-------------------------------------------------------------------
+Sat Oct  4 18:46:58 UTC 2025 - Patrick Poitras <patrick.f.poitras@gmail.com>
+
+- Update to version 13.1.0:
+  * hotfix for a Qt6 issue on multi monitor X11 (not wayland) setups.
+  * Another fix for savePath slashes on Windows #4122
+  * build: Add an option to use a bundled KDSingleApplication #4130
+  * Update shell completion and manpage #4140
+  * Appimage build (fix for #4112) #4146
+  * Fix multi monitor offset bug in Qt6 multi-monitor setups for X11 #4127
+  * Translations update from Hosted Weblate #4113
+  * Fixed flathub linting issues #4160
+- includes 13.0.1:
+  * fix linting errors for flathub #4109
+  * Packaging fixes for v13 #4126
+- includes 13.0.0:
+  * Port from Qt 5 to Qt 6
+  * The imgur uploader is disabled by default at compile time. To
+    re-enable, set -DENABLE_IMGUR. We expect this to be a bit
+    controversial but we believe this is the best direction for the project
+  * Flameshot returns exit code 1 if taking screenshot is
+    canceled (e.g., by pressing Esc). This is to make Flameshot
+    easier to integrate into shell scripts.
+  * Configuration window tabs were re-ordered according to their
+    importance to users.
+  * Package maintainers can compile out the update checker using -DDISABLE_UPDATE_CHECKER.
+  * The pixelation feature has been replaced with a new "secure"
+    implementation that only uses pixels outside of the area to
+    be redacted.
+  * Screenshot dimensions are now interactively shown in the capture widget
+  * Pinned images can now be rotated.
+  * A grim based screenshot adapter has been added to work with
+    more wlroots Wayland compositors. Users can enable this in settings. 
+  * Users can symmetrically resize (holding Shift) and preserve
+    aspect ratio (using Ctrl) while resizing.
+  * Pinned images can have a transparency effect applied.
+  * A grid can be optionally enabled via the sidebar, and users
+    can have their annotations snap to grid.
+  * SingleApplication dependency has moved to KdSingleApplication
+    to work around a Qt SharedMemory bug.
+  * New dateformat of %d-%m-%Y has been added.
+  * New option to prompt user before exiting has been added to config.
+  * JPEG quality option has been added.
+  * Enable saving HEIF/HEIC when supported by 3rd party plug-ins.
+  * Kde-connect share integration. (needs more testing)
+  * Add Shortcut to Cancel current selection using CtrlBackspace
+  * Pinned images now have window titled flameshot-pin.
+  * Separate tool size for the tools.
+  * A new configuration option so that arrows can be drawn in a
+    reversed way (tip to tail).
+  * In Wayland fractional scaling situation, screenshot preview
+    size was wrong.
+  * A config option to disable grim warning notification in Wayland.
+  * The "Screenshot Aborted" desktop notification can now be disabled.
+  * Recognizing Qtile , Cosmic , river
+  * Improved keyboard navigation for the application selector when you press Ctrlo.
+  * Add "Open Save Path" to the tray icon menu.
+  * Updated Translations
+  * Add option for insecure pixelation
+  * Handle SIGTERM and SIGKILL
+  * Commandline implementation for Windows
+  * Makes WebP available for saving screenshots on Windows.
+  * Support dark mode in Windows.
+  * The Flameshot full now captures all regions of all monitors.
+  * The "Use last region" is now ignored in modes other than flameshot gui.
+  * Fix pin tool wrong offset on Linux.
+  * Use native path separator for different OSs.
+  * Pinned images scrolling using mouse on macOS
+  * 'App Launcher' not listing applications.
+  * Flameshot was getting unresponsive if notification daemon was inaccissble.
+  * fix missing invert button on configure windows and remove old size indicator.
+  * Support for X11 and the standard file picker for Snap.
+  * Make loading of languages consistent across invocation types.
+  * Tooltips now display the lower-case keybinding to avoid confusion.
+  * Copy on double-click config in now respected.
+  * English translations not used despite being preferred.
+  * Fix Snap to find translation files.
+  * Better naming of CLI arguments
+  * Better wording of a shortcut description
+
+-------------------------------------------------------------------
 Fri Dec 29 19:46:23 UTC 2023 - Patrick Poitras <patrick.f.poitras@gmail.com>
 
 - Add runtime dependency from libQt5Svg5. This solves the problem
