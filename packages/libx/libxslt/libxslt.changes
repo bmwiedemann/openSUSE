@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  2 13:18:49 UTC 2025 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2025-10911 [bsc#1250553], use-after-free with key data stored cross-RVT
+  * libxslt-CVE-2025-10911.patch
+
+-------------------------------------------------------------------
 Thu Jul 17 09:44:34 UTC 2025 - pgajdos@suse.com
 
 - security update

@@ -581,4 +581,15 @@
   + libxslt-CVE-2025-7424.patch</comment>
     <requestid>1294383</requestid>
   </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>689e812ed7037f5e6e7b00102c05bce5</srcmd5>
+    <version>1.1.43</version>
+    <time>1759940011</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  CVE-2025-10911 [bsc#1250553], use-after-free with key data stored cross-RVT
+  * libxslt-CVE-2025-10911.patch</comment>
+    <requestid>1309625</requestid>
+  </revision>
 </revisionlist>
