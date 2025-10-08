@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 08 04:52:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.2:
+  * Bug Fixes
+    - clusterctl: Verify providers need upgrade before applying
+      (#12768)
+  * Others
+    - clusterctl: Add Metal3 as an IPAMProvider (#12760)
+    - Dependency: Bump go to v1.24.7 (#12735)
+
+-------------------------------------------------------------------
 Thu Sep 18 13:08:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.1:
