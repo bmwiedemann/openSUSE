@@ -1,7 +1,7 @@
 #
 # spec file for package luajit2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,13 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%global _default_patch_fuzz 2
 %define abi_ver 5.1
 %define so_ver 2
 %define lib_ver 5_1-%{so_ver}
 %define major 2.1
-%define minor 20250529
-%define upstream 1748495995
+%define minor 20250826
+%define upstream 1756211046
 Name:           luajit2
 Version:        %{major}.%{minor}
 Release:        0
@@ -31,6 +31,8 @@ URL:            https://github.com/openresty/%{name}
 Source0:        https://github.com/openresty/%{name}/archive/refs/tags/v%{major}-%{minor}.tar.gz#/%{name}-%{major}-%{minor}.tar.gz
 Source1:        baselibs.conf
 Patch0:         %{name}-name.patch
+Patch1:         https://patch-diff.githubusercontent.com/raw/openresty/luajit2/pull/236.patch#/riscv64-support.patch#/riscv64-support.patch
+Patch2:         https://github.com/openresty/luajit2/pull/245/commits/8e40aca7b3a919456b15698273e9b00e9250e769.patch#/loong64-support.patch
 BuildRequires:  pkgconfig
 Requires:       lib%{name}-%{lib_ver} = %{version}
 

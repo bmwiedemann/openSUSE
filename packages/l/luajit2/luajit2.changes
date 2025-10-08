@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  8 07:29:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Updated to 2.1.20250826 (1756211046)
+  * FFI: Fix dangling CType references (again).
+  * Avoid out-of-range PC for stack overflow error from snapshot restore.
+  * x86/x64: Don't use undefined MUL/IMUL zero flag.
+  * Windows: Add lua52compat option to msvcbuild.bat.
+- Cherry-pick riscv64-support.patch to add RISC-V support
+- Cherry-pick loong64-support.patch to add LoongArch support
+- Increase _default_patch_fuzz to 2 to allow patches to apply
+
+-------------------------------------------------------------------
 Fri Jul 11 14:07:00 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 2.1.20250529 (1748495995).

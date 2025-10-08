@@ -72,4 +72,19 @@
   * https://github.com/openresty/luajit2/compare/v2.1-20250117...v2.1-20250529</comment>
     <requestid>1292094</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b7357deb0dab2c3c89f82561c020e626</srcmd5>
+    <version>2.1.20250826</version>
+    <time>1759940131</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 2.1.20250826 (1756211046)
+  * FFI: Fix dangling CType references (again).
+  * Avoid out-of-range PC for stack overflow error from snapshot restore.
+  * x86/x64: Don't use undefined MUL/IMUL zero flag.
+  * Windows: Add lua52compat option to msvcbuild.bat.
+- Cherry-pick riscv64-support.patch to add RISC-V support
+- Cherry-pick loong64-support.patch to add LoongArch support
+- Increase _default_patch_fuzz to 2 to allow patches to apply</comment>
+    <requestid>1309765</requestid>
+  </revision>
 </revisionlist>
