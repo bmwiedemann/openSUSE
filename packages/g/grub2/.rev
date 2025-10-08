@@ -3181,4 +3181,12 @@ pretty much the same. The main user visible changes are
   * 0001-term-ns8250-spcr-Return-if-redirection-is-disabled.patch</comment>
     <requestid>1306728</requestid>
   </revision>
+  <revision rev="374" vrev="63">
+    <srcmd5>8dacf74de52e5bef958654cb9b592f15</srcmd5>
+    <version>2.12</version>
+    <time>1759939952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309413</requestid>
+  </revision>
 </revisionlist>
