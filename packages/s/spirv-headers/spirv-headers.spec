@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-headers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,9 @@
 %endif
 
 Name:           spirv-headers
-Version:        1.6.4+sdk321+gc8ad050
-%define innerver 1.4.321
-%define rev c8ad050fcb29e42a2f57d9f59e97488f465c436d
+Version:        1.6.4+sdk328+g01e0577
+%define innerver 1.4.328
+%define rev 01e0577914a75a2569c846778c2f93aa8e6feddd
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT

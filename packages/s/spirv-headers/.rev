@@ -421,4 +421,12 @@
     <comment>- Update to snapshot 1.6.4+sdk321+gc8ad050 (Git c8ad050)</comment>
     <requestid>1306801</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>1077a2980db627d064b769d561302815</srcmd5>
+    <version>1.6.4+sdk328+g01e0577</version>
+    <time>1759939997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tag SDK-1.4.328.0 (Git 01e0577)</comment>
+    <requestid>1309565</requestid>
+  </revision>
 </revisionlist>
