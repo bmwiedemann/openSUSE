@@ -4,9 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">v(.*)-(.*)</param>
-    <param name="versionrewrite-replacement">\1\2</param>
-    <param name="revision">v11.6.3+security-01</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">v11.6.6</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="compression">gz</param>
@@ -14,6 +13,6 @@
   </service>
   <service name="set_version" mode="manual">
     <param name="basename">grafana</param>
-    <param name="version">11.6.3+security01</param>
+    <param name="version">11.6.6</param>
   </service>
 </services>

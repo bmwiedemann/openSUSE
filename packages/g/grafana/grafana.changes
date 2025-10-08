@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Oct  8 07:25:00 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 11.6.6:
+  Features and enhancements:
+  * Alerting: Update alerting module.
+  * Auditing: Document new options for recording datasource query
+              request/response body.
+  Bug fixes:
+  * Alerting: Fix copying of recording rule fields.
+  * Login: Fix redirection after login when Grafana is served from
+           subpath.
+
+- Update to version 11.6.5:
+  Features and enhancements:
+  * Alerting: Bump alerting package to include change to
+              NewTLSClient.
+
+- Update to version 11.6.4:
+  Security:
+  CVE-2025-11065: Fix sensitive information leak in logs
+                  (bsc#1250616)
+  Features and enhancements:
+  * StateTimeline: Add endTime to tooltip.
+  * Unified storage: Respect GF_DATABASE_URL override
+  Bug fixes:
+  * Alerting: Fix group interval override when adding new rules.
+  * Azure: Fix legend formatting.
+  * Azure: Fix resource name determination in template variable
+           queries.
+  * Graphite: Fix annotation queries.
+  * Graphite: Fix date mutation.
+  * Graphite: Fix nested variable interpolation for repeated rows.
+
+-------------------------------------------------------------------
 Tue Jul 22 13:10:21 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to version 11.6.3+security-01:
