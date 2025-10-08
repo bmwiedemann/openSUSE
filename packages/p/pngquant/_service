@@ -1,0 +1,20 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/kornelski/pngquant</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">3.0.3</param>
+  </service>
+  <service mode="manual" name="tar"/>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service mode="manual" name="cargo_vendor">
+    <param name="srcdir">pngquant</param>
+    <param name="compression">xz</param>
+    <param name="update">true</param>
+  </service>
+</services>
+

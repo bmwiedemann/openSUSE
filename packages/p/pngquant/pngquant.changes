@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct  6 21:05:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- do not limit it to tier 1 archs as pngquant is used by
+  appstream-glib and rpmlint and it at least builds for i586.
+
+  So lets give all architectures a try.
+
+-------------------------------------------------------------------
+Mon Sep 29 00:51:24 UTC 2025 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- update to 3.0.3:
+  * replaced C libimagequant library with a Rust imagequant crate
+  * switched build system from make to Cargo
+
+-------------------------------------------------------------------
 Sun Jan 29 18:48:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.0:

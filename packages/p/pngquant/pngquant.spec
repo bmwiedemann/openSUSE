@@ -1,7 +1,7 @@
 #
 # spec file for package pngquant
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 Name:           pngquant
-Version:        2.18.0
+Version:        3.0.3
 Release:        0
 Summary:        Tool for lossy compression of PNG images
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://pngquant.org/
-Source:         https://github.com/kornelski/pngquant/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(imagequant) >= %{version}
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(zlib)
@@ -40,24 +42,14 @@ paletted PNG format with alpha channel (often 60-80%% smaller than
 web browsers, and have better fallback in IE6 than 24-bit PNGs.
 
 %prep
-%setup -q
+%autosetup -p1 -a1
 
 %build
-# not autoconf
-./configure \
-	--prefix=%{_prefix} \
-%ifarch x86_64
-	--enable-sse \
-%else
-	--disable-sse \
-%endif
-	--extra-cflags='%{optflags}' \
-	--with-libimagequant=%{_libdir} \
-	--with-openmp
-%make_build
+%{cargo_build}
 
 %install
-%make_install
+install -Dm0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
+install -Dm644 %{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 
 %files
 %license COPYRIGHT
