@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Tue Sep 30 06:27:16 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Use %ldconfig_scriptlets macro
+- Update to version 5.7.0
+  * Ask for interpretation of comma (when comma is not the default
+    decimal separator).
+  * Support input of base in log() function before parenthesis,
+    e.g. "log20(400)" (equivalent to "log(400, 20)").
+  * Support input of exponent before argument of trigonometric
+    function (e.g. "sin²(x)").
+  * Support input of functions with more than one argument using
+    RPN syntax.
+  * Add new binary prefixes (robi, quebi), and enable use of
+    recently added SI prefixes in output by default.
+  * Micron unit.
+  * Support "to 1/n" as alternative to "to fraction".
+  * Data set translation fixes.
+  * Return exact integers in more case in log() function.
+  * Fix segfault with text argument containing potential text
+    returning function, or variable containing text value.
+  * Fix segfault during calculation of (in)equality with root()
+    function with insufficient number of arguments.
+  * Fix segfault during output of both approximate and exact
+    logical OR value without (in)equality.
+  * Fix qError() function.
+  * Customizable prompt (CLI).
+  * Uncolorized "E" in scientific E notation (CLI).
+  * Fix locale used for definitions when language option is
+    set (CLI).
+  * Fix calculate as you type and indentation for
+    show-mode-in-prompt with custom mode strings (CLI).
+  * Fix completion of text string ending with capital E (CLI).
+  * Use icon for "AC" button, and no icon for "DEL" button (Gtk,Qt)
+  * Automatically set "Use comma as decimal separator" and "Ignore
+    comma/dots in numbers" when local digit grouping is selected
+    (Gtk, Qt).
+  * Improvements for insert function dialog in RPN mode (Gtk, Qt).
+  * Restore editing of all right-hand side buttons (Gtk).
+  * Add option to place percent/remainder button in number pad (Qt)
+  * Do not add conversion to expression when using convert button
+    on calculate-as-you-type result (Qt).
+  * Input of only conversion operator (arrow) using middle-click on
+    convert button, or new "Custom" menu option (Qt).
+  * Fix segfault when closing application with preferences open.
+  * Fix segfault when removing row or column with defined custom
+    button (Qt).
+  * Fix automatic digit grouping in decimals (Qt).
+  * Minor bug fixes and feature enhancements.
+- Update to version 5.6.0
+  * Add support for display of repeating decimals using overline
+    (vinculum) instead of ellipsis, and avoid repeated zero.
+  * Support all real numbers in binomial(), comb(), and perm()
+    functions.
+  * Add boolean argument for reversed conversion (to text
+    string) in bin(), oct(), dec(), hex(), and base().
+  * Add support for units in limit().
+  * Improve simplification and speed in diff() function for high
+    orders.
+  * Do not allow, or warn about, attempted conversion using "to"
+    in function expression.
+  * Show a warning when it appears as if the user tries to
+    convert part of an expression.
+  * Show error when trying to perform multiple conversions at
+    same time using "to" command (without preceding expression on
+    the same line).
+  * Improve handling of functions returning text string or value
+    with angle unit, in angle and text arguments.
+  * Improve handling of random numbers in iterative functions and
+    in function arguments of custom functions.
+  * Only convert right-hand side value for (in)equalities, when
+    converting to dimensionless, angle, or non-linear units.
+  * Use inverse for conversion from time unit to Hz.
+  * Disable calculate as you type for expression containing export,
+    load, or command function
+  * Add "language" option in qalc.
+  * Reset exact value (for dual approximation) when applying "to"
+    command in qalc.
+  * Improvements/fixes for currencies and exchange rates.
+  * Fix integral with infinite limit with unit.
+  * Fix non-localized data set key properties (when translated
+    version is available).
+  * Fix angle conversion for (in)equalities (both sides where
+    converted).
+  * Fix default separator in load() and export() functions.
+  * Fix µ_B name/symbol for Bohr magneton.
+  * Fix incorrect limit for expression containing tan(x) when
+    value to approach is pi/2 without direction.
+  * Fix handling of a single vector argument in times() function.
+  * Fix autocalculate input offset with readline vi mode.
+  * Fix abort using SIGINT (Ctrl+C) during factor command.
+  * Traditional Chinese translation.
+  * Minor bug fixes and feature enhancements.
+
+-------------------------------------------------------------------
 Thu Mar  6 18:27:17 UTC 2025 - pallas wept <pallaswept@proton.me>
 
 - Update to 5.5.2:

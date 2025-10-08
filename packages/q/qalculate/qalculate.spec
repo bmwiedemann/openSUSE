@@ -19,7 +19,7 @@
 %define major   23
 %define libname libqalculate
 Name:           qalculate
-Version:        5.5.2
+Version:        5.7.0
 Release:        0
 Summary:        Multi-purpose desktop calculator application
 License:        GPL-2.0-or-later
@@ -90,7 +90,7 @@ documentation for %{libname}. If you like to develop programs using %{libname},
 you will need to install %{libname}-devel.
 
 %prep
-%setup -q -n %{libname}-%{version}
+%autosetup -n %{libname}-%{version}
 
 %build
 %configure --disable-static
@@ -101,8 +101,7 @@ you will need to install %{libname}-devel.
 %find_lang libqalculate
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{libname}%{major} -p /sbin/ldconfig
-%postun -n %{libname}%{major} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}%{major}
 
 %files -f libqalculate.lang
 %license COPYING
