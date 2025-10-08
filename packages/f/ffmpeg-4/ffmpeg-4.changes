@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  7 12:34:56 UTC 2025 - olaf@aepfle.de
+
+- add missing closing brace to ffmpeg-4-CVE-2025-7700.patch 
+
+-------------------------------------------------------------------
 Mon Sep 29 07:25:31 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add glslang16.patch to resolve FTBFS

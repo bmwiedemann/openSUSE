@@ -806,4 +806,12 @@
     <comment>- Add glslang16.patch to resolve FTBFS</comment>
     <requestid>1307666</requestid>
   </revision>
+  <revision rev="88" vrev="8">
+    <srcmd5>4c3cad06ca23a3ce5f3e9f8ddeb7e02e</srcmd5>
+    <version>4.4.6</version>
+    <time>1759953207</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing closing brace to ffmpeg-4-CVE-2025-7700.patch</comment>
+    <requestid>1309818</requestid>
+  </revision>
 </revisionlist>
