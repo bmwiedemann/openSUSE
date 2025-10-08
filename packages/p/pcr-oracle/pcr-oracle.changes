@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  7 02:45:01 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.5.8
+  + Fix unsealing failure when using non default PCR bank
+  + Extra checks for TPM self-test (bsc#1249079)
+
+-------------------------------------------------------------------
 Thu May 29 07:31:13 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.5.7
