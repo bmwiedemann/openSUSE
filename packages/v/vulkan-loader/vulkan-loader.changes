@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  7 10:02:10 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.328.0
+  * Create prepending variants of add_if_manifest_file & string
+    functions
+  * Add device and drivers fields to settings file
+  * Generate VkResult operator<< overload
+  * Log when device configurations removes VkPhysicalDevices
+  * Allow VK_INSTANCE_LAYERS to order implicit layers
+  * Fix memory leak in get_loader_settings
+  * Add utility for getting the string representation of a UUID
+  * Add driverUUID and driverVersion to settings file device
+    configuration parameters
+
+-------------------------------------------------------------------
 Thu Jul 17 06:11:15 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.321.0
