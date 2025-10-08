@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  2 13:39:01 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Remove BuildRequires on libboost_system-devel for Tumbleweed,
+   removed on boost 1.89 (bsc#1250594)
+
+-------------------------------------------------------------------
 Sun Mar  9 00:41:53 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - fix build dependencies for Tumbleweed
