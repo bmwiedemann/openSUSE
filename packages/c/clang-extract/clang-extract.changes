@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 08 14:10:03 UTC 2025 - mvetter@suse.com
+
+- Update to version 0~20251008.e818417:
+  * Fix test failing if gcc is 7.5.0
+
+-------------------------------------------------------------------
+Wed Oct 08 02:00:52 UTC 2025 - mvetter@suse.com
+
+- Update to version 0~20251006.0f2b19f:
+  * Properly handle win32 paths in `get_basename`
+  * Clean warnings and debug prints left in fe587574fc11ee87b5497400a941314bbe936c4c
+  * Remove any use of `basename`
+  * Make sure we get a matching number of #if and #endifs before copying function to output
+  * Fix corner case where struct attributes are declared from #include
+  * Add new expansion policies.
+  * Fix ArrayRef constructor ambiguity on 32-bit systems
+  * Add support to LLVM-21
+  * Fix ce-inline crashing when no debuginfo is provided
+
+-------------------------------------------------------------------
 Thu Jul 10 14:29:02 UTC 2025 - mvetter@suse.com
 
 - Update to version 0~20250710.ac81bbb:
