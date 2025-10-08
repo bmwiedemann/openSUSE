@@ -1,0 +1,234 @@
+From 76cd53ac04d28670ee1fd970d3e37d7006192a9c Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 4 Oct 2025 02:07:16 +0200
+Subject: [PATCH] [gdb] Fix assertion failure due to null frame
+
+PR gdb/33512 reports an assertion failure in test-case
+gdb.ada/access_to_packed_array.exp on i386-linux:
+...
+(gdb) maint print symbols
+gdb/frame.c:3400: internal-error: reinflate: \
+  Assertion `m_cached_level >= -1' failed.
+A problem internal to GDB has been detected,
+further debugging may prove unreliable.
+Quit this debugging session? (y or n) FAIL: $exp: \
+  maint print symbols (GDB internal error)
+...
+
+I haven't been able to reproduce the failure by running the test-case on
+x86_64-linux with target board unix/-m32, but I'm able to reproduce on
+x86_64-linux by using the exec attached to the PR:
+...
+$ cat gdb.in
+file foo
+maint expand-symtabs
+maint print symbols
+$ gdb -q -batch -ex "set trace-commands on" -x gdb.in
+   ...
+         c_to: array (gdb/frame.c:3395: internal-error: reinflate: \
+	                Assertion `m_cached_level >= -1' failed.
+...
+
+The problem happens when trying to print variable c_to:
+...
+ <4><f227>: Abbrev Number: 3 (DW_TAG_variable)
+    <f228>   DW_AT_name        : c_to
+    <f230>   DW_AT_type        : <0xf214>
+...
+with type:
+...
+ <4><f214>: Abbrev Number: 7 (DW_TAG_array_type)
+    <f215>   DW_AT_type        : <0x9f39>
+ <5><f21d>: Abbrev Number: 12 (DW_TAG_subrange_type)
+    <f21e>   DW_AT_type        : <0x9d6c>
+    <f222>   DW_AT_upper_bound : <0xf209>
+...
+with upper bound:
+...
+ <4><f209>: Abbrev Number: 89 (DW_TAG_variable)
+    <f20a>   DW_AT_name        : system__os_lib__copy_file__copy_to__TTc_toSP1___U
+    <f20e>   DW_AT_type        : <0x9d6c>
+    <f212>   DW_AT_artificial  : 1
+    <f212>   DW_AT_location    : 1 byte block: 57       (DW_OP_reg7 (edi))
+...
+
+The backtrace at the point of the assertion failure is:
+...
+ (gdb) bt
+ #0  __pthread_kill_implementation (threadid=<optimized out>,
+     signo=signo@entry=6, no_tid=no_tid@entry=0) at pthread_kill.c:44
+ #1  0x00007ffff62a8e7f in __pthread_kill_internal (signo=6,
+     threadid=<optimized out>) at pthread_kill.c:78
+ #2  0x00007ffff6257842 in __GI_raise (sig=sig@entry=6)
+     at ../sysdeps/posix/raise.c:26
+ #3  0x00007ffff623f5cf in __GI_abort () at abort.c:79
+ #4  0x00000000010e7ac6 in dump_core () at gdb/utils.c:223
+ #5  0x00000000010e81b8 in internal_vproblem(internal_problem *, const char *, int, const char *, typedef __va_list_tag __va_list_tag *) (
+     problem=0x2ceb0c0 <internal_error_problem>,
+     file=0x1ad5a90 "gdb/frame.c", line=3395,
+     fmt=0x1ad5a08 "%s: Assertion `%s' failed.", ap=0x7fffffffc3c0)
+     at gdb/utils.c:475
+ #6  0x00000000010e82ac in internal_verror (
+     file=0x1ad5a90 "gdb/frame.c", line=3395,
+     fmt=0x1ad5a08 "%s: Assertion `%s' failed.", ap=0x7fffffffc3c0)
+     at gdb/utils.c:501
+ #7  0x00000000019be79f in internal_error_loc (
+     file=0x1ad5a90 "gdb/frame.c", line=3395,
+     fmt=0x1ad5a08 "%s: Assertion `%s' failed.")
+     at gdbsupport/errors.cc:57
+ #8  0x00000000009b5c16 in frame_info_ptr::reinflate (this=0x7fffffffc878)
+     at gdb/frame.c:3395
+ #9  0x00000000009b66f9 in frame_info_ptr::operator-> (this=0x7fffffffc878)
+     at gdb/frame.h:290
+ #10 0x00000000009b4bd5 in get_frame_arch (this_frame=...)
+     at gdb/frame.c:3075
+ #11 0x000000000081dd89 in dwarf_expr_context::fetch_result (
+     this=0x7fffffffc810, type=0x410d600, subobj_type=0x410d600,
+     subobj_offset=0, as_lval=true)
+     at gdb/dwarf2/expr.c:1006
+ #12 0x000000000081e2ef in dwarf_expr_context::evaluate (this=0x7fffffffc810,
+     addr=0x7ffff459ce6b "W\aF\003", len=1, as_lval=true,
+     per_cu=0x7fffd00053f0, frame=..., addr_info=0x7fffffffcc30, type=0x0,
+     subobj_type=0x0, subobj_offset=0)
+     at gdb/dwarf2/expr.c:1136
+ #13 0x0000000000877c14 in dwarf2_locexpr_baton_eval (dlbaton=0x3e99c18,
+     frame=..., addr_stack=0x7fffffffcc30, valp=0x7fffffffcab0,
+     push_values=..., is_reference=0x7fffffffc9b0)
+     at gdb/dwarf2/loc.c:1604
+ #14 0x0000000000877f71 in dwarf2_evaluate_property (prop=0x3e99ce0,
+     initial_frame=..., addr_stack=0x7fffffffcc30, value=0x7fffffffcab0,
+     push_values=...) at gdb/dwarf2/loc.c:1668
+ #15 0x00000000009def76 in resolve_dynamic_range (dyn_range_type=0x3e99c50,
+     addr_stack=0x7fffffffcc30, frame=..., rank=0, resolve_p=true)
+     at gdb/gdbtypes.c:2198
+ #16 0x00000000009e0ded in resolve_dynamic_type_internal (type=0x3e99c50,
+     addr_stack=0x7fffffffcc30, frame=..., top_level=true)
+     at gdb/gdbtypes.c:2934
+ #17 0x00000000009e1079 in resolve_dynamic_type (type=0x3e99c50, valaddr=...,
+     addr=0, in_frame=0x0) at gdb/gdbtypes.c:2989
+ #18 0x0000000000488ebc in ada_discrete_type_low_bound (type=0x3e99c50)
+     at gdb/ada-lang.c:710
+ #19 0x00000000004eb734 in print_range (type=0x3e99c50, stream=0x30157b0,
+     bounds_preferred_p=0) at gdb/ada-typeprint.c:156
+ #20 0x00000000004ebffe in print_array_type (type=0x3e99d10, stream=0x30157b0,
+     show=1, level=9, flags=0x1bdcf20 <type_print_raw_options>)
+     at gdb/ada-typeprint.c:381
+ #21 0x00000000004eda3c in ada_print_type (type0=0x3e99d10,
+     varstring=0x401f710 "c_to", stream=0x30157b0, show=1, level=9,
+     flags=0x1bdcf20 <type_print_raw_options>)
+     at gdb/ada-typeprint.c:1015
+ #22 0x00000000004b4627 in ada_language::print_type (
+     this=0x2f949b0 <ada_language_defn>, type=0x3e99d10,
+     varstring=0x401f710 "c_to", stream=0x30157b0, show=1, level=9,
+     flags=0x1bdcf20 <type_print_raw_options>)
+     at gdb/ada-lang.c:13681
+ #23 0x0000000000f74646 in print_symbol (gdbarch=0x3256270, symbol=0x3e99db0,
+     depth=9, outfile=0x30157b0) at gdb/symmisc.c:545
+ #24 0x0000000000f737e6 in dump_symtab_1 (symtab=0x3ddd7e0, outfile=0x30157b0)
+     at gdb/symmisc.c:313
+ #25 0x0000000000f73a69 in dump_symtab (symtab=0x3ddd7e0, outfile=0x30157b0)
+     at gdb/symmisc.c:370
+ #26 0x0000000000f7420f in maintenance_print_symbols (args=0x0, from_tty=0)
+     at gdb/symmisc.c:481
+ #27 0x00000000006c7fde in do_simple_func (args=0x0, from_tty=0, c=0x321e270)
+     at gdb/cli/cli-decode.c:94
+ #28 0x00000000006ce65a in cmd_func (cmd=0x321e270, args=0x0, from_tty=0)
+     at gdb/cli/cli-decode.c:2826
+ #29 0x0000000001005b78 in execute_command (p=0x3f48fe3 "", from_tty=0)
+     at gdb/top.c:564
+ #30 0x0000000000966095 in command_handler (
+     command=0x3f48fd0 "maint print symbols")
+     at gdb/event-top.c:613
+ #31 0x0000000001005141 in read_command_file (stream=0x3011a40)
+     at gdb/top.c:333
+ #32 0x00000000006e2a64 in script_from_file (stream=0x3011a40,
+     file=0x7fffffffe21f "gdb.in")
+     at gdb/cli/cli-script.c:1705
+ #33 0x00000000006bb88c in source_script_from_stream (stream=0x3011a40,
+     file=0x7fffffffe21f "gdb.in", file_to_open=0x7fffffffd760 "gdb.in")
+     at gdb/cli/cli-cmds.c:706
+ #34 0x00000000006bba12 in source_script_with_search (
+     file=0x7fffffffe21f "gdb.in", from_tty=0, search_path=0)
+     at gdb/cli/cli-cmds.c:751
+ #35 0x00000000006bbab2 in source_script (file=0x7fffffffe21f "gdb.in",
+     from_tty=0) at gdb/cli/cli-cmds.c:760
+ #36 0x0000000000b835cb in catch_command_errors (
+     command=0x6bba7e <source_script(char const*, int)>,
+     arg=0x7fffffffe21f "gdb.in", from_tty=0, do_bp_actions=false)
+     at gdb/main.c:510
+ #37 0x0000000000b83803 in execute_cmdargs (cmdarg_vec=0x7fffffffd980,
+     file_type=CMDARG_FILE, cmd_type=CMDARG_COMMAND, ret=0x7fffffffd8c8)
+     at gdb/main.c:606
+ #38 0x0000000000b84d79 in captured_main_1 (context=0x7fffffffdb90)
+     at gdb/main.c:1349
+ #39 0x0000000000b84fe4 in captured_main (context=0x7fffffffdb90)
+     at gdb/main.c:1372
+ #40 0x0000000000b85092 in gdb_main (args=0x7fffffffdb90)
+     at gdb/main.c:1401
+ #41 0x000000000041a382 in main (argc=9, argv=0x7fffffffdcc8)
+     at gdb/gdb.c:38
+ (gdb)
+...
+
+The immediate problem is in dwarf_expr_context::fetch_result where we're
+calling get_frame_arch:
+...
+      switch (this->m_location)
+	{
+	case DWARF_VALUE_REGISTER:
+	  {
+	    gdbarch *f_arch = get_frame_arch (this->m_frame);
+...
+with a null frame:
+...
+(gdb) p this->m_frame.is_null ()
+$1 = true
+(gdb)
+...
+
+Fix this using ensure_have_frame in dwarf_expr_context::execute_stack_op for
+DW_OP_reg<n> and DW_OP_regx, getting us instead:
+...
+         c_to: array (<>) of character; computed at runtime
+...
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33512
+---
+ gdb/dwarf2/expr.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/gdb/dwarf2/expr.c b/gdb/dwarf2/expr.c
+index ee1522b7437..c532ca90d12 100644
+--- a/gdb/dwarf2/expr.c
++++ b/gdb/dwarf2/expr.c
+@@ -1710,6 +1710,10 @@ dwarf_expr_context::execute_stack_op (const gdb_byte *op_ptr,
+ 	case DW_OP_reg29:
+ 	case DW_OP_reg30:
+ 	case DW_OP_reg31:
++	  /* The value of a register is relative to a frame, so we require a
++	     valid frame.  */
++	  ensure_have_frame (this->m_frame, "DW_OP_reg<n>");
++
+ 	  dwarf_expr_require_composition (op_ptr, op_end, "DW_OP_reg");
+ 
+ 	  result = op - DW_OP_reg0;
+@@ -1718,6 +1722,10 @@ dwarf_expr_context::execute_stack_op (const gdb_byte *op_ptr,
+ 	  break;
+ 
+ 	case DW_OP_regx:
++	  /* The value of a register is relative to a frame, so we require a
++	     valid frame.  */
++	  ensure_have_frame (this->m_frame, "DW_OP_regx");
++
+ 	  op_ptr = safe_read_uleb128 (op_ptr, op_end, &reg);
+ 	  dwarf_expr_require_composition (op_ptr, op_end, "DW_OP_regx");
+ 
+
+base-commit: 0234020f718829f13f2645d5057b51ebcbbff151
+-- 
+2.51.0
+

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct  6 18:44:56 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Patch added:
+  * fix-gdb.server-server-kill.exp.patch
+- Maintenance script qa.sh:
+  * Add PR33054 kfail.
+
+-------------------------------------------------------------------
+Wed Oct  1 14:29:57 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Patch added (bsc#1250033, swo#33480):
+  * gdb-c-fix-hang-on-whatis-std-string-npos.patch
+- Patch added (swo#33512):
+  * gdb-fix-assertion-failure-due-to-null-frame.patch
+
+-------------------------------------------------------------------
 Fri Jun  6 08:16:36 UTC 2025 - Tom de Vries <tdevries@suse.com>
 
 - Patches added:

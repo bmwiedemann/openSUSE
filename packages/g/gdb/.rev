@@ -4222,4 +4222,12 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 - Add libipt-cmake4-patch to fix build failure w/ cmake-4</comment>
     <requestid>1286144</requestid>
   </revision>
+  <revision rev="189" vrev="3">
+    <srcmd5>e21aa47a84631df762165c0f0090d391</srcmd5>
+    <version>16.3</version>
+    <time>1759940007</time>
+    <user>dimstar_suse</user>
+    <comment>Fix bsc#1250033.</comment>
+    <requestid>1309610</requestid>
+  </revision>
 </revisionlist>

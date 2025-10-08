@@ -1,0 +1,53 @@
+From 77f7bf5700b2b9be1172c7b5d05d03ee025c5d2c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?S=C3=A9bastien=20Darche?= <sdarche@efficios.com>
+Date: Tue, 30 Sep 2025 15:07:41 -0400
+Subject: [PATCH] fix gdb.server/server-kill.exp
+
+A test case in gdb.server/server-kill.exp attempts to query the server
+status after the server it is connected to has been killed. The
+connection is reset as expected, but the regex on the error message
+seems to be out-of-date. The test expects:
+
+	Remote communication error.  Target disconnected: Connection reset by peer.
+
+But a modern build of gdb yields :
+
+	Remote communication error.  Target disconnected: error while reading: Connection reset by peer.
+
+I presume this is due to change 0da23004a064 ("Change serial_readchar to
+throw") which added exceptions to the control flow handling instead of
+relying on perror(). The exception error string inserts "error while
+reading" to the perror message.
+
+The test appeared to fail intermittently, sometimes matching the first
+part of the regex ("Remote connection closed"). It now passes
+consistently.
+
+Change-Id: I3bf364b5d4b56de67f9ca30e9d636d3bb1be4119
+---
+ gdb/testsuite/gdb.server/server-kill.exp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.server/server-kill.exp b/gdb/testsuite/gdb.server/server-kill.exp
+index 4fc25097145..aba9a3cba2c 100644
+--- a/gdb/testsuite/gdb.server/server-kill.exp
++++ b/gdb/testsuite/gdb.server/server-kill.exp
+@@ -97,7 +97,7 @@ proc_with_prefix test_tstatus {} {
+ 
+     # Force GDB to talk with GDBserver, so that we can get the
+     # "connection closed" error.
+-    gdb_test "tstatus" {Remote connection closed|Remote communication error\.  Target disconnected: Connection reset by peer\.}
++    gdb_test "tstatus" {Remote connection closed|Remote communication error\.  Target disconnected: error while reading: Connection reset by peer\.}
+ }
+ 
+ # Test unwinding with no debug/unwind info, right after the connection
+@@ -152,4 +152,3 @@ test_tstatus
+ test_unwind_nosyms
+ test_unwind_syms
+ test_stepi
+-
+
+base-commit: 76cd53ac04d28670ee1fd970d3e37d7006192a9c
+-- 
+2.51.0
+

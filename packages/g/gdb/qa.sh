@@ -544,6 +544,19 @@ kfail_factory=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=32678
     "FAIL: gdb.reverse/time-reverse.exp: mode=c:"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=33054
+    "FAIL: gdb.ada/task_switch_in_core.exp: info tasks after switching to task 1"
+    "FAIL: gdb.ada/task_switch_in_core.exp: info tasks after switching to task 2"
+    "FAIL: gdb.ada/task_switch_in_core.exp: task 1"
+    "FAIL: gdb.ada/task_switch_in_core.exp: task 2"
+    "FAIL: gdb.server/server-kill.exp: test_tstatus: tstatus"
+    "FAIL: gdb.threads/threadcrash.exp: test_gcore: \\\$thread_count == \[llength \\\$test_list\]"
+    "FAIL: gdb.threads/threadcrash.exp: test_gcore: thread apply 2 backtrace"
+    "FAIL: gdb.threads/threadcrash.exp: test_gcore: thread apply 3 backtrace"
+    "FAIL: gdb.threads/threadcrash.exp: test_gcore: thread apply 4 backtrace"
+    "FAIL: gdb.threads/threadcrash.exp: test_gcore: thread apply 5 backtrace"
+    "FAIL: gdb.threads/tls-core.exp: gcore: print thread-local storage variable"
+
 ) # kfail_factory
 
 kfail_aarch64=(

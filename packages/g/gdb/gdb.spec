@@ -255,6 +255,11 @@ Patch2144:      gdb-testsuite-fix-gdb.ada-scalar_storage.exp-on-s390.patch
 Patch2145:      gdb-testsuite-fix-gdb.base-bp-permanent.exp-with-gcc.patch
 Patch2146:      gdb-testsuite-don-t-run-to-main-in-gdb.cp-cplusfuncs.patch
 Patch2147:      gdb-testsuite-fix-timeout-in-gdb.multi-attach-while-.patch
+Patch2148:      gdb-fix-assertion-failure-due-to-null-frame.patch
+
+# Backports from master, available in GDB 18.
+
+Patch2500:      fix-gdb.server-server-kill.exp.patch
 
 # Backport from gdb-patches
 
@@ -280,6 +285,8 @@ Patch3013:      gdb-testsuite-fix-regexp-in-gdb.multi-pending-bp-del.patch
 Patch3014:      gdb-testsuite-fix-timeout-in-gdb.threads-main-thread.patch
 # https://sourceware.org/pipermail/gdb-patches/2025-June/218637.html
 Patch3015:      gdb-python-reimplement-gdb.interrupt-race-fix.patch
+# https://sourceware.org/pipermail/gdb-patches/2025-September/221285.html
+Patch3016:      gdb-c-fix-hang-on-whatis-std-string-npos.patch
 
 # Debug patches.
 
@@ -666,6 +673,9 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2145 -p1
 %patch -P 2146 -p1
 %patch -P 2147 -p1
+%patch -P 2148 -p1
+
+%patch -P 2500 -p1
 
 %patch -P 3000 -p1
 %patch -P 3001 -p1
@@ -676,6 +686,7 @@ find -name "*.info*"|xargs rm -f
 %patch -P 3013 -p1
 %patch -P 3014 -p1
 %patch -P 3015 -p1
+%patch -P 3016 -p1
 
 #unpack libipt
 %if 0%{have_libipt}
