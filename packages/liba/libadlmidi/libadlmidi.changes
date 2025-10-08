@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 22 09:32:17 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.1
+  * Fixed crash when playing too many notes at the same channel.
+  * Fixed an unexpected loud noise sounding after switching bank
+    from the 4-op only to 2-op on the fly.
+  * Fixed the crash when playing some files with Auto-Arpeggio
+    enabled.
+  * Added support for KLM music files from the Wacky Wheels game.
+  * Fixed buffered data corruption that leads a noisy output at
+    some emulators (primarily at the LLE-OPL3).
+
+-------------------------------------------------------------------
 Sun Jul  6 10:28:04 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.0

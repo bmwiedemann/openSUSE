@@ -1,7 +1,7 @@
 #
 # spec file for package libadlmidi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,9 +19,9 @@
 
 %define sover 1
 %define libname libADLMIDI
+%define hyphver 1.6.1
 Name:           libadlmidi
-%define hyphver 1.6.0
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        A software MIDI synthesizer library with OPL3 emulation
 License:        GPL-3.0-only AND LGPL-3.0-only
@@ -79,8 +79,7 @@ Development and header files for libADLMIDI.
 %cmake_install
 rm -r %{buildroot}%{_datadir}/doc/
 
-%post   -n libADLMIDI%{sover} -p /sbin/ldconfig
-%postun -n libADLMIDI%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libADLMIDI%{sover}
 
 %files -n %{libname}%{sover}
 %license LICENSE LICENSE.GPL-3.txt LICENSE.LGPL-2.1.txt
