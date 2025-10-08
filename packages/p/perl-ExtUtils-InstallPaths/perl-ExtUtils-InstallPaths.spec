@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-InstallPaths
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %define cpan_name ExtUtils-InstallPaths
 Name:           perl-ExtUtils-InstallPaths
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
-# 0.014 -> normalize -> 0.14.0
-%define cpan_version 0.014
+# 0.015 -> normalize -> 0.15.0
+%define cpan_version 0.015
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Build.PL install path logic made easy
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::Config) >= 0.9.0
-Requires:       perl(ExtUtils::Config) >= 0.9.0
+BuildRequires:  perl(ExtUtils::Config) >= 0.9
+Requires:       perl(ExtUtils::Config) >= 0.9
 Provides:       perl(ExtUtils::InstallPaths) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
@@ -96,7 +97,7 @@ This is the same as 'libdoc' above, but applies to HTML documents. Unless
 explicitly set, this is only available when perl was configured to do so.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

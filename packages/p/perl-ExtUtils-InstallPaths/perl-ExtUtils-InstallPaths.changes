@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  6 17:20:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15.0 (0.015)
+   see /usr/share/doc/packages/perl-ExtUtils-InstallPaths/Changes
+
+  0.015     2025-09-26 21:13:44+02:00 Europe/Brussels
+            - Restore installing non-standard types
+
+-------------------------------------------------------------------
 Wed Sep 11 05:32:24 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.14.0 (0.014)

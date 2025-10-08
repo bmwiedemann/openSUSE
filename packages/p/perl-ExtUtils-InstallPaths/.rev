@@ -68,4 +68,15 @@
             - Compensate for perls without installsitescript (forwarded request 1233990 from tinita)</comment>
     <requestid>1234769</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4e5767416cdbba04478107f3270f0f74</srcmd5>
+    <version>0.15.0</version>
+    <time>1759940009</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.15.0 (0.015)
+   see /usr/share/doc/packages/perl-ExtUtils-InstallPaths/Changes
+  0.015     2025-09-26 21:13:44+02:00 Europe/Brussels
+            - Restore installing non-standard types</comment>
+    <requestid>1309613</requestid>
+  </revision>
 </revisionlist>
