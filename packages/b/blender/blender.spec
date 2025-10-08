@@ -115,6 +115,10 @@ Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
 Patch1:         cmake_manpage_fix.patch
+# PATCH-FIX-UPSTREAM Allow OCIO 2.5.0 - can be removed after next update probably
+# https://projects.blender.org/blender/blender/issues/147227
+# https://projects.blender.org/blender/blender/issues/141871
+Patch2:         b49b026b8eb6b289c59ff9ecb741f52531c22170.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests

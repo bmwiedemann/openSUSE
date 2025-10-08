@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  6 10:33:34 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add b49b026b8eb6b289c59ff9ecb741f52531c22170.patch:
+  Allow building with OCIO 2.5.0
+
+-------------------------------------------------------------------
 Thu Sep 18 23:03:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.5.3
