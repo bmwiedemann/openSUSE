@@ -1476,4 +1476,17 @@ mostly-working synapse than nothing at all) and the package has been update to
       tests to pass following the security patch above. (#18996)</comment>
     <requestid>1309635</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>d8217d6ede633ac81d86ced77b9cbd76</srcmd5>
+    <version>1.139.2</version>
+    <time>1759940057</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1309683 from darix
+
+- Update to 1.139.2
+  - Update `KeyUploadServlet` to handle case where client sends
+    `device_keys: null` (#19023)
+    Introduced in 1.139.1</comment>
+    <requestid>1309684</requestid>
+  </revision>
 </revisionlist>
