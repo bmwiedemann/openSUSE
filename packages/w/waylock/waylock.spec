@@ -1,7 +1,7 @@
 #
 # spec file for package waylock
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           waylock
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        Small screenlocker for Wayland compositors
 License:        ISC
@@ -30,9 +30,9 @@ Source4:        vendor.tar.zst
 Patch1:         add-experimental-non-llvm-zig-backend.patch
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
-BuildRequires:  zig = 0.13.0
-BuildRequires:  zig-rpm-macros = 0.13.0
 BuildRequires:  zstd
+BuildRequires:  (zig >= 0.15.0 with zig < 0.16)
+BuildRequires:  (zig-rpm-macros >= 0.15.0 with zig-rpm-macros < 0.16)
 BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
@@ -51,10 +51,11 @@ cause the session to be unlocked.)
 cp %{SOURCE1} ./pam.d/waylock
 
 %build
-%zig_build -Dpie --global-cache-dir vendor/
+%global zig_opts --global-cache-dir vendor/ -Dpie -Dno-llvm
+%zig_build %{zig_opts}
 
 %install
-%zig_install -Dpie --global-cache-dir vendor/
+%zig_install %{zig_opts}
 
 # Removes rpmlint error: filelist-forbidden-move-to-usr error
 mkdir -p %{buildroot}%{_pam_vendordir}

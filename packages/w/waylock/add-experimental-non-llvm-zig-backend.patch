@@ -1,7 +1,8 @@
-diff -ruN /tmp/waylock-1.2.0/build.zig waylock-1.2.0/build.zig
---- /tmp/waylock-1.2.0/build.zig	2024-06-07 19:42:17.000000000 +0800
-+++ waylock-1.2.0/build.zig	2024-06-15 20:24:26.960165706 +0800
-@@ -18,6 +18,7 @@
+Index: waylock-1.5.0/build.zig
+===================================================================
+--- waylock-1.5.0.orig/build.zig
++++ waylock-1.5.0/build.zig
+@@ -18,6 +18,7 @@ pub fn build(b: *Build) !void {
  
      const strip = b.option(bool, "strip", "Omit debug information") orelse false;
      const pie = b.option(bool, "pie", "Build a Position Independent Executable") orelse false;
@@ -9,12 +10,11 @@ diff -ruN /tmp/waylock-1.2.0/build.zig waylock-1.2.0/build.zig
  
      const man_pages = b.option(
          bool,
-@@ -96,6 +97,7 @@
-         .root_source_file = b.path("src/main.zig"),
-         .target = target,
-         .optimize = optimize,
-+        .use_llvm = llvm,
-     });
-     waylock.root_module.addOptions("build_options", options);
+@@ -93,6 +94,7 @@ pub fn build(b: *Build) !void {
  
-Binary files /tmp/waylock-1.2.0/vendor.tar.zst and waylock-1.2.0/vendor.tar.zst differ
+     const waylock = b.addExecutable(.{
+         .name = "waylock",
++        .use_llvm = llvm,
+         .root_module = b.createModule(.{
+             .root_source_file = b.path("src/main.zig"),
+             .target = target,

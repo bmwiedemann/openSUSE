@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  1 00:16:23 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update BuildRequires to handle patch Zig versions
+- Refresh add-experimental-non-llvm-zig-backend.patch
+- Update to version 1.5.0:
+  * Update to Zig 0.15.0
+- Update to version 1.4.0:
+  * Update to Zig 0.14.0
+
+-------------------------------------------------------------------
 Mon Jun 30 05:29:36 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to 1.3.0:
