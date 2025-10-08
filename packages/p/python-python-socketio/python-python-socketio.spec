@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-socketio
-Version:        5.13.0
+Version:        5.14.1
 Release:        0
 Summary:        SocketIO server
 License:        MIT
@@ -63,7 +63,10 @@ Python implementation of the Socket.IO realtime server.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -rs -k 'not test_logger' --timeout=60
+# Requires python-valkey, not packaged
+ignore="--ignore tests/async/test_redis_manager.py "
+ignore+="--ignore tests/common/test_redis_manager.py"
+%pytest -rs $ignore -k 'not test_logger' --timeout=60
 
 %files %{python_files}
 %doc README.md

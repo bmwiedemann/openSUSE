@@ -95,4 +95,28 @@
     <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
     <requestid>1298963</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9cc98f9ae7dbeca62f03341c991a8c36</srcmd5>
+    <version>5.14.1</version>
+    <time>1759940081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.14.1:
+  * Restore support for rediss:// URLs, and add support for valkeys:// as
+    well
+  * Add support for Redis connections using unix sockets
+  * Replace pickle with json in message queue communications
+    (bsc#1251193, CVE-2025-61765)
+  * Add support for Valkey in the Redis client managers
+  * Keep track of which namespaces failed to connect
+  * Fixed transport property of the simple clients to be a string as
+    documented
+  * SimpleClient.call does not raise TimeoutError on timeout
+  * Wait for client to end background tasks on disconnect
+  * Better error logging for the Redis managers
+  * Channel was not properly initialized in several pubsub client managers
+  * Add message queue deployment recommendations for security
+  * Add missing async on session examples for the async server
+  * Add SPDX license identifier</comment>
+    <requestid>1309719</requestid>
+  </revision>
 </revisionlist>

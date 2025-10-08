@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct  8 03:04:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.14.1:
+  * Restore support for rediss:// URLs, and add support for valkeys:// as
+    well
+  * Add support for Redis connections using unix sockets
+  * Replace pickle with json in message queue communications
+    (bsc#1251193, CVE-2025-61765)
+  * Add support for Valkey in the Redis client managers
+  * Keep track of which namespaces failed to connect
+  * Fixed transport property of the simple clients to be a string as
+    documented
+  * SimpleClient.call does not raise TimeoutError on timeout
+  * Wait for client to end background tasks on disconnect
+  * Better error logging for the Redis managers
+  * Channel was not properly initialized in several pubsub client managers
+  * Add message queue deployment recommendations for security
+  * Add missing async on session examples for the async server
+  * Add SPDX license identifier
+
+-------------------------------------------------------------------
 Tue Aug 12 05:22:00 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pytest-asyncio. 
