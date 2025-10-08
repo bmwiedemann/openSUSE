@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct  7 10:56:44 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.9.5
+  * Bump tracing-subscriber from 0.3.19 to 0.3.20 by @dependabot[bot] in #2728
+  * search_lib_dir: Only recurse into build* if it is a directory.
+    by @xhochy in #2734
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in #2729
+  * Bump actions/checkout from 4 to 5 by @dependabot[bot] in #2730
+  * Bump actions/attest-build-provenance from 2 to 3
+    by @dependabot[bot] in #2732
+  * Bump actions/download-artifact from 4 to 5 by @dependabot[bot] in #2731
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in #2739
+  * Add freebsd 14.2 amd64 sysconfig by @konstin in #2741
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in #2742
+  * Update console dependency from 0.15.4 to 0.16.0 by @musicinmybrain in #2688
+  * update conda versions in test by @davidhewitt in #2752
+  * Only select Windows Python interpreters with matching CPU pointer widths
+    and architectures by @tonybaloney in #2750
+  * release: 1.9.5 by @davidhewitt in #2753
+
+-------------------------------------------------------------------
 Tue Sep  2 14:23:38 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.9.4
