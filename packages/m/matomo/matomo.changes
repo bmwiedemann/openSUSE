@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Oct  8 10:59:27 UTC 2025 - ecsos <ecsos@opensuse.org> - 5.5.0
+
+- Update to 5.5.0
+  * Core improvements
+    - #23564, #19306: Migrate annotations to a dedicated database table.
+    - #22024, #23396: Fix incorrect archive recreation for periods without visits.
+    - #23530: Hide ‘Install all plugins’ button when Marketplace is disabled.
+    - #23605: Add setReferralUrlMaxLength() to the JS Tracker to allow limiting the referral cookie size.
+    - #23573, #23611: Fix the Themes admin page to show available updates (like the Manage Plugins page).
+  * New features and enhancements
+    - #22831, #23457: Introduced the new AI Assistants acquisition channel type to categorise
+      and analyse traffic originating from AI platforms such as ChatGPT, Le Chat, Perplexity and more.
+    - #23449, #23450: Reordered sections in the Dashboard selector to first display the Manage Dashboard and Create new Dashboard options.
+    - #23571: A new config_id randomisation setting is now available available as an optional privacy control
+      that must be explicitly enabled by the user. Learn more about how to enable the randomise config_id setting.
+    - #20826, #23520: When a user invites another person to join Matomo, the invite acceptance notification
+      is now in the inviter’s language to ensure the confirmation is localised consistently.
+  * Security
+    - #23575: Disabled the Superuser checkbox in Users > Permissions when a superuser edits their own account.
+      This prevents accidental self-revocation of all access.
+    - #23582, #23622: Refactor the token notification system to consolidate messages
+      and send a single email per user that includes details for all their tokens.
+  * Reporting
+    - #23578: Correctly escape line breaks in CSV and TSV exports so that files can be reliably imported into tools like Excel.
+    - #23535: Rename the Email Reports menu and table title to Schedule Reports.
+    - #23569: Make segment help texts translatable.
+    - #23581: Translations in token emails are currently HTML-escaped, causing encoded entities
+      to appear instead of the correct characters. This issue removes the escaping so the text renders properly.
+  * Matomo Tag Manager
+    - #1035: Fixed reference check when importing a previous container version to overwrite the current container draft.
+    - #1041: Reorder action icons to ensure the delete icon is displayed last.
+
+-------------------------------------------------------------------
 Sun Aug 31 08:40:34 UTC 2025 - ecsos <ecsos@opensuse.org> - 5.4.0
 
 - Update to 5.4.0
