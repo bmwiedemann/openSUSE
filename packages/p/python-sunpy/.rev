@@ -452,4 +452,33 @@
     accurate. (#8297)</comment>
     <requestid>1297171</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>98be28d4bc236dd92badd9b4b366143d</srcmd5>
+    <version>7.0.2</version>
+    <time>1759940039</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.2
+  ## Bug Fixes
+  * Fix inconsistent behaviour between local and remote (http/ftp)
+    `sunpy.net.scraper.Scraper` searches. Local searches will no
+    longer crash if an expected directory does not exist during
+    search. (#8316)
+  * Fixed a bug where `sunpy.time.parse_time` could not accept
+    pandas.Index input. (#8356)
+  * Fixed a bug where `sunpy.time.parse_time` failed to parse time
+    strings stored in an astropy.table.Column or a pandas.Series
+    using the normal wide range of supported time-string formats.
+    (#8356)
+  ## Documentation
+  * Added an example
+    `sphx_glr_generated_gallery_plotting_adding_earth.py` showing
+    how to add an Earth scale image to a Map plot. (#8322)
+  ## Internal Changes
+  * A low-resolution Earth image (PNG format) is now available as
+    sunpy.data.EARTH_IMAGE. (#8340)
+  * Fixed a doctest that depended on the name of the person
+    associated with a data set. (#8348)
+</comment>
+    <requestid>1309370</requestid>
+  </revision>
 </revisionlist>

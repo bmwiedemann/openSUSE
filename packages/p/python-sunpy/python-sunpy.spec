@@ -1,7 +1,7 @@
 #
 # spec file for package python-sunpy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sunpy
-Version:        7.0.1
+Version:        7.0.2
 Release:        0
 Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -110,6 +110,7 @@ BuildRequires:  %{python_module matplotlib >= 3.8.0}
 BuildRequires:  %{python_module mpl-animators >= 1.2.0}
 BuildRequires:  %{python_module pandas >= 2.1}
 BuildRequires:  %{python_module pytest >= 7.1}
+BuildRequires:  %{python_module pytest-asdf-plugin >= 0.1.1}
 BuildRequires:  %{python_module pytest-astropy >= 0.11}
 BuildRequires:  %{python_module pytest-mpl >= 0.16}
 BuildRequires:  %{python_module pytest-xdist >= 3.0.2}
@@ -153,6 +154,8 @@ fi
 donttest="test_self_test"
 # max age: not online for IERS updates
 donttest="$donttest or test_print_params"
+# FutureWarning of type cast in astropy. Don't bother here.
+donttest="$donttest or (test_sxt_source and test_wcs)"
 # spiceypy not available
 %python_expand ignore="$ignore --ignore %{buildroot}%{$python_sitearch}/sunpy/coordinates/tests/test_spice.py"
 %ifarch aarch64
