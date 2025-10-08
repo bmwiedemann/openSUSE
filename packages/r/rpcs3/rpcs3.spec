@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.37~git20250827
+Version:        0.0.37~git20250922
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -28,7 +28,7 @@ Patch1:         fix-test-files.patch
 Patch2:         fix-build-glew-egl.patch
 BuildRequires:  cmake >= 3.28.0
 BuildRequires:  gcc-c++
-BuildRequires:  llvm-devel >= 17
+BuildRequires:  llvm19-devel
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libevdev)

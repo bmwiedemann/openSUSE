@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Oct  8 03:44:22 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- BuildRequires: llvm19-devel (boo#1250352)
+  * Fixes llvm 21 build error
+  * Triple constructor is no longer implicit
+
+-------------------------------------------------------------------
+Mon Sep 22 23:41:06 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.37~git20250922:
+  * PPU LLVM: Filter out functions with patches
+  * Audio Processing Improvements (#17525)
+  * sys_spu: Untangle IDM mutex from sys_spu's
+  * SPU: Fix Max SPURS Threads Limit
+  * SPU: Fix group wakeup
+  * SDL: call SDL_PumpEvents from main thread
+  * Fix rc variants of ADDE and SUBFE in interpreter
+  * Win32/SPU: Respect home space / shadow space on the stack frame
+  * Win32: Respect home space / shadow space on the stack frame (#17514)
+  * Revert "Update wolfssl to 5.8.2"
+  * Qt: Fix savestate table selection style
+  * vk: Fix invalidated surface_cache resource deletion bug
+  * Qt: Check if movie item changed and is valid before calling the 
+    callbacks
+  * qt: use the same date format in all managers
+  * rsx: allow to toggle 3D modes dynamically
+  * rsx: fix 3D aspect ratio
+  * cellMouse: Add debug overlay
+  * Update curl to 8.16.0
+  * input: restore original defaults when changing pad handlers
+  * qt/input: add vibration threshold to pad settings dialog
+  * input: Memorize original small motor value for display purposes
+  * input: simplify VibrateMotor constructor
+  * cellPad: Add DS3 motor speed threshold
+  * System: expose date format and time format as settings
+  * Add selection on firmware libraries panel by double-clicking (#17481)
+  * input: fix sdl pad handler LED and rumble properties
+  * Fix emulator crash when a pad gets disconnected (e.g. due to 
+    inactivity) (#17478)
+  * Update opencv to 4.12.0
+  * Network: Increase P2P listener thread rest duration (#17474)
+  * SPU: Restore postponed LR notifications (with tweaks)
+  * SPU: Limit SPU self notifying thread to 12+ threaded CPUs
+  * SPU: Self-notifying SPU waiters
+  * SPU: Reimplement reservation notifications
+  * Update SDL to 3.2.22
+  * Update FAudio to 25.09
+  * Qt: fix saved gs_frame visibility
+  * Minor improvements and cleanup on VFS panel (#17459)
+
+-------------------------------------------------------------------
 Fri Aug 29 18:56:37 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.37~git20250827:
