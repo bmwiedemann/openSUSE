@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Oct  7 07:44:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.8.12:
+  + This release fixes a crash introduced in the previous release,
+    where a dictionary could have a dangling reference to a
+    provider.
+- Changes from version 2.8.11:
+  + This release fixes a crash when an empty language tag is given,
+    for example to `enchant-2 -p`.
+  + Various aspects of the internal provider API have been
+    simplified, and an obsolete header file removed.
+- Changes from version 2.8.10:
+  + This release fixes a crash bug and some space leaks in the
+    Hunspell provider that were introduced in 2.8.7.
+  + The handling of PWL dictionaries has also been simplified
+    slightlyy
+- Changes from version 2.8.9:
+  + This release fixes a critical bug in the Aspell provider that
+    crept into 2.8.7.
+  + A test has been added that simply runs `enchant-lsmod
+    -list-dicts`, which would have caught this bug and the
+    double-free fixed in the previous release.
+- Changes from version 2.8.8:
+  + The previous release had a “double-free” bug that typically
+    caused a crash on application start-up. Thanks to @AdamWill of
+    Fedora for a quick bug report that enabled me to locate and
+    instantly fix the bug.
+- For the remaining changes between since 2.8.2, see the packaged
+  NEWS file
+
+-------------------------------------------------------------------
 Mon Sep 30 13:47:39 UTC 2024 - Felix Dumbeck <felix@dumbeck.net>
 
 - Update to 2.8.2

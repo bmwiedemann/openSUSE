@@ -1,7 +1,7 @@
 #
 # spec file for package enchant
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_without aspell
 
 Name:           enchant
-Version:        2.8.2
+Version:        2.8.12
 Release:        0
 Summary:        Generic Spell Checking Library
 License:        LGPL-2.1-or-later
@@ -167,7 +167,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %dir %{_defaultdocdir}/%{name}
 
-%doc AUTHORS ChangeLog NEWS README.md
+%doc AUTHORS ChangeLog NEWS README
 %doc %{_defaultdocdir}/%{name}/enchant.html
 %doc %{_defaultdocdir}/%{name}/enchant-2.html
 %doc %{_defaultdocdir}/%{name}/enchant-lsmod-2.html
