@@ -132,7 +132,6 @@ BuildRequires:  pkgconfig(libplacebo) < 6.292.0
 #BuildRequires:  slang-devel
 BuildRequires:  speex-devel >= 1.0.5
 BuildRequires:  update-desktop-files
-BuildRequires:  vcdimager-devel
 BuildRequires:  pkgconfig(Qt5Core) >= 5.5.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -146,9 +145,9 @@ BuildRequires:  pkgconfig(fdk-aac)
 BuildRequires:  pkgconfig(gnutls) >= 3.2.0
 BuildRequires:  pkgconfig(libarchive) >= 3.1.0
 BuildRequires:  pkgconfig(libass) >= 0.9.8
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavcodec) < 62
+BuildRequires:  pkgconfig(libavformat) < 62
+BuildRequires:  pkgconfig(libavutil) < 60
 BuildRequires:  pkgconfig(libbluray) >= 0.6.2
 %if %dca
 BuildRequires:  pkgconfig(libdca) >= 0.0.5
@@ -175,7 +174,7 @@ BuildRequires:  pkgconfig(soxr)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(taglib) >= 1.9
 BuildRequires:  pkgconfig(twolame)
-%dnl BuildRequires:  pkgconfig(vdpau) >= 0.6
+# %dnl BuildRequires:  pkgconfig(vdpau) >= 0.6
 BuildRequires:  pkgconfig(xcb) >= 1.6
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-keysyms) >= 0.3.4
@@ -271,7 +270,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       %{name}-jack = %{version}
 Requires:       %{name}-noX = %{version}
-%dnl Requires:       %{name}-vdpau = %{version}
+# %dnl Requires:       %{name}-vdpau = %{version}
 
 %description devel
 These development headers are required if you plan on coding against VLC.
@@ -1210,17 +1209,17 @@ fi
 %{_libdir}/vlc/plugins/codec/libfluidsynth_plugin.so
 %endif
 
-%dnl files vdpau
-%dnl dir %{_libdir}/vlc/plugins/vdpau
-%dnl {_libdir}/vlc/libvlc_vdpau.so.0
-%dnl {_libdir}/vlc/libvlc_vdpau.so.0.0.0
-%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_adjust_plugin.so
-%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_avcodec_plugin.so
-%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_chroma_plugin.so
-%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_deinterlace_plugin.so
-%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_display_plugin.so
-%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_sharpen_plugin.so
-%dnl {_libdir}/vlc/plugins/video_output/libglconv_vdpau_plugin.so
+# %dnl files vdpau
+# %dnl dir %{_libdir}/vlc/plugins/vdpau
+# %dnl {_libdir}/vlc/libvlc_vdpau.so.0
+# %dnl {_libdir}/vlc/libvlc_vdpau.so.0.0.0
+# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_adjust_plugin.so
+# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_avcodec_plugin.so
+# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_chroma_plugin.so
+# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_deinterlace_plugin.so
+# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_display_plugin.so
+# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_sharpen_plugin.so
+# %dnl {_libdir}/vlc/plugins/video_output/libglconv_vdpau_plugin.so
 
 %files -n libvlc%{libvlc}
 %{_libdir}/libvlc.so.%{libvlc}*
@@ -1240,7 +1239,7 @@ fi
 %{_libdir}/pkgconfig/libvlc.pc
 %{_libdir}/pkgconfig/vlc-plugin.pc
 %{_libdir}/vlc/libcompat.a
-%dnl {_libdir}/vlc/libvlc_vdpau.so
+# %dnl {_libdir}/vlc/libvlc_vdpau.so
 
 %if 0%{?BUILD_ORIG}
 %files codecs

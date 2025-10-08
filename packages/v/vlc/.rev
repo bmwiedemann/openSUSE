@@ -1615,4 +1615,16 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment>Add missing req (forwarded request 1300984 from iznogood)</comment>
     <requestid>1300988</requestid>
   </revision>
+  <revision rev="157" vrev="10">
+    <srcmd5>2c9cdaf9905ffef91b8a2add111639b8</srcmd5>
+    <version>3.0.21</version>
+    <time>1759939932</time>
+    <user>dimstar_suse</user>
+    <comment>- Pin to ffmpeg-7; even the master branch does not yet build
+  against ffmpeg 8.
+
+- Drop vcdimager-devel BuildRequires: Not needed nor used, vcd
+  plugin is still built without it.</comment>
+    <requestid>1309761</requestid>
+  </revision>
 </revisionlist>

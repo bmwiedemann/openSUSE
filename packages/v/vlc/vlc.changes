@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  7 07:16:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pin to ffmpeg-7; even the master branch does not yet build
+  against ffmpeg 8.
+
+-------------------------------------------------------------------
+Thu Oct  2 11:03:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop vcdimager-devel BuildRequires: Not needed nor used, vcd
+  plugin is still built without it.
+
+-------------------------------------------------------------------
 Wed Aug 20 12:54:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Port to current ffmpeg-7: Remove version constraints on ffmpeg
