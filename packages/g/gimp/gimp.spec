@@ -35,7 +35,7 @@
 %bcond_with debug_in_build_gimp
 
 %define alsa_version            1.0.0
-%define appstream_glib_version  0.7.7
+%define appstream_version       0.16.1
 %define atk_version             2.4.0
 %define babl_version            0.1.114
 %define cairo_version           1.14.0
@@ -49,7 +49,7 @@
 %define gegl_version            0.4.62
 %define gexiv2_version          0.14.0
 %define glib_version            2.70.0
-%define gtk3_version            3.24.48
+%define gtk3_version            3.24.51
 %define gudev_version           167
 %define harfbuzz_version        2.8.2
 %define lcms2_version           2.8
@@ -85,7 +85,7 @@
 %define pkg_name gimp
 
 Name:           gimp
-Version:        3.0.4
+Version:        3.0.6
 Release:        0
 %global pkg_version %{version}
 Summary:        The GNU Image Manipulation Program
@@ -100,14 +100,6 @@ Source2:        openSUSE.gpl
 Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
 Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2025-10924.patch CVE-2025-10924 bsc#1250499 alynx.zhou@suse.com -- Fix integer overflow while parsing FF files 
-Patch4:         gimp-CVE-2025-10924.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2025-10920.patch CVE-2025-10920 ZDI-25-909 ZDI-CAN-27684 bsc#1250495 qzhao@suse.com -- Prevent overflow attack by checking if output >= max, not just output > max.
-Patch5:         gimp-CVE-2025-10920.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2025-10922.patch CVE-2025-10922 ZDI-25-911 ZDI-CAN-27863 bsc#1250497 qzhao@suse.com -- Fix GIMP DCM file parsing heap-based buffer overflow remote code execution vulnerability.
-Patch6:         gimp-CVE-2025-10922.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2025-10925.patch CVE-2025-10925 ZDI-25-914 ZDI-CAN-27793 bsc#1250501 qzhao@suse.com -- Fix GIMP ILBM file parsing stack-based buffer overflow remote code execution vulnerability.
-Patch7:         gimp-CVE-2025-10925.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif
@@ -154,7 +146,7 @@ BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(libjxl) >= %{libjxl_version}
 BuildRequires:  pkgconfig(OpenEXR) >= %{OpenEXR_version}
 BuildRequires:  pkgconfig(alsa) >= %{alsa_version}
-BuildRequires:  pkgconfig(appstream-glib) >= %{appstream_glib_version}
+BuildRequires:  pkgconfig(appstream) >= %{appstream_version}
 BuildRequires:  pkgconfig(atk) >= %{atk_version}
 BuildRequires:  pkgconfig(babl-0.1) >= %{babl_version}
 BuildRequires:  pkgconfig(bzip2)
@@ -508,7 +500,7 @@ install -m 644 -c macros.gimp \
 
 %if %{with python_plugin}
 %files plugin-python3 -f plugins-python.list
-%{_libdir}/gimp/3.0/environ/python.env
+#{_libdir}/gimp/3.0/environ/python.env
 %endif
 
 %files vala
