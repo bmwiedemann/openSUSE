@@ -540,4 +540,28 @@
   	* data update for 2025-07-22</comment>
     <requestid>1300792</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>ab40b05dfddca066f5699e8fe0af85ba</srcmd5>
+    <version>20250915.1.0</version>
+    <time>1759939955</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20250915.1.0 (20250915.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20250915.001 2025-09-15T04:55:28Z
+  	* data update for 2025-09-15
+  20250912.001 2025-09-12T22:59:18Z
+  	* data update for 2025-09-12
+  20250911.001 2025-09-11T08:02:28Z
+  	* data update for 2025-09-11
+
+- updated to 20250904.1.0 (20250904.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20250904.001 2025-09-04T14:17:53Z
+  	* data update for 2025-09-04
+  20250902.001 2025-09-02T08:59:03Z
+  	* data update for 2025-09-02
+  20250829.001 2025-08-29T09:13:35Z
+  	* data update for 2025-08-29</comment>
+    <requestid>1309616</requestid>
+  </revision>
 </revisionlist>
