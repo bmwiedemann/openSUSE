@@ -2095,4 +2095,18 @@ https://build.opensuse.org/request/show/1178504 </comment>
     <comment></comment>
     <requestid>1309333</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>0f9dee880cdc203469b90d4748680305</srcmd5>
+    <version>20251008</version>
+    <time>1759939986</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251008:
+  * Assign alts_exec_t exec_file attribute (bsc#1250974)
+  * Introduce unconfined wicked_script_t (bsc#1205770, bsc#1250661)
+- Update to version 20251007:
+  * Add equivalency between /srv/tomcat and /var/lib/tomcat (bsc#1251227)
+- Fixed typo in /etc/selinux/config
+</comment>
+    <requestid>1309776</requestid>
+  </revision>
 </revisionlist>

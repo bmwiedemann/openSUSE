@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 08 09:43:33 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20251008:
+  * Assign alts_exec_t exec_file attribute (bsc#1250974)
+  * Introduce unconfined wicked_script_t (bsc#1205770, bsc#1250661)
+
+-------------------------------------------------------------------
+Tue Oct 07 13:00:09 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20251007:
+  * Add equivalency between /srv/tomcat and /var/lib/tomcat (bsc#1251227)
+
+-------------------------------------------------------------------
+Tue Oct  7 08:43:14 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Fixed typo in /etc/selinux/config
+
+-------------------------------------------------------------------
 Mon Oct 06 15:26:04 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20251006:
