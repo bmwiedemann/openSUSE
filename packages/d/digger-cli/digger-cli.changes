@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Oct 03 05:06:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.127:
+  * Feat/draft prs lock unlock fixes (#2290)
+  * update comment when draft pr is ignored (#2289)
+  * skip external pr for libs test (#2288)
+  * Update backend-deployment.yaml (#2285)
+  * chore(run-digger-action): pin all action dependencies to commit
+    hash (no-op) (#2277)
+  * chore(run-digger-action): autoformat action.yml (#2278)
+  * fix: update `github.com/golang-jwt/jwt` to fix CVE-2025-30204
+    (#2279)
+  * refactor(ee/backend): replace golang.org/x/exp/maps with stdlib
+    maps (#2281)
+  * Update backend-deployment.yaml (#2280)
+  * docs for GCP quickstart (#2275)
+  * chore(develop): release taco/cli 0.1.9 (#2274)
+  * chore: taco art
+  * chore(develop): release taco/statesman 0.1.10 (#2273)
+  * chore: bump statesman version
+  * fix/dockerbuild 1 9 (#2272)
+  * chore(develop): release taco/statesman 0.1.9
+  * chore(develop): release taco/cli 0.1.8
+  * chore: make a release
+  * adjusted imports, gitignore, refactor into setup.go, add
+    setup.go
+  * improve pr locks documentation
+  * adjustments
+  * fix plan persistence documentation
+  * remove oidc/issuer wizard
+  * chore/rewrite mpl (#2266)
+  * wip - wizard
+  * Opaque TFE Token Fix (#2260)
+  * added appropriate attributions in source
+  * Add attribution guidelines
+  * Change license to MIT
+  * Fix nil pointer exception in handleIssueCommentEvent when
+    GitHub App … (#2192)
+  * add path to go.work
+  * versioning docs
+  * module fix
+  * add ci integration docs (#2259)
+  * Add Helm chart for taco-statesman (#2144)
+  * Fix nil pointer panic in comment updater when backend API
+    returns nil (#2190)
+  * make the cloud block with organization mentioned
+  * removal of managing state page (#2255)
+  * remove empty pages (#2253)
+  *  state management docs (#2145)
+
+-------------------------------------------------------------------
 Wed Sep 24 07:05:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.126:
