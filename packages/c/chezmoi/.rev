@@ -979,4 +979,23 @@
 </comment>
     <requestid>1306954</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>a6780116d4f3c53419f24dc9eddd2cd7</srcmd5>
+    <version>2.66.0</version>
+    <time>1759940247</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.66.0:
+  - Features
+    * feat: Add --override-data-file flag
+    * feat: Add --override-data flag
+    * feat: Add --less-interactive to only prompt for conflicts
+    * feat: Add exec template function
+    * feat: Group commands in help
+  - Fixes
+    * fix: Reverse command check for current user in docker feature
+    * fix: Report an error when --follow and --recursive are combined for directories
+    * fix: Add destroy and ssh command descriptions to help
+</comment>
+    <requestid>1309808</requestid>
+  </revision>
 </revisionlist>

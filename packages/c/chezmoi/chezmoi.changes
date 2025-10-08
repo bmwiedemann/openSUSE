@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  8 13:47:09 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.66.0:
+  - Features
+    * feat: Add --override-data-file flag
+    * feat: Add --override-data flag
+    * feat: Add --less-interactive to only prompt for conflicts
+    * feat: Add exec template function
+    * feat: Group commands in help
+  - Fixes
+    * fix: Reverse command check for current user in docker feature
+    * fix: Report an error when --follow and --recursive are combined for directories
+    * fix: Add destroy and ssh command descriptions to help
+
+-------------------------------------------------------------------
 Wed Sep 24 14:06:03 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.65.2:
