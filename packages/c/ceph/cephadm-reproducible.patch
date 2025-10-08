@@ -1,0 +1,87 @@
+--- a/src/cephadm/build.py
++++ b/src/cephadm/build.py
+@@ -12,7 +12,6 @@ import os
+ import pathlib
+ import shutil
+ import subprocess
+-import tempfile
+ import sys
+ 
+ HAS_ZIPAPP = False
+@@ -57,11 +56,12 @@ def _did_rexec():
+ def _build(dest, src, versioning_vars=None):
+     """Build the binary."""
+     os.chdir(src)
+-    tempdir = pathlib.Path(tempfile.mkdtemp(suffix=".cephadm.build"))
+-    log.debug("working in %s", tempdir)
++    builddir = pathlib.Path(".cephadm.build")
++    os.mkdir(builddir)
++    log.debug("working in %s", builddir)
+     try:
+         if os.path.isfile("requirements.txt"):
+-            _install_deps(tempdir)
++            _install_deps(builddir)
+         log.info("Copying contents")
+         # TODO: currently the only file relevant to a compiled cephadm is the
+         # cephadm.py file. Once cephadm is broken up into multiple py files
+@@ -69,19 +69,19 @@ def _build(dest, src, versioning_vars=No
+         # sort organized structure to track what gets copied into the
+         # dir to be zipped. For now we just have a simple call to copy
+         # (and rename) the one file we care about.
+-        shutil.copy("cephadm.py", tempdir / "__main__.py")
++        shutil.copy("cephadm.py", builddir / "__main__.py")
+         if versioning_vars:
+-            generate_version_file(versioning_vars, tempdir / "_version.py")
+-        _compile(dest, tempdir)
++            generate_version_file(versioning_vars, builddir / "_version.py")
++        _compile(dest, builddir)
+     finally:
+-        shutil.rmtree(tempdir)
++        shutil.rmtree(builddir)
+ 
+ 
+-def _compile(dest, tempdir):
++def _compile(dest, builddir):
+     """Compile the zipapp."""
+     log.info("Byte-compiling py to pyc")
+     compileall.compile_dir(
+-        tempdir,
++        builddir,
+         maxlevels=16,
+         legacy=True,
+         quiet=1,
+@@ -91,7 +91,7 @@ def _compile(dest, tempdir):
+     log.info("Constructing the zipapp file")
+     try:
+         zipapp.create_archive(
+-            source=tempdir,
++            source=builddir,
+             target=dest,
+             interpreter=sys.executable,
+             compressed=True,
+@@ -100,14 +100,14 @@ def _compile(dest, tempdir):
+     except TypeError:
+         # automatically fall back to uncompressed
+         zipapp.create_archive(
+-            source=tempdir,
++            source=builddir,
+             target=dest,
+             interpreter=sys.executable,
+         )
+         log.info("Zipapp created without compression")
+ 
+ 
+-def _install_deps(tempdir):
++def _install_deps(builddir):
+     """Install dependencies with pip."""
+     # TODO we could explicitly pass a python version here
+     log.info("Installing dependencies")
+@@ -121,7 +121,7 @@ def _install_deps(tempdir):
+             "--requirement",
+             "requirements.txt",
+             "--target",
+-            tempdir,
++            builddir,
+         ]
+     )
+ 

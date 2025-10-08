@@ -222,6 +222,8 @@ Patch12:        cephadm-fix-get_cluster_count_when_data_dir_is_missing.patch
 Patch13:        ceph-rocksdb-gcc15.patch
 # PATCH-FIX-UPSTREAM replace CryptoPP calls with GnuTLS [jsc#PED-13011]
 Patch14:        ceph-replace-CryptoPP-calls-with-GnuTLS.patch
+# PATCH-FIX-OPENSUSE cephadm-reproducible.patch -- Ensure cephadm executable is reproducible
+Patch15:        cephadm-reproducible.patch
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x riscv64

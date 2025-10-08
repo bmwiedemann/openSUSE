@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  7 08:40:26 UTC 2025 - James Oakley <jfunk@opensuse.org>
+
+- Add cephadm-reproducible.patch for reproducible builds
+
+-------------------------------------------------------------------
 Sat Aug 23 13:05:12 UTC 2025 - James Oakley <jfunk@opensuse.org>
 
 - Replace ceph-mgr-do-not-require-NOTIFY_TYPES-in-python-modules.patch with
