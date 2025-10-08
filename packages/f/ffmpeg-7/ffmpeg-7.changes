@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 19 18:44:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 7.1.2:
+  * avcodec/librsvgdec: fix compilation with librsvg 2.50.3
+  * libavfilter/af_firequalizer: Add check for av_malloc_array()
+  * avcodec/libsvtav1: unbreak build with latest svtav1
+  * avformat/hls: Fix Youtube AAC
+  * Various bugfixes.
+- Drop patches fixed upstream:
+  * 0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+  * ffmpeg-CVE-2025-7700.patch
+
+-------------------------------------------------------------------
 Wed Jul 23 13:28:49 UTC 2025 - Hans-Peter Jansen <hp@urpla.net>
 
 - Add vvenc build conditional

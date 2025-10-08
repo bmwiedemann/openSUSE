@@ -97,7 +97,7 @@
 %define _major_expected 8
 
 Name:           ffmpeg-7
-Version:        7.1.1
+Version:        7.1.2
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -122,8 +122,6 @@ Patch10:        ffmpeg-chromium.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 Patch18:        ffmpeg-7-CVE-2025-25473.patch
 Patch19:        ffmpeg-7-CVE-2025-22921.patch
-Patch20:        0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
-Patch21:        ffmpeg-CVE-2025-7700.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  nasm
@@ -828,7 +826,7 @@ done
 #
 #!BcntSyncTag:  ffmpeg-7
 Name:           ffmpeg-7-mini
-Version:        7.1.1
+Version:        7.1.2
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
