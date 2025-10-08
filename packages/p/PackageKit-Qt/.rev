@@ -243,4 +243,12 @@ Comment: something is rotten with the license. I don't believe it's
     <comment></comment>
     <requestid>1299964</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0b2f3d0196b61c1a75444550b650c82d</srcmd5>
+    <version>1.1.4</version>
+    <time>1759939989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309555</requestid>
+  </revision>
 </revisionlist>

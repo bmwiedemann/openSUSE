@@ -26,14 +26,9 @@ ExclusiveArch:  do_not_build
 %define pkg_suffix -Qt6
 %define pkqt   packagekitqt6
 %endif
-%if "%{pkqt_flavor}" == "qt5"
-%define qt5 1
-%define pkg_suffix -Qt5
-%define pkqt   packagekitqt5
-%endif
-%define major 1
+%define major 2
 Name:           PackageKit%{?pkg_suffix}
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Simple software installation management software
 License:        LGPL-2.1-or-later
@@ -47,10 +42,6 @@ Patch1:         0001-offline-Ensure-the-enum-is-registered.patch
 BuildRequires:  PackageKit-devel >= %{version}
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
-%if 0%{?qt5}
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-%endif
 %if 0%{?qt6}
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
@@ -78,14 +69,6 @@ suck less.
 Summary:        Simple software installation management software
 Group:          Development/Libraries/C and C++
 Requires:       lib%{pkqt}-%{major} = %{version}
-%if 0%{?qt5}
-# PackageKit-Qt used to be Qt4 based until 0.9.6; then it turned into a Qt5 package (no more Qt4 support)
-# For this reason, we now have to obsolete the former 2nd spec file names
-Provides:       PackageKit-Qt-devel = %{version}
-Obsoletes:      PackageKit-Qt-devel < %{version}
-Provides:       PackageKit-Qt5-devel = %{version}
-Obsoletes:      PackageKit-Qt5-devel < %{version}
-%endif
 
 %description -n %{pkqt}-devel
 PackageKit is a system designed to make installing and updating
@@ -98,23 +81,18 @@ suck less.
 %autosetup -p1 -n PackageKit-Qt-%{version}
 
 %build
-%if 0%{?qt5}
-%cmake -DBUILD_WITH_QT5:BOOL=ON
-%cmake_build
-%endif
-
 %if 0%{?qt6}
 %cmake_qt6
 %{qt6_build}
 %endif
 
 %install
-%if 0%{?qt5}
-%cmake_install
-%endif
 %if 0%{?qt6}
 %qt6_install
 %endif
+
+%check
+%ctest
 
 %ldconfig_scriptlets -n lib%{pkqt}-%{major}
 
@@ -128,6 +106,6 @@ suck less.
 %{_libdir}/libpackagekitqt?.so
 %{_libdir}/cmake/packagekitqt?/
 %{_libdir}/pkgconfig/packagekitqt?.pc
-%{_includedir}/packagekitqt?/
+%{_includedir}/PackageKitQt
 
 %changelog

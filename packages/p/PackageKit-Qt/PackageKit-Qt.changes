@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  7 07:53:00 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.1.4:
+  + Features: Drop Qt5 support
+  + Bugfixes:
+    - Make Offline::getResults return a wrapper object
+    - Unpack info enum in "package" signals, like pk-glib does
+- Drop qt5 multibuild flavor.
+
+-------------------------------------------------------------------
 Sat Aug 16 19:35:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change to fix a discover crash (kde#508235):
