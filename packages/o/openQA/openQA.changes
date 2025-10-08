@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 08 10:12:41 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759912962.689b31ed:
+  * Avoid failing `obs_rsync_run` jobs when restarting `openqa-gru.service`
+
+-------------------------------------------------------------------
 Tue Oct 07 11:14:46 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1759834744.06a7028a:
