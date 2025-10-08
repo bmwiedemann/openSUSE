@@ -538,4 +538,16 @@
   * Some broken conversions removed. (forwarded request 1278315 from polslinux)</comment>
     <requestid>1278394</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>8dac78b88ba17567ff0570b0a23c6a56</srcmd5>
+    <version>0.1.116</version>
+    <time>1759939949</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1309282 from polslinux
+
+- Update to 0.1.116:
+  * build process updates
+  * script cleanups</comment>
+    <requestid>1309399</requestid>
+  </revision>
 </revisionlist>
