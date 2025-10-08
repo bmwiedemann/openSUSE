@@ -1,7 +1,7 @@
 #
 # spec file for package qalculate-qt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qalculate-qt
-Version:        5.5.1
+Version:        5.7.0
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
@@ -31,11 +31,11 @@ BuildRequires:  intltool
 BuildRequires:  libnghttp2-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-# compilation fails on 5.12.x
-BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  qt6-base-common-devel
 BuildRequires:  qt6-base-devel
 BuildRequires:  qt6-tools-linguist
+# compilation fails on 5.12.x
+BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(libqalculate) >= %{version}
@@ -58,7 +58,7 @@ user-friendly interface (QT, GTK+ and CLI).
 
 %build
 %qmake6 PREFIX=%{_prefix}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %qmake6_install
@@ -67,24 +67,8 @@ make %{?_smp_mflags}
 %license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/io.github.Qalculate.qalculate-qt.desktop
-%dir %{_datadir}/icons/hicolor/16x16
-%dir %{_datadir}/icons/hicolor/16x16/apps
-%{_datadir}/icons/hicolor/16x16/apps/qalculate-qt.png
-%dir %{_datadir}/icons/hicolor/22x22
-%dir %{_datadir}/icons/hicolor/22x22/apps
-%{_datadir}/icons/hicolor/22x22/apps/qalculate-qt.png
-%dir %{_datadir}/icons/hicolor/32x32
-%dir %{_datadir}/icons/hicolor/32x32/apps
-%{_datadir}/icons/hicolor/32x32/apps/qalculate-qt.png
-%dir %{_datadir}/icons/hicolor/64x64
-%dir %{_datadir}/icons/hicolor/64x64/apps
-%{_datadir}/icons/hicolor/64x64/apps/qalculate-qt.png
-%dir %{_datadir}/icons/hicolor/128x128
-%dir %{_datadir}/icons/hicolor/128x128/apps
-%{_datadir}/icons/hicolor/128x128/apps/qalculate-qt.png
-%dir %{_datadir}/icons/hicolor/scalable
-%dir %{_datadir}/icons/hicolor/scalable/apps
-%{_datadir}/icons/hicolor/scalable/apps/qalculate-qt.svg
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_mandir}/man?/%{name}.?%{ext_man}
 %{_datadir}/metainfo/io.github.Qalculate.qalculate-qt.metainfo.xml
 %dir %{_datadir}/qalculate-qt
@@ -101,5 +85,6 @@ make %{?_smp_mflags}
 %{_datadir}/qalculate-qt/translations/qalculate-qt_sl.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_sv.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_zh_CN.qm
+%{_datadir}/qalculate-qt/translations/qalculate-qt_zh_TW.qm
 
 %changelog
