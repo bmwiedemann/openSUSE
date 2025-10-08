@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  8 00:48:30 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.29.2
+  * Changed nginx-conf.patch file.
+  * https://nginx.org/en/CHANGES
+  * Fixed now the "ssl_protocols" directive works in a virtual server
+    different from the default server when using OpenSSL 1.1.1 or newer.
+  * Fixed SSL handshake always failed when using TLSv1.3 with OpenSSL
+    and client certificates and resuming a session with a different SNI
+    value; the bug had appeared in 1.27.4.
+  * Fixed the "ignoring stale global SSL error" alerts might appear in
+    logs when using QUIC and the "ssl_reject_handshake" directive; the
+    bug had appeared in 1.29.0.
+  * Fixed in delta-seconds processing in the "Cache-Control" backend
+    response header line.
+  * Fixed an XCLIENT command didn't use the xtext encoding.
+  * Fixed in SSL certificate caching during reconfiguration.
+
+-------------------------------------------------------------------
 Thu Aug 14 08:19:23 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.29.1

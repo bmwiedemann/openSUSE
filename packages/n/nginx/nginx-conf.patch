@@ -1,10 +1,7 @@
-diff -Pdpru nginx-1.27.4.orig/conf/nginx.conf nginx-1.27.4/conf/nginx.conf
---- nginx-1.27.4.orig/conf/nginx.conf	2025-02-05 14:06:32.000000000 +0300
-+++ nginx-1.27.4/conf/nginx.conf	2025-03-30 05:11:05.303755904 +0300
-@@ -1,117 +1,130 @@
-+#user USER GROUP;
-+#worker_processes 1;
-+#pcre_jit off;
+diff -Pdpru nginx-1.29.2.orig/conf/nginx.conf nginx-1.29.2/conf/nginx.conf
+--- nginx-1.29.2.orig/conf/nginx.conf	2025-10-07 20:04:07.000000000 +0300
++++ nginx-1.29.2/conf/nginx.conf	2025-10-08 03:40:34.132936426 +0300
+@@ -1,115 +1,134 @@
  
 -#user  nobody;
 -worker_processes  1;
@@ -12,6 +9,11 @@ diff -Pdpru nginx-1.27.4.orig/conf/nginx.conf nginx-1.27.4/conf/nginx.conf
 -#error_log  logs/error.log;
 -#error_log  logs/error.log  notice;
 -#error_log  logs/error.log  info;
++#user USER GROUP;
++#worker_processes 1;
++#pcre_jit off;
+ 
+-#pid        logs/nginx.pid;
 +# load_module #LIBDIR#/nginx/modules/ngx_http_echo_module.so;
 +# load_module #LIBDIR#/nginx/modules/ngx_http_fancyindex_module.so;
 +# load_module #LIBDIR#/nginx/modules/ngx_http_geoip2_module.so;
@@ -23,11 +25,10 @@ diff -Pdpru nginx-1.27.4.orig/conf/nginx.conf nginx-1.27.4/conf/nginx.conf
 +# load_module #LIBDIR#/nginx/modules/ngx_stream_geoip2_module.so;
 +# load_module #LIBDIR#/nginx/modules/ngx_stream_module.so;
  
--#pid        logs/nginx.pid;
 +#error_log /var/log/nginx/error.log;
 +#error_log /var/log/nginx/error.log notice;
 +#error_log /var/log/nginx/error.log info;
- 
++ 
 +#pid /run/nginx.pid;
  
  events {
@@ -36,42 +37,40 @@ diff -Pdpru nginx-1.27.4.orig/conf/nginx.conf nginx-1.27.4/conf/nginx.conf
 +	worker_connections 1024;
  }
  
--
+ 
  http {
 -    include       mime.types;
 -    default_type  application/octet-stream;
--
--    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
--    #                  '$status $body_bytes_sent "$http_referer" '
--    #                  '"$http_user_agent" "$http_x_forwarded_for"';
 +	include mime.types;
 +	default_type application/octet-stream;
  
--    #access_log  logs/access.log  main;
+-    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+-    #                  '$status $body_bytes_sent "$http_referer" '
+-    #                  '"$http_user_agent" "$http_x_forwarded_for"';
 +	#log_format main '$time_local - $http_host - $remote_addr - $status "$request" $body_bytes_sent - $http_referer - "$http_user_agent"';
 +	#access_log /var/log/nginx/access.log main;
  
--    sendfile        on;
--    #tcp_nopush     on;
+-    #access_log  logs/access.log  main;
 +	http2 on;
 +	sendfile on;
 +	#tcp_nopush on;
 +	#tcp_nodelay on;
  
--    #keepalive_timeout  0;
--    keepalive_timeout  65;
+-    sendfile        on;
+-    #tcp_nopush     on;
 +	#keepalive_timeout 0;
 +	keepalive_timeout 70;
  
--    #gzip  on;
+-    #keepalive_timeout  0;
+-    keepalive_timeout  65;
 +	#gzip on;
+ 
+-    #gzip  on;
++	include conf.d/*.conf;
  
 -    server {
 -        listen       80;
 -        server_name  localhost;
-+	include conf.d/*.conf;
- 
--        #charset koi8-r;
 +	server {
 +		listen 80;
 +		server_name localhost;
@@ -148,6 +147,13 @@ diff -Pdpru nginx-1.27.4.orig/conf/nginx.conf nginx-1.27.4/conf/nginx.conf
 +		#}
 +	}
  
+ 
+-    # another virtual host using mix of IP-, name-, and port-based configuration
+-    #
+-    #server {
+-    #    listen       8000;
+-    #    listen       somename:8080;
+-    #    server_name  somename  alias  another.alias;
 +	# another virtual host using mix of IP-, name-, and port-based configuration
 +	#
 +	#server {
@@ -160,60 +166,55 @@ diff -Pdpru nginx-1.27.4.orig/conf/nginx.conf nginx-1.27.4/conf/nginx.conf
 +	#	}
 +	#}
  
--    # another virtual host using mix of IP-, name-, and port-based configuration
--    #
--    #server {
--    #    listen       8000;
--    #    listen       somename:8080;
--    #    server_name  somename  alias  another.alias;
+-    #    location / {
+-    #        root   html;
+-    #        index  index.html index.htm;
+-    #    }
+-    #}
+ 
 +	# HTTPS server
 +	#
 +	#server {
 +	#	listen 443 ssl;
 +	#	server_name localhost;
  
--    #    location / {
--    #        root   html;
--    #        index  index.html index.htm;
--    #    }
--    #}
-+	#	ssl_certificate cert.crt;
-+	#	ssl_certificate_key cert.key;
- 
-+	#	ssl_protocols TLSv1.2 TLSv1.3;
- 
 -    # HTTPS server
 -    #
 -    #server {
 -    #    listen       443 ssl;
 -    #    server_name  localhost;
++	#	ssl_certificate cert.crt;
++	#	ssl_certificate_key cert.key;
+ 
+-    #    ssl_certificate      cert.pem;
+-    #    ssl_certificate_key  cert.key;
++	#	ssl_protocols TLSv1.2 TLSv1.3;
+ 
+-    #    ssl_session_cache    shared:SSL:1m;
+-    #    ssl_session_timeout  5m;
 +	#	ssl_ciphers ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
 +	#	ssl_conf_command Ciphersuites TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384;
 +	#	ssl_prefer_server_ciphers on;
  
--    #    ssl_certificate      cert.pem;
--    #    ssl_certificate_key  cert.key;
-+	#	ssl_ecdh_curve prime256v1;
- 
--    #    ssl_session_cache    shared:SSL:1m;
--    #    ssl_session_timeout  5m;
-+	#	ssl_early_data on;
- 
 -    #    ssl_ciphers  HIGH:!aNULL:!MD5;
 -    #    ssl_prefer_server_ciphers  on;
-+	#	ssl_session_cache shared:SSL:10m;
-+	#	ssl_session_timeout 10m;
++	#	ssl_ecdh_curve prime256v1;
  
 -    #    location / {
 -    #        root   html;
 -    #        index  index.html index.htm;
 -    #    }
 -    #}
++	#	ssl_early_data on;
++
++	#	ssl_session_cache shared:SSL:10m;
++	#	ssl_session_timeout 10m;
+ 
 +	#	location / {
 +	#		root /srv/www/htdocs;
 +	#		index index.html index.htm;
 +	#	}
 +	#
- 
++
 +	include vhosts.d/*.conf;
  }

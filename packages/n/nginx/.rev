@@ -1298,4 +1298,26 @@
   * Fixed in the &quot;none&quot; parameter of the &quot;smtp_auth&quot; directive.</comment>
     <requestid>1299344</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>8e7bd8d52509d0a70cddf0b354b024ae</srcmd5>
+    <version>1.29.2</version>
+    <time>1759939958</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.29.2
+  * Changed nginx-conf.patch file.
+  * https://nginx.org/en/CHANGES
+  * Fixed now the &quot;ssl_protocols&quot; directive works in a virtual server
+    different from the default server when using OpenSSL 1.1.1 or newer.
+  * Fixed SSL handshake always failed when using TLSv1.3 with OpenSSL
+    and client certificates and resuming a session with a different SNI
+    value; the bug had appeared in 1.27.4.
+  * Fixed the &quot;ignoring stale global SSL error&quot; alerts might appear in
+    logs when using QUIC and the &quot;ssl_reject_handshake&quot; directive; the
+    bug had appeared in 1.29.0.
+  * Fixed in delta-seconds processing in the &quot;Cache-Control&quot; backend
+    response header line.
+  * Fixed an XCLIENT command didn't use the xtext encoding.
+  * Fixed in SSL certificate caching during reconfiguration.</comment>
+    <requestid>1309712</requestid>
+  </revision>
 </revisionlist>
