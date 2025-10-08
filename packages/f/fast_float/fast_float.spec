@@ -1,7 +1,7 @@
 #
 # spec file for package fast_float
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           fast_float
-Version:        8.0.2
+Version:        8.1.0
 Release:        0
-Summary:        A fast number parsing library
+Summary:        Re-implementation of std::from_chars for parsing strings into numbers
 License:        Apache-2.0 OR BSL-1.0 OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/fastfloat/fast_float
@@ -49,7 +49,6 @@ from_chars functions for float and double types as well as integer types.
   -DFASTFLOAT_SUPPLEMENTAL_TESTS:BOOL=OFF \
   -DSYSTEM_DOCTEST:BOOL=ON \
   %{nil}
-#exit 1
 %cmake_build
 
 %install
@@ -62,7 +61,6 @@ from_chars functions for float and double types as well as integer types.
 %license LICENSE-APACHE LICENSE-BOOST LICENSE-MIT
 %doc README.md
 %{_includedir}/fast_float
-%dir %{_datadir}/cmake
-%{_datadir}/cmake/FastFloat
+%{_datadir}/cmake/
 
 %changelog

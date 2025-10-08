@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  7 16:11:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.1.0
+  * Implementation of P2497
+  * Implemented multiplication of integer by a power of 10
+  * Do not mis-parse certain wide-character emojis as integer
+
+-------------------------------------------------------------------
 Sat May 17 17:46:52 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 8.0.2:
