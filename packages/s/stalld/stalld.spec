@@ -17,14 +17,12 @@
 
 
 Name:           stalld
-Version:        1.20.3
+Version:        1.21.1
 Release:        0
 Summary:        Daemon that finds starving tasks and gives them a temporary boost
 License:        GPL-2.0-only AND GPL-2.0-or-later
 URL:            https://gitlab.com/rt-linux-tools/%{name}/%{name}.git
 Source0:        https://git.kernel.org/pub/scm/utils/stalld/stalld.git/snapshot/stalld-%{version}.tar.gz
-Patch0:         systemd-execstart.patch
-Patch1:         run-dir.patch
 %ifarch aarch64 x86_64
 BuildRequires:  bpftool
 BuildRequires:  clang

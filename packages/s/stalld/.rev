@@ -56,4 +56,12 @@
 - build with BPF support on aarch64/x86_64</comment>
     <requestid>1302888</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0a0ae10f271f7ced5d71d1299021f316</srcmd5>
+    <version>1.21.1</version>
+    <time>1759940240</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1309798</requestid>
+  </revision>
 </revisionlist>

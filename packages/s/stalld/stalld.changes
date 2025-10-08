@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 16 20:36:38 UTC 2025 - Marco Chiappero <marco.chiappero@suse.com>
+
+- update to 1.21.1: 
+  * systemd: fix duplicate ExecStart in service files (previously
+             provided by systemd-execstart.patch, now removed)
+  * systemd: change systemd service startup to use RuntimeDirectory
+             (previously provided by run-dir.patch, now removed)
+  * stalld: cleanup and refactorning
+  * stalld: fix erroneous log messages, stale PIDs are now purged
+            as soon as they are detected
+  * bpf: cleanup and refactoring; improved code quality and comments
+  * bpf: improved logging
+  * bpf: support field `thread_info.cpu` in newer kernels (and `cpu` on
+         older ones) from `struct task_struct`
+  * bpf: fix cpu_data->nr_rt_running not reset when a non-RT task
+         was scheduled next
+  * bpf: fix bpf_get_smp_processor_id() used to determine the exact CPU
+         the task is running on
+  * bpf: add a BPF handler for the `sched_migrate_task` tracepoint to
+         accurately track tasks as they move between CPUs
+  * bpf: capture an initial state snapshot of system tasks at startup
+  * bpf: levergate CO-RE to reliably determine if a task is in the
+         TASK_RUNNING state across different kernel versions
+  * bpf: fix a possible startup stall by adding non-blocking BTF
+         tracepoints
+
+-------------------------------------------------------------------
 Tue Aug 19 17:11:49 UTC 2025 - Marco Chiappero <marco.chiappero@suse.com>
 
 - Add run-dir.patch:
