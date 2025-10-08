@@ -248,4 +248,37 @@
     <comment>- Package svgpan.js to fix issues with &quot;go tool pprof&quot;. boo#1249985 (forwarded request 1306078 from jfkw)</comment>
     <requestid>1306079</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6d32b9fd154e08f88bb67442ab59b5c0</srcmd5>
+    <version>1.24.8</version>
+    <time>1759939970</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.24.8 (released 2025-10-07) includes security fixes to the
+  archive/tar, crypto/tls, crypto/x509, encoding/asn1,
+  encoding/pem, net/http, net/mail, net/textproto, and net/url
+  packages, as well as bug fixes to the compiler, the linker, and
+  the debug/pe, net/http, os, and sync/atomic packages.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-58189 CVE-2025-61725 CVE-2025-58188 CVE-2025-58185 CVE-2025-58186 CVE-2025-61723 CVE-2025-58183 CVE-2025-47912 CVE-2025-58187 CVE-2025-61724
+  * go#75660 go#75652 boo#1251255 security: fix CVE-2025-58189 crypto/tls: ALPN negotiation error contains attacker controlled information
+  * go#75700 go#75680 boo#1251253 security: fix CVE-2025-61725 net/mail: excessive CPU consumption in ParseAddress
+  * go#75702 go#75675 boo#1251260 security: fix CVE-2025-58188 crypto/x509: panic when validating certificates with DSA public keys
+  * go#75704 go#75671 boo#1251258 security: fix CVE-2025-58185 encoding/asn1: pre-allocating memory when parsing DER payload can cause memory exhaustion
+  * go#75706 go#75672 boo#1251259 security: fix CVE-2025-58186 net/http: lack of limit when parsing cookies can cause memory exhaustion
+  * go#75708 go#75676 boo#1251256 security: fix CVE-2025-61723 encoding/pem: quadratic complexity when parsing some invalid inputs
+  * go#75710 go#75677 boo#1251261 security: fix CVE-2025-58183 archive/tar: unbounded allocation when parsing GNU sparse map
+  * go#75712 go#75678 boo#1251257 security: fix CVE-2025-47912 net/url: insufficient validation of bracketed IPv6 hostnames
+  * go#75714 go#75681 boo#1251254 security: fix CVE-2025-58187 crypto/x509: quadratic complexity when checking name constraints
+  * go#75717 go#75716 boo#1251262 security: fix CVE-2025-61724 net/textproto: excessive CPU consumption in Reader.ReadResponse
+  * go#75138 os: Root.OpenRoot sets incorrect name, losing prefix of original root
+  * go#75220 debug/pe: pe.Open fails on object files produced by llvm-mingw 21
+  * go#75351 cmd/link: panic on riscv64 with CGO enabled due to empty container symbol
+  * go#75356 net: new test TestIPv4WriteMsgUDPAddrPortTargetAddrIPVersion fails on plan9
+  * go#75359 os: new test TestOpenFileCreateExclDanglingSymlink fails on Plan 9
+  * go#75523 crypto/internal/fips140/rsa: requires a panic if self-tests fail
+  * go#75538 net/http: internal error: connCount underflow
+  * go#75594 cmd/compile: internal compiler error with GOEXPERIMENT=cgocheck2 on github.com/leodido/go-urn
+  * go#75609 sync/atomic: comment for Uintptr.Or incorrectly describes return value (forwarded request 1309723 from jfkw)</comment>
+    <requestid>1309725</requestid>
+  </revision>
 </revisionlist>
