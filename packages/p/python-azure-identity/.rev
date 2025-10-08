@@ -389,4 +389,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1304283 from glaubitz)</comment>
     <requestid>1304551</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1a142c9ba1371aef38a6ee99ed2d9fee</srcmd5>
+    <version>1.25.1</version>
+    <time>1759940006</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.25.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1309560 from glaubitz)</comment>
+    <requestid>1309585</requestid>
+  </revision>
 </revisionlist>
