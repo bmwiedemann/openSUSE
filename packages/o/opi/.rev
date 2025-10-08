@@ -790,4 +790,13 @@
   * Fix VERSION KeyError in Tumbleweed</comment>
     <requestid>1309203</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>bd662c333417dffe32b75c6d99353f40</srcmd5>
+    <version>5.8.10</version>
+    <time>1759940072</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 5.8.10
+  * Fix handling of None version on Tumbleweed</comment>
+    <requestid>1309701</requestid>
+  </revision>
 </revisionlist>
