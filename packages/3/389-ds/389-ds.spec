@@ -31,7 +31,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        3.1.3~git106.bea5091e3
+Version:        3.1.3~git111.e953ee704
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -400,6 +400,7 @@ exit 0
 %{_libdir}/dirsrv/librewriters.so
 %{_libdir}/dirsrv/plugins/*.so
 %{_libdir}/dirsrv/python/*.py
+%{_libdir}/dirsrv/librobdb.so
 %{_libdir}/dirsrv/*.so.*
 %exclude %{_mandir}/man1/ldap-agent*
 %{_mandir}/man1/*
@@ -440,7 +441,6 @@ exit 0
 %{_libdir}/dirsrv/libslapd.so
 %{_libdir}/dirsrv/libns-dshttpd.so
 %{_libdir}/dirsrv/libldaputil.so
-%{_libdir}/dirsrv/librobdb.so
 %{_libdir}/pkgconfig/dirsrv.pc
 %{_libdir}/pkgconfig/svrcore.pc
 

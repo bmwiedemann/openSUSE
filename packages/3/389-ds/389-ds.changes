@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 08 01:25:10 UTC 2025 - william.brown@suse.com
+
+- Move librobdb.so from devel to main package
+- Update to version 3.1.3~git111.e953ee704:
+  * Issue 7023 - UI - if first instance that is loaded is stopped it breaks parts of the UI
+  * Issue 6753 - Removing ticket 47714 test and porting to DSLdapObject (#6946)
+  * Issue 7027 - 389-ds-base OpenScanHub Leaks Detected (#7028)
+  * Issue 6753 - Removing ticket 47676 test and porting to DSLdapObject (#6938)
+  * Issue 6966 - On large DB, unlimited IDL scan limit reduce the SRCH performance (#6967)
+
+-------------------------------------------------------------------
 Fri Oct 03 06:44:23 UTC 2025 - william.brown@suse.com
 
 - Update to version 3.1.3~git106.bea5091e3:
