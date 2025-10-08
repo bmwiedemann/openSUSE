@@ -1,7 +1,7 @@
 #
 # spec file for package ruby3.4
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@
 
 %global patch_level p0
 Name:           ruby3.4%{psuffix}
-Version:        3.4.5
+Version:        3.4.7
 Release:        0
 %global pkg_version %{version}
 # make the exported API version explicit

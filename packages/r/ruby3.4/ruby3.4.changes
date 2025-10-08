@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct  7 23:34:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.4.7
+  This release includes an update to the uri gem addressing
+  CVE-2025-61594, along with other bug fixes. Please refer to the
+  release notes on GitHub for further details.
+
+  We recommend updating your version of the uri gem. This release
+  has been made for the convenience of those who wish to continue
+  using it as a default gem.
+
+    https://github.com/ruby/ruby/releases/tag/v3_4_6
+
+-------------------------------------------------------------------
+Tue Oct  7 01:26:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.4.6
+  - This is a routine update that includes bug fixes. Please refer
+    to the release notes on GitHub for further details.
+
+    https://github.com/ruby/ruby/releases/tag/v3_4_6
+
+-------------------------------------------------------------------
 Tue Jul 15 18:06:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.4.5
