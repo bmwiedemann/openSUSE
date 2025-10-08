@@ -110,4 +110,41 @@
     <comment>- Package svgpan.js to fix issues with &quot;go tool pprof&quot;. boo#1249985</comment>
     <requestid>1306042</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>33d4bc64176088ae265bd462cb785a60</srcmd5>
+    <version>1.25.2</version>
+    <time>1759939974</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.25.2 (released 2025-10-07) includes security fixes to the
+  archive/tar, crypto/tls, crypto/x509, encoding/asn1,
+  encoding/pem, net/http, net/mail, net/textproto, and net/url
+  packages, as well as bug fixes to the compiler, the runtime, and
+  the context, debug/pe, net/http, os, and sync/atomic packages.
+  Refs boo#1244485 go1.25 release tracking
+  CVE-2025-58189 CVE-2025-61725 CVE-2025-58188 CVE-2025-58185 CVE-2025-58186 CVE-2025-61723 CVE-2025-58183 CVE-2025-47912 CVE-2025-58187 CVE-2025-61724
+  * go#75661 go#75652 boo#1251255 security: fix CVE-2025-58189 crypto/tls: ALPN negotiation error contains attacker controlled information
+  * go#75701 go#75680 boo#1251253 security: fix CVE-2025-61725 net/mail: excessive CPU consumption in ParseAddress
+  * go#75703 go#75675 boo#1251260 security: fix CVE-2025-58188 crypto/x509: panic when validating certificates with DSA public keys
+  * go#75705 go#75671 boo#1251258 security: fix CVE-2025-58185 encoding/asn1: pre-allocating memory when parsing DER payload can cause memory exhaustion
+  * go#75707 go#75672 boo#1251259 security: fix CVE-2025-58186 net/http: lack of limit when parsing cookies can cause memory exhaustion
+  * go#75709 go#75676 boo#1251256 security: fix CVE-2025-61723 encoding/pem: quadratic complexity when parsing some invalid inputs
+  * go#75711 go#75677 boo#1251261 security: fix CVE-2025-58183 archive/tar: unbounded allocation when parsing GNU sparse map
+  * go#75713 go#75678 boo#1251257 security: fix CVE-2025-47912 net/url: insufficient validation of bracketed IPv6 hostnames
+  * go#75715 go#75681 boo#1251254 security: fix CVE-2025-58187 crypto/x509: quadratic complexity when checking name constraints
+  * go#75718 go#75716 boo#1251262 security: fix CVE-2025-61724 net/textproto: excessive CPU consumption in Reader.ReadResponse
+  * go#75111 os, syscall: volume handles with FILE_FLAG_OVERLAPPED fail when calling ReadAt
+  * go#75116 os: Root.MkdirAll can return &quot;file exists&quot; when called concurrently on the same path
+  * go#75139 os: Root.OpenRoot sets incorrect name, losing prefix of original root
+  * go#75221 debug/pe: pe.Open fails on object files produced by llvm-mingw 21
+  * go#75255 cmd/compile: export to DWARF types only referenced through interfaces
+  * go#75347 testing/synctest: test timeout with no runnable goroutines
+  * go#75357 net: new test TestIPv4WriteMsgUDPAddrPortTargetAddrIPVersion fails on plan9
+  * go#75524 crypto/internal/fips140/rsa: requires a panic if self-tests fail
+  * go#75537 context: Err can return non-nil before Done channel is closed
+  * go#75539 net/http: internal error: connCount underflow
+  * go#75595 cmd/compile: internal compiler error with GOEXPERIMENT=cgocheck2 on github.com/leodido/go-urn
+  * go#75610 sync/atomic: comment for Uintptr.Or incorrectly describes return value
+  * go#75669 runtime: debug.decoratemappings don't work as expected (forwarded request 1309724 from jfkw)</comment>
+    <requestid>1309726</requestid>
+  </revision>
 </revisionlist>
