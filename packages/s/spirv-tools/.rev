@@ -429,4 +429,12 @@ join Staging:E</comment>
     <comment>- Update to release 2025.4~rc1</comment>
     <requestid>1306813</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>3158575b41050ec8fa0fbd23da29826b</srcmd5>
+    <version>2025.4</version>
+    <time>1759939998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2025.4</comment>
+    <requestid>1309566</requestid>
+  </revision>
 </revisionlist>
