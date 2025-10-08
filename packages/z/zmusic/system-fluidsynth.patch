@@ -29,7 +29,7 @@ Index: source/CMakeLists.txt
 ===================================================================
 --- source/CMakeLists.txt.orig
 +++ source/CMakeLists.txt
-@@ -152,8 +152,11 @@ use_fast_math(zmusiclite)
+@@ -153,8 +153,11 @@ use_fast_math(zmusiclite)
  target_include_directories(zmusic INTERFACE $<INSTALL_INTERFACE:include> $<BUILD_INTERFACE:${ZMusic_SOURCE_DIR}/include>)
  target_include_directories(zmusiclite INTERFACE $<INSTALL_INTERFACE:include> $<BUILD_INTERFACE:${ZMusic_SOURCE_DIR}/include>)
  

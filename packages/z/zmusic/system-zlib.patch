@@ -13,7 +13,7 @@ Index: source/CMakeLists.txt
 ===================================================================
 --- source/CMakeLists.txt.orig
 +++ source/CMakeLists.txt
-@@ -128,7 +128,7 @@ if(WIN32)
+@@ -129,7 +129,7 @@ if(WIN32)
  	)
  endif()
  

@@ -1,7 +1,7 @@
 #
 # spec file for package zmusic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           zmusic
-Version:        1.1.14
+Version:        1.3.0
 Release:        0
 Summary:        ZDoom component library for music handling
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://zdoom.org/
-
 #Git-Clone:     https://github.com/ZDoom/ZMusic
 Source:         https://github.com/ZDoom/ZMusic/archive/%version.tar.gz
 Patch1:         system-fluidsynth.patch
 Patch2:         system-gme.patch
 Patch3:         system-zlib.patch
-Patch4:         dumb-dumb.patch
-Patch5:         system-libxmp.patch
-BuildRequires:  cmake
+Patch4:         system-libxmp.patch
+Patch10:        dumb-dumb.patch
+BuildRequires:  cmake >= 3.1.3
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(alsa)
@@ -48,6 +47,9 @@ Suggests:       timidity-eawpats
 # DUMB is modified to read OggVorbis samples
 # Though everything else has been moved to libxmp, DSIK format still uses foo_DUMB
 Provides:       bundled(dumb) = 0.9.3
+# zmusic is using ADLMIDI internals, so we can't use system adlmidi
+Provides:       bundled(adlmidi) = 1.6.1
+Provides:       bundled(opnmidi) = 1.6.1
 
 %description
 This is the music playback code from gzdoom, which was separated into its own
