@@ -20,7 +20,7 @@
 %define __builder ninja
 %if 0%{?suse_version} < 1650
 # Lua plugin requires GCC >= 8 for filesystem support
-%define gcc_ver 9
+%define gcc_ver 13
 # Python plugin requires Python >= 3.8
 %bcond_with python
 %else

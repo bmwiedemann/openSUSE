@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  7 19:49:12 UTC 2025 - Olivier Belleux <o.g.m.belleux@gmail.com>
+
+- change %define gcc_ver 8 to %define gcc_ver 13 
+- add leap 16.0
+
+-------------------------------------------------------------------
 Mon Mar  3 02:24:50 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.6.10:
