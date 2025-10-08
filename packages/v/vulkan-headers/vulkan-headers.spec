@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-headers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 #
 
 Name:           vulkan-headers
-Version:        1.4.321
+Version:        1.4.328
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
@@ -31,8 +31,8 @@ URL:            https://github.com/KhronosGroup/Vulkan-Headers
 Source:         https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/vulkan-sdk-%version.0.tar.gz
 #Source:         https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v%version.tar.gz
 Source9:        %name-rpmlintrc
-BuildRequires:  cmake >= 2.8.11
 BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 2.8.11
 BuildArch:      noarch
 Requires:       pkgconfig(wayland-client)
 Requires:       pkgconfig(x11)
