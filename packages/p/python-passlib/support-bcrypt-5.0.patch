@@ -1,0 +1,44 @@
+Index: passlib-1.7.4/passlib/handlers/bcrypt.py
+===================================================================
+--- passlib-1.7.4.orig/passlib/handlers/bcrypt.py
++++ passlib-1.7.4/passlib/handlers/bcrypt.py
+@@ -652,6 +652,9 @@ class _BcryptBackend(_BcryptCommon):
+         config = self._get_config(ident)
+         if isinstance(config, unicode):
+             config = config.encode("ascii")
++        # bcrypt 5.0 and above require secret to 72 bytes or less
++        if len(secret) > 72:
++            secret = secret[:72]
+         hash = _bcrypt.hashpw(secret, config)
+         assert isinstance(hash, bytes)
+         if not hash.startswith(config) or len(hash) != len(config)+31:
+Index: passlib-1.7.4/passlib/tests/test_handlers_bcrypt.py
+===================================================================
+--- passlib-1.7.4.orig/passlib/tests/test_handlers_bcrypt.py
++++ passlib-1.7.4/passlib/tests/test_handlers_bcrypt.py
+@@ -13,7 +13,7 @@ from passlib import hash
+ from passlib.handlers.bcrypt import IDENT_2, IDENT_2X
+ from passlib.utils import repeat_string, to_bytes, is_safe_crypt_input
+ from passlib.utils.compat import irange, PY3
+-from passlib.tests.utils import HandlerCase, TEST_MODE
++from passlib.tests.utils import HandlerCase, SkipTest, TEST_MODE
+ from passlib.tests.test_handlers import UPASS_TABLE
+ # module
+ 
+@@ -193,6 +193,16 @@ class _bcrypt_test(HandlerCase):
+     #===================================================================
+     # fuzz testing
+     #===================================================================
++    def test_77_fuzz_input(self, threaded=False):
++        try:
++            import bcrypt
++        except ImportError:
++            return
++        bcrypt_version = tuple([int(x) for x in bcrypt.__version__.split('.')])
++        if bcrypt_version >= (5, 0, 0):
++            raise SkipTest("requires bcrypt < 5.0")
++        super().test_77_fuzz_input(threaded=threaded)
++
+     def crypt_supports_variant(self, hash):
+         """check if OS crypt is expected to support given ident"""
+         from passlib.handlers.bcrypt import bcrypt, IDENT_2X, IDENT_2Y

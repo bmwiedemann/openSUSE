@@ -1,7 +1,7 @@
 #
 # spec file for package python-passlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/passlib/passlib
 Patch0:         no-pkg_resources.patch
 # PATCH-FIX-OPENSUSE Skip crypt tests under Python 3.13
 Patch1:         no-crypt-with-python-313.patch
+# PATCH-FIX-OPENSUSE Support bcrypt 5.0+ changes https://foss.heptapod.net/python-libs/passlib/-/issues/196
+Patch2:         support-bcrypt-5.0.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

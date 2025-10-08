@@ -253,4 +253,13 @@
   * Do not run tests requiring 'crypt' with Python 3.13.</comment>
     <requestid>1207026</requestid>
   </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>015d4690156d0efbc594bf80fabbb6a0</srcmd5>
+    <version>1.7.4</version>
+    <time>1759939968</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-bcrypt-5.0.patch:
+  * Support changes required by bcrypt 5.0.</comment>
+    <requestid>1309714</requestid>
+  </revision>
 </revisionlist>

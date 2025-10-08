@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  8 01:41:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-bcrypt-5.0.patch:
+  * Support changes required by bcrypt 5.0.
+
+-------------------------------------------------------------------
 Fri Oct 11 04:34:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch no-crypt-with-python-313.patch:
