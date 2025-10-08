@@ -412,4 +412,14 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment>Update to 17.0.1</comment>
     <requestid>1301795</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>17125254d57f6101b8f9d936e7d7f119</srcmd5>
+    <version>17.0.2</version>
+    <time>1759940054</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 17.0.2
+  https://www.qt.io/blog/qt-creator-17.0.2-released
+</comment>
+    <requestid>1309675</requestid>
+  </revision>
 </revisionlist>
