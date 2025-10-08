@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  7 12:06:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.43.0:
+  * Add [default] attribute
+  * Do not ascend above --ceiling when looking for justfile
+  * Don't generate completions at runtime
+  * Add submodule alias and dependency targets to grammar
+  * Mention just-mcp in readme
+  * Note [parallel] attribute in parallelism section
+
+-------------------------------------------------------------------
 Sat Jul 26 16:30:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.42.4:

@@ -2,6 +2,7 @@
 # spec file for package just
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %bcond_with     tests
 Name:           just
-Version:        1.42.4
+Version:        1.43.0
 Release:        0
 Summary:        Commmand runner
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND MIT AND CC0-1.0
@@ -26,13 +27,12 @@ Group:          Development/Tools/Building
 URL:            https://github.com/casey/just
 Source0:        https://github.com/casey/just/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  bash-completion
 BuildRequires:  cargo-packaging
-BuildRequires:  fish
 BuildRequires:  git-core
 BuildRequires:  python3-base
 BuildRequires:  zsh
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(bash-completion)
 
 %description
 Just is a command runner. Although it shares
@@ -74,10 +74,6 @@ Zsh command-line completion support for %{name}.
 
 %build
 %{cargo_build} --all-features
-mkdir completions
-./target/release/just --completions bash > completions/just.bash
-./target/release/just --completions fish > completions/just.fish
-./target/release/just --completions zsh > completions/just.zsh
 
 %install
 ./target/release/%{name} --man > %{name}.1
@@ -95,19 +91,19 @@ install -Dm0644 -T completions/%{name}.zsh %{buildroot}%{_datadir}/zsh/site-func
 
 %files
 %license LICENSE
-%doc *.md
+%doc CHANGELOG.md CONTRIBUTING.md GRAMMAR.md README.md README.中文.md
 %{_bindir}/%{name}
 %{_mandir}/man?/%{name}.?%{?ext_man}
 
 %files bash-completion
-%{_datadir}/bash-completion/*
+%{_datadir}/bash-completion/completions/%{name}
 
 %files fish-completion
 %dir %{_datadir}/fish
-%{_datadir}/fish/*
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %files zsh-completion
-%dir %{_datadir}/zsh
-%{_datadir}/zsh/*
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog
