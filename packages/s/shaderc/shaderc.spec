@@ -23,7 +23,7 @@
 %endif
 
 Name:           shaderc
-Version:        2025.3
+Version:        2025.4
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
@@ -39,8 +39,8 @@ BuildRequires:  gcc%{?gcc_version}-c++ >= 13
 BuildRequires:  glslang-devel >= 16
 BuildRequires:  glslang-nonstd-devel
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.6.4+sdk321
-BuildRequires:  spirv-tools-devel >= 2025.1~rc1
+BuildRequires:  spirv-headers >= 1.6.4+sdk328
+BuildRequires:  spirv-tools-devel >= 2025.4
 
 %description
 A collection of tools, libraries and tests for shader compilation.

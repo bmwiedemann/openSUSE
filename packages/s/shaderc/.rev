@@ -282,4 +282,12 @@
   glslang 16</comment>
     <requestid>1307302</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>70bb95e5e0df474951674756bc235e31</srcmd5>
+    <version>2025.4</version>
+    <time>1759940000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2025.4</comment>
+    <requestid>1309567</requestid>
+  </revision>
 </revisionlist>
