@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct  4 16:45:37 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Remove BuildRequires on libboost_system-devel for Tumbleweed,
+   removed on boost 1.89 (bsc#1250594)
+- Add patch gr-osmosdr-remove-boost_system.patch to fix build with 
+  boost 1.89
+
+-------------------------------------------------------------------
 Tue May 20 08:57:23 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Drop support for libxtrx.

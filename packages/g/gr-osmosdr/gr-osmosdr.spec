@@ -30,6 +30,7 @@ Group:          Productivity/Hamradio/Other
 URL:            https://sdr.osmocom.org/trac/wiki/GrOsmoSDR
 #Git-Clone:     https://git.osmocom.org/gr-osmosdr
 Source:         %{name}-%{version}.tar.gz
+Patch1:         gr-osmosdr-remove-boost_system.patch
 BuildRequires:  airspy-devel
 BuildRequires:  airspyhf-devel
 BuildRequires:  bladeRF-devel
@@ -44,7 +45,6 @@ BuildRequires:  hackrf-devel
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libgnuradio-funcube-devel
 BuildRequires:  libgnuradio-iqbalance-devel
@@ -117,6 +117,7 @@ Documentation for gr-osmosdr module for GNU Radio.
 
 %prep
 %setup -q
+%patch -P 1 -p1
 
 %if 0%{with_sdrplay}
 tar -xzf %{SOURCE1}

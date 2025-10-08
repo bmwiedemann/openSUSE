@@ -1,0 +1,12 @@
+diff -up gr-osmosdr-0.2.6/CMakeLists.txt.aaaa gr-osmosdr-0.2.6/CMakeLists.txt
+--- gr-osmosdr-0.2.6/CMakeLists.txt.aaaa	2025-10-03 00:45:30.887536013 +0200
++++ gr-osmosdr-0.2.6/CMakeLists.txt	2025-10-03 00:45:39.644529788 +0200
+@@ -119,7 +119,7 @@ endif()
+ ########################################################################
+ # Find boost
+ ########################################################################
+-find_package(Boost "1.65" REQUIRED chrono thread system)
++find_package(Boost "1.65" REQUIRED chrono thread)
+ 
+ if(NOT Boost_FOUND)
+     message(FATAL_ERROR "Boost required to compile osmosdr")
