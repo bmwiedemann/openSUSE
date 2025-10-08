@@ -1,7 +1,7 @@
 #
 # spec file for package gr-iqbal
 #
-# Copyright (c) 2020-2022 SUSE LLC
+# Copyright (c) 2020-2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,25 +20,22 @@
 %define soname 3_9_0
 
 Name:           gr-iqbal
-Version:        0.39.0git20210108
+Version:        0.39.0git20250425
 Release:        0
 Summary:        GNU Radio I/Q balancing
 License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://git.osmocom.org/gr-iqbal/
 Source:         %{name}-%{version}.tar.gz
+Patch0:         gr-iqbal-boost.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gnuradio-devel >= 3.9.0
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libosmo-dsp-devel
@@ -102,6 +99,7 @@ Documentation for gr-iqbal module for GNU Radio.
 
 %prep
 %setup -q -n %{name}
+%patch -P 0 -p1
 
 %build
 %cmake \

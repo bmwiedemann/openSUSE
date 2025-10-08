@@ -1,0 +1,12 @@
+diff -up gr-iqbal/CMakeLists.txt.aaaa gr-iqbal/CMakeLists.txt
+--- gr-iqbal/CMakeLists.txt.aaaa	2025-10-04 15:20:11.931862040 +0200
++++ gr-iqbal/CMakeLists.txt	2025-10-04 15:21:12.866274313 +0200
+@@ -71,7 +71,7 @@ endif()
+ ########################################################################
+ # Find boost
+ ########################################################################
+-find_package(Boost "1.65" REQUIRED system)
++find_package(Boost "1.65" REQUIRED program_options regex thread)
+ 
+ if(NOT Boost_FOUND)
+     message(FATAL_ERROR "Boost required to compile iqbalance")

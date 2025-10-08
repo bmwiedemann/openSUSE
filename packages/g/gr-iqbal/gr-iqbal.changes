@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 30 13:35:07 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+-  Remove BuildRequires on libboost_system-devel,
+   removed on boost 1.89 (bsc#1250594)
+-  Add patch gr-iqbal-boost.patch fixing boost module detection
+-  Update to git snapshot 20250425 (minor fixes and doc update)
+
+-------------------------------------------------------------------
 Sun Feb 27 00:06:48 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - fix grc subpackage dependency
