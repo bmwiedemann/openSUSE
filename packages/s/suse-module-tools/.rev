@@ -926,4 +926,14 @@ source service setup which messed up my spec file.
   * kernel-scriptlets: enable tracing with KERNEL_PACKAGE_SCRIPT_TRACE=1 (forwarded request 1277668 from mwilck)</comment>
     <requestid>1277669</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>ece5dac584eeb54c410720b16106cbdd</srcmd5>
+    <version>16.0.61</version>
+    <time>1759940016</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.61:
+  * weak-modules2: skip livepatch dir when checking for unresolved symbols
+    (bsc#1250655) (forwarded request 1309642 from mwilck)</comment>
+    <requestid>1309643</requestid>
+  </revision>
 </revisionlist>
