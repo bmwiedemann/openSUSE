@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1cdc57f275a4d5a97b8735ce2d2f899c</srcmd5>
+    <version>11.11.0</version>
+    <time>1759940115</time>
+    <user>dimstar_suse</user>
+    <comment>new package following the 11.x releases of Ansible. This works with 2.18.x releases of Ansible (Core), as there are bigger changes in 2.19.x that bite some users</comment>
+    <requestid>1309760</requestid>
+  </revision>
+</revisionlist>
