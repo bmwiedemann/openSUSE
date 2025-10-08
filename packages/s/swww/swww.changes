@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Sep 21 13:48:02 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.11.2:
+  * decompression: forgot to fix 4channel decomp for ssse3
+  * update waybackend dependency: fix building on some architectures
+  * daemon: use macro implementations from waybackend
+  * fix animations with 4 channels
+  * fix incorrect description of swww clear-cache in swww(1) man page
+
+-------------------------------------------------------------------
+Thu Sep 11 19:45:52 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Require rust verion 1.89 explicitly
+
+-------------------------------------------------------------------
+Thu Sep 11 19:34:56 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.11.0:
+  *  BREAKING
+    * **IMPORTANT**: --format xrgb is no longer supported. Use
+      --format argb instead. However, this is now the default, so,
+      if you  want, you can simply not set anything instead. We
+      still accept --format xrgb  so as to not break any
+      configurations. Previously, the daemon automatically  would
+      check to see which wayland_shm format was the most convenient
+      for us to use. However, many people have had weird bugs when
+      using any format other  than xrgb. Therefore, we have made
+      that the default, and only change it when  the user
+      specifically asks for it.
+    * swww query now returns information in the following format:
+      <namespace>: OUTPUT: SIZE, scale: SCALE, currently
+      displaying: IMAGE_OR_COLOR
+    * we are creating the socket in a slightly different location now:
+      ${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}-swww-daemon.<specified
+      namespace>.socket
+  *  Additions
+    * every command (except clear-cache) now accepts a
+      -n|--namespace argument. This namespace will then be appended
+      to swww-daemon to make up the wayland namespace of the
+      daemon's layer surface.
+    * as a convenience, every command (except clear-cache) also
+      accepts a -a|--all flag, that lets the user send commands to
+      all namespaces at once.
+    * support avif decoding through dav1d, with the --features=avif
+      compilation option.
+    * we finally support static SVGs!
+    * swww-daemon now correctly renders static images with
+      transparency.
+    * swww clear now accepts colors with an alpha value.
+  *  Fixes
+    * Fixed a division by 0 when animating with no frames
+    * Fixed destroying wayland buffers too early
+    * Better fractional-scale implementation (we shamelessly tried
+      copying the swaybg implementation). This will hopefully
+      prevent newer issues with hyprland.
+
+-------------------------------------------------------------------
 Mon Jun  9 19:34:32 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 0.10.3:
@@ -538,4 +595,3 @@ Sun Oct 09 11:07:06 UTC 2022 - uncomfy+openbuildservice@uncomfyhalomacro.pl
 Sun Oct  9 06:37:58 UTC 2022 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Initial spec for swww version 0.4.3
-

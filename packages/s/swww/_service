@@ -1,7 +1,7 @@
 <services>
   <service mode="manual" name="cargo_vendor">
     <param name="url">https://github.com/LGFae/swww</param>
-      <param name="revision">v0.10.3</param>
+      <param name="revision">v0.11.2</param>
     <param name="versionrewriteregex">^v?(.*)</param>
     <param name="versionrewritepattern">$1</param>
     <param name="changesgenerate">true</param>
