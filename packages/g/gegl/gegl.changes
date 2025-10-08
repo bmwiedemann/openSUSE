@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  6 13:39:59 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.4.64:
+  * added OpenCL to the base GeglOperationPointComposer3 class
+  * fixed the ZDI-CAN-27803 vulnerability for RGBE image imports
+  * build process improvements and clean-up
+- Drop upstreamed eda8ba51.patch
+
+-------------------------------------------------------------------
 Thu Sep 25 12:51:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add eda8ba51.patch: operations: Support FFMPEG 8 on ff-load

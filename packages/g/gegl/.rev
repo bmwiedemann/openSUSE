@@ -764,4 +764,18 @@
   (boo#1249045).</comment>
     <requestid>1307129</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>2692f9e783146d4fbc67bee99d4049c4</srcmd5>
+    <version>0.4.64</version>
+    <time>1759939938</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1309285 from polslinux
+
+- Update to 0.4.64:
+  * added OpenCL to the base GeglOperationPointComposer3 class
+  * fixed the ZDI-CAN-27803 vulnerability for RGBE image imports
+  * build process improvements and clean-up
+- Drop upstreamed eda8ba51.patch</comment>
+    <requestid>1309292</requestid>
+  </revision>
 </revisionlist>
