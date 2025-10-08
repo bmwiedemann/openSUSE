@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-Address-XS
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,20 @@
 
 %define cpan_name Email-Address-XS
 Name:           perl-Email-Address-XS
-Version:        1.05
+Version:        1.50.0
 Release:        0
+# 1.05 -> normalize -> 1.50.0
+%define cpan_version 1.05
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse and format RFC 5322 email addresses and groups
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PA/PALI/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PA/PALI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Email::Address::XS) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -67,8 +72,9 @@ the list of email addresses suitable for the MIME email headers, see
 Email::MIME::Header::AddressList.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
