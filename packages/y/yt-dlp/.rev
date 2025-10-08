@@ -622,4 +622,12 @@
     <comment>- Update to release 2025.09.26</comment>
     <requestid>1307606</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>2ecfed93c52122f51895d25ed6b9d876</srcmd5>
+    <version>2025.09.26</version>
+    <time>1759940063</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Python 3.13 in 15.7, due to lack of 3.12</comment>
+    <requestid>1309697</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,11 @@
 %define skip_python37 1
 %define skip_python38 1
 %if 0%{?suse_version} < 1600
+%if 0%{?sle_version} == 150700
+%global pythons python313
+%else
 %global pythons python312
+%endif
 %endif
 
 Name:           yt-dlp
@@ -47,7 +51,11 @@ Provides:       yt-dlp-fish-completion = %version-%release
 Obsoletes:      yt-dlp-zsh-completion < %version-%release
 Provides:       yt-dlp-zsh-completion = %version-%release
 %if 0%{?suse_version} < 1600
+%if 0%{?sle_version} == 150700
+Requires:       python313-yt-dlp = %version
+%else
 Requires:       python312-yt-dlp = %version
+%endif
 %else
 Requires:       python3-yt-dlp = %version
 %endif
@@ -96,7 +104,11 @@ rm -f youtube-dl yt-dlp
 # exercised; else yt-dlp is a loader.
 #
 %if 0%{?suse_version} < 1600
+%if 0%{?sle_version} == 150700
+export PYTHON=%__python313
+%else
 export PYTHON=%__python312
+%endif
 %endif
 %pyproject_wheel
 %make_build yt-dlp
