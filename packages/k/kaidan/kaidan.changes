@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Oct  7 19:54:53 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Enable tests
+- Update to 0.13.0
+  * Features:
+    + Add support for using multiple accounts simultaneously
+    + List accounts and show button to add new accounts
+    + Show dialog to select account for global action such as
+      adding a contact
+    + Allow to enable/disable accounts instead of
+      connecting/disconnecting them manually
+    + Update nicknames of own accounts once connected
+    + Show small account avatars next to regular avatars if
+      multiple accounts are used
+    + Hide global drawer handle on chat if window is narrow
+    + Use PNG/.png instead of JPEG/.jpg for thumbnails to allow
+      transparency
+    + Use AAC/.m4a instead of MP3/.mp3 for voice messages to
+      improve compatibility
+    + Provide size of sent images to recipients allowing receiving
+      client to scale thumbnails to size of original image
+    + Provide size of generated thumbnails to recipients
+    + Increase size of generated thumbnails
+    + Show circle instead of bar for upload/download progress
+    + Try all providers on connection error during automatic
+      registration
+    + Add message forwarding
+    + Enable voice message recording via Flatpak
+    + Store account passwords encrypted if password manager is
+      available
+    + Apply consistent criteria for all message corrections
+    + Add support to mark messages locally in order to reply to
+      them later or to quickly find important messages
+    + Reuse SASL 2 user agent and FAST token on every restart for
+      faster connection establishment
+  * Bugfixes:
+    + Fix selecting media via long press in media overview
+    + Fix OMEMO initialization
+    + Fix displaying geo location map
+    + Fix showing hints on invalid input of various input fields
+    + Fix name/date of chat list item moving if counter for unread
+      messages dis-/appears
+    + Fix counter for unread messages
+    + Fix handling removed message reactions
+    + Fix canceling personal data sharing via contact details
+    + Fix finding existing notifications for personal data sharing
+      requests
+    + Fix cursor behavior in message input field by allowing
+      vertical cursor movements while participant picker is closed
+      and prohibiting horizontal cursor movements while participant
+      picker is open
+
+-------------------------------------------------------------------
 Sun Apr  6 19:18:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.12.2

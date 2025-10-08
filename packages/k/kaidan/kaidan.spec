@@ -1,7 +1,7 @@
 #
 # spec file for package kaidan
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define qt6_version 6.6.0
 
 Name:           kaidan
-Version:        0.12.2
+Version:        0.13.0
 Release:        0
 Summary:        A XMPP client based on KDE Framework
 License:        AML AND GPL-3.0-or-later AND SUSE-GPL-3.0+-with-openssl-exception AND MIT AND CC-BY-SA-4.0
@@ -35,6 +35,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{qt6_version}
 BuildRequires:  kquickimageeditor6-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-declarative-tools >= %{qt6_version}
+BuildRequires:  qt6-sql-sqlite >= %{qt6_version}
 BuildRequires:  cmake(KDSingleApplication-qt6)
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
@@ -43,9 +44,10 @@ BuildRequires:  cmake(KF6KirigamiAddons) >= 1.4.0
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
-BuildRequires:  cmake(QXmppQt6) >= 1.10.3
+BuildRequires:  cmake(QXmppQt6) >= 1.11.0
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Keychain) >= 0.15.0
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Location) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
@@ -55,6 +57,7 @@ BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  cmake(ZXing) >= 1.0.8
@@ -80,7 +83,7 @@ using the qxmpp XMPP client library and Qt 6.
 %autosetup -p1
 
 %build
-%cmake_kf6
+%cmake_kf6 -DBUILD_TESTING:BOOL=ON
 
 %kf6_build
 
@@ -90,6 +93,10 @@ using the qxmpp XMPP client library and Qt 6.
 %find_lang %{name} --with-qt
 
 %fdupes %{buildroot}
+
+%check
+# exclude the one test that needs network access
+%ctest --exclude-regex PublicGroupChatTest
 
 %files
 %license LICENSES/*
