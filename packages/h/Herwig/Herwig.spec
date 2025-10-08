@@ -36,7 +36,6 @@ BuildRequires:  Rivet-devel
 BuildRequires:  ThePEG-devel >= 2.3.0
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  fastjet-devel
 BuildRequires:  fastjet-plugin-siscone-devel

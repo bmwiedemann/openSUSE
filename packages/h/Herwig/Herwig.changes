@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  2 05:02:21 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop dependence on libboost_system-devel.
+
+-------------------------------------------------------------------
 Sat Jan  6 00:44:48 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 7.3.0:
