@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Oct  7 15:08:05 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.6.0:
+  * Arti now requires Rust 1.85.1 or later
+  * Arti now requires tracing-subscriber v0.3.20, due to upstream
+    security issue RUSTSEC-2025-0055
+  * Arti now includes experimental circuit padding support, based
+    on the maybenot library
+  * Arti now has mitigations for DropMark side-channel attacks for
+    flow control
+  * Arti now has a arti keys check-integrity command, to check the
+    validity of stored keys
+  * Fixed bug in congestion control that was causing timeouts when
+    flowctl-cc was enabled
+  * Added support for flow control consensus params
+  * Improved arti hsc key management documentation
+  * Documented arti hsc --batch flag
+  * Various cleanups, bugfixes and refactors
+  * For a full changelog see
+    /usr/share/doc/packages/arti/CHANGELOG.md
+  
+-------------------------------------------------------------------
+Tue Sep 30 10:16:16 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use -p arti in cargo build, as recommended by the docs
+
+- Update to version 1.5.0:
+  * Arti 1.5.0 continues development on important client features,
+    including Counter Galois Onion encryption,Conflux, flow control
+    and congestion control, and onion service proof of work.
+    It also includes significant preliminary work for Arti relay
+    support.
+  * Arti now requires Rust 1.85 or later
+  * We no longer count channel negotiation time against our circuit
+    timeouts.
+  * tor-proto now includes experimental backend support (unused, so
+    far) for Conflux-based multi-path tunnels
+  * Experimental support for congestion control for improved
+    performance. (Not yet enabled by default)
+  * Experimental support for proof-of-work in onion services,
+    for resistance to denial-of-service attacks.
+  * Experimental support for negotiating Counter Galois Onion
+    cryptography
+  * Improved CLI output when describing keys.
+  * Design for a new key integrity checking subcommand.
+  * Integration testing for arti keys subcommands.
+  * Design work for a relay reactor backend.
+  * Work on a new netdoc parser implementation for improved ergonomics
+    and macro support.
+
+-------------------------------------------------------------------
 Thu Jul 24 19:49:00 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Add "AND LGPL-3.0-only" to the spec license tag, as arti links

@@ -1,7 +1,7 @@
 #
 # spec file for package arti
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Eyad Issa <eyadlorenzo@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%global git_hash aa7207f270f82b6d59cce26f4e49610b90447ebf
+%global git_hash 0b636d9d8d3309663de0fb5554255f5f8f82544d
 
 Name:           arti
-Version:        1.4.5
+Version:        1.6.0
 Release:        0
 Summary:        An implementation of Tor, in Rust.
 License:        (Apache-2.0 OR MIT) AND LGPL-3.0-only
@@ -30,7 +30,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.83
+BuildRequires:  rust >= 1.85.1
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 ExclusiveArch:  %{rust_tier1_arches}
@@ -43,7 +43,7 @@ An implementation of Tor, in Rust
 
 %build
 %limit_build -m 8000
-%{cargo_build}
+%{cargo_build} -p arti
 
 %install
 %{cargo_install -p crates/arti}

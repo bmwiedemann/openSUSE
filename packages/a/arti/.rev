@@ -168,4 +168,33 @@ It doesn't build on 15.5 because of rust being too old
     /usr/share/doc/packages/arti/CHANGELOG.md</comment>
     <requestid>1296609</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c97489e7b9308d0495677b152676a826</srcmd5>
+    <version>1.6.0</version>
+    <time>1759940052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.0:
+  * Arti now requires Rust 1.85.1 or later
+  * Arti now requires tracing-subscriber v0.3.20, due to upstream
+    security issue RUSTSEC-2025-0055
+  * Arti now includes experimental circuit padding support, based
+    on the maybenot library
+  * Arti now has mitigations for DropMark side-channel attacks for
+    flow control
+  * Arti now has a arti keys check-integrity command, to check the
+    validity of stored keys
+  * Fixed bug in congestion control that was causing timeouts when
+    flowctl-cc was enabled
+  * Added support for flow control consensus params
+  * Improved arti hsc key management documentation
+  * Documented arti hsc --batch flag
+  * Various cleanups, bugfixes and refactors
+  * For a full changelog see
+    /usr/share/doc/packages/arti/CHANGELOG.md
+  
+
+- Use -p arti in cargo build, as recommended by the docs
+- Update to version 1.5.0:</comment>
+    <requestid>1309670</requestid>
+  </revision>
 </revisionlist>
