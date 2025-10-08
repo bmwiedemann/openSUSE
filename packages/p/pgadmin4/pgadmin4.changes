@@ -1,4 +1,262 @@
 -------------------------------------------------------------------
+Wed Oct  8 06:33:57 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add node_modules.sums as source in the spec file
+
+-------------------------------------------------------------------
+Thu Oct  2 09:44:25 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to 9.8:
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16 and 17
+    - EDB Advanced Server: 13, 14, 15, 16 and 17
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 17.5
+  * New features
+    - Add menu items for truncating foreign tables.
+    - Added Debian Trixie as a supported platform for pgAdmin.
+    - Allow user to configure security related gunicorn parameters.
+    - Change the default pgAdmin theme to System.
+  * Housekeeping
+    - Remove usage of BrowserFS as it is deprecated.
+  * Bug fixes
+    - Pin Paramiko to version 3.5.1 to fix the DSSKey error
+      introduced in the latest release.
+    - Fixed an issue where pgAdmin config migration was failing
+      while upgrading to v9.7.
+    - Fixed Cross-Origin Opener Policy (COOP) vulnerability in the
+      OAuth 2.0 authentication flow (CVE-2025-9636, bsc#1249151).
+    - Fixed an issue where editor shortcuts fail when using Option
+      key combinations on macOS, due to macOS treating Option+Key
+      as a different key input.
+    - Fixed an issue where the pgAdmin configuration database
+      wasn't being created on a fresh install when an external
+      database was used for the configuration.
+
+- update to 9.7:
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16 and 17
+    - EDB Advanced Server: 13, 14, 15, 16 and 17
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 17.2
+  * New features
+    - Add support for automatic updates in the pgAdmin 4 Desktop
+      application on macOS.
+    - Added GENERIC_PLAN, MEMORY, SERIALIZE option to
+      EXPLAIN/EXPLAIN ANALYZE command.
+    - Add support for changing cursor blink rate within the
+      editors.
+    - Add support for server tag-based filtering in the Object
+      Explorer.
+    - Added support for builtin locale provider while creating
+      Collation.
+  * Housekeeping
+    - Replace keyword PROCEDURE with FUNCTION while creating
+      trigger and event trigger.
+    - Introduced an ‘Editor’ preferences category and migrated
+      all editor related settings into it.
+  * Bug fixes
+    - Fixed an issue where custom column widths in the result grid
+      of Query Tool or View/Edit Data were reset after re-executing
+      a query.
+    - Fixed the issue where updating the name of a table column
+      does not reflect in the corresponding primary key constraint.
+    - Fixed an issue where pgAdmin failed to update the server
+      connection status when the server was disconnected in the
+      background and a refresh was performed on that server.
+    - Make Dashboard tables to be vertically resizable.
+    - Fixed an issue in Firefox where the query window would shift
+      to the left after opening the history tab or selecting a
+      column header in the results grid.
+    - Fixed an issue where CPU usage was very high on Windows when
+      opening the psql tool.
+    - Ensure DB restriction type is preserved while import and
+      export server.
+    - Fixed incorrect behaviour of the option deduplicate items
+      after creating the index.
+    - Added PKEY index in the index statistics summary.
+    - Fixed an issue where adding breakpoints caused errors, and
+      stepping out of a nested function removed breakpoints from
+      the parent function.
+    - Ensure the scratch pad in the Query Tool is not restored
+      after it is closed.
+    - Update the documentation for parameters that require file
+      paths.
+    - Fixed an issue where downloading images on the ERD tool was
+      not working in desktop mode.
+    - Ensure that disabling “Save Application State” in
+      Preferences prevents tool data from being saved and stops it
+      from being restored on application restart.
+
+- update to 9.6:
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16 and 17
+    - EDB Advanced Server: 13, 14, 15, 16 and 17
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 17.2
+  * New features
+    - Ensure that keyboard shortcuts are displayed in tooltips,
+      context menus, and the main menu.
+    - Implemented a server-side cursor to enhance performance when
+      retrieving large datasets.
+    - Added support for setting a custom SESSION_DIGEST_METHOD in
+      pgAdmin 4 to facilitate FIPS compliance.
+    - Enable the PKCE workflow for OAuth 2 authentication.
+  * Housekeeping
+    - Ensure that pgAdmin 4 is compatible with PG/EPAS v18.
+    - Use ‘Drop’ instead of ‘Delete’ for object commands to make
+      destructive actions more deliberate.
+  * Bug fixes
+    - Fixed an issue where windows installer is not signing tmp
+      files generated by InnoSetup.
+    - Fixed an issue in the Search Objects tool where selecting a
+      node occasionally selected an incorrect node.
+    - Improved the application state restoration by leveraging
+      rc-dock layout and ensure the order and layout of tabs is
+      maintained on restore.
+    - Fixed an issue where json editor in result grid was crashing
+      if null value is set in the json editor.
+    - Update zstd library link to 1.5.7 in Dockerfile.
+
+- update to 9.5:
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16 and 17
+    - EDB Advanced Server: 13, 14, 15, 16 and 17
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 17.2
+  * New features
+    - Add a new permission to allow disabling “Change Password”
+      feature for a pgAdmin role.
+    - Added role-based restrictions for editing server connections.
+    - Added support for customizing keyboard shortcuts in the Query
+      Tool’s Edit menu.
+    - Add a search box to enable searching within the preferences
+      tab.
+    - Added support to preserve the workspace, query windows, and
+      pgAdmin state during an abrupt shutdown or restart.
+    - Open preferences in a new tab instead of a dialog for better
+      user experience.
+    - Supports JSON logging for gunicorn process within Docker.
+  * Bug fixes
+    - Improved PL/pgSQL code folding and support nested blocks.
+    - Add a flag to allow access to system Python packages on
+      recent Linux distributions.
+    - Fixed an issue where utilities such as pg_dump and pg_restore
+      failed to log error messages when required dependency files
+      were missing.
+    - Fixed an issue where the Schema Diff Tool incorrectly
+      reported differences due to variations in the order of the
+      privileges.
+    - Fixed an issue in SQL syntax highlighting where the same
+      color was used for both variable names and datatypes.
+    - Fixed an issue in the query tool where using multiple cursors
+      to copy text resulted in only the first line being copied.
+    - Ensure that Keyboard shortcuts for save and download actions
+      should not called when their respective UI buttons are
+      disabled.
+    - Fixed an issue where data export using a query opened the
+      wrong dialog type.
+    - Fixed an issue where data export using a query failed when
+      the query contained a newline character.
+    - Fixed a UI layout issue that occurred after upgrading from
+      pgAdmin v9.2 when all tabs had been closed prior to the
+      upgrade.
+    - Fixed an issue where the Columns node was not visible under
+      Catalog Objects.
+
+- update to 9.4:
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16 and 17
+    - EDB Advanced Server: 13, 14, 15, 16 and 17
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 17.2
+  * New features
+    - Enabled large file downloads for desktop users within the
+      query tool.
+    - Add all missing options to the Import/Export Data
+      functionality, and update the syntax of the COPY command to
+      align with the latest standards.
+    - Add support for exporting table data based on a custom query.
+  * Bug fixes
+    - Fixed an issue where the result grid slowed down when any
+      column contained a large amount of data.
+    - Fix the issue where an error is displayed when a table is
+      dropped while a query is running.
+    - Fixed an issue where the options key was not working as
+      expected in the PSQL tool.
+    - Fixed an issue where correct error message not displayed when
+      sql statement contains Arabic letters.
+    - Enhance contrast for selected and hovered items in the Object
+      Explorer to improve visibility and accessibility.
+    - Fixed an issue where the query tool returns “cannot unpack
+      non-iterable Response object” when running any query with a
+      database name change.
+    - Handle result grid data changes in View/Edit Data mode by
+      automatically reconnecting to the server if a disconnection
+      occurs.
+    - Implement API fetch error display for select dropdown.
+    - Fixed an issue where light theme briefly appears when pgAdmin
+      loads or tools open, even when a dark or system UI theme is
+      preferred.
+    - Fixed issues related to column range selection using
+      shift + click.
+    - Fixed an issue where pgAdmin failed to focus when previously
+      unfocused and then quit.
+
+- update to 9.3:
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16 and 17
+    - EDB Advanced Server: 13, 14, 15, 16 and 17
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 17.2
+  * New features
+    - Add support for type constructors for PostGIS spatial types.
+    - Added ability to use SQL in the “DB Restriction” field.
+    - Add support for custom roles and role permissions management
+      in pgAdmin.
+    - Added support for font ligatures.
+  * Bug fixes
+    - Add Cache-Control no-cache,no-store,must-revalidate header to
+      dynamically generated utils.js file.
+    - Fixed an issue where shift + click on rows/columns for range
+      selection did not work in the query tool data output window.
+    - Fixed an issue where the debugger hangs when stepping into
+      nested function/procedure.
+    - Fixed an issue where the scroll position in the Object
+      Explorer was not retained when switching workspaces.
+    - Ensure that graph data is updated even when the Dashboard tab
+      is inactive.
+    - Fixed an issue where Ctrl/Cmd+A in cell editor would select
+      all rows.
+    - Fixed an issue where drag and drop function with no
+      parameters does not work.
+    - Fixed an issue where changes to foreign key constraints were
+      not detected in the schema diff.
+    - Change the shortcut for canceling a running query as it
+      conflicts with the shortcut to open a new query tool.
+    - Fixed an issue where filtering on a view caused an error.
+    - Fixed an issue where the query tool went blank when
+      converting history dates to the appropriate locale format.
+    - Ensure that the server list is alphabetically sorted in the
+      Query Tool/PSQL workspace.
+    - Fixed an issue where the user management tab is not opening
+      in the classic layout.
+    - Allow OAuth 2 login using the username claim if the email is
+      absent from the user profile.
+
+- Rebase patches:
+  * package_deps.patch
+  * package_git_local.patch
+- Update vendored packages.
+
+-------------------------------------------------------------------
+Fri Apr 11 14:21:40 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to try to fix reproducible builds by disabling
+  webpack optimizations that seem to help with this:
+  * fix-reproducible-builds.patch
+
+-------------------------------------------------------------------
 Tue Apr  8 10:11:12 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - update to 9.2:

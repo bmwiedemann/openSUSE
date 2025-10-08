@@ -7,7 +7,7 @@ Index: pgadmin4-8.2/web/package.json
 --- pgadmin4-8.2.orig/web/package.json
 +++ pgadmin4-8.2/web/package.json
 @@ -131,9 +131,9 @@
-     "rc-dock": "^3.2.9",
+     "rc-dock": "^3.3.2",
      "react": "^18.2.0",
      "react-arborist": "^3.2.0",
 -    "react-aspen": "^1.1.0",

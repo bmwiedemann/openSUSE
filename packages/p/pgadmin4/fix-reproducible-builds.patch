@@ -1,0 +1,15 @@
+Index: pgadmin4-9.2/web/webpack.config.js
+===================================================================
+--- pgadmin4-9.2.orig/web/webpack.config.js
++++ pgadmin4-9.2/web/webpack.config.js
+@@ -343,6 +343,10 @@ module.exports = [{
+     ignored: /node_modules/,
+   },
+   optimization: {
++    providedExports: false,
++    usedExports: false,
++    concatenateModules: false,
++    sideEffects: false,
+     minimizer: PRODUCTION ? [
+       new TerserPlugin({
+         parallel: false,

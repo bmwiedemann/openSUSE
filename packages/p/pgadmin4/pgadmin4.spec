@@ -1,7 +1,7 @@
 #
 # spec file for package pgadmin4
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,7 +70,7 @@
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        9.2
+Version:        9.8
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -93,12 +93,14 @@ Source14:       optipng
 Source20:       package-lock.json
 Source99:       update-vendor.sh
 Source100:      node_modules.spec.inc
+Source101:      node_modules.sums
 %include        %{_sourcedir}/node_modules.spec.inc
 Patch0:         use-os-makedirs.patch
 Patch1:         fix-python3-crypto-call.patch
 Patch2:         support-new-azure-mgmt-rdbms.patch
 Patch5:         fix-eventlet-select_epoll.patch
 Patch6:         make-cloud-packages-optional.patch
+Patch7:         fix-reproducible-builds.patch
 Patch10:        package_deps.patch
 Patch1000:      package_git_local.patch
 BuildRequires:  %{python_module Authlib >= %{python3_authlib_min_version}}
@@ -295,6 +297,8 @@ sed -i -e 's/^cryptography==42\.0\.\*/cryptography==41.0.*/' requirements.txt
 
 # Remove dependency on yarn version for which there's not an available package
 sed -i -z -e 's/,\n *"packageManager": "yarn@3.6.4"//' web/package.json
+
+sed -i -e 's,/usr/bin/env python3,/usr/bin/python3,' web/pgacloud/pgacloud.py
 
 cp %{SOURCE8} .
 cp %{SOURCE9} .
