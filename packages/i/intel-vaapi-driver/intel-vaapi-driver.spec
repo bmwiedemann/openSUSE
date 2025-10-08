@@ -1,6 +1,7 @@
 #
 # spec file for package intel-vaapi-driver
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +18,14 @@
 
 
 Name:           intel-vaapi-driver
-Version:        2.4.1
+Version:        2.4.4
 Release:        0
 Summary:        Intel Driver for Video Acceleration (VA) API for Linux
 License:        EPL-1.0 AND MIT
 Group:          System/Libraries
-URL:            https://github.com/intel/%{name}/
-Source0:        %{name}-%{version}.tar.bz2
-Source1:        %{name}-%{version}.tar.bz2.sha1sum
+URL:            https://github.com/irql-notlessorequal/intel-vaapi-driver
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-Patch0:         https://patch-diff.githubusercontent.com/raw/intel/%{name}/pull/566.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
@@ -66,6 +65,8 @@ Intel Driver for Libva is a library providing the VA API video acceleration API.
 %meson_install
 
 %files
+%license LICENSE
+%doc README* NEWS SECURITY.md
 %dir %{_libdir}/dri
 %{_libdir}/dri/i965_drv_video.so
 

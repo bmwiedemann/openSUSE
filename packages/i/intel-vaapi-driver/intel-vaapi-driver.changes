@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Oct  5 21:12:30 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.4.4
+  * Minor code cleanup.
+  * Expose ARGB as a surface, attempt two.
+  * Import an optimization from the iHD driver.
+  * Fix a potential deadlock problem in i965_put_surface_x11
+  * Import a workaround for low-resolution encoding on low-power
+    Gen 8 and 9 hardware.
+  * Move some defines into va_backend_compat, also fixes potential
+    errors when using an older libva.
+  * Fix non-RGB pixel format regressions introduced in 2.4.3
+  * Known issues: Chromium VA-API does not work on ILK (Ironlake)
+  * Known issues: SNB (Sandy Bridge) doesn't behave correctly with
+    BGRA/ARGB, causing issues on Chromium.
+- Update to IRQL-fork version 2.4.3
+  * Fix Chromium VA-API decoding
+  * Expose ARGB support within surfaces and VPP
+  * Implement vaMapBuffer2
+  * Implement vaSyncBuffer
+  * Implement vaSyncSurface2
+  * Add back rate-control counter support, enable with environment
+    variable `I965_RC_COUNTER=1`
+  * Silence some VA errors when a VAProfile is not found
+  * Fixed VP8 hybrid encoding handling, enable with environment
+    variable `I965_VP8_ENCODE=1`
+  * Allow VA_SURFACE_ATTRIB_MEM_TYPE_DRM_PRIME_3 in
+    i965_ExportSurfaceHandle
+  * Expose VAConfigAttribMaxPictureWidth
+  * Expose VAConfigAttribMaxPictureHeight
+  * Fix crashes for Wayland users when wl_drm is not available
+  * Fix JPEG decoding on IVB/HSW and BDW.
+  * Fix exporting tri-planar buffers with
+    VA_EXPORT_SURFACE_SEPARATE_LAYERS
+- remove 566.patch: fix upstream
+
+-------------------------------------------------------------------
 Wed Dec 18 13:41:58 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable Supplements, as package is no longer supported upstream.

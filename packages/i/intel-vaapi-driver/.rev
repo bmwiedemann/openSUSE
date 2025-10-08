@@ -178,4 +178,12 @@ vaapi-intel-driver needs to be dropped then.</comment>
     <comment></comment>
     <requestid>1234908</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3b96cb1eadb7975817ee3123debe0321</srcmd5>
+    <version>2.4.4</version>
+    <time>1759953205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309826</requestid>
+  </revision>
 </revisionlist>
