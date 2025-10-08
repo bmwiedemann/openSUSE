@@ -7176,4 +7176,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>fix FIPS with 6.17 (and make the metadata smaller by pulling in scripts); bugs: bsc#1250804</comment>
     <requestid>1308547</requestid>
   </revision>
+  <revision rev="803" vrev="1">
+    <srcmd5>3dfb42cae19ae3a4b7963b44cd33741b</srcmd5>
+    <version>6.17.1</version>
+    <time>1759940025</time>
+    <user>dimstar_suse</user>
+    <comment>6.17.1 &amp; !debug builds fix; bugs: bsc#1012628 bsc#1250946</comment>
+    <requestid>1309416</requestid>
+  </revision>
 </revisionlist>
