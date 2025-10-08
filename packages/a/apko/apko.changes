@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 08 04:50:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.15:
+  * DirFS: correct resetting of permissions (#1877)
+  * build(deps): bump chainguard-dev/actions from 1.5.2 to 1.5.3
+    (#1876)
+
+-------------------------------------------------------------------
 Mon Oct 06 05:31:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.14:
