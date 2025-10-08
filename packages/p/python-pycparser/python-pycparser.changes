@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 29 16:39:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to elease_v2.23:
+  * Allow abstract declarator "static" (GH issue #539)
+  * Add support for Python 3.13
+  * Add dirent and socket typedefs.
+  * Support for labels with no statement
+  * Accept empty 'case' or 'default' labels
+  * fix: preserve parentheses for statement exprs
+  * fix: hex float types
+  * Explicit error for comments, with README link
+  * showemptyattrs option on Node.show()
+  * Add fake typedefs for GNU Extension 128-bit integers.
+  * Typedef for __kernel_sa_family_t in linux/socket.h
+- update to elease_v2.22:
+  * Add missing SCHAR limit defines
+  * Use proper SPDX identifier
+  * Add Python 3.11 as a supported version
+  * Fix multi-pragma/single statement blocks
+  * Add an encoding parameter to parse_file
+  * Feature/add  pragma support
+  * Set up permissions to ci.yml
+  * _build_tables: Invalidate cache before importing generated
+    modules
+  * Upgrade GitHub Actions
+  * Create a Security Policy
+  * New example to generate AST from scratch
+  * Add support for Python 3.12
+  * ply: Make generated lextab.py deterministic
+
+-------------------------------------------------------------------
 Wed Jun  4 09:29:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
