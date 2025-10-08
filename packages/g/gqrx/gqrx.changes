@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  7 11:33:44 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Switch to Qt6
+
+-------------------------------------------------------------------
+Sat Oct  4 17:23:50 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Remove BuildRequires on libboost_system-devel for Tumbleweed,
+   removed on boost 1.89 (bsc#1250594)
+
+-------------------------------------------------------------------
 Fri May 30 13:27:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.17.7
