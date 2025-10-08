@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  8 04:58:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.50.15:
+  * Resolved Issues
+    - #3591 REVERTED! Accept suggestion with enter (without having to
+      "tab")
+
+-------------------------------------------------------------------
 Tue Oct  7 05:56:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.50.14:
