@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Sep 30 15:57:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.13.3 (bsc#1250803, CVE-2025-61587)
+  * Enhanced Translation Memory management with configurable status
+    control.
+  * Added cleanup_memory management command to remove obsolete
+    translation memory entries.
+  * Some flags are now added to a string by default, based on locations.
+  * Added Commit Policy setting to control which translations are
+    included when committing changes.
+  * New management command list_file_format_params to list all available
+    file format parameters.
+  * Searching for strings supports labels_count:NUMBER lookup.
+  * Avatars for API and internal accounts.
+  * Migration towards Bootstrap 5 has started, selected views now use
+    Bootstrap 5.
+  * OpenAI compatibility with latest models.
+  * Smarter retries of unwritable pending changes.
+  * Failed Two-factor authentication is visible in Audit log.
+  * LibreTranslate compatibility with LibreTranslate 1.7.0.
+  * Shorten session expiry while in Two-factor authentication.
+  * Removed support for no longer working IBM Watson Language Translator.
+  * Error reporting upon validation of the file upload method.
+  * Text on the registration page informs about possible use of user’s data
+    in more detail.
+  * Fixed an open redirect when Weblate is configured with Anubis and
+    REDIRECT_DOMAINS is not set.
+- Drop weblate-%{version}.tar.gz.sigstore.json, we don't verify it anyway
+
+-------------------------------------------------------------------
 Tue Jun 17 12:22:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.12.1 (bsc#1244678, bsc#1244676)

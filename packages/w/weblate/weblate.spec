@@ -1,7 +1,7 @@
 #
 # spec file for package weblate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,12 @@
 %define WLETCDIR %{_sysconfdir}/weblate
 %define _name Weblate
 Name:           weblate
-Version:        5.12.1
+Version:        5.13.3
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
 URL:            https://github.com/WeblateOrg/weblate
-Source0:        https://github.com/WeblateOrg/weblate/releases/download/weblate-%{version}/weblate-%{version}.tar.gz
-Source1:        https://github.com/WeblateOrg/weblate/releases/download/weblate-%{version}/weblate-%{version}.tar.gz.sigstore.json
+Source0:        https://github.com/WeblateOrg/weblate/archive/refs/tags/weblate-%{version}.tar.gz
 # GPG key from Michal Čihař
 # Fingerprint 63CB 1DF1 EF12 CF2A C0EE 5A32 9C27 B313 42B7 511D
 # https://cihar.com/.well-known/openpgpkey/hu/wmxth3chu9jfxdxywj1skpmhsj311mzm
@@ -37,7 +36,7 @@ Source2:        %{name}.keyring
 # most probably some issue on our side
 Patch:          skip-test_ocr.patch
 BuildRequires:  bitstream-vera
-BuildRequires:  borgbackup >= 1.2.5
+BuildRequires:  borgbackup >= 1.4.0
 BuildRequires:  fdupes
 BuildRequires:  git >= 2.28
 BuildRequires:  git-review >= 1.27.0
@@ -52,58 +51,59 @@ BuildRequires:  postgresql-contrib
 BuildRequires:  postgresql-server
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Cython >= 3.0.0
+BuildRequires:  python3-Cython >= 3.1.0
 BuildRequires:  python3-Django >= 5.1.5
 BuildRequires:  python3-GitPython >= 3.1.14
-BuildRequires:  python3-Pillow >= 10.3.0
-BuildRequires:  python3-Pygments >= 2.17.0
-BuildRequires:  python3-Unidecode >= 1.3.8
-BuildRequires:  python3-aeidon >= 1.14.1
-BuildRequires:  python3-ahocorasick-rs >= 0.20.0
+BuildRequires:  python3-Pillow >= 11.0.0
+BuildRequires:  python3-Pygments >= 2.19.0
+BuildRequires:  python3-Unidecode >= 1.4.0
+BuildRequires:  python3-aeidon >= 1.15
+BuildRequires:  python3-ahocorasick-rs >= 0.22.0
 BuildRequires:  python3-aliyun-python-sdk-alimt >= 3.2.0
 BuildRequires:  python3-altcha >= 0.2.0
 BuildRequires:  python3-boto3 >= 1.28.62
-BuildRequires:  python3-celery >= 5.4.0
-BuildRequires:  python3-certifi >= 2025.4.26
+BuildRequires:  python3-celery >= 5.5.3
+BuildRequires:  python3-certifi >= 2025.6.15
 BuildRequires:  python3-charset-normalizer >= 2.0.12
 BuildRequires:  python3-crispy-bootstrap3 >= 2024.1
-BuildRequires:  python3-cryptography >= 42.0.4
-BuildRequires:  python3-cssselect >= 1.2
+BuildRequires:  python3-crispy-bootstrap5 >= 2025.6
+BuildRequires:  python3-cryptography >= 45.0.1
+BuildRequires:  python3-cssselect >= 1.3.0
 BuildRequires:  python3-cyrtranslit >= 1.1.0
 BuildRequires:  python3-dateparser >= 1.2.0
 BuildRequires:  python3-diff_match_patch = 20241021
-BuildRequires:  python3-disposable-email-domains >= 0.0.120
-BuildRequires:  python3-django-appconf >= 1.0.3
+BuildRequires:  python3-disposable-email-domains >= 0.0.125
+BuildRequires:  python3-django-appconf >= 1.1.0
 BuildRequires:  python3-django-auth-ldap >= 4.6.0
-BuildRequires:  python3-django-celery-beat >= 2.7.0
-BuildRequires:  python3-django-cors-headers >= 4.6.0
-BuildRequires:  python3-django-crispy-forms >= 2.3
+BuildRequires:  python3-django-celery-beat >= 2.8.0
+BuildRequires:  python3-django-cors-headers >= 4.7.0
+BuildRequires:  python3-django-crispy-forms >= 2.4
 BuildRequires:  python3-django-filter >= 24.3
-BuildRequires:  python3-django-otp >= 1.5.4
-BuildRequires:  python3-django-otp-webauthn >= 0.4.0
-BuildRequires:  python3-django-redis >= 5.4.0
+BuildRequires:  python3-django-otp >= 1.6.0
+BuildRequires:  python3-django-otp-webauthn >= 0.6.0
+BuildRequires:  python3-django-redis >= 6.0.0
 BuildRequires:  python3-django_compressor >= 4.5.1
-BuildRequires:  python3-djangorestframework >= 3.15.2
+BuildRequires:  python3-djangorestframework >= 3.16.0
 BuildRequires:  python3-djangorestframework-csv >= 3.0.2
 BuildRequires:  python3-docutils >= 0.21.2
 BuildRequires:  python3-drf-spectacular >= 0.28.0
 BuildRequires:  python3-drf-spectacular-sidecar
 BuildRequires:  python3-drf-standardized-errors >= 0.14.1
-BuildRequires:  python3-filelock >= 3.16.1
+BuildRequires:  python3-filelock >= 3.18.0
 BuildRequires:  python3-fluent.syntax >= 0.19.0
 BuildRequires:  python3-gobject >= 3.40.1
 BuildRequires:  python3-google-cloud-storage >= 2.18.2
 BuildRequires:  python3-google-cloud-translate >= 3.13.0
-BuildRequires:  python3-hiredis >= 2.2.1
-BuildRequires:  python3-html2text >= 2024.2.25
+BuildRequires:  python3-hiredis >= 3.1.0
+BuildRequires:  python3-html2text >= 2025.4.15
 BuildRequires:  python3-iniparse >= 0.5
 BuildRequires:  python3-jsonschema >= 4.23.0
-BuildRequires:  python3-lxml >= 5.2.0
+BuildRequires:  python3-lxml >= 5.4.0
 BuildRequires:  python3-mistletoe >= 1.4.0
-BuildRequires:  python3-nh3 >= 0.2.14
+BuildRequires:  python3-nh3 >= 0.2.20
 BuildRequires:  python3-openai >= 1.3.0
 BuildRequires:  python3-openpyxl >= 3.1.0
-BuildRequires:  python3-packaging >= 23
+BuildRequires:  python3-packaging >= 25
 BuildRequires:  python3-phply >= 1.2.6
 BuildRequires:  python3-psycopg >= 3.1.8
 BuildRequires:  python3-pycairo >= 1.20.0
@@ -118,108 +118,108 @@ BuildRequires:  python3-python-akismet >= 0.4.2
 BuildRequires:  python3-python-dateutil >= 2.8.2
 BuildRequires:  python3-python-redis-lock >= 4
 BuildRequires:  python3-python3-saml >= 1.2.1
-BuildRequires:  python3-qrcode >= 7.4.1
-BuildRequires:  python3-rapidfuzz >= 3.8.0
-BuildRequires:  python3-redis >= 5.0.2
+BuildRequires:  python3-qrcode >= 8.2
+BuildRequires:  python3-rapidfuzz >= 3.12.1
+BuildRequires:  python3-redis >= 5.2.0
 BuildRequires:  python3-regex >= 2024.11.6
 BuildRequires:  python3-requests >= 2.32.2
 BuildRequires:  python3-responses >= 0.10.1
 BuildRequires:  python3-respx >= 0.20.2
 BuildRequires:  python3-ruamel.yaml >= 0.18.0
 BuildRequires:  python3-selenium
-BuildRequires:  python3-sentry-sdk >= 2.15.0
+BuildRequires:  python3-sentry-sdk >= 2.28.0
 BuildRequires:  python3-setuptools >= 40.3.0
-BuildRequires:  python3-siphashc >= 2.1
-BuildRequires:  python3-social-auth-app-django >= 5.4.2
-BuildRequires:  python3-social-auth-core >= 4.5.4
+BuildRequires:  python3-siphashc >= 2.5
+BuildRequires:  python3-social-auth-app-django >= 5.5.1
+BuildRequires:  python3-social-auth-core >= 4.7.0
 BuildRequires:  python3-standardwebhooks >= 1.0.0
-BuildRequires:  python3-tesserocr >= 2.6.1
-BuildRequires:  python3-translation-finder >= 2.18
-BuildRequires:  python3-user-agents >= 2.0
-BuildRequires:  python3-weblate-language-data >= 2025.2
-BuildRequires:  python3-weblate-schemas = 2025.2
+BuildRequires:  python3-tesserocr >= 2.8.0
+BuildRequires:  python3-translation-finder >= 2.22
+BuildRequires:  python3-user-agents >= 2.2.0
+BuildRequires:  python3-weblate-language-data >= 2025.7
+BuildRequires:  python3-weblate-schemas = 2025.6
 BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
-BuildRequires:  translate-toolkit >= 3.15.3
+BuildRequires:  translate-toolkit >= 3.16.1
 BuildRequires:  typelib(Pango) >= 1.0
 BuildRequires:  typelib(PangoCairo) >= 1.0
 BuildRequires:  typelib(Rsvg)
 BuildRequires:  user(wwwrun)
-Requires:       borgbackup >= 1.2.5
+Requires:       borgbackup >= 1.4.0
 Requires:       cron
 Requires:       git >= 2.28
 Requires:       gpg2
 Requires:       postgresql
 Requires:       postgresql-contrib
-Requires:       python3-Cython >= 3.0.0
+Requires:       python3-Cython >= 3.1.0
 Requires:       python3-Django >= 5.1.5
 Requires:       python3-GitPython >= 3.1.14
-Requires:       python3-Pillow >= 10.3.0
-Requires:       python3-Pygments >= 2.17.0
-Requires:       python3-Unidecode >= 1.3.8
-Requires:       python3-aeidon >= 1.14.1
-Requires:       python3-ahocorasick-rs >= 0.20.0
+Requires:       python3-Pillow >= 11.0.0
+Requires:       python3-Pygments >= 2.19.0
+Requires:       python3-Unidecode >= 1.4.0
+Requires:       python3-aeidon >= 1.15
+Requires:       python3-ahocorasick-rs >= 0.22.0
 Requires:       python3-altcha >= 0.2.0
-Requires:       python3-celery >= 5.4.0
-Requires:       python3-certifi >= 2025.4.26
+Requires:       python3-celery >= 5.5.3
+Requires:       python3-certifi >= 2025.6.15
 Requires:       python3-charset-normalizer >= 2.0.12
 Requires:       python3-crispy-bootstrap3 >= 2024.1
-Requires:       python3-cryptography >= 42.0.4
-Requires:       python3-cssselect >= 1.2
+Requires:       python3-crispy-bootstrap5 >= 2025.6
+Requires:       python3-cryptography >= 45.0.1
+Requires:       python3-cssselect >= 1.3.0
 Requires:       python3-cyrtranslit >= 1.1.0
 Requires:       python3-dateparser >= 1.2.0
 Requires:       python3-diff_match_patch = 20241021
-Requires:       python3-disposable-email-domains >= 0.0.120
-Requires:       python3-django-appconf >= 1.0.3
-Requires:       python3-django-celery-beat >= 2.7.0
-Requires:       python3-django-cors-headers >= 4.6.0
-Requires:       python3-django-crispy-forms >= 2.3
+Requires:       python3-disposable-email-domains >= 0.0.125
+Requires:       python3-django-appconf >= 1.1.0
+Requires:       python3-django-celery-beat >= 2.8.0
+Requires:       python3-django-cors-headers >= 4.7.0
+Requires:       python3-django-crispy-forms >= 2.4
 Requires:       python3-django-filter >= 24.3
-Requires:       python3-django-otp >= 1.5.4
-Requires:       python3-django-otp-webauthn >= 0.4.0
-Requires:       python3-django-redis >= 5.4.0
+Requires:       python3-django-otp >= 1.6.0
+Requires:       python3-django-otp-webauthn >= 0.6.0
+Requires:       python3-django-redis >= 6.0.0
 Requires:       python3-django_compressor >= 4.5.1
-Requires:       python3-djangorestframework >= 3.15.2
+Requires:       python3-djangorestframework >= 3.16.0
 Requires:       python3-djangorestframework-csv >= 3.0.2
 Requires:       python3-docutils >= 0.21.2
 Requires:       python3-drf-spectacular >= 0.28.0
 Requires:       python3-drf-spectacular-sidecar
 Requires:       python3-drf-standardized-errors >= 0.14.1
-Requires:       python3-filelock >= 3.16.1
+Requires:       python3-filelock >= 3.18.0
 Requires:       python3-fluent.syntax >= 0.19.0
 Requires:       python3-gobject >= 3.40.1
-Requires:       python3-hiredis >= 2.2.1
-Requires:       python3-html2text >= 2019.8.11
+Requires:       python3-hiredis >= 3.1.0
+Requires:       python3-html2text >= 2025.4.15
 Requires:       python3-iniparse >= 0.5
 Requires:       python3-jsonschema >= 4.23.0
-Requires:       python3-lxml >= 5.2
+Requires:       python3-lxml >= 5.4.0
 Requires:       python3-mistletoe >= 1.4.0
-Requires:       python3-nh3 >= 0.2.14
+Requires:       python3-nh3 >= 0.2.20
 Requires:       python3-openpyxl >= 3.1.0
-Requires:       python3-packaging >= 23
+Requires:       python3-packaging >= 25
 Requires:       python3-phply >= 1.2.6
 Requires:       python3-pycairo >= 1.20.0
 Requires:       python3-pyicumessageformat >= 1.0.0
 Requires:       python3-pyparsing >= 3.2.0
 Requires:       python3-python-dateutil >= 2.8.2
-Requires:       python3-python-redis-lock >= 4
-Requires:       python3-qrcode >= 7.4.1
-Requires:       python3-rapidfuzz >= 3.8.0
-Requires:       python3-redis >= 5.0.2
+Requires:       python3-qrcode >= 8.2
+Requires:       python3-rapidfuzz >= 3.12.1
+Requires:       python3-redis >= 5.2.0
 Requires:       python3-regex >= 2024.11.6
 Requires:       python3-requests >= 2.32.2
 Requires:       python3-ruamel.yaml >= 0.18.0
-Requires:       python3-sentry-sdk >= 2.15.0
-Requires:       python3-siphashc >= 2.1
-Requires:       python3-social-auth-app-django >= 5.4.2
-Requires:       python3-social-auth-core >= 4.5.4
+Requires:       python3-sentry-sdk >= 2.28.0
+Requires:       python3-siphashc >= 2.5
+Requires:       python3-social-auth-app-django >= 5.5.1
+Requires:       python3-social-auth-core >= 4.7.0
 Requires:       python3-standardwebhooks >= 1.0.0
-Requires:       python3-tesserocr >= 2.6.1
-Requires:       python3-translation-finder >= 2.18
-Requires:       python3-user-agents >= 2.0
-Requires:       python3-weblate-language-data >= 2025.2
-Requires:       python3-weblate-schemas = 2025.2
-Requires:       translate-toolkit >= 3.15.3
+Requires:       python3-tesserocr >= 2.8.0
+Requires:       python3-translation-finder >= 2.22
+Requires:       python3-user-agents >= 2.2.0
+Requires:       python3-weblate-language-data >= 2025.7
+Requires:       python3-weblate-schemas = 2025.6
+Requires:       translate-toolkit >= 3.16.1
 Requires:       ((apache2 and apache2-mod_wsgi) or (nginx and uwsgi))
 Requires:       typelib(Pango) >= 1.0
 Requires:       typelib(PangoCairo) >= 1.0
@@ -257,7 +257,7 @@ List of features includes:
 * Wide range of supported translation formats (Getext, Qt, Java, Windows, Symbian and more)
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{name}-%{version}
 %autopatch -p1
 
 sed -i \
