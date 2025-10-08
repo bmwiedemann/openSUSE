@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 29 21:04:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.2:
+  * Print output "dots" for successful unittest subtests (#164).
+  * Improved reporting in case subtests raise pytest.xfail
+    (#194).
+
+-------------------------------------------------------------------
 Tue Apr 22 12:59:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - pytest made attrs optional, add it here
