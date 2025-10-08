@@ -216,4 +216,13 @@ On Wednesday 19 September 2012, Julian Mehnle wrote:
     <comment>- fix conflict with spfd daemon in libspf2 (forwarded request 1222490 from dstoecker)</comment>
     <requestid>1222669</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b1d0b26d47f90c42e0659b471b8f5bd1</srcmd5>
+    <version>3.202.505.50</version>
+    <time>1759939945</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.202.505.50 (3.20250505)
+   see /usr/share/doc/packages/perl-Mail-SPF/Changes</comment>
+    <requestid>1309352</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-SPF
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Mail-SPF
 Name:           perl-Mail-SPF
-Version:        3.202.406.170
+Version:        3.202.505.50
 Release:        0
-# 3.20240617 -> normalize -> 3.202.406.170
-%define cpan_version 3.20240617
+# 3.20250505 -> normalize -> 3.202.505.50
+%define cpan_version 3.20250505
 License:        BSD-3-Clause
 Summary:        An object-oriented implementation of Sender Policy Framework
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MB/MBRADSHAW/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AD/ADAVIS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 Patch0:         skip_test.patch
 BuildArch:      noarch
 BuildRequires:  perl
@@ -36,11 +37,11 @@ BuildRequires:  perl(Net::DNS::RR)
 BuildRequires:  perl(Net::DNS::Resolver)
 BuildRequires:  perl(Net::DNS::Resolver::Programmable)
 BuildRequires:  perl(NetAddr::IP)
-BuildRequires:  perl(URI::Escape) >= 1.13
+BuildRequires:  perl(URI::Escape) >= 1.130
 Requires:       perl(Error)
 Requires:       perl(Net::DNS::Resolver)
 Requires:       perl(NetAddr::IP)
-Requires:       perl(URI::Escape) >= 1.13
+Requires:       perl(URI::Escape) >= 1.130
 Provides:       perl(Mail::SPF) = %{version}
 Provides:       perl(Mail::SPF::Base)
 Provides:       perl(Mail::SPF::EAbstractClass)
@@ -116,14 +117,15 @@ Provides:       perl(Mail::SPF::v2::Record)
 
 %description
 *Mail::SPF* is an object-oriented implementation of Sender Policy Framework
-(SPF). See http://www.openspf.org for more information about SPF.
+(SPF). See https://tools.ietf.org/html/rfc7208 for more information about
+SPF.
 
 This class collection aims to fully conform to the SPF specification (RFC
 4408) so as to serve both as a production quality SPF implementation and as
 a reference for other developers of SPF implementations.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN

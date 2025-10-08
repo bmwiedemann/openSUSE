@@ -6,8 +6,8 @@ patches:
 #preamble: |-
 # BuildRequires:  gcc-c++
 post_prep: |-
- mv %{buildroot}%{_bindir}/spfd %{buildroot}%{_bindir}/spfd_perl
- sed -i s/spfd/spfd_perl/ Makefile.PL
+  mv bin/spfd bin/spfd_perl
+  sed -i s/spfd/spfd_perl/ Makefile.PL
 #post_install: |-
 # mv %{buildroot}%{_bindir}/spfd %{buildroot}%{_bindir}/spfd_perl
 #license: SUSE-NonFree
