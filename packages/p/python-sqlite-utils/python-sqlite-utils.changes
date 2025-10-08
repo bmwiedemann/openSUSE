@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  8 05:02:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-click-8.3.0.patch:
+  * Workaround click 8.3.0 bug.
+- Correct Requires, it's python-python-dateutil.
+
+-------------------------------------------------------------------
 Wed Mar 19 12:47:42 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file.

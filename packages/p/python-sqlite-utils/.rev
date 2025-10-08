@@ -140,4 +140,14 @@
 </comment>
     <requestid>1254406</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>42c5fceeeab8e7b33e33f97a4f711739</srcmd5>
+    <version>3.38</version>
+    <time>1759940094</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-click-8.3.0.patch:
+  * Workaround click 8.3.0 bug.
+- Correct Requires, it's python-python-dateutil.</comment>
+    <requestid>1309733</requestid>
+  </revision>
 </revisionlist>

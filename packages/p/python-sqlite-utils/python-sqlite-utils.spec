@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlite-utils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Version:        3.38
 Release:        0
 Summary:        Python CLI tool and library for manipulating SQLite databases
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/simonw/sqlite-utils
 Source:         https://files.pythonhosted.org/packages/source/s/sqlite_utils/sqlite_utils-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#simonw/sqlite-utils#665/commits/211831966ed389954f44cb8aa2b842481c374557
+Patch0:         support-click-8.3.0.patch
 BuildRequires:  %{python_module click-default-group}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module hypothesis}
@@ -40,8 +41,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-click-default-group
-Requires:       python-dateutil
 Requires:       python-pluggy
+Requires:       python-python-dateutil
 Requires:       python-sqlite-fts4
 Requires:       python-tabulate
 Requires(post): update-alternatives
@@ -53,7 +54,7 @@ BuildArch:      noarch
 CLI tool and Python utility functions for manipulating SQLite databases.
 
 %prep
-%setup -q -n sqlite_utils-%{version}
+%autosetup -p1 -n sqlite_utils-%{version}
 # https://github.com/simonw/sqlite-utils/issues/357
 sed -i 's:pytest-runner:pytest:' setup.py
 
@@ -80,6 +81,6 @@ export LANG=en_US.UTF-8
 %license LICENSE
 %python_alternative %{_bindir}/sqlite-utils
 %{python_sitelib}/sqlite_utils
-%{python_sitelib}/sqlite_utils-%{version}*-info
+%{python_sitelib}/sqlite_utils-%{version}.dist-info
 
 %changelog
