@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  9 09:56:43 UTC 2025 - Daniel Donisa <daniel.donisa@suse.com>
+
+- update to version 2.2.19
+
+   * [CVE-2025-61772] Multipart parser buffers unbounded per-part headers, enabling DoS (memory exhaustion)
+   * [CVE-2025-61771] Multipart parser buffers large non‑file fields entirely in memory, enabling DoS (memory exhaustion)
+   * [CVE-2025-61770] Unbounded multipart preamble buffering enables DoS (memory exhaustion)
+
+-------------------------------------------------------------------
 Fri Sep 26 12:10:49 UTC 2025 - Rubhan Azeem <rubhan.azeem@suse.com>
 
 - update to version 2.2.18

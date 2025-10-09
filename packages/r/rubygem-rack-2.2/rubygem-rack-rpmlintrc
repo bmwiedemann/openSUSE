@@ -1,2 +1,1 @@
-addFilter('wrong-script-interpreter.*rackup')
-addFilter('script-without-shebang')
+addFilter("update-alternatives-postun-call-missing")

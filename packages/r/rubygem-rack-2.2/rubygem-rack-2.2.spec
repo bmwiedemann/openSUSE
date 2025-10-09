@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-2.2
-Version:        2.2.18
+Version:        2.2.19
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
@@ -57,7 +57,7 @@ middleware) into a single method call.
 %install
 %gem_install \
   --symlink-binaries \
-  --doc-files="CHANGELOG.md MIT-LICENSE README.rdoc" \
+  --doc-files="CHANGELOG.md CONTRIBUTING.md MIT-LICENSE README.rdoc" \
   -f
 # MANUAL
 %fdupes %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/
