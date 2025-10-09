@@ -20,18 +20,23 @@
 %bcond_without crowdin_integration
 %bcond_with bundled_deps
 Name:           poedit
-Version:        3.6.3
+Version:        3.7
 Release:        0
 Summary:        Gettext Catalog Editing Tool
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://poedit.net/
 Source:         https://github.com/vslavik/poedit/releases/download/v%{version}-oss/%{name}-%{version}.tar.gz
+Patch1:         %{name}-boost-system.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_iostreams-devel >= 1.60
 BuildRequires:  libboost_regex-devel >= 1.60
+%if 0%{?suse_version} >= 1600
+BuildRequires:  automake
+%else
 BuildRequires:  libboost_system-devel >= 1.60
+%endif
 BuildRequires:  libboost_thread-devel >= 1.60
 BuildRequires:  pkgconfig
 BuildRequires:  wxGTK3-devel >= 3.2
@@ -60,13 +65,19 @@ editing catalogs over launching vi and editing the file by hand.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -N
+%if 0%{?suse_version} >= 1600
+%patch -p1 -P 1
+%endif
 %if !%{with bundled_deps}
 # Remove bundled dependencies, use the ones provided by the distribution
 rm -r deps
 %endif
 
 %build
+%if 0%{?suse_version} >= 1600
+autoreconf -fiv
+%endif
 %configure \
   %{!?with_language_detection: --without-cld2} \
   %{!?with_crowdin_integration: --without-cpprest}
