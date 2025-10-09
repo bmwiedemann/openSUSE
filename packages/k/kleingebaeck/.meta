@@ -1,0 +1,14 @@
+<package name="kleingebaeck" project="openSUSE:Factory">
+  <title>Backup tool for kleinanzeigen.de</title>
+  <description>This tool can be used to backup ads on the German ad page
+https://kleinanzeigen.de
+
+It downloads all (or only the specified ones) ads of one user into
+a directory, each ad into its own subdirectory.
+
+The backup will contain a textfile Adlisting.txt which contains
+the ad contents as the title, body, price etc.
+
+All images will be downloaded as well.</description>
+  <url>https://github.com/TLINDEN/kleingebaeck</url>
+</package>
