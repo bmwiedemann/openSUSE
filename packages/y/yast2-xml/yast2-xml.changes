@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  7 09:45:13 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix building with libxml2-2.14.5 which dropped AM_PATH_XML2
+  (bsc#1249605)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)
