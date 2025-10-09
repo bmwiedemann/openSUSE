@@ -1,7 +1,7 @@
 #
 # spec file for package uncrustify
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           uncrustify
-Version:        0.80.1
+Version:        0.81.0
 Release:        0
 Summary:        Source Code Beautifier for C, C++, C#, ObjectiveC, D
 License:        GPL-2.0-or-later

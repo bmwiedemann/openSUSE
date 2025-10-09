@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  4 15:19:16 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 0.81.0:
+  * Added   : nl_bool_expr_hierarchical
+  * Added   : indent_bool_nested_all
+
+-------------------------------------------------------------------
 Wed Dec  4 14:19:01 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 0.80.1:
@@ -6,7 +13,6 @@ Wed Dec  4 14:19:01 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
   * Removed : sp_inside_gparen
 
 - update to 0.80.0:
--------------------------------------------------------------------------------
   * Added   : sp_inside_gparen
   * Added   : sp_pragma_open_parenthesis
   * Added   : sp_struct_type
