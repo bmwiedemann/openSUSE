@@ -1,0 +1,968 @@
+-------------------------------------------------------------------
+Fri Oct  3 16:42:04 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- update to 2.81.8
+  - New
+
+  * Paschalis Melissas (melissaspaschalis@gmail.com) faust2wwise GSoC project.
+  * Facundo Franchino faust2clap GSoC project.
+  * New SignalFIRCompiler (WIP).
+  * Use fmin/fmax for real numbers and macros min_i/max_i for integer in ocpp and C backends.
+  * Add generateCAuxFilesFromFile2/generateAuxFilesFromString2 functions.
+
+  - Fixed bugs
+
+  * JSFX backend: fixed initialization missing for visible sliders & fixed string matching for polyphonic midi reserved names (exact match)
+  * Typos in codebox backend.
+  * Add missing shortname entry for soundfile in JSON.
+  * remNode should use fmod if one of the two arguments is a float number, cleanup
+
+  - Libraries
+
+  * Major DX7 update.
+  * Add ma.unwrap().
+  * Correct aa.Rsinh and aa.Rtan.
+  * New linsweep/logsweep contributions by Oleg Nesterov.
+  * Add an.resonator().
+  * Add ba.pick() and ba.pickN().
+
+-------------------------------------------------------------------
+Tue Jul  8 05:09:20 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 2.81.2
+
+  - New
+  
+  * Add all MCP related code in McpUI.h, put in the faust/gui.
+  * Improve Rust backend for static tables handling.
+  * Add recursion, tables, waveform, select2 and prefix handlling in
+    SignalRenderer.
+  * Add wasmtime architecture.
+  * Rework MidiHandler and audio driver memory handling.
+  * Allow widget modulation targets to be defined by path. For example 
+    "chan 3/gain" wiil target any widget "gain" inside a group "chan 3".
+  * WebAssembly mixCheckVoice now use RMS for level computation.
+  * faustgen~: reworked polyphonic handling.
+  * Rework polyphonic handling: VOICE_STOP_LEVEL set to -90 dB, RMS
+    used for level computation, correct legato.
+  * Add pipewire support with console, qt and gtk GUI.
+  * Add kb_rom_rev1.dsp example.
+  * Add RNBO/codebox export in faustgen~ and 
+    generateAuxFilesFromFile2/generateAuxFilesFromString2 in libfaust.
+
+  - Fixed bugs
+
+  * Fixed sliders that were not being created in MIDI context (skipped),
+    so they now behave as normal sliders controlled manually OR by midi messages,
+    the exception being MIDI controls targetting a specific voice in
+    polyphonic context (not created as sliders). Added program change MIDI support.
+    Added pitchweel MIDI support. Fixed an issue (typo) in ysfx-dsp.h).
+  * JSFXInstVisitor::_midi_poly_assign should only generate polyphonic
+    (freq/gate/gain) parameters.
+  * Incorrect use of integer abs function instead of floating-point std::abs.
+  * Widget Modulation Bug. Labels in format 'v:group1/h:group2/name'
+    were not handled correctly
+
+  - Libraries
+
+  * Deterministic noise function.
+  * Add multiTapSincDelay.
+  * Add Vicanek's matched (decramped) second-order Butterworth low
+    and high shelving filters.
+  * Add Vicanek's decramped second-order resonant filters.
+
+-------------------------------------------------------------------
+Sun Mar 30 07:30:11 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 2.79.3
+  - New
+
+  * faustgen~: more robust code in multichannels mode.
+  * Add reverbTank.dsp example.
+  * Add wfs.dsp example.
+  * Add new mesh2faust API method to generate modal model and Faust
+    DSP code independently.
+  * Add parameter tracking and FFun/FVar in SDF3 backend.
+  * SignalPromotion now checks and possibly casts values in the waveform,
+    allowing for simplification in FIR generation.
+  * Option -rnlm (--rust-no-libm) added in Rust backend.
+  * Add sflooper.dsp and inlooper.dsp examples.
+  * Defining sdt::less<CTree*> operator to provide an unique and
+    stable ordering is enough to garanty determinism.
+  * Add -nopost option to faust2w32max6 and faust2w64max6.
+  * Install architecture/hothouse folder so that faust2hothouse can use it.
+
+  - Fixed bugs
+
+  * Correct rnbo.py for faust2rnbo.
+  * Add missing parameters in 
+    Unity FaustUtilities_template.cs/FaustPolyUtilities_template.cs so
+    JSON parse does not fail.
+  * faust2atomsnippets now removes the (pf) prefix.
+  * faust2w32max6 and faust2w64max6 now export DLL that can be
+    correct loaded.
+  * JUCE: correct setSelectedItemIndex use in uiMenu which should
+    take the value - 1.
+
+  - Libraries
+
+  * Define generic gen_fb_comb and reimplement fb_comb and fb_fcomb
+    with it.
+  * Add Keith Barr Allpass Loop Reverb.
+  * Add WFS algorithm.
+  * Add os.dsf environment, oscsillators with exponentially decaying
+    harmonics.
+  * Add pm.rk_solve() function, Runge-Kutta solver.
+  * Revert to the old CF mapping for the moogLadder filter, add the
+    same filter as a new function that takes parameters in Hz and
+    feedback gain raw values.
+  * Correct dx.dx7_algo documentation.
+  * Add svf morph functions.
+  * David Braun fix on 
+    mixLinearClamp/mixLinearLoop/mixPowerClamp/mixPowerLoop to
+    properly accept the N buses as inputs.
+
+-------------------------------------------------------------------
+Sun Feb  2 06:10:42 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove 02-disable-llvm-static.patch and 03-support-for-LLVM19.patch
+  not needed anymore
+- update to 2.77.3
+  - New
+
+  * Remove undeeded SVG generation in faustgen.
+  * Add -miniaudio option to faust2api.
+  * MiniaudioReader and miniaudio device using miniaudio library.
+  * Compilation is now deterministic.
+  * Add lint test for nondeterministic pointer comparison
+  * Add signal interpreter (WIP).
+  * Rust: provide a inplace interface for rust
+  * Implement soundfile handling at init stage in C, C++, LLVM 
+    and Interp backends.
+  * Add the 'varname' field to the JSON format.
+  * Update MIR backend for 1.0.0 API.
+  * Implement -ec, -cm and -os options in Rust backend.
+  * Rework minimal.c to demonstrate use of UIGlue.
+  * Updated class daisy_midi to be compatible with libDaisy v7.1.0
+  * Implement SDF3 generation backend.
+  * Rework Rust code generation.
+  * Use shortnames instead of labels in Cmajor backend.
+  * Add Faust DSP Testbench in JUCE architecture.
+
+  - Fixed bugs
+
+  * Remove empty groups when merging UI subcontainers.
+  * Fix duplicated bar graphs bug caused by double simplification.
+  * Fix missing type annotation step. This step is needed to draw
+    the retimed sig graph.
+  * Reserved keyword used in labels do not trigger impossible
+    simplications anymore.
+  * uiCheckButton in JuceGUI state handling.
+  * Correct -fgpa-mem option handing combined with fDLThreshold.
+  * Add -universal option in faust2unity, formatting.
+  * Update fastmath.cpp to be used with a C compiler.
+  * Update fastmath.cpp for GCC >= 14.2.x.
+  * Add a cmake LINK_LLVM_STATIC option.
+  * Add  :: prefix to dsp class to help with integration in JUCE.
+
+  - Libraries
+
+  * Add oneEuro filter.
+  * Add ba.mulaw_bitcrusher function.
+  * Add Kalman filter.
+  * Add linear algebra library.
+  * Topology-preserving transform SVF following Zavalishin's method;
+    Andy Simper's Dynamic Smoothing.
+  * Add ba.tAndH and fix ma.zc.
+  * Add second-order anti-aliased softclip.
+  * aa.softclipQuadratic2 renamed in aa.softclipQuadratic1.
+  * Add anti-aliased quadratic softclip.
+  * Add linear piecewise interpolation function.
+
+-------------------------------------------------------------------
+Thu Nov 14 05:58:48 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- add 03-support-for-LLVM19.patch fixing build
+
+-------------------------------------------------------------------
+Sat Sep 21 00:56:04 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- adapt the .spec for Fedora
+- add 02-disable-llvm-static.patch
+- update to 2.75.7
+  - New
+
+  * Add -mc option in faust2w32max6 and faust2w64max6.
+  * Add FAUST_DTREE_SIZE env variable.
+  * Deterministic compilation activated with the FAUST_DTREE environment
+    variable.
+  * Faster hashkey computation taken from boost::hash_combine.
+  * Update faust2object for Apple ARM targets.
+  * Add llvm-test-poly test.
+  * Introduction of sigRegister and retiming algorithm.
+  * Another gameaudio - complex rain sounds.
+  * Another gameaudio - modal synthesis of wind chimes.
+  * Another gameaudio example - thunder.
+  * Christof Ressi multichannel implementation in faust2puredata.
+    New -newio option to activate the new model.
+  * Document ratio related methods in APIUI.
+
+  - Fixed bugs
+
+  * Man page generation now uses '--' for long options.
+  * Use 'struct' instead of 'class' for C++ code generation in -uim mode.
+  * Steven Kraninger fix for JUCE architecture bus channel changes
+    for VST3 compatibility up to 8 channels. The original code would create
+    errors in debug and only provide 2 channels even when more 
+    channels were selected.
+
+  - Libraries
+
+  * New scatN function for general N-port scattering
+  * New scat primitive facilitates acyclic tree scattering networks.
+  * Add balanced par, sum, prod to signals.lib.
+  * Add selectxbus (selectbus with crossfade).
+
+-------------------------------------------------------------------
+Fri Sep 13 04:27:42 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update 01-fix-no-return.patch
+- Update to 2.74.6 
+  - New
+
+  * Improve JuceOSCUI to use OSC alias when they are used instead of
+    the path.
+  * Create architecture file and faust2stratus script for Chaos 
+    Audio Stratus pedal (Martin Bartlett).
+  * Add multichannels support in faustgen~.
+  * Add -mc (multi-channels model) option in faust2max6.
+  * Reworked mesh2fausttool by Karl Hiner.
+  * Added faust2caconsole (Core Audio + Console architecture).
+  * new DirectedGraph based code in progress in -ocpp backend.
+  * Reworked -fx mode with new -fx-size option. Merge Agathe Herrou
+    interval and precision branch.
+  * Rework -os (with new 'frame' method) and -it options. 
+    New -ec option to separate 'control' and 'compute'.
+  * Improve Rust backend to have ffi remainder/rint properly compile
+    on Windows.
+
+  - Fixed bugs
+
+  * Correct impulse-tests to correctly use -O3 optimisation level.
+  * Add a generic 'one update per single updateAllGuis refresh' 
+    model in GUI class. Use it for -bundle mode in OSCUI.
+  * Correct faust2max6 (OPTIONS was not used everywhere needed).
+
+  - Libraries
+
+  * Add ba.selectbus (David Braun).
+  * New spulse function added in basics.lib.
+  * Add reverbTank_demo (David Braun).
+  * Add ba.downSampleCV (David Braun).
+  * Add tapeStop effect and demo (David Braun).
+  * Add Vital reverb (David Braun).
+
+-------------------------------------------------------------------
+Sat Apr  6 23:02:15 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Remove 01-SubtargetFeature-include-path.patch
+- Update to 2.72.14
+- Add 01-fix-no-return.patch
+
+- 2.72.14 Changes:
+  - New
+
+  * Deactivate 'Const' optimization in InstructionsCompiler::generateVariableStore.
+  * Rework interp-tracer (-trace 7 not needed).
+  * Adding a new architecture file (faust2paconsole) and front-end
+    script for PortAudio console application building
+  * createPolyDSPInstance can use -1 so that the voice number is
+    found in the [nvoices:N] metadata.
+  * In Cmajor backend, processors are generated in 'namespace faust {...}'.
+  * Add createDspFromSignals API in faust-dynamic-engine.
+  * Add -double support for faust2jackrust and faust2portaudiorust.
+  * Add output control handling in faust2supercollider.
+  * New TypeScript based model for Web glue, linked to the separated
+    faustwasm project.
+  * Complete faust-dynamic-engine-test with test of createDspFromBoxes API.
+
+  - Fixed bugs
+
+  * Correct-cnoption in LLVM backend.
+  * Handling of -c option in faust2sndfile.
+  * Bug in -inj option handling. Make faust2max6 properly
+    manage -inj option.
+  * Fix remainder and rint in Rust backend.
+  * Fix remainder in JAX backend (using a PR from David Braun).
+  * Correct simplification function for 'lowest/highest' primitives.
+  * Type information was not correctly returned in LLVMInstVisitor::visitIndexedAddress.
+
+- 2.70.3 Changes:
+  - WebAssembly
+
+  * This is the latest release which contains the JavaScript
+    written Faust/WebAssembly glue code using the compiled
+    libfaust-wasm.js, libfaust-wasm.wasm and libfaust-wasm.data files,
+    also used in the faust2webaudio separated project. See documentation.
+  
+  * A new TypeScript/JavaScript based model will be used in the next versions.
+
+  - New
+
+  * Support of LLVM 18
+  * Add tests in faustbench, correct use of createSRAdapter.
+  * Add initial implementation of a Control UI for the daisy patch init device
+  * Change BinOp("|") to have fLeftAbsorbing/fRightAbsorbing predicates
+  * Teach kAND/kOR to optimize &(1) and |(1)
+  * Add boxFFun/CboxFFun and sigFFun/CsigFFun APIs
+  * Support rtaudio ver > 6.0 in rtaudio-dsp driver
+  * Add soundfile support in faust2supercollider
+  * Add createDspFromBoxes API in faust-dynamic-engine.h
+
+  - Fixed bugs
+
+  * mesh2faust: Fix out-of-order arg in main. Fix eigen dirs not
+    being included in executable target (was only included with library).
+  * Correct uiVUMeter in JuceGUI text display
+  * Correct Teensy architectures files, especially when several
+    DSP are compiled and used together
+  * Identifier naming in Cmajor backend
+
+  - Libraries
+
+  * Add co.ratio2strength and co.strength2ratio functions
+  * Add ba.kr2ar function
+  * Add os.sidebands function
+
+- 2.69.3 Changes:
+  - New
+
+  * Reworked mesh2faust tool.
+  * Rework faust-dynamic-engine.
+  * Experimental -diff option for 'Automatic Differentiation in
+    the Faust Compiler'
+  * Add sigDelay1 in signal API.
+  * Add printCBox/printCSignal API in box and signal API.
+  * Add getSigInterval/setSigInterval in signal API.
+  * New faust2rnbo tool (see https://faustdoc.grame.fr/tutorials/rnbo/)
+  * Reworked faust2vhdlcode.
+  * Add -it option to inline rdtable/rwtable code in the main class.
+  * Add missing round primitive in the language.
+  * Add -vec mode in Rust backend.
+  * Codebox backend (for RNBO support).
+  * MIDI and polyphonic support in JSFX backend.
+
+  - Fixed bugs
+
+  * Revert incorrect route primitive incorrect fix.
+  * Add checkNullBargraphLabel to better handle null labels in bargraph.
+  * Complete -quad support in C++ backend.
+  * Rework broken -inj option.
+
+  - Libraries
+
+  * Add ba.ifNc and ba.ifNcNo functions
+  * Adding new mathematical oscillators to oscillators.lib
+
+-------------------------------------------------------------------
+Fri Oct 27 20:25:30 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add 01-SubtargetFeature-include-path.patch
+- Update to 2.68.1
+
+- WebAssembly
+
+  * This is the latest release which contains the JavaScript 
+    written Faust/WebAssembly glue code using the compiled
+    libfaust-wasm.js, libfaust-wasm.wasm and libfaust-wasm.data
+    files, also used in the faust2webaudio separated project.
+    See documentation.
+
+  * A new TypeScript/JavaScript based model will be used in
+    the next versions.
+
+- New
+
+  * Reworked mesh2faust tool.
+  * Rework faust-dynamic-engine.
+  * Experimental -diff option for 'Automatic Differentiation in the
+    Faust Compiler'
+  * Add sigDelay1 in signal API.
+  * Add printCBox/printCSignal API in box and signal API.
+  * Add getSigInterval/setSigInterval in signal API.
+  * New faust2rnbo tool (see https://faustdoc.grame.fr/tutorials/rnbo/)
+  * Reworked faust2vhdlcode.
+  * Add -it option to inline rdtable/rwtable code in the main class.
+  * Add missing round primitive in the language.
+  * Add -vec mode in Rust backend.
+  * Codebox backend (for RNBO support).
+  * MIDI and polyphonic support in JSFX backend.
+
+- Fixed bugs
+
+  * Revert incorrect route primitive incorrect fix.
+  * Add checkNullBargraphLabel to better handle null labels in bargraph.
+  * Complete -quad support in C++ backend.
+  * Rework broken -inj option.
+
+- Libraries
+
+  * Add ba.ifNc and ba.ifNcNo functions
+  * Adding new mathematical oscillators to oscillators.lib
+ 
+-------------------------------------------------------------------
+Mon Jul  3 22:31:07 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Use cmake macros in .spec
+- Update to 2.60.3
+- New
+
+  * Rework -dlt threshold handling.
+  * JSFX backend contributed by Johann Philippe.
+  * Properly test -mcd values in best found vector option.
+  * Improve dsp_optimizer to properly test -mcd values in scalar mode.
+  * Add size (in bytes) item in JSON.
+
+- Fixed bugs
+
+  * More robust FaustPlugin_template.cs, correct faust2unity.
+  * Using boxpp to display real values in SVG diagrams.
+  * Make preset management thread safe.
+
+- Libraries
+
+  * New version of reducemaps.lib with parReduce.
+  * Fix RMS_FBcompressor_peak_limiter_N_chan.
+  * Add tabulateNd.
+  * tabulate: use int(id+0.5) in .val
+
+-------------------------------------------------------------------
+Tue May 23 03:12:08 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- add constraints
+
+-------------------------------------------------------------------
+Tue May 23 02:46:08 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove fix-include-cstdint-for-gcc13.patch - fixed in upstream
+- switch build to cmake
+- no libfaust.a in -devel (for now?)
+
+-------------------------------------------------------------------
+Fri May 19 07:39:27 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 2.59.6
+- New
+
+  * Improve cmajor-faust-tester tool to display performance ratio.
+  * Optimize atan2(x,x) as PI/4.
+  * Remove sigTable and use sigWRTbl to code rdtable and rwtable.
+  * Adding submodule for `faust2ck pointing to Stanford-CCRMA.
+  * Add classInit method in dsp_factory class (needed for LLVM backend)
+  * Add -double support in faust2bench.
+  * Micro optimisation for logical operators.
+  * Support for LLVM 17 API.
+  * Rework -ftz 0/1/2 mode to directly apply on signals.
+  * Rework same path rule for UI items: two input control cannot
+    have a same path (trigger an ERROR), an input control and
+    a bargraph can have the same path (WARNING), two bargraph can
+    have the same path (WARNING)
+  * Add fixed-point -fxmode [WIP]
+  * Add Trill RING and HEX sensors support in faust2bela
+  * Print ASSERT message when faustassert is triggered.
+  * Add -fpga-mem option to replace FAUST_MAX_SIZE environment variable.
+  * Support for LLVM 16 API.
+  * faust2max6 now compiles and keeps a self-contained DSP version
+    in the compiled external
+  * Soundfile support added in Interp/LLVM backend. Cleanup
+    Interp/MIR backend.
+  * Add experimental -fui option, to freeze UI sliders/nentry to
+    a given value.
+  * Interp LLVM backend updated to LLVM 15 API.
+  * Add a -cir option to check float to integer range conversion.
+  * Add tools in impulse-tests to test signal type.
+  * Use of the new interval library, developed as a separated project
+
+- Fixed bugs
+
+  * Fixes bug in defines logic which would fail faust2daisy with
+    -patch and -pod
+  * Remove gtk_progress_set_percentage in GTKUI.
+  * `mspUI handling in Max/MSP architectures.
+  * Use FAUST prefix in lex/yacc parser, to allow Faust parser
+    to cohabit with other generated lex/yacc parsers.
+  * Correct MIDI items reflectZone method. MIDI output activated again.
+  * Correct C/C++ backend with soundfile. Make faustbench usable
+    with DSP usingsoundfiles.
+  * Fix AndroidManifest.xml and faust2ios.
+  * More flexible channel layout in JUCE export.
+  * Correct VCVRack architecture.
+  * Correct -osX generation and architecture files.
+  * Correct faust2plot and faust2csvplot.
+
+- Libraries
+
+  * Add tabulateNd.
+  * Fix tabulate: use int(id+0.5) in .val
+  * Add it.remap.
+  * More general dryWetMixer/dryWetMixerConstantPower functions.
+  * Add sp.constantPowerPan.
+  * Add dry wet mixers.
+  * Add deg2rad and rad2deg.
+  * Correct 'os.phasor_imp' to start at 'phase' at first sample.
+
+-------------------------------------------------------------------
+Wed Mar 22 06:00:34 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add fix-include-cstdint-for-gcc13.patch
+- Remove llvm14 workaround for TW
+- Update to 2.54.9
+- New
+
+  * Android architecture updated for API 33
+  * Add [hidden:xx] metadata handling in JUCE architecture
+  * Karl Hiner support LLVM 15 by disabling opaque pointers (temporary solution)
+  * Update dplug architecture file
+  * Dynamic detection of -double mode in dynamic-jack-gtk tool
+  * Complete Faust/Cmajor hybrid patches
+  * Add -input option in interp-tracer tool
+  * Add a -wall option to print all warnings generated while compiling the code
+  * Rework -ct option and activate it by default
+  * Remove -cat option and rework -ct one to check the rdtable/rwtable range and generate safe access code
+  * Improve memory trace in Interp backend, correct SignalTreeChecker::visit to properly recurse
+  * Add -sts option to force strict compilation of 'selectX' primitives. Default is non-strict for stateless branches
+  * Add template backend
+  * Add missing createSourceFromBoxes API
+  * Add -universal (arm/intel) option in faust2supercollider
+  * BELA architecture: add support of checkbox widget for digital
+    in and trill craft sensor, slider mode for trill craft sensor (contributed by Pascal Faivre)
+  * New Cmajor backend
+  * New JAX backend contributed by David Braun
+
+- Fixed bugs
+
+  * Complete InstComplexityVisitor::visit(LoadVarInst* inst)
+  * Oleg Nesterov correction on intCast
+  * Correct assertStoreXX/assertLoadXX in Interp backend
+  * Add a thread in CMDUI to update GUI
+  * Table generation in -os0 and -os1 in C++ backend
+  * Oleg Nesterov correction for functions with no input parameters:
+    in this case the compiler generates code to call the function at sample rate
+  * Interval computation for % operator
+  * Faust::getMetadata in vst.cpp (faust2vst architecture file)
+  * Use a cast bool binary operations (comparison operations) to int pass in Cmajor backend
+  * Correct -inpl option
+  * Rust: Allocate on the heap with default-boxed
+  * Rework threaded API calls
+  * Generation of rwtable related code in C/C++ backends in -os2/os3 mode
+
+- Libraries change log
+
+  * Improved os.sawN and os.sawNp documentation
+  * Add Oleg Nesterov ba.tabulate_chebychev function
+  * Limit ma.BS in the [1..16384] range.
+
+-------------------------------------------------------------------
+Wed Nov  9 12:58:34 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- set llvm versions in spec
+
+-------------------------------------------------------------------
+Tue Nov  8 12:44:49 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- reduce llvm version to 14 for compile (15 is not supported yet)
+- Update to version 2.50.6
+- New:
+
+  * In C++ backend and -nvi mode, use 'static constexpr' in separated
+    methods getStaticNumInputs/getStaticNumOutputs
+  * Add relative standard deviation computation in benchmark tools
+  * Add POD support in faust2daisy
+  * Rust: Use wrapping add, sub and mul operations
+  * Allow indentifiers starting with multiple '_'
+  * Faust identifiers extended to accept c++ namespaces
+  * Rework createSourceFromBoxes/createSourceFromSignals API suggested
+    by David Braun
+  * Add a -dyn option (create libfaust + LLVM backend dynamic version)
+    in faust2jack, faust2cagtk, faust2plot and faust2csvplot
+  * Latency metadata added in faust2juce
+  * Add support for Trill Craft sensors in faust2bela
+  * Allows 0 iterations for par, seq, sum and prod
+  * New ...%{ijk}... extended syntax for label variables
+  * Add template-llvm.cpp architecture to allow any faust2xx to become
+    'dynamic'.
+  * Add registerForeignFunction for LLVM backend
+  * Support for soundfile in Interp backend
+  * Extension of letrec with an optional 'where' clause followed by
+    common definitions
+  * Completed Box/Signal API
+
+- Fixed bugs:
+
+  * Argument evaluation order sensibility and warnings when compiling
+    with GCC 12.
+  * Ladspa architecture file to set descriptor info from metadata
+  * Fixing a couple of inconsistencies in the Teensy architectures
+  * Incorrect use of ScopedNoDenormals
+  * Correct operator priority and parenthesis generation in textual
+    backends. Add -fp option
+  * Correct generation of float/double textual representation
+  * Rework -e option to print ordered ID
+  * Correct -ub/-universal option mixup in faust2max6
+
+- Libraries change log:
+
+  * Add the "Standardized Filters" section and the 
+    ITU-R BS.1770-4 K-filter
+  * compressors: leave the GR signal in the dB scale
+  * lag_ud renamed in onePoleSwitching and improved
+
+-------------------------------------------------------------------
+Fri Sep  2 12:41:31 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove 01-Add-support-for-LLVM-14.patch now upstream
+- Update to version 2.41.1
+- New
+
+  * Make faustgen~ compile on Apple M1.
+  * Add interpreter-dsp C API.
+  * Optimize 'powprim' when arg is or represents an integer.
+  * Add -osc additional parameters handling in dynamic-jack-gtk and
+    poly-dynamic-jack-gtk tools.
+  * Improve documentation coherency in faust2xx tools.
+  * New faust2bench tool.
+  * Rework public export.
+  * Update faust2max6 to produce uiversal arm64/x86_64 code signed binaries.
+  * 'librarypath' with an empty path now clear the librarypath list in faustgen~.
+  * Add an nc parameter in faustgen~ 'compileoptions' message.
+  * Compute and add 'shortname' in JSON generation.
+  * Add faust2tidalcycles tool.
+  * Update faust2puredata for Apple M1.
+  * Rework 'read' method in faustgen~.
+
+- Fixed bugs
+
+  * Relax same path rule causing errors for bargraph.
+  * replaceCharList now creates a copy of the 'str' parameter.
+    Correct buildPath.
+  * JUCE architecture float/double and prepareToPlay handling.
+  * Make broken -ocpp mode work again.
+  * Some variables were not correctly moved from compute to 
+    computeThread in -sch mode.
+
+- Libraries change log
+
+  * New time-domain pitch-tracking and spectral centroid functions.
+  * Noise Generator: add colored_noise.
+  * Rewrite slidingReduce.
+  * Update hoa.lib.
+  * Add cent2ratio/ratio2cent functions.
+  * Add ahdsre (ADSRe with hold time).
+  * Change use of obsolete ma.INFINITY in ma.MAX.
+  * Faster ba.peakholder version.
+ 
+-------------------------------------------------------------------
+Sun May 22 09:31:37 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Enable build with current LLVM14
+- Add 01-Add-support-for-LLVM-14.patch
+- Update to version 2.40.0
+- New
+
+ * Add -nvi option to be used with the C++ backend
+ * Rework memory-manager (-mem) option
+ * Add -single option handling in faustgen~
+ * New setReleaseLength API for polyphonic DSPs contributed by
+   David Braun
+ * Add an access ratio in DSP struct field R/W access statistic
+ * Add 'fParts' field in Soundfile to keep the total number of 
+   loaded parts
+ * Add -os3 option in C and C++ backends
+ * Avoid systematic parenthesis in generateBinOp
+ * Restart oboe when audio stream is disconnected
+ * Add faust2sc.py to replace faust2supercollider in the future
+ * Rework DSP expansion by creating a map of <ID, expression> and
+   sharing the IDs
+ * Sublime Text 4 completions and snippets initial commit with new 
+   export script
+ * Add Apple M1 support for -soundfile option in faust2max6
+ * Add 'RESTRICT' in C/C++ backends and 'noalias' in LLVM backend 
+   in -fun mode
+ * Add -os2 mode in C and C++ backends
+ * Add -double support with 'soundfile' in faust2api
+ * Make 'standard' foreign linked functions usable in LLVM
+
+- Fixed bugs
+
+  * Correct dsp_optimizer_real::findOptimizedParameters
+  * Reworked integer parsing to correctly work on Windows with MSVC
+    compiler
+  * Fix codeTableType (bug rwtable type inference)
+  * Correct several faust2xx tools to compile on Apple M1
+  * DspFaust::deleteVoice now reset the voice
+  * Binop Priorities changed to reflect C order
+  * Correct JuceGUI to display the current state of all controllers
+  * Controls state was not properly managed in faust2ios -osc mode
+  * Soundfile support in faust2max6 and faust2msp
+  * Correct faust2faustvst 'nvoices' metadata parsing
+  * Unity monophonic and polyphonic C# architectures
+
+- Libraries change log
+
+  * Add 2-way, 3-way, 4-way 8-way Linkwitz-Riley fourth-order 
+    crossovers
+  * Add ba.counter
+  * Added Bubble Sort implementation for on-the-fly automatic 
+    sorting of parallel signals
+  * Fix phasor in oscillators.lib to correctly reset and phase, 
+    based on a generic phasor_imp function
+  * Extend Lagrange interpolation algorithms to support arbitrary
+    spacing of the interpolation points
+  * Add Drum Synthesis ported from Nick Thompson Elementary version
+
+-------------------------------------------------------------------
+Wed Feb 16 02:51:32 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- use llvm12 to fix crash for now
+
+-------------------------------------------------------------------
+Tue Nov 30 11:36:23 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove 01-LibsndfileReader.patch
+- Update to 2.37.3
+
+- New
+
+  * Improve compilation of 'select2' to be really strict.
+  * Add Box API
+  * Add Signal API
+  * Add experimental assertbounds, lowest and highest primitives. 
+    Add -wi and -ni options
+  * Add experimental VHDL generation
+  * Add ESP32 support in faust2api
+  * Improve interp-tracer
+  * In faust2object, '-A path' also added as '-I path' in the C++ command
+  * Add 'copysign' math function
+  * In faust2max6, '-A path' also added as '-I path' in the C++ command
+  * Add -os1 option in C++ backend
+  * Add Julia backend and architectures
+
+- Fixed bugs
+
+  * getLibraryList working with expanded files
+  * CoreAudio: skip an input device's output channels
+  * Correct implementation of isnan/isinf/copysign in Interp backend
+  * Add missing isnan/isinf/copysign primitives in WASM architectures
+  * JUCE plugin architecture in -double mode, single call to 
+    prepareToPlay enforced
+
+- Libraries change log
+
+  * Fixed moogLadder by Dario Sanfilippo.
+  * Fixed compressors in compressors.lib
+  * Rename ma.INFINITY in ma.MAX
+  * Correct dm.exciter against division by zero
+  * Add interval protection in linear2db and pole2tau
+  * Add ma.copysig function
+  * Fix pulse(p) when p is modulated (bug reported by DS)
+
+-------------------------------------------------------------------
+Fri Aug 27 00:08:29 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add 01-LibsndfileReader.patch
+
+-------------------------------------------------------------------
+Tue Jul 27 12:10:05 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove obsolete patches
+- Update to 2.33.1 
+
+- New
+
+  * Tools dynamic-faust, faustbench, faustbench-llvm and 
+    faust2object are now part of the macOX binary distribution.
+  * New -os0 and -os1 options (variants of -os).
+  * Add dynamic-coreaudio-gtk tool.
+  * New faustremote [<servurl>] <platform> <arch> <srcfile> ==> <binary.zip> script.
+  * Add faust2w64puredata script.
+  * Add -bs option to faust2sndfile.
+  * Add -edit option in dynamic-jack-gtk.
+  * Add -ct option in faust2sndfile.
+  * Add -double support with soundfile.
+  * Make -inj foo.cpp option correctly work in 
+    faust2object tool.
+  * Add switch/case based Interpreter loop for Windows32 
+    compilation in Interp backend.
+  * Update faust2juce to Projucer 6.0.8 (build date 22 Mar 2021).
+    Add Visual Studio 2019 builds to the plugin and standalone Jucer files.
+    Add new arg to faust2juce for VST 2 SDK folder. Add new arg for disabling 
+    juce splash screen.
+  * Add -a arch_file in compile options generation.
+  * Add dsp_crossfader class.
+  * New experimental faust2audiokit tool.
+  * Csharp backend contributed by Mike Oliphant.
+  * Add -fx (fixed-point) option.
+  * Add -soundfile option to faust2object.
+  * Add faust2cagt tool.
+  * New soul-faust-editor tool.
+  * Add architecture files for Daisy and faust2daisy.
+  * Add -rc option to possibly use the foo.rc file in faust2sndfile.
+  * Complete createSRAdapter.
+  * Add -us/-ds/-filter options to faust2object, faustbench, faustbench-llvm.
+  * Add support for 'logical right-shift' and correct support for int64 in most
+    backends. Correct -ftz 2 and -double support in wast/wasm backends.
+
+- Fixed bugs
+
+  * Correct -double mode in Interp backend.
+  * Correct polyphonic handling in -double mode.
+  * Improve voice stealing in mydsp_poly.
+  * Fix 'pow' function to compute with integers when both arguments are integers.
+  * Correct faust2plot and faust2csvplot SR parameter handling.
+  * Correct faust2max6 assist messages. Fix CPU measure display in several tools.
+  * For faust2max6, correct ui.js to create appropriate 'int' or 'float' type
+    slider depending of the step value.
+
+- Libraries change log
+
+  * Add pink_noise_demo to demos.lib.
+  * Add jprev and greyhole reverbs: developed by Julian Parker and 
+    Till Bovermann.
+  * ADSR modification: favors a constant release time rather than a constant 
+    release slope for very short gates.
+  * New fds.lib by Riccardo Russo.
+  * New aanl.lib library for antialiased nonlinearities by Dario Sanfilippo.
+  * New wdmodels.lib library by Dirk Rosenburg.
+  * Making the behaviour of si.smoo SR-independent.
+  * Add tabulate in basics.lib.
+-------------------------------------------------------------------
+Thu May 20 02:54:38 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- use llvm11, fix build
+
+-------------------------------------------------------------------
+Wed Mar 10 04:10:51 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 2.30.5
+
+- New
+
+  * add layout and label parameters in DSP algrebra API.
+  * add MIDI output handling in faustgen~ and faust2msp/faust2max6
+  * add new D backend and faust2dplug tool
+  * Rust backend generate more efficient code
+  * add all supported CPUs in faust2object
+  * add -cm (--compute-mix) option
+  * new faust2vcvrack tool
+  * add setParamValue/getParamValue methods using path in APIUI
+  * adding bluetooth MIDI support to the Gramophone
+  * improve sound2file tool to generate interleaved or non-interleaved files
+  * add -preset option in faust2jack and faust2jaqt
+  * add -multifun option in faust2object
+  * add -bs <frames> and -control options in faustbench
+  * add -rui option
+
+- Fixed bugs
+
+  * rework MIDI channel handling in MidiUI: channels go from 1 to 16
+    and channel 0 is used for "all channels" at receive and send time
+  * type2Binary and type2String in wast/wasm backends
+  * mode -double in faust2juce
+  * faust2android incorrect monophonic handling
+  * avoid multiple registration of AudioWorkletProcessor code
+  * rework MIDI chanpress implementation
+
+- Libraries change log
+
+  * various bugs fix and documentation improvements
+  * fixed encoder3D and optimMaxRe3D in hoa.lib
+  * added quantizer library
+  * Oleg Nesterov SVF filters
+
+-------------------------------------------------------------------
+Tue Sep  1 22:53:29 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 2.27.2
+
+- New
+
+  * add -ct and -cat options.
+  * add -llvm option in faust2juce
+  * new faust2object tool to compile several CPU specific versions of the code (using C++ or LLVM backends)
+  * add OBOE audio driver for Android
+  * experimental up/down sampling C++ DSP wrappers
+  * possibility to have specific definitions according to the floating point precision option
+  * add -jucemodulesdiroption to faust2juce
+  * improve inter-tracer
+  * add -single option in faust2max6
+  * add scrolling in GTKUI
+  * add MIR support in interp/comp mixed mode
+  * new -gramophone option in faust2esp32
+  * new faust2w64vst tool
+  * implement isnan/isinf in non C/C++ backends
+  * improve SOUL backend (now passing almost all impulse-tests) and tools
+  * make -uim option generate a FAUST_CLASS_NAME string
+  * add attribute handling in faust2max6
+  * added mi.lib examples
+  * FAUST_LIST_ACTIVES/FAUST_LIST_PASSIVES macros generated in -uim mode
+  * reworked Rust backend, now passing all impulse-tests
+  * add buildUserInterface method in DspFaust class (faust2api)
+  * add -soundfile option in faust2jackconsole
+  * add log/exp scale handling in MidiUI
+  * special BS variable handling in FIR
+  * add -dlt size option in scalar mode, remove obsolete -lt option
+  * add -us/-ds/-filter parameters to faust2max6/faust2msp
+  * add a normalisation rule 'abs(abs(x)) = abs(x)'
+  * add -control option in faustbench-llvm
+  * primitive 'enable/control' working with -occp backend and scalar mode
+  * add 'float -> int' cast out-of-range detection in Interp backend.
+  * add 'enable/control' in FIR scalar mode
+  * add -source option to faustbench
+  * add -bs option to soul-faust-tester and faustbench-llvm
+  * add MIDI architecture file for iPlug project
+  * new -mapp option
+  * support for LLVM 10 (with compiled version in the OSX and Windows binaries)
+
+- Fixed bugs
+
+  * fixes in C libfaust API
+  * fixes in faust2esp32
+  * fixes in faust2webaudiowast/faust2webaudiowasm/faust2wasm scripts the compiler now refuses to compile DSP code that cause several identical UI paths (like /foo/bar/ui_item) to be produced, since identical paths cannot be distinguished when controlled with OSC for instance
+  * correct MIDI synch messages handling
+  * correct controllers save/restore in JUCE architecture
+  * missing loop dependencies fixed in -vec mode
+  * fixes in faust2unity
+  * improved JuceReader class
+  * correct code generation for << and >> operators
+  * fixes in rdtable/rwtable code generation
+  * correct Csound architecture
+  * fix openFrameworks audio driver
+  * fixes in faust2lv2
+  * correct 'dump' behaviour in Max/MSP and faustgen~ architectures to output [path cur min max]
+  * fix select/if cond generation in LLVM and wast/wasm backends
+  * enable AudioUnit's input only when inputs > 0 in coreaudio-ios-dsp.h
+  * fixes in faust2png
+
+- Libraries change log
+
+  * new platform.lib that contains platform specific value of SR and tablesize values (to be possibly changed on embedded platforms)
+  * runtime.lin file removed and code moved to interpolators.lib
+  * new version.lib
+  * correct os.lf_sawpos
+  * correct ma.isnan/isinf definitions
+  * rework crosses in route.lib
+  * fixes in hoa.lib
+  * new os.hsp_phasor
+  * new ma.zc, an.abs_envelope, an.abs_envelope_rect, an.ms_envelope, an.ms_envelope_rect, an.rms_envelope, an.rms_envelope_rect
+  * correct os.quadosc
+  * updated mi.lib
+  * added averaging functions in maths.lib
+  * added amp envelope functions in analyzers.lib
+  * rework lookahead limiters
+  * added zero-crossing rate function
+  * CZ oscillators: refactor and add phase aligned versions
+
+-------------------------------------------------------------------
+Fri Feb 21 04:57:51 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 2.20.2

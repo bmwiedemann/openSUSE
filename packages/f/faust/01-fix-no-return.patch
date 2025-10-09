@@ -1,0 +1,21 @@
+diff --git a/compiler/generator/compile_scal.cpp b/compiler/generator/compile_scal.cpp
+index c0e90c7..0afc703 100644
+--- a/compiler/generator/compile_scal.cpp
++++ b/compiler/generator/compile_scal.cpp
+@@ -1655,6 +1655,7 @@ string ScalarCompiler::generateDelayAccess(Tree sig, Tree exp, Tree delay)
+     return generateCacheCode(sig, result);
+ 
+ #endif
++return nullptr;
+ }
+ 
+ /**
+@@ -1880,6 +1881,8 @@ string ScalarCompiler::generateDelayLine(DelayType dt, const string& ctype, cons
+             return subst("$0[$1]", vname, cacheidx);
+     }
+ #endif
++
++return nullptr;
+ }
+ 
+ /**
