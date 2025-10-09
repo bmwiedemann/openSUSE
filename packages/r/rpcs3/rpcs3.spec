@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.37~git20250922
+Version:        0.0.38~git20251007
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -70,10 +70,10 @@ BuildRequires:  pkgconfig(sdl3)
 #-------------------------------------------------
 
 #ffmpeg dependencies
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libavcodec) < 62
+BuildRequires:  pkgconfig(libavformat) < 62
+BuildRequires:  pkgconfig(libavutil) < 60
+BuildRequires:  pkgconfig(libswscale) < 9
 
 #qt dependencies
 BuildRequires:  pkgconfig(Qt6Concurrent)

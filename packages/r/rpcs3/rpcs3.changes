@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Oct  8 21:48:26 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Correct ffmpeg-7 version check in spec file
+
+-------------------------------------------------------------------
+Wed Oct  8 21:21:55 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Set maximum version for ffmpeg-7 in spec file
+
+-------------------------------------------------------------------
+Wed Oct  8 20:47:30 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.38~git20251007:
+  * rpcs3_version: Bump to 0.0.38
+  * Multi-Slot Savestates
+  * Fix sceNpManagerGetAccountRegion's returned language
+  * Change sceNpManagerGetMyLanguages languages priority
+  * Generate random OpenPSID upon config initialization (#17543)
+  * sys_ss/RPCN: Add PSID randomisation
+  * Update FAudio to 25.10
+  * Config: Implement 128-bit setting entry type
+  * Win32/vm_native.cpp: Improve sparse memory file mapping robustness
+  * yorha: Style QScrollbar
+  * yorha: Tag r4 theme update
+  * yorha: Fix excessive QSpinBox height
+  * yorha: Fix background on savestate manager
+  * yorha: Unify QCheckBox and QList/QTree indicator styling
+  * yorha: Fix left padding on QDockWidget titles
+  * yorha: Only modify QMenuBar height on the main menu bar
+  * Windows 11 Themes
+  * cubeb: Update to 2025-09-17
+  * Enhance Infinity Manager Figure Creator Dialog (#17529)
+  * Fix calloc patches in the middle of blocks
+  * cellPad: simplify output button logic
+
+-------------------------------------------------------------------
 Wed Oct  8 03:44:22 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - BuildRequires: llvm19-devel (boo#1250352)
