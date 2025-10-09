@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Oct 09 05:14:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.14.0:
+  * bug(493): Improved git remote parsing by @rickard-von-essen in
+    #726
+  * build(deps): Bump helm.sh/helm/v3 from 3.18.1 to 3.18.2 in the
+    gomod group by @dependabot[bot] in #745
+  * Fix helm-extra-set-args in YAML configuration by @arbourd in
+    #713
+  * build(deps): Bump helm.sh/helm/v3 from 3.18.2 to 3.18.3 in the
+    gomod group by @dependabot[bot] in #747
+  * build(deps): Bump the actions group with 2 updates by
+    @dependabot[bot] in #746
+  * build(deps): Bump the actions group with 2 updates by
+    @dependabot[bot] in #750
+  * build(deps): Bump github.com/go-viper/mapstructure/v2 from
+    2.2.1 to 2.3.0 by @dependabot[bot] in #751
+  * build(deps): Bump anchore/sbom-action from 0.20.1 to 0.20.2 in
+    the actions group by @dependabot[bot] in #753
+  * chore(docs): missing link to CI icon by @Olexandr88 in #752
+  * build(deps): Bump github.com/hashicorp/go-retryablehttp from
+    0.7.7 to 0.7.8 in the gomod group by @dependabot[bot] in #749
+  * build(deps): Bump helm.sh/helm/v3 from 3.18.3 to 3.18.4 by
+    @dependabot[bot] in #754
+  * build(deps): Bump the actions group with 2 updates by
+    @dependabot[bot] in #757
+  * build(deps): Bump github.com/spf13/pflag from 1.0.6 to 1.0.7 in
+    the gomod group by @dependabot[bot] in #756
+  * build(deps): Bump docker/login-action from 3.4.0 to 3.5.0 in
+    the actions group by @dependabot[bot] in #758
+  * build(deps): Bump actions/checkout from 4.2.2 to 5.0.0 by
+    @dependabot[bot] in #761
+  * chore: update GoReleaser configurations by @emmanuel-ferdman in
+    #760
+  * build(deps): Bump helm.sh/helm/v3 from 3.18.4 to 3.18.5 by
+    @dependabot[bot] in #762
+  * build(deps): Bump the actions group with 2 updates by
+    @dependabot[bot] in #763
+  * build(deps): Bump github.com/go-viper/mapstructure/v2 from
+    2.3.0 to 2.4.0 by @dependabot[bot] in #764
+  * build(deps): Bump azure/setup-helm from 4.3.0 to 4.3.1 in the
+    actions group by @dependabot[bot] in #766
+  * build(deps): Bump helm.sh/helm/v3 from 3.18.5 to 3.18.6 in the
+    gomod group by @dependabot[bot] in #765
+  * build(deps): Bump github.com/stretchr/testify from 1.10.0 to
+    1.11.0 by @dependabot[bot] in #767
+  * build(deps): Bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+    by @dependabot[bot] in #769
+  * build(deps): Bump actions/stale from 9.1.0 to 10.0.0 by
+    @dependabot[bot] in #771
+  * build(deps): Bump actions/setup-go from 5.5.0 to 6.0.0 by
+    @dependabot[bot] in #770
+  * build(deps): Bump the actions group with 2 updates by
+    @dependabot[bot] in #772
+  * build(deps): Bump the gomod group with 2 updates by
+    @dependabot[bot] in #768
+  * build(deps): Bump github.com/spf13/viper from 1.20.1 to 1.21.0
+    by @dependabot[bot] in #775
+  * build(deps): Bump docker/login-action from 3.5.0 to 3.6.0 in
+    the actions group by @dependabot[bot] in #776
+  * build(deps): Bump actions/stale from 10.0.0 to 10.1.0 in the
+    actions group by @dependabot[bot] in #777
+  * Prepare release v3.14.0 by @adberger in #778
+  * updates on ci, use go1.25 and update deprecated goreleaser
+    steps by @cpanato in #779
+
+-------------------------------------------------------------------
 Mon Jun 02 15:40:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.13.0:

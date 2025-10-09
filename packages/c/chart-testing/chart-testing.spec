@@ -1,7 +1,7 @@
 #
 # spec file for package chart-testing
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,10 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define name_of_binary ct
 
 Name:           chart-testing
-Version:        3.13.0
+Version:        3.14.0
 Release:        0
 Summary:        CLI tool for linting and testing Helm charts
 Group:          Development/Languages/Other
