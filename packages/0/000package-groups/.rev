@@ -2315,4 +2315,12 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <time>1759303882</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="325" vrev="323">
+    <srcmd5>508463eab83645d16010052b4835bb25</srcmd5>
+    <version>unknown</version>
+    <time>1760014796</time>
+    <user>dimstar_suse</user>
+    <comment>Aeon-release: Correct docs link</comment>
+    <requestid>1309785</requestid>
+  </revision>
 </revisionlist>

@@ -208,7 +208,7 @@ CPE_NAME="cpe:/o:opensuse:aeon:%{version}"
 BUG_REPORT_URL="https://aeondesktop.org/reportbug"
 SUPPORT_URL="https://aeondesktop.org/bugs"
 HOME_URL="https://aeondesktop.org/"
-DOCUMENTATION_URL="https://en.opensuse.org/Portal:Aeon"
+DOCUMENTATION_URL="https://aeondesktop.org/docs"
 LOGO="distributor-logo-Aeon"
 EOF
 ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
