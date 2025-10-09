@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Oct  8 15:43:07 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.20.0:
+  * Big refactor of timeline code to use less memory and (hopefully!)
+    be more responsive and less error prone
+  * Support for scheduled statuses
+  * Support for the focal point property on the frontend + over
+    federation, so you can set focal point on your media and have it
+    work properly
+  * Notifications when a status you've interacted with has been edited
+  * ListenBrainz widget on the frontend, so you can show off the music
+    you've been listening to
+  * Instance info panel in the settings, so that non-admins on the
+    instance can see which domains are blocked and explicitly allowed,
+    and the reason why
+  * Bunch of new themes for profile views
+  * Config option to expose emoji endpoints without authentication --
+    useful for compatibility with some clients. Default value still
+    requires authentication
+  * Footnotes in markdown
+  * Configurable thumbnail dimensions
+  * Federation of avatar + header image descriptions is handled now,
+    both in + out of GtS
+  * The new hidesToPublicFromUnauthedWeb and hidesCcPublicFromUnauthedWeb
+    are federated in and out now, allowing your instance and other
+    instances that support these properties to transmit + respect
+    preferences for the visibility of posts to render on the
+    unauthenticated (public) web view of threads
+  * Support for avif file format
+  * JSON logging format, for easier log ingestion
+  * Atom and JSON feed support for RSS (not just xml)
+  * Reworked metrics format, more + better metrics, and an importable
+    example grafana dashboard
+  * Domain permission subscription retractions are now handled properly
+- Remove no longer needed backport patches:
+  * 4052_support_focus_point.patch
+  * 4154_Add_extra_opengraph_meta_tags.patch
+  * 4169_Allow_exposing_allows.patch
+  * 4193_Add_Instance_Info_settings_panel_section.patch
+
+-------------------------------------------------------------------
 Fri Sep  5 08:50:49 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.19.2

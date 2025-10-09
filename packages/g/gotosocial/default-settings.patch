@@ -1,19 +1,19 @@
-From 080b2400828d6eaa1246437d406a6ce12d40981f Mon Sep 17 00:00:00 2001
-From: Flann van der Eik <fl4nn@opensuse.org>
-Date: Tue, 15 Oct 2024 16:55:22 +0200
+From f0501d4226938cc9660d4f444dd05c94ec8e3202 Mon Sep 17 00:00:00 2001
+From: "Sqx. Flann" <fl4nn+git@opensuse.org>
+Date: Fri, 19 Sep 2025 15:32:32 +0200
 Subject: [PATCH] Modify default paths to match packaging
 
 ---
- example/apparmor/gotosocial | 43 +++++--------------------------------
- example/config.yaml         | 27 +++++++++++++----------
+ example/apparmor/gotosocial | 44 +++++--------------------------------
+ example/config.yaml         | 32 ++++++++++++++++-----------
  example/gotosocial.service  |  7 +++---
- 3 files changed, 25 insertions(+), 52 deletions(-)
+ 3 files changed, 29 insertions(+), 54 deletions(-)
 
 diff --git a/example/apparmor/gotosocial b/example/apparmor/gotosocial
-index 44192428c..636425e9c 100644
+index 44192428c..b81bae94c 100644
 --- a/example/apparmor/gotosocial
 +++ b/example/apparmor/gotosocial
-@@ -7,59 +7,26 @@ profile gotosocial flags=(attach_disconnected, mediate_deleted) {
+@@ -7,59 +7,27 @@ profile gotosocial flags=(attach_disconnected, mediate_deleted) {
    include <abstractions/nameservice>
    include <abstractions/user-tmp>
  
@@ -71,6 +71,7 @@ index 44192428c..636425e9c 100644
 +  /etc/gotosocial/{,**} r,
 +  /usr/share/gotosocial/{,**} r,
    owner /var/lib/gotosocial/{,**} r,
++  owner /var/lib/gotosocial/certs/** wk,
    owner /var/lib/gotosocial/db/* wk,
    owner /var/lib/gotosocial/storage/** wk,
 -  owner /opt/gotosocial/{,**} r,
@@ -79,10 +80,10 @@ index 44192428c..636425e9c 100644
    /etc/mime.types r,
    /etc/services r,
 diff --git a/example/config.yaml b/example/config.yaml
-index 644b51575..7bfe4a800 100644
+index 9eaa560fe..d025e0a02 100644
 --- a/example/config.yaml
 +++ b/example/config.yaml
-@@ -44,8 +44,9 @@ log-client-ip: true
+@@ -57,8 +57,9 @@ log-format: "logfmt"
  # documented on https://pkg.go.dev/time#pkg-constants.
  #
  # Examples: ["2006-01-02T15:04:05.000Z07:00", ""]
@@ -94,7 +95,19 @@ index 644b51575..7bfe4a800 100644
  
  # String. Application name to use internally.
  # Examples: ["My Application","gotosocial"]
-@@ -259,7 +260,7 @@ db-sqlite-busy-timeout: "30m"
+@@ -169,8 +170,9 @@ db-type: "sqlite"
+ # WARNING: :memory: should NOT BE USED except for testing purposes.
+ #
+ # Examples: ["localhost","my.db.host","127.0.0.1","192.111.39.110",":memory:", "sqlite.db"]
+-# Default: ""
+-db-address: "sqlite.db"
++# Upstream Default: "sqlite.db"
++# openSUSE Default: "/var/lib/gotosocial/db/sqlite.db"
++db-address: "/var/lib/gotosocial/db/sqlite.db"
+ 
+ # Int. Port for postgres database connection; ignored for sqlite.
+ # Examples: [5432, 1234, 6969]
+@@ -272,7 +274,7 @@ db-sqlite-busy-timeout: "30m"
  # String. Full Database connection string
  #
  # This connection string is only applicable for Postgres. When this field is defined, all other database related configuration field will be ignored. This field allow you to fine tune connection with Postgres
@@ -103,7 +116,7 @@ index 644b51575..7bfe4a800 100644
  # Examples: ["postgres://user:pass@localhost/db?search_path=gotosocial", "postgres://user:pass@localhost:9999/db"]
  # Default: ""
  db-postgres-connection-string: ""
-@@ -281,13 +282,15 @@ cache:
+@@ -294,13 +296,15 @@ cache:
  
  # String. Directory from which gotosocial will attempt to load html templates (.tmpl files).
  # Examples: ["/some/absolute/path/", "./relative/path/", "../../some/weird/path/"]
@@ -123,7 +136,7 @@ index 644b51575..7bfe4a800 100644
  
  ###########################
  ##### INSTANCE CONFIG #####
-@@ -592,8 +595,9 @@ storage-backend: "local"
+@@ -742,8 +746,9 @@ storage-backend: "local"
  # this directory, and create new subdirectories and files within it.
  # Only required when running with the local storage backend.
  # Examples: ["/home/gotosocial/storage", "/opt/gotosocial/datastorage"]
@@ -135,20 +148,20 @@ index 644b51575..7bfe4a800 100644
  
  # String. API endpoint of the S3 compatible service.
  # Only required when running with the s3 storage backend.
-@@ -732,8 +736,9 @@ letsencrypt-port: 80
+@@ -905,8 +910,9 @@ letsencrypt-port: 80
  # backup easier, but you might wish to move them elsewhere if they're also accessed by other services.
  # In any case, make sure GoToSocial has permissions to write to / read from this directory.
  # Examples: ["/home/gotosocial/storage/certs", "/acmecerts"]
 -# Default: "/gotosocial/storage/certs"
 -letsencrypt-cert-dir: "/gotosocial/storage/certs"
 +# Upstream Default: "/gotosocial/storage/certs"
-+# openSUSE Default: "/var/lib/gotosocial/storage/certs"
-+letsencrypt-cert-dir: "/var/lib/gotosocial/storage/certs"
++# openSUSE Default: "/var/lib/gotosocial/certs"
++letsencrypt-cert-dir: "/var/lib/gotosocial/certs"
  
  # String. Email address to use when registering LetsEncrypt certs.
  # Most likely, this will be the email address of the instance administrator.
 diff --git a/example/gotosocial.service b/example/gotosocial.service
-index b59f6b5a6..9848bd117 100644
+index 48d14df8c..5c9135467 100644
 --- a/example/gotosocial.service
 +++ b/example/gotosocial.service
 @@ -12,6 +12,7 @@ Group=gotosocial
@@ -159,12 +172,17 @@ index b59f6b5a6..9848bd117 100644
  
  # For speedier restart times, you can uncomment the following Environment line to have GoToSocial cache compiled
  # Wazero artifacts in the given directory between restarts, so that it doesn't need to compile on startup every time.
-@@ -20,11 +21,11 @@ Restart=on-failure
+@@ -20,7 +21,7 @@ Restart=on-failure
  # installed at "~/gotosocial" then change the value to "GTS_WAZERO_COMPILATION_CACHE=~/gotosocial/.cache".
  #
  # Whatever you do, make sure the dir exists and that the gotosocial user has permission to write + read from it.
 -#Environment="GTS_WAZERO_COMPILATION_CACHE=/gotosocial/.cache"
 +Environment="GTS_WAZERO_COMPILATION_CACHE=/var/lib/gotosocial/.cache"
+ 
+ # If you have set `metrics-enabled` to `true` in your GoToSocial config file, and you want
+ # to expose Prometheus metrics at localhost:9464/metrics, uncomment the following two lines:
+@@ -28,8 +29,8 @@ Restart=on-failure
+ #Environment="OTEL_METRICS_PRODUCERS=prometheus"
  
  # change if your path to the GoToSocial binary is different
 -ExecStart=/gotosocial/gotosocial --config-path config.yaml server start
@@ -175,5 +193,5 @@ index b59f6b5a6..9848bd117 100644
  # Sandboxing options to harden security
  # Details for these options: https://www.freedesktop.org/software/systemd/man/systemd.exec.html
 -- 
-2.48.1
+2.51.0
 

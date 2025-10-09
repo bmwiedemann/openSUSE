@@ -17,7 +17,7 @@
 
 
 Name:           gotosocial
-Version:        0.19.2
+Version:        0.20.0
 Release:        0
 Summary:        An ActivityPub social network server, written in Golang
 License:        AGPL-3.0-only
@@ -28,11 +28,6 @@ Source1:        %{name}-%{version}-vendor.tar.xz
 Source2:        vendor_yarn.sh
 Source3:        gotosocial.sysusers
 Patch0:         default-settings.patch
-# Upstream backports
-Patch1:         4052_support_focus_point.patch
-Patch2:         4154_Add_extra_opengraph_meta_tags.patch
-Patch3:         4169_Allow_exposing_allows.patch
-Patch4:         4193_Add_Instance_Info_settings_panel_section.patch
 BuildRequires:  apparmor-profiles
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  golang-packaging
@@ -41,7 +36,7 @@ BuildRequires:  rsync
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  yarn
-BuildRequires:  golang(API) = 1.23
+BuildRequires:  golang(API) >= 1.24.6
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %sysusers_requires
@@ -55,7 +50,7 @@ images and articles. All without being tracked or advertised to!
 %autosetup -p1 -a1 -n %{name}
 
 %build
-GO_BUILDTAGS="${GO_BUILDTAGS-} netgo osusergo static_build kvformat timetzdata"
+GO_BUILDTAGS="${GO_BUILDTAGS-} netgo osusergo static_build timetzdata"
 GO_LDFLAGS="${GO_LDFLAGS-} -s -w -extldflags '-static' -X 'main.Version=%{version}'"
 GO_GCFLAGS=${GO_GCFLAGS-}
 CGO_ENABLED=0
