@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Oct 09 05:31:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.9.1:
+  * Fixes
+    - Fixed an issue where resource list operations returned 404
+      when the cluster URL contained a subpath, improving overall
+      stability.
+  * Dependencies
+    - fix(deps): update rust crate regex to v1.11.3 (#838)
+    - fix(deps): update rust crate serde to v1.0.226 (#837)
+    - fix(deps): update rust crate clap to v4.5.48 (#836)
+    - fix(deps): update rust crate anyhow to v1.0.100 (#835)
+    - chore(deps): lock file maintenance (#834)
+    - fix(deps): update kube-rs (kube, kube-runtime, k8s-openapi)
+      (#823)
+    - fix(deps): update rust crate serde to v1.0.225 (#833)
+    - fix(deps): update rust crate serde to v1.0.224 (#832)
+    - fix(deps): update rust crate serde to v1.0.223 (#831)
+    - fix(deps): update rust crate serde_json to v1.0.145 (#830)
+    - fix(deps): update rust crate serde to v1.0.221 (#829)
+    - fix(deps): update rust crate serde_json to v1.0.144 (#828)
+    - fix(deps): update rust crate serde to v1.0.220 (#827)
+    - fix(deps): update rust crate chrono to v0.4.42 (#824)
+    - fix(deps): update rust crate ctrlc to v3.5.0 (#822)
+    - fix(deps): update rust crate log4rs to v1.4.0 (#821)
+    - chore(deps): lock file maintenance (#820)
+    - fix(deps): update rust crate log to v0.4.28 (#819)
+    - fix(deps): update rust crate clap to v4.5.47 (#818)
+    - fix(deps): update rust crate bitflags to v2.9.4 (#817)
+    - chore(deps): lock file maintenance (#816)
+    - fix(deps): update rust crate clap to v4.5.46 (#815)
+    - fix(deps): update rust crate regex to v1.11.2 (#814)
+    - fix(deps): update rust crate arboard to v3.6.1 (#813)
+    - fix(deps): update rust crate bitflags to v2.9.3 (#812)
+    - chore(deps): update actions/checkout action to v5
+    - chore(deps): update actions/download-artifact action to v5
+    - chore(deps): lock file maintenance (#811)
+    - fix(deps): update rust crate thiserror to v2.0.16 (#810)
+    - fix(deps): update rust crate serde_json to v1.0.143 (#808)
+    - fix(deps): update rust crate thiserror to v2.0.15 (#807)
+    - fix(deps): update rust crate bitflags to v2.9.2 (#806)
+    - chore(deps): lock file maintenance (#805)
+    - fix(deps): update rust crate async-trait to v0.1.89 (#804)
+    - fix(deps): update rust crate rayon to v1.11.0 (#803)
+    - fix(deps): update rust crate clap to v4.5.45 (#802)
+    - fix(deps): update rust crate thiserror to v2.0.14 (#801)
+    - fix(deps): update rust crate anyhow to v1.0.99 (#800)
+    - fix(deps): update rust crate clap to v4.5.44 (#799)
+    - chore(deps): update actions/checkout digest to 08eba0b (#797)
+    - fix(deps): update rust crate clap to v4.5.43 (#796)
+    - fix(deps): update rust crate tokio to v1.47.1 (#794)
+    - fix(deps): update rust crate serde_json to v1.0.142 (#793)
+    - fix(deps): update rust crate clap to v4.5.42 (#792)
+    - chore(deps): update rust crate rstest to v0.26.1 (#791)
+    - chore(deps): update rust crate rstest to 0.26.0 (#790)
+    - fix(deps): update rust crate tokio to v1.47.0 (#789)
+    - fix(deps): update rust crate strum to v0.27.2 (#788)
+    - fix(deps): update rust crate serde_json to v1.0.141 (#787)
+    - fix(deps): update rust crate clap to v4.5.41 (#786)
+
+-------------------------------------------------------------------
 Mon Jul  7 05:26:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.9.0:
