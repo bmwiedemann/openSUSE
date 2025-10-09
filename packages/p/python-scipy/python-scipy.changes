@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  7 15:11:36 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Add pytest-run-parallel-compat.patch to fix tests with Python 3.14
+
+-------------------------------------------------------------------
 Tue Sep 30 14:10:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.16.2

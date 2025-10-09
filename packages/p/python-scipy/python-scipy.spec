@@ -54,6 +54,8 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # Create with pooch: `python3 scipy-%%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
+# PATCH-FIX-UPSTREAM pytest-run-parallel-compat.patch https://github.com/scipy/scipy/pull/23305
+Patch0:         pytest-run-parallel-compat.patch
 BuildRequires:  %{python_module Cython >= 3.0.8 with %python-Cython < 3.2}
 BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.21}
