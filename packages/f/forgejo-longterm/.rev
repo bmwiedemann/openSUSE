@@ -73,4 +73,13 @@
     permissions to view the new owner</comment>
     <requestid>1306122</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>47e2d4ece7ed07db0b2dafcdff2299fa</srcmd5>
+    <version>11.0.6</version>
+    <time>1760015244</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-CVE-2025-47911.patch, fixing bsc#1251472
+- add fix-CVE-2025-58190.patch, fixing bsc#1251668</comment>
+    <requestid>1309959</requestid>
+  </revision>
 </revisionlist>

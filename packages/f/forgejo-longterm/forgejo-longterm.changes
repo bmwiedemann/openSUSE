@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  9 10:34:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add fix-CVE-2025-47911.patch, fixing bsc#1251472
+- add fix-CVE-2025-58190.patch, fixing bsc#1251668
+
+-------------------------------------------------------------------
 Sat Sep 20 11:33:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 11.0.6:
