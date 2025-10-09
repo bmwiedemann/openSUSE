@@ -1,0 +1,2 @@
+addFilter("E: statically-linked-binary")
+addFilter("E: missing-PT_GNU_STACK-section")
