@@ -17,7 +17,7 @@
 
 
 Name:           nelm
-Version:        1.12.2
+Version:        1.13.0
 Release:        0
 Summary:        Helm 3 alternative
 License:        Apache-2.0

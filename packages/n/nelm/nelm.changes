@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 09 05:10:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.0:
+  * Features
+    - release plan install options --diff-context-lines,
+      --show-insignificant-diffs, --show-sensitive-diffs,
+      --show-verbose-crd-diffs, --show-verbose-diffs (fc1dd5d)
+    - major refactor, werf.io/delete-policy, werf.io/ownership,
+      werf.io/deploy-on and more (07d21f7)
+
+-------------------------------------------------------------------
 Tue Aug 19 05:38:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.2:
