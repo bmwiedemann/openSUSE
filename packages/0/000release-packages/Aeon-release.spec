@@ -17,7 +17,7 @@
 
 
 Name:           Aeon-release
-Version:        20251008
+Version:        20251009
 Release:        0
 Summary:        Aeon 
 License:        GPL-2.0-or-later
@@ -174,9 +174,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = Aeon
-Provides:       product(Aeon) = 20251008-0
+Provides:       product(Aeon) = 20251009-0
 Provides:       product-label() = Aeon
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aaeon%3A20251008
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aaeon%3A20251009
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(Aeon)
@@ -192,7 +192,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(Aeon) = 20251008-0
+Provides:       product_flavor(Aeon) = 20251009-0
 Summary:        Aeon%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -233,7 +233,7 @@ CPE_NAME="cpe:/o:opensuse:aeon:%{version}"
 BUG_REPORT_URL="https://aeondesktop.org/reportbug"
 SUPPORT_URL="https://aeondesktop.org/bugs"
 HOME_URL="https://aeondesktop.org/"
-DOCUMENTATION_URL="https://en.opensuse.org/Portal:Aeon"
+DOCUMENTATION_URL="https://aeondesktop.org/docs"
 LOGO="distributor-logo-Aeon"
 EOF
 ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
@@ -253,11 +253,11 @@ cat >%{buildroot}%{_sysconfdir}/products.d/Aeon.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>Aeon</name>
-  <version>20251008</version>
+  <version>20251009</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:aeon:20251008</cpeid>
+  <cpeid>cpe:/o:opensuse:aeon:20251009</cpeid>
   <productline>Aeon</productline>
   <register>
     <pool>
