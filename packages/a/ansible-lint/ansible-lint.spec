@@ -39,7 +39,7 @@
 
 %global lib_name ansiblelint
 Name:           ansible-lint
-Version:        25.9.1
+Version:        25.9.2
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -68,16 +68,17 @@ BuildRequires:  %{ansible_python}-flake8
 # to make sure this only builds if they are present
 # https://github.com/ansible/ansible-lint/blob/main/pyproject.toml#L79
 BuildRequires:  ansible-core >= 2.16.11
-BuildRequires:  %{ansible_python}-ansible-compat >= 25.8.0
+BuildRequires:  %{ansible_python}-ansible-compat >= 25.8.2
 BuildRequires:  %{ansible_python}-black >= 24.3.0
 BuildRequires:  %{ansible_python}-filelock >= 3.8.2
 BuildRequires:  %{ansible_python}-importlib_metadata >= 8.7.0
 BuildRequires:  %{ansible_python}-jsonschema >= 4.10.0
 BuildRequires:  %{ansible_python}-packaging >= 22.0
 BuildRequires:  %{ansible_python}-pathspec >= 0.10.3
-BuildRequires:  %{ansible_python}-PyYAML >= 6.0.2
+BuildRequires:  %{ansible_python}-PyYAML >= 6.0.3
 BuildRequires:  %{ansible_python}-referencing >= 0.36.2
 BuildRequires:  %{ansible_python}-ruamel.yaml >= 0.18.11
+BuildRequires:  %{ansible_python}-ruamel.yaml.clib >= 0.2.12
 BuildRequires:  %{ansible_python}-subprocess-tee >= 0.4.1
 BuildRequires:  %{ansible_python}-wcmatch >= 8.5.0
 BuildRequires:  %{ansible_python}-yamllint >= 1.34.0
@@ -85,16 +86,17 @@ BuildRequires:  %{ansible_python}-yamllint >= 1.34.0
 #
 # https://github.com/ansible/ansible-lint/blob/main/.config/requirements.in
 Requires:       ansible-core >= 2.16.11
-Requires:       %{ansible_python}-ansible-compat >= 25.8.0
+Requires:       %{ansible_python}-ansible-compat >= 25.8.2
 Requires:       %{ansible_python}-black >= 24.3.0
 Requires:       %{ansible_python}-filelock >= 3.8.2
 Requires:       %{ansible_python}-importlib_metadata >= 8.7.0
 Requires:       %{ansible_python}-jsonschema >= 4.10.0
 Requires:       %{ansible_python}-packaging >= 22.0
 Requires:       %{ansible_python}-pathspec >= 0.10.3
-Requires:       %{ansible_python}-PyYAML >= 6.0.2
+Requires:       %{ansible_python}-PyYAML >= 6.0.3
 Requires:       %{ansible_python}-referencing >= 0.36.2
 Requires:       %{ansible_python}-ruamel.yaml >= 0.18.11
+Requires:       %{ansible_python}-ruamel.yaml.clib >= 0.2.12
 Requires:       %{ansible_python}-subprocess-tee >= 0.4.1
 Requires:       %{ansible_python}-wcmatch >= 8.5.0
 Requires:       %{ansible_python}-yamllint >= 1.34.0

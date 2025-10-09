@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  9 05:10:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.9.2:
+  * Fixes
+    - fix: avoid using unreleased dependency constraints (#4802)
+      @ssbarnea
+  * Maintenance
+    - chore: rename sonar config file (#4810) @ssbarnea
+    - chore: switch to reusable workflow (#4809) @ssbarnea
+    - chore(deps): update all dependencies (#4808) @renovate[bot]
+    - chore(deps): update all dependencies (#4805) @renovate[bot]
+    - chore(deps): update all dependencies (#4787) @renovate[bot]
+
+-------------------------------------------------------------------
 Wed Oct  1 12:55:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.9.1:
