@@ -1,7 +1,7 @@
 #
 # spec file for package lager
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Source0:        https://github.com/arximboldi/lager/archive/refs/tags/v%{version
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_system-devel
 # For tests
 BuildRequires:  cmake(Catch2) < 3.0
 BuildRequires:  cmake(Immer)
@@ -56,6 +55,7 @@ testable application logic via pure functions.
 %autosetup -p1
 
 sed -i 's#lib/cmake/Lager#%{_lib}/cmake/Lager#' CMakeLists.txt
+sed -i 's#COMPONENTS system##' CMakeLists.txt
 
 %build
 # Tests are broken and examples add a dependency on sass

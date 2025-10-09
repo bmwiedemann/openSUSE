@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  8 21:35:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Stop looking for boost::system
+
+-------------------------------------------------------------------
 Tue Oct 24 07:21:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.1.1:
