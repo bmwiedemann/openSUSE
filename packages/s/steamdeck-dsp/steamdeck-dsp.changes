@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sat Aug 30 13:16:19 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Initial version 0.61:
+  * Add binaries with firmware version fix from praprasa
+  * wireplumber: add comments to each config file explaining what it does
+  * pipewire: add comments to each config file explaining what it does
+  * pipewire: provide a hardware-agnostic default pw config
+  * pipewire: record the DMI derived id used to choose the pw config
+  * wireplumber: provide a hardware-agnostic default wireplumber config
+  * wireplumber: record the DMI derived id used to choose the wp config
