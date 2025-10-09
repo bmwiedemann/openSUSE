@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  8 07:19:11 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- version update to 34.1.0
+  * please refer to the changelog at https://github.com/kubernetes-client/python/blob/v34.1.0/CHANGELOG.md#v3410 
+
+- updated patch: fix-exec-provider-test-sle-15-sp4.patch
+
+- remove pinneded verion dependency from python-oauthlib module 
+
+-------------------------------------------------------------------
 Wed Jun 11 09:26:29 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - add patch: fix-exec-provider-test-sle-15-sp4.patch 

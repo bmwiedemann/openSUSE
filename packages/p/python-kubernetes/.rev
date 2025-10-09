@@ -324,4 +324,16 @@ gh#kubernetes-client/python#2178 - merged upstream and released.
 * Patch file to fix failing kubernetes.config.exec_provider_test.ExecProviderTest during package build against SLE-15 SP4 (w/ Python 3.6.15, pytest-5.4.3, py-1.10.0, pluggy-0.13.1)</comment>
     <requestid>1284759</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>77653f11ccacdf6aadd7079672df8eb3</srcmd5>
+    <version>34.1.0</version>
+    <time>1760014792</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 34.1.0
+* please refer to the changelog at https://github.com/kubernetes-client/python/blob/v34.1.0/CHANGELOG.md#v3410
+
+- updated patch: fix-exec-provider-test-sle-15-sp4.patch
+- remove pinneded verion dependency from python-oauthlib module</comment>
+    <requestid>1309762</requestid>
+  </revision>
 </revisionlist>

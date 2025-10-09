@@ -1,7 +1,7 @@
-Index: kubernetes-33.1.0/kubernetes/config/exec_provider.py
+Index: kubernetes-34.1.0/kubernetes/config/exec_provider.py
 ===================================================================
---- kubernetes-33.1.0.orig/kubernetes/config/exec_provider.py
-+++ kubernetes-33.1.0/kubernetes/config/exec_provider.py
+--- kubernetes-34.1.0.orig/kubernetes/config/exec_provider.py
++++ kubernetes-34.1.0/kubernetes/config/exec_provider.py
 @@ -58,15 +58,6 @@ class ExecProvider(object):
          else:
              self.cluster = None
@@ -18,7 +18,7 @@ Index: kubernetes-33.1.0/kubernetes/config/exec_provider.py
  
      def run(self, previous_response=None):
          is_interactive = hasattr(sys.stdout, 'isatty') and sys.stdout.isatty()
-@@ -91,7 +82,7 @@ class ExecProvider(object):
+@@ -96,7 +87,7 @@ class ExecProvider(object):
              cwd=self.cwd,
              env=self.env,
              universal_newlines=True,
@@ -27,25 +27,38 @@ Index: kubernetes-33.1.0/kubernetes/config/exec_provider.py
          (stdout, stderr) = process.communicate()
          exit_code = process.wait()
          if exit_code != 0:
-Index: kubernetes-33.1.0/kubernetes/config/exec_provider_test.py
+Index: kubernetes-34.1.0/kubernetes/config/exec_provider_test.py
 ===================================================================
---- kubernetes-33.1.0.orig/kubernetes/config/exec_provider_test.py
-+++ kubernetes-33.1.0/kubernetes/config/exec_provider_test.py
-@@ -180,8 +180,15 @@ class ExecProviderTest(unittest.TestCase
+--- kubernetes-34.1.0.orig/kubernetes/config/exec_provider_test.py
++++ kubernetes-34.1.0/kubernetes/config/exec_provider_test.py
+@@ -180,7 +180,14 @@ class ExecProviderTest(unittest.TestCase
          self.assertTrue(isinstance(result, dict))
          self.assertTrue('token' in result)
  
 -        obj = json.loads(mock.call_args.kwargs['env']['KUBERNETES_EXEC_INFO'])
--        self.assertEqual(obj['spec']['cluster']['server'], 'name.company.com')
 +        #obj = json.loads(mock.call_args.kwargs['env']['KUBERNETES_EXEC_INFO'])
 +        #self.assertEqual(obj['spec']['cluster']['server'], 'name.company.com')
 +        # Check the KUBERNETES_EXEC_INFO env var
 +        args, kwargs = mock.call_args
 +        env = kwargs['env']
-+        exec_info = json.loads(env['KUBERNETES_EXEC_INFO'])
++        obj = json.loads(env['KUBERNETES_EXEC_INFO'])
 +
-+        self.assertIn('cluster', exec_info['spec'])
-+        self.assertEqual(exec_info['spec']['cluster']['server'], 'name.company.com')
++        self.assertIn('cluster', obj['spec'])
+         self.assertEqual(obj['spec']['cluster']['server'], 'name.company.com')
  
+     @mock.patch("subprocess.Popen")
+@@ -211,7 +218,13 @@ class ExecProviderTest(unittest.TestCase
+         self.assertTrue(isinstance(result, dict))
+         self.assertTrue("token" in result)
  
- if __name__ == '__main__':
+-        obj = json.loads(mock.call_args.kwargs["env"]["KUBERNETES_EXEC_INFO"])
++        #obj = json.loads(mock.call_args.kwargs["env"]["KUBERNETES_EXEC_INFO"])
++        # Check the KUBERNETES_EXEC_INFO env var
++        args, kwargs = mock.call_args
++        env = kwargs['env']
++        obj = json.loads(env['KUBERNETES_EXEC_INFO'])
++
++        self.assertIn('cluster', obj['spec'])
+         self.assertEqual(obj["spec"]["cluster"]["server"], "name.company.com")
+         self.assertEqual(obj["spec"]["cluster"]["config"]["namespace"], "myproject")
+         self.assertEqual(obj["spec"]["cluster"]["config"]["name"], "mycluster")

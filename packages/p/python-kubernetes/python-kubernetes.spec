@@ -1,7 +1,7 @@
 #
 # spec file for package python-kubernetes
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kubernetes
-Version:        33.1.0
+Version:        34.1.0
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0
@@ -46,15 +46,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx >= 1.4}
+BuildRequires:  %{python_module oauthlib}
 BuildRequires:  %{python_module pluggy >= 0.3.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module recommonmark}
-%if 0%{?sle_version} && 0%{?sle_version} > 150400
-# Build python-kubernetes with oauthlib >=3.2.2, for sle_version > SLE-15-SP4
-BuildRequires:  %{python_module oauthlib >= 3.2.2}
 # /SECTION
-Requires:       python-oauthlib >= 3.2.2
-%endif
+Requires:       python-oauthlib
 Requires:       python-PyYAML >= 5.4.1
 Requires:       python-certifi >= 14.05.14
 Requires:       python-durationpy >= 0.7
