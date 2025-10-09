@@ -227,4 +227,20 @@
     <comment> (forwarded request 1295847 from rrahl0)</comment>
     <requestid>1295848</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>149c6cd25b726ea1ba713e56f20cd933</srcmd5>
+    <version>0.5.13</version>
+    <time>1760015244</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.13:
+  * Add fallback for GSettings schema
+  * Add a way to see the download speed and remaining time
+  * Add search bar for the &quot;Games&quot; tab
+  * Fix icon issue
+  * Add Wine runners to Bottles
+  * Fix Proton-GE RTSP
+  * Fix error when cancelling install during extraction
+  * Updated translations (forwarded request 1309961 from rrahl0)</comment>
+    <requestid>1309962</requestid>
+  </revision>
 </revisionlist>

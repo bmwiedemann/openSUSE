@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  9 10:43:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.5.13:
+  * Add fallback for GSettings schema
+  * Add a way to see the download speed and remaining time
+  * Add search bar for the "Games" tab
+  * Fix icon issue
+  * Add Wine runners to Bottles
+  * Fix Proton-GE RTSP
+  * Fix error when cancelling install during extraction
+  * Updated translations
+
+-------------------------------------------------------------------
 Fri Jul 25 22:14:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 0.5.12:
