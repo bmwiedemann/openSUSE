@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Tue Oct 07 05:53:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.73.0:
+  * b47057c7: feat(api): Add support for custom HTTP headers via
+    config (which can point to environment variables) (Henri Cook
+    2467396-henricook@users.noreply.gitlab.com)
+  * ac56c58a: feat(auth logout): logout from job token and OAuth2
+    auth (Timo Furrer tfurrer@gitlab.com)
+  * ba8946a7: feat(config): setting empty config value removes its
+    node from config (Timo Furrer tfurrer@gitlab.com)
+  * 0555045f: feat(duo / codex): Added Codex support to Duo
+    (Shekhar Patnaik spatnaik@gitlab.com)
+  * 2839a829: feat(duo claude): add option to configure GitLab MCP
+    for claude code (Timo Furrer tfurrer@gitlab.com)
+  * 85b5a8bf: feat(env): deprecate glab variables without GLAB_
+    prefix (Filip Aleksic faleksic@gitlab.com)
+  * 5e6c63aa: feat(securefile): Add --all flag to download all
+    secure files (Fred Reinink freinink@gitlab.com)
+  * 5b79e347: feat(securefile): Verify checksum when downloading
+    secure files (Fred Reinink freinink@gitlab.com)
+  * d176a870: feat: add support for CI/CD pipeline inputs in ci run
+    and ci run-trig commands (Florian Forster fforster@gitlab.com)
+  * b427ce28: fix(ci status): properly exit status (Kai Armstrong
+    karmstrong@gitlab.com)
+  * b0013035: fix(mr view): runtime error: invalid memory address
+    or nil pointer dereference (Kai Armstrong
+    karmstrong@gitlab.com)
+  * e068b8d5: fix(repo list): fix project group filtering
+    reliability (Eric de Ruiter eric@thisisdevelopment.nl)
+  * 493e48ca: fix(tests): avoid duplicate test case names (Timo
+    Furrer tfurrer@gitlab.com)
+  * 0d3765e6: fix(tests): properly use t.Parallel() where it's
+    currently used (Timo Furrer tfurrer@gitlab.com)
+  * 6c9f1f1c: fix: cli display parity chars (Jose Gabriel
+    Companioni Benitez 53531665+elC0mpa@users.noreply.github.com)
+  * 8e59a412: fix: prevents claude tests from writing settings.json
+    (Kai Armstrong karmstrong@gitlab.com)
+  * db9d5296: refactor(cmdtest): mark test helper as such (Timo
+    Furrer tfurrer@gitlab.com)
+  * 7c1c95e5: refactor(confirm): use new IOStreams Confirm (Timo
+    Furrer tfurrer@gitlab.com)
+  * 7947cff0: refactor(dependency): remove dependency to securejoin
+    by using os.Root (Timo Furrer tfurrer@gitlab.com)
+  * 973c3f17: refactor(duo ask): use cmdtest.SetupCmdForTest
+    directly (Timo Furrer tfurrer@gitlab.com)
+  * 58e6abec: refactor(select): use select prompt from huh (Timo
+    Furrer tfurrer@gitlab.com)
+  * 668c79b9: refactor(testing): setup test factory for huh (Timo
+    Furrer tfurrer@gitlab.com)
+  * chore(deps): adjust test for client-go bump
+  * chore(deps): update dependency @commitlint/config-conventional
+    to v20
+  * chore(deps): update dependency @commitlint/format to v20
+  * chore(deps): update dependency @commitlint/read to v20
+  * chore(deps): update dependency golangci-lint to v2.5.0
+  * chore(deps): update module github.com/charmbracelet/fang to
+    v0.4.3
+  * chore(deps): update module
+    github.com/docker/docker-credential-helpers to v0.9.4
+  * chore(deps): update module github.com/mark3labs/mcp-go to
+    v0.40.0
+  * chore(deps): update module github.com/mark3labs/mcp-go to
+    v0.40.0
+  * chore(deps): update module github.com/mark3labs/mcp-go to
+    v0.41.0
+  * chore(deps): update module github.com/mark3labs/mcp-go to
+    v0.41.1
+  * chore(deps): update module github.com/mattn/go-runewidth to
+    v0.0.17
+  * chore(deps): update module github.com/mattn/go-runewidth to
+    v0.0.19
+  * chore(deps): update module github.com/mattn/go-runewidth to
+    v0.0.19
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.146.0
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.147.0
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.147.1
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.148.0
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.148.1
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.149.0
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.150.0
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.151.0
+
+-------------------------------------------------------------------
 Thu Sep 18 07:26:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.72.0:
