@@ -1,7 +1,7 @@
 #
 # spec file for package vcdimager
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source:         https://ftp.gnu.org/gnu/vcdimager/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/vcdimager/%{name}-%{version}.tar.gz.sig
 Source2:        baselibs.conf
 Patch1:         sector_private.patch
+# https://gitlab.archlinux.org/archlinux/packaging/packages/vcdimager/-/raw/main/libxml214.diff?ref_type=heads
+Patch2:         vcdimager-libxml2-2.14.patch
 BuildRequires:  fdupes
 BuildRequires:  gawk
 BuildRequires:  gcc-c++

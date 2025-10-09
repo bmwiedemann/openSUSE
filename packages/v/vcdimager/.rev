@@ -282,4 +282,13 @@
     <comment></comment>
     <requestid>847808</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>9213d76cadac879aac721c0abc23f395</srcmd5>
+    <version>2.0.1</version>
+    <time>1760015048</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with libxml2 2.14
+  * vcdimager-libxml2-2.14.patch</comment>
+    <requestid>1308599</requestid>
+  </revision>
 </revisionlist>
