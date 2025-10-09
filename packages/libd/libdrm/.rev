@@ -1897,4 +1897,12 @@ Man pages are disabled for this build, upstream disabled them for this release. 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1307924</requestid>
   </revision>
+  <revision rev="182" vrev="4">
+    <srcmd5>49fa78fb605a8a94547c6eef1604e978</srcmd5>
+    <version>2.4.124</version>
+    <time>1760015018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309823</requestid>
+  </revision>
 </revisionlist>

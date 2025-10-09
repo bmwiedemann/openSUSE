@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  2 11:17:36 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable valgrind support on riscv64
+
+-------------------------------------------------------------------
 Mon Sep 22 15:36:39 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - redefine %meson_build/%meson_install on Leap 15.6 in order to fix
