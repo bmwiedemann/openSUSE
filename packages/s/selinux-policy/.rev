@@ -2109,4 +2109,14 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1309776</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>9ab2333f50f564cc85082bc49d937f63</srcmd5>
+    <version>20251009</version>
+    <time>1760015035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251009:
+  * grub snapper plugin is now named 00-grub (bsc#1251793)
+</comment>
+    <requestid>1309935</requestid>
+  </revision>
 </revisionlist>
