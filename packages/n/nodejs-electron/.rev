@@ -1441,4 +1441,15 @@ to Staging:F with it</comment>
     <comment></comment>
     <requestid>1305308</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>f0eae96c1fd45488350d0b6d6fc88896</srcmd5>
+    <version>37.6.1</version>
+    <time>1760015068</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 37.6.1
+  * fix: runtime JS error that crashes GetPackageJSON
+- New upstream release 37.6.0
+  * Allowed for persisting File System API grant status within a given session</comment>
+    <requestid>1309842</requestid>
+  </revision>
 </revisionlist>

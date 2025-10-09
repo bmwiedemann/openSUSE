@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  8 06:11:24 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 37.6.1
+  * fix: runtime JS error that crashes GetPackageJSON
+- New upstream release 37.6.0
+  * Allowed for persisting File System API grant status within a given session
+
+-------------------------------------------------------------------
 Wed Sep 17 05:33:20 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 37.5.1

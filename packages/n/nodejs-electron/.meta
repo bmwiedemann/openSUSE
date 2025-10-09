@@ -3,6 +3,5 @@
   <description>Nodejs application: Build cross platform desktop apps with JavaScript, HTML, and CSS
 
 </description>
-  <devel project="devel:languages:nodejs" package="nodejs-electron"/>
   <url>https://github.com/electron/electron</url>
 </package>
