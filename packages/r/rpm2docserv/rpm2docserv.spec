@@ -1,7 +1,7 @@
 #
 # spec file for package rpm2docserv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           rpm2docserv
-Version:        20250428.1b0295a
+Version:        20251009.c754941
 Release:        0
 Summary:        Make manpages from RPMs accessible in a web browser
 License:        Apache-2.0
@@ -32,7 +32,7 @@ Source2:        tumbleweed.yaml
 Source3:        leap.idx
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.24
 Requires:       /usr/bin/mandoc
 Requires:       cpio
 
