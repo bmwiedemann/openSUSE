@@ -157,4 +157,12 @@
   * Fix /machine/map endpoint vulnerability (forwarded request 1283728 from rrahl0)</comment>
     <requestid>1283729</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ea95e942eaf82a4e0abc1eacfe16e474</srcmd5>
+    <version>0.26.1</version>
+    <time>1760015221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309944</requestid>
+  </revision>
 </revisionlist>

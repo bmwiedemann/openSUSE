@@ -29,6 +29,8 @@ Source3:        headscale.tmpfs.conf
 Source4:        headscale.systemd.service
 Source5:        config-example.yaml
 Source6:        derp-example.yaml
+Patch0:         fix-CVE-2025-58190.patch
+Patch1:         fix-CVE-2025-47911.patch
 BuildRequires:  golang-packaging
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
