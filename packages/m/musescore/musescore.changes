@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct  8 15:36:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.6.1:
+  - More options for showing and hiding empty staves
+  - Significantly improved realtime playback experience
+  - Tons of new features for piano, voice, guitar scores
+  - Chord symbols overhaul
+  - Ability to load any SMuFL-compliant music font
+  - VST3 support on Linux
+  - Numerous workflow enhancements
+  - And much, much more...
+
+  For all details see https://musescore.org/en/4.6
+- drop musescore-qt69.patch
+
+-------------------------------------------------------------------
 Wed Apr 30 23:58:58 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.5.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package musescore
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,11 @@
 # Workaround boo#1189991
 %define _lto_cflags %{nil}
 %define rname   mscore
-%define version_lesser 4.5
+%define version_lesser 4.6
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        4.5.2
+Version:        4.6.1
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Licenses in MuseScore are a mess. To help other maintainers I give the following overview:
@@ -62,8 +62,6 @@ Source2:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General
 Source3:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Readme.md
 Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf3
 Source5:        README.SUSE
-# PATCH-FIX-UPSTREAM
-Patch0:         musescore-qt69.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1560 && 0%{?sle_version} <= 150600
@@ -98,6 +96,7 @@ BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickControls2)
 BuildRequires:  cmake(Qt6QuickTemplates2)
 BuildRequires:  cmake(Qt6QuickWidgets)
+BuildRequires:  cmake(Qt6ShaderTools)
 BuildRequires:  cmake(Qt6StateMachine)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Test)
@@ -127,6 +126,7 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
 Requires:       %{name}-fonts = %{version}-%{release}
+Requires:       qt6-qt5compat-imports
 Requires:       ( alsa-plugins-pulse if pulseaudio )
 # For the following arch build fails in the crashpad client,
 # Maybe repairable? Disabled until a solution is found by someone.
@@ -215,7 +215,7 @@ export CXX=g++-12
 # install fonts
 mkdir -p %{buildroot}%{fontdir}
 install -p -m 644 fonts/*.ttf %{buildroot}/%{fontdir}
-install -p -m 644 fonts/*/*.ttf %{buildroot}/%{fontdir}
+install -p -m 644 fonts/*/*.otf %{buildroot}/%{fontdir}
 install -p -m 644 fonts/bravura/BravuraText.otf %{buildroot}/%{fontdir}
 install -p -m 644 fonts/campania/Campania.otf %{buildroot}/%{fontdir}
 install -p -m 644 fonts/edwin/*.otf %{buildroot}/%{fontdir}
@@ -224,11 +224,10 @@ install -p -m 644 fonts/leland/LelandText.otf %{buildroot}/%{fontdir}
 install -p -m 644 fonts/musejazz/MuseJazzText.otf %{buildroot}/%{fontdir}
 install -p -m 644 fonts/petaluma/PetalumaText.otf %{buildroot}/%{fontdir}
 
-# unique names for font docs
-mv fonts/edwin/README.md         fonts/edwin/README.md.edwin
-mv fonts/edwin/LICENSE.txt       fonts/edwin/LICENSE.txt.edwin
-mv fonts/leland/README.md        fonts/leland/README.md.leland
-mv fonts/leland/LICENSE.txt      fonts/leland/LICENSE.txt.leland
+for i in fonts/*/*.md fonts/*/LICENSE* ; do
+  d=$(basename $(dirname $i)) ;
+  cp ${i} $(basename $i).font.${d} ;
+done
 
 # also package additional demos
 mkdir -p %{buildroot}%{_datadir}/%{rname}-%{version_lesser}/demos
@@ -280,13 +279,10 @@ install -p -m 644 share/wallpapers/COPYRIGHT          %{buildroot}%docdir/COPYIN
 %doc fonts/bravura/bravura-text.md
 %doc fonts/bravura/OFL-FAQ.txt
 %doc fonts/bravura/OFL.txt
-%license fonts/campania/LICENSE
+%license LICEN?E*.font.*
 %doc fonts/gootville/readme.txt
 
 # see section 'unique names for font docs' above
-%doc fonts/edwin/README.md.edwin
-%license fonts/edwin/LICENSE.txt.edwin
-%doc fonts/leland/README.md.leland
-%license fonts/leland/LICENSE.txt.leland
+%doc README.md.font.*
 
 %changelog
