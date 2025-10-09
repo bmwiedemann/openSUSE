@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  8 23:12:31 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to maven-archiver 3.6.5
+  * New features and improvements
+    + add Java-Version entry to default MANIFEST.MF
+  * Bug Fixes
+    + avoid negative entry time: upgrade plexus-archiver
+    + don't limit outputTimestamp to zip (MS DOS) range
+  * Documentation updates
+    + remove extra newline in code blocks
+    + reformat descriptor description to match usual
+      Modello-generated ones
+    + document Java-Version entry added in #298
+  * Maintenance
+    + Update site descriptor to 2.0.0
+  * Dependency updates
+    + Bump org.assertj:assertj-core from 3.27.3 to 3.27.6
+    + Bump org.codehaus.plexus:plexus-archiver from 4.10.0 to 4.10.1
+
+-------------------------------------------------------------------
 Mon Aug 11 07:33:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to maven-archiver 3.6.4

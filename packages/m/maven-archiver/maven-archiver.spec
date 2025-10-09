@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           maven-archiver
-Version:        3.6.4
+Version:        3.6.5
 Release:        0
 Summary:        Maven Archiver
 License:        Apache-2.0
@@ -33,7 +33,7 @@ BuildRequires:  maven-lib
 BuildRequires:  maven-shared-utils
 BuildRequires:  plexus-archiver >= 4.2.0
 BuildRequires:  plexus-interpolation >= 1.25
-BuildRequires:  plexus-utils >= 3.3.0
+BuildRequires:  plexus-xml
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -64,7 +64,8 @@ build-jar-repository -s lib \
   maven-shared-utils/maven-shared-utils \
   org.eclipse.sisu.plexus \
   plexus/archiver \
-  plexus/interpolation
+  plexus/interpolation \
+  plexus/xml
 
 ant jar javadoc
 
