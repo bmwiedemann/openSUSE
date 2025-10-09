@@ -1653,4 +1653,12 @@ Update to 4.43.0:
   - Update translations.</comment>
     <requestid>1301148</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>5f5f14ef713bc152f0ce50efb43f93ed</srcmd5>
+    <version>4.49.0</version>
+    <time>1760015129</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1309866</requestid>
+  </revision>
 </revisionlist>
