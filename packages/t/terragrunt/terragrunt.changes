@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 09 05:11:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.89.3:
+  * fix: Adding missing flags to the `hcl` command (#4927)
+
+-------------------------------------------------------------------
 Wed Oct 08 05:24:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.89.2:
