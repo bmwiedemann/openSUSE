@@ -253,7 +253,7 @@ Requires:       selinux-tools
 This are packages which are required to enable SELinux on openSUSE MicroOS
 
 %package cockpit
-Summary:        Web based remote system managemet
+Summary:        Web based remote system management
 Group:          Metapackages
 Provides:       pattern() = microos_cockpit
 Provides:       pattern-category() = MicroOS

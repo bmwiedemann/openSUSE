@@ -962,4 +962,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>1296560</requestid>
   </revision>
+  <revision rev="103" vrev="103">
+    <srcmd5>02facc2f6250c55edef15a6b899926a5</srcmd5>
+    <version>5.0</version>
+    <time>1760015026</time>
+    <user>dimstar_suse</user>
+    <comment>- Spelling correction</comment>
+    <requestid>1309846</requestid>
+  </revision>
 </revisionlist>
