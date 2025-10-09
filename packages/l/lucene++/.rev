@@ -100,4 +100,16 @@ A dependency for poedit 1.6.x</comment>
     <comment></comment>
     <requestid>1277842</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c63454c2eade07ea77955d266574bb1b</srcmd5>
+    <version>3.0.9</version>
+    <time>1760015215</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lucene++-3.0.9-fix-cmake.patch
+  * Bump minimum required cmake version to 3.10, for new cmake 4
+    compatibility fix
+- Add lucene++-3.0.9-fix-boost1.89.patch
+  * fix build with boost 1.89 (forwarded request 1309340 from adkorte)</comment>
+    <requestid>1309940</requestid>
+  </revision>
 </revisionlist>

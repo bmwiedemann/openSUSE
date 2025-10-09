@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  5 21:00:33 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Add lucene++-3.0.9-fix-cmake.patch
+  * Bump minimum required cmake version to 3.10, for new cmake 4
+    compatibility fix
+- Add lucene++-3.0.9-fix-boost1.89.patch
+  * fix build with boost 1.89
+
+-------------------------------------------------------------------
 Wed May  7 08:10:23 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes

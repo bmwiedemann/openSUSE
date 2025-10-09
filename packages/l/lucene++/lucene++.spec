@@ -30,16 +30,23 @@ Patch4:         lucene++-3.0.9-fix-boost1.85.patch
 Patch5:         lucene++-3.0.9-migrate-to-boost-asio-io_context.patch
 # PATCH-FIX-UPSTREAM https://github.com/luceneplusplus/LucenePlusPlus/pull/200
 Patch6:         lucene++-3.0.9-fix-linking-DefaultSimilarity.patch
-BuildRequires:  cmake >= 3.5
+# PATCH-FIX-UPSTREAM https://github.com/luceneplusplus/LucenePlusPlus/pull/218
+Patch7:         lucene++-3.0.9-fix-cmake.patch
+# PATCH-FIX-UPSTREAM https://github.com/luceneplusplus/LucenePlusPlus/pull/219
+Patch8:        lucene++-3.0.9-fix-boost1.89.patch
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_regex-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libboost_thread-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -61,7 +68,14 @@ Requires:       liblucene++0 = %{version}
 Development files for lucene++, a high-performance, full-featured text search engine written in C++
 
 %prep
-%autosetup -p1 -n LucenePlusPlus-rel_%{version}
+%autosetup -N -n LucenePlusPlus-rel_%{version}
+%patch -p1 -P 4
+%patch -p1 -P 5
+%patch -p1 -P 6
+%patch -p1 -P 7
+%if 0%{?suse_version} >= 1600
+%patch -p1 -P 8
+%endif
 
 %build
 # Remove cmake4 error due to not setting
