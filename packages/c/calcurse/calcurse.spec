@@ -1,7 +1,7 @@
 #
 # spec file for package calcurse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           calcurse
-Version:        4.8.1
+Version:        4.8.2
 Release:        0
 Summary:        Text-based Organizer
 License:        BSD-2-Clause

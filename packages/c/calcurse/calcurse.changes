@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct  3 07:44:02 UTC 2025 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to 4.8.2:
+  * Bug fixes:
+     * Fixed iCal export with VALARM calendar components.
+     * Fixed buffer overflows in configuration file and key binding parser.
+     * Fixed out-of-bounds access and two memory leaks.
+     * Fixed segmentation fault for iCal exports with deleted note files.
+     * Minor documentation and status message fixes.
+  * New calcurse-caldav features:
+     * Support for configuring the path to the OAuth credentials file via command-line arguments.
+     * Relaxed DTEND check for iCal imports.
+     * Improved locking mechanism.
+     * Improved PasswordCommand output handling.
+     * Improved Google calendar sync instructions.
+
+-------------------------------------------------------------------
 Sun Jul 16 18:49:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.1:
