@@ -2,7 +2,6 @@
   <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ### -->
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="389-ds-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="7zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="AppStream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="AppStream-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -291,7 +290,6 @@
     <package name="cyrus-imapd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="cyrus-sasl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-crammd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="cyrus-sasl-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="cyrus-sasl-digestmd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-plain" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1576,7 +1574,7 @@
     <package name="libSDL3-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSDL_gfx16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libSPIRV-Tools-2025_4_rc1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libSPIRV-Tools-2025_4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSoundTouch1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libSvtAv1Enc3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libUsageEnvironment3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1680,7 +1678,7 @@
     <package name="libaom3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libapparmor1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libappindicator3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="libappstream-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libappstream-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libappstream5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libapr-util1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="libapr1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
@@ -1712,11 +1710,15 @@
     <package name="libavahi-glib1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavc1394-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavcodec61" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libavfilter10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libavcodec62" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libavfilter10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libavfilter11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavformat61" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libavformat62" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavif16" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavtp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavutil59" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libavutil60" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libayatana-appindicator3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libayatana-ido3-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libayatana-indicator3-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -1946,7 +1948,6 @@
     <package name="libevdev2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libevdocument3-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libevent-2_1-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libevent-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libevview3-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libexempi8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libexif12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2058,7 +2059,7 @@
     <package name="libglib-2_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libglibmm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libglibmm-2_68-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libglslang16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libglslang16" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libglut3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libglvnd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libglycin-2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2220,7 +2221,7 @@
     <package name="libidn2-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libidn2-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libiec61883-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libimagequant0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libimagequant0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libimobiledevice-1_0-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libimobiledevice-glue-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libini_config5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -2504,7 +2505,7 @@
     <package name="libp11-kit0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libp11-kit0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpackagekit-glib2-18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpackagekitqt6-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libpackagekitqt6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpagemaker-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpango-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpangomm-1_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2567,7 +2568,7 @@
     <package name="libportal-gtk4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportal1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpostproc58" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libpostproc58" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libppd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libppd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2699,7 +2700,7 @@
     <package name="libserializer" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsgutils2-1_48-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libshaderc_shared1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libshaderc_shared1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsharpyuv0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libshout3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libshumate-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2770,7 +2771,9 @@
     <package name="libsuitesparseconfig7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsvrcore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libswresample5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libswscale8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libswresample6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libswscale8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libswscale9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsynctex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsysfs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3122,10 +3125,8 @@
     <package name="mozc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozc-gui-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozilla-nspr" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="mozilla-nspr-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="mozilla-nss" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozilla-nss-certs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="mozilla-nss-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="mozilla-nss-sysinit" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="mozilla-nss-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="mpg123-openal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3211,7 +3212,6 @@
     <package name="openconnect-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="openconnect-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openldap2-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="openldap2-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="opensc" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
     <package name="opensc-bash-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="openslp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

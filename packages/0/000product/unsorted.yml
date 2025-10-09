@@ -3,6 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
+  - 389-ds-devel 
   - 389-ds-snmp 
   - 3omns 
   - 3proxy 
@@ -594,9 +595,11 @@ unsorted:
   - angelfish-lang 
   - angelscript-devel 
   - ansible 
+  - ansible-11 
   - ansible-builder 
   - ansible-cmdb 
   - ansible-core 
+  - ansible-core-2.18 
   - ansible-documentation 
   - ansible-lint 
   - ansible-linux-system-roles 
@@ -2999,6 +3002,7 @@ unsorted:
   - cyrus-sasl-bdb-plain 
   - cyrus-sasl-bdb-scram 
   - cyrus-sasl-crammd5-32bit 
+  - cyrus-sasl-devel 
   - cyrus-sasl-devel-32bit 
   - cyrus-sasl-digestmd5-32bit 
   - cyrus-sasl-gs2 
@@ -11207,7 +11211,7 @@ unsorted:
   - libOkteta3 
   - libOpenCL1 
   - libOpenCL1-32bit 
-  - libOpenColorIO2_4 
+  - libOpenColorIO2_5 
   - libOpenEXR-3_4-33-32bit 
   - libOpenEXRCore-3_4-33-32bit 
   - libOpenEXRUtil-3_4-33 
@@ -11505,7 +11509,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2025_4_rc1-32bit 
+  - libSPIRV-Tools-2025_4-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -11530,7 +11534,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVulkanLayerSettings-1_4_321 
+  - libVulkanLayerSettings-1_4_328 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
@@ -12030,20 +12034,21 @@ unsorted:
   - libavcodec58_134 
   - libavcodec58_134-32bit 
   - libavcodec61-32bit 
-  - libavcodec62 
+  - libavcodec62-32bit 
   - libavdevice58_13 
   - libavdevice58_13-32bit 
   - libavdevice61 
   - libavdevice61-32bit 
   - libavdevice62 
+  - libavdevice62-32bit 
   - libavfilter10-32bit 
-  - libavfilter11 
+  - libavfilter11-32bit 
   - libavfilter7_110 
   - libavfilter7_110-32bit 
   - libavformat58_76 
   - libavformat58_76-32bit 
   - libavformat61-32bit 
-  - libavformat62 
+  - libavformat62-32bit 
   - libavfs1 
   - libavif-devel 
   - libavif16-32bit 
@@ -12055,7 +12060,7 @@ unsorted:
   - libavutil56_70 
   - libavutil56_70-32bit 
   - libavutil59-32bit 
-  - libavutil60 
+  - libavutil60-32bit 
   - libaws-c-auth1_0_0 
   - libaws-c-cal0unstable 
   - libaws-c-common1 
@@ -12984,6 +12989,7 @@ unsorted:
   - libevdi1 
   - libevemu3 
   - libevent-2_1-7-32bit 
+  - libevent-devel 
   - libevent-devel-static 
   - libeverest 
   - libeverest-x86-64-v3 
@@ -15170,7 +15176,6 @@ unsorted:
   - libp256m-x86-64-v3 
   - libp8-platform2 
   - libpackagekit-glib2-devel 
-  - libpackagekitqt5-1 
   - libpagemaker-devel 
   - libpagemaker-devel-doc 
   - libpagemaker-tools 
@@ -16359,11 +16364,11 @@ unsorted:
   - libswresample3_9 
   - libswresample3_9-32bit 
   - libswresample5-32bit 
-  - libswresample6 
+  - libswresample6-32bit 
   - libswscale5_9 
   - libswscale5_9-32bit 
   - libswscale8-32bit 
-  - libswscale9 
+  - libswscale9-32bit 
   - libsybdb5 
   - libsybdb5-32bit 
   - libsymmetrica3 
@@ -16825,7 +16830,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk-1_4_321 
+  - libvolk-1_4_328 
   - libvolk3_2 
   - libvomsapi1 
   - libvorbis-devel 
@@ -18984,8 +18989,10 @@ unsorted:
   - mozaddon-devel 
   - mozilla-fira-fonts 
   - mozilla-nspr-32bit 
+  - mozilla-nspr-devel 
   - mozilla-nss-32bit 
   - mozilla-nss-certs-32bit 
+  - mozilla-nss-devel 
   - mozilla-nss-sysinit-32bit 
   - mozilla-zilla-slab-fonts 
   - mozjs115 
@@ -20393,6 +20400,7 @@ unsorted:
   - openldap2-back-sock 
   - openldap2-back-sql 
   - openldap2-contrib 
+  - openldap2-devel 
   - openldap2-devel-32bit 
   - openldap2-devel-static 
   - openldap2-doc 
@@ -20676,7 +20684,6 @@ unsorted:
   - pack200 
   - pack200-javadoc 
   - package-translations 
-  - packagekitqt5-devel 
   - packagekitqt6-devel 
   - packetdrill 
   - packetdrill-tests 
@@ -22861,8 +22868,6 @@ unsorted:
   - plexus-resources-javadoc 
   - plexus-sec-dispatcher 
   - plexus-sec-dispatcher-javadoc 
-  - plexus-testing 
-  - plexus-testing-javadoc 
   - plexus-utils 
   - plexus-utils-javadoc 
   - plexus-velocity 

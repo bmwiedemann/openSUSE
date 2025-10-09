@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20251007" schemaversion="4.1">
+<image name="OBS__MicroOS___20251008" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20251007</productvar>
+      <productvar name="VERSION">20251008</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20251007,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20251008,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20251007/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20251008/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -537,10 +537,14 @@
       <repopackage name="libavahi-glib1"/>
       <repopackage name="libavc1394-0"/>
       <repopackage name="libavcodec61"/>
+      <repopackage name="libavcodec62"/>
       <repopackage name="libavfilter10"/>
+      <repopackage name="libavfilter11"/>
       <repopackage name="libavformat61"/>
+      <repopackage name="libavformat62"/>
       <repopackage name="libavif16"/>
       <repopackage name="libavutil59"/>
+      <repopackage name="libavutil60"/>
       <repopackage name="libb2-1"/>
       <repopackage name="libbasicobjects0"/>
       <repopackage name="libBasicUsageEnvironment2"/>
@@ -744,7 +748,6 @@
       <repopackage name="libIex-3_4-33"/>
       <repopackage name="libIlmThread-3_4-33"/>
       <repopackage name="libimaevm5"/>
-      <repopackage name="libimagequant0"/>
       <repopackage name="libImath-3_2-30"/>
       <repopackage name="libimobiledevice-1_0-6"/>
       <repopackage name="libimobiledevice-glue-1_0-0"/>
@@ -1008,7 +1011,7 @@
       <repopackage name="libostree-1-1"/>
       <repopackage name="libp11-kit0"/>
       <repopackage name="libpackagekit-glib2-18"/>
-      <repopackage name="libpackagekitqt6-1"/>
+      <repopackage name="libpackagekitqt6-2"/>
       <repopackage name="libpango-1_0-0"/>
       <repopackage name="libparted-fs-resize0"/>
       <repopackage name="libparted2"/>
@@ -1225,7 +1228,7 @@
       <repopackage name="libspeechd2"/>
       <repopackage name="libspeex1"/>
       <repopackage name="libspeexdsp1"/>
-      <repopackage name="libSPIRV-Tools-2025_4_rc1"/>
+      <repopackage name="libSPIRV-Tools-2025_4"/>
       <repopackage name="libsqlite3-0"/>
       <repopackage name="libsratom-0-0"/>
       <repopackage name="libsrt1_5"/>
@@ -1240,7 +1243,9 @@
       <repopackage name="libsubid5"/>
       <repopackage name="libSvtAv1Enc3"/>
       <repopackage name="libswresample5"/>
+      <repopackage name="libswresample6"/>
       <repopackage name="libswscale8"/>
+      <repopackage name="libswscale9"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libtag2"/>
       <repopackage name="libtalloc2"/>
