@@ -26,6 +26,8 @@ Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Patch0:         pie.patch
 Patch1:         fix-CVE-2025-22872.patch
+Patch2:         fix-CVE-2025-58190.patch
+Patch3:         fix-CVE-2025-47911.patch
 BuildRequires:  debootstrap
 BuildRequires:  git-core
 BuildRequires:  gpg2

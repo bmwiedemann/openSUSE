@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  9 10:10:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch fix-CVE-2025-47911.patch, fixing bsc#1251479
+- add patch fix-CVE-2025-58190.patch, fixing bsc#1251702
+
+-------------------------------------------------------------------
 Sun Jun  8 11:18:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - require the smaller package git-core, not git (which includes
