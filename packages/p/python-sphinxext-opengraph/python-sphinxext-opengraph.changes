@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct  9 06:21:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.13.0
+  * Add support for Python 3.12
+  * Drop support for Sphinx 4
+  * Add testing for Sphinx 8
+  * Improvements & general refactoring
+  * Allow setting a canonical URL via ogp_canonical_url
+  * Allow ogp_custom_meta_tags to be a tuple
+  * Only use READTHEDOCS_CANONICAL_URL from Read the Docs
+  * Escape reserved HTML characters in og:description
+  * Ignore EPUB builders in html_page_context()
+  * Declare support for Python 3.14
+  * Specify valid types for configuration options
+
+-------------------------------------------------------------------
 Mon Dec 18 09:32:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.1:

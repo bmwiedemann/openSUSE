@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxext-opengraph
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,21 +26,21 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxext-opengraph
-Version:        0.9.1
+Version:        0.13.0
 Release:        0
 Summary:        Sphinx Extension to enable OGP support
 License:        MIT
 URL:            https://github.com/wpilibsuite/sphinxext-opengraph
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxext-opengraph/sphinxext-opengraph-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sphinxext-opengraph/sphinxext_opengraph-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python3-Sphinx >= 2.0
+Requires:       python3-Sphinx >= 5.0
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Sphinx >= 2.0}
+BuildRequires:  %{python_module Sphinx >= 5.0}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxext-opengraph}
@@ -51,7 +51,7 @@ BuildRequires:  %{python_module sphinxext-opengraph}
 Sphinx Extension to enable OGP support
 
 %prep
-%setup -q -n sphinxext-opengraph-%{version}
+%setup -q -n sphinxext_opengraph-%{version}
 
 %build
 %pyproject_wheel
@@ -69,8 +69,8 @@ Sphinx Extension to enable OGP support
 
 %if !%{with test}
 %files %{python_files}
-%doc README.md
-%license LICENSE.md
+%doc README.rst
+%license LICENCE.rst
 %dir %{python_sitelib}/sphinxext
 %{python_sitelib}/sphinxext/opengraph
 %{python_sitelib}/sphinxext_opengraph-%{version}.dist-info

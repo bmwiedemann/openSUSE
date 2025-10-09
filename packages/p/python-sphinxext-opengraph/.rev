@@ -62,4 +62,12 @@ This package is eventually going to be needed by Kitty, when someone manages to 
 - Update to version 0.6.3</comment>
     <requestid>1133821</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1a4fa1dc750e508303832ddf8e0d0add</srcmd5>
+    <version>0.13.0</version>
+    <time>1760015191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309923</requestid>
+  </revision>
 </revisionlist>
