@@ -4611,4 +4611,51 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1307874</requestid>
   </revision>
+  <revision rev="300" vrev="1">
+    <srcmd5>289be2e56e5f3b879383a16143550bda</srcmd5>
+    <version>10.1.1</version>
+    <time>1760014799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to stable release 10.1.1:
+  A selection of the backported patches and fixes is:
+   tests/functional/aarch64: Fix assets of test_hotplug_pci
+   physmem: Destroy all CPU AddressSpaces on unrealize
+   memory: New AS helper to serialize destroy+free
+   include/system/memory.h: Clarify address_space_destroy() behaviour
+   migration: Fix state transition in postcopy_start() error handling
+   target/riscv: rvv: Modify minimum VLEN according to enabled vector extensions
+   target/riscv: rvv: Replace checking V by checking Zve32x
+   target/riscv: Fix endianness swap on compressed instructions
+   hw/riscv/riscv-iommu: Fixup PDT Nested Walk
+   target/riscv: do not use translator_ldl in opcode_at
+   target/riscv: use riscv_csrr in riscv_csr_read
+   hw/char: sifive_uart: Raise IRQ according to the Tx/Rx watermark thresholds
+   docs/interop/firmware: Add riscv64 to FirmwareArchitecture
+   hw/riscv/riscv-iommu: Fix MSI table size limit
+   ui/icons/qemu.svg: Add metadata information (author, license) to the logo
+   ui/spice: fix crash when disabling GL scanout on
+   ui/spice: Fix abort on macOS
+   ppc/spapr: init lrdr-capapcity phys with ram size if maxmem not provided
+   hw/intc/xics: Add missing call to register vmstate_icp_server
+   net/passt: Fix build failure due to missing GIO dependency
+   hw/usb/hcd-uhci: don't assert for SETUP to non-0 endpoint
+   tests/tcg/multiarch: Add tb-link test
+   accel/tcg: Properly unlink a TB linked to itself
+   tests: Fix &quot;make check-functional&quot; for targets without thorough tests
+   .gitlab-ci.d/buildtest.yml: Unset CI_COMMIT_DESCRIPTION for htags
+   tcg/optimize: Fix folding of vector bitsel
+   hw/pci-host/astro: Don't call pci_regsiter_root_bus() in init
+   hw/pci-host/dino: Don't call pci_register_root_bus() in init
+   target/sparc: Relax decode of rs2_or_imm for v7
+   target/sparc: Loosen decode of RDTBR for v7
+   target/sparc: Loosen decode of RDWIM for v7
+   target/sparc: Loosen decode of RDPSR for v7
+   target/sparc: Loosen decode of RDY for v7
+   target/sparc: Loosen decode of STBAR for v8
+   target/sparc: Allow TRANS macro with no extra arguments
+   linux-user: avoid -Werror=int-in-bool-context
+   ...
+</comment>
+    <requestid>1309801</requestid>
+  </revision>
 </revisionlist>
