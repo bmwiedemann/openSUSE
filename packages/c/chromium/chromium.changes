@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  8 12:04:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 141.0.7390.65 (boo#1251334):
+  * CVE-2025-11458: Heap buffer overflow in Sync
+  * CVE-2025-11460: Use after free in Storage
+  * CVE-2025-11211: Out of bounds read in WebCodecs
+
+-------------------------------------------------------------------
 Wed Oct  1 18:16:47 CEST 2025 - ro@suse.de
 
 - Chromium 141.0.7390.54

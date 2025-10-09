@@ -118,7 +118,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        141.0.7390.54
+Version:        141.0.7390.65
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -1018,7 +1018,6 @@ sed -i 's|OFFICIAL_BUILD|GOOGLE_CHROME_BUILD|g' tools/generate_shim_headers/gene
 %endif
 myconf_gn+=" is_debug=false"
 myconf_gn+=" dcheck_always_on=false"
-myconf_gn+=" enable_nacl=false"
 %if %{with swiftshader}
 myconf_gn+=" use_swiftshader_with_subzero=true"
 %endif
