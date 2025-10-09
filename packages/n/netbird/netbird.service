@@ -1,0 +1,28 @@
+[Unit]
+Description=A WireGuard-based mesh network that connects your devices into a single private network.
+After=network.target syslog.target 
+
+[Service]
+StartLimitInterval=5
+StartLimitBurst=10
+EnvironmentFile=-/etc/sysconfig/netbird
+ExecStart=/usr/bin/netbird "service" "run" "--config" "/etc/netbird/config.json" "--log-level" "info" "--log-file" "/var/log/netbird/client.log"
+Restart=always
+RestartSec=120
+
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+PrivateDevices=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictRealtime=true
+# give permission to TUN
+BindPaths=/dev/net/tun
+DeviceAllow=/dev/net/tun rw
+
+[Install]
+WantedBy=multi-user.target

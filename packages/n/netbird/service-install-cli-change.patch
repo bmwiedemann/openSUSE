@@ -1,0 +1,248 @@
+diff --git a/client/cmd/login.go b/client/cmd/login.go
+index 92de6ab..3be446f 100644
+--- a/client/cmd/login.go
++++ b/client/cmd/login.go
+@@ -82,9 +82,16 @@ var loginCmd = &cobra.Command{
+ func doDaemonLogin(ctx context.Context, cmd *cobra.Command, providedSetupKey string, activeProf *profilemanager.Profile, username string, pm *profilemanager.ProfileManager) error {
+ 	conn, err := DialClientGRPCServer(ctx, daemonAddr)
+ 	if err != nil {
+-		return fmt.Errorf("failed to connect to daemon error: %v\n"+
+-			"If the daemon is not running please run: "+
+-			"\nnetbird service install \nnetbird service start\n", err)
++		return fmt.Errorf("failed to connect to daemon error: %v\n\n" +
++			"The daemon may not be running. Try restarting the service:\n" +
++			"    sudo systemctl restart netbird.service\n\n" +
++			"To check the service status, use:\n" +
++			"    sudo systemctl status netbird.service\n\n" +
++			"Unless you are manually overriding with a custom drop-in file, " +
++			"you should see the default openSUSE service at:\n" +
++			"    /usr/lib/systemd/system/netbird.service\n\n" +
++			"If you see the service is disabled, you can run:\n" +
++			"    sudo systemctl enable netbird.service --now\n", err)
+ 	}
+ 	defer conn.Close()
+ 
+diff --git a/client/cmd/root.go b/client/cmd/root.go
+index 8aa0d7c..8beaf4c 100644
+--- a/client/cmd/root.go
++++ b/client/cmd/root.go
+@@ -388,9 +388,16 @@ func getClient(cmd *cobra.Command) (*grpc.ClientConn, error) {
+ 
+ 	conn, err := DialClientGRPCServer(cmd.Context(), daemonAddr)
+ 	if err != nil {
+-		return nil, fmt.Errorf("failed to connect to daemon error: %v\n"+
+-			"If the daemon is not running please run: "+
+-			"\nnetbird service install \nnetbird service start\n", err)
++		return nil, fmt.Errorf("failed to connect to daemon error: %v\n\n" +
++      "The daemon may not be running. Try restarting the service:\n" +
++      "    sudo systemctl restart netbird.service\n\n" +
++      "To check the service status, use:\n" +
++      "    sudo systemctl status netbird.service\n\n" +
++      "Unless you are manually overriding with a custom drop-in file, " +
++      "you should see the default openSUSE service at:\n" +
++      "    /usr/lib/systemd/system/netbird.service\n\n" +
++      "If you see the service is disabled, you can run:\n" +
++      "    sudo systemctl enable netbird.service --now\n", err)
+ 	}
+ 
+ 	return conn, nil
+diff --git a/client/cmd/service_installer.go b/client/cmd/service_installer.go
+index 075ead4..015e29e 100644
+--- a/client/cmd/service_installer.go
++++ b/client/cmd/service_installer.go
+@@ -4,7 +4,7 @@ package cmd
+ 
+ import (
+ 	"context"
+-	"errors"
++//	"errors"
+ 	"fmt"
+ 	"os"
+ 	"path/filepath"
+@@ -18,6 +18,14 @@ import (
+ 
+ var ErrGetServiceStatus = fmt.Errorf("failed to get service status")
+ 
++var disabledMessage = "Feature disabled by maintainer. \n\n" +
++  "Have you heard the word? openSUSE is secure by design. \n" +
++  "Please use a drop-in file for any needed modifications. \n\n" +
++  "You can view the default service file at: \n" +
++  "  /usr/lib/systemd/system/netbird.service \n\n" +
++  "More on systemd hardening: \n" +
++  "https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort \n"
++
+ // Common service command setup
+ func setupServiceCommand(cmd *cobra.Command) error {
+ 	SetFlagsFromEnvVars(rootCmd)
+@@ -109,29 +117,7 @@ var installCmd = &cobra.Command{
+ 	Use:   "install",
+ 	Short: "Install NetBird service",
+ 	RunE: func(cmd *cobra.Command, args []string) error {
+-		if err := setupServiceCommand(cmd); err != nil {
+-			return err
+-		}
+-
+-		svcConfig, err := createServiceConfigForInstall()
+-		if err != nil {
+-			return err
+-		}
+-
+-		ctx, cancel := context.WithCancel(cmd.Context())
+-		defer cancel()
+-
+-		s, err := newSVC(newProgram(ctx, cancel), svcConfig)
+-		if err != nil {
+-			return err
+-		}
+-
+-		if err := s.Install(); err != nil {
+-			return fmt.Errorf("install service: %w", err)
+-		}
+-
+-		cmd.Println("NetBird service has been installed")
+-		return nil
++		return fmt.Errorf("%s", disabledMessage)
+ 	},
+ }
+ 
+@@ -139,29 +125,7 @@ var uninstallCmd = &cobra.Command{
+ 	Use:   "uninstall",
+ 	Short: "uninstalls NetBird service from system",
+ 	RunE: func(cmd *cobra.Command, args []string) error {
+-		if err := setupServiceCommand(cmd); err != nil {
+-			return err
+-		}
+-
+-		cfg, err := newSVCConfig()
+-		if err != nil {
+-			return fmt.Errorf("create service config: %w", err)
+-		}
+-
+-		ctx, cancel := context.WithCancel(cmd.Context())
+-		defer cancel()
+-
+-		s, err := newSVC(newProgram(ctx, cancel), cfg)
+-		if err != nil {
+-			return err
+-		}
+-
+-		if err := s.Uninstall(); err != nil {
+-			return fmt.Errorf("uninstall service: %w", err)
+-		}
+-
+-		cmd.Println("NetBird service has been uninstalled")
+-		return nil
++		return fmt.Errorf("%s", disabledMessage)
+ 	},
+ }
+ 
+@@ -171,56 +135,7 @@ var reconfigureCmd = &cobra.Command{
+ 	Long: `Reconfigures the NetBird service with new settings without manual uninstall/install.
+ This command will temporarily stop the service, update its configuration, and restart it if it was running.`,
+ 	RunE: func(cmd *cobra.Command, args []string) error {
+-		if err := setupServiceCommand(cmd); err != nil {
+-			return err
+-		}
+-
+-		wasRunning, err := isServiceRunning()
+-		if err != nil && !errors.Is(err, ErrGetServiceStatus) {
+-			return fmt.Errorf("check service status: %w", err)
+-		}
+-
+-		svcConfig, err := createServiceConfigForInstall()
+-		if err != nil {
+-			return err
+-		}
+-
+-		ctx, cancel := context.WithCancel(cmd.Context())
+-		defer cancel()
+-
+-		s, err := newSVC(newProgram(ctx, cancel), svcConfig)
+-		if err != nil {
+-			return fmt.Errorf("create service: %w", err)
+-		}
+-
+-		if wasRunning {
+-			cmd.Println("Stopping NetBird service...")
+-			if err := s.Stop(); err != nil {
+-				cmd.Printf("Warning: failed to stop service: %v\n", err)
+-			}
+-		}
+-
+-		cmd.Println("Removing existing service configuration...")
+-		if err := s.Uninstall(); err != nil {
+-			return fmt.Errorf("uninstall existing service: %w", err)
+-		}
+-
+-		cmd.Println("Installing service with new configuration...")
+-		if err := s.Install(); err != nil {
+-			return fmt.Errorf("install service with new config: %w", err)
+-		}
+-
+-		if wasRunning {
+-			cmd.Println("Starting NetBird service...")
+-			if err := s.Start(); err != nil {
+-				return fmt.Errorf("start service after reconfigure: %w", err)
+-			}
+-			cmd.Println("NetBird service has been reconfigured and started")
+-		} else {
+-			cmd.Println("NetBird service has been reconfigured")
+-		}
+-
+-		return nil
++		return fmt.Errorf("%s", disabledMessage)
+ 	},
+ }
+ 
+diff --git a/client/cmd/status.go b/client/cmd/status.go
+index 723f236..a000d25 100644
+--- a/client/cmd/status.go
++++ b/client/cmd/status.go
+@@ -124,10 +124,17 @@ func statusFunc(cmd *cobra.Command, args []string) error {
+ func getStatus(ctx context.Context) (*proto.StatusResponse, error) {
+ 	conn, err := DialClientGRPCServer(ctx, daemonAddr)
+ 	if err != nil {
+-		return nil, fmt.Errorf("failed to connect to daemon error: %v\n"+
+-			"If the daemon is not running please run: "+
+-			"\nnetbird service install \nnetbird service start\n", err)
+-	}
++		return nil, fmt.Errorf("failed to connect to daemon error: %v\n\n" +
++      "The daemon may not be running. Try restarting the service:\n" +
++      "    sudo systemctl restart netbird.service\n\n" +
++      "To check the service status, use:\n" +
++      "    sudo systemctl status netbird.service\n\n" +
++      "Unless you are manually overriding with a custom drop-in file, " +
++      "you should see the default openSUSE service at:\n" +
++      "    /usr/lib/systemd/system/netbird.service\n\n" +
++      "If you see the service is disabled, you can run:\n" +
++      "    sudo systemctl enable netbird.service --now\n", err)
++  }
+ 	defer conn.Close()
+ 
+ 	resp, err := proto.NewDaemonServiceClient(conn).Status(ctx, &proto.StatusRequest{GetFullPeerStatus: true, ShouldRunProbes: true})
+diff --git a/client/cmd/up.go b/client/cmd/up.go
+index 1fa58e6..c69b8e0 100644
+--- a/client/cmd/up.go
++++ b/client/cmd/up.go
+@@ -215,10 +215,17 @@ func runInDaemonMode(ctx context.Context, cmd *cobra.Command, pm *profilemanager
+ 
+ 	conn, err := DialClientGRPCServer(ctx, daemonAddr)
+ 	if err != nil {
+-		return fmt.Errorf("failed to connect to daemon error: %v\n"+
+-			"If the daemon is not running please run: "+
+-			"\nnetbird service install \nnetbird service start\n", err)
+-	}
++		return fmt.Errorf("failed to connect to daemon error: %v\n\n" +
++      "The daemon may not be running. Try restarting the service:\n" +
++      "    sudo systemctl restart netbird.service\n\n" +
++      "To check the service status, use:\n" +
++      "    sudo systemctl status netbird.service\n\n" +
++      "Unless you are manually overriding with a custom drop-in file, " +
++      "you should see the default openSUSE service at:\n" +
++      "    /usr/lib/systemd/system/netbird.service\n\n" +
++      "If you see the service is disabled, you can run:\n" +
++      "    sudo systemctl enable netbird.service --now\n", err)
++  }
+ 	defer func() {
+ 		err := conn.Close()
+ 		if err != nil {

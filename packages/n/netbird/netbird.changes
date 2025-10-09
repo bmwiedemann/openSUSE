@@ -1,0 +1,1961 @@
+-------------------------------------------------------------------
+Tue Oct  7 00:47:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.59.3:
+  - Adjust signal port for websocket connections by @mlsmaycon in
+    #4594
+  - [client,management,signal] Handle grpc from ws proxy internally
+    instead of via tcp by @lixmal in #4593
+  - [management,signal] Remove ws-proxy read deadline by @lixmal in
+    #4598
+
+-------------------------------------------------------------------
+Fri Oct  3 00:53:46 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.59.2:
+  - Add websocket paths including relay to nginx template by
+    @lixmal in #4573
+
+-------------------------------------------------------------------
+Thu Oct  2 14:38:37 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.59.1:
+  - [client] fix Windows NRPT Policy Path by @hakansa in #4572
+
+-------------------------------------------------------------------
+Thu Oct  2 14:35:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.59.0:
+  - Browser Client for Remote SSH & RDP Access
+    We’re excited to introduce the NetBird Browser Client – a
+    secure, zero-install way to access your peers directly from
+    your web browser.
+
+  - Highlights
+    - No installation required – connect from Chrome, Firefox,
+      Edge, or Safari.
+    - SSH & RDP support – access Linux and Windows machines with
+      full protocol support.
+    - Runs in your browser – a complete NetBird peer compiled to
+      WebAssembly.
+    - End-to-end encrypted – secured with WireGuard®.
+    - Temporary, secure access – short-lived peers and ACLs are
+      created automatically and cleaned up when the session ends.
+
+  - How it works
+    Open your NetBird dashboard → Peers view, choose a machine, and
+    click Launch Console (SSH) or Remote Desktop (RDP). Your
+    session runs securely in the browser with no software download
+    needed.
+
+    📖 Read the full guide
+    https://docs.netbird.io/how-to/browser-client
+
+    ⚠️Note for Self-Hosted Deployments
+    To use the browser client with self-hosted deployments, you need
+    to upgrade your Management, Signal, Dashboard, and Relay
+    containers.
+    
+    Learn more here:
+
+    Self-Hosted Quickstart – Support Browser Clients
+    https://docs.netbird.io/selfhosted/selfhosted-quickstart#support-browser-clients
+
+    Self-Hosted Guide – Upgrade
+    http://localhost:3000/selfhosted/selfhosted-guide#upgrade
+
+  - Added browser client support across client, signal, and
+    management components. #4415
+  - Adjusted WebSocket proxy paths to ensure proper browser client
+    functionality. #4565
+  - Updated infrastructure scripts to include WebSocket proxy setup
+    for browser client deployments. #4566
+  - Other Client Enhancements
+  - Added Windows DNS policies to always use the GPO path. #4460
+  - Fixed packet loss issues. #3338
+  - Ordered ICE candidate lists for proper comparison and
+    reliability. #4561
+  - Made DNS ForwarderPort configurable and updated the default
+    well-known port. #4479
+
+-------------------------------------------------------------------
+Thu Sep 25 15:48:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.58.2:
+  - [management] Add logs for update channel by @pascal-fischer in
+    #4527
+  - [client] Add WireGuard interface lifecycle monitoring by
+    @hakansa in #4370
+  - [management] Fix/nmap dns filter by @crn4 in #4547
+
+-------------------------------------------------------------------
+Mon Sep 22 13:04:06 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.58.1:
+  - [client] Skip interface for route lookup if it doesn't exist by
+    @lixmal in #4524
+
+-------------------------------------------------------------------
+Sat Sep 20 20:52:38 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.58.0:
+  - [management] Add rule ID validation for policy updates by
+    @bcmmbaga in #4499
+  - [client] [UI] Down & Up NetBird Async When Settings Updated by
+    @hakansa in #4458
+  - [android] Add OnLoginSuccess callback to URLOpener interface by
+    @doromaraujo in #4492
+  - [management] Filter DNS records to include only peers to
+    connect by @bcmmbaga in #4517
+  - Add a new product demo video by @braginini in #4520
+  - [client] Use native windows sock opts to avoid routing loops by
+    @lixmal in #4314
+  - [client] Do not run up cmd if not needed by @pappz in #4508
+  - [misc] Update SIGN_PIPE_VER to version 0.0.23 by @mlsmaycon in
+    #4521
+  - [client] Check the client status in the earlier phase by @pappz
+    in #4509
+
+-------------------------------------------------------------------
+Mon Sep 15 18:13:01 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.57.1:
+  - [relay] Refactor healthcheck sender and receiver to use
+    configurable options by @pappz in #4433
+  - [client] Fix ICE latency handling by @pappz in #4501
+
+-------------------------------------------------------------------
+Thu Sep 11 22:01:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.57.0:
+  - [client] Implement environment variable handling for Android by
+    @pappz in #4440
+  - [client] Fix/v4 stun routing by @pappz in #4430
+  - [client] Fix client status check by @pappz in #4474
+  - [misc] Remove default zitadel admin user in deployment script
+    by @bcmmbaga in #4482
+
+-------------------------------------------------------------------
+Mon Sep  8 14:11:24 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- seems TestServer_Up now also fails on TW
+  msg="failed to dial with fwmark: d.Dialer.DialContext: dial udp
+  127.0.0.1:9: set SO_MARK: operation not permitted"
+
+-------------------------------------------------------------------
+Mon Sep  8 13:55:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.56.1:
+  - [management] Add peers manager to integrations by @bcmmbaga in
+    #4405
+  - [internal] Add missing assignment of iFaceDiscover when
+    netstack is disabled by @doromaraujo in #4444
+  - [client] Do not block Offer processing from relay worker by
+    @pappz in #4435
+  - [management] only allow user devices to be expired by
+    @pascal-fischer in #4445
+  - [client] Move some sys info to a static place by @pappz in
+    #4446
+  - [management] Extends integration and peers manager by @bcmmbaga
+    in #4450
+  - [client] Debug information for connection by @pappz in #4439
+  - [misc] Remove aur support and start service on ostree by
+    @mlsmaycon in #4461
+
+-------------------------------------------------------------------
+Tue Sep  2 14:27:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.56.0:
+  In this release, we are adding support for user approval. This
+  allows administrators to control whether users can join their
+  account and automatically be allowed to connect their peers to
+  their networks. Learn more at
+  https://docs.netbird.io/how-to/approve-users
+
+  - Client Enhancements
+    - Added netstack support for Android CLI. #4319
+    - Added MTU configuration flag. #4213
+    - Fixed Darwin DNS errors always being thrown. #4403
+    - Fixed shared socket buffer allocation. #4409
+    - Prevented upstream resolvers from deactivating on failure.
+      #4128
+    - Updated to the latest Pion ICE version. #4388
+  - Management Improvements
+    - Optimized proxy network map performance. #4324
+    - Removed redundant store locks for better concurrency. #4385,
+      #4390
+    - Changed network serial increment to occur at the end of
+      transactions. #4397
+    - Reported sync and login durations by account ID. #4406
+    - Split high latency gRPC metrics for more detailed monitoring.
+      #4408
+    - Continued user updates even after failures (removed locks).
+      #4410
+    - Fixed ephemeral flag handling in peer batch response. #4420
+    - Added login filter to prevent multiple peers from connecting
+      with the same public key. #3986
+    - Removed withContext from store methods. #4422
+    - Fixed duplicate group removals on peer deletion. #4421
+    - Added user approval feature for accounts. #4411
+  - Signal & Relay
+    - Fixed goroutine and memory leaks when forwarding messages
+      between peers. #3896
+    - Relay now accepts any origin. #4426
+  - Other Changes
+    - Bumped golang-jwt/jwt from 3.2.2 to 5.3.0. #4375
+    - Fixed Windows client and management benchmark tests. #4424
+
+-------------------------------------------------------------------
+Wed Aug 20 19:07:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.55.1:
+  - [management] Remove all store locks from grpc side by
+    @pascal-fischer in #4374
+  - [client] Avoid duplicated agent close by @pappz in #4383
+
+-------------------------------------------------------------------
+Wed Aug 20 10:14:18 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.55.0:
+  - Improve wording in the NetBird client app by @braginini in
+    #4316
+  - [server] Add MySQL initialization script and update Docker
+    configuration by @pappz in #4345
+  - [management] Use DI containers for server bootstrapping by
+    @pascal-fischer in #4343
+  - [management] fail on geo location init failure by
+    @pascal-fischer in #4362
+  - [client] Fix rule order for deny rules in peer ACLs by @lixmal
+    in #4147
+  - [management] Remove save account calls by @pascal-fischer in
+    #4349
+  - [client] Fix/ice handshake by @pappz in #4281
+  - Bump github.com/containerd/containerd from 1.7.16 to 1.7.27 by
+    @dependabot[bot] in #3527
+  - [management] add nil handling for route domains by
+    @pascal-fischer in #4366
+  - [management] Add CreatedAt field to Peer and model by @hakansa
+    in #4371
+  - Bump golang.org/x/oauth2 from 0.24.0 to 0.27.0 by
+    @dependabot[bot] in #4176
+  - [management,client] Feat/exit node auto apply by @hakansa in
+    #4272
+  - feat(doc): Fix confusing comment by @Sonlis in #4376
+  - refactor doc workflow by @hakansa in #4373
+- refresh service-install-cli-change.patch
+
+-------------------------------------------------------------------
+Wed Aug 13 23:23:32 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.54.2:
+  - [management] Enable flow groups by @bcmmbaga in #4230
+  - [server] Add health check HTTP endpoint for Relay server by
+    @pappz in #4297
+  - [client] Fix Go tarball version in FreeBSD build configuration
+    by @pappz in #4339
+  - [client] Add --disable-update-settings flag to the service by
+    @hakansa in #4335
+
+-------------------------------------------------------------------
+Tue Aug 12 15:40:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.54.1:
+  - [client] Eliminate upstream server strings in dns code by
+    @lixmal in #4267
+  - [management] use readlock on add peer by @pascal-fischer in
+    #4308
+  - [server, relay] Add pprof support for Relay server by @pappz in
+    #4203
+  - [client] Create NRPT rules separately per domain by @lixmal in
+    #4329
+  - [client] Skip dns upstream servers pointing to our dns server
+    IP to prevent loops by @lixmal in #4330
+  - [client] Distinguish between NXDOMAIN and NODATA in the dns
+    forwarder by @lixmal in #4321
+
+-------------------------------------------------------------------
+Fri Aug  8 20:07:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.54.0:
+  - Client Enhancements
+    - Added Windows ARM64 build support. #4206
+    - Renamed logout command to deregister for clarity. #4307
+    - Increased deregister timeout for more reliable
+      deregistration. #4311
+    - Fixed SSH command handling for non-default profiles. #4298
+    - Fixed profile manager panic when reading incomplete
+      configurations. #4309
+    - Updated Windows installer description. #4306
+  - Management Improvements
+    - Reworked database locking for improved concurrency handling.
+      #4291
+    - Marked SaveAccount method as deprecated. #4300
+    - Improved JSON migration by filtering duplicates on conflict.
+      #4303
+  - Other Changes
+    - Standardized naming: Changed "Netbird" to "NetBird" in CMD
+      usage. #4296
+    - Added documentation acknowledgement check. #4310
+    - Automated forum post creation after releases. #4312
+- refresh service-install-cli-change.patch
+
+-------------------------------------------------------------------
+Wed Aug  6 09:47:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.53.0:
+  Control plane licensing changes
+  Changed the license of management, relay, and signal components
+  to AGPLv3. #4285
+  Learn more at
+  https://netbird.io/knowledge-hub/netbird-agpl-announcement
+
+  - Client Enhancements
+    - Improved userspace filter logging performance. #4221
+    - Added logout feature for improved session management. #4268
+    - Increased IP rule priorities to avoid routing conflicts.
+      #4273
+    - Added config flag to override default profile path in the
+      client service. #4276
+    - Included full sync response in the debug bundle for
+      troubleshooting. #4287
+  - Management Improvements
+    - Migrated group peers into a separate table for better
+      performance and structure. #4096
+    - Implemented network range change API. #4177
+    - Optimized peer group retrieval by removing unnecessary locks.
+      #4280
+    - Implemented peer expiration for invalid peers. #4275
+  - Other Changes
+    - Moved shared components to a centralized shared directory.
+      #4286
+    - Separated shared code dependencies for better modularity.
+      #4288
+
+-------------------------------------------------------------------
+Thu Jul 31 23:10:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable TestServer_Up on code 15
+
+-------------------------------------------------------------------
+Wed Jul 30 20:51:22 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.52.2:
+  - [misc] Dockerfile: pin gopls to v0.18.1 (latest that supports
+    golang 1.23) by @Bilgeworth in #4240
+  - [management] add account deleted event by @crn4 in #4255
+  - [client] Fix dns ipv6 upstream by @lixmal in #4257
+
+-------------------------------------------------------------------
+Tue Jul 29 18:58:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.52.1:
+  - [client] Disable the dns host manager properly if disabled
+    through management by @lixmal in #4241
+  - [client] Fix error handling for set config request on CLI by
+    @hakansa in #4237
+
+-------------------------------------------------------------------
+Tue Jul 29 18:13:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- refresh service-install-cli-change.patch
+
+-------------------------------------------------------------------
+Tue Jul 29 17:54:29 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.52.0:
+  This release adds the profile feature, please refer to the
+  documentation
+
+  https://docs.netbird.io/how-to/profiles
+
+  - [misc] Docker compose improvements by @Silex in #4037
+  - [client] Fix race issues in lazy tests by @pappz in #4181
+  - [client] Temporarily disable race detection in Relay by @pappz
+    in #4210
+  - [client] Fix legacy routing exclusion routes in kernel mode by
+    @lixmal in #4167
+  - [client] Add env and status flags for netbird service command
+    by @lixmal in #3975
+  - [management] extra settings integrated validator by @pnmcosta
+    in #4136
+  - [management] scheduler cancel all jobs by @pnmcosta in #4158
+  - [management] Log UpdateAccountPeers caller by @pascal-fischer
+    in #4216
+  - [client] Remove custom method from generated proto and use
+    inline logic for connection type filtering by @aliamerj in
+    #4214
+  - [management] Log BufferUpdateAccountPeers caller by
+    @pascal-fischer in #4217
+  - [client] handle order of check when checking order of files in
+    isChecksEqual by @pascal-fischer in #4219
+  - [client] make ICE failed timeout configurable by @gamerslouis
+    in #4211
+  - [client] client: container: support CLI with entrypoint
+    addition by @nazarewk in #4126
+  - [client] Always register NetBird with plain Linux DNS and use
+    original servers as upstream by @lixmal in #3967
+  - [client] Fix UDP proxy to notify listener when remote conn
+    closed by @pappz in #4199
+  - [client] Remove and deprecate the admin url functionality by
+    @lixmal in #4218
+  - [client] Add detailed routes and resolved IPs to debug bundle
+    by @lixmal in #4141
+  - [client] Feat/multiple profile by @hakansa in #3980
+  - [client] remove config flag by @hakansa in #4224
+  - [client] Fix pre-shared key state in wg show by @pappz in #4222
+  - [client] Fix config directory path handling based on
+    NB_STATE_DIR by @hakansa in #4229
+  - [client] Add support for disabling profiles feature via command
+    line flag by @hakansa in #4235
+
+-------------------------------------------------------------------
+Mon Jul 21 19:04:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.51.2
+  - [client] fix test by @pnmcosta in #4156
+  - [misc] add forum post and update sign pipeline by @mlsmaycon in
+    #4155
+  - [management] fix index creation if exist on mysql by
+    @pascal-fischer in #4150
+  - [management] Add validate flow response by @mlsmaycon in #4172
+  - [client, relay] The openConn function no longer blocks the
+    relayAddress function call by @pappz in #4180
+  - [client] Add --filter-by-connection-type flag to status command
+    by @aliamerj in #4010
+  - [client] Fix bind exclusion routes by @lixmal in #4154
+  - [management] Fix group resource count mismatch in policy by
+    @bcmmbaga in #4182
+  - [server, relay] Fix/relay race disconnection by @pappz in #4174
+
+-------------------------------------------------------------------
+Wed Jul 16 10:07:37 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.51.1:
+  - [client] Fix/nil relayed address by @pappz in #4153
+
+-------------------------------------------------------------------
+Tue Jul 15 12:59:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.51.0:
+  - [client] avoid parsing NB_NETSTACK_SKIP_PROXY if empty by
+    @iisteev in #4145
+  - [client, relay-server] Feature/relay notification by @pappz in
+    #4083
+
+-------------------------------------------------------------------
+Sat Jul 12 14:11:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.50.3:
+  - always suffix ephemeral peer name by @pnmcosta in #4138
+  - [management] sync calls to UpdateAccountPeers from
+    BufferUpdateAccountPeers by @crn4 in #4137
+  - [client] Fix elapsed time calculation when machine is in sleep
+    mode by @pappz in #4140
+
+-------------------------------------------------------------------
+Fri Jul 11 10:24:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.50.2:
+  - [management] Add name/ip filters to peer management rest client
+    by @mohamed-essam in #4112
+  - [management] Remove deleted user peers from groups on user
+    deletion by @bcmmbaga in #4121
+  - Update image in README.md by @braginini in #4122
+  - [client] Disable pidfd check on Android 11 and below by @pappz
+    in #4127
+  - [client] Nil check in iface configurer by @pappz in #4132
+  - [client] Update cli description of lazy connection by @pappz in
+    #4133
+  - [management] added cleanupWindow for collecting several
+    ephemeral peers to delete by @crn4 in #4130
+  - [client] Add rotated logs flag for debug bundle generation by
+    @lixmal in #4100
+
+-------------------------------------------------------------------
+Sun Jul  6 13:56:32 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.50.1:
+  - [client] Fix nil pointer exception in lazy connection by @pappz
+    in #4109
+
+-------------------------------------------------------------------
+Sat Jul  5 16:09:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.50.0:
+  - Client Enhancements
+    - Supported random WireGuard ports to enhance NAT traversal.
+      #4085
+    - Implemented DNS routes for Android. #3989
+    - Enabled fullstatus output even without probes. #4052
+    - Improved route log messages. #4034
+    - Used unique sequence numbers for BSD routes. #4081
+    - Improved lazy connection detection logic. #4050
+    - Avoided logging setup keys in error messages. #3962
+    - Login popup now runs in a separate goroutine. #4080
+  - Management Improvements
+    - Added network map metric breakdown and reported durations in
+      ms. #4020, #4064
+    - Added onboarding logic for account creation. #4084
+    - Provided clear error messaging for mismatched logins. #4097
+    - Logged user ID on account mismatch. #4101
+    - Enabled uniqueness constraint for peer IPs and labels,
+      improving generation performance. #4042
+    - Added option to disable default all-to-all policy. #3970
+    - Added backward-compatible error handling for setup key
+      registration. #4094
+    - Fixed account peer store retrieval by adding locking. #4092
+    - Fixed network update test for delete policy. #4086
+    - Removed unused database transactions. #4053
+  - Installer & Miscellaneous
+    - Fixed wrong default for NETBIRD_AUTH_PKCE_LOGIN_FLAG for
+      self-hosting. #4055
+    - Fixed Arch Linux install.sh error with empty dependencies.
+      #4070
+    - Now starts the service automatically after installation on
+      Arch Linux. #4071
+    - Removed unnecessary port 8080 in
+      getting-started-with-zitadel.sh. #4075
+    - Updated sign pipeline version. #4082
+    - Added a link to the community forum in documentation. #4093
+- refreshed service-install-cli-change.patch
+
+-------------------------------------------------------------------
+Tue Jun 24 23:29:30 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.49.0:
+  - [management] add transaction for integrated validator groups
+    update and prim acc by @pascal-fischer in #4014
+  - [client] Handle lazy routing peers that are part of HA groups
+    by @lixmal in #3943
+  - [client] Refactor showLoginURL to improve error handling and
+    connection status checks by @hakansa in #4026
+  - [client] close window when process needs to exit by @mlsmaycon
+    in #4027
+  - [misc] add additional metrics by @mlsmaycon in #4028
+  - [management] check and log on new management version by
+    @mlsmaycon in #4029
+  - [misc] Specify netbird binary location in Dockerfiles by
+    @lixmal in #4024
+  - [client] Don't open cmd.exe during MSI actions by @lixmal in
+    #4041
+
+-------------------------------------------------------------------
+Fri Jun 20 15:23:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.48.0:
+  What's New
+  This release brings port range support to NetBird. Now you can
+  add rules with ports formated as <range_start>-<range_end>, with
+  that, if you need to allow all TCP ports, you can configure it
+  with 1-65535, see dashboard example below:
+
+  - Client Enhancements
+    - Fixed Android route notification behavior. #3971
+    - Added more advanced settings for Android clients. #4001
+    - Fixed port range squashing to ensure correct firewall rule
+      behavior. #4007
+  - Management Improvements
+    - Refactored route handling to use store methods for
+      consistency and maintainability. #2928
+    - Added backward compatibility for clients without firewall
+      rules port range support. #4003
+    - Exported ephemeral peer flag via API for better visibility.
+      #4004
+
+-------------------------------------------------------------------
+Tue Jun 17 15:51:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.47.2:
+  - [client] Fix UI Download URL by @hakansa in #3990
+  - [client] Prioritze the local resolver in the dns handler chain
+    by @lixmal in #3965
+  - [client] Tighten allowed domains for dns forwarder by @lixmal
+    in #3978
+  - [client] Fix DNS Interceptor Build Error by @hakansa in #3993
+  - [management] Avoid recalculating next peer expiration by
+    @mlsmaycon in #3991
+  - [client] Fix logic in updateStatus to correctly handle
+    connection state by @hakansa in #3994
+
+-------------------------------------------------------------------
+Tue Jun 17 00:23:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.47.1:
+  - Client Enhancements
+    - [client] Fix status recorder panic by @lixmal in #3988
+
+-------------------------------------------------------------------
+Mon Jun 16 22:14:52 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.47.0:
+  - Client Enhancements
+    - Added lazy connections support for routed networks. #3908
+    - Added advanced settings to the UI for better configurability.
+      #3941
+    - Added missing client meta flags. #3898
+    - Improved Android client with preference handling and
+      propagation networks. #3957, #3966
+    - Displayed login popup on session expiration. #3955
+    - Fixed local DNS resolver errors for domains with other record
+      types. #3959
+    - Optimized process check timing. #3938
+    - Removed strings from allowed IPs. #3920
+    - Improved ICMP connection tracking logs. #3963
+    - Prevented unnecessary UI updates. #3785
+    - Included peer's actual state in notifications. #3929
+    - Refactored ConnMgr context management for clarity. #3951
+    - Included Support wildcard DNS on iOS #3979
+  - Management Improvements
+    - Added port range support in firewall rules. #3823
+    - Enabled unidirectional rules for all-port policies. #3826
+    - Added account ID index to activity events. #3946
+    - Ensured peer flags persist in meta updates. #3958
+    - Propagated user groups when re-enabling group propagation.
+      #3912
+    - Added event streaming metrics. #3814
+    - Used xID for setup keys to avoid collisions. #3977
+  - Signal Service
+    - Enabled setting signal flags via environment variables. #3972
+
+-------------------------------------------------------------------
+Thu Jun  5 17:39:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.46.0:
+  * Client Enhancements
+    - Added a "Deselect All" option to the Exit Node menu. #3877
+    - Introduced a block inbound flag to prevent all inbound
+      connections. #3897
+    - Routes now apply immediately, not only on peer connection.
+      #3907
+    - Used native route facilities on BSD and Windows. #3862
+    - Enabled userspace local forwarding to internal interfaces
+      upon request. #3884
+    - Added debug output similar to wg show. #3922
+    - Improved DNS match tracing logs. #3928
+    - Ran registerdns before flushing for consistency. #3926
+    - Included systemd logs in the debug bundle. #3917
+    - Increased STUN probe timeout for better status detection.
+      #3930
+    - Allowed the NetBird service to log to console. #3916
+    - Logged duplicate client UI PIDs. #3915
+    - Applied return traffic rules conditionally if firewall is
+      stateless. #3895
+    - Refactored peer state change subscription mechanism. #3910
+  * Management Improvements
+    - Supported account creation and retrieval using private
+      domains. #3825
+    - Enabled REST client impersonation for improved session
+      management. #3879
+    - Added PostgreSQL support for activity events store. #3890
+  * Other Changes
+    - Fixed Zitadel user console access. #3446
+    - Addressed traefik relay accessibility. #3696
+    - Removed DNF config-manager error. #3925
+    - Fixed relay exposed address test. #3931
+    - Updated linter workflows to fail on codespell errors. #3913
+- rebase patch service-install-cli-change.patch
+
+-------------------------------------------------------------------
+Sun Jun  1 19:08:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.45.3:
+  * [client] Fix HA router switch by @pappz in #3889
+
+-------------------------------------------------------------------
+Sat May 31 06:31:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.45.2:
+  * [misc] Add CLA note by @mlsmaycon in #3859
+  * [misc] Fix CLA link in the PR template by @braginini in #3860
+  * [management] lazy connection account setting by @pnmcosta in
+    #3855
+  * [management] Update traffic events pagination filters by
+    @bcmmbaga in #3857
+  * [management] Extend nameserver match domain validation by
+    @bcmmbaga in #3864
+  * [client] avoid overwriting state manager on iOS by
+    @pascal-fischer in #3870
+  * [management] force account id on save groups update by
+    @pnmcosta in #3850
+  * [management/client/rest] Fix panic on unknown errors by
+    @mohamed-essam in #3865
+  * [management] Add correlated network traffic event schema by
+    @bcmmbaga in #3680
+  * [client, android] Fix/android enable server route by @pappz in
+    #3806
+  * [management] Reset test containers after cleanup by @bcmmbaga
+    in #3885
+  * [server-test] Install libs for i386 tests by @pappz in #3887
+  * [client, android] Fix/notifier threading by @pappz in #3807
+  * [management] Prevent deletion of peers linked to network
+    routers by @bcmmbaga in #3881
+  * [client] Refactor exclude list handling to use a map for
+    permanent connections by @hakansa in #3901
+  * [management] Fix user groups propagation by @bcmmbaga in #3902
+  * [client] Fix peer close deadlock by @pappz in #3904
+
+-------------------------------------------------------------------
+Wed May 21 21:21:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.45.1:
+  - [client] Add latest gzipped rotated log file to the debug
+    bundle by @hakansa in #3848
+  - [client] Do not reconnect to mgm server in case of handler
+    error by @pappz in #3856
+
+-------------------------------------------------------------------
+Wed May 21 14:41:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.45.0:
+  - Client Enhancements
+    - Introduced lazy connection support to optimize client startup
+      and resource usage. You can learn more about the feature
+      here. #3379
+    - Fixed UI notification for new client versions. #3845
+    - Resolved an issue with legacy route compatibility when
+      connecting to older management servers (pre-v0.30.0). #3854
+  - Management Enhancements
+    - Added a flag to disable auto-migration, offering more control
+      during deployments. #3840
+    - Locking strength clause is now optional, improving
+      compatibility and flexibility. #3844
+    - Migrated the events SQLite store to GORM for more consistent
+      database handling. #3837
+  - Other Changes
+    - Updated the issue template to streamline community feedback.
+      #3842
+
+-------------------------------------------------------------------
+Sat May 17 07:00:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.44.0:
+  * [signal] adjust log levels by @pascal-fischer in #3813
+  * [signal] adjust signal log levels 2 by @pascal-fischer in #3817
+  * [client, android] Do not propagate empty routes by @pappz in #3805
+  * [management] Add connection type filter to Network Traffic API by
+    @bcmmbaga in #3815
+  * [management,client] PKCE add query parameter flag prompt=login or
+    max… by @crn4 in #3824
+  * [management] fix bug missed extra dns labels for a new peer by
+    @crn4 in #3798
+  * [client] Add FreeBSD desktop client support to OAuth flow by
+    @hakansa in #3822
+  * [signal] remove stream receive server side by @pascal-fischer in
+    #3820
+  * [management] extend rest client lib by @pascal-fischer in #3830
+  * [client] Disable dnssec for systemd explicitly by @lixmal in #3831
+  * [management] Make startup period configurable by @pascal-fischer
+    in #3767
+  * [client] Offer to remove netbird data in windows uninstall by
+    @lixmal in #3766
+
+-------------------------------------------------------------------
+Fri May  9 12:48:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.43.3:
+  - [management] Delete service users with account manager by
+    @bcmmbaga in #3793
+  - [management] policy delete cleans policy rules by
+    @pascal-fischer in #3788
+  - [client] Return with the correct copied length by @pappz in
+    #3804
+  - [client] Ignore irrelevant route changes to tracked network
+    monitor routes by @lixmal in #3796
+  - [client] Add TCP support to DNS service listener by @hakansa in
+    #3790
+
+-------------------------------------------------------------------
+Mon May  5 20:35:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.43.2:
+  - [management] limit peers based on module read permission by
+    @pnmcosta in #3757
+  - [client] Add debug upload option to netbird ui by @lixmal in
+    #3768
+  - [management] user info with role permissions by @pnmcosta in
+    #3728
+  - [client] Add debug for duration option to netbird ui by @lixmal
+    in #3772
+  - [management] Get account id with order by @mlsmaycon in #3773
+  - [management] Optimize load account by @mlsmaycon in #3774
+  - [management] add gorm tag for primary key for the networks
+    objects by @pascal-fischer in #3758
+  - [client] set TLS ServerName for hostname-based QUIC connections
+    by @alindt in #3673
+  - [client] Fix stale local records by @lixmal in #3776
+  - [client] Improve NetBird installation script to handle daemon
+    connection timeout by @hakansa in #3761
+  - [management] removal of foreign key constraint enforcement on
+    sqlite by @pascal-fischer in #3786
+  - [management/client/rest] fix panic when body is nil by
+    @mohamed-essam in #3714
+
+-------------------------------------------------------------------
+Wed Apr 30 23:49:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.43.1:
+  - [client] add byte counters & ruleID for routed traffic on
+    userspace by @hakansa in #3653
+  - [management] add missing network admin mapping by @pnmcosta in
+    #3751
+  - [misc] Exclude client benchmarks from CI by @lixmal in #3752
+  - [management] Skip IdP cache warm-up on Redis if data exists by
+    @bcmmbaga in #3733
+  - [client] Feature/upload bundle by @mlsmaycon in #3734
+  - [misc] Add macOS .pkg installer support to installation script
+    by @hakansa in #3755
+  - [management] Add network traffic events pagination by @bcmmbaga
+    in #3580
+  - [client] Revert mgm client error handling by @pappz in #3764
+
+-------------------------------------------------------------------
+Fri Apr 25 21:05:09 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.43.0:
+  - Client Improvements
+    - Fixed exit node deselection behavior. #3722
+    - Dynamic firewall rules now set up for DNS routes based on DNS
+      responses. #3702
+    - Userspace ACL received additional filter test cases to
+      improve robustness. #3730
+    - GRPC error handling improved to catch flow errors better.
+      #3727
+    - Ensured destination-type local marks can overwrite NAT marks.
+      #3738
+    - Fixed macOS privacy warnings when accessing static system
+      information. #3496
+    - These updates enhance reliability and system compatibility
+      across platforms.
+  - Management Improvements
+    - Introduced a new Auditor Role for account access. (API only,
+      dashboard support is coming soon) #3721
+    - Introduced a Network Admin Role for network-specific
+      administration. (API only, dashboard support is coming soon)
+      #3720
+    - Impersonation via PATs (Personal Access Tokens) is now
+      supported for streamlined troubleshooting. #3739
+  - Other Changes
+    - Improved static checks when running in foreground mode. #3742
+    - Ran container tests in a more generic way for broader
+      coverage. #3737
+
+-------------------------------------------------------------------
+Wed Apr 23 23:07:54 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.42.0:
+  - Enhanced Route Management and UI States
+    - Clients now retain selected routes unless all are explicitly
+      deselected. #3692
+    - Added a connecting state to the client UI for improved status
+      feedback. #3712
+    - Firewall routes now include a route ID and support for
+      missing route domains. #3700
+  - Account and Domain Enhancements
+    - Management now supports custom domains per account via API
+      (Dashboard coming soon). #3726
+    - Added account metadata capabilities to improve account-level
+      visibility. #3724
+  - Improvements
+    - Permissions Manager: Now uses standard CRUD operations. #3690
+    - Dashboard Fix: Corrected handling of lastLogin display on the
+      management dashboard. #3725
+    - Benchmarking:
+      - Pushed benchmark results to Grafana. #3701
+      - Benchmarks now use ref_name. #3704
+      - Fixed GitHub run ID issue. #3705
+  - Dependency Updates
+    - Bumped golang.org/x/net from 0.36.0 to 0.38.0. #3695
+    - Bumped github.com/redis/go-redis/v9 from 9.7.1 to 9.7.3.
+      #3553
+  - Documentation
+    - Fixed a broken link in the README. #3697
+
+-------------------------------------------------------------------
+Sun Apr 20 13:53:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.41.3:
+  - [client] Set up signal to generate debug bundles by @lixmal in
+    #3683
+  - [client] Keep selecting new networks after first deselection by
+    @lixmal in #3671
+  - [misc] update gpt file permissions in install.sh by @Lamera in
+    #3663
+  - [client] Fix Rosenpass permissive mode handling by @pappz in
+    #3689
+
+-------------------------------------------------------------------
+Wed Apr 16 07:32:43 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.41.2:
+  * [client] Remove logrus writer assignment in pion logging
+
+-------------------------------------------------------------------
+Tue Apr 15 12:10:23 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.41.1:
+  * [management] add permissions manager to geolocation handler
+  * [client] Refactor DNSForwarder to improve handle wildcard domain resource
+    id matching
+  * [client] Add heap profile to debug bundle
+  * [client] Add remaining debug profiles
+  * [management] get current user endpoint
+
+-------------------------------------------------------------------
+Mon Apr 14 00:17:58 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- update to 0.41.0:
+  * [ci] include stash in pr template
+  * [docs] Fix a few typos on table
+  * [management,client] Add support to configurable prompt login
+  * [management] remove unnecessary access control middleware
+  * [management] Buffer updateAccountPeers calls
+  * [management] Refactor/management/updchannel
+
+-------------------------------------------------------------------
+Thu Apr 10 15:01:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.40.1:
+  * [client] Support IP fragmentation in userspace
+  * [client] Handle truncated upstream DNS responses
+  * [misc] add git town workflow config
+  * [client] Support CNAME in local resolver
+  * [management] use permission modules
+  * [client] Fix dns cleanup race condition
+
+-------------------------------------------------------------------
+Tue Apr  8 08:12:46 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.40.0:
+  * [management] permission manager validate account access (#3444)
+  * Improve local ip lookup (#3551)
+  * [client] Force new user login on PKCE auth in CLI (#3604)
+  * [client] Fix dns forwarder handling of requested record types (#3615)
+  * [client] Use the netbird logger for ice and grpc (#3603)
+  * [client] Fix missing inbound flows in Linux userspace mode with native
+    router (#3624)
+  * [client] Improve TCP conn tracking (#3572)
+  * [client] Fix Status Recorder Route Removal Logic to Handle Dynamic Routes
+    Correctly
+  * [client] Add no-browser flag to login and up commands for SSO login control
+    (#3610)
+  * [client] Enhance DNS forwarder to track resolved IPs with resource IDs on
+    routing peers (#3620)
+  * [client] Mark netbird data plane traffic to identify interface traffic
+    correctly (#3623)
+  * [client] Automatically register match domains for DNS routes (#3614)
+
+-------------------------------------------------------------------
+Fri Mar 28 22:22:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.39.2:
+  - [management] Sync account peers on network router group changes
+    by @bcmmbaga in #3573
+  - [client] fix route handling for local peer state by @hakansa in
+    #3586
+  - [management] fix extend call and move config to types by
+    @mlsmaycon in #3575
+  - [client] Ensure status recorder is always initialized by
+    @lixmal in #3588
+  - [management] Fix extended config when nil by @mlsmaycon in
+    #3593
+  - [client] Disable systemd-resolved default route explicitly on
+    match domains only by @lixmal in #3584
+  - [client] Stop flow grpc receiver properly by @lixmal in #3596
+  - [client] Prevent calling the onDisconnected callback in
+    incorrect state by @pappz in #3582
+  - [client] Fix close WireGuard watcher by @pappz in #3598
+
+-------------------------------------------------------------------
+Mon Mar 24 00:25:38 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.39.1:
+  - [management] Fix invalid port range sync by @mlsmaycon in #3571
+- changes from 0.39.0
+  What's New
+  This release includes support for traffic events captured between
+  peers and resources and other peers in the network. We are also
+  adding support to the Redis cache for IDP data. This allows a
+  more persistent cache across management restarts.
+
+  Traffic events support (Cloud-only)
+  We’ve made significant progress on network traffic observability
+  by adding Traffic events support and enhancing event metadata.
+  The updates include:
+
+  - Traffic events support on client. #3414 These changes help you
+    gain deeper visibility into traffic flows within your network.
+    Learn more at
+    https://docs.netbird.io/how-to/traffic-events-logging.
+  - Improvements to Flow Stability and Debugging
+    - Improved handling of embedded listeners and shutdowns in flow
+      GRPC. #3557, #3564
+    - Added profiling dumps to the debug package to assist with
+      deeper diagnostics. #3517
+  - REST Client Improvements
+    - Bearer token support has been added to the management REST
+      client for more secure integrations. #3534
+  - Improvements
+    - DNS Policies: Fixed DNS NRPT policies handling. #3459
+    - Flow Acknowledgement: Added initiator field to flow
+      acknowledgments. #3563
+    - Redis IDP Cache: Management now logs Redis cache usage. You
+      can export the variable
+      NB_IDP_CACHE_REDIS_ADDRESS=redis://<IP>:<PORT> to the
+      management server to use the new store. #3562
+    - Version Fixes: Connection issues resolved for -dev, -alpha,
+      and similar versions. #3511
+    - Docker Compose Cleanup: Removed duplicate labels in the relay
+      service. #3502
+  - Bug Fixes
+    - Fixed issue with the Advanced Settings UI on Windows 11 when
+      using a Chinese locale. #3483
+    - Resolved an issue with always enabling NetworkResource in
+      createResource(). #3532
+  - Documentation
+    - Updated examples in the events section and added tag to the
+      ingress port docs. #3552
+    - Updated CONTRIBUTOR_LICENSE_AGREEMENT.md. #3535
+  - Other Changes
+    - Removed "Admin Panel" item from the UI client. #3560
+
+-------------------------------------------------------------------
+Sun Mar 16 21:52:36 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.38.2:
+  - [misc] Update link to kubernetes operator by @braginini in
+    #3489
+  - [client] Nil check on route manager by @pappz in #3486
+  - [client] Fix anonymized addresses documentation by @lixmal in
+    #3505
+  - [client] Set info logs and add dump state by @pappz in #3504
+  - [client] Fix state dump panic by @lixmal in #3519
+
+-------------------------------------------------------------------
+Mon Mar 10 23:45:41 UTC 2025 - Holden Fried <holdenrf2021@gmail.com>
+
+- Disabled hanging tests:
+  * TestNetworkMonitor_Event
+  * TestNetworkMonitor_MultiEvent
+- Update to 0.38.0:
+  This release fixes a few bugs with client startup where the
+  client could get blocked in case of settings changes in the GUI
+  and improves the Network monitor lifecycle trigger to avoid race
+  conditions. It also adds an initial client support for a new
+  feature called Ingress ports that should allow users to enable
+  port forwarding in the future and port-range access control
+  policies.
+  - New features
+    - [client, management] Add Ingress ports initial support #3275
+  - Enhancements
+    - [client] Enable windows stderr logs by default #3476
+    - [docs] Fix typo #3477
+    - [client] Prevent panic in case of double close call #3475
+    - [client] Prevent to block channel writing #3474
+    - [client] Add option to autostart netbird ui in the Windows
+      installer #3469
+    - [client] Fix engine restart race condition #3435
+    - [client] Ignore candidates that are part of the the wireguard
+      subnet #3472
+    - [client] Increase local daemon connection timeout to 50 sec
+      #3481
+    - [management] return empty array instead of null on networks
+      endpoints #3480
+
+-------------------------------------------------------------------
+Fri Mar  7 19:57:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix paths for GUI assets
+
+-------------------------------------------------------------------
+Fri Mar  7 19:23:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.37.2:
+  - [client] fix extra DNS labels parameter to Register method in
+    client by @hakansa in #3371
+  - [tests] Retry mysql store creation on reused containers by
+    @pascal-fischer in #3370
+  - [client] Replace string to netip.Prefix by @pappz in #3362
+  - [misc] Replace webinar link by @braginini in #3380
+  - [management] Handle transaction error on peer deletion by
+    @bcmmbaga in #3387
+  - [misc] Fix typo by @Silex in #3415
+  - [client] Add Netbird GitHub link to the client ui about sub
+    menu by @robertgro in #3372
+  - [client] Close userspace firewall properly by @lixmal in #3426
+  - [client] UI Refactor Icon Paths by @hakansa in #3420
+  - [client] Handle large DNS packets in dns route resolution by
+    @lixmal in #3441
+  - Update bug-issue-report.md template by @lixmal in #3449
+  - [client] Fix TURN-Relay switch by @pappz in #3456
+  - [client] Print out the goroutine id by @pappz in #3433
+  - [misc] Traefik config improvements by @Silex in #3346
+  - [misc] Grafana dashboards by @muzammil360 in #3458
+
+-------------------------------------------------------------------
+Mon Feb 24 01:07:23 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.37.1:
+  - [client] Restart netbird-ui post-install in linux deb&rpm by
+    @mohamed-essam in #2992
+  - [client] Update local interface addresses when gathering
+    candidates by @lixmal in #3324
+  - [management] faster server bootstrap by @pnmcosta in #3365
+  - [client] fix privacy warning on macOS by @hurricanehrndz in
+    #3350
+  - [client] Disable notifications by default by @lixmal in #3375
+
+-------------------------------------------------------------------
+Sat Feb 22 14:26:34 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.37.0:
+  - [client] Normalize DNS record names to lowercase in local
+    handler update by @hakansa in #3323
+  - [signal] add pprof and message size metrics by @pascal-fischer
+    in #3337
+  - [management] Refactor users to use store methods by @bcmmbaga
+    in #2917
+  - [management] Add batching support for SaveUsers and SaveGroups
+    by @bcmmbaga in #3341
+  - [client][ui] added accessible tray icons by @karsa-mistmere in
+    #3335
+  - [misc] Run management benchmark jobs on file changes by
+    @mlsmaycon in #3343
+  - [client] [ui] issue when changing setting in GUI while peer
+    session is expired by @hakansa in #3334
+  - [signal] Fix registry not found by @pascal-fischer in #3342
+  - [management] remove gorm preparestmt from all DB connections by
+    @pascal-fischer in #3292
+  - [client] Set up local dns policy additionally if a gpo policy
+    is detected by @lixmal in #3336
+  - [management] optimize test execution by @pascal-fischer in
+    #3204
+  - [client][ui] Use go build to embed less icons by
+    @hurricanehrndz in #3351
+  - [misc] improvement(template): add traefik labels to relay by
+    @cesargoncalves in #3333
+  - [client] Add UI client event notifications by @lixmal in #3207
+  - [client, management] Support DNS Labels for Peer Addressing by
+    @hakansa in #3252
+  - [client] Add embeddable library by @lixmal in #3239
+  - [client] Skip CLI session expired notifcation if notifications
+    are disabled by @lixmal in #3266
+  - [management] refactor auth by @pnmcosta in #3296
+  - [client] Interface code cleaning by @pappz in #3358
+  - [misc] Update README.md by @braginini in #3360
+  - [management,client,signal] Update google.golang.org/api to
+    latest by @paralin in #3288
+  - [misc][Snyk] Security upgrade alpine from 3.21.0 to 3.21.3 by
+    @mlsmaycon in #3359
+  - [client] Add reverse dns zone by @lixmal in #3217
+  - [management] fix grpc new account by @pnmcosta in #3361
+  - [client] Add netbird ui improvements by @lixmal in #3222
+  - [client] Fix udp forwarder deadline by @lixmal in #3364
+  - [misc] Rename client tests in CI by @lixmal in #3366
+
+-------------------------------------------------------------------
+Thu Feb 13 19:51:04 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.36.7:
+  - [client] Fix priority handling by @pappz in #3313
+  - [client] Use GPO DNS Policy Config to configure DNS if present
+    by @lixmal in #3319
+
+-------------------------------------------------------------------
+Wed Feb 12 15:27:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.36.6:
+  - Bump golang.org/x/net from 0.30.0 to 0.33.0 by @dependabot in
+    #3218
+  - [client, server] Cleanup magiconair usage from repo by @pappz
+    in #3276
+  - Management REST Client Code by @mohamed-essam in #3278
+  - [client] use embedded root CA if system certpool is empty by
+    @hakansa in #3272
+  - [misc] Replace Wiretrustee with Netbird by @lixmal in #3267
+  - [client] Fix acl empty port range detection by @lixmal in #3285
+  - [relay] Use new upstream for nhooyr.io/websocket package by
+    @paralin in #3287
+  - [client] Fix grouping of peer ACLs with different port ranges
+    by @lixmal in #3289
+  - [client] Fix nil pointer exception when load empty list and try
+    to cast it by @pappz in #3282
+  - [management] Check groups when counting peers on networks list
+    by @pascal-fischer in #3284
+  - [management] add logs for grpc API by @pascal-fischer in #3298
+  - [client] Add experimental support for userspace routing by
+    @lixmal in #3134
+  - [signal] Fix context propagation in signal server by @4thel00z
+    in #3251
+  - [client, relay] Fix/wg watch by @pappz in #3261
+  - [client] Support dns upstream failover for nameserver groups
+    with same match domain by @lixmal in #3178
+  - [client] Fix dns handler chain test by @lixmal in #3307
+  - [client] Check for fwmark support and use fallback routing if
+    not supported by @lixmal in #3220
+  - [client] Enable userspace forwarder conditionally by @lixmal in
+    #3309
+  - fix integration tests by @pnmcosta in #3311
+
+-------------------------------------------------------------------
+Wed Jan 29 07:37:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.36.5:
+  - [client] Replace engine probes with direct calls by @lixmal in
+    #3195
+  - Update sign pipeline version by @mlsmaycon in #3246
+  - [client] Add missing peer ACL flush by @lixmal in #3247
+
+-------------------------------------------------------------------
+Tue Jan 28 09:18:53 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.36.4:
+  - [client] Allow freebsd to build netbird-ui by @lixmal in #3212
+  - [management] Refactor peers to use store methods by @bcmmbaga
+    in #2893
+  - [misc] Fix: typo in test output by @JinxCappa in #3216
+  - [management] remove peer from group on delete by
+    @pascal-fischer in #3223
+  - [management] disable prepareStmt for sqlite by @pascal-fischer
+    in #3228
+  - [client] Fix freebsd default routes by @lixmal in #3230
+  - [client] Use correct stdout/stderr log paths for debug bundle
+    on macOS by @lixmal in #3231
+  - [client] Back up corrupted state files and present them in the
+    debug bundle by @lixmal in #3227
+  - [client] Match more specific dns handler first by @lixmal in
+    #3226
+  - [client] Mark redirected traffic early to match input filters
+    on pre-DNAT ports by @lixmal in #3205
+  - [management] use account request buffer on sync by
+    @pascal-fischer in #3229
+  - [management/signal/relay] add metrics descriptions by
+    @pascal-fischer in #3233
+  - [client] Support port ranges in peer ACLs by @lixmal in #3232
+  - [client] Use dynamic dns route resolution on iOS by @lixmal in
+    #3243
+  - [management] copy source and destination resource on policyRule
+    copy by @pascal-fischer in #3235
+
+-------------------------------------------------------------------
+Fri Jan 17 23:40:28 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.36.3:
+  - [client] Close ice agent only if not nil by @mlsmaycon in #3210
+
+-------------------------------------------------------------------
+Fri Jan 17 12:05:04 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.36.2:
+  - [relay] Don't start relay quic listener on invalid TLS config
+    by @lixmal in #3202
+  - [management] Fix network migration issue in Postgres by
+    @bcmmbaga in #3198
+  - [management] add duration logs to Sync by @pascal-fischer in
+    #3203
+
+-------------------------------------------------------------------
+Thu Jan 16 22:35:38 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.36.1:
+  What's Changed
+  - [client] Fix windows info out of bounds panic by @lixmal in
+    #3196
+
+-------------------------------------------------------------------
+Thu Jan 16 18:47:37 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.36.0:
+  This release introduces initial support to QUIC as a protocol for
+  relay servers, MySQL support for store, and rootless container
+  support for the client running Netstack mode. We also added
+  support for disabling system flags in the client, and optional
+  ZITADEL PAT configuration in the management service among other
+  enhancements and bug fixes.
+
+  New features
+  QUIC Protocol Support
+  Added initial support for the QUIC protocol in the client and
+  relay server, improving connection reliability and performance.
+  For self-hosted admins that want to try this out, you should
+  ensure that the relay server has TLS certificates configured and
+  that the main listening port is available in both, TCP and UDP.
+
+  Rootless Container Support
+  Implemented rootless container support for the client running in
+  Netstack mode, enabling secure and compatible operation without
+  requiring privileged permissions or Linux capabilities.
+
+  You can use the images netbirdio/netbird:rootless-latest or
+  netbirdio/netbird:0.36.0-rootless for this mode.
+
+  Learn more about how to enable Netstack mode in the
+  documentation.
+
+  MySQL Support
+  Added MySQL support for the management service, allowing users to
+  store data in a MySQL database. This feature is particularly
+  useful for organizations that prefer MySQL as their database
+  backend.
+
+  If you want to start a new deployment with MySQL, you can use the
+  environment variable NETBIRD_STORE_CONFIG_ENGINE=mysql and
+  NETBIRD_STORE_ENGINE_MYSQL_DSN="<username>:<password>@tcp(127.0.0.1:3306)/<database>"
+  in the setup.env file.
+
+  We are counting on your feedback and community contributions to
+  improve documentation for this support.
+
+  Enhancements
+  New system flags to disable a few features on the client side We
+  are introducing a set of new flags that allow users to disable
+  specific features on the client side. This is particularly useful
+  for users who wants more control over their system
+  configurations.
+
+  The new flags are available with the netbird up command, see the
+  flags below:
+
+  --disable-client-routes Disable client routes. If enabled,
+    the client won't process client routes received from the
+    management service.
+
+  --disable-dns Disable DNS. If enabled, the client won't
+    configure DNS settings.
+
+  --disable-firewall Disable firewall configuration. If
+    enabled, the client won't modify firewall rules.
+
+  --disable-server-routes Disable server routes. If enabled,
+    the client won't act as a router for server routes
+    received from the management service.
+
+  Optional ZITADEL PAT Configuration Enabled optional configuration
+  of a Personal Access Token (PAT) for ZITADEL in the management
+  service, enhancing authentication options for users who want to
+  use ZITADEL as their identity provider.
+
+  To configure the ZITADEL PAT, you can use the environment
+  variable NETBIRD_IDP_MGMT_EXTRA_PAT=<secret> in the setup.env
+  file.
+
+  For all the details see:
+  https://github.com/netbirdio/netbird/releases/tag/v0.36.0
+
+-------------------------------------------------------------------
+Wed Jan  1 09:03:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.35.2:
+  * [management] Add missing group usage checks for network
+    resources and routes access control by @bcmmbaga in #3117
+  * [management] remove ids from policy creation api by
+    @pascal-fischer in #2997
+  * [management] Fix networks net map generation with posture
+    checks by @mlsmaycon in #3124
+  * [management] add selfhosted metrics for networks by
+    @pascal-fischer in #3118
+  * [client] Ignore case when matching domains in handler chain by
+    @lixmal in #3133
+    [client] Allow inbound rosenpass port by @lixmal in #3109
+  * [management] Preserve jwt groups when accessing API with PAT by
+    @bcmmbaga in #3128
+  * [management] remove sorting from network map generation by
+    @pascal-fischer in #3126
+  * [management] Fix policy tests by @mlsmaycon in #3135
+
+-------------------------------------------------------------------
+Fri Dec 27 00:36:27 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- update to 0.35.1:
+  * What's Changed:
+    - [client] Don't fail debug if log file is console by @lixmal in #3103
+    - [client] Fix inbound tracking in userspace firewall by @lixmal in #3111
+
+-------------------------------------------------------------------
+Mon Dec 23 22:46:31 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- update to 0.35.0:
+  * Release notes:
+    - With this release, we are introducing a new concept in NetBird called
+      Networks. This concept improves the administration of routed resources
+      and provides greater visibility into what is shared with peers. Networks
+      are configuration containers that map your on-premise or cloud networks
+      in a logical set of configurations, making it easier to manage and share
+      routes with your peers based on your infrastructure.
+  * What's changed:
+    - [client] Add support for state manager on iOS by @pascal-fischer in #2996
+    - [client] Add peer conn init limit by @mlsmaycon in #3001
+    - [management] Remove peer needs login log message by @bcmmbaga in #3005
+    - [management] restructure api files by @pascal-fischer in #3013
+    - [Snyk] Security upgrade alpine from 3.20 to 3.21.0 by @mlsmaycon in #3019
+    - [client] Fix race condition with systray ready by @mohamed-essam in #2993
+    - [misc] split tests with management and rest by @mlsmaycon in #3051
+    - [misc] Handle dnf version 5 in install script by @mohamed-essam in #3026
+    - [client] fix: reformat IPv6 ICE addresses when hole punching by @jclds139
+      in #3050
+    - [misc] Upgrade x/crypto package by @mlsmaycon in #3055
+    - fix client unsupported h2 protocol when only 443 activated by @V-E-O
+      in #3009
+    - [client] Avoid using iota on mixed const block by @mlsmaycon in #3057
+    - [client, management] Add new network concept by @lixmal in #3047
+    - [client] Do not start DNS forwarder on client side by @pappz in #3094
+    - [management] Fix duplicate resource routes when routing peer is part of
+      the source group by @bcmmbaga in #3095
+    - [client] Reduce DNS handler chain lock contention by @lixmal in #3099
+    - [management] Run test sequential by @pascal-fischer in #3101
+    - [client] Add firewall rules to the debug bundle by @lixmal in #3089
+    - [client] Add stateful userspace firewall and remove egress filters
+      by @lixmal in #3093
+
+-------------------------------------------------------------------
+Thu Dec  5 16:54:45 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- update to 0.34.1:
+  * [client] Cleanup status resources on engine stop by @mlsmaycon
+    in #2981
+  * [client] Don't return error in rule removal if protocol is not
+    supported by @lixmal in #2990
+  * [client] Init route selector early by @lixmal in #2989
+  * [client] Reduce max wait time to initialize peer connections
+    by @mlsmaycon in #2984
+  * [management] Update account peers on login on meta change by
+    @mohamed-essam in #2991
+  * [client] upgrade zcalusic/sysinfo to v1.1.3 (add serial support
+    for ARM arch) by @EdouardVanbelle in #2954
+
+-------------------------------------------------------------------
+Wed Dec  4 06:00:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.34.0:
+  * Enhancements:
+    - Persistent network route selection
+      This feature is handy for users who want to maintain a
+      specific network route selection across client restarts. The
+      client will now remember the network routes selected before
+      the restart and apply them after the restart.
+  * Bug fixes:
+    - Account different policy rules for route firewall rules
+      The network access control policy rules now account for peers
+      in source groups. This fix ensures that the rules are
+      correctly applied to the network routes.
+  * What's Changed
+    - [misc] Update Caddyfile and Docker Compose to support HTTP3
+      #2822
+    - [client] Refactor initial Relay connection #2800
+    - [client] Don't return error in userspace mode without
+      firewall when setting legacy #2924
+    - [client] Test nftables for incompatible iptables rules #2948
+    - [client] Set up sysctl and routing table name only if routing
+      rules are available #2933
+    - [client] Allow routing to fallback to exclusion routes if
+      rules are not supported #2909
+    - [client] Code cleaning in net pkg #2932
+    - [client] Unspecified address: default
+      NetworkTypeUDP4+NetworkTypeUDP6 #2804
+    - [client] Add pprof build tag #2964
+    - [client] Persist route selection #2810
+    - [client] Add state file to debug bundle #2969
+    - [client] Fix debug bundle state anonymization test #2976
+    - [client] Pass IP instead of net to Rosenpass #2975
+    - [client] Get static system info once #2965
+    - [client] Add netbird.err and netbird.out to debug bundle
+      #2971
+    - [client] Add network map to debug bundle #2966
+    - [client] Don't choke on non-existent interface in route
+      updates #2922
+    - [client] Add state handling cmdline options #2821
+    - [management] Refactor posture check to use store methods
+      #2874
+    - [management] Refactor policy to use store methods #2878
+    - [management] Refactor DNS settings to use store methods #2883
+    - [management] Refactor nameserver groups to use store methods
+      #2888
+    - [management] refactor to use account object instead of
+      separate db calls for peer update #2957
+    - [management] Add performance test for login and sync calls
+      #2960
+    - [management] Add guide when signing key is not found #2942
+    - [management] Account different policy rules for route
+      firewall rules #2939
+    - [management] Add missing parentheses on iphone hostname
+      generation condition #2977
+    - [management] merge update account peers in sync call #2978
+
+-------------------------------------------------------------------
+Sat Nov 30 21:22:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix SLE_15_SP4 build by using go1.23
+- remove %suse_update_desktop_file
+- remove the go1.21 hack, as we enabled the :Update repos
+- use pkgconfig for BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov 22 19:36:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.33.0:
+  * [misc] Introducing NetBird Guru on Gurubase.io by @kursataktas
+    in #2778
+  * [misc] use google domain for tests by @mlsmaycon in #2902
+  * [misc] Update signing pipeline version by @mlsmaycon in #2900
+  * [management] Add transaction metrics and exclude getAccount
+    time from peers update by @pascal-fischer in #2904
+  * [client] Add NB_SKIP_SOCKET_MARK & fix crash instead of
+    returing an error by @nazarewk in #2899
+  * [management] Fix process posture check evaluation on Sync by
+    @pascal-fischer in #2911
+  * [management] Add metric for peer meta update by @pascal-fischer
+    in #2913
+  * [management] Add activity events to group propagation flow by
+    @pascal-fischer in #2916
+  * [client] Fix allow netbird rule verdict by @lixmal in #2925
+  * [management] Fix getSetupKey call by @pascal-fischer in #2927
+
+-------------------------------------------------------------------
+Mon Nov 18 00:08:49 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+ - update to 0.32.0:
+  * [management] Refactor setup key to use store methods by
+    @bcmmbaga in #2861
+  * [management] Add more logs to the peer update processes
+    by @pascal-fischer in #2881
+  * [client] Improve state write timeout and abort work early
+    on timeout by @lixmal in #2882
+  * [relay-server] Always close ws conn when work thread exit
+    by @pappz in #2879
+  * [client] Update route calculation tests by @mlsmaycon in #2884
+  * [client] Handle panic on nil wg interface by @lixmal in #2891
+  * [management] Fix limited peer view groups by @pascal-fischer
+    in #2894
+  * [client/management] add peer lock to peer meta update and fix
+    isEqual func by @pascal-fischer in #2840
+  * [management] Limit the setup-key update operation by
+    @pascal-fischer in #2841
+  * [management] Refactor group to use store methods by @bcmmbaga
+    in #2867
+  * [management] Fix the Inactivity Expiration problem. by
+    @ismail0234 in #2865
+  * [client] Fix state manager race conditions by @lixmal in #2890
+  * [client] Move state updates outside the refcounter by @lixmal
+    in #2897
+  * [client] Fix error state race on mgmt connection error by
+    @lixmal in #2892
+
+-------------------------------------------------------------------
+Mon Nov 11 20:07:48 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- update to 0.31.1:
+ * [management] Fix add peer all group network map update
+   by @pascal-fischer in #2830
+ * [misc] Avoid failing all other matrix tests if one fails
+   by @mlsmaycon in #2839
+ * [client] Fix cached device flow oauth by @mlsmaycon in #2833
+ * [management] Fix network map update on peer validation by
+   @pascal-fischer in #2849
+ * [client] Use the prerouting chain to mark for masquerading to
+   support older systems by @lixmal in #2808
+ * [relay-server] Use X-Real-IP in case of reverse proxy by @pappz
+   in #2848
+ * [client] Exclude split default route ip addresses from anonymization
+   by @lixmal in #2853
+ * [management] Enforce max conn of 1 for sqlite setups by
+   @pascal-fischer in #2855
+ * [management] Fix potential panic on inactivity expiration log
+   message by @pascal-fischer in #2854
+ * [management] Add benchmark tests to get account with claims
+   by @mlsmaycon in #2761
+ * [client] Use offload in WireGuard bind receiver by @pappz in #2815
+ * [management] Remove context from database calls by @pascal-fischer
+   in #2863
+ * [management] Add peer lock to grpc server by @pascal-fischer in #2859
+ * [management] Fix api error message typo peers_group by @lixmal in #2862
+ * [client] Remove loop after route calculation by @pappz in #2856
+ * [client] fix/proxy close by @pappz in #2873
+ * [client] Fix race conditions by @lixmal in #2869
+
+-------------------------------------------------------------------
+Fri Nov  1 16:19:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.31.0:
+    Because of a database migration where the setup-keys are being
+    hashed, a downgrade is no longer possible without restoring a
+    backup. So, testing and making sure a backup is done before
+    upgrading is highly recommended. See backup docs here:
+    https://docs.netbird.io/selfhosted/selfhosted-guide#backup
+  * [management] Setup key improvements #2775
+    - We added support to setup-key deletion, allowing account
+      cleanup of revoked or expired keys.
+    - The max expiration time was removed, allowing users to define
+      any date for key expiration.
+    - Setup-keys are now stored as hashs, improving security for
+      systems.
+  * Improvements
+    - [client] Make native firewall init fail firewall creation
+      #2784
+    - [misc] Update Zitadel from v2.54.10 to v2.64.1 #2793
+    - [client] allow relay leader on iOS #2795
+    - [management] remove network map diff calculations #2820
+    - [management] Add DB access duration to logs for context
+      cancel #2781
+    - [client] Log windows panics #2829
+  * Bug fixes
+    - [client] Ignore route rules with no sources instead of
+      erroring out #2786
+    - [client] Fix multiple peer name filtering in netbird status
+      command #2798
+    - [client] Fix the broken dependency gvisor.dev/gvisor #2789
+    - [management] Fix peer meta isEqual #2807
+    - [client] Nil check on ICE remote conn #2806
+    - [client] Allocate new buffer for every package #2823
+    - [client] Fix unused servers cleanup #2826
+    - [client] Remove legacy forwarding rules in userspace mode
+      #2782
+
+-------------------------------------------------------------------
+Thu Oct 24 15:07:12 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- update to 0.30.3:
+  * [management] Fix domain information is up to date check by
+    @mlsmaycon in #2754
+  * Fix decompress zip path by @mlsmaycon in #2755
+  * Update sign workflow version by @mlsmaycon in #2756
+  * Release global lock on early error by @mlsmaycon in #2760
+  * Replace suite tests with regular go tests by @mlsmaycon
+    in #2762
+  * [management] Fix context cancellation with JWT group sync
+    enabled by @bcmmbaga in #2767
+  * [client] Eliminate UDP proxy in user-space mode by @pappz
+    in #2712
+  * [management] Optimize network map updates by @bcmmbaga in #2718
+  * [management] Fix session inactivity response by @pascal-fischer
+    in #2770
+  * [relay-client] Log exposed address by @pappz in #2771
+  * [client] Cleanup dns and route states on startup by @lixmal
+    in #2757
+  * [client] Fix controller re-connection by @pappz in #2758
+  * [client] Cleanup firewall state on startup by @lixmal in #2768
+
+-------------------------------------------------------------------
+Wed Oct 16 17:13:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.30.2:
+  * [relay, client] Relay/fix/wg roaming by @pappz in #2691
+  * [management] Refactor getAccountIDWithAuthorizationClaims by
+    @mlsmaycon in #2715
+  * [client] Add table filter rules using iptables by @lixmal in
+    #2727
+  * [relay-server] Move the handshake logic to a separated struct
+    by @pappz in #2648
+  * [management] Add session expire functionality based on
+    inactivity by @ctrl-zzz in #2326
+  * [client] Add universal bin build and update sign workflow
+    version by @mlsmaycon in #2738
+  * [client] Exclude loopback from NAT by @lixmal in #2747
+  * [misc] Update Zitadel version on quickstart script by @eoksum
+    in #2744
+  * [management] Fix JSON function compatibility for SQLite and
+    PostgreSQL by @bcmmbaga in #2746
+
+-------------------------------------------------------------------
+Fri Oct 11 09:12:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.30.1:
+  * [management] Remove admin check on getAccountByID by
+    @pascal-fischer in #2699
+  * [management] Validate peer ownership during login by @bcmmbaga
+    in #2704
+  * [client] Limit P2P attempts and restart on specific events by
+    @lixmal in #2657
+  * [management] Propagate error in store errors by @pascal-fischer
+    in #2709
+  * [misc] Add Link to the Lawrence Systems video by @braginini in
+    #2711
+  * [management] Make max open db conns configurable by
+    @pascal-fischer in #2713
+  * [management] Add support to envsub go management configurations
+    by @mlsmaycon in #2708
+  * [management] Move testdata to sql files by @pascal-fischer in
+    #2693
+  * [client] Improve route acl by @lixmal in #2705
+  * [signal] new signal dispatcher version by @pascal-fischer in
+    #2722
+
+-------------------------------------------------------------------
+Sun Oct  6 16:47:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- convert to using obs_scm
+- update to 0.30.0:
+  * What's New
+    - Access Control for Network Routes
+      Starting with version 0.30.0, users can assign access control
+      groups to network routes, offering improved security and
+      traffic restrictions. Route access is now unidirectional,
+      ensuring traffic complies with the specified policies before
+      authorization. This feature enhances the flexibility of
+      network management.
+      To configure this, follow the documentation: Configuring
+      routes with access control.
+      https://docs.netbird.io/how-to/configuring-routes-with-access-control
+  * Improvements
+    - Add Access Control for Network Routes: [management, client]
+      Add access control support to network routes #2100
+    - Remove Redundant Account Token Calls: [management] Remove
+      redundant get account calls in GetAccountFromToken #2615
+    - Refactor User JWT Group Synchronization: [management]
+      Refactor User JWT group sync #2690
+  * Bug Fixes
+    - Anonymize Relay Address in Peers View: [client] Anonymize
+      relay address in status peers view #2640
+    - Check WireGuard Interface Instead of Engine Context: [client]
+      Check wginterface instead of engine ctx #2676
+    - Close Remote Connection in Proxy: [client] Close the remote
+      conn in proxy #2626
+    - Fix eBPF Close Function: [client] Fix ebpf close function
+      #2672
+    - Fix Relay Disconnection Handling: [client] Fix Relay
+      disconnection handling #2680
+    - Restrict Peer Access for Non-Admins: [management] Restrict
+      accessible peers to user-owned peers for non-admins #2618
+  * Other Changes
+    - Adjust Relay Worker Log Levels: [client] Adjust relay worker
+      log level and message #2683
+    - Improve Error Count Formatting: [client] Fix error count
+      formatting #2641
+    - Refactor Interface Package: [client] Refactor/iface pkg #2646
+    - Remove Custom Localhost Dialer: [client] Remove usage of
+      custom dialer for localhost #2639
+    - Add Account Existence Check to AccountManager: [management]
+      Add AccountExists to AccountManager #2694
+    - Add DB Retrieval Method: [management] Add get DB method to
+      store #2650
+    - Fix Account Manager Mock Implementation: [management] Fix
+      account manager mock #2695
+    - Propagate Management Metrics: [management] Propagate metrics
+      #2667
+    - Remove File Store in Management: [management] Remove file
+      store #2689
+    - Update Management Docker Image: [management] Update
+      management base docker image #2687
+    - Improve ZITADEL IDP Error Handling: [management] improve
+      zitadel idp error response detail #2634
+    - Add Log Setting to Caddy Container: [misc] Add log setting to
+      Caddy container #2684
+    - Fix IP Range Posture Check Example: [misc] Fix ip range
+      posture check example in API doc #2628
+    - Update to Goreleaser Version 2: [misc] Specify goreleaser
+      version and update to 2 #2673
+    - Use Packages to Fetch Latest Version: [misc] Use the pkgs to
+      get the latest version #2682
+    - Move Signal Message Handling into Dispatcher: [signal] Move
+      dummy signal message handling into dispatcher #2686
+    - Propagate Signal Metrics: [signal] Propagate metrics #2668
+    - Add Context to Signal Dispatcher: [signal] add context to
+      signal-dispatcher #2662
+
+-------------------------------------------------------------------
+Sat Sep 21 00:34:28 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Update to 0.29.4
+- Selected notes from https://github.com/netbird/releases/tag/v0.29.4:
+  * Do not block the msg receiving if the wg proxy does not operate by @pappz in #2617
+  * Exit from processConnResults after all tries by @pappz in #2621
+
+
+-------------------------------------------------------------------
+Wed Sep 18 16:32:34 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Update to version 0.29.3
+- Selected notes from https://github.com/netbird/releases/tag/v0.29.3:
+  * [client] Ensure engine is stopped before starting it back by @hurricanehrndz in #2565
+  * [relay] Change heartbeat timeout by @pappz in #2598
+  * [client] Fix blocked net.Conn Close call by @pappz in #2600
+  * [management] Add command flag to set metrics port for signal and relay service, and
+    update management port by @benniekiss in #2599
+  * [client] Fix get management and signal state race condition by @mlsmaycon in #2570
+  * [management] fix legacy decrypting of empty values by @bcmmbaga in #2595
+  * [signal] Fix signal active peers metrics by @pascal-fischer in #2591
+  * [management] Add transaction to addPeer by @pascal-fischer in #2469
+  * [client] Fix leaked server connections by @pappz in #2596
+  * [relay] Add health check attempt threshold by @mlsmaycon in #2609
+  * [client] Fix race condition while read/write conn status in peer conn by @pappz in #2607
+  * [client] Cancel the context of wg watcher when the go routine exit by @pappz in #2612
+- Packaging changes:
+  * Fixed leap 15.6 and SLE builds, cleaned up some redundancy from specfile
+
+
+-------------------------------------------------------------------
+Sat Sep 14 22:02:02 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Update to version 0.29.2
+- Selected notes from https://github.com/netbird/releases/tag/v0.29.2:
+  * [management] Add GCM encryption and migrate legacy encrypted events by @bcmmbaga in #2569
+  * [management] Add accessible peers endpoint by @bcmmbaga in #2579
+  * [client] fix: install.sh: avoid call of netbird executable after rpm-ostree installation by @M0Rf30 in #2589
+  * [client] Fix wg handshake checking by @pappz in #2590
+  * [misc] Support configurable max log size with var NB_LOG_MAX_SIZE_MB by @mlsmaycon in #2592
+- Update to version 0.29.1
+- Selected release notes from https://github.com/netbird/releases/tag/v0.29.1:
+  * [client] Don't overwrite allowed IPs when updating the wg peer's endpoint address by @lixmal in #2578
+  * [relay] Improve relay messages by @lixmal in #2574
+  * [relay] change log levels by @pappz in #2580
+  * Remove pre-release step from workflow by @mlsmaycon in #2583
+- Packaging changes:
+  * Fixed blank desktop icon for netbird-applet
+  * Added package for new experimental relay feature
+  * Removed stripping flags to allow debug builds to be generated
+  * Better organization of specfile
+
+-------------------------------------------------------------------
+Wed Sep 11 01:17:59 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Update to version 0.29.0
+- Selected release notes from https://github.com/netbirdio/netbird/releases/tag/v0.29.0:
+  * New relay implementation utilizing WebSockets available for testing in self-hosted server
+  * Signal Dispatcher: Introduced signal dispatcher for better signaling. #2373
+  * Support for ECDSA Public Keys: Added support for ECDSA public keys in management. #2461
+  * Fix Deadlock on Auto Connect: Avoided deadlock in client auto-connect with early exit handling. #2528
+  * Destroy WG Interface on Timeout: Addressed issue where WireGuard interface wasn't destroyed on down timeout. #2435
+  * Fix Service Down: Corrected the service-down issue in the client. #2519
+  * Prevent Client Panic: Fixed client panic when there was no connection. #2541
+  * Error Handling in OpenConnVia: Improved error handling in the openConnVia function. #2560
+  * Fix Lock on Down: Fixed a lock issue when the service was brought down. #2546
+
+
+-------------------------------------------------------------------
+Sun Aug 25 17:35:54 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+- Update to version 0.28.9
+- Release notes from https://github.com/netbirdio/netbird/releases/tag/v0.28.9:
+  * [management] Rename request buffer and update default interval by @pascal-fischer in #2459
+  * [client] Add test for SetFlagsFromEnvVars by @mlsmaycon in #2460
+  * [client] Refactor free port function by @mlsmaycon in #2455
+  * [misc] Bump github.com/docker/docker from 26.1.4+incompatible to 26.1.5+incompatible by @dependabot in #2426
+  * [misc] Add support for NETBIRD_STORE_ENGINE_POSTGRES_DSN environment variable in setup.env by @arosberg in #2462
+  * [management] Refactor HTTP metrics by @bcmmbaga in #2476
+
+- Update to version 0.28.8
+- Selected release notes from https://github.com/netbirdio/netbird/releases/tag/v0.28.8:
+  * [misc] Use docker compose command by @mlsmaycon in #2382
+  * [management] Skip network map check if not regular user by @mlsmaycon in #2402
+  * [management] Improve mgmt sync performance by @lixmal in #2363
+  * [client] Update dependencies and switch systray library by @bcmmbaga in #2309
+  * [management] Add batch delete for groups and users by @bcmmbaga in #2370
+  * [client] Allow setup keys to be provided in a file by @moosetheory in #2337
+  * [misc] Update bug-issue-report.md to include netbird debug cmd by @lixmal in #2413
+  * [client] Parse data from setup key by @mlsmaycon in #2411
+  * [misc] Update bug-issue-report.md to include anon flag by @lixmal in #2412
+  * [management] Prevent removal of All group from peers during user groups propagation by @bcmmbaga in #2410
+  * [client] Upgrade fyne version to fix freezing routes window by @mlsmaycon in #2417
+  * [client] Mtls support by @Foosec in #2188
+  * [client] Update PNG systray disconnected icon by @lixmal in #2428
+  * [misc] Fix linting Issues by @bcmmbaga in #2427
+  * [management] Split DB calls in peer login by @pascal-fischer in #2439
+  * [misc] Loading tun module for synology in install.sh by @pascal-fischer in #2423
+  * [misc] Use clearer wording on issue template by @lixmal in #2443
+  * [management] Fix logging out peers on deletion by @lixmal in #2453
+  * [management] Add buffering for getAccount requests during login by @pascal-fischer in #2449
+
+-------------------------------------------------------------------
+Sat Aug  3 19:26:36 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Update to version 0.28.7
+- Release notes from https://github.com/netbirdio/netbird/releases/tag/v0.28.7:
+  * Fix error handling by @pappz in #2316
+  * add save peer status test for connected peers by @mlsmaycon in #2321
+  * Add SavePeer method to prevent a possible account inconsistency by @mlsmaycon in #2296
+  * Fix race in set listener by @pappz in #2332
+  * Save daemon address on service install by @mlsmaycon in #2328
+  * Remove redundant check for empty JWT groups by @bcmmbaga in #2323
+  * Refactor login with store.SavePeer by @mlsmaycon in #2334
+  * fix(tests): freebsd should be red on error by @skillcoder in #2346
+  * Add write lock for peer when saving its connection status by @mlsmaycon in #2359
+  * Save account on saving users and groups by @bcmmbaga in #2362
+  * Move write peer lock by @mlsmaycon in #2364
+  * Freebsd test all root component by @skillcoder in #2361
+  * Use accountID retrieved from the sync call to acquire read lock sooner by @mlsmaycon in #2369
+  * Handling invalid UTF-8 character in sys info by @pappz in #2360
+  * When creating new setup key, "revoked" field doesn't do anything by @pappz in #2357
+  * Bump github.com/docker/docker from 26.1.3+incompatible to 26.1.4+incompatible by @dependabot in #2356
+  * fix(util): syslog output contains duplicated timestamp by @mrl5 in #2292
+  * Allow route updates even if some domains failed resolution by @lixmal in #2368
+  * Adding geolocation download log message. by @keac in #2085
+  * Add extra auth audience field on HttpConfig for automation user to authorize via zitadel by @dfry in #2350
+  * Extend client debug bundle by @lixmal in #2341
+  * Move Bundle to before netbird down by @mlsmaycon in #2377
+  * Fix Windows file version by @mlsmaycon in #2380
+  * Remove Codacy badge as it is broken by @braginini in #2379
+  * Fix DNS resolution for routes on iOS by @pascal-fischer in #2378
+  * Add sonar badge by @pascal-fischer in #2381
+- Fix patch to handle changes in client/cmd/service_installer.go
+- Change _service to use ref tag instead of parent tag (thanks to rrahl0 for recommendation)
+
+
+-------------------------------------------------------------------
+Fri Jul 26 02:58:37 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Update to version 0.28.6
+- Release notes from https://github.com/netbirdio/netbird/releases/tag/v0.28.6:
+  * Minor fix local dns search domain by @hurricanehrndz in #2287
+  * Remove default allow for UDP on unmatched packet by @mlsmaycon in #2300
+  * Retry management connection only on context canceled by @mlsmaycon in #2301
+  * Ignore network monitor checks for software interfaces by @mlsmaycon in #2302
+
+
+-------------------------------------------------------------------
+Sat Jul 20 20:02:52 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Update to version 0.28.5
+- Release notes from https://github.com/netbirdio/netbird/releases/tag/v0.28.5:
+  * Sort routes by ID and remove DNS routes from overlapping list by @mlsmaycon in #2234
+  * Fix issue with canceled context before pushing metrics and decreasing pushing interval by @mlsmaycon in #2235
+  * Avoid empty domain overwrite by @pascal-fischer in #2252
+  * Add release version to windows binaries and update sign pipeline version by @mlsmaycon in #2256
+  * Get client ui locale on windows natively by @lixmal in #2251
+  * Bump google.golang.org/grpc from 1.64.0 to 1.64.1 by @dependabot in #2248
+  * Fix parameter limit issue for Postgres store by @mlsmaycon in #2261
+  * Support DNS routes on iOS by @pascal-fischer in #2254
+  * fix 2260: fallback serial to Board by @EdouardVanbelle in #2263
+  * Add logging option for WG device by @pappz in #2271
+  * Limit GUI process execution to one per UID by @mlsmaycon in #2267
+  * Add batch save/update for groups and users by @bcmmbaga in #2245
+  * fix forwarded metrics by @mlsmaycon in #2273
+  * Ignore non unique route updates by @hurricanehrndz in #2266
+  * feat(client): send logs to syslog by @mrl5 in #2259
+  * refactor(util): fix sonarcube issues by @mrl5 in #2276
+  * Add get_registration_delay_milliseconds metric by @mlsmaycon in #2275
+  * Fix metric label typo by @mlsmaycon in #2278
+  * fix: save peer status correctly in sqlstore by @ctrl-zzz in #2262
+  * Support custom SSL certificates for the signal service by @benniekiss in #2257
+  * Wait on daemon down by @pascal-fischer in #2279
+  * Don't add exclusion routes for IPs that are part of connected networks by @lixmal in #2258
+  * Add faster availability DNS probe and update test domain to .com by @mlsmaycon in #2280
+  * Check if route interface is a Microsoft ISATAP device by @mlsmaycon in #2282
+  * Remove copy functions from signal by @mlsmaycon in #2285
+  * Refactor macOS system DNS configuration by @hurricanehrndz in #2284
+  * Fix macOS DNS unclean shutdown restore call on startup by @mlsmaycon in #2286
+
+
+-------------------------------------------------------------------
+Tue Jul  9 03:19:08 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Improved formatting in error message when attempting to use patched out
+  netbird service commands
+
+-------------------------------------------------------------------
+Mon Jul  8 01:29:42 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Modified service-install-cli-change.patch to remove CLI service
+  install/uninstall functionality
+
+-------------------------------------------------------------------
+Sun Jul  7 06:51:29 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Added patch service-install-cli-change.patch
+  to make error messages align with best practices (#boo:1181400)
+
+-------------------------------------------------------------------
+Sat Jul  6 08:03:15 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enable tests
+
+-------------------------------------------------------------------
+Tue Jul  2 04:40:24 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Initial packaging of netbird 0.28.4
