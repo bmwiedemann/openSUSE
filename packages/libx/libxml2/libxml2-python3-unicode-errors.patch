@@ -2,11 +2,11 @@
  python/libxml.c |   11 ++++++++++-
  1 file changed, 10 insertions(+), 1 deletion(-)
 
-Index: libxml2-2.12.0/python/libxml.c
+Index: libxml2-2.14.5/python/libxml.c
 ===================================================================
---- libxml2-2.12.0.orig/python/libxml.c
-+++ libxml2-2.12.0/python/libxml.c
-@@ -1505,6 +1505,7 @@ libxml_xmlErrorFuncHandler(ATTRIBUTE_UNU
+--- libxml2-2.14.5.orig/python/libxml.c
++++ libxml2-2.14.5/python/libxml.c
+@@ -1499,6 +1499,7 @@ libxml_xmlErrorFuncHandler(ATTRIBUTE_UNU
      PyObject *message;
      PyObject *result;
      char str[1000];
@@ -14,7 +14,7 @@ Index: libxml2-2.12.0/python/libxml.c
  
      if (libxml_xmlPythonErrorFuncHandler == NULL) {
          va_start(ap, msg);
-@@ -1516,12 +1517,20 @@ libxml_xmlErrorFuncHandler(ATTRIBUTE_UNU
+@@ -1510,12 +1511,20 @@ libxml_xmlErrorFuncHandler(ATTRIBUTE_UNU
  	    str[999] = 0;
          va_end(ap);
  

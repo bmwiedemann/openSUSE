@@ -11,11 +11,11 @@ invalid string.
  python/types.c |    4 ++++
  1 file changed, 4 insertions(+)
 
-Index: libxml2-2.10.3/python/types.c
+Index: libxml2-2.14.5/python/types.c
 ===================================================================
---- libxml2-2.10.3.orig/python/types.c
-+++ libxml2-2.10.3/python/types.c
-@@ -274,6 +274,10 @@ libxml_charPtrConstWrap(const char *str)
+--- libxml2-2.14.5.orig/python/types.c
++++ libxml2-2.14.5/python/types.c
+@@ -275,6 +275,10 @@ libxml_charPtrConstWrap(const char *str)
          return (Py_None);
      }
      ret = PY_IMPORT_STRING(str);

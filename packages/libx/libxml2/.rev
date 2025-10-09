@@ -1266,4 +1266,113 @@
   + libxml2-CVE-2025-7425.patch</comment>
     <requestid>1294382</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>d2eda252b7389cc79f62f12c79a8a4a3</srcmd5>
+    <version>2.14.5</version>
+    <time>1760015053</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.14.5
+  ** Regressions **
+  * html: Don't abort on encoding errors
+  * parser: Fix handling of invalid char refs in recovery mode
+  * xmllint: Print document even in case of XInclude errors
+  * xmllint: Fix --xinclude --path
+  ** Security **
+  * schematron: Fix memory safety issues in xmlSchematronReportOutput
+  * Schematron: Fix null pointer dereference leading to DoS (Michael Mann)
+  * Fix potential buffer overflows of interactive shell (Michael Mann)
+  ** Improvements **
+  * parser: Fix xmlCtxtIsStopped
+- version update to 2.14.4
+  ** Regressions **
+  * parser: Fix parsing of PublicIds and VersionNums
+  * parser: Fix custom SAX parsers without cdataBlock handler
+  * error: Fix initGenericErrorDefaultFunc compatibility macro again
+  * io: Make xmlOutputBufferCreate* not free encoder on error
+  * reader: Fix null deref on malloc failure
+  * Revert &quot;meson: Install libxml2.py&quot;
+  ** Security **
+  * tree: Fix integer overflow in xmlBuildQName
+  ** Improvements **
+  * parser: Use parser context as default in resource loader
+  * parser: Only validate EnumerationTypes when requested
+  * parser: Undeprecate some parser context members
+- version update to 2.14.3
+  ** Regressions **
+  * reader: Fix reading compressed data
+  * parser: Make undeclared entities in XML content fatal
+  * save: Fix XML escape table
+  * save: Fix xmlSave with NULL encoding
+  * Revert &quot;valid: Remove duplicate error messages when streaming&quot;
+  ** Bug fixes **
+  * save: Fix serialization of attribute defaults containing &amp;lt;
+  * io: Fix linkage of __xml*BufferCreateFilename functions
+- version update to 2.14.2
+  ** Security **
+  * [CVE-2025-32415] schemas: Fix heap buffer overflow in xmlSchemaIDCFillNodeTables
+  * [CVE-2025-32414] python: Read at most len/4 characters. (Maks Verver)
+- version update to 2.14.1
+  ** Regressions **
+  * parser: Fix XML_PARSE_NOBLANKS dropping non-whitespace text
+- version update to 2.14.0
+  ** Major changes **
+  * The HTML tokenizer now conforms fully to HTML5.
+  * Binary compatibility is restricted to versions 2.14 or newer.
+    The soname was bumped from libxml2.so.2 to libxml2.so.16.
+  * The serialization API will now take user-provided or default
+    encodings into account when serializing attribute values.
+  * The XML parser won't try to merge consecutive CDATA sections
+    as before to align with web standards.
+  * Support for RELAX NG can now be disabled with a new configuration
+    option independently of XML Schemas support.
+  * The &quot;legacy&quot; configuration option won't enable support for HTTP
+    and LZMA anymore. 
+  * Parts of the xmllint executable were refactored, allowing the
+    combination of more options.
+  * Meson is fully supported now.
+  * Parts of the buffering code were reworked and simplified.
+  * Overflow checks before reallocations were hardenend.
+  * Some unprefixed symbols were renamed to avoid namespace pollution.
+  ** New features **
+  * Input callbacks can now be set on a parser context and an improved
+    API to create parser input is available.
+  * The following new functions, taking a parser input object, were added:
+    . xmlCtxtParseDocument
+    . xmlCtxtParseContent
+    . xmlCtxtParseDtd
+  * The xmlSave API now has additional options to replace global settings.
+  * Parser options XML_PARSE_UNZIP, XML_PARSE_NO_SYS_CATALOG and
+    XML_PARSE_CATALOG_PI were added.
+  * An API function to install a custom character encoding converter is
+    now available.
+  ** Deprecations **
+  * Access to many public struct members is now deprecated.
+  * More internal functions were deprecated
+  ** Removals **
+  * Metadata about the HTML4 content model was removed from the
+    htmlElemDesc struct
+  * The FTP module and related functions were removed.
+  * Support for the range and point extensions of the xpointer() scheme
+    was removed.
+  * Several legacy symbols and the functions in xmlunicode.h were removed.
+  * ELF version information was removed.
+  * The shell was moved from libxml2 to xmllint. Several related functions
+    are no longer available.
+  * The libxml.m4 file containing autoconf macros was removed.
+  * The --with-tree configuration option was removed.
+  * The hack to detect single-threaded programs under glibc was removed.
+- modified patches
+  * libxml2-CVE-2025-7425.patch (refreshed)
+  * libxml2-python3-string-null-check.patch (refreshed)
+  * libxml2-python3-unicode-errors.patch (refreshed)
+- modified sources
+  * baselibs.conf
+- deleted patches
+  * libxml2-CVE-2025-49794,49796.patch (upstreamed)
+  * libxml2-CVE-2025-49795.patch (upstreamed)
+  * libxml2-CVE-2025-6170,6021.patch (upstreamed)
+  * libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch (upstreamed)
+</comment>
+    <requestid>1309722</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libxml2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define base_name  libxml2
-%define libname    libxml2-2
+%define libname    libxml2-16
 %define flavor @BUILD_FLAVOR@%nil
 %if "%{flavor}" == "python"
 %define dash -
@@ -26,12 +26,12 @@
 
 %{?sle15allpythons}
 Name:           libxml2%{?dash}%{flavor}
-Version:        2.13.8
+Version:        2.14.5
 Release:        0
 License:        MIT
 Summary:        A Library to Manipulate XML Files
 URL:            https://gitlab.gnome.org/GNOME/libxml2
-Source0:        https://download.gnome.org/sources/%{name}/2.13/libxml2-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/2.14/libxml2-%{version}.tar.xz
 Source1:        baselibs.conf
 # W3C Conformance tests
 Source2:        https://www.w3.org/XML/Test/xmlts20080827.tar.gz
@@ -43,25 +43,8 @@ Patch0:         libxml2-python3-unicode-errors.patch
 # PATCH-FIX-UPSTREAM libxml2-python3-string-null-check.patch bsc#1065270 mgorse@suse.com
 # https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/15
 Patch1:         libxml2-python3-string-null-check.patch
-
-#
-### -- openSUSE patches range from 1000 to 1999 -- ###
-# PATCH-FIX-OPENSUSE
-#Patch1000:
-#
-### -- SUSE patches starts from 2000 -- ###
-## TODO -- Is libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch really
-## SUSE-specific? If so, shouldn't it be applied only for SLE distributions?
-# PATCH-FIX-SUSE bsc#1135123 Added a new configurable variable XPATH_DEFAULT_MAX_NODESET_LENGTH to avoid nodeset limit
-Patch2000:      libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
-# CVE-2025-6170 [bsc#1244700], stack buffer overflow may lead to a crash|CVE-2025-6021 [bsc#1244580], Integer Overflow in xmlBuildQName() Leads to Stack Buffer Overflow in libxml2
-Patch2001:      libxml2-CVE-2025-6170,6021.patch
-# CVE-2025-49794 [bsc#1244554], heap use after free (UAF) can lead to Denial of service (DoS)|CVE-2025-49796 [bsc#1244557], type confusion may lead to Denial of service (DoS)
-Patch2002:      libxml2-CVE-2025-49794,49796.patch
-# CVE-2025-49795 [bsc#1244555], null pointer dereference may lead to Denial of service (DoS)
-Patch2003:      libxml2-CVE-2025-49795.patch
 # CVE-2025-7425 [bsc#1246296], Heap Use-After-Free in libxslt caused by atype corruption in xmlAttrPtr
-Patch2004:      libxml2-CVE-2025-7425.patch
+Patch2:         libxml2-CVE-2025-7425.patch
 #
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -136,6 +119,8 @@ applications that want to make use of libxml.
 %package doc
 Summary:        Documentation for libxml, an XML manipulation library
 Requires:       %{libname} = %{version}
+# some doc was wrongly in a slpp package
+Conflicts:      libxml2-2 < 2.14
 BuildArch:      noarch
 
 %description doc
@@ -235,8 +220,6 @@ rm -rf xmlconf/ # remove the conformance tests afterwards
 %files -n %{libname}
 %{_libdir}/lib*.so.*
 %license Copyright
-%doc %dir %{_docdir}/%{base_name}
-%doc %{_docdir}/%{base_name}/[ANRCT]*
 
 # the -n %%base_name tag is necessary so that python_subpackages does not interfere
 %files -n %{base_name}-tools
@@ -247,8 +230,6 @@ rm -rf xmlconf/ # remove the conformance tests afterwards
 
 %files -n %{base_name}-devel
 %{_bindir}/xml2-config
-%dir %{_datadir}/aclocal
-%{_datadir}/aclocal/libxml.m4
 %{_includedir}/libxml
 %{_includedir}/libxml2
 %{_libdir}/lib*.so
@@ -257,6 +238,8 @@ rm -rf xmlconf/ # remove the conformance tests afterwards
 %{_mandir}/man1/xml2-config.1%{?ext_man}
 
 %files -n %{base_name}-doc
+%doc %dir %{_docdir}/%{base_name}
+%doc %{_docdir}/%{base_name}/[ANRCT]*
 %{_datadir}/gtk-doc/html/*
 %doc %{_docdir}/%{base_name}/*.html
 # owning these directories prevents gtk-doc <-> libxml2 build loop:
