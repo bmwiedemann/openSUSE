@@ -1,7 +1,7 @@
 #
 # spec file for package sysstat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sysstat
-Version:        12.7.7
+Version:        12.7.8
 Release:        0
 Summary:        Sar and Iostat Commands for Linux
 License:        GPL-2.0-or-later
