@@ -16,14 +16,14 @@
 #
 
 Name:           rqlite
-Version:        9.1.0
+Version:        9.1.2
 Release:        0
 Summary:        Distributed relational database built on SQLite
 License:        MIT
 URL:            https://rqlite.io/
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-BuildRequires:  go >= 1.22.0
+BuildRequires:  go >= 1.25.0
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sqlite3)
