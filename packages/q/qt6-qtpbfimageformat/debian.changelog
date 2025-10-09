@@ -1,3 +1,9 @@
+qt5-pbf-image-plugin (5.1) stable; urgency=low
+
+  * Fixed path labels layout/positioning.
+
+ -- Martin Tuma <tumic@cbox.cz>  Thu, 09 Oct 2025 08:19:01 +0200
+
 qt5-pbf-image-plugin (5.0) stable; urgency=low
 
   * Added support for multiple styles.
