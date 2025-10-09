@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Oct 09 05:15:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.137.0:
+  * Revert "fix(deps): update module
+    github.com/snowflakedb/gosnowflake to v1.16.0" (#43045)
+  * Update module github.com/google/go-github/v74 to v75 (#42875)
+  * Update module github.com/snowflakedb/gosnowflake to v1.17.0
+    (#43073)
+  * [chore][telemetrygen] Fix flaky test
+    TestExponentialHistogramMetricGeneration (#42862)
+  * [chore][telemetrygen] Fix traces count in traces integration
+    test (#42850)
+  * [cmd/telemetrygen] Add span links support to telemetrygen
+    (#43007)
+  * [cmd/telemetrygen] fix int and bool log attribute export
+    (#43091)
+  * fix(deps): update all github.com/googlecloudplatform packages
+    (#43064)
+  * fix(deps): update module github.com/datadog/agent-payload/v5 to
+    v5.0.165 (#42832)
+  * fix(deps): update module
+    github.com/datadog/datadog-api-client-go/v2 to v2.47.0 (#43087)
+  * fix(deps): update module github.com/datadog/datadog-go/v5 to
+    v5.8.0 (#43065)
+  * fix(deps): update module
+    github.com/envoyproxy/go-control-plane/envoy to v1.35.0
+    (#43066)
+  * fix(deps): update module github.com/hetznercloud/hcloud-go/v2
+    to v2.24.0 (#42841)
+  * fix(deps): update module github.com/hetznercloud/hcloud-go/v2
+    to v2.25.1 (#43069)
+  * fix(deps): update module
+    github.com/huaweicloud/huaweicloud-sdk-go-v3 to v0.1.169
+    (#42834)
+  * fix(deps): update module
+    github.com/huaweicloud/huaweicloud-sdk-go-v3 to v0.1.170
+    (#43060)
+  * fix(deps): update module github.com/ibm/sarama to v1.46.1
+    (#42835)
+  * fix(deps): update module
+    github.com/open-telemetry/otel-arrow/go to v0.43.0 (#43080)
+  * fix(deps): update module github.com/prometheus/common to
+    v0.66.1 (#42848)
+  * fix(deps): update module github.com/prometheus/otlptranslator
+    to v1 (#42876)
+  * fix(deps): update module github.com/sap/go-hdb to v1.14.4
+    (#42836)
+  * fix(deps): update module github.com/sap/go-hdb to v1.14.5
+    (#42881)
+  * fix(deps): update module github.com/scalyr/dataset-go to
+    v0.21.0 (#42853)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to
+    v1.16.0 (#42855)
+  * fix(deps): update module github.com/spf13/cast to v1.10.0
+    (#42856)
+  * fix(deps): update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.1.31 (#42837)
+  * fix(deps): update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.1.32 (#42882)
+  * fix(deps): update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.1.37 (#43061)
+  * fix(deps): update module
+    github.com/testcontainers/testcontainers-go to v0.39.0 (#42857)
+  * fix(deps): update module gitlab.com/gitlab-org/api/client-go to
+    v0.148.0 (#42858)
+  * fix(deps): update module gitlab.com/gitlab-org/api/client-go to
+    v0.148.1 (#43062)
+  * fix(deps): update module go.opentelemetry.io/proto/otlp to
+    v1.8.0 (#42861)
+  * fix(deps): update module google.golang.org/api to v0.249.0
+    (#42865)
+  * fix(deps): update module google.golang.org/api to v0.250.0
+    (#43070)
+  * fix(deps): update module google.golang.org/api to v0.251.0
+    (#43088)
+  * fix(deps): update module gotest.tools/gotestsum to v1.13.0
+    (#42866)
+  * fix(deps): update module modernc.org/sqlite to v1.39.0 (#42868)
+  * fix(deps): update opentelemetry-go monorepo (#42869)
+
+-------------------------------------------------------------------
 Tue Sep 23 05:54:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.136.0:

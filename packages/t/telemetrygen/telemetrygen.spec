@@ -17,14 +17,14 @@
 
 
 Name:           telemetrygen
-Version:        0.136.0
+Version:        0.137.0
 Release:        0
 Summary:        Telemetry generator for OpenTelemetry
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-collector-contrib
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.24
 
 %description
 This utility simulates a client generating traces, metrics, and logs. It is
