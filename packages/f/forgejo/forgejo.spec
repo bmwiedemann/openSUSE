@@ -1,6 +1,7 @@
 #
 # spec file for package forgejo
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -49,6 +50,8 @@ Source13:       forgejo-hooks-abstraction.apparmor
 Source14:       node_modules.sums
 Source99:       README.SUSE
 Patch0:         custom-app.ini.patch
+Patch1:         fix-CVE-2025-58190.patch
+Patch2:         fix-CVE-2025-47911.patch
 BuildRequires:  golang(API) >= 1.24
 ## node >= 20
 %if 0%{?suse_version} == 1500
