@@ -115,4 +115,12 @@
     <comment>- fix version to something simpler (forwarded request 1306061 from rrahl0)</comment>
     <requestid>1306062</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3e653b82cec89ac8319f6f7ee27a2b9c</srcmd5>
+    <version>0.11.0</version>
+    <time>1760015227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309951</requestid>
+  </revision>
 </revisionlist>

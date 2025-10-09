@@ -1,6 +1,7 @@
 #
 # spec file for package gitea-tea
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,6 +25,8 @@ License:        MIT
 URL:            https://gitea.com/gitea/tea
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Patch0:         fix-CVE-2025-58190.patch
+Patch1:         fix-CVE-2025-47911.patch
 BuildRequires:  golang(API) >= 1.24
 Conflicts:      tea
 

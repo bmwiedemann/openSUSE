@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  9 10:16:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add fix-CVE-2025-58190.patch, fixing bsc#1251663
+- add fix-CVE-2025-47911.patch, fixing bsc#1251471
+
+-------------------------------------------------------------------
 Fri Sep 19 20:33:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix version to something simpler
