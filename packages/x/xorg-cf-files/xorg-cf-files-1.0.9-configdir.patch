@@ -1,0 +1,13 @@
+Index: xorg-cf-files-1.0.9/X11.tmpl
+===================================================================
+--- xorg-cf-files-1.0.9.orig/X11.tmpl
++++ xorg-cf-files-1.0.9/X11.tmpl
+@@ -1487,7 +1487,7 @@ FCHOWN_DEFINES = -DHAS_FCHOWN
+ #endif
+ #endif
+ #ifndef ConfigDir
+-#define ConfigDir $(LIBDIR)/config
++#define ConfigDir $(SHAREDIR)/config
+ #endif
+ #ifndef DocDir
+ #define DocDir $(LIBDIR)/doc

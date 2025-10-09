@@ -24,6 +24,8 @@ License:        MIT
 Group:          Development/Tools/Building
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE margueite@opensuse.org imake look templates in /usr/share/X11/config, not /usr/lib/X11/config
+Patch0:         %{name}-%{version}-configdir.patch
 BuildRequires:  font-util >= 1.1
 BuildRequires:  meson
 BuildRequires:  pkgconfig(xorg-macros) >= 1.4

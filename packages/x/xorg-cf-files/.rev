@@ -162,4 +162,12 @@
 - supersedes u_xorg-cf-files-D_DEFAULT_SOURCE.patch</comment>
     <requestid>1303218</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>8f0d419dfa122cedd7b2b696e341e544</srcmd5>
+    <version>1.0.9</version>
+    <time>1760015021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309825</requestid>
+  </revision>
 </revisionlist>

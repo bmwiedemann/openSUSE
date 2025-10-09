@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  2 13:52:53 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- add xorg-cf-files-1.0.9-configdir.patch
+  * imake should look /usr/share/X11/config, not /usr/lib/X11/config
+
+-------------------------------------------------------------------
 Mon Sep  8 13:29:27 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.9
