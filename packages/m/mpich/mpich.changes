@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 25 06:59:00 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Remove romio-disable-tests.patch to reenable tests in OBS.
+- Add romio-test-fix-bad-snprintf-arguments.patch to fix a test
+  issue when building with FORTIFY_SOURCE
+- Fix dependency from '*testsuite' packages to BuildRequires '*-devel'
+
+-------------------------------------------------------------------
 Sun Jun 22 17:39:27 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to 4.3.1

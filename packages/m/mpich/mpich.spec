@@ -1,7 +1,7 @@
 #
 # spec file for package mpich
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,7 +82,7 @@ Source2:        mpivars.csh
 Source100:      _multibuild
 Patch1:         autogen-only-deal-with-json-yaksa-if-enabled.patch
 Patch2:         autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch
-Patch3:         romio-disable-tests.patch
+Patch3:         romio-test-fix-bad-snprintf-arguments.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  fdupes
@@ -123,7 +123,7 @@ Requires:       mpi-selector
 Requires(preun): mpi-selector
 
 %if 0%{?testsuite}
-BuildRequires:  %package_name = %{version}
+BuildRequires:  %package_name-devel = %{version}
 %endif
 
 %description
