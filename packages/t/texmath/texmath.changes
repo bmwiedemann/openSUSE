@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  5 15:13:14 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.13.0.1.
+  texmath (0.13.0.1)
+
+    * TeX reader: fix parsing of primes (#273).
+      We previously misparsed `a_i'` as `a_{i'}` rather than `{a_i}'`.
+
+    * Typst writer: fix position of primes with ESubSup.
+      In typst, unlike tex, the primes must come after the base.
+
+-------------------------------------------------------------------
 Wed Sep  3 19:49:45 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.13.
