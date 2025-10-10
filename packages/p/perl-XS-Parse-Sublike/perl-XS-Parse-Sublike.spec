@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XS-Parse-Sublike
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,23 @@
 
 %define cpan_name XS-Parse-Sublike
 Name:           perl-XS-Parse-Sublike
-Version:        0.370.0
+Version:        0.390.0
 Release:        0
-# 0.37 -> normalize -> 0.370.0
-%define cpan_version 0.37
+# 0.39 -> normalize -> 0.390.0
+%define cpan_version 0.39
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS functions to assist in parsing sub-like syntax
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::CBuilder)
-BuildRequires:  perl(File::ShareDir) >= 1.0.0
-BuildRequires:  perl(Module::Build) >= 0.4004
+BuildRequires:  perl(File::ShareDir) >= 1.0
+BuildRequires:  perl(Module::Build) >= 0.400.400
 BuildRequires:  perl(Sub::Util)
 BuildRequires:  perl(Test2::V0)
-Requires:       perl(File::ShareDir) >= 1.0.0
+Requires:       perl(File::ShareDir) >= 1.0
 Provides:       perl(Sublike::Extended) = %{version}
 Provides:       perl(XS::Parse::Sublike) = %{version}
 Provides:       perl(XS::Parse::Sublike::Builder) = %{version}
@@ -53,7 +54,7 @@ evolving and subject to change. Later versions may break ABI compatibility,
 requiring changes or at least a rebuild of any module that depends on it.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor optimize="%{optflags}"

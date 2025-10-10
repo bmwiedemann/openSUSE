@@ -15,4 +15,21 @@
     <comment></comment>
     <requestid>1244961</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a28689b52704e9e4693cebe7e6379cf</srcmd5>
+    <version>0.390.0</version>
+    <time>1760109097</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.390.0 (0.39)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+  0.39    2025-09-12
+          [BUGFIXES]
+           * Make sure to set `B::Deparse`'s -&gt;ambient_pragmas when running
+             deparse tests (https://github.com/Perl/perl5/issues/23674)
+  0.38    2025-08-08
+          [BUGFIXES]
+           * Improvements to handling of anonymous parameters or missing
+             defaulting expressions in subroutine signature parsing (RT168812)</comment>
+    <requestid>1310531</requestid>
+  </revision>
 </revisionlist>

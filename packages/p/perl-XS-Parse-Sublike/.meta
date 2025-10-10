@@ -12,6 +12,5 @@ evolving and subject to change. Later versions may break ABI compatibility,
 requiring changes or at least a rebuild of any module that depends on it.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-XS-Parse-Sublike"/>
   <url>https://metacpan.org/release/XS-Parse-Sublike</url>
 </package>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:54:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.390.0 (0.39)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+
+  0.39    2025-09-12
+          [BUGFIXES]
+           * Make sure to set `B::Deparse`'s ->ambient_pragmas when running
+             deparse tests (https://github.com/Perl/perl5/issues/23674)
+
+  0.38    2025-08-08
+          [BUGFIXES]
+           * Improvements to handling of anonymous parameters or missing
+             defaulting expressions in subroutine signature parsing (RT168812)
+
+-------------------------------------------------------------------
 Sat Feb  8 05:30:24 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.370.0 (0.37)
