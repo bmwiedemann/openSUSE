@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 25 08:08:50 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Modified NetworkManager-autofs: (bsc#1250091)
+  * don't reload autofs.service on loopback interface changes
+  * add --no-block option to request asynchronous behavior
+
+-------------------------------------------------------------------
 Wed Sep 24 09:31:24 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Drop rcautofs symlink [jsc#PED-266]

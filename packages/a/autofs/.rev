@@ -1196,4 +1196,12 @@ Update 5.0.6 upstream patches to 20111210 (bnc#741878)</comment>
     <comment></comment>
     <requestid>1306891</requestid>
   </revision>
+  <revision rev="141" vrev="10">
+    <srcmd5>2c487e83a2ddfe97124e14fa08f1ff61</srcmd5>
+    <version>5.1.9</version>
+    <time>1760108870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309984</requestid>
+  </revision>
 </revisionlist>

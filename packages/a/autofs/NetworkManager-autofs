@@ -4,10 +4,24 @@
 #
 # Matthias Koenig <mkoenig@suse.de>
 #
-case "$2" in
+interface="$1"
+action="$2"
+
+is_loopback() {
+	local type_path="/sys/class/net/$interface/type"
+	local interface_type=$(<"$type_path")
+
+	if [ -f "$type_path" ] && [ "$interface_type" -eq 772 ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+case "$action" in
     up)
-        if test -x /usr/bin/systemctl && systemctl -q is-enabled autofs.service; then
-                systemctl reload autofs.service
+        if ! is_loopback && test -x /usr/bin/systemctl && systemctl -q is-enabled autofs.service; then
+                systemctl --no-block reload autofs.service
         fi
         ;;
     *)
