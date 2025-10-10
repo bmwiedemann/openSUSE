@@ -93,4 +93,16 @@
 - Update Requires from pyproject.toml (forwarded request 1309264 from glaubitz)</comment>
     <requestid>1309269</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>add50256cca4d925e723a7cc91a488e2</srcmd5>
+    <version>3.0.1</version>
+    <time>1760108983</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop workaround to remove samples and tests from source (forwarded request 1309966 from glaubitz)</comment>
+    <requestid>1310395</requestid>
+  </revision>
 </revisionlist>
