@@ -1564,4 +1564,12 @@ Enable cycles-osl in build</comment>
   Allow building with OCIO 2.5.0</comment>
     <requestid>1309291</requestid>
   </revision>
+  <revision rev="196" vrev="3">
+    <srcmd5>933459b18d7672cfa186e88c2adbed50</srcmd5>
+    <version>4.5.3</version>
+    <time>1760109087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1310524</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 10 09:50:36 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- We already forced ffmpeg-7 indirectly for older distros
+  and now that ffmpeg-8 is there we need to also force it for
+  Tumbleweed for now. So do it explicitely in the spec file.
+
+-------------------------------------------------------------------
 Mon Oct  6 10:33:34 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - add b49b026b8eb6b289c59ff9ecb741f52531c22170.patch:
