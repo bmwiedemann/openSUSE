@@ -5935,4 +5935,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>chromium 141.0.7390.65 (boo#1251334)</comment>
     <requestid>1309791</requestid>
   </revision>
+  <revision rev="482" vrev="1">
+    <srcmd5>2c927a793cf488cd35947b0fb1976490</srcmd5>
+    <version>141.0.7390.76</version>
+    <time>1760108999</time>
+    <user>dimstar_suse</user>
+    <comment>chromium 141.0.7390.76</comment>
+    <requestid>1310400</requestid>
+  </revision>
 </revisionlist>

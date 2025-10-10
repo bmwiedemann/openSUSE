@@ -118,12 +118,13 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        141.0.7390.65
+Version:        141.0.7390.76
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
 Source0:        https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/%{version}/chromium-%{version}-linux.tar.xz
+NoSource:       0
 # https://github.com/evanw/esbuild/archive/refs/tags/v%%{esbuild_version}.tar.gz
 Source1:        esbuild-%{esbuild_version}.tar.gz
 Source2:        esbuild-%{esbuild_version}-vendor.tar.gz

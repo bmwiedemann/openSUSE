@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  9 21:12:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 141.0.7390.76:
+  * Do not send URLs as AIM input. This is to resolve a privacy
+    concern, around passing urls to AI Mode.
+
+-------------------------------------------------------------------
+Thu Oct  9 08:53:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- exclude the main tarball from the src.rpm to reduce size
+  (it is anyway fully referenced, so no supply chain concern)
+
+-------------------------------------------------------------------
 Wed Oct  8 12:04:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 141.0.7390.65 (boo#1251334):
