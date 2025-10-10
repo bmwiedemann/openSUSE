@@ -129,4 +129,12 @@ Pushing GNOME 45.rc packages</comment>
     unresponsive (forwarded request 1279861 from iznogood)</comment>
     <requestid>1280050</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3fe8fef27128c0abfd013678d18f28e9</srcmd5>
+    <version>49.1</version>
+    <time>1760109118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1310566</requestid>
+  </revision>
 </revisionlist>

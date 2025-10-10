@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 10 11:16:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Start calls as part of gnome-session
+  + Make use of DBus activation
+  + oFono backends now supports USSD
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat May 24 19:17:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.2:
