@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/ioan-chera/eureka-editor.git</param>
-    <param name="revision">refs/tags/eureka-2.0.2</param>
+    <param name="revision">refs/tags/eureka-2.1.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">eureka-(.*)</param>
     <param name="changesgenerate">disable</param>

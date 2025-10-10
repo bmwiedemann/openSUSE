@@ -1,6 +1,7 @@
 #
 # spec file for package eureka
 #
+# Copyright (c) 2025 Sean Baggaley
 # Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,15 +17,14 @@
 #
 
 Name:           eureka
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        A map editor for Doom engine games
 License:        GPL-2.0-or-later
 URL:            https://eureka-editor.sourceforge.net/
 Source:         eureka-editor-%{version}.tar.gz
-# Both of these patches are from upstream and can be removed with the next version.
-Patch0:         cmake-duplicate-cxxflags-fix.patch
-Patch1:         check-system-return-value.patch
+# https://github.com/ioan-chera/eureka-editor/pull/268
+Patch0:         0001-Fixed-aarch64-not-being-detected-as-little-endian-26.patch
 BuildRequires:  cmake >= 3.13
 # Leap 15 requires a newer GCC to fix a bunch of std::optional-related errors
 %if 0%{?suse_version} < 1600
@@ -35,6 +35,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  fltk-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(gtest)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(zlib)
 
@@ -50,9 +53,7 @@ export CC=gcc-12
 export CXX=g++-12
 %endif
 
-# Eureka wants to clone googletest via git, but build environments don't have internet access,
-# and trying to force it to use the system gtest requires more patches and ends up causing more problems...
-%cmake -DENABLE_UNIT_TESTS=OFF
+%cmake -DUSE_SYSTEM_FLTK=ON -DUSE_SYSTEM_GOOGLE_TEST=ON
 %cmake_build
 
 %install
@@ -60,6 +61,9 @@ export CXX=g++-12
 
 install -Dpm 0644 misc/eureka.desktop %{buildroot}%{_datadir}/applications/eureka.desktop
 install -Dpm 0644 misc/eureka.xpm %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/eureka.xpm
+
+%check
+%ctest
 
 %files
 %license GPL.txt

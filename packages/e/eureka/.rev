@@ -7,4 +7,14 @@
     <comment>New package eureka, a level editor for Doom engine games</comment>
     <requestid>1271089</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>45bf5d61f80a82a337f96f2b9517304b</srcmd5>
+    <version>2.1.0</version>
+    <time>1760109112</time>
+    <user>dimstar_suse</user>
+    <comment>- Eureka 2.1.0
+- Add testing to the rpm build now that Eureka can use system-provided googletest
+- Add a patch that fixes endianness detection for aarch64, without which everything is broken</comment>
+    <requestid>1310554</requestid>
+  </revision>
 </revisionlist>
