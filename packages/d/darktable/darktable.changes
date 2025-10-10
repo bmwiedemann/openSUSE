@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  9 19:00:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- apply darktable-fix-build-clang21.patch unconditionally
+
+-------------------------------------------------------------------
+Sat Oct  4 12:37:36 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Add darktable-fix-build-clang21.patch (gh#darktable-org/darktable#19314)
+
+-------------------------------------------------------------------
 Fri Aug 15 14:20:13 UTC 2025 - Šarūnas Burdulis <sarunas.burdulis@yahoo.com>
 
 - Update tp version 5.2.1:

@@ -135,6 +135,8 @@ Source99:       README.openSUSE
 #
 Patch0:         darktable-rawspeed-build-type-override.patch
 #
+# PATCH-FIX-UPSTREAM - Fix build with clang-21
+Patch1:         darktable-fix-build-clang21.patch
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
 BuildRequires:  clang >= 13
