@@ -94,4 +94,41 @@
   * Flash loader: fix missing import of RamRegion</comment>
     <requestid>1223445</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>564a5bf43e7027ccc1c12e41d653ee1a</srcmd5>
+    <version>0.39.0</version>
+    <time>1760109121</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.39.0:
+  * CMSIS-Toolbox Run and Debug Management integration:
+  * Set debugger protocol based on information from `*.cbuild-
+    run.yml` file
+  * Set output file type based on information from `*.cbuild-
+    run.yml` file
+  * Raise critical error if `*.cbuild-run.yml` file path is
+    invalid
+  * Show warning when packs required by`*.cbuild-run.yml` file
+    are missing
+  * Improve TransferError Exception messages to be more
+    descriptive
+  * Increase number of transfer retries after WAIT response
+  * Probe: more reliable probe detection when probe is connected
+    after pyOCD is started
+- update to 0.38.0:
+  * Add CoreSight AP specific CSW handling for AHB-AP, AXI-AP,
+    APB-AP
+  * Add more debug logging information for `cbuild-run` targets
+  * Add support for SW breakpoints when cache is present
+  * Cortex-M: configure AP for cacheable access when cache is
+    present
+  * Flash algorithms: relax memory layout rules and add RAM
+    alignment and minimum stack size checking
+- update to 0.37.0:
+  * With this release, Python 3.7 is no longer supported. The
+    minimum Python version is now 3.8.0.
+  * CMSIS-Toolbox Run and Debug Management integration:
+  * add a `--cbuild-run` option across subcommands
+  * select target based on `cbuild-run`</comment>
+    <requestid>1310583</requestid>
+  </revision>
 </revisionlist>
