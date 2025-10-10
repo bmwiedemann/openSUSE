@@ -19,13 +19,12 @@
 %global pkg_name cpphs
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        1.20.9.1
+Version:        1.20.10
 Release:        0
 Summary:        A liberalised re-implementation of cpp, the C pre-processor
 License:        GPL-2.0-only AND LGPL-2.1-only
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/2.cabal#/%{name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -47,6 +46,8 @@ This version of the C pre-processor is pretty-much feature-complete and
 compatible with traditional (K&R) pre-processors. Additional features include:
 a plain-text mode; an option to unlit literate code files; and an option to
 turn off macro-expansion.
+
+Old homepage: <https://archives.haskell.org/projects.haskell.org/cpphs/>.
 
 %package -n ghc-%{name}
 Summary:        Haskell %{name} library
@@ -86,8 +87,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
-find . -type f -exec chmod -x {} +
 
 %build
 %ghc_lib_build
@@ -103,14 +102,14 @@ find . -type f -exec chmod -x {} +
 
 %files
 %license LICENCE-LGPL
-%doc CHANGELOG LICENCE-GPL LICENCE-commercial README docs
+%doc CHANGELOG.md LICENCE-GPL LICENCE-commercial README.md docs
 %{_bindir}/%{name}
 
 %files -n ghc-%{name} -f ghc-%{name}.files
 %license LICENCE-LGPL
 
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
-%doc CHANGELOG LICENCE-GPL LICENCE-commercial README docs
+%doc CHANGELOG.md LICENCE-GPL LICENCE-commercial README.md docs
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENCE-LGPL

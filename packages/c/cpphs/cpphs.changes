@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 14 15:58:20 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update cpphs to version 1.20.10.
+  * Drop support for GHC 7.
+  * Remove cabal flag `old-locale`.
+  * Compatibility with `{-# LANGUAGE RecordDotSyntax #-}` (Lennart Augustsson).
+  * Build tested with GHC 8.0 - 9.14 alpha1.
+  * bugfixes for `#if defined(FOO) && FOO(a,b)`
+  * ensure all input/output is UTF8, regardless of locale
+  * bugfix for windows drive letter in #include
+
+-------------------------------------------------------------------
 Sat May 17 07:04:51 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update cpphs to version 1.20.9.1 revision 2.
@@ -17,9 +29,9 @@ Wed Nov  3 15:45:50 UTC 2021 - psimons@suse.com
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Tue Aug 18 10:43:44 UTC 2020 - Peter Simons <psimons@suse.com>
 
@@ -29,4 +41,3 @@ Tue Aug 18 10:43:44 UTC 2020 - Peter Simons <psimons@suse.com>
 Tue Jun 23 09:31:49 UTC 2020 - psimons@suse.com
 
 - Add cpphs at version 1.20.9.1.
-
