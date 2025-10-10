@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  9 14:23:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.26.0
+  * Add trove classifier for Python 3.14 (#842)
+- from version 2.25.2
+  * Deprecate credentials_file argument (#841)
+  * Fix async tests and round-off error in test expectations (#837)
+
+-------------------------------------------------------------------
 Mon Jun 16 08:16:14 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.25.1

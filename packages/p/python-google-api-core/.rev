@@ -432,4 +432,16 @@
     <comment></comment>
     <requestid>1295076</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6c8c87ff61d07d059594281f5fcead06</srcmd5>
+    <version>2.26.0</version>
+    <time>1760108969</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.26.0
+  * Add trove classifier for Python 3.14 (#842)
+- from version 2.25.2
+  * Deprecate credentials_file argument (#841)
+  * Fix async tests and round-off error in test expectations (#837) (forwarded request 1310017 from glaubitz)</comment>
+    <requestid>1310031</requestid>
+  </revision>
 </revisionlist>
