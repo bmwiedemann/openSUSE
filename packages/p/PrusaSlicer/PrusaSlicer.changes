@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  9 11:21:20 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Disable build on RISC-V: Extensive resource requirement. If any
+  user comes up with a legitimate need to start the slicer on a
+  RISC-V machine, we might need to adjust the constraints.
+  See also gh#openSUSE/obs-docu#431
+
+-------------------------------------------------------------------
 Fri Oct  3 10:22:44 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Boost 1.89 compatibility:

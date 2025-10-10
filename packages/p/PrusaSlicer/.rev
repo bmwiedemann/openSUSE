@@ -522,4 +522,16 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     PrusaSlicer-2.9.3-boost-1.89.0-asio.patch</comment>
     <requestid>1308858</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>676f85c96a710d8d21b38c128cfa687f</srcmd5>
+    <version>2.9.3</version>
+    <time>1760108920</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable build on RISC-V: Extensive resource requirement. If any
+  user comes up with a legitimate need to start the slicer on a
+  RISC-V machine, we might need to adjust the constraints.
+  See also gh#openSUSE/obs-docu#431
+</comment>
+    <requestid>1309981</requestid>
+  </revision>
 </revisionlist>
