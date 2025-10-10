@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:00:55 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+* VERSION 6.1 Patch 5 - 2025-10-09
+
+- BUG FIX: remind: Yet another bug in TZ handling was fixed.  I hope this
+  is the final TZ bug; the test suite has had a large number of TZ tests
+  added.
+
+- IMPROVEMENT: remind: If the directory /usr/share/zoneinfo exists, Remind
+  warns about time zone names that look invalid.  You can override the
+  warning by prefixing your time zone name with "!" if you want to use
+  non-file-based time zone names like "UTC+0400".
+
+- MINOR IMPROVEMENTS: A couple of man page typos were fixed.
+
+* VERSION 6.1 Patch 4 - 2025-10-08
+
+- BUG FIX: remind: In calendar mode, reminders that specify a TZ zone
+  that is *behind* the system time zone could sometimes not show up.
+  The bug has been fixed; thanks to Jin Chen for reporting it.
+
+- CHANGE: remind: Any time Remind runs another program (for example,
+  in response to REM ... RUN, the shell() command, the -k option, or
+  INCLUDECMD) it connects that command's standard input to /dev/null
+  so that it cannot interfere with the main Remind process's standard
+  input.
+
+- BUG FIX: remind: Don't set up an inotify file descriptor if we are
+  not running in Daemon Mode.
+
+- MINOR IMPROVEMENT: remind: When using readline to read from a
+  terminal, include the line number in the Remind> prompt.
+
+- IMPROVEMENT: lang/*.rem: Suppress redefined function warnings if you
+  include one language file and then later on a different one.
+
+- IMPROVEMENT: remind: Make the output of "make test" slightly more
+  verbose; color-code the PASS and FAIL results if standard output
+  refers to a terminal.
+
+- CHANGE: include/holidays/*.rem: Add %"..%" markers and %! %b
+  suffixes to all reminders.  This prevents you from having to use the
+  msgsuffix() hack if you want advance warning of holidays.
+
+  If you *are* using the msgsuffix() hack, you should stop using it!
+  Just set $DefaultDelta.  See include/holidays/README for details.
+
+-------------------------------------------------------------------
 Wed Oct  1 08:39:00 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 * VERSION 6.1 Patch 3 - 2025-09-30

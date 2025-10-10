@@ -886,4 +886,41 @@
   This is now fixed.  Bug pointed out by Tim Chase.</comment>
     <requestid>1308340</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>74014d536bbe3be74c105ba2d92c7a8e</srcmd5>
+    <version>6.1.5</version>
+    <time>1760108992</time>
+    <user>dimstar_suse</user>
+    <comment>* VERSION 6.1 Patch 5 - 2025-10-09
+- BUG FIX: remind: Yet another bug in TZ handling was fixed.  I hope this
+  is the final TZ bug; the test suite has had a large number of TZ tests
+  added.
+- IMPROVEMENT: remind: If the directory /usr/share/zoneinfo exists, Remind
+  warns about time zone names that look invalid.  You can override the
+  warning by prefixing your time zone name with &quot;!&quot; if you want to use
+  non-file-based time zone names like &quot;UTC+0400&quot;.
+- MINOR IMPROVEMENTS: A couple of man page typos were fixed.
+* VERSION 6.1 Patch 4 - 2025-10-08
+- BUG FIX: remind: In calendar mode, reminders that specify a TZ zone
+  that is *behind* the system time zone could sometimes not show up.
+  The bug has been fixed; thanks to Jin Chen for reporting it.
+- CHANGE: remind: Any time Remind runs another program (for example,
+  in response to REM ... RUN, the shell() command, the -k option, or
+  INCLUDECMD) it connects that command's standard input to /dev/null
+  so that it cannot interfere with the main Remind process's standard
+  input.
+- BUG FIX: remind: Don't set up an inotify file descriptor if we are
+  not running in Daemon Mode.
+- MINOR IMPROVEMENT: remind: When using readline to read from a
+  terminal, include the line number in the Remind&gt; prompt.
+- IMPROVEMENT: lang/*.rem: Suppress redefined function warnings if you
+  include one language file and then later on a different one.
+- IMPROVEMENT: remind: Make the output of &quot;make test&quot; slightly more
+  verbose; color-code the PASS and FAIL results if standard output
+  refers to a terminal.
+- CHANGE: include/holidays/*.rem: Add %&quot;..%&quot; markers and %! %b
+  suffixes to all reminders.  This prevents you from having to use the
+  msgsuffix() hack if you want advance warning of holidays.</comment>
+    <requestid>1310387</requestid>
+  </revision>
 </revisionlist>
