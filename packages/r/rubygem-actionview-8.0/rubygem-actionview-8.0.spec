@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-actionview-8.0
-Version:        8.0.2.1
+Version:        8.0.3
 Release:        0
 %define mod_name actionview
 %define mod_full_name %{mod_name}-%{version}
