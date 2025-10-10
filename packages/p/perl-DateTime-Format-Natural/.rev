@@ -120,4 +120,17 @@
    - Un-exclude Duration::Checks in pod{-coverage}.t.</comment>
     <requestid>1282003</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d5c63a8de4c0e25cec950501bf588357</srcmd5>
+    <version>1.220.0</version>
+    <time>1760109107</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.220.0 (1.22)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+  1.22  2025-10-01  &lt;schubiger@cpan.org&gt;
+   - Merged development version to stable.
+  1.21_01  2025-08-20  &lt;schubiger@cpan.org&gt;
+   - ::Extract: minor tweaks.</comment>
+    <requestid>1310542</requestid>
+  </revision>
 </revisionlist>

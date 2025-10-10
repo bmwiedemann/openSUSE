@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-Natural
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name DateTime-Format-Natural
 Name:           perl-DateTime-Format-Natural
-Version:        1.210.0
+Version:        1.220.0
 Release:        0
-# 1.21 -> normalize -> 1.210.0
-%define cpan_version 1.21
+# 1.22 -> normalize -> 1.220.0
+%define cpan_version 1.22
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse informal natural language date/time strings
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SC/SCHUBIGER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -35,7 +36,7 @@ BuildRequires:  perl(DateTime)
 BuildRequires:  perl(DateTime::HiRes)
 BuildRequires:  perl(DateTime::TimeZone)
 BuildRequires:  perl(List::Util) >= 1.33
-BuildRequires:  perl(Module::Build) >= 0.42
+BuildRequires:  perl(Module::Build) >= 0.420
 BuildRequires:  perl(Module::Util)
 BuildRequires:  perl(Params::Validate) >= 1.150
 BuildRequires:  perl(Test::MockTime::HiRes)
@@ -53,7 +54,7 @@ Provides:       perl(DateTime::Format::Natural::Compat) = 0.70.0
 Provides:       perl(DateTime::Format::Natural::Duration) = 0.80.0
 Provides:       perl(DateTime::Format::Natural::Duration::Checks) = 0.70.0
 Provides:       perl(DateTime::Format::Natural::Expand) = 0.40.0
-Provides:       perl(DateTime::Format::Natural::Extract) = 0.130.0
+Provides:       perl(DateTime::Format::Natural::Extract) = 0.140.0
 Provides:       perl(DateTime::Format::Natural::Formatted) = 0.120.0
 Provides:       perl(DateTime::Format::Natural::Helpers) = 0.60.0
 Provides:       perl(DateTime::Format::Natural::Lang::Base) = 1.80.0
@@ -72,7 +73,7 @@ strings. In addition, parsable date/time substrings may be extracted from
 ordinary strings.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

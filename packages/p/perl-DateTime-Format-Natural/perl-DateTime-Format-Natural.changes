@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  9 19:58:02 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.220.0 (1.22)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.22  2025-10-01  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.21_01  2025-08-20  <schubiger@cpan.org>
+   - ::Extract: minor tweaks.
+
+-------------------------------------------------------------------
 Mon May 19 05:35:13 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.210.0 (1.21)
