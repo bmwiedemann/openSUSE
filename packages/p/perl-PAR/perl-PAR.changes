@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  8 11:56:03 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.21.0 (1.021)
+   see /usr/share/doc/packages/perl-PAR/Changes
+
+  1.021  2025-07-31
+
+  - use three-argument open() everywhere
+  - PAR::FAQ is severely outdated, remove it
+  - README: remove https://groups.google.com/g/perl.par
+    as an archive for par@perl.org (as it will not be updated anymore)
+
+-------------------------------------------------------------------
 Tue Mar  5 03:09:01 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.020

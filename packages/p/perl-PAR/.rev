@@ -149,4 +149,18 @@
     <comment></comment>
     <requestid>1165827</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>72316c842b4ea838a868521052c42876</srcmd5>
+    <version>1.21.0</version>
+    <time>1760109109</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.21.0 (1.021)
+   see /usr/share/doc/packages/perl-PAR/Changes
+  1.021  2025-07-31
+  - use three-argument open() everywhere
+  - PAR::FAQ is severely outdated, remove it
+  - README: remove https://groups.google.com/g/perl.par
+    as an archive for par@perl.org (as it will not be updated anymore)</comment>
+    <requestid>1310548</requestid>
+  </revision>
 </revisionlist>

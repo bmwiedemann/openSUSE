@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PAR
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,33 @@
 
 %define cpan_name PAR
 Name:           perl-PAR
-Version:        1.20.0
+Version:        1.21.0
 Release:        0
-# 1.020 -> normalize -> 1.20.0
-%define cpan_version 1.020
+# 1.021 -> normalize -> 1.21.0
+%define cpan_version 1.021
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl Archive Toolkit
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Archive::Zip) >= 1.00
-BuildRequires:  perl(AutoLoader) >= 5.66_02
+BuildRequires:  perl(Archive::Zip) >= 1.0
+BuildRequires:  perl(AutoLoader) >= 5.66
 BuildRequires:  perl(Compress::Zlib) >= 1.30
 BuildRequires:  perl(Digest::SHA) >= 5.45
-BuildRequires:  perl(PAR::Dist) >= 0.32
-Requires:       perl(Archive::Zip) >= 1.00
-Requires:       perl(AutoLoader) >= 5.66_02
+BuildRequires:  perl(PAR::Dist) >= 0.320
+Requires:       perl(Archive::Zip) >= 1.0
+Requires:       perl(AutoLoader) >= 5.66
 Requires:       perl(Compress::Zlib) >= 1.30
 Requires:       perl(Digest::SHA) >= 5.45
-Requires:       perl(PAR::Dist) >= 0.32
+Requires:       perl(PAR::Dist) >= 0.320
 Provides:       perl(PAR) = %{version}
-Provides:       perl(PAR::Heavy) = 0.12
-Provides:       perl(PAR::SetupProgname) = 1.002
-Provides:       perl(PAR::SetupTemp) = 1.002
+Provides:       perl(PAR::Heavy) = 0.120.0
+Provides:       perl(PAR::SetupProgname) = 1.2.0
+Provides:       perl(PAR::SetupTemp) = 1.2.0
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -85,7 +86,7 @@ _pp_ may also be used as _.par_ archives:
 Please see SYNOPSIS for most typical use cases.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
