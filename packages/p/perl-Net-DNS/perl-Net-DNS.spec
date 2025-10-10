@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-DNS
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.520.0
+Version:        1.530.0
 Release:        0
-# 1.52 -> normalize -> 1.520.0
-%define cpan_version 1.52
+# 1.53 -> normalize -> 1.530.0
+%define cpan_version 1.53
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -85,7 +85,7 @@ Provides:       perl(Net::DNS::Nameserver) = 2002.0.0
 Provides:       perl(Net::DNS::Packet) = 2003.0.0
 Provides:       perl(Net::DNS::Parameters) = 2021.0.0
 Provides:       perl(Net::DNS::Question) = 2002.0.0
-Provides:       perl(Net::DNS::RR) = 2028.0.0
+Provides:       perl(Net::DNS::RR) = 2037.0.0
 Provides:       perl(Net::DNS::RR::A) = 2003.0.0
 Provides:       perl(Net::DNS::RR::AAAA) = 2003.0.0
 Provides:       perl(Net::DNS::RR::AFSDB) = 2002.0.0
@@ -98,7 +98,7 @@ Provides:       perl(Net::DNS::RR::CDS) = 2003.0.0
 Provides:       perl(Net::DNS::RR::CERT) = 2002.0.0
 Provides:       perl(Net::DNS::RR::CNAME) = 2003.0.0
 Provides:       perl(Net::DNS::RR::CSYNC) = 2003.0.0
-Provides:       perl(Net::DNS::RR::DELEG) = 2033.0.0
+Provides:       perl(Net::DNS::RR::DELEG) = 2039.0.0
 Provides:       perl(Net::DNS::RR::DHCID) = 2003.0.0
 Provides:       perl(Net::DNS::RR::DNAME) = 2003.0.0
 Provides:       perl(Net::DNS::RR::DNSKEY) = 2003.0.0
@@ -158,8 +158,8 @@ Provides:       perl(Net::DNS::RR::SOA) = 2002.0.0
 Provides:       perl(Net::DNS::RR::SPF) = 2003.0.0
 Provides:       perl(Net::DNS::RR::SRV) = 2003.0.0
 Provides:       perl(Net::DNS::RR::SSHFP) = 2003.0.0
-Provides:       perl(Net::DNS::RR::SVCB) = 2033.0.0
-Provides:       perl(Net::DNS::RR::TKEY) = 2003.0.0
+Provides:       perl(Net::DNS::RR::SVCB) = 2037.0.0
+Provides:       perl(Net::DNS::RR::TKEY) = 2035.0.0
 Provides:       perl(Net::DNS::RR::TLSA) = 2003.0.0
 Provides:       perl(Net::DNS::RR::TSIG) = 2003.0.0
 Provides:       perl(Net::DNS::RR::TXT) = 2003.0.0
