@@ -2610,4 +2610,57 @@
   docutils (&gt;=0.22) gh#python/cpython#139257</comment>
     <requestid>1308302</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6a5f1c29bb5ddd510de506bb57d8ba25</srcmd5>
+    <version>3.14.0</version>
+    <time>1760108946</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix python314:doc package build with docutils 0.22. Remove the
+  &quot;SPHINXERRORHANDLING = --fail-on-warning&quot; from Doc/Makefile using
+  the gh139257-Support-docutils-0.22.patch.
+- Summary – Release highlights
+  Python 3.14 is the latest stable release of the Python
+  programming language, with a mix of changes to the language,
+  the implementation, and the standard library. The biggest
+  changes include template string literals, deferred evaluation
+  of annotations, and support for subinterpreters in the standard
+  library.
+  The library changes include significantly improved capabilities
+  for introspection in asyncio, support for Zstandard via a new
+  compression.zstd module, syntax highlighting in the REPL, as
+  well as the usual deprecations and removals, and improvements
+  in user-friendliness and correctness.
+  - Interpreter improvements:
+    - PEP 649 and PEP 749: Deferred evaluation of annotations
+    - PEP 734: Multiple interpreters in the standard library
+    - PEP 750: Template strings
+    - PEP 758: Allow except and except* expressions without
+      brackets
+    - PEP 765: Control flow in finally blocks
+    - PEP 768: Safe external debugger interface for CPython
+    - A new type of interpreter
+    - Free-threaded mode improvements
+    - Improved error messages
+    - Incremental garbage collection
+  - Significant improvements in the standard library:
+    - PEP 784: Zstandard support in the standard library
+    - Asyncio introspection capabilities
+    - Concurrent safe warnings control
+    - Syntax highlighting in the default interactive shell, and
+      color output in several standard library CLIs
+  - C API improvements:
+    - PEP 741: Python configuration C API
+  - Platform support:
+    - PEP 776: Emscripten is now an officially supported
+      platform, at tier 3.
+  - Release changes:
+    - PEP 779: Free-threaded Python is officially supported
+    - PEP 761: PGP signatures have been discontinued for official
+      releases
+    - Windows and macOS binary releases now support the
+      experimental just-in-time compiler
+    - Binary releases for Android are now provided
+</comment>
+    <requestid>1310012</requestid>
+  </revision>
 </revisionlist>
