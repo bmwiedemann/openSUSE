@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Oct 10 04:59:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.10.2:
+  No CLI-related changes in the changelog
+  * Dependencies
+    - build(deps): bump zeroize from 1.8.1 to 1.8.2 (#14598)
+    - build(deps): bump rustls-webpki from 0.103.6 to 0.103.7
+      (#14596)
+    - build(deps): bump windows-interface from 0.59.2 to 0.59.3
+      (#14597)
+    - build(deps): bump golang.org/x/tools from 0.37.0 to 0.38.0
+      (#14595)
+    - build(deps): bump parking_lot from 0.12.4 to 0.12.5 (#14600)
+    - build(deps): update github.com/imdario/mergo to
+      dario.cat/mergo (#14544)
+    - build(deps): bump google.golang.org/grpc from 1.75.1 to
+      1.76.0 (#14581)
+    - build(deps): bump the pest group with 4 updates (#14574)
+    - build(deps): bump peter-evans/repository-dispatch from 3.0.0
+      to 4.0.0 (#14565)
+    - build(deps): bump the serde group with 3 updates (#14548)
+    - build(deps): bump windows-core from 0.62.0 to 0.62.1 (#14550)
+    - build(deps): bump windows-implement from 0.60.0 to 0.60.2
+      (#14582)
+    - build(deps): bump github.com/prometheus/common from 0.66.1 to
+      0.67.1 (#14589)
+    - build(deps): bump cc from 1.2.38 to 1.2.40 (#14575)
+    - build(deps): bump softprops/action-gh-release from 2.3.3 to
+      2.4.0 (#14584)
+    - build(deps): bump tj-actions/changed-files (#14583)
+    - build(deps): bump golang.org/x/net from 0.44.0 to 0.45.0
+      (#14588)
+    - build(deps): bump github/codeql-action from 3 to 4 (#14591)
+    - build(deps): bump dev to v48 (#14560)
+    - build(deps): bump aws-lc-sys from 0.32.0 to 0.32.2 (#14568)
+    - build(deps): bump axum from 0.8.4 to 0.8.6 (#14563)
+
+-------------------------------------------------------------------
 Fri Oct 03 05:06:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.10.1:
