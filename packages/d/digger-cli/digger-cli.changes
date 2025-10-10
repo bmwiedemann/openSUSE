@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 10 05:09:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.128:
+  * Change "fallback" to skip under fallback condition  (#2312)
+  * enable configurables for the cli os/arch (#2311)
+  * add docs page for fix (#2310)
+  * docs: streamline getting started guide (#2302)
+  * fallback strategy, remove sleep block (#2305)
+  * feat(run-digger-action): add digger-version input (#2283)
+  * Add changelog for the week ending October 3rd, 2025 (#2300)
+  * segment (#2304)
+  * increase sleep (#2299)
+  * Support relative paths in include_patterns and exclude_patterns
+    (#2286)
+  * add no-backend to drift example
+  * fieldnotes/The OpenTaco Project is now public (#2297)
+  * chore(develop): release taco/cli 0.1.10 (#2292)
+  * feat: Update CLI callback, docs for AD/Fargate  (#2284)
+
+-------------------------------------------------------------------
 Fri Oct 03 05:06:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.127:
