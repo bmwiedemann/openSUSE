@@ -243,4 +243,12 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300757</requestid>
   </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>a7ad58fe2b8eaa5b9cc555b1f32786c5</srcmd5>
+    <version>8.4.0</version>
+    <time>1760108874</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix alternative for the man page on SLE 15</comment>
+    <requestid>1309999</requestid>
+  </revision>
 </revisionlist>

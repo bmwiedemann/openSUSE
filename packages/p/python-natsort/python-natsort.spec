@@ -1,7 +1,7 @@
 #
 # spec file for package python-natsort
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,7 +81,7 @@ export LANG=en_US.UTF8
 %pytest --hypothesis-profile=slow-tests
 
 %post
-%python_install_alternative natsort
+%python_install_alternative natsort natsort.1
 
 %postun
 %python_uninstall_alternative natsort

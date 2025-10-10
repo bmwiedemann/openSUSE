@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  9 12:34:12 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Fix alternative for the man page on SLE 15
+
+-------------------------------------------------------------------
 Thu Aug 21 09:59:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only
