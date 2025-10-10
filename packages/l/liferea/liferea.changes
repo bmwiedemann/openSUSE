@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Tue Oct  7 15:27:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.5:
+  + Fixes a crash on subscribing when at least one news bin does
+    exist.
+  + Fix crash on viewing items with comment feeds.
+  + Fix input field vertical expand and margins in several dialogs
+- Changes from version 16.4:
+  + Fixes a regression introduced in 1.16.3 that broken newsbins.
+    The "type" attribute in the exported OPML was wrong. If you are
+    affected please manually change "type" for your news bins back
+    to "newsbin" in the OPML file usually
+    ~/.config/liferea/feedlist.opml.
+  + Fix regression in main window geometry restoration
+  + Fix deprecated icon in headerbar plugin
+- Changes from version 1.16.3:
+  + Rewrite GtkPaned position restoration to GSettings bindings
+  + Add print support, new menu option in 'Tools'
+  + Show full feed properties dialog on 'Advanced' subscribe
+  + Automatically determine girepository version to use
+- Changes from version 1.16.2:
+  + Fix "Mark all as read ?" warning dialog does not appear on
+    middle-click
+  + Fix charset related issue with links
+  + Fix crash when subscribing with "Discover feeds"
+  + URL bar is now hidden for special help tabs
+  + Removes outdated FAQ menu entry
+  + GtkShortCutsWindow is now used for displaying hotkeys, new
+    hotkey is Ctrl-?
+  + Fix incorrectly emitting "move-cursor" signal in GtkTreeView
+- Changes from version 1.16.1:
+  + Fix fails to start on empty database
+- Changes from version 1.16.0:
+  + Networking:
+    - Update to libsoup3
+    - New HTTP 429 handling to avoid overloading webservers
+    - Sending Accept-Language HTTP Header
+    - Support for sending Sec-GPC HTTP header
+  + Rendering:
+    - Redesign of the content view
+    - Audio and video enclosures are now embedded as HTML elements
+    - Now DOMPurify.js is used to filter displayed content
+    - Update to libwebkit2gtk-4.1
+    - Automatic removing of empty content elements
+      (images/iframes/ads placeholders)
+    - Properly sizing SVGs to avoid forcing the to max-width
+    - Content view now uses a CSP to limit external ressources that
+      are allowed for loading
+  + Plugins:
+    - Migration from libpeas1 to libpeas2
+    - Simplified plugin manager plugin
+  + Database: When upgrading to 1.16.0 a DB schema migration is
+    performed which depending on the number of your feeds and the
+    item cache setting might take a while.
+  + Deprecations:
+    - Manual proxy setting was removed
+    - Theme color support had to be dropped (no support in GTK4
+      anymore)
+    - "pane" plugin was removed
+    - "webkit inspector" plugin was removed (functionality is now
+      builtin using --debug-html flag)
+    - Installing additional plugins from Github was removed
+- Changes in BuildRequires:
+  + Added: c++_compiler, pkgconfig(fribidi), pkgconfig(libpeas-2),
+    pkgconfig(libsoup-3.0), pkgconfig(webkit2gtk-4.1) and
+    pkgconfig(webkitgtk-web-process-extension-6.0)
+  + Removed: gcc-c++, update-desktop-files, pkgconfig(libpeas-1.0),
+    pkgconfig(libpeas-gtk-1.0) and pkgconfig(libsoup-2.4)
+- Drop be8ef494.patch: Fixed upstream.
+- Exclude i586/i686 builds.
+- Drop obsolete macros no longer needed for current versions of
+  openSUSE.
+
+-------------------------------------------------------------------
 Fri Sep 27 08:20:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.14.6:
@@ -1165,7 +1239,7 @@ Mon Nov 10 11:14:02 CET 2008 - cthiel@suse.de
 - fixes liferea crash (bnc#440800)
 
 -------------------------------------------------------------------
-Wed Oct  1 20:25:54 WST 2008 - mboman@suse.de
+Wed Oct  1 20:25:54 UTC 2008 - mboman@suse.de
 
 - Update to version 1.4.20:
   + Fixes SF #2042420: "Toggle Read Status" item list
