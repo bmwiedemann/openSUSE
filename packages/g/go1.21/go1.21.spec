@@ -33,7 +33,7 @@
 
 # Bootstrap go toolchain using existing go package go_bootstrap_version
 # To bootstrap using gccgo use '--with gccgo_go121'
-%bcond_with gccgo_go121
+%bcond_without gccgo_go121
 
 # gccgo on ppc64le with default PIE enabled fails with:
 # error while loading shared libraries:

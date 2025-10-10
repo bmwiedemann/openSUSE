@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  8 12:50:09 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Prepare for removing old go versions from Factory:
+  * Switch default for go1.21 to bootstrap with gcc-go using
+    %bcond_without gccgo_go121
+  * Building go1.21 with gcc-go by default removes need for prjconf
+  * Refs boo#1247816 bootstrap go1.21 with gccgo
+
+-------------------------------------------------------------------
 Mon Jul 28 12:59:30 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - The support for -buildmode=shared only depends on the go version and

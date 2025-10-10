@@ -385,4 +385,16 @@ Expand previous changelog entry for go1.21 boostrap with gccgo (forwarded reques
     <comment>Reference tracking issue boo#1247816 bootstrap go1.21 with gccgo (forwarded request 1298263 from jfkw)</comment>
     <requestid>1298264</requestid>
   </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>e9d485edc8154f02ddcc7877f2b069fd</srcmd5>
+    <version>1.21.13</version>
+    <time>1760108883</time>
+    <user>dimstar_suse</user>
+    <comment>- Prepare for removing old go versions from Factory:
+  * Switch default for go1.21 to bootstrap with gcc-go using
+    %bcond_without gccgo_go121
+  * Building go1.21 with gcc-go by default removes need for prjconf
+  * Refs boo#1247816 bootstrap go1.21 with gccgo</comment>
+    <requestid>1309839</requestid>
+  </revision>
 </revisionlist>
