@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sub-Delete
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
+%define cpan_name Sub-Delete
 Name:           perl-Sub-Delete
-Version:        1.00002
+Version:        1.00003
 Release:        0
 #Upstream:  This program is free software; you may redistribute or modify it (or both) under the same terms as perl.
-%define cpan_name Sub-Delete
-Summary:        Perl module enabling one to delete subroutines
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SP/SPROUT/%{cpan_name}-%{version}.tar.gz
+Summary:        Perl module enabling one to delete subroutines
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DJ/DJERIUS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -45,11 +44,11 @@ from the symbol table (though there may be references to it elsewhere,
 including in compiled code).
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -60,7 +59,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

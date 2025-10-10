@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:28:44 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.00003
+   see /usr/share/doc/packages/perl-Sub-Delete/Changes
+
+  1.00003     12 August 2025
+           - promote to stable; passes on 5.10.0 locally; no CPAN
+             Testers results
+  1.00002_02  19 July 2025
+           - re-bundle the Test::More originally bundled with the
+             distribution. CPAN versions circa 2025 cause test of 'tie
+             $@' to erroneously fail on Perl 5.10.0.
+  1.00002_01  22 February 2025
+           - unbundle Test::More
+           - replace q{'} with q{::} as package separator, as it is
+             use is deprecated as of Perl 5.38
+
+-------------------------------------------------------------------
 Thu Jul  4 14:17:46 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Set license in cpanspec.yml to Artistic-1.0 OR GPL-1.0-or-later.
