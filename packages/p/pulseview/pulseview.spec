@@ -1,7 +1,7 @@
 #
 # spec file for package pulseview
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,17 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://sigrok.org/wiki/PulseView
 Source0:        %{name}-%{version}.tar.xz
+%if 0%{?suse_version} >= 1600
+# PATCH-FIX-OPENSUSE -- Boost.System has been header only since Boost 1.69.0
+Patch1:         %{name}-boost.patch
+%endif
 BuildRequires:  cmake
 BuildRequires:  glib2-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_serialization-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libsigrok-devel >= 0.5.2

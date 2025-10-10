@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 27 18:06:22 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Boost.System has been header only since Boost 1.69.0
+  * add pulseview-boost.patch
+
+-------------------------------------------------------------------
 Fri Apr 11 14:12:36 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix version, pulseview identifies itself as 0.5.0.
