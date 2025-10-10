@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  9 07:54:04 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.0
+  No change in API in this release.
+  * Added functions dwarf_lvn_name_direct() dwarf_lvn_name()
+    dwarf_lvn_table_entry() to allow complete reading of
+    DWARF6 DW_AT_language_version attributes.
+  * Fixed issues reading corrupted (fuzzed) Apple Mach-o
+    object files: now the code immediately returns an error
+    instead of seeming stuck.
+  * Fixed issues building with gcc option -std=c99 and the like.
+  * Corrected a bug reading line table data that used forms
+    similar to DWARF5 DW_FORM_strx.
+
+-------------------------------------------------------------------
 Fri Sep 19 17:13:04 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.0
