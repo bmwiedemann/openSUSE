@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  9 12:27:16 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- New upstream release 2.1.1
+  * Fixed: don't allow session to be recreated accidentally [CVE-2025-46336][bsc#1242927]
+
+-------------------------------------------------------------------
 Mon Feb  3 10:16:09 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 2.1.0, no changelog found

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-session
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 %define mod_name rack-session
 %define mod_full_name %{mod_name}-%{version}
