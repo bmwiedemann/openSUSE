@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  7 09:55:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop liba52-devel, pkgconfig(libdca) and pkgconfig(libmpeg2)
+  BuildRequires and vlc.a52.patch and dca conditional define, next
+  stable vlc will disable these by default and rely on ffmpeg for
+  decoding instead. We might as well get ahead of this now.
+
+-------------------------------------------------------------------
 Tue Oct  7 07:16:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Pin to ffmpeg-7; even the master branch does not yet build

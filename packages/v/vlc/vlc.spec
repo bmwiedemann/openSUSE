@@ -31,7 +31,6 @@
 %bcond_with vnc
 %bcond_without faad
 %define chromecast 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
-%define dca        0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600 || 0%{?BUILD_ORIG}
 
 Name:           vlc
 Version:        3.0.21
@@ -44,8 +43,6 @@ Source:         http://download.videolan.org/%{name}/%{version}/%{name}-%{versio
 Source2:        %{name}-rpmlintrc
 Source98:       http://download.videolan.org/%{name}/%{version}/%{name}-%{version}.tar.xz.asc
 Source99:       vlc.keyring
-# PATCH-FIX-UPSTREAM vlc.a52.patch https://trac.videolan.org/vlc/ticket/3731 dimstar@opensuse.org -- Support new version of liba52
-Patch0:         vlc.a52.patch
 # PATCH-FIX-UPSTREAM vlc-allow-deprecated-fribidi.patch dimstar@opensuse.org -- Allow usage of deprecated fribidi functions
 Patch1:         vlc-allow-deprecated-fribidi.patch
 # PATCH-FIX-UPSTREAM vlc-lua-5.3.patch dimstar@opensuse.org -- Replace lua_optlong with lua_optinteger
@@ -89,7 +86,6 @@ BuildRequires:  gettext-devel
 #BuildRequires:  git
 BuildRequires:  gtk3-devel
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  liba52-devel
 BuildRequires:  libavc1394-devel >= 0.5.3
 BuildRequires:  libcddb-devel >= 0.9.5
 BuildRequires:  libcdio-devel >= 0.78.2
@@ -149,12 +145,8 @@ BuildRequires:  pkgconfig(libavcodec) < 62
 BuildRequires:  pkgconfig(libavformat) < 62
 BuildRequires:  pkgconfig(libavutil) < 60
 BuildRequires:  pkgconfig(libbluray) >= 0.6.2
-%if %dca
-BuildRequires:  pkgconfig(libdca) >= 0.0.5
-%endif
 BuildRequires:  pkgconfig(libgme)
 #BuildRequires:  pkgconfig(libmodplug) >= 0.8.9
-BuildRequires:  pkgconfig(libmpeg2) > 0.3.2
 BuildRequires:  pkgconfig(libmtp) >= 1.0.0
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libnfs)
@@ -421,11 +413,6 @@ default when `vlc` is invoked from an X session.
 %patch -P 114 -p1
 %patch -P 115 -p1
 
-# a52_init() < 0.8.0 doesn't take any arguments
-if pkg-config --max-version 0.8 liba52; then
-%patch -P 0 -p1
-fi
-
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
 %patch -P 2 -p1
@@ -449,7 +436,7 @@ autoreconf -fiv
    --disable-dependency-tracking        \
    --disable-oss                        \
    --disable-svgdec                     \
-   --enable-a52                         \
+   --disable-a52                        \
    --enable-aa                          \
    --enable-alsa                        \
    --enable-avcodec                     \
@@ -458,11 +445,7 @@ autoreconf -fiv
 %else
    --disable-chromecast                 \
 %endif
-%if %dca
-   --enable-dca                         \
-%else
    --disable-dca                        \
-%endif
    --enable-dvbpsi                      \
    --enable-dvdnav                      \
    --enable-dvdread                     \
@@ -476,7 +459,7 @@ autoreconf -fiv
    --enable-kate                        \
    --enable-libass                      \
    --enable-libcddb                     \
-   --enable-libmpeg2                    \
+   --disable-libmpeg2                   \
 %if 0%{?is_opensuse}
    --enable-libplacebo                  \
 %endif
@@ -897,7 +880,6 @@ fi
 %{_libdir}/vlc/plugins/audio_output/libafile_plugin.so
 %{_libdir}/vlc/plugins/audio_output/libalsa_plugin.so
 %{_libdir}/vlc/plugins/audio_output/libamem_plugin.so
-%{_libdir}/vlc/plugins/codec/liba52_plugin.so
 %{_libdir}/vlc/plugins/codec/libadpcm_plugin.so
 %{_libdir}/vlc/plugins/codec/libaes3_plugin.so
 %{_libdir}/vlc/plugins/codec/libaom_plugin.so
@@ -907,9 +889,6 @@ fi
 %{_libdir}/vlc/plugins/codec/libcvdsub_plugin.so
 %if 0%{?suse_version} >= 1550
 %{_libdir}/vlc/plugins/codec/libdav1d_plugin.so
-%endif
-%if %dca
-%{_libdir}/vlc/plugins/codec/libdca_plugin.so
 %endif
 %{_libdir}/vlc/plugins/codec/libddummy_plugin.so
 %{_libdir}/vlc/plugins/codec/libdvbsub_plugin.so
@@ -922,7 +901,6 @@ fi
 %{_libdir}/vlc/plugins/codec/libg711_plugin.so
 %{_libdir}/vlc/plugins/codec/libjpeg_plugin.so
 %{_libdir}/vlc/plugins/codec/libkate_plugin.so
-%{_libdir}/vlc/plugins/codec/liblibmpeg2_plugin.so
 %{_libdir}/vlc/plugins/codec/liblpcm_plugin.so
 %{_libdir}/vlc/plugins/codec/libmpg123_plugin.so
 %{_libdir}/vlc/plugins/codec/liboggspots_plugin.so
