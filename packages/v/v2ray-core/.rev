@@ -468,4 +468,14 @@
   * Update vendor (forwarded request 1304079 from hillwood)</comment>
     <requestid>1304080</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>03d2076b5110d259218bb36ff4448b07</srcmd5>
+    <version>5.40.0</version>
+    <time>1760108956</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix CVE-2025-47911 and boo#1251404
+  * Add fix-CVE-2025-47911.patch
+  * Update golang.org/x/net to 0.45.0 in vendor (forwarded request 1309804 from hillwood)</comment>
+    <requestid>1310006</requestid>
+  </revision>
 </revisionlist>

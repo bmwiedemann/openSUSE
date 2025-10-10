@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  8 13:30:29 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix CVE-2025-47911 and boo#1251404
+  * Add fix-CVE-2025-47911.patch
+  * Update golang.org/x/net to 0.45.0 in vendor
+
+-------------------------------------------------------------------
 Tue Sep  9 15:14:22 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.38.0
