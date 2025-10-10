@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  8 18:56:30 UTC 2025 - BZZZZ DZZZZ <alanas.00@mail.ru>
+
+- Delete patch: onboard-fix-crash-on-hover.patch.
+  It's useless because vanilla onboard v1.4.3-7 doesn't crash on hover.
+
+-------------------------------------------------------------------
 Wed Sep  3 08:07:33 UTC 2025 - pgajdos@suse.com
 
 - version update to 1.4.3-7

@@ -148,4 +148,12 @@
   - onboard-remove-dep-typelib-appindicator3.patch (upstreamed)</comment>
     <requestid>1303184</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>40a343a89d3f8773d00fa4bc39672b35</srcmd5>
+    <version>1.4.3.7</version>
+    <time>1760108900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309964</requestid>
+  </revision>
 </revisionlist>

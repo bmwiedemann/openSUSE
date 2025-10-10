@@ -28,7 +28,6 @@ Group:          System/X11/Utilities
 URL:            https://github.com/dr-ni/onboard
 Source:         https://github.com/dr-ni/onboard/archive/refs/tags/%{srcver}.tar.gz#/onboard-%{srcver}.tar.gz
 Source1:        onboard-defaults.conf
-Patch0:         onboard-fix-crash-on-hover.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 # Needed for typelib() - Requires.
