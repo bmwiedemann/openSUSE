@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Type-Tiny
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,27 @@
 
 %define cpan_name Type-Tiny
 Name:           perl-Type-Tiny
-Version:        2.008002
+Version:        2.008003
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tiny, yet Moo(se)-compatible type constraint
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Exporter::Tiny) >= 1.006000
+BuildRequires:  perl(Exporter::Tiny) >= 1.6
 BuildRequires:  perl(Test::More) >= 0.96
-Requires:       perl(Exporter::Tiny) >= 1.006000
+Requires:       perl(Exporter::Tiny) >= 1.6
 Recommends:     perl(Class::XSAccessor) >= 1.170
-Recommends:     perl(Devel::LexAlias) >= 0.50.0
+Recommends:     perl(Devel::LexAlias) >= 0.50
 Recommends:     perl(Devel::StackTrace)
 Recommends:     perl(Ref::Util::XS) >= 0.100
-Recommends:     perl(Regexp::Util) >= 0.3.0
+Recommends:     perl(Regexp::Util) >= 0.3
 Recommends:     perl(Sub::Util)
-Recommends:     perl(Type::Tiny::XS) >= 0.25.0
+Recommends:     perl(Type::Tiny::XS) >= 0.25
 %{perl_requires}
 
 %description
@@ -48,7 +49,7 @@ Type::Tiny is a small class for creating Moose-like type constraint objects
 which are compatible with Moo, Moose and Mouse.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

@@ -287,4 +287,23 @@
     <comment></comment>
     <requestid>1279774</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9a180d69b408ad9d802cadccf7c8d39f</srcmd5>
+    <version>2.008003</version>
+    <time>1760109101</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.008003
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+  2.008003	2025-09-02
+   [ Bug Fixes ]
+   - Make sure methods fake-inherited from Moose (if it's loaded) are a last
+     resort.
+     Robert Moore++
+   [ Other ]
+   - Slightly streamlined `Type::Tiny::can` and `Type::Tiny::AUTOLOAD`.
+   - When dumping structures via Data::Dumper (mostly in error messages)
+     suppress any warnings Data::Dumper would emit.
+     Diab Jerius++</comment>
+    <requestid>1310534</requestid>
+  </revision>
 </revisionlist>
