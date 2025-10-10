@@ -17,7 +17,7 @@
 
 
 Name:           nelm
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        Helm 3 alternative
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.23
 
 %description
 Nelm is a Helm 3 alternative. It is a Kubernetes deployment tool that manages

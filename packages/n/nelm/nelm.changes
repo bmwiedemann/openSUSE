@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 09 13:21:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.1:
+  * Bug Fixes
+    - plan panic and json diffs instead of yaml (737cd51)
+    - git-go security vulnerability (80ae9d3)
+
+-------------------------------------------------------------------
 Thu Oct 09 05:10:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.13.0:
