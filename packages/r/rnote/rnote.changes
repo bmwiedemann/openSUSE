@@ -1,0 +1,227 @@
+-------------------------------------------------------------------
+Fri Sep 26 14:10:05 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.13.1:
+  * fix: occasional PDF import failure
+  * fix: add back accidentally removed 'Pen Style' keyboard shortcuts
+- Changes from version 0.13.0:
+  * feat: save/restore engine configuration with preset
+  * feat: respect snap-positions option when building shapes
+  * feat: shape styling options and shape highlight-mode
+  * improv: application window always focused when opening a file
+  * fix: selected part when renaming files in the application file browser
+  * fix: cancelling import dialogs not stopping progress bar
+  * fix: missing translation for a string
+  * fix: save file logic when encountering corner cases
+  * fix: filename sorting in integrated files list
+  * fix: prevent occasional xopp import failure
+
+-------------------------------------------------------------------
+Sat Apr 12 10:36:35 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.12.0:
+  * chore: bump app version, add changelog
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * ci: fix update-translations CI
+  * i18n: Translations update from Hosted Weblate (#1402)
+  * i18n: more consistent string
+  * i18n: fix translation string, update template
+  * i18n: yet another template string removal
+  * i18n: remove non-translatable string from template
+  * i18n: update translations template
+  * chore: update to newest gtk, libadwaita, dependencies (#1407)
+  * chore: add cargo-edit as dev prerequisite
+  * fix: window shadows on Windows (#1403)
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1362)
+  * fix: missing tooltips (#1401)
+  * chore: fix just recipe `RUST_LOG` env var, docs
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * chore: add justfile for common tasks, adapt CI, apply YAML lints, meson fmt (#1396)
+  * fix: failing build on windows due to broken poppler-rs (#1282)
+  * chore: bump flatpak GNOME runtime to version 48 (#1391)
+  * feat: add thumbnailer (#1377)
+  * i18n: Add Esperanto translation language (#1380)
+  * fix: cli file collision resolution in non-interactive settings (#1381)
+  * chore: update to rust 2024 edition, v1.85 msrv, update deps, fmt (#1365)
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1319)
+  * feat: multi-click selections (#1268)
+  * ci: fix nightly builds
+  * i18n: Completed Nepali translation (#1342)
+  * fix: ci by updating containers
+  * chore: remove outdated, commented out code in meson build file
+  * chore: add gtk4, poppler as system deps in meson build file
+  * chore: update to gtk4.16 feature
+  * chore: consistent output for fields without debug impl
+  * refactor: reinstall pen only if necessary (#1321)
+  * fix: change logic to keep text selection on hover/pen up  (#1326)
+  * chore: update dependencies
+  * refactor: avoid using format! when String creation is unnecessary (#1331)
+  * feat: keyboard paste at pointer position (#1311)
+  * chore: update windows build documentation (#1325)
+  * refactor: hover states in selector and typewriter (#1318)
+  * feat: laser tool (#1277)
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1271)
+  * feat: universal animation frames for pens (#1309)
+  * fix: don't draw idle tools, add files to meson
+  * refactor: "tools" event handling (#1308)
+  * fix: unwanted activation of long-press context menu after zooming (#1307)
+  * chore: satisfy latest clippy
+  * fix: improve the clipboard pasting of files for better compatibility (#1281)
+  * refactor: use macros for constructing engine views (#1306)
+  * ci: sanitize ref name, update deprecated actions
+  * improv: make zooming consistent and better support for keypad keys (#1285)
+  * fix: selection resize/rotate handle sensitivity in 'single' selection mode
+  * feat: Allow import of encrypted PDF files (#1279)
+  * improv: support keypad and uncommon keys (#1274)
+  * feat: Open workspace folder option (#1272)
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1219)
+  * fix: deselect 9th colorsetter after selecting 7th, fixes #1255
+  * chore: update piet, rough dependencies
+  * chore: update dependencies
+  * fix: workspace dir walk up until exists,
+  * fix: textured stroke rendering differently based on view
+  * feat: add overview for opened tabs (#1196)
+  * refactor: destructure tuples to enhance readability (#1270)
+  * fix: allow moving view while having a selection,
+  * chore: bump piet deps
+  * chore: bump MSRV to 1.82 & llvm19 (#1257)
+  * fix: logic for open file in current empty tab
+  * chore: Bump Rust MSRV, GNOME runtime and LLVM version (#1242)
+  * fix: docs add missing libappstream dep in build instructions
+  * refactor: optional last tab page (#1238)
+  * Add confirmation prompt to file/folder trash action (#1237)
+  * fix: selection export dialog failing silently, code cleanup (#1227)
+  * fix: closing tab with unsaved changes did not open save-dialog,
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1202)
+  * refactor: update piet, cairo, gtk based deps, switch to new glib::clone macro syntax (#1218)
+  * improv: Regex for duplication logic (#1188)
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1158)
+  * chore: update `gettext` (#1169)
+  * chore: first build app, then run cargo tests in CI
+  * chore: fix test-report ci pipeline
+  * chore: switch to cargo nextest, integrate reports in CI pipeline
+  * improv: add CONTRIBUTING document (#1193)
+  * feat: limit movement options for the vertical space tool (#1116)
+  * i18n: complete and fix Polish translations (#1190)
+  * docs: fix typo in readme (#1187)
+  * chore: update deps
+  * chore: remove unmaintained `atty` crate (#1178)
+  * fix: mime types icon not used,
+  * chore: error messages consistency
+  * chore: shorten tracing event emissions by imports
+  * chore: improve formatting of some traces
+  * chore: use glib weakref for singleton toasts,
+  * chore: add nightly workflow (#1161)
+
+-------------------------------------------------------------------
+Wed Aug 14 00:43:47 UTC 2024 - expeehaa@outlook.com
+
+- Update to version 0.11.0:
+  * chore: bump app version
+  * chore: update deps
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1137)
+  * fix: translations strings formatting
+  * chore: update po template
+  * fix: always change text color when picked
+  * feat: change color of selections in a single text field
+  * chore: use `appstreamcli` for validating appstream file
+  * fix: fixing hover state while pressing modifiers,
+  * chore: ensure passing modifierkeys unduplicated,
+  * chore: satisfy latest clippy
+  * improv: gzip (de)compression optimizations (#1151)
+  * fix: pen state workaround for windows ink (#1113)
+  * improv: unit entries stop capturing scroll events (#1146)
+  * improv: prevent accidental moves/resizes when interacting with buttons in the titlebar (#1143)
+  * fix: possibly fix crashes with the two-finger long-press gesture, (#1134)
+  * fix: filters with native file picker on windows, macOS (#1115)
+  * improv: migrate `GtkDialog` to `AdwDialog` (#1124)
+  * fix: remove window maximized macOS workaround, improve logic (#1111)
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1097)
+  * chore: satisfy latest clippy lints
+  * fix: force the gtk renderer to be `gl` for now (#1132)
+  * chore: remove unused assignments in build scripts
+  * fix: close logic
+  * improv: close behaviour when saves are in progress
+  * improv: inhibit closing window while saves are in progress,
+  * chore: use `Duration` for dispatch toast timeouts
+  * ui: migrate to libadwaita-1.5 and its adaptive dialogs (#1110)
+  * chore: skip data in `Debug` impl for `Image` struct
+  * fix: single-element strokes not generating hitboxes,
+  * fix: appstream metadata license to `GPL-3.0-or-later`,
+  * chore: update deps, satisfy latest clippy
+  * refactor: update `ink-stroke-modeler-rs` to use Rust rewrite (#1102)
+  * fix: about-window developers credits list (#1095)
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1070)
+  * improv: refined imported image size logic (#1004)
+  * ui: tweak colorpad appearance
+  * feat: add improve-for-epd option, add active-color label (#1081)
+  * fix: filters not working in file dialogs (#1075)
+  * improv: zoom tool zoom towards initial pointer location (#1080)
+  * improv: disable option for all shortcuts (#1067)
+- Enable LTO flags.
+
+-------------------------------------------------------------------
+Sat Jun 29 12:57:13 UTC 2024 - lujianhua000@gmail.com
+
+- Update to version 0.10.2:
+  * chore: bump app version
+  * fix: origin indicator cross size on hi-dpi screens
+  * chore: update deps, devel flatpak
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1058)
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * build: move update-translations in script
+  * metainfo: add brand colors (#1057)
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1044)
+
+-------------------------------------------------------------------
+Fri Dec  8 06:21:20 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.3
+  * improvement: add button to export notification to open file
+    location in file-manager after exporting
+  * improvement: initial export file picker folder got improved,
+    now prioritising the rnote file location and are now remembered
+    between exports
+  * improvement: more readable file row names
+  * improvement: add keyboard shortcut for snap-positions action
+  * improvement: pdf import option to toggle page borders
+  * fix: don't export empty pages that are adjacent to content that
+    is snapped to the document grid
+  * fix: progress pulses getting out of sync when executing
+    multiple operations in parallel
+  * fix: typewriter width adjustment button disappearing after
+    setting it to minimal width
+- Disable LTO for fix build
+- Fix Source URL
+- Add lang package
+- Exclude Arch i586: use a lot memory and failed build cause bug
+- Remove libxml2-tools pkgconfig(glib-2.0) pkgconfig(gio-2.0) cargo
+  rust gcc gcc-c++ BuildRequires: clean up dependencies
+- Add clang cargo-packaging extra-cmake-modules fdupes
+  BuildRequires: remove duplicate and add compiler
+- spec-cleaned
+
+-------------------------------------------------------------------
+Thu Jul 28 06:16:48 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Version 0.5.4. Changes:
+* A new app icon and symbolic! (based on @bertob's design and with his help. Thanks a ton!)
+* long awaited: write and edit text with the typewriter
+* pdf import dialog with the added option to import aligned with the document pages ( one pdf page per document page )
+* import bitmap images (e.g. screenshots) from the clipboard (thanks @RickStanley!)
+* proportial shapes / input constraints (thanks @sei0o!)
+* additional selector modes: apiece, intersecting path
+* improved workspace browser, added sidebar to select between different workspaces (inspired by the `Paper` app)
+* mark underneath other strokes with the 'Marker' brush style
+* bug fixes
