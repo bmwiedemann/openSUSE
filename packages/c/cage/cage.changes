@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 09 12:28:15 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.2.1:
+  * build: bump version to 0.2.1
+  * Fix renderer, allocator and scene memory leaks on exit
+  * output: use backend commits
+  * ci: set --wrap-mode=nodownload
+  * ci: install libdisplay-info
+  * xdg_shell: bump to v5
+  * xdg_shell: handle xdg_popup reposition signal
+  * xdg_shell: rename xdg_toplevel signal handlers
+  * Upgrade wlroots to v0.19
+  * cage: remove global server listeners on shutdown
+  * seat: destroy keyboard groups on shutdown
+  * output: drop unused wlr_matrix.h include
+  * Fix getopt("D")
+  * Make application arguments optional
+  * Add CLI flag to enable debug logs
+  * readme: add link to man page
+
+-------------------------------------------------------------------
 Mon Oct  7 08:38:45 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Fix name for BuildRequire of wlroots
