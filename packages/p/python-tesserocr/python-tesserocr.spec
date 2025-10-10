@@ -1,7 +1,7 @@
 #
 # spec file for package python-tesserocr
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tesserocr
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        A Python wrapper around tesseract-ocr
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/sirfz/tesserocr
 Source:         https://files.pythonhosted.org/packages/source/t/tesserocr/tesserocr-%{version}.tar.gz
-#PATCH-FIX-OPENSUSE unpin-cython.patch
-Patch:          unpin-cython.patch
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython3 < 3.2.0}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -67,7 +64,7 @@ GIL while processing an image in tesseract.
 %fdupes %{buildroot}
 
 %check
-export TESSDATA_PREFIX=/usr/share/tessdata
+export TESSDATA_PREFIX=%{_datadir}/tessdata
 %python_exec setup.py develop --user
 # test_LSTM_choices failure: https://github.com/sirfz/tesserocr/issues/214
 # https://github.com/sirfz/tesserocr/issues/295

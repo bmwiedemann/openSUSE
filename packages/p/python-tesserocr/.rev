@@ -227,4 +227,24 @@
     <comment></comment>
     <requestid>1297803</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>42a667f308bcb9da770eee6f719f179a</srcmd5>
+    <version>2.9.0</version>
+    <time>1760108996</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unpin-cython.patch
+  but make version range explicit in BuildRequires
+- Update to 2.9.0
+  * fix: update test, make it pass
+    gh#sirfz/tesserocr#364
+  * Improve stub file
+    gh#sirfz/tesserocr#371
+  * Convert more exceptions
+    gh#sirfz/tesserocr#365
+  * Drop python2 support
+    gh#sirfz/tesserocr#377
+  * All words error handling
+    gh#sirfz/tesserocr#378</comment>
+    <requestid>1310399</requestid>
+  </revision>
 </revisionlist>
