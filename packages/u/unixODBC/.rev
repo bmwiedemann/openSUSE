@@ -472,4 +472,18 @@
   See gh/lurcher/unixODBC#219</comment>
     <requestid>1307737</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>caf457056e1452c20442f16c50825d89</srcmd5>
+    <version>2.3.14</version>
+    <time>1760108860</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.14:
+  * Added shebang #221
+  * Fixed the pooling bug introduced in 2.3.13
+    See gh/lurcher/unixODBC/issues/219#issuecomment-3362162017
+  * Replaced the prototype in the sample postgresql driver to fix
+    a build warning (don't build these files anyway)
+- Remove unixODBC-2.3.13-yyparse.patch see gh/lurcher/unixODBC#219</comment>
+    <requestid>1309883</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  9 04:16:41 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.14:
+  * Added shebang #221
+  * Fixed the pooling bug introduced in 2.3.13
+    See gh/lurcher/unixODBC/issues/219#issuecomment-3362162017
+  * Replaced the prototype in the sample postgresql driver to fix
+    a build warning (don't build these files anyway)
+- Remove unixODBC-2.3.13-yyparse.patch see gh/lurcher/unixODBC#219
+
+-------------------------------------------------------------------
 Mon Sep 29 10:19:28 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.13:

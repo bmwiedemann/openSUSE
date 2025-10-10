@@ -17,7 +17,7 @@
 
 
 Name:           unixODBC
-Version:        2.3.13
+Version:        2.3.14
 Release:        0
 Summary:        ODBC driver manager with some drivers included
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,8 +28,6 @@ Source1:        baselibs.conf
 Source2:        unixODBC-rpmlintrc
 Patch0:         unixODBC-paths.patch
 Patch1:         unixODC-etc-location.patch
-# https://github.com/lurcher/unixODBC/issues/219#issuecomment-3346262798
-Patch2:         unixODBC-2.3.13-yyparse.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  gcc-c++
@@ -68,7 +66,6 @@ Includes for ODBC development (based on unixODBC).
 %setup -q
 %patch -P 0
 %patch -P 1 -p1
-%patch -P 2 -p1
 
 chmod -x NEWS README doc/*.html doc/*.gif Drivers/README
 
