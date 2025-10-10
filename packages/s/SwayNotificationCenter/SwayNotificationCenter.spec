@@ -1,7 +1,7 @@
 #
 # spec file for package SwayNotificationCenter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global alt_pkg_name swaync
 
 Name:           SwayNotificationCenter
-Version:        0.11.0
+Version:        0.12.2
 Release:        0
 Summary:        A simple GTK notification daemon
 License:        GPL-3.0-only
@@ -27,6 +27,7 @@ URL:            https://github.com/ErikReider/%{name}
 Provides:       %{alt_pkg_name} = %{version}-%{release}
 Source0:        %{name}-%{version}.tar.gz
 Requires:       gvfs
+BuildRequires:  blueprint-compiler
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  meson >= 0.51.0
@@ -36,11 +37,13 @@ BuildRequires:  scdoc
 BuildRequires:  vala >= 0.56
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(granite)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.8.0
+BuildRequires:  pkgconfig(granite-7)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4-layer-shell-0)
 BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libhandy-1) >= 1.8.0
+BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(systemd)
 

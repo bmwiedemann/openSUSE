@@ -55,4 +55,53 @@
     <comment></comment>
     <requestid>1268050</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eedf225b7c0445456121a844abcc0910</srcmd5>
+    <version>0.12.2</version>
+    <time>1760109095</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.2:
+  - Bug fixes:
+    - Add missing text color on the notification action button
+    - Fixed reloading the config sometimes segfaulting
+    - Fix client printing help when running with --skip-wait
+    - Redefine CSS colors in the GTK 3. Improves compatibility with older themes
+    - fix: Add json schema for &quot;autohide&quot; and &quot;blacklist&quot; in &quot;mpris&quot;
+    - Make the notification actions stretch to fill the whole space like before
+    - Fix transition typo
+    - Changed the CSS name of the transparent windows fixing GTK CSS overrides
+    - fix: Search icon by process name if icon is missing
+    - Use GTK focus mechanics for keyboard navigation in the Control Center
+  - Enhancements
+    - Replaced most SCSS variables with CSS variables
+    - Hide MPRIS Carousel dots when one or less player is visible
+    - Moved control center notifications into its own widget + vexpand config option
+    - control-center-height is now able to be -1 to fit all widgets
+    - feat: Choose outputs by name
+- Update to version 0.12.1:
+  - Fixed the missing &quot;,&quot; mistake on line 367
+  - Add ignore-gtk-theme config option
+  - Fixed notification group app label not being ellipsized when long
+  - Fixed single notification close button not being clickable
+- Update to version 0.12.0:
+  - feat(mpris): autohide
+  - Ported to GTK 4
+  - Animate floating notifications + configurable max height
+  - Moved all hardcoded icon sizes to CSS
+  - Add option to hide the MPRIS album art
+  - Add loop-carousel option to mpris.
+  - feat: new buttons-per-row property for buttons-grid widget
+  - feat: add slider widget
+  - hints: parse sound-name and sound-file
+  - Make notification grouping optional
+  - Add config option and swaync-client command to pick monitor
+  - Add --hide-all option
+  - Client can now parse multiple commands
+- Breaking Changes
+  - Due to the GTK 4 port, sadly some custom CSS themes might have to be updated.
+  - All the icon/image size JSON config properties have been deprecated (not removed yet), and moved to the CSS config instead
+- Update dependencies for migration to gtk4
+</comment>
+    <requestid>1310555</requestid>
+  </revision>
 </revisionlist>
