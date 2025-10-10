@@ -1,7 +1,7 @@
 #
 # spec file for package ldas-tools-framecpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ URL:            https://software.ligo.org
 Source:         https://software.ligo.org/lscsoft/source/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM ldas-tools-framecpp-fix-pkgconfig.patch badshah400@gmail.com -- Fix paths in pkgconfig file when absolute paths to LIBDIR and INCLUDEDIR are specified to cmake
 Patch1:         ldas-tools-framecpp-fix-pkgconfig.patch
+# PATCH-FIX-UPSTREAM ldas-tools-framecpp-cmake-no-boost-system.patch badshah400@gmail.com -- Drop "system" from list of boost components searched in CMake
+Patch2:         ldas-tools-framecpp-cmake-no-boost-system.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -47,7 +49,6 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel >= 1.67.0
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_serialization-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ldastoolsal)
