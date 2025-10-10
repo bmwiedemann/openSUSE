@@ -36,6 +36,10 @@ License:        BSD-3-Clause AND LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-qt
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM -- Qt 6.10 compat
+Patch0:         0001-Try-new-cmake-style-for-Qt6-76.patch
+Patch1:         0002-Fix-cmake-for-qt6.patch
+Patch2:         0003-Migrate-immodule-probing-also-to-GuiPrivate-target.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -180,7 +184,7 @@ Requires:       libFcitx5Qt6WidgetsAddons2 = %{version}
 This package provides development files for fcitx5-qt.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} < 1550
