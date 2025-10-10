@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 14 15:39:43 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update polyparse to version 1.13.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/polyparse-1.13.1/src/Changelog.md
+
+-------------------------------------------------------------------
 Sun Aug 27 18:34:24 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update polyparse to version 1.13 revision 9.

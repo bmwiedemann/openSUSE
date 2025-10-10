@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-polyparse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name polyparse
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.13
+Version:        1.13.1
 Release:        0
 Summary:        A variety of alternative parser combinator libraries
 License:        LGPL-2.1-only
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/9.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -37,14 +36,13 @@ BuildRequires:  ghc-text-prof
 ExcludeArch:    %{ix86}
 
 %description
-This version, 1.13 is a Non-Maintainer Upload (NMU). Report issues to the
-Hackage Trustees issue tracker.
-
 A variety of alternative parser combinator libraries, including the original
 HuttonMeijer set. The Poly sets have features like good error reporting,
 arbitrary token type, running state, lazy parsing, and so on. Finally,
 Text.Parse is a proposed replacement for the standard Read class, for better
 deserialisation of Haskell values from Strings.
+
+Old homepage: <https://archives.haskell.org/projects.haskell.org/polyparse/>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -74,7 +72,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -94,7 +91,7 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENCE-commercial
 
 %files devel -f %{name}-devel.files
-%doc Changelog.md
+%doc Changelog.md README.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license COPYRIGHT
