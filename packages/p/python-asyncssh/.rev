@@ -591,4 +591,29 @@
     will continue, ignoring those exceptions. Thanks go to Danil</comment>
     <requestid>1292445</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7f8055226feef52e6d9c1fdb4a30f2b7</srcmd5>
+    <version>2.21.1</version>
+    <time>1760108943</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fido2-compat.patch to restore compatibility with python-fido2 &gt;= 2
+- Update requirements from pyproject.toml
+- Update to 2.21.1
+  * Added the capability to defer invoking passphrase callback until
+    an encrypted private key is actually used in a signing operation,
+    rather than triggering the callback when keys are loaded. This
+    will only work when a public key is provided with an encrypted
+    private key either explicitly or as part of the key format (such
+    as in OpenSSH's private key format).
+  * Improved handling of KeyboardInterrupt and task cancellation in
+    SCP. Thanks go to Viktor Kertesz for reporting this issue and
+    helping to understand the behavior in various versions of Python.
+  * Fixed the env option to support mappings other than dict. Thanks
+    go to Boris Pavlovic for reporting this issue.
+  * Fixed a potential race condition in SSHForwarder cleanup. Thanks
+    go to GitHub user misa-hase for reporting this issue and helping
+    to test the fix.
+</comment>
+    <requestid>1310589</requestid>
+  </revision>
 </revisionlist>
