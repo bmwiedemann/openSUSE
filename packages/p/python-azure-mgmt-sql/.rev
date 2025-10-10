@@ -406,4 +406,16 @@
 - Update Requires from pyproject.toml (forwarded request 1309252 from glaubitz)</comment>
     <requestid>1309257</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>fb7c0aad35c8fb4169e1149be6bc2f20</srcmd5>
+    <version>4.0.0b24</version>
+    <time>1760108986</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.0.0b24
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop workaround to remove samples and tests from source (forwarded request 1309970 from glaubitz)</comment>
+    <requestid>1310396</requestid>
+  </revision>
 </revisionlist>

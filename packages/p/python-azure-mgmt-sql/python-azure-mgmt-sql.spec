@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-sql
-Version:        4.0.0b23
+Version:        4.0.0b24
 Release:        0
 Summary:        Microsoft Azure SQL Management Client Library
 License:        MIT
@@ -56,8 +56,6 @@ This package has been tested with Python 2.7, 3.5, 3.6 and 3.7.
 
 %prep
 %setup -q -n azure_mgmt_sql-%{version}
-# see: https://github.com/Azure/azure-sdk-for-python/issues/43082
-rm -rf generated_samples generated_tests
 
 %build
 %pyproject_wheel
