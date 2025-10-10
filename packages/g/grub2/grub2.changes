@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Fri Sep 26 07:53:25 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
-
-- make grub plugin compatible with snapper's plugin API (bsc#1246172)
-- clean up some unused code
-
--------------------------------------------------------------------
 Tue Sep 23 08:47:49 UTC 2025 - Steffen Winterfeldt <snwint@suse.com>
 
 - turn off page flipping for i386-pc using VBE video backend (bsc#1245636)

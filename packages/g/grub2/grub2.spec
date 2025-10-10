@@ -1,6 +1,7 @@
 #
 # spec file for package grub2
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -1307,7 +1308,7 @@ rm %{buildroot}/%{_datadir}/%{name}/*.h
 # Defaults
 install -m 644 -D %{SOURCE2} %{buildroot}/%{_sysconfdir}/default/grub
 install -m 755 -D %{SOURCE6} %{buildroot}/%{_sbindir}/grub2-once
-install -m 755 -D %{SOURCE12} %{buildroot}/%{_libdir}/snapper/plugins/00-grub
+install -m 755 -D %{SOURCE12} %{buildroot}/%{_libdir}/snapper/plugins/grub
 install -m 755 -D %{SOURCE14} %{buildroot}/%{_sysconfdir}/grub.d/80_suse_btrfs_snapshot
 %if 0%{?has_systemd:1}
 install -m 644 -D %{SOURCE15} %{buildroot}/%{_unitdir}/grub2-once.service
@@ -1679,7 +1680,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %dir %{_libdir}/snapper
 %dir %{_libdir}/snapper/plugins
 %config(noreplace) %{_sysconfdir}/grub.d/80_suse_btrfs_snapshot
-%{_libdir}/snapper/plugins/00-grub
+%{_libdir}/snapper/plugins/grub
 
 %ifarch %{ix86} x86_64
 %files %{grubxenarch} -f %{grubxenarch}-mod.lst
