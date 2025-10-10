@@ -1,7 +1,7 @@
 #
 # spec file for package wtmpdb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.74.0+git20250509.272b109
+Version:        0.75.0+git20251009.a6f185a
 Release:        0
 Summary:        Database for recording the last logged in users and system reboots
 License:        BSD-2-Clause

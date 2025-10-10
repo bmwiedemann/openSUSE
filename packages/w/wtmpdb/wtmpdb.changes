@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 09 13:20:48 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.75.0+git20251009.a6f185a:
+  * Release version 0.75.0
+  * Create table on RW open of empty database
+  * Use empty memory table instead of failing to read empty file
+  * Factor CREATE TABLE IF NOT EXISTS out of add_entry()
+
+-------------------------------------------------------------------
 Fri May 09 08:13:11 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.74.0+git20250509.272b109:

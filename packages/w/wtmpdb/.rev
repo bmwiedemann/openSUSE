@@ -258,4 +258,16 @@
 - Fix summary of libwtmpdb subpackage</comment>
     <requestid>1276112</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e45629cbc762b78ed97eaf63758f8d62</srcmd5>
+    <version>0.75.0+git20251009.a6f185a</version>
+    <time>1760108875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.75.0+git20251009.a6f185a:
+  * Release version 0.75.0
+  * Create table on RW open of empty database
+  * Use empty memory table instead of failing to read empty file
+  * Factor CREATE TABLE IF NOT EXISTS out of add_entry()</comment>
+    <requestid>1310007</requestid>
+  </revision>
 </revisionlist>
