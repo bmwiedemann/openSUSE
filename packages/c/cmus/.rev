@@ -301,4 +301,14 @@ The program’s features have stabilized and it receives mostly bugfixes and min
   * [FFmpeg] Add .dsf to extension list (DSD support)</comment>
     <requestid>1223491</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>393e65cb0c350e19ab525d3d9b26b6e8</srcmd5>
+    <version>2.12.0</version>
+    <time>1760108990</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-8-compat.patch
+  gh#cmus/cmus#1444
+</comment>
+    <requestid>1310390</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  9 18:45:52 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Add ffmpeg-8-compat.patch
+  gh#cmus/cmus#1444
+
+-------------------------------------------------------------------
 Tue Nov 12 02:41:53 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 2.12.0
