@@ -293,4 +293,23 @@
     <comment> (forwarded request 1283992 from iznogood)</comment>
     <requestid>1284677</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b69da3e9938442d972ccfe896d23187b</srcmd5>
+    <version>2.6.0</version>
+    <time>1760108896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.0:
+  + Add the `remote-apis-socket` sandbox configuration to offer
+    build tools in the sandbox (e.g., recc or bazel) access to the
+    Remote Execution API for caching or (nested) remote execution
+  + Add the `digest-environment` dependency configuration for use
+    by Remote Execution API clients running in the sandbox
+  + Additional source provenance in SourceInfo
+  + Allow showing the element kind in `bst show`
+  + Accept pre-releases for plugins loaded from the `pip` origin
+  + BuildStream now requires BuildBox 1.2.6 or later
+  + Support Python 3.13.4+ and 3.14
+  + Support protobuf 6+ and Click 8.2+ (forwarded request 1309581 from iznogood)</comment>
+    <requestid>1309938</requestid>
+  </revision>
 </revisionlist>
