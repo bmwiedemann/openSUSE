@@ -270,4 +270,15 @@
     <comment></comment>
     <requestid>964983</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e7c31a13e63f12175663ef3ffe3f6242</srcmd5>
+    <version>4.280.0</version>
+    <time>1760108908</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.280.0 (4.28)
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+  4.28  2025-08-29
+    - Fixed DBD:Pg bug with a workaround (https://github.com/bucardo/dbdpg/issues/105). (TFBW)</comment>
+    <requestid>1309974</requestid>
+  </revision>
 </revisionlist>

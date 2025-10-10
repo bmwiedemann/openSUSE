@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  7 13:31:59 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.280.0 (4.28)
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+
+  4.28  2025-08-29
+    - Fixed DBD:Pg bug with a workaround (https://github.com/bucardo/dbdpg/issues/105). (TFBW)
+
+-------------------------------------------------------------------
 Wed Mar 16 03:08:49 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.27

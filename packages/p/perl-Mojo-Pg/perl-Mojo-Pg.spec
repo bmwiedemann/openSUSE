@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-Pg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,32 @@
 
 %define cpan_name Mojo-Pg
 Name:           perl-Mojo-Pg
-Version:        4.27
+Version:        4.280.0
 Release:        0
+# 4.28 -> normalize -> 4.280.0
+%define cpan_version 4.28
 License:        Artistic-2.0
 Summary:        Wrapper around DBD::Pg for using PostgreSql with Mojolicious
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(DBD::Pg) >= 3.007004
-BuildRequires:  perl(Mojolicious) >= 8.50
+BuildRequires:  perl(DBD::Pg) >= 3.7.4
+BuildRequires:  perl(Mojolicious) >= 8.500
 BuildRequires:  perl(SQL::Abstract::Pg) >= 1.0
-Requires:       perl(DBD::Pg) >= 3.007004
-Requires:       perl(Mojolicious) >= 8.50
+Requires:       perl(DBD::Pg) >= 3.7.4
+Requires:       perl(Mojolicious) >= 8.500
 Requires:       perl(SQL::Abstract::Pg) >= 1.0
+Provides:       perl(Mojo::Pg) = %{version}
+Provides:       perl(Mojo::Pg::Database)
+Provides:       perl(Mojo::Pg::Migrations)
+Provides:       perl(Mojo::Pg::PubSub)
+Provides:       perl(Mojo::Pg::Results)
+Provides:       perl(Mojo::Pg::Transaction)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -47,8 +57,9 @@ schema with migrations and build scalable real-time web applications with
 the publish/subscribe pattern.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
