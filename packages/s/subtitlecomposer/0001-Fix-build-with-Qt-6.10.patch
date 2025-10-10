@@ -1,0 +1,28 @@
+From 9b5c17e5069c03198946975dd236143b5d93a08d Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Fri, 10 Oct 2025 09:38:07 +0200
+Subject: [PATCH] Fix build with Qt 6.10
+
+---
+ CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6961511..651d38f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,6 +34,11 @@ include(FeatureSummary)
+ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+ 	Core Widgets Gui Test Qml ${QT_EXTRA_COMPONENTS})
+ 
++if(Qt6Widgets_FOUND AND (Qt6Widgets_VERSION VERSION_GREATER_EQUAL 6.10))
++	find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
++		WidgetsPrivate)
++endif()
++
+ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
+ 	Config ConfigWidgets CoreAddons I18n KIO XmlGui
+ 	Sonnet Codecs TextWidgets WidgetsAddons)
+-- 
+2.51.0
+

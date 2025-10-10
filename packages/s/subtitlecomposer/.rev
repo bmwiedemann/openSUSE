@@ -168,4 +168,15 @@
     <comment></comment>
     <requestid>1305032</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d3ae6e21460e41248350ea2885666da4</srcmd5>
+    <version>0.8.2</version>
+    <time>1760109077</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches:
+  * 0001-Include-libavcodec-avfft.h-only-when-AUDIO_VISUALIZA.patch
+  * 0001-Fix-build-with-Qt-6.10.patch
+- Use Qt 6 for building</comment>
+    <requestid>1310495</requestid>
+  </revision>
 </revisionlist>

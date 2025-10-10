@@ -16,6 +16,10 @@
 #
 
 
+# Arbitrary versions, upstream never bumped the default ones
+%define kf6_version 6.15
+%define qt6_version 6.8
+#
 Name:           subtitlecomposer
 Version:        0.8.2
 Release:        0
@@ -27,29 +31,31 @@ Source0:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{versi
 Source1:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz.sig
 Source2:        subtitlecomposer.keyring
 # PATCH-FIX-UPSTREAM https://invent.kde.org/multimedia/subtitlecomposer/-/merge_requests/48
-Patch10:        use-pocketsphinx-5.0.0-api.patch
-BuildRequires:  cmake >= 3.10
-BuildRequires:  extra-cmake-modules
-BuildRequires:  libQt5Widgets-private-headers-devel
+Patch0:        use-pocketsphinx-5.0.0-api.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Include-libavcodec-avfft.h-only-when-AUDIO_VISUALIZA.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-build-with-Qt-6.10.patch
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  qt6-widgets-private-devel >= %{qt6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Auth)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Kross)
-BuildRequires:  cmake(KF5Sonnet)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libavcodec)
@@ -75,39 +81,39 @@ has speech Recognition using PocketSphinx.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6 \
+  -DBUILD_WITH_QT6:BOOL=TRUE \
+  -DQT_MAJOR_VERSION:STRING=6
 
-%cmake_build
+%qt6_build
 
 %install
-%kf5_makeinstall -C build
+%qt6_install
 
 # Fix rpmlint error (devel-file-in-non-devel-package) and install header files as doc (since they are installed just for help)
 mkdir files_for_doc
-cp -a %{buildroot}%{_kf5_appsdir}/%{name}/scripts/api/ files_for_doc/
-rm -r %{buildroot}%{_kf5_appsdir}/%{name}/scripts/api/
+cp -a %{buildroot}%{_kf6_appsdir}/subtitlecomposer/scripts/api/ files_for_doc/
+rm -r %{buildroot}%{_kf6_appsdir}/subtitlecomposer/scripts/api/
 # Point to the correct path of the header files directory (doc)
-perl -pi -e "s|'api'|'%{_docdir}/subtitlecomposer/api'|" %{buildroot}%{_kf5_appsdir}/%{name}/scripts/README
+perl -pi -e "s|'api'|'%{_docdir}/subtitlecomposer/api'|" %{buildroot}%{_kf6_appsdir}/subtitlecomposer/scripts/README
 
 %find_lang %{name}
-
-%{kf5_post_install}
 
 %files
 %doc ChangeLog README.md files_for_doc/api
 %license LICENSE
-%config(noreplace) %{_kf5_configdir}/%{name}rc
-%dir %{_kf5_iconsdir}/hicolor/256x256
-%dir %{_kf5_iconsdir}/hicolor/256x256/apps
-%{_kf5_applicationsdir}/org.kde.%{name}.desktop
-%{_kf5_appsdir}/%{name}/
-%{_kf5_appstreamdir}/org.kde.%{name}.appdata.xml
-%{_kf5_bindir}/%{name}
-%{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_sharedir}/mime/packages/%{name}.xml
+%config(noreplace) %{_kf6_configdir}/subtitlecomposerrc
+%dir %{_kf6_iconsdir}/hicolor/256x256
+%dir %{_kf6_iconsdir}/hicolor/256x256/apps
+%{_kf6_applicationsdir}/org.kde.subtitlecomposer.desktop
+%{_kf6_appsdir}/subtitlecomposer/
+%{_kf6_appstreamdir}/org.kde.subtitlecomposer.appdata.xml
+%{_kf6_bindir}/subtitlecomposer
+%{_kf6_iconsdir}/hicolor/*/*/*
+%{_kf6_sharedir}/mime/packages/subtitlecomposer.xml
 %if 0%{?suse_version} > 1500
 %ifnarch ppc64 s390x
-%{_kf5_libdir}/%{name}/
+%{_kf6_libdir}/subtitlecomposer/
 %endif
 %endif
 
