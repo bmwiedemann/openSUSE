@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 10 09:53:45 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to 3.17.3:
+  * fix(syncstatussummary): do not attempt to fetch VFS state for 
+    accounts without VFS enabled (gh#nextcloud/desktop#8764)
+  * Bugfix/make text entirely readable (gh#nextcloud/desktop#8772)
+  * fix(proxy): only clean legacy proxy settings after migrating 
+    all accounts. (gh#nextcloud/desktop#8826)
+  * fix(accountsettings): do not to initialize e2ee if account is 
+    disconnected. (gh#nextcloud/desktop#8827)
+  * fix(asyncimageresponse): fetch remote resources in the same 
+    thread as Account (gh#nextcloud/desktop#8859) 
+
+-------------------------------------------------------------------
 Wed Sep 17 05:24:10 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to 3.17.2:
