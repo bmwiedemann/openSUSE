@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  9 09:59:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- gi-find-deps: also scan binaries in %_libexecdir to possibly
+  contain gresources (boo#1251790)
+
+-------------------------------------------------------------------
 Mon Sep 15 06:29:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.86.0:
