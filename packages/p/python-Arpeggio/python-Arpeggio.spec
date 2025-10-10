@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Arpeggio
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        Packrat parser interpreter
 License:        MIT
