@@ -1,0 +1,12 @@
+diff -Nrua trojan-1.16.0.orig/CMakeLists.txt trojan-1.16.0/CMakeLists.txt
+--- trojan-1.16.0.orig/CMakeLists.txt	2020-06-10 06:09:18.000000000 +0200
++++ trojan-1.16.0/CMakeLists.txt	2025-10-09 12:53:46.869236609 +0200
+@@ -36,7 +36,7 @@
+ find_package(Threads REQUIRED)
+ target_link_libraries(trojan ${CMAKE_THREAD_LIBS_INIT})
+ 
+-find_package(Boost 1.66.0 REQUIRED COMPONENTS system program_options)
++find_package(Boost 1.66.0 REQUIRED COMPONENTS program_options)
+ include_directories(${Boost_INCLUDE_DIR})
+ target_link_libraries(trojan ${Boost_LIBRARIES})
+ if(MSVC)

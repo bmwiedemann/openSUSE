@@ -1,7 +1,7 @@
 #
 # spec file for package trojan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/trojan-gfw/trojan
 Source0:        https://github.com/trojan-gfw/trojan/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         boost.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_program_options-devel-impl >= 1.66.0
-BuildRequires:  libboost_system-devel-impl >= 1.66.0
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libmariadb)
 BuildRequires:  pkgconfig(openssl)
@@ -45,7 +45,7 @@ are the GreatER Fire; we ship Trojan Horses.
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %define build_args %{nil}

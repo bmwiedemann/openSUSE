@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  9 10:51:26 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on libboost_system-devel-impl,
+  removed on boost 1.89 (bsc#1249599)
+  * Add patch boost.patch
+
+-------------------------------------------------------------------
 Wed Feb 28 19:55:26 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Align path for document installation between openSUSE versions.
