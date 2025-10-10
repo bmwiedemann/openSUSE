@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:27:39 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.500.0 (1.50)
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.50 2025-10-06 TEODESIAN
+      - Fix some spelling and grammar issues in POD, and some pod2man issues (see contributors)
+      - Slightly better reporting of errors based on a patch from tod22.
+
+-------------------------------------------------------------------
 Fri Apr  7 03:08:22 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.49
