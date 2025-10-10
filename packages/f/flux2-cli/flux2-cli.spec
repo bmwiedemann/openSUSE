@@ -20,16 +20,16 @@
 
 # check these versions on updates
 # see flux2/manifests/bases/*/kustomization.yaml
-%define helm_controller_version             v1.4.1
-%define image_automation_controller_version v1.0.1
-%define image_reflector_controller_version  v1.0.1
-%define kustomize_controller_version        v1.7.0
-%define notification_controller_version     v1.7.2
-%define source_controller_version           v1.7.1
-%define source_watcher_version              v2.0.1
+%define helm_controller_version             v1.4.2
+%define image_automation_controller_version v1.0.2
+%define image_reflector_controller_version  v1.0.2
+%define kustomize_controller_version        v1.7.1
+%define notification_controller_version     v1.7.3
+%define source_controller_version           v1.7.2
+%define source_watcher_version              v2.0.2
 
 Name:           flux2-cli
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
@@ -55,10 +55,10 @@ Source102:      download_yaml.sh
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  git-core
-BuildRequires:  go >= 1.25
 BuildRequires:  helm
 BuildRequires:  kustomize
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Flux is a tool for keeping Kubernetes clusters in sync with sources of

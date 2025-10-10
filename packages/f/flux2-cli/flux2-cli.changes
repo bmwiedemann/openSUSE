@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 09 05:14:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.7.2:
+  * Components changelog
+    - source-controller v1.7.2
+    - kustomize-controller v1.7.1
+    - notification-controller v1.7.3
+    - helm-controller v1.4.2
+    - image-reflector-controller v1.0.2
+    - image-automation-controller v1.0.2
+    - source-watcher v2.0.2
+  * CLI changelog
+    - [release/v2.7.x] Fix manifest generation for
+      --storage-adv-addr and --events-addr flags by
+      @github-actions[bot] in #5575
+    - [release/v2.7.x] Update dependencies to Kubernetes v1.34.1
+      and Go 1.25.2 by @github-actions[bot] in #5577
+    - [release/v2.7.x] Update toolkit components by
+      @github-actions[bot] in #5579
+
+-------------------------------------------------------------------
 Tue Oct 07 04:56:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.7.1:
