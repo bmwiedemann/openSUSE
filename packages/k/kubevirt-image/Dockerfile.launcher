@@ -18,6 +18,7 @@
 #!BuildTag: opensuse/virt-launcher:%%kubevirt_ver%%-%RELEASE%
 #!BuildTag: opensuse/virt-launcher:%%kubevirt_ver%%
 #!BuildTag: opensuse/virt-launcher:1.6
+#!BuildTag: opensuse/virt-launcher:latest
 #!BcntSyncTag: kubevirt-image
 
 FROM opensuse/bci/bci-micro:latest AS target

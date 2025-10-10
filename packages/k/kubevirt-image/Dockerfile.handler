@@ -18,6 +18,7 @@
 #!BuildTag: opensuse/virt-handler:%%kubevirt_ver%%-%RELEASE%
 #!BuildTag: opensuse/virt-handler:%%kubevirt_ver%%
 #!BuildTag: opensuse/virt-handler:1.6
+#!BuildTag: opensuse/virt-handler:latest
 #!BcntSyncTag: kubevirt-image
 
 FROM opensuse/bci/bci-micro:latest AS target

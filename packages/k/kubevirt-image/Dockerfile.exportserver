@@ -18,6 +18,7 @@
 #!BuildTag: opensuse/virt-exportserver:%%kubevirt_ver%%-%RELEASE%
 #!BuildTag: opensuse/virt-exportserver:%%kubevirt_ver%%
 #!BuildTag: opensuse/virt-exportserver:1.6
+#!BuildTag: opensuse/virt-exportserver:latest
 #!BcntSyncTag: kubevirt-image
 
 FROM opensuse/bci/bci-micro:latest AS target
