@@ -18,10 +18,10 @@
 
 %define cpan_name Mail-Transport
 Name:           perl-Mail-Transport
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
-# 3.006 -> normalize -> 3.6.0
-%define cpan_version 3.006
+# 3.007 -> normalize -> 3.7.0
+%define cpan_version 3.007
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Email message exchange
 URL:            https://metacpan.org/release/%{cpan_name}

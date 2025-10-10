@@ -24,4 +24,16 @@
   	- use defined-or</comment>
     <requestid>1309343</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>88eb9e6cf25f4ee65fcf9681bd2f5084</srcmd5>
+    <version>3.7.0</version>
+    <time>1760108913</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.7.0 (3.007)
+   see /usr/share/doc/packages/perl-Mail-Transport/ChangeLog
+  version 3.007: Wed  3 Sep 10:47:04 CEST 2025
+  	Fixes:
+  	- smtp when the message body does not naturally end on a blank.</comment>
+    <requestid>1309977</requestid>
+  </revision>
 </revisionlist>

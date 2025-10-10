@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  7 12:46:39 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.7.0 (3.007)
+   see /usr/share/doc/packages/perl-Mail-Transport/ChangeLog
+
+  version 3.007: Wed  3 Sep 10:47:04 CEST 2025
+
+  	Fixes:
+  	- smtp when the message body does not naturally end on a blank.
+
+-------------------------------------------------------------------
 Thu Aug 28 10:34:50 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.6.0 (3.006)
