@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:52:08 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.30.0 (1.03)
+   see /usr/share/doc/packages/perl-User-Identity/ChangeLog
+
+  version 1.03: Fri 12 Sep 15:25:39 CEST 2025
+
+  	Changes:
+  	- require Perl 5.16 (2012)
+
+  	Improvements:
+  	- convert to OODoc 3.04
+  	- add .gitignore
+
+-------------------------------------------------------------------
 Tue May 20 10:43:58 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
