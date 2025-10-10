@@ -21,27 +21,26 @@
 %define short_ver %{major_ver}.%{minor_ver}
 %define shlib libparaview%{major_ver}_%{minor_ver}
 
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1600
 %bcond_with    fast_float
-%bcond_with    fmt
 %bcond_with    haru
 %bcond_with    jsoncpp
 %bcond_with    proj
 %bcond_with    nlohmann
 %bcond_with    pugixml
 %bcond_with    cli11
-%bcond_without gl2ps
-%define gcc_version 8
-%else
-%bcond_without fast_float
 %bcond_without fmt
+%bcond_without gl2ps
+%else
+%bcond_with    fmt
+%bcond_with    gl2ps
+%bcond_without fast_float
 %bcond_without haru
 %bcond_without jsoncpp
 %bcond_without proj
 %bcond_without nlohmann
 %bcond_without pugixml
 %bcond_without cli11
-%bcond_with gl2ps
 %endif
 
 %bcond_without verdict
@@ -75,8 +74,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  double-conversion-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc%{gcc_version}-c++
-BuildRequires:  gcc%{gcc_version}-fortran
+BuildRequires:  gcc-c++
+BuildRequires:  gcc-fortran
 BuildRequires:  gnuplot
 BuildRequires:  graphviz
 BuildRequires:  hdf5-devel
@@ -130,6 +129,7 @@ BuildRequires:  pkgconfig(CLI11)
 %endif
 %if %{with fmt}
 BuildRequires:  fmt-devel
+BuildConflicts: fmt-devel >= 12
 %endif
 %if %{with gl2ps}
 BuildRequires:  gl2ps-devel >= 1.4.1
@@ -232,11 +232,6 @@ sed -i -e '/VERSION .*/ d' VTK/ThirdParty/fast_float/CMakeLists.txt
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 %global __builder ninja
-%if 0%{?gcc_version}
-export CC=gcc-%{gcc_version}
-export CXX=g++-%{gcc_version}
-export FC=gfortran-%{gcc_version}
-%endif
 
 %cmake -DPARAVIEW_BUILD_SHARED_LIBS:BOOL=ON \
 %if 0%{?suse_version} <= 1500 && 0%{?is_opensuse}

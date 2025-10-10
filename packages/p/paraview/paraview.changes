@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 03 00:01:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Use internal fmt in Tumbleweed and external in Leap 16.
+- Dropped support for leap 15.x.
+- Use default GCC version.
+
+-------------------------------------------------------------------
 Thu Sep 11 00:01:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
 
 - Update to version 6.0.0:
