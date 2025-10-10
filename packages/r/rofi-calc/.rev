@@ -200,4 +200,13 @@
   * Add ability to configure via config.rasi #138</comment>
     <requestid>1288924</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9954e26e6e09cb90f83e3bbaebb79ce2</srcmd5>
+    <version>2.4.1</version>
+    <time>1760109007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1:
+  * Fix segfault on exit #143</comment>
+    <requestid>1310427</requestid>
+  </revision>
 </revisionlist>

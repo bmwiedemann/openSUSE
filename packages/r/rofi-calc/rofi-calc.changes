@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 10 05:07:35 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.4.1:
+  * Fix segfault on exit #143
+
+-------------------------------------------------------------------
 Sat Jun 28 06:55:56 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.4.0:
