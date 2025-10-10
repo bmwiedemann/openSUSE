@@ -2119,4 +2119,12 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1309935</requestid>
   </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>0f9dee880cdc203469b90d4748680305</srcmd5>
+    <version>20251008</version>
+    <time>1760109014</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1251862</comment>
+    <requestid>1310603</requestid>
+  </revision>
 </revisionlist>
