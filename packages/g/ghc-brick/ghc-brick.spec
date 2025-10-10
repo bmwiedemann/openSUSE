@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        A declarative terminal user interface library
 License:        BSD-3-Clause

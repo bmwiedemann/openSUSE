@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  2 16:49:16 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 2.10.
+  2.10
+  ----
+
+  * Updated `brick` to build with `microlens == 0.5.0.0` which moved its
+    Field* classes to `Lens.Micro.FieldN`.
+
+-------------------------------------------------------------------
 Wed May 28 18:38:17 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update brick to version 2.9.
