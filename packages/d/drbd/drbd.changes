@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 10 06:23:00 UTC 2025 - heming zhao <heming.zhao@suse.com>
+
+- drbd: fix build error against kernel v6.17.0 (boo#1251834)
+  * add suse special patch
+    + boo1251834-fix_build_error_against_kernel_v6.17.0.patch
+
+-------------------------------------------------------------------
 Thu Aug 21 07:25:08 UTC 2025 - heming zhao <heming.zhao@suse.com>
 
 - drbd: fix build error against kernel v6.16.1 (boo#1248426)

@@ -1,0 +1,45 @@
+For details, check boo#1251834
+
+---
+
+diff -Nupr a/drbd/drbd_dax_pmem.c b/drbd/drbd_dax_pmem.c
+--- a/drbd/drbd_dax_pmem.c	2025-10-10 14:08:56.052716428 +0800
++++ b/drbd/drbd_dax_pmem.c	2025-10-10 14:09:30.526227702 +0800
+@@ -22,7 +22,6 @@
+ #include <linux/vmalloc.h>
+ #include <linux/slab.h>
+ #include <linux/dax.h>
+-#include <linux/pfn_t.h>
+ #include <linux/libnvdimm.h>
+ #include <linux/blkdev.h>
+ #include "drbd_int.h"
+@@ -35,7 +34,7 @@ static int map_superblock_for_dax(struct
+ 	pgoff_t pgoff = bdev->md.md_offset >> (PAGE_SHIFT - SECTOR_SHIFT);
+ 	void *kaddr;
+ 	long len;
+-	pfn_t pfn_unused; /* before 4.18 it is required to pass in non-NULL */
++	unsigned long pfn_unused; /* before 4.18 it is required to pass in non-NULL */
+ 	int id;
+ 
+ 	id = dax_read_lock();
+@@ -93,7 +92,7 @@ int drbd_dax_map(struct drbd_backing_dev
+ 	long al_offset_byte = (al_sector - first_sector) << SECTOR_SHIFT;
+ 	void *kaddr;
+ 	long len;
+-	pfn_t pfn_unused; /* before 4.18 it is required to pass in non-NULL */
++	unsigned long pfn_unused; /* before 4.18 it is required to pass in non-NULL */
+ 	int id;
+ 
+ 	id = dax_read_lock();
+diff -Nupr a/drbd/drbd-kernel-compat/tests/dax_direct_access_takes_mode.c b/drbd/drbd-kernel-compat/tests/dax_direct_access_takes_mode.c
+--- a/drbd/drbd-kernel-compat/tests/dax_direct_access_takes_mode.c	2025-10-10 14:08:41.597662468 +0800
++++ b/drbd/drbd-kernel-compat/tests/dax_direct_access_takes_mode.c	2025-10-10 14:09:58.190282356 +0800
+@@ -3,7 +3,7 @@
+ #include <linux/dax.h>
+ 
+ long foo(struct dax_device *dax_dev, pgoff_t pgoff, long nr_pages,
+-		enum dax_access_mode mode, void **kaddr, pfn_t *pfn)
++		enum dax_access_mode mode, void **kaddr, unsigned long *pfn)
+ {
+ 	return dax_direct_access(dax_dev, pgoff, nr_pages, mode, kaddr, pfn);
+ }
