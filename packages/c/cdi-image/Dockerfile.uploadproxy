@@ -18,6 +18,7 @@
 #!BuildTag: opensuse/cdi-uploadproxy:%%cdi_ver%%-%RELEASE%
 #!BuildTag: opensuse/cdi-uploadproxy:%%cdi_ver%%
 #!BuildTag: opensuse/cdi-uploadproxy:1.62
+#!BuildTag: opensuse/cdi-uploadproxy:latest
 #!BcntSyncTag: cdi-image
 
 FROM opensuse/bci/bci-micro:latest AS target

@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of cdi-image</comment>
     <requestid>1309390</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de2a6d2eefea7adca2f2a8ed7dab3373</srcmd5>
+    <version>unknown</version>
+    <time>1760108959</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1310029</requestid>
+  </revision>
 </revisionlist>

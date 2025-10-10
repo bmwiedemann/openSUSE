@@ -18,6 +18,7 @@
 #!BuildTag: opensuse/cdi-apiserver:%%cdi_ver%%-%RELEASE%
 #!BuildTag: opensuse/cdi-apiserver:%%cdi_ver%%
 #!BuildTag: opensuse/cdi-apiserver:1.62
+#!BuildTag: opensuse/cdi-apiserver:latest
 #!BcntSyncTag: cdi-image
 
 FROM opensuse/bci/bci-micro:latest AS target
