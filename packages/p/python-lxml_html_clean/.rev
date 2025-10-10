@@ -26,4 +26,14 @@ Need since python-lxml &gt;= 5.2.0 among others for calibre.</comment>
     it did before the 0.2.0 release.</comment>
     <requestid>1268729</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>096ede103167a82a7ff21ba2f7d5b89a</srcmd5>
+    <version>0.4.3</version>
+    <time>1760109012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.3:
+  * Tests updated to work correctly with new lxml and libxml2 releases.
+  * Python 3.6 and 3.7 are no longer tested.</comment>
+    <requestid>1310437</requestid>
+  </revision>
 </revisionlist>
