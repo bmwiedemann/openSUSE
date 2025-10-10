@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  2 11:05:40 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- redefine %meson_build/%meson_install on Leap 15.6 in order to fix
+  build
+
+-------------------------------------------------------------------
 Thu Sep 25 08:37:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream bugfix patches:
