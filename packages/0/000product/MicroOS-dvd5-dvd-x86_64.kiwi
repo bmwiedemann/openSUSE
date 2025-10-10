@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20251008" schemaversion="4.1">
+<image name="OBS__MicroOS___20251009" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20251008</productvar>
+      <productvar name="VERSION">20251009</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20251008,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20251009,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20251008/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20251009/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1370,7 +1370,7 @@
       <repopackage name="libxkbfile1"/>
       <repopackage name="libxkbregistry0"/>
       <repopackage name="libxml++-3_0-1"/>
-      <repopackage name="libxml2-2"/>
+      <repopackage name="libxml2-16"/>
       <repopackage name="libxml2-tools"/>
       <repopackage name="libxmlb2"/>
       <repopackage name="libxmlsec1-1"/>

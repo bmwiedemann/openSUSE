@@ -3907,6 +3907,10 @@ unsorted:
   - fatcat 
   - fatrace 
   - fatsort 
+  - faust 
+  - faust-android-devel 
+  - faust-devel 
+  - faust-ios-devel 
   - fbcat 
   - fbreader 
   - fbterm 
@@ -10221,6 +10225,7 @@ unsorted:
   - kldap-devel 
   - klee 
   - klee-uclibc-devel-static 
+  - kleingebaeck 
   - klettres 
   - klettres-lang 
   - klevernotes 
@@ -11070,6 +11075,7 @@ unsorted:
   - libGraphicsMagick++-devel 
   - libGraphicsMagickWand-Q16-2 
   - libHACD3_17 
+  - libHTTPDFaust0 
   - libHX-devel 
   - libHYPRE2_20_0 
   - libHYPRE2_20_0-mpich 
@@ -11187,6 +11193,7 @@ unsorted:
   - libMyGUIEngine3_4_3 
   - libOIS-devel 
   - libOIS1_5_0 
+  - libOSCFaust1 
   - libOgreBites-devel 
   - libOgreBites13_6 
   - libOgreBitesQt13_6 
@@ -13075,6 +13082,8 @@ unsorted:
   - libfastlz1 
   - libfastlz1-x86-64-v3 
   - libfasttext0 
+  - libfaust2 
+  - libfaustmachine0 
   - libfaxutil7_0_11 
   - libfcache-devel 
   - libfcache1 
@@ -13587,6 +13596,7 @@ unsorted:
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
   - libgnuradio-osmosdr0_2_0 
+  - libgnustep-base1_31 
   - libgnutls-dane-devel 
   - libgnutls-devel 
   - libgnutls-devel-32bit 
@@ -14917,6 +14927,7 @@ unsorted:
   - liboauth-devel 
   - libobby-0_4-1 
   - libobjc2-devel 
+  - libobjc4 
   - libobjc4-32bit 
   - libobjc4-gcc13 
   - libobjc4-gcc13-32bit 
@@ -17156,7 +17167,7 @@ unsorted:
   - libxml++40-devel 
   - libxml-security-c-devel 
   - libxml-security-c30 
-  - libxml2-2-32bit 
+  - libxml2-16-32bit 
   - libxml2-devel 
   - libxml2-devel-32bit 
   - libxml2-doc 
@@ -19558,6 +19569,20 @@ unsorted:
   - netbeans-javaparser 
   - netbeans-resolver 
   - netbeans-svnclientadapter 
+  - netbird 
+  - netbird-applet 
+  - netbird-bash-completion 
+  - netbird-fish-completion 
+  - netbird-management 
+  - netbird-management-bash-completion 
+  - netbird-management-fish-completion 
+  - netbird-management-zsh-completion 
+  - netbird-relay 
+  - netbird-signal 
+  - netbird-signal-bash-completion 
+  - netbird-signal-fish-completion 
+  - netbird-signal-zsh-completion 
+  - netbird-zsh-completion 
   - netcalc 
   - netcdf 
   - netcdf-devel 
@@ -37542,6 +37567,8 @@ unsorted:
   - stb-devel 
   - stdman 
   - steam-powerbuttond 
+  - steamdeck-dsp 
+  - steamdeck-firmware 
   - steampipe 
   - steinberg-bravura-fonts 
   - stellarbatchsolver 
@@ -48503,6 +48530,7 @@ unsorted:
   - umoci 
   - umockdev 
   - umockdev-devel 
+  - unar 
   - unbound-devel 
   - unbound-munin 
   - unclutter 
@@ -48545,6 +48573,7 @@ unsorted:
   - unoconv 
   - unpack-install-jammer 
   - unpaper 
+  - unrar_wrapper 
   - unshield 
   - unshield-devel 
   - unzip-rcc 
