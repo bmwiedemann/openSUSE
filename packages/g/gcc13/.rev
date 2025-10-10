@@ -478,4 +478,15 @@
   already and make them use unsuffixed binaries.</comment>
     <requestid>1294099</requestid>
   </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>f0cac575e1c73471bc905bda7750d3a7</srcmd5>
+    <version>13.4.0+git9739</version>
+    <time>1760108886</time>
+    <user>dimstar_suse</user>
+    <comment>I need gcc13 building in factory (for now), for the stagings, so
+that go1.21 can be build.  I believe Staging:L for now.
+
+- Add gcc13-sanitizer-vs-termio.diff to fix build with glibc 2.42.</comment>
+    <requestid>1310027</requestid>
+  </revision>
 </revisionlist>

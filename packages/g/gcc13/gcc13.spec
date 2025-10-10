@@ -1,7 +1,7 @@
 #
 # spec file for package gcc13
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -390,6 +390,7 @@ Patch24:        gcc13-sanitizer-remove-crypt-interception.patch
 Patch26:        gcc13-pr101523.patch
 Patch27:        gcc13-amdgcn-remove-fiji.patch
 Patch28:        gcc13-bsc1239566.patch
+Patch29:        gcc13-sanitizer-vs-termio.diff
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -2381,6 +2382,7 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 26 -p1
 %patch -P 27 -p1
 %patch -P 28 -p1
+%patch -P 29 -p1
 %patch -P 51
 %patch -P 60 -p1
 %patch -P 61 -p1
