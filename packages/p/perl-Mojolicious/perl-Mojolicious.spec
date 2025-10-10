@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojolicious
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Mojolicious
 Name:           perl-Mojolicious
-Version:        9.410.0
+Version:        9.420.0
 Release:        0
-# 9.41 -> normalize -> 9.410.0
-%define cpan_version 9.41
+# 9.42 -> normalize -> 9.420.0
+%define cpan_version 9.42
 License:        Artistic-2.0
 Summary:        Real-time web framework
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -70,7 +71,6 @@ Provides:       perl(Mojo::JSON)
 Provides:       perl(Mojo::JSON::Pointer)
 Provides:       perl(Mojo::Loader)
 Provides:       perl(Mojo::Log)
-Provides:       perl(Mojo::Log::_Capture)
 Provides:       perl(Mojo::Message)
 Provides:       perl(Mojo::Message::Request)
 Provides:       perl(Mojo::Message::Response)
@@ -89,7 +89,6 @@ Provides:       perl(Mojo::Server::Morbo)
 Provides:       perl(Mojo::Server::Morbo::Backend)
 Provides:       perl(Mojo::Server::Morbo::Backend::Poll)
 Provides:       perl(Mojo::Server::PSGI)
-Provides:       perl(Mojo::Server::PSGI::_IO)
 Provides:       perl(Mojo::Server::Prefork)
 Provides:       perl(Mojo::Template)
 Provides:       perl(Mojo::Transaction)
@@ -103,7 +102,6 @@ Provides:       perl(Mojo::UserAgent::Proxy)
 Provides:       perl(Mojo::UserAgent::Server)
 Provides:       perl(Mojo::UserAgent::Transactor)
 Provides:       perl(Mojo::Util)
-Provides:       perl(Mojo::Util::_Guard)
 Provides:       perl(Mojo::WebSocket)
 Provides:       perl(Mojolicious) = %{version}
 Provides:       perl(Mojolicious::Command)

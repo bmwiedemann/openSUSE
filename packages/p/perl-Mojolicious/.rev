@@ -1704,4 +1704,24 @@ Tons of changes, just the peak of the ice berg:
     - Fixed a bug where Host headers were not initialized correctly. (ether)</comment>
     <requestid>1291919</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>9bdc74ac647b660e238bc1b85d76029e</srcmd5>
+    <version>9.420.0</version>
+    <time>1760109106</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 9.420.0 (9.42)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  9.42  2025-10-01
+    - Un-deprecated the spurt method in Mojo::File, it is now an alternative to spew.
+    - Removed experimental status from top-level await support in Mojo::Promise.
+    - Removed experimental status from encrypted session cookie support.
+    - Removed experimental status from persistent cookie support.
+    - Removed experimental status from samesite cookie support.
+    - Removed experimental status from colourful log messages.
+    - Removed experimental status from freeze option in Mojo::IOLoop.
+    - Removed experimental status from check and raise functions in Mojo::Exception.
+    - Fixed Cpanel::JSON::XS compatibility issues. (ilmari)
+    - Fixed async/await memory leak in Mojo::Promise. (TFBW)</comment>
+    <requestid>1310541</requestid>
+  </revision>
 </revisionlist>

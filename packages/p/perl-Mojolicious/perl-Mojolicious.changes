@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:01:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.420.0 (9.42)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.42  2025-10-01
+    - Un-deprecated the spurt method in Mojo::File, it is now an alternative to spew.
+    - Removed experimental status from top-level await support in Mojo::Promise.
+    - Removed experimental status from encrypted session cookie support.
+    - Removed experimental status from persistent cookie support.
+    - Removed experimental status from samesite cookie support.
+    - Removed experimental status from colourful log messages.
+    - Removed experimental status from freeze option in Mojo::IOLoop.
+    - Removed experimental status from check and raise functions in Mojo::Exception.
+    - Fixed Cpanel::JSON::XS compatibility issues. (ilmari)
+    - Fixed async/await memory leak in Mojo::Promise. (TFBW)
+
+-------------------------------------------------------------------
 Fri Jul  4 05:38:02 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.410.0 (9.41)
