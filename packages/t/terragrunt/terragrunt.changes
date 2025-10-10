@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 10 04:58:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.89.4:
+  * Bug Fixes
+    - Collection of exit code for -detailed-exitcode behavior in
+      run --all
+      Improved run-all plan -detailed-exitcode aggregation to
+      correctly return 2 when any unit has drift, even if another
+      unit hits a retryable error.
+  * What's Changed
+    - fix(run-all): corrected -detailed-exitcode aggregation
+      (#4932)
+    - Fixing up signup form (#4933)
+    - Form updates (#4911)
+    - docs: stack generate documentation update (#4930)
+
+-------------------------------------------------------------------
 Thu Oct 09 05:11:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.89.3:
