@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  9 08:48:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.4.126
+  * amdgpu: update marketing names
+  * xf86drm: Add faux bus
+  * modetest: fix build error on is_power_of_two()
+  * drm/amdgpu: Add user queue HQD count to hw_ip info
+  * modetest: util: add seed argument for noise patterns
+  * modetest: util: pattern: add new patterns
+
+-------------------------------------------------------------------
 Thu Oct  2 11:17:36 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable valgrind support on riscv64
