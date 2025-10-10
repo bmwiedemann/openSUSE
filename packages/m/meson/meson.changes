@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  6 09:35:45 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Add ensure-pending-subproject-options-are-validated.patch
+  Fixes unhandled exceptions when boolean options originating from
+  key=value strings are passed to subprojects.
+  gh#mesonbuild/meson#15062
+
+-------------------------------------------------------------------
 Tue Sep 23 07:50:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.1:

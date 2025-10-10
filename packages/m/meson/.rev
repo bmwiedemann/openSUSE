@@ -1151,4 +1151,12 @@ Smoketest in GNOME:Next passed</comment>
     <comment>Update to 1.9.1 (forwarded request 1306657 from dimstar)</comment>
     <requestid>1306722</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>93f35940906c38dce9b2ce06b7d0d40c</srcmd5>
+    <version>1.9.1</version>
+    <time>1760108857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1309859</requestid>
+  </revision>
 </revisionlist>
