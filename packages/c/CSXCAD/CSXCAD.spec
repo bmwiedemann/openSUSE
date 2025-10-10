@@ -1,7 +1,7 @@
 #
 # spec file for package CSXCAD
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         boost.patch
 # PATCH-FIX-OPENSUSE CSXCAD-octave-AppCSXCAD-load.patch -- Fix AppCSXCAD.sh load
 Patch3:         CSXCAD-octave-AppCSXCAD-load.patch
 BuildRequires:  %{python_module Cython}
@@ -44,7 +45,6 @@ BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_serialization-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  lzma-devel
 BuildRequires:  octave-devel

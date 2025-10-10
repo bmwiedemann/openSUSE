@@ -1,0 +1,11 @@
+diff -Nrua CSXCAD-0.6.3.orig/CMakeLists.txt CSXCAD-0.6.3/CMakeLists.txt
+--- CSXCAD-0.6.3.orig/CMakeLists.txt	2023-10-22 16:26:48.000000000 +0200
++++ CSXCAD-0.6.3/CMakeLists.txt	2025-10-10 11:40:09.608834958 +0200
+@@ -120,7 +120,6 @@
+ # TODO what are the needed libs?
+ find_package(Boost 1.46 COMPONENTS
+   thread
+-  system
+   date_time
+   serialization
+   chrono

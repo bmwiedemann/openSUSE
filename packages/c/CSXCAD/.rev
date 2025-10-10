@@ -98,4 +98,12 @@ for adi:25</comment>
     <comment></comment>
     <requestid>1297501</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ac4df5c78466ec4a27d4c3801ecd4856</srcmd5>
+    <version>0.6.3</version>
+    <time>1760109093</time>
+    <user>dimstar_suse</user>
+    <comment>* Add patch boost.patch (forwarded request 1310522 from anag_factory)</comment>
+    <requestid>1310523</requestid>
+  </revision>
 </revisionlist>
