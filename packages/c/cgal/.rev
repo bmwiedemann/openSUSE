@@ -347,4 +347,26 @@
 - libboost_system was removed upstream (bsc#1249599)</comment>
     <requestid>1307048</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5a1898e47eca419fa5914ed97fe7e6f3</srcmd5>
+    <version>6.1</version>
+    <time>1760109021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1:
+  General Changes:
+  * The new list of supported compilers is:
+    + Visual C++ 15.9, 16.10, 17.0 (from Visual Studio 2017, 2019 and 2022) or later
+    + Gnu g++ 12.2.0 or later (on Linux)
+    + LLVM Clang version 20.1.6 or later (on Linux)
+    + Apple Clang compiler versions 12.0.5 and 12.0.5 (on macOS)
+  * The minimal supported version of Boost is now 1.74.0.
+  New package:
+  * 3D Constrained Triangulations
+  * 3D Isosurfacing
+  * dD Fréchet Distance
+  * 2D Triangulations on Hyperbolic Surfaces
+  For details see:
+  https://github.com/CGAL/cgal/releases/tag/v6.1</comment>
+    <requestid>1310432</requestid>
+  </revision>
 </revisionlist>

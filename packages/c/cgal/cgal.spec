@@ -23,7 +23,7 @@
 #@TODO : ask for rename and take into account the obsolete existant thing. like libcgal deps
 %define _sourcename CGAL
 Name:           cgal
-Version:        6.0.2
+Version:        6.1
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -38,8 +38,8 @@ BuildRequires:  fdupes
 BuildRequires:  glu-devel
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
-BuildRequires:  libboost_atomic-devel >= 1.72
-BuildRequires:  libboost_thread-devel >= 1.72
+BuildRequires:  libboost_atomic-devel >= 1.74
+BuildRequires:  libboost_thread-devel >= 1.74
 BuildRequires:  mpfr-devel
 BuildRequires:  xz
 BuildRequires:  zlib-devel
