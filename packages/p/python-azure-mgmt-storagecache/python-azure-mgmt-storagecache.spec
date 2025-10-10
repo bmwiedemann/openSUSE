@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-storagecache
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Microsoft Azure Storagecache Management Client Library
 License:        MIT
@@ -55,8 +55,6 @@ This package has been tested with Python 2.7, 3.5, 3.6 and 3.7.
 
 %prep
 %setup -q -n azure_mgmt_storagecache-%{version}
-# see: https://github.com/Azure/azure-sdk-for-python/issues/43082
-rm -rf generated_samples generated_tests
 
 %build
 %pyproject_wheel
