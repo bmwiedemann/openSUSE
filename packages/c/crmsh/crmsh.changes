@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 25 02:29:49 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250925.91a04ca5:
+  * Fix: bootstrap: public keys from ssh-agent are not added to local authorized_keys in `crm cluster join` (#1916)
+  * Fix: log: divided-by-zero when terminal width is 0 in progress bar
+  * Dev: behave: add functional test cases for bootstrapping with ssh password
+  * Dev: behave: allow to use a pypi mirror with a environment variable
+  * Dev: test_container: add expect and remove automake
+
+-------------------------------------------------------------------
+Fri Sep 19 03:24:31 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250919.fb15985a:
+  * Fix: cibconfig: Add utils.auto_convert_role=True flag in method CibObjectSetCli.save
+
+-------------------------------------------------------------------
 Tue Sep 16 03:30:29 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250916.c8f0c88a:
