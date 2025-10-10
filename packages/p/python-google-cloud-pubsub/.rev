@@ -7,4 +7,12 @@
     <comment>new package, needed for python-kombu update</comment>
     <requestid>1268172</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cfe1514e96401deb330161a5287adda4</srcmd5>
+    <version>2.29.0</version>
+    <time>1760108949</time>
+    <user>dimstar_suse</user>
+    <comment>python311</comment>
+    <requestid>1310011</requestid>
+  </revision>
 </revisionlist>

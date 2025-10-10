@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-pubsub
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-google-cloud-pubsub
 Version:        2.29.0
 Release:        0
@@ -23,14 +24,12 @@ Summary:        Google Cloud Pub/Sub API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-pubsub
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-pubsub/google_cloud_pubsub-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module google-api-core >= 1.34.0}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4}
@@ -42,6 +41,8 @@ BuildRequires:  %{python_module proto-plus >= 1.22.0}
 BuildRequires:  %{python_module proto-plus >= 1.22.2}
 BuildRequires:  %{python_module proto-plus >= 1.25.0}
 BuildRequires:  %{python_module protobuf >= 3.20.2}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-google-api-core >= 1.34.0
