@@ -1260,4 +1260,13 @@
   * Update flake inputs</comment>
     <requestid>1304746</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>48687aefd54d1d136fffbe51569bc088</srcmd5>
+    <version>0.23.4</version>
+    <time>1760109004</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.23.4:
+  * Update nixpkgs/cargo dependencies</comment>
+    <requestid>1310425</requestid>
+  </revision>
 </revisionlist>
