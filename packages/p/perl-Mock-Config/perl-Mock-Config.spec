@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mock-Config
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define cpan_name Mock-Config
 Name:           perl-Mock-Config
-Version:        0.40.0
+Version:        0.50.0
 Release:        0
-# 0.04 -> normalize -> 0.40.0
-%define cpan_version 0.04
+# 0.05 -> normalize -> 0.50.0
+%define cpan_version 0.05
 License:        Artistic-2.0
 Summary:        Temporarily set Config or XSConfig values
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -37,7 +38,7 @@ Provides:       perl(Mock::Config) = %{version}
 temporarily set Config or XSConfig values
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
