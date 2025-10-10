@@ -1,0 +1,62 @@
+From d68d0748c4493ef3192e4f59756ece2bd2fbb004 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 19 Aug 2025 12:06:17 +0200
+Subject: [PATCH] hplip: fix driver probing using avahi
+
+- _printer._tcp doesn't work for my printer (HP Smart Tank 7300 series).
+  mdns.py uses _pdl-datastream._tcp, which works.
+- my printer sends `usb_MDL` property, which mdns.py accepts as alternative
+  for `ty`.
+- "bonjour" search protocol exists nowhere else in the code. "avahi" does.
+---
+ base/avahi.py | 8 ++++++--
+ probe.py      | 4 ++--
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/base/avahi.py b/base/avahi.py
+index 51795dd..b82a089 100755
+--- a/base/avahi.py
++++ b/base/avahi.py
+@@ -37,6 +37,9 @@ def detectNetworkDevices(ttl=4, timeout=10):
+     # Obtain all the resolved services which has service type '_printer._tcp' from avahi-browse
+     p = Popen(['avahi-browse', '-kprt', '_printer._tcp'], stdout=PIPE)
+     output = to_string_utf8(p.communicate()[0])
++    p = Popen(['avahi-browse', '-kprt', '_pdl-datastream._tcp'], stdout=PIPE)
++    output += to_string_utf8(p.communicate()[0])
++
+     for line in output.splitlines():
+         if line.startswith('='):
+             bits = line.split(';')
+@@ -55,11 +58,12 @@ def detectNetworkDevices(ttl=4, timeout=10):
+                         details = bits[9].split('" "')
+                         for item in details:
+                             key, value = item.split('=', 1)
+-                            if key == 'ty':
++                            if key == 'ty' or key == 'usb_MDL':
+                                 y['mdns'] = value
+                                 y['device1'] = "MFG:Hewlett-Packard;MDL:%s;CLS:PRINTER;" % value
+                                 break
+-                        found_devices[y['ip']] = y
++                        if y['ip'] not in found_devices:
++                            found_devices[y['ip']] = y
+                         #log.debug("ip=%s hn=%s ty=%s" %(ip,y['hn'], y['mdns']))
+                 except socket.gaierror:
+                     pass
+diff --git a/probe.py b/probe.py
+index 82e5de9..3bf3ba8 100755
+--- a/probe.py
++++ b/probe.py
+@@ -93,8 +93,8 @@ try:
+         elif o in ('-m', '--method'):
+             method = a.lower().strip()
+ 
+-            if method not in ('slp', 'mdns', 'bonjour'):
+-                mod.usage(error_msg=["Invalid network search protocol name. Must be 'slp' or 'mdns'."])
++            if method not in ('slp', 'mdns', 'avahi'):
++                mod.usage(error_msg=["Invalid network search protocol name. Must be 'slp', 'mdns', or 'avahi'."])
+             else:
+                 bus = ['net']
+ 
+-- 
+2.50.1
+

@@ -1552,4 +1552,64 @@ Fixes build in Staging_A (python 3.13) - and seems to address the real reaason w
     <comment></comment>
     <requestid>1300306</requestid>
   </revision>
+  <revision rev="165" vrev="2">
+    <srcmd5>0f5a0e68a9028fbf7dd20bb719abbb44</srcmd5>
+    <version>3.25.6</version>
+    <time>1760108861</time>
+    <user>dimstar_suse</user>
+    <comment>- Move more utilities from hplip-utils to hplip-base.
+  * hplip-base now contains all utilities that are not totally useless
+    and can run without the Qt GUI.
+- Update fix for support of new GPG key, as the key has now been
+  uploaded to GPG keyservers (lp#2120738)
+  * drop hplip-hardcode-new-signing-key-AC69536A2CF3A243.patch
+  * update hplip-change-pgp-server.patch
+- Drop dependency on cups-ppdc. It isn't necessary, as PPD
+  generation on target system is done by cups-driverd.
+- The old and outdated 'hpijs' driver support is finally dropped
+  (the 'hpcups' driver is the default driver since 2009)
+  so that there is no need for foomatic-filters (boo#1250481)
+- Continue refactoring:
+  * move GUI tools to &quot;hplip-utils&quot; subpackage
+  * convert &quot;hplip&quot; into an empty metapackage that pulls in hplip-utils 
+    and all drivers / PPDs (except hpijs PPDs).
+- Refactor package structure:
+  * hplip: full set of utilities. Pulls in almost all subpackages
+    to deliver the &quot;traditional&quot; hplip experience
+  * hplip-base: small set of basic utilities that can be run
+    without GUI. Includes hp-probe and hp-plugin
+  * hplip-cups: minimal package for printing, without PPDs or
+    setup helpers
+  * hplip-sane: scanning support (unchanged) 
+  * hplip-driver-hpcups: hpcups.drv for generating hpcups PPDs on
+    the fly (requires ppdc). The functionality of this package is
+    similar to the old (misnamed) &quot;hplip-hpijs&quot; package.
+  * hplip-driver-hpijs: hpijs.drv for generating PPDs for the deprecated
+    hpijs / foomatic_rip filter. Note that this functionality was not part of
+    the late hplip-hpijs package, because upstream hasn't ship foomatic PPDs
+    since hplip 3.17.11.
+  * hplip-ppds-{hpcups,hpps,postscript,hpijs,fax,plugin}: static PPD
+    files for different printer types.
+    hplip-ppds-hpcups is an alternative to hplip-driver-hpcups.
+  * libhplip0: shared library package, used by hplip-cups and
+    hplip-sane
+  * hplip-common: configuration files and directories used by
+    all hplip packages.
+- Other spec file changes:
+  * Skip deprecated suse_update_desktop_file by default on TW
+  * Don't mess with sane configuration in udev rules
+  * Only the hpijs packages depend on foomatic-rip, which is only
+    provided by cups-filters-1.x. The other packages can be used
+    with cups-filters2.
+  * Remove Obsoletes: for ancient predecessor packages
+  * Remove outdated comments from spec file
+  * Shorten package descriptions
+  * Fix a couple of rpmlint issues
+    
+- Fix printer probing using avahi (lp#2120947)
+  * Add hplip-fix-driver-probing-using-avahi.patch
+  * Add hplip-fix-python-crash-in-avahi.py.patch
+</comment>
+    <requestid>1309931</requestid>
+  </revision>
 </revisionlist>

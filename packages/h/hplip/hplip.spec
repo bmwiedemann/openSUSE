@@ -16,6 +16,8 @@
 #
 
 
+%global basic_tools align clean colorcal diagnose_queues doctor fab firmware info levels logcapture makecopies makeuri plugin probe query sendfax setup testpage timedate unload
+
 # python-rpm-macros doesn't work for hplip!
 %if 0%{?suse_version} >= 1500
 %define pyversion 3
@@ -44,8 +46,12 @@
 %bcond_without scan_utils
 %endif
 
-# Run cupstestppd on the generated PPDs (prints many warnings)
-%bcond_with testppd
+# update_desktop_files is deprecated in TW
+%if 0%{?suse_version} > 1600
+%bcond_with update_desktop
+%else
+%bcond_without update_desktop
+%endif
 
 %if 0%{use_qt5}
 %global config_qt_opts --disable-qt4 --enable-qt5
@@ -56,6 +62,8 @@
 %global requires_qt %{pymod qt4}
 %global ui_dir ui4
 %endif
+
+%global drvdir %{_datadir}/cups/drv
 
 Name:           hplip
 Version:        3.25.6
@@ -77,8 +85,6 @@ Source2:        hplip.keyring
 # Patch0...Patch9 is for patches from HP:
 # Patch10...Patch99 is for Suse patches for the sources from HP:
 # Source100... is for special SUSE sources:
-# Source102 is a small man page for /usr/bin/hpijs:
-Source102:      hpijs.1.gz
 # Actual drivers for hplip-missing-drivers.patch
 Source103:      hp-laserjet_cp_1025nw.ppd.gz
 Source104:      hp-laserjet_professional_p_1102w.ppd.gz
@@ -132,16 +138,19 @@ Patch606:       hplip-base-fix-error-in-ConfigBase-handling.patch
 Patch607:       hplip-utils-Fix-plugin-verification-with-sha256.patch
 # lp#2120739
 Patch608:       hp-setup-fix-python-crash-when-manually-importing-gz.patch
-# lp#2120738
-Patch609:       hplip-hardcode-new-signing-key-AC69536A2CF3A243.patch
 # lp#2115046
 Patch610:       hplip-no-urlopener.patch
+Patch611:       hplip-fix-driver-probing-using-avahi.patch
+Patch612:       hplip-fix-python-crash-in-avahi.py.patch
 # PATCH-FIX-UPSTREAM https://bugs.launchpad.net/hplip/+bug/2096650
 Patch651:       hplip-3.24.4-gcc15.patch
 # Compatibility patches for old SUSE releases
 Patch700:       hplip-base-replace-f-string-with-string.format-for-p.patch
 Patch701:       hpcups-fix-compilation-on-SLE12.patch
 
+# cups-rpm-helper is now pulled in indirectly via cups-devel.
+# This causes the "postscriptdriver" provides to be generated.
+# To avoid that, put "Ignore: cups-devel: cups-rpm-helper in the prjconf.
 %if %use_qt5
 BuildRequires:  %{pymod qt5-devel}
 %else
@@ -178,161 +187,233 @@ BuildRequires:  update-desktop-files
 # Break this dependency chain that has caused build breakage
 # python3-qt5-devel -> libqt5-qtwebengine-devel -> libavcodec58 -> libdav1d.so.1
 #!BuildIgnore:  libqt5-qtwebengine-devel
-# Require the exact matching version-release of the hpijs sub-package to make sure
-# to have the exact matching version of libhpip and libhpmud installed.
-# The exact matching version-release of the sub-package is available on the same
-# repository where the main-package is (compare the "Recommends: hplip" entry below).
-Requires:       %{name}-hpijs = %{version}-%{release}
-# Require the exact matching version-release of the sane sub-package to make sure
-# to have the exact matching version of libsane-hpaio installed:
-Requires:       %{name}-sane = %{version}-%{release}
+
+# Require the exact matching version-release of the utils subackage.
+Requires:       %{name}-utils = %{version}-%{release}
+# To ensure the "hplip" package provides a similar user experience as before,
+# pull in the necessary PPDs.
+%if 0%{?suse_version} >= 1500
+# Works with either driver-hpcus or ppds-hpcups; driver-hpcups is preferred
+Requires:       (%{name}-driver-hpcups or %{name}-ppds-hpcups)
+Suggests:       %{name}-driver-hpcups
+%else
+# On older distros, prefer ppds for historical reasons
+Requires:       %{name}-ppds-hpcups
+%endif
+Requires:       %{name}-ppds-fax = %{version}-%{release}
+Requires:       %{name}-ppds-hpps = %{version}-%{release}
+Requires:       %{name}-ppds-postscript = %{version}-%{release}
+# hplip3 and hplip3-hpijs existed only in SLE11 as an alternative in addition to hplip:
+Obsoletes:      hplip3
+Obsoletes:      hplip3-hpijs
+
+%description
+The Hewlett-Packard Linux Imaging and Printing project (HPLIP) provides
+support for HP printers, scanners, and all-in-one devices.
+
+This is a meta package that pulls in the entire HPLIP software suite.
+
+%package utils
+Summary:        HPLIP GUI utilities
+Group:          Hardware/Printing
+Requires:       %{name}-base = %{version}-%{release}
 Requires:       %{pymod dbus-python} >= 0.80
 Requires:       %{pymod gobject}
 Requires:       %{requires_qt}
-Requires:       cups > 1.5
-# foomatic-filters and cups-filters-foomatic-rip
-# do not require Ghostscript because depending on the PPD
-# (e.g. some PPDs for PostScript printers in OpenPrintingPPDs-postscript)
-# foomatic-rip can also be used without Ghostscript but for the drivers
-# HPIJS and HPCUPS Ghostscript is needed.
-# The RPM requirement for ghostscript should actually be in the
-# hplip-hpijs sub-package but this would bloat a minimalist system
-# (see the comment for the hplip-hpijs sub-package below).
-# Therefore the hplip main package which is intended
-# to get "all the HPLIP stuff" installed has the RPM requirement:
-# Because foomatic-rip-hplip has CVE-2011-2697 (bnc#698451)
-# plus a leftover in CVE-2004-0801 (bnc#59233)
-# foomatic-rip-hplip is no longer installed and foomatic-rip
-# from foomatic-filters or cups-filters-foomatic-rip is used instead.
-# The RPM requirement for foomatic-filters should actually be
-# in the hplip-hpijs sub-package but this would bloat a minimalist system
-# (see the comment for the hplip-hpijs sub-package below).
-# Therefore the hplip main package which is intended
-# to get "all the HPLIP stuff" installed has the RPM requirement:
-Requires:       foomatic-filters
-Requires:       ghostscript
-# hp-plugin requries lsb_release
-Requires:       lsb-release
-# hp-plugin installation fails without /etc/sane/dll.conf
-Requires:       sane-backends
-Requires(post): %{_bindir}/find
-Requires(post): /bin/grep
-Requires(post): /bin/sed
-Requires(post): coreutils
 %if 0%{?suse_version} >= 1500
 Recommends:     python3-reportlab
 %endif
-# Obsolete earlier package names
-Obsoletes:      hplip17
-Provides:       hplip3 = 3.9.5
-Obsoletes:      hplip3 < 3.9.5
-# cups-rpm-helper is now pulled in indirectly via cups-devel.
-# This causes the "postscriptdriver" provides to be generated.
-# To avoid that, put "Ignore: cups-devel: cups-rpm-helper in the prjconf.
-
 # Make sure we obsolete old scan-utils
 # in case we're built without scan_utils
 %if %{without scan_utils}
 Obsoletes:      hplip-scan-utils < %{version}
 %endif
 
-%description
+%description utils
 The Hewlett-Packard Linux Imaging and Printing project (HPLIP) provides
-a unified single and multifunction connectivity solution for HP
-printers, scanners, and all-in-one devices.
+support for HP printers, scanners, and all-in-one devices.
 
-This package contains command line and UI front-ends for HPLIP, and tools
-for extra functionality such as status and supply information. It is
-not required for basic printing and scanning with HP hardware, except
-for those devices that need the proprietary hplip plugin, see
-https://developers.hp.com/hp-linux-imaging-and-printing/binary_plugin.html
+This package contains graphical and command line utilities with extended
+functionality, specifically "hp-toolbox". It is not necessary for printing
+and scanning with HP devices.
 
-%package hpijs
-Summary:        Printer drivers for HP printers and all-in-one devices
-# On a minimalist system only hplip-hpijs may be installed
-# or on a minimalist package repository (e.g. on the openSUSE CDs)
-# only hplip-hpijs may be available (even when a usual system is installed).
-# When only hplip-hpijs is there, it should tell the dependency resolver
-# that for usual functionality, hplip should be installed too (if possible).
-# Unfortunately the installer ignores suggested packages silently
-# but on the other hand I cannot use "Recommends hplip" here
-# because the installer installs recommended packages silently
-# which would bloat a minimal selection (when hplip is available to be installed)
-# because the minimal selection contains hplip-hpijs which recommends hplip
-# so that the installer installs hplip and all what this requires silently
-# see https://bugzilla.novell.com/show_bug.cgi?id=546893
-# Require only the matching version of the hplip main-package
-# (compare the "Requires: hplip-hpijs" entry above) but do not depend
-# on the exact matching release because the exact matching release
-# may be not available to be installed (e.g. when hplip-hpijs-1.2.3-4.5 is
-# installed from the openSUSE CDs but on our official online repository
-# only hplip-1.2.3-6.7 is available which should usually also work):
+For setting up new devices, install hplip-driver-* or hplip-ppds-* packages.
+
+%package base
+Summary:        HPLIP basic utilities
 Group:          Hardware/Printing
-Requires:       %{name}-udev-rules = %{version}-%{release}
+Requires:       %{name}-cups = %{version}-%{release}
+Requires:       %{name}-sane = %{version}-%{release}
+# hp-plugin installation fails without /etc/sane/dll.conf
+Requires:       sane-backends
+Requires:       wget
+
+%description base
+The Hewlett-Packard Linux Imaging and Printing project (HPLIP) provides
+support for HP printers, scanners, and all-in-one devices.
+
+This package contains basic command line utilities for probing HP printers
+and all-in-one devices, and for installing the proprietary HP plugin.
+
+For setting up new devices, install hplip-driver-* or hp-ppds-* packages.
+
+%package common
+Summary:        HPLIP common files
+Group:          Hardware/Printing
+BuildArch:      noarch
+Provides:       %{name}-udev-rules = %{version}-%{release}
+Obsoletes:      %{name}-udev-rules < %{version}-%{release}
+
+%description common
+This package contains common files needed by other hplip packages.
+
+%package -n libhplip0
+Summary:        Shared libraries for the HPLIP printing system
+Group:          System/Libraries
+# rpmlint complains about a versioned dependency here
+Requires:       %{name}-common
+
+%description -n libhplip0
+This package contains shared libraries needed by other hplip packages.
+
+%package cups
+Summary:        HPLIP printing backends and filters for CUPS
+Group:          Hardware/Printing
+# Require the exact matching version-release of the libhpli0 sub-package.
+Requires:       %{name}-common = %{version}-%{release}
+Requires:       cups > 1.5
+Requires:       libhplip0 = %{version}-%{release}
+%if 0%{?suse_version} >= 1500
+# Works with either driver-hpcus or ppds-hpcups; driver-hpcups is preferred
+Recommends:     (%{name}-driver-hpcups or %{name}-ppds-hpcups)
+Suggests:       %{name}-driver-hpcups
+Supplements:    (%{name}-common and cups)
+%else
+# On older distros, prefer ppds for historical reasons
+Recommends:     %{name}-ppds-hpcups
+%endif
+# cups-filters can be provided by the cups-filters2 package
+Recommends:     cups-filters
+Recommends:     %{name}-base = %{version}
+Recommends:     ghostscript
 Suggests:       %{name} = %{version}
-# Since Nov 14 2007 ghostscript-library does no longer require /usr/bin/hpijs
-# but only "Suggests hplip-hpijs" (see Novell/Suse Bugzilla bnc#341564).
-# Have the matching "reverse suggests" = "Enhances" here
-# to document the ghostscript <-> hplip-hpijs relationship:
-Enhances:       ghostscript
-# hpijs-standalone was a stand-alone minimalist package
-# which is no longer provided since a long time.
-# hplip-hpijs and hpijs-standalone both contain /usr/bin/hpijs
-# so that both packages have a RPM conflict which should
-# be solved by a silent replacement of the old hpijs-standalone.
-# This Obsoletes is intentionally unversioned because
-# hplip-hpijs should replace any version of hpijs-standalone.
-Obsoletes:      hpijs-standalone
-# Either the hplip17 packages or the hplip packages can be installed,
-# see https://bugzilla.novell.com/show_bug.cgi?id=251830#c20
-# for the full story why there is this unversioned Obsoletes:
-Obsoletes:      hplip17-hpijs
-# Obsolete the hplip3 copy that was introduced for older SLED11-GA HP preloads:
-Provides:       hplip3-hpijs = 3.9.5
-Obsoletes:      hplip3-hpijs < 3.9.5
-# PackMan provides HPLIP in the packages hplip and hplip-hpcups.
-# HPLIP does not work if the openSUSE packages hplip and hplip-hpijs
-# are installed together with a leftover PackMan package hplip-hpcups
-# see https://bugzilla.novell.com/show_bug.cgi?id=515005#c17
-# This Obsoletes is intentionally unversioned because
-# the openSUSE package hplip-hpijs must replace
-# any version of PackMan's hplip-hpcups package.
-Obsoletes:      hplip-hpcups
+Suggests:       %{name}-ppds-hpps = %{version}
+Suggests:       %{name}-ppds-postscript = %{version}
+Suggests:       %{name}-ppds-fax = %{version}
 
-%description hpijs
-This package contains the backend drivers and PPDs for printing
-with HP printers using CUPS.
+%description cups
+This package contains filter programs and backends for the CUPS printing
+system which are necessary for printing with HP printers.
 
-HPCUPS is HPLIP's native CUPS printer driver for HP printers.
-HPIJS (deprecated) is HPLIP's Ghostscript printer driver for
-HP printers, and only used for some Fax devices nowadays.
+%package driver-hpcups
+Summary:        Driver for HP printers and all-in-one devices (hpcups)
+Group:          Hardware/Printing
+BuildArch:      noarch
+Requires:       %{name}-cups = %{version}-%{release}
+Conflicts:      %{name}-ppds-hpcups
+# Until October 2025, the package with the misleading name "hplip-hpijs"
+# provided the hpcups driver and PPDs
+Provides:       %{name}-hpijs = %{version}-%{release}
+Obsoletes:      %{name}-hpijs < %{version}-%{release}
 
-Install the "hplip" package if you need the proprietary HP plugin
-required by some devices, or additional functionality besides plain
-printing.
+%description driver-hpcups
+This package provides printer setup support for most HP printers and all-in-one
+devices. It uses CUPS functionality to generate the PPDs for the printers
+dynamically.
+
+This package is not necessary for operation of already configured devices.
+
+%package ppds-hpcups
+Summary:        PPDs for HP printers and all-in-one devices (hpcups)
+Group:          Hardware/Printing
+BuildArch:      noarch
+Requires:       %{name}-cups = %{version}-%{release}
+Conflicts:      %{name}-driver-hpcups
+# Until October 2025, the package with the misleading name "hplip-hpijs"
+# provided the hpcups driver and PPDs
+Provides:       %{name}-hpijs = %{version}-%{release}
+Obsoletes:      %{name}-hpijs < %{version}-%{release}
+
+%description ppds-hpcups
+This package provides printer setup support for most HP printers and all-in-one
+devices. It contains statically compiled PPDs.
+
+This package is not necessary for operation of already configured devices.
+
+%package ppds-postscript
+Summary:        PPDs for HP printers (PostScript)
+Group:          Hardware/Printing
+BuildArch:      noarch
+# Also PostScript printers may benefit from HP's special CUPS backend 'hp'
+# but normally PostScript printers also work with the generic CUPS backends:
+Recommends:     %{name}-cups = %{version}-%{release}
+
+%description ppds-postscript
+This package provides printer setup support for HP PostScript printers that need no
+CUPS filter.
+
+This package is not necessary for operation of already configured devices.
+
+%package ppds-hpps
+Summary:        PPDs for HP printers (PostScript + hpps)
+Group:          Hardware/Printing
+BuildArch:      noarch
+Requires:       %{name}-cups = %{version}-%{release}
+
+%description ppds-hpps
+This package provides printer setup support for HP PostScript printers using the
+hpps filter, which adds support for model-specific functionality such as
+"Secure printing".
+
+This package is not necessary for operation of already configured devices.
+
+%package ppds-fax
+Summary:        PPDs for HP Fax devices
+Group:          Hardware/Printing
+BuildArch:      noarch
+Requires:       %{name}-cups = %{version}-%{release}
+
+%description ppds-fax
+This package provides support for HP fax devices and multi-function devices.
+
+This package is not necessary for operation of already configured devices.
+
+%package ppds-plugin
+Summary:        PPDs for HP printers (proprietary plugin)
+Group:          Hardware/Printing
+BuildArch:      noarch
+Requires:       %{name}-cups = %{version}-%{release}
+# Require hplip for the hp-plugin tool
+Requires:       %{name}-base = %{version}-%{release}
+
+%description ppds-plugin
+This package provides printer setup support for HP printers that need the
+proprietary HPLIP plugin. Use the hp-plugin tool from the %{name}-base package
+to install the plugin.
+
+This package is not necessary for operation of already configured devices.
 
 %package sane
 Summary:        SANE backends for HP scanners and all-in-one devices
-# Require the exact matching version-release of the hpijs sub-package to make sure
-# to have the exact matching version of libhpip and libhpmud installed.
-# A wrong library version may let libsane-hpaio crash (e.g. segfault)
-# which lets the whole scanning stack frontend<->libsane-dll<->libsane-backend crash
-# also for any other backend when the hpaio backend is enabled (e.g. "scanimage -L"):
 Group:          Hardware/Scanner
-Requires:       %{name}-hpijs = %{version}-%{release}
-Requires:       %{name}-udev-rules = %{version}-%{release}
-# See comment in hpijs sub-package for same Suggests:
+# Require the exact matching version-release of the libhpli0 sub-package.
+Requires:       %{name}-common = %{version}-%{release}
+Requires:       libhplip0 = %{version}-%{release}
+Recommends:     %{name}-base = %{version}
 Suggests:       %{name} = %{version}
 Enhances:       sane-backends
-# Automatically install this package if hpijs sub-package and sane-backends are
-# both installed (syntax only
+# Automatically install this package if hplip-common and sane-backends are
 %if 0%{?suse_version} >= 1500
-Supplements:    (%{name}-hpijs and sane-backends)
+Supplements:    (%{name}-common and sane-backends)
 %endif
 
 %description sane
-This package includes the backend driver for scanning with HP scanners
-and all-in-one devices using SANE tools like xsane or scanimage.
+The Hewlett-Packard Linux Imaging and Printing project (HPLIP) provides
+support for HP printers, scanners, and all-in-one devices.
+
+This package provides scanning support for HP scanners and all-in-one
+devices. Some devices need the proprietary hplip plugin. Use the hp-plugin
+tool from the %{name}-base package to install the plugin.
 
 %if %{with scan_utils}
 %package scan-utils
@@ -355,13 +436,6 @@ utilities are alternatives to the SANE frontends "xsane" and "scanimage". They
 expose some advanced features of certain HP scanner models.
 %endif
 
-%package udev-rules
-Summary:        HPLIP udev rules
-Group:          Hardware/Scanner
-
-%description udev-rules
-This package provides the udev rules required to use these devices as a normal user.
-
 %package devel
 Summary:        Development files for hplip
 # Require the exact matching version-release of the hpijs sub-package to make sure
@@ -378,7 +452,7 @@ Requires:       libusb-1_0-devel
 Requires:       net-snmp-devel
 
 %description devel
-This sub-package is only required by developers.
+This package is only required by developers.
 
 %prep
 # Be quiet when unpacking:
@@ -419,8 +493,9 @@ This sub-package is only required by developers.
 %patch -P 606 -p1
 %patch -P 607 -p1
 %patch -P 608 -p1
-%patch -P 609 -p1
 %patch -P 610 -p1
+%patch -P 611 -p1
+%patch -P 612 -p1
 %patch -P 651 -p1
 %if 0%{?suse_version} < 1500
 # python2 compatibility
@@ -454,22 +529,12 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing -Wno-error=return-type"
 # According to http://hplipopensource.com/hplip-web/release_notes.html
 # all drv installs require CUPSDDK 1.2.3 or higher.
 # Otherwise a static PPD install must be performed.
-# Furthermore dynamic PPDs will be deprecated in the future in CUPS,
-# see http://www.cups.org/str.php?L3772
-# For hpcups static PPD install one needs:
-# --enable-hpcups-install enable hpcups install (default=yes)
-# --disable-cups-drv-install enable cups dynamic ppd install (default=yes)
-# --enable-cups-ppd-install enable cups static ppd install (default=no)
-# For both hpcups and hpijs install with static PPDs one needs additionally:
-# --enable-hpijs-install enable hpijs install (default=no)
-# --disable-foomatic-drv-install enable foomatic dynamic ppd install (default=no), uses drvdir and hpppddir
-# --enable-foomatic-ppd-install enable foomatic static ppd install (default=no), uses hpppddir
 # Because foomatic-rip-hplip has CVE-2011-2697 (bnc#698451) plus a leftover in CVE-2004-0801 (bnc#59233)
 # which are fixed up to openSUSE 11.4 with patches, after openSUSE 11.4 (i.e. since openSUSE 12.1)
-# foomatic-rip-hplip is no longer installed and foomatic-rip from
-# foomatic-filters or cups-filters-foomatic-rip is used instead so that
-# --disable-foomatic-rip-hplip-install is explicitly set and as a consequence the "cupsFilter" entries
-# in the static PPDs are changed in the install section to use foomatic-rip.
+# foomatic-rip-hplip is no longer installed and because foomatic-rip is a generic security issue
+# and only used by 'hpijs' which is dropped via --disable-hpijs-install also foomatic support is dropped
+# via --disable-foomatic-drv-install --disable-foomatic-ppd-install --disable-foomatic-rip-hplip-install
+# see https://bugzilla.suse.com/show_bug.cgi?id=1250481
 # Since HPLIP 3.13.10 --with-htmldir is new but it does not inhertit its value from --with-docdir
 # so that --with-htmldir must be explicitly set.
 %configure \
@@ -484,17 +549,17 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing -Wno-error=return-type"
             --enable-fax-build \
             --enable-dbus-build \
             --enable-hpcups-install \
-            --disable-cups-drv-install \
-            --enable-cups-ppd-install \
-            --enable-hpijs-install \
-            --disable-foomatic-drv-install \
+            --enable-cups-drv-install \
+            --disable-cups-ppd-install \
+            --disable-hpijs-install \
             --disable-imageProcessor-build \
-            --enable-foomatic-ppd-install \
+            --disable-foomatic-drv-install \
+            --disable-foomatic-ppd-install \
             --disable-foomatic-rip-hplip-install \
             --with-hpppddir=%{_datadir}/cups/model/manufacturer-PPDs/%{name} \
             --with-cupsbackenddir=%{_prefix}/lib/cups/backend \
             --with-cupsfilterdir=%{_prefix}/lib/cups/filter \
-            --with-drvdir=%{_prefix}/lib/cups/driver \
+            --with-drvdir=%{drvdir} \
             --with-mimedir=%{_sysconfdir}/cups \
             --with-docdir=%{_defaultdocdir}/%{name} \
             --with-htmldir=%{_defaultdocdir}/%{name} \
@@ -507,35 +572,28 @@ sed -i 's|ppd/hpcups/\*.ppd.gz ||g' Makefile
 
 # Make and install Python compiled bytecode files
 %py_compile -O %{buildroot}%{_datadir}/hplip
-
 # Hardlink .pyc and .pyo when they have same content.
 # Do not run "fdupes buildroot/_datadir/hplip" because
 # fdupes will link any files with same content there
 # which can have unexpected side-effects, compare
 # https://bugzilla.opensuse.org/show_bug.cgi?id=784670
+# E.g. fdupes may create links between files that belong
+# to different subpackages.
 for pyc in $( find %{buildroot}%{_datadir}/hplip -name '*.pyc' )
 do
    pyo="${pyc%.pyc}.opt-1.pyc"
-   if test -f $pyo && cmp -s $pyc $pyo
-   then echo hardlinking $pyc and $pyo because both have same content
-        ln -f $pyc $pyo
+   if test -f "$pyo" && cmp -s "$pyc" "$pyo"
+   then
+        ln -f "$pyc" "$pyo"
    fi
 done
-# HPLIP's "make install" installs -rw-r--r-- usr/share/hplip/fax/pstotiff
-# and usr/lib/cups/filter/pstotiff -> usr/share/hplip/fax/pstotiff
-# so that when the CUPS filter usr/lib/cups/filter/pstotiff is called,
-# it cannot execute usr/share/hplip/fax/pstotiff which is fixed hereby
-# (see https://bugs.launchpad.net/hplip/+bug/1064247 and bnc#783810):
+
+# see https://bugs.launchpad.net/hplip/+bug/1064247 and bnc#783810
 chmod a+x %{buildroot}%{_datadir}/hplip/fax/pstotiff
-# The /var/lib/hp directory is created everywhere except on openSUSE 12.2 and later versions
-# (perhaps an autoconf issue) so that it is created here as simple and fail-safe workaround
 # see https://bugs.launchpad.net/bugs/1018303 and bnc#780413
 # using fixed "/var/log/hp" because this is hardcoded in the HPLIP sources
-# regarding owner and permissions see the "files hpijs" section below
-# and Patch102 no-chgrp_lp_hplip_Logdir.diff:
 test -d %{buildroot}%{_localstatedir}/lib/hp || install -d %{buildroot}%{_localstatedir}/lib/hp
 # Create a /var/log/hp/tmp/ directory that is needed by hp-sendfax
-# as a workaround until HPLIP upstream implemented it correctly
 # see https://bugzilla.novell.com/show_bug.cgi?id=800312
 # and https://bugs.launchpad.net/bugs/1016507
 install -d %{buildroot}%{_localstatedir}/log/hp/tmp
@@ -555,106 +613,75 @@ rm %{buildroot}%{_datadir}/hal/fdi/preprobe/10osvendor/20-hplip-devices.fdi
 # while in contrast manual printer setup via hp-setup usually "just works"
 # and it is clear for the user what goes on and in case of failure what went wrong.
 rm %{buildroot}%{_unitdir}/hplip-printer@.service
+
 # Remove selinux configurations we are not supporting on SUSE
 # force for not on all distributions the files were installed
 # Can't be disabled during configure
 rm -f %{buildroot}/%{name}.{fc,if,pp,te}
+
 # Begin "General tests and adjustments for all PPDs" (see manufacturer-PPDs.spec):
 pushd %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}
 # Do not pollute the build log file with zillions of meaningless messages:
 set +x
+
+# Create appropriate sub-directories for PPDs:
+install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-ps
+install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-hpps
+install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-plugin
+install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-hpcups
+install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-fax
+
 gunzip *.ppd.gz
-# Make some general tests and adjustments for all PPDs:
-echo "Making some general tests and adjustments for all PPDs:"
-# Add a line-feed to the end of all PPDs to fix those PPDs where it is missing.
-# See Novell/Suse Bugzilla bug #309832: Unix/Linux text files must end with a line-feed.
-# Otherwise reading the last line results EOF and then some programs may ignore the last line.
-echo "Adding a line-feed to the end of all PPDs to fix those PPDs where it is missing..."
-for p in *.ppd
-do echo -en '\n' >>$p
-done
-# Because foomatic-rip-hplip has CVE-2011-2697 (bnc#698451) plus a leftover in CVE-2004-0801 (bnc#59233)
-# foomatic-rip-hplip is no longer installed and foomatic-rip from foomatic-filters or cups-filters-foomatic-rip
-# is used instead so that the "cupsFilter" entries in the static PPDs must be changed accordingly:
-echo "Replacing insecure foomatic-rip-hplip with foomatic-rip everywhere in in the PPDs..."
-for p in *.ppd
-do sed -i -e 's/foomatic-rip-hplip/foomatic-rip/' $p
-done
-# Final test by cupstestppd:
-# To save disk space gzip the files (gzipped PPDs can also be used by CUPS).
-# Future goal: Only have files which don't FAIL for cupstestppd.
-# Update 2025-08-15: this goal is unrealistic. Skip the testppd step unless
-# explicitly enabled with --with testppd
 for p in *.ppd
 do
-%if %{with testppd}
-   grep -E -v '^\*UIConstraints:|^\*NonUIConstraints:|^\*cupsFilter:' $p | cupstestppd - || true
-%endif
-   gzip -n -9 $p
+    # Add a line-feed to the end of all PPDs to fix those PPDs where it is missing.
+    # See Novell/Suse Bugzilla bug #309832: Unix/Linux text files must end with a line-feed.
+    # Otherwise reading the last line results EOF and then some programs may ignore the last line:
+    echo -en '\n' >>"$p"
+    # Move PPDs into appropriate sub-directories:
+    if grep -q '^\*NickName:.*requires proprietary plugin' "$p"; then
+        dir=../%{name}-plugin
+    else
+	filter=$( grep -m1 cupsFilter "$p" ) || true
+	case $filter in
+	    *foomatic-rip*)
+		# Skip 'hpijs' PPDs which are those that use foomatic-rip as cupsFilter
+		# see https://bugzilla.suse.com/show_bug.cgi?id=1250481#c1
+		continue;;
+	    *hpcupsfax*|*hpcdmfax*)
+		dir=../%{name}-fax;;
+	    *hpcups*)
+		dir=../%{name}-hpcups;;
+	    *hpps*)
+		dir=../%{name}-hpps;;
+	    "")
+		dir=../%{name}-ps;;
+	esac
+   fi
+   gzip -n -9 "$p"
+   mv -f "$p.gz" "$dir"
 done
-echo "Moving PPDs that use the hpps filter to %{_datadir}/cups/model/manufacturer-PPDs/hplip-hpps..."
-# PPDs for various printers that use the hpps filter
-# must be moved to the hplip main-package because
-# the /usr/lib/cups/filter/hpps Python script imports
-# various HPLIP modules from the hplip main-package
-# so that the hpps filter belongs to the hplip main-package
-# (see https://bugzilla.novell.com/show_bug.cgi?id=876690).
-# Accordingly the PPDs that use the hpps filter must be moved
-# to the hplip main-package which is implemented by moving them
-# to a new directory /usr/share/cups/model/manufacturer-PPDs/hplip-hpps
-# that is listed in the files list of the hplip main-package:
-install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-hpps
-for p in *.ppd.gz
-do zgrep -q '^\*cupsFilter:.*hpps' $p && mv $p ../%{name}-hpps
-done
-echo "Moving PPDs that require a proprietary plugin from HP to %{_datadir}/cups/model/manufacturer-PPDs/hplip-plugin..."
-# PPDs for various printers that require a proprietary plugin from HP
-# must be moved to the hplip main-package because
-# the proprietary plugin from HP must be downloaded and installed
-# by using HP's "hp-plugin" tool from the hplip main-package
-# (HP's "hp-setup" tool calls "hp-plugin" when needed).
-# Accordingly PPDs that require a proprietary plugin from HP must be moved
-# to the hplip main-package which is implemented by moving them
-# to a new directory /usr/share/cups/model/manufacturer-PPDs/hplip-plugin
-# that is listed in the files list of the hplip main-package
-# (see https://bugzilla.novell.com/show_bug.cgi?id=876690):
-install -d %{buildroot}%{_datadir}/cups/model/manufacturer-PPDs/%{name}-plugin
-for p in *.ppd.gz
-do zgrep -q '^\*NickName:.*requires proprietary plugin' $p && mv $p ../%{name}-plugin
-done
-echo "End of general tests and adjustments for all PPDs."
+
 # Switch back to the usual build log messages:
 set -x
 # End of "General tests and adjustments for all PPDs":
 popd
+
 # Replace the invalid Desktop categories
+%if %{with update_desktop}
 %suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/hplip.desktop System HardwareSettings
 %suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/hp-uiscan.desktop System HardwareSettings
-
-# Let suse_update_desktop_file add X-SuSE-translate key to /etc/xdg/autostart/hplip-systray.desktop
-# so that we can update its translations with translation-only packages.
 %suse_update_desktop_file -i %{buildroot}%{_sysconfdir}/xdg/autostart/hplip-systray.desktop
+%endif
 # End of "Desktop menue entry stuff".
-# Install the man page for /usr/bin/hpijs:
-install -d %{buildroot}%{_mandir}/man1
-install -m 644 %{SOURCE102} %{buildroot}%{_mandir}/man1/
 
-# remove libtool archives
+# Remove libtool archives:
 find "%{buildroot}" -type f -name "*.la" -delete -print
 
-# Run fdupes:
-# The RPM macro fdupes runs /usr/bin/fdupes that links files with identical content.
-# Never run fdupes carelessly over the whole buildroot directory
-# because in older openSUSE and SLE11 versions fdupes
-# links files with different owner, group, or permissions
-# see https://bugzilla.novell.com/show_bug.cgi?id=784670
-# and even in current openSUSE versions fdupes links across sub-package boundaries,
-# compare https://bugzilla.novell.com/show_bug.cgi?id=784869
-# so that fdupes can only run for specific directories where linking files is safe:
+# Run fdupes only on the images subdir to avoid broken symlinks in subpackages:
 %fdupes -s %{buildroot}%{_datadir}/hplip/data/images
 
-# Ensure we have no unpackaged files if build
-# without scan-util
+# Ensure we have no unpackaged files if build without scan-util:
 %if !%{with scan_utils}
 rm -f %{buildroot}%{_bindir}/hp-scan
 rm -f %{buildroot}%{_bindir}/hp-uiscan
@@ -662,17 +689,8 @@ rm -f %{buildroot}%{python_sitearch}/scanext.so
 rm -f %{buildroot}%{_datadir}/applications/hp-uiscan.desktop
 %endif
 
-%post -p /bin/bash
+%post common
 %udev_rules_update
-%desktop_database_post
-%icon_theme_cache_post
-/sbin/ldconfig
-exit 0
-
-%postun -p /bin/bash
-%desktop_database_postun
-%icon_theme_cache_postun
-/sbin/ldconfig
 
 %postun sane
 # Earlier versions of hplip modified /etc/sane.d/dll.conf
@@ -684,67 +702,57 @@ if [ "$1" = "0" ] && [ -w %{_sysconfdir}/sane.d/dll.conf ]; then
 fi
 exit 0
 
-%post hpijs -p /bin/bash
-/sbin/ldconfig
-exit 0
+%post -n libhplip0 -p %{run_ldconfig}
+%postun -n libhplip0 -p %{run_ldconfig}
 
-%postun hpijs -p /bin/bash
-/sbin/ldconfig
-exit 0
+%post base -p %{run_ldconfig}
+%postun base -p %{run_ldconfig}
 
 %files
-%config %{_sysconfdir}/xdg/autostart/hplip-systray.desktop
-%{_bindir}/hp-align
-%{_bindir}/hp-check
-%{_bindir}/hp-clean
-%{_bindir}/hp-colorcal
-%{_bindir}/hp-config_usb_printer
-%{_bindir}/hp-devicesettings
-%{_bindir}/hp-diagnose_plugin
-%{_bindir}/hp-diagnose_queues
-%{_bindir}/hp-doctor
-%{_bindir}/hp-fab
-%{_bindir}/hp-faxsetup
-%{_bindir}/hp-firmware
-%{_bindir}/hp-info
-%{_bindir}/hp-levels
-%{_bindir}/hp-linefeedcal
-%{_bindir}/hp-logcapture
-%{_bindir}/hp-makecopies
-%{_bindir}/hp-makeuri
-%{_bindir}/hp-pkservice
-%{_bindir}/hp-plugin
-%{_bindir}/hp-pqdiag
-%{_bindir}/hp-print
-%{_bindir}/hp-printsettings
-%{_bindir}/hp-probe
-%{_bindir}/hp-query
-%{_bindir}/hp-sendfax
-%{_bindir}/hp-setup
-%{_bindir}/hp-systray
-%{_bindir}/hp-testpage
-%{_bindir}/hp-timedate
-%{_bindir}/hp-toolbox
-%{_bindir}/hp-uninstall
-%{_bindir}/hp-unload
-%{_bindir}/hp-upgrade
-%{_bindir}/hp-wificonfig
+# empty
+
+%files base
+%(for _x in %{basic_tools}; do echo "%{_bindir}/hp-$_x"; done)
+%(for _x in %{basic_tools}; do echo "%{_datadir}/hplip/$_x.py"; done)
+%(for _x in %{basic_tools}; do echo "%{_datadir}/hplip/__pycache__/$_x.*"; done)
+%{_datadir}/hplip/base
+%exclude %{_datadir}/hplip/base/imageprocessing.py*
+%exclude %{_datadir}/hplip/base/__pycache__/imageprocessing.*
+%{_datadir}/hplip/fax
+%{_datadir}/hplip/installer
+%{_datadir}/hplip/prnt
 %{_libdir}/python%{pyver}/site-packages/cupsext.*
 %{_libdir}/python%{pyver}/site-packages/hpmudext.*
 %{_libdir}/python%{pyver}/site-packages/pcardext.*
-%dir %{_prefix}/lib/cups
-%dir %{_prefix}/lib/cups/backend
-%{_prefix}/lib/cups/backend/hpfax
-%dir %{_prefix}/lib/cups/filter
-%{_prefix}/lib/cups/filter/hpps
-%dir %{_datadir}/cups
-%dir %{_datadir}/cups/model
-%dir %{_datadir}/cups/model/manufacturer-PPDs
-%{_datadir}/cups/model/manufacturer-PPDs/%{name}-hpps/
-%{_datadir}/cups/model/manufacturer-PPDs/%{name}-plugin/
+
+%files utils
+%config %{_sysconfdir}/xdg/autostart/hplip-systray.desktop
+# GUI tools (not in the basic_tools list above)
+%{_bindir}/hp-check
+%{_bindir}/hp-config_usb_printer
+%{_bindir}/hp-devicesettings
+%{_bindir}/hp-diagnose_plugin
+%{_bindir}/hp-faxsetup
+%{_bindir}/hp-linefeedcal
+%{_bindir}/hp-pqdiag
+%{_bindir}/hp-print
+%{_bindir}/hp-printsettings
+%{_bindir}/hp-systray
+%{_bindir}/hp-toolbox
+%{_bindir}/hp-wificonfig
+# Fixme: these tools are useless on openSUSE.
+%{_bindir}/hp-pkservice
+%{_bindir}/hp-uninstall
+%{_bindir}/hp-upgrade
 %doc %{_defaultdocdir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/hplip/
+%{expand:%(for _x in %{basic_tools}; do echo "%%exclude %{_datadir}/hplip/$_x.py"; done)}
+%{expand:%(for _x in %{basic_tools}; do echo "%%exclude %{_datadir}/hplip/__pycache__/$_x.*"; done)}
+%exclude %{_datadir}/hplip/base
+%exclude %{_datadir}/hplip/fax
+%exclude %{_datadir}/hplip/installer
+%exclude %{_datadir}/hplip/prnt
 %exclude %{_datadir}/hplip/data/models/models.dat
 %exclude %{_datadir}/hplip/base/imageprocessing.py*
 %exclude %{_datadir}/hplip/%{ui_dir}/scandialog.py*
@@ -777,29 +785,15 @@ exit 0
 %endif
 %endif
 
-%files hpijs
+%files common
 %config %{_sysconfdir}/hp/
 %config %{_sysconfdir}/cups/pstotiff.convs
 %config %{_sysconfdir}/cups/pstotiff.types
-%{_bindir}/hpijs
-%{_mandir}/man1/hpijs.1%{?ext_man}
-%{_libdir}/libhpip.so.*
-%{_libdir}/libhpipp.so.*
-%{_libdir}/libhpmud.so.*
-%{_libdir}/libhpdiscovery.so.*
-%dir %{_prefix}/lib/cups
-%dir %{_prefix}/lib/cups/backend
-%{_prefix}/lib/cups/backend/hp
-%dir %{_prefix}/lib/cups/filter
-%{_prefix}/lib/cups/filter/hpcups
-%{_prefix}/lib/cups/filter/hpcupsfax
-%{_prefix}/lib/cups/filter/hpcdmfax
-%{_prefix}/lib/cups/filter/pstotiff
+%{_datadir}/%{name}/data/models/models.dat
+%{_udevrulesdir}/56-hpmud.rules
 %dir %{_datadir}/cups
 %dir %{_datadir}/cups/model
 %dir %{_datadir}/cups/model/manufacturer-PPDs
-%{_datadir}/cups/model/manufacturer-PPDs/%{name}/
-%{_datadir}/%{name}/data/models/models.dat
 # Use fixed "/var/log/hp" because this is hardcoded in the HPLIP sources.
 # Regarding attr(0775,root,lp) see the comment for /var/log/hp/tmp below:
 %dir %attr(0775,root,lp) %{_localstatedir}/log/hp
@@ -810,15 +804,48 @@ exit 0
 # Use fixed "/var/lib/hp" because this is hardcoded in the HPLIP sources:
 %dir %{_localstatedir}/lib/hp
 
+%files -n libhplip0
+%{_libdir}/libhpip.so.*
+%{_libdir}/libhpipp.so.*
+%{_libdir}/libhpmud.so.*
+%{_libdir}/libhpdiscovery.so.*
+
+%files cups
+%dir %{_prefix}/lib/cups/filter
+%{_prefix}/lib/cups/filter/hpps
+%{_prefix}/lib/cups/filter/hpcups
+%{_prefix}/lib/cups/filter/hpcupsfax
+%{_prefix}/lib/cups/filter/hpcdmfax
+%{_prefix}/lib/cups/filter/pstotiff
+%dir %{_prefix}/lib/cups/backend
+%{_prefix}/lib/cups/backend/hp
+%{_prefix}/lib/cups/backend/hpfax
+
+%files driver-hpcups
+%dir %{drvdir}
+%{drvdir}/hpcups.drv
+
+%files ppds-hpcups
+%{_datadir}/cups/model/manufacturer-PPDs/%{name}-hpcups
+
+%files ppds-hpps
+%{_datadir}/cups/model/manufacturer-PPDs/%{name}-hpps
+
+%files ppds-postscript
+%{_datadir}/cups/model/manufacturer-PPDs/%{name}-ps
+
+%files ppds-plugin
+%{_datadir}/cups/model/manufacturer-PPDs/%{name}-plugin
+
+%files ppds-fax
+%{_datadir}/cups/model/manufacturer-PPDs/%{name}-fax
+
 %files sane
 %dir %{_libdir}/sane
 %{_libdir}/sane/libsane-hpaio.so.*
 %dir %{_sysconfdir}/sane.d
 %dir %{_sysconfdir}/sane.d/dll.d
-%{_sysconfdir}/sane.d/dll.d/hpaio
-
-%files udev-rules
-%{_udevrulesdir}/56-hpmud.rules
+%config %{_sysconfdir}/sane.d/dll.d/hpaio
 
 %files devel
 %{_libdir}/libhpip.so

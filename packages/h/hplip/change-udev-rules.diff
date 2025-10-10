@@ -2,7 +2,7 @@ Index: b/data/rules/56-hpmud.rules
 ===================================================================
 --- a/data/rules/56-hpmud.rules
 +++ b/data/rules/56-hpmud.rules
-@@ -1,8 +1,33 @@
+@@ -1,8 +1,31 @@
  # HPLIP udev rules file. Notify console user if plugin support is required for this device.
 +#
 +# SUSE changed:
@@ -27,8 +27,6 @@ Index: b/data/rules/56-hpmud.rules
 +# is also used to upload firmware into printers that need it
 +# see https://bugs.launchpad.net/bugs/1220628
 +# a rule that only uploads firmware into printers that need it is added.
-+#
-+# If possible activate hpaio backend support in /etc/sane.d/dll.conf.
  
  ACTION!="add", GOTO="hpmud_rules_end"
 -SUBSYSTEM=="ppdev", OWNER="root", GROUP="lp", MODE="0664"
@@ -37,7 +35,7 @@ Index: b/data/rules/56-hpmud.rules
  GOTO="hpmud_rules_end"
  
  LABEL="hpmud_usb_rules"
-@@ -13,6 +38,12 @@ ENV{ID_USB_INTERFACES}=="", IMPORT{built
+@@ -13,6 +38,9 @@ ENV{ID_USB_INTERFACES}=="", IMPORT{built
  ATTR{idVendor}=="03f0", ENV{ID_USB_INTERFACES}=="*:0701??:*|*:ffcc00:", OWNER="root", GROUP="lp", MODE="0664", ENV{libsane_matched}="yes", ENV{hp_test}="yes", ENV{ID_HPLIP}="1"
  
  # This rule will check the smart install feature, plugin status and firmware download for the required printers.
@@ -45,9 +43,6 @@ Index: b/data/rules/56-hpmud.rules
 +#ENV{hp_test}=="yes", PROGRAM="/bin/sh -c 'logger -p user.info loading HP Device $env{BUSNUM} $env{DEVNUM}'", RUN+="/bin/sh -c '/usr/bin/nohup /usr/bin/hp-config_usb_printer $env{BUSNUM}:$env{DEVNUM}'"
 +# This rule uploads firmware to HP USB printer devices if needed:
 +ENV{hp_test}=="yes", PROGRAM="/bin/logger -p user.info udev hpmud.rules runs hp-firmware to test if HP device with USB vendor ID $attr{idVendor} and USB product ID $attr{idProduct} at USB bus ID $env{BUSNUM} and USB device ID $env{DEVNUM} needs firmware and if yes to upload it", RUN+="/usr/bin/hp-firmware -s $env{BUSNUM}:$env{DEVNUM}"
-+
-+# If possible activate hpaio backend support in /etc/sane.d/dll.conf:
-+ENV{libsane_matched}=="yes", RUN+="/bin/sh -c 'if test -w /etc/sane.d/dll.conf ; then sed -i -e /hpaio/d /etc/sane.d/dll.conf ; echo hpaio >>/etc/sane.d/dll.conf ; fi'"
  
  LABEL="hpmud_rules_end"
 +

@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Oct  8 20:43:58 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Move more utilities from hplip-utils to hplip-base.
+  * hplip-base now contains all utilities that are not totally useless
+    and can run without the Qt GUI.
+
+-------------------------------------------------------------------
+Wed Oct  8 14:55:02 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update fix for support of new GPG key, as the key has now been
+  uploaded to GPG keyservers (lp#2120738)
+  * drop hplip-hardcode-new-signing-key-AC69536A2CF3A243.patch
+  * update hplip-change-pgp-server.patch
+
+-------------------------------------------------------------------
+Wed Oct  8 14:28:09 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Drop dependency on cups-ppdc. It isn't necessary, as PPD
+  generation on target system is done by cups-driverd.
+
+-------------------------------------------------------------------
+Mon Sep 29 13:13:08 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- The old and outdated 'hpijs' driver support is finally dropped
+  (the 'hpcups' driver is the default driver since 2009)
+  so that there is no need for foomatic-filters (boo#1250481)
+
+-------------------------------------------------------------------
+Thu Aug 21 10:50:17 UTC 2025 - Martin Wilck <martin.wilck@suse.com>
+
+- Continue refactoring:
+  * move GUI tools to "hplip-utils" subpackage
+  * convert "hplip" into an empty metapackage that pulls in hplip-utils 
+    and all drivers / PPDs (except hpijs PPDs).
+
+-------------------------------------------------------------------
+Tue Aug 19 13:33:02 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Refactor package structure:
+  * hplip: full set of utilities. Pulls in almost all subpackages
+    to deliver the "traditional" hplip experience
+  * hplip-base: small set of basic utilities that can be run
+    without GUI. Includes hp-probe and hp-plugin
+  * hplip-cups: minimal package for printing, without PPDs or
+    setup helpers
+  * hplip-sane: scanning support (unchanged) 
+  * hplip-driver-hpcups: hpcups.drv for generating hpcups PPDs on
+    the fly (requires ppdc). The functionality of this package is
+    similar to the old (misnamed) "hplip-hpijs" package.
+  * hplip-driver-hpijs: hpijs.drv for generating PPDs for the deprecated
+    hpijs / foomatic_rip filter. Note that this functionality was not part of
+    the late hplip-hpijs package, because upstream hasn't ship foomatic PPDs
+    since hplip 3.17.11.
+  * hplip-ppds-{hpcups,hpps,postscript,hpijs,fax,plugin}: static PPD
+    files for different printer types.
+    hplip-ppds-hpcups is an alternative to hplip-driver-hpcups.
+  * libhplip0: shared library package, used by hplip-cups and
+    hplip-sane
+  * hplip-common: configuration files and directories used by
+    all hplip packages.
+
+- Other spec file changes:
+  * Skip deprecated suse_update_desktop_file by default on TW
+  * Don't mess with sane configuration in udev rules
+  * Only the hpijs packages depend on foomatic-rip, which is only
+    provided by cups-filters-1.x. The other packages can be used
+    with cups-filters2.
+  * Remove Obsoletes: for ancient predecessor packages
+  * Remove outdated comments from spec file
+  * Shorten package descriptions
+  * Fix a couple of rpmlint issues
+    
+- Fix printer probing using avahi (lp#2120947)
+  * Add hplip-fix-driver-probing-using-avahi.patch
+  * Add hplip-fix-python-crash-in-avahi.py.patch
+
+-------------------------------------------------------------------
 Fri Aug 15 21:38:25 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Fix verification of HP plugin with new GPG key (lp#2120738)

@@ -1,0 +1,28 @@
+From 5bdb75b1b3397abd58a69aba18c6aacf8d70df77 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 19 Aug 2025 23:38:24 +0200
+Subject: [PATCH] hplip: fix python crash in avahi.py
+
+The avahi search method may crash on MDNS records that have
+an empty "details" field (field 9). This can happen e.g. for
+existing shared local printers advertized by cups.
+---
+ base/avahi.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/base/avahi.py b/base/avahi.py
+index b82a089..f168585 100755
+--- a/base/avahi.py
++++ b/base/avahi.py
+@@ -43,7 +43,7 @@ def detectNetworkDevices(ttl=4, timeout=10):
+     for line in output.splitlines():
+         if line.startswith('='):
+             bits = line.split(';')
+-            if bits[2] == 'IPv4' and len(bits[7].split('.')) == 4:
++            if bits[2] == 'IPv4' and len(bits[7].split('.')) == 4 and bits[9] != "":
+                 ip = bits[7]
+                 port = bits[8]
+                 # Run through the offered addresses and see if we have a bound local
+-- 
+2.50.1
+
