@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-HTTP
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Net-HTTP
 Name:           perl-Net-HTTP
-Version:        6.230.0
+Version:        6.240.0
 Release:        0
-# 6.23 -> normalize -> 6.230.0
-%define cpan_version 6.23
+# 6.24 -> normalize -> 6.240.0
+%define cpan_version 6.24
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Low-level HTTP connection (client)
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

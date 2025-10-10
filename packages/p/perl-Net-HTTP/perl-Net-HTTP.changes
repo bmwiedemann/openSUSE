@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  7 13:34:38 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.240.0 (6.24)
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.24      2025-08-29 11:21:58Z
+      - Fix #84: Replace neverssl.com with example.com in live tests (GH#86)
+        (Copilot)
+
+-------------------------------------------------------------------
 Fri Jul 11 14:17:47 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

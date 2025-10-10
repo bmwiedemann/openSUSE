@@ -8,6 +8,5 @@ protocol is described in RFC 2616. The 'Net::HTTP' class supports
 'Net::HTTP' is a sub-class of 'IO::Socket::INET'. You can mix the methods
 described below with reading and writing from the socket directly. This is
 not necessary a good idea, unless you know what you are doing.</description>
-  <devel project="devel:languages:perl" package="perl-Net-HTTP"/>
   <url>http://search.cpan.org/dist/Net-HTTP/</url>
 </package>

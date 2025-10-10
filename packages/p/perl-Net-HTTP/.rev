@@ -219,4 +219,16 @@
 </comment>
     <requestid>1292099</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>861f51d92f7a63af991ca482d5b036e6</srcmd5>
+    <version>6.240.0</version>
+    <time>1760108864</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.240.0 (6.24)
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+  6.24      2025-08-29 11:21:58Z
+      - Fix #84: Replace neverssl.com with example.com in live tests (GH#86)
+        (Copilot)</comment>
+    <requestid>1309972</requestid>
+  </revision>
 </revisionlist>
