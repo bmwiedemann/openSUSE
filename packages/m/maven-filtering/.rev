@@ -80,4 +80,12 @@
     <comment>3.4.0</comment>
     <requestid>1284157</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c57507659c9f1da023951844868ce010</srcmd5>
+    <version>3.4.0</version>
+    <time>1760109082</time>
+    <user>dimstar_suse</user>
+    <comment>https://github.com/apache/maven-filtering/issues/286</comment>
+    <requestid>1310516</requestid>
+  </revision>
 </revisionlist>

@@ -59,6 +59,8 @@ cp %{SOURCE1} build.xml
 
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
+%pom_remove_dep :plexus-xml
+
 %build
 mkdir -p lib
 build-jar-repository -s lib \

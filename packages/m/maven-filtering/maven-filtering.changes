@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 10 08:31:58 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Bogus dependency on plexus-xml
+  (https://github.com/apache/maven-filtering/issues/286)
+
+-------------------------------------------------------------------
 Mon Jun  9 10:39:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.4.0
