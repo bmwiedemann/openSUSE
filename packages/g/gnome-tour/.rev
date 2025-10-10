@@ -106,4 +106,12 @@
 - Remove gnome-tour-fix-vi-translation.patch, not needed anymore. (forwarded request 1306944 from dimstar)</comment>
     <requestid>1306962</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a636495a6717f617f76716c20225047b</srcmd5>
+    <version>49.0.openSUSE+git20251009.a4002c9</version>
+    <time>1760108877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1310388</requestid>
+  </revision>
 </revisionlist>

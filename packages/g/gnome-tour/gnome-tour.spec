@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-tour
-Version:        49.0.openSUSE+git20250923.480cff6
+Version:        49.0.openSUSE+git20251009.a4002c9
 Release:        0
 Summary:        GNOME Tour & Greeter
 License:        GPL-3.0-or-later
@@ -41,13 +41,6 @@ Requires:       %{name}-data = %{version}
 %description
 A guided tour and greeter for GNOME.
 
-%package minimal
-Summary:        GNOME Tour minimal
-Requires:       %{name}-data = %{version}
-
-%description minimal
-A minimal guided tour and greeter for GNOME.
-
 %package data
 Summary:        GNOME Tour data
 BuildArch:      noarch
@@ -56,6 +49,14 @@ BuildArch:      noarch
 GNOME Tour & Greeter data files
 
 %lang_package
+
+%package -n opensuse-welcome
+Summary:        Welcome utility for openSUSE
+Requires:       %{name}-data = %{version}
+Requires:       %{name}-lang-all = %{version}
+
+%description -n opensuse-welcome
+A welcome utility built to welcome new users to openSUSE.
 
 %prep
 %autosetup -p1 -a2
@@ -84,8 +85,10 @@ export RUSTFLAGS=%{rustflags}
 %{_datadir}/applications/org.gnome.Tour.desktop
 %{_datadir}/dbus-1/services/org.gnome.Tour.service
 
-%files minimal
-%{_bindir}/gnome-tour-minimal
+%files -n opensuse-welcome
+%{_bindir}/opensuse-welcome
+%{_datadir}/applications/org.opensuse.Welcome.desktop
+%{_datadir}/dbus-1/services/org.opensuse.Welcome.service
 
 %files data
 %{_datadir}/icons/hicolor/scalable/apps/*
