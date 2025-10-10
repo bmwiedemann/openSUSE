@@ -467,4 +467,13 @@
   * Support new bs4 changes.</comment>
     <requestid>1294921</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>04e85dcb39cb15c2f5b01d36f60017f8</srcmd5>
+    <version>4.11.0</version>
+    <time>1760109014</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-docutils-0.22.patch:
+  * Support docutils 0.22 changes.</comment>
+    <requestid>1310439</requestid>
+  </revision>
 </revisionlist>

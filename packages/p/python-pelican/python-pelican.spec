@@ -1,7 +1,7 @@
 #
 # spec file for package python-pelican
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://getpelican.com/
 Source:         https://github.com/getpelican/pelican/archive/refs/tags/%{version}.tar.gz#/pelican-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM gh#getpelican/pelican#3461
 Patch0:         support-new-bs4.patch
+# PATCH-FIX-OPENSUSE Support docutils 0.22 changes
+Patch1:         support-docutils-0.22.patch
 BuildRequires:  %{python_module Jinja2 >= 3.1.2}
 BuildRequires:  %{python_module Pygments >= 2.16.1}
 BuildRequires:  %{python_module Unidecode >= 1.3.7}

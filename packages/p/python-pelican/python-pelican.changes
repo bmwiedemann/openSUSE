@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 18 02:34:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-docutils-0.22.patch:
+  * Support docutils 0.22 changes.
+
+-------------------------------------------------------------------
 Tue Jul 22 03:09:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not install testsuite.
