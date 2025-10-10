@@ -16,6 +16,5 @@ Normally this isn't necessary - the set will guess its personality from the
 first data that is added to it.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Net-CIDR-Set"/>
   <url>http://search.cpan.org/dist/Net-CIDR-Set/</url>
 </package>

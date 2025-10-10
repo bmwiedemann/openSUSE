@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-CIDR-Set
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define cpan_name Net-CIDR-Set
 Name:           perl-Net-CIDR-Set
-Version:        0.160.0
+Version:        0.190.0
 Release:        0
-# 0.16 -> normalize -> 0.160.0
-%define cpan_version 0.16
+# 0.19 -> normalize -> 0.190.0
+%define cpan_version 0.19
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Manipulate sets of IP addresses
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RR/RRWO/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -71,7 +72,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README.md SECURITY.md
+%doc Changes CONTRIBUTING.md README.md SECURITY.md
 %license LICENSE
 
 %changelog
