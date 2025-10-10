@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  8 16:40:27 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update shakespeare to version 2.1.7.1.
+  ### 2.1.7.1
+
+  * Add missing other-messages to shakespeare.cabal [#299](https://github.com/yesodweb/shakespeare/pull/299)
+
+  ### 2.1.7
+
+  * Use ByteString’s Lift for Hamlet code generation [#298](https://github.com/yesodweb/shakespeare/pull/298)
+
+  ### 2.1.6
+
+  * Introduce options type for i18n, add ability to stop using record types for messages [#290](https://github.com/yesodweb/shakespeare/pull/290)
+
+  ### 2.1.5
+
+  * Add better support for `mkMessage`ing data types with params.[#295](https://github.com/yesodweb/shakespeare/pull/295)
+
+-------------------------------------------------------------------
 Thu Jun  5 15:56:06 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update shakespeare to version 2.1.4.

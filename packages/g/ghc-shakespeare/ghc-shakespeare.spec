@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.4
+Version:        2.1.7.1
 Release:        0
 Summary:        A toolkit for making compile-time interpolated templates
 License:        MIT
