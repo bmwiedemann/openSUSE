@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  2 16:47:06 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update vty to version 6.5.
+  6.5
+  ---
+
+  * Raised upper bound on `microlens` dependency to permit builds against
+    0.5.
+  * Fixed the `utf8-string` dependency lower bound to account for an added
+    module in 0.3.1. (#279)
+  * Improved the allocation behavior of `swapSkipsForSingleColumnCharSpan`.
+
+-------------------------------------------------------------------
 Mon Sep 15 00:34:18 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update vty to version 6.4 revision 1.
