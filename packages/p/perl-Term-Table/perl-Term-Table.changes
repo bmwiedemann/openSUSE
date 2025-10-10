@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:30:46 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.025
+   see /usr/share/doc/packages/perl-Term-Table/Changes
+
+  0.025     2025-08-31 10:51:26-07:00 America/Los_Angeles
+
+      - Typo Fix
+      - Hide some diagnostics when tests run in perl core
+
+-------------------------------------------------------------------
 Sat Dec 28 05:33:11 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.024

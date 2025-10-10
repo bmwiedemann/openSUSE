@@ -88,4 +88,16 @@
     <comment></comment>
     <requestid>1236292</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bbaa5d3e3dbdc24d2392d4ab82f1074e</srcmd5>
+    <version>0.025</version>
+    <time>1760109102</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.025
+   see /usr/share/doc/packages/perl-Term-Table/Changes
+  0.025     2025-08-31 10:51:26-07:00 America/Los_Angeles
+      - Typo Fix
+      - Hide some diagnostics when tests run in perl core</comment>
+    <requestid>1310535</requestid>
+  </revision>
 </revisionlist>
