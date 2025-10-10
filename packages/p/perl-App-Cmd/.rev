@@ -192,4 +192,16 @@
     <comment></comment>
     <requestid>1237566</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>98e12e5bdc9a572462880fa82d8d7153</srcmd5>
+    <version>0.338.0</version>
+    <time>1760109108</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.338.0 (0.338)
+   see /usr/share/doc/packages/perl-App-Cmd/Changes
+  0.338     2025-10-03 15:56:06-04:00 America/New_York
+          - add experimental --for-completion option to &quot;commands&quot; to help make
+            shell completion; THIS MAY CHANGE WEIRDLY</comment>
+    <requestid>1310545</requestid>
+  </revision>
 </revisionlist>

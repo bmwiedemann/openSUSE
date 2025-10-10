@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Cmd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %define cpan_name App-Cmd
 Name:           perl-App-Cmd
-Version:        0.337.0
+Version:        0.338.0
 Release:        0
-# 0.337 -> normalize -> 0.337.0
-%define cpan_version 0.337
+# 0.338 -> normalize -> 0.338.0
+%define cpan_version 0.338
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write command line apps with less suffering
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Capture::Tiny) >= 0.13
-BuildRequires:  perl(Class::Load) >= 0.06
+BuildRequires:  perl(Capture::Tiny) >= 0.130
+BuildRequires:  perl(Class::Load) >= 0.60
 BuildRequires:  perl(Data::OptList)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Getopt::Long) >= 2.39
@@ -48,8 +49,8 @@ BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(experimental)
 BuildRequires:  perl(parent)
-Requires:       perl(Capture::Tiny) >= 0.13
-Requires:       perl(Class::Load) >= 0.06
+Requires:       perl(Capture::Tiny) >= 0.130
+Requires:       perl(Class::Load) >= 0.60
 Requires:       perl(Data::OptList)
 Requires:       perl(Getopt::Long) >= 2.39
 Requires:       perl(Getopt::Long::Descriptive) >= 0.116
@@ -75,6 +76,8 @@ Provides:       perl(App::Cmd::Subdispatch) = %{version}
 Provides:       perl(App::Cmd::Subdispatch::DashedStyle) = %{version}
 Provides:       perl(App::Cmd::Tester) = %{version}
 Provides:       perl(App::Cmd::Tester::CaptureExternal) = %{version}
+Provides:       perl(App::Cmd::Tester::Exited) = %{version}
+Provides:       perl(App::Cmd::Tester::Result) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -86,7 +89,7 @@ usually involved.
 For information on how to start using App::Cmd, see App::Cmd::Tutorial.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
