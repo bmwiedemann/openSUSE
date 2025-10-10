@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 10 04:58:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.7:
+  * Fail build when var-transforms produce empty or non-matching
+    results
+  * qemu runner: open permissions on melange cache upper overlay
+  * build(deps): bump actions/download-artifact from 4.3.0 to 5.0.0
+    (#2141)
+  * build(deps): bump actions/checkout from 4.2.2 to 5.0.0 (#2144)
+  * build(deps): bump the actions group across 1 directory with 3
+    updates (#2158)
+  * build(deps): bump the gomod group across 1 directory with 12
+    updates (#2167)
+
+-------------------------------------------------------------------
 Tue Oct 07 04:55:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.31.6:
