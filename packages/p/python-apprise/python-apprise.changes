@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Oct  9 12:36:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.9.5
+  * pyobject availability does not impact glib testing
+  * Fix test case to compare url ids
+  * slack:// now has timestamp=yes/no kwarg support
+  * Fix AppriseURLTester usage of meta["self"]
+  * Fix test_time_zoneinfo edge case
+  * Added support for discord:// flags
+  * Global Timezone support added (tz=)
+  * feat: add icon field support for bark plugin
+  * Add twilio phone calls support
+  * Add Power Automate (Workflows/MS Teams) alternative url support
+  * Environment improvments (updates to PR #1385)
+  * PEM backend definitions handling for forwards compatability
+  * build environment improvements
+  * RUF059 linting fixes against codebase
+- from version 1.9.4
+  * Added Spike.sh support
+  * Added Spug Push Support
+  * Added Lark Support
+  * Added QQ Push Support
+  * Added SIGNL4 Support
+  * Added SendPulse Support
+  * Added Clickatell support
+  * Added Vapid/WebPush Support
+  * Added SMPP support
+  * Fix throttling in matrix plugin
+  * minor fixes lingering from PR (#1368)
+    - This is the major update identified in the Life-Cycle Support
+  * bluesky resolve did custom domains
+  * Update token regex on chanify
+  * Fix matrix v3 attachments
+  * Minor typos and fixes
+  * Improved Google Chat thread handling
+  * Display SMTP host in debug mode
+  * Support mailto://localhost (default user is root)
+  * Dbus/Glib Python binding modernization + test refactoring
+  * Add Codecov Test Analytics
+  * Removed LunaSea as it's services are offline as of April 30th, 2025
+  * Apprise Build System Modernization (PEP 621 / RPM CI)
+    - Addresses Red Hat Bugzilla 2377453 filed against the Apprise RPM Build structure.
+    - Replaced setup.py with pyproject.toml (setuptools.build_meta backend)
+    - Replaced legacy dynamic keyword loading with static [project.keywords]
+    - Added SPDX-compliant license (BSD-2-Clause)
+    - Introduced tox -e release for full packaging lifecycle
+    - Man page generation and translation compilation included in CI
+    - Verified RPM builds using Fedora-compatible GitHub Actions
+    - CI test matrix now supports Python 3.9–3.12, across Ubuntu, macOS,
+      and Windows
+    - .coverage files now consistently written to root; parallel
+      coverage disabled for simpler merging
+    - Artifact uploads now uniquely named per ${{ matrix.os }}-\
+      ${{ matrix.python-version }}-${{ matrix.tox_env }}
+    - tox.ini now supports clean qa, minimal, and release testing workflows
+    - ruff linter applied to entire code-base
+    - .pyi files dropped and type hinting integrated into main code base
+  * Test coverge added to investigate ticket #1356
+  * EL9 RPM build container public; workflow fixed to accommodate
+
+-------------------------------------------------------------------
 Mon May 19 06:31:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.9.3
