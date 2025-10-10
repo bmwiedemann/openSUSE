@@ -31,4 +31,18 @@
     <comment></comment>
     <requestid>1155636</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>02731baf976aae46980fc6fad6152920</srcmd5>
+    <version>0.130.0</version>
+    <time>1760108910</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.130.0 (0.13)
+   see /usr/share/doc/packages/perl-Math-Base-Convert/Changes
+  0.13  Mon Sep 15 15:44:16 PDT 2025
+  	bug 168226 disambiguate precendence bug introduced by perl 5.42
+  0.12  Tue Mar 14 15:51:39 PDT 2017
+  	correct typo stating 96 ascii characters
+  	should be 95 characters</comment>
+    <requestid>1309976</requestid>
+  </revision>
 </revisionlist>

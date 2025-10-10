@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  7 13:13:17 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.130.0 (0.13)
+   see /usr/share/doc/packages/perl-Math-Base-Convert/Changes
+
+  0.13  Mon Sep 15 15:44:16 PDT 2025
+  	bug 168226 disambiguate precendence bug introduced by perl 5.42
+
+  0.12  Tue Mar 14 15:51:39 PDT 2017
+  	correct typo stating 96 ascii characters
+  	should be 95 characters
+
+-------------------------------------------------------------------
 Mon Mar  4 13:19:46 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
