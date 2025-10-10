@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  5 12:31:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * https://github.com/dscharrer/innoextract/pull/199/files
+    CMake: Fix build with Boost 1.89.0
+  * 199.patch
+
+-------------------------------------------------------------------
 Sun Jul 27 15:43:57 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Add upstream cmake-version-range.patch for compatibility with

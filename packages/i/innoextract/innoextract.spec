@@ -1,7 +1,7 @@
 #
 # spec file for package innoextract
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,13 +30,13 @@ Source2:        %{name}.keyring
 Patch0:         https://github.com/dscharrer/innoextract/pull/169.patch
 # patch from upstream
 Patch1:         cmake-version-range.patch
+Patch2:         https://github.com/dscharrer/innoextract/pull/199.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(bzip2)
