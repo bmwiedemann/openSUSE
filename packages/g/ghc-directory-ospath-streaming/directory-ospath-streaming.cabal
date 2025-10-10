@@ -1,0 +1,160 @@
+cabal-version: 3.0
+
+-- Created : 27 April 2023
+
+name:
+  directory-ospath-streaming
+version:
+  0.2.2
+x-revision: 1
+synopsis:
+  Stream directory entries in constant memory in vanilla IO
+description:
+  Reading of directory contents in constant memory, i.e. in an iterative
+  fashion without storing all directory elements in memory. From another
+  perspective, this reading interface allows stopping at any point
+  without loading every directory element.
+
+  Also defines general-purpose recursive directory traversals.
+
+  Both Windows and Unix systems are supported.
+copyright:
+  (c) Sergey Vinokurov 2023
+license:
+  Apache-2.0
+license-file:
+  LICENSE
+author:
+  Sergey Vinokurov
+maintainer:
+  Sergey Vinokurov <serg.foo@gmail.com>
+category:
+  File, Streaming
+
+tested-with:
+  , GHC == 8.6
+  , GHC == 8.8
+  , GHC == 8.10
+  , GHC == 9.2
+  , GHC == 9.4
+  , GHC == 9.6
+  , GHC == 9.8
+  , GHC == 9.10
+
+build-type:
+  Simple
+
+extra-source-files:
+  test/filesystem/*.txt
+  test/filesystem/bin/*.txt
+
+extra-doc-files:
+  Changelog.md
+  Readme.md
+
+homepage:
+  https://github.com/sergv/directory-ospath-streaming
+
+source-repository head
+  type: git
+  location: https://github.com/sergv/directory-ospath-streaming.git
+
+-- Cabal will pick this flag up automatically during solving. Default to true
+-- since that’s what should be picked up for all future filepath versions starting at 1.5.
+flag os-string
+  description:
+    Depend on os-string package, needed for filepath >= 1.5
+  default:
+    True
+  manual:
+    False
+
+common ghc-options
+  default-language: Haskell2010
+
+  ghc-options:
+    -Weverything
+    -Wno-all-missed-specialisations
+    -Wno-implicit-prelude
+    -Wno-missed-specialisations
+    -Wno-missing-import-lists
+    -Wno-missing-local-signatures
+    -Wno-safe
+    -Wno-unsafe
+
+  if impl(ghc >= 8.8)
+    ghc-options:
+      -Wno-missing-deriving-strategies
+
+  if impl(ghc >= 8.10)
+    ghc-options:
+      -Wno-missing-safe-haskell-mode
+      -Wno-prepositive-qualified-module
+
+  if impl(ghc >= 9.2)
+    ghc-options:
+      -Wno-missing-kind-signatures
+
+  if impl(ghc >= 9.8)
+    ghc-options:
+      -Wno-missing-role-annotations
+      -Wno-missing-poly-kind-signatures
+
+common depends-on-filepath
+  if flag(os-string)
+    build-depends:
+      , filepath >= 1.5
+      , os-string >= 2.0
+  else
+    build-depends:
+      , filepath >= 1.4.100 && < 1.5
+
+library
+  import: ghc-options, depends-on-filepath
+  exposed-modules:
+    System.Directory.OsPath.Streaming
+    System.Directory.OsPath.Streaming.Internal
+    System.Directory.OsPath.Streaming.Internal.Raw
+    System.Directory.OsPath.Types
+  other-modules:
+    System.Directory.OsPath.Contents
+    System.Directory.OsPath.FileType
+    System.Directory.OsPath.Utils
+  hs-source-dirs:
+    src
+  build-depends:
+    , atomic-counter >= 0.1.2
+    , base >= 4.12 && < 5
+    , deepseq >= 1.4
+
+  if os(windows)
+    build-depends:
+      , directory >= 1.3.8
+      , Win32 >= 2.13.3
+  else
+    build-depends:
+      -- Cannot use lower version because it doesn’t support OsStrings
+      , unix >= 2.8
+
+test-suite test
+  import: ghc-options, depends-on-filepath
+  type:
+    exitcode-stdio-1.0
+  main-is:
+    test/TestMain.hs
+  hs-source-dirs:
+    .
+    test
+  build-depends:
+    , base >= 4.12
+    , directory-ospath-streaming
+    , tasty
+    , tasty-hunit
+  if !os(windows)
+    build-depends:
+      , directory
+      , random
+      , unix >= 2.8
+  ghc-options:
+    -rtsopts
+    -main-is TestMain
