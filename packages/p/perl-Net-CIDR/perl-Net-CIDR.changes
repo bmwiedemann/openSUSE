@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  7 13:32:31 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.270.0 (0.27)
+   see /usr/share/doc/packages/perl-Net-CIDR/ChangeLog
+
+  0.27	Sam Varshavchik  <mrsam@courier-mta.com>
+  	cidrvalidate() bug fix.
+
+-------------------------------------------------------------------
 Sat Jun 21 05:32:29 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.260.0 (0.26)

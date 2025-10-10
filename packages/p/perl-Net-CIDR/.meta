@@ -5,6 +5,5 @@ expressed in CIDR notation. The Net::CIDR functions handle both IPv4 and IPv6
 addresses.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Net-CIDR"/>
   <url>http://search.cpan.org/dist/Net-CIDR</url>
 </package>
