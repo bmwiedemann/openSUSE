@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  9 19:57:25 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.710.0 (4.71)
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.71 2025-09-16
+
+      [ INTERNALS ]
+      - the .tmpfiles hash now keys on the $fh->filename . $fh rather than $$fh . $fh
+      - this ensures duplicate filename uploads still resolve to unique files on disk
+      - fixes GH #276
+
+-------------------------------------------------------------------
 Tue Jul  8 05:35:23 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.700.0 (4.70)

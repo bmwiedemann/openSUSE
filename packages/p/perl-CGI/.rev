@@ -286,4 +286,18 @@
       - add github actions for CI (GH #273, thanks to esabol)</comment>
     <requestid>1291922</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3e9d67d65acb0ea5c98c4c5b863e3922</srcmd5>
+    <version>4.710.0</version>
+    <time>1760215697</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.710.0 (4.71)
+   see /usr/share/doc/packages/perl-CGI/Changes
+  4.71 2025-09-16
+      [ INTERNALS ]
+      - the .tmpfiles hash now keys on the $fh-&gt;filename . $fh rather than $$fh . $fh
+      - this ensures duplicate filename uploads still resolve to unique files on disk
+      - fixes GH #276</comment>
+    <requestid>1310543</requestid>
+  </revision>
 </revisionlist>
