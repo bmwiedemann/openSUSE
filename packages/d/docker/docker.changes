@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct  8 16:45:29 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 28.5.1-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/28/#2851>
+- Rebased patches:
+  * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+  * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * cli-0001-openSUSE-point-users-to-docker-buildx-package.patch
+  * cli-0002-SECRETS-SUSE-default-to-DOCKER_BUILDKIT-0-for-docker.patch
+- Remove upstreamed patch:
+  - 0007-Add-back-vendor.sum.patch
+
+-------------------------------------------------------------------
 Fri Oct  3 07:35:39 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 28.5.0-ce. See upstream changelog online at

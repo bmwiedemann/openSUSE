@@ -180,7 +180,9 @@ fi
 	mv -nv /etc/docker/suse-secrets-enable{,-DISABLED}
 sudo systemctl restart docker
 
-# Make sure docker-buildx is disabled.
+# We need to disable docker-buildx for the integration-cli tests because
+# otherwise the "docker build" command will use the wrong builder and the
+# output won't match what the tests expect.
 [ -e /usr/lib/docker/cli-plugins/docker-buildx ] && \
 	mv -nv /usr/lib/docker/cli-plugins/docker-buildx{,-DISABLED}
 
@@ -250,9 +252,6 @@ for suite_name in "${SUITES[@]}"; do
 	[ -n "$filter" ] && test_flags+=("-test.run" "$filter")
 
 	if [[ "$suite_name" == "integration-cli" ]]; then
-		# We need to disable docker-buildx for the integration-cli tests
-		# because otherwise the "docker build" command will use the wrong
-		# builder and the output won't match what the tests expect.
 		timeout=360m
 	fi
 	test_flags+=("-test.timeout" "$timeout")

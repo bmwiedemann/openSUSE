@@ -1,7 +1,7 @@
-From 4146485db36718c4b0b8e7e859899d12be3a2eb4 Mon Sep 17 00:00:00 2001
+From d4db647a40c0c8992dc2eeb862e8bafaff58cca3 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
-Subject: [PATCH 6/7] SLE12: revert "apparmor: remove version-conditionals from
+Subject: [PATCH 6/6] SLE12: revert "apparmor: remove version-conditionals from
  template"
 
 This reverts the following commits:
