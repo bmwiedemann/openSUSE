@@ -1595,6 +1595,7 @@ unsorted:
   - brickv 
   - bridge-utils 
   - bridge-utils-devel 
+  - bridge-utils-dummy 
   - brightnessctl 
   - brisk-menu 
   - brisk-menu-lang 
@@ -19566,6 +19567,8 @@ unsorted:
   - net-snmp-devel 
   - net-snmp-devel-32bit 
   - net-tools-deprecated 
+  - net-tools-dummy 
+  - net-tools-dummy-ether-wake 
   - net6 
   - net6-devel 
   - net6-lang 
