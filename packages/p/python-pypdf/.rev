@@ -49,4 +49,35 @@
     <comment></comment>
     <requestid>1299354</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4cf04665374483c39885b099bbb678f6</srcmd5>
+    <version>6.1.1</version>
+    <time>1760215814</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.1:
+  * Insert new embedded files in a sorted manner
+  * Fix name tree handling for embedded files with Kids-based
+    inputs
+  * Make embedding files not break PDF/A-3 compliance
+  * Document AFRelationship handling for PDF/A and provide
+    constants
+  * Enhance XMP metadata handling with creation and setter
+    methods
+  * Add all font metrics for base 14 Type 1 PDF fonts
+  * Allow deleting embedded files
+  * Add support for Python in FIPS mode for document identifier
+  * Fix handling of UTF-16 encoded destination titles
+  * Guard empty input to prevent IndexError
+  * Fix type hint for XMP metadata setter to add bytes type
+
+  * Maintenance: Add deprecate_with_replacement to
+- Add %{?sle15_python_module_pythons} macro.
+- Update to 4.2.0 what includes the upstream renaming to python-pydf
+- Update to version 2.11.1
+- Update to version 2.11.0
+  * Robustness (ROB)
+- Spec changes:
+- Update to version 1.27.0:</comment>
+    <requestid>1310636</requestid>
+  </revision>
 </revisionlist>

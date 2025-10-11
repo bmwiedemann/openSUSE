@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 10 20:57:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.1:
+  * Insert new embedded files in a sorted manner
+  * Fix name tree handling for embedded files with Kids-based
+    inputs
+  * Make embedding files not break PDF/A-3 compliance
+  * Document AFRelationship handling for PDF/A and provide
+    constants
+  * Enhance XMP metadata handling with creation and setter
+    methods
+  * Add all font metrics for base 14 Type 1 PDF fonts
+  * Allow deleting embedded files
+  * Add support for Python in FIPS mode for document identifier
+  * Fix handling of UTF-16 encoded destination titles
+  * Guard empty input to prevent IndexError
+  * Fix type hint for XMP metadata setter to add bytes type
+
+-------------------------------------------------------------------
 Thu Aug 14 08:43:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.0.0 (bsc#1248089, CVE-2025-55197)
@@ -19,7 +38,7 @@ Fri Mar 14 10:03:23 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
   * Fix check box value which should be name object (#3124) by @stefan6419846
   * Fix stream position on inline image fallback extraction (#3120) by @stefan6419846
   * Fix object count for incremental writer (#3117) by @m32
- 
+
 
 -------------------------------------------------------------------
 Wed Sep 25 18:28:54 UTC 2024 - Caroline Sena <caroline.sena@suse.com>
@@ -27,10 +46,10 @@ Wed Sep 25 18:28:54 UTC 2024 - Caroline Sena <caroline.sena@suse.com>
 - Update to 4.3.1:
   * Bug Fixes: Cope with Matrix entry in field annotations (#2736)
   * Robustness: Cope with fields with upside down box/rectangle (#2729)
-  * Maintenance: Add deprecate_with_replacement to 
+  * Maintenance: Add deprecate_with_replacement to
     StreamObject.initializeFromD… (#2728);
     Deal with cryptography>=43 moving ARC4 (#2765)
- 
+
 -------------------------------------------------------------------
 Fri Sep 13 05:35:16 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
@@ -41,12 +60,12 @@ Fri Sep 13 05:35:16 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Fri Aug 30 19:52:14 UTC 2024 - Aline Werner <aline.werner@suse.com>
 
-- Add %{?sle15_python_module_pythons} macro. 
+- Add %{?sle15_python_module_pythons} macro.
 
 -------------------------------------------------------------------
 Tue May 21 12:50:19 UTC 2024 - Christian Goll <cgoll@suse.com>
 
-- Update to 4.2.0 what includes the upstream renaming to python-pydf 
+- Update to 4.2.0 what includes the upstream renaming to python-pydf
   introduced in 3.2.0. Changes are:
 
 - Version 4.2.0, 2024-04-07
@@ -746,7 +765,7 @@ Fri Aug 25 14:08:04 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Thu Oct 27 21:04:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.11.1 
+- Update to version 2.11.1
   Bug Fixes (BUG)
   * td matrix (#1373)
   * Cope with cmap from #1322 (#1372)
@@ -757,7 +776,7 @@ Thu Oct 27 21:04:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 02:36:06 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.11.0 
+- Update to version 2.11.0
   * New Features (ENH)
     Addition of optional visitor-functions in extract_text() (#1252)
     Add metadata.creation_date and modification_date (#1364)
@@ -766,14 +785,14 @@ Wed Oct 12 02:36:06 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
     Lookup index in _xobj_to_image can be ByteStringObject (#1366)
     ‘IndexError: index out of range’ when using extract_text (#1361)
     Errors in transfer_rotation_to_content() (#1356)
-  * Robustness (ROB) 
+  * Robustness (ROB)
     Ensure update_page_form_field_values does not fail if no fields (#1346)
     Full Changelog: https://github.com/py-pdf/PyPDF2/compare/2.10.9…2.11.0
 
 -------------------------------------------------------------------
 Wed Sep  7 18:19:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Spec changes: 
+- Spec changes:
   Changed the source to github
   Renamed CHANGELOG to CHANGELOG.md
 
@@ -1432,7 +1451,7 @@ Code Style (STY):
   PyPDF2. It was removed by accident in 1.27.0, but might get removed with 2.0.0
   See #718 for discussion
 
-- Update to version 1.27.0: 
+- Update to version 1.27.0:
   Features:
   - Add alpha channel support for png files in Script (#614)
   Bug fixes (BUG):
@@ -1534,7 +1553,7 @@ FEATURES:
     * Added methods to get page number of given PageObject or
       Destination: getPageNumber and getDestinationPageNumber.
       See documentation (mozbugbox)
-    
+
 -------------------------------------------------------------------
 Mon May 11 18:00:56 UTC 2015 - benoit.monin@gmx.fr
 
