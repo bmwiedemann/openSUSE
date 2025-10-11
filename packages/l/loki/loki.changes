@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 10 12:58:46 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.5.6:
+  * fix(deps): remove CVE GHSA-2464-8j7c-4cjm (#19469)
+  * fix(release-3.5.x): bump Go version to 1.24.8 (#19454) (#19462)
+  * docs: backport #17266 to 3.5 branch (#19463)
+  * docs: Update auth docs (backport release-3.5.x) (#19460)
+  * docs: Adding config to reference section (backport release-3.5.x) (#19458)
+  * chore(deps): update dependency vite to v7 [security] (release-3.5.x) (#19150)
+  * fix(deps): update module github.com/twmb/franz-go/plugin/kprom to v1.2.1 (release-3.5.x) (#18793)
+  * docs: Update RN 3.5.5 (#19179) (#19182)
+  * docs: Update RN for 3.4.6 (backport release-3.5.x) (#19181)
+  * chore(release-3.5.x): release 3.5.5 (#19167)
+
+-------------------------------------------------------------------
 Thu Sep 11 09:54:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.5.5:
