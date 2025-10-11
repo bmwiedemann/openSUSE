@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 11 01:36:49 UTC 2025 - Xu Zhao <i@xuzhao.net>
+
+- Remove telegram-desktop-webrtc-link.patch.
+- Add tg_owt-replace-absl-template-nullability-annotations.patch.
+- Remove redundant build time dependencies.
+
+-------------------------------------------------------------------
 Tue Oct  7 04:26:57 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Removed Qt-6.9.patch.

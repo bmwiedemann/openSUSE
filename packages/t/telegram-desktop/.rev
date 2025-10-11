@@ -1476,4 +1476,12 @@
   * Fixed several crashes.</comment>
     <requestid>1309409</requestid>
   </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>59be43dc232fe13c173e43b830f94c19</srcmd5>
+    <version>6.1.4</version>
+    <time>1760215855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1310720</requestid>
+  </revision>
 </revisionlist>

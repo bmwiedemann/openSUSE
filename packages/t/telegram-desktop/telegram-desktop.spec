@@ -38,68 +38,42 @@ Source2:        openh264-headers-%{h264_ver}.tar.xz
 Source3:        tg_owt-%{owt_ver}.tar.xz
 # n=td && cd /tmp && git clone --depth=1 https://github.com/tdlib/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source4:        td-%{td_ver}.tar.xz
-Patch0:         %{name}-webrtc-link.patch
-Patch1:         tg_owt-h264-dlopen.patch
-BuildRequires:  QR-Code-generator-devel
-BuildRequires:  clang
+Patch0:         tg_owt-h264-dlopen.patch
+Patch1:         tg_owt-replace-absl-template-nullability-annotations.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-#?1
 BuildRequires:  glibc-devel
 BuildRequires:  gperf
-BuildRequires:  kf6-kcoreaddons-devel
-#?1
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libdispatch-devel
 BuildRequires:  mold
-BuildRequires:  ms-gsl-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-waylandclient-private-devel
-BuildRequires:  qt6-widgets-private-devel
-BuildRequires:  range-v3-devel
-BuildRequires:  xxhash-devel
-#?1
-BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  cmake(Microsoft.GSL)
+BuildRequires:  cmake(Qt6GuiPrivate)
+BuildRequires:  cmake(Qt6WaylandClientPrivate)
+BuildRequires:  cmake(Qt6WidgetsPrivate)
+BuildRequires:  cmake(range-v3)
+BuildRequires:  pkgconfig(KF6CoreAddons)
 BuildRequires:  pkgconfig(Qt6Core)
-#?1
 BuildRequires:  pkgconfig(Qt6DBus)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6OpenGL)
 BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
-#?1
-BuildRequires:  pkgconfig(Qt6Qml)
 BuildRequires:  pkgconfig(Qt6Quick)
 BuildRequires:  pkgconfig(Qt6QuickWidgets)
 BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6WaylandCompositor)
-#?1
-BuildRequires:  pkgconfig(Qt6WaylandClient)
 BuildRequires:  pkgconfig(Qt6Widgets)
-BuildRequires:  pkgconfig(alsa)
-#?1
-BuildRequires:  pkgconfig(expat)
-BuildRequires:  pkgconfig(fmt)
-#?1
-BuildRequires:  pkgconfig(fontconfig)
-#?1
-BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glib-2.0)
-#?1
 BuildRequires:  pkgconfig(glibmm-2.68)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-#?1
-BuildRequires:  pkgconfig(gsl)
-#?1
-BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(hunspell)
-BuildRequires:  pkgconfig(jemalloc)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
@@ -110,73 +84,34 @@ BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(liblz4)
-#?1
 BuildRequires:  pkgconfig(liblzma)
-#?1
-BuildRequires:  pkgconfig(libmng)
 BuildRequires:  pkgconfig(libpipewire-0.3)
-#?1
-BuildRequires:  pkgconfig(libpng)
-#?1
-BuildRequires:  pkgconfig(libproxy-1.0)
-BuildRequires:  pkgconfig(libpulse)
-#?1
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
-#?1
 BuildRequires:  pkgconfig(libtiff-4)
-#?1
-BuildRequires:  pkgconfig(libva)
-#?1
-BuildRequires:  pkgconfig(libva-glx)
-#?1
-BuildRequires:  pkgconfig(libva-x11)
-#?1
 BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(minizip)
-#?1
-BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
-#?1
-BuildRequires:  pkgconfig(portaudio-2.0)
-#?1
-BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(qrcodegen)
 BuildRequires:  pkgconfig(rnnoise)
-#?1
-BuildRequires:  pkgconfig(tslib)
-#?1
-BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vpx)
-#?1
 BuildRequires:  pkgconfig(webkitgtk-6.0)
-#?1
 BuildRequires:  pkgconfig(webrtc-audio-processing-1)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
-#?1
-BuildRequires:  pkgconfig(xcb-ewmh)
-#?1
-BuildRequires:  pkgconfig(xcb-icccm)
-#?1
-BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xcb-record)
-#?1
-BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcb-screensaver)
-#?1
-BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
-#?1
-BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
@@ -194,7 +129,6 @@ The service also provides APIs to independent developers.
 
 %prep
 %setup -q -n tdesktop-%{version}-full -b1 -b2 -b3 -b4
-%autopatch -p1 0
 
 mv ../ada-%{ada_ver} Telegram/ThirdParty/ada
 
@@ -203,7 +137,11 @@ mv ../openh264-headers-%{h264_ver} Telegram/ThirdParty/openh264/include/wels
 
 mv ../tg_owt-%{owt_ver} Telegram/ThirdParty/tg_owt
 pushd Telegram/ThirdParty/tg_owt
+%autopatch -p2 0
+# Only patch absl in Tumbleweed
+%if 0%{?suse_version} > 1600
 %autopatch -p1 1
+%endif
 popd
 
 mv ../td-%{td_ver} Telegram/ThirdParty/td
@@ -243,14 +181,8 @@ cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/tg_owt
       -DCMAKE_CXX_FLAGS="$CFLAGS" \
       -DCMAKE_INSTALL_PREFIX="%{_builddir}/local" \
       -DTG_OWT_DLOPEN_H264=ON \
-      -DTG_OWT_FFMPEG_INCLUDE_PATH="%{_includedir}/ffmpeg" \
-      -DTG_OWT_LIBJPEG_INCLUDE_PATH="%{_includedir}" \
-      -DTG_OWT_LIBVPX_INCLUDE_PATH="%{_includedir}/vpx" \
       -DTG_OWT_OPENH264_INCLUDE_PATH="../openh264/include" \
-      -DTG_OWT_OPENSSL_INCLUDE_PATH="%{_includedir}/openssl" \
-      -DTG_OWT_OPUS_INCLUDE_PATH="%{_includedir}/opus" \
-      -DTG_OWT_PACKAGED_BUILD=ON \
-      -DTG_OWT_SPECIAL_TARGET="linux"
+      -DTG_OWT_PACKAGED_BUILD=ON
 %cmake_build
 ninja install
 
