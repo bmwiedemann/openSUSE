@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20251009" schemaversion="4.1">
+<image name="OBS__MicroOS___20251010" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20251009</productvar>
+      <productvar name="VERSION">20251010</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20251009,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20251010,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20251009/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20251010/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -263,8 +263,9 @@
       <repopackage name="hicolor-icon-theme"/>
       <repopackage name="hicolor-icon-theme-branding-openSUSE"/>
       <repopackage name="hostname"/>
-      <repopackage name="hplip-hpijs"/>
-      <repopackage name="hplip-udev-rules"/>
+      <repopackage name="hplip-common"/>
+      <repopackage name="hplip-cups"/>
+      <repopackage name="hplip-driver-hpcups"/>
       <repopackage name="hwdata"/>
       <repopackage name="hwinfo"/>
       <repopackage name="hyper-v"/>
@@ -457,7 +458,6 @@
       <repopackage name="lastlog2"/>
       <repopackage name="layer-shell-qt6"/>
       <repopackage name="less"/>
-      <repopackage name="liba52-0"/>
       <repopackage name="libaa1"/>
       <repopackage name="libabsl_base2508_0_0"/>
       <repopackage name="libabsl_city2508_0_0"/>
@@ -617,7 +617,6 @@
       <repopackage name="libdbus-1-3"/>
       <repopackage name="libdbusmenu-qt5-2"/>
       <repopackage name="libdc1394-26"/>
-      <repopackage name="libdca0"/>
       <repopackage name="libdconf1"/>
       <repopackage name="libddcutil5"/>
       <repopackage name="libdecor"/>
@@ -737,6 +736,7 @@
       <repopackage name="libheif1"/>
       <repopackage name="libhidapi-hidraw0"/>
       <repopackage name="libhogweed6"/>
+      <repopackage name="libhplip0"/>
       <repopackage name="libhunspell-1_7-0"/>
       <repopackage name="libhwy1"/>
       <repopackage name="libICE6"/>
@@ -960,7 +960,6 @@
       <repopackage name="libmpath0"/>
       <repopackage name="libmpc3"/>
       <repopackage name="libmpdec4"/>
-      <repopackage name="libmpeg2-0"/>
       <repopackage name="libmpfr6"/>
       <repopackage name="libmpg123-0"/>
       <repopackage name="libmspack0"/>

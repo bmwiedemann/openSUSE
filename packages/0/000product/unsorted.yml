@@ -7331,7 +7331,6 @@ unsorted:
   - gnome-themes 
   - gnome-themes-extras 
   - gnome-themes-lang 
-  - gnome-tour-minimal 
   - gnome-usage 
   - gnome-usage-lang 
   - gnome-user-docs-lang 
@@ -8523,7 +8522,13 @@ unsorted:
   - hp2xx 
   - hplip 
   - hplip-devel 
+  - hplip-ppds-fax 
+  - hplip-ppds-hpcups 
+  - hplip-ppds-hpps 
+  - hplip-ppds-plugin 
+  - hplip-ppds-postscript 
   - hplip-scan-utils 
+  - hplip-utils 
   - hppc 
   - hppc-javadoc 
   - hppc-templateprocessor 
@@ -12158,7 +12163,6 @@ unsorted:
   - libbirb0 
   - libbitmask-devel 
   - libbitmask1 
-  - libbitstream2 
   - libblacs2-mvapich2 
   - libblacs2-mvapich2-devel 
   - libblacs2-mvapich2-devel-static 
@@ -14984,7 +14988,6 @@ unsorted:
   - liboop-devel 
   - liboop4 
   - liboorexx4 
-  - libopae-c2 
   - libopagent1 
   - libopamgt-devel 
   - libopamgt0 
@@ -20245,8 +20248,6 @@ unsorted:
   - opa-fmgui 
   - opa-snapconfig 
   - opa-zsh-completion 
-  - opae 
-  - opae-devel 
   - opam 
   - opam-devel 
   - opam-file-format 
@@ -20506,7 +20507,6 @@ unsorted:
   - openstack-macros 
   - opensurge 
   - opensuse-migration-tool 
-  - opensuse-welcome-lang 
   - opentest4j 
   - opentest4j-javadoc 
   - opentimelineio-devel 
@@ -36255,6 +36255,8 @@ unsorted:
   - rmw 
   - rmw-lang 
   - rnnoise-devel 
+  - rnote 
+  - rnote-lang 
   - rnp 
   - rnp-devel 
   - roast 
@@ -48346,7 +48348,6 @@ unsorted:
   - typelib-1_0-Ibis-1_0 
   - typelib-1_0-Ido3-0_1 
   - typelib-1_0-JavaScriptCore-4_0 
-  - typelib-1_0-JavaScriptCore-6_0 
   - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Jsonrpc-1_0 
   - typelib-1_0-Keybinder-0_0 
@@ -48418,7 +48419,6 @@ unsorted:
   - typelib-1_0-Vips-8.0 
   - typelib-1_0-Vte-2_91 
   - typelib-1_0-Vte-3_91 
-  - typelib-1_0-WebKit-6_0 
   - typelib-1_0-WebKit2-4_0 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
