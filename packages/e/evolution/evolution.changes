@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 10 07:45:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.58.1:
+  + Bug Fixes:
+    - Subject not decrypted in GPG encrypted mail
+    - EWebView: Draw symbolic icons with theme foreground color
+    - Missing "search type" drop-down menu on Calendar window
+    - shell: Connect the shell window delete-event handler using
+      _after
+  + Miscellaneous:
+    - Composer: Broken letters with reopened message in other than
+      UTF-8 charset
+    - data: Round down icon height of evolution-symbolic.svg
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 12 14:57:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.58.0:

@@ -2714,4 +2714,12 @@ New stable rel</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 1304871 from dimstar)</comment>
     <requestid>1305439</requestid>
   </revision>
+  <revision rev="290" vrev="1">
+    <srcmd5>93e63cb14332eeebbc67500fe1cf6237</srcmd5>
+    <version>3.58.1</version>
+    <time>1760215734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1310504</requestid>
+  </revision>
 </revisionlist>
