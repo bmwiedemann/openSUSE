@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 10 07:07:26 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove ether-wake from busybox-net-tools: it's packaged in its
+  own subpackage busybox-ether-wake.
+
+-------------------------------------------------------------------
 Thu Sep 11 00:19:06 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Provide support for bridge-utils-dummy (bsc#1242048).
