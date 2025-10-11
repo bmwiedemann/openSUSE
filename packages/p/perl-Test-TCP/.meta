@@ -3,6 +3,5 @@
   <description>Test::TCP is a set of test utilities for TCP/IP programs.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-TCP"/>
   <url>http://search.cpan.org/dist/Test-TCP/</url>
 </package>
