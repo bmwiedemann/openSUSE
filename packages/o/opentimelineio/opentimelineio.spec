@@ -26,6 +26,8 @@ Source:         https://github.com/AcademySoftwareFoundation/OpenTimelineIO/arch
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Use-system-rapidjson.patch
 Patch1:         0002-CMake-fixes.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Drop-Imath2-support-and-modernize-Imath-includes.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc13-PIE
@@ -53,6 +55,8 @@ external media. It is not however, a container format for media.
 %package devel
 Summary:        Development files for opentimelineio
 Requires:       libopentimelineio0 = %{version}
+# opentimelineio doesn't link to imath and will break if the soname changes
+%requires_eq    Imath-devel
 
 %description devel
 Development files for opentimelineio.

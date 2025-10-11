@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 10 22:07:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Make sure OTIO is rebuilt after an imath update
+
+-------------------------------------------------------------------
+Sat Mar 29 10:15:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * 0001-Drop-Imath2-support-and-modernize-Imath-includes.patch
+
+-------------------------------------------------------------------
 Fri Mar  7 07:57:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Init opentimelineio
