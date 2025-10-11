@@ -89,4 +89,13 @@
     <comment></comment>
     <requestid>1006454</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ff2678eb1b6b89754f8d438ce8090c6d</srcmd5>
+    <version>0.380.0</version>
+    <time>1760215717</time>
+    <user>dimstar_suse</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1310651</requestid>
+  </revision>
 </revisionlist>

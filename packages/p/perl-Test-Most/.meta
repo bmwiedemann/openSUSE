@@ -10,6 +10,5 @@ with automatically turning on strict and warning and gives you a bit more
 fine-grained control over your test suite.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-Most"/>
   <url>http://search.cpan.org/dist/Test-Most/</url>
 </package>

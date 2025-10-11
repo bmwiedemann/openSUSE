@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Most
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,36 @@
 
 %define cpan_name Test-Most
 Name:           perl-Test-Most
-Version:        0.38
+Version:        0.380.0
 Release:        0
+# 0.38 -> normalize -> 0.380.0
+%define cpan_version 0.38
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Most commonly needed test functions and features
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OV/OVID/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/O/OV/OVID/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Exception::Class) >= 1.14
+BuildRequires:  perl(Exception::Class) >= 1.140
 BuildRequires:  perl(Test::Deep) >= 0.119
-BuildRequires:  perl(Test::Differences) >= 0.64
-BuildRequires:  perl(Test::Exception) >= 0.430000
+BuildRequires:  perl(Test::Differences) >= 0.640
+BuildRequires:  perl(Test::Exception) >= 0.430
 BuildRequires:  perl(Test::Harness) >= 3.35
 BuildRequires:  perl(Test::More) >= 1.302047
-BuildRequires:  perl(Test::Warn) >= 0.30
-Requires:       perl(Exception::Class) >= 1.14
+BuildRequires:  perl(Test::Warn) >= 0.300
+Requires:       perl(Exception::Class) >= 1.140
 Requires:       perl(Test::Deep) >= 0.119
-Requires:       perl(Test::Differences) >= 0.64
-Requires:       perl(Test::Exception) >= 0.430000
+Requires:       perl(Test::Differences) >= 0.640
+Requires:       perl(Test::Exception) >= 0.430
 Requires:       perl(Test::Harness) >= 3.35
 Requires:       perl(Test::More) >= 1.302047
-Requires:       perl(Test::Warn) >= 0.30
+Requires:       perl(Test::Warn) >= 0.300
+Provides:       perl(Test::Most) = %{version}
+Provides:       perl(Test::Most::Exception) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -74,7 +80,7 @@ worry about accidentally forgetting them.
     no warnings;
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
