@@ -155,4 +155,21 @@
   * Changelog: https://gleam.run/news/hello-echo-hello-git/</comment>
     <requestid>1281636</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8c2354bb88ac1ab5e296b0d29b4ace6b</srcmd5>
+    <version>1.11.0</version>
+    <time>1760215859</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace deprecated &quot;disabled&quot; mode with &quot;manual&quot; in _service
+- Update to 1.11.0:
+  * The displaying of internal types in HTML documentation has been
+	improved
+  * A warning is now emitted when the same module is imported
+	multiple times into the same module with different aliases
+  * Fixed a bug where a bit array segment matching on a floating
+	point number would match with NaN or Infinity on the JavaScript
+	target
+  * https://github.com/gleam-lang/gleam/blob/v1.11.1/CHANGELOG.md</comment>
+    <requestid>1310723</requestid>
+  </revision>
 </revisionlist>

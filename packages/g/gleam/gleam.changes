@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun  6 12:31:41 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Replace deprecated "disabled" mode with "manual" in _service
+- Update to 1.11.0:
+  * The displaying of internal types in HTML documentation has been
+	improved
+  * A warning is now emitted when the same module is imported
+	multiple times into the same module with different aliases
+  * Fixed a bug where a bit array segment matching on a floating
+	point number would match with NaN or Infinity on the JavaScript
+	target
+  * https://github.com/gleam-lang/gleam/blob/v1.11.1/CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue May 20 09:10:09 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.10.0:

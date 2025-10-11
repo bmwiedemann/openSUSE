@@ -1,20 +1,20 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/gleam-lang/gleam.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v1.10.0</param>
+    <param name="revision">v1.11.0</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service name="tar" mode="manual" />
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">zst</param>
   </service>
-  <service mode="disabled" name="set_version"/>
-  <service name="cargo_vendor" mode="disabled">
+  <service name="set_version" mode="manual" />
+  <service name="cargo_vendor" mode="manual">
      <param name="src">gleam</param>
      <param name="compression">zst</param>
      <param name="update">false</param>
