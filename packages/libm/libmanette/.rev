@@ -132,4 +132,12 @@
   + Fix build with older gobject-introspection. (forwarded request 1268641 from iznogood)</comment>
     <requestid>1269666</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c18112f542133c58a52915ab106fc86e</srcmd5>
+    <version>0.2.13</version>
+    <time>1760215729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1310501</requestid>
+  </revision>
 </revisionlist>
