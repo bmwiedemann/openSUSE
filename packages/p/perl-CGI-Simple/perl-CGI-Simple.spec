@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CGI-Simple
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %define cpan_name CGI-Simple
 Name:           perl-CGI-Simple
-Version:        1.281.0
+Version:        1.282.0
 Release:        0
-%define cpan_version 1.281
+# 1.282 -> normalize -> 1.282.0
+%define cpan_version 1.282
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Object-oriented CGI interface compliant to CGI.pm
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MA/MANWAR/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -59,7 +61,7 @@ In practical testing this module loads and runs about twice as fast as
 CGI.pm depending on the precise task.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

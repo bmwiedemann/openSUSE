@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  8 12:08:27 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.282.0 (1.282)
+   see /usr/share/doc/packages/perl-CGI-Simple/Changes
+
+  1.282 2025-08-28 MANWAR
+        - Sanitize all user-supplied values before inserting into HTTP headers.
+          Thanks Maxim Kosenko for raising the issue with recommended solution.
+          Thanks breno for the patch.
+          Thanks Stig Palmquist for assiginig it CVE-2025-40927.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:00:44 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

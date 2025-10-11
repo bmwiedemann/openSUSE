@@ -13,5 +13,4 @@ Compatibility with CGI.pm section at the end.
 
 In practical testing this module loads and runs about twice as fast as
 CGI.pm depending on the precise task.</description>
-  <devel project="devel:languages:perl" package="perl-CGI-Simple"/>
 </package>
