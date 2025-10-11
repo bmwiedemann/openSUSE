@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 10 07:40:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.58.1:
+  + Bug Fixes:
+    - Calendar: Multiple detached instances cause duplicates
+    - Broken multipart/signed shown as raw MIME data
+  + Miscellaneous:
+    - org.gnome.EvolutionDataServer.Devel.json: Build also
+      gweather-locations
+    - CamelStoreDB: Keep 'sqlite_sequence' table during migration
+    - CamelDB: Correct return value and repeated function call
+      arguments
+    - CamelStoreSearch: Unlock summary and folder when save or
+      prepare_fetch_all fails
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 12 14:56:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.58.0:
