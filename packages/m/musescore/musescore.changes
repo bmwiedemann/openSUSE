@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 10 15:29:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.6.2:
+  - This update includes critical fixes to improve app stability
+    and performance.
+  For all details see https://musescore.org/en/4.6
+
+-------------------------------------------------------------------
 Wed Oct  8 15:36:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.6.1:
@@ -12,6 +20,7 @@ Wed Oct  8 15:36:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
   - And much, much more...
 
   For all details see https://musescore.org/en/4.6
+  and https://musescore.org/en/4.6.1
 - drop musescore-qt69.patch
 
 -------------------------------------------------------------------
