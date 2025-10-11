@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 11 09:46:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20251010:
+  * Allow loading modules from additional states
+  * tdh8: Remove forced NOAA channels at top of range
+  * tdh8: Fix GMRS G3 detection
+  * Fix export to CSV aborting on invalid memories
+  * Fix writing CSVs with more than 1000 memories
+
+-------------------------------------------------------------------
 Fri Oct  3 16:24:19 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20251003:
