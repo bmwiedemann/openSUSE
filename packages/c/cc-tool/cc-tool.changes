@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 11 13:11:02 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Boost.System is headers only since 1.69
+  * remove boost.m4 and use upstream version instead
+  * add boost-system.patch
+
+-------------------------------------------------------------------
 Mon Dec 18 04:13:59 UTC 2023 - Wang Jun <badboywj@gmail.com>
 
 - Update to version 0.27

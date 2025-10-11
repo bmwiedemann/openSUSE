@@ -22,17 +22,18 @@ Release:        0
 Summary:        Programmer for Texas Instruments 8051-based System-On-Chip devices
 License:        GPL-2.0-only
 Group:          Hardware/Other
-URL:            http://sourceforge.net/projects/cctool/
+URL:            https://github.com/dashesy/cc-tool
 Source0:        https://github.com/dashesy/cc-tool/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        boost.m4
-BuildRequires:  autoconf
+# PATCH-FIX-OPENSUSE - Boost.System is headers only since 1.69
+Patch1:         boost-system.patch
 BuildRequires:  automake
+BuildRequires:  boost-devel >= 1.55
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  libboost_filesystem-devel >= 1.55
 BuildRequires:  libboost_program_options-devel >= 1.55
 BuildRequires:  libboost_regex-devel >= 1.55
-BuildRequires:  libboost_system-devel >= 1.55
+BuildRequires:  (libboost_system-devel >= 1.55 if boost-devel < 1.69)
 BuildRequires:  libtool
 BuildRequires:  libusb-devel
 
@@ -41,13 +42,12 @@ cc-tool provides support for Texas Instruments CC Debugger for Linux in order
 to program 8051-based System-On-Chip devices: CC254x CC253x CC243x CC251x CC111x.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-cp %{SOURCE1} m4/
 autoreconf -vfi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

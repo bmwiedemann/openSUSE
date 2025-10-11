@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1137563</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ccb5f966d41627e2dfb7589b7974b08a</srcmd5>
+    <version>0.27</version>
+    <time>1760215861</time>
+    <user>dimstar_suse</user>
+    <comment>- Boost.System is headers only since 1.69
+  * remove boost.m4 and use upstream version instead
+  * add boost-system.patch (forwarded request 1310722 from adkorte)</comment>
+    <requestid>1310726</requestid>
+  </revision>
 </revisionlist>
