@@ -155,4 +155,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1288634 from glaubitz)</comment>
     <requestid>1288752</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8a5009dcf3510532ec6be51100164135</srcmd5>
+    <version>11.6.0</version>
+    <time>1760215750</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 11.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1310491 from glaubitz)</comment>
+    <requestid>1310604</requestid>
+  </revision>
 </revisionlist>
