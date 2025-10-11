@@ -1,7 +1,7 @@
 #
 # spec file for package libnsync
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libmajor 1
 
 Name:           libnsync
-Version:        1.23.0
+Version:        1.29.2
 Release:        0
 Summary:        Library that exports various synchronization primitives
 License:        Apache-2.0
@@ -93,11 +93,17 @@ export CFLAGS="-pthread -std=c++11 -D_POSIX_C_SOURCE=200809L"
 %postun -n libnsync_cpp%{libmajor} -p /sbin/ldconfig
 
 %files devel
-%doc README 
+%doc README
 %license LICENSE
 %{_includedir}/nsync*.h
 %{_libdir}/libnsync.so
 %{_libdir}/libnsync_cpp.so
+%dir %{_libdir}/cmake/nsync
+%{_libdir}/cmake/nsync/nsyncConfig.cmake
+%{_libdir}/cmake/nsync/nsyncConfig-relwithdebinfo.cmake
+%dir %{_libdir}/cmake/nsync_cpp
+%{_libdir}/cmake/nsync_cpp/nsync_cppConfig.cmake
+%{_libdir}/cmake/nsync_cpp/nsync_cppConfig-relwithdebinfo.cmake
 
 %files -n libnsync%{libmajor}
 %{_libdir}/libnsync.so.*
