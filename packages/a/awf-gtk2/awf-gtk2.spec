@@ -17,7 +17,7 @@
 
 
 Name:           awf-gtk2
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Theme preview application for GTK 2
 Summary(fr):    Application d'aperçu de thème pour GTK 2
