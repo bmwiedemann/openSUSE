@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 10 05:17:35 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.0:
+  * New config option: cache.defer_auto_update to perform automatic
+    updates after the page is shown (#125)
+  * Add verbose mode (--verbose command-line option)
+  * Fix panic on --config-path when TLRC_CONFIG is set to an invalid value
+  * Don't print colors if stderr is not a terminal
+  * --clean-cache is now interactive, you can choose which directories
+    to delete
+
+-------------------------------------------------------------------
 Thu May  8 07:03:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.1:
