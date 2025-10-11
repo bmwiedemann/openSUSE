@@ -1637,6 +1637,26 @@ fi
 %else
 %posttrans -n python-salt
 %endif
+
+%if %{with libalternatives}
+# restore symlinks to alts after migration from update-alternatives to alts
+# in cases where the old package flavor (based u-a) is removed in favor of
+# new python flavor (bsc#1250755).
+# i.a. python3-salt (3.6 using u-a) -> python313-salt (3.13 using alts)
+if [ -f /usr/bin/alts ]; then
+    for SALT_SCRIPT in salt-call salt-support spm; do
+        if [ ! -e "%{_bindir}/${SALT_SCRIPT}" ]; then
+            ln -sf alts "%{_bindir}/${SALT_SCRIPT}"
+        fi
+    done
+    for SALT_SCRIPT in salt salt-api salt-cloud salt-cp salt-key salt-master salt-minion salt-proxy salt-run salt-ssh salt-syndic zyppnotify; do
+        if [ ! -e "%{_exec_prefix}/libexec/salt/${SALT_SCRIPT}" ]; then
+            ln -sf ../../bin/alts "%{_exec_prefix}/libexec/salt/${SALT_SCRIPT}"
+        fi
+    done
+fi
+%endif
+
 # force re-generate a new thin.tgz
 rm -f %{_localstatedir}/cache/salt/master/thin/version
 rm -f %{_localstatedir}/cache/salt/minion/thin/version

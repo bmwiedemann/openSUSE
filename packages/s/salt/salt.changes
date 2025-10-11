@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 10 10:43:37 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix broken symlink on migration to Leap 16.0 (bsc#1250755)
+
+-------------------------------------------------------------------
 Mon Oct  6 14:50:35 UTC 2025 - Victor Zhestkov <vzhestkov@suse.com>
 
 - Use versioned python interpreter for salt-ssh
