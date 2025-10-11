@@ -16,4 +16,8 @@
     <param name="compression">gz</param>
   </service>
   <service mode="manual" name="set_version"/>
+  <service mode="manual" name="cargo_vendor">
+    <param name="src">bonk</param>
+  </service>
+ 
 </services>

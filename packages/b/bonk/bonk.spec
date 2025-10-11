@@ -1,7 +1,7 @@
 #
 # spec file for package bonk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        MIT
 Group:          System/Console
 URL:            https://github.com/elliot40404/bonk
 Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 
 %description
@@ -31,7 +32,7 @@ Bonk is a touch alternative with an added feature to
 create directories.
 
 %prep
-%autosetup
+%autosetup -a1
 
 %build
 %{cargo_build}
