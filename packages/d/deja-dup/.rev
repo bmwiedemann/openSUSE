@@ -764,4 +764,12 @@ So preferably for 13.1 as well.</comment>
     <comment>update to 49.2 (forwarded request 1308673 from dimstar)</comment>
     <requestid>1308775</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>e02cd1c531c62a47cd54006e442207ba</srcmd5>
+    <version>49.2</version>
+    <time>1760215754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1310612</requestid>
+  </revision>
 </revisionlist>

@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            https://wiki.gnome.org/Apps/DejaDup
 Source0:        %{name}-%{version}.tar.zst
+#PATCH-FIX-OPENSUSE deja-dup-49.2-loosen_pkit_filters.patch boo#1212486
+Patch0:         deja-dup-49.2-loosen_pkit_filters.patch
 BuildRequires:  appstream-glib
 BuildRequires:  blueprint-compiler
 BuildRequires:  dbus-1

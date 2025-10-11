@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  9 09:28:02 UTC 2025 - Andrei Dziahel <develop7@develop7.info>
+
+- deja-dup-49.2-loosen_pkit_filters.patch: relax architecture match 
+  requirement when requesting required package from PackageKit 
+  (boo#1212486)
+
+-------------------------------------------------------------------
 Thu Oct  2 15:10:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.2:

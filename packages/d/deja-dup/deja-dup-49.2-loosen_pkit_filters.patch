@@ -1,0 +1,22 @@
+Index: deja-dup/libdeja/Operation.vala
+===================================================================
+--- deja-dup.orig/libdeja/Operation.vala	2025-10-09 10:31:04.896841344 +0200
++++ deja-dup/libdeja/Operation.vala	2025-10-09 11:18:59.580614725 +0200
+@@ -566,7 +566,7 @@
+     var client = new Pk.Client();
+ 
+     // Check which deps have any version installed
+-    var bitfield = Pk.Bitfield.from_enums(Pk.Filter.INSTALLED, Pk.Filter.ARCH);
++    var bitfield = Pk.Bitfield.from_enums(Pk.Filter.INSTALLED);
+     Pk.Results results = yield get_pk_results(client, bitfield, deps);
+     if (results == null)
+       return false;
+@@ -591,7 +591,7 @@
+     // an update for a package, the new version can be returned here, even if
+     // there is an older version installed -- NEWEST or NOT_NEWEST does not
+     // affect this behavior).
+-    bitfield = Pk.Bitfield.from_enums(Pk.Filter.NOT_INSTALLED, Pk.Filter.ARCH, Pk.Filter.NEWEST);
++    bitfield = Pk.Bitfield.from_enums(Pk.Filter.NOT_INSTALLED, Pk.Filter.NEWEST);
+     results = yield get_pk_results(client, bitfield, uninstalled);
+     if (results == null)
+       return false;
