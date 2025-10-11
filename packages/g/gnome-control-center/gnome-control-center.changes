@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 10 12:37:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Appearance: Fix scaling of selected background checkmark icon
+  + Date and Time: Fix timezone and time dialog permissions for
+    showing dialogs
+  + Mouse: Prevent left-right primary mouse buttons from shrinking
+  + Network: Improve accessibility of IP entry rows
+  + Users: Improve accessibility of entry feedback for invalid
+    usernames and passwords
+  + Wacom: Reverse main and fallback mechanisms for getting vendor
+    and product
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 15 13:03:24 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
