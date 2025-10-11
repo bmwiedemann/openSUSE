@@ -1,7 +1,7 @@
 #
 # spec file for package perl-libwww-perl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name libwww-perl
 Name:           perl-libwww-perl
-Version:        6.790.0
+Version:        6.800.0
 Release:        0
-# 6.79 -> normalize -> 6.790.0
-%define cpan_version 6.79
+# 6.80 -> normalize -> 6.800.0
+%define cpan_version 6.80
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        The World-Wide Web library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

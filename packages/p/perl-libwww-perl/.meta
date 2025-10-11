@@ -6,5 +6,4 @@ Web.  The main focus of the library is to provide classes and functions
 that allow you to write WWW clients. The library also contain modules that
 are of more general use and even classes that help you implement simple
 HTTP servers.</description>
-  <devel project="devel:languages:perl" package="perl-libwww-perl"/>
 </package>

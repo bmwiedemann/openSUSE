@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:54:33 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.800.0 (6.80)
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.80      2025-09-11 22:57:38Z
+      - Fix Perl warning for @ANI arrays by changing qw() to explicit list
+        notation (GH#484) (Copilot)
+      - Test on example.com rather than neverssl.com (GH#479) (Olaf Alders)
+
+-------------------------------------------------------------------
 Sat Jun 28 05:34:08 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.790.0 (6.79)

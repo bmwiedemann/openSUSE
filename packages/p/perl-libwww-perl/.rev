@@ -1480,4 +1480,17 @@ update to 5.76
         (@JohnHughesAtlantech and Olaf Alders) (forwarded request 1294123 from tinita)</comment>
     <requestid>1294332</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>367618b8155f77cf19cfd68d3d1d1e1e</srcmd5>
+    <version>6.800.0</version>
+    <time>1760215693</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.800.0 (6.80)
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.80      2025-09-11 22:57:38Z
+      - Fix Perl warning for @ANI arrays by changing qw() to explicit list
+        notation (GH#484) (Copilot)
+      - Test on example.com rather than neverssl.com (GH#479) (Olaf Alders)</comment>
+    <requestid>1310530</requestid>
+  </revision>
 </revisionlist>
