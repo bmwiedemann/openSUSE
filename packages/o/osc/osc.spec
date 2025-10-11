@@ -80,7 +80,7 @@
 %endif
 
 Name:           osc
-Version:        1.20.0
+Version:        1.21.0
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -257,6 +257,7 @@ install -Dm0644 macros.osc %{buildroot}%{_rpmmacrodir}/macros.osc
 
 # install man page
 %if %{with man}
+install -Dm0644 git-obs-metadata.1 %{buildroot}%{_mandir}/man1/git-obs-metadata.1
 install -Dm0644 git-obs-quickstart.1 %{buildroot}%{_mandir}/man1/git-obs-quickstart.1
 install -Dm0644 osc.1 %{buildroot}%{_mandir}/man1/osc.1
 install -Dm0644 git-obs.1 %{buildroot}%{_mandir}/man1/git-obs.1
