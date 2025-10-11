@@ -1,7 +1,7 @@
 #
 # spec file for package scribus
 #
-# Copyright (c) 2025 SUSE LLC and constributors
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) Peter Linnell and 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,17 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# Copyright (c) 2025 SUSE LLC and constributors
+# Copyright (c) Peter Linnell and 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
 
 
 %bcond_without podofo
@@ -49,6 +60,8 @@ Patch2:         0001-Fix-build-with-PoDoFo-1.0.0.patch
 Patch3:         0001-Fix-build-with-poppler-25.07.0.patch
 # PATCH-FIX-UPSTREAM
 Patch4:         0001-Failure-to-build-with-poppler-25.09.0.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         0001-Fix-build-with-poppler-25.10.0.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
