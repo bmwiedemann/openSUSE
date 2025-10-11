@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Thu Sep 11 00:21:22 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add bridge-utils-dummy (bsc#1242048).
+
+-------------------------------------------------------------------
+Tue Sep  9 12:34:49 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add conflict with busybox-net-tools.
+
+-------------------------------------------------------------------
+Thu Sep  4 16:40:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete obsolete specfile syntax and make build recipe
+  sh-compatible.
+
+-------------------------------------------------------------------
+Thu Sep  4 11:54:30 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- New package providing informative error message to users
+  trying to use net-tools-deprecated (bsc#1242048).
+

@@ -1,0 +1,4 @@
+<package name="net-tools-dummy" project="openSUSE:Factory">
+  <title>Important Programs for Networking (dummy package)</title>
+  <description>As many people are still trying to use net-tools-deprecated without realizing its obsolete status, this package provides a useful feedback how to proceed.</description>
+</package>
