@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 06 13:31:59 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2+git20251006.0b604c2:
+  * Sync directories with p11-kit [bsc#1251012]
+  * CI: Drop use of poetry
+
+-------------------------------------------------------------------
 Wed Aug 21 12:07:55 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix source archive
