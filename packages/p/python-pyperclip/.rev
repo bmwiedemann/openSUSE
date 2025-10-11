@@ -138,4 +138,21 @@
     <comment></comment>
     <requestid>1306746</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8e6ca68c30a2658d80e5e62b7c37c5c7</srcmd5>
+    <version>1.11.0</version>
+    <time>1760215712</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.0:
+  * Fix pyproject
+
+  * Pyperclip now &quot;stringifies&quot; all data types by passing it to str() (or
+    globals()['__builtins__'].unicode on Python 2), so passing [1, 2, 3] would
+  * shutil.which() replaces the custom code (except in 2.7 and below which doesn't
+  * Remove waitForPaste() and waitForNewPaste() functions, these aren't something
+  + no changes available
+- Update to upstream version 1.5.24
+- First initial package of version 1.5.11</comment>
+    <requestid>1310637</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 10 20:59:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.0:
+  * Fix pyproject
+
+-------------------------------------------------------------------
 Tue Sep 23 09:10:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.10.0
@@ -33,12 +39,12 @@ Mon Oct 14 15:27:29 UTC 2024 - Markéta Machová <mmachova@suse.com>
 - Update to 1.9.0
   * Automatically cast the copy() argument to a string for all data types.
   * _py3_executable_exists and _py2_executable_exists had swapped names; fixed.
-  * Pyperclip now "stringifies" all data types by passing it to str() (or 
-    globals()['__builtins__'].unicode on Python 2), so passing [1, 2, 3] would 
+  * Pyperclip now "stringifies" all data types by passing it to str() (or
+    globals()['__builtins__'].unicode on Python 2), so passing [1, 2, 3] would
     put '[1, 2, 3]' on the clipboard.
-  * shutil.which() replaces the custom code (except in 2.7 and below which doesn't 
+  * shutil.which() replaces the custom code (except in 2.7 and below which doesn't
     have shutil.which()).
-  * Remove waitForPaste() and waitForNewPaste() functions, these aren't something 
+  * Remove waitForPaste() and waitForNewPaste() functions, these aren't something
     the core library should have.
   * Reordered so that xclip is chosen before xsel since xclip is more popular.
 - Add tests.patch to fix tests
@@ -63,7 +69,7 @@ Mon Mar  8 09:05:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Sat Dec 19 10:32:51 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.1:
-  + no changes available 
+  + no changes available
 
 -------------------------------------------------------------------
 Wed Apr 29 10:32:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -128,10 +134,10 @@ Mon Mar  6 19:28:45 UTC 2017 - aloisio@gmx.com
 -------------------------------------------------------------------
 Sun Jan  3 21:36:53 UTC 2016 - freitag@opensuse.org
 
-- Update to upstream version 1.5.24 
+- Update to upstream version 1.5.24
 
 -------------------------------------------------------------------
 Mon Aug 24 19:00:22 UTC 2015 - freitag@opensuse.org
 
-- First initial package of version 1.5.11 
+- First initial package of version 1.5.11
 
