@@ -574,4 +574,41 @@
     <comment></comment>
     <requestid>1294559</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ac59d8937f46834b6d52c8b24da3f02b</srcmd5>
+    <version>20250912.0.0</version>
+    <time>1760215701</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20250912.0.0 (20250912)
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+  ## 2025 09 12
+      - Fix git #191, where a new check to escape whitespace in a qw() quote
+        in perl-5.43.2 caused Perl::Tidy to emit unwanted warning messages.
+      - A new output field for the --dump-block-summary command gives
+        the number of lines of comments and pod in a block.  For subs and
+        anonymous subs, the existence of header comments is also indicated.
+      - Added --dump-nested-ternaries, --warn-nested-ternaries, and
+        --nested-ternary-maximum-depth=n. These can be used to locate
+        nested ternary statements in a script.
+      - For the --line-up-parentheses option, a line length tolerance was
+        adjusted by 1 character to help keep table formatting unchanged when
+        adding and deleting trailing commas.  This can occasionally change
+        formatting of some small lists when formatted with -lp.
+      - In hash key lists which have side comments after sub blocks,
+        long lines which were previously broken before a comma may now
+        be broken after a previous '=&gt;'. This change was made to
+        fix a very rare stability problem. For example:
+        OLD:
+          '+' =&gt; sub { $turtle-&gt;turn( $changes-&gt;{&quot;dtheta&quot;} ); }
+          ,               # Turn clockwise
+        NEW:
+          '+' =&gt;
+              sub { $turtle-&gt;turn( $changes-&gt;{&quot;dtheta&quot;} ); },    # Turn clockwise
+      - Fixed undefined variable reference when --dump-block-summary was
+        run with --dump-block-types='package'. The dump was okay, but
+        an error message like the following was emitted:
+        Use of uninitialized value $seqno in hash element ...
+      - The parameter --integer-range-check no longer accepts a 0 value, which</comment>
+    <requestid>1310546</requestid>
+  </revision>
 </revisionlist>

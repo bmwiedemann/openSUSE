@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-Tidy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %define cpan_name Perl-Tidy
 Name:           perl-Perl-Tidy
-Version:        20250711.0.0
+Version:        20250912.0.0
 Release:        0
-# 20250711 -> normalize -> 20250711.0.0
-%define cpan_version 20250711
+# 20250912 -> normalize -> 20250912.0.0
+%define cpan_version 20250912
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Indent and reformat perl scripts
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHANCOCK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -82,7 +83,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc BUGS.md CHANGES.md docs examples pm2pl README.md
+%doc BUGS.md CHANGES.md docs examples pm2pl README.md SECURITY.md
 %license COPYING
 
 %changelog
