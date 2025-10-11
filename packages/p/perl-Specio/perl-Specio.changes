@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:28:12 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.530.0 (0.53)
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.53     2025-10-04
+  - Fixed a test failure when trying to open $^X on some platforms.
+  0.52     2025-08-09
+  - Really made it possible to force Specio to use only pure Perl dependencies. The changes in 0.51
+    were incomplete, so lots of places still loaded the Clone (XS) module. Fixed by @arodland (Andrew
+    Rodland). GH #23.
+
+-------------------------------------------------------------------
 Fri Jun 20 05:34:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.510.0 (0.51)

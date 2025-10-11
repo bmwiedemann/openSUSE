@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Specio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 %define cpan_name Specio
 Name:           perl-Specio
-Version:        0.510.0
+Version:        0.530.0
 Release:        0
-# 0.51 -> normalize -> 0.510.0
-%define cpan_version 0.51
+# 0.53 -> normalize -> 0.530.0
+%define cpan_version 0.53
 License:        Artistic-2.0
 Summary:        Type constraints and coercions for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Clone)
-BuildRequires:  perl(Clone::Choose)
 BuildRequires:  perl(Clone::PP)
 BuildRequires:  perl(Devel::StackTrace)
 BuildRequires:  perl(Eval::Closure)
@@ -50,7 +50,6 @@ BuildRequires:  perl(XString)
 BuildRequires:  perl(parent)
 BuildRequires:  perl(version) >= 0.83
 Requires:       perl(Clone)
-Requires:       perl(Clone::Choose)
 Requires:       perl(Clone::PP)
 Requires:       perl(Devel::StackTrace)
 Requires:       perl(Eval::Closure)
@@ -144,7 +143,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md TODO.md
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md GOVERNANCE.md README.md SECURITY.md SUPPORT.md TODO.md
 %license LICENSE
 
 %changelog
