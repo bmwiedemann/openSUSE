@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Class
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,35 @@
 
 %define cpan_name Test-Class
 Name:           perl-Test-Class
-Version:        0.52
+Version:        0.520.0
 Release:        0
-Summary:        Easily create test classes in an xUnit/JUnit style
+# 0.52 -> normalize -> 0.520.0
+%define cpan_version 0.52
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Easily create test classes in an xUnit/JUnit style
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZABGAB/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZABGAB/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(MRO::Compat) >= 0.11
+BuildRequires:  perl(MRO::Compat) >= 0.110
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Test::Builder) >= 0.78
-BuildRequires:  perl(Test::Exception) >= 0.250000
+BuildRequires:  perl(Test::Exception) >= 0.250
 BuildRequires:  perl(Test::More) >= 0.78
 BuildRequires:  perl(Test::Simple) >= 0.78
 BuildRequires:  perl(Try::Tiny)
-Requires:       perl(MRO::Compat) >= 0.11
+Requires:       perl(MRO::Compat) >= 0.110
 Requires:       perl(Module::Runtime)
 Requires:       perl(Test::Builder) >= 0.78
 Requires:       perl(Test::Simple) >= 0.78
 Requires:       perl(Try::Tiny)
+Provides:       perl(Test::Class) = %{version}
+Provides:       perl(Test::Class::Load) = %{version}
+Provides:       perl(Test::Class::MethodInfo) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -55,8 +62,9 @@ Test::Harness, Test::Simple, Test::More and friends should go take a look
 at them now. Test::Tutorial is a good starting point.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

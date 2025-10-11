@@ -9,6 +9,5 @@ Test::Exception, etc.).
 the &quot;standard&quot; mechanisms for testing perl code. Those unfamiliar with
 Test::Harness, Test::Simple, Test::More and friends should go take a look
 at them now. Test::Tutorial is a good starting point.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Class"/>
   <url>http://search.cpan.org/dist/Test-Class</url>
 </package>
