@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 10 01:04:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.0:
+  * New Features
+    + A new option, --snapshot-dirname, is now available to change the
+      default directory snapshots are stored in.
+    + The unnecessary underscore prefixes have been removed from public
+      methods for better code clarity.
+  * Bug Fixes
+    + Resolve an issue where the terminal summary was not displayed correctly
+      with xdist workers.
+    + Ensure pytest_assertrepr_compare hook is called first.
+  * Breaking Changes
+    + Switch to the more permissive MIT license. This change applies to all
+      versions from 5.0.0 and beyond.
+    + Now requires Python 3.10 or higher. Support for Python 3.8 has been
+      dropped. The minimum required version of pytest is v8. 
+
+-------------------------------------------------------------------
 Mon Apr 28 16:18:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.9.1

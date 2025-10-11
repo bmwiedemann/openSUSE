@@ -1,7 +1,7 @@
 #
 # spec file for package python-syrupy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-syrupy
-Version:        4.9.1
+Version:        5.0.0
 Release:        0
 Summary:        Pytest Snapshot Test Utility
-License:        Apache-2.0
+License:        MIT
 URL:            https://github.com/tophat/syrupy
 Source:         https://github.com/tophat/syrupy/archive/refs/tags/v%{version}.tar.gz#/syrupy-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.4.0}
-BuildRequires:  %{python_module pytest >= 7.0.0}
-BuildRequires:  %{python_module pytest-benchmark >= 4.0.0}
-BuildRequires:  %{python_module pytest-xdist >= 3.1.0}
+BuildRequires:  %{python_module pytest >= 8.0.0}
+BuildRequires:  %{python_module pytest-benchmark >= 5.1.0}
+BuildRequires:  %{python_module pytest-xdist >= 3.6.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 7.0.0
+Requires:       python-pytest >= 8.0.0
 BuildArch:      noarch
 %python_subpackages
 
