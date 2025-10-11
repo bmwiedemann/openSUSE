@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 10 05:18:47 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.2:
+  * ojph_stream_expand build tweaks #211
+  * Fix another Windows detection macro #212
+  * Support testing for both Cygwin and MSYS #213
+  * Issues #216
+  * Fixes compilation and tests for MSYS2 #217
+  * Issues3 #218
+  * nlt_type3[i] not initialized when get_nonlinear_transform() == false #220
+
+-------------------------------------------------------------------
 Mon Sep 29 05:49:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.24.1:

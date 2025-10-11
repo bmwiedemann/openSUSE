@@ -105,4 +105,19 @@
   * Install 64bit library in /lib64 instead of /lib #207</comment>
     <requestid>1307651</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f9d90f08e03481506fd4fbb38f999877</srcmd5>
+    <version>0.24.2</version>
+    <time>1760215692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.2:
+  * ojph_stream_expand build tweaks #211
+  * Fix another Windows detection macro #212
+  * Support testing for both Cygwin and MSYS #213
+  * Issues #216
+  * Fixes compilation and tests for MSYS2 #217
+  * Issues3 #218
+  * nlt_type3[i] not initialized when get_nonlinear_transform() == false #220</comment>
+    <requestid>1310431</requestid>
+  </revision>
 </revisionlist>
