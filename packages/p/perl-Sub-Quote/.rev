@@ -57,4 +57,17 @@ needs to go into openSUSE:Factory:Staging:adi:131</comment>
     <comment></comment>
     <requestid>1062201</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b7e8ea99bc0c619afbec0bc3c125d79</srcmd5>
+    <version>2.006009</version>
+    <time>1760215696</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.006009
+   see /usr/share/doc/packages/perl-Sub-Quote/Changes
+  2.006009 - 2025-08-20
+    - fix new warning for bare \ in qw()
+    - fix documentation for hintshash option
+    - fix author tests with newer perl versions</comment>
+    <requestid>1310537</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sub-Quote
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name Sub-Quote
 Name:           perl-Sub-Quote
-Version:        2.006008
+Version:        2.006009
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Efficient generation of subroutines via string eval
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -36,7 +37,7 @@ Recommends:     perl(Sub::Util)
 This package provides performant ways to generate subroutines from strings.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
