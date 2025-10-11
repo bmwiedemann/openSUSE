@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 10 05:16:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.39.6:
+  * chore(deps): update dependency @napi-rs/cli to v3.2.0 4fc74cd
+  * fix(deps): update rust crate inquire to 0.8.0 575f750
+  * chore(deps): update dependency @ast-grep/napi to v0.39.5 62ac63c
+
+-------------------------------------------------------------------
 Tue Sep  9 05:18:47 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.39.5:
