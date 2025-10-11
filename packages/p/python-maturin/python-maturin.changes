@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  9 21:38:44 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.9.6
+  * Trim platform details on Windows detection
+    gh#PyO3/maturin#2755
+  * Bump actions/setup-python from 5 to 6
+    gh#PyO3/maturin#2748
+  * Bump actions/setup-node from 4 to 5
+    gh#PyO3/maturin#2749
+  * make PythonInterpreter::check_executable aware of windows arch
+    gh#PyO3/maturin#2758
+
+-------------------------------------------------------------------
 Tue Oct  7 10:56:44 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.9.5

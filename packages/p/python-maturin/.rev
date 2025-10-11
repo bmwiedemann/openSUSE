@@ -1364,4 +1364,20 @@
     <comment></comment>
     <requestid>1309680</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>0d3108eaf7601aa48f9de6f339133f92</srcmd5>
+    <version>1.9.6</version>
+    <time>1760215686</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.6
+  * Trim platform details on Windows detection
+    gh#PyO3/maturin#2755
+  * Bump actions/setup-python from 5 to 6
+    gh#PyO3/maturin#2748
+  * Bump actions/setup-node from 4 to 5
+    gh#PyO3/maturin#2749
+  * make PythonInterpreter::check_executable aware of windows arch
+    gh#PyO3/maturin#2758</comment>
+    <requestid>1310403</requestid>
+  </revision>
 </revisionlist>
