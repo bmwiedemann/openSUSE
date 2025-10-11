@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 10 04:43:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.1:
+  + AdwComboRow:
+    - Allow selecting items via touchscreen
+    - Improve accessibility
+  + AdwEntryRow:
+    - Fix title ellipsizing too late
+    - Activate the row action when pressing enter
+  + AdwHeaderBar: Fix title buttons on macOS
+  + AdwNavigationView: Fix a build warning on some platforms
+  + AdwShortcutsDialog: Fix removing sections when the model
+    changes
+  + AdwTabBar/AdwTabGrid: Fix context menu alignment on RTL
+  + Docs:
+    - Replace deprecated GApplication flag
+    - Fix shortcuts screenshots in widget gallery in dark mode
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 13 08:32:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.8.0:
