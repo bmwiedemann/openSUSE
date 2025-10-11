@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 10 19:10:31 UTC 2025 - Jochen Breuer <brejoc@gmail.com>
+
+- Version bump for vendor file (bsc#1235323)
+- Switch to C toolchain for builds to improve compatibility
+
+-------------------------------------------------------------------
 Sat Mar  8 15:39:00 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.4.9

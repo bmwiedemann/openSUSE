@@ -30,6 +30,8 @@ Group:          Development/Tools/Other
 URL:            https://github.com/aelsabbahy/goss
 Source0:        https://github.com/goss-org/goss/archive/refs/tags/v%{version}.tar.gz#/goss-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  gcc
+BuildRequires:  glibc-devel
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.23
 
@@ -41,7 +43,7 @@ Goss is a YAML based serverspec alternative tool for validating a server’s con
 tar -zxf %{SOURCE1}
 
 %build
-GO111MODULE=on CGO_ENABLED=0 go build -mod=vendor -o %{name} -buildmode=pie \
+GO111MODULE=on CGO_ENABLED=1 go build -mod=vendor -o %{name} -buildmode=pie \
 	-ldflags "-s -w -X main.version=%{version}" ./cmd/goss/goss.go
 
 %install
