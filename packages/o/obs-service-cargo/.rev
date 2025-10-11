@@ -1230,4 +1230,12 @@ packages. This library is fasted, easier to maintain and easier for a user to co
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1307592</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3e14d01813b4abab0aeb0736eefb24a6</srcmd5>
+    <version>7.2.0</version>
+    <time>1760215863</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1310732</requestid>
+  </revision>
 </revisionlist>

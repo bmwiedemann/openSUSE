@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Oct 04 14:01:17 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.2.0:
+  * chore: bump version to 7.2.0
+  * docs: only vendor method has a vendor directory inside the generated tarball
+  * fix: correct wording in README for setting CARGO_HOME
+  * ci: rename file to ci.yml
+  * fix: update README to improve clarity on obs-service-cargo functionality
+  * fix: remove rustup show command and let rustup select automagically
+  * Revert "fix: move checkout step to the beginning of each job in build workflow"
+  * fix: move checkout step to the beginning of each job in build workflow
+  * fix: run jobs in parallel for build, tests and style
+  * style: run cargo fmt
+  * fix: ensure vendor directory is copied only when dependencies exist
+  * docs: update README for clarity and additional instructions on vendoring without dependencies
+  * style: "collapsible-if" clippy suggestion applied
+  * Revert "tests: vendor path should exist as an empty directory if crate has no dependencies"
+  * refactor: revert back to no vendor directory.
+  * tests: vendor path should exist as an empty directory if crate has no dependencies
+  * refactor: remove outdated TODO comment in run_cargo_vendor function
+  * deps: update libroast version to 10.1
+  * add a todo here
+  * tests: vendor dir is not created
+  * tests: no dependency packages still produce vendored tarballs now.
+  * refactor: update cargo_vendor return signature to Result<Option<(PathBuf, String, bool)>>
+  * refactor: improve message about no dependencies
+  * refactor: still produce a registry.tar here
+  * fix: refactor to resolve "cannot find value `output_cargo_configuration` in this scope"
+  * format: run cargo fmt
+  * fix: ensure vendor.tar.<compression> is created even if no dependencies
+
+-------------------------------------------------------------------
+Fri Oct 03 14:24:10 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.1.2:
+  * chore: release v7.1.2
+  * deps: update libroast to v10.0.2 in Cargo.lock
+
+-------------------------------------------------------------------
 Sun Sep 21 15:15:25 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 7.1.1:
