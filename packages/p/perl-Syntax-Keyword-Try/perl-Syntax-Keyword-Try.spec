@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Syntax-Keyword-Try
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %define cpan_name Syntax-Keyword-Try
 Name:           perl-Syntax-Keyword-Try
-Version:        0.300.0
+Version:        0.310.0
 Release:        0
-# 0.30 -> normalize -> 0.300.0
-%define cpan_version 0.30
+# 0.31 -> normalize -> 0.310.0
+%define cpan_version 0.31
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Try/catch/finally syntax for perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::CBuilder)
-BuildRequires:  perl(Module::Build) >= 0.4004
+BuildRequires:  perl(Module::Build) >= 0.400.400
 BuildRequires:  perl(Test2::V0)
 BuildRequires:  perl(XS::Parse::Keyword) >= 0.350
 BuildRequires:  perl(XS::Parse::Keyword::Builder) >= 0.350
@@ -58,7 +59,7 @@ the core feature on those supported perl versions, falling back to
 'Syntax::Keyword::Try' on older perls.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor optimize="%{optflags}"
