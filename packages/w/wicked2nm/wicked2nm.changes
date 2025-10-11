@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 10 13:47:03 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to v1.4.0
+  * Activate only connections if present in the current system
+  * Improve error output, exit codes and add flag to disable user
+    hints
+  * Add support for autoip-fallback
+
+-------------------------------------------------------------------
 Fri Sep 26 09:53:05 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to v1.3.0

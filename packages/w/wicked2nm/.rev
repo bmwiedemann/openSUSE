@@ -62,4 +62,16 @@
   * Remove unwrap in route parsing</comment>
     <requestid>1307345</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c17e29655d59cacc9679abdebdae84a</srcmd5>
+    <version>1.4.0</version>
+    <time>1760215748</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.4.0
+  * Activate only connections if present in the current system
+  * Improve error output, exit codes and add flag to disable user
+    hints
+  * Add support for autoip-fallback</comment>
+    <requestid>1310596</requestid>
+  </revision>
 </revisionlist>
