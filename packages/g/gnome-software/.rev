@@ -1327,4 +1327,12 @@ New stable release</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 1304912 from dimstar)</comment>
     <requestid>1305462</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>e25fe0c55eef0547af3f589add7a29c7</srcmd5>
+    <version>49.1</version>
+    <time>1760215721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1310497</requestid>
+  </revision>
 </revisionlist>

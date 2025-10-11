@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 10 06:37:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Fixed search for additional packages requested by other apps
+  + Fixed update notifications, which could be missed sometimes
+  + Updated translations.
+- Add check section and meson_test macro: Run tests during build.
+- Drop unused and unneeded pkgconfig(libhandy-1) BuildRequires.
+
+-------------------------------------------------------------------
 Fri Sep 12 15:01:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:

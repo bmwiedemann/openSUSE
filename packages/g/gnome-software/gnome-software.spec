@@ -20,7 +20,7 @@
 %bcond_with profiling
 
 Name:           gnome-software
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
@@ -51,7 +51,6 @@ BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(libhandy-1) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(malcontent-0) >= 0.5.0
@@ -123,6 +122,9 @@ cat >> %{buildroot}%{_datadir}/glib-2.0/schemas/20_org.gnome.software-opensuse.g
 [org.gnome.software]
 official-repos = [ 'repo-oss', 'repo-update', 'repo-non-oss', 'download.opensuse.org-oss', 'download.opensuse.org-tumbleweed', 'download.opensuse.org-non-oss' ]
 FOE
+
+%check
+%meson_test
 
 %files
 %license COPYING
