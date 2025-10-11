@@ -1,0 +1,12 @@
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2023-03-30 09:40:48.000000000 +0200
++++ b/CMakeLists.txt	2025-10-11 17:08:21.251209313 +0200
+@@ -90,7 +90,7 @@ endif()
+ 
+ # Set BOOST_ROOT to help CMake to find the right Boost version
+ find_package(Boost 1.49.0
+-  REQUIRED date_time filesystem system iostreams regex unit_test_framework
++  REQUIRED date_time filesystem iostreams regex unit_test_framework
+   ${BOOST_PYTHON} OPTIONAL_COMPONENTS nowide)
+ 
+ # enable Boost::nowide library (for UTF8 command line args on Windows)

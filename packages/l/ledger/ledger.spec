@@ -28,13 +28,14 @@ Source:         https://github.com/ledger/ledger/archive/v%{version}.tar.gz#/%{n
 Patch0:         0001-Fix-build-with-Boost-1.85.0.patch
 # PATCH-FIX-UPSTREAM - 0002-Fix-build-with-Boost-1.86.0.patch - https://github.com/ledger/ledger/issues/2378
 Patch1:         0002-Fix-build-with-Boost-1.86.0.patch
+# PATCH-FIX-UPSTREAM - https://github.com/ledger/ledger/pull/2430
+Patch2:         0003-Fix-build-with-Boost-1.89.0.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_date_time-devel >= 1.72.0
 BuildRequires:  libboost_filesystem-devel >= 1.72.0
 BuildRequires:  libboost_iostreams-devel >= 1.72.0
 BuildRequires:  libboost_regex-devel >= 1.72.0
-BuildRequires:  libboost_system-devel >= 1.72.0
 BuildRequires:  libboost_test-devel >= 1.72.0
 BuildRequires:  mpfr-devel
 BuildRequires:  python3-base

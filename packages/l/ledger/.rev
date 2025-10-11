@@ -150,4 +150,13 @@
     <comment></comment>
     <requestid>1219101</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>3baf4fb193e4cb7ba0795ba7651ec7fd</srcmd5>
+    <version>3.3.2</version>
+    <time>1760215870</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change to fix build failure with boost 1.89:
+  * 0003-Fix-build-with-Boost-1.89.0.patch (forwarded request 1310734 from adkorte)</comment>
+    <requestid>1310737</requestid>
+  </revision>
 </revisionlist>
