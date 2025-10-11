@@ -17,7 +17,7 @@
 
 
 Name:           gnome-system-monitor
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        A process monitor for the GNOME desktop
 License:        GPL-2.0-or-later
@@ -83,8 +83,6 @@ processor time, memory, and disk space are being used.
 %{_libexecdir}/%{name}/gsm-kill
 %{_libexecdir}/%{name}/gsm-renice
 %{_libexecdir}/%{name}/gsm-taskset
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/gsm.gresource
 %{_datadir}/icons/hicolor/*/apps/*.svg
 
 %files lang -f %{name}.lang
