@@ -17,7 +17,7 @@
 
 
 Name:           awf-gtk4
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Theme preview application for GTK 4
 Summary(fr):    Application d'aperçu de thème pour GTK 4
