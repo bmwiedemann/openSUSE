@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Class-Accessor
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Class-Accessor
-Version:        0.51
-Release:        0
 %define cpan_name Class-Accessor
+Name:           perl-Class-Accessor
+Version:        0.510.0
+Release:        0
+# 0.51 -> normalize -> 0.510.0
+%define cpan_version 0.51
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Automated accessor generation
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Class-Accessor/
-Source0:        https://cpan.metacpan.org/authors/id/K/KA/KASEI/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/K/KA/KASEI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Class::Accessor) = %{version}
+Provides:       perl(Class::Accessor::Fast) = %{version}
+Provides:       perl(Class::Accessor::Faster) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -84,14 +89,14 @@ you can use:
 *Note:* you must call 'follow_best_practice' before calling 'mk_accessors'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -99,7 +104,6 @@ you can use:
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples README
 
 %changelog
