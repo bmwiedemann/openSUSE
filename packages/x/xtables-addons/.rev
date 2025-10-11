@@ -716,4 +716,12 @@
     <comment>- Update to release 3.29</comment>
     <requestid>1300454</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>f8c30f8471e59d42c8e88b770b648df1</srcmd5>
+    <version>3.30</version>
+    <time>1760215853</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.30</comment>
+    <requestid>1310718</requestid>
+  </revision>
 </revisionlist>

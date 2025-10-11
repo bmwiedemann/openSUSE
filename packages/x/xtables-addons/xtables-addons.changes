@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 11 12:15:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.30
+  * tarpit: use new Linux networking APIs to fix nonfunctional
+    IPv6 send routine
+
+-------------------------------------------------------------------
 Wed Aug 20 08:55:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.29

@@ -1,7 +1,7 @@
 #
 # spec file for package xtables-addons
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           xtables-addons
-Version:        3.29
+Version:        3.30
 Release:        0
 Summary:        IP Packet Filter Administration Extensions
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-URL:            http://xtables-addons.sf.net/
-#Git-Clone:	git://git.inai.de/xtables-addons
-Source:         https://inai.de/files/%name/%name-%version.tar.xz
+URL:            https://inai.de/projects/xtables-addons/
+#Git-Clone:	https://codeberg.org/jengelh/xtables-addons
+Source:         https://inai.de/files/%name/%name-%version.tar.zst
 Source2:        https://inai.de/files/%name/%name-%version.tar.asc
 Source3:        %name-preamble
 Source4:        %name.keyring
@@ -34,7 +34,7 @@ BuildRequires:  automake
 BuildRequires:  kernel-syms >= 5.4
 BuildRequires:  libtool
 BuildRequires:  pkg-config >= 0.21
-BuildRequires:  xz
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(xtables) >= 1.6.0
 Requires:       perl(Getopt::Long)
 Requires:       perl(Net::CIDR::Lite)
@@ -91,11 +91,11 @@ done
 b="%buildroot"
 # kernel's make install is picky about flags changing between %%build and %%install
 export KCFLAGS="$(cat kcflags)"
-pushd ../
+cd ../
 for flavor in %flavors_to_build; do
-	pushd "%name-$flavor-%version/"
+	cd "%name-$flavor-%version/"
 	%make_install %{?linux_make_arch} V=1
-	popd
+	cd -
 done
 # There is no -devel package. So no need for these files.
 find "$b/%_prefix" -iname "*.la" -delete
