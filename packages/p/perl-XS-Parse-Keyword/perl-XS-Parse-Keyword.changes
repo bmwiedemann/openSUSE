@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:53:36 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.490.0 (0.49)
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.49    2025-09-23
+          [BUGFIXES]
+           * Appease C compilers that don't like to `return` a void expression
+             from a void-returning function (RT170345)
+
+-------------------------------------------------------------------
 Fri Jan 10 05:33:03 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.480.0 (0.48)

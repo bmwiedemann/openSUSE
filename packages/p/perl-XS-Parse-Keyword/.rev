@@ -192,4 +192,17 @@
     <comment></comment>
     <requestid>1238346</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d42dbde28aa68f21e5118b31562cab09</srcmd5>
+    <version>0.490.0</version>
+    <time>1760215694</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.490.0 (0.49)
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+  0.49    2025-09-23
+          [BUGFIXES]
+           * Appease C compilers that don't like to `return` a void expression
+             from a void-returning function (RT170345)</comment>
+    <requestid>1310532</requestid>
+  </revision>
 </revisionlist>
