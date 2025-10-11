@@ -17,7 +17,7 @@
 
 
 Name:           gnome-sudoku
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        Sudoku Game for GNOME
 License:        GPL-3.0-or-later
