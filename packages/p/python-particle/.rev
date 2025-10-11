@@ -187,4 +187,18 @@
 - Dropped rpmlintrc, unneeded.</comment>
     <requestid>1296039</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>31eff4537e324ac74d55401a55531af4</srcmd5>
+    <version>0.26.0</version>
+    <time>1760215760</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.26.0:
+  * Added the 2025 PDG data table file, now default.
+  * Version 15 of package CSV data files:
+  * Since PDG 2025 information now the default.
+  * Dropped support for Python 3.8.
+  * Updates and improvements to pre-commit hooks and CI YAML
+    files.</comment>
+    <requestid>1310618</requestid>
+  </revision>
 </revisionlist>

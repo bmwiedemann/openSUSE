@@ -1,7 +1,7 @@
 #
 # spec file for package python-particle
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global modname particle
 %define skip_python36 1
 Name:           python-particle
-Version:        0.25.4
+Version:        0.26.0
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2
-Requires:       python-hepunits >= 2.0.0
+Requires:       python-hepunits >= 2.4.0
 %if 0%{?python_version_nodots} < 313
 Requires:       python-typing_extensions >= 4.5
 %endif
@@ -44,7 +44,7 @@ Recommends:     python-tabulate
 BuildArch:      noarch
 # SECTION For tests
 BuildRequires:  %{python_module Deprecated}
-BuildRequires:  %{python_module hepunits}
+BuildRequires:  %{python_module hepunits >= 2.4.0}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 # /SECTION
