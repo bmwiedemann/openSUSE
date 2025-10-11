@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 10 15:12:32 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1760108577.fd2f2a48:
+  * Log unavailability due to high load only as warning
+  * Filter job stats of scheduled products also by arch and build
+  * Document how to disable image optimizations
+  * Make image optimization errors stop the job producing an incomplete job
+  * Improve wording in description about job stats API
+  * Run `optipng` for real and handle errors if it fails
+
+-------------------------------------------------------------------
 Wed Oct 08 10:12:41 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1759912962.689b31ed:
