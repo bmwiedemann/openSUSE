@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PPIx-Regexp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %define cpan_name PPIx-Regexp
 Name:           perl-PPIx-Regexp
-Version:        0.89.0
+Version:        0.91.0
 Release:        0
-# 0.089 -> normalize -> 0.89.0
-%define cpan_version 0.089
+# 0.091 -> normalize -> 0.91.0
+%define cpan_version 0.091
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse regular expressions
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/W/WY/WYANT/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.42
+BuildRequires:  perl(Module::Build) >= 0.420
 BuildRequires:  perl(PPI::Document) >= 1.238
 BuildRequires:  perl(PPI::Dumper) >= 1.238
 BuildRequires:  perl(Task::Weaken)
@@ -141,7 +142,7 @@ appears to the author to represent a performance hit for little tangible
 gain.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
@@ -157,6 +158,6 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING README
+%doc Changes CONTRIBUTING README SECURITY
 
 %changelog

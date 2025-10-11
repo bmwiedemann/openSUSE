@@ -31,6 +31,5 @@ mutability, though something like PPI's 'prune' functionality might be
 considered. Similarly there are no plans for operator overloading, which
 appears to the author to represent a performance hit for little tangible
 gain.</description>
-  <devel project="devel:languages:perl" package="perl-PPIx-Regexp"/>
   <url>http://search.cpan.org/dist/PPIx-Regexp/</url>
 </package>

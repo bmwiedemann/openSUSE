@@ -611,4 +611,31 @@
       Annotate sub class(), since with Perl 5.38 it is a built-in.</comment>
     <requestid>1279823</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>7dab1832a5bfde408ade9b5e1e2f0ebc</srcmd5>
+    <version>0.91.0</version>
+    <time>1760215703</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.91.0 (0.091)
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+  0.091		2025-10-06	T. R. Wyant
+      Code review on use of 'PPI::Document'. I concluded it was not needed
+      in PPIx::Regexp::Token::Interpolation and
+      PPIx::Regexp::Token::Literal, but that it needed to be added to
+      PPIx::Regexp::Tokenizer. The purpose of this release is to submit
+      the changes to the tender mercies of the CPAN testers.
+  0.090_01	2025-09-27	T. R. Wyant
+      Avoid &quot;Possible attempt to escape whitespace&quot; warning, which is
+      emitted in perl-5.43.2 and forward. Thanks to James E. Keenan for
+      the pull request.
+  0.090		2025-09-21	T. R. Wyant
+      Explain s///eee... Perl commit 040a4d7 (perlop: properly document
+      s///e modifier) by mauke, makes perlop explicitly state that more
+      than 2 'e' modifiers are permitted, and cause the result of the
+      expression to be eval-ed n-1 times, where n is the number of 'e'
+      modifiers.
+      Fix typo in comment. Thanks to Michal Josef Špaček for picking this
+      up and providing the pull request.</comment>
+    <requestid>1310547</requestid>
+  </revision>
 </revisionlist>
