@@ -1,7 +1,7 @@
 #
 # spec file for package coreboot-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           coreboot-utils
-Version:        24.08
+Version:        25.09
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only
@@ -26,8 +26,7 @@ URL:            https://coreboot.org/
 Source0:        https://www.coreboot.org/releases/coreboot-%{version}.tar.xz
 Source1:        https://www.coreboot.org/releases/coreboot-%{version}.tar.xz.sig
 Source3:        %{name}.keyring
-Patch1:         no-pie.patch
-Patch3:         do-explicit-fallthrough.patch
+Patch2:         do-explicit-fallthrough.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel
 BuildRequires:  pciutils-devel

@@ -256,4 +256,16 @@ No indication of aggregation (forwarded request 158839 from babelworx)</comment>
   * https://coreboot.org/releases/coreboot-24.02.01-relnotes.txt (forwarded request 1233041 from mnhauke)</comment>
     <requestid>1233042</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d0d94ac45d805d6aaa697a383d085b2a</srcmd5>
+    <version>25.09</version>
+    <time>1760215872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 25.09
+  * https://coreboot.org/releases/coreboot-25.09-relnotes.txt
+- Update coreboot-utils.keyring
+  -&gt; New Key: C75A AA4E 5C9D B017 C1DC 6EDB DB1B 0EC2 9202 D874
+              Matt DeVillier &lt;matt.devillier@gmail.com&gt; (forwarded request 1310741 from mnhauke)</comment>
+    <requestid>1310744</requestid>
+  </revision>
 </revisionlist>

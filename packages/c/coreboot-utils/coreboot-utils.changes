@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct 11 16:02:48 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 25.09
+  * https://coreboot.org/releases/coreboot-25.09-relnotes.txt
+- Update coreboot-utils.keyring
+  -> New Key: C75A AA4E 5C9D B017 C1DC 6EDB DB1B 0EC2 9202 D874
+              Matt DeVillier <matt.devillier@gmail.com>
+
+-------------------------------------------------------------------
+Sun Jul  6 12:05:58 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 25.06
+  * https://coreboot.org/releases/coreboot-25.06-relnotes.txt
+- Drop not longer needed patches:
+  * gcc15.diff
+  * treewide-Work-around-GCC-15-Werror-unterminated-string-initialization.patch
+
+-------------------------------------------------------------------
+Fri Jul  4 09:27:32 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 25.03
+- Fix gcc15 string init issue (bsc#1244466)
+A gcc15.diff
+A treewide-Work-around-GCC-15-Werror-unterminated-string-initialization.patch
+- Not needed anymore, builds fine without:
+D no-pie.patch
+
+-------------------------------------------------------------------
 Sun Dec 22 13:22:14 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 24.08
@@ -410,4 +438,3 @@ Thu Jan 10 11:41:16 CET 2008 - bwalle@suse.de
 
 - initial package
 
--------------------------------------------------------------------
