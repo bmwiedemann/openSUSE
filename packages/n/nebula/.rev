@@ -78,4 +78,16 @@
   * Fix relay migration panic (forwarded request 1295366 from rrahl0)</comment>
     <requestid>1295367</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>252debde9e01fa8117fd9ebe70a02f7a</srcmd5>
+    <version>1.9.7</version>
+    <time>1760215866</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.9.7:
+  * Disable sending recv_error messages when a packet is received outside the
+    allowable counter window
+  * Improve error messages and remove some unnecessary fatal conditions in the
+    generic udp listener (forwarded request 1310729 from rrahl0)</comment>
+    <requestid>1310730</requestid>
+  </revision>
 </revisionlist>

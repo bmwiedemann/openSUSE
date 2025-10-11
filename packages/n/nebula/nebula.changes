@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 11 14:48:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.9.7:
+  * Disable sending recv_error messages when a packet is received outside the
+    allowable counter window
+  * Improve error messages and remove some unnecessary fatal conditions in the
+    generic udp listener
+
+-------------------------------------------------------------------
 Wed Jul 23 13:31:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.9.6:

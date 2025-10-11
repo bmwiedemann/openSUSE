@@ -17,7 +17,7 @@
 
 
 Name:           nebula
-Version:        1.9.6
+Version:        1.9.7
 Release:        0
 Summary:        A scalable overlay networking tool
 License:        MIT
@@ -29,7 +29,7 @@ Patch0:         fix-CVE-2025-22869.patch
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.23.6
+BuildRequires:  golang(API) >= 1.24.0
 
 %description
 Nebula is a scalable overlay networking tool with a focus on performance,
@@ -44,7 +44,7 @@ Summary:        Seperate %{name}-cert package
 This package only includes the %{name}-cert binary.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 
 %build
 go build -buildmode=pie -mod=vendor -ldflags "-X main.Build=%{version}-dirty" -o %{name} ./cmd/%{name}
