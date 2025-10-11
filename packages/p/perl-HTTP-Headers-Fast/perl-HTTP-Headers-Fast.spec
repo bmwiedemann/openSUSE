@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Headers-Fast
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,29 @@
 #
 
 
-Name:           perl-HTTP-Headers-Fast
-Version:        0.22
-Release:        0
 %define cpan_name HTTP-Headers-Fast
-Summary:        Faster implementation of HTTP::Headers
+Name:           perl-HTTP-Headers-Fast
+Version:        0.220.0
+Release:        0
+# 0.22 -> normalize -> 0.220.0
+%define cpan_version 0.22
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/%{cpan_name}-%{version}.tar.gz
+Summary:        Faster implementation of HTTP::Headers
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(HTTP::Date)
-BuildRequires:  perl(Module::Build::Tiny) >= 0.035
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.35
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::Requires)
 Requires:       perl(HTTP::Date)
+Provides:       perl(HTTP::Headers::Fast) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -43,7 +47,7 @@ HTTP::Headers::Fast is a perl class for parsing/writing HTTP headers.
 The interface is same as HTTP::Headers.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor
@@ -57,7 +61,6 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README.md
 %license LICENSE
 
