@@ -23,4 +23,25 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275990</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2cd8d4021a4fa4a15d0bba5ffa5a5dbb</srcmd5>
+    <version>2.4.2</version>
+    <time>1760215759</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.2:
+  * Add more subunits and unit aliases
+- update to 2.4.1:
+  * Add new SI prefixes from 2022
+  * fix: Use the correct unit registry in pint
+- update to 2.4.0:
+  * Introduced integration with the `Pint` package for unit
+    conversions (https://github.com/scikit-hep/hepunits/pull/273)
+- update to 2.3.6:
+  * Several new units (notably for electromagnetism) added.
+- update to 2.3.5:
+  * Added support for 3.13.
+- update to 2.3.4:
+  * Dropped support for Python 3.7 and added support for 3.12.</comment>
+    <requestid>1310617</requestid>
+  </revision>
 </revisionlist>

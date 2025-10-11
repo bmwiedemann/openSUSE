@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 10 16:46:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.2:
+  * Add more subunits and unit aliases
+- update to 2.4.1:
+  * Add new SI prefixes from 2022
+  * fix: Use the correct unit registry in pint
+- update to 2.4.0:
+  * Introduced integration with the `Pint` package for unit
+    conversions (https://github.com/scikit-hep/hepunits/pull/273)
+- update to 2.3.6:
+  * Several new units (notably for electromagnetism) added.
+- update to 2.3.5:
+  * Added support for 3.13.
+- update to 2.3.4:
+  * Dropped support for Python 3.7 and added support for 3.12.
+
+-------------------------------------------------------------------
 Fri May  9 05:10:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

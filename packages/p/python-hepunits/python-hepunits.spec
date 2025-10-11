@@ -1,7 +1,7 @@
 #
 # spec file for package python-hepunits
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,21 @@
 %global modname hepunits
 
 Name:           python-hepunits
-Version:        2.0.1
+Version:        2.4.2
 Release:        0
 Summary:        Units and constants in the HEP system of units
 License:        BSD-3-Clause
 URL:            https://github.com/scikit-hep/hepunits
 Source:         https://files.pythonhosted.org/packages/source/h/%{modname}/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools > 42.0}
-BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION For tests
+BuildRequires:  %{python_module Pint}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildArch:      noarch
