@@ -17,8 +17,8 @@
 
 
 Name:           gap-generalizedmorphismsforcap
-Version:        2024.09.03
-%define sillyver 2024.09-03
+Version:        2025.08.01
+%define sillyver 2025.08-01
 Release:        0
 Summary:        GAP: Implementations of generalized morphisms for the CAP project
 License:        GPL-2.0-or-later
