@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct  7 17:06:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.19.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.19.0
+- Changes since 6.18.0:
+  * Improvements and fixes for KDEInstallDirs documentation
+  * [KDEInstallDirs] Warn about likely unwanted behaviour
+  * [KDEInstallDirsCommon] Minor code refactoring for better readability
+  * [KDEInstallDirsCommon] Improve code comments
+  * [KDEInstallDirsCommon] Modernize to mprove code readability
+  * [ECMQmlModule] Mark non-generated plugins as non-optional
+  * ecm_generate_headers: add SHARED_PREFIX argument
+  * Update version to 6.19.0
+- Use resp. GCC 14 and 15 on Leap 15 and 16. Some packages start
+  using features not available in GCC 13.
+
+-------------------------------------------------------------------
 Mon Sep  8 13:32:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.18.0
