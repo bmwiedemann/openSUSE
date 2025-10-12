@@ -5,13 +5,13 @@
 %lua_version_nodots %(lua -e 'print((string.gsub("%{lua_version}", "%.", "")))')
 
 # compiled modules should go here
-%lua_archdir %{_libdir}/lua/%{lua_version}
+%lua_archdir %(pkgconf --variable=INSTALL_CMOD lua)
 
 # pure Lua modules should go here
-%lua_noarchdir %{_datadir}/lua/%{lua_version}
+%lua_noarchdir %(pkgconf --variable=INSTALL_LMOD lua)
 
 # lua includes folder
-%lua_incdir %{_includedir}/lua%{lua_version}
+%lua_incdir %(pkgconf --variable=includedir lua)
 
 %lua_version_default %{lua:
 local result = 5.4

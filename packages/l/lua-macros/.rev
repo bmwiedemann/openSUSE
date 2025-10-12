@@ -87,4 +87,12 @@
     <comment>On Factory BR lua-interpreter.</comment>
     <requestid>1297788</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>a7f85985a891223c05477b77e4723fbc</srcmd5>
+    <version>20210827</version>
+    <time>1760300485</time>
+    <user>dimstar_suse</user>
+    <comment>- Make definition of variables dynamic based on pkgconf output.</comment>
+    <requestid>1310405</requestid>
+  </revision>
 </revisionlist>

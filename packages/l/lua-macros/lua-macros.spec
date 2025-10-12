@@ -33,6 +33,7 @@ Requires:       lua-interpreter
 # on SLE 12 lua is lua5.2 unconditionally, avoid
 Requires:       lua
 %endif
+Requires:       pkgconfig
 BuildArch:      noarch
 
 %description
