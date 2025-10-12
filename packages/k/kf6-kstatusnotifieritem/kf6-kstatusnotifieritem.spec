@@ -32,11 +32,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.18.0)
+# Full KF6 version (e.g. 6.19.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kstatusnotifieritem
-Version:        6.18.0
+Version:        6.19.0
 Release:        0
 Summary:        Implementation of Status Notifier Items
 License:        LGPL-2.0-or-later
@@ -48,7 +48,6 @@ Source2:        frameworks.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
-BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  cmake(KF6WindowSystem) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
