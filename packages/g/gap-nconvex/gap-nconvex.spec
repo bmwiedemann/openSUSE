@@ -1,7 +1,7 @@
 #
 # spec file for package gap-nconvex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-nconvex
-Version:        2022.09.01
-%define sillyver 2022.09-01
+Version:        2024.12.01
+%define sillyver 2024.12-01
 Release:        0
 Summary:        GAP: Polyhedral computations
 License:        GPL-2.0-or-later
