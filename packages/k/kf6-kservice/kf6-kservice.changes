@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  7 17:06:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.19.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.19.0
+- Changes since 6.18.0:
+  * Update dependency version to 6.19.0
+  * disable some tests that fail on Windows ATM
+  * ci: require passing tests on all platforms
+  * Silence clazy warning about temporary container that is not worth fixing
+  * kbuildsycoca: Utilize QDateTime method that is significantly faster
+  * KService: Simlify code for reading schemeHandlers a bit, avoid unused Q_D
+  * KMimeAssociations: Slightly more consistent log messaged, avoid Q_UNUSED for variable that is printed in log
+  * Update version to 6.19.0
+
+-------------------------------------------------------------------
 Mon Sep  8 13:33:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.18.0
