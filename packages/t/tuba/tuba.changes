@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 12 09:08:54 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.10.3:
+  * Preview card link resolving
+  * Partial support for composing actual Mastodon quotes
+  * fixed: Pull-to-refresh spinner showing up even on tiny window drag
+  * fixed: Some Misskey and Pleroma links not resolving in-app
+  * fixed: Optimized parts of the non-aggressive resolving link detection
+  * fixed: Attempting and failing to parse secrets
+  * fixed: Segfault when destroying Thread views while the initial status update request
+  * fixed: Composer nested status having a background
+  * fixed: Composer not having its initial focus
+  * fixed: CSS and layout cleanup, optimizations, fixes and organization
+  * fixed: Local properties getting overridden during entity patching
+  * Vala 0.56 changes
+
+-------------------------------------------------------------------
 Tue Sep 16 13:03:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 0.10.2:

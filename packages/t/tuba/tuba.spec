@@ -1,6 +1,7 @@
 #
 # spec file for package tuba
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %define         appid dev.geopjr.Tuba
 Name:           tuba
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        Browse the Fediverse
 License:        GPL-3.0-only

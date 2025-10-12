@@ -132,4 +132,24 @@
     <comment></comment>
     <requestid>1305206</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>04a2cd6c602bfb1748ca1b273aae2c04</srcmd5>
+    <version>0.10.3</version>
+    <time>1760300663</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.10.3:
+  * Preview card link resolving
+  * Partial support for composing actual Mastodon quotes
+  * fixed: Pull-to-refresh spinner showing up even on tiny window drag
+  * fixed: Some Misskey and Pleroma links not resolving in-app
+  * fixed: Optimized parts of the non-aggressive resolving link detection
+  * fixed: Attempting and failing to parse secrets
+  * fixed: Segfault when destroying Thread views while the initial status update request
+  * fixed: Composer nested status having a background
+  * fixed: Composer not having its initial focus
+  * fixed: CSS and layout cleanup, optimizations, fixes and organization
+  * fixed: Local properties getting overridden during entity patching
+  * Vala 0.56 changes (forwarded request 1310910 from rrahl0)</comment>
+    <requestid>1310911</requestid>
+  </revision>
 </revisionlist>
