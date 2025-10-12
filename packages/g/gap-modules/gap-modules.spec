@@ -17,8 +17,8 @@
 
 
 Name:           gap-modules
-Version:        2024.01.01
-%define sillyver 2024.01-01
+Version:        2024.12.01
+%define sillyver 2024.12-01
 Release:        0
 Summary:        GAP: Abelian Finitely Presented Modules over Computable Rings
 License:        GPL-2.0-only
