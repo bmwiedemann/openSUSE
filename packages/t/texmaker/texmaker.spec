@@ -17,8 +17,10 @@
 
 
 %if %{?is_opensuse} && 0%{?suse_version} <= 1650
-%define gcc_ver 8
+%define gcc_ver 13
 %endif
+
+
 Name:           texmaker
 Version:        6.0.1
 Release:        0

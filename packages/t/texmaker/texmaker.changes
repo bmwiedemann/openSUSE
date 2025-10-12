@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 28 16:36:00 UTC 2025 - Olivier Belleux <o.g.m.belleux@gmail.com>
+
+- change %define gcc_ver 8 to %define gcc_ver 13 
+- add leap 16.0
+
+-------------------------------------------------------------------
 Fri Aug  8 10:37:30 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add CVE-2025-50952.patch: guard against zero offset to a
