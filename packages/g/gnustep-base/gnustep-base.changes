@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 10 14:13:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnustep-base-fix_GCC15.patch: Fix build with gcc 15, borrow
+  patch from fedora.
+
+-------------------------------------------------------------------
 Fri Feb 28 22:03:49 UTC 2025 - Fred kiefer <fredkiefer@gmx.de>
 
 - Update to version 1.31.1

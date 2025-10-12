@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-base
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ URL:            http://www.gnustep.org/
 Source:         ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
+Patch:          gnustep-base-fix_GCC15.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-objc
 BuildRequires:  gmp-devel
@@ -92,7 +93,10 @@ This package contains include files for developing applications
 using the GNUstep Base Library.
 
 %prep
-%autosetup -p1
+%autosetup -N
+%if 0%{?suse_version} >= 1600
+%patch -p1 -P 0
+%endif
 find . -type f -name "*.swp" -delete
 
 %build
