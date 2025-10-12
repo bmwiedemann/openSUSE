@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Oct  7 17:06:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.19.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.19.0
+- Changes since 6.18.0:
+  * Add initial syntax highlighting definition for Quarto
+  * Update dependency version to 6.19.0
+  * monokai: Fix JSONC highlighting
+  * Improve monokai BEGIN/END highlighting
+  * systemd unit: update to systemd v258
+  * zig: Allowing folding at brace
+  * Added wildcard in extensions
+  * Snakemake: drop redundant .syntax file
+  * Snakemake: initial support
+  * XKB: fix key pattern: The character '<' cannot be present in the name
+  * debianchangelog.xml: add Ubuntu releases after 24.04
+  * Clarify license info in for opsi-script files, reformat
+  * add XKeyboardConfig (XKB) syntax highlighting
+  * update contact info to website
+  * Indexer: check kateVersion attribute format
+  * fix documentation of Theme::EditorColorRole and Repository::DefaultTheme
+  * Fix version attributes following suggestion by @jpoelen
+  * Add tests according to README
+  * Change tags used to <StringDetect> and <RangeDetect>
+  * Add KDE syntax file for SPARQL highlighting
+  * Fix clazy warning by fully-qualifying arguments
+  * Switch to ecm_generate_headers SHARED_PREFIX arg
+  * Port to declarative QML type registration
+  * Update version to 6.19.0
+
+-------------------------------------------------------------------
 Mon Sep  8 13:33:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.18.0
