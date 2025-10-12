@@ -8486,6 +8486,7 @@ unsorted:
   - himmelblau-qr-greeter 
   - himmelblau-sshd-config 
   - himmelblau-sso 
+  - hipblas-common-devel 
   - hipcc 
   - hipcc-libomp-devel 
   - hiredis 
@@ -11036,8 +11037,8 @@ unsorted:
   - libCSXCAD0 
   - libCbc3 
   - libCgl1 
-  - libClipper2Z_1 
-  - libClipper2_1 
+  - libClipper2-1 
+  - libClipper2Z1 
   - libClp1 
   - libCoin60 
   - libCoin80 
@@ -13601,7 +13602,6 @@ unsorted:
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
   - libgnuradio-osmosdr0_2_0 
-  - libgnustep-base1_31 
   - libgnutls-dane-devel 
   - libgnutls-devel 
   - libgnutls-devel-32bit 
@@ -14755,7 +14755,7 @@ unsorted:
   - libnanomsg6 
   - libnanosvg0 
   - libnanosvgrast0 
-  - libnauty-2_8_9 
+  - libnauty-2_9_1 
   - libnbcompat-devel 
   - libnbcompat0 
   - libnbd 
@@ -14932,7 +14932,6 @@ unsorted:
   - liboauth-devel 
   - libobby-0_4-1 
   - libobjc2-devel 
-  - libobjc4 
   - libobjc4-32bit 
   - libobjc4-gcc13 
   - libobjc4-gcc13-32bit 
@@ -26627,7 +26626,6 @@ unsorted:
   - python311-pypdf 
   - python311-pyperclip 
   - python311-pyperf 
-  - python311-pypet 
   - python311-pypi-search 
   - python311-pypiserver 
   - python311-pypng 
@@ -30427,7 +30425,6 @@ unsorted:
   - python312-pypdf 
   - python312-pyperclip 
   - python312-pyperf 
-  - python312-pypet 
   - python312-pypi-search 
   - python312-pypiserver 
   - python312-pypng 
@@ -34176,7 +34173,6 @@ unsorted:
   - python313-pypdf 
   - python313-pyperclip 
   - python313-pyperf 
-  - python313-pypet 
   - python313-pypi-search 
   - python313-pypiserver 
   - python313-pypng 
@@ -47751,6 +47747,9 @@ unsorted:
   - tlp-rdw 
   - tlpui 
   - tlrc 
+  - tlrc-bash-completion 
+  - tlrc-fish-completion 
+  - tlrc-zsh-completion 
   - tls 
   - tlswrap 
   - tmate 
@@ -48533,7 +48532,6 @@ unsorted:
   - umoci 
   - umockdev 
   - umockdev-devel 
-  - unar 
   - unbound-devel 
   - unbound-munin 
   - unclutter 
@@ -48576,7 +48574,6 @@ unsorted:
   - unoconv 
   - unpack-install-jammer 
   - unpaper 
-  - unrar_wrapper 
   - unshield 
   - unshield-devel 
   - unzip-rcc 

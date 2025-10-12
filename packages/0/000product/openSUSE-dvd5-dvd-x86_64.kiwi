@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20251011" schemaversion="4.1">
+<image name="OBS__openSUSE___20251012" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20251011</productvar>
+      <productvar name="VERSION">20251012</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20251011,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20251012,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20251011/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20251012/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1650,6 +1650,7 @@
       <repopackage name="libgnomesu"/>
       <repopackage name="libgnomesu-lang"/>
       <repopackage name="libgnomesu0"/>
+      <repopackage name="libgnustep-base1_31"/>
       <repopackage name="libgnutls-dane0"/>
       <repopackage name="libgnutls30"/>
       <repopackage name="libgnutls30-32bit"/>
@@ -2312,6 +2313,7 @@
       <repopackage name="libnvme-mi1"/>
       <repopackage name="libnvme1"/>
       <repopackage name="liboauth0"/>
+      <repopackage name="libobjc4"/>
       <repopackage name="libodbc2"/>
       <repopackage name="libodfgen-0_1-1"/>
       <repopackage name="libogg0"/>
@@ -4219,9 +4221,11 @@
       <repopackage name="umbrello"/>
       <repopackage name="umbrello-lang"/>
       <repopackage name="un-fonts"/>
+      <repopackage name="unar"/>
       <repopackage name="unbound"/>
       <repopackage name="unbound-anchor"/>
       <repopackage name="unison"/>
+      <repopackage name="unrar_wrapper"/>
       <repopackage name="unzip"/>
       <repopackage name="unzip-doc"/>
       <repopackage name="update-alternatives"/>
