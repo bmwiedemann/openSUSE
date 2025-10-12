@@ -7,4 +7,12 @@
     <comment>GAP CAS module</comment>
     <requestid>1134871</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>132de883a8ff1065aa27c3864def13ad</srcmd5>
+    <version>4.7.4</version>
+    <time>1760300619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.7.4</comment>
+    <requestid>1310769</requestid>
+  </revision>
 </revisionlist>
