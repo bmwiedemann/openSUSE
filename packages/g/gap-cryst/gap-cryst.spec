@@ -1,7 +1,7 @@
 #
 # spec file for package gap-cryst
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           gap-cryst
-Version:        4.1.27
+Version:        4.1.30
 Release:        0
 Summary:        GAP: Computing with crystallographic groups
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://www.math.uni-bielefeld.de/~gaehler/gap/packages.php
 #Git-Clone:     https://github.com/gap-packages/cryst
-
 Source:         https://www.math.uni-bielefeld.de/~gaehler/gap/Cryst/cryst-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz
-Requires:       gap-core >= 4.11
+Requires:       gap-core >= 4.12
+Requires:       gap-polenta >= 1.3.10
 Requires:       gap-polycyclic >= 2.16
 Suggests:       gap-caratinterface >= 2.3.3
 Suggests:       gap-crystcat >= 1.1.9

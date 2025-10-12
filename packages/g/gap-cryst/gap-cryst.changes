@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 11 17:49:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1.30
+  * Standardized Wyckoff position representation, which is now
+    stable across GAP versions.
+  * Adaptions to new treatment of rational matrix groups.
+  * Replaced an incorrect implementation of IsSymmorphicSpaceGroup
+    by a correct one.
+
+-------------------------------------------------------------------
 Sat Dec 23 13:25:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.1.27
