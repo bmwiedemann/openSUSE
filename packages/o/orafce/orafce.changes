@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 11 17:34:25 UTC 2025 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Update to version 4.16.0+git0.38f69ed:
+  * More accurace calculating months_between when time part of input is not truncated.
+  * fix build on pg19
+
+-------------------------------------------------------------------
+Thu Oct 02 13:13:07 UTC 2025 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Update to version 4.14.6+git0.2b21fee:
+  * prepare for 4.14.6
+  * fix build pn pg19
+  * remove useless usage of short life memory context
+  * remove useless (and buggy) usage of short life memory context
+
+-------------------------------------------------------------------
 Thu Sep 25 16:24:04 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - enable pg 18
