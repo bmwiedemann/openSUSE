@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  7 17:18:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Switch to GCC 14 and 15 on resp. Leap 15.6 and 16.0.
+  Some packages started using features not available in GCC 13
+
+-------------------------------------------------------------------
 Mon Jul  7 07:33:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Allow adding custom build target to %kf6_build and %kf6_install
