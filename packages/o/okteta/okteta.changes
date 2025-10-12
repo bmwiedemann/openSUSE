@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 11 19:27:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.24
+  * Improved: translations
+  * Fixed: potentially broken init of Save-As controller
+
+-------------------------------------------------------------------
 Sat Aug  9 08:33:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.23
