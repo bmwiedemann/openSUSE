@@ -1,8 +1,8 @@
 #
 # spec file for package byobu
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Tejas Guruswamy <tejas.guruswamy@opensuse.org>.
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 Tejas Guruswamy <tejas.guruswamy@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           byobu
-Version:        6.12
+Version:        6.13
 Release:        0
 Summary:        Enhanced profile and configuration utilities for GNU Screen and tmux
 License:        GPL-3.0-only
