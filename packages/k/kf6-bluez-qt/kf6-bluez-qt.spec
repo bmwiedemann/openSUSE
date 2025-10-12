@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname bluez-qt
-# Full KF6 version (e.g. 6.18.0)
+# Full KF6 version (e.g. 6.19.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-bluez-qt
-Version:        6.18.0
+Version:        6.19.0
 Release:        0
 Summary:        Async Bluez wrapper library
 License:        LGPL-2.1-or-later
@@ -35,8 +35,6 @@ Source2:        frameworks.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
-# Work around a build issue with CMake 3.31. Despite being unused, CMake complains about missing QtQml private API headers
-BuildRequires:  qt6-qml-private-devel >= %{qt6-version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
