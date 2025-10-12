@@ -24,7 +24,6 @@ License:        MIT
 URL:            https://tldr.sh/
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 # Seems there is already another tldr-pages client
 # Well but tlrc is the official one :)
@@ -33,9 +32,41 @@ Conflicts:      tealdeer
 %description
 The tldr-pages project is a collection of community-maintained help pages for command-line tools, that aims to be a simpler, more approachable complement to traditional man pages.
 
+%package        bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+BuildArch:      noarch
+
+%description    bash-completion
+Bash command-line completion support for %{name}.
+
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       %{name} = %{version}
+Requires:       fish
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       %{name} = %{version}
+Requires:       zsh
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
+
 %prep
 %autosetup -p1 -a1
-install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
@@ -43,10 +74,25 @@ install -D -m 644 %{SOURCE2} .cargo/config
 %install
 %{cargo_install}
 
+install -Dm644 completions/tldr.bash %{buildroot}%{_datadir}/bash-completion/completions/tldr
+install -Dm644 completions/tldr.fish -t %{buildroot}%{_datadir}/fish/vendor_completions.d
+install -Dm644 completions/_tldr -t %{buildroot}%{_datadir}/zsh/site-functions
+
 %check
 %{cargo_test}
 
 %files
 %{_bindir}/tldr
+
+%files bash-completion
+%{_datadir}/bash-completion/*
+
+%files fish-completion
+%dir %{_datadir}/fish
+%{_datadir}/fish/*
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%{_datadir}/zsh/*
 
 %changelog
