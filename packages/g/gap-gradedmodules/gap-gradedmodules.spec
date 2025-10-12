@@ -1,7 +1,7 @@
 #
 # spec file for package gap-gradedmodules
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-gradedmodules
-Version:        2024.01.01
-%define sillyver 2024.01-01
+Version:        2024.12.01
+%define sillyver 2024.12-01
 Release:        0
 Summary:        GAP: Abelian finitely presented graded modules over a computable graded ring
 License:        GPL-2.0-or-later
