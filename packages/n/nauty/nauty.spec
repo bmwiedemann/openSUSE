@@ -17,9 +17,9 @@
 
 
 Name:           nauty
-%define lname   libnauty-2_8_9
-%define fuv     2_8_9
-Version:        2.8.9
+%define lname   libnauty-2_9_1
+%define fuv     2_9_1
+Version:        2.9.1
 Release:        0
 Summary:        Tools for computing automorphism groups of graphs
 License:        Apache-2.0
@@ -27,7 +27,6 @@ Group:          Productivity/Scientific/Math
 URL:            https://pallini.di.uniroma1.it/
 Source:         https://pallini.di.uniroma1.it/nauty%fuv.tar.gz
 Patch1:         nauty-am.diff
-Patch2:         nauty-uninitialized.diff
 Patch3:         autoconf-2.72.patch
 Patch4:         gcc15.patch
 BuildRequires:  automake
@@ -74,24 +73,24 @@ applications that want to make use of libnauty.
 %build
 rm -f aclocal.m4 makefile
 autoreconf -fi
-export CFLAGS="%optflags -Wno-unused"
-%configure --enable-generic
+#export CFLAGS="%optflags -Wno-unused"
+%configure --enable-generic --disable-popcnt --disable-clz
 %make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
-%fdupes %{buildroot}/${_bindir}
+%fdupes %buildroot/%_bindir
 
 %ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/*
-%doc changes24-28.txt
+%doc changes24-29.txt
 %license COPYRIGHT
 
 %files -n %lname
-%_libdir/libnauty*-2.8.9.so
+%_libdir/libnauty*-%version.so
 
 %files devel
 %_includedir/nauty/

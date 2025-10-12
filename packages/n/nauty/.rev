@@ -103,4 +103,12 @@
     <comment>- Add gcc15.patch</comment>
     <requestid>1287761</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>87ba5ecbddc959d9a02341668742b985</srcmd5>
+    <version>2.9.1</version>
+    <time>1760300621</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.9.1</comment>
+    <requestid>1310772</requestid>
+  </revision>
 </revisionlist>

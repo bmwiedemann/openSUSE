@@ -8,15 +8,15 @@ See also https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=7643b42096da1f4403
  configure.ac |    1 +
  1 file changed, 1 insertion(+)
 
-Index: nauty2_8_9/configure.ac
+Index: nauty2_9_1/configure.ac
 ===================================================================
---- nauty2_8_9.orig/configure.ac
-+++ nauty2_8_9/configure.ac
-@@ -178,6 +178,7 @@ dnl  we need  AC_SYS_LARGEFILE and AC_FU
- AC_SYS_LARGEFILE
- AS_IF([test "x$ac_cv_sys_file_offset_bits" = "xno"],[ac_cv_sys_file_offset_bits=0])
+--- nauty2_9_1.orig/configure.ac
++++ nauty2_9_1/configure.ac
+@@ -199,6 +199,7 @@ nauty_largefile=0
+ AS_IF([test "x$ac_cv_sys_largefile_opts" = "x-D_FILE_OFFSET_BITS=64"],[nauty_largefile=1])
+ AS_IF([test "x$ac_cv_sys_largefile_opts" = "x-D_LARGE_FILES=1"],[nauty_largefile=2])
  AS_IF([test "x$ac_cv_sys_file_offset_bits" = "x"],[ac_cv_sys_file_offset_bits=0])
 +ac_cv_sys_file_offset_bits=64
- AC_SUBST(ac_cv_sys_file_offset_bits)
+ AS_IF([test "x$ac_cv_sys_largefile_source" = "xno"],[ac_cv_sys_largefile_source=0])
+ AS_IF([test "x$ac_cv_sys_largefile_source" = "x"],[ac_cv_sys_largefile_source=0])
  
- AS_IF([test "x$user_cflags" = x || test "x$user_cflags" = x-m32],
