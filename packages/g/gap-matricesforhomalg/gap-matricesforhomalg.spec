@@ -17,8 +17,8 @@
 
 
 Name:           gap-matricesforhomalg
-Version:        2024.11.02
-%define sillyver 2024.11-02
+Version:        2025.09.01
+%define sillyver 2025.09-01
 Release:        0
 Summary:        GAP: Matrices for the homalg project
 License:        GPL-2.0-only
