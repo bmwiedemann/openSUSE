@@ -2,51 +2,22 @@ Index: Clipper2-Clipper2_1.5.4/CPP/CMakeLists.txt
 ===================================================================
 --- Clipper2-Clipper2_1.5.4.orig/CPP/CMakeLists.txt
 +++ Clipper2-Clipper2_1.5.4/CPP/CMakeLists.txt
-@@ -56,7 +56,7 @@ set(CLIPPER2_LIBS "") # one or both of C
- # primary Clipper2 library
- if (NOT (CLIPPER2_USINGZ STREQUAL "ONLY"))
-   list(APPEND CLIPPER2_LIBS Clipper2)
--  add_library(Clipper2 ${CLIPPER2_INC} ${CLIPPER2_SRC})
-+  add_library(Clipper2 SHARED ${CLIPPER2_INC} ${CLIPPER2_SRC})
- 
-   target_compile_definitions(
-     Clipper2 PUBLIC
-@@ -81,7 +81,7 @@ endif()
- # secondary Clipper2 library with USINGZ defined (if required)
- if (NOT (CLIPPER2_USINGZ STREQUAL "OFF"))
-   list(APPEND CLIPPER2_LIBS Clipper2Z)
--  add_library(Clipper2Z ${CLIPPER2_INC} ${CLIPPER2_SRC})
-+  add_library(Clipper2Z SHARED ${CLIPPER2_INC} ${CLIPPER2_SRC})
- 
-   target_compile_definitions(
-     Clipper2Z PUBLIC
-@@ -127,14 +127,14 @@ if(CLIPPER2_UTILS OR CLIPPER2_TESTS OR C
- 
-   if (NOT (CLIPPER2_USINGZ STREQUAL "ONLY"))
-     list(APPEND CLIPPER2_UTILS Clipper2utils)
--    add_library(Clipper2utils STATIC ${CLIPPER2_UTILS_INC} ${CLIPPER2_UTILS_SRC})
-+    add_library(Clipper2utils SHARED ${CLIPPER2_UTILS_INC} ${CLIPPER2_UTILS_SRC})
- 
-     target_link_libraries(Clipper2utils PUBLIC Clipper2)
-   endif()
- 
-   if (NOT (CLIPPER2_USINGZ STREQUAL "OFF"))
-     list(APPEND CLIPPER2_UTILS Clipper2Zutils)
--    add_library(Clipper2Zutils STATIC ${CLIPPER2_UTILS_INC} ${CLIPPER2_UTILS_SRC})
-+    add_library(Clipper2Zutils SHARED ${CLIPPER2_UTILS_INC} ${CLIPPER2_UTILS_SRC})
- 
-     target_link_libraries(Clipper2Zutils PUBLIC Clipper2Z)
-   endif()
-@@ -163,6 +163,12 @@ if(CLIPPER2_UTILS OR CLIPPER2_TESTS OR C
-             LIBRARY       DESTINATION ${CMAKE_INSTALL_LIBDIR}
-             RUNTIME       DESTINATION ${CMAKE_INSTALL_BINDIR})
+@@ -156,12 +156,12 @@ if(CLIPPER2_UTILS OR CLIPPER2_TESTS OR C
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Utils>
+         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/clipper2/Utils>
+     )
+-    install(TARGETS ${lib}
+-            EXPORT  Clipper2-targets
+-            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/clipper2/Utils
+-            ARCHIVE       DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-            LIBRARY       DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-            RUNTIME       DESTINATION ${CMAKE_INSTALL_BINDIR})
++  #   install(TARGETS ${lib}
++  #           EXPORT  Clipper2-targets
++  #           PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/clipper2/Utils
++  #           ARCHIVE       DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  #           LIBRARY       DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  #           RUNTIME       DESTINATION ${CMAKE_INSTALL_BINDIR})
    endforeach()
-+set_target_properties(${CLIPPER2_UTILS} PROPERTIES FOLDER Libraries
-+                                         VERSION ${PROJECT_VERSION}
-+                                         SOVERSION ${PROJECT_VERSION_MAJOR}
-+                                         PUBLIC_HEADER "${CLIPPER2_INC}"
-+)
-+
  
  endif()
- 

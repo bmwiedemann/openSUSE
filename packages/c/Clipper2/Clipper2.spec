@@ -1,7 +1,7 @@
 #
 # spec file for package Clipper2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 
 
 %bcond_with clipper2_testing
-%global sh_lib libClipper2_1
-%global sh_z_lib libClipper2Z_1
+%global sh_lib libClipper2-1
+%global sh_z_lib libClipper2Z1
+%global broken_sh_lib libClipper2_1
+%global broken_sh_z_lib libClipper2Z_1
 
 %if 0%{?suse_version} < 1600
 %global force_gcc_version 14
@@ -47,6 +49,8 @@ still works very well, Clipper2 is better in just about every way.
 
 %package -n %{sh_lib}
 Summary:        Shared library for Clipper2
+Provides:       %{broken_sh_lib} = %{version}-%{release}
+Obsoletes:      %{broken_sh_lib} < %{version}-%{release}
 
 %description -n %{sh_lib}
 The Clipper2 library performs intersection, union, difference and XOR boolean
@@ -57,6 +61,8 @@ still works very well, Clipper2 is better in just about every way.
 
 %package -n %{sh_z_lib}
 Summary:        Shared library for Clipper2
+Provides:       %{broken_sh_z_lib} = %{version}-%{release}
+Obsoletes:      %{broken_sh_z_lib} < %{version}-%{release}
 
 %description -n %{sh_z_lib}
 The Clipper2 library performs intersection, union, difference and XOR boolean
@@ -105,20 +111,16 @@ cd CPP
 %files -n %{sh_lib}
 %license LICENSE
 %{_libdir}/libClipper2.so.*
-%{_libdir}/libClipper2utils.so.*
 
 %files -n %{sh_z_lib}
 %license LICENSE
 %{_libdir}/libClipper2Z.so.*
-%{_libdir}/libClipper2Zutils.so.*
 
 %files devel
 %license LICENSE
 %doc README.md
 %{_libdir}/libClipper2.so
-%{_libdir}/libClipper2utils.so
 %{_libdir}/libClipper2Z.so
-%{_libdir}/libClipper2Zutils.so
 %{_libdir}/pkgconfig/Clipper2.pc
 %{_libdir}/pkgconfig/Clipper2Z.pc
 %{_includedir}/clipper2/
