@@ -21,7 +21,7 @@ Name:           orthanc-authorization
 Summary:        Authorisation plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancAuthorization-%{version}.tar.gz

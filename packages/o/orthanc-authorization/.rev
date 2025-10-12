@@ -55,4 +55,12 @@
     <comment>preparation for boost 1.89 (forwarded request 1303604 from DocB)</comment>
     <requestid>1304023</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>062873cd0a231759e882e9962e88fc64</srcmd5>
+    <version>0.10.2</version>
+    <time>1760300679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1310936</requestid>
+  </revision>
 </revisionlist>
