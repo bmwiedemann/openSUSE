@@ -1,0 +1,18 @@
+Add support for Logitech MX Master 4
+
+From: https://github.com/libratbag/libratbag/pull/1764
+References: https://github.com/libratbag/libratbag/pull/1764
+Upstream: submitted
+
+Add device file for Logitech MX Master 4 mouse with Bluetooth device ID.
+Note: usb:046d:c548 is the Unifying receiver ID and should not be in the
+device file per the receiver-id-test validation.
+
+--- /dev/null
++++ b/data/devices/logitech-MX-Master-4.device
+@@ -0,0 +1,5 @@
++[Device]
++DeviceMatch=bluetooth:046d:b042
++DeviceType=mouse
++Driver=hidpp20
++Name=Logitech MX Master 4

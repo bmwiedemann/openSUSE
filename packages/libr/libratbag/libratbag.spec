@@ -1,7 +1,7 @@
 #
 # spec file for package libratbag
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,8 @@ Source1:        README.SUSE
 Patch1:         shebang-env.diff
 Patch3:         harden_ratbagd.service.patch
 Patch4:         use-python-3.6.patch
+# PATCH-FEATURE-UPSTREAM add-logitech-MX-Master-4.patch https://github.com/libratbag/libratbag/pull/1764
+Patch5:         add-logitech-MX-Master-4.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  json-glib-devel
@@ -109,6 +111,7 @@ mice.
 %if 0%{?suse_version} < 1550
 %patch -P4 -p1
 %endif
+%patch -P5 -p1
 cp %{SOURCE1} .
 
 %build
@@ -128,6 +131,7 @@ chmod -x "%{buildroot}/%{_datadir}/%{name}/logitech-g402.device"  # Fix this fil
 
 %post   -n liblur3 -p /sbin/ldconfig
 %postun -n liblur3 -p /sbin/ldconfig
+
 %pre -n ratbagd
 %service_add_pre ratbagd.service
 
