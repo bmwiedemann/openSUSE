@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Sat Oct 11 22:27:04 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.2:
+  + Added  
+    - Allow `SnapToEdge` and `ToggleSnapToEdge` to combine two  
+      cardinal directions with the config option  
+      `combine="yes|no"`.  
+    - Support `Border` context for mousebinds as an alias for  
+      `Top`...`BRCorner` to make configuration easier.  
+    - Add window-switcher mode with thumbnails. This can be  
+      enabled with: `<windowSwitcher style="thumbnail">`.  
+    - Add `toggle` option to `GoToDesktop` action. This has the  
+      effect of going back to the last desktop if already on  
+      the target.  
+    - Add `<theme maximizedDecoration="titlebar|none"/>` to  
+      allow hiding titlebar when window is maximized.  
+    - Use client-send-to-menu as 'Workspace' submenu in built-in  
+      client-menu.  
+    - Allow overwriting submenu icon to increase flexibility  
+      and enhance Openbox compatibility.  
+    - Allow client-{list-combined,send-to}-menu as submenu of  
+      static menu.  
+    - Add `labnag` (a dialog client with message and buttons)  
+      and associated `<prompt>` option in 'If' actions.  
+    - Support config option `<core><promptCommand>`.  
+    - Allow snapping to corner edges during interactive move  
+      with associated config options `<snapping><cornerRange>`.  
+    - Support new values "up-left", "up-right", "down-left"  
+      and "down-right" with `<action name="(Toggle)SnapToEdge"  
+      direction="[value]">` and `<query tiled="[value]">`.  
+    - XML parsing improvements:  
+      - Support nested `If` and `ForEach` actions  
+      - Parse CDATA as text all nodes  
+      - Remove ordering constraint of attributes in  
+        `<keybind>`, `<mousebind>` and `<windowRule>`  
+      - `If` actions now work for menus  
+      - For menus, the `name` argument no longer has to be the  
+        first argument of `<action>`; and the `label` argument  
+        no longer has to be the first argument of `<item>`  
+    - Toggle mousebinds with the `ToggleKeybinds` action  
+    - Add support for direction value 'any' with tiled queries.  
+      This allows users to query for any snap directions  
+      without using multiple query statements  
+  + Fixed  
+    - On detecting broken icon theme, fall back on 'hicolor'.  
+    - Restore initially-maximized window position after  
+      unplug/plug.  
+    - Fix large client-side icon not being loaded when the  
+      rendered icon size is larger than icon sizes from the  
+      client.  
+    - Improve debug logging for configuring input devices.  
+    - Fix false positives when matching desktop entries.  
+    - Prevent accidental downcasting of scale in  
+      scaled-icon-buffer to avoid blurry icons on non-integer  
+      scales and a cairo assert when using a output scale < 1.  
+    - Fix xdg-shell windows moving between outputs due to  
+      configure timeout.  
+    - Fix segfault with toplevel `<separator>` in `menu.xml`.  
+    - Prevent hi-res mice triggering scroll actions too often.  
+  + Changed  
+    - Change default keybind `W-<arrow>` to combine cardinal  
+      directions to support resizing of windows to fill a  
+      quarter of an output. This only affects users who do not  
+      use an `rc.xml` or use the `<keyboard><default/>` option.  
+      Previous behavior can be restored by setting  
+      `combine="no"`.  
+    - `Focus` and `Raise` on window border press to align with  
+      Openbox behavior.  
+    - On interactive resize, only un-maximize the axis/axes  
+      that are being resized.  
+    - Change theme setting `osd.window-switcher.*` to  
+      `osd.window-switcher.style-classic.*`. Backward  
+      compatibility is preserved.  
+    - In client-list menu, add brackets around the titles of  
+      any minimised windows.  
+    - Respect client-initiated window resize of non-maximized  
+      axis, for example remember the width of  
+      vertically-maximized window resizing itself  
+      horizontally.  
+    - Remember position of window along non-maximized axis  
+      during interactive move.  
+    - Restore default libinput device values on reconfigure  
+      with empty value.  
+    - Change `If` action when used without a focused window to  
+      execute the `<else>` branch (previously it was just  
+      ignored).  
+    - Make `autoEnableOutputs=no` apply only to drm outputs.  
+    - Take into account `<core><gap>` for edge and region  
+      overlays.  
+
+-------------------------------------------------------------------
 Sat Aug  2 20:30:16 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.9.1:

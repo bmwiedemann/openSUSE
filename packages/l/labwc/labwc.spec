@@ -24,7 +24,7 @@
 %define slname  libsfdo
 %define slver   0.1.4
 Name:           labwc
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        A Wayland window-stacking compositor
 License:        GPL-2.0-only
@@ -124,6 +124,7 @@ install -Dm 0644 docs/*.xml -t %{buildroot}%{_sysconfdir}/xdg/%{name}/
 %doc NEWS.md README.md
 %{_bindir}/%{name}
 %{_bindir}/lab-sensible-terminal
+%{_bindir}/labnag
 %dir %{_sysconfdir}/xdg/%{name}
 %config(noreplace) %{_sysconfdir}/xdg/%{name}/menu.xml
 %config(noreplace) %{_sysconfdir}/xdg/%{name}/rc.xml
@@ -132,6 +133,7 @@ install -Dm 0644 docs/*.xml -t %{buildroot}%{_sysconfdir}/xdg/%{name}/
 %{_datadir}/wayland-sessions/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/labwc*.svg
 %{_mandir}/man?/%{name}*.?%{?ext_man}
+%{_mandir}/man?/labnag*.?%{?ext_man}
 %{_datadir}/doc/%{name}/
 
 %files lang -f %{name}.lang
