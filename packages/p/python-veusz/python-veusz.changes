@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 12 08:57:35 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.2:
+  * Fix for double scaled 3D point marker borders.
+  * Allow negative offsets for some labels.
+  * Allow iterative change of properties of multiple widgets.
+  * Strip BOMs from Veusz and imported files.
+  * Fix binary import plugin.
+  * Fix capture dialog.
+  * Prefer tomllib on Python 3.11+.
+  * Clean up text for translation and document use of weblate in
+    README.
+  * Fix inactive 2D data import range.
+
+-------------------------------------------------------------------
 Sat Jun 14 02:36:31 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.1:

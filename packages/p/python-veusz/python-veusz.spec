@@ -1,7 +1,7 @@
 #
 # spec file for package python-veusz
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{?sle15_python_module_pythons}
 %define modname veusz
 Name:           python-veusz
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        Scientific plotting library for Python
 # The entire source code is GPL-2.0+ except helpers/src/_nc_cntr.c which is Python-2.0
