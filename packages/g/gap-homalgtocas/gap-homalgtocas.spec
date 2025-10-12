@@ -1,7 +1,7 @@
 #
 # spec file for package gap-homalgtocas
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-homalgtocas
-Version:        2023.11.01
-%define sillyver 2023.11-01
+Version:        2025.08.01
+%define sillyver 2025.08-01
 Release:        0
 Summary:        GAP: Abstraction layer for Homalg to access external CAS
 License:        GPL-2.0-only
