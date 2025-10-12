@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 11 18:05:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.0
+  * Fix incorrect ordering for `N6_26`, `N6_27`; that is, the order
+    of `NilpotentLieAlgebra(F, [6,26])` and `NilpotentLieAlgebra(F,
+    [6,27])` was swapped, and also their order in the output of
+    `AllNilpotentLieAlgebras`; that manifested in the output of
+    `LieAlgebraIdentification` not matching.
+  * Stop using `DeclareAutoreadableVariables`.
+
+-------------------------------------------------------------------
 Sat Nov 19 00:25:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2.1
