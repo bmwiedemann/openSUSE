@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct  7 17:06:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.19.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.19.0
+- Changes since 6.18.0:
+  * Update dependency version to 6.19.0
+  * KTextToHtml: If URL ends with double-quote, it's not valid URL (kde#507952)
+  * make tests more stable
+  * try to make test more stable
+  * kcoreaddons_add_plugin: Fail fast if CMAKE_LIBRARY_OUTPUT_DIRECTORY is not set
+  * some more seconds to the future to be less flacky
+  * make test less flaky by using longer time and more fuzzy compare
+  * update timestamp to avoid rounding error
+  * Document org.kde.coreaddons.AboutData
+  * require tests on all platforms to pass
+  * KAboutData: Notify that KAboutData has been set
+  * Update version to 6.19.0
+
+-------------------------------------------------------------------
 Mon Sep  8 13:33:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.18.0
