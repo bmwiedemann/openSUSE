@@ -17,8 +17,8 @@
 
 
 Name:           gap-linearalgebraforcap
-Version:        2024.10.01
-%define sillyver 2024.10-01
+Version:        2025.09.01
+%define sillyver 2025.09-01
 Release:        0
 Summary:        GAP: Category of Matrices over a Field for CAP
 License:        GPL-2.0-or-later
