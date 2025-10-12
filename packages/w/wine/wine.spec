@@ -219,6 +219,24 @@ Conflicts:      wine-32bit
 Provides:       wine-32bit = %{version}-%{release}
 %endif
 ExclusiveArch:  aarch64 %{ix86} x86_64
+Provides:       bundled(FAudio) = 25.09
+Provides:       bundled(capstone) = 5.0.3
+Provides:       bundled(fluidsynth) = 2.4.0
+Provides:       bundled(jpeg) = 9f
+Provides:       bundled(libgsm) = 1.10.19
+Provides:       bundled(libjxr) = 1.1
+Provides:       bundled(liblcms2) = 2.17
+Provides:       bundled(libpng) = 1.6.50
+Provides:       bundled(libxml2) = 2.12.10
+Provides:       bundled(libxslt) = 1.1.43
+Provides:       bundled(mpg123) = 1.33.0
+Provides:       bundled(musl) = 1.2.3
+Provides:       bundled(openldap2) = 2.5.18
+Provides:       bundled(tiff) = 4.7.1
+Provides:       bundled(tomcrypt) = 1.18.2
+Provides:       bundled(tommath) = 1.1.0
+Provides:       bundled(vkd3d) = 1.17
+Provides:       bundled(zlib) = 1.3.1
 
 %description
 Wine is a compatibility layer capable of running Windows

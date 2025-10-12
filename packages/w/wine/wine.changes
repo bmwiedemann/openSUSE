@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct  5 13:31:33 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- add bundled() provides for embeeded libs
+
+-------------------------------------------------------------------
 Sat Oct  4 10:14:48 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to 10.16 release
@@ -7,7 +12,7 @@ Sat Oct  4 10:14:48 UTC 2025 - Marcus Meissner <meissner@suse.com>
   - Initial support for D3DKMT objects.
   - WinMD (Windows Metadata) files generated and installed.
   - Various bug fixes.
-- update staging to 10.15 release
+- update staging to 10.16 release
 
 -------------------------------------------------------------------
 Sat Sep 27 09:52:22 UTC 2025 - Marcus Meissner <meissner@suse.com>
