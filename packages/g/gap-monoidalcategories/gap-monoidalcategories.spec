@@ -17,8 +17,8 @@
 
 
 Name:           gap-monoidalcategories
-Version:        2025.01.02
-%define sillyver 2025.01-02
+Version:        2025.08.02
+%define sillyver 2025.08-02
 Release:        0
 Summary:        GAP: Monoidal and monoidal (co-)closed categories
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            https://homalg-project.github.io/pkg/MonoidalCategories
 Source:         https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-%sillyver/MonoidalCategories-%sillyver.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
-Requires:       gap-cap >= 2023.08.16
+Requires:       gap-cap >= 2025.03.04
 Requires:       gap-core >= 4.12.1
 Requires:       gap-toolsforhomalg >= 2018.05.22
 
