@@ -1,7 +1,0 @@
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQSQqWisqEU3zCe5nq8sjfWHptSqwQUCaL6QhgAKCRAsjfWHptSq
-wbaOAQC/cg5VtEb2HWgp1jRvQM/NSHoEkeamHPTbcNpuS72QcwEAsPPy8BibT0jq
-eGHgihuadVkvqe3/HCeiGl9Yq9+QWA8=
-=Kdk8
------END PGP SIGNATURE-----
