@@ -3,33 +3,21 @@ Date: 2024-06-14 20:11 UTC
 Subject: Generate icons for dark theme
 References: boo#1226207
 
-diff '--color=auto' -uNr breeze-icons-6.3.0-org/icons-dark/CMakeLists.txt breeze-icons-6.3.0-mod/icons-dark/CMakeLists.txt
---- breeze-icons-6.3.0-org/icons-dark/CMakeLists.txt        2024-05-31 16:23:41.000000000 +0300
-+++ breeze-icons-6.3.0-mod/icons-dark/CMakeLists.txt        2024-06-12 14:07:27.132154157 +0300
-@@ -11,12 +11,13 @@
- set(BREEZE_INSTALL_DIR ${KDE_INSTALL_FULL_ICONDIR}/breeze-dark)
- 
- set(ICON_GEN_DIR ${CMAKE_BINARY_DIR}/breeze-icons-dark)
--if(WITH_ICON_GENERATION)
-+# if(WITH_ICON_GENERATION)
-     # No trainling slashes on dirs. It will break scripts.
-     add_custom_target(breeze-generate-symbolic-dark ALL
-         COMMENT "Generating symbolic dark icons"
-         COMMAND $<TARGET_FILE:generate-symbolic-dark> ${CMAKE_SOURCE_DIR}/icons ${ICON_GEN_DIR}
-     )
-+if(WITH_ICON_GENERATION)
-     # Auto-generate 24px monochrome icons from 22px versions
-     add_custom_target(breeze-generate-24px-versions-dark ALL
-         DEPENDS breeze-generate-symbolic-dark
-@@ -47,9 +48,9 @@
-     if(NOT WIN32)
-         install(DIRECTORY ${CMAKE_BINARY_DIR}/icons/aliases/ DESTINATION ${BREEZE_INSTALL_DIR})
-     endif()
--    if(WITH_ICON_GENERATION)
-+    # if(WITH_ICON_GENERATION)
-         install(DIRECTORY ${ICON_GEN_DIR}/ DESTINATION ${BREEZE_INSTALL_DIR})
--    endif()
-+    # endif()
+diff --git a/icons/CMakeLists.txt b/icons/CMakeLists.txt
+index fc883881..83924a4a 100644
+--- a/icons/CMakeLists.txt
++++ b/icons/CMakeLists.txt
+@@ -29,8 +29,11 @@ if(WITH_ICON_GENERATION)
+ else()
+     # create the target dir, we need it for resource creation
+     add_custom_target(breeze-generate-24px-versions ALL
+-        COMMENT "Generating 24px icons placeholder"
+-    )
++        COMMENT "Generating 24px icons placeholder")
++    add_custom_target(breeze-generate-symbolic-dark ALL
++         COMMENT "Generating symbolic dark icons"
++         COMMAND $<TARGET_FILE:generate-symbolic-dark> ${CMAKE_SOURCE_DIR}/icons ${ICON_GEN_DIR}
++         )
  endif()
  
- gtk_update_icon_cache(${BREEZE_INSTALL_DIR})
+ if(NOT SKIP_INSTALL_ICONS)

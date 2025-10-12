@@ -9,11 +9,11 @@ References: boo#1226207
  src/tools/generate-symbolic-dark.cpp | 45 ++++++++++++++++++++++++++++
  1 file changed, 45 insertions(+)
 
-diff --git a/src/tools/generate-symbolic-dark.cpp b/src/tools/generate-symbolic-dark.cpp
-index 365c5ea0..62fb8400 100644
---- a/src/tools/generate-symbolic-dark.cpp
-+++ b/src/tools/generate-symbolic-dark.cpp
-@@ -109,6 +109,7 @@ int main(int argc, char **argv)
+Index: breeze-icons-6.11.0git.20251003T163202~571fb303/src/tools/generate-symbolic-dark.cpp
+===================================================================
+--- breeze-icons-6.11.0git.20251003T163202~571fb303.orig/src/tools/generate-symbolic-dark.cpp	2025-10-03 16:32:02.000000000 +0200
++++ breeze-icons-6.11.0git.20251003T163202~571fb303/src/tools/generate-symbolic-dark.cpp	2025-10-04 09:05:47.229367936 +0200
+@@ -109,6 +109,7 @@
      QStringList unwrittenFiles;
      QStringList xmlReadErrorFiles;
      QStringList xmlWriteErrorFiles;
@@ -21,7 +21,7 @@ index 365c5ea0..62fb8400 100644
      for (auto &inputDir : std::as_const(inputDirs)) {
          QDirIterator dirIt(inputDir, QDirIterator::Subdirectories);
          while (dirIt.hasNext()) {
-@@ -121,6 +122,11 @@ int main(int argc, char **argv)
+@@ -120,6 +121,11 @@
                  continue;
              }
  
@@ -33,7 +33,7 @@ index 365c5ea0..62fb8400 100644
              // create dir, might be needed for symlink
              QDir outputDir = outputDirInfo.absoluteFilePath();
              const auto outputFilePath = outputDir.absoluteFilePath(QString{inputFilePath}.remove(QRE(u".*/icons/"_s)));
-@@ -149,11 +155,18 @@ int main(int argc, char **argv)
+@@ -148,11 +154,18 @@
                  continue;
              }
  
@@ -52,7 +52,7 @@ index 365c5ea0..62fb8400 100644
  
              QXmlStreamReader reader(inputData);
              reader.setNamespaceProcessing(false);
-@@ -161,9 +174,32 @@ int main(int argc, char **argv)
+@@ -160,9 +173,32 @@
              QXmlStreamWriter writer(&outputData);
              writer.setAutoFormatting(true);
  
@@ -85,7 +85,7 @@ index 365c5ea0..62fb8400 100644
                  if (!reader.isStartElement() || reader.qualifiedName() != "style"_L1 || reader.attributes().value("id"_L1) != "current-color-scheme"_L1) {
                      continue;
                  }
-@@ -175,6 +211,10 @@ int main(int argc, char **argv)
+@@ -174,6 +210,10 @@
                  writer.writeCharacters(convertStylesheet(reader.text().toString()));
              }
  
@@ -96,7 +96,7 @@ index 365c5ea0..62fb8400 100644
              if (reader.hasError()) {
                  xmlReadErrorFiles.append("\""_L1 + inputFile.fileName() + "\": "_L1 + reader.errorString());
              }
-@@ -182,6 +222,11 @@ int main(int argc, char **argv)
+@@ -181,6 +221,11 @@
                  xmlWriteErrorFiles.append("\""_L1 + outputFile.fileName() + "\""_L1);
              }
  
@@ -108,6 +108,3 @@ index 365c5ea0..62fb8400 100644
              auto bytesWritten = outputFile.write(outputData);
              outputFile.close();
              wasAnyFileWritten |= bytesWritten > 0;
--- 
-2.49.0
-
