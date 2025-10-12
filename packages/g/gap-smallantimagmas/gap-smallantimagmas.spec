@@ -17,14 +17,14 @@
 
 
 Name:           gap-smallantimagmas
-Version:        0.4.1
+Version:        0.5.1
 Release:        0
 Summary:        GAP: A library of antiassociative magmas of small order
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://limakzi.github.io/smallantimagmas/
-#Git-Clone:     https://github.com/limakzi/smallantimagmas
-Source:         https://github.com/limakzi/smallantimagmas/releases/download/v%version/smallantimagmas-v%version.tar.gz
+URL:            https://gap-packages.github.io/smallantimagmas/
+#Git-Clone:     https://github.com/gap-packages/smallantimagmas
+Source:         https://github.com/gap-packages/smallantimagmas/releases/download/v%version/smallantimagmas-v%version.tar.gz
 BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.12

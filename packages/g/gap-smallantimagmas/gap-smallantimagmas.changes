@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 11 21:48:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.5.1
+  * Rename function to UpToIsomorphism
+  * Change Tuple -> DirectProductElement for isomorphism functions
+
+-------------------------------------------------------------------
 Fri Sep 12 08:43:57 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.4.1
