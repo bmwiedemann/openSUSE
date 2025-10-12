@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct  7 17:06:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.19.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.19.0
+- Changes since 6.18.0:
+  * Use an array here, std::vector is not necessary
+  * Avoid allocating when reading config
+  * Update dependency version to 6.19.0
+  * Remove unused include
+  * Use std::span instead of manually incrementing iterators
+  * Merge the loops
+  * Store KateLineLayout* instead of a pair
+  * Dont use deprecated stuff
+  * Mark unused stuff as deprecated
+  * Update/cleanup completionmodel docs
+  * Use a pool allocator for KateLineLayout
+  * Fix various typos
+  * Dont override XDG_DATA_DIRS
+  * update copyright year
+  * fix my homepage and kill dead links
+  * always restore highlights and only set non-null pixmap
+  * still trigger delayed update, else we miss some resizing and get artifacts (kde#509269)
+  * Dont remove one cursor at a time, it can be very slow
+  * Update version to 6.19.0
+
+-------------------------------------------------------------------
 Mon Sep  8 13:33:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.18.0
