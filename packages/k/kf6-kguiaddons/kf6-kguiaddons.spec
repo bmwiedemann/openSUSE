@@ -32,11 +32,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.18.0)
+# Full KF6 version (e.g. 6.19.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kguiaddons
-Version:        6.18.0
+Version:        6.19.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -53,6 +53,7 @@ BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  pkgconfig(wayland-client) >= 1.15
