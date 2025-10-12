@@ -17,7 +17,7 @@
 
 
 Name:           gap-polycyclic
-Version:        2.16
+Version:        2.17
 Release:        0
 Summary:        GAP: Computation with polycyclic groups
 License:        GPL-2.0-or-later

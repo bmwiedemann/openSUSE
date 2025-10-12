@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 11 18:36:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.17
+  * Add a method `SemidirectProduct( N, alpha, G)` where `N` and
+    `G` are both PcpGroups.
+  * Enhance `AbelianPcpGroup` and `AbelianGroupCons` to support
+    `infinity` in the list of orders.
+  * Enhance `Centralizer` to fall back on generic GAP methods, so
+    it can be computed in more cases.
+  * Fixed a bug in `AbelianGroup` and `AbelianGroupCons` methods
+    for `IsPcpGroup` and also in `AbelianPcpGroup`,
+    `DihedralPcpGroup`, which resulted in either an unexpected
+    break loop or in a corrupted group when used to create a group
+    with some but not all generators of order 1
+  * Support and use NC versions of `PreImages`, `PreImagesElm`,
+    `PreImagesSet` and `PreImagesRepresetnative`.
+
+-------------------------------------------------------------------
 Sat Nov 19 00:50:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.16
