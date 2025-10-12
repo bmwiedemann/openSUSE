@@ -1,7 +1,7 @@
 #
 # spec file for package gap-cap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-cap
-Version:        2024.11.02
-%define sillyver 2024.11-02
+Version:        2025.09.04
+%define sillyver 2025.09-04
 Release:        0
 Summary:        GAP: Categories, Algorithms and Programming
 License:        GPL-2.0-only
