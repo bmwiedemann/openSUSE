@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 12 09:03:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11.2
+  * VTY: Initialize fields of struct cmd_element in order of declaration
+
+-------------------------------------------------------------------
 Fri May 30 08:42:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.11.1
