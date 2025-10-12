@@ -72,7 +72,11 @@ BuildRequires:  unzip
 #
 Requires:       cron
 Requires:       curl
-Requires:       libxml2-2
+%if 0%{?suse_version} > 1600
+Requires:       libxml2 >= 2.7.0
+%else
+Requires:       libxml2-2 >= 2.7.0
+%endif
 Requires:       mariadb >= 10.3
 Requires:       php-bz2
 Requires:       php-dom
