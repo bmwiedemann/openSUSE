@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  8 07:42:37 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- 0.4.8.19
+  * Fix some clients not being able to connect to LibreSSL relays
+  * Improve stream flow control performance
+
+-------------------------------------------------------------------
 Wed Sep 17 06:19:42 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - 0.4.8.18

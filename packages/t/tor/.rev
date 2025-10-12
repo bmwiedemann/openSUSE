@@ -1169,4 +1169,14 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>1306503</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>5a677939cd1798a136a8e6e8f3aff1ce</srcmd5>
+    <version>0.4.8.19</version>
+    <time>1760300673</time>
+    <user>dimstar_suse</user>
+    <comment>0.4.8.19
+  * Fix some clients not being able to connect to LibreSSL relays
+  * Improve stream flow control performance</comment>
+    <requestid>1310926</requestid>
+  </revision>
 </revisionlist>
