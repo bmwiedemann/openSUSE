@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  7 17:06:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.19.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.19.0
+- Too many changes since 6.18.0, only listing bugfixes:
+  * [ftp] Claim that dir is writable during stat (kde#510456)
+  * kprotocolmanager: don't consider stream protocol for ArchiveMimetype (kde#502124)
+  * trashimpl: Fix size limit check to allow automatic deletion (kde#469598)
+  * filepreviewjob: Don't apply size check to directories (kde#507488)
+
+-------------------------------------------------------------------
 Mon Sep  8 13:33:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.18.0
