@@ -17,7 +17,7 @@
 
 
 Name:           ncmpcpp
-Version:        0.9.2
+Version:        0.10.1
 Release:        0
 Summary:        Music Player Daemon Client
 License:        GPL-2.0-only
@@ -25,10 +25,12 @@ Group:          Productivity/Multimedia/Sound/Players
 URL:            https://rybczak.net/ncmpcpp
 Source:         https://github.com/ncmpcpp/ncmpcpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-compilation-with-taglib-2.0.patch
 Patch1:         ncmpcpp-boost-1.88.patch
+# PATCH-FIX-OPENSUSE - https://github.com/ncmpcpp/ncmpcpp/pull/636
+Patch2:         ncmpcpp-boost-1.89.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  boost-devel
 BuildRequires:  curl-devel
 BuildRequires:  fftw-devel
 BuildRequires:  gcc
@@ -38,7 +40,7 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
+BuildRequires:  (libboost_system-devel if boost-devel < 1.69)
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libtag-devel
 BuildRequires:  libtool

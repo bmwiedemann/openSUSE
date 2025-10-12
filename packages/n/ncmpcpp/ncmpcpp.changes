@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Oct 11 16:04:01 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.10.1
+  * Fix compilation with libc++.
+  * Remove autogen.sh in favour of autoreconf.
+  * Do not crash when trying to reverse an empty playlist.
+- update to 0.10
+  * Add the configuration option mpd_password.
+  * Separate chunks of lyrics with a double newline.
+  * Fix separator between albums with the same name, to check for album
+    artist instead of artist.
+  * Column widths are now configurable via media_library_column_width_ratio_two,
+    media_library_column_width_ratio_three and playlist_editor_column_width_ratio.
+  * Removed deprecated visualizer_fifo_path and visualizer_sync_interval options.
+  * Added support for italic text.
+  * Framerate limit for visualizer was removed.
+  * Performer tag is now read from the TPE4 frame instead of TPE3.
+  * Potential crash when fetching lyrics for streams in the background was fixed.
+  * Seeking now accepts the hh:mm:ss format.
+  * Tag editor now only writes to files with modified tags.
+  * Column view can now display full filepaths.
+  * Updated the list of working lyrics fetchers.
+  * Add visualizer_spectrum_smooth_look_legacy_chars option (enabled by default)
+    for potentially improved bottom part of the spectrum visualizer in terminals
+    with transparent background.
+  * Add support for fetching lyrics from tags.
+- Update boost.m4 to fix build with Boost >= 1.89 [gh#ncmpcpp/ncmpcpp#636]
+  * ncmpcpp-boost-1.89.patch
+- Remove upstreamed 0001-Fix-compilation-with-taglib-2.0.patch
+
+-------------------------------------------------------------------
 Mon Jun  9 10:59:12 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Add ncmpcpp-boost-1.88.patch: fix build with boost v1.88
