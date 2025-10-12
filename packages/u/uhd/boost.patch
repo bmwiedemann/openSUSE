@@ -9,3 +9,13 @@ diff -Nrua uhd-4.9.0.0.orig/host/CMakeLists.txt uhd-4.9.0.0/host/CMakeLists.txt
      serialization
      thread
      unit_test_framework
+diff -purN a/uhd-4.9.0.0/host/uhd.pc.in b/uhd-4.9.0.0/host/uhd.pc.in
+--- uhd-4.9.0.0.orig/host/uhd.pc.in	2025-09-01 15:24:04.000000000 +0200
++++ uhd-4.9.0.0/host/uhd.pc.in	2025-10-11 20:32:54.031357131 +0200
+@@ -11,5 +11,5 @@ Requires:
+ Requires.private: @UHD_PC_REQUIRES@
+ Conflicts:
+ Cflags: -I${includedir} @UHD_PC_CFLAGS@
+-Libs: -L${libdir} -luhd -lboost_system
++Libs: -L${libdir} -luhd
+ Libs.private: @UHD_PC_LIBS@

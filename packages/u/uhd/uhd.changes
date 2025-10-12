@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 11 18:34:04 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Remove -lboost_system from pkgconfig template as well
+  % boost.patch
+
+-------------------------------------------------------------------
 Mon Sep 29 11:27:45 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 -  Remove BuildRequires on libboost_system-devel,
