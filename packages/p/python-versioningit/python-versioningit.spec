@@ -1,7 +1,7 @@
 #
 # spec file for package python-versioningit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-versioningit
-Version:        3.1.2
+Version:        3.3.0
 Release:        0
 Summary:        Versioning It with your Version In Git
 License:        MIT
@@ -32,7 +32,12 @@ Source:         https://files.pythonhosted.org/packages/source/v/versioningit/ve
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging
+Requires:       python-tomli >= 1.2
+Suggests:       python-dataclasses
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
@@ -45,21 +50,16 @@ BuildRequires:  %{python_module tomli >= 1.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  git-core
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-packaging
-Requires:       python-tomli >= 1.2
 %if %{?python_version_nodots} < 310
 Requires:       python-importlib-metadata >= 3.6
 %endif
-Suggests:       python-dataclasses
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -80,7 +80,7 @@ separate functions used for version extraction & calculation.
 %python_clone -a %{buildroot}%{_bindir}/versioningit
 
 %check
-%pytest test -k 'not test_editable_mode or not test_end2end'
+%pytest test -k 'not test_editable_mode and not test_install_from'
 
 %pre
 %python_libalternatives_reset_alternative versioningit

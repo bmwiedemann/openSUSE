@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  5 00:53:26 UTC 2025 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- update to 3.3.0:
+  * Added {normalized_version} to the fields available to the write and onbuild steps
+  * Support reading configuration from a versioningit.toml file instead of pyproject.toml (contributed by @b-sturgeon)
+  * Added NoConfigFileError and NoConfigSectionError subclasses of NotVersioningitError
+
+-------------------------------------------------------------------
 Wed Jul  2 09:30:14 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
