@@ -35,6 +35,8 @@ Source2:        digikam.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         digikam-pointer-casting.patch
+# PATCH-FIX-UPSTREAM -- Qt 6.10 compat
+Patch1:         0001-Fix-build-with-Qt-6.10.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -178,6 +180,7 @@ The main digikam libraries that are being shared between showfoto and digikam
 %if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
 %patch -P 0 -p1 -R
 %endif
+%patch -P 1 -p1
 
 %build
 %cmake_kf6 \

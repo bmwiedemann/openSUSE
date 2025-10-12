@@ -1984,4 +1984,13 @@ General : Update internal Libraw to snapshot 202110
     <comment>Update to 8.7.0</comment>
     <requestid>1289676</requestid>
   </revision>
+  <revision rev="230" vrev="2">
+    <srcmd5>72d892f486baf5e7af4fb1ddb41e2b70</srcmd5>
+    <version>8.7.0</version>
+    <time>1760300650</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch (boo#1251869)
+  * 0001-Fix-build-with-Qt-6.10.patch</comment>
+    <requestid>1310818</requestid>
+  </revision>
 </revisionlist>

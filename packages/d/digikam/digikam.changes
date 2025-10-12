@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 11 20:36:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch (boo#1251869)
+  * 0001-Fix-build-with-Qt-6.10.patch
+
+-------------------------------------------------------------------
 Tue Jul  1 06:53:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.7.0
