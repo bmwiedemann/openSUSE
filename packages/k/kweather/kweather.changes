@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  7 18:49:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.2/
+- Changes since 25.08.1:
+  * Use simpler combobox for desktop
+  * Fix hover feedback disappearing over list delegate content
+  * Fix page pop with new page stack and title bar visibility
+  * Use simple StackView
+  * Simplify settings logic
+  * Remove page animations
+
+-------------------------------------------------------------------
 Sat Sep 13 08:06:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update file list after KDE Frameworks 6.18 release
