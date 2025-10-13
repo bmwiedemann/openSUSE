@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 12 20:20:58 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- build with gcc 15 if available
+  * fix build failure on Leap 16.0 with some configuration setup
+
+-------------------------------------------------------------------
 Sat Jul 26 01:38:02 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add -std=gnu11 to CFLAGS

@@ -678,4 +678,12 @@ Reason 1.1.x will not be supported to EOL of openSUSE 12.2, see also Bugzilla Bu
     <comment></comment>
     <requestid>1295877</requestid>
   </revision>
+  <revision rev="93" vrev="9">
+    <srcmd5>9493212e1bb4ebcf72b385699a654f5f</srcmd5>
+    <version>1.2.13</version>
+    <time>1760362503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1310975</requestid>
+  </revision>
 </revisionlist>

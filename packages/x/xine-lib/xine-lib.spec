@@ -1,7 +1,7 @@
 #
 # spec file for package xine-lib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -453,6 +453,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -fno-force-addr `pkg-config --cf
 export CCASFLAGS=-Wa,--noexecstack
 test -x "$(type -p gcc-7)" && export CC="$_"
 test -x "$(type -p gcc-8)" && export CC="$_"
+test -x "$(type -p gcc-15)" && export CC="$_"
 echo 'AC_DEFUN([AC_REQUIRE_AUX_FILE])dnl' >> acinclude.m4
 
 #rm -f configure
