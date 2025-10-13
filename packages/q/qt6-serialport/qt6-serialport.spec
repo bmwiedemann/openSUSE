@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtserialport-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,10 +27,10 @@
 %endif
 #
 Name:           qt6-serialport%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 SerialPort library
-License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-serialport-rpmlintrc
@@ -108,7 +108,7 @@ ABI or API guarantees.
 %{_qt6_includedir}/QtSerialPort/
 %{_qt6_libdir}/libQt6SerialPort.prl
 %{_qt6_libdir}/libQt6SerialPort.so
-%{_qt6_metatypesdir}/qt6serialport_*_metatypes.json
+%{_qt6_metatypesdir}/qt6serialport_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_serialport.pri
 %{_qt6_pkgconfigdir}/Qt6SerialPort.pc
 %exclude %{_qt6_includedir}/QtSerialPort/%{real_version}/
