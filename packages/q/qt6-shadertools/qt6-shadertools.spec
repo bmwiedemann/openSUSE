@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtshadertools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-shadertools%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 ShaderTools library
 License:        GPL-3.0-only
@@ -110,7 +110,7 @@ ABI or API guarantees.
 %{_qt6_includedir}/QtShaderTools/
 %{_qt6_libdir}/libQt6ShaderTools.prl
 %{_qt6_libdir}/libQt6ShaderTools.so
-%{_qt6_metatypesdir}/qt6shadertools_*_metatypes.json
+%{_qt6_metatypesdir}/qt6shadertools_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_shadertools.pri
 %{_qt6_pkgconfigdir}/Qt6ShaderTools.pc
 %exclude %{_qt6_includedir}/QtShaderTools/%{real_version}/
