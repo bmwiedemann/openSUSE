@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct  6 19:20:01 UTC 2025 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- version update to 2.8.12
+  * Fixed json schema issues with version validation
+  * Fixed support for Bitbucket API tokens
+  * Fixed handling of spaces in paths when using binaries
+  * Fixed config --global path resolution issue
+  * Reduced peak memory usage while loading packages
+  * Dropped react/promise 2.x support
+- version update to 2.8.11
+  * Fixed bump command handling
+  * Fixed psr-4 warnings being shown when using symlinked directories
+  * Fixed audit command failing hard if any advisory constraint was invalid 
+- version update to 2.8.10
+  * Fixed plugins appearing loaded despite not being loaded yet
+  * Fixed forward compatibility with Symfony 7.4
+  * Fixed deprecation warning on PHP 8.4 when platform check fails
+  * Fixed json schema issues with version validation
+
+-------------------------------------------------------------------
 Wed Jul  2 10:49:10 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.8.9

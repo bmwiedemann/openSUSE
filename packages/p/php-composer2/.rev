@@ -461,4 +461,12 @@
   % composer.phar</comment>
     <requestid>1289856</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fe93f86737df3ce815c3e692ad7ecc9b</srcmd5>
+    <version>2.8.12</version>
+    <time>1760362536</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.8.12 (forwarded request 1309375 from susnux)</comment>
+    <requestid>1311018</requestid>
+  </revision>
 </revisionlist>
