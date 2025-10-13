@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 29 20:47:30 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+0:
+  * fix(shell): add impls for `Into<&str>` & `Display` to AdaptiveSync enums
+  * fix(shell): use correct KDL syntax for boolean values
+  * fix(cli): use correct KDL syntax for boolean values
+  * feat: add command for applying output configurations via kdl input
+  * fix(cli): serial number KDL format
+
+-------------------------------------------------------------------
 Thu Apr 24 18:01:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
