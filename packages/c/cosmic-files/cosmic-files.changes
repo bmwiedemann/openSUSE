@@ -1,4 +1,252 @@
 -------------------------------------------------------------------
+Mon Sep 29 21:02:55 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+36:
+  * Added translation using Weblate (Norwegian Bokmål)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Spanish (Latin America))
+  * Added translation using Weblate (Estonian)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Spanish (Latin America))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Greek)
+  * Translated using Weblate (Spanish (Latin America))
+  * Added translation using Weblate (Greek)
+  * Translated using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Bulgarian)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Arabic)
+  * Added translation using Weblate (Limburgish)
+  * Translated using Weblate (Italian)
+  * Added translation using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Added translation using Weblate (Afrikaans)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Arabic)
+  * Desktop file fixes (#1196)
+  * Fix translations
+  * Merge pull request #1195 from weblate/weblate-pop-os-cosmic-files
+  * Update cosmic_files.ftl PL translation more intuitive text
+  * Update cosmic_files.ftl PL translate typo fix
+  * i18n(bg): updated bulgarian translation
+  * Update Arabic translation
+  * Update Arabic translation
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Polish)
+  * Update cosmic_files.ftl ITA
+  * Update cosmic_files.ftl ITA
+  * Update com.system76.CosmicFiles.desktop ITA
+  * Update com.system76.CosmicFiles.metainfo.xml ITA
+  * Fix whitespace in kn translation
+  * sk translation: mark default variants
+  * More translation fixes
+  * Translation fixes
+  * Ensure task to remove desktop dialogs is run, fixes #1185
+  * i18n(pt-BR): update translations
+  * chore: update to icu 2.0.0
+  * Update cosmic_files.ftl PL Translation About
+  * i18n(es): update translations
+  * chore: link desktop appearance to desktop page
+  * chore: make dbus-config optional
+  * fix: patch license dep
+  * fix: update xdg-mime
+  * fix(libcosmic): about feature
+  * chore: update dependencies
+  * fix(desktop): header bar styling
+  * chore: update dependencies
+  * improv(app): use `about` widget
+  * chore: migrate to Rust 2024 edition
+  * i18n (ar): Updated Arabic tranlation
+  * Update cosmic_files.ftl PL Translate DAV
+  * Fix extracting password protected archives
+  * Update dependencies
+  * Rename cosmic_fiiles.ftl to cosmic_files.ftl
+  * i18n(sk): Update translations
+  * docs: Add QA testing checklist
+  * Fix tests
+  * ci: Add a test workflow
+  * Fix for right-clicking file when context menu is open already
+  * Remove unnecessary mount code, fixes #1141
+  * Use Location::path_opt for checking for location path
+  * Allow search on gvfs drives, fixes #1104
+  * Support drag and drop to gvfs drives, fixes #1140
+  * Use Extract To dialog for supported archive types by default
+  * Restore tab scroll position, fixes #1115
+  * Filter window events by window id, fixes #1118
+  * Fix adding default mime associations when app does not list mime types
+  * i18n: add Persian translation (#1143)
+  * Update cosmic_files.ftl PL Translation (#1144)
+  * Update dependencies
+  * Update Hungarian translations (#1137)
+  * Fix context menu position (#1136)
+  * fix: limit concurrent thumbnail generation (#1138)
+  * Move archive handling to archive.rs
+  * Fix trash watcher regression (#1122)
+  * Only scroll to focused object on resize, fixes #1097
+  * Do not apply image size limit to all files
+  * Remove unnecessary debug
+  * thumbnail: Support jxl and plumbing for future formats. (#1058)
+  * chore: update libcosmic
+  * Decode URL encoded recents bookmark
+  * Watch .recently-used.xbel
+  * fix(desktop): use the window id for context menus
+  * Enable context menu popups in dialog, close context menu when location changes
+  * Update libcosmic
+  * On wayland, place context menus into popups, fixes #1090
+  * Remove old TODO comment
+  * Fix slow startup
+  * Use trash-rs' is_empty more
+  * Update dependencies
+  * Persist more dialog options
+  * dialog: preserve show details setting
+  * dialog: break options into two rows when condensed
+  * Add choice and filter to dialog example
+  * dialog: disable show details by default
+  * Do not attach empty URI to mounter items, fixes #1079, fixes #1085
+  * Update cosmic_files.ftl PL Translation
+  * Fix unused tasks
+  * fix: typo
+  * i18n(zh-CN): update translation
+  * chore: update libcosmic
+  * fix: fallback to 0 if no path can be found for network directory
+  *  Move desktop dialogs to their own windows
+  * fix: exit early from thumbnail generation if file is too big
+  * fix: network page entries
+  * cleanup
+  * feat: handle opening network location in new window
+  * feat: retry opening network locations after mounting
+  * i18n(pt-BR) - Update translations
+  * Open file on double-click in "Open With"
+  * Add ability to remove files from Recents
+  * Ensure replace dialog shown for renames
+  * Update dependencies
+  * Enable thumbnail caching on all OSes
+  * Fix build
+  * i18n(be): update belarusian translation
+  * Watch for drag event while scrolling
+  * Significantly optimize drag select performance
+  * Implement auto scroll in mouse area, improves performance
+  * Only build widgets for visible items
+  * fix(grid dnd): offset dnd icon by grid item padding
+  * fix(dnd): use zero offset for dnd icons
+  * fix(dialog): header close button
+  * Preserve search time when normalizing, fixes #1062
+  * thumbnail: create thumbnail folder and fix bad cache
+  * Fix warnings
+  * Update cosmic_files.ftl PL Translation Eject
+  * Clippy fixes
+  * Add caching for thumbnails based and freedesktop.org spec
+  * refactor: apply limit on the number of persisted sort names
+  * refactor: move sort names to state
+  * refactor: avoid task for save sort names when debouncing
+  * feat: persist sort options for each location
+  * Fix dialog example
+  * Update dependencies
+  * fix: add eject button for context menus on mount point
+  * add ability to pass appid through to file dialogs (#1042)
+  * Update Hungarian translations (#1039)
+  * Adjust shortcut text style
+  * i18n(bg): update bulgarian translation (#1038)
+  * Drop dbus-config, update libcosmic, and use system_theme_update
+  * fix: update libcosmic
+  * Fix compilation without gfvs feature
+  * drastically speed up gvfs mount directory listings (#1003)
+  * fix some typos in comment or var name (#1027)
+  * Save/simplify show hidden items (#1026)
+  * fix: desktop-applet feature
+  * fix: proper feature gate
+  * feat: menubar popups
+  * Update cosmic_files.ftl PL Translation permission (#987)
+  * Remove redundant quotes
+  * Update Hungarian translations
+  * i18n(pt-BR): Update translations
+  * i18n (pt-BR): Update translations
+  * i18n(nl) update Dutch translation
+  * i18n(nl) update Dutch translation
+  * i18n(nl) update Dutch translation
+  * i18n(de): add German translation
+  * Update cosmic_files.ftl PL Translation Permissions and executable
+  * Desktop will not show DnD indicator, fixes #981
+  * Implement setting permissions, fixes #325
+  * Remove debug prints from gvfs mounter
+  * Ignore failures to set permissions when copying, fixes #909
+  * Fix finished progress
+  * Fall back to permanently delete on remote shares, part of #909
+  * Add reload folder key binding, fixes #146
+  * i18n(en) update English source language
+  * i18n(nl) update Dutch translation
+  * Use gio to read display names for gvfs mounts, fixes #174
+  * i18n(bg): Add Bulgarian translation
+  * Swedish translation: drive by grammar check, consistency
+  * Update cosmic_files.ftl PL translation permadelete
+  * Remove nb_items from permanently-delete-warning
+  * i18n(nl) update Dutch translation
+  * i18n(en) permanently delete
+  * i18n(nl) permanently delete
+  * i18n(en) permanently delete
+  * i18n(es): Fix words for coherence between components
+  * Handle bz2 mimetypes
+  * Improve handling of io-uring features
+  * Update io-uring now that patch is released
+  * Depend on libclang-dev for io-uring crate
+  * Update dependencies
+  * Update zh-cn translation
+  * i18n(zh-CN): update translation
+  * bugfix(zoom): use global modifiers for checking if ctrl is used for zoom instead of mouse area events example(copy): fixing copy example to use correct Method type
+  * Remove unused icon sizes argument from preview
+  * Attempt atomic renames when moving top-level files and folders, fixes #607
+  * Adjust permanently delete dialog
+  * Copy to external drives when drag and dropping, part of #828
+  * Reduce features used on remote filesystems
+  * Add `de` translation for permanently delete dialog
+  * Add `fr` translation for permanent delete
+  * feat: include permanent delete in menu_bar
+  * Add context menu management of permanently deleting files and folders
+  * Add ModifiersChanged message on Tab and keep value
+  * clean: rename `Modifiers` message to `ModifiersChanged`
+  * Support permanently deleting files and directories using Shift+Del
+  * Show all applications that handle any mime types in open with dialog, fixes #568, fixes #226, fixes #721
+  * Updated Irish translations (#953)
+  * visualise cut items (#954)
+  * fix #878 (#951)
+  * Make io-uring optional (fixes redox build)
+  * Make io-uring/bindgen optional but default
+  * feat: "Open in terminal" now respects the default terminal application (#948)
+  * Fix building on s390x, ppc64le (#950)
+
+-------------------------------------------------------------------
 Thu Apr 24 17:32:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
