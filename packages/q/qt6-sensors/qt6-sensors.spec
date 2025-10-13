@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define short_name qtsensors
 %define tar_name qtsensors-everywhere-src
 %define tar_suffix %{nil}
@@ -28,10 +28,10 @@
 %endif
 #
 Name:           qt6-sensors%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt Sensors API to access sensor hardware
-License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-sensors-rpmlintrc
@@ -157,7 +157,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %{_qt6_includedir}/QtSensors/
 %{_qt6_libdir}/libQt6Sensors.prl
 %{_qt6_libdir}/libQt6Sensors.so
-%{_qt6_metatypesdir}/qt6sensors_*_metatypes.json
+%{_qt6_metatypesdir}/qt6sensors_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_sensors.pri
 %{_qt6_pkgconfigdir}/Qt6Sensors.pc
 %exclude %{_qt6_includedir}/QtSensors/%{real_version}
@@ -176,7 +176,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %{_qt6_includedir}/QtSensorsQuick/
 %{_qt6_libdir}/libQt6SensorsQuick.prl
 %{_qt6_libdir}/libQt6SensorsQuick.so
-%{_qt6_metatypesdir}/qt6sensorsquick_*_metatypes.json
+%{_qt6_metatypesdir}/qt6sensorsquick_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_sensorsquick.pri
 %{_qt6_pkgconfigdir}/Qt6SensorsQuick.pc
 %exclude %{_qt6_includedir}/QtSensorsQuick/%{real_version}
