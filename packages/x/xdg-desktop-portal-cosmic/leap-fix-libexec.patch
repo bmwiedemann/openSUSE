@@ -1,7 +1,7 @@
---- Makefile.orig	2024-07-29 19:11:10.189698162 +0300
-+++ Makefile	2024-07-29 19:12:48.420183313 +0300
+--- Makefile.orig	2025-10-01 00:46:26.311425898 +0300
++++ Makefile	2025-10-01 00:46:32.670894988 +0300
 @@ -1,7 +1,7 @@
- prefix ?= /usr/local
+ prefix ?= /usr
  bindir = $(prefix)/bin
  libdir = $(prefix)/lib
 -libexecdir = $(prefix)/libexec

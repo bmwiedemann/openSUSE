@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Sep 30 21:48:27 UTC 2025 - mkd <mkdwho@icloud.com>
+
+leap-fix-libexec.patch: fix patch to work with the latest changes
+
+-------------------------------------------------------------------
+Mon Sep 29 20:08:43 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+1:
+  * i18n(cs): Add Czech translation
+  * Revert "cleanup: remove patch"
+  * cleanup: remove patch
+  * Update Hungarian translations
+  * i18n(ar): improve translations
+  * i18n(es): Add spanish translation
+  * i18n(bg): Add Bulgarian translation
+  * chore: update dependencies
+  * chore: Rust 2024 edition
+  * screencast: Handle buffer constraints error, and update formats
+  * screencast: Remove redundant `width`/`height` args for `format_params`
+  * screencast: Don't call `as_object` twice
+  * screencast: Don't redundantly store `width`/`height`
+  * screencast: `format` arg of `format_params` now only used when fixated
+  * screencast: Support more than one format
+  * screencast: Use `find_prop` instead of parsing param to `Value`
+  * Fix compile lint on new `rustc`
+  * screencast: Advertise support for `SOURCE_TYPE_WINDOW`
+  * Update dependencies
+  * chore: update libcosmic
+  * Update dependencies
+  * Update cosmic-files
+  * Update dependencies
+  * screenshot: Advertise version 2 but error on `pick_color`
+  * screenshot: Don't scale if only one output is in capture region
+  * fixed makefile to install in the correct place.
+  * Update cosmic-files
+  * Update `cctk`
+  * Update libcosmic and drop dbus-config
+  * screencast_thread: Disable dmabuf formats if `choose_modifier` fails
+  * screencast_thread: If a modifier isn't negotiated, allow only shm
+  * screencast_thread: Don't allow implicit modifiers
+  * screencast_thread: No default modifier until negotiated
+  * Remove unused plane_count return value
+  * screencast_thread: Set formats seperately from other params
+  * screencast_thread: Define an `OwnedPod` type, instead of just using `Vec`
+  * Update to zbus 5.x
+  * Use modifiers from `dmabuf_format`, ignoring dmabuf default feedback
+  * Remove unused function
+  * Allocate dmabuf on `dmabuf_device` advertised by image-copy-capture
+  * Restrict screencopy modifiers to those advertised in `dmabuf_format`
+  * fix(screencast): add desktop entry icons to toplevel buttons
+  * chore: update libcosmic
+  * i18n(zh-CN): update translation
+  * screencast: Handle `restore_data`
+
+-------------------------------------------------------------------
 Thu Apr 24 18:33:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
