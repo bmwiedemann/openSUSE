@@ -1147,4 +1147,12 @@
   (related: boo#1249599)</comment>
     <requestid>1306040</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>4673f86c1a3783d86596193a920341f1</srcmd5>
+    <version>25.08.2</version>
+    <time>1760368944</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 25.08.2 (forwarded request 1309696 from krop)</comment>
+    <requestid>1310125</requestid>
+  </revision>
 </revisionlist>
