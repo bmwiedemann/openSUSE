@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmines
-Version:        25.08.1
+Version:        25.08.2
 Release:        0
 Summary:        Minesweeper-like game
 License:        GPL-2.0-or-later
