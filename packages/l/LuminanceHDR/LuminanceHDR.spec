@@ -1,7 +1,7 @@
 #
 # spec file for package LuminanceHDR
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,15 @@
 #
 
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1590
+%global force_gcc_version 12
+%endif
+
 %define _lto_cflags %{nil}
 %define liblcms2_name liblcms2-2
 
 Name:           LuminanceHDR
-Version:        2.6.0+git304.6107989
+Version:        2.6.0+git313.634b489
 Release:        0
 Summary:        Complete workflow for HDR imaging
 License:        GPL-3.0-or-later
@@ -29,25 +33,23 @@ URL:            https://github.com/LuminanceHDR/LuminanceHDR
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE use-system-rtprocess.patch
 Patch0:         use-system-rtprocess.patch
-# PATCH-FIX-UPSTREAM fix-boost1_85.patch pr#284
-Patch1:         fix-boost1_85.patch
-# PATCH-FIX-OPENSUSE fix-version.patch
-Patch2:         fix-version.patch
-%if 0%{?suse_version} > 1600
 # PATCH-FIX-UPSTREAM
-Patch3:         fix-boost-1.87.0.patch
+Patch1:         fix-boost_system.patch
 # PATCH-FIX-UPSTREAM
-Patch4:         clamp.patch
-%endif
+Patch2:         clamp.patch
+Patch3:         fix-version.patch
+Patch4:         fix-boost-1.87.0.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  fftw3-openmp-devel
 BuildRequires:  fftw3-threads-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_program_options-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libexiv2-devel >= 0.27.0
 BuildRequires:  libjpeg-devel
@@ -111,7 +113,8 @@ This package contains the documentation for Luminance HDR.
 %autosetup -p1
 
 %build
-%cmake
+%cmake \
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++%{?force_gcc_version:-%force_gcc_version}
 %cmake_build
 
 %install

@@ -17,4 +17,20 @@
 </comment>
     <requestid>1250557</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d52345f89492ffafe623a8d195475ae2</srcmd5>
+    <version>2.6.0+git313.634b489</version>
+    <time>1760362448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.0+git313.634b489:
+  * Update to the latest GPLv2 license text
+  * Set CMake min. version to a range, 3.3...3.12: support CMake 4.0
+  * Fix building with Boost &gt;= 1.85.0
+  * Add developer ID net.sourceforge.qtpfsgui in AppData
+  * Fix deprecated top-level developer_name in AppData XML
+- Add fix-boost_system.patch
+- Drop upstreamed fix-boost1_85.patch
+</comment>
+    <requestid>1311006</requestid>
+  </revision>
 </revisionlist>

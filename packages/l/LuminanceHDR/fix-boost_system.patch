@@ -1,0 +1,26 @@
+--- LuminanceHDR-2.6.0+git313.634b489/CMakeLists.txt.orig	2025-10-10 09:14:33.213255371 +0200
++++ LuminanceHDR-2.6.0+git313.634b489/CMakeLists.txt	2025-10-10 09:15:01.060483228 +0200
+@@ -180,7 +180,22 @@
+ IF(WIN32)
+     SET(Boost_USE_STATIC_LIBS ON)
+ ENDIF()
+-FIND_PACKAGE(Boost REQUIRED COMPONENTS program_options thread chrono system date_time atomic)
++#
++# --- Boost.System header-only compatibility (Boost >= 1.82) ---
++# On newer distributions (SLE16+, Tumbleweed, etc.) boost_system is header-only,
++# so FindBoost will fail if "system" is requested as a component.
++# We detect this and create an interface target to keep compatibility.
++#
++find_package(Boost REQUIRED COMPONENTS program_options thread chrono date_time atomic)
++
++if(TARGET Boost::system OR DEFINED Boost_SYSTEM_LIBRARY OR EXISTS "${Boost_LIBRARY_DIRS}/libboost_system.so")
++    message(STATUS "Using compiled Boost.System library")
++    list(APPEND Boost_LIBRARIES ${Boost_SYSTEM_LIBRARY})
++else()
++    message(STATUS "Boost.System is header-only in this configuration")
++    add_library(Boost::system INTERFACE IMPORTED)
++    target_include_directories(Boost::system INTERFACE ${Boost_INCLUDE_DIRS})
++endif()
+ INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
+ 
+ FIND_PACKAGE(exiv2 REQUIRED 0.27.0)
