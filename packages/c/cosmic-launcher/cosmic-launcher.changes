@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Sep 29 20:45:28 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+1:
+  * i18n(cs): Add Czech translation
+  * Update cosmic_launcher.ftl PL translation
+  * Update Arabic translation
+  * Update Arabic translation
+  * i18n (ar): Updated Arabic tranlation
+  * i18n(sk): Update translations
+  * chore: update libcosmic
+  * chore: udpate libcosmic
+  * chore: update libcosmic
+  * Update libcosmic and drop dbus-config
+  * fix: handle tab in text input, so that it doesn't become read only
+  * fix: launchable terminal-based desktop entries
+  * fix: reverse order when opening launcher
+  * i18n(bg): Add Bulgarian translation
+  * chore: update libcosmic
+  * fix: restore old alt-tab behaviour Closes #291
+  * fix: patch
+  * chore: update libcosmic
+  * i18n(zh-CN): fix .desktop file wrong language code
+  * i18n(zh-CN): update translation
+
+-------------------------------------------------------------------
 Thu Apr 24 17:43:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
