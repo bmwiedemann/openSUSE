@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-workspaces
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicWorkspaces
 Name:           cosmic-workspaces
-Version:        1.0.0~alpha7+0
+Version:        1.0.0~beta1.1+3
 Release:        0
 Summary:        COSMIC workspaces
 License:        GPL-3.0-only

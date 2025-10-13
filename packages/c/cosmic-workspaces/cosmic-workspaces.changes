@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Sep 29 21:34:36 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+3:
+  * Fix ta translation path
+  * i18n(cs): Add Czech translation
+  * workaround: Force shm on Meteor/Arrow/Lunar Lake
+  * dbus: Add methods to show or hide
+  * Expose DBus protocol with signals indicating when shown/hidden
+  * i18n(ar): improve and complete translations (#181)
+  * i18n(es): Updated translation (#182)
+  * i18n(bg): Add Bulgarian translation (#183)
+  * i18n (ta) - Add workspace count translation (#198)
+  * Add Turkish Translation (#200)
+  * screencopy: Accumulate buffer damage
+  * Move swapchain size into a `const`
+  * Update `cosmic-client-toolkit`
+  * screencopy: Capture with full damage
+  * screencopy: re-allocate buffers on `BufferConstraints` error
+  * screencopy: Only start capture in `init_done` if not capturing already
+  * chore: Rust 2024 and update dependencies
+  * i18n(sk): Add translations
+  * Fix a few build warnings
+  * Update `cctk`
+  * Update `rustix` to 1.x
+  * Run `cargo update`
+  * Fix building with `mock-backend`
+  * Define `Workspaces` and `Toplevels` structs
+  * Drop capture received from backend if it no longer matches filter
+  * Drop `CaptureImage`s that don't match new capture filter
+  * Helper methods on `CatpureFilter` for matching
+  * row_col_toplevel_layout: fix handling of spacing / scaling
+  * size_cross_nth: Allocate space for widget out of remaining space
+  * two_row_col_toplevel_layout: Fix cross axis (vertical) spacing
+  * Update to zbus 5.x
+  * Use modifiers from image-copy `dmabuf_format`, ignoring feedback
+  * Remove currently unused `node` field of `Buffer`
+  * Use gbm device from image copy protocol instead of default node
+  * Use `cosmic-freedesktop-icons`, like libcosmic
+  * Run `cargo update`
+  * fix(view): scaling behavior
+  * i18n(zh-CN): update desktop file translation
+
+-------------------------------------------------------------------
 Thu Apr 24 18:29:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
