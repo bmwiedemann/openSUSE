@@ -18,11 +18,11 @@
 
 %define kf6_version 6.14.0
 %define qt6_version 6.8.0
-%define kpim6_version 6.5.1
+%define kpim6_version 6.5.2
 
 %bcond_without released
 Name:           kitinerary
-Version:        25.08.1
+Version:        25.08.2
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
@@ -35,6 +35,8 @@ Source2:        applications.keyring
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libphonenumber-devel
+BuildRequires:  libboost_date_time-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
