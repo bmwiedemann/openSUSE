@@ -449,4 +449,12 @@
     <comment></comment>
     <requestid>1302422</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>57ca10f5f4c8a09e6068388f86dd2bc4</srcmd5>
+    <version>6.10.0</version>
+    <time>1760369012</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.10.0</comment>
+    <requestid>1310343</requestid>
+  </revision>
 </revisionlist>
