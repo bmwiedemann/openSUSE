@@ -1,7 +1,7 @@
 #
 # spec file for package lsd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lsd
-Version:        1.1.5
+Version:        1.2.0
 Release:        0
 Summary:        Ls command with a lot of pretty colors and some other stuff
 License:        Apache-2.0

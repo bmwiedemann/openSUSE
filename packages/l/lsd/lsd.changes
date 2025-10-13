@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 13 09:29:21 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.2.0:
+  * fix total size loop when using with -a.
+  * allow directroy-only + depth, fix.
+  * Add space for executable construction icon.
+  * Bump idna to 1.0 via url 2.5.4 due to vulnerability.
+  * Fix VUL-0: CVE-2025-5791. [boo#1244195]
+
+-------------------------------------------------------------------
 Tue Aug 20 17:29:04 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.1.4+1.1.5:
