@@ -30,8 +30,13 @@ Patch1:         harden_osmo-trx-uhd.service.patch
 Patch2:         harden_osmo-trx-usrp1.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  boost-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  (libboost_system-devel if boost-devel < 1.69)
+BuildRequires:  libboost_test-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  pkgconfig(LimeSuite)
@@ -46,14 +51,6 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(uhd)
 BuildRequires:  pkgconfig(usrp) >= 3.3
 %{?systemd_requires}
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_test-devel
-BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 OsmoTRX is a software-defined radio transceiver that implements the Layer 1
@@ -143,7 +140,7 @@ autoreconf -fiv
     --with-lms \
     --with-uhd \
     --with-usrp1
-make V=1 %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -154,7 +151,7 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcosmo-trx-usrp1
 %fdupes -s %{buildroot}/%{_datadir}
 
 %check
-make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
+%make_build check || (find . -name testsuite.log -exec cat {} +)
 
 %pre lms
 %service_add_pre osmo-trx-lms.service
