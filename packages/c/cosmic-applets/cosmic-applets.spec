@@ -37,7 +37,7 @@
 %define         workspacesbutton PanelWorkspacesButton
 %define         launcherbutton PanelLauncherButton
 Name:           cosmic-applets
-Version:        1.0.0~alpha7+0
+Version:        1.0.0~beta.1.1+3
 Release:        0
 Summary:        Applets for COSMIC DE
 License:        GPL-3.0-only
@@ -45,6 +45,7 @@ URL:            https://github.com/pop-os/cosmic-applets
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  clang-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -63,6 +64,7 @@ BuildRequires:  pkgconfig(gmodule-no-export-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(libinput)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(wayland-client)
@@ -289,7 +291,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %{_bindir}/%{bin}-workspaces
 %{_datadir}/applications/%{appname}%{workspaces}.desktop
 %{_datadir}/applications/%{appname}%{workspacesbutton}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{workspaces}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{workspaces}.svg
 %{_datadir}/icons/hicolor/scalable/apps/%{appname}%{workspacesbutton}.svg
 
 %files -n %{pkgname}-panel-button
