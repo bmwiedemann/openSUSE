@@ -29,7 +29,7 @@
 
 %bcond_without released
 Name:           audiotube
-Version:        25.08.1
+Version:        25.08.2
 Release:        0
 Summary:        YT Music player and playlists manager
 License:        GPL-2.0-or-later
@@ -50,6 +50,7 @@ BuildRequires:  cmake(FutureSQL6)
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
@@ -70,7 +71,7 @@ Requires:       gstreamer-plugins-bad
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-purpose >= %{kf6_version}
 Requires:       kirigami-addons6 >= 0.11
-Requires:       %{pyver}-ytmusicapi
+Requires:       %{pyver}-ytmusicapi >= 1.11.1
 Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       qt6-multimedia-imports >= %{qt6_version}
 Requires:       qt6-sql-sqlite >= %{qt6_version}
