@@ -1,7 +1,7 @@
 #
 # spec file for package pop-launcher
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pop-launcher
-Version:        1.2.4
+Version:        1.2.7
 Release:        0
 Summary:        Modular IPC-based desktop launcher service
 License:        MPL-2.0
@@ -27,6 +27,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  just
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.85
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(xkbcommon)
 
