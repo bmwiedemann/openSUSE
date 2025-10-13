@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  8 20:52:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-QmlDesigner-Compile-fixes-for-Qt-6.10-private-API-ch.patch
+
+-------------------------------------------------------------------
 Tue Oct  7 14:53:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 17.0.2
