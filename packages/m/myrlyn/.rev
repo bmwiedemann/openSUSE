@@ -118,4 +118,18 @@
   * Added Leap 16.x community repos</comment>
     <requestid>1301441</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0b423cc427b5db50b6522954eef5543e</srcmd5>
+    <version>0.9.9</version>
+    <time>1760362595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.9:
+  * Version bump to 0.9.9
+  * Default to not using RPM groups on openSUSE / SLE distros
+  * Added the freshly published community repos for Leap 16.0 / SLES-16.0
+  * Hint about HiDPI scaling in .desktop files
+  * Keep QT_SCALE_FACTOR in myrlyn-sudo environment
+  * Don't show service filter view by default</comment>
+    <requestid>1311099</requestid>
+  </revision>
 </revisionlist>

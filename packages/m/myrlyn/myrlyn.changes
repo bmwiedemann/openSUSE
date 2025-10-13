@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 13 09:52:28 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Update to version 0.9.9:
+  * Version bump to 0.9.9
+  * Default to not using RPM groups on openSUSE / SLE distros
+  * Added the freshly published community repos for Leap 16.0 / SLES-16.0
+  * Hint about HiDPI scaling in .desktop files
+  * Keep QT_SCALE_FACTOR in myrlyn-sudo environment
+  * Don't show service filter view by default
+
+-------------------------------------------------------------------
 Tue Aug 26 12:32:56 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Update to version 0.9.8:
