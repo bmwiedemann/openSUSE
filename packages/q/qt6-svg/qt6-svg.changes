@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  7 08:53:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * https://www.qt.io/blog/qt-6.10-released
+  * Fixes CVE-2025-10728 / boo#1250993
+  * Fixes CVE-2025-10729 / boo#1250994
+
+-------------------------------------------------------------------
 Wed Aug 27 07:15:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.2:

@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtsvg-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-svg%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Classes for rendering and displaying SVG drawings
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -89,6 +89,8 @@ Requires:       cmake(Qt6WidgetsPrivate) = %{real_version}
 This package provides private headers of libQt6Svg that do not have any
 ABI or API guarantees.
 
+%{qt6_examples_package}
+
 %endif
 
 %prep
@@ -107,9 +109,6 @@ ABI or API guarantees.
 
 # .CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Gui
-
-# No private headers for Qt6SvgWidgets
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_svgwidgets_private.pri
 
 %ldconfig_scriptlets -n libQt6Svg6
 %ldconfig_scriptlets -n libQt6SvgWidgets6
@@ -137,8 +136,8 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_svgwidgets_private.pri
 %{_qt6_libdir}/libQt6Svg.so
 %{_qt6_libdir}/libQt6SvgWidgets.prl
 %{_qt6_libdir}/libQt6SvgWidgets.so
-%{_qt6_metatypesdir}/qt6svg_*_metatypes.json
-%{_qt6_metatypesdir}/qt6svgwidgets_*_metatypes.json
+%{_qt6_metatypesdir}/qt6svg_metatypes.json
+%{_qt6_metatypesdir}/qt6svgwidgets_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_svg.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_svgwidgets.pri
 %{_qt6_pkgconfigdir}/Qt6Svg.pc
@@ -147,7 +146,6 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_svgwidgets_private.pri
 
 %files private-devel
 %{_qt6_cmakedir}/Qt6SvgPrivate/
-%{_qt6_cmakedir}/Qt6SvgWidgetsPrivate/
 %dir %{_qt6_includedir}/QtSvg/
 %{_qt6_includedir}/QtSvg/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_svg_private.pri
