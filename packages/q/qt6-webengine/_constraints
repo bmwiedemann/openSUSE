@@ -5,7 +5,7 @@
     </conditions>
     <hardware>
       <disk>
-        <size unit="G">16</size>
+        <size unit="G">30</size>
       </disk>
     <memory>
       <size unit="G">20</size>
@@ -32,10 +32,10 @@
     </conditions>
     <hardware>
       <disk>
-        <size unit="G">7</size>
+        <size unit="G">16</size>
       </disk>
     <memory>
-      <size unit="G">2</size>
+      <size unit="G">8</size>
     </memory>
     </hardware>
   </overwrite>

@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -55,7 +55,7 @@
 %global lts_version 6.8.0
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -63,11 +63,9 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         qtwebengine_ffmpeg8.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
-Patch102:       QtWebEngine_6.9.2_QTBUG-139424.patch
 BuildRequires:  %{pyver}
 BuildRequires:  %{pyver}-devel
 BuildRequires:  %{pyver}-html5lib
@@ -486,7 +484,7 @@ done
 %{_qt6_includedir}/QtPdf/
 %{_qt6_libdir}/libQt6Pdf.prl
 %{_qt6_libdir}/libQt6Pdf.so
-%{_qt6_metatypesdir}/qt6pdf_*_metatypes.json
+%{_qt6_metatypesdir}/qt6pdf_*metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_pdf.pri
 %{_qt6_pkgconfigdir}/Qt6Pdf.pc
 %exclude %{_qt6_includedir}/QtPdf/%{real_version}
@@ -505,7 +503,7 @@ done
 %{_qt6_includedir}/QtPdfQuick/
 %{_qt6_libdir}/libQt6PdfQuick.prl
 %{_qt6_libdir}/libQt6PdfQuick.so
-%{_qt6_metatypesdir}/qt6pdfquick_*_metatypes.json
+%{_qt6_metatypesdir}/qt6pdfquick_*metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_pdfquick.pri
 %{_qt6_pkgconfigdir}/Qt6PdfQuick.pc
 %exclude %{_qt6_includedir}/QtPdfQuick/%{real_version}
@@ -524,7 +522,7 @@ done
 %{_qt6_includedir}/QtPdfWidgets/
 %{_qt6_libdir}/libQt6PdfWidgets.prl
 %{_qt6_libdir}/libQt6PdfWidgets.so
-%{_qt6_metatypesdir}/qt6pdfwidgets_*_metatypes.json
+%{_qt6_metatypesdir}/qt6pdfwidgets_*metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_pdfwidgets.pri
 %{_qt6_pkgconfigdir}/Qt6PdfWidgets.pc
 %exclude %{_qt6_includedir}/QtPdfWidgets/%{real_version}
@@ -552,7 +550,7 @@ done
 %{_qt6_libdir}/libQt6WebEngineCore.prl
 %{_qt6_libdir}/libQt6WebEngineCore.so
 %{_qt6_libexecdir}/gn
-%{_qt6_metatypesdir}/qt6webenginecore_*_metatypes.json
+%{_qt6_metatypesdir}/qt6webenginecore_*metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginecore.pri
 %{_qt6_pkgconfigdir}/Qt6WebEngineCore.pc
 %exclude %{_qt6_includedir}/QtWebEngineCore/%{real_version}
@@ -576,8 +574,8 @@ done
 %{_qt6_libdir}/libQt6WebEngineQuick.so
 %{_qt6_libdir}/libQt6WebEngineQuickDelegatesQml.prl
 %{_qt6_libdir}/libQt6WebEngineQuickDelegatesQml.so
-%{_qt6_metatypesdir}/qt6webenginequick_*_metatypes.json
-%{_qt6_metatypesdir}/qt6webenginequickdelegatesqml_*_metatypes.json
+%{_qt6_metatypesdir}/qt6webenginequick_*metatypes.json
+%{_qt6_metatypesdir}/qt6webenginequickdelegatesqml_*metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginequick.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginequickdelegatesqml.pri
 %{_qt6_pkgconfigdir}/Qt6WebEngineQuick.pc
@@ -588,7 +586,6 @@ done
 %{_qt6_cmakedir}/Qt6WebEngineQuick*Private/
 %{_qt6_includedir}/QtWebEngineQuick/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginequick_private.pri
-%{_qt6_mkspecsdir}/modules/qt_lib_webenginequickdelegatesqml_private.pri
 
 %files -n libQt6WebEngineWidgets6
 %{_qt6_libdir}/libQt6WebEngineWidgets.so.*
@@ -599,7 +596,7 @@ done
 %{_qt6_includedir}/QtWebEngineWidgets/
 %{_qt6_libdir}/libQt6WebEngineWidgets.prl
 %{_qt6_libdir}/libQt6WebEngineWidgets.so
-%{_qt6_metatypesdir}/qt6webenginewidgets_*_metatypes.json
+%{_qt6_metatypesdir}/qt6webenginewidgets_*metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginewidgets.pri
 %{_qt6_pkgconfigdir}/Qt6WebEngineWidgets.pc
 %exclude %{_qt6_includedir}/QtWebEngineWidgets/%{real_version}

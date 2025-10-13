@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  7 08:53:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * https://www.qt.io/blog/qt-6.10-released
+  * Patched with security patches up to Chromium version up
+    to 140.0.7339.207
+- Drop patches:
+  * QtWebEngine_6.9.2_QTBUG-139424.patch
+  * qtwebengine_ffmpeg8.patch
+
+-------------------------------------------------------------------
+Tue Oct  7 08:53:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * https://www.qt.io/blog/qt-6.10-released
+
+-------------------------------------------------------------------
 Thu Sep 25 13:10:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream backport (boo#1249045)

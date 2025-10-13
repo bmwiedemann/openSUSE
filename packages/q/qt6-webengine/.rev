@@ -386,4 +386,12 @@
   * qtwebengine_ffmpeg8.patch</comment>
     <requestid>1307144</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>85fc2755f27acbf848d7365424a80948</srcmd5>
+    <version>6.10.0</version>
+    <time>1760369035</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.10.0</comment>
+    <requestid>1310374</requestid>
+  </revision>
 </revisionlist>
