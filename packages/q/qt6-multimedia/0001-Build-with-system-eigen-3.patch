@@ -1,4 +1,4 @@
-From a83b7447408c62147f1b3c4cf516aed380b00c80 Mon Sep 17 00:00:00 2001
+From 4a5fcb1989afdbf1796571a5b85222fdf4065a1e Mon Sep 17 00:00:00 2001
 From: Christophe Marin <christophe@krop.fr>
 Date: Wed, 9 Oct 2024 14:19:49 +0200
 Subject: [PATCH] =?UTF-8?q?Build=20with=20system=20eigen=C2=A03?=
@@ -13,7 +13,7 @@ Content-Transfer-Encoding: 8bit
  3 files changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/src/3rdparty/resonance-audio/CMakeLists.txt b/src/3rdparty/resonance-audio/CMakeLists.txt
-index 6af0b3f..fce0280 100644
+index 6af0b3fb3..fce0280bc 100644
 --- a/src/3rdparty/resonance-audio/CMakeLists.txt
 +++ b/src/3rdparty/resonance-audio/CMakeLists.txt
 @@ -98,7 +98,7 @@ elseif (UNIX)
@@ -26,7 +26,7 @@ index 6af0b3f..fce0280 100644
  add_definitions(-DEIGEN_MPL2_ONLY)
  
 diff --git a/src/resonance-audio/CMakeLists.txt b/src/resonance-audio/CMakeLists.txt
-index 7690ae2..1b9762b 100644
+index 7690ae246..1b9762be3 100644
 --- a/src/resonance-audio/CMakeLists.txt
 +++ b/src/resonance-audio/CMakeLists.txt
 @@ -211,11 +211,10 @@ qt_internal_add_3rdparty_library(BundledResonanceAudio
@@ -43,7 +43,7 @@ index 7690ae2..1b9762b 100644
  
  # Required by pffft on certain PowerPC archs
 diff --git a/src/spatialaudio/CMakeLists.txt b/src/spatialaudio/CMakeLists.txt
-index b03ec7f..dc6c99a 100644
+index b03ec7fb4..dc6c99ac4 100644
 --- a/src/spatialaudio/CMakeLists.txt
 +++ b/src/spatialaudio/CMakeLists.txt
 @@ -20,7 +20,7 @@ qt_internal_add_module(SpatialAudio
@@ -56,5 +56,5 @@ index b03ec7f..dc6c99a 100644
          Qt::MultimediaPrivate
          Qt::BundledResonanceAudio
 -- 
-2.51.0
+2.50.1
 

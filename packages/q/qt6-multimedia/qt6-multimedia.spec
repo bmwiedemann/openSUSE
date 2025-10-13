@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
 %define tar_suffix %{nil}
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((FrequencyMonitor|frequencymonitor|performancemonitor).*
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-only
@@ -261,7 +261,7 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6Multimedia/Qt6QGstreamerMediaPluginAdditional
 rm %{buildroot}%{_qt6_descriptionsdir}/GstreamerMediaPluginImplPrivate.json
 rm %{buildroot}%{_qt6_libdir}/libQt6GstreamerMediaPluginImpl.a
 rm %{buildroot}%{_qt6_libdir}/libQt6GstreamerMediaPluginImpl.prl
-rm %{buildroot}%{_qt6_metatypesdir}/qt6gstreamermediapluginimplprivate_*_metatypes.json
+rm %{buildroot}%{_qt6_metatypesdir}/qt6gstreamermediapluginimplprivate_metatypes.json
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_gstreamermediapluginimpl_private.pri
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6GstreamerMediaPluginImplPrivate/
 rm -r %{buildroot}%{_qt6_includedir}/QtGstreamerMediaPluginImpl/
@@ -269,7 +269,7 @@ rm -r %{buildroot}%{_qt6_includedir}/QtGstreamerMediaPluginImpl/
 # Same thing for the testlib
 rm %{buildroot}%{_qt6_descriptionsdir}/MultimediaTestLibPrivate.json
 rm %{buildroot}%{_qt6_libdir}/libQt6MultimediaTestLib.*
-rm %{buildroot}%{_qt6_metatypesdir}/qt6multimediatestlibprivate_*_metatypes.json
+rm %{buildroot}%{_qt6_metatypesdir}/qt6multimediatestlibprivate_metatypes.json
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_multimediatestlibprivate_private.pri
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6MultimediaTestLibPrivate
 rm -r %{buildroot}%{_qt6_includedir}/QtMultimediaTestLib
@@ -277,7 +277,7 @@ rm -r %{buildroot}%{_qt6_includedir}/QtMultimediaTestLib
 # The FFmpegMediaPluginImpl files are probably unneeded
 rm %{buildroot}%{_qt6_descriptionsdir}/FFmpegMediaPluginImplPrivate.json
 rm %{buildroot}%{_qt6_libdir}/libQt6FFmpegMediaPluginImpl.*
-rm %{buildroot}%{_qt6_metatypesdir}/qt6ffmpegmediapluginimplprivate_*_metatypes.json
+rm %{buildroot}%{_qt6_metatypesdir}/qt6ffmpegmediapluginimplprivate_metatypes.json
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_ffmpegmediapluginimpl_private.pri
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6FFmpegMediaPluginImplPrivate
 rm -r %{buildroot}%{_qt6_includedir}/QtFFmpegMediaPluginImpl
@@ -307,7 +307,6 @@ rm -r %{buildroot}%{_qt6_includedir}/QtFFmpegMediaPluginImpl
 %{_qt6_cmakedir}/Qt6/FindMMRendererCore.cmake
 %{_qt6_cmakedir}/Qt6/FindPipeWire.cmake
 %{_qt6_cmakedir}/Qt6/FindVAAPI.cmake
-%{_qt6_cmakedir}/Qt6/FindWMF.cmake
 %{_qt6_cmakedir}/Qt6/FindWrapPulseAudio.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtMultimediaTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Multimedia/
@@ -315,7 +314,7 @@ rm -r %{buildroot}%{_qt6_includedir}/QtFFmpegMediaPluginImpl
 %{_qt6_includedir}/QtMultimedia/
 %{_qt6_libdir}/libQt6Multimedia.prl
 %{_qt6_libdir}/libQt6Multimedia.so
-%{_qt6_metatypesdir}/qt6multimedia_*_metatypes.json
+%{_qt6_metatypesdir}/qt6multimedia_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_multimedia.pri
 %{_qt6_pkgconfigdir}/Qt6Multimedia.pc
 %exclude %{_qt6_includedir}/QtMultimedia/%{real_version}
@@ -334,7 +333,7 @@ rm -r %{buildroot}%{_qt6_includedir}/QtFFmpegMediaPluginImpl
 %{_qt6_includedir}/QtMultimediaWidgets/
 %{_qt6_libdir}/libQt6MultimediaWidgets.prl
 %{_qt6_libdir}/libQt6MultimediaWidgets.so
-%{_qt6_metatypesdir}/qt6multimediawidgets_*_metatypes.json
+%{_qt6_metatypesdir}/qt6multimediawidgets_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_multimediawidgets.pri
 %{_qt6_pkgconfigdir}/Qt6MultimediaWidgets.pc
 %exclude %{_qt6_includedir}/QtMultimediaWidgets/%{real_version}
@@ -353,7 +352,7 @@ rm -r %{buildroot}%{_qt6_includedir}/QtFFmpegMediaPluginImpl
 %{_qt6_includedir}/QtSpatialAudio/
 %{_qt6_libdir}/libQt6SpatialAudio.prl
 %{_qt6_libdir}/libQt6SpatialAudio.so
-%{_qt6_metatypesdir}/qt6spatialaudio_*_metatypes.json
+%{_qt6_metatypesdir}/qt6spatialaudio_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_spatialaudio.pri
 %{_qt6_pkgconfigdir}/Qt6SpatialAudio.pc
 %exclude %{_qt6_includedir}/QtSpatialAudio/%{real_version}
@@ -374,7 +373,7 @@ rm -r %{buildroot}%{_qt6_includedir}/QtFFmpegMediaPluginImpl
 %{_qt6_includedir}/QtMultimediaQuick/
 %{_qt6_libdir}/libQt6MultimediaQuick.prl
 %{_qt6_libdir}/libQt6MultimediaQuick.so
-%{_qt6_metatypesdir}/qt6multimediaquickprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6multimediaquickprivate_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_multimediaquick_private.pri
 
 %files -n libQt6Quick3DSpatialAudio6
@@ -386,7 +385,7 @@ rm -r %{buildroot}%{_qt6_includedir}/QtFFmpegMediaPluginImpl
 %{_qt6_includedir}/QtQuick3DSpatialAudio/
 %{_qt6_libdir}/libQt6Quick3DSpatialAudio.prl
 %{_qt6_libdir}/libQt6Quick3DSpatialAudio.so
-%{_qt6_metatypesdir}/qt6quick3dspatialaudioprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dspatialaudioprivate_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dspatialaudio_private.pri
 
 ### Static libraries ###
