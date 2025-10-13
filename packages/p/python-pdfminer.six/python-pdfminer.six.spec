@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pdfminer.six
-Version:        20250327
+Version:        20250506
 Release:        0
 Summary:        PDF parser and analyzer
 License:        MIT
@@ -29,6 +29,7 @@ BuildRequires:  %{python_module charset-normalizer >= 2.0.0}
 BuildRequires:  %{python_module cryptography >= 36.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

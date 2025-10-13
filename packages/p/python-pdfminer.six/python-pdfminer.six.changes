@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 13 14:02:09 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 20250506:
+  * Fixed
+    + Correct tightest fitting bounding boxes for rotated content (#1114)
+    + TypeError when passing wrong number of arguments to safe_rgb (#1118)
+    + OverflowError in safe_float when input is too large (#1121)
+    + Saving colour spaces on the graphics stack (#1119)
+    + Remove padding from AES-encrypted strings(#1123)
+- Changes from 20250416
+  * Fixed
+    + TypeError when parsing font width with indirect object references (#1098)
+    + ValueError when loading xref with invalid position or
+      generation numbers that cannot be parsed as int (#1099)
+    + Safely converting PDF stack objects to float or int in PDFInterpreter (#1100)
+    + TypeError when parsing font bbox with incorrect values (#1103)
+    + ValueError on incorrect stream lengths for ASCII85 data (#1112)
+
+-------------------------------------------------------------------
 Mon Apr  7 05:17:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 20250327:
