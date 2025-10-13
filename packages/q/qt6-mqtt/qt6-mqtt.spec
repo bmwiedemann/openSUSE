@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtmqtt-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-mqtt%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 Module to implement MQTT protocol version 3.1 and 3.1.1
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -110,7 +110,7 @@ ABI or API guarantees.
 %{_qt6_includedir}/QtMqtt
 %{_qt6_libdir}/libQt6Mqtt.prl
 %{_qt6_libdir}/libQt6Mqtt.so
-%{_qt6_metatypesdir}/qt6mqtt_*_metatypes.json
+%{_qt6_metatypesdir}/qt6mqtt_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_mqtt.pri
 %{_qt6_pkgconfigdir}/Qt6Mqtt.pc
 %exclude %{_qt6_includedir}/QtMqtt/%{real_version}
