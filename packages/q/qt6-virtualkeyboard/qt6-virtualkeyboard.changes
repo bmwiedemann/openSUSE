@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  7 08:53:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * https://www.qt.io/blog/qt-6.10-released
+
+-------------------------------------------------------------------
 Thu Aug 28 12:22:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Pass '-DQT_QML_NO_CACHEGEN:BOOL=TRUE' to CMake to make builds

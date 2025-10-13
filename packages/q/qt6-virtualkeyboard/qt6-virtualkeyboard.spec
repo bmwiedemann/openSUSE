@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtvirtualkeyboard-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-virtualkeyboard%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Framework for writing or integrating input methods and engines for Qt 6
 License:        GPL-3.0-only
@@ -154,11 +154,6 @@ This library does not have any ABI or API guarantees.
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Gui
 
-# Only Qt6*Dependencies.cmake files are installed in these folders
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenwnn
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledPinyin
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
-
 %ldconfig_scriptlets -n libQt6HunspellInputMethod6
 %ldconfig_scriptlets -n libQt6VirtualKeyboard6
 %ldconfig_scriptlets -n libQt6VirtualKeyboardQml6
@@ -185,7 +180,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %{_qt6_includedir}/QtVirtualKeyboard/
 %{_qt6_libdir}/libQt6VirtualKeyboard.prl
 %{_qt6_libdir}/libQt6VirtualKeyboard.so
-%{_qt6_metatypesdir}/qt6virtualkeyboard_*_metatypes.json
+%{_qt6_metatypesdir}/qt6virtualkeyboard_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboard.pri
 %{_qt6_pkgconfigdir}/Qt6HunspellInputMethod.pc
 %{_qt6_pkgconfigdir}/Qt6VirtualKeyboard.pc
@@ -200,7 +195,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %{_qt6_includedir}/QtVirtualKeyboardSettings/
 %{_qt6_libdir}/libQt6VirtualKeyboardSettings.prl
 %{_qt6_libdir}/libQt6VirtualKeyboardSettings.so
-%{_qt6_metatypesdir}/qt6virtualkeyboardsettings_*_metatypes.json
+%{_qt6_metatypesdir}/qt6virtualkeyboardsettings_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboardsettings.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboardsettings_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboard_private.pri
@@ -219,7 +214,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %{_qt6_includedir}/QtHunspellInputMethod/
 %{_qt6_libdir}/libQt6HunspellInputMethod.prl
 %{_qt6_libdir}/libQt6HunspellInputMethod.so
-%{_qt6_metatypesdir}/qt6hunspellinputmethod_*_metatypes.json
+%{_qt6_metatypesdir}/qt6hunspellinputmethod_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_hunspellinputmethod.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_hunspellinputmethod_private.pri
 
@@ -233,7 +228,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %{_qt6_includedir}/QtVirtualKeyboardQml/
 %{_qt6_libdir}/libQt6VirtualKeyboardQml.prl
 %{_qt6_libdir}/libQt6VirtualKeyboardQml.so
-%{_qt6_metatypesdir}/qt6virtualkeyboardqml_relwithdebinfo_metatypes.json
+%{_qt6_metatypesdir}/qt6virtualkeyboardqml_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboardqml.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboardqml_private.pri
 %{_qt6_pkgconfigdir}/Qt6VirtualKeyboardQml.pc
