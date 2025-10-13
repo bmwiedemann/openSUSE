@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtgraphs-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\((AxisHandlingExample|SurfaceGalleryExample)\\)
 #
 Name:           qt6-graphs%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.10.0
 Release:        0
 Summary:        3D visualization module
 License:        GPL-3.0-only
@@ -148,8 +148,8 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6Graphs.so
 %{_qt6_libdir}/libQt6GraphsWidgets.prl
 %{_qt6_libdir}/libQt6GraphsWidgets.so
-%{_qt6_metatypesdir}/qt6graphs_*_metatypes.json
-%{_qt6_metatypesdir}/qt6graphswidgets_*_metatypes.json
+%{_qt6_metatypesdir}/qt6graphs_metatypes.json
+%{_qt6_metatypesdir}/qt6graphswidgets_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_graphs.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_graphswidgets.pri
 %{_qt6_pkgconfigdir}/Qt6Graphs.pc
