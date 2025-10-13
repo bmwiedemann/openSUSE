@@ -295,4 +295,12 @@
     <comment>- Add the missing build flag</comment>
     <requestid>1302070</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>914fd62ec7f951c2fdd9800683e19188</srcmd5>
+    <version>6.10.0</version>
+    <time>1760369011</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.10.0</comment>
+    <requestid>1310342</requestid>
+  </revision>
 </revisionlist>

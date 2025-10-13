@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define short_name qtdatavis3d
 %define tar_name qtdatavis3d-everywhere-src
 %define tar_suffix %{nil}
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((AxisHandling|SurfaceGallery)\\)
 #
 Name:           qt6-datavis3d%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 data visualization framework
 License:        GPL-3.0-or-later
@@ -153,7 +153,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtDataVisualization/
 %{_qt6_libdir}/libQt6DataVisualization.prl
 %{_qt6_libdir}/libQt6DataVisualization.so
-%{_qt6_metatypesdir}/qt6datavisualization_*_metatypes.json
+%{_qt6_metatypesdir}/qt6datavisualization_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_datavisualization.pri
 %{_qt6_pkgconfigdir}/Qt6DataVisualization.pc
 %exclude %{_qt6_includedir}/QtDataVisualization/%{real_version}
@@ -172,7 +172,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtDataVisualizationQml/
 %{_qt6_libdir}/libQt6DataVisualizationQml.prl
 %{_qt6_libdir}/libQt6DataVisualizationQml.so
-%{_qt6_metatypesdir}/qt6datavisualizationqml_*_metatypes.json
+%{_qt6_metatypesdir}/qt6datavisualizationqml_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_datavisualizationqml.pri
 %{_qt6_pkgconfigdir}/Qt6DataVisualizationQml.pc
 %exclude %{_qt6_includedir}/QtDataVisualizationQml/%{real_version}
