@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,10 +27,10 @@
 %endif
 #
 # Private QML imports
-%global __requires_exclude qt6qmlimport\\((Quick3DAssets|VirtualAssistant\\.Constants|robotassistant|.*Example|xr_shared).*
+%global __requires_exclude qt6qmlimport\\((LightmapFile|Quick3DAssets|VirtualAssistant\\.Constants|robotassistant|.*Example|xr_shared).*
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-only
@@ -443,12 +443,6 @@ This library does not have any ABI or API guarantees.
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin*.cmake
 
-# There's no private api
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3deffects_private.pri
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.pri
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Quick3DEffectsPrivate
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Quick3DParticleEffectsPrivate
-
 # Probably unneeded
 rm %{buildroot}%{_qt6_cmakedir}/Qt6/FindWrapBundledOpenXRConfigExtra.cmake
 rm %{buildroot}%{_qt6_libdir}/libQt6BundledOpenXR.a
@@ -476,6 +470,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_bindir}/balsam6
 %{_bindir}/balsamui6
 %{_bindir}/instancer6
+%{_bindir}/lightmapviewer6
 %{_bindir}/materialeditor6
 %{_bindir}/meshdebug6
 %{_bindir}/shadergen6
@@ -483,6 +478,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_bindir}/balsam
 %{_qt6_bindir}/balsamui
 %{_qt6_bindir}/instancer
+%{_qt6_bindir}/lightmapviewer
 %{_qt6_bindir}/materialeditor
 %{_qt6_bindir}/meshdebug
 %{_qt6_bindir}/shadergen
@@ -507,7 +503,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_includedir}/QtQuick3D/
 %{_qt6_libdir}/libQt6Quick3D.prl
 %{_qt6_libdir}/libQt6Quick3D.so
-%{_qt6_metatypesdir}/qt6quick3d_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3d_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3d.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3D.pc
 %exclude %{_qt6_includedir}/QtQuick3D/%{real_version}
@@ -526,7 +522,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_includedir}/QtQuick3DAssetImport/
 %{_qt6_libdir}/libQt6Quick3DAssetImport.prl
 %{_qt6_libdir}/libQt6Quick3DAssetImport.so
-%{_qt6_metatypesdir}/qt6quick3dassetimport_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dassetimport_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dassetimport.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DAssetImport.pc
 %exclude %{_qt6_includedir}/QtQuick3DAssetImport/%{real_version}
@@ -545,7 +541,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_includedir}/QtQuick3DAssetUtils/
 %{_qt6_libdir}/libQt6Quick3DAssetUtils.prl
 %{_qt6_libdir}/libQt6Quick3DAssetUtils.so
-%{_qt6_metatypesdir}/qt6quick3dassetutils_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dassetutils_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dassetutils.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DAssetUtils.pc
 %exclude %{_qt6_includedir}/QtQuick3DAssetUtils/%{real_version}
@@ -563,7 +559,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_descriptionsdir}/Quick3DEffects.json
 %{_qt6_libdir}/libQt6Quick3DEffects.prl
 %{_qt6_libdir}/libQt6Quick3DEffects.so
-%{_qt6_metatypesdir}/qt6quick3deffects_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3deffects_metatypes.json
 %{_qt6_pkgconfigdir}/Qt6Quick3DEffects.pc
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3deffects.pri
 
@@ -576,7 +572,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_includedir}/QtQuick3DHelpers/
 %{_qt6_libdir}/libQt6Quick3DHelpers.prl
 %{_qt6_libdir}/libQt6Quick3DHelpers.so
-%{_qt6_metatypesdir}/qt6quick3dhelpers_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dhelpers_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dhelpers.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DHelpers.pc
 %exclude %{_qt6_includedir}/QtQuick3DHelpers/%{real_version}
@@ -595,7 +591,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_includedir}/QtQuick3DHelpersImpl/
 %{_qt6_libdir}/libQt6Quick3DHelpersImpl.prl
 %{_qt6_libdir}/libQt6Quick3DHelpersImpl.so
-%{_qt6_metatypesdir}/qt6quick3dhelpersimpl_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dhelpersimpl_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dhelpersimpl.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DHelpersImpl.pc
 %exclude %{_qt6_includedir}/QtQuick3DHelpersImpl/%{real_version}
@@ -614,7 +610,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_includedir}/QtQuick3DIblBaker/
 %{_qt6_libdir}/libQt6Quick3DIblBaker.prl
 %{_qt6_libdir}/libQt6Quick3DIblBaker.so
-%{_qt6_metatypesdir}/qt6quick3diblbaker_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3diblbaker_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3diblbaker.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DIblBaker.pc
 %exclude %{_qt6_includedir}/QtQuick3DIblBaker/%{real_version}
@@ -633,7 +629,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_includedir}/QtQuick3DParticles/
 %{_qt6_libdir}/libQt6Quick3DParticles.prl
 %{_qt6_libdir}/libQt6Quick3DParticles.so
-%{_qt6_metatypesdir}/qt6quick3dparticles_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dparticles_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticles.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DParticles.pc
 %exclude %{_qt6_includedir}/QtQuick3DParticles/%{real_version}
@@ -651,7 +647,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_descriptionsdir}/Quick3DParticleEffects.json
 %{_qt6_libdir}/libQt6Quick3DParticleEffects.prl
 %{_qt6_libdir}/libQt6Quick3DParticleEffects.so
-%{_qt6_metatypesdir}/qt6quick3dparticleeffects_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dparticleeffects_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DParticleEffects.pc
 
@@ -664,7 +660,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_includedir}/QtQuick3DRuntimeRender/
 %{_qt6_libdir}/libQt6Quick3DRuntimeRender.prl
 %{_qt6_libdir}/libQt6Quick3DRuntimeRender.so
-%{_qt6_metatypesdir}/qt6quick3druntimerender_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3druntimerender_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3druntimerender.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DRuntimeRender.pc
 %exclude %{_qt6_includedir}/QtQuick3DRuntimeRender/%{real_version}
@@ -683,7 +679,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_includedir}/QtQuick3DUtils/
 %{_qt6_libdir}/libQt6Quick3DUtils.prl
 %{_qt6_libdir}/libQt6Quick3DUtils.so
-%{_qt6_metatypesdir}/qt6quick3dutils_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dutils_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dutils.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DUtils.pc
 %exclude %{_qt6_includedir}/QtQuick3DUtils/%{real_version}
@@ -704,7 +700,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_includedir}/QtQuick3DXr/
 %{_qt6_libdir}/libQt6Quick3DXr.prl
 %{_qt6_libdir}/libQt6Quick3DXr.so
-%{_qt6_metatypesdir}/qt6quick3dxr_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dxr_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_ext_openxr_loader.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dxr.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dxr_private.pri
@@ -721,7 +717,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_includedir}/QtQuick3DGlslParser/
 %{_qt6_libdir}/libQt6Quick3DGlslParser.prl
 %{_qt6_libdir}/libQt6Quick3DGlslParser.so
-%{_qt6_metatypesdir}/qt6quick3dglslparserprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dglslparserprivate_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dglslparser_private.pri
 
 ### Static libraries ###
