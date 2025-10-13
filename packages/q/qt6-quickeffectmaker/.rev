@@ -143,4 +143,12 @@
     <comment>Update to 6.9.2 (forwarded request 1301562 from krop)</comment>
     <requestid>1301720</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6077d553581d4e61255ec88fe38c1d45</srcmd5>
+    <version>6.10.0</version>
+    <time>1760369219</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.10.0</comment>
+    <requestid>1310359</requestid>
+  </revision>
 </revisionlist>
