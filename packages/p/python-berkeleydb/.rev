@@ -108,4 +108,41 @@
   * Improve docs explaining the end value in the dictionary</comment>
     <requestid>1273057</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fc3bf0e5512e09f885ab567910ccad65</srcmd5>
+    <version>18.1.15</version>
+    <time>1760362542</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.1.15:
+  * Warning WARNING - BREAKING CHANGE: Drop support for Python
+    3.9. This breaking change should usually require a major
+    and/or minor number update. Since berkeleydb traditional
+    numbering is related to the higher Oracle Berkeley DB
+    supported, I would usually wait until Oracle releases a new
+    version to upgrade my own version and deprecate old Python
+    support at the same time. Given that Oracle has not released
+    a new Oracle Berkeley DB in almost five years, I must break
+    this practice for now. I am sorry if this update breaks your
+    Python 3.9 environment. In that case, please pin your
+    berkeleydb installation to version 18.1.14, the last Python
+    3.9 compatible release. Send me constructive feedback if
+    appropriate.
+  * Python 3.14 is officially supported.
+  * Since we have drop Python 3.9:  We can simplify the code: We
+    can now freely use PyType_GetModuleState(),
+    PyModule_GetState() and PyType_GetModule(). We don't need
+    Py_tp_new anymore in PyType_Slot types. We can use
+    PyType_FromModuleAndSpec(). Ease use of rmtree and unlink in
+    tests.   We can use Py_TPFLAGS_DISALLOW_INSTANTIATION in all
+    supported Python versions.
+  * We can simplify the code: We can now freely use
+    PyType_GetModuleState(), PyModule_GetState() and
+    PyType_GetModule(). We don't need Py_tp_new anymore in
+    PyType_Slot types. We can use PyType_FromModuleAndSpec().
+    Ease use of rmtree and unlink in tests.
+  * We can now freely use PyType_GetModuleState(),
+    PyModule_GetState() and PyType_GetModule().
+  * We don't need Py_tp_new anymore in PyType_Slot types.</comment>
+    <requestid>1311039</requestid>
+  </revision>
 </revisionlist>

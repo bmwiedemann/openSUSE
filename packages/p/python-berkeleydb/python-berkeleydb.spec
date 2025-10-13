@@ -1,7 +1,7 @@
 #
 # spec file for package python-berkeleydb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-berkeleydb
-Version:        18.1.14
+Version:        18.1.15
 Release:        0
 Summary:        Python bindings for Oracle Berkeley DB
 License:        BSD-3-Clause
