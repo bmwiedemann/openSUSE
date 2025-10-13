@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -33,11 +33,11 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
-License:        GPL-3.0-or-later AND (GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-or-later)
+License:        (GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-or-later) AND GPL-3.0-or-later
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-wayland-rpmlintrc
@@ -54,6 +54,9 @@ BuildRequires:  cmake(Qt6QmlPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Svg) = %{real_version}
+BuildRequires:  cmake(Qt6WaylandClientPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6WaylandGlobalPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6WaylandScannerTools) = %{real_version}
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
@@ -73,23 +76,26 @@ The Qt6 Wayland libraries and tools.
 
 %if !%{qt6_docs_flavor}
 
+%package integration
+Summary:        Qt 6 Wayland integration
+# Some plugins and libraries were moved from qt6-wayland to qt6-base
+Provides:       qt6-wayland = 6.9.3
+Obsoletes:      qt6-wayland < 6.9.3
+
+%description integration
+Qt 6 Wayland integration plugins.
+
 %package devel
 Summary:        Qt6 Wayland development meta package
-Requires:       cmake(Qt6WaylandClient) = %{real_version}
 Requires:       cmake(Qt6WaylandCompositor) = %{real_version}
-# This package contains information on features enabled at build time
-Requires:       cmake(Qt6WaylandGlobalPrivate) = %{real_version}
 
 %description devel
 This meta-package requires all the qt6-wayland development packages.
 
 %package private-devel
 Summary:        Qt6 wayland unstable ABI meta package
-Requires:       cmake(Qt6WaylandClientPrivate) = %{real_version}
 Requires:       cmake(Qt6WaylandCompositorPrivate) = %{real_version}
-Requires:       cmake(Qt6WaylandEglClientHwIntegrationPrivate) = %{real_version}
 Requires:       cmake(Qt6WaylandEglCompositorHwIntegrationPrivate) = %{real_version}
-Requires:       cmake(Qt6WlShellIntegrationPrivate) = %{real_version}
 BuildArch:      noarch
 
 %description private-devel
@@ -101,34 +107,6 @@ Summary:        Qt 6 Wayland QML files and plugins
 
 %description imports
 QML files and plugins from the Qt 6 Wayland module
-
-%package -n libQt6WaylandClient6
-Summary:        Qt 6 WaylandClient library
-
-%description -n libQt6WaylandClient6
-The Qt 6 WaylandClient library.
-
-%package -n qt6-waylandclient-devel
-Summary:        Development files for the Qt 6 WaylandClient library
-Requires:       libQt6WaylandClient6 = %{version}
-# qtwaylandscanner is required
-Requires:       qt6-wayland = %{version}
-Requires:       cmake(Qt6Gui) = %{real_version}
-Requires:       cmake(Qt6WaylandCompositor) = %{real_version}
-Requires:       cmake(Qt6WaylandGlobalPrivate) = %{real_version}
-
-%description -n qt6-waylandclient-devel
-Development files for the Qt6 WaylandClient library.
-
-%package -n qt6-waylandclient-private-devel
-Summary:        Non-ABI stable API for the Qt 6 WaylandClient library
-Requires:       cmake(Qt6CorePrivate) = %{real_version}
-Requires:       cmake(Qt6GuiPrivate) = %{real_version}
-Requires:       cmake(Qt6WaylandClient) = %{real_version}
-
-%description -n qt6-waylandclient-private-devel
-This package provides private headers of libQt6WaylandClient that do not have
-any ABI or API guarantees.
 
 %package -n libQt6WaylandCompositor6
 Summary:        Qt 6 WaylandCompositor library
@@ -160,32 +138,7 @@ Requires:       cmake(Qt6WaylandCompositor) = %{real_version}
 This package provides private headers of libQt6WaylandCompositor that do not
 have any ABI or API guarantees.
 
-%package -n qt6-waylandglobal-private-devel
-Summary:        Collection of build features used by qt6-wayland libraries
-
-%description -n qt6-waylandglobal-private-devel
-This package contains enabled features information shared by all the
-qt6-wayland libraries.
-
 ### Private only libraries ###
-
-%package -n libQt6WaylandEglClientHwIntegration6
-Summary:        Qt 6 WaylandEglClientHwIntegration library
-
-%description -n libQt6WaylandEglClientHwIntegration6
-The Qt 6 WaylandEglClientHwIntegration  library.
-This library does not have any ABI or API guarantees.
-
-%package -n qt6-waylandeglclienthwintegration-private-devel
-Summary:        Qt 6 WaylandEglClientHwIntegration library - Development files
-Requires:       libQt6WaylandEglClientHwIntegration6 = %{version}
-Requires:       cmake(Qt6Gui) = %{real_version}
-Requires:       cmake(Qt6OpenGLPrivate) = %{real_version}
-Requires:       cmake(Qt6WaylandClientPrivate) = %{real_version}
-
-%description -n qt6-waylandeglclienthwintegration-private-devel
-Development files for the Qt 6 WaylandEglClientHwIntegration library.
-This library does not have any ABI or API guarantees.
 
 %package -n libQt6WaylandEglCompositorHwIntegration6
 Summary:        Qt 6 WaylandEglCompositorHwIntegration library
@@ -202,23 +155,6 @@ Requires:       cmake(Qt6WaylandCompositorPrivate) = %{real_version}
 
 %description -n qt6-waylandeglcompositorhwintegration-private-devel
 Development files for the Qt 6 WaylandEglCompositorHwIntegration library.
-This library does not have any ABI or API guarantees.
-
-%package -n libQt6WlShellIntegration6
-Summary:        Qt 6 WlShellIntegration library
-
-%description -n libQt6WlShellIntegration6
-The Qt 6 WlShellIntegration library.
-This library does not have any ABI or API guarantees.
-
-%package -n qt6-wlshellintegration-private-devel
-Summary:        Qt 6 WlShellIntegration library - Development files
-Requires:       libQt6WlShellIntegration6 = %{version}
-Requires:       cmake(Qt6Gui) = %{real_version}
-Requires:       cmake(Qt6WaylandClient) = %{real_version}
-
-%description -n qt6-wlshellintegration-private-devel
-Development files for the Qt 6 WlShellIntegration library.
 This library does not have any ABI or API guarantees.
 
 %{qt6_examples_package}
@@ -245,23 +181,25 @@ EOF
 %if !%{qt6_docs_flavor}
 
 # .CMake files are not needed for plugins
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Gui
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
-rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
+rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{AdditionalTargetInfo,Config,Targets}*.cmake
 
-%ldconfig_scriptlets -n libQt6WaylandClient6
+# Shouldn't be needed by anything but qtwayland itself
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6WaylandClientFeaturesPrivate
+rm %{buildroot}%{_qt6_descriptionsdir}/WaylandClientFeaturesPrivate.json
+rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_waylandclientfeatures_private.pri
+
+# W: hidden-file-or-dir
+find %{buildroot}%{_qt6_examplesdir} -name ".gitignore" -delete
+
 %ldconfig_scriptlets -n libQt6WaylandCompositor6
-%ldconfig_scriptlets -n libQt6WaylandEglClientHwIntegration6
 %ldconfig_scriptlets -n libQt6WaylandEglCompositorHwIntegration6
-%ldconfig_scriptlets -n libQt6WlShellIntegration6
 
-%files
-%license LICENSES/*
-%dir %{_qt6_pluginsdir}/platforms
-%{_qt6_libexecdir}/qtwaylandscanner
-%{_qt6_pluginsdir}/platforms/libqwayland-*.so
-%{_qt6_pluginsdir}/wayland-decoration-client/
-%{_qt6_pluginsdir}/wayland-graphics-integration-client/
+# FIXME Rename?
+%files integration
+%dir %{_qt6_pluginsdir}/wayland-decoration-client/
+# FIXME Move and supplements?
+%{_qt6_pluginsdir}/wayland-decoration-client/libadwaita.so
 %{_qt6_pluginsdir}/wayland-graphics-integration-server/
 %{_qt6_pluginsdir}/wayland-shell-integration
 
@@ -274,30 +212,8 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %files imports
 %{_qt6_qmldir}/QtWayland/
 
-%files -n libQt6WaylandClient6
-%{_qt6_libdir}/libQt6WaylandClient.so.*
-
-%files -n qt6-waylandclient-devel
-%dir %{_qt6_cmakedir}/Qt6
-%{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtWaylandTestsConfig.cmake
-%{_qt6_cmakedir}/Qt6/FindWaylandkms.cmake
-%{_qt6_cmakedir}/Qt6WaylandClient/
-%{_qt6_cmakedir}/Qt6WaylandScannerTools/
-%{_qt6_descriptionsdir}/WaylandClient.json
-%{_qt6_includedir}/QtWaylandClient
-%{_qt6_libdir}/libQt6WaylandClient.prl
-%{_qt6_libdir}/libQt6WaylandClient.so
-%{_qt6_metatypesdir}/qt6waylandclient_*_metatypes.json
-%{_qt6_mkspecsdir}/modules/qt_lib_waylandclient.pri
-%{_qt6_pkgconfigdir}/Qt6WaylandClient.pc
-%exclude %{_qt6_includedir}/QtWaylandClient/%{real_version}
-
-%files -n qt6-waylandclient-private-devel
-%{_qt6_cmakedir}/Qt6WaylandClientPrivate/
-%{_qt6_includedir}/QtWaylandClient/%{real_version}/
-%{_qt6_mkspecsdir}/modules/qt_lib_waylandclient_private.pri
-
 %files -n libQt6WaylandCompositor6
+%license LICENSES/*
 %{_qt6_libdir}/libQt6WaylandCompositor.so.*
 %{_qt6_libdir}/libQt6WaylandCompositorIviapplication.so.*
 %{_qt6_libdir}/libQt6WaylandCompositorPresentationTime.so.*
@@ -305,6 +221,8 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %{_qt6_libdir}/libQt6WaylandCompositorXdgShell.so.*
 
 %files -n qt6-waylandcompositor-devel
+%{_qt6_cmakedir}/Qt6/FindWaylandkms.cmake
+%{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtWaylandTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6WaylandCompositor/
 %{_qt6_cmakedir}/Qt6WaylandCompositorIviapplication/
 %{_qt6_cmakedir}/Qt6WaylandCompositorPresentationTime/
@@ -316,9 +234,13 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %{_qt6_descriptionsdir}/WaylandCompositorWLShell.json
 %{_qt6_descriptionsdir}/WaylandCompositorXdgShell.json
 %{_qt6_includedir}/QtWaylandCompositor/
+# TODO private?
 %{_qt6_includedir}/QtWaylandCompositorIviapplication/
+# TODO private?
 %{_qt6_includedir}/QtWaylandCompositorPresentationTime/
+# TODO private?
 %{_qt6_includedir}/QtWaylandCompositorWLShell/
+# TODO private?
 %{_qt6_includedir}/QtWaylandCompositorXdgShell/
 %{_qt6_libdir}/libQt6WaylandCompositor.prl
 %{_qt6_libdir}/libQt6WaylandCompositor.so
@@ -330,11 +252,11 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %{_qt6_libdir}/libQt6WaylandCompositorWLShell.so
 %{_qt6_libdir}/libQt6WaylandCompositorXdgShell.prl
 %{_qt6_libdir}/libQt6WaylandCompositorXdgShell.so
-%{_qt6_metatypesdir}/qt6waylandcompositor_*_metatypes.json
-%{_qt6_metatypesdir}/qt6waylandcompositoriviapplication_*_metatypes.json
-%{_qt6_metatypesdir}/qt6waylandcompositorpresentationtime_*_metatypes.json
-%{_qt6_metatypesdir}/qt6waylandcompositorwlshell_*_metatypes.json
-%{_qt6_metatypesdir}/qt6waylandcompositorxdgshell_*_metatypes.json
+%{_qt6_metatypesdir}/qt6waylandcompositor_metatypes.json
+%{_qt6_metatypesdir}/qt6waylandcompositoriviapplication_metatypes.json
+%{_qt6_metatypesdir}/qt6waylandcompositorpresentationtime_metatypes.json
+%{_qt6_metatypesdir}/qt6waylandcompositorwlshell_metatypes.json
+%{_qt6_metatypesdir}/qt6waylandcompositorxdgshell_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositor.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositoriviapplication*.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositorpresentationtime*.pri
@@ -356,25 +278,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %{_qt6_includedir}/QtWaylandCompositor/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositor_private.pri
 
-%files -n qt6-waylandglobal-private-devel
-%{_qt6_cmakedir}/Qt6WaylandGlobalPrivate/
-%{_qt6_descriptionsdir}/WaylandGlobalPrivate.json
-%{_qt6_includedir}/QtWaylandGlobal/
-%{_qt6_mkspecsdir}/modules/qt_lib_waylandglobal_private.pri
-
-### Private only libraries ###
-
-%files -n libQt6WaylandEglClientHwIntegration6
-%{_qt6_libdir}/libQt6WaylandEglClientHwIntegration.so.*
-
-%files -n qt6-waylandeglclienthwintegration-private-devel
-%{_qt6_cmakedir}/Qt6WaylandEglClientHwIntegrationPrivate/
-%{_qt6_descriptionsdir}/WaylandEglClientHwIntegrationPrivate.json
-%{_qt6_includedir}/QtWaylandEglClientHwIntegration/
-%{_qt6_libdir}/libQt6WaylandEglClientHwIntegration.prl
-%{_qt6_libdir}/libQt6WaylandEglClientHwIntegration.so
-%{_qt6_metatypesdir}/qt6waylandeglclienthwintegrationprivate_*_metatypes.json
-%{_qt6_mkspecsdir}/modules/qt_lib_wayland_egl_client_hw_integration_private.pri
+# ### Private only libraries ###
 
 %files -n libQt6WaylandEglCompositorHwIntegration6
 %{_qt6_libdir}/libQt6WaylandEglCompositorHwIntegration.so.*
@@ -385,20 +289,8 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %{_qt6_includedir}/QtWaylandEglCompositorHwIntegration/
 %{_qt6_libdir}/libQt6WaylandEglCompositorHwIntegration.prl
 %{_qt6_libdir}/libQt6WaylandEglCompositorHwIntegration.so
-%{_qt6_metatypesdir}/qt6waylandeglcompositorhwintegrationprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6waylandeglcompositorhwintegrationprivate_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_wayland_egl_compositor_hw_integration_private.pri
-
-%files -n libQt6WlShellIntegration6
-%{_qt6_libdir}/libQt6WlShellIntegration.so.*
-
-%files -n qt6-wlshellintegration-private-devel
-%{_qt6_cmakedir}/Qt6WlShellIntegrationPrivate/
-%{_qt6_descriptionsdir}/WlShellIntegrationPrivate.json
-%{_qt6_includedir}/QtWlShellIntegration/
-%{_qt6_libdir}/libQt6WlShellIntegration.prl
-%{_qt6_libdir}/libQt6WlShellIntegration.so
-%{_qt6_metatypesdir}/qt6wlshellintegrationprivate_*_metatypes.json
-%{_qt6_mkspecsdir}/modules/qt_lib_wl_shell_integration_private.pri
 
 %endif
 
