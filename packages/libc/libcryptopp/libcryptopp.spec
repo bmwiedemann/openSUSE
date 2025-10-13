@@ -1,7 +1,7 @@
 #
 # spec file for package libcryptopp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,23 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+ #
+# spec file for package libcryptopp
+#
+# Copyright (c) 2024 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 %define major 8
 %define minor 9
@@ -40,6 +57,8 @@ Patch1:         libcryptopp-shared.patch
 Patch2:         libcryptopp-CVE-2023-50980.patch
 # CVE-2023-50981 [bsc#1218222], issue on ModularSquareRoot function leads to potential DoS
 Patch3:         libcryptopp-CVE-2023-50981.patch
+# PATCH-FIX-SUSE: [bsc#1224280] CVE-2024-28285 potential leak of secret key of ElGamal encryption via fault injection
+Patch4:         libcryptopp-CVE-2024-28285.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

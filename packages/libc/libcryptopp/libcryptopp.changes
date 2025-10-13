@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  7 07:56:39 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Security fix [bsc#1224280, CVE-2024-28285]
+  * potential leak of secret key of ElGamal encryption via fault injection 
+  * Added patch libcryptopp-CVE-2024-28285.patch
+  * https://github.com/weidai11/cryptopp/issues/1262 
+
+-------------------------------------------------------------------
 Mon Feb  3 09:09:55 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Rename patch to patchlevel to avoid confusion on check and avoid:
