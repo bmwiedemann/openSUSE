@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 13 06:54:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.11.2 (1.11.1 was not released):
+  * Bugfixes
+    - Fix potential deadlock in loki.source.journal when stopping
+      or reloading the component. (@thampiotr)
+    - Honor sync timeout when waiting for network availability for
+      prometheus.operator.* components. (@dehaansa)
+    - Fix prometheus.exporter.cloudwatch to not always emit debug
+      logs but respect debug property. (@kalleep)
+    - Fix an issue where component shutdown could block
+      indefinitely by adding a warning log message and a deadline
+      of 10 minutes. The deadline can be configured with the
+      --feature.component-shutdown-deadline flag if the default is
+      not suitable. (@thampiotr)
+    - Fix potential deadlocks in loki.source.file and
+      loki.source.journal when component is shutting down.
+      (@kalleep, @thampiotr)
+
+-------------------------------------------------------------------
 Fri Oct  3 06:04:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.11.0:
