@@ -1,0 +1,6 @@
+<package name="marst" project="openSUSE:Factory">
+  <title>Algol-to-C translator</title>
+  <description>MARST is an Algol-to-C translator. It automatically translates programs written
+on the algorithmic language Algol 60 to the C programming language.</description>
+  <url>https://www.gnu.org/software/marst/</url>
+</package>
