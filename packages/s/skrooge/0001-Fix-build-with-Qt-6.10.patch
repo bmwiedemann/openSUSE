@@ -1,0 +1,40 @@
+From 38bb99c348c6dc9ca861d636f06f176731f5a291 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 9 Oct 2025 12:20:48 +0200
+Subject: [PATCH] Fix build with Qt 6.10
+
+---
+ CMakeLists.txt              | 4 ++++
+ skgsqlcipher/CMakeLists.txt | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0904a8d..99f5255 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -70,6 +70,10 @@ ELSE()
+     FIND_PACKAGE(Qt6 REQUIRED COMPONENTS Core5Compat)
+ ENDIf()
+ 
++IF(Qt6Core_VERSION VERSION_GREATER_EQUAL 6.10)
++    FIND_PACKAGE(Qt6 REQUIRED COMPONENTS SqlPrivate)
++ENDIF()
++
+ IF(SKG_WEBENGINE)
+     FIND_PACKAGE(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS WebEngineWidgets)
+     MESSAGE( STATUS "     Mode WebEngine")
+diff --git a/skgsqlcipher/CMakeLists.txt b/skgsqlcipher/CMakeLists.txt
+index 8a0a8d0..e60eb09 100644
+--- a/skgsqlcipher/CMakeLists.txt
++++ b/skgsqlcipher/CMakeLists.txt
+@@ -18,7 +18,7 @@ ELSE()
+     ADD_LIBRARY(libskgsqlcipher MODULE ${skgsqlcipher_sources})
+     TARGET_INCLUDE_DIRECTORIES(libskgsqlcipher PRIVATE ${Qt6Sql_PRIVATE_INCLUDE_DIRS} ${SQLCIPHER_INCLUDE_DIRS})
+ ENDIF()
+-TARGET_LINK_LIBRARIES(libskgsqlcipher Qt${QT_MAJOR_VERSION}::Sql ${SQLCIPHER_LIBRARIES})
++TARGET_LINK_LIBRARIES(libskgsqlcipher Qt${QT_MAJOR_VERSION}::Sql Qt${QT_MAJOR_VERSION}::SqlPrivate ${SQLCIPHER_LIBRARIES})
+ 
+ GENERATE_EXPORT_HEADER(libskgsqlcipher BASE_NAME skgsqlcipher)
+ 
+-- 
+2.51.0

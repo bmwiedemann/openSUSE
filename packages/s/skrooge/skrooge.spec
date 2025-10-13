@@ -1,7 +1,7 @@
 #
 # spec file for package skrooge
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2008 - 2012 Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,15 +38,17 @@ Source1:        https://download.kde.org/stable/skrooge/%{name}-%{version}.tar.x
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/smankowski@key2.asc?ref_type=heads
 Source2:        skrooge.keyring
 %endif
-BuildRequires:  kf6-breeze-icons
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Qt-6.10.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  kf6-breeze-icons
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libofx-devel
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-sql-private-devel >= %{qt6_version}
 BuildRequires:  shared-mime-info
 BuildRequires:  sqlcipher-devel
-BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
