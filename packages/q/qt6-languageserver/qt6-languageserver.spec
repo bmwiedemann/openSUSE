@@ -16,14 +16,14 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define short_name qtlanguageserver
 %define tar_name qtlanguageserver-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-languageserver
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Implementation of the Language Server Protocol
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -55,8 +55,8 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-jsonrpc-devel-static
 Summary:        JsonRpc 2.0 protocol implementation
 Provides:       qt6-jsonrpc-private-devel = %{version}
-Obsoletes:      qt6-jsonrpc-private-devel < %{version}
 Obsoletes:      libQt6JsonRpc6 < 6.8.1
+Obsoletes:      qt6-jsonrpc-private-devel < %{version}
 
 %description -n qt6-jsonrpc-devel-static
 JsonRpc 2.0 protocol implementation for Qt6.
@@ -83,7 +83,7 @@ This library does not have any ABI or API guarantees.
 %{_qt6_includedir}/QtLanguageServer/
 %{_qt6_libdir}/libQt6LanguageServer.a
 %{_qt6_libdir}/libQt6LanguageServer.prl
-%{_qt6_metatypesdir}/qt6languageserverprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6languageserverprivate_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_languageserver_private.pri
 
 %files -n qt6-jsonrpc-devel-static
@@ -93,7 +93,7 @@ This library does not have any ABI or API guarantees.
 %{_qt6_includedir}/QtJsonRpc/
 %{_qt6_libdir}/libQt6JsonRpc.a
 %{_qt6_libdir}/libQt6JsonRpc.prl
-%{_qt6_metatypesdir}/qt6jsonrpcprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6jsonrpcprivate_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_jsonrpc_private.pri
 
 %changelog
