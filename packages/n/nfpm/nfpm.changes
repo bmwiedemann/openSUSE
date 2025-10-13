@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 13 10:50:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.43.4:
+  * Dependency updates
+    - 5bc4b8b: fix(deps): bump alpine from 3.22.1 to 3.22.2 (#986)
+      (@dependabot[bot])
+
+-------------------------------------------------------------------
 Tue Oct 07 05:00:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.43.3:
