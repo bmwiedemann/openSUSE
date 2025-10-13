@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 13 10:51:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.2:
+  * Bug Fixes
+    - panic in release plan install (f682b8d)
+
+-------------------------------------------------------------------
 Thu Oct 09 13:21:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.13.1:
