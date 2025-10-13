@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Oct  6 11:11:39 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 20251002:
+ * scamper:
+  * add tls_errstr, use it in printerror_ssl.
+  * minify ping and trace json output by removing spaces in output.
+  * host: if qname contains a trailing dot, remove the trailing dot, so that
+    example.com. and example.com are equivalent.
+  * host: if do-not-probe file contains a prefix covering a nameserver
+    in /etc/resolv.conf, still allow the host command to use it.
+ * libscamperfile:
+  * provide API access to udpprobe stop_reason and its string rendering.
+  * add scamper_dealias_reply_is_icmp_echo_reply().
+  * silence spurious uninitialized use warning in scamper_http_lib.c.
+  * add scamper_tbit_totext().
+  * fix regression from 20241112 when reading tbit warts, which rejected
+    valid tbit measurements.
+ * libscamperctrl:
+  * add iata attribute to scamper_vp_t.
+ * Python module:
+  * use #defines from scamper C header files in more places.
+  * support pickling of ScamperAddr.
+  * add .iata attribute to ScamperVP, ScamperInst.
+  * add .stop_reason and .stop_reason_str attributes to ScamperHost,
+    ScamperHttp, ScamperPing and ScamperUdpprobe.
+  * add ScamperDealias.is_icmp_echo_reply().
+  * add to_text() method to ScamperDealias, ScamperPing, ScamperTbit,
+    ScamperTrace, ScamperTracelb.
+  * update pyi to match API changes, fix enums with latest mypy.
+ * sc_remoted:
+  * add iata to list of supported metadata items per VP, document in
+    man page.
+ * sc_minrtt:
+  * add -a anycast-file option, to specify a file containing apparent
+    anycast prefixes.  sc_minrtt will not consider samples for a covered
+    IP address if any of the samples collected by sc_pinger for the
+    address imply the address could not be in a single location.
+    document in man page.
+ * sc_wartsdump:
+  * print error code for udpprobe.
+ * tests:
+  * add more qname tests in unit_cmd_host.c.
+
+-------------------------------------------------------------------
 Fri Sep 26 07:34:15 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to 20250804:
