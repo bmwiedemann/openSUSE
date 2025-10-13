@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch aarch64
+# Temp workaround for boo#1251922
+%define _lto_cflags %{nil} 
+%endif
 
 %define real_version 6.10.0
 %define short_version 6.10

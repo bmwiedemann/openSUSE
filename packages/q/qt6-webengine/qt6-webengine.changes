@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 13 09:36:45 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO on aarch64 until build is fixed - boo#1251922
+
+-------------------------------------------------------------------
 Tue Oct  7 08:53:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0
