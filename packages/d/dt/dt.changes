@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 18 13:08:49 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 25
+  * New I/O behaviors: dtapp, hammer, sio
+- adjust dt-manpage.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 08:10:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

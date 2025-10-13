@@ -1,7 +1,7 @@
 #
 # spec file for package dt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           dt
-Version:        23.28
+Version:        25
 Release:        0
 Summary:        Generic data test program
 License:        MIT
 Group:          System/Filesystems
 URL:            https://github.com/RobinTMiller/dt
-Source:         dt-%{version}.tar.xz
+Source:         https://github.com/RobinTMiller/dt/archive/refs/tags/dt.v25.tar.gz#/dt-dt.v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM dt-manpage.patch -- https://github.com/RobinTMiller/dt/issues/4
 Patch0:         dt-manpage.patch
 BuildRequires:  pkgconfig
@@ -38,11 +38,11 @@ statisics and other test parameters before exiting.  Since verification
 of data is performed, dt can be thought of as a generic diagnostic tool.
 
 %prep
-%autosetup -p0
+%autosetup -p1 -n dt-dt.v%{version}
 
 %build
 CFLAGS=$(pkg-config --cflags uuid)
-export CFLAGS="%{optflags} $CFLAGS -I.. -DAIO -DFIFO -DMMAP -D__linux__ -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -DTHREADS -DSCSI"
+export CFLAGS="%{optflags} $CFLAGS -std=c99 -I.. -DAIO -DMMAP -D__linux__ -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -DSCSI -DHAVE_UUID=0 -DNVME"
 export LIBS=$(pkg-config --libs uuid)
 export LDFLAGS="-Wl,--no-undefined -Wl,-z,now"
 mkdir build

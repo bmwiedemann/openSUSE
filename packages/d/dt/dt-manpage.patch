@@ -1,7 +1,17 @@
-Index: Documentation/dt.man
-===================================================================
---- Documentation/dt.man.orig
-+++ Documentation/dt.man
+From 67e2968e314f554e094fb1a4440e8237b5eae267 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
+Date: Thu, 18 Sep 2025 15:14:36 +0200
+Subject: [PATCH] [manpage] Change .tP to .TP
+
+Fixes #4
+---
+ Documentation/dt.man | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/dt.man b/Documentation/dt.man
+index 58b890c..aaae007 100644
+--- a/Documentation/dt.man
++++ b/Documentation/dt.man
 @@ -299,7 +299,7 @@ Log File Format Keywords:
  .TP
  %iodir
@@ -11,3 +21,5 @@ Index: Documentation/dt.man
  %iotype
  The I/O type.
  .TP
+-- 
+2.51.0
