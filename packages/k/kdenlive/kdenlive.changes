@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Oct  7 18:48:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.2/
+- Changes since 25.08.1:
+  * Fix fade to black preset incorrectly applied (kde#509108)
+  * Fix crash dragging effect from another window (kde#510253)
+  * Added new pass-through alpha parameter to frei0r_pixeliz0r.xml
+  * Added new VSync parameter to frei0r_nosync0r.xml
+  * Updated frei0r_sigmoidaltransfer.xml
+  * Fix crash using filter job (tracker, loudness) on sequence clip
+  * Fix monitor audio waveform using incorrect normalize factor when switching betwwen clips
+  * Improve selection and resize of small clips (kde#509911)
+  * Fix job QProcess created in incorrect thread
+  * Fix sequence subclips disappear after reopening project (kde#509773)
+  * Drop v4l in ffmpeg too
+  * doc: remove the space after a 'url' tag
+  * Fix incorrect links in appdata
+  * CI - Flatpak - Use our mirror as ladspa URL is unreliable
+  * Fix freeze loading invalid clip
+  * Fix gif preset not finding the correct file Fixes #2044
+
+-------------------------------------------------------------------
 Wed Sep 10 09:23:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.1
