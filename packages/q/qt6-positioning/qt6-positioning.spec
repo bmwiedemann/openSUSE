@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtpositioning-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\(SatelliteInformation\\)
 #
 Name:           qt6-positioning%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 Positioning plugins and libraries
 License:        GPL-3.0-or-later
@@ -170,9 +170,6 @@ ABI or API guarantees.
 rm %{buildroot}%{_qt6_cmakedir}/Qt6Positioning/Qt6QGeoPositionInfoSourceFactory*.cmake
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
-# and also not for static plugins
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Bundled_Clip2Tri
-
 %ldconfig_scriptlets -n libQt6Positioning6
 %ldconfig_scriptlets -n libQt6PositioningQuick6
 
@@ -202,7 +199,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Bundled_Clip2Tri
 %{_qt6_includedir}/QtPositioning/
 %{_qt6_libdir}/libQt6Positioning.prl
 %{_qt6_libdir}/libQt6Positioning.so
-%{_qt6_metatypesdir}/qt6positioning_*_metatypes.json
+%{_qt6_metatypesdir}/qt6positioning_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_positioning.pri
 %{_qt6_pkgconfigdir}/Qt6Positioning.pc
 %exclude %{_qt6_includedir}/QtPositioning/%{real_version}
@@ -221,7 +218,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Bundled_Clip2Tri
 %{_qt6_includedir}/QtPositioningQuick/
 %{_qt6_libdir}/libQt6PositioningQuick.prl
 %{_qt6_libdir}/libQt6PositioningQuick.so
-%{_qt6_metatypesdir}/qt6positioningquick_*_metatypes.json
+%{_qt6_metatypesdir}/qt6positioningquick_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_positioningquick.pri
 %{_qt6_pkgconfigdir}/Qt6PositioningQuick.pc
 %exclude %{_qt6_includedir}/QtPositioningQuick/%{real_version}
