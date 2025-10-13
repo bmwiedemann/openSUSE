@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtwebview-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,10 +27,10 @@
 %endif
 #
 Name:           qt6-webview%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 WebView library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  cmake(Qt6Core) = %{real_version}
@@ -152,13 +152,14 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6WebView/*Plugin*.cmake
 %{_qt6_libdir}/libQt6WebView.so.*
 
 %files devel
+%{_qt6_cmakedir}/Qt6/FindWebView2.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtWebViewTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6WebView/
 %{_qt6_descriptionsdir}/WebView.json
 %{_qt6_includedir}/QtWebView/
 %{_qt6_libdir}/libQt6WebView.prl
 %{_qt6_libdir}/libQt6WebView.so
-%{_qt6_metatypesdir}/qt6webview_*_metatypes.json
+%{_qt6_metatypesdir}/qt6webview_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_webview.pri
 %{_qt6_pkgconfigdir}/Qt6WebView.pc
 %exclude %{_qt6_includedir}/QtWebView/%{real_version}/
@@ -177,7 +178,7 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6WebView/*Plugin*.cmake
 %{_qt6_includedir}/QtWebViewQuick/
 %{_qt6_libdir}/libQt6WebViewQuick.prl
 %{_qt6_libdir}/libQt6WebViewQuick.so
-%{_qt6_metatypesdir}/qt6webviewquick_*_metatypes.json
+%{_qt6_metatypesdir}/qt6webviewquick_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_webviewquick.pri
 %{_qt6_pkgconfigdir}/Qt6WebViewQuick.pc
 %exclude %{_qt6_includedir}/QtWebViewQuick/%{real_version}/
