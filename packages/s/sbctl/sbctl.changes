@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 13 09:06:05 UTC 2025 - Jan Loeser <rooterle@posteo.de>
+
+- Update to version 0.18:
+  * logging: fixup new go vet warning
+  * workflows: add cc for cross compile
+  * workflow: add sudo to apt
+  * workflow: add pcsclite to ci
+  * workflow: try enable cgo
+  * go.mod: update golang.org/x/ dependencies
+  * fix: avoid adding bogus Country attribute to subject DNs
+  * sbctl: only store file if we did actually sign the file
+  * installkernel: add post install hook for Debian's traditional installkernel
+  * CI: missing libpcsclite pkg
+  * workflows: add missing depends and new pattern keyword
+  * Add yubikey example for create keys to the README
+  * Initial yubikey backend keytype support
+  * verify: ensure we pass args in correct order
+
+-------------------------------------------------------------------
 Mon Sep  1 09:34:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1248949 (CVE-2025-58058):

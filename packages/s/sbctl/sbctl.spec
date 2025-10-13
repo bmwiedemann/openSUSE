@@ -1,6 +1,7 @@
 #
 # spec file for package sbctl
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           sbctl
-Version:        0.17
+Version:        0.18
 Release:        0
 Summary:        Secure Boot key manager
 License:        MIT
@@ -38,10 +39,12 @@ BuildRequires:  binutils
 %if 0%{?suse_version}
 BuildRequires:  go >= 1.22.0
 BuildRequires:  golang-packaging
+BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkgconfig(openssl) > 3.0.0
 %endif
 %if 0%{?ubuntu}
 BuildRequires:  golang >= 1.22.0
+BuildRequires:  libpcsclite-dev
 BuildRequires:  libssl-dev > 3.0.0
 %endif
 
@@ -76,12 +79,14 @@ sed -i 's|bin/sh|bin/bash|' %{buildroot}%{_prefix}/lib/kernel/install.d/91-sbctl
 
 %dir %{_prefix}/lib/kernel/
 %dir %{_prefix}/lib/kernel/install.d/
+%dir %{_prefix}/lib/kernel/postinst.d/
 %dir %{_datadir}/fish/
 %dir %{_datadir}/fish/vendor_completions.d/
 %dir %{_datadir}/zsh/
 %dir %{_datadir}/zsh/site-functions/
 
 %{_prefix}/lib/kernel/install.d/91-sbctl.install
+%{_prefix}/lib/kernel/postinst.d/91-sbctl.install
 %{_mandir}/man8/sbctl.8*
 %{_mandir}/man5/sbctl.conf.5*
 %{_datadir}/bash-completion/completions/sbctl
