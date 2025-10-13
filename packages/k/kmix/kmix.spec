@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmix
-Version:        25.08.1
+Version:        25.08.2
 Release:        0
 Summary:        Sound Mixer
 License:        GPL-2.0-or-later
