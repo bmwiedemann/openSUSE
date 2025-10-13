@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 27 14:41:46 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 8.4.1
+  * Speculative fix for repo contents cache race.
+- update to 8.4.0
+  * Bazel releases that include a bundled JDK now use the system
+    trust store for certificates by default. Set
+    -Djavax.net.ssl.trustStore and -Djavax.net.ssl.trustStoreType
+    via --host_jvm_args to override the default location.
+  * The --experimental_cancel_concurrent_tests option now accepts
+    the values on_passed, on_failed and never and cancels concurrent
+    test runs on the first matching result. If enabled, it's now
+    effective by default and no longer requires
+    --test_strategy=standalone to be passed explicitly.
+- update to 8.3.0
+  * Bazel now prints exactly which startup options have changed
+    when the running Bazel server needs to be killed.
+
+-------------------------------------------------------------------
 Mon Feb  3 16:04:39 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp> - 8.0.1
 
 - Initial package based on bazel6

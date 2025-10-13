@@ -22,7 +22,7 @@
 %define shortver 8
 
 Name:           bazel%{shortver}
-Version:        8.0.1
+Version:        8.4.1
 Release:        0
 Summary:        Tool for the automation of building and testing of software
 # From the output of `bazel license`
