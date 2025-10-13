@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  7 18:48:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.2/
+- Changes since 25.08.1:
+  * monthgraphicsitems.cpp - hard-set the icon height to 16 pixels (kde#509037)
+
+-------------------------------------------------------------------
 Wed Sep 10 09:23:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.1
