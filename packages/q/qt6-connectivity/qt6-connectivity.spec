@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtconnectivity-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\((HeartRateGame|NdefEditor.*)\\)
 #
 Name:           qt6-connectivity%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 connectivity tools and libraries
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -143,7 +143,7 @@ The packages that build against these have to require the exact Qt version.
 %{_qt6_libdir}/libQt6Nfc.prl
 %{_qt6_libdir}/libQt6Nfc.so
 %{_qt6_metatypesdir}/qt6bluetooth*_metatypes.json
-%{_qt6_metatypesdir}/qt6nfc_*_metatypes.json
+%{_qt6_metatypesdir}/qt6nfc_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_bluetooth.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_nfc.pri
 %{_qt6_pkgconfigdir}/Qt6Bluetooth.pc
