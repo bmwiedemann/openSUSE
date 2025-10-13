@@ -1,0 +1,30 @@
+From 17abbbfe1ffdc59491f9f84c22ed27b5b29ca76d Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 8 Oct 2025 20:49:54 +0200
+Subject: [PATCH] Fix build with Qt 6.10
+
+---
+ CMakeLists.txt | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a04a013..abdd7a8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -40,6 +40,13 @@ find_package(Qt${QT_VERSION_MAJOR}
+     REQUIRED
+     )
+ 
++if(Qt6Core_FOUND AND (Qt6Core_VERSION VERSION_GREATER_EQUAL 6.10))
++    find_package(Qt6
++        COMPONENTS CorePrivate
++        REQUIRED
++        )
++endif()
++
+ find_package(Qt${QT_VERSION_MAJOR} OPTIONAL_COMPONENTS Script QUIET)
+ 
+ if (Qt6_FOUND)
+-- 
+2.51.0
+

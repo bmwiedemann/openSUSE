@@ -22,7 +22,7 @@
 %bcond_without qch_doc
 %endif
 Name:           qbs
-Version:        2.6.1
+Version:        3.0.3
 Release:        0
 Summary:        Build tool for software projects
 # Legal:
@@ -33,6 +33,8 @@ Summary:        Build tool for software projects
 License:        LGPL-3.0-only
 URL:            https://wiki.qt.io/Qbs
 Source:         https://download.qt.io/official_releases/qbs/%{version}/qbs-src-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Qt-6.10.patch
 BuildRequires:  fdupes
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Concurrent)
