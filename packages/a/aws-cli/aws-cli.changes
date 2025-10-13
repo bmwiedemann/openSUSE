@@ -1,4 +1,210 @@
 -------------------------------------------------------------------
+Mon Oct 13 09:21:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.42.49
+  * api-change:``quicksight``: This release adds support for ActionConnector and Flow, which are new
+    resources associated with Amazon Quick Suite. Additional updates include expanded Data Source
+    options, further branding customization, and new capabilities that can be restricted by Admins.
+  * api-change:``wafv2``: This release adds the ability to throw WafLimitsExceededException when the
+    maximum number of Application Load Balancer (ALB) associations per AWS WAF v2 WebACL is exceeded.
+- from version 1.42.48
+  * api-change:``bedrock-agentcore-control``: Adding support for authorizer type AWS_IAM to AgentCore
+    Control Gateway.
+  * api-change:``license-manager-user-subscriptions``: Released support for IPv6 and dual-stack
+    active directories
+  * api-change:``outposts``: This release adds the new StartOutpostDecommission API, which starts the
+    decommission process to return Outposts racks or servers.
+  * api-change:``service-quotas``: introduces Service Quotas Automatic Management. Users can opt-in
+    to monitoring and managing service quotas, receive notifications when quota usage reaches
+    thresholds, configure notification channels, subscribe to EventBridge events for automation, and
+    view notifications in the AWS Health dashboard.
+- from version 1.42.47
+  * api-change:``proton``: Deprecating APIs in AWS Proton namespace.
+- from version 1.42.46
+  * api-change:``backup``: Adds optional MaxScheduledRunsPreview input to GetBackupPlan API to
+    provide a preview of up to 10 next scheduled backup plan runs in the GetBackupPlan response.
+  * api-change:``bedrock-agentcore``: Add support for batch memory management, agent card retrieval
+    and session termination
+  * api-change:``bedrock-agentcore-control``: Add support for VM lifecycle configuration parameters
+    and A2A protocol
+  * api-change:``glue``: Adds labeling for DataQualityRuleResult for GetDataQualityResult and
+    PublishDataQualityResult APIs
+  * api-change:``mediaconnect``: Enabling Tag-on-Create for AWS Elemental MediaConnect flow-based
+    resource types
+  * api-change:``memorydb``: Support for DescribeMultiRegionParameterGroups and
+    DescribeMultiRegionParameters API.
+  * api-change:``quicksight``: Documentation improvements for QuickSight API documentation to clarify
+    that delete operation APIs are global.
+  * api-change:``rds``: Documentation updates to the CreateDBClusterMessage$PubliclyAccessible and
+    CreateDBInstanceMessage$PubliclyAccessible properties.
+  * api-change:``resource-explorer-2``: Add new AWS Resource Explorer APIs
+- from version 1.42.45
+  * api-change:``cleanrooms``: Added support for reading data sources across regions, and results
+    delivery to allowedlisted regions.
+  * api-change:``medialive``: AWS Elemental MediaLive enables Mediapackage V2 users to configure ID3,
+    KLV, Nielsen ID3, and Segment Length related parameters through the Mediapackage output group.
+  * api-change:``payment-cryptography-data``: Added a new API - translateKeyMaterial; allows keys
+    wrapped by ECDH derived keys to be rewrapped under a static AES keyblock without first importing
+    the key into the service.
+  * api-change:``qconnect``: Updated Amazon Q in Connect APIs to support Email Contact
+    Recommendations.
+- from version 1.42.44
+  * api-change:``cloudformation``: Add new warning type 'EXCLUDED_RESOURCES'
+  * api-change:``connectcases``: New Search All Related Items API enables searching related items
+    across cases
+  * api-change:``dynamodb``: Add support for dual-stack account endpoint generation
+  * api-change:``endpoint-rules``: Update endpoint-rules command to latest version
+  * api-change:``guardduty``: Updated descriptions for the Location parameter in
+    CreateTrustedEntitySet and CreateThreatEntitySet.
+  * api-change:``synthetics``: Adds support to configure canaries with pre-configured blueprint code
+    on supported runtime versions.  This behavior can be controlled via the new BlueprintTypes property
+    exposed in the CreateCanary and UpdateCanary APIs.
+- from version 1.42.43
+  * api-change:``chime-sdk-meetings``: Add support to receive dual stack MediaPlacement URLs in Chime
+    Meetings SDK
+  * api-change:``cleanrooms``: This release introduces data access budgets to control how many times
+    a table can be used for queries and jobs in a collaboration.
+  * api-change:``cleanroomsml``: This release introduces data access budgets to view how many times
+    an input channel can be used for ML jobs in a collaboration.
+  * api-change:``dms``: This is a doc-only update, revising text for kms-key-arns.
+  * api-change:``ecs``: This is a documentation only Amazon ECS release that adds additional
+    information for health checks.
+  * api-change:``pcs``: Added the UpdateCluster API action to modify cluster configurations, and
+    Slurm custom settings for queues.
+- from version 1.42.42
+  * api-change:``application-signals``: Amazon CloudWatch Application Signals is introducing the
+    Application Map to give users a more comprehensive view of their service health. Users will now be
+    able to group services, track their latest deployments, and view automated audit findings
+    concerning service performance.
+  * api-change:``bedrock-agentcore-control``: Tagging support for AgentCore Gateway
+  * api-change:``chime-sdk-voice``: Added support for IPv4-only and dual-stack network configurations
+    for VoiceConnector and CreateVoiceConnector API.
+  * api-change:``connectcases``: This release adds support for two new related item types:
+    ConnectCase for linking Amazon Connect cases and Custom for user-defined related items with
+    configurable fields.
+  * api-change:``customer-profiles``: This release introduces ListProfileHistoryRecords and
+    GetProfileHistoryRecord APIs for comprehensive profile history tracking with complete audit trails
+    of creation, updates, merges, deletions, and data ingestion events.
+  * api-change:``datasync``: Added support for FIPS VPC endpoints in FIPS-enabled AWS Regions.
+  * api-change:``datazone``: This release adds support for creation of EMR on EKS Connections in
+    Amazon DataZone.
+  * api-change:``ds``: AWS Directory service now supports IPv6-native and dual-stack configurations
+    for AWS Managed Microsoft AD, AD Connector, and Simple AD (dual-stack only). Additionally, AWS
+    Managed Microsoft AD Standard Edition directories can be upgraded to Enterprise Edition directories
+    through a single API call.
+  * api-change:``ecs``: This release adds support for Managed Instances on Amazon ECS.
+  * api-change:``fsx``: Add Dual-Stack support for Amazon FSx for NetApp ONTAP and Windows File Server
+  * api-change:``mediatailor``: Adding TPS Traffic Shaping to Prefetch Schedules
+  * api-change:``quicksight``: added warnings to a few CLI pages
+  * api-change:``rds``: Enhanced RDS error handling: Added DBProxyEndpointNotFoundFault,
+    DBShardGroupNotFoundFault, KMSKeyNotAccessibleFault for snapshots/restores/backups,
+    NetworkTypeNotSupported, StorageTypeNotSupportedFault for restores, and granular state validation
+    faults. Changed DBInstanceNotReadyFault to HTTP 400.
+  * api-change:``transfer``: Add support for updating server identity provider type
+  * enhancement:``eks``: Add ``proxy-url`` to ``aws eks update-kubeconfig``.
+- from version 1.42.41
+  * api-change:``bedrock``: Release for fixing GetFoundationModel API behavior. Imported and custom
+    models have their own exclusive API and GetFM should not accept those ARNS as input
+  * api-change:``bedrock-runtime``: New stop reason for Converse and ConverseStream
+  * api-change:``imagebuilder``: This release introduces several new features and improvements to
+    enhance pipeline management, logging, and resource configuration.
+  * api-change:``vpc-lattice``: Adds support for specifying the number of IPv4 addresses in each ENI
+    for the resource gateway for VPC Lattice.
+- from version 1.42.40
+  * api-change:``bedrock-agent-runtime``: This release enhances the information provided through Flow
+    Traces. New information includes source/next node tracking, execution chains for complex nodes,
+    dependency action (operation) details, and dependency traces.
+  * api-change:``bedrock-data-automation``: Added support for configurable Speaker Labeling and
+    Channel Labeling features for Audio modality.
+  * api-change:``billing``: Add ability to combine custom billing views to create new consolidated
+    views.
+  * api-change:``ce``: Support for payer account dimension and billing view health status.
+  * api-change:``connect``: Adds supports for manual contact picking (WorkList) operations on Routing
+    Profiles, Agent Management and SearchContacts APIs.
+  * api-change:``dynamodbstreams``: Added support for IPv6 compatible endpoints for DynamoDB Streams.
+  * api-change:``ec2``: This release includes documentation updates for Amazon EBS General Purpose
+    SSD (gp3) volumes with larger size and higher IOPS and throughput.
+  * api-change:``endpoint-rules``: Update endpoint-rules command to latest version
+  * api-change:``redshift``: Support tagging and tag propagation to IAM Identity Center for Redshift
+    Idc Applications
+- from version 1.42.39
+  * api-change:``glue``: Update GetConnection(s) API to return KmsKeyArn & Add 63 missing connection
+    types
+  * api-change:``lightsail``: Attribute HTTP binding update for Get/Delete operations
+  * api-change:``network-firewall``: Network Firewall now introduces Reject and Alert action support
+    for stateful domain list rule groups, providing customers with more granular control over their
+    network traffic.
+- from version 1.42.38
+  * api-change:``appstream``: G6f instance support for AppStream 2.0
+  * api-change:``cloudwatch``: Fix default dualstack FIPS endpoints in AWS GovCloud(US) regions
+  * api-change:``dax``: This release adds support for IPv6-only, DUAL_STACK DAX instances
+  * api-change:``endpoint-rules``: Update endpoint-rules command to latest version
+  * api-change:``kms``: Documentation only updates for KMS.
+  * api-change:``neptune``: Doc-only update to address customer use.
+- from version 1.42.37
+  * api-change:``cleanrooms``: Added support for running incremental ID mapping for rule-based
+    workflows.
+  * api-change:``ec2``: Add Amazon EC2 R8gn instance types
+  * api-change:``entityresolution``: Support incremental id mapping workflow for AWS Entity Resolution
+  * api-change:``ssm``: Added Dualstack support to GetDeployablePatchSnapshotForInstance
+  * api-change:``sso-admin``: Add support for encryption at rest with Customer Managed KMS Key in AWS
+    IAM Identity Center
+  * api-change:``sso-oidc``: This release includes exception definition and documentation updates.
+- from version 1.42.36
+  * api-change:``batch``: Starting in JAN 2026, AWS Batch will change the default AMI for new Amazon
+    ECS compute environments from Amazon Linux 2 to Amazon Linux 2023. We recommend migrating AWS Batch
+    Amazon ECS compute environments to Amazon Linux 2023 to maintain optimal performance and security.
+  * api-change:``eks``: Adds support for RepairConfig overrides and configurations in EKS Managed
+    Node Groups.
+  * api-change:``imagebuilder``: Version ARNs are no longer required for the EC2 Image Builder
+    list-image-build-version, list-component-build-version, and list-workflow-build-version APIs.
+    Calling these APIs without the ARN returns all build versions for the given resource type in the
+    requesting account.
+- from version 1.42.35
+  * api-change:``bedrock-agentcore-control``: Add tagging and VPC support to AgentCore Runtime, Code
+    Interpreter, and Browser resources. Add support for configuring request headers in Runtime. Fix
+    AgentCore Runtime shape names.
+  * api-change:``config``: Add UNKNOWN state to RemediationExecutionState and add
+    IN_PROGRESS/EXITED/UNKNOWN states to RemediationExecutionStepState.
+  * api-change:``connect``: This release adds a persistent connection field to UserPhoneConfig that
+    maintains agent's softphone media connection for faster call connections.
+  * api-change:``kendra-ranking``: Model whitespace change - no client difference
+  * api-change:``license-manager-user-subscriptions``: Added support for cross-account Active
+    Directories.
+  * api-change:``medialive``: Add MinBitrate for QVBR mode under H264/H265/AV1 output codec. Add
+    GopBReference, GopNumBFrames, SubGopLength fields under H265 output codec.
+  * api-change:``sqs``: Update invalid character handling documentation for SQS SendMessage API
+- from version 1.42.34
+  * api-change:``bedrock``: Release includes an increase to the maximum policy build document size,
+    an update to DeleteAutomatedReasoningPolicyBuildWorkflow to add ResourceInUseException, and
+    corrections to UpdateAutomatedReasoningPolicyTestCaseRequest.
+  * api-change:``budgets``: Added BillingViewHealthStatus Exception which is thrown when a Budget is
+    created or updated with a Billing View that is not in the HEALTHY status
+  * api-change:``chime-sdk-messaging``: Amazon Chime SDK Messaging GetMessagingSessionEndpoint API
+    now returns dual-stack WebSocket endpoints supporting IPv4/IPv6.
+  * api-change:``ec2``: Allowed AMIs adds support for four new parameters - marketplaceProductCodes,
+    deprecationTimeCondition, creationDateCondition and imageNames
+- from version 1.42.33
+  * api-change:``ec2``: Add mac-m4.metal and mac-m4pro.metal instance types.
+  * api-change:``network-firewall``: Network Firewall now prevents TLS handshakes with the target
+    server until after the Server Name Indication (SNI) has been seen and verified. The monitoring
+    dashboard now provides deeper insights into PrivateLink endpoint candidates and offers filters
+    based on IP addresses and protocol.
+  * api-change:``pcs``: Add support for Amazon EC2 Capacity Blocks for ML
+- from version 1.42.32
+  * api-change:``budgets``: Add support for custom time periods in budget configuration
+  * api-change:``ivs-realtime``: IVS now offers customers the ability to control the positioning of
+    participants in both grid and PiP layouts based on custom attribute values in participant tokens.
+  * api-change:``logs``: Cloudwatch Logs added support for 2 new API parameters in metric and
+    subscription filter APIs to filter log events based on system field values and emit system field
+    values as dimensions and send them to customer destination as additional metadata.
+  * api-change:``osis``: Adds support for cross-account ingestion for push-based sources. This
+    includes resource policies for sharing pipelines across accounts and features for managing pipeline
+    endpoints which enable accessing pipelines across different VPCs, including VPCs in other accounts.
+- Refresh ac_relax-depends.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Sep 16 12:33:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.42.31

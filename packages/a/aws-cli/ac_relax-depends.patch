@@ -1,17 +1,23 @@
-diff -Nru aws-cli-1.42.31.orig/setup.py aws-cli-1.42.31/setup.py
---- aws-cli-1.42.31.orig/setup.py	2025-09-15 20:22:48.000000000 +0200
-+++ aws-cli-1.42.31/setup.py	2025-09-16 14:33:24.654201625 +0200
+Common subdirectories: aws-cli-1.42.49.orig/awscli and aws-cli-1.42.49/awscli
+Common subdirectories: aws-cli-1.42.49.orig/bin and aws-cli-1.42.49/bin
+Common subdirectories: aws-cli-1.42.49.orig/.changes and aws-cli-1.42.49/.changes
+Common subdirectories: aws-cli-1.42.49.orig/doc and aws-cli-1.42.49/doc
+Common subdirectories: aws-cli-1.42.49.orig/.github and aws-cli-1.42.49/.github
+Common subdirectories: aws-cli-1.42.49.orig/scripts and aws-cli-1.42.49/scripts
+diff -u aws-cli-1.42.49.orig/setup.py aws-cli-1.42.49/setup.py
+--- aws-cli-1.42.49.orig/setup.py	2025-10-09 20:09:15.000000000 +0200
++++ aws-cli-1.42.49/setup.py	2025-10-13 11:21:15.072047222 +0200
 @@ -24,12 +24,12 @@
  
  
  install_requires = [
--    'botocore==1.40.31',
+-    'botocore==1.40.49',
 -    'docutils>=0.18.1,<=0.19',
 -    's3transfer>=0.14.0,<0.15.0',
 -    'PyYAML>=3.10,<6.1',
 -    'colorama>=0.2.5,<0.4.7',
 -    'rsa>=3.1.2,<4.8',
-+    'botocore>=1.40.31',
++    'botocore>=1.40.49',
 +    'docutils>=0.18.1',
 +    's3transfer>=0.14.0',
 +    'PyYAML>=3.10',
@@ -20,3 +26,4 @@ diff -Nru aws-cli-1.42.31.orig/setup.py aws-cli-1.42.31/setup.py
  ]
  
  
+Common subdirectories: aws-cli-1.42.49.orig/tests and aws-cli-1.42.49/tests
