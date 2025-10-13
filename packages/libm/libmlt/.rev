@@ -902,4 +902,12 @@ Only build sdl2 module.
     <comment></comment>
     <requestid>1279520</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>b2fa8082f0db2366ef38c79f8a505bc2</srcmd5>
+    <version>7.32.0</version>
+    <time>1760369223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311158</requestid>
+  </revision>
 </revisionlist>

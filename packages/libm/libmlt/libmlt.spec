@@ -44,6 +44,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc13-c++
 BuildRequires:  gcc13-PIE
 %endif
+# PATCH-FIX-UPSTREAM -- mlt-ffmpeg-8.patch - FFmpeg 8 support
+Patch0:         mlt-ffmpeg-8.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
