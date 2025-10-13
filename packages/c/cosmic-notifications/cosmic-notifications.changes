@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 29 19:57:29 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+2:
+  * i18n(cs): Add Czech translation
+  * Fix sv translation path
+  * Update Arabic translation
+  * Update Arabic translation
+  * Update Arabic translations
+  * i18n(bg): Add Bulgarian translation
+  * improv(util): add `notification_icon` method
+  * chore: update dependencies
+  * fix: missing icon for apps without hint
+  * chore: update libcosmic
+  * Revert "chore: update libcosmic"
+  * Revert "chore: update libcosmic"
+  * chore: update libcosmic
+  * chore: update libcosmic
+  * Update to zbus 5.x
+  * chore: update libcosmic
+  * i18n(ar): add translations
+  * i18n(zh-CN): update desktop file translation
+  * fix: i18n wrong language code zh_CN (#78)
+
+-------------------------------------------------------------------
 Thu Apr 24 17:46:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
