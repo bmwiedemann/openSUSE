@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\(OpcUaMachineBackend\\)
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
@@ -151,7 +151,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtOpcUa
 %{_qt6_libdir}/libQt6OpcUa.prl
 %{_qt6_libdir}/libQt6OpcUa.so
-%{_qt6_metatypesdir}/qt6opcua_*_metatypes.json
+%{_qt6_metatypesdir}/qt6opcua_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_opcua.pri
 %{_qt6_pkgconfigdir}/Qt6OpcUa.pc
 %exclude %{_qt6_includedir}/QtOpcUa/%{real_version}
@@ -174,7 +174,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtDeclarativeOpcua/
 %{_qt6_libdir}/libQt6DeclarativeOpcua.prl
 %{_qt6_libdir}/libQt6DeclarativeOpcua.so
-%{_qt6_metatypesdir}/qt6declarativeopcua_*_metatypes.json
+%{_qt6_metatypesdir}/qt6declarativeopcua_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_declarativeopcua.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_declarativeopcua_private.pri
 %{_qt6_pkgconfigdir}/Qt6DeclarativeOpcua.pc
