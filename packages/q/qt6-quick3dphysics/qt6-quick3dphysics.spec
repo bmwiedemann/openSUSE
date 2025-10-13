@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtquick3dphysics-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3dphysics%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 Quick3D Physics Extensions
 License:        GPL-3.0-only
@@ -177,7 +177,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtQuick3DPhysics/
 %{_qt6_libdir}/libQt6Quick3DPhysics.prl
 %{_qt6_libdir}/libQt6Quick3DPhysics.so
-%{_qt6_metatypesdir}/qt6quick3dphysics_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dphysics_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dphysics.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DPhysics.pc
 %exclude %{_qt6_includedir}/QtQuick3DPhysics/%{real_version}
@@ -199,7 +199,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtQuick3DPhysicsHelpers/
 %{_qt6_libdir}/libQt6Quick3DPhysicsHelpers.prl
 %{_qt6_libdir}/libQt6Quick3DPhysicsHelpers.so
-%{_qt6_metatypesdir}/qt6quick3dphysicshelpers_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dphysicshelpers_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dphysicshelpers.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dphysicshelpers_private.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DPhysicsHelpers.pc
