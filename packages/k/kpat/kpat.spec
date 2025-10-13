@@ -25,7 +25,7 @@
 
 %bcond_without released
 Name:           kpat
-Version:        25.08.1
+Version:        25.08.2
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
