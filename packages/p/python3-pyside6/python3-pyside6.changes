@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  7 10:42:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0. Check the installed changes-6.10.0 file for the
+  full list of changes
+- Add patches:
+  * 0001-Revert-Modify-headers-installation-for-CMake-builds.patch
+  * 0001-Fix-installation.patch
+
+-------------------------------------------------------------------
 Wed Aug 27 07:18:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.2. Check the installed changes-6.9.2 file for the

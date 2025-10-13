@@ -17,7 +17,7 @@
 
 
 %define tar_name pyside-setup-everywhere-src
-%define tar_version 6.9.2
+%define tar_version 6.10.0
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -43,18 +43,22 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Python bindings for Qt 6
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
+License:        (GPL-2.0-only AND (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-3.0-only WITH Qt-GPL-exception-1.0) OR LGPL-3.0-only
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-%{version}-src/%{tar_name}-%{tar_version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Revert-Modify-headers-installation-for-CMake-builds.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-installation.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  %{mypython}-Sphinx
-BuildRequires:  %{mypython}-devel >= 3.7
+BuildRequires:  %{mypython}-devel >= 3.10
 BuildRequires:  %{mypython}-numpy-devel
 BuildRequires:  %{mypython}-setuptools
 BuildRequires:  fdupes
@@ -133,9 +137,9 @@ BuildRequires:  cmake(Qt6MultimediaPrivate) >= %{version}
 BuildRequires:  cmake(Qt6MultimediaWidgets) >= %{version}
 BuildRequires:  cmake(Qt6MultimediaWidgetsPrivate) >= %{version}
 BuildRequires:  cmake(Qt6NetworkAuth) >= %{version}
+BuildRequires:  cmake(Qt6NetworkAuthPrivate) >= %{version}
 BuildRequires:  cmake(Qt6Nfc) >= %{version}
 BuildRequires:  cmake(Qt6NfcPrivate) >= %{version}
-BuildRequires:  cmake(Qt6NetworkAuthPrivate) >= %{version}
 BuildRequires:  cmake(Qt6OpenGL) >= %{version}
 BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{version}
 BuildRequires:  cmake(Qt6Positioning) >= %{version}
@@ -143,11 +147,11 @@ BuildRequires:  cmake(Qt6PositioningPrivate) >= %{version}
 BuildRequires:  cmake(Qt6Qml) >= %{version}
 BuildRequires:  cmake(Qt6QmlPrivate) >= %{version}
 BuildRequires:  cmake(Qt6Quick) >= %{version}
-BuildRequires:  cmake(Qt6QuickPrivate) >= %{version}
 BuildRequires:  cmake(Qt6Quick3D) >= %{version}
 BuildRequires:  cmake(Qt6Quick3DPrivate) >= %{version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{version}
 BuildRequires:  cmake(Qt6QuickControls2Private) >= %{version}
+BuildRequires:  cmake(Qt6QuickPrivate) >= %{version}
 BuildRequires:  cmake(Qt6QuickTest) >= %{version}
 BuildRequires:  cmake(Qt6QuickTestPrivate) >= %{version}
 BuildRequires:  cmake(Qt6QuickWidgets) >= %{version}
@@ -170,7 +174,6 @@ BuildRequires:  cmake(Qt6StateMachinePrivate) >= %{version}
 BuildRequires:  cmake(Qt6Svg) >= %{version}
 BuildRequires:  cmake(Qt6SvgPrivate) >= %{version}
 BuildRequires:  cmake(Qt6SvgWidgets) >= %{version}
-BuildRequires:  cmake(Qt6SvgWidgetsPrivate) >= %{version}
 BuildRequires:  cmake(Qt6TextToSpeech) >= %{version}
 BuildRequires:  cmake(Qt6TextToSpeechPrivate) >= %{version}
 BuildRequires:  cmake(Qt6UiPlugin) >= %{version}
@@ -273,8 +276,24 @@ popd
 
 %if "%{pyside_flavor}" == "shiboken6"
 sed -i 's@^#.*env python.*$@#!%{__mypython}@' %{buildroot}%{_bindir}/shiboken_tool.py
+
+# Delete weird copies
+rm -r %{buildroot}%{_prefix}/shiboken6
+
+# and fix broken library location
+sed -i 's#/shiboken6/libshiboken6#/%{_lib}/libshiboken6#' %{buildroot}%{_qt6_cmakedir}/Shiboken6/Shiboken6Targets-*.cmake
+
 %else
 rm %{buildroot}%{_datadir}/PySide6/typesystems/*_{mac,win}.xml
+
+# Also fix pyside manually
+mv %{buildroot}%{_prefix}/PySide6/* %{buildroot}%{_libdir}
+%define rel_sitearch %(printf %{mypython_sitearch} | sed 's#%{_prefix}/##')
+sed -i 's#PYSIDE_PYTHONPATH "\${PACKAGE_PREFIX_DIR}/#PYSIDE_PYTHONPATH "\${PACKAGE_PREFIX_DIR}/%{rel_sitearch}/PySide6/#' %{buildroot}%{_qt6_cmakedir}/PySide6/PySide6Config*.cmake
+sed -i 's#/PySide6/libpyside6#/%{_lib}/libpyside6#' %{buildroot}%{_qt6_cmakedir}/*/*.cmake
+sed -i 's#/typesystems#/share/PySide6/typesystems#' %{buildroot}%{_qt6_cmakedir}/PySide6/*.cmake
+sed -i 's#/glue#/share/PySide6/glue#' %{buildroot}%{_qt6_cmakedir}/PySide6/*.cmake
+
 %endif
 # Install egg-info
 # qtpaths is needed
@@ -393,7 +412,6 @@ popd
 %{_includedir}/PySide6/
 %{_libdir}/libpyside6qml.abi3.so
 %{_qt6_cmakedir}/PySide6/
-%{_qt6_cmakedir}/PySide6Qml/
 %endif
 %{_libdir}/lib%{pyside_flavor}.abi3.so
 %{_libdir}/pkgconfig/%{pyside_flavor}.pc
