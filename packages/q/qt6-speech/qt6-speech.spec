@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtspeech-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -31,10 +31,10 @@
 %bcond_without flite
 %endif
 Name:           qt6-speech%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 TextToSpeech Library and Plugin
-License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 %if %{with flite}
@@ -60,7 +60,7 @@ The QTextToSpeech class provides a convenient access to text-to-speech engines.
 %if !%{qt6_docs_flavor}
 
 %package -n qt6-texttospeech
-Summary:         Qt 6 TextToSpeech plugin
+Summary:        Qt 6 TextToSpeech plugin
 
 %description -n qt6-texttospeech
 Qt 6 TextToSpeech plugin.
@@ -134,7 +134,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtTextToSpeech/
 %{_qt6_libdir}/libQt6TextToSpeech.prl
 %{_qt6_libdir}/libQt6TextToSpeech.so
-%{_qt6_metatypesdir}/qt6texttospeech_*_metatypes.json
+%{_qt6_metatypesdir}/qt6texttospeech_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_texttospeech.pri
 %{_qt6_pkgconfigdir}/Qt6TextToSpeech.pc
 %exclude %{_qt6_includedir}/QtTextToSpeech/%{real_version}
