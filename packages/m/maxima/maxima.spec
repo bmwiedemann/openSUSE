@@ -17,10 +17,10 @@
 
 
 # SBCL not available for older distros
-%if 0%{?suse_version} >= 1500
-%bcond_without sbcl
-%else
+%if 0%{?suse_version} < 1500 || 0%{?suse_version} == 1600
 %bcond_with sbcl
+%else
+%bcond_without sbcl
 %endif
 
 # clisp available for oS, cmucl and gcl are not

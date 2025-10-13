@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  5 23:40:55 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Fix disable sbcl as build requirement for Leap 16 due to its
+  absence
+
+-------------------------------------------------------------------
 Thu Oct  2 07:15:46 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add maxima.rpmlintrc to suppress false positive rpmlint
