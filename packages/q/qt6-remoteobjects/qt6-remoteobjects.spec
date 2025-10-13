@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtremoteobjects-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,10 +30,10 @@
 %global __requires_exclude qt6qmlimport\\(TimeExample\\)
 #
 Name:           qt6-remoteobjects%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt6 RemoteObjects Library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-remoteobjects-rpmlintrc
@@ -137,10 +137,6 @@ This package contains REPC, a compiler for Qt RemoteObjects API definition files
 
 %if !%{qt6_docs_flavor}
 
-# repparser has no private headers
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_repparser_private.pri
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6RepParserPrivate
-
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
@@ -158,19 +154,19 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtRemoteObjectsTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6RemoteObjects/
 %{_qt6_cmakedir}/Qt6RemoteObjectsTools/
-%{_qt6_cmakedir}/Qt6RepParser
-%{_qt6_pkgconfigdir}/Qt6RepParser.pc
+%{_qt6_cmakedir}/Qt6RepParser/
 %{_qt6_descriptionsdir}/RemoteObjects.json
 %{_qt6_descriptionsdir}/RepParser.json
 %{_qt6_includedir}/QtRemoteObjects/
 %{_qt6_includedir}/QtRepParser/
 %{_qt6_libdir}/libQt6RemoteObjects.prl
 %{_qt6_libdir}/libQt6RemoteObjects.so
-%{_qt6_metatypesdir}/qt6remoteobjects_*_metatypes.json
+%{_qt6_metatypesdir}/qt6remoteobjects_metatypes.json
 %{_qt6_mkspecsdir}/features/*
 %{_qt6_mkspecsdir}/modules/qt_lib_remoteobjects.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_repparser.pri
 %{_qt6_pkgconfigdir}/Qt6RemoteObjects.pc
+%{_qt6_pkgconfigdir}/Qt6RepParser.pc
 %exclude %{_qt6_includedir}/QtRemoteObjects/%{real_version}
 
 %files private-devel
@@ -187,7 +183,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtRemoteObjectsQml/
 %{_qt6_libdir}/libQt6RemoteObjectsQml.prl
 %{_qt6_libdir}/libQt6RemoteObjectsQml.so
-%{_qt6_metatypesdir}/qt6remoteobjectsqml_*_metatypes.json
+%{_qt6_metatypesdir}/qt6remoteobjectsqml_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_remoteobjectsqml.pri
 %{_qt6_pkgconfigdir}/Qt6RemoteObjectsQml.pc
 %exclude %{_qt6_includedir}/QtRemoteObjectsQml/%{real_version}
