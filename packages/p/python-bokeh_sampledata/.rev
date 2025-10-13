@@ -7,4 +7,16 @@
     <comment>required to test hvplot</comment>
     <requestid>1204695</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9498dfaaaf458ef59ac9cdc72ab3ee43</srcmd5>
+    <version>2025.0</version>
+    <time>1760362547</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2025.0:
+  * bugfix: add &quot;rb&quot; and &quot;encoding&quot; to several with open clause
+  * typefix: use pandas bracket with col str for Series rather than
+    dot
+  * fix iris dataset typo</comment>
+    <requestid>1311047</requestid>
+  </revision>
 </revisionlist>

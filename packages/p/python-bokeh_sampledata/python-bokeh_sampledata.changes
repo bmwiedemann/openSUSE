@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 13 09:28:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.0:
+  * bugfix: add "rb" and "encoding" to several with open clause
+  * typefix: use pandas bracket with col str for Series rather than
+    dot
+  * fix iris dataset typo
+
+-------------------------------------------------------------------
 Sun Sep 29 13:35:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile v2024.2

@@ -1,7 +1,7 @@
 #
 # spec file for package python-bokeh_sampledata
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,19 @@
 
 %{?sle15_python_modules_python}
 # gh#bokeh/bokeh_sampledata#7
-%define commit cbf9d18114a68632c438850cc9bfd1579f69cf01
 Name:           python-bokeh_sampledata
-Version:        2024.2
+Version:        2025.0
 Release:        0
 Summary:        Sample datasets for Bokeh examples
 License:        BSD-3-Clause
 URL:            https://bokeh.org
 # Use github source for unit tests
 #Source:         https://files.pythonhosted.org/packages/source/b/bokeh_sampledata/bokeh_sampledata-%%{version}.tar.gz
-Source:         https://github.com/bokeh/bokeh_sampledata/archive/%{commit}.tar.gz#/bokeh_sampledata-%{version}-gh.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://github.com/bokeh/bokeh_sampledata/archive/refs/tags/%{version}.tar.gz#/bokeh_sampledata-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 69.5.1}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module icalendar}
@@ -48,7 +47,7 @@ BuildArch:      noarch
 This package contains sample datasets for use with Bokeh examples.
 
 %prep
-%autosetup -p1 -n bokeh_sampledata-%{commit}
+%autosetup -p1 -n bokeh_sampledata-%{version}
 sed -i 's/dynamic = \["version"\]/version = "%{version}"/' pyproject.toml
 
 %build
