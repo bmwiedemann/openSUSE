@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 13 04:46:05 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.5.3
+  * Fixes a bug that affects the library cache. This bug has the
+    effect of making startup times for kew be slower on already
+    slow HDDs.
+- Update to version 3.5.2
+  * Fixed line in cover being erased in landscape mode on some
+    terminals.
+  * Fixed long names no longer scrolling.
+
+-------------------------------------------------------------------
 Mon Oct  6 19:01:39 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.5.1
