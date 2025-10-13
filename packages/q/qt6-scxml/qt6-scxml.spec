@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define short_name qtscxml
 %define tar_name qtscxml-everywhere-src
 %define tar_suffix %{nil}
@@ -31,10 +31,10 @@
 %global __requires_exclude qt6qmlimport\\((Calculator|InvokeExample|Mediaplayer|TrafficLightApplication)\\)
 #
 Name:           qt6-scxml%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        SCXML (state machine notation) compiler and related tools
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-scxml-rpmlintrc
@@ -217,7 +217,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %{_qt6_includedir}/QtScxmlGlobal/
 %{_qt6_libdir}/libQt6Scxml.prl
 %{_qt6_libdir}/libQt6Scxml.so
-%{_qt6_metatypesdir}/qt6scxml_*_metatypes.json
+%{_qt6_metatypesdir}/qt6scxml_metatypes.json
 %{_qt6_mkspecsdir}/features/qscxmlc.prf
 %{_qt6_mkspecsdir}/modules/qt_lib_scxml.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_scxmlglobal_private.pri
@@ -238,7 +238,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %{_qt6_includedir}/QtScxmlQml/
 %{_qt6_libdir}/libQt6ScxmlQml.prl
 %{_qt6_libdir}/libQt6ScxmlQml.so
-%{_qt6_metatypesdir}/qt6scxmlqml_*_metatypes.json
+%{_qt6_metatypesdir}/qt6scxmlqml_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_scxmlqml.pri
 %{_qt6_pkgconfigdir}/Qt6ScxmlQml.pc
 %exclude %{_qt6_includedir}/QtScxmlQml/%{real_version}
@@ -257,7 +257,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %{_qt6_includedir}/QtStateMachine/
 %{_qt6_libdir}/libQt6StateMachine.prl
 %{_qt6_libdir}/libQt6StateMachine.so
-%{_qt6_metatypesdir}/qt6statemachine_*_metatypes.json
+%{_qt6_metatypesdir}/qt6statemachine_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_statemachine.pri
 %{_qt6_pkgconfigdir}/Qt6StateMachine.pc
 %exclude %{_qt6_includedir}/QtStateMachine/%{real_version}
@@ -276,7 +276,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %{_qt6_includedir}/QtStateMachineQml/
 %{_qt6_libdir}/libQt6StateMachineQml.prl
 %{_qt6_libdir}/libQt6StateMachineQml.so
-%{_qt6_metatypesdir}/qt6statemachineqml_*_metatypes.json
+%{_qt6_metatypesdir}/qt6statemachineqml_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_statemachineqml.pri
 %{_qt6_pkgconfigdir}/Qt6StateMachineQml.pc
 %exclude %{_qt6_includedir}/QtStateMachineQml/%{real_version}
