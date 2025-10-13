@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kcolorchooser
-Version:        25.08.1
+Version:        25.08.2
 Release:        0
 Summary:        Color Chooser
 License:        MIT
