@@ -1,7 +1,7 @@
 #
 # spec file for package hxtools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20250309
+Version:        20251011
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0-or-later AND WTFPL
@@ -32,7 +32,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel >= 2
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  zstd
-BuildRequires:  pkgconfig(libHX) >= 3.17
+BuildRequires:  pkgconfig(libHX) >= 5.1
 BuildRequires:  pkgconfig(libpci) >= 3
 BuildRequires:  pkgconfig(mount) >= 2.20
 BuildRequires:  pkgconfig(xcb) >= 1
@@ -162,8 +162,8 @@ an entire mount.
 %install
 %make_install
 b="%buildroot"
-mv "$b/%_bindir"/extract_* "$b/%_libexecdir/%name/"
-mv "$b/%_bindir/rot13" "$b/%_libexecdir/%name/"
+mv -v "$b/%_bindir"/extract_* "$b/%_libexecdir/%name/"
+mv -v "$b/%_bindir/rot13" "$b/%_libexecdir/%name/"
 install -dm0755 "$b/%_datadir/mc/syntax"
 install -dm0755 "$b/%_sysconfdir/openldap/schema"
 ln -s "%_datadir/hxtools/rfc2307bis-utf8.schema" \
@@ -175,9 +175,9 @@ ln -s "%_datadir/%name/hxtools_bashrc.bash" "$b/%_sysconfdir/bashrc.d/"
 mkdir -p "$b/%_sysconfdir/profile.d"
 ln -s "%_datadir/%name/hxtools_profile.bash" "$b/%_sysconfdir/profile.d/z_hxtools_profile.sh"
 %else
-rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
+rm -Rfv "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %endif
-rm -f "$b/%_bindir/xmlformat"
+rm -fv "$b/%_bindir/xmlformat"
 
 %fdupes %buildroot/%_prefix
 
