@@ -1,7 +1,7 @@
 #
 # spec file for package kmymoney
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,9 +31,11 @@ Source0:        https://download.kde.org/stable/kmymoney/%{version}/%{name}-%{ve
 Source1:        https://download.kde.org/stable/kmymoney/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kmymoney.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Add-missing-find_package-for-QtSqlPrivate.patch
 BuildRequires:  doxygen
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libofx-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel

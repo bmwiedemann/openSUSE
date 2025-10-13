@@ -670,4 +670,13 @@
     <comment>Update to 5.2.1</comment>
     <requestid>1298593</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>346dc1d19fdddca6bf6a78b3e8b1768d</srcmd5>
+    <version>5.2.1</version>
+    <time>1760362599</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change:
+  * 0001-Add-missing-find_package-for-QtSqlPrivate.patch</comment>
+    <requestid>1311122</requestid>
+  </revision>
 </revisionlist>
