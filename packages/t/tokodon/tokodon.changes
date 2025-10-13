@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  7 18:49:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.2/
+- Changes since 25.08.1:
+  * Fix vertical alignment of page titles with custom emoji
+  * Add missing include
+  * Make push notifications way more reliable
+  * Mess around a bit with the oauth code
+  * Simplify post tap handling, again
+  * Listen to wideMode when deciding to expand the post interaction bar
+
+-------------------------------------------------------------------
 Wed Sep 10 09:24:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.1

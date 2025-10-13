@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           tokodon
-Version:        25.08.1
+Version:        25.08.2
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
@@ -82,6 +82,11 @@ community.
 %lang_package
 
 %prep
+# lto causes a link error on aarch64 on leap 16, disable it for this arch
+%ifarch aarch64
+%define _lto_cflags %{nil}
+%endif
+
 %autosetup -p1
 
 %build
