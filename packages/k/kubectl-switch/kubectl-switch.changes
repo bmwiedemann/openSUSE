@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Oct 13 06:53:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.0:
+  * New Features
+    - use viper for configuration management (#213) (c173c57)
+  * Documentation
+    - update defaults in config section (1339ef9)
+  * CI/CD
+    - add PR metadata workflow for title validation and labeling
+      (034c01b)
+    - merge all lint jobs in a single workflow (5480be7)
+    - remove label-sync (da92db2)
+
+-------------------------------------------------------------------
+Mon Oct 13 06:44:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.17:
+  * Bug Fixes
+    - remove file extension check. we assume all files in the
+      kubeconfig_dir are kubeconfigs (3b56de5)
+  * CI/CD
+    - github-action: Update github/codeql-action ( v3.30.7 →
+      v4.30.7 ) (#210) (ab77e20)
+    - github-action: update renovatebot/github-action ( v43.0.15 →
+      v43.0.16 ) (7d54339)
+    - github-action: update github/codeql-action ( v3.30.6 →
+      v3.30.7 ) (75fe234)
+    - github-action: update jdx/mise-action ( v3.3.0 → v3.3.1 )
+      (c951441)
+    - github-action: update renovatebot/github-action ( v43.0.14 →
+      v43.0.15 ) (66731bc)
+    - github-action: update jdx/mise-action ( v3.2.0 → v3.3.0 )
+      (9ee7740)
+    - github-action: update github/codeql-action ( v3.30.5 →
+      v3.30.6 ) (c678380)
+    - github-action: update docker/login-action ( v3.5.0 → v3.6.0 )
+      (b78b245)
+    - github-action: update renovatebot/github-action ( v43.0.13 →
+      v43.0.14 ) (26acafa)
+    - github-action: update github/codeql-action ( v3.30.4 →
+      v3.30.5 ) (d9c5ef5)
+    - github-action: update github/codeql-action ( v3.30.3 →
+      v3.30.4 ) (a457268)
+    - github-action: update renovatebot/github-action ( v43.0.12 →
+      v43.0.13 ) (568adf2)
+    - github-action: update renovatebot/github-action ( v43.0.11 →
+      v43.0.12 ) (b09e93d)
+    - github-action: update actions/create-github-app-token (
+      v2.1.2 → v2.1.4 ) (2d27a35)
+    - github-action: update actions/create-github-app-token (
+      v2.1.1 → v2.1.2 ) (f31c63a)
+  * Chores
+    - cleanup spaghetti (#211) (e6e647e)
+    - mise: update go ( 1.25.1 → 1.25.2 ) (41bdb64)
+    - mise: update aqua:goreleaser/goreleaser ( 2.12.4 → 2.12.5 )
+      (ba65d9e)
+    - mise: update aqua:goreleaser/goreleaser ( 2.12.3 → 2.12.4 )
+      (471f138)
+    - mise: Update npm:@commitlint/cli ( 19.8.1 → 20.0.0 ) (#209)
+      (48acdbe)
+    - mise: update aqua:goreleaser/goreleaser ( 2.12.2 → 2.12.3 )
+      (4954cf9)
+    - mise: update aqua:golangci/golangci-lint ( 2.4.0 → 2.5.0 )
+      (350b550)
+    - mise: update aqua:goreleaser/goreleaser ( 2.12.1 → 2.12.2 )
+      (0e46b49)
+    - mise: update aqua:goreleaser/goreleaser ( 2.12.0 → 2.12.1 )
+      (8ed7db6)
+
+-------------------------------------------------------------------
 Sun Sep 14 12:38:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.16:

@@ -17,7 +17,7 @@
 
 
 Name:           kubectl-switch
-Version:        2.2.16
+Version:        2.3.0
 Release:        0
 Summary:        Simple tool to help manage multiple kubeconfig files
 License:        MIT
@@ -83,6 +83,8 @@ go build
 %install
 # Install the binary.
 install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
+
+mkdir -p /home/abuild/.kube/configs
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
