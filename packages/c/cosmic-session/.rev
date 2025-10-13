@@ -76,4 +76,12 @@
     <comment>- remove fix-justfile.patch, upstream fixed the issue (forwarded request 1275589 from rrahl0)</comment>
     <requestid>1275590</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cb156909304efe3e5f3fabeb004c9b70</srcmd5>
+    <version>1.0.0~beta1.1+0</version>
+    <time>1760362481</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1310958</requestid>
+  </revision>
 </revisionlist>

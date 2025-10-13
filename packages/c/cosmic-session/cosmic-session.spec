@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-session
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-session
-Version:        1.0.0~alpha7+0
+Version:        1.0.0~beta1.1+0
 Release:        0
 Summary:        Session manager for the COSMIC desktop environment
 License:        GPL-3.0-only

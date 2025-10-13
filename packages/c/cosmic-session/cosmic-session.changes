@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 29 21:34:01 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+0:
+  * cleanup: logs
+  * fix: avoid hardcoding keyring daemon path for distros like NixOS
+  * fix: start gnome-keyring before cosmic-session & export `SSH_AUTH_SOCK`
+  * chore: update dependencies
+  * chore: migrate to Rust 2024
+  * fix: start gnome-keyring components if the daemon is active
+  * feat: inhibit poweroff button
+  * Revert "use `dbus-update-activation-environment` to update/initialize"
+  * Revert "update $WAYLAND_DISPLAY and $DISPLAY post login"
+  * update $WAYLAND_DISPLAY and $DISPLAY post login
+  * use `dbus-update-activation-environment` to update/initialize environment variables
+
+-------------------------------------------------------------------
 Thu Apr 24 18:05:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
