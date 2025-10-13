@@ -24,10 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://sigrok.org/wiki/PulseView
 Source0:        %{name}-%{version}.tar.xz
-%if 0%{?suse_version} >= 1600
 # PATCH-FIX-OPENSUSE -- Boost.System has been header only since Boost 1.69.0
-Patch1:         %{name}-boost.patch
-%endif
+Source1:        %{name}-boost.patch
 BuildRequires:  cmake
 BuildRequires:  glib2-devel
 BuildRequires:  libboost_filesystem-devel
@@ -53,6 +51,9 @@ PulseView is a Qt-based GUI for sigrok.
 
 %prep
 %autosetup -p1
+%if 0%{?suse_version} >= 1600
+patch -p1 < %{SOURCE1}
+%endif
 
 %build
 %cmake -DDISABLE_WERROR=TRUE ..
