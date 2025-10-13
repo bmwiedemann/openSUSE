@@ -1,3 +1,9 @@
+qt5-pbf-image-plugin (5.2) stable; urgency=low
+
+  * Added COROS V5 maps (PMTiles atlases) style.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 11 Oct 2025 21:17:35 +0200
+
 qt5-pbf-image-plugin (5.1) stable; urgency=low
 
   * Fixed path labels layout/positioning.
