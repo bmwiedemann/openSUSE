@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct  7 18:49:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.2/
+- Changes since 25.08.1:
+  * Update Transitous coverage data from the Transport API Repository
+  * Use MOTIS v2.5.0 location country codes when present
+  * TransportIcon: set source height
+  * Handle additional transit modes added in MOTIS v2.0.76
+  * Parse timezone information from MOTIS v2.3
+  * Simplify whitespaces in line names for legacy Hafas responses
+  * Parse vehicle features in legacy Hafas responses as well
+  * Move Hafas remark type lookup table to Hafas parse base class
+  * Correctly compute legacy Hafas intermediate stop offsets
+  * Add unit test for parsing legacy Hafas query responses
+  * Parse operator name from legacy Hafas responses
+
+-------------------------------------------------------------------
 Wed Sep 10 09:24:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.1
