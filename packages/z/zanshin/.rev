@@ -453,4 +453,12 @@
     <comment>KDE release gear 25.08.1</comment>
     <requestid>1304016</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>d3e4f00c5af958b6b27133b917ff711b</srcmd5>
+    <version>25.08.2</version>
+    <time>1760369200</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 25.08.2 (forwarded request 1309696 from krop)</comment>
+    <requestid>1310287</requestid>
+  </revision>
 </revisionlist>
