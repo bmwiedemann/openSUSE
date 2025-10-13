@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 13 11:34:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-Fix-build-with-Qt-6.10.patch
+  * 0001-Added-the-missing-include-to-fix-the-build.patch
+
+-------------------------------------------------------------------
 Wed Aug 20 08:02:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Drop netcdf build dependency on 32bit archs

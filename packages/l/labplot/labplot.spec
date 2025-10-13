@@ -36,6 +36,9 @@ Source1:        https://download.kde.org/stable/labplot/%{name}-%{version}.tar.x
 Source2:        labplot.keyring
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Fix-finding-liborigin-on-openSUSE.patch
+# PATCH-FIX-UPSTREAM -- Qt 6.10 build fixes
+Patch1:         0001-Fix-build-with-Qt-6.10.patch
+Patch2:         0001-Added-the-missing-include-to-fix-the-build.patch
 BuildRequires:  bison
 BuildRequires:  hdf5-devel
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
