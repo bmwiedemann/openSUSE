@@ -632,4 +632,16 @@
 - Update Requires from setup.py (forwarded request 1302185 from glaubitz)</comment>
     <requestid>1302409</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>3fa94b6da1d77f1b44c9c1e4e2e3eb52</srcmd5>
+    <version>40.0.0</version>
+    <time>1760362565</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 40.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1311027 from glaubitz)</comment>
+    <requestid>1311067</requestid>
+  </revision>
 </revisionlist>
