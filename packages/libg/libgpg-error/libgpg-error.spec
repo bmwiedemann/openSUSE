@@ -2,6 +2,7 @@
 # spec file for package libgpg-error
 #
 # Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           libgpg-error
-Version:        1.55
+Version:        1.56
 Release:        0
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,6 +31,7 @@ Source2:        https://gnupg.org/signature_key.asc#/%{name}.keyring
 Source3:        baselibs.conf
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch0:         libgpg-error-nobetasuffix.patch
+BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
@@ -56,22 +58,19 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libgpg-error0 = %{version}
-%if 0%{?suse_version} < 1600
-Requires(post): info
-Requires(preun): info
-%endif
 
 %description devel
 Files needed for software development using libgpg-error.
 
 %prep
 %autosetup -p1
-
 autoreconf -fiv
 
 %build
-%configure --disable-static \
-	   --enable-install-gpg-error-config
+%configure \
+	--disable-static \
+	--enable-install-gpg-error-config \
+	%{nil}
 %make_build
 
 %install
@@ -81,36 +80,34 @@ rm %{buildroot}%{_libdir}/libgpg-error.la
 # which needs to be packaged first
 rm -r %{buildroot}%{_datadir}/common-lisp
 %find_lang %{name}
+%fdupes %{buildroot}/%{_prefix}
 
 %check
 %make_build check
 
-%post -n libgpg-error0 -p /sbin/ldconfig
-%postun -n libgpg-error0 -p /sbin/ldconfig
-
-%post devel
-%install_info --info-dir=%{_infodir} %{_infodir}/gpgrt.info.gz
-
-%preun devel
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/gpgrt.info.gz
+%ldconfig_scriptlets -n libgpg-error0
 
 %files -n libgpg-error0 -f %{name}.lang
 %license COPYING.LIB COPYING
 %doc README NEWS ChangeLog AUTHORS ABOUT-NLS
-%{_libdir}/libgpg-error*.so.*
+%{_libdir}/libgpg-error.so.0{,.*}
 
 %files devel
-%{_bindir}/*
-%{_libdir}/libgpg-error*.so
+%{_bindir}/gpg-error
+%{_bindir}/gpg-error-config
+%{_bindir}/gpgrt-config
+%{_bindir}/yat2m
+%{_libdir}/libgpg-error.so
 %{_libdir}/pkgconfig/gpg-error.pc
-%{_includedir}/*
+%{_includedir}/gpg-error.h
+%{_includedir}/gpgrt.h
 %dir %{_datadir}/aclocal
 %{_datadir}/aclocal/gpg-error.m4
 %{_datadir}/aclocal/gpgrt.m4
 %dir %{_datadir}/libgpg-error
 %{_datadir}/libgpg-error/errorref.txt
 %{_infodir}/gpgrt.info%{?ext_info}
-%{_mandir}/man1/gpg-error-config.*
-%{_mandir}/man1/gpgrt-config.*
+%{_mandir}/man1/gpg-error-config.1%{?ext_man}
+%{_mandir}/man1/gpgrt-config.1%{?ext_man}
 
 %changelog

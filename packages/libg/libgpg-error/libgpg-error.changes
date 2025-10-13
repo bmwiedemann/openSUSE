@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  8 20:01:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.56:
+  * Support the %b conversion specifier in the estream printf
+    functions
+  * New mode keyword "share=xxx" for gpgrt_fopen
+  * Change the default method to get the number of fds to close.
+    This fixes a spawning problem on certain POSIX machine.
+  * Interface changes relative to the 1.55 release:
+    GPG_ERR_UNEXPECTED_PACKET           NEW.
+    GPGRT_PROCESS_STDIO_NUL             NEW.
+- drop obsolete info macros and address all rpmlint warnings
+- refresh upstream signing keyring
+
+-------------------------------------------------------------------
 Mon Sep 22 10:44:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer explicitly require info by -devel package: info files
