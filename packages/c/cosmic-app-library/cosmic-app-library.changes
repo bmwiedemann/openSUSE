@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Sep 30 12:42:32 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~beta.1.1+1:
+  * i18n(cs): Update Czech translation
+  * Update cosmic_app_library.ftl PL translation
+  * Add Arabic .desktop
+  * Add Arabic .metainfo.xml
+  * i18n(ar): Update Arabic translation
+  * i18n(ar): Update Arabic translation
+  * i18n(es): update translations
+  * fix: update freedesktop-desktop-entry
+  * chore: update freedesktop-desktop-entry
+  * fix: alignment
+  * chore: update dependencies
+  * chore: migrate to Rust 2024 edition
+  * i18n(sk): Update translations
+  * fix: context menu
+  * i18n: updated bulgarian translation
+  * chore: update libcosmic
+  * i18n(fa): update Persian translation
+  * chore: update libcosmic
+  * chore: update libcosmic
+  * i18n - update russian translations
+  * Update Hungarian translations
+  * Update libcosmic and drop dbus-config
+  * chore: update dependencies and fix launch of terminal apps
+  * Norwegian-nb Translation
+  * i18n(nl) Changed translation "Applibrary" to "Appbibliotheek"
+  * i18n(bg): Add Bulgarian translation
+  * fix: track focus immediately after window creation
+  * feat: start app on submit and implement better keyboard navigation
+  * i18n(es): Fix words for coherence between components
+  * chore: update libcosmic
+  * fix: close on click outside
+  * i18n(zh-CN): update translation
+  * update ci
+  * fix: clean up context menu popup
+
+-------------------------------------------------------------------
 Thu Apr 24 17:22:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
