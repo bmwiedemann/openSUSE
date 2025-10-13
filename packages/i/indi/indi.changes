@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 13 07:13:48 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.6:
+  * Refactoring GeminiFlatPanel driver to support multiple devices
+  * Added check for lightbox capabilities in LI::updateProperties()
+  * Alpaca bridge
+  * Add NUT UPS Safety device support to drivers.xml 
+  * Intertial Measurement Unit (IMU) Support
+  * Telescope Simulator, AltAz mount and derotation option
+
+-------------------------------------------------------------------
 Sun Sep 28 16:52:12 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Boost.System has been header only since Boost 1.69.0

@@ -176,4 +176,19 @@
 </comment>
     <requestid>1307661</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>52daeade4825cfc68c6c0fd4d221fe77</srcmd5>
+    <version>2.1.6</version>
+    <time>1760362530</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.6:
+  * Refactoring GeminiFlatPanel driver to support multiple devices
+  * Added check for lightbox capabilities in LI::updateProperties()
+  * Alpaca bridge
+  * Add NUT UPS Safety device support to drivers.xml 
+  * Intertial Measurement Unit (IMU) Support
+  * Telescope Simulator, AltAz mount and derotation option
+</comment>
+    <requestid>1311011</requestid>
+  </revision>
 </revisionlist>
