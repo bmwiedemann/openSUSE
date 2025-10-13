@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  7 18:48:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.2/
+- Changes since 25.08.1:
+  * Update version description
+  * Fix infinite loop when alarms trigger if read-only or the calendar is non-writable
+  * If an alarm is late-cancelled, don't remove the event if a sub-repetition is still due
+  * In edit dialog, don't output high accuracy warning if start time is before now
+
+-------------------------------------------------------------------
 Wed Sep 10 09:23:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.1
