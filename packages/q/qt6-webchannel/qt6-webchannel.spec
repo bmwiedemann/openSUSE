@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtwebchannel-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,10 +27,10 @@
 %endif
 #
 Name:           qt6-webchannel%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 WebChannel library
-License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webchannel-rpmlintrc
@@ -148,7 +148,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtWebChannel/
 %{_qt6_libdir}/libQt6WebChannel.prl
 %{_qt6_libdir}/libQt6WebChannel.so
-%{_qt6_metatypesdir}/qt6webchannel_*_metatypes.json
+%{_qt6_metatypesdir}/qt6webchannel_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_webchannel.pri
 %{_qt6_pkgconfigdir}/Qt6WebChannel.pc
 %exclude %{_qt6_includedir}/QtWebChannel/%{real_version}/
@@ -168,7 +168,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtWebChannelQuick/
 %{_qt6_libdir}/libQt6WebChannelQuick.prl
 %{_qt6_libdir}/libQt6WebChannelQuick.so
-%{_qt6_metatypesdir}/qt6webchannelquick_*_metatypes.json
+%{_qt6_metatypesdir}/qt6webchannelquick_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_webchannelquick.pri
 %{_qt6_pkgconfigdir}/Qt6WebChannelQuick.pc
 %exclude %{_qt6_includedir}/QtWebChannelQuick/%{real_version}/
