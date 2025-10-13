@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Sep 30 20:44:13 UTC 2025 - mkd <mkdwho@icloud.com>
+
+cosmic-osd.spec: add `BuildRequires: pkgconfig(libinput)`
+
+-------------------------------------------------------------------
+Mon Sep 29 22:24:49 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Add `BuildRequires: clang-devel` for Rust bindgen
+
+-------------------------------------------------------------------
+Mon Sep 29 22:13:42 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Add `BuildRequires: pkgconfig(libpipewire-0.3)` for libspa-sys
+
+-------------------------------------------------------------------
+Mon Sep 29 20:05:45 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+5:
+  * i18n(cs): Add Czech translation (#132)
+  * Remove duplicate entry in zh-TW translation
+  * Fix translations (even more)
+  * Fix translations (more)
+  * Translation fixes
+  * i18n(bg): updated bulgarian translation (#129)
+  * Localise BIOS entry for French, Japanese, and Euro Spanish (#97)
+  * chore: update dependencies
+  * feat: osd indicator for touchpad toggle
+  * chore: update dependencies
+  * feat(osd_indicator): respect amplification config
+  * i18n(sk): Update translations
+  * i18n(zh-CN): update translation
+  * i18n(sv): update translation
+  * i18n(ar): update translations
+  * i18n(pt-BR): update translations
+  * i18n(tr): add Turkish translations
+  * i18n(ar): add translations
+  * i18(pl): update Polish translation
+  * i18n(es): Updated translation, fix words for coherence
+  * i18n(bg): Add Bulgarian translation
+  * i18n(de): add German translation
+  * i18n(hu): update translation
+  * fix: use xdg base dir to locate volume change file
+  * fix(headset): set source if headset selected
+  * fix(headset): if headset is chosen, force the port of the default source for the preffered headset profile
+  * chore: build deps
+  * refactor: improved handling of tracked card
+  * feat: confirm headphone / headset
+  * chore: update libcosmic
+  * fix: patch deps
+  * chore: Rust 2024 edition
+  * Update to zbus 5.x
+  * Update libcosmic and drop dbus-config
+  * fix: handle activation when already prompting for confirmation
+  * chore: update libcosmic
+  * i18n(zh-CN): update desktop file translation
+
+-------------------------------------------------------------------
 Thu Apr 24 17:50:17 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
