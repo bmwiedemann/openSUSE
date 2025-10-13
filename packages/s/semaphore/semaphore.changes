@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Oct 13 11:03:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.32:
+  * feat(auth): add config option auth style for oidc provider
+
+-------------------------------------------------------------------
+Fri Sep 19 12:04:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.31 (no releases between 2.16.19 and this
+  one):
+  * Bugfixes
+    - Creating Alias for Terraform HTTP backend
+  * Features
+    - Added --register flag for runner command semaphore runner
+      start
+
+-------------------------------------------------------------------
+Fri Sep 19 11:53:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.19:
+  * Features
+    - Added flag --register for runner
+  * Bugfix
+    - Docker: Fixed ability to register runner using registration
+      token.
+
+-------------------------------------------------------------------
 Thu Aug 21 08:49:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.16.18:
