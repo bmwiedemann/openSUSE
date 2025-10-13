@@ -19,7 +19,7 @@
 %define modname authlib
 %{?sle15_python_module_pythons}
 Name:           python-Authlib
-Version:        1.6.1
+Version:        1.6.5
 Release:        0
 Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
@@ -41,7 +41,9 @@ BuildRequires:  %{python_module cachelib}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-multipart}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module starlette}
 BuildRequires:  %{python_module typing_extensions}
@@ -75,10 +77,9 @@ $python -mpytest tests/flask
 # gh#lepture/authlib#456
 # $python -mpytest tests/jose -k 'not (test_dir_alg_xc20p or test_xc20p_content_encryption_decryption)'
 $python -mpytest tests/jose
-export DJANGO_SETTINGS_MODULE=tests.clients.test_django.settings
+export DJANGO_SETTINGS_MODULE=tests.django_settings
 $python -mpytest tests/clients
-# export DJANGO_SETTINGS_MODULE=tests.django.settings
-# $python -mpytest tests/django
+$python -mpytest tests/django
 }
 
 %files %{python_files}

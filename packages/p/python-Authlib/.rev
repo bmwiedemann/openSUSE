@@ -256,4 +256,42 @@
     <comment></comment>
     <requestid>1298827</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>34260d36d9e5315110ec3f03a501411d</srcmd5>
+    <version>1.6.5</version>
+    <time>1760362563</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.5 (fixes CVE-2025-61920, bsc#1251921)
+  * RFC7591 generate_client_info and generate_client_secret take a request
+    parameter.
+  * Add size limitation when decode JWS/JWE to prevent DoS.
+  * Add size limitation for DEF JWE zip algorithm.
+- Update to 1.6.4
+  * fix(jose): prevent public/unprotected header overwriting protected header
+    by @lepture in #809
+  * Fix InsecureTransportError raising by @azmeuk in #810
+  * Add conventional-commits pre-commit hook by @azmeuk in #811
+  * Fix response_mode=form_post with Starlette client by @azmeuk in #812
+  * Specify README.md as project long description by @EpicWink in #817
+  * Migrate tests to pytest paradigm by @azmeuk in #813
+  * jose/jws: Reject unprotected ‘crit’ and enforce type; add tests
+    by @AL-Cybision in #823
+  * Use explicit *.test urls in unit tests by @azmeuk in #824
+- Update to 1.6.3
+  * Add diff-cover check in GHA by @azmeuk in #803
+  * Run GHA unit tests with uv by @azmeuk in #805
+  * Move from pre-commit to prek by @azmeuk in #804
+  * Sign OIDC id_token according to id_token_signed_response_alg client
+    metadata by @azmeuk in #802
+- Update to 1.6.2
+  * Allow insecure transport for 127.0.0.1 for debugging
+    by @geigerzaehler in #788
+  * Raise a MissingCodeError when code parameter is missing by @lepture in #786
+  * Temporarily restore OAuth2Request body parameter by @azmeuk in #791
+  * Raise MissingCodeException when code parameter is missing
+    by @lepture in #794
+  * Fix id_token generation with EdDSA alg by @azmeuk in #800
+- Update test requirements (forwarded request 1311035 from nkrapp)</comment>
+    <requestid>1311065</requestid>
+  </revision>
 </revisionlist>
