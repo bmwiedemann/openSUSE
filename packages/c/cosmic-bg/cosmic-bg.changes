@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 29 20:23:46 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+1:
+  * i18n(cs): Add Czech translation
+  * i18n(bg): Add Bulgarian translation
+  * i18n(nl) update Dutch translation
+  * i18n - update russian translations
+  * i18n (ar): Updated Arabic tranlation
+  * i18n (ar): Updated Arabic tranlation
+  * i18n (ar): Updated Arabic translation
+  * chore: deps
+  * chore: update dependencies
+  * fix: use image feature of jxl to fix image decoding error
+  * chore: update jxl-oxide, rust-version, rust edition, & dependencies
+  * i18n(zh-CN): update translation
+
+-------------------------------------------------------------------
 Thu Apr 24 17:23:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
