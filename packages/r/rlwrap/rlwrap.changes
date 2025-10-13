@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 16 08:41:43 UTC 2025 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update to 0.47.1
+
+  * Minor bug fix
+
+  - Correct typo (== instead of = in a configure test) that caused a mis-configuration on systems where sh is linked to dash 
+
+-------------------------------------------------------------------
 Fri Sep 12 13:52:54 UTC 2025 - Daniel Donisa <daniel.donisa@suse.com>
 
 - Update to 0.47
