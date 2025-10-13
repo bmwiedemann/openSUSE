@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qthttpserver-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-httpserver%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt HTTP Server
 License:        GPL-3.0-only
@@ -109,7 +109,7 @@ ABI or API guarantees.
 %{_qt6_includedir}/QtHttpServer/
 %{_qt6_libdir}/libQt6HttpServer.prl
 %{_qt6_libdir}/libQt6HttpServer.so
-%{_qt6_metatypesdir}/qt6httpserver_*_metatypes.json
+%{_qt6_metatypesdir}/qt6httpserver_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_httpserver.pri
 %{_qt6_pkgconfigdir}/Qt6HttpServer.pc
 %exclude %{_qt6_includedir}/QtHttpServer/%{real_version}
