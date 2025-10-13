@@ -559,4 +559,14 @@ update to version 1.8.30</comment>
     <comment></comment>
     <requestid>1303589</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>9dff2e3607ac43fe4c7c5edd707e7cef</srcmd5>
+    <version>1.8.32</version>
+    <time>1760362550</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1310932 from benoit_monin
+
+update to version 1.8.32</comment>
+    <requestid>1311050</requestid>
+  </revision>
 </revisionlist>

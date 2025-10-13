@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 12 16:13:38 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.32:
+  * Send SMTPUTF8 keyword only when envelope addresses contain
+    non-ASCII domain parts
+  * Fix header encoding when building with --disable-nls
+
+-------------------------------------------------------------------
 Sun Sep  7 16:49:09 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.31:
