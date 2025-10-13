@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  7 08:53:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * https://www.qt.io/blog/qt-6.10-released
+- Drop patch:
+  * 0001-Rename-variable-being-shadowed.patch
+- Add patches:
+  * 0001-Use-newer-GCC-on-Leap.patch
+  * 0001-Use-newer-GCC-on-Leap-16.patch
+
+-------------------------------------------------------------------
 Wed Aug 27 07:15:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.2:

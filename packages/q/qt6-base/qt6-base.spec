@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -33,7 +33,7 @@
 %bcond_without system_md4c
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -42,27 +42,28 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-# PATCH-FIX-UPSTREAM 0001-Rename-variable-being-shadowed.patch alarrosa@suse.com -- https://codereview.qt-project.org/c/qt/qtbase/+/638284
-Patch0:         0001-Rename-variable-being-shadowed.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
-%if 0%{?suse_version} == 1500
-Patch101:       0001-Use-newer-GCC-on-Leap.patch
-%endif
-Patch102:       0001-Don-t-strip-binaries-when-building-with-qmake.patch
+Patch101:       0001-Don-t-strip-binaries-when-building-with-qmake.patch
 # Change a couple default build system settings
-Patch103:       0001-Change-default-settings-for-Qt-packages.patch
+Patch102:       0001-Change-default-settings-for-Qt-packages.patch
+# Conditional patches depending on the leap version
+Patch201:       0001-Use-newer-GCC-on-Leap.patch
+Patch202:       0001-Use-newer-GCC-on-Leap-16.patch
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
 # The default GCC version in Leap 15 is too old
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc13-PIE
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++
+BuildRequires:  gcc14-PIE
+BuildRequires:  gcc14-c++
 %endif
+%if 0%{?suse_version} == 1600
+BuildRequires:  gcc15-PIE
+BuildRequires:  gcc15-c++
+%endif
+BuildRequires:  gcc-c++
 BuildRequires:  libicu-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libproxy-devel
@@ -158,6 +159,9 @@ Requires:       cmake(Qt6OpenGLWidgets) = %{real_version}
 Requires:       cmake(Qt6PrintSupport) = %{real_version}
 Requires:       cmake(Qt6Sql) = %{real_version}
 Requires:       cmake(Qt6Test) = %{real_version}
+Requires:       cmake(Qt6WaylandClient) = %{real_version}
+# This package contains information on features enabled at build time
+Requires:       cmake(Qt6WaylandGlobalPrivate) = %{real_version}
 Requires:       cmake(Qt6Widgets) = %{real_version}
 Requires:       cmake(Qt6Xml) = %{real_version}
 BuildArch:      noarch
@@ -178,6 +182,7 @@ Requires:       cmake(Qt6OpenGLPrivate) = %{real_version}
 Requires:       cmake(Qt6PrintSupportPrivate) = %{real_version}
 Requires:       cmake(Qt6SqlPrivate) = %{real_version}
 Requires:       cmake(Qt6TestPrivate) = %{real_version}
+Requires:       cmake(Qt6WaylandClientPrivate) = %{real_version}
 Requires:       cmake(Qt6WidgetsPrivate) = %{real_version}
 Requires:       cmake(Qt6XmlPrivate) = %{real_version}
 BuildArch:      noarch
@@ -241,10 +246,14 @@ The Qt 6 Core library. It adds these features to C++:
 Summary:        Development files for the Qt 6 Core library
 Requires:       libQt6Core6 = %{version}
 Requires:       qt6-base-common-devel = %{version}
+# Some KDE packages start using gcc features not available in gcc < 14
 %if 0%{?suse_version} == 1500
-# Some public classes require C++ 17 features
-Requires:       gcc13-PIE
-Requires:       gcc13-c++
+Requires:       gcc14-PIE
+Requires:       gcc14-c++
+%endif
+%if 0%{?suse_version} == 1600
+Requires:       gcc15-PIE
+Requires:       gcc15-c++
 %endif
 
 %description -n qt6-core-devel
@@ -526,6 +535,33 @@ Requires:       cmake(Qt6Test) = %{real_version}
 This package provides private headers of libQt6Test that do not have any
 ABI or API guarantees.
 
+%package -n libQt6WaylandClient6
+Summary:        Qt 6 WaylandClient library
+
+%description -n libQt6WaylandClient6
+The Qt 6 WaylandClient library.
+
+%package -n qt6-waylandclient-devel
+Summary:        Development files for the Qt 6 WaylandClient library
+Requires:       libQt6WaylandClient6 = %{version}
+# qtwaylandscanner is required
+Requires:       qt6-wayland = %{version}
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6WaylandGlobalPrivate) = %{real_version}
+
+%description -n qt6-waylandclient-devel
+Development files for the Qt6 WaylandClient library.
+
+%package -n qt6-waylandclient-private-devel
+Summary:        Non-ABI stable API for the Qt 6 WaylandClient library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6WaylandClient) = %{real_version}
+
+%description -n qt6-waylandclient-private-devel
+This package provides private headers of libQt6WaylandClient that do not have
+any ABI or API guarantees.
+
 %package -n libQt6Widgets6
 Summary:        Qt 6 Widgets library
 Requires:       libQt6Gui6 = %{version}
@@ -588,14 +624,37 @@ BuildArch:      noarch
 %description -n qt6-docs-common
 This package contains common files used for building Qt documentation.
 
+### Private only libraries ###
+
+%package -n qt6-waylandglobal-private-devel
+Summary:        Collection of build features used by qt6-wayland libraries
+
+%description -n qt6-waylandglobal-private-devel
+This package contains enabled features information shared by all the
+qt6-wayland libraries.
+
+%package -n libQt6WlShellIntegration6
+Summary:        Qt 6 WlShellIntegration library
+
+%description -n libQt6WlShellIntegration6
+The Qt 6 WlShellIntegration library.
+This library does not have any ABI or API guarantees.
+
+%package -n qt6-wlshellintegration-private-devel
+Summary:        Qt 6 WlShellIntegration library - Development files
+Requires:       libQt6WlShellIntegration6 = %{version}
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6WaylandClient) = %{real_version}
+
+%description -n qt6-wlshellintegration-private-devel
+Development files for the Qt 6 WlShellIntegration library.
+This library does not have any ABI or API guarantees.
 
 ### Static libraries ###
 
 %package -n qt6-exampleicons-devel-static
 Summary:        Qt ExampleIcons module
-# TODO
-Requires:       cmake(Qt6CorePrivate) = %{real_version}
-Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6Core) = %{real_version}
 
 %description -n qt6-exampleicons-devel-static
 Qt icon library for examples. This private library can be used by Qt examples.
@@ -733,12 +792,25 @@ access the available data sources. Note that you also need to install
 and configure ODBC drivers for the ODBC driver manager that is
 installed on your system.
 
+%package -n qt6-wayland
+Summary:        Qt 6 Wayland plugins
+
+%description -n qt6-wayland
+Qt 6 wayland plugins.
+
 %{qt6_examples_package}
 
 %endif
 
 %prep
-%autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
+%setup -q -n %{tar_name}-%{real_version}%{tar_suffix}
+%autopatch -p1 -m 0 -M 200
+%if 0%{?suse_version} == 1500
+%patch -p1 -P 201
+%endif
+%if 0%{?suse_version} == 1600
+%patch -p1 -P 202
+%endif
 
 # Copy the freetype license file to prevent errors when building docs
 cp src/3rdparty/freetype/LICENSE.txt src/gui/painting/FREETYPE_LICENSE.txt
@@ -759,10 +831,6 @@ rm LICENSES/{FTL.txt,IJG.txt,libpng-2.0.txt,Zlib.txt}
 cat >> meta_package << EOF
 This is a meta package, it does not contain any file
 EOF
-
-# Work around an issue with zstd CMake files (boo#1211566)
-# TODO: Remove when the issue is fixed
-sed -i '/zstd CONFIG/d' cmake/FindWrapZSTD.cmake
 
 %build
 %define _lto_cflags %{nil}
@@ -831,10 +899,6 @@ mkdir -p %{buildroot}%{_qt6_translationsdir}
 # CMake modules for plugins are not useful
 rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 
-# There are no private headers
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_concurrent_private.pri
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets_private.pri
-
 # These files are only useful for the Qt continuous integration
 rm %{buildroot}%{_qt6_libexecdir}/ensure_pro_file.cmake
 rm %{buildroot}%{_qt6_libexecdir}/qt-android-runner.py
@@ -849,11 +913,10 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6ExamplesAssetDownloaderPrivate
 rm -r %{buildroot}%{_qt6_includedir}/QtExamplesAssetDownloader
 rm %{buildroot}%{_qt6_descriptionsdir}/ExamplesAssetDownloaderPrivate.json
 rm %{buildroot}%{_qt6_libdir}/libQt6ExamplesAssetDownloader.*
-rm %{buildroot}%{_qt6_metatypesdir}/qt6examplesassetdownloaderprivate_*_metatypes.json
+rm %{buildroot}%{_qt6_metatypesdir}/qt6examplesassetdownloaderprivate*_metatypes.json
 
 # E: env-script-interpreter
 sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/corelib/serialization/cbordump/cbortag.py
-
 
 %ldconfig_scriptlets -n libQt6Concurrent6
 %ldconfig_scriptlets -n libQt6Core6
@@ -865,7 +928,9 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %ldconfig_scriptlets -n libQt6PrintSupport6
 %ldconfig_scriptlets -n libQt6Sql6
 %ldconfig_scriptlets -n libQt6Test6
+%ldconfig_scriptlets -n libQt6WaylandClient6
 %ldconfig_scriptlets -n libQt6Widgets6
+%ldconfig_scriptlets -n libQt6WlShellIntegration6
 %ldconfig_scriptlets -n libQt6Xml6
 
 %files devel
@@ -907,6 +972,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfigVersion.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfigVersionImpl.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/QtBuildInternalsExtra.cmake
+%{_qt6_cmakedir}/Qt6BuildInternals/QtBuildInternalsHelpers.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/QtStandaloneTestTemplateProject/
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtBaseTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6HostInfo/
@@ -935,13 +1001,11 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 
 %files -n qt6-concurrent-devel
 %{_qt6_cmakedir}/Qt6Concurrent/
-# upstream bug, there are no headers in include/QtConcurrent/<version>
-%{_qt6_cmakedir}/Qt6ConcurrentPrivate/
 %{_qt6_descriptionsdir}/Concurrent.json
 %{_qt6_includedir}/QtConcurrent/
 %{_qt6_libdir}/libQt6Concurrent.prl
 %{_qt6_libdir}/libQt6Concurrent.so
-%{_qt6_metatypesdir}/qt6concurrent_*_metatypes.json
+%{_qt6_metatypesdir}/qt6concurrent_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_concurrent.pri
 %{_qt6_pkgconfigdir}/Qt6Concurrent.pc
 
@@ -968,7 +1032,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_includedir}/QtCore/
 %{_qt6_libdir}/libQt6Core.prl
 %{_qt6_libdir}/libQt6Core.so
-%{_qt6_metatypesdir}/qt6core_*_metatypes.json
+%{_qt6_metatypesdir}/qt6core_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_core.pri
 # workaround for boo#1195368, QTBUG-100370
 %{_qt6_mkspecsdir}/modules/qt_lib_core_private.pri
@@ -990,7 +1054,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_includedir}/QtDBus/
 %{_qt6_libdir}/libQt6DBus.prl
 %{_qt6_libdir}/libQt6DBus.so
-%{_qt6_metatypesdir}/qt6dbus_*_metatypes.json
+%{_qt6_metatypesdir}/qt6dbus_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_dbus.pri
 %{_qt6_pkgconfigdir}/Qt6DBus.pc
 %exclude %{_qt6_includedir}/QtDBus/%{real_version}
@@ -1022,7 +1086,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_includedir}/QtGui/
 %{_qt6_libdir}/libQt6Gui.prl
 %{_qt6_libdir}/libQt6Gui.so
-%{_qt6_metatypesdir}/qt6gui_*_metatypes.json
+%{_qt6_metatypesdir}/qt6gui_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_gui.pri
 %{_qt6_pkgconfigdir}/Qt6Gui.pc
 %exclude %{_qt6_includedir}/QtGui/%{real_version}
@@ -1050,10 +1114,10 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_libdir}/libQt6EglFsKmsSupport.so
 %{_qt6_libdir}/libQt6XcbQpa.prl
 %{_qt6_libdir}/libQt6XcbQpa.so
-%{_qt6_metatypesdir}/qt6eglfsdeviceintegrationprivate_*_metatypes.json
-%{_qt6_metatypesdir}/qt6eglfskmsgbmsupportprivate_*_metatypes.json
-%{_qt6_metatypesdir}/qt6eglfskmssupportprivate_*_metatypes.json
-%{_qt6_metatypesdir}/qt6xcbqpaprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6eglfsdeviceintegrationprivate_metatypes.json
+%{_qt6_metatypesdir}/qt6eglfskmsgbmsupportprivate_metatypes.json
+%{_qt6_metatypesdir}/qt6eglfskmssupportprivate_metatypes.json
+%{_qt6_metatypesdir}/qt6xcbqpaprivate_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_eglfs_kms_gbm_support_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_eglfs_kms_support_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_eglfsdeviceintegration_private.pri
@@ -1069,7 +1133,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_includedir}/QtNetwork/
 %{_qt6_libdir}/libQt6Network.prl
 %{_qt6_libdir}/libQt6Network.so
-%{_qt6_metatypesdir}/qt6network_*_metatypes.json
+%{_qt6_metatypesdir}/qt6network_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_network.pri
 %{_qt6_pkgconfigdir}/Qt6Network.pc
 %exclude %{_qt6_includedir}/QtNetwork/%{real_version}
@@ -1089,7 +1153,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_includedir}/QtOpenGL/
 %{_qt6_libdir}/libQt6OpenGL.prl
 %{_qt6_libdir}/libQt6OpenGL.so
-%{_qt6_metatypesdir}/qt6opengl_*_metatypes.json
+%{_qt6_metatypesdir}/qt6opengl_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_opengl.pri
 %{_qt6_pkgconfigdir}/Qt6OpenGL.pc
 %exclude %{_qt6_includedir}/QtOpenGL/%{real_version}
@@ -1105,13 +1169,11 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 
 %files -n qt6-openglwidgets-devel
 %{_qt6_cmakedir}/Qt6OpenGLWidgets/
-# upstream bug, there are no headers in include/QtOpenGLWidgets/<version>
-%{_qt6_cmakedir}/Qt6OpenGLWidgetsPrivate/
 %{_qt6_descriptionsdir}/OpenGLWidgets.json
 %{_qt6_includedir}/QtOpenGLWidgets/
 %{_qt6_libdir}/libQt6OpenGLWidgets.prl
 %{_qt6_libdir}/libQt6OpenGLWidgets.so
-%{_qt6_metatypesdir}/qt6openglwidgets_*_metatypes.json
+%{_qt6_metatypesdir}/qt6openglwidgets_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets.pri
 %{_qt6_pkgconfigdir}/Qt6OpenGLWidgets.pc
 
@@ -1125,7 +1187,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_includedir}/QtPrintSupport/
 %{_qt6_libdir}/libQt6PrintSupport.prl
 %{_qt6_libdir}/libQt6PrintSupport.so
-%{_qt6_metatypesdir}/qt6printsupport_*_metatypes.json
+%{_qt6_metatypesdir}/qt6printsupport_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_printsupport.pri
 %{_qt6_pkgconfigdir}/Qt6PrintSupport.pc
 %exclude %{_qt6_includedir}/QtPrintSupport/%{real_version}
@@ -1147,7 +1209,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_libdir}/libQt6Sql.prl
 %{_qt6_libdir}/libQt6Sql.so
 %{_qt6_mkspecsdir}/modules/qt_lib_sql.pri
-%{_qt6_metatypesdir}/qt6sql_*_metatypes.json
+%{_qt6_metatypesdir}/qt6sql_metatypes.json
 %{_qt6_pkgconfigdir}/Qt6Sql.pc
 %exclude %{_qt6_includedir}/QtSql/%{real_version}
 
@@ -1166,7 +1228,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_includedir}/QtTest/
 %{_qt6_libdir}/libQt6Test.prl
 %{_qt6_libdir}/libQt6Test.so
-%{_qt6_metatypesdir}/qt6test_*_metatypes.json
+%{_qt6_metatypesdir}/qt6test_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_testlib.pri
 %{_qt6_pkgconfigdir}/Qt6Test.pc
 %exclude %{_qt6_includedir}/QtTest/%{real_version}
@@ -1176,6 +1238,27 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %dir %{_qt6_includedir}/QtTest
 %{_qt6_includedir}/QtTest/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_testlib_private.pri
+
+%files -n libQt6WaylandClient6
+%{_qt6_libdir}/libQt6WaylandClient.so.*
+
+%files -n qt6-waylandclient-devel
+%dir %{_qt6_cmakedir}/Qt6
+%{_qt6_cmakedir}/Qt6WaylandClient/
+%{_qt6_cmakedir}/Qt6WaylandScannerTools/
+%{_qt6_descriptionsdir}/WaylandClient.json
+%{_qt6_includedir}/QtWaylandClient/
+%{_qt6_libdir}/libQt6WaylandClient.prl
+%{_qt6_libdir}/libQt6WaylandClient.so
+%{_qt6_metatypesdir}/qt6waylandclient_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_waylandclient.pri
+%{_qt6_pkgconfigdir}/Qt6WaylandClient.pc
+%exclude %{_qt6_includedir}/QtWaylandClient/%{real_version}
+
+%files -n qt6-waylandclient-private-devel
+%{_qt6_cmakedir}/Qt6WaylandClientPrivate/
+%{_qt6_includedir}/QtWaylandClient/%{real_version}/
+%{_qt6_mkspecsdir}/modules/qt_lib_waylandclient_private.pri
 
 %files -n libQt6Widgets6
 %{_qt6_libdir}/libQt6Widgets.so.*
@@ -1187,7 +1270,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_includedir}/QtWidgets/
 %{_qt6_libdir}/libQt6Widgets.prl
 %{_qt6_libdir}/libQt6Widgets.so
-%{_qt6_metatypesdir}/qt6widgets_*_metatypes.json
+%{_qt6_metatypesdir}/qt6widgets_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_widgets.pri
 %{_qt6_pkgconfigdir}/Qt6Widgets.pc
 %exclude %{_qt6_includedir}/QtWidgets/%{real_version}
@@ -1207,7 +1290,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_includedir}/QtXml/
 %{_qt6_libdir}/libQt6Xml.prl
 %{_qt6_libdir}/libQt6Xml.so
-%{_qt6_metatypesdir}/qt6xml_*_metatypes.json
+%{_qt6_metatypesdir}/qt6xml_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_xml.pri
 %{_qt6_pkgconfigdir}/Qt6Xml.pc
 %exclude %{_qt6_includedir}/QtXml/%{real_version}
@@ -1223,6 +1306,26 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_docdir}/config/
 %{_qt6_docdir}/global/
 
+### Private only libraries ###
+
+%files -n qt6-waylandglobal-private-devel
+%{_qt6_cmakedir}/Qt6WaylandGlobalPrivate/
+%{_qt6_descriptionsdir}/WaylandGlobalPrivate.json
+%{_qt6_includedir}/QtWaylandGlobal/
+%{_qt6_mkspecsdir}/modules/qt_lib_waylandglobal_private.pri
+
+%files -n libQt6WlShellIntegration6
+%{_qt6_libdir}/libQt6WlShellIntegration.so.*
+
+%files -n qt6-wlshellintegration-private-devel
+%{_qt6_cmakedir}/Qt6WlShellIntegrationPrivate/
+%{_qt6_descriptionsdir}/WlShellIntegrationPrivate.json
+%{_qt6_includedir}/QtWlShellIntegration/
+%{_qt6_libdir}/libQt6WlShellIntegration.prl
+%{_qt6_libdir}/libQt6WlShellIntegration.so
+%{_qt6_metatypesdir}/qt6wlshellintegrationprivate_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_wl_shell_integration_private.pri
+
 ### Static libraries ###
 
 %files -n qt6-exampleicons-devel-static
@@ -1236,7 +1339,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 # These are CMake objects files which are not part of any library
 %dir %{_qt6_archdatadir}/objects-*
 %{_qt6_archdatadir}/objects-*/ExampleIconsPrivate_resources_1/
-%{_qt6_metatypesdir}/qt6exampleiconsprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6exampleiconsprivate_metatypes.json
 
 %files -n qt6-kmssupport-devel-static
 %{_qt6_cmakedir}/Qt6KmsSupportPrivate/
@@ -1244,7 +1347,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_includedir}/QtKmsSupport/
 %{_qt6_libdir}/libQt6KmsSupport.a
 %{_qt6_libdir}/libQt6KmsSupport.prl
-%{_qt6_metatypesdir}/qt6kmssupportprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6kmssupportprivate_metatypes.json
 %exclude %{_qt6_includedir}/QtKmsSupport/%{real_version}
 
 %files -n qt6-kmssupport-private-devel
@@ -1268,9 +1371,9 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_libdir}/libQt6FbSupport.prl
 %{_qt6_libdir}/libQt6InputSupport.a
 %{_qt6_libdir}/libQt6InputSupport.prl
-%{_qt6_metatypesdir}/qt6devicediscoverysupportprivate_*_metatypes.json
-%{_qt6_metatypesdir}/qt6fbsupportprivate_*_metatypes.json
-%{_qt6_metatypesdir}/qt6inputsupportprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6devicediscoverysupportprivate_metatypes.json
+%{_qt6_metatypesdir}/qt6fbsupportprivate_metatypes.json
+%{_qt6_metatypesdir}/qt6inputsupportprivate_metatypes.json
 %exclude %{_qt6_includedir}/QtDeviceDiscoverySupport/%{real_version}
 %exclude %{_qt6_includedir}/QtFbSupport/%{real_version}
 %exclude %{_qt6_includedir}/QtInputSupport/%{real_version}
@@ -1320,6 +1423,12 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %files -n qt6-sql-unixODBC
 %{_qt6_pluginsdir}/sqldrivers/libqsqlodbc.so
 
+%files -n qt6-wayland
+%{_qt6_datadir}/wayland/
+%{_qt6_libexecdir}/qtwaylandscanner
+%{_qt6_pluginsdir}/wayland-decoration-client/
+%{_qt6_pluginsdir}/wayland-graphics-integration-client/
+%{_qt6_pluginsdir}/wayland-shell-integration/
 %endif
 
 %changelog
