@@ -419,4 +419,12 @@
     <comment>add clang 21 compat changes</comment>
     <requestid>1304326</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>62fca6e26c8dc8588290a94b814b8d29</srcmd5>
+    <version>6.10.0</version>
+    <time>1760369038</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.10.0</comment>
+    <requestid>1310377</requestid>
+  </revision>
 </revisionlist>

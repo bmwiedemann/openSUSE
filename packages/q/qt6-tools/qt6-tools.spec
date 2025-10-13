@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -26,8 +26,11 @@
 %define pkg_suffix -docs
 %endif
 #
+# Private QML imports
+%global __requires_exclude qt6qmlimport\\(qtexamples.*
+#
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # Legal:
@@ -35,7 +38,7 @@ Summary:        Qt 6 Tools libraries and tools
 # qdoc is GPL-3.0-only WITH Qt-GPL-exception-1.0
 # src/shared contains BSD-3-Clause and LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-only) files. The
 # 'GPL-3.0-only WITH Qt-GPL-exception-1.0' files in this folder are only used on Windows.
-License:        (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only) AND GPL-3.0-only WITH Qt-GPL-exception-1.0
+License:        (GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only) AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source10:       org.qt.designer6.desktop
@@ -45,11 +48,6 @@ Source13:       org.qt.assistant6.desktop
 # The 48x48 icon was removed from qttools
 Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
-# PATCH-FIX-OPENSUSE -- LLVM 21 compat
-Patch0:         0001-configure-Move-QDoc-clang-versions-into-module.patch
-Patch1:         0001-QDoc-Adapt-clang-AST-QualTypeNames.h-to-breaking-cha.patch
-Patch2:         0001-QDoc-Bump-minimum-Clang-version-to-17.0.6.patch
-Patch3:         0001-lupdate-remove-clang-parser.patch
 # clang-devel in Leap 15 points to clang7...
 %if 0%{?suse_version} == 1500
 # Leap 15.6 has llvm 19 since 2025-02-12, we need to use it to avoid doc build issues
@@ -73,6 +71,7 @@ BuildRequires:  cmake(Qt6PrintSupport) = %{real_version}
 BuildRequires:  cmake(Qt6QmlLSPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6QmlPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickLayouts) = %{real_version}
 BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6QuickWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6Sql) = %{real_version}
@@ -158,6 +157,7 @@ Requires:       libQt6Help6 = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Network) = %{real_version}
 Requires:       cmake(Qt6Sql) = %{real_version}
+Requires:       cmake(Qt6Tools) = %{real_version}
 Requires:       cmake(Qt6Widgets) = %{real_version}
 
 %description -n qt6-help-devel
@@ -186,7 +186,7 @@ Requires:       cmake(Qt6OpenGL) = %{real_version}
 Requires:       cmake(Qt6OpenGLWidgets) = %{real_version}
 Requires:       cmake(Qt6UiPlugin) = %{real_version}
 Requires:       cmake(Qt6Widgets) = %{real_version}
-# qt6uitools_*_metatypes.json location fixed
+# qt6uitools_metatypes.json location fixed
 Conflicts:      qt6-designer-devel < 6.2.2
 
 %description -n qt6-uitools-devel
@@ -369,7 +369,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_includedir}/QtUiPlugin/
 %{_qt6_libdir}/libQt6Designer.prl
 %{_qt6_libdir}/libQt6Designer.so
-%{_qt6_metatypesdir}/qt6designer_*_metatypes.json
+%{_qt6_metatypesdir}/qt6designer_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_designer.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_uiplugin.pri
 %{_qt6_pkgconfigdir}/Qt6Designer.pc
@@ -390,7 +390,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_includedir}/QtHelp/
 %{_qt6_libdir}/libQt6Help.prl
 %{_qt6_libdir}/libQt6Help.so
-%{_qt6_metatypesdir}/qt6help_*_metatypes.json
+%{_qt6_metatypesdir}/qt6help_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_help.pri
 %{_qt6_pkgconfigdir}/Qt6Help.pc
 %exclude %{_qt6_includedir}/QtHelp/%{real_version}
@@ -409,7 +409,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_includedir}/QtUiTools/
 %{_qt6_libdir}/libQt6UiTools.prl
 %{_qt6_libdir}/libQt6UiTools.so
-%{_qt6_metatypesdir}/qt6uitools_*_metatypes.json
+%{_qt6_metatypesdir}/qt6uitools_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_uitools.pri
 %{_qt6_pkgconfigdir}/Qt6UiTools.pc
 %exclude %{_qt6_includedir}/QtUiTools/%{real_version}
@@ -490,7 +490,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_includedir}/QtDesignerComponents/
 %{_qt6_libdir}/libQt6DesignerComponents.prl
 %{_qt6_libdir}/libQt6DesignerComponents.so
-%{_qt6_metatypesdir}/qt6designercomponentsprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6designercomponentsprivate_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_designercomponents_private.pri
 
 %endif
