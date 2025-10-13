@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kontactinterface
-Version:        25.08.1
+Version:        25.08.2
 Release:        0
 Summary:        KDE PIM Libraries: Interface to Contacts
 License:        LGPL-2.1-or-later
