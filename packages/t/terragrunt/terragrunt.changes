@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct 13 10:51:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.90.0:
+  * Removal of deprecated commands
+    This is the next step on the road to Terragrunt 1.0, completing
+    the Terragrunt CLI Redesign. Read the CLI Redesign migration
+    guide for guidance on adapting to these breaking changes.
+    We anticipate no further breaking changes to the CLI prior to
+    the release of Terragrunt 1.0, where the CLI will remain stable
+    without breaking changes until at least Terragrunt 2.0.
+    For a full list of deprecated features that will be removed
+    prior to the release of Terragrunt 1.0, see the removal
+    schedule.
+  * Breaking Changes
+    - Removal of Deprecated Commands
+      The following deprecated CLI commands have been removed to
+      streamline the command line API ahead of 1.0.
+      Use the new commands introduced during the CLI redesign that
+      replace them:
+      - terragrunt terragrunt-info → terragrunt info print
+      - terragrunt hclfmt → terragrunt hcl fmt
+      - terragrunt hclvalidate → terragrunt hcl validate
+      - terragrunt validate-inputs → terragrunt hcl validate --inputs
+      - terragrunt render-json → terragrunt render --json -w
+      - terragrunt graph-dependencies → terragrunt dag graph
+      - terragrunt output-module-groups → terragrunt find --dag --json
+  * What's Changed
+    - chore: removal of deprecated commands by @denis256 in #4918
+    - chore: Removal of output-module-groups cli command by
+      @denis256 in #4937
+
+-------------------------------------------------------------------
 Fri Oct 10 04:58:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.89.4:
