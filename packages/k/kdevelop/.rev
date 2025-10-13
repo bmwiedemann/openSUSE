@@ -119,4 +119,12 @@
     <comment>- Update file list after KDE Frameworks 6.18 release</comment>
     <requestid>1304529</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0fe9460db5576721c988dc6d7487c5e4</srcmd5>
+    <version>25.08.2</version>
+    <time>1760369094</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 25.08.2 (forwarded request 1309696 from krop)</comment>
+    <requestid>1310129</requestid>
+  </revision>
 </revisionlist>
