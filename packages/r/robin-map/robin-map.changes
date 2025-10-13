@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 13 13:26:05 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Update to version 1.4.0:
+  * Add a CMake TSL_ROBIN_MAP_ENABLE_INSTALL option to explicitly 
+    enable/disable the install target
+  * Move to C++17 dropping C++11 support
+  * Bump cmake_minimum_required version to 3.5
+  * Fix load threshold on deserialization
+  * Use inline constexpr for PRIMES and MOD_PRIME arrays
+
+-------------------------------------------------------------------
 Sat Mar 22 20:32:19 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
