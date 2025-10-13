@@ -88,4 +88,12 @@
     (#1140)</comment>
     <requestid>1297166</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ebab9297994543dcb2c1fb9f23fc815c</srcmd5>
+    <version>unknown</version>
+    <time>1760362498</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test suite: asyncio no longer skipped automatically</comment>
+    <requestid>1310974</requestid>
+  </revision>
 </revisionlist>

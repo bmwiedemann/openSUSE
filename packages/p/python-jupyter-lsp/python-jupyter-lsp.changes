@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 20 15:32:14 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Fix test suite: asyncio no longer skipped automatically
+
+-------------------------------------------------------------------
 Sat Aug  2 16:38:43 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.2.6 with jupyterlab-lsp 5.2.0

@@ -37,6 +37,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module importlib_metadata >= 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module jupyter_server >= 1.1.2}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module python-lsp-server}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       jupyter-lsp = %{jupversion}
@@ -65,7 +68,6 @@ Jupyter config
 
 %build
 %pyproject_wheel
-sed -e /cov/d -e /--flake8/d -i setup.cfg
 
 %install
 %pyproject_install
@@ -74,7 +76,11 @@ sed -e /cov/d -e /--flake8/d -i setup.cfg
 %check
 # no R language server
 donttest="test_r_package_detection"
-%pytest -k "not ($donttest)"
+# servers not installed
+donttest="$donttest or languageserver-bin or language-server"
+# Does not report stopped in time (?)
+donttest="$donttest or test_start_known[pylsp]"
+%pytest -k "not ($donttest)" -n auto
 
 %files %{python_files}
 %doc README.md
