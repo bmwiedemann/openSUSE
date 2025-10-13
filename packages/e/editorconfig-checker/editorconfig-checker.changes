@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 13 06:44:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.4.1:
+  * chore(deps): bump golang.org/x/text from 0.29.0 to 0.30.0
+    (#496)
+  * chore(deps): bump peter-evans/dockerhub-description from 4 to 5
+    (#495)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.14
+    to 0.5.15 (#494)
+  * chore(deps): bump anchore/sbom-action from 0.20.5 to 0.20.6
+    (#493)
+  * chore(deps): bump golang.org/x/text from 0.28.0 to 0.29.0
+    (#491)
+  * chore(deps): bump anchore/sbom-action from 0.20.4 to 0.20.5
+    (#486)
+  * chore(deps): bump actions/setup-go from 5 to 6 (#490)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype (#487)
+  * perf: process files concurrently (#488)
+  * chore(deps): bump actions/checkout from 4 to 5 (#485)
+
+-------------------------------------------------------------------
 Wed Aug 20 06:02:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.4.0:
