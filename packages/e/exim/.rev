@@ -968,4 +968,14 @@ argument by removing the curly brackets (shell syntax).</comment>
     <comment></comment>
     <requestid>1285435</requestid>
   </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>dc58d5471152c61b84f7b46ff207288e</srcmd5>
+    <version>4.98.2</version>
+    <time>1760362549</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1307168 from bigironman
+
+- Fix potential security issue with logfile rotation CVE-2025-53881 (bsc#1246457)</comment>
+    <requestid>1311049</requestid>
+  </revision>
 </revisionlist>

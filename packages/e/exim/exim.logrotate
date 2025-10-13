@@ -9,21 +9,23 @@
 	weekly
 	#maxage 365
 	prerotate
-		cd /var/log/exim
+                logdir=/var/log/exim
+		cd $logdir
 		test -f /etc/sysconfig/exim && source /etc/sysconfig/exim
 		if test "$EXIM_REPORT_WEEKLY" = yes; then
 			day=`date +%Y%m%d`
 			report=weekly_report-$day
 			eximstatsdir=/srv/www/eximstats/$day
-			touch $report; chmod 640 $report; chown :mail $report
-			eximstats main.log > $report
+                        tempdir=`mktemp -d`
+			touch $tempdir/$report; chmod 640 $tempdir/$report; chown :mail $tempdir/$report
+			eximstats main.log > $tempdir/$report
 			if test "$EXIM_REPORT_WEEKLY_HTML" = yes; then
 				mkdir $eximstatsdir
 				eximstats -html -charts -chartdir $eximstatsdir main.log > $eximstatsdir/index.html
 			fi
-			if ! test -e no_report_mail && test "$EXIM_REPORT_WEEKLY_SEND" = yes; then mail -s "$(sed -n '2{p;q;}' < $report) ($(hostname))" postmaster < $report; fi
+			if ! test -e no_report_mail && test "$EXIM_REPORT_WEEKLY_SEND" = yes; then mail -s "$(sed -n '2{p;q;}' < $tempdir/$report) ($(hostname))" postmaster < $tempdir/$report; fi
 			if test -f $report.gz; then old $report.gz; fi
-			gzip -f -9 $report
+			gzip -f -9 $tempdir/$report && mv -n $tempdir/$report.gz $logdir/ && rmdir $tempdir
 		fi
 	endscript
 }
