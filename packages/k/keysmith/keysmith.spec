@@ -21,7 +21,7 @@
 
 %bcond_without  released
 Name:           keysmith
-Version:        25.08.1
+Version:        25.08.2
 Release:        0
 Summary:        OTP client
 License:        GPL-3.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) 
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
@@ -53,8 +54,10 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(openssl)
 Requires:       kf6-kirigami-imports >= %{kf6_version}
-# keysmith's build system doesn't look for it, but it's required at runtime
+Requires:       kf6-prison-imports >= %{kf6_version}
 Requires:       kirigami-addons6
+Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       qt6-multimedia-imports >= %{qt6_version}
 
 %description
 OTP client for Plasma Mobile and Desktop

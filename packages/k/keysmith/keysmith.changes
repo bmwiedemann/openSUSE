@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  7 18:49:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.2/
+- Changes since 25.08.1:
+  * Request camera permissions for scanning QR codes
+  * Update bundled icons for Android
+  * Don't hide unlock button on mobile
+
+-------------------------------------------------------------------
 Wed Sep 10 09:23:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.1
