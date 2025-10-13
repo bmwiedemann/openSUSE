@@ -139,4 +139,12 @@
   a dependency, so it can build against a higher version (forwarded request 1300047 from rrahl0)</comment>
     <requestid>1300048</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d32ccd726d1b8d3666ec9193edb4d5a0</srcmd5>
+    <version>1.0.0~beta1.1+0</version>
+    <time>1760362460</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1310949</requestid>
+  </revision>
 </revisionlist>

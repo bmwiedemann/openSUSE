@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-comp
-Version:        1.0.0~alpha7+1
+Version:        1.0.0~beta1.1+0
 Release:        0
 Summary:        Compositor for the COSMIC DE
 License:        GPL-3.0-only

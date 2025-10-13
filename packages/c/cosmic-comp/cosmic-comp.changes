@@ -1,4 +1,202 @@
 -------------------------------------------------------------------
+Tue Sep 30 20:06:02 UTC 2025 - mkd <mkdwho@icloud.com>
+- Update patch & Cargo.lock
+
+-------------------------------------------------------------------
+Mon Sep 29 21:39:17 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+0:
+  * floating: Keep elements positioned relatively on recalculate
+  * shortcuts: touchpad toggle keybind
+  * Remove `last_cursor_position` from `CosmicMapped`
+  * screencopy: Render cursor for toplevel capture at right position
+  * screencopy: Add cursor render element first
+  * shell: Handle `WorkspaceMode::Global` in `move_workspace()`
+  * shell: Make `migrate_workspace()` a no-op on global workspace mode
+  * fix(config): move cosmic-randr-shell to main branch
+  * config: Make `read_outputs` failable
+  * kms: Don't join on `DrmSurface` drop
+  * refactor(config): fix no features enabled
+  * chore: Update smithay
+  * render: Fix shader obj leak
+  * kms/surface: Cleanup unused software-rendering code
+  * kms: evdi cursor work around
+  * kms/device: Fix render_formats
+  * kms: Don't consider software devices for primary
+  * kms: Close drm fds via session
+  * kms: Don't attempt dmabuf import on software devices
+  * kms/device: Don't advertise drm_node on software devices
+  * chore: smithay update
+  * i18n(sk): Update translations
+  * i18n(ar): improve translations
+  * fix: don't assume previous workspace still exists #1588
+  * kms/surface: Fix transform used for blits
+  * screencopy: Fix transform for damage rect advertised to client
+  * Fix vim-ish `k` and `j` discrepancy in keymap
+  * i18n(ar): Update Arabic translations
+  * cleanup
+  * filter unknown
+  * feat(config): load cosmic-randr output Lists
+  * refactor(output config): move to config crate
+  * config: Allow overriding touchpad state
+  * protocols/workspace: Set ext workspace `id` for pinned workspace
+  * screencopy: Return signalled sync point after shm
+  * screencopy: Use `send_success_when_ready` for other forms of capture
+  * kms/surface: Don't send screencopy`success()` until sync point is reached
+  * kms/surface: Define a `PendingImageCopyData`, instead of using tuple
+  * Update `smithay`, and adjust to use sync points from blit calls
+  * chore: Rust 2024 edition
+  * chore: update dependencies
+  * chore: use `std::sync::LazyLock`
+  * kms/device: Don't reconfigure existing outputs on `connector_added`
+  * focus: Don't consider XWaylandGrab exclusive
+  * i18n(zh-CN): Update translation
+  * floating/resize: Don't panic if something else cancelled the resize
+  * Fix keybinding case for Period and Comma to match internal naming
+  * Float cosmic-store dialogs, needed for gstreamer codec install
+  * order: Newer override-redirect windows are higher in the stack
+  * shell: Correctly handle maximized stacks on move requests
+  * input: Handle sticky windows on super+right-click
+  * toplevel_mgmt: Fix activating sticky windows
+  * chore: smithay update
+  * Fix compile warnings on nightly
+  * Don't crash if `GreeterAccessibilityState::config()` fails
+  * feat: sync state with greeter
+  * state/lid-inhibit: Take current lid state into account
+  * config: Ignore configs disabling every output
+  * kms: Don't reload outputs for every single event
+  * kms/device: Don't re-enumerate disabled outputs
+  * output_configuration: Set wlr_output_head serial number
+  * chore: Update smithay
+  * kms/surface: Don't attempt to use overlay planes during animations
+  * kms/surface: Only skip cursor updates if the application renders consistently
+  * kms: Add min_vrr refresh rate safety margin
+  * element: Allow overriding default scanout behaviour
+  * render/wayland: filter scanout candidates by frametime estimation
+  * kms: Fix direct scanout due to wrong node compare
+  * wayland/compositor: Add per-surface frame time estimation
+  * Log error return from `main()` with `tracing`
+  * chore: Fix outdated lock-file
+  * i18n(fa): Add Persian translations
+  * floating: Properly scale positions on migration (fixes #1167)
+  * kms/surface: Remove old feedback on node-removal
+  * chore: Update smithay
+  * refactor: swap to the activated element's workspace if different
+  * refactor: fallback to last active seat for privileged activation token
+  * fix: check layer map for root popup surface
+  * kms: Correctly handle the source node not being initialized
+  * improv(stack): use system theme colors
+  * input: Handle lid-switch and disable/enable built-in display
+  * dbus: Take lid-inhibitor-locks on systemd systems
+  * utils: Abstract built-in output check
+  * Use `&dyn` to simplify pointer/keyboard/touch target dispatch
+  * Update `smithay`
+  * kms/device: Cleanup unused code
+  * kms: Don't incorrectly re-use iterator in `update_surface_nodes`
+  * kms: Change awkward new trait to `InnerDevice`
+  * kms: Don't commit anything before updating the mode
+  * kms: lock during screen conf changes
+  * chore: smithay update
+  * i18n(pt-BR): update translation
+  * fix: only activate the active window of the stack on activation
+  * i18n - update russian translations
+  * fix: Apply window snapping properly on multiple-output configurations (#1529)
+  * shell: Don't unconditionally focus on unfullscreen
+  * input/actions: Clear keyboard focus moving to output with no window
+  * input/actions: Change `focus_follows_cursor` to `cursor_follows_focus`
+  * input/actions: Change active workspace / output when migrated
+  * shell: Make `activate`/`end_workspace_swipe` return `Err` if no set
+  * shell: Make `activate` return `Some` on `Global` workspace mode
+  * i18n(be): Add Belarusian translation
+  * Update Hungarian translations
+  * tiling: fix missing `output_enter`/`set_bounds` on remap
+  * fix(overlap): check if window is sticky
+  * workspace: Animation and geometry fixes around maximized windows
+  * shell: Fix layer on maximize restore
+  * floating: animation fixes
+  * shell: rebase fullscreen changes on for xwayland-grab
+  * shell: Focus window after unfullscreening
+  * shell: Correctly track `was_maximized` for fullscreened sticky windows
+  * shell: Don't consider animation geometry when remapping fullscreen surfaces
+  * workspace: Correctly handle unmapping maximized elements
+  * floating: Return pending geometry on unmap
+  * shell: Fix re-render on `toplevel_destroy`
+  * workspace: Add missing `output_enter/leave` events for fullscreen surfaces
+  * shell: Fix clicking on background fullscreen surfaces
+  * shell: Properly restore maximized state from minimize/fullscreen
+  * shell/workspace: Don't double-remove animating fullscreen surfaces
+  * xwayland: Don't allow spurious map_requests to map windows twice
+  * workspace: Consistently set minimized state
+  * shell: Ignore fullscreen requests to minimized windows
+  * input: Add fullscreen shortcut
+  * shell: handle fullscreen windows on a dedicated layer
+  * screencopy: Fix damage tracking bug with shm screencopy of output
+  * Remove debug prints that probably shouldn't have been merged
+  * protocols/workspace: Track group a workspace is on, and update
+  * Inhibit keyboard shortcuts if XWayland grab is active
+  * Improved handling of XWayland grabs
+  * Update `smithay` with `dma_shadow_copy` fix
+  * kms: Do not attempt to import dmabuf on device not supporting format
+  * i18n(ar): Add Arabic translation
+  * Send `wl_surface::leave` before destroying output global
+  * Update `smithay`
+  * Update `smithay`, `egui`, and `smithay-egui`
+  * Update libcosmic
+  * chore: add keybinding for power off button handling
+  * Revert "feat: power button handling"
+  * feat: power button handling
+  * Send dmabuf feedback for dnd icon surface, and cursor surface
+  * Consider cursor and drag surfaces in `visible_output_for_surface`
+  * Unwrap user data in `cursor_image_status`
+  * Add `cursor_image_status`/`set_cursor_image_status` to `SeatExt`
+  * Set primary scanout output for dnd icon surface
+  * Send `frame` callback for dnd icon surfaces
+  * kms/surface: Split off part of `redraw` into `take_screencopy_frames`
+  * kms/surface: Update how errors in `send_screencopy_result` are handled
+  * kms/surface: Split off part of `redraw` into `postprocess_elements`
+  * kms/surface: Split off part of `redraw` into a `send_screencopy_result`
+  * chore: Update smithay
+  * Update `smithay`
+  * kms/surface: Call `cleanup_texture_cache` for each device at end of draw
+  * kms: Fix inconsistent selection of primary GPU
+  * xwayland: Delay selection notify until focused
+  * wayland/decorations: Fix xdg-decoration state always shadowing kde-decorations
+  * wayland/decorations: Fix early requests with kde-protocol
+  * kms: Various gpu removal fixes
+  * kms: Always send frame callbacks
+  * debug: More profiling annotations
+  * shell: Using parking_lot's `RwLock` for fairness guarantees
+  * kms: Allow updating the primary node
+  * chore: Update smithay
+  * kms: Add allow/deny-listing of drm devices
+  * Update to zbus 5.x
+  * Don't change focus on click of layer with `KeyboardInteractivity::None`
+  * protocols/screencopy: Make frame/session send stopped/fail on drop
+  * i18n(zh-CN): update translation
+  * i18n(es): Add spanish translation
+  * Remove deprecated call to `time`'s `set_soundness` function
+  * .github/workflows/build.yml: Pass `+stable` to cargo
+  * Update `smithay`
+  * Fix compiler warnings
+  * Update dependencies
+  * ssd: Set `is_ssd(true)` on `header_bar`, and don't set `.start`
+  * Run `cargo update`
+  * Update toolchain to Rust 1.85
+  * kms/surface: Fix thread crash on error return of `redraw`
+  * Fix display vim bindings (j and k were swapped)
+  * shell: Remove null-bytes from X11 title/app_id
+  * Update `smithay`
+  * Update `smithay` with `ContextId` changes
+  * Add `Tor Browser` as floating window exception
+  * kms: Skip overlay tests on fullscreen
+  * iced: Optimize updates
+  * debug: Fix crashes and deadlocks
+  * kms/timing: Faster cleanup
+  * kms: Fix VRR check having already missed the deadline
+  * kms/timings: Base `next_render_time` on time to submit
+  * kms: Add tracy profiling
+
+-------------------------------------------------------------------
 Sat Aug 16 11:27:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - apply fix-vendor.patch and fix-Cargo.toml.patch, as we need to update
@@ -335,8 +533,8 @@ Wed Sep 25 00:35:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
   * Add xdg-foreign-unstable-v2 protocol
   * xwayland: Add descaling option
   * added cursor_follows_focus and focus_follows_cursor
-  * Use new config from cosmic-settings-config 
-  * Add config reloading for tiling exceptions 
+  * Use new config from cosmic-settings-config
+  * Add config reloading for tiling exceptions
   * Apply suggestions from code review
   * wayland: Implement cursor-shape-v1
   * input: Move actions into own module
