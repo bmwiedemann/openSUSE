@@ -70,4 +70,24 @@
     <comment></comment>
     <requestid>1271280</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5fd4f4b429a7e8904e669378cb00ed7c</srcmd5>
+    <version>8.3.0</version>
+    <time>1760362545</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.3.0:
+  * Allow configuring `empty_value` and `max_length` for
+    `SplitPhoneNumberField`
+  * Mimics django `CharField` behavior more closely
+- update to 8.2.0:
+  * Fix lost region when `PHONENUMBER_DEFAULT_FORMAT` is
+    `NATIONAL`
+
+  * Add a DB converter for the model field, fixing values_list() of
+  * RegionalPhoneNumberWidget becomes the default widget for the
+  * The formfields.PhoneNumberField no longer sets the input_type attribute
+    of its widget to tel. That behavior did not make sense for the existing
+  * Remove PhoneNumberInternationalFallbackWidget. Use</comment>
+    <requestid>1311037</requestid>
+  </revision>
 </revisionlist>
