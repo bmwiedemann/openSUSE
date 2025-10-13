@@ -435,7 +435,7 @@ Wed Sep  3 05:41:20 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
         - ovmf-Revert-SecurityPkg-Add-Additional-TPM-Logging-at-DEB.patch
     - Add backported patch to fix the OVMF firmware UI display (bsc#1245329)
         - ovmf-MdeModulePkg-Fix-malformed-terminal-control-sequence.patch
-            9224a2b917 MdeModulePkg/TerminalDxe: Support multiple modes for SetMode function
+            aeea04341c MdeModulePkg: Fix malformed terminal control sequences
     - Add backported patch to enable iSCSI boot support by default (bsc#1245454)
         - ovmf-OvmfPkg-Add-NETWORK_ISCSI_DEFAULT_ENABLE-build-flag.patch
             502f0dfda4 OvmfPkg: Add NETWORK_ISCSI_DEFAULT_ENABLE build flag

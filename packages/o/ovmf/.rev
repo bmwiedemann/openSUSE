@@ -1027,4 +1027,12 @@ more mature.
     <comment></comment>
     <requestid>1304196</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>fcad2a2ae36ae3bdebd4d042eb100a71</srcmd5>
+    <version>202508</version>
+    <time>1760362507</time>
+    <user>dimstar_suse</user>
+    <comment>changelog: Update with backport patch details</comment>
+    <requestid>1311023</requestid>
+  </revision>
 </revisionlist>
