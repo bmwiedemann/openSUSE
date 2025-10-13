@@ -1,7 +1,7 @@
 #
 # spec file for package libHX
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           libHX
-%define lname   libHX32
-Version:        4.28
+%define lname   libHX43
+Version:        5.1
 Release:        0
 Summary:        Collection of routines for C and C++ programming
 License:        LGPL-2.1-or-later
@@ -66,11 +66,11 @@ This subpackage contains the header files.
 
 %build
 mkdir obj
-pushd obj/
+cd obj/
 %define _configure ../configure
 %configure --includedir="%_includedir/%name" --docdir="%_docdir/%name"
 %make_build
-popd
+cd -
 
 %install
 b="%buildroot"
@@ -86,7 +86,7 @@ find "$b/%_libdir" -type f -name "*.la" -delete
 %ldconfig_scriptlets -n %lname
 
 %files -n %lname
-%_libdir/libHX*.so.32*
+%_libdir/libHX*.so.43*
 
 %files devel
 %_docdir/%name/

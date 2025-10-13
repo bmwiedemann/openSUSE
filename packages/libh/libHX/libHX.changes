@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 11 11:47:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.1
+  * getopt6: ``HXTYPE_STRP`` can now be used for HXoption::type
+    for argument assignment without incurring strdup.
+  * map: resolve corruption of HXmap::items field.
+
+-------------------------------------------------------------------
+Tue Sep 30 20:34:42 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.0
+  * getopt6: new function set ``HX_getopt6`` which allows for
+    parsing options with an iterative style.
+  * getopt6: the result set no longer forces strdup-ed results on
+    the user.
+  * Deleted functions ``HX_getopt``, ``HX_getopt5`` (use
+    ``HX_getopt6`` instead), ``HX_strnlen`` (use ``strnlen``
+    instead), ``HX_strsep`` (use ``strtok_r`` instead),
+    ``HX_stpltrim`` (no replacement).
+  * The struct members ``HXclist::items``, ``HXdeque::items``,
+    ``HXmap::items`` have changed from ``unsigned int`` to
+    ``size_t``. The function ``HXdeque_to_vec`` has accordingly
+    changed the result parameter type.
+
+-------------------------------------------------------------------
 Wed Sep 10 17:16:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.28
