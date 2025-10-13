@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 13 11:02:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.44.0:
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    to v0.15.0 (#1022)
+  * refactor: use a func to print input model debug output (#1016)
+  * chore(deps): update module golang.org/x/tools to v0.38.0
+    (#1017)
+  * fix(deps): update module golang.org/x/term to v0.36.0 (#1019)
+  * fix(deps): update module golang.org/x/mod to v0.29.0 (#1018)
+  * fix(deps): update module golang.org/x/text to v0.30.0 (#1020)
+  * chore(deps): bump golang.org/x/oauth2 from 0.31.0 to 0.32.0
+    (#1014)
+  * chore(deps): bump renovatebot/github-action from 43.0.15 to
+    43.0.16 (#1015)
+  * chore(deps): bump renovatebot/github-action from 43.0.14 to
+    43.0.15 (#1013)
+  * feat: provide functionality to list public ip-ranges (#993)
+
+-------------------------------------------------------------------
 Wed Oct 01 11:53:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.43.0:
