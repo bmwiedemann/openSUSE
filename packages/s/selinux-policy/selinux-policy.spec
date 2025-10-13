@@ -36,7 +36,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20251008
+Version:        20251006
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -405,7 +405,7 @@ if [ ! -s %{_sysconfdir}/selinux/config ]; then
 #     permissive - SELinux prints warnings instead of enforcing.
 # Previously SELinux could be disabled by changing the value to
 # 'disabled'. This is deprecated and should not be used anymore.
-# If you want to disable SELinux add 'selinux=0' to the kernel
+# If you want to disable linux add 'selinux=0' to the kernel
 # command line. For details see
 # https://github.com/SELinuxProject/selinux-kernel/wiki/DEPRECATE-runtime-disable
 SELINUX=enforcing
