@@ -18,11 +18,11 @@
 
 %define kf6_version 6.14.0
 %define qt6_version 6.8.0
-%define kpim6_version 6.5.1
+%define kpim6_version 6.5.2
 
 %bcond_without released
 Name:           pim-sieve-editor
-Version:        25.08.1
+Version:        25.08.2
 Release:        0
 Summary:        Sieve scripts editor for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -35,6 +35,7 @@ Source2:        applications.keyring
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # Is only required for the desktop file icon
 BuildRequires:  kmail-application-icons
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
