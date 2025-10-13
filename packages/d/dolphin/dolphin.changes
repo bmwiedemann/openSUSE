@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  7 18:48:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.2/
+- Changes since 25.08.1:
+  * informationpanel: prevent a crash when creating video preview panel and a media file is selected
+  * KStandardItemListWidget: Clean hover effect on editRole changed (kde#508388)
+  * KStandardItemListWidget: Do not recolor branch indicators
+  * KStandardItemListWidget: Color icon only if item isPressed (kde#508418)
+
+-------------------------------------------------------------------
 Wed Sep 10 09:23:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.1
