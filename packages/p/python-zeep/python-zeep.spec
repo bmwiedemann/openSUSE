@@ -17,7 +17,7 @@
 
 
 Name:           python-zeep
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        A Python SOAP client based on lxml/requests
 License:        MIT
@@ -25,8 +25,7 @@ URL:            http://docs.python-zeep.org
 Source:         https://files.pythonhosted.org/packages/source/z/zeep/zeep-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE xfail tests that require network access
 Patch0:         xfail-network-tests.patch
-# PATCH-FIX-UPSTREAM gh#mvantellingen/python-zeep#1447
-Patch1:         support-new-httpx.patch
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 10 11:05:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.3.2
+  * Update proxy argument in httpx Client/AsyncClient
+  * Reformat using newer version of black
+- Drop support-new-httpx.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Dec 19 05:32:24 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-httpx.patch:
