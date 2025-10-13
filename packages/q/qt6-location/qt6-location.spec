@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtlocation-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\(MapViewer\\)
 #
 Name:           qt6-location%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 Location plugins and libraries
 License:        GPL-3.0-or-later
@@ -86,9 +86,9 @@ Development files for the Qt 6 Location library.
 Summary:        Non-ABI stable API for the Qt 6 Location Library
 Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Location) = %{real_version}
-Requires:       cmake(Qt6QuickPrivate) = %{real_version}
 Requires:       cmake(Qt6PositioningPrivate) = %{real_version}
 Requires:       cmake(Qt6PositioningQuickPrivate) = %{real_version}
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
 
 %description -n qt6-location-private-devel
 This package provides private headers of libQt6Location that do not have any
@@ -135,7 +135,7 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6Location/*Plugin*.cmake
 %{_qt6_includedir}/QtLocation/
 %{_qt6_libdir}/libQt6Location.prl
 %{_qt6_libdir}/libQt6Location.so
-%{_qt6_metatypesdir}/qt6location_*_metatypes.json
+%{_qt6_metatypesdir}/qt6location_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_location.pri
 %{_qt6_pkgconfigdir}/Qt6Location.pc
 %exclude %{_qt6_includedir}/QtLocation/%{real_version}
