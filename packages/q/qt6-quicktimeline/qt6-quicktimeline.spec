@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define tar_name qtquicktimeline-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quicktimeline%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        Qt 6 module for creating keyframe-based animations
 License:        GPL-3.0-only
@@ -125,8 +125,8 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6QuickTimelineBlendTrees.prl
 %{_qt6_libdir}/libQt6QuickTimeline.so
 %{_qt6_libdir}/libQt6QuickTimelineBlendTrees.so
-%{_qt6_metatypesdir}/qt6quicktimeline_*_metatypes.json
-%{_qt6_metatypesdir}/qt6quicktimelineblendtrees_*_metatypes.json
+%{_qt6_metatypesdir}/qt6quicktimeline_metatypes.json
+%{_qt6_metatypesdir}/qt6quicktimelineblendtrees_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quicktimeline.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_quicktimelineblendtrees.pri
 %{_qt6_pkgconfigdir}/Qt6QuickTimeline.pc
