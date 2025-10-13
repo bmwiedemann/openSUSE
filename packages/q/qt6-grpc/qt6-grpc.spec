@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.9.2
-%define short_version 6.9
+%define real_version 6.10.0
+%define short_version 6.10
 %define short_name qtgrpc
 %define tar_name qtgrpc-everywhere-src
 %define tar_suffix %{nil}
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((qtgrpc\\.examples.*|QtGrpcChat).*
 #
 Name:           qt6-grpc%{?pkg_suffix}
-Version:        6.9.2
+Version:        6.10.0
 Release:        0
 Summary:        gRPC and Protobuf generator and bindings for Qt framework
 License:        GPL-3.0-or-later
@@ -162,8 +162,8 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6GrpcQuick.prl
 %{_qt6_libdir}/libQt6GrpcQuick.so
 %{_qt6_libexecdir}/qtgrpcgen
-%{_qt6_metatypesdir}/qt6grpc_*_metatypes.json
-%{_qt6_metatypesdir}/qt6grpcquick_*_metatypes.json
+%{_qt6_metatypesdir}/qt6grpc_metatypes.json
+%{_qt6_metatypesdir}/qt6grpcquick_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_grpc.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_grpcquick.pri
 %{_qt6_pkgconfigdir}/Qt6Grpc.pc
@@ -216,11 +216,11 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6ProtobufWellKnownTypes.prl
 %{_qt6_libdir}/libQt6ProtobufWellKnownTypes.so
 %{_qt6_libexecdir}/qtprotobufgen
-%{_qt6_metatypesdir}/qt6protobuf_*_metatypes.json
-%{_qt6_metatypesdir}/qt6protobufqtcoretypes_*_metatypes.json
-%{_qt6_metatypesdir}/qt6protobufqtguitypes_*_metatypes.json
-%{_qt6_metatypesdir}/qt6protobufquick_*_metatypes.json
-%{_qt6_metatypesdir}/qt6protobufwellknowntypes_*_metatypes.json
+%{_qt6_metatypesdir}/qt6protobuf_metatypes.json
+%{_qt6_metatypesdir}/qt6protobufqtcoretypes_metatypes.json
+%{_qt6_metatypesdir}/qt6protobufqtguitypes_metatypes.json
+%{_qt6_metatypesdir}/qt6protobufquick_metatypes.json
+%{_qt6_metatypesdir}/qt6protobufwellknowntypes_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_protobuf.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufqtcoretypes.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufqtguitypes.pri
