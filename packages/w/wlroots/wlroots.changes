@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Oct 12 22:46:34 UTC 2025 - Tomas Cech <sleep_walker@opensuse.org>
+
+- Update to 0.19.1
+  * ext-image-capture-source: output: Apply transform to cursor
+  * transient_seat: initialize seat destroy listener
+  * scene: Block damage on single-pixel buffer textures
+  * render/pass: Ensure the precision is consistent during comparison
+  * util/box: set dest to empty if boxes don't intersect
+  * output/cursor: Fix double cursor bug
+  * render/vulkan: Handle multi-descriptor sets
+  * render/egl: fix software rendering check
+  * output/cursor: fix missing second cursor
+  * scene/surface: simplify single-pixel-buffer check in surface_reconfigure()
+  * scene/surface: fix NULL deref when source buffer is destroyed
+  * cursor: use source buffer to signal release timeline point
+  * drm-lease-v1: remove connector active_lease & lease connectors
+  * cursor: update output cursor even if output is disabled
+  * drm_lease_v1: initialize device resource link during abnormal exit
+  * backend/libinput: don't leak udev_device  
+
+-------------------------------------------------------------------
 Fri May 16 12:12:22 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.19.0:
