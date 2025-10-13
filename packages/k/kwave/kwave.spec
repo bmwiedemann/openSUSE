@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kwave
-Version:        25.08.1
+Version:        25.08.2
 Release:        0
 Summary:        Sound editor by KDE
 License:        GPL-2.0-or-later
