@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 30 06:51:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Switch to GCC 14 for Leap 15 and GCC 15 for Leap 16
+
+-------------------------------------------------------------------
 Wed Jan 31 14:49:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Switch to the latest GCC version available in Leap

@@ -72,4 +72,12 @@
     <comment>- Switch to the latest GCC version available in Leap</comment>
     <requestid>1143080</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>95dd2a16883ba903e133522f7e55c429</srcmd5>
+    <version>20250930</version>
+    <time>1760369000</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to GCC 14 for Leap 15 and GCC 15 for Leap 16</comment>
+    <requestid>1310290</requestid>
+  </revision>
 </revisionlist>
