@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-qtplugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ URL:            https://github.com/lxqt/lxqt-qtplugin
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM -- Qt 6.10 compat
+Patch0:         lxqt-qtplugin-qt610.patch
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -43,7 +45,7 @@ A library libqtlxqt to integrate Qt with LXQt. With this plugin, all
 Qt-based programs can adopt settings of LXQt, such as the icon theme.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake_qt6
