@@ -853,4 +853,12 @@ New stable release</comment>
     <comment>Update to 49.0 (forwarded request 1305099 from dimstar)</comment>
     <requestid>1305501</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>8d54d648704c9431329c7946d359ad51</srcmd5>
+    <version>49.1</version>
+    <time>1760458022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311125</requestid>
+  </revision>
 </revisionlist>
