@@ -357,4 +357,12 @@
     <comment>- log: fix potential overflow with long log messages (gh#ClusterLabs/libqb#490, CVE-2023-39976, bsc#1214066) (forwarded request 1128098 from yan_gao)</comment>
     <requestid>1128101</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d2fe698f032863b59c8686f56a7265d3</srcmd5>
+    <version>2.0.9+20250916.4b496d0</version>
+    <time>1760457896</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1310914</requestid>
+  </revision>
 </revisionlist>

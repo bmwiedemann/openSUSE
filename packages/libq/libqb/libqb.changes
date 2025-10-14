@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 05 09:38:00 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 2.0.9+20250916.4b496d0:
+  * ipc: fix clang build on openindiana
+  * Solaris port (#504)
+  * Skiplist casts from OpenIndiana project (#503)
+  * Check returns from setsockopt() calls (#498)
+  * Add fdatasync declaration on darwin (#496)
+  * doxygen2man: Fix typos and inconsistencies in help text (#497)
+  * Make some logs less noisy (#495)
+  * doxygen2man: Include libxml/parser.h (#494)
+  * tests: Fix shebang on ipc_sock_test (#493)
+  * Change assert in ringbuffer to a return code (#492)
+
+-------------------------------------------------------------------
 Mon Jul 24 09:15:39 UTC 2023 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.8+20230721.002171b (v2.0.8):

@@ -1,7 +1,7 @@
 #
 # spec file for package libqb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_without doxygen2man
 
 Name:           libqb
-Version:        2.0.8+20230721.002171b
+Version:        2.0.9+20250916.4b496d0
 Release:        0
 Summary:        An IPC library for high performance servers
 License:        LGPL-2.1-or-later
