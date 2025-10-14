@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Thu Oct 09 12:21:13 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 0.36.0:
+  * chore: prepare for v0.36.0 (#351)
+  * chore(deps): update quay.io/ptcpdump/develop docker tag to v20251002 (#349)
+  * fix(bpf): fix filter_ok label to avoid C23 warning (#350)
+  * Add kernel version validation to prevent CO-RE errors on unsupported kernels (#340)
+  * chore(deps): pin dependencies (#333)
+  * chore(deps): update actions/setup-go action to v6 (#346)
+  * fix(deps): update all go dependencies master (#316)
+  * chore(deps): update busybox:latest docker digest to d82f458 (#322)
+  * ✨ Set up Copilot instructions for repository (#348)
+  * chore(deps): update golang docker tag to v1.25.1 (#331)
+  * feat(docs): Add docs site (#345)
+  * feat: add CHANGELOG.md (#344)
+  * btf: allow tests to run without network access (#343)
+  * feat(capture): handle L3-only devices and add tun regression (#342)
+  * chore: enable PIE in dynamic builds (#341)
+- Remove PIE.patch (included upstream)
+
+-------------------------------------------------------------------
+Tue Sep 30 08:52:36 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Enable dynamic linking.
+- Add PIE.patch to build a position-independent executable.
+
+-------------------------------------------------------------------
+Mon Sep 29 15:19:31 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 0.35.1:
+  * fix(bpf): Correctly parse IP headers with options (#337)
+  * chore(deps): update actions/checkout action to v5 (#334)
+  * fix(deps): update module github.com/docker/docker to v28 [security] (#332)
+  * chore(deps): update all github action dependencies (#327)
+  * chore(deps): update actions/download-artifact action to v5 (#328)
+  * chore(deps): update quay.io/ptcpdump/develop docker tag to v20250809 (#329)
+  * chore(deps): update golang:1.24.6-bookworm docker digest to 2679c15 (#325)
+  * chore(deps): update dependency golang to v1.24.6 (#326)
+  * chore(deps): update golang docker tag to v1.24.6 (#324)
+  * chore(config): migrate config .github/renovate.json5 (#323)
+  * chore(deps): update golang docker tag to v1.24.5 (#318)
+  * chore(deps): update all github action dependencies (#319)
+
+-------------------------------------------------------------------
+Tue Jul 15 20:00:16 UTC 2025 - Dan Partelly <d.partelly@yahoo.com>
+
+- Update to version 0.35.0:
+  * chore(deps): update all lvh-images main (#308)
+  * chore(deps): update cilium/little-vm-helper action to v0.0.25 (#310)
+  * feat(output): Include TLS Client Hello and Server Hello in default output (#315)
+  * fix(deps): update all go dependencies master to v0.33.2 (#309)
+  * chore(deps): update docker/setup-buildx-action action to v3.11.1 (#311)
+  * feat(output): Include HTTP information in default output (#314)
+  * feat(output): Include IP options in verbose output (#313)
+  * fix(deps): update all go dependencies master (minor) (#302)
+  * feat(output): Include network namespace inode ID in interface name for cross-namespace interfaces (#307)
+  * chore(deps): update all lvh-images main (#295)
+  * chore(deps): update quay.io/ptcpdump/develop docker tag to v20250614 (#305)
+  * fix(deps): update all go dependencies master (#301)
+  * chore(deps): update all github action dependencies (#294)
+  * chore(deps): update busybox:latest docker digest to f85340b (#298)
+  * chore(deps): update golang docker tag to v1.24.4 (#290)
+  * chore(deps): update dependency golang to v1.24.4 (#300)
+  * feat(backend): Add `socket-filter` backend (#304)
+  * chore(config): migrate config .github/renovate.json5 (#299)
+  * feat(context): Add `--disable-reverse-match` flag to control reverse match behavior (#297)
+  * feat(backend): Add `tp-btf` backend (#296)
+  * chore(Makefile): Added options in the Makefile to compile to position independent executable (#291)
+  * fix(logging): ignore unknown event type errors (#293)
+  * chore(bpf): Attach additional hooks to save socket cookie info (#292)
+  * chore(deps): update all lvh-images main (#199)
+  * [skip ci] docs(development): Improve development documentation (#289)
+  * chore(bpf): Ignore errors when attaching optional BPF hooks (#288)
+  * fix(deps): update all go dependencies master (minor) (#255)
+  * README.md: Improve and clarify wording and improve Markdown syntax (#287)
+  * docs(kernel): Add documentation on required kernel configurations (#286)
+  * chore(deps): update busybox:latest docker digest to 37f7b37 (#274)
+  * chore(deps): update all github action dependencies (#250)
+  * chore(deps): update golang docker tag to v1.24.2 (#247)
+  * fix(deps): update all go dependencies master (#249)
+  * feat(platform): Add experimental support for ARM32 architecture (#285)
+  * chore(deps): bump golang.org/x/net from 0.36.0 to 0.38.0 (#278)
+  * fix: revert GetBootTimeNs() to fix timestamp drift (#277)
+  * chore(deps): update quay.io/ptcpdump/develop docker tag to v20250411 (#276)
+  * chore(deps): update dependency golang to v1.23.8 (#267)
+  * chore(deps): update busybox:latest docker digest to a5d0ce4 (#242)
+  * renovate: change schedule to weekly (#273)
+  * chore(deps): update golang docker tag to v1.23.8 (#272)
+  * fix(cli): Correct handling of `-s 0` for snapshot length (#270)
+  * chore(bpf): Add `ptcpdump_` prefix to all BPF programs and maps (#269)
+  * chore(test): Add more tests (#265)
+  * fix(deps): update module github.com/containerd/containerd to v1.7.27 [security] (#263)
+  * chore: support dynamically link against libpcap (#260)
+  * feat(cli): Add -tt, -ttt, -tttt, -ttttt flags for customizable timestamp formatting (#262)
+  * feat(cli): Add `-F/--expression-file` flag to specify filter expression from file (#261)
+  * chore(deps): update module golang.org/x/net to v0.36.0 [security] (#259)
+  * chore(deps): update golang docker tag to v1.23.7 (#257)
+  * feat(output): Add `-C` and `-W` flags for output file rotation based on size and count (#251)
+  * feat(cli): add support for reading pcapng data from stdin using `-r -` (#253)
+  * chore(ci): Add code coverage reporting to CI pipeline (#252)
+  * chore(ci): add arm64-test-backend, add test for release-test job (#248)
+
+-------------------------------------------------------------------
+Sat Feb 22 12:50:12 UTC 2025 - d.partelly@yahoo.com
+
+- Update to version 0.32.1:
+  * fix(backend): enable process filtering for the `cgroup-skb` backend (#246)
+  * chore(bpf): improve detection of backported tcx/ringbuf support in older kernels (#244)
+  * chore(ci): fix Docker image build issues (#245)
+  * chore(deps): update cilium/little-vm-helper action to v0.0.23 (#238)
+  * fix(deps): update all go dependencies master (minor) (#200)
+  * chore(deps): update busybox:latest docker digest to db142d4 (#190)
+  * chore(deps): update all go dependencies master (#239)
+  * chore(deps): update all github action dependencies (#237)
+  * chore(deps): update golang to 1.23.6 (#241)
+  * chore(bpf): Use BPF ringbuf instead of perfbuf when kernel support is available (#234)
+
