@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 13 12:00:03 UTC 2025 - René Neumaier <r.neumaier@mailbox.org> - 4.0.0
+
+- Update to 4.0.0
+  * Optionally build SO file in setup.py
+- Added note about new var "EDUVPN_COMMON_BUILD_SO" in specfile
+
+-------------------------------------------------------------------
 Wed May 14 11:46:04 UTC 2025 - René Neumaier <r.neumaier@mailbox.org> - 3.0.0
 
 - Change specfile name and package names

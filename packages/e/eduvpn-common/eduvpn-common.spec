@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define _name eduvpn_common
 Name:           eduvpn-common
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        Shared library for eduVPN
 License:        MIT
@@ -47,13 +47,13 @@ Recommends:     python3-%{name}
 %description
 Shared library written in Go with functions that all eduVPN clients can use.
 
-%package -n lib%{_name}-3_0_0
+%package -n lib%{_name}-4_0_0
 Summary:        Shared library for eduVPN
 Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
-%description -n lib%{_name}-3_0_0
+%description -n lib%{_name}-4_0_0
 Shared library written in Go with functions that all eduVPN clients can use.
 
 %package -n python-%{name}
@@ -70,6 +70,12 @@ The python wrapper for the eduVPN common Go shared library.
 
 %build
 # Build shared library
+
+# Prob. future way:
+#
+# export EDUVPN_COMMON_BUILD_SO=1
+# (but, 'soname' is missing and python >= 3.7 seems needed here)
+
 export CGO_ENABLED=1
 go build -o lib/lib%{_name}-%{version}.so \
   -buildmode=c-shared -ldflags "-s -w -extldflags -Wl,-soname,lib%{_name}-%{version}.so" \
@@ -96,10 +102,10 @@ pushd wrappers/python
 %pytest tests.py
 popd
 
-%post -n lib%{_name}-3_0_0 -p /sbin/ldconfig
-%postun -n lib%{_name}-3_0_0 -p /sbin/ldconfig
+%post -n lib%{_name}-4_0_0 -p /sbin/ldconfig
+%postun -n lib%{_name}-4_0_0 -p /sbin/ldconfig
 
-%files -n lib%{_name}-3_0_0
+%files -n lib%{_name}-4_0_0
 %license LICENSE
 %doc CHANGES.md README.md
 %{_libdir}/lib%{_name}-%{version}.so
