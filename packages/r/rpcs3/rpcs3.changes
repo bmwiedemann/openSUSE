@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 14 01:03:53 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.38~git20251010:
+  * Qt: fix some warnings
+  * cellL10n: fix ucs2 type
+  * vm.cpp: remove unused variable
+  * cellPad: Fix some warnings
+  * Qt/Input: Adjust pad settings dialog based on pad capabilities
+  * Update Qt to 6.10.0
+
+-------------------------------------------------------------------
+Mon Oct 13 20:32:53 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Add fix-build-qt-6.10.patch to fix build error with Qt 6.10
+
+-------------------------------------------------------------------
 Wed Oct  8 21:48:26 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Correct ffmpeg-7 version check in spec file
