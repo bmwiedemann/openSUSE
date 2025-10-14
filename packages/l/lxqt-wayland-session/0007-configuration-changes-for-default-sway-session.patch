@@ -1,35 +1,35 @@
-From adf7005960c3fb941f0c6b848d1b1846602fb31b Mon Sep 17 00:00:00 2001
-From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
-Date: Thu, 17 Apr 2025 16:08:44 -0700
+From 5619ef7a2645952d189d28ca599b0afae5d0db0b Mon Sep 17 00:00:00 2001
+From: Shawn W Dunn <sfalken@opensuse.org>
+Date: Mon, 13 Oct 2025 13:10:40 -0700
 Subject: [PATCH 7/7] configuration changes for default sway session
 
 - Set openSUSE desktop background in session
-- Disable "include /etc/sway/config.d/*" It causes too many configs
-  from openSUSEway to be pulled in, and creates a broken session
+- Disable "include /etc/sway/config.d/*" It causes too many configs from
+  openSUSEway to be pulled in, and creates a broken session
 ---
  configurations/lxqt-sway.config | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/configurations/lxqt-sway.config b/configurations/lxqt-sway.config
-index 3cd8c27..6c06321 100644
+index 8493e74..badc6fd 100644
 --- a/configurations/lxqt-sway.config
 +++ b/configurations/lxqt-sway.config
-@@ -17,6 +17,9 @@ set $right l
- # Your preferred terminal emulator
- set $term qterminal
+@@ -19,6 +19,9 @@ set $term qterminal
+ # Your preferred application launcher
+ set $menu lxqt-runner
  
 +### Set background
 +exec swaybg -i /usr/share/wallpapers/openSUSEdefault/contents/images/default.png
 +
  ### Output configuration
  #
- # Example configuration:
-@@ -232,4 +235,4 @@ bindsym $mod+r mode "resize"
-     # Special key to take a screenshot with grim
-     bindsym Print exec grim
+ # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+@@ -234,4 +237,4 @@ bindsym $mod+r mode "resize"
+     bindsym XF86MonBrightnessDown exec lxqt-config-brightness -d
+     bindsym XF86MonBrightnessUp exec lxqt-config-brightness -i
  
 -include /etc/sway/config.d/*
 +# include /etc/sway/config.d/*
 -- 
-2.49.0
+2.51.0
 

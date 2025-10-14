@@ -26,7 +26,7 @@
 %endif
 
 Name:           lxqt-wayland-session
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Files needed for the LXQt Wayland Session
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-4.0
@@ -63,6 +63,7 @@ BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 
 Requires:       layer-shell-qt6 >= 6.2.0
+Requires:       qt6-wayland >= 6.2.0
 Requires:       lxqt-session >= 2.1.0
 Requires:       xdg-user-dirs
 BuildArch:      noarch

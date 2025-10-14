@@ -77,4 +77,14 @@
     default option, from a maintenance perspective</comment>
     <requestid>1290543</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>90e4af4850d274992b1876e4837d7ecb</srcmd5>
+    <version>0.2.1</version>
+    <time>1760458136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.1:
+  * Upstream updates to compsoitor configurations
+- Rebase of openSUSE configuration patches</comment>
+    <requestid>1311232</requestid>
+  </revision>
 </revisionlist>

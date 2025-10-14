@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 13 20:18:20 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 0.2.1:
+  * Upstream updates to compsoitor configurations
+- Rebase of openSUSE configuration patches
+
+-------------------------------------------------------------------
 Thu Jul  3 20:52:06 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add conditionals to remove hyprland and river sessions from Leap,

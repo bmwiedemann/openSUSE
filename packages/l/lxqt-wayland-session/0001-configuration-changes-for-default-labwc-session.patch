@@ -1,4 +1,4 @@
-From 007181a21a5cfc57edd5028f1675cf0b60e4218b Mon Sep 17 00:00:00 2001
+From a34a2fc801e70f518ac86346df6885db05f86ebb Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Wed, 8 Jan 2025 09:24:02 -0800
 Subject: [PATCH 1/7] configuration changes for default labwc session
@@ -30,10 +30,10 @@ index fa49741..a756d24 100644
  # Faster startup for GTK apps:
  dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY > /dev/null 2>&1 &
 diff --git a/configurations/labwc/rc.xml b/configurations/labwc/rc.xml
-index d30f842..b8ffd86 100644
+index e6bc095..0ea95c5 100644
 --- a/configurations/labwc/rc.xml
 +++ b/configurations/labwc/rc.xml
-@@ -662,7 +662,7 @@
+@@ -644,7 +644,7 @@
      <device category="default">
        <naturalScroll></naturalScroll>
        <leftHanded></leftHanded>
@@ -72,5 +72,5 @@ index ca713c5..dda2ee5 100644
  elif [ "$COMPOSITOR" = "niri" ]; then
      if [ ! -f "$XDG_CONFIG_HOME/lxqt/wayland/lxqt-niri.kdl" ]; then
 -- 
-2.49.0
+2.51.0
 
