@@ -190,4 +190,21 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_bt: Update RTL8822C BT USB firmware to 0x2B66_D962</comment>
     <requestid>1302680</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>aef8e4e89e8a7d6a580efa45d39b7060</srcmd5>
+    <version>20251010</version>
+    <time>1760457987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251010 (git commit fef0b3bbf494):
+  * linux-firmware: Update firmware file for Intel Magnetar core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+
+- Update to version 20251010 (git commit 49fafa182b23):
+  * qca: Update Bluetooth WCN6750 1.1.3-00091 firmware to 1.1.3-00100
+
+- Update to version 20251004 (git commit 757854f42d83):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x3BAC_ADBA</comment>
+    <requestid>1311173</requestid>
+  </revision>
 </revisionlist>

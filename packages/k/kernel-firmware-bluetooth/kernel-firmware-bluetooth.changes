@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 11 07:39:53 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251010 (git commit fef0b3bbf494):
+  * linux-firmware: Update firmware file for Intel Magnetar core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+
+-------------------------------------------------------------------
+Fri Oct 10 13:58:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251010 (git commit 49fafa182b23):
+  * qca: Update Bluetooth WCN6750 1.1.3-00091 firmware to 1.1.3-00100
+
+-------------------------------------------------------------------
+Sat Oct  4 13:46:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251004 (git commit 757854f42d83):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x3BAC_ADBA
+
+-------------------------------------------------------------------
 Wed Sep  3 15:22:11 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250903 (git commit c784990ba3d2):
