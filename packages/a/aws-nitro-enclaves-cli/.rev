@@ -75,4 +75,12 @@
 - Update aws-nitro-enclaves-sdk-bootstrap to version f718dea6</comment>
     <requestid>1270808</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9e06293a3450888f05e1e9a99ba525d8</srcmd5>
+    <version>1.4.3~git0.82501bb</version>
+    <time>1760458149</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1311240</requestid>
+  </revision>
 </revisionlist>

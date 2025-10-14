@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 26 16:17:25 UTC 2025 - Jeff Mahoney <jeffm@suse.com>
+
+- Add header from kernel configs to blobs to fix image builds
+  (boo#1250573).
+
+-------------------------------------------------------------------
+Fri Sep 26 14:08:16 UTC 2025 - Jeff Mahoney <jeffm@suse.com>
+
+- Fix group in udev rule (boo#1250566)
+- Automatically load kernel module when allocator service is started
+  (boo#1250567)
+  * Added 0001-nitro-enclaves-allocator.service-drop-in-autoload-ke.patch
+
+-------------------------------------------------------------------
+Fri Sep  5 05:05:05 UTC 2025 - olaf@aepfle.de
+
+- Update to version 1.4.3
+
+-------------------------------------------------------------------
 Thu Apr 17 12:47:06 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 1.4.2

@@ -1,0 +1,39 @@
+From 110a8948a90fb28e40607a48b8c85e07c74acfa1 Mon Sep 17 00:00:00 2001
+From: Jeff Mahoney <jeffm@suse.com>
+Date: Thu, 25 Sep 2025 19:28:36 -0400
+Subject: [PATCH] nitro-enclaves-allocator.service drop-in: autoload kernel
+ module
+Patch-mainline: https://github.com/aws/aws-nitro-enclaves-cli/pull/717
+
+This change causes the unit to load the nitro_enclaves kernel module before the
+service starts.
+
+Since the modprobe@.service unit was introduced in systemd v245 and
+there are releases supported by this project using older versions that
+don't have it, we conditionally install a drop-in file to avoid the
+warning about the missing unit file.
+
+We use Wants= instead of Requires= so that it's a soft dependency and
+will attempt to start the service even if the modprobe@ unit is
+missing or the modprobe fails (or if the drop-in is installed on an
+older release otherwise).
+
+Signed-off-by: Jeff Mahoney <jeffm@suse.com>
+---
+
+ bootstrap/10-autoload-module.conf |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/bootstrap/10-autoload-module.conf b/bootstrap/10-autoload-module.conf
+new file mode 100644
+index 0000000..7630fc4
+--- /dev/null
++++ b/bootstrap/10-autoload-module.conf
+@@ -0,0 +1,4 @@
++# Load the module automatically
++[Unit]
++Wants=modprobe@nitro_enclaves.service
++After=modprobe@nitro_enclaves.service
+-- 
+2.50.1
+

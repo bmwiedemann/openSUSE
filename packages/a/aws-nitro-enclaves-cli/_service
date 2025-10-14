@@ -12,10 +12,8 @@
     <param name="exclude">about.hbs</param>
     <param name="exclude">about.toml</param>
     <param name="exclude">appspec.yml</param>
-    <param name="exclude">blobs/aarch64/Image.config</param>
     <param name="exclude">blobs/aarch64/cmdline</param>
     <param name="exclude">blobs/aarch64/init</param>
-    <param name="exclude">blobs/x86_64/bzImage.config</param>
     <param name="exclude">blobs/x86_64/cmdline</param>
     <param name="exclude">blobs/x86_64/init</param>
     <param name="exclude">bootstrap/env.sh</param>
@@ -40,7 +38,7 @@
     <param name="exclude">vendor</param>
     <param name="filename">aws-nitro-enclaves-cli</param>
     <param name="match-tag">*</param>
-    <param name="revision">6e8512e4d9e1ba82e0e5c4c9d9d0b3987724f217</param>
+    <param name="revision">82501bb9637e4b41c87ce73f8ffc2ce51ca37a6a</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/aws/aws-nitro-enclaves-cli.git</param>
@@ -69,5 +67,6 @@
   <service name="cargo_vendor" mode="manual">
      <param name="srcdir">aws-nitro-enclaves-cli</param>
      <param name="compression">xz</param>
+     <param name="update">false</param>
   </service>
 </services>

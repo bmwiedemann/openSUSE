@@ -1,7 +1,7 @@
 #
 # spec file for package aws-nitro-enclaves-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,18 @@
 %define ne_rundir %_rundir/nitro_enclaves
 
 Name:           aws-nitro-enclaves-cli
-Version:        1.4.2~git0.6e8512e
+Version:        1.4.3~git0.82501bb
 Release:        0
 Summary:        Tools for managing enclaves
 License:        Apache-2.0
 URL:            https://github.com/aws/aws-nitro-enclaves-cli
 ExclusiveArch:  aarch64 x86_64
-Patch0:         %name.patch
 Source0:        %name-%version.tar.xz
 Source1:        vendor.tar.xz
 Source3:        aws-nitro-enclaves-cli-rpmlintrc
 Source9:        aws-nitro-enclaves-sdk-bootstrap-f718dea60a9d9bb8b8682fd852ad793912f3c5db.tar.xz
+Patch0:         %name.patch
+Patch1:         0001-nitro-enclaves-allocator.service-drop-in-autoload-ke.patch
 Requires(pre):  system-group-%ne_system_group = %version-%release
 Requires(post): coreutils
 Requires:       aws-nitro-enclaves-binaryblobs
@@ -132,6 +133,10 @@ cp -aviLt "$_" \
 	bootstrap/nitro-enclaves-allocator.service \
 	vsock_proxy/service/nitro-enclaves-vsock-proxy.service \
 	%nil
+mkdir -vp '%buildroot%_unitdir/nitro-enclaves-allocator.service.d'
+cp -aviLt "$_" \
+	bootstrap/10-autoload-module.conf \
+	%nil
 mkdir -vp '%buildroot%_bindir'
 cp -aviLt "$_" \
 	target/${dir}/nitro-cli \
@@ -162,6 +167,10 @@ _EOC_
 %endif
 gcc -Wall %optflags -static -o "${blobs}/init" init.c
 
+# The tool needs just the header comment to add version info to the image
+# Yes, really.
+sed -i '4,$d' "${blobs}"/*Image.config
+
 mkdir -vp '%buildroot%_tmpfilesdir'
 tee '%buildroot%_tmpfilesdir/%name.conf' <<_EOF_
 d %{ne_rundir} 0775 root %ne_system_group
@@ -169,7 +178,7 @@ _EOF_
 
 mkdir -vp '%buildroot%_udevrulesdir'
 tee '%buildroot%_udevrulesdir/%name.conf' <<'_EOF_'
-KERNEL=="nitro_enclaves", SUBSYSTEM=="misc", OWNER="root", GROUP="%{ne_group}", MODE="0660", TAG+="systemd"
+KERNEL=="nitro_enclaves", SUBSYSTEM=="misc", OWNER="root", GROUP="%{ne_system_group}", MODE="0660", TAG+="systemd"
 _EOF_
 
 suc='system-group-%ne_system_group.conf'
@@ -223,6 +232,8 @@ chown -v '0:%ne_system_group' "${ld}"
 %_tmpfilesdir/%name.conf
 %_udevrulesdir/%name.conf
 %_unitdir/nitro-enclaves-allocator.service
+%dir %_unitdir/nitro-enclaves-allocator.service.d
+%_unitdir/nitro-enclaves-allocator.service.d/10-autoload-module.conf
 %_unitdir/nitro-enclaves-vsock-proxy.service
 
 %files -n aws-nitro-enclaves-binaryblobs-upstream
