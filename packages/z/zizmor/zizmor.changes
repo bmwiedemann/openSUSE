@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Oct 14 05:07:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.15.1:
+  * Bug Fixes
+    - Fixed a bug where zizmor would fail to parse Dependabot
+      configuration files due to missing support for some package
+      ecosystems (#1240)
+
+-------------------------------------------------------------------
+Tue Oct 14 04:42:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.15.0:
+  This release comes with support for auditing Dependabot
+  configuration files! Like with composite action definition
+  auditing (introduced in v1.0.0), Dependabot configuration
+  auditing is enabled by default but can be disabled as part of
+  input collection.
+  To complement this new functionality, this release comes with two
+  new audits: dependabot-execution and dependabot-cooldown.
+  * New Features
+    - New audit: dependabot-execution detects Dependabot
+      configurations that allow insecure external code execution
+      (#1220)
+    - New audit: dependabot-cooldown detects Dependabot
+      configurations that do not include cooldown settings, or that
+      set an insufficient cooldown (#1223)
+  * Performance Improvements
+    - zizmor now uses jemalloc as its default allocator on non-MSVC
+      targets, which should significantly improve performance for
+      Linux and macOS users (#1200)
+  * Enhancements
+    - zizmor now unconditionally emits its version number to stderr
+      on startup (#1199)
+    - The ref-version-mismatch audit now supports auto-fixes for
+      many findings (#1205)
+    - The [impostor-commit] audit now supports auto-fixes for many
+      findings (#1090)
+    - zizmor is now more resilient to sporadic request failures
+      when performing GitHub API requests (#1219)
+    - --collect=dependabot is now supported as a collection option,
+      allowing users to audit only Dependabot configuration files
+      (#1215)
+    - The --fix mode (introduced with v1.10.0) is now considered
+      stable and no longer experimental (#1232)
+  * Bug Fixes
+    - Fixed a bug where zizmor would fail instead of analyzing
+      single-file inputs that lacked an explicit parent path
+      component, e.g. zizmor foo.yml instead of zizmor ./foo.yml
+      (#1212)
+  * Deprecations
+    - The workflows-only and actions-only values for --collect are
+      now deprecated. These values have been replaced with
+      workflows and actions, respectively, which have the same
+      behavior but can be composed together with other collection
+      modes. The deprecated modes will be removed in a future
+      release (#1228)
+    - Until removal, using these values will emit a warning.
+
+-------------------------------------------------------------------
 Tue Sep 30 05:23:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.2:
