@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Oct 13 14:43:00 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.0.14:
+  * matchbracestyle to choose whether to underline or highlight matching braces
+  * matchbraceleft to choose whether to match brace to the left of the cursor
+  * hltrailingws to highlight trailing whitespace
+  * hltaberrors to highlight tab vs space inconsistencies
+  * Add jump command to perform a relative goto
+  * Add sub-word movement actions and improve word movements
+  * Add paragraph selection actions and improve paragraph movements
+  * Make Shift-PageUp/Down the default keybindings for SelectPageUp/Down
+  * Add signatures support to improve filetype detection in ambiguous cases
+  * Provide default.yaml for default syntax highlighting
+  * Improvements in syntax highlighting for various languages
+  * More generic support for mouse events handling
+  * Add mouse release and mouse drag events
+  * Make MouseMultiCursor toggle cursors
+  * Better support for handling mouse events in lua
+  * Better API for lua timers
+  * Add onAnyEvent callback
+  * Allow colorschemes to include other colorschemes
+  * Give user's files in ~/.config/micro/ precedence over micro's built-in 
+    files
+  * Respect umask when creating files
+  * Smarter smartpaste
+  * Make default fileformat value suited to the OS
+  * Improve buffer view relocation after jumping to a far-away location
+  * Improve return values of some actions for better action chaining
+  * Autocomplete filetypes
+  * Allow raw escape sequence to be bound with bind
+  * Various small improvements
+  * Fix various crashes
+  * Fix micro killed by SIGINT sent to its shell job
+  * Various fixes for setting local options
+  * Various fixes for reloading settings via reload command
+  * Various fixes for updating settings after changing filetype
+  * Fix unneeded rewriting of settings.json
+  * Fix overwriting persistent non-default settings in settings.json with 
+    temporary default settings
+  * Don't apply rmtrailingws on autosave
+  * Don't autosave unmodified buffer
+  * Properly update autosave timer when the autosave option value changes
+  * Fix opening filenames including colons with parsecursor
+  * Fix replace to be able to insert '$'
+  * Fix cursor moving to an unexpected location after a redo
+  * Make cursor movements after selection consistent
+  * Fix incorrect buffer view after reloading file
+  * Fix lost mouse release events in case the pane becomes inactive
+  * Add proper locking to LineArray to fix potential races
+  * Cleanup indentation and trailing whitespace
+  * Improve plugin documentation
+
+-------------------------------------------------------------------
 Thu Mar 28 14:16:21 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 2.0.13:

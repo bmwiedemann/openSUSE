@@ -876,4 +876,41 @@
 - run unit tests during build phase (forwarded request 1163346 from amanzini)</comment>
     <requestid>1163390</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>28d8f1da7c4932ff64fdde12c99e0881</srcmd5>
+    <version>2.0.14</version>
+    <time>1760458086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.14:
+  * matchbracestyle to choose whether to underline or highlight matching braces
+  * matchbraceleft to choose whether to match brace to the left of the cursor
+  * hltrailingws to highlight trailing whitespace
+  * hltaberrors to highlight tab vs space inconsistencies
+  * Add jump command to perform a relative goto
+  * Add sub-word movement actions and improve word movements
+  * Add paragraph selection actions and improve paragraph movements
+  * Make Shift-PageUp/Down the default keybindings for SelectPageUp/Down
+  * Add signatures support to improve filetype detection in ambiguous cases
+  * Provide default.yaml for default syntax highlighting
+  * Improvements in syntax highlighting for various languages
+  * More generic support for mouse events handling
+  * Add mouse release and mouse drag events
+  * Make MouseMultiCursor toggle cursors
+  * Better support for handling mouse events in lua
+  * Better API for lua timers
+  * Add onAnyEvent callback
+  * Allow colorschemes to include other colorschemes
+  * Give user's files in ~/.config/micro/ precedence over micro's built-in 
+    files
+  * Respect umask when creating files
+  * Smarter smartpaste
+  * Make default fileformat value suited to the OS
+  * Improve buffer view relocation after jumping to a far-away location
+  * Improve return values of some actions for better action chaining
+  * Autocomplete filetypes
+  * Allow raw escape sequence to be bound with bind
+  * Various small improvements
+  * Fix various crashes (forwarded request 1311162 from amanzini)</comment>
+    <requestid>1311188</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package micro-editor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%global shortcommit     225927b
-%global compiledate     Aug\ 01,\ 2022
+%global shortcommit     04c5770
+%global compiledate     Oct\ 13,\ 2025
 
 Name:           micro-editor
-Version:        2.0.13
+Version:        2.0.14
 Release:        0
 License:        MIT
 Summary:        Micro is a terminal-based text editor that aims to be easy to use and intuitive

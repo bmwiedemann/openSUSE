@@ -1,7 +1,7 @@
-diff --git a/Makefile b/Makefile
-index fc9601a..831585e 100644
---- a/Makefile
-+++ b/Makefile
+Index: micro-2.0.14/Makefile
+===================================================================
+--- micro-2.0.14.orig/Makefile
++++ micro-2.0.14/Makefile
 @@ -1,9 +1,9 @@
  .PHONY: runtime build generate build-quick
  
@@ -15,7 +15,7 @@ index fc9601a..831585e 100644
  	go run tools/build-date.go)
  ADDITIONAL_GO_LINKER_FLAGS = $(shell GOOS=$(shell go env GOHOSTOS) \
  	GOARCH=$(shell go env GOHOSTARCH) \
-@@ -16,7 +16,7 @@ VSCODE_TESTS_BASE_URL = 'https://raw.githubusercontent.com/microsoft/vscode/e6a4
+@@ -16,7 +16,7 @@ VSCODE_TESTS_BASE_URL = 'https://raw.git
  build: generate build-quick
  
  build-quick:
