@@ -70,4 +70,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath12k: WCN7850 hw2.0: update board-2.bin</comment>
     <requestid>1307939</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2ae1135057629ccecfc84898ac56090c</srcmd5>
+    <version>20250919</version>
+    <time>1760457986</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the missing Supplements (bsc#1250952)</comment>
+    <requestid>1311172</requestid>
+  </revision>
 </revisionlist>

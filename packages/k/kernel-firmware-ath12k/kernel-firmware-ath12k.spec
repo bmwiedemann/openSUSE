@@ -30,9 +30,10 @@ License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250912.tar.gz#/kernel-firmware-tools-20250912.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20251004.tar.gz#/kernel-firmware-tools-20251004.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
+Source10:       aliases
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
@@ -45,6 +46,8 @@ BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
 Conflicts:      (filesystem without may-perform-usrmerge)
 %endif
+Supplements:    modalias(pci:v000017CBd00001107sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000017CBd00001109sv*sd*bc*sc*i*)
 
 %description
 This package contains kernel firmware files for Atheros Qualcomm WiFi 7 chipset drivers.
