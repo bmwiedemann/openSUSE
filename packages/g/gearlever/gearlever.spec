@@ -18,7 +18,7 @@
 
 %define appid it.mijorus.gearlever
 Name:           gearlever
-Version:        3.4.2
+Version:        3.4.5
 Release:        0
 Summary:        Manage AppImages
 License:        GPL-3.0-or-later
@@ -36,9 +36,14 @@ Requires:       7zip
 Requires:       dwarfs
 Requires:       flatpak-spawn
 Requires:       python3-dbus-python
+Requires:       python3-gobject
 Requires:       python3-pyxdg
 Requires:       python3-requests
 Requires:       squashfs
+Requires:       typelib(Adw) = 1
+Requires:       typelib(GLib)
+Requires:       typelib(Gio)
+Requires:       typelib(Gtk) = 4.0
 
 %description
 An utility to manage AppImages with ease! Gear lever will organize and manage
@@ -61,12 +66,17 @@ in-place or keep multiple versions side-by-side.
 %fdupes %{buildroot}/%{_prefix}
 rm %{buildroot}/%{_datadir}/gearlever/gearlever/assets/demo.AppImage
 find %{buildroot} -iname 'meson.build' -delete
+%ifpycache
+%py3_compile %{buildroot}%{_datadir}/%{name}
+%endif
 
 %files
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/%{name}
+%pycache_only %{_datadir}/%{name}/%{name}/__pycache__
+%pycache_only %{_datadir}/%{name}/%{name}/**/__pycache__
 %{_datadir}/appdata/%{appid}.appdata.xml
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
