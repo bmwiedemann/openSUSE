@@ -549,4 +549,15 @@
    * Fix issue with handling P-192, P-224 and P-521 for SAE. (forwarded request 1289963 from alois)</comment>
     <requestid>1290199</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>b97f5b1d3cf87527a525208c9bb14a2e</srcmd5>
+    <version>3.10</version>
+    <time>1760458109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.10
+  * Fix issue with handling neighbor report on BSS TM request.
+  * Fix issue with handling deauth and FT association failure.
+  * Fix issue with handling roaming and old frequencies. (forwarded request 1311184 from alois)</comment>
+    <requestid>1311209</requestid>
+  </revision>
 </revisionlist>

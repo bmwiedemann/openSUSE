@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 13 16:02:06 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.10
+  * Fix issue with handling neighbor report on BSS TM request.
+  * Fix issue with handling deauth and FT association failure.
+  * Fix issue with handling roaming and old frequencies.
+
+-------------------------------------------------------------------
 Wed Jul  2 12:27:21 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.9
