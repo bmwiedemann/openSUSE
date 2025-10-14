@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 11 06:43:13 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 1.4.0+0git.20251010:
+  * docs: Update doxygen.cfg
+  * idevicesyslog: Fix initial device enumeration
+  * tools: Print error and exit if invalid command is passed to
+    idevicesyslog
+  * tools: Use new
+    afc_get_file_info_plist/afc_get_device_info_plist functions
+  * afc: Add afc_get_file_info_plist and afc_get_device_info_plist
+    functions
+  * idevicesyslog: Use --syslog-relay in description and man page
+  * idevicesyslog: Use ostrace's pid filter if possible
+  * ostrace: Use smaller timeout in receive loop
+  * idevicesyslog: Sort pidlist by pid numerically
+  * idevicesyslog: Add synonyms for --syslog_relay option
+  * idevicesyslog: Add 'pidlist' and 'archive' commands
+  * idevicesyslog: Another small fix for device detection with ostrace
+  * idevicesyslog: Fix unplug handling
+  * lockdown: Only query ProductVersion and DeviceClass if we are
+    talking to lockdownd
+  * idevicesyslog: Use new ostrace service implementation (iOS 9+)
+  * Add os_trace_relay service implementation
+
+-------------------------------------------------------------------
 Wed Jun 11 17:13:32 UTC 2025 - msuchanek@suse.de
 
 - Update to version 1.3.0+283git.20250610:
