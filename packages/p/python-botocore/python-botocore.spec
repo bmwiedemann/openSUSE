@@ -28,7 +28,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-botocore%{?psuffix}
-Version:        1.40.49
+Version:        1.40.50
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
