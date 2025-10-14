@@ -1,4 +1,207 @@
 -------------------------------------------------------------------
+Tue Oct  7 11:26:49 UTC 2025 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- update to 1.60:
+   * Improved the audio mixing approach, resulting in higher-quality sound playback that better matches Web-Decker.
+   * Fixed pasting text into fields not working via the menu.
+   * Fixed crashes when attempting to remove a widget from a card that doesn't contain it.
+   * Fixed crashes when attempting to remove deck parts from a deck that doesn't contain them.
+   * Reorganized the order of a few options in the Widget and Show menus for a more logical grouping.
+   * Pressing "r" while using drawing tools is now a shortcut for toggling "Transparency Mask" mode.
+   * In Auto-Save mode, Decker will now attempt to write out documents during shutdown even if they aren't "dirty", as a precaution.
+
+- version 1.59:
+   * Corrected crashes when changing the font of an rtext span.
+   * If the first column of a grid was set to width 0, a separator line was still drawn for subsequent visible columns.
+   * When a grid is in "bycell" navigation mode, moving the cursor left and right will now skip over 0-width columns.
+   * Grids now offer two new column format codes, "t" and "T" which permit cells to contain rich text; the former is editable and the latter is "locked". This makes it possible to embed colored text, multiple fonts and inline images within grid cells.
+   * Grids also recognize several "magic column names" which control the appearance of rows. If columns named "_fg", "_bg", or "_hideby" are present in the grid's table, they will be hidden from view. The _fg column controls the foreground pattern/color used in each row, the _bg column likewise controls the background pattern/color used in each row, and anywhere the _hideby column contains a truthy value the corresponding row will be hidden from view. These features permit many options for visually styling grids, but the most useful consequence of _hideby is as a mechanism for easily building "searchable" grids that narrow down displayed results without removing rows from the underlying table:
+   * The new deck.corners attribute can be used to configure the pattern used for drawing the rounded "corners" of Decker while in fullscreen mode, with pattern 0 disabling the corners entirely; this setting is persisted with the deck. This feature is particularly useful for making small decks in iframes blend in more nicely with a surrounding web page.
+   * In Native Decker, pressing Ctrl+S on an unsaved document will trigger "Save As..."
+   * When editing rich text, insertions will now retain the pattern/color of the span preceding the insertion point instead of always inserting text with pattern 1. This change should help make the behavior less surprising.
+   * The write[] function in Lilt and Decker can now optionally specify a custom 24-bit RGB palette of up to 256 colors when writing out an image, rather than being restricted to Decker's color palette. Note that when a custom palette is specified, Decker's normal advanced palette features (like 1-bit patterns and animated patterns) are not taken into account; an image must be "flattened" before it can be saved in this manner.
+
+- version 1.58:
+   * It was possible to generate out-of-bounds writes to sound interfaces which could cause crashes or other misbehavior.
+   * Locked sliders incorrectly responded to scroll events.
+   * Custom brushes now have information about the absolute coordinates of brushstrokes, which among other things make it possible to design brushes which draw ordered dithers. You can read about this feature in the updated All 
+
+- version 1.57:
+   * Corrected possible crashes when deleting a lasso selection.
+   * Corrected possible crashes when creating links.
+   * Corrected crashes when exiting and then re-entering the "Record" dialog while recording.
+   * The Image and Canvas interfaces now offer a ".outline[pattern]" function, for efficiently adding an outline to semi-transparent images. This behaves like a scripting-side counterpart to the "Edit -> Add Outline" menu item in drawing mode.
+   * Middle-clicking to sample colors now works with all drawing tools, including floodfill.
+   * The Cards dialog now displays the card index and count, as a convenience. Note that the displayed card indices count from 1, for typographic consistency, while internal numeric card indices (and Lil indices in general) count from 0.
+   * The Font Editor now offers easy glyph mirroring, rotation, and inversion (v1.3):
+   * The Puppeteer Module now offers a !play command for easier triggering of sound effects (v1.3):
+   * The Dialogizer Module has been improved to better tolerate incorrect setup or shutdown of scripts, improving the development/debugging experience and avoiding various spurious and problematic edge-cases. (v1.7)
+   * Some other tiny odds and ends. :)
+
+- version 1.56:
+   * Corrected broken truncation of tables when displayed in the Listener.
+   * An incorrect build process resulted in v1.55 shipping with an outdated embedded copy of web-decker, leading to various incompatibilities in exports. I strongly recommend immediately upgrading from v1.55!
+   * Double-clicking prototypes in the listbox of the Prototypes dialog would erroneously clone them.
+   * Possible crashes when copying or cutting cards or collections of widgets containing rich-text fields with invalid fonts.
+   * Clicking the name of the current card or prototype from the menu is now a shortcut for opening the appropriate Properties dialog, saving a few clicks and making it easier to quickly rename cards.
+   * Animated patterns can now contain sequences of up to 256 steps (up from 8), which makes it possible to create much more elaborate, slower, or more intermittent sequences:
+   * The Font Editor deck now includes three additional fonts contributed by Ahmwma (v1.2):
+   * The Public Transit module has been expanded with several new transition effects (v1.2):
+   * The Dialogizer module now supports custom "next" cursors with more elaborate animations and configurable speed (v1.6):
+
+- version 1.55:
+   * Corrected an inconsistency in the behavior of accessing font glyphs by index.
+   * Corrected conversion of tilde characters (~) into the DeckRoman UNKNOWN character.
+   * In some situations, Native-Decker was failing to load deck metadata, including custom palettes, when opening .html exports.
+   * Fixed read[] ignoring the requested filetype and exclusively reading data as a Deck.
+   * Corrected the dimensions of the "scale" spinner in fonts.deck.
+   * In some situations, moving widgets with the same name on different cards would produce incorrect undo history while editing.
+   * The Lil phrase "insert with end" now produces the empty table, as intended, instead of a 0-row, 1-column table.
+   * Fonts.deck now includes full DeckRoman support for the "sloppy" fonts, courtesy of olszoj.
+   * Lilt can now import[] a deck and obtain a dictionary of its module values, as a convenience for using modules from CLI scripts.
+   * Lil module KeyStores can now directly store tables, images, sounds, and arrays, reducing the amount of marshaling and conversion necessary to store these forms of data alongside the module. Prefer using the KeyStore for large static data over stuffing it into the module's source code!
+   * Clicking the middle mouse button while using drawing tools now acts as a pipette tool, selecting the current pixel as a new stroke color. Your mileage may vary depending on your intersecting choices of pointing device, operating system, and (for web-decker) web browser.
+   * Introduced the Lil "nil" datatype and the associated "fill" primitive.
+
+- version 1.54:
+   * Introduced the read-only "image.bounds" attribute. Like "image.hist", this lazily computes useful information about the pixel content of the image. The result will be a "rect" dictionary giving a bounding box for nonzero pixels within the image, consisting of "pos", an (x,y) pair for the top left corner of the box and "size", a (width,height) pair giving its dimensions. This can be very useful for efficiently trimming whitespace from the edges of images or as part of certain kinds of collision detection.
+   * The Font/DA Mover dialog now indicates the number of populated glyphs of selected fonts, making it easier to determine at a glance whether a font supports the full DeckRoman alphabet.
+   * The deck.remove[] function may now be called upon an instance of the Patterns interface, which will reset the palette, animation sequences, and patterns to their defaults, for consistency with the behavior of the Font/DA Mover.
+   * The "in" operator now performs list-list comparisons using an internal hashmap, providing dramatic performance improvements for large columnar tests.
+   * The visual keyboard normally provided by entering "Touch Input" mode can now be temporarily summoned in any active Field via "Edit -> Keycaps..." or ctrl/cmd + K. This provides a convenient fallback method of entering any DeckRoman character if the user's system keyboard layout or web browser do not support typing them directly.
+   * The Deck Interface now exposes a read-only "deck.encoded" attribute which will produce a string representation of the deck (which happens to be precisely the text format of .deck files). This text format can be reconstituted into a new Deck Interface with the newdeck[] function. Decker can prompt the user to open and decode an existing deck file with read["deck"] and can prompt the user to save a Deck Interface as a .deck or .html export with write[deck]. This set of new features makes it possible to build Decks which read, manipulate, temporarily serialize, and write out modified decks, as was previously only possible via command-line Lilt scripts.
+   * More secret fun. :)
+   * The Ply renderer for Twine no longer produces hard-wrapped text.
+   * Corrected inconsistent handling of unicode escapes when parsing %j/%J formatted JSON/LOVE strings.
+   * Corrected crashes with danger.read[] and Lilt's read[] when the target file has insufficient permissions.
+   * Corrected Windows-specific crashes related to the %p parsing symbol; behavior of this feature is now more consistent with Web-decker.
+   * Corrected inconsistent behavior and crashes when calling random[] in permutation mode with an empty source collection.
+   * Corrected subtle misbehavior when creating "Tight Selections" from a box selection in Decker.
+   * Accessing Font glyphs via numeric indices now uses ASCII/DeckRoman indices instead of starting indices at the first displayable character (space; ASCII 32). This behavior is more internally consistent and will often simplify scripts by removing the need for an offset:
+   * Lilt no longer provides dedicated readdeck[] or writedeck[] functions; for improved consistency between Decker and Lilt, this functionality is now incorporated into the newdeck[], read[], and write[] functions. Note that as always the signatures of read[] and write[] in Lilt are different from Decker, as the former accept filesystem paths and the latter prompt the user for a file location and name.
+
+- version 1.53:
+   * Fixed inconsistent formatting of grid columns containing lists with the "J" format code.
+   * Fixed inconsistent results for reads/writes of canvas/image pixels at non-integral coordinates.
+   * Fixed inconsistent clipping of canvas.poly[]
+   * Corrected crashes when deleting a prototype while editing it.
+   * With Transparency Mask mode active, the Stroke and Fill pattern modals incorrectly displayed the first swatch as the background color.
+   * The new twee module offers a number of tools for combining Decker and Twine, as discussed elsewhere.
+
+- version 1.52:
+    In Native Decker, the keyboard shortcut ctrl + U + L + D (read: Un-Lock-Deck) unlocks a locked deck, providing an escape-hatch if you accidentally lock a deck you haven't saved. (Shh: it's a secret to everyone!)
+    Calling the random[] built-in function with no arguments will now return a random floating point number between 0 and 1; convenient for simple stochastic decision-making.
+    Custom brushes previously interpreted any pattern other than 0 in a brush mask as essentially pattern 1, limiting brushes to paint only in the user-selected brush pattern. To make this feature more general, Decker now allows masks to contain any pattern indices: 47 (solid-color black) will be translated into pattern 1 in the final drawing, 1 will become the user-selected pattern, and any other nonzero pattern will remain the same; thus it is now possible to make brushes produce opaque "stamp" patterns, generate rainbow gradients, and much more.
+    The brushes.deck example has been overhauled. In addition to all the existing example brush modules, several new exciting modules have been added and the deck now includes interactive documentation detailing the mechanisms behind custom brushes:
+- version 1.51:
+   * The "Show Animation" toggle was not correctly implemented in Web-Decker.
+   * Clarified and corrected usage/installation instructions for the "pt" module.
+   * The "Link..." dialog box now offers an (optional) visual card picker to remove the need to memorize or manually look up target card names.
+   * Importing images via drag-and-drop or "File -> Import Image" now respects the "Style -> Color" setting. In Color mode, images will be converted to best-effort posterized 16 colors; for best results consider first using an external tool to dither color images with respect to an appropriate palette. The "All About Color" deck (see below) provides details.
+   * The new example deck "All About Color" describes and clarifies the many features and foibles of Decker's paletted graphics capabilities, and also includes the module "col", which provides handy conversion functions between several popular color representations (RGB, HSV, Hex, and CSS color formats).
+   * The "plot" module has been revised to v2.0 with overhauled documentation, support for styling and windowing plots, pie charts, and utility functions plot.pivot[] and plot.unpivot[] to simplify preparing data for plots or reports.
+
+- version 1.50:
+   * Corrected spurious refusal of certain reserved names like "__proto__" as identifiers and table column names.
+   * Inserting new grid rows was not properly respecting the types specified for column formats when choosing initial fill values.
+   * Corrected possible crashes when using "print[]" and certain other built-in functions in modules during a "cold start".
+   * Corrected inconsistencies in pretty-printing of some tables with "show[]".
+   * Switched to a more robust algorithm for finding black/white tones during drag-and-drop ".hex" palette import.
+   * FatBits zoom level now defaults to 4x instead of 8x.
+   * The manual "File -> Export Table" and "File -> Import Table" dialogs have been removed, as they were redundant with drag-and-drop table import and copying and pasting through the Grid Properties modal, provided no options for configuration or previewing, and were unnecessarily modal.
+   * Manually adding rows to a grid will now select and scroll to the added row, at column 0.
+   * Grid widgets now offer "grid.scrollto[row]", which will perform the minimum scroll necessary to ensure that the given row is visible on-screen, removing the need for complex and brittle user scripts to do the equivalent. Likewise, Field widgets now offer "field.scrollto[pos]" to ensure that a specified character position is visible.
+   * The RText interface now exposes "rtext.index[table (line,column)]" for turning logical text positions into a character position. It also now includes "rtext.find[table key ignorecase]", which is handy in combination with "field.scrollto[]".
+   * The Zazz module gets a minor generalization: "zazz.flipbook[]" can now accept the source as a non-canvas widget, indicating that the routine should operate upon a piece of the card background indicated by the widget's bounding-box. This brings the module to v1.1.
+
+- version 1.49:
+   * Possible crashes when applying %J to invalid/inappropriate interface values.
+   * The "first" of a native function now yields the string "native" for better consistency with user-defined functions.
+   * The "image[]" constructor was not properly flooring floating-point image sizes, producing odd behavior.
+   * The "follower" contraption provided with the Path module fired finish[] events within its attribute-set quota in some situations, limiting its ability to interact with synchronous libraries like Dialogizer. This fix bumps Path to v1.1.
+   * When a region of a drawing is selected, the new "Edit -> Add Outline" feature can ring opaque regions of the selection in pixels of the selected pattern or color. Note that the selection must include blank space for the outline. This feature is particularly useful when preparing semi-transparent images to use as "sprites" by improving contrast against a variety of backgrounds:
+   * The new "Widgets -> Order..." modal provides an alternative way to select and reorder widgets on a card. This can be particularly handy when creating projects with overlapping widgets:
+   * The wigglyPlayer contraption in WigglyKit now offers input events and can optionally be made "draggable" like an ordinary Canvas widget. This addition bumps WigglyKit to v1.2.
+   * Previously, it was not possible to modify the contents of a Field widget while it was focused; a user's in-progress changes always took precedence. This behavior has been tweaked specifically to allow clearing a field (as with x.text:"") while focused. If touch mode is active, clearing a field will dismiss the on-screen keyboard and remove focus from the field. This change makes it possible to create "command-line" interfaces similar to a terminal or Decker's Listener that are still reasonably usable on touch devices.
+   * Decker can now be compiled against SDL 1.2 (with some quality-of-life features reduced or removed), enhancing compatibility with a variety of older platforms. Reach out if you need help with a port!
+   * As a convenience, dragging and dropping a .hex color palette (as found on LoSpec) onto Decker will automatically apply it. If 14 or fewer colors are provided, pattern slots 32 and 47 will be left unchanged, and otherwise 32 and 47 will become the lightest and darkest colors in the palette, respectively.
+   * Native-Decker now supports an optional "--card" command-line flag to open the deck to a specific card, by name.
+   * The natural-join operator in Native-Decker and Lilt now uses a more efficient implementation. Experimentally, tables can now be joined 2-20x faster, especially if the input tables share exactly one column.
+   * The "eval[]" built-in function now provides a key "errorpos" when encountering parse errors, which consists of a (line,column) pair specifying the location in the source text where the error was encountered. This addition makes it easier to write tools which provide useful feedback to the user when they input a malformed Lil program.
+   * More secret fun.
+
+- version 1.48:
+   * checkboxes set to show.none could be clicked.
+   * the image.map[] and sound.map[] functions had odd behavior if supplied with an oversized mapping dictionary.
+   8 issuing "go[]" (including via the Help menu) while in the Prototype script editor could lead to crashes.
+   * Avoid pushing onto the browser's navigation history when updating the url hash to reflect card names.
+   * Lil now supports chained instances of @. This was previously permitted by the language grammar but a parse-time error in practice.
+   * Lil now offers the %J format pattern. The lowercase form %j has always offered the ability to parse/format JSON data, but in some situations this was very clumsy: several of Lil's basic datatypes cannot be represented losslessly in JSON. The %J variant offers a strict superset of JSON, Lil Object-Value Encoding (LOVE). In addition to the features of JSON, LOVE permits non-string keys for dictionary values, table values (enclosed in <> and otherwise represented like a JSON dictionary of columns), and Array, Image, and Sound interface values represented as Base64 DataBlocks as produced by the ".encoded" attribute of each. Storing and transmitting Lil values with LOVE avoids a whole host of nasty programming foot-guns and clumsy packing/unpacking.
+   * Cards, prototypes, and widgets now offer the ".parent" attribute for obtaining a reference to their container. For example, the parent of a widget within a contraption instance is that contraption, while the parent of the contraption will be the card upon which the contraption appears.
+   * The canonical contents of a field widget is an RText table, accessible via the .value attribute. The .text attribute of fields has always offered a convenient way to obtain or modify the textual content of this table. Along similar lines, fields now offer .images (a list of any inline images contained within the RText table) and .data (arbitrary Lil data crammed into a string as LOVE), both of which can be read or written. These features together can considerably simplify common patterns in scripting, especially when building novel contraptions:
+   * The "path" module offers generic grid-based pathfinding algorithms and supplementary utilities
+
+- version 1.47:
+   * Adjusted the algorithm for "image.scale[]", which in some situations was producing imprecise results for integer upscales.
+   * The "choose" mode of the "alert[]" dialog did not provide enough space for a vertical scrollbar, which was misleading when choosing from among a large number of options.
+   * In certain situations, self-triggering scripts (especially those caused by Animated widgets) could be difficult or impossible to halt. Using Script -> Stop from the menu now always returns to Widgets mode, ensuring that the user can correct mistakes before resuming execution.
+   * Corrected compiler-specific flaws in the implementation of "image.merge[]".
+   * F-key shortcuts are no longer enabled in locked decks; this was needlessly confusing.
+   8 Web-Decker now has a similarly opt-in counterpart to Native-Decker's danger interface, making it possible for Lil to call into JS (and/or vice versa) and access arbitrary JS APIs. Note that this is inherently brittle and incompatible with Native-Decker, so it is not recommended for general use. It was always possible to "hack" Web-Decker builds with custom JS; this new interface simply makes it possible to do so in a forward-compatible, modular fashion.
+   * All output results in the Listener can now be clicked to copy them to the input buffer, rather than just string-like results.
+   * Decks previously had a load-time minimum size enforced at 320x240 pixels. This has been lowered to 8x8. While very small decks are essentially impossible to edit within Decker, there may be uses for embedding locked decks of such dimensions in web pages.
+   * Web-Decker has long supported "deep links" into decks, using a "#" suffix on the URL followed by a card name. In order to make this feature more obvious and easier to use, Web-Decker will now automatically update this URL hash while the user navigates through the deck, unless the current deck is locked.
+   * The merge-by-operator form of "image.merge[]" and "canvas.merge[]" now supports the "*" operator
+
+- version 1.46:
+   * In some situations when using ".." or ".[" it was possible to observe the local "x" being shadowed due to the way the implicit loop was desugared.
+   * Undoing the creation of a contraption could potentially cause crashes or misbehavior.
+   * If a contraption and card had the same name, and both contained scripts, it was possible for the contraption to fail to serialize its scripts. Correcting this introduced a minor (non-breaking) change to how contraptions select IDs for their scripts.
+   * Slider widgets were not always being serialized in a manner consistent with native-Decker.
+   * Referencing the ".offset" attribute of contraptions could cause crashes in some situations.
+
+- version 1.45:
+   * The "Grid Size..." menu option is now "Grid and Scale...". The revised dialog makes it possible to configure the zoom level used in FatBits mode, providing additional flexibility for working on pixel art.
+   * Lil offers a new primitive operator, "window", which is used for breaking strings or lists into exclusive or sliding windows:
+   * Lil's @ operator is now significantly (about 2.5x) faster when the left argument is a primitive monadic (unary) operator. Like the improvements in v1.44, this expands the range of operations which can be performed in a "vectorized" fashion without requiring the Lil interpreter to execute loops at the bytecode level.
+   * The "pdf" module has been updated to v1.1, with simplifications to usage examples and better compatibility with third-party PDF readers.
+   * Decker now includes a new utility module, "bn", for performing arithmetic with arbitrary-precision natural numbers; handy if you feel like solving Project Euler problems or implementing a disturbingly large-scale Cookie-Clicker.
+- version 1.44:
+   * The "%e" parse format was not correctly incorporating months when calculating unix epochs.
+   * Decker was always reporting decks as having "unsaved changes" as an unintentional consequence of volatiles, which is now corrected.
+   * In certain circumstances, web-decker could crash after saving a binary file with "write[]".
+   * The Image Interface now provides a ".pixels" attribute, which makes it possible to do efficient bulk reads or writes of all the pixels in an image.
+   * The Prototype Interface now provides read-only ".font" and ".show" attributes, which will always return Decker's "body" font and the string "solid", respectively. These additions make the behavior of prototypes being "previewed" in the prototype editor more consistent with the behavior of corresponding Contraption instances on a card.
+   * The new "app.render[]" function can be used to request a "screenshot" of a specified card or widget, in the same manner that using "Edit -> Copy Image" of a widget works manually. Previously it was possible to do something similar for cards by (ab)using custom transition functions. The main limitation to be aware of for this technique is that "app.render[]" is not available for Lilt, so it cannot be used to "headlessly" render images of Decks.
+   * The "write[]" built-in function in Decker can now be given a second optional argument which is used to provide a "hint" for the appropriate file extension when saving a binary file. This addition makes saving fancy binary files significantly more user-friendly.
+   * Lil's @ operator, with a left argument which is a string, list, or dictionary, and a right argument which is a list, is tremendously faster than it was previously. In the general case you can think of "@" as desugaring into an "each" loop and consuming many opcode "ticks", but when the arguments have appropriate types this special behavior will kick in, allowing for efficient indexing into lookup tables in a vector-oriented fashion.
+   * Lil now provides syntax for declaring variadic functions. Decker's standard library already provided a number of functions which behaved this way: for example, "rtext.cat[]" or "bits.xor[]". This addition now permits user code to perform the same kinds of tricks.
+
+- version 1.43:
+   * The "array.slice[]" and "array.copy[]" functions were not correctly respecting the cast of the source array when computing offset addresses.
+   * Empty canvases (containing only pattern 0 pixels) no longer serialize their image content, reducing file size and spurious diffs.
+   * X-Ray Specs were incorrectly prioritizing selection of widgets back-to-front, instead of front-to-back.
+   * Any widget may now be set as ".volatile". A volatile widget's state-values (the "value" field, canvas image content, scrolling, etc) are not preserved when the deck is saved and may be "purged" manually or via "deck.purge[]". Using volatile widgets where appropriate can reduce deck file sizes and spurious diffs, as well as providing a convenient way to "reset" games and similar applications.
+   * Modules and Contraption Prototypes now offer a ".version" attribute, making it easier to keep track of improved releases of these resources. The Font/DA Mover displays version information and changes button titles from "Copy" to "Upgrade" or "Downgrade" as appropriate. Being able to upgrade Prototypes is particularly helpful, as doing so previously required external tooling or discarding existing contraption instances. Pasting contraptions can now automatically upgrade the prototype definitions, and "deck.add[]" exposes upgrade/downgrade functionality to scripts.
+   * When editing Prototypes using anything other than the "interact" tool, their name will now be shown in the top right corner of the menu, like card names, making it easier to disambiguate and navigate between similar-looking prototypes.
+   * The Prototypes modal now offers "Clone" and "Delete" buttons, as a more convenient way to duplicate or remove prototypes, respectively.
+   * Fields now delay only 1/4 of a second instead of 1 second when "debouncing" input, allowing for more responsive feedback in applications like search boxes. The original delay proved to be unnecessarily conservative and produced the impression that search and filtering are much slower operations than they are in practice.
+Breaking Changes:
+   * When given a function as its left argument, the "@" operator previously applied the function as a triad, with the value, key, and index of each element on the right, respectively. In practice, this approach proved to be a frequent source of confusion and prevented some quite reasonable idioms like using "random @ canvas.size" to pick an (x,y) point within the dimensions of a canvas. The "@" operator will now exclusively apply the function in this situation as a monad, feeding it only values. I suspect this change will negatively impact very few, if any, existing scripts.
+   * Previously, if the "extract" query form specified no column expressions, it would extract a dictionary of each column in the result table, for symmetry with "select". In practice, this was of extremely dubious usefulness. I have modified this query form to instead extract the first column of the result table in this situation, which shortens many common uses of "extract", such as "extract value ..." of a list. The old behavior wasn't even explicitly documented, so again I doubt this will be a high-impact change. If the old behavior is desired, use "cols select ..." instead of "extract ...".
+
+- version 1.42:
+   * Writes to invalid glyph indices of a font could potentially cause crashes.
+   * Correct a loophole in URL validation for open[], which permitted injection of arbitrary JavaScript. This didn't cause any actual danger, since loading JS in this fashion still required manual user interaction, but this "feature" was not intentional or portable.
+   * The %v format pattern was incorrectly considering consuming zero characters a valid match.
+   * The default "changecell" event handler did not correctly interpret columns with no configured format as strings ("s").
+   * The behavior of the Home and End keys within fields has been changed to navigate the cursor to the beginning or end of the current line, respectively, as is common on Windows and Linux, instead of the traditional MacOS behavior (the beginning or end of the field).
+   * When editing Rich-Text fields, there is now a menu item "Edit -> Copy Rich Text" which copies the formatted content of a selection (including inline images) instead of just the underlying text. Note that rich text fragments in the clipboard do not automatically transfer fonts between decks.
+   * The "View -> Snap to Grid" option is now respected when moving selections of multiple widgets and when resizing Contraption Prototypes.
+   * The %j format pattern now serializes tables by casting them to a list-of-dictionaries representation instead of converting them into "null". Note that parsing with %j will not automatically coerce data of this shape into a table.
+   * The card.copy[] and card.remove[] functions now accept lists or dictionaries of Widgets, which can slightly simplify bulk copies and cleanup by removing the need for explicit loops or @.
+   * Decker now ships with Decker Sokoban, an example deck demonstrating how to make tile-based puzzle games.
+-------------------------------------------------------------------
 Sun Mar 24 04:36:40 UTC 2024 - vivid <absolutely.vivid@fastmail.org>
 
 - Update decker and decker-doc to version 1.41

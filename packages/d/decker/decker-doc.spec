@@ -1,7 +1,7 @@
 #
-# spec file for package decker
+# spec file for package decker-doc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           decker-doc
-Version:        1.41
+Version:        1.60
 Release:        0
 Summary:        A multimedia sketchpad
 License:        MIT
@@ -47,6 +47,6 @@ install -d examples/ %{buildroot}/%{_docdir}/decker
 %files
 %license LICENSE.txt
 %doc Readme.md VERSION
-%{_docdir}/decker 
+%{_docdir}/decker
 
 %changelog

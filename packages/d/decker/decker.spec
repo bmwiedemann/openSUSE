@@ -1,7 +1,7 @@
 #
 # spec file for package decker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           decker
-Version:        1.41
+Version:        1.60
 Release:        0
 Summary:        A multimedia sketchpad
 License:        MIT
 URL:            http://beyondloom.com/decker/
 Source:         https://github.com/JohnEarnest/Decker/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  make
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_image-devel
+BuildRequires:  make
 BuildRequires:  xxd
 
 %description
@@ -51,4 +51,3 @@ make test
 %{_bindir}/lilt
 
 %changelog
-
