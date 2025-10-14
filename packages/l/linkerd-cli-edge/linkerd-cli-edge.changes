@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 14 04:45:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.10.3:
+  No CLI-related changes in the changelog
+  * Dependencies
+    - build(deps): bump generic-array from 0.14.7 to 0.14.8
+      (#14618)
+    - build(deps): bump regex-lite from 0.1.7 to 0.1.8 (#14617)
+    - build(deps): bump softprops/action-gh-release from 2.4.0 to
+      2.4.1 (#14619)
+    - build(deps): bump cc from 1.2.40 to 1.2.41 (#14616)
+    - build(deps): bump pem from 3.0.5 to 3.0.6 (#14615)
+    - build(deps): bump regex from 1.11.3 to 1.12.1 (#14614)
+    - build(deps): bump tokio-rustls from 0.26.3 to 0.26.4 (#14604)
+    - build(deps): bump typenum from 1.18.0 to 1.19.0 (#14602)
+    - build(deps): bump libc from 0.2.176 to 0.2.177 (#14603)
+
+-------------------------------------------------------------------
 Fri Oct 10 04:59:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.10.2:
