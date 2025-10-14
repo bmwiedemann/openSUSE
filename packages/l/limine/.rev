@@ -159,4 +159,12 @@
     <comment>Update to 10.1.0</comment>
     <requestid>1309068</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1eb58d7aa4f424229ca4f71eb540ca07</srcmd5>
+    <version>10.1.1</version>
+    <time>1760458058</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 10.1.1</comment>
+    <requestid>1311107</requestid>
+  </revision>
 </revisionlist>

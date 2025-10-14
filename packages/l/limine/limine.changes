@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 13 12:16:57 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.1.1:
+  * Always reallocate DTBs to bootloader-reclaimable memory. This
+    is to prevent pointers to EFI/reserved memory from being leaked to
+    Limine protocol executables, which is against said protocol, which
+    mandates that DTBs have to be in bootloader-reclaimable memory.
+
+-------------------------------------------------------------------
 Sun Oct  5 13:06:37 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.1.0:
