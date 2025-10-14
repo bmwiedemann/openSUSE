@@ -49,4 +49,15 @@
 </comment>
     <requestid>1201841</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3166099b58bb30d9745084c12a3d7a9a</srcmd5>
+    <version>0.2.0</version>
+    <time>1760458073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0:
+  * Bug fix for rendering on fractional scaling factors
+  * Optimizations
+</comment>
+    <requestid>1311155</requestid>
+  </revision>
 </revisionlist>

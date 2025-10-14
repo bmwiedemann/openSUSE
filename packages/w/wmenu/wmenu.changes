@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 13 14:19:44 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Update to version 0.2.0:
+  * Bug fix for rendering on fractional scaling factors
+  * Optimizations
+
+-------------------------------------------------------------------
 Wed Sep 18 18:29:56 UTC 2024 - llyyr <llyyr@yukari.in>
 
 - Update to new upstream host
