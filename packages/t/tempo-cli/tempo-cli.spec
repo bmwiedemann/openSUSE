@@ -17,7 +17,7 @@
 
 
 Name:           tempo-cli
-Version:        2.8.2
+Version:        2.9.0
 Release:        0
 Summary:        CLI for the Grafana Tempo tracing backend
 License:        Apache-2.0
@@ -25,7 +25,7 @@ URL:            https://github.com/grafana/tempo
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 
-BuildRequires:  go >= 1.24.4
+BuildRequires:  go1.25 >= 1.25.1
 
 %description
 Tempo CLI is a separate executable that contains utility functions related to
