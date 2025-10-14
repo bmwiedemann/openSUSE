@@ -1,0 +1,46 @@
+diff -Nru aws-crt-python-0.28.1.orig/test/test_aiohttp_client.py aws-crt-python-0.28.1/test/test_aiohttp_client.py
+--- aws-crt-python-0.28.1.orig/test/test_aiohttp_client.py	2025-09-19 01:25:15.000000000 +0200
++++ aws-crt-python-0.28.1/test/test_aiohttp_client.py	2025-10-13 12:23:37.316737927 +0200
+@@ -287,6 +287,7 @@
+ 
+         return connection
+ 
++    @unittest.skip("Requires network")
+     async def _test_h2_client(self):
+         url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
+         connection = await self._new_h2_client_connection(url)
+@@ -308,6 +309,7 @@
+ 
+         await connection.close()
+ 
++    @unittest.skip("Requires network")
+     async def _test_h2_manual_write_exception(self):
+         url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
+         connection = await self._new_h2_client_connection(url)
+@@ -427,6 +429,7 @@
+         finally:
+             self._stop_server()
+ 
++    @unittest.skip("Requires network")
+     async def _test_cross_thread_http2_client(self):
+         """Test using an HTTP/2 client from a different thread/event loop."""
+         url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
+diff -Nru aws-crt-python-0.28.1.orig/test/test_http_client.py aws-crt-python-0.28.1/test/test_http_client.py
+--- aws-crt-python-0.28.1.orig/test/test_http_client.py	2025-09-19 01:25:15.000000000 +0200
++++ aws-crt-python-0.28.1/test/test_http_client.py	2025-10-13 12:24:44.520076579 +0200
+@@ -353,6 +353,7 @@
+                                                       tls_connection_options=tls_conn_opt)
+         return connection_future.result(self.timeout)
+ 
++    @unittest.skip("Requires network")
+     def test_h2_client(self):
+         url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
+         connection = self._new_h2_client_connection(url)
+@@ -375,6 +376,7 @@
+ 
+         self.assertEqual(None, connection.close().exception(self.timeout))
+ 
++    @unittest.skip("Requires network")
+     def test_h2_manual_write_exception(self):
+         url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
+         connection = self._new_h2_client_connection(url)

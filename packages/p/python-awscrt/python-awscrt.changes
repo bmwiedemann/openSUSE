@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Mon Oct 13 12:15:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.28.1
+  * Remove the thrid-party tests to pypi src by @TingDaoK in (#683)
+- from version 0.28.0
+  * aws-lc -> 1.58.1 by @TingDaoK in (#676)
+  * Fix CI by @sfod in (#681)
+  * Fio options binding by @TingDaoK in (#680)
+  * Add aio/http.py module by @TingDaoK in (#658)
+- from version 0.27.6
+  * Use bdist_wheel from setuptools by @hroncok in (#671)
+  * MQTT5 Shared Subscription Test Removal by @sbSteveK in (#673)
+  * CI Jobs fail-fast False by @sbSteveK in #674
+  * Latest submodules -- fix s3 retry with checksum result in failure
+    by @TingDaoK in (#675)
+- from version 0.27.5
+  * Change stale issue and discussion handling to run once a week
+    by @sbSteveK in (#670)
+  * [submodule update] retry will reuse the checksum and support no_proxy
+    by @TingDaoK in (#669)
+- from version 0.27.4
+  * Rollback aws-lc submodule to v1.53.0 by @sbSteveK in (#664)
+- from version 0.27.3
+  * Remove clang-3 from CI by @sbSteveK in (#655)
+  * Request response doc config by @bretambrose in (#656)
+  * Update submodules by @sfod in (#657)
+  * CBOR bindings by @TingDaoK in (#559)
+  * CD fix for Windows TLS 1.3 by @sbSteveK in (#625)
+  * Fix missing python in windows CI by @sfod in (#660)
+  * Update submodules by @sfod in (#659)
+  * Remove TODO for tests that are tested in the SDK by @alfred2g in (#541)
+  * Update mqtt submodule by @sbSteveK in (#661)
+  * Update Submodules by @sbSteveK in (#663)
+- from version 0.27.2
+  * H2 settings by @TingDaoK in (#648)
+  * Fix version str, strip the leading v by @TingDaoK in (#654)
+- from version 0.27.1
+  * Reduce the package size by @TingDaoK in (#653)
+  * Support changes in req-resp operations by @sfod in (#651)
+  * H2 write stream by @TingDaoK in (#635)
+- from version 0.27.0
+  * When uploading release with twine, pass --verbose by @graebm in (#646)
+  * Helper functions for non-optional integers should fail if the value
+    is None by @bretambrose in (#642)
+  * MQTT request response client creation/destruction by @bretambrose in (#643)
+  * make_request implementation by @bretambrose in (#644)
+  * Request response streams by @bretambrose in (#647)
+- from version 0.26.1
+  * Update Submodules by @sbSteveK in (#645)
+- from version 0.26.0
+  * Override macOS deployment target by @xiazhvera in (#641)
+- from version 0.25.7
+  * [S3] add request ID to debug level log by @TingDaoK in (#640)
+- from version 0.25.6
+  * Bind out pkcs8 for rsa by @DmitriyMusatkin in (#638)
+- from version 0.25.5
+  * Update submodules by @xiazhvera in (#637)
+- from version 0.25.4
+  * Update comments on which images are used by @DmitriyMusatkin in (#634)
+- from version 0.25.3
+  * Bump c-cal to pickup win crypto changed by @DmitriyMusatkin in (#633)
+- from version 0.25.2
+  * Fix build build errors on AL2012, due to linking librt statically
+    by @graebm in (#632)
+- from version 0.25.1
+  * Use PQ Default Policy for testing by @alexw91 in (#631)
+  * Fork workaround by @TingDaoK in (#628)
+- from version 0.25.0
+  * Bind out ed25519 support by @DmitriyMusatkin in (#630)
+- from version 0.24.2
+  * Add pyproject.toml, and stop calling setup.py directly
+    by @graebm in (#629)
+- from version 0.24.1
+  * Fix aarch64 runners by @DmitriyMusatkin in (#626)
+  * Revert Win TLS1.3 by @xiazhvera in (#627)
+- from version 0.24.0
+  * Update submodules by @sfod in (#624)
+- from version 0.23.10
+  * Bump AWS_EVENT_STREAM_MAX_MESSAGE_SIZE to 256MB by @waahm7 in (#622)
+- from version 0.23.9
+  * Cmake modules by @sfod in (#621)
+- from version 0.23.8
+  * Fix segfaults -- uri parsing corner case. by @TingDaoK in (#620)
+- from version 0.23.7
+  * Flaky tests pass 1 by @bretambrose in (#616)
+  * Fix CRC64NVME crash on machines with disabled AVX by @graebm in (#617)
+- from version 0.23.6
+  * Update S2N to Latest by @waahm7 in (#615)
+- from version 0.23.5
+  * Fix macOS universal2 detection in setup.py by @graebm in (#613)
+  * Update Submodules by @sbSteveK in (#614)
+- from version 0.23.4
+  * CRC64NVME checksum algo by @TingDaoK in (#611)
+- from version 0.23.3
+  * AWS_CRT_BUILD_FORCE_STATIC_LIBS by @graebm in (#596)
+- from version 0.23.2
+  * Update submodule by @xiazhvera in (#610)
+- Add library packages of AWS C++ SDK to BuildRequires
+  * cmake(aws-c-auth)
+  * cmake(aws-c-cal)
+  * cmake(aws-checksums)
+  * cmake(aws-c-common)
+  * cmake(aws-c-compression)
+  * cmake(aws-c-event-stream)
+  * cmake(aws-c-http)
+  * cmake(aws-c-mqtt)
+  * cmake(aws-c-io)
+  * cmake(aws-c-s3)
+  * cmake(aws-c-sdkutils)
+  * cmake(s2n)
+- Adjust filename pattern in %files section
+- Adjust upstream source directory name in %prep section
+- Refresh skip-test-requiring-network.patch
+- Remove AWS_CRT_BUILD_USE_SYSTEM_LIBCRYPTO override as C++ libraries
+  are no longer being built
+- Remove cmake and zlib{,-compat-ng}-devel from BuildRequires
+- Remove CFLAGS override as C++ libraries are no longer being built
+- Remove ExclusiveArch as C++ libraries are now unvendored
+- Switch upstream tarball to GitHub in Source field
+- Update copyright information in spec file header
+- Update license in License field
+
+-------------------------------------------------------------------
+Tue Nov 26 22:20:19 UTC 2024 - Dominik Wombacher <dominik@wombacher.cc>
+
+- Bump to version 0.23.1
+- Request 1173588 findings addressed 
+
+-------------------------------------------------------------------
+Fri May 10 00:50:18 UTC 2024 - Dominik Wombacher <dominik@wombacher.cc>
+
+- Initial package, version 0.20.9 
