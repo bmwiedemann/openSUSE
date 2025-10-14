@@ -26,7 +26,7 @@
 %endif
 
 Name:           openexr
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
@@ -34,7 +34,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.openexr.com/
 Source0:        https://github.com/AcademySoftwareFoundation/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
-Patch1:         ojph-0.23.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc%{?force_gcc_version}
@@ -42,7 +41,7 @@ BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Imath)
 BuildRequires:  pkgconfig(libdeflate)
-BuildRequires:  pkgconfig(openjph)
+BuildRequires:  pkgconfig(openjph) >= 0.21.0
 BuildRequires:  pkgconfig(zlib)
 Obsoletes:      OpenEXR <= 1.6.1
 Provides:       OpenEXR = %{version}

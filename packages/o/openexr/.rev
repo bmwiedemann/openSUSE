@@ -935,4 +935,16 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment></comment>
     <requestid>1306507</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>14d2616233ba7b8697596df9f6148e58</srcmd5>
+    <version>3.4.1</version>
+    <time>1760457944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.1
+  - Patch release that fixes a build issue: OpenJPH headers are now
+    included from the openjph folder, as required by OpenJPH 0.23+.
+  - No change in functionality.
+- Drop ojph-0.23.patch because no more needed. (forwarded request 1310905 from ecsos)</comment>
+    <requestid>1311016</requestid>
+  </revision>
 </revisionlist>

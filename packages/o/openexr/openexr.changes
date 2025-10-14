@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 12 08:32:24 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.24.1
+  - Patch release that fixes a build issue: OpenJPH headers are now
+    included from the openjph folder, as required by OpenJPH 0.23+.
+  - No change in functionality.
+- Drop ojph-0.23.patch because no more needed.
+
+-------------------------------------------------------------------
 Fri Sep 19 15:41:52 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add ojph-0.23.patch to fix building against openjph >= 0.23.0
