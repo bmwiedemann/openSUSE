@@ -18,7 +18,7 @@
 
 %define libname libtatsu0
 Name:           libtatsu
-Version:        1.0.4+8git.20241227
+Version:        1.0.5+3git.20250922
 Release:        0
 Summary:        Apple's Tatsu Signing Server Communication Library
 License:        LGPL-2.1-or-later

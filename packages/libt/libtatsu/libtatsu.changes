@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 11 06:57:52 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 1.0.5+3git.20250922:
+  * tss: Update client version and add Ap,Timestamp
+  * Add FUNDING
+  * [github-actions] Update build workflow to use windows-latest
+  * Update NEWS for release
+  * Update soversion for release
+  * Update auth client version
+  * Updated README
+  * Add extern "C" guards to public headers
+  * [github-actions] Bump dawidd6/action-download-artifact from 3 to 6
+  * configure: Remove unused check
+
+-------------------------------------------------------------------
 Mon Feb 24 10:06:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile
