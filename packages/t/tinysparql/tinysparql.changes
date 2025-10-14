@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 14 05:33:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.10.1:
+  + Introspection annotation fixes
+  + Documentation improvements
+  + Several minor fixes for Coverity warnings
+  + Fixed possible crashes and warnings if database is closed while
+    a TrackerNotifier is actively handling changes
+  + Fixed crash if using TrackerBatch on daisy-chained D-Bus
+    connections
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 15 06:34:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.10.0:
