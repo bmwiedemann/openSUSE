@@ -47,4 +47,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * WHENCE: extract more license statements</comment>
     <requestid>1295043</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a2ccbfe5784aedf36da46841a0c4b5d1</srcmd5>
+    <version>20251004</version>
+    <time>1760457996</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251004 (git commit 757854f42d83):
+  * WHENCE: extract multitech license text</comment>
+    <requestid>1311178</requestid>
+  </revision>
 </revisionlist>
