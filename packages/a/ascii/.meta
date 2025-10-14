@@ -1,0 +1,10 @@
+<package name="ascii" project="openSUSE:Factory">
+  <title>List ASCII idiomatic names and octal/decimal code-point form</title>
+  <description>Provides easy conversion between various byte representations and the American
+Standard Code for Information Interchange (ASCII) character table. It knows
+about a wide variety of hex, binary, octal, Teletype mnemonic, ISO/ECMA code
+point, slang names, XML entity names, and other representations. Given any one
+on the command line, it will try to display all others. Called with no
+arguments it displays a handy small ASCII chart.</description>
+  <url>http://www.catb.org/~esr/ascii/</url>
+</package>

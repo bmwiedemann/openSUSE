@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7854173ae4dfac392241d14194df6675</srcmd5>
+    <version>3.30</version>
+    <time>1760458167</time>
+    <user>dimstar_suse</user>
+    <comment>esr's ascii tool  See SR#1310942 for busybox conflict addition</comment>
+    <requestid>1311243</requestid>
+  </revision>
+</revisionlist>
