@@ -128,4 +128,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: vpu: update firmware binaries to fix encoder drain handling</comment>
     <requestid>1302684</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7565bf9a6ecb75bdbb573ab964b3d9a7</srcmd5>
+    <version>20251004</version>
+    <time>1760457991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251004 (git commit 757854f42d83):
+  * WHENCE: remove link for Kaanapali video firmware
+  * qcom: vpu: update video firmware binary for SM8550
+  * qcom: vpu: add video firmware for Kaanapali</comment>
+    <requestid>1311175</requestid>
+  </revision>
 </revisionlist>
