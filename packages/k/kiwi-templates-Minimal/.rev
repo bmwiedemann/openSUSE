@@ -262,4 +262,13 @@
     <comment></comment>
     <requestid>1299228</requestid>
   </revision>
+  <revision rev="33" vrev="33">
+    <srcmd5>d97b36ef36f2b818aa05835abd7eb386</srcmd5>
+    <version>84.87.1</version>
+    <time>1760457973</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove issue-generator from packagelist, unnecessary and
+  meanwhile obsoleted</comment>
+    <requestid>1311137</requestid>
+  </revision>
 </revisionlist>

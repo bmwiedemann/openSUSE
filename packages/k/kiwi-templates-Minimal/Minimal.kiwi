@@ -427,7 +427,6 @@
         <package name="pam_pwquality"/>
         <package name="cracklib-dict-small"/> <!-- Avoid the big 10MiB one -->
         <package name="iputils"/>
-        <package name="issue-generator"/> <!-- bsc#1084879 -->
         <package name="vim-small"/>
         <package name="haveged"/>
         <package name="less"/>
