@@ -1,7 +1,7 @@
 #
 # spec file for package libfm-qt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://github.com/lxqt/libfm-qt
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM -- Qt 6.10 compat
+Patch0:         libfm-qt-qt610.patch
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -71,7 +73,7 @@ Requires:       %{_name}-%{_ver} = %{version}-%{release}
 Libfm-Qt libraries for development
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake_qt6
