@@ -1,7 +1,7 @@
 #
 # spec file for package android-file-transfer-linux
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           android-file-transfer-linux
 Summary:        Android file fransfer for Linux
-Version:        4.4.0~git.20250506T233238.058dbe1
+Version:        4.5
 Release:        0
 URL:            https://github.com/whoozle/android-file-transfer-linux
 Source0:        %{name}-%{version}.tar.gz

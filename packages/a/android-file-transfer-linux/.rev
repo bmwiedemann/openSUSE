@@ -52,4 +52,32 @@
     <comment></comment>
     <requestid>1275025</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>907db431e0da696a7f7f8f309bf27147</srcmd5>
+    <version>4.5</version>
+    <time>1760458083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.5:
+  * fix invalid close session parameters (graceful shutdown - fixes switch failure)
+  * fix qt5 compilation
+  * easier method to find zune codename
+  * support firmware upload/reboot device in UI
+  * add device property d235 - serial number (seems to match SN printed on Zune's back)
+  * add Zune recovery instructions
+  * add flash cli command
+  * send object info in separate bulk packets
+  * add device-reboot cli command
+  * add firmware version to device properties
+  * undefined firmware (called in publicly available &quot;Inside MTP Responder&quot; paper
+  * add EventCode enum values/ToString
+  * add mtp service extension codes
+  * send album cover in GUI
+  * use Supports(...) for attach cover context action
+  * add Library::AddCover, zune-import will upload cover automatically if supported
+  * pass empty initialiser as empty bytearray while removing album cover
+  * add Supported() helper for ObjectPropertyCodes
+  * add MetadataPicture, fill it with decoded PICTURE props
+</comment>
+    <requestid>1311166</requestid>
+  </revision>
 </revisionlist>
