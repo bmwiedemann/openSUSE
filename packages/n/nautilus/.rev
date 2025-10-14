@@ -1792,4 +1792,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment>- Add 29d793b.patch: app-chooser: Adjust to GTK 4.20's list view. (forwarded request 1307478 from iznogood)</comment>
     <requestid>1307900</requestid>
   </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>d95e47321400cc4b414127b34f798070</srcmd5>
+    <version>49.1</version>
+    <time>1760458025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311129</requestid>
+  </revision>
 </revisionlist>

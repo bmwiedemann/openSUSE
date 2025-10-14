@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -26,8 +26,6 @@ URL:            https://wiki.gnome.org/Apps/Nautilus
 Source0:        %{name}-%{version}.tar.zst
 Source1:        set_trusted.desktop
 Source2:        set_trusted.sh
-# PATCH-FIX-UPSTREAM 29d793b.patch -- app-chooser: Adjust to GTK 4.20's list view
-Patch0:         https://gitlab.gnome.org/GNOME/nautilus/-/commit/29d793b.patch
 
 # needed for directory ownership
 BuildRequires:  dbus-1

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 13 11:46:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Bugfixes:
+    - Fix crash due to internal callback handling
+    - Fix pasting images with bigger sizes
+    - Fix contrast of cut items
+    - Use correct start point for sidebar drag'n'drop
+    - Fix default app chooser focus
+    - Fix running long-running archive operation tests
+  + Known regression: Searching in app chooser does not work
+    anymore since 49.0
+  + Updated translations.
+- Drop 29d793b.patch: Applied/fixed upstream.
+
+-------------------------------------------------------------------
 Wed Sep 24 06:45:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 29d793b.patch: app-chooser: Adjust to GTK 4.20's list view.
