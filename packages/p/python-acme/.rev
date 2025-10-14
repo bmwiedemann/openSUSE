@@ -890,4 +890,14 @@
   * Migrated most functionality from setup.py to pyproject.toml</comment>
     <requestid>1302581</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>473d8713716148ece4e86fe9f35615b3</srcmd5>
+    <version>5.1.0</version>
+    <time>1760458234</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0
+  * The function acme.crypto_util.make_self_signed_cert was deprecated
+    and will be removed in a future release.</comment>
+    <requestid>1311313</requestid>
+  </revision>
 </revisionlist>
