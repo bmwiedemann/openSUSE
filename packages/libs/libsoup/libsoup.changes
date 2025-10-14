@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 11 08:15:04 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add libsoup-CVE-2025-11021.patch: Ignore invalid date when
+  processing cookies to prevent out-of-bounds read (bsc#1250562,
+  CVE-2025-11021, glgo#GNOME/libsoup!482).
+
+-------------------------------------------------------------------
 Wed Jun 18 14:56:51 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add libsoup-CVE-2025-4945.patch: add value checks for date/time

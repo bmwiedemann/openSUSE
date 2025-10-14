@@ -40,6 +40,8 @@ Patch4:         libsoup-CVE-2025-4948.patch
 Patch5:         libsoup-CVE-2025-4969.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2025-4945.patch boo#1243314 mgorse@suse.com -- add value checks for date/time parsing.
 Patch6:         libsoup-CVE-2025-4945.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-11021.patch bsc#1250562, CVE-2025-11021, glgo#GNOME/libsoup!482 alynx.zhou@suse.com -- Ignore invalid date when processing cookie
+Patch7:         libsoup-CVE-2025-11021.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53
