@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  3 10:33:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Don't require libboost_system-devel with boost 1.89+
+
+-------------------------------------------------------------------
 Tue Feb 25 11:02:24 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 28.1:

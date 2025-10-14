@@ -1,7 +1,7 @@
 #
 # spec file for package bitcoin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2011-2014  P Rusnak <prusnak@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,7 +42,6 @@ BuildRequires:  java-devel
 BuildRequires:  lcov
 BuildRequires:  libboost_filesystem-devel >= 1.73.0
 BuildRequires:  libboost_program_options-devel >= 1.73.0
-BuildRequires:  libboost_system-devel >= 1.73.0
 BuildRequires:  libboost_test-devel >= 1.73.0
 BuildRequires:  libboost_thread-devel >= 1.73.0
 BuildRequires:  libdb-4_8-devel
@@ -51,6 +50,7 @@ BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  (libboost_system-devel >= 1.73.0 if libboost_filesystem-devel < 1.89)
 BuildRequires:  pkgconfig(Qt5Designer)
 BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5UiTools)
