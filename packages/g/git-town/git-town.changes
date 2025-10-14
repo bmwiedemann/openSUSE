@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 14 04:49:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 22.1.0:
+  * New Features
+    - if you run a Git Town command while another is suspended, Git
+      Town now offers the option to finish the suspended program
+      and then run the new one (#3337).
+  * Bug Fixes
+    - Fixes bugs resulting from the new Option serialization
+      (#5623).
+
+-------------------------------------------------------------------
 Wed Sep 24 07:09:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 22.0.0:
