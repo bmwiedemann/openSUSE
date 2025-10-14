@@ -1,7 +1,7 @@
 #
 # spec file for package gpaste
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Simone Tolotti, <simone.tolotti@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(Clutter|St\\)
 %global alt_name GPaste
 Name:           gpaste
-Version:        45.3
+Version:        45.3+15
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
