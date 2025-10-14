@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 13 21:05:16 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- cleanup _service
+- refresh vendor.tar.zst to fix build problems 
+
+-------------------------------------------------------------------
 Wed Jan  8 07:10:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.25.0:

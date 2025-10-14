@@ -1,7 +1,7 @@
 #
 # spec file for package bat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,10 @@ Version:        0.25.0
 Release:        0
 Summary:        A cat(1) clone with syntax highlighting and Git integration
 License:        Apache-2.0 OR MIT
-Group:          Productivity/Text/Utilities
 URL:            https://github.com/sharkdp/bat
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        https://github.com/sharkdp/bat/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-# weak-dep-features introduced in 1.60 and already used by libgit2-sys
-# https://github.com/rust-lang/git2-rs/commit/d8ee105a8f3ce4d5c57cd091b67943aab86b176a
 BuildRequires:  rust >= 1.60
 ExclusiveArch:  %{rust_arches}
 
@@ -63,7 +60,7 @@ BuildArch:      noarch
 Zsh command line completion support for %{name}.
 
 %prep
-%setup -qa1
+%autosetup -a1 -p1 -n %{name}-%{version}
 
 %build
 %{cargo_build}

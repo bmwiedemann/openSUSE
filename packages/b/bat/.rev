@@ -234,4 +234,12 @@
   * Update and improve zsh completion, see #2772</comment>
     <requestid>1235801</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>f834fa76fd1560a90f29e4d7be5ff269</srcmd5>
+    <version>0.25.0</version>
+    <time>1760458169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311248</requestid>
+  </revision>
 </revisionlist>
