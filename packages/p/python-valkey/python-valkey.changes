@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 14 01:26:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use a copy of sentinel.conf, it is modified during the test run.
+
+-------------------------------------------------------------------
 Mon Oct 13 04:45:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 6.1.1.

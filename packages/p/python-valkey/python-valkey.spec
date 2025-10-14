@@ -62,7 +62,8 @@ Python client for Valkey forked from redis-py
 valkey-server %SOURCE1 --port 6379 &
 server_pid=$!
 # We also need a sentinel service running
-valkey-sentinel %SOURCE2 &
+cp %SOURCE2 .
+valkey-sentinel sentinel.conf &
 sentinel_pid=$!
 # Requires entire stunnel setup and certs
 ignore="--ignore tests/test_ssl.py"
