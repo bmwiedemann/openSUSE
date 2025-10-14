@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20251012" schemaversion="4.1">
+<image name="OBS__MicroOS___20251013" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20251012</productvar>
+      <productvar name="VERSION">20251013</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20251012,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20251013,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20251012/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20251013/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -655,7 +655,6 @@
       <repopackage name="libepub0"/>
       <repopackage name="liberation-fonts"/>
       <repopackage name="libevdev2"/>
-      <repopackage name="libevent-2_1-7"/>
       <repopackage name="libexif12"/>
       <repopackage name="libexiv2-28"/>
       <repopackage name="libexpat1"/>
@@ -1109,6 +1108,7 @@
       <repopackage name="libQt6LabsQmlModels6"/>
       <repopackage name="libQt6LabsSettings6"/>
       <repopackage name="libQt6LabsSharedImage6"/>
+      <repopackage name="libQt6LabsSynchronizer6"/>
       <repopackage name="libQt6LabsWavefrontMesh6"/>
       <repopackage name="libQt6Location6"/>
       <repopackage name="libQt6Multimedia6"/>
@@ -1166,9 +1166,6 @@
       <repopackage name="libQt6VirtualKeyboard6"/>
       <repopackage name="libQt6VirtualKeyboardQml6"/>
       <repopackage name="libQt6WaylandClient6"/>
-      <repopackage name="libQt6WaylandCompositor6"/>
-      <repopackage name="libQt6WaylandEglClientHwIntegration6"/>
-      <repopackage name="libQt6WaylandEglCompositorHwIntegration6"/>
       <repopackage name="libQt6WebChannel6"/>
       <repopackage name="libQt6WebChannelQuick6"/>
       <repopackage name="libQt6WebEngineCore6"/>

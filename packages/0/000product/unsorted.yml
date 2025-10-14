@@ -3928,6 +3928,7 @@ unsorted:
   - fcitx-m17n 
   - fcitx-pinyin-tools 
   - fcitx-qt5-devel 
+  - fcitx-qt6 
   - fcitx-quwei 
   - fcitx-rime 
   - fcitx-sayura 
@@ -11443,7 +11444,6 @@ unsorted:
   - libQt63DQuickScene2D6 
   - libQt63DQuickScene3D6 
   - libQt63DRender6 
-  - libQt6Bodymovin6 
   - libQt6Charts6 
   - libQt6ChartsQml6 
   - libQt6Coap6 
@@ -11455,6 +11455,9 @@ unsorted:
   - libQt6Grpc6 
   - libQt6Help6 
   - libQt6HttpServer6 
+  - libQt6Lottie6 
+  - libQt6LottieVectorImageGenerator6 
+  - libQt6LottieVectorImageHelpers6 
   - libQt6Mqtt6 
   - libQt6Nfc6 
   - libQt6OpcUa6 
@@ -11478,6 +11481,8 @@ unsorted:
   - libQt6SerialPort6 
   - libQt6StateMachine6 
   - libQt6StateMachineQml6 
+  - libQt6WaylandCompositor6 
+  - libQt6WaylandEglCompositorHwIntegration6 
   - libQt6WebSockets6 
   - libQt6WebViewQuick6 
   - libQt6Xdg4 
@@ -11877,6 +11882,7 @@ unsorted:
   - libairspyhf0 
   - libakai0 
   - libalac0 
+  - libalgol0 
   - libalkimia6-8 
   - liballeg44-devel 
   - liballeg4_4 
@@ -18168,6 +18174,8 @@ unsorted:
   - markdown-oxide 
   - marknote 
   - marknote-lang 
+  - marst 
+  - marst-devel 
   - marvin 
   - marvin-bash-completion 
   - marvin-fish-completion 
@@ -27507,6 +27515,7 @@ unsorted:
   - python311-validate-pyproject 
   - python311-validate_email 
   - python311-validators 
+  - python311-valkey 
   - python311-varint 
   - python311-varlink 
   - python311-vcrpy 
@@ -31320,6 +31329,7 @@ unsorted:
   - python312-validate-pyproject 
   - python312-validate_email 
   - python312-validators 
+  - python312-valkey 
   - python312-varint 
   - python312-varlink 
   - python312-vcrpy 
@@ -35055,6 +35065,7 @@ unsorted:
   - python313-validate-pyproject 
   - python313-validate_email 
   - python313-validators 
+  - python313-valkey 
   - python313-varint 
   - python313-varlink 
   - python313-vcrpy 
@@ -35488,7 +35499,6 @@ unsorted:
   - qt6-base-docs-qch 
   - qt6-base-examples 
   - qt6-base-private-devel 
-  - qt6-bodymovin-private-devel 
   - qt6-bundledembree-devel-static 
   - qt6-bundledphysx-devel-static 
   - qt6-bundledresonanceaudio-devel-static 
@@ -35572,6 +35582,7 @@ unsorted:
   - qt6-labsqmlmodels-private-devel 
   - qt6-labssettings-private-devel 
   - qt6-labssharedimage-private-devel 
+  - qt6-labssynchronizer-private-devel 
   - qt6-labswavefrontmesh-private-devel 
   - qt6-languageserver-devel-static 
   - qt6-linguist-devel 
@@ -35580,9 +35591,15 @@ unsorted:
   - qt6-location-docs-qch 
   - qt6-location-examples 
   - qt6-location-private-devel 
+  - qt6-lottie 
+  - qt6-lottie-devel 
   - qt6-lottie-docs-html 
   - qt6-lottie-docs-qch 
+  - qt6-lottie-examples 
   - qt6-lottie-imports 
+  - qt6-lottie-private-devel 
+  - qt6-lottievectorimagegenerator-private-devel 
+  - qt6-lottievectorimagehelpers-private-devel 
   - qt6-macros 
   - qt6-mqtt-devel 
   - qt6-mqtt-docs-html 
@@ -35784,6 +35801,7 @@ unsorted:
   - qt6-svg-devel 
   - qt6-svg-docs-html 
   - qt6-svg-docs-qch 
+  - qt6-svg-examples 
   - qt6-svg-private-devel 
   - qt6-test-devel 
   - qt6-test-private-devel 
@@ -35813,12 +35831,12 @@ unsorted:
   - qt6-wayland-docs-qch 
   - qt6-wayland-examples 
   - qt6-wayland-imports 
+  - qt6-wayland-integration 
   - qt6-wayland-private-devel 
   - qt6-waylandclient-devel 
   - qt6-waylandclient-private-devel 
   - qt6-waylandcompositor-devel 
   - qt6-waylandcompositor-private-devel 
-  - qt6-waylandeglclienthwintegration-private-devel 
   - qt6-waylandeglcompositorhwintegration-private-devel 
   - qt6-waylandglobal-private-devel 
   - qt6-webchannel-devel 

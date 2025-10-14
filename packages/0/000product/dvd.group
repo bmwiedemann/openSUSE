@@ -406,7 +406,6 @@
     <package name="fcitx-mozc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-pinyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-qt5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="fcitx-qt6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-table" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-table-cn-wubi" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-table-cn-wubi-large" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1177,7 +1176,7 @@
     <package name="libGraphicsMagick++-Q16-12" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libGraphicsMagick-Q16-3" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libGraphicsMagick3-config" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
-    <package name="libHX32" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libHX43" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libICE6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libIex-3_4-33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libIex-3_4-33-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -1499,6 +1498,7 @@
     <package name="libQt6LabsQmlModels6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsSettings6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsSharedImage6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libQt6LabsSynchronizer6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsWavefrontMesh6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6Location6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6Multimedia6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1557,10 +1557,7 @@
     <package name="libQt6UiTools6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6VirtualKeyboard6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6VirtualKeyboardQml6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libQt6WaylandClient6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6WaylandCompositor6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6WaylandEglClientHwIntegration6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libQt6WaylandEglCompositorHwIntegration6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libQt6WaylandClient6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6WebChannel6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6WebChannelQuick6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6WebEngineCore6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
