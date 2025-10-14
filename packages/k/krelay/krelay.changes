@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue Oct 14 12:18:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package krelay: a better alternative to 'kubectl
+  port-forward' that can forward TCP or UDP traffic to IP/Host
+  which is accessible inside the cluster
