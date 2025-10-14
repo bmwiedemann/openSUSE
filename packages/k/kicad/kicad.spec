@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} >= 1600
 # EGL preferred, as required for wayland
 %bcond_without use_egl
@@ -34,8 +35,8 @@
 # symbol libraries from version 9.0.0
 %define compatversion 9.0.0
 Name:           kicad
-Version:        9.0.4
-%define file_version 9.0.4
+Version:        9.0.5
+%define file_version 9.0.5
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
