@@ -2323,4 +2323,12 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <comment>Aeon-release: Correct docs link</comment>
     <requestid>1309785</requestid>
   </revision>
+  <revision rev="326" vrev="324">
+    <srcmd5>05145617471c097379a4fcb8db64b152</srcmd5>
+    <version>unknown</version>
+    <time>1760457967</time>
+    <user>dimstar_suse</user>
+    <comment>Replace issue-generator with agetty on Kalpa and Tumbleweed, too</comment>
+    <requestid>1311100</requestid>
+  </revision>
 </revisionlist>
