@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 10 13:59:08 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251010 (git commit 49fafa182b23):
+  * qcom: add CDSP firmware for kaanapali platform
+  * qcom: Add firmwares for Kaanapali GPU
+  * qcom: Update A623 GMU fw
+  * qcom: Fix QCS615 chipset's GPU secure fw
+
+-------------------------------------------------------------------
+Sun Oct  5 07:03:50 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251004 (git commit 46a6999a2d14):
+  * qcom: Update DSP firmware for sa8775p platform
+
+-------------------------------------------------------------------
+Wed Oct  1 07:32:53 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250930 (git commit ed924f6db3c9):
+  * qcom: Update DSP firmware for qcs8300 platform.
+
+-------------------------------------------------------------------
 Mon Sep 29 16:19:00 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases for 6.17

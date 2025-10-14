@@ -241,4 +241,22 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update DSP firmware for sa8775p platform.</comment>
     <requestid>1307947</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6bf4540ffb96f8db90292bae2dcce86c</srcmd5>
+    <version>20251010</version>
+    <time>1760457994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251010 (git commit 49fafa182b23):
+  * qcom: add CDSP firmware for kaanapali platform
+  * qcom: Add firmwares for Kaanapali GPU
+  * qcom: Update A623 GMU fw
+  * qcom: Fix QCS615 chipset's GPU secure fw
+
+- Update to version 20251004 (git commit 46a6999a2d14):
+  * qcom: Update DSP firmware for sa8775p platform
+
+- Update to version 20250930 (git commit ed924f6db3c9):
+  * qcom: Update DSP firmware for qcs8300 platform.</comment>
+    <requestid>1311177</requestid>
+  </revision>
 </revisionlist>
