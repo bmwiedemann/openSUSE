@@ -163,6 +163,11 @@ Fri Oct  3 06:04:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       off-cpu profiling threshold. (@luweglarz)
     - Add encoding.url_encode and encoding.url_decode std lib
       functions. (@kalleep)
+  * Security:
+    - CVE-2025-58058: Removed dependency on vulnerable
+      github.com/ulikunitz/xz (bsc#1248960)
+    - CVE-2025-11065: Fixed sensitive information leak in logs
+      (bsc#1250621)
 
 -------------------------------------------------------------------
 Wed Aug 20 06:06:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
