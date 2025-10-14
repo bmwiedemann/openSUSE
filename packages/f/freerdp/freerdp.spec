@@ -139,7 +139,7 @@ via the Remote Desktop Protocol (RDP) following the Microsoft Open
 Specifications.
 
 %package proxy
-Summary:        Remote Desktop Security and Monitorig Proxy Server
+Summary:        Remote Desktop Security and Monitoring Proxy Server
 Group:          Productivity/Networking/Other
 
 %description proxy
@@ -148,7 +148,7 @@ channels allowed for all connections passing through.
 It allows monitoring of the running sessions.
 
 %package -n %{name}-proxy-plugins
-Summary:        Plugins for the Security and Monitorig Proxy Server
+Summary:        Plugins for the Security and Monitoring Proxy Server
 Group:          Productivity/Networking/Other
 Requires:       %{name}-proxy = %{version}-%{release}
 
