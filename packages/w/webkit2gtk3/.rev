@@ -2005,4 +2005,20 @@ don't affect Linux. (forwarded request 1226975 from mgorse)</comment>
 Add CVE refs (forwarded request 1306932 from mgorse)</comment>
     <requestid>1306960</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>e21f71e756da28412e080d2a66ff89bf</srcmd5>
+    <version>2.50.1</version>
+    <time>1760458001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311111</requestid>
+  </revision>
+  <revision rev="231" vrev="2">
+    <srcmd5>1a20f0c631058ede5ca9ef5b383710f3</srcmd5>
+    <version>2.50.1</version>
+    <time>1760458599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311387</requestid>
+  </revision>
 </revisionlist>

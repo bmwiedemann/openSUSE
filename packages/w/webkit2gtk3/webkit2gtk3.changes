@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 10 17:46:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.1 (boo#1251975):
+  + Improve text rendering performance.
+  + Fix audio playback broken on instagram.
+  + Fix rendering of layers with fractional transforms.
+  + Fix the build with ENABLE(VIDEO) disabled.
+  + Fix the build in s390x.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2025-43343.
+- Drop webkit2gtk3-i586-build-fix.patch: Merged upstream.
+- Also pass ggc-min-expand=30 on s390x. Memory has been an issue
+  there, at least on SLE.
+
+-------------------------------------------------------------------
 Mon Sep 22 23:42:51 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Also pass ggc-min-expand=30 and disable LTO on arm.
