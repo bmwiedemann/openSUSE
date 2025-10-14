@@ -200,4 +200,12 @@ Will be a requirement for forthcoming miriway submission</comment>
 - Added 0001-Disable-boost_system.patch</comment>
     <requestid>1308930</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4d6fa43c913ac6b672978ea9debcece1</srcmd5>
+    <version>2.23.0</version>
+    <time>1760458107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311208</requestid>
+  </revision>
 </revisionlist>

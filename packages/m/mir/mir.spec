@@ -27,7 +27,7 @@
 # Set globals for easier future maintenance
 %global commonlibsover 11
 %global mircoresover 2
-%global mirplatformsover 32
+%global mirplatformsover 33
 %global lomirisover 8
 %global miralsover 7
 %global mirserversover 65
@@ -36,14 +36,12 @@
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.22.2
+Version:        2.23.0
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:            https://mir-server.io
 Source:         https://github.com/canonical/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE 0001-Disable-boost_system.patch <sfalken@opensuse.org>
-Patch0:         0001-Disable-boost_system.patch
 # PATCH-FIX-OPENSUSE 0002-remove-use-of-env-to-call-bash.patch
 Patch1:         0002-remove-use-of-env-to-call-bash.patch
 
@@ -65,6 +63,7 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  python3
 BuildRequires:  python3-Pillow
+BuildRequires:  python3-python-dbusmock
 BuildRequires:  systemtap-sdt-devel
 BuildRequires:  valgrind
 
@@ -100,6 +99,7 @@ BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
+BuildRequires:  pkgconfig(xwayland)
 
 %description
 A set of libraries for building Wayland based shells.

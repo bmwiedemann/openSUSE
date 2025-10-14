@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 13 17:34:41 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.23.0:
+  * mirplatform ABI bumped to 33
+  * Clearer naming in mirplatform API (gh#canonical/mir#4293,#4316)
+  * Bugs Fixed:
+    - Don't close the magnifier whenever live config settings are
+      reloaded (gh#canonical/mir#4308)
+    - libmiral should have no public dependency on libmircommon
+      (gh#canonical/mir#4303)
+    - mirwayland should not have public dependencies on mircommon
+      (gh#canonical/mir#4313)
+    - Frame segfault in
+      miral::WindowManagementTrace::place_and_size_for_state
+      (gh#canonical/mir#4281)
+    - Fill out missing input options in live config
+      (gh#canonical/mir#4133)
+    - graphics: pass correct options to manually-selected platforms
+      (gh#canonical/mir#4130)
+    - Check for EGL_WL_bind_wayland_display when probing EGLStream
+      display platform (gh#canonical/mir#4147)
+  * Many documentation updates
+  * Drop 0001-Disable-boost_system.patch
+
+-------------------------------------------------------------------
 Fri Oct  3 23:34:59 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.22.2:
