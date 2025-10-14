@@ -29,4 +29,13 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272744</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5accf7080eefebbdaee5e8af9b3ccb6b</srcmd5>
+    <version>20251004</version>
+    <time>1760457997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251004 (git commit 757854f42d83):
+  * WHENCE: extract ueagle license</comment>
+    <requestid>1311180</requestid>
+  </revision>
 </revisionlist>
