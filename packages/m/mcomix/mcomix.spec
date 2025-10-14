@@ -23,7 +23,7 @@
 %endif
 
 Name:           mcomix
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Comics Viewer
 License:        GPL-2.0-only
