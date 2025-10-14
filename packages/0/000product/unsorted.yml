@@ -908,6 +908,7 @@ unsorted:
   - artikulate-lang 
   - as10k1 
   - asar 
+  - ascii 
   - asciidoc 
   - asciidoc-examples 
   - asciidoc-latex-backend 
@@ -3143,6 +3144,7 @@ unsorted:
   - decker 
   - decker-doc 
   - deco 
+  - deheader 
   - dehydrated 
   - dehydrated-apache2 
   - dehydrated-nginx 
@@ -10376,6 +10378,10 @@ unsorted:
   - krdp6-lang 
   - krecorder 
   - krecorder-lang 
+  - krelay 
+  - krelay-bash-completion 
+  - krelay-fish-completion 
+  - krelay-zsh-completion 
   - krename 
   - krename-lang 
   - krfb 
@@ -12960,7 +12966,7 @@ unsorted:
   - libedit-devel 
   - libedit0-32bit 
   - libeditorconfig-devel 
-  - libeduvpn_common-3_0_0 
+  - libeduvpn_common-4_0_0 
   - libefa1-32bit 
   - libei-devel 
   - libeiskaltdcpp2_4 
@@ -14629,7 +14635,7 @@ unsorted:
   - libmirisdr-devel 
   - libmirisdr0 
   - libmiroil8 
-  - libmirplatform32 
+  - libmirplatform33 
   - libmirserver65 
   - libmirserverplatform23 
   - libmirwayland5 
@@ -18859,6 +18865,7 @@ unsorted:
   - moka-icon-theme 
   - mold 
   - molecule 
+  - molecule-plugins 
   - molequeue 
   - molequeue-devel 
   - molequeue-doc 
@@ -23428,6 +23435,7 @@ unsorted:
   - pstoedit 
   - pstoedit-devel 
   - pt2-clone 
+  - ptcpdump 
   - pthread-stubs-devel 
   - ptl-devel 
   - ptpd 
@@ -24382,6 +24390,7 @@ unsorted:
   - python311-aws-xray-sdk-pymysql 
   - python311-aws-xray-sdk-pynamodb 
   - python311-aws-xray-sdk-requests 
+  - python311-awscrt 
   - python311-awx-cli 
   - python311-azure-agrifood-farming 
   - python311-azure-agrifood-nspkg 
@@ -28129,6 +28138,7 @@ unsorted:
   - python312-aws-xray-sdk-pymysql 
   - python312-aws-xray-sdk-pynamodb 
   - python312-aws-xray-sdk-requests 
+  - python312-awscrt 
   - python312-awx-cli 
   - python312-azure-agrifood-farming 
   - python312-azure-agrifood-nspkg 
@@ -31933,6 +31943,7 @@ unsorted:
   - python313-aws-xray-sdk-pymysql 
   - python313-aws-xray-sdk-pynamodb 
   - python313-aws-xray-sdk-requests 
+  - python313-awscrt 
   - python313-awx-cli 
   - python313-azure-agrifood-farming 
   - python313-azure-agrifood-nspkg 
@@ -47848,6 +47859,8 @@ unsorted:
   - torbrowser-launcher 
   - torbrowser-launcher-lang 
   - torrentinfo 
+  - tortoisehg 
+  - tortoisehg-nautilus 
   - totem-devel 
   - totem-pl-parser-devel 
   - touchegg 
