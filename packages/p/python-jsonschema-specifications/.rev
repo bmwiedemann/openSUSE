@@ -83,4 +83,12 @@ update to 2023.6.1</comment>
   * Declare support for Python 3.13</comment>
     <requestid>1218112</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b952168ca9218ab30ceab585f5294fe5</srcmd5>
+    <version>2025.9.1</version>
+    <time>1760457950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311036</requestid>
+  </revision>
 </revisionlist>

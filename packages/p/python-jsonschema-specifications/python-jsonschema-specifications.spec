@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonschema-specifications
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema-specifications
-Version:        2024.10.1
+Version:        2025.9.1
 Release:        0
 Summary:        The JSON Schema meta-schemas and vocabularies, exposed as a Registry
 License:        MIT

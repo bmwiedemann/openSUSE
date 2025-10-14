@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Oct 11 15:53:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2025.9.1:
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in
+    #94
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in
+    #96
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in
+    #98
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in
+    #99
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in
+    #100
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in
+    #101
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in
+    #102
+  * Bump actions/checkout from 4 to 5 by @dependabot[bot] in #104
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in
+    #103
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in
+    #105
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in
+    #106
+  * Move 2019-09 "format" schema to correct directory by @branen in
+    #107
+- update to 2025.4.1:
+  * Add SPDX license identifier by @cdce8p in #93
+
+-------------------------------------------------------------------
 Thu Oct 24 19:08:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.10.1:
