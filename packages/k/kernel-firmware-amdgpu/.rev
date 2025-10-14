@@ -400,4 +400,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: DMCUB updates for various ASICs</comment>
     <requestid>1307938</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8902c50eceb0a5f08df053e023a8de62</srcmd5>
+    <version>20251004</version>
+    <time>1760457984</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251004 (git commit 757854f42d83):
+  * amdgpu: DMCUB updates for various ASICs
+  * Update VCN for Navi1x, Green Sardine and Renoir</comment>
+    <requestid>1311171</requestid>
+  </revision>
 </revisionlist>

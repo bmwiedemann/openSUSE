@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  4 13:46:19 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251004 (git commit 757854f42d83):
+  * amdgpu: DMCUB updates for various ASICs
+  * Update VCN for Navi1x, Green Sardine and Renoir
+
+-------------------------------------------------------------------
 Fri Sep 26 16:10:20 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250926 (git commit fad361e997ee):
