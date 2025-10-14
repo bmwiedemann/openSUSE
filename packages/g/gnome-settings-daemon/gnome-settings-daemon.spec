@@ -30,7 +30,7 @@
 %define base_ver 49
 
 Name:           gnome-settings-daemon
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -89,7 +89,6 @@ BuildRequires:  pkgconfig(systemd) >= 243
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.12
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes) >= 6.0
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbfile)

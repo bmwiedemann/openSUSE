@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 13 22:17:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Power: Avoid xext dependency
+  + Xsettings: Build only if X11 or Xwayland are enabled
+  + Updated translations.
+- Drop pkgconfig(xext) BuildRequires following upstream changes.
+
+-------------------------------------------------------------------
 Mon Sep 15 06:44:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
