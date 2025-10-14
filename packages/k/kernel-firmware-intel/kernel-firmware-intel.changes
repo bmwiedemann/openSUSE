@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 12 08:16:05 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251011 (git commit 919daee84a86):
+  * linux-firmware: Add ISH firmware file for Intel Pather Lake platform
+
+-------------------------------------------------------------------
+Sat Oct  4 13:46:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251004 (git commit 757854f42d83):
+  * intel_vpu: Update NPU firmware
+  * linux-firmware: Add Dell ISH firmware for Intel Lunar Lake systems
+
+-------------------------------------------------------------------
 Mon Sep 29 16:18:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases for 6.17
