@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define vname linux-app
 Name:           eduvpn-client
-Version:        4.5.1
+Version:        4.6.0
 Release:        0
 Summary:        The eduVPN desktop client (CLI and GUI front-end)
 License:        GPL-3.0-or-later
@@ -30,7 +30,7 @@ Source1:        https://codeberg.org/eduVPN/linux-app/releases/download/%{versio
                 # https://app.eduvpn.org/linux/v4/deb/app+linux@eduvpn.org.asc and inside package dir 'keys'
 Source2:        %{name}.keyring
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module eduvpn-common >= 3.0.0 with %python-eduvpn-common < 4}
+BuildRequires:  %{python_module eduvpn-common >= 4.0.0 with %python-eduvpn-common < 5}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle}
@@ -62,7 +62,7 @@ traditional VPN clients.
 %package -n python-%{name}
 Summary:        Python3 API for eduVPN
 Requires:       NetworkManager-openvpn
-Requires:       (python-eduvpn-common >= 3.0.0 with python-eduvpn-common < 4)
+Requires:       (python-eduvpn-common >= 4.0.0 with python-eduvpn-common < 5)
 Requires:       python-gobject
 
 %description -n python-%{name}

@@ -15,4 +15,12 @@
     <comment>version update to 4.5.1</comment>
     <requestid>1279513</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>86a9c83e0b0605490e2db98e11a7806c</srcmd5>
+    <version>4.6.0</version>
+    <time>1760458080</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.0 (compat. update eduvpn-common 4.0.0)</comment>
+    <requestid>1311147</requestid>
+  </revision>
 </revisionlist>
