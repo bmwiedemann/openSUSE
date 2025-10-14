@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 14 08:05:27 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to version 5.1.0
+  * certbot-nginx no longer creates and uses self-signed certificates as an
+    intermediate step when installing certificates.
+  * Fixed a bug in certbot-nginx that'd leave nginx configured with self-signed
+    certificates if a user ran certbot enhance and they didn't have matching SSL
+    server blocks.
+
+-------------------------------------------------------------------
 Wed Sep  3 12:26:27 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to version 5.0.0
