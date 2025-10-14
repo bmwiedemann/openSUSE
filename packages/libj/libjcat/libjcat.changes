@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct  6 07:35:38 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.5:
+  + Fix a small memory leak when verifying using PKCS#7
+
+-------------------------------------------------------------------
+Thu Oct  2 12:56:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.4:
+  + New Features:
+    - Add GnuTLS support for Post-Quantum PKCS#7 certs
+    - Add OpenSSL PKCS#7 backend for RSA certs
+  + Bugfixes:
+    - Allow multiple PKCS#7 certs to be verified
+    - Allow specifying --public-key and --public-keys multiple times
+
+-------------------------------------------------------------------
 Fri Jul 25 16:29:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - adjust gpgme build dependency for future-proofing
