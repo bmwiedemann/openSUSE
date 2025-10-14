@@ -2,6 +2,7 @@
 # spec file for package pqiv
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +18,14 @@
 
 
 Name:           pqiv
-Version:        2.13.1
+Version:        2.13.2
 Release:        0
 Summary:        Minimalist image viewer
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/phillipberndt/pqiv
 Source:         https://github.com/phillipberndt/pqiv/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         pqiv-2.13.2-avcodec_close.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -120,7 +122,7 @@ Requires:       %{name} = %{version}
 Backend webp for %{name}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 ./configure \
@@ -142,25 +144,32 @@ Backend webp for %{name}
 %{_bindir}/%{name}
 
 %files ffmpeg
+%license LICENSE
 %{_libdir}/%{name}/%{name}-backend-libav.so
 
 %files gdkpixbuf
+%license LICENSE
 %{_libdir}/%{name}/%{name}-backend-gdkpixbuf.so
 
 %files libarchive
+%license LICENSE
 %{_libdir}/%{name}/%{name}-backend-archive.so
 %{_libdir}/%{name}/%{name}-backend-archive_cbx.so
 
 %files poppler
+%license LICENSE
 %{_libdir}/%{name}/%{name}-backend-poppler.so
 
 %files spectre
+%license LICENSE
 %{_libdir}/%{name}/%{name}-backend-spectre.so
 
 %files wand
+%license LICENSE
 %{_libdir}/%{name}/%{name}-backend-wand.so
 
 %files webp
+%license LICENSE
 %{_libdir}/%{name}/%{name}-backend-webp.so
 
 %changelog

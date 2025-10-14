@@ -1,0 +1,48 @@
+From a36571549a32d2ec41d6f523d443de74e0fb1276 Mon Sep 17 00:00:00 2001
+From: Phillip Berndt <phillip.berndt@googlemail.com>
+Date: Sun, 14 Sep 2025 21:19:16 +0200
+Subject: [PATCH] Drop avcodec_close call in ffmpeg backend
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This establishes ffmpeg 8.0 support. The call was never needed, older
+ffmpeg versions have a deprecation notice:
+
+> Do not use this function. Use avcodec_free_context() to destroy a
+> codec context (either open or closed). Opening and closing a codec
+> context multiple times is not supported anymore – use multiple codec
+> contexts instead.
+
+fixes #258
+---
+ README.markdown  | 3 +++
+ backends/libav.c | 1 -
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/README.markdown b/README.markdown
+index c9e643d..3f51c93 100644
+--- a/README.markdown
++++ b/README.markdown
+@@ -182,6 +182,9 @@ For some advanced uses of pqiv, take a look at these resouces:
+ Changelog
+ ---------
+ 
++pqiv 2.14 (wip)
++ * Fix ffmpeg 8.0 compatibility (fixes #258)
++
+ pqiv 2.13.2
+  * Revert to not adding `--browse` to desktop files (fixes #232)
+  * Fix crash for videos with unusual resolutions (fixes #247)
+diff --git a/backends/libav.c b/backends/libav.c
+index f3bfee7..da26c97 100644
+--- a/backends/libav.c
++++ b/backends/libav.c
+@@ -167,7 +167,6 @@ void file_type_libav_unload(file_t *file) {/*{{{*/
+ 	}
+ 
+ 	if(private->avcontext) {
+-		avcodec_close(private->cocontext);
+ 		#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55,53,0)
+ 			avcodec_free_context(&(private->cocontext));
+ 		#else
