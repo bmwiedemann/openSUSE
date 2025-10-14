@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        2.11.0+git.20250403.0875824
+Version:        2.12.0+git.20251010.334b9acf
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
@@ -39,8 +39,14 @@ BuildRequires:  ncurses-devel
 BuildRequires:  python3 >= 3.8
 BuildRequires:  python3-Pebble
 BuildRequires:  python3-chardet
+BuildRequires:  python3-jsonschema
+BuildRequires:  python3-msgspec
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-mock
+BuildRequires:  python3-pytest-subprocess
+BuildRequires:  python3-pytest-xdist
+BuildRequires:  python3-zstandard
 BuildRequires:  unifdef
 Requires:       astyle
 Requires:       clang
@@ -49,7 +55,9 @@ Requires:       indent
 Requires:       llvm
 Requires:       python3-Pebble
 Requires:       python3-chardet
+Requires:       python3-msgspec
 Requires:       python3-psutil
+Requires:       python3-zstandard
 Requires:       unifdef
 
 %description
@@ -87,15 +95,16 @@ pytest -v .
 %cmake_install
 
 %files
-%license COPYING
+%license LICENSE
 %{_bindir}/cvise
 %{_bindir}/cvise-delta
 %dir %{_libexecdir}/cvise
 %{_libexecdir}/cvise/clex
 %{_libexecdir}/cvise/clang_delta
-%{_libexecdir}/cvise/clex
 %{_libexecdir}/cvise/strlex
-%{_libexecdir}/cvise/topformflat
+%{_libexecdir}/cvise/topformflat_hints
+%{_libexecdir}/cvise/clang_include_graph
+%{_libexecdir}/cvise/treesitter_delta
 %{_datadir}/cvise
 
 %changelog
