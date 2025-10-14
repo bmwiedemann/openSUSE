@@ -18,7 +18,7 @@
 
 
 Name:           gsettings-desktop-schemas
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        Shared GSettings Schemas for the Desktop
 License:        LGPL-2.1-or-later
