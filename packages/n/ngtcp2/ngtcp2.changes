@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Sat Oct 11 00:48:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- configure looks for a std=20 compiler on 15.6. Force a newer GCC
+  to satisfy that requirement.
+
+-------------------------------------------------------------------
+Fri Oct 10 23:49:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.16.0:
+  - build: install crypto header for libressl by @vszakats in #1752
+  - doc: Add "Aggregate packets for GSO" section by @tatsuhiro-t in
+    #1753
+  - examples: Adopt std::make_unique_for_overwrite by @tatsuhiro-t
+    in #1754
+  - GHA: Reduce distcheck tests to 1 by @tatsuhiro-t in #1755
+  - build(deps): bump actions/checkout from 4 to 5 by
+    @dependabot[bot] in #1756
+  - GHA: Set permissions for quic-interop-runner by @tatsuhiro-t in
+    #1757
+  - Add stats for sent, received, and lost QUIC packets and bytes
+    by @tatsuhiro-t in #1758
+  - Export packet stats to ngtcp2_conn_info by @tatsuhiro-t in
+    #1759
+  - ngtcp2_log: Do not format string by @tatsuhiro-t in #1760
+  - Fix format specifier by @tatsuhiro-t in #1761
+  - ngtcp2_log: Remove stray spaces by @tatsuhiro-t in #1762
+  - Remove unused NGTCP2_MAX_RETRIES macro by @tatsuhiro-t in #1764
+  - More use of designated initializers and compound literals by
+    @tatsuhiro-t in #1765
+  - ngtcp2_qlog: Pass an empty string by @tatsuhiro-t in #1766
+  - examples: constexpr fixup by @tatsuhiro-t in #1767
+  - ngtcp2_ratelim: Deal with overflow by @tatsuhiro-t in #1770
+  - build(deps): bump actions/setup-python from 5 to 6 by
+    @dependabot[bot] in #1771
+  - build(deps): bump actions/stale from 9 to 10 by
+    @dependabot[bot] in #1772
+  - build(deps): bump actions/github-script from 7 to 8 by
+    @dependabot[bot] in #1773
+  - examples: Simplify close callbacks by @tatsuhiro-t in #1776
+  - examples: Adopt std::unordered_map::contains by @tatsuhiro-t in
+    #1777
+  - Add ngtcp2_conn_get_timestamp by @tatsuhiro-t in #1778
+  - cmake: do not require C++ for lib-only builds by @vszakats in
+    #1779
+  - Add ngtcp2_conn_info.ping_recv by @tatsuhiro-t in #1781
+  - Add ngtcp2_conn_info.pkt_discarded by @tatsuhiro-t in #1782
+  - examples: Adopt nghttp3_conn_read_stream2 by @tatsuhiro-t in
+    #1783
+  - examples: Add --no-gso option by @tatsuhiro-t in #1784
+  - ngtcp2_conn_get_timestamp: Add const qualifier to conn by
+    @tatsuhiro-t in #1785
+  - Examples add show stat by @tatsuhiro-t in #1786
+  - examples: Fix help doc by @tatsuhiro-t in #1787
+  - configure.ac: allow picotls without ossl by @CL-Jeremy in #1789
+  - Bump OpenSSL to v3.5.3 by @tatsuhiro-t in #1790
+  - Bump boringssl by @tatsuhiro-t in #1791
+  - Bump aws-lc to v1.61.2 by @tatsuhiro-t in #1792
+  - Bump picotls by @tatsuhiro-t in #1793
+  - examples: Use nullptr in C++ code by @tatsuhiro-t in #1794
+  - Fix macro comment by @tatsuhiro-t in #1795
+- changes from 1.15.1
+  - build: install crypto header for libressl by @vszakats in #1752
+- changes from 1.15.0
+  - Use Requires.private because it is needed for static linking by
+    @tatsuhiro-t in #1721
+  - Use fallback_path consistently by @tatsuhiro-t in #1722
+  - examples: Share get_string for urlparse_url.field_data by
+    @tatsuhiro-t in #1723
+  - examples: Fix Connection ID validation by @tatsuhiro-t in #1724
+  - build: use distinct crypto library name for LibreSSL by
+    @vszakats in #1716
+  - Fix libressl doc and clarify its include file by @tatsuhiro-t
+    in #1726
+  - Aggregate pkts for gso by @tatsuhiro-t in #1727
+  - GHA: Exclude macos-15 cmake due to the include path issue by
+    @tatsuhiro-t in #1729
+  - Pcg by @tatsuhiro-t in #1730
+  - Chaos protection by @tatsuhiro-t in #1728
+  - Rename ngtcp2_conn_aggregate_pkts to
+    ngtcp2_conn_write_aggregate_pkt by @tatsuhiro-t in #1732
+  - ngtcp2_conn_write_aggregate_pkt: Remove max_num_pkts parameter
+    by @tatsuhiro-t in #1733
+  - build(deps): bump actions/download-artifact from 4 to 5 by
+    @dependabot[bot] in #1734
+  - Glitch by @tatsuhiro-t in #1735
+  - Apply glitch limits to RESET_STREAM, STOP_SENDING,
+    MAX_STREAM_DATA by @tatsuhiro-t in #1736
+  - Make glitch rate limiter configurable by @tatsuhiro-t in #1737
+  - doc: Fix field markup by @tatsuhiro-t in #1738
+  - Bump OpenSSL to v3.5.2 by @tatsuhiro-t in #1739
+  - Bump aws-lc to v1.58.1 by @tatsuhiro-t in #1740
+  - Bump boringssl by @tatsuhiro-t in #1741
+  - Bump clang to 19 by @tatsuhiro-t in #1742
+  - Fix skipping packet number by @tatsuhiro-t in #1743
+  - Fix libngtcp2_crypto_ossl.so versioning on CMake by @krant in
+    #1744
+  - doc: Clarify that dest, destlen, and ts should be passed too by
+    @tatsuhiro-t in #1745
+  - Fix initial CRYPTO crumbling by @tatsuhiro-t in #1746
+  - Break when buffer size is smaller than path max MTU by
+    @tatsuhiro-t in #1747
+  - tests: Add min buf test for ngtcp2_conn_write_aggregate_pkt by
+    @tatsuhiro-t in #1748
+  - Bump clang-format to 19 by @tatsuhiro-t
+
+-------------------------------------------------------------------
 Wed Jul 30 06:48:20 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Split the devel package into the gnutls and openssl parts.

@@ -193,4 +193,12 @@
     <comment>- Update to 1.14.0:</comment>
     <requestid>1296602</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b8b456373e0f8a11f22252cce1199984</srcmd5>
+    <version>1.16.0</version>
+    <time>1760457895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.16.0:</comment>
+    <requestid>1310714</requestid>
+  </revision>
 </revisionlist>
