@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-lxqt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ URL:            https://github.com/lxqt/xdg-desktop-portal-lxqt
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM -- Qt 610 compat
+Patch0:         xdg-desktop-portal-lxqt-qt610.patch
 BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -44,7 +46,7 @@ A backend implementation for xdg-desktop-portal that is using Qt/KF5/libfm-qt.
 functionality needed by nearly all of its components.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake_qt6
