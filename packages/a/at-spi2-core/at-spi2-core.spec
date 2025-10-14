@@ -23,7 +23,7 @@
 %define atspiconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}
 
 Name:           at-spi2-core
-Version:        2.58.0
+Version:        2.58.1
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later

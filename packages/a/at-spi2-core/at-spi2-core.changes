@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 11 15:45:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.58.1:
+  + at-spi-bus-launcher: Fix a possible crash when registering.
+  + python: Avoid traceback when hashing a disposed object.
+  + Fix transfer rule for atk_table_cell_get_table and
+    atk_table_get_summary.
+
+-------------------------------------------------------------------
 Mon Sep 15 06:18:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.58.0:
