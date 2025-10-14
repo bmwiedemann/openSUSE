@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 13 10:26:36 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.5.7:
+  * fix(build): rpm signature config (#19476) (#19483)
+  * docs: Update RN for 3.5.6 (backport release-3.5.x) (#19480)
+  * fix(build): update loki build image (#19473) (#19474)
+  * chore(release-3.5.x): release 3.5.6 (#19273)
+
+-------------------------------------------------------------------
 Fri Oct 10 12:58:46 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.5.6:
