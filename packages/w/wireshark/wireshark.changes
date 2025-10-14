@@ -2,7 +2,7 @@
 Thu Oct  9 09:19:17 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.4.10
-  * MONGO dissector infinite loop.
+  * CVE-2025-11626: MONGO dissector infinite loop (bsc#1251933).
 - Many more features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.4.10.html
 
