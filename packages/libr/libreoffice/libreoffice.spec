@@ -89,7 +89,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        25.8.1.1
+Version:        25.8.2.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -150,8 +150,6 @@ Patch992:       python34-no-f-strings.patch
 Patch995:       reproducible-clucene.patch
 # Add .key (Apple Keynote) files to Bash completion (tdf#167995)
 Patch996:       bash-completion-key.patch
-# https://github.com/LibreOffice/core/commit/b4e581f3e3ded8d13065e6c21777eca1f229e53d
-Patch997:       poppler-25.09.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -1124,7 +1122,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch -P 992 -p1
 %endif
 %patch -P 996 -p1
-%patch -P 997 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330
@@ -1176,7 +1173,7 @@ ARCH_FLAGS="`echo %{optflags} -flifetime-dse=1 | sed -e 's/^-g /-g1 /g' -e 's/ -
 %else
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g /-g1 /g' -e 's/ -g / -g1 /g' -e 's/ -g$/ -g1/g'`"
 %endif
-CFLAGS="$ARCH_FLAGS"
+CFLAGS="$ARCH_FLAGS -fPIC -fstack-protector-all -D_FORTIFY_SOURCE=1"
 CXXFLAGS="-std=c++20 $ARCH_FLAGS"
 export ARCH_FLAGS CFLAGS CXXFLAGS
 

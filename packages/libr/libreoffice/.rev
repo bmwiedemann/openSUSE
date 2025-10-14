@@ -3755,4 +3755,19 @@ Petr</comment>
     <comment>Port to poppler 25.09 (still works with older ones)</comment>
     <requestid>1306810</requestid>
   </revision>
+  <revision rev="315" vrev="1">
+    <srcmd5>17204657dd245c3534b41b73b294cc80</srcmd5>
+    <version>25.8.2.2</version>
+    <time>1760457905</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 25.8.2.2:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/25.8.2/RC1
+    https://wiki.documentfoundation.org/Releases/25.8.2/RC2
+- Remove patch, was merged upstream:
+  * poppler-25.09.patch
+
+- Use safer CFLAGS (position-indepent code, stack protections) bsc#1237182.</comment>
+    <requestid>1311015</requestid>
+  </revision>
 </revisionlist>

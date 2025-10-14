@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 11 00:05:31 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 25.8.2.2:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/25.8.2/RC1
+    https://wiki.documentfoundation.org/Releases/25.8.2/RC2
+- Remove patch, was merged upstream:
+  * poppler-25.09.patch
+
+-------------------------------------------------------------------
+Wed Oct  8 22:39:46 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Use safer CFLAGS (position-indepent code, stack protections) bsc#1237182.
+
+-------------------------------------------------------------------
 Tue Sep 23 11:06:44 UTC 2025 - pgajdos@suse.com
 
 - Added patch:
