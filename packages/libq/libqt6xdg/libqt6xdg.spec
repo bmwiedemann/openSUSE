@@ -1,7 +1,7 @@
 #
 # spec file for package libqt6xdg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,8 @@ URL:            https://github.com/lxqt/libqtxdg
 Source0:        %{url}/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{_name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-
+# PATCH-FIX-UPSTREAM
+Patch0:         libqt6xdg-qt610.patch
 BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -87,7 +88,7 @@ Development files for QtXDG icon loader libraries used in LXQt
 
 %install
 %qt6_install
-%fdupes -s %{buildroot}/%{_datadir}/locale
+%fdupes %{buildroot}/%{_datadir}/locale
 
 %ldconfig_scriptlets -n libQt6Xdg%{sover}
 %ldconfig_scriptlets -n libQt6XdgIconLoader%{sover}
