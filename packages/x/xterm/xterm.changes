@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 11 09:28:14 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 402:
+  * Bug fixes for various character display issues, Unicode
+    handling and terminal emulation
+  * Bug fixes for window positioning
+  * improve permissions-check for valid shell program
+  * Expanded handling of special keys and escape sequences
+  * Support client messages adjusting default colors
+  * build system fixes, code correctness fixes
+
+-------------------------------------------------------------------
 Thu Feb 27 13:54:10 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bashisms from build recipe
