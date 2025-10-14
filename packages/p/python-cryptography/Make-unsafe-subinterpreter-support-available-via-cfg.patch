@@ -7,10 +7,10 @@ Subject: [PATCH] Make unsafe subinterpreter support available via cfg flag
  src/impl_/pymodule.rs | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: cryptography-45.0.7/vendor/pyo3-0.25.1/src/impl_/pymodule.rs
+Index: cryptography-46.0.2/vendor/pyo3-0.26.0/src/impl_/pymodule.rs
 ===================================================================
---- cryptography-45.0.7.orig/vendor/pyo3-0.25.1/src/impl_/pymodule.rs
-+++ cryptography-45.0.7/vendor/pyo3-0.25.1/src/impl_/pymodule.rs
+--- cryptography-46.0.2.orig/vendor/pyo3-0.26.0/src/impl_/pymodule.rs
++++ cryptography-46.0.2/vendor/pyo3-0.26.0/src/impl_/pymodule.rs
 @@ -100,7 +100,7 @@ impl ModuleDef {
          // that static data is not reused across interpreters.
          //
@@ -20,27 +20,27 @@ Index: cryptography-45.0.7/vendor/pyo3-0.25.1/src/impl_/pymodule.rs
          {
              // PyInterpreterState_Get is only available on 3.9 and later, but is missing
              // from python3.dll for Windows stable API on 3.9
-Index: cryptography-45.0.7/Cargo.toml
+Index: cryptography-46.0.2/Cargo.toml
 ===================================================================
---- cryptography-45.0.7.orig/Cargo.toml
-+++ cryptography-45.0.7/Cargo.toml
+--- cryptography-46.0.2.orig/Cargo.toml
++++ cryptography-46.0.2/Cargo.toml
 @@ -29,3 +29,6 @@ openssl-sys = "0.9.108"
  
  [profile.release]
  overflow-checks = true
 +
 +[patch.crates-io]
-+pyo3 = { path="vendor/pyo3-0.25.1" }
-Index: cryptography-45.0.7/Cargo.lock
++pyo3 = { path="vendor/pyo3-0.26.0" }
+Index: cryptography-46.0.2/Cargo.lock
 ===================================================================
---- cryptography-45.0.7.orig/Cargo.lock
-+++ cryptography-45.0.7/Cargo.lock
+--- cryptography-46.0.2.orig/Cargo.lock
++++ cryptography-46.0.2/Cargo.lock
 @@ -276,8 +276,6 @@ dependencies = [
  [[package]]
  name = "pyo3"
- version = "0.25.1"
+ version = "0.26.0"
 -source = "registry+https://github.com/rust-lang/crates.io-index"
--checksum = "8970a78afe0628a3e3430376fc5fd76b6b45c4d43360ffd6cdd40bdde72b682a"
+-checksum = "7ba0117f4212101ee6544044dae45abe1083d30ce7b29c4b5cbdfa2354e07383"
  dependencies = [
   "indoc",
   "libc",
