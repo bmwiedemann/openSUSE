@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sun Oct 05 06:36:19 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.31:
+  * prepare 0.2.31
+  * upadte persy https://gitlab.com/persy/persy/-/issues/79
+  * tests for keyboard mode
+  * fix kitty keyboard mode stack logic (#1309)
+  * cleanup will_finish_launching
+  * implement NSAutoFillHeuristicControllerEnabled from ghostty made by @mitchellh
+  * update skrifa
+  * update docs to use changelog instead of releases
+  * fix theme logic retrival (closes #1039)
+  * use get instead of get_mut for UpdatConfig
+  * fix adaptative theme not being computed on update config (closes #1039)
+  * Fix theme reloading issue when editing configuration
+  * update dependencies
+  * update the releases.md
+  * use trigger_match to ensure user bindings always take precedence
+  * flake.lock: Update (#1305)
+  * clone only action per binding for
+  * update docs
+  * refactor to send_write
+  * fix send_write
+  * wip allow esc
+  * update makefile to use cargo publish --workspace, perk of rust 1.90
+  * update rust to v1.90
+  * flake.lock: Update (#1299)
+  * update flatpak xml file
+  * update release.md
+
+-------------------------------------------------------------------
+Sat Sep 13 15:36:56 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.30:
+  * prepare 0.2.30
+  * revert to old stroke but fixing limits
+  * update DiagonalRisingBar DiagonalCross and DiagonalFallingBar (ref: #1297)
+  * fix DiagonalRisingBar calculation
+  * flake.lock: Update (#1296)
+  * flake.lock: Update (#1292)
+  * fix debian conflicts with ncurses-term (#1287)
+  * update releases.md
+  * docs: Update releases.md with bell support feature
+  * Add audible & visual bell support (#1284)
+  * flake.lock: Update
+  * fix lint
+  * update frontends/rioterm/src/context/mod.rs
+  * add calculate_selection_damage_impl
+  * Update sugarloaf/src/font/mod.rs
+  * fix characters become invisible at very large sizes (closes #1268)
+  * fix lint
+  * Improve font cache implementation with DashMap
+  * fix Accidental inversion of bool
+  * Don't copy data as much; use more SharedData
+  * Clear FONT_DATA_CACHE when fonts are changed
+  * Update to rust 1.89
+  * update com.rioterm.Rio.metainfo.xml
+
+-------------------------------------------------------------------
 Mon Aug 18 13:45:57 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.2.29:
