@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Oct 14 07:01:36 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.25.1:
+  * http: add http support to ResolveSourceMeta
+  * hack: use bake to build buildkit images
+  * solver: add jobcontext to ops caller
+  * git: add git commit support to ResolveSourceMeta
+  * git: make Source struct public
+  * http: avoid opaque hardcoded digests in tests
+  * build(deps): bump softprops/action-gh-release from 2.4.0 to 2.4.1
+  * dfgitutil: FragmentFormat func
+  * git: fix potential difference between cache and snapshot
+  * vendor: github.com/containerd/stargz-snapshotter v0.17.0
+  * vendor: google.golang.org/grpc v1.73.0
+  * vendor: github.com/containerd/stargz-snapshotter/estargz v0.17.0
+  * vendor: golang.org/x/sys v0.34.0
+  * build(deps): bump github/codeql-action from 3 to 4
+  * build(deps): bump softprops/action-gh-release from 2.3.4 to 2.4.0
+  * dockerfile: fix customenv test for dockerd
+  * provenance: avoid intermediate wrapper for custom fields
+  * control: handle duplicate inline cache exporter
+  * client: add test for deleted blobs in remote cache
+  * docs: provenanceEnvDir in buildkitd.toml
+  * git: fix possible conflict on mutated branches
+  * git: handle tag changes in upstream
+  * hack: enable SLSA provenance v1 for buildkit and frontend images
+  * contenthash: change how checksum is calculated with wildcards and patterns
+
+-------------------------------------------------------------------
 Tue Oct 07 06:43:54 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.25.0:
