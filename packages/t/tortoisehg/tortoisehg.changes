@@ -1,0 +1,1247 @@
+-------------------------------------------------------------------
+Wed May  7 15:15:56 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to TortoiseHg 7.0.1.
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.9...7.0.1
+- Remove handle_moving_mercurial.rcutil_to_mercurial.configuration.rcutil.patch.
+
+-------------------------------------------------------------------
+Sun Mar 30 10:26:29 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Switch to autosetup
+- Add handle_moving_mercurial.rcutil_to_mercurial.configuration.rcutil.patch
+
+-------------------------------------------------------------------
+Tue Jan 28 21:26:10 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Update to TortoiseHg 6.9.
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.6.3...6.9
+
+-------------------------------------------------------------------
+Thu Sep 12 19:00:10 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Use existing python RPM macros instead of custom ones.
+
+-------------------------------------------------------------------
+Thu Jul 11 18:27:15 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Remove version constraint on mercurial.
+
+-------------------------------------------------------------------
+Tue Jun 18 00:59:25 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Build package with Python 3.11 on Leap 15.6.
+- Remove package tortoisehg-nautilus on Leap 15.6 since there is no python311-nautilus.
+
+-------------------------------------------------------------------
+Fri Mar 15 15:51:33 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to TortoiseHG 6.6.3.
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.5.1...6.6.3
+- Remove replace_mock_with_unittest_mock.patch since it was applied upstream.
+
+-------------------------------------------------------------------
+Fri Dec  1 02:51:54 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Relax version constraint on Mercurial to make an installation with Mercurial 6.6 possible.
+
+-------------------------------------------------------------------
+Tue Aug 15 12:42:47 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to TortoiseHG 6.5.1.
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.4.2...6.5.1
+
+-------------------------------------------------------------------
+Fri Apr 28 15:10:43 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to TortoiseHG 6.4.2.
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.4...6.4.2
+
+-------------------------------------------------------------------
+Wed Apr 12 16:51:41 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to TortoiseHG 6.4.
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.3.2...6.4
+- Add replace_mock_with_unittest_mock.patch to account for the removed python3-mock package on Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Jan 10 12:03:06 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 6.3.2
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.3.1...6.3.2
+
+-------------------------------------------------------------------
+Sun Nov 20 12:41:36 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- TortoiseHG 6.3.1
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.2...6.3.1
+
+-------------------------------------------------------------------
+Tue Jul 19 12:24:08 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 6.2
+
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.1.3...6.2
+- Drop QT4 support
+
+-------------------------------------------------------------------
+Mon Jun 20 16:19:26 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Remove build dependency on python3-nose.
+- Update to TortoiseHG 6.1.3.
+
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.1.2...6.1.3
+
+-------------------------------------------------------------------
+Sat May  7 20:55:32 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to TortoiseHG 6.1.2
+
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.1.1...6.1.2
+
+- Update to TortoiseHG 6.1.1
+
+  No upstream release notes, see complete changelog at
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.1...6.1.1
+
+- drop _service in favour of manual download_files service run
+
+-------------------------------------------------------------------
+Fri May  6 16:14:14 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- List python3-qt5-sip as an explicit dependency on Leap 15.3 and earlier.
+
+-------------------------------------------------------------------
+Sat Mar 12 20:08:50 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to TortoiseHG 6.1.
+  Changelog: https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/6.0...6.1?from_project_id=315
+
+-------------------------------------------------------------------
+Mon Dec 13 06:43:03 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 6.0
+  
+  No upstream release notes, see
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/5.9.3...6.0?from_project_id=315
+  for the changelog
+
+-------------------------------------------------------------------
+Sat Nov  6 08:07:38 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 5.9.3
+  No upstream release notes, see
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/5.9.2...5.9.3?from_project_id=315
+  for the changelog
+
+- TortoiseHG 5.9.2
+  No upstream release notes, see
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/5.9.1...5.9.2?from_project_id=315
+  for the changelog
+
+- TortoiseHG 5.9.1
+  No upstream release notes, see
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/5.9...5.9.1?from_project_id=315
+  for the changelog
+
+-------------------------------------------------------------------
+Thu Sep  2 09:04:33 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 5.9 
+  
+  No upstream release notes, see
+  https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/5.8.1...5.9?from_project_id=315
+  for the changelog
+- drop doc-compatibility-fix.patch, applied upstream
+
+-------------------------------------------------------------------
+Mon Jul 19 22:51:36 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- TortoiseHG 5.8.1
+
+-------------------------------------------------------------------
+Fri May 14 14:30:35 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 5.8
+  No upstream release notes
+- fixed logo path and removed docs leftover
+
+-------------------------------------------------------------------
+Mon Apr  5 17:56:02 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 5.7.1
+
+  * No upstream release notes, see 
+    https://foss.heptapod.net/mercurial/tortoisehg/thg/-/compare/5.7...5.7.1 
+
+-------------------------------------------------------------------
+Wed Feb 10 14:09:59 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 5.7
+  No upstream release notes
+
+-------------------------------------------------------------------
+Sat Dec  5 11:18:24 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 5.6.1
+  TortoiseHg 5.6.1 is a regularly scheduled bug-fix release
+  * Py3: fix another str/bytes bug in ArchiveWidget
+  * repofilter: avoid byte string in auto-completed author revset
+    (fixes #5659 (closed))
+  * py3: add a requirements list for CentOS 7
+
+-------------------------------------------------------------------
+Fri Nov 13 15:12:28 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 5.6
+  No release notes provided by upstream 
+
+-------------------------------------------------------------------
+Thu Oct 22 21:57:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- enable unit tests 
+
+-------------------------------------------------------------------
+Thu Oct 15 14:19:56 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 5.5.2
+  TortoiseHg 5.5.2 is a regularly scheduled bug-fix release
+  
+  + Bug Fixes
+    * py3: fix a bytes + str concatenation when running the resolve tool 
+      (fixes #5596 (closed))
+    * resolve: fix a bytes vs str issue when performing a merge 
+      without auto-resolve
+    * bugreport: fix a bytes vs str issue for a SettingsDialog argument
+    * wix: fix the 32-bit installation (fixes #5622 (closed))
+    * py3: ensure `qtlib._styles` is `str` (ref #810, #5599)
+
+- TortoiseHG 5.5.1
+  TortoiseHg 5.5.1 is a regularly scheduled bug-fix release
+
+  No release notes provided by upstream
+
+-------------------------------------------------------------------
+Thu Aug 13 10:22:25 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 5.5
+  
+  No release notes provided by upstream
+
+- TortoiseHG 5.4.2
+
+  No release notes provided by upstream
+
+-------------------------------------------------------------------
+Tue Jul  7 01:30:35 UTC 2020 - Manuel Jacob <me@manueljacob.de>
+
+- Fix build by replacing `%{python_sitelib}` with `%{python3_sitelib}`.
+
+-------------------------------------------------------------------
+Thu Jul  2 13:48:33 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 5.4.1
+  
+  No release notes provided by upstream
+- Fixed python* dependencies
+
+-------------------------------------------------------------------
+Wed Jul 24 15:58:51 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHG 5.0.2
+  TortoiseHg 5.0.2 is primarily a refresh to pick up the latest stable Mercurial release
+
+-------------------------------------------------------------------
+Fri May  3 15:58:49 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
+
+- fix spec to support patch releases
+- TortoiseHG 4.9.1
+  TortoiseHG 4.9.1 is a regularly scheduled bug-fix release.
+  
+  No change log provided.
+
+-------------------------------------------------------------------
+Sun Feb 24 08:26:32 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- TortoiseHG 4.9
+  TortoiseHg 4.9 is a quarterly feature release
+  + Bugs Fixes
+    * hglib: use mercurial.filesetlang instead of mercurial.fileset (fixes #5301) 
+  + Improvements
+    * phabricator: introduce a dialog for posting reviews 
+
+-------------------------------------------------------------------
+Fri Feb 22 07:36:25 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- changed spec file to reflect more clearly the version mess that exists between thg and hg
+
+-------------------------------------------------------------------
+Wed Jan  9 20:27:52 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHg 4.8.1
+  TortoiseHg 4.8.1 is a regularly scheduled bug-fix release
+
+  + Bugs Fixes
+    * mq: use scmutil.revsymbol() to resolve applied patch tooltip (fixes #5271)
+    * qtlib: check PyQt ver supporting setShortcutVisibleInContextMenu 
+      (fixes #5272)
+    * repowidget: do not open merge dialog with the "current" rev (fixes #5222)
+    * repowidget: use rev() to convert changectx and thgchangectx (fixes #5283)
+    * settings: display only usable phases for phases.new-commit (fixes #5288)
+    * update: use rev() to convert changectx and thgchangectx (fixes #5281)
+    * wix: add _sqlite3.pyd to the lib\ folder
+
+-------------------------------------------------------------------
+Sat Nov 17 08:44:01 UTC 2018 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- TortoiseHg 4.8
+
+  TortoiseHg 4.8 is a quarterly feature release
+  + Bug Fixes
+    * fileEditor: use a fixed width font
+    * merge: don't show config dialog if ui.askusername is enabled (fixes #5245)
+    * bisect: use scmutil.revsymbol() to resolve revision string (fixes #5263) 
+
+  + Improvements
+    * clone: add default destination setting (fixes #5241) 
+
+-------------------------------------------------------------------
+Fri Oct 26 17:22:38 UTC 2018 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHg 4.7.2 
+
+  TortoiseHg 4.7.2 is a regularly scheduled bug-fix release
+
+  + Bugs Fixes
+    * commit: disable format-changing diff options for chunk select 
+      (fixes #5224)
+    * commit: use scmutil.revsymbol() to look up existing branch (fixes #5226)
+    * graft: parse graftstate as new format if file starts with '1\n' 
+      (fixes #5220)
+    * grep: use scmutil.revsymbol to resolve revision string to changectx
+    * visdiff: use scmutil.revsymbol() to resolve --change
+
+-------------------------------------------------------------------
+Tue Sep 18 21:17:03 UTC 2018 - Andrei Dziahel <develop7@develop7.info>
+
+- TortoiseHg 4.7.1
+  TortoiseHg 4.7.1 is a regularly scheduled bug-fix release
+
+Bug Fixes
+  - filedialogs: use scmutil.revsymbol() to resolve revision string to 
+    changectx
+  - graft: use scmutil.revsymbol to resolve revision string (fixes #5158)
+  - patchctx: expose repo() to fix a bug in unapplied MQ patches
+  - qfold: use scmutil.revsymbol() to resolve "qtip" to changectx (fixes #5159)
+  - repofilter: use scmutil.isrevsymbol() to test query type (fixes #5155)
+  - repoview: do not look up integer revision by revsymbol() (fixes #5156)
+  - repowidget: use scmutil.isrevsymbol() for instant revision lookup
+  - revpanel: use scmutil.revsymbol() to resolve source to changectx 
+    (fixes #5160)
+  - strip: use scmutil.revsymbol() to resolve revision string (fixes #5162)
+  - update: pass in p2.node() to csinfo to wrap it with thgchangectx 
+    (fixes #5157)
+
+-------------------------------------------------------------------
+Fri Aug 24 19:49:34 UTC 2018 - develop7@develop7.info
+
+- TortoiseHg 4.7 
+  TortoiseHg 4.7 is a quarterly feature release, coinciding with Mercurial 4.7.
+
+  There were some internal changes in Mercurial 4.7 which have broken several 
+  extensions like hg-git. This release should be considered experimental.
+
+  + Bugs Fixes
+    * about: insert some more delay before starting network access (fixes 
+      #5142)
+    * compat: replace procutil.stderr instead of util.stderr (fixes #5135)
+    * hgqt: make sure shortcuts are visible in context menus in Qt 5.10
+    * mq: do not mess up patches prior to qrename (fixes #5129)
+    * repomodel: omit layoutChanged signal when model was/is about to be empty
+    * repoview: compute optimal height on show event (fixes #5066)
+    * repoview: switch to QTableView due to performance problem (refs #5061, 
+      #5066)
+  + Improvements
+    * grep: add a whole word match option, move follow button next to its peer
+
+-------------------------------------------------------------------
+Sat Jun 30 10:21:17 UTC 2018 - develop7@develop7.info
+
+- TortoiseHg 4.6.1
+  TortoiseHg 4.6.1 is a regularly scheduled bug-fix release
+
+  * Bug Fixes
+    + archive: don't convert changectx to int, call rev() explicitly 
+      (fixes #5095)
+    + compat: adapt to patch.extract() generator of hg 4.6 (fixes #5088)
+    + compat: catch the right exception to be raised by util.parsedate()
+    + pipeui: wrap _writenobuf() if available for hg 4.6 compatibility 
+      (fixes #5090)
+    + qscilib: use QWheelEvent::angleDelta() on Qt5 (fixes #5109)
+
+-------------------------------------------------------------------
+Tue May 29 07:30:06 UTC 2018 - develop7@develop7.info
+
+- Build against QT5 in Tumbleweed
+- TortoiseHG 4.6
+
+  * Bug Fixes
+    + fileview: serialize font name passed to Scintilla as UTF-8 (fixes #5075)
+  * Improvements
+    + repofilter: use partial matching to filter branch list (closes #4589)
+    + repomodel: add a column with the git commit hash (closes #5073)
+    + revpanel: show the git commit hash if the repo is a git clone (refs #5073)
+    + topics: new dialog to manage topics
+
+- TortoiseHG 4.5.3
+
+  TortoiseHg 4.5.3 is a regularly scheduled bug-fix release
+
+  * repowidget: do not stringify 'None' of filter revisions (fixes #5060)
+  * i18n: drop excessive '\' from internal URL of ru translation (fixes #5063)
+  * graphopt: do not build nodes just for flags() (fixes #5061)
+
+-------------------------------------------------------------------
+Mon Mar 12 17:23:07 UTC 2018 - develop7@develop7.info
+
+- TortoiseHG 4.5.2
+
+  TortoiseHg 4.5.2 is a regularly scheduled bug-fix release, primarily 
+  containing the security fixes in Mercurial 4.5.2
+
+-------------------------------------------------------------------
+Sat Mar 10 05:36:18 UTC 2018 - develop7@develop7.info
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb 16 20:03:19 UTC 2018 - develop7@develop7.info
+
+- Build against QT5 in Leap 15 and newer
+- Made `python-qscintilla` a requirement
+
+-------------------------------------------------------------------
+Wed Feb 14 06:54:09 UTC 2018 - develop7@develop7.info
+
+- Build against QT5
+
+-------------------------------------------------------------------
+Tue Feb 13 06:55:07 UTC 2018 - develop7@develop7.info
+
+- TortoiseHG 4.5
+  TortoiseHg 4.5 is a quarterly feature release
+
+  * Bug Fixes
+    mergetools: add meld with --auto-merge (fixes #4973)
+    mq: add action for "qpush --move" (closes #4991)
+    mq: preserve selection on trivial renames (fixes #5004)
+    mq: trigger delete patches action by Del (closes #4944)
+  * Improvements
+    chunks: do not apply fontdiff to whole DiffBrowser widget
+    manifestmodel: do not call begin/endInsertRows() if empty (fixes #5000)
+    qtapp: do not try to select destroyed signal having no argument (fixes #5020)
+    qtapp: enable support for HiDPI toolbar icons (fixes #5025)
+    settings: remove unsupported "fontlist" config knob (fixes #4945)
+
+- TortoiseHG 4.4.2
+  TortoiseHg 4.4.2 is a regularly scheduled bug-fix release
+
+  * Fixed Bugs
+    graphopt: in revset_mode don't add edges for revs not in the set (fixes #4935)
+    guess: replace Model.reset() by begin/endResetModel() (fixes #4967)
+    qt5: work around incompatibility with QProxyStyle (fixes #4962)
+    qtapp: convert login username to unicode (fixes #4964)
+    repomodel: cache repo.branchheads() (refs #4963)
+    visdiff: coerce type of configbool() value to be passed to setEnabled()
+    
+- TortoiseHg 4.4.1
+  TortoiseHg 4.4.1 is a major release, coinciding with Mercurial's 4.4.1 
+  security fix release. The x64 Windows installer packages are now built with 
+  Qt5. The x86 Windows installer packages will remain on Qt4. Linux and 
+  Mac OS X users can use Qt4 or Qt5, whichever is more stable on your platform.
+
+  * Installer
+    Qt5.9.2, PyQt5.9.2
+    latest versions of hg-git, dulwich and evolve
+
+-------------------------------------------------------------------
+Mon Aug 21 01:45:54 UTC 2017 - develop7@develop7.info
+
+- TortoiseHG 4.3.1
+  TortoiseHg 4.3.1 is a quarterly feature release; 4.3.0 was skipped since 
+  Mercurial tagged 4.3.1 the day as 4.3
+  
+  * Bug Fixes
+    + fileview: fix marker dark theme background colors (refs #810)
+  * Improvements
+    + repowidget: add custom tools support to pair selection menu
+    + repowidget: add custom tools support to multiple selection menu
+    + sync: use [hostsecurity] section instead of [hostfingerprints] 
+      (refs #4830)
+
+-------------------------------------------------------------------
+Sun Jul  9 13:10:37 UTC 2017 - develop7@develop7.info
+
+- TortoiseHG 4.2.1
+  TortoiseHg 4.2.1 is a regularly scheduled bug-fix release
+
+  * Bug Fixes
+    + compat: replace util.stderr on frozen Windows build (fixes #4754)
+    + compat: wrap scmutil.userrcpath() for hg 4.2 (fixes #4744)
+    + mq: escape patch revision passed to qfinish command (fixes #4773)
+    + qtrun: actually disable pager in GUI by ui.paginate flag (fixes #4778)
+    + run: import getopt.GetoptError directly (fixes #4746)
+
+- removed tortoisehg-4.2-issue4744-fix.patch
+
+-------------------------------------------------------------------
+Wed May 10 18:11:34 UTC 2017 - develop7@develop7.info
+
+- added tortoisehg-4.2-issue4744-fix.patch: fixes upstream issue #4744
+
+-------------------------------------------------------------------
+Sun May  7 09:32:05 UTC 2017 - develop7@develop7.info
+
+- TortoiseHG 4.2
+  TortoiseHg 4.2 is a regularly scheduled (quarterly) feature release, 
+  coinciding with Mercurial 4.2
+  
+  * Bug Fixes
+    + customtools: do not crash by tool name containing dot (fixes #4740)
+    + revdetails: convert issue patterns to unicode (fixes #4737)
+    + win32: fix XLS hack in docdiff (refs #4540)
+  * Improvements
+    + archive: allow to archive "all files touched since X"
+    + merge: respect 'merge-pattern' config when merging (fixes #1928)
+    + status, repo: remove unnecessary invalidation (fsmonitor compatibility)
+
+-------------------------------------------------------------------
+Wed Apr  5 06:48:28 UTC 2017 - develop7@develop7.info
+
+- TortoiseHG 4.1.2
+
+  See https://bitbucket.org/tortoisehg/thg/wiki/ReleaseNotes#!tortoisehg-412 
+  for detailed changelog
+
+- TortoiseHG 4.1.1
+
+-------------------------------------------------------------------
+Fri Feb 24 09:25:46 UTC 2017 - k.ohlhus@gmail.com
+
+- TortoiseHG 4.1
+  TortoiseHg 4.1 is a quarterly feature release
+  
+  See https://bitbucket.org/tortoisehg/thg/wiki/ReleaseNotes#!tortoisehg-41 for detailed changelog
+
+-------------------------------------------------------------------
+Fri Feb 17 16:43:04 UTC 2017 - develop7@develop7.info
+
+- TortoiseHG 4.1 stable branch checkout
+  Unofficial release compatible with Mercurial 4.1
+
+-------------------------------------------------------------------
+Mon Feb 13 11:30:16 UTC 2017 - develop7@develop7.info
+
+- bump mercurial version requirements, according to upstream
+
+-------------------------------------------------------------------
+Tue Feb  7 09:00:35 UTC 2017 - develop7@develop7.info
+
+- made Mercurial version requirements match runtime ones
+- removed Mercurial from build deps as it seems to be unneeded in buildtime
+
+-------------------------------------------------------------------
+Thu Nov  3 17:06:22 UTC 2016 - develop7@develop7.info
+
+- TortoiseHg 4.0
+  TortoiseHg 4.0 is a quarterly feature release
+  
+  See https://bitbucket.org/tortoisehg/thg/wiki/ReleaseNotes#!tortoisehg-40 for detailed changelog
+
+-------------------------------------------------------------------
+Tue Aug  9 18:30:34 UTC 2016 - develop7@develop7.info
+
+- TortoiseHg 3.9
+  TortoiseHg 3.9 is a quarterly feature release, with many improvements to 
+  performance on large repositories, and security improvements in 
+  Mercurial 3.9. See https://www.mercurial-scm.org/wiki/SecureConnections
+  
+  See https://bitbucket.org/tortoisehg/thg/wiki/ReleaseNotes#!tortoisehg-39 for detailed changelog
+
+- Depend on Mercurial >= 3.8 (-1 minor release), as per hgversion.py
+  
+-------------------------------------------------------------------
+Thu May  5 17:31:15 UTC 2016 - develop7@develop7.info
+
+- really depend on Mercurial 3.8
+
+-------------------------------------------------------------------
+Thu May  5 13:58:05 UTC 2016 - develop7@develop7.info
+
+- depend on Mercurial >= 3.8
+
+-------------------------------------------------------------------
+Wed May  4 12:59:13 UTC 2016 - develop7@develop7.info
+
+- TortoiseHg 3.8.1
+  TortoiseHg 3.8.1 is a feature release. 3.8.0 was skipped since Mercurial tagged 3.8.1 the same day as 3.8.0.
+  
+  See https://bitbucket.org/tortoisehg/thg/wiki/ReleaseNotes#!tortoisehg-381 for detailed changelog
+-------------------------------------------------------------------
+Mon Mar 14 10:15:10 UTC 2016 - develop7@develop7.info
+
+- TortoiseHg 3.7.2
+  TortoiseHg 3.7.2 is a regularly scheduled bugfix release, primarily to pick up bug fixes on the stable branch of Mercurial and packaging improvements.
+
+  No upstream changelog provided
+
+-------------------------------------------------------------------
+Thu Feb  4 14:05:45 UTC 2016 - develop7@develop7.info
+
+- TortoiseHg 3.7.1
+  TortoiseHg 3.7.1 is a feature release. TortoiseHg 3.7 was never packaged since there was a hot-fix necessary for Mercurial 3.7.
+  
+  See https://bitbucket.org/tortoisehg/thg/wiki/ReleaseNotes#!tortoisehg-371 for detailed changelog
+-------------------------------------------------------------------
+Thu Nov 19 16:55:53 UTC 2015 - develop7@develop7.info
+
+- TortoiseHG 3.6:
+  * Feature release with support for Mercurial 3.6
+  
+  See https://bitbucket.org/tortoisehg/thg/wiki/ReleaseNotes#!tortoisehg-36 for detailed changelog
+
+-------------------------------------------------------------------
+Fri Aug 14 05:04:05 UTC 2015 - astieger@suse.com
+
+- TortoiseHG 3.5:
+  * Feature release with support for Mercurial 3.5
+  * small number of bug fixes and improvements
+
+-------------------------------------------------------------------
+Sat Jul 25 02:09:32 UTC 2015 - develop7@develop7.info
+
+- update to v3.4.2
+  See https://bitbucket.org/tortoisehg/thg/wiki/ReleaseNotes#!tortoisehg-342 
+  and https://bitbucket.org/tortoisehg/thg/wiki/ReleaseNotes#!tortoisehg-341 
+  for detailed changelog
+
+-------------------------------------------------------------------
+Sat May 16 10:40:50 UTC 2015 - astieger@suse.com
+
+- TortoiseHG 3.4, with a number of bug fixes and improvements
+
+-------------------------------------------------------------------
+Tue Mar 10 17:26:30 UTC 2015 - develop7@develop7.info
+
+- update to v3.3.2
+  See https://bitbucket.org/tortoisehg/thg/wiki/ReleaseNotes#!tortoisehg-332 for detailed changelog
+
+-------------------------------------------------------------------
+Wed Feb  4 17:27:26 UTC 2015 - develop7@develop7.info
+
+- update to v3.3
+  Bug Fixes
+    * annotate: fetch line information by command (fixes unsafe thread access)
+    * cmdcore: handle ui labels in unicode to avoid possible exception (fixes #3988)
+    * guifork: use real fork() on posix to run GUI in background (fixes #3701)
+    * init: open repo in existing workbench process if any (fixes #3922)
+    * init: run "hg init" in command process (fixes #3931)
+    * lfprompt: parse minsize as float value (fixes #1901 again)
+    * qtapp: handle SIGINT more gracefully by sending close event to all windows
+    * repomodel: work around RepoLookupError that may occur while reload is pending
+    * repowidget: switch to default task tab after initial revision is selected
+    * sync: drop "recurse into subrepositories" option (closes #1645)
+    * workbench: disable back/forward actions when all repositories are closed
+    * workbench: make sure to run workbench by "New Workbench" action
+    * workbench: narrow --newworkbench option to command scope
+    * workbench: show busy indicator while command is running (fixes #1186)
+  Improvements
+    * clone, init: open workbench after repository created by standalone dialog
+    * filectxactions: open file history dialog in annotate mode (closes #3760)
+    * init: add option to copy user files instead of empty .hgignore (closes #3569)
+    * reporegistry: mark shared repositories with a link icon overlay
+    * repotab: stop filesystem watcher of background tabs
+    * sync: never switch task tabs on revision selected
+    * sync: provide standalone dialog by LightRepoWindow
+    * workbench: forcibly reload models and views by Ctrl+refresh
+    * workbench: make it possible to restore the selected sync path across restarts
+    * workbench: restore last open repositories without loading them
+    * workbench: resurrect docked console widget (closes #3984)
+    * graph:
+      - color: use "color hashing" to pick a color for each branch (closes #3490)
+      - color: use "color hashing" to pick a color for each user
+      - graph: support the branch grouping experiment from mercurial core
+      - repomodel: hide all revisions if no matches found for the given revset query
+      - repomodel: rerun last revset query on reload (closes #1705)
+      - repoview: use a square shape for secret changesets
+      - repoview: use a pentagon shape for draft changesets
+    * command:
+      - log: add -r option to specify the initial revision to be selected
+      - log: add -k/--query option to filter changesets by keyword or revset
+    * nautilus/caja:
+      - add Python Caja extension support (fixes #3936)
+  installer
+    * hgsubversion 1.8
+    * mercurial_keyring 0.6.6
+    * python-keyring 4.1.1
+
+-------------------------------------------------------------------
+Tue Dec 16 04:43:22 UTC 2014 - develop7@develop7.info
+
+- update to v3.2.1
+  Changes in 3.2:
+    Bug Fixes
+      commit: do not reload patch description if parent is unchanged (fixes #3304)
+      qreorder: have drag-and-drop patches run extension command in worker process
+      paths: resolve root directory from frozen executable path
+      repowatcher: detect removal of repository files (fixes #3697)
+      repoagent: unify workingBranchChanged with repositoryChanged 
+        (fixes #2572 - doesn't auto refresh when update and discard new branch)
+      repofilter: grab focus only if shown by user action (refs #3917)
+      repomodel: do not clear status message on filter option change (fixes #3887)
+      repomodel: restore current/selected indexes by model on reload (refs #1913, fixes #3897)
+      repowatcher: check mtime of obsolescence markers (fixes #3913)
+      repowidget: do not overwrite browse history by revset result (refs #3832)
+      repowidget: do not re-create model on repository or revset changed
+      repowidget: move focus to history view when window gets visible (fixes #3917)
+      repowidget: remove unused _reload_rev and _last_series (fixes #3923)
+      repowidget: switch to commit tab if working-dir row is selected (fixes #1913)
+      sync: bypass bundle overlay on fetch just like pull (fixes #3946 - fetch after check incoming fails)
+      sync: rebuild target bookmarks/branches only when changelog updated (refs #3912)
+    Improvements
+      make output log a task tab, remove class LogDockWidget
+      cmdcore: propagate --config options to command process
+      debugruncommand: add command that runs hg command in dialog (closes #3934)
+      infobar: clear status message with slight delay if command finished (refs #3308)
+      prune: add dialog that prunes the specified revs
+      qtapp: use wake-up fd to notice SIGINT on Unix
+      strip: add --keep checkbox (closes #1865)
+      workbench: add toolbar button that aborts any running commands
+      graph style:
+        evolution: also fadeout obsolete changeset
+        repomodel: use lighter version of the usual color when a revision is hidden
+        repomodel: use red as the default text color for troubled changeset
+  Changes in 3.2.1:
+    BugFixes
+      Avoid confusion with explorer extension dialog (#3968, #2339)
+      Improve documentation for terminal shell configuration (#3957)
+-------------------------------------------------------------------
+Mon Sep 15 11:09:56 UTC 2014 - develop7@develop7.info
+
+- Update to 3.1.1
+  Changes in 3.1:
+    TortoiseHg 3.1 is a major feature release.
+    Since 3.1, Mercurial commands are run in separate command server process. It generally contributes to reliability, but if you have a faulty extension or an in-process Python hook, it can corrupt the communication channel between TortoiseHg and the command server.
+    If you see an error message like "cmdserver: timeout while reading...", please report it with the list of enabled third-party extensions and their versions. Currently, reviewboard (#3841) and hg-git (#3862) are known to have this issue.
+    Note the Windows installers include Mercurial version 3.1 plus two stable commits which addressed Windows platform-specific bugs.
+    Bug Fixes
+      cmdui: add hidden button to close prompt dialog with no response 
+        (fixes #1317 - merge has no cancel option)
+      filectxactions: redesign to show diff between baseRev and rev 
+        (fixes #2313 - diff selected file revisions not working after move/rename)
+      grep, status: use built-in drag-and-drop infrastructure
+      patchctx: use patch name give by repo if it is an MQ patch 
+        (fixes #3831 - patch name is ambiguous when using directories)
+      postreview: correctly set parent of first selected revision (fixes #3538)
+      repofilter: do no run revset query by focus out during history completion
+      repofilter: do not steal focus when window is restored from minimized state
+      repomodel: render description column without using HTMLDelegate 
+        (fixes #1590 - description column contents aligned 1px upper)
+      repotreemodel: work around unicode error on XML parse failure (fixes #3820)
+      run: continue without fork if new process can't be spawned (fixes #1949, #3800)
+      run: promote rev to common annotate/log option (fixes #3799)
+      workbench: do not change window icon (closes #3737)
+      command runner:
+        cmdcore: enable command-server client by default in 3.1, fixes:
+          #3343 - blackbox extension not working
+          #1661 - "abort: Interrupted system" call during push with subrepos
+          #2071 - crash when pushing with mercurial_keyring
+          #2614 - util.hgexecutable() returns wrong path
+            074fd0fde0b6 - worker.py of Mercurial 2.6 only works in main thread
+          #3370 - Workbench UI getting dispresponsive on certain operations
+          #484, #788 - can't use git/subversion subrepo
+          #3637 - redirect hook stdout, stderr to Output log
+          #3670 - WindowsError 6 in pipe decode/encode filter
+        repowidget: run "Export Diff" and "Copy Patch" in command process for stability
+        revset: run query in command process for stability
+      commit/status widget:
+        commit: do not bulk-add unknown files when all selected files are largefiles
+        commit, filectxactions: escape paths prior to command execution 
+          (fixes #2108 - files with some special names can't be added or commited)
+        commit: take "autoinc" list as glob pattern again
+        filectxactions: make "copy patch" generate diff between base and target revs
+        repowatcher: invalidate cache if dirstate file is modified 
+          (fixes #3647 - file renaming inconsistencies)
+        wctxactions: delegate "file history" action to filectxactions 
+          (fixes #2591 - No shortcut for "File history" command on files in Working Directory)
+        wctxcleaner: invalidate changelog on each check of dirstate 
+          (fixes #3826 - commit do not work properly in the merge dialog)
+        wctxactions: make visual diff compare to base revision, add "diff local" in place 
+          (fixes #2001 - diff does not work on MQ patches)
+        wctxactions: reimplement by using command APIs, fixes:
+          #1347 - add support for pre-<command> and post-<command> hooks
+          #2217 - adding files to source control in the separate thread
+          #1953 - largefiles treated wrong when added by "add large..." menu
+      high dpi issues:
+        graphdelegate: update row height to actual value prior to painting 
+        (refs #3690)
+        widgets: use small icon size defined by platform style (fixes #3690)
+      obsolete changeset:
+        repoagent: append --hidden option while hidden changesets are visible
+        repowidget: replace pseudo "incoming()" filter by "bundle()" (refs #3535)
+        repowidget: switch visibility of hidden changesets globally 
+          (fixes #3735 - obosoleted changeset appears as "Child:" field unexpectedly)
+        thgrepo: start with filtered repo because it is the default of Mercurial
+    Improvements
+      blockmatcher: improve visibility of narrow markers
+      filelog: export thg filelog [-r REV] [--compare] FILE command
+      fileview: remember chunk selection on view mode switch
+      mergetools: port gvimdiff from Mercurial's mergetools.hgrc
+      searchtoolbar: make next/prev shortcuts available in owner widget (fixes #3819)
+      status: open merge tool on double-click for unresolved file (closes #1230)
+      toolbars: use toolbar icon size defined by QApplication.style() except on Mac (see 8d6212194e21 for details)
+      graph: draw ancestor-descendant relations in filtered graph (see 891146f5a9bb for details)
+    Changes in 3.1.1:
+      Bug Fixes
+        annotate: ignore double-click of margin next to the last line (fixes #3877)
+        cmdcore: allow to change output device of null command session 
+          (fixes #3864 - RuntimeError on detect outgoing changes to empty path)
+        filectxactions: do not try 3-way diff if p2 is explicitly selected 
+          (fixes #3854 - "Diff to parent" options only diff to the left parent)
+        graph: fix AssertionError when generating family lined graph (fixes #3892)
+        hgignore: disable auto-default of all buttons (fixes #3889)
+        repomodel: make sure to render labels by using the same font as view
+        status: do not set "remove filter" button as auto-default (fixes #3876)
+        sync: outgoing {node} might be prefixed with white space 
+          (fixes #3872 - missing first outgoing node if authentication required)
+        wctxcleaner: do not report branch change as dirty working directory 
+          (refs #3822 - allow backout, graft, merge and rebase onto new branch)
+        win32ill: suppress KeyboardInterrupt while shutting down message-loop thread
+      Improvements
+        merge: add link to review a merge
+        wctxactions: add "Edit Rejects" action that opens RejectsDialog (closes #3838)
+
+-------------------------------------------------------------------
+Thu Sep  4 06:42:51 UTC 2014 - infroma@gmail.com
+
+- add desktop file
+
+-------------------------------------------------------------------
+Tue Jul 22 16:51:53 UTC 2014 - develop7@develop7.info
+
+- update to 3.0.2
+  Bug Fixes
+    * cmdthread: map empty promptchoice response to default value 
+      (fixes #3785 - crash on email preview with diffstat)
+    * grep: fix list of urls to include all dragged files
+    * grep, status: fix several unicode errors in drag-and-drop handler
+    * status: fix handling of non-ascii file name in drag-and-drop handler
+    * purge: make sure to not include deselected statuses 
+      (fixes #3786 - ignored files can be deleted even if checkbox is off)
+    * settings: remove outdated details of default authorcolor behavior (fixes #3789)
+    * thgrepo: preserve config values that are internally set 
+      (fixes #588 - random failure of unified diff with eol extension)
+  Improvements
+    * commit: allow amending non-head if obsolete is enabled
+    * repomodel: do not truncate description if longsummary is enabled (fixes #3776)
+    * reduce workbench toolbar icon size on Mac to match size on Windows
+
+-------------------------------------------------------------------
+Sun Jun  8 21:30:08 UTC 2014 - develop7@develop7.info
+
+- update to version 3.0.1
+
+  Bug Fixes
+    * commit: do not crash by invalid issue.regex expression (fixes #3732)
+    * customtools: separate arguments before running 
+      external commands (fixes #3752)
+    * graph: fix problem about `showgraftsource` and `branch`
+    * repowidget: resize columns only when model is 
+      initially loaded (fixes #3742)
+    * wctxactions: resurrect 'forget' action for added files (closes #3748)
+    * commit: clear unmodified message, including the default merge message, 
+      when repository changed (fixes #3755)
+
+-------------------------------------------------------------------
+Wed May 07 12:34:29 UTC 2014 - m407@mail.ru
+
+- updated to version 3.0
+
+  Bug Fixes
+  * backout: remove support for merges deprecated since Mercurial 2.0 (refs #3416)
+  * commit: do not create recent message menu more than once (fixes memleak)
+  * email: preview is empty if patchbomb extension is not loaded
+  * filectxactions: save files in working-copy line endings (fixes #3696)
+  * graft: merge source csinfo and cslist to save vertical space (closes #3655)
+  * qtapp: font placement is wrong with OSX 10.9
+  * shellext: context menus icons NOT properly displayed on Windows XP (fixes #1364) 
+  Improvements
+  * bisect: open as modeless dialog in workbench
+  * bisect: follow candidate changeset in workbench
+  * clone: suggest new destination on source changed or existing dest selected
+  * cmdui: switch detail button text to show what will happen (closes #3666)
+  * commit: automatically set merge commit message
+  * email: allow to omit introduction email even if more than one patches available
+  * filectxactions: add filter action to file context menu
+  * filectxactions: run "hg cat" by asynchronous command runner
+  * fileview: add option to guess encoding from its content on load (closes #3620)
+  * fileview: add shift-clicking feature on chunk selection (ref #3672)
+  * graft: save/restore boolean command options
+  * merge: remember autoresolve check, run internal:merge (autoresolve) by default
+  * qdelete: remember last state of --keep option
+  * reporegistry: save expanded state in settings (closes #2132)
+  * repoview: allow drag-and-drop of column headers (closes #2544)
+  * shelve: confirm to delete selected chunks (closes #2493)
+  * update: add 'Pull subrepos from:' combobox
+  * workbench, filelog: give standard shortcuts to go-back/forward actions 
+  core:
+  * cmdcore: add experimental command-server client enabled by --config tortoisehg.cmdworker=server (refs #1507, #1661, #2071, #2614, #3343, #3370, #3637)
+  * graph: assign same color to edges in first ancestors line
+  * graph: do not assign gray to normal line because gray means `inactive`
+  * graph: draw starting edge of topo branch in same color as its descendants
+  * graph: narrow margin around graph edges to save horizontal space 
+  Installer
+  * bundle hg-git and hgsubversion extensions
+  * dulwich 0.9.6 (inclues fixes for GitHub, #3653)
+  * keyring 3.7 and hgkeyring 0.6.2 
+  
+-------------------------------------------------------------------
+Fri Mar 14 15:49:09 UTC 2014 - develop7@develop7.info
+
+- updated to version 2.11.1
+  Bug Fixes
+  * chunks: bypass copy protection of repo.ui that drops eol settings (fixes #3600)
+  * cmdui: disown temporary progress widgets so that they can be deleted (fixes memleak)
+  * commit: do not restore last amend message on repository change (fixes #3605)
+  * commit: say "nothing changed" instead of "code: 1" on empty amend (refs #3599)
+  * filectxactions: reenable file log actions for working directory (closes #3613)
+  * init: catch filesystem error while creating repository (fixes #3630)
+  * manifestmodel: disable lookup of file-type icons from system (fixes #3594 - double overlay icons)
+  * manifestmodel: do not ignore reload request of uncommitted changes (fixes #3595 - shelve not refresh)
+  * manifestmodel: instantiate subrepo only when necessary (fixes #3638)
+  * quickop: chdir to repo root so that status widget can filter file (fixes #3634)
+  * repowidget: refresh active commit tab when purge dialog closed (closes #3643)
+  * sync: fix list index to override pull command by fetch (fixes #3612)
+  * update: do not eat up enter key to complete wrong revision from history
+  * wctxactions: clear propertycache of cwd for each command execution (fixes #3603)
+  Improvements
+  * archive, clone, rename: allow to resize horizontally while having fixed height
+  * mergetools: copy TortoiseMerge entry for the one of TortoiseGit (refs #1952)
+  * settings: list well-known smtp ports in combobox
+
+-------------------------------------------------------------------
+Tue Feb 18 09:14:24 UTC 2014 - develop7@develop7.info
+
+- update to version 2.11
+  * compatibility with mercurial 2.9
+
+-------------------------------------------------------------------
+Fri Dec 13 22:32:49 UTC 2013 - wr@rosenauer.org
+
+- update to version 2.10.1
+  * compatibility with mercurial 2.8.x
+
+-------------------------------------------------------------------
+Thu Sep 12 09:27:10 UTC 2013 - wr@rosenauer.org
+
+- update to version 2.9.1
+  * compatibility with mercurial 2.7
+
+-------------------------------------------------------------------
+Thu May 30 11:07:39 UTC 2013 - m407@mail.ru
+
+- update to 2.8
+- service
+  * added service for archive download
+
+-------------------------------------------------------------------
+Sat Apr  6 18:06:03 UTC 2013 - toms@opensuse.org
+
+- update to 2.7.1
+  bug fix release with minor improvements, see
+  https://bitbucket.org/tortoisehg/thg/wiki/ReleaseNotes#!tortoisehg-271
+
+- SPEC file:
+  * Removed obsolete check for SUSE version <= 11.0
+  * Added rpmlintrc for rpmlint check
+
+-------------------------------------------------------------------
+Tue Feb 12 20:36:27 UTC 2013 - wr@rosenauer.org
+
+- update to 2.7
+  Improvements
+  * change selection in the commit tool
+  * startup performance improvements (closes #940)
+  * cleanup menu and title strings
+  * blockmatcher: make BlockList clickable
+  * commit, revdetails: change splitter style to make it easier to see on Windows
+  * cmdui: prettify command-line string for display (closes #1529)
+  * fileview, shelve: add 'Display the file anyway' link when files
+    or patches are not shown
+  * infobar: convert revision id hashes into links
+  * infobar: convert subrepo references and subrepo revision id hashes
+    into links (needs Mercurial 2.5)
+  * mergetools: add a kdiff3-noauto merge tool disabling automated merge
+  * mergetools: add Windows support for "meld"
+  * serve: show balloon when minimizing running server to tray (refs #1845)
+  * settings: synchronize and remember the active page of all settings forms
+  Bugfixes
+  * update: fix unicode error on confirmation of bookmarks (fixes #2341)
+  * repotreemodel: recover from missing <allgroup> element (closes #1075)
+  * repotreemodel: remove unsafe processEvents() during loadSubrepos() (fixes #2256)
+  * status: respect filter text when the file list is refreshed
+  * bookmark, branchop, tag: work around case-insensitive completion of QComboBox
+  * qtlib: make sure getCurrentUsername() not fall back to system value
+  * purge: move completed() handlers to instance to avoid GC issue (fixes #2386)
+  * bisect: ask cmdui.Widget() to create a status bar (fixes #2390)
+  * guess: keep similarity as raw value for sorting (fixes #1332)
+- made package noarch
+- /usr/share is not supposed to be part of the package
+
+-------------------------------------------------------------------
+Tue Jan  1 20:58:30 UTC 2013 - tzotsos@opensuse.org
+
+- update to 2.6.1
+  Improvements:
+    * merge: improve Commit/Cancel buttons and merge "cancel" message (refs #1727)
+    * merge: let the user change the commit options on the merge wizard commit page (fixes #1727)
+    * resolve: add "diff to common ancestor" cmenu actions in resolve window (fixes #2201)
+    * resolve: add doubleclick actions in resolve window (fixes #2236)
+    * settings: completed helptext for 'Diff and Annotate' -> 'MQ Git Format'
+    * wctxactions: use RenameDialog for copy action 
+  Bug Fixes:
+    * commit: hide the 'autoinc' option when merging
+    * copypatch: have dummy Writable object acts like a string (fixes #2280)
+    * copypatch: support internal lossless export/import via clipboard (fixes #841)
+    * hgignore: use util.expandpath() to expand env vars of ui.ignore (fixes #2306)
+    * manifestdialog: fix possible unicode error at cset link handler (fixes #2289)
+    * merge: refresh csinfo of commit page so that it can show two parents
+    * rejects: earlybytes fix (fixes #2295)
+    * rename: actually overwrite existing file if requested
+    * repofilter: use case-sensitive completion for revsets (fixes #2276)
+    * reporegistory: restore original behavior of setActiveTabRepo('') (fixes #2279)
+    * resolve: normalize paths before calling resolve
+    * update: correct default behavior of updating to bookmark to 'prompt'
+    * workbench: pushes new branch without failing if --pushafter set (fixes #1986) 
+
+-------------------------------------------------------------------
+Tue Jan  1 20:24:41 UTC 2013 - tzotsos@opensuse.org
+
+- update to 2.6.0
+  Improvements:
+    * commit: prompt the user to set a default username on commit if necessary
+    * filedialogs: add multi-selection menu (fixes #1871)
+    * menu: add shelve to menuthg so it shows up in shellconf (fixes #2209)
+    * repomodel: add Latest tags column
+    * repowidget, status, manifest: change background color when a filter is applied
+    * resolve: add context-menu in resolve window (fixes #2200)
+    * settings: add 'phases.publish' support
+    * RTF file support in docdiff 
+  Bug Fixes:
+    * cmdui, qscilib: avoid CTRL+L key binding collision (fixes #2205)
+    * commit: ignore IOError when saving state (fixes #2202)
+    * filectxactions: fix parent of vdiff warning dialog (fixes #2252)
+    * filectxactions: set up initial state of actions correctly (fixes #2255)
+    * fileview: fix possible TypeError on AnnotateThread.abort (fixes #2188)
+    * qtlib: check if user input can be converted to local encoding (fixes #2196)
+    * repomodel: avoid filled.emit() of destroyed HgRepoListModel (fixes #1267)
+    * repofilter: restore index of revset combobox to avoid extra activated signal
+    * repotreeitem: cast possible QString to unicode at setShortName (fixes #2227)
+    * revdetails: have message widget honor user-specified font
+    * reporegistry: activate the current repository entry after a model reload
+    * rollback: remove unwanted restriction of undo desc
+    * thg: make sure to load threading module by main thread (fixes #1894)
+    * workbench: use windows-safe getuser() to build IPC socket name (fixes #2238)
+    * grep: fix unicode handling of several context menu actions (fixes #2274) 
+
+-------------------------------------------------------------------
+Mon Nov 12 17:53:40 UTC 2012 - tzotsos@opensuse.org
+
+- update to 2.4.1
+  Bug Fixes:
+    * qrename: fix unicode error when displaying patch name (fixes #1914)
+    * rejects: ensure editing doesn't start before first line (fixes #1424, #369)
+    * remove unused tortoisehg/util/hgshelve.py, refs #1908
+    * repoview: hide "drop line" when dragging an unapplied patch to an invalid drop location
+    * repowidget: correct parameter for shell_notify()
+    * repowidget: fix 'Push all' revision context menu (was doing 'Push to here' instead)
+    * repowidget: refresh wctx status of commit widget by tab change (fixes #1657)
+    * repowidget: take into account the tortoisehg.branchcolors setting (refs #1644)
+    * revdetails: do not crash on visual diff for unapplied patches (fixes #1772)
+    * sync: append svn+https and git schemes to urlparse.uses_netloc
+    * sync: convert non-ascii alias/url correctly at editurl action
+    * sync: fix several unicode issues at SaveDialog (fixes #1883)
+    * sync: fix URL displayed on direct pull
+    * update: fix target information when updating to null revision
+    * workbench: fix unicode error while loading the last session 
+
+-------------------------------------------------------------------
+Wed May 23 09:47:24 UTC 2012 - wr@rosenauer.org
+
+- update to 2.4 - Support for Mercurial 2.2.x
+  Bug Fixes:
+  * merge: move initial focus to Next button (fixes #1868)
+  * update: improved bookmarks support
+  * openshell: show error if failed to execute shell command (fixes #1833)
+  * reporegistry: normalize paths of added repositories (fixes #1837)
+  * grep: convert filename column to unicode (fixes #1774)
+
+  Improvements:
+  * Workbench: new custom toolbar for custom commands
+  * Workbench: new "similar revisions.." dialog
+  * Workbench: optional "Single Wokbench Window" mode
+  * Workbench: startup progress bar
+  * Workbench: many more lexers enabled
+  * Workbench: add GitHub/BitBucket-like "README" file detection
+  * reporegistry: use a different icon for repositories located on UNC paths
+  * repowidget: keep URL of incoming bundle source as instance variable (refs #1118)
+  * repowidget: improve incoming pull infobar messages (fixes #1118)
+  * reporegistry: improve accuracy of subrepo detection when adding a repository (refs #1672)
+  * sync: in-place editing of URLs and aliases
+  * commit: add commit --amend support
+  * revdetails: improved display of tags and bug links
+
+-------------------------------------------------------------------
+Tue Apr 17 14:16:38 UTC 2012 - tzotsos@opensuse.org
+
+- update to 2.3.1 - Support for Mercurial 2.1.x
+  Bug Fixes:
+  * shelve: prevent the use of bad characters in shelf files (fixes #765)
+  * sync: emit a message when outgoing --subrepo completes (closes #1564)
+  * qimport: check for existing patches (fixes #1569)
+  * commit: ensure autoinc files are included (closes #737)
+  * shelve: verify chunks are non-empty before proceeding (closes #1552)
+  * repotreeitem: sort subrepos by name by default (closes #1251)
+  * status: don't use thgrepo in thread (refs #1505)
+  * branchop, etc: fix encoding of repo.namedbranches in branchop dialog comboBox
+  * update: default the confirmation to "cancel" (closes #1325)
+  * thread: catch socket errors including SSLError (closes #1520) 
+
+  Improvements:
+  * supprt for Mercurial phases in repowidget
+  * shellext - support for largefile extension
+  * new registry keys for DiffMerge 3.3
+  * settings: add defaultpush configuration setting
+  * "Go To Revision" button with shortcut CTRL+/
+  * workbench: add shortcut for "rollback" command (Ctrl-u)
+  * reporegistry: add cmenu sort actions for groups (closes #1189)
+  * repofilter: add "author(username)" permanent query
+  * repofilter: add "bookmark()" permanent query
+  * settings: add defaultpush configuration setting
+  * manifestmodel: add method to filter files by glob pattern
+  * manifest: add filter box to file tree
+  * commit: show selected options (closes #1491)
+  * filedialogs, manifest: add "save at revision" to cmenu (closes #1500)
+  * commit: support --subprepos option in DetailsDialog (closes #1379)
+  * commit: handle tolocal conversion failures more gracefully (closes #1516)
+  * revpanel: add source revision item for converted changesets
+  * repomodel: add column for source revision of converted changesets 
+
+-------------------------------------------------------------------
+Sun Dec 11 13:25:47 UTC 2011 - toms@opensuse.org
+
+- update to 2.2.1
+  Bug Fixes:
+  * chunks: catch ValueError from internalpatch (fixes #1249)
+  * commit: use command runner for rollback (fixes #1436)
+  * hgignore: catch IndexError while building pats list (fixes #1204)
+  * filedata: fix mode-only change detection on working dir
+  * grep: fix #1428 rev and line are now sorted numerical
+  * manifest: don't test file status of directory node on doubleclick (fixes #1408)
+  * manifest: fix error while displaying subrepo (fixes #1386)
+  *  reporegistry: show proper short path when common group path ends with slash
+  * repowidget: capture commit widget output (#1379)
+  * repowidget: manually reverse compress arguments (fixes #1344)
+  * shlib: call close() instead of rename() on Mercurial 2.0+ (fixes #1397)
+  * update: wctx.modified() is prone to throw EnvironmentError (closes #1435)
+  * visdiff: use os.makedirs() to re-create diff folder when necessary (fixes #1151)
+  * wctxactions: fix encoding of warning messages coming from hg  
+
+  Improvements:
+  * commit: add several actions to subrepo context menu
+  * commit: make stand-alone dialog support mq
+  * rebase: add collapse rebased changesets option (fixes #1381)
+  * repomodel: more stable branch colors
+  * reporegistry: improve error handling while adding a subrepository
+  * repowidget: make double clicking an applied patch qgoto that patch (closes #1044)
+  * repowidget: add "Goto common ancestor" command in pop-up menu
+  * revdetails: add "Copy Path" in pop-up menu
+  * sync: add support for the --mq option in the sync tool
+  * workbench: add "Goto revision" command 
+
+- Spec File:
+  * Added missing BuildRequires for mercurial
+
+-------------------------------------------------------------------
+Fri Jul  8 02:19:55 UTC 2011 - ammler@openttdcoop.org
+
+- update to 2.1.1 (for mercurial 1.9)
+  Bug Fixes:
+  * sync: move import of paths to top of the file (fixes #853, etc)
+  * hgcrutil: add missing import of _() (closes #852)
+  * NameError: global name 'paths' is not defined (#853)
+  * wctxactions: give parent to transient menus (closes #716)
+  * repomodel: reorder colors in Changes column (refs #776)
+  * sync: do not use --bookmark argument for target in in/out commands (refs #901)
+  * wctxactions: fix rename from status/commit dialogs (fixes #902)
+  * thg: workaround for resolve tool bug (fixes #891)
+  * archive: fix bad handling of non-ascii path (fixes #883)
+  * thg: reintroduce stderr capture (closes #856)
+  * shelve: fix shelf creation when .hg/shelves must be created
+  * visdiff: fix possible unicode error at launchtool (fixes #796)
+  * fileview: avoid unwanted unicode issue at timerBuildDiffMarkers (fixes #857)
+  * shellext: additionally use GetDriveType for local disks check (closes #842)
+- changes in 2.1
+  Bug Fixes:
+  * only read hgrc files of related repositories on local disks (fixes #537)
+  * filedata: note when binary files have been added (fixes #849)
+  * shelve: do not use repo.opener to create new shelf files (refs #832)
+  * thgrepo: ignore folders in the shelve directory (fixes #832)
+  * wix: catch up with Mercurial b30c889584ef (fixes #844)
+  * status: double click signal was redundant with default wctxaction (fixes #848)
+  * wctxactions: pass absolute paths to commands.resolve() (closes #747)
+  * guess, wctxactions: workingctx.remove() has been obsoleted (closes #840) 
+  * repofilter: added option to display only active branches (closes #577)
+  * revdetails: disable actionShowAllMerge by default (closes #818)
+  * revert: handle non-ascii filenames in prompt (closes #824)
+  * wctxactions: fix error message (closes #781)
+  * thgimport: do not import if no patch available (fixes #773)
+  Improvements:
+  * (manifest) uses the same file display widget as revdetails and commit
+  * (fileview) improved controls for merge revisions
+  * (commit) improved layout of file filter and checkbox features
+  * (bugtraq) integration with BugTraQ COM interface
+  * (sync) notification bar, and busy icon on repository tabs
+  * (registry) automatically picks up changes made in other processes
+  * (registry) detect nested repositories and subrepositories
+  * (workbench) uses QFileSystemWatcher to get file system notifications
+  * (file history) added context menu for file revision features
+  * (mq) new patch queue dock widget, qnew/qrefresh support in commit tool
+  * (merge) improvements to the merge wizard layout and flow
+  * (backout) refactored the backout tool as a QWizard
+  * (workbench) user can configure default widget and revision shown at startup
+  * (workbench) add bundle creation features
+- many bufixes in 2.0.x
+- changed package group (rpmlint)
+
+-------------------------------------------------------------------
+Tue Apr 12 15:40:19 CEST 2011 - hpj@urpla.net
+
+- version 2.0.3
+
+-------------------------------------------------------------------
+Tue Dec 14 22:59:55 UTC 2010 - boris@steki.net
+
+- initial package fixing 
+

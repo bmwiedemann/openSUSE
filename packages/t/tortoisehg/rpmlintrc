@@ -1,0 +1,7 @@
+# tortoisehg has its own name
+addFilter("python-naming-policy-not-applied")
+
+# 
+addFilter("files-duplicate /usr/share/doc/packages/tortoisehg/html/_images/.*")
+addFilter("files-duplicate /usr/share/doc/packages/tortoisehg/html/_static/.*")
+
