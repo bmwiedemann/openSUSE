@@ -281,4 +281,12 @@
   * Also match directories in Path.glob.</comment>
     <requestid>1225379</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9089a69db886c416fdd9dbdac40647a9</srcmd5>
+    <version>3.23.0</version>
+    <time>1760457958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311042</requestid>
+  </revision>
 </revisionlist>
