@@ -17,14 +17,12 @@
 
 
 Name:           fontforge
-Version:        20230101+git59.770356c9b
+Version:        20251009
 Release:        0
 Summary:        A Font Editor
 License:        GPL-3.0-or-later
 URL:            https://fontforge.org/
-Source0:        fontforge-20230101+git59.770356c9b.tar.zst
-# workaround for bug 930076, imho upstream should fix this
-# https://github.com/fontforge/fontforge/issues/2270
+Source0:        https://github.com/fontforge/fontforge/releases/download/%{version}/fontforge-%{version}.tar.xz
 Patch0:         fontforge-version.patch
 Patch1:         add-bitmap-transform-support.patch
 BuildRequires:  cairo-devel
@@ -37,9 +35,11 @@ BuildRequires:  gettext-tools
 BuildRequires:  giflib-devel
 BuildRequires:  git
 BuildRequires:  gtk3-devel
+BuildRequires:  gtkmm3-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libspiro-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
@@ -50,13 +50,11 @@ BuildRequires:  python3-devel >= 3.8
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  woff2-devel
+BuildRequires:  xz
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xi)
-%if 0%{?suse_version} > 1210
-BuildRequires:  libspiro-devel
-%endif
 
 %description
 FontForge allows editing of outline and bitmap fonts.  With it, you can
@@ -66,9 +64,7 @@ some Type 0s), TrueType, OpenType (Type2), and CID-keyed fonts.
 
 %package doc
 Summary:        Documentation for FontForge
-%if 0%{?suse_version} >= 1230
 BuildArch:      noarch
-%endif
 
 %description doc
 FontForge allows editing of outline and bitmap fonts. With it, you can
