@@ -1,7 +1,7 @@
 #
 # spec file for package libdovi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 3
 
 Name:           libdovi
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        Library to read & write Dolby Vision metadata
 Group:          Development/Libraries/Rust

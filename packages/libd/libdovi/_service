@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
-     <param name="srcdir">libdovi-3.3.1.tar.gz</param>
+     <param name="srcdir">libdovi-3.3.2.tar.gz</param>
      <param name="cargotoml">dolby_vision/Cargo.toml</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
