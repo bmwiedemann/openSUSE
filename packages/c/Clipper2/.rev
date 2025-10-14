@@ -25,4 +25,12 @@
 - Fix shared library packaging naming</comment>
     <requestid>1310794</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4d68f9db1434d62a1ca188ac0de612e5</srcmd5>
+    <version>1.5.4</version>
+    <time>1760457848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311392</requestid>
+  </revision>
 </revisionlist>

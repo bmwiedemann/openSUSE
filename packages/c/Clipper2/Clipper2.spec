@@ -49,7 +49,6 @@ still works very well, Clipper2 is better in just about every way.
 
 %package -n %{sh_lib}
 Summary:        Shared library for Clipper2
-Provides:       %{broken_sh_lib} = %{version}-%{release}
 Obsoletes:      %{broken_sh_lib} < %{version}-%{release}
 
 %description -n %{sh_lib}
@@ -61,7 +60,6 @@ still works very well, Clipper2 is better in just about every way.
 
 %package -n %{sh_z_lib}
 Summary:        Shared library for Clipper2
-Provides:       %{broken_sh_z_lib} = %{version}-%{release}
 Obsoletes:      %{broken_sh_z_lib} < %{version}-%{release}
 
 %description -n %{sh_z_lib}
