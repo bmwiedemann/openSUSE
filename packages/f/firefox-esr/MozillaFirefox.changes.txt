@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Oct 14 12:54:02 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 140.4.0 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 140.4
+  https://www.mozilla.org/security/advisories/mfsa2025-83
+  MFSA 2025-83 (boo#1251263)
+  * CVE-2025-11708 (bmo#1988931)
+    Use-after-free in MediaTrackGraphImpl::GetInstance()
+  * CVE-2025-11709 (bmo#1989127)
+    Out of bounds read/write in a privileged process triggered by
+    WebGL textures
+  * CVE-2025-11710 (bmo#1989899)
+    Cross-process information leaked due to malicious IPC
+    messages
+  * CVE-2025-11711 (bmo#1989978)
+    Some non-writable Object properties could be modified
+  * CVE-2025-11712 (bmo#1979536)
+    An OBJECT tag type attribute overrode browser behavior on web
+    resources without a content-type
+  * CVE-2025-11713 (bmo#1986142)
+    Potential user-assisted code execution in “Copy as cURL”
+    command
+  * CVE-2025-11714 (bmo#1973699, bmo#1989945, bmo#1990970,
+    bmo#1991040, bmo#1992113)
+    Memory safety bugs fixed in Firefox ESR 115.29, Firefox ESR
+    140.4, Thunderbird ESR 140.4, Firefox 144 and Thunderbird 144
+  * CVE-2025-11715 (bmo#1983838, bmo#1987624, bmo#1988244,
+    bmo#1988912, bmo#1989734, bmo#1990085, bmo#1991899)
+    Memory safety bugs fixed in Firefox ESR 140.4, Thunderbird
+    ESR 140.4, Firefox 144 and Thunderbird 144
+
+-------------------------------------------------------------------
 Tue Sep 23 07:21:52 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Firefox Extended Support Release 140.3.1 ESR
