@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct 13 20:02:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.3:
+  + Remote Controller:
+    - Add additional getters for browse/focus modes.
+    - Fix integration test failure resulting from differences in
+      Wayland versus X11 with respect to MouseReview.
+
+-------------------------------------------------------------------
+Mon Oct 13 09:43:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2:
+  + Web:
+    - Ensure sticky focus mode sticks when returning to document
+      content.
+    - Try to make deeply nested layout tables less time-consuming.
+    - Fix false positive identifying grammar errors as spelling.
+    - Fix punctuation presention of plain text documents viewed in
+      Firefox.
+  + General:
+    - Decrease likelihood that systemd will kill Orca during event
+      floods.
+    - Add Remote Controller support for more settings and commands.
+    - Improve presentation (to the extent possible) of Budgie
+      switcher and panel.
+    - Fix regressions in braille generation and cursor routing.
+    - Fix presentation of GTK4 switches.
+    - Fix chattiness in GTK4 combo boxes.
+    - Improve performance when generating descendants, and ignore
+      anything with the labelled-by relation.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 29 00:04:15 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add python3-dasbus to Requires. It is a run-time requirement.
