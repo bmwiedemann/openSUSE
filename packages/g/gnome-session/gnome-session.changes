@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 11 04:12:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Updated documentation to reflect GNOME 49 changes
+  + Fixed bug where gnome-session would fail to reap the processes
+    of the apps it launched, leaving around zombie processes
+  + Fixed option parsing regression in gnome-session-inhibit
+  + Reworked logic to find DBUS_SESSION_BUS_ADDRESS, which should
+    make gnome-session work better in non-systemd environments (and
+    unblock some cleanups in systemd, potentially)
+  + Added null check before using $XDG_SESSION_TYPE environment
+    variable
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  6 11:21:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Consolidate all sub-packages into main package, we no longer have
+  use for the split as only wayland session is supported going
+  forward. Add Obsoletes and Provides for gnome-session-core and
+  gnome-session-wayland to ensure smooth upgrades.
+
+-------------------------------------------------------------------
 Tue Sep 16 06:15:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:

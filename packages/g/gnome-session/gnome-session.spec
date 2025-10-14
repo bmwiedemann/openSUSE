@@ -19,13 +19,12 @@
 %define basever 49
 
 Name:           gnome-session
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-#Source0:        https://download.gnome.org/sources/gnome-session/44/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.zst
 Source1:        gnome
 Source2:        gnome.desktop
@@ -52,42 +51,28 @@ BuildRequires:  pkgconfig(systemd) >= 242
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xtrans)
-Requires:       %{name}-core = %{version}
-Requires:       gnome-session-wayland
+Requires:       /usr/bin/dbus-launch
+Requires:       gnome-settings-daemon
+Requires:       gsettings-desktop-schemas >= 0.1.7
+Requires:       hicolor-icon-theme
+Requires:       xorg-x11-server-wayland
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # gnome-session-default-session merged into gnome-session; the alternative - fallback-session - disappeared
 # with GNOME 3.8
 Provides:       %{name}-default-session = %{version}
 Obsoletes:      %{name}-default-session < %{version}
 # With the change to GNOME 49, the XSession is no longer a thing
 Obsoletes:      gnome-session-xsession < 49
+# With the change to GNOME 49, core and wayland session are merged into the main package
+Obsoletes:      gnome-session-core    < 49.1
+Provides:       gnome-session-core    = %{version}
+Obsoletes:      gnome-session-wayland < 49.1
+Provides:       gnome-session-wayland = %{version}
 
 %description
 This package provides the basic session tools, like session management
 functionality, for the GNOME Desktop.
-
-%package wayland
-Summary:        Wayland support for the GNOME Session Manager
-Group:          System/GUI/GNOME
-Requires:       %{name} = %{version}
-Requires:       gnome-settings-daemon
-Requires:       xorg-x11-server-wayland
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-
-%description wayland
-This package contains the definition of the default GNOME session on Wayland.
-
-%package core
-Summary:        Minimal version of the GNOME Session Manager
-Group:          System/GUI/GNOME
-Requires:       /usr/bin/dbus-launch
-Requires:       gsettings-desktop-schemas >= 0.1.7
-Requires:       hicolor-icon-theme
-
-%description core
-This package contains a minimal version of gnome-session, that can be
-used for specific cases. The gnome-session package is needed for a fully
-functional GNOME desktop.
 
 %lang_package
 
@@ -115,19 +100,19 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-waylandsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_datadir}/wayland-sessions/default.desktop
 
-%files
-%{_bindir}/gnome
-%{_datadir}/gnome-session/sessions/gnome.session
-
-%post wayland
+%post
 %{_sbindir}/update-alternatives --install %{_datadir}/wayland-sessions/default.desktop \
   default-waylandsession.desktop %{_datadir}/wayland-sessions/gnome.desktop 25
 
-%postun wayland
+%postun
 [ -f %{_datadir}/wayland-sessions/gnome.desktop ] || %{_sbindir}/update-alternatives \
   --remove default-waylandsession.desktop %{_datadir}/wayland-sessions/gnome.desktop
 
-%files wayland
+%files
+%license COPYING
+%doc NEWS README.md
+%{_bindir}/gnome
+%{_datadir}/gnome-session/sessions/gnome.session
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/default.desktop
 %{_datadir}/wayland-sessions/gnome.desktop
@@ -135,10 +120,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
 # Disabled as wayland is now the default session again.
 #{_datadir}/wayland-sessions/gnome-wayland.desktop
-
-%files core
-%license COPYING
-%doc NEWS README.md
 %{_bindir}/gnome-session
 %{_bindir}/gnome-session-inhibit
 %{_bindir}/gnome-session-quit
