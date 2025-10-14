@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  9 14:33:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.41.1
+  * Suppress deprecation warning for ADC (#1815)
+- from version 2.41.0
+  * Add support for cachetools 6.0 (#1773)
+  * Add trust boundary support for service accounts and impersonation. (#1778)
+  * Deprecating load_credentials_from_dict (58b66ec)
+  * Fix type error in credentials.py for python 3.7 and 3.8 (#1805)
+  * Update user guide to include x509 feature. (#1802)
+- Refresh patches for new version
+  * python-google-auth-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Jun 13 15:25:25 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.40.3
+Version:        2.41.1
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
