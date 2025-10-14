@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 11 13:28:27 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 21.1.1.
+  * Support for SPV_INTEL_shader_atomic_bfloat16 extension.
+  * Implement SPV_INTEL_bfloat16_arithmetic.
+  * Fix BFloat16 mangling.
+  * Fix error propagation in parseSPIRV.
+- Remove Add-support-for-SPV_INTEL_function_variants.patch: the
+  required functionality is now available in spirv-headers.
+
+-------------------------------------------------------------------
 Mon Sep 22 15:43:12 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - reverted previous change; spirv-llvm-translator 21 cannot be built

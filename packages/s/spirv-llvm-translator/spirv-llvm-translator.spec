@@ -23,7 +23,7 @@
 
 %define sover   21
 Name:           spirv-llvm-translator
-Version:        21.1.0
+Version:        21.1.1
 Release:        0
 Summary:        LLVM/SPIR-V Bi-Directional Translator library
 License:        BSD-3-Clause
@@ -31,9 +31,6 @@ Group:          System/Libraries
 URL:            https://github.com/KhronosGroup/SPIRV-LLVM-Translator
 Source:         https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v%{version}.tar.gz#/SPIRV-LLVM-Translator-%{version}.tar.gz
 Source101:      %{name}.rpmlintrc
-# Temporarily revert upstream commit because the counterpart in spirv-headers
-# (https://github.com/KhronosGroup/SPIRV-Headers/pull/532) is not released yet.
-Patch0:         https://github.com/KhronosGroup/SPIRV-LLVM-Translator/commit/aaa23785dcbd7cabebad860edd9a3aebfc6bbb41.patch#/Add-support-for-SPV_INTEL_function_variants.patch
 BuildRequires:  cmake >= 3.3
 BuildRequires:  gcc%{?gcc_version} >= 9
 BuildRequires:  gcc%{?gcc_version}-c++ >= 9
@@ -69,7 +66,6 @@ the LLVM/SPIR-V Bi-Directional Translator library.
 
 %prep
 %setup -q -n SPIRV-LLVM-Translator-%{version}
-%patch -P 0 -p 1 -R
 
 %build
 %cmake \
