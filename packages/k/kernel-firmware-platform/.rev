@@ -151,4 +151,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * powervr: update firmware for Imagination Technologies BXS-4-64 GPU</comment>
     <requestid>1307946</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ed6a970c88eee8ff324f8b510744f76c</srcmd5>
+    <version>20251004</version>
+    <time>1760457993</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251004 (git commit 757854f42d83):
+  * WHENCE: rename LICENCE.go7007-s2250 to LICENCE.sensoray</comment>
+    <requestid>1311176</requestid>
+  </revision>
 </revisionlist>
