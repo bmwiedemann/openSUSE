@@ -17,7 +17,7 @@
 
 
 Name:           gnome-characters
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        Character Map
 License:        GPL-3.0-or-later
