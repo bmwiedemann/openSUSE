@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 13 14:15:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add 0001-match-coverage-7.10.7-warnings.patch to fix tests
+
+-------------------------------------------------------------------
 Fri Sep 19 08:43:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Skip tests failing with Python 3.14

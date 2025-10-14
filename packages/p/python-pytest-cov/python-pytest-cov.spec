@@ -32,6 +32,8 @@ Summary:        Pytest plugin for coverage reporting
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-cov
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest_cov-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pytest-dev/pytest-cov/pull/722 match coverage 7.10.7 warnings
+Patch0:         0001-match-coverage-7.10.7-warnings.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}

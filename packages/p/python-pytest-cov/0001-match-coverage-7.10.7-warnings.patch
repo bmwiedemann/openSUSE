@@ -1,0 +1,27 @@
+From b4fb003e3b6634cfc0db07aaf1e29cf6a94f037a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mark=C3=A9ta=20Machov=C3=A1?= <meggy.calabkova@gmail.com>
+Date: Mon, 13 Oct 2025 16:12:57 +0200
+Subject: [PATCH] match coverage 7.10.7 warnings
+
+---
+ tests/test_pytest_cov.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_pytest_cov.py b/tests/test_pytest_cov.py
+index 6ca09fe..c71d776 100644
+--- a/tests/test_pytest_cov.py
++++ b/tests/test_pytest_cov.py
+@@ -1435,8 +1435,8 @@ def test_filterwarnings_error(testdir):
+     result.stdout.fnmatch_lines(['* 1 passed *'])
+     result.stderr.fnmatch_lines(
+         [
+-            '* (module-not-measured)',
+-            '* (no-data-collected)',
++            '* (module-not-measured)*',
++            '* (no-data-collected)*',
+             '* CovReportWarning: Failed to generate report: No data to report.',
+         ]
+     )
+-- 
+2.51.0
+
