@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 10 23:53:46 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.12.0:
+  - Bump actions/checkout from 4 to 5 by @dependabot[bot] in #382
+  - Clang 19 by @tatsuhiro-t in #383
+  - Bump actions/stale from 9 to 10 by @dependabot[bot] in #384
+  - Bump actions/github-script from 7 to 8 by @dependabot[bot] in
+    #385
+  - Delete a stream that is blocked by QPACK on QUIC stream closure
+    by @tatsuhiro-t in #386
+  - cmake: do not require C++ for lib-only builds by @vszakats in
+    #387
+  - Introduce time by @tatsuhiro-t in #388
+  - Add glitch protection by @tatsuhiro-t in #389
+  - Use nghttp3_conn_read_stream2 solely by @tatsuhiro-t in #390
+  - tests: Fix type of padding for nghttp3_settings_entry by
+    @tatsuhiro-t in #391
+  - Remove nghttp3_settings.initial_ts by @tatsuhiro-t in #392
+  - Fix macro comment by @tatsuhiro-t in #393
+
+-------------------------------------------------------------------
 Tue Jul 29 10:31:07 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.11.0:
