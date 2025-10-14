@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72afedac69ef7c4624cc76ad242abc34</srcmd5>
+    <version>25.8.12</version>
+    <time>1760458133</time>
+    <user>dimstar_suse</user>
+    <comment>Plugins for molecule (a package that already is in Factory) which allow running tests in different container infrastructures</comment>
+    <requestid>1311227</requestid>
+  </revision>
+</revisionlist>

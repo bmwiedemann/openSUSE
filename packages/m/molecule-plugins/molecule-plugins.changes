@@ -1,0 +1,242 @@
+-------------------------------------------------------------------
+Thu Aug 21 05:45:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.8.12 (no releases between 23.7.0 and this, as this is
+  now using CalVer):
+  * Bugfixes
+    - Fix ansible-core 2.19 issues (#324) @felixfontein
+  * Maintenance
+    - Fix CI with newest molecule (#303) @apatard
+    - Calver versioning vYY.MM.DD.
+
+-------------------------------------------------------------------
+Thu Jan 23 19:29:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 23.7.0:
+  * Enhancements
+    - Openstack add public IP options (#263) @vydrazde
+    - add box_architecture config to parameters (#284) @karcaw
+  * Bugfixes
+    - EC2: Change logic of deleting resources (#279) @klaphi
+    - [Molecule v25.1.0] Replace util.run_command with
+      app.run_command (#294) @hswong3i
+    - Fix deprecated xfreerdp option for winrm targets of EC2
+      plugin (#292) @Thomas-McKanna
+    - Update the community.docker collection (#257) @mcdonnnj
+    - podman: default the hostname to the name of the platform
+      (#264) @evgeni
+  * Other
+    - bug: missing until for retry in gce plugin (#288) @cnfrancis
+    - Vagrant: Reducing whitespace in Vagrantfile (#289) @dinadins
+
+-------------------------------------------------------------------
+Thu Dec 19 14:01:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 23.6.0:
+  * Enhancements
+    - GCE: Added network tags support (#272) @dfisiuk
+    - implement reset for podman driver (#269) @guppy0130
+  * Bugfixes
+    - Add retry for gce plugin when waiting for SSH (#270)
+      @cnfrancis
+    - Vagrant: test_vagrant_root[box_url] fails due to missing box
+      (#274) (#275) @dinadins
+    - docker: allow import docker in reset to fail (#268)
+      @guppy0130
+    - lint and update action paths (#258) @konstruktoid
+    - fix #239 , use python-style templating instead of Jinja in
+      the plugins login_cmd_template (#240) @danielpodwysocki
+    - Unbreak CI (#260) @apatard
+    - gce: add missing deps for GCE driver (#247) @loozhengyuan
+    - Enforce pkcs1 for ec2 keys (#161) @sspans-sbp
+    - docker: support cache_from in create playbook (#252) @rmuir
+    - podman: add podman executable on build image task (#254)
+      @ghoudmon
+    - Don't print registry password in loop label (#255) @sthiriet
+  * What's Changed
+    - Don't print registry password in loop label by @sthiriet in
+      #255
+    - podman: add podman executable on build image task by
+      @ghoudmon in #254
+    - docker: support cache_from in create playbook by @rmuir in
+      #252
+    - Enforce pkcs1 for ec2 keys by @sspans-sbp in #161
+    - gce: add missing deps for GCE driver by @loozhengyuan in #247
+    - Unbreak CI by @apatard in #260
+    - fix #239 , use python-style templating instead of Jinja in
+      the plugins login_cmd_template by @danielpodwysocki in #240
+    - implement reset for podman driver by @guppy0130 in #269
+    - lint and update action paths by @konstruktoid in #258
+    - docker: allow import docker in reset to fail by @guppy0130 in
+      #268
+    - Vagrant: test_vagrant_root[box_url] fails due to missing box
+      (#274) by @dinadins in #275
+    - GCE: Added network tags support by @dfisiuk in #272
+    - Add retry for gce plugin when waiting for SSH by @cnfrancis
+      in #270
+
+-------------------------------------------------------------------
+Mon May 20 08:10:27 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix builds by remove dependency pytest-ansible and ignoring 4
+  test failures
+
+-------------------------------------------------------------------
+Thu Feb  8 18:02:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 23.5.3:
+  * Bugfixes
+    - update docker collection (#217) @zhan9san
+    - Use v6-alpha1 molecule version for tests by @audgirka in #180
+    - Prevent empty destroy from deleting other EC2 instances by
+      @Thomas-McKanna in #170
+    - fix duplicate test names by @alicekaerast in #197
+    - pass vpc_subnet_id explicitly to avoid amazon.aws error by
+      @danielpodwysocki in #199
+    - Fixes destroy playbook failure if vpc lookup is required by
+      @tkimball83 in #184
+    - podman: remove ansible_async_dir setting logic by
+      @grcancelliere in #182
+    - Add Python 3.12 to test matrix by @cristianonicolai in #207
+    - Remove dependency to molecule.test by @cristianonicolai in
+      #206
+    - Disable registry login when registry.url is empty by @dometto
+      in #214
+    - Support the shm_size docker configuration option by
+      @zleinweber in #216
+    - Fixes podman always remove existing containers by @juanvalino
+      in #187
+    - Handle Docker errors correctly by @alicekaerast in #196
+    - Plugin openstack (2) by @juanlufont in #219
+
+-------------------------------------------------------------------
+Mon Jan 15 20:45:24 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 23.5.2:
+  * Use v6-alpha1 molecule version for tests by @ajinkyau in #180
+  * Prevent empty destroy from deleting other EC2 instances by
+    @Thomas-McKanna in #170
+  * fix duplicate test names by @alicekaerast in #197
+  * pass vpc_subnet_id explicitly to avoid amazon.aws error by
+    @danielpodwysocki in #199
+  * Bump actions/checkout from 3 to 4 by @dependabot in #189
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #185
+  * docker/create.yml: create network before building local image
+    by @pbjhelmert in #195
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #201
+  * Fixes destroy playbook failure if vpc lookup is required by
+    @tkimball83 in #184
+  * podman: remove ansible_async_dir setting logic by
+    @grcancelliere in #182
+  * Fix lint execution on osx and ignore generate roles files by
+    @cristianonicolai in #205
+  * Add Python 3.12 to test matrix by @cristianonicolai in #207
+  * Remove dependency to molecule.test by @cristianonicolai in #206
+  * Disable registry login when registry.url is empty by @dometto
+    in #214
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #210
+  * Support the shm_size docker configuration option by @zleinweber
+    in #216
+  * Fixes podman always remove existing containers by @juanvalino
+    in #187
+  * Handle Docker errors correctly by @alicekaerast in #196
+  * Bump actions/setup-python from 4 to 5 by @dependabot in #221
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #218
+  * Plugin openstack (2) by @juanlufont in #219
+- remove patch fix_duplicate_test_names.patch
+
+-------------------------------------------------------------------
+Mon Nov 13 07:11:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add patch fix_duplicate_test_names.patch based on this commit:
+  https://github.com/ansible-community/molecule-plugins/commit/bae14d88c4ee8baf9736df6a21b2d414235683ff
+  to fix the "duplicate test names" error
+
+-------------------------------------------------------------------
+Thu Sep  7 10:52:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire python-pytest-ansible package to fix failing tests
+
+-------------------------------------------------------------------
+Tue Aug  8 14:16:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 23.5.0:
+  * Minor Changes
+    - podman: change ansible_async_dir only when $HOME is redefined
+      (#173) @grcancelliere
+    - Fix ansible-lint errors (#169) @apatard
+    - Add support for vmware_esxi plugin (#163) @Tualua
+    - Allow for setting EC2 instance profile (#164) @Thomas-McKanna
+    - enhancement: Including files in source distributions with
+      MANIFEST.in (#156) @hswong3i
+    - src/molecule_plugins/vagrant/modules/vagrant.py: Get rid of
+      molecule dependency (#142) @apatard
+    - feat: Add runtime entry on docker create playbook (#154)
+      @pjrm
+    - Enhancement: Generate cookie cutter templates and apply
+      linting on them (#123) @wadhah101
+    - Update driver.py documentation according to new plugin name
+      (#149) @Tcharl
+  * Bugfixes
+    - Revert "Update tests to use v6-alpha1 molecule version"
+      (#178) @ajinkyau
+    - Update tests to use v6-alpha1 molecule version (#177)
+      @ajinkyau
+    - enhancement: add fqcn to cookicutter files of ec2, containers
+      and docker (#168) @bernd-mueller-1
+    - src/molecule_plugins/vagrant/modules/vagrant.py: Get rid of
+      molecule dependency (#142) @apatard
+    - lint tests (#159) @konstruktoid
+    - Add additional "safe" filters to entries in Vagrantfile
+      (#153) @samiam
+    - fix: Ensure SSH wait polls proper async variable in ec2
+      create (#147) @isuftin
+  * Deprecations
+    - deprecated(azure): replace VM type (#151) @wadhah101
+
+-------------------------------------------------------------------
+Thu May 18 08:23:25 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 23.4.1:
+  * Bugfixes
+    - Add safe filter for raw args (vagrant) (#141) @apatard
+    - Adding python-vagrant as dep to vagrant plugin (#133)
+      @carlosmmatos
+- update to 23.4.0:
+  * Minor Changes
+    - Require molecule v5 or newer (#130) @ssbarnea
+    - Require py39 or newer (#129) @ssbarnea
+    - Docker playbooks are also running when tags are set (#120)
+      @sparsick
+    - enhancement: Add pacman support to vagrant plugin (#117)
+      @Yethal
+    - feature(Docker): Add support for platform parameter (#95)
+      @dankow
+    - Make selinux an optional extra (#89) @ssbarnea
+  * Bugfixes
+    - Install rsync as dependency (#85) @truestory1
+    - enhancement: update azure cookie cutter template to support a
+      more recent ansible syntax (#105) @wadhah101
+    - Fix race condition in obtaining the public IP for ec2 (#43)
+      (#70) @danielpodwysocki
+    - Make selinux an optional extra (#89) @ssbarnea
+    - install python3 only when ansible_system == Linux (#110)
+      @konstruktoid
+    - README.md: Update plugin list (#91) @apatard
+
+-------------------------------------------------------------------
+Tue May 16 09:19:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Mon May  8 13:45:32 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add macro definitions to allow building for SLES15 with
+  python3.11 instead of python3
+
+-------------------------------------------------------------------
+Wed Feb  1 18:36:11 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Create initial package with version 23.0.0.
