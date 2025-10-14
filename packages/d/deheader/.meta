@@ -1,0 +1,8 @@
+<package name="deheader" project="openSUSE:Factory">
+  <title>Find and optionally remove unneeded includes in C or C++ sourcefiles</title>
+  <description>deheader analyzes C and C++ files to determine which header inclusions can be
+removed while still allowing them to compile. This may result in substantial
+improvements in compilation time, especially on large C++ projects; it also
+sometimes exposes dependencies and cohesions of which developers were unaware.</description>
+  <url>http://www.catb.org/~esr/deheader/</url>
+</package>
