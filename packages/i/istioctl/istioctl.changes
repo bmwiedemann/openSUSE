@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 14 05:00:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.27.2:
+  https://istio.io/latest/news/releases/1.27.x/announcing-1.27.2/
+  * Changes
+    - Removed the istioctl installation dependency between pilot and
+      CNI. CNI installation is no longer dependent on pilot being
+      installed first. If the istio-cni configuration exists before
+      installation (which can be the case when using an istio-owned
+      CNI config), pilot installation will not fail while waiting for
+      CNI readiness since CNI installation is no longer dependent on
+      pilot. (Issue #57600)
+
+-------------------------------------------------------------------
 Thu Sep 18 13:20:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.27.1:
