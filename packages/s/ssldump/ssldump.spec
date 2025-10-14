@@ -32,7 +32,7 @@ BuildRequires:  ninja
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(json-c)
-%if 0%{?suse_version} > 1320 || (0%{?is_opensuse} && 0%{?leap_version} == 420300)
+%if 0%{?suse_version} > 1320
 BuildRequires:  libpcap-devel-static
 %else
 BuildRequires:  libpcap-devel
