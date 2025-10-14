@@ -52,7 +52,7 @@ Thu Sep 18 19:11:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
     is enabled. Use extra working buffer in PredictorEncodeRow(). (fixes issue #5)
   * tif_getimage.c: update some integer overflow checks (fixes issue #79)
   * tif_getimage.c: Fix buffer underflow crash for less raster rows at
-    TIFFReadRGBAImageOriented() (fixes issue #704)
+    TIFFReadRGBAImageOriented() (fixes issue #704, bsc#1250413, CVE-2025-9900)
   * TIFFReadRGBAImage(): several fixes to avoid buffer overflows.
   * Correct passing arguments to TIFFCvtIEEEFloatToNative() and TIFFCvtIEEEDoubleToNative()
     if HAVE_IEEEFP is not defined. (fixes issue #699)
