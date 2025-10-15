@@ -1,7 +1,7 @@
 #
 # spec file for package python-referencing
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-referencing%{psuffix}
-Version:        0.36.2
+Version:        0.37.0
 Release:        0
 Summary:        JSON Referencing + Python
 License:        MIT
