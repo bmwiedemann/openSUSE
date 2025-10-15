@@ -1,7 +1,7 @@
 #
 # spec file for package python-beautifulsoup4
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-beautifulsoup4
-Version:        4.13.5
+Version:        4.14.2
 Release:        0
 Summary:        HTML/XML Parser for Quick-Turnaround Applications Like Screen-Scraping
 License:        MIT

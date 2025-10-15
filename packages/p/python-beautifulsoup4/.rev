@@ -630,4 +630,35 @@ Build and package documentation (forwarded request 176044 from TheBlackCat)</com
     <comment></comment>
     <requestid>1303567</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a041807784761b72541f2d7f98ab67a3</srcmd5>
+    <version>4.14.2</version>
+    <time>1760525074</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.14.2:
+  * Making ResultSet inherit from MutableSequence still resulted
+    in too many breaking changes in users of the library,
+    so I reverted the ResultSet code back to where it was in 4.13.5
+    and added tests of all known breaking behavior. [bug=2125906]
+  * Made ResultSet inherit from MutableSequence instead of
+    Sequence, since lots of existing code treats ResultSet as a
+    mutable list.
+  * This version adds function overloading to the find_* methods
+    to make it easier to write type-safe Python.
+  * The typing for find_parent() and find_parents() was improved
+    without any overloading. Casts should never be necessary,
+    since those methods only ever return Tag and ResultSet[Tag],
+    respectively.
+  * ResultSet now inherits from Sequence. This should make it
+    easier to incorporate ResultSet objects into your type system
+    without needing to handle ResultSet specially.
+  * Fixed an unhandled exception when creating the string
+    representation of a decomposed element.
+  * The default value for the 'attrs' attribute in find* methods
+    is now None, not the empty dictionary. This should have no visible
+    effect on anything.
+
+    this release through its long beta process.</comment>
+    <requestid>1311186</requestid>
+  </revision>
 </revisionlist>

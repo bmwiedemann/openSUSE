@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 13 09:11:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.14.2:
+  * Making ResultSet inherit from MutableSequence still resulted
+    in too many breaking changes in users of the library,
+    so I reverted the ResultSet code back to where it was in 4.13.5
+    and added tests of all known breaking behavior. [bug=2125906]
+  * Made ResultSet inherit from MutableSequence instead of
+    Sequence, since lots of existing code treats ResultSet as a
+    mutable list.
+  * This version adds function overloading to the find_* methods
+    to make it easier to write type-safe Python.
+  * The typing for find_parent() and find_parents() was improved
+    without any overloading. Casts should never be necessary,
+    since those methods only ever return Tag and ResultSet[Tag],
+    respectively.
+  * ResultSet now inherits from Sequence. This should make it
+    easier to incorporate ResultSet objects into your type system
+    without needing to handle ResultSet specially.
+  * Fixed an unhandled exception when creating the string
+    representation of a decomposed element.
+  * The default value for the 'attrs' attribute in find* methods
+    is now None, not the empty dictionary. This should have no visible
+    effect on anything.
+
+-------------------------------------------------------------------
 Wed Sep 10 07:16:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.13.5
@@ -60,17 +86,17 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
     excludes every item in the parse tree. This is used internally
     in situations where the provided filters are logically
     inconsistent or match a value against the null set.
-  
+
     Without this, it's not always possible to distinguish between a
     SoupStrainer that excludes everything and one that excludes
     nothing.
-  
+
     This fixes a bug where calls to find_* methods with no
     arguments returned None, instead of the first item out of the
     iterator. [bug=2097333]
-  
+
     Things added to the API to support this:
-  
+
     - The ElementFilter.includes_everything property
     - The MatchRule.exclude_everything member
     - The _known_rules argument to ElementFilter.match. This is an
@@ -93,9 +119,9 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
     code, which I've fixed, but the result is a larger-than-usual
     number of deprecations and changes that may break backwards
     compatibility.
-    
+
     Chris Papademetrious deserves a special thanks for his work on
-    this release through its long beta process.    
+    this release through its long beta process.
   ## Deprecation notices
   * These things now give DeprecationWarnings when you try to use
     them, and are scheduled to be removed in Beautiful Soup 4.15.0.
@@ -104,7 +130,7 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
     deprecated for a very long time, but they didn't issue
     DeprecationWarning when you tried to use them. Now they do, and
     they're all going away soon.
-  
+
     This mainly refers to methods and attributes with camelCase
     names, for example: renderContents, replaceWith,
     replaceWithChildren, findAll, findAllNext, findAllPrevious,
@@ -117,7 +143,7 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
     nextSiblingGenerator, previousGenerator,
     previousSiblingGenerator, recursiveChildGenerator, and
     parentGenerator.
-  
+
     This also includes the BeautifulStoneSoup class.
   * The SAXTreeBuilder class, which was never officially supported
     or tested.
@@ -150,36 +176,36 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
     that if you set an attribute value to a number, it will be
     converted to a string immediately, rather than being converted
     when you output the document. [bug=2065525]
-  
+
     More importantly for backwards compatibility, setting an HTML
     attribute value to True will set the attribute's value to the
     appropriate string per the HTML spec. Setting an attribute
     value to False or None will remove the attribute value from the
     tag altogether, rather than (effectively, as before) setting
     the value to the string "False" or the string "None".
-  
+
     This means that some programs that modify documents will
     generate different output than they would in earlier versions
     of Beautiful Soup, but the new documents are more likely to
     represent the intent behind the modifications.
-  
+
     To give a specific example, if you have code that looks
     something like this:
-  
+
   	checkbox1['checked'] = True checkbox2['checked'] = False
-  
+
     Then a document that used to look like this (with most browsers
     treating both boxes as checked):
-  
+
   	<input type="checkbox" checked="True"/> <input type="checkbox"
           checked="False"/>
-  
+
     Will now look like this (with browsers treating only the first
     box as checked):
-  
+
   	<input type="checkbox" checked="checked"/> <input
   	type="checkbox"/>
-  
+
     You can get the old behavior back by instantiating a
     TreeBuilder with `attribute_dict_class=dict`, or you can
     customize how Beautiful Soup treates attribute values by
@@ -217,15 +243,15 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
     This is the sort of change that might break your unit test
     suite, but the resulting markup will be much more readable and
     more HTML5-ish.
-  
+
     To quickly get the old behavior back, change code like this:
-  
+
       tag.encode(formatter='html5')
-  
+
     to this:
-  
+
       tag.encode(formatter='html5-4.12')
-  
+
     In the future, the 'html5' formatter may be become the default
     HTML formatter, which will change Beautiful Soup's default
     output. This will break a lot of test suites so it's not going
@@ -235,22 +261,22 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
     sometimes an Optional[int], and sometimes they were
     Optional[Tag], the result of searching for a child tag called
     <sourceline> or <sourcepos>. [bug=2065904]
-  
+
     If your code does search for a tag called <sourceline> or
     <sourcepos>, it may stop finding that tag when you upgrade to
     Beautiful Soup 4.13. If this happens, you'll need to replace
     code that treats "sourceline" or "sourcepos" as tag names:
-  
+
        tag.sourceline
-  
+
     with code that explicitly calls the find() method:
-  
+
        tag.find("sourceline").name
-  
+
     Making the behavior of sourceline and sourcepos consistent has
     the side effect of fixing a major performance problem when a
     Tag is copied.
-  
+
     With this change, the store_line_numbers argument to the
     BeautifulSoup constructor becomes much less useful, and its use
     is now discouraged, thought I'm not deprecating it yet. Please
@@ -269,7 +295,7 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
     html5lib's test suite, and Beautiful Soup isn't integrated into
     that test suite, so this code was long since unused and
     untested.
-  
+
     These methods are _not_ deprecated, since they are methods
     defined by html5lib. They may one day have real
     implementations, as part of a future effort to integrate
@@ -317,14 +343,14 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
   * Defined a number of new iterators which are the same as
     existing iterators, but which yield the element itself before
     beginning to traverse the tree. [bug=2052936] [bug=2067634]
-  
+
     - PageElement.self_and_parents
     - PageElement.self_and_descendants
     - PageElement.self_and_next_elements
     - PageElement.self_and_next_siblings
     - PageElement.self_and_previous_elements
     - PageElement.self_and_previous_siblings
-  
+
     self_and_parents yields the element you call it on and then all
     of its parents. self_and_next_element yields the element you
     call it on and then every element parsed afterwards; and so on.
@@ -333,7 +359,7 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
     a mixed list of Tag and NavigableString objects. [bug=2044794]
   * Defined a new method, Tag.copy_self(), which creates a copy of
     a Tag with the same attributes but no contents. [bug=2065120]
-  
+
     Note that this method used to be a private method named
     _clone(). The _clone() method has been removed, so if you were
     using it, change your code to call copy_self() instead.
@@ -354,12 +380,12 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
     notices something unusual but not guaranteed to be wrong, like
     markup that looks like a URL (MarkupResemblesLocatorWarning) or
     XML being run through an HTML parser (XMLParsedAsHTMLWarning).
-  
+
     The text of these warnings has been revamped to explain in more
     detail what is going on, how to check if you've made a mistake,
     and how to make the warning go away if you are acting
     deliberately.
-  
+
     If these warnings are interfering with your workflow, or simply
     annoying you, you can filter all of them by filtering
     UnusualUsageWarning, without worrying about losing the warnings
@@ -422,14 +448,14 @@ Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
     (e.g. .descendants, which powers the find* methods) should now
     work correctly in those cases, or at least not raise
     exceptions.
-  
+
     As part of this work, I changed when the list comprehension
     determines the next element. Previously it was done after the
     yield statement; now it's done before the yield statement. This
     lets you remove the yielded element in calling code, or modify
     it in a way that would break this calculation, without causing
     an exception.
-  
+
     So if your code relies on modifying the tree in a way that
     'steers' a list comprehension, rather than using the list
     comprension to decide which bits of the tree to modify, it will
