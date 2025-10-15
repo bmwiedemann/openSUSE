@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  6 09:37:42 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to GCC 15 branch head, 15.2.1+git10392
+- Fixes PR110812, Check availability of builtins at expand time
+
+-------------------------------------------------------------------
 Fri Aug 22 13:20:41 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC 15.2 release

@@ -191,4 +191,13 @@ since we bumped libgo SONAME as well for 15</comment>
     the GCC 15.1 release</comment>
     <requestid>1300985</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1e71328fb4d35ce002166dec07349682</srcmd5>
+    <version>15.2.1+git10392</version>
+    <time>1760525119</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GCC 15 branch head, 15.2.1+git10392
+- Fixes PR110812, Check availability of builtins at expand time</comment>
+    <requestid>1311025</requestid>
+  </revision>
 </revisionlist>
