@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 14 18:10:05 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 2.4.127
+  * xf86drm: Trim traling whitespace in xf86drm.h
+  * xf86drm: Fix drmDevicesEqual() for nodes on the faux bus
+  * xf86drm: Drop drmFauxDeviceInfo
+
+-------------------------------------------------------------------
 Thu Oct  9 08:48:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.4.126

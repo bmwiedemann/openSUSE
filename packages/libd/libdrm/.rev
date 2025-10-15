@@ -1913,4 +1913,15 @@ Man pages are disabled for this build, upstream disabled them for this release. 
     <comment></comment>
     <requestid>1310391</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>f8d92ffc05fbca7622a14df46eb4871c</srcmd5>
+    <version>2.4.127</version>
+    <time>1760525102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.127
+  * xf86drm: Trim traling whitespace in xf86drm.h
+  * xf86drm: Fix drmDevicesEqual() for nodes on the faux bus
+  * xf86drm: Drop drmFauxDeviceInfo</comment>
+    <requestid>1311400</requestid>
+  </revision>
 </revisionlist>
