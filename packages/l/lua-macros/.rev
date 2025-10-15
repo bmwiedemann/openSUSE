@@ -95,4 +95,14 @@
     <comment>- Make definition of variables dynamic based on pkgconf output.</comment>
     <requestid>1310405</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>1e37733c183f98863473dabc163d46f7</srcmd5>
+    <version>20210827</version>
+    <time>1760525068</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework Lua version and path macros using RPM Lua blocks.
+
+- Make %{lua_noarchdir} work even without lua-devel installed.</comment>
+    <requestid>1311191</requestid>
+  </revision>
 </revisionlist>

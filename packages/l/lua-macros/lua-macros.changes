@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 11 16:45:06 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Rework Lua version and path macros using RPM Lua blocks.
+
+-------------------------------------------------------------------
+Fri Oct 10 10:56:01 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make %{lua_noarchdir} work even without lua-devel installed.
+
+-------------------------------------------------------------------
 Thu Oct  9 22:44:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Make definition of variables dynamic based on pkgconf output.

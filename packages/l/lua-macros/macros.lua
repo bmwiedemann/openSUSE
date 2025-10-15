@@ -1,14 +1,39 @@
 # RPM macros for Lua
 
 # The major.minor version of Lua
-%lua_version %(lua -e 'print(_VERSION)' | cut -d ' ' -f 2)
-%lua_version_nodots %(lua -e 'print((string.gsub("%{lua_version}", "%.", "")))')
+%lua_version %{lua:
+local f = io.popen("lua -e 'print(_VERSION)'")
+local output = f:read("*a")
+f:close()
+local ver = output:match("Lua (%d%.%d)")
+print(ver)
+}
+%lua_version_nodots %{lua:
+  local ver = rpm.expand("%{lua_version}")
+  local nodots = ver:gsub("%.", "")
+  print(nodots)
+}
 
 # compiled modules should go here
 %lua_archdir %(pkgconf --variable=INSTALL_CMOD lua)
 
 # pure Lua modules should go here
-%lua_noarchdir %(pkgconf --variable=INSTALL_LMOD lua)
+%lua_noarchdir %{lua:
+local output = ""
+local f = io.popen("pkgconf --variable=INSTALL_LMOD lua")
+
+if f ~= nil then
+    output = f:read("*a"):gsub("^%s*(.-)%s*$", "%1")
+    f:close()
+end
+
+if output:len() > 0 then
+    print(output)
+    return
+end
+
+print(rpm.expand("%{_datadir}/lua/%{lua_version}"))
+}
 
 # lua includes folder
 %lua_incdir %(pkgconf --variable=includedir lua)
@@ -33,6 +58,7 @@ print(result)
 %{nil}
 
 # Lua default version
+# This REQUIRES macro %{mod_name} to be defined.
 # -e: Exclude lua prefix
 # -n: Specify name
 %lua_provides(en:) \
