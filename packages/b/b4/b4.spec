@@ -31,6 +31,11 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        https://github.com/mricon/b4/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0001-ez-do-a-patch-id-match-when-pulling-in-trailer-updat.patch
+Patch1:         0001-dig-initial-b4-dig-implementation.patch
+Patch2:         0002-dig-fix-wrong-msgid-output-for-matches.patch
+Patch3:         0003-dig-actually-handle-commitish-strings.patch
+Patch4:         0004-dig-first-round-of-refinement-to-dig.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module dkimpy >= 1.0.5}
 BuildRequires:  %{python_module patatt >= 0.6}

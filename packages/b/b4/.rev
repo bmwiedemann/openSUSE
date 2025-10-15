@@ -627,4 +627,17 @@
   * clean up after git-filter-repo runs in recent git-filter-repo versions</comment>
     <requestid>1308445</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>1a66c4ef99aa70a6b9c75f1417778bde</srcmd5>
+    <version>0.14.3</version>
+    <time>1760525163</time>
+    <user>dimstar_suse</user>
+    <comment>- add dig support
+  * 0001-ez-do-a-patch-id-match-when-pulling-in-trailer-updat.patch
+  * 0001-dig-initial-b4-dig-implementation.patch
+  * 0002-dig-fix-wrong-msgid-output-for-matches.patch
+  * 0003-dig-actually-handle-commitish-strings.patch
+  * 0004-dig-first-round-of-refinement-to-dig.patch</comment>
+    <requestid>1311438</requestid>
+  </revision>
 </revisionlist>

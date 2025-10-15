@@ -1,0 +1,70 @@
+From: Konstantin Ryabitsev <konstantin@linuxfoundation.org>
+Date: Tue, 14 Oct 2025 10:59:17 -0400
+Subject: dig: actually handle commitish strings
+References: dig-support
+Git-repo: https://git.kernel.org/pub/scm/utils/b4/b4.git
+Git-commit: e8937ac7791dfdba5b788ae128588409bb16778c
+Patch-mainline: yes
+
+We claim to handle commitish strings, but we actually don't convert them
+into commits. Parse the objects into actual commitid's before we treat
+them as such.
+
+Suggested-by: Linus Torvalds <torvalds@linuxfoundation.org>
+Link: https://lore.kernel.org/CAHk-=wgNveeyKbMth9d9_vUer4P7=VYArLqqrfHH12WAtth-zQ@mail.gmail.com
+Signed-off-by: Konstantin Ryabitsev <konstantin@linuxfoundation.org>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/b4/command.py |  2 +-
+ src/b4/dig.py     | 10 +++++-----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/b4/command.py b/src/b4/command.py
+index c90705ce9c5e..80a96c365b3e 100644
+--- a/src/b4/command.py
++++ b/src/b4/command.py
+@@ -390,7 +390,7 @@ def setup_parser() -> argparse.ArgumentParser:
+ 
+     # b4 dig
+     sp_dig = subparsers.add_parser('dig', help='Dig into the details of a specific commit')
+-    sp_dig.add_argument('-c', '--commit', dest='commit_id', metavar='COMMITISH',
++    sp_dig.add_argument('-c', '--commitish', dest='commitish', metavar='COMMITISH',
+                         help='Commit-ish object to dig into')
+     sp_dig.set_defaults(func=cmd_dig)
+ 
+diff --git a/src/b4/dig.py b/src/b4/dig.py
+index e5577a2f0a3a..03ca3211c37b 100644
+--- a/src/b4/dig.py
++++ b/src/b4/dig.py
+@@ -25,7 +25,7 @@ try_diff_algos: List[str] = [
+ ]
+ 
+ 
+-def dig_commit(cmdargs: argparse.Namespace) -> None:
++def dig_commitish(cmdargs: argparse.Namespace) -> None:
+     config = b4.get_main_config()
+     cfg_llval = config.get('linkmask', '')
+     if isinstance(cfg_llval, str) and '%s' in cfg_llval:
+@@ -39,9 +39,9 @@ def dig_commit(cmdargs: argparse.Namespace) -> None:
+         sys.exit(1)
+ 
+     # Can we resolve this commit to an object?
+-    commit = b4.git_revparse_obj(cmdargs.commit_id, topdir)
++    commit = b4.git_revparse_obj(f'{cmdargs.commitish}^0', topdir)
+     if not commit:
+-        logger.error('Cannot find a commit matching %s', cmdargs.commit_id)
++        logger.error('Cannot find a commit matching %s', cmdargs.commitish)
+         sys.exit(1)
+ 
+     logger.info('Digging into commit %s', commit)
+@@ -184,5 +184,5 @@ def dig_commit(cmdargs: argparse.Namespace) -> None:
+ 
+ 
+ def main(cmdargs: argparse.Namespace) -> None:
+-    if cmdargs.commit_id:
+-        dig_commit(cmdargs)
++    if cmdargs.commitish:
++        dig_commitish(cmdargs)
+-- 
+2.51.0
+

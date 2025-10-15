@@ -1,0 +1,42 @@
+From: Konstantin Ryabitsev <konstantin@linuxfoundation.org>
+Date: Fri, 10 Oct 2025 16:42:54 -0400
+Subject: dig: fix wrong msgid output for matches
+References: dig-support
+Git-commit: 965071ee174d55969110de4cae739e76a6467ea8
+Patch-mainline: yes
+
+Due to a logical bug, we were always outputting the msgid of the first
+message in the first matching series.
+
+Signed-off-by: Konstantin Ryabitsev <konstantin@linuxfoundation.org>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/b4/dig.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/b4/dig.py b/src/b4/dig.py
+index 8b49b90c8e05..e5577a2f0a3a 100644
+--- a/src/b4/dig.py
++++ b/src/b4/dig.py
+@@ -154,8 +154,8 @@ def dig_commit(cmdargs: argparse.Namespace) -> None:
+     logger.info('---')
+     logger.info('This patch is present in the following series:')
+     logger.info('---')
+-    firstmsg: Optional[b4.LoreMessage] = None
+     for rev in revs:
++        firstmsg: Optional[b4.LoreMessage] = None
+         pref = f'  v{rev}: '
+         lser = lmbx.series[rev]
+         lmsg: Optional[b4.LoreMessage] = None
+@@ -180,7 +180,7 @@ def dig_commit(cmdargs: argparse.Namespace) -> None:
+             # Use the first patch in the series as a fallback
+             lmsg = firstmsg
+         logger.info('%s%s', pref, lmsg.full_subject)
+-        logger.info('%s%s', ' ' * len(pref), linkmask % firstmsg.msgid)
++        logger.info('%s%s', ' ' * len(pref), linkmask % lmsg.msgid)
+ 
+ 
+ def main(cmdargs: argparse.Namespace) -> None:
+-- 
+2.51.0
+

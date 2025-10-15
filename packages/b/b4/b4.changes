@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 14 06:11:17 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- add dig support
+  * 0001-ez-do-a-patch-id-match-when-pulling-in-trailer-updat.patch
+  * 0001-dig-initial-b4-dig-implementation.patch
+  * 0002-dig-fix-wrong-msgid-output-for-matches.patch
+  * 0003-dig-actually-handle-commitish-strings.patch
+  * 0004-dig-first-round-of-refinement-to-dig.patch
+
+-------------------------------------------------------------------
 Wed Oct  1 16:09:50 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.14.3:

@@ -1,0 +1,327 @@
+From: Konstantin Ryabitsev <konstantin@linuxfoundation.org>
+Date: Fri, 10 Oct 2025 16:30:19 -0400
+Subject: dig: initial b4 dig implementation
+References: dig-support
+Git-commit: 16329336c1c8faba853b11238a16249306742505
+Patch-mainline: yes
+
+For now, this only does `b4 dig -c [commitish]` and will do its best to
+figure out which lore message the commit may have come from. We never
+know for sure, so we always list multiple series when the patch exists
+in multiple ones and let the end-user figure out which one they want.
+
+Still requires testing and docs.
+
+Signed-off-by: Konstantin Ryabitsev <konstantin@linuxfoundation.org>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/b4/__init__.py |  39 ++++++++--
+ src/b4/command.py  |  11 +++
+ src/b4/dig.py      | 188 +++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 230 insertions(+), 8 deletions(-)
+ create mode 100644 src/b4/dig.py
+
+diff --git a/src/b4/__init__.py b/src/b4/__init__.py
+index c9ed54c3ca1c..b6eab255103f 100644
+--- a/src/b4/__init__.py
++++ b/src/b4/__init__.py
+@@ -284,13 +284,25 @@ class LoreMailbox:
+                 self.trailer_map[patchid] = list()
+             self.trailer_map[patchid] += fmsgs
+ 
++
++    def get_latest_revision(self) -> Optional[int]:
++        if not len(self.series):
++            return None
++        # Use the latest revision
++        revs = list(self.series.keys())
++        # sort by date of each series.submission_date
++        revs.sort(key=lambda r: self.series[r].submission_date or 0)
++        return revs[-1]
++
++
+     def get_series(self, revision: Optional[int] = None, sloppytrailers: bool = False,
+                    reroll: bool = True, codereview_trailers: bool = True) -> Optional['LoreSeries']:
+         if revision is None:
+             if not len(self.series):
+                 return None
+-            # Use the highest revision
+-            revision = max(self.series.keys())
++            revision = self.get_latest_revision()
++            if revision is None:
++                return None
+         elif revision not in self.series.keys():
+             return None
+ 
+@@ -499,6 +511,7 @@ class LoreSeries:
+     change_id: Optional[str] = None
+     prereq_patch_ids: Optional[List[str]] = None
+     prereq_base_commit: Optional[str] = None
++    _submission_date: Optional[datetime.datetime] = None
+ 
+     def __init__(self, revision: int, expected: int) -> None:
+         self.revision = revision
+@@ -783,8 +796,21 @@ class LoreSeries:
+ 
+         return msgs
+ 
++    @property
++    def submission_date(self) -> Optional[datetime.datetime]:
++        # Find the date of the first patch we have
++        if self._submission_date is not None:
++            return self._submission_date
++        for lmsg in self.patches:
++            if lmsg is None:
++                continue
++            self._submission_date = lmsg.date
++            break
++        return self._submission_date
++
+     def populate_indexes(self):
+         self.indexes = list()
++
+         seenfiles = set()
+         for lmsg in self.patches[1:]:
+             if lmsg is None or not lmsg.blob_indexes:
+@@ -827,12 +853,9 @@ class LoreSeries:
+ 
+     def find_base(self, gitdir: str, branches: Optional[list] = None, maxdays: int = 30) -> Tuple[str, len, len]:
+         # Find the date of the first patch we have
+-        pdate = datetime.datetime.now()
+-        for lmsg in self.patches:
+-            if lmsg is None:
+-                continue
+-            pdate = lmsg.date
+-            break
++        pdate = self.submission_date
++        if not pdate:
++            pdate = datetime.datetime.now()
+ 
+         # Find the latest commit on that date
+         guntil = pdate.strftime('%Y-%m-%d')
+diff --git a/src/b4/command.py b/src/b4/command.py
+index 5d90b4f52b4f..c90705ce9c5e 100644
+--- a/src/b4/command.py
++++ b/src/b4/command.py
+@@ -118,6 +118,11 @@ def cmd_diff(cmdargs):
+     b4.diff.main(cmdargs)
+ 
+ 
++def cmd_dig(cmdargs: argparse.Namespace) -> None:
++    import b4.dig
++    b4.dig.main(cmdargs)
++
++
+ class ConfigOption(argparse.Action):
+     """Action class for storing key=value arguments in a dict."""
+     def __call__(self, parser, namespace, keyval, option_string=None):
+@@ -383,6 +388,12 @@ def setup_parser() -> argparse.ArgumentParser:
+                           help='Submit the token received via verification email')
+     sp_send.set_defaults(func=cmd_send)
+ 
++    # b4 dig
++    sp_dig = subparsers.add_parser('dig', help='Dig into the details of a specific commit')
++    sp_dig.add_argument('-c', '--commit', dest='commit_id', metavar='COMMITISH',
++                        help='Commit-ish object to dig into')
++    sp_dig.set_defaults(func=cmd_dig)
++
+     return parser
+ 
+ 
+diff --git a/src/b4/dig.py b/src/b4/dig.py
+new file mode 100644
+index 000000000000..8b49b90c8e05
+--- /dev/null
++++ b/src/b4/dig.py
+@@ -0,0 +1,188 @@
++#!/usr/bin/env python3
++# -*- coding: utf-8 -*-
++# SPDX-License-Identifier: GPL-2.0-or-later
++# Copyright (C) 2025 by the Linux Foundation
++#
++__author__ = 'Konstantin Ryabitsev <konstantin@linuxfoundation.org>'
++
++import os
++import sys
++import b4
++import argparse
++import email.parser
++
++from email.message import EmailMessage
++from typing import List, Set, Optional
++
++logger = b4.logger
++
++# Supported diff algorithms we will try to match
++try_diff_algos: List[str] = [
++    'myers',
++    'histogram',
++    'patience',
++    'minimal',
++]
++
++
++def dig_commit(cmdargs: argparse.Namespace) -> None:
++    config = b4.get_main_config()
++    cfg_llval = config.get('linkmask', '')
++    if isinstance(cfg_llval, str) and '%s' in cfg_llval:
++        linkmask = cfg_llval
++    else:
++        linkmask = f'{b4.LOREADDR}/%s/'
++    # Are we inside a git repo?
++    topdir = b4.git_get_toplevel()
++    if not topdir:
++        logger.error("Not inside a git repository.")
++        sys.exit(1)
++
++    # Can we resolve this commit to an object?
++    commit = b4.git_revparse_obj(cmdargs.commit_id, topdir)
++    if not commit:
++        logger.error('Cannot find a commit matching %s', cmdargs.commit_id)
++        sys.exit(1)
++
++    logger.info('Digging into commit %s', commit)
++    # Make sure it has exactly one parent (not a merge)
++    ecode, out = b4.git_run_command(
++        topdir, ['show', '--no-patch', '--format=%p', commit],
++    )
++    if ecode > 0:
++        logger.error('Could not get commit info for %s', commit)
++        sys.exit(1)
++    if out.strip().count(' ') != 0:
++        logger.error('Merge commit detected, please specify a single-parent commit.')
++        sys.exit(1)
++
++    # Find commit's author and subject from git
++    ecode, out = b4.git_run_command(
++        topdir, ['show', '--no-patch', '--format=%ae %s', commit],
++    )
++    if ecode > 0:
++        logger.error('Could not get commit info for %s', commit)
++        sys.exit(1)
++    fromeml, csubj = out.strip().split(maxsplit=1)
++    logger.debug('fromeml=%s, csubj=%s', fromeml, csubj)
++    logger.info('Attempting to match by exact patch-id...')
++    showargs = [
++        '--format=email',
++        '--binary',
++        '--encoding=utf-8',
++        '--find-renames',
++    ]
++    # Keep a record so we don't try git-patch-id on identical patches
++    bpatches: Set[bytes] = set()
++    lmbx: Optional[b4.LoreMailbox] = None
++    for algo in try_diff_algos:
++        logger.debug('Trying with diff-algorithm=%s', algo)
++        algoarg = f'--diff-algorithm={algo}'
++        logger.debug('showargs=%s', showargs + [algoarg])
++        ecode, bpatch = b4.git_run_command(
++            topdir, ['show'] + showargs + [algoarg] + [commit],
++            decode=False,
++        )
++        if ecode > 0:
++            logger.error('Could not get a patch out of %s', commit)
++            sys.exit(1)
++        if bpatch in bpatches:
++            logger.debug('Already saw this patch, skipping diff-algorithm=%s', algo)
++            continue
++        bpatches.add(bpatch)
++        gitargs = ['patch-id', '--stable']
++        ecode, out = b4.git_run_command(topdir, gitargs, stdin=bpatch)
++        if ecode > 0 or not len(out.strip()):
++            logger.error('Could not compute patch-id for commit %s', commit)
++            sys.exit(1)
++        patch_id = out.split(maxsplit=1)[0]
++        logger.debug('Patch-id for commit %s is %s', commit, patch_id)
++        logger.info('Trying to find matching series by patch-id %s', patch_id)
++        lmbx = b4.get_series_by_patch_id(patch_id)
++        if lmbx:
++            logger.info('Found matching series by patch-id')
++            break
++
++    if not lmbx:
++        logger.info('Attempting to match by author and subject...')
++        q = '(s:"%s" AND f:"%s")' % (csubj.replace('"', ''), fromeml)
++        msgs = b4.get_pi_search_results(q)
++        if msgs:
++            logger.info('Found %s matching messages', len(msgs))
++            lmbx = b4.LoreMailbox()
++            for msg in msgs:
++                lmbx.add_message(msg)
++        else:
++            logger.error('Could not find anything matching commit %s', commit)
++            # Look at the commit message and find any Link: trailers
++            ecode, out = b4.git_run_command(
++                topdir, ['show', '--no-patch', '--format=%B', commit],
++            )
++            if ecode > 0:
++                logger.error('Could not get commit message for %s', commit)
++                sys.exit(1)
++            trailers, _ = b4.LoreMessage.find_trailers(out)
++            ltrs = [t for t in trailers if t.name.lower() == 'link']
++            if ltrs:
++                logger.info('---')
++                logger.info('Try following these Link trailers:')
++                for ltr in ltrs:
++                    logger.info('  %s', ltr.as_string())
++            sys.exit(1)
++
++    # Grab the latest series and see if we have a change_id
++    revs = list(lmbx.series.keys())
++    revs.sort(key=lambda r: lmbx.series[r].submission_date or 0)
++
++    change_id: Optional[str] = None
++    lser = lmbx.get_series(codereview_trailers=False)
++    for rev in revs:
++        change_id = lmbx.series[rev].change_id
++        if not change_id:
++            continue
++        logger.info('Backfilling any missing series by change-id')
++        logger.debug('change_id=%s', change_id)
++        # Fill in the rest of the series by change_id
++        q = f'nq:"change-id:{change_id}"'
++        q_msgs = b4.get_pi_search_results(q, full_threads=True)
++        if q_msgs:
++            for q_msg in q_msgs:
++                lmbx.add_message(q_msg)
++        break
++
++    logger.debug('Number of series in the mbox: %d', len(lmbx.series))
++    logger.info('---')
++    logger.info('This patch is present in the following series:')
++    logger.info('---')
++    firstmsg: Optional[b4.LoreMessage] = None
++    for rev in revs:
++        pref = f'  v{rev}: '
++        lser = lmbx.series[rev]
++        lmsg: Optional[b4.LoreMessage] = None
++        if lser.has_cover:
++            firstmsg = lser.patches[0]
++        for lmsg in lser.patches[1:]:
++            if lmsg is None:
++                continue
++            if firstmsg is None:
++                firstmsg = lmsg
++            if lmsg.git_patch_id == patch_id:
++                logger.debug('Matched by exact patch-id')
++                break
++            if lmsg.subject == csubj:
++                logger.debug('Matched by subject')
++                break
++
++        if firstmsg is None:
++            logger.error('Internal error: no patches in the series?')
++            sys.exit(1)
++        if lmsg is None:
++            # Use the first patch in the series as a fallback
++            lmsg = firstmsg
++        logger.info('%s%s', pref, lmsg.full_subject)
++        logger.info('%s%s', ' ' * len(pref), linkmask % firstmsg.msgid)
++
++
++def main(cmdargs: argparse.Namespace) -> None:
++    if cmdargs.commit_id:
++        dig_commit(cmdargs)
+-- 
+2.51.0
+
