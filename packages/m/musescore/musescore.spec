@@ -62,6 +62,7 @@ Source2:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General
 Source3:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Readme.md
 Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf3
 Source5:        README.SUSE
+Patch1:         musescore-fix-build-against-qt-6-10.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1560 && 0%{?sle_version} <= 150600
@@ -86,6 +87,7 @@ BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6GuiPrivate)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6NetworkAuth)
@@ -94,6 +96,7 @@ BuildRequires:  cmake(Qt6PrintSupport)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6QuickPrivate)
 BuildRequires:  cmake(Qt6QuickTemplates2)
 BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6ShaderTools)

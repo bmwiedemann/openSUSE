@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 14 23:40:52 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix building against Qt 6.10
+  Uses https://src.fedoraproject.org/rpms/musescore/blob/rawhide/f/musescore-fix-build-against-qt-6-10.patch 
+  Needs BuildRequires for the private libraries:
+  cmake(Qt6GuiPrivate)
+  cmake(Qt6QuickPrivate)
+
+-------------------------------------------------------------------
 Fri Oct 10 15:29:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.6.2:
