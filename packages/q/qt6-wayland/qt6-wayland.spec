@@ -79,11 +79,20 @@ The Qt6 Wayland libraries and tools.
 %package integration
 Summary:        Qt 6 Wayland integration
 # Some plugins and libraries were moved from qt6-wayland to qt6-base
-Provides:       qt6-wayland = 6.9.3
-Obsoletes:      qt6-wayland < 6.9.3
+Conflicts:      qt6-wayland < 6.10.0
 
 %description integration
 Qt 6 Wayland integration plugins.
+
+%package decoration-client-adwaita
+Summary:        GNOME-like client-side decoration plugin
+# Split from qt6-wayland-integration immediately after 6.10.0 release
+# TODO: drop after 6.11 release
+Conflicts: qt6-wayland-integration < %{version}-%{release}
+
+%description  decoration-client-adwaita
+This package provides a client-side decoration plugin implementing GNOME's
+Adwaita style.
 
 %package devel
 Summary:        Qt6 Wayland development meta package
@@ -195,13 +204,13 @@ find %{buildroot}%{_qt6_examplesdir} -name ".gitignore" -delete
 %ldconfig_scriptlets -n libQt6WaylandCompositor6
 %ldconfig_scriptlets -n libQt6WaylandEglCompositorHwIntegration6
 
-# FIXME Rename?
 %files integration
-%dir %{_qt6_pluginsdir}/wayland-decoration-client/
-# FIXME Move and supplements?
-%{_qt6_pluginsdir}/wayland-decoration-client/libadwaita.so
 %{_qt6_pluginsdir}/wayland-graphics-integration-server/
 %{_qt6_pluginsdir}/wayland-shell-integration
+
+%files decoration-client-adwaita
+%dir %{_qt6_pluginsdir}/wayland-decoration-client/
+%{_qt6_pluginsdir}/wayland-decoration-client/libadwaita.so
 
 %files devel
 %doc meta_package

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 14 08:51:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Split the adwaita CSD plugin
+- Change Provides/Obsoletes to Conflicts for qt6-wayland-integration
+
+-------------------------------------------------------------------
 Tue Oct  7 08:53:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0
