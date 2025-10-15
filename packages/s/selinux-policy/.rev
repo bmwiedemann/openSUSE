@@ -2135,4 +2135,14 @@ https://build.opensuse.org/request/show/1178504 </comment>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1251923</comment>
     <requestid>1311022</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>765e2c3932536f5cbea978c5ecb11c13</srcmd5>
+    <version>20251014</version>
+    <time>1760525106</time>
+    <user>dimstar_suse</user>
+    <comment>  * Make wicked script backwards compatible (bsc#1251923)
+  * Allow snapper grub plugin to domtrans to bootloader_t (bsc#1251862)
+  * Allow salt_t transition to rpm_script_t (bsc#1250696)</comment>
+    <requestid>1311365</requestid>
+  </revision>
 </revisionlist>
