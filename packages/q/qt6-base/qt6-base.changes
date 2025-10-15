@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 14 08:54:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Install the adwaita decorationplugin when both
+  libQt6WaylandClient6 and gnome-shell are present
+
+-------------------------------------------------------------------
 Tue Oct  7 08:53:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0

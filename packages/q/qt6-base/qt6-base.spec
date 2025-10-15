@@ -537,6 +537,7 @@ ABI or API guarantees.
 
 %package -n libQt6WaylandClient6
 Summary:        Qt 6 WaylandClient library
+Requires:       (qt6-wayland-decoration-client-adwaita if gnome-shell)
 
 %description -n libQt6WaylandClient6
 The Qt 6 WaylandClient library.
