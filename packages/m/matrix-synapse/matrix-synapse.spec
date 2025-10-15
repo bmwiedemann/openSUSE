@@ -25,7 +25,8 @@
 %global Pillow_version                11.2.1
 %global PyYAML_version                6.0.2
 %global attrs_version                 23.2.0
-%global bcrypt_version                4.2.0
+# TODO: 5.0.0
+%global bcrypt_version                4.3.0
 %global bleach_version                6.1.0
 %global canonicaljson_version         2.0.0
 %global cryptography_version          43.0.3
@@ -37,8 +38,8 @@
 %global matrix_common_max_version     2
 %global msgpack_version               1.1.0
 %global netaddr_version               1.3.0
-# TODO: 9.0.12
-%global phonenumbers_version          9.0.11
+%global phonenumbers_version          9.0.15
+# TODO: 0.23.1
 %global prometheus_client_version     0.20.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             25.0.0
@@ -57,16 +58,14 @@
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.5.0
-# TOOD: 1.6.3
+# TOOD: 1.6.5
 %global Authlib_version               1.6.1
-%global lxml_version                  6.0.0
-# TODO: 2.34.1
-%global sentry_sdk_version            2.20.0
+%global lxml_version                  6.0.2
+%global sentry_sdk_version            2.34.1
 %global PyJWT_version                 2.6.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
-# TODO: 3.0.0
-%global hiredis_version               2.3.2
+%global hiredis_version               3.0.0
 # TODO: 1.4.11
 %global txredisapi_version            1.4.10
 %global Pympler_version               1.0.1
@@ -158,7 +157,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.139.2
+Version:        1.140.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
