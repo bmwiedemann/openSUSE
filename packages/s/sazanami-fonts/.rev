@@ -138,4 +138,15 @@
     <comment></comment>
     <requestid>1151508</requestid>
   </revision>
+  <revision rev="21" vrev="214">
+    <srcmd5>d671a9fd331289418fc9defd7ae43747</srcmd5>
+    <version>20040629</version>
+    <time>1760525077</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop marking sazanami as essential for Japanese locale
+  (and thus essential enough to be on the openSUSE DVD)
+
+Sazanami is something Comic Sans... that's hardly considered essential for a Linux system</comment>
+    <requestid>1311224</requestid>
+  </revision>
 </revisionlist>
