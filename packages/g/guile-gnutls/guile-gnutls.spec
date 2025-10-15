@@ -1,7 +1,7 @@
 #
 # spec file for package guile-gnutls
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           guile-gnutls
-Version:        4.0.1
+Version:        5.0.1
 Release:        0
 Summary:        Guile bindings to GnuTLS
 License:        LGPL-2.1-or-later
@@ -43,16 +43,19 @@ GnuTLS wrappers for GNU Guile, a dialect of Scheme.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
+
+%check
+%make_build check
 
 %files
 %doc README
 %license COPYING
 %{_datadir}/guile/site/*
-%{_infodir}/gnutls-guile.info.gz
+%{_infodir}/gnutls-guile.info%{?ext_info}
 %{_libdir}/guile/*
 
 %changelog
