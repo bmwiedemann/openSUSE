@@ -1102,4 +1102,24 @@ varienvironment able.
 </comment>
     <requestid>1307513</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>0fc9dd0cdf984fd579e1ea483eaec821</srcmd5>
+    <version>0.66.0</version>
+    <time>1760525147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.66.0:
+  * Many new features centered around the new &quot;raw&quot; mode.
+    - 6 actions added for raw mod
+  * Markers no longer use background colors.
+  * The --color base16 theme (alias: 16) was updated for better
+    compatibility with both dark and light themes.
+  * --listen now supports Unix domain sockets
+  * 4 new env vars: $FZF_DIRECTION, $FZF_SOCK, $FZF_RAW and $FZF_CTRL_R_COMMAND
+  * The gutter column is now narrower, rendered with the
+    left-half block character (▌).
+  * The gutter column can now be customized using --gutter CHAR
+    and styled with --color gutter
+</comment>
+    <requestid>1311420</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 15 01:45:54 UTC 2025 - Avindra Goolcharan <aavindraa@gmail.com>
+
+- Update to version 0.66.0:
+  * Many new features centered around the new "raw" mode.
+    - 6 actions added for raw mod
+  * Markers no longer use background colors.
+  * The --color base16 theme (alias: 16) was updated for better
+    compatibility with both dark and light themes.
+  * --listen now supports Unix domain sockets
+  * 4 new env vars: $FZF_DIRECTION, $FZF_SOCK, $FZF_RAW and $FZF_CTRL_R_COMMAND
+  * The gutter column is now narrower, rendered with the
+    left-half block character (▌).
+  * The gutter column can now be customized using --gutter CHAR
+    and styled with --color gutter
+
+-------------------------------------------------------------------
 Sun Sep 28 00:46:42 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.65.2:
