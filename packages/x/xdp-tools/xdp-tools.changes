@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 14 08:25:39 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to v1.5.7
+  - xdp-filter: added support for parsing ARP and IPv6 neighbour
+    solicitations
+  - xdp-trafficgen: improved interface probing, fixed automatic
+    program loading, and corrected an option description
+  - xdp-bench: fixed the --extended switch and now correctly skips
+    tests when progmap support is unavailable
+  - libxdp: fixed build on systems with older libbpf versions and
+    updated documentation
+  - xdp_sample: removed xdp_redirect_map tracepoints
+
+-------------------------------------------------------------------
 Tue Jun 10 06:26:07 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to v1.5.5
