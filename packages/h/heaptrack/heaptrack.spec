@@ -1,7 +1,7 @@
 #
 # spec file for package heaptrack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,6 +85,9 @@ A Qt5/KF5 based GUI for Heaptrack.
 
 # Disable building tests, they're not used and post-build-checks trips over it
 sed -i"" '/add_subdirectory(tests)/d' CMakeLists.txt
+
+# Needed after robin-map update to 1.4.0
+sed -i 's#CMAKE_CXX_STANDARD 14#CMAKE_CXX_STANDARD 17#' CMakeLists.txt
 
 %build
 %if "%{_lib}" == "lib64"
