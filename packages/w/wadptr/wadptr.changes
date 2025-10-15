@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 14 23:11:31 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.8
+  * The -u ("uncompress") option was renamed to -d ("decompress",
+    the usual terminology used by almost every other compression
+    tool).
+  * A special sector tag range (9700-9799) is now recognized for
+    special effects. There are some cases where level authors may
+    deliberately want sidedefs to be merged even when they are
+    attached to special lines, and this allows that.
+
+-------------------------------------------------------------------
 Sun Feb 23 06:57:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.7

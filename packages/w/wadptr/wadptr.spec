@@ -1,7 +1,7 @@
 #
 # spec file for package wadptr
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wadptr
-Version:        3.7
+Version:        3.8
 Release:        0
 Group:          Development/Tools/Building
 Summary:        Redundancy compressor for Doom WAD files
