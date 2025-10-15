@@ -281,4 +281,15 @@
   * go#75609 sync/atomic: comment for Uintptr.Or incorrectly describes return value (forwarded request 1309723 from jfkw)</comment>
     <requestid>1309725</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9f174461e97b4bafb7b03e1a2d2d6e56</srcmd5>
+    <version>1.24.9</version>
+    <time>1760525082</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.24.9 (released 2025-10-13) includes fixes to the crypto/x509
+  package.
+  Refs boo#1236217 go1.24 release tracking
+  * go#75860 crypto/x509: TLS validation fails for FQDNs with trailing dot (forwarded request 1311263 from jfkw)</comment>
+    <requestid>1311265</requestid>
+  </revision>
 </revisionlist>

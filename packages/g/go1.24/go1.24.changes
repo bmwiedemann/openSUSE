@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 13 21:14:38 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.24.9 (released 2025-10-13) includes fixes to the crypto/x509
+  package.
+  Refs boo#1236217 go1.24 release tracking
+  * go#75860 crypto/x509: TLS validation fails for FQDNs with trailing dot
+
+-------------------------------------------------------------------
 Tue Oct  7 18:17:23 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.24.8 (released 2025-10-07) includes security fixes to the
