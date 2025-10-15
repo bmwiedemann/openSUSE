@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ldap
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        Python LDAP interface
 License:        Python-2.0
-Group:          Development/Libraries/Python
 URL:            https://www.python-ldap.org/
-Source0:        https://files.pythonhosted.org/packages/source/p/python-ldap/python-ldap-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-ldap/python_ldap-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyasn1 >= 0.3.7}
@@ -52,7 +51,7 @@ for that purpose.  Additionally the package contains modules for other
 LDAP-related stuff (e.g. processing LDIF, LDAPURLs, LDAPv3 schema, etc.).
 
 %prep
-%setup -q
+%autosetup -p1 -n python_ldap-%{version}
 cp Build/setup.cfg.suse-linux setup.cfg
 
 %build
