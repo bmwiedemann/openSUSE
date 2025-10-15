@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  7 15:51:12 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Fix rpmlints: summary-ended-with-dot,
+  description-shorter-than-summary 
+
+-------------------------------------------------------------------
 Tue Oct  7 15:08:05 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 1.6.0:

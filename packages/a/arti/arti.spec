@@ -22,7 +22,7 @@
 Name:           arti
 Version:        1.6.0
 Release:        0
-Summary:        An implementation of Tor, in Rust.
+Summary:        A WIP implementation of Tor, in Rust
 License:        (Apache-2.0 OR MIT) AND LGPL-3.0-only
 URL:            https://gitlab.torproject.org/tpo/core/arti
 Source0:        https://gitlab.torproject.org/tpo/core/arti/-/archive/arti-v%{version}/%{name}-%{version}.tar.gz
@@ -36,7 +36,13 @@ BuildRequires:  pkgconfig(sqlite3)
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
-An implementation of Tor, in Rust
+Arti is a work in progress Rust-based implementation of the Tor
+anonymity protocols, designed to be modular, reusable and easy to
+audit.
+
+Arti can act as a SOCKS proxy that uses the Tor network.
+
+This package provides the `arti` binary.
 
 %prep
 %autosetup -p1 -a1 -n arti-arti-v%{version}-%{git_hash}

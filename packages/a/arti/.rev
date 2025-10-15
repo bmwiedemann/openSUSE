@@ -197,4 +197,12 @@ It doesn't build on 15.5 because of rust being too old
 - Update to version 1.5.0:</comment>
     <requestid>1309670</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f367a4adcb02812ac391aabb75dcdf27</srcmd5>
+    <version>1.6.0</version>
+    <time>1760525123</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1311393</requestid>
+  </revision>
 </revisionlist>
