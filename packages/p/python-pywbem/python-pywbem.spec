@@ -18,36 +18,34 @@
 
 # cythonized pywbem produces yacc parser errors
 %bcond_with cythonize
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-pywbem
-Version:        1.7.2
+Version:        1.7.4
 Release:        0
 Summary:        Python module for making CIM operation calls using the WBEM protocol
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://pywbem.github.io/
 Source0:        https://github.com/pywbem/pywbem/archive/%{version}.tar.gz#/pywbem-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#pywbem/pywbem#3217
-Patch0:         support-new-testfixtures.patch
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 38.4.1}
-BuildRequires:  %{python_module wheel}
-%if %{with cythonize}
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
-%endif
 BuildRequires:  %{python_module FormEncode >= 2.0.0}
 BuildRequires:  %{python_module PyYAML > 5.3.1}
 BuildRequires:  %{python_module certifi >= 2019.11.28}
-BuildRequires:  %{python_module httpretty}
 BuildRequires:  %{python_module lxml >= 4.6.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply >= 3.10}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.25.0}
 BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module setuptools >= 38.4.1}
 BuildRequires:  %{python_module six >= 1.16.0}
 BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module urllib3 >= 1.26.5}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module yamlloader >= 0.5.5}
 BuildRequires:  fdupes
 BuildRequires:  libxml2-tools
@@ -59,9 +57,18 @@ Requires:       python-requests >= 2.25.0
 Requires:       python-six >= 1.16.0
 Requires:       python-urllib3 >= 1.26.5
 Requires:       python-yamlloader >= 0.5.5
+Recommends:     python-pywebmtools
+%if %{with cythonize}
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module devel}
+%endif
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-pywebmtools
+%endif
 %if ! %{with cythonize}
 BuildArch:      noarch
 %endif
@@ -95,6 +102,9 @@ rm %{buildroot}%{_bindir}/*.bat
 
 %postun
 %python_uninstall_alternative mof_compiler
+
+%pre
+%python_libalternatives_reset_alternative mof_compiler
 
 %files %{python_files}
 %doc README.md

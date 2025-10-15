@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 30 08:12:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.7.4
+  * Fixed testing of installed version of pywbem
+  * Added Python 3.13
+  * Fixed safety issues & dependencies
+  * Cython support for Python 3.13
+- Drop support-new-testfixtures.patch, fixed upstream
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Thu Sep 26 06:02:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-testfixtures.patch:
