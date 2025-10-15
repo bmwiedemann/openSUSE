@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Oct 14 23:13:07 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20251014
+  * AIFF exports and saves now include extra metadata like WAV and
+    FLAC; this includes sample loops, autovibrato settings, volume,
+    panning, and the version of Schism used to save the file. For
+    info on how this information is stored, see the aiff_header
+    function in fmt/aiff.c.
+  * Song exports in all supported formats now save the song title
+    as metadata.
+  * Implemented S90, S9E, and S9F Modplug extensions.
+  * Implemented SSE and AVX enhanced versions of some functions,
+    such as sample min/max, providing a huge increase in speed,
+    especially with very large samples.
+  * Fix a bug where Cxx would get ignored if paired with a pattern
+    loop effect.
+  * Respect existing file mode when saving files on POSIX systems.
+  * Added support for zlib decompression, allowing native loading
+    of gzip-compressed files.
+  * Added support for loading and saving .sbi (Sound Blaster
+    Instrument) files.
+  * Reverted Zxx-related changes from 20250825, as they proved to
+    just make things worse.
+  * Fixed buffer overflow under some audio drivers when SDL 3 is
+    used.
+  * Fixed position display in the info page being completely
+    incorrect on little endian systems.
+  * OPL: Fix first note played when keyjazzing being ignored.
+  * D00: Fix a problem where a specially crafted input file could
+    be used to hang or crash Schism.
+  * D00: Add detection of older D00 files.
+  * JACK: Fix use-after-free if the JACK daemon fails to start.
+
+-------------------------------------------------------------------
 Tue Aug 26 11:11:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20250825
