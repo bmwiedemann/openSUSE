@@ -1,7 +1,7 @@
 #
 # spec file for package kio-fuse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kio-fuse
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Access KIO over the regular filesystem
 License:        GPL-3.0-or-later
@@ -29,22 +29,19 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kio-fuse.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5KIO) >= 5.96.0
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Test)
+# Older versions have a bug in chown error reporting
+BuildRequires:  cmake(KF6KIO) >= 6.19
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Test)
 BuildRequires:  pkgconfig(fuse3)
-%if 0%{?suse_version} > 1599
-BuildRequires:  /usr/bin/dbus-run-session
-%endif
 Requires:       fuse3
 # For %%check
-BuildRequires:  kio-extras5
+BuildRequires:  kio-extras
+BuildRequires:  /usr/bin/dbus-run-session
 # While kio itself can make use of this, it's most likely used through dolphin
 Supplements:    dolphin
-# Make sure the protocols in a Plasma 6 session also work via kio-fuse (boo#1226375)
-Requires:       (kio-extras5 if kio-extras)
 
 %description
 kio-fuse is a daemon which makes KIO URLs accessible to KIO unaware
@@ -54,11 +51,11 @@ applications using FUSE.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON
-%cmake_build
+%cmake_kf6 -DBUILD_TESTING=ON -DBUILD_WITH_QT6=ON
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %if %{pkg_vcmp util-linux >= 2.34}
 %check
@@ -83,7 +80,7 @@ export PATH=$PWD:$PATH
 
 %files
 %license LICENSES/*
-%{_kf5_sharedir}/dbus-1/services/org.kde.KIOFuse.service
+%{_kf6_sharedir}/dbus-1/services/org.kde.KIOFuse.service
 %{_libexecdir}/kio-fuse
 %{_tmpfilesdir}/kio-fuse-tmpfiles.conf
 %{_userunitdir}/kio-fuse.service

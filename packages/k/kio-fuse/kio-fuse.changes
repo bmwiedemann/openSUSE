@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 13 18:34:33 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.1.1:
+  * rmdir no longer deletes non-empty directories (kde#482902)
+  * Fix that Qt 6 applications falsely report that an open file that has been
+    deleted in the virtual filesystem still exists by reporting st_nlink = 0.
+  * Fix reporting of file/directory ownership when using local KIO protocols
+    with KIO 6
+  * Fix that the event loop got stuck waiting for FUSE events on FreeBSD >= 13
+    (before, setting O_NONBLOCK only worked by accident:
+     https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=265736#c5)
+- Build with Qt 6/KF 6
+
+-------------------------------------------------------------------
 Sat Apr 12 18:02:42 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Pull in kio-extras5 when kio-extras (6) is installed, so e.g.

@@ -71,4 +71,24 @@
     <comment></comment>
     <requestid>1268999</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a04893829b5e422f07f61ab87a689e37</srcmd5>
+    <version>5.1.1</version>
+    <time>1760525079</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.1:
+  * rmdir no longer deletes non-empty directories (kde#482902)
+  * Fix that Qt 6 applications falsely report that an open file that has been
+    deleted in the virtual filesystem still exists by reporting st_nlink = 0.
+  * Fix reporting of file/directory ownership when using local KIO protocols
+    with KIO 6
+  * Fix that the event loop got stuck waiting for FUSE events on FreeBSD &gt;= 13
+    (before, setting O_NONBLOCK only worked by accident:
+     https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=265736#c5)
+- Build with Qt 6/KF 6
+
+Maybe we should ignore the chown issue with KIO &lt; 6.19 and skip the %check section?
+The benefit of having the newer version might outweigh that bug... (forwarded request 1311215 from Vogtinator)</comment>
+    <requestid>1311228</requestid>
+  </revision>
 </revisionlist>
