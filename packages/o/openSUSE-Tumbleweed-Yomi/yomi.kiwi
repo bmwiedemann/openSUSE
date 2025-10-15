@@ -79,7 +79,6 @@
     <package name="group(wheel)"/>
     <package name="grub2-branding-openSUSE" bootinclude="true"/>
     <package name="iputils"/>
-    <package name="issue-generator"/> <!-- bsc#1084879 -->
     <package name="nano"/>
     <package name="shim" arch="x86_64"/>
     <package name="grub2"/>
