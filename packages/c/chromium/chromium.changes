@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 15 02:48:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 141.0.7390.107:
+  * CVE-2025-11756: Use after free in Safe Browsing (boo#1252013)
+
+-------------------------------------------------------------------
 Thu Oct  9 21:12:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 141.0.7390.76:
