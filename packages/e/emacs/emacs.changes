@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  2 11:08:24 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable valgrind support on riscv64
+
+-------------------------------------------------------------------
 Thu Aug 14 12:22:03 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to GNU Emacs version 30.2

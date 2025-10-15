@@ -1,7 +1,7 @@
 #
 # spec file for package emacs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -132,7 +132,7 @@ BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libwebp)
-%ifarch aarch64 x86_64 ppc64le s390x
+%ifarch aarch64 x86_64 ppc64le s390x riscv64
 BuildRequires:  pkgconfig(valgrind)
 %endif
 %if %{with tex4pdf}
