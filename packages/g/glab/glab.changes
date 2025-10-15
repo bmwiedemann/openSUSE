@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 13 06:44:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.73.1:
+  * 4ae0efc4: docs: update CLI docs format to work with Hugo (Pearl
+    Latteier platteier@gitlab.com)
+  * 159d7ab4: fix(events): print the title when listing user events
+    (Oleksandr Redko oleksandr.red+gitlab@gmail.com)
+  * 97fcfa9f: fix(tables): add table names to output data (Filip
+    Aleksic faleksic@gitlab.com)
+  * 45524b28: fix: prevent cmdutils.SilentError from printing in
+    error handler (Daniel Lecklider lecklider.6@gmail.com)
+  * 3612240c: fix: return proper not found error for empty hosts in
+    config file (Timo Furrer tfurrer@gitlab.com)
+  * 6e9ce18e: fix: stop generating documentation for deprecated
+    commands (Kai Armstrong karmstrong@gitlab.com)
+
+-------------------------------------------------------------------
 Tue Oct 07 05:53:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.73.0:
