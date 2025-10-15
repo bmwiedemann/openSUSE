@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 13 16:09:34 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.80
+  * Fix some issue with ECDHE client key exchange,
+    some issue with D-Bus client and watch removal handling,
+    some with D-Bus client and service name handling, and
+    some with with D-Bus proxy and filter rule handling.
+
+-------------------------------------------------------------------
 Thu Jul  3 11:46:39 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.78
