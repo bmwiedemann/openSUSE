@@ -44,4 +44,20 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284670</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cd63c13ece816a1ac8319e1efdc3e9fd</srcmd5>
+    <version>2.1.0</version>
+    <time>1760525151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * feat: Add a async_webpush one call func
+  * set license classifier
+  * chore: Update to modern python practices (well, Python 3.8)
+  * Webpusher.encode will now return a NoData exception if no data is
+    present to encode
+- Refresh patch no-more-six.patch from upstream.
+- Add patch use-unittest-mock.patch:
+  * Use unittest.mock rather than mock.</comment>
+    <requestid>1311425</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 15 03:12:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.0:
+  * feat: Add a async_webpush one call func
+  * set license classifier
+  * chore: Update to modern python practices (well, Python 3.8)
+  * Webpusher.encode will now return a NoData exception if no data is
+    present to encode
+- Refresh patch no-more-six.patch from upstream.
+- Add patch use-unittest-mock.patch:
+  * Use unittest.mock rather than mock.
+
+-------------------------------------------------------------------
 Wed Jun 11 05:49:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

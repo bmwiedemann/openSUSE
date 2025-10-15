@@ -1,0 +1,42 @@
+From 232eb3f7033f9bfa58c6583f68661628eee847a9 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <stevenk@debian.org>
+Date: Wed, 15 Oct 2025 13:08:03 +1100
+Subject: [PATCH] Use unittest.mock
+
+Drop the use of the external mock module, unittest.mock has been
+included in the standard library since Python 3.4.
+
+Closes: #146
+---
+ pywebpush/tests/test_webpush.py | 2 +-
+ test-requirements.txt           | 3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/pywebpush/tests/test_webpush.py b/pywebpush/tests/test_webpush.py
+index 324c6d4..b8d2081 100644
+--- a/pywebpush/tests/test_webpush.py
++++ b/pywebpush/tests/test_webpush.py
+@@ -4,11 +4,11 @@
+ import unittest
+ import time
+ from typing import cast, Union, Dict
++from unittest.mock import patch, Mock, AsyncMock
+ 
+ import http_ece
+ import py_vapid
+ import requests
+-from mock import patch, Mock, AsyncMock
+ from cryptography.hazmat.primitives.asymmetric import ec
+ from cryptography.hazmat.primitives import serialization
+ from cryptography.hazmat.backends import default_backend
+diff --git a/test-requirements.txt b/test-requirements.txt
+index c284191..a3e3fb9 100644
+--- a/test-requirements.txt
++++ b/test-requirements.txt
+@@ -1,4 +1,3 @@
+ -r requirements.txt
+ black
+-mock
+-pytest
+\ No newline at end of file
++pytest

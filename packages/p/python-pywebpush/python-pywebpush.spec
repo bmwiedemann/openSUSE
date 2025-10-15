@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywebpush
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,22 @@
 
 
 Name:           python-pywebpush
-Version:        1.14.0
+Version:        2.1.0
 Release:        0
 Summary:        WebPush publication library
 License:        MPL-2.0
 URL:            https://github.com/web-push-libs/pywebpush
 Source:         https://files.pythonhosted.org/packages/source/p/pywebpush/pywebpush-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Do not require six module
+# PATCH-FIX-UPSTREAM Based on gh#web-push-libs/pywebpush#bb664d9862f1aa427744e34c51e7f2c1a8f35e15
 Patch0:         no-more-six.patch
+# PATCH-FIX-UPSTREAM gh#web-push-libs/pywebpush#180
+Patch1:         use-unittest-mock.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-aiohttp
 Requires:       python-cryptography >= 2.6.1
 Requires:       python-http-ece >= 1.1.0
 Requires:       python-py-vapid >= 1.5.0
@@ -39,6 +42,7 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cryptography >= 2.6.1}
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module http-ece >= 1.1.0}
 BuildRequires:  %{python_module py-vapid >= 1.5.0}
 BuildRequires:  %{python_module pytest}
@@ -61,8 +65,6 @@ WebPush publication library.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/web-push-libs/pywebpush/issues/146
-sed -i 's:from mock:from unittest.mock:' pywebpush/tests/test_webpush.py
 %pytest
 
 %post
