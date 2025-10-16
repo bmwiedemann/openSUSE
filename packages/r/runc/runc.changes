@@ -2,7 +2,7 @@
 Sat Oct  4 05:01:50 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.3.2. Upstream changelog is available from
-  <https://github.com/opencontainers/runc/releases/tag/v1.3.2>
+  <https://github.com/opencontainers/runc/releases/tag/v1.3.2> bsc#1252110
   - Includes an important fix for the CPUSet translation for cgroupv2.
 
 -------------------------------------------------------------------
