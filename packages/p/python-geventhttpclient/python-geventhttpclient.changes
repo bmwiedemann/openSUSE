@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 15 13:15:40 UTC 2025 - Jordi Massaguer <jmassaguerpla@suse.com>
+
+- Fix build for 15.7: Use the right python version 
+
+-------------------------------------------------------------------
 Wed Aug 20 06:54:38 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Disabled some sni_ssl unittest which just failed on Leap 16.0
