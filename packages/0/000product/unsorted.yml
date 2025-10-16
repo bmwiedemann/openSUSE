@@ -612,6 +612,7 @@ unsorted:
   - ansible-sap-playbooks 
   - ansible-terraform-inventory 
   - ansible-test 
+  - ansible-test-2.18 
   - ansible-variables 
   - ansifilter 
   - ansifilter-gui 
@@ -3124,6 +3125,7 @@ unsorted:
   - deadbeef-devel 
   - deadbeef-lang 
   - deadbeef-plugin-mpris2 
+  - deal 
   - deal_II-devel 
   - deal_II-openmpi4-devel 
   - deal_II-openmpi5-devel 
@@ -7060,7 +7062,6 @@ unsorted:
   - glade 
   - glade-catalog-gitg 
   - glade-catalog-gtkdatabox 
-  - glade-catalog-gtkhtml 
   - glade-catalog-gtksourceview 
   - glade-catalog-gtksourceview4 
   - glade-catalog-libgda 
@@ -8193,8 +8194,6 @@ unsorted:
   - gtkglext-doc 
   - gtkgreet 
   - gtkgreet-lang 
-  - gtkhtml-4_0-lang 
-  - gtkhtml-devel 
   - gtkimageview-devel 
   - gtklock 
   - gtklock-lang 
@@ -13767,8 +13766,6 @@ unsorted:
   - libgtkhex-4-1 
   - libgtkhotkey-devel 
   - libgtkhotkey1 
-  - libgtkhtml-4_0-0 
-  - libgtkhtml-editor-4_0-0 
   - libgtkimageview0 
   - libgtkmm-2_4-1 
   - libgtksourceview-2_0-0 
@@ -16147,7 +16144,7 @@ unsorted:
   - libslang2-32bit 
   - libsleef3 
   - libslirp-devel 
-  - libslopy7_6 
+  - libslopy7_7 
   - libslurm42 
   - libsmartcols-devel 
   - libsmartcols-devel-32bit 
@@ -19877,6 +19874,8 @@ unsorted:
   - nvdock 
   - nvidia-libXNVCtrl-devel 
   - nvidia-modprobe 
+  - nvidia-open-driver-G06-signed-check 
+  - nvidia-open-driver-G06-signed-cuda-check 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
   - nvidia-open-driver-G06-signed-cuda-kmp-default 
   - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
