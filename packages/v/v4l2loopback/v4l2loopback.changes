@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 16 04:55:55 UTC 2025 - <munix9@googlemail.com>
+
+- Update to version 0.15.2:
+  * Release v0.15.2
+  * Yet another Linux-6.18 fix
+  * Fix compilation with linux-6.18.0
+  * Fix use-after-free in loopback_add()
+  * Add <linux/timer.h> include
+  * Bump version to v0.15.1
+  * [ci] also allow skipping of exactly known kernel-version
+  * [ci] mark alpine/6.15.0.0-edge as known-failure
+  * [ci] don't fail if the badge-file did not change
+  * Adds support for XBGR32 (XR24)
+
+- Change urls to https://github.com/v4l2loopback/v4l2loopback
+
+-------------------------------------------------------------------
 Thu Jul 24 03:36:19 UTC 2025 - munix9@googlemail.com
 
 - Update to version 0.15.1:

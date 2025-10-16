@@ -30,12 +30,12 @@
 %{!?_modulesloaddir: %define _modulesloaddir /usr/lib/modules-load.d/}
 
 Name:           v4l2loopback
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        A kernel module to create V4L2 loopback devices
 License:        GPL-2.0-or-later
-URL:            https://github.com/umlaeute/v4l2loopback
-#Source:         https://github.com/umlaeute/v4l2loopback/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
+URL:            https://github.com/v4l2loopback/v4l2loopback
+#Source:         %%{url}/archive/v%%{version}/%%{name}-%%{version}.tar.gz
 Source:         %{name}-%{version}.tar.xz
 Source1:        preamble
 Source2:        modprobe.d_98-v4l2loopback.conf
