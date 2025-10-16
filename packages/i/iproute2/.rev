@@ -1198,4 +1198,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>- Update to release 6.16</comment>
     <requestid>1298735</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>92c93b780651215d244dd94f8f6668b9</srcmd5>
+    <version>6.17</version>
+    <time>1760629087</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 6.17</comment>
+    <requestid>1311468</requestid>
+  </revision>
 </revisionlist>

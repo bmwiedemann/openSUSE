@@ -1,7 +1,7 @@
 #
 # spec file for package iproute2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%define _buildshell /bin/bash
 Name:           iproute2
-Version:        6.16
+Version:        6.17
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
@@ -95,7 +94,7 @@ depending on type) of the kernel ARP cache.
 %prep
 %autosetup -p1 -n %name-%version.0
 
-find . -name *.orig -delete
+find . -name "*.orig" -delete
 
 %build
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
@@ -110,11 +109,11 @@ xt_cflags="$(pkg-config xtables --cflags)"
 
 %install
 b="%buildroot"
-mkdir -p "$b/usr/bin" "$b/usr/sbin" "$b/sbin"
+mkdir -pv "$b/usr/bin" "$b/usr/sbin" "$b/sbin"
 %make_install MODDESTDIR="$b/%_libdir/tc"
 
 # We have m_xt instead
-rm -f "$b/%_libdir/tc/m_ipt.so"
+rm -fv "$b/%_libdir/tc/m_ipt.so"
 
 install -pm0644 "lib/libnetlink.a" "$b/%_libdir/"
 chmod -x "$b/%_libdir/libnetlink.a"
@@ -122,17 +121,17 @@ install -pm0644 "include/libnetlink.h" "$b/%_includedir/"
 chmod -x "$b/%_includedir/libnetlink.h"
 install -Dm0644 "%SOURCE3" "$b/%_tmpfilesdir/%name.conf"
 %if 0%{?suse_version} >= 1550
-ln -sf "%_sbindir/ip" "$b/%_bindir/ip"
+ln -sfv "%_sbindir/ip" "$b/%_bindir/ip"
 %else
-ln -s "%_sbindir/ip" "$b/sbin/"
+ln -sv "%_sbindir/ip" "$b/sbin/"
 mkdir -p "$b/bin"
-ln -sf "%_sbindir/ip" "$b/bin/ip"
+ln -sfv "%_sbindir/ip" "$b/bin/ip"
 %endif
 for BIN in lnstat nstat routel ss; do
-	ln -sf "%_sbindir/$BIN" "$b/%_bindir/$BIN"
+	ln -sfv "%_sbindir/$BIN" "$b/%_bindir/$BIN"
 done
-mkdir -p "$b/%_docdir/%name"
-cp -an README* examples/bpf "$b/%_docdir/%name/"
+mkdir -pv "$b/%_docdir/%name"
+cp -anv README* examples/bpf "$b/%_docdir/%name/"
 
 # bugzilla.opensuse.org/1205632
 # You can't parse routel output anyway so it does not matter what our replacement program outputs

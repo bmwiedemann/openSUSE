@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 11 12:22:08 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.17
+  * ip: display the 'netns-immutable' property
+  * color: Assume background is dark if unknown
+  * color: Do not use dark blue in dark-background palette
+  * bridge: mdb: Support offload failed flag
+  * iplink_bridge: Add mdb_offload_fail_notification
+  * ip ntable: Add support for "mcast_reprobes" parameter
+  * ip neigh: Add support for "extern_valid" flag
+  * Add support for 'tc-bw' attribute in devlink-rate
+
+-------------------------------------------------------------------
 Mon Aug 11 05:11:09 UTC 2025 - Petr Vorel <pvorel@suse.cz>
 
 - Update to release 6.16
