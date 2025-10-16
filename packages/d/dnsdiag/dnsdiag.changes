@@ -1,7 +1,52 @@
 -------------------------------------------------------------------
-Sun Sep 21 10:26:34 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+Sat Oct  4 15:22:35 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.1
+  New Features
+  * Added DNS Cookies support with --cookie option in dnsping.
+  Improvements & Bug Fixes
+  * Extended DNS Error messages now always displayed when present.
+  * Enhanced ECS display format to show source prefix length
+    ([ECS:address/source/scope]).
+  * Fixed DoH/HTTP3 hostname resolution issues.
+  * Fixed DoT/DoQ hostname support for SNI and certificate
+    validation.
+  * Improved responsiveness to CTRL+C.
+  * Removed duplicate CLI parameter in usage string.
+
+-------------------------------------------------------------------
+Mon Sep 29 16:04:14 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.0
+  New Features
+  * EDNS Client Subnet (ECS) Support: Added --ecs option to
+    dnsping for testing EDNS Client Subnet behavior.
+  * EDNS Options Display Format: Implemented compact inline format
+    for EDNS options ([NSID:server-name], [ECS:subnet/scope],
+    [EDE:code("text")]) to reduce output redundancy.
+  * DoQ and DoH3 Support in dnstraceroute: Added DNS over QUIC and
+    DNS over HTTP/3 protocol support for modern encrypted DNS
+    tracing.
+  Documentation
+  * Protocol Support Documentation: Added protocol compatibility
+    table (UDP, TCP, DoT, DoH, DoQ, DoH3) to clarify tool
+    capabilities.
+  * DNS Resolver Reference Updates: Updated public DNS resolver
+    lists with current operational status and capabilities, also
+    added more entries (Fixes #129) (#130).
+  Improvements & Bug Fixes
+  * CLI Parameter Consistency: Standardized command line parameters
+    across tools for consistent user experience.
+  * Help Message Completeness: Added missing -q option and --venv
+    parameter explanations for better usability.
+  * EDE Display Formatting: Fixed broken ping output formatting
+    when EDE messages are too long by truncating text in ping
+    results while preserving full text in verbose mode.
+
+-------------------------------------------------------------------
+Sun Sep 21 10:26:34 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.0
   New Features
   * DNS over HTTP/3 (DoH3) Support: Added support for RFC 9114 DNS
     over HTTP3 protocol using -3 or --doh3 option in dnsping.
