@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 22 11:09:06 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 18.1.8
+  * no upstream changelog
+- Switch to using pyproject macros
+- use libalternatives on modern openSUSE versions
+
+-------------------------------------------------------------------
 Wed Apr 14 06:31:14 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop use of %ifpython3 macro, which no longer fires with multi-build

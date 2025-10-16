@@ -14,11 +14,14 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           lit
-Version:        0.6.0
+Version:        18.1.8
 Release:        0
 Summary:        A portable tool for executing test suites
 License:        NCSA
@@ -26,10 +29,17 @@ Group:          Development/Tools/Other
 URL:            http://llvm.org/cmds/lit.html
 Source0:        https://files.pythonhosted.org/packages/source/l/lit/lit-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 Provides:       lit = %{version}
 %python_subpackages
@@ -41,15 +51,19 @@ designed to be a lightweight testing tool with as simple a user interface
 as possible/
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/lit
 %python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative lit
 
 %post
 %python_install_alternative lit
@@ -58,8 +72,9 @@ as possible/
 %python_uninstall_alternative lit
 
 %files %{python_files}
-%doc README.txt
+%doc README.rst
 %python_alternative %{_bindir}/lit
-%{python_sitelib}/*
+%{python_sitelib}/lit
+%{python_sitelib}/lit-%{version}.dist-info
 
 %changelog
