@@ -33,7 +33,11 @@ ExclusiveArch:  do_not_build
 ExcludeArch:    s390 s390x i586 %arm
 
 %if "%{mpi_flavor}" == "openmpi5"
+%if 0%{?suse_version} < 1600
+ExclusiveArch:  do_not_build
+%else
 ExcludeArch:    %{ix86} %{arm}
+%endif
 %endif
 
 %define p_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}
@@ -123,7 +127,7 @@ export FC=gfortran
 export MPICC=mpicc
 export MPICXX=mpicxx
 export MPIFC=mpif90
-export CFLAGS="-fPIC %{optflags}"
+export CFLAGS="-fPIC %{optflags} -std=gnu11"
 %if 0%{?suse_version} >= 1550
 # https://github.com/ornladios/ADIOS/issues/206
 export FCFLAGS="-fPIC %{optflags} -fallow-argument-mismatch"
@@ -156,7 +160,7 @@ export LD_LIBRARY_PATH="%{p_libdir}"
   --without-fastbit \
   --without-ffs \
 
-make V=1 %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

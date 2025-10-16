@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 27 13:41:36 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build on compilers defaulting to -std=c23
+
+-------------------------------------------------------------------
 Tue Mar 25 06:53:32 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Remove gnu-hpc build flavours (bsc#1239982)
