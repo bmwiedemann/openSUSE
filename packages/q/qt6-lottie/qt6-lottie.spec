@@ -132,6 +132,7 @@ This library does not have any ABI or API guarantees.
 
 %build
 %cmake_qt6 \
+  -DQT_QML_NO_CACHEGEN:BOOL=TRUE \
   -DQT_GENERATE_SBOM:BOOL=FALSE
 
 %{qt6_build}
