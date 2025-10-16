@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipykernel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ipykernel
-Version:        6.29.5
+Version:        6.30.1
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/ipykernel
 Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
-Patch1:         https://github.com/ipython/ipykernel/commit/b47db6f082ea61e9688b4eca4e92529c1e0e6c45.patch#/py313-warning.patch
 Provides:       python-jupyter_ipykernel = %{version}
 Obsoletes:      python-jupyter_ipykernel < %{version}
 Provides:       %{python_module ipykernel-doc = %{version}}
@@ -39,7 +38,7 @@ Conflicts:      python3-ipykernel
 %endif
 BuildArch:      noarch
 # SECTION build-system
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatchling >= 1.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -50,26 +49,26 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module comm >= 0.1.1}
 BuildRequires:  %{python_module debugpy >= 1.6.5}
 BuildRequires:  %{python_module ipython >= 7.23.1}
-BuildRequires:  %{python_module jupyter-client >= 6.1.12}
+BuildRequires:  %{python_module jupyter-client >= 8.0.0}
 BuildRequires:  %{python_module matplotlib-inline >= 0.1}
 BuildRequires:  %{python_module nest-asyncio}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pyzmq >= 24}
-BuildRequires:  %{python_module tornado >= 6.1}
-BuildRequires:  %{python_module traitlets >= 5.1.0}
+BuildRequires:  %{python_module pyzmq >= 25}
+BuildRequires:  %{python_module tornado >= 6.2}
+BuildRequires:  %{python_module traitlets >= 5.4.0}
 BuildRequires:  %{python_module jupyter-core >= 5.1 or (%python-jupyter-core >= 4.12 with %python-jupyter-core < 5.0)}
 Requires:       jupyter-jupyter-client >= 6.1.12
 Requires:       python-comm >= 0.1.1
 Requires:       python-debugpy >= 1.6.5
 Requires:       python-ipython >= 7.23.1
-Requires:       python-jupyter-client >= 6.1.12
+Requires:       python-jupyter-client >= 8.0.0
 Requires:       python-matplotlib-inline >= 0.1
 Requires:       python-nest-asyncio
 Requires:       python-packaging
 Requires:       python-psutil
-Requires:       python-pyzmq >= 24
-Requires:       python-tornado >= 6.1
+Requires:       python-pyzmq >= 25
+Requires:       python-tornado >= 6.2
 Requires:       python-traitlets >= 5.4.0
 Requires:       (python-jupyter-core >= 5.1 or (python-jupyter-core >= 4.12 with python-jupyter-core < 5.0))
 # /SECTION

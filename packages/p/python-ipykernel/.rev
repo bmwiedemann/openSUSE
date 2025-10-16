@@ -609,4 +609,12 @@
     <comment>- add py313-warning.patch</comment>
     <requestid>1218795</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>505b52cd4a24e7dabe6566913f3275ed</srcmd5>
+    <version>6.30.1</version>
+    <time>1760629080</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1311448</requestid>
+  </revision>
 </revisionlist>

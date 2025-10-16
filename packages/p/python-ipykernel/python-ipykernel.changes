@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 14 11:16:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.30.1
+  * Remove control queue
+  * Set shell idle when message skipped by "should_handle" in "dispatch_shell"
+  * Remove nose import
+  * Fix expected text depending on IPython version
+  * Drop support for Python 3.8
+  * Avoid a DeprecationWarning on Python 3.13+
+  * Add compat with pytest 8
+- Drop py313-warning.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Oct 28 11:39:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add py313-warning.patch
