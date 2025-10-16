@@ -191,4 +191,57 @@
     <comment></comment>
     <requestid>1275339</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8ada6b237391b2016e86aede70ceeae8</srcmd5>
+    <version>2.58.0</version>
+    <time>1760629173</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.58.0:
+  * Post-quantum end-to-end crypto(ML-KEM-512, ML-KEM-768, ML-KEM-1024)
+    support if OpenSSL &gt;= 3.5.0. Enable it by default
+  * Datagram2 and Datagram3
+  * Support boost 1.89
+  * Don't verify streaming SYN packet signature if comes from an
+    ECIESx25519 session
+  * Specify light or dark theme for webconsole
+  * Try to resolve host again in server tunnel if failed before
+  * &quot;ssu2.firewalled4&quot; and &quot;ssu2.firewalled6&quot; params to force Firewalled
+    even if network is OK
+  * Create unique loopback address from fd00::/8 range for ::1 if
+    explicitly set in server tunnels
+  * Don't show Network status if ipv6 only
+  * SAM PING command
+  * Send correct version in I2CP SetDate message
+  * Fixed max UDP buffer size for OpenBSD
+  * &quot;i2p.streaming.maxWindowSize&quot; and &quot;i2p.streaming.dontSign&quot; params
+  * Streaming ping through BOB
+  * Limit number of outbound streaming packets if the peer can't handle
+    them
+  * Updated reseeds list
+  * Fixed lack of file descriptors for Haiku
+  * Outgoing stream will not constantly re-requests LeaseSet if the
+    remote peer has gone away
+  * Don't call deprecated functions for openssl 3
+  * Accept &quot;HELLO VERSION&quot; without &quot;MIN&quot; and &quot;MAX&quot; in SAM
+  * Non-blocking mode for UDP sockets in UDP tunnels
+- update to 2.57.0:
+  * Local domain sockets for I2PControl
+  * HTTP and SOCKS proxy through BOB
+  * FORWARD session host handling in SAM
+  * &quot;keys=shareddest&quot; tunnel param to run on shared local destination
+  * Correct implementation of SSU2 path challenge and path response
+  * Don't delete trusted routers from netdb
+  * Fixed crash after SAM stream disconnect
+  * Disable loss-control in streaming
+  * OpenIndiana(Solaris) support
+  * NTCP2 probing resistance
+  * Set min peer test version to 0.9.62
+  * Support SAM v1 datagram sessions without port
+  * Localization to Hebrew and Hindi
+  * Fixed x86 build for Haiku
+  * Updated reseeds list
+- Boost.System is headers only since 1.69
+  + boost-system.patch (forwarded request 1310819 from adkorte)</comment>
+    <requestid>1311712</requestid>
+  </revision>
 </revisionlist>

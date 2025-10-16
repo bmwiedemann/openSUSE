@@ -1,0 +1,23 @@
+diff -purN a/build/CMakeLists.txt b/build/CMakeLists.txt
+--- a/build/CMakeLists.txt	2025-09-06 21:33:26.000000000 +0200
++++ b/build/CMakeLists.txt	2025-10-11 16:14:28.725138745 +0200
+@@ -6,6 +6,10 @@ else()
+   cmake_policy(VERSION 3.22)
+ endif()
+ 
++if(POLICY CMP0167)
++  cmake_policy(SET CMP0167 NEW)
++endif()
++
+ # for debugging
+ #set(CMAKE_VERBOSE_MAKEFILE on)
+ 
+@@ -263,7 +267,7 @@ else()
+   endif()
+ endif()
+ 
+-find_package(Boost REQUIRED COMPONENTS system filesystem program_options)
++find_package(Boost REQUIRED COMPONENTS filesystem program_options)
+ if(NOT DEFINED Boost_FOUND)
+   message(SEND_ERROR "Boost is not found, or your boost version was below 1.46. Please download Boost!")
+ endif()

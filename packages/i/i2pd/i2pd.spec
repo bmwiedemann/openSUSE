@@ -21,13 +21,15 @@
 %define sysuser i2pd
 %define sysgroup i2pd
 Name:           i2pd
-Version:        2.56.0
+Version:        2.58.0
 Release:        0
 Summary:        C++ implementation of an I2P client
 License:        BSD-3-Clause
 Group:          Productivity/Networking/System
 URL:            https://i2pd.website
 Source0:        https://github.com/PurpleI2P/i2pd/archive/refs/tags/%{version}.tar.gz
+Patch1:         boost-system.patch
+BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  libminiupnpc-devel
@@ -43,7 +45,7 @@ BuildRequires:  boost-devel
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
+BuildRequires:  (libboost_system-devel if boost-devel < 1.89)
 %endif
 Provides:       group(%{sysgroup})
 Provides:       user(%{sysuser})
@@ -56,7 +58,10 @@ don't reveal their real IP addresses.
 This package contains a C++ implementation of an I2P router.
 
 %prep
-%autosetup -p1
+%autosetup -N
+%if 0%{?suse_version} >= 1600
+%patch -p1 -P 1
+%endif
 
 cp contrib/debian/i2pd.service i2pd.service.in
 cp contrib/debian/i2pd.tmpfile i2pd.tmpfile.in
