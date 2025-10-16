@@ -1,0 +1,7 @@
+<package name="deal" project="openSUSE:Factory">
+  <title>Calculator for nonreplacement probabilities</title>
+  <description>This program computes odd for drawing card sets (e.g. non-replacement
+probabilities) using the hypergeometric function. It can also be used to
+compute binomial coefficients and the gamma function.</description>
+  <url>http://www.catb.org/~esr/deal/</url>
+</package>
