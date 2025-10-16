@@ -592,4 +592,15 @@
   * libxslt-CVE-2025-10911.patch</comment>
     <requestid>1309625</requestid>
   </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>0e56c2d9d6851f1ab1a95081dd47e322</srcmd5>
+    <version>1.1.43</version>
+    <time>1760629085</time>
+    <user>anag_factory</user>
+    <comment>- security update
+- added patches
+  CVE-2025-11731 [bsc#1251979], type confusion in exsltFuncResultCompfunction leading to denial of service
+  * libxslt-CVE-2025-11731.patch</comment>
+    <requestid>1311449</requestid>
+  </revision>
 </revisionlist>

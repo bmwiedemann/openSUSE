@@ -44,6 +44,8 @@ Patch1:         libxslt-random-seed.patch
 Patch2:         libxslt-CVE-2025-7424.patch
 # CVE-2025-10911 [bsc#1250553], use-after-free with key data stored cross-RVT
 Patch3:         libxslt-CVE-2025-10911.patch
+# CVE-2025-11731 [bsc#1251979], type confusion in exsltFuncResultCompfunction leading to denial of service
+Patch4:         libxslt-CVE-2025-11731.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  libgcrypt-devel

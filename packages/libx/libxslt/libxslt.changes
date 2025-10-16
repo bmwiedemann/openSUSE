@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 15 08:10:07 UTC 2025 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2025-11731 [bsc#1251979], type confusion in exsltFuncResultCompfunction leading to denial of service
+  * libxslt-CVE-2025-11731.patch
+
+-------------------------------------------------------------------
 Thu Oct  2 13:18:49 UTC 2025 - pgajdos@suse.com
 
 - security update
