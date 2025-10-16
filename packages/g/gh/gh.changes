@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct 16 08:21:44 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.82.0:
+  * chore: run `go mod tidy`
+  * refactor(auth refresh): use `PlainHttpClient` instead of zero `http.Client`
+  * refactor(auth login): use `PlainHttpClient` for OAuth flow
+  * refactor(authflow): receive HTTP client via args
+  * fix(factory): add `PlainHttpClient` to factory
+  * test(api): assert `SkipDefaultHeaders` is honoured
+  * fix(api): expose `SkipDefaultHeaders` option
+  * test(api): improve `NewHTTPClient` test assertions
+  * Fix agentTaskCmd to use repoResolvingCmdFactory
+  * Add new displaying message to test expectation
+  * Fix --follow not killing the progress indicator
+  * Apply suggestion from @babakks
+  * Apply suggestion from @babakks
+  * Fix argument order in httpStubs test functions
+  * docs(cache delete): remove redundant comment
+  * docs(cache delete): add godoc for `deleteCacheByKey`
+  * Remove default empty slices in RemovePullRequestReviews
+  * Fix typo in error message for required flags
+  * Refactor reviewer partitioning in PR edit command
+  * Escape repo owner and name in PR reviewer API paths
+  * Remove unused ghIds function and githubv4 import
+  * fix(cache): report correct deleted count for key and key+ref deletions
+  * Refactor PR reviewer editing to use REST API and optimize team fetch
+
+-------------------------------------------------------------------
 Tue Sep 30 10:18:57 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.81.0:

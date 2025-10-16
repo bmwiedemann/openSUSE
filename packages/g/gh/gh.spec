@@ -1,6 +1,7 @@
 #
 # spec file for package gh
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -20,7 +21,7 @@
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 %define sname cli
 Name:           gh
-Version:        2.81.0
+Version:        2.82.0
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
