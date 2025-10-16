@@ -25,7 +25,7 @@
 %endif
 
 Name:           votca
-Version:        2025
+Version:        2025.1
 Release:        0
 %define         uversion %{version}
 %define         sover 2025
@@ -51,12 +51,10 @@ BuildRequires:  gromacs-openmpi
 %endif
 %endif
 BuildRequires:  hdf5-devel
-BuildRequires:  lammps
 BuildRequires:  libboost_filesystem-devel >= 1.71.0
 BuildRequires:  libboost_program_options-devel >= 1.71.0
 BuildRequires:  libboost_regex-devel >= 1.71.0
 BuildRequires:  libboost_serialization-devel >= 1.71.0
-BuildRequires:  libboost_system-devel >= 1.71.0
 BuildRequires:  libboost_test-devel >= 1.71.0
 BuildRequires:  libboost_timer-devel >= 1.71.0
 BuildRequires:  libecpint-devel

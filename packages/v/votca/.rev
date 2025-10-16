@@ -127,4 +127,19 @@
     <comment></comment>
     <requestid>1266627</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>09845d1ccbe553a8e447bf355d2e0668</srcmd5>
+    <version>2025.1</version>
+    <time>1760629097</time>
+    <user>anag_factory</user>
+    <comment>- Drop dependency on lammps, package too long
+- Update to v2025.1
+  - CI: update release action, fix docker tag ([gh#votca/votca#1172])
+  - CMake: fix python install ([gh#votca/votca#1174])
+  - Update CI ([gh#votca/votca#1175])
+  - Fix deprecation warning on MacOS ([gh#votca/votca#1178])
+  - fix build with boost-1.89.0 ([gh#votca/votca#1183])
+</comment>
+    <requestid>1311520</requestid>
+  </revision>
 </revisionlist>

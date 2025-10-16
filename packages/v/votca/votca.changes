@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 15 17:11:08 UTC 2025 - Christoph Junghans <junghans@votca.org>
+
+- Drop dependency on lammps, package too long
+
+-------------------------------------------------------------------
+Mon Oct 13 22:22:46 UTC 2025 - Christoph Junghans <junghans@votca.org>
+
+- Update to v2025.1
+  - CI: update release action, fix docker tag ([gh#votca/votca#1172])
+  - CMake: fix python install ([gh#votca/votca#1174])
+  - Update CI ([gh#votca/votca#1175])
+  - Fix deprecation warning on MacOS ([gh#votca/votca#1178])
+  - fix build with boost-1.89.0 ([gh#votca/votca#1183])
+
+-------------------------------------------------------------------
 Fri Mar 28 18:04:34 UTC 2025 - Christoph Junghans <junghans@votca.org>
 
 - Update to v2025
