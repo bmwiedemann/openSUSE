@@ -1,7 +1,7 @@
 #
 # spec file for package MyGUI
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,7 @@ URL:            http://mygui.info/
 Source:         https://github.com/MyGUI/mygui/archive/MyGUI%{version}.tar.gz
 Source1:        %{name}.png
 Source99:       %{name}-rpmlintrc
+BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  dejavu
 BuildRequires:  dos2unix
@@ -38,11 +39,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  libOIS-devel
 BuildRequires:  libX11-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  ogre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
+BuildRequires:  (libboost_system-devel if boost-devel < 1.89)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(uuid)
 

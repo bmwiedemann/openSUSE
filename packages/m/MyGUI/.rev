@@ -156,4 +156,12 @@
     <comment></comment>
     <requestid>1132734</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d11e864900ec94907e37f60586b93b1f</srcmd5>
+    <version>3.4.3</version>
+    <time>1760632026</time>
+    <user>anag_factory</user>
+    <comment>- Boost.System is headers only since 1.69</comment>
+    <requestid>1311726</requestid>
+  </revision>
 </revisionlist>
