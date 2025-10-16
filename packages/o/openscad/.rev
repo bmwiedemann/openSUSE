@@ -123,4 +123,12 @@
     <comment></comment>
     <requestid>1269940</requestid>
   </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>948c66a8c66835ce952d626883f1b33c</srcmd5>
+    <version>2021.01</version>
+    <time>1760629149</time>
+    <user>anag_factory</user>
+    <comment>- extended changelog (forwarded request 1311701 from aschnell)</comment>
+    <requestid>1311728</requestid>
+  </revision>
 </revisionlist>

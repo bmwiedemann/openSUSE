@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 26 09:47:31 CEST 2025 - aschnell@suse.com
+
+- libboost_system was removed upstream (bsc#1249900)
+- Added patch
+  + fix_build_with_boost-1.89.patch
+
+-------------------------------------------------------------------
 Tue Apr 15 14:27:12 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add explicit BuildRequires: glew-devel since openscg-devel no
