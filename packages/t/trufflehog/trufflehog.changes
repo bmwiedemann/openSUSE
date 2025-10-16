@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 16 06:17:28 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.90.11:
+  * bump rardecode (#4503)
+  * Local Git Config Sanitization (#4502)
+  * Bump github.com/nwaples/rardecode/v2 (#4501)
+  * added prefix to the github old detector regex pattern (#4494)
+  * Fix wrong line number in private key detector (#4485) (#4486)
+  * refactor: use b.Loop() to simplify the code and improve performance (#4497)
+  * add support for account api token (#4495)
+  * Detect Organization ID to pass into AnalysisInfo for Atlassian Detector (#4480)
+  * set auth-in-url flag to true when using ssh clone (#4488)
+  * Proto update to support scanning confluence comments (#4484)
+  * Clarify what 'unknown' means (#4477)
+  * enhanced the api response handling in the secret verification (#4482)
+  * Return non-zero exit code if an error occurs during a scan (#4476)
+
+-------------------------------------------------------------------
 Mon Sep 22 09:52:43 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.90.8:
