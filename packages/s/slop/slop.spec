@@ -1,7 +1,7 @@
 #
 # spec file for package slop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           slop
-%define lname	libslopy7_6
-Version:        7.6
+%define lname	libslopy7_7
+Version:        7.7
 Release:        0
 Summary:        Tool to query for a screen region selection
 License:        GPL-3.0-or-later
@@ -58,12 +58,12 @@ This library implements the slop utility's functionality to mark a
 region ont the screen.
 
 %package devel
-Summary:        Development files for the slop library
+Summary:        Development pkg for the slop library
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
-Header files for the slop library.
+Development files for the slop library.
 
 %prep
 %autosetup -p1
@@ -87,7 +87,7 @@ Header files for the slop library.
 %{_libdir}/libslopy.so.7*
 
 %files devel
-%{_includedir}/*
+%{_includedir}/slop.hpp
 %{_libdir}/libslopy.so
 
 %changelog

@@ -11,11 +11,11 @@ CMake's module.
  CMakeLists.txt | 7 ++++++-
  1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e5dac0a..4326b74 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -69,7 +69,12 @@ find_package(X11 REQUIRED)
+Index: slop-7.7/CMakeLists.txt
+===================================================================
+--- slop-7.7.orig/CMakeLists.txt
++++ slop-7.7/CMakeLists.txt
+@@ -70,7 +70,12 @@ find_package(X11 REQUIRED)
  find_package(XExt REQUIRED)
  
  if ( SLOP_OPENGL )
@@ -29,6 +29,3 @@ index e5dac0a..4326b74 100644
    find_package(OpenGL REQUIRED)
    find_package(GLX REQUIRED)
    find_package(XRender REQUIRED)
--- 
-2.48.1
-
