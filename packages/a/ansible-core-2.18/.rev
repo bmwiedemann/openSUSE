@@ -7,4 +7,12 @@
     <comment>new package following the 2.18.x releases of Ansible (Core), as there are bigger changes in 2.19.x that bite some users</comment>
     <requestid>1309759</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4645eb13a6837a1a13d14286fa6db165</srcmd5>
+    <version>2.18.10</version>
+    <time>1760629128</time>
+    <user>anag_factory</user>
+    <comment>rename package ansible-test to ansible-test-2.18</comment>
+    <requestid>1311513</requestid>
+  </revision>
 </revisionlist>

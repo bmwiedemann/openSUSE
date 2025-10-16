@@ -115,7 +115,7 @@ network automation, and multi-node orchestration. Ansible makes complex changes
 like zero-downtime rolling updates with load balancers easy. More information
 on the Ansible website <https://ansible.com/>.
 
-%package -n ansible-test
+%package -n ansible-test-%{ansible_core_major_minor_version}
 Summary:        Tool for testing ansible plugin and module code
 Requires:       %{name} = %{version}
 BuildRequires:  %{ansible_python}-virtualenv
@@ -124,7 +124,7 @@ Requires:       %{ansible_python}-virtualenv
 Conflicts:      ansible-test < %{ansible_core_major_minor_version}
 Conflicts:      ansible-test > %{ansible_core_major_minor_version}
 
-%description -n ansible-test
+%description -n ansible-test-%{ansible_core_major_minor_version}
 This package installs the ansible-test command for testing modules and plugins
 developed for ansible.
 
@@ -247,7 +247,7 @@ cd ..
 %dir %{_sysconfdir}/ansible
 %{_datadir}/ansible/
 
-%files -n ansible-test
+%files -n ansible-test-%{ansible_core_major_minor_version}
 %{_bindir}/ansible-test
 %{ansible_python_sitelib}/ansible_test
 
