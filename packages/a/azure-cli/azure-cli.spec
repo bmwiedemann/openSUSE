@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.77.0
+Version:        2.78.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -75,7 +75,7 @@ Requires:       %{pythons}-azure-mgmt-batchai >= 7.0.0b1
 Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
 Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
-Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
+Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.7.0
 Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 14.1.0~b1
@@ -90,9 +90,9 @@ Requires:       %{pythons}-azure-mgmt-extendedlocation >= 1.0.0b2
 Requires:       %{pythons}-azure-mgmt-hdinsight >= 9.0.0
 Requires:       %{pythons}-azure-mgmt-imagebuilder >= 1.3.0
 Requires:       %{pythons}-azure-mgmt-iotcentral >= 10.0.0b1
-Requires:       %{pythons}-azure-mgmt-iothub >= 3.0.0
+Requires:       %{pythons}-azure-mgmt-iothub >= 5.0.0~b1
 Requires:       %{pythons}-azure-mgmt-iothubprovisioningservices >= 1.1.0
-Requires:       %{pythons}-azure-mgmt-keyvault >= 12.0.0
+Requires:       %{pythons}-azure-mgmt-keyvault >= 12.1.0
 Requires:       %{pythons}-azure-mgmt-loganalytics >= 13.0.0
 Requires:       %{pythons}-azure-mgmt-managementgroups >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-maps >= 2.0.0
@@ -123,17 +123,17 @@ Requires:       %{pythons}-azure-mgmt-servicefabric >= 2.1.0
 Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 2.1.0~b1
 Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b3
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b2
-Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b21
+Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b22
 Requires:       %{pythons}-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
-Requires:       %{pythons}-azure-mgmt-storage >= 23.0.0
+Requires:       %{pythons}-azure-mgmt-storage >= 23.1.0
 Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
 Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-web >= 9.0.0
 Requires:       %{pythons}-azure-monitor-query >= 1.2.0
-Requires:       %{pythons}-azure-multiapi-storage >= 1.5.0
+Requires:       %{pythons}-azure-multiapi-storage >= 1.6.0
 Requires:       %{pythons}-azure-storage-common >= 1.4
 Requires:       %{pythons}-azure-synapse-accesscontrol >= 0.5.0
-Requires:       %{pythons}-azure-synapse-artifacts >= 0.19.0
+Requires:       %{pythons}-azure-synapse-artifacts >= 0.21.0
 Requires:       %{pythons}-azure-synapse-managedprivateendpoints >= 0.4.0
 Requires:       %{pythons}-azure-synapse-spark >= 0.2.0
 Requires:       %{pythons}-chardet >= 5.2.0
