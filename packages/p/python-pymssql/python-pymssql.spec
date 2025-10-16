@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymssql
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,14 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-pymssql
-Version:        2.3.7
+Version:        2.3.8
 Release:        0
 Summary:        A simple database interface to MS-SQL for Python
 License:        LGPL-2.1-only
 Group:          Development/Languages/Python
 URL:            https://pymssql.org
+#Git-Clone:     https://github.com/pymssql/pymssql.git
 Source:         https://files.pythonhosted.org/packages/source/p/pymssql/pymssql-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 3.0.11}
 BuildRequires:  %{python_module pip}
@@ -41,7 +43,7 @@ Microsoft SQL Servers from Python scripts. It is compliant with Python
 DB-API 2.0 Specification and works on most popular operating systems.
 
 %prep
-%setup -q -n pymssql-%{version}
+%autosetup -n pymssql-%{version}
 
 %build
 %pyproject_wheel
