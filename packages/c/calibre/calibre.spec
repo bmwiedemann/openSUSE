@@ -1,7 +1,7 @@
 #
 # spec file for package calibre
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,6 +55,8 @@ Patch2:         %{name}-setup.install.py.diff
 Patch3:         %{name}-no-update.diff
 # PATCH-FIX-OPENSUSE: disbale piper because since 8.8.0 calibre needs onnxruntime which is not in openSUSE.
 Patch4:         %{name}-disable_piper.patch
+# PATCH-FIX-OPENSUSE: fix build with Qt 6.10
+Patch5:         %{name}-fix-build-with-Qt6.10.patch
 ExclusiveArch:  aarch64 x86_64 riscv64
 %if 0%{?suse_version} <= 1550
 BuildRequires:  gcc12
@@ -94,7 +96,11 @@ BuildRequires:  libopenssl-3-devel >= 3.1.4
 BuildRequires:  libpoppler-devel >= 23.08.0
 BuildRequires:  libstemmer-devel >= 2.2.0
 BuildRequires:  libwmf-devel >= 0.2.8
+%if 0%{suse_version} == 1600
+BuildRequires:  (libpodofo-devel >= 0.10.3 and libpodofo-devel < 1.0.0)
+%else
 BuildRequires:  (libpodofo-0_10-devel >= 0.10.3 and libpodofo-0_10-devel < 1.0.0)
+%endif
 # upstream use: mozjpeg >= 4.1.4
 BuildRequires:  optipng >= 0.7.7
 BuildRequires:  poppler-tools >= 23.08.0
@@ -304,6 +310,7 @@ into ebooks for convenient reading.
 %patch -P 2 -p1
 %patch -P 3 -p1 -b .no-update
 %patch -P 4 -p1
+%patch -P 5 -p1
 
 # dos2unix newline conversion
 sed -i 's/\r//' src/calibre/web/feeds/recipes/*
