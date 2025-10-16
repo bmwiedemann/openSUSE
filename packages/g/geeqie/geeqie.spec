@@ -36,7 +36,6 @@ BuildRequires:  libtiff-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-lxml
-BuildRequires:  update-desktop-files
 BuildRequires:  vim
 BuildRequires:  yelp-tools
 BuildRequires:  yelp-xsl
@@ -78,7 +77,6 @@ Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file org.geeqie.Geeqie
 %fdupes %{buildroot}/%{_prefix}
 
 # Already in the license directory
