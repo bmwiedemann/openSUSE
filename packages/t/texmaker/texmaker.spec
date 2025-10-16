@@ -31,6 +31,8 @@ URL:            http://www.xm1math.net/texmaker/
 Source:         http://www.xm1math.net/texmaker/texmaker-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM CVE-2025-50952.patch bsc#1247798 badshah400@gmail.com -- Guard against 0 offset to nullptr in openjpeg bundled with pdfium
 Patch0:         CVE-2025-50952.patch
+# PATCH-FIX-UPSTREAM 0001-Fix-build-with-Qt-6.10.patch -- Qt 6.10 compatibility fix
+Patch1:         0001-Fix-build-with-Qt-6.10.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

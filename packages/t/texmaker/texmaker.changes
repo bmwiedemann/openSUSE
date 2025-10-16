@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 14 11:21:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * 0001-Fix-build-with-Qt-6.10.patch
+
+-------------------------------------------------------------------
 Sun Sep 28 16:36:00 UTC 2025 - Olivier Belleux <o.g.m.belleux@gmail.com>
 
 - change %define gcc_ver 8 to %define gcc_ver 13 
