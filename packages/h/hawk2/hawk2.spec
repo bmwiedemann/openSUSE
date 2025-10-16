@@ -59,7 +59,7 @@ Source10:       logger-1.7.0.gem
 Source11:       minitest-5.25.5.gem
 Source12:       securerandom-0.4.1.gem
 Source13:       tzinfo-2.0.6.gem
-Source14:       uri-1.0.3.gem
+Source14:       uri-1.0.4.gem
 Source15:       activesupport-8.0.2.1.gem
 Source16:       builder-3.3.0.gem
 Source17:       erubi-1.13.1.gem
@@ -71,7 +71,7 @@ Source22:       crass-1.0.6.gem
 Source23:       loofah-2.24.0.gem
 Source24:       rails-html-sanitizer-1.6.2.gem
 Source25:       actionview-8.0.2.1.gem
-Source26:       rack-3.1.16.gem
+Source26:       rack-3.1.18.gem
 Source27:       rack-session-2.1.1.gem
 Source28:       rack-test-2.2.0.gem
 Source29:       useragent-0.16.11.gem
