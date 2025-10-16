@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  8 06:54:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gtkhtml2-devel BuildRequires: Not used, nor needed.
+
+-------------------------------------------------------------------
 Tue Feb 27 11:15:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

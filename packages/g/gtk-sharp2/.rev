@@ -367,4 +367,12 @@
     <comment></comment>
     <requestid>1162894</requestid>
   </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>c9db0b928ea09e88d6b5ca28acb2d33a</srcmd5>
+    <version>2.12.45</version>
+    <time>1760629172</time>
+    <user>anag_factory</user>
+    <comment>- Drop gtkhtml2-devel BuildRequires: Not used, nor needed. (forwarded request 1309755 from iznogood)</comment>
+    <requestid>1311705</requestid>
+  </revision>
 </revisionlist>
