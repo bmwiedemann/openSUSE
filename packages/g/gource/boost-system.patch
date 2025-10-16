@@ -1,0 +1,11 @@
+diff -purN a/configure.ac b/configure.ac
+--- a/configure.ac	2024-06-17 04:14:26.000000000 +0200
++++ b/configure.ac	2025-10-11 15:33:38.618271750 +0200
+@@ -47,7 +47,6 @@ AC_CHECK_FUNCS([IMG_LoadJPG_RW], , AC_MS
+ 
+ #BOOST
+ AX_BOOST_BASE([1.46], , AC_MSG_ERROR(Boost Filesystem >= 1.46 is required. Please see INSTALL))
+-AX_BOOST_SYSTEM
+ AX_BOOST_FILESYSTEM
+ 
+ CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"

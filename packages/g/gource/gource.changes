@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 11 13:40:34 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Boost.System is headers only since 1.69
+  * boost-system.patch
+
+-------------------------------------------------------------------
 Sat Jun 22 14:25:33 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 0.55: Fixed build with Boost 1.85.0. 

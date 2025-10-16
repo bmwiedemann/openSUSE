@@ -187,4 +187,12 @@
 - Remove 0001-Fix-build-with-Boost-1.85.0.patch: Fixed upstream.</comment>
     <requestid>1182634</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6297b4889980e02f36583af87bc6ea69</srcmd5>
+    <version>0.55</version>
+    <time>1760629170</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1311681</requestid>
+  </revision>
 </revisionlist>

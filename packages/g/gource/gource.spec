@@ -24,11 +24,14 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Visualization/Graph
 URL:            https://gource.io/
 Source:         https://github.com/acaudwell/Gource/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE = Boost.System is headers only since 1.69
+Patch1:         boost-system.patch
+BuildRequires:  boost-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel >= 0.9.3
 BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
+BuildRequires:  (libboost_system-devel if boost-devel < 1.69)
 BuildRequires:  pkgconfig
 BuildRequires:  tinyxml-devel
 BuildRequires:  pkgconfig(SDL2_image) >= 2.0
@@ -37,6 +40,10 @@ BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(sdl2) >= 2.0
 Requires:       freefont
+%if 0%{?suse_version} >= 1600
+BuildRequires:  automake
+BuildRequires:  libtool
+%endif
 
 %description
 Gource is a software version control visualization tool.
@@ -50,9 +57,15 @@ Currently there is first party support for Git and Mercurial,
 and third party (using additional steps) for CVS and SVN.
 
 %prep
-%autosetup -p1
+%setup -q
+%if 0%{?suse_version} >= 1600
+%patch -p1 -P 1
+%endif
 
 %build
+%if 0%{?suse_version} >= 1600
+autoreconf -fiv
+%endif
 %configure \
 	--with-boost-libdir=%{_libdir} \
 	--with-tinyxml=yes \
