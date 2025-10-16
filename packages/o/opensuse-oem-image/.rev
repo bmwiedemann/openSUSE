@@ -24,4 +24,12 @@
 - Add KDE Plasma flavor</comment>
     <requestid>1308441</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>40ff77fc6ecbdaa3a8d3e2fc5fc0d1f2</srcmd5>
+    <version>1.0.0</version>
+    <time>1760629126</time>
+    <user>anag_factory</user>
+    <comment>- Drop issue-generator: deprecated by agetty's internal features.</comment>
+    <requestid>1311507</requestid>
+  </revision>
 </revisionlist>
