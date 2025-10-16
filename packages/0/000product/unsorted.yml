@@ -10156,6 +10156,7 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
+  - kimageformats 
   - kimageformats-eps 
   - kimagemapeditor 
   - kimagemapeditor-lang 
@@ -10168,6 +10169,8 @@ unsorted:
   - kio-admin 
   - kio-admin-lang 
   - kio-devel 
+  - kio-extras5 
+  - kio-extras5-lang 
   - kio-gdrive-lang 
   - kio-stash 
   - kio-stash-lang 
@@ -11122,12 +11125,16 @@ unsorted:
   - libKChart6-3 
   - libKChart6-3-lang 
   - libKDb3-4 
+  - libKF5Activities5 
+  - libKF5ActivitiesStats1 
   - libKF5Attica5 
   - libKF5CalendarCore5 
   - libKF5CalendarEvents5 
   - libKF5Cddb5 
   - libKF5ConfigQml5 
   - libKF5Contacts5 
+  - libKF5DNSSD5 
+  - libKF5DNSSD5-lang 
   - libKF5Declarative5-lang 
   - libKF5Emoticons5 
   - libKF5Holidays5 
@@ -11139,6 +11146,7 @@ unsorted:
   - libKF5KCMUtilsCore5 
   - libKF5KDELibs4Support5 
   - libKF5KDcraw5 
+  - libKF5KExiv2-15_0_0 
   - libKF5NewStuff5 
   - libKF5NewStuff5-lang 
   - libKF5NewStuffCore5 
@@ -14163,6 +14171,7 @@ unsorted:
   - libkdsingleapplication1_2 
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
+  - libkdsoap2 
   - libkdstatemachineeditor_core-qt6-2 
   - libkdstatemachineeditor_debuginterfaceclient-qt6-2 
   - libkdstatemachineeditor_debuginterfacesource-qt6-static 
@@ -14198,6 +14207,7 @@ unsorted:
   - libkeccak-devel 
   - libkeccak1 
   - libkeduvocdocument-devel 
+  - libkexiv2 
   - libkexiv2-devel 
   - libkexiv2-qt6-devel 
   - libkeybinder0 
@@ -14208,6 +14218,7 @@ unsorted:
   - libkgraphviewer0 
   - libkim-api2 
   - libkioarchive-devel 
+  - libkioarchive5 
   - libkioarchive6-devel 
   - libkissfft-float131 
   - libkkc-devel 
@@ -36921,6 +36932,7 @@ unsorted:
   - saxon10-scripts 
   - saxpath 
   - saxpath-javadoc 
+  - sazanami-fonts 
   - sbc-devel 
   - sbcl 
   - sbcl-bin 
