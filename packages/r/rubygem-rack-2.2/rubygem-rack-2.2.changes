@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 14 13:32:37 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- update to version 2.2.20 (bsc#1251936)
+
+   * [CVE-2025-61919] application/x-www-form-urlencoded`, calling `rack.input.read(nil)` without enforcing a length or cap
+
+-------------------------------------------------------------------
 Thu Oct  9 09:56:43 UTC 2025 - Daniel Donisa <daniel.donisa@suse.com>
 
 - update to version 2.2.19
