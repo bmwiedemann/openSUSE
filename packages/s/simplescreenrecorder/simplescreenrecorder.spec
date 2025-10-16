@@ -1,7 +1,7 @@
 #
 # spec file for package simplescreenrecorder
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,21 +21,22 @@ Version:        0.4.4
 Release:        0
 Summary:        A feature-rich screen recorder that supports X11 and OpenGL
 License:        GPL-3.0-or-later
-Group:          System/X11/Utilities
-URL:            http://www.maartenbaert.be/simplescreenrecorder
+URL:            https://www.maartenbaert.be/simplescreenrecorder/
 Source:         https://github.com/MaartenBaert/ssr/archive/%{version}.tar.gz
 Source9:        baselibs.conf
 # PATCH-FIX-UPSTREAM badshah400@gmail.com -- Compatibility for newer ffmpeg (>=4); patch taken from upstream git commit
 Patch0:         https://github.com/MaartenBaert/ssr/commit/768957a8de1534f0aa91bfc5d7af3c32f222beb8.patch
 # PATCH-FIX-UPSTREAM badshah499@gmail.com -- Compatibility for ffmpeg 7; patch taken from upstream commits
 Patch1:         simplescreenrecorder-ffmpeg-7-compat.patch
+# PATCH-FIX-UPSTREAM munix9@googlemail.com -- Compatibility for ffmpeg 8; patch taken from upstream commits
+Patch2:         simplescreenrecorder-ffmpeg-8-compat.patch
 BuildRequires:  cmake
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg8-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Gui)       >= 5.7
 BuildRequires:  pkgconfig(Qt5Widgets)   >= 5.7
@@ -102,7 +103,6 @@ Features:
 %package -n libssr-glinject
 Summary:        Simple Screen Recorder openGL plugin
 License:        MIT
-Group:          System/Libraries
 Requires:       %{name} = %{version}
 
 %description -n libssr-glinject
@@ -129,15 +129,16 @@ export CXXFLAGS="%{optflags} -fPIC"
        -DWITH_QT5=True \
        -DWITH_GLINJECT=False
 %endif
-make V=1 %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
 %fdupes -s %{buildroot}%{_datadir}/icons/hicolor
-%suse_update_desktop_file %{name}
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
-%defattr(-,root,root)
 %doc *.txt *.md data/resources/about.htm
 %license COPYING
 %{_bindir}/%{name}
@@ -151,7 +152,6 @@ make V=1 %{?_smp_mflags}
 
 %ifarch %{ix86} x86_64
 %files -n libssr-glinject
-%defattr(-,root,root)
 %{_libdir}/libssr-glinject.so
 %endif
 

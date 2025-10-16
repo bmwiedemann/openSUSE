@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 13 06:32:29 UTC 2025 - munix9@googlemail.com
+
+- Add simplescreenrecorder-ffmpeg-8-compat.patch: ffmpeg 8
+  compatibility (upstream commits) [gh#MaartenBaert/ssr#1069].
+- Add %check section for desktop-file-validate
+- Remove 'Group:' and '%defattr'
+
+-------------------------------------------------------------------
 Wed Aug 21 08:58:47 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add simplescreenrecorder-ffmpeg-7-compat.patch: ffmpeg 7
