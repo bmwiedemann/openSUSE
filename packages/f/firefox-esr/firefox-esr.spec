@@ -154,7 +154,7 @@ BuildRequires:  python3-devel
 %endif
 %endif
 BuildRequires:  rust-cbindgen >= 0.28
-%if 0%{?suse_version} > 1560
+%if 0%{?suse_version} > 1600
 BuildRequires:  translate-suse-desktop
 %endif
 BuildRequires:  unzip
@@ -356,7 +356,7 @@ fi
 %else
 %setup -q -n %{srcname}-%{orig_version}
 %endif
-%if 0%{?suse_version} > 1560
+%if 0%{?suse_version} > 1600
 cp %{SOURCE1} %{desktop_file_name}.desktop.in.in
 %else
 cp %{SOURCE5} %{desktop_file_name}.desktop
@@ -367,7 +367,7 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 
 %build
 # desktop file
-%if 0%{?suse_version} > 1560
+%if 0%{?suse_version} > 1600
 sed "s:%%NAME:%{appname}:g
 s:%%EXEC:%{progname}:g
 s:%%ICON:%{progname}:g
