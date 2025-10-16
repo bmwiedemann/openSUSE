@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 13 11:17:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.23.1
+  * Default to PQ TLS for s2n handlers if TLSv1.3 is negotiated
+    by @WillChilds-Klein in (#740)
+
+-------------------------------------------------------------------
 Tue Sep 30 08:03:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.22.1
