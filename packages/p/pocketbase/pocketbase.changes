@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Oct 15 21:16:56 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Disable building on x86 and arm 32bit architectures
+
+- Update to version 0.30.3:
+  * Fixed legacy identitity field priority check when a username is
+  	a valid email address
+- Update to version 0.30.2:
+  * No relevant changes
+- Update to version 0.30.1:
+  * Excluded the lost+found directory from the backups
+- Update to version 0.30.0:
+  * Eagerly escape the S3 request path following the same rules as
+  	in the S3 signing header
+  * Added Lark OAuth2 provider
+  * Increased test tokens exp claim to minimize eventual issues
+  	with reproducible builds
+  * Added os.Root bindings to the JSVM
+  * Various minor UI improvements
+  * Updated the minimum package Go version to 1.24.0
+- Update to version 0.29.3:
+  * Try to forward Apple OAuth2 POST redirect user's name so that
+  	it can be returned (and eventually assigned) with the success
+  	response of the all-in-one auth call
+  * Registered missing $filesystem, $mails, $template and __hooks
+  	bindings in the JSVM migrations
+  * Regenerated JSVM types to include methods from structs with
+  	single generic parameter
+- Update to version 0.29.2:
+  * No relevant changes
+- Update to version 0.29.1:
+  * Added Box.com OAuth2 provider
+  * Updated the X/Twitter provider to return the confirmed_email
+	field and to use the x.com domain
+  * Updated modernc.org/sqlite to 1.38.2 (SQLite 3.50.3)
+  * Fixed example List API response
+
+-------------------------------------------------------------------
 Thu Jul 31 18:33:37 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Don't disable cgo on riscv64
@@ -6,4 +44,4 @@ Thu Jul 31 18:33:37 UTC 2025 - Andreas Schwab <schwab@suse.de>
 -------------------------------------------------------------------
 Tue Jul 29 12:04:08 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Initial packaging at version 0.29.0 
+- Initial packaging at version 0.29.0

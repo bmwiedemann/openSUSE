@@ -18,7 +18,7 @@
 
 
 Name:           pocketbase
-Version:        0.29.0
+Version:        0.30.3
 Release:        0
 Summary:        Open Source realtime backend
 License:        MIT
@@ -27,6 +27,8 @@ Source0:        https://github.com/pocketbase/pocketbase/archive/v%{version}/%{n
 Source1:        vendor.tar.zst
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
+# 32-bit builds are not supported upstream
+ExcludeArch:    %{ix86} %{arm32}
 
 %description
 PocketBase is an open source Go backend that includes:
@@ -40,7 +42,7 @@ PocketBase is an open source Go backend that includes:
 %autosetup -p1 -a1
 
 %build
-%ifarch %x86_64 %arm64 %power64
+%ifarch %{x86_64} %{arm64} %{power64}
 export CGO_ENABLED=0
 %endif
 
