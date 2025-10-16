@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 15 10:22:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.0
+  * Add `RootsOfPartitionDS` (essentially the same as iterating
+    over all of `IteratorOfRootsOfPartitionDS` and storing the
+    result in a list, but faster)
+  * Make `PartitionDS` more convenient to use by allowing to omit
+    the filter argument
+  * Fix printing of `PartitionDSFamily`
+
+-------------------------------------------------------------------
 Sat Jun 21 23:46:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.3.3
