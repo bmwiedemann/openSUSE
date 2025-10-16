@@ -1,4 +1,239 @@
 -------------------------------------------------------------------
+Tue Oct 14 02:12:08 UTC 2025 - Mikhail Terekhov <termim@gmail.com>
+
+- Update to version 2.5.4:
+  * chore: update changelog for 2.5.4
+  * chore: update transitive dependencies
+  * chore: update clap to 4.5.43
+  * refactor: clippy fixes
+  * fix: gix 0.73 breaking changes
+  * chore: update gix to 0.73
+  * chore: update transitive dependencies
+  * chore: update serde_json to 1.0.142
+  * chore: update winnow to 0.7.12
+  * chore: update clap to 4.5.42
+  * refactor: clippy lints
+  * stgit.el: Use `with-eval-after-load' instead of a homemade version
+  * stgit.el: Use `advice-add' instead of `defadvice'
+  * stgit.el: Fix various checkdoc warnings
+  * stgit.el: Support Emacs versions < 31
+  * feat(bash): complete patches from chosen branch
+  * chore: update dependencies
+  * refactor: repair clippy lints
+  * chore: update clap to 4.5.40
+  * chore: update anstyle to 1.0.11
+  * chore: update winnow to 0.7.11
+  * chore: update anyhow to 1.0.98
+  * chore: update jiff to 0.2.15
+  * chore: update tempfile to 3.20.0
+  * chore: update curl to 0.4.48
+  * chore: update flate2 to 1.1.2
+  * chore: update ctrlc to 3.4.7
+  * chore(deps): bump winnow from 0.7.6 to 0.7.10
+  * chore(deps): bump clap from 4.5.36 to 4.5.39
+  * docs: Update copyright year
+  * chore: update transitive dependencies
+  * chore: update tempfile to 3.19.1
+  * chore: update jiff to 0.2.6
+  * chore: update winnow to 0.7.6
+  * chore: update gix to 0.71
+  * chore: update indexmap to 2.9.0
+  * chore: update is-terminal to 0.4.16
+  * chore: update ctrlc to 3.4.6
+  * chore: update bstr to 1.12.0
+  * chore: update clap to 4.5.36
+  * chore: update flate2 to 1.1.1
+  * chore: update serde to 1.0.219
+  * chore: update serde_json to 1.0.140
+  * chore: update thiserror to 2.0.12
+  * chore: update anyhow to 1.0.97
+  * refactor: repair clippy lint
+  * stgit.el: Move 'stgit-patch-status-face-alist' before first use
+  * stgit.el: Silence warnings of missing vc variables
+  * stgit.el: Replace ad-hoc `make-local-variable' with `defvar-local'
+  * stgit.el: Use defvar-local instead of make-local-variable
+  * stgit.el: Enable lexical-binding
+  * stgit.el: Allow empty descriptions
+  * stgit.el: Add "--no-color" flag to 'git log' and 'git show'
+  * stgit.el: Pass patch into `stgit-process-files'
+  * chore: update changelog for 2.5.3
+  * chore: update dependencies
+  * refactor(stgit.el): use space-based indentation consistently
+  * refactor: repair clippy lint
+  * chore(deps): bump tempfile from 3.16.0 to 3.17.0
+  * chore(deps): bump jiff from 0.2.0 to 0.2.1
+  * build: statically linked packages for riscv64
+  * chore: update changelog for 2.5.2
+  * chore: update jiff to 0.2.0
+  * chore: update winnow to 0.7.2
+  * fix: partial_ref_name
+  * chore: resolve winnow deprecations
+  * chore: update dependencies
+  * ci: disable test for windows build
+  * chore(deps): bump jiff from 0.1.24 to 0.1.29
+  * chore(deps): bump serde_json from 1.0.135 to 1.0.138
+  * chore(deps): bump is-terminal from 0.4.13 to 0.4.15
+  * chore(deps): bump indexmap from 2.7.0 to 2.7.1
+  * chore(deps): bump clap from 4.5.26 to 4.5.28
+  * stgit.el: Fix various compile warnings
+  * stgit.el: Replace depercated cl function calls with new style
+  * stgit.el: Fix some checkdoc warnings
+  * stgit.el: Fix emacs pre-pending "Summary: " to log-edit buffers
+  * chore: update changelog for 2.5.1
+  * chore: update release checklist
+  * ci: use ubuntu-24.04 image
+  * fix: assure branch creation respects fetch-specs of remotes. (#522)
+  * chore: update to latest `gix` for improved API (#522)
+  * chore: update transitive deps
+  * chore: update anstyle-wincon to 3.0.7
+  * chore: update bitflags to 2.8.0
+  * chore: update jiff to 0.1.24
+  * chore: update transitive deps
+  * chore: update syn to 2.0.96
+  * chore: update bitflags to 2.7.0
+  * chore: update clap to 4.5.26
+  * chore: update serde_json to 1.0.135
+  * chore: update thiserror to 2.0.11
+  * chore: update winnow to 0.6.24
+  * refactor: repair clippy lints for is_some_and
+  * test: repair regression with git v2.48
+  * chore(deps): bump jiff from 0.1.18 to 0.1.21
+  * chore(deps): bump bstr from 1.11.1 to 1.11.3
+  * chore(deps): bump tempfile from 3.14.0 to 3.15.0
+  * chore: update changelog for 2.5.0
+  * chore: update transitive deps
+  * chore: update windows-sys to 0.59.0
+  * chore: update serde to 1.0.217
+  * chore: update winnow to 0.6.21
+  * chore: update jiff to 0.1.18
+  * docs: explain stgit.autosign a bit better
+  * feat: new "name" subcommand
+  * feat: organize subcommands by group in help
+  * chore: fix warning
+  * feat: support calling stg rebase without arguments
+  * tests: add test for rebase without arguments
+  * chore: update dependencies
+  * chore: update serde_json to 1.0.134
+  * chore: update thiserror to 2.0.9
+  * chore: update anyhow to 1.0.95
+  * chore: update gix to 0.69
+  * chore: update changelog for 2.4.13
+  * chore: update transitive deps
+  * chore: update jiff to 0.1.15
+  * chore: update gix to 0.68
+  * chore: update flate2 to 1.0.35
+  * chore: update serde to 1.0.216
+  * chore: update thiserror to 2.0.7
+  * chore: update indexmap to 2.7.0
+  * chore: update clap to 4.5.23
+  * chore: update bstr to 1.11.1
+  * chore: update anyhow to 1.0.94
+  * refactor: repair clippy lints
+  * chore: update thiserror to 2.0.3
+  * chore: update allocator-api2 to 0.2.19
+  * chore: update url to 2.5.3
+  * chore: update cc to 1.1.37
+  * chore: update anstream to 0.6.18
+  * chore: update fastrand to 2.2.0
+  * chore: update libc to 0.2.162
+  * chore: update curl-sys to 0.4.78+curl-8.11.0
+  * chore: update tempfile to 3.14.0
+  * chore: update anyhow to 1.0.93
+  * chore: update gix to 0.67.0
+  * chore: update autocfg to 1.4.0
+  * chore: update unicode-bidi to 0.3.17
+  * chore: update unicode-ident to 1.0.13
+  * chore: update redox_syscall to 0.5.7
+  * chore: update colorchoice to 1.0.3
+  * chore: update anstyle-query to 1.1.2
+  * chore: update anstyle-parse to 0.2.6
+  * chore: update proc-macro2 to 1.0.89
+  * chore: update unicode-normalization to 0.1.24
+  * chore: update gix-quote to 0.4.13
+  * chore: update gix-bitmap to 0.2.12
+  * chore: update gix-config-value to 0.14.9
+  * chore: update memmap2 to 0.9.5
+  * chore: update gix-chunk to 0.4.9
+  * chore: update pkg-config to 0.3.31
+  * chore: update cc to 1.1.34
+  * chore: update anstream to 0.6.17
+  * chore: update rustix to 0.38.38
+  * chore: update once_cell to 1.20.2
+  * chore: update gix-validate to 0.9.1
+  * chore: update gix-utils to 0.1.13
+  * chore: update gix-sec to 0.10.9
+  * chore: update gix-date to 0.9.1
+  * chore: update gix-command to 0.3.10
+  * chore: update schannel to 0.1.26
+  * chore: update openssl-sys to 0.9.104
+  * chore: update libc to 0.2.161
+  * chore: update regex-automata to 0.4.8
+  * chore: update winnow to 0.6.20
+  * chore: update thiserror to 1.0.67
+  * chore: update tempfile to 3.13.0
+  * chore: update tar to 0.4.43
+  * chore: update serde_json to 1.0.132
+  * chore: update serde to 1.0.214
+  * chore: update jiff to 0.1.14
+  * chore: update indexmap to 2.6.0
+  * chore: update flate2 to 1.0.34
+  * chore: update encoding_rs to 0.8.35
+  * chore: update curl to 0.4.47
+  * chore: update clap to 4.5.20
+  * chore: update anyhow to 1.0.92
+  * chore: update anstyle to 1.0.10
+
+-------------------------------------------------------------------
+Mon Oct 13 00:42:56 UTC 2025 - Mikhail Terekhov <termim@gmail.com>
+
+- Update to 2.5.4
+  * stgit.el: Use with-eval-after-load instead of a homemade version
+  * stgit.el: Use advice-add instead of defadvice
+  * stgit.el: Fix various checkdoc warnings
+  * stgit.el: Support Emacs versions < 31
+  * stgit.el: Move 'stgit-patch-status-face-alist' before first use
+  * stgit.el: Silence warnings of missing vc variables
+  * stgit.el: Replace ad-hoc make-local-variable with defvar-local
+  * stgit.el: Use defvar-local instead of make-local-variable
+  * stgit.el: Enable lexical-binding
+  * stgit.el: Allow empty descriptions
+  * stgit.el: Add "--no-color" flag to 'git log' and 'git show'
+  * stgit.el: Pass patch into stgit-process-files
+  * chore: update gix to 0.73
+  * docs: Update copyright year
+  * feat(bash): complete patches from chosen branch
+
+- Update to 2.5.3
+  * build: statically linked packages for riscv64
+  * chore: update dependencies
+  * refactor(stgit.el): use space-based indentation consistently
+
+- Update to 2.5.2 2025-02-16
+  * fix(stgit.el): various compile warnings
+  * fix(stgit.el): Replace depercated cl function calls with new style
+  * fix(stgit.el): checkdoc warnings
+  * fix(stgit.el): emacs pre-pending "Summary: " to log-edit buffers
+  * chore: update jiff to 0.2.0
+  * chore: update winnow to 0.7.2
+  * chore: resolve winnow deprecations
+  * chore: update dependencies
+
+- Update to 2.5.1 2025-01-18
+  * fix: assure branch creation respects fetch-specs of remotes (#522)
+  * ci: ubuntu-24.04 is now used to build release binaries
+  * chore: gix is updated to 0.70
+
+- Update to 2.5.0 2025-01-01
+  * feat: new "name" subcommand
+  * feat: support calling stg rebase without arguments
+  * docs: explain stgit.autosign a bit better
+  * feat: organize subcommands by group in help
+
+- Update to 2.4.13
+  * fix(squash): preserve consensus author
+  * chore: update gix to 0.68
+
+-------------------------------------------------------------------
 Fri Sep 20 07:31:00 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.4.12:

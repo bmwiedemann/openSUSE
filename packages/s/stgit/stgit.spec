@@ -1,7 +1,7 @@
 #
 # spec file for package stgit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           stgit
-Version:        2.4.12
+Version:        2.5.4
 Release:        0
 Summary:        Stacked GIT - Source Code Management Tool
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ URL:            https://stacked-git.github.io
 Source0:        stgit-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  asciidoc
+BuildRequires:  cargo >= 1.82
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
 BuildRequires:  pkgconfig
