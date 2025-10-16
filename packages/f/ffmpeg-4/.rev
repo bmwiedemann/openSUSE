@@ -814,4 +814,13 @@
     <comment>- add missing closing brace to ffmpeg-4-CVE-2025-7700.patch</comment>
     <requestid>1309818</requestid>
   </revision>
+  <revision rev="89" vrev="9">
+    <srcmd5>eb9ab67a90a21cd74b414cdf07384306</srcmd5>
+    <version>4.4.6</version>
+    <time>1760629100</time>
+    <user>anag_factory</user>
+    <comment>- Add ffmpeg-4-CVE-2025-59728.patch: avformat/dashdec: Allocate
+  space for appended &quot;/&quot; (bsc#1251137, CVE-2025-59728).</comment>
+    <requestid>1311467</requestid>
+  </revision>
 </revisionlist>

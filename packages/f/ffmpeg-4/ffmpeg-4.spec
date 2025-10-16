@@ -144,6 +144,7 @@ Patch30:        ffmpeg-avcodec-libdav1d-don-t-repeatedly-parse-the-same-seq.patc
 Patch31:        ffmpeg-4-CVE-2024-36618.patch
 Patch32:        ffmpeg-4-CVE-2025-7700.patch
 Patch33:        glslang16.patch
+Patch34:        ffmpeg-4-CVE-2025-59728.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

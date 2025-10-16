@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 15 02:12:04 UTC 2025 - SongChuan Kang <sckang@suse.com>
+
+- Add ffmpeg-4-CVE-2025-59728.patch: avformat/dashdec: Allocate
+  space for appended "/" (bsc#1251137, CVE-2025-59728).
+
+-------------------------------------------------------------------
 Tue Oct  7 12:34:56 UTC 2025 - olaf@aepfle.de
 
 - add missing closing brace to ffmpeg-4-CVE-2025-7700.patch 
