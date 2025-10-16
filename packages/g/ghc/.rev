@@ -1175,4 +1175,15 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>version update</comment>
     <requestid>1297797</requestid>
   </revision>
+  <revision rev="118" vrev="4">
+    <srcmd5>0b241acf329e4dc5dfa9056c80703b97</srcmd5>
+    <version>9.12.2</version>
+    <time>1760629128</time>
+    <user>anag_factory</user>
+    <comment>- cleanup _constraints and use higher values for ram and disk
+- add aarch64_inter_far.patch to add new ghc-option on aarch64 ncg
+- use workaround to bypass linker problems on aarch64
+- cleanup deps (forwarded request 1311508 from mimi_vx)</comment>
+    <requestid>1311509</requestid>
+  </revision>
 </revisionlist>

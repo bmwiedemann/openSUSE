@@ -1,41 +1,10 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">16</size>
+      <size unit="G">32</size>
     </disk> 
     <physicalmemory>
-      <size unit="G">4</size>
+      <size unit="G">16</size>
     </physicalmemory>
   </hardware>
- <overwrite>
-    <conditions>
-      <arch>aarch64</arch>
-      <arch>s390x</arch>
-    </conditions>
-    <hardware>
-      <physicalmemory>
-        <size unit="G">10</size>
-      </physicalmemory>
-    </hardware>
-  </overwrite>
-  <overwrite>
-    <conditions>
-      <arch>riscv64</arch>
-    </conditions>
-    <hardware>
-      <disk>
-	<size unit="G">30</size>
-      </disk> 
-    </hardware>
-  </overwrite>
- <overwrite>
-    <conditions>
-      <arch>loongarch64</arch>
-    </conditions>
-    <hardware>
-      <physicalmemory>
-        <size unit="G">16</size>
-      </physicalmemory>
-    </hardware>
-  </overwrite>
 </constraints>

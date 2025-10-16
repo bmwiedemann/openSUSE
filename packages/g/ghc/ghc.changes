@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 15 13:59:39 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- cleanup _constraints and use higher values for ram and disk
+- add aarch64_inter_far.patch to add new ghc-option on aarch64 ncg
+- use workaround to bypass linker problems on aarch64
+- cleanup deps 
+
+-------------------------------------------------------------------
 Mon Aug  4 20:57:07 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Cabal-absolute-datadir.patch: Set <pkgname_datadir> to an absolute path

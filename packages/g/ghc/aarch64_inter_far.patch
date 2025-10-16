@@ -1,0 +1,165 @@
+From 8fe9b012907fb5d84eefaa60980f7024b3951fcd Mon Sep 17 00:00:00 2001
+From: Andreas Klebinger <klebinger.andreas@gmx.at>
+Date: Thu, 18 Apr 2024 13:25:18 +0200
+Subject: [PATCH] NCG: AArch64 - Add -finter-module-far-jumps.
+
+When enabled the arm backend will assume jumps to targets outside of the
+current module are further than 128MB away.
+
+This will allow for code to work if:
+* The current module results in less than 128MB of code.
+* The whole program is loaded within a 4GB memory region.
+
+We have seen a few reports of broken linkers (#24648) where this flag might allow
+a program to compile/run successfully at a very small performance cost.
+
+-------------------------
+Metric Increase:
+    T783
+-------------------------
+
+(cherry picked from commit f32d6c2b468c67fed619f2fa1fb97eb012afbb6e)
+---
+ compiler/GHC/CmmToAsm/AArch64/CodeGen.hs | 17 ++++++++++++++---
+ compiler/GHC/CmmToAsm/Config.hs          |  1 +
+ compiler/GHC/Driver/Config/CmmToAsm.hs   |  1 +
+ compiler/GHC/Driver/DynFlags.hs          |  1 -
+ compiler/GHC/Driver/Flags.hs             |  2 ++
+ compiler/GHC/Driver/Session.hs           |  1 +
+ docs/users_guide/using-optimisation.rst  | 17 +++++++++++++++++
+ 7 files changed, 36 insertions(+), 4 deletions(-)
+
+diff --git a/compiler/GHC/CmmToAsm/AArch64/CodeGen.hs b/compiler/GHC/CmmToAsm/AArch64/CodeGen.hs
+index f58e507f110f..4ed3c90c7644 100644
+--- a/compiler/GHC/CmmToAsm/AArch64/CodeGen.hs
++++ b/compiler/GHC/CmmToAsm/AArch64/CodeGen.hs
+@@ -23,7 +23,7 @@ import GHC.Cmm.DebugBlock
+ import GHC.CmmToAsm.Monad
+    ( NatM, getNewRegNat
+    , getPicBaseMaybeNat, getPlatform, getConfig
+-   , getDebugBlock, getFileId
++   , getDebugBlock, getFileId, getThisModuleNat
+    )
+ -- import GHC.CmmToAsm.Instr
+ import GHC.CmmToAsm.PIC
+@@ -1471,8 +1471,19 @@ assignReg_FltCode = assignReg_IntCode
+ -- Jumps
+ 
+ genJump :: CmmExpr{-the branch target-} -> NatM InstrBlock
+-genJump expr@(CmmLit (CmmLabel lbl))
+-  = return $ unitOL (annExpr expr (J (TLabel lbl)))
++genJump expr@(CmmLit (CmmLabel lbl)) = do
++  cur_mod <- getThisModuleNat
++  !useFarJumps <- ncgEnableInterModuleFarJumps <$> getConfig
++  let is_local = isLocalCLabel cur_mod lbl
++
++  -- We prefer to generate a near jump using a simble `B` instruction
++  -- with a range (+/-128MB). But if the target is outside the current module
++  -- we might have to account for large code offsets. (#24648)
++  if not useFarJumps || is_local
++    then return $ unitOL (annExpr expr (J (TLabel lbl)))
++    else do
++      (target, _format, code) <- getSomeReg expr
++      return (code `appOL` unitOL (annExpr expr (J (TReg target))))
+ 
+ genJump expr = do
+     (target, _format, code) <- getSomeReg expr
+diff --git a/compiler/GHC/CmmToAsm/Config.hs b/compiler/GHC/CmmToAsm/Config.hs
+index f4c39ac83c6a..422efa36ab74 100644
+--- a/compiler/GHC/CmmToAsm/Config.hs
++++ b/compiler/GHC/CmmToAsm/Config.hs
+@@ -47,6 +47,7 @@ data NCGConfig = NCGConfig
+    , ncgDwarfSourceNotes      :: !Bool            -- ^ Enable GHC-specific source note DIEs
+    , ncgCmmStaticPred         :: !Bool            -- ^ Enable static control-flow prediction
+    , ncgEnableShortcutting    :: !Bool            -- ^ Enable shortcutting (don't jump to blocks only containing a jump)
++   , ncgEnableInterModuleFarJumps:: !Bool            -- ^ Use far-jumps for cross-module jumps.
+    , ncgComputeUnwinding      :: !Bool            -- ^ Compute block unwinding tables
+    , ncgEnableDeadCodeElimination :: !Bool        -- ^ Whether to enable the dead-code elimination
+    }
+diff --git a/compiler/GHC/Driver/Config/CmmToAsm.hs b/compiler/GHC/Driver/Config/CmmToAsm.hs
+index 762108b8b23e..1475c40b8219 100644
+--- a/compiler/GHC/Driver/Config/CmmToAsm.hs
++++ b/compiler/GHC/Driver/Config/CmmToAsm.hs
+@@ -70,6 +70,7 @@ initNCGConfig dflags this_mod = NCGConfig
+    , ncgExposeInternalSymbols = gopt Opt_ExposeInternalSymbols dflags
+    , ncgCmmStaticPred       = gopt Opt_CmmStaticPred dflags
+    , ncgEnableShortcutting  = gopt Opt_AsmShortcutting dflags
++   , ncgEnableInterModuleFarJumps = gopt Opt_InterModuleFarJumps dflags
+    , ncgComputeUnwinding    = debugLevel dflags > 0
+    , ncgEnableDeadCodeElimination = not (gopt Opt_InfoTableMap dflags)
+                                      -- Disable when -finfo-table-map is on (#20428)
+diff --git a/compiler/GHC/Driver/DynFlags.hs b/compiler/GHC/Driver/DynFlags.hs
+index a24ea13e5caa..469537b7caa2 100644
+--- a/compiler/GHC/Driver/DynFlags.hs
++++ b/compiler/GHC/Driver/DynFlags.hs
+@@ -1194,7 +1194,6 @@ defaultFlags settings
+ 
+     ++ validHoleFitDefaults
+ 
+-
+     where platform = sTargetPlatform settings
+ 
+ -- | These are the default settings for the display and sorting of valid hole
+diff --git a/compiler/GHC/Driver/Flags.hs b/compiler/GHC/Driver/Flags.hs
+index 583a8530eca7..fc8d75ed13fe 100644
+--- a/compiler/GHC/Driver/Flags.hs
++++ b/compiler/GHC/Driver/Flags.hs
+@@ -647,6 +647,7 @@ data GeneralFlag
+    | Opt_CmmElimCommonBlocks
+    | Opt_CmmControlFlow
+    | Opt_AsmShortcutting
++   | Opt_InterModuleFarJumps
+    | Opt_OmitYields
+    | Opt_FunToThunk               -- deprecated
+    | Opt_DictsStrict                     -- be strict in argument dictionaries
+@@ -896,6 +897,7 @@ optimisationFlags = EnumSet.fromList
+    , Opt_CmmSink
+    , Opt_CmmElimCommonBlocks
+    , Opt_AsmShortcutting
++   , Opt_InterModuleFarJumps
+    , Opt_FunToThunk
+    , Opt_DmdTxDictSel
+    , Opt_Loopification
+diff --git a/compiler/GHC/Driver/Session.hs b/compiler/GHC/Driver/Session.hs
+index 74490ba91f9b..804e11b28d90 100644
+--- a/compiler/GHC/Driver/Session.hs
++++ b/compiler/GHC/Driver/Session.hs
+@@ -2453,6 +2453,7 @@ fFlagsDeps = [
+   flagSpec "gen-manifest"                     Opt_GenManifest,
+   flagSpec "ghci-history"                     Opt_GhciHistory,
+   flagSpec "ghci-leak-check"                  Opt_GhciLeakCheck,
++  flagSpec "inter-module-far-jumps"               Opt_InterModuleFarJumps,
+   flagSpec "validate-ide-info"                Opt_ValidateHie,
+   flagGhciSpec "local-ghci-history"           Opt_LocalGhciHistory,
+   flagGhciSpec "no-it"                        Opt_NoIt,
+diff --git a/docs/users_guide/using-optimisation.rst b/docs/users_guide/using-optimisation.rst
+index f57a1ba32278..ffb371150edd 100644
+--- a/docs/users_guide/using-optimisation.rst
++++ b/docs/users_guide/using-optimisation.rst
+@@ -681,6 +681,23 @@ as such you shouldn't need to set any of them explicitly. A flag
+     ``-fno-full-laziness``. If that is inconvenient for you, please leave a
+     comment `on the issue tracker (#21204) <https://gitlab.haskell.org/ghc/ghc/-/issues/21204>`__.
+ 
++.. ghc-flag:: -finter-module-far-jumps
++    :shortdesc: Assume code sections can be very large.
++    :type: dynamic
++    :reverse: -fno-inter-module-far-jumps
++    :category:
++
++    :default: Off
++
++    This flag forces GHC to use far jumps instead of near jumps for all jumps
++    which cross module boundries. This removes the need for jump islands/linker
++    jump fixups which some linkers struggle to deal with. (:ghc-ticket:`24648`)
++
++    This comes at a very modest code size (~2%) and runtime (~0.6%) overhead.
++
++    Note that this flag currently only affects the NCG AArch64 backend.
++
++
+ .. ghc-flag:: -fignore-asserts
+     :shortdesc: Ignore assertions in the source. Implied by :ghc-flag:`-O`.
+     :type: dynamic
+-- 
+GitLab
+

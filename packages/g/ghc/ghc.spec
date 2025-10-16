@@ -17,7 +17,7 @@
 %define full_version 9.12.2
 %define short_version 9.12.2
 
-%global llvm_major 18
+%global llvm_major 19
 
 # conditionals
 # disable prof, docs, perf build
@@ -90,25 +90,20 @@ Patch2:         ghc-Cabal-install-PATH-warning.patch
 Patch3:         Cabal-absolute-datadir.patch
 Patch200:       ghc-hadrian-s390x-rts--qg.patch
 Patch400:       gnu23-hp2ps.patch
+Patch500:       aarch64_inter_far.patch
 
-BuildRequires:  binutils-devel
-BuildRequires:  gcc-PIE
+BuildRequires:  binutils
 BuildRequires:  gcc-c++
 BuildRequires:  ghc-bootstrap >= 9.8
 BuildRequires:  ghc-bootstrap-helpers >= 1.3
 BuildRequires:  ghc-rpm-macros-extra => 2.9.1
 BuildRequires:  glibc-devel
 BuildRequires:  gmp-devel
-BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libffi-devel
-BuildRequires:  libdwarf-devel
 BuildRequires:  libtool
-%ifarch %{ghc_llvm_archs}
 BuildRequires:  clang%{llvm_major}
 BuildRequires:  llvm%{llvm_major}
-BuildRequires:  llvm%{llvm_major}-devel
-%endif
 BuildRequires:  memory-constraints
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -171,6 +166,9 @@ Obsoletes:      %{name}-ghc-internal-prof < 9.1202.0-%{release}
 %ifarch %{ghc_llvm_archs}
 Requires:       clang%{llvm_major}
 Requires:       llvm%{llvm_major}
+%else
+Suggests:       clang%{llvm_major}
+Suggests:       llvm%{llvm_major}
 %endif
 
 %description compiler
@@ -307,6 +305,7 @@ cd ../..
 %endif
 
 %patch -P 400 -p1
+%patch -P 500 -p1
 
 rm libffi-tarballs/libffi-*.tar.gz
 
@@ -318,9 +317,11 @@ hadrian/bootstrap/bootstrap.py --bootstrap-sources 9_8_2-bootstrap-sources.tar.g
 
 %ghc_set_gcc_flags
 
-export CC=%{_bindir}/gcc
-export LD=%{_bindir}/ld
 export LANG=C.utf8
+export CC=%{_bindir}/gcc
+export LLC=%{_bindir}/llc-%{llvm_major}
+export OPT=%{_bindir}/opt-%{llvm_major}
+export LD=%{_bindir}/ld
 
 autoupdate
 
@@ -332,7 +333,7 @@ python3 boot.source --hadrian
   --libexecdir=%{_libexecdir} --localstatedir=%{_localstatedir} \
   --sharedstatedir=%{_sharedstatedir} --mandir=%{_mandir} \
   --docdir=%{_docdir}/%{name}-%{version} \
-  --with-system-libffi \
+  --with-system-libffi  --disable-ld-override \
 %ifarch %{ghc_unregisterized_arches}
   --enable-unregisterised \
 %endif
@@ -345,17 +346,11 @@ python3 boot.source --hadrian
 %endif
 %define hadrian_docs %{!?with_haddock:--docs=no-haddocks} %{!?with_manual:--docs=no-sphinx}%{?with_manual:--docs=no-sphinx-pdfs --docs=no-sphinx-man}
 
-%if 0%{?suse_version} >= 1500
-%ifarch %{unregisterised_archs}
-%limit_build -m 8000
-%else
-%limit_build -m 2000
+%ifarch aarch64
+%global hadrian_workaround "stage1.*.ghc.*.opts += -finter-module-far-jumps"
 %endif
-%global jobs_nr %{?_smp_mflags}
-%else
-%global jobs_nr -j1 
-%endif
-%{hadrian} %{jobs_nr} --flavour=%{?with_quickbuild:quick+no_profiled_libs}%{!?with_quickbuild:release%{!?with_ghc_prof:+no_profiled_libs}}%{?hadrian_llvm} %{hadrian_docs} binary-dist-dir --hash-unit-ids
+
+%{hadrian} %{?_smp_mflags} --flavour=%{?with_quickbuild:quick+no_profiled_libs}%{!?with_quickbuild:release%{!?with_ghc_prof:+no_profiled_libs}}%{?hadrian_llvm} %{hadrian_docs} %{?hadrian_workaround} binary-dist-dir --hash-unit-ids
 
 %install
 
