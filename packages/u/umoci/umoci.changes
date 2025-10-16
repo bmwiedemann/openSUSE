@@ -1,3 +1,20 @@
+
+-------------------------------------------------------------------
+Wed Oct 15 09:05:55 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to umoci v0.6.0. Upstream changelog is available from
+  <https://github.com/opencontainers/umoci/releases/tag/v0.6.0> bsc#1252025
+  * umoci now has automatic SOURCE_DATE_EPOCH support, improving the
+    reproducibility of generated images.
+  * "umoci stat" now provides more information about theimage.
+  * "umoci config" now supports --platform.variant (architecture variants)
+	which resolves issues with images on ARM (on ARM systems, "umoci new" will
+	auto-fill the host CPU variant).
+- Remove upstreamed patches:
+  - 0001-oci-config-gracefully-fallback-if-etc-resolv.conf-do.patch
+- Bump to Go >= 1.24.
+- Switch to "%autosetup -p1".
+
 -------------------------------------------------------------------
 Mon Sep  8 02:26:12 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 

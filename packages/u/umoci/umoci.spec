@@ -20,7 +20,7 @@
 %define project github.com/opencontainers/umoci
 
 Name:           umoci
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        Open Container Image manipulation tool
 License:        Apache-2.0
@@ -29,10 +29,8 @@ URL:            https://umo.ci
 Source0:        https://github.com/opencontainers/umoci/releases/download/v%{version}/umoci.tar.xz#/%{name}-%{version}.tar.xz
 Source1:        https://github.com/opencontainers/umoci/releases/download/v%{version}/umoci.tar.xz.asc#/%{name}-%{version}.tar.xz.asc
 Source2:        https://umo.ci/%{name}.keyring
-# UPSTREAM-FIX: <https://github.com/opencontainers/umoci/pull/617>
-Patch1:         https://github.com/opencontainers/umoci/commit/44f6ab82ea71aefaf979d0e0d0626f2f2685f80b.patch#/0001-oci-config-gracefully-fallback-if-etc-resolv.conf-do.patch
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.23
+BuildRequires:  go >= 1.24
 BuildRequires:  go-go-md2man
 ExcludeArch:    s390
 
@@ -42,8 +40,7 @@ images. In particular, it is a more complete alternative to oci-image-tools
 provided by the OCI.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 # Build umoci and docs.
