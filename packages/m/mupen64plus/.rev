@@ -51,4 +51,12 @@
     <comment></comment>
     <requestid>1302324</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>aa004e8dfc452858488ab6fd01692f62</srcmd5>
+    <version>2.6.0</version>
+    <time>1760629174</time>
+    <user>anag_factory</user>
+    <comment>- Boost.System is headers only since 1.69 (stub library removed in 1.89) (forwarded request 1310917 from adkorte)</comment>
+    <requestid>1311713</requestid>
+  </revision>
 </revisionlist>

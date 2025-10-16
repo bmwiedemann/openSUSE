@@ -35,7 +35,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  glu-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
+BuildRequires:  (libboost_system-devel if libboost_filesystem-devel < 1.89)
 BuildRequires:  lirc-devel
 BuildRequires:  nasm
 BuildRequires:  pkgconfig

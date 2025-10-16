@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 12 13:19:51 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Boost.System is headers only since 1.69 (stub library removed in 1.89)
+
+-------------------------------------------------------------------
 Tue Sep  2 06:55:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick mupen64plus-CVE-2025-9688.patch from upstream to fix
