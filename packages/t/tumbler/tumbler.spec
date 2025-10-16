@@ -1,7 +1,7 @@
 #
 # spec file for package tumbler
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define libname libtumbler-1-0
 
 Name:           tumbler
-Version:        4.20.0
+Version:        4.20.1
 Release:        0
 Summary:        Thumbnail Management for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -83,6 +83,7 @@ Group:          Productivity/Graphics/Other
 Requires:       ImageMagick
 Suggests:       thunar >= 1.8.2
 Supplements:    (%{name} and thunar)
+BuildArch:      noarch
 
 %description -n %{name}-folder-thumbnailer
 A thumbnailer to show custom folder thumbnails in Thunar
@@ -93,6 +94,7 @@ Group:          Productivity/Graphics/Other
 Requires:       ImageMagick
 Requires:       libwebp-tools
 Supplements:    (%{name} and ImageMagick)
+BuildArch:      noarch
 
 %description -n %{name}-webp-thumbnailer
 A thumbnailer for WebP images
@@ -128,7 +130,7 @@ Summary:        Languages for package %{name}
 Group:          System/Localization
 Requires:       %{libname} = %{version}
 Provides:       %{name}-lang-all = %{version}
-Supplements:    packageand(bundle-lang-other:%{libname})
+Supplements:    (bundle-lang-other and %{libname})
 BuildArch:      noarch
 
 %description lang
