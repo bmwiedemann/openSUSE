@@ -1,7 +1,7 @@
 #
 # spec file for package python-awkward
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,20 +28,21 @@ ExcludeArch:    %{ix86} %{arm32}
 %define psuffix -%{flavor}
 %endif
 
-%define awkward_cpp_version 46
+%define awkward_cpp_version 50
 %{?sle15_python_module_pythons}
 Name:           python-awkward%{psuffix}
-Version:        2.8.4
+Version:        2.8.9
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
 URL:            https://github.com/scikit-hep/awkward
 Source0:        https://files.pythonhosted.org/packages/source/a/awkward/awkward-%{version}.tar.gz
 Source1:        python-awkward.rpmlintrc
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling >= 1.10.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module trove-classifiers >= 2025.5.8.15}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-awkward-cpp >= %{awkward_cpp_version}

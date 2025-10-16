@@ -558,4 +558,41 @@
     <comment></comment>
     <requestid>1285921</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f582c806e6697d3b71ef8be592a03a3f</srcmd5>
+    <version>2.8.9</version>
+    <time>1760629143</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.8.9:
+  * New features
+    + feat: cuda reducers - add combinations for n&gt;2, argmin and argmax, and
+      fix min.
+    + feat: add axis=None reducer specializations
+    + feat: add 'how=' to ak.unzip
+    + feat: adapt __array__ according to numpy guidelines
+    + feat: ensure ability to pickle ak.Array and ak.Record with VirtualArray
+      buffers
+    + feat: skip materialization of placeholders in to_packed
+  * Bug-fixes and performance
+    + fix: virtual array deep copy generator reference + better error message
+      for assert_never
+    + fix: SVG bug in diagram depicting ragged aggregation
+    + perf: detect &amp; fastpath no-op range slices in all layout types
+    + fix: VirtualArray's deep copy + accidental .data access
+    + fix: allow arrays with Nones in single argument usage of ak.where
+    + fix: properly handle VirtualArray in nplike.asarray
+    + fix: do not materialize before custom pickling
+    + fix: do not force LE data-order in form.py
+    + fix: make to_packed work for typetracer backed IndexedOptionArray,
+      BitMaskedArray, and UnionArray
+    + perf: add slots to virtual array to reduce instance alloc size
+    + perf: avoid method chaining for some shape_generators
+    + fix: first maybe materialize, then check for PlaceholderArray
+    + fix: ak.any and ak.combinations with cuda backend kernels
+    + fix: overflow error when concatenating more than 128 regular arrays
+    + fix: removal of pyarrow.lib.PyExtensionType in pyarrow 21
+    + fix: filter also for new (v0.7.0) LinearizeTracer type
+    + fix: cudf strings column</comment>
+    <requestid>1311606</requestid>
+  </revision>
 </revisionlist>
