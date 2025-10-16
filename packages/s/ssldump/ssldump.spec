@@ -1,7 +1,7 @@
 #
 # spec file for package ssldump
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,16 +27,12 @@ URL:            https://adulau.github.io/ssldump/
 Source:         https://github.com/adulau/ssldump/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  libnet-devel
+BuildRequires:  libpcap-devel
 BuildRequires:  libtool
 BuildRequires:  ninja
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(json-c)
-%if 0%{?suse_version} > 1320
-BuildRequires:  libpcap-devel-static
-%else
-BuildRequires:  libpcap-devel
-%endif
 
 %description
 ssldump is an SSLv3/TLS network protocol analyzer. It identifies TCP
