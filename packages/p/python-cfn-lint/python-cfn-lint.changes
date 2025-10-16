@@ -1,4 +1,198 @@
 -------------------------------------------------------------------
+Wed Oct 15 10:21:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.40.2
+  * Update the `UpdatePolicy` schema
+  * Update gitsync schema parameter types
+  * State Machine Unit Test: Fix another StartAt typo
+  * Update CloudFormation schemas to `2025-10-13`
+- from 1.40.1
+  * Update `nodejs18.x` lifecycle dates in `LmbdRuntimeLifecycle.json` to
+    match official AWS Docs
+  * Update integration tests
+  * State Machine Unit Test: Fix `StartAt` typo
+  * Update CloudFormation schemas to `2025-10-09`
+  * Remove format patching for Cloud9 `ImageId`
+- from version 1.40.0
+  * increase sqs MaximumMessageSize maximum value
+  * chore(deps): bump actions/setup-python from 5 to 6
+  * chore(deps): bump pyinstaller from 6.15.0 to 6.16.0 in /requirements
+  * Migrate from MarkedLoader to (C)SafeLoader
+  * Update CloudFormation schemas to 2025-09-29
+- from version 1.39.1
+  * Remove rule (E3056)
+  * Update CloudFormation schemas to `2025-08-26`
+  * Reformat format keyword in some json files
+  * Update StateMachine map to support legacy `Iterator`
+  * Add output to Statemachine choice
+  * Update SAM transform URI replacement to allow `Fn::If`
+  * SAM transform comma lists to array
+  * Update (I3510) to skip dynamic references
+- from version 1.39.0
+  * Optimize rule filtering performance
+  * Improved handling of directories for --list-templates
+  * chore(deps): bump actions/checkout from 4 to 5
+  * Update CloudFormation schemas to `2025-08-18`
+- from version 1.38.3
+  * Update CloudFormation schemas to `2025-08-12`
+- from version 1.38.2
+  * Fix unit testing with lambda EOL date changes
+  * Remove `AmazonGuardDutyFullAccess` from ManagedPolicies
+  * chore(deps): bump pyinstaller from 6.14.2 to 6.15.0 in /requirements
+  * Update `CreationPolicy` `StartFleet` type
+  * Update CloudFormation schemas to `2025-08-04`
+- from version 1.38.1
+  * Add `--list-templates` advanced / debugging parameter
+  * Add to context to allow exceptions
+  * Update CloudFormation schemas to `2025-07-30`
+- from version 1.38.0
+  * Improve condition processing
+  * Update CloudFormation schemas to 2025-07-14
+- from version 1.37.2
+  * Fix template check when using cli
+- from version 1.37.1
+  * Create API for just taking a config
+  * chore(deps): bump pyinstaller from 6.14.1 to 6.14.2 in /requirements
+  * Update CloudFormation schemas to `2025-07-07`
+- from version 1.37.0
+  * Update CloudFormation schemas to 2025-06-30
+  * Validate deployment files
+- from version 1.36.1
+  * Allow `*` for resource partition
+  * Update regex dynamic ref for ssm
+  * Update CloudFormation schemas to `2025-06-19`
+- from version 1.36.0
+  * Don't decode when `TemplateURL` is dynamic reference
+  * Break out requirements into separate files
+  * chore(deps): bump pyinstaller from 6.13.0 to 6.14.0 in /requirements
+  * chore(deps): bump pyinstaller from 6.14.0 to 6.14.1 in /requirements
+  * Better logic of FindInMap resolution when ref isn't resolved
+  * chore(deps): bump setuptools from 80.8.0 to 80.9.0 in /requirements
+  * Update CloudFormation schemas to 2025-06-11
+  * Create an API for linting a file by path
+- from version 1.35.4
+  * Update CloudFormation schemas to `2025-06-02`
+- from version 1.35.3
+  * Undo change (#4138)
+- from version 1.35.2
+  * Stdin overrides `.cfnlintrc` when determining templates
+  * Add in more custom schema information to the docs
+  * Fix outdated GitHub source URLs
+  * Update CloudFormation schemas to `2025-05-21`
+- from version 1.35.1
+  * Gracefully exit of a override schema patch fails
+  * Allow for `Fn::Transform` with other properties
+  * Update CloudFormation schemas to `2025-05-07`
+- from version 1.35.0
+  * Make intrinsic functions configurable
+  * Add `Assign` to `Jsonata` choices
+  * Create a schema manager for non resource schemas
+  * Update CloudFormation schemas to `2025-05-06`
+- from version 1.34.2
+  * Unschedule v0 maintenance work
+  * Add in `anyOf` for properties that are ipv4 and ipv6
+  * Update CloudFormation schemas to `2025-04-24`
+- from version 1.34.1
+  * Fix property restrictions when using lambda
+  * Update context when resolving IFs
+  * Update CloudFormation schemas to `2025-04-21`
+- from version 1.34.0
+  * Fix Cidr type in `AWS::EC2::IPAMPool`
+  * Allow `Fn::GetAtt` to an object when using short form
+  * Add isolated regions
+  * Keep resolution errors to the fn
+  * Update CloudFormation schemas to `2025-04-16`
+- from version 1.33.2
+  * Switch (E3683) to (E3684) for health check protocol
+  * Add `Items` to map function in state machine definition
+- from version 1.33.1
+  * Case insensitive pattern for `AWS::SSM::Parameter` `Name`
+  * Fix context handling `None` for filename
+- from version 1.33.0
+  * New rule (E3062) to validate `DBInstanceClass` against Engine
+  * Several state mach schema improvements
+  * New rule (E3681) to validate `AWS::ElasticLoadBalancingV2::TargetGroup`
+    `TargetType` property restrictions
+  * New rule (E3683) to validate `AWS::ElasticLoadBalancingV2::TargetGroup`
+    `Protocol` property restrictions
+  * Allow for /example in SSM Param Name
+  * Update CloudFormation schemas to `2025-04-08`
+- from version 1.32.4
+  * Update to (PEP 639)
+  * `StorageEncrypted` can be used on aurora `AWS::RDS::DBInstance`
+  * Update CloudFormation schemas to `2025-04-04`
+- from version 1.32.3
+  * Add an additional `+` for `AWS::SSM::Parameter` `Name`
+- from version 1.32.2
+  * Add `Assign` into `Choice` for state machines
+  * Create a `pattern` for a `AWS::SSM::Parameter` `Name`
+  * Fix SAM transform to validate that `Properties` is a dict
+  * Update CloudFormation schemas to `2025-04-02`
+- from version 1.32.1
+  * Change state machine schema based on query language
+  * Commonize how SAM transform checks are done
+  * Update CloudFormation schemas to `2025-03-24`
+  * Deal with JSONata differences in choices
+- from version 1.32.0
+  * Update IAM Resource policy pattern
+  * Update rule (W3037) to limit services and actions when using a resource policy
+  * Add rule (E3514) to validate resource policy resource ARNs
+  * Update CloudFormation schemas to `2025-03-20`
+  * Change transform check in (W3037)
+- from version 1.31.3
+  * Update (I3510) to lower case resource names
+- from version 1.31.2
+  * Update (I3510) to only validate at least one resource is matched
+- from version 1.31.1
+  * Update (I3510) to not fail on resources that start with asterisk
+  * Fix merge for yaml parsing
+  * Add rule (W1100) to validate if using YAML merge which requires the AWS cli to deploy
+- from version 1.31.0
+  * Update CloudFormation schemas to `2025-03-17`
+  * New rule (I3510) to validate action and resources match
+  * Update (W3037) to skip non strings
+  * Update (I3510) to not alert on asterisk resources
+  * Update (W3037) to use regex when `?` or `*` in action
+- from version 1.30.0
+  * Allow conditions in foreach
+  * Allow `_` in condition names
+  * Remove experimental from (W3037)
+  * Add in `pattern` for CodePipeline action names
+  * Support GetAtts for nested stacks and outputs
+  * Add rule (I2003) to validate `AllowedPattern`
+  * Validate identity base SIDs
+- from version 1.29.1
+  * Update CloudFormation schemas to `2025-03-10`
+  * Update (E3701) to keep artifact names uniquely by the resource name
+- from version 1.29.0
+  * Add rule (W3660) to validate mixing API body definitions in `AWS::ApiGateway::*`
+    resources
+  * Add rule (E3505) to validate  timeouts when connection `AWS::Lambda::Function`
+    and `AWS::SQS::Queue`
+  * Add rule (E3636) to validate `AWS::CodeBuild::Project` s3 locations
+  * Add rule (E3061) to validate `AWS::S3::Bucket` tiering configurations
+  * Deprecate (E2540) for new v1 version rules
+  * Deprecate (E2541) for new v1 version rules
+  * Add rule (E3700) to validate `AWS::CodePipeline::Pipeline` `Source` actions
+    are only in the first stage
+  * Add rule (E3701) to validate `AWS::CodePipeline::Pipeline` artifact names shared
+    between `InputArtifacts` and `OutputArtifacts`
+  * Add rule (E3702) to validate `AWS::CodePipeline::Pipeline` counts for `InputArtifacts`,
+    `OutputArtifacts` based on action type
+  * Add rule (E3703) to validate `AWS::CodePipeline::Pipeline` configuration of an action
+  * Additional general schema updates to complete the rest of the validation in rules
+    (E2540) and (E2541)
+  * Update CloudFormation schemas to `2025-03-07`
+  * Add `Condition` to `Choice` in state machine
+- from version 1.28.0
+  * Add `uniqueKeys` for `Sid` in IAM policies
+  * Create ipv4 and ipv6 network formats
+  * Add rule (E3059) to validate if `AWS::EC2::Subnet` CIDRs are in a `AWS::EC2::VPC`
+  * Add rule (E3060) to validate if `AWS::EC2::Subnet` CIDRs overlap with each other
+  * Update CloudFormation schemas to `2025-03-04`
+- Update BuildRequires and Requires from requirements/*.txt
+
+-------------------------------------------------------------------
 Mon Mar  3 11:19:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.27.0
