@@ -39,7 +39,7 @@ Requires:       procps
 %if 0%{?suse_version} > 1315
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
+BuildRequires:  (libboost_system-devel if libboost_filesystem-devel < 1.69)
 %else
 BuildRequires:  boost-devel >= 1.33.1
 %endif
@@ -54,7 +54,11 @@ These user-space components implement device approval support:
 * ACL for auto-approving devices white-listed by the user.
 
 %prep
-%autosetup -p1 -n thunderbolt-software-user-space-%{version}
+%autosetup -N -n thunderbolt-software-user-space-%{version}
+%if 0%{?suse_version} < 1600
+%patch -p1 -P 0
+%endif
+%patch -p1 -P 1
 
 %build
 %cmake \
