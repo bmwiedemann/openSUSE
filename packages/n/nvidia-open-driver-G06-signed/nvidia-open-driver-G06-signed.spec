@@ -20,6 +20,13 @@
 %define cuda_version 580.95.05
 
 %global flavor @BUILD_FLAVOR@%{?nil}
+
+%if "%{flavor}" == "cuda"
+%define check_pkg nvidia-open-driver-G06-signed-cuda-check
+%else
+%define check_pkg nvidia-open-driver-G06-signed-check
+%endif
+
 %if "%{flavor}" == "cuda"
  %if 0%{?suse_version} > 1600
 ExclusiveArch:  do_not_build
@@ -84,6 +91,7 @@ Source12:       pesign-spec-macros
 Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Source17:       kmp-post.sh
+Source18:       Check4WrongSupplements.sh
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -163,6 +171,24 @@ This package provides the open-source NVIDIA kernel module driver
 for GeForce 16 series (GTX 16xx) and newer GPUs, i.e. Turing GPU family
 and newer (Turing, Ampere, Ada Lavelace, Hopper, Blackwell, ...).
 
+%package -n %check_pkg
+Summary:        Post-build RPM inspection
+Group:          System/Tools
+BuildArch:      noarch
+Requires:       bash
+
+%description -n %check_pkg
+This subpackage runs post-build verification on generated RPMs.
+
+%files -n %check_pkg
+%dir /usr/share/doc/packages/%{check_pkg}
+/usr/share/doc/packages/%{check_pkg}/dummy.txt
+
+%post -n %check_pkg
+echo "=== Running post-build RPM inspection (%{check_pkg} subpackage) ==="
+ls -l %{_sourcedir}
+/bin/sh -x %{_sourcedir}/Check4WrongSupplements.sh %{_rpmdir}
+
 %prep
 %autosetup -p1 -n open-gpu-kernel-modules-%{version}
 
@@ -231,5 +257,8 @@ for flavor in %{flavors_to_build}; do
     perl %{S:14} -L %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor} | sed -e "s@%{buildroot}@@" | sort -u >> files-${flavor}
     %fdupes -s %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor}
 done
+
+mkdir -p %{buildroot}/usr/share/doc/packages/%{check_pkg}
+echo "RPM %{check_pkg} package" > %{buildroot}/usr/share/doc/packages/%{check_pkg}/dummy.txt
 
 %changelog

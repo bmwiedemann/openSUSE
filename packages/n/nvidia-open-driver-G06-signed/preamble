@@ -13,8 +13,8 @@ Provides: nvidia-open-driver-G06-signed-kmp-%1 = %{-v*}
 Obsoletes: nvidia-open-driver-G06-signed-cuda-kmp-%1 <= 560.35.03
 Obsoletes: nvidia-open-driver-G06-signed-cuda-kmp <= 560.35.03
 %if 0%{?suse_version} < 1600 && 0%{?sle_version} < 150600 && !0%{?is_opensuse}
-Requires: nvidia-modprobe >= %{-v*}
-Requires: nvidia-persistenced >= %{-v*}
+Requires: nvidia-modprobe = %{-v*}
+Requires: nvidia-persistenced = %{-v*}
 Requires: nvidia-modprobe-cuda-lt-sp6
 Requires: nvidia-persistenced-cuda-lt-sp6
 %endif

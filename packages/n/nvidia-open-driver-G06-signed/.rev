@@ -909,4 +909,23 @@
     <comment>- update non-CUDA variant to 580.95.05</comment>
     <requestid>1309261</requestid>
   </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>daf559e0a8414d646c05cd03a66fad98</srcmd5>
+    <version>580.95.05</version>
+    <time>1760629124</time>
+    <user>anag_factory</user>
+    <comment>- renamed check to %name-check package
+
+- changed Requires to
+  * nvidia-modprobe = %version
+  * nvidia-persitenced = %version
+  it has been &gt;= before ...
+
+- Check4WrongSupplements.sh
+  * check for wrong Supplements in generated KMPs after build by
+    misusing %post of a dummy &quot;check&quot; subpackage
+
+- update CUDA variant to 580.95.05</comment>
+    <requestid>1311666</requestid>
+  </revision>
 </revisionlist>
