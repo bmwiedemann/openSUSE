@@ -1,7 +1,7 @@
 #
 # spec file for package leancrypto
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2022 - 2025 Stephan Mueller <smueller@chronox.de
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "kmp"
@@ -37,8 +38,10 @@ Source0:        https://www.leancrypto.org/%{pkgname}/releases/%{pkgname}-%{vers
 Source1:        https://www.leancrypto.org/%{pkgname}/releases/%{pkgname}-%{version}/%{pkgname}-%{version}.tar.xz.asc
 Source2:        https://leancrypto.org/about/smuellerDD-2024.asc#/leancrypto.keyring
 Source3:        baselibs.conf
-BuildRequires:  meson
+# PATCH-FIX-UPSTREAM - https://github.com/smuellerDD/leancrypto/issues/38
+Patch1:         leancrypto-fix-aarch64-BTI.patch
 BuildRequires:  clang
+BuildRequires:  meson
 %if %{with kmp}
 BuildRequires:  %kernel_module_package_buildreqs
 
@@ -65,8 +68,8 @@ enabled if possible.
 
 %package devel
 Summary:        Development files for leancrypto, a cryptographic library
-Requires:       glibc-devel
 Requires:       %{libname}1 = %{version}
+Requires:       glibc-devel
 
 %description devel
 Leancrypto provides a general-purpose cryptographic library with PQC-safe
@@ -116,7 +119,7 @@ This subpackage holds the tools provided by the library, such as sha*sum.
 
 %package KMP
 Summary:        Cryptographic library with stack-only support and PQC-safe algorithms
-Group: System/Kernel
+Group:          System/Kernel
 
 %description KMP
 Leancrypto provides a general-purpose cryptographic library with PQC-safe
@@ -127,7 +130,7 @@ enabled if possible.
 %endif
 
 %prep
-%setup -q -n %{pkgname}-%{version}
+%autosetup -p1 -n %{pkgname}-%{version}
 
 %if %{with kmp}
 set -- *

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 14 07:48:02 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix BTI on aarch64:
+  * leancrypto-fix-aarch64-BTI.patch
+
+-------------------------------------------------------------------
 Fri Jul 18 13:12:24 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Add baselibs.conf
