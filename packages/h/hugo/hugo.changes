@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 15 18:05:00 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.151.1:
+  * releaser: Bump versions for release of 0.151.1
+  * Upgrade Go to 1.25.3
+  * tpl: Fix strings/truncate CJK handling
+  * build(deps): bump github.com/gohugoio/hashstructure from 0.5.0 to 0.6.0
+  * build(deps): bump golang.org/x/image from 0.30.0 to 0.32.0
+  * build(deps): bump github.com/evanw/esbuild from 0.25.10 to 0.25.11
+  * build(deps): bump golang.org/x/tools from 0.37.0 to 0.38.0
+  * build(deps): bump golang.org/x/mod from 0.28.0 to 0.29.0
+  * create/skeletons: Wrap section and home lists with section tags
+  * markup/goldmark: Align blockquote default output with Goldmark
+  * parser/pageparser: Store shortcode names as unique.Handle[string] to save memory allocations
+  * parser/pagerparser: Fix closing shortcode error handling when repeated
+  * testscripts: Make test assertion less specific
+  * releaser: Prepare repository for 0.152.0-DEV
+
+-------------------------------------------------------------------
 Thu Oct 02 15:53:42 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.151.0:
