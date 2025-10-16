@@ -627,4 +627,26 @@
   * Update gosec version to v2.22.8 in the Github action (forwarded request 1306529 from ph03nix)</comment>
     <requestid>1306580</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ce9b9b7a6bb44e50a811dae105cd3faa</srcmd5>
+    <version>2.22.10</version>
+    <time>1760629101</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.22.10:
+  * Update go to version 1.25.3 and 1.24.9 in CI (#1404)
+  * chore(deps): update all dependencies (#1402)
+  * Update go to version 1.25.2 and 2.24.8 in CI (#1401)
+  * chore(deps): update all dependencies (#1399)
+  * check nil slices, partially check bounds (#1396)
+  * Remove unused target from the makefile
+  * Use the ginkgo command install by the dependencies
+  * Keep the go module at 1.24 version for compatibility reasons
+  * Remove manual test deps
+  * fix: text must be supplied when markdown is used
+  * fix: improve error message of CheckAnalyzers
+  * fix: log panic on SSA
+  * chore(deps): update all dependencies
+  * Update gosec to version v.22.9 in the github action (forwarded request 1311466 from ph03nix)</comment>
+    <requestid>1311478</requestid>
+  </revision>
 </revisionlist>
