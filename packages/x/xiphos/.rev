@@ -618,4 +618,67 @@
     <comment></comment>
     <requestid>1158833</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9b371eccfe4aca3cc5197edfa975c3af</srcmd5>
+    <version>4.3.2.14</version>
+    <time>1760629173</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.3.2.14:
+  * Corrected a GTK signal error.
+  * Much better fix to replace previous 1st time user mod.mgr flaw.
+- Changes from version 4.3.1:
+  * Multi-column display. Default: Prefs -&gt; Sizes/Faces; also in
+    module font ops.
+  * For very wide windows on big monitors, following long
+    horizontal rendering can become hard on the eyes. Select 1 to 4
+    columns.
+  * Margin justification, also in Prefs -&gt; Sizes/Faces (app-wide
+    choice only).
+  * Stopped .conf &quot;Abbreviation=XYZ&quot; collision with real module
+    [XYZ].
+  * Provided a module option to display headings in italic.
+  * Huge updates to github workflows.
+  * Handle tabs more like browsers, notably tab re-ordering with
+    mouse drag.
+  * Full parallel: Fixed the context menu (morph.seg.).
+  * Full parallel: Created a location-fixed top header line for
+    module names. The header no longer scrolls away with verse 1.
+  * Build without the editor for platforms no longer supporting
+    gtkhtml.
+  * Moved .xiphos to .config/xiphos in accordance with desktop
+    standards. This happens silently for existing users'
+    configurations.
+  * Replaced the Live Chat link (Help menu) to aim at libera.chat.
+  * Repaired module display for inconvenient paragraph-end markers
+    under highlight, both general current verse and user
+    annotation..
+  * Worked around a WebKit regression that prevented content
+    display for machines with nvidia GPUs (yes, really).
+  * Replaced old program choice for external image display with
+    modern element.
+  * Provided backward-compatible build support for RHEL9 and other
+    platforms.
+  * Fixed the Respect Font Faces module option.
+  * Locale renaming: Prefs -&gt; Options, now &quot;System Default.&quot;
+  * Provided for ESC to close Preferences.
+  * Provided keyboard shortcut (Ctrl-S) to toggle sidebar
+    visibility.
+  * Provided keyboard shortcuts (Alt-X, Alt-N) to toggle Xrefs,
+    Footnotes.
+  * Fixed several string NULL crash bugs.
+  * Additions to the languages file for module trees.
+  * Resolved build compatibility among several Linux platforms.
+  * Moved the appdata file to /usr/share/metainfo, per recent
+    standard.
+  * Fixed lack of trailing '/' in elements.
+  * Manual updates to reflect Ctrl-S for sidebar visible toggle and
+    to explain fundamental navigation limitations in full parallel.
+- Drop xiphos-glib.patch, fixed upstream
+- Drop pkgconfig(libgtkhtml-4.0) BuildRequires, stop using
+  libgtkhtml-editor, use webkitgtk as editor instead.
+- Use pkgconfig(webkit2gtk-4.1) BuildRequires for openSUSE 15.6 and
+  newer.
+- Stop building documentation in epub format. (forwarded request 1310687 from iznogood)</comment>
+    <requestid>1311706</requestid>
+  </revision>
 </revisionlist>

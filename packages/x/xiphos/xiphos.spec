@@ -18,7 +18,7 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           xiphos
-Version:        4.2.1.7
+Version:        4.3.2.14
 Release:        0
 Summary:        GNOME-based Bible research tool
 License:        GPL-2.0-only
@@ -29,7 +29,6 @@ Source1:        %{name}.desktop
 # PATCH-FIX-OPENSUSE find_biblesync.patch mcepl@suse.com
 # Allow working with ancient cmake 3.10 on SLE/Leap 15.
 Patch1:         find_biblesync.patch
-Patch2:         xiphos-glib.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 # BuildRequires:  docbook-utils-minimal
@@ -50,11 +49,14 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
 BuildRequires:  pkgconfig(icu-i18n)
-BuildRequires:  pkgconfig(libgtkhtml-4.0)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(sword) >= 1.8.1
+%if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
+%else
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
+%endif
 BuildRequires:  pkgconfig(yelp-xsl)
 Requires:       sword
 Recommends:     %{name}-lang
@@ -78,13 +80,12 @@ echo %{version} >cmake/source_version.txt
 %if 0%{?suse_version} < 1550
 %patch -P 1 -p1
 %endif
-%patch -P 2 -p1
 
 %build
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -Wno-dev -Wno-return-type"
+export CXXFLAGS="%{optflags} -Wno-dev -Wno-return-type"
 export PYTHON="%{_bindir}/python3"
-%cmake -DGTKHTML=ON -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}
+%cmake -DEPUB:BOOL=OFF -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} -DPOSTINST:BOOL=OFF
 %make_build
 
 %install
@@ -98,8 +99,9 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.deskto
 # package docs with macro
 rm -frv %{buildroot}/%{_datadir}/doc/%{name}
 install -D -m644 -t %{buildroot}%{_mandir}/man1/ build/desktop/xiphos*.1
-%fdupes -s %{buildroot}/%{_datadir}
+%fdupes -s %{buildroot}%{_prefix}
 %find_lang %{name}
+rm %{buildroot}%{_docdir}/%{name}/COPYING
 
 %if 0%{?suse_version} < 1330
 %post
@@ -118,8 +120,8 @@ install -D -m644 -t %{buildroot}%{_mandir}/man1/ build/desktop/xiphos*.1
 %{_docdir}/%{name}/*
 %{_datadir}/icons/hicolor/scalable/apps/*
 %{_datadir}/applications/%{name}.desktop
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/xiphos.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/xiphos.appdata.xml
 %{_mandir}/man1/*
 
 %files lang -f %{name}.lang
