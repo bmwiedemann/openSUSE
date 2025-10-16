@@ -1,7 +1,7 @@
 #
 # spec file for package svgpp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           svgpp
 Version:        1.3.1
 Release:        0
-Summary:        C++ SVG library 
+Summary:        C++ SVG library
 Group:          Development/Library/C and C++
 License:        BSL-1.0
 URL:            https://svgpp.org/
@@ -27,7 +27,9 @@ Source:         https://github.com/svgpp/svgpp/archive/refs/tags/v%{version}.tar
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libboost_timer-devel
 BuildRequires:  memory-constraints
 
@@ -37,7 +39,7 @@ various SVG syntaxes, adapters that simplify handling of parsed data
 and a lot of other utilities and helpers for the most common tasks.
 
 %package devel
-Summary:        C++ SVG header-only library 
+Summary:        C++ SVG header-only library
 Group:          Development/Library/C and C++
 Requires:       libboost_headers-devel
 BuildArch:      noarch
@@ -73,4 +75,3 @@ cd src/test/%{__builddir}
 %{_includedir}/exboost
 
 %changelog
-
