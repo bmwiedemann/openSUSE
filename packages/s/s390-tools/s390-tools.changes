@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Oct 16 07:41:18 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade s390-tools to version 2.39 (jsc#PED-10303) 
+- Changes of existing tools:
+  * chpstat: Add options to select IEC units for scaling (SI units are default)
+  * chzdev: Introduce --no-module-load option
+  * cpi: Disable CPI for SEL guests by default
+  * dbginfo.sh: Enhance logging on timeout triggered
+  * iucvterm: Install symlink for lsiucvallow.8 man page
+  * lshwc: Add command line flag to specify individual counters
+  * lspai: Add command line flag for delta values
+  * lspai: Add command line flag for short counter names
+  * lspai: Add command line flag to specify individual counters
+  * lspai: Add command line flags for all cpus
+  * lspai: Add command line flags for hexadecimal output
+  * man: Use CR for constant width font
+  * pvimg: Add '--image-key' option
+  * zdev: Allow dynamic control of module load
+  * zipl/boot: Fix EBCDIC code page 500 conversion and decrease size by 200 bytes
+  * zipl: Add support of heterogeneous mirrors (remove technical limitations
+      on mirrored targets, thus allowing mirrored devices consist of partitions
+      at different offsets on disks of different types and geometry).
+  * zkey: Add support for generating and importing exportable secure keys
+- Bug Fixes:
+  * chpstat: Fix scaling of DPU utilization calculation
+  * zdev/dracut: Prevent loading of unused kernel modules
+  * zdev: Fix double device configuration on DPM systems
+  * zdev: Fix double device configuration with rd.dasd
+  * zipl_helper.device-mapper: Fix segfault in an error path
+- Removed obsolete patches:
+  * s390-tools-sles16sp0-chpstat-Fix-scaling-of-DPU-utilization-calculation.patch
+  * s390-tools-libekmfweb-Fix-generation-of-certificate-or-CSR-with-RSA-PSS-instead-of-RSA.patch
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Mon Sep 29 13:53:31 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1250643, bsc#1250644)

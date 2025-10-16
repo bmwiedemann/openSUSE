@@ -34,7 +34,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.38.0
+Version:        2.39.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
@@ -153,10 +153,6 @@ Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.p
 Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
-###
-Patch920:       s390-tools-sles16sp0-chpstat-Fix-scaling-of-DPU-utilization-calculation.patch
-###
-Patch950:       s390-tools-libekmfweb-Fix-generation-of-certificate-or-CSR-with-RSA-PSS-instead-of-RSA.patch
 ###
 Patch990:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
 ###
