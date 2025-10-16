@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  8 23:19:56 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 1.9
+  * add support for CMake 4.0
+- drop cmake-extras-1.8-cmake4.patch as it is part of the release
+
+-------------------------------------------------------------------
 Thu Apr 17 16:47:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build with cmake4 (boo#1239788) cmake-extras-1.8-cmake4.patch

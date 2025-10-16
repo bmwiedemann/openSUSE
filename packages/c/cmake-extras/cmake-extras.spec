@@ -16,14 +16,13 @@
 #
 
 Name:           cmake-extras
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        A collection of add-ons for the CMake build tool
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://gitlab.com/ubports/development/core/cmake-extras
 Source:         https://gitlab.com/ubports/development/core/cmake-extras/-/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         cmake-extras-1.8-cmake4.patch
 BuildRequires:  cmake
 BuildRequires:  vala
 BuildRequires:  qmlpluginexports-qt5
