@@ -233,4 +233,15 @@
 - Adjust upstream source name in spec file (forwarded request 1288010 from glaubitz)</comment>
     <requestid>1288017</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1ac2c2d1a69ca4da96b2e870746842fd</srcmd5>
+    <version>1.6.0</version>
+    <time>1760629096</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.6.0
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 1311699 from glaubitz)</comment>
+    <requestid>1311702</requestid>
+  </revision>
 </revisionlist>

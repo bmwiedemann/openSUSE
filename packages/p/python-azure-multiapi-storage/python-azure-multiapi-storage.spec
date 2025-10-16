@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-multiapi-storage
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        MS Azure Storage Client Library for Python - with Multi API version Support
 License:        MIT
