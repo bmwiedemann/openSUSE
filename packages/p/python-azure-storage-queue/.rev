@@ -295,4 +295,15 @@
     <comment></comment>
     <requestid>1294815</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9799406138b1c0c15a1e2191ba4034d6</srcmd5>
+    <version>12.14.0</version>
+    <time>1760629095</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 12.14.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1311647 from glaubitz)</comment>
+    <requestid>1311671</requestid>
+  </revision>
 </revisionlist>
