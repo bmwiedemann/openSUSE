@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Oct 15 21:33:48 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 0.0.38~git20251015:
+  * Qt: Allow to clear keyboard shortcuts in dialog
+  * [Build] Explicit Triple with LLVM 21.1.0
+  * SaveStates: Improve try_lock_spu_threads_in_a_state_compatible_with_savestates
+  * ffmpeg: update cellAtracXDec to ffmpeg 7
+  * Qt: Fix savestate failuire message
+  * Debug: Apply SPU Profiling data if debug enabled
+  * SaveStates: Fix Gem Thread Reboot
+  * rsx: Fix user clip plane encode/decode
+  * vk: Uniquely identify images using a monotonic incrementing counter
+  * vk: Add support for blackwell PCI IDs
+  * vk: Improve documentation and remove notifications from instancing buffer
+  * vk: Raise heap changed interrupt when growing persistently bound SSBOs
+  * vk: Restore thread safety locks to descriptor routines
+  * vk: Fix shader interpreter compilation and crashes
+  * gl: Reimplement user clip planes using the new ABI
+  * vk: Fix user clip planes
+  * vk: Don't use rebar for transform constants data
+  * vk: Add re-bar toggle to GUI
+  * vk: Use BAR memory pool for low-latency resource uploads
+  * vk: Decorations for readonly SSBOs
+  * vk/exp: Remove unnecessary locks and optimize VS
+  * rsx/vk: Update shader interpreter to use new varying draw params model
+  * vk: Pass draw parameters to FS via varying register
+  * gl: Fix compilation error when using clip planes
+  * vk: Fix shader compiler issues caused by broken preprocessor macro expansion
+  * vk: Guard against concurrent access of storage pool under high pressure and MTRSX.
+  * vk: Rewrite descriptor write template management
+  * rsx: Fix shader interpreter compilation
+  * vk: Fix shader compilation for certain glslang versions
+  * rsx: Restore optimizations in fragment shader recompiler
+  * vk: Improved state cache tracking
+  * vk: Fix raster-env buffer type
+  * vk: Fix shader compilation with fog parameters
+  * vk: Move polygon stipple parameters to fixed array buffer
+  * vk: Fix stale pointer reference when back-to-back partial updates are interrupted by a shader swap
+  * vk: Fix windows build
+  * vk: Fix wpos computation
+  * vk: Implement state tracking for command buffers
+  * vk: Combine all draw-time constants to a single struct and update only the offset id
+  * vk: Implement descriptor write buffering
+  * rsx: Prepend namespace for simple_array uses
+  * rsx: Use simple array for texcoord stack
+  * rsx: Simplify descriptor set contract a bit
+  * vk: Move texture parameter stream to SSBO layout
+  * vk: Move FS context vars to block format
+  * rsx/common: Add reverse_ptr impl to VS tree
+  * rsx: Fix bugs in fragment program constants stream maagement
+  * vk: Fix vertex context indexing
+  * vk: Fix fragment constants indexing
+  * vk: Fix use of push constants
+  * rsx: Fix bug in reverse_iterator for simple_array
+  * rsx/vk: Convert fragment constants from static struct to array of vec4
+  * rsx: Enhance unordered_map declaration to be more versatile
+  * rsx: Replace use of small vectors with simple_array
+  * vk: Move draw-time constants to vertex layout stream and make it SSBO
+  * vk: Get basic vertex shaders working without traditional UBOs
+  * vk: Fix allocation of vertex env data
+  * vk: Start converting UBO bindings to SSBO indexed arrays
+
+-------------------------------------------------------------------
 Tue Oct 14 01:03:53 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.38~git20251010:
