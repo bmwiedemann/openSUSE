@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 17 06:05:08 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to 4.8.9
+  * extend close env to close env or delimiter (alt+return)
+  * add text selection in pdf viewer (on single page only)
+  * fix verbatim highlighting issue, see 
+    gh#texstudio-org/texstudio#4136
+  * allow extra arguments for LanguaTool 
+    gh#texstudio-org/texstudio#4147
+  * text completion also take other open documents as source 
+    gh#texstudio-org/texstudio#4126
+  * fix crash when opening unopened file via global TOC 
+    gh#texstudio-org/texstudio#4127 
+
+-------------------------------------------------------------------
 Wed Aug 13 05:41:21 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to 4.8.8
