@@ -343,4 +343,16 @@
     <comment></comment>
     <requestid>1294817</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bdb03010a779a606d5dfe846804acd6e</srcmd5>
+    <version>12.22.0</version>
+    <time>1760629094</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 12.22.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1311645 from glaubitz)</comment>
+    <requestid>1311670</requestid>
+  </revision>
 </revisionlist>
