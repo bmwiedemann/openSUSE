@@ -26,6 +26,7 @@ URL:            https://www.spek.cc/
 Source:         https://github.com/alexkay/spek/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM spek-autotools.patch -- based on PR 333
 Patch0:         spek-autotools.patch
+Patch1:         https://github.com/alexkay/spek/pull/338.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

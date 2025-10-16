@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 13 18:03:33 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * https://github.com/alexkay/spek/pull/338.patch
+    Fix compatibility with FFmpeg8
+
+-------------------------------------------------------------------
 Tue Aug 19 07:57:31 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
 
 - add spek-autotools.patch (GH PR #333, fixes x86_64 build)
