@@ -1,7 +1,7 @@
 #
 # spec file for package suse-prime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Name:           suse-prime
 Version:        0.8.18
 Release:        0
 Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops with bbswitch support
-License:        SUSE-Public-Domain
+License:        0BSD
 Group:          System/X11/Utilities
 URL:            https://github.com/openSUSE/SUSEPrime
 Source0:        https://github.com/openSUSE/SUSEPrime/archive/%{version}.tar.gz#/SUSEPrime-%{version}.tar.gz
@@ -54,6 +54,19 @@ Uses bbswitch to switch on/of power of NVIDIA GPU.
 
 %prep
 %setup -n SUSEPrime-%{version}
+cat > LICENSE << EOF
+Permission to use, copy, modify, and/or distribute this software for
+any purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA
+OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+EOF
 
 %build
 :
@@ -129,6 +142,7 @@ rm -f /etc/dracut.conf.d/50-nvidia-default.conf
 %files
 %defattr(-,root,root)
 %doc README.md
+%license LICENSE
 %if 0%{?suse_version} >= 1550
 %dir /usr/lib/dracut/
 %dir /usr/lib/dracut/dracut.conf.d/

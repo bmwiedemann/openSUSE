@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 16 14:33:04 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- changed license from more or less undefined SUSE-Public-Domain
+  to 0BSD (bsc#1252218)
+
+-------------------------------------------------------------------
 Tue Feb  4 12:50:36 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - require nvidia-xconfig for NVIDIA driver >= 570.86.15

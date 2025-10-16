@@ -746,4 +746,13 @@ Latest changes:
     package beginning with version 570.86.15</comment>
     <requestid>1243114</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>de59ebb9ec252b730e7e103118351399</srcmd5>
+    <version>0.8.18</version>
+    <time>1760629175</time>
+    <user>anag_factory</user>
+    <comment>- changed license from more or less undefined SUSE-Public-Domain
+  to 0BSD (bsc#1252218)</comment>
+    <requestid>1311734</requestid>
+  </revision>
 </revisionlist>
