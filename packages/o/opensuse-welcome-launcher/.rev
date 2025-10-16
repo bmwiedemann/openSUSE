@@ -48,4 +48,15 @@
 - Require gnome-tour when gnome-session is installed.</comment>
     <requestid>1308813</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>86482949dc76e26da0937ab486d55277</srcmd5>
+    <version>1.0</version>
+    <time>1760629090</time>
+    <user>anag_factory</user>
+    <comment>- Make opensuse-welcome-launcher support a --unconditional
+  parameter and launch it using this parameter when called via the
+  desktop file from the launcher. Fixes the issue that the icon
+  shown in the launcher did not actually start anything.</comment>
+    <requestid>1311504</requestid>
+  </revision>
 </revisionlist>

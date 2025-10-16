@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  6 16:04:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Make opensuse-welcome-launcher support a --unconditional
+  parameter and launch it using this parameter when called via the
+  desktop file from the launcher. Fixes the issue that the icon
+  shown in the launcher did not actually start anything.
+
+-------------------------------------------------------------------
 Thu Oct  2 13:28:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Be less hacky about the fallback, but rather explicitly assign

@@ -2,7 +2,7 @@
 [Desktop Entry]
 Type=Application
 Name=Welcome launcher
-Exec=/usr/bin/opensuse-welcome-launcher
+Exec=/usr/bin/opensuse-welcome-launcher@PARAMS@
 Icon=org.opensuse.opensuse_welcome_launcher
 Comment=The openSUSE Welcome launcher utility.
 Categories=Qt;System;Documentation

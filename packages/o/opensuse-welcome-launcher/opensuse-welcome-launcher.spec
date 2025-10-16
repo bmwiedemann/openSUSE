@@ -25,7 +25,7 @@ Group:          System/X11/Utilities
 URL:            https://github.com/openSUSE/openSUSE-welcome
 Source0:        opensuse-welcome-launcher.sh
 # Original filename was org.opensuse.opensuse_welcome.desktop
-Source1:        org.opensuse.opensuse_welcome_launcher.desktop
+Source1:        org.opensuse.opensuse_welcome_launcher.desktop.in
 Source3:        org.opensuse.opensuse_welcome_launcher.svg
 Source4:        org.opensuse.opensuse_welcome_launcher-symbolic.svg
 Recommends:     opensuse-welcome >= 0.1.10
@@ -54,8 +54,10 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps
 install -m 0755 %{SOURCE0} %{buildroot}%{_bindir}/opensuse-welcome-launcher
 
 # Install desktop entries
-install -m 0644 %{SOURCE1} %{buildroot}%{_distconfdir}/xdg/autostart/org.opensuse.opensuse_welcome_launcher.desktop
-install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/org.opensuse.opensuse_welcome_launcher.desktop
+install -d -m 0755 %{buildroot}%{_distconfdir}/xdg/autostart
+sed "s|@PARAMS@||g" %{SOURCE1} > %{buildroot}%{_distconfdir}/xdg/autostart/org.opensuse.opensuse_welcome_launcher.desktop
+install -d -m 0755 %{buildroot}%{_datadir}/applications
+sed "s|@PARAMS@| --unconditional|g" %{SOURCE1} > %{buildroot}%{_datadir}/applications/org.opensuse.opensuse_welcome_launcher.desktop
 
 # Install icons
 install -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.opensuse.opensuse_welcome_launcher.svg

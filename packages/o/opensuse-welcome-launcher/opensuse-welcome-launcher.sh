@@ -13,7 +13,7 @@ if [[ -e "$HOME/.config/autostart/${LEGACY_XDG_FILE}" && \
 fi
 
 # Show only once per version
-if [ -f ${HOME}/.local/share/opensuse-welcome/launched ]; then
+if [ "$1" != "--unconditional" -a -f ${HOME}/.local/share/opensuse-welcome/launched ]; then
   if [ "$(cat ${HOME}/.local/share/opensuse-welcome/launched)" = "${OSWL_VERSION_TAG}" ]; then
     # We have already shown the laucher at this version - skipping
     exit 0
