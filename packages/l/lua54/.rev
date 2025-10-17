@@ -398,4 +398,12 @@
 - Switch from update-alternatives to libalternatives (and</comment>
     <requestid>1297784</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>65f129fd1f291f5b7e3fea4233b27a9e</srcmd5>
+    <version>5.4.8</version>
+    <time>1760714732</time>
+    <user>anag_factory</user>
+    <comment>Clean up of the SPEC file.</comment>
+    <requestid>1311755</requestid>
+  </revision>
 </revisionlist>

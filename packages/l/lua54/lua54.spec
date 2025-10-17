@@ -37,7 +37,7 @@ Summary:        Small Embeddable Language with Procedural Syntax
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://www.lua.org
-Source:         https://www.lua.org/ftp/lua-%{version}.tar.gz
+Source0:        https://www.lua.org/ftp/lua-%{version}.tar.gz
 Source1:        https://www.lua.org/tests/lua-%{version}-tests.tar.gz
 Source99:       baselibs.conf
 # PATCH-FIX-SUSE tweak the buildsystem to produce what is needed for SUSE
@@ -67,11 +67,11 @@ Requires(postun): update-alternatives
 BuildRequires:  lua54
 BuildRequires:  lua54-devel
 %else
-# Ensure we can build without $self
-#!BuildIgnore: lua54
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
+# Ensure we can build without $self
+#!BuildIgnore:  lua54
 %endif
 
 %description

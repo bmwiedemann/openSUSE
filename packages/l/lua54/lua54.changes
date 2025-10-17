@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 16 15:54:49 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up of the SPEC file.
+
+-------------------------------------------------------------------
 Tue Aug  5 07:22:18 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - interpreter should only provide, not conflict lua symbol
