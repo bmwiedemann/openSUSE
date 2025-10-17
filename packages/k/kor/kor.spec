@@ -17,7 +17,7 @@
 
 
 Name:           kor
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Tool to discover unused Kubernetes Resources
 License:        MIT

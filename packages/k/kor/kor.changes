@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 17 08:00:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.5:
+  * chore: prerelease bump 0.6.5 (#509)
+  * Fix: CRD processing to use served versions instead of first
+    version (#508)
+  * chore(deps): bump github.com/spf13/viper from 1.20.1 to 1.21.0
+    (#499)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.34.0 to
+    0.34.1 (#501)
+  * chore(deps): bump github.com/go-viper/mapstructure/v2 (#496)
+  * chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+    (#494)
+  * chore(deps): bump github.com/prometheus/client_golang (#495)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.33.4 to
+    0.34.0 (#492)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.33.3 to
+    0.33.4 (#485)
+
+-------------------------------------------------------------------
 Sun Aug 10 08:42:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.4:
