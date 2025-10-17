@@ -1,7 +1,7 @@
 #
 # spec file for package libselinux
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Patch5:         skip_cycles.patch
 # Make linking working even when default pkg-config doesn’t provide -lpython<ver>
 Patch6:         python3.8-compat.patch
 Patch7:         swig4_moduleimport.patch
+Patch8:         man_selinux_disabled_mismatch_kernel_config.patch
 BuildRequires:  fdupes
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
@@ -159,17 +160,21 @@ install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/selinux-ready
 %{_sbindir}/getpidprevcon
 %{_mandir}/man5/*
 %{_mandir}/man8/*
+%license LICENSE
 
 %files -n libselinux1
 %{_libdir}/libselinux.so.*
+%license LICENSE
 
 %files devel
 %{_libdir}/libselinux.so
 %{_includedir}/selinux/
 %{_mandir}/man3/*
 %{_libdir}/pkgconfig/libselinux.pc
+%license LICENSE
 
 %files devel-static
 %{_libdir}/libselinux.a
+%license LICENSE
 
 %changelog

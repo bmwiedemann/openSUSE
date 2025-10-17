@@ -1,7 +1,7 @@
 #
 # spec file for package libselinux-bindings
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -117,8 +117,10 @@ make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" PYTHON=$python
 %{python_sitearch}/selinux
 %{python_sitearch}/selinux-%{version}.dist-info
 %{python_sitearch}/_selinux*
+%license LICENSE
 
 %files -n ruby-selinux
 %{_libdir}/ruby/vendor_ruby/%{rb_ver}/%{rb_arch}/selinux.so
+%license LICENSE
 
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 16 14:26:57 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Ship license file (bsc#1252160) 
+
+-------------------------------------------------------------------
+Wed Jul 23 15:29:05 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Add man_selinux_disabled_mismatch_kernel_config.patch to explain
+  in the selinux(8) man page to not disable SELinux via
+  /etc/selinux/config and enable it at the same time via kernel
+  cmd line (bsc#1246549)
+
+-------------------------------------------------------------------
 Thu Jul 17 15:42:25 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.9

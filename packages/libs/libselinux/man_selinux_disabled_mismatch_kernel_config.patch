@@ -1,0 +1,18 @@
+--- libselinux-3.9/man/man8/selinux.8.orig	2025-07-23 17:18:27.259707528 +0200
++++ libselinux-3.9/man/man8/selinux.8	2025-07-24 09:40:01.654064634 +0200
+@@ -50,6 +50,15 @@
+ .I /etc/selinux/config
+ file.
+ 
++.B NOTE:
++When setting a conflicting configuration like
++.B SELINUX=disabled
++in
++.I /etc/selinux/config
++while having
++.B selinux=1
++on the kernel boot options will result in a non-bootable system.
++
+ The
+ .I /etc/selinux/config
+ configuration file also controls what policy
