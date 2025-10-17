@@ -245,4 +245,12 @@
     <comment></comment>
     <requestid>1279305</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>a9538dd5498a18a49631b0ed10c09b14</srcmd5>
+    <version>3.0.0</version>
+    <time>1760714748</time>
+    <user>anag_factory</user>
+    <comment>- Add 0001-fix-for-Qt-6.10.patch for compatibility with Qt 6.10</comment>
+    <requestid>1311771</requestid>
+  </revision>
 </revisionlist>

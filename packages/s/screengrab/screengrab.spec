@@ -26,6 +26,9 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
+# PATCH-FIX-OPENSUSE 0001-fix-for-Qt-6.10.patch <sfalken@opensuse.org>
+Patch0:         0001-fix-for-Qt-6.10.patch
+
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
