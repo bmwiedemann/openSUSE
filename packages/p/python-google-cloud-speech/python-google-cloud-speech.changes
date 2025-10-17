@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 17 13:54:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.33.0
+  * Add denoiser related configuration (c522070)
+  * Updated description of sample_rate_hertz (c522070)
+
+-------------------------------------------------------------------
 Sat Apr 26 09:07:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.32.0

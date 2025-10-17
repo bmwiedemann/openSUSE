@@ -259,4 +259,14 @@
     <comment></comment>
     <requestid>1273070</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>83b7ba84f82c13d46670751d111a84da</srcmd5>
+    <version>2.33.0</version>
+    <time>1760724872</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.33.0
+  * Add denoiser related configuration (c522070)
+  * Updated description of sample_rate_hertz (c522070) (forwarded request 1312054 from glaubitz)</comment>
+    <requestid>1312057</requestid>
+  </revision>
 </revisionlist>
