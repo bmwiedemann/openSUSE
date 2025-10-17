@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 17 05:12:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.1:
+  * Bug Fixes
+    - broken diffs with object: in plan (97fceea)
+    - improve diffs in plan output (90fd841)
+    - improve output of experimental release list (902b6d9)
+
+-------------------------------------------------------------------
+Fri Oct 17 05:06:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.0:
+  * Features
+    - ability to use werf.io/delete-policy:
+      before-creation-if-immutable annotation in case of field is
+      immutable error (e6b648f)
+    - option --no-final-tracking (439cd63)
+    - option --no-remove-manual-changes from the cluster resources
+      (ce489f3)
+    - recreate non-hook Jobs on field is immutable by default
+      (4b2521f)
+
+-------------------------------------------------------------------
 Mon Oct 13 10:51:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.13.2:
