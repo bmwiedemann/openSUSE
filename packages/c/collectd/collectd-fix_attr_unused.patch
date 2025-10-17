@@ -1,0 +1,11 @@
+--- a/src/virt.c	2025-10-16 14:19:22.100971296 +0200
++++ b/src/virt.c	2025-10-16 14:20:20.193829575 +0200
+@@ -2206,7 +2206,7 @@
+   return 0;
+ }
+ 
+-static void virt_eventloop_timeout_cb(int timer ATTRIBUTE_UNUSED,
++static void virt_eventloop_timeout_cb(__attribute__((unused)) int timer,
+                                       void *timer_info) {}
+ 
+ static int register_event_impl(void) {

@@ -1,7 +1,7 @@
 #
 # spec file for package collectd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2005-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -60,7 +60,7 @@
 %endif
 %bcond_with epics
 Name:           collectd
-Version:        5.12.0.348.g93f9bdcb
+Version:        5.12.0.366.gc254dc2c
 Release:        0
 Summary:        Statistics Collection Daemon for filling RRD Files
 License:        GPL-2.0-only AND MIT
@@ -84,6 +84,7 @@ Patch8:         9e36cd85a2bb_sigrok_Update_to_support_libsigrok_0_4.patch
 # PATCH-FIX-OPENSUSE avoid-pg-config.patch avoid pg_config if possible
 Patch11:        avoid-pg-config.patch
 Patch12:        harden_collectd.service.patch
+Patch13:        collectd-fix_attr_unused.patch
 # for /etc/apache2/... ownership (rpmlint):
 BuildRequires:  apache2
 BuildRequires:  autoconf
@@ -156,8 +157,8 @@ BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(libsigrok)
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
-BuildRequires:  pkgconfig(libmodbus)
 BuildRequires:  strip-nondeterminism
+BuildRequires:  pkgconfig(libmodbus)
 %endif
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libmosquitto)

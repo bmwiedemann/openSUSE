@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 16 11:19:43 UTC 2025 - Arvin Schnell <aschnell@suse.com>
+
+- Update to version 5.12.0.366.gc254dc2c:
+  * Fix FreeBSD image for Cirrus CI
+  * Fix build due to error in curl_easy_setopt
+  * Update BUILD.dpdkstat.md
+  * src: add NULL check for severity in logparser_config_message
+  * scr: daemon: fix memory leak in plugin_register_cache_event() in plugin.c
+  * src: fix memory leak in config parser in write_syslog.c
+  * configure.ac: use pkg-config to find libgcrypt
+  * Fix deprecated actions/upload-artifact@v3 in GitHub Actions
+  * Format correction
+  * When UseSerial is enabled, allow configured ignored disk names to be copied to the serial ignore list for devices without serials.
+  * processes: Do not post metrics from processes that are not running.
+- Add patch:
+  - collectd-fix_attr_unused.patch
+
+-------------------------------------------------------------------
 Wed Dec 18 10:28:48 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Normalize jar mtimes for reproducible builds (boo#1134568)
