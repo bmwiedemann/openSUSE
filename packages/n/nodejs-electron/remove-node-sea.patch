@@ -1,16 +1,16 @@
 Do not build single-executable builder, it is useless on distro electron and fails to compile
 
---- src/third_party/electron_node/src/node_sea.cc.orig	2025-09-10 22:20:53.329753565 +0200
-+++ src/third_party/electron_node/src/node_sea.cc	2025-09-11 12:06:23.007498591 +0200
-@@ -289,6 +289,7 @@ struct SeaConfig {
-   std::unordered_map<std::string, std::string> assets;
+--- src/third_party/electron_node/src/node_sea.cc.orig	2025-10-15 11:27:25.079700709 +0200
++++ src/third_party/electron_node/src/node_sea.cc	2025-10-15 12:04:33.977861545 +0200
+@@ -384,6 +384,7 @@ struct SeaConfig {
+   std::vector<std::string> exec_argv;
  };
  
 +#if 0
  std::optional<SeaConfig> ParseSingleExecutableConfig(
      const std::string& config_path) {
    std::string config;
-@@ -432,6 +433,7 @@ std::optional<SeaConfig> ParseSingleExec
+@@ -571,6 +572,7 @@ std::optional<SeaConfig> ParseSingleExec
  
    return result;
  }
@@ -18,7 +18,7 @@ Do not build single-executable builder, it is useless on distro electron and fai
  
  ExitCode GenerateSnapshotForSEA(const SeaConfig& config,
                                  const std::vector<std::string>& args,
-@@ -627,6 +629,7 @@ ExitCode GenerateSingleExecutableBlob(
+@@ -772,6 +774,7 @@ ExitCode GenerateSingleExecutableBlob(
  
  }  // anonymous namespace
  
@@ -26,7 +26,7 @@ Do not build single-executable builder, it is useless on distro electron and fai
  ExitCode BuildSingleExecutableBlob(const std::string& config_path,
                                     const std::vector<std::string>& args,
                                     const std::vector<std::string>& exec_args) {
-@@ -640,6 +643,7 @@ ExitCode BuildSingleExecutableBlob(const
+@@ -785,6 +788,7 @@ ExitCode BuildSingleExecutableBlob(const
  
    return ExitCode::kGenericUserError;
  }

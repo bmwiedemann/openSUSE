@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 16 19:56:42 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 37.7.0
+  * NodeJS 22.20.0
+  * Fixed addBrowserView to prevent unnecessary removal and re-adding of the same BrowserView
+  * Fixed an issue where authentication via websockets can crash
+- Fedora: use bundled simdjson due to system version being too old
+
+-------------------------------------------------------------------
 Wed Oct  8 06:11:24 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 37.6.1

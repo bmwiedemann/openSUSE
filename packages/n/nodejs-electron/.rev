@@ -1452,4 +1452,16 @@ to Staging:F with it</comment>
   * Allowed for persisting File System API grant status within a given session</comment>
     <requestid>1309842</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>448769d1634fa2333f0593ecbb3de541</srcmd5>
+    <version>37.7.0</version>
+    <time>1760714750</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release 37.7.0
+  * NodeJS 22.20.0
+  * Fixed addBrowserView to prevent unnecessary removal and re-adding of the same BrowserView
+  * Fixed an issue where authentication via websockets can crash
+- Fedora: use bundled simdjson due to system version being too old</comment>
+    <requestid>1311797</requestid>
+  </revision>
 </revisionlist>

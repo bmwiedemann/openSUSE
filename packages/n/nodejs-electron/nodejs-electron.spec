@@ -73,6 +73,7 @@ ExcludeArch: %arm
 
 
 %bcond_with system_yuv
+%bcond_with system_simdjson
 
 #CPU level. Leap 16 requires x86-64-v2 so we may force it inside V8.
 %if 0%{?suse_version} >= 1550 && 0%{?suse_version} < 1650
@@ -109,10 +110,9 @@ ExcludeArch: %arm
 %if 0%{?fedora}
 
 %bcond_without system_histogram
-%bcond_without system_simdjson
 %else
 %bcond_with system_histogram
-%bcond_with system_simdjson
+
 %endif
 
 
@@ -186,7 +186,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        37.6.1
+Version:        37.7.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -614,7 +614,8 @@ BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  cmake(re2) >= 11
 %endif
 %if %{with system_simdjson}
-BuildRequires:  pkgconfig(simdjson)
+# requires https://github.com/simdjson/simdjson/commit/f64c004cb71b08fdadb9881e2f0525800a0356e2
+BuildRequires:  pkgconfig(simdjson) >= 3.13
 %endif
 %if 0%{?suse_version}
 BuildRequires:  spirv-headers
