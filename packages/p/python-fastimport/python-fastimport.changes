@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Oct 17 09:27:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9.16
+  * Make original-oid parameter backwards compatible
+- from version 0.9.15
+  * Update for new description format.
+  * Better assertions.
+  * Exclude pypy3 on github actions on windows/mac
+  * Add typing support.
+  * Drop 3.5 support.
+  * Install tests in sdist but not wheels
+  * s/releaser/disperse/
+  * Update disperse.conf.
+  * Ship py.typed.
+  * add pyproject
+  * install py.typed
+  * Run mypy.
+  * Add make typing target
+  * Support Python >= 3.7, <= 3.11
+  * Use disperse action
+  * Migrate to pyproject.toml
+  * Set dependencies field.
+  * Add readthedocs configuration
+  * Fix pyproject.toml
+  * Drop obsolete travis-ci badge
+  * Fix readthedocs config
+  * Fix flake8
+  * Add github metadata
+  * Drop unused NEWS file
+  * Drop python 3.7 support
+  * Bump actions/checkout from 2 to 4
+  * Ruff format
+  * Bump actions/setup-python from 4 to 5
+  * Use ruff rather than flake8
+  * Fix disperse.conf
+  * Bump python to 3.13
+  * Migrate to disperse.toml
+  * Use disperse action
+  * Bumping python versions in GitHub workflows and pyproject.toml
+  * Add code of conduct
+  * Fix spelling errors
+  * Bump actions/checkout from 2 to 4
+  * Bump jelmer/action-disperse-validate from 1 to 2
+  * Bump actions/checkout from 4 to 5
+  * Bump actions/setup-python from 5 to 6
+  * Fix format
+  * Add typing
+  * Partial implementation of #12
+  * Add tests for original-oid support
+  * Extend README.md
+  * Include README in project description
+  * Automatically publish wheels
+- Drop NEWS file from %doc section
+
+-------------------------------------------------------------------
 Mon Jun  9 13:57:36 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

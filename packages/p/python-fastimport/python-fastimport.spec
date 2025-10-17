@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastimport
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-fastimport
-Version:        0.9.14
+Version:        0.9.16
 Release:        0
 Summary:        Fastimport parser in Python
 License:        GPL-2.0-or-later
@@ -65,7 +65,7 @@ git-remote-hg use a slightly modified version of it.
 %python_libalternatives_reset_alternative fast-import-filter
 
 %files %{python_files}
-%doc NEWS README.md
+%doc README.md
 %license COPYING
 %{python_sitelib}/fastimport*
 %python_alternative %{_bindir}/fast-import-filter
