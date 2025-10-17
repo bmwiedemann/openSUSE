@@ -1540,4 +1540,16 @@
   * Fix uv python upgrade replacement of installed binaries on pre-release to stable</comment>
     <requestid>1310638</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>22f2e62ef663052cd850c961743fe805</srcmd5>
+    <version>0.9.3</version>
+    <time>1760714753</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.3
+ * Enhancements
+  * Obfuscate secret token values in logs
+ * Bug fixes
+ * Fix workspace with relative pathing</comment>
+    <requestid>1311815</requestid>
+  </revision>
 </revisionlist>
