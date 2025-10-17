@@ -108,7 +108,7 @@ Obsoletes:      python39%{?1:-%{1}}
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.18
+Version:        3.10.19
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -202,14 +202,8 @@ Patch27:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
 # status_iterator method moved between the Sphinx versions
 Patch28:        sphinx-802.patch
-# PATCH-FIX-UPSTREAM CVE-2025-6069-quad-complex-HTMLParser.patch bsc#1244705 mcepl@suse.com
-# avoid quadratic complexity when processing malformed inputs with HTMLParser
-Patch29:        CVE-2025-6069-quad-complex-HTMLParser.patch
-# PATCH-FIX-UPSTREAM CVE-2025-8194-tarfile-no-neg-offsets.patch bsc#1247249 mcepl@suse.com
-# tarfile now validates archives to ensure member offsets are non-negative
-Patch30:        CVE-2025-8194-tarfile-no-neg-offsets.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
-Patch31:        gh139257-Support-docutils-0.22.patch
+Patch29:        gh139257-Support-docutils-0.22.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -508,6 +502,9 @@ rm Lib/site-packages/README.txt
 
 # Add vendored bluez-devel files
 tar xvf %{SOURCE21}
+
+# Don't fail on warnings when building documentation
+sed -i -e '/^SPHINXERRORHANDLING/s/-W//' Doc/Makefile
 
 %build
 %if %{with doc}
