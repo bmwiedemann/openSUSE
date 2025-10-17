@@ -17,7 +17,7 @@
 
 
 Name:           bcachefs-tools
-Version:        1.31.7
+Version:        1.31.11
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only AND BSD-3-Clause AND (Apache-2.0 AND (Apache-2.0 OR MIT) AND (Apache-2.0 with LLVM-exception OR Apache-2.0 OR MIT) AND MIT AND MPL-2.0 AND (Unlicense OR MIT))
