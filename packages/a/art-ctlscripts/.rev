@@ -21,4 +21,21 @@
 </comment>
     <requestid>1216507</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d41002c3ca866c6b4aa28fb14ebcb34c</srcmd5>
+    <version>1.2</version>
+    <time>1760714823</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2:
+  * _artlib: added xyz to ACES matrix
+  * updated links in README
+  * added mirroring to bitbucket workflow
+  * updated translations
+  * added simplified &quot;color balance RGB&quot; from darktable
+  * added &quot;magic strings&quot; to allow UI translations
+  * split toning: added balance slider
+  * tetrahsl: slightly tweaked coefficients
+</comment>
+    <requestid>1311921</requestid>
+  </revision>
 </revisionlist>

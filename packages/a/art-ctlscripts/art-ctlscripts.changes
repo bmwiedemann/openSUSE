@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 17 07:43:52 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.2:
+  * _artlib: added xyz to ACES matrix
+  * updated links in README
+  * added mirroring to bitbucket workflow
+  * updated translations
+  * added simplified "color balance RGB" from darktable
+  * added "magic strings" to allow UI translations
+  * split toning: added balance slider
+  * tetrahsl: slightly tweaked coefficients
+
+-------------------------------------------------------------------
 Mon Oct 21 06:47:04 UTC 2024 - info@paolostivanin.com
 
 - Update to version 1.1:

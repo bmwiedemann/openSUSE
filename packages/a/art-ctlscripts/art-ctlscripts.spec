@@ -1,7 +1,7 @@
 #
 # spec file for package art-ctlscripts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           art-ctlscripts
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Custom CTL scripts for the ART raw processor.
 License:        GPL-3.0-only
