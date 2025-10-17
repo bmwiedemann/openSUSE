@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 17 05:26:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.45.0:
+  * Added Features
+    - write CWEs into database [#705 @willmurphyscode]
+    - Add GRYPE_DB_EXECUTABLE_PATH support to bypass Go build
+      requirement [#699 @jamestexas]
+    - Add weaknesses information from NVD [#644]
+  * Bug Fixes
+    - Test fixtures with colons in filenames break go get [#714
+      #265 @kzantow]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#713)
+    - chore(deps): Bump github.com/nwaples/rardecode/v2 from 2.1.1
+      to 2.2.0 (#710)
+    - chore(deps): update generated code (#711)
+    - chore(deps): Bump golang.org/x/text from 0.29.0 to 0.30.0
+      (#709)
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#712)
+    - chore(deps): update tools to latest versions (#701)
+    - chore(deps): Bump github.com/hashicorp/go-getter from 1.8.1
+      to 1.8.2 (#704)
+
+-------------------------------------------------------------------
 Fri Oct 03 05:05:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.44.0:
