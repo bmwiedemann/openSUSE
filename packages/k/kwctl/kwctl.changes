@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 14 05:06:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.29.1:
+  * Backport graceful handling of failures during sigstore init to
+    1.29 by @flavio in #1395
+
+-------------------------------------------------------------------
 Wed Oct 01 11:52:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.0:
