@@ -63,4 +63,18 @@
     <comment></comment>
     <requestid>1272663</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>765eb4f6ce3f87758c2774bf4e4454fb</srcmd5>
+    <version>2.25.0</version>
+    <time>1760724871</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.25.0
+  * Add support for Python 3.14 (4763aa7)
+  * Deprecate credentials_file argument (4763aa7)
+- from version 2.24.0
+  * [google-cloud-secret-manager] Update secret manager protos for
+    tags (#13976)
+- Update BuildRequires and Requires from setup.py (forwarded request 1312031 from glaubitz)</comment>
+    <requestid>1312040</requestid>
+  </revision>
 </revisionlist>
