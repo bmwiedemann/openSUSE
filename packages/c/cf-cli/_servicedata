@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/cloudfoundry/cli.git</param>
+              <param name="changesrevision">4b92b73e45f5472daa8723c139a981fb01561a84</param></service></servicedata>

@@ -1,7 +1,7 @@
 #
 # spec file for package cf-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,25 +35,23 @@
 
 %define         short_name cf-cli
 Name:           %{short_name}%{?name_ext}
-Version:        6.51.0
+Version:        8.16.0+git.0.4b92b73e4
 Release:        0
 Summary:        Cloud Foundry command line client
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/cloudfoundry/cli
-Source:         v%{version}.tar.gz
+Source:         cli-%{version}.tar.gz
 Source1:        README
-Source2:        cf-cli-rpmlintrc
+Source2:        vendor.tar.gz
 %if 0%{?_test}
 BuildRequires:  %{short_name} = %{version}
 %else
 BuildRequires:  go
 BuildRequires:  golang-packaging
 BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.25
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-%{go_nostrip}
-%{go_provides}
 %endif
 
 %description
@@ -65,14 +63,11 @@ This is the official command line client for Cloud Foundry.
 # reason
 touch %{_sourcedir}/%{short_name}
 %else
-%setup -q -c -n %{name}-%{version}
-mv */* ./
+%autosetup -n cli-%{version} -a2
 cp %{SOURCE1} ./
 %endif
 
 %build
-GO111MODULE=off
-export GO111MODULE
 %if 0%{?_test}
 cf --help
 %else
@@ -87,25 +82,23 @@ echo 'Test if cf can be executed'
 %endif
 
 %install
-GO111MODULE=off
-export GO111MODULE
 %if 0%{?_test}
 # disable debug packages in package test to prevent error about missing files
 %define debug_package %{nil}
 %else
 mkdir -p %{buildroot}/%{_bindir}
 cp ../go/bin/cli %{buildroot}/%{_bindir}/cf
-install -m 755 -d %{buildroot}/%{_sysconfdir}/bash_completion.d
-cp ci/installers/completion/cf %{buildroot}/%{_sysconfdir}/bash_completion.d/cf.sh
+cp %{SOURCE1} ./
 %endif
 
 %files
 %if 0%{?_test}
+%defattr(-,root,root,-)
 %else
 %defattr(-,root,root,-)
 %{_bindir}/cf
-%config %{_sysconfdir}/bash_completion.d/cf.sh
-%doc LICENSE NOTICE README
+%license LICENSE
+%doc NOTICE README
 %endif
 
 %changelog

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 17 07:28:27 UTC 2025 - Berthold Gunreben <azouhr@opensuse.org>
+
+- remove GO111MODULE=off
+- mark license file with %license 
+- add _service file
+- use separate vendor archive
+- remove rpmlint filter
+- require go >= 1.25
+
+-------------------------------------------------------------------
+Fri Oct 17 07:22:31 UTC 2025 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Update to version 8.16.0+git.0.4b92b73e4:
+  * Fix typo in Json unmarshaling (#3582)
+  * Expose existing function in interface (#3581)
+  * Check for chunk size before api call[v8] (#3574)
+  * [v8](go): Bump the dependencies group across 1 directory with 10 updates (#3573)
+  * [v8](gha): Bump the dependencies group across 1 directory with 5 updates (#3571)
+  * Use CLI Bot account (#3562)
+  * bump go to 1.25 (#3561)
+  * [v8](go): Bump the dependencies group across 1 directory with 13 updates (#3559)
+  * [v8](gha): Bump the dependencies group across 1 directory with 3 updates (#3558)
+  * skip ssl validation for tests if needed (#3556)
+
+-------------------------------------------------------------------
 Wed Aug 20 12:24:51 UTC 2025 - Michael Matz <matz@suse.com>
 
 - Use current distro go default version.  As cf-cli are oldish
