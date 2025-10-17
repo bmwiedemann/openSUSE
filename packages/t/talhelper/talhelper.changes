@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 17 06:11:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.38:
+  * docs: update CLI reference documentation (#1241)
+  * chore(deps): update dependency siderolabs/talos to v1.11.3
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.11.3
+  * chore(schema): update talos-extensions.yaml JSON schema (#1240)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1237)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1236)
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.17
+  * chore(schema): update talos-extensions.yaml JSON schema (#1234)
+  * chore(container): update alpine:3.22.2 docker digest to 4b7ce07
+    (#1233)
+  * fix(deps): update module golang.org/x/mod to v0.29.0
+  * chore(container): update alpine docker tag to v3.22.2
+  * docs: update CLI reference documentation (#1230)
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.16
+  * feat(gencommand): add `health` subcommand
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.37
+  * feat: update Scoop for talhelper version v3.0.37
+  * feat: update flake (#1225)
+
+-------------------------------------------------------------------
 Tue Oct 07 05:04:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.37:
