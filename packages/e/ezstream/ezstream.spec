@@ -1,7 +1,7 @@
 #
 # spec file for package ezstream
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,9 +50,11 @@ plus all those known to TagLib.
 %setup -q
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r  %{SOURCE1} '+%%B %%d, %%Y')
 sed -i "s/BUILD_DATE=\$(date '+%%B %%d, %%Y')/BUILD_DATE=\"$FAKE_BUILDDATE\"/" configure.ac
+# Insert gettext macros
+sed -i '/^AM_INIT_AUTOMAKE/i AM_GNU_GETTEXT_VERSION([0.21])\nAM_GNU_GETTEXT([external])' configure.ac
 
 %build
-autoreconf -fi
+autoreconf -fiv
 %configure
 %make_build
 

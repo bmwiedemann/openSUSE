@@ -60,4 +60,12 @@
     <comment></comment>
     <requestid>887302</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b913e52cf794cc609ebaa329fc565eba</srcmd5>
+    <version>1.0.2</version>
+    <time>1760714833</time>
+    <user>anag_factory</user>
+    <comment>- Add missing gettext macros to fix build. (forwarded request 1311949 from anag_factory)</comment>
+    <requestid>1311950</requestid>
+  </revision>
 </revisionlist>
