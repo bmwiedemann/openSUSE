@@ -1,6 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 17 08:30:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.35.1
+  * Remove setup.cfg configuration for creating universal
+    wheels (#316) (942de3a)
+  * Resolve issues where pre-release versions of dependencies
+    are installed (#313) (5e1a6bc)
+- Update upstream_name to google_cloud_dns
+
+-------------------------------------------------------------------
 Thu Mar 14 19:30:35 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Initial build (jsc#PED-6697)
   + Version 0.35.0
-  
