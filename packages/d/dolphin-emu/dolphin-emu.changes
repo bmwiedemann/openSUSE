@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 13 19:01:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Added patch dolphin-qt610.patch to fix Qt 6.10 build.
+
+-------------------------------------------------------------------
 Wed Sep 17 20:27:46 UTC 2025 - Kyle Scheuing <kyle@kylescheuing.com>
 
 - Updated to 2509

@@ -210,4 +210,12 @@
   * Used SDL3 from dependencies and watcher from externals source.</comment>
     <requestid>1305583</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>41a281a1c79dec408d2807cd9b0b360c</srcmd5>
+    <version>2509</version>
+    <time>1760714827</time>
+    <user>anag_factory</user>
+    <comment>- Added patch dolphin-qt610.patch to fix Qt 6.10 build.</comment>
+    <requestid>1311932</requestid>
+  </revision>
 </revisionlist>
