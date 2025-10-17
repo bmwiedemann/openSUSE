@@ -41,4 +41,21 @@
 </comment>
     <requestid>1128347</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a991c9996084b6713858caae4a222df</srcmd5>
+    <version>0.5.3+git11.f4b1be9</version>
+    <time>1760714851</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.3+git.1737413116.f4b1be9:
+  * Date format following system default
+  * Fix an issue with the app not starting under GTK 4.17
+  * Fix typo
+  * Metainfo delete RECOMMENDS section
+  * Add Metainfo entry LAUNCHABLE
+  * Remove doubling of custom key metainfo.xml.in
+  * Fix doubled value purism form factor
+  * Change permission error
+</comment>
+    <requestid>1312002</requestid>
+  </revision>
 </revisionlist>

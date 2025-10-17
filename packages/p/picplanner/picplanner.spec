@@ -1,7 +1,7 @@
 #
 # spec file for package picplanner
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           picplanner
-Version:        0.5.0
+Version:        0.5.3+git11.f4b1be9
 Release:        0
 Summary:        A GTK application for photographers using GNU Linux or especially Linux phones
 License:        GPL-3.0-or-later
 URL:            https://gitlab.com/Zwarf/%{name}
-Source:         %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz
-
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -43,7 +42,7 @@ photograph.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %meson

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 17 06:54:52 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.5.3+git.1737413116.f4b1be9:
+  * Date format following system default
+  * Fix an issue with the app not starting under GTK 4.17
+  * Fix typo
+  * Metainfo delete RECOMMENDS section
+  * Add Metainfo entry LAUNCHABLE
+  * Remove doubling of custom key metainfo.xml.in
+  * Fix doubled value purism form factor
+  * Change permission error
+
+-------------------------------------------------------------------
 Thu Nov 23 13:56:15 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.5.0:
