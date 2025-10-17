@@ -34,20 +34,3 @@ Index: Python-3.14.0/Doc/tools/extensions/pyspecific.py
  
  
  class PyAwaitableMixin(object):
-Index: Python-3.14.0/Doc/Makefile
-===================================================================
---- Python-3.14.0.orig/Doc/Makefile
-+++ Python-3.14.0/Doc/Makefile
-@@ -14,7 +14,11 @@ PAPER        =
- SOURCES      =
- DISTVERSION  = $(shell $(PYTHON) tools/extensions/patchlevel.py)
- REQUIREMENTS = requirements.txt
--SPHINXERRORHANDLING = --fail-on-warning
-+# docutils 0.22 produces the following warning for all the faq pages:
-+# ERROR: The "contents" directive may not be used within topics or
-+# body elements. [docutils]
-+# SPHINXERRORHANDLING = --fail-on-warning
-+SPHINXERRORHANDLING =
- 
- # Internal variables.
- PAPEROPT_a4     = --define latex_elements.papersize=a4paper

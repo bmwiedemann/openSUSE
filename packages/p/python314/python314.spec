@@ -546,7 +546,7 @@ rm Lib/site-packages/README.txt
 tar xvf %{SOURCE21}
 
 # Don't fail on warnings when building documentation
-# sed -i -e '/^SPHINXERRORHANDLING/s/-W//' Doc/Makefile
+sed -i -e '/^SPHINXERRORHANDLING/s/--fail-on-warning//' Doc/Makefile
 
 %build
 export SUSE_VERSION="0%{?suse_version}"

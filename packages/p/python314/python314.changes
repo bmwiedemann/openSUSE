@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 15 09:22:40 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use sed to remove "--fail-on-warning" config from Makefile instead
+  of the patch gh139257-Support-docutils-0.22.patch
+
+-------------------------------------------------------------------
 Thu Oct  9 09:10:23 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix python314:doc package build with docutils 0.22. Remove the
