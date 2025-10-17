@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 17 06:50:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.12.1:
+  https://github.com/kumahq/kuma/releases/tag/2.12.1
+  * chore(deps): bump coredns from v1.12.2 to v1.23.1 (backport of
+    #14678) (#14683)
+  * feat(kumactl): switch kube-state-metrics to upstream image
+    (#14594)
+  * chore(deps): bump envoy from v1.35.1 to v1.35.3 (backport of
+    #14445) (#14450)
+
+-------------------------------------------------------------------
 Fri Sep 19 07:43:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.12.0:
