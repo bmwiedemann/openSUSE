@@ -1,7 +1,7 @@
 #
 # spec file for package ctl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-%define so_ver 1_5_3
+%define so_ver 1_5
 
 Name:           ctl
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Programming language for digital color management
 License:        AMPAS
 URL:            https://github.com/ampas/CTL
 Source:         https://github.com/ampas/CTL/archive/refs/tags/ctl-%{version}.tar.gz
 Source2:        ctl-rpmlintrc
-# PATCH-FIX-UPSTREAM https://github.com/ampas/CTL/pull/153
-Patch0:         fix-IlmCtl-sover.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libtiff-devel
@@ -165,16 +163,16 @@ CTL interpreter.
 %{_includedir}/OpenEXR/ImfCtlApplyTransforms.h
 
 %files -n libIlmImfCtl%{so_ver}
-%{_libdir}/libIlmImfCtl.so.%{version}
+%{_libdir}/libIlmImfCtl.so.*
 
 %files -n libIlmCtl%{so_ver}
-%{_libdir}/libIlmCtl.so.%{version}
+%{_libdir}/libIlmCtl.so.*
 
 %files -n libIlmCtlMath%{so_ver}
-%{_libdir}/libIlmCtlMath.so.%{version}
+%{_libdir}/libIlmCtlMath.so.*
 
 %files -n libIlmCtlSimd%{so_ver}
-%{_libdir}/libIlmCtlSimd.so.%{version}
+%{_libdir}/libIlmCtlSimd.so.*
 
 %files doc
 %if 0%{?sle_version} >= 150600 || %{?suse_version} >= 1600

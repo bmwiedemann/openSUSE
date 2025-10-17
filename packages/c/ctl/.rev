@@ -26,4 +26,41 @@
     <comment></comment>
     <requestid>1238435</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>08c122652ff658a2ec231c4f12b3d6c9</srcmd5>
+    <version>1.5.4</version>
+    <time>1760714831</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.5.4:
+  * Issues/0146 strict aliasing violations by @michaeldsmith in #147
+  * Issues/0138 uint32 is deprecated by @michaeldsmith in #148
+  * Issues/0150 max inst count segfault by @michaeldsmith in #151
+  * restore tiff to vcpkg github workflow by @michaeldsmith in #152
+  * Fix Mac Github workflow CI by @michaeldsmith in #154
+  * Add soversion to IlmImfCtl too by @paolostivanin in #153
+  * issues/0155 - typo in set_target_properties() in /lib/dpx/CMakeLists.txt by @michaeldsmith in #156
+  * change from actions/checkout@v3 to actions/checkout@v4 by @michaeldsmith in #158
+  * remove github workflow job that only does setup of freebsd by @michaeldsmith in #159
+  * Issues/0134 openexr2 shared iex_debug trap by @michaeldsmith in #160
+  * remove centos7 from github workflow, centos7 is EOL 2024-06-30 by @michaeldsmith in #161
+  * add ZLIB to CMakeLists.txt target_link_libraries() by @michaeldsmith in #162
+  * Disambiguate clamp calls in exrToDpx.cpp by @carlocab in #164
+  * Ctlrender help by @aforsythe in #38
+  * fix missing va_end by @rex4539 in #166
+  * improve CMake status messages by @michaeldsmith in #169
+  * CodeQL - add permissions to GH workflows by @michaeldsmith in #170
+  * codeql/cpp-comparison-with-wider-type by @michaeldsmith in #172
+  * codeql/cpp-wrong-type-format-argument by @michaeldsmith in #173
+  * cmake/simplify-finding-openexr by @michaeldsmith in #174
+  * codeql/cpp/integer-multiplication-cast-to-long by @michaeldsmith in #175
+  * issues/0176-ctlrender-ctest-tiff32-uses-previous-ctest-output by @michaeldsmith in #177
+  * Add ARM Linux GitHub workflow by @michaeldsmith in #178
+  * Issues/0168 valgrind issue ctlrender with unsupported input format by @michaeldsmith in #179
+  * Issues/0180 llvm gentoo error by @michaeldsmith in #181
+  * Issues/0183 compile brew head by @michaeldsmith in #184
+  * change SOVERSION to use MAJOR.MINOR format instead of MAJOR.MINOR.PATCH by @michaeldsmith in #186
+- Drop upstreamed fix-IlmCtl-sover.patch
+</comment>
+    <requestid>1311942</requestid>
+  </revision>
 </revisionlist>
