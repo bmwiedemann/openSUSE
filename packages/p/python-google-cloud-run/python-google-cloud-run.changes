@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 17 12:33:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.11.0
+  * A type of an existing resource_reference option of the field
+    `worker_pool` in message `.google.cloud.run.v2.SubmitBuildRequest`
+    is changed from `cloudbuild.googleapis.com/WorkerPool` to
+    `cloudbuild.googleapis.com/BuildWorkerPool`
+  * A type of an existing resource_reference option of the field
+    `worker_pool` in message `.google.cloud.run.v2.BuildConfig`
+    is changed from `cloudbuild.googleapis.com/WorkerPool` to
+    `cloudbuild.googleapis.com/BuildWorkerPool`
+  * [google-cloud-run] An existing resource_definition
+    `cloudbuild.googleapis.com/WorkerPool` is removed
+  * Adding new resource tpye run.googleapis.com/WorkerPool. (077a8ff)
+  * [google-cloud-run] An existing resource_definition
+    `cloudbuild.googleapis.com/WorkerPool` is removed (077a8ff)
+  * A type of an existing resource_reference option of the field
+    `worker_pool` in message `.google.cloud.run.v2.BuildConfig`
+    is changed from `cloudbuild.googleapis.com/WorkerPool` to
+    `cloudbuild.googleapis.com/BuildWorkerPool` (077a8ff)
+  * A type of an existing resource_reference option of the field
+    `worker_pool` in message `.google.cloud.run.v2.SubmitBuildRequest`
+    is changed from `cloudbuild.googleapis.com/WorkerPool` to
+    `cloudbuild.googleapis.com/BuildWorkerPool` (077a8ff)
+- from version 0.10.19
+  * Add new field `term_signal` to `.google.cloud.run.v2.TaskAttemptResult`
+    (078e0e2)
+  * Support GPU zonal redundancy setting for Cloud Run jobs (078e0e2)
+- from version 0.10.18
+  * Support GPU zonal redundancy setting in Cloud Run services (2f33995)
+  * Support node selector in Cloud Run jobs for GPU setting (2f33995)
+
+-------------------------------------------------------------------
 Fri Apr 25 08:21:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.10.17
