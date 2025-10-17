@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 17 06:00:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.9:
+  * fix: update go-redsync for fips-140 compatibility (#3451)
+  * feat: the default retention delay is not the GC delay (#3447)
+  * feat(sessions): add support for remote redis session store
+    (#3345)
+  * chore: stabilize coverage for specific imagestore case (#3429)
+  * feat(sync): enable regclient logs (#3363)
+  * fix: migrate from github.com/rs/zerolog to golang-native
+    log/slog (#3405)
+  * fix: broken CodeQL badge (#3424)
+  * chore: increase/stabilize go test coverage (#3411)
+  * chore: update zui version (#3412)
+  * chore: Update to graphql 5.2.0 (#3410)
+  * feat: GC to cleanup untagged manifests by default (#3408)
+
+-------------------------------------------------------------------
 Tue Sep 02 06:02:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.8:
