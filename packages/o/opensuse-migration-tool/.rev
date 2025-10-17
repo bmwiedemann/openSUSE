@@ -113,4 +113,13 @@ migrations as well as point release upgrades
   * Keep only Experimental in the title</comment>
     <requestid>1308483</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0682c1f065741bd07ed10a353865280f</srcmd5>
+    <version>20251017.e28f94c</version>
+    <time>1760714850</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251017.e28f94c:
+  * fix: remove the check for x86-64-v3 flag xsave from the v2 check</comment>
+    <requestid>1312004</requestid>
+  </revision>
 </revisionlist>

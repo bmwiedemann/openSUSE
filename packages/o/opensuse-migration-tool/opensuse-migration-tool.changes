@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 17 11:28:12 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251017.e28f94c:
+  * fix: remove the check for x86-64-v3 flag xsave from the v2 check
+
+-------------------------------------------------------------------
 Wed Oct 01 20:43:21 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20251001.d4b9783:
