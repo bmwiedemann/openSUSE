@@ -30,7 +30,7 @@
 %endif
 
 Name:           ansible-runner
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        Run ansible-playbook inside an execution environment
 License:        Apache-2.0

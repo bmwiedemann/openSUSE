@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 17 08:00:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.4.2:
+  * Short circuit display wrapper of the callback plugin within forks
+    (#1414)
+  * Improve EOF log messages when streaming (#1458)
+
+-------------------------------------------------------------------
 Wed Mar 26 14:27:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.4.1:
