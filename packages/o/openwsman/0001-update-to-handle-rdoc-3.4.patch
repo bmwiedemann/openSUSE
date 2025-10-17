@@ -1,0 +1,55 @@
+From 8d5d9e1115d0bbfd3a236cc375373ca25ea396d7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@gmail.com>
+Date: Fri, 17 Oct 2025 16:59:22 +0200
+Subject: [PATCH] update to handle rdoc 3.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Klaus Kämpf <kkaempf@gmail.com>
+---
+ bindings/ruby/rdoc_parser_swig.rb | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/bindings/ruby/rdoc_parser_swig.rb b/bindings/ruby/rdoc_parser_swig.rb
+index 0c5bd415..fb6f1645 100644
+--- a/bindings/ruby/rdoc_parser_swig.rb
++++ b/bindings/ruby/rdoc_parser_swig.rb
+@@ -107,9 +107,10 @@ class RDoc::Parser::SWIG < RDoc::Parser
+ 
+   ##
+   # Prepare to parse a SWIG file
++  # rdoc 3.4: stats parameter is optional
+ 
+-  def initialize(top_level, file_name, content, options, stats)
+-    super
++  def initialize(top_level, file_name, content, options, stats = nil)
++    super top_level, file_name, content, options
+ 
+     @known_classes = RDoc::KNOWN_CLASSES.dup
+     @content = handle_tab_width handle_ifdefs_in(@content)
+@@ -365,10 +366,17 @@ class RDoc::Parser::SWIG < RDoc::Parser
+       #meth_obj.params = params
+       meth_obj.start_collecting_tokens
+       begin
+-        RDoc::const_get "RubyToken"
+-        tk = RDoc::RubyToken::Token.new nil, 1, 1
+-        tk.set_text body
+-        meth_obj.offset  = offset
++        tk = nil
++	if RUBY_VERSION[0,3] == "3.4"
++	  RDoc::Parser::RipperStateLex::const_get "Token"
++          tk = RDoc::Parser::RipperStateLex::Token.new nil, 1, 1
++	  tk.text = body
++	else
++          RDoc::const_get "RubyToken"
++          tk = RDoc::RubyToken::Token.new nil, 1, 1
++	  tk.set_text body
++	  meth_obj.offset = offset
++	end
+       rescue NameError
+         # rdoc 2.5
+         tk = { :line_no => 1, :char_no => 1, :text => body }
+-- 
+2.51.0
+

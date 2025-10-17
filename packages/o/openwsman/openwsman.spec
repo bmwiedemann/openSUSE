@@ -1,7 +1,7 @@
 #
 # spec file for package openwsman
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -161,6 +161,7 @@ Source22:       %{name}.pam
 Patch1:         openwsman-redhat-initscript.patch
 # https://github.com/Openwsman/openwsman/commit/e619555c3484264a188396bc8b9c77c39ef47bb2
 Patch2:         openwsman-gcc15.patch
+Patch3:         0001-update-to-handle-rdoc-3.4.patch
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 %define pamfile %{S:21}
 %else
@@ -395,6 +396,7 @@ It can be used to send shell commands to remote Windows hosts.
 %patch -P 1 -p1
 %endif
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 rm -rf build

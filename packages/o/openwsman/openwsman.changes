@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 17 15:00:44 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
+
+- fix rdoc 3.4 compatibility
+  0001-update-to-handle-rdoc-3.4.patch
+
+-------------------------------------------------------------------
 Thu Jun 26 08:09:02 UTC 2025 - pgajdos@suse.com
 
 - added patches
