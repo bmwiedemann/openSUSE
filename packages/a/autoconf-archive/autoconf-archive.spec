@@ -1,7 +1,7 @@
 #
 # spec file for package autoconf-archive
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,8 @@ Source0:        https://ftp.gnu.org/pub/gnu/autoconf-archive/%{name}-%{version}.
 Source1:        https://ftp.gnu.org/pub/gnu/autoconf-archive/%{name}-%{version}.tar.xz.sig
 # http://wwwkeys.pgp.net:11371/pks/lookup?op=get&search=0x99089D72
 Source2:        %{name}.keyring
+#PATCH-FIX-UPSTREAM: Fix quoting of m4_fatal (e.g. AX_CHECK_GL)
+Patch0:         https://patch-diff.githubusercontent.com/raw/autoconf-archive/autoconf-archive/pull/312.patch#/autoconf-archive-fix-quoting-of-m4_fatal.patch
 BuildArch:      noarch
 
 %description
@@ -46,7 +48,7 @@ having this tool available as widely as possible outweigh the disadvantage that
 some authors may choose to use it, too, for proprietary software.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
