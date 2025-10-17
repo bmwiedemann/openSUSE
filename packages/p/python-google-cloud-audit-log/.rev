@@ -33,4 +33,15 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1272425 from glaubitz)</comment>
     <requestid>1272426</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f2e0f984f8d63c0938e439a6c8208630</srcmd5>
+    <version>0.4.0</version>
+    <time>1760724868</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.0
+  * Add support for Python 3.14 (#14699)
+- from version 0.3.3
+  * Add *.proto files to google-cloud-audit-log (#14587) (forwarded request 1311939 from glaubitz)</comment>
+    <requestid>1312007</requestid>
+  </revision>
 </revisionlist>

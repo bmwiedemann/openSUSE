@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 17 08:36:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.0
+  * Add support for Python 3.14 (#14699)
+- from version 0.3.3
+  * Add *.proto files to google-cloud-audit-log (#14587)
+
+-------------------------------------------------------------------
 Thu Apr 24 12:38:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.3.2
