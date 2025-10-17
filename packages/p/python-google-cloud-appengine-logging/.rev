@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>1272436</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>af8eab78daa18990ee0a079712347ae1</srcmd5>
+    <version>1.7.0</version>
+    <time>1760724869</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.0
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- from version 1.6.2
+  * Update import statement example in README
+- Update BuildRequires and Requires from setup.py (forwarded request 1311963 from glaubitz)</comment>
+    <requestid>1312015</requestid>
+  </revision>
 </revisionlist>

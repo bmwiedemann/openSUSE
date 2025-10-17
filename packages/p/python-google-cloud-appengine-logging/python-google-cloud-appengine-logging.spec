@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-appengine-logging
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        Google Cloud Appengine Logging API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-appengine-logging
 Source:         https://files.pythonhosted.org/packages/source/g/google_cloud_appengine_logging/google_cloud_appengine_logging-%{version}.tar.gz
+BuildRequires:  %{python_module grpcio}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -36,6 +37,11 @@ BuildRequires:  %{python_module protobuf >= 3.20.2}
 BuildRequires:  fdupes
 Requires:       python-google-api-core >= 1.34.1
 Requires:       python-google-auth >= 2.14.1
+%if %python_version_nodots < 314
+Requires:       python-grpcio >= 1.33.2
+%else
+Requires:       python-grpcio >= 1.75.1
+%endif
 Requires:       python-proto-plus >= 1.22.3
 Requires:       python-protobuf >= 3.20.5
 BuildArch:      noarch
