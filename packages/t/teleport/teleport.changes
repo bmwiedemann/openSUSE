@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Oct 17 06:32:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.8:
+  * Updated error messages displayed by tsh ssh when access to
+    hosts is denied and when attempting to connect to a host that
+    is offline or not enrolled in the cluster. #60226
+  * Fixed an issue in Teleport Connect where Ctrl+D would sometimes
+    not close a terminal tab. #60222
+  * Added support for PodSecurityContext to tbot helm chart. #60207
+  * MWI: Add teleport_bot_instances metric. #60205
+  * The tbot Workload API now logs errors encountered when handling
+    requests. #60192
+  * Added explicit timeout to tbot when the Trust Bundle Cache is
+    establishing an event watch. #60187
+  * Fixed a bug where OpenSSH EICE node connections would fail.
+    #60125
+  * Updated Go to 1.24.9. #60114
+  * Fixed SFTP audit events breaking the audit log. #60070
+  * Fixed excessive memory usage on Teleport Proxy Service
+    instances when using the the Teleport Web UI PostgreSQL REPL.
+    #60001
+  * Fixed tsh scp getting stuck in symlink loops. #59995
+  * Fixed handling of local tsh scp targets that contain a colon.
+    #59982
+  * Fixed issue where temporarily unreachable app servers were
+    permanently removed from session cache, causing persistent
+    connection failures: no application servers remaining to
+    connect. #59955
+  * Fixed the issue with automatic access requests for tsh ssh when
+    spec.allow.request.max_duration is set on the requester role.
+    #59925
+  * Fixes a bug with the check for a running Teleport process in
+    the install-node.sh script. #59888
+  * MWI: The kubernetes/v2 output now supports customizing context
+    names with a template. #59740
+  * Updated mongo-driver to v1.17.4 to include fixes for possible
+    connection leaks that could affect Teleport Database Service
+    instances. #59733
+  * The event-handler plugin will now skip over Windows desktop
+    session recording events by default. #59682
+  * MWI: The kubernetes/argo-cd output now supports customizing
+    cluster names with a template. #59576
+
+-------------------------------------------------------------------
 Tue Sep 30 05:38:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.7.7:
