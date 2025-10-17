@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Fri Oct 17 10:40:14 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Renamed the 'forward' man page to resolve conflict with an existing
+  Factory package (vacation)
+
+-------------------------------------------------------------------
+Mon Oct 13 15:45:33 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Added patches according to feedback from boo#1247781:
+  * OpenSMTPD-reduced-permissions-on-SMTPD_SOCKET.patch: control socket
+    permissions have been removed for world
+  * OpenSMTPD-simplified-world-writable-spoolers-handling.patch: simplified
+    world-writable spool handling. Changes from upstream have been imported
+    before the next upstream version is released. Once it is released, this
+    patch can be removed
+  * permissions on /var/spool/mail were set to 755 which means server
+    operator is expected to add relevant users to a group and adjust
+    the mentioned directory's ownership and permissions appropriately
+
+-------------------------------------------------------------------
+Thu Sep 11 08:49:36 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Updated the spec file according to feedback from boo#1247781:
+  * the package takes ownership of /var/spool/mail like other
+    packages that provide smtp_daemon (see discussion in
+    https://github.com/rpm-software-management/rpmlint/pull/1392)
+  * set_permissions/verify_permissions have been configured. At 
+    this moment (before package allowlisting), this causes rpmlint
+    errors which is by design
+
+-------------------------------------------------------------------
+Fri Aug 29 13:48:12 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Further hardened the systemd service configuration.
+
+-------------------------------------------------------------------
+Thu Aug 28 09:22:32 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Updated the spec file so that default configuration works out of
+  the box. The workaround is related to the issue as described in
+  https://github.com/OpenSMTPD/OpenSMTPD/issues/853
+
+-------------------------------------------------------------------
+Thu Aug  7 10:40:54 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Updated the spec file according to feedback:
+  * added the Provides and Conflicts sections
+  * changed the 'sed' expression to appear more traditional
+
+-------------------------------------------------------------------
+Thu Aug  7 09:48:53 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Removed the rpmlintrc file. 'permissions-file-setuid-bit' requires
+  review from the security team. Without the rpmlint allowlisting the
+  package build is broken.
+
+-------------------------------------------------------------------
+Thu Aug  7 07:55:52 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Updated the spec file according to feedback:
+  * included upstream source URL and uploaded the result of 'download_files'
+    service manual run directly to OBS
+  * switched to pkgconfig for library build dependency resolution
+  * normalized to OpenSSL for all targets due to compilation issues with
+    LibreSSL for Tumbleweed on armv7l
+  * applied 'format_spec_file' service edits
+  * switched to using macros for 'make' 'build' and 'install'
+  * switched to using a macro for lowercase variant of the package name
+    instead of hardcoding it, where applicable
+  * removed 'strip' invocations because it breaks debuginfo packages; it
+    is assumed OBS will strip binaries for release configuration
+  * started depending on 'netcfg' package to provide /etc/aliases
+  * removed '%attr' specification on '%files' where 'make install' does it
+    well by default
+  * removed rc symlink fix for rpmlint 'suse-missing-rclink' warning (no
+    longer needed)
+  * removed permissions.d specification; the package has only one permission
+    configuration set
+
+-------------------------------------------------------------------
+Wed Jul  2 14:55:09 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Updated the package to upstream version 7.7.0p0 (2025-05-12) that brings
+  the following significant change:
+  * updated to use imsg APIs
+
+-------------------------------------------------------------------
+Mon Jun 30 15:50:03 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Initial experimental build for version 7.6.0p1 (2024-10-20) that was not
+  packaged and released beyond the home project.
+

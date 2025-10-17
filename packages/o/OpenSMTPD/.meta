@@ -1,0 +1,7 @@
+<package name="OpenSMTPD" project="openSUSE:Factory">
+  <title>OpenSMTPD</title>
+  <description>OpenSMTPD is a FREE implementation of the server-side SMTP protocol as defined by RFC 5321, with some additional standard extensions.
+
+It allows ordinary machines to exchange e-mails with other systems speaking the SMTP protocol.</description>
+  <url>https://www.opensmtpd.org/</url>
+</package>

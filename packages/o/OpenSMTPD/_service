@@ -1,0 +1,4 @@
+<services>
+  <service name="download_files" mode="manual"/>
+  <service name="format_spec_file" mode="manual"/>
+</services>

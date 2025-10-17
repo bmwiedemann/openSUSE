@@ -1,0 +1,13 @@
+Index: opensmtpd-7.7.0p0/usr.sbin/smtpd/control.c
+===================================================================
+--- opensmtpd-7.7.0p0.orig/usr.sbin/smtpd/control.c
++++ opensmtpd-7.7.0p0/usr.sbin/smtpd/control.c
+@@ -194,7 +194,7 @@ control_create_socket(void)
+ 	(void)umask(old_umask);
+ 
+ 	if (chmod(SMTPD_SOCKET,
+-		S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH|S_IWOTH) == -1) {
++		S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP) == -1) {
+ 		(void)unlink(SMTPD_SOCKET);
+ 		fatal("control: chmod");
+ 	}
