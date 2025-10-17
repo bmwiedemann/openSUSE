@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 17 10:09:35 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Remove NOTICE file from the spec
+- Add README.md to the sources
+- Upgrade to Elixir 1.19.0
+  * Changelog available at https://hexdocs.pm/elixir/1.19.0/changelog.html
+
+-------------------------------------------------------------------
 Mon Jun  9 07:35:49 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Reproducible builds: try enabling the `deterministic` build flag for the Erlang compiler

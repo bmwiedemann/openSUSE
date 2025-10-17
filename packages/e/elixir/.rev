@@ -327,4 +327,12 @@
   * Skip some iex tests that are failing due to the `deterministic` Erlang build flag</comment>
     <requestid>1284250</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>c8a76dd26d5fbcd68834202158eb495a</srcmd5>
+    <version>1.19.0</version>
+    <time>1760714851</time>
+    <user>anag_factory</user>
+    <comment>Update to v1.19.0</comment>
+    <requestid>1312020</requestid>
+  </revision>
 </revisionlist>
