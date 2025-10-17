@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 17 08:26:24 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.2.13+git.1755016678.556bb22:
+  * Do not use bundled zlib by default
+  * Add method to modify XISF Property
+  * Add SSE optimized byte unshuffling
+
+-------------------------------------------------------------------
 Mon Feb 10 12:41:37 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.2.13:

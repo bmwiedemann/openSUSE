@@ -144,4 +144,16 @@
 </comment>
     <requestid>1244747</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f3b5b3961672125f4c962452a9d11f84</srcmd5>
+    <version>0.2.13+git3.556bb22</version>
+    <time>1760714826</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.13+git.1755016678.556bb22:
+  * Do not use bundled zlib by default
+  * Add method to modify XISF Property
+  * Add SSE optimized byte unshuffling
+</comment>
+    <requestid>1312011</requestid>
+  </revision>
 </revisionlist>
