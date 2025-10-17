@@ -26,14 +26,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        8.12.0
+Version:        8.13.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
 Group:          Productivity/Other
 URL:            https://calibre-ebook.com
-Source0:        https://download.calibre-ebook.com/%{version}/calibre-%{version}.tar.xz
-Source1:        https://calibre-ebook.com/signatures/calibre-%{version}.tar.xz.sig
+#Source0:        https://download.calibre-ebook.com/%%{version}/calibre-%%{version}.tar.xz
+#Source1:        https://calibre-ebook.com/signatures/calibre-%%{version}.tar.xz.sig
+Source0:        https://github.com/kovidgoyal/calibre/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source2:        https://calibre-ebook.com/signatures/kovid.gpg#/%{name}.keyring
 Source5:        https://github.com/mathjax/MathJax/archive/3.1.4/mathjax-3.1.4.tar.gz
 #Source6-URL:        https://github.com/LibreOffice/dictionaries/archive/master/hyphenation-dictionaries.tar.gz
@@ -55,8 +56,6 @@ Patch2:         %{name}-setup.install.py.diff
 Patch3:         %{name}-no-update.diff
 # PATCH-FIX-OPENSUSE: disbale piper because since 8.8.0 calibre needs onnxruntime which is not in openSUSE.
 Patch4:         %{name}-disable_piper.patch
-# PATCH-FIX-OPENSUSE: fix build with Qt 6.10
-Patch5:         %{name}-fix-build-with-Qt6.10.patch
 ExclusiveArch:  aarch64 x86_64 riscv64
 %if 0%{?suse_version} <= 1550
 BuildRequires:  gcc12
@@ -310,7 +309,6 @@ into ebooks for convenient reading.
 %patch -P 2 -p1
 %patch -P 3 -p1 -b .no-update
 %patch -P 4 -p1
-%patch -P 5 -p1
 
 # dos2unix newline conversion
 sed -i 's/\r//' src/calibre/web/feeds/recipes/*

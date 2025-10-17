@@ -1,8 +1,8 @@
-# # Output filters 
+# Output filters
 addFilter("non-executable-script")
-addFilter("pem-certificate")
+#addFilter("pem-certificate")
 addFilter("explicit-lib-dependency")
 addFilter("suse-update-desktop-file-deprecated")
 addFilter("python-setup-test")
-addFilter("python-setup-install")
 addFilter("shared-dir-glob-in-files")
+addFilter("unstripped-binary-or-object")"

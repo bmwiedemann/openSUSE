@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 17 09:59:17 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.13.0
+
+- Update to 8.13.0
+  * New Features
+    - Virtual libraries: Allow defining their search expressions
+      more comfortably in a multi-line edit box
+    - Open with: On Windows launch the specified program via the
+      windows API for executing programs to decouple it more
+      thoroughly from the calibre environment
+  * Bug Fixes
+    - Get books: Fix ebooks.com plugin
+    - calibre-server: Fix CALIBRE_OVERRIDE_DATABASE_PATH not working
+    - Export library: Dont use /tmp on Linux fixes export breaking
+      with large FTS database on Linux distros that mount /tmp in RAM
+    - Fix a regression in 8.11 that caused errors when trying
+      to open a book from the full text search results while
+      the search was still running
+- Drop calibre-fix-build-with-Qt6.10.patch because now in upstrem,
+- Change Source URL, because upstream has change something again
+  in DownloadUrl.
+
+-------------------------------------------------------------------
 Thu Oct 16 10:36:29 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add calibre-fix-build-with-Qt6.10.patch to cope with the private 
