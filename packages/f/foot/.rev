@@ -893,4 +893,23 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.24.0 for more details.</comment>
     <requestid>1304344</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>173b3fa9101b4488aeddeadc81fda0df</srcmd5>
+    <version>1.25.0</version>
+    <time>1760714737</time>
+    <user>anag_factory</user>
+    <comment>- Update to v1.25.0:
+  * foot.ini options:
+    * Added new colors{,2}.dim-blend-towards options to select which color to
+      blend towards when dimming text. Defaults to black for colors and
+      white for colors2.
+    * Added new tweak.min-stride-alignment option to control the stride of
+      SHM buffers. This controls whether the compositor can directly import
+      the buffers into the GPU without copying.
+  * Fixed URL labels being misplaced when the URL contains
+    double-width characters.
+  * Fixed spaces being missing when copying or piping contents with tabs.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.25.0 for more details.</comment>
+    <requestid>1311742</requestid>
+  </revision>
 </revisionlist>
