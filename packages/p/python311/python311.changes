@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Oct 15 08:52:35 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.11.14:
+  - Security
+    - gh-139700: Check consistency of the zip64 end of central
+      directory record. Support records with “zip64 extensible data”
+      if there are no bytes prepended to the ZIP file.
+    - gh-139400: xml.parsers.expat: Make sure that parent Expat
+      parsers are only garbage-collected once they are no longer
+      referenced by subparsers created by
+      ExternalEntityParserCreate(). Patch by Sebastian Pipping.
+    - gh-135661: Fix parsing start and end tags in
+      html.parser.HTMLParser according to the HTML5 standard.
+      * Whitespaces no longer accepted between </ and the tag name. E.g.
+        </ script> does not end the script section.
+      * Vertical tabulation (\v) and non-ASCII whitespaces no longer
+        recognized as whitespaces. The only whitespaces are \t\n\r\f and
+        space.
+      * Null character (U+0000) no longer ends the tag name.
+      * Attributes and slashes after the tag name in end tags are now
+        ignored, instead of terminating after the first > in quoted
+        attribute value. E.g. </script/foo=">"/>.
+      * Multiple slashes and whitespaces between the last attribute and
+        closing > are now ignored in both start and end tags. E.g. <a
+        foo=bar/ //>.
+      * Multiple = between attribute name and value are no longer
+        collapsed. E.g. <a foo==bar> produces attribute “foo” with value
+        “=bar”.
+    - gh-135661: Fix CDATA section parsing in html.parser.HTMLParser
+      according to the HTML5 standard: ] ]> and ]] > no longer end the
+      CDATA section. Add private method _set_support_cdata() which can
+      be used to specify how to parse <[CDATA[ — as a CDATA section in
+      foreign content (SVG or MathML) or as a bogus comment in the
+      HTML namespace.
+    - gh-102555: Fix comment parsing in html.parser.HTMLParser
+      according to the HTML5 standard. --!> now ends the comment. -- >
+      no longer ends the comment. Support abnormally ended empty
+      comments <--> and <--->.
+    - gh-135462: Fix quadratic complexity in processing specially
+      crafted input in html.parser.HTMLParser. End-of-file errors are
+      now handled according to the HTML5 specs – comments and
+      declarations are automatically closed, tags are ignored.
+    - gh-118350: Fix support of escapable raw text mode (elements
+      “textarea” and “title”) in html.parser.HTMLParser.
+    - gh-86155: html.parser.HTMLParser.close() no longer loses data
+      when the <script> tag is not closed. Patch by Waylan Limberg.
+  - Library
+    - gh-139312: Upgrade bundled libexpat to 2.7.3
+    - gh-138998: Update bundled libexpat to 2.7.2
+    - gh-130577: tarfile now validates archives to ensure member
+      offsets are non-negative. (Contributed by Alexander Enrique
+      Urieles Nieto in gh-130577.)
+    - gh-135374: Update the bundled copy of setuptools to 79.0.1.
+
+- Drop upstreamed patches:
+  - CVE-2025-8194-tarfile-no-neg-offsets.patch
+  - CVE-2025-6069-quad-complex-HTMLParser.patch
+
+-------------------------------------------------------------------
 Mon Sep 29 06:52:07 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add gh139257-Support-docutils-0.22.patch to fix build with latest

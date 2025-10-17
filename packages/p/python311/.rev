@@ -1722,4 +1722,12 @@ C API
   docutils (&gt;=0.22) gh#python/cpython#139257</comment>
     <requestid>1308253</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f268a7909796663ebe19f241e4d870d3</srcmd5>
+    <version>3.11.14</version>
+    <time>1760714727</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1311759</requestid>
+  </revision>
 </revisionlist>
