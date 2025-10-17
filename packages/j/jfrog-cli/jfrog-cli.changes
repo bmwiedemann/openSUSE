@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 17 05:06:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.81.0:
+  * Exciting New Features
+    - AppTrust commands by @asafgabai in #3155
+  * Improvements
+    - Added Maven native implementation using flexpack by @agrasth
+      in #3081
+  * Other Changes
+    - Added stats command by @naveenku-jfrog in #3118
+    - Fix survey displayed in autocomplete by @RemiBou in #3145
+
+-------------------------------------------------------------------
 Fri Oct 03 05:07:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.80.0:
