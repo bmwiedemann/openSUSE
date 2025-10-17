@@ -99,7 +99,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.23
+Version:        3.9.24
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -192,14 +192,8 @@ Patch50:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
 # status_iterator method moved between the Sphinx versions
 Patch51:        sphinx-802.patch
-# PATCH-FIX-UPSTREAM CVE-2025-6069-quad-complex-HTMLParser.patch bsc#1244705 mcepl@suse.com
-# avoid quadratic complexity when processing malformed inputs with HTMLParser
-Patch52:        CVE-2025-6069-quad-complex-HTMLParser.patch
-# PATCH-FIX-UPSTREAM CVE-2025-8194-tarfile-no-neg-offsets.patch bsc#1247249 mcepl@suse.com
-# tarfile now validates archives to ensure member offsets are non-negative
-Patch53:        CVE-2025-8194-tarfile-no-neg-offsets.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
-Patch54:        gh139257-Support-docutils-0.22.patch
+Patch52:        gh139257-Support-docutils-0.22.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -472,8 +466,6 @@ other applications.
 %patch -p1 -P 50
 %patch -p1 -P 51
 %patch -p1 -P 52
-%patch -p1 -P 53
-%patch -p1 -P 54
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
