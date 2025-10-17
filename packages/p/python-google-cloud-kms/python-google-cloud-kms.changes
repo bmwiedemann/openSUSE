@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 17 12:20:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.7.0
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- from version 3.6.0
+  * Add PublicKeyFormat enums XWING_RAW_BYTES (used for KEM_XWING)
+    and DER (186cef2)
+  * Support KEY_ENCAPSULATION purpose and quantum-safe algorithms
+    ML_KEM_768, ML_KEM_1024 and KEM_XWING (186cef2)
+- from version 3.5.1
+  * [google-cloud-kms] A comment for enum value `DESTROYED` in enum
+    `CryptoKeyVersionState` is changed (#13913)
+- from version 3.5.0
+  * Adding eTag field to AutokeyConfig (5d7b972)
+  * Updating docs for total_size field in KMS List APIs (5d7b972)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Apr 25 07:14:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.4.1
