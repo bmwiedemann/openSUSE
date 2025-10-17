@@ -1,4 +1,143 @@
 -------------------------------------------------------------------
+Fri Oct 17 07:09:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.91.1:
+  * Chores
+    - Updated dependencies
+      Upgraded multiple Golang dependencies to the latest stable
+      versions:
+      - Updated cloud.google.com/go/storage to v1.57.0
+      - Updated github.com/aws/aws-sdk-go-v2 to v1.39.2
+      - Updated github.com/getsops/sops/v3 to v3.11.0
+      - Updated github.com/gofrs/flock to v0.13.0
+      - Updated github.com/gruntwork-io/terratest to v0.51.0
+      - Updated github.com/hashicorp/go-getter to v1.8.2
+      - Updated golang.org/x/mod to v0.29.0
+      - Updated golang.org/x/oauth2 to v0.32.0
+      - Updated golang.org/x/sys to v0.37.0
+      - Updated golang.org/x/term to v0.36.0
+      - Updated golang.org/x/text to v0.30.0
+      - Updated google.golang.org/api to v0.252.0
+      - Updated google.golang.org/grpc to v1.76.0
+      - Updated google.golang.org/protobuf to v1.36.10
+  * What's Changed
+    - chore: multiple dependencies update (#4968)
+    - feat: Adding `filter` package (#4958)
+    - chore: Refactor out `component` package (#4963)
+    - chore: Bump Bun dependencies (#4965)
+    - chore: Undo Starlight patch (#4964)
+
+-------------------------------------------------------------------
+Fri Oct 17 06:53:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.91.0:
+  * Breaking Changes
+    - Removal of behavior where inputs are read from dependencies
+      Terragrunt no longer exposes dependency inputs as accessible
+      values.
+      This change improves performance and simplifies dependency
+      handling by removing a feature that significantly slowed
+      configuration parsing due to a requirement for recursive
+      parsing of dependencies of dependencies for every dependent.
+      If your configurations currently access dependency inputs
+      like this:
+
+      dependency "foo" {
+        config_path = "../foo"
+      }
+
+      inputs = {
+        my_input = dependency.foo.inputs.an_input_from_foo
+      }
+
+      You’ll need to update them to reference outputs instead:
+
+      dependency "foo" {
+        config_path = "../foo"
+      }
+
+      inputs = {
+        my_input = dependency.foo.outputs.an_output_from_foo
+      }
+
+      Accessing outputs remains the supported and recommended way
+      to share data between modules.
+  * What's Changed
+    - feat: removal of behavior where inputs are read from
+      dependencies (#4960)
+
+-------------------------------------------------------------------
+Fri Oct 17 06:49:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.90.2:
+  * New Features
+    - Added --terragrunt-no-cache flag for run_cmd
+      The run_cmd command now supports a new flag,
+      --terragrunt-no-cache, which disables caching of command
+      execution output.
+      This option is useful when you want to ensure that each
+      command run produces fresh results, especially in dynamic
+      environments or when working with frequently changing
+      external data.
+  * What's Changed
+    - feat: add `--terragrunt-no-cache` parameter for `run_cmd`
+      (#4951)
+
+-------------------------------------------------------------------
+Fri Oct 17 06:12:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.90.1:
+  * New Features
+    - hcl fmt now supports --queue flags
+      The hcl fmt command now supports --queue- prefixed flags
+      (e.g. --queue-exclude-dir).
+  * Bug Fixes
+    - Discovery in run command discovers hidden directories
+      When discovering units for the run command, Terragrunt will
+      now search through (most) hidden directories.
+      It will still avoid performing discovery in the following
+      hidden directories:
+
+          .git
+          .terraform
+          .terragrunt-cache
+
+      To manually force or suppress discovery, use
+      --queue-include-dir and --queue-exclude-dir respectively.
+    - --queue-ignore-errors no longer breaks DAG resolution
+      A bug in the implementation of --queue-ignore-errors resulted
+      in the flag also preventing the proper resolution of the
+      Directed Acyclic Graph (DAG) when suppressing errors.
+      This has been fixed.
+    - --tf-path respected through dependencies
+      A bug in the precedence resolution of the terraform_binary
+      HCL attribute and the --tf-path flag resulted in the default
+      value of terraform_binary taking affect (tofu if both tofu
+      and terraform are installed) when terraform_binary was not
+      specified in dependencies.
+      This bug has been resolved, and the --tf-path flag will be
+      respected in dependencies as well.
+    - Spurious errors resolved in read_terragrunt_config()
+      A bug caused the read_terragrunt_config() HCL function to
+      return spurious errors when used in a configuration parsed
+      during the discovery phase of configuration resolution of a
+      run.
+      This has been fixed.
+  * What's Changed
+    - fix: Prevent parse errors when using
+      `read_terragrunt_config()` during discovery (#4956)
+    - docs: Updating docs for `--out-dir` and `--json-out-dir`
+      (#4957)
+    - fix: Ensure `--tf-path` is used in dependencies (#4955)
+    - fix: Fixing `--queue-ignore-errors` resulting in ignored DAG
+      order (#4953)
+    - fix: discovery of hidden directories (#4945)
+    - Fixing form (#4954)
+    - chore: failing tests fixes (#4944)
+    - feat: Adding queue flags to `hcl fmt` (#4950)
+    - Pipelines won't bite landing page (#4948)
+
+-------------------------------------------------------------------
 Mon Oct 13 10:51:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.90.0:
