@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 17 12:27:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.3.0
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- from version 0.2.15
+  * Update import statement example in README (821bdb1)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Apr 25 07:33:01 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.2.14

@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-kms-inventory
-Version:        0.2.14
+Version:        0.3.0
 Release:        0
 Summary:        Google Cloud Kms Inventory API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-kms-inventory
 Source:         https://files.pythonhosted.org/packages/source/g/google_cloud-kms_inventory/google_cloud_kms_inventory-%{version}.tar.gz
+BuildRequires:  %{python_module grpcio}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
@@ -36,6 +37,11 @@ BuildRequires:  %{python_module proto-plus >= 1.22.3}
 BuildRequires:  %{python_module protobuf >= 3.20.2}
 # /SECTION
 BuildRequires:  fdupes
+%if %python_version_nodots < 314
+Requires:       python-grpcio >= 1.33.2
+%else
+Requires:       python-grpcio >= 1.75.1
+%endif
 Requires:       python-google-api-core >= 1.34.1
 Requires:       python-google-auth
 Requires:       python-google-cloud-kms >= 2.3.0
