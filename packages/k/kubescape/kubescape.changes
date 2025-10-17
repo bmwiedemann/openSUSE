@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 17 05:32:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.42:
+  * chore: update runners to use ubuntu-large for improved
+    performance
+  * fix: improve error handling in hostscanner pod validation
+  * chore: update syft action to use latest version
+  * fix: post release action does not take tag from GITHUB_REF env
+    var
+
+-------------------------------------------------------------------
 Thu Sep 18 06:37:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.41:
