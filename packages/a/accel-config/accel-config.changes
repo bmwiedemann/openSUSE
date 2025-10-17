@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 16 13:41:19 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 4.1.9:
+  * static-analysis: Fix coverity memory leak issues
+  * accel-config: Change license to LGPL 2.1
+  * Update dsa_config_test_runner.sh
+  * test: Use ENQCMD for Betch Testing
+  * test/common: Conditionally remove the module
+  * accel_test: Setup Memmap for Dedicated workqueue
+  * iaa_test: Use syscall write to submit descriptor
+  * accfg/enable.c: Remove the redundant check.
+  * Doc: Add document for new added subcommand info
+  * Add decode subcommand info
+  * accel-config: Refine the Usage of enable/disable-device
+  * accel-config: Add options for subcommand enable/disable-device
+  * dsa_test: Use syscall write to submit descriptor
+  * Fix null setting of jc->jgroup_assigned
+  * accel-config: add missing NULL return checks on calls to deprecated_attr
+  * licences: reformat to 80 wide lines and UNIX format
+  * contrib/configs/profilenote.txt: Fix spelling mistake "Calcuated" -> "Calculated"
+  * Documentation: fix typo "limt" -> "limit"
+  * accfg/list: fix typo "Momery" -> "Memory"
+  * test/dsa: Fix typo "chekcing" -> "checking"
+
+-------------------------------------------------------------------
 Thu Aug  8 15:07:51 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 4.1.8:
