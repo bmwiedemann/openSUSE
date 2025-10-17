@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 17 11:56:12 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.20.0
+  * Add support for Python 3.14 (4763aa7)
+  * Deprecate credentials_file argument (4763aa7)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Apr 25 06:49:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.19.0
