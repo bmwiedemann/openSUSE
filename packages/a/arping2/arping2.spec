@@ -17,7 +17,7 @@
 
 
 Name:           arping2
-Version:        2.25
+Version:        2.26
 Release:        0
 Summary:        Layer-2 Ethernet pinger
 License:        GPL-2.0-or-later
