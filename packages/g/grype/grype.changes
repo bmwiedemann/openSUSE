@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Oct 17 05:49:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.101.1:
+  * Bug Fixes
+    - Panic error scanning images with v0.101.0 on some java
+      dependencies [#3002]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3005)
+    - chore(deps): update tools to latest versions (#3003)
+
+-------------------------------------------------------------------
+Fri Oct 17 05:26:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.101.0:
+  * Added Features
+    - Add cyclonedx to RpmMetadata [#2935 @sfc-gh-rmaj]
+    - grype db search can filter by fixed state [#2968
+      @willmurphyscode]
+    - Support using VEX documents with directory scans and SBOMs
+      [#2471 #2811 @alegrey91]
+  * Bug Fixes
+    - Issue installing Grype using documented curl command [#2985]
+    - Advisory ID blank in JSON output [#2965]
+  * Additional Changes
+    - update flags with v3 to not use default config [#3000
+      @spiffcs]
+    - fix Cosign documentation URL in installer [#2995 @lime]
+    - set advisory id again [#2979 @willmurphyscode]
+    - add db schema validation [#2962 @willmurphyscode]
+  * Dependencies
+    - chore(deps): bump actions/cache from 4.2.4 to 4.3.0 (#2957)
+    - chore(deps): bump actions/cache in /.github/actions/bootstrap
+      (#2958)
+    - chore(deps): bump anchore/sbom-action from 0.20.5 to 0.20.6
+      (#2947)
+    - chore(deps): bump docker/login-action from 3.5.0 to 3.6.0
+      (#2961)
+    - chore(deps): bump github.com/CycloneDX/cyclonedx-go from
+      0.9.2 to 0.9.3 (#2971)
+    - chore(deps): bump github.com/charmbracelet/bubbletea (#2952)
+    - chore(deps): bump github.com/docker/docker (#2974)
+    - chore(deps): bump github.com/docker/docker (#2982)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.14
+      to 0.5.15 (#2950)
+    - chore(deps): bump github.com/gohugoio/hashstructure from
+      0.5.0 to 0.6.0 (#2989)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.8.0
+      to 1.8.1 (#2951)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.8.1
+      to 1.8.2 (#2975)
+    - chore(deps): bump github.com/olekukonko/tablewriter from
+      1.0.9 to 1.1.0 (#2954)
+    - chore(deps): bump github.com/openvex/go-vex from 0.2.6 to
+      0.2.7 (#2946)
+    - chore(deps): bump github/codeql-action from 3.30.3 to 3.30.4
+      (#2959)
+    - chore(deps): bump github/codeql-action from 3.30.4 to 3.30.5
+      (#2963)
+    - chore(deps): bump github/codeql-action from 3.30.5 to 3.30.6
+      (#2972)
+    - chore(deps): bump github/codeql-action from 3.30.6 to 4.30.7
+      (#2984)
+    - chore(deps): bump github/codeql-action from 4.30.7 to 4.30.8
+      (#2994)
+    - chore(deps): bump golang.org/x/time from 0.13.0 to 0.14.0
+      (#2983)
+    - chore(deps): bump golang.org/x/tools from 0.37.0 to 0.38.0
+      (#2990)
+    - chore(deps): bump ossf/scorecard-action from 2.4.2 to 2.4.3
+      (#2970)
+    - chore(deps): update anchore dependencies (#2996)
+    - chore(deps): update tools to latest versions (#2945)
+    - chore(deps): update tools to latest versions (#2949)
+    - chore(deps): update tools to latest versions (#2953)
+    - chore(deps): update tools to latest versions (#2956)
+    - chore(deps): update tools to latest versions (#2966)
+    - chore(deps): update tools to latest versions (#2981)
+
+-------------------------------------------------------------------
 Thu Sep 18 05:11:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.100.0:
