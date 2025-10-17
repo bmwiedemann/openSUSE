@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 17 06:52:39 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.0.3+git.1749847142.32e3962:
+  * Add Czech translation
+  * Update README.md for release 3.0.0
+  * update NEWS, ChangeLog, metainfo.xml
+  * build: make default build non-threaded
+  * Adaptor to GIMP: fix #417 crash after crop
+
+-------------------------------------------------------------------
 Sat Apr 26 08:23:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to version 2.0.3+git.1745262257.669f8ce:

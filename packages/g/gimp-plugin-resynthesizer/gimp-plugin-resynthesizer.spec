@@ -17,11 +17,11 @@
 
 
 Name:           gimp-plugin-resynthesizer
-Version:        2.0.3+git.1745262257.669f8ce
+Version:        3.0+git.1749847142.32e3962
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Suite of gimp plugins for texture synthesis
-URL:            https://github.com/itr-tert/gimp-resynthesizer-scm
+URL:            https://github.com/bootchk/resynthesizer
 Group:          Productivity/Graphics/Bitmap Editors
 Source:         resynthesizer-%{version}.tar.xz
 BuildRequires:  cmake

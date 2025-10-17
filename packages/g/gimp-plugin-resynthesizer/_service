@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/bootchk/resynthesizer.git</param>
-    <param name="versionprefix">2.0.3+git</param>
+    <param name="versionprefix">3.0+git</param>
     <param name="scm">git</param>
     <param name="revision">resynthesizer3</param>
     <param name="changesgenerate">enable</param>
