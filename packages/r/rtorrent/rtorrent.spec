@@ -1,7 +1,7 @@
 #
 # spec file for package rtorrent
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rtorrent
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Console-based BitTorrent client
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -37,10 +37,10 @@ BuildRequires:  gcc-c++
 %endif
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
+BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cppunit) >= 1.9.6
 BuildRequires:  pkgconfig(libtorrent) >= %version
-BuildRequires:  sysuser-tools
 Provides:       bundled(tinyxml2) = 10.0.0
 %sysusers_requires
 

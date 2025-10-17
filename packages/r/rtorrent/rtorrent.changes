@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 17 12:09:10 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.1
+  * DHT now tries to open the same port as the listen port by
+    default.
+
+-------------------------------------------------------------------
 Fri Sep  5 11:36:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.0
