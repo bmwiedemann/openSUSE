@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.17
-%define patchversion 6.17.2
-%define git_commit d07fa64a85334b11c7f6a0250530a987ae17bab4
+%define patchversion 6.17.3
+%define git_commit 5508f4576bd7009a5cc8d896d62fd444abdd277f
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-vanilla
-Version:        6.17.2
+Version:        6.17.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd07fa64
+Release:        <RELEASE>.g5508f45
 %else
 Release:        0
 %endif

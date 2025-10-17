@@ -7192,4 +7192,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.17.2 &amp; EOPNOTSUPP fix; bugs: bsc#1012628 bsc#1251048</comment>
     <requestid>1311038</requestid>
   </revision>
+  <revision rev="805" vrev="1">
+    <srcmd5>42a0866e24c1266ddefec52a0b0887dd</srcmd5>
+    <version>6.17.3</version>
+    <time>1760714731</time>
+    <user>anag_factory</user>
+    <comment>6.17.3 &amp; other fixes; bugs: bsc#1012628 bsc#1250894 bsc#1252084</comment>
+    <requestid>1311588</requestid>
+  </revision>
 </revisionlist>
