@@ -1,7 +1,6 @@
 #
 # spec file for package dvdauthor
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +27,21 @@ Source0:        https://github.com/ldo/dvdauthor/archive/%{version}.tar.gz#/dvda
 #PATCH-FIX-UPSTREAM dvdauthor-0.7.0_glibc-2.20.patch avvissu@yandex.ru -- Fix build with glibc-2.20
 Patch0:         dvdauthor-0.7.0_glibc-2.20.patch
 Patch1:         dvdauthor-0.7.2-imagemagick7.patch
-Patch2:         gettext-fix.patch
+# Patches from upstream's git:
+Patch3:         0001-change-to-interim-version-number.patch
+Patch4:         0002-fix-to-build-with-GraphicsMagick.patch
+Patch5:         0003-Looks-like-I-need-both-MAGICK_CPPFLAGS-and-MAGICK_CF.patch
+Patch6:         0004-try-using-simpler-way-of-building-with-ImageEMagick.patch
+Patch7:         0005-merge-MAGICK_CPPFLAGS-into-MAGICK_CFLAGS.patch
+Patch8:         0006-use-different-module-names-ImageMagick-vs-GraphicsMa.patch
+Patch9:         0007-No-longer-automatically-build-with-ImageMagick-or-Gr.patch
+Patch10:        0008-fix-incorrect-use-of-AC_ARG_WITH.patch
+Patch11:        0009-Use-pkg-config-to-find-FreeType-thanks-to-Lars-Wendl.patch
+Patch12:        0010-fix-some-build-warnings.patch
+Patch13:        0011-Use-PKG_CHECK_MODULES-to-detect-the-libxml2-library.patch
+Patch14:        0012-Fix-another-build-warning.patch
+Patch15:        gettext-fix.patch
+
 BuildRequires:  ImageMagick-devel
 BuildRequires:  bison
 BuildRequires:  docbook-utils

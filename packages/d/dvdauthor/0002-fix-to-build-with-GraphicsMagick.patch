@@ -1,0 +1,25 @@
+From 84d971def13b7e6317eae44369f49fd709b01030 Mon Sep 17 00:00:00 2001
+From: Lawrence D'Oliveiro <ldo@geek-central.gen.nz>
+Date: Thu, 19 Jan 2017 23:22:52 +0000
+Subject: [PATCH 02/12] fix to build with GraphicsMagick
+
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index c7f89a9..5ef90c3 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -8,7 +8,7 @@ endif
+ nodist_bin_SCRIPTS = dvddirdel
+ 
+ AM_CPPFLAGS = -DSYSCONFDIR="\"$(sysconfdir)\"" \
+-    @XML_CPPFLAGS@ @MAGICK_CPPFLAGS@ @FREETYPE_CPPFLAGS@ @FRIBIDI_CFLAGS@ @FONTCONFIG_CFLAGS@
++    @XML_CPPFLAGS@ @MAGICK_CFLAGS@ @FREETYPE_CPPFLAGS@ @FRIBIDI_CFLAGS@ @FONTCONFIG_CFLAGS@
+ AM_CFLAGS = -Wall
+ 
+ dvdauthor_SOURCES = dvdauthor.c common.h dvdauthor.h da-internal.h \
+-- 
+2.51.0
+

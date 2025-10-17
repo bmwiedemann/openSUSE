@@ -1,0 +1,23 @@
+From fe8fe3578f95f34889e7ed17591d02dceb4f42ed Mon Sep 17 00:00:00 2001
+From: Lawrence D'Oliveiro <ldo@geek-central.gen.nz>
+Date: Fri, 5 Nov 2021 01:46:27 +0000
+Subject: [PATCH 12/12] Fix another build warning
+
+---
+ configure.ac | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1750e3b..b843cf4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -134,4 +134,5 @@ AM_ICONV
+ 
+ AC_CHECK_DECLS(O_BINARY, , , [ #include <fcntl.h> ] )
+ 
+-AC_OUTPUT(Makefile doc/Makefile src/Makefile)
++AC_CONFIG_FILES(Makefile doc/Makefile src/Makefile)
++AC_OUTPUT
+-- 
+2.51.0
+

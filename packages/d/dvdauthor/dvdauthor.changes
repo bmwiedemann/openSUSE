@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 17 10:37:18 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add all patches from upstream git since last release, they're 
+  all build system fixes:
+  * 0001-change-to-interim-version-number.patch
+  * 0002-fix-to-build-with-GraphicsMagick.patch
+  * 0003-Looks-like-I-need-both-MAGICK_CPPFLAGS-and-MAGICK_CF.patch
+  * 0004-try-using-simpler-way-of-building-with-ImageEMagick.patch
+  * 0005-merge-MAGICK_CPPFLAGS-into-MAGICK_CFLAGS.patch
+  * 0006-use-different-module-names-ImageMagick-vs-GraphicsMa.patch
+  * 0007-No-longer-automatically-build-with-ImageMagick-or-Gr.patch
+  * 0008-fix-incorrect-use-of-AC_ARG_WITH.patch
+  * 0009-Use-pkg-config-to-find-FreeType-thanks-to-Lars-Wendl.patch
+  * 0010-fix-some-build-warnings.patch
+  * 0011-Use-PKG_CHECK_MODULES-to-detect-the-libxml2-library.patch
+  * 0012-Fix-another-build-warning.patch
+- Update patch gettext-fix.patch
+
+-------------------------------------------------------------------
 Wed Aug 20 12:18:34 UTC 2025 - Dave Plater <davejplater@gmail.com>
 
-- Disabled i586 build and remove oblolete statements from spec
+- Disabled i586 build and remove obsolete statements from spec
 
 -------------------------------------------------------------------
 Wed Aug 20 09:43:39 UTC 2025 - Takashi Iwai <tiwai@suse.com>

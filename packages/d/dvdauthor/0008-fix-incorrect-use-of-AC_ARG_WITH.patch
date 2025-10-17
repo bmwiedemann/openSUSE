@@ -1,0 +1,27 @@
+From d926718e9aad9919fbd922ca1e0da8bc07cb67d7 Mon Sep 17 00:00:00 2001
+From: Lawrence D'Oliveiro <ldo@geek-central.gen.nz>
+Date: Wed, 5 Jul 2017 01:50:49 +0000
+Subject: [PATCH 08/12] fix incorrect use of AC_ARG_WITH
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1b7ec6f..c06ac6b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -47,8 +47,8 @@ fi
+ 
+ use_imagemagick=0
+ use_graphicsmagick=0
+-AC_ARG_WITH([imagemagick], AS_HELP_STRING([--with-imagemagick], [Use ImageMagick to augment image import formats]), [use_imagemagick=1])
+-AC_ARG_WITH([graphicsmagick], AS_HELP_STRING([--with-graphicsmagick], [Use GraphicsMagick to augment image import formats]), [use_graphicsmagick=1])
++AC_ARG_WITH([imagemagick], AS_HELP_STRING([--with-imagemagick], [Use ImageMagick to augment image import formats]), [if test "$withval" != "no"; then use_imagemagick=1; fi])
++AC_ARG_WITH([graphicsmagick], AS_HELP_STRING([--with-graphicsmagick], [Use GraphicsMagick to augment image import formats]), [if test "$withval" != "no"; then use_graphicsmagick=1; fi])
+ if test "$use_imagemagick" = 1 && test "$use_graphicsmagick" = 1; then
+     AC_MSG_ERROR([cannot specify both --with-imagemagick and --with-graphicsmagick], 1)
+ fi
+-- 
+2.51.0
+

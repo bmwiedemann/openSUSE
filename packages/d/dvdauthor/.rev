@@ -42,4 +42,12 @@ Fix build failures on FACTORY due to the new gettext:
   gettext-fix.patch</comment>
     <requestid>1300534</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>5b336663118fd4d4e91f3638ce9aa85e</srcmd5>
+    <version>0.7.2</version>
+    <time>1760720568</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1312068</requestid>
+  </revision>
 </revisionlist>

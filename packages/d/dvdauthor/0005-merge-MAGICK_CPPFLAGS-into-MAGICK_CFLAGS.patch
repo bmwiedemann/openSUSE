@@ -1,0 +1,44 @@
+From 1910f8c9ad281d03d80970d672c3b839a879d0d3 Mon Sep 17 00:00:00 2001
+From: Lawrence D'Oliveiro <ldo@geek-central.gen.nz>
+Date: Tue, 4 Jul 2017 05:59:18 +0000
+Subject: [PATCH 05/12] merge MAGICK_CPPFLAGS into MAGICK_CFLAGS
+
+---
+ configure.ac    | 4 ++--
+ src/Makefile.am | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 064722e..b18d2a6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -54,11 +54,11 @@ if test "$usemagick" != 1; then
+ fi
+ 
+ if test "$usemagick" != 1; then
+-    MAGICK_CPPFLAGS="$LIBPNG_CFLAGS"
++    MAGICK_CFLAGS="$LIBPNG_CFLAGS"
+     MAGICK_LIBS="$LIBPNG_LIBS"
+ fi
+ 
+-AC_SUBST(MAGICK_CPPFLAGS)
++AC_SUBST(MAGICK_CFLAGS)
+ AC_SUBST(MAGICK_LIBS)
+ 
+ PKG_CHECK_MODULES([FONTCONFIG], [fontconfig], [AC_DEFINE(HAVE_FONTCONFIG, 1, [whether Fontconfig is available])], [:])
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 045a453..5ef90c3 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -8,7 +8,7 @@ endif
+ nodist_bin_SCRIPTS = dvddirdel
+ 
+ AM_CPPFLAGS = -DSYSCONFDIR="\"$(sysconfdir)\"" \
+-    @XML_CPPFLAGS@ @MAGICK_CPPFLAGS@ @MAGICK_CFLAGS@ @FREETYPE_CPPFLAGS@ @FRIBIDI_CFLAGS@ @FONTCONFIG_CFLAGS@
++    @XML_CPPFLAGS@ @MAGICK_CFLAGS@ @FREETYPE_CPPFLAGS@ @FRIBIDI_CFLAGS@ @FONTCONFIG_CFLAGS@
+ AM_CFLAGS = -Wall
+ 
+ dvdauthor_SOURCES = dvdauthor.c common.h dvdauthor.h da-internal.h \
+-- 
+2.51.0
+

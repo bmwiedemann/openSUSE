@@ -1,0 +1,22 @@
+From 072a0a89f4e85718f89734f2eb3d45184c4dc630 Mon Sep 17 00:00:00 2001
+From: Lawrence D'Oliveiro <ldo@geek-central.gen.nz>
+Date: Thu, 19 Jan 2017 23:22:23 +0000
+Subject: [PATCH 01/12] change to interim version number
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index f4b270f..b3c020b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,4 +1,4 @@
+-AC_INIT(DVDAuthor,0.7.2,dvdauthor-users@lists.sourceforge.net)
++AC_INIT(DVDAuthor,0.7.2+,dvdauthor-users@lists.sourceforge.net)
+ 
+ AC_CONFIG_HEADERS(src/config.h)
+ AC_CONFIG_AUX_DIR(autotools)
+-- 
+2.51.0
+
