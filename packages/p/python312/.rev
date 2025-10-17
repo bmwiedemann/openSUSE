@@ -1854,4 +1854,12 @@
 - Update idle3.appdata.xml to pass the more pedantic appstreamcli.</comment>
     <requestid>1308661</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>71c7736aa7b1a88e53f9784ad4095b7d</srcmd5>
+    <version>3.12.12</version>
+    <time>1760714728</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1311761</requestid>
+  </revision>
 </revisionlist>

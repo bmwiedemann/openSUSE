@@ -118,7 +118,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.12.11
+Version:        3.12.12
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -187,14 +187,8 @@ Patch44:        doc-py38-to-py36.patch
 # PATCH-FIX-UPSTREAM bsc1243155-sphinx-non-determinism.patch bsc#1243155 mcepl@suse.com
 # Doc: Generate ids for audit_events using docname
 Patch45:        bsc1243155-sphinx-non-determinism.patch
-# PATCH-FIX-UPSTREAM CVE-2025-6069-quad-complex-HTMLParser.patch bsc#1244705 mcepl@suse.com
-# avoid quadratic complexity when processing malformed inputs with HTMLParser
-Patch46:        CVE-2025-6069-quad-complex-HTMLParser.patch
-# PATCH-FIX-UPSTREAM CVE-2025-8194-tarfile-no-neg-offsets.patch bsc#1247249 mcepl@suse.com
-# tarfile now validates archives to ensure member offsets are non-negative
-Patch47:        CVE-2025-8194-tarfile-no-neg-offsets.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
-Patch48:        gh139257-Support-docutils-0.22.patch
+Patch46:        gh139257-Support-docutils-0.22.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -486,6 +480,7 @@ rm Lib/site-packages/README.txt
 tar xvf %{SOURCE21}
 
 # Don't fail on warnings when building documentation
+sed -i -e '/^SPHINXERRORHANDLING/s/--fail-on-warning//' Doc/Makefile
 sed -i -e '/^SPHINXERRORHANDLING/s/-W//' Doc/Makefile
 
 %build
