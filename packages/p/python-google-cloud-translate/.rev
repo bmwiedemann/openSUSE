@@ -182,4 +182,21 @@
     <comment></comment>
     <requestid>1273068</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>493149bb970e92694a2af9f6ade2b274</srcmd5>
+    <version>3.21.1</version>
+    <time>1760724870</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.21.1
+  * [google-cloud-translate] minor formatting (#14035)
+- from version 3.21.0
+  * Add google.cloud.location.Locations API (b1831f5)
+  * Add google.iam.v1.IAMPolicy API (b1831f5)
+  * Add google.longrunning.Operations API (b1831f5)
+  * Minor formatting (b1831f5)
+  * Update hyperlink to the supported languages documentation page (b1831f5)
+- from version 3.20.3
+  * Update import statement example in README (0131a33) (forwarded request 1312035 from glaubitz)</comment>
+    <requestid>1312039</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-translate
-Version:        3.20.2
+Version:        3.21.1
 Release:        0
 Summary:        Google Cloud Translation API client library
 License:        Apache-2.0
