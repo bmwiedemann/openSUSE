@@ -1,0 +1,28 @@
+From 700351ff9e11840caa42b7b9f56c2400116dc30b Mon Sep 17 00:00:00 2001
+From: Sandipan Das <sandipan.das@amd.com>
+Date: Mon, 30 Jun 2025 11:16:49 +0530
+Subject: [PATCH] common: Fix upper bound for CPUs per node
+
+os_sysfs_cpu_enum() sets num to the number of online CPUs discovered.
+The upper bound for num is NCPUS_NODE_MAX so fail only for cases where
+num is strictly greater than NCPUS_NODE_MAX.
+
+Fixes: 972a9d0 ("Reconstruct code for better OS-independent.")
+Signed-off-by: Sandipan Das <sandipan.das@amd.com>
+---
+ common/os/node.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common/os/node.c b/common/os/node.c
+index 10db693..ab0c90d 100644
+--- a/common/os/node.c
++++ b/common/os/node.c
+@@ -167,7 +167,7 @@ cpu_refresh(boolean_t init)
+ 			if (!os_sysfs_cpu_enum(node->nid, cpu_arr, NCPUS_NODE_MAX, &num)) {
+ 				return (-1);
+ 			}
+-			if (num < 0 || num >= NCPUS_NODE_MAX) {
++			if (num < 0 || num > NCPUS_NODE_MAX) {
+ 				return (-1);
+ 			}
+ 

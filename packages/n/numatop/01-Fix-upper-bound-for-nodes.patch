@@ -1,0 +1,28 @@
+From 69333ce658e1895241f91f187e12e4996147e196 Mon Sep 17 00:00:00 2001
+From: Sandipan Das <sandipan.das@amd.com>
+Date: Mon, 30 Jun 2025 12:08:28 +0530
+Subject: [PATCH] common: Fix upper bound for nodes
+
+os_sysfs_node_enum() sets num to the number of NUMA nodes discovered.
+The upper bound for num is NNODES_MAX so fail only for cases where
+num is strictly greater than the upper bound.
+
+Fixes: 972a9d0 ("Reconstruct code for better OS-independent.")
+Signed-off-by: Sandipan Das <sandipan.das@amd.com>
+---
+ common/os/node.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common/os/node.c b/common/os/node.c
+index f384e3b..10db693 100644
+--- a/common/os/node.c
++++ b/common/os/node.c
+@@ -228,7 +228,7 @@ node_group_refresh(boolean_t init)
+ 	if (!os_sysfs_node_enum(node_arr, NNODES_MAX, &num)) {
+ 		goto L_EXIT;
+ 	}
+-	if (num < 0 || num >= NNODES_MAX) {
++	if (num < 0 || num > NNODES_MAX) {
+ 		goto L_EXIT;
+ 	}
+ 

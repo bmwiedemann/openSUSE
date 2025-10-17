@@ -113,4 +113,12 @@
 - numatop-ncursesw.patch: Switch to ncursesw6</comment>
     <requestid>1244404</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6ce7a75ed6e1bd25529a8a29059eb9f4</srcmd5>
+    <version>2.5.1</version>
+    <time>1760714736</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1311741</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,24 @@
+From 50b24cd2c9bdd524b8a9d842831e46b176de3265 Mon Sep 17 00:00:00 2001
+From: Sandipan Das <sandipan.das@amd.com>
+Date: Mon, 30 Jun 2025 19:03:47 +0530
+Subject: [PATCH] common: Remove unused NPROCS_NAX
+
+Remove the definition of NPROCS_NAX as it is unused.
+
+Signed-off-by: Sandipan Das <sandipan.das@amd.com>
+---
+ common/include/types.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/common/include/types.h b/common/include/types.h
+index 1d1545d..221b06d 100644
+--- a/common/include/types.h
++++ b/common/include/types.h
+@@ -115,7 +115,6 @@ typedef enum {
+ 
+ #define UI_COUNT_NUM		5
+ 
+-#define NPROCS_NAX		4096
+ #define	LL_THRESH		128
+ #define LL_PERIOD		1000
+ 

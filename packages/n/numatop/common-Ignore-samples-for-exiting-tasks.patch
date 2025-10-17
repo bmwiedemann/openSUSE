@@ -1,0 +1,34 @@
+From 636bf0ee924034d51e63a20325353f2e9384b3de Mon Sep 17 00:00:00 2001
+From: Sandipan Das <sandipan.das@amd.com>
+Date: Thu, 10 Jul 2025 11:57:03 +0530
+Subject: [PATCH] common: Ignore samples for exiting tasks
+
+After the inclusion of Linux commit 1d953111b648 ("perf/core: Don't
+report zero PIDs for exiting tasks"), perf samples will report PID as
+-1 for exiting tasks.
+
+Such samples lead to segmentation faults during process lookup when
+proc_find_nolock() is called with -1 as the PID. Process data at the
+the hash table index returned by PROC_HASHTBL_INDEX() is invalid and
+any dereference of the corresponding track_proc_t pointer results in
+a bad access. Hence, ignore samples for exiting tasks.
+
+Fixes: 972a9d0 ("Reconstruct code for better OS-independent.")
+Signed-off-by: Sandipan Das <sandipan.das@amd.com>
+---
+ common/os/pfwrapper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common/os/pfwrapper.c b/common/os/pfwrapper.c
+index 10042d9..780458e 100644
+--- a/common/os/pfwrapper.c
++++ b/common/os/pfwrapper.c
+@@ -497,7 +497,7 @@ ll_sample_read(struct perf_event_mmap_page *mhdr, int size,
+ 	 *	{ u64   data_src; }
+ 	 * };
+ 	 */
+-	if (mmap_buffer_read(mhdr, &id, sizeof (id)) == -1) {
++	if (mmap_buffer_read(mhdr, &id, sizeof (id)) == -1 || id.pid == -1U) {
+ 		debug_print(NULL, 2, "ll_sample_read: read pid/tid failed.\n");
+ 		goto L_EXIT;
+ 	}

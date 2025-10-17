@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 16 14:21:47 UTC 2025 - Vlastimil Babka <vbabka@suse.com>
+
+- common-Ignore-samples-for-exiting-tasks.patch: segfault fix
+  (bsc#1248317)
+- 01-Fix-upper-bound-for-nodes.patch
+  02-Fix-upper-bound-for-CPUs-per-node.patch
+  03-Resolve-max-count-of-nodes-at-runtime.patch
+  04-Resolve-max-count-of-CPUs-at-runtime.patch
+  05-Resolve-max-count-of-CPUs-per-node-at-runtime.patch
+  06-Remove-unused-NPROCS_NAX.patch: fix >256 CPUs per NUMA
+  node (bsc#1247358)
+
+-------------------------------------------------------------------
 Sat Feb  8 21:01:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.1:

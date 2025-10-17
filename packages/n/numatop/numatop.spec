@@ -1,7 +1,7 @@
 #
 # spec file for package numatop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,20 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64 ppc64le
+# PATCH-FIX-UPSTREAM common-Ignore-samples-for-exiting-tasks.patch bsc#1248317
+Patch1:         common-Ignore-samples-for-exiting-tasks.patch
+# PATCH-FIX-UPSTREAM 01-Fix-upper-bound-for-nodes.patch bsc#1247358
+Patch2:         01-Fix-upper-bound-for-nodes.patch
+# PATCH-FIX-UPSTREAM 02-Fix-upper-bound-for-CPUs-per-node.patch bsc#1247358
+Patch3:         02-Fix-upper-bound-for-CPUs-per-node.patch
+# PATCH-FIX-UPSTREAM 03-Resolve-max-count-of-nodes-at-runtime.patch bsc#1247358
+Patch4:         03-Resolve-max-count-of-nodes-at-runtime.patch
+# PATCH-FIX-UPSTREAM 04-Resolve-max-count-of-CPUs-at-runtime.patch bsc#1247358
+Patch5:         04-Resolve-max-count-of-CPUs-at-runtime.patch
+# PATCH-FIX-UPSTREAM 05-Resolve-max-count-of-CPUs-per-node-at-runtime.patch bsc#1247358
+Patch6:         05-Resolve-max-count-of-CPUs-per-node-at-runtime.patch
+# PATCH-FIX-UPSTREAM 06-Remove-unused-NPROCS_NAX.patch bsc#1247358
+Patch7:         06-Remove-unused-NPROCS_NAX.patch
 
 %description
 NumaTOP is an observation tool for runtime memory locality characterization
