@@ -1,7 +1,7 @@
 #
 # spec file for package arphic-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -111,7 +111,7 @@ install -c -m 644 fonts.scale.* %{buildroot}%{_ttfontsdir}/
 
 %files
 %defattr(-, root,root)
-%doc ./license
+%license license/english/ARPHICPL.TXT
 
 %files -n arphic-bkai00mp-fonts
 %defattr(-, root,root)

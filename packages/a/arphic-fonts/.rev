@@ -69,4 +69,12 @@
     <comment></comment>
     <requestid>1059405</requestid>
   </revision>
+  <revision rev="10" vrev="779">
+    <srcmd5>a7bc0ea1861e542b4cd2a96cfa37195f</srcmd5>
+    <version>20001125</version>
+    <time>1760714847</time>
+    <user>anag_factory</user>
+    <comment>- use %license tag [bsc#1252135] (forwarded request 1311953 from pgajdos)</comment>
+    <requestid>1311986</requestid>
+  </revision>
 </revisionlist>
