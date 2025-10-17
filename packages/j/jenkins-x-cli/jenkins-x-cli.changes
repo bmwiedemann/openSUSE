@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Oct 17 05:06:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.25:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.31
+
+-------------------------------------------------------------------
+Fri Aug 29 14:13:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.24:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.31
+
+-------------------------------------------------------------------
+Fri Aug 29 04:08:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.23:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.30
+
+-------------------------------------------------------------------
+Fri Aug 29 04:04:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.22:
+  * chore(deps): bump github.com/ulikunitz/xz from 0.5.9 to 0.5.14
+
+-------------------------------------------------------------------
+Fri Aug 22 08:09:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.21:
+  * chore(deps): bump anchore/sbom-action from 0.20.4 to 0.20.5
+
+-------------------------------------------------------------------
+Wed Aug 20 11:10:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.20:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.28
+
+-------------------------------------------------------------------
 Fri Aug 08 12:08:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.16.19:

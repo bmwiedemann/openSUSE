@@ -19,7 +19,7 @@
 %define executable_name jx
 
 Name:           jenkins-x-cli
-Version:        3.16.19
+Version:        3.16.25
 Release:        0
 Summary:        CLI for Jenkins X
 License:        Apache-2.0
