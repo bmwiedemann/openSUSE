@@ -59,8 +59,12 @@ Source2:        %{name}.keyring
 Patch0:         borgbackup-1.1.4-sphinx-default-theme.patch
 # PATCH-FIX-UPSTREAM msgpack-allow-1.1.1.patch -- backport of commit f6724bfef
 Patch1:         msgpack-allow-1.1.1.patch
-# PATCH-FIX-UPSTREAM 0001-platform-linux-fetch-flags-before-FS_IOC_SETFLAGS.patch -- #9039
-Patch2:         0001-platform-linux-fetch-flags-before-FS_IOC_SETFLAGS.patch
+# PATCH-FIX-UPSTREAM 0001-set_flags-use-get-set-to-only-influence-specific-fla.patch #9039
+Patch2:         0001-set_flags-use-get-set-to-only-influence-specific-fla.patch
+# PATCH-FIX-UPSTREAM 0002-set_flags-better-give-up-than-corrupt.patch #9039
+Patch3:         0002-set_flags-better-give-up-than-corrupt.patch
+# PATCH-FIX-UPSTREAM 0003-set_flags-remove-compression-flag.patch #9039
+Patch4:         0003-set_flags-remove-compression-flag.patch
 # SECTION build dependencies
 BuildRequires:  bash
 BuildRequires:  fdupes
@@ -194,6 +198,8 @@ This package contains the fish completion script for borgbackup.
 %endif
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 %ifnarch %ix86 %arm
   # https://github.com/borgbackup/borg/issues/6996

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  9 06:27:26 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- replace 0001-platform-linux-fetch-flags-before-FS_IOC_SETFLAGS.patch
+  by upstream patches:
+  * 0001-set_flags-use-get-set-to-only-influence-specific-fla.patch
+  * 0002-set_flags-better-give-up-than-corrupt.patch
+  * 0003-set_flags-remove-compression-flag.patch
+  (bsc#1251048)
+
+-------------------------------------------------------------------
 Tue Oct  7 04:53:42 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - add 0001-platform-linux-fetch-flags-before-FS_IOC_SETFLAGS.patch

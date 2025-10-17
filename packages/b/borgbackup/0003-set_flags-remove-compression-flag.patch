@@ -1,0 +1,36 @@
+From: Thomas Waldmann <tw@waldmann-edv.de>
+Date: Fri, 17 Oct 2025 02:41:53 +0200
+Subject: set_flags: remove compression flag
+References: bsc#1251048
+Git-repo: https://github.com/ThomasWaldmann/borg#fix-set_flags-1.4
+Git-commit: 56dda841623f90556b37798e85f9371ebe4a3de2
+Patch-mainline: Queued in subsystem maintainer repository
+
+This flag needs to be set BEFORE writing to the file.
+But "borg extract" sets the flags last (to support IMMUTABLE),
+thus the compression flag would not work as expected.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/borg/platform/linux.pyx | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/borg/platform/linux.pyx b/src/borg/platform/linux.pyx
+index d7680ccd62d2..1a8b7942cf8b 100644
+--- a/src/borg/platform/linux.pyx
++++ b/src/borg/platform/linux.pyx
+@@ -126,10 +126,9 @@ BSD_TO_LINUX_FLAGS = {
+     stat.UF_NODUMP: FS_NODUMP_FL,
+     stat.UF_IMMUTABLE: FS_IMMUTABLE_FL,
+     stat.UF_APPEND: FS_APPEND_FL,
+-    stat.UF_COMPRESSED: FS_COMPR_FL,
+ }
+ # must be a bitwise OR of all values in BSD_TO_LINUX_FLAGS.
+-LINUX_MASK = FS_NODUMP_FL | FS_IMMUTABLE_FL | FS_APPEND_FL | FS_COMPR_FL
++LINUX_MASK = FS_NODUMP_FL | FS_IMMUTABLE_FL | FS_APPEND_FL
+ 
+ 
+ def set_flags(path, bsd_flags, fd=None):
+-- 
+2.51.0
+
