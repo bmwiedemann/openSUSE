@@ -1,0 +1,23 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/rvben/rumdl.git</param>
+    <param name="scm">git</param>
+    <param name="submodules">enable</param>
+    <param name="revision">v0.0.161</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual">
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="update">false</param>
+    <param name="srcdir">rumdl</param>
+  </service>
+  <service name="tar" mode="buildtime">
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
