@@ -295,7 +295,9 @@ export disabled_tests="heif|ptex|jpeg-ultrahdr|cmake-consumer|docs-examples-cpp|
 %{_bindir}/idiff
 %{_bindir}/igrep
 %{_bindir}/iinfo
+%if %{with imageviewer}
 %{_bindir}/iv
+%endif
 %{_bindir}/maketx
 %{_bindir}/oiiotool
 %{_bindir}/testtex
@@ -304,7 +306,9 @@ export disabled_tests="heif|ptex|jpeg-ultrahdr|cmake-consumer|docs-examples-cpp|
 %{_mandir}/man1/idiff.1.*
 %{_mandir}/man1/igrep.1.*
 %{_mandir}/man1/iinfo.1.*
+%if %{with imageviewer}
 %{_mandir}/man1/iv.1.*
+%endif
 %{_mandir}/man1/maketx.1.*
 %{_mandir}/man1/oiiotool.1.*
 %endif
