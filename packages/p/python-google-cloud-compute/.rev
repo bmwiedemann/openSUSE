@@ -40,4 +40,37 @@
   * Update Compute Engine API to revision 20250415 (#13800) (forwarded request 1272442 from glaubitz)</comment>
     <requestid>1272451</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6a4b74d38be0fcdf46edef3fabc7b911</srcmd5>
+    <version>1.40.0</version>
+    <time>1760724872</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.40.0
+  * Update Compute Engine v1 API to revision 20250916 (#1107)
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- from version 1.39.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250909
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250902
+- from version 1.38.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250902 (#14434)
+- from version 1.37.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250810 (#1091)
+- from version 1.36.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250807
+- from version 1.35.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250728 (#1081)
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250729 (#1085)
+- from version 1.34.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250717 (#1074)
+- from version 1.33.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250708 (#1073)
+- from version 1.32.0
+  * Update Compute Engine v1 API to revision 20250626 (3ad8819)
+- from version 1.31.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250601 (#13970)
+  * Update Compute Engine v1 API to revision 20250511 (#1047)
+- Update BuildRequires and Requires from setup.py (forwarded request 1312001 from glaubitz)</comment>
+    <requestid>1312055</requestid>
+  </revision>
 </revisionlist>

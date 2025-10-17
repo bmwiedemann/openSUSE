@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Oct 17 11:05:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.40.0
+  * Update Compute Engine v1 API to revision 20250916 (#1107)
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- from version 1.39.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250909
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250902
+- from version 1.38.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250902 (#14434)
+- from version 1.37.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250810 (#1091)
+- from version 1.36.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250807
+- from version 1.35.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250728 (#1081)
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250729 (#1085)
+- from version 1.34.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250717 (#1074)
+- from version 1.33.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250708 (#1073)
+- from version 1.32.0
+  * Update Compute Engine v1 API to revision 20250626 (3ad8819)
+- from version 1.31.0
+  * [google-cloud-compute] Update Compute Engine v1 API to revision 20250601 (#13970)
+  * Update Compute Engine v1 API to revision 20250511 (#1047)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Apr 24 13:23:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.30.0
