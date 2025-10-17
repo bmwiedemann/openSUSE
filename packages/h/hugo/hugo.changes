@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 16 17:36:07 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.151.2:
+  * releaser: Bump versions for release of 0.151.2
+  * parser/pageparser: Add a testcase for nested shortcodes of the same name
+  * parser/pageparser: Fix shortcode nesting regression
+  * testscripts: Add and improve commands tests for static mounts
+  * releaser: Prepare repository for 0.152.0-DEV
+
+-------------------------------------------------------------------
 Wed Oct 15 18:05:00 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.151.1:

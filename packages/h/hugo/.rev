@@ -1746,4 +1746,17 @@
   * releaser: Prepare repository for 0.152.0-DEV (forwarded request 1311540 from jfkw)</comment>
     <requestid>1311541</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>00f6af44e6afb634e7bfb223582064d0</srcmd5>
+    <version>0.151.2</version>
+    <time>1760714855</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.151.2:
+  * releaser: Bump versions for release of 0.151.2
+  * parser/pageparser: Add a testcase for nested shortcodes of the same name
+  * parser/pageparser: Fix shortcode nesting regression
+  * testscripts: Add and improve commands tests for static mounts
+  * releaser: Prepare repository for 0.152.0-DEV (forwarded request 1312026 from jfkw)</comment>
+    <requestid>1312034</requestid>
+  </revision>
 </revisionlist>
