@@ -167,7 +167,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.7
+Version:        3.13.9
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -555,7 +555,7 @@ rm Lib/site-packages/README.txt
 tar xvf %{SOURCE21}
 
 # Don't fail on warnings when building documentation
-# sed -i -e '/^SPHINXERRORHANDLING/s/-W//' Doc/Makefile
+sed -i -e '/^SPHINXERRORHANDLING/s/--fail-on-warning//' Doc/Makefile
 
 %build
 export SUSE_VERSION="0%{?suse_version}"
