@@ -3,19 +3,6 @@ From: Ofek Lev <ofekmeister@gmail.com>
 Date: Sat, 9 Nov 2024 11:35:16 -0500
 Subject: [PATCH] Bump `packaging` to 24.2 (#1788)
 
----
- hatch.toml                                  |   4 -
- pyproject.toml                              |   2 +-
- src/hatch/template/default.py               |   2 +-
- tests/backend/licenses/__init__.py          |   0
- tests/backend/licenses/test_parse.py        |  56 --
- tests/backend/licenses/test_supported.py    |  31 -
- tests/backend/metadata/test_core.py         |   2 +-
- 15 files changed, 11 insertions(+), 974 deletions(-)
- delete mode 100644 tests/backend/licenses/__init__.py
- delete mode 100644 tests/backend/licenses/test_parse.py
- delete mode 100644 tests/backend/licenses/test_supported.py
-
 Index: hatch-hatch-v1.14.0/hatch.toml
 ===================================================================
 --- hatch-hatch-v1.14.0.orig/hatch.toml

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 16 07:47:48 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.15.0
+  * Drop support for Python 3.8
+  * Support Python 3.14
+  * Upgrade default CPython distributions to 20251014
+  * Upgrade default PyPy distributions to 7.3.20
+- Update to 1.14.2
+  * Fix compatibility with recent versions of Click
+- drop click-8.2.patch, fixed upstream
+- Add fix-tests.patch to fix tests
+
+-------------------------------------------------------------------
 Thu Aug 21 08:22:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

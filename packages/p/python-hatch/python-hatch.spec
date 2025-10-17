@@ -1,7 +1,7 @@
 #
 # spec file for package python-hatch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch%{psuffix}
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        Modern, extensible Python project management
 License:        MIT
@@ -40,8 +40,8 @@ URL:            https://hatch.pypa.io/latest/
 Source:         https://github.com/pypa/hatch/archive/refs/tags/hatch-v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-with-latest-hatchling.patch gh#f8a2eaa gh#28f233c gh#fc25690
 Patch0:         fix-with-latest-hatchling.patch
-# PATCH-FIX-UPSTREAM click-8.2.patch gh#pypa/hatch#2013
-Patch1:         click-8.2.patch
+# PATCH-FIX-UPSTREAM fix-tests.patch gh#79d3c15
+Patch1:         fix-tests.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
 BuildRequires:  %{python_module hatchling >= 1.26.3}
