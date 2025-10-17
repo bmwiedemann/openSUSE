@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 17 16:01:38 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update version 25.11:
+  * Onscreen "Magnifier": Meta+{Plus,Equals} to enable, Meta+Escape
+    to disable. (Plus settings in miriway-shell.settings)
+  * Improved handling of miriway-shell.settings
+
+-------------------------------------------------------------------
 Thu Sep  4 15:38:55 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update version 25.10:

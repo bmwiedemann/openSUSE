@@ -1,36 +1,25 @@
-From f1e7ce28cbc9a9043f8fc1f32d4dbf6378e682f5 Mon Sep 17 00:00:00 2001
+From 8c09e29607ec57686bc79ee8f63a08435015628c Mon Sep 17 00:00:00 2001
 From: Shawn W Dunn <sfalken@opensuse.org>
-Date: Thu, 4 Sep 2025 08:17:31 -0700
+Date: Thu, 16 Oct 2025 11:40:37 -0700
 Subject: [PATCH] Fix xkbcommon includes
 
 ---
- CMakeLists.txt | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index dc1e4be..3866bea 100644
+index 626da10..924ba58 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -35,7 +35,8 @@ add_library(miriwaycommon STATIC
-         miriway_documenting_store.h
- )
+@@ -45,7 +45,7 @@ add_executable(miriway-shell miriway.cpp miriway_policy.cpp miriway_policy.h)
+ target_link_libraries(miriway-shell miriwaycommon)
  
--target_include_directories(miriwaycommon PUBLIC SYSTEM ${MIRAL_INCLUDE_DIRS} ${MIRWAYLAND_INCLUDE_DIRS})
-+target_include_directories(miriwaycommon PUBLIC SYSTEM ${MIRAL_INCLUDE_DIRS}
-+${MIRWAYLAND_INCLUDE_DIRS} ${XKBCOMMON_INCLUDE_DIRS})
- target_link_libraries(     miriwaycommon PUBLIC        ${MIRAL_LDFLAGS} ${MIRWAYLAND_LDFLAGS} ${XKBCOMMON_LIBRARIES})
- target_compile_definitions(miriwaycommon PRIVATE MIR_LOG_COMPONENT="miriway")
- 
-@@ -50,7 +51,8 @@ add_executable(miriway-run-shell
-     miriway-run-shell.cpp
- )
- target_link_libraries(miriway-run-shell ${MIRAL_LDFLAGS})
--target_include_directories(miriway-run-shell PUBLIC SYSTEM ${MIRAL_INCLUDE_DIRS})
-+target_include_directories(miriway-run-shell PUBLIC SYSTEM ${MIRAL_INCLUDE_DIRS}
-+${XKBCOMMON_INCLUDE_DIRS})
- target_compile_definitions(miriway-run-shell PRIVATE MIR_LOG_COMPONENT="miriway")
+ add_executable(miriway-run-shell miriway-run-shell.cpp)
+-target_link_libraries(miriway-run-shell PkgConfig::MIRAL)
++target_link_libraries(miriway-run-shell PRIVATE PkgConfig::MIRAL PkgConfig::XKBCOMMON)
  
  add_custom_target(miriway ALL
+     cp ${CMAKE_CURRENT_SOURCE_DIR}/miriway ${CMAKE_BINARY_DIR}
 -- 
 2.51.0
 

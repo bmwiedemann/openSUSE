@@ -21,7 +21,7 @@
 %define _name Miriway
 
 Name:           miriway
-Version:        25.10
+Version:        25.11
 Release:        0
 Summary:        Simple Wayland compositor built on Mir
 License:        GPL-3.0-only

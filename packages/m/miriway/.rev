@@ -73,4 +73,15 @@ Provides the miriway wayland compositor</comment>
     <comment></comment>
     <requestid>1302776</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>34970ea69aa2207e8188f845e89c4b57</srcmd5>
+    <version>25.11</version>
+    <time>1760724878</time>
+    <user>anag_factory</user>
+    <comment>- Update version 25.11:
+  * Onscreen &quot;Magnifier&quot;: Meta+{Plus,Equals} to enable, Meta+Escape
+    to disable. (Plus settings in miriway-shell.settings)
+  * Improved handling of miriway-shell.settings</comment>
+    <requestid>1312078</requestid>
+  </revision>
 </revisionlist>
