@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 17 05:05:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.44.1:
+  * feat(distribution): provide rpm packages via rpm repository
+    (#1012)
+
+-------------------------------------------------------------------
 Mon Oct 13 11:02:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.44.0:
