@@ -1,7 +1,7 @@
 #
 # spec file for package libtorrent
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define lname	libtorrent30
+%define lname	libtorrent31
 Name:           libtorrent
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        A BitTorrent library written in C++
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -32,10 +32,10 @@ BuildRequires:  gcc13-c++
 BuildRequires:  gcc-c++
 %endif
 BuildRequires:  libtool
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(libcurl) >= 7.15.4
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  zlib-devel
 
 %description
 LibTorrent is a BitTorrent library written in C++. It transfers
