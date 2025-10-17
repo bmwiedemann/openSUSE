@@ -182,4 +182,14 @@
     <comment></comment>
     <requestid>1289938</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1604936f002c99a5a7f7d24e634f716a</srcmd5>
+    <version>3.7.1</version>
+    <time>1760714832</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1311990 from darix
+
+add bugnumber</comment>
+    <requestid>1311991</requestid>
+  </revision>
 </revisionlist>

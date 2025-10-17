@@ -1,7 +1,7 @@
 #
 # spec file for package git-lfs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_without    build_docs
 
 Name:           git-lfs
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT
@@ -35,7 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  git-core >= 1.8.2
 BuildRequires:  golang-packaging
 BuildRequires:  which
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.25
 Requires:       git-core >= 1.8.2
 Requires(post): git-core >= 1.8.2
 Requires(preun): git-core >= 1.8.2
