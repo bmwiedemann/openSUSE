@@ -145,4 +145,12 @@ being a development machine:
   * see man-pages-posix-2017-a.Announce for details</comment>
     <requestid>846255</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>08e70a22f48cd0672fc57fa5cc71d8b9</srcmd5>
+    <version>2017a</version>
+    <time>1760714785</time>
+    <user>anag_factory</user>
+    <comment>-  use %license tag [bsc#1252161]</comment>
+    <requestid>1311881</requestid>
+  </revision>
 </revisionlist>

@@ -79,7 +79,7 @@ fi
 %dir %{_mandir}/man?p
 %{_mandir}/man*/*.gz
 %doc README
-%doc POSIX-COPYRIGHT
+%license POSIX-COPYRIGHT
 %doc man-pages-*.Announce
 
 %changelog
