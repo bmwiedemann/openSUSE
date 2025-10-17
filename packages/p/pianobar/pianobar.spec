@@ -1,7 +1,7 @@
 #
 # spec file for package pianobar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2016 Packman team: http://packman.links2linux.org/
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,13 @@
 
 
 Name:           pianobar
-Version:        2022.04.01
+Version:        2024.12.21
 Release:        0
 Summary:        Pandora Player
 License:        MIT
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://6xq.net/pianobar
-Source0:        %{url}/pianobar-2022.04.01.tar.bz2
-Patch0:         https://github.com/PromyLOPh/pianobar/commit/b11ba432.patch
-Patch1:         https://github.com/PromyLOPh/pianobar/commit/8bf4c1bb.patch
+Source0:        %{url}/pianobar-%{version}.tar.bz2
 BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ao)

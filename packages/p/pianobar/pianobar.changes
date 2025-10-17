@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 16 14:30:45 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2024.12.21
+  * Improved network error retrying
+  * Improved compatibility with newer versions of ffmpeg and
+    libcurl
+  * Minor documentation fixes
+- Drop b11ba432.patch and 8bf4c1bb.patch (merged upstream)
+
+-------------------------------------------------------------------
 Thu Oct 10 15:30:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build using FFMPEG 7.1 : Add upstream patches:
