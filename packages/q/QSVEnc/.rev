@@ -15,4 +15,21 @@
     <comment></comment>
     <requestid>1248241</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>20b91d218040b1d3cdd38218be1cbf6a</srcmd5>
+    <version>8.01+0</version>
+    <time>1760714834</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.01+0:
+  * Avoid unintended fps values when front of input file is
+    corrupted.
+  * Improve handling when input files have negative pts.
+  * Improve quality of burned in subtitles in [--vpp-subburn]
+    processing by changing libass initialization method.
+  * Improve progress indicator when using [--parallel]
+  * Add support for using [--parallel] with multiple pipes.
+- See /usr/share/doc/packages/QSVEnc/ReleaseNotes.md for earlier
+  updates. (forwarded request 1311819 from malcolmlewis)</comment>
+    <requestid>1311956</requestid>
+  </revision>
 </revisionlist>

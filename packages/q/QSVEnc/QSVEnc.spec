@@ -1,8 +1,8 @@
 #
 # spec file for package QSVEnc
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2024-2025 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           QSVEnc
-Version:        7.71+0
+Version:        8.01+0
 Release:        0
 Summary:        HW encoder (QSV) testing
 License:        MIT
@@ -63,7 +63,7 @@ install -m 0755 qsvencc %{buildroot}%{_bindir}/qsvencc
 
 %files
 %license license.txt
-%doc QSVEncC_Options.en.md
+%doc QSVEncC_Options.en.md ReleaseNotes.md
 %{_bindir}/qsvencc
 
 %changelog

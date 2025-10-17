@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 17 01:49:12 UTC 2025 - malcolmlewis@opensuse.org
+
+- Update to version 8.01+0:
+  * Avoid unintended fps values when front of input file is
+    corrupted.
+  * Improve handling when input files have negative pts.
+  * Improve quality of burned in subtitles in [--vpp-subburn]
+    processing by changing libass initialization method.
+  * Improve progress indicator when using [--parallel]
+  * Add support for using [--parallel] with multiple pipes.
+- See /usr/share/doc/packages/QSVEnc/ReleaseNotes.md for earlier
+  updates.
+
+-------------------------------------------------------------------
 Mon Feb 24 21:07:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - The build scans for SSE4, therefore add an ExclusiveArch line.
