@@ -16,7 +16,7 @@
 #
 
 Name:           icinga2
-Version:        2.15.0
+Version:        2.15.1
 Release:        0
 Summary:        Network monitoring application
 License:        GPL-2.0-or-later
@@ -28,10 +28,6 @@ Source1:        icinga2-rpmlintrc
 Patch0:         icinga2-graphite.patch
 # PATCH-FIX-OPENSUSE lrupp -- fixing the syntax file for vim >= 8.x
 Patch1:         icinga2-vim_syntax.patch
-%if 0%{?suse_version} >= 1600
-# PATCH-FIX-UPSTREAM -- Boost.System has been header only since Boost 1.69.0
-Patch2:         https://github.com/Icinga/icinga2/commit/76fa0d9e8054f405dc3d1e39a4b48f21e86afdf0.patch
-%endif
 PreReq:         permissions
 BuildRequires:  nagios-rpm-macros
 Requires:       icinga2-bin = %{version}
