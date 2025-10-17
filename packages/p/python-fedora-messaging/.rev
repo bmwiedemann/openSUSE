@@ -95,4 +95,14 @@
     <comment></comment>
     <requestid>1295116</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>94457b245353b8925deff61c7a8d7918</srcmd5>
+    <version>3.8.0</version>
+    <time>1760714753</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1311707 from hellcp-work
+
+- Create a subpackage for Fedora Messaging configs</comment>
+    <requestid>1311809</requestid>
+  </revision>
 </revisionlist>

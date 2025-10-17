@@ -66,6 +66,12 @@ BuildArch:      noarch
 %description
 A set of Python tools for using Fedora's messaging infrastructure.
 
+%package -n fedora-messaging-config
+Summary:        Fedora Messaging configs
+
+%description -n fedora-messaging-config
+Configuration files for the Fedora Messaging instances.
+
 %prep
 %autosetup -p1 -n %{_modname}-%{version}
 
@@ -76,6 +82,16 @@ A set of Python tools for using Fedora's messaging infrastructure.
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/%{_modname}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+install -D -p -m 644 config.toml.example $RPM_BUILD_ROOT%{_sysconfdir}/fedora-messaging/config.toml
+install -D -p -m 644 configs/fedora.toml $RPM_BUILD_ROOT%{_sysconfdir}/fedora-messaging/fedora.toml
+install -D -p -m 644 configs/fedora.stg.toml $RPM_BUILD_ROOT%{_sysconfdir}/fedora-messaging/fedora.stg.toml
+install -D -p -m 644 configs/cacert.pem $RPM_BUILD_ROOT%{_sysconfdir}/fedora-messaging/cacert.pem
+install -D -p -m 644 configs/fedora-key.pem $RPM_BUILD_ROOT%{_sysconfdir}/fedora-messaging/fedora-key.pem
+install -D -p -m 644 configs/fedora-cert.pem $RPM_BUILD_ROOT%{_sysconfdir}/fedora-messaging/fedora-cert.pem
+install -D -p -m 644 configs/stg-cacert.pem $RPM_BUILD_ROOT%{_sysconfdir}/fedora-messaging/stg-cacert.pem
+install -D -p -m 644 configs/fedora.stg-key.pem $RPM_BUILD_ROOT%{_sysconfdir}/fedora-messaging/fedora.stg-key.pem
+install -D -p -m 644 configs/fedora.stg-cert.pem $RPM_BUILD_ROOT%{_sysconfdir}/fedora-messaging/fedora.stg-cert.pem
 
 %post
 %python_install_alternative %{_modname}
@@ -92,5 +108,17 @@ A set of Python tools for using Fedora's messaging infrastructure.
 %python_alternative %{_bindir}/%{_modname}
 %{python_sitelib}/fedora_messaging
 %{python_sitelib}/fedora_messaging-%{version}.dist-info
+
+%files -n fedora-messaging-config
+%dir %{_sysconfdir}/fedora-messaging/
+%config(noreplace) %{_sysconfdir}/fedora-messaging/config.toml
+%config(noreplace) %{_sysconfdir}/fedora-messaging/fedora.toml
+%config(noreplace) %{_sysconfdir}/fedora-messaging/fedora.stg.toml
+%config(noreplace) %{_sysconfdir}/fedora-messaging/cacert.pem
+%config(noreplace) %{_sysconfdir}/fedora-messaging/fedora-key.pem
+%config(noreplace) %{_sysconfdir}/fedora-messaging/fedora-cert.pem
+%config(noreplace) %{_sysconfdir}/fedora-messaging/stg-cacert.pem
+%config(noreplace) %{_sysconfdir}/fedora-messaging/fedora.stg-key.pem
+%config(noreplace) %{_sysconfdir}/fedora-messaging/fedora.stg-cert.pem
 
 %changelog
