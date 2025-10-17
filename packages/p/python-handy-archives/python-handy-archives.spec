@@ -1,7 +1,7 @@
 #
 # spec file for package python-handy-archives
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,11 @@ Some handy archive helpers for Python.
 
 %check
 %if %{with test}
-%pytest
+# zip64 test are not working in newer python interpreter because there
+# are more consistency checks in zipfile
+# https://github.com/python/cpython/issues/139700
+donttest="test_bad_zip64_extra or test_generated_valid_zip64_extra"
+%pytest -k "not ($donttest)"
 %endif
 
 %if !%{with test}
