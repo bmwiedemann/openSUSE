@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 17 11:51:12 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.21.0
+  * Support Sequence[float] as query_vector in FindNearest (#908)
+  * Add missing DocumentReference return value to .document (#1053)
+
+-------------------------------------------------------------------
 Thu Apr 24 23:43:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.20.2

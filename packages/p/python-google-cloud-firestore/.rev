@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1272654</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>29de240a0127752c14cbfb634f503052</srcmd5>
+    <version>2.21.0</version>
+    <time>1760724871</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.21.0
+  * Support Sequence[float] as query_vector in FindNearest (#908)
+  * Add missing DocumentReference return value to .document (#1053) (forwarded request 1312009 from glaubitz)</comment>
+    <requestid>1312041</requestid>
+  </revision>
 </revisionlist>
