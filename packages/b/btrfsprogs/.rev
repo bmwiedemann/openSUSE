@@ -1503,4 +1503,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- update to 6.16.1 (forwarded request 1303726 from dsterba)</comment>
     <requestid>1303727</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>65aefa72c3f1389786790e5eb769fa5d</srcmd5>
+    <version>6.17</version>
+    <time>1760790895</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.17 (forwarded request 1311514 from dsterba)</comment>
+    <requestid>1311515</requestid>
+  </revision>
 </revisionlist>
