@@ -127,4 +127,14 @@
   (configure-8-byte-atomics.patch)</comment>
     <requestid>1128805</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>254b4bec7bae76aac682bd3bcfee8249</srcmd5>
+    <version>1.2.80</version>
+    <time>1760790959</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bug number bsc#1252197 
+
+- Modernise spec file (bsc#1252197)</comment>
+    <requestid>1311723</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 16 13:51:22 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add bug number bsc#1252197 
+
+-------------------------------------------------------------------
 Sat Nov 25 20:41:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.80:
@@ -26,7 +31,7 @@ Thu Mar 12 11:45:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
     existing records was fixed.
   * kcdb.h (DB::check): new function.
 - Drop no longer needed gcc6-fix-errors.patch
-- Modernise spec file
+- Modernise spec file (bsc#1252197)
 
 -------------------------------------------------------------------
 Wed Jan  3 12:18:07 UTC 2018 - dimstar@opensuse.org
