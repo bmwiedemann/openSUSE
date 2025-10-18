@@ -33,8 +33,6 @@ enable ignition-firstboot-complete.service
 enable irqbalance.service
 enable iscsi.service
 enable iscsid.socket
-enable issue-generator.path
-enable issue-generator.service
 enable kbdsettings.service
 enable klog.service
 enable logrotate.timer

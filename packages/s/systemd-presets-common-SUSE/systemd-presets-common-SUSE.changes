@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 16 06:45:57 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop default state of issue-generator.path and
+  issue-generator.service: issue generator is being phased out and
+  replaced by util-linux' agetty implementation.
+
+-------------------------------------------------------------------
 Thu Sep 11 11:40:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable gdm.service by default: allow to migrate from the legacy
