@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 14 14:32:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add unzip as a requires, otherwise the extensions can't get
+  extracted
+
+-------------------------------------------------------------------
 Mon May  6 08:24:37 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Patch to support python 3.6 on SLE/Leap 15.6 (bsc#1223902):

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-browser-connector
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ Supplements:    (gnome-shell and MozillaFirefox)
 Supplements:    (gnome-shell and chromium)
 Supplements:    (gnome-shell and google-chrome-stable)
 Supplements:    (gnome-shell and opera)
+Requires:       unzip
 
 %description
 Browser extension for Google Chrome/Chromium, Firefox, Vivaldi, Opera (and other
