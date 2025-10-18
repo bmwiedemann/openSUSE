@@ -581,4 +581,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1304276 from glaubitz)</comment>
     <requestid>1304279</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>6e762a1dea53da07137f79b78428158c</srcmd5>
+    <version>1.36.0</version>
+    <time>1760790896</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.36.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1311458 from glaubitz)</comment>
+    <requestid>1311539</requestid>
+  </revision>
 </revisionlist>

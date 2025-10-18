@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-core
-Version:        1.35.1
+Version:        1.36.0
 Release:        0
 Summary:        Microsoft Azure Core Library for Python
 License:        MIT
@@ -35,7 +35,6 @@ Requires:       python-aiohttp >= 3.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-opentelemetry-api >= 1.26
 Requires:       python-requests >= 2.21.0
-Requires:       python-six >= 1.11.0
 Requires:       (python-typing_extensions >= 4.6.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
