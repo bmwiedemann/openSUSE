@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 20 17:11:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 32.1:
+  * Compiler: Ship all option dependencies to plugins along with
+    regular ones
+  * Compiler: Unify plugin and built-in generators to use request/
+    response interface
+  * Disable symbol visibility enforcement by default in C++ runtime
+  * Fix handling of optional dependencies in java generator
+  * Restore Protobuf Java extension modifiers in gencode
+  * Restore ABI compatibility for extension methods
+  * Fix handling of optional dependencies in java generator
+
+-------------------------------------------------------------------
 Fri Sep 12 13:01:39 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix build on armv9:

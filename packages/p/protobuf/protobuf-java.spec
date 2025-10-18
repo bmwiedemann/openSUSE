@@ -20,7 +20,7 @@
 %define tarname protobuf
 %define patchjuname protobuf-java-util-removescope.patch
 Name:           protobuf-java
-Version:        32.0
+Version:        32.1
 Release:        0
 Summary:        Java Bindings for Google Protocol Buffers
 License:        BSD-3-Clause
