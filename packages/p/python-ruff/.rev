@@ -2705,4 +2705,39 @@
   * [isort] Clarify dependency between order-by-type and case-sensitive settings</comment>
     <requestid>1309778</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>ce74f3b7334dceed32ca515a3c4d2b36</srcmd5>
+    <version>0.14.1</version>
+    <time>1760790967</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.1
+ * Preview features
+  * [formatter] Remove parentheses around multiple exception types on Python 3.14+ 
+  * [flake8-bugbear] Omit annotation in preview fix for B006 
+  * [flake8-logging-format] Avoid dropping implicitly concatenated pieces in the G004 fix 
+  * [pydoclint] Implement docstring-extraneous-parameter (DOC102) 
+  * [pyupgrade] Extend UP019 to detect typing_extensions.Text (UP019) 
+  * [pyupgrade] Fix false negative for TypeVar with default argument in non-pep695-generic-class (UP046) 
+ * Bug fixes
+  * Fix false negatives in Truthiness::from_expr for lambdas, generators, and f-strings 
+  * Fix syntax error false positives for escapes and quotes in f-strings 
+  * Fix syntax error false positives on parenthesized context managers 
+  * [fastapi] Fix false positives for path parameters that FastAPI doesn't recognize (FAST003) 
+  * [flake8-pyi] Fix operator precedence by adding parentheses when needed (PYI061) 
+  * [ruff] Suppress diagnostic for f-string interpolations with debug text (RUF010) 
+ * Rule changes
+  * [airflow] Add warning to airflow.datasets.DatasetEvent usage (AIR301) 
+  * [flake8-bugbear] Mark B905 and B912 fixes as unsafe 
+  * Use DiagnosticTag for more rules - changes display in editors
+ * Documentation
+  * Update Python compatibility from 3.13 to 3.14 in README.md 
+  * Update lint.flake8-type-checking.quoted-annotations docs 
+  * Update setup instructions for Zed 0.208.0+ 
+  * [flake8-datetimez] Clarify docs for several rules 
+  * Fix typo in RUF015 description 
+ * Other changes
+  * Reduce binary size 
+  * Improved error recovery for unclosed strings (including f- and t-strings)</comment>
+    <requestid>1311814</requestid>
+  </revision>
 </revisionlist>
