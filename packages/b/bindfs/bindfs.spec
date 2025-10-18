@@ -17,7 +17,7 @@
 
 
 Name:           bindfs
-Version:        1.18.2
+Version:        1.18.3
 Release:        0
 Summary:        Filesystem for mapping directories with alternate permissions
 License:        GPL-2.0-or-later

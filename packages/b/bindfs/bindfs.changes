@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 17 12:16:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.18.3
+  * Fixed using --resolve-symlinks with broken symlinks
+
+-------------------------------------------------------------------
 Tue Sep  9 21:27:02 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.18.2
