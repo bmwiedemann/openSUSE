@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 16 03:25:37 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Update libsoup-CVE-2025-11021.patch: Add NULL check for
+  soup_date_time_to_string() (bsc#1250562, CVE-2025-11021,
+  glgo#GNOME/libsoup!483).
+
+-------------------------------------------------------------------
 Sat Oct 11 08:15:04 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add libsoup-CVE-2025-11021.patch: Ignore invalid date when
