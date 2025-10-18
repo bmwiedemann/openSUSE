@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 17 09:38:03 UTC 2025 - pgajdos@suse.com
+
+- use %license tag [bsc#1252137]
+
+-------------------------------------------------------------------
+Mon Oct 13 18:28:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Stop marking arphic-uming as essential for CJK locales
+  (and thus essential enough to be on the openSUSE DVD)
+
+-------------------------------------------------------------------
 Sun Jan  8 12:28:40 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - amend license SUSE-Arphic to SPDX's Arphic1999

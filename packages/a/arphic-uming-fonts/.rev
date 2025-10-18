@@ -59,4 +59,12 @@
     <comment></comment>
     <requestid>1057091</requestid>
   </revision>
+  <revision rev="9" vrev="101">
+    <srcmd5>9659ba179b23613e9a49dddf71ee24b0</srcmd5>
+    <version>0.2.20080216.1</version>
+    <time>1760790947</time>
+    <user>dimstar_suse</user>
+    <comment>- use %license tag [bsc#1252137] (forwarded request 1311960 from pgajdos)</comment>
+    <requestid>1311993</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package arphic-uming-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           arphic-uming-fonts
 Version:        0.2.20080216.1
 Release:        0
-Summary:        CJK Unicode Font Ming Style
+Summary:        Monospace CJK-Unicode fonts with a Ming (Serif) style
 License:        Arphic-1999
 # rpmlint has not been updated yet to reflect the new license names already present on
 # format specfile https://github.com/rpm-software-management/rpmlint/pull/982
@@ -35,9 +35,7 @@ Provides:       scalable-font-zh-MO
 Provides:       scalable-font-zh-SG
 Provides:       scalable-font-zh-TW
 Provides:       ttf-arphic-uming = %{version}
-Provides:       locale(zh_TW;zh_HK;zh_CN;zh_SG;zh_MO)
 Obsoletes:      ttf-arphic-uming <= 0.1.20060928
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -54,7 +52,7 @@ Alternatives (aalt) feature from the OTF spec.
 Partly support is implemented for: CNS 11643 GB18030 Japanese Korean
 
 %prep
-%setup -n ttf-arphic-uming-%{version}
+%autosetup -n ttf-arphic-uming-%{version}
 
 %build
 
@@ -65,8 +63,8 @@ install -c -m 644 *.ttc %{buildroot}%{_ttfontsdir}/
 %reconfigure_fonts_scriptlets -c
 
 %files
-%defattr(-, root,root)
-%doc CONTRIBUTERS README* fonts.dir fonts.scale license Font_Comparison_ShanHeiSun_UMing.pdf FONTLOG KNOWN_ISSUES TODO
+%license license/english/ARPHICPL.TXT
+%doc CONTRIBUTERS README* fonts.dir fonts.scale Font_Comparison_ShanHeiSun_UMing.pdf FONTLOG KNOWN_ISSUES TODO
 %{_ttfontsdir}
 
 %changelog
