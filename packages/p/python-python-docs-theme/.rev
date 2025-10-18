@@ -150,4 +150,12 @@
   * Generate digital attestations for PyPI (PEP 740)</comment>
     <requestid>1222989</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2c13cf29468cb3c405f570f009775a08</srcmd5>
+    <version>2025.9.2</version>
+    <time>1760790955</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1311626</requestid>
+  </revision>
 </revisionlist>

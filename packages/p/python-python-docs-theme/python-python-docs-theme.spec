@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-docs-theme
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-docs-theme
-Version:        2024.10
+Version:        2025.9.2
 Release:        0
 Summary:        The Sphinx theme for the CPython docs and related projects
 License:        Python-2.0
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Sphinx >= 7.3
 BuildArch:      noarch
 %python_subpackages
 
@@ -38,6 +39,8 @@ The Sphinx theme for the CPython docs and related projects
 
 %prep
 %setup -q -n python_docs_theme-%{version}
+# the python311 exclusion wasn't really needed
+sed -i 's/>=3.12/>=3.11/' pyproject.toml
 
 %build
 %pyproject_wheel

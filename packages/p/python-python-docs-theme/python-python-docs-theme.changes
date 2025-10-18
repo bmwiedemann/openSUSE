@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct  9 07:10:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 2025.9.2
+  * Hide header and search bar when printing
+  * Note minimum requirements for Sphinx
+  * Horizontally align the collapse button icon
+  * Make sidebar width more flexible
+  * Require Sphinx 7.3
+  * Add support for Python 3.14
+  * Drop support for Python 3.10 and 3.11
+  * Add a copy button to code samples
+  * Add missing i18n for copy button titles
+  * Make the copy button only appear when hovered over or clicked on
+  * Don't copy line numbers
+  * Improved translation
+- Re-enable python311 build
+
+-------------------------------------------------------------------
 Sat Nov  9 16:00:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.10:
