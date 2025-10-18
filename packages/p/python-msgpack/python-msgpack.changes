@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 16 11:41:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.1.2
+  * Update Cython to v3.1.4
+  * Update cibuildwheel to v3.2.0
+  * Drop Python 3.8
+  * Add Python 3.14
+  * Add windows-arm
+
+-------------------------------------------------------------------
 Mon Jul 14 12:27:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:

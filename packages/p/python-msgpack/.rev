@@ -198,4 +198,19 @@
   * upload to PyPI on create a release</comment>
     <requestid>1293129</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>528843c788e7b30b8e1622ccc57d0f2a</srcmd5>
+    <version>1.1.2</version>
+    <time>1760790965</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1311696 from glaubitz
+
+- Update to 1.1.2
+    * Update Cython to v3.1.4
+    * Update cibuildwheel to v3.2.0
+    * Drop Python 3.8
+    * Add Python 3.14
+    * Add windows-arm</comment>
+    <requestid>1311807</requestid>
+  </revision>
 </revisionlist>
