@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Jul 14 09:19:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to 5.9.0
+- Update to 5.8.1
   * Bump badge for 2025.
   * Removing dependabot config. Closes jaraco/skeleton#156
   * Add support for building lxml on pre-release Pythons.
