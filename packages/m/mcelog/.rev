@@ -869,4 +869,12 @@ A    add-f15h-support.patch
 A    add-f16h-support.patch</comment>
     <requestid>1306649</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>f563e710a1e66f4508f5114652fa2caf</srcmd5>
+    <version>207</version>
+    <time>1760790902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311619</requestid>
+  </revision>
 </revisionlist>

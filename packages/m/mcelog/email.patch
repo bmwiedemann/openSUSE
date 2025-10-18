@@ -14,9 +14,9 @@
  CFLAGS := -g -Os
  prefix := /usr
  etcprefix :=
-@@ -38,16 +39,24 @@
+@@ -39,16 +39,24 @@
         broadwell_de.o broadwell_epex.o skylake_xeon.o		 \
-        denverton.o i10nm.o sapphire.o granite.o			 \
+        denverton.o i10nm.o sapphire.o granite.o diamond.o	 \
         msr.o bus.o unknown.o lookup_intel_cputype.o
 +EMAIL_OBJ := email.o
  CLEAN := mcelog dmi tsc dbquery .depend .depend.X dbquery.o \

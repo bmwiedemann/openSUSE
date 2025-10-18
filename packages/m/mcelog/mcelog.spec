@@ -1,7 +1,7 @@
 #
 # spec file for package mcelog
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           mcelog
-Version:        206
+Version:        207
 Release:        0
 Summary:        Log Machine Check Events
 License:        GPL-2.0-only

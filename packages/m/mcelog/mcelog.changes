@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 15 06:46:11 UTC 2025 - Arvin Schnell <aschnell@suse.com>
+
+- Update to version 207:
+  * mcelog: Add model-specific decoding for Diamond Rapids
+- Refresh patches according to mainline:
+M    email.patch
+
+-------------------------------------------------------------------
 Tue Sep 23 06:40:56 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Remove last change to revert AMD patchset (bsc#1249588)
