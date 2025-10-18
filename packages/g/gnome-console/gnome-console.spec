@@ -23,6 +23,8 @@ Summary:        A minimal terminal for GNOME
 License:        GPL-3.0-only
 URL:            https://gitlab.gnome.org/GNOME/console
 Source:         %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM e7e8b62e7.patch -- settings: infinite is represented by -1
+Patch:          https://gitlab.gnome.org/GNOME/console/-/commit/e7e8b62e7.patch
 
 BuildRequires:  AppStream
 BuildRequires:  c_compiler
