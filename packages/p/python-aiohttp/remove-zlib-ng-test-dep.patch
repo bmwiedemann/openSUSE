@@ -1,30 +1,11 @@
-Index: aiohttp-3.12.14/requirements/test.in
-===================================================================
---- aiohttp-3.12.14.orig/requirements/test.in
-+++ aiohttp-3.12.14/requirements/test.in
-@@ -17,4 +17,3 @@ re-assert
- setuptools-git
- trustme; platform_machine != "i686"  # no 32-bit wheels
- wait-for-it
--zlib_ng
-Index: aiohttp-3.12.14/tests/conftest.py
-===================================================================
---- aiohttp-3.12.14.orig/tests/conftest.py
-+++ aiohttp-3.12.14/tests/conftest.py
-@@ -13,7 +13,6 @@ from unittest import mock
- from uuid import uuid4
- 
- import pytest
--import zlib_ng.zlib_ng
- from blockbuster import blockbuster_ctx
- 
- from aiohttp import payload
-@@ -330,7 +329,7 @@ def unused_port_socket() -> Generator[so
+--- a/tests/conftest.py.orig	2025-10-16 16:10:22.546232519 +0200
++++ a/tests/conftest.py	2025-10-16 16:10:30.949427637 +0200
+@@ -336,7 +336,7 @@
          s.close()
  
  
--@pytest.fixture(params=[zlib, zlib_ng.zlib_ng])
-+@pytest.fixture(params=[zlib])
+-@pytest.fixture(params=["zlib", "zlib_ng.zlib_ng", "isal.isal_zlib"])
++@pytest.fixture(params=["zlib"])
  def parametrize_zlib_backend(
      request: pytest.FixtureRequest,
  ) -> Generator[None, None, None]:

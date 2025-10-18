@@ -779,4 +779,21 @@
     * Updated a regex in `test_aiohttp_request_coroutine` for Python 3.14.</comment>
     <requestid>1298363</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>cd094957bc74d206b601d713784ca85b</srcmd5>
+    <version>3.13.0</version>
+    <time>1760790966</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-vendoring.patch
+
+- Update to 3.13.0
+  Details: https://github.com/aio-libs/aiohttp/releases/tag/v3.13.0
+  * python 3.14 support
+  * zstd support
+- drop remove-isal-test-dep.patch
+- &quot;make cythonize&quot; is required as poetry is not supporting cython
+- add vendor-llhttp.tar.gz of new git submodule. 
+  added downloaded nodejs modules</comment>
+    <requestid>1311812</requestid>
+  </revision>
 </revisionlist>

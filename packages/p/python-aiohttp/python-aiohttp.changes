@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 16 21:40:07 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add fix-vendoring.patch
+
+-------------------------------------------------------------------
+Thu Oct 16 14:06:37 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- Update to 3.13.0
+  Details: https://github.com/aio-libs/aiohttp/releases/tag/v3.13.0
+  * python 3.14 support
+  * zstd support
+- drop remove-isal-test-dep.patch
+- "make cythonize" is required as poetry is not supporting cython
+- add vendor-llhttp.tar.gz of new git submodule. 
+  added downloaded nodejs modules
+
+-------------------------------------------------------------------
 Thu Aug  7 11:36:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.12.15

@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,22 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.12.15
+Version:        3.13.0
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
+# llhttp vendor tar ball manually created based on git submodule via:
+# - yarn
+# - make generate
+# - tar cfvz vendor-llhttp.tar.gz vendor/
+Source2:        vendor-llhttp.tar.gz
 Patch0:         test_no_warnings_fix.patch
-# PATCH-FIX-OPENSUSE remove-isal-test-dep.patch -- daniel.garcia@suse.com
-# Remove python-isal dependency for testing.
-Patch1:         remove-isal-test-dep.patch
 # PATCH-FIX-OPENSUSE remove-zlib-ng-test-dep.patch
 Patch2:         remove-zlib-ng-test-dep.patch
+# PATCH-FIX-OPENSUSE fix-vendoring.patch
+Patch3:         fix-vendoring.patch
 Requires:       python-aiohappyeyeballs >= 2.5.0
 Requires:       python-aiosignal >= 1.4
 Requires:       python-attrs >= 17.3.0
@@ -108,6 +112,11 @@ HTML documentation on the API and examples for %{name}.
 
 # don't check coverage
 sed -i '/--cov/d' setup.cfg
+
+# vendored llhttp
+tar xfv %{S:2}
+# prepare cython files manually for now
+make cythonize
 
 %build
 export CFLAGS="%{optflags}"

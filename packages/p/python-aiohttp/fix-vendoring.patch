@@ -1,0 +1,75 @@
+--- a/Makefile.orig	2025-10-16 13:56:38.297077787 +0200
++++ b/Makefile	2025-10-16 13:59:43.532929894 +0200
+@@ -47,10 +47,8 @@
+ .SECONDARY: $(call to-hash,$(ALLS))
+ 
+ .update-pip:
+-	@python -m pip install --upgrade pip
+ 
+ .install-cython: .update-pip $(call to-hash,requirements/cython.txt)
+-	@python -m pip install -r requirements/cython.in -c requirements/cython.txt
+ 	@touch .install-cython
+ 
+ aiohttp/_find_header.c: $(call to-hash,aiohttp/hdrs.py ./tools/gen.py)
+@@ -85,7 +83,6 @@
+ cythonize-nodeps: $(PYXS:.pyx=.c) aiohttp/_websocket/reader_c.c
+ 
+ .install-deps: .install-cython $(PYXS:.pyx=.c) aiohttp/_websocket/reader_c.c $(call to-hash,$(CYS) $(REQS))
+-	@python -m pip install -r requirements/dev.in -c requirements/dev.txt
+ 	@touch .install-deps
+ 
+ .PHONY: lint
+@@ -100,7 +97,6 @@
+ 	mypy
+ 
+ .develop: .install-deps generate-llhttp $(call to-hash,$(PYS) $(CYS) $(CS))
+-	python -m pip install -e . -c requirements/runtime-deps.txt
+ 	@touch .develop
+ 
+ .PHONY: test
+@@ -110,12 +106,12 @@
+ .PHONY: vtest
+ vtest: .develop
+ 	@pytest -s -v
+-	@python -X dev -m pytest -s -v -m dev_mode
++	python3 -X dev -m pytest -s -v -m dev_mode
+ 
+ .PHONY: vvtest
+ vvtest: .develop
+ 	@pytest -vv
+-	@python -X dev -m pytest -s -v -m dev_mode
++	python3 -X dev -m pytest -s -v -m dev_mode
+ 
+ 
+ define run_tests_in_docker
+@@ -151,7 +147,7 @@
+ 	@rm -rf build
+ 	@rm -rf cover
+ 	@make -C docs clean
+-	@python setup.py clean
++	python3 setup.py clean
+ 	@rm -f aiohttp/*.so
+ 	@rm -f aiohttp/*.pyd
+ 	@rm -f aiohttp/*.html
+@@ -182,7 +178,6 @@
+ 
+ .PHONY: install
+ install: .update-pip
+-	@python -m pip install -r requirements/dev.in -c requirements/dev.txt
+ 
+ .PHONY: install-dev
+ install-dev: .develop
+@@ -190,4 +185,4 @@
+ .PHONY: sync-direct-runtime-deps
+ sync-direct-runtime-deps:
+ 	@echo Updating 'requirements/runtime-deps.in' from 'setup.cfg'... >&2
+-	@python requirements/sync-direct-runtime-deps.py
++	python3 requirements/sync-direct-runtime-deps.py
+--- a/tools/gen.py.orig	2025-10-16 14:00:10.257485651 +0200
++++ a/tools/gen.py	2025-10-16 14:00:18.604659234 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ import io
+ import pathlib
