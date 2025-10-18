@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 17 06:39:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.7:
+  + ges: timeline: Respect SELECT_ELEMENT_TRACK signal discard
+    decision
+  + gst: Fix a few small leaks
+
+-------------------------------------------------------------------
 Mon Sep 15 17:13:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.6:
