@@ -17,6 +17,11 @@
 
 
 %define mutter_api 17
+%ifarch armv6l armv6hl ppc ppc64 i586
+%define build_search_app 0
+%else
+%define build_search_app 1
+%endif
 
 Name:           gnome-kiosk
 Version:        49.0
@@ -60,6 +65,7 @@ compositor is used.
 
 %build
 %meson \
+    -Dsearch-app=%[%build_search_app ? "true" : "false" ] \
 	%{nil}
 %meson_build
 
@@ -69,7 +75,9 @@ compositor is used.
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Kiosk.desktop
+%if %build_search_app
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Kiosk.SearchApp.desktop
+%endif
 
 %files
 %license COPYING
@@ -80,9 +88,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Kiosk.Searc
 %{_userunitdir}/org.gnome.Kiosk.Script.service
 %{_userunitdir}/org.gnome.Kiosk.target
 %{_userunitdir}/org.gnome.Kiosk@wayland.service
-%dir %{_userunitdir}/gnome-session@org.gnome.Kiosk.SearchApp.target.d
-%{_userunitdir}/gnome-session@org.gnome.Kiosk.SearchApp.target.d/session.conf
-%{_userunitdir}/org.gnome.Kiosk.SearchApp.service
 %{_datadir}/applications/org.gnome.Kiosk.Script.desktop
 %{_datadir}/applications/org.gnome.Kiosk.desktop
 %dir %{_datadir}/gnome-session
@@ -96,9 +101,14 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Kiosk.Searc
 %{_datadir}/dconf/profile/gnomekiosk
 %{_datadir}/gnome-kiosk/gnomekiosk.dconf.compiled
 
+%if %build_search_app
 %files sample-app
+%dir %{_userunitdir}/gnome-session@org.gnome.Kiosk.SearchApp.target.d
+%{_userunitdir}/gnome-session@org.gnome.Kiosk.SearchApp.target.d/session.conf
+%{_userunitdir}/org.gnome.Kiosk.SearchApp.service
 %{_datadir}/applications/org.gnome.Kiosk.SearchApp.desktop
 %{_datadir}/gnome-session/sessions/org.gnome.Kiosk.SearchApp.session
 %{_datadir}/wayland-sessions/org.gnome.Kiosk.SearchApp.Session.desktop
+%endif
 
 %changelog
