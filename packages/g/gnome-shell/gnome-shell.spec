@@ -16,12 +16,12 @@
 #
 
 
-%global __requires_exclude typelib\\(Meta|MetaTest|Soup|St|Cogl|Clutter|TelepathyGlib\\)
+%global __requires_exclude typelib\\(Meta|MetaTest|St|Cogl|Clutter|TelepathyGlib\\)
 %define mutter_api 17
 %define mutter_req 49.0
 
 Name:           gnome-shell
-Version:        49.0+17
+Version:        49.1
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -129,7 +129,6 @@ Requires:       gsettings-desktop-schemas
 # ScreenSaver needs this.
 Requires:       gjs >= 1.71.1
 Requires:       mutter >= %{mutter_req}
-Requires:       typelib(Soup) = 3.0
 Recommends:     %{name}-calendar
 ## Finally, dependencies for session services that are needed for system icons and the user menu
 # bluetooth system icon

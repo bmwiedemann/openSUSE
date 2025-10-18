@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct 15 05:37:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Fix freeze when dragging quick settings sliders on touch
+  + Fix key focus on choice list on login screen
+  + Fix animation glitch when cancelling overview search
+  + Also send activation token for notifications without app
+  + Unify warning styling in dialogs
+  + Update keyboard indicator on modifier-only layout switches
+  + Improve accessibility of screenshot UI
+  + Improve Hindi bolnagri input with on-screen keyboard
+  + Do not expire notifications that are about to show
+  + Improve accessibility icons on login screen
+  + Make media messages follow notification policy
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  9 10:40:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer explicitly exclude Soup from the typelib scanner, and
+  consequently no longer add typelib(Soup) = 3.0 requires. This was
+  needed before GNOME 45, as gnome-shell had fallback code and we
+  needed to help take the decision.
+
+-------------------------------------------------------------------
 Mon Oct  6 11:51:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gnome-shell-no-gnome-tour.patch: Do not ask to launch
