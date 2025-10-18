@@ -1,0 +1,19 @@
+diff --git a/IGC/Compiler/Optimizer/InstructionHoistingOptimization.cpp b/IGC/Compiler/Optimizer/InstructionHoistingOptimization.cpp
+index 838ea8bd4..86477bdb9 100644
+--- a/IGC/Compiler/Optimizer/InstructionHoistingOptimization.cpp
++++ b/IGC/Compiler/Optimizer/InstructionHoistingOptimization.cpp
+@@ -149,8 +149,12 @@ private:
+       auto it = std::find(hoistedInstr.begin(), hoistedInstr.end(), newInstr);
+       return it != hoistedInstr.end();
+     };
+-
+-    if (!isDuplicate(m_HoistableInstructions, hoistInstr)) {
++    
++    if (!m_HoistableInstructions.empty()) {
++      if (!isDuplicate(m_HoistableInstructions, hoistInstr)) {
++        m_HoistableInstructions.push_back(hoistInstr);
++      }
++    } else {
+       m_HoistableInstructions.push_back(hoistInstr);
+     }
+   }

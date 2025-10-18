@@ -1,7 +1,7 @@
 #
 # spec file for package intel-graphics-compiler
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,23 @@
 #
 
 
-%global llvm_commit llvmorg-15.0.7
-%global opencl_clang_commit 58242977b4092cf5eb94a10dd144691c12c87001
-%global spirv_llvm_translator_commit 2d4f2e7a7968392de017fcd3e4b503a75f0c12d2
-%global vc_intrinsics_commit v0.22.1
-%global so_version 2.11.0+0
+%global llvm_version 15.0.7
+%global llvm_major %gsub %{llvm_version} %{quote:%..+} %{quote: }
+%global so_version 2.18.0+0
+%global so_major %gsub %{so_version} %{quote:%..+} %{quote: }
+
 Name:           intel-graphics-compiler
-Version:        2.11.7
-Release:        1%{?dist}
+Version:        2.18.5+git0.gbd67908e0
+Release:        0%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://github.com/intel/intel-graphics-compile
-Source0:        https://github.com/intel/intel-graphics-compiler/archive/v%{version}.tar.gz
-Source1:        https://github.com/intel/opencl-clang/archive/%{opencl_clang_commit}/intel-opencl-clang.tar.gz
-Source2:        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/%{spirv_llvm_translator_commit}/spirv-llvm-translator.tar.gz
-Source3:        https://github.com/llvm/llvm-project/archive/%{llvm_commit}/llvm-project.tar.gz
-Source4:        https://github.com/intel/vc-intrinsics/archive/%{vc_intrinsics_commit}/vc-intrinsics.zip
+URL:            http://github.com/intel/intel-graphics-compiler
+Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{llvm_version}/llvm-project-%{llvm_version}.src.tar.xz
+Source1:        https://releases.llvm.org/release-keys.asc
 Patch0:         0001-Include-cstdint-where-needed.patch
+Patch1:         0002-Replace-ciso646-with-version.patch
+Patch2:         0003-Empty-check-before-vector-use.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -47,7 +46,7 @@ BuildRequires:  python3
 BuildRequires:  python3-Mako
 BuildRequires:  python3-PyYAML
 BuildRequires:  spirv-headers
-BuildRequires:  spirv-tools-devel
+BuildRequires:  spirv-tools-devel > 2025.1
 BuildRequires:  unzip
 ExclusiveArch:  x86_64
 
@@ -103,32 +102,31 @@ Requires:       libigdfcl2 = %{version}-%{release}
 %description -n libigdfcl-devel
 This package contains development files for libigdfcl.
 
-%package -n libopencl-clang15
+%package -n libopencl-clang%{llvm_major}
 Summary:        A wrapper library around clang
 Group:          System/Libraries
 
-%description -n libopencl-clang15
+%description -n libopencl-clang%{llvm_major}
 A wrapper library around clang.
 
 %prep
 mkdir llvm-project
-tar -xzf %{_sourcedir}/llvm-project.tar.gz -C llvm-project --strip-components=1
+tar -xJf %{_sourcedir}/llvm-project-%{llvm_version}.src.tar.xz -C llvm-project --strip-components=1
 pushd llvm-project
 %patch -P 0 -p1
+%patch -P 1 -p1
 popd
 
-unzip %{_sourcedir}/vc-intrinsics.zip
-mv vc-intrinsics* vc-intrinsics
+mv %{_sourcedir}/vc-intrinsics*/ vc-intrinsics
 
 pushd llvm-project/llvm/projects
-mkdir opencl-clang llvm-spirv
-tar -xzf %{_sourcedir}/intel-opencl-clang.tar.gz -C opencl-clang --strip-components=1
-tar -xzf %{_sourcedir}/spirv-llvm-translator.tar.gz -C llvm-spirv --strip-components=1
+mv %{_sourcedir}/opencl-clang*/ opencl-clang
+mv %{_sourcedir}/SPIRV-LLVM-Translator*/ llvm-spirv
 popd
 
-mkdir igc
-tar -xzf %{_sourcedir}/v%{version}.tar.gz -C igc --strip-components=1
+mv %{_sourcedir}/intel-graphics-compiler*/ igc
 pushd igc
+%patch -P 2 -p1
 popd
 
 %build
@@ -142,7 +140,8 @@ pushd build
 
 # FIXME: you should use %%cmake macros
 export CXXFLAGS="-Wno-nonnull -fPIE  -Wno-error=free-nonheap-object"
-export LDFLAGS="-pie"
+# FIXME: Disable linker pie as this seems to break when linking static libraries
+#export LDFLAGS="-pie"
 cmake ../igc \
   -DCMAKE_BUILD_TYPE=Release \
   -DIGC_OPTION__ARCHITECTURE_TARGET='Linux64' \
@@ -150,6 +149,8 @@ cmake ../igc \
   -DINSTALL_SPIRVDLL=0 \
   -DIGC_OPTION__SPIRV_TOOLS_MODE=Prebuilds \
   -DIGC_OPTION__USE_PREINSTALLED_SPRIV_HEADERS=ON \
+  -DIGC_OPTION__LLVM_PREFERRED_VERSION=%{llvm_version} \
+  -DCMAKE_VERBOSE_MAKEFILE=ON \
   -DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=%{_includedir}/spirv
 
 %make_build
@@ -160,15 +161,12 @@ cd build
 %make_install
 
 rm -fv %{buildroot}%{_bindir}/GenX_IR \
-	%{buildroot}%{_bindir}/clang-15 \
-	%{buildroot}%{_bindir}/lld \
-	%{buildroot}%{_includedir}/opencl-c.h \
-	%{buildroot}%{_includedir}/opencl-c-base.h \
-	%{buildroot}%{_prefix}/lib/debug
-chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.15
-ln -s %{_libdir}/libiga64.so.%{so_version} %{buildroot}%{_libdir}/libiga64.so
-ln -s %{_libdir}/libigc.so.%{so_version} %{buildroot}%{_libdir}/libigc.so
-ln -s %{_libdir}/libigdfcl.so.%{so_version} %{buildroot}%{_libdir}/libigdfcl.so
+    %{buildroot}%{_bindir}/clang-%{llvm_major} \
+    %{buildroot}%{_bindir}/lld \
+    %{buildroot}%{_includedir}/opencl-c.h \
+    %{buildroot}%{_includedir}/opencl-c-base.h \
+    %{buildroot}%{_prefix}/lib/debug
+chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.%{llvm_major}
 
 %post -n libigc2 -p /sbin/ldconfig
 %postun -n libigc2 -p /sbin/ldconfig
@@ -176,8 +174,8 @@ ln -s %{_libdir}/libigdfcl.so.%{so_version} %{buildroot}%{_libdir}/libigdfcl.so
 %postun -n libiga64-2 -p /sbin/ldconfig
 %post -n libigdfcl2 -p /sbin/ldconfig
 %postun -n libigdfcl2 -p /sbin/ldconfig
-%post -n libopencl-clang15 -p /sbin/ldconfig
-%postun -n libopencl-clang15 -p /sbin/ldconfig
+%post -n libopencl-clang%{llvm_major} -p /sbin/ldconfig
+%postun -n libopencl-clang%{llvm_major} -p /sbin/ldconfig
 
 %files -n iga
 %{_bindir}/iga64
@@ -206,7 +204,7 @@ ln -s %{_libdir}/libigdfcl.so.%{so_version} %{buildroot}%{_libdir}/libigdfcl.so
 %{_includedir}/visa
 %{_libdir}/pkgconfig/igc-opencl.pc
 
-%files -n libopencl-clang15
-%{_libdir}/libopencl-clang.so.15
+%files -n libopencl-clang%{llvm_major}
+%{_libdir}/libopencl-clang.so.%{llvm_major}
 
 %changelog

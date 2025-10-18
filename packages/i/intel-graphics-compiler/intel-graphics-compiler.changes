@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct 05 11:15:21 UTC 2025 - Michael Gumsley <gumsley_6@hotmail.com>
+
+- Update to 2.18.5
+  * No release changelog was made available, see upstream SCM
+- Implement OBS source services
+  * LLVM source tar downloaded
+  * All other dependencies acquired from upstream SCM
+  * Specfile updates to this effect
+- Update vc_intrinsics to 0.23.4
+- Update spirv_llvm_translator to 15.0.16
+- Update opencl_clang to 15.0.4
+- Set spirv-tools-devel > 2025.1 in order to compile
+- 0002-Replace-ciso646-with-version.patch
+  * Resolves compilation failure with GCC20
+- 0003-Empty-check-before-vector-use.patch
+  * Resolves null pointer exception during compilation
+- Disable -pie flag at linking stage
+  * Workaround for compilation failure of static library
+
+-------------------------------------------------------------------
 Tue Jun 17 04:48:41 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 2.11.7
