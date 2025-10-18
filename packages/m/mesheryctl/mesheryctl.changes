@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Oct 18 06:10:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.140:
+  * General
+    - Fix /auth/redirect endpoint to properly handle
+      post-authentication redirections @copilot-swe-agent (#16243)
+  * Maintenance
+    - Enchance Integrations Updater to publish catalog models and
+      OCI images @Darshan174 (#16212)
+- update to 0.8.139:
+  * General
+    - feat(design): Add cluster-istio design @JunaidAli-dev
+      (#16193)
+    - [3-tier architecture] implementing separation of concerns
+      with distinct layers for presentation, application logic, and
+      data persistence. @Donkross360 (#16196)
+    - Azure Microservices Architecture with AKS design
+      @sharmarahul8222 (#16217)
+    - Add MS Catalogs gRPC Helm Chart Design for Issue #16084
+      @shri33 (#16128)
+    - Added design for kubernetes cluster @Anik-Bardhan (#16200)
+    - Add my Hacktoberfest LoxiLB Clustered Load Balancer with
+      CGNAT.yml @Raiom007 (#16201)
+    - [Model catalog] Import daskhub model and build the model OCI
+      image @azadDsync (#16202)
+    - [Model catalog] Import cosmo-controller-manager model and
+      build the m… @azadDsync (#16205)
+    - [Design] Add Kyverno Helm design (v3.5.2) @KatalKavya96
+      (#16204)
+    - LoxiLB 5G Load Balancer & LBO architecture design @dom1of1
+      (#16218)
+    - [Traefik Enterprise architecture] This design illustrates the
+      complete Traefik Enterprise architecture @Donkross360
+      (#16206)
+    - added ms-microsoftgraph-rest-0.0.11 @Ank7Tz (#16194)
+    - Fix: Change Kubernetes event action from 'registering' to
+      'register' @shri33 (#16190)
+    - design: add Devtron Operator design @KatalKavya96 (#16191)
+    - Added ms-filestorage-rest design @Anik-Bardhan (#16146)
+    - Added ms-emails-rest design @Anik-Bardhan (#16147)
+    - [Design] Add ClickHouse (Bitnami) Helm chart design (v9.4.4)
+      @KatalKavya96 (#16181)
+    - [design] Add Helm-based keycloak (chart v25.2.0)
+      @KatalKavya96 (#16134)
+    - [dependencies] upgrade schemas version to v.0.8.84 (with
+      meshsync as a library default deployment mode) @n2h9 (#16185)
+  * Meshery CLI
+    - refactor(mesheryctl): update component list and search error
+      management @lekaf974 (#16215)
+
+-------------------------------------------------------------------
 Mon Oct 13 10:51:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.138:
