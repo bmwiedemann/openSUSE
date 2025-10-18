@@ -3,9 +3,9 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git</param>
     <param name="filename">gst-plugins-rs</param>
-    <param name="versionformat">1.26.6+git@TAG_OFFSET@.%h</param>
-    <param name="revision">e287e869f3ff94c813b841ad932786e975c365bc</param>
-<!--	<param name="revision">refs/tags/gstreamer-1.26.6</param> --> 
+    <param name="versionformat">1.26.7+git@TAG_OFFSET@.%h</param>
+<!--    <param name="revision">e287e869f3ff94c813b841ad932786e975c365bc</param> -->
+    <param name="revision">refs/tags/gstreamer-1.26.7</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
   </service>

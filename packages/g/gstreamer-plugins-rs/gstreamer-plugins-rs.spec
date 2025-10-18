@@ -23,7 +23,7 @@
 %bcond_with aws
 
 Name:           gstreamer-plugins-rs
-Version:        1.26.6+git20.e287e869
+Version:        1.26.7+git0.6ab75814
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -33,6 +33,10 @@ URL:            https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 Source:         %{_name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
 Source4:        gstreamer-plugins-rs.appdata.xml
+#PATCH-FIX-UPSTREAM alarrosa@suse.com
+Patch0:         fix-reproducibility.patch
+#PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/merge_requests/2162
+Patch1:         0001-cargo_wrapper-deduplicate-Libs_private.patch
 
 BuildRequires:  cargo-c >= 0.10.12
 BuildRequires:  cargo-packaging >= 1.2.0+3
@@ -59,6 +63,8 @@ Requires:       gstreamer
 Requires:       gstreamer-plugins-base
 Enhances:       gstreamer
 ExclusiveArch:  %{rust_tier1_arches}
+%global _smp_ncpus_max 1
+%global _smp_nthreads_max 1
 
 %description
 GStreamer is a streaming media framework based on graphs of filters
@@ -73,6 +79,12 @@ This package provides various plugins written in Rust.
 %prep
 %autosetup -n %{_name}-%{version} -a2 -p1
 
+# Legaldb complains that there's a reference to a proprietary plugin (that is not built in any case) in the json file, so let's remove it
+python3 -c "import json; \
+  j = json.load(open('docs/plugins/gst_plugins_cache.json', 'r')) ; \
+  j.pop('elevenlabs') ;  \
+  json.dump(j, open('docs/plugins/gst_plugins_cache.json', 'wt'), indent=4, ensure_ascii=False)"
+
 %build
 %meson \
 	--default-library=shared \
@@ -86,6 +98,12 @@ This package provides various plugins written in Rust.
 	-Daws=disabled \
 %endif
 	%{nil}
+
+cat << EOF >> .cargo/config.toml
+
+[build]
+jobs = 1
+EOF
 %meson_build
 
 %install

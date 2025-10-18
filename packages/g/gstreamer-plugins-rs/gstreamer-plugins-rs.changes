@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Oct 17 07:05:15 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Rebase and re-enable patch:
+  * fix-reproducibility.patch
+
+-------------------------------------------------------------------
+Thu Oct 16 18:31:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.7+git0.6ab75814:
+  * tracers: Fix inverted append logic when writing log files
+  * threadshare:
+    - examples: standalone: also handle buffer lists
+    - Pad push_list: downgrade Pad flushing log level
+    - sinks: fix / handle query()
+    - backpressure: abort pending items on flush start
+    - udpsink: fix panic recalculating latency from certain
+      executors
+    - audiotestsrc:
+      . support more Audio formats
+      . use AudioInfo
+      . fix latency
+      . act as a pseudo live source by default
+    - runtime task: execute action in downward transition
+    - example cleanups
+    - udpsink: distinguish sync status for latency & report added
+      latency
+    - sink elements: implement `send_event`
+    - dataqueue elements: report min and max latency
+  * rtp:
+    - Add linear audio (L8, L16, L24) RTP payloaders / depayloaders
+  * rtp: basedepay: reuse last PTS, when possible
+  * skia: Update to skia-safe 0.89
+  * mp4: Update to mp4-atom 0.9
+  * Update dependencies
+  * webrtc: livekit: Drop connection lock after take()
+  * onvifmetadatapay: copy metadata from source buffer
+  * fallbacksrc: Fix custom source reuse case
+  * add `rust-tls-native-roots` feature to the `reqwest` dep
+  * rtpamrpay2:
+    - Actually forward the frame quality indicator
+    - Set frame quality indicator flag
+- Disable patch that doesn't apply:
+  * fix-reproducibility.patch
+
+-------------------------------------------------------------------
+Wed Oct  8 12:08:23 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove a section in a json file that references the gstelevenlabs
+  plugin (a proprietary plugin that isn't built) so it's clear
+  to the legal review bot that there isn't any proprietary code.
+
+- Add patch developed by amyspark in
+  https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/merge_requests/2162
+  to fix the .pc reproducibility issues (boo#1237097)
+  * 0001-cargo_wrapper-deduplicate-Libs_private.patch
+
+- Add patch to fix reproducibility of package build (boo#1237097)
+  * fix-reproducibility.patch
+
+-------------------------------------------------------------------
 Sun Sep 21 12:11:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.6+git20.e287e869:
