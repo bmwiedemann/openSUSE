@@ -5,6 +5,9 @@ Mon Oct 13 21:14:38 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
   package.
   Refs boo#1236217 go1.24 release tracking
   * go#75860 crypto/x509: TLS validation fails for FQDNs with trailing dot
+- Packaging improvements:
+  * Add net-url-allow-IP-literals-with-IPv4-mapped-IPv6-addresses.patch
+    needed today and will be available in the next upstream release
 
 -------------------------------------------------------------------
 Tue Oct  7 18:17:23 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>

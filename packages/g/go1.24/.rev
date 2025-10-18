@@ -292,4 +292,18 @@
   * go#75860 crypto/x509: TLS validation fails for FQDNs with trailing dot (forwarded request 1311263 from jfkw)</comment>
     <requestid>1311265</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>551c553f40c243f657eca50e3a3fafd6</srcmd5>
+    <version>1.24.9</version>
+    <time>1760790897</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.24.9 (released 2025-10-13) includes fixes to the crypto/x509
+  package.
+  Refs boo#1236217 go1.24 release tracking
+  * go#75860 crypto/x509: TLS validation fails for FQDNs with trailing dot
+- Packaging improvements:
+  * Add net-url-allow-IP-literals-with-IPv4-mapped-IPv6-addresses.patch
+    needed today and will be available in the next upstream release (forwarded request 1311560 from jfkw)</comment>
+    <requestid>1311562</requestid>
+  </revision>
 </revisionlist>
