@@ -1,7 +1,7 @@
 #
 # spec file for package python-nest-asyncio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ Summary:        Patch asyncio to allow nested event loops
 License:        BSD-2-Clause
 URL:            https://github.com/erdewit/nest_asyncio
 Source:         https://files.pythonhosted.org/packages/source/n/nest_asyncio/nest_asyncio-%{version}.tar.gz
+Patch1:         py314-skip-timeout-test.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -47,7 +48,7 @@ This module patches asyncio to allow nested use of ``asyncio.run`` and
 ``loop.run_until_complete``.
 
 %prep
-%setup -q -n nest_asyncio-%{version}
+%autosetup -p1 -n nest_asyncio-%{version}
 
 %build
 %pyproject_wheel

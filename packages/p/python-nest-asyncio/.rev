@@ -91,4 +91,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1281964</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>0eb4c71f59c757f164e341e912e119d3</srcmd5>
+    <version>1.6.0</version>
+    <time>1760790902</time>
+    <user>dimstar_suse</user>
+    <comment>- add py314-skip-timeout-test.patch</comment>
+    <requestid>1311618</requestid>
+  </revision>
 </revisionlist>

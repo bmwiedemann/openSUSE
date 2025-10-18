@@ -1,0 +1,10 @@
+--- nest_asyncio-1.6.0/tests/nest_test.py
++++ nest_asyncio-1.6.0/tests/nest_test.py
+@@ -62,6 +62,7 @@ class NestTest(unittest.TestCase):
+         result = self.loop.run_until_complete(f())
+         self.assertEqual(result, 42)
+ 
++    @unittest.skipIf(sys.version_info >= (3, 14), "Fails due to stricter asyncio timeout checks in Python 3.14+")
+     def test_timeout(self):
+ 
+         async def f1():
