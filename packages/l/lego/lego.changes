@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 18 06:02:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.27.0:
+  https://github.com/go-acme/lego/blob/HEAD/CHANGELOG.md#v4270
+  * f432d21 Add DNS provider for Hostinger (#2651)
+  * 621d9d0 Add DNS provider for Beget.com (#1879)
+  * a3f3c62 Add DNS provider for Octenium (#2661)
+  * 0fcac85 docs: improve changelog headings
+  * acfb5ea docs: sponsor incentives
+  * ba156d5 feat: support --private-key with a PKCS#8 keypair (#2653)
+  * 8249f73 fix: deduplicate order identifiers (#2656)
+  * f0c314c hetzner: update to new API (#2663)
+  * 95eb44c hostinger: fix Present (#2654)
+  * 26920e7 otc: add example (#2655)
+  * bf0e89c otc: adds option to use private zone (#2649)
+
+-------------------------------------------------------------------
 Thu Sep 18 08:56:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.26.0:
