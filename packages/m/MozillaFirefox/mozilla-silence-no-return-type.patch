@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  e9b0c19c96e13340b88c99e4ca429b1d9b795e90
+# Parent  a5fe45b73fb205e3c5a0734db3885c37afcc706b
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -427,7 +427,7 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party
 diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-@@ -189,16 +189,17 @@ class VideoEncoderSoftwareFallbackWrappe
+@@ -188,16 +188,17 @@ class VideoEncoderSoftwareFallbackWrappe
          [[fallthrough]];
        case EncoderState::kMainEncoderUsed:
          return encoder_.get();
@@ -445,7 +445,7 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallb
  
    // Settings used in the last InitEncode call and used if a dynamic fallback to
    // software is required.
-@@ -387,16 +388,17 @@ int32_t VideoEncoderSoftwareFallbackWrap
+@@ -386,16 +387,17 @@ int32_t VideoEncoderSoftwareFallbackWrap
      case EncoderState::kMainEncoderUsed: {
        return EncodeWithMainEncoder(frame, frame_types);
      }
@@ -586,10 +586,10 @@ diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwe
 diff --git a/third_party/libwebrtc/media/base/codec_comparators.cc b/third_party/libwebrtc/media/base/codec_comparators.cc
 --- a/third_party/libwebrtc/media/base/codec_comparators.cc
 +++ b/third_party/libwebrtc/media/base/codec_comparators.cc
-@@ -329,16 +329,17 @@ bool MatchesWithCodecRules(const Codec& 
-                 left_codec.bitrate == right_codec.bitrate) &&
-                ((right_codec.channels < 2 && left_codec.channels < 2) ||
-                 left_codec.channels == right_codec.channels);
+@@ -325,16 +325,17 @@ bool MatchesWithCodecRules(const Codec& 
+                  left_codec.bitrate == right_codec.bitrate) &&
+                 ((right_codec.channels < 2 && left_codec.channels < 2) ||
+                  left_codec.channels == right_codec.channels));
  
        case Codec::Type::kVideo:
          return IsSameCodecSpecific(left_codec.name, left_codec.params,
@@ -667,7 +667,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.
 diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 --- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -94,16 +94,17 @@ GainControl::Mode Agc1ConfigModeToInterf
+@@ -119,16 +119,17 @@ GainControl::Mode Agc1ConfigModeToInterf
      case Agc1Config::kAdaptiveAnalog:
        return GainControl::kAdaptiveAnalog;
      case Agc1Config::kAdaptiveDigital:
@@ -685,7 +685,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  
  // Maximum lengths that frame of samples being passed from the render side to
  // the capture side can have (does not apply to AEC3).
-@@ -161,17 +162,17 @@ int AudioFormatValidityToErrorCode(Audio
+@@ -186,17 +187,17 @@ int AudioFormatValidityToErrorCode(Audio
      case AudioFormatValidity::kValidAndSupported:
        return AudioProcessing::kNoError;
      case AudioFormatValidity::kValidButUnsupportedSampleRate:  // fall-through
@@ -704,7 +704,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
      const StreamConfig& input_config,
      const StreamConfig& output_config) {
    AudioFormatValidity input_validity = ValidateAudioFormat(input_config);
-@@ -2062,16 +2063,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -2097,16 +2098,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:
@@ -973,7 +973,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc b/third_party/l
 diff --git a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
 --- a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
 +++ b/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
-@@ -249,16 +249,17 @@ bool DcSctpSocket::IsConsistent() const 
+@@ -250,16 +250,17 @@ bool DcSctpSocket::IsConsistent() const 
                !t1_cookie_->is_running() && t2_shutdown_->is_running());
      case State::kShutdownReceived:
        return (tcb_ != nullptr && !t1_init_->is_running() &&
@@ -991,7 +991,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_pa
        return "CLOSED";
      case DcSctpSocket::State::kCookieWait:
        return "COOKIE_WAIT";
-@@ -270,16 +271,17 @@ constexpr absl::string_view DcSctpSocket
+@@ -271,16 +272,17 @@ constexpr absl::string_view DcSctpSocket
        return "SHUTDOWN_PENDING";
      case DcSctpSocket::State::kShutdownSent:
        return "SHUTDOWN_SENT";
@@ -1009,7 +1009,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_pa
                           << ToString(state_) << " to " << ToString(state)
                           << " due to " << reason;
      state_ = state;
-@@ -588,16 +590,17 @@ SocketState DcSctpSocket::state() const 
+@@ -589,16 +591,17 @@ SocketState DcSctpSocket::state() const 
      case State::kEstablished:
        return SocketState::kConnected;
      case State::kShutdownPending:
@@ -1066,7 +1066,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/timer/timer.cc b/third_party/libwe
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 --- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 +++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-@@ -59,16 +59,17 @@ bool IsFramerateScalingEnabled(Degradati
+@@ -86,16 +86,17 @@ bool IsFramerateScalingEnabled(Degradati
  std::string ToString(VideoAdaptationReason reason) {
    switch (reason) {
      case VideoAdaptationReason::kQuality:
@@ -1087,16 +1087,16 @@ diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resourc
 diff --git a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
 --- a/third_party/libwebrtc/video/config/encoder_stream_factory.cc
 +++ b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
-@@ -105,16 +105,17 @@ int GetDefaultMaxQp(VideoCodecType codec
+@@ -115,16 +115,17 @@ int GetDefaultMaxQp(VideoCodecType codec
        return kDefaultVideoMaxQpH26x;
-     case webrtc::kVideoCodecVP8:
-     case webrtc::kVideoCodecVP9:
-     case webrtc::kVideoCodecGeneric:
+     case kVideoCodecVP8:
+     case kVideoCodecVP9:
+     case kVideoCodecGeneric:
        return kDefaultVideoMaxQpVpx;
-     case webrtc::kVideoCodecAV1:
+     case kVideoCodecAV1:
        return kDefaultVideoMaxQpAv1;
    }
-+  return cricket::kDefaultVideoMaxQpAv1; // fake return for hopefully not reached
++  return kDefaultVideoMaxQpAv1;
  }
  
  // Round size to nearest simulcast-friendly size.

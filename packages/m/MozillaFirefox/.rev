@@ -7751,4 +7751,41 @@
     JIT miscompilation in the JavaScript Engine: JIT component</comment>
     <requestid>1308346</requestid>
   </revision>
+  <revision rev="468" vrev="1">
+    <srcmd5>5a5c4e699337a394db9f6a7903223596</srcmd5>
+    <version>144.0</version>
+    <time>1760790930</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 144.0
+  please check https://www.firefox.com/en-US/firefox/144.0/releasenotes
+  for all news
+  MFSA 2025-81 (bsc#1251263)
+  * CVE-2025-11708 (bmo#1988931)
+    Use-after-free in MediaTrackGraphImpl::GetInstance()
+  * CVE-2025-11709 (bmo#1989127)
+    Out of bounds read/write in a privileged process triggered by
+    WebGL textures
+  * CVE-2025-11710 (bmo#1989899)
+    Cross-process information leaked due to malicious IPC messages
+  * CVE-2025-11711 (bmo#1989978)
+    Some non-writable Object properties could be modified
+  * CVE-2025-11716 (bmo#1818679)
+    Sandboxed iframes allowed links to open in external apps
+    (Android only)
+  * CVE-2025-11717 (bmo#1872601)
+    The password edit screen was not hidden in Android card view
+  * CVE-2025-11712 (bmo#1979536)
+    An OBJECT tag type attribute overrode browser behavior on web
+    resources without a content-type
+  * CVE-2025-11718 (bmo#1980808)
+    Address bar could be spoofed on Android using visibilitychange
+  * CVE-2025-11713 (bmo#1986142)
+    Potential user-assisted code execution in “Copy as cURL” command
+  * CVE-2025-11719 (bmo#1991950)
+    Use-after-free caused by the native messaging web extension
+    API on Windows
+  * CVE-2025-11720 (bmo#1979534, bmo#1984370)
+    Spoofing risk in Android custom tabs</comment>
+    <requestid>1311973</requestid>
+  </revision>
 </revisionlist>

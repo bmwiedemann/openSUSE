@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Oct 12 14:33:12 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 144.0
+  please check https://www.firefox.com/en-US/firefox/144.0/releasenotes
+  for all news
+  MFSA 2025-81 (bsc#1251263)
+  * CVE-2025-11708 (bmo#1988931)
+    Use-after-free in MediaTrackGraphImpl::GetInstance()
+  * CVE-2025-11709 (bmo#1989127)
+    Out of bounds read/write in a privileged process triggered by
+    WebGL textures
+  * CVE-2025-11710 (bmo#1989899)
+    Cross-process information leaked due to malicious IPC messages
+  * CVE-2025-11711 (bmo#1989978)
+    Some non-writable Object properties could be modified
+  * CVE-2025-11716 (bmo#1818679)
+    Sandboxed iframes allowed links to open in external apps
+    (Android only)
+  * CVE-2025-11717 (bmo#1872601)
+    The password edit screen was not hidden in Android card view
+  * CVE-2025-11712 (bmo#1979536)
+    An OBJECT tag type attribute overrode browser behavior on web
+    resources without a content-type
+  * CVE-2025-11718 (bmo#1980808)
+    Address bar could be spoofed on Android using visibilitychange
+  * CVE-2025-11713 (bmo#1986142)
+    Potential user-assisted code execution in “Copy as cURL” command
+  * CVE-2025-11719 (bmo#1991950)
+    Use-after-free caused by the native messaging web extension
+    API on Windows
+  * CVE-2025-11720 (bmo#1979534, bmo#1984370)
+    Spoofing risk in Android custom tabs
+  * CVE-2025-11714 (bmo#1973699, bmo#1989945, bmo#1990970,
+    bmo#1991040, bmo#1992113)
+    Memory safety bugs fixed in Firefox ESR 115.29, Firefox ESR
+    140.4, Thunderbird ESR 140.4, Firefox 144 and Thunderbird 144
+  * CVE-2025-11715 (bmo#1983838, bmo#1987624, bmo#1988244,
+    bmo#1988912, bmo#1989734, bmo#1990085, bmo#1991899)
+    Memory safety bugs fixed in Firefox ESR 140.4, Thunderbird
+    ESR 140.4, Firefox 144 and Thunderbird 144
+  * CVE-2025-11721 (bmo#1986816)
+    Memory safety bug fixed in Firefox 144 and Thunderbird 144
+- requires
+  NSS >= 3.116
+  rust = 1.88
+    (upstream uses 1.89 already which is not available everywhere)
+- switched to clang build temporarily because of bmo#1990430
+  and use clang 20 max (21 fails to build)
+- stop building for i586 as it failing to build and Mozilla
+  officially discontinues any 32bit support for Linux with 145
+  https://blog.mozilla.org/futurereleases/2025/09/05/firefox-32-bit-linux-support-to-end-in-2026/
+
+-------------------------------------------------------------------
 Tue Sep 30 16:43:10 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 143.0.3

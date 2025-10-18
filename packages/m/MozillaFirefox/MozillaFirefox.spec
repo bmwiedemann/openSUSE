@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          143
-%define mainver        %major.0.3
-%define orig_version   143.0.3
+%define major          144
+%define mainver        %major.0
+%define orig_version   144.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -40,7 +40,7 @@
 %define do_profiling   0
 
 # upstream default is clang (to use gcc for large parts set to 0)
-%define clang_build    0
+%define clang_build    1
 
 %bcond_with only_print_mozconfig
 
@@ -103,8 +103,8 @@ BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo1.86
-BuildRequires:  rust1.86
+BuildRequires:  cargo1.88
+BuildRequires:  rust1.88
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.37
-BuildRequires:  mozilla-nss-devel >= 3.115.1
+BuildRequires:  mozilla-nss-devel >= 3.116
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -154,7 +154,11 @@ BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %if 0%{?suse_version} < 1599
 BuildRequires:  clang15-devel
 %else
+%if 0%{?suse_version} < 1699
 BuildRequires:  clang-devel
+%else
+BuildRequires:  clang20-devel
+%endif
 %endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -250,7 +254,7 @@ Obsoletes:      tracker-miner-firefox < 0.15
 %if 0%{?devpkg} == 0
 Obsoletes:      %{name}-devel < %{version}
 %endif
-ExcludeArch:    armv6l armv6hl ppc ppc64
+ExcludeArch:    armv6l armv6hl ppc ppc64 i586
 
 %description
 Mozilla Firefox is a standalone web browser, designed for standards
@@ -364,7 +368,7 @@ fi
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{pkgname}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
-find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
+find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
 # SLE-12 provides python39, but that package does not provide a python3 binary
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
