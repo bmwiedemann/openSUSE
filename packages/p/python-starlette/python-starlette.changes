@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 26 08:49:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.48.0
+  * Add official Python 3.14 support #3013.
+  * Implement RFC9110 http status names #2939.
+
+-------------------------------------------------------------------
 Tue Jul 29 07:20:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Correct typing_extensions Requires.

@@ -427,4 +427,16 @@ https://build.opensuse.org/request/show/1126958
     <comment>- Correct typing_extensions Requires.</comment>
     <requestid>1296244</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0c95218f99245efeefc4f7c130a7bbb8</srcmd5>
+    <version>0.48.0</version>
+    <time>1760790965</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1311720 from glaubitz
+
+- Update to 0.48.0
+    * Add official Python 3.14 support #3013.
+    * Implement RFC9110 http status names #2939.</comment>
+    <requestid>1311810</requestid>
+  </revision>
 </revisionlist>
