@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 18 06:04:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.11.1:
+  * 61d4e57 Fix Pr Create crash (#823)
+  * 4f33146 add test for matching logins (#820)
+  * 08b8398 Update README.md (#819)
+
+-------------------------------------------------------------------
 Thu Oct  9 10:16:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add fix-CVE-2025-58190.patch, fixing bsc#1251663
