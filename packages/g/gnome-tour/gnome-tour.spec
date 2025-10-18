@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-tour
-Version:        49.0.openSUSE+git20251009.a4002c9
+Version:        49.0.openSUSE+git20251016.669c499
 Release:        0
 Summary:        GNOME Tour & Greeter
 License:        GPL-3.0-or-later
@@ -53,10 +53,11 @@ GNOME Tour & Greeter data files
 %package -n opensuse-welcome
 Summary:        Welcome utility for openSUSE
 Requires:       %{name}-data = %{version}
-Requires:       %{name}-lang-all = %{version}
 
 %description -n opensuse-welcome
 A welcome utility built to welcome new users to openSUSE.
+
+%lang_package -n opensuse-welcome
 
 %prep
 %autosetup -p1 -a2
@@ -72,6 +73,7 @@ export RUSTFLAGS=%{rustflags}
 export RUSTFLAGS=%{rustflags}
 %meson_install
 %find_lang %{name} %{?no_lang_C}
+%find_lang opensuse-welcome %{?no_lang_C}
 
 %check
 %meson_test
@@ -85,11 +87,6 @@ export RUSTFLAGS=%{rustflags}
 %{_datadir}/applications/org.gnome.Tour.desktop
 %{_datadir}/dbus-1/services/org.gnome.Tour.service
 
-%files -n opensuse-welcome
-%{_bindir}/opensuse-welcome
-%{_datadir}/applications/org.opensuse.Welcome.desktop
-%{_datadir}/dbus-1/services/org.opensuse.Welcome.service
-
 %files data
 %{_datadir}/icons/hicolor/scalable/apps/*
 %{_datadir}/icons/hicolor/symbolic/apps/*
@@ -97,5 +94,12 @@ export RUSTFLAGS=%{rustflags}
 %dir %{_datadir}/%{name}
 
 %files lang -f %{name}.lang
+
+%files -n opensuse-welcome
+%{_bindir}/opensuse-welcome
+%{_datadir}/applications/org.opensuse.Welcome.desktop
+%{_datadir}/dbus-1/services/org.opensuse.Welcome.service
+
+%files -n opensuse-welcome-lang -f opensuse-welcome.lang
 
 %changelog

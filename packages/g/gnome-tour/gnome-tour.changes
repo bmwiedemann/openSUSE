@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 16 06:10:10 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add custom lang package for opensuse-welcome. This will remove the
+  indirect dependency on gnome-tour. bsc#1252077
+
+-------------------------------------------------------------------
 Thu Oct  9 11:15:05 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add new donations page with links to GNOME and Geeko foundaions.
