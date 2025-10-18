@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:12:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.7:
+  + cuda: Fix runtime kernel compile with CUDA 13.0
+  + d3d12convert: Fix crop meta support
+  + d3d12deinterlace: Fix passthrough handling
+  + gst: Fix a few small leaks
+  + matroskamux: Properly check if pads are EOS in find_best_pad
+  + tsdemux: Directly forward Opus AUs without opus_control_header
+  + tsmux: Write a full Opus channel configuration if no matching
+    Vorbis one is found
+  + unixfd: Fix case of buffer with big payload
+  + vacompositor: Correct scale-method properties
+  + webrtc: nice: Fix a use-after-free and a mem leak
+  + Fix all compiler warnings on Fedora
+  + Fix issues with G_DISABLE_CHECKS & G_DISABLE_ASSERT
+
+-------------------------------------------------------------------
 Mon Sep 15 15:37:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.6:
