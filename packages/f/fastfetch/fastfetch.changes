@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 18 11:16:19 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.54.0:
+  * Brightness (macOS): tidy
+  * Brightness (macOS): prioritizes DDC/CI reply over simple I²C
+    transaction
+  * Logo (Builtin): adds Zraxyl
+  * Release: v2.54.0
+  * CI (Windows): switches CI to use the release signing policy on
+    the master branch
+  * CMake: adds a new build option to gate wordexp usage and
+    detection
+  * Doc: adds security warning for Command module in README
+  * IO (OpenBSD): fixes incorrect glob usage
+  * Display (Windows): rename VRR to DRR
+
+-------------------------------------------------------------------
 Tue Sep 23 20:10:22 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.53.0:
