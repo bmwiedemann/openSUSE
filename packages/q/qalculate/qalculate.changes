@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Oct 13 15:47:49 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.8.0
+  * Add output in scientific (sci), engineering (eng), ans simple
+    notation as "to"-operator options.
+  * Improve support (and fix segfault) for exponential notation in
+    hexadecimal numbers.
+  * Add TeX point, TeX scaled point, twip, and agate typography
+    units, and change "ATA Pica" to "Johnson Pica" and "ATA Point"
+    to "American Point".
+  * Add darcy, kayser, lambert, foot-lambert, and cc units.
+  * Add compton wavelength constants for muon, neutron, proton, and
+    tau.
+  * Update calculation of fraction of year (with day counting basis
+    0 and 1) to match method used in spreadsheets other than
+    Gnumeric.
+  * Change default quantile algorithm from 8 to 7.
+  * Improve accuracy for intervals in solutions to equations when
+    using interval arithmetic.
+  * Show warning about default assumptions the first time an
+    equation is solved.
+  * Show warning symbol when calculate as you type expression
+    results in a question.
+  * Show warning and ask for confirmation when deactivating
+    interval arithmetic.
+  * Improve completion.
+  * Add "save config" option (if disabled qalc.cfg is never
+    automatically updated) and relocate qalc.history to
+    $XDG_STATE_HOME.
+  * Increase speed when calculating many expressions from file.
+  * Automatically recalculate expression with current time every
+    second.
+  * Fix support for prompt string containing Unicode characters,
+    control characters, and/or escape sequences.
+  * Fix poolvar(), ttest(), cor(), dollarde() and dollarfr()
+    functions.
+  * Fix inequality with 1/f(x) on one side, e.g. "1/(x-2) ≤ 2".
+  * Fix segfault with extremely small numbers and high number of
+    bits in floating point conversion.
+  * Fix crashes and freezes in some corner cases.
+  * Fix value of Planck unit (was rounded to 7 decimals).
+  * Fix negative time zone in date and time input.
+  * Many minor bug fixes and feature enhancements.
+
+-------------------------------------------------------------------
 Tue Sep 30 06:27:16 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Use %ldconfig_scriptlets macro
