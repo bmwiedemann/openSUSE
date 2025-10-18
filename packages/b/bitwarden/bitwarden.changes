@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 17 20:01:25 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream relese 2025.10.0
+  * Updated vault behavior for users subject to organization data ownership policy
+  * Added direct importer for non-Chrome Chromium browsers
+  * Updated behavior when logging in when SSO is required
+
+-------------------------------------------------------------------
 Fri Sep 19 14:42:55 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2025.9.0

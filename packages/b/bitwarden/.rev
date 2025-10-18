@@ -341,4 +341,15 @@
     <comment></comment>
     <requestid>1306047</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3b5a87933a85f7655537f102aaefbb5e</srcmd5>
+    <version>2025.10.0</version>
+    <time>1760790993</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream relese 2025.10.0
+  * Updated vault behavior for users subject to organization data ownership policy
+  * Added direct importer for non-Chrome Chromium browsers
+  * Updated behavior when logging in when SSO is required</comment>
+    <requestid>1312094</requestid>
+  </revision>
 </revisionlist>

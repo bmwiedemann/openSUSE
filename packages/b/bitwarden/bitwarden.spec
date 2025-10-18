@@ -20,11 +20,11 @@
 #not running the tests on OBS — extremely flaky
 %bcond_with test_rust
 
-%global sdk_internal_req_version 0.2.0~main.266
+%global sdk_internal_req_version 0.2.0~main.311
 
 
 Name:       bitwarden
-Version:    2025.9.0
+Version:    2025.10.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
