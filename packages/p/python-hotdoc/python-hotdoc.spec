@@ -1,7 +1,7 @@
 #
 # spec file for package python-hotdoc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          Development/Tools/Doc Generators
 URL:            https://github.com/hotdoc/hotdoc
 Source:         https://files.pythonhosted.org/packages/source/h/hotdoc/hotdoc-%{version}.tar.gz
 Patch:          https://github.com/hotdoc/hotdoc/commit/adf8518431fafb78c9b47862a0a9a58824b6a421.patch#/fix-function-prototypes.patch
+#PATCH-FIX-UPSTREAM https://github.com/MathieuDuponchelle/cmark/pull/2
+Patch1:         fix-cmake-min-version.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml}
@@ -49,9 +51,8 @@ Requires:       llvm-devel
 Requires:       python-PyYAML >= 5.4.1
 Requires:       python-appdirs
 Requires:       python-backports.entry_points_selectable
-Requires:       python-cchardet
 Requires:       python-dbus-deviation >= 0.6.1
-Requires:       python-feedgen
+Requires:       python-faust-cchardet
 Requires:       python-lxml >= 4.9.1
 Requires:       python-networkx >= 2.8.8
 Requires:       python-pkgconfig >= 1.5.1

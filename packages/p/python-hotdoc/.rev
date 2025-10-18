@@ -87,4 +87,12 @@ documentation generator framework, used by gstreamer 1.18.0</comment>
     <comment></comment>
     <requestid>1252485</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>7a4077a039b0bff2d4ffc65865f6dd2b</srcmd5>
+    <version>0.17.4</version>
+    <time>1760790971</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-cmake-min-version.patch for cmake compatibility</comment>
+    <requestid>1311727</requestid>
+  </revision>
 </revisionlist>
