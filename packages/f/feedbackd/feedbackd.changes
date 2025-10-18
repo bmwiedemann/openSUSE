@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 17 18:17:09 UTC 2025 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Version 0.8.6 
+  * data: Move udev rule to 72
+    systemd as of 258 requires uaccess tag processing to be < 73.
+  * packaging: Trigger change event for input subsystem too
+- Version 0.8.5
+  * udev: Add rule for AW86927.
+
+-------------------------------------------------------------------
 Thu Sep  4 12:12:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.8.1:

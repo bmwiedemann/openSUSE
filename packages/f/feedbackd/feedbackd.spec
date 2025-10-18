@@ -19,7 +19,7 @@
 %define soname libfeedback-0_0-0
 
 Name:           feedbackd
-Version:        0.8.1
+Version:        0.8.6
 Release:        0
 Summary:        Feedback library for GNOME
 License:        GPL-3.0-only AND LGPL-2.1-only
