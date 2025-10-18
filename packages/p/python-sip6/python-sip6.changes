@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct 16 19:15:45 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Add sip-issue95.patch
+  gh#Python-SIP/sip#95
+- Declare just BSD-2-Clause in specfile (see v6.10)
+
+-------------------------------------------------------------------
+Sat Oct 11 17:15:59 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.13.1
+  * Fixed a regression in v6.13.0 in the handling of mapped types
+    for C++ templates with `typedef`ed arguments.
+
+-------------------------------------------------------------------
+Thu Oct  9 14:11:43 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Revert to 6.12.0: Regression, failing to compile PyQt6-3D
+  https://www.riverbankcomputing.com/pipermail/pyqt/2025-October/046338.html
+
+-------------------------------------------------------------------
+Thu Oct  9 04:24:13 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.13.0:
+  * `/ExportDerivedLocally/` class annotation
+  * `%TypeDerivedCode` directive
+  * Support for SBOMs
+  * Support for bool-based enums
+  * Non-public super-classes not supported
+  * Fixed the code generated for operator casts.
+  * Fixed the handling of mapped types for C++ templates with `typedef`ed
+    arguments.
+  * Fixed the test for the `/Movable/` annotation so that it works with
+    Python v3.14.
+  * A mis-named enum member was corrected.
+  * Specifying `%Docstring` as a sub-directive of the `%Module` directive
+    generated invalid code.
+
+-------------------------------------------------------------------
 Mon Aug 25 12:21:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems
