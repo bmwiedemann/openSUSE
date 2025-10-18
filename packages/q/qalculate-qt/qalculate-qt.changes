@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct 13 15:51:16 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.8.0
+  * Automatically recalculate expression with current time every
+    second.
+  * Replace edit-clear icon on keypad button with "C".
+  * Support non-existing X-variables in plot dialog
+  * Improve automatic digit grouping.
+  * Add option to place percent/remainder button in number pad.
+  * Add asterisk and middle dot as multiplication sign
+    alternatives in preferences.
+  * Add output in scientific (sci), engineering (eng), ans
+    simple notation as "to"-operator options.
+  * Add option to place expression field below history.
+  * Add option to show a status bar (with angle unit and other
+    input settings information).
+  * Improve completion.
+  * Show warning about default assumptions the first time an
+    equation is solved.
+  * Show warning symbol when calculate as you type expression
+    results in a question.
+  * Show warning and ask for confirmation when deactivating
+    interval arithmetic.
+  * Fix floating point value in floating point conversion dialog
+    for extended and microchip formats.
+  * Fix updating of fields in plot dialog when expression list
+    selection changes.
+  * Fixes for comments and removal of single result.
+  * Fix initial state of "Use E-notation instead of 10^n" in
+    preferences.
+  * Fix other angle units menu.
+
+-------------------------------------------------------------------
 Tue Sep 30 18:21:40 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.7.0
