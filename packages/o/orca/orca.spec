@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Wnck\\)
 
 Name:           orca
-Version:        49.3
+Version:        49.4
 Release:        0
 Summary:        Screen reader for GNOME
 License:        LGPL-2.1-or-later
