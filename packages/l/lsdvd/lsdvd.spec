@@ -18,15 +18,19 @@
 #
 
 
+# run tests locally, e.g., with
+# ‘osc build openSUSE_Tumbleweed x86_64 lsdvd.spec --with tests’
+%bcond_with tests
+
 Name:           lsdvd
 Version:        0.20
 Release:        0
 Summary:        A ls for video DVDs
 Summary(de):    Ein ls für Video DVDs
 License:        GPL-2.0-only
-Group:          Productivity/Multimedia/Other
-URL:            http://untrepid.com/lsdvd
+URL:            https://sourceforge.net/projects/lsdvd/
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         fix-input-XML_DEPRECATED_MEMBER.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 %if 0%{?suse_version} == 1500
@@ -35,6 +39,12 @@ BuildRequires:  gcc13
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dvdread) >= 4.1.3.
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
+%if %{with tests}
+BuildRequires:  dvdauthor
+BuildRequires:  ffmpeg-4
+BuildRequires:  k3b
+BuildRequires:  ruby
+%endif
 
 %description
 A tool to display the directory of a video DVDs
@@ -43,7 +53,10 @@ A tool to display the directory of a video DVDs
 Ein Programm zur Anzeige des Inhalts einer Video-DVD
 
 %prep
-%autosetup -p1
+%setup -q
+%if %{pkg_vcmp libxml2-devel >= 2.14.5}
+%patch -P 0 -p1
+%endif
 
 %build
 export CC=gcc
@@ -54,6 +67,13 @@ autoreconf -fiv
 
 %install
 %make_install
+
+%check
+export PATH=%{buildroot}%{_bindir}:$PATH
+%{name} -V
+%if %{with tests}
+%make_build check
+%endif
 
 %files
 %doc AUTHORS ChangeLog README

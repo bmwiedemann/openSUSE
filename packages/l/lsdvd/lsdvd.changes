@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 17 19:15:59 UTC 2025 - munix9@googlemail.com
+
+- Fix patch fix-input-XML_DEPRECATED_MEMBER.patch:
+  The former causes a segfault in testsuite/output-xml
+- Add the section %check. Due to the packages required for this,
+  the tests are disabled and can be run locally, e.g., with
+  'osc build openSUSE_Tumbleweed x86_64 lsdvd.spec --with tests'
+
+-------------------------------------------------------------------
+Fri Oct 17 10:58:00 UTC 2025 - munix9@googlemail.com
+
+- Add fix-input-XML_DEPRECATED_MEMBER.patch
+  * fixes 'error: called object is not a function or function pointer'
+    'ret = handler->input(out, &out_size, (const xmlChar *) in, &temp)'
+    in oxml.c for libxml2 >= 2.14.5
+
+-------------------------------------------------------------------
 Tue Sep  9 18:19:33 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.20

@@ -1,0 +1,11 @@
+--- a/oxml.c
++++ b/oxml.c
+@@ -44,7 +44,7 @@ ConvertInput(const char *in, const char
+ 		int ret;
+ 		int temp;
+ 		temp = size - 1;
+-		ret = handler->input(out, &out_size, (const xmlChar *) in, &temp);
++		ret = handler->input.func(NULL, out, &out_size, (const xmlChar *) in, &temp, 0);
+ 		if ((ret < 0) || (temp - size + 1)) {
+ 			if (ret < 0) {
+ 				printf("ConvertInput: conversion wasn't successful.\n");
