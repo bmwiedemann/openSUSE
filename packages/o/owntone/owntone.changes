@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 17 05:37:06 UTC 2025 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 29.0:
+  * fixes build on Tumbleweed
+  * various fixes, see ChangeLog
+  * new web UI 3.0
+- package ChangeLog file
+- mark documentation files as such
+
+-------------------------------------------------------------------
 Fri Apr  4 06:42:35 UTC 2025 - erfan <erfanfrp@gmail.com>
 
 - update to version 28.12
@@ -48,7 +58,6 @@ Tue Oct  8 09:10:27 UTC 2024 - erfan <erfanfrp@gmail.com>
  * dependency: libxml2 instead of mxml
 
 -------------------------------------------------------------------
-
 Mon Feb 26 12:54:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
