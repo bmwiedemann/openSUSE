@@ -2145,4 +2145,20 @@ https://build.opensuse.org/request/show/1178504 </comment>
   * Allow salt_t transition to rpm_script_t (bsc#1250696)</comment>
     <requestid>1311365</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>77b589db67502b967d9072649bca6faf</srcmd5>
+    <version>20251016</version>
+    <time>1760790950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251016:
+  * fail2ban: bump module version
+  * fail2ban: allow fail2ban to watch all log files and dirs (bsc#1251952)
+  * fail2ban: fix typos in interface descriptions
+  * fail2ban: tweak file context regex for /run/fail2ban
+  * fail2ban: drop file context for old rc.d file
+  * Allow wicket to manage its proc directories (bsc#1235731)
+  * Allow NM to manage wicked pid files (bsc#1235731)
+  * Allow NM to reach systemd unit files (bsc#1235731)</comment>
+    <requestid>1312075</requestid>
+  </revision>
 </revisionlist>

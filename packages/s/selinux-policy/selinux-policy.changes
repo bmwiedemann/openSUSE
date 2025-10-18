@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 17 15:15:04 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20251016:
+  * fail2ban: bump module version
+  * fail2ban: allow fail2ban to watch all log files and dirs (bsc#1251952)
+  * fail2ban: fix typos in interface descriptions
+  * fail2ban: tweak file context regex for /run/fail2ban
+  * fail2ban: drop file context for old rc.d file
+  * Allow wicket to manage its proc directories (bsc#1235731)
+  * Allow NM to manage wicked pid files (bsc#1235731)
+  * Allow NM to reach systemd unit files (bsc#1235731)
+
+-------------------------------------------------------------------
 Tue Oct 14 11:51:42 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20251014:
