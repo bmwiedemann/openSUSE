@@ -40,4 +40,13 @@
     <comment></comment>
     <requestid>1304568</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cff340d4095a0fe650d25ab9520925f0</srcmd5>
+    <version>0.1.5</version>
+    <time>1760805385</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 5ffdfc13ed03df1dae5084468d935f0a3f2c9a4c.patch enables
+  building against Qt 6.10</comment>
+    <requestid>1312167</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 18 15:01:25 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add 5ffdfc13ed03df1dae5084468d935f0a3f2c9a4c.patch enables
+  building against Qt 6.10
+
+-------------------------------------------------------------------
 Wed Sep 10 20:09:20 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.1.5:

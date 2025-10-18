@@ -30,17 +30,25 @@ Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 # Adding a Donate Screen like this just feels like crossing a line, and has been
 # Removed.
 Patch0:         0001-Remove-donate-screen-module.patch
+
+# PATCH-FIX-UPSTREAM 5ffdfc13ed03df1dae5084468d935f0a3f2c9a4c.patch
+# https://github.com/hyprwm/hyprland-qtutils/commit/5ffdfc13ed03df1dae5084468d935f0a3f2c9a4c
+Patch1:         5ffdfc13ed03df1dae5084468d935f0a3f2c9a4c.patch
+
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
-BuildRequires:  qt6-waylandclient-private-devel
-BuildRequires:  pkgconfig(Qt6Platform)
-BuildRequires:  pkgconfig(Qt6Quick)
-BuildRequires:  pkgconfig(Qt6QuickControls2)
-BuildRequires:  pkgconfig(Qt6WaylandClient)
-BuildRequires:  pkgconfig(Qt6Widgets)
+
+BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  cmake(Qt6WaylandClient)
+BuildRequires:  cmake(Qt6WaylandClientPrivate)
+BuildRequires:  cmake(Qt6Widgets)
+
 BuildRequires:  pkgconfig(hyprutils)
+
 ## MANUAL BEGIN
 Requires:       hyprland-qt-support
 ## MANUAL END
