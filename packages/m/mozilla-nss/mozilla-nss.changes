@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Oct  7 10:39:41 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.117
+  * bmo#1992218 - fix memory leak in secasn1decode_unittest.cc
+  * bmo#1988913 - Add OISTE roots
+  * bmo#1976051 - Add runbook for certdata.txt changes
+  * bmo#1991666 - dbtool: close databases before shutdown
+  * bmo#1988046 - SEC_ASN1Decode* should ensure it has read as many bytes as each length field indicates
+  * bmo#1956754 - don’t flush base64 when buffer is null
+  * bmo#1989541 - Set use_pkcs5_pbkd2_params2_only=1 for fuzzing builds
+  * bmo#1989480 - mozilla::pkix: recognize the qcStatements extension for QWACs
+  * bmo#1980465 - Fix a big-endian-problematic cast in zlib calls
+  * bmo#1962321 - Revert removing out/ directory after ossfuzz build
+  * bmo#1988524 - Add Cryptofuzz to OSS-Fuzz build
+  * bmo#1984704 - Add PKCS#11 trust tests
+  * bmo#1983308 - final disable dsa patch cert.sh
+  * bmo#1983320 - ml-dsa: move tls 1.3 to use streaming signatures
+  * bmo#1983320 - ml-dsa: Prep Create a FindOidTagByString function
+  * bmo#1983320 - ml-dsa: softoken changes
+  * bmo#1983320 - ml-dsa: der key decode
+  * bmo#1983320 - ml-dsa: Prep colapse the overuse of keyType outside of pk11wrap and cryptohi
+  * bmo#1983320 - ml-dsa: Prep Create a CreateSignatureAlgorithmID function
+
+-------------------------------------------------------------------
+Tue Oct  7 09:49:37 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.116
+  * bmo#1983308 - disable DSA in NSS script tests
+  * bmo#1983308 - Disabling of some algorithms: generic cert.sh
+  * bmo#1981046 - Need to update to new mechanisms
+  * bmo#1983320 - Add ML-DSA public key printing support in NSS command-line utilities
+  * bmo#1986802 - note embedded scts before revocation checks are performed
+  * bmo#1983320 - Add support for ML-DSA keys and mechanisms in PKCS#11 interface
+  * bmo#1983320 - Add support for ML-DSA key type and public key structure
+  * bmo#1983320 - Enable ML-DSA integration via OIDs support and SECMOD flag
+  * bmo#1983308 - disable kyber
+  * bmo#1965329 - Implement PKCS #11 v3.2 PQ functions (use verify signature)
+  * bmo#1983308 - Disable dsa - gtests
+  * bmo#1983313 - make group and scheme support in test tools generic
+  * bmo#1983770 - Create GH workflow to automatically close PRs
+  * bmo#1983308 - Disable dsa - base code
+  * bmo#1983308 - Disabling of some algorithms: remove dsa from pk11_mode
+  * bmo#1983308 - Disable seed and RC2 bug fixes
+  * bmo#1982742 - restore support for finding certificates by decoded serial number
+  * bmo#1984165 - avoid CKR_BUFFER_TO_SMALL error in trust lookups
+  * bmo#1983399 - lib/softtoken/{sdb.c,sftkdbti.h}: Align sftkdb_known_attributes_size type
+  * bmo#1965329 - Use PKCS #11 v3.2 KEM mechanisms and functions
+
+-------------------------------------------------------------------
 Fri Aug 22 07:38:07 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to NSS 3.115.1

@@ -16,7 +16,7 @@ Index: nss/cmd/lib/pk11table.c
 ===================================================================
 --- nss.orig/cmd/lib/pk11table.c
 +++ nss/cmd/lib/pk11table.c
-@@ -283,6 +283,10 @@ const Constant _consts[] = {
+@@ -405,6 +405,10 @@ const Constant _consts[] = {
      mkEntry(CKM_DSA_KEY_PAIR_GEN, Mechanism),
      mkEntry(CKM_DSA, Mechanism),
      mkEntry(CKM_DSA_SHA1, Mechanism),
@@ -27,7 +27,7 @@ Index: nss/cmd/lib/pk11table.c
      mkEntry(CKM_DH_PKCS_KEY_PAIR_GEN, Mechanism),
      mkEntry(CKM_DH_PKCS_DERIVE, Mechanism),
      mkEntry(CKM_X9_42_DH_DERIVE, Mechanism),
-@@ -448,6 +452,10 @@ const Constant _consts[] = {
+@@ -570,6 +574,10 @@ const Constant _consts[] = {
      mkEntry(CKM_EC_KEY_PAIR_GEN, Mechanism),
      mkEntry(CKM_ECDSA, Mechanism),
      mkEntry(CKM_ECDSA_SHA1, Mechanism),
@@ -42,7 +42,7 @@ Index: nss/lib/pk11wrap/pk11mech.c
 ===================================================================
 --- nss.orig/lib/pk11wrap/pk11mech.c
 +++ nss/lib/pk11wrap/pk11mech.c
-@@ -377,6 +377,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type,
+@@ -379,6 +379,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type,
              return CKK_RSA;
          case CKM_DSA:
          case CKM_DSA_SHA1:
@@ -53,7 +53,7 @@ Index: nss/lib/pk11wrap/pk11mech.c
          case CKM_DSA_KEY_PAIR_GEN:
              return CKK_DSA;
          case CKM_DH_PKCS_DERIVE:
-@@ -387,6 +391,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type,
+@@ -389,6 +393,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type,
              return CKK_KEA;
          case CKM_ECDSA:
          case CKM_ECDSA_SHA1:
@@ -68,8 +68,8 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -2850,6 +2850,38 @@ nsc_EDDSASignStub(void *ctx, unsigned ch
-     return rv;
+@@ -2933,6 +2933,38 @@ sftk_MLDSAGetSigLen(CK_ML_DSA_PARAMETER_
+     return 0;
  }
  
 +SECStatus
@@ -107,7 +107,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /* NSC_SignInit setups up the signing operations. There are three basic
   * types of signing:
   *      (1) the tradition single part, where "Raw RSA" or "Raw DSA" is applied
-@@ -3757,6 +3789,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSessio
+@@ -3903,6 +3935,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSessio
          info->hashOid = SEC_OID_##mmm;        \
          goto finish_rsa;
  
@@ -130,7 +130,7 @@ Index: nss/lib/softoken/pkcs11c.c
      switch (pMechanism->mechanism) {
          INIT_RSA_VFY_MECH(MD5)
          INIT_RSA_VFY_MECH(MD2)
-@@ -5266,10 +5314,9 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5664,10 +5712,9 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
              canSignVerify = PR_FALSE;
          }
      }

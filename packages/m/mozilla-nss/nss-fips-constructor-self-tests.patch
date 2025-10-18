@@ -21,7 +21,7 @@ Index: nss/cmd/shlibsign/shlibsign.c
 ===================================================================
 --- nss.orig/cmd/shlibsign/shlibsign.c
 +++ nss/cmd/shlibsign/shlibsign.c
-@@ -818,10 +818,12 @@ shlibSignDSA(CK_FUNCTION_LIST_PTR pFunct
+@@ -869,10 +869,12 @@ shlibSignDSA(CK_FUNCTION_LIST_PTR pFunct
              return crv;
          }
  
@@ -63,9 +63,9 @@ Index: nss/lib/freebl/blapi.h
  
  /*********************************************************************/
  extern const SECHashObject *HASH_GetRawHashObject(HASH_HashType hashType);
-@@ -1947,6 +1947,9 @@ extern SECStatus X25519_DerivePublicKey(
- /* Public key derivation is supported only for the curves supporting pt_mul method. */
- extern SECStatus EC_DerivePublicKey(const SECItem *privateKey, const ECParams *ecParams, SECItem *publicKey);
+@@ -1962,6 +1962,9 @@ SECStatus MLDSA_VerifyInit(MLDSAPublicKe
+ SECStatus MLDSA_VerifyUpdate(MLDSAContext *ctx, const SECItem *data);
+ SECStatus MLDSA_VerifyFinal(MLDSAContext *ctx, const SECItem *signature);
  
 +/* Unconditionally run the integrity check. */
 +extern void BL_FIPSRepeatIntegrityCheck(void);
@@ -910,7 +910,7 @@ Index: nss/lib/freebl/loader.h
  
      /* Version 3.013 came to here */
  
-@@ -933,6 +933,9 @@ struct FREEBLVectorStr {
+@@ -942,6 +942,9 @@ struct FREEBLVectorStr {
  
      /* Add new function pointers at the end of this struct and bump
       * FREEBL_VERSION at the beginning of this file. */
@@ -932,7 +932,7 @@ Index: nss/lib/freebl/manifest.mn
  	$(NULL)
  
  MPI_HDRS = mpi-config.h mpi.h mpi-priv.h mplogic.h mpprime.h logtab.h mp_gf2m.h
-@@ -194,6 +195,7 @@ ALL_HDRS =  \
+@@ -195,6 +196,7 @@ ALL_HDRS =  \
  	shsign.h \
  	vis_proto.h \
  	seed.h \
@@ -1530,11 +1530,10 @@ Index: nss/lib/freebl/ldvector.c
 ===================================================================
 --- nss.orig/lib/freebl/ldvector.c
 +++ nss/lib/freebl/ldvector.c
-@@ -449,6 +449,9 @@ static const struct FREEBLVectorStr vect
+@@ -459,6 +459,8 @@ static const struct FREEBLVectorStr vect
+     MLDSA_VerifyFinal,
+     /* End of version 3.031 */
  
-     EC_DerivePublicKey,
-     /* End of version 3.030 */
-+
 +    /* SUSE patch: Goes last */
 +    BL_FIPSRepeatIntegrityCheck
  };

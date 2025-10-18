@@ -3467,4 +3467,41 @@
     <comment></comment>
     <requestid>1300982</requestid>
   </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>c7792a3b1d5a0dc0cc76d9d500aeee6c</srcmd5>
+    <version>3.117</version>
+    <time>1760790927</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.117
+  * bmo#1992218 - fix memory leak in secasn1decode_unittest.cc
+  * bmo#1988913 - Add OISTE roots
+  * bmo#1976051 - Add runbook for certdata.txt changes
+  * bmo#1991666 - dbtool: close databases before shutdown
+  * bmo#1988046 - SEC_ASN1Decode* should ensure it has read as many bytes as each length field indicates
+  * bmo#1956754 - don’t flush base64 when buffer is null
+  * bmo#1989541 - Set use_pkcs5_pbkd2_params2_only=1 for fuzzing builds
+  * bmo#1989480 - mozilla::pkix: recognize the qcStatements extension for QWACs
+  * bmo#1980465 - Fix a big-endian-problematic cast in zlib calls
+  * bmo#1962321 - Revert removing out/ directory after ossfuzz build
+  * bmo#1988524 - Add Cryptofuzz to OSS-Fuzz build
+  * bmo#1984704 - Add PKCS#11 trust tests
+  * bmo#1983308 - final disable dsa patch cert.sh
+  * bmo#1983320 - ml-dsa: move tls 1.3 to use streaming signatures
+  * bmo#1983320 - ml-dsa: Prep Create a FindOidTagByString function
+  * bmo#1983320 - ml-dsa: softoken changes
+  * bmo#1983320 - ml-dsa: der key decode
+  * bmo#1983320 - ml-dsa: Prep colapse the overuse of keyType outside of pk11wrap and cryptohi
+  * bmo#1983320 - ml-dsa: Prep Create a CreateSignatureAlgorithmID function
+
+- update to NSS 3.116
+  * bmo#1983308 - disable DSA in NSS script tests
+  * bmo#1983308 - Disabling of some algorithms: generic cert.sh
+  * bmo#1981046 - Need to update to new mechanisms
+  * bmo#1983320 - Add ML-DSA public key printing support in NSS command-line utilities
+  * bmo#1986802 - note embedded scts before revocation checks are performed
+  * bmo#1983320 - Add support for ML-DSA keys and mechanisms in PKCS#11 interface
+  * bmo#1983320 - Add support for ML-DSA key type and public key structure
+  * bmo#1983320 - Enable ML-DSA integration via OIDs support and SECMOD flag</comment>
+    <requestid>1311901</requestid>
+  </revision>
 </revisionlist>
