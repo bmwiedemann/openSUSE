@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Oct 18 05:29:10 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.4.0 ESR
+  * Account Hub is now disabled by default for second email account
+  * Users could not read mail signed with OpenPGP v6 and PQC keys
+  * Image preview in Insert Image dialog failed with CSP error for web resources
+  * Emptying trash on exit did not work with some providers
+  * Thunderbird could crash when applying filters
+  * Users were unable to override expired mail server certificate
+  * Opening Website header link in RSS feed incorrectly re-encoded
+    URL parameters
+  MFSA 2025-85 (bsc#1251263)
+  * CVE-2025-11708 (bmo#1988931)
+    Use-after-free in MediaTrackGraphImpl::GetInstance()
+  * CVE-2025-11709 (bmo#1989127)
+    Out of bounds read/write in a privileged process triggered by
+    WebGL textures
+  * CVE-2025-11710 (bmo#1989899)
+    Cross-process information leaked due to malicious IPC
+    messages
+  * CVE-2025-11711 (bmo#1989978)
+    Some non-writable Object properties could be modified
+  * CVE-2025-11712 (bmo#1979536)
+    An OBJECT tag type attribute overrode browser behavior on web
+    resources without a content-type
+  * CVE-2025-11713 (bmo#1986142)
+    Potential user-assisted code execution in “Copy as cURL”
+    command
+  * CVE-2025-11714 (bmo#1973699, bmo#1989945, bmo#1990970,
+    bmo#1991040, bmo#1992113)
+    Memory safety bugs fixed in Firefox ESR 115.29, Firefox ESR
+    140.4, Thunderbird ESR 140.4, Firefox 144 and Thunderbird 144
+  * CVE-2025-11715 (bmo#1983838, bmo#1987624, bmo#1988244,
+    bmo#1988912, bmo#1989734, bmo#1990085, bmo#1991899)
+    Memory safety bugs fixed in Firefox ESR 140.4, Thunderbird
+    ESR 140.4, Firefox 144 and Thunderbird 144
+
+-------------------------------------------------------------------
 Tue Sep 30 16:41:53 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 140.3.1 ESR
