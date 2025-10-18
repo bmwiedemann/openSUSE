@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 17 03:45:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-3.14.patch:
+  * Support Python 3.14 asyncio changes.
+- Use greater and equals for SLE16+
+
+-------------------------------------------------------------------
 Tue Apr  1 12:56:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Wrap the metadata directory name in a distro-based conditional

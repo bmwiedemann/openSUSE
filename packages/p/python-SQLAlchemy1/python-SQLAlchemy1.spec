@@ -1,7 +1,7 @@
 #
 # spec file for package python-SQLAlchemy1
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ License:        MIT
 URL:            https://www.sqlalchemy.org
 Source:         https://files.pythonhosted.org/packages/source/s/sqlalchemy/sqlalchemy-%{version}.tar.gz
 Source1:        SQLAlchemy.keyring
+# PATCH-FIX-OPENSUSE Support Python 3.14 asyncio changes
+Patch0:         support-python-3.14.patch
 # devel is needed for optional C extensions cprocessors.so, cresultproxy.so and cutils.so
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -85,13 +87,14 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %check
 # One test fails on Python 3.6
 # packaging.version.InvalidVersion: Invalid version: 'SQLAlchemy'
-%pytest_arch -k 'not (test_parseconnect and CreateEngineTest and test_bad_args)'
+# test_memusage breaks with Python 3.14.
+%pytest_arch --ignore test/aaa_profiling/test_memusage.py -k 'not (test_parseconnect and CreateEngineTest and test_bad_args)'
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGES README.rst README.dialects.rst README.unittests.rst
 %{python_sitearch}/sqlalchemy/
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %{python_sitearch}/sqlalchemy-%{version}.dist-info
 %else
 %{python_sitearch}/SQLAlchemy-%{version}.dist-info

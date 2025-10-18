@@ -1,0 +1,12 @@
+Index: sqlalchemy-1.4.54/lib/sqlalchemy/util/_concurrency_py3k.py
+===================================================================
+--- sqlalchemy-1.4.54.orig/lib/sqlalchemy/util/_concurrency_py3k.py
++++ sqlalchemy-1.4.54/lib/sqlalchemy/util/_concurrency_py3k.py
+@@ -190,6 +190,6 @@ def get_event_loop():
+         try:
+             return asyncio.get_running_loop()
+         except RuntimeError:
+-            return asyncio.get_event_loop_policy().get_event_loop()
++            return asyncio.new_event_loop()
+     else:
+         return asyncio.get_event_loop()
