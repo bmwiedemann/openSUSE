@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Oct 16 06:27:28 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add mutter-fix-xwayland-dnd-crash.patch: Fix crash when dragging
+  and dropping from an app running via xwayland
+
+-------------------------------------------------------------------
+Wed Oct 15 05:32:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Fix various glitches during resize/move drags
+  + Fix lost keyboard focus in overview with some devices
+  + Fix popup constraint rule and work around broken clients
+  + Require pointer interaction prior to allowing pointer warp
+  + Fix GTK apps locking up after entering popover submenu
+  + Fix presentation timings with commit-timing-v1
+  + Be more robust against clients providing bogus window geometry
+  + Fix maximized windows extending under panel
+  + Fix switching keyboard layout via xkb-options
+  + Advertise explicit sync only for dmabufs screencasts
+  + Fix multi-touch handling on X11
+  + Fix keyboard driven resize drags
+  + Fix DND actions not working reliably in some X11 clients
+  + Do not force pointer focus on popups
+  + Fixes for cancelling and restoring sizes after drags
+  + Fix windows reverting to previous size after client resizes
+  + Fix pointer constraints for some fullscreen X11 clients
+  + Fixed crashes
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 03 16:35:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.0+68:

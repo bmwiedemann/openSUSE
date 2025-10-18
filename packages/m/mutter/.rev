@@ -2346,4 +2346,12 @@ New stable rel</comment>
     - Check event type, use CLUTTER_KEY_STATE for modifiers during (forwarded request 1308894 from iznogood)</comment>
     <requestid>1309288</requestid>
   </revision>
+  <revision rev="258" vrev="1">
+    <srcmd5>216395095d9c098371fd27397846f1a1</srcmd5>
+    <version>49.1</version>
+    <time>1760790905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1311629</requestid>
+  </revision>
 </revisionlist>
