@@ -1,0 +1,5 @@
+<package name="mongo-c-driver" project="openSUSE:Factory">
+  <title>C driver to mongodb </title>
+  <description>mongo-c-driver is a library for building high-performance applications that communicate with the MongoDB NoSQL database in the C language. It can also be used to write fast client implementations in languages such as Python, Ruby, or Perl.
+</description>
+</package>

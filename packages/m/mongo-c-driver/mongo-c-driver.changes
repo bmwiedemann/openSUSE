@@ -1,0 +1,764 @@
+-------------------------------------------------------------------
+Sat Oct 18 08:50:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Package cleanup
+
+-------------------------------------------------------------------
+Thu Mar  6 20:49:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.30.2
+  Fixes:
+  * Fix bson_new_from_buffer behavior on malformed input.
+  * Fix allocation of large bson_t.
+- Update to version 1.30.1
+  Fixes:
+  * Fix BSON_NORETURN macro for C23 standard.
+
+-------------------------------------------------------------------
+Sun Feb  9 12:30:53 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.30.0
+  Fixes:
+  * Additional APM events required by the SDAM specification will
+    now be delivered:
+    + Servers that have seen `server_opening` will now see a
+      `server_closed` prior to `topology_closed`.
+    + Before `topology_closed`, a `topology_changed` event will
+      transition to `Unknown` topology type.
+  * Fix reporting insert IDs in `mongoc_bulkwrite_t` when verbose
+    results requested.
+  Improvements:
+  * Improve performance of `mongoc_server_description_new_copy`.
+  New Features:
+  * Add support for structured logging.
+    * See `mongoc_client_set_structured_log_opts` and
+      `mongoc_client_pool_set_structured_log_opts`.
+  * Add option to configure cache lifetime of In-Use Encryption
+    data encryption keys.
+    + See `mongoc_auto_encryption_opts_set_key_expiration` and
+      `mongoc_client_encryption_opts_set_key_expiration`.
+  * Support `sort` option for update and replace operations.
+  * Support constructing a `mongoc_bulkwrite_t` without a client.
+    + See `mongoc_bulkwrite_new` and `mongoc_bulkwrite_set_client`.
+
+-------------------------------------------------------------------
+Sat Nov  9 18:50:25 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.29.0
+  Improvements:
+  * Retry KMS requests on transient errors.
+  Deprecated:
+  * `mongoc_client_command` is deprecated and planned for removal
+    in a future release.
+    Use `mongoc_client_command_simple` instead.
+  * `mongoc_database_command` is deprecated and planned for
+    removal in a future release.
+    Use `mongoc_database_command_simple` instead.
+  * `mongoc_collection_command` is deprecated and planned for
+    removal in a future release.
+    Use `mongoc_collection_command_simple` instead.
+  Notes:
+  * Raise required version of libmongocrypt to 1.12.0 to support
+    In-Use Encryption (corresponds to the CMake option:
+    `ENABLE_CLIENT_SIDE_ENCRYPTION`).
+  * A future minor release will raise the minimum supported
+    MongoDB Server version from 4.0 to 4.2.
+
+-------------------------------------------------------------------
+Sat Oct 12 16:05:30 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.28.1
+  Fixes:
+  * Do not return result in `mongoc_bulkwritereturn_t` if there
+    are no known successful writes.
+  * Validate lengths in ill-formed server responses.
+  * Do not override read preference when using aggregate with
+    `$out/$merge` with unscanned servers.
+  * Remove unexpected warning if `authSource` in TXT record is
+    overriden by URI option.
+  * Fix crash when non-existent CA file configured with OpenSSL.
+- Update to version 1.28.0
+  New features:
+  * Support In-Use Encryption range queries.
+  * Include insert ID on result of `mongoc_collection_insert_one`.
+  * Add new bulk write API `mongoc_bulkwrite_t`.
+    Requires MongoDB 8.0. Reduces round-trips for mixed writes.
+  - Add `serverMonitoringMode` URI option.
+  Improvements:
+  * Improve performance of OpenSSL connection creation.
+  * Improve performance when trace logging is configured
+    (`ENABLE_TRACING=ON`) but disabled at runtime.
+  * Prefer FIPS compliant functions for SCRAM-SHA-256 key
+    derivation.
+  * Remove required slash to delimit options in MongoDB URI
+    (e.g. `mongodb://example.com?w=1` parses the same as
+    `mongodb://example.com/?w=1`).WWW
+  * Include topology description in server selection timeout
+    errors.
+  Notes:
+  * Bump minimum wire protocol version from 6 (MongoDB 3.6) to 7
+    (MongoDB 4.0).
+  * Raise required version of libmongocrypt to 1.11.0 to support
+    In-Use Encryption (corresponds to the CMake option:
+    `ENABLE_CLIENT_SIDE_ENCRYPTION`).
+
+-------------------------------------------------------------------
+Mon Sep  9 13:47:02 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.27.6
+  libbson Fixes:
+  * Fix handling of malformed extended JSON for special BSON types.
+  * Fix large string handling in bson_string_new and
+    bson_string_append.
+  libmongoc Fixes:
+  * Fix TSan warning.
+  * Fix C23 compile.
+  Improvements:
+  * Document expected behavior of command errors in a transaction.
+- Update to version 1.27.5
+  libbson Fixes:
+  * Fix large string handling in bson_append_utf8.
+  libmongoc Fixes:
+  * Fix possible build error in environments where bool or _Bool is
+    a macro.
+- Update to version 1.27.4
+  libmongoc Fixes:
+  * Fix possible crash reading malformed wire protocol message.
+- Update to version 1.27.3
+  * no changes
+- Update to version 1.27.2
+  libbson Fixes:
+  * Fix parsing of colon in timezone.
+  * Error on failure to init subdocument in bson_iter_visit_all.
+  libmongoc Fixes:
+  * Close leftover connections to removed servers.
+  New features:
+  * Check environment variable MONGOC_EXPERIMENTAL_SRV_PREFER_TCP
+    to prefer TCP for SRV lookup.
+- Update to version 1.27.1
+  libbson Fixes:
+  * Fix string handling in bson_string_new and bson_string_append.
+- Update to version 1.27.0
+  libmongoc Fixes:
+  * Fix possible crash when client is configured with empty password
+  New Features:
+  * Add database name to command events:
+    mongoc_apm_command_failed_get_database_name and
+    mongoc_apm_command_succeeded_get_database_name.
+  * Support delegated KMIP protocol for In-Use Encryption.
+  * Enable setting socket timeout per client.
+
+-------------------------------------------------------------------
+Sun Apr  7 15:24:03 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.26.2
+  libbson Fixes:
+  * Fix iteration in bson_strfreev.
+  libmongoc Fixes:
+  * Fix possible hang if mongoc_gridfs_file_readv is called with a
+    corrupt chunk with incomplete data.
+  * Fix assert with legacy exhaust cursor protocol when connected
+    to server < 4.2.
+- Update to version 1.26.1
+  libbson Fixes:
+  * Use aligned alloc for bson_array_builder_t
+  libmongoc Fixes:
+  * Fix 32-bit compile with 64-bit time_t
+- Update to version 1.26.0
+  libmongoc Features:
+  * Support named KMS providers.
+  * Redirect retries in sharded clusters to another mongos if
+    possible.
+  libmongoc Improvements:
+  * Add VERSION_CURRENT file in source to ease building.
+  * Consider more errors retryable.
+- Update to version 1.25.4
+  libbson Fixes:
+  * Restore support for Sphinx 1.7.6 for man page build.
+  libmongoc Fixes:
+  * Restore support for Sphinx 1.7.6 for man page build.
+- Update to version 1.25.3
+  libmongoc Fixes:
+  * Disable shared libmongoc targets if ENABLE_SHARED=OFF
+  * Fix documentation build with Python 3.9.
+
+-------------------------------------------------------------------
+Thu Dec  7 15:05:35 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.25.2
+  * libbson Fixes:
+    + Fix conversion warning with GCC 12.
+  * libmongoc Fixes:
+    + Fix data race in mongoc_cursor_get_host.
+- Update to version 1.25.1
+  * libbson Fixes:
+    + The BUILD_VERSION CMake option was restored.
+    + Fixes to some format strings in trace logs.
+    + Allow mongoc_buffer_t to be larger than INT_MAX.
+  * libmongoc Fixes:
+    + Add back support for BUILD_VERSION CMake option.
+      BUILD_VERSION was unintentionally removed in 1.25.0.
+- Update to version 1.25.0
+  * libbson New Features:
+    + Add bson_array_builder_t.
+  * libmongoc Fixes:
+    + Send recoveryToken in transactions when connected to a load
+      balancer.
+  * libmongoc Improvements:
+    + Remove optional dependency of libicu.
+    + Added ability to manage Atlas Search indexes
+    + Use OP_MSG exhaust for mongod >= 4.2. Enable exhaust cursors
+      for mongos >= 7.1.
+    + Share cached credentials for SCRAM authentication among all
+      clients to improve performance.
+    + Use polling monitoring in FaaS environments.
+  * libmongoc Build Configuration:
+    + Remove ENABLE_SRV=AUTO. Only support boolean values for
+      ENABLE_SRV.
+
+-------------------------------------------------------------------
+Tue Jul 18 18:53:44 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.2
+  * Fix possible crash if thread creation fails.
+  * Fix possible assertion if
+    `mongoc_cursor_new_from_command_reply_with_opts` is called with
+    open cursor and no `serverId` option.
+- Update to version 1.24.1
+  * Remove unnecessary assert in bulk API. May result in an abort
+    when creating bulk operations with the
+    `mongoc_bulk_operation_new` API intended for wrapping drivers.
+- Update to version 1.24.0
+  New Features:
+  * Support MongoDB server version 7.0.
+  * Support updated Queryable Encryption protocol.
+    + Introduces backwards breaking changes to the Queryable
+      Encryption protocol. Using Queryable Encryption now requires
+      MongoDB server version 7.0+.
+  * Support new Queryable Encryption features.
+    + Add `mongoc_client_encryption_create_encrypted_collection` to
+      automatically create data encryption keys when creating a new
+      encrypted collection.
+  * Support new security features.
+    + Add ability to fetch KMS credentials automatically from Azure,
+      GCP, and AWS environments.
+    + Support authentication with KMS AWS temporary credentials.
+    + Cache fetched AWS credentials.
+    + Support AWS IAM Roles for service accounts, EKS in particular.
+  * Retry operations if the connection handshake fails.
+  * Add index creation helper:
+    `mongoc_collection_create_indexes_with_opts`.
+  Fixes:
+  * Fix possible overcounting in Performance Counters used by
+    `mongoc-stat`.
+  Language Standard Support:
+  * C89 support has been dropped. C99 is the default tested
+    C standard.
+
+-------------------------------------------------------------------
+Thu Jan 12 08:18:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.23.2
+  * Bugfix Release
+
+-------------------------------------------------------------------
+Fri Oct 21 11:19:43 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.23.1
+  * Fix connectivity to Atlas Data Lake
+  * Fix crash when dropping a malformed Queryable Encryption
+    collection.
+
+-------------------------------------------------------------------
+Wed Sep  7 10:32:59 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.23.0
+  libbson
+  Improvements:
+  * Reducing Warnings of Misaligned Address of Over-Aligned Types
+  libmongoc
+  Features:
+  * Add on-demand Credentials Callback for CSFLE
+  * Support obtaining AWS credentials for CSFLE in the same way as
+    for MONGODB-AWS
+  Improvements:
+  * Reducing Warnings of Misaligned Address of Over-Aligned Types
+  Bug fixes:
+  * Do not spawn mongocryptd if mongo_shared shared library is
+    loaded.
+
+-------------------------------------------------------------------
+Fri Jul  1 13:07:25 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.22.0
+  Bug fixes:
+  * Do not auto decrypt before emitting CommandSucceeded events.
+  Improvements:
+  * Use OP_MSG if a server API version is requested.
+  Features:
+  * Add server connectionId to command monitoring events.
+  * Add support for the comment field to all helpers.
+  * Support mongo_shared shared library.
+  * Support pre-point-in-time change stream events.
+  * Support Queryable Encryption.
+  * Support 'let' option for multiple CRUD commands.
+  * Add Key Management API functions.
+- Update to version 1.21.1
+  Bug Fixes:
+  * Use static decls for OpenSSL 1.1 polyfills
+  * Prevent possible crash in _mongoc_cursor_fetch_stream
+- Update to version 1.21.0
+  Features:
+  * Support conditional $merge and $out aggregation on secondaries.
+  * Bump minimum wire protocol version from 3 (MongoDB 3.0) to 6
+    (MongoDB 3.6).
+  * Bump maximum wire protocol version from 14 (MongoDB 5.1) to 15
+    (MongODB 5.2).
+
+-------------------------------------------------------------------
+Thu Feb 24 20:48:13 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.20.1
+  * Improve multi-threaded performance of client pool.
+  * Support KMIP as a provider for Client-Side Field Level
+    Encryption (CSFLE).
+
+-------------------------------------------------------------------
+Thu Nov 18 20:41:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.20.0
+  * Improve multi-threaded performance of client pool.
+  * Support KMIP as a provider for Client-Side Field Level
+    Encryption (CSFLE).
+
+-------------------------------------------------------------------
+Thu Nov  4 19:38:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19.2
+  libbson
+  * No changes since 1.19.1; release to keep pace with libmongoc's
+    version.
+  libmongoc
+  Bug fixes:
+  * Fix assert on invalid URI options in client pools connected to
+    load balanced clusters when a topology closed callback is
+    registered.
+
+-------------------------------------------------------------------
+Sun Oct 17 13:41:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 1.19.1
+  Bug fixes:
+  * Permit NULL platform argument in mongoc_handshake_data_append.
+  * Fix wire version check in server selection when
+    maxStalenessSeconds is specified in read preferences.
+  * Fix assert on invalid URI options in client pools connected
+    to load balanced clusters.
+
+-------------------------------------------------------------------
+Sat Aug 21 10:53:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 1.19.0
+  Features:
+  * Add full support to connect to MongoDB Atlas Serverless
+    Instances.
+  * Add support for snapshot reads on a session with
+    mongoc_session_opts_set_snapshot.
+  * Support the new URI option loadBalanced to connect to a
+    MongoDB cluster behind a TCP load balancer.
+  Bug fixes:
+  * Fix the uploadDate set on newly created GridFS files in the
+    mongoc_gridfs_bucket_t API.
+- Udpate to version 1.18.0
+  Features:
+  * Introduces support to select an API version when connecting
+    to a MongoDB instance.
+  * Supports Azure and Google Cloud Platform as Key Management
+    Service (KMS) providers in Client-Side Field Level Encryption
+    (CSFLE).
+  * Support "let" option in aggregate command.
+  * Support time series collections.
+  * Relax validation for insert and replace documents to support
+    fields containing dots and dollars.
+  * Expose the reason operations fail document validation.
+  Bug fixes:
+  * Forward opts from mongoc_gridfs_bucket_find to underlying find
+    operation.
+  * Fixes a possible hang when a limited size client pool is
+    waiting for a client to become available in
+    mongoc_client_pool_pop.
+  Improvements
+  * Deprecate API containing deprecated terminology.
+  * Use "hello" command for monitoring servers.
+
+-------------------------------------------------------------------
+Fri Dec  4 17:12:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.3
+  * Do not send session ID on GSSAPI auth commands.
+  * Fix build against zlib when zlib is installed in non-standard
+    location.
+  * Fix build when source directory path contains a space.
+  * Fix a platform-specific bug causing mongoc_client_pool_pop
+    to block indefinitely if all clients are checked out.
+  * Fix a possible buffer overflow with hostnames resolving to
+    IPv6 addresses on OpenSSL.
+- Update to version 1.17.2
+  * Stop the SRV polling thread when an SRV URI is used to connect
+    to a deployment other than a sharded cluster.
+
+-------------------------------------------------------------------
+Thu Oct  8 16:00:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.1
+  * Fix SRV/TXT record lookup for DNS records exceeding 1024 bytes.
+
+-------------------------------------------------------------------
+Fri Jul 31 20:47:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.0
+  Features:
+  * Support streamable server monitoring to reduce recovery time
+    when the server topology changes.
+  * Support the MONGODB-AWS authentication mechanism.
+  * Support Online Certificate Status Protocol (OCSP).
+  * Support configuring hedged reads in read preferences.
+  * Reduce the number of round trips necessary for SCRAM and X509
+    authentication.
+  * Monitor servers in parallel when using a mongoc_client_pool_t
+    instead of doing serial scans.
+  * Support the "hint" option in operations using the update,
+    replace, delete, and findAndModify commands.
+  * Improve behavior for retryable writes.
+  * Improve resuming behavior of change streams on server errors.
+  * Remove restriction of 255 character collection namespaces.
+  Bug fixes:
+  * Fix criteria for resumable errors in change streams.
+  * Fix rare crashes when server is invalidated during
+    authentication.
+  * Reject client session for
+    mongoc_collection_estimated_document_count.
+  * Fix behavior of a SecondaryPreferred read preference for
+    exhaust cursor operations against a sharded cluster. Prior
+    to the fix, a nonzero maxStalenessSeconds would not trigger
+    sending the read preference.
+  * Fix SRV polling. Prior to the fix, SRV polling did not
+    properly apply newly discovered results.
+  * Fix checks for existing GridFS indexes to handle indexes
+    created by the MongoDB shell.
+  * Fix possible use of invalidated streams during an unordered
+    OP_QUERY bulk write, and when ending many pooled sessions at
+    client destruction.
+  * Fix a crash when setting the crl_file TLS option for Secure
+    Channel.
+  * Avoid emitting duplicate ServerChanged events when no change
+    is observed during monitoring.
+  * Properly handle large SASL messages instead of erroring.
+
+-------------------------------------------------------------------
+Sat Dec 21 16:13:46 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.15.3
+  Bug fixes:
+  * Add zstd as a dependency when libmongoc static library is
+    compiled with zstd support
+
+-------------------------------------------------------------------
+Thu Nov  7 20:42:06 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.15.2
+  Bug fixes:
+   * Prevent mongoc_transaction_opts_set_max_commit_time_ms from
+     applying to subsequent transactions that should be using the
+     default.
+   * Do not report the initial error if a retry for a change stream
+     function (mongoc_collection_watch, mongoc_database_watch, or
+     mongoc_client_watch) succeeds
+
+-------------------------------------------------------------------
+Mon Sep  2 20:58:15 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.15.1
+   * Fix change stream resume logic when no documents received
+   * Reduce the required cmake version to build with zstd support
+   * Minor fixes to mongos pinning logic
+   * Do not resume a change stream on NonResumableChangeStreamError
+
+- Update to version 1.15.0
+  New features:
+  * Support for sharded transactions on MongoDB sharded clusters 4.2+.
+  * Add convenient transaction runner (mongoc_client_session_with_transaction),
+    which accepts a callback and performs appropriate retry logic.
+  * Add a new transaction option to specify maximum time to wait for a commit,
+    mongoc_transaction_opts_set_max_commit_time_ms.
+  * Add URI option "retryReads=true" safely and automatically retries certain
+    read operations if the server is a MongoDB 3.6+.
+  * Poll SRV records to mongos servers periodically.
+  * Keep connections alive after a primary stepdown detected.
+  * Standardizes URI options supported across all spec-compliant MongoDB drivers.
+  * "retryWrites" URI option now defaults to true (requires crypto for session
+    support).
+  * Send any aggregate with $out or $merge stage to a primary.
+  * Add the ability to specify an aggregate pipeline as an update document.
+  * Add a database aggregate helper, mongoc_database_aggregate.
+  * Add option for change streams, "startAfter".
+  * Add mongoc_change_stream_get_resume_token, which returns the resume token
+    which should be used to resume a change stream.
+  * Add support for zstd compression.
+  Bug fixes:
+  * Correctly report an error in mongoc_change_stream_next if the resume token
+    (_id) is not a document. Previously, an error was only reported if the
+    field was missing.
+  * Fix mongoc_collection_update with MONGOC_UPDATE_MULTI_UPDATE,
+    mongoc_collection_remove, and mongoc_collection_delete when retryWrites
+    was enabled. They would fail previously.
+  * Command options are now correctly taken into account when batching bulk
+    writes for OP_QUERY. It was possible to exceed the maximum document size
+    before.
+  * Fix a crash if a multi-batch bulk write with OP_MSG errored on a batch.
+
+-------------------------------------------------------------------
+Tue Jul  2 17:35:59 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add missing dependency on zlib
+
+-------------------------------------------------------------------
+Mon Apr 29 19:13:44 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Only build manpages on newer distributions since it requires
+  Sphinx >= 1.6
+
+-------------------------------------------------------------------
+Wed Feb 27 09:30:35 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Small packaging cleanup
+- Add mising dependency on ICU
+
+-------------------------------------------------------------------
+Tue Feb 26 15:11:51 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.14.0
+  #libbson
+  Features:
+  * ObjectIDs are generated in compliance with the driver ObjectID spec.
+  * Add a bson_copy_to_excluding_noinit variant taking a va_list.
+  * Add example of validating BSON nesting depth with bson_visitor_t.
+  Bug fixes:
+  * Relaxed JSON pads datetime milliseconds with spaces instead of zeroes.
+  #libmongoc
+  Features:
+  * Support for OpenSSL 1.1.1 and its implementation of TLS v1.3.
+  * New function mongoc_stream_should_retry.
+  * New accessor mongoc_server_description_last_update_time.
+  * New method mongoc_client_reset to be called after forking.
+  Bug fixes:
+  * OP_MSG with unacknowledged writes (write concern of w:0) would
+    serialize incorrectly on big-endian platforms, causing writes
+    to use the default write concern of w:1.
+  * mongoc_collection_update_many and mongoc_collection_delete_many
+    would fail with the URI option retryWrites=true.
+  * In a transaction, the driver now properly ignores the
+    readConcern configured on a client, database, or collection: only
+    the mongoc_transaction_opt_t's readConcern is used.
+  * Remove timestamp from uninstall scripts to permit reproducible build
+  * Setting mongoc_ssl_opt_t.pem_file or ca_file to a bad file path
+    caused a hang with Darwin SSL.
+  * Fix the ENABLE_SASL cmake option:
+  * Remove unnecessary GSSAPI value. It was equivalent to specifying
+    ENABLE_SASL=CYRUS.
+  * The client pool failed to set proper apm callbacks for clients
+    created via try_pop().
+- Package man-pages
+
+-------------------------------------------------------------------
+Thu Jan 24 22:23:17 UTC 2019 - mardnh@gmx.de
+
+- Update to version 1.13.1
+  Bug fixes:
+  * mongoc_collection_update_many and mongoc_collection_delete_many would fail
+    with the URI option retryWrites=true.
+  * Remove timestamp from uninstall scripts to permit reproducible build.
+  * Add missing header files to the release tarball to fix compilation when
+    configuring with ENABLE_SASL=GSSAPI.
+  * Separate libmongoc and libbson uninstall scripts so they do not overwrite
+    each other.
+  * Fix running make install with DESTDIR.
+- Update to version 1.13.0
+  Features:
+  * Report a new error code, MONGOC_ERROR_GRIDFS_CORRUPT, when a chunk larger
+    than chunkSize is detected. Before, the driver had crashed with an assert.
+  * Restructure of install directory. All mongoc headers are under mongoc/
+    and all bson headers are under bson/. The preferred way of including the
+    headers are mongoc/mongoc.h and bson/bson.h respectively.
+    Forwarding headers in the root are provided for backwards compatibility.
+  * The default CMake build type had been unspecified, now it is RelWithDebInfo.
+  * Support LibreSSL 2.7+.
+  Bug fixes:
+  * mongoc_collection_replace_one is now a correctly exported symbol.
+  * Fix multiple issues with readConcern and writeConcern inheritance.
+  * mongoc_gridfs_create_file_from_stream ignored errors while writing chunks
+    to the server.
+  * The following functions should not have taken a "bypassDocumentValidation"
+    option in bson_t *opts, the option is now prohibited:
+    - mongoc_bulk_operation_insert_with_opts
+    - mongoc_bulk_operation_update_one_with_opts
+    - mongoc_bulk_operation_update_many_with_opts
+    - mongoc_bulk_operation_replace_one_with_opts
+  * The heartbeat-succeeded and heartbeat-failed events (part of SDAM
+    Monitoring) had uninitialized "duration" fields, they are now set correctly.
+
+-------------------------------------------------------------------
+Thu Jul 19 10:17:45 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.12.0
+  Features:
+  * New function mongoc_client_session_in_transaction to check if a multi-
+    document transaction is started.
+  * New examples for change streams and transactions, improved guide for
+    migrating from mongoc_collection_count to mongoc_collection_count_documents
+  Bug fixes:
+  * Fix occasional crash in sharded queries
+  * Retry all retryable write concern errors
+  * mongoc_client_session_commit_transaction sets the correct error label when
+    the primary is unavailable
+  * mongoc_collection_find_with_opts had prohibited read preference "primary"
+    in a transaction
+  * mongoc_collection_aggregate had not inherited its mongoc_collection_t's
+    read preference; only an explicitly provided read preference was used.
+  * Allow unencoded delimiters in username/password if unambiguous
+
+-------------------------------------------------------------------
+Sat Jun 23 07:57:29 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.11.0
+  It is my pleasure to announce the MongoDB C Driver 1.11.0. This release adds
+  support for MongoDB 4.0 features. It includes the following additions and
+  improvements:
+
+  * Multi-document transactions, see mongoc_client_session_start_transaction
+  * New function mongoc_error_has_label to check for specific error labels such
+    as "TransientTransactionError" or "UnknownTransactionCommitResult" in
+    error replies.
+  * New functions to subscribe to changes on an entire client or database:
+    - mongoc_client_watch
+    - mongoc_database_watch
+  * New option for change streams, "startAtOperationTime".
+  * mongoc_collection_count_with_opts is deprecated for two new functions:
+    - mongoc_collection_count_documents
+    - mongoc_collection_estimated_document_count
+  * Support for SCRAM-SHA-256 authentication, including support for non-ASCII
+    passwords using libicu is an optional dependency.
+  * Faster mongoc_database_get_collection_names_with_opts fetches only names,
+    not the entire collection metadata.
+
+  Additional changes not specific to MongoDB 4.0:
+
+  * All "destroy" functions such as mongoc_collection_destroy now ignore a NULL
+    argument.
+  * The driver now returns an error if you attempt to use "arrayFilters" in an
+    update with a MongoDB server older than 3.6.
+  * Update functions include a new "upsertedCount" field in the reply document.
+  * Replace MD5 with FNV-1a hash to generate ObjectIds (for FIPs compliance).
+
+  Bug fixes:
+
+  * Functions incorrectly marked with the "const" compiler attribute are now
+    marked as "pure", fixes build error when link-time optimization is enabled.
+
+-------------------------------------------------------------------
+Wed Jun 20 13:49:13 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.10.3
+  * This release fixes a crash when parsing binary data from JSON
+    if mongoc_init isn't called.
+
+-------------------------------------------------------------------
+Fri Jun  8 07:38:42 UTC 2018 - mardnh@gmx.de
+
+- Use CMake for building
+
+- Update to version 1.10.2
+  * build fixes
+
+- Update to version 1.10.1
+  * Client sessions were not prohibited with unacknowledged write concern and
+    mongoc_bulk_operation_execute; now they are prohibited. Client sessions have
+    been prohibited with all other unacknowledged writes since 1.10.
+  * The "arrayFilters" update option, new in MongoDB 3.6 and supported since
+    libmongoc 1.9.0, was inadvertently prohibited by
+    mongoc_bulk_operation_update_one_with_opts and
+    mongoc_bulk_operation_update_many_with_opts in 1.10. The option is now
+    permitted again.
+  * The mongoc-stat tool for displaying shared counters was disabled on Linux
+    and not installed; it is now restored.
+
+-------------------------------------------------------------------
+Tue May  1 10:50:44 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.9.5
+  * New change streams API functions were not marked extern "C"
+  * mongoc_collection_watch now accepts a pipeline argument as a BSON array, in
+    addition to accepting a BSON document with a "pipeline" array field
+  * Crashes in several change stream error handling paths
+  * Commands could return false with an empty bson_error_t after a replica set
+    reconfig
+  * Network error messages omitted the command name when using OP_MSG
+
+-------------------------------------------------------------------
+Tue Apr 10 07:21:49 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.9.4
+  * Ensure a change stream uses the proper session id while
+    iterating.
+  * Fix a rare crash in pooled mode when a replica set member was
+    disconnected.
+
+-------------------------------------------------------------------
+Thu Mar 22 09:30:49 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.9.3
+- Fix URL
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Thu Jan 25 17:35:37 UTC 2018 - gbvalor@gmail.com
+
+- Updated to version 1.9.2
+
+-------------------------------------------------------------------
+Mon Jul 17 09:04:49 UTC 2017 - gbvalor@gmail.com
+
+- Updated to version 1.6.3
+
+-------------------------------------------------------------------
+Sat Jan 21 10:16:13 UTC 2017 - gbvalor@gmail.com
+
+- Supress check beacuse of unexisting server at build time
+
+-------------------------------------------------------------------
+Sat Jan 21 08:58:01 UTC 2017 - gbvalor@gmail.com
+
+- Updated to version 1.5.3
+
+-------------------------------------------------------------------
+Thu May  5 17:04:49 UTC 2016 - gbv@oxixares.com
+
+- Updated to version 1.3.5
+
+-------------------------------------------------------------------
+Thu Jun 14 09:27:01 UTC 2015 - gbvalor@gmail.com
+
+- Updated to version 1.1.7
+
+-------------------------------------------------------------------
+Fri Apr 10 18:01:04 UTC 2015 - gbvalor@gmail.com
+
+- Fixed some OBS rpmlint erros and warnings in spec file 
+
+-------------------------------------------------------------------
+Thu Apr  9 21:27:01 UTC 2015 - gbvalor@gmail.com
+
+- Adapted spec file to OBS requirements
+- Updated to version 1.1.4
+
+
