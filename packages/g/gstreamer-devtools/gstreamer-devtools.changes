@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 17 06:37:29 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.7:
+  + Fix issues with G_DISABLE_CHECKS & G_DISABLE_ASSERT
+
+-------------------------------------------------------------------
 Mon Sep 15 17:11:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.6:
