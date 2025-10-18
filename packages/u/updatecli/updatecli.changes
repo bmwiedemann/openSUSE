@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sat Oct 18 06:03:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.109.0:
+  * Changes
+    - Update ADOPTERS - SUSE Rancher and RKE2 @macedogm (#6250)
+  * Features
+    - feat: allow NPM autodiscovery to ignore version constraint
+      @olblak (#6360)
+    - feat: add GitHub App support for authentication @olblak
+      (#6155)
+    - feat: add a slim Docker image for Updatecli @olblak (#5015)
+    - fix: pause Updatecli when running out of GitHub API limit
+      @olblak (#6168)
+    - feat: Add build-dependencies support to cargo autodiscovery
+      @refi64 (#6202)
+  * Maintenance
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.31.13 @updateclibot[bot] (#6389)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.18.17
+      @updateclibot[bot] (#6383)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2 to v1.39.3
+      @updateclibot[bot] (#6381)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.31.12 @updateclibot[bot] (#6373)
+    - deps(go): bump module github.com/aws/smithy-go to v1.23.1
+      @updateclibot[bot] (#6361)
+    - chore: dispatch release event @olblak (#6342)
+    - deps(go): bump module github.com/spf13/afero to v1.15.0
+      @updateclibot[bot] (#6343)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.256.0
+      @updateclibot[bot] (#6348)
+    - deps(go): bump module github.com/getsops/sops/v3 to v3.11.0
+      @updateclibot[bot] (#6341)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.18.16
+      @updateclibot[bot] (#6332)
+    - deps(go): bump module github.com/go-git/go-git/v5 to v5.16.3
+      @updateclibot[bot] (#6321)
+    - deps: Bump Golang version to 1.25.3 @updateclibot[bot]
+      (#6319)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.255.0
+      @updateclibot[bot] (#6313)
+    - deps(go): bump module cuelang.org/go to v0.14.2
+      @updateclibot[bot] (#6296)
+    - deps(go): bump module golang.org/x/oauth2 to v0.32.0
+      @updateclibot[bot] (#6285)
+    - deps(go): bump module golang.org/x/net to v0.46.0
+      @updateclibot[bot] (#6267)
+    - deps: Bump Golang version to 1.25.2 @updateclibot[bot]
+      (#6266)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.4.2 @updateclibot[bot] (#6237)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.7.2 @updateclibot[bot] (#6203)
+    - deps(go): bump module github.com/moby/buildkit to v0.25.1
+      @updateclibot[bot] (#6214)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.4.0 @updateclibot[bot] (#6193)
+    - deps(go): bump module
+      github.com/testcontainers/testcontainers-go to v0.39.0
+      @updateclibot[bot] (#6175)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.254.1
+      @updateclibot[bot] (#6179)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2 to v1.39.2
+      @updateclibot[bot] (#6177)
+    - deps: bump golangci-lint to v2.5.0 @updateclibot[bot] (#6161)
+    - deps(go): bump module github.com/moby/buildkit to v0.25.0
+      @updateclibot[bot] (#6160)
+
+-------------------------------------------------------------------
 Fri Sep 26 05:46:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.108.0:
