@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 18 15:29:31 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.0.33
+Added:
+  * wxEDID_Frame::ChkNumValidBlocks()
+
+Fixed:
+  * (BUG) SaveRep(), ExportHex(): writing extension block data if
+    BED::num_ext is changed to zero.
+  * (BUG) wxEDID_Frame::DTD_Ctor_set_DTD(): sct_hborder->data and
+    sct_vborder->data must be set to zero for T7VTDB - otherwise
+    the DTD_Ctor could draw border lines from previously selected
+    DTD.
+  * few typos in textual descriptions
+
+-------------------------------------------------------------------
 Sun Mar 16 18:25:40 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.0.32

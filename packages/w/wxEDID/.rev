@@ -419,4 +419,22 @@ Added:
     group name.</comment>
     <requestid>1253547</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>386ec25e74b5414f2b6cb8143132a4c8</srcmd5>
+    <version>0.0.33</version>
+    <time>1760805389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.33
+Added:
+  * wxEDID_Frame::ChkNumValidBlocks()
+Fixed:
+  * (BUG) SaveRep(), ExportHex(): writing extension block data if
+    BED::num_ext is changed to zero.
+  * (BUG) wxEDID_Frame::DTD_Ctor_set_DTD(): sct_hborder-&gt;data and
+    sct_vborder-&gt;data must be set to zero for T7VTDB - otherwise
+    the DTD_Ctor could draw border lines from previously selected
+    DTD.
+  * few typos in textual descriptions</comment>
+    <requestid>1312168</requestid>
+  </revision>
 </revisionlist>

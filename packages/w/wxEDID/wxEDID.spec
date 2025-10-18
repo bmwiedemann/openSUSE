@@ -17,7 +17,7 @@
 
 
 Name:           wxEDID
-Version:        0.0.32
+Version:        0.0.33
 Release:        0
 Summary:        Extended Display Identification Data editor
 License:        GPL-3.0-only
