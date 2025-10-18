@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Oct 15 12:55:57 UTC 2025 - Noel Power <noel.power@suse.com>
+
+- Update to 4.22.5
+  * CVE-2025-10230: Command injection via WINS server hook
+    script (bso#15903); (bsc#1251280).
+  * CVE-2025-9640: uninitialized memory disclosure via
+    vfs_streams_xattr; (bso#15885); (bsc#1251279).
+
+-------------------------------------------------------------------
+Wed Oct  1 13:38:09 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Relax samba-gpupdate requirement for cepces, certmonger, and sscep
+  to a recommends. They are only required if utilizing certificate
+  auto enrollment (bsc#1249087).
+
+-------------------------------------------------------------------
+Thu Sep 25 08:56:20 UTC 2025 - Noel Power <noel.power@suse.com>
+
+- Disable timeouts for smb.service so that possibly slow running
+  ExecStartPre script 'update-samba-security-profile' doesn't
+  cause service start to fail due to timeouts;(bsc#1249181).
+
+-------------------------------------------------------------------
+Thu Sep 25 08:55:56 UTC 2025 - Noel Power <noel.power@suse.com>
+
+- Ensure semanage is pulled in as a requirement when samba in
+  installed when selinux security access mechanism that is used;
+  (bsc#1249180).
+
+-------------------------------------------------------------------
+Thu Sep 25 08:55:22 UTC 2025 - Noel Power <noel.power@suse.com>
+
+- don't attempt to label paths that don't exist, also remove
+  unecessary evaluation of semange & restorecon cmds;(bsc#1249179).
+
+-------------------------------------------------------------------
+Thu Sep 25 08:51:52 UTC 2025 - Noel Power <noel.power@suse.com>
+
+- Update to 4.22.4
+  * netr_LogonSamLogonEx returns NR_STATUS_ACCESS_DENIED with
+    SysvolReady=0; (bso#14981).
+  * getpwuid does not shift to new DC when current DC is down;
+    (bso#15844).
+  * Windows security hardening locks out schannel'ed netlogon dc
+    calls like netr_DsRGetDCName-; (bso#15876).
+  * Unresponsive second DC can cause idmapping failure when using
+    idmap_ad-; (bso#15881).
+  * kinit command is failing with Missing cache Error;
+    (bso#15840).
+  * Figuring out the DC name from IP address fails and breaks
+    fork_domain_child(); (bso#15891).
+  * vfs_streams_depot fstatat broken; (bso#15816).
+  * Delayed leader broadcast can block ctdb forever; (bso#15892).
+  * Apparently there is a conflict between shadow_copy2 module
+    and virusfilter (action quarantine); (bso#15663).
+  * Fix handling of empty GPO link; (bso#15877).
+  * SMB ACL inheritance doesn't work for files created;
+    (bso#15880).
+
+-------------------------------------------------------------------
 Fri Jul 25 15:41:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - adjust gpgme build dependency for future-proofing

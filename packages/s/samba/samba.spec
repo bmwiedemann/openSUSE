@@ -168,7 +168,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.22.3+git.403.4e078bdb832
+Version:        4.22.5+git.431.dc5a539f124
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -188,6 +188,7 @@ Requires:       %{fillup_prereq}
 Requires:       samba-client >= %{version}
 Requires:       samba-dcerpc = %{version}
 Requires:       sysuser-shadow
+Requires:       (/usr/sbin/semanage if selinux-policy)
 Provides:       group(ntadmin)
 
 %{?systemd_ordering}
@@ -419,11 +420,11 @@ that use SMB, RPC and other Samba provided protocols in Python3 programs.
 Summary:        Samba Group Policy
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Samba
-Requires:       cepces
-Requires:       certmonger
 Requires:       samba-ldb-ldap = %{version}
 Requires:       samba-python3 = %{version}
-Requires:       sscep
+Recommends:     cepces
+Recommends:     certmonger
+Recommends:     sscep
 
 %description gpupdate
 The samba-gpupdate package provides the samba-gpupdate tool for applying
