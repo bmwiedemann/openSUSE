@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 17 09:54:47 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches from webrtc's upstream to fix header includes
+  in order to build with pipewire 1.5.81:
+  * 0001-webrtc-IWYU-modules-video_capture.patch
+  * 0002-webrtc-IWYU-modules-desktop_capture-and-modules-video_captu.patch
+
+-------------------------------------------------------------------
 Mon Oct 13 09:36:45 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO on aarch64 until build is fixed - boo#1251922

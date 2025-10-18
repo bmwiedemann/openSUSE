@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %ifarch aarch64
 # Temp workaround for boo#1251922
-%define _lto_cflags %{nil} 
+%define _lto_cflags %{nil}
 %endif
 
 %define real_version 6.10.0
@@ -67,6 +68,8 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
+Patch0:         0001-webrtc-IWYU-modules-video_capture.patch
+Patch1:         0002-webrtc-IWYU-modules-desktop_capture-and-modules-video_captu.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
