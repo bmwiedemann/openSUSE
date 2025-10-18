@@ -73,4 +73,12 @@
     <comment>- Update to version 0.20.0 (forwarded request 1309827 from fl4nn)</comment>
     <requestid>1309927</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a28875f6b0d7f75da663203fe61390c0</srcmd5>
+    <version>0.20.1</version>
+    <time>1760790988</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20.1 (forwarded request 1312072 from fl4nn)</comment>
+    <requestid>1312088</requestid>
+  </revision>
 </revisionlist>

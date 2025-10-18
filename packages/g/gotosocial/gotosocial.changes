@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 17 15:12:14 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.20.1:
+  * Fix an issue causing duplicate posts to appear in timelines.
+  * Fix RSS format issue.
+  * Speed up some queries a little bit (lists in particular, but home
+    timeline a little too).
+  * Return more sensible HTTP codes from fedi endpoints when things
+    happen that aren't actually errors.
+  * Add API scope for managing emojis.
+
+
+-------------------------------------------------------------------
 Wed Oct  8 15:43:07 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.20.0:
