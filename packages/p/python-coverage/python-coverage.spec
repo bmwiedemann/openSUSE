@@ -33,7 +33,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-coverage%{psuffix}
-Version:        7.10.6
+Version:        7.10.7
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0

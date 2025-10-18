@@ -937,4 +937,19 @@ update to latest version</comment>
     <comment></comment>
     <requestid>1303296</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>158eaefd93cf404ccc36155266a70a63</srcmd5>
+    <version>7.10.7</version>
+    <time>1760790893</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.10.7:
+  * Performance: with branch coverage in large files, generating
+    HTML, JSON, or LCOV reports could take far too long due to
+    some quadratic behavior when creating the function and class
+    index pages.  This is now fixed, closing issue 2048.  Thanks
+    to Daniel Diniz for help diagnosing the problem.
+  * Most warnings and a few errors now have links to a page in
+    the docs explaining the specific message.  Closes issue 1921.</comment>
+    <requestid>1311041</requestid>
+  </revision>
 </revisionlist>

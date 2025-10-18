@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 13 09:16:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.10.7:
+  * Performance: with branch coverage in large files, generating
+    HTML, JSON, or LCOV reports could take far too long due to
+    some quadratic behavior when creating the function and class
+    index pages.  This is now fixed, closing issue 2048.  Thanks
+    to Daniel Diniz for help diagnosing the problem.
+  * Most warnings and a few errors now have links to a page in
+    the docs explaining the specific message.  Closes issue 1921.
+
+-------------------------------------------------------------------
 Tue Sep  9 05:58:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 7.10.6
