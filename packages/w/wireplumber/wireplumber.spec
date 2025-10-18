@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.11
+Version:        0.5.12
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,6 +30,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        wireplumber.env
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-automute-alsa-routes.lua-Dont-register_remove-hooks-if.patch
 Patch100:       set-profile-in-service.patch
 # docs
 BuildRequires:  doxygen
@@ -243,6 +245,7 @@ fi
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-mixer-api.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-modem-manager.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-mpris.so
+%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-notifications-api.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-portal-permissionstore.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-reserve-device.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-settings.so
@@ -256,6 +259,7 @@ fi
 %dir %{_datadir}/doc/wireplumber/examples
 %{_datadir}/doc/wireplumber/examples/wireplumber.conf.d
 %{_datadir}/wireplumber
+%{_mandir}/man1/wpctl.1%{?ext_man}
 
 %files lang -f %{name}.lang
 

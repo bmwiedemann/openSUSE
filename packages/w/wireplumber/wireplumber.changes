@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct 16 09:29:51 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.5.12:
+  * Additions & Enhancements:
+    - Added mono audio configuration support via
+      node.features.audio.mono setting that can be changed at
+      runtime with wpctl (!721)
+    - Added automatic muting of ALSA devices when a running node
+      is removed, helping prevent loud audio on speakers when
+      headsets are unplugged (!734)
+    - Added notifications API module for sending system
+      notifications (!734)
+    - Added comprehensive wpctl man page and documentation
+      (!735, #825)
+    - Enhanced object interest handling for PipeWire properties
+      on session items (!738)
+  * Fixes:
+    - Fixed race condition during shutdown in the permissions
+      portal module that could cause crashes in GDBus signal
+      handling (!748).
+    - Added device validity check in state-routes handling to
+      prevent issues when devices are removed during async
+      operations (!737, #844)
+    - Fixed Log.critical undefined function error in
+      device-info-cache (!733)
+    - Improved device hook documentation and configuration (!736)
+
+- Add patch from upstream to avoid dispatcher errors in the log
+  when registering/removing hooks that were already
+  registered/removed before:
+  * 0001-automute-alsa-routes.lua-Dont-register_remove-hooks-if.patch
+
+-------------------------------------------------------------------
 Tue Sep  2 16:59:05 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.5.11:
