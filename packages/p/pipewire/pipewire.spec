@@ -69,7 +69,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.4.8+git68.636cbae9b
+Version:        1.5.81
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -151,6 +151,7 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(spandsp)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vulkan)
 %if %{with_webrtc_audio_processing}
@@ -421,6 +422,7 @@ Provides:       jack-daemon
 Conflicts:      libjack0
 Conflicts:      libjacknet0
 Conflicts:      libjackserver0
+Conflicts:      pulseaudio-module-gsettings
 
 %description jack
 This package provides an ld.so.conf file that makes all JACK clients
@@ -451,7 +453,7 @@ export CXX=g++-11
 %else
     -Dffmpeg=disabled \
 %endif
-    -Dsystemd=enabled \
+    -Dlibsystemd=enabled \
     -Dsystemd-user-unit-dir=%{_userunitdir} \
     -Droc=disabled \
 %if %{with_vulkan}
@@ -476,9 +478,9 @@ export CXX=g++-11
 %else
     -Dbluez5-codec-ldac=disabled \
 %endif
+    -Dbluez5-codec-ldac-dec=disabled \
     -Dbluez5-codec-lc3=enabled \
     -Dbluez5-codec-lc3plus=disabled \
-    -Dgsettings-pulse-schema=disabled \
 %if %{with libcamera}
     -Dlibcamera=enabled \
 %else
@@ -494,6 +496,7 @@ export CXX=g++-11
 %if 0%{?suse_version} <= 1500
     -Dreadline=disabled \
 %endif
+    -Dselinux=enabled \
     -Dsession-managers="[]" \
     -Dsdl2=disabled \
     -Dsnap=disabled \
@@ -502,6 +505,7 @@ export CXX=g++-11
 %else
     -Decho-cancel-webrtc=disabled \
 %endif
+    -Donnxruntime=disabled \
     %{nil}
 %meson_build
 
@@ -734,6 +738,9 @@ fi
 %dir %{_libdir}/spa-%{spa_ver}/filter-graph
 %{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph-plugin-builtin.so
 %{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph-plugin-ebur128.so
+%if %{with use_ffmpeg}
+%{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph-plugin-ffmpeg.so
+%endif
 %{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph-plugin-ladspa.so
 %{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph-plugin-lv2.so
 %{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph-plugin-sofa.so
@@ -782,6 +789,8 @@ fi
 %{_bindir}/pw-loopback
 %{_bindir}/pw-link
 %{_bindir}/pw-metadata
+%{_bindir}/pw-midi2play
+%{_bindir}/pw-midi2record
 %{_bindir}/pw-mididump
 %{_bindir}/pw-midiplay
 %{_bindir}/pw-midirecord
@@ -790,6 +799,7 @@ fi
 %{_bindir}/pw-profiler
 %{_bindir}/pw-record
 %{_bindir}/pw-reserve
+%{_bindir}/pw-sysex
 %{_bindir}/pw-top
 %{_bindir}/pw-v4l2
 %{_mandir}/man1/pw-cat.1%{?ext_man}
@@ -835,6 +845,7 @@ fi
 %{_datadir}/pipewire/pipewire-pulse.conf
 %{_datadir}/pipewire/pipewire-pulse.conf.avail/
 %ghost %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
+%{_datadir}/glib-2.0/schemas/org.freedesktop.pulseaudio.gschema.xml
 
 %files alsa
 %dir %{_libdir}/alsa-lib
