@@ -2949,4 +2949,43 @@ git 2.48.0</comment>
     <comment></comment>
     <requestid>1300558</requestid>
   </revision>
+  <revision rev="329" vrev="1">
+    <srcmd5>857a50511ae22c0ab46fd5d104ebd374</srcmd5>
+    <version>2.51.1</version>
+    <time>1760790959</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1311737 from ateixeira
+
+- Update to 2.51.1:
+  - Fixes since Git 2.51.0
+    * The &quot;do you still use it?&quot; message given by a command that is
+      deeply deprecated and allow us to suggest alternatives has been
+      updated.
+    * The compatObjectFormat extension is used to hide an incomplete
+      feature that is not yet usable for any purpose other than
+      developing the feature further.  Document it as such to discourage
+      its use by mere mortals.
+    * Manual page for &quot;gitk&quot; is updated with the current maintainer's
+      name.
+    * Update the instructions for using GGG in the MyFirstContribution
+      document to say that a GitHub PR could be made against `git/git`
+      instead of `gitgitgadget/git`.
+    * Clang-format update to let our control macros be formatted the way we
+      had them traditionally, e.g., &quot;for_each_string_list_item()&quot; without
+      space before the parentheses.
+    * A few places where a size_t value was cast to curl_off_t without
+      checking has been updated to use the existing helper function.
+    * The start_delayed_progress() function in the progress eye-candy API
+      did not clear its internal state, making an initial delay value
+      larger than 1 second ineffective, which has been corrected.
+    * Makefile tried to run multiple &quot;cargo build&quot; which would not work
+      very well; serialize their execution to work around this problem.
+    * Adjust to the way newer versions of cURL selectively enable tracing
+      options, so that our tests can continue to work.
+    * During interactive rebase, using 'drop' on a merge commit led to
+      an error, which has been corrected.
+    * &quot;git refs migrate&quot; to migrate the reflog entries from a refs
+      backend to another had a handful of bugs squashed.</comment>
+    <requestid>1311738</requestid>
+  </revision>
 </revisionlist>
