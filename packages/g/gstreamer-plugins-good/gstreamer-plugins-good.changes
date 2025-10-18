@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:06:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.7:
+  + matroskamux: Properly check if pads are EOS in find_best_pad
+  + qtdemux:
+    - Bad performance with GoPro videos containing FDSC metadata
+      tracks
+    - Fix open/seek perf for GoPro files with SOS track
+    - Handle unsupported channel layout tags gracefully
+    - Set channel-mask to 0 for unknown layout tags
+  + rtspsrc: Send RTSP keepalives in TCP/interleaved modes
+  + v4l2:
+    - Add GstV4l2Error handling in gst_v4l2_get_capabilities
+    - Fix memory leak for DRM caps negotiation
+  + v4l2transform: reconfigure v4l2object only if respective caps
+    changed
+  + Fix issues with G_DISABLE_CHECKS & G_DISABLE_ASSERT
+
+-------------------------------------------------------------------
 Mon Sep 15 15:42:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.6:
