@@ -42,6 +42,8 @@ Source:         %{url}/%{sname}-%{version}.tar.xz
 Source1:        %{url}/%{sname}-%{version}.tar.xz.sig
 Source90:       poppler.keyring
 Source99:       baselibs.conf
+# CVE-2025-52885 [bsc#1251940], raw pointers can lead to dangling pointers when the vector is resized
+Patch0:         poppler-CVE-2025-52885.patch
 
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gtk-doc

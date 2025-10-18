@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 14 09:19:40 UTC 2025 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2025-52885 [bsc#1251940], raw pointers can lead to dangling pointers when the vector is resized
+  * poppler-CVE-2025-52885.patch
+
+-------------------------------------------------------------------
 Wed Sep 10 08:05:24 UTC 2025 - pgajdos@suse.com
 
 - version update to 25.09.1:
