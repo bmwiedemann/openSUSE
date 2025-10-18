@@ -1,7 +1,7 @@
 #
 # spec file for package incus
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@
 %endif
 
 Name:           incus
-Version:        6.15
-%define tag_version 6.15.0
+Version:        6.17
+%define tag_version 6.17.0
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -58,7 +58,7 @@ Source130:      %{name}-config.yml
 Source201:      %{name}.dnsmasq
 BuildRequires:  fdupes
 BuildRequires:  file
-BuildRequires:  go >= 1.23.7
+BuildRequires:  go >= 1.24.7
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel

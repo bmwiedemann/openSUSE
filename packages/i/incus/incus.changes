@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 13 05:29:40 UTC 2025 - Orville Q. Song <orville@anislet.dev>
+
+- Update to Incus 6.17. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-6-17-has-been-released/24862>
+
+ + IncusOS management commands
+ + Tunnel support on OVN networks
+ + Control over out-of-memory priority
+ + Override-able configuration and devices on backup import
+ + database-client cluster role
+ + Support for parent=none on OVN uplink networks
+ + Cluster groups in configuration preseed
+
+-------------------------------------------------------------------
 Mon Aug  4 06:49:57 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Incus 6.15. See upstream changelog online at
