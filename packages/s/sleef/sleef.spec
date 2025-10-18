@@ -1,7 +1,7 @@
 #
 # spec file for package sleef
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2023 Fabio Pesari
 #
 # All modifications and additions to the file contributed by third parties
@@ -66,11 +66,6 @@ These are the development files for SLEEF.
 
 %prep
 %autosetup
-
-%ifarch riscv64
-# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
-%global _lto_cflags %{nil}
-%endif
 
 %build
 %define __builder ninja

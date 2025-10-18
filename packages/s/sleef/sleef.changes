@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 15 11:11:33 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Reenable LTO on riscv64 as gcc has been fixed
+
+-------------------------------------------------------------------
 Thu Aug 28 09:47:16 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable SVE on aarch64 to fix build
