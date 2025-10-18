@@ -175,4 +175,17 @@
     <comment>KDE Frameworks 6.19.0 (forwarded request 1310520 from krop)</comment>
     <requestid>1310855</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cf0d21fdec7193c1a29c7cb51bd28cd5</srcmd5>
+    <version>6.19.1</version>
+    <time>1760790964</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.19.1
+  * Bump version for 6.19.1 release
+  * Fix HTTP network error propagation
+  * Forward all KIO error codes, not just ERR_ACCESS_DENIED
+  * Delete network reply also when handling a redirection
+  * CopyJob: Skip permission check if there is no UDS_ACCESS entry</comment>
+    <requestid>1311804</requestid>
+  </revision>
 </revisionlist>

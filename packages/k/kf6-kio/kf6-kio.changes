@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 16 20:48:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.19.1
+  * Bump version for 6.19.1 release
+  * Fix HTTP network error propagation
+  * Forward all KIO error codes, not just ERR_ACCESS_DENIED
+  * Delete network reply also when handling a redirection
+  * CopyJob: Skip permission check if there is no UDS_ACCESS entry
+
+-------------------------------------------------------------------
 Tue Oct  7 17:06:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.0

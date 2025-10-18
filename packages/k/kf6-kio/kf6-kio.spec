@@ -20,10 +20,12 @@
 
 %define rname kio
 # Full KF6 version (e.g. 6.19.0)
-%{!?_kf6_version: %global _kf6_version %{version}}
+# %%{!?_kf6_version: %%global _kf6_version %%{version}}
+%global _kf6_version 6.19.0
+
 %bcond_without released
 Name:           kf6-kio
-Version:        6.19.0
+Version:        6.19.1
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
