@@ -137,4 +137,12 @@
   (boo#1213976)</comment>
     <requestid>1102330</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>20219b6b3e9a9c709d7223b6f861b037</srcmd5>
+    <version>9.0.3</version>
+    <time>1760790961</time>
+    <user>dimstar_suse</user>
+    <comment>- added missing LICENSE file (bsc#1252149)</comment>
+    <requestid>1311746</requestid>
+  </revision>
 </revisionlist>
