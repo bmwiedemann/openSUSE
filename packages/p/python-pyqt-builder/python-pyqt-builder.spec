@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyqt-builder
-Version:        1.18.2
+Version:        1.19.0
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        BSD-2-Clause

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 11 17:19:36 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.19.0
+  * Support for Qt v6.10 when building wheels manually. The Qt
+    v6.10.0 installation for Linux on Intel created by the online
+    installer was built using Red Hat Linux v9.4. This means that
+    glibc v2.34 is now required. Earlier versions of Qt required
+    glibc v2.28. The manylinux wheel tags that are generated now
+    reflect the revised dependency.
+  * pyqt-bundle support for lower case wheel names. pyqt-bundle now
+    properly handles lower case wheel names as well as the legacy
+    mixed case names. Resolves #33
+
+-------------------------------------------------------------------
 Tue Oct  7 10:07:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems
