@@ -560,4 +560,12 @@ because we don't need git-web and the other stuff here (forwarded request 125417
 - Update to version 0.11.11:</comment>
     <requestid>1309021</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>58641d235bcdb9a6e5098530e7e22ae6</srcmd5>
+    <version>0.12.6</version>
+    <time>1760805386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1312160</requestid>
+  </revision>
 </revisionlist>

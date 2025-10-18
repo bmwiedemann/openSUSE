@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Oct 18 05:33:15 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
+
+- Update vendored golang.org/x/net/html to v0.46.0
+- Update to version 0.12.6
+  * Experimental Vulkan support
+  * Ollama's app now supports searching when running DeepSeek-V3.1,
+     Qwen3 and other models that support tool calling.
+  * Flash attention is now enabled by default for Gemma 3,
+    improving performance and memory utilization
+  * Fixed issue where Ollama would hang while generating responses
+  * Fixed issue where qwen3-coder would act in raw mode when using
+    /api/generate or ollama run qwen3-coder <prompt>
+  * Fixed qwen3-embedding providing invalid results
+  * Ollama will now evict models correctly when num_gpu is set
+  * Fixed issue where tool_index with a value of 0 would not be
+    sent to the model
+- Add ollama user to render group
+
+-------------------------------------------------------------------
+Sat Oct 11 14:46:43 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update vendored golang.org/x/net/html to v0.45.0
+  [boo#1251413] [CVE-2025-47911] [boo#1241757] [CVE-2025-22872]
+- Update to version 0.12.5:
+  * Fixed issue where "think": false would show an error instead of
+    being silently ignored
+  * Fixed deepseek-r1 output issues
+- Update to version 0.12.4:
+  * Flash attention is now enabled by default for Qwen 3 and Qwen 3
+    Coder
+  * Fixed an issue where keep_alive in the API would accept
+    different values for the /api/chat and /api/generate endpoints
+  * Fixed tool calling rendering with qwen3-coder
+  * More reliable and accurate VRAM detection
+  * OLLAMA_FLASH_ATTENTION can now be overridden to 0 for models
+    that have flash attention enabled by default
+  * Fixed crash where templates were not correctly defined
+
+-------------------------------------------------------------------
 Sat Oct  4 18:37:31 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.12.3:
@@ -98,8 +137,8 @@ Thu Aug  7 23:09:57 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
   * openai: allow for content and tool calls in the same message
   * openai: when converting role=tool messages, propagate the tool
     name
-  * openai: always provide reasoning 
-  * Bug fixes 
+  * openai: always provide reasoning
+  * Bug fixes
 
 -------------------------------------------------------------------
 Wed Aug  6 12:37:10 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
@@ -132,24 +171,24 @@ Tue Aug  5 00:07:35 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 Thu Jul  3 00:05:30 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.9.5:
-  * No notable changes.	
+  * No notable changes.
 
 - Update to version 0.9.4:
   * The directory in which models are stored can now be modified.
   * Tool calling with empty parameters will now work correctly
-  * Fixed issue when quantizing models with the Gemma 3n 
+  * Fixed issue when quantizing models with the Gemma 3n
   	architecture
 
 - Update to version 0.9.3:
   * Ollama now supports Gemma 3n
-  * Ollama will now limit context length to what the model was 
+  * Ollama will now limit context length to what the model was
   	trained against to avoid strange overflow behavior
 
 - Update to version 0.9.2:
-  * Fixed issue where tool calls without parameters would not be 
-  	returned correctly 
+  * Fixed issue where tool calls without parameters would not be
+  	returned correctly
   * Fixed does not support generate errors
-  * Fixed issue where some special tokens would not be tokenized 
+  * Fixed issue where some special tokens would not be tokenized
   	properly for some model architectures
 
 -------------------------------------------------------------------
@@ -197,7 +236,7 @@ Fri May 23 11:48:24 UTC 2025 - Wolfgang Engel <wolfgang.engel@suse.com>
 -------------------------------------------------------------------
 Wed May 21 18:42:55 UTC 2025 - Wolfgang Engel <wolfgang.engel@suse.com>
 
-- Allow to build for Package Hub for SLE-15-SP7 
+- Allow to build for Package Hub for SLE-15-SP7
   (openSUSE:Backports:SLE-15-SP7) with g++-12/gcc-12
   by checking for sle_version >= 150600 in spec file (bsc#1243438)
 

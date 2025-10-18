@@ -21,7 +21,7 @@
 %endif
 
 Name:           ollama
-Version:        0.12.3
+Version:        0.12.6
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -34,9 +34,11 @@ Source4:        sysconfig.ollama
 BuildRequires:  cmake >= 3.24
 BuildRequires:  git-core
 BuildRequires:  ninja
+BuildRequires:  shaderc
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.24
+BuildRequires:  pkgconfig(vulkan)
 Requires(pre):  %fillup_prereq
 # 32bit seems not to be supported anymore
 ExcludeArch:    %{ix86} %{arm}
