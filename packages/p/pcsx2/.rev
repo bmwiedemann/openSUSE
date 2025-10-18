@@ -7,4 +7,12 @@
     <comment>pcsx2</comment>
     <requestid>1286397</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>32a0836e3fa6b2a1bde31749598506dc</srcmd5>
+    <version>2.5.233~git20251018</version>
+    <time>1760790995</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build and re-submit</comment>
+    <requestid>1312107</requestid>
+  </revision>
 </revisionlist>
