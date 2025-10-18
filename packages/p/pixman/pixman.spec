@@ -45,11 +45,6 @@ Requires:       libpixman-1-0 = %{version}
 %description -n libpixman-1-0-devel
 Pixman is a pixel manipulation library for X and cairo.
 
-%ifarch riscv64
-# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
-%global _lto_cflags %{nil}
-%endif
-
 %prep
 %autosetup -p1
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 15 11:10:33 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Reenable LTO on riscv64 as gcc has been fixed
+
+-------------------------------------------------------------------
 Wed Sep 17 12:19:38 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.46.4:
