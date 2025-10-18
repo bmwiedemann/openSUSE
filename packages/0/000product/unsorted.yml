@@ -1634,6 +1634,7 @@ unsorted:
   - bsh2-demo 
   - bsh2-javadoc 
   - bsh2-manual 
+  - bson-devel 
   - bspwm 
   - bspwm-bash-completion 
   - bspwm-fish-completion 
@@ -9051,6 +9052,7 @@ unsorted:
   - ispell-spanish 
   - ispell-sq 
   - ispell-swedish 
+  - issue-generator 
   - istack-commons 
   - istack-commons-buildtools 
   - istack-commons-maven-plugin 
@@ -12397,6 +12399,7 @@ unsorted:
   - libbs2b0-32bit 
   - libbsd-ctor-static 
   - libbsd-devel 
+  - libbson-1_0-0 
   - libbtf2 
   - libbtrfs-devel 
   - libbtrfsutil-devel 
@@ -14677,6 +14680,7 @@ unsorted:
   - libmodplug1 
   - libmodsecurity3 
   - libmodulemd-devel 
+  - libmongoc-1_0-0 
   - libmono-2_0-1 
   - libmono-2_0-devel 
   - libmonoboehm-2_0-1 
@@ -15416,13 +15420,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp0_13 
-  - libprotobuf-lite32_0_0-32bit 
+  - libprotobuf-lite32_1_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf32_0_0-32bit 
+  - libprotobuf32_1_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc32_0_0 
-  - libprotoc32_0_0-32bit 
+  - libprotoc32_1_0 
+  - libprotoc32_1_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -16727,7 +16731,7 @@ unsorted:
   - libusrp1 
   - libusrsctp2 
   - libut1 
-  - libutf8_range-32_0_0-32bit 
+  - libutf8_range-32_1_0-32bit 
   - libutf8proc3 
   - libuuid-devel 
   - libuuid-devel-32bit 
@@ -18883,6 +18887,7 @@ unsorted:
   - molsketch 
   - molsketch-devel 
   - molsketch-doc 
+  - mongo-c-driver-devel 
   - mongolian-fonts 
   - monitoring-plugins 
   - monitoring-plugins-all 
