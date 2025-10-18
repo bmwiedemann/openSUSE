@@ -17,7 +17,7 @@
 
 
 Name:           simple-scan
-Version:        49.0.1
+Version:        49.1
 Release:        0
 Summary:        Simple Scanning Utility
 License:        GPL-3.0-or-later
