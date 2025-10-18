@@ -1,7 +1,7 @@
 #
 # spec file for package adaptec-firmware
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,13 +54,11 @@ install -m 644 %{S:0} %{buildroot}%{_firmwaredir}
 
 %files
 %defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %{_firmwaredir}/*
 
 %description
 Firmware files for the Adaptec AIC94xx (Razor) Series of SAS HBA
 Adapters.
-
-
 
 %changelog
