@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 17 15:27:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Provide python-faust-cchardet to avoid duplicities
+
+-------------------------------------------------------------------
 Tue Aug 12 08:09:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the libalternatives transition conditional

@@ -89,4 +89,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1300245</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>103f51cfb228632873c1c835c5df8201</srcmd5>
+    <version>2.1.19</version>
+    <time>1760790951</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide python-faust-cchardet to avoid duplicities</comment>
+    <requestid>1312076</requestid>
+  </revision>
 </revisionlist>
