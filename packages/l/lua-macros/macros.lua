@@ -13,31 +13,36 @@ print(ver)
   local nodots = ver:gsub("%.", "")
   print(nodots)
 }
-
 # compiled modules should go here
-%lua_archdir %(pkgconf --variable=INSTALL_CMOD lua)
-
+%lua_archdir %{lua:
+  local handle = io.popen("pkgconf --variable=INSTALL_CMOD lua 2>/dev/null")
+  local result = handle:read("*a")
+  handle:close()
+  result = result:gsub("^%s*(.-)%s*$", "%1")
+  print(result)
+}
 # pure Lua modules should go here
 %lua_noarchdir %{lua:
 local output = ""
-local f = io.popen("pkgconf --variable=INSTALL_LMOD lua")
-
+local f = io.popen("pkgconf --variable=INSTALL_LMOD lua 2>/dev/null")
 if f ~= nil then
     output = f:read("*a"):gsub("^%s*(.-)%s*$", "%1")
     f:close()
 end
-
 if output:len() > 0 then
     print(output)
     return
 end
-
 print(rpm.expand("%{_datadir}/lua/%{lua_version}"))
 }
-
 # lua includes folder
-%lua_incdir %(pkgconf --variable=includedir lua)
-
+%lua_incdir %{lua:
+  local handle = io.popen("pkgconf --variable=includedir lua 2>/dev/null")
+  local result = handle:read("*a")
+  handle:close()
+  result = result:gsub("^%s*(.-)%s*$", "%1")
+  print(result)
+}
 %lua_version_default %{lua:
 local result = 5.4
 local ver = rpm.expand("%{?suse_version}")
@@ -45,46 +50,54 @@ if #ver > 0 then
     ver = tonumber(ver)
     if ver < 1500 then
         result = 5.1
-    elseif ver == 1500 then
+    elseif ver < 1600 then
         result = 5.3
     end
 end
 print(result)
 }
-%lua_version_default_nodots %(lua -e 'print((string.gsub("%{lua_version_default}", "%.", "")))')
-
-%ifluadefault \
-%if %{lua_version_nodots} == %{lua_version_default_nodots} \
-%{nil}
-
+# Define a conditional that evaluates true when building for the default Lua version
+%lua_version_default_nodots %{lua:
+  local ver = rpm.expand("%{lua_version_default}")
+  local nodots = ver:gsub("%.", "")
+  print(nodots)
+}
 # Lua default version
 # This REQUIRES macro %{mod_name} to be defined.
 # -e: Exclude lua prefix
 # -n: Specify name
-%lua_provides(en:) \
-%ifluadefault \
-%if 0%{?-n:1} \
-Provides: %{-n*} = %{version}-%{release} \
-Obsoletes: %{-n*} < %{version}-%{release} \
-%else \
-%if 0%{?-e:1} \
-Provides: %{mod_name} = %{version}-%{release} \
-Obsoletes: %{mod_name} < %{version}-%{release} \
-%else \
-Provides: lua-%{mod_name} = %{version}-%{release} \
-Obsoletes: lua-%{mod_name} < %{version}-%{release} \
-%endif \
-%endif \
-%endif \
-%{nil}
+%lua_provides(en:) %{lua:
+local mod_name = rpm.expand("%{?mod_name}")
+if mod_name == "" then
+    print("-- Error: %{mod_name} is not defined!")
+    return
+end
+print([[
+%if "%{lua_version_nodots}" == "%{lua_version_default_nodots}"
+%if 0%{?-n:1}
+Provides: %{-n*} = %{version}-%{release}
+Obsoletes: %{-n*} < %{version}-%{release}
+%else
+%if 0%{?-e:1}
+Provides: %{mod_name} = %{version}-%{release}
+Obsoletes: %{mod_name} < %{version}-%{release}
+%else
+Provides: lua-%{mod_name} = %{version}-%{release}
+Obsoletes: lua-%{mod_name} < %{version}-%{release}
+%endif
+%endif
+%endif
+]])
+}
 
 # LuaRocks
 %luarocks_build \
-luarocks --lua-version "%{lua_version}" \\\
-make --pack-binary-rock --deps-mode none
-
-%luarocks_install \
-luarocks --lua-version="%{lua_version}" --tree="%{buildroot}%{_prefix}" \\\
-install --deps-mode=none --no-manifest
+luarocks --lua-version "%{lua_version}" make --deps-mode none --pack-binary-rock
 
 %luarocks_treedir %{_prefix}/lib/luarocks/rocks-%{lua_version}
+
+%luarocks_install \
+  /bin/sh -c 'luarocks --lua-version="%{lua_version}" --tree="%{buildroot}%{_prefix}" install --deps-mode=none --no-manifest "$@" && \
+  source_dir="%{buildroot}%{luarocks_treedir}/%{mod_name}/%{rock_version}" && \
+  [ -d "${source_dir}" ] && [ "$(ls -A "${source_dir}" | wc -l)" -gt 0 ] && \
+  mv -v "${source_dir}" __rocktree' --
