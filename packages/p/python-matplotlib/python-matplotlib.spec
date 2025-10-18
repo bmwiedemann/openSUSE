@@ -46,7 +46,7 @@ ExclusiveArch:  x86_64 aarch64
 
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.10.6
+Version:        3.10.7
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -88,12 +88,12 @@ BuildRequires:  pkgconfig(tcl)
 # SECTION runtime
 Requires:       python-Cycler >= 0.10
 Requires:       python-FontTools >= 4.22.0
-Requires:       python-Pillow >= 8
+Requires:       python-Pillow >= 9
 Requires:       python-contourpy >= 1.0.1
 Requires:       python-kiwisolver >= 1.3.1
-Requires:       python-numpy >= 1.23
+Requires:       python-numpy >= 1.25
 Requires:       python-packaging >= 20.0
-Requires:       python-pyparsing > 2.3.1
+Requires:       python-pyparsing >= 3
 Requires:       python-python-dateutil >= 2.7
 # /SECTION
 # SECTION test
@@ -104,6 +104,7 @@ BuildRequires:  %{python_module matplotlib-gtk4 = %{version}}
 BuildRequires:  %{python_module matplotlib-testdata = %{version}}
 BuildRequires:  %{python_module matplotlib-tk = %{version}}
 BuildRequires:  %{python_module matplotlib-web = %{version}}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
@@ -124,8 +125,8 @@ BuildRequires:  %{python_module cairocffi >= 0.8}
 # SECTION nbagg backend tests: not in Minimal-X or SLE <= 16
 %if %{without ringdisabled} && 0%{?suse_version} > %SLE_VERSION
 BuildRequires:  %{python_module matplotlib-nbagg = %{version}}
-BuildRequires:  %{python_module nbconvert if %python-base >= 3.10}
-BuildRequires:  %{python_module nbformat if %python-base >= 3.10}
+BuildRequires:  %{python_module nbconvert}
+BuildRequires:  %{python_module nbformat}
 %endif
 # /SECTION nbagg
 # SECTION qt backend tests
