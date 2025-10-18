@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-xattr
-Version:        0.10.1
+Version:        1.3.0
 Release:        0
 Summary:        Python wrapper for extended filesystem attributes
 License:        MIT
@@ -32,6 +32,7 @@ Source:         https://files.pythonhosted.org/packages/source/x/xattr/xattr-%{v
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -73,7 +74,7 @@ export CFLAGS="%{optflags}"
 
 %check
 export LC_ALL=en_US.utf-8
-%pyunittest discover -v
+%pytest_arch tests
 
 %post
 %python_install_alternative xattr
