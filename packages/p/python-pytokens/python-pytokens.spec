@@ -17,13 +17,15 @@
 
 
 Name:           python-pytokens
-Version:        0.1.10
+Version:        0.2.0
 Release:        0
 Summary:        A Fast, spec compliant Python 3.12+ tokenizer that runs on older Pythons
 License:        MIT
 URL:            https://github.com/tusharsadhwani/pytokens
 Source:         https://files.pythonhosted.org/packages/source/p/pytokens/pytokens-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -45,8 +47,7 @@ A Fast, spec compliant Python 3.12+ tokenizer that runs on older Pythons.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# GH has no tags and pypi tarball no tests
-# pytest
+%pytest
 
 %files %{python_files}
 %doc README.md

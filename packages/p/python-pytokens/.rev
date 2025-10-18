@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1306424</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f1c17dd3c439656d3755e5a26f1f3e9</srcmd5>
+    <version>0.2.0</version>
+    <time>1760790898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.0:
+  * Update tests and fix packaging
+- Run the testsuite.</comment>
+    <requestid>1311577</requestid>
+  </revision>
 </revisionlist>
