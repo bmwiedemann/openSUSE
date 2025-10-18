@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 18 12:17:19 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.57.0
+  - Bug Fixes:
+    - Unnest HTTP/TLS/socket timeouts. (Reviewed by David
+      Christensen.)
+    - Fix possible segfault in page checksum error message. (Fixed
+      by Zsolt Parragi. Reviewed by David Steele.)
+  - Features:
+    - Add repo-symlink option to suppress creation of repository
+      symlinks. (Reviewed by Douglas J Hunley. Suggested by Ron
+      Johnson.)
+  - Improvements:
+    - Add HTTP retries for 408 and 429 errors. (Reviewed by David
+      Christensen.)
+
+-------------------------------------------------------------------
 Mon Jul 21 18:50:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.56.0
