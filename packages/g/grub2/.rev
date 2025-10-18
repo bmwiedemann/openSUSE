@@ -3197,4 +3197,12 @@ pretty much the same. The main user visible changes are
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1251862</comment>
     <requestid>1310602</requestid>
   </revision>
+  <revision rev="376" vrev="65">
+    <srcmd5>8dacf74de52e5bef958654cb9b592f15</srcmd5>
+    <version>2.12</version>
+    <time>1760790900</time>
+    <user>dimstar_suse</user>
+    <comment>Re-include the rename</comment>
+    <requestid>1311609</requestid>
+  </revision>
 </revisionlist>

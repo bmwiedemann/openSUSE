@@ -204,26 +204,6 @@ snapshot_submenu_clean () {
 
 }
 
-set_grub_setting () {
-
-  name=$1
-  val=$2
-
-  if grep -q "$name" "$grub_setting"; then
-    sed -i -e "s!.*\($name\)=.*!\1=\"$val\"!" "$grub_setting"
-  else
-    echo "$name=\"$val\"" >> "$grub_setting"
-  fi
-}
-
-enable_grub_settings () {
-  set_grub_setting SUSE_BTRFS_SNAPSHOT_BOOTING "true"
-}
-
-disable_grub_settings () {
-  set_grub_setting SUSE_BTRFS_SNAPSHOT_BOOTING "false"
-}
-
 update_grub () {
    "${grub_mkconfig}" -o "${grub_cfg}"
 }
@@ -244,13 +224,13 @@ do
   shift
 
   case "$option" in
-  -e | --enable)
+  -e | --enable | create-config-post)
   opt_enable=true
   ;;
-  -d | --disable)
+  -d | --disable | delete-config-pre)
   opt_enable=false
   ;;
-  -r | --refresh)
+  -r | --refresh | create-snapshot-post | modify-snapshot-post | delete-snapshot-post | set-read-only-post)
   opt_refresh=true
   ;;
   -c | --clean)
@@ -262,11 +242,8 @@ do
 done
 
 if [ "x${opt_enable}" = "xtrue" ]; then
-  #enable_grub_settings
-  #update_grub
   snapper_snapshots_cfg_refresh
 elif [ "x${opt_enable}" = "xfalse" ]; then
-  #disable_grub_settings
   update_grub
   snapshot_submenu_clean
 fi
