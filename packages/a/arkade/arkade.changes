@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 18 06:02:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.51:
+  * Add alexellis/discord-updater
+  * fix: increase k8s ver strat timeout to 10
+
+-------------------------------------------------------------------
 Mon Oct 06 05:41:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.50 (0.11.49 dies not exist):
