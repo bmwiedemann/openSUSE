@@ -1,7 +1,6 @@
 #
 # spec file for package gitea-tea
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +17,7 @@
 
 
 Name:           gitea-tea
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        A command line tool to interact with Gitea servers
 License:        MIT
