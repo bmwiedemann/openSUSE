@@ -85,7 +85,7 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.41.1
+Version:        2.41.2
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
@@ -114,8 +114,34 @@ Patch5:         static_lib.patch
 Patch6:         util-linux-lib-netlink.patch
 # PATCH-FEATURE-UPSTREAM util-linux-agetty-netlink.patch boo1139983 jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
 Patch7:         util-linux-agetty-netlink.patch
-# PATCH-FEATURE-OPENSUSE util-linux-agetty-ssh-host-keys.patch sbrabec@suse.com -- Implement escape code for printing of ssh host keys in agetty issue file.
-Patch8:         util-linux-agetty-ssh-host-keys.patch
+# PATCH-FIX-UPSTREAM util-linux-lib-netlink-fix1.patch jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
+Patch8:         util-linux-lib-netlink-fix1.patch
+# PATCH-FIX-UPSTREAM util-linux-lib-netlink-fix2.patch jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
+Patch9:         util-linux-lib-netlink-fix2.patch
+# PATCH-FIX-UPSTREAM util-linux-lib-netlink-fix3.patch jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
+Patch10:        util-linux-lib-netlink-fix3.patch
+# PATCH-FIX-UPSTREAM util-linux-agetty-netlink-fix4.patch jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
+Patch11:        util-linux-agetty-netlink-fix4.patch
+# PATCH-FEATURE-UPSTREAM util-linux-lib-configs.patch gh#util-linux/util-linux#3752 schubi@suse.com -- Added lib "configs" for parsing configuration.
+Patch12:        util-linux-lib-configs.patch
+# PATCH-FEATURE-UPSTREAM util-linux-agetty-configs.patch gh#util-linux/util-linux#3752 schubi@suse.com -- agetty: using configs lib for parsing issue files.
+Patch13:        util-linux-agetty-configs.patch
+# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix1.patch schubi@suse.com -- Fix agetty: using configs lib.
+Patch14:        util-linux-lib-configs-fix1.patch
+# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix2.patch sbrabec@suse.com -- Fix agetty: using configs lib.
+Patch15:        util-linux-lib-configs-fix2.patch
+# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix3.patch sbrabec@suse.com -- Fix agetty: using configs lib.
+Patch16:        util-linux-lib-configs-fix3.patch
+# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix4.patch sbrabec@suse.com -- Fix agetty: using configs lib.
+Patch17:        util-linux-lib-configs-fix4.patch
+# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix5.patch sbrabec@suse.com -- Fix agetty: using configs lib.
+Patch18:        util-linux-lib-configs-fix5.patch
+# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix6.patch schubi@suse.com -- Fix agetty: using configs lib.
+Patch19:        util-linux-lib-configs-fix6.patch
+# PATCH-FIX-UPSTREAM util-linux-agetty-escape-erase.patch bsc#1194818 sbrabec@suse.com -- Fix agetty erase of escape characters.
+Patch20:        util-linux-agetty-escape-erase.patch
+# PATCH-FIX-BUILD util-linux-man-generated.patch sbrabec@suse.com -- Update generated man pages modified by patches.
+Patch21:        util-linux-man-generated.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
@@ -179,20 +205,16 @@ Obsoletes:      rfkill <= 0.5
 # The last version was 1.0+git.e66999f.
 Provides:       hardlink = 1.1
 Obsoletes:      hardlink < 1.1
-# bnc#805684:
-
-%ifarch s390x
-Obsoletes:      s390-32
-Provides:       s390-32
-%endif
-# arch s390x
-
+# New agetty fetures obsoleted issue-generator (up to SLE16 GA).
+Provides:       issue-generator = 1.13
+Obsoletes:      issue-generator <= 1.13
 Supplements:    filesystem(minix)
 # All login.defs variables require support from shadow side.
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
 # Use downstream version. Upstream may accept the patch later.
 Recommends:     login_defs-support-for-util-linux >= 4.17.4
+Requires(post): coreutils
 %endif
 # ulsubset == core
 
@@ -480,15 +502,6 @@ cp -a %{S:2} .
 %autopatch -p1
 # This test randomly fails or keeps hanging task inside build chroot (tested on 2.38).
 rm tests/ts/lsns/ioctl_ns
-# The bash-5.3 and up ignores SIGINT as well for async (co)processes,
-# rational https://lists.gnu.org/archive/html/bug-bash/2023-01/msg00050.html
-if test -n "$BASH_VERSION"
-then
-    if test ${BASH_VERSINFO[0]} -gt 5 -o \( ${BASH_VERSINFO[0]} -eq 5 -a ${BASH_VERSINFO[1]} -gt 2 \)
-    then
-	sed -ri '/^Ignored:/{ s/(HUP)/\1 INT/ }' tests/expected/kill/decode
-    fi
-fi
 
 %build
 AUTOPOINT=true GTKDOCIZE=true autoreconf -vfi
@@ -628,7 +641,7 @@ fi
 ################
 %if "%ulbuild" == "base"
 %make_install
-mkdir -p "%{buildroot}/%{_distconfdir}/default" "%{buildroot}/%{_pam_vendordir}" "%{buildroot}/%{_sysconfdir}/issue.d"
+mkdir -p "%{buildroot}%{_distconfdir}/default" "%{buildroot}%{_pam_vendordir}" "%{buildroot}%{_sysconfdir}/issue.d" "%{buildroot}/usr/lib/issue.d"
 install -m 644 %{SOURCE51} %{buildroot}%{_distconfdir}/blkid.conf
 touch %{buildroot}%{_sysconfdir}/blkid.conf
 mkdir %{buildroot}%{_sysconfdir}/blkid.conf.d %{buildroot}%{_distconfdir}/blkid.conf.d
@@ -783,6 +796,8 @@ export TS_OPT_hardlink_options_known_fail="yes"
 export TS_OPT_misc_mountpoint_known_fail="yes"
 # This test appears to be racy
 export TS_OPT_lslocks_lslocks_known_fail=yes
+# FIXME: script/options sometimes fails on aarch64, arm7l and s390x
+export TS_OPT_script_options_known_fail=yes
 #
 # hacks
 export PATH="$PATH:/sbin:/usr/sbin"
@@ -894,6 +909,17 @@ done
 
 %post
 %service_add_post fstrim.service fstrim.timer
+# Migrate from issue-generator. Existed up to SLE16 GA
+if systemctl is-enabled --quiet issue-generator.service ; then
+    rm -f `grep -l '\\\\[46]' /run/issue.d/70-*.conf 2>/dev/null` 2>/dev/null
+    rm -f /run/issue
+fi
+# The old issue layout causes double printing in util-linux >= 2.41. Existed up to SLE16 GA
+if test -L /etc/issue ; then
+    if test "`readlink /etc/issue`" = ../run/issue ; then
+        rm /etc/issue
+    fi
+fi
 
 %preun
 %service_del_preun fstrim.service fstrim.timer
@@ -992,6 +1018,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 # defined no_config
 
 %config %dir %{_sysconfdir}/issue.d
+%dir /usr/lib/issue.d
 %if %{ul_extra_bin_sbin}
 %core /bin/kill
 %core %verify(not mode) %attr(%ul_suid,root,root) /bin/su
@@ -1444,11 +1471,13 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/cfdisk
 %exclude %{_datadir}/bash-completion/completions/chcpu
 %exclude %{_datadir}/bash-completion/completions/chmem
+%exclude %{_datadir}/bash-completion/completions/choom
 %exclude %{_datadir}/bash-completion/completions/chrt
 %exclude %{_datadir}/bash-completion/completions/col
 %exclude %{_datadir}/bash-completion/completions/colcrt
 %exclude %{_datadir}/bash-completion/completions/colrm
 %exclude %{_datadir}/bash-completion/completions/column
+%exclude %{_datadir}/bash-completion/completions/coresched
 %exclude %{_datadir}/bash-completion/completions/ctrlaltdel
 %exclude %{_datadir}/bash-completion/completions/delpart
 %exclude %{_datadir}/bash-completion/completions/dmesg

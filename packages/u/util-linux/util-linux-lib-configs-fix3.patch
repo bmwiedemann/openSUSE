@@ -1,0 +1,41 @@
+From dc1e88ff93f40f2f8093fcf35bda615a9384edcd Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Wed, 1 Oct 2025 14:39:01 +0200
+Subject: [PATCH 5/8] build-sys: make sure _PATH_SYSCONFDIR is defined
+
+The autotools and meson define $sysconfdir, but this variable is not
+accessible for compiler. Fix it.
+
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ Makefile.am | 1 +
+ meson.build | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index 01e99701d..dd78a5345 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -4,6 +4,7 @@ AM_CPPFLAGS = \
+ 	-DLOCALEDIR=\"$(localedir)\" \
+ 	-D_PATH_RUNSTATEDIR=\"${runstatedir}\" \
+ 	-D_PATH_LOCALSTATEDIR=\"${localstatedir}\" \
++	-D_PATH_SYSCONFDIR=\"${sysconfdir}\" \
+ 	-D_PATH_SYSCONFSTATICDIR=\"${sysconfstaticdir}\"
+ 
+ if USE_VENDORDIR
+diff --git a/meson.build b/meson.build
+index c9d1e188e..cdaca47ee 100644
+--- a/meson.build
++++ b/meson.build
+@@ -73,6 +73,7 @@ conf.set('sysconfdir', sysconfdir)
+ conf.set('usrbin_execdir', usrbin_exec_dir)
+ conf.set('usrsbin_execdir', usrsbin_exec_dir)
+ conf.set('docdir', docdir)
++conf.set_quoted('_PATH_SYSCONFDIR', sysconfdir)
+ conf.set_quoted('_PATH_SYSCONFSTATICDIR', sysconfstaticdir)
+ conf.set_quoted('_PATH_RUNSTATEDIR', runstatedir)
+ conf.set_quoted('_PATH_LOCALSTATEDIR', localstatedir)
+-- 
+2.48.1
+

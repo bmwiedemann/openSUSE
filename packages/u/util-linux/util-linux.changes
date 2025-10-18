@@ -1,8 +1,117 @@
 -------------------------------------------------------------------
+Thu Oct 16 01:24:14 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Include agetty netlink fixes from the final upstream commits
+  (jsc#PED-8734, util-linux-lib-netlink.patch and
+  util-linux-agetty-netlink.patch) and upstream fixes
+  (util-linux-lib-netlink-fix1.patch,
+  util-linux-lib-netlink-fix2.patch,
+  util-linux-lib-netlink-fix3.patch and
+  util-linux-agetty-netlink-fix4.patch).
+- Fix configs library use in agetty (replace
+  util-linux-issuedir-usr-lib.patch by upstream
+  util-linux-lib-configs-fix1.patch,
+  add util-linux-lib-configs-fix2.patch,
+  util-linux-lib-configs-fix3.patch,
+  util-linux-lib-configs-fix4.patch,
+  util-linux-lib-configs-fix5.patch and
+  util-linux-lib-configs-fix6.patch).
+- Fix agetty erase of escape characters (relevant to bsc#1194818,
+  util-linux-agetty-escape-erase.patch).
+- Own /usr/lib/issue.d directory.
+- Perform migration from issue-generator (jsc#PED-8734, fixes
+  boo#1244446).
+- Drop util-linux-agetty-ssh-host-keys.patch. This feature is not
+  used in MicroOS any more.
+- Remove Provides/Obsoletes for s390-32, upgrade from SLE11 SP1 is
+  no more supported.
+
+-------------------------------------------------------------------
+Tue Sep 30 18:35:50 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- agetty: use /usr/lib/issue.d for backward compatibility
+  (util-linux-issuedir-usr-lib.patch).
+
+-------------------------------------------------------------------
+Sun Sep 28 07:15:32 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix address matching in agetty (boo#1247371,
+  util-linux-lib-netlink.patch).
+- Update generated man pages (util-linux-man-generated.patch).
+
+-------------------------------------------------------------------
+Fri Sep 26 02:28:52 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add configs library and use it in agetty
+  (gh#util-linux/util-linux#3752,
+  util-linux-lib-configs.patch, util-linux-agetty-configs.patch).
+
+-------------------------------------------------------------------
+Wed Sep 24 22:48:35 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.41.2:
+  * bash-completion:
+    * fix function name of enosys completion
+    * add choom and coresched
+  * blkid: correct an erroneous error message
+  * findmnt:
+    * (usage) add a needed equals sign before an optional argument
+    * add missing newline in --raw, --pair and --list output
+      formats
+  * fsck.cramfs: check buffer size for memcpy()
+  * getopt: document special symbols that should not be used as
+    option characters
+  * hardlink (man): add note note about ULFILEEQ_DEBUG=
+  * libblkid:
+    * Fix probe_ioctl_tp assigning BLKGETDISKSEQ as physical sector
+      size
+    * (ext) reduce false positive
+    * improve UUID_SUB= description
+  * lib/color-names:
+    * fix stupid bugs
+    * Fix color name canonicalization
+  * libfdisk:
+    * (script) improve separator usage in named-fields dump
+    * (script) fix device name separator parsing
+  * liblastlog2: markup fixes for man pages
+  * libmount: don't report fsconfig errors with "nofail"
+  * lib/path: avoid double free() for cpusets
+  * lib (treewide): add ul_ prefix to functions with generic names
+  * logger:
+    * fix buffer overflow when read stdin
+    * fix incorrect warning message when both --file and a message
+      are specified
+  * lsblk:
+    * fix possible use-after-free
+    * fix memory leak [coverity scan]
+    * use md as fallback TYPE when md/level empty
+  * lscpu:
+    * New Arm C1 parts
+    * Add NVIDIA Olympus arm64 core (jsc#PED-13683)
+  * man:
+    * Fixed incorrect ipcrm options
+    * Replace RETURN VALUE with EXIT STATUS in section 1
+  * mkfs.cramfs: avoid uninitialized value [coverity scan]
+  * more: temporarily ignore stdin when waiting for stderr
+  * rev: add --zero option to --help output
+  * setpriv: Improve getgroups() Portability
+  * sfdisk: reject spurious arguments for
+    --reorder/--backup-pt-sectors
+  * zramctl:
+    * ignore ENOENT when setting max_comp_streams
+    * fix MEM-USED column description
+  * Misc: Add missing ;; to -m case (#1)
+  * tests fixes
+  * translation updates
+- Remove bash 5.3 hack for kill/decode. It is now fixed.
+- Mark test script/options as failing. It randomly fails on
+  aarch64, arm7l and s390x inside OBS (needs research).
+
+-------------------------------------------------------------------
 Mon Aug 11 23:54:47 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Implement escape code for printing of ssh host keys in agetty
-  issue file (util-linux-agetty-ssh-host-keys.patch.
+  issue file (util-linux-agetty-ssh-host-keys.patch).
 - Include fixes from
   https://github.com/util-linux/util-linux/pull/3649 (jsc#PED-8734,
   util-linux-lib-netlink.patch, util-linux-agetty-netlink.patch).

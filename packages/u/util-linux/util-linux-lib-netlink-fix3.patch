@@ -1,0 +1,116 @@
+From 60c5c0516e6ce52863b12343a1cd276423ab3bae Mon Sep 17 00:00:00 2001
+From: Stanislav Brabec <sbrabec@suse.cz>
+Date: Wed, 8 Oct 2025 01:14:32 +0200
+Subject: [PATCH 5/6] netaddrq: Fix crash if there are no IP addresses
+
+If there are no IP addresses, ul_netaddrq_bestaddr() returns threshold
+ULNETLINK_RATING_BAD, but there were no addresses in the best array, and
+best_ifaceq remains unset, which caused crash. Setting the initial
+threshold to __ULNETLINK_RATING_MAX and checking for that value fixes that.
+And more, it also allows to accept IP addresses with ULNETLINK_RATING_BAD
+rating.
+
+Signed-off-by: Stanislav Brabec <sbrabec@suse.cz>
+---
+ include/netaddrq.h  | 14 ++++++++++----
+ lib/netaddrq.c      | 10 +++++-----
+ term-utils/agetty.c |  2 +-
+ 3 files changed, 16 insertions(+), 10 deletions(-)
+
+diff --git a/include/netaddrq.h b/include/netaddrq.h
+index 6d5e655f5..d9c595f32 100644
+--- a/include/netaddrq.h
++++ b/include/netaddrq.h
+@@ -94,8 +94,11 @@ ul_netaddrq_iface_bestaddr(struct list_head *ipq_list,
+  *   best_iface: interface where the best address was seen
+  *   best array: best ifa_valid lifetime seen per quality rating
+  *   return value: best rating seen
+- * Note: It can be needed to call it twice: once for ip_quality_list_4, once
+- * for ip_quality_list_6.
++ * Notes:
++ * - It can be needed to call it twice: once for ip_quality_list_4, once
++ *   for ip_quality_list_6.
++ * - If no IP addresses are found, the function can return
++ *   _ULNETLINK_RATING_MAX!
+  */
+ enum ul_netaddrq_ip_rating
+ ul_netaddrq_bestaddr(struct ul_nl_data *nl,
+@@ -109,8 +112,11 @@ ul_netaddrq_bestaddr(struct ul_nl_data *nl,
+  *   return value: The best address as a string
+  *   threshold: The best rating ever seen.
+  *   best_ifaceq: The best rated interfece ever seen.
+- * Note: It can be needed to call it twice: once for AF_INET, once
+- * for AF_INET6.
++ * Notes:
++ * - It can be needed to call it twice: once for AF_INET, once
++ *   for AF_INET6.
++ * - If the return value is NULL (i. e. there are no usable interfaces), then
++ *   *best_ifaceq remains unchanges and cannot be used.
+  */
+ const char *ul_netaddrq_get_best_ipp(struct ul_nl_data *nl,
+ 				     uint8_t ifa_family,
+diff --git a/lib/netaddrq.c b/lib/netaddrq.c
+index 34431d8d3..1ce454aaf 100644
+--- a/lib/netaddrq.c
++++ b/lib/netaddrq.c
+@@ -296,7 +296,7 @@ ul_netaddrq_iface_bestaddr(struct list_head *ipq_list,
+ 	struct ul_netaddrq_ip *ipq;
+ 	enum ul_netaddrq_ip_rating threshold;
+ 
+-	threshold = ULNETLINK_RATING_BAD;
++	threshold = __ULNETLINK_RATING_MAX;
+ 	list_for_each(li, ipq_list)
+ 	{
+ 		ipq = list_entry(li, struct ul_netaddrq_ip, entry);
+@@ -342,7 +342,7 @@ ul_netaddrq_bestaddr(struct ul_nl_data *nl,
+ 		ipqo = offsetof(struct ul_netaddrq_iface, ip_quality_list_6);
+ 	}
+ 
+-	threshold = ULNETLINK_RATING_BAD;
++	threshold = __ULNETLINK_RATING_MAX;
+ 	list_for_each(li, &(addrq->ifaces))
+ 	{
+ 		struct list_head *ipq_list;
+@@ -374,7 +374,7 @@ const char *ul_netaddrq_get_best_ipp(struct ul_nl_data *nl,
+ 
+ 	memset(best, 0, sizeof(best));
+ 	*threshold = ul_netaddrq_bestaddr(nl, best_ifaceq, &best, ifa_family);
+-	if (best[*threshold])
++	if (*threshold != __ULNETLINK_RATING_MAX)
+ 		return ul_nl_addr_ntop_address(best[*threshold]->addr);
+ 	return NULL;
+ }
+@@ -423,7 +423,7 @@ static void dump_iface_best(struct ul_nl_data *nl,
+ 	memset(best, 0, sizeof(best));
+ 	threshold = ul_netaddrq_iface_bestaddr(&(ifaceq->ip_quality_list_4),
+ 					       &best);
+-	if (best[threshold])
++	if (threshold != __ULNETLINK_RATING_MAX)
+ 	{
+ 		fprintf(netout, "%s IPv4: %s", (first ? "best address" : " "),
+ 		       ul_nl_addr_ntop_address(best[threshold]->addr));
+@@ -432,7 +432,7 @@ static void dump_iface_best(struct ul_nl_data *nl,
+ 	memset(best, 0, sizeof(best));
+ 	threshold = ul_netaddrq_iface_bestaddr(&(ifaceq->ip_quality_list_6),
+ 					       &best);
+-	if (best[threshold])
++	if (threshold != __ULNETLINK_RATING_MAX)
+ 	{
+ 		fprintf(netout, "%s IPv6: %s", (first ? "best address" : " "),
+ 		       ul_nl_addr_ntop_address(best[threshold]->addr));
+diff --git a/term-utils/agetty.c b/term-utils/agetty.c
+index b7786ce7d..ec922bd11 100644
+--- a/term-utils/agetty.c
++++ b/term-utils/agetty.c
+@@ -2603,7 +2603,7 @@ static void print_iface_best(struct issue *ie,
+ 
+ 		threshold =
+ 			ul_netaddrq_iface_bestaddr(l, &best);
+-		if (best[threshold])
++		if (threshold != __ULNETLINK_RATING_MAX)
+ 			fputs(ul_nl_addr_ntop_address(best[threshold]->addr),
+ 			      ie->output);
+ 	}
+-- 
+2.48.1
+

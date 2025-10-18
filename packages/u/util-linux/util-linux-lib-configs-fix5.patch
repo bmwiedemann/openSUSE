@@ -1,0 +1,35 @@
+From ec71160db85acde32a9eca5fb238c82d6a6e52cb Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Thu, 2 Oct 2025 11:55:55 +0200
+Subject: [PATCH 7/8] lib/configs: initialize FD to -1
+
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ lib/configs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/configs.c b/lib/configs.c
+index a5d714f23..d40743198 100644
+--- a/lib/configs.c
++++ b/lib/configs.c
+@@ -107,7 +107,7 @@ static int read_dir(struct list_head *file_list,
+ 	char *dirname = NULL;
+ 	char *filename = NULL;
+ 	struct stat st;
+-	int dd = 0, nfiles = 0, i;
++	int dd = -1, nfiles = 0, i;
+ 	int counter = 0;
+ 	struct dirent **namelist = NULL;
+ 	struct file_element *entry = NULL;
+@@ -175,7 +175,7 @@ finish:
+ 		free(namelist[i]);
+ 	free(namelist);
+ 	free(dirname);
+-	if (dd > 0)
++	if (dd >= 0)
+ 		close(dd);
+ 	return counter;
+ }
+-- 
+2.48.1
+

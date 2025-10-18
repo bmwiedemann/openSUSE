@@ -1,0 +1,48 @@
+From a5db8d0a9ed63969381feeee1eb0c3b39d32876b Mon Sep 17 00:00:00 2001
+From: Stanislav Brabec <sbrabec@suse.cz>
+Date: Sun, 5 Oct 2025 02:29:00 +0200
+Subject: [PATCH 3/6] ul_nl_addr_dup(): Fix address comparison
+
+When duplicating struct ul_nl_addr, set address to ifa_local, if it is set
+to ifa_local in the source. This fixes the address for PtP IPv4 network
+interfaces and avoids UL_NL_SOFT_ERROR during address removal.
+
+Signed-off-by: Stanislav Brabec <sbrabec@suse.cz>
+---
+ lib/netlink.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/netlink.c b/lib/netlink.c
+index 3def42e50..f8ac2c4c8 100644
+--- a/lib/netlink.c
++++ b/lib/netlink.c
+@@ -328,7 +328,7 @@ int ul_nl_close(struct ul_nl_data *nl) {
+ 	return close(nl->fd);
+ }
+ 
+-struct ul_nl_addr *ul_nl_addr_dup (struct ul_nl_addr *addr) {
++struct ul_nl_addr *ul_nl_addr_dup(struct ul_nl_addr *addr) {
+ 	struct ul_nl_addr *newaddr;
+ 	newaddr = calloc(1, sizeof(struct ul_nl_addr));
+ 	if (!newaddr)
+@@ -348,7 +348,7 @@ struct ul_nl_addr *ul_nl_addr_dup (struct ul_nl_addr *addr) {
+ 		memcpy(newaddr->ifa_local, addr->ifa_local,
+ 		       addr->ifa_local_len);
+ 	}
+-	if (&(addr->ifa_address) == &(addr->ifa_local))
++	if (addr->address == addr->ifa_local)
+ 		newaddr->address = newaddr->ifa_local;
+ 	else
+ 		newaddr->address = newaddr->ifa_address;
+@@ -360,7 +360,7 @@ error:
+ 	return NULL;
+ }
+ 
+-void ul_nl_addr_free (struct ul_nl_addr *addr) {
++void ul_nl_addr_free(struct ul_nl_addr *addr) {
+ 	if (addr) {
+ 		free(addr->ifa_address);
+ 		free(addr->ifa_local);
+-- 
+2.48.1
+

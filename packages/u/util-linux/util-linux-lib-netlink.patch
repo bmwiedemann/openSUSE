@@ -1,7 +1,7 @@
-From 02b917ba6fa43908a39f15c9496de04910044c0e Mon Sep 17 00:00:00 2001
+From ee8586cbdfb20bea6b1a7e3f10f136b6c8554f02 Mon Sep 17 00:00:00 2001
 From: Stanislav Brabec <sbrabec@suse.cz>
 Date: Wed, 9 Jul 2025 14:29:10 +0200
-Subject: [PATCH 1/2] New netlink library
+Subject: [PATCH 1/6] New netlink library
 
 To support netlink and IP address processing, two new library files were
 added:
@@ -21,18 +21,18 @@ Signed-off-by: Stanislav Brabec <sbrabec@suse.cz>
  include/netlink.h     | 171 ++++++++++
  lib/Makemodule.am     |  11 +
  lib/meson.build       |   2 +
- lib/netaddrq.c        | 716 ++++++++++++++++++++++++++++++++++++++++++
- lib/netlink.c         | 465 +++++++++++++++++++++++++++
- 7 files changed, 1491 insertions(+)
+ lib/netaddrq.c        | 723 ++++++++++++++++++++++++++++++++++++++++++
+ lib/netlink.c         | 466 +++++++++++++++++++++++++++
+ 7 files changed, 1499 insertions(+)
  create mode 100644 include/netaddrq.h
  create mode 100644 include/netlink.h
  create mode 100644 lib/netaddrq.c
  create mode 100644 lib/netlink.c
 
-diff --git a/include/Makemodule.am b/include/Makemodule.am
-index bdf87e221..4e310f0c4 100644
---- a/include/Makemodule.am
-+++ b/include/Makemodule.am
+Index: util-linux-2.41.2/include/Makemodule.am
+===================================================================
+--- util-linux-2.41.2.orig/include/Makemodule.am
++++ util-linux-2.41.2/include/Makemodule.am
 @@ -48,6 +48,8 @@ dist_noinst_HEADERS += \
  	include/monotonic.h \
  	include/mount-api-utils.h \
@@ -42,11 +42,10 @@ index bdf87e221..4e310f0c4 100644
  	include/nls.h \
  	include/optutils.h \
  	include/pager.h \
-diff --git a/include/netaddrq.h b/include/netaddrq.h
-new file mode 100644
-index 000000000..6d5e655f5
+Index: util-linux-2.41.2/include/netaddrq.h
+===================================================================
 --- /dev/null
-+++ b/include/netaddrq.h
++++ util-linux-2.41.2/include/netaddrq.h
 @@ -0,0 +1,124 @@
 +/*
 + * Netlink address quality rating list builder
@@ -172,11 +171,10 @@ index 000000000..6d5e655f5
 +						    const char *ifname);
 +
 +#endif /* UTIL_LINUX_NETADDRQ_H */
-diff --git a/include/netlink.h b/include/netlink.h
-new file mode 100644
-index 000000000..3d7c3da04
+Index: util-linux-2.41.2/include/netlink.h
+===================================================================
 --- /dev/null
-+++ b/include/netlink.h
++++ util-linux-2.41.2/include/netlink.h
 @@ -0,0 +1,171 @@
 +/*
 + * Netlink message processing
@@ -349,10 +347,10 @@ index 000000000..3d7c3da04
 +   ul_nl_addr_ntop(addr, UL_NL_ADDR_IFA_LOCAL)
 +
 +#endif /* UTIL_LINUX_NETLINK_H */
-diff --git a/lib/Makemodule.am b/lib/Makemodule.am
-index bf24b6bee..4af6589d1 100644
---- a/lib/Makemodule.am
-+++ b/lib/Makemodule.am
+Index: util-linux-2.41.2/lib/Makemodule.am
+===================================================================
+--- util-linux-2.41.2.orig/lib/Makemodule.am
++++ util-linux-2.41.2/lib/Makemodule.am
 @@ -1,4 +1,5 @@
  #
 +
@@ -377,7 +375,7 @@ index bf24b6bee..4af6589d1 100644
  	test_randutils \
  	test_remove_env \
  	test_strutils \
-@@ -138,6 +143,12 @@ test_ismounted_LDADD = libcommon.la $(LDADD)
+@@ -138,6 +143,12 @@ test_ismounted_LDADD = libcommon.la $(LD
  test_mangle_SOURCES = lib/mangle.c
  test_mangle_CFLAGS = $(AM_CFLAGS) -DTEST_PROGRAM_MANGLE
  
@@ -390,10 +388,10 @@ index bf24b6bee..4af6589d1 100644
  test_strutils_SOURCES = lib/strutils.c
  test_strutils_CFLAGS = $(AM_CFLAGS) -DTEST_PROGRAM_STRUTILS
  
-diff --git a/lib/meson.build b/lib/meson.build
-index 25febbc19..8734108a3 100644
---- a/lib/meson.build
-+++ b/lib/meson.build
+Index: util-linux-2.41.2/lib/meson.build
+===================================================================
+--- util-linux-2.41.2.orig/lib/meson.build
++++ util-linux-2.41.2/lib/meson.build
 @@ -17,6 +17,8 @@ lib_common_sources = '''
  	mbsalign.c
  	mbsedit.c
@@ -403,12 +401,11 @@ index 25febbc19..8734108a3 100644
  	procfs.c
  	pwdutils.c
  	randutils.c
-diff --git a/lib/netaddrq.c b/lib/netaddrq.c
-new file mode 100644
-index 000000000..67a43cb85
+Index: util-linux-2.41.2/lib/netaddrq.c
+===================================================================
 --- /dev/null
-+++ b/lib/netaddrq.c
-@@ -0,0 +1,716 @@
++++ util-linux-2.41.2/lib/netaddrq.c
+@@ -0,0 +1,723 @@
 +/*
 + * Netlink address quality rating list builder
 + *
@@ -542,6 +539,7 @@ index 000000000..67a43cb85
 +
 +	list_for_each(li, &(addrq->ifaces)) {
 +		struct ul_netaddrq_iface *ifaceqq;
++
 +		ifaceqq = list_entry(li, struct ul_netaddrq_iface, entry);
 +		if (ifaceqq->ifa_index == nl->addr.ifa_index) {
 +			ifaceq = ifaceqq;
@@ -571,9 +569,9 @@ index 000000000..67a43cb85
 +			if (!(ifaceq->ifname = strdup(nl->addr.ifname)))
 +			{
 +				DBG(LIST, ul_debugobj(addrq,
-+						       "malloc() 2 failed"));
++						      "malloc() failed"));
 +				free(ifaceq);
-+				return -1;
++				return -ENOMEM;
 +			}
 +			list_add_tail(&(ifaceq->entry), &(addrq->ifaces));
 +			DBG(LIST, ul_debugobj(ifaceq,
@@ -595,11 +593,17 @@ index 000000000..67a43cb85
 +	}
 +
 +	list_for_each(li, ipq_list) {
-+		ipq = list_entry(li, struct ul_netaddrq_ip, entry);
-+		if (ipq->addr->address_len == nl->addr.address_len)
-+			if (!memcmp(ipq->addr->address, nl->addr.address,
-+				   nl->addr.address_len))
++		struct ul_netaddrq_ip *ipqq;
++
++		ipqq = list_entry(li, struct ul_netaddrq_ip, entry);
++		if (ipqq->addr->address_len == nl->addr.address_len)
++			if (!memcmp(ipqq->addr->address, nl->addr.address,
++				   nl->addr.address_len)) {
++				ipq = ipqq;
++				DBG(LIST, ul_debugobj(ipq,
++						      "address found in ipq_list"));
 +				break;
++			}
 +	}
 +	if (ipq == NULL) {
 +			DBG(LIST, ul_debugobj(ipq_list,
@@ -1125,12 +1129,11 @@ index 000000000..67a43cb85
 +	return rc;
 +}
 +#endif /* TEST_PROGRAM_NETADDRQ */
-diff --git a/lib/netlink.c b/lib/netlink.c
-new file mode 100644
-index 000000000..fbe04dd4c
+Index: util-linux-2.41.2/lib/netlink.c
+===================================================================
 --- /dev/null
-+++ b/lib/netlink.c
-@@ -0,0 +1,465 @@
++++ util-linux-2.41.2/lib/netlink.c
+@@ -0,0 +1,466 @@
 +/*
 + * Netlink message processing
 + *
@@ -1149,6 +1152,7 @@ index 000000000..fbe04dd4c
 +#include <sys/socket.h>
 +#include <arpa/inet.h>
 +#include <netinet/in.h>
++#include "strutils.h"
 +#include "netlink.h"
 +#include "debug.h"
 +#include "nls.h"
@@ -1501,7 +1505,7 @@ index 000000000..fbe04dd4c
 +	}
 +}
 +
-+const char *ul_nl_addr_ntop (const struct ul_nl_addr *addr, int addrid) {
++const char *ul_nl_addr_ntop(const struct ul_nl_addr *addr, int addrid) {
 +	const void **ifa_addr = (const void **)((const char *)addr + addrid);
 +	/* (INET6_ADDRSTRLEN-1) + (IF_NAMESIZE-1) + strlen("%") + 1 */
 +	static char addr_str[INET6_ADDRSTRLEN+IF_NAMESIZE];
@@ -1519,7 +1523,7 @@ index 000000000..fbe04dd4c
 +			p = addr_str;
 +			while (*p) p++;
 +			*p++ = '%';
-+			strncpy(p, addr->ifname, IF_NAMESIZE);
++			xstrncpy(p, addr->ifname, IF_NAMESIZE);
 +			return addr_str;
 +		} else
 +			return inet_ntop(AF_INET6,
@@ -1596,6 +1600,3 @@ index 000000000..fbe04dd4c
 +	return rc;
 +}
 +#endif /* TEST_PROGRAM_NETLINK */
--- 
-2.48.1
-

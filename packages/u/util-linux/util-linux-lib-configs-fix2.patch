@@ -1,0 +1,86 @@
+From a7f5e5c9f9c00823e04e89e9030337239a5bd7b8 Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Wed, 1 Oct 2025 14:42:39 +0200
+Subject: [PATCH 4/8] agetty: use standard path macros
+
+- remove unnecessary issuefile-related stuff from include/pathnames.h
+- use standard _PATH_* macros
+
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ include/pathnames.h |  4 ----
+ lib/configs.c       |  4 +---
+ term-utils/agetty.c | 10 ++++++----
+ 3 files changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/include/pathnames.h b/include/pathnames.h
+index 80a0ee00a..036f365fd 100644
+--- a/include/pathnames.h
++++ b/include/pathnames.h
+@@ -71,10 +71,6 @@
+ # define _PATH_BTMP		"/var/log/btmp"
+ #endif
+ 
+-#define _PATH_ISSUE_FILENAME	"issue"
+-#define _PATH_ETC_ISSUEDIR	"/etc"
+-#define _PATH_USR_ISSUEDIR	"/usr/lib"
+-
+ #define _PATH_OS_RELEASE_ETC	"/etc/os-release"
+ #define _PATH_OS_RELEASE_USR	"/usr/lib/os-release"
+ #define _PATH_NUMLOCK_ON	_PATH_RUNSTATEDIR "/numlock-on"
+diff --git a/lib/configs.c b/lib/configs.c
+index b038844d2..0534c18ef 100644
+--- a/lib/configs.c
++++ b/lib/configs.c
+@@ -16,8 +16,6 @@
+ #include "list.h"
+ #include "fileutils.h"
+ 
+-#define DEFAULT_ETC_SUBDIR "/etc"
+-
+ struct file_element {
+ 	struct list_head file_list;
+ 	char *filename;
+@@ -212,7 +210,7 @@ int ul_configs_file_list(struct list_head *file_list,
+ 
+ 	/* Default is /etc */
+ 	if (!etc_subdir)
+-		etc_subdir = DEFAULT_ETC_SUBDIR;
++		etc_subdir = _PATH_SYSCONFDIR;
+ 
+ 	if (!usr_subdir)
+ 		usr_subdir = "";
+diff --git a/term-utils/agetty.c b/term-utils/agetty.c
+index 3e0a4ec4f..31dbf2706 100644
+--- a/term-utils/agetty.c
++++ b/term-utils/agetty.c
+@@ -1969,7 +1969,7 @@ static void eval_issue_file(struct issue *ie,
+ 		goto done;
+ 	}
+ 
+-#ifdef 	ISSUEDIR_SUPPORT
++#ifdef ISSUEDIR_SUPPORT
+ 	struct list_head file_list;
+ 	struct list_head *current = NULL;
+ 	char *name = NULL;
+@@ -1977,12 +1977,14 @@ static void eval_issue_file(struct issue *ie,
+         /* Reading all issue files and concatinating all contents to one content.
+          * The ordering rules are defineded in:
+          * https://github.com/uapi-group/specifications/blob/main/specs/configuration_files_specification.md
++	 *
++	 * Note that _PATH_RUNSTATEDIR (/run) is always read by ul_configs_file_list().
+ 	 */
+ 	ul_configs_file_list(&file_list,
+ 			     NULL,
+-			     _PATH_ETC_ISSUEDIR,
+-			     _PATH_USR_ISSUEDIR,
+-			     _PATH_ISSUE_FILENAME,
++			     _PATH_SYSCONFDIR,
++			     _PATH_SYSCONFSTATICDIR,
++			     "issue",
+ 			     ISSUEDIR_EXT);
+ 
+ 	while (ul_configs_next_filename(&file_list, &current, &name) == 0) {
+-- 
+2.48.1
+

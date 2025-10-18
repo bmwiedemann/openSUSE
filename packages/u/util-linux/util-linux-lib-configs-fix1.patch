@@ -1,0 +1,29 @@
+From 16826c6675df3b6b28851c72f2dd1d194d3c7189 Mon Sep 17 00:00:00 2001
+From: Stefan Schubert <schubi@suse.de>
+Date: Wed, 1 Oct 2025 12:19:08 +0200
+Subject: [PATCH 3/8] Using fix issue dir path "/usr/lib" for agetty
+
+---
+ include/pathnames.h | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/include/pathnames.h b/include/pathnames.h
+index 298d94973..80a0ee00a 100644
+--- a/include/pathnames.h
++++ b/include/pathnames.h
+@@ -73,11 +73,7 @@
+ 
+ #define _PATH_ISSUE_FILENAME	"issue"
+ #define _PATH_ETC_ISSUEDIR	"/etc"
+-#ifdef USE_VENDORDIR
+-#  define _PATH_USR_ISSUEDIR	_PATH_VENDORDIR
+-#else
+-#  define _PATH_USR_ISSUEDIR	"/usr/lib"
+-#endif
++#define _PATH_USR_ISSUEDIR	"/usr/lib"
+ 
+ #define _PATH_OS_RELEASE_ETC	"/etc/os-release"
+ #define _PATH_OS_RELEASE_USR	"/usr/lib/os-release"
+-- 
+2.48.1
+

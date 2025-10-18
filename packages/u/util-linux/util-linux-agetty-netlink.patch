@@ -1,7 +1,7 @@
-From bf7c46ef9158f3baae6b637ebb73a24d8460d394 Mon Sep 17 00:00:00 2001
+From b8b5030d792c0ffe51ee4a5925d43735b5d782d8 Mon Sep 17 00:00:00 2001
 From: Stanislav Brabec <sbrabec@suse.cz>
 Date: Wed, 9 Jul 2025 14:35:28 +0200
-Subject: [PATCH 2/2] agetty: Implement netlink based IP processing
+Subject: [PATCH 2/6] agetty: Implement netlink based IP processing
 
 The current \4 and \6 issue file escapes implementation is inferior. It
 uses get getifaddrs() to get a list of IP addresses. This function does not
@@ -50,11 +50,11 @@ Signed-off-by: Stanislav Brabec <sbrabec@suse.cz>
  term-utils/agetty.c      | 417 ++++++++++++++++++++++-----------------
  2 files changed, 246 insertions(+), 177 deletions(-)
 
-diff --git a/term-utils/agetty.8.adoc b/term-utils/agetty.8.adoc
-index a33f12a3f..6670498f5 100644
---- a/term-utils/agetty.8.adoc
-+++ b/term-utils/agetty.8.adoc
-@@ -253,6 +253,12 @@ Insert the IPv4 address of the specified network interface (for example: \4\{eth
+Index: util-linux-2.41.2/term-utils/agetty.8.adoc
+===================================================================
+--- util-linux-2.41.2.orig/term-utils/agetty.8.adoc
++++ util-linux-2.41.2/term-utils/agetty.8.adoc
+@@ -247,6 +247,12 @@ Insert the IPv4 address of the specified
  6 or 6{_interface_}::
  The same as \4 but for IPv6.
  
@@ -67,10 +67,10 @@ index a33f12a3f..6670498f5 100644
  b::
  Insert the baudrate of the current line.
  
-diff --git a/term-utils/agetty.c b/term-utils/agetty.c
-index 5e564c4f0..c37417e1e 100644
---- a/term-utils/agetty.c
-+++ b/term-utils/agetty.c
+Index: util-linux-2.41.2/term-utils/agetty.c
+===================================================================
+--- util-linux-2.41.2.orig/term-utils/agetty.c
++++ util-linux-2.41.2/term-utils/agetty.c
 @@ -32,10 +32,7 @@
  #include <langinfo.h>
  #include <grp.h>
@@ -226,7 +226,7 @@ index 5e564c4f0..c37417e1e 100644
  
  		/* Just drain the inotify buffer */
  		} else if (inotify_fd >= 0 && FD_ISSET(inotify_fd, &rfds)) {
-@@ -1937,11 +1865,44 @@ static void eval_issue_file(struct issue *ie,
+@@ -1937,11 +1865,44 @@ static void eval_issue_file(struct issue
  			    struct options *op,
  			    struct termios *tp)
  {
@@ -274,7 +274,7 @@ index 5e564c4f0..c37417e1e 100644
  	/*
  	 * The custom issue file or directory list specified by:
  	 *   agetty --issue-file <path[:path]...>
-@@ -1986,11 +1947,6 @@ static void eval_issue_file(struct issue *ie,
+@@ -1986,11 +1947,6 @@ static void eval_issue_file(struct issue
  	issuedir_read(ie, _PATH_SYSCONFSTATICDIR "/" _PATH_ISSUE_DIRNAME, op, tp);
  
  done:
@@ -317,7 +317,7 @@ index 5e564c4f0..c37417e1e 100644
  			}
  		}
  #endif
-@@ -2168,7 +2130,7 @@ static char *get_logname(struct issue *ie, struct options *op, struct termios *t
+@@ -2168,7 +2130,7 @@ static char *get_logname(struct issue *i
  
  	no_reload:
  #ifdef AGETTY_RELOAD
@@ -326,7 +326,7 @@ index 5e564c4f0..c37417e1e 100644
  			/* refresh prompt -- discard input data, clear terminal
  			 * and call do_prompt() again
  			 */
-@@ -2177,6 +2139,8 @@ static char *get_logname(struct issue *ie, struct options *op, struct termios *t
+@@ -2177,6 +2139,8 @@ static char *get_logname(struct issue *i
  			eval_issue_file(ie, op, tp);
  			if (!issue_is_changed(ie))
  				goto no_reload;
@@ -335,26 +335,43 @@ index 5e564c4f0..c37417e1e 100644
  			tcflush(STDIN_FILENO, TCIFLUSH);
  			if ((op->flags & F_VCONSOLE)
  			    && (op->flags & F_NOCLEAR) == 0)
-@@ -2576,92 +2540,170 @@ static void log_warn(const char *fmt, ...)
+@@ -2576,92 +2540,170 @@ static void log_warn(const char *fmt, ..
  	va_end(ap);
  }
  
 -static void print_addr(struct issue *ie, sa_family_t family, void *addr)
+-{
+-	char buff[INET6_ADDRSTRLEN + 1];
 +static void print_iface_best(struct issue *ie,
 +			     const char *ifname,
 +			     uint8_t ifa_family)
- {
--	char buff[INET6_ADDRSTRLEN + 1];
++{
 +	struct ul_netaddrq_ip *best[__ULNETLINK_RATING_MAX];
 +	struct ul_netaddrq_iface *ifaceq;
 +	struct list_head *l;
 +	enum ul_netaddrq_ip_rating threshold;
++
++	if (!ie->nl.data_addr)
++		return; /* error: init failed */
  
 -	inet_ntop(family, addr, buff, sizeof(buff));
 -	fprintf(ie->output, "%s", buff);
--}
-+	if (!ie->nl.data_addr)
-+		return; /* error: init failed */
++	if ((ifaceq = ul_netaddrq_iface_by_name(&(ie->nl), ifname)))
++	{
++		memset(best, 0, sizeof(best));
++		if (ifa_family == AF_INET)
++			l = &(ifaceq->ip_quality_list_4);
++		else
++		/* if (ifa_family == AF_INET6) */
++			l = &(ifaceq->ip_quality_list_6);
++
++		threshold =
++			ul_netaddrq_iface_bestaddr(l, &best);
++		if (best[threshold])
++			fputs(ul_nl_addr_ntop_address(best[threshold]->addr),
++			      ie->output);
++	}
+ }
  
 -/*
 - * Prints IP for the specified interface (@iface), if the interface is not
@@ -370,26 +387,6 @@ index 5e564c4f0..c37417e1e 100644
 -	struct addrinfo hints, *info = NULL;
 -	char *host = NULL;
 -	void *addr = NULL;
-+	if ((ifaceq = ul_netaddrq_iface_by_name(&(ie->nl), ifname)))
-+	{
-+		memset(best, 0, sizeof(best));
-+		if (ifa_family == AF_INET)
-+			l = &(ifaceq->ip_quality_list_4);
-+		else
-+		/* if (ifa_family == AF_INET6) */
-+			l = &(ifaceq->ip_quality_list_6);
- 
--	if (!addrs)
--		return;
-+		threshold =
-+			ul_netaddrq_iface_bestaddr(l, &best);
-+		if (best[threshold])
-+			fputs(ul_nl_addr_ntop_address(best[threshold]->addr),
-+			      ie->output);
-+	}
-+}
- 
--	for (p = addrs; p; p = p->ifa_next) {
 +static void print_addrq_bestofall(struct issue *ie,
 +				  uint8_t ifa_family)
 +{
@@ -397,12 +394,31 @@ index 5e564c4f0..c37417e1e 100644
 +	enum ul_netaddrq_ip_rating threshold;
 +	const char *best_ipp;
  
+-	if (!addrs)
+-		return;
++	if (!ie->nl.data_addr)
++		return; /* error: init failed */
+ 
+-	for (p = addrs; p; p = p->ifa_next) {
++	best_ipp = ul_netaddrq_get_best_ipp(&(ie->nl), ifa_family,
++					    &threshold, &best_ifaceq);
++	if (best_ipp)
++		fputs(best_ipp, ie->output);
++}
+ 
 -		if (!p->ifa_name ||
 -		    !p->ifa_addr ||
 -		    p->ifa_addr->sa_family != family)
 -			continue;
-+	if (!ie->nl.data_addr)
-+		return; /* error: init failed */
++static void dump_iface_good(struct issue *ie,
++			    struct ul_netaddrq_iface *ifaceq)
++{
++	struct ul_netaddrq_ip *best4[__ULNETLINK_RATING_MAX];
++	struct ul_netaddrq_ip *best6[__ULNETLINK_RATING_MAX];
++	struct list_head *li;
++	enum ul_netaddrq_ip_rating threshold = __ULNETLINK_RATING_MAX - 1;
++	enum ul_netaddrq_ip_rating fthreshold; /* per family threshold */
++	bool first = true;
  
 -		if (iface) {
 -			/* Filter out by interface name */
@@ -415,11 +431,14 @@ index 5e564c4f0..c37417e1e 100644
 -			    !(p->ifa_flags & IFF_RUNNING))
 -				continue;
 -		}
-+	best_ipp = ul_netaddrq_get_best_ipp(&(ie->nl), ifa_family,
-+					    &threshold, &best_ifaceq);
-+	if (best_ipp)
-+		fputs(best_ipp, ie->output);
-+}
++	memset(best4, 0, sizeof(best4));
++	threshold = ul_netaddrq_iface_bestaddr(&(ifaceq->ip_quality_list_4),
++					       &best4);
++	memset(best6, 0, sizeof(best6));
++	fthreshold = ul_netaddrq_iface_bestaddr(&(ifaceq->ip_quality_list_6),
++						&best6);
++	if (fthreshold < threshold)
++		threshold = fthreshold;
  
 -		addr = NULL;
 -		switch (p->ifa_addr->sa_family) {
@@ -429,29 +448,14 @@ index 5e564c4f0..c37417e1e 100644
 -		case AF_INET6:
 -			addr = &((struct sockaddr_in6 *) p->ifa_addr)->sin6_addr;
 -			break;
-+static void dump_iface_good(struct issue *ie,
-+			    struct ul_netaddrq_iface *ifaceq)
-+{
-+	struct ul_netaddrq_ip *best4[__ULNETLINK_RATING_MAX];
-+	struct ul_netaddrq_ip *best6[__ULNETLINK_RATING_MAX];
-+	struct list_head *li;
-+	enum ul_netaddrq_ip_rating threshold = __ULNETLINK_RATING_MAX - 1;
-+	enum ul_netaddrq_ip_rating fthreshold; /* per family threshold */
-+	bool first = true;
-+
-+	memset(best4, 0, sizeof(best4));
-+	threshold = ul_netaddrq_iface_bestaddr(&(ifaceq->ip_quality_list_4),
-+					       &best4);
-+	memset(best6, 0, sizeof(best6));
-+	fthreshold = ul_netaddrq_iface_bestaddr(&(ifaceq->ip_quality_list_6),
-+						&best6);
-+	if (fthreshold < threshold)
-+		threshold = fthreshold;
-+
+-		}
 +	list_for_each(li, &(ifaceq->ip_quality_list_4))
 +	{
 +		struct ul_netaddrq_ip *ipq;
-+
+ 
+-		if (addr) {
+-			print_addr(ie, family, addr);
+-			return;
 +		ipq = list_entry(li, struct ul_netaddrq_ip, entry);
 +		if (threshold <= ULNETLINK_RATING_SCOPE_LINK &&
 +		    ( ipq->quality <= threshold ||
@@ -478,15 +482,29 @@ index 5e564c4f0..c37417e1e 100644
 +				      ie->output);
  		}
 +	temp_cont4:;
-+	}
+ 	}
  
--		if (addr) {
--			print_addr(ie, family, addr);
--			return;
+-	if (iface)
+-		return;
+-
+-	/* Hmm.. not found the best interface, print host IP at least */
+-	memset(&hints, 0, sizeof(hints));
+-	hints.ai_family = family;
+-	if (family == AF_INET6)
+-		hints.ai_flags = AI_V4MAPPED;
 +	list_for_each(li, &(ifaceq->ip_quality_list_6))
 +	{
 +		struct ul_netaddrq_ip *ipq;
-+
+ 
+-	host = xgethostname();
+-	if (host && getaddrinfo(host, NULL, &hints, &info) == 0 && info) {
+-		switch (info->ai_family) {
+-		case AF_INET:
+-			addr = &((struct sockaddr_in *) info->ai_addr)->sin_addr;
+-			break;
+-		case AF_INET6:
+-			addr = &((struct sockaddr_in6 *) info->ai_addr)->sin6_addr;
+-			break;
 +		ipq = list_entry(li, struct ul_netaddrq_ip, entry);
 +		if (threshold <= ULNETLINK_RATING_SCOPE_LINK &&
 +		    ( ipq->quality <= threshold ||
@@ -512,36 +530,22 @@ index 5e564c4f0..c37417e1e 100644
 +				fputs(ul_nl_addr_ntop_address(ipq->addr),
 +				      ie->output);
  		}
+-		if (addr)
+-			print_addr(ie, family, addr);
 +	temp_cont6:;
- 	}
++	}
 +	if (!first)
 +		fputs("\n", ie->output);
 +}
  
--	if (iface)
--		return;
+-		freeaddrinfo(info);
 +static void dump_iface_all(struct issue *ie,
 +			   struct ul_netaddrq_iface *ifaceq)
 +{
 +	struct list_head *li;
 +	struct ul_netaddrq_ip *ipq;
 +	bool first = true;
- 
--	/* Hmm.. not found the best interface, print host IP at least */
--	memset(&hints, 0, sizeof(hints));
--	hints.ai_family = family;
--	if (family == AF_INET6)
--		hints.ai_flags = AI_V4MAPPED;
--
--	host = xgethostname();
--	if (host && getaddrinfo(host, NULL, &hints, &info) == 0 && info) {
--		switch (info->ai_family) {
--		case AF_INET:
--			addr = &((struct sockaddr_in *) info->ai_addr)->sin_addr;
--			break;
--		case AF_INET6:
--			addr = &((struct sockaddr_in6 *) info->ai_addr)->sin6_addr;
--			break;
++
 +	list_for_each(li, &(ifaceq->ip_quality_list_4))
 +	{
 +		ipq = list_entry(li, struct ul_netaddrq_ip, entry);
@@ -549,11 +553,7 @@ index 5e564c4f0..c37417e1e 100644
 +		{
 +			fprintf(ie->output, "%s: ", ifaceq->ifname);
 +			first = false;
- 		}
--		if (addr)
--			print_addr(ie, family, addr);
--
--		freeaddrinfo(info);
++		}
 +		else
 +			fprintf(ie->output, " ");
 +		fputs(ul_nl_addr_ntop_address(ipq->addr), ie->output);
@@ -576,7 +576,7 @@ index 5e564c4f0..c37417e1e 100644
  }
  
  /*
-@@ -2860,26 +2902,47 @@ static void output_special_char(struct issue *ie,
+@@ -2860,26 +2902,47 @@ static void output_special_char(struct i
  	case '4':
  	case '6':
  	{
@@ -634,6 +634,3 @@ index 5e564c4f0..c37417e1e 100644
  #endif
  	default:
  		putc(c, ie->output);
--- 
-2.48.1
-
