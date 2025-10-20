@@ -63,4 +63,12 @@ This shall replace qtcurve-kde4 in Factory.</comment>
     <comment>cmake 4 compat change</comment>
     <requestid>1254736</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3bbaa1222f42ae50b64974183872c74b</srcmd5>
+    <version>1.9.0</version>
+    <time>1760960135</time>
+    <user>anag_factory</user>
+    <comment>- Require glycin-loaders at build time for Tumbleweed</comment>
+    <requestid>1312214</requestid>
+  </revision>
 </revisionlist>

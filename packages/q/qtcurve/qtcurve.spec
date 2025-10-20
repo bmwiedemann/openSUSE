@@ -1,7 +1,7 @@
 #
 # spec file for package qtcurve
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,9 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
+%if 0%{?suse_version} > 1600
+BuildRequires:  glycin-loaders
+%endif
 
 %description
 QtCurve is a set of widget styles available for Qt and GTK+.
