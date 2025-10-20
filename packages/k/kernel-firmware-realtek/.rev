@@ -148,4 +148,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtw89: 8852c: update fw to v0.27.129.3</comment>
     <requestid>1300898</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>de4f52ffeafeb75a918630fcb617d2f8</srcmd5>
+    <version>20250820</version>
+    <time>1760960110</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 6.18-rc1</comment>
+    <requestid>1312189</requestid>
+  </revision>
 </revisionlist>
