@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 19 16:11:35 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1760515610.a802d1dd:
+  * Lower the prio of archiving jobs to avoid piling up finalize jobs
+  * Add signatures in Schema::Result::ApiKeys
+
+-------------------------------------------------------------------
 Sun Oct 12 05:13:00 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1760245411.e3aeaaec:
