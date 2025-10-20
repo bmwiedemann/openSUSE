@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 19 11:37:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.11.0
+  * A rearrangement of the constructor/compute interplay has made
+    it possible to insert certain boolean valued options after the
+    constructor.
+  * Fixed a bug (#439) in the evaluation of subdivided simplices.
+  * Fixed a bug (#440) with exported triangulations.
+  * The potential problems on i386 systems caused by floating point
+    computations should have been resolved.
+
+-------------------------------------------------------------------
 Wed Jun  4 15:29:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.10.5
