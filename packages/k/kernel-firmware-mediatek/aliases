@@ -81,11 +81,13 @@ mt7921e: pci:v000014C3d00007922sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00007961sv*sd*bc*sc*i*
 mt7921s: sdio:c*v037Ad7901*
 mt7921u: usb:v0846p9060d*dc*dsc*dp*icFFiscFFipFFin*
+mt7921u: usb:v0846p9065d*dc*dsc*dp*icFFiscFFipFFin*
 mt7921u: usb:v0E8Dp7961d*dc*dsc*dp*icFFiscFFipFFin*
 mt7921u: usb:v3574p6211d*dc*dsc*dp*icFFiscFFipFFin*
 mt7921u: usb:v35BCp0107d*dc*dsc*dp*icFFiscFFipFFin*
 mt7925e: pci:v000014C3d00000717sv*sd*bc*sc*i*
 mt7925e: pci:v000014C3d00007925sv*sd*bc*sc*i*
+mt7925u: usb:v0846p9072d*dc*dsc*dp*icFFiscFFipFFin*
 mt7925u: usb:v0E8Dp7925d*dc*dsc*dp*icFFiscFFipFFin*
 mt7996e: pci:v000014C3d00007990sv*sd*bc*sc*i*
 mt7996e: pci:v000014C3d00007991sv*sd*bc*sc*i*

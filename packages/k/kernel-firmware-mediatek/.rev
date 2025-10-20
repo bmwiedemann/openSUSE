@@ -199,4 +199,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * mediatek: mtk_wed: drop links for mt7988</comment>
     <requestid>1307944</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>39c6d6038e82254331dba2130d0b0124</srcmd5>
+    <version>20250926</version>
+    <time>1760960109</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 6.18-rc1</comment>
+    <requestid>1312187</requestid>
+  </revision>
 </revisionlist>
