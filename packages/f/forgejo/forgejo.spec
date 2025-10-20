@@ -1,7 +1,6 @@
 #
 # spec file for package forgejo
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +25,7 @@
 %bcond_without apparmor
 %endif
 Name:           forgejo
-Version:        12.0.4
+Version:        13.0.1
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later

@@ -1,4 +1,188 @@
 -------------------------------------------------------------------
+Sun Oct 19 06:12:24 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to version 13.0.1:
+User Interface bug fixes:
+  * fix: Use scrollHeight for rendered iframe if offsetHeight is
+    unavailable
+Bug fixes:
+  * fix: db.Iterate can miss records, can return records twice
+    which caused a data corruption of the secret table in v13.0.0
+  * fix: release email links
+- Changes in 13.0.0:
+Security features:
+  * Add configurable global 2FA enforcement
+  * migrate action secrets to keying to store them more securely
+Breaking features:
+  * bump the minimum required Git version from 2.0.0 to 2.34.1
+  * Forgejo Actions workflows are verified with a YAML schema and
+    common errors such as using an incorrect context
+    (e.g. ${{ badcontext.FORGEJO_REPOSITORY }}) or a typo in a
+    required keyword (e.g. ruins-on: instead of runs-on:) will be
+    reported in the action page and the web page that displays the
+    file in the repository. It is recommended to verify existing
+    workflows are successfully verified prior to upgrading,
+    as explained in the Forgejo runner release notes.
+Breaking bug fixes:
+  * The artifact-url ouput returned by the upload-artifact@v4
+    action can be used to download the artifact. It was previously
+    404. To implement this compatibility fix, the web UI URL to
+    download artifacts
+    (i.e. /{owner}/{repo}/actions/runs/{run_id}/artifacts/{artifact_name})
+    now relies on an identifier that is unique accross the
+    instance. URLs to download artifacts that were bookmarked or
+    copied prior to this change use an id relative to the
+    repository and will no longer work. It previously was
+    /{owner}/{repo}/actions/runs/{run_index}/artifacts/{artifact_name},
+    note the difference between {run_id} and {run_index}.
+    The new URL can be obtained again by visiting the parent page,
+    which still uses the relative id
+    (/{owner}/{repo}/actions/runs/{run_index}).
+User Interface features:
+  * ability to view previous logs for Actions runs that have been
+    retried
+  * show CI status on force-pushes
+  * improve org header with new noJS dropdown and more
+    options
+  * improve multiline file preview and anchor detection
+  * render ordered checkbox lists with numbers
+  * Admin interface for abuse reports
+  * show timestamp on release attachments
+  * add tag label to commit list view
+  * support Markdown editor bold & italic keyboard shortcuts
+  * improve rendering commit links for PR commits,
+    external repos and diffs
+  * add links to assigners in issue comments
+  * use simplified visibility label in dashboard orgs
+    list
+  * improve custom emojis
+  * improve the global noJS notice
+  * improve display of repo topics
+  * add links to review request targets in issue comments
+  * improve subscriptions screen filters
+  * implement hover for switch
+  * Pretty-print commit counts and other numbers
+User Interface bug fixes:
+  * add markup class to project descriptions
+  * make releases filtering responsive
+  * reworked file preview placement towards better HTML validity
+  * fix alignment of items in tag signature
+  * unescape file names in commit hash links
+  * visually distinguish the branch name in action description
+  * preserved 'Custom access' even after no permissions
+  * show participants in mention suggestions in pr review
+  * apply background color to wiki content
+  * improve signature box responsiveness
+  * ignore existence of commits for force pushes
+  * make unicode escape work in wiki
+  * prevent initial 'blank' display of action logs view,
+    remove unnecessary API calls
+  * don't allow comment boxes to stretch outside diff boundries
+    on small device UI
+  * hide edit button on tag releases, improve ghost user display,
+    fix tag signature banner
+  * resolved 500 error upon clicking 'Clear milestone' button when
+    there's no milestones available in Issue page
+  * compare branches even with pull requests disabled
+Features:
+  * Uploaded avatar images can sometimes contain unexpected
+    metadata such as the location where the image was created,
+    or the device the image was created with, stored in a format
+    called EXIF. Forgejo now removes EXIF data when custom user and
+    repository images are uploaded in order to reduce the risk of
+    personally identifiable information being leaked unexpectedly.
+    A new CLI subcommand forgejo doctor avatar-strip-exif can be
+    used to strip EXIF information from all existing avatars; we
+    recommend that administrators run this command once after
+    upgrade in order to minimize this risk for existing stored
+    files.
+  * assorted ActivityPub code only refactors
+  * feat(logger): rename settings for consistency and remove
+    obsolete settings
+  * Bring "remove a label from issue" API in line with GitHub
+    equivalent
+  * reject password reset attempts for OAuth2 users without a
+    current password
+  * feat(log): better parseable and configurable ssh-logs
+  * add configurable timeout for automatically removing resolved
+    reports
+  * Add support for migrating from Pagure
+  * add _URI entries for mail config
+  * Improved signature handling & instance actor
+  * Sent user activities to distant federated server
+  * Add ActivityPub Person follow from distant
+  * chore: remove goroutine PID logging
+  * git/blob: GetContentBase64 with fewer allocations and no
+    goroutine
+  * make API pull and compare endpoint references to head more
+    robust
+  * git/commit: re-implement submodules file reader
+  * add EXCLUSION to logging mode
+  * add sort parameter for users/search api endpoint
+  * Allow converting mirror repos to normal through the API
+  * update broken git hook error
+  * avoid expensive SQL for org home
+  * make upload URL compatible with GitHub API
+  * allow more README formats for .profile
+  * AGit push options starting with {base64} are decoded
+  * search in the docs directory for issue and pull request
+    templates
+  * improve checking if diffs differ
+  * enable H2C for the HTTP server
+  * detect Interlisp sources as text
+  * add option to allow non-local users to change usernames
+  * chroma: 5d56970 Add uv.lock to TOML lexer
+  * chroma: a53c924 create Lexer for Nu
+  * chroma: abe0195 create lexer for lox
+  * chroma: f3be4c6 create lexer for Gemtext
+  * chroma: acd21c6 add aspect-ratio property to css.xml
+  * chroma: d0ad679 improve Go lexer
+  * Introduce global Merge Message Templates
+  * chroma: 970eacc add MoonScript lexer
+  * chroma: bc60826 add Core lexer
+  * push mirror to have option to only push selected branches
+  * if OAuth2 is disabled return 'Not found' for openid
+    configuration
+  * add --attribute-ssh-pubic-key to forgejo admin auth add-oauth
+    and update-oauth CLI
+  * feat(ui): add repository description to og:image:alt
+Bug fixes:
+  * quota evaluation rules not working properly
+  * artifacts can be downloaded using their id instead of their
+    name
+  * fix: failure to parse on block results in unconditional
+    workflow execution
+  * Fix invisible iframes with RENDER_CONTENT_MODE=iframe
+  * fix: package cleaned rule fails if the keep count is too high
+  * prevent user-entered text with | characters from being
+    truncated in activity feed
+  * PR review dismissals were not appearing in activity feed
+  * comment starting with a mermaid block displays error in
+    activity feed
+  * Markdown: generate unique per comment HTML IDs for footnotes
+    and headers
+  * very long commit messages cause pushed commits to fail to
+    display on the action feed on MySQL
+  * parse extra weird tree mode value
+  * respect UI DEFAULT_SHOW_FULL_NAME setting in email
+    From: headers
+  * check target repo limit instead of user repo limit
+  * enable multi-line math equations in wiki
+  * Actions log view stops refreshing after the displayed job is
+    finished, even if other jobs are still running
+  * standardize truncation of user-entered comment text in
+    activity feed
+  * allow Actions tokens to access repos readable by signed in
+    users
+  * allow Forgejo Actions environment variables starting with CI
+  * chroma: 1ca24c9 correct lexing AS keyword for docker
+  * chroma: 1f48e65 markdown: don't delegate to HTML lexer
+  * chroma: dfb2819 Fixed ObjectPascal comment issue
+  * chroma: 2c20473 RPGLE: various lexer & style fixes
+  * chroma: c803d79 zig: detect zig object notation files as zig
+  * chroma: ffedbf4 kotlin: detect kotlin script files as kotlin
+
+-------------------------------------------------------------------
 Thu Oct  9 10:32:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add fix-CVE-2025-58190.patch, fixing bsc#1251670
