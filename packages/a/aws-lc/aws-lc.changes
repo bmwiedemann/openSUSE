@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 19 13:24:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.62.0:
+  * nginx now supports AWS-LC
+  * Fix tests that assume X25519 will be negotiated
+  * Fixing a bug in ML-DSA poly_uniform function
+  * Migrate integration omnibus
+  * Delete util/bot directory
+  * Type fix in mldsa
+  * Centralize password handling tool-openssl
+  * crypto/pem: replace strncmp with CRYPTO_memcmp to fix -Wstring-compare error
+  * Implement dgst CLI command
+  * Add ASN.1 decoding for ML-KEM private keys as seeds
+  * Implement genrsa command
+  * Move udiv and sencond tweak calculations to when needed
+  * Add null check on RSA key checks
+  * Implement workaround for FORTIFY_SOURCE warning with jitterentropy
+  * Implement coverity suggestions
+  * Add minimal EC CLI tool implementation
+  * Adding pkeyutl tool to the CLI
+  * Add option ENABLE_SOURCE_MODIFICATION
+  * Simple script to build/run tests
+  * Add build-time option to opt-out of CPU Jitter Entropy
+
+-------------------------------------------------------------------
 Tue Oct  7 11:49:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.61.4:
