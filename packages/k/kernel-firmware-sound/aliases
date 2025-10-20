@@ -17,6 +17,7 @@ snd_hda_scodec_tas2781_i2c: acpi*:INT8866%3A*
 snd_hda_scodec_tas2781_i2c: acpi*:TIAS2781%3A*
 snd_hda_scodec_tas2781_i2c: acpi*:TXNW2770%3A*
 snd_hda_scodec_tas2781_i2c: acpi*:TXNW2781%3A*
+snd_hda_scodec_tas2781_i2c: acpi*:TXNW5825%3A*
 snd_intel_sst_acpi: acpi*:80860F28%3A*
 snd_intel_sst_acpi: acpi*:808622A8%3A*
 snd_intel_sst_acpi: acpi*:LPE0F28%3A*

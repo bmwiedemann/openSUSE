@@ -264,4 +264,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Add Audio topology for HAMOA-EVK</comment>
     <requestid>1311179</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>24cac41798f28d4d6b8b846d4da7eab1</srcmd5>
+    <version>20251018</version>
+    <time>1760960111</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251018 (git commit 8b4de42e3432):
+  * linux-firmware: qcom: sync audioreach firmwares from v1.0.0 build
+
+- Update aliases from 6.18-rc1</comment>
+    <requestid>1312190</requestid>
+  </revision>
 </revisionlist>

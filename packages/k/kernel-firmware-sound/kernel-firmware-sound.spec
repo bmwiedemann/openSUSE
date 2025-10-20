@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version ed924f6db3c973f941fd6c6317c0d52664e83e5a
+%define git_version 8b4de42e3432d1cdea4df82b2971486e143258f9
 
 Name:           kernel-firmware-sound
-Version:        20250930
+Version:        20251018
 Release:        0
 Summary:        Kernel firmware files for various sound drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250929.tar.gz#/kernel-firmware-tools-20250929.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20251004.tar.gz#/kernel-firmware-tools-20251004.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -68,6 +68,7 @@ Supplements:    modalias(acpi*:PNPB006%3A*)
 Supplements:    modalias(acpi*:TIAS2781%3A*)
 Supplements:    modalias(acpi*:TXNW2770%3A*)
 Supplements:    modalias(acpi*:TXNW2781%3A*)
+Supplements:    modalias(acpi*:TXNW5825%3A*)
 Supplements:    modalias(hdaudio:v11020011r*a01*)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8186-dsp)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8186-dspC*)

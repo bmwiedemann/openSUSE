@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 19 03:48:59 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251018 (git commit 8b4de42e3432):
+  * linux-firmware: qcom: sync audioreach firmwares from v1.0.0 build
+
+-------------------------------------------------------------------
+Wed Oct 15 08:35:05 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases from 6.18-rc1
+
+-------------------------------------------------------------------
 Wed Oct  1 07:34:30 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250930 (git commit ed924f6db3c9):
