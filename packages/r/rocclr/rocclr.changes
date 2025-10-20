@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Mon Oct 13 21:08:44 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Do not use url in patch name
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+- Drop patch1 to fix comgr linking, as it's been applied in upstream 6.4.2
+- Make sure 6.4.2 or newer is used for building due to api requirements
+
+-------------------------------------------------------------------
+Sun Jun 15 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove suse check for using ldconfig
+
+-------------------------------------------------------------------
+Fri Jun 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve requires for rocm-hip-devel
+
+-------------------------------------------------------------------
+Thu May 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.1
+
+-------------------------------------------------------------------
+Fri May  2 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt@hotmail.com>
+
+- Use khrono OpenCL ICD for Fedora
+
+-------------------------------------------------------------------
+Thu May  1 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt@hotmail.com>
+
+- Fix linking for comgr.so.3
+- Cleanup
+
+-------------------------------------------------------------------
+Sat Apr 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Sun Mar  2 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- no ocl-icd-devel in cs10
+
+-------------------------------------------------------------------
+Fri Feb 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- cmake changed
+
+-------------------------------------------------------------------
+Mon Feb 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Sun Feb  2 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.2
+
+-------------------------------------------------------------------
+Sat Jan 18 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Mon Jan  6 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt@hotmail.com>
+
+- We dropped the hip-devel package in 6.0 and forgot to obsolete it
+- Fixes RHBZ#2327258
+
+-------------------------------------------------------------------
+Sun Dec 22 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.1
+
+-------------------------------------------------------------------
+Sun Dec  8 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Tue Sep 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- A placeholder for rhel 9
+
