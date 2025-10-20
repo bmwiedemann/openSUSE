@@ -32,4 +32,12 @@
     <comment>- Drop issue-generator: deprecated by agetty's internal features.</comment>
     <requestid>1311507</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a729141532b8a826918a9efd06741afd</srcmd5>
+    <version>1.0.0</version>
+    <time>1760960144</time>
+    <user>anag_factory</user>
+    <comment>- Enable KDE flavor in _multibuild</comment>
+    <requestid>1312228</requestid>
+  </revision>
 </revisionlist>
