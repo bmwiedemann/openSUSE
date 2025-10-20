@@ -1,7 +1,7 @@
 #
 # spec file for package java-atk-wrapper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global major_version 0.40
+%global major_version 0.44
 Name:           java-atk-wrapper
 Version:        %{major_version}.0
 Release:        0
@@ -24,7 +24,7 @@ Summary:        Java ATK Wrapper
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/Java
 URL:            https://gitlab.gnome.org/GNOME/java-atk-wrapper/
-Source0:        https://download.gnome.org/sources/%{name}/%{major_version}/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/%{major_version}/%{name}-%{version}.tar.gz
 Source1:        HOWTO
 Source2:        https://gitlab.gnome.org/GNOME/%{name}/-/raw/%{version}/autogen.sh
 Patch0:         jaw-dependencies.patch
@@ -34,6 +34,7 @@ BuildRequires:  automake
 BuildRequires:  java-devel >= 9
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  strip-nondeterminism
 BuildRequires:  xprop
 BuildRequires:  xz
 BuildRequires:  pkgconfig(atk) >= 2.14.0
@@ -45,7 +46,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  strip-nondeterminism
 Requires:       java >= 1.8
 Requires:       xprop
 
