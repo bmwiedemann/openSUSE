@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 19 09:12:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.10.0
+  * kde#479854: The tool "Align sub-operation date..." don't update
+    an operation
+  * kde#498606: '##WARNING: QFSFileEngine::open: No file name
+    specified'
+  * kde#507235: bad Unit import for Ms Money
+  * kde#507414: Regression: Error importing ISO20022 XML into
+    Skrooge
+  * kde#510022: MS Money import: Dividends cause Unit Value = 0
+  * kde#510025: MS Money import: split transaction comments
+    lost/overwritten
+  * kde#510027: MS Money import: Investment transactions not
+    grouped
+  * kde#510115: MS Money import: Ignore (/import?) Classifications
+  * kde#492495: Empty New Account after CSV Import
+  * kde#491382: Wishlist: Add an option for work days in Schedule
+    Transactions
+  * Correction bug: Increase width of unit combo box
+  * Correction bug: Not possible to create SEK and NOK units
+    because they have the same symbol. Fiw by using
+- Drop patch:
+  * 0001-Fix-build-with-Qt-6.10.patch
+
+-------------------------------------------------------------------
 Mon Oct 13 11:15:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:

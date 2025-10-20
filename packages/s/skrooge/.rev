@@ -182,4 +182,12 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
   * 0001-Fix-build-with-Qt-6.10.patch</comment>
     <requestid>1311094</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3624bb5580c0770fa10a68d028b19dcf</srcmd5>
+    <version>25.10.0</version>
+    <time>1760960116</time>
+    <user>anag_factory</user>
+    <comment>Update to 25.10.0</comment>
+    <requestid>1312204</requestid>
+  </revision>
 </revisionlist>

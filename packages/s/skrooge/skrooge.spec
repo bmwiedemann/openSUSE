@@ -26,7 +26,7 @@
 %define with_qtwebengine 1
 %endif
 Name:           skrooge
-Version:        25.4.0
+Version:        25.10.0
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only
@@ -38,8 +38,6 @@ Source1:        https://download.kde.org/stable/skrooge/%{name}-%{version}.tar.x
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/smankowski@key2.asc?ref_type=heads
 Source2:        skrooge.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-Qt-6.10.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf6-breeze-icons
@@ -144,8 +142,6 @@ sed -i 's#env python3#python3#' %{buildroot}%{_kf6_sharedir}/skrooge/*.py
 %{_kf6_libdir}/libskgbasegui.so.*
 %{_kf6_libdir}/libskgbasemodeler.so.*
 %{_kf6_notificationsdir}/skrooge.notifyrc
-# %%{_kf6_plugindir}/designer/libskgbankguidesigner.so
-# %%{_kf6_plugindir}/designer/libskgbaseguidesigner.so
 %dir %{_kf6_plugindir}/kf6/ktexttemplate
 %{_kf6_plugindir}/kf6/ktexttemplate/grantlee_skgfilters.so
 %{_kf6_plugindir}/skg_gui/
