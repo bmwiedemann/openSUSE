@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 19 08:42:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.13.0
+  * Reset timers on hibernation detection
+  * Setting the window icon
+  * Translation improvements
+
+-------------------------------------------------------------------
 Wed Nov 20 15:47:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro

@@ -16,10 +16,13 @@
 #
 
 
-%define base_ver 0.12
+%define kf6_version 6.8
+%define qt6_version 6.7.0
+
+%define base_ver 0.13
 %bcond_without released
 Name:           rsibreak
-Version:        0.12.15
+Version:        0.13.0
 Release:        0
 Summary:        Repetetive Strain Injury recovery and prevention assistance utility
 License:        GPL-2.0-or-later
@@ -27,24 +30,28 @@ URL:            https://apps.kde.org/rsibreak
 Source0:        https://download.kde.org/stable/rsibreak/%{base_ver}/rsibreak-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/rsibreak/%{base_ver}/rsibreak-%{version}.tar.xz.sig
+# https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/aacid@key1.asc
 Source2:        rsibreak.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 5.79.0
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IdleTime)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5DBus) >= 5.10.0
-BuildRequires:  cmake(Qt5Test) >= 5.10.0
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IdleTime) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 Requires:       hicolor-icon-theme
 Recommends:     rsibreak-lang = %{version}
 Obsoletes:      rsibreak-doc < %{version}
@@ -57,33 +64,31 @@ you to take a break now and then.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --all-name
-
-%{kf5_find_htmldocs}
-
-%fdupes %{buildroot}%{_kf5_sharedir}
-
-%files lang -f %{name}.lang
+%find_lang %{name} --all-name --with-html
 
 %files
 %license LICENSES/*
 %doc AUTHORS ChangeLog NEWS
-%doc %{_kf5_htmldir}/en/
-%{_kf5_applicationsdir}/org.kde.rsibreak.desktop
-%{_kf5_appstreamdir}/org.kde.rsibreak.appdata.xml
-%{_kf5_bindir}/rsibreak
-%{_kf5_configdir}/autostart/rsibreak_autostart.desktop
-%{_kf5_dbusinterfacesdir}/org.rsibreak.rsiwidget.xml
-%{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_notifydir}/rsibreak.notifyrc
+%doc %lang(en) %{_kf6_htmldir}/en/
+%{_kf6_applicationsdir}/org.kde.rsibreak.desktop
+%{_kf6_appstreamdir}/org.kde.rsibreak.appdata.xml
+%{_kf6_bindir}/rsibreak
+%{_kf6_configdir}/autostart/rsibreak_autostart.desktop
+%{_kf6_dbusinterfacesdir}/org.rsibreak.rsiwidget.xml
+%{_kf6_iconsdir}/hicolor/*/*/*
+%{_kf6_notificationsdir}/rsibreak.notifyrc
+
+%files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en
 
 %changelog
