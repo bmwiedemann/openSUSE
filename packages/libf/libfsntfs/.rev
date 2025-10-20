@@ -220,4 +220,12 @@
     <comment>- build with fuse 3 (boo#1242079) (forwarded request 1274193 from AndreasStieger)</comment>
     <requestid>1274219</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>60af3e80bb78399d69cbb43847cdadfc</srcmd5>
+    <version>20251019</version>
+    <time>1760960142</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 20251019</comment>
+    <requestid>1312225</requestid>
+  </revision>
 </revisionlist>

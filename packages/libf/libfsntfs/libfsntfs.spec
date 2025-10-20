@@ -1,7 +1,7 @@
 #
 # spec file for package libfsntfs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 
 %define lname	libfsntfs1
 Name:           libfsntfs
-Version:        20240501
+Version:        20251019
 Release:        0
 Summary:        Library and tools to access the NTFS filesystem
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
