@@ -36325,9 +36325,12 @@ unsorted:
   - rocm-clang-runtime-devel 
   - rocm-clang-tools-extra 
   - rocm-clang-tools-extra-devel 
+  - rocm-clinfo 
   - rocm-cmake 
   - rocm-compilersupport-macros 
   - rocm-device-libs 
+  - rocm-hip 
+  - rocm-hip-devel 
   - rocm-libc++ 
   - rocm-libc++-devel 
   - rocm-libc++-static 
@@ -36337,6 +36340,8 @@ unsorted:
   - rocm-llvm-filesystem 
   - rocm-llvm-libs 
   - rocm-llvm-static 
+  - rocm-opencl 
+  - rocm-opencl-devel 
   - rocm-rpm-macros 
   - rocm-rpm-macros-modules 
   - rocm-smi 
