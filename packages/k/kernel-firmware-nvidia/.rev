@@ -83,4 +83,16 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Remove stale *.rpmmoved directories (bsc#1244458)</comment>
     <requestid>1295038</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ca6f7b8602c645879224431cda42e2aa</srcmd5>
+    <version>20251018</version>
+    <time>1760960109</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251018 (git commit 8b4de42e3432):
+  * nvidia: add generic bootloader for GSP-enabled systems
+
+- Update to version 20251014 (git commit bd4d2bde91e1):
+  * WHENCE: nvidia: rearrange GSP-RM firmware lines</comment>
+    <requestid>1312188</requestid>
+  </revision>
 </revisionlist>

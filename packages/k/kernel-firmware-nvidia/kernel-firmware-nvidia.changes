@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 19 03:48:03 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251018 (git commit 8b4de42e3432):
+  * nvidia: add generic bootloader for GSP-enabled systems
+
+-------------------------------------------------------------------
+Wed Oct 15 08:30:04 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251014 (git commit bd4d2bde91e1):
+  * WHENCE: nvidia: rearrange GSP-RM firmware lines
+
+-------------------------------------------------------------------
 Mon Jul 21 15:47:23 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Remove stale *.rpmmoved directories (bsc#1244458)
