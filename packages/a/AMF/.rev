@@ -41,4 +41,16 @@
     <comment></comment>
     <requestid>1205986</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3cfa549503331a105358618ae3aad3fb</srcmd5>
+    <version>1.4.36</version>
+    <time>1760960112</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.36:
+  * Add Interface for AV1 B-frame Support
+  * Set execute bit for Linux filte_to_header
+  * Fix header publishing workflow
+</comment>
+    <requestid>1309920</requestid>
+  </revision>
 </revisionlist>

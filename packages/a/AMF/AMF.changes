@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 27 17:32:20 UTC 2025 - kilgore.trout@idesmi.eu
+
+- Update to version 1.4.36:
+  * Add Interface for AV1 B-frame Support
+  * Set execute bit for Linux filte_to_header
+  * Fix header publishing workflow
+
+-------------------------------------------------------------------
 Sun Oct 06 14:57:43 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 1.4.35:
