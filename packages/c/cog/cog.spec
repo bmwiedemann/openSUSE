@@ -54,6 +54,7 @@ BuildRequires:  pkgconfig(wpe-webkit-2.0)
 BuildRequires:  pkgconfig(wpebackend-fdo-1.0)
 Obsoletes:      cogctl < %{version}
 Provides:       cogctl:%{_bindir}/cogctl
+ExcludeArch:    %{ix86} %{arm}
 
 %description
 Cog is a small single “window” launcher for the WebKit WPE port. It

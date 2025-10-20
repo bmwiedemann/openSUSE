@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 13 08:50:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Do not build 32bit targets via ExcludeArch %{ix86} and %{arm}.
+
+-------------------------------------------------------------------
 Mon Sep 22 21:46:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.18.5:
