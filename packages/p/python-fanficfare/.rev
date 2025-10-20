@@ -1661,4 +1661,13 @@ Update to 4.43.0:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1309866</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>411b777e2067fdbedb8b06dd5e68e57a</srcmd5>
+    <version>4.49.0</version>
+    <time>1760960114</time>
+    <user>anag_factory</user>
+    <comment>- add otw-login.patch to fix AO3 login
+  (gh#JimmXinu/FanFicFare#1263).</comment>
+    <requestid>1312236</requestid>
+  </revision>
 </revisionlist>
