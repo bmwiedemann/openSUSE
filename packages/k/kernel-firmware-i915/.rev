@@ -134,4 +134,15 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases for 6.17</comment>
     <requestid>1307941</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>77d8cd506e4b2df9daa456eee6a9d82b</srcmd5>
+    <version>20251014</version>
+    <time>1760960106</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251014 (git commit bd4d2bde91e1):
+  * i915: Xe2LPD DMC v2.29
+  * i915: Xe3LPD DMC v2.32
+  * i915: Xe3LPD_3002 DMC v2.27</comment>
+    <requestid>1312184</requestid>
+  </revision>
 </revisionlist>
