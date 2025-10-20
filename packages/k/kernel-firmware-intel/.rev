@@ -166,4 +166,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Add Dell ISH firmware for Intel Lunar Lake systems</comment>
     <requestid>1311174</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0c835a4a77a0b8674940b555021b720a</srcmd5>
+    <version>20251018</version>
+    <time>1760960107</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251018 (git commit 8b4de42e3432):
+  * Intel IPU7: Update product signed firmware binary</comment>
+    <requestid>1312185</requestid>
+  </revision>
 </revisionlist>
