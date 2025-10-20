@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 11 07:44:50 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 3.14.0:
+ - Add support for Python 3.14
+ - Add pre-commit for validating rst files
+
+-------------------------------------------------------------------
 Sun Aug 24 13:04:33 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 3.13.11:
