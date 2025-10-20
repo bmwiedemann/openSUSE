@@ -139,4 +139,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: vpu: add video firmware for Kaanapali</comment>
     <requestid>1311175</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5dab9b2fe91f2eb1dd5e3fa75505d85f</srcmd5>
+    <version>20251018</version>
+    <time>1760960108</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251018 (git commit 8b4de42e3432):
+  * qcom: vpu: rename firmware binaries</comment>
+    <requestid>1312186</requestid>
+  </revision>
 </revisionlist>
