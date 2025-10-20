@@ -1,7 +1,7 @@
 #
 # spec file for package cantata
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,9 +93,12 @@ information, please refer to the main README.
 %autosetup -p1
 
 %build
-%cmake -DENABLE_REMOTE_DEVICES=OFF \
+%cmake \
+    -DENABLE_REMOTE_DEVICES=OFF \
     -DENABLE_CATEGORIZED_VIEW=OFF \
-    -DBUILD_PLUGIN_DEBUG=OFF
+    -DBUILD_PLUGIN_DEBUG=OFF \
+    -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -Wno-error=unused-result -Wno-error=deprecated-declarations" \
+     %{nil}
 %cmake_build
 
 %install
