@@ -208,4 +208,14 @@ development tree.
     maintainers are encouraged to add a dependency on mimalloc.</comment>
     <requestid>1294539</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>62cf5c03f64256a4ea2d7c2a522d63c2</srcmd5>
+    <version>1.4.4</version>
+    <time>1760960136</time>
+    <user>anag_factory</user>
+    <comment>- Use RPM 4.20 BuildSystem declaration
+- Require glslang &gt;= 15.0.0
+</comment>
+    <requestid>1312217</requestid>
+  </revision>
 </revisionlist>

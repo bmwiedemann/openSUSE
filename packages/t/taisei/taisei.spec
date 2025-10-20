@@ -1,7 +1,7 @@
 #
 # spec file for package taisei
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  python3-docutils
 BuildRequires:  python3-zstandard
 BuildRequires:  shaderc
 BuildRequires:  spirv-cross-devel
-BuildRequires:  cmake(glslang)
+BuildRequires:  cmake(glslang) >= 15.0.0
 BuildRequires:  pkgconfig(cglm) >= 0.7.8
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gamemode)
@@ -53,6 +53,13 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data
 Suggests:       gamemoded
 ExcludeArch:    %{ix86}
+BuildSystem:    meson
+BuildOption:    -Dstrip=false
+BuildOption:    -Db_pch=false
+BuildOption:    -Dinstall_macos_bundle=disabled
+BuildOption:    -Dinstall_relocatable=disabled
+BuildOption:    -Dshader_transpiler=enabled
+BuildOption:    -Dr_gles30=enabled
 
 %description
 Taisei is an open clone of the Touhou Project series. Touhou is a one-man project
@@ -68,23 +75,7 @@ Data files for Taisei, an open clone of the Touhou Project series. Touhou is a
 one-man project of shoot ’em up games set in an isolated world full of
 Japanese folklore.
 
-%prep
-%setup -q
-
-%build
-_v=%{version}
-%meson \
-    -Dstrip=false \
-    -Db_pch=false \
-    -Dinstall_macos_bundle=disabled \
-    -Dinstall_relocatable=disabled \
-    -Dshader_transpiler=enabled \
-    -Dr_gles30=enabled \
-%meson_build
-
-%install
-%meson_install
-
+%install -a
 %if 0%{?suse_version} && !0%{?fedora_version}
 mkdir -p %{buildroot}%{_docdir}
 mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}/%{name}
