@@ -1,0 +1,17 @@
+--- a/steamos-powerbuttond.service
++++ b/steamos-powerbuttond.service
+@@ -1,8 +1,13 @@
+ [Unit]
+ Description=Power Button daemon for SteamOS
+-Requisite=gamescope-session.service
++PartOf=gamescope-session.service
++PartOf=gamescope-session-plus@.service
+ 
+ [Service]
+ ExecStart=/usr/lib/hwsupport/steamos-powerbuttond
+ Restart=on-failure
+ Slice=session.slice
++
++[Install]
++WantedBy=gamescope-session.service
++WantedBy=gamescope-session-plus@.service
