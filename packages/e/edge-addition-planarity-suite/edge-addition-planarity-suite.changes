@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 19 16:11:39 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.0.1.0
+  * A few minor memory leaks were found in the planarity
+    application layer and fixed.
+
+-------------------------------------------------------------------
 Thu Jul  3 08:31:53 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.0.0.0
