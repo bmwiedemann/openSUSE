@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 17 11:05:00 UTC 2025 - pgajdos@suse.com
+
+- package FTL.TXT and GPLv2.TXT [bsc#1252148]
+
+-------------------------------------------------------------------
 Thu May 29 16:46:09 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not build the ft2demos flavor in SLE16 where Qt5 will not be

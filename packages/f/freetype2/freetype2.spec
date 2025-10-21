@@ -1,7 +1,7 @@
 #
 # spec file for package freetype2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -139,6 +139,7 @@ rm %{buildroot}%{_libdir}/libfreetype.la
 %{_libdir}/libfreetype.so.*
 %doc ChangeLog README
 %doc docs/{CHANGES,CUSTOMIZE,DEBUG,MAKEPP,PROBLEMS,TODO,*.txt}
+%license docs/FTL.TXT docs/GPLv2.TXT
 
 %files profile-tti35
 %config %{_sysconfdir}/profile.d/%{name}.sh
