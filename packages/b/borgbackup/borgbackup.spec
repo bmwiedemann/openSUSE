@@ -2,7 +2,7 @@
 # spec file for package borgbackup
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2016-2024 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2016-2025 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,14 @@
 %else
 %bcond_with     borg_sysblake2
 %endif
+%if 0%{?suse_version} < 1600
+%global py3ver 3.11
+%global py3pkg python311
+%else
+%global py3ver 3.13
+%global py3pkg python313
+%endif
+
 Name:           borgbackup
 Version:        1.4.1
 Release:        0
@@ -57,8 +65,8 @@ Source2:        %{name}.keyring
 # python3-guzzle_sphinx_theme isn't available everywhere,
 # fall back to Sphinx default theme for older distributions
 Patch0:         borgbackup-1.1.4-sphinx-default-theme.patch
-# PATCH-FIX-UPSTREAM msgpack-allow-1.1.1.patch -- backport of commit f6724bfef
-Patch1:         msgpack-allow-1.1.1.patch
+# PATCH-FIX-OPENSUSE msgpack-allow-1.1.2.patch -- let's hope, 1.1.2 will work as well
+Patch1:         msgpack-allow-1.1.2.patch
 # PATCH-FIX-UPSTREAM 0001-set_flags-use-get-set-to-only-influence-specific-fla.patch #9039
 Patch2:         0001-set_flags-use-get-set-to-only-influence-specific-fla.patch
 # PATCH-FIX-UPSTREAM 0002-set_flags-better-give-up-than-corrupt.patch #9039
@@ -67,18 +75,17 @@ Patch3:         0002-set_flags-better-give-up-than-corrupt.patch
 Patch4:         0003-set_flags-remove-compression-flag.patch
 # SECTION build dependencies
 BuildRequires:  bash
+BuildRequires:  %{py3pkg}-Cython >= 3.0.10
+BuildRequires:  %{py3pkg}-devel >= 3.9
+BuildRequires:  %{py3pkg}-packaging
+BuildRequires:  %{py3pkg}-setuptools
+BuildRequires:  %{py3pkg}-setuptools_scm
 BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel >= 2.2.47
 BuildRequires:  openssl-devel >= 1.1.0
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Cython >= 3.0.10
-BuildRequires:  python3-base >= 3.9
-BuildRequires:  python3-devel
-BuildRequires:  python3-packaging
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-setuptools_scm
 BuildRequires:  zsh
 BuildRequires:  pkgconfig(libxxhash)
 %if 0%{?suse_version} == 1320 || 0%{?sle_version} == 120200
@@ -96,30 +103,30 @@ BuildRequires:  libzstd-devel >= 1.3.0
 # msgpack is not included with borg version >= 1.2.0 anymore
 # The metadata is very specific about the version, the command will fail if msgpack is out of range -- boo#1198267
 # See https://github.com/borgbackup/borg/blob/1.2.1/setup.py#L68 and update this for every version bump!
-BuildRequires:  (python3-msgpack >= 1.0.3 with python3-msgpack <= 1.1.1)
-Requires:       python3-packaging
-Requires:       (python3-msgpack >= 1.0.3 with python3-msgpack <= 1.1.1)
+BuildRequires:  (%{py3pkg}-msgpack >= 1.0.3 with %{py3pkg}-msgpack <= 1.1.2)
+Requires:       %{py3pkg}-packaging
+Requires:       (%{py3pkg}-msgpack >= 1.0.3 with %{py3pkg}-msgpack <= 1.1.2)
 %if 0%{?suse_version} > 1500
 # upstream recommends a "Requires" if pyfuse3 is available
-Requires:       python3-pyfuse3 >= 3.1.1
+Requires:       %{py3pkg}-pyfuse3 >= 3.1.1
 %else
-Recommends:     python3-llfuse >= 1.3.8
+Recommends:     %{py3pkg}-llfuse >= 1.3.8
 %endif
 # /SECTION
 # SECTION docs requirements
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-sphinx_rtd_theme
+BuildRequires:  %{py3pkg}-Sphinx
+BuildRequires:  %{py3pkg}-sphinx_rtd_theme
 %if %{with borg_guzzle}
-BuildRequires:  python3-guzzle_sphinx_theme
+BuildRequires:  %{py3pkg}-guzzle_sphinx_theme
 %endif
 # /SECTION
 # SECTION testing requirements
 %if %{with borg_test}
-BuildRequires:  python3-dateutil
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-benchmark
-BuildRequires:  python3-pytest-cov
-BuildRequires:  python3-pytest-xdist
+BuildRequires:  %{py3pkg}-dateutil
+BuildRequires:  %{py3pkg}-pytest
+BuildRequires:  %{py3pkg}-pytest-benchmark
+BuildRequires:  %{py3pkg}-pytest-cov
+BuildRequires:  %{py3pkg}-pytest-xdist
 %endif
 # /SECTION
 
