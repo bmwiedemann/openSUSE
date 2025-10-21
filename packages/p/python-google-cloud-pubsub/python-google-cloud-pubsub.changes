@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 20 09:30:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.31.1
+  * Change Log Severities for Terminated Streams (#1433
+  * Propagate Otel Context to Subscriber Callback if Provided (#1429)
+- from version 2.31.0
+  * Add MessageTransformationFailureReason to IngestionFailureEvent (#1427)
+  * Surface Fatal Stream Errors to Future; Adjust Retryable Error Codes (#1422)
+- from version 2.30.0
+  * Add SchemaViolationReason to IngestionFailureEvent (#1411)
+- from version 2.29.1
+  * Remove setup.cfg configuration for creating universal wheels (#1376)
+  * **sample:** Add samples for topic and subscription SMTs (#1386)
+  * Update documentation for JavaScriptUDF to indicate that the `message_id`
+    metadata field is optional instead of required (#1380)
+* Update readme links (#1409)
+
+-------------------------------------------------------------------
 Wed Oct 08 13:51:01 UTC 2025 - Fabian Reiber <reiber@dfn-cert.de>
 
 - Adds modern python on Leap 15

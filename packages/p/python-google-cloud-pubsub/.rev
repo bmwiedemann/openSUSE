@@ -15,4 +15,25 @@
     <comment>python311</comment>
     <requestid>1310011</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f8e5c32d89553d0ca5917adc75d5a08b</srcmd5>
+    <version>2.31.1</version>
+    <time>1761038156</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.31.1
+  * Change Log Severities for Terminated Streams (#1433
+  * Propagate Otel Context to Subscriber Callback if Provided (#1429)
+- from version 2.31.0
+  * Add MessageTransformationFailureReason to IngestionFailureEvent (#1427)
+  * Surface Fatal Stream Errors to Future; Adjust Retryable Error Codes (#1422)
+- from version 2.30.0
+  * Add SchemaViolationReason to IngestionFailureEvent (#1411)
+- from version 2.29.1
+  * Remove setup.cfg configuration for creating universal wheels (#1376)
+  * **sample:** Add samples for topic and subscription SMTs (#1386)
+  * Update documentation for JavaScriptUDF to indicate that the `message_id`
+    metadata field is optional instead of required (#1380)
+* Update readme links (#1409) (forwarded request 1312347 from glaubitz)</comment>
+    <requestid>1312379</requestid>
+  </revision>
 </revisionlist>
