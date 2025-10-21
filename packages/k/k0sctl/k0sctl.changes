@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Oct 17 05:56:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.0:
+  * What's Changed
+    - Fix panic when parsing separate YAML documents in same file
+      by @antontrye in #926
+    - Delete k0s binaries from hosts after reset by @kke in #928
+    - Look at stdout and stderr of k0s etcd member-list separately
+      by @twz123 in #938
+    - Additional hook points by @kke in #864
+  * Tests/CI:
+    - feat: create docker images for k0sctl by @a1994sc in #908
+    - Use dl.k8s.io for kubectl download in smoke tests by @walf443
+      in #917
+    - Add license scan report and status by @fossabot in #919
+  * Dependency bumps:
+    - Bump github.com/urfave/cli/v2 from 2.27.6 to 2.27.7 by
+      @dependabot[bot] in #909
+    - Bump k8s.io/client-go from 0.33.1 to 0.33.2 by
+      @dependabot[bot] in #910
+    - Bump github.com/go-playground/validator/v10 from 10.26.0 to
+      10.27.0 by @dependabot[bot] in #912
+    - Bump github.com/bmatcuk/doublestar/v4 from 4.8.1 to 4.9.1 by
+      @dependabot[bot] in #918
+    - Bump k8s.io/client-go from 0.33.2 to 0.33.3 by
+      @dependabot[bot] in #916
+    - Bump golang.org/x/text from 0.26.0 to 0.27.0 by
+      @dependabot[bot] in #914
+    - Update smoke-test images by @kke in #920
+    - Bump golang.org/x/text from 0.27.0 to 0.28.0 by
+      @dependabot[bot] in #921
+    - Bump github.com/k0sproject/version from 0.7.0 to 0.8.0 by
+      @dependabot[bot] in #922
+    - Bump k8s.io/client-go from 0.33.3 to 0.33.4 by
+      @dependabot[bot] in #924
+    - Bump github.com/stretchr/testify from 1.10.0 to 1.11.0 by
+      @dependabot[bot] in #929
+    - Bump github.com/stretchr/testify from 1.11.0 to 1.11.1 by
+      @dependabot[bot] in #931
+    - Bump k8s.io/client-go from 0.33.4 to 0.34.0 by
+      @dependabot[bot] in #933
+    - Bump golang.org/x/text from 0.28.0 to 0.29.0 by
+      @dependabot[bot] in #934
+    - Bump k8s.io/client-go from 0.34.0 to 0.34.1 by
+      @dependabot[bot] in #935
+    - Add host.K0sInstallPath for changing k0s install location on
+      target by @kke in #927
+    - Bump github.com/jellydator/validation from 1.1.0 to 1.2.0 by
+      @dependabot[bot] in #948
+    - Bump github.com/go-playground/validator/v10 from 10.27.0 to
+      10.28.0 by @dependabot[bot] in #949
+    - Bump golang.org/x/text from 0.29.0 to 0.30.0 by
+      @dependabot[bot] in #951
+
+-------------------------------------------------------------------
 Sat Jun 07 04:54:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.25.1:
