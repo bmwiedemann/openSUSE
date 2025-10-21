@@ -46,7 +46,6 @@ BuildArch:      noarch
 BuildRequires:  %{modern_python}-Sphinx
 BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module pytest}
-Provides:       %{python_module atomicwrites-doc = %{version}}
 %endif
 %python_subpackages
 
@@ -62,24 +61,6 @@ Features that distinguish it from other similar libraries:
 %prep
 %autosetup -p1 -n atomicwrites-%{version}
 rm -rf atomicwrites.egg-info
-
-%if %{with doc}
-%package -n %{name}-doc
-Summary:        Atomic file writes for Python (documentation)
-Group:          Documentation/HTML
-
-%description -n %{name}-doc
-Atomic file writes for python3.
-Features that distinguish it from other similar libraries:
-
-- Race-free assertion that the target file doesn't yet exist. This can be
-  controlled with the 'overwrite' parameter.
-
-- High-level API that wraps a very flexible class-based API.
-
-This package contains the documentation for both python2 and python3 versions
-of python-atomicwrites
-%endif
 
 %build
 %if %{without doc}
@@ -102,20 +83,14 @@ popd
 %pytest
 %endif
 
-%if %{without doc}
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
+%if %{without doc}
 %{python_sitelib}/atomicwrites
 %{python_sitelib}/atomicwrites-%{version}.dist-info
-
 %else
-
-%files -n %{name}-doc
-%defattr(-,root,root,-)
-%doc README.rst
-%license LICENSE
 %doc docs/_build/html
 %endif
 

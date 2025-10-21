@@ -145,4 +145,13 @@
     <comment>- Build for modern python in SLE15</comment>
     <requestid>1307090</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>4690ae8a05623a20191dae8aa9d911f6</srcmd5>
+    <version>1.4.1</version>
+    <time>1761038148</time>
+    <user>anag_factory</user>
+    <comment>- Fix -doc package generation, we are adding the -doc to the suffix,
+  no need to have a subpackage here, multibuild does the trick.</comment>
+    <requestid>1312353</requestid>
+  </revision>
 </revisionlist>

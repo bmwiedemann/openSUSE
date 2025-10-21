@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 20 09:46:50 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix -doc package generation, we are adding the -doc to the suffix,
+  no need to have a subpackage here, multibuild does the trick.
+
+-------------------------------------------------------------------
 Thu Sep 25 10:40:31 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build for modern python in SLE15
