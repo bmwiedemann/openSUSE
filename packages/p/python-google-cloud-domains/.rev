@@ -66,4 +66,17 @@
     <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
     <requestid>1301153</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>958951dd22bb743a459fd41911a6a0b6</srcmd5>
+    <version>1.11.0</version>
+    <time>1761038153</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.11.0
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- from version 1.10.2
+  * Update import statement example in README
+- Update BuildRequires and Requires from setup.py (forwarded request 1312338 from glaubitz)</comment>
+    <requestid>1312374</requestid>
+  </revision>
 </revisionlist>
