@@ -689,4 +689,17 @@ prerequisite for new python submission</comment>
   * Only sed the shebang in executable files</comment>
     <requestid>1225282</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>861cda9974a61c198c7847a6da234317</srcmd5>
+    <version>20250923.c3cfac8</version>
+    <time>1761038071</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250923.c3cfac8:
+  * Remove py_setup_args macro completely.
+  * Move libalternative conf creation to FLAVOR_alternative_conf
+  * Update default-prjconf for primary python: python313
+  * Drop python38, add python314
+  * Make RPM macro expansions POSIX sh-compatible</comment>
+    <requestid>1312385</requestid>
+  </revision>
 </revisionlist>

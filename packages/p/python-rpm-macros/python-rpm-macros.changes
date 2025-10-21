@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 20 11:19:11 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 20250923.c3cfac8:
+  * Remove py_setup_args macro completely.
+  * Move libalternative conf creation to FLAVOR_alternative_conf
+  * Update default-prjconf for primary python: python313
+  * Drop python38, add python314
+  * Make RPM macro expansions POSIX sh-compatible
+
+-------------------------------------------------------------------
 Wed Nov 20 12:20:26 UTC 2024 - mcepl@cepl.eu
 
 - Update to version 20241120.6ae645f:
