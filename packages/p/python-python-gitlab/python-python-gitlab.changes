@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 20 05:41:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.5.0:
+  * Bug Fixes
+    - semantic-release: Enable CHANGELOG.md generation (fb9693b)
+  * Continuous Integration
+    - stale: Fix permission for stale action and allow manual run
+      (9357a37)
+  * Documentation
+    - pull_mirror: Fix incorrect start() method usage example
+      (2acac19)
+  * Features
+    - api: Add content_ref and dry_run_ref parameters to
+      ProjectCiLintManager (e8d2538)
+    - users: Implement 'skip_confirmation' in users 'emails'
+      creation (2981730)
+
+-------------------------------------------------------------------
 Sun Sep 28 17:25:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.4.0:
