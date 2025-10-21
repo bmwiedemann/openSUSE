@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 21 02:38:22 UTC 2025 - william.brown@suse.com
+
+- Update to version 20251021:
+  *  Mark all rust-unic crates as unmaintained  (#2424)
+  * fix: RUSTSEC-2025-0073 (`alloy-dyn-abi`), update to description and credit (#2423)
+  * Assigned RUSTSEC-2025-0073 to alloy-dyn-abi
+  * Add CVE-2025-62370 `alloy-dyn-abi` (#2421)
+  * Assigned RUSTSEC-2025-0072 to wrflib
+  * add wrflib
+  * add io-safety keyword to RUSTSEC-2025-0051
+  * Assigned RUSTSEC-2025-0071 to ammonia
+  * ammonia v4.1.2
+  * Assigned RUSTSEC-2025-0070 to pingora-core
+
+-------------------------------------------------------------------
 Sat Sep 13 01:09:23 UTC 2025 - william.brown@suse.com
 
 - Update to version 20250913:
