@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 20 07:59:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add patches allow_cffi_v2_dependency.patch and
+  allow_cryptography_v46.patch
+
+-------------------------------------------------------------------
+Sat Oct 18 06:03:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.11.1:
+  * Handle missing packages when logging package versions and release
+    v0.11.1 by @robin-nitrokey in #693
+
+-------------------------------------------------------------------
+Fri Oct 17 06:47:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.11.0:
+  * nk3 secrets: Print timestamp to stderr by @robin-nitrokey in #680
+  * nk3: Add list-config-fields command by @robin-nitrokey in #681
+  * fido2: Handle wrong PIN errors by @robin-nitrokey in #682
+  * fido2 reset: Improve wording by @robin-nitrokey in #683
+  * nk3 test: Support credential creation without PIN by @robin-nitrokey in #679
+  * Log SDK versions by @robin-nitrokey in #689
+  * nethsm: Add --debug flag by @robin-nitrokey in #690
+  * Update for NetHSM v3 and release v0.11.0 by @robin-nitrokey in #691
+
+-------------------------------------------------------------------
 Wed Aug  6 05:20:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.10.0:

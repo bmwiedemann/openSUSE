@@ -1,0 +1,26 @@
+From 39c54ff719cd3e0e75ad01de2f0c66e38f4ea38b Mon Sep 17 00:00:00 2001
+From: Robin Krahl <robin@nitrokey.com>
+Date: Mon, 20 Oct 2025 09:18:03 +0200
+Subject: [PATCH] Allow cryptography v46
+
+According to the changelog, the breaking changes in cryptography v46 do
+not affect us.
+
+Fixes: https://github.com/Nitrokey/pynitrokey/issues/696
+---
+ pyproject.toml | 2 +-
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 7c52c2f2..36569aed 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -20,7 +20,7 @@ dynamic = ["classifiers"]
+ dependencies = [
+   "cffi >=1.15, <3",
+   "click >=8.2, <9",
+-  "cryptography >=43, <46",
++  "cryptography >=43, <47",
+   "fido2 >=2, <3",
+   "hidapi >=0.14, <0.15",
+   # Limit hidapi on Linux to versions using the hidraw backend, see

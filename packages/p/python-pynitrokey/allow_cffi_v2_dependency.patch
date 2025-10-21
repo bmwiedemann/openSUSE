@@ -1,0 +1,35 @@
+From afea6bb0fe3e62def7309d261f9dc51d56fb9665 Mon Sep 17 00:00:00 2001
+From: Robin Krahl <robin@nitrokey.com>
+Date: Sat, 18 Oct 2025 14:29:48 +0200
+Subject: [PATCH] Allow cffi v2 dependency
+
+According to the changelog, the only breaking change in cffi v2 is the
+dropped support for Python 3.8 so it should not affect us.
+
+Fixes: https://github.com/Nitrokey/pynitrokey/issues/694
+---
+ pyproject.toml | 4 ++--
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index e35ed192..7c52c2f2 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -18,7 +18,7 @@ readme = "README.md"
+ requires-python = ">=3.10"
+ dynamic = ["classifiers"]
+ dependencies = [
+-  "cffi >=1.15, <2",
++  "cffi >=1.15, <3",
+   "click >=8.2, <9",
+   "cryptography >=43, <46",
+   "fido2 >=2, <3",
+@@ -93,7 +93,7 @@ flake8 = "*"
+ ipython = "*"
+ isort = "*"
+ mypy = ">=1.4, <1.5"
+-types-cffi = ">=1.15, <2"
++types-cffi = ">=1.15, <3"
+ types-requests = ">=2.16, <3"
+ types-tqdm = ">=4.64, <5"
+ pytest = ">=8, <9"

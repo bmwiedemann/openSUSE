@@ -159,4 +159,12 @@
     <comment></comment>
     <requestid>1298114</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>63aeaf6cbcef1f56aaf79a35939cc7a1</srcmd5>
+    <version>0.11.1</version>
+    <time>1761038172</time>
+    <user>anag_factory</user>
+    <comment>update to 0.11.1, requires netshm &gt;= 2</comment>
+    <requestid>1312449</requestid>
+  </revision>
 </revisionlist>
