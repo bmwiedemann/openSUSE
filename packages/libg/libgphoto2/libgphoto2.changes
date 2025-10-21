@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 19 13:21:07 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- libgphoto2 2.5.33 release
+  * serial:
+    * added caching
+  * canon:
+    * use caching from serial driver
+  * ptp2:
+    * fixed crash on capture regression
+    * added new ids:
+      * Sony ZV-E10M2
+      * Fuji X-M5
+      * Ricoh GR IIIx (corrected id)
+    * imported libmtp ids
+  * translations: updated romanian, chinese, polish, ukrainian
+
+-------------------------------------------------------------------
 Sun Jul  6 10:15:47 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - libgphoto2 2.5.32 release

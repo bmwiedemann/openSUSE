@@ -1713,4 +1713,24 @@ is ready when the default compiler is switched. (forwarded request 1191710 from 
     - Leica Q3, M11 Monochrome</comment>
     <requestid>1290880</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>8b5cf21f86445200b7d6d3526ccedf9f</srcmd5>
+    <version>2.5.33</version>
+    <time>1761038076</time>
+    <user>anag_factory</user>
+    <comment>- libgphoto2 2.5.33 release
+  * serial:
+    * added caching
+  * canon:
+    * use caching from serial driver
+  * ptp2:
+    * fixed crash on capture regression
+    * added new ids:
+      * Sony ZV-E10M2
+      * Fuji X-M5
+      * Ricoh GR IIIx (corrected id)
+    * imported libmtp ids
+  * translations: updated romanian, chinese, polish, ukrainian</comment>
+    <requestid>1312222</requestid>
+  </revision>
 </revisionlist>
