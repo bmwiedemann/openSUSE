@@ -28,6 +28,10 @@ fi
 jdupes -1 -L -r /usr/share/licenses
 rpm -e jdupes
 
+# set the day of last password change to empty
+sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shadow
+rpm -e sed
+
 # not making sense in a zypper-free image
 rm -vf /var/lib/zypp/AutoInstalled
 
