@@ -33,4 +33,19 @@
     <comment></comment>
     <requestid>1166372</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21d26153ad2cba9e3652825baaca4c70</srcmd5>
+    <version>3.1.0</version>
+    <time>1761038150</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 3.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from pyproject.toml (forwarded request 1312396 from glaubitz)</comment>
+    <requestid>1312398</requestid>
+  </revision>
 </revisionlist>
