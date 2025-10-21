@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Tue Oct 21 05:14:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.0:
+  https://github.com/akuity/kargo/releases/tag/v1.8.0
+  List of noteworthy features is in the release notes
+  * Breaking Changes
+    - The format of logs emitted by Kargo components has changed
+      slightly.
+  * CLI-related changes
+    - fix(cli): replace lib bacongobbler/browser by pkg/browser to
+      fix issue on windows cli (#4903)
+  * Dependencies
+    - chore(deps): bump golang from 1.25.2-trixie to 1.25.3-trixie
+      (#5256)
+    - chore(deps): bump the go-patch group across 1 directory with
+      5 updates (#5123)
+    - chore(deps/api): bump connectrpc.com/connect from 1.18.1 to
+      1.19.0 in /api in the go-minor group (#5119)
+    - chore(deps/tools): bump github.com/golangci/golangci-lint/v2
+      from 2.4.0 to 2.5.0 in /hack/tools in the go-minor group
+      (#5118)
+    - chore(deps): bump library/node from 24.7.0 to 24.9.0 (#5116)
+    - chore(deps): bump actions/cache from 4.2.4 to 4.3.0 (#5117)
+    - chore(deps): bump the go-minor group with 5 updates (#5121)
+    - chore(deps): bump the go-patch group across 1 directory with
+      4 updates (#5085)
+    - chore(deps/pkg): bump sigs.k8s.io/controller-runtime from
+      0.22.0 to 0.22.1 in /pkg in the go-patch group (#5083)
+    - chore(deps): bump gitlab.com/gitlab-org/api/client-go from
+      0.144.1 to 0.146.0 (#5081)
+    - chore(deps/tools): bump github.com/bufbuild/buf from 1.57.0
+      to 1.57.2 in /hack/tools in the go-patch group (#5082)
+    - chore(deps/api): bump the go-patch group in /api with 4
+      updates (#5053)
+    - chore(deps/pkg): bump sigs.k8s.io/controller-runtime from
+      0.21.0 to 0.22.0 in /pkg in the go-minor group (#5009)
+    - chore(deps): bump sigstore/cosign-installer from 3.9.2 to
+      3.10.0 (#5049)
+    - chore(deps): bump the go-minor group across 1 directory with
+      22 updates (#5054)
+    - chore(deps): bump Go dependencies with 15 updates (#4973)
+    - chore(deps): bump vite from 7.1.1 to 7.1.5 in /ui (#5021)
+    - chore(deps/tools): bump the go-minor group in /hack/tools
+      with 2 updates (#5052)
+    - chore(deps/tools): bump k8s.io/code-generator from 0.34.0 to
+      0.34.1 in /hack/tools in the go-patch group (#5051)
+    - chore(deps): bump curlimages/curl from 8.15.0 to 8.16.0
+      (#5050)
+    - chore(deps): bump golang from 1.25.0-trixie to 1.25.1-trixie
+      (#5003)
+    - chore(deps): bump codecov/codecov-action from 5.5.0 to 5.5.1
+      (#5008)
+    - chore(deps): bump actions/setup-node from 4.4.0 to 5.0.0
+      (#5007)
+    - chore(deps): bump aws-actions/configure-aws-credentials from
+      4 to 5 (#5006)
+    - chore(deps): bump actions/stale from 9.1.0 to 10.0.0 (#5005)
+    - chore(deps): bump actions/setup-go from 5.5.0 to 6.0.0
+      (#5004)
+    - chore(deps/api): bump the go-minor group in /api with 5
+      updates (#4966)
+    - chore(deps/tools): bump the go-minor group in /hack/tools
+      with 3 updates (#4965)
+    - chore(deps): bump golang from 1.24.6-bookworm to
+      1.25.0-trixie (#4970)
+    - chore(deps): bump library/node from 24.6.0 to 24.7.0 (#4964)
+    - chore(deps/api): bump the go-patch group across 1 directory
+      with 4 updates (#4926)
+    - chore(deps/tools): bump helm.sh/helm/v3 from 3.18.5 to 3.18.6
+      in /hack/tools in the go-patch group (#4929)
+    - chore(deps): bump codecov/codecov-action from 5.4.3 to 5.5.0
+      (#4927)
+    - chore(deps): bump amannn/action-semantic-pull-request from
+      6.0.1 to 6.1.1 (#4928)
+    - chore(deps/pkg): bump k8s.io/apimachinery from 0.33.3 to
+      0.33.4 in /pkg in the go-patch group (#4880)
+    - chore(deps): bump library/node from 24.5.0 to 24.6.0 (#4881)
+    - chore(deps/tools): bump k8s.io/code-generator from 0.33.3 to
+      0.33.4 in /hack/tools in the go-patch group (#4874)
+    - chore(deps/tools): bump github.com/golangci/golangci-lint/v2
+      from 2.3.1 to 2.4.0 in /hack/tools in the go-minor group
+      (#4875)
+    - chore(deps): bump amannn/action-semantic-pull-request from
+      5.5.3 to 6.0.1 (#4879)
+    - chore(deps): bump korthout/backport-action from 3.2.1 to
+      3.3.0 (#4878)
+    - chore(deps): bump the go-patch group with 9 updates (#4876)
+    - chore(deps): bump helm.sh/helm/v3 from 3.18.4 to 3.18.5
+      (#4862)
+    - chore(deps/tools): bump helm.sh/helm/v3 from 3.18.4 to 3.18.5
+      in /hack/tools (#4863)
+    - chore(deps): bump actions/checkout from 4.2.2 to 5.0.0
+      (#4831)
+    - chore(deps): decrease UI dependabot frequency (#4816)
+    - chore(deps): bump the js-minor group in /ui with 12 updates
+      (#4804)
+    - chore(deps): bump the go-patch group across 1 directory with
+      3 updates (#4815)
+    - chore(deps): bump golang from 1.24.5-bookworm to
+      1.24.6-bookworm (#4806)
+    - chore(deps): bump library/node from 24.3.0 to 24.5.0 (#4807)
+    - chore(deps/api): bump google.golang.org/protobuf from 1.36.6
+      to 1.36.7 in /api in the go-patch group (#4808)
+    - chore(deps/tools): bump golang.org/x/tools from 0.35.0 to
+      0.36.0 in /hack/tools in the go-minor group (#4812)
+    - chore(deps): bump actions/cache from 4.2.3 to 4.2.4 (#4809)
+    - chore(deps): bump the go-minor group across 1 directory with
+      7 updates (#4813)
+    - chore(deps/tools): bump github.com/bufbuild/buf from 1.55.1
+      to 1.56.0 in /hack/tools in the go-minor group (#4746)
+    - chore(deps): bump the go-minor group with 8 updates (#4747)
+    - chore(deps/tools): bump github.com/golangci/golangci-lint/v2
+      from 2.3.0 to 2.3.1 in /hack/tools in the go-patch group
+      (#4745)
+
+-------------------------------------------------------------------
+Tue Oct 21 05:05:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.7.6:
+  * no CLI-related changes
+
+-------------------------------------------------------------------
 Thu Sep 18 12:43:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.7.5:
