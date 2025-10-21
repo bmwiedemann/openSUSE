@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 17 09:49:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.20.2+11:
+  * scrolledwindow:
+    - Do not set priv->scrolling when a non smooth-scroll device is
+      used
+    - Track current modifiers during scrolling
+  * vulkan: Disable YCbCr to RGB conversions for fallback formats
+  * ci: Update Rust to 1.89.0
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep 30 15:49:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.20.2:
