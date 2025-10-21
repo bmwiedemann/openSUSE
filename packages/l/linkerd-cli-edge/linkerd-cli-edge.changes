@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 21 05:03:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.10.5:
+  No CLI-related changes in the changelog
+  * build(deps): bump generic-array from 0.14.8 to 0.14.9 (#14627)
+  * build(deps): bump regex-automata from 0.4.12 to 0.4.13 (#14626)
+  * build(deps): bump nu-ansi-term from 0.50.1 to 0.50.3 (#14625)
+  * build(deps): bump regex-syntax from 0.8.6 to 0.8.8 (#14624)
+  * build(deps): bump the clap group with 4 updates (#14623)
+
+-------------------------------------------------------------------
 Fri Oct 17 06:27:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.10.4:
