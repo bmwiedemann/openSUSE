@@ -17,7 +17,7 @@
 
 
 Name:           subfinder
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        Fast passive subdomain enumeration tool
 License:        MIT
@@ -39,11 +39,8 @@ The passive model guarantees speed and stealthiness that can be leveraged by bot
 
 %prep
 %autosetup -p1 -a1
-cd v2
-ln -s ../vendor
 
 %build
-cd v2
 %ifnarch ppc64
 export GOFLAGS="-buildmode=pie"
 %endif
@@ -51,12 +48,10 @@ go build ./cmd/%{name}
 help2man -s8 -N ./subfinder --version-string=%{version} > subfinder.8
 
 %install
-cd v2
 install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}
 install -m 644 -D -v %{name}.8 %{buildroot}%{_datadir}/man/man8/%{name}.8
 
 %check
-cd v2
 ./subfinder -h
 
 %files

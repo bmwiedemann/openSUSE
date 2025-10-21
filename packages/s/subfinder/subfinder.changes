@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 20 09:45:23 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.9.0
+  * New Features
+    - Added environment variable support for config files by @dogancanbakir in #1650
+    - Added the driftnet source. by @0x4500 in #1612
+  * Other Changes
+    - Moved v2 module to root directory for cleaner structure by @mikelolasagasti in #1613
+    - Corrected typo in README by @emmanuel-ferdman in #1621
+    - Corrected the working directory in the build-test action by @tekkamanendless in #1631
+    - Renamed variables to prevent potential nil pointer dereference in netlas source by @tekkamanendless in #1630
+
+-------------------------------------------------------------------
 Mon Aug 11 11:31:48 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.8.0

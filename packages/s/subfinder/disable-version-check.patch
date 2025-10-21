@@ -1,7 +1,7 @@
-diff --git a/v2/pkg/runner/banners.go b/v2/pkg/runner/banners.go
+diff --git a/pkg/runner/banners.go b/pkg/runner/banners.go
 index 1e9af43..181013c 100644
---- a/v2/pkg/runner/banners.go
-+++ b/v2/pkg/runner/banners.go
+--- a/pkg/runner/banners.go
++++ b/pkg/runner/banners.go
 @@ -2,7 +2,6 @@ package runner
  
  import (
@@ -17,10 +17,10 @@ index 1e9af43..181013c 100644
 -		updateutils.GetUpdateToolCallback("subfinder", version)()
  	}
  }
-diff --git a/v2/pkg/runner/options.go b/v2/pkg/runner/options.go
+diff --git a/pkg/runner/options.go b/pkg/runner/options.go
 index 5e3d4b1..6068386 100644
---- a/v2/pkg/runner/options.go
-+++ b/v2/pkg/runner/options.go
+--- a/pkg/runner/options.go
++++ b/pkg/runner/options.go
 @@ -18,7 +18,6 @@ import (
  	fileutil "github.com/projectdiscovery/utils/file"
  	folderutil "github.com/projectdiscovery/utils/folder"

@@ -101,4 +101,20 @@ for bsc#1241187 / CVE-2024-0406 / GHSA-rhh4-rh7c-7r5v (forwarded request 1269571
     - Modernized subfinder source code by @dogancanbakir in #1601 (forwarded request 1298790 from dheidler)</comment>
     <requestid>1298865</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0fd9d58865913cdb07d570b2b2f1aa43</srcmd5>
+    <version>2.9.0</version>
+    <time>1761038182</time>
+    <user>anag_factory</user>
+    <comment>- Version 2.9.0
+  * New Features
+    - Added environment variable support for config files by @dogancanbakir in #1650
+    - Added the driftnet source. by @0x4500 in #1612
+  * Other Changes
+    - Moved v2 module to root directory for cleaner structure by @mikelolasagasti in #1613
+    - Corrected typo in README by @emmanuel-ferdman in #1621
+    - Corrected the working directory in the build-test action by @tekkamanendless in #1631
+    - Renamed variables to prevent potential nil pointer dereference in netlas source by @tekkamanendless in #1630 (forwarded request 1312357 from dheidler)</comment>
+    <requestid>1312578</requestid>
+  </revision>
 </revisionlist>
