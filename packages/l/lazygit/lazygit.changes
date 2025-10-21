@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 18 14:26:08 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.55.1:
+  * Fix staging when using the new useExternalDiffGitConfig config
+  * Don't hide keybindings that match the confirmMenu key in the keybindings
+    menu
+
+-------------------------------------------------------------------
 Sat Sep 06 17:29:44 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.55.0:

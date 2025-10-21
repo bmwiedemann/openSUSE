@@ -252,4 +252,15 @@ expertise with the git command line.</comment>
   * Add &quot;CopyToClipboard&quot; command to `ConfirmationController` (forwarded request 1303015 from jfkw)</comment>
     <requestid>1303016</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d68897ec3d253a596cfd4ca43d6f67ae</srcmd5>
+    <version>0.55.1</version>
+    <time>1761038124</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.55.1:
+  * Fix staging when using the new useExternalDiffGitConfig config
+  * Don't hide keybindings that match the confirmMenu key in the keybindings
+    menu (forwarded request 1312164 from amanzini)</comment>
+    <requestid>1312276</requestid>
+  </revision>
 </revisionlist>
