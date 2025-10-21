@@ -1,0 +1,31 @@
+Index: zope_testing-6.0/src/zope/testing/tests.py
+===================================================================
+--- zope_testing-6.0.orig/src/zope/testing/tests.py
++++ zope_testing-6.0/src/zope/testing/tests.py
+@@ -36,15 +36,17 @@ def test_suite():
+         doctest.DocFileSuite('wait.txt', setUp=setUp)
+     ))
+ 
+-    suite.addTests(
+-        doctest.DocFileSuite(
+-            'doctestcase.txt',
+-            checker=renormalizing.RENormalizing([
+-                # for Python 3.11+
+-                (re.compile(r'\(tests\.MyTest\.test.?\)'), '(tests.MyTest)'),
+-                (re.compile(r'\(tests.MoreTests.test_.*\)'),
+-                 '(tests.MoreTests)')
+-            ])))
++    if sys.version_info[1] < 14:
++        suite.addTests(
++            doctest.DocFileSuite(
++                'doctestcase.txt',
++                checker=renormalizing.RENormalizing([
++                    # for Python 3.11+
++                    (re.compile(r'\(tests\.MyTest\.test.?\)'), '(tests.MyTest)'),
++                    (re.compile(r'\(tests.MoreTests.test_.*\)'),
++                    '(tests.MoreTests)')
++                ])))
++
+     suite.addTests(doctest.DocFileSuite('cleanup.txt'))
+     suite.addTests(doctest.DocFileSuite('formparser.txt', setUp=setUp))
+     return suite

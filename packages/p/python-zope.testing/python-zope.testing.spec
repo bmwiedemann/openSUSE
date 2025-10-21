@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.testing
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zope.testing
-Version:        5.1
+Version:        6.0
 Release:        0
 Summary:        Zope testing helpers
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zope.testing
 Source:         https://files.pythonhosted.org/packages/source/z/zope.testing/zope_testing-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE https://github.com/zopefoundation/zope.testing/issues/56 doctestcase test fails on Python 3.14
+Patch0:         py314.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -84,7 +86,7 @@ wait
   See wait.txt.
 
 %prep
-%setup -q -n zope_testing-%{version}
+%autosetup -p1 -n zope_testing-%{version}
 
 %build
 %pyproject_wheel
@@ -102,6 +104,5 @@ wait
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope/testing
 %{python_sitelib}/zope[_.]testing-%{version}.dist-info
-%{python_sitelib}/zope.testing-%{version}*-nspkg.pth
 
 %changelog

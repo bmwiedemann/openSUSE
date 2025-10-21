@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 20 08:25:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.0
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+- Add py314.patch to skip tests failing with Python 3.14 (reported)
+
+-------------------------------------------------------------------
 Mon May  5 04:01:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.1:
