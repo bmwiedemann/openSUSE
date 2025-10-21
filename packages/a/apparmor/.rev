@@ -3047,4 +3047,13 @@ Also note that the &quot;mailserver_setup&quot; test in https://openqa.opensuse.
 - add dovecot24-part2.diff: more dovecot 2.4 permissions (boo#1247470) (forwarded request 1309113 from cboltz)</comment>
     <requestid>1309114</requestid>
   </revision>
+  <revision rev="229" vrev="2">
+    <srcmd5>3fc9a469087aa57d10e03be6b7ead2b5</srcmd5>
+    <version>4.1.2</version>
+    <time>1761038072</time>
+    <user>anag_factory</user>
+    <comment>- add dovecot24-part3-mr1822.diff: allow writing /tmp/doveconf.* in
+  more dovecot profiles (forwarded request 1312206 from cboltz)</comment>
+    <requestid>1312207</requestid>
+  </revision>
 </revisionlist>

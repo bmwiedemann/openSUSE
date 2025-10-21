@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 19 10:41:36 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- add dovecot24-part3-mr1822.diff: allow writing /tmp/doveconf.* in
+  more dovecot profiles
+
+-------------------------------------------------------------------
 Sun Oct  5 14:07:15 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 4.1.2

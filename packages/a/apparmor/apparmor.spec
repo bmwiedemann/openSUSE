@@ -88,6 +88,9 @@ Patch11:        kerberosclient-usrmerge.diff
 # dovecot24: more permissions from boo#1247470
 Patch13:        dovecot24-part2.diff
 
+# dovecot24: allow writing /tmp/doveconf.* to more profiles - submitted upstream 2025-10-19 https://gitlab.com/apparmor/apparmor/-/merge_requests/1822 for 4.x and master
+Patch14:        dovecot24-part3-mr1822.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -358,6 +361,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %endif
 %patch -P 11 -p1
 %patch -P 13 -p1
+%patch -P 14 -p1
 
 %build
 export SUSE_ASNEEDED=0
