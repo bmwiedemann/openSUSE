@@ -1418,7 +1418,6 @@ unsorted:
   - binsider 
   - binutils-devel 
   - binutils-devel-32bit 
-  - binutils-gold 
   - binwalk 
   - biodiff 
   - biome 
@@ -3529,6 +3528,8 @@ unsorted:
   - ebizzy 
   - eblook 
   - ebook-tools 
+  - ebook2cw 
+  - ebook2cwgui 
   - ebtables 
   - ebumeter 
   - echomixer 
@@ -4667,8 +4668,10 @@ unsorted:
   - gap-help 
   - gap-homalg 
   - gap-homalgtocas 
+  - gap-ibnp 
   - gap-idrel 
   - gap-images 
+  - gap-inducereduce 
   - gap-intpic 
   - gap-io 
   - gap-io_forhomalg 
@@ -4729,6 +4732,7 @@ unsorted:
   - gap-sl2reps 
   - gap-sla 
   - gap-smallantimagmas 
+  - gap-smallclassnr 
   - gap-smallgrp 
   - gap-smallsemi 
   - gap-sonata 
@@ -4743,6 +4747,8 @@ unsorted:
   - gap-toric 
   - gap-toricvarieties 
   - gap-transgrp 
+  - gap-twistedconjugacy 
+  - gap-typeset 
   - gap-ugaly 
   - gap-unipot 
   - gap-unitlib 
@@ -9052,7 +9058,6 @@ unsorted:
   - ispell-spanish 
   - ispell-sq 
   - ispell-swedish 
-  - issue-generator 
   - istack-commons 
   - istack-commons-buildtools 
   - istack-commons-maven-plugin 
@@ -10825,7 +10830,6 @@ unsorted:
   - ldacBT-devel 
   - ldap-proxy 
   - ldap-yp-tools 
-  - ldapfuse 
   - ldas-tools-al-devel 
   - ldas-tools-al-swig 
   - ldas-tools-cmake 
@@ -23529,7 +23533,6 @@ unsorted:
   - python-acitoolkit-doc-applications 
   - python-acitoolkit-doc-samples 
   - python-altgraph-doc 
-  - python-atomicwrites-doc-doc 
   - python-automaton-doc 
   - python-azure-agent 
   - python-azure-agent-config-default 
@@ -24359,6 +24362,7 @@ unsorted:
   - python311-atlassian-python-api 
   - python311-atom 
   - python311-atomicwrites 
+  - python311-atomicwrites-doc 
   - python311-atpublic 
   - python311-attr 
   - python311-aubio 
@@ -28106,6 +28110,7 @@ unsorted:
   - python312-atlassian-python-api 
   - python312-atom 
   - python312-atomicwrites 
+  - python312-atomicwrites-doc 
   - python312-atpublic 
   - python312-attr 
   - python312-attrs 
@@ -31911,6 +31916,7 @@ unsorted:
   - python313-atlassian-python-api 
   - python313-atom 
   - python313-atomicwrites 
+  - python313-atomicwrites-doc 
   - python313-atpublic 
   - python313-attr 
   - python313-aubio 
@@ -37614,6 +37620,7 @@ unsorted:
   - steam-powerbuttond 
   - steamdeck-dsp 
   - steamdeck-firmware 
+  - steamos-powerbuttond 
   - steampipe 
   - steinberg-bravura-fonts 
   - stellarbatchsolver 
