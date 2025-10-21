@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 19 13:36:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.2
+  * Cure a use-after-free and a read-one-past-array bug
+
+-------------------------------------------------------------------
 Sat Oct 11 11:47:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.1

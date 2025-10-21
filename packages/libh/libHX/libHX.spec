@@ -18,7 +18,7 @@
 
 Name:           libHX
 %define lname   libHX43
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        Collection of routines for C and C++ programming
 License:        LGPL-2.1-or-later
