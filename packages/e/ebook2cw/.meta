@@ -1,0 +1,7 @@
+<package name="ebook2cw" project="openSUSE:Factory">
+  <title>Convert ebooks to Morse MP3s/OGGs</title>
+  <description>ebook2cw is a command line program (optional graphical user interface
+available) which converts a plain text (ASCII, ISO 8859-1 or UTF-8) file (e. g.
+an ebook) to Morse code MP3 or OGG audio files.</description>
+  <url>https://fkurz.net/ham/ebook2cw.html</url>
+</package>
