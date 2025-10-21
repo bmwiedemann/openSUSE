@@ -79,11 +79,11 @@ Date:   Tue Feb 13 07:34:22 2018 -0800
     	* testsuite/ld-x86-64/pr22791-2c.s: Likewise.
     	* testsuite/ld-x86-64/x86-64.exp: Run PR ld/22791 tests.
 
-Index: binutils-2.42/bfd/elf64-x86-64.c
+Index: binutils-2.45/bfd/elf64-x86-64.c
 ===================================================================
---- binutils-2.42.orig/bfd/elf64-x86-64.c	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/bfd/elf64-x86-64.c	2024-01-30 16:57:58.483994137 +0100
-@@ -1981,6 +1981,24 @@ elf_x86_64_convert_load_reloc (bfd *abfd
+--- binutils-2.45.orig/bfd/elf64-x86-64.c	2025-10-14 15:54:33.605441586 +0200
++++ binutils-2.45/bfd/elf64-x86-64.c	2025-10-14 15:59:55.169884230 +0200
+@@ -2480,6 +2480,24 @@ elf_x86_64_convert_load_reloc (bfd *abfd
    return true;
  }
  
@@ -108,7 +108,7 @@ Index: binutils-2.42/bfd/elf64-x86-64.c
  /* Look through the relocs for a section during the first phase, and
     calculate needed space in the global offset table, and procedure
     linkage table.  */
-@@ -3337,9 +3355,6 @@ elf_x86_64_relocate_section (bfd *output
+@@ -3897,9 +3915,6 @@ elf_x86_64_relocate_section (bfd *output
  			&& (eh == NULL
  			    || !UNDEFINED_WEAK_RESOLVED_TO_ZERO (info,
  								 eh)))
@@ -118,7 +118,7 @@ Index: binutils-2.42/bfd/elf64-x86-64.c
  		       || (no_copyreloc_p
  			   && h->def_dynamic
  			   && !(h->root.u.def.section->flags & SEC_CODE))))
-@@ -3348,20 +3363,25 @@ elf_x86_64_relocate_section (bfd *output
+@@ -3908,20 +3923,25 @@ elf_x86_64_relocate_section (bfd *output
  		  || bfd_link_dll (info)))
  	    {
  	      bool fail = false;
@@ -148,7 +148,7 @@ Index: binutils-2.42/bfd/elf64-x86-64.c
  		}
  	      else if (no_copyreloc_p || bfd_link_dll (info))
  		{
-@@ -3370,9 +3390,10 @@ elf_x86_64_relocate_section (bfd *output
+@@ -3930,9 +3950,10 @@ elf_x86_64_relocate_section (bfd *output
  		     relocations against default and protected
  		     symbols since address of protected function
  		     and location of protected data may not be in
@@ -161,102 +161,25 @@ Index: binutils-2.42/bfd/elf64-x86-64.c
  		}
  
  	      if (fail)
-Index: binutils-2.42/gas/config/tc-i386.c
+Index: binutils-2.45/gas/config/tc-i386.c
 ===================================================================
---- binutils-2.42.orig/gas/config/tc-i386.c	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/config/tc-i386.c	2024-01-30 16:58:57.504959847 +0100
-@@ -10699,55 +10699,12 @@ output_branch (void)
-   frag_var (rs_machine_dependent, 5, i.reloc[0], subtype, sym, off, p);
- }
- 
--#if defined (OBJ_ELF) || defined (OBJ_MAYBE_ELF)
--/* Return TRUE iff PLT32 relocation should be used for branching to
--   symbol S.  */
--
--static bool
--need_plt32_p (symbolS *s)
--{
--  /* PLT32 relocation is ELF only.  */
--  if (!IS_ELF)
--    return false;
--
--#ifdef TE_SOLARIS
--  /* Don't emit PLT32 relocation on Solaris: neither native linker nor
--     krtld support it.  */
--  return false;
--#endif
--
--  /* Since there is no need to prepare for PLT branch on x86-64, we
--     can generate R_X86_64_PLT32, instead of R_X86_64_PC32, which can
--     be used as a marker for 32-bit PC-relative branches.  */
--  if (!object_64bit)
--    return false;
--
--  if (s == NULL)
--    return false;
--
--  /* Weak or undefined symbol need PLT32 relocation.  */
--  if (S_IS_WEAK (s) || !S_IS_DEFINED (s))
--    return true;
--
--  /* Non-global symbol doesn't need PLT32 relocation.  */
--  if (! S_IS_EXTERNAL (s))
--    return false;
--
--  /* Other global symbols need PLT32 relocation.  NB: Symbol with
--     non-default visibilities are treated as normal global symbol
--     so that PLT32 relocation can be used as a marker for 32-bit
--     PC-relative branches.  It is useful for linker relaxation.  */
--  return true;
--}
--#endif
--
- static void
- output_jump (void)
+--- binutils-2.45.orig/gas/config/tc-i386.c	2025-10-14 15:53:39.665528626 +0200
++++ binutils-2.45/gas/config/tc-i386.c	2025-10-14 16:01:49.677822350 +0200
+@@ -11591,6 +11591,10 @@ output_branch (void)
+ static bool
+ need_plt32_p (symbolS *s)
  {
-   char *p;
-   int size;
-   fixS *fixP;
--  bfd_reloc_code_real_type jump_reloc = i.reloc[0];
- 
-   if (i.tm.opcode_modifier.jump == JUMP_BYTE)
-     {
-@@ -10821,17 +10778,8 @@ output_jump (void)
-       abort ();
-     }
- 
--#if defined (OBJ_ELF) || defined (OBJ_MAYBE_ELF)
--  if (flag_code == CODE_64BIT && size == 4
--      && jump_reloc == NO_RELOC && i.op[0].disps->X_add_number == 0
--      && need_plt32_p (i.op[0].disps->X_add_symbol))
--    jump_reloc = BFD_RELOC_X86_64_PLT32;
--#endif
--
--  jump_reloc = reloc (size, 1, 1, jump_reloc);
--
-   fixP = fix_new_exp (frag_now, p - frag_now->fr_literal, size,
--		      i.op[0].disps, 1, jump_reloc);
-+		      i.op[0].disps, 1, reloc (size, 1, 1, i.reloc[0]));
- 
-   /* All jumps handled here are signed, but don't unconditionally use a
-      signed limit check for 32 and 16 bit jumps as we want to allow wrap
-@@ -15083,12 +15031,6 @@ md_estimate_size_before_relax (fragS *fr
- 	reloc_type = (enum bfd_reloc_code_real) fragP->fr_var;
-       else if (size == 2)
- 	reloc_type = BFD_RELOC_16_PCREL;
--#if defined (OBJ_ELF) || defined (OBJ_MAYBE_ELF)
--      else if (fragP->tc_frag_data.code == CODE_64BIT
--	       && fragP->fr_offset == 0
--	       && need_plt32_p (fragP->fr_symbol))
--	reloc_type = BFD_RELOC_X86_64_PLT32;
--#endif
-       else
- 	reloc_type = BFD_RELOC_32_PCREL;
- 
-Index: binutils-2.42/gas/testsuite/gas/i386/ilp32/reloc64.d
++  /* This is for old SUSE enterprise code-streams: dont emit
++     PLT32 for branches.  */
++  return false;
++
+ #ifdef TE_SOLARIS
+   /* Don't emit PLT32 relocation on Solaris: neither native linker nor
+      krtld support it.  */
+Index: binutils-2.45/gas/testsuite/gas/i386/ilp32/reloc64.d
 ===================================================================
---- binutils-2.42.orig/gas/testsuite/gas/i386/ilp32/reloc64.d	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/testsuite/gas/i386/ilp32/reloc64.d	2024-01-30 16:57:58.487327524 +0100
+--- binutils-2.45.orig/gas/testsuite/gas/i386/ilp32/reloc64.d	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/testsuite/gas/i386/ilp32/reloc64.d	2025-10-14 15:59:55.171884264 +0200
 @@ -17,7 +17,7 @@ Disassembly of section \.text:
  .*[ 	]+R_X86_64_PC8[ 	]+xtrn\+0x0*1
  .*[ 	]+R_X86_64_PC32[ 	]+xtrn-0x0*4
@@ -266,10 +189,10 @@ Index: binutils-2.42/gas/testsuite/gas/i386/ilp32/reloc64.d
  .*[ 	]+R_X86_64_PC8[ 	]+xtrn-0x0*1
  .*[ 	]+R_X86_64_GOT32[ 	]+xtrn
  .*[ 	]+R_X86_64_GOT32[ 	]+xtrn
-Index: binutils-2.42/gas/testsuite/gas/i386/ilp32/x86-64-branch.d
+Index: binutils-2.45/gas/testsuite/gas/i386/ilp32/x86-64-branch.d
 ===================================================================
---- binutils-2.42.orig/gas/testsuite/gas/i386/ilp32/x86-64-branch.d	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/testsuite/gas/i386/ilp32/x86-64-branch.d	2024-01-30 16:57:58.487327524 +0100
+--- binutils-2.45.orig/gas/testsuite/gas/i386/ilp32/x86-64-branch.d	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/testsuite/gas/i386/ilp32/x86-64-branch.d	2025-10-14 15:59:55.171884264 +0200
 @@ -20,9 +20,9 @@ Disassembly of section .text:
  [ 	]*[a-f0-9]+:	66 ff 20             	data16 jmp \*\(%rax\)
  [ 	]*[a-f0-9]+:	e8 00 00 00 00       	call   (0x)?1f <.*>	1b: R_X86_64_PC32	\*ABS\*\+0x10003c
@@ -283,10 +206,10 @@ Index: binutils-2.42/gas/testsuite/gas/i386/ilp32/x86-64-branch.d
  [ 	]*[a-f0-9]+:	66 c3                	data16 ret
  [ 	]*[a-f0-9]+:	66 c2 08 00          	data16 ret \$0x8
  [ 	]*[a-f0-9]+:	3e 74 03[ 	]+je,pt  +[0-9a-fx]+ <.*>
-Index: binutils-2.42/gas/testsuite/gas/i386/reloc64.d
+Index: binutils-2.45/gas/testsuite/gas/i386/reloc64.d
 ===================================================================
---- binutils-2.42.orig/gas/testsuite/gas/i386/reloc64.d	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/testsuite/gas/i386/reloc64.d	2024-01-30 16:57:58.487327524 +0100
+--- binutils-2.45.orig/gas/testsuite/gas/i386/reloc64.d	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/testsuite/gas/i386/reloc64.d	2025-10-14 15:59:55.171884264 +0200
 @@ -20,7 +20,7 @@ Disassembly of section \.text:
  .*[ 	]+R_X86_64_PC8[ 	]+xtrn\+0x0*1
  .*[ 	]+R_X86_64_PC32[ 	]+xtrn-0x0*4
@@ -296,10 +219,10 @@ Index: binutils-2.42/gas/testsuite/gas/i386/reloc64.d
  .*[ 	]+R_X86_64_PC8[ 	]+xtrn-0x0*1
  .*[ 	]+R_X86_64_GOT64[ 	]+xtrn
  .*[ 	]+R_X86_64_GOT32[ 	]+xtrn
-Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-branch-2.d
+Index: binutils-2.45/gas/testsuite/gas/i386/x86-64-branch-2.d
 ===================================================================
---- binutils-2.42.orig/gas/testsuite/gas/i386/x86-64-branch-2.d	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/testsuite/gas/i386/x86-64-branch-2.d	2024-01-30 16:57:58.487327524 +0100
+--- binutils-2.45.orig/gas/testsuite/gas/i386/x86-64-branch-2.d	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/testsuite/gas/i386/x86-64-branch-2.d	2025-10-14 15:59:55.171884264 +0200
 @@ -9,12 +9,12 @@ Disassembly of section .text:
  
  0+ <bar-0xb>:
@@ -315,10 +238,10 @@ Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-branch-2.d
  [ 	]*[a-f0-9]+:	66 c3                	retw
  [ 	]*[a-f0-9]+:	66 c2 08 00          	retw   \$0x8
  #pass
-Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-jump.d
+Index: binutils-2.45/gas/testsuite/gas/i386/x86-64-jump.d
 ===================================================================
---- binutils-2.42.orig/gas/testsuite/gas/i386/x86-64-jump.d	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/testsuite/gas/i386/x86-64-jump.d	2024-01-30 16:57:58.487327524 +0100
+--- binutils-2.45.orig/gas/testsuite/gas/i386/x86-64-jump.d	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/testsuite/gas/i386/x86-64-jump.d	2025-10-14 15:59:55.171884264 +0200
 @@ -9,7 +9,7 @@ Disassembly of section .text:
  
  0+ <.text>:
@@ -337,10 +260,10 @@ Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-jump.d
  [ 	]*[a-f0-9]+:	ff 14 25 00 00 00 00 	call   \*0x0	3d: R_X86_64_32S	xxx
  [ 	]*[a-f0-9]+:	ff d7                	call   \*%rdi
  [ 	]*[a-f0-9]+:	ff 17                	call   \*\(%rdi\)
-Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-nop-3.d
+Index: binutils-2.45/gas/testsuite/gas/i386/x86-64-nop-3.d
 ===================================================================
---- binutils-2.42.orig/gas/testsuite/gas/i386/x86-64-nop-3.d	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/testsuite/gas/i386/x86-64-nop-3.d	2024-01-30 16:57:58.487327524 +0100
+--- binutils-2.45.orig/gas/testsuite/gas/i386/x86-64-nop-3.d	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/testsuite/gas/i386/x86-64-nop-3.d	2025-10-14 15:59:55.171884264 +0200
 @@ -18,5 +18,5 @@ Disassembly of section .text:
  Disassembly of section .altinstr_replacement:
  
@@ -348,10 +271,10 @@ Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-nop-3.d
 - +[a-f0-9]+:	e9 00 00 00 00       	jmp    5 <_start\+0x5>	1: R_X86_64_PLT32	foo-0x4
 + +[a-f0-9]+:	e9 00 00 00 00       	jmp    5 <_start\+0x5>	1: R_X86_64_PC32	foo-0x4
  #pass
-Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-nop-4.d
+Index: binutils-2.45/gas/testsuite/gas/i386/x86-64-nop-4.d
 ===================================================================
---- binutils-2.42.orig/gas/testsuite/gas/i386/x86-64-nop-4.d	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/testsuite/gas/i386/x86-64-nop-4.d	2024-01-30 16:57:58.487327524 +0100
+--- binutils-2.45.orig/gas/testsuite/gas/i386/x86-64-nop-4.d	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/testsuite/gas/i386/x86-64-nop-4.d	2025-10-14 15:59:55.171884264 +0200
 @@ -21,5 +21,5 @@ Disassembly of section .altinstr_replace
   +[a-f0-9]+:	89 c0                	mov    %eax,%eax
   +[a-f0-9]+:	89 c0                	mov    %eax,%eax
@@ -359,10 +282,10 @@ Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-nop-4.d
 - +[a-f0-9]+:	e9 00 00 00 00       	jmp    b <_start\+0xb>	7: R_X86_64_PLT32	foo-0x4
 + +[a-f0-9]+:	e9 00 00 00 00       	jmp    b <_start\+0xb>	7: R_X86_64_PC32	foo-0x4
  #pass
-Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-nop-5.d
+Index: binutils-2.45/gas/testsuite/gas/i386/x86-64-nop-5.d
 ===================================================================
---- binutils-2.42.orig/gas/testsuite/gas/i386/x86-64-nop-5.d	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/testsuite/gas/i386/x86-64-nop-5.d	2024-01-30 16:57:58.487327524 +0100
+--- binutils-2.45.orig/gas/testsuite/gas/i386/x86-64-nop-5.d	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/testsuite/gas/i386/x86-64-nop-5.d	2025-10-14 15:59:55.171884264 +0200
 @@ -24,5 +24,5 @@ Disassembly of section .altinstr_replace
   +[a-f0-9]+:	89 c0                	mov    %eax,%eax
   +[a-f0-9]+:	89 c0                	mov    %eax,%eax
@@ -370,10 +293,10 @@ Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-nop-5.d
 - +[a-f0-9]+:	e9 00 00 00 00       	jmp    d <_start\+0xd>	9: R_X86_64_PLT32	foo-0x4
 + +[a-f0-9]+:	e9 00 00 00 00       	jmp    d <_start\+0xd>	9: R_X86_64_PC32	foo-0x4
  #pass
-Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-relax-2.d
+Index: binutils-2.45/gas/testsuite/gas/i386/x86-64-relax-2.d
 ===================================================================
---- binutils-2.42.orig/gas/testsuite/gas/i386/x86-64-relax-2.d	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/testsuite/gas/i386/x86-64-relax-2.d	2024-01-30 16:57:58.487327524 +0100
+--- binutils-2.45.orig/gas/testsuite/gas/i386/x86-64-relax-2.d	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/testsuite/gas/i386/x86-64-relax-2.d	2025-10-14 15:59:55.171884264 +0200
 @@ -11,12 +11,12 @@ Disassembly of section .text:
  0+ <foo>:
  [ 	]*[a-f0-9]+:	eb 24                	jmp    26 <local>
@@ -392,10 +315,10 @@ Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-relax-2.d
  
  0+22 <hidden_def>:
  [ 	]*[a-f0-9]+:	c3                   	ret
-Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-relax-3.d
+Index: binutils-2.45/gas/testsuite/gas/i386/x86-64-relax-3.d
 ===================================================================
---- binutils-2.42.orig/gas/testsuite/gas/i386/x86-64-relax-3.d	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/testsuite/gas/i386/x86-64-relax-3.d	2024-01-30 16:57:58.487327524 +0100
+--- binutils-2.45.orig/gas/testsuite/gas/i386/x86-64-relax-3.d	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/testsuite/gas/i386/x86-64-relax-3.d	2025-10-14 15:59:55.171884264 +0200
 @@ -12,10 +12,10 @@ Disassembly of section .text:
  [ 	]*[a-f0-9]+:	eb 1b                	jmp    1f <hidden_def>
  [ 	]*[a-f0-9]+:	eb 1b                	jmp    21 <global_def>
@@ -411,25 +334,25 @@ Index: binutils-2.42/gas/testsuite/gas/i386/x86-64-relax-3.d
  
  0+1f <hidden_def>:
  [ 	]*[a-f0-9]+:	c3                   	ret
-Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-1.err
+Index: binutils-2.45/ld/testsuite/ld-x86-64/pr22791-1.err
 ===================================================================
---- binutils-2.42.orig/ld/testsuite/ld-x86-64/pr22791-1.err	2024-01-29 01:00:00.000000000 +0100
+--- binutils-2.45.orig/ld/testsuite/ld-x86-64/pr22791-1.err	2025-07-27 01:00:00.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,2 +0,0 @@
 -.*relocation R_X86_64_PC32 against symbol `foo' can not be used when making a PIE object; recompile with -fPIE
 -#...
-Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-1a.c
+Index: binutils-2.45/ld/testsuite/ld-x86-64/pr22791-1a.c
 ===================================================================
---- binutils-2.42.orig/ld/testsuite/ld-x86-64/pr22791-1a.c	2024-01-29 01:00:00.000000000 +0100
+--- binutils-2.45.orig/ld/testsuite/ld-x86-64/pr22791-1a.c	2025-07-27 01:00:00.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,4 +0,0 @@
 -void
 -foo (void)
 -{
 -}
-Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-1b.s
+Index: binutils-2.45/ld/testsuite/ld-x86-64/pr22791-1b.s
 ===================================================================
---- binutils-2.42.orig/ld/testsuite/ld-x86-64/pr22791-1b.s	2024-01-29 01:00:00.000000000 +0100
+--- binutils-2.45.orig/ld/testsuite/ld-x86-64/pr22791-1b.s	2025-07-27 01:00:00.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,7 +0,0 @@
 -	.text
@@ -439,9 +362,9 @@ Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-1b.s
 -	movl	foo(%rip), %eax
 -	.size	main, .-main
 -	.section	.note.GNU-stack
-Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-2.rd
+Index: binutils-2.45/ld/testsuite/ld-x86-64/pr22791-2.rd
 ===================================================================
---- binutils-2.42.orig/ld/testsuite/ld-x86-64/pr22791-2.rd	2024-01-29 01:00:00.000000000 +0100
+--- binutils-2.45.orig/ld/testsuite/ld-x86-64/pr22791-2.rd	2025-07-27 01:00:00.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,6 +0,0 @@
 -#failif
@@ -450,9 +373,9 @@ Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-2.rd
 -#...
 -[0-9a-f ]+R_X86_64_NONE.*
 -#...
-Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-2a.s
+Index: binutils-2.45/ld/testsuite/ld-x86-64/pr22791-2a.s
 ===================================================================
---- binutils-2.42.orig/ld/testsuite/ld-x86-64/pr22791-2a.s	2024-01-29 01:00:00.000000000 +0100
+--- binutils-2.45.orig/ld/testsuite/ld-x86-64/pr22791-2a.s	2025-07-27 01:00:00.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,8 +0,0 @@
 -	.text
@@ -463,9 +386,9 @@ Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-2a.s
 -	jmp	bar
 -	.size	foo, .-foo
 -	.section	.note.GNU-stack,"",@progbits
-Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-2b.c
+Index: binutils-2.45/ld/testsuite/ld-x86-64/pr22791-2b.c
 ===================================================================
---- binutils-2.42.orig/ld/testsuite/ld-x86-64/pr22791-2b.c	2024-01-29 01:00:00.000000000 +0100
+--- binutils-2.45.orig/ld/testsuite/ld-x86-64/pr22791-2b.c	2025-07-27 01:00:00.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,7 +0,0 @@
 -#include <stdio.h>
@@ -475,9 +398,9 @@ Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-2b.c
 -{
 -  puts ("PASS");
 -}
-Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-2c.s
+Index: binutils-2.45/ld/testsuite/ld-x86-64/pr22791-2c.s
 ===================================================================
---- binutils-2.42.orig/ld/testsuite/ld-x86-64/pr22791-2c.s	2024-01-29 01:00:00.000000000 +0100
+--- binutils-2.45.orig/ld/testsuite/ld-x86-64/pr22791-2c.s	2025-07-27 01:00:00.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,12 +0,0 @@
 -	.text
@@ -492,10 +415,10 @@ Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22791-2c.s
 -	ret
 -	.size	main, .-main
 -	.section	.note.GNU-stack,"",@progbits
-Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22842b.S
+Index: binutils-2.45/ld/testsuite/ld-x86-64/pr22842b.S
 ===================================================================
---- binutils-2.42.orig/ld/testsuite/ld-x86-64/pr22842b.S	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/ld/testsuite/ld-x86-64/pr22842b.S	2024-01-30 16:57:58.487327524 +0100
+--- binutils-2.45.orig/ld/testsuite/ld-x86-64/pr22842b.S	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/ld/testsuite/ld-x86-64/pr22842b.S	2025-10-14 15:59:55.172884281 +0200
 @@ -7,7 +7,7 @@ main:
          leaq    bar(%rip), %rdi
  	addq	%rax, %rdi
@@ -505,11 +428,11 @@ Index: binutils-2.42/ld/testsuite/ld-x86-64/pr22842b.S
  	xorl	%eax, %eax
  	popq	%rcx
  	retq
-Index: binutils-2.42/ld/testsuite/ld-x86-64/x86-64.exp
+Index: binutils-2.45/ld/testsuite/ld-x86-64/x86-64.exp
 ===================================================================
---- binutils-2.42.orig/ld/testsuite/ld-x86-64/x86-64.exp	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/ld/testsuite/ld-x86-64/x86-64.exp	2024-01-30 16:57:58.487327524 +0100
-@@ -1235,44 +1235,6 @@ if { [isnative] && [check_compiler_avail
+--- binutils-2.45.orig/ld/testsuite/ld-x86-64/x86-64.exp	2025-10-14 15:54:33.616441772 +0200
++++ binutils-2.45/ld/testsuite/ld-x86-64/x86-64.exp	2025-10-14 15:59:55.172884281 +0200
+@@ -1314,44 +1314,6 @@ if { [isnative] && [check_compiler_avail
  	    "pr22393-3-static" \
  	] \
  	[list \
@@ -554,7 +477,7 @@ Index: binutils-2.42/ld/testsuite/ld-x86-64/x86-64.exp
  	    "Build pr22842.so" \
  	    "-shared" \
  	    "-fPIC -Wa,-mx86-used-note=yes" \
-@@ -1762,15 +1724,6 @@ if { [isnative] && [check_compiler_avail
+@@ -1849,15 +1811,6 @@ if { [isnative] && [check_compiler_avail
  	    "pass.out" \
  	] \
  	[list \

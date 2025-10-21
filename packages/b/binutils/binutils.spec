@@ -64,7 +64,7 @@ BuildRequires:  zlib-devel
 %if %{suse_version} > 1500
 BuildRequires:  libzstd-devel
 %endif
-Version:        2.43
+Version:        2.45
 Release:        0
 
 # disable libalternatives for now until it's changed to not
@@ -131,14 +131,18 @@ Source:         binutils-%{version}.tar.bz2
 Source2:        binutils-%{version}.tar.bz2.sig
 Source3:        binutils.keyring
 Source4:        baselibs.conf
-Patch1:         binutils-2.43-branch.diff.gz
-Patch2:         binutils-fix-branch.diff
+Source5:        pr33230.obj.bz2
+# if this patch isn't empty, it should be Patch2 and named *diff
+# name it "*templ" as long as empty because the source-validator
+# service checks all *.diff files, even if listed as Source, not
+# Patch :-(
+Source6:        binutils-fix-branch.diff.templ
+Patch1:         binutils-2.45-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
 Patch6:         unit-at-a-time.patch
 Patch9:         testsuite.diff
-Patch10:        enable-targets-gold.diff
 Patch12:        s390-pic-dso.diff
 Patch14:        binutils-build-as-needed.diff
 Patch15:        binutils-znow.patch
@@ -152,7 +156,14 @@ Patch42:        binutils-compat-old-behaviour.diff
 Patch43:        binutils-revert-hlasm-insns.diff
 Patch44:        binutils-revert-rela.diff
 Patch60:        binutils-disable-code-arch-error.diff
-Patch61:        pr33029.patch
+Patch70:        pr32556.diff
+Patch71:        pr33450.diff
+Patch72:        pr33452.diff
+Patch73:        pr33456.diff
+Patch74:        pr33456-2.diff
+Patch75:        pr33457.diff
+Patch76:        pr33499.diff
+Patch77:        pr33502.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
 Patch93:        cross-avr-size.patch
@@ -180,7 +191,8 @@ PreReq:         update-alternatives
 %endif
 # We want gold for SLE15 and (newer) openSUSE, but not SLE16
 %if 0%{!?cross:1} && 0%{?suse_version} >= 1310 && ( 0%{?suse_version} < 1600 || 0%{?is_opensuse} )
-%define gold_archs %ix86 aarch64 %arm x86_64 %x86_64 ppc ppc64 ppc64le s390x %sparc
+#define gold_archs %ix86 aarch64 %arm x86_64 %x86_64 ppc ppc64 ppc64le s390x %sparc
+%define gold_archs %{nil}
 %endif
 
 %description gold
@@ -249,7 +261,12 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 # Patch is outside test_vanilla because it's supposed to be the
 # patch bringing the tarball to the newest upstream version
 %patch -P 1 -p1
-%patch -P 2 -p1
+# See comment in the patch file for patch 2.  Currently commented
+# out because its empty except for that comment.
+#patch -P 2 -p1
+# the 2.45 branch adds one single binary file (gah!) but git binary
+# diffs aren't supported by rpm
+cp -p %{SOURCE5} binutils/testsuite/binutils-all/x86-64/pr33230.obj.bz2
 
 # Backup flex and biscon files for later verification.  Do this
 # after branch and fix-branch patches are applied (which are assumed
@@ -264,7 +281,6 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch -P 5
 %patch -P 6
 %patch -P 9
-%patch -P 10
 %patch -P 12
 %patch -P 14
 %patch -P 15
@@ -282,7 +298,14 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch -P 44 -p1
 %endif
 %patch -P 60 -p1
-%patch -P 61 -p1
+%patch -P 70 -p1
+%patch -P 71 -p1
+%patch -P 72 -p1
+%patch -P 73 -p1
+%patch -P 74 -p1
+%patch -P 75 -p1
+%patch -P 76 -p1
+%patch -P 77 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 %patch -P 90
@@ -300,9 +323,10 @@ diff -u ld/ldgram.y ld/ldgram.y.orig
 
 %build
 %define _lto_cflags %{nil}
-sed -i -e '/BFD_VERSION_DATE/s/$/-%(echo %release | sed 's/\.[0-9]*$//')/' bfd/version.h
+sed -i -e '/BFD_VERSION_DATE/s/$/-%(echo %release | sed -e 's/\.[0-9]*$//' -e 's/[^0-9]*//g' )/' bfd/version.h
 RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-error"
 
+echo "==== any FAIL: lines from here until the %check section are irrelevant ==="
 # gcc15 and up default to c23, these older binutils would need patches
 # for that.  As an impeding version update fixes that as well, simply
 # override the compiler instead of bothering with backports
@@ -503,6 +527,7 @@ make -C gas-nesc %{?make_output_sync} %{?_smp_mflags}
 %endif
 
 %check
+echo "==== any FAIL: lines before this line are irrelevant ===="
 unset SUSE_ASNEEDED SUSE_ZNOW
 # newer distros set this envvar (e.g. to get deterministic archives by default)
 # but of course that breaks tests that precisely are
@@ -567,9 +592,12 @@ chmod a+x %{buildroot}%{_libdir}/libopcodes-*
 rm %{buildroot}%{_libdir}/lib{bfd,opcodes}.so
 rm %{buildroot}%{_libdir}/lib{bfd,opcodes,ctf,ctf-nobfd}.la
 rm -f %{buildroot}%{_libdir}/gprofng/lib*.{l,}a
+rm -f %{buildroot}%{_libdir}/libgprofng.la
 # Remove unwanted files to shut up rpm
 rm -f %{buildroot}%{_infodir}/configure* $RPM_BUILD_ROOT%{_infodir}/standards.info*
 rm -f %{buildroot}%{_mandir}/man1/dlltool.1 $RPM_BUILD_ROOT%{_mandir}/man1/windres.1 $RPM_BUILD_ROOT%{_mandir}/man1/windmc.1
+# gprofng/doc installs into prefix/share/doc, not into _docdir :-/
+rm -f %{buildroot}/usr/share/doc/gprofng/examples.*
 cd ..
 %find_lang binutils
 %find_lang bfd binutils.lang

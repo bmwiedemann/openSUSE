@@ -1,0 +1,32 @@
+commit 1108620d7a521f1c85d2f629031ce0fbae14e331
+Author: H.J. Lu <hjl.tools@gmail.com>
+Date:   Tue Sep 23 10:05:14 2025 +0800
+
+    elf: Disallow the empty global symbol name
+    
+    Reject the empty global symbol name, "".
+    
+            PR ld/33456
+            * elflink.c (elf_link_add_object_symbols): Disallow the empty
+            global symbol name.
+    
+    Signed-off-by: H.J. Lu <hjl.tools@gmail.com>
+
+diff --git a/bfd/elflink.c b/bfd/elflink.c
+index b04b017747f..66982f82b94 100644
+--- a/bfd/elflink.c
++++ b/bfd/elflink.c
+@@ -5096,6 +5096,13 @@ elf_link_add_object_symbols (bfd *abfd, struct bfd_link_info *info)
+       if (name == NULL)
+ 	goto error_free_vers;
+ 
++      if (name[0] == '\0')
++	{
++	  _bfd_error_handler (_("%pB: corrupt symbol table"), abfd);
++	  bfd_set_error (bfd_error_bad_value);
++	  goto error_free_vers;
++	}
++
+       if (isym->st_shndx == SHN_COMMON
+ 	  && (abfd->flags & BFD_PLUGIN) != 0)
+ 	{

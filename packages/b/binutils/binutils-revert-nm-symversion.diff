@@ -4,23 +4,23 @@ file with symbol names.  ld errors on the '@' characters.  Until
 those packages are fixed we use this patch.  We have to carry it
 for old code streams forever.
 
-diff --git a/binutils/nm.c b/binutils/nm.c
-index 2637756c647..253714ef179 100644
---- a/binutils/nm.c
-+++ b/binutils/nm.c
-@@ -666,7 +666,7 @@ print_symname (const char *form, struct extended_symbol_info *info,
-       name = convert_utf8 (name);
-     }
+Index: binutils-2.45/binutils/nm.c
+===================================================================
+--- binutils-2.45.orig/binutils/nm.c	2025-10-14 15:49:38.923457582 +0200
++++ binutils-2.45/binutils/nm.c	2025-10-14 15:52:19.461171123 +0200
+@@ -717,7 +717,7 @@ print_symname (const char *form, struct
+   if (unicode_display != unicode_default)
+     name = convert_utf8 (name);
  
 -  if (info != NULL && info->elfinfo && with_symbol_versions)
 +  if (info != NULL && info->elfinfo && with_symbol_versions && 0)
      {
        const char *version_string;
        bool hidden;
-diff --git a/ld/testsuite/ld-elf/pr25708.d b/ld/testsuite/ld-elf/pr25708.d
-index 60b8e31807a..1b62e25347e 100644
---- a/ld/testsuite/ld-elf/pr25708.d
-+++ b/ld/testsuite/ld-elf/pr25708.d
+Index: binutils-2.45/ld/testsuite/ld-elf/pr25708.d
+===================================================================
+--- binutils-2.45.orig/ld/testsuite/ld-elf/pr25708.d	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/ld/testsuite/ld-elf/pr25708.d	2025-10-14 15:52:19.461171123 +0200
 @@ -2,8 +2,9 @@
  #ld: -shared -version-script pr13195.t
  #nm: -D --with-symbol-versions

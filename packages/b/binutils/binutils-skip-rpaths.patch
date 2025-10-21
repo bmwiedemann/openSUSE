@@ -1,8 +1,8 @@
-diff --git a/ld/emultempl/elf.em b/ld/emultempl/elf.em
-index 42c552b36e..dd0a6b1e60 100644
---- a/ld/emultempl/elf.em
-+++ b/ld/emultempl/elf.em
-@@ -135,6 +135,8 @@ if test x"$LDEMUL_BEFORE_ALLOCATION" != xgld"$EMULATION_NAME"_before_allocation;
+Index: binutils-2.45/ld/emultempl/elf.em
+===================================================================
+--- binutils-2.45.orig/ld/emultempl/elf.em	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/ld/emultempl/elf.em	2025-10-14 15:49:40.360481868 +0200
+@@ -162,6 +162,8 @@ if test x"$LDEMUL_BEFORE_ALLOCATION" !=
    if test x"${ELF_INTERPRETER_NAME}" = x; then
      ELF_INTERPRETER_NAME=NULL
    fi
@@ -11,11 +11,11 @@ index 42c552b36e..dd0a6b1e60 100644
  fragment <<EOF
  
  /* This is called after the sections have been attached to output
-diff --git a/ld/ldelf.c b/ld/ldelf.c
-index 2e27cf48a8..7162d0cf91 100644
---- a/ld/ldelf.c
-+++ b/ld/ldelf.c
-@@ -1506,6 +1506,31 @@ ldelf_append_to_separated_string (char **to, char *op_arg)
+Index: binutils-2.45/ld/ldelf.c
+===================================================================
+--- binutils-2.45.orig/ld/ldelf.c	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/ld/ldelf.c	2025-10-14 15:49:40.360481868 +0200
+@@ -1746,6 +1746,31 @@ ldelf_append_to_separated_string (char *
      }
  }
  
@@ -47,8 +47,8 @@ index 2e27cf48a8..7162d0cf91 100644
  /* This is called after the sections have been attached to output
     sections, but before any sizes or addresses have been set.  */
  
-@@ -1513,7 +1538,7 @@ void
- ldelf_before_allocation (char *audit, char *depaudit,
+@@ -1753,7 +1778,7 @@ void
+ ldelf_before_allocation (char **audit, char **depaudit,
  			 const char *default_interpreter_name)
  {
 -  const char *rpath;
@@ -56,7 +56,7 @@ index 2e27cf48a8..7162d0cf91 100644
    asection *sinterp;
    bfd *abfd;
    struct bfd_link_hash_entry *ehdr_start = NULL;
-@@ -1608,7 +1633,67 @@ ldelf_before_allocation (char *audit, char *depaudit,
+@@ -1807,7 +1832,67 @@ ldelf_before_allocation (char **audit, c
       by dynamic linking.  */
    rpath = command_line.rpath;
    if (rpath == NULL)

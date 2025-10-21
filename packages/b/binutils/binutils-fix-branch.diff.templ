@@ -1,0 +1,9 @@
+This is used to manually patch the bison generated files when
+the binutils-X.YZ-branch.diff touches them.  That diff is generated
+directly from git and doesn't contain the generated .c/h files.
+The base tarball does contain them, but generated from the unpatched state.
+In SLE12 and older we can't regenerate them due to too old versions
+of flex and bison.
+So, when the branch diff _does_ touch them we need to do the regeneration
+via such a manual patch.
+For now this is intentionally empty.

@@ -1,8 +1,8 @@
-Index: binutils-2.42/gas/config/tc-i386.c
+Index: binutils-2.45/gas/config/tc-i386.c
 ===================================================================
---- binutils-2.42.orig/gas/config/tc-i386.c	2024-01-29 01:00:00.000000000 +0100
-+++ binutils-2.42/gas/config/tc-i386.c	2024-02-05 17:54:33.515139672 +0100
-@@ -2992,13 +2992,17 @@ set_cpu_arch (int dummy ATTRIBUTE_UNUSED
+--- binutils-2.45.orig/gas/config/tc-i386.c	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/config/tc-i386.c	2025-10-14 15:39:39.574328233 +0200
+@@ -3413,11 +3413,15 @@ set_cpu_arch (int dummy ATTRIBUTE_UNUSED
  	    {
  	      check_cpu_arch_compatible (string, cpu_arch[j].enable);
  
@@ -15,11 +15,8 @@ Index: binutils-2.42/gas/config/tc-i386.c
 -		  as_bad (_("64bit mode not supported on `%s'."),
 +		  as_warn (_("64bit mode not supported on `%s' (consider swapping .arch and .code directives)."),
  			  cpu_arch[j].name);
--		  (void) restore_line_pointer (e);
-+		  /*(void) restore_line_pointer (e);
- 		  ignore_rest_of_line ();
--		  return;
-+		  return;*/
+-		  goto restore_bad;
++		  /*goto restore_bad;*/
  		}
  
  	      if (flag_code == CODE_32BIT && !cpu_arch[j].enable.bitfield.cpui386)
