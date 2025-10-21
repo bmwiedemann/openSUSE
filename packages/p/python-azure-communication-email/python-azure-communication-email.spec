@@ -15,19 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define realversion 1.0.0
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-communication-email
-Version:        1.0.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Azure Communication Email client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-email/azure-communication-email-%{realversion}.zip
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_communication_email/azure_communication_email-%{version}.tar.gz
 BuildRequires:  %{python_module azure-communication-nspkg >= 0.0.0b1}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -35,12 +31,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-communication-nspkg >= 0.0.0b1
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.7.1
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
-Requires:       (python-azure-core >= 1.3.2 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.30.0 with python-azure-core < 2.0.0)
+Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
+Requires:       python-typing_extensions >= 4.6.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-communication-email < 1.0.0.0
 %endif
@@ -57,10 +53,9 @@ The Azure Communication Email package is used to do following:
  * Query the status of a sent email message
 
 %prep
-%setup -q -n azure-communication-email-%{realversion}
+%setup -q -n azure_communication_email-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-communication-email-%{realversion}
 %pyproject_wheel
 
 %install
@@ -75,7 +70,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/communication/email
 %{python_sitelib}/azure_communication_email-*.dist-info
 
