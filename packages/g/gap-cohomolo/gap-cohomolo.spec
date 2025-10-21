@@ -1,7 +1,7 @@
 #
 # spec file for package gap-cohomolo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-cohomolo
-Version:        1.6.11
+Version:        1.6.12
 Release:        0
 Summary:        GAP: Cohomology groups of finite groups on finite modules
 License:        GPL-2.0-only
