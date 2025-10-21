@@ -1,7 +1,7 @@
 #
 # spec file for package alacritty
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           alacritty
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  libxcb-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.74
+BuildRequires:  rust >= 1.85
 BuildRequires:  scdoc
 BuildRequires:  update-desktop-files
 BuildRequires:  xclip

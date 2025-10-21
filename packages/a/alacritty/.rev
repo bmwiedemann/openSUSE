@@ -396,4 +396,14 @@ Update to version 0.15.0</comment>
     <comment></comment>
     <requestid>1246523</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a88b94d5efd601bed6daa909cb787ff7</srcmd5>
+    <version>0.16.0</version>
+    <time>1761038114</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1312257 from jlkDE
+
+Bump minimum required rust version to 1.85</comment>
+    <requestid>1312258</requestid>
+  </revision>
 </revisionlist>
