@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 15 20:05:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Revendor to include golang.org/x/net/html v 0.45.0 to prevent
+  possible DoS by various algorithms with quadratic complexity
+  when parsing HTML documents (bsc#1251463, CVE-2025-47911 and
+  bsc#1251664, CVE-2025-58190).
+
+-------------------------------------------------------------------
 Mon May 19 08:38:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to version 0.10.1:
