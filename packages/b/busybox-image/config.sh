@@ -28,6 +28,9 @@ rm -vf /var/cache/ldconfig/aux-cache
 # Will be recreated by the next rpm(1) run as root user
 rm -vf /usr/lib/sysimage/rpm/Index.db
 
+# set the day of last password change to empty
+sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shadow
+
 
 #=======================================
 # Clean up after zypper if it is present
