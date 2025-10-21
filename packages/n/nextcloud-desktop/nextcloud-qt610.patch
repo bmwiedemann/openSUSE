@@ -1,0 +1,45 @@
+From 9454a37aa100076506bd72040b291c2894ca37fe Mon Sep 17 00:00:00 2001
+From: Heiko Becker <mail@heiko-becker.de>
+Date: Thu, 18 Sep 2025 02:03:40 +0200
+Subject: [PATCH] fix: Drop Qt6GuiPrivate dependency to fix the build with Qt
+ 6.10
+
+Usage of private Qt modules requires an explicit
+find_package(Qt6 FooPrivate ...) call since 6.10 [1], but it turns
+out it is no longer needed after the usage of Qt's private API
+with KArchive [2].
+
+[1] https://doc-snapshots.qt.io/qt6-dev/whatsnew610.html#build-system-changes
+[2] 9a0753dabb061b4e3ac753cbdfd272d9bb256212
+
+Signed-off-by: Heiko Becker <mail@heiko-becker.de>
+---
+ src/gui/CMakeLists.txt | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
+index f4f4fdb..20b93d5 100644
+--- a/src/gui/CMakeLists.txt
++++ b/src/gui/CMakeLists.txt
+@@ -6,10 +6,6 @@ find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS Widgets Svg Qml Quick Qui
+ find_package(KF6Archive REQUIRED)
+ find_package(KF6GuiAddons)
+ 
+-if (NOT TARGET Qt::GuiPrivate)
+-    message(FATAL_ERROR "Could not find GuiPrivate component of Qt. It might be shipped as a separate package, please check that.")
+-endif()
+-
+ if(CMAKE_BUILD_TYPE MATCHES Debug)
+     add_definitions(-DQT_QML_DEBUG)
+ endif()
+@@ -572,7 +568,6 @@ target_link_libraries(nextcloudCore
+   PUBLIC
+   Nextcloud::sync
+   Qt::Widgets
+-  Qt::GuiPrivate
+   Qt::Svg
+   Qt::Network
+   Qt::Xml
+-- 
+2.51.0
+

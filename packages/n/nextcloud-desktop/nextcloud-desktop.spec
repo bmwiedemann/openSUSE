@@ -18,12 +18,11 @@
 
 %define soname  libnextcloudsync
 %define sover   0
-%define __builder ninja
 
-# std=c++17 and <filesystem> now required, use GCC >= 8 for Leap
-%if 0%{?suse_version} < 1600
-%define gcc_ver 9
+%ifarch x86_64 aarch64 riscv64
+%define with_qtwebengine 1
 %endif
+
 Name:           nextcloud-desktop
 Version:        3.17.3
 Release:        0
@@ -34,39 +33,41 @@ URL:            https://nextcloud.com/
 Source:         https://github.com/nextcloud/desktop/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        sysctl-sync-inotify.conf
 Source2:        README.vfs.md
-BuildRequires:  AppStream
-BuildRequires:  cmake >= 3.8.0
+# PATCH-FIX-UPSTREAM nextcloud-qt610.patch
+Patch0:         nextcloud-qt610.patch
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  glibc-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf6-extra-cmake-modules
-BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
 BuildRequires:  rsvg-convert
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(KF6Archive)
 BuildRequires:  cmake(KF6GuiAddons)
 BuildRequires:  cmake(KF6KIO)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core) >= 6.5.0
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Keychain)
-BuildRequires:  cmake(Qt6XcbQpaPrivate)
-BuildRequires:  pkgconfig(Qt6Concurrent)
-BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  pkgconfig(Qt6Core5Compat)
-BuildRequires:  pkgconfig(Qt6DBus)
-BuildRequires:  pkgconfig(Qt6Gui)
-BuildRequires:  pkgconfig(Qt6Linguist)
-BuildRequires:  pkgconfig(Qt6Network)
-BuildRequires:  pkgconfig(Qt6PrintSupport)
-BuildRequires:  pkgconfig(Qt6QuickControls2)
-BuildRequires:  pkgconfig(Qt6Sql)
-BuildRequires:  pkgconfig(Qt6Svg)
-BuildRequires:  pkgconfig(Qt6Test)
-BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
-BuildRequires:  pkgconfig(Qt6WebSockets)
-BuildRequires:  pkgconfig(Qt6Xml)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6QuickWidgets)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Test)
+%if 0%{?with_qtwebengine}
+BuildRequires:  cmake(Qt6WebEngineCore)
+BuildRequires:  cmake(Qt6WebEngineWidgets)
+%endif
+BuildRequires:  cmake(Qt6WebSockets)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(cloudproviders)
 BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(dbus-1)
@@ -74,12 +75,13 @@ BuildRequires:  pkgconfig(libp11)
 BuildRequires:  pkgconfig(openssl) >= 1.1
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  rpm_macro(_qt6_pluginsdir)
 #
 Recommends:     cloudproviders-extension-nextcloud = %{version}
 Requires:       %{soname}%{sover} = %{version}
 Requires:       nextcloud-cli = %{version}
+Requires:       qt6-declarative-imports
 Requires:       qt6-qt5compat-imports
+Requires:       qt6-multimedia-imports
 Provides:       nextcloud-client = %{version}
 Obsoletes:      nextcloud-client < %{version}
 Provides:       nextcloud-client-lang = %{version}
@@ -206,14 +208,16 @@ cp %{SOURCE2} ./
 %build
 # Set SOURCE_DATE_EPOCH to set __DATE__/__TIME__ based on tarball creation date and make build reproducible
 export SOURCE_DATE_EPOCH=`date -r VERSION.cmake +"%s"`
-%cmake \
-  -DCMAKE_C_COMPILER=gcc%{?gcc_ver:-%{gcc_ver}} \
-  -DCMAKE_CXX_COMPILER=g++%{?gcc_ver:-%{gcc_ver}} \
+%cmake_qt6 \
+%if !0%{?with_qtwebengine}
+  -DBUILD_WITH_WEBENGINE=FALSE
+%endif
 %{nil}
-%cmake_build
+
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 
 %if 0%{!?is_opensuse}
 # There's no Caja and Nemo in SLE.
