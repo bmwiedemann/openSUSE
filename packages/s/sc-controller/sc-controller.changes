@@ -1,3 +1,10 @@
+Sat Oct 18 14:56:56 UTC 2025 - Armin Seuchter <a.seuchter@gmail.com>
+
+- Update to 0.5.3
+  * Ensure files are always closed
+  * Fix DualSense controllers
+  * Attempt to fix the gtk-layer-shell crash bug
+
 -------------------------------------------------------------------
 Wed Apr 23 13:57:58 UTC 2025 - Jannik Seiler <seil0@mosad.xyz>
 
