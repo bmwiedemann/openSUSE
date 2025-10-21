@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 20 08:45:59 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- ignore testresults from test_numbits, fails sometimes because of slow
+  hypothesis performance on i586 (bsc#1251955)
+
+-------------------------------------------------------------------
 Mon Oct 13 09:16:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.10.7:

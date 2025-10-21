@@ -130,6 +130,10 @@ donttest+=" or test_process"
 donttest+=" or test_plugins"
 # asserts PYTHONPATH is empty, which it can't be
 donttest+=" or test_report_wildcard or test_run_omit_vs_report_omit"
+%ifarch i586
+# flaky due to bad hypothesis performance
+donttest+=" or test_numbits.py"
+%endif
 
 %pytest_arch -n auto --no-flaky-report -k "$donttest" -rp ||:
 %pytest_arch -n auto --no-flaky-report -k "not ($donttest)"
