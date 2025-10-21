@@ -1862,4 +1862,12 @@
 - Dropped git bcond as we no longer use it (forwarded request 1304711 from mauriziogalli)</comment>
     <requestid>1304724</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>b5e0667e61b8181cd1baee86c9305ad1</srcmd5>
+    <version>4.20.6</version>
+    <time>1761038176</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1312439</requestid>
+  </revision>
 </revisionlist>
