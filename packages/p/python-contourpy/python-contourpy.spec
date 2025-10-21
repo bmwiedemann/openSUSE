@@ -1,7 +1,7 @@
 #
 # spec file for package python-contourpy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-contourpy%{psuffix}
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Python library for calculating contours of 2D quadrilateral grids
 License:        BSD-3-Clause
