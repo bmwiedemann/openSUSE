@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 20 05:38:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.19:
+  * build(deps): bump chainguard-dev/actions from 1.5.4 to 1.5.6
+    (#1776)
+  * build(deps): bump chainguard-dev/actions from 1.5.1 to 1.5.4
+    (#1775)
+
+-------------------------------------------------------------------
 Mon Sep 29 04:42:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.18:
