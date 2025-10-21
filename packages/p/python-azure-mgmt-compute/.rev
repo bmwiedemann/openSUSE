@@ -518,4 +518,15 @@
 - Update Requires from pyproject.toml (forwarded request 1309248 from glaubitz)</comment>
     <requestid>1309253</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e42e4463340f28d47f35547ecaa52909</srcmd5>
+    <version>37.0.1</version>
+    <time>1761038151</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 37.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1312431 from glaubitz)</comment>
+    <requestid>1312434</requestid>
+  </revision>
 </revisionlist>
