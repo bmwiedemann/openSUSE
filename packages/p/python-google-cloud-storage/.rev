@@ -352,4 +352,20 @@
     <comment></comment>
     <requestid>1302901</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>58cd6d1092e6e24ffb7f09187d464f67</srcmd5>
+    <version>3.4.1</version>
+    <time>1761038154</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.4.1
+  * Fixes (#1561) by adding an option to specify the entire object checksum
+    for resumable uploads via the `upload_from_string`, `upload_from_file`,
+    and `upload_from_filename` methods.
+- from version 3.4.0
+  * **experimental:** Add async grpc client (#1537)
+  * **experimental:** Add grpc client (#1533)
+  * GAPIC generation failed with 'Directory not empty' (#1542)
+- Adjust python folder names in %files section (forwarded request 1312341 from glaubitz)</comment>
+    <requestid>1312377</requestid>
+  </revision>
 </revisionlist>
