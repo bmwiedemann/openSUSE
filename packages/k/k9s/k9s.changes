@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 20 05:43:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.50.16:
+  * Resolved Issues
+    - #3629 vulnerability in k9s project
+    - #3621 Switching to ":Deploy" sends you to deployments from
+      namespace "deploy"
+    - #3620 Trying to show pod yaml using custom views.yaml crashes
+      k9s
+    - #3608 k9s crashes when :namespaces used
+    - #3601 Can't delete namespace
+    - #3595 Toggle Namespace Filter in Pods View with 'n' Key
+    - #3576 Custom alias/view not working anymore since v0.50.10
+
+-------------------------------------------------------------------
 Wed Oct  8 04:58:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.50.15:
