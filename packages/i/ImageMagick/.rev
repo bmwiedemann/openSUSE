@@ -4157,4 +4157,15 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   % ImageMagick-library-installable-in-parallel.patch (refreshed)</comment>
     <requestid>1303354</requestid>
   </revision>
+  <revision rev="316" vrev="1">
+    <srcmd5>d04033b3c5fca77097d470e97ae209a7</srcmd5>
+    <version>7.1.2.7</version>
+    <time>1761038095</time>
+    <user>anag_factory</user>
+    <comment>- version update to 7.1.2.7
+  * fixes GHSA-9pp9-cfwx-54rm (CVE-2025-62171 [bsc#1252282])
+  * otherwise no upstream changelog, see
+    https://github.com/ImageMagick/ImageMagick/compare/7.1.2-2..7.1.2-7</comment>
+    <requestid>1312365</requestid>
+  </revision>
 </revisionlist>

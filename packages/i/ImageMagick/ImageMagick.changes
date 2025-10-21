@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 20 10:33:08 UTC 2025 - pgajdos@suse.com
+
+- version update to 7.1.2.7
+  * fixes GHSA-9pp9-cfwx-54rm (CVE-2025-62171 [bsc#1252282])
+  * otherwise no upstream changelog, see
+    https://github.com/ImageMagick/ImageMagick/compare/7.1.2-2..7.1.2-7
+
+-------------------------------------------------------------------
 Tue Sep  9 12:37:21 UTC 2025 - pgajdos@suse.com
 
 - version update to 7.1.2.3
