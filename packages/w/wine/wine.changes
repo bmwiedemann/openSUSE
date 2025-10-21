@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 19 12:45:22 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.17 release
+  - Mono engine updated to version 10.3.0.
+  - EGL renderer used by default for OpenGL.
+  - COMCTL32 split into separate v5 and v6 modules.
+  - Better support for ANSI ODBC drivers.
+  - Improved CPU info on FreeBSD.
+  - Various bug fixes.
+- update staging to 10.17 release
+
+-------------------------------------------------------------------
 Sun Oct  5 13:31:33 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - add bundled() provides for embeeded libs

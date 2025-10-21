@@ -5659,4 +5659,19 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1310925</requestid>
   </revision>
+  <revision rev="474" vrev="1">
+    <srcmd5>3d3547dfcd300feb7cf00b0ebba6f56d</srcmd5>
+    <version>10.17</version>
+    <time>1761038146</time>
+    <user>anag_factory</user>
+    <comment>- updated to 10.17 release
+  - Mono engine updated to version 10.3.0.
+  - EGL renderer used by default for OpenGL.
+  - COMCTL32 split into separate v5 and v6 modules.
+  - Better support for ANSI ODBC drivers.
+  - Improved CPU info on FreeBSD.
+  - Various bug fixes.
+- update staging to 10.17 release</comment>
+    <requestid>1312350</requestid>
+  </revision>
 </revisionlist>
