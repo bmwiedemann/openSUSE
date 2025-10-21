@@ -1,0 +1,163 @@
+From 9e6b66b173d7bac7853b8063c45f1429375c94b2 Mon Sep 17 00:00:00 2001
+From: yangheran <heran.yang@seafile.com>
+Date: Wed, 12 Feb 2025 09:33:43 +0800
+Subject: [PATCH 1/2] Support show number of pending files
+
+---
+ src/rpc/transfer-progress.cpp       | 14 ++++++++++++++
+ src/rpc/transfer-progress.h         |  1 +
+ src/ui/transfer-progress-dialog.cpp | 21 +++++++++++++++++++++
+ src/ui/transfer-progress-dialog.h   |  5 +++++
+ 4 files changed, 41 insertions(+)
+
+diff --git a/src/rpc/transfer-progress.cpp b/src/rpc/transfer-progress.cpp
+index 277f394c1..826fbec3c 100644
+--- a/src/rpc/transfer-progress.cpp
++++ b/src/rpc/transfer-progress.cpp
+@@ -50,6 +50,18 @@ void getTransferringListFromJSON(
+     }
+ }
+ 
++void getPendingFilesFromJSON(
++    const json_t *json,
++    int *total)
++{
++    QString json_object_name = "pending_files";
++
++    json_t* n_pending= json_object_get(
++        json, json_object_name.toUtf8().data());
++    if (n_pending)
++        *total = json_integer_value (n_pending);
++}
++
+ void getTransferredListFromJSON(
+     const json_t *json, TransferType type,
+     QList<TransferredInfo> *list)
+@@ -92,6 +104,8 @@ void TransferProgress::fromJSON(
+         upload, UPLOAD, &transfer_progress.uploading_files);
+     getTransferringListFromJSON(
+         download, DOWNLOAD, &transfer_progress.downloading_files);
++    getPendingFilesFromJSON(
++        upload, &transfer_progress.n_pending_files);
+     getTransferredListFromJSON(
+         upload, UPLOAD, &transfer_progress.uploaded_files);
+     getTransferredListFromJSON(
+diff --git a/src/rpc/transfer-progress.h b/src/rpc/transfer-progress.h
+index 136cea971..6bb77ba7c 100644
+--- a/src/rpc/transfer-progress.h
++++ b/src/rpc/transfer-progress.h
+@@ -29,6 +29,7 @@ class TransferProgress {
+ public:
+     QList<TransferringInfo> uploading_files, downloading_files;
+     QList<TransferredInfo> uploaded_files, downloaded_files;
++    int n_pending_files;
+ 
+     static void fromJSON(const json_t *upload,
+                          const json_t *download,
+diff --git a/src/ui/transfer-progress-dialog.cpp b/src/ui/transfer-progress-dialog.cpp
+index 0540779c8..3dffed9ff 100644
+--- a/src/ui/transfer-progress-dialog.cpp
++++ b/src/ui/transfer-progress-dialog.cpp
+@@ -97,6 +97,12 @@ TransferTab::TransferTab(TransferType type, QWidget *parent)
+     QVBoxLayout* vlayout = new QVBoxLayout;
+     createTable(type);
+     vlayout->addWidget(table_);
++#ifndef Q_OS_MAC
++    if (type == UPLOAD) {
++        QLabel *label = model_->totalFilesView();
++        vlayout->addWidget(label);
++    }
++#endif
+     setLayout(vlayout);
+     adjustSize();
+ }
+@@ -182,6 +188,9 @@ TransferItemsTableModel::TransferItemsTableModel(QObject* parent)
+       name_column_width_(kNameColumnWidth),
+       transfer_type_(UPLOAD)
+ {
++    total_files_view_ = new QLabel(tr("%1 files uploading or pending").arg(0));
++    total_files_view_->setStyleSheet("color: red;");
++    total_files_view_->setAlignment(Qt::AlignLeft);
+     progress_timer_ = new QTimer(this);
+     connect(progress_timer_, SIGNAL(timeout()),
+             this, SLOT(updateTransferringInfo()));
+@@ -209,6 +218,7 @@ void TransferItemsTableModel::setTransferItems()
+     beginResetModel();
+     TransferProgress::fromJSON(upload.data(), download.data(), transfer_progress);
+     transfer_progress_ = transfer_progress;
++    updateTotalFilesView();
+     endResetModel();
+ }
+ #endif
+@@ -485,6 +495,17 @@ bool TransferItemsTableModel::isTransferringRow(
+     return row < transferring_size;
+ }
+ 
++QLabel* TransferItemsTableModel::totalFilesView() const
++{
++    return total_files_view_;
++}
++
++void TransferItemsTableModel::updateTotalFilesView() const
++{
++    int total_files = transfer_progress_.n_pending_files + transfer_progress_.uploading_files.size();
++    total_files_view_->setText(tr("%1 files uploading or pending").arg(total_files));
++}
++
+ void TransferItemsTableModel::setTransferType(TransferType type)
+ {
+     transfer_type_ = type;
+diff --git a/src/ui/transfer-progress-dialog.h b/src/ui/transfer-progress-dialog.h
+index eb8c8ba72..b33839c97 100644
+--- a/src/ui/transfer-progress-dialog.h
++++ b/src/ui/transfer-progress-dialog.h
+@@ -6,6 +6,7 @@
+ #include <QHeaderView>
+ #include <QTimer>
+ #include <QTabWidget>
++#include <QLabel>
+ 
+ #include "utils/json-utils.h"
+ #include "rpc/transfer-progress.h"
+@@ -82,6 +83,8 @@ class TransferItemsTableModel : public QAbstractTableModel
+     const TransferringInfo* itemAt(int row) const;
+     uint nameColumnWidth() const;
+     bool isTransferringRow(const QModelIndex& index) const;
++    QLabel* totalFilesView() const; 
++    void updateTotalFilesView() const;
+ 
+ public slots:
+     void onResize(const QSize& size);
+@@ -100,6 +103,8 @@ private slots:
+     QTimer *progress_timer_;
+     TransferType transfer_type_;
+     TransferProgress transfer_progress_;
++
++    QLabel *total_files_view_;
+ };
+ 
+ 
+
+From 87585d1663de616b27fadb1ec42e10b131d5e90b Mon Sep 17 00:00:00 2001
+From: Heran Yang <heran.yang@seafile.com>
+Date: Wed, 12 Feb 2025 12:10:08 +0800
+Subject: [PATCH 2/2] Init pending_files to 0
+
+---
+ src/rpc/transfer-progress.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rpc/transfer-progress.h b/src/rpc/transfer-progress.h
+index 6bb77ba7c..38db513a0 100644
+--- a/src/rpc/transfer-progress.h
++++ b/src/rpc/transfer-progress.h
+@@ -29,7 +29,7 @@ class TransferProgress {
+ public:
+     QList<TransferringInfo> uploading_files, downloading_files;
+     QList<TransferredInfo> uploaded_files, downloaded_files;
+-    int n_pending_files;
++    int n_pending_files = 0;
+ 
+     static void fromJSON(const json_t *upload,
+                          const json_t *download,
+

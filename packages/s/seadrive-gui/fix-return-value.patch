@@ -1,9 +1,11 @@
---- seadrive-gui-3.0.13/src/ui/sync-errors-dialog.cpp.orig	2025-04-15 09:07:19.436221225 +0200
-+++ seadrive-gui-3.0.13/src/ui/sync-errors-dialog.cpp	2025-04-15 09:08:40.346695752 +0200
-@@ -241,6 +241,8 @@
+Index: seadrive-gui-3.0.16/src/ui/sync-errors-dialog.cpp
+===================================================================
+--- seadrive-gui-3.0.16.orig/src/ui/sync-errors-dialog.cpp
++++ seadrive-gui-3.0.16/src/ui/sync-errors-dialog.cpp
+@@ -249,6 +249,8 @@ QString SyncErrorsTableView::findLocalPa
      }
  
-     return ::pathJoin(account.syncRoot, repo_uname);
+     return local_path;
 +#else
 +    return QString();
  #endif

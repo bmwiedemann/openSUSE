@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 20 07:19:04 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.13:
+  * https://github.com/haiwen/seadrive-gui/compare/v3.0.13...v3.0.16
+- Add issue446.patch: Support show number of pending files
+- Add issue477.patch: Add handle uncache path
+
+-------------------------------------------------------------------
 Tue Apr 15 06:57:35 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.0.13:

@@ -1,0 +1,68 @@
+From 0bce5fe9722cf7f536eecb73c9f73ecbda5f3da8 Mon Sep 17 00:00:00 2001
+From: yangheran <heran.yang@seafile.com>
+Date: Wed, 24 Sep 2025 10:31:49 +0800
+Subject: [PATCH 1/2] Add handle uncache path
+
+---
+ src/ext-handler.cpp | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/src/ext-handler.cpp b/src/ext-handler.cpp
+index 8260ff1b..a3dfa6f8 100644
+--- a/src/ext-handler.cpp
++++ b/src/ext-handler.cpp
+@@ -808,6 +808,8 @@ void ExtCommandsHandler::run()
+         } else if (cmd == "is-file-in-repo") {
+             bool is_in_repo = handleIsFileInRepo(args);
+             resp = is_in_repo ? "true" : "false";
++        } else if (cmd == "uncache") {
++            handleUnCachePath(args);
+         }
+ #ifdef Q_OS_WIN32
+         else if (cmd == "get-thumbnail-from-server") {
+@@ -1234,6 +1236,22 @@ bool ExtCommandsHandler::isFileInRepo(const QString &path) {
+     return true;
+ }
+ 
++void ExtCommandsHandler::handleUnCachePath(const QStringList& args)
++{
++    if (args.size() != 1) {
++        return;
++    }
++    QString path = normalizedPath(args[0]);
++    Account account;
++    QString repo_id, path_in_repo;
++    if (!parseRepoFileInfo(path, &account, &repo_id, &path_in_repo)) {
++        return;
++    }
++
++    QMutexLocker locker(&rpc_client_mutex_);
++    rpc_client_->unCachePath(repo_id, path_in_repo);
++}
++
+ QString ExtCommandsHandler::handleShowAccounts()
+ {
+     auto accounts = gui->accountManager()->allAccounts();
+
+From 2aee42fd2cb8d0cc8048b4f7e2ce723e54de223d Mon Sep 17 00:00:00 2001
+From: Heran Yang <heran.yang@seafile.com>
+Date: Wed, 24 Sep 2025 16:34:47 +0800
+Subject: [PATCH 2/2] Add handle uncache path
+
+---
+ src/ext-handler.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ext-handler.h b/src/ext-handler.h
+index a8bc9ec5..9b9f2114 100644
+--- a/src/ext-handler.h
++++ b/src/ext-handler.h
+@@ -167,6 +167,7 @@ class ExtCommandsHandler: public QThread {
+     bool handleIsFileCached(QStringList &args);
+     bool isFileInRepo(const QString &path);
+     bool handleIsFileInRepo(QStringList &args);
++    void handleUnCachePath(const QStringList& args);
+     QString handleShowAccounts();
+     void handleDeleteAccount(QStringList args);
+     void handleResyncAccount(QStringList args);
+

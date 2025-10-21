@@ -17,7 +17,7 @@
 
 
 Name:           seadrive-gui
-Version:        3.0.13
+Version:        3.0.16
 Release:        0
 Summary:        GUI part of seafile drive
 License:        GPL-3.0-only
@@ -27,6 +27,10 @@ Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz#/%{
 Patch1:         fix-cmake-exec-name.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         fix-return-value.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         issue446.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         issue477.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
