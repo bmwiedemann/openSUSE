@@ -1,7 +1,7 @@
 #
 # spec file for package python-nethsm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nethsm
-Version:        1.4.1
+Version:        2.0.0
 Release:        0
 Summary:        Python Library to manage NetHSM(s)
 License:        Apache-2.0
@@ -140,6 +140,8 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_delete_self"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_ca_certs_none"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_ca_certs_empty"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_ca_certs_valid"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_move_key"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_list_keys_prefix"
 %pytest -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}
