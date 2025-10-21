@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 20 13:55:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.6.0
+  * Build wheels for Python 3.14
+  * Python free-threading support
+  * Typing: Use Buffer type stubs
+  * Deprecate xxhash.VERSION_TUPLE, it will be removed
+    in the next major release
+
+-------------------------------------------------------------------
 Fri May  2 03:21:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

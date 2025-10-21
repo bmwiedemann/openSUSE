@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xxhash
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Python binding for xxHash
 License:        BSD-2-Clause
