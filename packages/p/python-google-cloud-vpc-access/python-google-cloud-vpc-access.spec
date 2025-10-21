@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-vpc-access
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        Google Cloud Vpc Access API client library
 License:        Apache-2.0

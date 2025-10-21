@@ -64,4 +64,13 @@
     <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
     <requestid>1301154</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e88ba219baaf5207999a83ac0a651457</srcmd5>
+    <version>1.13.2</version>
+    <time>1761038154</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.13.2
+  * Update import statement example in README (forwarded request 1312339 from glaubitz)</comment>
+    <requestid>1312375</requestid>
+  </revision>
 </revisionlist>
