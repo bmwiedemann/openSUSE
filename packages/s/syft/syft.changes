@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Oct 17 05:48:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.34.2:
+  * Bug Fixes
+    - Extract zip archive with multiple entries [#4283 @Rupikz]
+    - panic while resolving maven properties in archive parser
+      [#4288 #4290 @kzantow]
+  * Dependencies
+    - chore(deps): update tools to latest versions (#4291)
+
+-------------------------------------------------------------------
+Fri Oct 17 05:24:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.34.1 (1.34.0 was not released):
+  * Added Features
+    - feat: enhance setup.py parser to handle unquoted dependencies
+      [#4255 @HalaAli198]
+    - feat: support for identifying ffmpeg/libav libraries [#4227
+      @popey]
+    - feat: PNPM latest lockfile (version 9.0) [#3927 #4256
+      @bernardoamc]
+    - Add Windows ARM64 releases [#4179 #4237 @compnerd]
+  * Bug Fixes
+    - fix: SBOM CPE mismatch for Qt5 causes Grype to miss CVE
+      matches [#4036 #4093 @hawkaii]
+    - fix: use of manifest files present in Snap packages when
+      generating SBOMs [#4147 #4151 @popey]
+    - fix: Pom xml only archive parser [#4272 @douglasclarke]
+  * Dependencies
+    - chore(deps): bump actions/cache from 4.2.4 to 4.3.0 (#4240)
+    - chore(deps): bump actions/cache in /.github/actions/bootstrap
+      (#4241)
+    - chore(deps): bump anchore/sbom-action from 0.20.5 to 0.20.6
+      (#4222)
+    - chore(deps): bump github.com/CycloneDX/cyclonedx-go from
+      0.9.2 to 0.9.3 (#4251)
+    - chore(deps): bump github.com/charmbracelet/bubbletea (#4228)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.14
+      to 0.5.15 (#4225)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.16.2 to
+      5.16.3 (#4259)
+    - chore(deps): bump github.com/gohugoio/hashstructure from
+      0.5.0 to 0.6.0 (#4267)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.8.0
+      to 1.8.1 (#4229)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.8.1
+      to 1.8.2 (#4254)
+    - chore(deps): bump github.com/iancoleman/orderedmap (#4258)
+    - chore(deps): bump github.com/mholt/archives from 0.1.3 to
+      0.1.5 (#4280)
+    - chore(deps): bump github.com/quasilyte/go-ruleguard/dsl
+      (#4245)
+    - chore(deps): bump github/codeql-action from 3.30.3 to 3.30.4
+      (#4239)
+    - chore(deps): bump github/codeql-action from 3.30.4 to 3.30.5
+      (#4246)
+    - chore(deps): bump github/codeql-action from 3.30.5 to 3.30.6
+      (#4253)
+    - chore(deps): bump github/codeql-action from 3.30.6 to 4.30.7
+      (#4262)
+    - chore(deps): bump github/codeql-action from 4.30.7 to 4.30.8
+      (#4277)
+    - chore(deps): bump golang.org/x/mod from 0.28.0 to 0.29.0
+      (#4266)
+    - chore(deps): bump golang.org/x/net from 0.44.0 to 0.45.0
+      (#4263)
+    - chore(deps): bump golang.org/x/net from 0.45.0 to 0.46.0
+      (#4268)
+    - chore(deps): bump golang.org/x/tools from 0.37.0 to 0.38.0
+      (#4265)
+    - chore(deps): bump modernc.org/sqlite from 1.39.0 to 1.39.1
+      (#4276)
+    - chore(deps): update anchore dependencies (#4282)
+    - chore(deps): update tools to latest versions (#4221)
+    - chore(deps): update tools to latest versions (#4230)
+    - chore(deps): update tools to latest versions (#4236)
+    - chore(deps): update tools to latest versions (#4238)
+    - chore(deps): update tools to latest versions (#4248)
+    - chore(deps): update tools to latest versions (#4261)
+    - chore(deps): update tools to latest versions (#4274)
+    - chore: update ffmpeg tests (#4249)
+    - chore: update to use old configuration on new cosign (#4287)
+
+-------------------------------------------------------------------
 Thu Sep 18 05:27:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.33.0:
