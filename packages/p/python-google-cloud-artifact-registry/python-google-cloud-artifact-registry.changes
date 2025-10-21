@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 20 08:36:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.17.0
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Aug 25 02:35:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pytest-asyncio.
