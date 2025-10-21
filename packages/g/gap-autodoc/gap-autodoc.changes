@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 19 12:39:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.10.16
+  * Make handling `Date` in `PackageInfo.g` more strict.
+  * Remove a bunch of features that were deprecated since 2019.
+
+-------------------------------------------------------------------
 Mon May 12 07:00:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.05.09
