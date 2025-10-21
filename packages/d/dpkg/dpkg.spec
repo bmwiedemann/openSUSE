@@ -1,7 +1,7 @@
 #
 # spec file for package dpkg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch1:         update-alternatives-suse.patch
 Patch2:         drop-tar-option.patch
 Patch3:         ncurses-fix.patch
 Patch4:         openssl.patch
+Patch5:         oldperl.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -40,7 +41,7 @@ BuildRequires:  libselinux-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
-BuildRequires:  perl >= 5.28.1
+BuildRequires:  perl >= 5.26.0
 BuildRequires:  po4a >= 0.59
 BuildRequires:  update-alternatives
 BuildRequires:  xz-devel
@@ -92,6 +93,7 @@ Libraries and header files for dpkg.
 %endif
 %patch -P 3 -p1
 %patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

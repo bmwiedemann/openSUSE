@@ -11,6 +11,11 @@ Wed Jul  2 12:43:36 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 - Release 1.22.21 includes the fix upstream for CVE-2025-6297 / bsc#1245573.
 
 -------------------------------------------------------------------
+Fri May 16 06:09:28 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add oldperl.patch, making Leap 15.x function again
+
+-------------------------------------------------------------------
 Mon Apr 14 05:12:22 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to version 1.22.18.

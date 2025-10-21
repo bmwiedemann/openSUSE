@@ -1,7 +1,7 @@
 #
 # spec file for package update-alternatives
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,14 @@ Source3:        sensible-editor
 Patch0:         update-alternatives-suse.patch
 Patch1:         update-alternatives-slavetomaster.patch
 Patch2:         openssl.patch
+Patch5:         oldperl.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
-BuildRequires:  perl >= 5.28.1
+BuildRequires:  perl >= 5.26.0
 BuildRequires:  pkgconfig
 Provides:       alternatives = %{version}
 

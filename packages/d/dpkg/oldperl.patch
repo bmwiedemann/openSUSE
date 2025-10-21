@@ -1,0 +1,146 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2025-05-16 08:21:35.095822302 +0200
+
+Reduce the dependency on perl 5.32 for the sake of Leap 15.x.
+Reverts 9fc12b744cdb249ea02ddfbea7bc5d8fad822b97 and edits configure.
+
+---
+ configure                    |   20 ++++++++++----------
+ m4/dpkg-progs.m4             |    2 +-
+ scripts/Dpkg/Changelog.pm    |    2 +-
+ scripts/dpkg-scanpackages.pl |    2 +-
+ scripts/dpkg-scansources.pl  |    2 +-
+ t/minimum-version.t          |    2 +-
+ 6 files changed, 15 insertions(+), 15 deletions(-)
+
+Index: dpkg-1.22.18/configure
+===================================================================
+--- dpkg-1.22.18.orig/configure
++++ dpkg-1.22.18/configure
+@@ -18367,10 +18367,10 @@ printf "%s\n" "$build_update_alternative
+ 
+ 
+ 
+-  PERL_MIN_VERSION=5.32.1
++  PERL_MIN_VERSION=5.26.0
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for perl >= 5.32.1" >&5
+-printf %s "checking for perl >= 5.32.1... " >&6; }
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for perl >= 5.26.0" >&5
++printf %s "checking for perl >= 5.26.0... " >&6; }
+ if test ${ac_cv_path_PERL+y}
+ then :
+   printf %s "(cached) " >&6
+@@ -18396,7 +18396,7 @@ do
+ 
+       perlcheck=$(test -x $ac_path_PERL && \
+                   $ac_path_PERL -MConfig -Mversion -e \
+-                  'my $r = qv("v$Config{version}") >= qv("5.32.1");
++                  'my $r = qv("v$Config{version}") >= qv("5.26.0");
+                    print "yes" if $r')
+       if test "$perlcheck" = "yes"
+ then :
+@@ -18412,7 +18412,7 @@ fi
+ IFS=$as_save_IFS
+   if test -z "$ac_cv_path_PERL"; then
+ 
+-      as_fn_error $? "cannot find perl >= 5.32.1" "$LINENO" 5
++      as_fn_error $? "cannot find perl >= 5.26.0" "$LINENO" 5
+ 
+   fi
+ else
+@@ -25029,10 +25029,10 @@ fi
+ 
+ 
+ 
+-  PERL_MIN_VERSION=5.32.1
++  PERL_MIN_VERSION=5.26.0
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for perl >= 5.32.1" >&5
+-printf %s "checking for perl >= 5.32.1... " >&6; }
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for perl >= 5.26.0" >&5
++printf %s "checking for perl >= 5.26.0... " >&6; }
+ if test ${ac_cv_path_PERL+y}
+ then :
+   printf %s "(cached) " >&6
+@@ -25058,7 +25058,7 @@ do
+ 
+       perlcheck=$(test -x $ac_path_PERL && \
+                   $ac_path_PERL -MConfig -Mversion -e \
+-                  'my $r = qv("v$Config{version}") >= qv("5.32.1");
++                  'my $r = qv("v$Config{version}") >= qv("5.26.0");
+                    print "yes" if $r')
+       if test "$perlcheck" = "yes"
+ then :
+@@ -25074,7 +25074,7 @@ fi
+ IFS=$as_save_IFS
+   if test -z "$ac_cv_path_PERL"; then
+ 
+-      as_fn_error $? "cannot find perl >= 5.32.1" "$LINENO" 5
++      as_fn_error $? "cannot find perl >= 5.26.0" "$LINENO" 5
+ 
+   fi
+ else
+Index: dpkg-1.22.18/m4/dpkg-progs.m4
+===================================================================
+--- dpkg-1.22.18.orig/m4/dpkg-progs.m4
++++ dpkg-1.22.18/m4/dpkg-progs.m4
+@@ -55,7 +55,7 @@ AC_DEFUN([DPKG_PROG_PAGER], [
+ # Locate perl interpreter in the path
+ AC_DEFUN([DPKG_PROG_PERL], [
+   AC_ARG_VAR([PERL], [Perl interpreter])dnl
+-  m4_define([_PERL_MIN_VERSION], [5.32.1])
++  m4_define([_PERL_MIN_VERSION], [5.26.0])
+   AC_SUBST([PERL_MIN_VERSION], [_PERL_MIN_VERSION])
+   AC_CACHE_CHECK([for perl >= _PERL_MIN_VERSION], [ac_cv_path_PERL], [
+     AC_PATH_PROGS_FEATURE_CHECK([PERL], [perl], [
+Index: dpkg-1.22.18/scripts/Dpkg/Changelog.pm
+===================================================================
+--- dpkg-1.22.18.orig/scripts/Dpkg/Changelog.pm
++++ dpkg-1.22.18/scripts/Dpkg/Changelog.pm
+@@ -457,7 +457,7 @@ sub abort_early {
+ 	}
+ 	my $start = my $end = $offset;
+ 	$end += $count-1 if $count > 0;
+-        return $start < @{$data} > $end;
++	return ($start < @$data and $end < @$data);
+     }
+ 
+     return unless defined($r->{since}) or defined($r->{from});
+Index: dpkg-1.22.18/scripts/dpkg-scanpackages.pl
+===================================================================
+--- dpkg-1.22.18.orig/scripts/dpkg-scanpackages.pl
++++ dpkg-1.22.18/scripts/dpkg-scanpackages.pl
+@@ -220,7 +220,7 @@ sub process_deb {
+     GetOptions(\%options, @options_spec);
+ }
+ 
+-if (not 1 <= @ARGV <= 3) {
++if (not (@ARGV >= 1 and @ARGV <= 3)) {
+     usageerr(g_('one to three arguments expected'));
+ }
+ 
+Index: dpkg-1.22.18/scripts/dpkg-scansources.pl
+===================================================================
+--- dpkg-1.22.18.orig/scripts/dpkg-scansources.pl
++++ dpkg-1.22.18/scripts/dpkg-scansources.pl
+@@ -288,7 +288,7 @@ sub process_dsc {
+ }
+ 
+ usageerr(g_('one to three arguments expected'))
+-    if not 1 <= @ARGV <= 3;
++    if @ARGV < 1 or @ARGV > 3;
+ 
+ push @ARGV, undef if @ARGV < 2;
+ push @ARGV, '' if @ARGV < 3;
+Index: dpkg-1.22.18/t/minimum-version.t
+===================================================================
+--- dpkg-1.22.18.orig/t/minimum-version.t
++++ dpkg-1.22.18/t/minimum-version.t
+@@ -28,5 +28,5 @@ my @files = Test::Dpkg::all_perl_files()
+ plan tests => scalar @files;
+ 
+ for my $file (@files) {
+-    minimum_version_ok($file, '5.32.1');
++    minimum_version_ok($file, '5.26.0');
+ }
