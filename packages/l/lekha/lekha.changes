@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 20 04:54:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use %license macro.
+- Use pyproject_wheel and pyproject_install from python-rpm-macros
+  to build and install.
+- Sprinkle in fdupes.
+- List directories under python3_sitelib explicitly.
+
+-------------------------------------------------------------------
 Thu Feb 29 15:09:06 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

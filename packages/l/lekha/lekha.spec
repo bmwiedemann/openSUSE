@@ -1,7 +1,7 @@
 #
 # spec file for package lekha
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 Name:           lekha
 Version:        0.2.1
 Release:        0
@@ -30,9 +31,12 @@ Source1:        graphics-viewer-document.png
 #  I couldn't work out what the actions should do so they are removed
 Patch0:         fix-invalid-actions-in-desktop-file.patch
 BuildRequires:  efl-devel
+BuildRequires:  fdupes
 BuildRequires:  python3-PyPDF2
-BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-efl
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  python3-xdg
 Requires:       python3-PyPDF2
 Requires:       python3-efl
@@ -51,10 +55,17 @@ EFL and python based pdf reader.
 %autosetup -p0
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --root "%{buildroot}"
+%pyproject_install
+
+# wheels can only install to sitelib
+mkdir -p %{buildroot}%{_datadir}
+mv -v %{buildroot}%{python3_sitelib}%{_datadir}/applications %{buildroot}%{_datadir}/applications
+rm -r %{buildroot}%{python3_sitelib}%{_datadir}
+
+%fdupes %{buildroot}%{python3_sitelib}
 
 # install icon
 mkdir -p %{buildroot}/%{_datadir}/pixmaps
@@ -67,9 +78,11 @@ rm -rf "%{buildroot}/%{_datadir}/doc"
 
 %files
 %defattr(-,root,root,-)
-%doc README.md COPYING
+%license COPYING
+%doc README.md
 %{_bindir}/lekha
-%{python3_sitelib}/*
+%{python3_sitelib}/lekha
+%{python3_sitelib}/lekha-%{version}.dist-info
 %{_datadir}/pixmaps/accessories-document-viewer.png
 %{_datadir}/applications/lekha.desktop
 

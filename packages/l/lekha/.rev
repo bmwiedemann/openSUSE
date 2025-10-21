@@ -54,4 +54,12 @@ This is unresolvable against Tumbleweed, i'll fix that soon, but this needs to g
     <comment></comment>
     <requestid>1175764</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c17678b97c5c3592cc77d02e06f24366</srcmd5>
+    <version>0.2.1</version>
+    <time>1761038147</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1312348</requestid>
+  </revision>
 </revisionlist>
