@@ -30,6 +30,8 @@ RUN set -euo pipefail; useradd -m -u 1000 -U user
 RUN set -euo pipefail; mkdir -p /home/user/.mozilla/firefox
 RUN set -euo pipefail; chown -R user:user /home/user/.mozilla
 
+
+# cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
@@ -38,6 +40,8 @@ RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -f {/target,}/var/cache/ldconfig/aux-cache; \
     command -v zypper >/dev/null 2>&1 || rm -f /var/lib/zypp/AutoInstalled
 
+# set the day of last password change to empty
+RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /target/etc/shadow
 FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
