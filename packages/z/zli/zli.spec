@@ -17,7 +17,7 @@
 
 
 Name:           zli
-Version:        2.1.9
+Version:        2.1.10
 Release:        0
 Summary:        CLI for the Zot container registry
 License:        Apache-2.0
