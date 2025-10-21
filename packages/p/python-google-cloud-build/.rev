@@ -71,4 +71,23 @@
     <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
     <requestid>1301152</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>48ad85b020a37cf8e5eec4bfbd41a19d</srcmd5>
+    <version>3.33.0</version>
+    <time>1761038152</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.33.0
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- from version 3.32.0
+  * Add option to enable nested virtualization if available
+  * Update comments for `machine_type` and `disk_size_gb`
+- from version 3.31.3
+  * [google-cloud-build] Updated Private Service Connect IP
+    ranges when route_all_traffic is false (#14149)
+- from version 3.31.2
+  * Update import statement example in README
+- Update BuildRequires and Requires from setup.py (forwarded request 1312335 from glaubitz)</comment>
+    <requestid>1312373</requestid>
+  </revision>
 </revisionlist>

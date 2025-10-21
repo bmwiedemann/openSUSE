@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 20 08:50:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.33.0
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- from version 3.32.0
+  * Add option to enable nested virtualization if available
+  * Update comments for `machine_type` and `disk_size_gb`
+- from version 3.31.3
+  * [google-cloud-build] Updated Private Service Connect IP
+    ranges when route_all_traffic is false (#14149)
+- from version 3.31.2
+  * Update import statement example in README
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Aug 25 02:35:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pytest-asyncio.
