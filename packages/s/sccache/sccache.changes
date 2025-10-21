@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Tue Oct 21 02:12:40 UTC 2025 - william.brown@suse.com
+
+- Update to version 0.12.0~1:
+  * Add experimental concurrent cache support
+  * prepare version 0.12.0
+  * Update README with winget installation instructions
+  * Skip CARGO_BUILD_JOBS in hash keys
+  * build(deps): bump object from 0.36.7 to 0.37.1
+  * Adjust tests after the rust update
+  * Fix CI by adding cargo-features and updating coverage test to use modern -Cinstrument-coverage
+  * Fix more clippy warnings
+  * bump rustc in the ci too
+  * Fix rustc 1.85 clippy warnings
+  * bump to rustc 1.85 / edition 2024. mandatory for reqsign-core and run rustfmt with the version
+  * fix clippy warnings
+  * bump opendal to 0.54.0 & reqsign to 0.18.0
+  * github action: when creating a release, make it as draft before (#2458)
+  * prepare version 0.11.0 (#2457)
+  * document SCCACHE_LOG_MILLIS (#2456)
+  * logging: add a option to log milliseconds (Closes: #2454) (#2455)
+  * feat: handle human size prefixes (#2405)
+  * fix: in stats, Compare values AND keys to have a fully deterministic order (#2403)
+  * Add --diagnostic-width to test for args ignored in hash
+  * Ignore --diagnostic-width argument when computing hash
+  * build(deps): bump actions/checkout from 4 to 5
+  * build(deps): bump actions/download-artifact from 4 to 5
+  * build(deps): bump actions/github-script from 7 to 8
+  * Fix rustfmt
+  * Fix comments on request
+  * Fix clippy and rustfmt
+  * Add test for count toolchain and use Determenistic for create tar archive
+  * Fix mtime for reproducable toolchains
+  * build(deps): bump chrono from 0.4.41 to 0.4.42
+  * fix typo in an environment variable name
+  * Fix documentation of azure configuration
+  * Account for clippy-driver having extra prefix `rustc`
+  * Fix build on Android (in Termux)
+  * add support for s390x build
+  * chore: replace retry crate with backon
+  * Remove or replace "Windows 2019" CI config
+  * Needs another result unwrapping, it seems
+  * Test: invoking symlink "compiler" to "sccache" invokes "compiler"
+  * Add a comment about the problem with symlinks and current_exe()
+  * Fix symbolic links to sccache on linux
+  * Allow the CI configuration to disable clang++ for CUDA testing
+  * Don't run tests using clang++ as CUDA compiler on Windows
+  * add description to sccache-dist commands
+  * Display a more user-friendly error when compiling on Linux/arm64
+  * Clarify documentation about "the hash" (aka cache key)
+  * Remove stray ')'
+  * Remove documentation for removed limitations of preprocessor cache mode
+  * Fix preprocessor cache mode when the compiler outputs a dep file
+  * Partially revert "Don't cache dep file (#2322)"
+  * Do not disable preprocessor cache mode if there is a dep file
+  * Fix preprocessor cache mode with distributed builds (#2173)
+  * Change self of generate_hash_key() from Box<Self> to &mut Self
+  * Remove a few IMO pointless indirections / aliases
+  * Remove workaround for #2173
+  * Add test for bug #2173
+  * chore: fix some minor issues in comments
+  * build(deps): bump chrono from 0.4.40 to 0.4.41
+  * build(deps): bump memchr from 2.7.1 to 2.7.5
+  * check if we can use a specific version of rust to build grcov
+  * Move comment that hadn't moved with its corresponding code
+  * Rework direct mode documentation some more
+  * Explain what preprocessor cache mode really does
+  * Reword and correct the preprocessor cache mode documentation
+  * chore: Remove not working mozilla code
+  * Add support for -fsanitize-ignorelist
+  * github storage: adjust the doc
+  * github storage: ACTIONS_CACHE_URL => ACTIONS_RESULTS_URL
+  * github storage: force version 2
+  * Update codecov badge in README.md
+  * Expand tests for dist-server
+  * ci: Consolidate testing, coverage
+  * ci: Update ubuntu-20.04 runners to ubuntu-22.04
+  * chore: fix some comments
+  * Give the --dist-status user some information about when a retry will happen.
+  * Add support for Xclang flag '-mrelax-all'
+  * Add support for Xclang flag '-mconstructor-aliases'
+  * feat(utils): Add support for object >= 0.33
+  * fix(tests): Remove executable bit from oauth.rs
+  * build(deps): bump openssl from 0.10.64 to 0.10.72
+  * build(deps): bump tokio from 1.41.0 to 1.43.1
+  * Improve the CARGO_INCREMENTAL checking (#2364)
+  * build(deps): bump chrono from 0.4.38 to 0.4.40
+  * build(deps): bump clap from 4.4.18 to 4.5.13
+  * build(deps): bump ring from 0.17.7 to 0.17.13
+  * Bail on `nvcc -time` and `nvcc -fdevice-time-trace` flags
+  * test hip with librandomize_readdir
+  * Add randomize_readdir test utility
+  * fix non-strict HIP device lib order
+  * Create config during testing to collect coverage data
+  * Extend coverage to distributed tests
+  * chore: replace num_cpus crate with available_parallelism in standard library (#2342)
+  * Update CI coverage: grcov/codecov
+
+-------------------------------------------------------------------
+Thu Jun 12 06:31:55 UTC 2025 - William Brown <william.brown@suse.com>
+
+- bsc#1243868 - CVE-2024-12224 - idna accepts invalid punycode
+
+-------------------------------------------------------------------
 Wed May  7 04:33:20 UTC 2025 - William Brown <william.brown@suse.com>
 
 - bsc#1242611 - CVE-2025-3416 - openssl use-after-free
