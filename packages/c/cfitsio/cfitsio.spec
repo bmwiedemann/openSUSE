@@ -1,7 +1,7 @@
 #
 # spec file for package cfitsio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define so_ver 10
 %define __builder ninja
 Name:           cfitsio
-Version:        4.6.2
+Version:        4.6.3
 Release:        0
 Summary:        Library for manipulating FITS data files
 License:        NASA-1.3
