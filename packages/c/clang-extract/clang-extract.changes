@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 20 15:12:01 UTC 2025 - mvetter@suse.com
+
+- Update to version 0~20251020.19c1329:
+  * Fix compilation error on OBS
+
+-------------------------------------------------------------------
+Mon Oct 20 13:48:53 UTC 2025 - mvetter@suse.com
+
+- Update to version 0~20251016.1f8ed41:
+  * Workaround LLVM bug #162126
+  * Add support to avoid header expansion
+  * Remove `Get_Source_Manager` from PrettyPrint
+  * Support building on RHEL 8.0
+  * Eliminate the assert in specific situations.
+  * Disable wordexp on Windows where it is unavailable
+
+-------------------------------------------------------------------
 Wed Oct 08 14:10:03 UTC 2025 - mvetter@suse.com
 
 - Update to version 0~20251008.e818417:

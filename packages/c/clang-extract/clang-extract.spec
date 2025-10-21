@@ -17,22 +17,24 @@
 
 
 Name:           clang-extract
-Version:        0~20251008.e818417
+Version:        0~20251020.19c1329
 Release:        0
 Summary:        A tool to extract code content from source files
 License:        Apache-2.0 WITH LLVM-exception AND NCSA
 URL:            https://github.com/SUSE/clang-extract
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  clang
-BuildRequires:  clang-devel
-BuildRequires:  clang-tools
-BuildRequires:  cmake
+BuildRequires:  clang >= 17
+BuildRequires:  clang-devel >= 17
+#BuildRequires:  clang-tools
+#BuildRequires:  cmake
+BuildRequires:  ninja
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  zlib-devel
 # At least 16 is needed but 18 has some fixes that we like.
 # Leap 15.6 has only 17.
-BuildRequires:  llvm-devel >= 17
+#BuildRequires:  llvm-devel
+BuildRequires:  llvm >= 17
 BuildRequires:  meson
 BuildRequires:  ninja
 
@@ -57,5 +59,6 @@ A tool to extract code content from source files using the clang and LLVM infras
 %doc README.md
 %{_bindir}/ce-inline
 %{_bindir}/clang-extract
+%{_bindir}/ce-includetree
 
 %changelog
