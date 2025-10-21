@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 17 13:56:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Rename pwiz.py in /usr/bin to pwiz to avoid PYTHONPATH confusion
+  (bsc#1245790)
+
+-------------------------------------------------------------------
 Thu Aug 21 15:33:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

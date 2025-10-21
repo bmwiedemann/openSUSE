@@ -1,7 +1,7 @@
 #
 # spec file for package python-peewee
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,8 @@ An expressive ORM that supports PostgreSQL, MySQL and SQLite.
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/pwiz.py
+mv %{buildroot}%{_bindir}/pwiz.py %{buildroot}%{_bindir}/pwiz
+%python_clone -a %{buildroot}%{_bindir}/pwiz
 %{python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 # Remove shebang from non-executable files
@@ -75,10 +76,11 @@ sed -i -e '1{\@^#! *%{_bindir}.*python@d}' %{buildroot}%{$python_sitearch}/pwiz.
 %pytest_arch tests
 
 %post
-%python_install_alternative pwiz.py
+%python_install_alternative pwiz
 
 %postun
 %python_uninstall_alternative pwiz.py
+%python_uninstall_alternative pwiz
 
 %pre
 %python_libalternatives_reset_alternative pwiz.py
@@ -86,7 +88,7 @@ sed -i -e '1{\@^#! *%{_bindir}.*python@d}' %{buildroot}%{$python_sitearch}/pwiz.
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.rst TODO.rst
-%python_alternative %{_bindir}/pwiz.py
+%python_alternative %{_bindir}/pwiz
 %{python_sitearch}/peewee-%{version}.dist-info
 %{python_sitearch}/peewee.py
 %{python_sitearch}/pwiz.py
