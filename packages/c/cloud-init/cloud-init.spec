@@ -75,7 +75,6 @@ BuildRequires:  %{pythons}-Jinja2
 BuildRequires:  %{pythons}-PyYAML
 BuildRequires:  %{pythons}-configobj >= 5.0.2
 BuildRequires:  %{pythons}-flake8
-BuildRequires:  %{pythons}-httpretty
 BuildRequires:  %{pythons}-jsonpatch
 BuildRequires:  %{pythons}-jsonschema
 BuildRequires:  %{pythons}-oauthlib

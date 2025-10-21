@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 30 07:44:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Drop unneeded test dependency on httpretty, fixed long ago
+  * https://github.com/canonical/cloud-init/pull/1720
+
+-------------------------------------------------------------------
 Tue Jul 22 16:56:58 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 25.1.3 (bsc#1245401,bsc#1245403)
