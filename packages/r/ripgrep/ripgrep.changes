@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 18 16:49:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 15.0.0:
+  * Several bugs around gitignore matching have been fixed. This
+    includes a commonly reported bug related to applying gitignore
+    rules from parent directories.
+  * A memory usage regression when handling very large gitignore
+    files has been fixed.
+  * rg -vf file, where file is empty, now matches everything.
+  * The -r/--replace flag now works with --json.
+  * A subset of Jujutsu (jj) repositories are now treated as if
+    they were git repositories. That is, ripgrep will respect jj's
+    gitignores.
+  * Globs can now use nested curly braces.
+  * Improve performance of large values with -A/--after-context
+
+-------------------------------------------------------------------
 Mon Sep  9 06:27:41 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 14.1.1:
