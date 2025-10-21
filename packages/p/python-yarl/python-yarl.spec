@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yarl
-Version:        1.20.1
+Version:        1.22.0
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0

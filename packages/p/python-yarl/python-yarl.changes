@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 20 14:11:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.22.0
+  * Added arm64 Windows wheel builds
+- from version 1.21.0
+  * The :file:`reusable-cibuildwheel.yml` workflow has been refactored to
+    be more generic and :file:`ci-cd.yml` now holds all the configuration
+    toggles -- by :user:`webknjaz`.
+  * When building wheels, the source distribution is now passed directly
+    to the ``cibuildwheel`` invocation -- by :user:`webknjaz`.
+  * Added CI for Python 3.14 -- by :user:`kumaraditya303`.
+
+-------------------------------------------------------------------
 Wed Jun 11 21:29:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.1:
