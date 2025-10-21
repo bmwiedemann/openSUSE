@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 17 05:08:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.74.0:
+  * caac5301: fix: do not result in bool parse error for empty
+    config (Timo Furrer tfurrer@gitlab.com)
+
+-------------------------------------------------------------------
 Mon Oct 13 06:44:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.73.1:
