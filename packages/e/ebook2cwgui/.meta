@@ -1,0 +1,6 @@
+<package name="ebook2cwgui" project="openSUSE:Factory">
+  <title>GUI for ebook2cw</title>
+  <description>A graphical user interface (GUI) for ebook2cw. The GUI uses the same
+configuration file as ebook2cw, called ebook2cw.conf.</description>
+  <url>https://fkurz.net/ham/ebook2cw.html#gui</url>
+</package>
