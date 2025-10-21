@@ -242,4 +242,41 @@
     <comment></comment>
     <requestid>1311248</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1097416e86cc920f90d4a2002d0f51c6</srcmd5>
+    <version>0.26.0</version>
+    <time>1761038173</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.26.0
+ * Features
+  * Add paging to --list-themes, see PR #3239 (@einfachIrgendwer0815)
+  * Support negative relative line ranges, e.g. bat -r :-10 / bat -r='-10:', see #3068 (@ajesipow)
+  * Support context in line ranges, e.g. bat -r 30::5 /  bat -r 30:40:5, see #3345 (@cavanaug)
+  * Add built-in 'minus' pager, e.g. bat --pager=builtin see PR #3402 (@academician)
+ * Bugfixes
+  * Fix UTF-8 BOM not being stripped for syntax detection, see #3314 (@krikera)
+  * Fix BAT_THEME_DARK and BAT_THEME_LIGHT being ignored, see issue #3171 and PR #3168 (@bash)
+  * Prevent --list-themes from outputting default theme info to stdout when it is piped, see #3189 (@einfachIrgendwer0815)
+  * Rename some submodules to fix Dependabot submodule updates, see issue #3198 and PR #3201 (@victor-gp)
+  * Make highlight tests fail when new syntaxes don't have fixtures PR #3255 (@dan-hipschman)
+  * Fix crash for multibyte characters in file path, see issue #3230 and PR #3245 (@HSM95)
+  * Add missing mappings for various bash/zsh files, see PR #3262 (@AdamGaskins)
+  * Send all bat errors to stderr by default, see #3336 (@JerryImMouse)
+  * Make --map-syntax target case insensitive to match --language, see #3206 (@keith-hall)
+  * Correctly determine the end of the line in UTF16LE/BE input #3369 (@keith-hall)
+  * --style=changes no longer prints a two-space indent when the file is unmodified, see issue #2710 and PR #3406 (@jyn514)
+  * Add missing shell completions, see #3411 (@keith-hall)
+  * Execute help/version/diagnostic commands even with invalid config/arguments present, see #3414 (@keith-hall)
+  * Fixed line numbers (-n) and style components not printing when piping output, see issue #2935 and PR #3438 (@lmmx)
+ * Other
+  * Update base16 README links to community driven base16 work #2871 (@JamyGolden)
+  * Work around build failures when building bat from vendored sources #3179 (@dtolnay)
+  * CICD: Stop building for x86_64-pc-windows-gnu which fails #3261 (Enselic)
+  * CICD: CICD: replace windows-2019 runners with windows-2025 #3339 (@cyqsimon)
+  * Build script: replace string-based codegen with quote-based codegen #3340 (@cyqsimon)
+  * Improve code coverage of --list-languages parameter #2942 (@sblondon)
+  * Only start offload worker thread when there's more than 1 core #2956 (@cyqsimon)
+  * Update terminal-colorsaurus (the library used for dark/light detection) to 1.0, see #3347 (@bash)</comment>
+    <requestid>1312423</requestid>
+  </revision>
 </revisionlist>

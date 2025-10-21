@@ -1,6 +1,7 @@
 #
 # spec file for package bat
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           bat
-Version:        0.25.0
+Version:        0.26.0
 Release:        0
 Summary:        A cat(1) clone with syntax highlighting and Git integration
 License:        Apache-2.0 OR MIT
@@ -25,7 +26,7 @@ URL:            https://github.com/sharkdp/bat
 Source0:        https://github.com/sharkdp/bat/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.60
+BuildRequires:  rust >= 1.79
 ExclusiveArch:  %{rust_arches}
 
 %description
