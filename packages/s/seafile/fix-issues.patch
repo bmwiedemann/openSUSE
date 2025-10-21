@@ -1,0 +1,28 @@
+diff -ru orig/daemon/cevent.c mod/daemon/cevent.c
+--- orig/daemon/cevent.c	2025-08-06 07:51:15.000000000 +0200
++++ mod/daemon/cevent.c	2025-10-20 09:08:06.371148986 +0200
+@@ -54,6 +54,10 @@
+ 
+     manager->event = event_new (seaf->ev_base, manager->pipefd[0],
+                EV_READ | EV_PERSIST, pipe_callback, manager);
++    if (manager->event == NULL) {
++        return -1;
++    }
++
+     event_add (manager->event, NULL);
+ 
+     return 0;
+diff -ru orig/daemon/http-tx-mgr.c mod/daemon/http-tx-mgr.c
+--- orig/daemon/http-tx-mgr.c	2025-08-06 07:51:15.000000000 +0200
++++ mod/daemon/http-tx-mgr.c	2025-10-20 09:08:26.421263888 +0200
+@@ -3341,6 +3341,10 @@
+     int n_sent = 0;
+ 
+     buf = evbuffer_new ();
++    if (buf == NULL) {
++        goto out;
++    }
++
+     curl = conn->curl;
+ 
+     while (*send_fs_list != NULL) {

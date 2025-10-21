@@ -1,7 +1,7 @@
 #
 # spec file for package seafile
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           seafile
-Version:        9.0.13
+Version:        9.0.15
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-2.0-only
 URL:            https://github.com/haiwen/seafile/
 Source0:        https://github.com/haiwen/seafile/archive/v%{version}.tar.gz
+Patch0:         fix-issues.patch
 BuildRequires:  argon2-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -78,7 +79,7 @@ The libseafile0 package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n seafile-%{version}
+%autosetup -p1
 sed -i -e /\(DESTDIR\)/d lib/libseafile.pc.in
 sed -i -e 's@#!%{_bindir}/env python@#!%{_bindir}/python3@' app/seaf-cli
 sed -i -e 's@#!%{_bindir}/python33@#!%{_bindir}/python3@' app/seaf-cli

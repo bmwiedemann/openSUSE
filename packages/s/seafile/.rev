@@ -218,4 +218,15 @@
 </comment>
     <requestid>1269443</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>46976cbd083ed5c4aa0cf3abd3d5fe2a</srcmd5>
+    <version>9.0.15</version>
+    <time>1761038143</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.0.15 (no changelog).
+- Add fix-issues.patch: fix possible null pointer dereference and
+  add a null check
+</comment>
+    <requestid>1312309</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 20 07:06:27 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.0.15 (no changelog).
+- Add fix-issues.patch: fix possible null pointer dereference and
+  add a null check
+
+-------------------------------------------------------------------
 Tue Apr 15 06:23:06 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.0.13:
