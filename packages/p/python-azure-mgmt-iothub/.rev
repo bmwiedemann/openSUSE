@@ -190,4 +190,16 @@
     <comment></comment>
     <requestid>1311339</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ade03cc977d47f43dc5a24590c3e991a</srcmd5>
+    <version>5.0.0~b2</version>
+    <time>1761038150</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 5.0.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1312323 from glaubitz)</comment>
+    <requestid>1312369</requestid>
+  </revision>
 </revisionlist>

@@ -15,11 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 5.0.0b1
+%define realversion 5.0.0b2
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-iothub
-Version:        5.0.0~b1
+Version:        5.0.0~b2
 Release:        0
 Summary:        Microsoft Azure IoTHub Management Client Library
 License:        MIT
@@ -38,7 +38,7 @@ Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Requires:       (python-azure-mgmt-core >= 1.6.0 with python-azure-mgmt-core < 2.0.0)
-Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
+Requires:       (python-msrest >= 0.7.1 with python-msrest < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-mgmt-iothub < 3.0.0
