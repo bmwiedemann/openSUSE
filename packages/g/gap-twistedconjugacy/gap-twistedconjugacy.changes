@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed Oct 15 10:31:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.1
+  * Affine actions can now be compared using the equality (=)
+    operator.
+  * Improvements to the documentation of derivations and affine
+    actions.
+
+-------------------------------------------------------------------
+Sat Oct 11 18:17:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 3.1.0) for build.opensuse.org
