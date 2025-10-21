@@ -344,4 +344,25 @@
     before it completes (forwarded request 1309603 from rrahl0)</comment>
     <requestid>1309604</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>24e3e228f7cc17b4e05273a3016ebc3d</srcmd5>
+    <version>11.2.0</version>
+    <time>1761038179</time>
+    <user>anag_factory</user>
+    <comment>- update to version 11.2.0:
+  * feat: allow --memory in workflow container options
+  * feat: disambiguate cloud emoji
+  * feat: improve readability of error messages from ParseRawOn
+  * fix: use automatic IP detection instead of cache proxy host config value
+    for internal cache server
+  * fix: prevent premature token revocation in reusable workflows
+  * fix: don't prepend server URL with https:// if it's an empty string
+  * fix: allow mapping into env variable INPUT_N from ${{ inputs.n }}
+  * fix: don't panic on cacheproxy startup failure
+  * fix: log error for why cache couldn't be started
+  * fix: remove LXC backend leftovers when the job completes
+  * fix: make the creation of LXC templates atomic so they cannot be
+    interrupted while building (forwarded request 1312512 from rrahl0)</comment>
+    <requestid>1312513</requestid>
+  </revision>
 </revisionlist>
