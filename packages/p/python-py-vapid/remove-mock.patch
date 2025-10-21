@@ -1,0 +1,25 @@
+From 87e8fa3b251145f8f996e64974134921c8d06bb3 Mon Sep 17 00:00:00 2001
+From: Alexandre Detiste <alexandre.detiste@gmail.com>
+Date: Sun, 30 Mar 2025 12:11:35 +0200
+Subject: [PATCH] prefer newer unittest.mock from standard library
+
+---
+ python/py_vapid/tests/test_vapid.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+Index: py_vapid-1.9.2/py_vapid/tests/test_vapid.py
+===================================================================
+--- py_vapid-1.9.2.orig/py_vapid/tests/test_vapid.py
++++ py_vapid-1.9.2/py_vapid/tests/test_vapid.py
+@@ -5,7 +5,10 @@ import os
+ import json
+ import unittest
+ from cryptography.hazmat.primitives import serialization
+-from mock import patch, Mock
++try:
++    from unittest.mock import patch, Mock
++except ImportError:
++    from mock import patch, Mock
+ 
+ from py_vapid import Vapid01, Vapid02, VapidException, _check_sub
+ from py_vapid.jwt import decode

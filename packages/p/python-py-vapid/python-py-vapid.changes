@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 20 03:08:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.9.2:
+  * Move project metadata to pyproject.toml
+- Add patch remove-mock.patch:
+  * Prefer built-in unittest.mock
+- Add patch support-new-cryptography.patch:
+  * Support new cryprtography changes.
+
+-------------------------------------------------------------------
 Mon Jun  9 15:09:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

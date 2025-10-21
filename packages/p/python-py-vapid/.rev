@@ -54,4 +54,17 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1284239</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>92b86d356f3ea41da739ae829e0aa726</srcmd5>
+    <version>1.9.2</version>
+    <time>1761038123</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.9.2:
+  * Move project metadata to pyproject.toml
+- Add patch remove-mock.patch:
+  * Prefer built-in unittest.mock
+- Add patch support-new-cryptography.patch:
+  * Support new cryprtography changes.</comment>
+    <requestid>1312273</requestid>
+  </revision>
 </revisionlist>
