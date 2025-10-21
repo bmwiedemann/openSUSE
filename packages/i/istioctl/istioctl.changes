@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 21 05:10:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.27.3:
+  https://istio.io/latest/news/releases/1.27.x/announcing-1.27.3/
+  Security Update
+  This release implements the security updates described in our
+  20th of October post, ISTIO-SECURITY-2025-002.
+  https://istio.io/latest/news/security/istio-security-2025-002/
+  * CVE-2025-62504: (CVSS score 6.5, Medium): Lua modified large
+    enough response body will cause Envoy to crash.
+  * CVE-2025-62409: (CVSS score 6.6, Medium): Large requests and
+    responses can cause TCP connection pool crash.
+
+-------------------------------------------------------------------
 Tue Oct 14 05:00:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.27.2:
