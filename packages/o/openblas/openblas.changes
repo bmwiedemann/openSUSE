@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 15 11:00:10 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Reenable LTO on riscv64 as gcc has been fixed
+
+-------------------------------------------------------------------
 Fri May 30 08:46:09 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - For SLES16 target POWER9 instead of POWER8 which fixes the

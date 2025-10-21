@@ -1,7 +1,7 @@
 #
 # spec file for package openblas
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -253,11 +253,6 @@ EOF
 # disable lto for ppc64le, boo#1181733
 %ifarch ppc64le
 %define  _lto_cflags %{nil}
-%endif
-
-%ifarch riscv64
-# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
-%global _lto_cflags %{nil}
 %endif
 
 # Use DYNAMIC_ARCH everywhere - not sure about PPC?
