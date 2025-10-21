@@ -43,4 +43,14 @@
 </comment>
     <requestid>1269449</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>86e4fb78f5a9faa91f965bbe0ceb6f57</srcmd5>
+    <version>3.0.16</version>
+    <time>1761038142</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.0.16:
+  * https://github.com/haiwen/seadrive-fuse/compare/v3.0.13...v3.0.16
+</comment>
+    <requestid>1312308</requestid>
+  </revision>
 </revisionlist>

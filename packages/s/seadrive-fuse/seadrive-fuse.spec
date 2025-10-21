@@ -1,7 +1,7 @@
 #
 # spec file for package seadrive-fuse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           seadrive-fuse
-Version:        3.0.13
+Version:        3.0.16
 Release:        0
 Summary:        SeaDrive daemon with FUSE interface
 License:        GPL-2.0-only
