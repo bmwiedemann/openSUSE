@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 20 16:37:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.71.2:
+  * Version v1.71.2
+  * docs: update sponsors
+  * docs: update sponsor images
+  * docs: update privacy policy with a section on user data
+  * gcs: add region us-east5 - fixes #8863
+  * index: add missing providers
+  * docs: add missing `
+  * mega: fix 402 payment required errors - fixes #8758
+  * docs: fix variants of --user-from-header
+  * docs: add remote setup page to main docs dropdown
+  * docs: update remote setup page
+  * docs: add link from authorize command docs to remote setup docs
+  * docs: lowercase internet and web browser instead of Internet browser
+  * docs: use the term backend name instead of fs name for authorize command
+  * bisync: fix race when CaptureOutput is used concurrently #8815
+  * azurefiles: Fix server side copy not waiting for completion -  fixes #8848
+  * pikpak: fix unnecessary retries by using URL expire parameter - fixes #8601
+  * serve http: fix: logging url on start
+  * docs: fix typo
+  * b2: fix 1TB+ uploads
+  * Start v1.71.2-DEV development
+
+-------------------------------------------------------------------
 Wed Sep 24 19:58:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.71.1:
