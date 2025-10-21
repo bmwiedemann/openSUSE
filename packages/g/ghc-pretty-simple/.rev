@@ -47,4 +47,12 @@
     <comment>version update for ghc-9.10.1</comment>
     <requestid>1231465</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fc0be5a6cc1beec7d42edde42f3797c0</srcmd5>
+    <version>4.1.4.0</version>
+    <time>1761038119</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1312269</requestid>
+  </revision>
 </revisionlist>

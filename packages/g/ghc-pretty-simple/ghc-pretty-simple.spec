@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-pretty-simple
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name pretty-simple
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        4.1.3.0
+Version:        4.1.4.0
 Release:        0
 Summary:        Pretty printer for data types with a 'Show' instance
 License:        BSD-3-Clause
