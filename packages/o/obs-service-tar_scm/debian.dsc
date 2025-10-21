@@ -1,6 +1,6 @@
 Format: 1.0
 Source: obs-service-tar-scm
-Version: 0.10.53
+Version: 0.11.0
 Provides: obs-service-obs_scm, obs-service-tar, obs-service-gbp
 Binary: obs-service-tar_scm
 Maintainer: Adrian Schroeter <adrian@suse.de>

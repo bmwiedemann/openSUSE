@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 13 09:51:59 UTC 2025 - Frank Schreiner <FSchreiner@suse.com>
+
+- Update to version 0.11.0:
+  * Replace deprecated ConfigParser.readfp() with read_file()
+  * Remove six from all metadata as well.
+  * Convert all six.assertRaisesRegex to the standard library self. form.
+  * Remove encoding of the first parameter of subprocess.Popen
+
+-------------------------------------------------------------------
 Fri Aug 01 07:05:26 UTC 2025 - Frank Schreiner <FSchreiner@suse.com>
 
 - Update to version 0.10.53:
