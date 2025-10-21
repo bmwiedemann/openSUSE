@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 20 05:38:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.17:
+  * Only cut releases if we've seen material changes (#1891)
+  * build(deps): bump go.step.sm/crypto from 0.71.0 to 0.72.0
+    (#1890)
+  * build(deps): bump go.step.sm/crypto from 0.70.0 to 0.71.0
+    (#1888)
+  * build(deps): bump chainguard-dev/actions from 1.5.4 to 1.5.6
+    (#1889)
+  * build(deps): bump github/codeql-action from 3.30.5 to 4.30.8
+    (#1886)
+  * build(deps): bump chainguard-dev/actions from 1.5.3 to 1.5.4
+    (#1887)
+
+-------------------------------------------------------------------
 Mon Oct 13 10:50:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.16:
