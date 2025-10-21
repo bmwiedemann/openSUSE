@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Oct 21 05:04:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.91.2:
+  * Experiments Introduced
+    - filter-flag introduced
+      A new experiment named filter-flag has been introduced,
+      allowing for experimental usage of the new --filter flag
+      described in RFC #4060. The filter-flag experiment is
+      incomplete, and minimal support for the --filter flag has
+      been added exclusively to the find and list commands.
+      The filter flag allows for sophisticated querying of
+      particular Terragrunt stacks and units in a way that is
+      currently only possible using a combination of —queue-
+      prefixed flags.
+      Example filter usage might look like the following:
+
+        $ terragrunt find --filter './prod/** | name=web'
+        prod/services/web
+
+      Important
+      While the filter-flag experiment is active, you will need to
+      enable the filter-flag experiment for any command that uses
+      the filter-flag. See Controlling Experiment Mode for more
+      details.
+
+        e.g.
+
+        terragrunt find --experiment filter-flag --filter './prod/** | name=web'
+
+      You can learn more about filters, including documentation on
+      the syntax and examples of each type of filter in the
+      dedicated feature documentation for filters.
+  * What's Changed
+    - docs: Documenting `filter-flag` experiment (#4973)
+    - feat: Introduce `filter-flag` experiment (#4969)
+    - chore: Adding checkbox for reproduction (#4980)
+    - fix: Use special dark/light mode for Terragrunt logos (#4975)
+    - fix: Fixing Flag Card icons (#4974)
+    - Fixes overflow issue on the right sidebar (#4972)
+
+-------------------------------------------------------------------
 Fri Oct 17 07:09:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.91.1:
