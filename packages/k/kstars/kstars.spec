@@ -38,6 +38,8 @@ Source2:        kstars.keyring
 %endif
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-installation-with-Qt6.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Make-it-compile-with-Qt-6.10.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
