@@ -16,12 +16,12 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  create mode 100644 oauth2.c
  create mode 100644 oauth2.h
 
-Index: fetchmail-6.5.1/Makefile.am
+Index: fetchmail-6.5.6/Makefile.am
 ===================================================================
---- fetchmail-6.5.1.orig/Makefile.am
-+++ fetchmail-6.5.1/Makefile.am
-@@ -63,7 +63,7 @@ fetchmail_SOURCES=	fetchmail.h getopt.h
- 		fetchmail.c env.c idle.c options.c daemon.c \
+--- fetchmail-6.5.6.orig/Makefile.am
++++ fetchmail-6.5.6/Makefile.am
+@@ -69,7 +69,7 @@ fetchmail_SOURCES=	fetchmail.h getopt.h
+ 		fetchmail.c env.c idle.c options.c \
  		driver.c transact.c sink.c smtp.c \
  		idlist.c uid.c mxget.c md5ify.c cram.c gssapi.c \
 -		opie.c interface.c netrc.c \
@@ -29,11 +29,11 @@ Index: fetchmail-6.5.1/Makefile.am
  		unmime.c conf.c checkalias.c uid_db.h uid_db.c\
  		lock.h lock.c \
  		rcfile_l.l rcfile_y.y \
-Index: fetchmail-6.5.1/fetchmail.man
+Index: fetchmail-6.5.6/fetchmail.man
 ===================================================================
---- fetchmail-6.5.1.orig/fetchmail.man
-+++ fetchmail-6.5.1/fetchmail.man
-@@ -1114,7 +1114,7 @@ AUTHENTICATION below for details).  The
+--- fetchmail-6.5.6.orig/fetchmail.man
++++ fetchmail-6.5.6/fetchmail.man
+@@ -1120,7 +1120,7 @@ AUTHENTICATION below for details).  The
  excruciating exactness, \fBkerberos_v4\fP), \fBgssapi\fP,
  \fBcram\-md5\fP, \fBotp\fP, \fBntlm\fP, \fBmsn\fP (only for POP3),
  \fBexternal\fP (only IMAP),  \fBimplicit\fP (\fBssh\fP is understood
@@ -42,7 +42,7 @@ Index: fetchmail-6.5.1/fetchmail.man
  When \fBany\fP (the default) is specified, fetchmail tries
  first methods that do not require a password (EXTERNAL, GSSAPI, KERBEROS\ IV,
  KERBEROS\ 5); then it looks for methods that mask your password
-@@ -2492,8 +2492,7 @@ Legal protocol identifiers for use with
+@@ -2504,8 +2504,7 @@ Legal protocol identifiers for use with
  Legal authentication types are 'any', 'password', 'kerberos',
  \&'kerberos_v4', 'kerberos_v5' and 'gssapi', 'cram\-md5', 'otp', 'msn'
  (only for POP3), 'ntlm', 'implicit', 'external' (only IMAP),
@@ -52,10 +52,10 @@ Index: fetchmail-6.5.1/fetchmail.man
  The 'password' type specifies
  authentication by normal transmission of a password (the password may be
  plain text or subject to protocol-specific encryption as in CRAM-MD5);
-Index: fetchmail-6.5.1/imap.c
+Index: fetchmail-6.5.6/imap.c
 ===================================================================
---- fetchmail-6.5.1.orig/imap.c
-+++ fetchmail-6.5.1/imap.c
+--- fetchmail-6.5.6.orig/imap.c
++++ fetchmail-6.5.6/imap.c
 @@ -15,6 +15,7 @@
  #include  <stdlib.h>
  #include  <limits.h>
@@ -64,7 +64,7 @@ Index: fetchmail-6.5.1/imap.c
  #include  "socket.h"
  
  #include  "i18n.h"
-@@ -417,63 +418,23 @@ static int do_imap_ntlm(int sock, struct
+@@ -415,63 +416,23 @@ static int do_imap_ntlm(int sock, struct
  
  static int do_imap_oauthbearer(int sock, struct query *ctl,flag xoauth2)
  {
@@ -134,10 +134,10 @@ Index: fetchmail-6.5.1/imap.c
  
      return ok;
  }
-Index: fetchmail-6.5.1/oauth2.c
+Index: fetchmail-6.5.6/oauth2.c
 ===================================================================
 --- /dev/null
-+++ fetchmail-6.5.1/oauth2.c
++++ fetchmail-6.5.6/oauth2.c
 @@ -0,0 +1,61 @@
 +/*
 + * oauth2.c -- oauthbearer and xoauth2 support
@@ -200,10 +200,10 @@ Index: fetchmail-6.5.1/oauth2.c
 +
 +    return oauth2b64;
 +}
-Index: fetchmail-6.5.1/oauth2.h
+Index: fetchmail-6.5.6/oauth2.h
 ===================================================================
 --- /dev/null
-+++ fetchmail-6.5.1/oauth2.h
++++ fetchmail-6.5.6/oauth2.h
 @@ -0,0 +1,6 @@
 +#ifndef OAUTH2_H
 +#define OAUTH2_H
@@ -211,10 +211,10 @@ Index: fetchmail-6.5.1/oauth2.h
 +char *get_oauth2_string(struct query *ctl,flag xoauth2);
 +
 +#endif /*OAUTH2_H*/
-Index: fetchmail-6.5.1/pop3.c
+Index: fetchmail-6.5.6/pop3.c
 ===================================================================
---- fetchmail-6.5.1.orig/pop3.c
-+++ fetchmail-6.5.1/pop3.c
+--- fetchmail-6.5.6.orig/pop3.c
++++ fetchmail-6.5.6/pop3.c
 @@ -17,6 +17,7 @@
  #include  <stdlib.h>
  #include  <errno.h>

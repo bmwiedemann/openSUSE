@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Oct  7 20:46:22 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 6.5.6 fixes [bsc#1251194,CVE-2025-61962]
+  * Rebased fetchmail-add-passwordfile-and-passwordfd-options.patch
+  * Rebased fetchmail-add-query_to64_outsize-utility-function.patch
+  * Rebased fetchmail-bump-max-passwordlen-to-1bytes.patch
+  * Rebased fetchmail-give-each-ctl-it-s-own-copy-of-password.patch
+  * Rebased fetchmail-increase-max-password-length-to-handle-oauth-tokens.patch
+  * Rebased fetchmail-re-read-passwordfile-on-every-poll.patch
+  * Rebased fetchmail-support-oauthbearer-xoauth2-with-pop3.patch
+
+* SECURITY BUGFIX:
+  * fetchmail-SA-2025-01.txt: CVE pending assignment by MITRE
+    An SMTP server advertising EHLO and AUTH, and if fetchmail is configured to
+    authenticate (esmtpname and esmtppassword given and non-empty), the server
+    might crash fetchmail by sending a "334" response without further blank to
+    fetchmail's AUTH request. This is in violation of applicable RFC-4952 though.
+    Fetchmail now detects this situation and reports it separately as
+    malformed server reply.
+    Fetchmail 6.5.6 has been released without waiting for translation updates
+    or CVE identifier, these will be provided in followup releases.
+  
+* BUGFIXES:
+  * RFC-5321: When the --smtpaddress, --smtphost, --smtpname, -D or -S argument
+    is an numeric address literal such as 192.0.2.2 or 2001:0DB8::4321, properly
+    format that as such in the SMTP RCPT command as user@[192.0.2.2] or
+    user@[IPv6:2001:0DB8::4321].
+  
+  * When printing output on the console while fetching mail, do not intersperse
+    another copy of our program name and date in the middle of a log line.
+    Workaround for older versions: --logfile /dev/tty  (might also use
+    --logfile /dev/stderr) - but note this changes buffering behavior and may
+    output to appear later and without ticker marks.
+  
+  * A few low-priority memory leaks in the command-line options parser were
+    fixed. Since this parser runs only once, leaks are harmless.
+  
+  * Some minor code cleanups and robustness fixes were made, and we should
+    see fewer compiler warnings as a result.
+  
+* CHANGES:
+  * Given the slow update schedules of some distributions, already add code
+    that checks if time_t() is good beyond the year 2038,
+    meaning time_t is either unsigned (which would last until 2106) or
+    64 bits wide.  If the system isn't safe, warn on every launch of fetchmail
+    beginning 2028-01-01 at 00:00 GMT so users have 10 years to plan.
+    Fetchmail will also print a warning if time(time_t *t) overflows. 
+
+-------------------------------------------------------------------
 Thu Jun 26 10:25:36 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 6.5.4
