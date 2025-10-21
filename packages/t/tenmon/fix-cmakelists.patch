@@ -2,32 +2,33 @@ Index: tenmon/CMakeLists.txt
 ===================================================================
 --- tenmon.orig/CMakeLists.txt
 +++ tenmon/CMakeLists.txt
-@@ -24,8 +24,9 @@ find_library(RAW_LIB NAMES raw_r REQUIRE
+@@ -24,8 +24,8 @@ find_library(RAW_LIB NAMES raw_r REQUIRE
  find_library(WCS_LIB wcs wcslib REQUIRED)
  find_library(LCMS2_LIB lcms2 REQUIRED)
- find_library(STELLARSOLVER_LIB stellarsolver)
+ find_library(STELLARSOLVER_LIB NAMES stellarsolver stellarsolver6)
+-
+-add_subdirectory(libXISF)
 +find_library(LibXISF_LIBRARY NAMES libXISF XISF REQUIRED)
 +find_library(ZSTD_LIB NAMES zstd REQUIRED)
  
--add_subdirectory(libXISF)
- 
  set(TENMON_SRC
-     about.cpp about.h
-@@ -76,7 +77,7 @@ endif()
+     src/about.cpp src/about.h
+@@ -79,7 +79,7 @@ endif()
  qt_add_executable(tenmon WIN32 MACOSX_BUNDLE ${tenmon_ICON} ${TENMON_SRC})
  
  find_path(FITS_INCLUDE fitsio2.h PATH_SUFFIXES cfitsio REQUIRED)
--target_include_directories(tenmon PRIVATE ${FITS_INCLUDE} ${CMAKE_BINARY_DIR} ${libXISF_SOURCE_DIR})
-+target_include_directories(tenmon PRIVATE ${FITS_INCLUDE} ${CMAKE_BINARY_DIR})
+-target_include_directories(tenmon PRIVATE ${FITS_INCLUDE} ${CMAKE_BINARY_DIR} ${libXISF_SOURCE_DIR} "src")
++target_include_directories(tenmon PRIVATE ${FITS_INCLUDE} ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/src)
  
  option(COLOR_MANAGMENT "Enable sRGB framebuffer support for gamma correct images and color profiles support" ON)
  if(COLOR_MANAGMENT)
-@@ -102,7 +103,7 @@ if(STELLARSOLVER_INCLUDE AND STELLARSOLV
+@@ -105,7 +105,8 @@ if(STELLARSOLVER_INCLUDE AND STELLARSOLV
      message(STATUS "Found stellarsolver ${STELLARSOLVER_INCLUDE} ${STELLARSOLVER_LIB}")
  endif(STELLARSOLVER_INCLUDE AND STELLARSOLVER_LIB)
  
--target_link_libraries(tenmon PRIVATE Qt6::Widgets Qt6::Sql Qt6::OpenGLWidgets Qt6::Qml ${EXIF_LIB} ${FITS_LIB} ${RAW_LIB} ${WCS_LIB} ${LCMS2_LIB} XISF)
-+target_link_libraries(tenmon PRIVATE Qt6::Widgets Qt6::Sql Qt6::OpenGLWidgets Qt6::Qml ${EXIF_LIB} ${FITS_LIB} ${RAW_LIB} ${WCS_LIB} ${LCMS2_LIB} ${LibXISF_LIBRARY} ${ZSTD_LIB})
+-target_link_libraries(tenmon PRIVATE Qt6::Widgets Qt6::Sql Qt6::OpenGLWidgets Qt6::Qml Qt6::Charts ${EXIF_LIB} ${FITS_LIB} ${RAW_LIB} ${WCS_LIB} ${LCMS2_LIB} XISF)
++target_link_libraries(tenmon PRIVATE Qt6::Widgets Qt6::Sql Qt6::OpenGLWidgets Qt6::Qml Qt6::Charts ${EXIF_LIB} ${FITS_LIB} ${RAW_LIB} ${WCS_LIB} ${LCMS2_LIB} ${LibXISF_LIBRARY} ${ZSTD_LIB})
++
  if(APPLE)
      target_link_libraries(tenmon PRIVATE Qt6::DBus "-framework CoreFoundation")
  elseif(UNIX)

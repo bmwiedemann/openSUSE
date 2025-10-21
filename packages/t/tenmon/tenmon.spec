@@ -1,7 +1,7 @@
 #
 # spec file for package tenmon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           tenmon
-Version:        20250318
+Version:        20250915
 Release:        0
 Summary:        FITS and XISF image viewer, converter and indexer
 License:        GPL-3.0-or-later
@@ -32,10 +32,11 @@ Patch0:         fix-cmakelists.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         fix-libxisf-include.patch
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
-BuildRequires:  libXISF-devel >= 0.2.12+git5.d00de20
+BuildRequires:  libXISF-devel >= 0.2.13+git3.556bb22
 BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel >= 6.2.0
+BuildRequires:  pkgconfig(Qt6Charts)
 BuildRequires:  pkgconfig(Qt6OpenGL)
 BuildRequires:  pkgconfig(Qt6Qml)
 BuildRequires:  pkgconfig(Qt6Sql)
@@ -93,5 +94,6 @@ export  CXXFLAGS=$(echo "$CXXFLAGS -Wno-switch -Wno-catch-value")
 %{_datadir}/icons/hicolor/128x128/apps/space.nouspiro.tenmon.png
 %{_datadir}/icons/hicolor/64x64/apps/space.nouspiro.tenmon.png
 %{_datadir}/metainfo/space.nouspiro.tenmon.metainfo.xml
+%{_datadir}/mime/packages/space.nouspiro.tenmon.xisf.xml
 
 %changelog

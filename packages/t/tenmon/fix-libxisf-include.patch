@@ -1,28 +1,25 @@
-Index: tenmon/main.cpp
+Index: tenmon/src/main.cpp
 ===================================================================
---- tenmon.orig/main.cpp
-+++ tenmon/main.cpp
+--- tenmon.orig/src/main.cpp
++++ tenmon/src/main.cpp
 @@ -5,6 +5,7 @@
  #include <QCommandLineParser>
  #include <stdlib.h>
- #include "thumbnailer/genthumbnail.h"
+ #include "../thumbnailer/genthumbnail.h"
 +#include <libxisf.h>
  
  int main(int argc, char *argv[])
  {
-Index: tenmon/scriptengine.cpp
+Index: tenmon/src/scriptengine.cpp
 ===================================================================
---- tenmon.orig/scriptengine.cpp
-+++ tenmon/scriptengine.cpp
-@@ -1,9 +1,11 @@
- #include "scriptengine.h"
-+
- #include <QDir>
- #include <QFileInfo>
- #include <QDebug>
- #include <QInputDialog>
- #include <QJsonValue>
-+#include <libxisf.h>
- #include "loadrunable.h"
- #include "rawimage.h"
+--- tenmon.orig/src/scriptengine.cpp
++++ tenmon/src/scriptengine.cpp
+@@ -10,7 +10,7 @@
  #include "loadimage.h"
+ #include "batchprocessing.h"
+ #include <fitsio2.h>
+-#include "libxisf.h"
++#include <libxisf.h>
+ #ifdef PLATESOLVER
+ #include "solver.h"
+ #endif // PLATESOLVER

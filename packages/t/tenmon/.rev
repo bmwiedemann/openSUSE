@@ -180,4 +180,17 @@
 </comment>
     <requestid>1266385</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0671507f294143fce1c9eedb589a5a71</srcmd5>
+    <version>20250915</version>
+    <time>1761038141</time>
+    <user>anag_factory</user>
+    <comment>- Update to 20250915:
+  * Draw equatorial grid and objects overlay
+  * File Manager
+  * Support for PCL:AstrometricSolution
+  * Script console
+</comment>
+    <requestid>1312310</requestid>
+  </revision>
 </revisionlist>
