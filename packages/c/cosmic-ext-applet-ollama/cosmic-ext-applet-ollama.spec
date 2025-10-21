@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-ext-applet-ollama
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define         appname io.github.elevenhsoft.CosmicExtAppletOllama
+%define         appname dev.heppen.ollama
 Name:           cosmic-ext-applet-ollama
-Version:        0.1.0+git20240923.45bc56d
+Version:        0.1.0+git20251008.60079c3
 Release:        0
 Summary:        Ollama applet for COSMIC Desktop
 License:        GPL-3.0-only
@@ -30,7 +30,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.80
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(xkbcommon)
 Requires:       ollama
@@ -47,7 +46,6 @@ just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %check
 %{cargo_test}

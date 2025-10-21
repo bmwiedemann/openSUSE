@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 12 19:23:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.1.0+git20251008.60079c3:
+  * remove unneeded dependency from Containerfile
+  * fix linting
+  * update deps
+  * i18n(cs): Add Czech translation
+  * update README install instruction
+  * update screenshots
+  * update readme
+
+-------------------------------------------------------------------
 Fri Dec  6 23:32:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - require rust >= 1.80
