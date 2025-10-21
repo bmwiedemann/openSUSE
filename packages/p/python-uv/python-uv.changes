@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 19 22:01:08 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.4 
+ * Enhancements
+  * Add CUDA 13.0 support 
+  * Add auto-detection for Intel GPU on Windows 
+  * Implement display of RFC 9457 HTTP error contexts 
+ * Bug fixes
+  * Avoid obfuscating pyx tokens in uv auth token output 
+
+-------------------------------------------------------------------
 Thu Oct 16 22:24:47 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.3
