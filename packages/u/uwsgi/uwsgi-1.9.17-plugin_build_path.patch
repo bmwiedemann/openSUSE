@@ -1,8 +1,12 @@
-Index: uwsgi-2.0.25.1/uwsgiconfig.py
+---
+ uwsgiconfig.py |    5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+Index: uwsgi-2.0.31/uwsgiconfig.py
 ===================================================================
---- uwsgi-2.0.25.1.orig/uwsgiconfig.py
-+++ uwsgi-2.0.25.1/uwsgiconfig.py
-@@ -1444,10 +1444,7 @@ def build_plugin(path, uc, cflags, ldfla
+--- uwsgi-2.0.31.orig/uwsgiconfig.py	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/uwsgiconfig.py	2025-10-20 11:57:37.196618275 +0200
+@@ -1444,10 +1444,7 @@
      except:
          pass
  

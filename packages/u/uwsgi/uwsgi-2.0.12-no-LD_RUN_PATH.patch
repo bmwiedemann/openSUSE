@@ -1,6 +1,16 @@
---- a/plugins/jvm/uwsgiplugin.py
-+++ b/plugins/jvm/uwsgiplugin.py
-@@ -69,11 +69,6 @@ if "-framework JavaVM" in JVM_LIBPATH:
+---
+ plugins/jvm/uwsgiplugin.py    |    5 -----
+ plugins/php/uwsgiplugin.py    |    1 -
+ plugins/python/uwsgiplugin.py |    2 --
+ plugins/rack/uwsgiplugin.py   |    1 -
+ plugins/ruby19/uwsgiplugin.py |    1 -
+ 5 files changed, 10 deletions(-)
+
+Index: uwsgi-2.0.31/plugins/jvm/uwsgiplugin.py
+===================================================================
+--- uwsgi-2.0.31.orig/plugins/jvm/uwsgiplugin.py	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/jvm/uwsgiplugin.py	2025-10-20 11:57:40.854044493 +0200
+@@ -74,11 +74,6 @@
  
  GCC_LIST = ['jvm_plugin']
  
@@ -12,9 +22,11 @@
  def post_build(config):
      if subprocess.call("javac %s/plugins/jvm/uwsgi.java" % os.getcwd(), shell=True) != 0:
          os._exit(1)
---- a/plugins/php/uwsgiplugin.py
-+++ b/plugins/php/uwsgiplugin.py
-@@ -19,7 +19,6 @@ LDFLAGS = os.popen(PHPPATH + ' --ldflags
+Index: uwsgi-2.0.31/plugins/php/uwsgiplugin.py
+===================================================================
+--- uwsgi-2.0.31.orig/plugins/php/uwsgiplugin.py	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/php/uwsgiplugin.py	2025-10-20 11:57:40.854223637 +0200
+@@ -19,7 +19,6 @@
  
  if ld_run_path:
      LDFLAGS.append('-L%s' % ld_run_path)
@@ -22,9 +34,11 @@
  
  # PHP8 and above does not add the version to the library
  # name
---- a/plugins/python/uwsgiplugin.py
-+++ b/plugins/python/uwsgiplugin.py
-@@ -90,8 +90,6 @@ if not 'UWSGI_PYTHON_NOLIB' in os.enviro
+Index: uwsgi-2.0.31/plugins/python/uwsgiplugin.py
+===================================================================
+--- uwsgi-2.0.31.orig/plugins/python/uwsgiplugin.py	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/python/uwsgiplugin.py	2025-10-20 11:57:40.854663640 +0200
+@@ -95,8 +95,6 @@
          LDFLAGS.append("-L%s" % libdir)
          LDFLAGS.append("-Wl,-rpath,%s" % libdir)
  
@@ -33,9 +47,11 @@
          LIBS.append('-lpython%s' % get_python_version())
  else:
      LIBS = []
---- a/plugins/rack/uwsgiplugin.py
-+++ b/plugins/rack/uwsgiplugin.py
-@@ -48,7 +48,6 @@ LIBS = os.popen(RUBYPATH + " -e \"requir
+Index: uwsgi-2.0.31/plugins/rack/uwsgiplugin.py
+===================================================================
+--- uwsgi-2.0.31.orig/plugins/rack/uwsgiplugin.py	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/rack/uwsgiplugin.py	2025-10-20 11:57:40.854923103 +0200
+@@ -48,7 +48,6 @@
  
  if has_shared == 'yes':
      LDFLAGS.append('-L' + libpath )
@@ -43,9 +59,11 @@
      LIBS.append(os.popen(RUBYPATH + " -e \"require 'rbconfig';print '-l' + %s::CONFIG['RUBY_SO_NAME']\"" % rbconfig).read().rstrip())
  else:
      rubylibdir = os.popen(RUBYPATH + " -e \"require 'rbconfig';print RbConfig::CONFIG['rubylibdir']\"").read().rstrip()
---- a/plugins/ruby19/uwsgiplugin.py
-+++ b/plugins/ruby19/uwsgiplugin.py
-@@ -42,6 +42,5 @@ LDFLAGS = os.popen(RUBYPATH + " -e \"req
+Index: uwsgi-2.0.31/plugins/ruby19/uwsgiplugin.py
+===================================================================
+--- uwsgi-2.0.31.orig/plugins/ruby19/uwsgiplugin.py	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/ruby19/uwsgiplugin.py	2025-10-20 11:57:40.855183054 +0200
+@@ -42,6 +42,5 @@
  
  libpath = os.popen(RUBYPATH + " -e \"require 'rbconfig';print %s::CONFIG['libdir']\"" % rbconfig).read().rstrip()
  LDFLAGS.append('-L' + libpath )

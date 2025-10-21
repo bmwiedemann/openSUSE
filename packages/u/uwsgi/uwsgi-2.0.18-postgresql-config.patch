@@ -1,6 +1,12 @@
---- a/plugins/emperor_pg/uwsgiplugin.py
-+++ b/plugins/emperor_pg/uwsgiplugin.py
-@@ -2,11 +2,8 @@ import os
+---
+ plugins/emperor_pg/uwsgiplugin.py |    7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+Index: uwsgi-2.0.31/plugins/emperor_pg/uwsgiplugin.py
+===================================================================
+--- uwsgi-2.0.31.orig/plugins/emperor_pg/uwsgiplugin.py	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/emperor_pg/uwsgiplugin.py	2025-10-20 11:57:51.496172543 +0200
+@@ -2,11 +2,8 @@
  
  NAME = 'emperor_pg'
  

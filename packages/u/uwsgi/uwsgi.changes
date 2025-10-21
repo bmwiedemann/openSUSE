@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Oct 20 10:14:54 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.0.31:
+  - Fix build with gcc-15 (Arne de Bruijn)
+  - Build improvements (Janos Guljas, Jonas Smedegaard)
+  - Fix some user visible typos (Alexandre Rossi)
+  - Fix gracefully_kill_them_all() for setups using fifo-based
+    master graceful reload (Wynn Wilkes)
+  - Fix compilation with PHP 8.5 (Remi Collet)
+- Update to 2.0.30:
+  - Port to Python 3.14 beta 1 (Victor Stinner)
+  - Fix atexit handler install with –lazy / –lazy-apps (Taegyun
+    Kim)
+- Update to 2.0.29:
+  - Fix integration tests not running (Alexandre Rossi)
+  - Backport pypy plugin fixes (Alexandre Rossi)
+  - Add support for rack 3 (Alexandre Rossi)
+  - Fix compilation with gcc-15 (Alexandre Rossi)
+  - Backport –max-request-delta from master (Jeremy Goulard)
+  - Disable executable stack (Martin Liška)
+  - Fix uwsgi_request_body_readline without new lines found (Juho
+    Heikkinen)
+  - Fix reload-os-env option (wszak)
+  - Tidy python code (Curtis)
+  - Python3 compat for examples and testing code (Thomas Goirand)
+- Remove upstreamed patches:
+  - gcc15.patch
+- Readjusted patches:
+  - plugins-gcc15.patch
+  - python313.patch
+  - uwsgi-1.9.11-systemd_logger-old_systemd.patch
+  - uwsgi-1.9.13-objc_gc-no-fobjc-gc.patch
+  - uwsgi-1.9.17-plugin_build_path.patch
+  - uwsgi-2.0.12-no-LD_RUN_PATH.patch
+  - uwsgi-2.0.18-postgresql-config.patch
+  - uwsgi-ld-noexecstack.patch
+  - uwsgi-reproducible-jar-mtime.patch
+
+-------------------------------------------------------------------
 Mon Jul  7 19:48:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Deactivate glusterfs backend.

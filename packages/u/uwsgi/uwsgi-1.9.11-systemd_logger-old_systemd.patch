@@ -1,5 +1,11 @@
---- a/plugins/systemd_logger/systemd_logger.c
-+++ b/plugins/systemd_logger/systemd_logger.c
+---
+ plugins/systemd_logger/systemd_logger.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: uwsgi-2.0.31/plugins/systemd_logger/systemd_logger.c
+===================================================================
+--- uwsgi-2.0.31.orig/plugins/systemd_logger/systemd_logger.c	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/systemd_logger/systemd_logger.c	2025-10-20 11:57:49.106758886 +0200
 @@ -1,5 +1,6 @@
  #include "../../uwsgi.h"
  

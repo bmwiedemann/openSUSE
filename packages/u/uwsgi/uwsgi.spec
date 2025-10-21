@@ -1,7 +1,7 @@
 #
 # spec file for package uwsgi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %endif
 
 Name:           uwsgi
-Version:        2.0.28
+Version:        2.0.31
 Release:        0
 Summary:        Application Container Server for Networked/Clustered Web Applications
 License:        Apache-2.0 AND GPL-2.0-only WITH GCC-exception-2.0
@@ -59,8 +59,6 @@ Patch4:         uwsgi-2.0.18-postgresql-config.patch
 Patch5:         uwsgi-ld-noexecstack.patch
 # PATCH-FIX-UPSTREAM python313.patch - plugins/python: handle cframe removal from CPython thread state https://github.com/unbit/uwsgi/commit/699dc20f8204ee18812951600b0221156d217530
 Patch6:         python313.patch
-# PATCH-FIX-UPSTREAM gcc15.patch
-Patch7:         gcc15.patch
 # additional fixes to make gcc-15 happy
 Patch8:         plugins-gcc15.patch
 # PATCH-FIX-OPENSUSE
@@ -438,7 +436,6 @@ This package contains support for PHP version 7.
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
-%patch -P 7 -p1
 %patch -P 8 -p1
 # The "--date" option was added into jar in OpenJDK 17
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}

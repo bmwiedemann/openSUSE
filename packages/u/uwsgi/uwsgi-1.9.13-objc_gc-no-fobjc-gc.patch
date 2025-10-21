@@ -1,5 +1,11 @@
---- a/plugins/objc_gc/uwsgiplugin.py
-+++ b/plugins/objc_gc/uwsgiplugin.py
+---
+ plugins/objc_gc/uwsgiplugin.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: uwsgi-2.0.31/plugins/objc_gc/uwsgiplugin.py
+===================================================================
+--- uwsgi-2.0.31.orig/plugins/objc_gc/uwsgiplugin.py	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/objc_gc/uwsgiplugin.py	2025-10-20 11:57:46.740195378 +0200
 @@ -1,5 +1,5 @@
  NAME="objc_gc"
 -CFLAGS=["-fobjc-gc"]

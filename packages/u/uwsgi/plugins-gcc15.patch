@@ -1,5 +1,12 @@
---- a/plugins/pty/pty.c	2015-10-15 21:42:00.000000000 +0200
-+++ b/plugins/pty/pty.c	2025-04-15 19:52:18.375871303 +0200
+---
+ plugins/pty/pty.c       |    3 ++-
+ plugins/tuntap/tuntap.c |    3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+Index: uwsgi-2.0.31/plugins/pty/pty.c
+===================================================================
+--- uwsgi-2.0.31.orig/plugins/pty/pty.c	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/pty/pty.c	2025-10-20 12:13:55.683815424 +0200
 @@ -307,7 +307,8 @@
  	uwsgi_pty_setterm(0);
  
@@ -8,10 +15,12 @@
 +		// cast uwsgi_pty_winch() to make gcc-15 happy
 +		signal(SIGWINCH, (__sighandler_t)uwsgi_pty_winch);
  		// send current terminal size
- 		uwsgi_pty_winch();
+ 		uwsgi_pty_winch(SIGWINCH);
  	}
---- a/plugins/tuntap/tuntap.c	2014-05-08 13:57:00.000000000 +0200
-+++ b/plugins/tuntap/uwsgi/tuntap.c	2025-04-15 19:57:34.451944153 +0200
+Index: uwsgi-2.0.31/plugins/tuntap/tuntap.c
+===================================================================
+--- uwsgi-2.0.31.orig/plugins/tuntap/tuntap.c	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/tuntap/tuntap.c	2025-10-20 12:13:55.684261783 +0200
 @@ -535,5 +535,6 @@
  	.name = "tuntap",
  	.options = uwsgi_tuntap_options,

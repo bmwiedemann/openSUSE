@@ -6,15 +6,15 @@ Subject: [PATCH] plugins/python: handle cframe removal from CPython thread
 
 Use current_frame instead
 ---
- plugins/python/python_plugin.c | 16 ++++++++++++++++
- plugins/python/uwsgi_python.h  | 12 ++++++++++++
+ plugins/python/python_plugin.c |   16 ++++++++++++++++
+ plugins/python/uwsgi_python.h  |   12 ++++++++++++
  2 files changed, 28 insertions(+)
 
-Index: uwsgi-2.0.28/plugins/python/python_plugin.c
+Index: uwsgi-2.0.31/plugins/python/python_plugin.c
 ===================================================================
---- uwsgi-2.0.28.orig/plugins/python/python_plugin.c
-+++ uwsgi-2.0.28/plugins/python/python_plugin.c
-@@ -1615,7 +1615,11 @@ void uwsgi_python_suspend(struct wsgi_re
+--- uwsgi-2.0.31.orig/plugins/python/python_plugin.c	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/python/python_plugin.c	2025-10-20 12:00:33.273803775 +0200
+@@ -1620,7 +1620,11 @@
  #elif defined UWSGI_PY312
  		up.current_c_recursion_remaining[wsgi_req->async_id] = tstate->c_recursion_remaining;
  		up.current_py_recursion_remaining[wsgi_req->async_id] = tstate->py_recursion_remaining;
@@ -26,7 +26,7 @@ Index: uwsgi-2.0.28/plugins/python/python_plugin.c
  #elif defined UWSGI_PY311
  		up.current_recursion_remaining[wsgi_req->async_id] = tstate->recursion_remaining;
  		up.current_frame[wsgi_req->async_id] = tstate->cframe;
-@@ -1632,7 +1636,11 @@ void uwsgi_python_suspend(struct wsgi_re
+@@ -1640,7 +1644,11 @@
  #elif defined UWSGI_PY312
  		up.current_main_c_recursion_remaining = tstate->c_recursion_remaining;
  		up.current_main_py_recursion_remaining = tstate->py_recursion_remaining;
@@ -38,7 +38,7 @@ Index: uwsgi-2.0.28/plugins/python/python_plugin.c
  #elif defined UWSGI_PY311
  		up.current_main_recursion_remaining = tstate->recursion_remaining;
  		up.current_main_frame = tstate->cframe;
-@@ -1876,7 +1884,11 @@ void uwsgi_python_resume(struct wsgi_req
+@@ -1887,7 +1895,11 @@
  #elif defined UWSGI_PY312
  		tstate->c_recursion_remaining = up.current_c_recursion_remaining[wsgi_req->async_id];
  		tstate->py_recursion_remaining = up.current_py_recursion_remaining[wsgi_req->async_id];
@@ -50,7 +50,7 @@ Index: uwsgi-2.0.28/plugins/python/python_plugin.c
  #elif defined UWSGI_PY311
  		tstate->recursion_remaining = up.current_recursion_remaining[wsgi_req->async_id];
  		tstate->cframe = up.current_frame[wsgi_req->async_id];
-@@ -1893,7 +1905,11 @@ void uwsgi_python_resume(struct wsgi_req
+@@ -1907,7 +1919,11 @@
  #elif defined UWSGI_PY312
  		tstate->c_recursion_remaining = up.current_main_c_recursion_remaining;
  		tstate->py_recursion_remaining = up.current_main_py_recursion_remaining;
@@ -62,12 +62,12 @@ Index: uwsgi-2.0.28/plugins/python/python_plugin.c
  #elif defined UWSGI_PY311
  		tstate->recursion_remaining = up.current_main_recursion_remaining;
  		tstate->cframe = up.current_main_frame;
-Index: uwsgi-2.0.28/plugins/python/uwsgi_python.h
+Index: uwsgi-2.0.31/plugins/python/uwsgi_python.h
 ===================================================================
---- uwsgi-2.0.28.orig/plugins/python/uwsgi_python.h
-+++ uwsgi-2.0.28/plugins/python/uwsgi_python.h
-@@ -29,6 +29,10 @@
- #  define UWSGI_PY313
+--- uwsgi-2.0.31.orig/plugins/python/uwsgi_python.h	2025-10-11 21:15:54.000000000 +0200
++++ uwsgi-2.0.31/plugins/python/uwsgi_python.h	2025-10-20 12:00:33.274623229 +0200
+@@ -33,6 +33,10 @@
+ #  define UWSGI_PY314
  #endif
  
 +#if (PY_VERSION_HEX >= 0x030d0000)
@@ -77,7 +77,7 @@ Index: uwsgi-2.0.28/plugins/python/uwsgi_python.h
  #if PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION < 7
  #define HAS_NOT_PyMemoryView_FromBuffer
  #endif
-@@ -183,11 +187,19 @@ struct uwsgi_python {
+@@ -193,11 +197,19 @@
  #elif defined UWSGI_PY312
  	int *current_c_recursion_remaining;
  	int *current_py_recursion_remaining;
