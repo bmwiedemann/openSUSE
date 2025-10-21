@@ -24,6 +24,15 @@ FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
     zypper -n install --no-recommends systemd systemd-default-settings-branding-openSUSE gzip openSUSE-release openSUSE-release-appliance-docker
+
+RUN set -euo pipefail; install -d -m 0755 /etc/systemd/system.conf.d/ \
+    && printf "[Manager]\nLogColor=no" > \
+        /etc/systemd/system.conf.d/01-sle-bci-nocolor.conf
+RUN set -euo pipefail; systemctl disable getty@tty1.service
+RUN set -euo pipefail; useradd --no-create-home --uid 497 systemd-coredump
+
+
+# cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
@@ -32,6 +41,8 @@ RUN set -euo pipefail; zypper -n clean -a; \
     rm -f {/target,}/var/cache/ldconfig/aux-cache; \
     command -v zypper >/dev/null 2>&1 || rm -f /var/lib/zypp/AutoInstalled
 
+# set the day of last password change to empty
+RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shadow
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.init
@@ -52,11 +63,5 @@ LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 LABEL io.artifacthub.package.logo-url="https://opensource.suse.com/bci/SLE_BCI_logomark_green.svg"
 LABEL usage="This container should only be used to build containers for daemons. Add your packages and enable services using systemctl."
 CMD ["/usr/lib/systemd/systemd"]
-
-RUN set -euo pipefail; install -d -m 0755 /etc/systemd/system.conf.d/ \
-    && printf "[Manager]\nLogColor=no" > \
-        /etc/systemd/system.conf.d/01-sle-bci-nocolor.conf
-RUN set -euo pipefail; systemctl disable getty@tty1.service
-RUN set -euo pipefail; useradd --no-create-home --uid 497 systemd-coredump
 
 HEALTHCHECK --interval=5s --timeout=5s --retries=5 CMD ["/usr/bin/systemctl", "is-active", "multi-user.target"]
