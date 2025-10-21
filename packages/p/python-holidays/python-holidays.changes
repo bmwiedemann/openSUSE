@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Oct 20 13:48:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.82
+  * Add variable weekend support
+  * Refactor Chile holidays: reduce l10n string duplication
+  * Refactor Cuba holidays: reduce l10n string duplication
+  * Refactor Eastern holidays groups
+  * Refactor Hungary holidays: reduce l10n string duplication
+  * Refactor Japan holidays: reduce l10n string duplication, en_US typo fixed
+  * Refactor Portugal holidays: consolidate holidays code
+  * Refactor South Africa holidays: move start_year to 1911,
+    capitalization fixes
+  * Refactor test_utils.py
+  * Refactor iCal exporter
+  * Refactor imports in certain countries: use TYPE_CHECKING
+  * Add Antarctica holidays
+  * Add Myanmar holidays
+  * Add North Korea holidays
+  * Update Spain holidays: add Catalan (ca) localization
+  * Fix working day test
+  * Update Afghanistan holidays: 2025 exact Islamic holidays observances
+  * Update Algeria holidays: add CHRISTIAN, HEBREW supported categories
+  * Update Brazil holidays: Republic Constitution Day typo fixed
+  * Update Djibouti holidays: change holiday groups MRO
+  * Update India holidays: add Ugadi holiday for AP, KA, TS subdivisions
+  * Update Myanmar holidays: add th l10n support
+  * Update Norway holidays: update subdivision list as per 2024
+    administrative reform
+  * Update Paraguay holidays: typo fixed, 2023-2025 government holidays
+  * Update Serbia holidays: set 2007 as start_year
+  * Update Sri Lanka holidays: testcase name typo fixed
+  * Update Switzerland holidays: standardize code comment
+  * Update Taiwan holidays: add support for 1998-2000 special weekend pattern
+  * Update Thailand holidays: add support for historical weekend patterns
+  * Update the United States holidays: add Father's Day and Mother's
+    Day for UNOFFICIAL category
+  * Add no holiday countries
+  * Replace lru_cache with cache
+
+-------------------------------------------------------------------
 Mon Sep 22 10:09:05 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.81
