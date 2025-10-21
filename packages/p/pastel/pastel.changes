@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 20 18:50:27 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.11.0:
+  + Features
+    - Added `rgb-r`, `rgb-g`, `rgb-b` formats
+    - Added support for formatting to ANSI color code numbers alone
+    - Added OKLCH color space support
+  + Fixes
+    - Fixed panic on `list -s random`
+    - Fixed incorrect RGBA format in `from_u32` documentation
+  + Improvements
+    - Minor optimizations and Clippy cleanup
+    - General updates and tweaks
+  + Other
+    - Updated version header format in `CHANGELOG.md`
+    - Added automatic man page generation with `clap_mangen`
+    - Added manpages to release
+- Removed cargo_audit from _service due that contains vendor now
+- Added manpages, completions script and CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Sep  9 19:18:59 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enable tests

@@ -1,6 +1,7 @@
 #
 # spec file for package pastel
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           pastel
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        CLI to generate, analyze, convert and manipulate colors
 License:        Apache-2.0 AND MIT
@@ -54,11 +55,24 @@ This package provides the documentation for pastel.
 %install
 install -Dm755 target/release/%{name} -t %{buildroot}%{_bindir}
 
+install -Dm644 target/release/build/%{name}*/out/*.? -t \
+    %{buildroot}%{_mandir}/man1
+install -Dm644 target/release/build/%{name}*/out/%{name}.bash -t \
+    %{buildroot}%{_datadir}/bash-completion/completions
+install -Dm644 target/release/build/%{name}*/out/%{name}.fish -t \
+    %{buildroot}%{_datadir}/fish/vendor_completions.d
+install -Dm644 target/release/build/%{name}*/out/_%{name} -t \
+    %{buildroot}%{_datadir}/zsh/site-functions
+
 %files
 %license LICENSE-MIT LICENSE-APACHE
 %{_bindir}/%{name}
+%{_mandir}/man1/%{name}*
+%{_datadir}/bash-completion/completions
+%{_datadir}/fish
+%{_datadir}/zsh
 
 %files doc
-%doc README* doc
+%doc README* doc CHANGELOG.md
 
 %changelog
