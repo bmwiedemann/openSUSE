@@ -164,8 +164,19 @@ export PTHREAD_LIBS="-lpthread"
 %if %{debug_build}
 export CXXFLAGS="%{optflags} -O0"
 %endif
+
+# The Imath ABI gets embedded into the OpenEXR C++ symbol names, and so these
+# symbols can change at a whim, but this change happens without the mandatory
+# accompanying symver definitions or SONAME bumps, and that is bad. Force-add
+# some symvers.
+#
+sym="$(pkg-config Imath --modversion | cut -d. -f1,2 | perl -pe 's{\.}{_}g')"
+sv="$PWD/exr.sym"
+echo "Imath_$sym { global: *N9Imath_$sym*; *N10Imath_$sym*; };" >"$sv"
+
 %cmake \
-  -DCMAKE_INSTALL_DOCDIR="%{_docdir}/%{name}"
+	-DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--version-script=$sv" \
+	-DCMAKE_INSTALL_DOCDIR="%{_docdir}/%{name}"
 %cmake_build
 
 %install

@@ -947,4 +947,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
 - Drop ojph-0.23.patch because no more needed. (forwarded request 1310905 from ecsos)</comment>
     <requestid>1311016</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>02cf109764feb0d41898c9eed8a95b47</srcmd5>
+    <version>3.4.1</version>
+    <time>1761038100</time>
+    <user>anag_factory</user>
+    <comment>- Add symbol versioning to OpenEXR ELF files [boo#1252012] (forwarded request 1312141 from jengelh)</comment>
+    <requestid>1312400</requestid>
+  </revision>
 </revisionlist>
