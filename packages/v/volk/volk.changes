@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 15 11:12:20 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Reenable LTO on riscv64 as gcc has been fixed
+
+-------------------------------------------------------------------
 Wed Sep 24 11:45:03 CEST 2025 - aschnell@suse.com
 
 - libboost_system was removed upstream (bsc#1249900)
