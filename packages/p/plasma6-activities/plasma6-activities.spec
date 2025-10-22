@@ -16,26 +16,26 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
+%define sover 7
 
 %define rname plasma-activities
 %bcond_without released
 Name:           plasma6-activities
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        Plasma Activities support
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  libboost_headers-devel
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
@@ -52,16 +52,16 @@ Kactivities provides an API for using and interacting with the Plasma Activities
 
 %package tools
 Summary:        Command-line tools for Plasma Activity management
-Requires:       libPlasmaActivities6 = %{version}
+Requires:       libPlasmaActivities%{sover} = %{version}
 
 %description tools
 This package provides command-line tools to manipulate Plasma Activities.
 
-%package -n libPlasmaActivities6
+%package -n libPlasmaActivities%{sover}
 Summary:        Library for Plasma Activities support
 Requires:       plasma6-activities >= %{version}
 
-%description -n libPlasmaActivities6
+%description -n libPlasmaActivities%{sover}
 Kactivities provides an API for using and interacting with the Plasma Activities Manager.
 
 %package imports
@@ -74,7 +74,7 @@ QML imports.
 
 %package devel
 Summary:        Plasma Activities support
-Requires:       libPlasmaActivities6 = %{version}
+Requires:       libPlasmaActivities%{sover} = %{version}
 Requires:       cmake(Qt6Core) >= %{qt6_version}
 
 %description devel
@@ -94,7 +94,7 @@ Development files.
 
 %fdupes %{buildroot}
 
-%ldconfig_scriptlets -n libPlasmaActivities6
+%ldconfig_scriptlets -n libPlasmaActivities%{sover}
 
 %files
 %{_kf6_debugdir}/plasma-activities.categories
@@ -103,8 +103,9 @@ Development files.
 %files tools
 %{_kf6_bindir}/plasma-activities-cli6
 
-%files -n libPlasmaActivities6
+%files -n libPlasmaActivities%{sover}
 %license LICENSES/*
+%{_kf6_libdir}/libPlasmaActivities.so.%{sover}
 %{_kf6_libdir}/libPlasmaActivities.so.*
 
 %files imports
