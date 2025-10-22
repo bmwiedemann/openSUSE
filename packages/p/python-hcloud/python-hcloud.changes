@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 21 11:19:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.9.0
+  * support python 3.14 (#566)
+  * drop support for python 3.9 (#574)
+- from version 2.8.0
+  * add new `ip_range` param to load balancer `attach_to_network` (#562)
+  * add new `ip_range` param to server `attach_to_network` (#561)
+  * support the new DNS API (#568)
+  * source_ips property is optional in firewall rule (#567)
+
+-------------------------------------------------------------------
 Mon Sep 29 06:53:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.7.0
