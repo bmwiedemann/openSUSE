@@ -1,7 +1,7 @@
 #
 # spec file for package bleachbit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 8/2011 by open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2010 - 7/2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -19,19 +19,20 @@
 
 
 %define         _desktopname       org.bleachbit.BleachBit
+# 'typelib(AppIndicator)' doesn't exist anymore. It is a fallback if AppIndicator3 can't be found (bleachbit/GUI.py:50)
+%global         __requires_exclude typelib\\(AppIndicator\\)
 Name:           bleachbit
-Version:        4.6.2
+Version:        5.0.0
 Release:        0
 Summary:        Tool for removing unnecessary files, freeing space, and maintaining privacy
 License:        GPL-3.0-only
 Group:          Productivity/File utilities
 URL:            https://www.bleachbit.org/
-Source:         https://github.com/bleachbit/bleachbit/archive/v%{version}.tar.gz
+Source:         https://github.com/bleachbit/bleachbit/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  dbus-1
 BuildRequires:  e2fsprogs
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
-BuildRequires:  kf5-filesystem
 BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -73,11 +74,15 @@ sed -i -e 's|%{_bindir}/env python.*|%{_bindir}/python3|g' \
 sed -i 's/^import mock/import unittest.mock as mock/' tests/*.py
 
 # These two use network
-sed -Ei 's/(test_download_url_to_fn|test_Chaff)/_\1/g' tests/TestChaff.py
-# These three use network
+sed -Ei 's/(test_download_url_to_fn|test_Chaff|test_have_models)/_\1/g' tests/TestChaff.py
+# These four use network
 sed -Ei 's/(test_update_url|test_update_winapp2|test_get_ip_for_url)/_\1/g' tests/TestUpdate.py
-# Test fails
-sed -Ei 's/(test_notify)/_\1/g' tests/TestGUI.py
+# These use network
+sed -Ei 's/(test_download_url_to_fn|test_fetch_url_nonretry|test_fetch_url_retry|test_get_ip_for_url)/_\1/g' tests/TestNetwork.py
+# Tests fail / use network
+sed -Ei 's/(test_notify|test_chaff)/_\1/g' tests/TestGUI.py
+# Tests fail / use network
+sed -Ei 's/(test_get_real_uid)/_\1/g' tests/TestGeneral.py
 # Test is very slow
 sed -Ei 's/(test_wipe_path)/_\1/g' tests/TestFileUtilities.py
 # Wants to mount
@@ -101,7 +106,7 @@ sed -i -e 's/^Exec=bleachbit$/Exec=xdg-su -c bleachbit/g' \
 %suse_update_desktop_file -n -i %{_desktopname}-root Utility Filesystem
 
 %find_lang %{name}
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 # Fix non-executable-script
 chmod +x %{buildroot}%{_datadir}/%{name}/CLI.py
@@ -122,6 +127,7 @@ xvfb-run make tests
 %{_datadir}/applications/%{_desktopname}-root.desktop
 %{_datadir}/metainfo/%{_desktopname}.metainfo.xml
 %{_datadir}/pixmaps/%{name}.png
+%{_datadir}/pixmaps/%{name}-indicator.svg
 %{_datadir}/polkit-1/actions/org.%{name}.policy
 
 %files lang -f %{name}.lang

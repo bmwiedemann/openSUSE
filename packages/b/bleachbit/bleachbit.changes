@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Oct 21 07:22:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Exclude 'typelib(AppIndicator)' from install requirements.
+
+-------------------------------------------------------------------
+Mon Sep  1 12:59:30 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Correct tarball URL
+
+-------------------------------------------------------------------
+Thu May 22 09:08:39 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
+
+- correct source URL and tarball name
+
+-------------------------------------------------------------------
+Sun May 11 08:56:29 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to 5.0.0:
+  * Add a display-language option in preferences (demo video)
+  * Enable closing the application via CTRL+Q or CTRL+W
+  * Make updates notifications less intrusive
+  * Fix the --debug command line switch
+  * Clean variants of Discord such as beta and snap
+  * Fix loading of personal cleaners in portable mode
+  * Improve experience on multi-user systems by ignoring other users' running processes
+  * Prevent invalid entries in the custom and whitelist tabs
+  * Improve stability significantly
+  * Linux:
+    * Clean Librewolf
+    * Clean non-beta Microsoft Edge
+    * Clean Bash's temporary files
+    * Clean Geary, the email client
+    * Improve cleaning of rotated logs
+    * Improve cleaning of broken .desktop files
+    * Add AppIndicator icon
+    * Fix CleanerML external processes with spaces
+    * Fix usage of dconf as external command
+    * Add .rpm packages for Fedora 41 and 42, and CentOS 9 Stream
+    * Add .deb packages for Ubuntu 24.10 and Ubuntu 25.04
+  * Windows:
+    * Patch DLL-related vulnerabilities (CVE-2023-47113, CVE-2025-32780)
+    * Protect MMC snap-ins (e.g., Device Manager, Computer Management)
+    * Upgrade to Python 3.11.10 and GTK 3.24.43
+    * Update NSIS installer to 3.11
+    * Add metadata such as company name to bleachbit.exe
+    * Drop support for starting on Windows XP and 7
+    * Update the Windows 10 theme by Christian Medel
+    * Fix SSL: CERTIFICATE_VERIFY_FAILED error on update checks
+  * Developers:
+    * Switch Linux CI from Travis CI to GitHub Actions
+    * Clean up the codebase extensively
+    * Overhaul RPM and DEB build scripts
+    * List of commits
+    * List of closed issues
+
+-------------------------------------------------------------------
 Tue Oct 29 17:05:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.6.2:
