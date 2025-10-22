@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 14 12:21:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.360.0 (0.36)
+   see /usr/share/doc/packages/perl-Plack-Middleware-Session/Changes
+
+  0.36  2025-07-23 15:01:17 EDT
+          - DBI Store improvements: Allow specification of id and data columns,
+            support for extending modules to set DB data columns, fix quoting issues (#48)
+
+-------------------------------------------------------------------
 Tue Jul  8 05:36:36 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.350.0 (0.35)

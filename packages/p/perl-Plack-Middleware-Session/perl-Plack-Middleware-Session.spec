@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Plack-Middleware-Session
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Plack-Middleware-Session
 Name:           perl-Plack-Middleware-Session
-Version:        0.350.0
+Version:        0.360.0
 Release:        0
-# 0.35 -> normalize -> 0.350.0
-%define cpan_version 0.35
+# 0.36 -> normalize -> 0.360.0
+%define cpan_version 0.36
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Middleware for session management
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
