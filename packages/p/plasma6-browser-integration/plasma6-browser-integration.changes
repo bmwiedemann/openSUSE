@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:10 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+
+-------------------------------------------------------------------
+Thu Oct  2 14:46:16 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+
+-------------------------------------------------------------------
+Tue Sep 23 06:39:16 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Changes since 6.4.5:
+  * Update version for new release 6.4.90
+  * media-control: Disable on nicovideo.jp to fix video playback
+  * mpris: Restore protocol for "metadata" event
+  * krunner plugins: remove unnecessary minimum letter counts
+  * action_popup: URL.origin is "null" (string) for invalid cases
+  * action_popup: executeScript returns an array of reults
+  * tabsrunner: Cache tabs until match session is over
+  * dbusrunner: Add Teardown support
+  * Remove org.kde.plasma.browser_integration.TabsRunner.xml
+  * Add option to inhibit suspend while downloading (kde#479480)
+  * Settings: Call settingsChanged only for loaded plugins
+  * DownloadJob: Remove unused enum
+  * options: Add only-show-in for Firefox
+  * mpris: Use whitelist of metadata properties
+  * mpris: Download artwork on extension side and cache it (kde#421886)
+  * mpris: Check whether metadata changed before emitting a change
+  * mpris: Make artwork sizes algorithm more spec-compliant
+  * mpris: Clear poster URL when player is gone
+  * purpose: Also hide purpose menu on focus loss
+  * KRunnerPlugins: Limit icon size to reduce DBus traffic
+  * Purpose: Make AlternativesMenu a regular window (kde#507368)
+  * Disable media controls on known conferencing pages (kde#435418,kde#435100,kde#503965)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep  9 11:28:50 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:
