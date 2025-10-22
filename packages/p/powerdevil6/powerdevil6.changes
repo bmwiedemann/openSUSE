@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:20 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+
+-------------------------------------------------------------------
+Wed Oct  8 11:39:08 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Make sure qt6qmlimport(org.kde.notification) is installed
+
+-------------------------------------------------------------------
+Thu Oct  2 14:47:26 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+  * KCM: show/hide compliance message if needed after resetting settings (kde#507352)
+
+-------------------------------------------------------------------
+Tue Sep 30 11:51:13 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to disable the wakeup count tracking for now:
+  * 0001-Disable-wakup_count-helper-for-the-time-being.patch
+
+-------------------------------------------------------------------
+Tue Sep 23 06:41:24 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Sat Sep 13 07:56:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update file list after KDE Frameworks 6.18 release

@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define rname powerdevil
 %bcond_without released
 Name:           powerdevil6
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -31,11 +31,13 @@ Release:        0
 Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-NOFEATURE-OPENSUSE
+Patch1:         0001-Disable-wakup_count-helper-for-the-time-being.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # Needed by FindLibcap.cmake
 BuildRequires:  libcap-progs
@@ -73,6 +75,8 @@ BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-dpms)
 BuildRequires:  pkgconfig(xcb-randr)
 Requires:       kf6-kidletime-plugins
+# Used by the batterymonitor applet
+Requires:       qt6qmlimport(org.kde.notification)
 #PrepareForSleep is added to systemd 198, and with Plasma 5.2, will be unconditionaly called
 Requires:       systemd >= 198
 %requires_ge    plasma6-workspace-libs
@@ -123,13 +127,11 @@ rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevilcore.so
 %doc %{_kf6_htmldir}/en/kcontrol/
 %{_kf6_applicationsdir}/kcm_mobile_power.desktop
 %{_kf6_applicationsdir}/kcm_powerdevilprofilesconfig.desktop
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/org.kde.plasma.battery.appdata.xml
-%{_kf6_appstreamdir}/org.kde.plasma.brightness.appdata.xml
-%endif
 %{_kf6_configdir}/autostart/powerdevil.desktop
 %{_kf6_dbuspolicydir}/org.kde.powerdevil.backlighthelper.conf
+%{_kf6_dbuspolicydir}/org.kde.powerdevil.chargethresholdhelper.conf
 %{_kf6_dbuspolicydir}/org.kde.powerdevil.discretegpuhelper.conf
+#%%{_kf6_dbuspolicydir}/org.kde.powerdevil.wakeupsourcehelper.conf
 %{_kf6_debugdir}/batterymonitor.categories
 %{_kf6_debugdir}/powerdevil.categories
 %{_kf6_debugdir}/brightness.categories
@@ -137,11 +139,12 @@ rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevilcore.so
 %{_kf6_libexecdir}/kauth/backlighthelper
 %{_kf6_libexecdir}/kauth/chargethresholdhelper
 %{_kf6_libexecdir}/kauth/discretegpuhelper
+#%%{_kf6_libexecdir}/kauth/wakeupsourcehelper
 %{_kf6_notificationsdir}/powerdevil.notifyrc
-%{_kf6_plasmadir}/plasmoids/org.kde.plasma.battery/
-%{_kf6_plasmadir}/plasmoids/org.kde.plasma.brightness/
 %dir %{_kf6_plugindir}/kf6/krunner
 %{_kf6_plugindir}/kf6/krunner/krunner_powerdevil.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.battery.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.brightness.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_power.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_powerdevilprofilesconfig.so
 %dir %{_kf6_plugindir}/powerdevil/
@@ -161,10 +164,11 @@ rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevilcore.so
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.powerdevil.backlighthelper.service
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.powerdevil.chargethresholdhelper.service
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.powerdevil.discretegpuhelper.service
-%{_kf6_sharedir}/dbus-1/system.d/org.kde.powerdevil.chargethresholdhelper.conf
+#%%{_kf6_sharedir}/dbus-1/system-services/org.kde.powerdevil.wakeupsourcehelper.service
 %{_kf6_sharedir}/polkit-1/actions/org.kde.powerdevil.backlighthelper.policy
 %{_kf6_sharedir}/polkit-1/actions/org.kde.powerdevil.chargethresholdhelper.policy
 %{_kf6_sharedir}/polkit-1/actions/org.kde.powerdevil.discretegpuhelper.policy
+#%%{_kf6_sharedir}/polkit-1/actions/org.kde.powerdevil.wakeupsourcehelper.policy
 %{_libexecdir}/org_kde_powerdevil
 %{_userunitdir}/plasma-powerdevil.service
 

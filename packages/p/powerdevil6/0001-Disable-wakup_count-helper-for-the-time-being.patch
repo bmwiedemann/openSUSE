@@ -1,0 +1,40 @@
+From ee9a7a4a5c21ef01e8fecc8713c43d50dd471cd6 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 30 Sep 2025 13:50:18 +0200
+Subject: [PATCH] Disable wakup_count helper for the time being
+
+Needs a security review, something for later.
+---
+ daemon/CMakeLists.txt                     | 2 +-
+ daemon/actions/bundled/suspendsession.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/daemon/CMakeLists.txt b/daemon/CMakeLists.txt
+index 0249b04c..37f1d9a6 100644
+--- a/daemon/CMakeLists.txt
++++ b/daemon/CMakeLists.txt
+@@ -170,7 +170,7 @@ kauth_install_helper_files(backlighthelper org.kde.powerdevil.backlighthelper ro
+ kauth_install_actions(org.kde.powerdevil.backlighthelper controllers/backlight_helper_actions.actions)
+ 
+ # Wakeup source helper
+-if (CMAKE_SYSTEM_NAME STREQUAL Linux)
++if (FALSE)
+     add_executable(wakeupsourcehelper wakeupsourcehelper.cpp wakeupsourcehelper.h ${CMAKE_BINARY_DIR}/daemon/powerdevil_debug.cpp)
+     target_link_libraries(wakeupsourcehelper Qt::Core KF6::AuthCore)
+     install(TARGETS wakeupsourcehelper DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
+diff --git a/daemon/actions/bundled/suspendsession.cpp b/daemon/actions/bundled/suspendsession.cpp
+index 70a424de..f948fd5a 100644
+--- a/daemon/actions/bundled/suspendsession.cpp
++++ b/daemon/actions/bundled/suspendsession.cpp
+@@ -94,7 +94,7 @@ void SuspendSession::triggerImpl(const QVariantMap &args)
+             return;
+         }
+ 
+-#ifdef Q_OS_LINUX
++#if 0
+         KAuth::Action wakeupCountAction(QStringLiteral("org.kde.powerdevil.wakeupsourcehelper.setwakeupcount"));
+         wakeupCountAction.setHelperId(QStringLiteral("org.kde.powerdevil.wakeupsourcehelper"));
+ 
+-- 
+2.51.0
+
