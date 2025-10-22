@@ -74,4 +74,15 @@
    see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes</comment>
     <requestid>1279791</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>440943a19e0b2fbea5c1a8ab6e7ccbad</srcmd5>
+    <version>0.260.0</version>
+    <time>1761128086</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.260.0 (0.26)
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes
+  0.26 2025-10-17T02:16:46Z
+      - Add an ability to accept subqueries with SQL objects #57 #59</comment>
+    <requestid>1312576</requestid>
+  </revision>
 </revisionlist>

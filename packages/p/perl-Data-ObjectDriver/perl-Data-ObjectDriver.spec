@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-ObjectDriver
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Data-ObjectDriver
 Name:           perl-Data-ObjectDriver
-Version:        0.250.0
+Version:        0.260.0
 Release:        0
-# 0.25 -> normalize -> 0.250.0
-%define cpan_version 0.25
+# 0.26 -> normalize -> 0.260.0
+%define cpan_version 0.26
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple, transparent data interface, with caching
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SI/SIXAPART/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -36,8 +37,9 @@ BuildRequires:  perl(Class::Trigger)
 BuildRequires:  perl(DBI)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
 BuildRequires:  perl(Module::Build)
-BuildRequires:  perl(Module::Build::Tiny) >= 0.35.0
+BuildRequires:  perl(Module::Build::Tiny) >= 0.35
 BuildRequires:  perl(Test::Exception)
+BuildRequires:  perl(Tie::IxHash)
 BuildRequires:  perl(version)
 Requires:       perl(Class::Accessor::Fast)
 Requires:       perl(Class::Data::Inheritable)
@@ -85,7 +87,7 @@ multiple physical databases, without your application code needing to know
 where the data is stored.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
