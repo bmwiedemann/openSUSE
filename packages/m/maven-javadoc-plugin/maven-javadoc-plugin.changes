@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 18 07:26:52 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * expected-encoding.patch
+    + fix a bug with encoding mismatch with JDK8 on Windows
+
+-------------------------------------------------------------------
 Sun Sep 21 11:40:34 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.12.0

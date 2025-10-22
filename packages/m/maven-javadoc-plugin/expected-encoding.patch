@@ -1,0 +1,161 @@
+From 2bd18138c17be16d83038ba63d7c79f4d814cea8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Fri, 17 Oct 2025 13:30:43 +0200
+Subject: [PATCH] For reading and writing of data use the encoding expected by
+ Javadoc
+
+For reading and writing of data, Javadoc does expect a certain
+encoding dependending on which version of JDK we use. So we have no
+choice but to actually use that one. Writing only in UTF-8, will
+always fail in some corner cases.
+---
+ .../plugins/javadoc/AbstractJavadocMojo.java  | 21 ++++---------------
+ .../maven/plugins/javadoc/StaleHelper.java    | 21 ++-----------------
+ .../maven/plugins/javadoc/SystemUtils.java    | 19 +++++++++++++++++
+ 3 files changed, 25 insertions(+), 36 deletions(-)
+
+diff --git a/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java b/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java
+index d00714cf3..1981bed20 100644
+--- a/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java
++++ b/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java
+@@ -4149,14 +4149,8 @@ private void addCommandLineOptions(Commandline cmd, List<String> arguments, File
+         StringBuilder options = new StringBuilder();
+         options.append(StringUtils.join(arguments.iterator(), SystemUtils.LINE_SEPARATOR));
+ 
+-        Charset outputFileEncoding;
+-        if (JAVA_VERSION.isAtLeast("9") && JAVA_VERSION.isBefore("12")) {
+-            outputFileEncoding = StandardCharsets.UTF_8;
+-        } else {
+-            outputFileEncoding = Charset.defaultCharset();
+-        }
+         try {
+-            Files.write(optionsFile.toPath(), Collections.singleton(options), outputFileEncoding);
++            Files.write(optionsFile.toPath(), Collections.singleton(options), SystemUtils.getExpectedEncoding());
+         } catch (IOException e) {
+             throw new MavenReportException(
+                     "Unable to write '" + optionsFile.getName() + "' temporary file for command execution", e);
+@@ -4194,16 +4188,8 @@ private void addCommandLineArgFile(Commandline cmd, File javadocOutputDirectory,
+             quotedFiles.add(JavadocUtil.quotedPathArgument(file));
+         }
+ 
+-        Charset cs;
+-        if (JavaVersion.JAVA_SPECIFICATION_VERSION.isAtLeast("9")
+-                && JavaVersion.JAVA_SPECIFICATION_VERSION.isBefore("12")) {
+-            cs = StandardCharsets.UTF_8;
+-        } else {
+-            cs = Charset.defaultCharset();
+-        }
+-
+         try {
+-            Files.write(argfileFile.toPath(), quotedFiles, cs);
++            Files.write(argfileFile.toPath(), quotedFiles, SystemUtils.getExpectedEncoding());
+         } catch (IOException e) {
+             throw new MavenReportException(
+                     "Unable to write '" + argfileFile.getName() + "' temporary file for command execution", e);
+@@ -5005,7 +4991,8 @@ private boolean isUpToDate(Commandline cmd) throws MavenReportException {
+             Path cacheData = staleDataPath.toPath();
+             List<String> prvdata;
+             if (Files.isRegularFile(cacheData)) {
+-                prvdata = Files.lines(cacheData, StandardCharsets.UTF_8).collect(Collectors.toList());
++                prvdata = Files.lines(cacheData, SystemUtils.getExpectedEncoding())
++                        .collect(Collectors.toList());
+             } else {
+                 prvdata = null;
+             }
+diff --git a/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java b/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java
+index 6658a7e20..0f84e72f2 100644
+--- a/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java
++++ b/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java
+@@ -20,8 +20,6 @@
+ 
+ import java.io.File;
+ import java.io.IOException;
+-import java.nio.charset.Charset;
+-import java.nio.charset.StandardCharsets;
+ import java.nio.file.DirectoryStream;
+ import java.nio.file.Files;
+ import java.nio.file.Path;
+@@ -31,7 +29,6 @@
+ import java.util.List;
+ 
+ import org.apache.maven.reporting.MavenReportException;
+-import org.codehaus.plexus.languages.java.version.JavaVersion;
+ import org.codehaus.plexus.util.cli.Commandline;
+ 
+ /**
+@@ -40,20 +37,6 @@
+  */
+ public class StaleHelper {
+ 
+-    /**
+-     * Compute the encoding of the stale javadoc
+-     *
+-     * @return the encoding of the stale data
+-     */
+-    private static Charset getDataCharset() {
+-        if (JavaVersion.JAVA_SPECIFICATION_VERSION.isAtLeast("9")
+-                && JavaVersion.JAVA_SPECIFICATION_VERSION.isBefore("12")) {
+-            return StandardCharsets.UTF_8;
+-        } else {
+-            return Charset.defaultCharset();
+-        }
+-    }
+-
+     /**
+      * Compute the data used to detect a stale javadoc
+      *
+@@ -72,7 +55,7 @@ public static List<String> getStaleData(Commandline cmd) throws MavenReportExcep
+             for (String arg : args) {
+                 if (arg.startsWith("@")) {
+                     String name = arg.substring(1);
+-                    options.addAll(Files.readAllLines(dir.resolve(name), getDataCharset()));
++                    options.addAll(Files.readAllLines(dir.resolve(name), SystemUtils.getExpectedEncoding()));
+                     ignored.add(name);
+                 }
+             }
+@@ -123,7 +106,7 @@ public static void writeStaleData(Commandline cmd, Path path) throws MavenReport
+         try {
+             List<String> curdata = getStaleData(cmd);
+             Files.createDirectories(path.getParent());
+-            Files.write(path, curdata, getDataCharset());
++            Files.write(path, curdata, SystemUtils.getExpectedEncoding());
+         } catch (IOException e) {
+             throw new MavenReportException("Error checking stale data", e);
+         }
+diff --git a/src/main/java/org/apache/maven/plugins/javadoc/SystemUtils.java b/src/main/java/org/apache/maven/plugins/javadoc/SystemUtils.java
+index d17addba9..a10c0b138 100644
+--- a/src/main/java/org/apache/maven/plugins/javadoc/SystemUtils.java
++++ b/src/main/java/org/apache/maven/plugins/javadoc/SystemUtils.java
+@@ -19,6 +19,10 @@
+ package org.apache.maven.plugins.javadoc;
+ 
+ import java.io.File;
++import java.nio.charset.Charset;
++import java.nio.charset.StandardCharsets;
++
++import org.codehaus.plexus.languages.java.version.JavaVersion;
+ 
+ /**
+  * Contains several OS-specific methods from Commons-Lang3's SystemUtils. We don't want to use that class because it
+@@ -146,6 +150,21 @@ public static File getJavaHome() {
+         return new File(System.getProperty(JAVA_HOME_KEY));
+     }
+ 
++    /**
++     * Compute the encoding that Javadoc expects for reading and writing of data
++     *
++     * @return the expected encoding
++     * @since 3.12.1
++     */
++    public static Charset getExpectedEncoding() {
++        if (JavaVersion.JAVA_SPECIFICATION_VERSION.isAtLeast("9")
++                && JavaVersion.JAVA_SPECIFICATION_VERSION.isBefore("12")) {
++            return StandardCharsets.UTF_8;
++        } else {
++            return Charset.defaultCharset();
++        }
++    }
++
+     /**
+      * <p>
+      * Gets a System property, defaulting to {@code null} if the property cannot be read.

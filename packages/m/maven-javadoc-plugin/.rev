@@ -193,4 +193,12 @@ put into adi:2</comment>
     <comment>3.12.0</comment>
     <requestid>1306377</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>0099808082fb4588c11bd5f4b8027a20</srcmd5>
+    <version>3.12.0</version>
+    <time>1761128111</time>
+    <user>anag_factory</user>
+    <comment>Fix for encoding mismatch</comment>
+    <requestid>1312806</requestid>
+  </revision>
 </revisionlist>
