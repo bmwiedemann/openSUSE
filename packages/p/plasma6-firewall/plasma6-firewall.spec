@@ -16,21 +16,21 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define rname plasma-firewall
 
 %bcond_without released
 Name:           plasma6-firewall
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        Config Module for the System Firewall
 License:        GPL-2.0-only OR GPL-3.0-only
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source0:        %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
