@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 21 07:38:25 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Upgrade to Elixir 1.19.1
+  * Changelog available at https://hexdocs.pm/elixir/1.19.1/changelog.html
+
+-------------------------------------------------------------------
 Fri Oct 17 10:09:35 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Remove NOTICE file from the spec
