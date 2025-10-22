@@ -24,7 +24,7 @@
 %endif
 
 Name:           nextcloud-desktop
-Version:        3.17.3
+Version:        4.0.0
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -33,8 +33,6 @@ URL:            https://nextcloud.com/
 Source:         https://github.com/nextcloud/desktop/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        sysctl-sync-inotify.conf
 Source2:        README.vfs.md
-# PATCH-FIX-UPSTREAM nextcloud-qt610.patch
-Patch0:         nextcloud-qt610.patch
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel
 BuildRequires:  gobject-introspection-devel
@@ -80,8 +78,8 @@ Recommends:     cloudproviders-extension-nextcloud = %{version}
 Requires:       %{soname}%{sover} = %{version}
 Requires:       nextcloud-cli = %{version}
 Requires:       qt6-declarative-imports
-Requires:       qt6-qt5compat-imports
 Requires:       qt6-multimedia-imports
+Requires:       qt6-qt5compat-imports
 Provides:       nextcloud-client = %{version}
 Obsoletes:      nextcloud-client < %{version}
 Provides:       nextcloud-client-lang = %{version}

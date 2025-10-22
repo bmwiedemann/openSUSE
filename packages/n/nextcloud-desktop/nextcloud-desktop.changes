@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Oct 21 20:03:17 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to 4.0.0:
+  * fix(logger): Set narrower permissions on
+    temporaryFolderLogDirPath (gh#nextcloud/desktop#6533)
+  * fix(db): optimize SQL qeury for updating encryption status
+    (gh#nextcloud/desktop#8506)
+  * chore(localization): File Provider Localization
+    (gh#nextcloud/desktop#8507)
+  * fix(discovery): check for db cached folder quota during
+    discovery for some items. (gh#nextcloud/desktop#8307)
+  * chore(logging): Extended logged information about file provider
+    domains. (gh#nextcloud/desktop#8503)
+  * chore(localization): Additional Localizations in File Provider
+    (gh#nextcloud/desktop#8514)
+  * chore(versioning): Added Package.resolved of
+    NextcloudIntegration project to version control.
+    (gh#nextcloud/desktop#8504)
+  * feat(translations): checks Qt managed translations for tripple
+    dots instead of elipsis (gh#nextcloud/desktop#8522)
+  * fix(wizard): show VFS option during account setup when using a
+    VFS build (gh#nextcloud/desktop#8515)
+  * chore(logging): Enable Log Output in Xcode Console
+    (gh#nextcloud/desktop#8497)
+  * fix(l10n): Don't sync xcstrings for now
+    (gh#nextcloud/desktop#8527)
+  * chore(localization): Add proper translations for File Provider
+    extensions (gh#nextcloud/desktop#8531)
+  * chore(cleanup): remove useless "else if"
+    (gh#nextcloud/desktop#8533)
+  * fix(filesystem): catch exceptions when using std::filesystem
+    APIs (gh#nextcloud/desktop#8525)
+  * fix(errors): Make http error messages user friendly
+    (gh#nextcloud/desktop#8394)
+  * chore(build): fix compilation by using an existing method
+    (gh#nextcloud/desktop#8542)
+  * chore(ci): force use of self hosted runners for sonarcloud
+    workflow (gh#nextcloud/desktop#8541)
+  * fix(errors): Display user friendly messages when errors occur.
+    (gh#nextcloud/desktop#8551)
+  * chore(localization): Delete AI File Provider Translations
+    (gh#nextcloud/desktop#8556)
+  * chore(deps): Bump actions/cache from 4.2.3 to 4.2.4
+    (gh#nextcloud/desktop#8564)
+  * chore(deps): Bump actions/checkout from 4.2.2 to 5.0.0
+    (gh#nextcloud/desktop#8565)
+  * fix(folder): use the remotePath for the sidebar display name
+    (gh#nextcloud/desktop#8562)
+  * chore(distros): Remove Debian Bullseye, add Trixie
+    (gh#nextcloud/desktop#8569)
+  * fix(quota): return unlimited free space for type changes.
+    (gh#nextcloud/desktop#8561)
+  * fix(cfapi): set up connections before requesting hydration
+    (gh#nextcloud/desktop#8582)
+  * fix(cfapi): only log process info if it's present
+    (gh#nextcloud/desktop#8580)
+  * fix(i18n): Fix grammar (gh#nextcloud/desktop#8584)
+  * feat(sync): set LocalizedResourceName for sync folders.
+    (gh#nextcloud/desktop#8585)
+  * chore(deps): Bump cpp-linter/cpp-linter-action from 2.15.0 to
+    2.16.0 (gh#nextcloud/desktop#8618)
+  * fix(wizard): avoid creating useless folders when setting up a
+    VFS connection (gh#nextcloud/desktop#8624)
+  * fix(FileProviderExt): do not report syncing state when trying
+    to delete trash items (gh#nextcloud/desktop#8616)
+  * fix(i18n): Use SI symbol for minute (gh#nextcloud/desktop#8600)
+  * feat(cmake): Add CMake option to disable account migration
+    (gh#nextcloud/desktop#8633)
+  * fix(generalsettings): change remote pollinterval
+    spinBox-minimum from 30 to 5 seconds, to align with configfile
+    (gh#nextcloud/desktop#8641)
+  * feat(wizard): allow to set proxy settings when setting up a new
+    account (gh#nextcloud/desktop#8623)
+  * feat(userstatus): add Busy user status support with dedicated
+    icon and server capability detection (gh#nextcloud/desktop#8579)
+- Remove nextcloud-qt610.patch as it is no longer needed in 4.0.0
+
+-------------------------------------------------------------------
 Sun Oct 19 12:35:28 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:
