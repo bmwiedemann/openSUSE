@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-avro
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        A serialization and RPC framework for Python
 License:        Apache-2.0

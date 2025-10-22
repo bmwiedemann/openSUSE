@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 21 08:12:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.12.1
+  * AVRO-4104: Drop support for Python 3.7 (#3276)
+  * Refactor `_skip_sync` for Improved Readability & Performance (#3343)
+  * Fix mypy test (#3397)
+  * Support new python versions 3.12 and 3.13
+
+-------------------------------------------------------------------
 Tue Aug 26 12:02:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only
