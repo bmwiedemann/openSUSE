@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:03 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+
+-------------------------------------------------------------------
+Thu Oct  2 14:45:25 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+
+-------------------------------------------------------------------
+Tue Sep 23 06:38:55 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-Revert-hdrcalibrator-install-the-image-instead-of-in.patch
+
+-------------------------------------------------------------------
 Tue Sep  9 11:28:03 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:

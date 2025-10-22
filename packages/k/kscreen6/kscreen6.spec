@@ -18,13 +18,13 @@
 
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.private\\.kscreen.*
 
-%global kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define rname kscreen
 %bcond_without released
 Name:           kscreen6
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -33,15 +33,11 @@ Release:        0
 Summary:        Screen management software by KDE
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# Converted using 'magick hdrcalibrator/ui/images/graz.{png,avif}' to save some space: 31MiB -> 262KiB
-Source3:        graz.avif
-# PATCH-FIX-UPSTREAM we use an .avif like in the master branch
-Patch1:         0001-Revert-hdrcalibrator-install-the-image-instead-of-in.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
@@ -85,9 +81,6 @@ KScreen handles screen management for both X11 and Wayland sessions, including r
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
-cp %{SOURCE3} hdrcalibrator/ui/images/
-
-sed -i 's/graz.png/graz.avif/' hdrcalibrator/CMakeLists.txt hdrcalibrator/ui/Main.qml
 
 %build
 %cmake_kf6
