@@ -306,4 +306,19 @@
      Diab Jerius++</comment>
     <requestid>1310534</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>9df17a915c0d26b59dad148082207a69</srcmd5>
+    <version>2.008004</version>
+    <time>1761128084</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.008004
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+  2.008004	2025-10-17
+   [ Documentation ]
+   - Type::Tiny pod syntax fix.
+   [ Other ]
+   - Added: Type::Tiny::Duck (used by HasMethods) now includes a
+     new_intersection constructor.</comment>
+    <requestid>1312575</requestid>
+  </revision>
 </revisionlist>
