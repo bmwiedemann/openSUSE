@@ -264,4 +264,12 @@
     <comment>- Update file list after KDE Frameworks 6.18 release</comment>
     <requestid>1304508</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7248e68a3b58f3f03ac4038dd199f7b8</srcmd5>
+    <version>6.5.0</version>
+    <time>1761128006</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1312731 from Vogtinator)</comment>
+    <requestid>1312773</requestid>
+  </revision>
 </revisionlist>
