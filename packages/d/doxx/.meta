@@ -1,0 +1,17 @@
+<package name="doxx" project="openSUSE:Factory">
+  <title>Terminal document viewer for .docx files</title>
+  <description>A fast, terminal-native document viewer for Word files.
+View, search, and export .docx documents without leaving
+your command line.
+
+Features:
+ * Beautiful terminal rendering with formatting, tables, and lists.
+ * Fast search with highlighting
+ * Smart tables with proper alignment and Unicode borders
+ * Copy to clipboard — grab content directly from the terminal
+ * Export formats — Markdown, CSV, JSON, plain text,
+   ANSI-colored output.
+ * Terminal images for Kitty, iTerm2, WezTerm.
+ * Color support — see Word document colors in your terminal.</description>
+  <url>https://bgreenwell.github.io/doxx/doxx/</url>
+</package>
