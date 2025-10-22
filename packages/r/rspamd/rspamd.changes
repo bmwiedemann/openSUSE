@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 14 19:48:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.13.2
+  - [Feature] Add user/domain context support for LLM-based
+    classification by @vstakhov in #5647
+  - Implement Metadefender hash lookup module by @vstakhov in #5656
+  - Add vault kv version 2 support by @vstakhov in #5654
+  - Fix duplicate symbol in once_received plugin by @vstakhov in
+    #5658
+  - [Fix] Enforce server-controlled HTTP map refresh intervals by
+    @vstakhov in #5660
+  - [Fix] Propagate unused Redis Sentinel options by @fatalbanana
+    in #5597
+  - Fix rspamd dkim key loading for ed25519 by @vstakhov in #5664
+  - Fix dkim relaxed bodyhash calculation for spaces by @vstakhov
+    in #5662
+  - Feat: Added rua address exclusion in dmarc.lua by @croessner in
+    #5653
+  - [Feature] Add separate encryption keys for read/write
+    operations in fuzzy_check by @vstakhov in #5665
+
+-------------------------------------------------------------------
 Tue Sep 30 10:36:54 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.13.1

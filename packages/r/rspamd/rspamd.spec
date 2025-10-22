@@ -60,7 +60,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.13.1
+Version:        3.13.2
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -382,6 +382,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/local.d/worker-normal.inc
 %config(noreplace) %{_sysconfdir}/rspamd/local.d/worker-proxy.inc
 %config(noreplace) %{_sysconfdir}/rspamd/local.d/module.conf.example
+%config(noreplace) %{_sysconfdir}/rspamd/local.d/antivirus.conf.example
 
 %dir %{_sysconfdir}/rspamd/lua.local.d/
 %config(noreplace) %{_sysconfdir}/rspamd/lua.local.d/module.lua.example
@@ -566,6 +567,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lua_bayes_redis.lua
 %{_datadir}/rspamd/lualib/lua_cache.lua
 %{_datadir}/rspamd/lualib/llm_common.lua
+%{_datadir}/rspamd/lualib/llm_context.lua
 %{_datadir}/rspamd/lualib/lua_cta.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_content
@@ -607,6 +609,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lua_scanners/spamassassin.lua
 %{_datadir}/rspamd/lualib/lua_scanners/vadesecure.lua
 %{_datadir}/rspamd/lualib/lua_scanners/virustotal.lua
+%{_datadir}/rspamd/lualib/lua_scanners/metadefender.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_selectors
 %{_datadir}/rspamd/lualib/lua_selectors/common.lua
