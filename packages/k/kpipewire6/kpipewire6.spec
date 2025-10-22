@@ -16,8 +16,8 @@
 #
 
 
-%global kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define _sover 6
 %define rname kpipewire
@@ -27,18 +27,18 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpipewire6
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        PipeWire integration for KDE Plasma
 License:        LGPL-2.0-only AND LGPL-3.0-only
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM 0001-Fix-build-with-ffmpeg-8.0.patch -- Fix build with ffmpeg 8.0
-Patch0:         0001-Fix-build-with-ffmpeg-8.0.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-ffmpeg-8.patch
 BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
@@ -48,6 +48,7 @@ BuildRequires:  cmake(KWayland) >= %{_plasma6_version}
 BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6OpenGL) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QmlIntegration) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickTest) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
@@ -105,6 +106,7 @@ Requires:       kpipewire6-imports = %{version}
 Requires:       libKPipeWire%{_sover} = %{version}
 Requires:       libKPipeWireDmaBuf%{_sover} = %{version}
 Requires:       libKPipeWireRecord%{_sover} = %{version}
+Requires:       cmake(Qt6QmlIntegration) >= %{qt6_version}
 Requires:       pkgconfig(epoxy)
 Requires:       pkgconfig(libpipewire-0.3)
 Conflicts:      kpipewire-devel
