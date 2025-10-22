@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:12:57 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+
+-------------------------------------------------------------------
+Thu Oct  2 14:44:39 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+  * Add new Orionids wallpaper for 6.5
+
+-------------------------------------------------------------------
+Tue Sep 23 06:38:34 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Changes since 6.4.5:
+  * Update version for new release 6.4.90
+  * Use correct colors for toolbar and headers if high-contrast is active
+  * Watch for ApplicationPaletteChange
+  * .gitignore ignore CMakeLists.txt.user. Sync with kconfig/.gitignore
+  * ComboBox: detect empty combobox on QtQuickControls as well
+  * kdecoration: Remove unnecessary alignment properties
+  * kdecoration: Arrange General and Shadow options in a form layout
+  * kdecoration: Re-phrase "rounded corners" option text
+  * kdecoration: Make "rounded corners" option stop forcing no borders
+  * ci: Remove FreeBSD and Windows Qt5 pipelines
+  * kdecoration: Turn rounded bottom corners on for the evaluation period
+  * kdecoration: Port to KDecoration3::BorderOutline
+  * kdecoration: Add support for rounded bottom corners
+  * kstyle: Draw KIconButton as icon with edit overlay
+  * kstyle: Add _kde_round_button property for drawing circular buttons
+  * kstyle: Register Qt Quick Controls with animations
+  * kstyle: Use styleObject for widgetStateEngine in CheckBox/RadioButton
+  * kstyle/animations: Use QObject as base type rather than QWidget
+  * kstyle: Fix radio button animation
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep  9 11:27:23 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:
