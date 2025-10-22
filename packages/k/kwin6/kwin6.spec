@@ -19,8 +19,8 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.KWin\\.Effect\\.WindowView.*
 
-%global kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define rname   kwin
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -29,20 +29,28 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+# GCC 13 doesn't know std::ranges::to
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc14-PIE
+BuildRequires:  gcc14-c++
+%endif
+%if 0%{?suse_version} == 1600
+BuildRequires:  gcc15-PIE
+BuildRequires:  gcc15-c++
+%endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  libcap-progs
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel >= %{qt6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
@@ -73,6 +81,7 @@ BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KGlobalAccelD) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(KNightTime) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KWayland) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaActivities) >= %{_plasma6_bugfix}
@@ -95,7 +104,6 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libcanberra)
-BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info) >= 0.2.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.116
 BuildRequires:  pkgconfig(libeis-1.0)
@@ -115,7 +123,6 @@ BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb) >= 1.10
 BuildRequires:  pkgconfig(xcb-composite) >= 1.10
 BuildRequires:  pkgconfig(xcb-cursor)
-BuildRequires:  pkgconfig(xcb-damage) >= 1.10
 BuildRequires:  pkgconfig(xcb-dri3) >= 1.10
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
@@ -195,7 +202,16 @@ This package provides development files.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6
+%cmake_kf6 \
+%if 0%{?suse_version} == 1500
+  -DCMAKE_C_COMPILER:STRING=gcc-14 \
+  -DCMAKE_CXX_COMPILER:STRING=g++-14
+%endif
+%if 0%{?suse_version} == 1600
+  -DCMAKE_C_COMPILER:STRING=gcc-15 \
+  -DCMAKE_CXX_COMPILER:STRING=g++-15
+%endif
+%{nil}
 
 %kf6_build
 
@@ -243,16 +259,18 @@ This package provides development files.
 %{_kf6_applicationsdir}/kcm_virtualkeyboard.desktop
 %{_kf6_applicationsdir}/org.kde.kwin.killer.desktop
 %{_kf6_bindir}/kwin_wayland_wrapper
+%{_kf6_bindir}/kwindowprop
 %{_kf6_configkcfgdir}/*
 %{_kf6_debugdir}/org_kde_kwin.categories
 %{_kf6_iconsdir}/hicolor/*/apps/kwin.png
 %{_kf6_iconsdir}/hicolor/scalable/apps/kwin.svgz
 %{_kf6_knsrcfilesdir}/*.knsrc
-%{_kf6_libdir}/kconf_update_bin/kwin5_update_default_rules
 %{_kf6_libdir}/kconf_update_bin/kwin-6.0-delete-desktop-switching-shortcuts
 %{_kf6_libdir}/kconf_update_bin/kwin-6.0-remove-breeze-tabbox-default
 %{_kf6_libdir}/kconf_update_bin/kwin-6.0-reset-active-mouse-screen
 %{_kf6_libdir}/kconf_update_bin/kwin-6.1-remove-gridview-expose-shortcuts
+%{_kf6_libdir}/kconf_update_bin/kwin-6.5-showpaint-changes
+%{_kf6_libdir}/kconf_update_bin/kwin5_update_default_rules
 %{_kf6_libdir}/libkcmkwincommon.so.*
 %{_kf6_notificationsdir}/kwin.notifyrc
 %dir %{_kf6_plugindir}/kwin
@@ -263,20 +281,16 @@ This package provides development files.
 %{_kf6_plugindir}/kwin/effects/configs/kwin_diminactive_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_glide_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_hidecursor_config.so
-%{_kf6_plugindir}/kwin/effects/configs/kwin_invert_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_magiclamp_config.so
-%{_kf6_plugindir}/kwin/effects/configs/kwin_magnifier_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_mouseclick_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_mousemark_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_overview_config.so
-%{_kf6_plugindir}/kwin/effects/configs/kwin_showpaint_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_slide_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_thumbnailaside_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_tileseditor_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_trackmouse_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_windowview_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_wobblywindows_config.so
-%{_kf6_plugindir}/kwin/effects/configs/kwin_zoom_config.so
 %dir %{_kf6_plugindir}/kwin/plugins
 %{_kf6_plugindir}/kwin/plugins/BounceKeysPlugin.so
 %{_kf6_plugindir}/kwin/plugins/KeyNotificationPlugin.so
@@ -289,6 +303,7 @@ This package provides development files.
 %if 0%{?suse_version} > 1500
 %{_kf6_plugindir}/kwin/plugins/screencast.so
 %endif
+%{_kf6_plugindir}/kwin/plugins/screenshot.so
 %{_kf6_plugindir}/kwin/plugins/TouchpadShortcutsPlugin.so
 %dir %{_kf6_plugindir}/kf6/packagestructure
 %{_kf6_plugindir}/kf6/packagestructure/kwin_aurorae.so

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:05 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Oct  2 14:43:44 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+  * effects/overview: fix behavior when deskotp grid doesn't layout (kde#510056)
+  * backends/wayland: Fix render time query with sw renderer
+  * kcms/tabbox: Hide bottom separator if KNS is disabled
+  * autotests: Check that a drag will be cancelled when the current touch sequence is cancelled
+  * [plugins/buttonsrebindfilter] Fix infinite loop when walking config group hierarchy
+  * ButtonsRebindsFilter: Fix my bad ring math, allow completing a circle
+  * ButtonsRebindsFilter: Remove assumption about how config keys are stored
+  * Make sure XdgToplevelWindow always has an icon
+  * core: Add dropped assert in GraphicsBuffer destructor
+  * wayland: Use std::make_shared to allocate sync release points
+  * core: Fix GraphicsBufferRef copy constructor
+  * xwayland: remove warning about not finding matching X11 output
+  * autotests: Rewrite xwayland selection test
+  * autotests: Add primary selection wrappers
+  * autotests: Include mime types in TARGETS in testXwaylandDnd
+  * tabbox: unify on "Peek at Desktop" name (kde#507401)
+  * Revert "wayland: Check current drag and drop action"
+  * autotests/integration: make the sticky keys test more complete
+  * inputmethod: Fix printing hexadecimal unicode code points
+  * wayland_server: re-enable wl_drm by default
+  * Adjust to activities changes
+  * autotests/integration: add test for fractional scaling glitches (kde#509165)
+  * Fix a few potential missing opportunity that input method active state is not synced. (kde#506095)
+  * Add a small helper around queryWindowInfo
+  * Drop unused xcb-util-cursor dependency
+
+-------------------------------------------------------------------
+Tue Sep 23 06:36:57 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  9 11:26:15 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:
