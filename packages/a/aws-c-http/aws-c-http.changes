@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 21 10:10:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.6
+  * Add no_proxy_hosts configuration to proxy options/config
+    by @alextwoods in (#532)
+- from version 0.10.5
+  * Change stale issue and discussion handling to run once a week
+    by @DmitriyMusatkin in (#529)
+  * Fix warnings found by the Undefined Behavior Sanitizer
+    by @bjosv in (#530)
+  * Move away from https://postman-echo.com by @TingDaoK in (#533)
+
+-------------------------------------------------------------------
 Tue Jul 22 08:32:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.10.4
