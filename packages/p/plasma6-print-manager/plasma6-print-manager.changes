@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:14 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+  * libkcups: Fix call to datetime create from CUPS (kde#427632)
+
+-------------------------------------------------------------------
+Thu Oct  2 14:46:43 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+  * kded: Refactor sanity check on the marker levels/boundaries
+
+-------------------------------------------------------------------
+Tue Sep 23 06:39:35 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Changes since 6.4.5:
+  * Update version for new release 6.4.90
+  * kded: Fix marker levels check when there is only one marker
+  * kcm: Don't try to set marker levels model for printer class (group)
+  * libkcups: Fix marker levels in printer model for a single marker (kde#509307)
+  * libkcups: Remove version and rename to "libkcups"
+  * kcm/qml: Use proper operators
+  * kded: Make marker level check work only on job-created
+  * kded,docs: Make the kded module description more accurate
+  * kded: Minor clean ups
+  * kded: Add marker levels checker class
+  * Drop reference to nonexistant BUILD_QT5 option in README
+  * kcm/qml: Modernize qml for qualified property access
+  * kcm/qml: Minor clean-up of "find printer" placeholder messages
+  * kcm/qml: Adapt modules to use FindPrinter module as a kcm page
+  * kcm/qml: Clean up device components formatting and sizing for kcm page
+  * kcm/qml: Port FindPrinter module from dialog to KCM page (kde#506630)
+  * libkcups/DeviceModel: Remove line breaks from device descriptions
+  * plasmoid: Use new "plasma_add_applet" infrastructure
+  * kcm: Handle the CUPS service being unavailable
+  * configure-printer: Fix dbus activate on helper dialog
+  * [libkcups/printqueue/config] Remove unneeded dependencies
+  * plasmoid: Make configure action use KCM configure
+  * Drop no longer necessary KF6IconThemes dependency
+  * RequestActivate on the printer manager helper dialog windows
+  * update version for new release
+
+-------------------------------------------------------------------
 Sat Sep 13 07:53:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update file list after KDE Frameworks 6.18 release
