@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 21 12:16:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Build the clang-tidy plugin. The required headers are no longer deleted.
+
+-------------------------------------------------------------------
 Sat Sep  6 08:45:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.16

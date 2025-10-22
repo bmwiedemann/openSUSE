@@ -325,4 +325,12 @@
     <comment>Update to 1.16</comment>
     <requestid>1302998</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>e2e3e39ac9c481c4c7f77b2226955926</srcmd5>
+    <version>1.16.0</version>
+    <time>1761128153</time>
+    <user>anag_factory</user>
+    <comment>- Build the clang-tidy plugin. The required headers are no longer deleted.</comment>
+    <requestid>1312829</requestid>
+  </revision>
 </revisionlist>

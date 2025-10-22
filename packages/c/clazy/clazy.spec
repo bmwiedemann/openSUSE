@@ -59,10 +59,10 @@ sed -i "s#CLANGXX:-clang++#CLANGXX:-clang++-%{_llvm_sonum}#" clazy.cmake
 export CXX=g++-14
 %endif
 
-# ClangTidyModule.h doesn't exist in the openSUSE package
+# The clang-tidy plugin must be built without '-Wl,--no-undefined'
 %cmake \
   -DCMAKE_INSTALL_DOCDIR=%{_datadir}/doc/clazy \
-  -DCLAZY_BUILD_CLANG_TIDY:BOOL=FALSE
+  -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
 
 %cmake_build
 
@@ -79,6 +79,7 @@ sed -i 's#%{_bindir}/env sh$#/bin/sh#' %{buildroot}%{_bindir}/clazy
 %{_bindir}/clazy-standalone
 %{_datadir}/metainfo/org.kde.clazy.metainfo.xml
 %{_libdir}/ClazyPlugin.so
+%{_libdir}/ClazyClangTidy.so
 %{_mandir}/man1/clazy.1%{?ext_man}
 
 %changelog
