@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:10 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+  * Do not cover Dashboard's grid scrollbar with MouseArea (kde#447923)
+  * FolderView: Disable mouse interaction in edit mode
+  * FolderView: Fix regression with loadAndApplyPositionsConfig desync
+  * Positioner: Fix the order of operations
+  * FolderView: Update perStripe on relativeScreenRect changes
+  * FolderView: Disallow closing popup when creating new item
+  * applets/kickoff: Handle Enter/Return on leave buttons
+  * Make cell height in widget explorer as tall as the tallest element within it (kde#434814)
+  * Allow Dashboard to pre-select system settings result (kde#506279)
+  * FolderView: Fix unqualified access warnings
+  * FolderView: Use let/const instead of var
+
+-------------------------------------------------------------------
+Thu Oct  2 14:46:21 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+  * Hide Dashboard when it loses focus (kde#474031)
+  * Update wallpaper previews
+  * applet/taskmanager: replace & with && in the context menu actions (kde#510083)
+  * Update TimezoneSelector selection when the timezone is reset through the KCM (kde#505916)
+  * Add new Orionids wallpaper for 6.5
+  * applets/{kicker,kickoff}: React to runningActivities() being removed (kde#510070)
+  * Emojier: Also search english fallback dict
+  * desktop/main.qml: Return early on null container when dragging (kde#509967)
+  * Fix CI branch for plasma-actvities(-stats)
+  * FolderItemDelegate and main: Fix various warnings
+  * FolderViewLayer: Fix label portruding
+  * FolderView: Clear press state when applet is disabled (kde#490677)
+  * FolderView: Dont start rubberband when dragging scrollbar (kde#468359)
+  * FolderView: Stop hovering items on mouse leave
+  * FolderView: Use let instead of var, check for item existence (kde#490677)
+  * Drop UI for showing stopped activities
+  * kaccess: Fix screen reader sometimes not being able to be toggled off anymore (kde#505568)
+  * applets/Kickoff: fix menu with long touch (kde#509898)
+  * kcms/mouse: Make button rebinding work again (kde#506342)
+  * Fix position and size of activity widget on large panels (kde#490880)
+  * Avoid layout mirroring in panel settings preview graphics (kde#506632)
+  * emojier: make .desktop file executable in kglobalaccel dir
+  * [kcms/activities] Set componentDisplayName for global shortcut
+
+-------------------------------------------------------------------
+Tue Sep 23 06:39:18 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Too many changes to list here
+- Refresh 0001-Apply-branding-to-default-favorites.patch
+
+-------------------------------------------------------------------
 Tue Sep  9 11:28:55 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:

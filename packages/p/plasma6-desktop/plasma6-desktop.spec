@@ -21,8 +21,8 @@
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.plasma\\.shell\\.panel|org\\.kde\\.plasma\\.private).*
 # %%global __requires_exclude qt6qmlimport\\((org\\.kde\\.private\\.kcms|org\\.kde\\.plasma\\.kcm|org\\.kde\\.desktopsession\\.private|org\\.kde\\.plasma\\.tablet|org\\.kde\\.plasma\\.touchscreen\\.kcm).*
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define rname plasma-desktop
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -34,14 +34,14 @@
 %bcond_without scim
 %endif
 Name:           plasma6-desktop
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -86,10 +86,11 @@ BuildRequires:  cmake(KF6Svg) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KNightTime) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KRunnerAppDBusInterface) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KSMServerDBusInterface) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KSysGuard) >= %{_plasma6_bugfix}
-BuildRequires:  cmake(LibColorCorrect) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(LibKLookAndFeel) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(LibKWorkspace) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(LibNotificationManager) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(LibTaskManager) >= %{_plasma6_bugfix}
@@ -105,6 +106,7 @@ BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ShaderTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
@@ -115,8 +117,6 @@ BuildRequires:  cmake(sdl2)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(ibus-1.0)
-BuildRequires:  pkgconfig(icu-i18n)
-BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwacom)
@@ -125,7 +125,7 @@ BuildRequires:  pkgconfig(scim)
 %endif
 BuildRequires:  pkgconfig(signon-oauth2plugin)
 BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.44
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
@@ -313,6 +313,7 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_debugdir}/*.categories
 %{_kf6_knsrcfilesdir}/krunner.knsrc
 %{_kf6_knsrcfilesdir}/ksplash.knsrc
+%{_kf6_libdir}/libkglobalaccelmodel.so.*
 %{_kf6_notificationsdir}/kaccess.notifyrc
 %{_kf6_plasmadir}/layout-templates/
 %{_kf6_plasmadir}/packages/
@@ -323,6 +324,11 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_plugindir}/kf6/kded/keyboard.so
 %{_kf6_plugindir}/kf6/kded/kded_touchpad.so
 %{_kf6_plugindir}/kf6/krunner/
+%{_kf6_plugindir}/plasma/applets/org.kde.panel.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.kicker.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.kickoff.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.trash.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.windowlist.so
 %dir %{_kf6_plugindir}/plasma/kcms/desktop/
 %{_kf6_plugindir}/plasma/kcms/desktop/kcm_krunnersettings.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_access.so

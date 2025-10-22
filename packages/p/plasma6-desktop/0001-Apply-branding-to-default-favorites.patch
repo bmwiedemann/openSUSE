@@ -14,14 +14,14 @@ As a workaround, copy favorites from plasma-openSUSE into the config, and:
 Use both org.kde.khelpcenter.desktop as well as the previous org.kde.Help name
 from khelpcenter <= v21.12.
 ---
- applets/kicker/package/contents/config/main.xml  | 2 +-
- applets/kickoff/package/contents/config/main.xml | 2 +-
+ applets/kicker/main.xml  | 2 +-
+ applets/kickoff/main.xml | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-Index: plasma-desktop-5.90.0git.20231202T021253~152814a9/applets/kicker/package/contents/config/main.xml
+Index: plasma-desktop-6.1.80git.20250709T014535~1b43b04ee2/applets/kicker/main.xml
 ===================================================================
---- plasma-desktop-5.90.0git.20231202T021253~152814a9.orig/applets/kicker/package/contents/config/main.xml	2023-12-02 03:12:53.000000000 +0100
-+++ plasma-desktop-5.90.0git.20231202T021253~152814a9/applets/kicker/package/contents/config/main.xml	2023-12-02 08:44:29.995753699 +0100
+--- plasma-desktop-6.1.80git.20250709T014535~1b43b04ee2.orig/applets/kicker/main.xml
++++ plasma-desktop-6.1.80git.20250709T014535~1b43b04ee2/applets/kicker/main.xml
 @@ -38,7 +38,7 @@
      </entry>
      <entry name="favoriteApps" type="StringList">
@@ -31,11 +31,11 @@ Index: plasma-desktop-5.90.0git.20231202T021253~152814a9/applets/kicker/package/
      </entry>
      <entry name="favoriteSystemActions" type="StringList">
        <label>List of system action favorites.</label>
-Index: plasma-desktop-5.90.0git.20231202T021253~152814a9/applets/kickoff/package/contents/config/main.xml
+Index: plasma-desktop-6.1.80git.20250709T014535~1b43b04ee2/applets/kickoff/main.xml
 ===================================================================
---- plasma-desktop-5.90.0git.20231202T021253~152814a9.orig/applets/kickoff/package/contents/config/main.xml	2023-12-02 03:12:53.000000000 +0100
-+++ plasma-desktop-5.90.0git.20231202T021253~152814a9/applets/kickoff/package/contents/config/main.xml	2023-12-02 08:45:43.155585718 +0100
-@@ -15,7 +15,7 @@
+--- plasma-desktop-6.1.80git.20250709T014535~1b43b04ee2.orig/applets/kickoff/main.xml
++++ plasma-desktop-6.1.80git.20250709T014535~1b43b04ee2/applets/kickoff/main.xml
+@@ -19,7 +19,7 @@
          </entry>
          <entry name="favorites" type="StringList">
              <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
