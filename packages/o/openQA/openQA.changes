@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 21 10:09:10 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1761037330.ad78558e:
+  * Avoid needless check for number of clones
+  * Avoid creation of `git_clone` tasks for jobs with empty `DISTRI`
+
+-------------------------------------------------------------------
 Sun Oct 19 16:11:35 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1760515610.a802d1dd:
