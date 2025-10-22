@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:10 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+
+-------------------------------------------------------------------
+Thu Oct  2 14:46:14 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+
+-------------------------------------------------------------------
+Tue Sep 23 06:39:15 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Changes since 6.4.5:
+  * Update version for new release 6.4.90
+  * Fix when the default value should be used
+  * Ensure valid SQL when filters are empty
+  * Remove unused global static
+  * Avoid detach of temporary in for loop
+  * Add missing Q_EMIT for signal
+  * Add missing include of KDEClangFormat CMake module
+  * Query: Simplify code using isEmpty
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep  9 11:28:48 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:
