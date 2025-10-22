@@ -48,4 +48,12 @@ related deletion requestion https://build.opensuse.org/request/show/1087963
     <comment></comment>
     <requestid>1296409</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2436b80f29aeff9c835766d64ffe4290</srcmd5>
+    <version>25.10.2</version>
+    <time>1761128107</time>
+    <user>anag_factory</user>
+    <comment>Update to version 25.10.2 (boo#1252019)</comment>
+    <requestid>1312733</requestid>
+  </revision>
 </revisionlist>

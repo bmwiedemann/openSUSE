@@ -1,7 +1,7 @@
 #
 # spec file for package goldendict-ng
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define gcc_ver 11
 %endif
 Name:           goldendict-ng
-Version:        25.06.0
+Version:        25.10.2
 Release:        0
 Summary:        Dictionary Lookup Program
 License:        GPL-3.0-or-later
