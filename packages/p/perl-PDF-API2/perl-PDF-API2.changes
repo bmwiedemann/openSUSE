@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 14 12:16:55 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.48.0 (2.048)
+   see /usr/share/doc/packages/perl-PDF-API2/Changes
+
+  2.048     2025-08-29
+      - [GH-85] Fix default_page_size when called without arguments (patch by
+        Johan Vromans).
+      - [GH-90] Fix deprecated option -noembed (reported by Bernhard Schmalhofer).
+      - [GH-91] Support annotation links to a named external destination (patch by
+        Johan Vromans).
+      - [GH-92] Allow Font::TTF::Font objects to be used as fonts (patch by Johan
+        Vromans).
+
+-------------------------------------------------------------------
 Sun Jun 23 16:46:26 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 2.47.0 (2.047)

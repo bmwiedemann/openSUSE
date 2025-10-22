@@ -257,4 +257,21 @@
     <comment></comment>
     <requestid>1183693</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b3c3d497bed1657d2fb55f71df574221</srcmd5>
+    <version>2.48.0</version>
+    <time>1761128062</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.48.0 (2.048)
+   see /usr/share/doc/packages/perl-PDF-API2/Changes
+  2.048     2025-08-29
+      - [GH-85] Fix default_page_size when called without arguments (patch by
+        Johan Vromans).
+      - [GH-90] Fix deprecated option -noembed (reported by Bernhard Schmalhofer).
+      - [GH-91] Support annotation links to a named external destination (patch by
+        Johan Vromans).
+      - [GH-92] Allow Font::TTF::Font objects to be used as fonts (patch by Johan
+        Vromans).</comment>
+    <requestid>1312565</requestid>
+  </revision>
 </revisionlist>
