@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>599324</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52635e91536d9f4a1bb710af9dd36500</srcmd5>
+    <version>0.140.0</version>
+    <time>1761128066</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.140.0 (0.14)
+   see /usr/share/doc/packages/perl-Data-Random/Changes
+  0.14      2025-10-11 03:23:58-07:00 America/Los_Angeles
+            - work around new warning in perl-5.43.2 about escaping whitespace
+            - fix repository URL typo in dist.ini that caused broken MetaCPAN links
+            Thanks to JKEENAN (James E Keenan) for both fixes</comment>
+    <requestid>1312568</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 14 11:45:10 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.140.0 (0.14)
+   see /usr/share/doc/packages/perl-Data-Random/Changes
+
+  0.14      2025-10-11 03:23:58-07:00 America/Los_Angeles
+            - work around new warning in perl-5.43.2 about escaping whitespace
+            - fix repository URL typo in dist.ini that caused broken MetaCPAN links
+            Thanks to JKEENAN (James E Keenan) for both fixes
+
+-------------------------------------------------------------------
 Thu Apr 19 05:13:51 UTC 2018 - coolo@suse.com
 
 - updated to 0.13
