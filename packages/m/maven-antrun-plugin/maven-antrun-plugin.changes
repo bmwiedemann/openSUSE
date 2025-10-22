@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 21 05:08:02 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.2.0
+  * Documentation updates
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + MANTRUN-231: Document limitations of exportAntProperties
+  * Maintenance
+    + Refresh download page, use site descriptor 2.0
+    + Add tag-template to release-drafter
+    + Run ci also with Maven 4
+    + Bump Maven to 3.9.11 and keep prerequisites at 3.6.3
+    + feat: enable prevent branch protection rules
+    + Enable Github Issues
+    + Switch from plexus to Guice
+    + Correct user visible spelling error
+    + MANTRUN-241: Bump org.junit:junit-bom from 5.10.1 to 5.10.2
+    + MANTRUN-239: Upgrade parent pom to 40
+    + MANTRUN-239: Update parent pom to 39
+    + MANTRUN-242: Require Maven 3.6.3+
+    + MANTRUN-241: Bump org.junit:junit-bom from 5.10.1 to 5.10.2
+    + MANTRUN-244: Upgrade to JUnit 5.12.0
+    + MANTRUN-241: Bump org.junit.jupiter:junit-jupiter-engine to
+      5.10.1
+    + MANTRUN-240: Bump org.apache.ant:ant from 1.10.13 to 1.10.14
+
+-------------------------------------------------------------------
 Wed Mar 23 23:19:29 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.0.0

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-antrun-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-antrun-plugin
-Version:        3.0.0
+Version:        3.2.0
 Release:        0
 Summary:        Maven AntRun Plugin
 License:        Apache-2.0
@@ -27,14 +27,19 @@ Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
+BuildRequires:  mvn(javax.inject:javax.inject)
 BuildRequires:  mvn(org.apache.ant:ant)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
+BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
+BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
 BuildArch:      noarch
 
 %description
@@ -52,10 +57,11 @@ This package contains the API documentation for %{name}.
 %setup -q
 
 %build
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=8
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
