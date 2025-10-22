@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 14 12:26:46 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.160.0 (0.16)
+   see /usr/share/doc/packages/perl-Struct-Dumb/Changes
+
+  0.16    2025-09-27
+          [BUGFIXES]
+           * Don't segfault at thread cloning time (RT170460)
+             (workaround for https://github.com/Perl/perl5/issues/23771)
+
+  0.15    2025-08-19
+          [CHANGES]
+           * Added `dumper_info` helper function
+             (thanks Ricardo Signes <rjbs@semiotic.systems>)
+           * Make sure to only set `:lvalue` on generated accesor methods for
+             lvalue fields
+           * General style updates for Perl v5.14+
+
+          [BUGFIXES]
+           * Allow field names that are not valid Perl identifiers even when
+             using Perl 5.38+ (RT150958)
+           * More helpful error message if `eval()` fails (RT146412)
+
+-------------------------------------------------------------------
 Sun Feb 12 03:09:27 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.14
