@@ -7200,4 +7200,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.17.3 &amp; other fixes; bugs: bsc#1012628 bsc#1250894 bsc#1252084</comment>
     <requestid>1311588</requestid>
   </revision>
+  <revision rev="806" vrev="1">
+    <srcmd5>bc1ecc6b4a4c82b9fec53958a5b7da28</srcmd5>
+    <version>6.17.4</version>
+    <time>1761127870</time>
+    <user>anag_factory</user>
+    <comment>6.17.4 &amp; vmd fix; bugs: bsc#1012628 bsc#1252291</comment>
+    <requestid>1312345</requestid>
+  </revision>
 </revisionlist>
