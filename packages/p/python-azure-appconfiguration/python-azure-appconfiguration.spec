@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-appconfiguration
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Microsoft App Configuration Data Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-appconfiguration/azure-appconfiguration-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_appconfiguration/azure_appconfiguration-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -32,8 +32,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-isodate >= 0.6.0
-Requires:       (python-azure-core >= 1.28.0 with python-azure-core < 2.0.0)
+Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
+Requires:       (python-azure-core >= 1.30.0 with python-azure-core < 2.0.0)
+Requires:       python-typing_extensions >= 4.6.0
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-appconfiguration < 1.5.0
@@ -53,7 +54,7 @@ application deployment. Use App Configuration to securely store all the
 settings for your application in one place.
 
 %prep
-%setup -q -n azure-appconfiguration-%{version}
+%setup -q -n azure_appconfiguration-%{version}
 
 %build
 %pyproject_wheel

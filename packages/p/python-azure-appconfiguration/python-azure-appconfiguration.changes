@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 21 07:33:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.7.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Aug 28 07:07:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

@@ -154,4 +154,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1196406 from glaubitz)</comment>
     <requestid>1196453</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2ddfc16b99a1b3a33fb637864387377e</srcmd5>
+    <version>1.7.2</version>
+    <time>1761128145</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.7.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Update Requires from setup.py (forwarded request 1312701 from glaubitz)</comment>
+    <requestid>1312827</requestid>
+  </revision>
 </revisionlist>
