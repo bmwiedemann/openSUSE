@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:20 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+
+-------------------------------------------------------------------
+Thu Oct  2 14:47:29 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+  * Keep combo box menus outside of screen cutouts
+
+-------------------------------------------------------------------
+Tue Sep 23 06:41:25 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Changes since 6.4.5:
+  * Update version for new release 6.4.90
+  * MobileTextActionsToolBar: Fix it not showing, and translations
+  * Don't import QtQuick.Controls in the actual style implementation
+  * Add missing import
+  * Add Qt6Next CI
+  * Enable qmllint in CI
+  * Menu: Sync some behavior from desktop style, and fixes
+  * Do not set a scrollbar policy to AlwaysOn by default on desktop
+  * Remove hacks breaking setting color themes on buttons
+  * Draw footer line in style and add similar padding/margins to Kirigami.Dialog
+  * update version for new release
+  * Drop unused kcoreaddons dependency
+
+-------------------------------------------------------------------
 Tue Sep  9 11:29:53 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:
