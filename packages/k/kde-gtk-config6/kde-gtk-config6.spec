@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 %define rname kde-gtk-config
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -25,14 +25,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kde-gtk-config6
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  gsettings-desktop-schemas
@@ -107,7 +107,7 @@ sed -i 's#/usr/bin/env sh$#/usr/bin/sh#' %{buildroot}%{_kf6_sharedir}/kconf_upda
 %{_kf6_libdir}/gtk-3.0/modules/libcolorreload-gtk-module.so
 %{_kf6_libdir}/gtk-3.0/modules/libwindow-decorations-gtk-module.so
 %{_kf6_libdir}/kconf_update_bin/gtk_theme
-%{_kf6_libdir}/kconf_update_bin/remove_deprecated_gtk4_option
+%{_kf6_libdir}/kconf_update_bin/remove_deprecated_gtk4_option_v2
 %{_kf6_plugindir}/kf6/kded/gtkconfig.so
 %{_kf6_sharedir}/kcm-gtk-module/
 %{_kf6_sharedir}/kconf_update/gtkconfig.upd
