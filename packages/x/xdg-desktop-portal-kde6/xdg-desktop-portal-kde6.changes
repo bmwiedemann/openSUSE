@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:22 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+  * inhibit: Fix races between requests and calls to powerdevil
+  * Request: drop unused members
+  * inhibit: Create error reply to the correct message
+
+-------------------------------------------------------------------
+Thu Oct  2 14:47:42 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+  * [dynamiclauncher] Also reply with name/icon when not editable (kde#509959)
+  * Use state config to store file dialog size
+
+-------------------------------------------------------------------
+Tue Sep 23 10:18:09 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  9 11:30:06 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:
