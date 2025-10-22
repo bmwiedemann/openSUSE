@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 21 15:10:10 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Update to 0.8.0:
+  * Support for ext-image-copy-capture-v1 and ext-image-capture-source-v1
+    protocols.
+  * Various bugfixes and improvements.
+
+-------------------------------------------------------------------
 Sun Sep 15 13:54:13 UTC 2024 - llyyr <llyyr@yukari.in>
 
 - Install wlroots-portals.conf for xdg-desktop-portal >= 1.17

@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-wlr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-wlr
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        An xdg-desktop-portal backend for wlroots
 License:        MIT
