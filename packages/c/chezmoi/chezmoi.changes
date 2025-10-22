@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 21 15:49:59 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.66.1:
+  - Fixes
+    * fix: Fix input prompt line wrapping
+- Skip test TestScript/issue4647 which tries to clone a remote git test repo
+  during build
+
+-------------------------------------------------------------------
 Wed Oct  8 13:47:09 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.66.0:

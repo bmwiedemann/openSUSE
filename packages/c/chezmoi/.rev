@@ -998,4 +998,17 @@
 </comment>
     <requestid>1309808</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>bcd171904f4a8d9f05d968125b9b772e</srcmd5>
+    <version>2.66.1</version>
+    <time>1761128176</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.66.1:
+  - Fixes
+    * fix: Fix input prompt line wrapping
+- Skip test TestScript/issue4647 which tries to clone a remote git test repo
+  during build
+</comment>
+    <requestid>1312861</requestid>
+  </revision>
 </revisionlist>
