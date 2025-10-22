@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Oct 13 08:40:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.184.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidmanagement:** Update the api
+  * **backupdr:** Update the api
+  * **beyondcorp:** Update the api
+  * **bigquery:** Update the api
+  * **certificatemanager:** Update the api
+  * **checks:** Update the api
+  * **cloudidentity:** Update the api
+  * **cloudscheduler:** Update the api
+  * **compute:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **dlp:** Update the api
+  * **docs:** Update the api
+  * **documentai:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebaseapphosting:** Update the api
+  * **firestore:** Update the api
+  * **integrations:** Update the api
+  * **migrationcenter:** Update the api
+  * **oracledatabase:** Update the api
+  * **oslogin:** Update the api
+  * **places:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **saasservicemgmt:** Update the api
+  * **serviceconsumermanagement:** Update the api
+  * **servicemanagement:** Update the api
+  * **serviceusage:** Update the api
+  * **sqladmin:** Update the api
+  * **storage:** Update the api
+  * **texttospeech:** Update the api
+  * **tpu:** Update the api
+  * **webfonts:** Update the api
+  * **dataflow:** Update the api
+  * **datastore:** Update the api
+  * **iamcredentials:** Update the api
+  * **logging:** Update the api
+  * **parametermanager:** Update the api
+
+-------------------------------------------------------------------
 Mon Sep 29 06:45:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.183.0

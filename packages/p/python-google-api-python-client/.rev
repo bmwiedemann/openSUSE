@@ -1504,4 +1504,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1307687</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>13de160703324ddec18c86404365b67d</srcmd5>
+    <version>2.184.0</version>
+    <time>1761128128</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.184.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidmanagement:** Update the api
+  * **backupdr:** Update the api
+  * **beyondcorp:** Update the api
+  * **bigquery:** Update the api
+  * **certificatemanager:** Update the api
+  * **checks:** Update the api
+  * **cloudidentity:** Update the api
+  * **cloudscheduler:** Update the api
+  * **compute:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **dlp:** Update the api
+  * **docs:** Update the api
+  * **documentai:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebaseapphosting:** Update the api
+  * **firestore:** Update the api
+  * **integrations:** Update the api
+  * **migrationcenter:** Update the api
+  * **oracledatabase:** Update the api
+  * **oslogin:** Update the api
+  * **places:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **saasservicemgmt:** Update the api
+  * **serviceconsumermanagement:** Update the api (forwarded request 1312714 from glaubitz)</comment>
+    <requestid>1312817</requestid>
+  </revision>
 </revisionlist>
