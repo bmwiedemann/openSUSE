@@ -70,4 +70,18 @@
 - drop remove-old-python-support.patch (upstream)</comment>
     <requestid>1218889</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0db1be034073750c8c394f5d6520247c</srcmd5>
+    <version>0.7.8</version>
+    <time>1761128135</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.7.8
+  * [JSON Schema] Add title for Literal.
+  * JSON Schema missing title in subschemas.
+  * [JSON Schema] Type &quot;null&quot; should be string.
+  * Ruff format.
+  * Include py.typed module when building package.
+- Adjust filename pattern matches in %files section (forwarded request 1312717 from glaubitz)</comment>
+    <requestid>1312820</requestid>
+  </revision>
 </revisionlist>

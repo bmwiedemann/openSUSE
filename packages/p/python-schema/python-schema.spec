@@ -1,7 +1,7 @@
 #
 # spec file for package python-schema
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-schema
-Version:        0.7.7
+Version:        0.7.8
 Release:        0
 Summary:        Data validation library
 License:        MIT
@@ -57,8 +57,7 @@ parsing, converted from JSON/YAML (or something else) to Python data-types.
 %files %{python_files}
 %doc README.rst
 %license LICENSE-MIT
-%{python_sitelib}/schema.py
-%pycache_only %{python_sitelib}/__pycache__/schema*
+%{python_sitelib}/schema
 %{python_sitelib}/schema-%{version}.dist-info
 
 %changelog
