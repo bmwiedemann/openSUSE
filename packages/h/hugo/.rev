@@ -1759,4 +1759,23 @@
   * releaser: Prepare repository for 0.152.0-DEV (forwarded request 1312026 from jfkw)</comment>
     <requestid>1312034</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>0f22ff805a5fe3e2a641d162f164db02</srcmd5>
+    <version>0.152.0</version>
+    <time>1761128202</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.152.0:
+  * releaser: Bump versions for release of 0.152.0
+  * config: Clone language map entries before modifying them
+  * Skip flaky test for now
+  * Misc YAML adjustments
+  * hugofs: Make sure that non-project module mounts are local paths
+  * langs/i18n: Improve reserved key error message
+  * deps: Upgrade github.com/gohugoio/go-i18n/v2
+  * langs: Add test case using a &quot;reserved&quot; i18n code
+  * Replace to gopkg.in/yaml with github.com/goccy/go-yaml (note)
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.3 to 2.24.4
+  * releaser: Prepare repository for 0.152.0-DEV (forwarded request 1312878 from jfkw)</comment>
+    <requestid>1312889</requestid>
+  </revision>
 </revisionlist>
