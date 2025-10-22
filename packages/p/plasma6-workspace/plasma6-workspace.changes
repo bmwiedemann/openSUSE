@@ -1,9 +1,70 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:17 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+  * Make all panels reserve space when in edit mode
+  * Adjust availableScreenRect of Coronas for stacked panels in edit mode (kde#505417)
+  * servicerunner: calculate the distance of the "beginning" of the items too (kde#510039)
+  * [libnotificationmanager] Implement ActionLabelsRole in JobsModel (kde#510244)
+  * applets/notifications: Respect transient for notificatons with actions
+  * Bump reduced_featureset CI to Qt 6.10
+  * scripting: Fix setting resolution independent panel configuration
+  * servicerunner: Add the second half to #pragma once
+  * Revert "Limit evaluateScript execution at 2 seconds"
+  * servicerunner: Avoid matching everything with single character patterns
+  * ksmserver: Fix saving clients (kde#510177)
+  * Notifications: Keep summary out of history
+  * servicerunner: associated scorecard with a search and term
+  * osd: Don't show volume OSD on Plasma Mobile
+  * kcms/wallpaper: fix localization (kde#505122\,kde#508491\)
+  * Fix i18n for OSDItem
+  * klipper: fix copying data from office suites
+  * libkmpris: Decodes URI before displaying title (kde#507530)
+  * Logout: don't mistakenly think the model includes ourselves (kde#510135)
+- Drop patches, now upstream:
+  * 0001-servicerunner-Avoid-matching-everything-with-single-.patch
+  * 0001-scripting-Fix-setting-resolution-independent-panel-c.patch
+
+-------------------------------------------------------------------
+Thu Oct  9 11:48:53 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix false matches with single letter queries:
+  * 0001-servicerunner-Avoid-matching-everything-with-single-.patch
+
+-------------------------------------------------------------------
+Wed Oct  8 15:44:02 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix panel configuration on first start:
+  * 0001-scripting-Fix-setting-resolution-independent-panel-c.patch
+
+-------------------------------------------------------------------
+Thu Oct  2 14:47:01 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-applets-mediacontroller-Workaround-for-common-crash-.patch
+
+-------------------------------------------------------------------
 Thu Sep 25 08:13:52 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix crash caused by a qtdeclarative change
   (kde#509192, QTBUG-140018):
   * 0001-applets-mediacontroller-Workaround-for-common-crash-.patch
+
+-------------------------------------------------------------------
+Tue Sep 23 06:40:40 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Too many changes to list here
 
 -------------------------------------------------------------------
 Sat Sep 13 07:55:49 UTC 2025 - Christophe Marin <christophe@krop.fr>

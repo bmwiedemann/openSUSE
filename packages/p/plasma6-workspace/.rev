@@ -315,4 +315,12 @@
   * 0001-applets-mediacontroller-Workaround-for-common-crash-.patch (forwarded request 1307062 from Vogtinator)</comment>
     <requestid>1307065</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a2c09c10ace7a0113e24cf2f0b9146e7</srcmd5>
+    <version>6.5.0</version>
+    <time>1761127974</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1312731 from Vogtinator)</comment>
+    <requestid>1312794</requestid>
+  </revision>
 </revisionlist>
