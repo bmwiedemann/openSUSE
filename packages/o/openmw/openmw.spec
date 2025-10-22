@@ -22,9 +22,9 @@
 # 1.69 is the first boost version that is supposed to work with C++ 20:
 %define min_boost_version 1.69
 # RCs have archive_ver different than version
-%define archive_ver 50-rc1
+%define archive_ver 50-rc2
 Name:           openmw
-Version:        0.9.50rc1
+Version:        0.9.50rc2
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
@@ -41,7 +41,6 @@ BuildRequires:  libboost_headers-devel >= %{min_boost_version}
 BuildRequires:  libboost_iostreams-devel >= %{min_boost_version}
 BuildRequires:  libboost_program_options-devel >= %{min_boost_version}
 BuildRequires:  libboost_regex-devel >= %{min_boost_version}
-BuildRequires:  tinyxml-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Linguist)
@@ -65,6 +64,7 @@ BuildRequires:  pkgconfig(openthreads) >= 3.2
 BuildRequires:  pkgconfig(recastnavigation) >= 1.6.0
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(tinyxml)
 BuildRequires:  pkgconfig(yaml-cpp)
 Requires:       OpenSceneGraph-plugin-collada
 Requires:       OpenSceneGraph-plugins
