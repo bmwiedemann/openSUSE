@@ -484,4 +484,15 @@
       - Fix whois server for .by</comment>
     <requestid>1282010</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e31123e28947b28dba49af912955ae4c</srcmd5>
+    <version>2.99042</version>
+    <time>1761128064</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.99042
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+  2.99042 Jul 22 2015 Alexander Nalobin
+      - recursive_whois: allow case insensitive match of OrgID from Slaven Rezic</comment>
+    <requestid>1312566</requestid>
+  </revision>
 </revisionlist>

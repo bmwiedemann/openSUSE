@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Whois-Raw
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name Net-Whois-Raw
 Name:           perl-Net-Whois-Raw
-Version:        2.99041
+Version:        2.99042
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Get Whois information of domains and IP addresses
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/N/NA/NALOBIN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
