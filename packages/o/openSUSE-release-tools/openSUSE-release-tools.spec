@@ -21,7 +21,7 @@
 %define announcer_filename factory-package-news
 %define services osrt-slsa.target osrt-relpkggen@.timer osrt-relpkggen@.service osrt-pkglistgen@.timer osrt-pkglistgen@.service
 Name:           openSUSE-release-tools
-Version:        20251001.0ed4bc8b
+Version:        20251014.2d75aced
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -61,9 +61,11 @@ Requires:       python3-pycurl
 Requires:       python3-python-dateutil
 Requires:       python3-pyxdg
 Requires:       python3-requests
-# typing extensions are needed on SLE & Leap
 %if 0%{?suse_version} <= 1500
+# typing extensions are needed on SLE & Leap
 Requires:       python3-typing_extensions
+# Backport for py 3.6
+Requires:       python3-dataclasses
 %endif
 
 # Spec related requirements.

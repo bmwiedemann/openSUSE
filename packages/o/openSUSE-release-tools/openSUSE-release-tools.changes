@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 14 15:34:04 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251014.2d75aced:
+  * gocd: sles.target: 16.1: release transactional images
+
+-------------------------------------------------------------------
+Thu Oct 09 08:54:21 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251009.414a66f7:
+  * Update .editorconfig-checker.json
+  * .editorconfig: Allow trailing whitespace in .md files
+  * ttm: Simplify version_from_project
+  * ttm: Refactor core logic with per-product attributes
+  * ttm: Drop workaround for NonOSS trees not containing the product version
+  * ttm: Unify methods to get build version of a product
+  * ttm: Drop need_same_build_number, not used anywhere anymore
+  * ttm: Complain about unknown config options
+
+-------------------------------------------------------------------
 Wed Oct 01 08:58:57 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20251001.0ed4bc8b:
