@@ -19,8 +19,8 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.KWin\\.Effect\\.WindowView.*
 
-%global kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define rname   kwin-x11
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -29,14 +29,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6-x11
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -70,7 +70,9 @@ BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KGlobalAccelD) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(KNightTime) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(KWayland) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Plasma) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaActivities) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.14.0
@@ -217,11 +219,12 @@ This package provides development files.
 %{_kf6_iconsdir}/hicolor/*/apps/kwin-x11.png
 %{_kf6_iconsdir}/hicolor/scalable/apps/kwin-x11.svgz
 %{_kf6_knsrcfilesdir}/*.knsrc
-%{_kf6_libdir}/kconf_update_bin/kwin5_update_default_rules_x11
 %{_kf6_libdir}/kconf_update_bin/kwin-6.0-delete-desktop-switching-shortcuts-x11
 %{_kf6_libdir}/kconf_update_bin/kwin-6.0-remove-breeze-tabbox-default-x11
 %{_kf6_libdir}/kconf_update_bin/kwin-6.0-reset-active-mouse-screen-x11
 %{_kf6_libdir}/kconf_update_bin/kwin-6.1-remove-gridview-expose-shortcuts-x11
+%{_kf6_libdir}/kconf_update_bin/kwin-6.5-showpaint-changes-x11
+%{_kf6_libdir}/kconf_update_bin/kwin5_update_default_rules_x11
 %{_kf6_libdir}/libkcmkwincommon-x11.so.*
 %{_kf6_notificationsdir}/kwin-x11.notifyrc
 %dir %{_kf6_plugindir}/kwin-x11
@@ -231,20 +234,16 @@ This package provides development files.
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_blur_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_diminactive_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_glide_config.so
-%{_kf6_plugindir}/kwin-x11/effects/configs/kwin_invert_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_magiclamp_config.so
-%{_kf6_plugindir}/kwin-x11/effects/configs/kwin_magnifier_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_mouseclick_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_mousemark_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_overview_config.so
-%{_kf6_plugindir}/kwin-x11/effects/configs/kwin_showpaint_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_slide_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_thumbnailaside_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_tileseditor_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_trackmouse_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_windowview_config.so
 %{_kf6_plugindir}/kwin-x11/effects/configs/kwin_wobblywindows_config.so
-%{_kf6_plugindir}/kwin-x11/effects/configs/kwin_zoom_config.so
 %dir %{_kf6_plugindir}/kwin-x11/plugins
 %{_kf6_plugindir}/kwin-x11/plugins/krunnerintegration.so
 %{_kf6_plugindir}/kwin-x11/plugins/nightlight.so
