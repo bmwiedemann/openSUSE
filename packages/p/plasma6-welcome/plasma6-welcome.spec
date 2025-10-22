@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define rname plasma-welcome
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -26,14 +26,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-welcome
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        Onboarding wizard for Plasma
 License:        GPL-2.0-only OR GPL-3.0-only
 URL:            https://invent.kde.org/plasma/plasma-welcome
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
