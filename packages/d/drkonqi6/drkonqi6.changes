@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:12:59 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+
+-------------------------------------------------------------------
+Thu Oct  2 14:44:48 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+  * Set startupId from notification before restarting app
+
+-------------------------------------------------------------------
+Tue Sep 23 06:38:40 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Changes since 6.4.5:
+  * Update version for new release 6.4.90
+  * preamble: Throw exception if no image is found
+  * Fix text wrap layout issues (kde#499226)
+  * preamble: Fix unguarded use of sentry_sdk
+  * Add QML linting
+  * prevent CoreImage from being invalid (kde#507625)
+  * typo--
+  * bugzilla: prefer api errors over http errors (kde#506717)
+  * Add kwalletmanager5 to mappings
+  * Add mapping for Powerdevil. Update previous mapping to active component.
+  * Add mapping for kdeconnect-app
+  * preamble: handle deleted mappings separately
+  * preamble: drop qml tracing code
+  * reportpage: indicate the loading state better (kde#501700)
+  * backtracegenerator: convert memoryfence to qglobalstatic (kde#504386)
+  * coredump/gui: add keywords to desktop file
+  * Fix minimum systemd requirement
+  * preamble: improve log message a tad
+  * preamble: leave a breadcrumb behind when loading a solib
+  * preamble: pull thread into scope for debugging
+  * preamble: make comment clearer
+  * preamble: pull pc into scope so we can diagnose it easily
+  * preamble: don't trip over undefined variables
+  * backtracegenerator: don't crash when the proc was already deleted
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep  9 11:27:31 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:
