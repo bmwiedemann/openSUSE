@@ -1,7 +1,7 @@
 #
 # spec file for package mousai
 #
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define _lto_cflags %{nil}
 Name:           mousai
-Version:        0.7.8
+Version:        0.7.9
 Release:        0
 Summary:        Identify songs in seconds
 License:        GPL-3.0-or-later
@@ -73,6 +73,7 @@ appstream-util validate-relax --nonet \
 %{_datadir}/icons/*/*/*/*.svg
 %{_datadir}/metainfo/*.metainfo.xml
 %{_datadir}/mousai/
+%{_datadir}/dbus-1/services/*.service
 
 %files lang -f %{name}.lang
 #incorrect-locale-subdir
