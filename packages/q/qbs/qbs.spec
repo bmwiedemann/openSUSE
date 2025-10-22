@@ -1,7 +1,7 @@
 #
 # spec file for package qbs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2018 The Qt Company.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %bcond_without qch_doc
 %endif
 Name:           qbs
-Version:        3.0.3
+Version:        3.1.0
 Release:        0
 Summary:        Build tool for software projects
 # Legal:
@@ -131,6 +131,7 @@ rm -r %{buildroot}%{_qt6_sharedir}/qbs/python
 %dir %{_qt6_libdir}/qbs/plugins
 %{_qt6_libdir}/libqbscore.so.*
 %{_qt6_libdir}/qbs/plugins/libclangcompilationdbgenerator.so
+%{_qt6_libdir}/qbs/plugins/libgraphvizgenerator.so
 %{_qt6_libdir}/qbs/plugins/libiarewgenerator.so
 %{_qt6_libdir}/qbs/plugins/libkeiluvgenerator.so
 %{_qt6_libdir}/qbs/plugins/libmakefilegenerator.so

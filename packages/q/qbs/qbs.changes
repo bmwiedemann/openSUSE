@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 21 15:52:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.1.0. Check the installed changelog files for the full
+  list of changes.
+  * Qbs now prints information about files being installed
+  * New modules were added for fine-tuning builds: `config.build`,
+    `config.install` and `installpaths`
+  * The `install` property in convenience items such as
+    `CppApplication` now defaults to `true`
+  * The `texttemplate` module received support for an
+    alternative syntax
+  * The `Process` service now has an `errrorString` method
+  * The `vcs` module now supports the `Mercurial` tool and
+    there are new properties `repoLatestTag`,
+    `repoCommitsSinceTag`, and `repoCommitSha`
+  * Added a `Graphviz` generator to visualize project structures
+  * The bundled QuickJS was updated to version 0.10.1
+
+-------------------------------------------------------------------
 Wed Oct  8 18:37:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.0.3. Check the installed changelog files for the full
