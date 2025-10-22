@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Statistics-CaseResampling
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define cpan_name Statistics-CaseResampling
 Name:           perl-Statistics-CaseResampling
-Version:        0.160.0
+Version:        0.170.0
 Release:        0
-# 0.16 -> normalize -> 0.160.0
-%define cpan_version 0.16
+# 0.17 -> normalize -> 0.170.0
+%define cpan_version 0.17
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Efficient resampling and calculation of medians with confidence intervals
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SM/SMUELLER/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 Provides:       perl(Statistics::CaseResampling) = %{version}
@@ -47,7 +48,7 @@ selection) algorithm that works in linear time as opposed to the trivial
 implementation that requires 'O(n*log(n))'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
