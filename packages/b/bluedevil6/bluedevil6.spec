@@ -20,8 +20,8 @@
 # Internal QML import
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.plasma\\.private\\.bluetooth.*
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define rname bluedevil
 
@@ -31,14 +31,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           bluedevil6
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        Bluetooth Manager for KDE Plasma
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -59,6 +59,7 @@ BuildRequires:  cmake(Plasma) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # atop of the bluez itself, we also need bluez-obexd for kio_obexftp and both send/receive
 Requires:       bluez
@@ -96,9 +97,6 @@ Bluetooth daemon for KDE Plasma, handling connections.
 %{_kf6_applicationsdir}/kcm_bluetooth.desktop
 %{_kf6_applicationsdir}/org.kde.bluedevilsendfile.desktop
 %{_kf6_applicationsdir}/org.kde.bluedevilwizard.desktop
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/org.kde.plasma.bluetooth.appdata.xml
-%endif
 %{_kf6_bindir}/bluedevil-sendfile
 %{_kf6_bindir}/bluedevil-wizard
 %{_kf6_debugdir}/bluedevil.categories
