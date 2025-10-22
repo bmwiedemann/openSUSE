@@ -52,4 +52,23 @@
     <comment></comment>
     <requestid>997485</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>95f5b456030c37f0763b81c435be7d19</srcmd5>
+    <version>2.2.3</version>
+    <time>1761128039</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 2.2.3:
+  * Fix build against latest ffmpeg
+  * Fix build with recent compiler versions
+  * Perform error checking for integer command line arguments
+  * Update MimeTypes in .desktop file
+  * Fix string out of range error
+- Add ffmpegthumbnailer-update-for-newest-ffmpeg.patch to build againts
+  latest ffmpeg
+- Remove upstreamed patches
+  - 372cd422e57a9a3531eb9a30559d665caecff1ba.patch
+  - efb5b618f1c1471c1a7900aed3a59d851ea9a210.patch
+  - ffmpegthumbnailer-cmake-updates.patch (forwarded request 1312043 from adkorte)</comment>
+    <requestid>1312313</requestid>
+  </revision>
 </revisionlist>

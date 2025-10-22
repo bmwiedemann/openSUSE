@@ -20,18 +20,14 @@
 
 %define soname  4
 Name:           ffmpegthumbnailer
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Video thumbnailer that can be used by file managers
 License:        GPL-2.0-or-later
 URL:            https://github.com/dirkvdb/ffmpegthumbnailer
-Source:         https://github.com/dirkvdb/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
-#PATCH-FIX-UPSTREAM ffmpegthumbnailer-cmake-updates.patch dirk.vdb@gmail.com -- Update CMakeLists.txt for new cmake version.
-Patch0:         ffmpegthumbnailer-cmake-updates.patch
-# PATCH-FIX-UPSTREAM badshah400@gmail.com -- Removes use of functionality deprecated in ffmpeg4 and dropped from ffmpeg5, patch taken from upstream commit
-Patch1:         https://github.com/dirkvdb/ffmpegthumbnailer/commit/372cd422e57a9a3531eb9a30559d665caecff1ba.patch
-# PATCH-FIX-UPSTREAM badshah400@gmail.com -- Constify AVCodec, patch taken from upstream commit
-Patch2:         https://github.com/dirkvdb/ffmpegthumbnailer/commit/efb5b618f1c1471c1a7900aed3a59d851ea9a210.patch
+Source0:        https://github.com/dirkvdb/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/dirkvdb/ffmpegthumbnailer/pull/240
+Patch0:         %{name}-update-for-newest-ffmpeg.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
@@ -74,7 +70,10 @@ This video thumbnailer can be used to create thumbnails for video
 files. The thumbnailer uses ffmpeg to decode frames from files.
 
 %prep
-%autosetup -p1
+%autosetup -N
+%if 0%{?suse_version} >= 1600
+%patch -p1 -P 0
+%endif
 chmod 644 AUTHORS README
 
 %build
