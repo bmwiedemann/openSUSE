@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Script
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,28 @@
 
 %define cpan_name Test-Script
 Name:           perl-Test-Script
-Version:        1.29
+Version:        1.310.0
 Release:        0
-Summary:        Basic cross-platform tests for scripts
+# 1.31 -> normalize -> 1.310.0
+%define cpan_version 1.31
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Basic cross-platform tests for scripts
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny)
-BuildRequires:  perl(Probe::Perl) >= 0.01
+BuildRequires:  perl(Probe::Perl) >= 0.10
 BuildRequires:  perl(Test2::API) >= 1.302015
-BuildRequires:  perl(Test2::V0) >= 0.000060
+BuildRequires:  perl(Test2::V0) >= 0.000121
 Requires:       perl(Capture::Tiny)
-Requires:       perl(Probe::Perl) >= 0.01
+Requires:       perl(Probe::Perl) >= 0.10
 Requires:       perl(Test2::API) >= 1.302015
+Provides:       perl(Test::Script) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -54,13 +59,13 @@ unacceptable.
 
 In doing so, it is hoped that *Test::Script* can become a module that you
 can safely make a dependency of all your modules, without risking that your
-module won't on some platform because of the dependency.
+module won't install on some platform because of the dependency.
 
 Where a clash exists between wanting more functionality and maintaining
 platform safety, this module will err on the side of platform safety.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -75,7 +80,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc author.yml Changes README
+%doc Changes README
 %license LICENSE
 
 %changelog

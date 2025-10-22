@@ -230,4 +230,20 @@
     <comment></comment>
     <requestid>893687</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>caf7d1ac72092bff45084b0d4bda9119</srcmd5>
+    <version>1.310.0</version>
+    <time>1761128069</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.310.0 (1.31)
+   see /usr/share/doc/packages/perl-Test-Script/Changes
+  1.31      2025-08-11 12:07:41 -0600
+    - Fix bug introduced in 1.30 where exports were not happening correctly
+      in legacy mode (gh#47)
+  1.30      2025-08-04 14:01:25 -0600
+    - Documentation improvements (#42)
+    - Fix bug where implicit function export would happen regardless of which
+      functions were explicitly exported (gh#45, gh#46)</comment>
+    <requestid>1312570</requestid>
+  </revision>
 </revisionlist>
