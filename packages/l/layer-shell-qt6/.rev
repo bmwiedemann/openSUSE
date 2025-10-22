@@ -239,4 +239,12 @@
     <comment>Temp. revert for :K</comment>
     <requestid>1311014</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>437392ab6e416853e1a56f42faa175b1</srcmd5>
+    <version>6.5.0</version>
+    <time>1761127930</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1312731 from Vogtinator)</comment>
+    <requestid>1312767</requestid>
+  </revision>
 </revisionlist>
