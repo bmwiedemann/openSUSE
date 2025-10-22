@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define rname kdeplasma-addons
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -26,14 +26,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdeplasma6-addons
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        Additional Plasma6 Widgets
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -54,10 +54,10 @@ BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Runner) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
+BuildRequires:  cmake(KF6Svg) >= %{kf6_version}
 BuildRequires:  cmake(KF6UnitConversion) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Plasma) >= %{_plasma6_bugfix}
-BuildRequires:  cmake(Plasma5Support) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaQuick) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
@@ -76,6 +76,7 @@ BuildRequires:  pkgconfig(icu-uc)
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
 Requires:       kf6-purpose >= %{kf6_version}
 Requires:       kirigami-addons6
+Requires:       plasma5support6 >= %{_plasma6_bugfix}
 Provides:       plasma-addons = %{version}
 Obsoletes:      plasma-addons < %{version}
 Provides:       plasma5-addons = %{version}
@@ -113,23 +114,21 @@ the Plasma desktop.
 
 %files
 %license LICENSES/*
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/*.xml
-%endif
 %{_kf6_dbuspolicydir}/org.kde.kameleonhelper.conf
 %{_kf6_debugdir}/kdeplasma-addons.categories
 %{_kf6_debugdir}/kdeplasma-addons.renamecategories
-%ifarch x86_64 aarch64 riscv64
 %{_kf6_iconsdir}/hicolor/scalable/apps/accessories-dictionary.svgz
-%endif
 %{_kf6_iconsdir}/hicolor/scalable/apps/fifteenpuzzle.svgz
 %{_kf6_knsrcfilesdir}/comic.knsrc
+%{_kf6_libdir}/libplasmaweatherdata.so.*
+%{_kf6_libdir}/libplasmaweatherion.so.*
 %{_kf6_libdir}/libplasmapotdprovidercore.so.*
 %{_kf6_libexecdir}/kauth/kameleonhelper
 %{_kf6_notificationsdir}/plasma_applet_timer.notifyrc
 %{_kf6_plasmadir}/desktoptheme/
 %{_kf6_plasmadir}/plasmoids/
 %{_kf6_plasmadir}/wallpapers/
+%{_kf6_plasmadir}/weather/
 %{_kf6_plugindir}/kf6/kded/kameleon.so
 %dir %{_kf6_plugindir}/kf6/krunner
 %{_kf6_plugindir}/kf6/krunner/*
@@ -140,6 +139,7 @@ the Plasma desktop.
 %dir %{_kf6_plugindir}/kwin/effects/configs
 %{_kf6_plugindir}/kwin/effects/configs/kwin_cube_config.so
 %{_kf6_plugindir}/plasma/applets/*
+%{_kf6_plugindir}/plasma/weather_ions/
 %{_kf6_plugindir}/plasmacalendarplugins/
 %{_kf6_plugindir}/potd/
 %{_kf6_qmldir}/org/kde/plasma/*
@@ -153,6 +153,8 @@ the Plasma desktop.
 %{_includedir}/plasma/potdprovider/
 %{_kf6_cmakedir}/PlasmaPotdProvider/
 %{_kf6_libdir}/libplasmapotdprovidercore.so
+%{_kf6_libdir}/libplasmaweatherdata.so
+%{_kf6_libdir}/libplasmaweatherion.so
 %{_kf6_sharedir}/kdevappwizard/templates/plasmapotdprovider.tar.bz2
 
 %files lang -f %{name}.lang
