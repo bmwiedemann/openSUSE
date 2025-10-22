@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  6 17:21:00 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.150.0 (3.15)
+   see /usr/share/doc/packages/perl-Furl/Changes
+
+  3.15 2025-09-25T00:24:03Z
+      - Fix the issue that when timeout happens, then request method returns success when
+        there is no Content-Length headers(#137)
+
+-------------------------------------------------------------------
 Fri May 14 14:02:02 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Add 0001-Remove-use-of-Mozilla-CA.patch patch to cpanspec.yml

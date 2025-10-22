@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Furl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,39 @@
 
 %define cpan_name Furl
 Name:           perl-Furl
-Version:        3.14
+Version:        3.150.0
 Release:        0
-Summary:        Lightning-fast URL fetcher
+# 3.15 -> normalize -> 3.150.0
+%define cpan_version 3.15
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Lightning-fast URL fetcher
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SY/SYOHEX/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SY/SYOHEX/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 Patch0:         0001-Remove-use-of-Mozilla-CA.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Accessor::Lite)
-BuildRequires:  perl(HTTP::Parser::XS) >= 0.11
-BuildRequires:  perl(Module::Build::Tiny) >= 0.035
+BuildRequires:  perl(HTTP::Parser::XS) >= 0.110
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.35
 #BuildRequires:  perl(Mozilla::CA)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Requires)
-BuildRequires:  perl(Test::TCP) >= 2.11
+BuildRequires:  perl(Test::TCP) >= 2.110
 Requires:       perl(Class::Accessor::Lite)
-Requires:       perl(HTTP::Parser::XS) >= 0.11
+Requires:       perl(HTTP::Parser::XS) >= 0.110
 #Requires:       perl(Mozilla::CA)
+Provides:       perl(Furl) = %{version}
+Provides:       perl(Furl::ConnectionCache)
+Provides:       perl(Furl::HTTP) = %{version}
+Provides:       perl(Furl::Headers)
+Provides:       perl(Furl::Request)
+Provides:       perl(Furl::Response)
+Provides:       perl(Furl::ZlibStream)
+%undefine       __perllib_provides
 Recommends:     perl(Compress::Raw::Zlib)
 Recommends:     perl(HTTP::CookieJar)
 Recommends:     perl(IO::Socket::SSL)
@@ -51,7 +63,7 @@ client for Perl 5, but it is too slow for some critical jobs, and too
 complex for weekend hacking. Furl resolves these issues. Enjoy it!
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor

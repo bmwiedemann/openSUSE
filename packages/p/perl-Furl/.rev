@@ -151,4 +151,16 @@
     <comment></comment>
     <requestid>894572</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ad1d2b77c5ae5e86b988d8ccae44bcaa</srcmd5>
+    <version>3.150.0</version>
+    <time>1761128078</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.150.0 (3.15)
+   see /usr/share/doc/packages/perl-Furl/Changes
+  3.15 2025-09-25T00:24:03Z
+      - Fix the issue that when timeout happens, then request method returns success when
+        there is no Content-Length headers(#137)</comment>
+    <requestid>1312573</requestid>
+  </revision>
 </revisionlist>
