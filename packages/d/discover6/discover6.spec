@@ -16,26 +16,28 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 %define rname discover
 %bcond_without released
 # Version in Leap 15 < 15.6 is too old
 %global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600)
 
 Name:           discover6
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 URL:            https://apps.kde.org/discover/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Warning-for-FlatHub.patch
+# Might be upstreamable if conditional on openSUSE, TBD
+Patch1:         0001-On-upgrade-failure-link-to-a-wiki-page-instead-of-bu.patch
 BuildRequires:  flatpak-devel >= 0.11.8
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
@@ -75,7 +77,7 @@ BuildRequires:  cmake(Qt6WebView) >= %{qt6_version}
 %endif
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
-BuildRequires:  cmake(packagekitqt6) >= 1.0.1
+BuildRequires:  cmake(packagekitqt6) >= 1.1.3
 %if %{have_fwupd}
 BuildRequires:  pkgconfig(fwupd) >= 1.9.4
 %endif
@@ -203,7 +205,7 @@ rm %{buildroot}%{_kf6_applicationsdir}/org.kde.discover.snap.desktop
 %{_kf6_plugindir}/discover/flatpak-backend.so
 %{_kf6_sharedir}/libdiscover/categories/flatpak-backend-categories.xml
 %{_kf6_appstreamdir}/org.kde.discover.flatpak.appdata.xml
-%{_kf6_applicationsdir}/org.kde.discover-flatpak.desktop
+%{_kf6_applicationsdir}/org.kde.discover.flatpak.desktop
 %{_kf6_iconsdir}/hicolor/scalable/apps/flatpak-discover.svg
 
 %if %{have_fwupd}

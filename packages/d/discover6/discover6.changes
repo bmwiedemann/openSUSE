@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:12:58 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * rpm-ostree: Notify progress once transaction completes
+  * Update version for new release 6.5.0
+  * Fwupd: Don't consider "systemd service is masked" to be an error
+  * rpm-ostree: Do not list as install option for apps
+  * rpm-ostree: Use case insensitive comparison when searching
+  * rpm-ostree: Remove custom SourcesBackend
+  * Improve visuals of on-demand "Tasks" button
+  * rpm-ostree: Do not check for updates for non remote cases (kde#505375)
+  * rpm-ostree: Set more methods as const
+  * rpm-ostree: Add debug output
+  * rpm-ostree: Minor comment fix
+  * rpm-ostree: Fix major version updates for OCI case
+  * Let the end-of-session calls work outside of plasma
+  * Use safer org.kde.Shutdown to shut down and restart (kde#499260)
+  * Move isBusy from ResourcesModel into DiscoverObject
+  * kcm: Restore runtime check for OSTree backend (kde#510072)
+
+-------------------------------------------------------------------
+Thu Oct  2 14:44:45 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+  * flatpak: Fix searches (kde#504799)
+  * pk: Stop using 1.1.3's PackageKit::Offline API (kde#508235)
+  * OdrsReviewsBackend: Set all rating packagenames to lowercase (kde#505469)
+  * notifier: Store last notification time in state config
+  * rpm-ostee/notifier: Update version label check for container path
+  * Hide grouped transaction in transactions popup (kde#502040)
+- Drop patches, now upstream:
+  * 0001-Revert-pk-Adapt-change-in-PackageKitQt-Offline-APIs.patch
+  * 0002-Revert-Stop-tapping-into-PackageKit-s-private-data.patch
+
+-------------------------------------------------------------------
+Fri Sep 26 20:46:45 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to replace the bug reporting button on upgrade failure
+  (boo#1225965):
+  * 0001-On-upgrade-failure-link-to-a-wiki-page-instead-of-bu.patch
+- Add patches to avoid use of broken method in PackageKit-Qt
+  (kde#508235):
+  * 0001-Revert-pk-Adapt-change-in-PackageKitQt-Offline-APIs.patch
+  * 0002-Revert-Stop-tapping-into-PackageKit-s-private-data.patch
+
+-------------------------------------------------------------------
+Tue Sep 23 06:38:37 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  9 11:27:28 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:

@@ -1,0 +1,34 @@
+From c193fa28327b5a4f11d17ae12424758375ffc9ac Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 26 Sep 2025 22:41:52 +0200
+Subject: [PATCH] On upgrade failure, link to a wiki page instead of bugzilla
+
+The way discover represents upgrade issues led users to file many
+low-quality bug reports. Redirect them to a wiki page first.
+
+See boo#1225965.
+---
+ discover/qml/UpdatesPage.qml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/discover/qml/UpdatesPage.qml b/discover/qml/UpdatesPage.qml
+index 8b6a203c3..68c36621f 100644
+--- a/discover/qml/UpdatesPage.qml
++++ b/discover/qml/UpdatesPage.qml
+@@ -112,10 +112,10 @@ DiscoverPage {
+                         Item { Layout.fillWidth: true}
+ 
+                         QQC2.Button {
+-                            text: i18nc("@action:button %1 is the name of the user's distro/OS", "Report Issue to %1", Discover.ResourcesModel.distroName)
+-                            icon.name: "tools-report-bug"
++                            text: "Open openSUSE Help Page"
++                            icon.name: "help-contents"
+                             onClicked: {
+-                                Qt.openUrlExternally(Discover.ResourcesModel.distroBugReportUrl())
++                                Qt.openUrlExternally("https://en.opensuse.org/SDB:Update_Issues")
+                                 sheet.visible = false
+                             }
+                         }
+-- 
+2.50.1
+
