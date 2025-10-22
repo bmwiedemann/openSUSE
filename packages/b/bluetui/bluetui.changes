@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 21 21:44:58 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.7
+  * Use help banner instead of the popup
+  * Fix crash when rfkill dir is not present
+  * Add h/l nav controls
+  * Add BackTab key handler
+
+-------------------------------------------------------------------
 Sat Dec 21 21:10:04 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.6

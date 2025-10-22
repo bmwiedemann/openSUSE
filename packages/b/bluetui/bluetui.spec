@@ -1,7 +1,7 @@
 #
 # spec file for package bluetui
 #
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bluetui
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        TUI for managing bluetooth devices
 License:        GPL-3.0-or-later
