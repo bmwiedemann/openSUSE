@@ -16,7 +16,7 @@
 #
 
 
-%define qt6_version 6.8.0
+%define qt6_version 6.9.0
 
 %define rname plasma5support
 # Full KF6 version (e.g. 6.0.0)
@@ -26,14 +26,14 @@
 %bcond_without released
 # Note: despite being in the plasma namespace upstream, the build system follows the frameworks conventions
 Name:           plasma5support6
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        KF6 Porting aid
 License:        LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
@@ -43,6 +43,7 @@ BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6Holidays) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6IdleTime) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6KIO) >= %{_kf6_bugfix_version}
@@ -50,6 +51,7 @@ BuildRequires:  cmake(KF6NetworkManagerQt) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6Notifications) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6Service) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6Solid) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6UnitConversion) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KSysGuard) >= 6
 BuildRequires:  cmake(Plasma)
@@ -107,6 +109,7 @@ Development Files for the plasma5support framework.
 %dir %{_kf6_qmldir}/org/kde/plasma
 %{_kf6_qmldir}/org/kde/plasma/plasma5support/
 %{_kf6_sharedir}/plasma5support/
+%{_kf6_libdir}/libweather_ion.so.*
 %dir %{_kf6_plugindir}/plasma5support
 %dir %{_kf6_plugindir}/plasma5support/dataengine
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_apps.so
@@ -121,9 +124,16 @@ Development Files for the plasma5support framework.
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_soliddevice.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_filebrowser.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_places.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_bbcukmet.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_dwd.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_envcan.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_noaa.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_weather.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_wettercom.so
 %dir %{_kf6_plugindir}/plasma5support/geolocationprovider
 %{_kf6_plugindir}/plasma5support/geolocationprovider/plasma-geolocation-gps.so
 %{_kf6_plugindir}/plasma5support/geolocationprovider/plasma-geolocation-ip.so
+%{_kf6_sharedir}/plasma/weather_legacy/
 
 %files -n libPlasma5Support6
 %license LICENSES/*
@@ -137,7 +147,10 @@ Development Files for the plasma5support framework.
 %{_includedir}/Plasma5Support/
 %dir %{_includedir}/plasma
 %{_includedir}/plasma/geolocation/
+%dir %{_includedir}/plasma5support/
+%{_includedir}/plasma5support/weather/
 %{_kf6_libdir}/libPlasma5Support.so
+%{_kf6_libdir}/libweather_ion.so
 %{_kf6_libdir}/libplasma-geolocation-interface.so
 
 %files -n libPlasma5Support6-lang -f %{name}.lang
