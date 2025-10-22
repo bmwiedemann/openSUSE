@@ -1,0 +1,60 @@
+diff -rubN zeal-0.7.2/CMakeLists.txt zeal-0.7.2-patched/CMakeLists.txt
+--- zeal-0.7.2/CMakeLists.txt	2024-09-08 11:33:39.000000000 -0400
++++ zeal-0.7.2-patched/CMakeLists.txt	2025-10-17 17:43:48.995946922 -0400
+@@ -27,6 +27,10 @@
+     set(QT_MINIMUM_VERSION 6.2.0)
+ endif()
+ 
++IF(Qt6Core_VERSION VERSION_GREATER_EQUAL 6.10)
++    FIND_PACKAGE(Qt6 REQUIRED COMPONENTS GuiPrivate)
++ENDIF()
++
+ if(NOT QT_FOUND)
+     find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core)
+     set(QT_MINIMUM_VERSION 5.9.5)
+diff -rubN zeal-0.7.2/src/libs/ui/docsetsdialog.cpp zeal-0.7.2-patched/src/libs/ui/docsetsdialog.cpp
+--- zeal-0.7.2/src/libs/ui/docsetsdialog.cpp	2024-09-08 11:33:39.000000000 -0400
++++ zeal-0.7.2-patched/src/libs/ui/docsetsdialog.cpp	2025-10-17 18:45:17.473187967 -0400
+@@ -360,7 +360,8 @@
+         QTemporaryFile *tmpFile = m_tmpFiles[docsetName];
+         if (!tmpFile) {
+             tmpFile = new QTemporaryFile(QStringLiteral("%1/%2.XXXXXX.tmp").arg(Core::Application::cacheLocation(), docsetName), this);
+-            tmpFile->open();
++            if (!tmpFile->open())
++                    return;
+             m_tmpFiles.insert(docsetName, tmpFile);
+         }
+ 
+@@ -403,7 +404,8 @@
+         QTemporaryFile *tmpFile = m_tmpFiles[docsetName];
+         if (!tmpFile) {
+             tmpFile = new QTemporaryFile(QStringLiteral("%1/%2.XXXXXX.tmp").arg(Core::Application::cacheLocation(), docsetName), this);
+-            tmpFile->open();
++            if (!tmpFile->open())
++                    return;
+             m_tmpFiles.insert(docsetName, tmpFile);
+         }
+ 
+diff -rubN zeal-0.7.2/src/libs/ui/qxtglobalshortcut/CMakeLists.txt zeal-0.7.2-patched/src/libs/ui/qxtglobalshortcut/CMakeLists.txt
+--- zeal-0.7.2/src/libs/ui/qxtglobalshortcut/CMakeLists.txt	2024-09-08 11:33:39.000000000 -0400
++++ zeal-0.7.2-patched/src/libs/ui/qxtglobalshortcut/CMakeLists.txt	2025-10-17 18:05:38.054568685 -0400
+@@ -32,6 +32,10 @@
+ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Gui REQUIRED)
+ target_link_libraries(QxtGlobalShortcut Qt${QT_VERSION_MAJOR}::Gui)
+ 
++IF(Qt6Core_VERSION VERSION_GREATER_EQUAL 6.10)
++    FIND_PACKAGE(Qt6 REQUIRED COMPONENTS GuiPrivate)
++ENDIF()
++
+ if(APPLE)
+     find_library(CARBON_LIBRARY Carbon)
+     target_link_libraries(QxtGlobalShortcut ${CARBON_LIBRARY})
+@@ -42,7 +46,7 @@
+         find_package(Qt5 COMPONENTS X11Extras REQUIRED)
+         target_link_libraries(QxtGlobalShortcut Qt5::X11Extras)
+     else()
+-        target_link_libraries(QxtGlobalShortcut Qt${QT_VERSION_MAJOR}::GuiPrivate)
++        target_link_libraries(QxtGlobalShortcut Qt${QT_VERSION_MAJOR}::Gui Qt${QT_VERSION_MAJOR}::GuiPrivate)
+     endif()
+ 
+     find_package(ECM REQUIRED NO_MODULE)

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 21 15:40:08 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Fixes for Qt 6.10:
+  * Patch fix-qt-6.10.patch
+  * Thanks to Christophe Marin for simple patch example
+  * As well as to JaimeMF for inspiration on another fix
+    https://github.com/zealdocs/zeal/pull/1728/files 
+
+-------------------------------------------------------------------
 Sat Sep 21 15:26:23 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 0.7.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package zeal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source9:        zeal.1
 # PATCH-FIX-UPSTREAM zeal-cmake-find-qt-components.patch gh#zealdocs/zeal#1643 badshah400@gmail.com -- Explicitly find necessary Qt6 components to fix build with Qt 6.7.2
 Patch0:         zeal-cmake-find-qt-components.patch
+Patch1:         fix-qt-6.10.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes

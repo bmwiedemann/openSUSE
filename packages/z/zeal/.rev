@@ -150,4 +150,16 @@
     <comment></comment>
     <requestid>1202452</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6bd1c3bd02dd2fdb2eb9d5d282944fc3</srcmd5>
+    <version>0.7.2</version>
+    <time>1761128197</time>
+    <user>anag_factory</user>
+    <comment>- Fixes for Qt 6.10:
+  * Patch fix-qt-6.10.patch
+  * Thanks to Christophe Marin for simple patch example
+  * As well as to JaimeMF for inspiration on another fix
+    https://github.com/zealdocs/zeal/pull/1728/files</comment>
+    <requestid>1312885</requestid>
+  </revision>
 </revisionlist>
