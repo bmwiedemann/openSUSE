@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Parallel-ForkManager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,24 @@
 
 %define cpan_name Parallel-ForkManager
 Name:           perl-Parallel-ForkManager
-Version:        2.30.0
+Version:        2.40.0
 Release:        0
-# 2.03 -> normalize -> 2.30.0
-%define cpan_version 2.03
+# 2.04 -> normalize -> 2.40.0
+%define cpan_version 2.04
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple parallel processing fork manager
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/Y/YA/YANICK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Moo) >= 1.001000
+BuildRequires:  perl(Moo) >= 1.1
 BuildRequires:  perl(Moo::Role)
 BuildRequires:  perl(Test::More) >= 0.94
 BuildRequires:  perl(Test::Warn)
-Requires:       perl(Moo) >= 1.001000
+Requires:       perl(Moo) >= 1.1
 Requires:       perl(Moo::Role)
 Provides:       perl(Parallel::ForkManager) = %{version}
 Provides:       perl(Parallel::ForkManager::Child) = %{version}
@@ -93,7 +94,7 @@ you want to manage another set of subprocesses in the child process, you
 must instantiate another Parallel::ForkManager object!
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -108,6 +109,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CODE_OF_CONDUCT.md CONTRIBUTORS doap.xml examples README.mkdn
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTORS doap.xml examples README.mkdn SECURITY.md
 
 %changelog

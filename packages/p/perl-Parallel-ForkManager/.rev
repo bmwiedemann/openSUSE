@@ -16,4 +16,20 @@ See https://build.opensuse.org/request/show/904172</comment>
     <comment></comment>
     <requestid>1203943</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2ec73f3f4b4ea0fa429654103328f216</srcmd5>
+    <version>2.40.0</version>
+    <time>1761128075</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.40.0 (2.04)
+   see /usr/share/doc/packages/perl-Parallel-ForkManager/Changes
+  2.04 2025-08-30
+   [DOCUMENTATION]
+   - Add a SECURITY document. (GH#44)
+   [ENHANCEMENTS]
+   - Add 'running_procs_with_identifiers' method
+   [STATISTICS]
+   - code churn: 7 files changed, 157 insertions(+), 116 deletions(-)</comment>
+    <requestid>1312572</requestid>
+  </revision>
 </revisionlist>
