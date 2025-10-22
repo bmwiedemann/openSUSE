@@ -155,4 +155,21 @@
     <comment>- switch to use Qt6 bindings as Qt5 is going EOL</comment>
     <requestid>1283316</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>49eaedf370d406c8851b5f4d7da66cb5</srcmd5>
+    <version>0.19.0</version>
+    <time>1761128133</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.0
+  * support for Python 3.14 PR #580
+  * use cache_tag in import hooks PR #574
+  * make dynamicscope iterable PR #571 #572
+  * use vectorcall protocol in call_func helper PR #567
+  * move standard_tracer's subscription observer to cpp
+    to improve performance PR #562
+  * add non-blocking open support to FileDialog PR #552
+  * fix re-ordering of notebook tabs PR #583
+  * remove version_info attribute from version.py (forwarded request 1312716 from glaubitz)</comment>
+    <requestid>1312819</requestid>
+  </revision>
 </revisionlist>

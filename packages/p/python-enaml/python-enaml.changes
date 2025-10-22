@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 21 08:40:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.19.0
+  * support for Python 3.14 PR #580
+  * use cache_tag in import hooks PR #574
+  * make dynamicscope iterable PR #571 #572
+  * use vectorcall protocol in call_func helper PR #567
+  * move standard_tracer's subscription observer to cpp
+    to improve performance PR #562
+  * add non-blocking open support to FileDialog PR #552
+  * fix re-ordering of notebook tabs PR #583
+  * remove version_info attribute from version.py
+
+-------------------------------------------------------------------
 Thu Jun  5 10:05:06 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - switch to use Qt6 bindings as Qt5 is going EOL
