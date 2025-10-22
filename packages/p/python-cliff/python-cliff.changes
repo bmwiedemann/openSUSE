@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 21 08:23:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.11.0
+  * mypy: Enable strict mode
+  * pre-commit: Bump versions
+  * Migrate setup configuration to pyproject.toml
+
+-------------------------------------------------------------------
+Mon Jun 30 07:13:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.10.0
+  * Bump Python version used for linters to 3.10
+  * Drop support for Python 3.9
+
+-------------------------------------------------------------------
 Wed Jun 25 15:41:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.9.1:
