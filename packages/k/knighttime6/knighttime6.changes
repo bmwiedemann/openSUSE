@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Oct 16 18:13:02 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+  * daemon: Migrate config from night light (kde#510182)
+
+-------------------------------------------------------------------
+Thu Oct  2 14:45:18 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+  * Add QHP target
+  * Fix spelling typo
+
+-------------------------------------------------------------------
+Tue Sep 23 06:38:53 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- No code changes since 6.4.5
+
+-------------------------------------------------------------------
+Sun Jul 13 05:43:29 UTC 2025 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package
