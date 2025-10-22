@@ -140,4 +140,15 @@ os/cygwin.c is under the Cygwin license (GPL-2.0) (forwarded request 225900 from
     <comment></comment>
     <requestid>1098158</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a0eb98d9a2af95160bbca664b197dfbb</srcmd5>
+    <version>0.637.0</version>
+    <time>1761128051</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.637.0 (0.637)
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+  0.637 2025-07-28
+    - Fixed failing build on illumos with GCC 14+ (#38). Kudos go to @mtelka</comment>
+    <requestid>1312561</requestid>
+  </revision>
 </revisionlist>

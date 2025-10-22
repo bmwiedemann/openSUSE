@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 14 12:22:53 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.637.0 (0.637)
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+
+  0.637 2025-07-28
+    - Fixed failing build on illumos with GCC 14+ (#38). Kudos go to @mtelka
+
+-------------------------------------------------------------------
 Thu Jun 22 03:08:11 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.636
