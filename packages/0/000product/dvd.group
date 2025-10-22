@@ -1086,6 +1086,7 @@
     <package name="kmousetool-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmplot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kmplot-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="knighttime6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kompare" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kompare-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="konsole" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1362,6 +1363,7 @@
     <package name="libKGantt6-3-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKGlobalAccelD6-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKMahjongg6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKNightTime0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6AddressbookImportExport6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6AkonadiAgentBase6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6AkonadiAgentWidgetBase6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1448,7 +1450,7 @@
     <package name="libPlasma5Support6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libPlasmaActivities6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libPlasmaActivities7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasmaActivitiesStats1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQCoro6Core0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQCoro6DBus0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1699,7 +1701,6 @@
     <package name="libavc1394-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavcodec61" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavcodec62" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libavfilter10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavfilter11" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavformat61" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavformat62" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
