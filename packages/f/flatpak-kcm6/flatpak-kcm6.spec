@@ -16,21 +16,21 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define rname flatpak-kcm
 
 %bcond_without released
 Name:           flatpak-kcm6
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        Flatpak Permissions Management KCM
 License:        GPL-2.0-or-later
 URL:            https://invent.kde.org/plasma/flatpak-kcm
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -40,6 +40,7 @@ BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  pkgconfig(flatpak) >= 0.11.8
@@ -66,12 +67,12 @@ The KCM allows changing what permissions have been granted to installed Flatpak 
 %install
 %kf6_install
 
-%find_lang kcm_flatpak %{name}.lang
+%find_lang kcm_app-permissions %{name}.lang
 
 %files
 %license LICENSES/*
-%{_kf6_applicationsdir}/kcm_flatpak.desktop
-%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_flatpak.so
+%{_kf6_applicationsdir}/kcm_app-permissions.desktop
+%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_app-permissions.so
 
 %files lang -f %{name}.lang
 
