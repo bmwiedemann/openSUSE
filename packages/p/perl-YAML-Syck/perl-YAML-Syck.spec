@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-Syck
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,25 @@
 #
 
 
-Name:           perl-YAML-Syck
-Version:        1.34
-Release:        0
 %define cpan_name YAML-Syck
-Summary:        Perl YAML loader and dumper
+Name:           perl-YAML-Syck
+Version:        1.360.0
+Release:        0
+# 1.36 -> normalize -> 1.360.0
+%define cpan_version 1.36
 License:        MIT
-Group:          Development/Libraries/Perl
+Summary:        Perl YAML loader and dumper
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(JSON::Syck) = %{version}
+Provides:       perl(YAML::Dumper::Syck)
+Provides:       perl(YAML::Loader::Syck)
+Provides:       perl(YAML::Syck) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -42,8 +48,9 @@ the 'Load'/'Dump' functions. The default setting is for preserving
 backward-compatibility with 'YAML.pm'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 # https://github.com/cpan-authors/YAML-Syck/issues/61
@@ -59,7 +66,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes COMPATIBILITY README.md
 %license COPYING
 

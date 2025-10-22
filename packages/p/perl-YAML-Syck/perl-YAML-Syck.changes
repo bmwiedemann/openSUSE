@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 14 12:27:18 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.360.0 (1.36)
+   see /usr/share/doc/packages/perl-YAML-Syck/Changes
+
+  1.36 Oct 10 2025
+  - Address memory corruption leading to 'str' value being set on empty keys
+    Thanks @timlegge
+  1.35 Oct 9 2025
+  - Address parsing error related to string detection on read for empty strings.
+
+-------------------------------------------------------------------
 Thu May 29 12:36:00 UTC 2025 - pgajdos@suse.com
 
 - -std=gnu11 to build with gcc15

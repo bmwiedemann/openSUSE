@@ -292,4 +292,18 @@
     <comment></comment>
     <requestid>1282400</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1ff450834dea869388cfa2c783a68dec</srcmd5>
+    <version>1.360.0</version>
+    <time>1761128046</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.360.0 (1.36)
+   see /usr/share/doc/packages/perl-YAML-Syck/Changes
+  1.36 Oct 10 2025
+  - Address memory corruption leading to 'str' value being set on empty keys
+    Thanks @timlegge
+  1.35 Oct 9 2025
+  - Address parsing error related to string detection on read for empty strings.</comment>
+    <requestid>1312558</requestid>
+  </revision>
 </revisionlist>
