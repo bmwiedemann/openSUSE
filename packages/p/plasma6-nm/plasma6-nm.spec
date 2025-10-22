@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.18.0
+%define qt6_version 6.9.0
 
 %define rname plasma-nm
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -30,14 +30,14 @@
 %bcond_without openconnect
 %endif
 Name:           plasma6-nm
-Version:        6.4.5
+Version:        6.5.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -286,19 +286,17 @@ FortiGate SSL VPN plugin for plasma-nm components.
 %{_kf6_applicationsdir}/kcm_mobile_wifi.desktop
 %{_kf6_applicationsdir}/kcm_networkmanagement.desktop
 %{_kf6_applicationsdir}/org.kde.vpnimport.desktop
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/org.kde.plasma.networkmanagement.appdata.xml
-%endif
 %{_kf6_debugdir}/plasma-nm.categories
 %{_kf6_libdir}/libplasmanm_editor.so
 %{_kf6_libdir}/libplasmanm_internal.so
 %{_kf6_notificationsdir}/networkmanagement.notifyrc
-%{_kf6_plasmadir}/plasmoids/org.kde.plasma.networkmanagement/
 %{_kf6_plugindir}/kf6/kded/networkmanagement.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_cellular_network.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_hotspot.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_wifi.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_networkmanagement.so
+%dir %{_kf6_plugindir}/plasma/applets/
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.networkmanagement.so
 %dir %{_kf6_qmldir}/org/kde/plasma
 %{_kf6_qmldir}/org/kde/plasma/networkmanagement/
 %{_kf6_sharedir}/kcm_networkmanagement/
