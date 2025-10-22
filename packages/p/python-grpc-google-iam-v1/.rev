@@ -91,4 +91,14 @@
     <comment></comment>
     <requestid>1266188</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4bd4ffea3f9466153e75fb58d3f81465</srcmd5>
+    <version>0.14.3</version>
+    <time>1761128130</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.14.3
+  * Add support for Python 3.14
+  * Regenerate pb2 files with protoc v25.3 (forwarded request 1312715 from glaubitz)</comment>
+    <requestid>1312818</requestid>
+  </revision>
 </revisionlist>
