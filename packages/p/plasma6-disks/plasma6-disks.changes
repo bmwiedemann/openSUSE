@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:11 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+
+-------------------------------------------------------------------
+Thu Oct  2 14:46:24 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+
+-------------------------------------------------------------------
+Tue Sep 23 06:39:23 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Changes since 6.4.5:
+  * Update version for new release 6.4.90
+  * Add QML linting
+  * Bump kf ecm_set_disabled_deprecation_versions. Make sure that it compiles fine without kf 6.16 deprecated methods
+  * .gitignore sync from kconfig
+  * shorten the notification name
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep  9 11:28:58 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:
