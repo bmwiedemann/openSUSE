@@ -439,4 +439,25 @@
     <comment></comment>
     <requestid>1269371</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>f1fd839d83d6aecc6a9bcad45551edc0</srcmd5>
+    <version>1.77000</version>
+    <time>1761128055</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.77
+   see /usr/share/doc/packages/perl-Prima/Changes
+  1.77 2025-08-12
+   - Hint colors can be set for each widget individually
+   - Add JXL image support
+   - Add MenuItem.context for generic use
+   - remove support for Prima::codecs::win32/64
+   - Drawable.render_glyph, Drawable.Path.glyph, and examples/fontdlg.pl support color fonts
+   - fixes for MacOSX with homebrew
+   - Implement Drawable.Path.fill_gradient
+   - Implement Drawable .render_underline and .draw_underline
+   - Implement Drawable.add_region
+   - Pod viewer can show content preview in Pod links
+   - add examples/emoji.pl</comment>
+    <requestid>1312562</requestid>
+  </revision>
 </revisionlist>
