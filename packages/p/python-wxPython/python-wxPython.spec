@@ -1,7 +1,7 @@
 #
 # spec file for package python-wxPython
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,6 +80,11 @@ ExclusiveArch:  donotbuild
 %define python_provides %{expand:%%%{flavor}_provides}
 %endif
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 Name:           %{pprefix}-wxPython
 Version:        4.2.3
@@ -107,8 +112,8 @@ BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  fdupes
+BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 %if %{with syswx}
@@ -160,6 +165,13 @@ BuildRequires:  google-opensans-fonts
 # BuildRequires:  wxWidgets-lang
 BuildRequires:  xorg-x11-server
 BuildRequires:  pkgconfig(cppunit)
+%endif
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %endif
 
 %description
@@ -254,6 +266,7 @@ fi
 %python_clone -a %{buildroot}%{_bindir}/wxdemo
 %python_clone -a %{buildroot}%{_bindir}/wxdocs
 %python_clone -a %{buildroot}%{_bindir}/wxget
+%python_group_libalternatives pywxrc helpviewer img2png img2py img2xpm pycrust pyshell pyslices pyslicesshell wxdemo wxdocs wxget
 
 %if %{without syswx}
 %find_lang wxstd
@@ -290,6 +303,9 @@ mv wx wx_temp
 
 mv wx_temp wx
 %endif
+
+%pre
+%python_libalternatives_reset_alternative pywxrc
 
 %post
 %python_install_alternative pywxrc helpviewer img2png img2py img2xpm pycrust pyshell pyslices pyslicesshell wxdemo wxdocs wxget
