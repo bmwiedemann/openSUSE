@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Log-Dispatchouli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Log-Dispatchouli
 Name:           perl-Log-Dispatchouli
-Version:        3.11.0
+Version:        3.13.0
 Release:        0
-# 3.011 -> normalize -> 3.11.0
-%define cpan_version 3.011
+# 3.013 -> normalize -> 3.13.0
+%define cpan_version 3.013
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple wrapper around Log::Dispatch
 URL:            https://metacpan.org/release/%{cpan_name}

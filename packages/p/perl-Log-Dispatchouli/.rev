@@ -210,4 +210,24 @@
             number of args.</comment>
     <requestid>1309623</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>aca01b4b45822bf04ef4f35e783297b4</srcmd5>
+    <version>3.13.0</version>
+    <time>1761128082</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.13.0 (3.013)
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+  3.013     2025-10-15 10:12:50-04:00 America/New_York
+          - typo fixes and spec clarifications
+  3.012     2025-10-14 12:39:48-04:00 America/New_York
+          - [ BREAKING CHANGE (BARELY) ]
+            Log::Fmt now includes a formal specification of the logfmt grammar we
+            implement, as well as a description of algorithmns to correctly
+            encode strings.  The code has been updated to fall in line, meaning:
+          - tabs now become \t
+          - control and vertical space characters are now encoded as \x{...} of
+            their UTF-8-encoded form, not their Unicode codepoint value
+          - the &quot;\&quot; character now triggers double-quoting</comment>
+    <requestid>1312574</requestid>
+  </revision>
 </revisionlist>

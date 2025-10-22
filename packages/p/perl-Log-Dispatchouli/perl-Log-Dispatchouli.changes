@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 17 19:27:08 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.13.0 (3.013)
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  3.013     2025-10-15 10:12:50-04:00 America/New_York
+          - typo fixes and spec clarifications
+
+  3.012     2025-10-14 12:39:48-04:00 America/New_York
+          - [ BREAKING CHANGE (BARELY) ]
+            Log::Fmt now includes a formal specification of the logfmt grammar we
+            implement, as well as a description of algorithmns to correctly
+            encode strings.  The code has been updated to fall in line, meaning:
+          - tabs now become \t
+          - control and vertical space characters are now encoded as \x{...} of
+            their UTF-8-encoded form, not their Unicode codepoint value
+          - the "\" character now triggers double-quoting
+
+-------------------------------------------------------------------
 Thu Oct  2 13:29:57 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 3.11.0 (3.011)
