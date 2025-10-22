@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Oct 16 18:13:01 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.0
+- Changes since 6.4.91:
+  * Update version for new release 6.5.0
+
+-------------------------------------------------------------------
+Thu Oct  2 14:45:09 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.91
+- Changes since 6.4.90:
+  * Update version for new release 6.4.91
+
+-------------------------------------------------------------------
+Tue Sep 23 06:38:50 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.90
+- Changes since 6.4.5:
+  * Update version for new release 6.4.90
+  * update version for new release
+  * Enable qmllint in CI
+  * Add QML linting
+  * Fix isNvidiaLoaded() method which currently always returns false (kde#499882)
+  * appium: reduce the timeout way down
+  * samba: make language clearer on mount list (kde#507274)
+  * about: crash more descriptively if output is malformed
+  * update version for new release
+  * kcms/energy: Reduce the number of hint lines in the charge graph
+  * CommandOutputContext: Fix broken i18n call
+  * kcms/energy: Use required properties on model delegates
+  * kcms/energy: Simplify the battery details model
+  * kcms/energy: Reduce output and linting QML warnings
+  * kcms/energy: Ensure there are valid points when drawing
+  * kcms/energy: Remove unnecessary dependencies to Widgets
+  * Remove unecessary custom Qt5 deprecated version
+  * update version for new release
+  * kcms/energy: Smoothly animate the time span changes
+  * Show the Wayland section if the Qt platform is wayland-egl
+  * Update description/caption
+  * Change uncreatable type name "Hint to "hint" (kde#504560)
+  * update version for new release
+  * Add missing cmake find module for di-edid-decode
+  * Add missing include(ECMQmlModule)
+  * about: show error if drmDeviceCount() fails
+
+-------------------------------------------------------------------
 Tue Sep  9 11:27:53 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.5:
