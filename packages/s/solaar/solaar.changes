@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Tue Oct 21 13:17:50 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.15:
+  * release 1.1.15
+  * release 1.1.15rc2
+  * udev: correctly re-raise access exception
+  * Update i18n.md
+  * device: add special keys from Logitech
+  * i18n: Add and complete Ukrainian translation (uk)
+  * update Russian translation
+  * Update Polish translation
+  * release 1.1.15rc2
+  * release 1.1.15rc1
+  * device: fix bug with unknown tasks
+  * fix: center labels and remove buggy entry resizing logic
+  * fix: correct spelling of 'completion' in diversion_rules.py
+  * device: add shape keys from Key POP Icon
+  * rules: Device and Action rule conditions match on codename and name
+  * GitHub CI: fix and re-enable macOS tests with python 3.13
+  * docs: give uninstallation file correct name
+  * Apply uaccess rules on all actions other than remove
+  * install: fix bug in apt install target
+  * docs(metainfo): Add link to source repo
+  * GitHub CI: Disable latest Python tests on macOS
+  * Update Swedish translation
+  * Unsupported locale: Fall back to English (#2891)
+  * fixes battery setting when device is not available (#2890)
+  * device: report symbolic names for pairing errors (#2886)
+  * doc: update status of hid_parser
+  * Update installation.md
+  * device: Fix listing hidpp10 devices - bytes vs string concatenation (#2856)
+  * device: add present flag, unset when internal error occurs, set when notification appears
+  * device: pause setting up features when error occurs; use ADC message to signal connection and disconnection
+  * docs: add G604 mouse details
+  * Fix listing of hidpp10 peripherals
+  * Complete DEVICE_FEATURES to DeviceFeature transition for hidpp10 devices
+  * Fix NOTIFICATION_FLAG to NotificationFlag transition leftovers
+  * Fix github workflow stopping all matrix jobs when one of them fails
+  * Fix ubuntu github CI
+  * Update index.md
+  * Update index.md - add missing word
+  * docs: python documentation appears to be broken so don't set it up
+  * docs: add information for MX Anywhere 3 for Business
+  * docs: improve documentation on onboard profiles
+  * settings: use correct LOD values for extended adjustable dpi
+  * docs(i18n): mention Serbian translation
+  * settings: better support RGB Effects - not readable
+  * cli: fix crash when asking for help about config
+  * ui: fix error when updating ChoiceControlBig box
+  * Adding uninstallation docs
+  * receiver: Handle unknown power switch locations again
+  * ui: correctly handle selection of [empty] in rule editor
+  * macOS: handle `HIDError` in `hidapi.hidapi_impl._match()` (#2804)
+  * ui: give ghost devices a path
+  * ui: guard against typeerror when setting the value of a control box
+  * device: recover from errors in ping
+  * diversion: replace spaces by underscores when looking up features
+  * Rewrote string concatenation/format with f strings
+  * Fix logo not showing in about dialog box
+  * make typing-extensions dependency mandatory
+  * Fix: Properly ignore unsupported locale
+  * hidapi: skip unsupported devices and handle exception on open
+  * Ignore macOS junk files and pipenv config
+  * docs: mention typing dependency
+  * tests: fix ui desktop notifications test
+  * hidpp20: Remove dependency to NamedInts
+  * Estimate accurate battery level for some rechargable devices (#2745)
+  * testing: upgrade desktop notifications tests to take notifications availability into account
+  * Update tests to run on Python 3.13
+  * solaar: Remove outdated logger enabled checks
+  * solaar/ui: Remove outdated logger enabled checks
+  * solaar/cli: Remove outdated logger enabled checks
+  * Introduce GTK signal types
+  * Introduce error types
+  * hidapi: Remove outdated logger enabled checks
+  * notification: Remove alias for SupportedFeature
+  * notification: Refactor process_device_notification
+  * notification: Refactor process_receiver_notification
+  * notification: Refactor receiver event handling
+  * Introduce custom logger
+  * Refactor notifications
+  * Rename variable to full name notification
+  * Test notifications
+  * receiver: Test extraction of serial and max. devices
+  * receiver: Refactor extraction of serial and max. devices
+  * Update release notes: Add Bluetooth macOS support with 1.15
+  * macOS: Fix int.from_bytes, int.to_bytes for show.py
+  * macOS: Remove udev rule warning
+  * macOS: Add support for Bluetooth devices
+  * settings: add back and forward mouseclick actions
+  * Speedup lookup of known receivers
+  * base: Refactor device filtering
+  * base: Reorder private functions and variable definitions
+  * base: Turn filter_products_of_interest into a public function
+  * base: Improve tests of known receivers
+  * Refactor InfoSubRegisters: Use IntEnum in favour of NamedInts
+  * Remove NamedInts: Convert DeviceFeature to flag
+  * Remove NamedInts: Convert NotificationFlag to flag
+  * Prepare refactoring of NotificationFlag
+  * Fixes on top of refactoring
+  * Fix KeyFlag conversion
+  * Remove NamedInts: Convert LedFormChoices to enum
+  * charge status: Refactor to enum and move to module of use
+  * Remove NamedInts: Convert LedRampChoice to flag
+  * Remove NamedInts: Convert HorizontalScroll to enum
+  * Remove NamedInts: Convert PowerSwitchLocation to flag
+  * Remove NamedInts: Convert MappingFlag to flag
+  * mapping flag: Move to module of use
+  * Remove NamedInts: Convert ActionId to enum
+  * Remove NamedInts: Convert Spec to enum
+  * Remove NamedInts: Convert KeyFlag to Flag
+  * Add type hints
+  * key flags: Move to module of use
+  * Add type hints
+  * Remove NamedInts: Convert Task to enum
+  * Remove NamedInts: Convert Column to enum
+  * settings: Add docstrings and type hint
+  * Enforce rules on RuleComponentUI subclasses
+  * Simplify settings UI class
+  * Refactor: Remove diversion alias
+  * type hints: Introduce settings protocol
+  * Refactor: Convert Kind to IntEnum
+  * Split up huge settings module
+  * solaar: don't close temp file until after CLI call
+  * Remove Python 2 specific path handling
+  * i18n: Swedish translations in .desktop files
+  * Test arg parse
+  * Test receiver notification info
+  * Update Swedish translation
+  * delete temp-file in case help-actions too
+  * delete tmpfile on close for cli
+
+-------------------------------------------------------------------
 Fri Jul 18 08:15:03 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add solaar-lang package
