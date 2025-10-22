@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 22 00:54:27 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1761036042.c43e4ab:
+  * Update perltidy
+  * Allow redirects in needle NeedleDownloader
+  * Don't overwrite firewall xml
+  * Add UEFI support for ipxe kernel boot
+  * os-autoinst-setup-multi-machine: Simplify determine_ethernet_interface
+
+-------------------------------------------------------------------
 Wed Oct 01 20:06:21 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1759328765.e7438f7:
