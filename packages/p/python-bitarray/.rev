@@ -480,4 +480,16 @@
     <comment></comment>
     <requestid>1303573</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>889aa7844463d3355839ff84c9e9d0b4</srcmd5>
+    <version>3.7.2</version>
+    <time>1761128138</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.7.2
+  * enable `util.random_k()` for all supported Python versions,
+    previously this functions required Python 3.9 or higher
+  * add official Python 3.14 support
+  * update cibuildwheel to 3.2.0 (forwarded request 1312727 from glaubitz)</comment>
+    <requestid>1312824</requestid>
+  </revision>
 </revisionlist>

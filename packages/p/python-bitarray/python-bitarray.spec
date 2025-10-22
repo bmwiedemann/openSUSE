@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bitarray
-Version:        3.7.1
+Version:        3.7.2
 Release:        0
 Summary:        Efficient Arrays of Booleans
 License:        Python-2.0
