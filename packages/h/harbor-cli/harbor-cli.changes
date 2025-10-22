@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 22 04:47:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.13:
+  * build(deps): bump golang.org/x/text from 0.29.0 to 0.30.0
+    (#558)
+  * build(deps): bump golang.org/x/term from 0.35.0 to 0.36.0
+    (#559)
+  * build(deps): bump github.com/charmbracelet/bubbletea (#551)
+  * build(deps): bump github.com/go-openapi/strfmt from 0.23.0 to
+    0.24.0 (#554)
+  * feature: rebasing and working on LDAP commands (#550)
+  * Update README.md
+
+-------------------------------------------------------------------
 Wed Oct 01 08:03:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.12:
