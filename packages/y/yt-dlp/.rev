@@ -630,4 +630,12 @@
     <comment>- Use Python 3.13 in 15.7, due to lack of 3.12</comment>
     <requestid>1309697</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>19357dde4c28164e98638ddb258e3a5e</srcmd5>
+    <version>2025.10.14</version>
+    <time>1761128098</time>
+    <user>anag_factory</user>
+    <comment>Update to 2025.10.14</comment>
+    <requestid>1312707</requestid>
+  </revision>
 </revisionlist>

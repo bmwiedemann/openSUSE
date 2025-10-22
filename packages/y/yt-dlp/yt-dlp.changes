@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 15 10:18:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.10.14
+  * yt: Detect experiment binding GVS PO Token to video id
+  * yt: Fix approximate timestamp extraction for feeds
+
+-------------------------------------------------------------------
 Tue Oct  7 12:34:56 UTC 2025 - olaf@aepfle.de
 
 - Use Python 3.13 in 15.7, due to lack of 3.12
