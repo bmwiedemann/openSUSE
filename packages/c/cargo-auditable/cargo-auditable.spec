@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-auditable
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define __cargo_common_opts %{?_smp_mflags}
 
 Name:           cargo-auditable
-Version:        0.6.6~0
+Version:        0.7.1~0
 Release:        0
 Summary:        A tool to embed auditing information in ELF sections of rust binaries
 #               If you know the license, put it's SPDX string here.

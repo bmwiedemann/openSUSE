@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Oct 21 02:38:44 UTC 2025 - william.brown@suse.com
+
+- Update to version 0.7.1~0:
+  * bump version
+  * Populate changelog for v0.7.1
+  * Populate changelog for v0.7.0
+  * Out out of unhelpful clippy lint
+  * Satisfy clippy
+  * Do not assume --crate-name and --out-dir are present in the rustc command, but show warnings if they aren't
+  * Run apt-get update before trying to install packages
+  * run `cargo dist init` on dist 0.30
+  * Drop allow-dirty from dist config, should no longer be needed
+  * Reorder paragraphs in README
+  * Note the maintenance transition for the go extraction library
+  * Editing pass on the adopters: scanners
+  * clarify Docker support
+  * Cargo clippy fix
+  * Add Wolfi OS and Chainguard to adopters
+  * Update mentions around Anchore tooling
+  * README and documentation updates for nightly
+  * Bump dependency version in rust-audit-info
+  * More work on docs
+  * Nicer formatting on format revision documentation
+  * Bump versions
+  * regenerate JSON schema
+  * cargo fmt
+  * Document format field
+  * Make it more clear that RawVersionInfo is private
+  * Add format field to the serialized data
+  * cargo clippy fix
+  * Add special handling for proc macros to treat them as the build dependencies they are
+  * Add a test to ensure proc macros are reported as build dependencies
+  * Add a test fixture for a crate with a proc macro dependency
+  * parse fully qualified package ID specs from SBOMs
+  * select first discovered SBOM file
+  * cargo sbom integration
+  * Get rid of unmaintained wee_alloc in test code to make people's scanners misled by GHSA chill out
+  * Don't fail plan workflow due to manually changed release.yml
+  * Bump Ubuntu version to hopefully fix release.yml workflow
+  * Add test for stripped binary
+  * Bump version to 0.6.7
+  * Populate changelog
+  * README.md: add auditable2cdx, more consistency in text
+  * Placate clippy
+  * Do not emit -Wl if a bare linker is in use
+  * Get rid of a compiler warning
+  * Add bare linker detection function
+  * drop boilerplate from test that's no longer relevant
+  * Add support for recovering rustc codegen options
+  * More lenient parsing of rustc arguments
+  * More descriptive error message in case rustc is killed abruptly
+  * change formatting to fit rustfmt
+  * More descriptive error message in case cargo is killed
+  * Update REPLACING_CARGO.md to fix #195
+  * Clarify osv-scanner support in README
+  * Include the command required to view metadata
+  * Mention wasm-tools support
+  * Switch from broken generic cache action to a Rust-specific one
+  * Fill in various fields in auditable2cdx Cargo.toml
+  * Include osv-scanner in the list, with a caveat
+  * Add link to blint repo to README
+  * Mention that blint supports our data
+  * Consolidate target definitions
+  * Account for WASM test dependencies changing, commit the Cargo.lock so they would stop doing that
+  * Migrate to a maintained toolchain action
+  * Fix author specification
+  * Add link to repository to resolverver Cargo.toml
+  * Bump resolverver to 0.1.0
+  * Add resolverver crate to the tree
+
+-------------------------------------------------------------------
 Fri Nov 29 02:28:10 UTC 2024 - william.brown@suse.com
 
 - Update to version 0.6.6~0:
