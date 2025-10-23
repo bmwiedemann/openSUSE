@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Path-Tiny
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Path-Tiny
 Name:           perl-Path-Tiny
-Version:        0.148.0
+Version:        0.150.0
 Release:        0
-# 0.148 -> normalize -> 0.148.0
-%define cpan_version 0.148
+# 0.150 -> normalize -> 0.150.0
+%define cpan_version 0.150
 License:        Apache-2.0
 Summary:        File path utility
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -72,7 +73,7 @@ This module depends heavily on PerlIO layers for correct operation and thus
 requires Perl 5.008001 or later.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

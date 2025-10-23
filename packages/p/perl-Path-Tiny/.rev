@@ -277,4 +277,18 @@
     <comment></comment>
     <requestid>1269374</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>54db01f040a0be7f2a14412eaf661879</srcmd5>
+    <version>0.150.0</version>
+    <time>1761230121</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.150.0 (0.150)
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+  0.150     2025-07-21 10:58:00-04:00 America/New_York
+      - No changes from 0.149-TRIAL
+  0.149     2025-07-21 05:49:38-04:00 America/New_York (TRIAL RELEASE)
+      [Other]
+      - Released with newest Dist::Zilla to avoid xattrs in the tarball.</comment>
+    <requestid>1312564</requestid>
+  </revision>
 </revisionlist>
