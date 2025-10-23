@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 23 05:38:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.45.0:
+  * feat(kms): Add KMS under beta (#935)
+  * chore(deps): bump renovatebot/github-action from 43.0.17 to
+    43.0.18 (#1034)
+  * refactor: centralize logic for parseInput tests (#1033)
+  * fix(mongodbflex): print valid JSON for list cmds (#1032)
+  * refactor: implement a new output result func to handle
+    json/yaml output in a central place (#1030)
+  * feat: Print auth login during `stackit auth login` (#1027)
+  * fix(ske): make generate cluster payload work for eu02 (#1008)
+  * chore(deps): update renovatebot/github-action action to
+    v43.0.17 (#1025)
+
+-------------------------------------------------------------------
 Fri Oct 17 05:05:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.44.1:
