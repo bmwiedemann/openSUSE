@@ -122,4 +122,13 @@ final releases.
 </comment>
     <requestid>1265352</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>be7fc31e2988fe7a0b222609ec3b1c8d</srcmd5>
+    <version>1.15</version>
+    <time>1761230247</time>
+    <user>anag_factory</user>
+    <comment>- Relax the mbedtls dependency since upstream supports building with version 3 boo#1252435
+</comment>
+    <requestid>1313084</requestid>
+  </revision>
 </revisionlist>

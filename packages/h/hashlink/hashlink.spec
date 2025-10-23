@@ -1,7 +1,7 @@
 #
 # spec file for package hashlink
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Patch0:         0001-fix-rpath.patch
 Patch1:         implement_hl_debug_break_for_more_architectures.patch
 BuildRequires:  cmake
 BuildRequires:  haxe >= 4.0
-BuildRequires:  mbedtls-devel < 3
+BuildRequires:  mbedtls-devel
 BuildRequires:  cmake(sdl2)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libpng)
