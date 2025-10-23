@@ -1,7 +1,7 @@
 #
 # spec file for package cross-avr-gcc15-bootstrap
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -123,6 +123,7 @@ Patch15:        gcc7-avoid-fixinc-error.diff
 Patch16:        gcc9-reproducible-builds.patch
 Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch19:        gcc11-gdwarf-4-default.patch
+Patch20:        gcc15-pr120424.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -329,6 +330,7 @@ ln -s newlib-4.5.0.20241231/newlib .
 %if %{suse_version} < 1550
 %patch -p1 -P 19
 %endif
+%patch -p1 -P 20
 %patch -P 51
 %patch -p1 -P 60 -P 61
 

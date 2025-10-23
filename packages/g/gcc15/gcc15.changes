@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 20 09:03:52 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add gcc15-pr120424.patch to backport fix that cures a miscompile
+  of libgo on arm.  [bsc#1252306]
+
+-------------------------------------------------------------------
 Mon Oct  6 09:37:42 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Update to GCC 15 branch head, 15.2.1+git10392

@@ -200,4 +200,13 @@ since we bumped libgo SONAME as well for 15</comment>
 - Fixes PR110812, Check availability of builtins at expand time</comment>
     <requestid>1311025</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9433d284aeb911a08cbde5049a5e1a22</srcmd5>
+    <version>15.2.1+git10392</version>
+    <time>1761230114</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc15-pr120424.patch to backport fix that cures a miscompile
+  of libgo on arm.  [bsc#1252306]</comment>
+    <requestid>1312706</requestid>
+  </revision>
 </revisionlist>
