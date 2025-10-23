@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct 23 05:40:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.36.0 (1.35.0 was not released):
+  * Added Features
+    - Add the ability to fetch remote licenses for pnpm-lock.yaml
+      files [#4286 @timols]
+    - support universal (fat) mach-o binary files [#4278
+      @JoeyShapiro]
+    - pdm support [#2709 #4234 @paulslaby]
+  * Bug Fixes
+    - Remove duplicate image source providers [#4289 @Rupikz]
+    - syft can't extract go module information from executables on
+      Windows [#4271 #4285 @JoeyShapiro]
+  * Dependencies
+    - chore(deps): update tools to latest versions (#4302)
+    - chore(deps): bump github.com/github/go-spdx/v2 from 2.3.3 to
+      2.3.4 (#4301)
+    - chore(deps): bump github/codeql-action from 4.30.8 to 4.30.9
+      (#4299)
+    - chore(deps): bump sigstore/cosign-installer from 3.10.0 to
+      4.0.0 (#4296)
+    - chore(deps): bump anchore/sbom-action from 0.20.7 to 0.20.8
+      (#4297)
+    - chore(deps): bump anchore/sbom-action from 0.20.6 to 0.20.7
+      (#4293)
+
+-------------------------------------------------------------------
 Fri Oct 17 05:48:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.34.2:
