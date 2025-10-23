@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 21 21:52:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 141.0.7390.122:
+  * CVE-2025-12036: Inappropriate implementation in V8 (boo#1252402)
+
+-------------------------------------------------------------------
 Wed Oct 15 02:48:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 141.0.7390.107:

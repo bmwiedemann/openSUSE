@@ -5952,4 +5952,13 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   * CVE-2025-11756: Use after free in Safe Browsing (boo#1252013)</comment>
     <requestid>1311422</requestid>
   </revision>
+  <revision rev="484" vrev="1">
+    <srcmd5>f2120d67bc8e3ff0b42c096f7c9c24f9</srcmd5>
+    <version>141.0.7390.122</version>
+    <time>1761230141</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 141.0.7390.122:
+  * CVE-2025-12036: Inappropriate implementation in V8 (boo#1252402)</comment>
+    <requestid>1312905</requestid>
+  </revision>
 </revisionlist>
