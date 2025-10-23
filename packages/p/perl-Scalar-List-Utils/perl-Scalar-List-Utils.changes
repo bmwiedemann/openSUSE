@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 14 12:23:56 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.700.0 (1.70)
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.70 -- 2025-07-30
+  	[CHANGES]
+  	 * Reïnstate handling of apostrophy in package names, as it was added
+  	   back to perl at version 5.41.6
+
+-------------------------------------------------------------------
 Wed Apr  2 05:37:28 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.690.0 (1.69)

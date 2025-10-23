@@ -259,4 +259,17 @@
     <comment></comment>
     <requestid>1272890</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3f9bc6ebdd803c4688667c4bead974b0</srcmd5>
+    <version>1.700.0</version>
+    <time>1761230121</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.700.0 (1.70)
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+  1.70 -- 2025-07-30
+  	[CHANGES]
+  	 * Reïnstate handling of apostrophy in package names, as it was added
+  	   back to perl at version 5.41.6</comment>
+    <requestid>1312560</requestid>
+  </revision>
 </revisionlist>

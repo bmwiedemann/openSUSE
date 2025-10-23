@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Scalar-List-Utils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,23 @@
 
 %define cpan_name Scalar-List-Utils
 Name:           perl-Scalar-List-Utils
-Version:        1.690.0
+Version:        1.700.0
 Release:        0
-# 1.69 -> normalize -> 1.690.0
-%define cpan_version 1.69
+# 1.70 -> normalize -> 1.700.0
+%define cpan_version 1.70
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Common Scalar and List utility subroutines
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Provides:       perl(List::Util) = 1.69
-Provides:       perl(List::Util::XS) = 1.69
+Provides:       perl(List::Util) = 1.70
+Provides:       perl(List::Util::XS) = 1.70
 Provides:       perl(Scalar::List::Utils) = %{version}
-Provides:       perl(Scalar::Util) = 1.69
-Provides:       perl(Sub::Util) = 1.69
+Provides:       perl(Scalar::Util) = 1.70
+Provides:       perl(Sub::Util) = 1.70
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -42,7 +43,7 @@ Provides:       perl(Sub::Util) = 1.69
 useful modules.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
