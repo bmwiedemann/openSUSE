@@ -304,4 +304,15 @@ I tested the upgrade path and this will not break anybody relying on the package
 </comment>
     <requestid>1307200</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>38648bc9d84dde74043124911144a980</srcmd5>
+    <version>0.20.0</version>
+    <time>1761230136</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.20.0
+  * Enable command suggestions on typo by default.
+  * Add support for Python 3.14.
+</comment>
+    <requestid>1312887</requestid>
+  </revision>
 </revisionlist>

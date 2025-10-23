@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 21 17:40:20 UTC 2025 - Matthias Bach <marix@marix.org> - 0.20.0
+
+- Update to 0.20.0
+  * Enable command suggestions on typo by default.
+  * Add support for Python 3.14.
+
+-------------------------------------------------------------------
 Wed Sep 24 18:55:20 UTC 2025 - Matthias Bach <marix@marix.org> - 0.19.2
 
 - Update to 0.19.2
