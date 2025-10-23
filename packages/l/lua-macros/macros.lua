@@ -97,7 +97,4 @@ luarocks --lua-version "%{lua_version}" make --deps-mode none --pack-binary-rock
 %luarocks_treedir %{_prefix}/lib/luarocks/rocks-%{lua_version}
 
 %luarocks_install \
-  /bin/sh -c 'luarocks --lua-version="%{lua_version}" --tree="%{buildroot}%{_prefix}" install --deps-mode=none --no-manifest "$@" && \
-  source_dir="%{buildroot}%{luarocks_treedir}/%{mod_name}/%{rock_version}" && \
-  [ -d "${source_dir}" ] && [ "$(ls -A "${source_dir}" | wc -l)" -gt 0 ] && \
-  mv -v "${source_dir}" __rocktree' --
+  %{_rpmconfigdir}/install-lua-rock.sh "%{lua_version}" "%{buildroot}%{_prefix}" "%{buildroot}%{luarocks_treedir}/%{mod_name}"

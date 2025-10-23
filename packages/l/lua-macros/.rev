@@ -117,4 +117,13 @@
 - Quote %%lua_archdir macro.</comment>
     <requestid>1311805</requestid>
   </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>200110440b9e0b6e6abfb08835835809</srcmd5>
+    <version>20210827</version>
+    <time>1761230138</time>
+    <user>anag_factory</user>
+    <comment>- Rewrite %luarocks_install to use a shell script
+  install-lua-rock.sh, which is packaged as well.</comment>
+    <requestid>1312655</requestid>
+  </revision>
 </revisionlist>

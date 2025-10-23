@@ -27,6 +27,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://www.lua.org
 Source0:        macros.lua
+Source1:        install-lua-rock.sh
 %if 0%{?suse_version} > 1600
 Requires:       lua-interpreter
 %elif 0%{?suse_version} >= 1500
@@ -46,9 +47,11 @@ cp -p %{SOURCE0} .
 :
 
 %install
-install -Dm644 macros.lua %{buildroot}%{_rpmmacrodir}/macros.lua
+install -Dm644 %{SOURCE0} %{buildroot}%{_rpmmacrodir}/macros.lua
+install -Dm755 %{SOURCE1} %{buildroot}%{_rpmconfigdir}/install-lua-rock.sh
 
 %files
 %{_rpmmacrodir}/macros.lua
+%{_rpmconfigdir}/install-lua-rock.sh
 
 %changelog
