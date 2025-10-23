@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 22 12:19:48 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Build with mbedtls-3.6.5 instead of bundled 3.6.2 to fix CVE-2025-59438
+
+-------------------------------------------------------------------
 Fri Aug 15 08:13:39 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.26.0

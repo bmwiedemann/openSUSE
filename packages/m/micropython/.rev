@@ -252,4 +252,12 @@
 - Removed micropython-gcc15-string-initialization.patch as included upstream</comment>
     <requestid>1299777</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>f1e6caed8577b7c90cc042b0ec13c33f</srcmd5>
+    <version>1.26.0</version>
+    <time>1761230150</time>
+    <user>anag_factory</user>
+    <comment>- Build with mbedtls-3.6.5 instead of bundled 3.6.2 to fix CVE-2025-59438</comment>
+    <requestid>1313040</requestid>
+  </revision>
 </revisionlist>
