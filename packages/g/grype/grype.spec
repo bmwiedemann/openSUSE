@@ -17,7 +17,7 @@
 
 
 Name:           grype
-Version:        0.101.1
+Version:        0.102.0
 Release:        0
 Summary:        A vulnerability scanner for container images and filesystems
 License:        Apache-2.0

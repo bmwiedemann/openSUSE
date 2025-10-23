@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 23 12:35:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.102.0:
+  * Added Features
+    - Use Alma Linux specific advisories for Alma Linux scans
+      [#2745 #2939 @willmurphyscode]
+  * Bug Fixes
+    - Bitnami packages with CPEs are not matched against CPE-based
+      vulnerabilities [#2997]
+  * Additional Changes
+    - add markdown template [#2987 @sebdanielsson]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3010)
+    - chore(deps): update tools to latest versions (#3009)
+    - chore(deps): bump github/codeql-action from 4.30.8 to 4.30.9
+      (#3008)
+    - chore(deps): bump sigstore/cosign-installer from 3.10.0 to
+      4.0.0 (#3007)
+    - chore(deps): bump anchore/sbom-action from 0.20.6 to 0.20.8
+      (#3006)
+
+-------------------------------------------------------------------
 Fri Oct 17 05:49:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.101.1:
