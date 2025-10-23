@@ -55,4 +55,18 @@
     <comment></comment>
     <requestid>1281842</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>afa8b39fe64f79bac346c78eb4497b90</srcmd5>
+    <version>1.240.0</version>
+    <time>1761230122</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.240.0 (1.24)
+   see /usr/share/doc/packages/perl-Net-Patricia/Changes
+  1.24 2025-10-05 09:32:28 CEST
+      - update the COPYING file
+      - add a license heading to the documentation
+      - fix the POD encoding
+      - remove a test that fails in certain DNS setups</comment>
+    <requestid>1312567</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 14 11:46:31 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.240.0 (1.24)
+   see /usr/share/doc/packages/perl-Net-Patricia/Changes
+
+  1.24 2025-10-05 09:32:28 CEST
+      - update the COPYING file
+      - add a license heading to the documentation
+      - fix the POD encoding
+      - remove a test that fails in certain DNS setups
+
+-------------------------------------------------------------------
 Mon May 26 19:32:01 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Remove no-libnsl.diff, fixed upstream

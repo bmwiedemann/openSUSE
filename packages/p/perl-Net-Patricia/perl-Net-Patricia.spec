@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Patricia
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,31 @@
 
 %define cpan_name Net-Patricia
 Name:           perl-Net-Patricia
-Version:        1.230.0
+Version:        1.240.0
 Release:        0
-# 1.23 -> normalize -> 1.230.0
-%define cpan_version 1.23
+# 1.24 -> normalize -> 1.240.0
+%define cpan_version 1.24
 #Upstream: SUSE-Public-Domain
 License:        BSD-2-Clause AND GPL-2.0-or-later
 Summary:        Patricia Trie for fast IP address lookups
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GR/GRUBER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Net::CIDR::Lite) >= 0.200
 BuildRequires:  perl(Socket6)
 BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test::Pod) >= 1.0
 BuildRequires:  perl(version)
 Requires:       perl(Net::CIDR::Lite) >= 0.200
 Requires:       perl(Socket6)
 Requires:       perl(version)
+Provides:       perl(Net::Patricia) = %{version}
+Provides:       perl(Net::Patricia::AF_INET)
+Provides:       perl(Net::Patricia::AF_INET6)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -56,7 +62,7 @@ The BSD radix code is thoroughly described in "TCP/IP Illustrated, Volume
 Table for Berkeley Unix'' by Keith Sklower.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
