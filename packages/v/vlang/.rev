@@ -31,4 +31,13 @@ focus on simplicity and maintainability</comment>
 - Do not copy v.c while building</comment>
     <requestid>1307211</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>57545c1ad03aa84f17689101c39fe82c</srcmd5>
+    <version>0.4.12</version>
+    <time>1761237104</time>
+    <user>anag_factory</user>
+    <comment>- Update v.c
+- Remove -prod flag for non-x86*</comment>
+    <requestid>1313216</requestid>
+  </revision>
 </revisionlist>

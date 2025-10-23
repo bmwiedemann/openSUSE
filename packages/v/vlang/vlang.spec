@@ -17,7 +17,7 @@
 #
 
 # git revision
-%global vc_gitrev  a17f1105aa18b604ed8dac8fa5ca9424362c6e15
+%global vc_gitrev  048a0a537560080eb73d56e2f3b644462fa9037a
 
 # custom paths and variables
 %global vflags      -cc gcc -d dynamic_boehm
@@ -86,7 +86,11 @@ export STAGE0_FLAGS='-lm -lpthread'
 %endif
 
 export STAGE1_FLAGS='-no-parallel'
+%ifarch x86_64 %{ix86}
 export STAGE2_FLAGS='-prod -nocache'
+%else
+export STAGE2_FLAGS='-nocache'
+%endif
 
 # stage 0: build the V compiler from the transpiled C code
 ${CC} ${CFLAGS} ${LDFLAGS} ${STAGE0_FLAGS} -o %{name}-stage0 %{SOURCE1}
