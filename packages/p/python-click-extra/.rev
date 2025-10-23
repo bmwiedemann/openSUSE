@@ -71,4 +71,41 @@
     <comment></comment>
     <requestid>1281759</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>458dbb26c97a91af81a897f7677f3421</srcmd5>
+    <version>6.0.3</version>
+    <time>1761230139</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.3:
+  * Fix @config_option to accept Path objects as default value.
+  * Add official support of Python 3.14.
+  * Add --table-format option by default on @extra_command and @extra_group.
+  * Let --table-format and --no-color affect the rendering of --show-params
+    table.
+  * Swap Class and Spec. columns in --show-params output.
+  * Classify table formats into two categories: markup formats and
+    plain-text formats.
+  * Fix display in --show-params for parameters sharing the same name.
+  * Fix detection in the --version option of the module in which the user's
+    CLI is implemented.
+  * Rename click_extra.tabulate namespace to click_extra.table.
+  * Expose click._utils.UNSET and click.logging.LogLevel at the root
+    click_extra module.
+  * Replace unmaintained mergedeep dependency by deepmerge.
+- Ship the license and readme in the binary packages.
+
+- Currently broken, waiting on the resolution of the upstream
+  click 8.2.2 drama (gh#pallets/click#3024).
+- update to 5.1.0:
+  * Add support for MyST Markdown syntax for click:example and
+    click:run Sphinx directives.
+  * Add support for all code-block options to click:example and
+    click:run: :linenos:, :lineno-start:, :emphasize-lines:,
+    :force:, :caption:, :name:, :class: and :dedent:.
+  * Add new :show-source:/:hide-source:,
+    :show-results:/:hide-results: and :language: options to
+    click:example and click:run. Closes {issue}719.
+  * Support non-string choices in colored help screens. Closes</comment>
+    <requestid>1312922</requestid>
+  </revision>
 </revisionlist>

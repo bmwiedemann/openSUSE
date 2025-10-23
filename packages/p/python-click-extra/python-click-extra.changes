@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Oct 22 03:11:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.0.3:
+  * Fix @config_option to accept Path objects as default value.
+  * Add official support of Python 3.14.
+  * Add --table-format option by default on @extra_command and @extra_group.
+  * Let --table-format and --no-color affect the rendering of --show-params
+    table.
+  * Swap Class and Spec. columns in --show-params output.
+  * Classify table formats into two categories: markup formats and
+    plain-text formats.
+  * Fix display in --show-params for parameters sharing the same name.
+  * Fix detection in the --version option of the module in which the user's
+    CLI is implemented.
+  * Rename click_extra.tabulate namespace to click_extra.table.
+  * Expose click._utils.UNSET and click.logging.LogLevel at the root
+    click_extra module.
+  * Replace unmaintained mergedeep dependency by deepmerge.
+- Ship the license and readme in the binary packages.
+
+-------------------------------------------------------------------
+Fri Aug  8 18:42:28 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Currently broken, waiting on the resolution of the upstream
+  click 8.2.2 drama (gh#pallets/click#3024).
+- update to 5.1.0:
+  * Add support for MyST Markdown syntax for click:example and
+    click:run Sphinx directives.
+  * Add support for all code-block options to click:example and
+    click:run: :linenos:, :lineno-start:, :emphasize-lines:,
+    :force:, :caption:, :name:, :class: and :dedent:.
+  * Add new :show-source:/:hide-source:,
+    :show-results:/:hide-results: and :language: options to
+    click:example and click:run. Closes {issue}719.
+  * Support non-string choices in colored help screens. Closes
+    {issue}1284.
+  * Replace LOG_LEVELS mapping with LogLevel enum.
+  * Remove DEFAULT_LEVEL_NAME constants.
+  * Fix rendering of default values in --show-params output.
+  * Fix reconciliation of flags' environment variables.
+  * Force requirement on cloup >= 3.0.7.
+  * Be more informative when error is found in click:example and
+    click:run Sphinx directives by displaying the path of the
+    original document and the line number of the error.
+
+-------------------------------------------------------------------
 Sat May 31 13:26:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.0.2:
