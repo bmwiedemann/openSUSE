@@ -7,4 +7,12 @@
     <comment>new package artifacthub-cli: check that your packages are ready to be listed on AH by using the lint subcommand</comment>
     <requestid>1247487</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e37324453ea999f6fbd5b368ecc2cd48</srcmd5>
+    <version>1.22.0</version>
+    <time>1761237107</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313228</requestid>
+  </revision>
 </revisionlist>

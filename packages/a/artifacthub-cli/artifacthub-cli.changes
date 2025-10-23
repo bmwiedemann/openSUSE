@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 23 13:52:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.22.0:
+   No CLI-related changes in the changelog
+
+-------------------------------------------------------------------
+Thu Oct 23 13:42:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.21.0:
+   No CLI-related changes in the changelog
+  * Bump github.com/containerd/containerd from 1.7.26 to 1.7.27
+    (#4324)
+  * Bump Go to 1.23.3 (#4143)
+
+-------------------------------------------------------------------
 Fri Feb 14 11:40:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package artifacthub-cli: check that your packages are ready

@@ -18,7 +18,7 @@
 %define executable_name ah
 
 Name:           artifacthub-cli
-Version:        1.20.0
+Version:        1.22.0
 Release:        0
 Summary:        CLI for Artifact Hub
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
+BuildRequires:  go1.25 >= 1.25.3
 BuildRequires:  zsh
 Provides:       ah = %{version}
 
