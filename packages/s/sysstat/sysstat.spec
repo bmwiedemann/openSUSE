@@ -115,19 +115,19 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcsysstat
 # make %%{?_smp_mflags} test
 
 %pre
-%service_add_pre sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service syssstat-rotate.timer
+%service_add_pre sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service sysstat-rotate.timer
 
 %post
-%service_add_post sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service syssstat-rotate.timer
+%service_add_post sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service sysstat-rotate.timer
 # Earlier versions used cron, remove leftover
 rm -f /etc/cron.d/sysstat || :
 
 %preun
-%service_del_preun sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service syssstat-rotate.timer
+%service_del_preun sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service sysstat-rotate.timer
 [ "$1" -gt 0 ] || rm -rf %{_localstatedir}/log/sa/*
 
 %postun
-%service_del_postun sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service syssstat-rotate.timer
+%service_del_postun sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service sysstat-rotate.timer
 
 %files -f "%{name}.lang"
 %license COPYING
