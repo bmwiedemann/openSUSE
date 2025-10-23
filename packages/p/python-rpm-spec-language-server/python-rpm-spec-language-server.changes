@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Oct 22 09:37:26 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Add %check section and run pytest
+
+-------------------------------------------------------------------
+Wed Oct 22 08:30:34 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.0.2:
+  * Bump version to 0.0.2
+  * use LABEL $name=$value instead of LABEL $name $value
+  * use consistent capitalization: FROM $url as $name => FROM $url AS $name
+  * ci: drop eol node versions, add supported versions
+  * Bump locked dependencies
+  * fix: don't hardcode the server version
+  * Fix Tumbleweed container image build
+  * Add pygls v2 support
+  * Bump ruff from 0.13.3 to 0.14.1
+  * Bump actions/setup-node from 5.0.0 to 6.0.0
+  * Bump ruff from 0.13.2 to 0.13.3
+  * Bump specfile from 0.37.0 to 0.37.1
+  * Bump @vscode/vsce from 3.6.0 to 3.6.2
+  * Bump ruff from 0.13.1 to 0.13.2
+  * Bump locked dependencies
+  * Bump mypy from 1.17.1 to 1.18.1
+  * Bump ruff from 0.12.12 to 0.13.0
+  * Bump specfile from 0.36.0 to 0.37.0
+  * Bump @types/node from 24.3.0 to 24.3.1
+  * Bump pytest from 8.4.1 to 8.4.2
+  * Bump twine from 6.1.0 to 6.2.0
+  * Bump ruff from 0.12.11 to 0.12.12
+  * Bump actions/setup-python from 5 to 6
+  * Bump actions/setup-node from 4.4.0 to 5.0.0
+  * Bump coverage from 7.10.5 to 7.10.6
+  * Bump ruff from 0.12.10 to 0.12.11
+  * Bump coverage from 7.10.4 to 7.10.5
+  * Bump ruff from 0.12.9 to 0.12.10
+  * Bump requests from 2.32.4 to 2.32.5
+  * Bump coverage from 7.10.3 to 7.10.4
+  * Bump @types/node from 24.2.1 to 24.3.0
+  * Bump ruff from 0.12.8 to 0.12.9
+  * Bump actions/checkout from 4 to 5
+  * Bump types-requests from 2.32.4.20250611 to 2.32.4.20250809
+  * Bump @types/node from 24.1.0 to 24.2.1
+  * Bump coverage from 7.10.2 to 7.10.3
+  * Bump ruff from 0.12.7 to 0.12.8
+  * Bump actions/download-artifact from 4 to 5
+- Rework services configuration in _service
+- Add missing Require: requests
+
+-------------------------------------------------------------------
 Tue Aug 05 18:06:21 UTC 2025 - mcepl@cepl.eu
 
 - Update to version 0.0.1+git.1754294706.19064e2:

@@ -1,15 +1,15 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/dcermak/rpm-spec-language-server.git</param>
-    <param name="versionprefix">0.0.1+git</param>
-    <param name="revision">main</param>
     <param name="scm">git</param>
+    <param name="url">https://github.com/dcermak/rpm-spec-language-server.git</param>
+    <param name="revision">0.0.2</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">mcepl@cepl.eu</param>
   </service>
-  <service mode="manual" name="set_version"/>
-  <service mode="manual" name="tar"/>
-  <service mode="manual" name="recompress">
+  <service name="set_version" mode="manual"/>
+  <service name="format_spec_file" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>

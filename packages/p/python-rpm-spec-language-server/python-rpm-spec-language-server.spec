@@ -2,9 +2,6 @@
 # spec file for package python-rpm-spec-language-server
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +24,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-rpm-spec-language-server
-Version:        0.0.1+git.1754294706.19064e2
+Version:        0.0.2
 Release:        0
 Summary:        Language Server for RPM spec files
 License:        GPL-2.0-or-later
@@ -35,12 +32,20 @@ URL:            https://github.com/dcermak/rpm-spec-language-server
 # Source:         https://files.pythonhosted.org/packages/source/r/rpm-spec-language-server/rpm_spec_language_server-%%{version}.tar.gz
 Source:         rpm-spec-language-server-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
+# SECTION test requirements
+BuildRequires:  %{python_module lsprotocol}
+BuildRequires:  %{python_module pygls}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module specfile}
+BuildRequires:  %{python_module typeguard}
+# /SECTION
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pygls
+Requires:       python-requests
 Requires:       python-specfile
 Requires:       rpm
 BuildArch:      noarch
@@ -63,6 +68,10 @@ implementing the Language Server Protocol for RPM Spec files.
 %build
 %pyproject_wheel
 
+%check
+# Skip tests which require an internet connection
+%pytest -k "not (upstream or test_cache_creation)"
+
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/rpm_lsp_server
@@ -77,6 +86,6 @@ implementing the Language Server Protocol for RPM Spec files.
 %files %{python_files}
 %python_alternative %{_bindir}/rpm_lsp_server
 %{python_sitelib}/rpm_spec_language_server
-%{python_sitelib}/rpm_spec_language_server-0.0.1*-info
+%{python_sitelib}/rpm_spec_language_server-%{version}.dist-info
 
 %changelog
