@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flux-local
-Version:        7.10.1
+Version:        7.11.0
 Release:        0
 Summary:        Set of tools for managing a flux gitops repository
 License:        Apache-2.0

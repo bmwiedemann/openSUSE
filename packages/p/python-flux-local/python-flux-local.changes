@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 23 05:40:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.11.0:
+  * chore(deps): update dependency syrupy to v5 by @renovate[bot]
+    in #1012
+  * chore(deps): update actions/upload-pages-artifact action to v4
+    by @renovate[bot] in #995
+  * chore(deps): update dependency ruff to v0.14.0 by
+    @renovate[bot] in #1014
+  * feat: add Grafana to the list of supported images by @onedr0p
+    in #1020
+
+-------------------------------------------------------------------
 Mon Oct  6 05:49:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.10.1:
