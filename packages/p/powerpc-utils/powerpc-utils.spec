@@ -25,10 +25,6 @@ Group:          System/Management
 URL:            https://github.com/ibm-power-utilities/powerpc-utils
 Source0:        https://github.com/ibm-power-utilities/powerpc-utils/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        nvsetenv
-Patch1:         powerpc-utils-lsprop.patch
-Patch2:         ofpathname_powernv.patch
-Patch3:         fix_kexec_service_name_for_suse.patch
-Patch4:         libvirt-service-dep.patch
 Patch5:         lparstat-print-memory-mode-correctly.patch
 Patch6:         drmgr-pci-Return-0-for-success-from-do_replace.patch
 Patch7:         lparstat-Fix-negative-values-for-idle-PURR.patch
@@ -39,6 +35,11 @@ Patch11:        pseries_platform.h-Fix-ifdef-guard-typo.patch
 Patch12:        sys_ident-Quiet-strncpy-warning.patch
 Patch13:        nvram.c-Correct-librtas-function-prototypes.patch
 Patch14:        smtstate-Start-smtstate-service-after-network-target.patch
+Patch15:        lparstat-Use-pool_capacity-for-determining-active-cp.patch
+Patch41:        powerpc-utils-lsprop.patch
+Patch42:        ofpathname_powernv.patch
+Patch43:        fix_kexec_service_name_for_suse.patch
+Patch44:        libvirt-service-dep.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

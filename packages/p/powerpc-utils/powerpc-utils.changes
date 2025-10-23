@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 21 09:47:28 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Also start smt_off service after networking (bsc#1249152 ltc#214730)
+  * Refresh smtstate-Start-smtstate-service-after-network-target.patch
+  * Refresh libvirt-service-dep.patch
+- Fix psize reporting on a CPU pool (bsc#1252108 ltc#214494)
+  * lparstat-Use-pool_capacity-for-determining-active-cp.patch
+
+-------------------------------------------------------------------
 Mon Sep  8 15:17:15 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Start SMT service after networking (bsc#1249152 ltc#214730)

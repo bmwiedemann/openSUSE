@@ -1,15 +1,26 @@
+From a0c51e77a0953f6010e70ead9c81026df2b2f564 Mon Sep 17 00:00:00 2001
+From: Dinar Valeev <dvaleev@suse.com>
+Date: Tue, 24 May 2016 23:17:02 +0000
+Subject: [PATCH] Adjust dependant libvirt service name of smt_off service
+
 Upstream: TBD
 References: lost in the mists of time
+---
+ systemd/smt_off.service.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: powerpc-utils-1.3.4/systemd/smt_off.service.in
-===================================================================
---- powerpc-utils-1.3.4.orig/systemd/smt_off.service.in
-+++ powerpc-utils-1.3.4/systemd/smt_off.service.in
+diff --git a/systemd/smt_off.service.in b/systemd/smt_off.service.in
+index e0c133e..5bc42ea 100644
+--- a/systemd/smt_off.service.in
++++ b/systemd/smt_off.service.in
 @@ -1,6 +1,6 @@
  [Unit]
  Description=ppc64 set SMT off
 -Before=libvirt-bin.service
 +Before=libvirtd.service
+ After=network.target
  
  [Service]
- Type=oneshot
+-- 
+2.51.0
+
