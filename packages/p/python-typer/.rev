@@ -479,4 +479,15 @@
 </comment>
     <requestid>1307199</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6cff5dd31ca3bcefc75d59257aa38afd</srcmd5>
+    <version>0.20.0</version>
+    <time>1761230137</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.20.0
+  * Enable command suggestions on typo by default.
+  * Add support for Python 3.14.
+</comment>
+    <requestid>1312888</requestid>
+  </revision>
 </revisionlist>
