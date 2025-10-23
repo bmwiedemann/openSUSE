@@ -1778,4 +1778,19 @@
   * releaser: Prepare repository for 0.152.0-DEV (forwarded request 1312878 from jfkw)</comment>
     <requestid>1312889</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>4db584189893daa298831e7a269a43a0</srcmd5>
+    <version>0.152.1</version>
+    <time>1761230249</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.152.1:
+  * releaser: Bump versions for release of 0.152.1
+  * Expand the numeric conversions to template funcs/methods
+  * Fix where with uint64
+  * Fix it so YAML integer types can be used where Go int types are expected
+  * tpl/compare: Fix compare/sort of uint64s
+  * Fix &quot;assignment to entry in nil map&quot; on empty YAML config files
+  * releaser: Prepare repository for 0.153.0-DEV (forwarded request 1313089 from jfkw)</comment>
+    <requestid>1313090</requestid>
+  </revision>
 </revisionlist>
