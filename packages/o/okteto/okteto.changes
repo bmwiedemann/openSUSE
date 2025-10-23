@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 23 10:49:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.12.1:
+  * Bug Fix
+    - [Backport release-3.12] fix: improve error handling in log
+      streaming during resource destruction by @github-actions[bot]
+      in #4802
+
+-------------------------------------------------------------------
 Wed Oct 01 08:04:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.12.0:
