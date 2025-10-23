@@ -5,11 +5,11 @@ Subject: Build PIE binaries
 Set lazarus project files so that we produce position
 independent executables.
 
-Index: peazip-10.6.1.src/dev/project_pea.lpi
+Index: peazip-10.7.0.src/dev/project_pea.lpi
 ===================================================================
---- peazip-10.6.1.src.orig/dev/project_pea.lpi
-+++ peazip-10.6.1.src/dev/project_pea.lpi
-@@ -585,6 +585,8 @@
+--- peazip-10.7.0.src.orig/dev/project_pea.lpi
++++ peazip-10.7.0.src/dev/project_pea.lpi
+@@ -630,6 +630,8 @@
          <DebugInfoType Value="dsDwarf3"/>
        </Debugging>
        <Options>
@@ -18,12 +18,12 @@ Index: peazip-10.6.1.src/dev/project_pea.lpi
          <Win32>
            <GraphicApplication Value="True"/>
          </Win32>
-Index: peazip-10.6.1.src/dev/project_peach.lpi
+Index: peazip-10.7.0.src/dev/project_peach.lpi
 ===================================================================
---- peazip-10.6.1.src.orig/dev/project_peach.lpi
-+++ peazip-10.6.1.src/dev/project_peach.lpi
-@@ -1681,6 +1681,8 @@
-         <RunWithoutDebug Value="True"/>
+--- peazip-10.7.0.src.orig/dev/project_peach.lpi
++++ peazip-10.7.0.src/dev/project_peach.lpi
+@@ -1742,6 +1742,8 @@
+         <DebugInfoType Value="dsDwarf3"/>
        </Debugging>
        <Options>
 +        <PassLinkerOptions Value="True"/>

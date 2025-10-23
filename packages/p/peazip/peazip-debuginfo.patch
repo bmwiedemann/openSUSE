@@ -1,13 +1,13 @@
-Index: peazip-10.6.1.src/dev/project_peach.lpi
+Index: peazip-10.7.0.src/dev/project_peach.lpi
 ===================================================================
---- peazip-10.6.1.src.orig/dev/project_peach.lpi
-+++ peazip-10.6.1.src/dev/project_peach.lpi
-@@ -1677,7 +1677,7 @@
+--- peazip-10.7.0.src.orig/dev/project_peach.lpi
++++ peazip-10.7.0.src/dev/project_peach.lpi
+@@ -1737,7 +1737,7 @@
      </CodeGeneration>
      <Linking>
        <Debugging>
 -        <GenerateDebugInfo Value="False"/>
 +        <GenerateDebugInfo Value="True"/>
          <RunWithoutDebug Value="True"/>
+         <DebugInfoType Value="dsDwarf3"/>
        </Debugging>
-       <Options>

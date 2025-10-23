@@ -1,22 +1,22 @@
-Index: peazip-10.6.1.src/dev/peach.pas
+Index: peazip-10.7.0.src/dev/peach.pas
 ===================================================================
---- peazip-10.6.1.src.orig/dev/peach.pas
-+++ peazip-10.6.1.src/dev/peach.pas
-@@ -46427,7 +46427,7 @@ end;
+--- peazip-10.7.0.src.orig/dev/peach.pas
++++ peazip-10.7.0.src/dev/peach.pas
+@@ -62178,7 +62178,7 @@ end;
  
- procedure TForm_peach.baboutlocalhelpClick(Sender: TObject);
+ procedure TFormPeach.baboutlocalhelpClick(Sender: TObject);
  begin
 -cp_open(sharepath+'peazip_help.pdf',desk_env);
 +cp_open('/usr/share/doc/packages/peazip/peazip_help.pdf',desk_env);
  end;
  
- procedure TForm_peach.baboutplugindirClick(Sender: TObject);
-@@ -72569,7 +72569,7 @@ end;
+ procedure TFormPeach.baboutplugindirClick(Sender: TObject);
+@@ -74697,7 +74697,7 @@ end;
  
- procedure TForm_peach.mpeahelpofflineClick(Sender: TObject);
+ procedure TFormPeach.mpeahelpofflineClick(Sender: TObject);
  begin
 -cp_open(sharepath+'peazip_help.pdf',desk_env);
 +cp_open('/usr/share/doc/packages/peazip/peazip_help.pdf',desk_env);
  end;
  
- procedure TForm_peach.mRecent9Click(Sender: TObject);
+ procedure TFormPeach.mRecent9Click(Sender: TObject);
