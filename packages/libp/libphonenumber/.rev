@@ -122,4 +122,14 @@
     <comment></comment>
     <requestid>1306516</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8b950011d98207acf04e96026994b7f1</srcmd5>
+    <version>9.0.14</version>
+    <time>1761230130</time>
+    <user>anag_factory</user>
+    <comment>- Fix libphonenumber-devel dependencies.
+  libphonenumber::phonenumber-shared's INTERFACE_LINK_LIBRARIES
+  contains Boost::date_time and Boost::thread (forwarded request 1309694 from krop)</comment>
+    <requestid>1312813</requestid>
+  </revision>
 </revisionlist>

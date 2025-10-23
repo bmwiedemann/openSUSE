@@ -64,6 +64,8 @@ for running on smartphones, and is used by the Android framework since 4.0
 Summary:        Library for parsing, formatting, and validating international phone numbers
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{lib_ver} = %{version}
+Requires:       libboost_date_time-devel >= 1.40.0
+Requires:       libboost_thread-devel >= 1.40.0
 Requires:       cmake(absl)
 Requires:       pkgconfig(protobuf) >= 2.4
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  7 20:38:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Fix libphonenumber-devel dependencies.
+  libphonenumber::phonenumber-shared's INTERFACE_LINK_LIBRARIES
+  contains Boost::date_time and Boost::thread
+
+-------------------------------------------------------------------
 Wed Sep 17 08:50:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 9.0.14:
