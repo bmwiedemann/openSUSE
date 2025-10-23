@@ -126,4 +126,14 @@
   * see https://github.com/biomejs/biome/releases/tag/%40biomejs%2Fbiome%402.2.3</comment>
     <requestid>1302961</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4add197c2628f97e0a61b0c4628735c8</srcmd5>
+    <version>2.2.7</version>
+    <time>1761230245</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.2.7
+  * many changes since 2.2.3, see https://github.com/biomejs/biome/releases/
+  * or: https://github.com/biomejs/biome/blob/main/packages/%40biomejs/biome/CHANGELOG.md#227</comment>
+    <requestid>1313083</requestid>
+  </revision>
 </revisionlist>

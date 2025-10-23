@@ -17,9 +17,8 @@
 #
 
 
-%define rev daa4a66e7971800a5e15024f5b5535d072087ac9
 Name:           biome
-Version:        2.2.3
+Version:        2.2.7
 Release:        0
 Summary:        A JavaScript and TypeScript toolchain
 License:        Apache-2.0 AND MIT
@@ -40,7 +39,7 @@ them. Biome offers formatter and linter, usable via CLI and LSP.
 %autosetup -a1 -p1 -n %{name}--biomejs-%{name}-%{version}
 
 %build
-export BIOME_VERSION=%{version}-%{rev}
+export BIOME_VERSION=%{version}
 %{cargo_build} -p biome_cli
 
 %install
