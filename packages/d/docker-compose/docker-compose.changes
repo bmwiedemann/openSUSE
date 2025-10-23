@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 23 05:49:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.40.2:
+  * publish env_file references as opaque hash to prevent paths
+    conflicts
+  * Enforce compose files from OCI artifact all get into the same
+    target (cache) folder
+  * introduce WithPrompt to configure compose backend to use a
+    plugable UI component for user interaction
+  * test digest or canonical reference, not only tag, when checking
+    if an image is already present
+  * remove unused code to only rely on api.Service
+  * fail build if minimal required version of buildx isn't
+    installed
+  * Compose can't create a tar with adequate uid:gid ownership as
+    we can't get container UID/GID as int by ContainerInspect
+    revert https://github.com/docker/compose/pull/13288
+
+-------------------------------------------------------------------
 Sat Oct 18 06:06:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.40.1:
