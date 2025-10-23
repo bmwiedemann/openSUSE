@@ -491,4 +491,12 @@ From the NEWS file, this version reports the following:
     <comment>build with sfsexp (boo#1240535)</comment>
     <requestid>1266832</requestid>
   </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>7601a86320407ff62858a1d95f2d544b</srcmd5>
+    <version>0.38.3</version>
+    <time>1761230290</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313169</requestid>
+  </revision>
 </revisionlist>

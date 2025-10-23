@@ -1,7 +1,7 @@
 #
 # spec file for package notmuch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -180,7 +180,7 @@ pushd bindings
 %if %{with python3}
 cp -r python python3
 pushd python3
-python3 setup.py build
+%pyproject_wheel
 pushd docs
 %{make_build} dirhtml
 rm -f build/dirhtml/.buildinfo
@@ -199,7 +199,7 @@ popd
 
 %if %{with python3}
 pushd bindings/python3
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%pyproject_install
 popd
 pushd bindings/python-cffi
 %pyproject_install
@@ -264,7 +264,7 @@ fi
 %license COPYING COPYING-GPL-3
 %doc bindings/python/README
 %{python3_sitelib}/%{name}/
-%{python3_sitelib}/%{name}*egg-info
+%{python3_sitelib}/%{name}-%{version}.dist-info
 
 %files -n python-%{name}-doc
 %license COPYING COPYING-GPL-3

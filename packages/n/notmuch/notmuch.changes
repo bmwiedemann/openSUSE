@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 23 04:26:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyroject macros to build and install the Python bindings, like the
+  CFFI bindings.
+
+-------------------------------------------------------------------
 Tue Apr  1 17:28:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with sfsexp (boo#1240535) to enable s-expression support
