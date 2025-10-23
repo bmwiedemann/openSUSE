@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 21 15:22:46 CEST 2025 - ro@suse.de
+
+- properly install license files 
+
+-------------------------------------------------------------------
 Sun Mar 21 10:42:29 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix build on Leap which does not have %_firmwaredir

@@ -128,4 +128,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>881728</requestid>
   </revision>
+  <revision rev="19" vrev="24">
+    <srcmd5>92067843589fc9e09e3eabd257ab2cbb</srcmd5>
+    <version>9</version>
+    <time>1761230135</time>
+    <user>anag_factory</user>
+    <comment>- properly install license files</comment>
+    <requestid>1312841</requestid>
+  </revision>
 </revisionlist>

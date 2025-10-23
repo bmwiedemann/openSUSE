@@ -1,7 +1,7 @@
 #
 # spec file for package ipw-firmware
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!_firmwaredir:%define _firmwaredir /lib/firmware}
+%{?!_licensedir:%define _licensedir %datadir/licenses}
 
 Name:           ipw-firmware
 Summary:        Firmware for Intel PRO/Wireless WLAN Cards
@@ -40,10 +41,10 @@ Supplements:    modalias(pci:v00008086d00001043sv0000103Csd00002741bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001043sv00008086sd0000252[0123456789BCD]bc*)
 Supplements:    modalias(pci:v00008086d00001043sv00008086sd0000255[01345]bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001043sv00008086sd0000256[0123567]bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00001043sv00008086sd000025[78]0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001043sv00008086sd0000258[123567]bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001043sv00008086sd0000259[012368]bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001043sv00008086sd000025A0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00001043sv00008086sd000025[78]0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001043sv00008086sd0000270[12]bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001043sv00008086sd0000271[12]bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001043sv00008086sd0000272[12]bc*sc*i*)
@@ -67,8 +68,10 @@ Intel license. See http://ipw2100.sourceforge.net/firmware.php?fid=4.
 
 %install
 mkdir -p %{buildroot}%{_firmwaredir}
+mkdir -p %{buildroot}%{_licensedir}/%name
+cp LICENSE %{buildroot}%{_licensedir}/%name/LICENSE.ipw2100
+mv ipw2200-fw-3.1/LICENSE.ipw2200-fw %{buildroot}%{_licensedir}/%name/LICENSE.ipw2200
 cp *fw ipw2200-fw-3.1/*fw %{buildroot}%{_firmwaredir}
-cp LICENSE %{buildroot}%{_firmwaredir}/LICENSE.ipw2x00
 
 %post
 test -f /.buildenv && exit 0
@@ -89,6 +92,7 @@ for M in ipw2100 ipw2200 ; do
 done
 
 %files
+%license %{_licensedir}/%name
 %{_firmwaredir}/*
 
 %changelog
