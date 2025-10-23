@@ -1,7 +1,7 @@
 #
 # spec file for package libmicrohttpd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2010,2011,2012  Stephan Kleine
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -33,6 +33,8 @@ Source0:        https://ftp.gnu.org/gnu/libmicrohttpd/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/libmicrohttpd/%{name}-%{version}.tar.gz.sig
 # https://savannah.gnu.org/project/release-gpgkeys.php?group=libmicrohttpd
 Source2:        %{name}.keyring
+# PATCH-FIX-OPENSUSE bsc#1211301 Follow the system-wide crypto-policies
+Patch0:         libmicrohttpd-utilize-system-crypto-policy.patch
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig >= 0.9.0
