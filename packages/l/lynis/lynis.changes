@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 23 12:10:28 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 3.1.6
+  * Added
+    - Add notice to screen output if end-of-life state is unclear
+    - Support for CachyOS, macOS Tahoe, and OpenMandriva Lx
+  * Changed
+    - Releases are now considered to be old if they are 6 months or older
+    - Removed generic suggestion for outdated/old Lynis release, instead show to screen output
+    - Generic clarifications on variable usage for operating system and its version
+    - Updated end-of-life database
+    - Updated Japanese translation
+    - For Debian and similar systems ignore kernel packages with 'rc' state
+    - ACCT-9634 - Define default auditd log file location
+    - FIRE-4586 - Also accept NFLOG as a logging target for iptables
+    - MALW-3280 - Adjusted detection of Wazuh agent
+- Updated lynis.keyring, adding a new subkey for 0xFEBB7D1812576482: 0x7A9A1D9D5B27C6D3
+
+-------------------------------------------------------------------
 Sat Oct  4 07:01:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tests_binary_rpath: remove usage of egrep boo#1250997
