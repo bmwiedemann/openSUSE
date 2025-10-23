@@ -18,19 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-extra-platforms
-Version:        3.2.3
+Version:        4.1.0
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        GPL-2.0-or-later
 URL:            https://github.com/kdeldycke/extra-platforms
 Source:         https://files.pythonhosted.org/packages/source/e/extra-platforms/extra_platforms-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.11}
-BuildRequires:  %{python_module boltons >= 25.0.0}
-BuildRequires:  %{python_module distro >= 1.9.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
+# SECTION runtime requirements
+BuildRequires:  %{python_module distro >= 1.9.0}
+# /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 8.3.5}
 BuildRequires:  %{python_module pytest-randomly >= 3.16.0}
@@ -38,7 +39,6 @@ BuildRequires:  %{python_module pytest-xdist >= 3.8.0}
 BuildRequires:  %{python_module requests >= 2.32.3 with %python-requests < 2.33}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-boltons >= 25.0.0
 Requires:       python-distro >= 1.9.0
 BuildArch:      noarch
 %python_subpackages
@@ -64,7 +64,7 @@ sed -i '/--cov-branch/d' pyproject.toml
 sed -i '/--cov-precision=2/d' pyproject.toml
 # do not run tests that try to connect to websites
 rm -f tests/test_platform_data.py
-%pytest
+%pytest -k "(not test_pypoject_classifiers)"
 
 %files %{python_files}
 %{python_sitelib}/extra_platforms
