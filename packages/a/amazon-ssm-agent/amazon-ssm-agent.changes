@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 23 13:12:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.3270.0
+  * Add initial IPv6 support with UseDualStackEndpoint configuration option
+  * Fix CPU utilization issue for instances with thousands of network interfaces
+
+-------------------------------------------------------------------
 Wed Oct  1 09:09:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.3185.0

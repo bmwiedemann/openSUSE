@@ -528,4 +528,14 @@
   * Update golang.org/x/sys to v0.32.0 (forwarded request 1308352 from glaubitz)</comment>
     <requestid>1308394</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d3fe077de3f8ba56bdfb886c6a0a0c13</srcmd5>
+    <version>3.3.3270.0</version>
+    <time>1761230310</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.3270.0
+  * Add initial IPv6 support with UseDualStackEndpoint configuration option
+  * Fix CPU utilization issue for instances with thousands of network interfaces (forwarded request 1313221 from glaubitz)</comment>
+    <requestid>1313222</requestid>
+  </revision>
 </revisionlist>
