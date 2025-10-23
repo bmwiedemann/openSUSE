@@ -1,0 +1,27 @@
+From 8f047e4756a3abe0aed381a11e4c1867791c98fe Mon Sep 17 00:00:00 2001
+From: rumtid <liwei.jiang@seafile.com>
+Date: Wed, 24 Sep 2025 16:11:42 +0800
+Subject: [PATCH] Fix search API
+
+---
+ src/api/requests.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/api/requests.cpp b/src/api/requests.cpp
+index 1bd33b06d..fa75a2fc1 100644
+--- a/src/api/requests.cpp
++++ b/src/api/requests.cpp
+@@ -963,7 +963,11 @@ void FileSearchRequest::requestSuccess(QNetworkReply& reply)
+         tmp.repo_name = RepoService::instance()->getRepo(tmp.repo_id).name;
+         tmp.name = map["name"].toString();
+         tmp.oid = map["oid"].toString();
+-        tmp.last_modified = map["last_modified"].toLongLong();
++        if (map.contains("last_modified")) {
++            tmp.last_modified = map["last_modified"].toLongLong();
++        } else if (map.contains("mtime")) {
++            tmp.last_modified = map["mtime"].toLongLong();
++        }
+         tmp.fullpath = map["fullpath"].toString();
+         tmp.size = map["size"].toLongLong();
+         tmp.is_dir = map["is_dir"].toBool();
+

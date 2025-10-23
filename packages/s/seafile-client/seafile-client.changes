@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 20 07:13:45 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.0.15:
+  * Fix the issue that client won't update avatar
+  * Don't emit when handle quit
+- Add issue1611.patch fix build with Qt>=6.9
+- Add issue1650.patch fix search API
+
+-------------------------------------------------------------------
 Tue Apr 15 06:26:23 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.0.13:

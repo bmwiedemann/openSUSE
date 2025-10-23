@@ -1,7 +1,7 @@
 #
 # spec file for package seafile-client
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           seafile-client
-Version:        9.0.13
+Version:        9.0.15
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
@@ -26,6 +26,8 @@ Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz
 Source1:        seafile.appdata.xml
 Patch0:         01-fix-no-return-in-nonvoid.patch
 Patch2:         fix-cmake-name.patch
+Patch3:         issue1611.patch
+Patch4:         issue1650.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake

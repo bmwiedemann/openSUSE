@@ -1,0 +1,23 @@
+From 9e64d407af1c3ff5f1e45ca10c15b6ee8153a436 Mon Sep 17 00:00:00 2001
+From: Joffr3y <j-off@live.fr>
+Date: Sat, 5 Apr 2025 19:45:40 +0200
+Subject: [PATCH] Fix build with Qt v6.9.0
+
+---
+ src/message-poller.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/message-poller.cpp b/src/message-poller.cpp
+index 2ab32c505..4b9b3d87e 100644
+--- a/src/message-poller.cpp
++++ b/src/message-poller.cpp
+@@ -1,6 +1,8 @@
+ #include <QTimer>
+ #include <QDateTime>
+ #include <QJsonDocument>
++#include <QJsonValue>
++#include <QRegularExpression>
+ 
+ #include "utils/utils.h"
+ #include "utils/translate-commit-desc.h"
+

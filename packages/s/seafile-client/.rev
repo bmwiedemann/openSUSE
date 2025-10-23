@@ -211,4 +211,15 @@
 </comment>
     <requestid>1269444</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>65f3734057522585e706a444932235b2</srcmd5>
+    <version>9.0.15</version>
+    <time>1761230234</time>
+    <user>anag_factory</user>
+    <comment>* Fix the issue that client won't update avatar
+  * Don't emit when handle quit
+- Add issue1611.patch fix build with Qt&gt;=6.9
+- Add issue1650.patch fix search API (forwarded request 1313055 from anag_factory)</comment>
+    <requestid>1313056</requestid>
+  </revision>
 </revisionlist>
