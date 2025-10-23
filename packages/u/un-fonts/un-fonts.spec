@@ -1,7 +1,7 @@
 #
 # spec file for package un-fonts
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,27 +22,25 @@ Name:           un-fonts
 Version:        1.0.20%{date}
 Release:        0
 Summary:        Korean TrueType fonts
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/X11/Fonts
-Url:            http://kldp.net/projects/unfonts/download
+URL:            http://kldp.net/projects/unfonts/download
 Source0:        %{name}-core-%{ver}-%{date}.tar.bz2
 Source1:        %{name}-extra-%{ver}-%{date}.tar.bz2
 Source10:       update-archive
 BuildRequires:  fontpackages-devel
 %reconfigure_fonts_prereq
 Provides:       scalable-font-ko
-Provides:       locale(ko)
 # FIXME: This causes a rpmlint warning; change <= to < once here's a new upstream version
 Obsoletes:      unfonts <= %{version}
 Provides:       unfonts = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
 Collection of Korean TrueType fonts.
 
 %prep
-%setup -q -n %{name} -b 1
+%autosetup -n %{name} -b 1
 
 %build
 
@@ -53,7 +51,6 @@ install -c -m 644 *.ttf %{buildroot}%{_ttfontsdir}/
 %reconfigure_fonts_scriptlets -c
 
 %files
-%defattr(-, root,root)
 %doc README COPYING
 %{_ttfontsdir}
 

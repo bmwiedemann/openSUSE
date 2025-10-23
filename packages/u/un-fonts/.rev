@@ -51,4 +51,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>2b0b962cb30edaaf45c57ec0681747fb</srcmd5>
+    <version>1.0.20080608</version>
+    <time>1761230118</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1312552</requestid>
+  </revision>
 </revisionlist>
