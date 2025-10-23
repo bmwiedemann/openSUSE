@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 21 13:42:26 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Update to 7.11.0
+  * LAGraph v1.2: many new experimental algorithms, LAGraph_Random in src/
+  * GraphBLAS v10.1.1: risc-V vectorization, GRAPHBLAS_VANILLA (optional;
+    to disable GxB extensions), and workaround for gcc compiler bug on
+    Power and s390x processors.
+
+-------------------------------------------------------------------
 Mon Jun  9 07:28:55 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 7.10.3. Changes from 7.10.1:

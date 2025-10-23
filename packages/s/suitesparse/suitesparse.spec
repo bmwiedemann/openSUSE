@@ -1,7 +1,7 @@
 #
 # spec file for package suitesparse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Version:        7.10.3
+Version:        7.11.0
 Release:        0
 Group:          Development/Libraries/C and C++
 URL:            https://people.engr.tamu.edu/davis/suitesparse.html
