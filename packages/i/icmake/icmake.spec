@@ -1,7 +1,7 @@
 #
 # spec file for package icmake
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 Name:           icmake
-Version:        10.03.00
+Version:        13.00.01
 Release:        0
 Summary:        A program maintenance (make) utility using a C-like grammar
 License:        GPL-3.0-only
 Group:          Development/Tools/Building
 URL:            https://gitlab.com/fbb-git/icmake
 Source:         %{URL}/-/archive/%{version}/icmake-%{version}.tar.bz2
-Patch1:         prevent-double-slash.patch
-Patch2:         gcc-13-fix.patch
-# PATCH-FIX-UPSTREAM https://gitlab.com/fbb-git/icmake/-/merge_requests/5
-Patch3:         reproducible.patch
+Patch:          fix-lib-path-for-builds-file.patch
+# FIXED-UPSTREAM
+Patch:          fix-spch-process.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -44,23 +43,32 @@ that have proven to be useful in program maintenance.
 %autosetup -p1
 
 %build
-export CXXFLAGS="%{optflags} -std=c++20"
-echo "/* created during rpmbuild */" >  %{name}/INSTALL.im
-echo "#define BINDIR      \"%{_bindir}\"" >>  %{name}/INSTALL.im
-echo "#define SKELDIR     \"%{_datadir}/%{name}\"" >>  %{name}/INSTALL.im
-echo "#define MANDIR      \"%{_mandir}\"" >>  %{name}/INSTALL.im
-echo "#define LIBDIR      \"%{_libdir}/%{name}\"" >>  %{name}/INSTALL.im
-echo "#define CONFDIR     \"%{_sysconfdir}/%{name}\"" >>  %{name}/INSTALL.im
-echo "#define DOCDIR      \"%{_docdir}/%{name}\"" >>  %{name}/INSTALL.im
-echo "#define DOCDOCDIR   \"%{_docdir}/%{name}\"" >>  %{name}/INSTALL.im
+export CXXFLAGS="%{optflags} -std=c++2b -g"
+export ICMAKE_CPPSTD="${CXXFLAGS}"
+_bindir=%{_bindir}
+_datadir=%{_datadir}
+_mandir=%{_mandir}
+_libdir=%{_libdir}
+_sysdir=%{_sysconfdir}
+_docdir=%{_docdir}
+{
+    echo "/* created during rpmbuild */"
+    echo "#define BINDIR      \"${_bindir:1}\""
+    echo "#define SKELDIR     \"${_datadir:1}/%{name}\""
+    echo "#define MANDIR      \"${_mandir:1}\""
+    echo "#define LIBDIR      \"${_libdir:1}/%{name}\""
+    echo "#define CONFDIR     \"${_sysdir:1}/%{name}\""
+    echo "#define DOCDIR      \"${_docdir:1}/%{name}\""
+} > %{name}/INSTALL.im
 pushd %{name}
-./icm_prepare   "/"
-./icm_bootstrap ""
+./prepare "/"
+./buildlib "/"
+./build all
 popd
 
 %install
 pushd %{name}
-./icm_install all %{buildroot}
+./install strip all %{buildroot}
 popd
 
 %files
@@ -68,9 +76,11 @@ popd
 %doc %{_docdir}/%{name}/
 %{_bindir}/icmake
 %{_bindir}/icmbuild
+%{_bindir}/icmodmap
 %{_bindir}/icmstart
 %{_mandir}/man1/icmake.1%{ext_man}
 %{_mandir}/man1/icmbuild.1%{ext_man}
+%{_mandir}/man1/icmodmap.1%{ext_man}
 %{_mandir}/man1/icmstart.1%{ext_man}
 %{_mandir}/man7/icmconf.7%{ext_man}
 %{_mandir}/man7/icmstart.rc.7%{ext_man}
@@ -78,10 +88,12 @@ popd
 %{_datadir}/icmake
 %dir %{_libdir}/icmake
 %{_libdir}/icmake/icm-comp
-%{_libdir}/icmake/icm-exec
-%{_libdir}/icmake/icm-pp
 %{_libdir}/icmake/icm-dep
-%{_libdir}/icmake/icmun
+%{_libdir}/icmake/icm-exec
+%{_libdir}/icmake/icm-multicomp
+%{_libdir}/icmake/icm-pp
+%{_libdir}/icmake/icm-spch
+%{_libdir}/icmake/icm-un
 %{_libdir}/icmake/icmbuild
 %{_libdir}/icmake/icmstart.bim
 %dir %{_sysconfdir}/icmake

@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Mon Oct 20 13:29:02 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Remove fixed patches
+  [- gcc-13-fix.patch]
+  [- reproducible.patch]
+  [- prevent-double-slash.patch]
+- Fix build of 13.00.01
+  [+ fix-lib-path-for-builds-file.patch]
+  [+ fix-spch-process.patch]
+- Use service file to get tarball source.
+- upgrade to 13.00.01
+  * Manpages for Debian were updated.
+- upgrade to 13.00.00
+  * The man-pages were updated and contain specific details about the
+    changes since version 12.03.00
+  * Option --all was added to icm-spch.
+  * Headers inspected by icmake --spch are not modified anymore.
+  * The program 'noifndef.cc', available in the icmake's source distribution
+    (sub-dir 'build2nd') can be used to remove '#ifnef SPCH_' sections from
+    projects' .ih files.
+  * 'icmake --source' compiles the icmake script to a temporary .bim file;
+  * The support program 'icmun' was renamed to 'icm-un'.
+  * The 'icmconf' script can use -o in its #define SPCH specification. All
+    (space character delimited) words following -o are passed to 'icm-spch' as
+    separate '-o word' options;
+  * When developing C++ programs the environment variable ICMAKE_CXXFLAGS
+    is no longer used. Instead the environment variable ICMAKE_CPPSTD is
+    used. Use this latter environment variable to define one point of
+    maintenance specifying the version of the bf(C++) standard used when
+    compiling sources.
+  * When using Debian (or a comparable distributions) the script 'rebuild' can
+    be used to rebuild icmake's binaries after installing 'libbobcat-dev',
+    resulting in a reduction of their sizes of about 40%.
+  * The 'icmake' program itself was redesigned.
+- upgrade to 12.03.00
+  * #define IH is only required if #define SPCH or #define PRECOMP is
+    specified in the icmconf file.
+- upgrade to 12.02.01
+  * /usr/share/icmake/icmconf defines IH, required by icmbuild
+  * /etc/icmake/icmstart.rc specifies usage.cc and version.cc with Pb, so
+    'icmstart -b ...' is recognized
+- upgrade to 12.02.00
+  * Added the /usr/bin/icmodmap program + man-page
+  * Compilations use --std=c++26
+- upgrade to 12.00.01
+  * Icmake is now completely independent from bobcat.
+- upgrade to 12.00.00
+  * The icmake construction no longer depends on the availability of the
+    (possibly bootstrapped) bobcat library. Bootstrapping is no longer
+    required.
+  * The /usr/libexec/icmake/icm-spch support program recognizes
+  * When icmstart optionally installs a directory it also requests whether the
+    directory name should be added to the CLASSES file
+  * The icmake man-page received some cosmetic changes
+- upgrade to 11.01.02
+  * Repaired a failing comparison between signed/unsigned values only
+    appearing in 32-bit architectures.
+- upgrade to 11.01.01
+  * Repaired an issue when converting to 11.00.00 with 'icmake -c ...'
+  * For backward compatibility ICMAKE_CXXFLAGS is still recognized by
+    icmbuild and support programs.
+- upgrade to 11.01.00
+  * The environment variable ICMAKE_CXXFLAGS was replaced by ICMAKE_CPPSTD
+  * Earlier FTBFS problems in a clean chroot environment were caused by not
+    having defined the ICMAKE_CXXFLAGS environment variable
+  * Internal redesign: all filesystem functions used by at least two functions
+    are now defined in support/tools
+- upgrade to 11.00.00
+  * New major version supports using Single Pre-Compiled Headers and
+    multi-threaded compilation, significantly reducing the compilation time of
+    the source files of projects compared to situations where these facilities
+    are not used. The icmake and icmconf manuals were updated accordingly.
+- upgrade to 10.06.01
+  * icm_bootstrap was slightly modified: when the man-pages are available in
+    the ./doc directory Yodl isn't called to create them. Pre-built man-pages
+    are only used when constructing the icmake_*.orig.tar.gz tar file, to allow
+    the debian package to be constructed w/o being dependent on Yodl, as that
+    would introduce a circular dependency.
+- upgrade to 10.06.00
+  * Updated the QUICKINSTALL file and repaired bugs / improved the comment in
+    icm_prepare, icm_bootstrap and icm_install scripts.
+  * The CPPENVOPTS environment variable is no longer used. Instead use the
+    ICMAKE_CXXFLAGS environment variable (cf. the icmconf(7) man-page).
+  * The icm_prepare, icm_bootstrap, and icm_install scripts received a major
+    upgrade
+- upgrade to 10.05.01
+  * Repaired typo in icmstript.yo
+- upgrade to 10.05.00
+  * When compiling C++ programs the icmconf file by default specifies the
+    options
+        -Werror -Wall -O2
+    As before, additional options can be added to the CXXFLAGS specification
+    in the icmconf file, but it's also possible to define additional options
+    in the environment variable CPPENVOPTS (cf. the icmconf(7) man-page).
+  * This is the last entry in gitlab's 'master' branch. This version and
+    future versions will be committed to gitlab's 'main' branch.
+- upgrade to 10.04.01
+  * Processed Tony Mancill's merge request to fix Matthias Klose's debian bug
+    report #1037691.
+  * Updated the C++ standard version in ./c++std to --std=c++23.
+- upgrade to 10.04.00
+  * Replaced 'typedef' definitions by 'using' declarations
+  * Input file lists are now sorted (following a gitlab merge request by
+    Bernhard M. Wiedemann), resulting in icmake offering reproducible builds
+    (cf https://reproducible-builds.org/).
+- upgrade to 10.03.03
+  * Updated the usr/share/icmake files: the parser/ and scanner/ files are
+    now more in line with the current versions of bisonc++ and flexc++
+- upgrade to 10.03.02
+  * Added the 'bobcatbootstrap' script to perform an initial installation of
+    icmake when the bobcat library isn't yet available. See the
+    README.bobcatbootstrap file and/or the usage info at the top of the
+    'bobcatbootstrap' script
+  * The bootstrap/flags file now loads the standard specified in 'c++std'
+- upgrade to 10.03.01
+  * Ready for libbobcat6
+  * Added 'c++std' defining the c++ standard to use for
+    compilation. Compilation commands also use -Werror 
+
+-------------------------------------------------------------------
 Sat Jun 15 03:05:57 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to make package build reproducible

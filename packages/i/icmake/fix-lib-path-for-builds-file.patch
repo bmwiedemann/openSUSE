@@ -1,0 +1,277 @@
+Index: icmake-13.04.00/icmake/build
+===================================================================
+--- icmake-13.04.00.orig/icmake/build
++++ icmake-13.04.00/icmake/build
+@@ -66,32 +66,32 @@ echo "
+ 
+ # cp the default skeleton files to tmp/usr/share/icmake
+ 
+-    echo "default skeleton files in usr/share/icmake/ to tmp/usr/share/icmake
++    echo "default skeleton files in usr/share/icmake/ to tmp${SKELDIR}
+ "
+-    try cp -r usr/share/icmake/* tmp/usr/share/icmake/
++    try cp -r usr/share/icmake/* tmp${SKELDIR}
+ 
+ # cp the config files in ./etc/icmake to tmp/etc/icmake
+ 
+-    echo "configuration files in etc/icmake to tmp/etc/icmake
++    echo "configuration files in etc/icmake to tmp${CONFDIR}
+ "
+-    try cp -r etc/icmake/* tmp/etc/icmake/
++    try cp -r etc/icmake/* tmp${CONFDIR}/
+ 
+ # manpages: write the man pages in doc/ to tmp/usr/share/man/
+ 
+-    cp doc/*.1 tmp/usr/share/man/man1
+-    cp doc/*.7 tmp/usr/share/man/man7
++    cp doc/*.1 tmp${MANDIR}/man1
++    cp doc/*.7 tmp${MANDIR}/man7
+  
+  # manpages: "compress the man-pages below tmp/usr/share/man/
+ 
+-    echo "compress man-pages .1 in tmp/usr/share/man/man1
++    echo "compress man-pages .1 in tmp${MANDIR}/man1
+ "
+-    cd tmp/usr/share/man/man1
++    cd tmp${MANDIR}/man1
+     for x in *.1 ; do
+         gzip -9cn $x > $x.gz || exit 1
+     done
+     rm -f *.1
+     
+-    echo "compress man-pages .7 in tmp/usr/share/man/man7
++    echo "compress man-pages .7 in tmp${MANDIR}/man7
+ "
+     cd ../man7
+     for x in *.7 ; do
+@@ -103,17 +103,17 @@ echo "
+ 
+ # install the doc/icmake files
+ 
+-    echo "compress changelog in tmp/usr/share/doc/icmake
++    echo "compress changelog in tmp${DOCDIR}
+ "
+-    gzip -9cn changelog > tmp/usr/share/doc/icmake/changelog.gz || exit 1
++    gzip -9cn changelog > tmp${DOCDIR}/changelog.gz || exit 1
+     
+-    echo "cp examples files to tmp/usr/share/doc/icmake
++    echo "cp examples files to tmp${DOCDIR}
+ "
+-    try cp -r examples tmp/usr/share/doc/icmake
++    try cp -r examples tmp${DOCDIR}
+     
+-    echo "cp rebuild script and friends to tmp/usr/share/doc/icmake/
++    echo "cp rebuild script and friends to tmp${DOCDIR}
+ "
+-    try cp -r rebuild build2nd README.rebuild tmp/usr/share/doc/icmake
++    try cp -r rebuild build2nd README.rebuild tmp${DOCDIR}
+     
+     echo "cp ./etc files to tmp/etc
+ "
+Index: icmake-13.04.00/icmake/buildscripts/multicomp
+===================================================================
+--- icmake-13.04.00.orig/icmake/buildscripts/multicomp
++++ icmake-13.04.00/icmake/buildscripts/multicomp
+@@ -4,7 +4,7 @@
+ #   $1 is, e.g., /usr/libexec/icmake/icm-dep
+ 
+ . ../buildscripts/precomp
+-  
++. ../tmp/INSTALL.sh
+ 
+ build()
+ {
+@@ -42,7 +42,7 @@ IFS=${ORGIFS}
+ 
+     opts=" -Wall -Werror"
+ 
+-    ../tmp/usr/libexec/icmake/icm-multicomp -q jobs \
++    ../tmp${LIBDIR}/icm-multicomp -q jobs \
+         '/usr/bin/g++ -c -o $2 '${ICMAKE_CPPSTD}"${opts}"' $1' || exit 1
+  
+     /usr/bin/g++ -o ../tmp/$1 tmp/*.o -L../tmp -licmake ${LDFLAGS} || exit 1
+Index: icmake-13.04.00/icmake/buildscripts/multicompobj
+===================================================================
+--- icmake-13.04.00.orig/icmake/buildscripts/multicompobj
++++ icmake-13.04.00/icmake/buildscripts/multicompobj
+@@ -4,7 +4,8 @@
+ #   $1 is, e.g., /usr/libexec/icmake/icm-dep
+ 
+ . ../buildscripts/precomp
+-  
++. ../tmp/INSTALL.sh
++
+ jobs()
+ {    
+     count=0     # use o-file numbers to avoid name collisions
+@@ -44,7 +45,7 @@ build()
+                                 # use -O2
+     export ICMAKE_CPPSTD="${ICMAKE_CPPSTD} -O2"
+                                 # multi-compile
+-    ../tmp/usr/libexec/icmake/icm-multicomp -q jobs
++    ../tmp${LIBDIR}/icm-multicomp -q jobs
+                                 # created the o-files .tgz
+ #    tar czf ../tmp/usr/share/icmake/ofiles.tgz *.o
+                                 # clean up
+Index: icmake-13.04.00/icmake/buildscripts/precomp
+===================================================================
+--- icmake-13.04.00.orig/icmake/buildscripts/precomp
++++ icmake-13.04.00/icmake/buildscripts/precomp
+@@ -8,7 +8,7 @@ Buiding tmp/spch.gch and using .ih.gch f
+     OPTS='g++ -Wall -Werror -O2 -c -o $2 '
+     OPTS="$OPTS ${ICMAKE_CPPSTD}${opts} -x c++header \$1"
+ 
+-    ../tmp/usr/libexec/icmake/icm-spch $1 --all spch tmp/ "'${OPTS}'"
++    ../tmp${LIBDIR}/icm-spch $1 --all spch tmp/ "'${OPTS}'"
+ 
+     rm spch
+ }
+Index: icmake-13.04.00/icmake/comp/build
+===================================================================
+--- icmake-13.04.00.orig/icmake/comp/build
++++ icmake-13.04.00/icmake/comp/build
+@@ -2,9 +2,10 @@
+ 
+ # icm-spch and icm-multicomp must be available
+ . ../buildscripts/multicomp
++. ../tmp/INSTALL.sh
+ 
+     echo "
+-Building tmp/usr/libexec/icmake/icm-comp"
++Building tmp${LIBDIR}/icm-comp"
+ 
+-build /usr/libexec/icmake/icm-comp
++build ${LIBDIR}/icm-comp
+ 
+Index: icmake-13.04.00/icmake/dep/build
+===================================================================
+--- icmake-13.04.00.orig/icmake/dep/build
++++ icmake-13.04.00/icmake/dep/build
+@@ -1,8 +1,9 @@
+ #!/bin/bash
+ 
+ . ../buildscripts/multicomp
++. ../tmp/INSTALL.sh
+ 
+     echo "
+-Building tmp/usr/libexec/icmake/icm-dep"
++Building tmp${LIBDIR}/icm-dep"
+ 
+-build /usr/libexec/icmake/icm-dep
++build ${LIBDIR}/icm-dep
+Index: icmake-13.04.00/icmake/exec/build
+===================================================================
+--- icmake-13.04.00.orig/icmake/exec/build
++++ icmake-13.04.00/icmake/exec/build
+@@ -1,8 +1,9 @@
+ #!/bin/bash
+ 
+ . ../buildscripts/multicomp
++. ../tmp/INSTALL.sh
+ 
+  echo "
+-Building tmp/usr/libexec/icmake/icm-exec"
++Building tmp${LIBDIR}/icm-exec"
+ 
+-build /usr/libexec/icmake/icm-exec
++build ${LIBDIR}/icm-exec
+Index: icmake-13.04.00/icmake/install
+===================================================================
+--- icmake-13.04.00.orig/icmake/install
++++ icmake-13.04.00/icmake/install
+@@ -48,8 +48,8 @@ progs()
+     # maybe strip the binaries
+ 
+     if [ "$STRIP" == "strip" ] ; then
+-        try strip tmp/usr/bin/icmake tmp/usr/bin/icmbuild \
+-                  tmp/usr/bin/icmodmap tmp/usr/libexec/icmake/*
++        try strip tmp${BINDIR}/icmake tmp${BINDIR}/icmbuild \
++                  tmp${BINDIR}/icmodmap tmp${LIBDIR}/*
+         echo
+     fi
+ 
+Index: icmake-13.04.00/icmake/multicmp/build
+===================================================================
+--- icmake-13.04.00.orig/icmake/multicmp/build
++++ icmake-13.04.00/icmake/multicmp/build
+@@ -6,13 +6,14 @@
+ 
+ . ../buildscripts/precomp
+ . ../buildscripts/build 
++. ../tmp/INSTALL.sh
+ 
+     echo "
+-Building tmp/usr/libexec/icmake/icm-multicomp"
++Building tmp${LIBDIR}/icm-multicomp"
+ 
+     # do the precompilation
+ precomp
+ 
+     # execute build installing the program in the destination dir.
+-build /usr/libexec/icmake/icm-multicomp
++build ${LIBDIR}/icm-multicomp
+ find ./ -name '*.gch' -exec rm {} \;
+Index: icmake-13.04.00/icmake/pp/build
+===================================================================
+--- icmake-13.04.00.orig/icmake/pp/build
++++ icmake-13.04.00/icmake/pp/build
+@@ -1,8 +1,9 @@
+ #!/bin/bash
+ 
+ . ../buildscripts/multicomp
++. ../tmp/INSTALL.sh
+ 
+     echo "
+-Building tmp/usr/libexec/icmake/icm-pp"
++Building tmp${LIBDIR}/icm-pp"
+ 
+-build /usr/libexec/icmake/icm-pp
++build ${LIBDIR}/icm-pp
+Index: icmake-13.04.00/icmake/prepare
+===================================================================
+--- icmake-13.04.00.orig/icmake/prepare
++++ icmake-13.04.00/icmake/prepare
+@@ -63,9 +63,9 @@ YEARS=\"${YEARS}\"" > tmp/INSTALL.sh
+ 
+ 
+ echo "Creating intermediate construction directories below ./tmp"
+-try  mkdir -p tmp/usr/bin  tmp/usr/libexec/icmake  tmp/usr/share/icmake
+-try  mkdir -p tmp/etc/icmake tmp/usr/share/man/man1 
+-try  mkdir -p tmp/usr/share/man/man7 tmp/usr/share/doc/icmake
++try  mkdir -p tmp${BINDIR}  tmp${LIBDIR}  tmp${SKELDIR}
++try  mkdir -p tmp${CONFDIR} tmp${MANDIR}/man1
++try  mkdir -p tmp${MANDIR}/man7 tmp${DOCDIR}
+ 
+ echo
+ echo Next: call ./buildlib x
+Index: icmake-13.04.00/icmake/spch/build
+===================================================================
+--- icmake-13.04.00.orig/icmake/spch/build
++++ icmake-13.04.00/icmake/spch/build
+@@ -2,10 +2,11 @@
+ 
+     # make ../bootstrap/build available in the current directory
+ . ../buildscripts/build 
++. ../tmp/INSTALL.sh
+ 
+     echo "
+-Building tmp/usr/libexec/icmake/icm-spch"
++Building tmp${LIBDIR}/icm-spch"
+ 
+     # execute build installing the program in the destination dir,
+     # which is under TMP_DIR  
+-build /usr/libexec/icmake/icm-spch
++build ${LIBDIR}/icm-spch
+Index: icmake-13.04.00/icmake/un/build
+===================================================================
+--- icmake-13.04.00.orig/icmake/un/build
++++ icmake-13.04.00/icmake/un/build
+@@ -3,6 +3,6 @@
+ . ../buildscripts/multicomp
+ 
+     echo "
+-Building tmp/usr/libexec/icmake/icm-un"
++Building tmp${LIBDIR}/icm-un"
+ 
+-build /usr/libexec/icmake/icm-un
++build ${LIBDIR}/icm-un

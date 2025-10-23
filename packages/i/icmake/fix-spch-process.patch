@@ -1,0 +1,16 @@
+Index: icmake-13.00.01/icmake/spch/process/spch.cc
+===================================================================
+--- icmake-13.00.01.orig/icmake/spch/process/spch.cc
++++ icmake-13.00.01/icmake/spch/process/spch.cc
+@@ -10,7 +10,10 @@ int Process::spch() const
+     ofstream out = Exception::factory<ofstream>( d_options.spch() );
+ 
+     for (string const &line: StringSet{ Classes{ d_options }.readClasses() })
+-        out << "#include \"" << line << "\"\n";
++    {
++        if (Tools::exists(line))
++            out << "#include \"" + line + "\"\n";
++    }
+ 
+     return 0;
+ 
