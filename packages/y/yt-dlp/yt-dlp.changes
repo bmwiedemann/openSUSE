@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 22 15:41:02 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2025.10.22
+  * A stopgap release with a TEMPORARY partial fix for YouTube
+    support. Some formats may still be unavailable, especially if
+    cookies are passed to yt-dlp. The NEXT release, expected very
+    soon, will require an external JS runtime (e.g. Deno) in
+    order for YouTube downloads to work properly.
+  * The minimum required Python version has been raised to 3.10
+    (Python 3.9 has reached its end-of-life as of October 2025).
+
+-------------------------------------------------------------------
 Wed Oct 15 10:18:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.10.14

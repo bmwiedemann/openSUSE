@@ -1,1 +1,2 @@
 addFilter("files-duplicate")
+addFilter("python-bytecode-inconsistent-mtime /usr/lib.*/__pycache__/.*\.pyc")
