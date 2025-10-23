@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 23 02:14:39 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.13.0:
+  * chore: remove old config
+  * chore: update golangci
+  * test: add Java view case
+  * feat: add tree-sitter support for Java
+  * chore: Update go
+  * docs: remove broken link
+  * fix: don't error on continuation characters
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.25 matching go.mod
+
+-------------------------------------------------------------------
 Mon Jun 09 01:59:25 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.12.0:

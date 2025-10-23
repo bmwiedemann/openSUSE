@@ -893,4 +893,21 @@
   * chore(deps): bump golang.org/x/net from 0.36.0 to 0.38.0 (#996) (forwarded request 1283968 from jfkw)</comment>
     <requestid>1283969</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6162438928c6ab127f5d6f74fa32190d</srcmd5>
+    <version>3.13.0</version>
+    <time>1761230252</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.13.0:
+  * chore: remove old config
+  * chore: update golangci
+  * test: add Java view case
+  * feat: add tree-sitter support for Java
+  * chore: Update go
+  * docs: remove broken link
+  * fix: don't error on continuation characters
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.25 matching go.mod (forwarded request 1313091 from jfkw)</comment>
+    <requestid>1313092</requestid>
+  </revision>
 </revisionlist>
