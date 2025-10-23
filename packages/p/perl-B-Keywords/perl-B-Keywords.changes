@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 20 20:06:19 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.290.0 (1.29)
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.29 2025-10-18 08:29 rurban
+    - Fix new 5.43 warning with qw($\) (PR #10 jkeenan)
+    - Added github actions CI
+
+-------------------------------------------------------------------
 Thu Jun 26 05:34:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.280.0 (1.28)

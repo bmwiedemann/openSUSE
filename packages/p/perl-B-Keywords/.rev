@@ -247,4 +247,16 @@
     - Add keywords any, all since 5.42.0</comment>
     <requestid>1289301</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>693be6c98b4470f9a89d52fd648c66fb</srcmd5>
+    <version>1.290.0</version>
+    <time>1761230123</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.290.0 (1.29)
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+  1.29 2025-10-18 08:29 rurban
+    - Fix new 5.43 warning with qw($\) (PR #10 jkeenan)
+    - Added github actions CI</comment>
+    <requestid>1312577</requestid>
+  </revision>
 </revisionlist>
