@@ -1,0 +1,44 @@
+From 97a8bd200d63ab96786ef1064de0195bccadcbed Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Fri, 10 Oct 2025 16:48:14 +0300
+Subject: [PATCH] fix pipewire headers
+
+ 8:26.15 In file included from Unified_cpp_ure_internal_impl_gn0.cpp:38:
+ 8:26.16 firefox-143.0.3/third_party/libwebrtc/modules/video_capture/linux/pipewire_session.cc:149:10: error: use of undeclared identifier 'spa_pod_object_find_prop'; did you mean 'spa_pod_object_body'?
+ 8:26.16   149 |   prop = spa_pod_object_find_prop(obj, prop, SPA_FORMAT_VIDEO_framerate);
+ 8:26.16       |          ^
+ 8:26.16 /usr/include/spa-0.2/spa/pod/pod.h:164:8: note: 'spa_pod_object_body' declared here
+ 8:26.16   164 | struct spa_pod_object_body {
+ 8:26.16       |        ^
+ 8:26.16 In file included from Unified_cpp_ure_internal_impl_gn0.cpp:38:
+ 8:26.16 firefox-143.0.3/third_party/libwebrtc/modules/video_capture/linux/pipewire_session.cc:151:11: error: use of undeclared identifier 'spa_pod_get_values'
+ 8:26.16   151 |     val = spa_pod_get_values(&prop->value, &n_items, &choice);
+ 8:26.16       |           ^
+ 8:26.16 firefox-143.0.3/third_party/libwebrtc/modules/video_capture/linux/pipewire_session.cc:170:10: error: use of undeclared identifier 'spa_pod_object_find_prop'; did you mean 'spa_pod_object_body'?
+ 8:26.16   170 |   prop = spa_pod_object_find_prop(obj, prop, SPA_FORMAT_VIDEO_size);
+ 8:26.16       |          ^
+ 8:26.17 /usr/include/spa-0.2/spa/pod/pod.h:164:8: note: 'spa_pod_object_body' declared here
+ 8:26.17   164 | struct spa_pod_object_body {
+ 8:26.17       |        ^
+ 8:26.17 In file included from Unified_cpp_ure_internal_impl_gn0.cpp:38:
+ 8:26.17 /var/tmp/portage/www-client/firefox-143.0.3/work/firefox-143.0.3/third_party/libwebrtc/modules/video_capture/linux/pipewire_session.cc:174:9: error: use of undeclared identifier 'spa_pod_get_values'
+ 8:26.17   174 |   val = spa_pod_get_values(&prop->value, &n_items, &choice);
+---
+ .../libwebrtc/modules/video_capture/linux/pipewire_session.cc    | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/third_party/libwebrtc/modules/video_capture/linux/pipewire_session.cc b/third_party/libwebrtc/modules/video_capture/linux/pipewire_session.cc
+index 25c4dfa..7216874 100644
+--- a/third_party/webrtc/modules/video_capture/linux/pipewire_session.cc
++++ b/third_party/webrtc/modules/video_capture/linux/pipewire_session.cc
+@@ -15,6 +15,7 @@
+ #include <spa/param/format-utils.h>
+ #include <spa/param/format.h>
+ #include <spa/param/video/raw.h>
++#include <spa/pod/iter.h>
+ #include <spa/pod/parser.h>
+ 
+ #include <algorithm>
+-- 
+2.49.0
+

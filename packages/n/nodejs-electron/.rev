@@ -1464,4 +1464,15 @@ to Staging:F with it</comment>
 - Fedora: use bundled simdjson due to system version being too old</comment>
     <requestid>1311797</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>ab065a266bf4184f642fc939d1da1122</srcmd5>
+    <version>37.7.1</version>
+    <time>1761230244</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release 37.7.1
+  * Fixed an issue where changing the resizable property on a window would break the styles of a transparent window
+  * Fixed white flash on call to BrowserWindow.show
+- Add webrtc-pipewire_session-missing-spa_pod_object_find_prop.patch to fix build error with new pipewire</comment>
+    <requestid>1313077</requestid>
+  </revision>
 </revisionlist>

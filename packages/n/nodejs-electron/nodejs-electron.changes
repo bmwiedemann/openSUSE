@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 22 19:32:18 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 37.7.1
+  * Fixed an issue where changing the resizable property on a window would break the styles of a transparent window
+  * Fixed white flash on call to BrowserWindow.show
+- Add webrtc-pipewire_session-missing-spa_pod_object_find_prop.patch to fix build error with new pipewire
+
+-------------------------------------------------------------------
 Thu Oct 16 19:56:42 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 37.7.0
