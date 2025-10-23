@@ -655,4 +655,12 @@
     <comment>Remove unpack200 and pack200 from alternatives</comment>
     <requestid>1307555</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>06a48a28e768a3eaa09798e4af7307cd</srcmd5>
+    <version>11.0.29.0</version>
+    <time>1761230143</time>
+    <user>anag_factory</user>
+    <comment>October 2025 CPU</comment>
+    <requestid>1313028</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Oct 22 10:12:08 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.29+7 (October 2025 CPU)
+  * Security fixes:
+    + JDK-8360937, CVE-2025-53057, bsc#1252414: Enhance certificate
+      handling
+    + JDK-8356294, CVE-2025-53066, bsc#1252417: Enhance Path
+      Factories
+    + JDK-8352637: Enhance bytecode verification
+  * Other fixes:
+    + JDK-8365389: Remove static color fields from SwingUtilities3
+      and WindowsMenuItemUI
+    + JDK-8368308: ISO 4217 Amendment 180 Update
+    + JDK-8348760: RadioButton is not shown if JRadioButtonMenuItem
+      is rendered with ImageIcon in WindowsLookAndFeel
+    + JDK-8365375: Method SU3.setAcceleratorSelectionForeground
+      assigns to acceleratorForeground
+    + JDK-8348328: Update IANA Language Subtag Registry to Version
+      2025-05-15
+    + JDK-8348597: Update HarfBuzz to 10.4.0
+    + JDK-8319197: Exclude hb-subset and hb-style from compilation
+    + JDK-8312518: [macos13] setFullScreenWindow() shows black
+      screen on macOS 13 & above
+    + JDK-8361212: Remove AffirmTrust root CAs
+    + JDK-8365811: test/jdk/java/net/CookieHandler/B6644726.java
+      failure - "Should have 5 cookies. Got only 4, expires probably
+      didn't parse correctly"
+    + JDK-8350540: [17u,11u] B8312065.java fails Network is
+      unreachable
+    + JDK-8316497: ColorConvertOp - typo for non-ICC conversions
+      needs one-line fix
+    + JDK-8356053: Test java/awt/Toolkit/Headless/
+      /HeadlessToolkit.java fails by timeout
+    + JDK-8211804: Constant AO_UNUSED_MBZ uses left shift of
+      negative value
+    + JDK-8355051: Problemlist java/awt/Graphics2D/CopyAreaOOB.java
+      on macosx-aarch64
+    + JDK-8355249: Remove the use of WMIC from the entire source
+      code
+    + JDK-8343618: Stack smashing in awt_InputMethod.c on Linux
+      s390x
+    + JDK-8274453: (sctp) com/sun/nio/sctp/SctpChannel/
+      /CloseDescriptors.java test should be resilient to lsof
+      warnings
+    + JDK-8318605: Enable parallelism in vmTestbase/nsk/stress/stack
+      tests
+    + JDK-8315774: Enable parallelism in vmTestbase/gc/g1/unloading
+      tests
+    + JDK-8322920: Some ProcessTools.execute* functions are declared
+      to throw Throwable
+    + JDK-8231943: ZGC: Enable serviceability/dcmd/gc/RunGCTest
+    + JDK-8247362: HeapDumpCompressedTest.java#id0 fails due to
+      "Multiple garbage collectors selected"
+    + JDK-8340185: Use make -k on GHA to catch more build errors
+    + JDK-8363965: GHA: Switch cross-compiling sysroots to Debian
+      bookworm
+    + JDK-8268463: Windows 32bit build fails in
+      DynamicCodeGenerated\libDynamicCodeGenerated.cpp
+    + JDK-8212155: Race condition when posting
+      dynamic_code_generated event leads to JVM crash
+    + JDK-8352942: jdk/jfr/startupargs/TestMemoryOptions.java fails
+      with 32-bit build
+    + JDK-8211328: Different declaration and definition of
+      ClassLoaderData::classes_do() leads to build failures
+    + JDK-8360816: [11u] Use default value for ProgramFiles(x86) in
+      GHA
+    + JDK-8358538: Update GHA Windows runner to 2025
+    + JDK-8360042: GHA: Bump MSVC to 14.44
+    + JDK-8357193: [VS 2022 17.14] Warning C5287 in debugInit.c:
+      enum type mismatch during build
+    + JDK-8345414: Google CAInterop test failures
+    + JDK-8358325: Bump update version of OpenJDK: 11.0.29
+
+-------------------------------------------------------------------
 Sat Aug 30 15:05:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Remove pack200 and unpack200 from alternatives
