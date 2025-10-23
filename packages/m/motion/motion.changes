@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 22 09:43:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.7.1
+  * Fix for newer versions of FFmpeg
+  * Fix compiler warnings on calloc.
+
+-------------------------------------------------------------------
 Thu Jan  9 17:30:01 UTC 2025 - Manu Maier <mmanu84@outlook.de>
 
 - Update to 4.7.0

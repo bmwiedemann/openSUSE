@@ -268,4 +268,12 @@
     <comment></comment>
     <requestid>1248067</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4bead7d29d73a881f6df654ea1ffa97b</srcmd5>
+    <version>4.7.1</version>
+    <time>1761230141</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.7.1 (forwarded request 1313023 from krop)</comment>
+    <requestid>1313024</requestid>
+  </revision>
 </revisionlist>

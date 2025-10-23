@@ -1,7 +1,7 @@
 #
 # spec file for package motion
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define spooldir /var/spool/motion
 
 Name:           motion
-Version:        4.7.0
+Version:        4.7.1
 Release:        0
 Summary:        A motion detection system
 License:        GPL-2.0-or-later
@@ -31,10 +31,10 @@ Source2:        motion-sysconfig
 Patch0:         harden_motion.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  group(video)
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  group(video)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
@@ -82,7 +82,6 @@ rm %{buildroot}%{_sysconfdir}/%{name}/camera*-dist.conf
 sed -i 's|; pid_file value|pid_file /var/run/motion.pid|' %{buildroot}%{_sysconfdir}/%{name}/motion.conf
 
 sed -i 's|; target_dir value|target_dir %{spooldir}|' %{buildroot}%{_sysconfdir}/%{name}/motion.conf
-
 
 install -m 0644 -D -t %{buildroot}%{_datadir}/%{name}/examples data/*.{conf,service}
 
