@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Oct 23 06:25:50 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.12.6:
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * fix(cask): remove uneeded template
+  * fix(cask): proper defaults when deprecated binary
+  * docs: casks.binary deprecation notice
+  * fiix(cask): allow to set more than 1 binary  (#6174)
+  * fix(deps): update gocloud, otel, etc (#6190)
+  * ci: lock cosign v2.6.1 until we fix things for v3.0.0 (#6194)
+  * docs: fix typo in release page (#6191)
+  * chore: auto-update generated files
+  * ci: do not auto-merge dependabot anymore
+  * ci(deps): bump the actions group with 6 updates (#6189)
+  * chore(deps): bump mkdocs-material from 9.6.21 to 9.6.22 in /www (#6182)
+  * chore(deps): bump the docker group across 2 directories with 2 updates (#6188)
+  * refactor: use official mcp library (#6175)
+  * ci: update dependabot config
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.88.4 to 1.88.5 (#6187)
+  * chore: auto-update generated files
+  * docs: add Flyte to the list of users (#6184)
+  * chore(deps): bump github.com/avast/retry-go/v4 from 4.6.1 to 4.7.0 (#6177)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.156.0 to 0.157.0 (#6172)
+  * chore(deps): bump golang from 1.25.1-alpine to 1.25.3-alpine (#6173)
+  * docs: add default value for wrap directory (#6163)
+  * chore(deps): bump github.com/goreleaser/nfpm/v2 from 2.43.3 to 2.43.4 (#6167)
+  * chore(deps): bump github/codeql-action from 3.30.6 to 4.30.8 (#6169)
+  * chore(deps): bump astral-sh/setup-uv from 6.8.0 to 7.1.0 (#6165)
+  * chore(deps): bump stefanzweifel/git-auto-commit-action from 6.0.1 to 7.0.0 (#6166)
+  * docs(dockers/v2): fix typo
+  * chore(deps): bump mkdocs-rss-plugin from 1.17.3 to 1.17.4 in /www (#6162)
+  * chore(deps): bump golang.org/x/oauth2 from 0.31.0 to 0.32.0 (#6161)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.154.0 to 0.156.0 (#6160)
+  * docs: fix duplicated packages comments (#6150)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.152.0 to 0.154.0 (#6156)
+  * chore(deps): bump golang.org/x/tools from 0.37.0 to 0.38.0 (#6157)
+  * chore(deps): bump github.com/docker/docker from 28.5.0+incompatible to 28.5.1+incompatible (#6159)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.88.3 to 1.88.4 (#6155)
+  * chore(deps): bump github.com/goreleaser/nfpm/v2 from 2.43.2 to 2.43.3 (#6148)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.149.0 to 0.152.0 (#6149)
+  * fix(git): retry on when network is unreachable
+  * chore(deps): bump github.com/caarlos0/log from 0.5.1 to 0.5.2 (#6146)
+  * chore(deps): bump github.com/goreleaser/nfpm/v2 from 2.43.1 to 2.43.2 (#6145)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * chore(deps): bump github.com/goreleaser/fileglob from 1.3.0 to 1.4.0 (#6144)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.148.1 to 0.149.0 (#6143)
+  * chore(deps): bump github.com/charmbracelet/keygen from 0.5.3 to 0.5.4 (#6142)
+  * chore(deps): bump github.com/docker/docker from 28.4.0+incompatible to 28.5.0+incompatible (#6141)
+  * chore(deps): bump github/codeql-action from 3.30.5 to 3.30.6 (#6140)
+  * docs: clean up docs
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Wed Oct 01 13:33:55 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.12.5:

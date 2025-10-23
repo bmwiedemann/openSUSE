@@ -467,4 +467,41 @@
   * chore: auto-update generated files (forwarded request 1308416 from ph03nix)</comment>
     <requestid>1308426</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c489ac8d4e2bdc7d5c4b6e6dc331786a</srcmd5>
+    <version>2.12.6</version>
+    <time>1761237105</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.12.6:
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * fix(cask): remove uneeded template
+  * fix(cask): proper defaults when deprecated binary
+  * docs: casks.binary deprecation notice
+  * fiix(cask): allow to set more than 1 binary  (#6174)
+  * fix(deps): update gocloud, otel, etc (#6190)
+  * ci: lock cosign v2.6.1 until we fix things for v3.0.0 (#6194)
+  * docs: fix typo in release page (#6191)
+  * chore: auto-update generated files
+  * ci: do not auto-merge dependabot anymore
+  * ci(deps): bump the actions group with 6 updates (#6189)
+  * chore(deps): bump mkdocs-material from 9.6.21 to 9.6.22 in /www (#6182)
+  * chore(deps): bump the docker group across 2 directories with 2 updates (#6188)
+  * refactor: use official mcp library (#6175)
+  * ci: update dependabot config
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.88.4 to 1.88.5 (#6187)
+  * chore: auto-update generated files
+  * docs: add Flyte to the list of users (#6184)
+  * chore(deps): bump github.com/avast/retry-go/v4 from 4.6.1 to 4.7.0 (#6177)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.156.0 to 0.157.0 (#6172)
+  * chore(deps): bump golang from 1.25.1-alpine to 1.25.3-alpine (#6173)
+  * docs: add default value for wrap directory (#6163)
+  * chore(deps): bump github.com/goreleaser/nfpm/v2 from 2.43.3 to 2.43.4 (#6167)
+  * chore(deps): bump github/codeql-action from 3.30.6 to 4.30.8 (#6169)
+  * chore(deps): bump astral-sh/setup-uv from 6.8.0 to 7.1.0 (#6165)
+  * chore(deps): bump stefanzweifel/git-auto-commit-action from 6.0.1 to 7.0.0 (#6166)
+  * docs(dockers/v2): fix typo (forwarded request 1313160 from ph03nix)</comment>
+    <requestid>1313218</requestid>
+  </revision>
 </revisionlist>
