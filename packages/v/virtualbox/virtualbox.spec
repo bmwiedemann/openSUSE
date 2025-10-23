@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %if "@BUILD_FLAVOR@" == "kmp"
 	# macros for virtualbox-kmp
 	%define main_package 0
@@ -56,21 +55,21 @@
 
 # If you want to disable building Python parts, just set this to %%nil
 %if 0%{?suse_version} == 1600
-# Leap 16.0 has python3.13, currently not supported
-%global mypython %nil
+	# Leap 16.0 has python3.13, currently not supported
+	%global mypython %nil
 %else
-# Using python3.11 for Factory, current version doesn't support python3.13
-%global mypython python311
+	# Using python3.11 for Factory, current version doesn't support python3.13
+	%global mypython python311
 %endif
 
 %if "%mypython" != ""
-%global __mypython %{expand:%%__%{mypython}}
-%global mypython_sitelib %{expand:%%%{mypython}_sitelib}
+	%global __mypython %{expand:%%__%{mypython}}
+	%global mypython_sitelib %{expand:%%%{mypython}_sitelib}
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.2.0
-%define rversion 7.2.0
+Version:        7.2.4
+%define rversion 7.2.4
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-or-later
@@ -165,7 +164,7 @@ ExclusiveArch:  x86_64
 %if 0%{?sle_version} != 120300
 Source2:        VirtualBox.appdata.xml
 %endif
-### Requirements for virtualbox main package ###
+
 %if %{main_package}
 BuildRequires:  dmidecode
 BuildRequires:  e2fsprogs-devel
@@ -190,7 +189,7 @@ BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
 BuildRequires:  which
 BuildRequires:  xorg-x11-server
-BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core) >= 6.8
 BuildRequires:  pkgconfig(Qt6DBus)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Help)
@@ -245,19 +244,12 @@ Conflicts:      %{name}-qt > %{version}
 Conflicts:      %{name}-websrv < %{version}
 Conflicts:      %{name}-websrv > %{version}
 Recommends:     %{name}-gui = %{version}
-# package i4l-vbox from source package i4l-base shares the directory /etc/vbox
-# with us, but with different owner.
-Conflicts:      i4l-vbox
 #rename from ose version:
 Provides:       %{name}-ose = %{version}
 Obsoletes:      %{name}-ose < %{version}
 %{?systemd_ordering}
 %{?sysusers_requires}
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 %ifarch amd64 x86_64 ia32e em64t
 %if 0%{?suse_version} && 0%{?suse_version} >= 1600
 BuildRequires:  gcc-32bit
@@ -271,12 +263,8 @@ BuildRequires:  xorg-x11-libXext-devel-32bit
 BuildRequires:  xorg-x11-libXmu-devel-32bit
 BuildRequires:  xorg-x11-libXt-devel-32bit
 %endif
-%if ! 0%{?suse_version} > 1325
-Requires(pre):  net-tools-deprecated
 %endif
-# end of main_package
-%endif
-### Requirements for virtualbox-kmp ###
+
 %if %{kmp_package}
 BuildRequires:  alsa-devel
 BuildRequires:  libiptc-devel
@@ -285,9 +273,8 @@ BuildRequires:  libxml2-devel
 Requires:       ca-certificates
 Requires:       openSUSE-signkey-cert
 %kernel_module_package -p %{SOURCE7} -n virtualbox -x kdump um xen pae xenpae pv
-# end of kmp_package
 %endif
-### Description and subpackages of virtualbox main package ###
+
 %if %{main_package}
 %description
 VirtualBox is a hosted hypervisor for x86 computers. It supports the
@@ -338,9 +325,6 @@ Provides:       %{name}-ose-guest-tools = %{version}
 Obsoletes:      %{name}-ose-guest-tools < %{version}
 Obsoletes:      virtualbox-guest-x11 < %{version}
 Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
-%if ! 0%{?suse_version} > 1325
-Requires(pre):  net-tools-deprecated
-%endif
 %{?sysusers_requires}
 
 %description guest-tools
@@ -473,17 +457,17 @@ rm -rf src/libs/{libpng-*,libxml2-*,libxslt-*,zlib-*,boost-*}
 #	--disable-kmods		don't build Linux kernel modules -  but use SUSE specific way see few lines under
 # NOT an autoconf configure script
 ./configure \
-    --enable-vnc \
-    --enable-vde \
-    --disable-kmods \
-    --with-linux="%{_prefix}" \
-    --disable-java \
-    --disable-docs \
-    --enable-webservice \
+	--enable-vnc \
+	--enable-vde \
+	--disable-kmods \
+	--with-linux="%{_prefix}" \
+	--disable-java \
+	--disable-docs \
+	--enable-webservice \
 %if "%mypython" == ""
-    --disable-python \
+	--disable-python \
 %endif
-    --with-makeself=%{_bindir}/true
+	--with-makeself=%{_bindir}/true
 
 # configure actually warns we should source env.sh (which seems like it could influence the build...)
 source ./env.sh
@@ -492,14 +476,14 @@ source ./env.sh
 #  	VBOX_PATH_PACKAGE_DOCS set propper path for link to pdf in .desktop file
 # 	VBOX_WITH_REGISTRATION_REQUEST= VBOX_WITH_UPDATE_REQUEST= just disable some functionality in gui
 echo "build basic parts"
-    %{_bindir}/kmk %{?_smp_mflags} \
-    VBOX_GCC_WERR= \
-    VBOX_USE_SYSTEM_XORG_HEADERS=1 \
-    VBOX_WITH_REGISTRATION_REQUEST= VBOX_WITH_UPDATE_REQUEST= \
-    TOOL_YASM_AS=yasm \
-    VBOX_BUILD_PUBLISHER=_SUSE \
-    TOOL_GCC3_CFLAGS="%{optflags}" TOOL_GCC3_CXXFLAGS="%{optflags}" \
-    VBOX_GCC_OPT="%{optflags}"
+	%{_bindir}/kmk %{?_smp_mflags} \
+	VBOX_GCC_WERR= \
+	VBOX_USE_SYSTEM_XORG_HEADERS=1 \
+	VBOX_WITH_REGISTRATION_REQUEST= VBOX_WITH_UPDATE_REQUEST= \
+	TOOL_YASM_AS=yasm \
+	VBOX_BUILD_PUBLISHER=_SUSE \
+	TOOL_GCC3_CFLAGS="%{optflags}" TOOL_GCC3_CXXFLAGS="%{optflags}" \
+	VBOX_GCC_OPT="%{optflags}"
 
 echo "build VNC extension pack"
 # tar must use GNU, not POSIX, format here
@@ -567,19 +551,17 @@ install -m 755 out/linux.*/release/bin/additions/VBoxDRMClient	%{buildroot}%{_bi
 install -m 755 src/VBox/Additions/x11/Installer/98vboxadd-xclient %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/
 install -d %{buildroot}%{_sysconfdir}/xdg/autostart/
 install -m 644 %{SOURCE25} %{buildroot}%{_sysconfdir}/xdg/autostart/vboxclient.desktop
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} == 120300
 install -d -m 755 %{buildroot}/media
-%endif
 
 echo "entering VNC extension install section"
-pushd out/linux.*/release/packages/
+cd out/linux.*/release/packages/
 mkdir -p "%{buildroot}%{_datadir}/virtualbox/extensions/"
 install -D -m 644 VNC-*.vbox-extpack "%{buildroot}%{_datadir}/virtualbox/extensions/VNC-%{rversion}.vbox-extpack"
-popd
+cd -
 
 echo "entering virtualbox(-qt) install section"
 # copy the main files to %%{_vbox_instdir}
-pushd out/linux.*/release/bin
+cd out/linux.*/release/bin
 cp -a VBoxManage VBoxHeadless VBoxSDL VBoxNetNAT VBoxAutostart VBoxVolInfo \
 	VBoxBalloonCtrl webtest VBoxDTrace VBoxDbg.so \
 	VBoxDxVk.so UICommon.so vboximg-mount %{buildroot}%{_vbox_instdir}
@@ -619,42 +601,42 @@ mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/additions
 tar -jcf %{buildroot}%{_usrsrc}/kernel-modules/additions/guest_src.tar.bz2 additions/src
 cp -a src %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
 install -m 644 %{SOURCE11}			%{buildroot}%{_udevrulesdir}/60-vboxdrv.rules
-popd
+cd -
 
 # install desktop file
 install -m 644 out/linux.*/release/bin/virtualbox.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
-%suse_update_desktop_file			%{buildroot}%{_datadir}/applications/%{name}.desktop 'System Emulator'
+%suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}.desktop 'System Emulator'
 
 %if 0%{?sle_version} != 120300
 # install appstream file
 mkdir -p %{buildroot}%{_datadir}/metainfo
-install -m 644 %{SOURCE2}			%{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
+install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 %endif
 
 # create a menu entry
 install -m 644 out/linux.*/release/bin/VBox.png %{buildroot}%{_datadir}/pixmaps/virtualbox.png
 # install config with session shutdown defs
-install -m 644 %{SOURCE4}			%{buildroot}%{_sysconfdir}/default/virtualbox
+install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/default/virtualbox
 #install wrapper script
-install -m 644 %{SOURCE9}			%{buildroot}%{_bindir}/VirtualBox
-install -m 644 %{SOURCE8}			%{buildroot}%{_bindir}/update-extpack.sh
+install -m 644 %{SOURCE9} %{buildroot}%{_bindir}/VirtualBox
+install -m 644 %{SOURCE8} %{buildroot}%{_bindir}/update-extpack.sh
 # Service files to load kernel modules on boot
-install -m 0644 %{SOURCE14}                     %{buildroot}%{_unitdir}/vboxdrv.service
-ln -s -f %{_sbindir}/service			%{buildroot}%{_sbindir}/rcvboxdrv
-install -m 0644 %{SOURCE15}                     %{buildroot}%{_unitdir}/vboxadd-service.service
-install -m 0755 %{SOURCE16}			%{buildroot}%{_sbindir}/vboxconfig
-install -m 0755 %{SOURCE17}			%{buildroot}%{_sbindir}/vboxguestconfig
-install -m 0755 %{SOURCE18}			%{buildroot}%{_sbindir}/vbox-fix-usb-rules.sh
-install -m 0755 %{SOURCE19}			%{buildroot}%{_vbox_instdir}/vboxdrv.sh
-install -m 0644 %{SOURCE21}			%{buildroot}%{_unitdir}/vboxweb-service.service
-install -m 0755 %{SOURCE22}			%{buildroot}%{_vbox_instdir}/vboxweb-service.sh
-install -m 0644 %{SOURCE23}			%{buildroot}%{_unitdir}/vboxautostart-service.service
-ln -s -f %{_sbindir}/service                    %{buildroot}%{_sbindir}/rcvboxautostart
-install -m 0755 %{SOURCE24}                     %{buildroot}%{_vbox_instdir}/vboxautostart-service.sh
+install -m 0644 %{SOURCE14} %{buildroot}%{_unitdir}/vboxdrv.service
+ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rcvboxdrv
+install -m 0644 %{SOURCE15} %{buildroot}%{_unitdir}/vboxadd-service.service
+install -m 0755 %{SOURCE16} %{buildroot}%{_sbindir}/vboxconfig
+install -m 0755 %{SOURCE17} %{buildroot}%{_sbindir}/vboxguestconfig
+install -m 0755 %{SOURCE18} %{buildroot}%{_sbindir}/vbox-fix-usb-rules.sh
+install -m 0755 %{SOURCE19} %{buildroot}%{_vbox_instdir}/vboxdrv.sh
+install -m 0644 %{SOURCE21} %{buildroot}%{_unitdir}/vboxweb-service.service
+install -m 0755 %{SOURCE22} %{buildroot}%{_vbox_instdir}/vboxweb-service.sh
+install -m 0644 %{SOURCE23} %{buildroot}%{_unitdir}/vboxautostart-service.service
+ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rcvboxautostart
+install -m 0755 %{SOURCE24} %{buildroot}%{_vbox_instdir}/vboxautostart-service.sh
 # Init scripts to start virtualbox during boot
-ln -sf %{_unitdir}/vboxdrv.service		%{buildroot}%{_unitdir}/multi-user.target.wants/vboxdrv.service
-ln -sf %{_unitdir}/vboxadd-service.service	%{buildroot}%{_unitdir}/multi-user.target.wants/vboxadd-service.service
-ln -sf %{_unitdir}/vboxautostart-service.service        %{buildroot}%{_unitdir}/multi-user.target.wants/vboxautostart-service.service
+ln -sf %{_unitdir}/vboxdrv.service %{buildroot}%{_unitdir}/multi-user.target.wants/vboxdrv.service
+ln -sf %{_unitdir}/vboxadd-service.service %{buildroot}%{_unitdir}/multi-user.target.wants/vboxadd-service.service
+ln -sf %{_unitdir}/vboxautostart-service.service %{buildroot}%{_unitdir}/multi-user.target.wants/vboxautostart-service.service
 
 # config file for vboxdrv and vboxweb
 install -d -m 755 %{buildroot}%{_sysconfdir}/vbox
@@ -674,9 +656,9 @@ install -m 0755 -D src/VBox/Installer/linux/VBoxCreateUSBNode.sh %{buildroot}%{_
 
 %if "%mypython" != ""
 echo "entering python-virtualbox install section"
-pushd out/linux.*/release/bin/sdk/installer/python
+cd out/linux.*/release/bin/sdk/installer/python
 VBOX_INSTALL_PATH=%{_vbox_instdir} %{__mypython} vboxapisetup.py install --prefix=%{_prefix} --root=%{buildroot}
-popd
+cd -
 install -d -m 755 %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 cp -r out/linux.*/release/bin/sdk/bindings/xpcom/python %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 %py3_compile %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom/python
@@ -685,29 +667,29 @@ cp -r out/linux.*/release/bin/sdk/bindings/xpcom/python %{buildroot}%{_vbox_inst
 echo "entering virtualbox-devel install section"
 cp -r out/linux.*/release/bin/sdk/bindings/auth %{buildroot}%{_vbox_instdir}/sdk/bindings
 
-pushd out/linux.*/release/bin/sdk/bindings/xpcom
+cd out/linux.*/release/bin/sdk/bindings/xpcom
 cp -r include %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 cp -r idl %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 cp -r samples %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
-popd
+cd -
 
 cp out/linux.*/release/bin/sdk/bindings/VirtualBox.xidl %{buildroot}%{_vbox_instdir}/sdk/bindings
 
 echo "entering virtualbox-websrv install section"
-pushd out/linux.*/release/bin
+cd out/linux.*/release/bin
 install -m 755 vboxwebsrv %{buildroot}%{_vbox_instdir}
 install -m 755 webtest %{buildroot}%{_vbox_instdir}
-popd
+cd -
 ln -sf %{_unitdir}/vboxweb-service.service %{buildroot}%{_unitdir}/multi-user.target.wants/vboxweb-service.service
 
 echo "entering virtualbox-guest-desktop-icons install section"
-install -d -m 755	%{buildroot}%{_datadir}/pixmaps/virtualbox
+install -d -m 755 %{buildroot}%{_datadir}/pixmaps/virtualbox
 
-pushd src/VBox/Frontends/VirtualBox/images
+cd src/VBox/Frontends/VirtualBox/images
 for icon in os_*.png; do
-  install -m 644 "$icon" %{buildroot}%{_datadir}/pixmaps/virtualbox/"$icon";
+	install -m 644 "$icon" %{buildroot}%{_datadir}/pixmaps/virtualbox/"$icon";
 done
-popd
+cd -
 
 install -Dm0644 vbox.conf %{buildroot}%{_sysusersdir}/vbox.conf
 install -Dm0644 vbox-guest-tools.conf %{buildroot}%{_sysusersdir}/vbox-guest-tools.conf
@@ -725,7 +707,6 @@ install -Dm0644 vbox-guest-tools.conf %{buildroot}%{_sysusersdir}/vbox-guest-too
 %service_add_pre vboxweb-service.service
 
 %post
-/sbin/ldconfig
 #setup our sysconfig file /etc/sysconfig/vbox
 %set_permissions %{_vbox_instdir}/VBoxNetNAT
 %set_permissions %{_vbox_instdir}/VBoxNetDHCP
@@ -734,7 +715,7 @@ install -Dm0644 vbox-guest-tools.conf %{buildroot}%{_sysusersdir}/vbox-guest-too
 %service_add_post vboxdrv.service vboxautostart-service.service
 # add new autostart stuff to the existing default config, if missing
 grep -q VBOXAUTOSTART %{_sysconfdir}/default/virtualbox || {
-    cat >> %{_sysconfdir}/default/virtualbox << EOF
+	cat >> %{_sysconfdir}/default/virtualbox << EOF
 #
 # -------------------------------------------------------------------------------------------------
 # Autostart
@@ -746,8 +727,8 @@ EOF
 }
 for entry in %{_sysconfdir}/vbox/*.start
 do
-        user=$(basename "$entry" .start)
-        [ "$user" = "*" ] && break
+	user=$(basename "$entry" .start)
+	[ "$user" = "*" ] && break
 	mv %{_sysconfdir}/vbox/user.start %{_sysconfdir}/vbox/autostart.d/.
 done
 
@@ -789,7 +770,6 @@ VBoxManage extpack install --replace "${EXTPACK}" --accept-license="${ACCEPT}" >
 %service_del_preun vboxweb-service.service
 
 %postun
-/sbin/ldconfig
 # immediately restarting virtualbox may not work. As such wait for the next reboot to restart
 %if ! %{defined service_del_postun_without_restart}
 export DISABLE_RESTART_ON_UPDATE=yes
@@ -938,9 +918,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %dir %{_sysconfdir}/xdg
 %dir %{_sysconfdir}/xdg/autostart
 %{_sysconfdir}/xdg/autostart/vboxclient.desktop
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} == 120300
 %dir /media
-%endif
 
 %if "%mypython" != ""
 %files -n %{mypython}-%{name}
@@ -1006,18 +984,18 @@ rm -rf src/libs/{libpng-*,libxml2-*,libxslt-*,zlib-*,boost-*}
 # guest modules : vboxguest,vboxsf,vboxvideo
 echo "build kernel modules"
 for vbox_module in kmp_host/vbox{drv,netflt,netadp} \
-           kmp_additions/vbox{guest,sf,video}; do
-    #get the module name from path
-    module_name=$(basename "$vbox_module")
+    kmp_additions/vbox{guest,sf,video}; do
+	#get the module name from path
+	module_name=$(basename "$vbox_module")
 
-    # go through the all flavors (desktop,default ...)
-    for flavor in %{flavors_to_build}; do
+	# go through the all flavors (desktop,default ...)
+	for flavor in %{flavors_to_build}; do
 	# delete old build dir for sure
 	rm -rf modules_build_dir/${module_name}_${flavor}
 
 	if [ "$module_name" = "vboxdrv" -o \
 	     "$module_name" = "vboxguest" ] ; then
-	    SYMBOLS=""
+		SYMBOLS=""
 	fi
 	# create build directory for specific flavor
 	mkdir -p modules_build_dir/$flavor
@@ -1028,21 +1006,21 @@ for vbox_module in kmp_host/vbox{drv,netflt,netadp} \
 	# copy vboxdrv (for host) module symbols which are used by vboxnetflt and vboxnetadp km's:
 	if [ "$module_name" = "vboxnetflt" -o \
 	     "$module_name" = "vboxnetadp" ] ; then
-	    cp $PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers	\
-		  $PWD/modules_build_dir/$flavor/$module_name
-	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers"
+		cp $PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers	\
+			$PWD/modules_build_dir/$flavor/$module_name
+		SYMBOLS="$PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers"
 	fi
-        # copy vboxguest (for guest) module symbols which are used by vboxsf and vboxvideo km's:
+		# copy vboxguest (for guest) module symbols which are used by vboxsf and vboxvideo km's:
 	if [ "$module_name" = "vboxsf" -o \
 	     "$module_name" = "vboxvideo" ] ; then
-	    cp $PWD/modules_build_dir/$flavor/vboxguest/Module.symvers \
+		cp $PWD/modules_build_dir/$flavor/vboxguest/Module.symvers \
 		$PWD/modules_build_dir/$flavor/$module_name
-	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxguest/Module.symvers"
+		SYMBOLS="$PWD/modules_build_dir/$flavor/vboxguest/Module.symvers"
 	fi
 	# build the module for the specific flavor
 	%make_build -j4 -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor %{?linux_make_arch} modules \
 		M=$PWD/modules_build_dir/$flavor/$module_name KBUILD_EXTRA_SYMBOLS="$SYMBOLS" V=1
-    done
+	done
 done
 
 %install
@@ -1052,7 +1030,7 @@ for module_name in vbox{drv,netflt,netadp,guest,sf,video}
 do
 	#and through all flavors
 	for flavor in %{flavors_to_build}; do
-    	    make -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor modules_install M=$PWD/modules_build_dir/$flavor/$module_name
+		make -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor modules_install M=$PWD/modules_build_dir/$flavor/$module_name
     	done
 done
 # kmp_package

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 22 10:52:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2.4
+  * GUI: Fixed VBox Manager crash when some VM has a lot of
+    snapshots.
+  * GUI: Fixed VBox Manager crash while attempting to show error
+    notifications too early.
+  * GUI: Fixed VBox Manager freeze on Linux hosts at startup or
+    while attempting to add a VM.
+  * Network: Added a new experimental type of e1000 adapter.
+    (82583V). It requires the ICH9 chipset, since MSIs are not
+    supported by PIIX3.
+  * USB Webcam: The virtual USB webcam is now part of the open
+    source base package.
+  * GUI: Fixed VirtualBox VM Manager crash when host was resuming
+    from sleep.
+  * Support for Linux 6.18
+
+-------------------------------------------------------------------
+Tue Sep 30 09:31:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop logic for building and installing on pre-Leap 15.
+
+-------------------------------------------------------------------
 Thu Sep 11 15:03:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add curl-8.16.patch [boo#1249448]

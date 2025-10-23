@@ -2794,4 +2794,12 @@ we must have vb7.1.10.</comment>
     <comment>- Add curl-8.16.patch [boo#1249448]</comment>
     <requestid>1304250</requestid>
   </revision>
+  <revision rev="298" vrev="1">
+    <srcmd5>506eecc9948beb70cf3ed1f0e0fd9dec</srcmd5>
+    <version>7.2.4</version>
+    <time>1761237097</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.2.4</comment>
+    <requestid>1313066</requestid>
+  </revision>
 </revisionlist>
