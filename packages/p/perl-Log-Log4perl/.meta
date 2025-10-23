@@ -47,5 +47,4 @@ the log file. Open a second log file, turn on full debug logs in the
 from there into the new log file&quot;. And all this is possible by just
 changing the parameters in a configuration file, which your system can
 re-read even while it's running!</description>
-  <devel project="devel:languages:perl" package="perl-Log-Log4perl"/>
 </package>
