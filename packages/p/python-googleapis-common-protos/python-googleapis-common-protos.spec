@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-googleapis-common-protos
-Version:        1.70.0
+Version:        1.71.0
 Release:        0
 Summary:        Common protobufs used in Google APIs
 License:        Apache-2.0

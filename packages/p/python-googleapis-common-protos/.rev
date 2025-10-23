@@ -296,4 +296,13 @@
     <comment></comment>
     <requestid>1277389</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cc338498d11b189f33de838b2a9ac50a</srcmd5>
+    <version>1.71.0</version>
+    <time>1761230149</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.71.0
+  * add support for Python 3.14 (#14699) (forwarded request 1313038 from glaubitz)</comment>
+    <requestid>1313039</requestid>
+  </revision>
 </revisionlist>

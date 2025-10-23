@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 22 12:00:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.71.0
+  * add support for Python 3.14 (#14699)
+
+-------------------------------------------------------------------
 Wed May 14 09:53:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.70.0
