@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 16 13:26:16 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.102:
+  * Add Exec service to schedule and execute bash cmds (#623)
+  * ui: add leap 16 to reports (#624)
+
+-------------------------------------------------------------------
 Mon Oct 06 09:54:58 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.101:

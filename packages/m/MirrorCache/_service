@@ -3,6 +3,8 @@
     <param name="extract">dist/rpm/MirrorCache.spec</param>
     <param name="extract">dist/rpm/MirrorCache-user.conf</param>
     <param name="extract">dist/rpm/MirrorCache-tmpfilesd.conf</param>
+    <param name="extract">dist/rpm/MirrorCache-Exec-user.conf</param>
+    <param name="extract">dist/rpm/MirrorCache-Exec-tmpfilesd.conf</param>
     <param name="extract">dist/rpm/update-cache.sh</param>
     <param name="url">https://github.com/openSUSE/MirrorCache</param>
     <param name="versionformat">@PARENT_TAG@</param>
