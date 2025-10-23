@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 23 10:49:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.10.6:
+  No CLI-related changes in the changelog
+  * build(deps): bump bitflags from 2.9.4 to 2.10.0 (#14640)
+  * build(deps): bump regex from 1.12.1 to 1.12.2 (#14639)
+  * build(deps): bump the clap group with 2 updates (#14637)
+  * build(deps): bump rustls from 0.23.32 to 0.23.33 (#14638)
+  * build(deps): bump tokio from 1.47.1 to 1.48.0 (#14641)
+
+-------------------------------------------------------------------
 Tue Oct 21 05:03:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.10.5:
