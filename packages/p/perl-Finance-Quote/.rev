@@ -528,4 +528,21 @@ See https://bugzilla.novell.com/show_bug.cgi?id=800797 for more.
     <comment></comment>
     <requestid>1294554</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>406aaaea9e1385a395732683aac2620b</srcmd5>
+    <version>1.670.0</version>
+    <time>1761230233</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.670.0 (1.67)
+   see /usr/share/doc/packages/perl-Finance-Quote/Changes
+  1.67      2025-10-18 11:29:58-07:00 America/Los_Angeles
+    * Fixed ASEGR.pm. Web site redesigned, URL used for data was no longer workingy - Issue #509
+  	* Handle no trade date in BorsaItaliana.pm - Issue #528
+  	* Fixed TesouroDireto.pm using Tesouro Transparente as datasource - PR #527
+  	* Added a new module to fetch data from SwissFundData - PR #515
+  	* Fixed MorningstarCH.pm
+  	* Fixed MorningstarUK.pm
+  	* Added methodinfo() to MarketWatch.pm and BorsaItaliana.pm</comment>
+    <requestid>1313052</requestid>
+  </revision>
 </revisionlist>

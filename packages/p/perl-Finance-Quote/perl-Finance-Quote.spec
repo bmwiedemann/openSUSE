@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Finance-Quote
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %define cpan_name Finance-Quote
 Name:           perl-Finance-Quote
-Version:        1.660.0
+Version:        1.670.0
 Release:        0
-# 1.66 -> normalize -> 1.660.0
-%define cpan_version 1.66
+# 1.67 -> normalize -> 1.670.0
+%define cpan_version 1.67
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Get stock and mutual fund quotes from various exchanges
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BP/BPSCHUCK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -65,7 +66,6 @@ BuildRequires:  perl(Mozilla::CA)
 BuildRequires:  perl(Net::SSLeay) >= 1.920
 BuildRequires:  perl(Readonly)
 BuildRequires:  perl(Smart::Comments) >= 1.0.5
-BuildRequires:  perl(Spreadsheet::XLSX)
 BuildRequires:  perl(String::Util)
 BuildRequires:  perl(Test2) >= 1.302167
 BuildRequires:  perl(Test::Kwalitee)
@@ -75,9 +75,13 @@ BuildRequires:  perl(Time::Piece)
 BuildRequires:  perl(URI::Escape) >= 3.310
 BuildRequires:  perl(Web::Scraper)
 BuildRequires:  perl(XML::LibXML)
+BuildRequires:  perl(YAML::PP::Perl)
 BuildRequires:  perl(feature)
 Requires:       perl(Compress::Zlib)
 Requires:       perl(Date::Parse)
+Requires:       perl(Date::Range)
+Requires:       perl(Date::Simple)
+Requires:       perl(DateTime::Format::ISO8601)
 Requires:       perl(DateTime::Format::Strptime)
 Requires:       perl(Devel::Trace) >= 0.120
 Requires:       perl(HTML::Entities)
@@ -103,7 +107,6 @@ Requires:       perl(Mozilla::CA)
 Requires:       perl(Net::SSLeay) >= 1.920
 Requires:       perl(Readonly)
 Requires:       perl(Smart::Comments) >= 1.0.5
-Requires:       perl(Spreadsheet::XLSX)
 Requires:       perl(String::Util)
 Requires:       perl(Test2) >= 1.302167
 Requires:       perl(Text::Template)
@@ -111,7 +114,8 @@ Requires:       perl(Time::Piece)
 Requires:       perl(URI::Escape) >= 3.310
 Requires:       perl(Web::Scraper)
 Requires:       perl(XML::LibXML)
-Provides:       perl(Finance::Quote) = 0.00
+Requires:       perl(YAML::PP::Perl)
+Provides:       perl(Finance::Quote) = %{version}
 Provides:       perl(Finance::Quote::AEX) = %{version}
 Provides:       perl(Finance::Quote::ASEGR) = %{version}
 Provides:       perl(Finance::Quote::ASX) = %{version}
@@ -152,6 +156,7 @@ Provides:       perl(Finance::Quote::SIX) = %{version}
 Provides:       perl(Finance::Quote::Sinvestor) = %{version}
 Provides:       perl(Finance::Quote::StockData) = %{version}
 Provides:       perl(Finance::Quote::Stooq) = %{version}
+Provides:       perl(Finance::Quote::SwissFundData) = %{version}
 Provides:       perl(Finance::Quote::TMX) = %{version}
 Provides:       perl(Finance::Quote::TSP) = %{version}
 Provides:       perl(Finance::Quote::TesouroDireto) = %{version}
@@ -199,7 +204,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README
+%doc Changes CONTRIBUTING.md README
 %license LICENSE
 
 %changelog
