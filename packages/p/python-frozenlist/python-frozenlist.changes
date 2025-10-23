@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 21 09:56:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.0
+  * The :file:`reusable-cibuildwheel.yml` workflow has been refactored to
+    be more generic and :file:`ci-cd.yml` now holds all the configuration
+    toggles
+  * When building wheels, the source distribution is now passed directly
+    to the ``cibuildwheel`` invocation
+    Builds and tests have been added to ``ci-cd.yml`` for arm64 Windows wheels
+  * Started building wheels for CPython 3.14
+  * Removed ``--config-settings=pure-python=false`` from :file:`requirements/dev.txt`.
+    Developers on CPython still get accelerated builds by default. To explicitly build
+    a pure Python wheel, use ``pip install -e . --config-settings=pure-python=true``
+
+-------------------------------------------------------------------
 Thu Sep 25 11:08:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.7.0
