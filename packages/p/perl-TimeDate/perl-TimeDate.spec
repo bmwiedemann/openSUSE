@@ -1,7 +1,7 @@
 #
 # spec file for package perl-TimeDate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,62 @@
 #
 
 
-Name:           perl-TimeDate
-Version:        2.33
-Release:        0
 %define cpan_name TimeDate
-Summary:        TimeDate Perl module
+Name:           perl-TimeDate
+Version:        2.330.0
+Release:        0
+# 2.33 -> normalize -> 2.330.0
+%define cpan_version 2.33
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        TimeDate Perl module
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Date::Format) = 2.240.0
+Provides:       perl(Date::Format::Generic)
+Provides:       perl(Date::Language) = 1.100.0
+Provides:       perl(Date::Language::Afar) = 0.990.0
+Provides:       perl(Date::Language::Amharic) = 1.0.0
+Provides:       perl(Date::Language::Austrian) = 1.10.0
+Provides:       perl(Date::Language::Brazilian) = 1.10.0
+Provides:       perl(Date::Language::Bulgarian) = 1.10.0
+Provides:       perl(Date::Language::Chinese) = 1.0.0
+Provides:       perl(Date::Language::Chinese_GB) = 1.10.0
+Provides:       perl(Date::Language::Czech) = 1.10.0
+Provides:       perl(Date::Language::Danish) = 1.10.0
+Provides:       perl(Date::Language::Dutch) = 1.20.0
+Provides:       perl(Date::Language::English) = 1.10.0
+Provides:       perl(Date::Language::Finnish) = 1.10.0
+Provides:       perl(Date::Language::French) = 1.40.0
+Provides:       perl(Date::Language::Gedeo) = 0.990.0
+Provides:       perl(Date::Language::German) = 1.20.0
+Provides:       perl(Date::Language::Greek) = 1.0.0
+Provides:       perl(Date::Language::Hungarian) = 1.10.0
+Provides:       perl(Date::Language::Icelandic) = 1.10.0
+Provides:       perl(Date::Language::Italian) = 1.10.0
+Provides:       perl(Date::Language::Norwegian) = 1.10.0
+Provides:       perl(Date::Language::Occitan) = 1.40.0
+Provides:       perl(Date::Language::Oromo) = 0.990.0
+Provides:       perl(Date::Language::Romanian) = 1.10.0
+Provides:       perl(Date::Language::Russian) = 1.10.0
+Provides:       perl(Date::Language::Russian_cp1251) = 1.10.0
+Provides:       perl(Date::Language::Russian_koi8r) = 1.10.0
+Provides:       perl(Date::Language::Sidama) = 0.990.0
+Provides:       perl(Date::Language::Somali) = 0.990.0
+Provides:       perl(Date::Language::Spanish) = 1.0.0
+Provides:       perl(Date::Language::Swedish) = 1.10.0
+Provides:       perl(Date::Language::Tigrinya) = 1.0.0
+Provides:       perl(Date::Language::TigrinyaEritrean) = 1.0.0
+Provides:       perl(Date::Language::TigrinyaEthiopian) = 1.0.0
+Provides:       perl(Date::Language::Turkish) = 1.0.0
+Provides:       perl(Date::Parse) = %{version}
+Provides:       perl(Time::Zone) = 2.240.0
+Provides:       perl(TimeDate) = 1.210.0
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -49,12 +91,13 @@ strptime(DATE [, ZONE])
     offset in seconds from GMT. An empty array is returned upon failure.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -65,7 +108,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc ChangeLog README
 
 %changelog

@@ -14,5 +14,4 @@
      ($ss,$mm,$hh,$day,$month,$year,$zone). Elements are only defined if they
      could be extracted from the date string. The $zone element is the timezone
      offset in seconds from GMT. An empty array is returned upon failure.</description>
-  <devel project="devel:languages:perl" package="perl-TimeDate"/>
 </package>

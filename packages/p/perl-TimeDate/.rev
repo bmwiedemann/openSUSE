@@ -249,4 +249,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>808167</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>516e9946ac66ddb182c5c27641e9357f</srcmd5>
+    <version>2.330.0</version>
+    <time>1761230120</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1312557</requestid>
+  </revision>
 </revisionlist>
