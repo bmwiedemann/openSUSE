@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 20 19:07:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.12.2
+  * About 1.6× speedup at serializing with default options.
+  * About 1.7× speedup at parsing keymaps serialized by
+    libxkbcommon, otherwise aruond 1.1×.
+  * Added fallback to the legacy X11 path for misconfigured setups
+    where the canonical XKB root is not available.
+
+-------------------------------------------------------------------
 Fri Aug  8 19:37:15 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.11.0
