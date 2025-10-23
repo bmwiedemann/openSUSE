@@ -2587,4 +2587,15 @@ New Features
     `default-primaries`.</comment>
     <requestid>1304066</requestid>
   </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>b894876df5c4ad18f3dfe2e9bf05d4cb</srcmd5>
+    <version>9.20.15</version>
+    <time>1761237095</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to release 9.20.15
+  [CVE-2025-8677, bsc#1252378]
+  [CVE-2025-40778, bsc#1252379]
+  [CVE-2025-40780, bsc#1252380]</comment>
+    <requestid>1313051</requestid>
+  </revision>
 </revisionlist>

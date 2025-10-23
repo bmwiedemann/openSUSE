@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 22 14:14:38 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.15
+  Security Fixes:
+  * DNSSEC validation fails if matching but invalid DNSKEY is found.
+    [CVE-2025-8677, bsc#1252378]
+  * Address various spoofing attacks.
+    [CVE-2025-40778, bsc#1252379]
+  * Cache-poisoning due to weak pseudo-random number generator.
+    [CVE-2025-40780, bsc#1252380]
+
+  New Features:
+  * Add dnssec-policy keys configuration check to named-checkconf.
+
+  Bug Fixes:
+  * Missing DNSSEC information when CD bit is set in query.
+  * rndc sign during ZSK rollover will now replace signatures.
+  * Use signer name when disabling DNSSEC algorithms.
+  * Preserve cache when reload fails and reload the server again.
+
+-------------------------------------------------------------------
 Thu Sep 11 09:17:09 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.13

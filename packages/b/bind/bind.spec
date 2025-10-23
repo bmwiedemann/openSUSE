@@ -59,7 +59,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.20.13
+Version:        9.20.15
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
