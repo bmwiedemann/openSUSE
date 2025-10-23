@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Oct 20 13:04:50 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 6.09.00:
+  * added static member String::to_string
+  * MemoryAccess objects keep track of their own loaded data blocks
+  * reimplemented MemoryStream
+  * reimplemented MemoryBuf
+  * reimplemented MemoryAccess
+  * reimplemented MemoryBridge
+  * modified the pipe and redirector man-pages
+  * fixed ending a log message when inserting endl.
+  * fixed typos in bobcat.yo
+  * added *mmap* man-pages
+  * renamed Mmapbuf to MmapBuf, added MmapBuf (related) classes to CLASSES
+  * using d_mapBufSize for existing buffers
+  * added IOmapbuf
+  * mapbase/seabspos.cc updated
+  * imapbuf and omapbuf needs its own seekoff
+  * i/omapbuf and mapbase in line with streambuf
+  * updated imapbuf in line with the std. streambuf behavior
+  * wip MapBase according to std. stream procedures
+  * input/output OK, using iosopenmode in the constructors
+  * Omapbuf writing tests (rdbuf, std. insertions, .write(...)' OK
+  * Added OmapBuf, R and initial W tests OK
+  * d_realSize to MabBase, using MapBase::currentPos. Reading OK
+  * mapbase prepared for writing, reading OK
+  * mapbase: common base class for imapbuf and omapbuf
+  * imapbuf derives from mapbase
+  * fixed optional long option argument bug in Arg
+  * DateTime constructors with TimeTime params use default arg UTC
+  * 'typdef' specs replaced by 'using' declarations
+  * update documentation references to bobcat5 -> bobcat6
+  * NPipe SF: Pipe now contains its additional members
+  * New classes now operational, see the changelog
+  * added proc/ and ifdstreams/
+  * updated milter: virtual members now private
+  * added ifdbufs, updated ifdbuf
+- Add service file to get tarball
+- Remove unecessary comments from specfile
+
+-------------------------------------------------------------------
 Wed Mar 19 08:46:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove dependency on the_silver_searcher (ag)

@@ -1,7 +1,7 @@
 #
 # spec file for package libbobcat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 
 Name:           %{_lib_name}%{?psuffix}
-Version:        6.02.02
+Version:        6.09.00
 Release:        0
 Summary:        Shared library implementing C++ classes that are frequently used
 License:        GPL-3.0-only
@@ -36,12 +36,8 @@ Group:          Development/Tools/Building
 URL:            https://gitlab.com/fbb-git/bobcat
 Source0:        https://gitlab.com/fbb-git/bobcat/-/archive/%{version}/bobcat-%{version}.tar.gz
 Source1:        initialbobcatlib
-#BuildRequires:  libX11-devel
-#BuildRequires:  libopenssl-1_1-devel
-#BuildRequires:  readline-devel
-#BuildRequires:  sendmail-devel
 %if "%{name}" == "%{_lib_name}"
-BuildRequires:  icmake
+BuildRequires:  icmake >= 12.03.00
 %endif
 BuildRequires:  gcc-c++
 
@@ -88,29 +84,31 @@ Headers and documentation of classes defined in the Bobcat library.
 Bobcat static library
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %if "%{name}" == "%{_lib_name}"
 
 %build
 # Incase we have to use specific version of gcc:
-export CXXFLAGS="%{optflags} --std=c++2a -Werror -fdiagnostics-color=never -ffat-lto-objects"
+export ICMAKE_CPPSTD="--std=c++2b"
+export CXXFLAGS="%{optflags} ${ICMAKE_CPPSTD} -Werror -fdiagnostics-color=never -ffat-lto-objects"
 export CXX="g++"
 sed -i 's/^#define CXX/\/\/ #define CXX/g' %{_name}/INSTALL.im
 sed -i 's/^#define CXXFLAGS/\/\/ #define CXXFLAGS/g' %{_name}/INSTALL.im
 sed -i 's/^#define DOC/\/\/ #define DOC/g' %{_name}/INSTALL.im
 sed -i 's/^#define HDR/\/\/ #define HDR/g' %{_name}/INSTALL.im
 sed -i 's/^#define LIB/\/\/ #define LIB/g' %{_name}/INSTALL.im
-echo "/* created during rpmbuild */"                            >> %{_name}/INSTALL.im
-echo "#define CXX         \"${CXX}\""                           >> %{_name}/INSTALL.im
-echo "#define CXXFLAGS    \"${CXXFLAGS}\""                      >> %{_name}/INSTALL.im
-echo "#define DOC         \"%{_docdir}/%{_lib_name}%{_lib_version}-devel\""   >> %{_name}/INSTALL.im
-echo "#define HDR         \"%{_includedir}/%{_name}\""          >> %{_name}/INSTALL.im
-echo "#define LIB         \"%{_libdir}\""                       >> %{_name}/INSTALL.im
+{
+  echo "/* created during rpmbuild */"
+  echo "#define CXX         \"${CXX}\""
+  echo "#define CXXFLAGS    \"${CXXFLAGS}\""
+  echo "#define DOC         \"%{_docdir}/%{_lib_name}%{_lib_version}-devel\""
+  echo "#define HDR         \"%{_includedir}/%{_name}\""
+  echo "#define LIB         \"%{_libdir}\""
+} >> %{_name}/INSTALL.im
 pushd %{_name}
 ./build dep
 ./build light
-#echo -e "y\nn\ny\ny\n" | ./build libraries
 popd
 
 %install
@@ -140,7 +138,7 @@ Bobcat is an acronym of `Brokken's Own Base Classes And Templates'. This is the 
 would be use to build icmake without required it.
 
 %build
-export CXXFLAGS="%{optflags} --std=c++2a -Werror -fdiagnostics-color=never -ffat-lto-objects"
+export CXXFLAGS="%{optflags} --std=c++2b -Werror -fdiagnostics-color=never -ffat-lto-objects"
 export CXX="g++"
 
 pushd %{_name}
