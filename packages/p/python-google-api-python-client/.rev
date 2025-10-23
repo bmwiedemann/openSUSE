@@ -1541,4 +1541,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **serviceconsumermanagement:** Update the api (forwarded request 1312714 from glaubitz)</comment>
     <requestid>1312817</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>ea7ffe2fa9676c7f8f300d5e90992945</srcmd5>
+    <version>2.185.0</version>
+    <time>1761230296</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313185</requestid>
+  </revision>
 </revisionlist>

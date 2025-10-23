@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Wed Oct 22 12:44:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.185.0
+  * **accesscontextmanager:** Update the api
+  * Add support for 3.14 (#2668)
+  * **alloydb:** Update the api
+  * **alloydb:** Update the api
+  * **apigateway:** Update the api
+  * **apigee:** Update the api
+  * **apim:** Update the api
+  * **appengine:** Update the api
+  * **appengine:** Update the api
+  * **apphub:** Update the api
+  * **assuredworkloads:** Update the api
+  * **backupdr:** Update the api
+  * **batch:** Update the api
+  * **beyondcorp:** Update the api
+  * **bigquery:** Update the api
+  * **bigtableadmin:** Update the api
+  * **certificatemanager:** Update the api
+  * **chromemanagement:** Update the api
+  * **cloudchannel:** Update the api
+  * **clouddeploy:** Update the api
+  * **cloudfunctions:** Update the api
+  * **cloudscheduler:** Update the api
+  * **cloudshell:** Update the api
+  * **composer:** Update the api
+  * **compute:** Update the api
+  * **config:** Update the api
+  * **connectors:** Update the api
+  * **contactcenteraiplatform:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **containeranalysis:** Update the api
+  * **container:** Update the api
+  * **datacatalog:** Update the api
+  * **dataform:** Update the api
+  * **datalineage:** Update the api
+  * **dataplex:** Update the api
+  * **dataproc:** Update the api
+  * **datastore:** Update the api
+  * **developerconnect:** Update the api
+  * **dialogflow:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **discoveryengine:** Update the api
+  * **dlp:** Update the api
+  * **docs:** Update the api
+  * **documentai:** Update the api
+  * **documentai:** Update the api
+  * **eventarc:** Update the api
+  * **file:** Update the api
+  * **firebasehosting:** Update the api
+  * **firebaseml:** Update the api
+  * **firebaseml:** Update the api
+  * **firestore:** Update the api
+  * **gamesConfiguration:** Update the api
+  * **gamesManagement:** Update the api
+  * **games:** Update the api
+  * **gkebackup:** Update the api
+  * **gkehub:** Update the api
+  * **gkehub:** Update the api
+  * **healthcare:** Update the api
+  * **iam:** Update the api
+  * **iam:** Update the api
+  * **looker:** Update the api
+  * **memcache:** Update the api
+  * **merchantapi:** Update the api
+  * **metastore:** Update the api
+  * **migrationcenter:** Update the api
+  * **monitoring:** Update the api
+  * **netapp:** Update the api
+  * **networkconnectivity:** Update the api
+  * **networkmanagement:** Update the api
+  * **networksecurity:** Update the api
+  * **networksecurity:** Update the api
+  * **observability:** Update the api
+  * **ondemandscanning:** Update the api
+  * **osconfig:** Update the api
+  * **parallelstore:** Update the api
+  * **paymentsresellersubscription:** Update the api
+  * **policysimulator:** Update the api
+  * **privateca:** Update the api
+  * **pubsublite:** Update the api
+  * **redis:** Update the api
+  * **redis:** Update the api
+  * **retail:** Update the api
+  * **run:** Update the api
+  * **securitycenter:** Update the api
+  * **servicemanagement:** Update the api
+  * **servicenetworking:** Update the api
+  * **spanner:** Update the api
+  * **speech:** Update the api
+  * **sqladmin:** Update the api
+  * **storagebatchoperations:** Update the api
+  * **texttospeech:** Update the api
+  * **tpu:** Update the api
+  * **travelimpactmodel:** Update the api
+  * **vision:** Update the api
+  * **vmmigration:** Update the api
+  * **webrisk:** Update the api
+  * **workloadmanager:** Update the api
+  * **workloadmanager:** Update the api
+  * **workstations:** Update the api
+  * **chat:** Update the api
+  * **secretmanager:** Update the api
+  * **secretmanager:** Update the api
+  * **workspaceevents:** Update the api
+
+-------------------------------------------------------------------
 Mon Oct 13 08:40:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.184.0
