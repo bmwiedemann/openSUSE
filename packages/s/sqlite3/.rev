@@ -1929,4 +1929,12 @@ CVE-2020-13871 boo#1172646</comment>
     <comment>- bsc#1248586: Fix icu-enabled build.</comment>
     <requestid>1301434</requestid>
   </revision>
+  <revision rev="169" vrev="3">
+    <srcmd5>bf2a8d1c83e1f551bc413ac2c2767b8a</srcmd5>
+    <version>3.50.4</version>
+    <time>1761230126</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1252217: Add a %license file.</comment>
+    <requestid>1312730</requestid>
+  </revision>
 </revisionlist>

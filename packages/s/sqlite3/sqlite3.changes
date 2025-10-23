@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 21 08:30:42 UTC 2025 - Reinhard Max <max@suse.com>
+
+- bsc#1252217: Add a %license file.
+
+-------------------------------------------------------------------
 Tue Aug 26 12:14:27 UTC 2025 - Reinhard Max <max@suse.com>
 
 - bsc#1248586: Fix icu-enabled build.
@@ -8,7 +13,7 @@ Mon Aug 11 16:04:48 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Update to version 3.50.4:
   * Fix two long-standings cases of the use of uninitialized
-    variables in obscure circumstances. 
+    variables in obscure circumstances.
 
 -------------------------------------------------------------------
 Thu Jul 17 16:17:25 UTC 2025 - Reinhard Max <max@suse.com>

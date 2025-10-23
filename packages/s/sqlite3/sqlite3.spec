@@ -1,7 +1,7 @@
 #
 # spec file for package sqlite3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -218,6 +218,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ldconfig_scriptlets -n libsqlite3-0
 
 %files
+%license LICENSE.md
 %{_bindir}/sqlite3
 %{_mandir}/man1/sqlite3.1%{?ext_man}
 
