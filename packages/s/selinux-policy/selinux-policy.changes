@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 21 09:07:33 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20251021:
+  * Allow snapper sdbootutil plugin read emmc devices (bsc#1231354)
+  * Allow pcrlock to delete pid entries
+  * Allow systemd_pcrlock_t to manage its pid files
+  * Mark snapper_sdbootutil_plugin_t as permissive
+  * Drop unnamed filetrans, should be done upstream (bsc#1241964)
+  * Label pcrlock pid file correctly (bsc#1241964)
+  * Allow snapper sdbootutil plugin send msg to system bus (bsc#1241964)
+  * snapper takes output from stdout/err, allow pcrlock to write
+  * Add tpm2_getcap permissions to snapper sdbootutil (bsc#1244573)
+  * Allow snapper sdbootutil plugin to read snapper data and conf
+  * Allow snapper sdbootutil plugin to grep /proc/stat (bsc#1241964)
+  * Replace snapper tmp file access for pcrlock (bsc#1241964)
+  * Allow snapper sdbootutil read kernel module dirs (bsc#1241964)
+  * Allow snapper sdbootutil plugin use bootctl (bsc#1241964)
+  * Allow snapper sdbootutil plugin to list and read sysfs (bsc#1241964)
+  * Allow snapper sdbootutil sys_admin (bsc#1241964)
+  * Allow snapper sdbootutils plugin to findmnt (bsc#1241964)
+  * Allow snapper sdbootutil plugin rw tpm (bsc#1233358)
+  * Move manage dos permissions and dontaudit execmem to snapper sdbootutils plugin (bsc#1241964)
+  * Move snapper domtrans to sdbootutil to plugin (bsc#1241964)
+  * Revert snapper access to keys, move to sdbootutils plugin policy (bsc#1241964)
+  * Add initial seperate policy for sdbootutil called by snapper (bsc#1233358)
+  * Allow sort in snapper_grub_plugin_t read cpu.max (bsc#1252095)
+
+-------------------------------------------------------------------
 Fri Oct 17 15:15:04 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 20251016:

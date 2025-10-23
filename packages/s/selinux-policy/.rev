@@ -2161,4 +2161,14 @@ https://build.opensuse.org/request/show/1178504 </comment>
   * Allow NM to reach systemd unit files (bsc#1235731)</comment>
     <requestid>1312075</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>1fb0452e99f0b6a35f7a900db4b5ef79</srcmd5>
+    <version>20251021</version>
+    <time>1761230129</time>
+    <user>anag_factory</user>
+    <comment>sdbootutil-snapper fixes and grub snapper fixes
+
+there will be 4 permissive avcs left regarding pcrlock, but those will be fixed by the bigger systemd update that will change systemd-pcrlock</comment>
+    <requestid>1312810</requestid>
+  </revision>
 </revisionlist>
