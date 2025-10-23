@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygls
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygls
-Version:        1.3.1
+Version:        2.0.0
 Release:        0
 Summary:        A pythonic generic language server
 License:        Apache-2.0
@@ -31,11 +31,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # For testing
-BuildRequires:  %{python_module lsprotocol}
+BuildRequires:  %{python_module lsprotocol = 2025.0.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 # Endif
-Requires:       python-lsprotocol
+Requires:       python-attrs >= 24.3.0
+Requires:       python-cattrs >= 23.1.2
+Requires:       python-lsprotocol = 2025.0.0
 Requires:       python-websockets
 BuildArch:      noarch
 %python_subpackages
