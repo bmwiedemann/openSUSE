@@ -211,4 +211,12 @@ GStreamer.</comment>
   * fixed load performance regression.</comment>
     <requestid>1306333</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>541a9dc3948656f31a50075b1946e643</srcmd5>
+    <version>2.15.1</version>
+    <time>1761230146</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313030</requestid>
+  </revision>
 </revisionlist>

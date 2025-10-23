@@ -74,9 +74,6 @@ use libstilview.
 %ifarch x86_64
 EXTRA="--with-simd=none"
 %endif
-%ifarch aarch64
-EXTRA="--with-simd=neon"
-%endif
 
 %configure --disable-static $EXTRA
 %make_build
