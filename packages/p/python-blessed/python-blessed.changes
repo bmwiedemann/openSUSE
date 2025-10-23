@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 22 13:11:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.22.0
+  * Performance improved in Terminal.Length and Sequence.padd
+    by @grayjk and @avylove, (#286), (#287), (#289), and (#291)
+  * Fixes for failing tests by @avylove in (#284)
+  * Use a separate job to upload coverage for older python versions
+    by @avylove in (#288)
+  * Use tool "codespell" in tox 'lint' step by @yarikoptic and
+    @jquast in (#293)
+  * Unpin docformatter by @avylove in (#292)
+
+-------------------------------------------------------------------
 Tue May  6 11:33:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
