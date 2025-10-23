@@ -24,6 +24,8 @@ profile haproxy /usr/sbin/haproxy flags=(attach_disconnected) {
 
   /etc/haproxy/* r, 
 
+  /etc/os-release r,
+
   /usr/sbin/haproxy rmix,
 
   /dev/shm/haproxy_startup_logs_* rwlk,

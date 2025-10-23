@@ -1738,4 +1738,12 @@
   - more access for the cpu scheduling support in haproxy</comment>
     <requestid>1309647</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>0ddd83e1439a56d33aff19282170e8cf</srcmd5>
+    <version>3.2.7+git0.be4f72dc5</version>
+    <time>1761230308</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2.7+git0.be4f72dc5:</comment>
+    <requestid>1313209</requestid>
+  </revision>
 </revisionlist>
