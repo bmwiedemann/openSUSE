@@ -1121,4 +1121,18 @@ Fixes:
     <comment></comment>
     <requestid>1299144</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>ec5a420ac1ef927bd049f01b2ef37c9d</srcmd5>
+    <version>7.351.0</version>
+    <time>1761230116</time>
+    <user>anag_factory</user>
+    <comment>- Grab 12509c0f1ee8c22ae163017f0a5e7b8a9d983a17.patch from upstream
+  repository
+  Drops 12509c0f.patch
+
+- Drop Leap &lt; 16 (does not meet libplacebo build requirements)
+- Use RPM 4.20 BuildSystem declaration
+- Clean up spec file</comment>
+    <requestid>1312450</requestid>
+  </revision>
 </revisionlist>

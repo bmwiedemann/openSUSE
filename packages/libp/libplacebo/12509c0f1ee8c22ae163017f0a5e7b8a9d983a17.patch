@@ -16,7 +16,7 @@ diff --git a/src/vulkan/utils_gen.py b/src/vulkan/utils_gen.py
 index 9a97d35f3..9b803d82b 100644
 --- a/src/vulkan/utils_gen.py
 +++ b/src/vulkan/utils_gen.py
-@@ -202,7 +202,8 @@ def find_registry_xml(datadir):
+@@ -202,7 +202,8 @@ if __name__ == '__main__':
      if not xmlfile or xmlfile == '':
          xmlfile = find_registry_xml(datadir)
  
@@ -26,3 +26,6 @@ index 9a97d35f3..9b803d82b 100644
      with open(outfile, 'w') as f:
          f.write(TEMPLATE.render(
              vkresults = get_vkenum(registry, 'VkResult'),
+-- 
+GitLab
+

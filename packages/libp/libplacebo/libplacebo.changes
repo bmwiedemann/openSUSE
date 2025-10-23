@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 20 16:16:20 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Grab 12509c0f1ee8c22ae163017f0a5e7b8a9d983a17.patch from upstream
+  repository
+  Drops 12509c0f.patch
+
+-------------------------------------------------------------------
+Sun Oct 19 13:06:10 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Drop Leap < 16 (does not meet libplacebo build requirements)
+- Use RPM 4.20 BuildSystem declaration
+- Clean up spec file
+
+-------------------------------------------------------------------
 Tue Aug 12 15:18:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 12509c0f.patch: Fix build on python 3.13.6.
