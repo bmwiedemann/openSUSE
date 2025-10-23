@@ -1,7 +1,7 @@
 #
 # spec file for package perl-URI
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.320.0
+Version:        5.340.0
 Release:        0
-# 5.32 -> normalize -> 5.320.0
-%define cpan_version 5.32
+# 5.34 -> normalize -> 5.340.0
+%define cpan_version 5.34
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Uniform Resource Identifiers (absolute and relative)
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -85,6 +86,7 @@ Provides:       perl(URI::sftp) = %{version}
 Provides:       perl(URI::sip) = %{version}
 Provides:       perl(URI::sips) = %{version}
 Provides:       perl(URI::smb) = %{version}
+Provides:       perl(URI::smtp) = %{version}
 Provides:       perl(URI::snews) = %{version}
 Provides:       perl(URI::ssh) = %{version}
 Provides:       perl(URI::telnet) = %{version}
@@ -92,6 +94,8 @@ Provides:       perl(URI::tn3270) = %{version}
 Provides:       perl(URI::urn) = %{version}
 Provides:       perl(URI::urn::isbn) = %{version}
 Provides:       perl(URI::urn::oid) = %{version}
+Provides:       perl(URI::ws) = %{version}
+Provides:       perl(URI::wss) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -126,7 +130,7 @@ components. The methods available for a specific 'URI' object depend on the
 scheme.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

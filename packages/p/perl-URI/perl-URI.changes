@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:51:39 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.340.0 (5.34)
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.34      2025-09-17 11:00:27Z
+      - Add WebSocket (ws, wss) URI (GH#158) (david-dick)
+
+  5.33      2025-09-17 03:23:13Z
+      - Add smtp scheme (GH#156) (SineSwiper)
+
+-------------------------------------------------------------------
 Sun May 11 05:35:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.320.0 (5.32)

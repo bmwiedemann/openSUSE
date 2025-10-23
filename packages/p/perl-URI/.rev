@@ -451,4 +451,17 @@
       - Silence warnings issued in t/otpauth.t (GH#154) (Olaf Alders)</comment>
     <requestid>1279820</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>0759a5eccf91791bdb18defbb334bf1d</srcmd5>
+    <version>5.340.0</version>
+    <time>1761230119</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.340.0 (5.34)
+   see /usr/share/doc/packages/perl-URI/Changes
+  5.34      2025-09-17 11:00:27Z
+      - Add WebSocket (ws, wss) URI (GH#158) (david-dick)
+  5.33      2025-09-17 03:23:13Z
+      - Add smtp scheme (GH#156) (SineSwiper)</comment>
+    <requestid>1312554</requestid>
+  </revision>
 </revisionlist>
