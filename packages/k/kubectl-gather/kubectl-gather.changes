@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 23 05:40:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.0:
+  * Update toolchain to go1.25.3
+  * build: Use go 1.25
+
+-------------------------------------------------------------------
 Fri Aug 22 04:47:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.10.1:
