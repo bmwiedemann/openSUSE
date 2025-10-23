@@ -866,4 +866,19 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
 </comment>
     <requestid>1305210</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>0100fef371154f19f7f4eee683621754</srcmd5>
+    <version>2.24.0</version>
+    <time>1761230115</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.24.0:
+  * Features
+    * Add support for nocloud config fetching in kubevirt
+  * Bug fixes
+    * Fix occasional cex.key file removal
+    * Fix multipath partitioning: ignore DM holders when no
+      partitions are mounted
+</comment>
+    <requestid>1312438</requestid>
+  </revision>
 </revisionlist>

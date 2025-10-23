@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 20 14:34:33 UTC 2025 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.24.0:
+  * Features
+    * Add support for nocloud config fetching in kubevirt
+  * Bug fixes
+    * Fix occasional cex.key file removal
+    * Fix multipath partitioning: ignore DM holders when no
+      partitions are mounted
+
+-------------------------------------------------------------------
 Tue Sep 16 13:24:12 UTC 2025 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.23.0:
