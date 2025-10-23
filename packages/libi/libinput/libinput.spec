@@ -37,7 +37,7 @@
 %define lname	libinput10
 %define pname	libinput
 Name:           libinput%{?xsuffix}
-Version:        1.28.1
+Version:        1.29.2
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
@@ -49,7 +49,6 @@ Source:         https://gitlab.freedesktop.org/libinput/libinput/-/archive/%vers
 Source3:        baselibs.conf
 Source5:        libinput-rpmlintrc
 Patch1:         kill-env.diff
-Patch2:         pkgconf.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
