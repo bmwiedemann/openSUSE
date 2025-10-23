@@ -2,5 +2,4 @@
   <title>Perl IO/String interface</title>
   <description>IO::String is an IO::File (and IO::Handle) compatible class that reads
 or writes data from in-core strings.</description>
-  <devel project="devel:languages:perl" package="perl-IO-String" />
 </package>

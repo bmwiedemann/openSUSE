@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 14 12:43:52 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+- Add cpanspec.yml to override description length
+
+-------------------------------------------------------------------
 Fri Nov 18 11:10:55 UTC 2011 - coolo@suse.com
 
 - use original .tar.gz

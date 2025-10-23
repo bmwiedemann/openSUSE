@@ -174,4 +174,14 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>21e15f90f93fa7d7d9c0674fedbbefdd</srcmd5>
+    <version>1.80.0</version>
+    <time>1761230120</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+- Add cpanspec.yml to override description length</comment>
+    <requestid>1312556</requestid>
+  </revision>
 </revisionlist>
