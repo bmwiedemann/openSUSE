@@ -343,4 +343,12 @@
     <comment>Use gcc_version to decide about compiler</comment>
     <requestid>1307557</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7e6ca4c5fcee9c3e901bc81ba5967d98</srcmd5>
+    <version>17.0.17.0</version>
+    <time>1761230229</time>
+    <user>anag_factory</user>
+    <comment>October 2025 CPU</comment>
+    <requestid>1313048</requestid>
+  </revision>
 </revisionlist>

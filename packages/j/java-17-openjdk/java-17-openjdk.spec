@@ -33,8 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       16
-%global buildver        8
+%global updatever       17
+%global buildver        10
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -181,8 +181,6 @@ Patch200:       ppc_stack_overflow_fix.patch
 #
 Patch301:       JDK-8303509.patch
 Patch302:       disable-doclint-by-default.patch
-Patch303:       unsigned-sni-server-name.patch
-Patch304:       jdk-8354941.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -421,8 +419,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch -P 301 -p1
 %patch -P 302 -p1
-%patch -P 303 -p1
-%patch -P 304 -p1
 
 # Extract systemtap tapsets
 
