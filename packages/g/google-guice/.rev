@@ -67,4 +67,12 @@
     <comment></comment>
     <requestid>1252885</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e05b38111e12b0bf39b10942b9324b69</srcmd5>
+    <version>6.0.0</version>
+    <time>1761230307</time>
+    <user>anag_factory</user>
+    <comment>Fix build with Java 25</comment>
+    <requestid>1313205</requestid>
+  </revision>
 </revisionlist>

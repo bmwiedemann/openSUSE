@@ -1,7 +1,7 @@
 #
 # spec file for package google-guice
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ BuildRequires:  guava
 BuildRequires:  jakarta-inject
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  jspecify
 BuildRequires:  jsr-305
 BuildRequires:  objectweb-asm
 Provides:       %{short_name}-multibindings = %{version}
@@ -178,6 +179,7 @@ build-jar-repository -s lib \
     google-errorprone/annotations \
     guava/guava \
     jakarta-inject \
+    jspecify \
     jsr-305 \
     objectweb-asm/asm \
 
