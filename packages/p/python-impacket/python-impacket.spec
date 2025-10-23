@@ -1,8 +1,8 @@
 #
 # spec file for package python-impacket
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 #
 
 
-%define binaries impacket-GetADUsers impacket-GetADComputers impacket-Get-GPPPassword impacket-GetLAPSPassword impacket-GetNPUsers impacket-GetUserSPNs impacket-DumpNTLMInfo impacket-addcomputer impacket-atexec impacket-changepasswd impacket-dacledit impacket-dcomexec impacket-describeTicket impacket-dpapi impacket-esentutl impacket-exchanger impacket-findDelegation impacket-getArch impacket-getPac impacket-getST impacket-getTGT impacket-goldenPac impacket-karmaSMB impacket-keylistattack impacket-kintercept impacket-lookupsid impacket-machine_role impacket-mimikatz impacket-mqtt_check impacket-mssqlclient impacket-mssqlinstance impacket-net impacket-netview impacket-ntfs-read impacket-ntlmrelayx impacket-owneredit impacket-ping impacket-ping6 impacket-psexec impacket-raiseChild impacket-rbcd impacket-rdp_check impacket-reg impacket-registry-read impacket-rpcmap impacket-rpcdump impacket-sambaPipe impacket-samrdump impacket-secretsdump impacket-services impacket-smbclient impacket-smbexec impacket-smbserver impacket-sniff impacket-sniffer impacket-split impacket-ticketConverter impacket-ticketer impacket-tstool impacket-wmiexec impacket-wmipersist impacket-wmiquery
+%define binaries impacket-CheckLDAPStatus impacket-GetADUsers impacket-GetADComputers impacket-Get-GPPPassword impacket-GetLAPSPassword impacket-GetNPUsers impacket-GetUserSPNs impacket-DumpNTLMInfo impacket-addcomputer impacket-atexec impacket-attrib impacket-badsuccessor impacket-changepasswd impacket-dacledit impacket-dcomexec impacket-describeTicket impacket-dpapi impacket-esentutl impacket-exchanger impacket-filetime impacket-findDelegation impacket-getArch impacket-getPac impacket-getST impacket-getTGT impacket-goldenPac impacket-karmaSMB impacket-keylistattack impacket-kintercept impacket-lookupsid impacket-machine_role impacket-mimikatz impacket-mqtt_check impacket-mssqlclient impacket-mssqlinstance impacket-net impacket-netview impacket-ntfs-read impacket-ntlmrelayx impacket-owneredit impacket-ping impacket-ping6 impacket-psexec impacket-regsecrets impacket-raiseChild impacket-rbcd impacket-rdp_check impacket-reg impacket-registry-read impacket-rpcmap impacket-rpcdump impacket-sambaPipe impacket-samedit impacket-samrdump impacket-secretsdump impacket-services impacket-smbclient impacket-smbexec impacket-smbserver impacket-sniff impacket-sniffer impacket-split impacket-ticketConverter impacket-ticketer impacket-tstool impacket-wmiexec impacket-wmipersist impacket-wmiquery
 
 Name:           python-impacket
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Python3 module to easily build and dissect network protocols
 # License: modified Apache-1.1 (see file LICENSE)
@@ -73,6 +73,7 @@ as examples of what can be done within the context of this library.
 %autosetup -p1 -n impacket-%{version}
 sed -e '/^#!\//, 1d' -i \
   impacket/examples/ntlmrelayx/servers/socksserver.py \
+  impacket/examples/ntlmrelayx/servers/rpcrelayserver.py \
   impacket/examples/mssqlshell.py \
   impacket/mqtt.py
 

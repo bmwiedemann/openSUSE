@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Oct 23 09:08:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.13.0
+  Library improvements
+  * Major SMB client/server refactor adds setInfo support, CIFS
+    datetime helpers, and safer default share access to enable
+    remote attribute and timestamp management.
+  * Introduced per-structure encoding selectors and UTF-8-aware SMB
+    structures so non-Latin resource names round-trip correctly.
+  * Strengthened LDAP/Kerberos handling with channel binding plus
+    signing, schema alignment with ldap3, and LDAPS-based LAPS
+    retrieval against Windows Server 2025 DCs.
+  * Improved DCE/RPC coverage with Netlogon authenticator fixes,
+    updated DRS bind flags, expanded EVEN6 decoding, and a new
+    ICPR interface to support relay-aware RPC workflows.
+  * Corrected SMB negotiation edge cases by fixing response
+    padding, Unicode pipe lookups, and keyboard interrupts in
+    SMB servers.
+  * SMB Server enhancements to align Impacket's implementation
+    with standard.
+  Authentication & relay tooling
+  * Added WinRMS relay clients/servers.
+  * Improved IPv6 support, richer logging, and consistent
+    console status reporting, plus an identity log to track
+    compromised principals.
+  * Introduced an RPC relay server with Endpoint Mapper discovery.
+  * Delivered SCCM Management/Distribution Point relay attacks.
+  * Enhanced shadow credentials, SOCKS plugins, and target
+    rotation with better IPv6 awareness and stability.
+  * Added options to strip SSP from Net-NTLMv1 captures and write
+    relay-captured hashes for cracking workflows.
+  Examples improvements
+  * secretsdump.py gained a WMI shadow snapshot path, export hive
+    boot key recovery, safer DRS flags, user-status reporting, and
+    refined NTDS parsing.
+  * MSSQL tooling gained channel binding tokens, restored reliable
+    connections, richer linked-server file transfers, and inline
+    command execution.
+  * Directory ACL helpers (dacledit, owneredit, rbcd, ldapshell)
+    picked up mask selection, safer queries, and consistent
+    -dc-host handling.
+  * SMB operator utilities add reconnect and autocomplete options
+    in smbclient and prevent smbexec from hanging on completion.
+  * Remote access helpers such as rdp_check and wmiexec now support
+    IPv6 targets and display created Process IDs for easier triage.
+  New examples
+  * attrib.py - manipulates file attributes over SMB to showcase
+    the new setInfo workflow.
+  * filetime.py - inspects and updates SMB file timestamps using
+    the refreshed SMBConnection APIs.
+  * badsuccessor.py - demonstrates the AD CS "bad successor"
+    attack path.
+  * regsecrets.py - extracts LSA secrets from remote registry
+    hives through [MS-RRP].
+  * samedit.py - edits local SAM password hashes offline.
+  * CheckLDAPStatus.py - checks LDAP signing status and LDAPS
+    channel binding status.
+
+-------------------------------------------------------------------
 Wed Dec  4 18:27:21 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Skip test tests/SMB_RPC/test_smbserver.py to fix the actual
