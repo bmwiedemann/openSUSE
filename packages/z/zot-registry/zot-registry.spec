@@ -23,7 +23,7 @@
 %define zui_version commit-731b639
 
 Name:           zot-registry
-Version:        2.1.9
+Version:        2.1.10
 Release:        0
 Summary:        Scale-out production-ready vendor-neutral OCI-native container image registry
 License:        Apache-2.0
@@ -39,6 +39,10 @@ Source12:       system-user-%{system_user_name}.conf
 Source21:       Makefile
 Source22:       PACKAGING_README.md
 #
+# PATCH-FIX-UPSTREAM fix_broken_version_output_in_2.1.10.patch
+# https://github.com/project-zot/zot/pull/3479
+Patch1:         https://github.com/project-zot/zot/commit/4ebe1416655b4074494a23fe285c45d15a0c4781.patch#/fix_broken_version_output_in_2.1.10.patch
+#
 BuildRequires:  awk
 BuildRequires:  bash-completion
 BuildRequires:  coreutils
@@ -47,6 +51,9 @@ BuildRequires:  git-core
 BuildRequires:  go >= 1.23
 BuildRequires:  sysuser-tools
 BuildRequires:  zsh
+#
+BuildRequires:  dos2unix
+BuildRequires:  fdupes
 
 %description
 Production-ready vendor-neutral OCI image registry - images stored in OCI image
@@ -107,9 +114,15 @@ sed -i '/^binary:.*findstring ui/d' Makefile
 # disable ui target as dependency for build-metadata
 sed -i '/^build-metadata:.*findstring/ s/^build-metadata:.*/build-metadata:/' Makefile
 
+# set the COMMIT manually, to avoid having "dirty" in it
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+sed -i '/^COMMIT/ s/= .*$/= $(COMMIT_HASH)/' Makefile
 make binary
 
 %sysusers_generate_pre %{SOURCE12} %{system_user_name} system-user-%{system_user_name}.conf
+
+#
+dos2unix ./examples/config-policy.json
 
 %install
 # Install the binary (which has linux and the architecture in the name...
@@ -141,6 +154,7 @@ install -m 0644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 install -D -m 0644 examples/%{service_name}.service %{buildroot}%{_unitdir}/%{service_name}.service
 
 %check
+%{buildroot}/%{_bindir}/%{executable_name} --version
 %{buildroot}/%{_bindir}/%{executable_name} --version 2>&1 | grep -q %{version}
 
 %pre -f %{system_user_name}.pre

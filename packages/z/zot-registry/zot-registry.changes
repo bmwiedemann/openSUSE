@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 20 05:43:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.10:
+  * fix: make config read/write thread safe (#3432)
+  * fix: migrate to Go module v2 for proper semantic versioning
+    (#3462)
+- add patch fix_broken_version_output_in_2.1.10.patch to fix the
+  broken "--version" output
+  https://github.com/project-zot/zot/issues/3478
+
+-------------------------------------------------------------------
 Fri Oct 17 06:00:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.9:
