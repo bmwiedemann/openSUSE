@@ -213,4 +213,12 @@
     <comment>update to 5.5.0 (and fix wrong directory name) (forwarded request 1292414 from ojkastl_buildservice)</comment>
     <requestid>1295944</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4a93f90779d2d6fbcd6f922b2d4ebb9b</srcmd5>
+    <version>5.6.0</version>
+    <time>1761230289</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313155</requestid>
+  </revision>
 </revisionlist>

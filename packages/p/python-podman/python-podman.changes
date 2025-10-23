@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 19 12:41:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.6.0:
+  * [skip-ci] Update sigstore/gh-action-sigstore-python action to
+    v3.0.1 by @renovate[bot] in #561
+  * Fix/#489 by @Mr-Sunglasses in #513
+  * fix: broken configuration for readthedocs by @dklimpel in #562
+  * remove cirrus files by @Luap99 in #563
+  * Implement policy option for image.pull by @inknos in #565
+  * Run tests conditionally based on os_release by @inknos in #567
+  * Skip tests conditionally based on version by @inknos in #578
+  * [skip-ci] Update actions/checkout action to v5 by
+    @renovate[bot] in #568
+  * [skip-ci] Update actions/download-artifact action to v5 by
+    @renovate[bot] in #566
+  * tests: Fix deprecation warning for utcfromtimestamp() by
+    @ricardobranco777 in #575
+  * Implement sparse keyword for containers.list() by @inknos in
+    #540
+  * [skip-ci] Update actions/setup-python action to v6 by
+    @renovate[bot] in #579
+  * Update Ruff to 0.12.8 by @inknos in #569
+  * Add Honn1 to OWNERS by @inknos in #580
+  * Bump release to 5.6.0 by @inknos in #581
+
+-------------------------------------------------------------------
 Tue Jun 17 18:07:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.5.0:
