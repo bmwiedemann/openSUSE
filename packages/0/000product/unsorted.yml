@@ -142,6 +142,8 @@ unsorted:
   - Mesa-vulkan-overlay-32bit 
   - MicroOS-release-dvd 
   - MirrorCache 
+  - MirrorCache-Exec 
+  - MirrorCache-common 
   - MistServer 
   - MistServer-devel 
   - ModemManager-devel 
@@ -16846,6 +16848,9 @@ unsorted:
   - libvisio-tools 
   - libvisio2svg-devel 
   - libvisio2svg0 
+  - libviskores-1_0 
+  - libviskores-mpich-1_0 
+  - libviskores-openmpi4-1_0 
   - libvisual-0_4-0-32bit 
   - libvisual-devel 
   - libvkd3d-shader1 
@@ -18621,8 +18626,6 @@ unsorted:
   - metatheme-yaru-common 
   - metatheme-yaru-mate-common 
   - metatheme-yuyo-common 
-  - meteo 
-  - meteo-lang 
   - meterbridge 
   - metis 
   - metis-devel 
@@ -20932,8 +20935,6 @@ unsorted:
   - parole-devel 
   - parpack-openmpi4-devel 
   - parpack-openmpi5-devel 
-  - parsec 
-  - parsec-tool 
   - partclone 
   - partclone-lang 
   - parted-devel 
@@ -35941,8 +35942,6 @@ unsorted:
   - queue 
   - quick-webapps 
   - quilt 
-  - quilter 
-  - quilter-lang 
   - quimup 
   - quotatool 
   - qutebrowser 
@@ -37938,7 +37937,6 @@ unsorted:
   - system-user-openbao 
   - system-user-orthos 
   - system-user-osc-collab 
-  - system-user-parsec 
   - system-user-pgadmin 
   - system-user-postorius 
   - system-user-prometheus 
@@ -48954,6 +48952,9 @@ unsorted:
   - viruskiller 
   - vis 
   - visio2svg-conv 
+  - viskores-devel 
+  - viskores-mpich-devel 
+  - viskores-openmpi4-devel 
   - vit 
   - vitetris 
   - viu 
