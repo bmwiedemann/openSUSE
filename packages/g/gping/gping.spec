@@ -1,7 +1,7 @@
 #
 # spec file for package gping
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gping
-Version:        1.19.0
+Version:        1.20.1
 Release:        0
 Summary:        Ping, but with a graph
 License:        MIT

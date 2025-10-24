@@ -28,4 +28,15 @@
 </comment>
     <requestid>1234577</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dc74690d6dbb74c87a6fe2288c8e88c0</srcmd5>
+    <version>1.20.1</version>
+    <time>1761324527</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 1.20.1
+  * Update dependencies
+  * Fix clippy errors
+  * Update documentation</comment>
+    <requestid>1313504</requestid>
+  </revision>
 </revisionlist>
