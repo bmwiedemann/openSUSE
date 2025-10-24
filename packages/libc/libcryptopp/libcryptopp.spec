@@ -119,7 +119,8 @@ CXXFLAGS="$CXXFLAGS -DCRYPTOPP_DISABLE_ALTIVEC"
 %make_install \
     PREFIX="%{_prefix}" \
     LIB="%{_lib}" \
-    LIBSUFFIX="-%{version}"
+    LIBSUFFIX="-%{version}" \
+    LDFLAGS="-pthread -lgomp"
 
 rm -rf "%{buildroot}%{_bindir}" %{buildroot}%{_datadir}/cryptopp
 rm -rf %{buildroot}%{_libdir}/*.a
