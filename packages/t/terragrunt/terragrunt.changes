@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Fri Oct 24 05:38:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.91.4:
+  * Experiments Updated
+    - filter-flag updated with reading= support
+      The --filter flag now supports usage of the reading=
+      attribute to filter on components that read particular shared
+      infrastructure configurations.
+      e.g.
+
+        terragrunt find --filter 'reading=shared.hcl'
+        terragrunt find --filter 'reading=common/*.hcl' # Globs supported!
+        terragrunt find --filter 'reading=config/**' # Double-wildcard globs are required filtering on files nested in subdirectories.
+        terragrunt find --filter 'reading=config/vars.tfvars'
+
+      This behavior is similar to that provided by the
+      --queue-include-units-reading flag, with additional support
+      for globs, negation and filter chaining supported in the
+      --filter flag more generally.
+      For more information, see the documentation on
+      Attribute-Based Filtering.
+      https://terragrunt.gruntwork.io/docs/reference/cli/commands/find/#attribute-based-filtering
+      If you give this feature a try, make sure to share your
+      feedback on the Filter Flag RFC
+      https://github.com/gruntwork-io/terragrunt/issues/4060
+  * What's Changed
+    - docs: Documenting the new `reading` attribute (#5005)
+    - feat: Adding support for `reading=` in `--filter` (#5004)
+    - Docs: Small fixes in the Provider Cache Server documentation
+      (#4959)
+    - docs: documenting how to exclude files from modules (#5008)
+
+-------------------------------------------------------------------
+Fri Oct 24 05:09:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.91.3:
+  * New Features
+    - --reading flag added to the find command
+      The find command now supports the --reading flag, which
+      allows you to discover the shared configurations read by
+      units and stacks when using the --json format.
+
+        $ terragrunt find --reading --json
+        [
+          {
+            "type": "unit",
+            "path": "aws-account-1",
+            "reading": [
+              "aws-data.yml"
+            ]
+          },
+          {
+            "type": "unit",
+            "path": "aws-account-2",
+            "reading": [
+              "aws-data.yml"
+            ]
+          },
+          {
+            "type": "unit",
+            "path": "gcp-project-1",
+            "reading": [
+              "gcp-data.hcl"
+            ]
+          }
+        ]
+
+      You can use this information to drive custom logic in your
+      workflows based on the changes related to particular files.
+      e.g.
+
+        $ terragrunt find --reading --json | jq '[.[] | select(.reading[]? | contains("aws-data.yml"))| .path]'
+        [
+          "aws-account-1",
+          "aws-account-2"
+        ]
+
+        $ terragrunt find --reading --json | jq '[.[] | select(.reading[]? | contains("gcp-data.hcl"))| .path]'
+        [
+          "gcp-project-1"
+        ]
+
+      You can learn more about the --reading flag in the find
+      documentation.
+      https://terragrunt.gruntwork.io/docs/reference/cli/commands/find/#reading-files
+  * Bug Fixes
+    - Empty stacks no longer throw errors
+      Previously, a bug in the logic used for making sure that
+      users didn’t accidentally run on empty stacks resulted in
+      users getting a non-zero exit code when all units in a stack
+      were excluded (e.g. via the exclude block).
+      That bug has been fixed.
+    - Dependency outputs can now be used in generate blocks
+      Previously, a bug in the way HCL parsing was done during
+      discovery resulted in errors being thrown for users when
+      dependency outputs were used in generate blocks. That error
+      has since been resolved.
+      That bug has been fixed.
+  * What's Changed
+    - docs: Documenting new `--reading` flag for `find` (#5003)
+    - bug: reference of dependency outputs in generate (#4994)
+    - feat: Adding reading support in `find` (#5002)
+    - chore: Updating language in discovery commands (#5001)
+    - chore: Tracking reads in components (#5000)
+    - chore: Tracking DAG nodes in components (#4998)
+    - fix: Using a standard shell string parsing library instead of handling it ourselves (#4991)
+    - build(deps): bump vite from 6.3.6 to 6.4.1 in /docs-starlight (#4999)
+    - fix: Removing filter enabled check on empty stacks (#4992)
+    - docs: Fixing `Filters` docs (#4996)
+    - Fix --source-map explanation (#4997)
+    - build(deps): bump the js-dependencies group across 1 directory with 5 updates (#4993)
+
+-------------------------------------------------------------------
 Tue Oct 21 05:04:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.91.2:
