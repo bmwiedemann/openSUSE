@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 23 09:47:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Exclude tests to mutibuild due to dependency cycle with python-xdist
+
+-------------------------------------------------------------------
+Mon Oct 20 09:55:27 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 7.1.1 
+  * SunOS 10 is no longer supported.
+  * Tests that needs UNIX sockets should be properly marked for skip
+- Run tests with pytest (recommended by upstream)
+
+-------------------------------------------------------------------
 Fri Sep 26 08:06:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 7.1.0
