@@ -1,7 +1,7 @@
 #
 # spec file for package gap-cubefree
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-cubefree
-Version:        1.20
+Version:        1.21
 Release:        0
 Summary:        GAP: Construction of groups of a given cubefree order
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/cubefree/
 #Git-Clone:     https://github.com/gap-packages/cubefree
-
 Source:         https://github.com/gap-packages/cubefree/releases/download/v%version/cubefree-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
@@ -32,6 +31,7 @@ BuildRequires:  xz
 Requires:       gap-core >= 4.8
 Requires:       gap-grpconst >= 2.5
 Requires:       gap-polycyclic >= 2.11
+Requires:       gap-smallgrp >= 1.3
 
 %description
 The Cubefree package contains methods to construct up to isomorphism
