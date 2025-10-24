@@ -22,7 +22,7 @@
 %define with_gcc 11
 %endif
 Name:           netty-tcnative
-Version:        2.0.73
+Version:        2.0.74
 Release:        0
 Summary:        Fork of Tomcat Native with improved OpenSSL and mavenized build
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/netty/netty/wiki/Forked-Tomcat-Native
 Source0:        https://github.com/netty/netty-tcnative/archive/%{name}-parent-%{namedversion}.tar.gz
 Source1:        fixLibNames.patch.in
-Source2:        https://repo1.maven.org/maven2/io/netty/netty-jni-util/0.0.9.Final/netty-jni-util-0.0.9.Final-sources.jar
+Source2:        https://repo1.maven.org/maven2/io/netty/netty-jni-util/0.0.10.Final/netty-jni-util-0.0.10.Final-sources.jar
 Source100:      %{name}-rpmlintrc
 BuildRequires:  apr-devel
 BuildRequires:  fdupes

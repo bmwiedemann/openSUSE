@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 16 08:49:26 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.74 Final
+  * No formal changelog present
+- Build against the netty-jni-util 0.0.10 sources
+
+-------------------------------------------------------------------
 Mon Sep  1 08:43:49 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.0.73 Final
