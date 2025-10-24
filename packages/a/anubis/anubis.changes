@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Oct 24 14:05:39 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update packaging 
+  * use source with the vendor already installed and precompiled JS
+  * remove _serivce and prepare-sources.bash in favor of simplicity
+  * start using source signature
+
+-------------------------------------------------------------------
+Mon Oct 20 17:18:52 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Initial release of anubis at v1.22.0
