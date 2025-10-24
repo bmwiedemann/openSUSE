@@ -1,0 +1,7 @@
+<package name="mcphost" project="openSUSE:Factory">
+  <title>mcphost</title>
+  <description>A CLI host application that enables Large Language Models (LLMs) to interact with external tools through the Model Context Protocol (MCP). Currently supports both Claude 3.5 Sonnet and Ollama models.
+
+Programming Language: GO</description>
+  <url>https://github.com/mark3labs/mcphost</url>
+</package>

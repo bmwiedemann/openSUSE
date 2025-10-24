@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Fri Oct 10 12:43:31 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Peparing for submission to Factory:
+  * Clean up spec file, remove old tar balls.
+  * On SUSE use SUSE Golang build macros.
+
+-------------------------------------------------------------------
+Tue Oct  7 09:19:01 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to release 0.31.1
+
+-------------------------------------------------------------------
+Tue Oct  7 09:18:50 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to release 0.31.1
+
+-------------------------------------------------------------------
+Thu Sep 11 15:10:32 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.31.0
+
+-------------------------------------------------------------------
+Tue Sep  2 11:54:21 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.30.1
+
+-------------------------------------------------------------------
+Thu Aug 14 15:26:49 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Fix build
+
+-------------------------------------------------------------------
+Thu Aug 14 15:20:49 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Remove unnecessary .tidy.diff file
+
+-------------------------------------------------------------------
+Thu Aug 14 15:19:10 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Align on GO 1.24 not 1.24.5
+
+-------------------------------------------------------------------
+Thu Aug 14 15:18:56 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Align on GO 1.24 not 1.24.5
+
+-------------------------------------------------------------------
+Thu Aug 14 15:04:08 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.29.0
+
+-------------------------------------------------------------------
+Mon Aug 11 11:59:00 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.28.1
+
+-------------------------------------------------------------------
+Mon Jul 28 07:32:40 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.26.1
+
+-------------------------------------------------------------------
+Wed Jul 23 12:18:46 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.25.2
+
+-------------------------------------------------------------------
+Wed Jul 23 12:16:51 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.25.2
+
+-------------------------------------------------------------------
+Wed Jul 23 09:42:23 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Add mcphost-0.25.1-tidy.diff
+
+-------------------------------------------------------------------
+Wed Jul 23 09:38:33 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.25.1
+
+-------------------------------------------------------------------
+Wed Jul 16 11:40:57 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.25.0, incl. SPEC File
+
+-------------------------------------------------------------------
+Wed Jul 16 11:40:27 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.25.0
+
+-------------------------------------------------------------------
+Thu Jul 10 09:04:16 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Make 0.21.0 build
+
+-------------------------------------------------------------------
+Thu Jul 10 08:59:47 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Make 0.21.0 build
+
+-------------------------------------------------------------------
+Thu Jul 10 08:59:18 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Make 0.21.0 build
+
+-------------------------------------------------------------------
+Thu Jul 10 08:16:54 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.21.0
+
+-------------------------------------------------------------------
+Wed Jul  9 09:36:42 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.20.0 
+
+-------------------------------------------------------------------
+Tue Jul  1 07:41:09 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.19.2
+
+-------------------------------------------------------------------
+Sat Jun 28 08:42:19 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.19.0
+
+-------------------------------------------------------------------
+Wed Jun 25 01:16:42 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Add proper license information
+
+-------------------------------------------------------------------
+Tue Jun 24 11:30:28 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.15.0: Add Azure OpenAI provider
+
+-------------------------------------------------------------------
+Fri Jun 20 14:27:12 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.14.1 
+
+-------------------------------------------------------------------
+Wed Jun 18 23:19:08 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update .spec file to 0.14.0 
+
+-------------------------------------------------------------------
+Wed Jun 18 23:12:52 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+-  Update to 0.14.0
+
+-------------------------------------------------------------------
+Tue Jun 17 07:46:16 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.13.0 
+
+-------------------------------------------------------------------
+Mon Jun 16 13:15:46 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update GOlang dependency to >= 1.24 
+
+-------------------------------------------------------------------
+Mon Jun 16 11:41:10 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.12.4 
+
+-------------------------------------------------------------------
+Tue Jun 10 04:58:43 PM CEST 2025 - Matthias G. Eckermann <mge@suse.com>
+
+- Update to 0.11.2
+-------------------------------------------------------------------
+Wed May 21 12:46:50 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Initial version 0.7.1
