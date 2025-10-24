@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 21 17:25:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build with ffmpeg8 [gh#FFmpeg/FFmpeg#8238bc0b5e3dba271217b1223a901b3f9713dc6e]
+  Patch libopenshot-ffmpeg8.patch
+
+-------------------------------------------------------------------
 Mon Sep  8 10:18:33 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap.

@@ -169,4 +169,13 @@
     <comment></comment>
     <requestid>1303326</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>b535cce55c86465bf5fd0a2fcc1f3ff2</srcmd5>
+    <version>0.4.0</version>
+    <time>1761319460</time>
+    <user>anag_factory</user>
+    <comment>- Fix build with ffmpeg8 [gh#FFmpeg/FFmpeg#8238bc0b5e3dba271217b1223a901b3f9713dc6e]
+  Patch libopenshot-ffmpeg8.patch</comment>
+    <requestid>1313378</requestid>
+  </revision>
 </revisionlist>

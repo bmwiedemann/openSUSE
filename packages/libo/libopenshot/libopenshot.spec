@@ -1,7 +1,7 @@
 #
 # spec file for package libopenshot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,9 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://openshot.org/
 Source0:        libopenshot-%{version}.tar.xz
+Patch0:         libopenshot-ffmpeg8.patch
 BuildRequires:  babl-devel
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10
 BuildRequires:  cppzmq-devel
 %if 0%{?suse_version} < 1600
 BuildRequires:  ffmpeg-4-private-devel
@@ -111,7 +112,10 @@ Group:          Development/Languages/Python
 This package provides the Python bindings for the OpenShot library.
 
 %prep
-%autosetup -p1
+%autosetup -N
+%if 0%{?suse_version} > 1600
+%patch -p1 -P 0
+%endif
 
 %build
 %if 0%{?suse_version} < 1600
@@ -125,6 +129,7 @@ export CXXFLAGS="%{optflags} -Wno-return-type"
 %cmake \
 	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed" \
 	-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+	-DENABLE_TESTS=0 \
 	-DFFMPEG_INCLUDE_DIR=%{_includedir}/ffmpeg \
 	-DUSE_SYSTEM_JSONCPP=ON \
 	%{nil}
