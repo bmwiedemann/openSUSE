@@ -201,4 +201,41 @@
     <comment>- Update to 1.16.0:</comment>
     <requestid>1310714</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5f49ab89a18e6316e645ebe39017adea</srcmd5>
+    <version>1.17.0</version>
+    <time>1761319383</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.17.0:
+  * Remove redundant casts by @tatsuhiro-t in #1798
+  * Revert #1798 partially by @tatsuhiro-t in #1799
+  * examples: Use std::ranges::begin and std::ranges::end
+    consistently by @tatsuhiro-t in #1800
+  * Initial packets padding with no_tx_udp_payload_size_shaping by
+    @tatsuhiro-t in #1801
+  * Remove redundant semicolon by @tatsuhiro-t in #1802
+  * Make ngtcp2_stream.fin of type int by @tatsuhiro-t in #1803
+  * Fix typos in documentation and comments by @Copilot in #1804
+  * Update bbr by @tatsuhiro-t in #1807
+  * examples: Limit tx buffer for non-GSO case by @tatsuhiro-t in #1812
+  * cubic: Compute remainder of &quot;acked_bytes&quot; without modulo by
+    @tatsuhiro-t in #1813
+  * Replace POPCNT-based ispow2 with portable bitwise implementation to
+    prevent illegal instruction crashes by @mk185147 in #1811
+  * Reduce NGTCP2_HARD_MAX_UDP_PAYLOAD_SIZE to 64k by @tatsuhiro-t in #1814
+  * Bump openssl to v3.6.0 by @tatsuhiro-t in #1815
+  * bbr: Avoid modifying ngtcp2_rs on packet loss by @tatsuhiro-t in #1816
+  * Always call CC on_ack_recv by @tatsuhiro-t in #1817
+  * Revert &quot;examples: Limit tx buffer for non-GSO case&quot; by @tatsuhiro-t in #1818
+  * Make sure that CC on_ack_recv when ACK is received by @tatsuhiro-t in #1820
+  * Use solely cc_ack.largest_pkt_sent_ts and remove largest_pkt_sent_ts by
+    @tatsuhiro-t in #1821
+  * Pass ngtcp2_cc_ack to CC on_congestion_event by @tatsuhiro-t in #1822
+  * Remove unused ngtcp2_cc_ack.prior_bytes_in_flight by @tatsuhiro-t in #1823
+  * Add ngtcp2_conn_write_aggregate_pkt2 by @tatsuhiro-t in #1824
+  * examples: Add gso-burst option by @tatsuhiro-t in #1825
+  * Add ngtcp2_conn_get_stream_user_data by @tatsuhiro-t in #1828
+  * cc: Compute pacing interval and send_quantum by @tatsuhiro-t in #1829 (forwarded request 1313180 from pmonrealgonzalez)</comment>
+    <requestid>1313210</requestid>
+  </revision>
 </revisionlist>
