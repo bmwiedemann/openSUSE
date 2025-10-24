@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct 24 05:07:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.0:
+  * New Features
+    - New audit: concurrency-limits detects insufficient
+      concurrency limits in workflows (#1227)
+    - Many thanks to @jwallwork23 for proposing and implementing
+      this audit!
+  * Performance Improvements
+    - zizmor's online mode is now significantly (40% to over 95%)
+      faster on common workloads, thanks to a combination of
+      caching improvements and conversion of GitHub API requests
+      into Git remote lookups (#1257)
+    - Many thanks to @Bo98 for implementing these improvements!
+  * Enhancements
+    - When running in --fix mode and all fixes are successfully
+      applied, zizmor now has similar exit code behavior as the
+      --no-exit-codes and --format=sarif flags (#1242)
+    - Many thanks to @cnaples79 for implementing this improvement!
+    - The dependabot-cooldown audit now supports auto-fixes for
+      many findings (#1229)
+    - Many thanks to @mostafa for implementing this improvement!
+    - The dependabot-execution audit now supports auto-fixes for
+      many findings (#1229)
+    - Many thanks to @mostafa for implementing this improvement!
+    - zizmor now has limited, experimental support for handling
+      inputs that contain YAML anchors (#1266)
+
+-------------------------------------------------------------------
 Fri Oct 17 05:04:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.15.2:
