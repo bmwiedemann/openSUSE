@@ -1,0 +1,534 @@
+Contains 2 changes:
+- wayland: Compress high frequency mouse events (https://bugreports.qt.io/browse/QTBUG-138706)
+- wayland: Optimize scroll operation (https://bugreports.qt.io/browse/QTBUG-139231)
+
+diff --git a/src/corelib/global/qnamespace.qdoc b/src/corelib/global/qnamespace.qdoc
+index c845cfa7eec..f463d7364ca 100644
+--- a/src/corelib/global/qnamespace.qdoc
++++ b/src/corelib/global/qnamespace.qdoc
+@@ -227,6 +227,7 @@
+            application later.
+            On Windows 8 and above the default value is also true, but it only applies
+            to touch events. Mouse and window events remain unaffected by this flag.
++           On Wayland the default value is also true, but it only applies to mouse events.
+            On other platforms, the default is false.
+            (In the future, the compression feature may be implemented across platforms.)
+            You can test the attribute to see whether compression is enabled.
+diff --git a/src/plugins/platforms/wayland/qwaylandinputdevice.cpp b/src/plugins/platforms/wayland/qwaylandinputdevice.cpp
+index 170e80f806c..5f927fca51a 100644
+--- a/src/plugins/platforms/wayland/qwaylandinputdevice.cpp
++++ b/src/plugins/platforms/wayland/qwaylandinputdevice.cpp
+@@ -63,6 +63,34 @@ Q_LOGGING_CATEGORY(lcQpaWaylandInput, "qt.qpa.wayland.input");
+ // reasonable number of them. As of 2021 most touchscreen panels support 10 concurrent touchpoints.
+ static const int MaxTouchPoints = 10;
+ 
++QWaylandEventCompressionPrivate::QWaylandEventCompressionPrivate()
++{
++    timeElapsed.start();
++    delayTimer.setSingleShot(true);
++}
++
++bool QWaylandEventCompressionPrivate::compressEvent()
++{
++    using namespace std::chrono_literals;
++
++    if (!QCoreApplication::testAttribute(Qt::AA_CompressHighFrequencyEvents))
++        return false;
++
++    const auto elapsed = timeElapsed.durationElapsed();
++    timeElapsed.start();
++    if (elapsed < 100us || delayTimer.isActive())
++    {
++        // The highest USB HID polling rate is 8 kHz (125 μs). Most mice use lowe polling rate [125 Hz - 1000 Hz].
++        // Reject all events faster than 100 μs, because it definitely means the application main thread is
++        // freezed by long operation and events are delivered one after another from the queue. Since now we rely
++        // on the 0 ms timer to deliver the last pending event when application main thread is no longer freezed.
++        delayTimer.start(0);
++        return true;
++    }
++
++    return false;
++}
++
+ QWaylandInputDevice::Keyboard::Keyboard(QWaylandInputDevice *p)
+     : mParent(p)
+ {
+@@ -140,6 +168,8 @@ QWaylandInputDevice::Pointer::Pointer(QWaylandInputDevice *seat)
+         cursorTimerCallback();
+     });
+ #endif
++
++    mEventCompression.delayTimer.callOnTimeout(this, &QWaylandInputDevice::Pointer::flushFrameEvent);
+ }
+ 
+ QWaylandInputDevice::Pointer::~Pointer()
+@@ -914,14 +944,16 @@ void QWaylandInputDevice::Pointer::pointer_axis(uint32_t time, uint32_t axis, in
+ 
+     mParent->mTime = time;
+ 
+-    if (version() < WL_POINTER_FRAME_SINCE_VERSION) {
+-        qCDebug(lcQpaWaylandInput) << "Flushing new event; no frame event in this version";
+-        flushFrameEvent();
+-    }
++    maybePointerFrame();
+ }
+ 
+ void QWaylandInputDevice::Pointer::pointer_frame()
+ {
++    if (mEventCompression.compressEvent()) {
++        qCDebug(lcQpaWaylandInput) << "compressed pointer_frame event";
++        return;
++    }
++
+     flushFrameEvent();
+ }
+ 
+@@ -952,11 +984,9 @@ void QWaylandInputDevice::Pointer::pointer_axis_stop(uint32_t time, uint32_t axi
+     switch (axis) {
+     case axis_vertical_scroll:
+         qCDebug(lcQpaWaylandInput) << "Received vertical wl_pointer.axis_stop";
+-        mFrameData.delta.setY(0); //TODO: what's the point of doing this?
+         break;
+     case axis_horizontal_scroll:
+         qCDebug(lcQpaWaylandInput) << "Received horizontal wl_pointer.axis_stop";
+-        mFrameData.delta.setX(0);
+         break;
+     default:
+         qCWarning(lcQpaWaylandInput) << "wl_pointer.axis_stop: Unknown axis: " << axis
+@@ -964,25 +994,7 @@ void QWaylandInputDevice::Pointer::pointer_axis_stop(uint32_t time, uint32_t axi
+         return;
+     }
+ 
+-    // May receive axis_stop for events we haven't sent a ScrollBegin for because
+-    // most axis_sources do not mandate an axis_stop event to be sent.
+-    if (!mScrollBeginSent) {
+-        // TODO: For now, we just ignore these events, but we could perhaps take this as an
+-        // indication that this compositor will in fact send axis_stop events for these sources
+-        // and send a ScrollBegin the next time an axis_source event with this type is encountered.
+-        return;
+-    }
+-
+-    QWaylandWindow *target = QWaylandWindow::mouseGrab();
+-    if (!target)
+-        target = focusWindow();
+-    Qt::KeyboardModifiers mods = mParent->modifiers();
+-    const bool inverted = mFrameData.verticalAxisInverted || mFrameData.horizontalAxisInverted;
+-    WheelEvent wheelEvent(focusWindow(), Qt::ScrollEnd, mParent->mTime, mSurfacePos, mGlobalPos,
+-                          QPoint(), QPoint(), Qt::MouseEventNotSynthesized, mods, inverted);
+-    target->handleMouse(mParent, wheelEvent);
+-    mScrollBeginSent = false;
+-    mScrollDeltaRemainder = QPointF();
++    mScrollEnd = true;
+ }
+ 
+ void QWaylandInputDevice::Pointer::pointer_axis_discrete(uint32_t axis, int32_t value)
+@@ -1043,6 +1055,14 @@ void QWaylandInputDevice::Pointer::pointer_axis_relative_direction(uint32_t axis
+     }
+ }
+ 
++inline void QWaylandInputDevice::Pointer::maybePointerFrame()
++{
++    if (version() < WL_POINTER_FRAME_SINCE_VERSION) {
++        qCDebug(lcQpaWaylandInput) << "Flushing new event; no frame event in this version";
++        pointer_frame();
++    }
++}
++
+ void QWaylandInputDevice::Pointer::setFrameEvent(QWaylandPointerEvent *event)
+ {
+     qCDebug(lcQpaWaylandInput) << "Setting frame event " << event->type;
+@@ -1051,12 +1071,9 @@ void QWaylandInputDevice::Pointer::setFrameEvent(QWaylandPointerEvent *event)
+         flushFrameEvent();
+     }
+ 
+-    mFrameData.event = event;
++    mFrameData.event.reset(event);
+ 
+-    if (version() < WL_POINTER_FRAME_SINCE_VERSION) {
+-        qCDebug(lcQpaWaylandInput) << "Flushing new event; no frame event in this version";
+-        flushFrameEvent();
+-    }
++    maybePointerFrame();
+ }
+ 
+ void QWaylandInputDevice::Pointer::FrameData::resetScrollData()
+@@ -1136,11 +1153,24 @@ void QWaylandInputDevice::Pointer::flushScrollEvent()
+ {
+     QPoint angleDelta = mFrameData.angleDelta();
+ 
++    // The wayland protocol has separate horizontal and vertical axes, Qt has just the one inverted flag
++    // Pragmatically it should't come up
++    const bool inverted = mFrameData.verticalAxisInverted || mFrameData.horizontalAxisInverted;
++
+     // Angle delta is required for Qt wheel events, so don't try to send events if it's zero
+     if (!angleDelta.isNull()) {
+-        QWaylandWindow *target = QWaylandWindow::mouseGrab();
+-        if (!target)
+-            target = focusWindow();
++        QWaylandWindow *target = mScrollTarget;
++        if (!mScrollBeginSent) {
++            if (!target)
++                target = QWaylandWindow::mouseGrab();
++            if (!target)
++                target = focusWindow();
++        }
++        if (!target) {
++            qCDebug(lcQpaWaylandInput) << "Flushing scroll event aborted - no scroll target";
++            mFrameData.resetScrollData();
++            return;
++        }
+ 
+         if (isDefinitelyTerminated(mFrameData.axisSource) && !mScrollBeginSent) {
+             qCDebug(lcQpaWaylandInput) << "Flushing scroll event sending ScrollBegin";
+@@ -1150,27 +1180,46 @@ void QWaylandInputDevice::Pointer::flushScrollEvent()
+                                                     mParent->modifiers(), false));
+             mScrollBeginSent = true;
+             mScrollDeltaRemainder = QPointF();
++            mScrollTarget = target;
+         }
+ 
+         Qt::ScrollPhase phase = mScrollBeginSent ? Qt::ScrollUpdate : Qt::NoScrollPhase;
+         QPoint pixelDelta = mFrameData.pixelDeltaAndError(&mScrollDeltaRemainder);
+-        Qt::MouseEventSource source = mFrameData.wheelEventSource();
+-
+-
+-        // The wayland protocol has separate horizontal and vertical axes, Qt has just the one inverted flag
+-        // Pragmatically it should't come up
+-        const bool inverted = mFrameData.verticalAxisInverted || mFrameData.horizontalAxisInverted;
+ 
+         qCDebug(lcQpaWaylandInput) << "Flushing scroll event" << phase << pixelDelta << angleDelta;
+         target->handleMouse(mParent, WheelEvent(focusWindow(), phase, mParent->mTime, mSurfacePos, mGlobalPos,
+-                                                pixelDelta, angleDelta, source, mParent->modifiers(), inverted));
++                                                pixelDelta, angleDelta, mFrameData.wheelEventSource(), mParent->modifiers(), inverted));
++    }
++
++    if (mScrollEnd) {
++        if (mScrollBeginSent) {
++            if (auto target = mScrollTarget.get()) {
++                qCDebug(lcQpaWaylandInput) << "Flushing scroll end event";
++                target->handleMouse(mParent, WheelEvent(focusWindow(), Qt::ScrollEnd, mParent->mTime, mSurfacePos, mGlobalPos,
++                                                        QPoint(), QPoint(), mFrameData.wheelEventSource(), mParent->modifiers(), inverted));
++            }
++            mScrollBeginSent = false;
++            mScrollDeltaRemainder = QPointF();
++        } else {
++            // May receive axis_stop for events we haven't sent a ScrollBegin for because
++            // most axis_sources do not mandate an axis_stop event to be sent.
++
++            // TODO: For now, we just ignore these events, but we could perhaps take this as an
++            // indication that this compositor will in fact send axis_stop events for these sources
++            // and send a ScrollBegin the next time an axis_source event with this type is encountered.
++        }
++        mScrollEnd = false;
++        mScrollTarget.clear();
+     }
++
+     mFrameData.resetScrollData();
+ }
+ 
+ void QWaylandInputDevice::Pointer::flushFrameEvent()
+ {
+-    if (auto *event = mFrameData.event) {
++    mEventCompression.delayTimer.stop();
++
++    if (auto *event = mFrameData.event.get()) {
+         if (auto window = event->surface) {
+             window->handleMouse(mParent, *event);
+         } else if (mFrameData.event->type == QEvent::MouseButtonRelease) {
+@@ -1183,8 +1232,7 @@ void QWaylandInputDevice::Pointer::flushFrameEvent()
+                     event->modifiers); // , Qt::MouseEventSource source =
+                                        // Qt::MouseEventNotSynthesized);
+         }
+-        delete mFrameData.event;
+-        mFrameData.event = nullptr;
++        mFrameData.event.reset();
+     }
+ 
+     //TODO: do modifiers get passed correctly here?
+diff --git a/src/plugins/platforms/wayland/qwaylandinputdevice_p.h b/src/plugins/platforms/wayland/qwaylandinputdevice_p.h
+index bcaf025840d..b9582daf32c 100644
+--- a/src/plugins/platforms/wayland/qwaylandinputdevice_p.h
++++ b/src/plugins/platforms/wayland/qwaylandinputdevice_p.h
+@@ -75,6 +75,16 @@ class CursorSurface;
+ 
+ Q_DECLARE_LOGGING_CATEGORY(lcQpaWaylandInput);
+ 
++struct QWaylandEventCompressionPrivate
++{
++    QWaylandEventCompressionPrivate();
++
++    bool compressEvent();
++
++    QElapsedTimer timeElapsed;
++    QTimer delayTimer;
++};
++
+ class Q_WAYLANDCLIENT_EXPORT QWaylandInputDevice
+                             : public QObject
+                             , public QtWayland::wl_seat
+@@ -362,7 +372,7 @@ public:
+     Qt::MouseButton mLastButton = Qt::NoButton;
+ 
+     struct FrameData {
+-        QWaylandPointerEvent *event = nullptr;
++        QScopedPointer<QWaylandPointerEvent> event;
+ 
+         QPointF delta;
+         QPoint delta120;
+@@ -379,7 +389,13 @@ public:
+     } mFrameData;
+ 
+     bool mScrollBeginSent = false;
++    bool mScrollEnd = false;
+     QPointF mScrollDeltaRemainder;
++    QPointer<QWaylandWindow> mScrollTarget;
++
++    QWaylandEventCompressionPrivate mEventCompression;
++
++    void maybePointerFrame();
+ 
+     void setFrameEvent(QWaylandPointerEvent *event);
+     void flushScrollEvent();
+diff --git a/src/plugins/platforms/wayland/qwaylandintegration.cpp b/src/plugins/platforms/wayland/qwaylandintegration.cpp
+index 669d47ee3b8..fc869de669f 100644
+--- a/src/plugins/platforms/wayland/qwaylandintegration.cpp
++++ b/src/plugins/platforms/wayland/qwaylandintegration.cpp
+@@ -87,6 +87,8 @@ QWaylandIntegration::QWaylandIntegration(const QString &platformName)
+     : mPlatformName(platformName), mFontDb(new QGenericUnixFontDatabase())
+ #endif
+ {
++    QCoreApplication::setAttribute(Qt::AA_CompressHighFrequencyEvents);
++
+     mDisplay.reset(new QWaylandDisplay(this));
+     mPlatformServices.reset(new QWaylandPlatformServices(mDisplay.data()));
+ 
+diff --git a/src/plugins/platforms/wayland/qwaylandshmbackingstore.cpp b/src/plugins/platforms/wayland/qwaylandshmbackingstore.cpp
+index d8fc7b18ca3..591e5064ebd 100644
+--- a/src/plugins/platforms/wayland/qwaylandshmbackingstore.cpp
++++ b/src/plugins/platforms/wayland/qwaylandshmbackingstore.cpp
+@@ -159,6 +159,8 @@ QWaylandShmBackingStore::QWaylandShmBackingStore(QWindow *window, QWaylandDispla
+         // recreateBackBufferIfNeeded always resets mBackBuffer
+         if (mRequestedSize.isValid() && waylandWindow())
+             recreateBackBufferIfNeeded();
++        else
++            mBackBuffer = nullptr;
+         qDeleteAll(copy);
+         wl_event_queue_destroy(oldEventQueue);
+     });
+@@ -183,11 +185,15 @@ QPaintDevice *QWaylandShmBackingStore::paintDevice()
+ 
+ void QWaylandShmBackingStore::updateDirtyStates(const QRegion &region)
+ {
+-    // Update dirty state of buffers based on what was painted. The back buffer will
+-    // not be dirty since we already painted on it, while other buffers will become dirty.
++    // Update dirty state of buffers based on what was painted. The back buffer will be
++    // less dirty, since we painted to it, while other buffers will become more dirty.
++    // This allows us to minimize copies between front and back buffers on swap in the
++    // cases where the painted region overlaps with the previous frame (front buffer).
+     for (QWaylandShmBuffer *b : std::as_const(mBuffers)) {
+         if (b != mBackBuffer)
+             b->dirtyRegion() += region;
++        else
++            b->dirtyRegion() -= region;
+     }
+ }
+ 
+@@ -198,7 +204,7 @@ void QWaylandShmBackingStore::beginPaint(const QRegion &region)
+ 
+     const QMargins margins = windowDecorationMargins();
+     const QRegion regionTranslated = region.translated(margins.left(), margins.top());
+-    const bool bufferWasRecreated = recreateBackBufferIfNeeded(regionTranslated);
++    const bool bufferWasRecreated = recreateBackBufferIfNeeded();
+     updateDirtyStates(regionTranslated);
+ 
+     // Although undocumented, QBackingStore::beginPaint expects the painted region
+@@ -223,7 +229,7 @@ void QWaylandShmBackingStore::endPaint()
+ // Inspired by QCALayerBackingStore.
+ bool QWaylandShmBackingStore::scroll(const QRegion &region, int dx, int dy)
+ {
+-    if (!mBackBuffer)
++    if (Q_UNLIKELY(!mBackBuffer || !mFrontBuffer))
+         return false;
+ 
+     const qreal devicePixelRatio = waylandWindow()->scale();
+@@ -236,19 +242,35 @@ bool QWaylandShmBackingStore::scroll(const QRegion &region, int dx, int dy)
+ 
+     recreateBackBufferIfNeeded();
+ 
+-    QImage *backBufferImage = mBackBuffer->image();
+-
+     const QPoint scrollDelta(dx, dy);
+     const QMargins margins = windowDecorationMargins();
+     const QRegion adjustedRegion = region.translated(margins.left(), margins.top());
+ 
+-    const QRect boundingRect = adjustedRegion.boundingRect();
+-    const QPoint devicePixelDelta = scrollDelta * devicePixelRatio;
++    const QRegion inPlaceRegion = adjustedRegion - mBackBuffer->dirtyRegion();
++    const QRegion frontBufferRegion = adjustedRegion - inPlaceRegion;
++
++    if (!inPlaceRegion.isEmpty()) {
++        const QRect inPlaceBoundingRect = inPlaceRegion.boundingRect();
++        const QPoint devicePixelDelta = scrollDelta * devicePixelRatio;
++
++        qt_scrollRectInImage(*mBackBuffer->image(),
++                             QRect(inPlaceBoundingRect.topLeft() * devicePixelRatio,
++                                   inPlaceBoundingRect.size() * devicePixelRatio),
++                             devicePixelDelta);
++    }
+ 
+-    qt_scrollRectInImage(*backBufferImage,
+-                         QRect(boundingRect.topLeft() * devicePixelRatio,
+-                               boundingRect.size() * devicePixelRatio),
+-                         devicePixelDelta);
++    if (!frontBufferRegion.isEmpty()) {
++        QPainter painter(mBackBuffer->image());
++        painter.setCompositionMode(QPainter::CompositionMode_Source);
++        painter.scale(qreal(1) / devicePixelRatio, qreal(1) / devicePixelRatio);
++        for (const QRect &rect : frontBufferRegion) {
++            QRect sourceRect(rect.topLeft() * devicePixelRatio,
++                             rect.size() * devicePixelRatio);
++            QRect destinationRect((rect.topLeft() + scrollDelta) * devicePixelRatio,
++                                   rect.size() * devicePixelRatio);
++            painter.drawImage(destinationRect, *mFrontBuffer->image(), sourceRect);
++        }
++    }
+ 
+     // We do not mark the source region as dirty, even though it technically has "moved".
+     // This matches the behavior of other backingstore implementations using qt_scrollRectInImage.
+@@ -289,6 +311,8 @@ void QWaylandShmBackingStore::flush(QWindow *window, const QRegion &region, cons
+     if (windowDecoration() && windowDecoration()->isDirty())
+         updateDecorations();
+ 
++    finalizeBackBuffer();
++
+     mFrontBuffer = mBackBuffer;
+ 
+     QMargins margins = windowDecorationMargins();
+@@ -313,6 +337,8 @@ QWaylandShmBuffer *QWaylandShmBackingStore::getBuffer(const QSize &size, bool &b
+             mBuffers.removeAt(i);
+             if (mBackBuffer == buffer)
+                 mBackBuffer = nullptr;
++            if (mFrontBuffer == buffer)
++                mFrontBuffer = nullptr;
+             delete buffer;
+         }
+     }
+@@ -341,7 +367,7 @@ QWaylandShmBuffer *QWaylandShmBackingStore::getBuffer(const QSize &size, bool &b
+     return nullptr;
+ }
+ 
+-bool QWaylandShmBackingStore::recreateBackBufferIfNeeded(const QRegion &nonDirtyRegion)
++bool QWaylandShmBackingStore::recreateBackBufferIfNeeded()
+ {
+     wl_display_dispatch_queue_pending(mDisplay->wl_display(), mEventQueue);
+ 
+@@ -375,30 +401,6 @@ bool QWaylandShmBackingStore::recreateBackBufferIfNeeded(const QRegion &nonDirty
+     qsizetype oldSizeInBytes = mBackBuffer ? mBackBuffer->image()->sizeInBytes() : 0;
+     qsizetype newSizeInBytes = buffer->image()->sizeInBytes();
+ 
+-    // mBackBuffer may have been deleted here but if so it means its size was different so we wouldn't copy it anyway
+-    if (mBackBuffer != buffer && oldSizeInBytes == newSizeInBytes) {
+-        const QRegion clipRegion = buffer->dirtyRegion() - nonDirtyRegion;
+-        const auto clipRects = clipRegion.rects();
+-        if (!clipRects.empty()) {
+-            Q_ASSERT(mBackBuffer);
+-            const QImage *sourceImage = mBackBuffer->image();
+-            QImage *targetImage = buffer->image();
+-
+-            QPainter painter(targetImage);
+-            painter.setCompositionMode(QPainter::CompositionMode_Source);
+-            const qreal targetDevicePixelRatio = painter.device()->devicePixelRatio();
+-            for (const QRect &clipRect : clipRects) { // Iterate clip rects, because complicated clip region causes higher CPU usage
+-                if (clipRects.size() > 1)
+-                    painter.save();
+-                painter.setClipRect(clipRect);
+-                painter.scale(qreal(1) / targetDevicePixelRatio, qreal(1) / targetDevicePixelRatio);
+-                painter.drawImage(QRectF(QPointF(), targetImage->size()), *sourceImage, sourceImage->rect());
+-                if (clipRects.size() > 1)
+-                    painter.restore();
+-            }
+-        }
+-    }
+-
+     mBackBuffer = buffer;
+ 
+     for (QWaylandShmBuffer *buffer : std::as_const(mBuffers)) {
+@@ -412,11 +414,40 @@ bool QWaylandShmBackingStore::recreateBackBufferIfNeeded(const QRegion &nonDirty
+     if (windowDecoration() && window()->isVisible() && oldSizeInBytes != newSizeInBytes)
+         windowDecoration()->update();
+ 
+-    buffer->dirtyRegion() = QRegion();
+-
+     return bufferWasRecreated;
+ }
+ 
++void QWaylandShmBackingStore::finalizeBackBuffer()
++{
++    Q_ASSERT(mBackBuffer);
++
++    const QRegion clipRegion = mBackBuffer->dirtyRegion();
++    if (clipRegion.isEmpty())
++        return;
++
++    if (Q_UNLIKELY(!mFrontBuffer || mFrontBuffer == mBackBuffer))
++        return;
++
++    const QImage *sourceImage = mFrontBuffer->image();
++    QImage *targetImage = mBackBuffer->image();
++
++    QPainter painter(targetImage);
++    painter.setCompositionMode(QPainter::CompositionMode_Source);
++    const qreal targetDevicePixelRatio = painter.device()->devicePixelRatio();
++    const auto clipRects = clipRegion.rects();
++    for (const QRect &clipRect : clipRects) { // Iterate clip rects, because complicated clip region causes higher CPU usage
++        if (clipRects.size() > 1)
++            painter.save();
++        painter.setClipRect(clipRect);
++        painter.scale(qreal(1) / targetDevicePixelRatio, qreal(1) / targetDevicePixelRatio);
++        painter.drawImage(QRectF(QPointF(), targetImage->size()), *sourceImage, sourceImage->rect());
++        if (clipRects.size() > 1)
++            painter.restore();
++    }
++
++    mBackBuffer->dirtyRegion() = QRegion();
++}
++
+ QImage *QWaylandShmBackingStore::entireSurface() const
+ {
+     return mBackBuffer->image();
+@@ -496,6 +527,8 @@ QImage QWaylandShmBackingStore::toImage() const
+     // instead of flush() for widgets that have renderToTexture children
+     // (QOpenGLWidget, QQuickWidget).
+ 
++    const_cast<QWaylandShmBackingStore *>(this)->finalizeBackBuffer();
++
+     return *contentSurface();
+ }
+ #endif  // opengl
+diff --git a/src/plugins/platforms/wayland/qwaylandshmbackingstore_p.h b/src/plugins/platforms/wayland/qwaylandshmbackingstore_p.h
+index efd80159e85..cfcafb28326 100644
+--- a/src/plugins/platforms/wayland/qwaylandshmbackingstore_p.h
++++ b/src/plugins/platforms/wayland/qwaylandshmbackingstore_p.h
+@@ -73,7 +73,8 @@ public:
+     QMargins windowDecorationMargins() const;
+     QImage *entireSurface() const;
+     QImage *contentSurface() const;
+-    bool recreateBackBufferIfNeeded(const QRegion &nonDirtyRegion = QRegion());
++    bool recreateBackBufferIfNeeded();
++    void finalizeBackBuffer();
+ 
+     QWaylandWindow *waylandWindow() const;
+     void iterateBuffer();
+diff --git a/tests/auto/wayland/client/tst_client.cpp b/tests/auto/wayland/client/tst_client.cpp
+index 04400e3f26a..09ac4f7f81d 100644
+--- a/tests/auto/wayland/client/tst_client.cpp
++++ b/tests/auto/wayland/client/tst_client.cpp
+@@ -276,6 +276,8 @@ void tst_WaylandClient::events()
+     exec([&] {
+         pointer()->sendEnter(s, window.frameOffset() + mousePressPos);
+         pointer()->sendFrame(client());
++        pointer()->sendMotion(client(), window.frameOffset() + mousePressPos / 2);
++        pointer()->sendFrame(client());
+         pointer()->sendMotion(client(), window.frameOffset() + mousePressPos);
+         pointer()->sendFrame(client());
+         pointer()->sendButton(client(), BTN_LEFT, Pointer::button_state_pressed);

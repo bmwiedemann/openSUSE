@@ -632,4 +632,15 @@
   libQt6WaylandClient6 and gnome-shell are present</comment>
     <requestid>1311343</requestid>
   </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>42eb0bdd8919b3ab702f8663fca8db82</srcmd5>
+    <version>6.10.0</version>
+    <time>1761319374</time>
+    <user>anag_factory</user>
+    <comment>- Fix slow scrolling on Wayland (bsc#1249117).
+- This patch relates to QTBUG-138706 and QTBUG-139231.
+- Add patch:
+  * 0001-fix-slow-scrolling-on-wayland.patch (forwarded request 1313081 from mschreiner)</comment>
+    <requestid>1313166</requestid>
+  </revision>
 </revisionlist>

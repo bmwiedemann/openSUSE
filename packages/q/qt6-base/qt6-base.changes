@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 22 19:43:33 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix slow scrolling on Wayland (bsc#1249117).
+- This patch relates to QTBUG-138706 and QTBUG-139231.
+- Add patch:
+  * 0001-fix-slow-scrolling-on-wayland.patch
+
+-------------------------------------------------------------------
 Tue Oct 14 08:54:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Install the adwaita decorationplugin when both
