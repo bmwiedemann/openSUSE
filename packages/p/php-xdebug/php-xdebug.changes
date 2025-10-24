@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 23 20:56:37 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to Xdebug 3.4.6
+  * Fixed issue #2328: Stream resource references in stored stack traces
+    don't hold, and can cause crashes
+  * Fixed issue #2360: Debugging DateInterval (and other internal objects)
+    causes a crash
+
+-------------------------------------------------------------------
 Fri Aug  1 20:58:15 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to Xdebug 3.4.5
