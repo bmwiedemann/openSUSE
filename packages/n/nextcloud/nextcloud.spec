@@ -1,7 +1,7 @@
 #
 # spec file for package nextcloud
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        31.0.9
+Version:        32.0.1
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -77,7 +77,7 @@ Requires:       libxml2 >= 2.7.0
 %else
 Requires:       libxml2-2 >= 2.7.0
 %endif
-Requires:       mariadb >= 10.3
+Requires:       mariadb >= 10.6
 Requires:       php-bz2
 Requires:       php-dom
 Requires:       php-gd
