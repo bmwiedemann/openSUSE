@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Oct 24 07:39:56 UTC 2025 - dottorblaster@opensuse.org
+
+- Add git-core to BuildRequires
+- Update to version v0.21.0:
+  * chore: release v0.21.0
+  * Update workflow
+  * Update flag description
+  * Fix working directory in build script
+  * Make man page generation deterministic
+  * Allow nightly tag for the release binary workflow
+  * Update strategy matrix
+  * Improve error message in workflow
+  * Print version before generating man page
+  * Update "Release Binary" workflow to use qemu where necessary
+  * Do not require inputs with generate flag
+  * Fix release-binary.yml workflow
+  * Bump the dependencies group across 1 directory with 15 updates (#1874)
+  * Inline formatting arguments for anyhow macros as per new lint
+  * Man pages (#1858)
+  * fix: move log level padding outside brackets (#1871)
+  * Extract spans (#1870)
+  * feat: print warning if input source matches no files (#1865)
+  * Bump the dependencies group with 2 updates (#1866)
+  * Fix locating of version when tagging Docker images on Git tag push (#1834)
+  * feat(base-url)!: disallow relative local base to avoid confusion (#1857)
+  * feat: improve InvalidIndexFile error to mention index file names (#1859)
+  * Fix CI lint by adding rustfmt in the the toolchain components (#1861)
+  * Explicitly add `rustfmt` component to toolchain config (#1862)
+  * refactor: Remove truncate_source logic (#1847)
+  * Add --default-extension argument to force file format (#1842)
+  * docs: hard wrap help text for options (#1854)
+  * Bump the dependencies group with 6 updates (#1855)
+  * refactor: add exhaustivity check for `fold_in!` macro (#1848)
+  * Additional redirect reporting (#1853)
+  * fix: do not reuse excluded status from cache (#1850)
+  * add cargo-msrv to the devshell (#1852)
+  * Fix extraction of reference links in Markdown (#1841)
+  * Redirect reporting (#1725)
+  * Add WinGet installation instructions (#1849)
+  * refactor!: use `ResolvedInputSource` downstream of `InputContent` (#1840)
+  * fix: fields missing from config.toml parsing logic (#1843)
+  * Bump the dependencies group with 5 updates (#1845)
+  * fix: add support for name attributes in HTML fragment extraction (#1839)
+  * Implement `--files-from` Option (#1836)
+  * Optimize InputSource handling with Cow and add benchmarks (#1832)
+  * Ignore Links in Markdown Link Text (#1831)
+  * Fix pre-commit hooks (#1829)
+  *  chore(file checker): separate resolving and checking for easier testing (#1830)
+  * Refactor Input Handling (#1827)
+  * Fix links in doc comments (#1828)
+  *  apply fallback extensions if directory links resolve to a dir (#1826)
+  * clarify `--base-url` and `--root-dir` and their interactions (#1787)
+  * Add test for making sure URL inputs always get checked (#1824)
+  * Refactor collector and input (#1823)
+  * add conda install to readme (#1822)
+  * Bump the dependencies group with 3 updates (#1821)
+  * Refactor error reporting (#1731)
+  * Don't use link to latest stable release for nightly (#1802)
+
+-------------------------------------------------------------------
 Mon Aug 25 09:57:42 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.20.1:

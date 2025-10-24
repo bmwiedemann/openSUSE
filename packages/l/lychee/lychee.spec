@@ -1,6 +1,7 @@
 #
 # spec file for package lychee
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           lychee
-Version:        0.20.1
+Version:        0.21.0
 Release:        0
 Summary:        Fast, async, stream-based link checker written in Rust
 License:        Apache-2.0 OR MIT
@@ -25,6 +26,7 @@ URL:            https://lychee.cli.rs
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  git-core
 BuildRequires:  libopenssl-devel
 ExclusiveArch:  %{rust_tier1_arches}
 
@@ -35,6 +37,8 @@ Fast, async, stream-based link checker written in Rust. Finds broken URLs and ma
 %autosetup -p1 -a1
 
 %build
+export CARGO_PROFILE_RELEASE_BUILD_OVERRIDE_DEBUG=true
+export RUST_BACKTRACE=full
 %{cargo_build} --all
 
 %install
