@@ -1,7 +1,7 @@
 #
 # spec file for package brickv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019 Frank Kunz
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,8 +25,10 @@ License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            http://www.tinkerforge.com
 Source0:        https://github.com/Tinkerforge/brickv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  iso-codes
 BuildRequires:  mobile-broadband-provider-info
@@ -57,11 +59,12 @@ pushd src
 python3 build_src.py
 # remove no more needed build scripts
 rm -f build_src.py brickv/plugin_system/plugins/red/build_extra.py brickv/plugin_system/plugins/red/build_scripts.py
+%python3_pyproject_wheel
 popd
 
 %install
 pushd src
-python3 setup.py install --root=%{buildroot} --prefix=/usr
+%python3_pyproject_install
 install -m 644 -D -t %{buildroot}%{_udevrulesdir} build_data/linux/%{name}/lib/udev/rules.d/99-tinkerforge-brickv.rules
 install -m 644 -D -t %{buildroot}/usr/share/pixmaps build_data/linux/%{name}/usr/share/pixmaps/brickv-icon.png
 install -m 644 -D -t %{buildroot}/usr/share/applications build_data/linux/%{name}/usr/share/applications/%{name}.desktop
@@ -73,7 +76,8 @@ popd
 %doc src/changelog README.rst
 %license license.txt
 %{_bindir}/%{name}
-%{python3_sitelib}/brickv*
+%{python3_sitelib}/brickv
+%{python3_sitelib}/brickv-%{version}.dist-info
 %{_udevrulesdir}/*.rules
 /usr/share/pixmaps/*
 /usr/share/applications/*

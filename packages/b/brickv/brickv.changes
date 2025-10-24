@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 23 04:19:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject_wheel and pyproject_install macros to build and install. 
+
+-------------------------------------------------------------------
 Sat Mar  9 12:06:43 UTC 2024 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Update to new upstream version 2.4.26
