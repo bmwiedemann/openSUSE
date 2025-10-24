@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 24 05:08:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.0:
+  * Added Features
+    - upgrade Syft to pull in pnpm and pdm license detection
+      improvements [#290 @anchore-actions-token-generator]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#290)
+    - chore(deps): bump github.com/github/go-spdx/v2 from 2.3.3 to
+      2.3.4 (#289)
+
+-------------------------------------------------------------------
 Fri Oct 17 08:17:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.4:
