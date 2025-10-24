@@ -4,5 +4,4 @@
 components. Each of the Swing components have been extended, providing
 data-aware functionality out of the box. New useful components have been
 created like the JXDatePicker, JXTaskPane, and JXImagePanel.</description>
-  <devel project="Java:packages" package="swingx"/>
 </package>

@@ -160,4 +160,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148633</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>855bb424195bc58bf123e69069ab0dab</srcmd5>
+    <version>1.6.5.1</version>
+    <time>1761319408</time>
+    <user>anag_factory</user>
+    <comment>Fix build with Java 25</comment>
+    <requestid>1313262</requestid>
+  </revision>
 </revisionlist>

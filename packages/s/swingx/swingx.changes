@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 23 18:31:47 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Force annotation processing, since it is needed with Java 25
+
+-------------------------------------------------------------------
 Wed Feb 21 10:54:11 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

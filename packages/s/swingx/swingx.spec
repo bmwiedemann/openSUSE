@@ -78,7 +78,7 @@ find . -name "*.so" -print -delete
 find . -name "*.dll" -print -delete
 
 %build
-%{mvn_build} -f -- -Pjvnet-release
+%{mvn_build} -f -- -Pjvnet-release -Dmaven.compiler.proc=full
 
 %install
 %mvn_install
