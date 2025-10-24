@@ -1,7 +1,7 @@
 #
 # spec file for package truth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,10 +61,11 @@ This package contains the API documentation for %{name}.
           </testExcludes>" core
 
 %build
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=8
+	-Dmaven.compiler.release=8 \
 %endif
+    -Dmaven.compiler.proc=full
 
 %install
 %mvn_install

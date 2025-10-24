@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 23 16:58:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Force annotation processing, since it is needed with Java 25
+
+-------------------------------------------------------------------
 Thu Jan 13 17:57:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with newer auto version by adding the

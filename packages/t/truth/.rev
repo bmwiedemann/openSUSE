@@ -33,4 +33,12 @@
     <comment>fix build with newer auto</comment>
     <requestid>946335</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>62af30b256e485d3bfe3797d346c0f42</srcmd5>
+    <version>0.24</version>
+    <time>1761319414</time>
+    <user>anag_factory</user>
+    <comment>Force annotation processing, since it is needed with Java 25</comment>
+    <requestid>1313296</requestid>
+  </revision>
 </revisionlist>
