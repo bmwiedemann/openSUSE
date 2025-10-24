@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 15 09:56:41 MDT 2025 - carnold@suse.com
+
+- Update to version 0.23.0. Features and Issues addressed:
+  systemd services: add Documentation key (point to manpage)
+  Switch to spice-vdagent.service by default
+  Improve integration with systemd service manager
+  Makefile.am: don't create /var/run/spice-vdagentd
+  vdagent: remove callback on destroy()
+  Fix minor spelling errors
+  Fix VDAGentMonitorConfig size calculation
+- Drop 0001-Switch-to-spice-vdagent.service-by-default.patch
+
+-------------------------------------------------------------------
 Fri Sep 19 13:57:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add (xwayland and modalias(virtio:d00000003v*)) Supplements: we

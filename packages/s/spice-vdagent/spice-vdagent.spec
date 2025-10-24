@@ -1,7 +1,7 @@
 #
 # spec file for package spice-vdagent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %bcond_with session_info_test
 
 Name:           spice-vdagent
-Version:        0.22.1
+Version:        0.23.0
 Release:        0
 Summary:        Agent for Spice guests
 License:        GPL-3.0-or-later
@@ -30,8 +30,6 @@ URL:            http://spice-space.org/
 Source:         http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
 Source2:        %{name}.keyring
 Patch0:         harden_spice-vdagentd.service.patch
-# https://gitlab.freedesktop.org/spice/linux/vd_agent/-/merge_requests/47
-Patch1:         0001-Switch-to-spice-vdagent.service-by-default.patch
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
 BuildRequires:  libXfixes-devel
@@ -49,8 +47,8 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(spice-protocol) >= 0.14.3
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
-Supplements:    modalias(xorg-x11-server:virtio:d00000003v*)
 Supplements:    (xwayland and modalias(virtio:d00000003v*))
+Supplements:    modalias(xorg-x11-server:virtio:d00000003v*)
 %{?systemd_requires}
 
 %description
@@ -87,7 +85,7 @@ ln -s  service %{buildroot}%{_sbindir}/rcspice-vdagentd
 
 mkdir -p %{buildroot}%{_datadir}/gdm/greeter/autostart
 
-mv %{buildroot}%{_datadir}/gdm/autostart/LoginWindow/*.desktop %{buildroot}%{_datadir}/gdm/greeter/autostart
+cp %{buildroot}/etc/xdg/autostart/spice-vdagent.desktop %{buildroot}%{_datadir}/gdm/greeter/autostart
 rm -fr %{buildroot}%{_datadir}/gdm/autostart
 
 %pre
@@ -116,6 +114,8 @@ rm -fr %{buildroot}%{_datadir}/gdm/autostart
 %{_unitdir}/spice-vdagentd.service
 %{_unitdir}/spice-vdagentd.socket
 %{_prefix}/lib/systemd/user/spice-vdagent.service
+%{_prefix}/lib/systemd/user/graphical-session.target.wants
+%{_prefix}/lib/systemd/user/graphical-session.target.wants/spice-vdagent.service
 %{_tmpfilesdir}/spice-vdagentd.conf
 %{_bindir}/spice-vdagent
 %{_sbindir}/spice-vdagentd

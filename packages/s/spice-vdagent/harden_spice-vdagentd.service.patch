@@ -1,9 +1,9 @@
-Index: spice-vdagent-0.21.0/data/spice-vdagentd.service
+Index: spice-vdagent-0.23.0/data/spice-vdagentd.service
 ===================================================================
---- spice-vdagent-0.21.0.orig/data/spice-vdagentd.service
-+++ spice-vdagent-0.21.0/data/spice-vdagentd.service
+--- spice-vdagent-0.23.0.orig/data/spice-vdagentd.service
++++ spice-vdagent-0.23.0/data/spice-vdagentd.service
 @@ -9,6 +9,17 @@ EnvironmentFile=-/etc/sysconfig/spice-vd
- ExecStart=/usr/sbin/spice-vdagentd $SPICE_VDAGENTD_EXTRA_ARGS
+ ExecStart=/usr/sbin/spice-vdagentd -x $SPICE_VDAGENTD_EXTRA_ARGS
  PIDFile=/run/spice-vdagentd/spice-vdagentd.pid
  PrivateTmp=true
 +# added automatically, for details please see
@@ -16,7 +16,7 @@ Index: spice-vdagent-0.21.0/data/spice-vdagentd.service
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  Restart=on-failure
  
- [Install]
+ # spice-vdagentd logs via syslog() and to stderr, causing duplicated
