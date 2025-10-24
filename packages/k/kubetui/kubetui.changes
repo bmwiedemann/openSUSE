@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Oct 24 05:09:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.0:
+  * Features
+    - JSON Log Filtering: Added support for jq and jmespath filters
+      for processing JSON-formatted logs (#852, #840)
+      - jq filter implementation for flexible JSON log querying
+      - jmespath filter implementation for JSON log processing
+    - Context Switching Enhancement: Added option to preserve
+      namespaces when switching contexts (#853)
+      - Use the same namespace instead of defaulting to 'default'
+        namespace when switching contexts
+      - Improved user experience with Ctrl+Space keybinding
+  * Fixes
+    - Fixed uppercase input handling in InputForm widget (#856)
+  * Improvements
+    - Performance: Migrated from fuzzy-matcher to nucleo-matcher
+      for better performance (#855)
+    - Code Quality: Reduced code duplication in context dialog
+  * Documentation
+    - Added jq/jmespath filter documentation to README and help
+      dialog
+    - Added Ctrl+Space keybinding documentation for context
+      switching
+  * Dependencies
+    - chore(deps): update rust crate indoc to v2.0.7 (#859)
+    - chore(deps): update rust crate clap to v4.5.50 (#858)
+    - chore(deps): update rust crate bitflags to v2.10.0 (#857)
+    - chore(deps): update rust crate tokio to v1.48.0 (#851)
+    - chore(deps): update rust crate regex to v1.12.2 (#850)
+    - chore(deps): update rust crate clap to v4.5.49 (#849)
+    - chore(deps): update rust crate regex to v1.12.1 (#846)
+    - chore(deps): update rust crate flate2 to v1.1.4 (#842)
+    - chore(deps): update rust crate thiserror to v2.0.17 (#844)
+    - chore(deps): update rust crate serde to v1.0.228 (#843)
+
+-------------------------------------------------------------------
 Thu Oct 09 05:31:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.9.1:
