@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 22 10:49:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2025.10.15
+  * Bump actions/download-artifact from 4.3.0 to 5.0.0
+  * Bump actions/checkout from 4.2.2 to 5.0.0
+  * Bump pypa/gh-action-pypi-publish from 1.12.4 to 1.13.0 (#366)
+  * Bump actions/setup-python from 5.6.0 to 6.0.0 (#367)
+  * Add Python 3.14 classifier in setup.py
+- from version 2025.08.03
+  * No changes recorded
+- from version 2025.07.14
+  * No changes recorded
+- from version 2025.07.09
+  * No changes recorded
+
+-------------------------------------------------------------------
 Tue Jun 17 12:54:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2024.6.15
