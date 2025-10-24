@@ -39,7 +39,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 BuildRequires:  flex
 BuildRequires:  ldns-devel >= %{ldns_version}
@@ -94,6 +94,7 @@ Source15:       unbound-anchor.timer
 Source16:       unbound-munin.README
 Source18:       unbound-anchor.service
 Source19:       unbound.sysusers
+Patch0:         unbound-swig-4.4.0-compat.patch
 
 Summary:        Validating, recursive, and caching DNS(SEC) resolver
 License:        BSD-3-Clause
@@ -176,7 +177,7 @@ Unbound is a validating, recursive, and caching DNS(SEC) resolver.
 This package holds the Python modules and extensions for unbound.
 
 %prep
-%setup
+%autosetup -p1
 
 %build
 %sysusers_generate_pre %{SOURCE19} anchor unbound.conf

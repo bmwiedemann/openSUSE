@@ -704,4 +704,18 @@ Features
     <comment>- Update to 1.24.0</comment>
     <requestid>1306914</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>1a88bf92abed4349edbecbf07b389dee</srcmd5>
+    <version>1.24.1</version>
+    <time>1761319379</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.24.1:
+  Security Fixes:
+  * Fix CVE-2025-11411 (possible domain hijacking attack)
+    [bsc#1252525]
+
+- Add patch to fix build issue with swig 4.4.0
+  [unbound-swig-4.4.0-compat.patch]</comment>
+    <requestid>1313189</requestid>
+  </revision>
 </revisionlist>

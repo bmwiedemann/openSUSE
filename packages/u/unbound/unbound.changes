@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 23 09:56:53 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Add patch to fix build issue with swig 4.4.0
+  [unbound-swig-4.4.0-compat.patch]
+
+-------------------------------------------------------------------
+Wed Oct 22 10:35:26 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 1.24.1:
+  Security Fixes:
+  * Fix CVE-2025-11411 (possible domain hijacking attack)
+    [bsc#1252525]
+
+-------------------------------------------------------------------
 Wed Sep 24 10:54:29 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.24.0:
