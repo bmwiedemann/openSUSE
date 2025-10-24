@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global _default_patch_fuzz 2
 
 %global modname grpcio
 %{?sle15_python_module_pythons}
 Name:           python-grpcio
-Version:        1.74.0
+Version:        1.75.1
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -36,6 +37,7 @@ BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf >= 6.30 }
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions >= 4.13}
 BuildRequires:  %{python_module wheel >= 0.29}
 BuildRequires:  abseil-cpp-devel >= 20250127.0
 BuildRequires:  ca-certificates
@@ -54,6 +56,7 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       ca-certificates
+Requires:       python-typing_extensions >= 4.13
 Recommends:     python-enum34 >= 1.0.4
 Recommends:     python-futures >= 2.2.0
 %python_subpackages

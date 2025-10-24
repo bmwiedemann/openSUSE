@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Oct 24 05:39:05 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add (Build)Requires: python-typing_extensions, needed since
+  version 1.75.0.
+
+-------------------------------------------------------------------
+Fri Oct 17 09:31:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.75.1
+  * Release grpcio wheels with Python 3.14 support (#40403)
+  * Asyncio: fixes grpc shutdown race condition occurring
+    during python interpreter finalizations. (#40447)
+  * This also addresses previously reported issues with empty
+    error message on Python interpreter exit (Error in
+    sys.excepthook:/Original exception was: empty): (#36655),
+    (#38679), (#33342)
+  * Python 3.14: preserve current behavior when using grpc.aio
+    async methods outside of a running event loop. (#40750)
+  * Note: using async methods outside of a running event loop
+    is discouraged by Python, and will be deprecated in future
+    gRPC releases. Please use the asyncio.run() function (or
+    asyncio.Runner for custom loop factories). For interactive
+    mode, use dedicated asyncio REPL: python -m asyncio.
+- from version 1.75.0
+  * [Security] Cherry Pick Spiffe Verification. (#40515)
+  * [Python][Typeguard] Part 3 - Add Typeguard to AIO stack
+    in tests. (#40217)
+  * [c-ares] update version to 1.34.5. (#39508)
+  * [pick_first] fix bug that caused us to stop attempting to
+    connect. (#40162)
+  * [OTel C++] Implement retry metrics. (#39195)
+  * Fix data race by adding custom getter for state property
+    with @synchronized locking. (#40146)
+  * gRPC Python (grpcio) now depends on typing-extensions~=4.13. (#40137)
+  * Update musllinux wheels from musllinux_1_1 to musllinux_1_2. (#40317)
+    * Dropping musllinux_1_1 because it reached EOL in November 2024
+    * Reference on musllinux platform tags: PEP 656
+  * grpc.aio typehint fixes. (#40215, #40217)
+    * Metadata type validation: Fixed metadata handling to support
+      all sequence types (not just tuples), preventing runtime errors.
+      Enhanced metadata type validation: isinstance(metadata, Sequence)
+      instead of isinstance(metadata, tuple)
+    * Serializer parameters: Changed to Optional[SerializingFunction]
+      for more accurate type representation
+    * Fixing the error in public API: ClientCallDetails.method was
+      declared as str but always called with bytes, see InterceptedUnaryUnaryCall.
+  * Fixes issue #40325 with grpcio failing to install on all non-Mac
+    Apple devices internal builds. (#40347)
+  * Ruby: Mark credential object in channel. (#40394)
+  * [Ruby] Add rubygems support for linux-gnu and linux-musl platforms. (#39549)
+- from version 1.74.1
+  * [Backport of #40394 to v1.74.x] Mark credential object in channel to fix (#40368)
+- Increase _default_patch_fuzz to 2 to allow patches to apply
+
+-------------------------------------------------------------------
 Mon Jul 28 11:25:28 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.74.0:

@@ -615,4 +615,14 @@
     <comment></comment>
     <requestid>1297210</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>1abd76925dbaf4ecaba12b7e1cdb9e6c</srcmd5>
+    <version>1.75.1</version>
+    <time>1761319414</time>
+    <user>anag_factory</user>
+    <comment>* Add (Build)Requires: python-typing_extensions, needed since
+  version 1.75.0.
+* Update to version 1.75.1</comment>
+    <requestid>1313308</requestid>
+  </revision>
 </revisionlist>
