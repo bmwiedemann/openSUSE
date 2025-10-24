@@ -39,4 +39,12 @@
     <comment>Add factory fixes (forwarded request 1205800 from krop)</comment>
     <requestid>1205803</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e35b24f83ad5263da9ac18bc33e2d664</srcmd5>
+    <version>2.11.7</version>
+    <time>1761319451</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313361</requestid>
+  </revision>
 </revisionlist>

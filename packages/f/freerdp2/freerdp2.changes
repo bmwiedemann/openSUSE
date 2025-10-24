@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 24 07:57:48 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
+
+- Update 0001-Fix-build-with-ffmpeg-7.patch: fix build issue in
+  h264_ffmpeg.c.
+
+-------------------------------------------------------------------
 Sat Oct  5 08:05:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fixes (picked from Debian) (boo#1231317)

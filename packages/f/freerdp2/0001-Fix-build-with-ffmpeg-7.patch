@@ -9,11 +9,11 @@ from freerdp3
  libfreerdp/codec/dsp_ffmpeg.c | 28 ++++++++++------------------
  1 file changed, 10 insertions(+), 18 deletions(-)
 
-diff --git a/libfreerdp/codec/dsp_ffmpeg.c b/libfreerdp/codec/dsp_ffmpeg.c
-index 80df188..68dfe5f 100644
---- a/libfreerdp/codec/dsp_ffmpeg.c
-+++ b/libfreerdp/codec/dsp_ffmpeg.c
-@@ -225,18 +225,15 @@ static void ffmpeg_close_context(FREERDP_DSP_CONTEXT* context)
+Index: freerdp-2.11.7/libfreerdp/codec/dsp_ffmpeg.c
+===================================================================
+--- freerdp-2.11.7.orig/libfreerdp/codec/dsp_ffmpeg.c
++++ freerdp-2.11.7/libfreerdp/codec/dsp_ffmpeg.c
+@@ -225,18 +225,15 @@ static void ffmpeg_close_context(FREERDP
  static BOOL ffmpeg_open_context(FREERDP_DSP_CONTEXT* context)
  {
  	int ret;
@@ -33,7 +33,7 @@ index 80df188..68dfe5f 100644
  	context->id = ffmpeg_get_avcodec(format);
  
  	if (ffmpeg_codec_is_filtered(context->id, context->encoder))
-@@ -270,8 +267,7 @@ static BOOL ffmpeg_open_context(FREERDP_DSP_CONTEXT* context)
+@@ -270,8 +267,7 @@ static BOOL ffmpeg_open_context(FREERDP_
  			break;
  	}
  
@@ -43,7 +43,7 @@ index 80df188..68dfe5f 100644
  	context->context->sample_rate = format->nSamplesPerSec;
  	context->context->block_align = format->nBlockAlign;
  	context->context->bit_rate = format->nAvgBytesPerSec * 8;
-@@ -314,8 +310,7 @@ static BOOL ffmpeg_open_context(FREERDP_DSP_CONTEXT* context)
+@@ -314,8 +310,7 @@ static BOOL ffmpeg_open_context(FREERDP_
  	if (!context->rcontext)
  		goto fail;
  
@@ -53,7 +53,7 @@ index 80df188..68dfe5f 100644
  	context->frame->sample_rate = format->nSamplesPerSec;
  	context->frame->format = AV_SAMPLE_FMT_S16;
  
-@@ -330,13 +325,11 @@ static BOOL ffmpeg_open_context(FREERDP_DSP_CONTEXT* context)
+@@ -330,13 +325,11 @@ static BOOL ffmpeg_open_context(FREERDP_
  		context->resampled->sample_rate = format->nSamplesPerSec;
  	}
  
@@ -69,7 +69,7 @@ index 80df188..68dfe5f 100644
  		context->buffered->format = context->resampled->format;
  		context->buffered->nb_samples = context->context->frame_size;
  
-@@ -421,7 +414,7 @@ static BOOL ffmpeg_encode_frame(AVCodecContext* context, AVFrame* in, AVPacket*
+@@ -421,7 +414,7 @@ static BOOL ffmpeg_encode_frame(AVCodecC
  	if (in->format == AV_SAMPLE_FMT_FLTP)
  	{
  		uint8_t** pp = in->extended_data;
@@ -78,7 +78,7 @@ index 80df188..68dfe5f 100644
  		{
  			float* data = (float*)pp[y];
  			for (int x = 0; x < in->nb_samples; x++)
-@@ -477,14 +470,13 @@ static BOOL ffmpeg_fill_frame(AVFrame* frame, const AUDIO_FORMAT* inputFormat, c
+@@ -477,14 +470,13 @@ static BOOL ffmpeg_fill_frame(AVFrame* f
                                size_t size)
  {
  	int ret, bpp;
@@ -95,7 +95,7 @@ index 80df188..68dfe5f 100644
  	{
  		const char* err = av_err2str(ret);
  		WLog_ERR(TAG, "Error during audio frame fill %s [%d]", err, ret);
-@@ -566,7 +558,7 @@ static BOOL ffmpeg_decode(AVCodecContext* dec_ctx, AVPacket* pkt, AVFrame* frame
+@@ -566,7 +558,7 @@ static BOOL ffmpeg_decode(AVCodecContext
  		}
  
  		{
@@ -104,7 +104,7 @@ index 80df188..68dfe5f 100644
  			Stream_EnsureRemainingCapacity(out, data_size);
  			Stream_Write(out, resampled->data[0], data_size);
  		}
-@@ -664,7 +656,7 @@ BOOL freerdp_dsp_ffmpeg_encode(FREERDP_DSP_CONTEXT* context, const AUDIO_FORMAT*
+@@ -664,7 +656,7 @@ BOOL freerdp_dsp_ffmpeg_encode(FREERDP_D
  			rc =
  			    av_samples_copy(context->buffered->extended_data, context->resampled->extended_data,
  			                    (int)context->bufferedSamples, copied, inSamples,
@@ -113,6 +113,31 @@ index 80df188..68dfe5f 100644
  			rest -= inSamples;
  			copied += inSamples;
  			context->bufferedSamples += (UINT32)inSamples;
--- 
-2.46.1
-
+Index: freerdp-2.11.7/libfreerdp/codec/h264_ffmpeg.c
+===================================================================
+--- freerdp-2.11.7.orig/libfreerdp/codec/h264_ffmpeg.c
++++ freerdp-2.11.7/libfreerdp/codec/h264_ffmpeg.c
+@@ -100,10 +100,10 @@ static void libavcodec_destroy_encoder(H
+ 
+ 	if (sys->codecEncoderContext)
+ 	{
+-		avcodec_close(sys->codecEncoderContext);
+ #if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55, 69, 100)
+ 		avcodec_free_context(&sys->codecEncoderContext);
+ #else
++		avcodec_close(sys->codecEncoderContext);
+ 		av_free(sys->codecEncoderContext);
+ #endif
+ 	}
+@@ -430,10 +430,10 @@ static void libavcodec_uninit(H264_CONTE
+ 
+ 	if (sys->codecDecoderContext)
+ 	{
+-		avcodec_close(sys->codecDecoderContext);
+ #if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55, 69, 100)
+ 		avcodec_free_context(&sys->codecDecoderContext);
+ #else
++		avcodec_close(sys->codecDecoderContext);
+ 		av_free(sys->codecDecoderContext);
+ #endif
+ 	}
