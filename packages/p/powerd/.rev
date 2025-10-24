@@ -24,4 +24,13 @@
   * Make it build even with gcc14</comment>
     <requestid>1222173</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d6a7df1a4621de5facfa87ea9330d189</srcmd5>
+    <version>2.0.2</version>
+    <time>1761319453</time>
+    <user>anag_factory</user>
+    <comment>- Fix patch powerd-2.0.2.dif
+  * saved signal function has int aka the signal as argument</comment>
+    <requestid>1313366</requestid>
+  </revision>
 </revisionlist>

@@ -160,7 +160,7 @@
 +#ifdef NEWINIT
 +	struct init_request req;
 +	int success = 0;
-+	void (*save_sigalrm)();
++	void (*save_sigalrm)(int);
 +#endif
  
  	errno = 0;
