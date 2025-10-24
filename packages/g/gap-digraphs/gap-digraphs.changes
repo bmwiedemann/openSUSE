@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 28 20:39:08 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.13.1
+  * Fixed a bug that could result in an incorrect result being
+    given for the `AutomorphismGroup` for a digraph that was
+    created by the `CompleteBipartiteDigraph` operation.
+
+-------------------------------------------------------------------
 Fri Sep 26 16:20:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.13.0
