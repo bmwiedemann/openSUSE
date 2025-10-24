@@ -1,7 +1,7 @@
 #
 # spec file for package icedtea-web
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,14 +44,14 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  libtool
-%if %{with pack200}
-BuildRequires:  pack200
-%endif
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  procps
 BuildRequires:  rhino
 BuildRequires:  tagsoup
 BuildRequires:  zip
+BuildConflicts: java >= 22
+BuildConflicts: java-devel >= 22
+BuildConflicts: java-headless >= 22
 Requires:       java >= 1.8
 Requires:       pack200
 Requires:       rhino
@@ -68,6 +68,9 @@ Provides:       java-1_8_0-openjdk-plugin = %{version}-%{release}
 Provides:       java-1_9_0-openjdk-plugin = %{version}-%{release}
 Provides:       java-plugin = 1.8.0
 BuildArch:      noarch
+%if %{with pack200}
+BuildRequires:  pack200
+%endif
 
 %description
 The IcedTea-Web project provides a Free Software web browser plugin running
@@ -98,7 +101,6 @@ and plugin implementation.
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
-
 
 rm -rf netx/net/sourceforge/jnlp/NetxPanel.java netx/sun
 

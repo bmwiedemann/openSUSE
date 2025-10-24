@@ -334,4 +334,12 @@
     <comment>Allow building without the pack200 support</comment>
     <requestid>1303422</requestid>
   </revision>
+  <revision rev="43" vrev="10">
+    <srcmd5>40ea9f6e8944f1dbc94b7060555365ad</srcmd5>
+    <version>1.8.8</version>
+    <time>1761319411</time>
+    <user>anag_factory</user>
+    <comment>Avoid building with Java 25 for the while</comment>
+    <requestid>1313294</requestid>
+  </revision>
 </revisionlist>
