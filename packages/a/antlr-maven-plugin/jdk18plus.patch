@@ -1,13 +1,12 @@
---- antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AbstractAntlrMojo.java	2010-11-16 16:59:34.000000000 +0100
-+++ antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AbstractAntlrMojo.java	2023-10-26 14:01:46.596367163 +0200
-@@ -348,6 +348,10 @@
-                                + "Antlr's call to System.exit() can cause application shutdown "
-                                + "if not handled by the current SecurityManager." );
+diff -urEbwB antlr-maven-plugin-2.2.orig/src/main/java/org/codehaus/mojo/antlr/AbstractAntlrMojo.java antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AbstractAntlrMojo.java
+--- antlr-maven-plugin-2.2.orig/src/main/java/org/codehaus/mojo/antlr/AbstractAntlrMojo.java	2025-10-24 10:50:58.787477162 +0200
++++ antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AbstractAntlrMojo.java	2025-10-24 11:22:33.315255452 +0200
+@@ -337,7 +337,7 @@
+             oldSm = System.getSecurityManager();
+             System.setSecurityManager( NoExitSecurityManager.INSTANCE );
          }
-+        catch ( UnsupportedOperationException exc )
-+        {
-+            getLog().warn( exc );
-+        }
- 
-         String originalUserDir = null;
-         if ( plan.getImportVocabTokenTypesDirectory() != null )
+-        catch ( SecurityException ex )
++        catch ( UnsupportedOperationException | SecurityException ex )
+         {
+             // ANTLR-12
+             oldSm = null;

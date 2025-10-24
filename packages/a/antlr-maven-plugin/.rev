@@ -71,4 +71,12 @@
     <comment>Fix build with up-coming maven 4</comment>
     <requestid>1287971</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>03ad0760ae83f68a815bc8b7b8b55a97</srcmd5>
+    <version>2.2</version>
+    <time>1761319455</time>
+    <user>anag_factory</user>
+    <comment>Fix build with Java 25</comment>
+    <requestid>1313375</requestid>
+  </revision>
 </revisionlist>
