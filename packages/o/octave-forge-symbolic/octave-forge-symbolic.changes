@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 13 12:57:23 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.2.2:
+  * New symbolic commands: cart2sph, pol2cart, sph2cart
+  * Misc minor changes and updates.
+  * Dropped support for Octave 5.
+- Exclude tests requiring a graphical toolkit
+- Add numpy build/runtime dependency, required for kron function.
+
+-------------------------------------------------------------------
 Wed Jun 12 04:09:12 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 3.2.1:

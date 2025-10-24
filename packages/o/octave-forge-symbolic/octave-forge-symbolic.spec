@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-symbolic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  symbolic
 Name:           octave-forge-%{octpkg}
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Octave Symbolic Package using SymPy
 License:        GPL-3.0-or-later
@@ -27,8 +27,10 @@ URL:            https://gnu-octave.github.io/packages/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  octave-devel
+BuildRequires:  python3-numpy
 BuildRequires:  python3-sympy >= 1.4
-Requires:       octave-cli >= 5.1
+Requires:       octave-cli >= 6.1
+Requires:       python3-numpy
 Requires:       python3-sympy >= 1.4
 
 %description
@@ -50,6 +52,8 @@ This is part of Octave-Forge project.
 %octave_pkg_install
 
 %check
+%global octskiptests @sym/ezplot|@sym/ezplot3|@sym/fplot
+echo "Skip tests requiring graphical toolkit: %{octskiptests}"
 %octave_pkg_test
 
 %post
