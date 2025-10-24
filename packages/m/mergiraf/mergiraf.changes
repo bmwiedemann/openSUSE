@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Thu Oct 23 14:32:58 UTC 2025 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.15.0:
+  * Set version to 0.15.0
+  * feat(Python): Enable commutation of class attributes, with docstrings (#590)
+  * doc: update `adding-a-language.md` (#596)
+  * chore: Simplify pyproject language profile (#591)
+  * chore: Update dependencies (#592)
+  * feat: Support for `pyproject.toml` (#582)
+  * fix(AstNode::bundle_comments): don't bundle at `A, // comment \n B` (#588)
+  * tests: Utility to minimize test cases, continued (#527)
+  * fix(typescript): Bad handling of semicolons in commutative merging of class bodies (#585)
+  * fix: Reject parse trees with missing nodes (#587)
+  * feat: bundle comments into nodes they annotate (#576)
+  * feat: Install via `cargo binstall` (#583)
+  * feat: Recover from commutative merging failures (#568)
+  * chore: Update crate dependencies (#580)
+  * chore: Update to Rust 1.89 (#579)
+  * Set version to 0.14.0
+  * fix: Panic in unicode boundary checking code (#578)
+  * feat(merge,solve): create the debug dir if not present (#575)
+  * refactor(AstNode): replace `UnsafeCell`s with `Cell`s (#574)
+  * feat: Minimal CMake support (#572)
+  * governance: Make mathstuf a developer (#566)
+  * chore: Add `AstNode::succeeding_whitespace()` (#571)
+  * fix: Switch from `grammar_name` to `kind` (#561)
+  * refactor: return _exactly_ a `Conflict` from `TreeBuilder::build_conflict` (#569)
+  * fix: Prevent the commutative merging of all `extra` elements (#562)
+  * feat: add some signatures for children of commutative parents (#567)
+  * fix(Rust): mark comments as atomic (#560)
+  * misc(merged_text): clean-up and comments (#559)
+  * chore: Improve log output (#553)
+  * refactor(merge): `leak` in fewer places (#555)
+  * feat: Switch to `tree-sitter-dart-orchard` (#557)
+  * fix(`AstNode::parse`): respect char boundaries of `source` when informing about a parse error (#558)
+  * feat: Add support for starlark. (#509)
+  * chore: Switch to `tree-sitter-java-orchard` (#546)
+  * perf(mgf_dev): Speed up commutative isomorphism via hashing (#536)
+  * fix(ast): correct byte_range for empty injections (#543)
+  * test(ast): improve legibility of `source` strings (#550)
+  * refactor: get rid of some `Option/Result::and_then`s (#549)
+  * ci: Fix `cargo install git-cliff` with `--locked` (#544)
+  * chore(changelog): add commit ids to log entries without names (#547)
+  * chore: Update dependencies (#548)
+  * feat: add a Cargo feature for `mgf_dev`-specific functionality (#541)
+  * feat(ParentType): make `Display` less verbose in the common case (#542)
+  * chore(cargo/aliases): run `mgf_dev compare` in release mode (#539)
+  * refactor(MultiMap): clean-up trait bounds (#538)
+  * feat(parse): add an option to limit tree depth (#535)
+  * fix(postprocess/merge_same_sigs): use the revisions that the node is actually known to be in (#533)
+  * feat(TypeScript): commutative merging for union and intersection types (#531)
+  * feat: Distinguish between exact and inexact initial matchings (#523)
+  * refactor(tests): Inline all language-specific parse methods (#530)
+  * chore: Print line numbers when reporting a syntax error (#529)
+  * chore: Highlight new contributors in release notes (#528)
+
+-------------------------------------------------------------------
+Thu Oct 23 14:24:36 UTC 2025 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.15.0
+  * Features
+    + Recover from commutative merging failures (#568) by @wetneb
+    + Install via cargo binstall (#583) by @wetneb
+    + Bundle comments into nodes they annotate (#576) by @ada4a
+    + Support for pyproject.toml (#582) by @wetneb
+    + (Python) Enable commutation of class attributes, 
+      with docstrings (#590) by @wetneb
+
+  * Bug Fixes
+    + Reject parse trees with missing nodes (#587) by @wetneb
+    + (typescript) Bad handling of semicolons in commutative 
+      merging of class bodies (#585) by @wetneb
+    + (AstNode::bundle_comments) Don't bundle at `A, // comment \n B` 
+      (#588) by @ada4a
+
+  * Documentation
+    + Update adding-a-language.md (#596) by @ada4a
+
+  * Testing
+    + Utility to minimize test cases, continued (#527) by @ada4a
+
+  * Miscellaneous Tasks
+    + Update to Rust 1.89 (#579) by @wetneb
+    + Update crate dependencies (#580) by @wetneb
+    + Update dependencies (#592) by @wetneb
+    + Simplify pyproject language profile (#591) by @wetneb
+
+  - Update to version 0.14.0
+  * Features
+    + (TypeScript) Commutative merging for union 
+      and intersection types (#531) by @wetneb
+    + Add support for starlark. (#509) by @amartani
+    + Switch to the tree-sitter-dart-orchard dart parser (#557) by @wetneb
+    + Add some signatures for children of commutative parents (#567) by @ada4a
+    + Minimal CMake support (#572) by @OvidiusCicero
+
+  * Bug Fixes
+    + (postprocess/merge_same_sigs) Use the revisions that the node is actually 
+      known to be in (#533) by @ada4a
+    + (ast) Correct byte_range for empty injections (#543) by @wetneb
+    + (AstNode::parse) Respect char boundaries of source when informing 
+      about a parse error (#558) by @ada4a
+    + (Rust) Mark comments as atomic (#560) by @wetneb
+    + Prevent the commutative merging of all extra elements (#562) by @wetneb
+    + Switch from grammar_name to kind (#561) by @wetneb
+    + Panic in unicode boundary checking code (#578) by @wetneb
+
+  * Other
+    + (merged_text) Clean-up and comments (#559) by @ada4a
+
+  * Refactor
+    + (tests) Inline all language-specific parse methods (#530) by @wetneb
+    + (MultiMap) Clean-up trait bounds (#538) by @ada4a
+    + Get rid of some Option/Result::and_thens (#549) by @ada4a
+    + (merge) leak in fewer places (#555) by @ada4a
+    + Return exactly a Conflict from `TreeBuilder::build_conflict` 
+      (#569) by @ada4a
+    + (AstNode) Replace UnsafeCells with Cells (#574) by @ada4a
+
+  * Performance
+    + Distinguish between exact and inexact initial matchings (#523) by @wetneb
+    + (mgf_dev) Speed up commutative isomorphism via hashing (#536) by @wetneb
+
+  *Governance
+    + Make mathstuf a developer (#566) by @wetneb
+
+  * Testing
+    + (ast) Improve legibility of source strings (#550) by @ada4a
+    + (parse) Add an option to limit tree depth (#535) by @ada4a
+    + (ParentType) Make Display less verbose in the common case (#542) by @ada4a
+    + Add a Cargo feature for mgf_dev-specific functionality (#541) by @ada4a
+    + (merge,solve) Create the debug dir if not present (#575) by @ada4a
+
+  * Miscellaneous Tasks
+    + Highlight new contributors in release notes (#528) by @wetneb
+    + Print line numbers when reporting a syntax error (#529) by @wetneb
+    + (cargo/aliases) Run mgf_dev compare in release mode (#539) by @ada4a
+    + Update dependencies (#548) by @wetneb
+    + (changelog) Add commit ids to log entries without names (#547) by @wetneb
+    + Fix cargo install git-cliff with --locked (#544) by @wetneb
+    + Switch to tree-sitter-java-orchard (#546) by @wetneb
+    + Improve log output (#553) by @wetneb
+    + Add AstNode::succeeding_whitespace() (#571) by @wetneb
+
+  * New contributors
+    + @OvidiusCicero made their first contribution in #572
+    + @amartani made their first contribution in #509
+
+-------------------------------------------------------------------
 Thu Jul 31 12:32:19 UTC 2025 - Andrei Dziahel <develop7@develop7.info>
 
 - drop mgf_dev binary
