@@ -39,4 +39,12 @@
     <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
     <requestid>1202516</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8efb5c79eb8450299f49535ec355c1b5</srcmd5>
+    <version>1.6.1</version>
+    <time>1761319412</time>
+    <user>anag_factory</user>
+    <comment>Force annotation processing, since it is needed with Java 25</comment>
+    <requestid>1313295</requestid>
+  </revision>
 </revisionlist>

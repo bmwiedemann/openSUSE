@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 23 16:53:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Force annotation processing, since it is needed with Java 25
+
+-------------------------------------------------------------------
 Mon Sep 23 05:34:48 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible builds

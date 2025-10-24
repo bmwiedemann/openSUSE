@@ -1,7 +1,7 @@
 #
 # spec file for package auto
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -128,14 +128,14 @@ find -name '*.jar' -print -delete
 %pom_remove_plugin :maven-shade-plugin
 %pom_remove_plugin :maven-shade-plugin value/processor
 
-%mvn_package :build-only __noinstall
+%{mvn_package} :build-only __noinstall
 
 %build
 %{mvn_build} -sf -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 	-Dmaven.compiler.release=8 \
 %endif
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dmaven.compiler.proc=full \
 	-f build-pom.xml -Dsource=8 -Dfile.encoding=UTF-8
 
 %install
