@@ -1569,4 +1569,12 @@ Still valid</comment>
     <comment>- Remove the infodir directory if it exists.</comment>
     <requestid>1308161</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>e36f6bc41c2c0d44b0763428830d2a7d</srcmd5>
+    <version>2.5.13</version>
+    <time>1761319384</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313211</requestid>
+  </revision>
 </revisionlist>

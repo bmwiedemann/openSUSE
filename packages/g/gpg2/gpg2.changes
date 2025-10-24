@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 23 07:30:58 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.5.13:
+  * gpg: Fix de-vs compliance with OCB and additional password. [T7804]
+  * gpg: Detect duplicate keys with --add-recipients. [T1825]
+  * gpg: Take care about the prefix for cv25519 encryption. [T7649]
+  * gpg: Avoid potential downgrade to SHA1 in 3rd party key
+    signatures. [rGdb9705ef59]
+  * gpg: Error out on unverified output for non-detached signatures.
+    [rG8abc320f2a]
+  * gpgsm: Use KEM interface for en- and decryption. [T7811,T7845]
+  * gpgsm: Fix delete and store certificate locking glitches. [T7855]
+  * gpg,gpgsm: Run keybox compression only when there are no other
+    users. [T7855]
+  * gpg,gpgsm: Improve keybox closing and locking order on read and
+    write. [T7855]
+  * gpg,gpgsm: Always use share mode read-write for the keybox file
+    access. [T7829]
+  * scd:openpgp: Fix an oddity in changing the PIN. [T7840]
+  * dirmngr: New LDAP keyserver flag "upload". [T7866]
+  * agent: Retry private key deletion in case of sharing violations
+    for up to 400ms. [T7863]
+  * Release-info: https://dev.gnupg.org/T7801
+
+-------------------------------------------------------------------
 Tue Sep 30 10:53:09 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove the infodir directory if it exists.
