@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 24 05:08:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.46.0:
+  * Added Features
+    - enable emitting unaffected packages for AlmaLinux RPMs from
+      Alma OSV data [#686 @willmurphyscode]
+  * Additional Changes
+    - remove io.ReadAll in tarutils [#718 @willmurphyscode]
+    - Switch to using runs-on [#720 @wagoodman]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#725)
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#721)
+    - chore(deps): Bump github.com/klauspost/compress from 1.18.0
+      to 1.18.1 (#722)
+    - chore(deps): update tools to latest versions (#724)
+    - chore(deps): Bump github.com/anchore/grype from 0.101.0 to
+      0.101.1 (#717)
+    - chore(deps): update tools to latest versions (#715)
+
+-------------------------------------------------------------------
 Fri Oct 17 05:26:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.45.0:
