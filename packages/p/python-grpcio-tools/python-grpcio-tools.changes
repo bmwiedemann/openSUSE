@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 24 05:29:25 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.75.1:
+  * Asyncio: fix grpc shutdown race condition occurring during
+    python interpreter finalizations (gh#grpc/grpc#40447).
+  * Python 3.14 support.
+  * Python 3.14: preserve current behavior when using grpc.aio
+    async methods outside of a running event loop
+    (gh#grpc/grpc#40750).
+- Changes from version 1.75.0:
+  * gRPC Python (grpcio) now depends on typing-extensions~=4.13
+    (gh#grpc/grpc#40137).
+  * grpc.aio typehint fixes (gh#grpc/grpc#40215,
+    gh#grpc/grpc#40217).
+
+-------------------------------------------------------------------
 Mon Jul 28 15:43:58 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.74.0:
