@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Oct 20 09:58:12 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 6.5.7
+  * More fixes for SMTP bugs and others
+
+## BUGFIXES:
+  * When authenticating to an SMTP server, the AUTH LOGIN method (which didn't
+    become a proposed standard, and is only the third method fetchmail would try,
+    if CRAM-MD5 and PLAIN weren't offered) required that the server returned
+    a 334 code followed by a blank and by a decodable base64 challenge we ignored
+    anyways.  This is in line with RFC 4952.
+      However, to improve compatibility, fetchmail now accepts anything that
+    starts with "334 " and disregards the remainder of the line.
+    At the same time, AUTH LOGIN was deprecated. AUTH PLAIN should be available
+    everywhere AUTH LOGIN is, and is specified in IETF RFC 4616.
+  * When authenticating to an SMTP server, i. e. esmtpname/esmtppassword are
+    defined, check for errors, and skip servers that do not understand EHLO,
+    because we cannot negotiate supported authentication schemes with them.
+    This should avoid attempting to send a lot of messages and see them rejected.
+  * When authenticating to an SMTP server, do not send client abort "*" when
+    we receive any other server reply but 334.
+  * Extend 6.5.6's RFC-5321 address-literal fix to MAIL FROM. This might
+    apply when we only have a server's IP address and need to quality
+    addresses without domain. Fixes Debian Bug#1080025.
+  * SMTP AUTH can now look up passwords from the .netrc file - for that,
+    fetchmail's esmtpname setting must match the login for the given host in
+    .netrc. Fixes Debian Bug#1056651 by Ticker Berkin.
+  * Improve the GSSAPI (Kerberos V) build, which was pretty hard to get working.
+    This was improved. Recommendation:
+    - For autoconf builds (./configure), be sure to have the desired krb5-config
+    executable early on $PATH before running ./configure.
+    - For meson builds, be sure to list the path to your krb5-gssapi.pc file on
+    PKG_CONFIG_PATH.  (meson will fall back to krb5-config, so if that's on PATH,
+    that should also work.)
+
+-------------------------------------------------------------------
 Tue Oct  7 20:46:22 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 6.5.6 fixes [bsc#1251194,CVE-2025-61962]
