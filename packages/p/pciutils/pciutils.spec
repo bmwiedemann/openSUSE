@@ -1,7 +1,7 @@
 #
 # spec file for package pciutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,6 +38,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(zlib)
 Requires:       hwdata
+# pciutils makes use of libpci internals which aren't covered by ABI
+# versioning, so it is only guaranteed to work with the exact library
+# it was built with.
+Requires:       %{lname} = %{version}-%{release}
 
 %description
 lspci: This program displays detailed information about all PCI busses

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 23 12:30:48 UTC 2025 - Jean Delvare <jdelvare@suse.com>
+
+- pciutils.spec: Add a strict dependency to libpci. [bsc#1252338]
+  Mixing different versions of pciutils and libpci could result in
+  a segmentation fault due to incompatible ABI.
+
+-------------------------------------------------------------------
 Sun Jul 20 08:32:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.14.0:
