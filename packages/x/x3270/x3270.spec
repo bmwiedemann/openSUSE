@@ -38,6 +38,9 @@ Patch103:       x3270-gcc15.patch
 # upstream commit to make it parallel build
 Patch104:       x3270-dependency.patch
 Patch105:       x3270-notparallel.patch
+#
+Patch106:       x3270-termios.patch
+#
 BuildRequires:  bdftopcf
 BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
@@ -47,6 +50,7 @@ BuildRequires:  mkfontdir
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 BuildRequires:  readline-devel
 BuildRequires:  tcl-devel
 BuildRequires:  update-desktop-files
@@ -119,6 +123,7 @@ x026 is a fun toy which emulates an x026 puncher.
 %patch -P 103
 %patch -P 104 -p 1
 %patch -P 105 -p 1
+%patch -P 106 -p 1
 
 find . -name ".gitignore" -delete
 
@@ -159,7 +164,7 @@ make DESTDIR=%{buildroot} LIBX3270DIR=${LIBX3270DIR} install
 make DESTDIR=%{buildroot} LIBX3270DIR=${LIBX3270DIR} install.man
 # the IBM 026 keypunch emulator
 cd x026-%{_x026ver}
-    make DESTDIR=%{buildroot} install install.man
+    make DESTDIR=%{buildroot} install install.man MANPATH=%{_mandir}
 cd ..
 # move site config files to the standard locations
 mkdir -p %{buildroot}%{_libexecdir}/x3270

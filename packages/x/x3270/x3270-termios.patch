@@ -1,0 +1,11 @@
+--- a/Common/x3270if.c	2025-04-25 17:07:13.000000000 +0200
++++ b/Common/x3270if.c	2025-10-24 07:23:30.404621282 +0200
+@@ -89,6 +89,8 @@
+ # endif /*]*/
+ #endif
+ 
++#include <termios.h>
++
+ #include "base64.h"
+ #include "names.h"
+ #include "s3270_proto.h"

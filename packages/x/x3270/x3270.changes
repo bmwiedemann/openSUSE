@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 24 05:13:28 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch
+  * x3270-termios.patch 
+    to include 'termios.h' in 'Common/x3270if.c' 
+- Ammended the .spec file
+
+-------------------------------------------------------------------
 Mon May 26 09:48:44 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add two upstream commits as patches
