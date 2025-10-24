@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Oct 19 12:37:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.15.1
+  * Make various operations for finite matrix groups in
+    characteristic 0 faster.
+  * Make `Irr` for solvable groups faster by using the result of
+    `IrrBaumClausen` in `IrrDixonSchneider`.
+  * Fix `CompatiblePairs` to not ignore the optional automorphism
+    group argument.
+  * Fix an unexpected error that could occur when working with
+    matrix groups in characteristic zero.
+
+-------------------------------------------------------------------
+Sat Oct 11 18:31:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.15
+  * Sped up `RandomInvertibleMat`, `Random(GL(n,q))`,
+    `CharacterDegrees`.
+  * Optimized `IsZero` and `IsOne` for rational functions and
+    (Laurent) polynomials.
+  * Sped up `IsRegularPGroup` for direct products.
+  * Faster `IsFinite` for rational matrix groups, and hence for
+    matrix groups over cyclotomics as well.
+  * Make meataxe endomorphism ring computation faster in some
+    cases.
+  * Small improvements in creating large simple groups and their
+    maximals.
+  * Add an `Irr` method for natural alternating groups, using the
+    generic character table.
+  * Add `SortedListBy` function
+  * Introduced `MayBeHandledByNiceMonomorphism`, in order to detect
+    early whether a group shall be handled by nice monomorphisms.
+  * Add functions `IsDicyclicGroup` and `DicyclicGenerators`.
+- Delete gcc15.patch (merged)
+
+-------------------------------------------------------------------
 Sun Jun 22 19:48:05 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add gcc15.patch

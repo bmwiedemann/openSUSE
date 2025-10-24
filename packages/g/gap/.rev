@@ -47,4 +47,12 @@
     <comment>- Add gcc15.patch</comment>
     <requestid>1287747</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f7f4045b7e5e64896c24b3261260e185</srcmd5>
+    <version>4.15.1</version>
+    <time>1761319388</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 4.15.1</comment>
+    <requestid>1313191</requestid>
+  </revision>
 </revisionlist>
