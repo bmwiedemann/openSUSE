@@ -669,6 +669,7 @@ unsorted:
   - antlr4-javadoc 
   - antlr4-maven-plugin 
   - antlr4-tool 
+  - anubis 
   - aom-tools 
   - aop 
   - aopalliance 
@@ -4606,6 +4607,7 @@ unsorted:
   - gap-ace 
   - gap-aclib 
   - gap-agt 
+  - gap-alco 
   - gap-alnuth 
   - gap-anupq 
   - gap-atlasrep 
@@ -4748,7 +4750,6 @@ unsorted:
   - gap-tomlib 
   - gap-toolsforhomalg 
   - gap-toric 
-  - gap-toricvarieties 
   - gap-transgrp 
   - gap-twistedconjugacy 
   - gap-typeset 
@@ -9316,6 +9317,8 @@ unsorted:
   - jboss-interceptors-1.2-api-javadoc 
   - jboss-jaxrs-2.0-api 
   - jboss-jaxrs-2.0-api-javadoc 
+  - jboss-jdk-misc 
+  - jboss-jdk-misc-javadoc 
   - jboss-logging 
   - jboss-logging-javadoc 
   - jboss-logging-tools 
@@ -13372,7 +13375,7 @@ unsorted:
   - libgaminggearfx0 
   - libgaminggearwidget0 
   - libgammaray-qt6-3_3_0 
-  - libgap9 
+  - libgap10 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
   - libgarcon-doc 
@@ -18524,6 +18527,7 @@ unsorted:
   - mcjoin 
   - mcomix 
   - mcp-dap-server 
+  - mcphost 
   - mcpp 
   - mcpp-devel 
   - mcqd 
