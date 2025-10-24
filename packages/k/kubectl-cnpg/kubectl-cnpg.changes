@@ -1,4 +1,176 @@
 -------------------------------------------------------------------
+Fri Oct 24 05:08:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.27.1:
+  * chore(plugin): clarify primary promotion time in status command
+    (#8476)
+  * feat(plugin): use `wallnerryan/fiotools-aio:v2` for FIO (#8847)
+  * feat(plugin,status): enhance backup status when using
+    `barman-cloud` plugin (#8780)
+  * fix(plugin): recognize barman-plugin in `status` command
+    (#8690)
+  * chore(deps): update actions/checkout action to v5
+    (release-1.27) (#8388)
+  * chore(deps): update actions/setup-go action to v6
+    (release-1.27) (#8638)
+  * chore(deps): update actions/setup-python action to v6
+    (release-1.27) (#8642)
+  * chore(deps): update actions/stale action to v10 (release-1.27)
+    (#8645)
+  * chore(deps): update actions/stale digest to 5f858e3
+    (release-1.27) (#8747)
+  * chore(deps): update ad-m/github-push-action action to v1
+    (release-1.27) (#8649)
+  * chore(deps): update all non-major github action (release-1.27)
+    (#8354)
+  * chore(deps): update all non-major github action (release-1.27)
+    (#8381)
+  * chore(deps): update all non-major github action (release-1.27)
+    (#8408)
+  * chore(deps): update all non-major github action (release-1.27)
+    (#8446)
+  * chore(deps): update all non-major github action (release-1.27)
+    (#8565)
+  * chore(deps): update all non-major github action (release-1.27)
+    (#8687)
+  * chore(deps): update all non-major github action (release-1.27)
+    (#8730)
+  * chore(deps): update all non-major github action (release-1.27)
+    (#8817)
+  * chore(deps): update aws-actions/configure-aws-credentials
+    action to v5 (release-1.27) (#8625)
+  * chore(deps): update backup test tools (release-1.27) (#8587)
+  * chore(deps): update container distroless digests (release-1.27)
+    (#8434)
+  * chore(deps): update container distroless digests (release-1.27)
+    (#8570)
+  * chore(deps): update dependency go to v1.25.2 (release-1.27)
+    (#8789)
+  * chore(deps): update dependency go to v1.25.3 (release-1.27)
+    (#8851)
+  * chore(deps): update dependency golang to v1.25.0 (release-1.27)
+    (#8387)
+  * chore(deps): update dependency golang to v1.25.1 (release-1.27)
+    (#8541)
+  * chore(deps): update dependency golang to v1.25.2 (release-1.27)
+    (#8796)
+  * chore(deps): update dependency golang to v1.25.3 (release-1.27)
+    (#8856)
+  * chore(deps): update dependency golangci/golangci-lint to v2.4.0
+    (release-1.27) (#8384)
+  * chore(deps): update dependency golangci/golangci-lint to v2.5.0
+    (release-1.27) (#8617)
+  * chore(deps): update dependency
+    operator-framework/operator-registry to v1.57.0 (release-1.27)
+    (#8511)
+  * chore(deps): update dependency
+    operator-framework/operator-registry to v1.59.0 (release-1.27)
+    (#8630)
+  * chore(deps): update dependency
+    operator-framework/operator-registry to v1.60.0 (release-1.27)
+    (#8739)
+  * chore(deps): update dependency python to 3.14 (release-1.27)
+    (#8827)
+  * chore(deps): update dependency
+    redhat-openshift-ecosystem/openshift-preflight to v1.14.1
+    (release-1.27) (#8358)
+  * chore(deps): update dependency rook/rook to v1.18.4
+    (release-1.27) (#8785)
+  * chore(deps): update gcr.io/distroless/static-debian12:nonroot
+    docker digest to e8a4044 (release-1.27) (#8918)
+  * chore(deps): update github/codeql-action action to v4
+    (release-1.27) (#8808)
+  * chore(deps): update github/codeql-action digest to 16140ae
+    (release-1.27) (#8878)
+  * chore(deps): update github/codeql-action digest to 2d92b76
+    (release-1.27) (#8515)
+  * chore(deps): update github/codeql-action digest to f443b60
+    (release-1.27) (#8835)
+  * chore(deps): update google-github-actions/auth action to v3
+    (release-1.27) (#8470)
+  * chore(deps): update google-github-actions/setup-gcloud action
+    to v3 (release-1.27) (#8474)
+  * chore(deps): update jonasbn/github-action-spellcheck docker tag
+    to v0.52.0 (release-1.27) (#8614)
+  * chore(deps): update kindest/node docker tag to v1.34.0
+    (release-1.27) (#8454)
+  * chore(deps): update kubernetes csi (release-1.27) (#8634)
+  * chore(deps): update module github.com/goreleaser/goreleaser to
+    v2.12.3 (release-1.27) (#8665)
+  * chore(deps): update module github.com/goreleaser/goreleaser to
+    v2.12.4 (release-1.27) (#8700)
+  * chore(deps): update module github.com/goreleaser/goreleaser to
+    v2.12.5 (release-1.27) (#8708)
+  * chore(deps): update module github.com/goreleaser/goreleaser to
+    v2.12.6 (release-1.27) (#8907)
+  * chore(deps): update module sigs.k8s.io/controller-tools to
+    v0.19.0 (release-1.27) (#8498)
+  * chore(deps): update ossf/scorecard-action action to v2.4.3
+    (release-1.27) (#8699)
+  * chore(deps): update peter-evans/create-or-update-comment action
+    to v5 (release-1.27) (#8735)
+  * chore(deps): update peter-evans/repository-dispatch action to
+    v4 (release-1.27) (#8710)
+  * chore(deps): update
+    registry.access.redhat.com/ubi9/ubi-micro:latest docker digest
+    to aff8109 (release-1.27) (#8919)
+  * chore(deps): update snok/container-retention-policy action to
+    v3.0.1 (release-1.27) (#8633)
+  * chore(deps): update snok/container-retention-policy digest to
+    3b0972b (release-1.27) (#8654)
+  * chore(deps): update snyk/actions action to v1 (release-1.27)
+    (#8744)
+  * chore(deps): update softprops/action-gh-release digest to
+    6da8fa9 (release-1.27) (#8842)
+  * chore(deps): update velero/velero-plugin-for-aws docker tag to
+    v1.13.0 (release-1.27) (#8622)
+  * fix(deps): update all non-major go dependencies (release-1.27)
+    (#8399)
+  * fix(deps): update all non-major go dependencies (release-1.27)
+    (#8440)
+  * fix(deps): update all non-major go dependencies (release-1.27)
+    (#8520)
+  * fix(deps): update all non-major go dependencies (release-1.27)
+    (#8594)
+  * fix(deps): update k8s.io/utils digest to 0af2bda (release-1.27)
+    (#8414)
+  * fix(deps): update k8s.io/utils digest to bc988d5 (release-1.27)
+    (#8724)
+  * fix(deps): update kubernetes packages to v0.34.0 (release-1.27)
+    (#8463)
+  * fix(deps): update kubernetes patches (release-1.27) (#8573)
+  * fix(deps): update kubernetes patches to v0.33.4 (release-1.27)
+    (#8363)
+  * fix(deps): update module github.com/avast/retry-go/v4 to v4.7.0
+    (release-1.27) (#8864)
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.25.2
+    (release-1.27) (#8483)
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.26.0
+    (release-1.27) (#8720)
+  * fix(deps): update module
+    github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+    to v0.85.0 (release-1.27) (#8479)
+  * fix(deps): update module
+    github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+    to v0.86.0 (release-1.27) (#8822)
+  * fix(deps): update module
+    github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+    to v0.86.1 (release-1.27) (#8900)
+  * fix(deps): update module golang.org/x/term to v0.36.0
+    (release-1.27) (#8812)
+  * fix(deps): update module google.golang.org/grpc to v1.76.0
+    (release-1.27) (#8774)
+  * fix(deps): update module sigs.k8s.io/controller-runtime to
+    v0.22.0 (release-1.27) (#8493)
+  * fix(deps): update module sigs.k8s.io/controller-runtime to
+    v0.22.2 (release-1.27) (#8799)
+  * fix(deps): update module sigs.k8s.io/controller-runtime to
+    v0.22.3 (release-1.27) (#8832)
+  * fix(docs): clarify default value of `smartShutdownTimeout`
+    (#8748)
+  * fix(docs): new image catalogs and PostGIS operands (#8760)
+
+-------------------------------------------------------------------
 Wed Aug 20 06:18:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.27.0:

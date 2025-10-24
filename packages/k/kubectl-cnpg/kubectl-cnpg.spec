@@ -17,7 +17,7 @@
 
 
 Name:           kubectl-cnpg
-Version:        1.27.0
+Version:        1.27.1
 Release:        0
 Summary:        Manage PostgreSQL clusters built using CloudNativePG
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 
 %description
 CloudNativePG provides a plugin for kubectl to manage a cluster in Kubernetes.
