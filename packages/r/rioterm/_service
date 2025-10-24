@@ -1,9 +1,9 @@
 <services>
   <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/raphamorim/rio.git</param>
-    <param name="versionformat">v0.2.31</param>
+    <param name="versionformat">v0.2.32</param>
     <param name="scm">git</param>
-    <param name="revision">v0.2.31</param>
+    <param name="revision">v0.2.32</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -24,5 +24,7 @@
      <param name="update">true</param>
      <param name="i-accept-the-risk">RUSTSEC-2023-0018</param>
   </service>
+  <!-- cargo_audit is now part of cargo_vendor, meaning you don't have to configure it separately
   <service name="cargo_audit" mode="manual" />
+  -->
 </services>
