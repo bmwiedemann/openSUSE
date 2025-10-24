@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 21 14:13:30 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 1.0.17:
+  * scx_cosmos: Introduce --avoid-smt
+  * scx_lavd: Add virtual LLC support
+  * scx_p2dq: Add overload scheduling
+  * scx_p2dq: Add LLC sharding
+  * scxcash: Add task hint backend
+  * scx_p2dq: Fix keep running
+  * scx_rustland: rename min_vruntime to vruntime_now
+  * scx_bpfland: Print command line options
+  * scx_layered: add TTL for layer membership
+- Add scx.service which was dropped by upstream in favor of scx_loader
+
+-------------------------------------------------------------------
 Wed Sep 17 11:28:49 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Migrate from meson to cargo build system

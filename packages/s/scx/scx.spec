@@ -20,13 +20,14 @@
 %define libbpf_min_ver 1.4
 %define llvm_min_ver 17
 Name:           scx
-Version:        1.0.16
+Version:        1.0.17
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
 URL:            https://github.com/sched-ext/scx
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
+Source2:        scx.service
 BuildRequires:  bpftool >= 7.5.0
 BuildRequires:  cargo-packaging
 BuildRequires:  clang >= %{llvm_min_ver}
@@ -85,7 +86,7 @@ pushd "${path}"
 popd
 done
 
-install -Dm644 services/systemd/scx.service \
+install -Dm644 %{SOURCE2} \
     %{buildroot}%{_unitdir}/scx.service
 
 install -Dm644 services/scx \
