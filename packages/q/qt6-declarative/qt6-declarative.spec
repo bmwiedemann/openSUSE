@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # boo#1249054 - LTO fails on armv6/7 since 6.9.2
 %ifarch %{arm}
 %define _lto_cflags %{nil}
@@ -40,6 +41,8 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-declarative-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-QmlCompiler-Fix-write-access-to-QVariantMap.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -507,8 +510,8 @@ This library does not have any ABI or API guarantees.
 Summary:        Non-ABI stable API for the Qt 6 LabsQmlModels library
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6LabsQmlModels6 = %{version}
-Requires:       cmake(Qt6QmlPrivate) = %{real_version}
 Requires:       cmake(Qt6QmlModelsPrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
 Provides:       qt6-labsqmlmodels-devel = %{version}
 Obsoletes:      qt6-labsqmlmodels-devel < %{version}
 
@@ -979,12 +982,12 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-quickcontrolstestutils-devel-static
 Summary:        Qt6 QuickControlsTestUtils static library
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
+Requires:       qt6-quicktestutils-devel-static = %{version}
 Requires:       cmake(Qt6QuickControls2) = %{real_version}
 Requires:       cmake(Qt6QuickDialogs2QuickImpl) = %{real_version}
 Requires:       cmake(Qt6QuickPrivate) = %{real_version}
 Requires:       cmake(Qt6QuickTemplates2) = %{real_version}
 Requires:       cmake(Qt6Test) = %{real_version}
-Requires:       qt6-quicktestutils-devel-static = %{version}
 
 %description -n qt6-quickcontrolstestutils-devel-static
 The Qt6 QuickControlsTestUtils static library.
