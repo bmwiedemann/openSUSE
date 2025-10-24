@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 23 14:18:45 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.22
+
+- Update to 2.95.22
+  * Fix #751: Change datetime: titlepage.format zh-cn in #752
+  * Correct product.name & product.number in #753
+
+-------------------------------------------------------------------
 Mon Sep 22 10:04:56 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.21
 
 - Update to 2.95.21
