@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Oct 23 16:46:23 UTC 2025 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 18.10.0:
+  * Bug Fixes
+    + Stats ngram window size cli parsing (#2946)
+
+  * Features
+    + (bash) Use Readline's accept-line for enter_accept (#2953)
+    + Add commit to displayed version info (#2922)
+    + Add import from PowerShell history (#2864)
+    + Interactive Inspector (#2319)
+    + Nu ≥ 0.106.0 support commandline accept (#2957)
+  * Miscellaneous Tasks
+    + Update rusty_paseto and rusty_paserk (#2942)
+    + Update changelog
+
+- Update to version 18.9.0
+  * Bug Fixes
+    + (dotfiles) Properly escape spaces/quotes in vars
+    + Clippy issues on Windows (#2856)
+    + Honor timezone in inspector stats (#2853)
+    + Make status exit 1 if not logged in (#2843)
+    + Match logic of theme directory with settings directory, so ATUIN_CONFIG_DIR is respected (#2707)
+    + Expand path for daemon.socket_path (#2870)
+    + Use fullscreen if inline_height is too large (#2888)
+    + Clean up new rustc and clippy warnings on Rust 1.89
+    + cargo update and changes needed to accomodate it
+    + Run cargo fmt
+    + Clippy warnings I don't have on my version of clippy
+    + Add forgotten rust-toolchain.toml to match changes (oops)
+    + Update version in Cargo.toml + github workflows
+    + Clippy warnings
+    + Dissociate command_chaining from enter_accept
+    + Remove atuin_chain_command prefix
+    + Docker compose link (#2914)
+    + Fish up binding (#2902)
+
+  * Features
+    + (stats) Add dotnet to default common subcommands
+    + (tui) Select entries using number in vim-normal mode. closes #2368 (#2893)
+    + (tui) Add show_numeric_shortcuts config to hide 1-9 shortcuts (#2766)
+    + Highlight matches in interactive search (#2653)
+    + Add session-preload filter mode to include global history from before session start
+    + Add various acceptance keys (#2928)
+    + More accurately filter secret tokens (#2932)
+    + Add shell pipelines to command chaining (#2938)
+
+  * Miscellaneous Tasks
+    + Update changelog
+    + Remove legacy Apple SDK frameworks (#2885)
+    + Update dist workflows
+    + Update to Rust 1.90 (#2916)
+
+  * Refactor
+    + Shell environment variables
+
+  * Build
+    + Update flake.nix with new sha256
+
+-------------------------------------------------------------------
 Mon Sep 15 12:18:57 UTC 2025 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 18.8.0:

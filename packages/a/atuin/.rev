@@ -1354,4 +1354,12 @@
 </comment>
     <requestid>1305856</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>600b1c43010945dc4d0a8e44665d4e8d</srcmd5>
+    <version>18.10.0</version>
+    <time>1761319399</time>
+    <user>anag_factory</user>
+    <comment>Update to version 18.10.0: (forwarded request 1313249 from develop7)</comment>
+    <requestid>1313250</requestid>
+  </revision>
 </revisionlist>
