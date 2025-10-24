@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 24 06:12:43 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.9:
+  * Use mktemp(1) to obtain a temporary file for update-ethercodes
+
+-------------------------------------------------------------------
 Thu Jul 31 14:53:38 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 3.8:
