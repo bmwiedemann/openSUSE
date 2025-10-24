@@ -18,7 +18,7 @@
 
 %define sover 6
 Name:           libqxmpp
-Version:        1.11.2
+Version:        1.11.3
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
@@ -59,6 +59,7 @@ Obsoletes:      libqxmpp-devel < %{version}
 Development package for qxmpp.
 
 # No need to build it twice
+
 %package -n libqxmpp-doc
 Summary:        Qxmpp library documentation
 BuildArch:      noarch

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 24 10:59:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.3
+  * JmiManager: Fix ID is not set when calling proceed()
+  * HttpUploadManager: Add header containing content type to HTTP
+    request
+  * Fix crash on upload cancellation
+  * Client: e2ee: Fix parsing unencrypted messages as
+    SceSensitive only
+
+-------------------------------------------------------------------
 Wed Sep 17 16:25:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.11.2
