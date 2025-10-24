@@ -159,6 +159,7 @@ This is a meta package requireing all packages providing busybox applets.
 %package -n busybox-misc
 Summary:        Busybox applets not fitting anywhere else
 Requires:       busybox = %{version}
+Conflicts:      ascii
 Conflicts:      binutils
 Conflicts:      blog
 Conflicts:      dosfstools
