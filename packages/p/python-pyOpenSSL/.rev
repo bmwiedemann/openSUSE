@@ -681,4 +681,13 @@
   * Added OpenSSL.SSL.Connection.set_info_callback</comment>
     <requestid>1307969</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>8cbf2cb761fab271565590443fc46bb6</srcmd5>
+    <version>25.3.0</version>
+    <time>1761319382</time>
+    <user>anag_factory</user>
+    <comment>- Skip test_client_receives_servers_data failing with openssl 3.6.0
+  and rewrite tests exclusion to be more atomic</comment>
+    <requestid>1309768</requestid>
+  </revision>
 </revisionlist>

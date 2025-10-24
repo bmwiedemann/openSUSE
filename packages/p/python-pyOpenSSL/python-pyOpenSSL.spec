@@ -84,12 +84,14 @@ other things) a cffi-based interface to OpenSSL.
 
 %check
 %if %{with test}
-SKIPPED_TESTS="(network or test_set_tmp_ecdh)"
+SKIPPED_TESTS="network or test_set_tmp_ecdh"
 %if %{__isa_bits} == 32
-SKIPPED_TESTS="(network or test_verify_with_time or test_set_tmp_ecdh)"
+SKIPPED_TESTS="$SKIPPED_TESTS or test_verify_with_time"
 %endif
+# failure with openssl 3.6.0 https://github.com/pyca/pyopenssl/issues/1455
+SKIPPED_TESTS="$SKIPPED_TESTS or test_client_receives_servers_data"
 export LC_ALL=en_US.UTF-8
-%pytest -k "not $SKIPPED_TESTS"
+%pytest -k "not ($SKIPPED_TESTS)"
 %endif
 
 %if !%{with test}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  8 08:34:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Skip test_client_receives_servers_data failing with openssl 3.6.0
+  and rewrite tests exclusion to be more atomic
+
+-------------------------------------------------------------------
 Mon Sep 29 19:11:03 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.3.0:
