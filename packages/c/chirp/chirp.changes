@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 24 15:35:59 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20251024:
+  * th9800.py: Add Retevis_MA1
+  * Fix applying band defaults to immutable fields
+  * Yaesu FT-1D, FT2D, FT3D fixes WiresX settings to handle all
+    rooms in category
+  * ft1d: multiple fixes
+  * Added Retevis HA1G and HA1UV models
+  * uvk5: Add new wild-found 1.02.x firmware blessing
+  * Fix 8.33kHz step calculation
+  * Update supported model list for Wouxun radios
+
+-------------------------------------------------------------------
 Sat Oct 11 09:46:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20251010:

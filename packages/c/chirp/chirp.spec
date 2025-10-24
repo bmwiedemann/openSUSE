@@ -19,7 +19,7 @@
 
 %define pythons python3
 Name:           chirp
-Version:        20251010
+Version:        20251024
 Release:        0
 Summary:        Tool for programming amateur radio sets
 License:        GPL-3.0-only
