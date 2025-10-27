@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Oct 21 14:50:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.86.1:
+  + Bugs fixed:
+    - GIRepository: union fields offsets for compiled typelibs all
+      have offset 0xffff
+    - `gio/tests/socket-listener` requires dlsym
+    - GLib.OptionContext's get_help() includes width of invisible
+      options
+    - Memory leak related to g_get_home_dir
+    - Gio.AppInfo.launch_default_for_uri_async crashes with
+      non-existent paths
+    - GNetworkMonitor's netlink backend doesn't notify connectivity
+      change
+    - ghash: Fix entry_is_big for CHERI architecture
+    - ghash: Handle all table sizes in iterator
+    - gbookmarkfile: Escape icon href and mime-type
+    - docs: Add Luca Bacci as a co-maintainer of the Windows code
+    - tests: Fix clang compilation warnings
+    - gmem: Replace SIZE_OVERFLOWS with g_size_checked_mul
+    - gstrfuncs: Check string length in g_strescape
+    - gutils: Improve load_user_special_dirs' user-dirs.dirs parser
+    - gutils: Handle singletons in unlocked functions
+    - ghostutils: Treat 0x80 (and above) as non-ASCII
+    - various fixes to user-dirs.dirs handling in gutils
+    - girnode: Fix computation of union member offsets
+    - gopenuriportal: Fix a crash when the file can’t be opened
+    - gtype: Use transfer none for types (un)ref functions
+    - gnetworkmonitorbase: Add missing notify::connectivity signal
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep  5 15:16:30 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.86.0:
