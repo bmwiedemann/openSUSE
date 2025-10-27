@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.17
-%define patchversion 6.17.4
-%define git_commit b07233be47a165373ff091a3fd1400b01b969ce8
+%define patchversion 6.17.5
+%define git_commit 00da8266dbab49e9df4794b59281733cbba063ce
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-64kb
-Version:        6.17.4
+Version:        6.17.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb07233b
+Release:        <RELEASE>.g00da826
 %else
 Release:        0
 %endif
