@@ -1,0 +1,139 @@
+From: Arjen de Korte <suse+build@de-korte.org>
+Date: 2025-10-26 14:43:08+0000
+
+boost 1.89 does not have boost_system anymore.
+
+---
+ meson.build                       |   23 ++++++++++-------------
+ src/lib/asiodns/io_fetch.h        |    1 +
+ src/lib/asiolink/interval_timer.h |    1 +
+ 3 files changed, 12 insertions(+), 13 deletions(-)
+
+Index: kea-3.0.1/meson.build
+===================================================================
+--- kea-3.0.1.orig/meson.build
++++ kea-3.0.1/meson.build
+@@ -189,10 +189,9 @@ message(f'Detected system "@SYSTEM@".')
+ 
+ #### Dependencies
+ 
+-boost_dep = dependency('boost', version: '>=1.66', modules: ['system'])
+ dl_dep = dependency('dl')
+ threads_dep = dependency('threads')
+-add_project_dependencies(boost_dep, dl_dep, threads_dep, language: ['cpp'])
++add_project_dependencies(dl_dep, threads_dep, language: ['cpp'])
+ 
+ # check boost headers
+ boost_headers = [
+@@ -212,7 +211,7 @@ boost_headers = [
+     'boost/system/error_code.hpp',
+ ]
+ foreach hdr : boost_headers
+-    cpp.has_header(hdr, dependencies: [boost_dep], required: true)
++    cpp.has_header(hdr, required: true)
+ endforeach
+ 
+ # Logging
+@@ -328,7 +327,6 @@ elif CRYPTO_DEP.name() == openssl.name()
+     conf_data.set('WITH_OPENSSL', true)
+     cpp.has_header(
+         'boost/asio/ssl.hpp',
+-        dependencies: [boost_dep],
+         required: true,
+     )
+     message('Using OpenSSL.')
+@@ -393,7 +391,7 @@ if cpp_standard.version_compare('<201400
+     result = cpp.run(
+         fs.read('compiler-checks/boost-math-cpp14.cc'),
+         name: 'BOOST_MATH_REQUIRES_CPP14',
+-        dependencies: [boost_dep, threads_dep],
++        dependencies: [threads_dep],
+     )
+     if result.returncode() != 0
+         msgs = ['Boost Math requires at least C++14.']
+@@ -432,17 +430,17 @@ endif
+ 
+ result = cpp.run(
+     fs.read('compiler-checks/boost-has-threads.cc'),
+-    dependencies: [boost_dep, threads_dep],
++    dependencies: [threads_dep],
+     name: 'BOOST_HAS_THREADS',
+ )
+ if result.returncode() != 0
+     error('boost is not configured to use threads')
+ endif
+ 
+-if cpp.has_header('boost/regex.h', dependencies: [boost_dep], required: false)
++if cpp.has_header('boost/regex.h', required: false)
+     result = cpp.run(
+         fs.read('compiler-checks/boost-regex.cc'),
+-        dependencies: [boost_dep, threads_dep],
++        dependencies: [threads_dep],
+         name: 'GET_SYSTEM_VS_BOOST_REGEX_HEADER',
+     )
+     if result.returncode() != 0
+@@ -460,12 +458,12 @@ if CRYPTO_DEP.name() == openssl.name()
+     result1 = cpp.run(
+         fs.read('compiler-checks/have-generic-tls-method.cc'),
+         name: 'HAVE_GENERIC_TLS_METHOD',
+-        dependencies: [boost_dep, CRYPTO_DEP, threads_dep],
++        dependencies: [CRYPTO_DEP, threads_dep],
+     )
+     result2 = cpp.run(
+         fs.read('compiler-checks/stream-truncated-error.cc'),
+         name: 'HAVE_STREAM_TRUNCATED_ERROR',
+-        dependencies: [boost_dep, CRYPTO_DEP, threads_dep],
++        dependencies: [CRYPTO_DEP, threads_dep],
+     )
+     if result1.returncode() != 0 or result2.returncode() != 0
+         error('Boost TLS support broken.')
+@@ -476,7 +474,7 @@ if CRYPTO_DEP.name() == botan.name()
+     result = cpp.run(
+         fs.read('compiler-checks/botan-hash.cc'),
+         name: 'CHECK_BOTAN_LIBRARY',
+-        dependencies: [boost_dep, CRYPTO_DEP, threads_dep],
++        dependencies: [CRYPTO_DEP, threads_dep],
+     )
+     if result.returncode() != 0
+         error('Botan library does not work.')
+@@ -764,7 +762,7 @@ report_conf_data.set('PYTHON_VERSION', P
+ report_conf_data.set('PKGPYTHONDIR', PKGPYTHONDIR)
+ result = cpp.run(
+     fs.read('compiler-checks/get-boost-version.cc'),
+-    dependencies: [boost_dep, threads_dep],
++    dependencies: [threads_dep],
+     name: 'Get Boost version',
+ )
+ if result.returncode() == 0
+@@ -1062,7 +1060,6 @@ endif
+ 
+ requires = []
+ foreach i : [
+-    boost_dep,
+     dl_dep,
+     threads_dep,
+     CRYPTO_DEP,
+Index: kea-3.0.1/src/lib/asiodns/io_fetch.h
+===================================================================
+--- kea-3.0.1.orig/src/lib/asiodns/io_fetch.h
++++ kea-3.0.1/src/lib/asiodns/io_fetch.h
+@@ -16,6 +16,7 @@
+ #include <util/buffer.h>
+ 
+ #include <boost/asio/coroutine.hpp>
++#include <boost/asio/deadline_timer.hpp>
+ #include <boost/shared_array.hpp>
+ #include <boost/shared_ptr.hpp>
+ #include <boost/date_time/posix_time/posix_time_types.hpp>
+Index: kea-3.0.1/src/lib/asiolink/interval_timer.h
+===================================================================
+--- kea-3.0.1.orig/src/lib/asiolink/interval_timer.h
++++ kea-3.0.1/src/lib/asiolink/interval_timer.h
+@@ -7,6 +7,7 @@
+ #ifndef ASIOLINK_INTERVAL_TIMER_H
+ #define ASIOLINK_INTERVAL_TIMER_H 1
+ 
++#include <boost/asio/deadline_timer.hpp>
+ #include <boost/shared_ptr.hpp>
+ #include <functional>
+ 

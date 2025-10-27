@@ -58,6 +58,7 @@ Source4:        kea-dhcp4.service
 Source5:        kea-dhcp6.service
 Source6:        kea-dhcp-ddns.service
 Source7:        kea-ctrl-agent.service
+Patch1:         kea-boost1_89.patch
 BuildRequires:  meson
 BuildRequires:  freeradius-server-devel
 BuildRequires:  gcc-c++
@@ -77,10 +78,9 @@ BuildRequires:  fdupes
 %sysusers_requires
 Suggests:       %name-hooks = %version
 %if 0%{?suse_version} >= 1500
-BuildRequires:  libboost_system-devel
-%else
-BuildRequires:  boost-devel
+BuildRequires:  (libboost_system-devel if boost-devel < 1.89)
 %endif
+BuildRequires:  boost-devel
 BuildRequires:  systemd-rpm-macros
 
 %description
@@ -366,6 +366,9 @@ Development files for the Kea DHCP server
 
 %prep
 %autosetup -p1 -n kea-%version
+%if 0%{?suse_version} < 1600
+%patch -R -P 1 -p1
+%endif
 
 %build
 export FREERADIUS_INCLUDE="%_includedir/freeradius"

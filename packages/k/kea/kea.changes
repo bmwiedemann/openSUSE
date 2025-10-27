@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 26 13:08:05 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix building with Boost >= 1.89
+  (add 'kea-boost1_89.patch')
+
+-------------------------------------------------------------------
 Thu Aug 28 09:03:21 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 3.0.1

@@ -242,4 +242,12 @@ AFAICT these packages aren't needed for generating the docs and the official doc
     names specified in host reservations.</comment>
     <requestid>1301813</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>264c072a4f6fa663c82ac78a2b00b384</srcmd5>
+    <version>3.0.1</version>
+    <time>1761572466</time>
+    <user>anag_factory</user>
+    <comment>- Fix building with Boost &gt;= 1.89 (add 'kea-boost1_89.patch')</comment>
+    <requestid>1313736</requestid>
+  </revision>
 </revisionlist>
