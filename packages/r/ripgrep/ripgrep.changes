@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 26 15:20:59 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 15.1.0:
+  * Fix a regression with --line-buffered introduced in ripgrep 15.0.0
+
+-------------------------------------------------------------------
 Sat Oct 18 16:49:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 15.0.0:

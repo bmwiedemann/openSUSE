@@ -1,7 +1,7 @@
 #
 # spec file for package ripgrep
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           ripgrep
-Version:        15.0.0
+Version:        15.1.0
 Release:        0
 Summary:        A search tool that combines ag with grep
 License:        MIT AND Unlicense
