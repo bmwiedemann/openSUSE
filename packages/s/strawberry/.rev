@@ -1701,4 +1701,22 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1302118</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>342e2afef680367208b225fff5dca2a9</srcmd5>
+    <version>1.2.14</version>
+    <time>1761572416</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.14
+  + Fixed showing error dialog minimized when main window is not current active window (#1739)
+  + Fixed Discord timestamp update when seeking (#1813)
+  + Fixed CD metadata lookup to respect MusicBrainz rate limiting
+  + Fixed Tidal Open API cover provider
+  + Removed libre.fm support
+  + Rewrote MusicBrainzClient to use Json instead of XML
+  + Subsonic will now use cover art from album when available
+  + Added option to remove &quot;Remastered&quot;, etc from song titles for Tidal, Qobuz and Spotify
+  + Added webm to supported file extensions 
+</comment>
+    <requestid>1313685</requestid>
+  </revision>
 </revisionlist>

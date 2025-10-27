@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.2.13
+Version:        1.2.14
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -103,7 +103,7 @@ Features:
   - Audio analyzer
   - Equalizer
   - Transfer music to iPod, MTP or mass-storage USB player
-  - Scrobbler with support for Last.fm, Libre.fm and ListenBrainz
+  - Scrobbler with support for Last.fm and ListenBrainz
   - Subsonic streaming support
 
 %prep

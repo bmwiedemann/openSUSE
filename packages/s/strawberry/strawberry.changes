@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 26 00:30:51 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.14
+  + Fixed showing error dialog minimized when main window is not current active window (#1739)
+  + Fixed Discord timestamp update when seeking (#1813)
+  + Fixed CD metadata lookup to respect MusicBrainz rate limiting
+  + Fixed Tidal Open API cover provider
+  + Removed libre.fm support
+  + Rewrote MusicBrainzClient to use Json instead of XML
+  + Subsonic will now use cover art from album when available
+  + Added option to remove "Remastered", etc from song titles for Tidal, Qobuz and Spotify
+  + Added webm to supported file extensions 
+
+-------------------------------------------------------------------
 Sun Aug 31 22:33:50 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.13
