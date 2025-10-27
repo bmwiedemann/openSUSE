@@ -43,9 +43,9 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(ncurses) >= 5.4
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-Provides:       libcob-devel = %{version}
+Provides:       libcob-devel = %{version}-%{release}
 Provides:       opencobol = %{version}
-Obsoletes:      libcob-devel <= 3.1.2
+Obsoletes:      libcob-devel < %{version}-%{release}
 
 %description
 GnuCOBOL (formerly OpenCOBOL) is a COBOL compiler.
@@ -66,8 +66,11 @@ providing full access to nearly all C libraries.
 %autosetup -p1 -n gnucobol-%{version}
 
 %build
-
-%global optflags %{optflags} -Wno-error=incompatible-pointer-types
+CFLAGS="%{optflags} -Wno-error=incompatible-pointer-types"
+%if 0%{?suse_version} > 1600
+CFLAGS="$CFLAGS -std=gnu17"
+%endif
+export CFLAGS
 %configure \
         --enable-hardening \
         --enable-static=no

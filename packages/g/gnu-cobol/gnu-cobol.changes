@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 25 19:43:42 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build errors with GCC 15
+
+-------------------------------------------------------------------
 Wed Jul 24 13:48:02 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add gnucobol-3.1.2-C99.diff to add missing includes of

@@ -43,4 +43,12 @@
     <comment></comment>
     <requestid>1227844</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>5d6697ed12767bb2a79df0ec99609060</srcmd5>
+    <version>3.1.2</version>
+    <time>1761572545</time>
+    <user>anag_factory</user>
+    <comment>- Fix build errors with GCC 15 (forwarded request 1313677 from adkorte)</comment>
+    <requestid>1313809</requestid>
+  </revision>
 </revisionlist>
