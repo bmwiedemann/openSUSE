@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 24 08:55:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 9.2.0
+  * Drop up to Python 3.8 support.
+  * Drop support for pytest versions less than 8.
+  * :class:`Sybil` now takes a name which is used in any test identifiers
+    it produces.
+  * Add support for code and sourcecode directives in both ReST and MyST.
+  * Retire Document.find_region_sources() in favour of using
+    a sybil.parsers.abstract.lexers.BlockLexer.
+  * Add support for a sybil.evaluators.doctest.NUMBER option flag when
+    using doctest.
+
+-------------------------------------------------------------------
 Thu Oct  3 07:46:17 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Make seedir dependency optional for SLFO

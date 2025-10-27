@@ -1,7 +1,7 @@
 #
 # spec file for package python-sybil
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,19 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sybil%{psuffix}
-Version:        6.1.1
+Version:        9.2.0
 Release:        0
 Summary:        Automated testing of examples in documentation
 License:        MIT
 URL:            https://github.com/simplistix/sybil
 Source:         https://github.com/simplistix/sybil/archive/refs/tags/%{version}.tar.gz#/sybil-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module pytest >= 7.1}
+BuildRequires:  %{python_module pytest >= 8}
 BuildRequires:  %{python_module sybil = %{version}}
 BuildRequires:  %{python_module testfixtures}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150400
