@@ -654,4 +654,53 @@
     <comment></comment>
     <requestid>1304612</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>79eaf248299e4dcf74a70156fa6fc06a</srcmd5>
+    <version>1.1.8</version>
+    <time>1761572540</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.8:
+  * build(deps): bump github.com/hashicorp/go-getter from 1.8.0 to
+    1.8.1 by @dependabot[bot] in #2194
+  * fix typos in both comment and error message by @d-fal in #2199
+  * cleanup disk in release ci by @yxxhero in #2203
+  * Migrate AWS SDK from v1 to v2 to resolve deprecation warnings
+    by @Copilot in #2202
+  * build(deps): bump github.com/helmfile/vals from 0.42.1 to 0.42.2
+    by @dependabot[bot] in #2200
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.88.2 to 1.88.3 by @dependabot[bot] in #2206
+  * Bump Alpine to 3.22 in Dockerfile by @orishamir in #2205
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.31.10 to 1.31.12 by @dependabot[bot] in #2207
+  * Add yq to Dockerfile by @orishamir in #2208
+  * fix: skip chartify for build command jsonPatches by @sstarcher
+    in #2212
+  * build(deps): bump github.com/hashicorp/go-getter from 1.8.1 to
+    1.8.2 by @dependabot[bot] in #2210
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.88.3 to 1.88.4 by @dependabot[bot] in #2213
+  * build(deps): bump golang.org/x/term from 0.35.0 to 0.36.0 by
+    @dependabot[bot] in #2214
+  * Avoid fetching same chart/version multiple times by @Copilot
+    in #2197
+  * build(deps): bump github.com/helmfile/vals from 0.42.2 to
+    0.42.4 by @dependabot[bot] in #2217
+  * docs: add zread badge to README by @yxxhero in #2219
+  * Bump helm-diff to v3.13.1 by @Copilot in #2223
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.88.4 to 1.88.5 by @dependabot[bot] in #2226
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.31.12 to 1.31.13 by @dependabot[bot] in #2225
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.88.5 to 1.88.6 by @dependabot[bot] in #2230
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.88.6 to 1.88.7 by @dependabot[bot] in #2232
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.31.13 to 1.31.15 by @dependabot[bot] in #2233
+  * Fix helmBinary and kustomizeBinary being ignored when using
+    bases by @Copilot in #2228
+</comment>
+    <requestid>1313811</requestid>
+  </revision>
 </revisionlist>
