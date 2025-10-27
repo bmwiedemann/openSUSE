@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 24 16:35:40 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1761296552.ae7c17aa:
+  * Add tests for file_security_policy
+  * Pass parameter $is_userfile to log_url
+  * Remove redirect and serve files as attachments if necessary
+  * Serve files uploaded by tests via asset domain
+  * Use direct link to subdomain for the test assets
+  * Revert "Don't redirect to asset domain via /needles/ID/(image|json) route"
+  * Revert "Don't redirect screenshots, thumbs and needles to files_domain"
+
+-------------------------------------------------------------------
 Thu Oct 23 14:14:37 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1761228068.a3a7f84d:
