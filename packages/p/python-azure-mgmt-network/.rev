@@ -428,4 +428,16 @@
     <comment></comment>
     <requestid>1280072</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>285ad98618ac971f276bdecfea1be7f7</srcmd5>
+    <version>30.0.0</version>
+    <time>1761586669</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 30.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1313876 from glaubitz)</comment>
+    <requestid>1313908</requestid>
+  </revision>
 </revisionlist>
