@@ -5,6 +5,5 @@
 have names, and which can take on various values. The state of a form can
 be tweaked and it can then be asked to provide 'HTTP::Request' objects that
 can be passed to the request() method of 'LWP::UserAgent'.</description>
-  <devel project="devel:languages:perl" package="perl-HTML-Form"/>
   <url>http://search.cpan.org/dist/HTML-Form/</url>
 </package>

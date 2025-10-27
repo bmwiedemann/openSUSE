@@ -131,4 +131,16 @@
     <comment></comment>
     <requestid>1235298</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>739a17a0ed11545f6d63e508728749de</srcmd5>
+    <version>6.130.0</version>
+    <time>1761572313</time>
+    <user>anag_factory</user>
+    <comment>- updated to 6.130.0 (6.13)
+   see /usr/share/doc/packages/perl-HTML-Form/Changes
+  6.13      2025-10-22 17:47:50Z
+      - Fix form.t compatibility with HTTP::Message 7.01+ (GH#57) (Copilot and
+        Gianni Ceccarelli)</comment>
+    <requestid>1313399</requestid>
+  </revision>
 </revisionlist>

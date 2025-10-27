@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-Form
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,31 +18,32 @@
 
 %define cpan_name HTML-Form
 Name:           perl-HTML-Form
-Version:        6.120.0
+Version:        6.130.0
 Release:        0
-# 6.12 -> normalize -> 6.120.0
-%define cpan_version 6.12
+# 6.13 -> normalize -> 6.130.0
+%define cpan_version 6.13
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Class that represents an HTML form element
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(HTML::TokeParser)
-BuildRequires:  perl(HTTP::Request) >= 6
-BuildRequires:  perl(HTTP::Request::Common) >= 6.03
+BuildRequires:  perl(HTTP::Request) >= 7.10
+BuildRequires:  perl(HTTP::Request::Common) >= 6.30
 BuildRequires:  perl(HTTP::Response)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Warnings)
-BuildRequires:  perl(URI) >= 1.10
+BuildRequires:  perl(URI) >= 1.100
 BuildRequires:  perl(parent)
 Requires:       perl(HTML::TokeParser)
-Requires:       perl(HTTP::Request) >= 6
-Requires:       perl(HTTP::Request::Common) >= 6.03
+Requires:       perl(HTTP::Request) >= 7.10
+Requires:       perl(HTTP::Request::Common) >= 6.30
 Requires:       perl(Test::More) >= 0.96
-Requires:       perl(URI) >= 1.10
+Requires:       perl(URI) >= 1.100
 Requires:       perl(parent)
 Provides:       perl(HTML::Form) = %{version}
 Provides:       perl(HTML::Form::FileInput) = %{version}
@@ -64,7 +65,7 @@ be tweaked and it can then be asked to provide HTTP::Request objects that
 can be passed to the request() method of LWP::UserAgent.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
