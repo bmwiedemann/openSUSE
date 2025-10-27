@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 24 18:33:29 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Use Zend/zend_smart_string.h for PHP 8.5 compatibility (#574)
+  + memcache-fix-build-PHP-8.5.patch
+
+-------------------------------------------------------------------
 Sun May  7 13:05:25 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 8.2

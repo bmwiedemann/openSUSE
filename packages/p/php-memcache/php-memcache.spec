@@ -1,7 +1,7 @@
 #
 # spec file for package php-memcache
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,10 +37,12 @@ Summary:        PHP Memcache client Extension
 License:        PHP-3.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://github.com/websupport-sk/pecl-memcache
-Source0:        https://github.com/websupport-sk/pecl-memcache/archive/refs/tags/%{version}.tar.gz
+Source0:        https://github.com/websupport-sk/pecl-memcache/archive/refs/tags/%{version}.tar.gz#/%{pkg_name}-%{version}.tar.gz
 Source10:       php-memcache-rpmlintrc
 # PATCH-FIX-OPENSUSE: fix unit tests that don't work on OBS
 Patch1:         fixup-unit-tests.patch
+# PATCH-FIX-UPSTREAM https://github.com/websupport-sk/pecl-memcache/pull/118
+Patch2:         memcache-fix-build-PHP-8.5.patch
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{php_name}-cli
 %endif
