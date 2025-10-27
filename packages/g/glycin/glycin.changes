@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 21 13:11:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.4:
+  + This release contains the following new component versions:
+    - glycin-heif 2.0.4
+    - glycin-image-rs 2.0.4
+    - glycin-jpeg2000 2.0.4
+    - glycin-jxl 2.0.4
+    - glycin-raw 2.0.4
+    - glycin-svg 2.0.4
+    - glycin-utils 4.0.4
+    - glycin 3.0.4
+    - libglycin 2.0.4
+    - libglycin-gtk4 2.0.4
+  + Fixed:
+    - D-Bus connections were never completely closed, causing a
+      memory and FD leak.
+    - Default to loop for animations if no explicit value is set.
+      This fixed as backward compatibility issue when
+      glycin/libglycin is not a .3 or later.
+    - Support having symlinks in a directory that is already a
+      symlink and both a explicitly picked up by fontconfig.
+
+-------------------------------------------------------------------
 Fri Oct 10 04:57:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.0.3:
@@ -6,7 +30,7 @@ Fri Oct 10 04:57:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
     `CAP_DAC_READ_SEARCH_POSTION` during directory resolution to
     ensure that bwrap does not try to mount directories that it
     does no longer have access to after it dropped these caps.
-  + Fixed;
+  + Fixed:
     - SIGSYS because `restart_syscall` syscall is not allowed.
     - glycin: Also detect SIGSYS from bwrap exit code.
     - glycin: Honor apply_transformations for imgage dimensions.
