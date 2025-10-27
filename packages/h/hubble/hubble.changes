@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 27 05:52:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.3:
+  * Prepare for v1.18.3 release
+  * chore(deps): update golang to v1.25.3
+  * Update stable release to 1.18.0
+  * chore(deps): update dependency cilium/cilium to v1.18.2
+  * chore(deps): update golang to v1.25.1
+  * chore(deps): update dependency helm/helm to v3.19.0
+  * chore(deps): update module github.com/go-viper/mapstructure/v2
+    to v2.4.0 [security]
+  * chore(deps): update actions/setup-go action to v6
+  * chore(deps): update dependency kubernetes-sigs/kind to v0.30.0
+  * chore(deps): update golang to v1.24.7
+  * chore(deps): update actions/checkout action to v5
+  * chore(deps): update all github action dependencies
+  * chore(deps): update golang to v1.24.6
+  * chore(deps): update actions/checkout action to v4.3.0
+
+-------------------------------------------------------------------
 Mon Aug 18 13:00:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.18.0:

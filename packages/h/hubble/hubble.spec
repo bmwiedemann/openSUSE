@@ -17,7 +17,7 @@
 
 
 Name:           hubble
-Version:        1.18.0
+Version:        1.18.3
 Release:        0
 Summary:        Network, Service & Security Observability for Kubernetes using eBPF
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         hubble-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23.6
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.24
 
 %description
 Hubble is a fully distributed networking and security observability platform
