@@ -15,7 +15,7 @@
 #
 
 Name:           limine
-Version:        10.1.1
+Version:        10.2.0
 Release:        0
 Summary:        Modern, advanced, portable, multiprotocol bootloader and boot manager
 License:        BSD-2-Clause

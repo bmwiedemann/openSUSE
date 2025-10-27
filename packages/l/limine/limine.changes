@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 26 21:23:37 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.2.0:
+  * Implement base revision 4 of the Limine boot protocol as per
+    documentation (read documentation for specific details).
+  * "Fix" multiboot1 framebuffer structure to match GRUB instead of the
+    multiboot1 specification.
+
+-------------------------------------------------------------------
 Mon Oct 13 12:16:57 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.1.1:
