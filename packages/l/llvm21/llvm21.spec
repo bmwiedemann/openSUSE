@@ -19,7 +19,7 @@
 %global _sonum  21
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_rc:-rc%_rc}
-%global _patch_level 3
+%global _patch_level 4
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:-rc%_rc}
 %global _itsme21 1
@@ -1200,12 +1200,10 @@ find ./build \( -name '*.o' -or -name '*.a' \)  -delete
 # tar xf ../../clang-%{_version}.src.tar.xz
 # mv clang-%{_version}.src clang
 # cd ..
-# ln -s ../../../build/tools/clang/docs/{Attribute,Diagnostics}Reference.rst tools/clang/docs
 # mkdir build; cd build
 # cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_SPHINX:BOOL=ON -DLLVM_BUILD_DOCS:BOOL=ON \
 #     -DSPHINX_WARNINGS_AS_ERRORS:BOOL=OFF -DLLVM_INCLUDE_TESTS:BOOL=OFF -DLLVM_INCLUDE_BENCHMARKS:BOOL=OFF ..
-# ninja gen-{Attribute,Diagnostics}Reference.rst
-# ninja -j1 docs-{llvm,clang}-{html,man}
+# ninja docs-{llvm,clang}-{html,man}
 # popd
 # tar --sort=name --owner=0 --group=0 --mtime="@${SOURCE_DATE_EPOCH}" \
 #     --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
@@ -1508,33 +1506,34 @@ popd
 # creating the final RPMs.
 rm -rf ./stage1 ./build
 
-%post -n libLLVM%{_sonum} -p /sbin/ldconfig
-%postun -n libLLVM%{_sonum} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libLLVM%{_sonum}
+%if %{?suse_version} >= 1600
+%ldconfig_scriptlets %{multisource libclang%{_soclang}} libclang%{_soclang}
+%else
 %post %{multisource libclang%{_soclang}} libclang%{_soclang} -p /sbin/ldconfig
 %postun %{multisource libclang%{_soclang}} libclang%{_soclang} -p /sbin/ldconfig
-%post -n libclang-cpp%{_sonum} -p /sbin/ldconfig
-%postun -n libclang-cpp%{_sonum} -p /sbin/ldconfig
-%post -n libLTO%{_sonum} -p /sbin/ldconfig
-%postun -n libLTO%{_sonum} -p /sbin/ldconfig
-%post -n clang%{_sonum}-devel -p /sbin/ldconfig
-%postun -n clang%{_sonum}-devel -p /sbin/ldconfig
+%endif
+%ldconfig_scriptlets -n libclang-cpp%{_sonum}
+%ldconfig_scriptlets -n libLTO%{_sonum}
+%ldconfig_scriptlets -n clang%{_sonum}-devel
 
 %if %{with lldb}
-%post -n liblldb%{_sonum} -p /sbin/ldconfig
-%postun -n liblldb%{_sonum} -p /sbin/ldconfig
+%ldconfig_scriptlets -n liblldb%{_sonum}
 %endif
 
-%post gold -p /sbin/ldconfig
-%postun gold -p /sbin/ldconfig
-%post devel -p /sbin/ldconfig
-%postun devel -p /sbin/ldconfig
+%ldconfig_scriptlets devel
 
 %if %{with openmp}
-%post -n libomp%{_sonum}-devel -p /sbin/ldconfig
-%postun -n libomp%{_sonum}-devel -p /sbin/ldconfig
+%ldconfig_scriptlets -n libomp%{_sonum}-devel
 %endif
 
 %if %{with libcxx}
+%if %{?suse_version} >= 1600
+%ldconfig_scriptlets %{multisource libcxx%{_socxx}} libc++%{_socxx}
+%ldconfig_scriptlets %{multisource libcxxabi%{_socxx}} libc++abi%{_socxx}
+%ldconfig_scriptlets %{multisource libcxx_devel} libc++-devel
+%ldconfig_scriptlets %{multisource libcxx_devel} libc++abi-devel
+%else
 %post %{multisource libcxx%{_socxx}} libc++%{_socxx} -p /sbin/ldconfig
 %postun %{multisource libcxx%{_socxx}} libc++%{_socxx} -p /sbin/ldconfig
 %post %{multisource libcxxabi%{_socxx}} libc++abi%{_socxx} -p /sbin/ldconfig
@@ -1544,12 +1543,6 @@ rm -rf ./stage1 ./build
 %post %{multisource libcxx_devel} libc++abi-devel -p /sbin/ldconfig
 %postun %{multisource libcxx_devel} libc++abi-devel -p /sbin/ldconfig
 %endif
-
-%if %{with polly}
-%post polly -p /sbin/ldconfig
-%postun polly -p /sbin/ldconfig
-%post polly-devel -p /sbin/ldconfig
-%postun polly-devel -p /sbin/ldconfig
 %endif
 
 %global ua_install() %{_sbindir}/update-alternatives \\\

@@ -68,4 +68,21 @@
 - Rebase llvm-do-not-install-static-libraries.patch.</comment>
     <requestid>1310783</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ac377ee76165cd0ccf3d71a4d442fa7</srcmd5>
+    <version>21.1.4</version>
+    <time>1761572315</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 21.1.4.
+  * This release contains bug-fixes for the LLVM 21.1.0 release.
+    This release is API and ABI compatible with 21.1.0.
+- Simplify script for building documentation.
+- Use %ldconfig_scriptlets to automatically generate post
+  scriptlets. This doesn't work with %{multisource} in Leap 15.6
+  though, so we leave a fallback for that.
+- Drop post scriptlets for gold and polly, which provide only
+  plugin libraries that ldconfig doesn't care about.
+- Rebase llvm-do-not-install-static-libraries.patch.</comment>
+    <requestid>1313505</requestid>
+  </revision>
 </revisionlist>
