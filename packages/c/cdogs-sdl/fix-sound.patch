@@ -1,0 +1,22 @@
+diff --git a/src/cdogs/sounds.c b/src/cdogs/sounds.c
+index 2cbd04c..474f1a5 100644
+--- a/src/cdogs/sounds.c
++++ b/src/cdogs/sounds.c
+@@ -266,7 +266,7 @@ static void SoundClose(SoundDevice *s, const bool waitForSoundsComplete)
+ 	{
+ 		Mix_Quit();
+ 	}
+-	Mix_CloseAudio();
++	//Mix_CloseAudio();
+ }
+ 
+ void SoundReconfigure(SoundDevice *s)
+@@ -300,7 +300,7 @@ void SoundReopen(SoundDevice *s)
+ 	}
+ 
+ 	s->channels = 64;
+-	SoundReconfigure(s);
++	//SoundReconfigure(s);
+ }
+ 
+ void SoundClear(map_t sounds)

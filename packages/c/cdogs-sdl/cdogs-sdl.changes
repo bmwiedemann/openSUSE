@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 26 12:55:39 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * fix-sound.patch
+    https://github.com/cxong/cdogs-sdl/issues/888#issuecomment-3447928867
+
+-------------------------------------------------------------------
 Mon Aug 25 14:49:44 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 2.3.2 

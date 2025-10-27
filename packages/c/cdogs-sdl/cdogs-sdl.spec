@@ -1,7 +1,7 @@
 #
 # spec file for package cdogs-sdl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Source:         https://github.com/cxong/cdogs-sdl/archive/%{version}/%{name}-%{
 Source1:        cdogs-sdl.rpmlintrc
 Patch0:         fix-build.patch
 Patch1:         fix-env-script-interpreter.patch
+Patch2:         fix-sound.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  enet-devel
 BuildRequires:  fdupes
