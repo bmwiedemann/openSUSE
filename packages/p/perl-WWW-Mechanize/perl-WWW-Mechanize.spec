@@ -1,7 +1,7 @@
 #
 # spec file for package perl-WWW-Mechanize
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,27 @@
 
 %define cpan_name WWW-Mechanize
 Name:           perl-WWW-Mechanize
-Version:        2.190.0
+Version:        2.200.0
 Release:        0
-# 2.19 -> normalize -> 2.190.0
-%define cpan_version 2.19
+# 2.20 -> normalize -> 2.200.0
+%define cpan_version 2.20
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Handy web browsing in a Perl object
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(HTML::Form) >= 6.08
+BuildRequires:  perl(HTML::Form) >= 6.80
 BuildRequires:  perl(HTML::HeadParser)
 BuildRequires:  perl(HTML::TokeParser)
 BuildRequires:  perl(HTML::TreeBuilder) >= 5
 BuildRequires:  perl(HTTP::Cookies)
-BuildRequires:  perl(HTTP::Daemon) >= 6.12
-BuildRequires:  perl(HTTP::Request) >= 1.30
+BuildRequires:  perl(HTTP::Daemon) >= 6.120
+BuildRequires:  perl(HTTP::Message) >= 7.10
+BuildRequires:  perl(HTTP::Request) >= 1.300
 BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(LWP)
 BuildRequires:  perl(LWP::Simple)
@@ -47,19 +49,19 @@ BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::Memory::Cycle)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Output)
-BuildRequires:  perl(Test::Taint) >= 1.08
 BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(URI)
 BuildRequires:  perl(URI::Escape)
 BuildRequires:  perl(URI::URL)
 BuildRequires:  perl(URI::file)
 BuildRequires:  perl(parent)
-Requires:       perl(HTML::Form) >= 6.08
+Requires:       perl(HTML::Form) >= 6.80
 Requires:       perl(HTML::HeadParser)
 Requires:       perl(HTML::TokeParser)
 Requires:       perl(HTML::TreeBuilder) >= 5
 Requires:       perl(HTTP::Cookies)
-Requires:       perl(HTTP::Request) >= 1.30
+Requires:       perl(HTTP::Message) >= 7.10
+Requires:       perl(HTTP::Request) >= 1.300
 Requires:       perl(HTTP::Request::Common)
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(URI::URL)
@@ -93,7 +95,7 @@ the Test::*, like Test::HTML::Lint modules, you can check the fetched
 content and use that as input to a test call.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
@@ -110,7 +112,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTORS README.md
+%doc Changes CONTRIBUTORS README.md SECURITY.md
 %license LICENSE
 
 %changelog

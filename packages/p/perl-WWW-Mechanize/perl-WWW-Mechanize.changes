@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 23 05:34:21 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.200.0 (2.20)
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.20      2025-10-22 19:04:44Z
+      [ENHANCEMENTS]
+      - WWW::Mechanize no longer taints the responses it receives.  This also
+      removes Test::Taint as a prerequisite. (GH#383) (Andy Lester)
+      - select() now accepts a number argument to specify which instance of an
+        element with multiple occurrences to use (GH#189) (Julien Fiegehenn)
+      - Add Bash completion (GH#396) (Mikko Koivunalho)
+      [DOCUMENTATION]
+      - Improve FAQ (GH#76) (Julien Fiegehenn)
+      - Add installation instructions and badge for Repology (GH#399) (Mikko
+        Koivunalho)
+      - Add License, CPAN and kwalitee badges to README (GH#400) (Mikko
+        Koivunalho)
+      [FIXED]
+      - Fix test failure after release of HTTP::Message 7.01 (GH#403) (Olaf
+        Alders)
+
+-------------------------------------------------------------------
 Tue Sep 17 05:32:34 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.190.0 (2.19)
