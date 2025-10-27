@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 25 21:22:09 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.9.0
+  + Bug fixes
+    - Certain notebook docking stations could mistakenly be
+      recognized as a GPU
+    - The fallback tab name for batteries was “Drive”
+  + New features
+    - Added translations for new languages (Bulgarian, Finnish,
+      Hebrew, Slovenian)
+    - Support for the new “xe” driver for Intel GPUs
+    - Link info shown for Wi-Fi interfaces
+    - Resources can halt graphical updates when window not in view
+    - Added “Commandline” column in Processes view
+    - Added “Uptime” entry in CPU view
+  + Improvements
+    - Improved power usage reading for some GPUs
+    - Right-aligned numerical values in Apps and Processes views
+    - Added support for PCIe 7.0 and 8.0
+    - Internal simplifications and clearer architecture
+    - More trace logs
+
+-------------------------------------------------------------------
 Sun Mar 30 00:22:21 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 1.8.0
