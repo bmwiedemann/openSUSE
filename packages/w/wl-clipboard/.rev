@@ -31,4 +31,19 @@
     <comment></comment>
     <requestid>1158722</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ea23cdd222a77abe4c637c956a698895</srcmd5>
+    <version>2.2.1+git.20250424T164907.aaa927e</version>
+    <time>1761572454</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.2.1+git.20250424T164907.aaa927e:
+  * Respect $TMPDIR
+  * Add support for ext-data-control-v1
+  * Set CLIPBOARD_STATE=sensitive when x-kde-passwordManagerHint is set
+  * Add --sensitive flag to wl-copy
+  * Fix wrong flushing issue
+  * Fix assertion failure
+</comment>
+    <requestid>1313724</requestid>
+  </revision>
 </revisionlist>

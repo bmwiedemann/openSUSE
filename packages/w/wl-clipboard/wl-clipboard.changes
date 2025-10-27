@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 26 12:57:26 UTC 2025 - llyyr.public@gmail.com
+
+- Update to version 2.2.1+git.20250424T164907.aaa927e:
+  * Respect $TMPDIR
+  * Add support for ext-data-control-v1
+  * Set CLIPBOARD_STATE=sensitive when x-kde-passwordManagerHint is set
+  * Add --sensitive flag to wl-copy
+  * Fix wrong flushing issue
+  * Fix assertion failure
+
+-------------------------------------------------------------------
 Fri Mar 15 10:50:55 UTC 2024 - Pavel Solovyov <daron439@gmail.com>
 
 - Update to version 2.2.1
