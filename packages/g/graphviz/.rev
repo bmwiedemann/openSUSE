@@ -868,4 +868,19 @@
     <comment></comment>
     <requestid>1282874</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>3242b484e27683a5d63ba2fb25b03142</srcmd5>
+    <version>14.0.0</version>
+    <time>1761572235</time>
+    <user>anag_factory</user>
+    <comment>- Update to 14.0.0
+  * Changes see ChangeLog.md
+- Remove unneeded patches (fixed mainline):
+D graphviz-array_overflow.patch
+D graphviz-no_php_extra_libs.patch
+D    graphviz-useless_warnings.patch
+D    swig-4.1.0.patch
+- Remove old, unneeded condition: if 0%{?suse_version} == 1315</comment>
+    <requestid>1313011</requestid>
+  </revision>
 </revisionlist>

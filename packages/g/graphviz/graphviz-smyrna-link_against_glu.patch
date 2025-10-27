@@ -1,8 +1,10 @@
-Index: configure.ac
-===================================================================
---- configure.ac.orig
-+++ configure.ac
-@@ -2395,7 +2395,7 @@ else
+---
+ configure.ac |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -1897,7 +1897,7 @@
  
    AC_CHECK_HEADER(GL/glut.h,
      AC_CHECK_LIB(glut,main,

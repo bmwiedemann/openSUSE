@@ -6,9 +6,13 @@
 # esac
 #-echo "	load [file join \$dir $lib] $2\"" >>pkgIndex.tcl
 #+echo "	load $lib $2\"" >>pkgIndex.tcl
---- tclpkg/mkpkgindex.py
-+++ tclpkg/mkpkgindex.py
-@@ -39,7 +39,7 @@
+---
+# tclpkg/mkpkgindex.py |    2 +-
+# 1 file changed, 1 insertion(+), 1 deletion(-)
+#
+--- a/tclpkg/mkpkgindex.py
++++ b/tclpkg/mkpkgindex.py
+@@ -41,7 +41,7 @@
          f.write(f'package ifneeded {options.name} {version} "\n')
          if "tk" in str(options.file):
              f.write("\tpackage require Tk 8.3\n")
@@ -17,4 +21,3 @@
  
  
  if __name__ == "__main__":
-

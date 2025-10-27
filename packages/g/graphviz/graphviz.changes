@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 22 12:40:04 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Update to 14.0.0
+  * Changes see ChangeLog.md
+- Remove unneeded patches (fixed mainline):
+D graphviz-array_overflow.patch
+D graphviz-no_php_extra_libs.patch
+D    graphviz-useless_warnings.patch
+D    swig-4.1.0.patch
+- Remove old, unneeded condition: if 0%{?suse_version} == 1315
+
+
+-------------------------------------------------------------------
 Fri May 30 10:49:41 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 12.2.1

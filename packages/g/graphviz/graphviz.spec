@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" != ""
 %define psuffix -%{flavor}
@@ -37,15 +36,9 @@
 %define php_version 7
 %endif
 %endif
-# No pkgconfig(gts) in sle12 GA or SPx, but in sle15
-%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
-%bcond_with    gts
-%else
-%bcond_without gts
-%endif
-%define cdt_soversion 5
-%define cgraph_soversion 6
-%define gvc_soversion 6
+%define cdt_soversion 6
+%define cgraph_soversion 8
+%define gvc_soversion 7
 %define gvpr_soversion 2
 %define lab_gamut_soversion 1
 %define pathplan_soversion 4
@@ -56,7 +49,7 @@
 %bcond_with    java
 %bcond_with    ocaml
 Name:           graphviz%{psuffix}
-Version:        12.2.1
+Version:        14.0.0
 Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-1.0
@@ -67,14 +60,7 @@ Source1:        graphviz-rpmlintrc
 #PATCH-FIX-UPSTREAM add flags to also link against libGLU and libGL
 Patch0:         graphviz-smyrna-link_against_glu.patch
 Patch1:         graphviz-fix-pkgIndex.patch
-#PATCH-FIX-UPSTREAM Off-by-one bug
-Patch2:         graphviz-array_overflow.patch
 Patch3:         graphviz-2.20.2-interpreter_names.patch
-#PATCH-FIX-UPSTREAM Don't warn about harmless issues with swig generated code
-Patch4:         graphviz-useless_warnings.patch
-Patch6:         graphviz-no_php_extra_libs.patch
-# https://gitlab.com/graphviz/graphviz/-/issues/2303
-Patch7:         swig-4.1.0.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -86,14 +72,13 @@ BuildRequires:  guile-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python3-base >= 3.9
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(gts)
 BuildRequires:  pkgconfig(zlib)
 Requires:       bitstream-vera-fonts
 Requires:       graphviz-plugins-core = %{version}
 Recommends:     graphviz-gd = %{version}
-%if %{with gts}
-BuildRequires:  pkgconfig(gts)
-%endif
 %if "%{flavor}" == "addons"
 BuildRequires:  freeglut-devel
 BuildRequires:  ghostscript
@@ -112,6 +97,7 @@ BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gtkglext-1.0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(ijs)
+BuildRequires:  pkgconfig(libargon2)
 BuildRequires:  pkgconfig(libglade-2.0)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(lua)
@@ -232,6 +218,9 @@ Requires:       perl = %{perl_version}
 The graphviz-perl package contains the Perl extension for the graphviz
 tools.
 
+%if "%{flavor}" == "addons"
+# flavor condition here only to calm down:
+# Possible unexpanded macro in: Requires:       php(api) =
 %package -n graphviz-php
 Summary:        PHP Extension for Graphviz
 Group:          Productivity/Graphics/Visualization/Graph
@@ -243,6 +232,7 @@ Requires:       php(zend-abi) = %{php_zend_api}
 %description -n graphviz-php
 The graphviz-php package contains the PHP extension for the graphviz
 tools.
+%endif
 
 %package -n python3-gv
 Summary:        Python 3 Extension for Graphviz
@@ -380,13 +370,9 @@ programs that use the graphviz libraries including man3 pages.
 %prep
 #autosetup breaks graphviz-addons
 %setup -q -n %{mname}-%{version}
-%patch -P 0
-%patch -P 1
-%patch -P 2
-%patch -P 3
-%patch -P 4
-%patch -P 6
-%patch -P 7 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 3 -p1
 
 # pkg-config returns 0 (TRUE) when guile-2.2 is present
 if pkg-config --atleast-version=2.2 guile-2.2; then
@@ -674,7 +660,7 @@ if test -x %{_bindir}/dot; then %{_bindir}/dot -c ; fi
 
 %if "%{flavor}" == ""
 %files
-%doc doc/FAQ.html AUTHORS README NEWS ChangeLog
+%doc doc/FAQ.html AUTHORS README NEWS CHANGELOG.md
 %license epl-v10.txt
 %{_bindir}/acyclic
 %{_bindir}/bcomps
@@ -754,7 +740,6 @@ if test -x %{_bindir}/dot; then %{_bindir}/dot -c ; fi
 %{_datadir}/%{mname}/gvpr/histogram
 %{_mandir}/man1/*.1%{ext_man}
 %{_mandir}/man7/*.7%{ext_man}
-%exclude %{_mandir}/man1/smyrna.1%{ext_man}
 
 %files -n libcdt%{cdt_soversion}
 %{_libdir}/libcdt.so.%{cdt_soversion}*

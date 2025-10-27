@@ -1,4 +1,1 @@
-# This line is mandatory to access the configuration functions
-from Config import *
 
-addFilter("lib.* obsolete-not-provided libgraphviz6")
