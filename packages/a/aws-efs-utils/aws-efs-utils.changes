@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 24 11:13:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Use RUSTFLAGS over CC/CXX to overwrite default linker on SLE-15
+
+-------------------------------------------------------------------
 Fri Aug 15 06:25:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.3.3 (bsc#1248055, CVE-2025-55159)

@@ -72,8 +72,7 @@ find src/mount_efs src/watchdog -name "*.py" -exec sed -i 's/env python3/python3
 
 %build
 %if 0%{?suse_version} <= 1500
-export CC=gcc-13
-export CXX=g++-13
+export RUSTFLAGS=" -C linker=/usr/bin/gcc-13"
 %endif
 cd src/proxy
 %cargo_build
@@ -99,8 +98,7 @@ install -p -m 755 %{_builddir}/efs-utils-v%{version}/src/watchdog/__init__.py %{
 install -p -m 644 %{_builddir}/efs-utils-v%{version}/man/mount.efs.8 %{buildroot}%{_mandir}/man8
 
 %if 0%{?suse_version} <= 1500
-export CC=gcc-13
-export CXX=g++-13
+export RUSTFLAGS=" -C linker=/usr/bin/gcc-13"
 %endif
 cd src/proxy
 %cargo_install
