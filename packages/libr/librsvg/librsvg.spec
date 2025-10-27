@@ -21,7 +21,7 @@
 
 Name:           librsvg
 ### FIXME ### - Please check on every versionupgrade if adwaita-fonts are still needed for tests
-Version:        2.61.1
+Version:        2.61.2
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.1-or-later AND MIT
@@ -131,7 +131,7 @@ http://www.w3c.org).
 
 %check
 export LANG=C
-%ifarch x86_64 %{?x86_64}
+%ifnarch %{ix86} %{arm}
 %{cargo_test}
 %endif
 
