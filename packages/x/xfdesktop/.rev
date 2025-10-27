@@ -510,4 +510,12 @@
 - Fix missing backslash for building in non-git mode (forwarded request 1300794 from tiwai)</comment>
     <requestid>1300797</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>9cf0369a7b81bb6a47dc2869d132f518</srcmd5>
+    <version>4.20.1</version>
+    <time>1761572493</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313760</requestid>
+  </revision>
 </revisionlist>

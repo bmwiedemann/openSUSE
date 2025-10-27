@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 22 11:13:53 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Switch to using meson for building; this allows building this
+  package even in the upcoming development release Xfce-4.21
+- Refresh 0002-relax-libyaml-version.patch
+- Remove bcond_with git and related items
+- Ensure installed icon files land in _datadir/wallpapers/xfce, not
+  in _datadir/backgrounds/xfce which is used by meson
+
+-------------------------------------------------------------------
 Fri Aug 15 14:33:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix the monitor name pickup on Wayland, which resulted in broken

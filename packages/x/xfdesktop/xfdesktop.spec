@@ -16,7 +16,6 @@
 #
 
 
-%bcond_with git
 Name:           xfdesktop
 Version:        4.20.1
 Release:        0
@@ -33,16 +32,17 @@ Patch2:         0002-relax-libyaml-version.patch
 Patch3:         xfdesktop-wayland-get-proper-monitor-name.patch
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 # Default gcc7 is too old for new C20 features
-BuildRequires:  gcc13
+BuildRequires:  gcc14
 %endif
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  update-desktop-files
-BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(cairo) >= 1.16
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(exo-2) >= 0.11.0
-BuildRequires:  pkgconfig(garcon-1) >= 0.6.0
+BuildRequires:  pkgconfig(exo-2) >= 4.18.0
+BuildRequires:  pkgconfig(garcon-1) >= 4.18.0
+BuildRequires:  pkgconfig(garcon-gtk3-1) >= 4.18.0
 BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.10
 BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.24.10
 BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
@@ -57,12 +57,12 @@ BuildRequires:  pkgconfig(libnotify) >= 0.4.0
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.14
 BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.18.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.13.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.18.0
 BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.8
 BuildRequires:  pkgconfig(libxfce4windowing-x11-0) >= 4.19.8
 BuildRequires:  pkgconfig(libxfce4windowingui-0) >= 4.19.8
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.19.3
-BuildRequires:  pkgconfig(thunarx-3) >= 4.17.10
+BuildRequires:  pkgconfig(thunarx-3) >= 4.18.0
 BuildRequires:  pkgconfig(x11) >= 1.6.7
 BuildRequires:  pkgconfig(yaml-0.1) >= 0.1.7
 Provides:       xfce4-desktop = %{version}
@@ -102,26 +102,29 @@ This package provides the upstream look and feel for the Xfce Desktop Manager.
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
-export CC=gcc-13
+export CC=gcc-14
 %endif
-%if %{with git}
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-    --enable-maintainer-mode \
-    --with-default-backdrop-filename=%{_datadir}/wallpapers/xfce/default.wallpaper
-%else
-xdt-autogen
-%configure \
-    --with-default-backdrop-filename=%{_datadir}/wallpapers/xfce/default.wallpaper
-%endif
-%make_build
+%meson \
+    -Ddesktop-menu=enabled	\
+    -Ddesktop-icons=true	\
+    -Dfile-icons=true		\
+    -Dthunarx=enabled		\
+    -Dnotifications=enabled	\
+    -Dx11=enabled		\
+    -Dwayland=enabled		\
+    -Ddefault-backdrop-filename=%{_datadir}/wallpapers/xfce/default.wallpaper	\
+    -Dtests=false
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 # default upstream backdrop image
-ln -s %{_datadir}/wallpapers/xfce/xfce-blue.jpg \
-    %{buildroot}%{_datadir}/wallpapers/xfce/default.wallpaper
+mkdir -p %{buildroot}%{_datadir}/wallpapers/
+if [ -d %{buildroot}%{_datadir}/backgrounds/xfce ]; then
+    mv %{buildroot}%{_datadir}/backgrounds/xfce %{buildroot}%{_datadir}/wallpapers
+fi
+ln -s xfce-blue.jpg %{buildroot}%{_datadir}/wallpapers/xfce/default.wallpaper
 
 %suse_update_desktop_file xfce-backdrop-settings
 
