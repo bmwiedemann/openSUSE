@@ -1,7 +1,7 @@
 #
 # spec file for package lcms2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lcms2
-Version:        2.16
+Version:        2.17
 Release:        0
 Summary:        Little CMS Engine - A color management library and tools
 License:        MIT
@@ -26,7 +26,6 @@ URL:            https://www.littlecms.com/
 Source0:        https://github.com/mm2/Little-CMS/releases/download/lcms%{version}/lcms2-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         lcms2-ocloexec.patch
-Patch1:         lcms2-visibility.patch
 %if 0%{?suse_version}
 BuildRequires:  autoconf
 BuildRequires:  glibc-devel
@@ -95,8 +94,7 @@ autoreconf -fiv
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 
-# FIXME --without-threads is a workaround for a linker error
-%configure --disable-static --without-threads
+%configure --disable-static
 
 %make_build
 
