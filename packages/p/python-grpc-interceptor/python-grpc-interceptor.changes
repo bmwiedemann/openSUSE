@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 27 09:24:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Aug 13 04:48:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pytest-asyncio.
