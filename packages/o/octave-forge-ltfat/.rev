@@ -93,4 +93,13 @@
 * Drop upstreamed ltfat-sourcetarget.patch.</comment>
     <requestid>1121356</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>75cdc110068813305050ebc9511af68a</srcmd5>
+    <version>2.6.0</version>
+    <time>1761572521</time>
+    <user>anag_factory</user>
+    <comment>- Fix build with Octave 10, avoid forcing too low C++ standard
+  version (gh#ltfat/ltfat/issues/203) (forwarded request 1313665 from StefanBruens)</comment>
+    <requestid>1313788</requestid>
+  </revision>
 </revisionlist>

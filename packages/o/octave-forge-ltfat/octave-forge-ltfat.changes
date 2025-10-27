@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 25 14:12:02 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Octave 10, avoid forcing too low C++ standard
+  version (gh#ltfat/ltfat/issues/203)
+
+-------------------------------------------------------------------
 Tue Oct 31 03:15:03 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add ltfat-fix-jar-bin-path.patch: Fix path pointing to jar

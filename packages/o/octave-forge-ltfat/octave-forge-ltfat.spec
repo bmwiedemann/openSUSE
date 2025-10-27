@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-ltfat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,9 @@ This is part of the Octave-Forge project.
 
 # REMOVE PREBUILT JAR
 find ./ -name "*.jar" -delete -print
+
+# Building with Octave 10 requires C++17, https://github.com/ltfat/ltfat/issues/203
+sed -i -e 's/gnu++11/gnu++17/' ltfat/oct/Makefile_unix
 
 %build
 export CFLAGS="%{optflags}"
