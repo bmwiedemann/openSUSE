@@ -139,7 +139,8 @@ Requires:       rspamd-client = %{version}
 Conflicts:      rspamd-client
 %endif
 BuildRequires:  apparmor-abstractions
-Requires:       apparmor-abstractions
+BuildRequires:  apparmor-rpm-macros
+Requires:       (%{name}-apparmor if apparmor-abstractions)
 Requires(pre):  shadow
 Provides:       group(%{rspamd_group})
 Provides:       user(%{rspamd_user})
@@ -174,6 +175,15 @@ simultaneously and has a number of features available.
 
 This package holds the client tools (rspamc and rspamadm)
 %endif
+
+%package apparmor
+Summary:        Spam filtering system - AppArmor profile
+Requires:       %{name} = %{version}
+Requires:       apparmor-abstractions
+BuildArch:      noarch
+
+%description apparmor
+This package contains an AppArmor profile for Rspamd.
 
 %prep
 %autosetup -p1
@@ -318,6 +328,9 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %service_add_post %{name}.service
 %endif
 
+%post apparmor
+%apparmor_reload %{_sysconfdir}/apparmor.d/usr.bin.rspamd
+
 %if 0%{?suse_version}
 %preun
 %if %{with systemd}
@@ -355,9 +368,6 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_libdir}/rspamd/librspamd-ev.so
 %{_libdir}/rspamd/librspamd-kann.so
 %{_libdir}/rspamd/librspamd-replxx.so
-
-%config %{_sysconfdir}/apparmor.d/usr.bin.rspamd
-%config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.bin.rspamd
 
 %dir %{_sysconfdir}/rspamd/
 %config %{_sysconfdir}/rspamd/actions.conf
@@ -746,5 +756,9 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_bindir}/rspamadm-%{version}
 %{_bindir}/rspamc
 %{_bindir}/rspamc-%{version}
+
+%files apparmor
+%config %{_sysconfdir}/apparmor.d/usr.bin.rspamd
+%config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.bin.rspamd
 
 %changelog

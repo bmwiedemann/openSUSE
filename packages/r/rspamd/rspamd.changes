@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 19 11:50:25 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Split AppArmor profile into subpackage
+  To avoid unnecessarily pulling in AppArmor packages
+- Reload AppArmor profile post-install
+
+-------------------------------------------------------------------
 Tue Oct 14 19:48:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.13.2
