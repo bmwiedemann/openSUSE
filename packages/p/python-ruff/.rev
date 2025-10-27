@@ -2740,4 +2740,33 @@
   * Improved error recovery for unclosed strings (including f- and t-strings)</comment>
     <requestid>1311814</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>4971f0fbce02cf878d2a3b409162d13d</srcmd5>
+    <version>0.14.2</version>
+    <time>1761572242</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.14.2
+ * Preview features
+  * [flake8-gettext] Resolve qualified names and built-in bindings (INT001, INT002, INT003) 
+ * Bug fixes
+  * Avoid reusing nested, interpolated quotes before Python 3.12 
+  * Catch syntax errors in nested interpolations before Python 3.12 
+  * [fastapi] Handle ellipsis defaults in FAST002 autofix 
+  * [flake8-simplify] Skip SIM911 when unknown arguments are present 
+  * [pyupgrade] Always parenthesize assignment expressions in fix for f-string (UP032) 
+  * [pyupgrade] Fix UP032 conversion for decimal ints with underscores 
+  * [fastapi] Skip autofix for keyword and __debug__ path params (FAST003) 
+ * Rule changes
+  * [flake8-bugbear] Skip B905 and B912 for fewer than two iterables and no starred arguments 
+  * [ruff] Use DiagnosticTag for more pyflakes and pandas rules 
+ * CLI
+  * Improve JSON output from ruff rule 
+ * Documentation
+  * Add source to testimonial 
+  * Document when a rule was added 
+ * Other changes
+  * [syntax-errors] Name is parameter and global 
+  * [syntax-errors] Alternative match patterns bind different names</comment>
+    <requestid>1313594</requestid>
+  </revision>
 </revisionlist>
