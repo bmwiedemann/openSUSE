@@ -17,7 +17,7 @@
 
 
 Name:           bluetui
-Version:        0.7
+Version:        0.7.1
 Release:        0
 Summary:        TUI for managing bluetooth devices
 License:        GPL-3.0-or-later
@@ -27,7 +27,7 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  dbus-1-devel
-BuildRequires:  rust >= 1.75.0
+BuildRequires:  rust >= 1.78.0
 Requires:       bluez
 
 %description
