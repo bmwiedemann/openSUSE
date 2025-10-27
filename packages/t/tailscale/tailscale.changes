@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 24 18:11:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.90.2:
+  * util/linuxfw: fix 32-bit arm regression with iptables
+  * health: compare warnable codes to avoid errors on release branch
+  * feature/tpm: check TPM family data for compatibility
+
+-------------------------------------------------------------------
+Fri Oct 24 10:08:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Upate to version 1.90.1:
+  * Clients can use configured DNS resolvers for all domains
+  * Node keys will be renewed seamlessly
+  * Unnecessary path discovery packets over DERP servers are suppressed
+  * Node key sealing is GA (generally available) and enabled by default
+
+-------------------------------------------------------------------
 Wed Oct  1 11:55:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.88.3:
