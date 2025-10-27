@@ -318,4 +318,17 @@
       - Stop transforming LF into CRLF. Fixes #69 (GH#196) (Olaf Alders) (forwarded request 1234010 from tinita)</comment>
     <requestid>1234767</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>74b2ad78fd92ef3e1463885b84183334</srcmd5>
+    <version>7.10.0</version>
+    <time>1761572272</time>
+    <user>anag_factory</user>
+    <comment>- updated to 7.10.0 (7.01)
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+  7.01      2025-10-19 17:22:21Z
+      - Fix HTTP::Response and HTTP::Request as_string/parse commutativity issue
+        #62959 (GH#212) (Copilot)
+      - Fix few minor typos (GH#202) (Yoshikazu Sawa)</comment>
+    <requestid>1313053</requestid>
+  </revision>
 </revisionlist>

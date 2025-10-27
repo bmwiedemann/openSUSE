@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Message
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %define cpan_name HTTP-Message
 Name:           perl-HTTP-Message
-Version:        7.0.0
+Version:        7.10.0
 Release:        0
-# 7.00 -> normalize -> 7.0.0
-%define cpan_version 7.00
+# 7.01 -> normalize -> 7.10.0
+%define cpan_version 7.01
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP style message (base class)
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Clone) >= 0.46
+BuildRequires:  perl(Clone) >= 0.460
 BuildRequires:  perl(Compress::Raw::Bzip2)
 BuildRequires:  perl(Compress::Raw::Zlib) >= 2.062
 BuildRequires:  perl(Encode) >= 3.01
@@ -46,10 +47,10 @@ BuildRequires:  perl(LWP::MediaTypes) >= 6
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Try::Tiny)
-BuildRequires:  perl(URI) >= 1.10
+BuildRequires:  perl(URI) >= 1.100
 BuildRequires:  perl(URI::URL)
 BuildRequires:  perl(parent)
-Requires:       perl(Clone) >= 0.46
+Requires:       perl(Clone) >= 0.460
 Requires:       perl(Compress::Raw::Bzip2)
 Requires:       perl(Compress::Raw::Zlib) >= 2.062
 Requires:       perl(Encode) >= 3.01
@@ -62,7 +63,7 @@ Requires:       perl(IO::HTML)
 Requires:       perl(IO::Uncompress::Inflate)
 Requires:       perl(IO::Uncompress::RawInflate)
 Requires:       perl(LWP::MediaTypes) >= 6
-Requires:       perl(URI) >= 1.10
+Requires:       perl(URI) >= 1.100
 Requires:       perl(parent)
 Provides:       perl(HTTP::Config) = %{version}
 Provides:       perl(HTTP::Headers) = %{version}
@@ -394,7 +395,7 @@ these methods:
     $mess->proxy_authorization_basic
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

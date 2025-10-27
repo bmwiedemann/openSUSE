@@ -8,6 +8,5 @@ following methods are available:
 * $mess = HTTP::Message-&gt;new( $headers )
 
 * $mess = HTTP::Message-&gt;new( $headers, $content )</description>
-  <devel project="devel:languages:perl" package="perl-HTTP-Message"/>
   <url>http://search.cpan.org/dist/HTTP-Message/</url>
 </package>

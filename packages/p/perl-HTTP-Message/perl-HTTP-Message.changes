@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 20 20:08:23 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.10.0 (7.01)
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  7.01      2025-10-19 17:22:21Z
+      - Fix HTTP::Response and HTTP::Request as_string/parse commutativity issue
+        #62959 (GH#212) (Copilot)
+      - Fix few minor typos (GH#202) (Yoshikazu Sawa)
+
+-------------------------------------------------------------------
 Tue Oct  8 05:32:40 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 7.0.0 (7.00)
