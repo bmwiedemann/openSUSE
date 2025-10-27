@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Oct 23 14:34:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.90.0:
+  * [Trackers] Added MangaUpdates
+  * [Servers] Aurora Scans (EN): Disabled
+  * [Servers] Local: Added PDF format support
+  * [Servers] Manga Demon (EN): Update
+  * [servers] Manga Koleji [TR]: Disabled
+  * [Servers] MANGA Plus (multi): Update
+  * [Servers] Nazarick Scan (pt_BR): Disabled
+  * [Servers] Starbound Scans (FR): Disabled
+  * [L10n] Updated French and Ukrainian translations
+
+-------------------------------------------------------------------
+Sun Oct 19 13:04:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.89.0:
+  * [Preferences] Advanced: Added ability to clear WebView data
+  * [Servers] Added Anime-Sama (FR)
+  * [Servers] Added Aurora Scans (EN)
+  * [Servers] Added Hijala Scans (EN)
+  * [Servers] Added Rezo Scans (EN)
+  * [Servers] Cartel De Manhwas (ES): Disabled
+  * [Servers] ComicK: Disabled
+  * [Servers] EZmanga (EN): Update
+  * [Servers] MangaCrab (ES): Update
+  * [Servers] MangaFire (EN/ES/ES_LA/FR/JA/PT/pt_BR): Update
+  * [Servers] Qi Scans (EN): Update
+  * [Servers] Raijin Scan (FR): Update
+  * [Servers] Rawkuma (JA): Update
+  * [Servers] Vortex Scans For Free (EN): Disabled
+  * [L10n] Updated Croatian, Persian, Polish, Portuguese, Portuguese (Brazil)
+    and Russian translations
+
+-------------------------------------------------------------------
 Sat Sep 20 14:28:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.88.0:

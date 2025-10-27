@@ -616,4 +616,12 @@
 - we now depend on glycin for loading the images (forwarded request 1306997 from rrahl0)</comment>
     <requestid>1307173</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>4bc6602e1310bd764b6227da2a1d9dbd</srcmd5>
+    <version>1.90.0</version>
+    <time>1761586665</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313374</requestid>
+  </revision>
 </revisionlist>
