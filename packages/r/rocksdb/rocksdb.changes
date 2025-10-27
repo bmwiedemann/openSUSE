@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 25 17:53:17 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 10.7.5:
+  * Enable asynchronous I/O during Multiscan, and other updates
+  * HyperClockCache is now recommended
+  * Performance improvements and bug fixes
+  * This release contains API changes and behaviour changes
+  * Requires C++20
+
+-------------------------------------------------------------------
 Sun Aug 17 10:25:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 10.5.1:

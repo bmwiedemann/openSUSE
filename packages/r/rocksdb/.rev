@@ -250,4 +250,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1304094</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4a95b8ce0f803a9c5ecb0842aa6267f9</srcmd5>
+    <version>10.7.5</version>
+    <time>1761572499</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313763</requestid>
+  </revision>
 </revisionlist>
