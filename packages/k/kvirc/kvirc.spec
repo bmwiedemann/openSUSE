@@ -1,7 +1,7 @@
 #
 # spec file for package kvirc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define kf5_version 5.2.0
-%define qt5_version 5.15.2
+%define kf6_version 6.0.0
+%define qt6_version 6.5.0
 
-%ifnarch ppc64 ppc64le s390x
+%ifarch x86_64 aarch64 riscv64
 %bcond_without qtwebengine
 %endif
 Name:           kvirc
-Version:        5.2.6
+Version:        5.2.8
 Release:        0
 Summary:        Graphical Front-End for IRC
 License:        GPL-2.0-or-later AND (GPL-3.0-only OR SUSE-LGPL-2.1-with-digia-exception-1.1)
@@ -31,39 +31,40 @@ URL:            https://www.kvirc.net/
 Source:         https://github.com/kvirc/KVIrc/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  enchant-devel
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libX11-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  zlib-devel
-BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
-BuildRequires:  cmake(KF5Parts) >= %{kf5_version}
-BuildRequires:  cmake(KF5Service) >= %{kf5_version}
-BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
-BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
-BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Multimedia) >= %{qt5_version}
-BuildRequires:  cmake(Qt5MultimediaWidgets) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
-BuildRequires:  cmake(Qt5PrintSupport) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Sql) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Svg) >= %{qt5_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Phonon4Qt6)
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6MultimediaWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 %if %{with qtwebengine}
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= %{qt5_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 %endif
-BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
-BuildRequires:  cmake(Qt5X11Extras) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Xml) >= %{qt5_version}
-Requires:       libQt5Sql5-sqlite >= %{qt5_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 %requires_eq    perl
 Obsoletes:      kvirc-devel < %{version}
 
@@ -86,14 +87,19 @@ EXTRA_FLAGS="-UCMAKE_MODULE_LINKER_FLAGS \
 %endif
 "
 
-%cmake_kf5 -d build -- -DWANT_ESD:BOOL=FALSE -DWANT_OSS:BOOL=FALSE -DWANT_AUDIOFILE:BOOL=FALSE $EXTRA_FLAGS
+%cmake_kf6 \
+  -DWANT_ESD:BOOL=FALSE \
+  -DWANT_OSS:BOOL=FALSE \
+  -DWANT_AUDIOFILE:BOOL=FALSE \
+  $EXTRA_FLAGS
+%{nil}
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-rm %{buildroot}%{_kf5_libdir}/libkvilib.so
+rm %{buildroot}%{_kf6_libdir}/libkvilib.so
 
 %fdupes %{buildroot}
 
@@ -102,15 +108,15 @@ rm %{buildroot}%{_kf5_libdir}/libkvilib.so
 %files
 %doc README.md RELEASES
 %license COPYING
-%{_kf5_applicationsdir}/net.kvirc.KVIrc5.desktop
-%{_kf5_bindir}/kvirc
-%{_kf5_bindir}/kvirc-config
-%{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_libdir}/kvirc/
-%{_kf5_libdir}/libkvilib.so.*
-%{_kf5_mandir}/*/man?/kvirc.*
-%{_kf5_mandir}/man?/kvirc.*
-%{_kf5_sharedir}/kvirc/
-%{_kf5_sharedir}/pixmaps/kvirc.png
+%{_kf6_applicationsdir}/net.kvirc.KVIrc5.desktop
+%{_kf6_bindir}/kvirc
+%{_kf6_bindir}/kvirc-config
+%{_kf6_iconsdir}/hicolor/*/*/*
+%{_kf6_libdir}/kvirc/
+%{_kf6_libdir}/libkvilib.so.*
+%{_kf6_mandir}/*/man?/kvirc.*
+%{_kf6_mandir}/man?/kvirc.*
+%{_kf6_sharedir}/kvirc/
+%{_kf6_sharedir}/pixmaps/kvirc.png
 
 %changelog

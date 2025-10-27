@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 25 13:56:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.2.8
+  * Always consider platform supports compositing
+  * Added IRCLuxe network to serverdb
+  * Support sending authorization ID in SASL EXTERNAL
+  * KviControlCodes: fix compilation with Qt >= 6.9
+  * Adapt to Qt 6.9 deprecations
+
+-------------------------------------------------------------------
 Mon Oct 14 19:58:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.2.6
@@ -603,7 +613,7 @@ Thu Oct 28 10:40:45 MEST 1999 - kettner@suse.de
 - New version 1.0.0_beta3.1, need qtlib2, fixes
   Buzilla bug #605
 
--------------------------------------------------------------------                                 
+-------------------------------------------------------------------
 Fri Sep 17 11:28:09 MEST 1999 - kettner@suse.de
 
 - Reinserted old # Commandline: line.
