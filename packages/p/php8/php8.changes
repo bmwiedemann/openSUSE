@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Oct 23 19:02:50 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 8.4.14
+    Core:
+        Fixed bug GH-19765 (object_properties_load() bypasses readonly property checks).
+        Fixed hard_timeout with --enable-zend-max-execution-timers.
+        Fixed bug GH-19792 (SCCP causes UAF for return value if both warning and exception are triggered).
+        Fixed bug GH-19653 (Closure named argument unpacking between temporary closures can cause a crash).
+        Fixed bug GH-19839 (Incorrect HASH_FLAG_HAS_EMPTY_IND flag on userland array).
+        Fixed bug GH-19480 (error_log php.ini cannot be unset when open_basedir is configured).
+        Fixed bug GH-20002 (Broken build on *BSD with MSAN).
+    CLI:
+        Fix useless "Failed to poll event" error logs due to EAGAIN in CLI server with PHP_CLI_SERVER_WORKERS.
+    Curl:
+        Fix cloning of CURLOPT_POSTFIELDS when using the clone operator instead of the curl_copy_handle() function to clone a CurlHandle.
+        Fix curl build and test failures with version 8.16.
+    Date:
+        Fixed GH-17159: "P" format for ::createFromFormat swallows string literals.
+    DOM:
+        Fix macro name clash on macOS.
+        Fixed bug GH-20022 (docker-php-ext-install DOM failed).
+    GD:
+        Fixed GH-19955 (imagefttext() memory leak).
+    MySQLnd:
+        Fixed bug #67563 (mysqli compiled with mysqlnd does not take ipv6 adress as parameter).
+    Opcache:
+        Fixed bug GH-19669 (assertion failure in zend_jit_trace_type_to_info_ex).
+        Fixed bug GH-19831 (function JIT may not deref property value).
+        Fixed bug GH-19889 (race condition in zend_runtime_jit(), zend_jit_hot_func()).
+    Phar:
+        Fix memory leak and invalid continuation after tar header writing fails.
+        Fix memory leaks when creating temp file fails when applying zip signature.
+    SimpleXML:
+        Fixed bug GH-19988 (zend_string_init with NULL pointer in simplexml (UB)).
+    Soap:
+        Fixed bug GH-19784 (SoapServer memory leak).
+        Fixed bug GH-20011 (Array of SoapVar of unknown type causes crash).
+    Standard:
+        Fixed bug GH-12265 (Cloning an object breaks serialization recursion).
+        Fixed bug GH-19701 (Serialize/deserialize loses some data).
+        Fixed bug GH-19801 (leaks in var_dump() and debug_zval_dump()).
+        Fixed bug GH-20043 (array_unique assertion failure with RC1 array causing an exception on sort).
+        Fixed bug GH-19926 (reset internal pointer earlier while splicing array while COW violation flag is still set).
+        Fixed bug GH-19570 (unable to fseek in /dev/zero and /dev/null).
+    Streams:
+        Fixed bug GH-19248 (Use strerror_r instead of strerror in main).
+        Fixed bug GH-17345 (Bug #35916 was not completely fixed).
+        Fixed bug GH-19705 (segmentation when attempting to flush on non seekable stream.
+    XMLReader:
+        Fixed bug GH-20009 (XMLReader leak on RelaxNG schema failure).
+    Zip:
+        Fixed bug GH-19688 (Remove pattern overflow in zip addGlob()).
+        Fixed bug GH-19932 (Memory leak in zip setEncryptionName()/setEncryptionIndex()).
+
+-------------------------------------------------------------------
 Fri Sep 26 06:27:17 UTC 2025 - pgajdos@suse.com
 
 - version update to 8.4.13
