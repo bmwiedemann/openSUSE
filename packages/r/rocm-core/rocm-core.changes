@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Sun Oct 19 03:34:19 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- better handling for the shared library package
+  1. devel package name remains normal
+  2. use modern scriptlet
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Thu Aug  7 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.3
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+
+-------------------------------------------------------------------
+Thu May 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.1
+
+-------------------------------------------------------------------
+Wed Apr 16 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Wed Feb 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.3
+
+-------------------------------------------------------------------
+Mon Feb 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Wed Jan 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.2
+
+-------------------------------------------------------------------
+Sat Jan 18 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Dec 26 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.1
+
+-------------------------------------------------------------------
+Tue Dec 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
