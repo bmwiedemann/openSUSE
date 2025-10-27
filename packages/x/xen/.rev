@@ -3110,4 +3110,12 @@
     <comment>Security and Maintenance Update. Fix for bsc#1248807 CVE-2025-27466, CVE-2025-58142, CVE-2025-58143, XSA-472</comment>
     <requestid>1303382</requestid>
   </revision>
+  <revision rev="367" vrev="1">
+    <srcmd5>73eca46b4f8c25a150b21e347b7b69d4</srcmd5>
+    <version>4.20.1_06</version>
+    <time>1761586661</time>
+    <user>anag_factory</user>
+    <comment>Security and Maintenance Update. Fix for bsc#1251271 CVE-2025-58147, CVE-2025-58148, XSA-475</comment>
+    <requestid>1313619</requestid>
+  </revision>
 </revisionlist>

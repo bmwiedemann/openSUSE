@@ -1,7 +1,7 @@
 #
 # spec file for package xen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -125,7 +125,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.20.1_04
+Version:        4.20.1_06
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -167,10 +167,12 @@ Patch4:         68a2e770-x86-mkelf32-pad-segment-to-2Mb.patch
 Patch5:         68a2e7c8-x86-HVM-ioreq-inverted-condition.patch
 Patch6:         68a6ed85-x86-setup-MMCFG-ahead-of-IOMMU.patch
 Patch7:         68ac5f69-x86-adjustments-to-intel_init_ppin.patch
-# EMBARGOED security fixes
 Patch101:       xsa472-1.patch
 Patch102:       xsa472-2.patch
 Patch103:       xsa472-3.patch
+Patch104:       xsa475-1.patch
+Patch105:       xsa475-2.patch
+# EMBARGOED security fixes
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
