@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 25 14:57:13 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove unnecessary CC override
+
+-------------------------------------------------------------------
 Mon Oct 20 12:53:40 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove password change date from /etc/shadow to make the file reproducible
