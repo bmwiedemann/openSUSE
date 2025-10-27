@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 25 12:49:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.0
+  * KDbg can be built for KDE Frameworks 6/Qt6
+  * XSL debugging support was removed
+- Drop patch:
+  * kdbg-cmake4.patch
+
+-------------------------------------------------------------------
 Thu Mar 20 12:57:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:

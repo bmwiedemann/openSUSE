@@ -1,7 +1,7 @@
 #
 # spec file for package kdbg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,27 @@
 #
 
 
+%define kf6_version 6.6.0
+%define qt6_version 6.6.2
+#
 Name:           kdbg
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Graphical User Interface for GDB
 License:        GPL-2.0-or-later
 URL:            https://www.kdbg.org/
 Source0:        https://github.com/j6t/kdbg/archive/refs/tags/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         kdbg-cmake4.patch
-BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       gdb
 Suggests:       kdbg-doc = %{version}
 
@@ -56,29 +58,29 @@ This package provides the documentation for kdbg
 %autosetup -p1 -n kdbg-kdbg-%{version}
 
 %build
-%cmake_kf5 -d build
-%make_jobs
+%cmake_kf6 -DBUILD_FOR_KDE_VERSION:STRING=6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %fdupes %{buildroot}
 
-%find_lang %{name} --all-name
-
-%{kf5_find_htmldocs}
-
-%files lang -f %{name}.lang
+%find_lang %{name} --all-name --with-html
 
 %files
 %license COPYING
 %doc README ReleaseNotes-*
-%config %{_kf5_configdir}/kdbgrc
-%doc %lang(en) %{_kf5_htmldir}/en/kdbg
-%{_kf5_bindir}/kdbg
-%{_kf5_sharedir}/kdbg/
-%{_kf5_kxmlguidir}/kdbg/
-%{_kf5_iconsdir}/hicolor/
-%{_kf5_applicationsdir}/kdbg.desktop
+%config %{_kf6_configdir}/kdbgrc
+%doc %lang(en) %{_kf6_htmldir}/en/kdbg
+%{_kf6_applicationsdir}/kdbg.desktop
+%{_kf6_bindir}/kdbg
+%{_kf6_iconsdir}/hicolor/
+%{_kf6_kxmlguidir}/kdbg/
+%{_kf6_sharedir}/kdbg/
+
+%files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kdbg
 
 %changelog

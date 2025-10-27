@@ -297,4 +297,12 @@
     <comment>CMake 4 compat change</comment>
     <requestid>1254727</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>159791c1b9a85279eef0feff50195cbe</srcmd5>
+    <version>3.2.0</version>
+    <time>1761572383</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.2.0</comment>
+    <requestid>1313658</requestid>
+  </revision>
 </revisionlist>
