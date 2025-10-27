@@ -19,7 +19,6 @@
 %if 0%{?sle_version} && 0%{?sle_version} >= 150600
 %global force_gcc_version 12
 %endif
-
 Name:           ollama
 Version:        0.12.6
 Release:        0
@@ -34,11 +33,16 @@ Source4:        sysconfig.ollama
 BuildRequires:  cmake >= 3.24
 BuildRequires:  git-core
 BuildRequires:  ninja
+BuildRequires:  pkgconfig
 BuildRequires:  shaderc
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.24
+BuildRequires:  group(render)
+BuildRequires:  group(video)
 BuildRequires:  pkgconfig(vulkan)
+Requires:       group(render)
+Requires:       group(video)
 Requires(pre):  %fillup_prereq
 # 32bit seems not to be supported anymore
 ExcludeArch:    %{ix86} %{arm}

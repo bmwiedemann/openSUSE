@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 26 19:23:10 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Require groups video and render instead of providing them while
+  competing with the system-group-hardware package
+
+-------------------------------------------------------------------
 Sat Oct 18 05:33:15 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
 
 - Update vendored golang.org/x/net/html to v0.46.0
