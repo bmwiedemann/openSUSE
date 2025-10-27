@@ -1,0 +1,36 @@
+--- icu4j-73.1/build.xml	2025-10-23 11:29:16.556122245 +0200
++++ icu4j-73.1/build.xml	2025-10-23 11:34:28.175211409 +0200
+@@ -142,6 +142,22 @@
+         <matches string="${java.version}" pattern="^21((-.|\.\d).*)?"/>
+     </condition>
+ 
++    <condition property="is.java22">
++        <matches string="${java.version}" pattern="^22((-.|\.\d).*)?"/>
++    </condition>
++
++    <condition property="is.java23">
++        <matches string="${java.version}" pattern="^23((-.|\.\d).*)?"/>
++    </condition>
++
++    <condition property="is.java24">
++        <matches string="${java.version}" pattern="^24((-.|\.\d).*)?"/>
++    </condition>
++
++    <condition property="is.java25">
++        <matches string="${java.version}" pattern="^25((-.|\.\d).*)?"/>
++    </condition>
++
+   <condition property="is.java9.plus">
+         <or>
+             <isset property="is.java9"/>
+@@ -157,6 +173,10 @@
+             <isset property="is.java19"/>
+             <isset property="is.java20"/>
+             <isset property="is.java21"/>
++            <isset property="is.java22"/>
++            <isset property="is.java23"/>
++            <isset property="is.java24"/>
++            <isset property="is.java25"/>
+         </or>
+   </condition>
+ 

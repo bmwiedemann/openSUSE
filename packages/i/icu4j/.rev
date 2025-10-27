@@ -203,4 +203,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148470</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>9b2dfb4266f7dd5fcd0494c1afa7b2b9</srcmd5>
+    <version>73.1</version>
+    <time>1761572284</time>
+    <user>anag_factory</user>
+    <comment>Fix build with OpenJDK 25</comment>
+    <requestid>1313347</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 23 09:40:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * icu4j-detectjava25.patch
+    + detect java version up to 25 when running ant
+
+-------------------------------------------------------------------
 Wed Feb 21 09:16:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
