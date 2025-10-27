@@ -1,7 +1,7 @@
 #
 # spec file for package gotestsum
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gotestsum
-Version:        1.12.3
+Version:        1.13.0
 Release:        0
 Summary:        CLI Go test runner with output optimized for human readability
 License:        Apache-2.0
@@ -25,7 +25,7 @@ Group:          Development/Languages/Go
 URL:            https://github.com/gotestyourself/gotestsum
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.24
 
 %description
 Go test runner with output optimized for humans, JUnit XML for CI integration,

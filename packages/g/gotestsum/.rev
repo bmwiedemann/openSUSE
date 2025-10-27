@@ -59,4 +59,21 @@
   * feat: support for hidding skipped tests in the junit report (forwarded request 1290792 from amanzini)</comment>
     <requestid>1290834</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8a0e96bceea84a2a03c7c6e7598355d6</srcmd5>
+    <version>1.13.0</version>
+    <time>1761572476</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.13.0:
+  * Bump deps
+  * Update Go version
+  * chore(internal/junitxml): encode the attributes as JUnit test case properties
+  * fix(testjson/testdata): update with-attributes expectation after fix
+  * feat(testjson/testdata): handle `ActionAttr` event
+  * feat(testjson/testdata): add `ActionAttr` to event decoding
+  * feat(testjson/testdata): add new test with attributes
+  * Get version info from `runtime/debug`
+  * add --watch-clear flag to clear screen on rerun test (forwarded request 1313729 from amanzini)</comment>
+    <requestid>1313750</requestid>
+  </revision>
 </revisionlist>
