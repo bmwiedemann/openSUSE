@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:49:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Thu Oct 16 08:22:49 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to LuaRocks 3.12.2:
+  - fix syntax error
+- Update to LuaRocks 3.12.1:
+  - rockspec: re-add deprecated function type(). Removing this
+    broke the behavior of some luarocks.build plugins. LuaRocks
+    does not have a stable public API, but since this function
+    was returned as part of the function signature, we'll revert
+    this as a deprecated function, to be removed in LuaRocks 4.0.
+    No other reverts are planned for the sake of restoring
+    private APIs.
+- Update to LuaRocks 3.12.0 (required for gh#luarocks/luarocks#1797):
+  - LuaRocks 3.12.0 marks the transition of the implementation of
+    the tool from Lua to Teal! This was implemented by Victor
+    Ilchev as his Google Summer of Code project.
+  - Transition entire implementation from Lua to Teal!
+  - luarocks upload: include .src.rock file when given.
+  - Various Windows fixes
+  - Only create binary wrapper for Lua scripts. (#1738)
+  - Project dir initialized via luarocks init has higher
+    precedence than local_by_default configuration. (#1682)
+  - add LUA_VERSION build variable for rockspecs.
+  - Rockspec format addition, feature-gated with rockspec_format
+    = "3.1:
+  - Avoid overwriting CMake variables from rockspec.
+  - Allow loading JSON-formatted manifest, to circumvent a LuaJIT
+    bug when loading Lua files.
+  - Various other minor fixes.
+- Update to LuaRocks 3.11.1:
+  - Fixes:
+    - normalize namespace names to lowercase when performing
+      dependency resolution, to match CLI behavior
+    - luarocks build: ensure --force works
+    - luarocks init: check if we can create .gitignore
+    - Unix: honor umask correctly
+    - Fix error when failing to open cached files
+    - Fix behavior of luarocks.lock file when dealing with
+      dependencies
+
+-------------------------------------------------------------------
+Sat Oct 11 20:57:00 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add %%check section just to run --version.
+- Filter out file dependency on the interpreter.
+
+-------------------------------------------------------------------
+Sat Oct 11 19:53:51 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove file dependency on the interpreter.
+
+-------------------------------------------------------------------
+Fri Oct 10 13:57:26 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Allow building with LuaJIT.
+
+-------------------------------------------------------------------
 Mon Apr 22 12:03:25 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 3.11.0:

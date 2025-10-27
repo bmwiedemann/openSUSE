@@ -17,10 +17,16 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@%{nil}
+%define flavor @BUILD_FLAVOR@
 %define mod_name luarocks
+# Remove file dependency on the interpreter
+%global __requires_exclude ^/usr/bin/lua(5\\.[1-9]|jit)?$
+%if "%{flavor}" == "luajit"
+%define lua_value  52
+%else
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-Version:        3.11.0
+%endif
+Version:        3.12.2
 Release:        0
 Summary:        A deployment and management system for Lua modules
 License:        MIT
@@ -29,11 +35,14 @@ URL:            https://luarocks.org
 Source0:        https://luarocks.org/releases/%{mod_name}-%{version}.tar.gz
 Patch0:         lib64.patch
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-compat-5.3
 BuildRequires:  curl
 BuildRequires:  lua-macros
 BuildRequires:  openssl
 BuildRequires:  unzip
+BuildRequires:  fdupes
 Requires:       %{flavor}
+Requires:       %{flavor}-compat-5.3
 Requires:       curl
 Requires:       openssl
 Requires:       unzip
@@ -67,6 +76,7 @@ repositories, and multiple local rocks trees.
   --prefix=%{_prefix} \
   --lua-version=%{lua_version}
 make %{?_smp_mflags} build
+sed -i '1s,#!/usr/bin/luajit,#!/usr/bin/lua,' build/luarocks build/luarocks-admin
 
 %install
 %make_install
@@ -82,6 +92,21 @@ ln -sf %{_sysconfdir}/alternatives/luarocks %{buildroot}%{_bindir}/luarocks-admi
 
 # rockstree
 mkdir -p %{buildroot}%{luarocks_treedir}
+
+# remove vendored compat-5.3 module
+rm -rf %{buildroot}%{lua_noarchdir}/compat53
+
+# remove duplicates
+%fdupes %{buildroot}%{lua_noarchdir}
+
+%check
+export PATH="%{buildroot}%{_bindir}"
+export LUA_PATH="%{buildroot}%{lua_noarchdir}/?.lua;"
+CLIENT='luarocks-admin-%{lua_version}'
+
+echo "Testing client $CLIENT: "
+$CLIENT --version
+echo "OK"
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/luarocks luarocks %{_bindir}/luarocks-%{lua_version} %{lua_value} \
