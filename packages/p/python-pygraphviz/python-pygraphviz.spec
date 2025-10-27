@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygraphviz
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,9 @@ URL:            https://github.com/pygraphviz/pygraphviz
 Source:         https://files.pythonhosted.org/packages/source/p/pygraphviz/pygraphviz-%{version}.tar.gz
 # https://github.com/pygraphviz/pygraphviz/issues/532
 Source1:        https://raw.githubusercontent.com/pygraphviz/pygraphviz/main/examples/README.txt
+# PATCH-FIX-UPSTREAM graphviz_14-0-0.patch bsc#1252488 mcepl@suse.com
+# make the code compatible with gvRenderData signature from graphviz 14.0.*
+Patch0:         graphviz_14-0-0.patch
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -88,8 +91,6 @@ export CFLAGS="%{optflags}"
 %if ! %{with doc}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-# Don't ship swig source
-%python_expand rm %{buildroot}%{$python_sitearch}/pygraphviz/graphviz_wrap.c
 %else
 mkdir -p %{buildroot}%{_docdir}/pygraphviz-%{version}
 cp -ar doc/build/html/* %{buildroot}%{_docdir}/pygraphviz-%{version}

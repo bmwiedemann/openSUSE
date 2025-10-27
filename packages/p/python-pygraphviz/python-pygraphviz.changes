@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 24 16:52:44 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- More gentle version of graphviz_14-0-0.patch, which doesn’t
+  change a SWIG include file, just the C generated one with the
+  minimal required change (bsc#1252488).
+
+-------------------------------------------------------------------
+Wed Oct 22 17:55:37 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add graphviz_14-0-0.patch making the code compatible with
+  gvRenderData signature from graphviz 14.0.* (bsc#1252488).
+
+-------------------------------------------------------------------
 Thu Feb 27 12:23:39 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Make it compatible wirh %{?sle15_python_module_pythons}.

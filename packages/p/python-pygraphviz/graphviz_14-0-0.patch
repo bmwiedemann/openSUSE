@@ -1,0 +1,42 @@
+---
+ pygraphviz/graphviz_wrap.c |   12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+Index: pygraphviz-1.14/pygraphviz/graphviz_wrap.c
+===================================================================
+--- pygraphviz-1.14.orig/pygraphviz/graphviz_wrap.c	2024-09-29 20:31:00.000000000 +0200
++++ pygraphviz-1.14/pygraphviz/graphviz_wrap.c	2025-10-24 18:49:18.399642610 +0200
+@@ -3022,6 +3022,11 @@
+ 
+ #include "graphviz/cgraph.h"
+ #include "graphviz/gvc.h"
++#include "graphviz/graphviz_version.h"
++
++#ifndef GRAPHVIZ_VERSION_MAJOR
++#define GRAPHVIZ_VERSION_MAJOR 12
++#endif
+ 
+ 
+ SWIGINTERN swig_type_info*
+@@ -5447,7 +5452,13 @@
+   Agraph_t *arg2 = (Agraph_t *) 0 ;
+   char *arg3 = (char *) 0 ;
+   char **arg4 = (char **) 0 ;
++#if GRAPHVIZ_VERSION_MAJOR >= 14
++  size_t *arg5 = (size_t *) 0 ;
++  size_t tempn4 ;
++#else
+   unsigned int *arg5 = (unsigned int *) 0 ;
++  unsigned int tempn4 ;
++#endif
+   void *argp1 = 0 ;
+   int res1 = 0 ;
+   void *argp2 = 0 ;
+@@ -5456,7 +5467,6 @@
+   char *buf3 = 0 ;
+   int alloc3 = 0 ;
+   char *temp4 = 0 ;
+-  unsigned int tempn4 ;
+   PyObject *swig_obj[3] ;
+   int result;
+   

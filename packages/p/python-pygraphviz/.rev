@@ -154,4 +154,17 @@
     <comment></comment>
     <requestid>1249674</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>b789a55d6197fde825bc7d472be93728</srcmd5>
+    <version>1.14</version>
+    <time>1761572240</time>
+    <user>anag_factory</user>
+    <comment>- More gentle version of graphviz_14-0-0.patch, which doesn’t
+  change a SWIG include file, just the C generated one with the
+  minimal required change (bsc#1252488).
+
+- Add graphviz_14-0-0.patch making the code compatible with
+  gvRenderData signature from graphviz 14.0.* (bsc#1252488).</comment>
+    <requestid>1313593</requestid>
+  </revision>
 </revisionlist>
