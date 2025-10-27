@@ -1,10 +1,10 @@
 <services>
-  <service name="tar_scm" mode="manual">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/prometheus/prometheus.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v3.5.0</param>
+    <param name="revision">v3.7.2</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="match-tag">v3*</param>
   </service>
@@ -13,6 +13,18 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="manual">
-    <param name="archive">prometheus-3.5.0.tar.gz</param>
+    <param name="archive">prometheus-*.obscpio</param>
+  </service>
+  <service name="node_modules" mode="manual">
+    <param name="cpio">node_modules.obscpio</param>
+    <param name="output">node_modules.spec.inc</param>
+    <param name="source-offset">10000</param>
+  </service>
+  <!-- services below are running at buildtime -->
+  <service name="tar" mode="buildtime">
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
 </services>

@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-prometheus
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,26 +27,30 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        3.5.0
+Version:        3.7.2
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://prometheus.io/
-# also includes web assets generated with `make assets`
 Source:         prometheus-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        web-ui-%{version}.tar.gz
 Source3:        prometheus.service
 Source4:        prometheus.yml
 Source5:        prometheus.sysconfig
 Source6:        prometheus.firewall.xml
-Source7:        npm_licenses.tar.bz2
 Source8:        Makefile
 Source9:        PACKAGING_README.md
+#
+Source10:       package-lock.json
+Source11:       node_modules.spec.inc
+%include        %{_sourcedir}/node_modules.spec.inc
+#
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
+Patch3:         0003-Remove-build-react-app.patch
+#
 BuildRequires:  fdupes
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
 BuildRequires:  firewall-macros
@@ -55,6 +59,7 @@ BuildRequires:  firewall-macros
 # with -buildmode=pie
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-github-prometheus-promu >= 0.14.0
+BuildRequires:  local-npm-registry
 BuildRequires:  golang(API) >= 1.23
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1500
@@ -64,7 +69,11 @@ Requires(pre):  user(prometheus)
 Requires(pre):  group(prometheus)
 Requires(post): %fillup_prereq
 Provides:       prometheus = %{version}
-ExcludeArch:    s390
+
+#
+# Error: Your current platform "linux" and architecture "ia32" combination is not yet supported by the native Rollup build
+# => exclude i586
+ExcludeArch:    s390 %{ix86}
 %systemd_ordering
 
 %description
@@ -78,10 +87,20 @@ Prometheus's main features are:
  - multiple modes of graphing and dashboarding support
 
 %prep
-%setup -q -a1 -n prometheus-%{version}
-%autosetup -D -a2 -p1 -n prometheus-%{version}
+%autosetup -a1 -p1 -n prometheus-%{version}
+pushd web/ui
+local-npm-registry %{_sourcedir} install --include=dev
+popd
 
 %build
+pushd web/ui
+npm run build
+popd
+rm -f npm_licenses.tar.bz2 npm_licenses
+ln -s . npm_licenses
+find npm_licenses/web/ui/node_modules -iname "license*" | tar cfj npm_licenses.tar.bz2 --files-from=-
+rm -f npm_licenses
+./scripts/compress_assets.sh
 %ifarch i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
 export BUILD_CGO_FLAG="--cgo"
 %endif
@@ -114,7 +133,7 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/data
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
 
-install -D -m0644 %{SOURCE7} %{buildroot}/%{_defaultlicensedir}/%{name}/npm_licenses.tar.bz2
+install -D -m0644 %{_builddir}/prometheus-%{version}/npm_licenses.tar.bz2 %{buildroot}/%{_defaultlicensedir}/%{name}/npm_licenses.tar.bz2
 
 %fdupes %{buildroot}/%{_prefix}
 
