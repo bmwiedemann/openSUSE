@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 14 19:58:27 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Exclude tests requiring a graphical toolkit
+
+-------------------------------------------------------------------
 Wed Jan  3 09:39:35 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.8.1:

@@ -89,4 +89,12 @@
     <comment></comment>
     <requestid>1136483</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>6f819ac1e8fd2d18c84aa29bec4e949e</srcmd5>
+    <version>2.8.1</version>
+    <time>1761572523</time>
+    <user>anag_factory</user>
+    <comment>- Exclude tests requiring a graphical toolkit (forwarded request 1313666 from StefanBruens)</comment>
+    <requestid>1313790</requestid>
+  </revision>
 </revisionlist>
