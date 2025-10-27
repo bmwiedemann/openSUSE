@@ -486,4 +486,41 @@
   * Fix detection of inconsistent renames due to sunk values.</comment>
     <requestid>1256453</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5f833a4ddd8066c01d2ea301529f15d9</srcmd5>
+    <version>2.1.20250826</version>
+    <time>1761572233</time>
+    <user>anag_factory</user>
+    <comment>- Add Provides: Lua(API)
+- Don’t Conflict with lua51 directly.
+- Don’t provide _bindir/lua5.1
+- Rewrite SPEC file to work with other Lua interpreters and packages.
+- Replace the implementation of LuaJIT of the original
+  implementation of Mike Pall with the OpenResty fork.
+- Just to make rpmlint happy, I have to mention that we removed
+  these patches:
+  - 0003-Get-rid-of-LUAJIT_VERSION_SYM-that-changes-ABI-on-ev.patch
+  - 0002-Enable-debugging-symbols-in-the-build.patch
+- Reapply patches to avoid fuzz and long-term maintenance:
+  - loong64-support.patch
+  - riscv64-support.patch
+- Updated to 2.1.20250826 (1756211046)
+  * FFI: Fix dangling CType references (again).
+  * Avoid out-of-range PC for stack overflow error from snapshot restore.
+  * x86/x64: Don't use undefined MUL/IMUL zero flag.
+  * Windows: Add lua52compat option to msvcbuild.bat.
+- Cherry-pick riscv64-support.patch to add RISC-V support
+- Cherry-pick loong64-support.patch to add LoongArch support
+- Increase _default_patch_fuzz to 2 to allow patches to apply
+- Updated to 2.1.20250529 (1748495995).
+  * https://github.com/openresty/luajit2/compare/v2.1-20250117...v2.1-20250529
+- Updated to 2.1.20250117 (1737090214).
+  * Changed file luajit2-name.patch.
+  * https://github.com/openresty/luajit2/compare/v2.1-20241203...v2.1-20250117
+  * Fixed recording of BC_VARG.
+- Updated to 2.1.20241113 (2.1.1731486438).
+  * Upstream doesn't provide a ChangeLog.
+- Updated to 2.1.20241104 (2.1.1728714540).</comment>
+    <requestid>1313747</requestid>
+  </revision>
 </revisionlist>

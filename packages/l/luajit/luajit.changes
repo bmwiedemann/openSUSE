@@ -1,526 +1,169 @@
 -------------------------------------------------------------------
-Tue Mar 25 16:04:27 UTC 2025 - mcepl@cepl.eu
+Sun Oct 26 20:16:37 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
-- Update to version 5.1.2.1.0+git.1741730670.538a821:
-  * Change handling of nil value markers in template tables.
-  * REVERT: Change handling of nil value markers in template tables.
-  * macOS: Fix Apple hardened runtime support and put behind build option.
-  * macOS: Fix support for Apple hardened runtime.
-  * Fix handling of nil value markers in template tables.
-  * Avoid unpatching bytecode twice after a trace flush.
-  * Fix state restore when recording __concat metamethod.
-  * Windows: Allow mixed builds with msvcbuild.bat.
-  * macOS: Add suport for Apple hardened runtime.
-  * Add compatibility string coercion for fp:seek() argument.
-  * Windows: Clarify installation directory layout.
-  * Remove Cygwin from docs, since it's not a supported target.
-  * Improve CLI signal handling on POSIX.
-  * FFI: Add pre-declared int128_t, uint128_t, __int128 types.
-  * Use dylib extension for iOS installs, too.
-  * Change handling of nil value markers in template tables.
-  * Fix recording of BC_VARG.
-  * Reject negative getfenv()/setfenv() levels to prevent compiler warning.
-  * Bump copyright date.
-  * Force fallback source name for stripped bytecode.
-  * Remove dependency on <limits.h>.
-  * Restore state when recording __concat metamethod throws OOM.
-  * MIPS64: Fix pcall() error case.
-  * Fix detection of inconsistent renames due to sunk values.
+- Add Provides: Lua(API)
 
 -------------------------------------------------------------------
-Fri Mar  7 05:12:33 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+Sat Oct 11 14:16:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
-- Enable lua 5.2 compatibility (Needed for build aegisubs)
-
--------------------------------------------------------------------
-Fri Dec  6 07:23:43 UTC 2024 - Adrian Schröter <adrian@suse.de>
-
-- No loongarch64 support yet
-- turn around the logic to known supported architectures
+- Don’t Conflict with lua51 directly.
+- Don’t provide _bindir/lua5.1
 
 -------------------------------------------------------------------
-Wed Nov 20 07:23:12 UTC 2024 - mcepl@cepl.eu
+Thu Oct  9 21:14:30 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
-- Update to version 5.1.2.1.0+git.1731601260.fe71d0f:
-  * Windows: Allow amalgamated static builds with msvcbuild.bat.
-  * Always close profiler output file.
-  * Fix override of INSTALL_LJLIBD in the presence of DESTDIR.
-  * Fix bit op coercion for shifts in DUALNUM builds.
-
--------------------------------------------------------------------
-Wed Nov 06 16:31:22 UTC 2024 - mcepl@cepl.eu
-
-- Update to version 5.1.2.1.0+git.1727870382.97813fb:
-  * macOS: Remove obsolete -single_module flag.
-  * macOS: Workaround for buggy XCode 15.0 - 15.2 linker.
-  * macOS: Fix macOS 15 / Clang 16 build.
-  * Fix bit op coercion in DUALNUM builds.
-  * Fix compiliation of getmetatable() for UDTYPE_IO_FILE.
-  * Remove ancient RtlUnwindEx workaround for MinGW64.
-  * Drop unused function wrapper.
+- Rewrite SPEC file to work with other Lua interpreters and packages.
+- Replace the implementation of LuaJIT of the original
+  implementation of Mike Pall with the OpenResty fork.
+- Just to make rpmlint happy, I have to mention that we removed
+  these patches:
+  - 0003-Get-rid-of-LUAJIT_VERSION_SYM-that-changes-ABI-on-ev.patch
+  - 0002-Enable-debugging-symbols-in-the-build.patch
+- Reapply patches to avoid fuzz and long-term maintenance:
+  - loong64-support.patch
+  - riscv64-support.patch
 
 -------------------------------------------------------------------
-Wed Nov  6 16:25:34 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+Wed Oct  8 07:29:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update luajit-s390x.patch from
-  gh#openresty/luajit2!195 (following the advice on
-  gh#LuaJIT/LuaJIT!631#issuecomment-2459913131).
-
--------------------------------------------------------------------
-Mon Aug 26 18:41:09 UTC 2024 - mcepl@cepl.eu
-
-- Update to version 5.1.2.1.0+git.1724512491.f725e44:
-  * Fix limit check in narrow_conv_backprop().
-  * Always use IRT_NIL for IR_TBAR.
-  * ARM64: Use ldr literal to load FP constants.
-  * FFI: Add missing coercion when recording 64-bit bit.*().
-  * ARM64: Make tobit conversions match JIT backend behavior.
-  * ARM: Make hard-float tobit conversions match JIT backend behavior.
-  * FFI: Drop finalizer table rehash after GC cycle.
-  * Fix another potential file descriptor leak in luaL_loadfile*().
-  * MIPS32: Fix little-endian IR_RETF.
-  * Correctly close VM state after early OOM during open.
-  * Fix potential file descriptor leak in luaL_loadfile*().
-  * Reflect override of INSTALL_LJLIBD in package.path.
-  * ARM64: Use movi to materialize FP constants.
-  * Add more FOLD rules for integer conversions.
-  * Different fix for partial snapshot restore due to stack overflow.
-  * Fix IR_ABC hoisting.
-  * Limit CSE for IR_CARG to fix loop optimizations.
-  * Call math.randomseed() without arguments to seed from system entropy.
-  * Restore state when recording __concat metamethod throws an error.
-  * Add build flag LUAJIT_DISABLE_TAILCALL to disable tailcall generation.
-  * Clarify that lj_buf_shrink() does not keep any buffer data.
-  * OSX: Fix installed luajit.pc.
-  * FFI: Fix various issues in recff_cdata_arith.
-  * Fix predict_next() in parser (for real now).
-  * FFI: Fix __tostring metamethod access to enum cdata value.
-  * Fix typo.
-  * Handle partial snapshot restore due to stack overflow.
-  * Update Nintendo Switch build script.
-  * Prevent sanitizer warning in snap_restoredata().
-  * Typo.
-  * Limit number of string format elements to compile.
-  * FFI: Clarify scalar boxing behavior.
-  * Fix internal link in docs.
-  * OSX/iOS: Fix SDK incompatibility.
-  * Windows/MSVC: Cleanup msvcbuild.bat and always generate PDB.
-  * Fix segment release check in internal memory allocator.
-  * Fix compiler warning.
-  * FFI: Turn FFI finalizer table into a proper GC root.
-  * OSX/iOS: Always generate 64 bit non-FAT Mach-O object files.
-  * Show name of NYI bytecode in -jv and -jdump.
-  * Use generic trace error for OOM during trace stitching.
-  * Fix serialization format docs.
-  * Handle all types of errors during trace stitching.
-  * Fix recording of __concat metamethod.
-  * Prevent down-recursion for side traces.
-  * Check frame size limit before returning to a lower frame.
-  * FFI: Treat cdata finalizer table as a GC root.
-  * Handle stack reallocation in debug.setmetatable() and lua_setmetatable().
-- Update patches:
-  - luajit-lua-versioned.patch
-  - luajit-s390x.patch (update to the latest base code)
+- Updated to 2.1.20250826 (1756211046)
+  * FFI: Fix dangling CType references (again).
+  * Avoid out-of-range PC for stack overflow error from snapshot restore.
+  * x86/x64: Don't use undefined MUL/IMUL zero flag.
+  * Windows: Add lua52compat option to msvcbuild.bat.
+- Cherry-pick riscv64-support.patch to add RISC-V support
+- Cherry-pick loong64-support.patch to add LoongArch support
+- Increase _default_patch_fuzz to 2 to allow patches to apply
 
 -------------------------------------------------------------------
-Fri Mar 01 20:05:18 UTC 2024 - mcepl@cepl.eu
+Fri Jul 11 14:07:00 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
-- Update to version 5.1.2.1.0+git.1707061634.0d313b2:
-  * Rework stack overflow handling.
-  * Preserve keys with dynamic values in template tables when saving bytecode.
-  * Prevent include of luajit_rolling.h.
-  * Fix documentation bug about '\z' string escape.
-  * Fix zero stripping in %g number formatting.
-  * Fix unsinking of IR_FSTORE for NULL metatable.
-  * DynASM/x86: Add endbr instruction.
-  * MIPS64 R2/R6: Fix FP to integer conversions.
-  * Add cross-32/64 bit and deterministic bytecode generation.
-  * DynASM/x86: Allow [&expr] operand.
-  * Check for IR_HREF vs. IR_HREFK aliasing in non-nil store check.
-  * Respect jit.off() on pending trace exit.
-  * Simplify handling of instable types in TNEW/TDUP load forwarding.
-  * Only emit proper parent references in snapshot replay.
-  * Fix anchoring for string buffer set() method (again).
-  * ARM: Fix stack restore for FP slots.
-  * Document workaround for multilib vs. cross-compiler conflict.
-  * Fix anchoring for string buffer set() method.
-  * Fix runtime library flags for MSVC debug builds.
-  * Fix .debug_abbrev section in GDB JIT API.
-  * Optimize table.new() with constant args to (sinkable) IR_TNEW.
-  * Emit sunk IR_NEWREF only once per key on snapshot replay.
-  * Fix last commit.
-  * x86/x64: Don't fuse loads across IR_NEWREF.
-  * Improve last commit.
-  * x86/x64: Don't fuse loads across table.clear.
-  * x86/x64: Add more red zone checks to assembler backend.
-  * Add stack check to pcall/xpcall.
-  * Invalidate SCEV entry when returning to lower frame.
-  * FFI: Fix pragma push stack limit check and throw on overflow.
-  * ARM64: Fix disassembly of ldp/stp offsets.
-  * Check for upvalue state transition in IR_UREFO.
-  * x64: Properly fix __call metamethod return dispatch.
-  * Windows/x86: _BitScan*64 are only available on 64 bit archs.
-  * Add 'cc' file type for saving bytecode.
-  * FFI/Windows: Fix type declaration for int64_t and uint64_t.
-  * FFI: Fix dangling reference to CType in carith_checkarg().
-  * DynASM/ARM64: Support ldp/stp of q registers.
-  * ARM64: Use ADR and ADRP to form constants.
-  * ARM64: Fix disassembly of U12 loads.
-  * ARM64: Unify constant register handling in interpreter.
-  * ARM: Fix register hint for FFI calls with FP results.
-  * ARM64: Fix register hint for FFI calls with FP results.
-  * ARM64: Restore fp before sp in C stack unwinders.
-  * FFI: Fix ffi.abi("pauth").
-  * Maintain chain invariant in DCE.
-  * LJ_FR2: Fix stack checks in vararg calls.
-  * Follow-up fix for stack overflow handling cleanup.
-  * Handle OOM error on stack resize in coroutine.resume and lua_checkstack.
-  * Restore cur_L for specific Lua/C API use case.
-  * Consistently use 64 bit constants for 64 bit IR instructions.
-  * ARM64: Fix IR_HREF code generation for constant FP keys.
-  * ARM64: Fuse negative 32 bit constants into arithmetic ops again.
-  * Handle all stack layouts in (delayed) TRACE vmevent.
-  * Add missing coercion when recording select(string, ...)
-  * Cleanup stack overflow handling.
-  * Windows/ARM64: Add MSVC cross-build support for x64 to ARM64.
-  * IR_MIN/IR_MAX is non-commutative due to underlying FPU ops.
-  * ARM64: Set fixed interpreter registers before rethrow.
-  * Windows/ARM64: Update install docs.
-  * Windows: Call C++ destructors without compiling with /EHa.
-  * Windows: Pass scratch CONTEXT record to RtlUnwindEx.
-  * ARM64: External unwinder already restores non-volatile registers.
-  * Windows/ARM64: Fix exception unwinding (again).
-  * Windows/ARM64: Fix typo in exception unwinding.
-  * FFI: Fix 64 bit shift fold rules.
-  * Windows/ARM64: Support Windows calling conventions.
-  * Windows/ARM64: Fix exception unwinding.
-  * ARM64: Remove unneeded IRCALL_* defs for math intrinsics.
-  * Fix Cygwin build.
-  * Allow path overrides in genversion.lua with minilua, too.
-  * Windows/ARM64: Add initial support.
-  * Improve architecture detection error messages.
-  * ARM64: Fuse rotates into logical operands.
-  * ARM64: Don't fuse sign extensions into logical operands.
-  * ARM64: Disassemble rotates on logical operands.
-  * ARM: Fix stack check code generation.
-  * ARM64: Fix LDP/STP fusion (again).
-  * ARM64: Ensure branch is in range before emitting TBZ/TBNZ.
-  * Fix mcode limit check for non-x86 archs.
-  * ARM64: Improve BC_JLOOP.
-  * ARM64: Improve integer IR_MUL code generation.
-  * ARM64: Simplify code generation for IR_STRTO.
-  * ARM64: Use RID_TMP instead of scratch register in more places.
-  * ARM64: Improve IR_OBAR code generation.
-  * ARM64: Improve IR_UREF code generation.
-  * ARM64: Improve IR_HREF code generation.
-  * ARM64: Reload BASE via GL instead of spilling it.
-  * ARM64: Consolidate 32/64-bit constant handling in assembler.
-  * ARM64: Tune emit_lsptr. Avoid wrong load for asm_prof.
-  * ARM64: Inline only use of emit_loada.
-  * ARM64: Improve K13 constant rematerialization.
-  * Add NaN check to IR_NEWREF.
-  * Allow override of paths for genversion.lua.
-  * Fix native MinGW build.
-- Also refresh luajit-s390x.patch from the rebased pull request.
+- Updated to 2.1.20250529 (1748495995).
+  * https://github.com/openresty/luajit2/compare/v2.1-20250117...v2.1-20250529
 
 -------------------------------------------------------------------
-Mon Oct  9 20:09:43 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+Sat Jan 18 10:16:26 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
-- Adjust luajit-lua-versioned.patch to have correct LUA_LJDIR
-  (bsc#1215592).
-
--------------------------------------------------------------------
-Wed Sep 06 21:51:55 UTC 2023 - mcepl@cepl.eu
-
-- Update to version 5.1.2.1.0+git.1693350652.41fb94d:
-  * Add randomized register allocation for fuzz testing.
-  * ARM64: Improve register allocation for integer IR_MUL/IR_MULOV.
-  * ARM64: Fix register allocation for IR_*LOAD.
-  * Update external MSDN URL in code.
-  * FFI/ARM64/OSX: Handle non-standard OSX C calling conventions.
-  * FFI: Unify stack setup for C calls in interpreter.
-  * ARM64: Prevent STP fusion for conditional code emitted by TBAR.
-  * ARM64: Fix LDP/STP fusing for unaligned accesses.
-  * Handle table unsinking in the presence of IRFL_TAB_NOMM.
-  * Use fallback name for install files without valid .git or .relver.
-  * Handle non-.git checkout with .relver in .bat-file builds.
-  * Fix external C call stack check when using LUAJIT_MODE_WRAPCFUNC.
-  * Fix predict_next() in parser (again).
-- Update luajit-lua-versioned.patch to work with the git checkout
-  created tarball. The point of the patch is to extend the
-  version number so that it is always bigger than 2.2.0 version
-  of moonjit, which is Obsoleted by this package.
+- Updated to 2.1.20250117 (1737090214).
+  * Changed file luajit2-name.patch.
+  * https://github.com/openresty/luajit2/compare/v2.1-20241203...v2.1-20250117
+  * Fixed recording of BC_VARG.
 
 -------------------------------------------------------------------
-Wed Aug 23 14:18:06 UTC 2023 - mcepl@cepl.eu
+Sat Nov 23 13:05:56 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
-- Update to version 2.1.0~beta3+git.1692716794.03c3112:
-  * Fix typo.
-  * Handle the case when .git is not a directory.
-  * Add .gitattributes to dynamically resolve .relver.
-  * Add .gitattributes to dynamically resolve .relver.
-  * Fix for last commit: also remove symlink on uninstall.
-  * Switch to rolling releases: mark v2.1 as production.
-  * Fix Windows build scripts for rolling releases.
-  * Switch MSVC and console build scripts to rolling releases.
-  * Switch build system to rolling releases.
-  * Update documentation for switch to rolling releases.
-  * Bump copyright date.
-  * Remove work-in-progress notice in string buffer docs.
-  * MIPS: Fix "bad FP FLOAD" assertion.
-  * Ensure forward progress on trace exit to BC_ITERN.
-  * ARM64: Add support for ARM64e pointer authentication codes (PAC).
-  * DynASM/ARM64: Add instructions for ARM64e PAC.
-  * Fix maxslots when recording BC_VARG, part 3.
-  * Fix predict_next() in parser.
-  * MIPS32: Declare that the assembler part uses the FR=0 model.
-  * ARM64: Fix assembly of HREFK (again).
-  * Fix frame for more types of on-trace error messages.
-  * Add workaround for bytecode dump of builtins.
-  * DynASM: Fix regression due to warning fix.
-  * Fix base register coalescing in side trace.
-  * ARM64: Fix assembly of HREFK.
-  * Fix maxslots when recording BC_VARG, part 2.
-  * Fix maxslots when recording BC_TSETM.
-  * Fix maxslots when recording BC_VARG.
-  * Fix register mask for stack check in head of side trace.
-  * FFI: Fix ffi.metatype() for non-raw types.
-  * ARM64: Fix LDP code generation.
-  * MIPSr6: Add missing files to Makefile install target.
-  * DynASM: Fix warnings.
-  * Fix frame for on-trace out-of-memory error.
-  * Fix handling of instable types in TNEW/TDUP load forwarding.
-  * Fix compiler warning.
-  * Fix last commit.
-  * Print errors from __gc finalizers instead of rethrowing them.
-  * Fix TDUP load forwarding after table rehash.
-  * Fix canonicalization of +-0.0 keys for IR_NEWREF.
-  * Improve error reporting on stack overflow.
-  * Allow building sources with mixed LF/CRLF line-endings.
-  * Fix compiler warning.
-  * Don't fail for Clang builds, which pretend to be an ancient GCC.
-  * Avoid negation of signed integers in C that may hold INT*_MIN.
-  * Correct fix for stack check when recording BC_VARG.
-  * Disable FMA by default. Use -Ofma or jit.opt.start("+fma") to enable.
-  * FFI: Fix dangling reference to CType. Improve checks.
-  * ARM64: Fix code generation for IR_SLOAD with typecheck + conversion.
-  * PS4/PS5: Fix build scripts.
-  * Avoid assertion in case of stack overflow from stitched trace.
+- Updated to 2.1.20241113 (2.1.1731486438).
+  * Upstream doesn't provide a ChangeLog.
 
 -------------------------------------------------------------------
-Mon Aug 21 13:04:40 UTC 2023 - Matej Cepl <mcepl@suse.com>
+Thu Nov  7 08:00:47 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
-- Update luajit-s390x.patch from gh#LuaJIT/LuaJIT#631 to the
-  current form.
+- Updated to 2.1.20241104 (2.1.1728714540).
+  * FFI: Added missing coercion when recording 64-bit bit.*().
+  * ARM64: Used ldr literal to load FP constants.
 
 -------------------------------------------------------------------
-Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+Wed Aug 28 03:54:34 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 2.1.20240815 (2.1.1723681758).
+  * Changed file luajit2-name.patch.
+  * Added ppc64le support.
+
+-------------------------------------------------------------------
+Fri May 10 04:09:49 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Changed file luajit2-name.patch and fixed package.path for modules.
+
+-------------------------------------------------------------------
+Fri May  3 21:45:30 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Removed %check (tests don't run, and it's not known how to run them).
+
+-------------------------------------------------------------------
+Wed May  1 02:13:06 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 2.1.20240314 (2.1.1710398010).
+- Refreshed spec-file via spec-cleaner and manual optimizations.
+- Added file luajit2-name.patch.
+- Renamed package to luajit2.
+
+-------------------------------------------------------------------
+Thu Jan 26 09:08:11 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Opencode %make_build to prevent build failure when not defined.
 
 -------------------------------------------------------------------
-Tue Nov 22 23:18:13 UTC 2022 - mcepl@cepl.eu
+Wed Jan 25 13:46:36 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
-- Update to version 2.1.0~beta3+git.1669107176.46aa45d:
-  * NX: Always compile with -fPIC.
-  * Clarify contact page.
-  * Ensure correct stack top for OOM error message.
-  * ARM64: Fix IR_SLOAD assembly.
-  * Fix trace join to BC_JLOOP originating from BC_ITERN.
-  * Fix compiler warnings.
-  * Fix last edit.
-  * Remove dead Wiki links.
-  * Fix QNX build.
-  * Add -F option to override filename in jit.bcsave (luajit -b).
-  * Patch luajit.pc with INSTALL_INC, if customized.
-  * LJ_GC64: Fix lua_concat().
-  * Prevent use of RTLD_DEFAULT when NO_RTLD_DEFAULT is defined.
-  * Improve GC estimation for userdata with attached managed memory.
-  * Add missing GC steps to string buffer methods.
-  * x86/x64: Limit VLOAD fusion to simple cases.
-  * OSX/iOS/ARM64: Fix generation of Mach-O object files.
-  * Prevent trace start at BC_ITERL after compiled BC_ITERN.
-  * ARM64: Allow building with unwinding disabled.
-  * FFI: Fix sizeof expression in C parser for reference types.
-  * FFI: Fix ffi.alignof() for reference types.
-  * FFI: Allow ffi.metatype() for typedefs with attributes.
-  * OSX/iOS/ARM64: Fix bytecode embedding in Mach-O object file.
-  * LJ_GC64: Fix IR_VARG offset for fixed number of results.
-  * x86/x64: Fix math.ceil(-0.9) result sign.
-  * Grammar and spell check.
-  * Make embedded bytecode readable and forward-compatible.
-  * DynASM: Fix warnings.
-  * Fix warnings in minilua.c.
-  * Update console build instructions.
-  * Add Nintendo Switch port.
-  * Avoid zero-sized arrays in jit_State.
-  * Don't use jit_State during build with JIT disabled.
-  * DynASM/ARM64: Fix LSL/BFI* encoding with variable registers.
-  * Fix ITERN loop detection when hook checks are enabled.
-  * Prevent C compiler undefined-behavior optimization.
-  * Fix alias analysis for table length forwarding.
-  * Fix loop initialization in table.foreach().
-  * LJ_GC64: Fix HREFK optimization.
-  * Fix recording of __concat metamethod.
-  * Cleanup of system and architecture support docs.
-  * Add PS5 port.
-  * Fix assertions.
-  * x64: Fix RETHI/RETLO swap after call.
-  * Fix assertion for LJ_KEYINDEX.
-  * Add missing check for LJ_KEYINDEX in ITERN recording.
-  * DynASM/ARM64: Fix NOP instruction for aligment
-- Was forced to remove perhaps in future important patches:
-  - luajit-ppc64-replace-asserts.patch
-  - 0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+- Rewrite moonjit package to build openresty from
+  https://github.com/openresty/luajit2.
 
 -------------------------------------------------------------------
-Tue Nov 22 16:22:18 UTC 2022 - Michael Gorse <mgorse@suse.com>
+Mon Jul 12 17:33:50 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
-- Also exclude s390x from the build (boo#1204557).
-
--------------------------------------------------------------------
-Tue Nov  1 16:01:53 UTC 2022 - Michael Gorse <mgorse@suse.com>
-
-- Add ppc64 and ppc64le to ExcludeArch for now. This can be
-  removed if we rebase the ppc64 patch, but it is no longer being
-  maintained and seems unlikely to land upstream (bsc#1204557).
+- Rewrite the packaging to acommodate a possibility of two LuaJIT
+  implementations in the distribution.
 
 -------------------------------------------------------------------
-Tue Oct  4 19:00:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+Sat Jul  3 19:20:57 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
-- exclude luajit from building on riscv64 - not yet supported
-
--------------------------------------------------------------------
-Wed Mar 23 21:33:11 UTC 2022 - mcepl@cepl.eu
-
-- Update to version 2.1.0~beta3+git.1647772157.43ebb949:
-  * Fix soft-float IR_POW splitting.
-  * Fix BC_UCLO insertion for returns.
-  * Fix compiler warning.
-  * Revert to trival pow() optimizations to prevent inaccuracies.
-  * Fix string buffer COW handling, part 2.
-  * Fix install docs for Android.
-  * *BSD: Fix getentropy() declaration.
-  * Fix string buffer COW handling.
-  * Fix command-line argv handling.
-  * Don't export internal symbol.
-  * Fix pow() optimization inconsistencies.
-  * Always exit after machine code page protection change fails.
-  * Fix FOLD rule for BUFHDR append with intervening buffer use.
-  * Fix compiled error handling for buffer methods.
-  * Prevent unroll across BC_ITERN.
-  * Prevent replay of buffer operation for PHI operands.
-  * Save trace recorder state around VM event call.
-  * Bump copyright date.
-  * FFI: Ensure library is loaded before de-serializing FFI types.
-  * Fix HREFK forwarding vs. table.clear().
-  * Fix FOLD rule for BUFHDR append.
-  * OSX: Disable unreliable assertion for external frame unwinding.
-  * Limit exponent range in number parsing.
-  * Fix tonumber("-0") in dual-number mode.
-  * Limit work done in SINK pass.
-  * Fix ABC FOLD rule with constants.
-  * Prevent CSE of a REF_BASE operand across IR_RETF.
-  * Windows: Fix binary output of jit.bcsave to stdout.
-  * Fix FOLD rule for x-0.
-  * Update Android build docs.
-  * Update Android build docs.
-  * ARM64: Fix pcall() error case.
-  * OSX/ARM64: Fix external unwinding.
-  * Fix string buffer method recording.
-  * Fix interaction of profiler and ITERN recording.
-  * Fix compilation of multi-result call to next().
-  * ARM64: Fix IR_HREF code generation.
-  * MIPS64: Fix soft-float IR_TOSTR.
-  * MIPS: Fix register allocation in assembly of HREF.
-  * Fix compiler warning.
-  * Windows/x64: Document MSVC flags for C++ exception interoperability.
-  * FFI: Ensure returned string is alive in ffi.typeinfo().
-  * OSX/ARM64: Disable unwind info.
-  * Fix stack allocation after on-trace stack check.
-  * Fix ITERN blacklisting.
-  * Ensure ITERN forward progress on interpreter bailout.
-  * ARM64: Reorder interpreter stack frame and fix unwinding.
-  * Don't bail out to interpreter to JLOOP originating from ITERN.
-  * FFI: Don't load PC from non-function object in FFI continuation.
-  * FFI: Don't load PC from non-function object in FFI continuation.
-  * FFI: Fix missing cts->L initialization in argv2ctype().
-  * OSX/ARM64: Disable external unwinding for now.
-  * Compile table traversals: next(), pairs(), BC_ISNEXT/BC_ITERN.
-  * Use IR_HIOP for generalized two-register returns.
-  * Refactor table traversal.
-  * ARM: Fix symbol display in trace disassembly.
-  * Refactor IR_TMPREF generation.
-  * Refactor IR_VLOAD to take an offset.
-  * MIPS: Fix trace linking.
-  * String buffers, part 4b: Improve de-serialization checks.
-  * String buffers, part 4a: Add metatable serialization dictionary.
-  * Consider slots used by upvalues in use-def analysis.
-  * Prevent loop in snap_usedef().
-  * Fix io.close() error message.
-  * Fix io.close().
-  * Fix minilua vararg stack handling.
-  * PS4: Fix compile.
-  * Avoid out-of-range number of results when compiling select(k, ...).
-  * String buffers, part 3d: Compile string buffer methods and functions.
-  * Minor improvements of optimizations.
-  * Fix error message in lj_lib_checkintrange().
-  * String buffers, part 2f: Prevent self-put of buffer.
-  * String buffers, part 3c: Add IRBUFHDR_WRITE mode.
-  * Fix IRXLOAD_* mode bits description.
-  * String buffers, part 3b: Change IR_BUFHDR op2 mode bits to mode.
-  * String buffers, part 3a: Add IR_TMPREF for passing TValues to helpers.
-  * Add IRCONV_NONE for pass-through INT to I64/U64 type change.
-  * Fix jit.dump() output for IR_CONV.
-- Patches broken in the need of rebase (temporarily switched off):
-  - 0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
-  - luajit-ppc64-replace-asserts.patch
+- Fix Provides ... we don't provide an equvalent of 2.2.0 LuaJIT
+  (which doesn't exsts).
 
 -------------------------------------------------------------------
-Wed Oct 27 20:20:36 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+Mon Mar 30 12:31:09 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
-- Replace luajit-ppc64-remove-asserts.patch with
-  luajit-ppc64-replace-asserts.patch to use the proper assert
-  functions instead of removing them.
-
--------------------------------------------------------------------
-Mon Oct 25 21:55:16 UTC 2021 - Michael Gorse <mgorse@suse.com>
-
-- Add luajit-ppc64-remove-asserts.patch: remove calls to
-  lua_assert. Fixes the build with our revision (bsc#1191615).
-- Add luajit-s390x.patch: add s390x support, based on Fedora's
-  patch and ported to our revision.
-- Remove ExcludeArch, since package currently builds on s390x.
+- Add moonjit105-string_gsub.patch to fix gsub method, which breaks
+  other packages (namely neovim).
 
 -------------------------------------------------------------------
-Thu Oct  7 15:09:55 UTC 2021 - Michael Gorse <mgorse@suse.com>
+Thu Mar 12 12:09:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Exclude s390x for now. There is a not-yet-upstreamed port
-  available, but we would need to rebase it for our release.
-
--------------------------------------------------------------------
-Mon Jul 12 17:15:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
-
-- Clean up SPEC. We don't need update-alternatives after all.
+- No need to namespace luajit with update-alternatives, we really
+  want just one version of it to be provided to keep things
+  simple
 
 -------------------------------------------------------------------
-Tue Jun 29 17:17:36 UTC 2021 - munix9@googlemail.com
+Thu Mar 12 11:42:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to version 2.1.0~beta3+git294.e9577376:
-  * Disable unreliable assertion for external frame unwinding.
-  * Flush and close output file after profiling run.
-  * Avoid conflict between 64 bit lightuserdata and ITERN key.
+- Update to 2.2.0:
+  * The v2.2 release of moonjit brings many new features that bring the
+    project closer to its aim of unifying LuaJIT forks and compatibility
+    with Lua. 
+- Do not suffix the version anymore as we support all lua variants,
+  removes the patch:
+  * luajit-lua-versioned.patch
 
 -------------------------------------------------------------------
-Thu Jun 24 10:15:35 UTC 2021 - munix9@googlemail.com
+Wed Dec 18 09:05:04 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
-- Update to version 2.1.0~beta3+git291.3f9389ed:
-  * Throw any errors before stack changes in trace stitching.
-  * DynASM/x86: Add missing escape in pattern.
-  * Fix HTML.
-  * String buffers, part 2e: add serialization string dictionary.
-  * DynASM/ARM64: Fix LSL/BFI* encoding with variable shifts.
-  * Fix MinGW static build.
-  * Fix dependencies.
-  * Fix IR_BUFHDR assembly.
+- Ignore make check error for PowerPC until upstream solved issue
+  https://github.com/moonjit/moonjit/issues/40
+- do the same for %arm rather than to disable all %check.
 
+-------------------------------------------------------------------
+Mon Dec 16 09:07:37 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable %check on %arm until the following issue is fixed:
+  https://github.com/moonjit/moonjit/issues/9
+
+-------------------------------------------------------------------
+Thu Dec 12 14:12:25 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Use %_lib
+
+-------------------------------------------------------------------
+Mon Dec  9 12:54:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Obsolete/provide lua51-luajit as it was the old luajit name
+
+-------------------------------------------------------------------
+Fri Dec  6 07:44:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fork of luajit with more active upstream
+- Version 2.1.2 building on top of 2.1.0-beta3 with following goodies:
+  * fix for CVE-2019-19391
+  * Support for ppc64 ppc64le s390 s390x
+- Still carry the patch luajit-lua-versioned.patch to mark it as
+  compatible with lua 5.1, future 2.2 release should contain
+  support for 5.2 and 5.3 release of LUA

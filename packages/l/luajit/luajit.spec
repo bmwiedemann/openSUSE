@@ -1,7 +1,7 @@
 #
-# spec file for package luajit
+# spec file for package luajit2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,120 +15,183 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-# These numbers are from readelf -a /usr/lib*/lib*.so* |grep soname (dots replaced by underscores)
-%define lib_version 5_1
-%define so_version 2
-%define upname LuaJIT
+%define abi_ver 5.1
+%define so_ver 2
+%define lib_ver 5_1-%{so_ver}
+%define major 2.1
+%define minor 20250826
+%define upstream 1756211046
 Name:           luajit
-Version:        5.1.2.1.0+git.1741730670.538a821
+Version:        %{major}.%{minor}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Release:        0
 Summary:        JIT compiler for Lua language
 License:        MIT
-URL:            https://luajit.org/
-Source0:        %{upname}-%{version}.tar.xz
+URL:            https://github.com/openresty/%{name}
+
+Source0:        https://github.com/openresty/luajit2/archive/refs/tags/v%{major}-%{minor}.tar.gz#/luajit2-%{major}-%{minor}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE luajit-lua-versioned.patch mcepl@suse.com
-# Because we obsolete moonjit with version number higher than %%{version} we have to emulate Epoch
-Patch0:         luajit-lua-versioned.patch
-# https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0002-Enable-debugging-symbols-in-the-build.patch
-Patch2:         0002-Enable-debugging-symbols-in-the-build.patch
-# https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0003-Get-rid-of-LUAJIT_VERSION_SYM-that-changes-ABI-on-ev.patch
-Patch3:         0003-Get-rid-of-LUAJIT_VERSION_SYM-that-changes-ABI-on-ev.patch
-# Most recent s390x patches at https://github.com/luajit/luajit/pull/631
-Patch4:         luajit-s390x.patch
-# PPC64 patches are out of sync
-# # https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
-# # Patch again out of sync, gh#LuaJIT/LuaJIT#140
-# Patch5:         0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
-# Patch6:         luajit-ppc64-replace-asserts.patch
-BuildRequires:  git
+# https://patch-diff.githubusercontent.com/raw/openresty/luajit2/pull/236.patch#/riscv64-support.patch#/riscv64-support.patch
+Patch0:         riscv64-support.patch
+# https://github.com/openresty/luajit2/pull/245/commits/8e40aca7b3a919456b15698273e9b00e9250e769.patch#/loong64-support.patch
+Patch1:         loong64-support.patch
 BuildRequires:  pkgconfig
-Requires:       %{name}-%{lib_version}-%{so_version} = %{version}
+BuildRequires:  lua-macros
+Requires:       lib%{name}-%{lib_ver} = %{version}
 Provides:       lua51-luajit = %{version}-%{release}
-Obsoletes:      lua51-luajit <= 2.2.0
+Obsoletes:      lua51-luajit < %{version}
 Provides:       moonjit = %{version}-%{release}
-Obsoletes:      moonjit <= 2.2.0
+Obsoletes:      moonjit < %{version}
+Provides:       lua = %{version}-%{release}
+Provides:       Lua(API) = %{major}
 # lj_arch.h:441:2: error: #error "No target architecture defined"
-ExclusiveArch:  x86_64 %ix86 aarch64 %arm ppc mips mips64 mips64el s390x
+# ExclusiveArch:  x86_64 %%{ix86} aarch64 %%{arm} ppc mips mips64 mips64el s390x
+# Both lua51 and luajit use %%{_libdir}/lua/%%{abi_ver}
+Provides:      lua51
+%if %{with libalternatives}
+BuildRequires:  alts
+BuildRequires:  lua-interpreter
+Requires:       alts
+Requires:       lua-interpreter
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 
 %description
-A Just-In-Time Compiler for Lua language
+A Just-In-Time Compiler for Lua language.
 
-%package -n libluajit-%{lib_version}-%{so_version}
-Summary:        Library for JIT Lua compiler
-Provides:       %{name}-%{lib_version}-%{so_version} = %{version}-%{release}
+%package -n lib%{name}-%{lib_ver}
+Summary:        Library for LuaJIT2 compiler
+Provides:       lib%{name}-%{lib_ver} = %{version}
+%ifarch aarch64 x86_64 ppc64 ppc64le s390x riscv64
+Provides:       liblua.so.5.1()(64bit)
+%else
+Provides:       liblua.so.5.1
+%endif
 
-%description -n libluajit-%{lib_version}-%{so_version}
-Libraries to use JIT Lua compiler
+%description -n lib%{name}-%{lib_ver}
+Libraries to use LuaJIT2 compiler.
 
 %package devel
 Summary:        Devel files for %{name}
 Requires:       %{name} = %{version}
-Requires:       luajit-%{lib_version}-%{so_version} = %{version}
+Requires:       lib%{name}-%{lib_ver} = %{version}
+Requires: 	lua-macros
+Conflicts:      lua-devel
 Provides:       moonjit-devel = %{version}-%{release}
-Obsoletes:      moonjit-devel <= 2.2.0
+Obsoletes:      moonjit-devel < %{version}
 Provides:       libluajit-devel = %{version}-%{release}
+Provides:       lua-devel = %{version}
+Provides:       Lua(devel) = %{abi_ver}
+Provides:       pkgconfig(lua) = %{version}
 
 %description devel
-Devel files for luajit package
+Devel files for %{name} package.
 
 %prep
-%autosetup -p1 -n %{upname}-%{version}
-
-# Fix variables
-sed -i "s,PREFIX= %{_prefix}/local,PREFIX= %{_prefix}," Makefile
-sed -i "s,%{_libexecdir},%{_libdir}," etc/luajit.pc
-
-# Unfortunately, tar_scm doesn't use git archive (gh#openSUSE/obs-service-tar_scm#144)
-%global realver 2.1.%(echo '%{version}' | cut -d. -f 6)
-echo '%{version}' | cut -d. -f 6 >.relver
+%autosetup -p1 -n luajit2-%{major}-%{minor}
 
 %build
-export CFLAGS="%{optflags}"
 %make_build %{?_make_output_sync} \
 	Q= \
 	DYNAMIC_CC="cc -fPIC" \
 	LDCONFIG="true" \
-    XCFLAGS="-DLUAJIT_ENABLE_LUA52COMPAT" \
 	TARGET_AR="ar rcus" \
 	TARGET_STRIP=: \
-	MULTILIB=%{_lib}
+	PREFIX=%{_prefix} \
+	MULTILIB=%{_lib} \
+	CFLAGS="%{optflags}"
 
 %install
-make DESTDIR=%{buildroot} install \
-	INSTALL_LIB="%{buildroot}%{_libdir}" \
+%make_install \
 	DYNAMIC_CC="cc -fPIC" \
 	LDCONFIG="true" \
 	TARGET_AR="ar rcus" \
 	TARGET_STRIP=: \
+	PREFIX=%{_prefix} \
 	MULTILIB=%{_lib}
 
 # remove static lib, not needed
 rm %{buildroot}%{_libdir}/*.a
 
 # Create runnable binary
-ln -sf %{_bindir}/luajit-%{lib_version}-%{realver} %{buildroot}%{_bindir}/luajit
+ln -sf %{_bindir}/luajit-%{major}.%{upstream} %{buildroot}%{_bindir}/luajit
+%if %{with libalternatives}
+# alternatives - create configuration file
+mkdir -p %{buildroot}%{_datadir}/libalternatives/lua
+cat > %{buildroot}%{_datadir}/libalternatives/lua/52.conf <<EOF
+binary=%{_bindir}/luajit
+man=luajit
+EOF
+%else
+# update-alternatives
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+touch "%{buildroot}%{_sysconfdir}/alternatives/%{name}"
+ln -sf "%{_sysconfdir}/alternatives/%{name}" "%{buildroot}%{_bindir}/%{name}"
+touch "%{buildroot}%{_sysconfdir}/alternatives/%{name}.1%{ext_man}"
+ln -sf "%{_sysconfdir}/alternatives/%{name}.1%{ext_man}" \
+    "%{buildroot}%{_mandir}/man1/%{name}.1%{ext_man}"
+%endif
 
-%post -n libluajit-%{lib_version}-%{so_version} -p /sbin/ldconfig
-%postun -n libluajit-%{lib_version}-%{so_version} -p /sbin/ldconfig
+# Compat link with older unprefixed library and with soname 0 from deb/etc
+chmod +x %{buildroot}%{_libdir}/*
+ln -s libluajit-%{abi_ver}.so.%{so_ver} \
+	%{buildroot}%{_libdir}/liblua%{abi_ver}.so.%{abi_ver}.%{so_ver}
+ln -s libluajit-%{abi_ver}.so.%{so_ver} \
+	%{buildroot}%{_libdir}/liblua%{abi_ver}.%{so_ver}.so
+ln -s %{_libdir}/liblua%{abi_ver}.%{so_ver}.so \
+    %{buildroot}%{_libdir}/liblua.so
+ln -s luajit.pc %{buildroot}%{_libdir}/pkgconfig/lua.pc
+
+%if %{without libalternatives}
+%post
+%{_sbindir}/update-alternatives --install                                                 \
+            %{_bindir}/lua            lua       %{_bindir}/lua%{abi_ver}         52 \
+    --slave %{_mandir}/man1/lua.1%{ext_man}  lua.1%{ext_man}  %{_mandir}/man1/lua%{abi_ver}.1%{ext_man}
+
+%postun
+if [ "$1" = 0 ] ; then
+    %{_sbindir}/update-alternatives --remove lua %{_bindir}/lua%{abi_ver}
+fi
+%endif
+
+%ldconfig_scriptlets -n lib%{name}-%{lib_ver}
 
 %files
-%license COPYRIGHT
-%doc README
+%{_bindir}/%{name}-%{major}.%{upstream}
+%{_bindir}/%{name}
+%{_datadir}/%{name}-%{major}
+%dir %{_libdir}/lua
+%dir %{_libdir}/lua/%{abi_ver}
+%dir %{_datadir}/lua
+%dir %{_datadir}/lua/%{abi_ver}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%if %{with libalternatives}
+%{_datadir}/libalternatives/lua/52.conf
+%else
+# alternatives
+%{_bindir}/lua
+%{_mandir}/man1/lua.1%{?ext_man}
+%ghost %{_sysconfdir}/alternatives/lua
+%ghost %{_sysconfdir}/alternatives/lua.1%{ext_man}
+%endif
 
-%{_bindir}/luajit
-%{_bindir}/luajit-%{lib_version}
-%{_bindir}/luajit-%{lib_version}-%{realver}
-%{_mandir}/man1/luajit-%{lib_version}.1%{?ext_man}
-%{_datadir}/luajit-%{lib_version}-2.1
-
-%files -n libluajit-%{lib_version}-%{so_version}
-%{_libdir}/libluajit-5.1.so.*
+%files -n lib%{name}-%{lib_ver}
+%{_libdir}/lib%{name}-%{abi_ver}.so.%{so_ver}
+%{_libdir}/lib%{name}-%{abi_ver}.so.%{major}.%{upstream}
 
 %files devel
-%{_includedir}/luajit-%{lib_version}-2.1
-%{_libdir}/libluajit-5.1.so
+%{_includedir}/luajit-%{major}
+%{_libdir}/libluajit-%{abi_ver}.so
+%{_libdir}/liblua.so
+%{_libdir}/liblua%{abi_ver}.%{so_ver}.so
+%{_libdir}/liblua%{abi_ver}.so.%{abi_ver}.%{so_ver}
 %{_libdir}/pkgconfig/luajit.pc
+%{_libdir}/pkgconfig/lua.pc
 
 %changelog
