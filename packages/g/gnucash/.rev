@@ -1156,4 +1156,12 @@
 - Drop libboost_system-devel-impl: no longer existing (boo#1250512) (forwarded request 1307089 from dimstar)</comment>
     <requestid>1307127</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>935a5bfd60c927bfc2e55ce622daffdc</srcmd5>
+    <version>5.13</version>
+    <time>1761572473</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313749</requestid>
+  </revision>
 </revisionlist>

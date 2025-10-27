@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Oct 26 19:55:38 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 5.13:
+  + Splits to Imbalance-USD do not disappear when zero-valued.
+    To mitigate potential impact, the Imbalance split is only removed when the
+    split transitions to zero value during the commit of the transaction and
+    the split's memo and action have no value.
+  + Crash while switch to recently opened file
+  + error: call to non-'constexpr' function
+  + Ensure that GnuCash does not crash when it converts a foreign-currency
+    transaction into a trading account transaction.
+  + Reconcile Ending Balance Ignored When Statement Date Set
+  + Invoice price decimal places
+  + Zombie entries in the recently accessed file list.
+  + Invoice and bills still display prices as fractional amounts with "Force
+    Prices to display as decimals"
+  + Incorrect trial Balance report with stocks and multiple currencies
+  + Exchange Rate entries displayed in reports in an unstable order
+  + Importing accounts from UTF8 csv file does not work correctly
+  + Provide a new dialog, gnc_action_dialog, for confirming actions that labels
+    buttons with a active verb (e.g. "Delete") instead of a confirmation (e.g.
+    "Yes" or "OK"). This is hypothetically less ambiguous in some cases.
+  + Transaction Report: Add links to bills and invoices.
+  + [gnc-plugin-page-report] confirm before overwriting saved report
+  + Added Swiss Fund Data AG to single_quote_sources. New F::Q source will be
+    available in v1.67. The selection will be disabled until F::Q 1.67 is
+    released and installed.
+  + Replace deprecated gdk_pixbuf_new_from_xpm_data
+  + Fix tests so that they run on Win32 builds.
+  + Fix inadvertant insertion in test-trial-balance.scm.
+  + extract-translators: Use 'open :encoding' instead of utf::encode/decode.
+  + Fix newline disparity in translator-credits
+  + Translator credits: Separate translators with a newline Instead of a
+    semicolon. Presents them as a list, one name per line, as with the other
+    credits.
+  + [fin.c] fix encoding to utf8
+  + [new-owner-report.scm] insert job-ID if available
+  + [balsheet-pnl] use gnc:accounts-get-commodities-sorted
+  + Set policy CMP0177 and follow the documented recommendations regarding
+    DESTINATION paths.
+  + [balsheet-pnl] ensure the account name cell doesn't wrap
+  + Specialize get_row_value_from_object for int64_t so that it doesn't try to
+    pass the value in a pointer. That comes out badly on 32-bit systems.
+  + [charts] Add chartjs v4 to borrowed so it can be used when available
+    (meaning not on Windows because Windows's JS support via webkit is too old).
+  + [charts] use gnc:html-chart-set-xaxis-type!
+  + [html-chart] expose gnc:html-chart-set-x-axis-type!; Centralise to ease
+    chartjs upgrade. The option path changes as follows: '(options scales xAxes
+    (0) type) in chartjs-2 '(options scales x type) in chartjs-3
+  + [gnc-pricedb.cpp] plug leak from gnc_g_date_new_today
+  + [gtest-xml-contents] test xaccTransGetDatePostedGDate from xml
+  + Engine: Replace indirect qof_object_set/get calls with direct
+    qof_instance_kvp ones.
+  + [gtest-load-and-test-datafile.cpp] add example .gnucash to test contents
+  + Updated translations
+
+-------------------------------------------------------------------
 Thu Sep 25 10:00:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gnucash-boost-1.89.patch: Fix build against boost 1.89
