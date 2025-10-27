@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           klevernotes
-Version:        1.2.2
+Version:        1.2.4
 Release:        0
 Summary:        Note taking and management application
 License:        GPL-3.0-or-later
