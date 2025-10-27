@@ -1,7 +1,7 @@
 #
 # spec file for package universal-ctags
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,27 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           universal-ctags
-Version:        6.0.0
+Version:        6.2.0
 Release:        0
 Summary:        A program to generate language tag files used with various editors
 License:        GPL-2.0-only
 URL:            https://github.com/universal-ctags/ctags
 Source:         https://github.com/universal-ctags/ctags/releases/download/v%{version}/universal-ctags-%{version}.tar.gz
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires(pre):  alts
+Requires(post): alts
+%else
+BuildRequires:  update-alternatives
+Requires(pre):  update-alternatives
+Requires(post): update-alternatives
+%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -34,12 +48,9 @@ BuildRequires:  python3-Pygments
 BuildRequires:  python3-docutils
 BuildRequires:  texlive-fancyvrb
 BuildRequires:  texlive-latex-bin-bin
-BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(yaml-0.1)
-Requires(post): update-alternatives
-Requires(pre):  update-alternatives
 
 %description
 Universal ctags, a maintained fork from Darren Hieberts project, generates tag
@@ -62,10 +73,22 @@ install -D -m 755 ctags %{buildroot}/%{_bindir}/universal-ctags
 install -D -m 644 man/ctags.1 %{buildroot}/%{_mandir}/man1/universal-ctags.1
 install -D -m 644 man/ctags-incompatibilities.7 %{buildroot}/%{_mandir}/man7/universal-ctags-incompatibilities.7
 install -D -m 644 man/ctags-optlib.7 %{buildroot}/%{_mandir}/man7/universal-ctags-optlib.7
+
+%if %{with libalternatives}
+mkdir -p %{buildroot}%{_datadir}/libalternatives/ctags
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/ctags
+cat > %{buildroot}%{_datadir}/libalternatives/ctags/25.conf <<-EOF
+	binary=%{_bindir}/universal-ctags
+	man=universal-ctags.1
+	group=ctags
+	EOF
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s %{_sysconfdir}/alternatives/ctags %{buildroot}%{_bindir}/ctags
-ln -s %{_sysconfdir}/alternatives/ctags.1%{?ext_man}  %{buildroot}%{_mandir}/man1/universal-ctags.1%{?ext_man}
+ln -s %{_sysconfdir}/alternatives/ctags.1%{?ext_man}  %{buildroot}%{_mandir}/man1/ctags.1%{?ext_man}
+%endif
 
+%if ! %{with libalternatives}
 %post
 test -L %{_bindir}/ctags || rm -f %{_bindir}/ctags
 update-alternatives --install  %{_bindir}/ctags ctags %{_bindir}/universal-ctags 25 \
@@ -75,15 +98,23 @@ update-alternatives --install  %{_bindir}/ctags ctags %{_bindir}/universal-ctags
 if [ ! -f %{_bindir}/ctags ] ; then
    update-alternatives --remove ctags %{_bindir}/universal-ctags
 fi
+%endif
 
 %files
 %license COPYING
+%{_bindir}/ctags
 %{_bindir}/universal-ctags
 %{_mandir}/man1/universal-ctags.1%{?ext_man}
 %{_mandir}/man7/universal-ctags-incompatibilities.7%{?ext_man}
 %{_mandir}/man7/universal-ctags-optlib.7%{?ext_man}
-%{_bindir}/ctags
+%if %{with libalternatives}
+%dir %{_datadir}/libalternatives/
+%dir %{_datadir}/libalternatives/ctags/
+%{_datadir}/libalternatives/ctags/25.conf
+%else
+%{_mandir}/man1/ctags.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/ctags
 %ghost %{_sysconfdir}/alternatives/ctags.1%{?ext_man}
+%endif
 
 %changelog
