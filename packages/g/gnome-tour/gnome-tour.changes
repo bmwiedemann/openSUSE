@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 20 11:23:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace appstream-glib with AppStream BuildRequires, meson setup
+  checks for it, and it was already pulled in via other
+  dependencies.
+
+-------------------------------------------------------------------
+Mon Oct 20 10:01:00 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use custom icon and destop name in opensuse-welcome bsc#1252287
+
+-------------------------------------------------------------------
 Thu Oct 16 06:10:10 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add custom lang package for opensuse-welcome. This will remove the
