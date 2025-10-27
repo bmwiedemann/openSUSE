@@ -1,3 +1,10 @@
+gpxsee (15.0) stable; urgency=low
+
+  * Removed QtPBFImagePlugin dependency for MVT tiles rendering.
+  * Extended Mapsforge maps labels positioning.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 27 Oct 2025 05:45:51 +0100
+
 gpxsee (14.1) stable; urgency=low
 
   * Added support for COROS v5 maps (PMTiles atlases).

@@ -1,5 +1,5 @@
 pkgname=gpxsee
-pkgver=14.1
+pkgver=15.0
 pkgrel=1
 pkgdesc='GPS log files visualizing and analyzing tool'
 arch=('i686' 'x86_64')
@@ -8,7 +8,6 @@ license=('GPL3')
 depends=('qt6-imageformats' 'qt6-positioning' 'qt6-svg'
          'qt6-serialport' 'hicolor-icon-theme')
 makedepends=('qt6-tools')
-optdepends=('qtpbfimageplugin-qt6: Mapbox vector tiles (MVT) files support')
 provides=("${pkgname}=${pkgver}")
 source=("GPXSee-${pkgver}.tar.gz")
 sha256sums=('SKIP')

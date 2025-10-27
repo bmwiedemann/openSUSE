@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 27 05:36:09 CET 2025 - tumic@gpxsee.org
+
+- Update to version 15.0
+  * Removed QtPBFImagePlugin dependency for MVT tiles rendering.
+  * Extended Mapsforge maps labels positioning.
+
+-------------------------------------------------------------------
 Sat Oct 11 21:22:55 CEST 2025 - tumic@gpxsee.org
 
 - Update to version 14.1

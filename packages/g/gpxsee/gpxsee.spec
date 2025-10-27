@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        14.1
+Version:        15.0
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -40,7 +40,6 @@ BuildRequires:  qt6-qtserialport-devel
 BuildRequires:  zlib-devel
 BuildRequires:  qt6-linguist
 Recommends: qt6-qtimageformats
-Recommends: qt6-qtpbfimageformat
 %else
 %if 0%{?suse_version}
 BuildRequires:  qt6-core-devel
@@ -59,7 +58,6 @@ BuildRequires:  zlib-devel
 BuildRequires:  qt6-tools-linguist
 Recommends: qt6-sql-sqlite
 Recommends: qt6-imageformats
-Recommends: qt6-qtpbfimageformat
 %else
 # Mageia
 BuildRequires:  libqt6core-devel
@@ -81,7 +79,6 @@ BuildRequires:  libzlib-devel
 BuildRequires:  qttools6
 Recommends: qtimageformats6
 Recommends: libqt6-database-plugin-sqlite
-Recommends: libqt6-qtpbfimageformat
 %endif
 %endif
 
@@ -111,11 +108,13 @@ install -d 755 %{buildroot}/%{_datadir}/mime/packages
 install -d 755 %{buildroot}/%{_datadir}/metainfo
 install -d 755 %{buildroot}/%{_datadir}/%{name}
 install -d 755 %{buildroot}/%{_datadir}/%{name}/maps
+install -d 755 %{buildroot}/%{_datadir}/%{name}/style
 install -d 755 %{buildroot}/%{_datadir}/%{name}/CRS
 install -d 755 %{buildroot}/%{_datadir}/%{name}/translations
 install -d 755 %{buildroot}/%{_datadir}/%{name}/symbols
 install -m 755 gpxsee %{buildroot}/%{_bindir}/%{name}
 install -m 644 data/maps/* %{buildroot}/%{_datadir}/%{name}/maps
+cp -r data/style/* %{buildroot}/%{_datadir}/%{name}/style
 install -m 644 data/CRS/* %{buildroot}/%{_datadir}/%{name}/CRS
 install -m 644 lang/*.qm %{buildroot}/%{_datadir}/%{name}/translations
 install -m 644 icons/symbols/*.png %{buildroot}/%{_datadir}/%{name}/symbols
