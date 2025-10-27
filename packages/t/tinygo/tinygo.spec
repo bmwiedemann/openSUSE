@@ -1,7 +1,7 @@
 #
 # spec file for package tinygo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,8 +75,13 @@ func main() {
 }
 EOF
 export TINYGOROOT=%{buildroot}%{_datadir}/%{name}
+# Native test compile on supported architectures
+%ifarch %ix86 x86_64 %arm aarch64
 %{buildroot}%{_bindir}/%{name} build hello.go
 ./hello
+%else
+GOARCH=amd64 %{buildroot}%{_bindir}/%{name} build hello.go
+%endif
 export LDFLAGS="-lLLVM -lclang"
 export CGO_LDFLAGS="-lLLVM -lclang"
 make test || true
@@ -84,7 +89,8 @@ make test || true
 %install
 install -D -m 0755 %{name} "%{buildroot}%{_bindir}/%{name}"
 mkdir -p %{buildroot}%{_datadir}/%{name}/lib
-cp -a --parent src lib/{musl,compiler-rt-builtins,bdwgc} %{buildroot}%{_datadir}/%{name}/
+cp -a --parents src lib/{musl,compiler-rt-builtins,bdwgc} %{buildroot}%{_datadir}/%{name}/
+cp -a targets %{buildroot}%{_datadir}/%{name}/
 # make rpmlint happy:
 find %{buildroot}%{_datadir}/%{name}/ -iname '.[a-z]*' -type f -delete # drop hidden files
 rm -rf %{buildroot}%{_datadir}/%{name}/lib/musl/{tools,configure}

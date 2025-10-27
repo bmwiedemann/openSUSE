@@ -87,4 +87,14 @@ It reuses libraries used by the Go language tools alongside LLVM to provide an a
   * tests: de-flake goroutines test (forwarded request 1306907 from bmwiedemann)</comment>
     <requestid>1306927</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b72bcbe59e3892a0b6bfdb31a3df128b</srcmd5>
+    <version>0.39.0</version>
+    <time>1761572327</time>
+    <user>anag_factory</user>
+    <comment>- Force compile test to target a supported architecture
+- Install targets folder into /usr/share/tinygo/ as well, that way
+  the testsuite runs at least (forwarded request 1313377 from favogt)</comment>
+    <requestid>1313506</requestid>
+  </revision>
 </revisionlist>
