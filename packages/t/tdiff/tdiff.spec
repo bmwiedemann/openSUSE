@@ -1,8 +1,8 @@
 #
 # spec file for package tdiff
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,20 @@
 
 
 Name:           tdiff
-Version:        0.8.6
+Version:        0.8.9
 Release:        0
 Summary:        File tree diff tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/F-i-f/tdiff/
-Source:         https://github.com/F-i-f/tdiff/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Git-Clone:     https://github.com/F-i-f/tdiff.git
+Source:         http://ftp.fifi.org/phil/tdiff/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  bash
 BuildRequires:  groff
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libacl)
 # SECTION test requirements
@@ -57,16 +60,15 @@ BuildArch:      noarch
 Bash completion script for %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-autoreconf -fiv
 %configure
 make %{?_smp_mflags}
 
 %install
 %make_install
-rm -Rf %{buildroot}%{_datadir}/doc/tdiff/
+rm -Rvf %{buildroot}%{_datadir}/doc/tdiff/
 
 %check
 # Tests randomly fail - disable for now

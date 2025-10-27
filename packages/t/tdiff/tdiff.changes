@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 23 09:51:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.9
+  Improvements:
+  * Code refactoring and cleanups.
+- Update to version 0.8.8
+  Bugs fixed:
+  * An excluded but missing file caused tdiff to exit with a
+    failure code.
+  * Memory corruption could occur if a symlink target string size
+    is a multiple of 1024 (unlikely, symlink lengths are
+    typically limited to 1024 or less).
+  Improvements:
+  * Code refactoring and cleanups.
+  * Open files at most once (speedup).
+  * m4 macros have been moved to a sub-module.
+- Update to version 0.8.7
+  Bugs fixed:
+  * Ignore trusted.SGI_ACL_DEFAULT default ACL (XFS-specific).
+  * Do not update access time when comparing symbolic-link
+    (system-dependent, Linux only).
+  Improvements:
+  * Compare ACLs faster if acl_cmp() is available.
+
+-------------------------------------------------------------------
 Sat May 21 09:34:09 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.6
