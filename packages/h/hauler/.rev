@@ -171,4 +171,16 @@
   * Bump github.com/open-policy-agent/opa (#438)</comment>
     <requestid>1294822</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1f04672ca54b3707c2b247e977b3d0db</srcmd5>
+    <version>1.3.0</version>
+    <time>1761572548</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.0:
+  * bump the go_modules group across 1 directory with 2 updates (#455)
+  * upgraded versions/dependencies/deprecations (#454)
+  * allow loading of docker tarballs (#452)
+  * bump the go_modules group across 1 directory with 2 updates (#449)</comment>
+    <requestid>1313799</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package hauler
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           hauler
-Version:        1.2.5
-%global git_commit 5021f3ab6b364a5172fe9fece97bf3742ab1b4ce
+Version:        1.3.0
+%global git_commit 0fafca87f99117cc22215bee22e036d3dbfcd4e8
 Release:        0
 Summary:        Airgap Swiss Army Knife
 License:        Apache-2.0
@@ -30,7 +30,7 @@ ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cosign
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.24
+BuildRequires:  golang(API) = 1.25
 
 %description
 Rancher Government Hauler simplifies the airgap experience without requiring
