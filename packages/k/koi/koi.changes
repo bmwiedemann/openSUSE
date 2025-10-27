@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 25 13:50:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.6
+  * Added KDE Konsole profiles
+  * Minor under-the-hood changes + Optimizations
+  * Koi now shows only in KDE
+  * Added support for Guix & Others
+
+-------------------------------------------------------------------
 Sun Jun 22 15:46:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.5.1

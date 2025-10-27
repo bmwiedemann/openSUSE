@@ -17,7 +17,7 @@
 
 
 Name:           koi
-Version:        0.5.1
+Version:        0.6
 Release:        0
 Summary:        Theme scheduling for the KDE Plasma Desktop
 License:        LGPL-3.0-only
