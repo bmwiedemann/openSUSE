@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 20 15:11:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.31.0
+  * Store display outputs in history for %notebook magic
+  * update tests for 3.14
+  * Update PEP-639 license values in pyproject.toml
+  * Replace @flaky.flaky decorate with pytest fixture
+
+-------------------------------------------------------------------
 Tue Oct 14 11:16:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.30.1

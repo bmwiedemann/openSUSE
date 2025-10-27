@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ipykernel
-Version:        6.30.1
+Version:        6.31.0
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
