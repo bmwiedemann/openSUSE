@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 27 05:51:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.9:
+  * pipelines: add split/alldocs (#2187)
+  * Allow for ignored license paths to be overridden when checking
+    for duplicate files (#2193)
+  * Add additional linters for duplicate files, DLLs, unsupported
+    architectures, and more (#2192)
+  * split/lib: add new pipeline for shared libraries (#2191)
+
+-------------------------------------------------------------------
 Fri Oct 17 06:21:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.31.8:
