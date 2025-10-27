@@ -139,4 +139,40 @@
 </comment>
     <requestid>1199686</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>86c9c559d463907c554d01ec93bf8423</srcmd5>
+    <version>1.8.5</version>
+    <time>1761572279</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8.5:
+  * Added
+    + Support parsing of t-strings
+    + add helper to convert nodes to matchers
+    + Allow configuring empty formatter lists in codemod CLI
+    + Enable support for free-threaded CPython
+    + Expose TypeAlias and TypeVar related structs in rust library
+    + FullyQualifiedNameProvider: Optionally consider pyproject.toml files
+      when determining a file's module name and package
+    + Add validation for If node
+    + include python 3.13 in build
+  * Fixed
+    + generate Attribute nodes when applying type annotations
+    + Avoid raising bare Exception
+    + fix various Match statement visitation errors
+    + Mention codemod -x flag in docs
+    + Clear warnings for each file in codemod cli
+    + Typo fix in codemods_tutorial.rst (trivial)
+    + fix certain matchers breaking under multiprocessing by initializing
+      them late
+  * Updated
+    + update pyo3 to 0.25
+    + Replace multiprocessing with ProcessPoolExecutor
+    + Support pipe syntax for Union types in codegen
+    + Remove dependency on chic and upgrade annotate-snippets
+    + make libcst_native::tokenizer public
+- Drop patch pyo3-022.patch, no longer required.
+- Do not build the package when running the testsuite.
+- Reinstate running the testsuite.</comment>
+    <requestid>1313292</requestid>
+  </revision>
 </revisionlist>

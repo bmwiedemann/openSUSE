@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 24 01:47:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.5:
+  * Added
+    + Support parsing of t-strings
+    + add helper to convert nodes to matchers
+    + Allow configuring empty formatter lists in codemod CLI
+    + Enable support for free-threaded CPython
+    + Expose TypeAlias and TypeVar related structs in rust library
+    + FullyQualifiedNameProvider: Optionally consider pyproject.toml files
+      when determining a file's module name and package
+    + Add validation for If node
+    + include python 3.13 in build
+  * Fixed
+    + generate Attribute nodes when applying type annotations
+    + Avoid raising bare Exception
+    + fix various Match statement visitation errors
+    + Mention codemod -x flag in docs
+    + Clear warnings for each file in codemod cli
+    + Typo fix in codemods_tutorial.rst (trivial)
+    + fix certain matchers breaking under multiprocessing by initializing
+      them late
+  * Updated
+    + update pyo3 to 0.25
+    + Replace multiprocessing with ProcessPoolExecutor
+    + Support pipe syntax for Union types in codegen
+    + Remove dependency on chic and upgrade annotate-snippets
+    + make libcst_native::tokenizer public
+- Drop patch pyo3-022.patch, no longer required.
+- Do not build the package when running the testsuite.
+- Reinstate running the testsuite.
+
+-------------------------------------------------------------------
 Mon Sep  9 11:38:15 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add pyo3-022.patch bumping the dependency of pyo3 to 0.22
