@@ -56,11 +56,5 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 ENV CARGO_VERSION="%%CARGO_VERSION%%"
-ENV CC="/usr/local/bin/gcc"
 ENV RUST_VERSION="%%RUST_VERSION%%"
-# workaround for gcc only existing as /usr/bin/gcc-N
-RUN ln -sf $(ls /usr/bin/gcc-* | grep -P ".*gcc-[[:digit:]]+") /usr/local/bin/gcc
-# smoke test that gcc works
-RUN gcc --version
-RUN ${CC} --version
 COPY rust-and-cargo-pin.check /etc/zypp/systemCheck.d/rust-and-cargo-pin.check
