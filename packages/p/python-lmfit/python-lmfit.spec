@@ -1,7 +1,7 @@
 #
 # spec file for package python-lmfit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           python-lmfit
-Version:        1.3.2
+Version:        1.3.4
 Release:        0
 Summary:        Least-Squares Minimization with Bounds and Constraints
 License:        BSD-3-Clause AND MIT
 URL:            https://lmfit.github.io/lmfit-py/
 Source:         https://files.pythonhosted.org/packages/source/l/lmfit/lmfit-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM lmfit-pr965-asteval.patch gh#lmfit/lmfit-py#965
-Patch0:         https://github.com/lmfit/lmfit-py/pull/965.patch#/lmfit-pr965-asteval.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
