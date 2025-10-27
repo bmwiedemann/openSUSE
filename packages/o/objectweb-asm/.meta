@@ -9,5 +9,4 @@ Machine.
 
 ASM offers similar functionalities as BCEL or SERP, but is much
 smaller.</description>
-  <devel project="Java:packages" package="objectweb-asm"/>
 </package>

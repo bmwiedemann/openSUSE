@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 23 07:42:15 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.9
+  * new Opcodes.V26 constant for Java 26
+  * new mapInvokeDynamicMethodName method in Remapper. Old method
+    deprecated. New Remapper constructor, with an api parameter.
+  * bug fixes
+    + 318028: Textifier misinterprets ACC_SUPER of inner classes as
+      ACC_SYNCHRONIZED
+    + 318032: FIPS 140-3 and SerialVersionUIDAdder's SHA-1 Use
+    + 318034: Many ASM contents lack API detection.
+
+-------------------------------------------------------------------
 Mon Mar 31 16:34:01 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Upgrade to version 9.8

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.ow2.asm</groupId>
   <artifactId>asm-analysis</artifactId>
-  <version>9.8</version>
+  <version>9.9</version>
   <name>asm-analysis</name>
   <description>Static code analysis API of ASM, a very small and fast Java bytecode manipulation framework</description>
   <url>http://asm.ow2.io/</url>
@@ -71,7 +71,7 @@
     <dependency>
       <groupId>org.ow2.asm</groupId>
       <artifactId>asm-tree</artifactId>
-      <version>9.8</version>
+      <version>9.9</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
