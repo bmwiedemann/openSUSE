@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Oct 27 03:23:17 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.24.0:
+  * Features:
+    - add mercurial state.
+    - aws: support duration for aws sso.
+    - cli: accept 'powershell' for completions subcommand.
+    - container: Add detection of Incus containers.
+    - fish: support input-mode detection for helix-keybinds.
+    - Fortran module.
+    - git_branch: add ignore_bare_repo flag.
+    - install.sh: handle installation directory prompt responses 
+      case-insensitively.
+    - new module xmake.
+    - nu: Add job support for nushell.
+    - package: Add support for Ansible Galaxy.
+    - package: pyproject hatchling dynamic version.
+    - terraform: support opentofu for terraform version detection.
+  * Bug Fixes:
+    - consider text-only meta variables in conditionals set 
+      if non-empty.
+    - docker_context: add compose.yml and compose.yaml to files.
+    - explain: Filter out non-printing ANSI escape codes.
+    - fossil_metrics: match single-file.
+    - git_metrics: adhere to git_status use_git_executable option.
+    - git_status: Do not show up-to-date when untracked.
+    - hg_branch: Strip extraneous newlines from hg topic.
+    - improve adhere to directory scanning timeout.
+    - jobs: Count job groups instead of processes for fish.
+    - modules: username detect_env_vars logic.
+    - nushell: Startup cmd_duration should be 0ms not 823ms.
+    - pixi: Don't trigger pixi module by .pixi directory.
+    - preset/nerd-font: remove double spaces in gcloud default 
+      value and use Google Cloud-specific icon.
+    - preset/pure: only enable python module if venv is active.
+    - presets/plaint-text: Add missing entries.
+    - remove double spaces in default values.
+    - rust-ini 0.21.2 has been yanked from crates.io.
+    - terraform: amend module to exec_cmds_return_first-changes.
+    - test/git_commit: avoid spawning an editor lead to timeout 
+      if tag signing is enabled.
+    - time: don't print misleading log message.
+    - zsh: check if vars are set before reading them.
+    - zsh: do not fail under ERR_EXIT conditions if 
+      STARSHIP_DURATION computes to 0.
+  * Performance Improvements:
+    - git_status: avoid gix index load when core.fsmonitor is used.
+    - Parallelize child modules for env_var|custom.
+
+-------------------------------------------------------------------
 Sun Jul 20 21:10:10 UTC 2025 - Toby Boulton <toby@boulton.net.au>
 
 - Update to version 1.23.0:
