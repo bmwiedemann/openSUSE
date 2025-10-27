@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 21 21:03:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.44.4:
+  + glycin:
+    - Make svgz work
+    - Support saving avif
+  + docs: Add deprecation tags for GdkPixbufAnimation
+  + bmp: Fix loading of bottom-up images
+
+-------------------------------------------------------------------
 Tue Sep 30 06:14:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.44.3:
