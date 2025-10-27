@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-control-center
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,13 +14,15 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %if 0%{?suse_version} < 1600
 %bcond_without cheese
 %else
 %bcond_with cheese
 %endif
 Name:           budgie-control-center
-Version:        1.4.0+2
+Version:        1.4.1+0
 Release:        0
 Summary:        Fork of GNOME Control Center for Budgie 10
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later

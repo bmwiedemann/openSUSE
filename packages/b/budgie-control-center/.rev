@@ -199,4 +199,15 @@
 </comment>
     <requestid>1293321</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dcc393173b9e9521270d1fa40884f7db</srcmd5>
+    <version>1.4.1+0</version>
+    <time>1761572358</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.1+0:
+  * Resolve GNOME49 toolchain issues / use of budgie schema
+    for media-keys
+</comment>
+    <requestid>1313570</requestid>
+  </revision>
 </revisionlist>
