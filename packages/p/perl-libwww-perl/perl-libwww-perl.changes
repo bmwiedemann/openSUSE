@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 23 05:35:03 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.810.0 (6.81)
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.81      2025-10-22 17:04:53Z
+      - Add Security Policy file SECURITY.md (GH#475) (Mikko Koivunalho)
+      - Update test expectations for HTTP-Message 7.01+ trailing newline fix
+        (GH#492) (Copilot)
+
+-------------------------------------------------------------------
 Thu Oct  9 20:54:33 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.800.0 (6.80)

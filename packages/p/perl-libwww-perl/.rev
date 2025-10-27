@@ -1493,4 +1493,17 @@ update to 5.76
       - Test on example.com rather than neverssl.com (GH#479) (Olaf Alders)</comment>
     <requestid>1310530</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>07d8009ebc553e51614186f913faaf7e</srcmd5>
+    <version>6.810.0</version>
+    <time>1761572311</time>
+    <user>anag_factory</user>
+    <comment>- updated to 6.810.0 (6.81)
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.81      2025-10-22 17:04:53Z
+      - Add Security Policy file SECURITY.md (GH#475) (Mikko Koivunalho)
+      - Update test expectations for HTTP-Message 7.01+ trailing newline fix
+        (GH#492) (Copilot)</comment>
+    <requestid>1313398</requestid>
+  </revision>
 </revisionlist>
