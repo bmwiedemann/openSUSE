@@ -15981,6 +15981,7 @@ unsorted:
   - librnnoise0 
   - librnp0 
   - librocksdb10 
+  - librocm-core1 
   - librocsgraphtheory0 
   - librrd8 
   - librsb-devel 
@@ -17719,8 +17720,6 @@ unsorted:
   - lua51-cjson 
   - lua51-cldr 
   - lua51-cliargs 
-  - lua51-compat-5.3 
-  - lua51-compat-5.3-bit32 
   - lua51-copas 
   - lua51-cosmo 
   - lua51-coxpcall 
@@ -17752,7 +17751,6 @@ unsorted:
   - lua51-lualdap 
   - lua51-luaposix 
   - lua51-luarepl 
-  - lua51-luarocks 
   - lua51-luasec 
   - lua51-luasocket 
   - lua51-luasocket-devel 
@@ -17923,7 +17921,10 @@ unsorted:
   - lua55-doc 
   - luabind-devel 
   - luajit 
+  - luajit-compat-5.3 
+  - luajit-compat-5.3-bit32 
   - luajit-devel 
+  - luajit-luarocks 
   - luajit2 
   - luajit2-devel 
   - luanti 
@@ -24128,7 +24129,6 @@ unsorted:
   - python311-PyMeeus 
   - python311-PyMeta3 
   - python311-PyMsgBox 
-  - python311-PyMuPDF 
   - python311-PyMySQL 
   - python311-PyNaCl 
   - python311-PyNamecheap 
@@ -27867,7 +27867,6 @@ unsorted:
   - python312-PyMeeus 
   - python312-PyMeta3 
   - python312-PyMsgBox 
-  - python312-PyMuPDF 
   - python312-PyMySQL 
   - python312-PyNaCl 
   - python312-PyNamecheap 
@@ -31681,6 +31680,7 @@ unsorted:
   - python313-PyMeta3 
   - python313-PyMsgBox 
   - python313-PyMuPDF 
+  - python313-PyMuPDF-devel 
   - python313-PyMySQL 
   - python313-PyNaCl 
   - python313-PyNamecheap 
@@ -35708,7 +35708,6 @@ unsorted:
   - qt6-qt5compat-docs-html 
   - qt6-qt5compat-docs-qch 
   - qt6-qt5compat-private-devel 
-  - qt6-qtpbfimageformat 
   - qt6-quick-devel 
   - qt6-quick-private-devel 
   - qt6-quick3d 
@@ -36331,6 +36330,7 @@ unsorted:
   - rocm-clinfo 
   - rocm-cmake 
   - rocm-compilersupport-macros 
+  - rocm-core-devel 
   - rocm-device-libs 
   - rocm-hip 
   - rocm-hip-devel 
@@ -36410,6 +36410,7 @@ unsorted:
   - rsocket 
   - rsocket-32bit 
   - rspamd 
+  - rspamd-apparmor 
   - rss-glx 
   - rssguard 
   - rsstail 
