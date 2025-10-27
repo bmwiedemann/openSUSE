@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-plugin-bootstrap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global base_name maven-plugin-tools
 %global artifactId maven-plugin-plugin
 Name:           %{artifactId}-bootstrap
-Version:        3.15.1
+Version:        3.15.2
 Release:        0
 Summary:        Maven Plugin Plugin
 License:        Apache-2.0
@@ -33,6 +33,7 @@ Patch0:         0002-Remove-dependency-on-jtidy.patch
 # We generated those ones outside the rpm build for a bootstrap package.
 Patch20:        maven-plugin-plugin-bootstrap-resouces.patch
 BuildRequires:  ant
+BuildRequires:  atinject
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
@@ -72,6 +73,7 @@ artifact metadata and a generic help goal.
 %build
 mkdir -p lib
 build-jar-repository -s lib \
+    atinject \
     maven/maven-artifact \
     maven/maven-core \
     maven/maven-model \

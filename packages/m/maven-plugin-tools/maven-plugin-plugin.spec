@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global base_name maven-plugin-tools
 Name:           maven-plugin-plugin
-Version:        3.15.1
+Version:        3.15.2
 Release:        0
 Summary:        Maven Plugin Plugin
 License:        Apache-2.0
@@ -29,18 +29,22 @@ Patch0:         0002-Remove-dependency-on-jtidy.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
+BuildRequires:  mvn(javax.inject:javax.inject)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-annotations)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-api)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-generators)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-java)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-api)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-repository-metadata)
+BuildRequires:  mvn(org.apache.maven:maven-settings)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-velocity)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
