@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 23 09:44:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1.1:
+  + Fix broken menus in some Xwayland clients
+  + Avoid processing the same key event twice during keybindings
+  + Fixed crash
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop mutter-fix-xwayland-dnd-crash.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Oct 16 06:27:28 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add mutter-fix-xwayland-dnd-crash.patch: Fix crash when dragging

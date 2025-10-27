@@ -23,7 +23,7 @@
 %define libmutter libmutter-%{api_major}-%{api_minor}
 
 Name:           mutter
-Version:        49.1
+Version:        49.1.1
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -38,8 +38,6 @@ Patch1:         mutter-disable-cvt-s390x.patch
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 # PATCH-FIX-OPENSUSE 0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch glgo#GNOME/mutter#3302 bsc#1219546 alynx.zhou@suse.com -- Fix partial update on VT switch
 Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
-# PATCH-FIX-UPSTREAM mutter-fix-xwayland-dnd-crash.patch -- Fix crash when dragging and dropping from an app running via xwayland
-Patch5:         mutter-fix-xwayland-dnd-crash.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
