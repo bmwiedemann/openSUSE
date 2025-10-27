@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Oct 21 22:07:42 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Update to version 1.26.5:
+  * Use MuPDF-1.26.10.
+  * Fixed issues:
+    * Fixed #2883
+    * Fixed #4507
+    * Fixed #4613
+    * Fixed #4700
+    * Fixed #4716
+  * Other:
+    * Supported Python versions are now 3.9-3.14.
+    * We now define all class methods explicitly instead of with dynamic assignment; this improves type hints.
+    * Removed pymupdf.utils.Shape class, was duplicate of pymupdf.Shape.
+    * Allow use of cibuildwheel to build and test on Pyodide.
+    * Fixed various Pyodide bugs.
+    * In documentation, added section about Linux wheels and glibc compatibility.
+    * Improved documentation of pymupdf.open()'s arg.
+    * Retrospectively mark 4544 <https://github.com/pymupdf/PyMuPDF/issues/4544>_ as fixed in 1.26.4.
+- Update to version 1.26.4:
+- Update to version 1.26.3:
+- Update to version 1.26.1:
+- Update to version 1.26.0:
+- Update to version 1.25.5:
+- Update to version 1.25.4:
+- Update to version 1.25.3:
+- Update to version 1.25.2:
+- Update to version 1.25.1:
+- Update to version 1.25.0:
+- Update to version 1.24.14:
+  ...
+- Update to version 1.24.0:
+- Update to version 1.23.26:
+  ...
+- Update to version 1.23.0:
+- Update to version 1.22.5:
+- Update to version 1.22.3:
+- Update to version 1.22.2:
+- Update to version 1.22.1:
+- Update to version 1.22.0:
+  * many many changes, see:
+    https://github.com/pymupdf/PyMuPDF/blob/main/changes.txt
+- Add mupdf source tarball (previously bundled with PyMuPDF) 
+- Add BuildRequires: clang19-devel python3-clang19
+- Add %define pythons python313
+  * build as app not module since the required python3-clangxx
+    is available only for python 3.13
+- created devel package
+- added CFLAGS option -ffat-lto-objects (rpmlint request)
+- fix boo#1252103
+
+-------------------------------------------------------------------
 Wed Jul  2 09:15:44 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Fix packaging for Leap 16
