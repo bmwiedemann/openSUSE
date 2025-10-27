@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 25 11:20:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.1.1:
+  * Add a new method to check if the swap space is available
+  * Enable shell completion installation by default
+
+-------------------------------------------------------------------
 Wed Aug 20 17:02:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.1.0:

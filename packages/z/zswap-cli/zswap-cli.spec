@@ -18,7 +18,7 @@
 
 %bcond_without systemd
 Name:           zswap-cli
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Command-line tool to control the zswap kernel module options
 License:        MIT
@@ -49,7 +49,6 @@ compressed cache is much faster than reading from a swap device.
 %build
 %cmake \
 	-DBUILD_MANPAGE:BOOL=ON \
-	-DBUILD_SHELL_COMPLETION:BOOL=ON \
 %if %{with systemd}
 	-DSYSTEMD_INTEGRATION:BOOL=ON \
 %else
