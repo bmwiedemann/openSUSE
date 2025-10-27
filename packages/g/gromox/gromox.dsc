@@ -1,9 +1,9 @@
 Format: 1.0
 Source: gromox
 Architecture: any
-Version: 2.48
+Version: 3.1
 DEBTRANSFORM-RELEASE: 1
-Maintainer: Gromox <null@gromox.com>
+Maintainer: Gromox <dev@gromox.com>
 Homepage: https://gromox.com
 Standards-Version: 4.5.0
 # libbfio is in the require list because libpff-dev is lacking it (bug)
@@ -12,16 +12,16 @@ Build-Depends:
  automake (>= 1:1.11) | automake1.11,
  autotools-dev,
  binutils (>= 2.20),
- debhelper-compat (>= 12),
+ debhelper-compat (= 13),
  devscripts,
  fakeroot,
- g++ (>= 7),
+ g++ (>= 12),
  gettext,
  libbfio-dev,
  libcurl4-openssl-dev,
  libesedb-dev,
  libfmt-dev (>= 8),
- libhx-dev (>= 4.27),
+ libhx-dev (>= 4.28),
  libjsoncpp-dev (>= 1.4.0),
  libkrb5-dev,
  libldap2-dev,
@@ -44,8 +44,9 @@ Build-Depends:
  php-dev (>= 7.0),
  pkg-config (>= 0.23),
  sed,
- systemd,
+ systemd-dev | systemd,
  uuid-dev,
  wmime-dev (>= 1),
- zlib1g-dev
+ zlib1g-dev,
+ lintian
 Files:

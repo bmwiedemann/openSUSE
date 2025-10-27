@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 26 16:09:53 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1
+  * http: support for SPNEGO authentication (Kerberos-in-SPNEGO or
+    NTLMSSP-in-SPNEGO) with the HTTP "Authorization: Negotiate"
+    header.
+  * dscli: try all oxdisco URLs until one succeeds
+  * exmdb: support repeated import of permission data
+  * ews: create calendar item after accepting a MR with MacMail
+  * emsmdb,zcore: Send-As mail now correctly has the delegator in
+    Envelope-From
+  * email_lib: deal with MIME parts with zero header lines
+  * nsp: avoid buffer overruns in nsp_interface_fetch_property
+  * emsmdb: Partial message change tracking was buggy and deleted
+  * http: A workaround was added for OpenSSL 3.0 so that
+    connections from Outlook 2010 once again succeed.
+  * mysql_adaptor: Improve the time needed to compute the composite
+    mailbox permission for user in a case of a mailbox with 100K
+    ACL entries.
+  * exmdb: deactivate movecopy/deletemessages event storm compaction
+  * emsmdb: outgoing lzxpress compression in the EMSMDB protocol is
+    now disabled as it does not compress well for the time
+    invested.
+
+-------------------------------------------------------------------
 Tue Sep 30 21:02:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.0

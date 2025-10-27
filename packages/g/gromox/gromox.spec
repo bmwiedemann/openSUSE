@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -30,7 +30,7 @@ Source2:        https://github.com/grommunio/gromox/releases/download/%name-%ver
 Source8:        %name.keyring
 BuildRequires:  fdupes
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
-BuildRequires:  gcc14-c++
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -124,7 +124,7 @@ ready-to-run installation of Gromox.
 %build
 %configure \
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
-	CC=gcc-14 CXX=g++-14 \
+	CC=gcc-12 CXX=g++-12 \
 %endif
 	%nil
 %make_build V=1
@@ -172,7 +172,7 @@ perl -i -lpe 's{Type=simple}{Type=simple\nRestart=on-failure}' "$b/%_unitdir"/*.
 %make_build check V=1
 
 # Though services autoreconnect, starting them in the preferred order services is smoother
-%global services gromox-timer.service gromox-http.service gromox-zcore.service gromox-event.service gromox-midb.service gromox-imap.service gromox-pop3.service gromox-delivery.service gromox-delivery-queue.service gromox-snapshot.service gromox-snapshot.timer
+%global services gromox-timer.service gromox-http.service gromox-zcore.service gromox-event.service gromox-midb.service gromox-imap.service gromox-pop3.service gromox-delivery.service gromox-delivery-queue.service gromox-snapshot.service gromox-snapshot.timer gromox-cleaner.service
 
 %if 0%{?service_add_pre:1}
 %pre
