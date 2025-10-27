@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 24 12:01:51 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Use forked wire from Grafana repository instead of external
+  package.
+
+- Update to version 11.6.7:
+  Security:
+  * CVE-2025-47911: Fix parsing HTML documents (bsc#1251454)
+  * CVE-2025-58190: Fix excessive memory consumption (bsc#1251657)
+  Features and enhancements:
+  * Update to Go 1.25
+  * Update to golang.org/x/net v0.45.0
+  Bug fixes:
+  * Auth: Fix render user OAuth passthrough.
+  * LDAP Authentication: Fix URL to propagate username context as
+                         parameter.
+  * Plugins: Dependencies do not inherit parent URL for preinstall.
+  * URLParams: Stringify true values as key=true always (fixes
+               issues with variables with true value).
+
+-------------------------------------------------------------------
 Wed Oct  8 07:25:00 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to version 11.6.6:

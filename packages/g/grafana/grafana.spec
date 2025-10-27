@@ -1,7 +1,7 @@
 #
 # spec file for package grafana
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        11.6.6
+Version:        11.6.7
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
@@ -39,8 +39,7 @@ Source5:        0001-Add-source-code-reference.patch
 Patch2:         0002-Use-bash-instead-of-env.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
-BuildRequires:  wire
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 Requires(post): %fillup_prereq
 Requires:       group(grafana)
 Requires:       user(grafana)
@@ -73,7 +72,7 @@ export GOFLAGS="-buildmode=pie"
 export CGO_ENABLED=1
 %endif
 %endif
-wire gen -tags 'oss' ./pkg/server
+go run ./pkg/build/wire/cmd/wire/main.go gen -tags "oss" -gen_tags "(!enterprise && !pro)" ./pkg/server
 go build -o . -ldflags '-X main.version=%{version}' ./pkg/cmd/...
 
 %install
