@@ -876,4 +876,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
   + Do not skip symbols both in Gio and in platform specific (forwarded request 1307609 from iznogood)</comment>
     <requestid>1307902</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>a9152888c10beeafeac39263c42227de</srcmd5>
+    <version>3.54.5</version>
+    <time>1761572264</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313604</requestid>
+  </revision>
 </revisionlist>

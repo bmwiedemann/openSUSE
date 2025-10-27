@@ -34,7 +34,7 @@
 %define libffi_version 3.0
 %{?sle15_python_module_pythons}
 Name:           python-gobject
-Version:        3.54.3
+Version:        3.54.5
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
