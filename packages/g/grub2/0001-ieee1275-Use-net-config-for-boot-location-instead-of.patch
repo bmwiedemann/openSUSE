@@ -1,0 +1,113 @@
+From eae4fc64a16cb58733afca09e70a09e51d405a9d Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 30 Sep 2025 14:44:02 +0800
+Subject: [PATCH] ieee1275: Use net config for boot location instead of
+ firmware bootpath
+
+On network boots, grub_ieee1275_net_config() is used to determine the
+boot device, but the path continues to be taken from the Open Firmware
+/chosen/bootpath property. This assumes the device node follows the
+generic IEEE-1275 syntax, which is not always the case. Different
+drivers may extend or redefine the format, and GRUB may then
+misinterpret the argument as a filename and set $prefix incorrectly.
+
+The generic Open Firmware device path format is:
+
+  device-name[:device-argument]
+  device-argument := [partition][,[filename]]
+
+For example, a bootpath such as:
+
+  /vdevice/l-lan@30000002:speed=auto,duplex=auto,1.2.243.345,,9.8.76.543,1.2.34.5,5,5,255.255.255.0,512
+
+does not follow this form. The section after the colon (the
+device-argument) contains driver-specific options and network
+parameters, not a valid filename. GRUB interprets this string as a
+filename, which results in $prefix being set to "/", effectively losing
+the intended boot directory.
+
+The firmware is not at fault here, since interpretation of device nodes
+is driver-specific. Instead, GRUB should use the filename provided in
+the cached DHCP packet, which is consistent and reliable. This is also
+the same mechanism already used on UEFI and legacy BIOS platforms.
+
+This patch updates grub_machine_get_bootlocation() to prefer the result
+from grub_ieee1275_net_config() when complete, and only fall back to the
+firmware bootpath otherwise.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/kern/ieee1275/init.c | 28 +++++++++++++++++++++-------
+ 1 file changed, 21 insertions(+), 7 deletions(-)
+
+diff --git a/grub-core/kern/ieee1275/init.c b/grub-core/kern/ieee1275/init.c
+index 45f787eff..802a34f07 100644
+--- a/grub-core/kern/ieee1275/init.c
++++ b/grub-core/kern/ieee1275/init.c
+@@ -153,9 +153,11 @@ void (*grub_ieee1275_net_config) (const char *dev, char **device, char **path,
+ void
+ grub_machine_get_bootlocation (char **device, char **path)
+ {
+-  char *bootpath;
++  char *bootpath = NULL;
+   char *filename;
+-  char *type;
++  char *type = NULL;
++  char *ret_device = NULL;
++  char *ret_path = NULL;
+ 
+   bootpath = grub_ieee1275_get_boot_dev ();
+   if (! bootpath)
+@@ -171,7 +173,7 @@ grub_machine_get_bootlocation (char **device, char **path)
+       dev = grub_ieee1275_get_aliasdevname (bootpath);
+       canon = grub_ieee1275_canonicalise_devname (dev);
+       if (! canon)
+-        return;
++	goto done;
+       ptr = canon + grub_strlen (canon) - 1;
+       while (ptr > canon && (*ptr == ',' || *ptr == ':'))
+ 	ptr--;
+@@ -179,13 +181,17 @@ grub_machine_get_bootlocation (char **device, char **path)
+       *ptr = 0;
+ 
+       if (grub_ieee1275_net_config)
+-	grub_ieee1275_net_config (canon, device, path, bootpath);
++	grub_ieee1275_net_config (canon, &ret_device, &ret_path, bootpath);
+       grub_free (dev);
+       grub_free (canon);
++
++      /* Use path from net config if it is provided by cached DHCP info */
++      if (ret_path != NULL)
++	goto done;
++      /* Fall through to use firmware bootpath */
+     }
+   else
+-    *device = grub_ieee1275_encode_devname (bootpath);
+-  grub_free (type);
++    ret_device = grub_ieee1275_encode_devname (bootpath);
+ 
+   filename = grub_ieee1275_get_filename (bootpath);
+   if (filename)
+@@ -198,10 +204,18 @@ grub_machine_get_bootlocation (char **device, char **path)
+ 	  *lastslash = '\0';
+ 	  grub_translate_ieee1275_path (filename);
+ 
+-	  *path = filename;
++	  ret_path = filename;
+ 	}
+     }
++
++ done:
++  grub_free (type);
+   grub_free (bootpath);
++
++  if (device != NULL)
++    *device = ret_device;
++  if (path != NULL)
++    *path = ret_path;
+ }
+ 
+ /* Claim some available memory in the first /memory node. */
+-- 
+2.51.0
+

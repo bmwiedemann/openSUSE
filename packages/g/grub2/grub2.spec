@@ -518,6 +518,7 @@ Patch341:       0001-kern-misc-Implement-faster-grub_memcpy-for-aligned-b.patch
 Patch342:       grub2-bls-loader-entry-default.patch
 Patch343:       0001-term-ns8250-spcr-Return-if-redirection-is-disabled.patch
 Patch344:       grub2-i386-pc-no-pageflipping.patch
+Patch345:       0001-ieee1275-Use-net-config-for-boot-location-instead-of.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

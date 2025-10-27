@@ -475,27 +475,33 @@ v4:
  EOF
  if [ "x$GRUB_BUTTON_CMOS_ADDRESS" != "x" ]; then
      cat <<EOF
-@@ -55,6 +62,9 @@
+@@ -54,7 +61,11 @@
+ elif [ "\${next_entry}" ] ; then
     set default="\${next_entry}"
     set next_entry=
-    save_env next_entry
+-   save_env next_entry
 +   if [ "\${env_block}" ] ; then
 +     save_env -f "\${env_block}" next_entry
++   else
++     save_env next_entry
 +   fi
     set boot_once=true
  else
     set default="${GRUB_DEFAULT}"
-@@ -66,6 +76,9 @@
+@@ -65,7 +76,11 @@
+ if [ "\${next_entry}" ] ; then
     set default="\${next_entry}"
     set next_entry=
-    save_env next_entry
+-   save_env next_entry
 +   if [ "\${env_block}" ] ; then
 +     save_env -f "\${env_block}" next_entry
++   else
++     save_env next_entry
 +   fi
     set boot_once=true
  else
     set default="${GRUB_DEFAULT}"
-@@ -93,7 +106,12 @@
+@@ -93,7 +108,12 @@
  function savedefault {
    if [ -z "\${boot_once}" ]; then
      saved_entry="\${chosen}"

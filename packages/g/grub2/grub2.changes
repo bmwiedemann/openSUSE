@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 13 09:45:07 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix "sparse file not allowed" error after grub2-reboot (bsc#1245738)
+  * grub2-grubenv-in-btrfs-header.patch
+
+-------------------------------------------------------------------
+Mon Oct 13 09:36:02 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix PowerPC network boot prefix to correctly locate grub.cfg (bsc#1249385)
+  * 0001-ieee1275-Use-net-config-for-boot-location-instead-of.patch
+
+-------------------------------------------------------------------
 Fri Sep 26 07:53:25 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - make grub plugin compatible with snapper's plugin API (bsc#1246172)

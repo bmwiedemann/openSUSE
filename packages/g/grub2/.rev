@@ -3205,4 +3205,12 @@ pretty much the same. The main user visible changes are
     <comment>Re-include the rename</comment>
     <requestid>1311609</requestid>
   </revision>
+  <revision rev="377" vrev="66">
+    <srcmd5>546019252bcf9adf7ff6dd430c8178a1</srcmd5>
+    <version>2.12</version>
+    <time>1761586662</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313759</requestid>
+  </revision>
 </revisionlist>
