@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 24 15:36:33 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Align vala overrides with budgie-desktop
+- Reword specfile comment
+
+-------------------------------------------------------------------
 Fri Apr 12 09:27:00 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for vala building code incompatible with Werror

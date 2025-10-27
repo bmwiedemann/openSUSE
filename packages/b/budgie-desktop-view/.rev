@@ -118,4 +118,14 @@
     <comment>Undo wayland</comment>
     <requestid>1255070</requestid>
   </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>d030d41227d3eb01cdcd3580a415b053</srcmd5>
+    <version>1.3+0</version>
+    <time>1761572356</time>
+    <user>anag_factory</user>
+    <comment>- Align vala overrides with budgie-desktop
+- Reword specfile comment
+</comment>
+    <requestid>1313568</requestid>
+  </revision>
 </revisionlist>
