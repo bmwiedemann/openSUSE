@@ -167,4 +167,12 @@
     <comment>Refresh the config.sub and config.guess files</comment>
     <requestid>1307558</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>91d4b643daa8c3324e3c7617d631be25</srcmd5>
+    <version>21.0.9.0</version>
+    <time>1761572273</time>
+    <user>anag_factory</user>
+    <comment>October 2025 CPU</comment>
+    <requestid>1313063</requestid>
+  </revision>
 </revisionlist>
