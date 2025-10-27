@@ -1,0 +1,2 @@
+addFilter("W: no-%check-section")
+addFilter("E: devel-file-in-non-devel-package.*/usr/include/")

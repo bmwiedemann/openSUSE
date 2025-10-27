@@ -25,7 +25,7 @@
 %else
 %bcond_without bit32
 %endif
-%define mversion 0.13
+%define mversion 0.14.4
 %define bit32_version 5.3.5.1
 Version:        %{mversion}
 Release:        0
@@ -33,7 +33,8 @@ Summary:        Lua-5.3-style APIs for Lua 5.2 and 5.1
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/lunarmodules/lua-compat-5.3
-Source:         https://github.com/lunarmodules/lua-compat-5.3/archive/v%{version}.tar.gz#$/%{mod_name}-%{version}.tar.gz
+Source0:        https://github.com/lunarmodules/lua-compat-5.3/archive/v%{version}.tar.gz#$/%{mod_name}-%{version}.tar.gz
+Source99:       lua-compat-5.3.rpmlintrc
 BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
@@ -71,7 +72,7 @@ from Lua 5.3; it is compatible with Lua 5.1, 5.2 and 5.3.
 %autosetup -n %{mod_name}-%{mversion}
 
 %build
-export CC="${COMPILER:-gcc}" DEF="" SRC="" CFLAGS="-Wall -Wextra $(pkg-config --cflags lua%{lua_version}) -Ic-api -O2 -fPIC"
+export CC="${COMPILER:-gcc}" DEF="" SRC="" CFLAGS="-Wall -Wextra $(pkg-config --cflags lua) -Ic-api -O2 -fPIC"
 if [ "x${EXTERNAL:-}" = xtrue ]; then
     export DEF="-DCOMPAT53_PREFIX=compat53" SRC="c-api/compat-5.3.c"
 fi

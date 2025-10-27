@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:47:30 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Fri Oct 17 20:34:32 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.14.4:
+  - prevent loops when loading files within require (e.g. with a
+    custom package loader)
+- Update to 0.14.3:
+  - win32: fix detection for mingw32
+  - revert change in tolstream
+- Update to 0.14.2:
+  - fix: return third result in file-opening functions
+- Update to 0.14.1:
+  - avoid MSVC build error
+- Update to 0.14:
+  - fix: math.tointeger accepts strings convertible to integers
+  - adjust file metatables for LuaJIT built with 5.2 compat
+    disabled, even in compat53.module mode
+
+-------------------------------------------------------------------
+Fri Oct 10 10:37:25 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix building on LuaJIT (don’t rely on the version number)
+- Add rpmlintrc
+
+-------------------------------------------------------------------
 Wed Jul 24 10:18:22 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Rename bit32 package to avoid the package conflicting with

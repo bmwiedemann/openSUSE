@@ -113,4 +113,30 @@
 </comment>
     <requestid>1189355</requestid>
   </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>38a5e4c9bde91302b5c1cbcde22b5d61</srcmd5>
+    <version>unknown</version>
+    <time>1761572231</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Update to 0.14.4:
+  - prevent loops when loading files within require (e.g. with a
+    custom package loader)
+- Update to 0.14.3:
+  - win32: fix detection for mingw32
+  - revert change in tolstream
+- Update to 0.14.2:
+  - fix: return third result in file-opening functions
+- Update to 0.14.1:
+  - avoid MSVC build error
+- Update to 0.14:
+  - fix: math.tointeger accepts strings convertible to integers
+  - adjust file metatables for LuaJIT built with 5.2 compat
+    disabled, even in compat53.module mode
+
+- Fix building on LuaJIT (don’t rely on the version number)
+- Add rpmlintrc</comment>
+    <requestid>1313522</requestid>
+  </revision>
 </revisionlist>
