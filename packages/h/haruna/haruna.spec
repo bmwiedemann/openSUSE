@@ -17,7 +17,7 @@
 
 
 Name:           haruna
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
