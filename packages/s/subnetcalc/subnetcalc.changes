@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 18 14:09:46 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.6.5:
+  * Documentation update
+  * Fixed broken libGeoIP detection in CMakeLists.txt
+  * Fix for IPv6 scope handling
+
+-------------------------------------------------------------------
 Sat Apr  5 15:02:34 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.6.2:

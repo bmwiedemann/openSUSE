@@ -1,7 +1,7 @@
 #
 # spec file for package subnetcalc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           subnetcalc
-Version:        2.6.2
+Version:        2.6.5
 Release:        0
 Summary:        IPv4/IPv6 Subnet Calculator
 License:        GPL-3.0-or-later
