@@ -1,7 +1,7 @@
 #
 # spec file for package python-bump-pydantic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Convert Pydantic from V1 to V2
 License:        MIT
 URL:            https://github.com/pydantic/bump-pydantic
 Source:         https://files.pythonhosted.org/packages/source/b/bump_pydantic/bump_pydantic-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support python-libcst >= 1.5.0
+Patch0:         support-new-libcst.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

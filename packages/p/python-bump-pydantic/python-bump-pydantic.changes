@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 27 03:36:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-libcst.patch:
+  * Support python-libcst >= 1.5.0 changes.
+
+-------------------------------------------------------------------
 Tue Jun 17 09:19:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

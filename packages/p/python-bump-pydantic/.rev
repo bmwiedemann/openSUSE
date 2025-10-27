@@ -15,4 +15,13 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1286311</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>73768712496ceb8405470a3d32c9f484</srcmd5>
+    <version>0.8.0</version>
+    <time>1761572485</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-new-libcst.patch:
+  * Support python-libcst &gt;= 1.5.0 changes.</comment>
+    <requestid>1313753</requestid>
+  </revision>
 </revisionlist>

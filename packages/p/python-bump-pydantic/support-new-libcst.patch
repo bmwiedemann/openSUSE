@@ -1,0 +1,13 @@
+Index: bump_pydantic-0.8.0/tests/unit/test_add_default_none.py
+===================================================================
+--- bump_pydantic-0.8.0.orig/tests/unit/test_add_default_none.py
++++ bump_pydantic-0.8.0/tests/unit/test_add_default_none.py
+@@ -17,7 +17,7 @@ class TestClassDefVisitor(UnitTest):
+         mod = MetadataWrapper(
+             parse_module(CodemodTest.make_fixture_data(code)),
+             cache={
+-                FullyQualifiedNameProvider: FullyQualifiedNameProvider.gen_cache(Path(""), [file_path], None).get(
++                FullyQualifiedNameProvider: FullyQualifiedNameProvider.gen_cache(Path(""), [file_path]).get(
+                     file_path, ""
+                 )
+             },
