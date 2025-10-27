@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 25 13:12:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.7.1
+  * Fix bugs in diff widget
+  * Adjust style for commit message
+  * Fix crash on blame
+  * Fix diff view if file is new or deleted
+  * Fix crash of click on folder in diffview
+  * fix: show commit summary instead of whole commit message on
+    commit title
+- Add patch:
+  * 0001-Fix-build-with-libgit2-1.9.1.patch
+
+-------------------------------------------------------------------
 Tue Jun 25 10:25:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.6.0

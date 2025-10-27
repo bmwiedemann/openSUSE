@@ -1,7 +1,7 @@
 #
 # spec file for package kommit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2023 Matteo De Carlo
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,16 +22,19 @@
 
 %bcond_without released
 Name:           kommit
-Version:        1.6.0
+Version:        1.7.1
 Release:        0
 Summary:        Graphical Git Client
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/kommit
-Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/%{name}/%{name}-v%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/%{name}/%{name}-v%{version}.tar.xz.sig
+# https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/hamedmasafi@key1.asc
 Source2:        kommit.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-libgit2-1.9.1.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(DolphinVcs)
@@ -59,7 +62,7 @@ Graphical Git Client
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
@@ -68,6 +71,9 @@ Graphical Git Client
 
 %install
 %kf6_install
+
+# No use
+rm -r %{buildroot}%{_includedir}/Kommit
 
 %find_lang %{name} --with-man --all-name --with-html
 
