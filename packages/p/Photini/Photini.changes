@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 23 04:54:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Support both normalized and titlecase metadata directories.
+
+-------------------------------------------------------------------
 Tue Oct 18 08:37:48 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required

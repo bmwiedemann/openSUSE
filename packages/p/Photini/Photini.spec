@@ -1,7 +1,7 @@
 #
 # spec file for package Photini
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,9 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-appdirs >= 1.3
 BuildRequires:  python3-devel
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 Requires:       ffmpeg
 Requires:       libgexiv2-2 >= 0.5
 Requires:       python3-appdirs >= 1.3
@@ -58,13 +60,13 @@ camera's position when the picture was taken.
 %autosetup -p1
 
 %build
-python3 setup.py build
+%python3_pyproject_wheel
 for s in 22 32 48 64 96 128 192 256 512; do
     convert -strip utils/make_icons/icon_master.png -resize ${s}x${s} ${s}.png
 done
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python3_pyproject_install
 for s in 22 32 48 64 96 128 192 256 512; do
    mkdir -pv %{buildroot}%{_datadir}/icons//hicolor/${s}x${s}/apps
    install -m0644 ${s}.png -T \
@@ -79,7 +81,7 @@ rm -f %{buildroot}/%{python3_sitelib}/photini/data/linux/photini.desktop
 %doc CHANGELOG.txt README.rst
 %license LICENSE.txt
 %{_bindir}/photini
-%{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
+%{python3_sitelib}/[Pp]hotini-%{version}.dist-info
 %{python3_sitelib}/photini
 %{_datadir}/applications/photini.desktop
 %{_datadir}/icons/hicolor/*/apps/photini.png
