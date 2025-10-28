@@ -604,4 +604,12 @@
     <comment>- Skip testcase that breaks with pytest 8.4.</comment>
     <requestid>1291573</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>7764f36b1960e2842245c71e7a70ffc5</srcmd5>
+    <version>2.19.2</version>
+    <time>1761659116</time>
+    <user>anag_factory</user>
+    <comment>- Build tests with _multibuild to avoid cycles with pytest dependency.</comment>
+    <requestid>1313838</requestid>
+  </revision>
 </revisionlist>

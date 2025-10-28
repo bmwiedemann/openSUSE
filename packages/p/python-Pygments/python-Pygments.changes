@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 27 12:29:34 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build tests with _multibuild to avoid cycles with pytest dependency.
+
+-------------------------------------------------------------------
 Thu Jul 10 02:55:32 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip testcase that breaks with pytest 8.4. 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pygments
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,22 @@
 #
 
 
-#
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
 %{?sle15_python_module_pythons}
-Name:           python-Pygments
+Name:           python-Pygments%{psuffix}
 Version:        2.19.2
 Release:        0
 Summary:        A syntax highlighting package written in Python
@@ -37,8 +45,10 @@ Patch0:         skip-wcag-contrast-ratio.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module wheel}
+%if %{with test}
+BuildRequires:  %{python_module pytest >= 7}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 #!BuildIgnore:  ca-certificates:p11-kit
@@ -72,6 +82,7 @@ source code. Highlights are:
 # Remove unneeded executable bit
 chmod -x pygments/formatters/_mapping.py pygments/lexers/gsql.py
 
+%if !%{with test}
 %build
 %pyproject_wheel
 
@@ -83,7 +94,9 @@ install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 %{python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 %fdupes %{buildroot}%{$python_sitelib}
 }
+%endif
 
+%if %{with test}
 %check
 # skip test_guess_lexer_modula2 as we have to remove it's depent artifacts
 # in exmplefiles because of potential licensing concerns
@@ -91,7 +104,9 @@ install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 # skip random input tests as they get stuck (missing entropy?)
 # test_lexer_classes breaks with pytest 8.4.
 %pytest -k "not (test_guess_lexer_modula2 or test_random_input or test_lexer_classes)"
+%endif
 
+%if !%{with test}
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
 %python_libalternatives_reset_alternative pygmentize
@@ -109,5 +124,6 @@ install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 %python_alternative %{_mandir}/man1/pygmentize.1%{ext_man}
 %{python_sitelib}/pygments
 %{python_sitelib}/pygments-%{version}*-info
+%endif
 
 %changelog
