@@ -3,7 +3,7 @@
     <param name="url">https://github.com/openshift/oc</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">refs/tags/openshift-clients-4.19.0-202505210330</param>
+    <param name="revision">refs/tags/openshift-clients-4.20.0-202509230043</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">openshift-clients-(.*)-20..........</param>

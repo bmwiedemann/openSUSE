@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Tue Oct 28 05:45:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.20.0:
+  * must-gather: Fix usage checker for custom commands
+  * pkg/cli/admin/release/info: Mention elided first-parent,
+    non-merge commits
+  * pkg/cli/admin/inspectalerts: Pass through
+    --certificate-authority, etc.
+  * Remove mentioning about IRC channel from README
+  * OTA-1581: Promote `oc adm upgrade status` to general
+    availability (#2063)
+  * Move not-lines-related table.Write out of the loop
+  * Truncate long reasons
+  * Reproduce the long reason issue
+  * status: improve line break handling for CO Message
+  * Reproduce the line break issue
+  * formatting fix
+  * pkg/cli/admin/upgrade: Promote 'recommend' to general
+    availability
+  * pkg/cli/admin/upgrade/recommend: Hide --mock-clusterversion
+  * OCPNODE-3557: Fixes oc debug managed by label when keep labels
+    option is not used (#2074)
+  * Add unit test for TemplateInstance nil Secret bug fix
+  * oc login: Preserve ExecProvider on oc login -u
+  * Fix panic in oc describe templateinstance when Secret is nil
+  * pkg/cli/admin/upgrade/recommend: Don't error on unaccepted
+    issues when the feature gate is off
+  * Update containers/image and docker versions
+  * Update k8s 1.33.3
+  * resolve merge conflict
+  * Update oidc packages
+  * Update containers/storage and joelanford/ignore
+  * Use mknod functions from containers/storage
+  * Run make update and implement missing remoteExec for fakeclient
+  * Wire kuberc
+  * Update the labels with 1.33.2 k8s
+  * Update golang/x and spf13 packages to latest
+  * Add custom reflector store to detect the DeltaFIFO is empty or
+    not
+  * Move insights describer to v1alpha2 versions
+  * Run go mod vendor
+  * Update go.mod dependencies
+  * Prefer ready and reachable control plane nodes
+  * Filter out unreachable taints from tolerations
+  * Revert "WRKLDS-1713: Remove schema1"
+  * pkg/cli/admin/upgrade/recommend: "accepted ... via
+    ConditionalUpdateRisk"
+  * Introduce a dedicated Pod label for the purpose of identifying
+    debug pods
+  * OCPBUGS-55048: Return error in case of error
+  * Simplify TarEntryCallback
+  * deps: Upgrade openshift/build-machinery-go
+  * Fix go vet issues
+  * Update to go 1.24 and OCP 4.20
+  * Revert "OCPBUGS-56691: Rely on overall available disk space of
+    the mounted volume"
+  * image: Remove support for schema1
+  * pkg/cli/admin/upgrade/recommend: Add a --quiet option
+  * oc image serve: Remove as deprecated
+  * pkg/cli/admin/upgrade/recommend: New, feature-gated --accept
+    [1] is suggesting ClusterVersion API changes to make it easier
+    for cluster administrators to manage many clusters and updates
+    vs. a more limited set of update issues.  One example scenario:
+  * avoid transfering permissions when copying artifacts from
+    node-joiner pod
+  * Increase default volume-percentage value to 50%
+  * Use control-plane in node selector instead of deprecated master
+  * Rely on overall available disk space of the mounted volume
+  * pkg/cli/admin/mustgather: Include ClusterVersion in fallback
+    inspect
+  * Replace colon to hypen in the filename while extracting tar on
+    Windows
+  * Update for clarity
+  * Clarify behavior of since-time flag in oc adm must-gather
+    command
+  * make 'oc status' compatible with bare kube
+  * adm, inspect, ns: Collect UserDefinedNetwork CRs
+  * Adding sos.conf file for default sos config into the tools
+    image
+
+-------------------------------------------------------------------
 Mon Jun 23 15:26:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - leading v removed from version in '_service' file
