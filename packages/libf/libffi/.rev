@@ -192,4 +192,13 @@
     <comment>3.5.2 (forwarded request 1302677 from fstrba)</comment>
     <requestid>1302688</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3ca95d77632d17f502fe71dc0346b872</srcmd5>
+    <version>3.5.2</version>
+    <time>1761659140</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patch to fix GCS on aarch64:
+  * 943.patch (forwarded request 1313715 from Guillaume_G)</comment>
+    <requestid>1313804</requestid>
+  </revision>
 </revisionlist>

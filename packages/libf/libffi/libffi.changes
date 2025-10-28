@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 26 09:18:40 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix GCS on aarch64:
+  * 943.patch
+
+-------------------------------------------------------------------
 Thu Sep  4 07:14:03 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 3.5.2

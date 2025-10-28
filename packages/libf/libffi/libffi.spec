@@ -29,6 +29,8 @@ Group:          Development/Languages/C and C++
 URL:            https://sourceware.org/libffi/
 Source:         https://github.com/libffi/libffi/releases/download/v%{version}/libffi-%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM - https://github.com/libffi/libffi/pull/943
+Patch0:         943.patch
 # for make check
 BuildRequires:  dejagnu
 BuildRequires:  expect
