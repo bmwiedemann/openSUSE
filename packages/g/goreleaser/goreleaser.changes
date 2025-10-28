@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 27 08:24:01 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.12.7:
+  * ci: lint timeout
+  * ci: lint timeout
+  * ci(deps): bump the actions group across 1 directory with 6 updates (#6207)
+  * chore(deps): bump the gomod group with 3 updates (#6205)
+  * test(ko): update base image labels
+  * fix(docker/v2): make sbom templateable (#6203)
+  * chore: auto-update generated files
+  * fix(dockers/v2): allow to disable configurations (#6200)
+  * docs: md:inline_version always put a dot in the end.
+  * fix(dockers/v2): allow to disable SBOM (#6201)
+  * fix(docker/v2): support linux/arm/v5 (#6202)
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Thu Oct 23 06:25:50 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.12.6:
