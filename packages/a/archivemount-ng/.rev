@@ -15,4 +15,12 @@
     <comment>- fix build in openSUSE:Backports:SLE-15-SP7 (forwarded request 1274517 from AndreasStieger)</comment>
     <requestid>1274518</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0c8e7d53976a3f8d479db23967fa2c4f</srcmd5>
+    <version>1a</version>
+    <time>1761659371</time>
+    <user>anag_factory</user>
+    <comment>- Skip %check in qemu emulation (forward SR#1314073)</comment>
+    <requestid>1314077</requestid>
+  </revision>
 </revisionlist>

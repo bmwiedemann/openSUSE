@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 28 12:16:14 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Skip %check in qemu emulation
+
+-------------------------------------------------------------------
 Mon May  5 10:55:12 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build in openSUSE:Backports:SLE-15-SP7

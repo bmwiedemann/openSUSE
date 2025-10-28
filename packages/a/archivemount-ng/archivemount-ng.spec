@@ -2,6 +2,7 @@
 # spec file for package archivemount-ng
 #
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +21,7 @@ Name:           archivemount-ng
 Version:        1a
 Release:        0
 Summary:        Mount archives as a file system
-License:        LGPL-2.1-or-later AND 0BSD
+License:        0BSD AND LGPL-2.1-or-later
 URL:            https://git.sr.ht/~nabijaczleweli/archivemount-ng
 Source:         https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # fails download_files
@@ -64,8 +65,11 @@ export VERSION=%{version}
 	PREFIX=%{_prefix} \
 	%{nil}
 
+# qemu emulation does not support setuid programs
+%if !0%{?qemu_user_space_build}
 %check
 %make_build check
+%endif
 
 %files
 %license LICENSES/LGPL-2.0-or-later.txt LICENSES/0BSD.txt
