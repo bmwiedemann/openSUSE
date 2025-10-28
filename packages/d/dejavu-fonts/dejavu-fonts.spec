@@ -1,7 +1,7 @@
 #
 # spec file for package dejavu-fonts
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        DejaVu Truetype Fonts
 License:        SUSE-Permissive
 Group:          System/X11/Fonts
-Url:            http://dejavu.sourceforge.net/
+URL:            http://dejavu.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/dejavu/dejavu/%{version}/%{name}-ttf-%{version}.tar.bz2
 BuildRequires:  fontpackages-devel
 %reconfigure_fonts_prereq
@@ -52,7 +52,8 @@ install -m 0644 ttf/*.ttf %{buildroot}%{_ttfontsdir}/
 
 %files
 %defattr(-,root,root,755)
-%doc AUTHORS BUGS LICENSE NEWS README.md *.txt fontconfig
+%license LICENSE
+%doc AUTHORS BUGS NEWS README.md *.txt fontconfig
 %{_ttfontsdir}/
 
 %changelog
