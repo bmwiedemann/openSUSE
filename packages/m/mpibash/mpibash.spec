@@ -1,4 +1,4 @@
-#
+
 # spec file for package mpibash
 #
 # Copyright (c) 2025 SUSE LLC
@@ -17,20 +17,22 @@
 
 
 Name:           mpibash
-Version:        1.3
+Version:        1.5
 Release:        0
 Summary:        Parallel scripting right from the Bourne-Again Shell
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/lanl/MPI-Bash
 Source0:        https://github.com/lanl/MPI-Bash/releases/download/v%{version}/mpibash-%{version}.tar.gz
-Patch0:         Replace-deprecated-MPI_Errhandler_set-with-newer-MPI_Comm_set_errhandler.patch
-Patch1:         Cast-function-pointer-types-so-they-can-be-compared-without-warnings.patch
-BuildRequires:  bash-devel >= 4.4
+Source100:      README.md
+BuildRequires:  bash-devel >= 5.2
 BuildRequires:  libcircle-devel
 BuildRequires:  openmpi-macros-devel
 %openmpi_requires
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?suse_version} >= 1600
+ExcludeArch:    %ix86 %arm
+%endif
 
 %description
 MPI-Bash makes it possible to parallelize Bash scripts which run a set of
@@ -56,11 +58,6 @@ This package contains example scripts for mpibash.
 
 %build
 %setup_openmpi
-# This is to avoid an issue with execute_shell_function which is declared in
-# /usr/include/bash/execute_cmd.h but it does not exists for "older" bash
-# versions. Once updatig to v1.4 (which will require this header), this flag should
-# be dropped
-export CFLAGS="-Wno-implicit-function-declaration"
 %if 0%{?suse_version} > 1500
 export CFLAGS="-std=gnu17 $CFLAGS"
 %endif

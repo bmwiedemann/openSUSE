@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 28 08:30:56 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v1.5
+  - No release notes available.
+- Drop patches merged upstream:
+  - Cast-function-pointer-types-so-they-can-be-compared-without-warnings.patch
+  - Replace-deprecated-MPI_Errhandler_set-with-newer-MPI_Comm_set_errhandler.patch
+- Disable 32b builds as there is no more openmpi available
+
+-------------------------------------------------------------------
 Fri Jul 11 08:22:31 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add -std=gnu17 flags to fix compilation with GCC >= 15

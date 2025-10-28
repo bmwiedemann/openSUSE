@@ -59,4 +59,17 @@
     <comment></comment>
     <requestid>1292080</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3d9fa388ddd5090f34d6431fa03a249a</srcmd5>
+    <version>1.5</version>
+    <time>1761659354</time>
+    <user>anag_factory</user>
+    <comment>- Update to v1.5
+  - No release notes available.
+- Drop patches merged upstream:
+  - Cast-function-pointer-types-so-they-can-be-compared-without-warnings.patch
+  - Replace-deprecated-MPI_Errhandler_set-with-newer-MPI_Comm_set_errhandler.patch
+- Disable 32b builds as there is no more openmpi available</comment>
+    <requestid>1314035</requestid>
+  </revision>
 </revisionlist>
