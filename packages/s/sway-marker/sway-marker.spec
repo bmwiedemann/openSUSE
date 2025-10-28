@@ -1,7 +1,7 @@
 #
 # spec file for package sway-marker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define binname nvim-gtk
 Name:           sway-marker
-Version:        0.3~0
+Version:        0.3+git.1746186296.bd4364d
 Release:        0
 Summary:        Simple popup for using marks in Sway
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 URL:            https://github.com/ilyazzz/sway-marker
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  hicolor-icon-theme
@@ -44,8 +43,6 @@ containers (windows) in sway easily.
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

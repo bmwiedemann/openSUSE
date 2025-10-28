@@ -23,4 +23,22 @@
     <comment></comment>
     <requestid>1065666</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>45fa174135809cefb554a8f9bf92aedf</srcmd5>
+    <version>0.3+git.1746186296.bd4364d</version>
+    <time>1761659275</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3+git.1746186296.bd4364d:
+  * chore: update license name
+  * Add link to openSUSE package in readme
+  * update dependencies, adopt breaking changes in gtk and clap
+  * ignore non-alphanumeric characters
+  * Intorduce `--markup` option &amp; use `clap` to parse arguments (#2)
+  * Create LICENSE (GPL-3.0-or-later)
+  * Create README.md
+- Remove unnecessary:
+  - cargo_config
+</comment>
+    <requestid>1313957</requestid>
+  </revision>
 </revisionlist>

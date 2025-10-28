@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 28 00:00:08 UTC 2025 - mvetter@suse.com
+
+- Update to version 0.3+git.1746186296.bd4364d:
+  * chore: update license name
+  * Add link to openSUSE package in readme
+  * update dependencies, adopt breaking changes in gtk and clap
+  * ignore non-alphanumeric characters
+  * Intorduce `--markup` option & use `clap` to parse arguments (#2)
+  * Create LICENSE (GPL-3.0-or-later)
+  * Create README.md
+- Remove unnecessary:
+  - cargo_config
+
+-------------------------------------------------------------------
 Tue Feb 14 01:37:23 UTC 2023 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
