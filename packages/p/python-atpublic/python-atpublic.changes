@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 27 15:31:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add missing test dependency importlib-resources for Python 3.11
+
+-------------------------------------------------------------------
+Tue Oct 21 09:06:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.0.2
+  * Documentation improvements.
+  * Temporary workaround for a furo
+  * theme bug in dark mode.
+  * CI updates.
+
+-------------------------------------------------------------------
+Sat Jul 12 17:20:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.1:
+  * Fix test suite when run with Python < 3.12.  (:GL:`28`)
+  * Add test for Python 3.14.
+  * Added populate_all() which can be called from the bottom of
+    your module to infer and populate your module's __all__.  Use
+    this if you don't like the decorator syntax.  (:GL:`27`)
+  * Documentation improvements.
+
+-------------------------------------------------------------------
 Mon Feb  3 13:26:53 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1:

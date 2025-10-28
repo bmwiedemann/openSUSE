@@ -1,7 +1,7 @@
 #
 # spec file for package python-atpublic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-atpublic
-Version:        5.1
+Version:        6.0.2
 Release:        0
 Summary:        @public decorator for populating __all__
 License:        Apache-2.0
@@ -44,6 +44,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
 BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module importlib-resources if %python-base < 3.12}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sybil}

@@ -101,4 +101,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1244782</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e4b3cfaaaed406ee2ee0a028c01739f7</srcmd5>
+    <version>6.0.2</version>
+    <time>1761659202</time>
+    <user>anag_factory</user>
+    <comment>- Add missing test dependency importlib-resources for Python 3.11
+- Update to 6.0.2
+  * Documentation improvements.
+  * Temporary workaround for a furo
+  * theme bug in dark mode.
+  * CI updates.
+- update to 6.0.1:
+  * Fix test suite when run with Python &lt; 3.12.  (:GL:`28`)
+  * Add test for Python 3.14.
+  * Added populate_all() which can be called from the bottom of
+    your module to infer and populate your module's __all__.  Use
+    this if you don't like the decorator syntax.  (:GL:`27`)
+  * Documentation improvements.
+</comment>
+    <requestid>1313886</requestid>
+  </revision>
 </revisionlist>
