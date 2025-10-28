@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Admin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,40 +18,42 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Admin
-Version:        1.6.1
+Version:        2.0.0
 Release:        0
 Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/flask-admin/flask-admin/
-Source:         https://files.pythonhosted.org/packages/source/F/Flask-Admin/Flask-Admin-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Flask-BabelEx has been firmly deprecated, switch to Babel
-# directly.
-Patch0:         switch-to-babel.patch
-# cherry-picks from https://github.com/flask-admin/flask-admin/pull/2328 Support latest flask, sqlalchemy, flask-sqlalchemy and wtforms
-Patch1:         model-from-model.patch
-Patch2:         reverse-relation-for-model.patch
-Patch3:         bytes-not-str.patch
+Source:         https://files.pythonhosted.org/packages/source/f/flask_admin/flask_admin-%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 0.7}
 BuildRequires:  %{python_module Flask-Babel}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
 BuildRequires:  %{python_module Pillow >= 3.3.2}
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module SQLAlchemy-Utils}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module WTForms}
 BuildRequires:  %{python_module arrow}
+BuildRequires:  %{python_module asgiref}
+BuildRequires:  %{python_module azure-storage-blob}
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module colour}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module moto}
 BuildRequires:  %{python_module peewee}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-recording}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requre}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tablib}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.7
+Requires:       python-Jinja2
+Requires:       python-MarkupSafe
 Requires:       python-SQLAlchemy
 Requires:       python-WTForms
+Requires:       python-Werkzeug
+
 BuildArch:      noarch
 %python_subpackages
 
@@ -64,7 +66,7 @@ developer has more control over the look, feel and functionality of
 the resulting application.
 
 %prep
-%autosetup -p1 -n Flask-Admin-%{version}
+%autosetup -p1 -n flask_admin-%{version}
 
 # remove contrib tests that pull in too many dependencies
 rm -rf flask_admin/tests/geoa
@@ -82,12 +84,13 @@ rm -f flask_admin/tests/test_form_upload.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not test_model and not test_inline_form_base_class and not test_safe_redirect'
+donttest="test_modal_edit_bs4 or test_file_admin_edit or test_file_admin"
+%pytest --block-network -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/flask_admin
-%{python_sitelib}/Flask_Admin-%{version}.dist-info
+%{python_sitelib}/flask_admin-%{version}.dist-info
 
 %changelog
