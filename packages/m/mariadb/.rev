@@ -2048,4 +2048,14 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment>add bug number</comment>
     <requestid>1308567</requestid>
   </revision>
+  <revision rev="154" vrev="5">
+    <srcmd5>bd0a8dc0ce9a66f94ce161fcf7b63eea</srcmd5>
+    <version>11.8.3</version>
+    <time>1761659105</time>
+    <user>anag_factory</user>
+    <comment>- disable pcre2 tests boo#1252518
+
+I am aware of the git for packaging, but this file does not seem to be tracked there (forwarded request 1313644 from AndreasStieger)</comment>
+    <requestid>1314005</requestid>
+  </revision>
 </revisionlist>
