@@ -244,7 +244,6 @@
     <!-- clicfs not found on x86_64-->
     <package name="clutter-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="clutter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="cm-unicode-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cnf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cnf-bash" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cnf-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -816,8 +815,8 @@
     <package name="iso_ent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="iw" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="jack-dbus" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="java-21-openjdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="java-21-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="java-25-openjdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="java-25-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="java-binfmt-misc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="javapackages-filesystem" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="javapackages-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1735,7 +1734,7 @@
     <package name="libblockdev3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libbluray2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libbluray3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libboost_filesystem1_89_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libboost_filesystem1_89_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libboost_iostreams1_89_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2814,6 +2813,7 @@
     <package name="libubsan1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libuchardet0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libudev1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libudfread3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libudisks2-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libudisks2-0_btrfs" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libumfpack6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

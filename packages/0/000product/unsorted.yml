@@ -423,7 +423,6 @@ unsorted:
   - adios2-mvapich2-devel 
   - adios2-openmpi4-devel 
   - adjtimex 
-  - adlmidi 
   - adlmidi-tools 
   - adminer 
   - adminer-designs 
@@ -2320,6 +2319,7 @@ unsorted:
   - clzip 
   - cm 
   - cm-devel 
+  - cm-unicode-fonts 
   - cmake 
   - cmake-doc-qhelp 
   - cmake-extras 
@@ -7036,6 +7036,7 @@ unsorted:
   - git-town-bash-completion 
   - git-town-fish-completion 
   - git-town-zsh-completion 
+  - git-weave 
   - git-who 
   - gitea-tea 
   - gitea-tea-bash-completion 
@@ -9244,8 +9245,10 @@ unsorted:
   - java-21-openj9-javadoc 
   - java-21-openj9-jmods 
   - java-21-openj9-src 
+  - java-21-openjdk 
   - java-21-openjdk-demo 
   - java-21-openjdk-devel 
+  - java-21-openjdk-headless 
   - java-21-openjdk-javadoc 
   - java-21-openjdk-jmods 
   - java-21-openjdk-src 
@@ -9256,10 +9259,8 @@ unsorted:
   - java-25-openj9-javadoc 
   - java-25-openj9-jmods 
   - java-25-openj9-src 
-  - java-25-openjdk 
   - java-25-openjdk-demo 
   - java-25-openjdk-devel 
-  - java-25-openjdk-headless 
   - java-25-openjdk-javadoc 
   - java-25-openjdk-jmods 
   - java-25-openjdk-src 
@@ -11229,6 +11230,7 @@ unsorted:
   - libMyGUIEngine3_4_3 
   - libOIS-devel 
   - libOIS1_5_0 
+  - libOPNMIDI1 
   - libOSCFaust1 
   - libOgreBites-devel 
   - libOgreBites13_6 
@@ -12225,7 +12227,7 @@ unsorted:
   - libbluray-bdj 
   - libbluray-devel 
   - libbluray-tools 
-  - libbluray2-32bit 
+  - libbluray3-32bit 
   - libbobcat-devel 
   - libbobcat-devel-static 
   - libbobcat-light-devel-static 
@@ -15111,6 +15113,7 @@ unsorted:
   - libopenvswitch-3_6-0 
   - liboping-devel 
   - liboping0 
+  - libopnmidi-devel 
   - libopts25 
   - libopus-devel 
   - libopus0-32bit 
@@ -15980,8 +15983,10 @@ unsorted:
   - librmt-devel-doc 
   - librnnoise0 
   - librnp0 
+  - librocfft0 
   - librocksdb10 
   - librocm-core1 
+  - librocrand1 
   - librocsgraphtheory0 
   - librrd8 
   - librsb-devel 
@@ -16100,6 +16105,7 @@ unsorted:
   - libsexp1 
   - libsexpp0 
   - libsfml2-2_6 
+  - libsfml3-3_0 
   - libsgutils-devel 
   - libsha1detectcoll-devel 
   - libshaderc_shared1-32bit 
@@ -16651,6 +16657,8 @@ unsorted:
   - libudev1-32bit 
   - libudf0 
   - libudf0-32bit 
+  - libudfread-devel 
+  - libudfread3-32bit 
   - libudisks2-0-devel 
   - libudisks2-0_lsm 
   - libudisks2-0_lvm2 
@@ -20594,6 +20602,7 @@ unsorted:
   - opi 
   - oping 
   - opmsg 
+  - opnmidi-tools 
   - oprofile 
   - oprofile-devel 
   - optee-client 
@@ -36315,6 +36324,7 @@ unsorted:
   - robinhood-tests 
   - robinhood-tools 
   - robinhood-webgui 
+  - rocfft-devel 
   - rockdodger 
   - rocket.term 
   - rocksdb-devel 
@@ -36350,6 +36360,7 @@ unsorted:
   - rocm-smi 
   - rocm-smi-devel 
   - rocminfo 
+  - rocrand-devel 
   - rocs 
   - rocs-devel 
   - rocs-lang 
@@ -37149,6 +37160,7 @@ unsorted:
   - sffview 
   - sfml2-devel 
   - sfml2-doc 
+  - sfml3-devel 
   - sfsexp-devel 
   - sgi-bitmap-fonts 
   - sgmltool 
