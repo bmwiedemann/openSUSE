@@ -1,7 +1,7 @@
 #
 # spec file for package python-toolz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-toolz
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        List processing tools and functional utilities for python
 License:        BSD-3-Clause
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pytoolz/toolz/
 Source:         https://files.pythonhosted.org/packages/source/t/toolz/toolz-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools-git-versioning}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 27 15:56:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.1.0
+  * Add support for Python 3.14, PyPy 3.11
+  * Drop support for Python 3.8, PyPy 3.8
+  * Add note about project status (alive and maintained, but inactive)
+  * Use yield from in merge_sorted to improve performance
+  * Fix bug in partition_all when __len__ is incorrect; now raise IndexError
+  * Modernization
+
+-------------------------------------------------------------------
 Mon Oct 28 22:06:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:
