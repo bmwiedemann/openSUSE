@@ -1,7 +1,7 @@
 #
 # spec file for package Kalpa-release.spec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           Kalpa-release
-Version:        20251027
+Version:        20251028
 Release:        0
 Summary:        Kalpa Desktop 
 License:        GPL-2.0-or-later
@@ -30,8 +30,8 @@ PreReq:         glibc >= 2.19
 Requires(post): coreutils
 Suggests:       branding-openSUSE
 Suggests:       distribution-logos-openSUSE-Kalpa
-Suggests:       java-21-openjdk
-Suggests:       java-21-openjdk-devel
+Suggests:       java-25-openjdk
+Suggests:       java-25-openjdk-devel
 Suggests:       openSUSE-build-key
 Suggests:       openSUSE-repos-Kalpa
 Conflicts:      distribution-release
@@ -176,9 +176,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = Kalpa
-Provides:       product(Kalpa) = 20251027-0
+Provides:       product(Kalpa) = 20251028-0
 Provides:       product-label() = Kalpa
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Akalpa%3A20251027
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Akalpa%3A20251028
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(Kalpa)
@@ -194,7 +194,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(Kalpa) = 20251027-0
+Provides:       product_flavor(Kalpa) = 20251028-0
 Summary:        Kalpa Desktop%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -260,11 +260,11 @@ cat >%{buildroot}%{_sysconfdir}/products.d/Kalpa.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>Kalpa</name>
-  <version>20251027</version>
+  <version>20251028</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:kalpa:20251027</cpeid>
+  <cpeid>cpe:/o:opensuse:kalpa:20251028</cpeid>
   <productline>Kalpa</productline>
   <register>
     <pool>
