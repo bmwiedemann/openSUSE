@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 18 16:36:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.48.0:
+  + Set application name on the about dialog
+  + Fix compatibility with ipython 9
+  + ipython:
+    - Defaut to black on white on unknown ansi color
+    - Fix writing to output
+  + Pass command-line arguments to the application
+  + Set application ID
+  + interface_view:
+    - Fix Application iface handling
+    - Show AT-SPI version
+    - Show Accessible's locale
+  + GNOME:
+    - Declare support for GNOME Shell 48
+    - Use new API to get content rect
+  + Update displayed role when it changes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu May 22 21:52:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.

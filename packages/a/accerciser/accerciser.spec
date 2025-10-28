@@ -1,7 +1,7 @@
 #
 # spec file for package accerciser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           accerciser
-Version:        3.46.2
+Version:        3.48.0
 Release:        0
 Summary:        Accessibility debugging tool
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Accerciser
-Source0:        https://download.gnome.org/sources/accerciser/3.46/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/accerciser/3.48/%{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
