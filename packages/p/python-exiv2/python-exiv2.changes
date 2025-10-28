@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Oct 28 08:55:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.18.0
+  * Removed features deprecated in v0.13.0:
+    Value (and derived types) copy constructors
+    Single value (such as DateValue) index methods
+    DataBuf indexing.
+  * Deprecated many BasicIo methods (read, write, seek, etc.) that should not
+    be needed in Python scripts. Please let me know if this is a problem.
+  * Deprecated copy, write, and read(buffer) methods of Value (and
+    subclasses) that should not be needed in Python scripts. Please let me
+    know if this is a problem.
+  * Deprecated copy and write methods of Metadatum (and subclasses) that
+    should not be needed in Python scripts. Please let me know if this is a
+    problem.
+  * Deprecated 'buffer interface' to BasicIo, DataBuf, and PreviewImage. They
+    all have 'data()' to get their contents.
+  * Added binary wheels for Linux on arm64.
+  * Exiv2 struct member names with a trailing underscore have more Pythonic
+    aliases without the underscore.
+  * Add data() method to exiv2.PreviewImage, deprecate pData() method.
+  * Add data() method to exiv2.Image. This will replace using Image.io().
+  * Add data() method to exiv2.DataValue.
+  * BasicIo.read (& readOrThrow) now extract count from the buffer size.
+  * Invalidate data iterators if data is deleted. (Requires swig >= 4.4)
+  * Deprecated iteration of exiv2 "data" structure types.
+  * API CHANGE: exiv2.LogMsg.pythonHandler is replaced by exiv2.pythonHandler
+
+-------------------------------------------------------------------
 Fri Sep 26 06:51:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.17.5
