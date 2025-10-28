@@ -275,4 +275,13 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update aliases from 6.18-rc1</comment>
     <requestid>1312190</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>36dc8aa3ec3869d768d32fca26911c8d</srcmd5>
+    <version>20251024</version>
+    <time>1761659134</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251024 (git commit 9b899c779b8a):
+  * cirrus: cs35l41: Rename various Asus Laptop firmware files to not have Speaker ID</comment>
+    <requestid>1313871</requestid>
+  </revision>
 </revisionlist>
