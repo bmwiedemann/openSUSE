@@ -13,11 +13,11 @@ oldwd="$(pwd)"
 version=$(grep "Version:" element-web.spec | awk '{print $2}')
 last_packaged_version=$(osc cat devel:languages:nodejs/element-web/element-web.spec | grep "^Version:" | awk '{print $NF}')
 
-osc rm --force element-web-*.tar.gz || :
+git rm --force element-web-*.tar.gz || :
 #       https://github.com/element-hq/element-web/archive/refs/tags/v1.11.111.tar.gz
 wget -c https://github.com/element-hq/element-web/archive/refs/tags/v${version}.tar.gz -O element-web-${version}.tar.gz
 wget https://meet.element.io/libs/external_api.min.js -O jitsi_external_api.min.js
-osc add element-web-*.tar.gz
+git add element-web-*.tar.gz
 
 #zypper install yarn cargo gcc-c++ sqlcipher-devel libsecret-devel
 
