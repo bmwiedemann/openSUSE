@@ -1,7 +1,7 @@
 #
 # spec file for package thonny
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,11 +36,13 @@ BuildRequires:  python3-astroid
 BuildRequires:  python3-asttokens
 BuildRequires:  python3-docutils
 BuildRequires:  python3-jedi
+BuildRequires:  python3-pip
 BuildRequires:  python3-pylint
 BuildRequires:  python3-pyserial
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tk
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 ## MANUAL BEGIN
 Requires:       mypy
@@ -78,11 +80,11 @@ find . -name "*.py" -exec sed -i 's|#!%{_bindir}/env python3|#!%{_bindir}/python
 
 %build
 export LC_ALL=en_US.utf8
-%python_build
+%python3_pyproject_wheel
 
 %install
 export LC_ALL=en_US.utf8
-%python_install
+%python3_pyproject_install
 # Install desktop file
 mkdir -p %{buildroot}%{_datadir}/applications/
 cp packaging/linux/org.thonny.Thonny.desktop %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop
@@ -125,7 +127,7 @@ exit 0
 %license LICENSE.txt
 %{_bindir}/thonny
 %{python3_sitelib}/thonny
-%{python3_sitelib}/thonny-%{version}*-info
+%{python3_sitelib}/thonny-%{version}.dist-info
 %{_datadir}/applications/%{desktop_file_name}.desktop
 %{_datadir}/metainfo/%{desktop_file_name}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/thonny.png
