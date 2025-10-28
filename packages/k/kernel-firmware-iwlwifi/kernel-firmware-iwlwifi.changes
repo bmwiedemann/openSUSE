@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 27 13:30:45 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251024 (git commit 9b899c779b8a):
+  * iwlwifi: add Bz/Fm and gl FW for core98-161 release
+  * iwlwifi: update Bz/Hr and Bz/Gf firmwares for core98-161 release
+  * iwlwifi: update ty/So/Ma firmwares for core98-161 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core98-161 release
+
+-------------------------------------------------------------------
 Mon Sep 29 16:18:57 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases for 6.17

@@ -106,4 +106,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * iwlwifi: add Bz-HR FW for core90-93 release</comment>
     <requestid>1307943</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6dcd02bf9a68a968582e2f9009224d7a</srcmd5>
+    <version>20251024</version>
+    <time>1761659130</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251024 (git commit 9b899c779b8a):
+  * iwlwifi: add Bz/Fm and gl FW for core98-161 release
+  * iwlwifi: update Bz/Hr and Bz/Gf firmwares for core98-161 release
+  * iwlwifi: update ty/So/Ma firmwares for core98-161 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core98-161 release</comment>
+    <requestid>1313868</requestid>
+  </revision>
 </revisionlist>
