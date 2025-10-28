@@ -1,7 +1,7 @@
 #
 # spec file for package python-billiard
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-billiard
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        Python multiprocessing fork
 License:        BSD-3-Clause
