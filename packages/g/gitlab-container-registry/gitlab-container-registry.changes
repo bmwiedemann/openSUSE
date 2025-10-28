@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Oct 27 19:34:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.30.0:
+  * Features
+    - bbm: add bbm progress tracking metric (395441e)
+    - configuration: allow database.enabled to accept bool and
+      string values (ad39c18)
+    - datastore: create null index on blob id columns (cf1af7f)
+  * Bug Fixes
+    - improve registry shutdown behaviour (d0e12e3)
+    - make sure urlcache is last in the storage CDNs chain
+      (47568f0)
+    - notifications: Remove deprecated retryingSink with
+      backoffSink and add backward compatibility (ba2dc33)
+  * Performance Improvements
+    - handlers: pass non-zero value for ids cap (a33cb4c)
+  * Reverts
+    - Revert "chore(datastore): clarify tags present import error
+      message" (5445a81)
+    - Revert "chore: log also" (94a0838)
+  * Dependencies
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/config to v1.31.13
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.9.10
+    - build(deps): update module github.com/aws/smithy-go to
+      v1.23.1
+    - build(deps): update module
+      github.com/azure/azure-sdk-for-go/sdk/storage/azblob to
+      v1.6.3
+    - build(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v0.156.0
+    - build(deps): update module golang.org/x/net to v0.46.0
+
+-------------------------------------------------------------------
 Tue Oct 14 04:41:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.29.0:
