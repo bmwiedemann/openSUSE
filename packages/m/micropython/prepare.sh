@@ -7,7 +7,7 @@ set -e
 
 version=$(rpmspec --query micropython.spec | head -1 | cut -d- -f2)
 
-rm -fv micropython-*.tar.xz
+osc rm -fv micropython-*.tar.xz
 wget "https://micropython.org/resources/source/micropython-${version}.tar.xz" -O "micropython-${version}.tar.xz"
 tar xf "micropython-${version}.tar.xz"
 pushd "micropython-${version}"
@@ -34,3 +34,4 @@ popd
 popd
 tar caf "micropython-${version}.tar.xz" "micropython-${version}"
 rm -r "micropython-${version}"
+osc add micropython-*.tar.xz

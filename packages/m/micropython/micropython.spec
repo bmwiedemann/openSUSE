@@ -20,7 +20,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           micropython
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        Implementation of Python 3 with very low memory footprint
 License:        MIT
@@ -113,6 +113,8 @@ install -m755 -D -v tools/mpy-tool.py %{buildroot}%{_bindir}/mpy-tool
 # https://github.com/micropython/micropython/pull/6024
 rm -f tests/float/float_parse.py
 rm -f tests/float/float_parse_doubleprec.py
+# fails on single core systems
+[ "$(grep core.id /proc/cpuinfo | wc -l)" == 1 ] && rm -f tests/thread/stress_schedule.py
 %endif
 export MICROPY_CPYTHON3=python%python_version
 make -C ports/unix PYTHON=%{_bindir}/python%python_version V=1 test

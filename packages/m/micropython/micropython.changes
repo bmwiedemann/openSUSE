@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 27 13:58:27 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.26.1
+  * esp32: update esp_tinyusb component to v1.7.6
+  * tools: add an environment variable MICROPY_MAINTAINER_BUILD
+  * esp32: add IDF Component Lockfiles to git repo
+  * shared/tinyusb: fix hang from new tx_overwritabe_if_not_connected flag
+  * shared/tinyusb/mp_usbd_cdc: rewrite USB CDC TX loop
+  * tools/mpremote: don't apply Espressif DTR/RTS quirk to TinyUSB CDC dev
+
+-------------------------------------------------------------------
+Mon Oct 27 12:49:06 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Fix building on single core systems
+  * Skip tests/thread/stress_schedule.py when single core system detected
+
+-------------------------------------------------------------------
 Wed Oct 22 12:19:48 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Build with mbedtls-3.6.5 instead of bundled 3.6.2 to fix CVE-2025-59438

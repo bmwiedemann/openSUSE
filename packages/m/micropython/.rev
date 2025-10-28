@@ -260,4 +260,21 @@
     <comment>- Build with mbedtls-3.6.5 instead of bundled 3.6.2 to fix CVE-2025-59438</comment>
     <requestid>1313040</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9114dd4da2a68614061451c9e0d181f0</srcmd5>
+    <version>1.26.1</version>
+    <time>1761659175</time>
+    <user>anag_factory</user>
+    <comment>- Version 1.26.1
+  * esp32: update esp_tinyusb component to v1.7.6
+  * tools: add an environment variable MICROPY_MAINTAINER_BUILD
+  * esp32: add IDF Component Lockfiles to git repo
+  * shared/tinyusb: fix hang from new tx_overwritabe_if_not_connected flag
+  * shared/tinyusb/mp_usbd_cdc: rewrite USB CDC TX loop
+  * tools/mpremote: don't apply Espressif DTR/RTS quirk to TinyUSB CDC dev
+
+- Fix building on single core systems
+  * Skip tests/thread/stress_schedule.py when single core system detected</comment>
+    <requestid>1313856</requestid>
+  </revision>
 </revisionlist>
