@@ -15,4 +15,12 @@
     <comment>add fips support</comment>
     <requestid>1305989</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a3d386daacf82d5fbbed169b7680506</srcmd5>
+    <version>25.0.1.0</version>
+    <time>1761659106</time>
+    <user>anag_factory</user>
+    <comment>October 2025 CPU</comment>
+    <requestid>1313253</requestid>
+  </revision>
 </revisionlist>

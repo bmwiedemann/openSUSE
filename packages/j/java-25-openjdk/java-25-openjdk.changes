@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Oct 22 10:39:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-25.0.1+8 (October 2025 CPU)
+  * Security fixes:
+    + JDK-8360937, CVE-2025-53057: Enhance certificate handling
+    + JDK-8356294, CVE-2025-53066: Enhance Path Factories
+    + JDK-8359454, CVE-2025-61748: Enhance String handling
+    + JDK-8352637: Enhance bytecode verification
+  * Other fixes:
+    + JDK-8367031: [backout] Change java.time month/day field types
+      to 'byte'
+    + JDK-8368308: ISO 4217 Amendment 180 Update
+    + JDK-8366223: ZGC:
+      ZPageAllocator::cleanup_failed_commit_multi_partition is
+      broken
+    + JDK-8360647: [XWayland] [OL10] NumPad keys are not triggered
+    + JDK-8361212: Remove AffirmTrust root CAs
+    + JDK-8356587: Missing object ID X in pool jdk.types.Method
+    + JDK-8360679: Shenandoah: AOT saved adapter calls into broken
+      GC barrier stub
+    + JDK-8362882: Update SubmissionPublisher() specification to
+      reflect use of ForkJoinPool.asyncCommonPool()
+    + JDK-8315131: Clarify VarHandle set/get access on 32-bit
+      platforms
+    + JDK-8362109: Change milestone to fcs for all releases
+    + JDK-8358819: The first year is not displayed correctly in
+      Japanese Calendar
+    + JDK-8361829: [TESTBUG] RISC-V: compiler/vectorization/runner/
+      /BasicIntOpTest.java fails with RVV but not Zvbb
+    + JDK-8361532: RISC-V: Several vector tests fail after
+      JDK-8354383
+    + JDK-8357826: Avoid running some jtreg tests when asan is
+      configured
+    + JDK-8358577: Test serviceability/jvmti/thread/
+      /GetCurrentContendedMonitor/contmon01/contmon01.java failed:
+      unexpexcted monitor object
+    + JDK-8360533: ContainerRuntimeVersionTestUtils
+      fromVersionString fails with some docker versions
+    + JDK-8358452: JNI exception pending in
+      Java_sun_awt_screencast_ScreencastHelper_remoteDesktopKeyImpl
+      of screencast_pipewire.c:1214 (ID: 51119)
+    + JDK-8359270: C2: alignment check should consider base offset
+      when emitting arraycopy runtime call
+    + JDK-8359596: Behavior change when both -Xlint:options and
+      -Xlint:-options flags are given
+    + JDK-8360179: RISC-V: Only enable BigInteger intrinsics when
+      AvoidUnalignedAccess == false
+    + JDK-8359218: RISC-V: Only enable CRC32 intrinsic when
+      AvoidUnalignedAccess == false
+    + JDK-8359059: Bump version numbers for 25.0.1
+
+-------------------------------------------------------------------
 Thu Sep 18 06:24:01 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

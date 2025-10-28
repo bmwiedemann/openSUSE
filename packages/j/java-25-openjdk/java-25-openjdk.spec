@@ -33,14 +33,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      25
 %global interimver      0
-#global updatever       0
-%global buildver        36
+%global updatever       1
+%global buildver        8
 %global openjdk_repo    jdk25u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
 # priority must be 6 digits in total
-#global priority        3505
-%global priority        0
+%global priority        3505
 %global javaver         %{featurever}
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
