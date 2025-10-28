@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 27 13:31:36 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251024 (git commit 9b899c779b8a):
+  * qcom: add ADSP firmware for kaanapali platform
+
+-------------------------------------------------------------------
 Fri Oct 10 13:59:08 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251010 (git commit 49fafa182b23):

@@ -259,4 +259,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update DSP firmware for qcs8300 platform.</comment>
     <requestid>1311177</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8641a47edd497f864bb8fc3cd5529f04</srcmd5>
+    <version>20251024</version>
+    <time>1761659133</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251024 (git commit 9b899c779b8a):
+  * qcom: add ADSP firmware for kaanapali platform</comment>
+    <requestid>1313870</requestid>
+  </revision>
 </revisionlist>
