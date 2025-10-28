@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Oct 28 05:48:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.129:
+  * Update CLI callback, docs for AD/Fargate by @breardon2011 in
+    #2284
+  * chore(develop): release taco/cli 0.1.10 by @breardon2011 in
+    #2292
+  * fieldnotes/The OpenTaco Project is now public by
+    @UtpalJayNadiger in #2297
+  * Support relative paths in include_patterns and exclude_patterns
+    by @golemiso in #2286
+  * increase sleep by @motatoes in #2299
+  * segment by @motatoes in #2304
+  * Add changelog for the week ending October 3rd, 2025 by
+    @UtpalJayNadiger in #2300
+  * feat(run-digger-action): add digger-version input by @sidpalas
+    in #2283
+  * fallback strategy, remove sleep block by @breardon2011 in #2305
+  * docs: streamline getting started guide by @s1ntaxe770r in #2302
+  * add docs page for fix by @breardon2011 in #2310
+  * enable configurables for the cli os/arch by @breardon2011 in
+    #2311
+  * Change "fallback" to skip under fallback condition by
+    @breardon2011 in #2312
+  * ensure to return serialized repo by @motatoes in #2313
+  * ui by @motatoes in #2314
+  * Document scoping drift by @ZIJ in #2320
+  * DB Query Engine by @breardon2011 in #2265
+  * drift by @motatoes in #2315
+  * Webhook auth and internal endpoints by @breardon2011 in #2319
+  * handle unauthenticated route by @motatoes in #2321
+  * internal endpoints part 2 by @breardon2011 in #2322
+  * exclude creation from existence check by @breardon2011 in #2323
+  * add auth check, adjust trasnaction for sqlite, apply configs by
+    @breardon2011 in #2325
+  * feat/ui units by @motatoes in #2327
+  * fix/contributing guide ai assistance by @motatoes in #2328
+  * Changelog for week ending October 10th 2025. by
+    @UtpalJayNadiger in #2324
+  * add section on troubleshooting by @motatoes in #2330
+  * fix/fix build and routes by @motatoes in #2331
+  * Fixed auto-detect Terragrunt dependencies from
+    read_terragrunt_config calls in locals blocks by @MrKeiKun in
+    #2295
+  * UUIDs and Org Scoping by @breardon2011 in #2329
+  * add external id sync and optional create for orgs by
+    @breardon2011 in #2336
+  * Revert "Fixed auto-detect Terragrunt dependencies from
+    read_terragrunt_config calls in locals blocks" by @motatoes in
+    #2339
+  * Promote Drift to CE by @ZIJ in #2334
+  * Skip locks on push into a draft PR by @ZIJ in #2342
+
+-------------------------------------------------------------------
 Fri Oct 10 05:09:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.128:
