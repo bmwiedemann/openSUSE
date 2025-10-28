@@ -207,4 +207,17 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 6.18-rc1</comment>
     <requestid>1312187</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9dff69722253c31517725c14473d2601</srcmd5>
+    <version>20251024</version>
+    <time>1761659131</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251024 (git commit 9b899c779b8a):
+  * mediatek MT7920: update bluetooth firmware to 20251020151255
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * linux-firmware: update firmware for MT7920 WiFi device
+  * mediatek MT7922: update bluetooth firmware to 20251020143443
+  * Revert &quot;linux-firmware: update firmware for MT7922 WiFi device&quot;</comment>
+    <requestid>1313869</requestid>
+  </revision>
 </revisionlist>

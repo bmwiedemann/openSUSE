@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 27 13:31:25 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251024 (git commit 9b899c779b8a):
+  * mediatek MT7920: update bluetooth firmware to 20251020151255
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * linux-firmware: update firmware for MT7920 WiFi device
+  * mediatek MT7922: update bluetooth firmware to 20251020143443
+  * Revert "linux-firmware: update firmware for MT7922 WiFi device"
+
+-------------------------------------------------------------------
 Wed Oct 15 08:35:02 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases from 6.18-rc1
