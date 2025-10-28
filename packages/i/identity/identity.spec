@@ -19,9 +19,9 @@
 
 %define _lto_cflags %{nil}
 %define appid org.gnome.gitlab.YaLTeR.Identity
-%define rurl eccd1611a3158fcaa7c0105a6ea85eca
+%define rurl 5e547a55dfcabeefe187e342e7040091
 Name:           identity
-Version:        25.03
+Version:        25.10
 Release:        0
 Summary:        Compare images and videos
 License:        GPL-3.0-or-later
@@ -36,11 +36,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
+BuildRequires:  pkgconfig(glycin-gtk4-2)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
 BuildRequires:  pkgconfig(libwebpdemux)
-BuildRequires:  pkgconfig(libseccomp)
 Requires:       glycin-loaders
 
 %description

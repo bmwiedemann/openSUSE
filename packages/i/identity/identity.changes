@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 27 19:01:02 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to Version 25.10
+  * Added a context menu on the images, mirroring the tab context
+    menu. This makes the context menu accessible in row and column
+    display modes where there are no tabs.
+  * Updated to the GNOME 49 platform.
+  * Updated translations.
+- change pkgconfig(lcms2) & pkgconfig(libseccomp) with 
+  pkgconfig(glycin-gtk4-2) BuildRequires: Identity now dynamically
+  links libglycin instead of using the Rust glycin crate. This
+  means that lcms2/seccomp are no longer Identity's direct
+  dependencies (they are libglycin's dependencies).
+
+-------------------------------------------------------------------
 Sun Mar 30 19:29:39 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to Version 25.03
