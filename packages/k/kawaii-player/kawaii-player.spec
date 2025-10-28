@@ -1,7 +1,7 @@
 #
 # spec file for package kawaii-player
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,9 @@ URL:            https://github.com/kanishka-linux/kawaii-player
 Source0:        https://github.com/kanishka-linux/kawaii-player/archive/v%{_over}.tar.gz#/%{name}-%{_over}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python3-devel
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 Requires:       ffmpegthumbnailer
 Requires:       python3-Pillow
 Requires:       python3-base
@@ -59,10 +61,10 @@ sed -e '/^Icon/cIcon = %{name}' -e '/^Exec/cExec = %{name} %f' -e '1{ /^#!/d; }'
 sed -e "s/bs4/beautifulsoup4/g" -e "s/'PyQt5',//g" -i setup.py
 
 %build
-python3 setup.py build
+%python3_pyproject_wheel
 
 %install
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
+%python3_pyproject_install
 mkdir -pv %{buildroot}/%{_datadir}/applications %{buildroot}/%{_datadir}/pixmaps
 install -m 0644 %{name}.desktop %{buildroot}/%{_datadir}/applications/%{name}.desktop
 install -m 0644 kawaii_player/resources/tray.png %{buildroot}/%{_datadir}/pixmaps/%{name}.png
@@ -76,6 +78,6 @@ install -m 0644 kawaii_player/resources/tray.png %{buildroot}/%{_datadir}/pixmap
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
 %{python3_sitelib}/kawaii_player
-%{python3_sitelib}/kawaii_player-%{_bver}-py%{py3_ver}.egg-info
+%{python3_sitelib}/kawaii_player-%{_bver}.dist-info
 
 %changelog

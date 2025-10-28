@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 23 05:40:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+
+-------------------------------------------------------------------
 Wed Aug 14 07:48:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace dependency on python3-youtube-dl by just youtube-dl.
@@ -293,7 +298,6 @@ Thu Nov  9 17:04:53 UTC 2017 - aloisio@gmx.com
   * allow viewing history in myserver addon
 
 -------------------------------------------------------------------
-
 Sat Sep  2 17:27:35 UTC 2017 - aloisio@gmx.com
 
 - Fixed version number

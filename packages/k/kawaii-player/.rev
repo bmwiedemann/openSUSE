@@ -106,4 +106,12 @@
   There is no ``import youtube_dl`` statement in the source code. (forwarded request 1193850 from jengelh)</comment>
     <requestid>1194685</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>819bf6bd28a3c9602ff505b108e0a16b</srcmd5>
+    <version>5.0.0.1</version>
+    <time>1761659169</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1313848</requestid>
+  </revision>
 </revisionlist>
