@@ -1,0 +1,9 @@
+<package name="libudfread" project="openSUSE:Factory">
+  <title>Library to access Blu-Ray disk</title>
+  <description>This library is written for the purpose of playing Blu-ray movies. It is
+intended for software that want to support Blu-ray playback (such as VLC and
+MPlayer). We, the authors of this library, do not condone nor endorse piracy.
+
+</description>
+  <url>http://www.videolan.org/developers/libbluray.html</url>
+</package>
