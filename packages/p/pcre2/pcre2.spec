@@ -19,13 +19,13 @@
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 Name:           pcre2
-Version:        10.46
+Version:        10.47
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 # code: BSD-3-Clause WITH PCRE2-exception
 # testdata: Public Domain
 # JIT-compiler: BSD-2-Clause
-License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause AND SUSE-Public-Domain
+License:        BSD-2-Clause AND BSD-3-Clause WITH PCRE2-exception AND SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            https://pcre2project.github.io/pcre2/
 Source0:        https://github.com/PCRE2Project/pcre2/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
@@ -72,7 +72,7 @@ API.
 
 %package        devel-static
 Summary:        A library for Perl-compatible regular expressions
-License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
+License:        BSD-2-Clause AND BSD-3-Clause WITH PCRE2-exception
 Group:          Development/Libraries/C and C++
 Requires:       pcre2-devel = %{version}
 
@@ -88,7 +88,7 @@ This package contains static versions of the PCRE2 libraries.
 
 %package -n libpcre2-8-0
 Summary:        A library for Perl-compatible regular expressions
-License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
+License:        BSD-2-Clause AND BSD-3-Clause WITH PCRE2-exception
 Group:          System/Libraries
 
 %description -n libpcre2-8-0
@@ -104,7 +104,7 @@ This PCRE2 library variant supports 8-bit and UTF-8 strings.
 
 %package -n libpcre2-16-0
 Summary:        A library for Perl-compatible regular expressions
-License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
+License:        BSD-2-Clause AND BSD-3-Clause WITH PCRE2-exception
 Group:          System/Libraries
 
 %description -n libpcre2-16-0
@@ -119,7 +119,7 @@ libpcre2-16 supports 16-bit and UTF-16 strings.
 
 %package -n libpcre2-32-0
 Summary:        A library for Perl-compatible regular expressions
-License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
+License:        BSD-2-Clause AND BSD-3-Clause WITH PCRE2-exception
 Group:          System/Libraries
 
 %description -n libpcre2-32-0
@@ -134,7 +134,7 @@ libpcre2-32 supports 32-bit and UTF-32 strings.
 
 %package -n libpcre2-posix3
 Summary:        A library for Perl-compatible regular expressions
-License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
+License:        BSD-2-Clause AND BSD-3-Clause WITH PCRE2-exception
 Group:          System/Libraries
 
 %description -n libpcre2-posix3
@@ -163,7 +163,7 @@ API.
 
 %package tools
 Summary:        A library for Perl-compatible regular expressions
-License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
+License:        BSD-2-Clause AND BSD-3-Clause WITH PCRE2-exception
 Group:          Productivity/Text/Utilities
 Recommends:     %{name}-doc
 

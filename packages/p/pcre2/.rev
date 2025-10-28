@@ -332,4 +332,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
 </comment>
     <requestid>1301792</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>282f99dc22f5dd1a00b418482974f114</srcmd5>
+    <version>10.47</version>
+    <time>1761659103</time>
+    <user>anag_factory</user>
+    <comment>pcre2 10.47 (forwarded request 1312911 from AndreasStieger)</comment>
+    <requestid>1312912</requestid>
+  </revision>
 </revisionlist>

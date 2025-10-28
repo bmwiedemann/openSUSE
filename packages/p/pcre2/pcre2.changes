@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 21 22:00:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 10.47:
+  * Pattern recursion of the form (?1(GROUP_NAME_OR_NUM,...)) acts
+    as a subroutine call which additionally returns the listed
+    capturing groups to the calling context.
+  * Fixed a crash in pcre2_callout_enumerate() which is easily
+    reachable on any pattern that contains a Unicode character
+    class. If your application uses this function, please read the
+    details for this change and evaluate its severity for your
+    application.
+  * Support symbol versioning
+  * Add pcre2_next_match() for iterating over all matches
+  * Add the PCRE2_CONFIG_EFFECTIVE_LINKSIZE option to
+    pcre2_config()
+  * Add support for $+ replacement to pcre2_substitute()
+
+-------------------------------------------------------------------
 Thu Aug 28 10:27:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 10.46:
