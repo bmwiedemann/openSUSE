@@ -89,10 +89,10 @@ BuildRequires:  libuuid-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  libyaml-devel
-%if 0%{?suse_version} > 1210
-BuildRequires:  lua51-devel
+%if 0%{?suse_version} > 1600
+BuildRequires:  luajit-devel
 %else
-BuildRequires:  lua-devel
+BuildRequires:  lua51-devel
 %endif
 #BuildRequires:  mono-web
 BuildRequires:  ncurses-devel

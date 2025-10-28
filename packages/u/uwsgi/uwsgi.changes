@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 28 10:42:27 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Use LuaJIT instead of Lua PUC 5.1, because the latter is being
+  decommissioned in Factory. Also, we really do not support SUSE
+  12.1 any more.
+
+-------------------------------------------------------------------
 Mon Oct 20 10:14:54 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.0.31:
