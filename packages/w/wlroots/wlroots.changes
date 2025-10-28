@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 24 15:18:31 UTC 2025 - zeus <dunning1kruger@mailfence.com>
+
+- Update to 0.19.2
+  * xwm: Fix double-close
+  * xwayland: fix assertion failure in wlr_xwayland_shell_v1
+  * backend, output: send commit events after applying all in wlr_backend_commit()
+  * backend/session: fix crash on udev device remove event
+  * linux_drm_syncobj_v1: fix use-after-free in surface_commit_destroy()
+  * ci: fix VKMS lookup after faux bus migration
+  * util/box.c: use 1/256 instead of 1/65536 in wlr_box_closest_point()
+
+-------------------------------------------------------------------
 Sun Oct 12 22:46:34 UTC 2025 - Tomas Cech <sleep_walker@opensuse.org>
 
 - Update to 0.19.1
