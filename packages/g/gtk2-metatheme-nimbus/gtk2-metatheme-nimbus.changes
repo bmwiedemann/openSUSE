@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 27 15:55:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add glycin-loaders BuildRequires: Fix build after changes
+  elsewhere in the GNOME stack.
+
+-------------------------------------------------------------------
 Thu Feb  8 15:59:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.
-- Mention old baselibs.conf in spec file as source.
+- Drop old baselibs.conf: -32bit packages have not been built for a
+  while for this package.
 
 -------------------------------------------------------------------
 Tue May  3 09:51:06 CEST 2011 - vuntz@opensuse.org
@@ -80,4 +87,3 @@ Sun Sep  7 19:12:16 CEST 2008 - bwalle@suse.de
 - merge Packman package and GNOME:Community package
   ('gtk2-engines-nimbus')
 
--------------------------------------------------------------------

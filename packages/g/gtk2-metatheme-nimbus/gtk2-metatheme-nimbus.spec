@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2-metatheme-nimbus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,8 @@ URL:            https://nimbus.dev.java.net/
 Source:         http://dlc.sun.com/osol/jds/downloads/extras/%{_name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM gtk2-metatheme-nimbus-fix-warning.patch vuntz@opensuse.org -- Fix trivial build warning
 Patch0:         gtk2-metatheme-nimbus-fix-warning.patch
-Source99:       baselibs.conf
 BuildRequires:  fdupes
+BuildRequires:  glycin-loaders
 BuildRequires:  gtk2-devel
 BuildRequires:  icon-naming-utils
 BuildRequires:  intltool
