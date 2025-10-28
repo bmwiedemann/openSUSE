@@ -1,7 +1,7 @@
 #
 # spec file for package file-roller
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           file-roller
-Version:        44.5
+Version:        44.6
 Release:        0
 Summary:        An Archive Manager for GNOME
 License:        GPL-2.0-or-later
@@ -118,7 +118,7 @@ contained in the archive, and extract files from the archive.
 %{_datadir}/file-roller/
 %{_libexecdir}/file-roller/
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.FileRoller.appdata.xml
+%{_datadir}/metainfo/org.gnome.FileRoller.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.gnome.FileRoller.service
