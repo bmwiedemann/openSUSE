@@ -1,4 +1,216 @@
 -------------------------------------------------------------------
+Tue Oct 28 05:49:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.6.0:
+  Opencloud
+  * Enhancement
+    - allow specifying a shutdown order [#1622]
+    - change: use 404 as status when thumbnail can not be fetched
+      [#1582]
+    - feat: add dedicated logo (web) for mobile view to theme
+      [#1579]
+    - feat: make it possible to start the collaboration service in
+      the single process [#1569]
+    - introduce AppURLs helper for atomic backgroud updates [#1542]
+    - chore: add config for capability CheckForUpdates [#1556]
+  * Tests
+    - [full-ci] feat: implement OIDC authentication option [#1676]
+    - apiTest-coverage for #1523 [#1660]
+    - [full-ci] deleted unused step definitions [#1639]
+    - check thumbnails in the share with me response [#1605]
+    - [full-ci][tests-only] fix restore browsers cache workflow
+      [#1615]
+    - [full-ci] Enhance getSpaceByName: check local cache before
+      Graph API calls [#1574]
+    - [full-ci] getting personal space by userId instead of
+      userName [#1553]
+    - apiTest-flaky: sync share before checking [#1550]
+    - [decomposed] use Alpine for opencloud starting [#1547]
+  * Bug Fixes
+    - fix: apply changes from other fixes in compose repo [#1707]
+    - fix(settings): env var precedence [#1625]
+    - fix(antivirus): update icap-client library which fixes tcp
+      socket reuse [#1589]
+    - fix: use valid autocomplete values (axe autocomplete-valid)
+      [#1588]
+    - Fix collaboration service name [#1577]
+    - let the runtime always create a cancel context [#1565]
+    - Bump reva and cs3apis [#1538]
+    - use correct endpoint in nats check [#1533]
+  * Documentation
+    - adr: use eduation api for multi-tenancy provisioning [#1548]
+    - fix: remove deprecated web ui feature "OpenAppsInTab" [#1575]
+  * Dependencies
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.26.0 to
+      2.27.1 [#1705]
+    - [decomposed] bump-version-v3.6.0 [#1719]
+    - revaBump-2.39.1 [#1718]
+    - chore: bump reva [#1701]
+    - build(deps): bump github.com/kovidgoyal/imaging from 1.6.4 to
+      1.7.2 [#1696]
+    - build(deps): bump github.com/blevesearch/bleve/v2 from 2.5.3
+      to 2.5.4 [#1697]
+    - build(deps): bump golang.org/x/oauth2 from 0.31.0 to 0.32.0
+      [#1634]
+    - build(deps): bump golang.org/x/net from 0.44.0 to 0.46.0
+      [#1638]
+    - revaBumb: add groupware capabilities [#1689]
+    - revaUpdate: adding groupware capabilities [#1659]
+    - chore/bump-web-4.1.0 [#1652]
+    - build(deps): bump google.golang.org/grpc from 1.75.1 to
+      1.76.0 [#1628]
+    - build(deps): bump github.com/coreos/go-oidc/v3 from 3.15.0 to
+      3.16.0 [#1627]
+    - build(deps): bump github.com/grpc-ecosystem/grpc-gateway/v2
+      from 2.27.2 to 2.27.3 [#1608]
+    - build(deps): bump github.com/go-ldap/ldap/v3 from 3.4.11 to
+      3.4.12 [#1609]
+    - build(deps): bump google.golang.org/protobuf from 1.36.9 to
+      1.36.10 [#1604]
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.25.3 to
+      2.26.0 [#1603]
+    - build(deps): bump github.com/nats-io/nats.go from 1.46.0 to
+      1.46.1 [#1590]
+    - build(deps): bump github.com/olekukonko/tablewriter from
+      1.0.9 to 1.1.0 [#1584]
+    - build(deps): bump github.com/open-policy-agent/opa from 1.8.0
+      to 1.9.0 [#1576]
+    - build(deps): bump github.com/nats-io/nats-server/v2 from
+      2.11.9 to 2.12.0 [#1568]
+    - build(deps): bump golang.org/x/net from 0.43.0 to 0.44.0
+      [#1567]
+    - reva bump. getting #327 [#1555]
+    - build(deps): bump golang.org/x/image from 0.30.0 to 0.31.0
+      [#1552]
+    - build(deps): bump github.com/nats-io/nats.go from 1.45.0 to
+      1.46.0 [#1551]
+    - build(deps): bump golang.org/x/crypto from 0.41.0 to 0.42.0
+      [#1545]
+    - build(deps): bump
+      github.com/testcontainers/testcontainers-go/modules/opensearch
+      from 0.38.0 to 0.39.0 [#1544]
+    - build(deps): bump github.com/open-policy-agent/opa from 1.6.0
+      to 1.8.0 [#1510]
+    - build(deps): bump google.golang.org/grpc from 1.75.0 to
+      1.75.1 [#1534]
+  Web
+  * Bug Fixes
+    - fix: rounded bottom corner on tile preview hover [#1363]
+    - fix: show previews in trash overview [#1362]
+    - fix: remove share avatar click handler in files table [#1349]
+    - fix(design-system): translate default modal action button
+      labels [#1347]
+    - fix: mobile tiles view right click menu [#1345]
+    - fix(admin-settings): redirect when accessing /admin-settings
+      [#1337]
+    - fix: disable echart loading in text editor [#1332]
+    - fix: sidebar versions loading (performance) [#1285]
+    - fix: normalize file and folder names to NFC when uploading
+      [#1327]
+    - fix: prevent uploading the same file again during upload
+      [#1277]
+    - fix: resolve axe violations (button-name, empty-table-header,
+      spinner) [#1296]
+    - fix: clean failed uploads when closing upload overlay [#1300]
+    - fix: user group assignment options, details panel alignment
+      [#1298]
+    - fix: topbar save icon hover color and thumbnail compression
+      [#1294]
+    - fix(admin-settings): space list and sidebar issues [#1286]
+    - fix: sync color role defaults with opencloud theme.json
+      [#1274]
+    - fix: add missing web-pkg types and fix type errors [#1266]
+  * Enhancement
+    - feat: add tiles view for shared with me view [#1352]
+    - feat: add tiles view for shared with others view [#1346]
+    - feat: add tiles view for shared via link view [#1343]
+    - feat: tiles view for trash [#1310]
+    - feat: send server url sha256 encoded to update server [#1311]
+    - feat: add update check for mobile view [#1323]
+    - feat: set view mode e.G tiles or table view globally, add
+      condensed view to Spaces view [#1306]
+    - feat: add top bar logo for mobile view [#1281]
+    - feat(extension-sdk): provide default tailwind config [#1275]
+    - feat: account page enhancements: remove last table row
+      border, adjust… [#1272]
+    - feat: load config authenticated [#1249]
+    - feat(extension-sdk): add tailwind vite plugin to vite config
+      [#1256]
+    - feat: add shift + mouse scroll for zoom out and zoom in in
+      preview app [#1248]
+    - feat: add more screen real estate for images in preview app
+      [#1241]
+    - feat: add dark mode for OcDatePicker [#1235]
+  * Tests
+    - fix (test-e2e): proper use of keycloak admin user [#1348]
+    - [localization-de] e2e. ensure German localization is correct
+      [#1193]
+    - fail accessibility tests on any violation [#1319]
+    - [full-ci][tests-only] Increase playwright timeout [#1267]
+  * Dependencies
+    - fix(deps): update uppy monorepo [#1344]
+    - chore(deps): update pnpm to v10.18.2 [#1353]
+    - chore(deps): update dependency happy-dom to v20 [#1354]
+    - fix(deps): update dependency @sentry/vue to v10.19.0 [#1350]
+    - chore(deps): update collabora/code docker tag to v25.04.6.1.1
+      [#1109]
+    - fix(deps): update dependency @sentry/vue to v10.18.0 [#1328]
+    - chore(deps): update dependency @cucumber/messages to v30
+      [#1315]
+    - chore(deps): update dependency pino to v10 [#1314]
+    - fix(deps): update dependency zod to v4.1.12 [#1321]
+    - chore(deps): update pnpm to v10.18.1 [#1320]
+    - chore(deps): update typescript-eslint monorepo to v8.46.0
+      [#1324]
+    - chore(deps): update dependency @vavt/cm-extension to v1.11.1
+      [#1325]
+    - chore(deps): update pnpm to v10.18.0 [#1312]
+    - chore(deps): update devdependencies (non-major) [#1313]
+    - chore(deps): update dependency pino to v9.13.0 [#1305]
+    - chore(deps): update devdependencies (non-major) [#1303]
+    - chore(deps): update dependency vite to v7.1.8 [#1302]
+    - chore(deps): update dependency @tailwindcss/vite to v4.1.14
+      [#1301]
+    - fix(deps): update dependency p-queue to v9 [#1295]
+    - chore(deps): update devdependencies (non-major) [#1290]
+    - fix(deps): update dependency @sentry/vue to v10.17.0 [#1288]
+    - chore(deps): update dependency happy-dom to v19.0.2 [#1284]
+    - fix(deps): update dependency @sentry/vue to v10.16.0 [#1283]
+    - chore(deps): update typescript-eslint monorepo to v8.45.0
+      [#1282]
+    - chore(deps): update traefik docker tag to v3.5.3 [#1271]
+    - chore(deps): update devdependencies (non-major) [#1254]
+    - chore(deps): update dependency happy-dom to v19 [#1273]
+    - fix(deps): update dependency @sentry/vue to v10.15.0 [#1260]
+    - fix(deps): update vue monorepo to v3.5.22 [#1262]
+    - chore(deps): update node.js to v22.20.0 [#1258]
+    - chore(design-system): remove sass dependencies [#1255]
+    - fix(deps): update dependency @sentry/vue to v10.14.0 [#1253]
+    - chore(deps): update dependency @playwright/test to v1.55.1
+      [#1252]
+    - fix(deps): update dependency @sentry/vue to v10.13.0 [#1243]
+    - chore(deps): update devdependencies (non-major) [#1246]
+    - fix(deps): update typescript-eslint monorepo to v8.44.1
+      [#1247]
+    - chore(deps): update pnpm to v10.17.1 [#1245]
+    - [full-ci] bump-opencloud-3.5.0. run all tests [#1240]
+  Reva
+  * Bug Fixes
+    - fix(posixfs): make blobstore uploads atomic [#387]
+    - fix: groupware capability [#385]
+    - Bugfix: Fix the OCM WebDAV protocol entity mismatch [#382]
+    - fix(posixfs): trash-bin restore collision handling [#381]
+  * Dependencies
+    - chore(deps): bump golang.org/x/oauth2 from 0.31.0 to 0.32.0
+      [#392]
+    - chore(deps): bump golang.org/x/text from 0.29.0 to 0.30.0
+      [#389]
+    - chore(deps): bump golang.org/x/term from 0.35.0 to 0.36.0
+      [#375]
+    - chore(deps): bump google.golang.org/grpc from 1.75.1 to
+      1.76.0 [#373]
+
+-------------------------------------------------------------------
 Tue Sep 23 04:58:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.5.0:
