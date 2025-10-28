@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 27 18:58:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.1.4
+  * Added configurable image size to OpenLibrary data source.
+  * Updated OpenLibrary source to find covers for books without ISBN (kde#507912)
+  * Updated OpenLibrary source to update via OLID, if available (kde#508897)
+  * Updated OpenLibrary source to fetch notes (kde#509062)
+  * Updated OpenLibrary source to fetch plot (kde#509124)
+  * Updated CSV importer to load images.
+  * Added option for image links to CSV importer (kde#508666)
+  * Added option for image links to GCstar importer (kde#508665)
+  * Updated GCstar importer to read external collection models (kde#508664)
+  * Added KDE shortcut keys for previous/next tab (kde#508789)
+  * Updated iTunes source for better movie results.
+  * Updated iTunes source to allow specifying country.
+  * Fixed crashing bug for opening truncated files (kde#509364)
+  * Fixed crashing bug for collections without a title field.
+  * Fixed bug in location for saving images for temporary entry (kde#508902)
+  * Fixed bug in location for saving images for new collections (kde#509245)
+  * Fixed bug with matching entries with 979 ISBN prefixes (kde#510329)
+
+-------------------------------------------------------------------
 Mon Aug  4 19:57:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.1.3
