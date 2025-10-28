@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 28 09:26:59 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to 4.0.1: 
+  * chore(xcode): set xcode target to Debug only for dev builds
+    (gh#nextcloud/desktop#8912)
+  * fix(directory): ignore listing entry for the iterated directory
+    (gh#nextcloud/desktop#8926)
+  * fix(account): do not consider URLs with a trailing slash as
+    public links (gh#nextcloud/desktop#8934)
+  * fix(network): fall back to unlimited bandwidth in case the
+    legacy global limit is still set (gh#nextcloud/desktop#8938)
+  * fix(provider): Crash on File Provider Deactivation for Account
+    with UUID Name (gh#nextcloud/desktop#8942)
+  * fix: Fix #8914 (gh#nextcloud/desktop#8944)
+  * fix(vfs/cfapi): disable on-demand folder fetching
+    (gh#nextcloud/desktop#8949)
+  * fix(provider): Translated Some Texts
+    (gh#nextcloud/desktop#8968)
+
+
+-------------------------------------------------------------------
 Tue Oct 21 20:03:17 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to 4.0.0:
