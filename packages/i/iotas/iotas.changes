@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 27 14:36:35 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.12.1:
+  * Fix a crash exporting into the flatpak sandbox
+    (glgo#World/iotas#239).
+
+-------------------------------------------------------------------
 Sat Oct  4 20:07:51 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.12.0:
