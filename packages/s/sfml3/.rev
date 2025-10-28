@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f2741a96db2c8b0d6a290dd3ac5c6a2</srcmd5>
+    <version>3.0.2</version>
+    <time>1761659146</time>
+    <user>anag_factory</user>
+    <comment>- Prevented build failure via minimal gcc version.
+- Fixed conflict of sfml3-devel to pass installcheck.</comment>
+    <requestid>1313852</requestid>
+  </revision>
+</revisionlist>
