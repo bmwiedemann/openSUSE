@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/ansible/ansible-builder</param>
     <param name="scm">git</param>
-    <param name="revision">3.1.0</param>
+    <param name="revision">3.1.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">disable</param>
     <param name="package-meta">yes</param>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 28 05:46:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.1.1:
+  * Bug Fixes
+    - fix: capitalize 'as' to follow from-as-casing rule (#687)
+    - Set file permissions on context files created from inline
+      reqs (#751)
+  * Documentation
+    - New 3.1 porting guide (#701)
+    - Add simple EE file example by (#739)
+    - Add scenario guide for validating Python deps (#758)
+
+-------------------------------------------------------------------
 Fri Jun 21 19:17:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - switch to using a git checkout instead of the PyPI tarball
