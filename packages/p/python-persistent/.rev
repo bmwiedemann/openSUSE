@@ -217,4 +217,22 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282259</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8c56e6fa8b0c6a3dc5e12bb3385ef30f</srcmd5>
+    <version>6.3</version>
+    <time>1761659286</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.3:
+  * Fix setuptools configuration to build missing cffi extension module.
+  * Add preliminary support for Python 3.14b2.
+  * Move package build requirements from setup.py to pyproject.toml.
+  * Drop support for Python 3.8.
+  * Make Persistent's _p_oid representation follow the same format as the
+    ZODB.utils.oid_repr function.
+  * Use Py_REFCNT to access cPersistentObject reference counts in assertions.
+  * Add final support for Python 3.13.
+  * Removed persistent.cPersistence.simple_new fossil.
+  * Drop support for Python 3.7.</comment>
+    <requestid>1313972</requestid>
+  </revision>
 </revisionlist>

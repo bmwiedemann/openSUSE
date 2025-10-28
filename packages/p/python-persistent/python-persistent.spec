@@ -1,7 +1,7 @@
 #
 # spec file for package python-persistent
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2013-2023 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,23 +19,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-persistent
-Version:        5.2
+Version:        6.3
 Release:        0
 Summary:        Translucent persistent objects
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/persistent
 Source:         https://files.pythonhosted.org/packages/source/p/persistent/persistent-%{version}.tar.gz
 BuildRequires:  %{python_module cffi}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module manuel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module zope.deferredimport}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi
+Requires:       python-zope.deferredimport
 Requires:       python-zope.interface
 %python_subpackages
 
@@ -77,7 +79,7 @@ sed -i 's|test__p_repr_in_instance_ignored|tst__p_repr_in_instance_ignored|' src
 %doc CHANGES.rst COPYRIGHT.txt README.rst
 %exclude %{python_sitearch}/persistent/*.h
 %{python_sitearch}/persistent
-%{python_sitearch}/persistent-%{version}*-info
+%{python_sitearch}/persistent-%{version}.dist-info
 
 %files %{python_files devel}
 %dir %{python_sysconfig_path include}/persistent

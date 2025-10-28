@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 28 05:48:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.3:
+  * Fix setuptools configuration to build missing cffi extension module.
+  * Add preliminary support for Python 3.14b2.
+  * Move package build requirements from setup.py to pyproject.toml.
+  * Drop support for Python 3.8.
+  * Make Persistent's _p_oid representation follow the same format as the
+    ZODB.utils.oid_repr function.
+  * Use Py_REFCNT to access cPersistentObject reference counts in assertions.
+  * Add final support for Python 3.13.
+  * Removed persistent.cPersistence.simple_new fossil.
+  * Drop support for Python 3.7.
+
+-------------------------------------------------------------------
 Tue Jun  3 11:09:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
