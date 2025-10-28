@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-usage
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gnome-usage
-Version:        48.rc
+Version:        48.0
 Release:        0
 Summary:        System resources viewer for GNOME
 License:        GPL-3.0-only
