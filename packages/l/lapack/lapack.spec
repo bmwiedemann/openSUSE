@@ -406,6 +406,7 @@ rm -fr %{buildroot}%{_includedir}/*.h \
 %if %{with man}
 # Delete weirdly named man files
 rm %{__builddir}/DOCS/man/man3/_*_.3
+rm -f %{__builddir}/DOCS/man/man3/noname
 # Install man pages
 mkdir -p %{buildroot}%{_mandir}
 cp -r %{__builddir}/DOCS/man/man3 %{buildroot}%{_mandir}/

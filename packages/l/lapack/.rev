@@ -557,4 +557,12 @@ An alternative would be to use the older manpages or to pre-generate them.
     <comment></comment>
     <requestid>1299915</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>342b8f7669cd15da83e336b38b8c2f5d</srcmd5>
+    <version>3.12.1</version>
+    <time>1761659114</time>
+    <user>anag_factory</user>
+    <comment>- Do not install spurious noname man page.</comment>
+    <requestid>1313823</requestid>
+  </revision>
 </revisionlist>

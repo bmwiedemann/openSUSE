@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 27 08:38:44 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Do not install spurious noname man page.
+
+-------------------------------------------------------------------
 Sat Aug 16 11:13:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Re-download lapack-deprecated-lwork-use.patch and

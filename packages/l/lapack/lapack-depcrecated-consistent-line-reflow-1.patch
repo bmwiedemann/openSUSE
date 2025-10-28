@@ -8,7 +8,7 @@ Subject: [PATCH] dlahrd.f: consistent line reflow for DTRMV calls
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/SRC/DEPRECATED/dlahrd.f b/SRC/DEPRECATED/dlahrd.f
-index 2f86da73c..438ad8bda 100644
+index 2f86da73c0..438ad8bdaa 100644
 --- a/SRC/DEPRECATED/dlahrd.f
 +++ b/SRC/DEPRECATED/dlahrd.f
 @@ -231,8 +231,8 @@ SUBROUTINE DLAHRD( N, K, NB, A, LDA, TAU, T, LDT, Y, LDY )

@@ -12,7 +12,7 @@ Subject: [PATCH] Updating LAPACK version to 3.12.1
  5 files changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f1f47ae24..a3070d37e 100644
+index f1f47ae24f..a3070d37ec 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -4,7 +4,7 @@ project(LAPACK)
@@ -25,7 +25,7 @@ index f1f47ae24..a3070d37e 100644
    LAPACK_VERSION
    ${LAPACK_MAJOR_VERSION}.${LAPACK_MINOR_VERSION}.${LAPACK_PATCH_VERSION}
 diff --git a/DOCS/Doxyfile b/DOCS/Doxyfile
-index 577675772..e4cd1e6e0 100644
+index 577675772c..e4cd1e6e06 100644
 --- a/DOCS/Doxyfile
 +++ b/DOCS/Doxyfile
 @@ -38,7 +38,7 @@ PROJECT_NAME           = LAPACK
@@ -38,7 +38,7 @@ index 577675772..e4cd1e6e0 100644
  # Using the PROJECT_BRIEF tag one can provide an optional one line description
  # for a project that appears at the top of each page and should give viewer a
 diff --git a/INSTALL/ilaver.f b/INSTALL/ilaver.f
-index ced58e6b0..40f8ca88e 100644
+index ced58e6b0f..40f8ca88ef 100644
 --- a/INSTALL/ilaver.f
 +++ b/INSTALL/ilaver.f
 @@ -59,7 +59,7 @@ SUBROUTINE ILAVER( VERS_MAJOR, VERS_MINOR, VERS_PATCH )
@@ -51,7 +51,7 @@ index ced58e6b0..40f8ca88e 100644
  *
        RETURN
 diff --git a/LICENSE b/LICENSE
-index 96b04c988..8d59524fa 100644
+index 96b04c9885..8d59524fac 100644
 --- a/LICENSE
 +++ b/LICENSE
 @@ -1,9 +1,9 @@
@@ -68,7 +68,7 @@ index 96b04c988..8d59524fa 100644
  
  $COPYRIGHT$
 diff --git a/README.md b/README.md
-index a00d4c51d..f35c36280 100644
+index a00d4c51d8..f35c362804 100644
 --- a/README.md
 +++ b/README.md
 @@ -38,6 +38,7 @@
