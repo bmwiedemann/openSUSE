@@ -1,0 +1,50 @@
+--- libbluray-1.4.0/src/libbluray/bdj/java-j2se/java/awt/peer/BDFramePeer.java	2025-10-25 08:44:45.455908481 +0200
++++ libbluray-1.4.0/src/libbluray/bdj/java-j2se/java/awt/peer/BDFramePeer.java	2025-10-25 08:45:38.767260621 +0200
+@@ -157,6 +157,10 @@
+         return true;
+     }
+ 
++    public GraphicsConfiguration getAppropriateGraphicsConfiguration(GraphicsConfiguration gc) {
++        return gc;
++    }
++
+     //
+     // ComponentPeer
+     //
+--- libbluray-1.4.0/src/libbluray/bdj/java-j2se/org/videolan/PortingHelper.java	2025-10-25 08:44:45.456236728 +0200
++++ libbluray-1.4.0/src/libbluray/bdj/java-j2se/org/videolan/PortingHelper.java	2025-10-25 09:06:19.852258740 +0200
+@@ -19,14 +19,32 @@
+ 
+ package org.videolan;
+ 
++import java.lang.reflect.InvocationTargetException;
++
+ public class PortingHelper {
+ 
+     public static void stopThread(Thread t) {
+-        t.stop();
++        try {
++            Thread.class.getMethod("stop").invoke(t);
++        } catch (NoSuchMethodException e) {
++            // ignore
++        } catch (IllegalAccessException e) {
++            // ignore
++        } catch (InvocationTargetException e) {
++            // ignore
++        }
+     }
+ 
+     public static void stopThreadGroup(ThreadGroup t) {
+-        t.stop();
++        try {
++            ThreadGroup.class.getMethod("stop").invoke(t);
++        } catch (NoSuchMethodException e) {
++            // ignore
++        } catch (IllegalAccessException e) {
++            // ignore
++        } catch (InvocationTargetException e) {
++            // ignore
++        }
+     }
+ 
+     public static String dumpStack(Thread t) {

@@ -1,7 +1,7 @@
 #
 # spec file for package libbluray
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,26 +17,28 @@
 #
 
 
-%define         sover 2
+%if ! 0%{?_smp_build_ncpus}
+# needed by %%meson
+%define  _smp_build_ncpus %{?jobs:%{jobs}}
+%endif
+
+%define         sover 3
 Name:           libbluray
-Version:        1.3.4
+Version:        1.4.0
 Release:        0
 Summary:        Library to access Blu-Ray disk
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://www.videolan.org/developers/libbluray.html
-Source0:        https://download.videolan.org/pub/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
+Source0:        https://download.videolan.org/pub/videolan/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-Patch0:         libbluray-pkgconfig.patch
-Patch1:         libbluray-java18plus.patch
+Patch0:         libbluray-java25.patch
 BuildRequires:  ant
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
+BuildRequires:  meson
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libudfread)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 
 %description
@@ -81,9 +83,7 @@ Requires:       java >= 9
 %else
 Requires:       java >= 1.8
 %endif
-%if 0%{?suse_version} > 1110
 BuildArch:      noarch
-%endif
 
 %description bdj
 This library is written for the purpose of playing Blu-ray movies. It is
@@ -94,19 +94,13 @@ MPlayer). We, the authors of this library, do not condone nor endorse piracy.
 %autosetup -p1
 
 %build
-autoreconf -fi
-%configure \
-    --disable-static \
-    --enable-bdjava \
-    --enable-udf
-%make_build
+%meson --default-library=shared
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
-%post -n libbluray%{sover} -p /sbin/ldconfig
-%postun -n libbluray%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libbluray%{sover}
 
 %files tools
 %{_bindir}/bd_info

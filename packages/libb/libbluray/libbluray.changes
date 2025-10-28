@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 23 10:15:25 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libbluray-java25.patch
+    + Thread.stop and ThreadGroup.stop are deprecated since 1.2
+      and removed in Java 23. Before that, they only throw
+      UnsupportedOperationException when called. So call them by
+      reflection and if they don't exist, just ignore them.
+    + Implement the new WindowPeer interface method
+      getAppropriateGraphicsConfiguration as a pass-through method
+
+-------------------------------------------------------------------
+Fri Sep  5 08:36:32 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.4.0
+  * Switch build system to Meson.
+  * Require libudfread 1.2.0.
+  * Use visibility attributes for exported symbols.
+  * Fix issues detecting dlfcn
+- modified sources
+  % baselibs.conf
+- deleted patches
+  - libbluray-java18plus.patch (upstreamed)
+  - libbluray-pkgconfig.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Oct 30 10:50:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
