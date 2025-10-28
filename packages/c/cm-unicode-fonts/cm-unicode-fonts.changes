@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 13 18:28:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Stop marking cm-unicode as essential for locales
+  (affects openSUSE DVD size)
+
+-------------------------------------------------------------------
 Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
 
 - amend spec file to reflect new font packaging scheme

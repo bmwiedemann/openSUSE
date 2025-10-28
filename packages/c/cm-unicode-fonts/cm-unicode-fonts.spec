@@ -1,7 +1,7 @@
 #
 # spec file for package cm-unicode-fonts
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,15 +22,13 @@ Release:        0
 Summary:        Unicode Version of the Computer Modern Fonts
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://canopus.iacp.dvo.ru/~panov/cm-unicode/
+URL:            http://canopus.iacp.dvo.ru/~panov/cm-unicode/
 Source0:        ftp://canopus.iacp.dvo.ru/pub/Font/cm_unicode/cm-unicode-0.7.0-otf.tar.xz
 BuildRequires:  fontpackages-devel
 BuildRequires:  xz
 %reconfigure_fonts_prereq
-Provides:       locale(ru;bg;el)
 Obsoletes:      cm-unicode <= %{version}
 Provides:       cm-unicode = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -42,7 +40,7 @@ Latin1 (Metafont ec, tc), Cyrillic (la, rx) and Greek (cbgreek when
 available) code sets.
 
 %prep
-%setup -q -n cm-unicode-%{version}
+%autosetup -n cm-unicode-%{version}
 
 %build
 
@@ -53,7 +51,6 @@ install -c -m 644 *.otf %{buildroot}%{_ttfontsdir}
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-, root,root)
 %doc Changes FAQ FontLog.txt Fontmap.CMU* OFL* README TODO fonts.scale
 %dir %{_ttfontsdir}/
 %{_ttfontsdir}/*
