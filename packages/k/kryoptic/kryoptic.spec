@@ -1,7 +1,7 @@
 #
 # spec file for package kryoptic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           kryoptic
 Version:        1.3.1
@@ -31,7 +32,7 @@ BuildRequires:  clang
 BuildRequires:  openssl-devel
 BuildRequires:  sqlite3-devel
 
-ExclusiveArch:  %{rust_tier1_arches}
+ExclusiveArch:  %{rust_tier1_arches} riscv64
 
 Requires:       sqlite3
 

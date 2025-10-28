@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1306592</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4deda25baa4e8ca22827c38d3ba4779</srcmd5>
+    <version>1.3.1</version>
+    <time>1761659197</time>
+    <user>anag_factory</user>
+    <comment>- Enable build on riscv64 (forwarded request 1313851 from Andreas_Schwab)</comment>
+    <requestid>1313875</requestid>
+  </revision>
 </revisionlist>

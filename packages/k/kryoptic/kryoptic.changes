@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 27 11:44:51 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Mon Sep 22 17:51:58 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Install p11-kit module config with the main package
