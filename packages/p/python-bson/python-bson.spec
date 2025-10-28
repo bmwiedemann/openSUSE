@@ -1,7 +1,7 @@
 #
 # spec file for package python-bson
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Patch0:         drop-python2-support.patch
 # PATCH-FIX-OPENSUSE Use assertEqual to support Python 3.12
 Patch1:         support-python312.patch
 Patch2:         fix2038.patch
+Patch3:         support-python314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

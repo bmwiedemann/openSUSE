@@ -60,4 +60,13 @@
     <comment></comment>
     <requestid>1224439</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>71625633c609b223c246fe39e2cecd6a</srcmd5>
+    <version>0.5.10</version>
+    <time>1761659284</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Support Python 3.14 removals.</comment>
+    <requestid>1313968</requestid>
+  </revision>
 </revisionlist>

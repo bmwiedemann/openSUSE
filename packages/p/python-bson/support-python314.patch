@@ -1,0 +1,22 @@
+Index: bson-0.5.10/setup.py
+===================================================================
+--- bson-0.5.10.orig/setup.py
++++ bson-0.5.10/setup.py
+@@ -4,7 +4,7 @@
+ # Copyright (c) 2015, Ayun Park. All rights reserved.
+ # For licensing, see LICENSE file included in the package.
+ import sys
+-import pkgutil
++import importlib.util
+ from setuptools import setup
+ from setuptools.command.install import install
+ 
+@@ -13,7 +13,7 @@ class NewInstall(install):
+ 
+     @staticmethod
+     def check_pymongo():
+-        if pkgutil.find_loader('pymongo'):
++        if importlib.util.find_spec('pymongo'):
+             return True
+         return False
+ 
