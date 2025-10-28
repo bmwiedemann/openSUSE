@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-spanner%{psuffix}
-Version:        3.53.0
+Version:        3.58.0
 Release:        0
 Summary:        Google Cloud Spanner API client library
 License:        Apache-2.0
@@ -76,10 +76,8 @@ Google Cloud Spanner API client library
 %autosetup -p1 -n google_cloud_spanner-%{version}
 
 # don't use python-mock
-for i in $(find tests -name "*.py")
-do
-  sed -i 's/^import mock/from unittest import mock/g' $i
-done
+find . -name "*.py" -exec sed -i "s/^import mock/from unittest import mock/g" {} \;
+find . -name "*.py" -exec sed -i "s/^from mock/from unittest.mock/g" {} \;
 
 %build
 %pyproject_wheel

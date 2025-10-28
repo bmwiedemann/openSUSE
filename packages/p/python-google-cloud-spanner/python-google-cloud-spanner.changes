@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Oct 27 10:05:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Replace bash scriptlet to remove mock usage from source code
+
+-------------------------------------------------------------------
+Mon Oct 20 08:26:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.58.0
+  * **spanner:** Support setting read lock mode (#1404)
+  * Remove Python 3.7 and 3.8 as supported runtimes (#1395)
+- from version 3.57.0
+  * Support configuring logger in dbapi kwargs (#1400)
+- from version 3.56.0
+  * Add support for multiplexed sessions - read/write (#1389)
+  * Add support for multiplexed sessions (#1383)
+  * Default enable multiplex session for all operations unless
+    explicitly set to false (#1394)
+  * **spanner:** Add new change_stream.proto (#1382)
+  * Skip gRPC trailers for StreamingRead & ExecuteStreamingSql (#1385)
+- from version 3.55.0
+  * Add a `last` field in the `PartialResultSet` (d532d57)
+  * Add support for multiplexed sessions (#1381)
+  * Add throughput_mode to UpdateDatabaseDdlRequest to be used by
+    Spanner Migration Tool.
+    See https://github.com/GoogleCloudPlatform/spanner-migration-tool (d532d57)
+  * Support fine-grained permissions database roles in connect (#1338)
+  * E2E tracing metadata append issue (#1357)
+  * Pass through kwargs in dbapi connect (#1368)
+  * Remove setup.cfg configuration for creating universal wheels (#1324)
+  * A comment for field `chunked_value` in message
+    `.google.spanner.v1.PartialResultSet` is changed (d532d57)
+  * A comment for field `precommit_token` in message
+    `.google.spanner.v1.PartialResultSet` is changed (d532d57)
+  * A comment for field `precommit_token` in message
+    `.google.spanner.v1.ResultSet` is changed (d532d57)
+  * A comment for field `query_plan` in message
+    `.google.spanner.v1.ResultSetStats` is changed (d532d57)
+  * A comment for field `row_count_lower_bound` in message
+    `.google.spanner.v1.ResultSetStats` is changed (d532d57)
+  * A comment for field `row_type` in message
+    `.google.spanner.v1.ResultSetMetadata` is changed (d532d57)
+  * A comment for field `rows` in message
+    `.google.spanner.v1.ResultSet` is changed (d532d57)
+  * A comment for field `stats` in message
+    `.google.spanner.v1.PartialResultSet` is changed (d532d57)
+  * A comment for field `stats` in message
+    `.google.spanner.v1.ResultSet` is changed (d532d57)
+  * A comment for field `values` in message
+    `.google.spanner.v1.PartialResultSet` is changed (d532d57)
+  * A comment for message `ResultSetMetadata` is changed (d532d57)
+  * A comment for message `ResultSetStats` is changed (d532d57)
+  * Fix markdown formatting in transactions page (#1377)
+- from version 3.54.0
+  * Add interval type support (#1340)
+  * Add sample for pre-split feature (#1333)
+  * Add SQL statement for begin transaction isolation level (#1331)
+  * Support transaction isolation level in dbapi (#1327)
+  * Improve client-side regex statement parser (#1328)
+
+-------------------------------------------------------------------
 Mon Apr 28 13:02:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add missing test dependencies to BuildRequires
