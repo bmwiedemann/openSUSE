@@ -30,7 +30,7 @@ Source0:        %{name}-%{version}.tar.zst
 # PATCH-FIX-UPSTREAM gnome-weather-BackgroundService-service-fails-to-start.patch bsc#1209391 glgo#GNOME/gnome-weather!132 xwang@suse.com -- org.gnome.Weather.BackgroundService fails to start
 Patch0:         gnome-weather-BackgroundService-service-fails-to-start.patch
 
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  intltool >= 0.26
 BuildRequires:  meson

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 20 11:15:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace appstream-glib with AppStream BuildRequires, meson setup
+  checks for it, and it was already pulled in via other
+  dependencies.
+
+-------------------------------------------------------------------
 Fri Sep 12 06:29:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
