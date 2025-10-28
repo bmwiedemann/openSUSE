@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 27 20:14:06 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Upstream moved to github
+- Force "-std=gnu99" to build on modern gcc
+- Update to version 0.2.5.2
+  * Code clean up and rebase
+- Update to version 0.2.5
+  * Do not hardcode the TTL, allow users to provide the desired value.
+  * Server non interactive CLI changed to account for TTL.
+  * multicast -v4 -server -group 239.1.2.3 -port 9999 -ttl 64 -delay 1
+  * multicast -v6 -server -group FF05::3232 -port 9999 -ttl 64 -delay 1
+
+-------------------------------------------------------------------
 Thu Jan 28 12:10:00 UTC 2014 - andrea@opensuse.org
 
 - New upstream version 0.2.4

@@ -1,7 +1,7 @@
 #
 # spec file for package simple-multicast
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           simple-multicast
-Version:        0.2.4
+Version:        0.2.5.2
 Release:        0
 Summary:        Multicast Server and Client application
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
-URL:            https://sourceforge.net/projects/simplemulticast/
-Source:         http://sourceforge.net/projects/simplemulticast/files/%{version}/multicast-%{version}.zip
-BuildRequires:  gcc
-BuildRequires:  glibc-devel
-BuildRequires:  unzip
+URL:            https://github.com/anubisg1/simple-multicast
+Source:         https://github.com/anubisg1/simple-multicast/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 
 %description
 Simple multicast Server/Client application.
@@ -38,11 +37,12 @@ Supports:
  * Source Specific Multicast client
 
 %prep
-%setup -q -n multicast-%{version}
+%autosetup -p1
 
 %build
+autoreconf -fiv
 %configure
-%make_build
+%make_build CFLAGS="%{optflags} -std=gnu99"
 
 %install
 %make_install
