@@ -2331,4 +2331,11 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <comment>Replace issue-generator with agetty on Kalpa and Tumbleweed, too</comment>
     <requestid>1311100</requestid>
   </revision>
+  <revision rev="327" vrev="325">
+    <srcmd5>9dae75bb7ffa2c90ab8f3a4881dca353</srcmd5>
+    <version>unknown</version>
+    <time>1761660749</time>
+    <user>anag_factory</user>
+    <comment>Update for java 25 as default</comment>
+  </revision>
 </revisionlist>

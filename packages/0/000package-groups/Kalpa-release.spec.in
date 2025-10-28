@@ -1,7 +1,7 @@
 #
 # spec file for package Kalpa-release.spec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ PreReq:         glibc >= 2.19
 Requires(post): coreutils
 Suggests:       branding-openSUSE
 Suggests:       distribution-logos-openSUSE-Kalpa
-Suggests:       java-21-openjdk
-Suggests:       java-21-openjdk-devel
+Suggests:       java-25-openjdk
+Suggests:       java-25-openjdk-devel
 Suggests:       openSUSE-build-key
 Suggests:       openSUSE-repos-Kalpa
 Conflicts:      distribution-release
