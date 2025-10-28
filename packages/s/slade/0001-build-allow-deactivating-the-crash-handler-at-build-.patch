@@ -18,11 +18,11 @@ Fixes: #1166
  src/CMakeLists.txt             |    3 +++
  2 files changed, 4 insertions(+), 1 deletion(-)
 
-Index: SLADE-3.2.7/src/Application/SLADEWxApp.cpp
+Index: SLADE-3.2.8/src/Application/SLADEWxApp.cpp
 ===================================================================
---- SLADE-3.2.7.orig/src/Application/SLADEWxApp.cpp
-+++ SLADE-3.2.7/src/Application/SLADEWxApp.cpp
-@@ -449,7 +449,7 @@ bool SLADEWxApp::OnInit()
+--- SLADE-3.2.8.orig/src/Application/SLADEWxApp.cpp
++++ SLADE-3.2.8/src/Application/SLADEWxApp.cpp
+@@ -452,7 +452,7 @@ bool SLADEWxApp::OnInit()
  #endif
  
  	// Handle exceptions using wxDebug stuff, but only in release mode
@@ -31,14 +31,14 @@ Index: SLADE-3.2.7/src/Application/SLADEWxApp.cpp
  	wxHandleFatalExceptions(true);
  #endif
  
-Index: SLADE-3.2.7/src/CMakeLists.txt
+Index: SLADE-3.2.8/src/CMakeLists.txt
 ===================================================================
---- SLADE-3.2.7.orig/src/CMakeLists.txt
-+++ SLADE-3.2.7/src/CMakeLists.txt
-@@ -41,3 +41,6 @@ if(WIN32 AND MSVC)
- else()
+--- SLADE-3.2.8.orig/src/CMakeLists.txt
++++ SLADE-3.2.8/src/CMakeLists.txt
+@@ -47,3 +47,6 @@ if (WIN32 AND MSVC)
+ else ()
  	include("unix") # Linux or MacOS
- endif()
+ endif ()
 +if (NOT NO_CRASHHANDLER)
 +	add_definitions(-DUSE_CRASHHANDLER)
 +endif ()

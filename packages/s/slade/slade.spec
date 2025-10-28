@@ -1,7 +1,7 @@
 #
 # spec file for package slade
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           slade
-Version:        3.2.7
+Version:        3.2.8
 Release:        0
 Summary:        An editor for DOOM maps and WAD/PK3 archives
 License:        GPL-2.0-or-later
@@ -36,22 +36,28 @@ BuildRequires:  gcc-c++ >= 8
 BuildRequires:  pkg-config
 BuildRequires:  strip-nondeterminism
 BuildRequires:  update-desktop-files
-BuildRequires:  wxGTK3-devel
+BuildRequires:  wxGTK3-devel >= 3.1.6
 BuildRequires:  zip
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(ftgl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libmpg123)
-%if 0%{?suse_version} >= 1690
-BuildRequires:  pkgconfig(lzma-sdk)
-%endif
+BuildRequires:  pkgconfig(libmpg123) >= 1.28.1
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(sfml-all)
 BuildRequires:  pkgconfig(x11)
+%if 0%{?suse_version} >= 1690
+BuildRequires:  sfml3-devel
+%endif
+%if 0%{?suse_version} >= 1690
+BuildRequires:  pkgconfig(lzma-sdk)
+%else
+BuildRequires:  pkgconfig(clzma)
+%endif
 %if 0%{?suse_version} >= 1600
 BuildRequires:  fmt-devel
 %else
-Provides:       bundled(fmt) = 10
+Provides:       bundled(fmt) = 11.1.3
 %endif
 Provides:       bundled(dumb) = 0.9.3
 
@@ -66,6 +72,9 @@ from/to other generic formats such as PNG.
 
 %build
 %define _lto_cflags %nil
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1690
+perl -i -lpe 's{ -llzmasdk }{ -lclzma }g' thirdparty/CMakeLists.txt
+%endif
 %cmake -DNO_WEBVIEW=ON -DWX_GTK3=OFF -DNO_CRASHHANDLER=ON \
 	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="$CFLAGS" \
 	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="$CFLAGS" \

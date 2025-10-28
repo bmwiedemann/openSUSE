@@ -163,4 +163,12 @@
   lzma-sdk-shlib.patch.</comment>
     <requestid>1301135</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>49e966c915dd9879a3c1a282224df185</srcmd5>
+    <version>3.2.8</version>
+    <time>1761659144</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.2.8</comment>
+    <requestid>1313616</requestid>
+  </revision>
 </revisionlist>

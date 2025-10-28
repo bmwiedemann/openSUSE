@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 21 09:18:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.8
+  * Updated DECOHack language definition
+  * Added support for the Heretic (2025)/Hexen (2025) port
+  * Resource editor:
+  * Added ability to copy+paste gfx offsets
+  * Fixed crashes on entry list updates (entry
+    added/deleted, etc.) while filtering is active
+  * Texture editor:
+  * Double clicking a TEXTUREx entry will now open
+    only that entry in the texture editor
+  * Limited the number of TEXTUREx entries initially opened to 5
+    when launching the texture editor via toolbar or menu
+  * Fixed patch offsets being set to the wrong value when
+    double-clicking a patch in the browser during 'replace patch'
+    action
+  * Map editor:
+  * Added ability to auto-align on the Y-axis and improved X-axis
+    auto alignment
+
+-------------------------------------------------------------------
 Sun Aug 24 12:41:33 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Adjust clzma.diff for changes in the lzma-sdk package's
