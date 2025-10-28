@@ -1,7 +1,7 @@
 #
 # spec file for package crawl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2011 Sascha Peilicke <sasch.pe@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 Your objective is to travel deep into a subterranean cave complex and retrieve the Orb of Zot, \
 which is guarded by many horrible and hideous creatures.
 Name:           crawl
-Version:        0.32.1
+Version:        0.33.1
 Release:        0
 Summary:        Roguelike dungeon exploration game
 License:        GPL-2.0-or-later

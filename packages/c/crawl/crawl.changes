@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Oct 20 23:02:25 UTC 2025 - Mobius <amob-rand@mailfence.com>
+
+- update to 0.33.1:
+    * Fix vampire form not having torment resistance.
+    * Fix bat swarm form having torment immunity instead of torment resistance.
+    * Fix breaking cursed items without a prompt when leaving slot-granting forms.
+    * Fix sphinx and serpent forms having slot items fall off when changing
+    * temporarily to another form via lignification or polymorph.
+    * Fix Dithmenos' player shadow not having the same reach as the player when in
+    * aqua form.
+    * Fix inconsistencies in handling of beam types:
+        * The spells Chain Lightning and Stunning Bolt are now properly 33%
+        * resistable with rElec instead of only 25% resistable.
+        * Mercury Arrow is now properly 25% resistable with rPois.
+        * Stunning Bolt now checks half of AC like other elecriticy-themed spells.
+        * Qazlal's adaptive rElec is now properly triggered by Stunning Bolt.
+        * Qazlal's adaptive AC is now properly triggered by all 'physical' spell
+        * projectiles.
+    * The Slick Slippers now prevent being bound by an ironbound beastmaster's
+    * bolas.
+    * Fix not being able to use Yredelemnul's Light the Black Torch on a
+    * portal level like Necropolis if it had been used in a previous instance of
+    * that portal.
+    * Don't allow orbrun spawns in Okawaru's Arena.
+    * Remove erroneous extra placements of alderkings in Sprint IV.
+    * 37 other bug fixes, interface improvements, and documentation updates.
+- update to 0.33.0:
+    * New magic school + background: Forgewrights, building explosive constructs.
+    * Two new species: Poltergeists and Revenants.
+    * Twelve new talismans have been added, and Shapeshifters have been reworked.
+    * Ghost vaults are moved into a game-long repeating portal, the Necropolis.
+    * Yet more new monsters, decorations, and traps spread throughout the Dungeon.
+
+-------------------------------------------------------------------
 Fri Nov  1 17:10:38 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 0.32.1:
