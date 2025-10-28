@@ -26,7 +26,7 @@ Name:           wpewebkit
 %ifarch %{ix86} %{arm}
 %define _lto_cflags %{nil}
 %endif
-Version:        2.48.5
+Version:        2.50.1
 Release:        0
 Summary:        Library for rendering web content, WPE Port
 License:        BSD-3-Clause AND LGPL-2.1-only
@@ -98,6 +98,7 @@ BuildRequires:  pkgconfig(wpe-1.0)
 BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(xkbcommon) >= 0.4.0
 BuildRequires:  pkgconfig(zlib)
+ExcludeArch:    %{ix86} %{arm}
 
 %description
 WPE allows embedders to create simple and performant systems based on
@@ -179,6 +180,9 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
 %ifarch aarch64
   -DENABLE_JIT=OFF \
   -DUSE_SYSTEM_MALLOC=ON \
+%endif
+%ifarch ppc64le
+  -DUSE_SKIA=OFF \
 %endif
   -DUSE_SYSTEM_SYSPROF_CAPTURE=NO
 %ninja_build

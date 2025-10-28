@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Oct 17 07:01:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Do not build 32bit targets via ExcludeArch %{ix86} and %{arm}.
+
+-------------------------------------------------------------------
+Thu Oct 16 08:21:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.1:
+  + Improve text rendering performance.
+  + On Android, the built library no longer includes versioning
+    information in its name.
+  + Fix audio playback broken on Instagram.
+  + Fix blurry rendering of SVG patterns when zoomed.
+  + Fix rendering of layers with fractional transforms.
+  + Fix the build with ENABLE(VIDEO) disabled.
+  + Fix the build in s390x.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Mon Sep 22 21:41:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.0:
+  + Improved rendering performance by recording each layer once and
+    replaying every dirty region in different worker threads.
+  + Enable damage propagation to the UI process by default.
+  + The CSS property font-variant-emoji is now supported and
+    enabled by default.
+  + Font synthesis properties (bold/italic) are now properly
+    handled.
+  + Added new API to get the theme color of a WebKitWebView.
+  + Support for video capture using PipeWire through the camera
+    portal.
+  + The WebKitSettings:enable-hyperlink-auditing option has been
+    deprecated, and the setting is always considered to be enabled.
+  + The USE_GSTREAMER_TRANSCODER build option has been removed, and
+    the implementation replaced with stock GStreamer functionality.
+  + The lowest GCC version that can be used to build WebKit is now
+    12.2.
+- Disable skia on ppc64le for now. It currently makes the build
+  fail.
+
+-------------------------------------------------------------------
 Mon Sep  1 15:20:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.48.5:
