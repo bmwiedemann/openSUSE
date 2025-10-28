@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Oct 27 16:47:28 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding mention here for README.md, which is a suggested file on the gitea
+  side of things when creating repositories to replace OBS backed storage.
+  * Adding 'Source100: README.md' as it gets declined w/ the following message:
+    - Attention, "README.md" is not mentioned in spec files as source or patch.
+
+-------------------------------------------------------------------
+Mon Oct 20 14:16:42 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.5+git20251020.085c2da:
+  * Use right key codes to match f1 and f2 keys (#1300)
+  * make new menu option not overflow
+  * added tree toggle of expand/collapse for children of process
+  * Fix menu entry
+  * Added ability to set which gpu vendors to enable
+  * fix: btop crash on arm cpu
+  * Fix thread restart race condition causing deadlocks
+  * Fix Net::collect race condition from USB device hot-plugging
+  * Add crash handlers to restore terminal state
+  * Fix thread safety issue causing crashes in Mem::collect_disk
+  * Fix deprecated IOMasterPort usage
+  * Continuous Build MacOS, disable MacOS 13 and fix platform name of created binary
+  * Continuous Build MacOS: change back to GCC from Clang
+  * OpenBSD: battery: add support for watthour and watts sensors
+  * fix arrow keys that send 'O' instead of '['
+  * fixed conditional statement to cpufreq.peek() == 'c' || cpufreq.peek() == 'C
+  * Fix CPU frequency detection for LoongArch CPUs
+  * feat: Introduce cpu frequency display modes
+  * Revert "Use /sys/dev/block/MAJOR:MINOR instead of /sys/block/NAME for disk I/O"
+  * feature: add process renice functionality
+  * Skip 'H' and 'HX' suffix in AMD cpu name trimming (#1272)
+  * Add zh_TW localization to the XDG desktop entry
+  * Fix incorrect list item paragraph indentation in the README
+  * Add additional metadata to the snap distribution
+  * Fix missing application entry in the snap distribution
+  * Fix incorrect YAML indentation depth in the Snapcraft project file
+  * Add Gotham theme
+
+-------------------------------------------------------------------
+Sat Sep 20 00:37:22 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.5+git20250919.a1099d0:
+  * v1.4.5 Bug fixes
+  * Bump bundled fmt to 12.0.0
+
+-------------------------------------------------------------------
 Mon Sep 15 13:55:27 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Commenting out code for RSMI_STATIC

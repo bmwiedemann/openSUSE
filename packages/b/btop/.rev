@@ -365,4 +365,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1306565</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d8e02e55b4b511206be390570c0df02a</srcmd5>
+    <version>1.4.5+git20251020.085c2da</version>
+    <time>1761659184</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit
+- Adding mention here for README.md, which is a suggested file on the gitea
+  side of things when creating repositories to replace OBS backed storage.
+
+- Update to version 1.4.5+git20251020.085c2da:
+  * Use right key codes to match f1 and f2 keys (#1300)
+  * make new menu option not overflow
+  * added tree toggle of expand/collapse for children of process
+  * Fix menu entry
+  * Added ability to set which gpu vendors to enable
+  * fix: btop crash on arm cpu
+  * Fix thread restart race condition causing deadlocks
+  * Fix Net::collect race condition from USB device hot-plugging
+  * Add crash handlers to restore terminal state
+  * Fix thread safety issue causing crashes in Mem::collect_disk
+  * Fix deprecated IOMasterPort usage
+  * Continuous Build MacOS, disable MacOS 13 and fix platform name of created binary
+  * Continuous Build MacOS: change back to GCC from Clang
+  * OpenBSD: battery: add support for watthour and watts sensors
+  * fix arrow keys that send 'O' instead of '['
+  * fixed conditional statement to cpufreq.peek() == 'c' || cpufreq.peek() == 'C
+  * Fix CPU frequency detection for LoongArch CPUs
+  * feat: Introduce cpu frequency display modes
+  * Revert &quot;Use /sys/dev/block/MAJOR:MINOR instead of /sys/block/NAME for disk I/O&quot;
+  * feature: add process renice functionality
+  * Skip 'H' and 'HX' suffix in AMD cpu name trimming (#1272)
+  * Add zh_TW localization to the XDG desktop entry
+  * Fix incorrect list item paragraph indentation in the README
+  * Add additional metadata to the snap distribution
+  * Fix missing application entry in the snap distribution</comment>
+    <requestid>1313911</requestid>
+  </revision>
 </revisionlist>
