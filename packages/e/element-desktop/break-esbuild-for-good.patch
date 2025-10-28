@@ -25,8 +25,8 @@ diff -ru a/node_modules/esbuild/lib/main.js b/node_modules/esbuild/lib/main.js
      if (isFirstPacket) {
        isFirstPacket = false;
        let binaryVersion = String.fromCharCode(...bytes);
--      if (binaryVersion !== "0.25.9") {
--        throw new Error(`Cannot start service: Host version "${"0.25.9"}" does not match binary version ${quote(binaryVersion)}`);
+-      if (binaryVersion !== "0.25.10") {
+-        throw new Error(`Cannot start service: Host version "${"0.25.10"}" does not match binary version ${quote(binaryVersion)}`);
 -      }
        return;
      }

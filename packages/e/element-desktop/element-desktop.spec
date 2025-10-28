@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.12.0
+Version:        1.12.2
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        AGPL-3.0-only OR GPL-3.0-only
@@ -27,6 +27,7 @@ Source2:        vendor.tar.zst
 Source3:        io.element.Element.desktop
 Source4:        element-desktop.sh
 Source5:        prepare.sh
+Source6:        README.md
 Patch0:         hak-remove-devdependencies.patch
 Patch1:         7za-path.patch
 Patch2:         cc-link-lib-no-static.patch
@@ -34,6 +35,7 @@ Patch3:         remove-fuses.patch
 Patch4:         no-walrus-operator.patch
 Patch5:         break-esbuild-for-good.patch
 Patch6:         fix-oxc-resolver.patch
+Patch7:         no-install-app-deps.patch
 BuildRequires:  app-builder
 BuildRequires:  cargo
 BuildRequires:  element-web = %{version}
@@ -77,9 +79,6 @@ A glossy Matrix collaboration client - desktop
 
 # of course this node garbage of a "programming language" is trying to copy around some windows specific stuff on linux
 echo > ./node_modules/electron-winstaller/script/select-7z-arch.js
-
-# don't run the broken postinstall script
-sed -i -e 's/^.*postinstall.*$/"foo":"bar"/' package.json
 
 # https://blogs.gnome.org/mcatanzaro/2020/05/18/patching-vendored-rust-dependencies/
 for i in cc libloading libsqlite3-sys openssl-src rustix seshat vcpkg; do
@@ -224,7 +223,6 @@ grep -rlZ '#! \?/usr/bin/env' "%{buildroot}%{_datadir}/element/app/node_modules/
 %fdupes %{buildroot}%{_datadir}
 
 %check
-%electron_check_native
 
 %files
 %license LICENSE-AGPL-3.0 LICENSE-GPL-3.0

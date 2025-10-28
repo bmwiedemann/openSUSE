@@ -5,7 +5,7 @@ diff -ru a/node_modules/oxc-resolver/package.json b/node_modules/oxc-resolver/pa
      "test": "vitest run -r ./napi",
      "build:debug": "napi build --platform --manifest-path napi/Cargo.toml",
      "build": "pnpm run build:debug --features allocator --release",
--    "postinstall": "napi-postinstall oxc-resolver 11.7.1 check",
+-    "postinstall": "napi-postinstall oxc-resolver 11.8.4 check",
      "postbuild:debug": "node napi/patch.mjs"
    },
    "dependencies": {

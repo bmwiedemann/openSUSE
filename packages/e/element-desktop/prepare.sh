@@ -16,10 +16,10 @@ tmpdir="$(mktemp -d)"
 #zypper install findutils file yarn cargo cargo-vendor-filterer moreutils jq
 
 version=$(grep "Version:" element-desktop.spec | awk '{print $2}')
-osc rm -f element-web-*.tar.gz ||:
-osc rm -f element-desktop-*.tar.gz ||:
+git rm -f element-web-*.tar.gz ||:
+git rm -f element-desktop-*.tar.gz ||:
 wget -c https://github.com/vector-im/element-desktop/archive/v${version}.tar.gz -O element-desktop-${version}.tar.gz
-osc add -f element-desktop-*.tar.gz
+git add -f element-desktop-*.tar.gz
 cp element-desktop.spec "$tmpdir/"
 cd "$tmpdir"
 

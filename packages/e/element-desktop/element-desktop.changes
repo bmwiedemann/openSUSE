@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Oct 22 10:39:01 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Add no-install-app-deps.patch to partitially run postinstall script
+
+-------------------------------------------------------------------
+Tue Oct 21 21:03:04 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.12.2
+  ## ✨ Features
+
+  * Allow Desktop app to be auto-started minimised or focused (https://github.com/element-hq/element-desktop/pull/2622). Contributed by @t3chguy.
+  * Room List: Extend the viewport to avoid so many black spots when scrolling the room list (https://github.com/element-hq/element-web/pull/30867). Contributed by @langleyd.
+  * Hide calling buttons in room header before a room is created (https://github.com/element-hq/element-web/pull/30816). Contributed by @Half-Shot.
+  * Improve invite dialog ui - Part 2 (https://github.com/element-hq/element-web/pull/30836). Contributed by @florianduros.
+
+  ## 🐛 Bug Fixes
+
+  * Fix hardlinks appearing in and breaking deb packages (https://github.com/element-hq/element-desktop/pull/2609). Contributed by @t3chguy.
+  * Fix platform settings race condition and make auto-launch tri-state (https://github.com/element-hq/element-web/pull/30977). Contributed by @t3chguy.
+  * Fix: member count in header and member list (https://github.com/element-hq/element-web/pull/30982). Contributed by @florianduros.
+  * Fix duration of voice message in timeline (https://github.com/element-hq/element-web/pull/30973). Contributed by @florianduros.
+  * Fix voice notes rendering at 00:00 when playback had not begun. (https://github.com/element-hq/element-web/pull/30961). Contributed by @Half-Shot.
+  * Improve handling of animated images, add support for AVIF animations (https://github.com/element-hq/element-web/pull/30932). Contributed by @t3chguy.
+  * Update key storage toggle when key storage status changes (https://github.com/element-hq/element-web/pull/30934). Contributed by @uhoreg.
+  * Fix jitsi widget popout (https://github.com/element-hq/element-web/pull/30908). Contributed by @dbkr.
+  * Improve keyboard navigation on invite dialog (https://github.com/element-hq/element-web/pull/30930). Contributed by @florianduros.
+  * Prefer UIA flows with supported UIA stages (https://github.com/element-hq/element-web/pull/30926). Contributed by @richvdh.
+  * Enhance accessibility of dropdown (https://github.com/element-hq/element-web/pull/30928). Contributed by @florianduros.
+  * Improve accessibility of the `\<AvatarSetting> component (https://github.com/element-hq/element-web/pull/30907). Contributed by @MidhunSureshR.
+
+
+
+Version 1.12.1
+  ## ✨ Features
+
+  * New Room List: Change the order of filters to match those on mobile (https://github.com/element-hq/element-web/pull/30905). Contributed by @langleyd.
+  * New Room List: Don't clear filters on space change (https://github.com/element-hq/element-web/pull/30903). Contributed by @langleyd.
+  * Add release announcement for the sounds (https://github.com/element-hq/element-web/pull/30900). Contributed by @langleyd.
+  * Rich Text Editor: Add emoji suggestion support (https://github.com/element-hq/element-web/pull/30873). Contributed by @langleyd.
+  * feat: Disable session lock when running in element-desktop (https://github.com/element-hq/element-web/pull/30643). Contributed by @kaylendog.
+  * Improve invite dialog ui - Part 1 (https://github.com/element-hq/element-web/pull/30764). Contributed by @florianduros.
+  * Update Message Sound for Element (https://github.com/element-hq/element-web/pull/30804). Contributed by @beatdemon.
+  * Add new and improved ringtone (https://github.com/element-hq/element-web/pull/30761). Contributed by @Half-Shot.
+  * Disable RTE formatting buttons when the content contains a slash command (https://github.com/element-hq/element-web/pull/30802). Contributed by @langleyd.
+
+  ## 🐛 Bug Fixes
+
+  * New Room List: Improve robustness of keyboard navigation (https://github.com/element-hq/element-web/pull/30888). Contributed by @langleyd.
+  * Fix a11y issue on list in invite dialog (https://github.com/element-hq/element-web/pull/30878). Contributed by @florianduros.
+  * Switch Export and Import Icons to match intuition (https://github.com/element-hq/element-web/pull/30805). Contributed by @micartey.
+  * Hide breadcrumb option when new room list is enabled (https://github.com/element-hq/element-web/pull/30869). Contributed by @florianduros.
+  * Avoid creating multiple call objects for the same widget (https://github.com/element-hq/element-web/pull/30839). Contributed by @robintown.
+  * Add a test for #29882, which is fixed by matrix-org/matrix-js-sdk#5016 (https://github.com/element-hq/element-web/pull/30835). Contributed by @andybalaam.
+  * fix: use `help_encryption_url` of config instead of hardcoded `https://element.io/help#encryption5` (https://github.com/element-hq/element-web/pull/30746). Contributed by @florianduros.
+  * Fix html export when feature\_jump\_to\_date is enabled (https://github.com/element-hq/element-web/pull/30828). Contributed by @langleyd.
+  * Fix #30439: "Forgot recovery key" should go to "reset" (https://github.com/element-hq/element-web/pull/30771). Contributed by @andybalaam.
+
+-------------------------------------------------------------------
 Tue Sep 23 13:57:06 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Fix fix-oxc-resolver.patch

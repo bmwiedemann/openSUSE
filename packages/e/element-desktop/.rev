@@ -1492,4 +1492,41 @@ Version 1.11.100
   * Fix history visibility when creating space rooms (https://github.com/element-hq/element-web/pull/30745). Contributed by @dbkr.</comment>
     <requestid>1306768</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>e73270fc6cbb99d010da30a2b9b9c172</srcmd5>
+    <version>1.12.2</version>
+    <time>1761659154</time>
+    <user>anag_factory</user>
+    <comment>- Add no-install-app-deps.patch to partitially run postinstall script
+
+- Version 1.12.2
+  ## ✨ Features
+  * Allow Desktop app to be auto-started minimised or focused (https://github.com/element-hq/element-desktop/pull/2622). Contributed by @t3chguy.
+  * Room List: Extend the viewport to avoid so many black spots when scrolling the room list (https://github.com/element-hq/element-web/pull/30867). Contributed by @langleyd.
+  * Hide calling buttons in room header before a room is created (https://github.com/element-hq/element-web/pull/30816). Contributed by @Half-Shot.
+  * Improve invite dialog ui - Part 2 (https://github.com/element-hq/element-web/pull/30836). Contributed by @florianduros.
+  ## 🐛 Bug Fixes
+  * Fix hardlinks appearing in and breaking deb packages (https://github.com/element-hq/element-desktop/pull/2609). Contributed by @t3chguy.
+  * Fix platform settings race condition and make auto-launch tri-state (https://github.com/element-hq/element-web/pull/30977). Contributed by @t3chguy.
+  * Fix: member count in header and member list (https://github.com/element-hq/element-web/pull/30982). Contributed by @florianduros.
+  * Fix duration of voice message in timeline (https://github.com/element-hq/element-web/pull/30973). Contributed by @florianduros.
+  * Fix voice notes rendering at 00:00 when playback had not begun. (https://github.com/element-hq/element-web/pull/30961). Contributed by @Half-Shot.
+  * Improve handling of animated images, add support for AVIF animations (https://github.com/element-hq/element-web/pull/30932). Contributed by @t3chguy.
+  * Update key storage toggle when key storage status changes (https://github.com/element-hq/element-web/pull/30934). Contributed by @uhoreg.
+  * Fix jitsi widget popout (https://github.com/element-hq/element-web/pull/30908). Contributed by @dbkr.
+  * Improve keyboard navigation on invite dialog (https://github.com/element-hq/element-web/pull/30930). Contributed by @florianduros.
+  * Prefer UIA flows with supported UIA stages (https://github.com/element-hq/element-web/pull/30926). Contributed by @richvdh.
+  * Enhance accessibility of dropdown (https://github.com/element-hq/element-web/pull/30928). Contributed by @florianduros.
+  * Improve accessibility of the `\&lt;AvatarSetting&gt; component (https://github.com/element-hq/element-web/pull/30907). Contributed by @MidhunSureshR.
+Version 1.12.1
+  ## ✨ Features
+  * New Room List: Change the order of filters to match those on mobile (https://github.com/element-hq/element-web/pull/30905). Contributed by @langleyd.
+  * New Room List: Don't clear filters on space change (https://github.com/element-hq/element-web/pull/30903). Contributed by @langleyd.
+  * Add release announcement for the sounds (https://github.com/element-hq/element-web/pull/30900). Contributed by @langleyd.
+  * Rich Text Editor: Add emoji suggestion support (https://github.com/element-hq/element-web/pull/30873). Contributed by @langleyd.
+  * feat: Disable session lock when running in element-desktop (https://github.com/element-hq/element-web/pull/30643). Contributed by @kaylendog.
+  * Improve invite dialog ui - Part 1 (https://github.com/element-hq/element-web/pull/30764). Contributed by @florianduros.
+  * Update Message Sound for Element (https://github.com/element-hq/element-web/pull/30804). Contributed by @beatdemon.</comment>
+    <requestid>1313858</requestid>
+  </revision>
 </revisionlist>
