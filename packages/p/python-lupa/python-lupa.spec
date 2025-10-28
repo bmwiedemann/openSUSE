@@ -1,7 +1,7 @@
 #
 # spec file for package python-lupa
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Suggests:       lua
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 Recommends:     luajit
 # Synchronized with archs where luajit is build
-%ifnarch riscv64 ppc64 ppc64le s390x
+%ifnarch ppc64 ppc64le s390x
 BuildRequires:  pkgconfig(luajit)
 %endif
 # /suse_version
