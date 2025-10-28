@@ -47,4 +47,13 @@
 </comment>
     <requestid>1299774</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>43dffc709ab54fb74426b02625abbffb</srcmd5>
+    <version>1.26.1</version>
+    <time>1761659178</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.26.1
+  * Track new micropython version (1.26.1)</comment>
+    <requestid>1313857</requestid>
+  </revision>
 </revisionlist>
