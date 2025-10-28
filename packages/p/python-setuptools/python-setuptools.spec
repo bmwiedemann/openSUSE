@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,8 +65,6 @@ BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python-rpm-packaging
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module build}

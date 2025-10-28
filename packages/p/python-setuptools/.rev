@@ -1363,4 +1363,12 @@
 - Also provide python3-setuptools-wheel for the primary flavor.</comment>
     <requestid>1277199</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>3481ca52bb602f859306a0d2de6fb156</srcmd5>
+    <version>78.1.1</version>
+    <time>1761659141</time>
+    <user>anag_factory</user>
+    <comment>- Remove not needed update-alternatives BuildRequires</comment>
+    <requestid>1313826</requestid>
+  </revision>
 </revisionlist>
