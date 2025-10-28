@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 27 17:37:36 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 2025.9
+  * enable RTL flag for pa_PK
+  * include list of additional decimal tags
+  * add Milang language
+  * mark Armenian as case insensitive
+  * avoid using deprecated pkg_resources
+  * add Interslavic language
+  * add Aranese (oc_ES)
+
+-------------------------------------------------------------------
 Thu Oct  2 06:50:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 2025.8
