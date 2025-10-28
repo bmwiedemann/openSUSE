@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 26 14:21:42 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to Xdebug 3.4.7
+  * Fixed bug #2359: PHP 8.4 Lazy Ghost Object inoperable/defunct when
+    Xdebug is enabled
+  * Fixed bug #2371: Step debugging initialize lazy objects
+  * Fixed bug #2375: Xdebug's exception trace conversion initialises
+    lazy objects
+
+-------------------------------------------------------------------
 Thu Oct 23 20:56:37 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to Xdebug 3.4.6

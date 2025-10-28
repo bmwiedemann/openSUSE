@@ -32,7 +32,7 @@ ExclusiveArch:  do-not-build
 
 Name:           %{php_name}-%{pkg_name}
 %if "%{flavor}" == "php8"
-Version:        3.4.6
+Version:        3.4.7
 %else
 Version:        3.1.6
 %endif
@@ -41,7 +41,7 @@ Summary:        Extended PHP debugger
 License:        PHP-3.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://xdebug.org
-Source0:        https://xdebug.org/files/%{pkg_name}-3.4.6.tgz
+Source0:        https://xdebug.org/files/%{pkg_name}-3.4.7.tgz
 Source1:        https://xdebug.org/files/%{pkg_name}-3.1.6.tgz
 Source10:       php-%{pkg_name}-rpmlintrc
 BuildRequires:  %{php_name}-devel
