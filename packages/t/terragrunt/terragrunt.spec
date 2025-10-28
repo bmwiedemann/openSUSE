@@ -17,7 +17,7 @@
 
 
 Name:           terragrunt
-Version:        0.91.4
+Version:        0.92.0
 Release:        0
 Summary:        Thin wrapper for Terraform for working with multiple Terraform modules
 License:        MIT

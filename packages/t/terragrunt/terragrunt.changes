@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Oct 28 05:46:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.92.0:
+  For more details and code exmaples, please see the release notes:
+  https://github.com/gruntwork-io/terragrunt/releases/tag/v0.92.0
+  * Breaking Changes
+    - Internal boilerplate dependency upgraded to v0.10.1
+      The templating engine (Boilerplate) used by the Terragrunt
+      catalog and scaffold commands has been upgraded to v0.10.1.
+      As a consequence, the default behavior of scaffolding when
+      using the catalog and scaffold commands has changed to allow
+      for the use of Boilerplate hooks and shell commands (see
+      hooks and helpers in Boilerplate documentation) by default.
+      Note that Boilerplate will ask for permission interactively
+      by default to run said hooks and shell commands, and that the
+      interactive prompt will propagate to Terragrunt users.
+  * Experiments Updated
+    - filter-flag experiment now supported in hcl commands
+      The --filter flag is now supported in hcl commands (validate
+      and fmt) (remember that you must use the filter-flag
+      experiment to try this).
+      When using the --filter flag for hcl fmt, filtering applies
+      to files instead of units / stacks. Only file path filters
+      are supported for the hcl fmt command.
+  * Performance Improvements
+    - hcl fmt Performance Improved
+      The performance of the hcl fmt command has been improved
+      substantially.
+      Formatting files is now roughly twice as fast due to
+      parallelization of file formatting, and optimizations used in
+      file exclusion.
+  * What's Changed
+    - docs: Documenting support for `--filter` in `hcl` commands
+      (#5010)
+    - chore: Bumping boilerplate (#4805)
+    - feat: Adding support for `--filter` in `hcl` commands (#5006)
+    - docs: Documenting the relationship between `--external` and
+      `--dependencies` (#5014)
+
+-------------------------------------------------------------------
+Mon Oct 27 05:51:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.91.5:
+  * Experiments Updated
+    - filter-flag updated with run support
+      The --filter flag is now supported on the run command
+      (remember that you must use the filter-flag experiment to try
+      this).
+      e.g.
+
+        # Filter by path with glob patterns
+        terragrunt run --all --filter 'prod/**' -- plan
+
+        # Filter by name
+        terragrunt run --all --filter 'app*' -- apply
+
+        # Exclude specific configurations
+        terragrunt run --all --filter '!./test/**' -- plan
+
+        # Combine filters with intersection (refinement)
+        terragrunt run --all --filter './prod/** | !name=legacy' -- apply
+
+        # Multiple filters with union
+        terragrunt run --all --filter 'app1' --filter 'app2' -- plan
+
+      For more information, see the documentation on Filtering
+      Units.
+      https://terragrunt-docs-git-docs-documenting-support-f-b0699d-gruntwork.vercel.app/docs/reference/cli/commands/run/#filtering-units
+      If you give this feature a try, make sure to share your
+      feedback on the Filter Flag RFC
+      https://github.com/gruntwork-io/terragrunt/issues/4060
+  * What's Changed
+    - docs: Documenting support for `--filter` in the `run` command
+      (#5015)
+    - feat: Adding support for `--filter` flag in `run` (#4981)
+    - chore: fixes for periodically failing tests (#5011)
+
+-------------------------------------------------------------------
 Fri Oct 24 05:38:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.91.4:
