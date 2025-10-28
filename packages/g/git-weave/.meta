@@ -1,0 +1,8 @@
+<package name="git-weave" project="openSUSE:Factory">
+  <title>Weave a tarball sequence into a git repository</title>
+  <description>git-weave takes a tarball sequence and a metadata file and synthesizes a live
+repository. It can invert this, explode git repositories into sequences of
+per-commit tarballs. The DAG is expressed as a metadata file with mailbox-like
+entries.</description>
+  <url>http://www.catb.org/~esr/git-weave/</url>
+</package>
