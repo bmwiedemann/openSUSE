@@ -18,7 +18,7 @@
 
 %define sonum	2
 Name:           libevdev
-Version:        1.13.4
+Version:        1.13.5
 Release:        0
 Summary:        A wrapper library for evdev devices
 License:        MIT

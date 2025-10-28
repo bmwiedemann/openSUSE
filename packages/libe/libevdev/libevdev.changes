@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 20 19:23:55 UTC 2025 - Matthias Bach <marix@marix.org>
+
+- Update to 1.14.5
+  * include: sync event codes with kernel 6.16 and kernel 6.17
+  * util: change the bit to shift to ULL
+
+-------------------------------------------------------------------
 Tue Mar 25 20:02:53 UTC 2025 - Matthias Bach <marix@marix.org>
 
 - update to 1.13.4
