@@ -213,4 +213,16 @@
   * Versions of Python &lt;3.9 are no longer supported. [#274]</comment>
     <requestid>1303654</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5b33bd98d1a3c8320844aad7f80b05d1</srcmd5>
+    <version>1.5.0</version>
+    <time>1761659348</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.5.0:
+  * Adding the usage of the doctest_encoding ini option when
+    overwriting files with the doctest-plus-generate-diff option.
+    [#284]
+- Drop upstream patch add-missing-xfail-version.patch</comment>
+    <requestid>1314025</requestid>
+  </revision>
 </revisionlist>
