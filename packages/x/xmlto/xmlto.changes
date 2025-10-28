@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 11 10:07:14 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.0.29:
+  * Rename variable BASH to XMLTO_BASH_PATH
+  * Regenerate xmlif to use new version of gcc
+  * Rename and format markdown files
+  * Convert output path to unix on cygwin/msys
+  * Add .gitignore
+  * Skip validating xmlto man page during build
+- drop xmlto-nonvoid.patch, included upstream
+- drop xmlto-codecleanup.patch, not needed
+
+-------------------------------------------------------------------
 Mon Feb 26 12:20:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

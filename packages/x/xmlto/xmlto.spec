@@ -2,6 +2,7 @@
 # spec file for package xmlto
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           xmlto
-Version:        0.0.28
+Version:        0.0.29
 Release:        0
 Summary:        Tool for Converting XML Files to Various Formats
 License:        GPL-2.0-or-later
@@ -25,9 +26,9 @@ Group:          Productivity/Publishing/XML
 URL:            https://pagure.io/xmlto/
 Source0:        https://releases.pagure.org/%{name}/%{name}-%{version}.tar.bz2
 Source10:       README.SUSE
-Patch0:         xmlto-nonvoid.patch
 Patch1:         xmlto-xsltopts.patch
-Patch2:         xmlto-codecleanup.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -39,7 +40,7 @@ Requires:       docbook_4
 Requires:       libxslt-tools
 # For full functionality, we need passivetex; but since most users are not happy with
 # getting texlive installed, we only suggest it.
-Suggests:      texlive-xmltex >= 2007
+Suggests:       texlive-xmltex >= 2007
 
 %description
 This is a package for converting XML files to various formats using XSL
@@ -53,11 +54,12 @@ cp %{SOURCE10} .
 rm -f xmlif/xmlif.c
 
 %build
-%configure BASH=/bin/bash
-make %{?_smp_mflags}
+autoreconf -fiv
+%configure XMLTO_BASH_PATH=/bin/bash
+%make_build
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %install
 %make_install
@@ -67,7 +69,7 @@ install -d %{buildroot}%{_datadir}/xmlto/xsl
 %files
 %doc README.SUSE
 %license COPYING
-%doc AUTHORS README ChangeLog FAQ THANKS NEWS
+%doc ChangeLog FAQ.md NEWS.md README.md THANKS.md
 %{_bindir}/xmlto
 %{_bindir}/xmlif
 %{_mandir}/man1/xmlto.1%{?ext_man}
