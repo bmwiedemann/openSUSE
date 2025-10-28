@@ -27,7 +27,7 @@ URL:            https://gitlab.gnome.org/GNOME/snapshot
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  liblcms2-devel
@@ -64,7 +64,7 @@ Requires:       gstreamer-plugins-rs
 %check
 %{cargo_test}
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Snapshot.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Snapshot.metainfo.xml
+appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/org.gnome.Snapshot.metainfo.xml
 
 %files
 %license LICENSE

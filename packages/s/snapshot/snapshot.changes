@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 20 10:42:17 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace appstream-glib with AppStream BuildRequires and command
+  called in check section, use the more modern tool.
+
+-------------------------------------------------------------------
 Sat Sep 13 08:30:50 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
