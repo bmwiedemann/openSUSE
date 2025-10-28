@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 757854f42d83aab44a72eedded3485887798a4fd
+%define git_version 9b899c779b8add9764bc0ae55d17962a7443361d
 
 Name:           kernel-firmware-amdgpu
-Version:        20251004
+Version:        20251024
 Release:        0
 Summary:        Kernel firmware files for AMDGPU graphics driver
 License:        GPL-2.0-or-later AND SUSE-Firmware
@@ -71,6 +71,11 @@ Supplements:    modalias(pci:v00001002d00001318sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000131Bsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000131Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000131Dsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000013DBsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000013F9sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000013FAsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000013FBsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000013FCsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000013FEsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000143Fsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000015D8sv*sd*bc*sc*i*)

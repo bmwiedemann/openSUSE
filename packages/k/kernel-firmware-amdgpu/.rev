@@ -410,4 +410,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * Update VCN for Navi1x, Green Sardine and Renoir</comment>
     <requestid>1311171</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9c8048760bcf645cfa7de5f84c95cce0</srcmd5>
+    <version>20251024</version>
+    <time>1761659124</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251024 (git commit 9b899c779b8a):
+  * amdgpu: DMCUB updates for various ASICs
+  * amdgpu: DMCUB updates for various ASICs
+- Update aliases</comment>
+    <requestid>1313865</requestid>
+  </revision>
 </revisionlist>
