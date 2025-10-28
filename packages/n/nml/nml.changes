@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 28 01:45:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Add in fdupes
+- List files and directories under python3_sitearch explicitly.
+
+-------------------------------------------------------------------
 Sun Jun 22 20:46:03 UTC 2025 - Jan Baier <jbaier@suse.com>
 
 - update to 0.8.0

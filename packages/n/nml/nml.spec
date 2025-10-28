@@ -1,7 +1,7 @@
 #
 # spec file for package nml
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,12 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            http://dev.openttdcoop.org/projects/nml
 Source:         https://github.com/OpenTTD/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  python3-devel
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 # We need the required packages also on building for regression tests:
 BuildRequires:  python3-Pillow >= 3.4
 BuildRequires:  python3-ply
@@ -41,13 +44,17 @@ A tool to compile nml files to grf or nfo files, making newgrf coding easier.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
-make extensions
+%python3_pyproject_wheel
 
 %check
-PYTHONDONTWRITEBYTECODE=1 make -C regression
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
+make -C regression
 
 %install
-python3 setup.py install --skip-build --root=%{buildroot} --prefix=%{_prefix}
+%python3_pyproject_install
+%fdupes %{buildroot}%{python3_sitearch}
+%fdupes %{buildroot}%{python3_sitelib}
 
 install -D -m0644 docs/nmlc.1 %{buildroot}%{_mandir}/man1/nmlc.1
 
@@ -67,7 +74,9 @@ rm %{buildroot}%{python3_sitelib}/nml/_lz77.c
 %doc docs/*.txt
 %{_bindir}/nmlc
 %{_mandir}/man1/nmlc.1*
-%{python3_sitearch}/*
-%{python3_sitelib}/%{name}/
+%{python3_sitelib}/%{name}
+%{python3_sitearch}/%{name}
+%{python3_sitearch}/nml_lz77.cpython-*-linux-gnu.so
+%{python3_sitearch}/%{name}-%{version}.dist-info
 
 %changelog
