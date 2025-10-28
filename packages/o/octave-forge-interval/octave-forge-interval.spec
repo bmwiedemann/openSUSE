@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-interval
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,8 @@ This is part of Octave-Forge project.
 rm -r %{buildroot}%{octpackages_dir}/%{octpkg}-%{version}/doc
 
 %check
+%global octskiptests @infsup/plot|@infsup/plot3
+echo "Skip tests requiring graphical toolkit: %{octskiptests}"
 %octave_pkg_test
 
 %post
