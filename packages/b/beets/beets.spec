@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           beets
-Version:        2.3.1
+Version:        2.5.1
 Release:        0
 Summary:        Music tagger and library organizer
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-Unidecode
 BuildRequires:  python3-confuse >= 1.5.0
-BuildRequires:  python3-devel >= 3.8.0
+BuildRequires:  python3-devel >= 3.9.0
 BuildRequires:  python3-jellyfish
 BuildRequires:  python3-mediafile >= 0.12.0
 BuildRequires:  python3-musicbrainzngs >= 0.4
@@ -72,6 +72,7 @@ Recommends:     python3-Flask
 Recommends:     python3-Flask-Cors
 Recommends:     python3-dbus-python
 Recommends:     python3-discogs-client >= 2.3.15
+Recommends:     python3-langdetect
 Recommends:     python3-pyacoustid
 Recommends:     python3-pylast
 Recommends:     python3-python-mpd2

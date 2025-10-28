@@ -1,4 +1,223 @@
 -------------------------------------------------------------------
+Wed Oct 15 21:31:03 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- update to 2.5.1:
+  * New features
+    * Zero Plugin: Add new configuration option, omit_single_disc, to allow
+      zeroing the disc number on write for single-disc albums. Defaults to
+      False.
+  * Bug fixes
+    * beets.plugins.BeetsPlugin: load the last plugin class defined in the
+      plugin namespace. (#6093)
+  * For packagers
+    * Fixed issue with legacy metadata plugins not copying properties from the
+      base class.
+    * Reverted the following: When installing beets via git or locally the
+      version string now reflects the current git branch and commit hash.
+      (#6089)
+  * Other changes
+    * Removed outdated mailing list contact information from the documentation
+      (#5462).
+    * Getting Started: Modernized the Getting Started guide with tabbed
+      sections and dropdown menus. Installation instructions have been
+      streamlined, and a new subpage now provides additional setup details.
+
+-------------------------------------------------------------------
+Mon Oct 13 20:32:57 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- update to 2.5.0:
+  * New features
+    * Convert Plugin: Add a config option to disable writing metadata to
+      converted files.
+    * Discogs Plugin Added support for featured artists. (#6038)
+    * Discogs Plugin New configuration option featured_string to change the
+      default string used to join featured artists. The default string is
+      Feat..
+    * Discogs Plugin Support for artist_credit in Discogs tags. (#3354)
+    * Discogs Plugin Support for name variations and config options to specify
+      where the variations are written. (#3354)
+    * Discogs Plugin: New config option strip_disambiguation to toggle
+      stripping discogs numeric disambiguation on artist and label fields.
+    * LastGenre Plugin: Add a --pretend option to preview genre changes without
+      storing or writing them.
+  * Bug fixes
+    * Metadata source plugins: Fixed data source penalty calculation that was
+      incorrectly applied during import matching. The source_weight
+      configuration option has been renamed to data_source_mismatch_penalty to
+      better reflect its purpose. (#6066)
+    * Chromaprint/Acoustid Plugin BPSync Plugin Fix plugin loading issue caused
+      by an import of another beets.plugins.BeetsPlugin class. (#6033)
+    * Discogs Plugin Fixed inconsistency in stripping disambiguation from
+      artists but not labels. (#5366)
+    * FromFilename Plugin: Fix (#5218), improve the code (refactor regexps,
+      allow for more cases, add some logging), add tests.
+    * MusicBrainz Plugin Refresh flexible MusicBrainz metadata on reimport so
+      format changes are applied. (#6036)
+    * Spotify Plugin Ensure spotifysync keeps popularity, ISRC, and related
+      fields current even when audio features requests fail. (#6061)
+    * Spotify Plugin Fixed an issue where candidate lookup would not find
+      matches due to query escaping (single vs double quotes).
+    * Spotify Plugin Fixed an issue where track matching and lookups could
+      return incorrect or misleading results when using the Spotify plugin. The
+      problem occurred primarily when no album was provided or when the album
+      field was an empty string. (#5189)
+    * Spotify Plugin Removed old and undocumented config options artist_field,
+      album_field and track that were causing issues with track matching.
+      (#5189)
+  * Other changes
+    * Moved art.py utility module from beets into beetsplug namespace as it is
+      not used in the core beets codebase. It can now be found in
+      beetsplug._utils.
+    * Moved vfs.py utility module from beets into beetsplug namespace as it is
+      not used in the core beets codebase. It can now be found in
+      beetsplug._utils.
+    * When installing beets via git or locally the version string now reflects
+      the current git branch and commit hash. (#4448)
+    * Autotagger Matching Options: match.distance_weights.source configuration
+      has been renamed to match.distance_weights.data_source for consistency
+      with the name of the field it refers to.
+    * FAQ: Add check for musicbrainz plugin if auto-tagger can't find a match
+      (#6020)
+    * Plugins: Clarify that musicbrainz must be mentioned if plugin list
+      modified (#6020)
+    * Using the Auto-Tagger: Section on no matching release found, related to
+      possibly disabled musicbrainz plugin (#6020)
+    * beets.metadata_plugin.MetadataSourcePlugin: Remove discogs specific
+      disambiguation stripping.
+  * For developers and plugin authors
+    * Metadata source plugins are now registered globally when instantiated,
+      which makes their handling slightly more efficient.
+    * The track_distance() and album_distance() methods have been removed from
+      MetadataSourcePlugin. Distance calculation for data source mismatches is
+      now handled automatically by the core matching logic. This change
+      simplifies the plugin architecture and fixes incorrect penalty
+      calculations. (#6066)
+    * Typing improvements in beets/logging.py: getLogger now returns
+      BeetsLogger when called with a name, or RootLogger when called without a
+      name.
+- update to 2.4.0:
+  * New features
+    * Discogs Plugin: Add configurable search_limit option to limit the number
+      of results returned by the Discogs metadata search queries.
+    * Discogs Plugin: Implement track_for_id method to allow retrieving
+      singletons by their Discogs ID. (#4661)
+    * Duplicates Plugin: Add --remove option, allowing to remove from the
+      library without deleting media files. (#5832)
+    * MPDStats Plugin: Add new configuration option, played_ratio_threshold, to
+      allow configuring the percentage the song must be played for it to be
+      counted as played instead of skipped.
+    * MusicBrainz Collection Plugin: When getting the user collections, only
+      consider collections of releases, and ignore collections of other entity
+      types.
+    * MusicBrainz Plugin: The MusicBrainz autotagger has been moved to a
+      separate plugin. The default plugins includes MusicBrainz Plugin, but if
+      you've customized your plugins list in your configuration, you'll need to
+      explicitly add MusicBrainz Plugin to continue using this functionality.
+      Configuration option musicbrainz.enabled has thus been deprecated.
+      (#2686) (#4605)
+    * Playlist Plugin: Support files with the .m3u8 extension. (#5829)
+    * Replace Plugin: Add new plugin.
+    * Spotify Plugin Deezer Plugin: Add new configuration option search_limit
+      to limit the number of results returned by search queries.
+    * Web Plugin: Display artist and album as part of the search results.
+    * Web Plugin: Show notifications when a track plays. This uses the Media
+      Session API to customize media notifications.
+  * Bug fixes
+    * Fix HiddenFileTest by using bytestring_path().
+    * Fix an issue where calling Library.add would cause the database_change
+      event to be sent twice, not once. (#5560)
+    * Fixed regression with ListenBrainz Plugin where the plugin could not be
+      loaded (#5975)
+    * Chromaprint/Acoustid Plugin: AcoustID lookup HTTP requests will now time
+      out after 10 seconds, rather than hanging the entire import process.
+    * Deezer Plugin: Fix the issue with that every query to deezer was ascii
+      encoded. This resulted in bad matches for queries that contained special
+      e.g. non latin characters as 盗作. If you want to keep the legacy
+      behavior set the config option deezer.search_query_ascii: yes. (#5860)
+    * Discogs Plugin: Beets will no longer crash if a release has been deleted,
+      and returns a 404.
+    * LastGenre Plugin: Fix the issue introduced in Beets 2.3.0 where
+      non-whitelisted last.fm genres were not canonicalized to parent genres.
+      (#5930)
+    * MusicBrainz Plugin: Fix the MusicBrainz search not taking into account
+      the album/recording aliases
+    * MusicBrainz Plugin: fix regression where user configured extra_tags have
+      been read incorrectly. (#5788)
+    * Spotify Plugin: Fix the issue with that every query to spotify was ascii
+      encoded. This resulted in bad matches for queries that contained special
+      e.g. non latin characters as 盗作. If you want to keep the legacy
+      behavior set the config option spotify.search_query_ascii: yes. (#5699)
+    * tests: Fix library tests failing on Windows when run from outside D:/.
+      (#5802)
+    * tests: Fix tests failing without langdetect (by making it required).
+      (#5797)
+  * For packagers
+    * Loosened typing_extensions dependency in pyproject.toml to apply to every
+      python version.
+    * Optional extra_tags parameter has been removed from
+      BeetsPlugin.candidates method signature since it is never passed in. If
+      you override this method in your plugin, feel free to remove this
+      parameter.
+  * For plugin developers
+    * The FetchArt Plugin plugins has seen a few changes to function signatures
+      and source registration in the process of introducing typings to the
+      code. Custom art sources might need to be adapted.
+    * We split the responsibilities of plugins into two base classes
+      * beets.plugins.BeetsPlugin is the base class for all plugins, any plugin
+        needs to inherit from this class.
+      * beets.metadata_plugin.MetadataSourcePlugin allows plugins to act like
+        metadata sources. E.g. used by the MusicBrainz plugin. All plugins in
+        the beets repo are opted into this class where applicable. If you are
+        maintaining a plugin that acts like a metadata source, i.e. you expose
+        any of track_for_id, album_for_id, candidates, item_candidates,
+        album_distance, track_distance methods, please update your plugin to
+        inherit from the new baseclass, as otherwise your plugin will stop
+        working with the next major release.
+    * Several definitions have been moved:
+      * BLOB_TYPE constant, PathQuery and SingletonQuery queries have moved
+        from beets.library to beets.dbcore.query module
+      * DateType, DurationType, PathType types and MusicalKey class have moved
+        from beets.library to beets.dbcore.types module.
+      * Distance has moved from beets.autotag to beets.autotag.distance module.
+      * beets.autotag.current_metadata has been renamed to
+        beets.util.get_most_common_tags.
+      Old imports are now deprecated and will be removed in version 3.0.0.
+    * beets.ui.decargs is deprecated and will be removed in version 3.0.0.
+    * Beets is now PEP 561 compliant, which means that it provides type hints
+      for all public APIs. This allows IDEs to provide better autocompletion
+      and type checking for downstream users of the beets API.
+    * plugins.find_plugins function does not anymore load plugins. You need to
+      explicitly call plugins.load_plugins() to load them.
+    * plugins.load_plugins function does not anymore accept the list of plugins
+      to load. Instead, it loads all plugins that are configured by plugins
+      configuration.
+    * Flexible fields, which can be used by plugins to store additional
+      metadata, now also support list values. Previously, beets would throw an
+      error while storing the data in the SQL database due to missing type
+      conversion. (#5698)
+  * Other changes
+    * Added a test to check that all plugins can be imported without errors.
+    * Documentation structure for auto generated API references changed
+      slightly. Autogenerated API references are now located in the docs/api
+      subdirectory.
+    * Refactor: Split responsibilities of Plugins into MetaDataPlugins and
+      general Plugins.
+    * Refactored library.py file by splitting it into multiple modules within
+      the beets/library directory.
+    * UI: Update default text_diff_added color from bold red to bold green.
+    * UI: Use text_diff_added and text_diff_removed colors in all diff
+      comparisons, including case differences.
+    * Getting Started: Add instructions to install beets on Void Linux.
+    * LastGenre Plugin: Refactor loading whitelist and canonicalization file.
+      (#5979)
+    * LastGenre Plugin: Updated and streamlined the genre whitelist and
+      canonicalization tree (#5977)
+    * Substitute Plugin: Fix rST formatting for example cases so that each case
+      is shown on separate lines.
+- Bump minimum version of Python
+- Add optional langdetect dependency for the lyrics plugin
+
+-------------------------------------------------------------------
 Tue Sep 16 06:41:40 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add missing requirements python3-numpy and python3-lap, bsc#1249619
