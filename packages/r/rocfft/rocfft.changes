@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Mon Oct 27 15:24:51 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve handling of shared library
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
+Fri Aug 15 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove buildrequires hipcc-libomp-devel
+
+-------------------------------------------------------------------
+Fri Aug  8 00:00:00 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Adjust python dependency for SUSE.
+
+-------------------------------------------------------------------
+Mon Jul 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove experimental gfx950
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+
+-------------------------------------------------------------------
+Tue Jun 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove suse check for using ldconfig
+
+-------------------------------------------------------------------
+Mon May 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix gfx950 mock build
+
+-------------------------------------------------------------------
+Sun May 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add experimential gfx950
+
+-------------------------------------------------------------------
+Sun Apr 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve testing on suse
+
+-------------------------------------------------------------------
+Sat Apr 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add generic gpus
+
+-------------------------------------------------------------------
+Sat Apr 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Sun Apr 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove global rocfft_version
+
+-------------------------------------------------------------------
+Thu Apr 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reenble ninja
+
+-------------------------------------------------------------------
+Fri Apr  4 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Work around old gcc for rhel 9
+
+-------------------------------------------------------------------
+Thu Apr  3 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove sqlite version check for ol9
+
+-------------------------------------------------------------------
+Fri Feb 14 00:00:00 UTC 2025 - Christoph Junghans <junghans@votca.org>
+
+- Add missing dep on rocm-hic-devel
+
+-------------------------------------------------------------------
+Wed Feb 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix provides
+
+-------------------------------------------------------------------
+Tue Feb 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove multi build
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Mon Jan 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread compress
+
+-------------------------------------------------------------------
+Tue Jan 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Sun Dec  8 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+
