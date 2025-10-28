@@ -82,4 +82,19 @@
 - add fix-CVE-2025-58190.patch, fixing bsc#1251668</comment>
     <requestid>1309959</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9f94e80e86a4f60d5d0a9d5d59d7d0f2</srcmd5>
+    <version>11.0.7</version>
+    <time>1761659219</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11.0.7:
+  * Vulnerability (Critical): prevent writing to out-of-repo symlink
+    destinations while evaluating template repos
+  * Vulnerability (Medium): prevent .forgejo/template from being out-of-repo
+    content
+  * Vulnerability (Medium): return on error if an LFS token cannot be parsed
+  * Vulnerability (Low): prevent commit API from leaking user's hidden email
+    address on valid GPG signed commits</comment>
+    <requestid>1313901</requestid>
+  </revision>
 </revisionlist>
