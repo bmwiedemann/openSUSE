@@ -23,17 +23,18 @@
 %define force_gcc_version 13
 %endif
 
-%global hayagriva_version 0.8.1
+%global hayagriva_version 0.9.1
 %global hayagriva_vendor_dir vendor/hayagriva-%{hayagriva_version}
 
 Name:           typst
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
 URL:            https://github.com/typst/typst
 Source0:        https://github.com/typst/typst/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Patch0:         hayagriva-bump-strum-version.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  gcc%{?force_gcc_version}-c++
@@ -104,14 +105,17 @@ RUSTFLAGS=%{rustflags} %{cargo_build} --workspace
 # otherwise it would complain about not being a member of the
 # top-level typst-workspace
 echo "[workspace]" >> %{hayagriva_vendor_dir}/Cargo.toml
+
 # hayagriva is older, so typst might use newer dot-dependencies.
 # We tell hayagriva to use the newer ones, if available.
 cargo update --offline --manifest-path=%{hayagriva_vendor_dir}/Cargo.toml
 # We may have updated hayagriva's Cargo.lock-file.
 # So we have to tell typst, not to worry about hash-mismatches.
 # (Matters in the check-section below)
-echo "[patch.crates-io.hayagriva]" >> Cargo.toml
-echo "path = \"%{hayagriva_vendor_dir}\"" >> Cargo.toml
+# Currently part of Patch0. Uncomment, if patch is removed
+# echo "[patch.crates-io.hayagriva]" >> Cargo.toml
+# echo "path = \"%{hayagriva_vendor_dir}\"" >> Cargo.toml
+
 RUSTFLAGS=%{rustflags} %{cargo_build} --manifest-path=%{hayagriva_vendor_dir}/Cargo.toml --features cli
 
 # We need to run update again, because cargo_test-macro now contains --locked as well,

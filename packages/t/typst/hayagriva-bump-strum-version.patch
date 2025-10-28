@@ -1,0 +1,113 @@
+# hayagriva uses two versions of strum currently. 0.26 and 0.27,
+# but 0.26 is 'hidden' behind the feature-flag "cli", which
+# typst doesn't use and thus doesn't get vendored.
+# This patch bumps the cli-version of strum to 0.27 as well,
+# so that we don't need another strum-version vendored.
+
+Index: typst-0.14.0/Cargo.toml
+===================================================================
+--- typst-0.14.0.orig/Cargo.toml
++++ typst-0.14.0/Cargo.toml
+@@ -167,3 +167,6 @@ manual_range_contains = "allow"
+ mutable_key_type = "allow"
+ uninlined_format_args = "warn"
+ wildcard_in_or_patterns = "allow"
++
++[patch.crates-io]
++hayagriva = { path="vendor/hayagriva-0.9.1" }
+Index: typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.toml
+===================================================================
+--- typst-0.14.0.orig/vendor/hayagriva-0.9.1/Cargo.toml
++++ typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.toml
+@@ -102,7 +102,7 @@ features = ["derive"]
+ version = "0.9.25"
+ 
+ [dependencies.strum]
+-version = "0.26"
++version = "0.27"
+ features = ["derive"]
+ optional = true
+ 
+Index: typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.lock
+===================================================================
+--- typst-0.14.0.orig/vendor/hayagriva-0.9.1/Cargo.lock
++++ typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.lock
+@@ -69,7 +69,7 @@ checksum = "53d0c374feba1b9a59042a7c1cf0
+ dependencies = [
+  "paste",
+  "roman-numerals-rs",
+- "strum 0.27.2",
++ "strum",
+  "unic-langid",
+  "unicode-normalization",
+  "unscanny",
+@@ -216,7 +216,7 @@ dependencies = [
+  "serde",
+  "serde_json",
+  "serde_yaml",
+- "strum 0.26.3",
++ "strum",
+  "thiserror",
+  "unic-langid",
+  "unicode-segmentation",
+@@ -470,12 +470,6 @@ source = "registry+https://github.com/ru
+ checksum = "c85cd47a33a4510b1424fe796498e174c6a9cf94e606460ef022a19f3e4ff85e"
+ 
+ [[package]]
+-name = "rustversion"
+-version = "1.0.22"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b39cdef0fa800fc44525c84ccb54a029961a8215f9619753635a9c0d2538d46d"
+-
+-[[package]]
+ name = "ryu"
+ version = "1.0.20"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -557,33 +551,11 @@ checksum = "7da8b5736845d9f2fcb837ea5d9e
+ 
+ [[package]]
+ name = "strum"
+-version = "0.26.3"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8fec0f0aef304996cf250b31b5a10dee7980c85da9d759361292b8bca5a18f06"
+-dependencies = [
+- "strum_macros 0.26.4",
+-]
+-
+-[[package]]
+-name = "strum"
+ version = "0.27.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "af23d6f6c1a224baef9d3f61e287d2761385a5b88fdab4eb4c6f11aeb54c4bcf"
+ dependencies = [
+- "strum_macros 0.27.2",
+-]
+-
+-[[package]]
+-name = "strum_macros"
+-version = "0.26.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "4c6bee85a5a24955dc440386795aa378cd9cf82acd5f764469152d2270e581be"
+-dependencies = [
+- "heck",
+- "proc-macro2",
+- "quote",
+- "rustversion",
+- "syn",
++ "strum_macros",
+ ]
+ 
+ [[package]]
+Index: typst-0.14.0/Cargo.lock
+===================================================================
+--- typst-0.14.0.orig/Cargo.lock
++++ typst-0.14.0/Cargo.lock
+@@ -935,8 +935,6 @@ checksum = "bf151400ff0baff5465007dd2f3e
+ [[package]]
+ name = "hayagriva"
+ version = "0.9.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1cb69425736f184173b3ca6e27fcba440a61492a790c786b1c6af7e06a03e575"
+ dependencies = [
+  "biblatex",
+  "ciborium",

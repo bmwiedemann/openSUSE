@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 27 08:27:34 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.14.0
+  https://typst.app/blog/2025/typst-0.14/
+  https://typst.app/docs/changelog/0.14.0/ 
+  https://github.com/typst/typst/releases/tag/v0.14.0
+- Add hayagriva-bump-strum-version.patch to fix build of hayagriva
+
+-------------------------------------------------------------------
 Tue Aug 19 06:16:08 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Adjust build to updated cargo-packaging macros
