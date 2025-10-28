@@ -1,7 +1,7 @@
 #
 # spec file for package torbrowser-launcher
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define pythons python3
 Name:           torbrowser-launcher
-Version:        0.3.7
+Version:        0.3.9
 Release:        0
 Summary:        Tool for launching and easy-updates of Tor Browser
 License:        MIT
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://gitlab.torproject.org/tpo/applications/torbrowser-launcher/
 Source0:        https://github.com/torproject/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM torbrowser-launcher-qt6-port.patch badshah400@gmail.com -- Port to Qt6, taken from upstream MR
-Patch0:         https://patch-diff.githubusercontent.com/raw/torproject/torbrowser-launcher/pull/720.patch#/torbrowser-launcher-qt6-port.patch
 BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module distro}
@@ -50,7 +48,6 @@ Requires:       python3-gpg
 Requires:       python3-packaging
 Requires:       python3-pyside6
 Requires:       python3-requests
-Requires:       xmessage
 BuildArch:      noarch
 
 %description
@@ -109,7 +106,7 @@ mkdir -p %{buildroot}%{_sysconfdir}
 %{_bindir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_datadir}/metainfo/*.metainfo.xml
-%{_datadir}/icons/hicolor/*/apps/torbrowser*.png
+%{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/%{name}/
 %{python_sitelib}/torbrowser_launcher-%{version}*.*-info
 %{python_sitelib}/torbrowser_launcher/

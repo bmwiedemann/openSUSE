@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Oct 26 18:54:09 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.3.9:
+  * Keep thread references to fix crash
+  * Use non-deprecated distro.name
+- Changes from version 0.3.8:
+  * Update Tor Browser gpg key for new subkey
+    (tor-browser-build#40964 (closed))
+  * Migrate code from PyQt5 to PySide6
+  * Fix window icon under wayland
+  * Move setup.py to setuptools
+  * AppArmor:
+    - Update/Add Additional Abstractions
+    - Remove duplicate rule
+    - Allow the Wayland Proxy to run
+    - Don't grant full D-Bus session bus access
+    - Allow unprivileged user namespaces
+    - Allow reading cgroups-v2 CPU bandwidth quota information
+    - Allow executing Firefox' own VA-API probe utility
+    - Allow reading intel-media-driver feature files
+  * Desktop files
+    - Rename desktop files to rDNS format
+    - Sort translated desktop strings by language
+  * AppStream metadata (metainfo.xml)
+    - Add developer name
+    - Add developer tag
+    - Remove references to Bundle/TBB
+  * Updated documentation and translations.
+- Drop torbrowser-launcher-qt6-port.patch: merged upstream.
+- Drop Requires: xmessage no longer required.
+
+-------------------------------------------------------------------
 Wed Feb 26 10:38:49 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add torbrowser-launcher-qt6-port.patch: Port to pyside6 (Qt6);
