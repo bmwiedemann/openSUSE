@@ -46,4 +46,15 @@
   * Use `tox` and `pre-commit` to ease project maintenance.</comment>
     <requestid>1131209</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51c845b9a835ff43c2e91efb1f8b761b</srcmd5>
+    <version>3.0.0</version>
+    <time>1761659285</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.0.0:
+  * Drop python 3.8 support and add Python 3.13 support.
+  * Drop python 3.9 support and add Python 3.14 support.
+  * Bump pypy minimum version to 3.10.</comment>
+    <requestid>1313970</requestid>
+  </revision>
 </revisionlist>

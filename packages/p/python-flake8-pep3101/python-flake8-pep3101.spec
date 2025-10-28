@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-pep3101
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8-pep3101
-Version:        2.1.0
+Version:        3.0.0
 Release:        0
 Summary:        Checks for old string formatting
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/gforcada/flake8-pep3101
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-pep3101/flake8_pep3101-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -59,7 +59,7 @@ Checks for old string formatting.
 %doc CHANGES.rst README.rst
 %license LICENSE
 %{python_sitelib}/flake8_pep3101.py
-%pycache_only %{python_sitelib}/__pycache__/flake8_pep3101*
+%pycache_only %{python_sitelib}/__pycache__/flake8_pep3101*pyc
 %{python_sitelib}/flake8_pep3101-%{version}.dist-info
 
 %changelog
