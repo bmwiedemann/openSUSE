@@ -909,4 +909,12 @@
     <comment>Security Release for issue #14220</comment>
     <requestid>1305223</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>06a31b8c4819281df4fd2ff0ff5dc2d4</srcmd5>
+    <version>7.0.38</version>
+    <time>1761659278</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1313984</requestid>
+  </revision>
 </revisionlist>
