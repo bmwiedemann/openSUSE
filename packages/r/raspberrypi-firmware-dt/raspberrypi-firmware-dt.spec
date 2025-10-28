@@ -40,6 +40,7 @@ Patch5:         0001-ARM-dts-bcm2712-Remove-DMA-support.patch
 Patch6:         0001-ARM-dts-bcm2712-Slow-down-eMMC-interface.patch
 Patch7:         bcm2712-fix-compatible.patch
 Patch8:         0001-Amend-the-RP1-ethernet-node-to-work-with-upstream-dr.patch
+Patch9:         0001-dts-overlays-Adjust-them-for-RPi5.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
@@ -75,6 +76,12 @@ for dts in arch/arm/boot/dts/overlays/*dts %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SO
     cpp -x assembler-with-cpp -undef -D__DTS__ -DFIRMWARE_UPDATED -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $dts -o $PPDIR/overlays/$target.dts
     dtc $DTC_FLAGS -I dts -O dtb -i ./$(dirname $dts) -o $PPDIR/overlays/$target.dtbo $PPDIR/overlays/$target.dts
 done
+
+# These are loaded implicitly by the RPi 5 firmware and it
+# expect these exact names.
+mv $PPDIR/overlays/hat_map.dtbo $PPDIR/overlays/hat_map.dtb
+mv $PPDIR/overlays/overlay_map.dtbo $PPDIR/overlays/overlay_map.dtb
+
 # Include README file
 cp arch/arm/boot/dts/overlays/README $PPDIR/overlays/
 
@@ -88,7 +95,7 @@ for dtb in pp/*.dtb; do
     install -m 644 $dtb %{buildroot}%{dtbdir}/
 done
 
-for dtbo in pp/overlays/*.dtbo; do
+for dtbo in pp/overlays/*.dtb*; do
     install -m 644 $dtbo %{buildroot}%{dtbdir}/overlays/
 done
 install -m 644 pp/overlays/README %{buildroot}%{dtbdir}/overlays/
@@ -104,6 +111,7 @@ fi
 %dir /boot/vc/overlays
 /boot/vc/*dtb
 /boot/vc/overlays/*dtbo
+/boot/vc/overlays/*dtb
 /boot/vc/overlays/README
 
 %changelog

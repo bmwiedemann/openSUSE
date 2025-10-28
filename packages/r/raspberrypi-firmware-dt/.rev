@@ -478,4 +478,24 @@ and packages them up for the RPi firmware to use.</comment>
 * 0001-Amend-the-RP1-ethernet-node-to-work-with-upstream-dr.patch-</comment>
     <requestid>1305328</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>4b758c069de3aed229b233c698045932</srcmd5>
+    <version>2025.05.14</version>
+    <time>1761659137</time>
+    <user>anag_factory</user>
+    <comment>- Adjust RPi5 overlays
+  0001-dts-overlays-Adjust-them-for-RPi5.patch
+* Add 64 bit size CMA overlay
+  Compared to older devices RPi5 uses #size-cells=&lt;2&gt;.
+  Create new overlay and add it to overlay_map so it
+  could automagicaly loaded by the firmware.
+* Add map for enabling Bluetooth on RPi5
+  Bluetooth on RPi5 do not need to be enabled, but
+  because we unconditionally enable-bt for all
+  devices create similar overlay for RPi5 and
+  add it to overlay_map.
+* Add map for upstream overlay on RPi5
+  Create empty upstream overlay to silence firmware warnings.</comment>
+    <requestid>1313893</requestid>
+  </revision>
 </revisionlist>
