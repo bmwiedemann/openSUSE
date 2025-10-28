@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 27 15:47:08 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
+
+- add barcode-0.99-remove-config.h.patch since config.h is
+  a build-time dependency and not shipped in barcode-devel.
+
+-------------------------------------------------------------------
 Fri Jul 19 16:34:25 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add barcode-C99.diff to add mssing includes of libintl.h to allow

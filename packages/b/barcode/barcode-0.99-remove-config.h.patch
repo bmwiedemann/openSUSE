@@ -1,0 +1,44 @@
+diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-barcode-0.99/barcode.h ./barcode.h
+--- ../orig-barcode-0.99/barcode.h	2025-10-27 16:41:03.980242662 +0100
++++ ./barcode.h	2025-10-27 16:41:37.693153621 +0100
+@@ -23,7 +23,6 @@
+ #ifndef _BARCODE_H_
+ #define _BARCODE_H_
+ 
+-#include "config.h"
+ #include <stdio.h>
+ 
+ #include <gettext-po.h>
+diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-barcode-0.99/cmdline.c ./cmdline.c
+--- ../orig-barcode-0.99/cmdline.c	2025-10-27 16:41:15.407005891 +0100
++++ ./cmdline.c	2025-10-27 16:46:12.212415893 +0100
+@@ -22,6 +22,7 @@
+  *      Michele Comitini (mcm@glisco.it): better handling of numeric type args.
+  */
+ 
++#include "config.h"
+ #include "barcode.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-barcode-0.99/library.c ./library.c
+--- ../orig-barcode-0.99/library.c	2013-03-29 23:23:18.000000000 +0100
++++ ./library.c	2025-10-27 16:45:05.901224541 +0100
+@@ -19,6 +19,7 @@
+  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include "config.h"
+ #include "barcode.h"
+ 
+ #include <stdio.h>
+diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-barcode-0.99/main.c ./main.c
+--- ../orig-barcode-0.99/main.c	2025-10-27 16:41:15.407995445 +0100
++++ ./main.c	2025-10-27 16:45:12.339593631 +0100
+@@ -20,6 +20,7 @@
+  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 	
++#include "config.h"
+ #include "barcode.h"
+ #include <stdio.h>
+ #include <stdlib.h>

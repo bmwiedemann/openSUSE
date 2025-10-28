@@ -1,7 +1,7 @@
 #
 # spec file for package barcode
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,9 +34,11 @@ Patch5:         %{name}-0.98-leak-fix.patch
 Patch6:         barcode-fix-renamed-include.patch
 # PATCH-FIX-UPSTREAM barcode-C99.diff mjambor@suse.com -- Fix missing includes which cause compilation errors with GCC 14
 Patch7:         barcode-C99.diff
+# PATCH-FIX-OPENSUSE kkaempf@suse.de -- don't include build-time file config.h
+Patch8:         barcode-0.99-remove-config.h.patch
 BuildRequires:  makeinfo
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
 %description
 GNU Barcode is meant to meet most barcode creation needs with a
@@ -62,6 +64,7 @@ Encapsulated PostScript format.
 %patch -P 5
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
