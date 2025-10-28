@@ -17,7 +17,7 @@
 
 
 Name:           gthumb
-Version:        3.12.8+1
+Version:        3.12.8.1
 Release:        0
 # FIXME: Add libchamplain BuildRequires once the map feature is considered stable.
 Summary:        An Image Viewer and Browser for GNOME
