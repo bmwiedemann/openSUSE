@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Mon Oct 27 00:12:01 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve handling of shared libraries
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
+Thu Aug 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Build -test on TW
+
+-------------------------------------------------------------------
+Tue Jul 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove -mtls-dialog cflag
+
+-------------------------------------------------------------------
+Mon Jul 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove experimental gfx950
+- Remove debian dir
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+
+-------------------------------------------------------------------
+Tue Jun 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove suse check for using ldconfig
+
+-------------------------------------------------------------------
+Thu May 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.1
+
+-------------------------------------------------------------------
+Tue May 13 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- updated logic to adhere to desired test and check behavior
+
+-------------------------------------------------------------------
+Mon May 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix gfx950 mock build
+
+-------------------------------------------------------------------
+Sat May 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add experimental gfx950
+
+-------------------------------------------------------------------
+Sun Apr 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve testing on suse
+
+-------------------------------------------------------------------
+Fri Apr 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add generic gpus
+
+-------------------------------------------------------------------
+Sat Apr 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Wed Apr  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reenable ninja build
+
+-------------------------------------------------------------------
+Mon Feb 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove split building
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Mon Jan 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread compress
+
+-------------------------------------------------------------------
+Tue Jan 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Sun Dec  8 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+
