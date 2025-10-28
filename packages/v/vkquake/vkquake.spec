@@ -1,7 +1,7 @@
 #
 # spec file for package vkquake
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,8 @@ Source:         https://github.com/Novum/vkQuake/archive/refs/tags/%{version}.ta
 Source99:       %{name}.changes
 Source100:      appdata.xml
 Source101:      %{name}.desktop
+# PATCH-FIX-UPSTREAM sprirv-remap.patch
+Patch:          sprirv-remap.patch
 BuildRequires:  cmake
 BuildRequires:  glslang-devel
 BuildRequires:  meson

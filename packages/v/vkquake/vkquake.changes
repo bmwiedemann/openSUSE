@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 27 15:02:22 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- added sprirv-remap.patch to fix compilation failing since glslang 16.0.0
+
+-------------------------------------------------------------------
 Sun Jun 22 08:27:26 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 1.32.3.1
