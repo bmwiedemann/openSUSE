@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 28 10:59:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.27.0:
+  * Database integrity improvements
+  * update DERPMap update frequency to 3 hrs
+  * This release adds support for the three missing autogroups: self
+    (experimental), member, and tagged
+  * Under the hood, we have added a new datastructure to store nodes in memory
+- remove patches fix-CVE-2025-58190.patch and fix-CVE-2025-47911.patch,
+  fixed upstream
+
+-------------------------------------------------------------------
 Thu Oct  9 08:21:20 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add fix-CVE-2025-58190.patch, fixing bsc#1251650

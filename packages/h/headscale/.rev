@@ -165,4 +165,19 @@
     <comment></comment>
     <requestid>1309944</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1165f0daff9c20761844eebf34f13277</srcmd5>
+    <version>0.27.0</version>
+    <time>1761659368</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.27.0:
+  * Database integrity improvements
+  * update DERPMap update frequency to 3 hrs
+  * This release adds support for the three missing autogroups: self
+    (experimental), member, and tagged
+  * Under the hood, we have added a new datastructure to store nodes in memory
+- remove patches fix-CVE-2025-58190.patch and fix-CVE-2025-47911.patch,
+  fixed upstream (forwarded request 1314050 from rrahl0)</comment>
+    <requestid>1314051</requestid>
+  </revision>
 </revisionlist>

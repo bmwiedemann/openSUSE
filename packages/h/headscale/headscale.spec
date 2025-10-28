@@ -1,7 +1,7 @@
 #
 # spec file for package headscale
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           headscale
-Version:        0.26.1
+Version:        0.27.0
 Release:        0
 Summary:        An open source, self-hosted implementation of the Tailscale control server
 License:        BSD-3-Clause
@@ -29,12 +29,10 @@ Source3:        headscale.tmpfs.conf
 Source4:        headscale.systemd.service
 Source5:        config-example.yaml
 Source6:        derp-example.yaml
-Patch0:         fix-CVE-2025-58190.patch
-Patch1:         fix-CVE-2025-47911.patch
-BuildRequires:  golang-packaging
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  pkgconfig(systemd)
 Suggests:       postgresql-server
 Suggests:       wireguard-tools
