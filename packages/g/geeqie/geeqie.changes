@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 22 06:52:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer disable lua support during build, seems fixed upstream
+  even if issue is stil open. Replace pkgconfig(lua5.3)
+  pkgconfig(lua) BuildRequires: Use whatever lua is the current
+  distro default.
+- Drop no longer needed update-desktop-files Requires(post(un)).
+
+-------------------------------------------------------------------
 Thu Oct 16 10:05:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete and unneeded update-desktop-files BuildRequires and

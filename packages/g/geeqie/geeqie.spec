@@ -54,10 +54,8 @@ BuildRequires:  pkgconfig(libjxl) >= 0.3.7
 BuildRequires:  pkgconfig(libopenjp2) >= 2.3.0
 BuildRequires:  pkgconfig(libraw) >= 0.20
 BuildRequires:  pkgconfig(libwebp) >= 0.6.1
-BuildRequires:  pkgconfig(lua5.3)
+BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(poppler-glib) >= 0.62
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
 
 %description
 Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
@@ -71,7 +69,7 @@ Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
 %meson \
   -Dgq_helpdir=%{_docdir}/%{name} \
   -Dgq_htmldir=%{_docdir}/%{name} \
-  -Dlua=disabled
+  %{nil}
 %meson_build
 
 %install
