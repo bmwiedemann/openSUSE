@@ -1,7 +1,7 @@
 #
 # spec file for package pybind11-abseil
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Patch0:         pybind11_abseil.patch
 Patch1:         use-system-packages-if-possible.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0001-Install-headers-and-CMake-development-files.patch
+# PATCH-FIX-UPSTREAM 0001-return-nullptr-after-PYBIND11_CATCH_INIT_EXCEPTIONS.patch gh#pybind/pybind11_abseil#57
+Patch3:         0001-return-nullptr-after-PYBIND11_CATCH_INIT_EXCEPTIONS.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.24

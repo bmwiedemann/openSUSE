@@ -1,0 +1,28 @@
+From 51266d118b13e1381ee39120d59f2b30b4269890 Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Tue, 28 Oct 2025 08:37:48 +0100
+Subject: [PATCH] return nullptr after PYBIND11_CATCH_INIT_EXCEPTIONS
+
+After this commit [1], it's better to return nullptr because the return
+was removed from the Macro.
+
+[1] https://github.com/pybind/pybind11/commit/974eba77a5a984ea3d1be7fa53574c9d9f00efc2
+---
+ pybind11_abseil/status_pyinit_google3.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pybind11_abseil/status_pyinit_google3.cc b/pybind11_abseil/status_pyinit_google3.cc
+index c4a1a45..1e7fd10 100644
+--- a/pybind11_abseil/status_pyinit_google3.cc
++++ b/pybind11_abseil/status_pyinit_google3.cc
+@@ -16,6 +16,7 @@ PyObject* this_module_init() noexcept {
+     return m.ptr();
+   }
+   PYBIND11_CATCH_INIT_EXCEPTIONS
++  return nullptr;
+ }
+ 
+ }  // namespace
+-- 
+2.51.0
+

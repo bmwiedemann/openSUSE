@@ -25,4 +25,14 @@ This fixes a number of problems in the current package, e.g. python extension mo
     downstream users, also the CMake files are required</comment>
     <requestid>1183487</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>61d150ee4233d808e68c928862cdcf58</srcmd5>
+    <version>202402.0</version>
+    <time>1761659313</time>
+    <user>anag_factory</user>
+    <comment>- Add 0001-return-nullptr-after-PYBIND11_CATCH_INIT_EXCEPTIONS.patch
+  gh#pybind/pybind11_abseil#57. This fixes the build with latest
+  pybind11.</comment>
+    <requestid>1314000</requestid>
+  </revision>
 </revisionlist>

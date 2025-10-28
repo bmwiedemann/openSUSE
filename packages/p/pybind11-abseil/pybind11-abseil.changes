@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 28 07:42:50 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add 0001-return-nullptr-after-PYBIND11_CATCH_INIT_EXCEPTIONS.patch
+  gh#pybind/pybind11_abseil#57. This fixes the build with latest
+  pybind11.
+
+-------------------------------------------------------------------
 Sun Jun 16 18:00:35 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add pybind11_abseil.patch, ported from google-or-tools. Change
