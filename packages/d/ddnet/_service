@@ -1,5 +1,5 @@
 <services>
   <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">ddnet-19.4</param>
+    <param name="srcdir">ddnet-19.5</param>
   </service>
 </services>

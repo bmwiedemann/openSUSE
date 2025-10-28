@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sat Oct 25 04:53:25 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 19.5:
+  * [Client] Add interactive tee to skin preview in settings
+  * [Client] Improve color space conversions when encoding demos
+  * [Client] Re-add markers column in demo browser with icon
+  * [Client] Improve chat/flag rendering performance
+  * [Client] Implement automatic quad clipping for rotating quads
+  * [Client] Android: Fix unsaved changes not updating correctly
+  * [Client] Android: Fix circle hitbox
+  * [Client] Add login required icon to server browser
+  * [Client] Also show favorite skins that were not found in list
+  * [Client] Correctly center entities text (tele numbers)
+  * [Client] Add interactive tee to skin preview in settings
+  * [Client] Improve color space conversions when encoding demos
+  * [Client] Re-add markers column in demo browser with icon
+  * [Client] Improve chat/flag rendering performance
+  * [Client] Implement automatic quad clipping for rotating quads
+  * [Client] Android: Fix unsaved changes not updating correctly
+  * [Client] Android: Fix circle hitbox
+  * [Client] Add login required icon to server browser
+  * [Client] Also show favorite skins that were not found in list
+  * [Client] Correctly center entities text (tele numbers)
+  * [Client] Add button to open downloads page with
+    CONF_INFORM_UPDATE option
+  * [Client] macOS with Vulkan using molten-vk fixed
+  * [Client] Add delayed update to refresh rate scrollbars
+  * [Client] 0.7 address server community fix
+  * [Client] Add more envelope validations
+  * [Client] Recreate swapchain
+  * [Client] Ensure client can only view https:// links
+  * [Client] Fix hidden input when searching in unauthed rcon
+  * [Client] Fix HadokenAngle affecting eyes
+  * [Client] Fix demo rename not working if names only differ in
+    capitalization
+  * [Editor] Add separate setting and quick action for quad
+    envelope preview
+  * [Editor] Select editor images and sounds after adding them
+  * [Editor] Prevent editor rotate keybinds from working while
+    popups are open
+  * [Editor] Remove incorrect keyboard shortcut for undo/redo
+  * [Editor] Fix quad point context menu showing when cancelling
+    rotation
+  * [Editor] Fix: Quad rotation clipping integer overflow
+  * [Editor] Fix brush of game and tiles layers being created as
+    front layer
+  * [Editor] Fix: Wrong render count for grouped quad layers
+  * [Editor] Fix quad envelope preview rotation affecting
+    multiple quads
+  * [Server] Make map settings read-only
+  * [Server] Add difficulty range as reason for map votes
+  * [Server] Fix /team 0 after joining a ddrace team
+  * [Server] Remove broadcast_pl
+  * [Masterserver] Add community support
+  * [Masterserver] Disallow port 0
+
+  * [Client] Add button to open downloads page with
+    CONF_INFORM_UPDATE option
+  * [Client] macOS with Vulkan using molten-vk fixed
+  * [Client] Add delayed update to refresh rate scrollbars
+  * [Client] 0.7 address server community fix
+  * [Client] Add more envelope validations
+  * [Client] Recreate swapchain
+  * [Client] Ensure client can only view https:// links
+  * [Client] Fix hidden input when searching in unauthed rcon
+  * [Client] Fix HadokenAngle affecting eyes
+  * [Client] Fix demo rename not working if names only differ in
+    capitalization
+  * [Editor] Add separate setting and quick action for quad
+    envelope preview
+  * [Editor] Select editor images and sounds after adding them
+  * [Editor] Prevent editor rotate keybinds from working while
+    popups are open
+  * [Editor] Remove incorrect keyboard shortcut for undo/redo
+  * [Editor] Fix quad point context menu showing when cancelling
+    rotation
+  * [Editor] Fix: Quad rotation clipping integer overflow
+  * [Editor] Fix brush of game and tiles layers being created as
+    front layer
+  * [Editor] Fix: Wrong render count for grouped quad layers
+  * [Editor] Fix quad envelope preview rotation affecting
+    multiple quads
+  * [Server] Make map settings read-only
+  * [Server] Add difficulty range as reason for map votes
+  * [Server] Fix /team 0 after joining a ddrace team
+  * [Server] Remove broadcast_pl
+  * [Masterserver] Add community support
+  * [Masterserver] Disallow port 0
+
+-------------------------------------------------------------------
 Wed Sep 17 16:14:58 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 19.4:
