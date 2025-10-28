@@ -2495,4 +2495,19 @@ On Leap15/SLE15 a newer GCC is needed to build against Qt6. On SLE15 the default
     <comment> (forwarded request 1307861 from pgajdos)</comment>
     <requestid>1307862</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>384c5fc6bae6c922e0975bee55e11cba</srcmd5>
+    <version>1.15.0</version>
+    <time>1761659111</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.15.0
+  * Support Mathjax version 4
+  * Minor Doxywizard improvements
+  * Increase maximum number of allowed threads in config file
+  * New option MARKDOWN_STRICT which is enabled by default, and
+    will no longer treat ' as the end of a quoted text started
+    with ` (e.g. `word'). If you depend on the old behavior, set
+    this option to NO. (forwarded request 1313071 from mathletic)</comment>
+    <requestid>1313344</requestid>
+  </revision>
 </revisionlist>

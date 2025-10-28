@@ -16,9 +16,9 @@
 #
 
 
-%global rdir Release_1_14_0
+%global rdir Release_1_15_0
 Name:           doxywizard
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
@@ -42,6 +42,7 @@ BuildRequires:  python3-xml
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(Qt6Xml)
 Requires:       doxygen = %{version}

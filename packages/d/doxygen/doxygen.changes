@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 22 16:25:26 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 1.15.0
+  * Support Mathjax version 4
+  * Minor Doxywizard improvements
+  * Increase maximum number of allowed threads in config file
+  * New option MARKDOWN_STRICT which is enabled by default, and
+    will no longer treat ' as the end of a quoted text started
+    with ` (e.g. `word'). If you depend on the old behavior, set
+    this option to NO.
+
+-------------------------------------------------------------------
 Wed Sep 24 07:49:18 UTC 2025 - pgajdos@suse.com
 
 - upstream links to github repository

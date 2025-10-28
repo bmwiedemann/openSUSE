@@ -16,9 +16,9 @@
 #
 
 
-%global rdir Release_1_14_0
+%global rdir Release_1_15_0
 Name:           doxygen
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
