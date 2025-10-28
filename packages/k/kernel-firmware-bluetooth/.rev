@@ -207,4 +207,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x3BAC_ADBA</comment>
     <requestid>1311173</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>10ecf7f920a0340c743a5e8c019515a5</srcmd5>
+    <version>20251024</version>
+    <time>1761659126</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251024 (git commit 9b899c779b8a):
+  * QCA: Update Bluetooth WCN6856 firmware 2.1.0-00653 to 2.1.0-00659</comment>
+    <requestid>1313866</requestid>
+  </revision>
 </revisionlist>
