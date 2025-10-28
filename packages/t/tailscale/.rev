@@ -377,4 +377,14 @@
     <comment></comment>
     <requestid>1313598</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>699b1958aa4c334158f9a2df0474500e</srcmd5>
+    <version>1.90.3</version>
+    <time>1761659365</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.90.3:
+  * tailscaled shuts down as expected and without panic
+  * tailscaled starts up as expected in a no router configuration environment (forwarded request 1314048 from rrahl0)</comment>
+    <requestid>1314049</requestid>
+  </revision>
 </revisionlist>

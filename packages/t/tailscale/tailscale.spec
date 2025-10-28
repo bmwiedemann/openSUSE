@@ -17,7 +17,7 @@
 
 
 Name:           tailscale
-Version:        1.90.2
+Version:        1.90.3
 Release:        0
 Summary:        The easiest, most secure way to use WireGuard and 2FA
 License:        BSD-3-Clause
@@ -35,7 +35,7 @@ BuildRequires:  go1.25 >= 1.25.3
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
 Requires:       %{default_firewall_backend}
-ExcludeArch:    i586
+ExcludeArch:    %{ix86}
 %{?systemd_requires}
 
 %description

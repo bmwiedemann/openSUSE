@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 28 11:12:50 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.90.3:
+  * tailscaled shuts down as expected and without panic
+  * tailscaled starts up as expected in a no router configuration environment
+
+-------------------------------------------------------------------
 Fri Oct 24 18:11:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.90.2:
