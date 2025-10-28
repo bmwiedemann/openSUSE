@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 27 12:13:52 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.8.10:
+  * Fixed an issue where passing no argument to zvm use breaks Zig's pathing
+- Includes changes from 0.8.9:
+  * Use community mirrors
+- Rebase patch disable-auto-upgrade.patch
+
+-------------------------------------------------------------------
 Tue Sep  9 03:45:03 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Require tar

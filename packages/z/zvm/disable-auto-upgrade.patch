@@ -1,8 +1,8 @@
-Index: zvm-0.8.5/main.go
+Index: zvm-0.8.10/main.go
 ===================================================================
---- zvm-0.8.5.orig/main.go
-+++ zvm-0.8.5/main.go
-@@ -20,7 +20,7 @@ import (
+--- zvm-0.8.10.orig/main.go
++++ zvm-0.8.10/main.go
+@@ -21,7 +21,7 @@ import (
  
  var (
  	zvm                cli.ZVM
@@ -11,7 +11,7 @@ Index: zvm-0.8.5/main.go
  )
  
  var zvmApp = &opts.Command{
-@@ -213,14 +213,6 @@ var zvmApp = &opts.Command{
+@@ -224,14 +224,6 @@ var zvmApp = &opts.Command{
  			},
  		},
  		{
@@ -23,10 +23,10 @@ Index: zvm-0.8.5/main.go
 -			},
 -		},
 -		{
- 			Name:  "vmu",
- 			Usage: "set ZVM's version map URL for custom Zig distribution servers",
- 			// Args:  true,
-@@ -287,7 +279,7 @@ func main() {
+ 			Name:  "mirrorlist",
+ 			Usage: "set ZVM's mirror list URL for custom Zig distribution servers, or set to \"disabled\" to download directly from ziglang.org",
+ 			Action: func(ctx context.Context, cmd *opts.Command) error {
+@@ -322,7 +314,7 @@ func main() {
  		log.SetLevel(log.DebugLevel)
  	}
  

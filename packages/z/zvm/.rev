@@ -40,4 +40,16 @@
     <comment>- Require tar (forwarded request 1303273 from lmulling)</comment>
     <requestid>1303375</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>00905de919f8c756fb62e5aad2cd90f8</srcmd5>
+    <version>0.8.10</version>
+    <time>1761659162</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.10:
+  * Fixed an issue where passing no argument to zvm use breaks Zig's pathing
+- Includes changes from 0.8.9:
+  * Use community mirrors
+- Rebase patch disable-auto-upgrade.patch (forwarded request 1313835 from lmulling)</comment>
+    <requestid>1313836</requestid>
+  </revision>
 </revisionlist>
