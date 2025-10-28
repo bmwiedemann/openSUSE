@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 24 05:26:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Support both normalized and unnormalized metadata directories.
+
+-------------------------------------------------------------------
 Tue May 21 16:17:30 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Do not remove python egg info, fixes building for openSUSE Leap
