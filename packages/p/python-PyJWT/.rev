@@ -406,4 +406,12 @@
     <comment></comment>
     <requestid>1267105</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>e48d1a63cd5982888acf1c7263292718</srcmd5>
+    <version>2.10.1</version>
+    <time>1761659113</time>
+    <user>anag_factory</user>
+    <comment>- Remove not needed update-alternatives requirement.</comment>
+    <requestid>1313822</requestid>
+  </revision>
 </revisionlist>

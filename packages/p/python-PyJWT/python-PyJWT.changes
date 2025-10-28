@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 27 11:07:51 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed update-alternatives requirement.
+
+-------------------------------------------------------------------
 Thu Apr  3 19:47:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Just use a wildcard for the dist-info metadata to make it
