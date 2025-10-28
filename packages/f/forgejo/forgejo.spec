@@ -25,7 +25,7 @@
 %bcond_without apparmor
 %endif
 Name:           forgejo
-Version:        13.0.1
+Version:        13.0.2
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
@@ -46,12 +46,11 @@ Source10:       forgejo.apparmor
 Source11:       forgejo.firewalld
 Source12:       forgejo-abstraction.apparmor
 Source13:       forgejo-hooks-abstraction.apparmor
-Source14:       node_modules.sums
 Source99:       README.SUSE
 Patch0:         custom-app.ini.patch
 Patch1:         fix-CVE-2025-58190.patch
 Patch2:         fix-CVE-2025-47911.patch
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 ## node >= 20
 %if 0%{?suse_version} == 1500
 BuildRequires:  nodejs-devel-default

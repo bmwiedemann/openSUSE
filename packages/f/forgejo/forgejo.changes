@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 27 12:48:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 13.0.2:
+  * Vulnerability (Critical): prevent writing to out-of-repo symlink
+    destinations while evaluating template repos
+  * Vulnerability (Medium): prevent .forgejo/template from being out-of-repo
+    content
+  * Vulnerability (Medium): return on error if an LFS token cannot be parsed
+  * Vulnerability (Low): prevent commit API from leaking user's hidden email
+    address on valid GPG signed commits
+
+-------------------------------------------------------------------
 Sun Oct 19 06:12:24 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to version 13.0.1:

@@ -839,4 +839,19 @@ Bug fixes:
   * chroma: ffedbf4 kotlin: detect kotlin script files as kotlin (forwarded request 1312199 from mia)</comment>
     <requestid>1312210</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f9594d8728edb74b1be403a69dec597b</srcmd5>
+    <version>13.0.2</version>
+    <time>1761659205</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 13.0.2:
+  * Vulnerability (Critical): prevent writing to out-of-repo symlink
+    destinations while evaluating template repos
+  * Vulnerability (Medium): prevent .forgejo/template from being out-of-repo
+    content
+  * Vulnerability (Medium): return on error if an LFS token cannot be parsed
+  * Vulnerability (Low): prevent commit API from leaking user's hidden email
+    address on valid GPG signed commits (forwarded request 1313898 from rrahl0)</comment>
+    <requestid>1313899</requestid>
+  </revision>
 </revisionlist>
