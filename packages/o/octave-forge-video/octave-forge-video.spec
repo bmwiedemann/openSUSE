@@ -27,7 +27,7 @@ URL:            https://gnu-octave.github.io/packages/video/
 Source0:        https://github.com/Andy1978/octave-video/releases/download/%{version}/video-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
-BuildRequires:  pkgconfig(libavcodec) >= 58.35.100
+BuildRequires:  (pkgconfig(libavcodec) >= 58.35.100 with pkgconfig(libavcodec) < 62)
 BuildRequires:  pkgconfig(libavformat) >= 58.20.100
 BuildRequires:  pkgconfig(libswscale) >= 5.3.100
 BuildRequires:  pkgconfig(octave)

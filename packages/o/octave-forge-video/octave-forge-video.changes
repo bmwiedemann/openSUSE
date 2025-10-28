@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 25 12:56:12 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Keep using FFmpeg 7 for now, until upstream supports FFMpeg 8.0
+  (gh#Andy1978/octave-video/issues/5)
+
+-------------------------------------------------------------------
 Mon Aug 25 23:36:57 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.1.3:
