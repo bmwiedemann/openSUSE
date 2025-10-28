@@ -303,4 +303,13 @@
     <comment></comment>
     <requestid>1255920</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>66bb6b2b312b2d8ee982f45f25f9865e</srcmd5>
+    <version>4.5.4</version>
+    <time>1761659222</time>
+    <user>anag_factory</user>
+    <comment>- Fix query handler socket location (BNC #1234612)
+- Fix unit file ExecStart (BNC #1251905)</comment>
+    <requestid>1313907</requestid>
+  </revision>
 </revisionlist>

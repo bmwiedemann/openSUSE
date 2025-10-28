@@ -256,6 +256,7 @@ for f in $(find . -type f) ; do
 done
 popd 1>/dev/null
 sed -i "s|/usr/bin/env ruby|%{_bindir}/ruby|g" contrib/nagios-qh.rb
+sed -i "s|@localstatedir@/rw/nagios.qh|@localstatedir@/nagios.qh|" include/locations.h.in
 mv contrib/exfoliation/readme.txt README_Theme_Exfoliation.txt
 
 %build

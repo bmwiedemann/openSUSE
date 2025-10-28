@@ -14,7 +14,7 @@ ProtectControlGroups=true
 RestrictRealtime=true
 # end of system hardening
 ExecStartPre=/usr/sbin/nagios -v /etc/nagios/nagios.cfg
-ExecStart=/usr/sbin/nagios -d /etc/nagios/nagios.cfg
+ExecStart=/usr/sbin/nagios /etc/nagios/nagios.cfg
 ExecStopPost=/usr/bin/rm -f /var/spool/nagios/nagios.cmd
 ExecReload=/usr/sbin/nagios -v /etc/nagios/nagios.cfg
 ExecReload=kill -HUP $MAINPID

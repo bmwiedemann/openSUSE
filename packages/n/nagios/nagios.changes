@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 22 13:26:31 UTC 2025 - Ansgar Esztermann <aeszter@gwdg.de>
+
+- Fix query handler socket location (BNC #1234612)
+- Fix unit file ExecStart (BNC #1251905)
+
+-------------------------------------------------------------------
 Thu Mar 20 22:26:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove unused pcre build dependency
@@ -327,7 +333,6 @@ Mon Oct 15 07:55:03 UTC 2018 - lars@linux-schulserver.de - 4.4.2
 * Fixed nagios not logging SOFT state changes after 1 (Scott Wilkerson)
 
 4.4.1 - 2018-06-25
-------------------
 * Revert some macro->kvvec changes causing problems when 
   `enable_environment_macros` was enabled (Bryan Heden)
 * Adjust `process_macro_r` function logic so that it handles 
@@ -336,7 +341,6 @@ Mon Oct 15 07:55:03 UTC 2018 - lars@linux-schulserver.de - 4.4.2
 * Fix bug where `ssize_t` typedef to int on some systems (Bryan Heden)
 
 4.4.0 - 2018-06-19
-------------------
 ENHANCEMENTS
 * new status for check dependencies (John Frickson)
 * Allow more flexible requirements for comments (John Frickson)
@@ -1329,7 +1333,7 @@ Tue Jul 26 21:06:13 UTC 2011 - andrea.turrini@gmail.com
 
 - fixed typos in nagios.spec
 
---------------------------------------------------------------------
+-------------------------------------------------------------------
 Fri Jul  8 11:35:37 UTC 2011 - lars@linux-schulserver.de
 
 - removed setuid bit from /var/spool/nagios - configure the 
