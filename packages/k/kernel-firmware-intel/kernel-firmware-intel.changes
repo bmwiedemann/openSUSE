@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 27 13:30:33 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251024 (git commit 9b899c779b8a):
+  * linux-firmware: Renaming the file to cover a wide range of HP Lunar Lake system.
+  * intel: qat: Fix missing link
+
+-------------------------------------------------------------------
 Sun Oct 19 03:47:47 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251018 (git commit 8b4de42e3432):

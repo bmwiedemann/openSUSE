@@ -175,4 +175,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * Intel IPU7: Update product signed firmware binary</comment>
     <requestid>1312185</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f104537e1fda2eb890f7e7a8a2c1a506</srcmd5>
+    <version>20251024</version>
+    <time>1761659128</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251024 (git commit 9b899c779b8a):
+  * linux-firmware: Renaming the file to cover a wide range of HP Lunar Lake system.
+  * intel: qat: Fix missing link</comment>
+    <requestid>1313867</requestid>
+  </revision>
 </revisionlist>
