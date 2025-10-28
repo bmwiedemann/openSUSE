@@ -1,8 +1,8 @@
 #
 # spec file for package mrouted
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2018-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2018-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/troglobit/mrouted
 #Git-Clone:     https://github.com/troglobit/mrouted.git
 Source:         https://github.com/troglobit/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         harden_mrouted.service.patch
+Patch1:         0001-C23-compatibility.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
