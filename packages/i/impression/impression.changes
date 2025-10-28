@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 27 16:55:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 3.5.3:
+  * Fix a stack overflow
+- Update to version 3.5.2:
+  * Fix a bug where the writing buffer might not flush correctly
+  * Move the list of downloadable distros to gsettings to be
+    configurable via dconf
+  * Updated translations
+- Update to version 3.5.1:
+  * Fixes a bug where the progress bar would update slowly when the
+    app is not in focus
+  * Fixes a bug where the disk might unmount before the OS syncs all
+    operations to diskv
+- Update to version 3.5.0:
+  * Fix bug: order of the drives list would randomly change
+- remove small-fixes.patch, fixed upstream
+- increase minimum libadwaita to 1.8 as that's the lowest
+  supported version
+
+-------------------------------------------------------------------
 Tue May  6 21:28:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.4.0:

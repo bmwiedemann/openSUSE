@@ -1,7 +1,7 @@
 #
 # spec file for package impression
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define         appname io.gitlab.adhami3310.Impression
 Name:           impression
-Version:        3.4.0
+Version:        3.5.3
 Release:        0
 Summary:        A straight-forward and modern application to create bootable drives
 License:        GPL-3.0-only
 URL:            https://gitlab.com/adhami3310/Impression
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         small-fixes.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
@@ -39,7 +38,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.81
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.10
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pango)
 
@@ -52,7 +51,7 @@ Impression from various writers, content creators, etc.
 %lang_package
 
 %prep
-%autosetup -a1 -p1
+%autosetup -a1
 
 %build
 %meson
@@ -66,12 +65,13 @@ Impression from various writers, content creators, etc.
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/applications/%{appname}.desktop
-%{_datadir}/glib-2.0/schemas/%{appname}.gschema.xml
 %{_datadir}/%{name}
+%{_datadir}/applications/%{appname}.desktop
+%{_datadir}/dbus-1/services/%{appname}.service
+%{_datadir}/glib-2.0/schemas/%{appname}.gschema.xml
+%{_datadir}/metainfo/%{appname}.metainfo.xml
 %{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
 %{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg
-%{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %files lang -f %{name}.lang
 
