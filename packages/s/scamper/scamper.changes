@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct 20 11:15:58 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20251020:
+  * rework most internal use of printerror/scamper_debug, tagging
+    measurement results with errmsg strings if an error occurs affecting
+    a measurement.
+  * emit errmsg strings in json and warts output.  errmsg strings will
+    also be emitted to debugfile / stderr as before.  these strings
+    are not emitted in text output of measurements.
+  * add error result code (stop reason) to dealias measurements.
+  * silently ignore unlikely PTR lookup error conditions for trace and
+    tracelb -- PTR lookups are not essential components of these
+  - measurements.
+  * fix memory leaks when encountering unlikely error conditions in
+    sting, tbit, tracelb, udpprobe.
+  - libscamperfile:
+  * add scamper_*_errmsg_get functions.
+  * let neighbourdisc src_mac and dst_ip be null when reading warts
+    files, rather than reject the object.
+  * bump version.
+  - Python library:
+  * release GIL when waiting for measurement results so that module is
+    asyncio friendly.
+  * add errmsg attribute to measurement objects, interface file, and
+    document.
+  - sc_wartsdump:
+  * use scamper_*_[stop|result]_tostr functions rather than duplicate code.
+  * emit errmsg.
+  - tests:
+  * check that errmsg is read-from and written-to warts files correctly.
+
+-------------------------------------------------------------------
 Mon Oct  6 11:11:39 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 20251002:
