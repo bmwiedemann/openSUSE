@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 27 22:33:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.1
+  * Build system updates (C23; gnome-common)
+- Delete c23.patch (merged/obsolete),
+  stop-using-gnome-common.patch (obsolete)
+
+-------------------------------------------------------------------
 Tue Jun 17 10:57:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add c23.patch

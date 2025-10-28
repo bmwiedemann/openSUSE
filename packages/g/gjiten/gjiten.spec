@@ -1,7 +1,7 @@
 #
 # spec file for package gjiten
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,20 @@
 
 
 Name:           gjiten
-Version:        3.1
+Version:        3.2.1
 Release:        0
 Summary:        Japanese Dictionary Browser for GNOME/GTK+
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Dictionary
 URL:            https://github.com/DarkTrick/gjiten
-Source:         https://github.com/DarkTrick/gjiten/archive/refs/tags/%name-%version.tar.gz
+Source:         https://github.com/DarkTrick/gjiten/archive/refs/tags/v%version.tar.gz
 Patch0:         %name.patch
 Patch1:         %name-desktop.patch
-Patch2:         stop-using-gnome-common.patch
-Patch3:         c23.patch
-BuildRequires:  autoconf-archive
 BuildRequires:  edict
-BuildRequires:  intltool
-BuildRequires:  libtool
 BuildRequires:  libxslt
+BuildRequires:  meson
 BuildRequires:  perl-XML-Parser
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  sgml-skel
 BuildRequires:  update-desktop-files
 BuildRequires:  w3m
@@ -53,25 +49,24 @@ key can be used for Kanji lookups. It requires a working X input
 method (such as ibus) for Japanese input.
 
 %prep
-%autosetup -p1 -n %name-%name-%version
+%autosetup -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure
-%make_build
+%meson
+# https://github.com/DarkTrick/gjiten/issues/10
+perl -i -lpe 's{define GJITEN_DATADIR .*}{define GJITEN_DATADIR "%_datadir/%name"}g' */config.h
+grep GJITEN_DATADIR */config.h
+%meson_build
 
 %install
-%make_install
+%meson_install
 b="%buildroot"
+mkdir -pv "$b/%_datadir/%name/dics"
 ln -fsv "%_datadir/edict/radkfile" "$b/%_datadir/%name/radkfile.utf8"
-mkdir "$b/%_datadir/%name/dics"
 for i in %_datadir/edict/*; do
-	ln -s "$i" "$b/%_datadir/%name/dics/"
+	ln -sv "$i" "$b/%_datadir/%name/dics/"
 done
-# Drop legacy GNOME 1 content
-rm -rf %{buildroot}%_datadir/application-registry/
 %find_lang %name
-%suse_update_desktop_file %name Office Dictionary
 
 %files -f %name.lang
 %_bindir/%name
