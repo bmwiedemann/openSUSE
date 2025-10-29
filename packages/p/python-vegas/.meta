@@ -1,0 +1,5 @@
+<package name="python-vegas" project="openSUSE:Factory">
+  <title>Tools for adaptive multidimensional Monte Carlo integration</title>
+  <description>Tools for adaptive multidimensional Monte Carlo integration.</description>
+  <url>https://github.com/gplepage/vegas</url>
+</package>
