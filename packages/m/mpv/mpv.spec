@@ -104,7 +104,7 @@ BuildOption:    -Dbuild-date=false
 # These tests need more FFmpeg than ffmpeg-mini provides
 BuildOption(check): --no-suite=libmpv
 # JIT for Lua.
-%ifarch aarch64 %{ix86} x86_64
+%ifarch aarch64 %{ix86} x86_64 riscv64
 BuildRequires:  pkgconfig(luajit)
 BuildOption:    -Dlua=luajit
 %else

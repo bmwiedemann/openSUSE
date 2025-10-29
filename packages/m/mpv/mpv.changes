@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 27 16:56:03 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable luajit on riscv64
+
+-------------------------------------------------------------------
 Sat Oct 11 06:01:43 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Use RPM 4.20 BuildSystem declaration
