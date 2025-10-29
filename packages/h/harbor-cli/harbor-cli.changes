@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 29 05:41:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.14:
+  * fix: defer keyring initialization to prevent build-time
+    keychain errors (#562)
+
+-------------------------------------------------------------------
 Wed Oct 22 04:47:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.13:

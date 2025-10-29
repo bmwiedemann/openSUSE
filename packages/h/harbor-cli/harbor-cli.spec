@@ -19,7 +19,7 @@
 %define executable_name harbor
 
 Name:           harbor-cli
-Version:        0.0.13
+Version:        0.0.14
 Release:        0
 Summary:        CLI for the Harbor cloud native registry
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         harbor-cli-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go1.24 >= 1.24.8
 BuildRequires:  zsh
 
 %description
