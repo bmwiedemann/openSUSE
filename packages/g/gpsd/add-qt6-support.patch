@@ -1,0 +1,27 @@
+From 05c5300825742090d18bd6c5b01087f00d1c4360 Mon Sep 17 00:00:00 2001
+From: ames Browning <jamesb.fe80@gmail.com>
+Date: Fri, 29 Aug 2025 19:06:23 -0700
+Subject: [PATCH] libgps/gpsutils.c: Support Qt6, Issuse #340.
+
+Still some Qt warnings.
+
+Signed-off-by: Gary E. Miller <gem@rellim.com>
+---
+ libgps/gpsutils.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git libgps/gpsutils.c b/libgps/gpsutils.c
+index e3d1c044a..783ec8149 100644
+--- libgps/gpsutils.c
++++ libgps/gpsutils.c
+@@ -833,7 +833,7 @@ timespec_t iso8601_to_timespec(const char *isotime)
+     if (1 < sl.size()) {
+         usec = sl[1].toInt() / pow(10., (double)sl[1].size());
+     }
+-    ret.tv_sec = d.toTime_t();
++    ret.tv_sec = d.toSecsSinceEpoch();
+     ret.tv_nsec = usec * 1e9;
+ #else  // USE_QT
+     double usec = 0;
+-- 
+GitLab

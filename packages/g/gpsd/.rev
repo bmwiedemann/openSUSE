@@ -1076,4 +1076,12 @@ For more please read usr/share/doc/packages/gpsd/NEWS
     <comment></comment>
     <requestid>1283661</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>5f990feb7e2cd65fba8dec876f8a0835</srcmd5>
+    <version>3.26.1</version>
+    <time>1761768247</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1314094</requestid>
+  </revision>
 </revisionlist>

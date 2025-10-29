@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 28 14:01:59 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add add-qt6-support.patch: this allow us to build using Qt6 instead of Qt5
+  effectly dropping the need for Qt5 for this package.
+
+-------------------------------------------------------------------
 Mon May 19 20:46:22 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 3.26.1

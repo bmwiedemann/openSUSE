@@ -1,7 +1,7 @@
 #
 # spec file for package gpsd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Source98:       https://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%
 Source99:       %{name}.keyring
 Patch0:         harden_gpsd.service.patch
 Patch1:         harden_gpsdctl@.service.patch
+# PATCH-FIX-UPSTREAM https://gitlab.com/gpsd/gpsd/-/commit/05c5300825742090d18bd6c5b01087f00d1c4360
+Patch2:         add-qt6-support.patch
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -50,9 +52,9 @@ BuildRequires:  scons >= 2.3.0
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -102,7 +104,7 @@ This package provides C header files for the gpsd shared libraries that
 manage access to a GPS for applications and debugging tools. You will
 need to have gpsd installed for it to work.
 
-%package qt5-devel
+%package qt6-devel
 Summary:        Development files for libQgpsmm
 Group:          Development/Libraries/C and C++
 Requires:       %{libQgps}
@@ -112,7 +114,7 @@ Requires:       gpsd-devel = %{version}
 # is available
 Conflicts:      gpsd-devel < %{version}-%{release}
 
-%description qt5-devel
+%description qt6-devel
 This package provides headers files for the gpsd Qt5 library.
 
 %package -n %{libgps}
@@ -180,6 +182,7 @@ tar -xf %{SOURCE0} -C %{name}-%{version}/python2
 pushd %{name}-%{version}/python2/%{name}-%{version}
 %patch -P 0
 %patch -P 1
+%patch -P 2
 popd
 %endif
 mkdir -p %{name}-%{version}/python3
@@ -187,6 +190,7 @@ tar -xf %{SOURCE0} -C %{name}-%{version}/python3
 pushd %{name}-%{version}/python3/%{name}-%{version}
 %patch -P 0
 %patch -P 1
+%patch -P 2
 popd
 
 %build
@@ -211,7 +215,7 @@ for i in "${pyversions[@]}"; do
         systemd=yes \
         libQgpsmm=yes \
         qt=yes \
-        qt_versioned=5 \
+        qt_versioned=6 \
         leapfetch=no \
         prefix="" \
         sysconfdif=%{_sysconfdir} \
@@ -361,7 +365,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_libdir}/libgpsdpacket.so
 %{_libdir}/pkgconfig/libgps.pc
 
-%files qt5-devel
+%files qt6-devel
 %{_mandir}/man3/libgpsmm.3%{?ext_man}
 %{_mandir}/man3/libQgpsmm.3%{?ext_man}
 %{_includedir}/libgpsmm.h
