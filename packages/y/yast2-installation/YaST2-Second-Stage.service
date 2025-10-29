@@ -20,7 +20,10 @@ Type=oneshot
 # clash), empty path causes that the installed modules are not found. Sysconfig
 # and envvar extensions are still loaded, /etc/sysconfig/proxy values are still
 # used correctly (see bnc#866692 and bnc#866692 for details).
-Environment=TERM=linux PX_MODULE_PATH=""
+#
+# Use a 30 seconds zypp timeout (will be retried up to 5 times total) to allow
+# the purge-kernels.service to finish (bsc#1249643).
+Environment=TERM=linux PX_MODULE_PATH="" ZYPP_LOCK_TIMEOUT=30
 # Block non-privileged user login (bsc#1195059)
 ExecStartPre=-/usr/bin/plymouth quit
 ExecStart=/usr/lib/YaST2/startup/YaST2.Second-Stage

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 28 14:03:25 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Use a longer ZYPP_LOCK_TIMEOUT (30 sec * 5) in YaST2-Second-Stage.service
+  to allow the purge-kernels.service to finish before trying to
+  obtain the libzypp lock (bsc#1249643)
+- 5.0.19
+
+-------------------------------------------------------------------
 Fri Sep 19 12:08:48 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Writing kdump settings must be after writing bootloader settings.
