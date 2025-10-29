@@ -1291,4 +1291,16 @@
 </comment>
     <requestid>1312836</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>050a72fd5564b7b6b9b3912ed99ead74</srcmd5>
+    <version>1.1.16</version>
+    <time>1761768442</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.16:
+  * release 1.1.16
+  * device: add new flags for reprogrammable keys feature
+  * device: correctly handle missing battery feature
+</comment>
+    <requestid>1314287</requestid>
+  </revision>
 </revisionlist>

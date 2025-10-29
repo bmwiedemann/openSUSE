@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 27 14:28:07 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.16:
+  * release 1.1.16
+  * device: add new flags for reprogrammable keys feature
+  * device: correctly handle missing battery feature
+
+-------------------------------------------------------------------
 Tue Oct 21 13:17:50 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.1.15:
