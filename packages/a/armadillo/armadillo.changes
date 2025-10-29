@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 29 13:22:06 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 15.2.1:
+  * Added rande() for generating matrices with elements from
+    exponential distributions.
+  * shift() has been deprecated in favour of circshift(), for
+    consistency with Matlab/Octave.
+  * Reworked detection of aliasing, leading to more efficient
+    compiled code.
+- Changes from version 15.0.0:
+  * C++14 is now the minimum required C++ standard.
+  * Added preliminary support for matrices with half-precision
+    fp16 element type.
+  * Added second form of cond() to allow detection of failures.
+  * Added repcube()
+  * Added .freeze() and .unfreeze() member functions to
+    wall_clock.
+  * Extended conv() and conv2() to accept the "valid" shape
+    argument.
+- Bump so version in shared lib package name to 15.
+
+-------------------------------------------------------------------
 Fri Jul 25 09:10:21 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 14.6.1:
