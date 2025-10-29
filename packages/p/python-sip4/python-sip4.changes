@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 12:16:08 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Sat Jul  1 00:12:29 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Enable python311, libArcus does not support SIP > 4.

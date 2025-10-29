@@ -37,6 +37,12 @@
 # python-sip4-doc and python-sip4-common are flavorless
 %define oldpython python
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-%{pname}
 Version:        4.19.25
 Release:        0
@@ -84,12 +90,17 @@ Requires:       %{name} = %{version}
 Requires:       %{name}-common = %{version}
 Requires:       c++_compiler
 Requires:       python-devel
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Provides:       python-%{mname}-bin = %{version}-%{release}
 Provides:       python-%{mname}-devel = %{version}-%{release}
 Obsoletes:      python-%{mname}-bin < %{version}
 Obsoletes:      python-%{mname}-devel < %{version}
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %ifpython2
 Provides:       %{oldpython}-%{mname}-bin = %{version}-%{release}
 Provides:       %{oldpython}-%{mname}-devel = %{version}-%{release}
@@ -163,7 +174,7 @@ $python ../configure.py --debug \
     LIBS+="-l$ldlibrary" \
     -d %{$python_sitearch}
 
-make %{?_smp_mflags}
+%make_build
 
 # Point to the correct location for the documentation files
 cp ../README ./
@@ -193,7 +204,7 @@ $python ../configure.py --debug \
   --no-dist-info \
   -d %{$python_sitearch}
 
-make %{?_smp_mflags}
+%make_build
 
 popd
 }
@@ -247,6 +258,9 @@ grep '%%requires_%{python3_prefix}_sip_api'  %{buildroot}%{_rpmconfigdir}/macros
 %python_clone -a %{buildroot}/%{_bindir}/sip
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 mkdir -p %{buildroot}%{_datadir}/sip
+
+%pre devel
+%python_libalternatives_reset_alternative sip
 
 %post devel
 %python_install_alternative sip
