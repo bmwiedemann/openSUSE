@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 29 16:49:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.31.12
+  * kmp: don't log duplicate errors in read path
+  * format: Don't format with a version higher than supported by tools
+  * kmp: track whether new btree nodes are roots
+
+-------------------------------------------------------------------
 Fri Oct 17 12:12:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.31.11
