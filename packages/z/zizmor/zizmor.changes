@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 29 05:40:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.1:
+  * Enhancements
+    - zizmor now produces a more useful error message when asked to
+      indirectly access a nonexistent or private repository via a
+      uses: clause (without a sufficiently privileged GitHub token)
+      (#1293)
+
+-------------------------------------------------------------------
 Fri Oct 24 05:07:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.16.0:
