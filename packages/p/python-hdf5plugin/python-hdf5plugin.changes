@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Oct 24 13:13:32 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 6.0.0
+  * This release requires Python >= 3.9
+  * Compression filters and libraries:
+    - Updated filter: hdf5-blosc2
+    - Updated libraries:
+      * SPERR (v0.8.4)
+      * snappy (v1.2.2)
+      * c-blosc2 (v2.21.2)
+    - Deprecated SZ filter
+  * Build:
+    - Removed -ffast-math and /fp:fast compilation flags
+    - Fixed build with system libraries on Windows
+    - Moved embedded filters source code to a dedicated folder
+  * Deprecated hdf5plugin.version_info
+  * Added Python typing
+  * Code formatting and linting
+  * Updated project description and changelog
+- Update to 5.1.0
+  * Compression filters and libraries:
+    - Updated bitshuffle filter (v0.5.2)
+    - Updated h5z-sperr filter (v0.2.3)
+    - Updated c-blosc2 compression library (v2.17.1)
+  * Build:
+    - Added HDF5PLUGIN_SYSTEM_LIBRARIES environment variable to build filters
+      with system libraries
+    - Fixed HDF5PLUGIN_STRIP=all environment variable to support missing
+      folders
+  * Updated documentation
+  * Updated continuous integration configuration
+- drop hdf5plugin-system-libs.patch, use new env variable to devendor
+- add fix-bzip2-name.patch to let package find the right pkgconfig
+
+-------------------------------------------------------------------
 Tue Nov 12 10:56:52 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.0.0

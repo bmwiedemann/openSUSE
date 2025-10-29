@@ -1,7 +1,7 @@
 #
 # spec file for package python-hdf5plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,19 @@
 
 %bcond_without systemlibs
 Name:           python-hdf5plugin
-Version:        5.0.0
+Version:        6.0.0
 Release:        0
 Summary:        Compression filters for h5py
 License:        BSD-2-Clause AND MIT AND BSD-3-Clause AND CC-BY-3.0 AND Zlib
 URL:            https://github.com/silx-kit/hdf5plugin
 Source:         https://files.pythonhosted.org/packages/source/h/hdf5plugin/hdf5plugin-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE hdf5plugin-system-libs.patch code@bnavigator.de -- debundle as much as we can, disable SSE3 and AVX512
-Patch0:         hdf5plugin-system-libs.patch
+# PATCH-FIX-UPSTREAM fix-bzip2-name.patch https://github.com/silx-kit/hdf5plugin/pull/367
+Patch0:         fix-bzip2-name.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module blosc2}
 BuildRequires:  %{python_module h5py >= 3.0.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module py-cpuinfo >= 8.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel >= 0.34.0}
@@ -61,11 +62,11 @@ and makes them usable from h5py.
 %autosetup -p1 -n hdf5plugin-%{version}
 sed -i '1{/^#/d}' src/hdf5plugin/_version.py
 %if %{with systemlibs}
-rm -r src/hdf5
-rm -r src/bzip2
-rm -r src/c-blosc
-rm -r src/c-blosc2
-rm -r src/snappy
+rm -r lib/hdf5
+rm -r lib/bzip2
+rm -r lib/c-blosc
+rm -r lib/c-blosc2
+rm -r lib/snappy
 %endif
 
 %build
@@ -82,45 +83,38 @@ export HDF5PLUGIN_AVX512=False
 # gh#silx-kit/hdf5plugin#162, gh#silx-kit/hdf5plugin#169, gh#silx-kit/hdf5plugin#188
 # export HDF5PLUGIN_STRIP=all
 # Full set: bzip2,lz4,bshuffle,blosc,blosc2,fcidecomp,zfp,zstd,sz,sz3
-# TODO: lz4 and zstd tests fail (also with bundled sources). Find out why embed them for now.
-export HDF5PLUGIN_STRIP=lz4,zstd
+
 %if %{with systemlibs}
-# Although lz4 and zstd are stripped above, the libs are dependencies of other working filters
-export HDF5PLUGIN_SYSTEM_BLOSC=1
-export HDF5PLUGIN_SYSTEM_BLOSC2=1
-export HDF5PLUGIN_SYSTEM_BZIP2=1
-export HDF5PLUGIN_SYSTEM_LZ4=1
-export HDF5PLUGIN_SYSTEM_SNAPPY=1
-export HDF5PLUGIN_SYSTEM_ZLIB=1
-export HDF5PLUGIN_SYSTEM_ZSTD=1
+export HDF5PLUGIN_SYSTEM_LIBRARIES=blosc,blosc2,bzip2,lz4,snappy,zlib,zstd
 %endif
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-pushd src
 for l in \
 %if !%{with systemlibs}
-  bzip2/LICENSE
-  c-blosc/LICENSES/*
-  c-blosc2/LICENSES/*
-  charls/src/License.txt \
-  snappy/COPYING
-  LZ4/COPYING LZ4/LICENSE \
+  lib/bzip2/LICENSE
+  lib/c-blosc/LICENSES/*
+  lib/c-blosc2/LICENSES/*
+  lib/charls/src/License.txt \
+  lib/snappy/COPYING
+  lib/LZ4/COPYING \
+  lib/LZ4/LICENSE \
 %endif
-  bitshuffle/LICENSE \
-  hdf5-blosc/LICENSES/* \
-  PyTables/LICENSE.txt \
-  fcidecomp/LICENSE \
-  SZ/copyright-and-BSD-license.txt \
-  SZ3/copyright-and-BSD-license.txt \
-  H5Z-ZFP/LICENSE zfp/LICENSE \
-  HDF5Plugin-Zstandard/LICENSE
+  lib/bitshuffle/LICENSE \
+  lib/hdf5-blosc/LICENSES/* \
+  lib/PyTables/LICENSE.txt \
+  lib/fcidecomp/LICENSE \
+  lib/SZ/copyright-and-BSD-license.txt \
+  lib/SZ3/copyright-and-BSD-license.txt \
+  lib/H5Z-ZFP/LICENSE \
+  lib/zfp/LICENSE \
+  lib/HDF5Plugin-Zstandard/LICENSE
 do
   d=$(dirname $l)
-  mkdir -p ../pluginlicenses/$d
-  cp $l ../pluginlicenses/$d
+  mkdir -p pluginlicenses/$d
+  cp $l pluginlicenses/$d
 done
 
 %check
