@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 29 09:53:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.101.0
+  * test: delete created change sets in companion stack if empty
+    by @reedham-aws in (#3807)
+  * chore(schema): update by @github-actions[bot] in (#3806)
+  * chore(deps): bump actions/checkout from 4 to 5
+    by @dependabot[bot] in (#3800)
+  * Merge main to develop by @reedham-aws in (#3811)
+  * chore(schema): update by @github-actions[bot] in (#3812)
+  * fix(integration): resolve stack cleanup issues in connector
+    tests by @bnusunny in (#3815)
+
+-------------------------------------------------------------------
 Tue Sep  2 10:42:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.100.0
