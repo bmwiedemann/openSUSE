@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 28 07:40:04 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.90.12:
+  * Remove depaware (#4515)
+  * Remove include repos (#4469)
+  * explicit repositories now bypass wantRepo() filtering entirely. added ctx to newConnector (#4507)
+  * add ability to run github-experimental against private repos (#4508)
+  * Refactored circleci source test cases (#4506)
+  * Fix "skipping binary file" logging to show actual file name (#4509)
+  * Comment out broken CircleCI integration test (#4505)
+  * Updated Docker source with new test cases and README (#4481)
+
+-------------------------------------------------------------------
 Thu Oct 16 06:17:28 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.90.11:

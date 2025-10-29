@@ -2455,4 +2455,20 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * Return non-zero exit code if an error occurs during a scan (#4476) (forwarded request 1311608 from ph03nix)</comment>
     <requestid>1311730</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>827c9d3a492b40da33282a61774e9f70</srcmd5>
+    <version>3.90.12</version>
+    <time>1761768334</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.90.12:
+  * Remove depaware (#4515)
+  * Remove include repos (#4469)
+  * explicit repositories now bypass wantRepo() filtering entirely. added ctx to newConnector (#4507)
+  * add ability to run github-experimental against private repos (#4508)
+  * Refactored circleci source test cases (#4506)
+  * Fix &quot;skipping binary file&quot; logging to show actual file name (#4509)
+  * Comment out broken CircleCI integration test (#4505)
+  * Updated Docker source with new test cases and README (#4481) (forwarded request 1314001 from ph03nix)</comment>
+    <requestid>1314076</requestid>
+  </revision>
 </revisionlist>
