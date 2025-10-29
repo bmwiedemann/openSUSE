@@ -1618,4 +1618,12 @@ FIXES (LSP):
     <comment></comment>
     <requestid>1306066</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>004f208cd3025edb121ac5946b2227c0</srcmd5>
+    <version>0.11.4</version>
+    <time>1761768368</time>
+    <user>anag_factory</user>
+    <comment>- remove unneeded build and runtime dependencies (forwarded request 1314205 from rrahl0)</comment>
+    <requestid>1314206</requestid>
+  </revision>
 </revisionlist>

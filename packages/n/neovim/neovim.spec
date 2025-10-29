@@ -42,12 +42,7 @@ BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hostname
 BuildRequires:  libtool
-BuildRequires:  lua-macros
-BuildRequires:  lua51-bit32
-BuildRequires:  lua51-compat-5.3
 BuildRequires:  lua51-lpeg
-BuildRequires:  lua51-luarocks
-BuildRequires:  lua51-luv
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(libluv)
@@ -64,11 +59,7 @@ BuildRequires:  pkgconfig(vterm) >= 0.3.3
 BuildRequires:  treesitter_grammar(tree-sitter-vimdoc)
 Requires:       gperf
 Requires:       libvterm0 >= 0.3
-Requires:       lua51-bit32
-Requires:       lua51-compat-5.3
 Requires:       lua51-lpeg
-Requires:       lua51-luarocks
-Requires:       lua51-luv
 Requires:       tree-sitter-c >= 0.23.4
 Requires:       tree-sitter-lua >= 0.3.0
 Requires:       tree-sitter-markdown >= 0.4.1
