@@ -1,7 +1,7 @@
 #
 # spec file for package cantarell-fonts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ BuildRequires:  fontpackages-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(appstream-glib)
+BuildRequires:  pkgconfig(appstream)
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 20 18:47:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(appstream-glib) with pkgconfig(appstream)
+  BuildRequires: Builds fine with either, use the currently
+  supported one.
+
+-------------------------------------------------------------------
 Fri Dec 10 09:43:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.303.1:
