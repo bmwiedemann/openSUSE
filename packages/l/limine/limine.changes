@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 29 13:34:51 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.2.1:
+  * Add workaround for skipping SPI flash devices exposed as EFI volumes.
+    This fixes the hanging issues on many ARM laptops, without breaking
+    U-Boot unlike the previous workaround.
+
+-------------------------------------------------------------------
 Sun Oct 26 21:23:37 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.2.0:
