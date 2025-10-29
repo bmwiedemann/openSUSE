@@ -17,12 +17,13 @@
 
 
 %global		upstream_name    scram
-%global		upstream_version 3.1
+%global		upstream_version 3.2
 Name:           ongres-%{upstream_name}
 Version:        %(echo %{upstream_version} | sed 's/-/~/g')
 Release:        0
 Summary:        Salted Challenge Response Authentication Mechanism - Java Implementation
 License:        BSD-2-Clause
+Group:          Development/Libraries/Java
 URL:            https://github.com/ongres/%{upstream_name}
 Source0:        https://github.com/ongres/%{upstream_name}/archive/%{upstream_version}/%{upstream_name}-%{upstream_version}.tar.gz
 BuildRequires:  fdupes

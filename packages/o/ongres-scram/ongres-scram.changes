@@ -1,3 +1,12 @@
+------------------------------------------------------------------
+Tue Oct 28 08:51:14 UTC 2025 - Thomas Florio <thomas.florio@suse.com>
+
+- Version 3.2
+  * Fix Timing Attack Vulnerability in SCRAM Authentication
+    (bsc#1250399, CVE-2025-59432)
+  * Updated dependencies and maven plugins
+  * Use central-publishing-maven-plugin to deploy to Maven Central.
+
 -------------------------------------------------------------------
 Thu Jul  3 15:05:32 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
