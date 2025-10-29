@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 29 13:08:01 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20251029.56b4c47:
+  * Change to bubblewrap for confinment
+  * Drop restriction to x86_64 since bubblewrap is available for other
+    architectures
+
+-------------------------------------------------------------------
 Mon Jul 10 14:50:22 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Fix squilt fixed /etc path to /usr/etc on Tumbleweed

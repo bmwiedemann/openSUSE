@@ -1,7 +1,7 @@
 #
 # spec file for package squilt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           squilt
-Version:        20220617.c1a5044
+Version:        20251029.56b4c47
 Release:        0
 Summary:        A quilt wrapper using nsjail
 License:        MIT
 Group:          Development/Tools/Version Control
 URL:            https://github.com/jsegitz/squilt
 Source0:        %{name}-%{version}.tar.gz
-Requires:       nsjail
+Requires:       bubblewrap
 Requires:       quilt
-# x86_64 only due to dependency nsjail having ExclusiveArch x86_64
-ExclusiveArch:  x86_64
 
 %description
 Wrapper to confine quilt with nsjail
