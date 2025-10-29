@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 29 01:18:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.1:
+  * Fix build with Python 3.14
+  * Adds python3.12 and python3.13 support
+  * Drops python2.7, python3.6, and python3.7, and python3.8 support
+  * Adds custom ignore rules for inline script metadata
+
+-------------------------------------------------------------------
 Mon Jun  9 13:25:52 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

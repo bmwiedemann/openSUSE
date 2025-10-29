@@ -64,4 +64,16 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1284194</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f7cf5e55cd76b4733b15df8d7c9f9e61</srcmd5>
+    <version>3.0.1</version>
+    <time>1761768381</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.0.1:
+  * Fix build with Python 3.14
+  * Adds python3.12 and python3.13 support
+  * Drops python2.7, python3.6, and python3.7, and python3.8 support
+  * Adds custom ignore rules for inline script metadata</comment>
+    <requestid>1314224</requestid>
+  </revision>
 </revisionlist>

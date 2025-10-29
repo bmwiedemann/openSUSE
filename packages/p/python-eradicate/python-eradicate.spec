@@ -1,7 +1,7 @@
 #
 # spec file for package python-eradicate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-eradicate
-Version:        2.3.0
+Version:        3.0.1
 Release:        0
 Summary:        Python utility for removing commented-out code
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/myint/eradicate
 Source:         https://files.pythonhosted.org/packages/source/e/eradicate/eradicate-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -65,8 +65,8 @@ which is valid Python syntax, but is probably not code.)
 %files %{python_files}
 %doc README.rst
 %python_alternative %{_bindir}/eradicate
-%{python_sitelib}/eradicate.py*
+%{python_sitelib}/eradicate.py
 %pycache_only %{python_sitelib}/__pycache__/eradicate*.pyc
-%{python_sitelib}/eradicate-%{version}*-info
+%{python_sitelib}/eradicate-%{version}.dist-info
 
 %changelog
