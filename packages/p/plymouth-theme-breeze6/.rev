@@ -260,4 +260,12 @@ Without this, the theme can't be selected:
     <comment> (forwarded request 1312731 from Vogtinator)</comment>
     <requestid>1312796</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>99ea5ef880f8847c4fe2cbc2d8e1202d</srcmd5>
+    <version>6.5.1</version>
+    <time>1761768470</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.5.1 (forwarded request 1314083 from Vogtinator)</comment>
+    <requestid>1314192</requestid>
+  </revision>
 </revisionlist>
