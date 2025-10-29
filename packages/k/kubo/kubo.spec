@@ -17,7 +17,7 @@
 
 
 Name:           kubo
-Version:        0.36.0
+Version:        0.37.0
 Release:        0
 Summary:        IPFS implementation in Go
 License:        MIT
@@ -27,12 +27,12 @@ Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
 
 BuildRequires:  git
-# >= 1.14.4 is ambiguous
-BuildRequires:  go1.24
+BuildRequires:  go1.25
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zstd
 Requires:       fuse
 Requires:       nss-myhostname
+
 %systemd_requires
 
 Provides:       go-ipfs = %{version}

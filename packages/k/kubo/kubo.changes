@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Sep 27 17:47:00 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Bump golang build requirement to 1.25
+- Update to 0.37.0:
+  * Anonymous telemetry for better feature prioritization
+  * Repository migration from v16 to v17 with embedded tooling
+  * Gateway concurrent request limits and retrieval timeouts
+  * AutoConf: Complete control over network defaults
+  * Clear provide queue when reprovide strategy changes
+  * Revamped ipfs log level command
+  * Named pins in ipfs add command
+  * New IPNS publishing options
+  * Custom sequence numbers in ipfs name publish
+  * Reprovider.Strategy is now consistently respected
+  * Reprovider.Strategy=all: improved memory efficiency
+  * Removed unnecessary dependencies
+  * Improved ipfs cid
+  * Deprecated ipfs stats reprovide
+  * AutoRelay now uses all connected peers for relay discovery
+  * Full changelog at
+    https://github.com/ipfs/kubo/releases/tag/v0.37.0
+
+-------------------------------------------------------------------
 Wed Aug  6 02:14:10 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Remove commented out commands in kubo.spec
