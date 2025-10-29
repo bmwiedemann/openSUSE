@@ -1,7 +1,7 @@
 #
 # spec file for package davfs2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           davfs2
-Version:        1.7.0
+Version:        1.7.2
 Release:        0
 Summary:        FUSE-Filesystem to access WebDAV servers
-License:        GPL-3.0-only
-Group:          System/Filesystems
+License:        GPL-3.0-or-later
 URL:            https://savannah.nongnu.org/projects/%{name}
 Source0:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
@@ -29,7 +28,6 @@ Source2:        %{name}-rpmlintrc
 # Taken from https://savannah.nongnu.org/project/release-gpgkeys.php?group=davfs2&download=1
 Source3:        davfs2.keyring
 Source4:        davfs2.sysusers
-Patch0:         davfs2-1.7.0-newer-neon.patch
 BuildRequires:  automake >= 1.16
 BuildRequires:  fuse-devel >= 2.2
 BuildRequires:  neon-devel
@@ -55,8 +53,6 @@ supporting TLS/SSL and access via proxy servers.
 %autosetup -p1
 
 %build
-# for davfs2-1.7.0-neon-33.patch
-autoreconf -fiv
 dav_user="%{name}" \
 dav_group="%{name}" \
 %configure \
@@ -98,7 +94,6 @@ install -p -D -m0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 %endif
 
 %files -f %{name}.lang
-%defattr(-, root, root, 0755)
 %license COPYING
 %doc AUTHORS BUGS FAQ NEWS README* THANKS TODO etc/%{name}.conf etc/secrets
 %{_mandir}/man5/%{name}.conf.5%{?ext_man}
