@@ -22,7 +22,7 @@
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends java-11-openjdk curl findutils gawk git-core procps util-linux
+    zypper -n install --no-recommends java-11-openjdk mozilla-nss-sysinit curl findutils gawk git-core procps util-linux
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
