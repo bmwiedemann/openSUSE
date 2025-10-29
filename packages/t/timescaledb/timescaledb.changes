@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Oct 29 10:03:59 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.23.0
+  This release contains performance improvements and bug fixes
+  since the 2.22.1 release. We recommend that you upgrade at the
+  next available opportunity.
+
+  Highlighted features in TimescaleDB v2.23.0
+
+  - This release introduces full PostgreSQL 18 support for all
+    existing features. TimescaleDB v2.23 is available for
+    PostgreSQL 15, 16, 17, and 18.
+  - UUIDv7 compression is now enabled by default on the
+    columnstore. This feature was shipped in v2.22.0. It saves you
+    at least 30% of storage and delivers ~2× faster query
+    performance with UUIDv7 columns in the filter conditions.
+  - Added the ability to set hypertables to unlogged, addressing an
+    open community request #836. This allows the tradeoff between
+    durability and performance, with the latter being favourable
+    for larger imports.
+  - By allowing set-returning functions in continuous aggregates,
+    this releases addresses a long standing blocker, raised by the
+    community #1717.
+
+  PostgreSQL 15 deprecation announcement
+
+  - We will continue supporting PostgreSQL 15 until June 2026.
+    Closer to that time, we will announce the specific TimescaleDB
+    version in which PostgreSQL 15 support will not be included
+    going forward.
+
+  https://github.com/timescale/timescaledb/releases/tag/2.23.0
+- enable building for pg18
+
+-------------------------------------------------------------------
+Tue Sep 30 10:34:59 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.22.1
+  https://github.com/timescale/timescaledb/releases/tag/2.22.1
+
+-------------------------------------------------------------------
 Tue Sep  2 12:29:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.22.0
