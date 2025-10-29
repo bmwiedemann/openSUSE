@@ -2338,4 +2338,12 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <user>anag_factory</user>
     <comment>Update for java 25 as default</comment>
   </revision>
+  <revision rev="328" vrev="326">
+    <srcmd5>ddb236b0de3b8deae32af4e7ffe7351b</srcmd5>
+    <version>unknown</version>
+    <time>1761768259</time>
+    <user>anag_factory</user>
+    <comment>Submit rebased</comment>
+    <requestid>1314298</requestid>
+  </revision>
 </revisionlist>
