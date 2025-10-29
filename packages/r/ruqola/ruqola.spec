@@ -1,7 +1,7 @@
 #
 # spec file for package ruqola
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,21 @@
 #
 
 
-%define kf6_version 6.8.0
-%define qt6_version 6.7.0
+%define kf6_version 6.11.0
+%define qt6_version 6.8.0
 
 %bcond_without released
+# Disabled in the KDE:Extra repo for plain 16.0
+%bcond_without textautogeneratetext
 Name:           ruqola
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/ruqola
-Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/mlaurent@key1.asc?ref_type=heads
 Source2:        ruqola.keyring
 %endif
@@ -48,22 +50,25 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6NetworkManagerQt) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
-BuildRequires:  cmake(PlasmaActivities) >= 6.1.0
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextAutoCorrectionWidgets) >= 1.5.4
-BuildRequires:  cmake(KF6TextCustomEditor) >= 1.5.4
-BuildRequires:  cmake(KF6TextEditTextToSpeech) >= 1.5.4
-BuildRequires:  cmake(KF6TextEmoticonsWidgets) >= 1.5.4
-BuildRequires:  cmake(KF6TextTranslator) >= 1.5.4
-BuildRequires:  cmake(KF6TextUtils) >= 1.5.4
+BuildRequires:  cmake(KF6TextAutoCorrectionWidgets) >= 1.6.0
+%if %{with textautogeneratetext}
+BuildRequires:  cmake(KF6TextAutoGenerateText) >= 1.7.1
+%endif
+BuildRequires:  cmake(KF6TextCustomEditor) >= 1.6.0
+BuildRequires:  cmake(KF6TextEditTextToSpeech) >= 1.6.0
+BuildRequires:  cmake(KF6TextEmoticonsWidgets) >= 1.6.0
+BuildRequires:  cmake(KF6TextTranslator) >= 1.6.0
+BuildRequires:  cmake(KF6TextUtils) >= 1.6.0
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6UserFeedback) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(PlasmaActivities) >= 6.1.0
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Keychain) >= 0.14.2
@@ -125,9 +130,16 @@ available from Rocket.Chat project.
 %{_kf6_plugindir}/ruqolaplugins/authentication/ruqola_passwordauthenticationplugin.so
 %{_kf6_plugindir}/ruqolaplugins/authentication/ruqola_personalaccesstokenauthenticationplugin.so
 %dir %{_kf6_plugindir}/ruqolaplugins/textplugins
+%if %{with textautogeneratetext}
+%{_kf6_plugindir}/ruqolaplugins/textplugins/ruqola_aitextplugin.so
+%endif
 %{_kf6_plugindir}/ruqolaplugins/textplugins/ruqola_sharetextplugin.so
 %{_kf6_plugindir}/ruqolaplugins/textplugins/ruqola_webshortcuttextplugin.so
 %dir %{_kf6_plugindir}/ruqolaplugins/toolsplugins
+%if %{with textautogeneratetext}
+%{_kf6_plugindir}/ruqolaplugins/toolsplugins/ruqola_aiactionsplugin.so
+%{_kf6_plugindir}/ruqolaplugins/toolsplugins/ruqola_autogenerateplugin.so
+%endif
 %{_kf6_plugindir}/ruqolaplugins/toolsplugins/ruqola_grabscreenplugin.so
 %dir %{_kf6_sharedir}/messageviewer
 %dir %{_kf6_sharedir}/messageviewer/openurlwith
