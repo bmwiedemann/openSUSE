@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 29 14:05:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.9.0
+  * Add dataset title adjustment for xls format (#627)
+  * Support column_width in xlsx format for databook exports (#624)
+  * Add sql export format (#619)
+  * Add support for Python 3.14 (#607)
+  * Improve comprehensions (#620)
+  * Fix bug in ODS import where headers are not set on Dataset (#614)
+  * Fix bug in ODS import regarding cells with empty strings (#613)
+  * Remove outdated Python support from docs (#611)
+
+-------------------------------------------------------------------
 Fri Feb 14 12:32:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.8.0
