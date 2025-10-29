@@ -33,7 +33,7 @@ Thu Sep 18 19:11:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
     defined with FIELD_xxx bits, as it is done for FIELD_CUSTOM tags. (fixes issue #648)
   * Do not error out on a tag whose tag count value is zero, just issue a warning.
     Fix parsing a private tag 0x80a6 (fixes issue #647)
-  * TIFFDefaultTransferFunction(): give up beyond td_bitspersample = 24 
+  * TIFFDefaultTransferFunction(): give up beyond td_bitspersample = 24
     Fixes https://github.com/OSGeo/gdal/issues/10875)
   * tif_getimage.c: Remove unnecessary calls to TIFFRGBAImageOK() (fixes issue #175)
   * Fix writing a Predictor=3 file with non-native endianness
@@ -104,7 +104,7 @@ Thu Sep 18 19:11:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
   * TIFFRGBAImage.rst note added for incorrect saving of images with TIFF orientation
     from 5 (LeftTop) to 8 (LeftBottom) in the raster.
   * TIFFRGBAImage.rst note added about un-associated alpha handling (fixes issue #67)
-  * Update "Defining New TIFF Tags" description. (fixes issue #642)
+  * Update "Defining New TIFF Tags" description. (fixes issue #642, bsc#1248278, CVE-2025-8851)
   * Fix return type of TIFFReadEncodedTile()
   * Update the documentation to reflect deprecated typedefs.
   * TIFFWriteDirectory.rst: Clarify TIFFSetWriteOffset() only sets offset for image
@@ -165,7 +165,7 @@ Mon Aug  4 09:02:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
     Fix heap use-after-free in tools/tiffmedian.c
     + tiff-CVE-2025-8176.patch
   * CVE-2025-8177 [bsc#1247106]
-    Fix possible buffer overflow in tools/thumbnail.c:setrow() 
+    Fix possible buffer overflow in tools/thumbnail.c:setrow()
     + tiff-CVE-2025-8177.patch
 
 -------------------------------------------------------------------
@@ -255,7 +255,7 @@ Wed Sep 18 08:02:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
     + Add TIFFOpenOptionsSetMaxCumulatedMemAlloc(). This function complements
       TIFFOpenOptionsSetMaxSingleMemAlloc() to define the maximum cumulated memory
       allocations in byte, for a given TIFF handle, that libtiff internal memory
-      allocation functions are allowed. 
+      allocation functions are allowed.
     + TIFFWriteDirectory(): Avoid overwriting following data if an IFD is enlarged.
     + TIFFXYZToRGB: avoid integer overflow (fixes issue #644)
     + uv_decode() and uv_encode(): avoid potential out-of-bounds array index (fixes issue #645)
@@ -372,10 +372,10 @@ Fri Sep 15 05:55:34 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
     TIFF parameters to avoid use of uninitialized variable, or decoding
     corrupted content without explicit error (fixes issue #581, issue #582).
   * WebP codec: turn exact mode when creating lossless files to avoid
-    altering R,G,B values in areas where alpha=0 
+    altering R,G,B values in areas where alpha=0
   * Fix TransferFunction writing of only two transfer functions.
   * TIFFReadDirectoryCheckOrder: avoid integer overflow. When it occurs,
-    it should be harmless in practice though 
+    it should be harmless in practice though
   * tiffcp: remove -i option (ignore errors)
   * This version removes a big number of utilities that have suffered from
     lack of maintenance over the years and were the source of various
@@ -432,7 +432,7 @@ Tue Jun 20 07:16:56 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 - Drop no longer needed patches:
   * tiff-CVE-2023-0795,CVE-2023-0796,CVE-2023-0797,CVE-2023-0798,CVE-2023-0799.patch
   * tiff-CVE-2022-48281.patch
-  * tiff-CVE-2023-0800,CVE-2023-0801,CVE-2023-0802,CVE-2023-0803,CVE-2023-0804.patch 
+  * tiff-CVE-2023-0800,CVE-2023-0801,CVE-2023-0802,CVE-2023-0803,CVE-2023-0804.patch
 
 -------------------------------------------------------------------
 Wed Feb 22 15:05:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
@@ -483,10 +483,10 @@ Wed Jan  4 08:48:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
     its capability of handling both 8-bit JPEG and 12-bit JPEG in a single build.
   * autoconf/cmake: detect sphinx-build to build HTML and man pages
   * CMakeLists.txt: fix warning with -Wdev
-  * CMake: correctly set default value of 'lzma' option when liblzma is detected 
+  * CMake: correctly set default value of 'lzma' option when liblzma is detected
   * CMake: Moved linking of CMath::CMath into CMath_LIBRARY check.
   * Fix CMake build to be compatible with FetchContent.
-  * cmake: Correct duplicate definition of _CRT_SECURE_NO_WARNINGS 
+  * cmake: Correct duplicate definition of _CRT_SECURE_NO_WARNINGS
   * cmake: Fixes for Visual Studio 2022.
   * Adds Requires.private generation so that pkg-config can correctly find
     the dependencies of libtiff.
@@ -809,7 +809,7 @@ Mon Jun  4 12:55:54 UTC 2018 - pgajdos@suse.com
 
 - security update
   * CVE-2018-7456 [bsc#1082825]
-    + tiff-CVE-2018-7456.patch 
+    + tiff-CVE-2018-7456.patch
 
 -------------------------------------------------------------------
 Fri May 18 09:18:26 UTC 2018 - pgajdos@suse.com
@@ -835,7 +835,7 @@ Tue Feb 20 16:18:33 UTC 2018 - mvetter@suse.com
 Fri Feb 16 14:05:39 UTC 2018 - mvetter@suse.com
 
 - bsc#1046077: Add tiff-4.0.9-bsc1046077-CVE-2017-9935.patch
-  Fix Heap-based buffer overflow in t2p_write_pdf 
+  Fix Heap-based buffer overflow in t2p_write_pdf
 
 -------------------------------------------------------------------
 Thu Dec 21 13:03:18 UTC 2017 - dimstar@opensuse.org

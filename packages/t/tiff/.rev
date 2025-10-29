@@ -1126,4 +1126,12 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     <comment>Mention the bsc# and CVE</comment>
     <requestid>1310990</requestid>
   </revision>
+  <revision rev="108" vrev="3">
+    <srcmd5>77ba13426e39b518b34dac5af653fcc1</srcmd5>
+    <version>4.7.1</version>
+    <time>1761768383</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1314434</requestid>
+  </revision>
 </revisionlist>
