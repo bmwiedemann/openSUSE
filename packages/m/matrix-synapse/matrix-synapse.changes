@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Oct 29 12:03:15 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.141.0
+  - Features
+    - Allow using MSC4190 behavior without the opt-in registration
+      flag. Contributed by @tulir @ Beeper. (#19031)
+    - Stabilize support for MSC4326: Device masquerading for
+      appservices. Contributed by @tulir @ Beeper. (#19033)
+  - Bugfixes
+    - Fix users being unable to log in if their password, or the
+      server's configured pepper, was too long. (#19101)
+    - Fix a bug introduced in 1.136.0 that would prevent Synapse
+      from being able to be reload-ed more than once when running
+      under systemd. (#19060)
+    - Fix a bug introduced in 1.140.0 where an internal server
+      error could be raised when hashing user passwords that are
+      too long. (#19078)
+  - Updates to the Docker image
+    - Update docker image to use Debian trixie as the base and thus
+      Python 3.13. (#19064)
+  - Internal Changes
+    - Move unique snowflake homeserver background tasks to
+      start_background_tasks (the standard pattern for this kind of
+      thing). (#19037)
+    - Drop a deprecated field of the PyGitHub dependency in the
+      release script and raise the dependency's minimum version to
+      1.59.0. (#19039)
+    - Update TODO list of conflicting areas where we encounter
+      metrics being clobbered (ApplicationService). (#19040)
+
+-------------------------------------------------------------------
 Tue Oct 14 19:43:59 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.140.0
