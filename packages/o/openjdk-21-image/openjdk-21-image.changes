@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 29 10:26:09 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- add mozilla-nss-sysinit to enable initialization of crypto providers
+
+-------------------------------------------------------------------
 Mon Oct 20 12:53:40 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove password change date from /etc/shadow to make the file reproducible
