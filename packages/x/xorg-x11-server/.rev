@@ -4294,4 +4294,21 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * additional fix for CVE-2025-49176</comment>
     <requestid>1287668</requestid>
   </revision>
+  <revision rev="444" vrev="7">
+    <srcmd5>86c08712a98d8b4e53b9d339b0550162</srcmd5>
+    <version>21.1.15</version>
+    <time>1761768250</time>
+    <user>anag_factory</user>
+    <comment>- bsc1251958_CVE-2025-62229_0001-present-Fix-use-after-free-in-present_create_notifie.patch
+  * Use-after-free in XPresentNotify structures creation
+    (CVE-2025-62229, bsc#1251958)
+- bsc1251959_CVE-2025-62230_0001-xkb-Make-the-RT_XKBCLIENT-resource-private.patch
+  bsc1251959_CVE-2025-62230_0002-xkb-Free-the-XKB-resource-when-freeing-XkbInterest.patch
+  * Use-after-free in Xkb client resource removal
+    (CVE-2025-62230, bsc#1251959)
+- bsc1251960_CVE-2025-62231_0001-xkb-Prevent-overflow-in-XkbSetCompatMap.patch
+  * Value overflow in Xkb extension XkbSetCompatMap()
+    (CVE-2025-62231, bsc#1251960)</comment>
+    <requestid>1314101</requestid>
+  </revision>
 </revisionlist>

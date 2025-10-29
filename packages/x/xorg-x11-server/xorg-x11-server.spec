@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-server
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -267,6 +267,10 @@ Patch1244089:   U_CVE-2025-49179-record-Check-for-overflow-in-RecordSanityCheckR
 Patch1244090:   U_CVE-2025-49180-randr-Check-for-overflow-in-RRChangeProviderProperty.patch
 Patch1244091:   U_CVE-2025-49180-xfree86-Check-for-RandR-provider-functions.patch
 Patch1244092:   U_CVE-2025-49176-os-Check-for-integer-overflow-on-BigRequest-length.patch
+Patch1251958:   bsc1251958_CVE-2025-62229_0001-present-Fix-use-after-free-in-present_create_notifie.patch
+Patch1251959:   bsc1251959_CVE-2025-62230_0001-xkb-Make-the-RT_XKBCLIENT-resource-private.patch
+Patch1251960:   bsc1251959_CVE-2025-62230_0002-xkb-Free-the-XKB-resource-when-freeing-XkbInterest.patch
+Patch1251961:   bsc1251960_CVE-2025-62231_0001-xkb-Prevent-overflow-in-XkbSetCompatMap.patch
 
 %description
 This package contains the X.Org Server.
@@ -446,6 +450,11 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1244090 -p1
 %patch -P 1244091 -p1
 %patch -P 1244092 -p1
+
+%patch -P 1251958 -p1
+%patch -P 1251959 -p1
+%patch -P 1251960 -p1
+%patch -P 1251961 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):
