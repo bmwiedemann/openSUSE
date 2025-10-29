@@ -1,7 +1,7 @@
 #
 # spec file for package gnubg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2003 Achim Mueller, Germany.
 # Updated by Christopher Hofmann in 2010
 #
@@ -19,19 +19,19 @@
 
 
 Name:           gnubg
-Version:        1.08.002
+Version:        1.08.003
 Release:        0
 Summary:        Backgammon game with analysis tools and neural network AI
 License:        GPL-3.0-or-later
-Group:          Amusements/Games/Board/Other
 URL:            https://www.gnu.org/software/gnubg/
-Source:         https://ftp.gnu.org/gnu/%{name}/%{name}-release-%{version}-sources.tar.gz
+Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-release-%{version}-sources.tar.gz
 Source1:        %{name}.desktop
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  cairo-devel
+BuildRequires:  desktop-file-utils
 BuildRequires:  flex
 BuildRequires:  freetype2-devel
 BuildRequires:  glibc-devel
@@ -46,7 +46,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  readline-devel
 BuildRequires:  sqlite3-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
 Recommends:     %{name}-lang
@@ -54,6 +53,9 @@ Recommends:     gnubg-databases = %{version}
 Recommends:     gnubg-doc = %{version}
 Recommends:     gnubg-sounds = %{version}
 Recommends:     python3-MySQL-python
+%if 0%{?suse_version} > 1600
+BuildRequires:  glycin-loaders
+%endif
 
 %description
 Program for playing and analysing backgammon positions, games and matches. It is
@@ -66,7 +68,6 @@ players there and is gradually improving.
 %package databases
 Summary:        Bearoff databases for gnubg
 License:        GPL-3.0-or-later
-Group:          Amusements/Games/Board/Other
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -78,7 +79,6 @@ according to the documentation.
 %package sounds
 Summary:        Sounds for gnubg
 License:        GPL-3.0-or-later
-Group:          Amusements/Games/Board/Other
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -88,7 +88,6 @@ Sounds for GNU Backgammon. See description of gnubg for more details.
 %package doc
 Summary:        Documentation for gnubg
 License:        GFDL-1.3-only
-Group:          Amusements/Games/Board/Other
 BuildArch:      noarch
 
 %description doc
@@ -97,7 +96,7 @@ Manual for GNU Backgammon. See description of gnubg for more details.
 %lang_package
 
 %prep
-%setup -q gnubg
+%autosetup -p1
 # if we have a glib-gettext.m4 installed in the system, we drop the
 # local copy in gnubg. It certainly is older
 if [ -f %{_datadir}/aclocal/glib-gettext.m4 ]; then
@@ -118,20 +117,26 @@ simd=sse2
 
 %install
 %make_install
-
-%suse_update_desktop_file -i %{name}
+install -D -m 0644 -t %{buildroot}%{_datadir}/applications %{SOURCE1}
 
 %find_lang %{name}
 
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/gnubg.desktop
+
 %files
 %license COPYING
-%doc NEWS README TODO
-%{_bindir}/*
-%{_mandir}/man?/%{name}*
-%{_mandir}/man?/bearoffdump.*
-%{_mandir}/man?/makebearoff.*
-%{_mandir}/man?/makehyper.*
-%{_mandir}/man?/makeweights.*
+%doc ChangeLog NEWS README TODO
+%{_bindir}/%{name}
+%{_bindir}/bearoffdump
+%{_bindir}/makebearoff
+%{_bindir}/makehyper
+%{_bindir}/makeweights
+%{_mandir}/man6/%{name}.6%{?ext_man}
+%{_mandir}/man6/bearoffdump.6%{?ext_man}
+%{_mandir}/man6/makebearoff.6%{?ext_man}
+%{_mandir}/man6/makehyper.6%{?ext_man}
+%{_mandir}/man6/makeweights.6%{?ext_man}
 %{_datadir}/applications/gnubg.desktop
 %{_datadir}/icons/hicolor/*/apps/gnubg.png
 %{_datadir}/gnubg
