@@ -1,0 +1,63 @@
+From 1aa72a66acd4e9dc421deb5523a429f9f4519421 Mon Sep 17 00:00:00 2001
+From: David Bieber <david810@gmail.com>
+Date: Sat, 16 Aug 2025 16:42:23 -0400
+Subject: [PATCH 1/4] Add Python 3.13 and 3.14 checking in build workflow
+
+---
+ .github/workflows/build.yml | 2 +-
+ pyproject.toml              | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+Index: fire-0.7.1/pyproject.toml
+===================================================================
+--- fire-0.7.1.orig/pyproject.toml
++++ fire-0.7.1/pyproject.toml
+@@ -24,6 +24,7 @@ classifiers = [
+     "Programming Language :: Python :: 3.11",
+     "Programming Language :: Python :: 3.12",
+     "Programming Language :: Python :: 3.13",
++    "Programming Language :: Python :: 3.14",
+     "Operating System :: OS Independent",
+     "Operating System :: POSIX",
+     "Operating System :: MacOS",
+Index: fire-0.7.1/fire/core.py
+===================================================================
+--- fire-0.7.1.orig/fire/core.py
++++ fire-0.7.1/fire/core.py
+@@ -678,8 +678,14 @@ def _CallAndUpdateTrace(component, args,
+ 
+   # Call the function.
+   if inspectutils.IsCoroutineFunction(fn):
+-    loop = asyncio.get_event_loop()
+-    component = loop.run_until_complete(fn(*varargs, **kwargs))
++    try:
++      loop = asyncio.get_running_loop()
++    except RuntimeError:
++      # No event loop running, create a new one
++      component = asyncio.run(fn(*varargs, **kwargs))
++    else:
++      # Event loop is already running
++      component = loop.run_until_complete(fn(*varargs, **kwargs))
+   else:
+     component = fn(*varargs, **kwargs)
+ 
+Index: fire-0.7.1/fire/inspectutils.py
+===================================================================
+--- fire-0.7.1.orig/fire/inspectutils.py
++++ fire-0.7.1/fire/inspectutils.py
+@@ -14,7 +14,6 @@
+ 
+ """Inspection utility functions for Python Fire."""
+ 
+-import asyncio
+ import inspect
+ import sys
+ import types
+@@ -345,6 +344,6 @@ def GetClassAttrsDict(component):
+ 
+ def IsCoroutineFunction(fn):
+   try:
+-    return asyncio.iscoroutinefunction(fn)
++    return inspect.iscoroutinefunction(fn)
+   except:  # pylint: disable=bare-except
+     return False

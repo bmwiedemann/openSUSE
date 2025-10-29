@@ -1,7 +1,7 @@
 #
 # spec file for package python-fire
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-fire
 Version:        0.7.1
@@ -23,6 +24,8 @@ Summary:        A library for automatically generating command line interfaces
 License:        Apache-2.0
 URL:            https://github.com/google/python-fire
 Source:         https://files.pythonhosted.org/packages/source/f/fire/fire-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#google/python-fire#623
+Patch0:         support-python-314.patch
 # Based on https://github.com/google/python-fire/pull/265/files
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}

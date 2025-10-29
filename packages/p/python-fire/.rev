@@ -153,4 +153,13 @@
     <comment></comment>
     <requestid>1305411</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ee1d3ffff0311e2ab7c384d790659079</srcmd5>
+    <version>0.7.1</version>
+    <time>1761768380</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-314.patch:
+  * Support Python 3.14 asyncio changes.</comment>
+    <requestid>1314223</requestid>
+  </revision>
 </revisionlist>
