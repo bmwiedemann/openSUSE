@@ -145,4 +145,17 @@
 </comment>
     <requestid>1284338</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0983fd68979528d43a58fc663854d12c</srcmd5>
+    <version>6.10.0</version>
+    <time>1761768531</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.10.0
+  * Added support for Qt v6.10.
+- Add pyqt6_webengine-6.10.0-qt6.9.patch
+  * Fixes a regression that caused builds to fail when using Qt
+    v6.8 or v6.9.
+  * https://www.riverbankcomputing.com/pipermail/pyqt/2025-October/046353.html</comment>
+    <requestid>1314375</requestid>
+  </revision>
 </revisionlist>
