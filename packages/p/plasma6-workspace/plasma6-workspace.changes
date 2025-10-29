@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 28 11:52:39 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.1
+- Changes since 6.5.0:
+  * Update version for new release 6.5.1
+  * wallpapers/image: use more appropriate "remove wallpaper" icon (kde#484307)
+  * ksplash: Don't use fallback in test mode
+  * notifications: Don't show details if they only say you have 1 of 1 items
+  * wallpapers: rephrase color-aware wallpaper option to be accurate
+  * Make KF6Holidays a hard dependency
+  * servicerunner: outscore krunner's launch count system
+  * shell/autotests: fix shelltest
+  * appiumtests: fix clipboardtest
+
+-------------------------------------------------------------------
 Thu Oct 16 18:13:17 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.0:
