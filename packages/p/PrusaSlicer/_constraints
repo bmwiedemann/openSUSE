@@ -8,4 +8,17 @@
        <size unit="G">16</size>
     </physicalmemory>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+	<size unit="G">30</size>
+      </disk>
+      <memory>
+	<size unit="G">21</size>
+      </memory>
+    </hardware>
+  </overwrite>
 </constraints>

@@ -534,4 +534,15 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
 </comment>
     <requestid>1309981</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>c4cae3a310a8d081c14ab9a72edc0014</srcmd5>
+    <version>2.9.3</version>
+    <time>1761768476</time>
+    <user>anag_factory</user>
+    <comment>- Revert RISC-V exclusion
+- Adjust the _constraints file to reflect the actual resource
+  requirements to build on RISC-V.
+</comment>
+    <requestid>1314294</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 29 09:17:09 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Revert RISC-V exclusion
+
+-------------------------------------------------------------------
+Mon Oct 27 11:08:34 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Adjust the _constraints file to reflect the actual resource
+  requirements to build on RISC-V.
+
+-------------------------------------------------------------------
 Thu Oct  9 11:21:20 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Disable build on RISC-V: Extensive resource requirement. If any

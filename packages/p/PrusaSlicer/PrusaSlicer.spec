@@ -114,8 +114,8 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Requires:       noto-sans-fonts
-# Cannot allocate memory to build, or needs way too much resources
-ExcludeArch:    %{ix86} %riscv
+# Cannot allocate memory to build
+ExcludeArch:    %{ix86}
 
 %description
 PrusaSlicer takes 3D models (STL, OBJ, AMF) and converts them into G-code
