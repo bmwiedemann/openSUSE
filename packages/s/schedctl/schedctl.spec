@@ -17,7 +17,7 @@
 
 
 Name:           schedctl
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Linux eBPF sched_ext plug and play schedulers for fun and profit
 License:        Apache-2.0
