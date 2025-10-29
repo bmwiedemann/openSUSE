@@ -1,7 +1,7 @@
 #
 # spec file for package syncterm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           syncterm
-Version:        1.5
+Version:        1.7
 Release:        0
 Summary:        An ANSI-BBS terminal which supports telnet, rlogin, and SSH
 License:        GPL-2.0-only
@@ -34,6 +34,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(x11)
 
 %description
 An ANSI-BBS terminal designed to connect to remote BBSs via telnet, rlogin, or

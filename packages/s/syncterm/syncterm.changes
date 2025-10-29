@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Oct 25 05:04:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7
+  * Add menu for editing an entries palette.
+  * Add CTSV APC command.
+  * Add support for OSC 10 ; ? ST and OSC 11 ; ? ST.
+  * Add custom palette support to list file.
+  * Add support for DECSC/DECRC control codes.
+  * Pass control key combinations in BBC Micro mode.
+  * Implement RIP STW/RTW and SCB/RCP commands.
+  * Implement RIP exploding button flag.
+  * Support downloading in Prestel mode via CET Telesoftware
+    protocol.
+  * Improve RIP sounds.
+  * Update Prestel/Mode 7 keybindings.
+  * Don't disable status line for Atari ST modes.
+  * Optimize dialing directory parsing.
+  * Fix screen initialization to not snap to next smaller integer
+    scaling.
+  * Fix scroll wheel in RIP mode.
+  * Fix divide by zero when playing invalid ANSI music.
+  * Fix APB and APU from top in BBC Micro Mode 7.
+  * Fix blast-through in Mode 7 high ASCII mosaics.
+  * Fix broken vertical (U+00A6) vs. vertical line (U+007C).
+  * Fix crash when first ANSI music note played is in background.
+  * Fix binary mode tracking, which could cause issues after
+    transfers.
+  * Fix SDL and GDI issue with textmode() when font is changed.
+  * Fix manual upload screen when not in cp437+ANSI mode.
+  * Fix loss of character when performing LCF wrap.
+  * Fix crash at startup when built with gcc15 and -fhardened.
+  * Fix RIP handling when ESC[! sequences are split between
+    packets.
+  * Fix double-height blinking in Prestel mode.
+  * Fix potential hang.
+  * Fix broken Scroll Up (CSI S).
+- Update to version 1.6
+  * Add Atari ST VT52 modes.
+  * Enable cursor for Mode 7.
+  * Adjust Prestel/Mode 7 mappings.
+  * Disable Prestel ENQ/Memory in BBC Micro Mode 7.
+  * Fix regression in Atari auto-login.
+  * Fix error adding a new Web List.
+
+-------------------------------------------------------------------
 Sun Feb  9 13:43:59 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Switch to CMake
