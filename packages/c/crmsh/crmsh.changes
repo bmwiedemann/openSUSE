@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Oct 29 08:55:06 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251029.0b77b20d:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: bootstrap: Disable pacemaker and sbd services after removing node
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: ui_sbd: Add and check the minimum SBD timeout value
+
+-------------------------------------------------------------------
+Tue Oct 28 09:57:25 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251028.69feb78b:
+  * Dev: behave: Add functional test case for increasing and decreasing SBD timeout
+  * Dev: sbd: Dynamically retrieve and use DefaultTimeoutStartUSec for sbd.service
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: ui_sbd: Minor changes for log info
+  * Dev: sbd: If the expected stonith-watchdog-timeout is smaller than the
+  * Dev: sbd: Decrease sbd related timeouts when expected value decreases
+
+-------------------------------------------------------------------
+Tue Oct 28 06:39:16 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251028.43b48d32:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: bootstrap: Avoid circular import by refactoring FILES_TO_SYNC to use get_files_to_sync()
+  * Dev: Get instance of CibFactory by using cibconfig.cib_factory_instance()
+  * Dev: bootstrap: Lazily initialize tempfile to store original corosync.conf in Context to avoid circular import
+  * Dev: Import only module instead of functions from module
+
+-------------------------------------------------------------------
+Mon Oct 13 07:19:13 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251013.2b481a7b:
+  * Dev: Use functools.cache instead of custom memoize
+
+-------------------------------------------------------------------
+Sat Oct 11 07:10:00 UTC 2025 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20251011.f141f31c:
+  * Dev: behave: Run containers in unconfined context when selinux is enabled
+
+-------------------------------------------------------------------
+Fri Oct 10 09:57:38 UTC 2025 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20251010.cd7706e7:
+  * Fix: migration: Populate node name during corosync configuration migration (bsc#1250585)
+  * Fix: corosync: Fallback to CIB when node name is missing (bsc#1250585)
+
+-------------------------------------------------------------------
 Thu Sep 25 02:29:49 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250925.91a04ca5:
