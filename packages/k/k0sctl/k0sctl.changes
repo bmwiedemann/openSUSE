@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Oct 27 05:50:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.0:
+  * What's Changed
+    - Remove hardcoded retry timeouts by @kke in #955
+    - Create files on nodes from inlined content in config by
+      @uwej711 in #957
+    - Fix crash when parsing large configuration files by @kke in
+      #969
+  * Housekeeping
+    - Reduce duplication in phase/uploadfiles.go by @kke in #968
+  * CI/Dependencies
+    - Fix linting errors after golangci-lint upgrade by @kke in
+      #965
+    - go v1.25.3 by @kke in #958
+    - Bump golangci/golangci-lint-action from 4 to 8 by
+      @dependabot[bot] in #959
+    - Bump actions/setup-go from 5 to 6 by @dependabot[bot] in #962
+    - Bump actions/setup-python from 5 to 6 by @dependabot[bot] in
+      #963
+    - Bump dependabot/fetch-metadata from 1 to 2 by
+      @dependabot[bot] in #961
+    - Bump actions/checkout from 4 to 5 by @dependabot[bot] in #960
+    - Bump github/codeql-action from 3 to 4 by @dependabot[bot] in
+      #964
+
+-------------------------------------------------------------------
 Fri Oct 17 05:56:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.0:
