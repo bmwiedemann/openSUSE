@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 28 11:50:11 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.1
+- Changes since 6.5.0:
+  * Update version for new release 6.5.1
+  * Fix build with ffmpeg < 6.1
+- Drop patches, now upstream:
+  * 0001-Fix-build-with-ffmpeg-8.patch
+
+-------------------------------------------------------------------
 Thu Oct 16 18:13:02 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.0:
