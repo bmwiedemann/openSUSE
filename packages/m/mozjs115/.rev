@@ -112,4 +112,12 @@
   huffdec.c (bsc#1234837 CVE-2024-56431). (forwarded request 1268481 from mgorse)</comment>
     <requestid>1269659</requestid>
   </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>393c1fb61b8521979d22c4d30838e686</srcmd5>
+    <version>115.15.0</version>
+    <time>1761768426</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1314279</requestid>
+  </revision>
 </revisionlist>

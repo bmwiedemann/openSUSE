@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 28 21:52:58 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add mozjs115-CVE-2025-62813.patch: fix possible crash when
+  processing untrusted LZ4 frames (bsc#1252607 CVE-2025-62813).
+
+-------------------------------------------------------------------
 Thu Apr 10 19:49:45 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add libtheora-avoid-negative-shift.patch: avoid negative shift in
