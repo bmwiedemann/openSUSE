@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 29 05:42:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.130:
+  * Atlas by @breardon2011 in #2333
+  * go work sync by @ZIJ in #2344
+  * helm charts for open taco, ui adjustment for deploy by
+    @breardon2011 in #2326
+  * Token Service by @breardon2011 in #2348
+  * Update workflow by @breardon2011 in #2349
+  * Workflow Adjustment by @breardon2011 in #2350
+  * tfe units ui functionalities by @motatoes in #2343
+  * Align name by @breardon2011 in #2351
+
+-------------------------------------------------------------------
 Tue Oct 28 05:48:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.129:
