@@ -17,7 +17,7 @@
 
 
 Name:           riff
-Version:        3.4.1
+Version:        3.5.1
 Release:        0
 Summary:        A diff filter highlighting which line parts have changed
 License:        MIT
@@ -28,6 +28,7 @@ Source2:        cargo_config
 BuildRequires:  cargo-packaging
 Requires:       diff
 ExclusiveArch:  %{rust_tier1_arches}
+Suggests:       moor
 
 %description
 Riff is a wrapper around diff that highlights which parts of lines have changed.

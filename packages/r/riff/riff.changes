@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct 29 10:37:22 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.5.1:
+  * Before this release, hunk header hyperlinks went to some lines
+    above the actual change. With this release, those same hyperlinks
+    now go to the first changed line.
+
+-------------------------------------------------------------------
+Wed Oct 29 10:36:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.5.0:
+  * Click a hunk header and be taken to the top of that hunk.
+    Requires moor v2.6.1 or later for the new hyperlinks to render
+    correctly
+
+-------------------------------------------------------------------
+Wed Oct 29 10:36:32 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.4.2:
+  * Before this release, renames were only highlighted if there were
+    contents changes as well. With this release, "rename from" and
+    "rename to" lines are now highlighted even if there are no other
+    changes.  Also, this release fixes a crash when the PAGER environment
+    variable is set to an empty string.
+
+-------------------------------------------------------------------
 Wed Aug 13 06:24:25 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.4.1:

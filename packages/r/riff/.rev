@@ -288,4 +288,27 @@
   * moor is the new name for what used to be moar</comment>
     <requestid>1299193</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b8f18e135026a9be73c9370af0b30a7a</srcmd5>
+    <version>3.5.1</version>
+    <time>1761768538</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.5.1:
+  * Before this release, hunk header hyperlinks went to some lines
+    above the actual change. With this release, those same hyperlinks
+    now go to the first changed line.
+
+- Update to 3.5.0:
+  * Click a hunk header and be taken to the top of that hunk.
+    Requires moor v2.6.1 or later for the new hyperlinks to render
+    correctly
+
+- Update to 3.4.2:
+  * Before this release, renames were only highlighted if there were
+    contents changes as well. With this release, &quot;rename from&quot; and
+    &quot;rename to&quot; lines are now highlighted even if there are no other
+    changes.  Also, this release fixes a crash when the PAGER environment
+    variable is set to an empty string.</comment>
+    <requestid>1314325</requestid>
+  </revision>
 </revisionlist>
