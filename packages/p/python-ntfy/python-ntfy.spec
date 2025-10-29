@@ -20,7 +20,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ntfy
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        A utility for sending push notifications
 License:        GPL-3.0-only
@@ -29,10 +29,7 @@ URL:            https://github.com/dschep/ntfy
 Source:         ntfy-%{version}.tar.xz
 # https://github.com/dschep/ntfy/issues/247
 Patch0:         python-ntfy-no-mock.patch
-Patch1:         emoji-2.0-compatibility.patch
 Patch2:         drop-misleading-shebangs.patch
-Patch3:         python-311-compat.patch
-Patch4:         python-312-compat.patch
 BuildRequires:  %{python_module appdirs}
 # test requirements
 BuildRequires:  %{python_module emoji >= 1.6.2}
@@ -55,7 +52,7 @@ Suggests:       python-emoji >= 1.6.2
 Suggests:       python-instapush
 Suggests:       python-psutil
 Suggests:       python-rocketchat-API
-Suggests:       python-slacker
+Suggests:       python-slack-sdk
 Suggests:       python-sleekxmpp
 Suggests:       python-telegram-send
 BuildArch:      noarch
@@ -86,13 +83,18 @@ Quickstart
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/ntfy*
 
 %check
-%pytest --ignore 'tests/test_xmpp.py' -k 'not test_xmpp'
+export XDG_CONFIG_HOME=/foo/config
+# There is an isolation error. Somewhere in the tests the default configuration dict is modified.
+# For the normal application execution that is not an issue as configuration is loaded only once.
+# So this is the hacky workaround until the issue is fixed upstream.
+%pytest --ignore 'tests/test_xmpp.py' -k 'not test_xmpp' --ignore 'tests/test_config.py'
+%pytest --ignore 'tests/test_xmpp.py' -k 'not test_xmpp' 'tests/test_config.py'
 
 %pre
 %python_libalternatives_reset_alternative ntfy
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/ntfy
 %{python_sitelib}/ntfy

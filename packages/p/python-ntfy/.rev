@@ -129,4 +129,24 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1284179</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d5f24fa6245375e7f5cc4ed0de3a885c</srcmd5>
+    <version>2.7.1</version>
+    <time>1761768366</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.7.1
+  * Fix Matrix backend fails wheen trying to send messages with
+    unicode in them.
+  * Make theme icons available for linux backend.
+  * Swap Slacker for Slack SDK.
+  * Add compatibility with emoji 2.0.
+  * Compatility with Python 311, 3.12, and 3.13.
+- Drop emoji-2.0-compatibility.patch merged upstream.
+- Drop python-311-compat.patch merged upstream.
+- Drop python-312-compat.patch merged upstream.
+- Added a workaround for a test isolation issue affecting the
+  configuration tests.
+- Switch service file from old disabled to modern manual run mode.</comment>
+    <requestid>1314209</requestid>
+  </revision>
 </revisionlist>
