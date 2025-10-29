@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 28 01:28:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Spinkle in fdupes.
+
+-------------------------------------------------------------------
 Thu Jan  2 07:45:34 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.3:

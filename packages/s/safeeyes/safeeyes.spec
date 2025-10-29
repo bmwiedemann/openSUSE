@@ -1,7 +1,7 @@
 #
 # spec file for package safeeyes
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2020 opensuse.lietuviu.kalba@gmail.com
 #
@@ -35,9 +35,12 @@ BuildRequires:  python3-devel >= 3.6
 %else
 BuildRequires:  python3-devel >= 3.10
 %endif
+BuildRequires:  fdupes
+BuildRequires:  python3-pip
 BuildRequires:  python3-psutil
 BuildRequires:  python3-python-xlib
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 # MANUAL BEGIN
 Requires:       python3-Babel
@@ -71,10 +74,17 @@ sed 's/"default": 5,/"default": 60,/' -i safeeyes/plugins/smartpause/config.json
 %endif
 
 %build
-python3 setup.py build
+%python3_pyproject_wheel
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python3_pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
+# pip is only allowed to write to sitelib
+mkdir -p %{buildroot}%{_datadir}/applications
+mv %{buildroot}%{python3_sitelib}%{_datadir}/applications/* %{buildroot}%{_datadir}/applications
+mv %{buildroot}%{python3_sitelib}%{_datadir}/icons %{buildroot}%{_datadir}
+rm -r %{buildroot}%{python3_sitelib}/usr
+rm -r %{buildroot}%{python3_sitelib}/%{name}/platform
 
 # localization
 %find_lang %{name}
@@ -86,7 +96,7 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %{_datadir}/applications/io.github.slgobinath.SafeEyes.desktop
 %{_datadir}/icons/hicolor/*/*/
 %{python3_sitelib}/%{name}
-%{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
+%{python3_sitelib}/%{name}-%{version}.dist-info
 %exclude %{python3_sitelib}/%{name}/config/locale
 
 %files lang -f %{name}.lang

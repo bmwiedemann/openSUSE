@@ -134,4 +134,12 @@
 - Drop SafeEyes-Python3.6-compatibility.patch</comment>
     <requestid>1234491</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>bbd263fce228283576b98ad4c8b71207</srcmd5>
+    <version>2.2.3</version>
+    <time>1761768497</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1314313</requestid>
+  </revision>
 </revisionlist>
