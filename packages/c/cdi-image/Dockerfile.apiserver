@@ -28,6 +28,7 @@ COPY --from=target / /target
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends containerized-data-importer-api obs-service-cdi_containers_meta shadow
+RUN set -euo pipefail; rm -f /etc/blkid.conf
 # sanity check that the version from the tag is equal to the version of obs-service-cdi_containers_meta that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' obs-service-cdi_containers_meta | \
