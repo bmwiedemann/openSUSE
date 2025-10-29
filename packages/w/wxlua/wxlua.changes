@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 14 16:07:48 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Use lua-devel instead of the specific one.
+
+-------------------------------------------------------------------
+Tue Aug  5 15:37:22 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to make the package
+  building with CMake 4.*.
+- Don't do "buildtime" services for openSUSE packages, they are
+  not permitted.
+
+-------------------------------------------------------------------
 Wed Apr 12 11:40:34 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move files accidentally placed in devel to main package

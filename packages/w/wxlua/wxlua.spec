@@ -34,7 +34,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  lua54-devel
+BuildRequires:  lua-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -134,7 +134,8 @@ cmake .. \
 	-DwxLuaBind_COMPONENTS="%{binds}" \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-	-DCMAKE_SKIP_RPATH=TRUE
+	-DCMAKE_SKIP_RPATH=TRUE \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 pushd modules/luamodule
 make %{?_smp_mflags}

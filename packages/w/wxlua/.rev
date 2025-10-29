@@ -71,4 +71,17 @@
     <comment></comment>
     <requestid>1078635</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>78f16fcd01564e67cc104b3503778a0d</srcmd5>
+    <version>3.1.0.0+42</version>
+    <time>1761771520</time>
+    <user>anag_factory</user>
+    <comment>- Use lua-devel instead of the specific one.
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to make the package
+  building with CMake 4.*.
+- Don't do &quot;buildtime&quot; services for openSUSE packages, they are
+  not permitted.</comment>
+    <requestid>1312549</requestid>
+  </revision>
 </revisionlist>

@@ -7,8 +7,8 @@
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
