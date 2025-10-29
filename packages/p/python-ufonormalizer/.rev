@@ -51,4 +51,18 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284977</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ec92ea879ae76017d55b150be4c55899</srcmd5>
+    <version>0.6.3</version>
+    <time>1761768551</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.3
+  * Update scaffolding by @madig in (#97)
+  * Use trusted publishing by @madig in (#96)
+- Drop support for older Python versions
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Use Python 3.11 on SLE-15 by default (forwarded request 1314381 from glaubitz)</comment>
+    <requestid>1314406</requestid>
+  </revision>
 </revisionlist>
