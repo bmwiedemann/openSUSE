@@ -1,7 +1,7 @@
 #
 # spec file for package graphviz
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" != ""
@@ -60,7 +61,6 @@ Source1:        graphviz-rpmlintrc
 #PATCH-FIX-UPSTREAM add flags to also link against libGLU and libGL
 Patch0:         graphviz-smyrna-link_against_glu.patch
 Patch1:         graphviz-fix-pkgIndex.patch
-Patch3:         graphviz-2.20.2-interpreter_names.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -372,7 +372,6 @@ programs that use the graphviz libraries including man3 pages.
 %setup -q -n %{mname}-%{version}
 %patch -P 0 -p1
 %patch -P 1 -p1
-%patch -P 3 -p1
 
 # pkg-config returns 0 (TRUE) when guile-2.2 is present
 if pkg-config --atleast-version=2.2 guile-2.2; then

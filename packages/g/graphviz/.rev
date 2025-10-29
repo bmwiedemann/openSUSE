@@ -883,4 +883,12 @@ D    swig-4.1.0.patch
 - Remove old, unneeded condition: if 0%{?suse_version} == 1315</comment>
     <requestid>1313011</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>ed8bb77d579b43e46dc5c36bfcf596ac</srcmd5>
+    <version>14.0.0</version>
+    <time>1761768257</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1314283</requestid>
+  </revision>
 </revisionlist>
