@@ -19,9 +19,9 @@
 
 %define _lto_cflags %{nil}
 %define appid org.gnome.gitlab.YaLTeR.Identity
-%define rurl 5e547a55dfcabeefe187e342e7040091
+%define rurl 9d5a220c7a70c698a72755825adfd93b
 Name:           identity
-Version:        25.10
+Version:        25.10.1
 Release:        0
 Summary:        Compare images and videos
 License:        GPL-3.0-or-later
