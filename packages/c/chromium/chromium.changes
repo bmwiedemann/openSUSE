@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Oct 29 04:54:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 142.0.7444.59, the stable channel promotion of 142
+- drop chromium-142-dawn_commit_hash.patch, the generation of the
+  header was included in the tarball genration
+
+-------------------------------------------------------------------
+Mon Oct 27 10:33:34 CET 2025 - ro@suse.de
+
+- Chromium 142.0.7444.52
+- added patches:
+  chromium-142-rust-revert_should_panic.patch
+  re-add __rust_alloc_error_handler_should_panic
+  to fix unresolved symbol
+  chromium-142-dawn_commit_hash.patch:
+  create gpu/webgpu/dawn_commit_hash.h which should be in tarball
+  chromium-142-rust_no_sanitize.patch:
+  revert rust change no_sanitize to sanitize=off
+  chromium-142-iwyu-field-form-data.patch
+- drop chromium-139-pdfium-openjpeg-CVE-2025-54874.patch
+- update ppc patches
+  modified patches:
+  ppc-fedora-0001-sandbox-linux-Implement-partial-support-for-ppc64-sy.patch#
+  ppc-fedora-0001-third-party-hwy-wrong-include.patch
+  ppc-fedora-0002-regenerate-xnn-buildgn.patch
+  ppc-fedora-add-ppc64-architecture-to-extensions.diff
+  removed patches:
+  ppc-fedora-fix-ppc64-rust_png-build-error.patch (obsolete) 
+
+-------------------------------------------------------------------
 Tue Oct 21 21:52:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 141.0.7390.122:

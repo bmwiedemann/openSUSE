@@ -118,7 +118,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        141.0.7390.122
+Version:        142.0.7444.59
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -128,7 +128,7 @@ NoSource:       0
 # https://github.com/evanw/esbuild/archive/refs/tags/v%%{esbuild_version}.tar.gz
 Source1:        esbuild-%{esbuild_version}.tar.gz
 Source2:        esbuild-%{esbuild_version}-vendor.tar.gz
-Source3:        README.SUSE
+Source3:        README.openSUSE
 # Toolchain definitions
 Source30:       master_preferences
 Source104:      chromium-symbolic.svg
@@ -151,6 +151,7 @@ Patch9:         system-libdrm.patch
 # gentoo/fedora/arch patchset
 Patch15:        chromium-125-compiler.patch
 Patch98:        chromium-102-regex_pattern-array.patch
+Patch99:        chromium-142-iwyu-field-form-data.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch240:       chromium-117-string-convert.patch
@@ -167,11 +168,12 @@ Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
 Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 Patch377:       chromium-139-deterministic.patch
-Patch378:       chromium-139-pdfium-openjpeg-CVE-2025-54874.patch
 Patch379:       chromium-140-keep-__rust_no_alloc_shim_is_unstable.patch
 Patch380:       chromium-141-use_libcxx_modules.patch
 Patch381:       chromium-141-csss_style_sheet.patch
 Patch382:       chromium-141-no_cxx_modules.patch
+Patch383:       chromium-142-rust-revert_should_panic.patch
+Patch385:       chromium-142-rust_no_sanitize.patch
 # conditionally applied patches ppc64le only
 Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
 Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
@@ -227,7 +229,6 @@ Patch452:       ppc-fedora-dawn-fix-ppc64le-detection.patch
 Patch453:       ppc-fedora-add-ppc64-architecture-to-extensions.diff
 Patch454:       ppc-fedora-fix-unknown-warning-option-messages.diff
 Patch455:       ppc-fedora-add-ppc64-pthread-stack-size.patch
-Patch456:       ppc-fedora-fix-ppc64-rust_png-build-error.patch
 Patch457:       ppc-chromium-136-clang-config.patch
 Patch458:       ppc-fedora-0001-add-xnn-ppc64el-support.patch
 # https://src.fedoraproject.org/rpms/chromium/blob/rawhide/f/0002-regenerate-xnn-buildgn.patch
@@ -566,7 +567,6 @@ keeplibs=(
     buildtools/third_party/libc++abi
     buildtools/third_party/libunwind
     net/third_party/mozilla_security_manager
-    net/third_party/nss
     net/third_party/quic
     net/third_party/uri_template
     third_party/abseil-cpp
@@ -1030,7 +1030,6 @@ myconf_gn+=" blink_symbol_level=0"
 myconf_gn+=" use_kerberos=true"
 myconf_gn+=" enable_vr=false"
 myconf_gn+=" optimize_webui=false"
-myconf_gn+=" enable_reading_list=false"
 myconf_gn+=" use_pulseaudio=true link_pulseaudio=true"
 myconf_gn+=" is_component_build=false"
 myconf_gn+=" use_sysroot=false"

@@ -1,0 +1,14 @@
+README for openSUSE packagers
+=========================
+Patches for chromium can typically be found in the following places:
+
+Debian - https://salsa.debian.org/chromium-team/chromium/-/tree/master/debian/patches
+Exherbo - https://gitlab.exherbo.org/exherbo/desktop/-/tree/master/packages/net-www/chromium-beta
+Fedora - https://src.fedoraproject.org/rpms/chromium/tree/rawhide
+Gentoo - https://gitweb.gentoo.org/repo/gentoo.git/tree/www-client/chromium/files
+
+Defunct:
+Stephan Hartmann - https://github.com/stha09/chromium-patches/releases
+Arch - https://github.com/archlinux/svntogit-packages/tree/packages/chromium/trunk
+Arch: https://gitlab.com/Matt.Jolly/chromium-patches/
+

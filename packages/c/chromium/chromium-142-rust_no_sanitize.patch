@@ -1,0 +1,32 @@
+Index: chromium-142.0.7444.52/third_party/crabbyavif/BUILD.gn
+===================================================================
+--- chromium-142.0.7444.52.orig/third_party/crabbyavif/BUILD.gn
++++ chromium-142.0.7444.52/third_party/crabbyavif/BUILD.gn
+@@ -197,12 +197,12 @@ rust_static_library("crabbyavif") {
+     "dav1d",
+     "libyuv",
+     "capi",
+-    "disable_cfi",
++    #"disable_cfi",
+   ]
+ 
+   # Required for disable_cfi feature.
+   configs -= [ "//build/config/compiler:disallow_unstable_features" ]
+-  rustflags = [ "-Zallow-features=sanitize" ]
++  rustflags = [ "-Zallow-features=no_sanitize" ]
+ 
+   public_deps = [ ":header_files" ]
+   deps = [
+Index: chromium-142.0.7444.52/third_party/crabbyavif/src/src/reformat/libyuv.rs
+===================================================================
+--- chromium-142.0.7444.52.orig/third_party/crabbyavif/src/src/reformat/libyuv.rs
++++ chromium-142.0.7444.52/third_party/crabbyavif/src/src/reformat/libyuv.rs
+@@ -372,7 +372,7 @@ fn find_conversion_function(
+ // Returns Ok(Some(false)) if only YUV was converted and alpha
+ // needs to be imported separately.
+ // Returns Ok(None) if the conversion is not implemented.
+-#[cfg_attr(feature = "disable_cfi", sanitize(cfi = "off"))]
++#[cfg_attr(feature = "disable_cfi", no_sanitize(cfi))]
+ pub(crate) fn yuv_to_rgb(image: &image::Image, rgb: &mut rgb::Image) -> AvifResult<Option<bool>> {
+     if (rgb.depth != 8 && rgb.depth != 10) || !image.depth_valid() {
+         return Ok(None); // Not implemented.

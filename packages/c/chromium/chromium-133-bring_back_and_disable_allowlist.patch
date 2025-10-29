@@ -1,8 +1,8 @@
-Index: chromium-141.0.7378.3/media/base/media_switches.h
+Index: chromium-142.0.7444.3/media/base/media_switches.h
 ===================================================================
---- chromium-141.0.7378.3.orig/media/base/media_switches.h
-+++ chromium-141.0.7378.3/media/base/media_switches.h
-@@ -519,6 +519,8 @@ MEDIA_EXPORT BASE_DECLARE_FEATURE(
+--- chromium-142.0.7444.3.orig/media/base/media_switches.h
++++ chromium-142.0.7444.3/media/base/media_switches.h
+@@ -521,6 +521,8 @@ MEDIA_EXPORT BASE_DECLARE_FEATURE(
  
  MEDIA_EXPORT BASE_DECLARE_FEATURE(kUseWindowBoundsForPip);
  
@@ -11,11 +11,11 @@ Index: chromium-141.0.7378.3/media/base/media_switches.h
  MEDIA_EXPORT BASE_DECLARE_FEATURE(kMediaLogToConsole);
  
  MEDIA_EXPORT BASE_DECLARE_FEATURE(kLibvpxUseChromeThreads);
-Index: chromium-141.0.7378.3/media/base/media_switches.cc
+Index: chromium-142.0.7444.3/media/base/media_switches.cc
 ===================================================================
---- chromium-141.0.7378.3.orig/media/base/media_switches.cc
-+++ chromium-141.0.7378.3/media/base/media_switches.cc
-@@ -1687,6 +1687,11 @@ bool IsRestrictOwnAudioSupported() {
+--- chromium-142.0.7444.3.orig/media/base/media_switches.cc
++++ chromium-142.0.7444.3/media/base/media_switches.cc
+@@ -1690,6 +1690,11 @@ bool IsRestrictOwnAudioSupported() {
  #endif
  }
  
@@ -27,19 +27,19 @@ Index: chromium-141.0.7378.3/media/base/media_switches.cc
  #if BUILDFLAG(IS_WIN)
  bool IsMediaFoundationD3D11VideoCaptureEnabled() {
    return base::FeatureList::IsEnabled(kMediaFoundationD3D11VideoCapture);
-Index: chromium-141.0.7378.3/media/ffmpeg/ffmpeg_common.cc
+Index: chromium-142.0.7444.3/media/ffmpeg/ffmpeg_common.cc
 ===================================================================
---- chromium-141.0.7378.3.orig/media/ffmpeg/ffmpeg_common.cc
-+++ chromium-141.0.7378.3/media/ffmpeg/ffmpeg_common.cc
-@@ -16,6 +16,7 @@
- #include "media/base/audio_decoder_config.h"
+--- chromium-142.0.7444.3.orig/media/ffmpeg/ffmpeg_common.cc
++++ chromium-142.0.7444.3/media/ffmpeg/ffmpeg_common.cc
+@@ -17,6 +17,7 @@
+ #include "media/base/audio_timestamp_helper.h"
  #include "media/base/decoder_buffer.h"
  #include "media/base/encryption_scheme.h"
 +#include "media/base/media_switches.h"
  #include "media/base/media_util.h"
  #include "media/base/supported_types.h"
  #include "media/base/video_aspect_ratio.h"
-@@ -72,7 +73,8 @@ const char* GetAllowedVideoDecoders() {
+@@ -73,7 +74,8 @@ const char* GetAllowedVideoDecoders() {
  void ApplyCodecContextSecuritySettings(AVCodecContext* codec_context) {
    // Future versions of ffmpeg may copy the allow list from the format
    // context.
@@ -49,10 +49,10 @@ Index: chromium-141.0.7378.3/media/ffmpeg/ffmpeg_common.cc
      // Note: FFmpeg will try to free this string, so we must duplicate it.
      codec_context->codec_whitelist =
          av_strdup(codec_context->codec_type == AVMEDIA_TYPE_AUDIO
-Index: chromium-141.0.7378.3/media/filters/ffmpeg_glue.cc
+Index: chromium-142.0.7444.3/media/filters/ffmpeg_glue.cc
 ===================================================================
---- chromium-141.0.7378.3.orig/media/filters/ffmpeg_glue.cc
-+++ chromium-141.0.7378.3/media/filters/ffmpeg_glue.cc
+--- chromium-142.0.7444.3.orig/media/filters/ffmpeg_glue.cc
++++ chromium-142.0.7444.3/media/filters/ffmpeg_glue.cc
 @@ -137,8 +137,10 @@ FFmpegGlue::FFmpegGlue(FFmpegURLProtocol
    // memory usage.
    //

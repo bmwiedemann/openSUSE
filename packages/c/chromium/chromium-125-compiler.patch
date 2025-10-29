@@ -1,8 +1,8 @@
-Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
+Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
 ===================================================================
---- chromium-141.0.7378.3.orig/build/config/compiler/BUILD.gn
-+++ chromium-141.0.7378.3/build/config/compiler/BUILD.gn
-@@ -337,9 +337,7 @@ config("compiler") {
+--- chromium-142.0.7444.3.orig/build/config/compiler/BUILD.gn
++++ chromium-142.0.7444.3/build/config/compiler/BUILD.gn
+@@ -345,9 +345,7 @@ config("compiler") {
  
    configs += [
      # See the definitions below.
@@ -12,7 +12,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
      ":compiler_codegen",
      ":compiler_deterministic",
      ":clang_warning_suppression",
-@@ -634,64 +632,6 @@ config("compiler") {
+@@ -657,61 +655,6 @@ config("compiler") {
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -41,9 +41,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
 -
 -    # TODO(crbug.com/40283598): This causes binary size growth and potentially
 -    # other problems.
--    # TODO(crbug.com/40284925): This isn't supported by Cronet's mainline llvm version.
--    if (default_toolchain != "//build/toolchain/cros:target" &&
--        !llvm_android_mainline) {
+-    if (default_toolchain != "//build/toolchain/cros:target") {
 -      cflags += [
 -        "-mllvm",
 -        "-split-threshold-for-reg-with-hint=0",
@@ -68,8 +66,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
 -    # TODO(crbug.com/376278218): This causes segfault on Linux ARM builds.
 -    # It also causes segfault on Linux s390x:
 -    # https://github.com/llvm/llvm-project/issues/149511
--    if (is_linux && use_lld && !llvm_android_mainline && current_cpu != "arm" &&
--        current_cpu != "s390x") {
+-    if (is_linux && use_lld && current_cpu != "arm" && current_cpu != "s390x") {
 -      cflags += [ "-Wa,--crel,--allow-experimental-crel" ]
 -    }
 -  }
@@ -77,7 +74,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
    # C11/C++11 compiler flags setup.
    # ---------------------------
    if (is_linux || is_chromeos || is_android || current_os == "aix") {
-@@ -1642,43 +1582,6 @@ config("compiler_deterministic") {
+@@ -1683,43 +1626,6 @@ config("compiler_deterministic") {
      }
    }
  
@@ -121,7 +118,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
    # really need it and it can mess up the RBE cache entries.
-@@ -1705,87 +1608,6 @@ config("compiler_deterministic") {
+@@ -1746,88 +1652,6 @@ config("compiler_deterministic") {
    }
  }
  
@@ -179,7 +176,8 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
 -          "clang_revision=\"$_clang_revision\" but clang_version=\"$clang_version\". clang_version in build/toolchain/toolchain.gni is likely outdated.")
 -    }
 -
--    if (toolchain_has_rust && _perform_consistency_checks) {
+-    if (toolchain_has_rust && _perform_consistency_checks &&
+-        !rust_force_head_revision) {
 -      # Ensure that the synced rust version matches what's in git.
 -      _rust_revision_lines =
 -          filter_include(read_file("//tools/rust/update_rust.py", "list lines"),
@@ -209,7 +207,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
  # Controls the usage of a warning suppression mapping (WSM) file to suppress
  # warnings based on the path of the file they come from. It's controlled by the
  # `clang_warning_suppression_file` gn argument , which points to a text file
-@@ -2286,10 +2108,6 @@ config("chromium_code") {
+@@ -2318,10 +2142,6 @@ config("chromium_code") {
      }
    } else {
      cflags = [ "-Wall" ]
@@ -220,7 +218,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -2298,24 +2116,6 @@ config("chromium_code") {
+@@ -2330,24 +2150,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -245,7 +243,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
      if (is_apple) {
        cflags_objc = [ "-Wimplicit-retain-self" ]
        cflags_objcc = [ "-Wimplicit-retain-self" ]
-@@ -2735,7 +2535,8 @@ config("default_stack_frames") {
+@@ -2775,7 +2577,8 @@ config("default_stack_frames") {
  # [0]: https://pinpoint-dot-chromeperf.appspot.com/job/147634a8be0000
  # [1]: https://pinpoint-dot-chromeperf.appspot.com/job/132bc772be0000
  # [2]: https://crrev.com/c/5447532
@@ -255,7 +253,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
    if (is_win) {
      # clang-cl's /O2 corresponds to clang's -O3, and really want -O2 for
      # consistency with the other platforms.
-@@ -2784,7 +2585,8 @@ config("optimize") {
+@@ -2824,7 +2627,8 @@ config("optimize") {
  }
  
  # Turn off optimizations.
@@ -265,7 +263,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2819,7 +2621,8 @@ config("no_optimize") {
+@@ -2859,7 +2663,8 @@ config("no_optimize") {
  # Turns up the optimization level. Used to explicitly enable -O2 instead of
  # -Os for select targets on platforms that use optimize_for_size. No-op
  # elsewhere.
@@ -275,7 +273,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
    ldflags = common_optimize_on_ldflags
    if (is_win) {
      # Favor speed over size, /O2 must be before the common flags.
-@@ -2840,7 +2643,8 @@ config("optimize_max") {
+@@ -2880,7 +2685,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/41259697) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -285,7 +283,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
    ldflags = common_optimize_on_ldflags
    if (is_win) {
      # Favor speed over size, /O2 must be before the common flags.
-@@ -2857,7 +2661,8 @@ config("optimize_speed") {
+@@ -2897,7 +2703,8 @@ config("optimize_speed") {
    rustflags = [ "-Copt-level=3" ]
  }
  
@@ -295,7 +293,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -2984,7 +2789,8 @@ config("win_pdbaltpath") {
+@@ -3024,7 +2831,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -305,7 +303,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
    rustflags = []
    configs = []
    if (is_win) {
-@@ -3140,7 +2946,8 @@ config("symbols") {
+@@ -3189,7 +2997,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -315,7 +313,7 @@ Index: chromium-141.0.7378.3/build/config/compiler/BUILD.gn
    rustflags = []
    if (is_win) {
      # Functions, files, and line tables only.
-@@ -3216,7 +3023,8 @@ config("minimal_symbols") {
+@@ -3265,7 +3074,8 @@ config("minimal_symbols") {
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.

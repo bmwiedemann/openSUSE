@@ -34,7 +34,7 @@ Index: chromium-134.0.6998.35/sandbox/linux/system_headers/linux_syscalls.h
 ===================================================================
 --- chromium-134.0.6998.35.orig/sandbox/linux/system_headers/linux_syscalls.h
 +++ chromium-134.0.6998.35/sandbox/linux/system_headers/linux_syscalls.h
-@@ -35,5 +35,9 @@
+@@ -44,4 +44,8 @@
  #include "sandbox/linux/system_headers/arm64_linux_syscalls.h"
  #endif
  
@@ -43,7 +43,6 @@ Index: chromium-134.0.6998.35/sandbox/linux/system_headers/linux_syscalls.h
 +#endif
 +
  #endif  // SANDBOX_LINUX_SYSTEM_HEADERS_LINUX_SYSCALLS_H_
- 
 Index: chromium-134.0.6998.35/sandbox/linux/system_headers/ppc64_linux_syscalls.h
 ===================================================================
 --- /dev/null

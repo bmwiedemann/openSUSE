@@ -5961,4 +5961,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   * CVE-2025-12036: Inappropriate implementation in V8 (boo#1252402)</comment>
     <requestid>1312905</requestid>
   </revision>
+  <revision rev="485" vrev="1">
+    <srcmd5>e8a9e0d1b51d208043a527980f32dfbd</srcmd5>
+    <version>142.0.7444.59</version>
+    <time>1761768330</time>
+    <user>anag_factory</user>
+    <comment>Chromium 142.0.7444.59 (stable channel)</comment>
+    <requestid>1314230</requestid>
+  </revision>
 </revisionlist>

@@ -2,11 +2,11 @@ Index: chromium-128.0.6613.113/chrome/browser/extensions/api/runtime/chrome_runt
 ===================================================================
 --- chromium-128.0.6613.113.orig/chrome/browser/extensions/api/runtime/chrome_runtime_api_delegate.cc
 +++ chromium-128.0.6613.113/chrome/browser/extensions/api/runtime/chrome_runtime_api_delegate.cc
-@@ -375,6 +375,8 @@
+@@ -383,6 +383,8 @@
      info->arch = extensions::api::runtime::PlatformArch::kMips64;
-   } else if (UNSAFE_TODO(strcmp(arch, "riscv64")) == 0) {
+   } else if (arch == "riscv64") {
      info->arch = extensions::api::runtime::PlatformArch::kRiscv64;
-+  } else if (UNSAFE_TODO(strcmp(arch, "ppc64")) == 0) {
++  } else if (arch == "ppc64") {
 +    info->arch = extensions::api::runtime::PlatformArch::kPpc64;
    } else {
      NOTREACHED();

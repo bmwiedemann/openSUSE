@@ -1,7 +1,7 @@
-Index: chromium-114.0.5735.90/build/linux/unbundle/libdrm.gn
+Index: chromium-142.0.7444.3/build/linux/unbundle/libdrm.gn
 ===================================================================
---- chromium-114.0.5735.90.orig/build/linux/unbundle/libdrm.gn
-+++ chromium-114.0.5735.90/build/linux/unbundle/libdrm.gn
+--- chromium-142.0.7444.3.orig/build/linux/unbundle/libdrm.gn
++++ chromium-142.0.7444.3/build/linux/unbundle/libdrm.gn
 @@ -11,7 +11,10 @@ pkg_config("system_libdrm") {
  
  shim_headers("libdrm_shim") {
@@ -14,23 +14,10 @@ Index: chromium-114.0.5735.90/build/linux/unbundle/libdrm.gn
  }
  
  source_set("libdrm") {
-Index: chromium-114.0.5735.90/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
+Index: chromium-142.0.7444.3/media/gpu/chromeos/video_decoder_pipeline_unittest.cc
 ===================================================================
---- chromium-114.0.5735.90.orig/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
-+++ chromium-114.0.5735.90/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
-@@ -18,7 +18,7 @@
- #include "base/logging.h"
- #include "base/metrics/histogram_macros.h"
- #include "base/trace_event/typed_macros.h"
--#include "third_party/libdrm/src/include/drm/drm_fourcc.h"
-+#include <drm_fourcc.h>
- #include "third_party/perfetto/include/perfetto/tracing/traced_value.h"
- #include "third_party/skia/include/core/SkCanvas.h"
- #include "third_party/skia/include/core/SkImage.h"
-Index: chromium-114.0.5735.90/media/gpu/chromeos/video_decoder_pipeline_unittest.cc
-===================================================================
---- chromium-114.0.5735.90.orig/media/gpu/chromeos/video_decoder_pipeline_unittest.cc
-+++ chromium-114.0.5735.90/media/gpu/chromeos/video_decoder_pipeline_unittest.cc
+--- chromium-142.0.7444.3.orig/media/gpu/chromeos/video_decoder_pipeline_unittest.cc
++++ chromium-142.0.7444.3/media/gpu/chromeos/video_decoder_pipeline_unittest.cc
 @@ -26,7 +26,7 @@
  #include "media/gpu/chromeos/frame_resource_converter.h"
  #include "testing/gmock/include/gmock/gmock.h"
@@ -40,3 +27,16 @@ Index: chromium-114.0.5735.90/media/gpu/chromeos/video_decoder_pipeline_unittest
  
  #if BUILDFLAG(IS_CHROMEOS)
  // gn check does not account for BUILDFLAG(), so including this header will
+Index: chromium-142.0.7444.3/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
+===================================================================
+--- chromium-142.0.7444.3.orig/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
++++ chromium-142.0.7444.3/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
+@@ -19,7 +19,7 @@
+ #include "base/metrics/histogram_macros.h"
+ #include "base/trace_event/typed_macros.h"
+ #include "components/viz/common/resources/shared_image_format_utils.h"
+-#include "third_party/libdrm/src/include/drm/drm_fourcc.h"
++#include <drm_fourcc.h>
+ #include "third_party/perfetto/include/perfetto/tracing/traced_value.h"
+ #include "third_party/skia/include/core/SkCanvas.h"
+ #include "third_party/skia/include/core/SkImage.h"
