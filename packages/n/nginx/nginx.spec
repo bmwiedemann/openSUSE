@@ -23,7 +23,7 @@
 %bcond_with    ngx_google_perftools
 #
 Name:           nginx
-Version:        1.29.2
+Version:        1.29.3
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -31,7 +31,7 @@ Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/nginx/nginx
 Source0:        https://github.com/nginx/nginx/releases/download/release-%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/nginx/nginx/releases/download/release-%{version}/%{name}-%{version}.tar.gz.asc
-Source2:        https://nginx.org/keys/pluknet.key#/%{name}.keyring
+Source2:        https://nginx.org/keys/arut.key#/%{name}.keyring
 Source3:        %{name}.rpmlintrc
 Source4:        %{name}.logrotate
 Source5:        %{name}.service

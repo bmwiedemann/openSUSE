@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 28 14:01:13 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.29.3
+  * Changed nginx-conf.patch file.
+  * https://nginx.org/en/CHANGES
+  * Added the "add_header_inherit" and "add_trailer_inherit" directives.
+  * Added the $request_port and $is_request_port variables.
+  * Added the $ssl_sigalg and $ssl_client_sigalg variables.
+  * Added the "volatile" parameter of the "geo" directive.
+  * Added now certificate compression is available with BoringSSL.
+  * Fixed now certificate compression is disabled with OCSP stapling.
+
+-------------------------------------------------------------------
 Wed Oct  8 00:48:30 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.29.2

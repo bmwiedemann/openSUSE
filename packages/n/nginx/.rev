@@ -1320,4 +1320,20 @@
   * Fixed in SSL certificate caching during reconfiguration.</comment>
     <requestid>1309712</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>b8e3f21b30e157ea7b626eda327ec8bf</srcmd5>
+    <version>1.29.3</version>
+    <time>1761768246</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 1.29.3
+  * Changed nginx-conf.patch file.
+  * https://nginx.org/en/CHANGES
+  * Added the &quot;add_header_inherit&quot; and &quot;add_trailer_inherit&quot; directives.
+  * Added the $request_port and $is_request_port variables.
+  * Added the $ssl_sigalg and $ssl_client_sigalg variables.
+  * Added the &quot;volatile&quot; parameter of the &quot;geo&quot; directive.
+  * Added now certificate compression is available with BoringSSL.
+  * Fixed now certificate compression is disabled with OCSP stapling.</comment>
+    <requestid>1314089</requestid>
+  </revision>
 </revisionlist>
