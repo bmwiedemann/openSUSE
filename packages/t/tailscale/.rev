@@ -387,4 +387,16 @@
   * tailscaled starts up as expected in a no router configuration environment (forwarded request 1314048 from rrahl0)</comment>
     <requestid>1314049</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0a246566d180d1a266b16baa49c8a2cd</srcmd5>
+    <version>1.90.4</version>
+    <time>1761768492</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.90.4:
+  * deadlock issue no longer occurs in the client when checking
+    for the network to be available
+  * tailscaled no longer sporadically panics when a
+    Trusted Platform Module (TPM) device is present (forwarded request 1314301 from rrahl0)</comment>
+    <requestid>1314302</requestid>
+  </revision>
 </revisionlist>

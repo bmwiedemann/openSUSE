@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 29 09:50:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.90.4:
+  * deadlock issue no longer occurs in the client when checking
+    for the network to be available
+  * tailscaled no longer sporadically panics when a
+    Trusted Platform Module (TPM) device is present
+
+-------------------------------------------------------------------
 Tue Oct 28 11:12:50 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.90.3:
