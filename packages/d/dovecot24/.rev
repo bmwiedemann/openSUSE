@@ -161,4 +161,12 @@ bugowner: varkoly</comment>
   https://src.suse.de/products/SLFO/pulls/204 (bsc#1248485). (forwarded request 1300941 from gleidi)</comment>
     <requestid>1300953</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4f0edcf6a76389179fb1fc9e0bb20346</srcmd5>
+    <version>2.4.2</version>
+    <time>1761768482</time>
+    <user>anag_factory</user>
+    <comment>- Update dovecot to 2.4.2 (boo#1252839 CVE-2025-30189)</comment>
+    <requestid>1314350</requestid>
+  </revision>
 </revisionlist>

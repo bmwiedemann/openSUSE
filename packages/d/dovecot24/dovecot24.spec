@@ -17,8 +17,8 @@
 
 
 %define pkg_name dovecot
-%define dovecot_version 2.4.1-4
-%define dovecot_pigeonhole_version 2.4.1-4
+%define dovecot_version 2.4.2
+%define dovecot_pigeonhole_version 2.4.2
 %define dovecot_branch  2.4
 %define dovecot_pigeonhole_source_dir %{pkg_name}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
@@ -44,7 +44,7 @@
 %bcond_with run_tests
 
 Name:           dovecot24
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
@@ -62,8 +62,8 @@ Patch0:         dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 Patch1:         dovecot-2.4.0-lua_json.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         dovecot-2.3.17-env_script_interpreter.patch
-# PATCH-FIX-OPENSUSE
-Patch3:         dovecot-fix-gssapi.patch
+Patch3:         dovecot24-32bit-1.patch
+Patch4:         dovecot24-32bit-2.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -91,6 +91,7 @@ BuildRequires:  libmysqlclient-devel
 BuildRequires:  openldap2-devel >= 2.5.0
 BuildRequires:  pam-devel
 %endif
+BuildRequires:  pkgconfig(libpcre2-32)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libsystemd)
 %ifnarch s390x
@@ -298,7 +299,7 @@ gzip -9v ChangeLog
 
 %build
 # export CFLAGS="%%{optflags} -Wno-sign-compare"
-./autogen.sh
+# ./autogen.sh
 %configure                                          \
     --docdir=%{_docdir}/%{pkg_name}                 \
     --with-moduledir=%{_libdir}/%{pkg_name}/modules \
@@ -338,7 +339,7 @@ gzip -9v ChangeLog
 %make_build
 
 pushd %{dovecot_pigeonhole_source_dir}
-    ./autogen.sh
+    # ./autogen.sh
     %configure --with-dovecot=../ \
       --with-ldap=plugin \
       --docdir="%{dovecot_pigeonhole_docdir}"
@@ -488,6 +489,7 @@ fi
 %{_prefix}/lib/%{pkg_name}/quota-status
 %{_prefix}/lib/%{pkg_name}/managesieve
 %{_prefix}/lib/%{pkg_name}/managesieve-login
+%{_prefix}/lib/%{pkg_name}/settings-history.py
 %{_libdir}/%{pkg_name}/libdovecot.so.*
 %{_libdir}/%{pkg_name}/libdovecot-ldap.so.*
 %{_libdir}/%{pkg_name}/libdovecot-lua.so.*
@@ -501,6 +503,7 @@ fi
 %{_libdir}/%{pkg_name}/libdovecot-dsync.so.*
 %{_libdir}/%{pkg_name}/libdovecot-sieve.so.*
 %{_libdir}/%{pkg_name}/libdovecot-managesieve.so.*
+%{_libdir}/%{pkg_name}/libdovecot-gssapi.so.*
 # plugins
 %dir %{_libdir}/%{pkg_name}
 %dir %{_libdir}/%{pkg_name}/modules/
@@ -543,6 +546,7 @@ fi
 %{_libdir}/%{pkg_name}/modules/auth/libauthdb_ldap.so
 %{_libdir}/%{pkg_name}/modules/auth/libauthdb_lua.so
 %{_libdir}/%{pkg_name}/modules/auth/libmech_gssapi.so
+%{_libdir}/%{pkg_name}/modules/auth/libmech_gss_spnego.so
 %dir %{_libdir}/%{pkg_name}/modules/dict/
 %{_libdir}/%{pkg_name}/modules/dict/libdict_ldap.so
 # more dict modules are in the sql packages
@@ -684,5 +688,6 @@ fi
 %{_libdir}/%{pkg_name}/libdovecot-dsync.so
 %{_libdir}/%{pkg_name}/libdovecot-sieve.so
 %{_libdir}/%{pkg_name}/libdovecot-managesieve.so
+%{_libdir}/%{pkg_name}/libdovecot-gssapi.so
 
 %changelog
