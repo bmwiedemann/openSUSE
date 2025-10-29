@@ -17,7 +17,7 @@
 
 
 Name:           kubefirst
-Version:        2.10.2
+Version:        2.10.3
 Release:        0
 Summary:        CLI for the KubeFirst GitOps Infrastructure & Application Delivery Platform
 License:        MIT
