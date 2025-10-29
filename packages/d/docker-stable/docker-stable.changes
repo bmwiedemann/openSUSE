@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 27 23:55:45 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Enable SELinux in default daemon.json config (--selinux-enabled). This has no
+  practical impact on non-SELinux systems. bsc#1252290
+
+-------------------------------------------------------------------
 Mon Sep 29 05:25:36 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Remove git-core recommends on SLE. Most SLE systems have
