@@ -39,4 +39,13 @@
       performance. This patch makes the required modifications.</comment>
     <requestid>1282374</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>28aa8fc14458c59f2d83925e64bc1fb3</srcmd5>
+    <version>1.0.13</version>
+    <time>1761768377</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-314.patch:
+  * Explicitly list support for Python 3.14.</comment>
+    <requestid>1314222</requestid>
+  </revision>
 </revisionlist>

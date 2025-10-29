@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 29 00:54:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-314.patch:
+  * Explicitly list support for Python 3.14.
+
+-------------------------------------------------------------------
 Tue Jun  3 09:54:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.13
