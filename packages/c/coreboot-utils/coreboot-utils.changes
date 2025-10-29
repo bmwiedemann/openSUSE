@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 29 09:47:38 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Fix bsc#1252626, CVE-2025-62813
+A lz4_CVE-2025-62813_null_pointer_check.patch
+
+-------------------------------------------------------------------
 Sat Oct 11 16:02:48 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 25.09

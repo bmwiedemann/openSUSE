@@ -26,7 +26,8 @@ URL:            https://coreboot.org/
 Source0:        https://www.coreboot.org/releases/coreboot-%{version}.tar.xz
 Source1:        https://www.coreboot.org/releases/coreboot-%{version}.tar.xz.sig
 Source3:        %{name}.keyring
-Patch2:         do-explicit-fallthrough.patch
+Patch1:         do-explicit-fallthrough.patch
+Patch2:         lz4_CVE-2025-62813_null_pointer_check.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel
 BuildRequires:  pciutils-devel
