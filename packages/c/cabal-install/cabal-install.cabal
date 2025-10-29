@@ -2,7 +2,7 @@ Cabal-Version:      3.0
 
 Name:               cabal-install
 Version:            3.14.1.1
-x-revision: 3
+x-revision: 4
 Synopsis:           The command-line interface for Cabal and Hackage.
 Description:
     The \'cabal\' command-line program simplifies the process of managing
@@ -239,7 +239,7 @@ library
         process    >= 1.2.3.0  && < 1.7,
         random     >= 1.2      && < 1.4,
         stm        >= 2.0      && < 2.6,
-        tar        >= 0.5.0.3  && < 0.7,
+        tar        >= 0.5.0.3  && < 0.8,
         time       >= 1.5.0.1  && < 1.15,
         zlib       >= 0.5.3    && < 0.8,
         hackage-security >= 0.6.2.0 && < 0.7,
