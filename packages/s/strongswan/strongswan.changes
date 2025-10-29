@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 28 23:17:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.0.3
+  * Fixed a heap buffer overflow [CVE-2025-62291] in the
+    eap-mschapv2 plugin.
+  * Improved the detection of already unwrapped CKA_EC_POINTs in
+    the pkcs11 plugin, because the previous check could cause false
+    positives that resulted in mangled EC points.
+  * Initiated IKE SAs tracked by the controller (if initiated
+    manually or via start action) or the trap-manager (if initiated
+    via acquire) are now migrated if the SA is redirected during
+    IKE_AUTH (which creates a new IKE SA object).
+  * Fallback to the IKE identity if the client does not provide an
+    EAP-Identity.
+
+-------------------------------------------------------------------
 Mon Jul 14 21:10:28 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.0.2

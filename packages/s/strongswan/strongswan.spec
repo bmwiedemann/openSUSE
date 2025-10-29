@@ -1,7 +1,7 @@
 #
 # spec file for package strongswan
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 %bcond_without  systemd
 
 Name:           strongswan
-Version:        6.0.2
+Version:        6.0.3
 Release:        0
 Summary:        IPsec-based VPN solution
 License:        GPL-2.0-or-later
