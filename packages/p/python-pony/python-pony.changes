@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 29 01:29:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove skip for Python 3.12, it's supported.
+- Add skip for Python 3.14, it isn't.
+
+-------------------------------------------------------------------
 Wed Jun 11 05:49:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

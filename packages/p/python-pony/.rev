@@ -142,4 +142,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284623</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>642f81120f3f1d729b2894d5a074f5d8</srcmd5>
+    <version>0.7.19</version>
+    <time>1761768383</time>
+    <user>anag_factory</user>
+    <comment>- Remove skip for Python 3.12, it's supported.
+- Add skip for Python 3.14, it isn't.</comment>
+    <requestid>1314225</requestid>
+  </revision>
 </revisionlist>

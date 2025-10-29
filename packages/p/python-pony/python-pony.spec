@@ -1,7 +1,7 @@
 #
 # spec file for package python-pony
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 # not compatible: https://github.com/ponyorm/pony/blob/v0.7.17/setup.py#L112
-%define skip_python312 1
 %define skip_python313 1
+%define skip_python314 1
 Name:           python-pony
 Version:        0.7.19
 Release:        0
