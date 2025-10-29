@@ -1,7 +1,7 @@
 #
 # spec file for package ktextaddons
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ktextaddons
-Version:        1.6.0
+Version:        1.8.0
 Release:        0
 Summary:        Various text handling addons
 License:        LGPL-2.1-or-later
@@ -39,6 +39,7 @@ BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
@@ -105,6 +106,8 @@ This package provides development files to use ktextaddons in other applications
 %{_kf6_plugindir}/kf6/speechtotext/
 %{_kf6_plugindir}/kf6/textautogeneratetext/
 %{_kf6_libdir}/libtextautogenerateollama.so.*
+%{_kf6_libdir}/libtextautogenerategenericnetwork.so.*
+%{_kf6_libdir}/libtextautogenerate-cmark-rc-copy.so.*
 
 %files lang -f %{name}.lang
 
@@ -137,6 +140,7 @@ This package provides development files to use ktextaddons in other applications
 %{_kf6_cmakedir}/KF6TextSpeechToText/
 %{_kf6_cmakedir}/KF6TextTranslator/
 %{_kf6_cmakedir}/KF6TextUtils/
+%{_kf6_cmakedir}/textautogenerate-cmark-rc-copy/
 %{_kf6_includedir}/TextAddonsWidgets/
 %{_kf6_includedir}/TextAutoCorrectionCore/
 %{_kf6_includedir}/TextAutoCorrectionWidgets/
@@ -163,5 +167,6 @@ This package provides development files to use ktextaddons in other applications
 %{_kf6_libdir}/libKF6TextUtils.so
 %{_kf6_plugindir}/designer/textcustomeditor.so
 %{_kf6_plugindir}/designer/texttranslatorwidgets6.so
+%{_kf6_libdir}/libtextautogenerate-cmark-rc-copy.so
 
 %changelog
