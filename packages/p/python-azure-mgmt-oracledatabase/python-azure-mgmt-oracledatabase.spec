@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-oracledatabase
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        Microsoft Azure Oracledatabase Management Client Library for Python
 License:        MIT
