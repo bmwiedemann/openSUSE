@@ -731,4 +731,13 @@
   - https://github.com/linux-rdma/rdma-core/releases/tag/v59.0</comment>
     <requestid>1304845</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>9c63a15f330640093a7449fc8cfbc0ab</srcmd5>
+    <version>60.0</version>
+    <time>1761768243</time>
+    <user>anag_factory</user>
+    <comment>- Update to rdma-core v60.0
+  - https://github.com/linux-rdma/rdma-core/releases/tag/v60.0</comment>
+    <requestid>1314034</requestid>
+  </revision>
 </revisionlist>

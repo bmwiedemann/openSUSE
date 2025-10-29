@@ -4,5 +4,4 @@
 scripts, kernel driver-specific modprobe override configs, IPoIB network
 scripts, dracut rules, and the rdma-ndd utility.
 </description>
-  <devel project="science:HPC" package="rdma-core"/>
 </package>
