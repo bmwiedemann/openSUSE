@@ -28,14 +28,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-falcon
-Version:        4.0.2
+Version:        4.1.0
 Release:        0
 Summary:        A web framework for building APIs and app backends
 License:        Apache-2.0
 URL:            https://falconframework.org
 Source:         https://files.pythonhosted.org/packages/source/f/falcon/falcon-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/falconry/falcon/pull/2406 chore(tests/asgi): migrate to the new websockets async client
-Patch0:         websockets.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.8}
