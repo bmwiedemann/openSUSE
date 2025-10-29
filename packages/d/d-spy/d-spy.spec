@@ -20,7 +20,7 @@
 %define sover 1
 
 Name:           d-spy
-Version:        49.1
+Version:        49.2
 Release:        0
 Summary:        A D-Bus explorer for GNOME
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later

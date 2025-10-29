@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 29 06:36:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2:
+  + Hide parameters group when there are no parameters
+  + Don't truncate property values when copying
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 15 14:52:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.1:
