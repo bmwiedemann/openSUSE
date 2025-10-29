@@ -209,4 +209,14 @@
   * Fix segfault on exit #143</comment>
     <requestid>1310427</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6b80e4f0eac4d611510ffa3cbfb81203</srcmd5>
+    <version>2.5.0</version>
+    <time>1761768499</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.0:
+  * Add `-reuse-result` to replace the input with the result of the
+    last successful calculation #146</comment>
+    <requestid>1314316</requestid>
+  </revision>
 </revisionlist>

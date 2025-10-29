@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 29 10:30:08 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.0:
+  * Add `-reuse-result` to replace the input with the result of the
+    last successful calculation #146
+
+-------------------------------------------------------------------
 Fri Oct 10 05:07:35 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.4.1:
