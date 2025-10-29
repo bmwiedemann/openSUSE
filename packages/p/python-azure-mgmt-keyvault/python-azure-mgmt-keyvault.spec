@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-keyvault
-Version:        12.1.0
+Version:        12.1.1
 Release:        0
 Summary:        Microsoft Azure Key Vault Management Client Library
 License:        MIT
@@ -55,8 +55,6 @@ This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
 %setup -q -n azure_mgmt_keyvault-%{version}
-# see: https://github.com/Azure/azure-sdk-for-python/issues/43082
-rm -rf generated_samples generated_tests
 
 %build
 %pyproject_wheel

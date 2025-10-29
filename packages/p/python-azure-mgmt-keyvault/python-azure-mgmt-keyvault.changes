@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 29 11:31:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 12.1.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop workaround to remove samples and tests from source
+
+-------------------------------------------------------------------
 Mon Oct  6 10:52:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

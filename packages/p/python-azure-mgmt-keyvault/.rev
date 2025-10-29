@@ -284,4 +284,16 @@
 - Update Requires from pyproject.toml (forwarded request 1309249 from glaubitz)</comment>
     <requestid>1309254</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>de893a77c8188ebcd4bf986e080f9192</srcmd5>
+    <version>12.1.1</version>
+    <time>1761768511</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 12.1.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop workaround to remove samples and tests from source (forwarded request 1314336 from glaubitz)</comment>
+    <requestid>1314341</requestid>
+  </revision>
 </revisionlist>
