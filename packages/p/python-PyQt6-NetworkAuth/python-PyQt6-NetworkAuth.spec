@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyQt6-NetworkAuth
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-PyQt6-%{qtlib}
-Version:        6.9.0
+Version:        6.10.0
 Release:        0
 Summary:        Python bindings for the Qt Network Authorization library
 License:        GPL-3.0-only
