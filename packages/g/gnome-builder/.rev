@@ -708,4 +708,12 @@
 - Remove obsolete rpmlint filter no longer needed. (forwarded request 1307477 from iznogood)</comment>
     <requestid>1307899</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>6a24351d6776bb41fbbb7d6a596cae08</srcmd5>
+    <version>49.1</version>
+    <time>1761768484</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1314303</requestid>
+  </revision>
 </revisionlist>
