@@ -91,4 +91,14 @@
     <comment>- Remove unused build requires (forwarded request 1305214 from Andreas_Schwab)</comment>
     <requestid>1305271</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1a0f0e221a767db527dfe4dbbc3b094c</srcmd5>
+    <version>0.15.1</version>
+    <time>1761768340</time>
+    <user>anag_factory</user>
+    <comment>- Add RPM 4.20 declarative build system macros
+
+These allow reducing most spec file boilerplate to a simple BuildSystem: zig (forwarded request 1313383 from mia)</comment>
+    <requestid>1314099</requestid>
+  </revision>
 </revisionlist>

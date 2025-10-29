@@ -41,3 +41,8 @@
     %zig_build \\\
         test
 
+# Declarative build system, requires RPM 4.20+ to work
+# https://rpm-software-management.github.io/rpm/manual/buildsystem.html
+%buildsystem_zig_build() %zig_build %*
+%buildsystem_zig_install() %zig_install %*
+%buildsystem_zig_check() %zig_test %*
