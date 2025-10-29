@@ -131,4 +131,13 @@
 </comment>
     <requestid>1284333</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3e8e7e7b5c1cb6aa3dcfa81fd18ef519</srcmd5>
+    <version>6.10.0</version>
+    <time>1761768527</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.10.0
+  * Added support for Qt v6.10.</comment>
+    <requestid>1314371</requestid>
+  </revision>
 </revisionlist>
