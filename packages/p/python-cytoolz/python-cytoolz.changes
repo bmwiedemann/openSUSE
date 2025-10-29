@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 29 10:59:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.1.0
+  * Add support for Python 3.14, PyPy 3.11 (#225)
+  * Drop support for Python 3.8, PyPy 3.8 (#225)
+  * Add experimental (untested!) support for free-threading,
+    including building wheels (#225, #228)
+  * Update to match toolz 1.1.0 (#225)
+  * Faster concat (#218)
+  * Improve performance by avoiding global lookups (#219)
+  * Modernization (#225, #226, #227)
+    * Now PEP 517-compliant; use pyproject.toml and
+      setuptools.build_meta build backend
+    * Use setuptools-git-versioning instead of versioneer.py
+      for versioning
+    * Use Trusted Publishing between Github and PyPI to
+      publish releases to PyPI
+    * Generate artifact attestation for sdist and wheel
+    * Build wheels for more platforms (172 wheels built
+      for this release!)
+    * Add git pre-commit checks (but this isn't documented for contributors)
+      * These also get run in CI
+      * Including validate-pyproject, pyupgrade, actionlint, yamllint, zizmor
+- Move tests into different directory so pytest can find them
+- Remove C source code files from site-packages directory
+- Update BuildRequires from pyproject.toml
+- Update name for dist directory in %files section
+
+-------------------------------------------------------------------
 Thu Jan 23 11:13:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.1

@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cytoolz
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        High performance python functional utilities in Cython
 License:        BSD-3-Clause
 URL:            https://github.com/pytoolz/cytoolz
 Source:         https://files.pythonhosted.org/packages/source/c/cytoolz/cytoolz-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel >= 3.5}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -50,16 +50,22 @@ export CFLAGS="%{optflags}"
 
 %install
 %pyproject_install
+%python_expand find %{buildroot}%{$python_sitearch}/cytoolz -name "*.c" -exec rm {} \;
 %python_expand rm -r %{buildroot}%{$python_sitearch}/cytoolz/tests
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+# Move tests around so pytest can find them
+mkdir -p testing
+cp -rf cytoolz/tests/ testing/
+pushd testing
 %pytest_arch
+popd
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitearch}/cytoolz/
-%{python_sitearch}/cytoolz-%{version}*-info/
+%{python_sitearch}/cytoolz-*-info/
 
 %changelog
