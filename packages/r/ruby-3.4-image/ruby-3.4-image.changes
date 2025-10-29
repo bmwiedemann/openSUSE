@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 29 09:17:22 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- install missing dependency for rails 8
+
+-------------------------------------------------------------------
 Mon Oct 20 12:53:40 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove password change date from /etc/shadow to make the file reproducible
