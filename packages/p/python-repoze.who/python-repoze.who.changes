@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 29 03:05:13 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.0:
+  * Add support for Python 3.12 and 3.13.
+  * Drop support for Python 3.7 and 3.8.
+  * Require legacy-cgi on Python 3.13 or higher so WebOb works.
+  * Skip testing the crypt module if it does not exist, like on Python 3.13.
+- No longer skip build on Python 3.13.
+
+-------------------------------------------------------------------
 Wed Jun 11 12:45:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

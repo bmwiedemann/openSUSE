@@ -94,4 +94,17 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1284831</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>96eb212d794c293f3c80602b5dbe3ceb</srcmd5>
+    <version>3.1.0</version>
+    <time>1761768385</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.0:
+  * Add support for Python 3.12 and 3.13.
+  * Drop support for Python 3.7 and 3.8.
+  * Require legacy-cgi on Python 3.13 or higher so WebOb works.
+  * Skip testing the crypt module if it does not exist, like on Python 3.13.
+- No longer skip build on Python 3.13.</comment>
+    <requestid>1314227</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-repoze.who
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%global modname repoze.who
-%global skip_python313 1
+%global modname repoze_who
 %{?sle15_python_module_pythons}
 Name:           python-repoze.who
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Identification and authentication framework for WSGI
 License:        SUSE-Repoze
 URL:            http://www.repoze.org
 Source:         https://files.pythonhosted.org/packages/source/r/repoze.who/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module WebOb}
+BuildRequires:  %{python_module legacy-cgi if %python-base >= 3.13}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -35,7 +35,11 @@ BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-WebOb
+Requires:       python-setuptools
 Requires:       python-zope.interface
+%if %{python_version_nodots} >= 313
+Requires:       python-legacy-cgi >= 2.6
+%endif
 BuildArch:      noarch
 %python_subpackages
 
