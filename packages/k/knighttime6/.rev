@@ -7,4 +7,16 @@
     <comment>Plasma 6.5.0</comment>
     <requestid>1312805</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>58a210886d621a5c5917b0cebe128c1a</srcmd5>
+    <version>6.5.1</version>
+    <time>1761768329</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.5.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.1
+- Changes since 6.5.0:
+  * Update version for new release 6.5.1</comment>
+    <requestid>1314333</requestid>
+  </revision>
 </revisionlist>
