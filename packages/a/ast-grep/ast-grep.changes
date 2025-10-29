@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 29 10:40:43 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.39.7:
+  * feat: LSP quick fix should support expandStart / expandEnd #2301
+  * chore(deps): update dependency @ast-grep/napi to v0.39.6 6859809
+  * chore(deps): update dependency oxlint to v1.24.0 6ee2f84
+  * chore(deps): update dependency oxlint to v1.23.0 c88c8ca
+
+-------------------------------------------------------------------
 Fri Oct 10 05:16:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.39.6:
