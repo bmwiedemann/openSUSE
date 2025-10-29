@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 28 14:26:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.35 (.33 and .34 were not released):
+  * Features
+    - Updated built-in Swagger API docs
+      (http://localhost:3000/swagger/index.html)
+    - Added button for testing project alerts
+  * Bugfixes
+    - d2c2b4a feat(auth): add config option auth style for oidc
+      provider
+      https://github.com/semaphoreui/semaphore/issues/3348
+
+-------------------------------------------------------------------
 Mon Oct 13 11:03:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.16.32:
