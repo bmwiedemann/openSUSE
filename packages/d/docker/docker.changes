@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 27 23:55:45 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Enable SELinux in default daemon.json config (--selinux-enabled). This has no
+  practical impact on non-SELinux systems. bsc#1252290
+
+-------------------------------------------------------------------
 Wed Oct  8 16:45:29 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 28.5.1-ce. See upstream changelog online at

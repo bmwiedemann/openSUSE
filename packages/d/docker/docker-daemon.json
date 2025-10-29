@@ -4,5 +4,6 @@
   "log-opts": {
     "max-size": "10m",
     "max-file": "5"
-  }
+  },
+  "selinux-enabled": true
 }
