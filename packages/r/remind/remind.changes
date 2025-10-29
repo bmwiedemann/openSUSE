@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Oct 29 11:23:55 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+* VERSION 06.01.08 - 2025-10-27
+
+- BUG FIXES: tkremind: Fix many bugs with modal dialogs: Clicking too fast
+  to launch them could cause error messages; closing them with the window
+  manager "close" button rather than "Cancel" could cause errors.  Thanks
+  to Tug Williams for finding these bugs.
+
+- MINOR NEW FEATURE: tkremind: The "Print" dialog has a "Show Command"
+  button that lets you cut-and-paste the command tkremind would have used
+  for printing.  You can then customize it as you like.
+
+- MINOR FIXES: remind: A few silly errors in the man page were fixed.
+
+* VERSION 06.01.07 - 2025-10-23
+
+- IMPROVEMENT: tkremind: Add a "help" button that pops up the TkRemind man
+  page (and offers a browser for all the remind-related man pages.)
+
+- MINOR IMPROVEMENT: rem2pdf: Leave less whitespace between the day number and
+  the entries in a calendar box.
+
+- MINOR IMPROVEMENT: make test: If hunspell is installed, check the spelling
+  of *all* man pages.  Previously, some were being missed.
+
+- DOCUMENTATION IMPROVEMENT: WHATSNEW: Make the version numbers in this file
+  exactly match the ones reported by "remind --version".  That is, we say
+  "06.01.07" instead of "Version 6.1 Patch 7".
+
+* VERSION 06.01.06 - 2025-10-20
+
+- NEW FEATURE: rem2pdf: Add command-line options to set colors of various
+  parts of the calendar such as the gridlines, the day numbers, etc.
+
+- NEW FEATURE: rem2pdf: Add a command-line option to make the calendar title
+  into a hotlink to a URL that you supply.
+
+- IMPROVEMENT: remind: Make the tzconvert() function warn about possibly
+  invalid time zone names, similar to the warning issued by the TZ keyword.
+
+- IMPROVEMENT: "make test": If spellintian and hunspell are installed,
+  use them to spell-check and lint the man pages and README.md file.
+
+- PORTABILITY IMPROVEMENT: Make Remind compile on OpenIndiana (a
+  Solaris derivative.)  "make test" fails because of deficiencies in
+  the Solaris C library, however.
+
+- MINOR FIXES: Fix various spelling errors caught by hunspell.
+
+- BUG FIX: rem2pdf: Correct a bug in the coordinate-tracking of calendar boxes
+  so that SHADE fills the entire box and absolutely-positioned PANGO items
+  are positioned correctly.
+
+- MINOR BUG FIX: remind: Suppress spurious debugging output when using
+  "-dt" flag with a TZ clause.
+
+- MINOR BUG FIX: remind: For the purposes of purge mode, don't consider a
+  non-constant expression in the *body* of a reminder to be a problem.
+
+- MINOR BUG FIX: remind: Fix a couple of (unlikely-to-be-triggered) memory
+  leaks.
+
+- MINOR BUG FIX: include/holidays/jewish.rem: Don't leak private
+  functions and variables to the calling file. 
+
+-------------------------------------------------------------------
 Thu Oct  9 20:00:55 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 * VERSION 6.1 Patch 5 - 2025-10-09

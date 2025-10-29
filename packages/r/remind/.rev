@@ -923,4 +923,41 @@
   msgsuffix() hack if you want advance warning of holidays.</comment>
     <requestid>1310387</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>769d8a82c500160e9c316161bfb0768c</srcmd5>
+    <version>6.1.8</version>
+    <time>1761768509</time>
+    <user>anag_factory</user>
+    <comment>* VERSION 06.01.08 - 2025-10-27
+- BUG FIXES: tkremind: Fix many bugs with modal dialogs: Clicking too fast
+  to launch them could cause error messages; closing them with the window
+  manager &quot;close&quot; button rather than &quot;Cancel&quot; could cause errors.  Thanks
+  to Tug Williams for finding these bugs.
+- MINOR NEW FEATURE: tkremind: The &quot;Print&quot; dialog has a &quot;Show Command&quot;
+  button that lets you cut-and-paste the command tkremind would have used
+  for printing.  You can then customize it as you like.
+- MINOR FIXES: remind: A few silly errors in the man page were fixed.
+* VERSION 06.01.07 - 2025-10-23
+- IMPROVEMENT: tkremind: Add a &quot;help&quot; button that pops up the TkRemind man
+  page (and offers a browser for all the remind-related man pages.)
+- MINOR IMPROVEMENT: rem2pdf: Leave less whitespace between the day number and
+  the entries in a calendar box.
+- MINOR IMPROVEMENT: make test: If hunspell is installed, check the spelling
+  of *all* man pages.  Previously, some were being missed.
+- DOCUMENTATION IMPROVEMENT: WHATSNEW: Make the version numbers in this file
+  exactly match the ones reported by &quot;remind --version&quot;.  That is, we say
+  &quot;06.01.07&quot; instead of &quot;Version 6.1 Patch 7&quot;.
+* VERSION 06.01.06 - 2025-10-20
+- NEW FEATURE: rem2pdf: Add command-line options to set colors of various
+  parts of the calendar such as the gridlines, the day numbers, etc.
+- NEW FEATURE: rem2pdf: Add a command-line option to make the calendar title
+  into a hotlink to a URL that you supply.
+- IMPROVEMENT: remind: Make the tzconvert() function warn about possibly
+  invalid time zone names, similar to the warning issued by the TZ keyword.
+- IMPROVEMENT: &quot;make test&quot;: If spellintian and hunspell are installed,
+  use them to spell-check and lint the man pages and README.md file.
+- PORTABILITY IMPROVEMENT: Make Remind compile on OpenIndiana (a
+  Solaris derivative.)  &quot;make test&quot; fails because of deficiencies in</comment>
+    <requestid>1314335</requestid>
+  </revision>
 </revisionlist>
