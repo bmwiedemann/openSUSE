@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 28 22:07:10 UTC 2025 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 2.7.3:
+  * fix: return supported values for flags when calling Values.Type()
+  * Fix bootstrap e2e test for image policy
+  * Pin cosign to v2.6.1
+  * Update toolkit components
+
+-------------------------------------------------------------------
 Thu Oct 09 05:14:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.7.2:
