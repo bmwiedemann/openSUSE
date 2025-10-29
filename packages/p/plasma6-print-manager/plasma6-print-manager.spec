@@ -27,14 +27,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-print-manager
-Version:        6.5.0
+Version:        6.5.1
 Release:        0
 Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         %{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cups-devel >= 2.4
@@ -80,7 +80,8 @@ plasma6-print-manager provides tools for managing print jobs and printers.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6
+%cmake_kf6 \
+  -DQT_QML_NO_CACHEGEN:BOOL=TRUE
 
 %kf6_build
 
