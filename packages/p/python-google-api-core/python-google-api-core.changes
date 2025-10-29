@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 28 14:19:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.28.0
+  * Provide and use Python version support check (#832)
+- from version 2.27.0
+  * Support for async bidi streaming apis (#836)
+
+-------------------------------------------------------------------
 Thu Oct  9 14:23:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.26.0
