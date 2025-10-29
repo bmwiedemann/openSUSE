@@ -1,7 +1,7 @@
 #
 # spec file for package gplugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,8 +40,7 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(lua)
-BuildRequires:  pkgconfig(luajit)
+BuildRequires:  pkgconfig(lua) >= 5.1
 BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  pkgconfig(python3)
 

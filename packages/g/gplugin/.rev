@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1241986</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f92d89b73327bd3fa4bd2143ec9ab6df</srcmd5>
+    <version>0.44.2</version>
+    <time>1761768370</time>
+    <user>anag_factory</user>
+    <comment>- fix build on Tumbleweed, as it otherwise chooses luajit (which got
+  added by accident) (forwarded request 1314203 from rrahl0)</comment>
+    <requestid>1314204</requestid>
+  </revision>
 </revisionlist>
