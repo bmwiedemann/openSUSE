@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 29 15:48:22 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 3.0.2
+  * Security Fixes:
+  * When a hostname or FQDN received from a client is reduced to an
+    empty string by hostname sanitizing, kea-dhcp4 and kea-dhcp6
+    will now drop the option.
+    [CVE-2025-11232, bsc#1252863]
+  * Bug fixes:
+  * Removed logging an error in ping check hook library if using
+    lease cache treshold.
+  * Fixed deadlock in ping-check hooks library.
+  * Fixed a data race in ping-check hooks library.
+
+-------------------------------------------------------------------
+Tue Oct 28 22:43:30 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- New shorter version of kea-boost1_89.patch
+
+-------------------------------------------------------------------
 Sun Oct 26 13:08:05 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix building with Boost >= 1.89

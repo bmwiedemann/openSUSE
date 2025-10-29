@@ -26,11 +26,11 @@
 %define database_sover 76
 %define dhcp_sover 109
 %define dhcp_ddns_sover 68
-%define dhcpsrv_sover 130
+%define dhcpsrv_sover 131
 %define dns_sover 71
 %define eval_sover 84
 %define exceptions_sover 45
-%define hooks_sover 119
+%define hooks_sover 120
 %define http_sover 87
 %define log_interprocess_sover 3
 %define log_sover 75
@@ -42,7 +42,7 @@
 %define util_io_sover 12
 %define util_sover 101
 Name:           kea
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0
