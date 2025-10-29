@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 28 03:13:49 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- bsc1251958_CVE-2025-62229_0001-present-Fix-use-after-free-in-present_create_notifie.patch
+  * Use-after-free in XPresentNotify structures creation
+    (CVE-2025-62229, bsc#1251958)
+- bsc1251959_CVE-2025-62230_0001-xkb-Make-the-RT_XKBCLIENT-resource-private.patch
+  bsc1251959_CVE-2025-62230_0002-xkb-Free-the-XKB-resource-when-freeing-XkbInterest.patch
+  * Use-after-free in Xkb client resource removal
+    (CVE-2025-62230, bsc#1251959)
+- bsc1251960_CVE-2025-62231_0001-xkb-Prevent-overflow-in-XkbSetCompatMap.patch
+  * Value overflow in Xkb extension XkbSetCompatMap()
+    (CVE-2025-62231, bsc#1251960)
+
+-------------------------------------------------------------------
 Thu Oct  2 11:05:40 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - redefine %meson_build/%meson_install on Leap 15.6 in order to fix
