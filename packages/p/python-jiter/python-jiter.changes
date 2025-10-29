@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 29 04:09:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.11.1:
+  * Impl std::error::Error for error types
+  * Keep strings before incomplete escape sequences in partial mode
+  * Trailing bytes partial mode
+  * Bump pyo3 to 0.25, update supported Python versions
+  * Fix float_mode default value in from_json() stub definition
+  * replace cached_py_string and pystring_fast_new with safe alternatives
+  * Update to a current version of lexical-parse-float
+  * update JsonValue allow_partial to use PartialMode
+  * partial parsing with JsonValue
+  * support float_mode='decimal'
+  * correct PyO3 feature usage
+  * make fuzz checks more lenient
+  * iterative algorithm for take_value
+  * feat: Make num-bigint optional
+
+-------------------------------------------------------------------
 Thu Sep 26 21:04:12 UTC 2024 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Fixed %{?sle15_python_module_pythons} 

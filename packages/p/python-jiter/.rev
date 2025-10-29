@@ -15,4 +15,26 @@
     <comment></comment>
     <requestid>1218767</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bfb4accf73f95e8eb62cdf293e6bc501</srcmd5>
+    <version>0.11.1</version>
+    <time>1761768386</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.11.1:
+  * Impl std::error::Error for error types
+  * Keep strings before incomplete escape sequences in partial mode
+  * Trailing bytes partial mode
+  * Bump pyo3 to 0.25, update supported Python versions
+  * Fix float_mode default value in from_json() stub definition
+  * replace cached_py_string and pystring_fast_new with safe alternatives
+  * Update to a current version of lexical-parse-float
+  * update JsonValue allow_partial to use PartialMode
+  * partial parsing with JsonValue
+  * support float_mode='decimal'
+  * correct PyO3 feature usage
+  * make fuzz checks more lenient
+  * iterative algorithm for take_value
+  * feat: Make num-bigint optional</comment>
+    <requestid>1314229</requestid>
+  </revision>
 </revisionlist>
