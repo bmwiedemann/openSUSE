@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 28 21:05:52 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add mozjs128-CVE-2025-62813.patch: fix possible crash when
+  processing untrusted LZ4 frames (bsc#1252607 CVE-2025-62813).
+
+-------------------------------------------------------------------
 Fri Aug 22 17:41:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 128.14.0:
