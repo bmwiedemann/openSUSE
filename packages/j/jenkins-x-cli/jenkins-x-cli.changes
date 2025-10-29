@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 29 05:41:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.26:
+  * chore(deps): upgrade jenkins-x-plugins/jx-project to version
+    0.2.80
+
+-------------------------------------------------------------------
 Fri Oct 17 05:06:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.16.25:
