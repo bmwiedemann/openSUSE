@@ -4,5 +4,4 @@
 libfabric provides a user-space API to access high-performance fabric
 services, such as RDMA.
   </description>
-  <devel project="science:HPC" package="libfabric"/>
 </package>

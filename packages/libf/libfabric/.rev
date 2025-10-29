@@ -725,4 +725,41 @@ Binary file libfabric-1.6.0.0.0e74cba7ad59.tar.bz2 (revision 11) deleted</commen
     <comment></comment>
     <requestid>1304987</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>09a1934b4feab91d5d7bac139ac0c014</srcmd5>
+    <version>2.3.1</version>
+    <time>1761768245</time>
+    <user>anag_factory</user>
+    <comment>- Update to v2.3.1
+  - Core
+    - include/windows: Add definition for realpath()
+  - EFA
+    - Tune recvwindow and peer reorder buffer pool sizes
+    - Allocate peer reorder buffers from a pre-allocated pool
+    - Allocate peer map entry pool during the rdm ep create
+    - Create shm info on demand for efa_rdm_ep_open
+    - Check whether to enable shm inside efa_shm_info_create
+    - Ring doorbell when reaching the max batch wqe cnt
+    - Fix the queued ope progress in ep close
+    - Logging improvements and unit test fix
+    - Grab srx lock when releasing rx entries in AV close
+    - Remove duplicate macro for rdma sge limit
+    - Fix memory leak from efa_srx_unexp_pkt unit test
+    - Fix unit test build error for rdma-core without HAVE_CAPS_UNSOLICITED_WRITE_RECV
+    - Check rdma iov limit in data path direct
+    - Add packet entry flag tracking for double linked list management
+    - Remove the extra dlist remove for peers in ep close
+    - Add traces for completions bypassing util-cq
+    - Update shared domain caps and modes
+    - Move domain check inside the fabric lock
+    - Take domain lock to protect concurrent access to domain fields
+    - Return matching fabric/domain in fi_getinfo
+    - Remove duplicated efa_cq_construct_cq_entry
+    - Fix the memleak for efa_rdm_peer
+    - Introduce error status for ope
+    - Cleanup the queue flags after dlist_remove
+    - Allocate cq err_buf on demand
+    - Bypass util cq in the data path of efa-direct</comment>
+    <requestid>1314066</requestid>
+  </revision>
 </revisionlist>

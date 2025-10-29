@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Oct 23 20:01:17 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v2.3.1
+  - Core
+    - include/windows: Add definition for realpath()
+  - EFA
+    - Tune recvwindow and peer reorder buffer pool sizes
+    - Allocate peer reorder buffers from a pre-allocated pool
+    - Allocate peer map entry pool during the rdm ep create
+    - Create shm info on demand for efa_rdm_ep_open
+    - Check whether to enable shm inside efa_shm_info_create
+    - Ring doorbell when reaching the max batch wqe cnt
+    - Fix the queued ope progress in ep close
+    - Logging improvements and unit test fix
+    - Grab srx lock when releasing rx entries in AV close
+    - Remove duplicate macro for rdma sge limit
+    - Fix memory leak from efa_srx_unexp_pkt unit test
+    - Fix unit test build error for rdma-core without HAVE_CAPS_UNSOLICITED_WRITE_RECV
+    - Check rdma iov limit in data path direct
+    - Add packet entry flag tracking for double linked list management
+    - Remove the extra dlist remove for peers in ep close
+    - Add traces for completions bypassing util-cq
+    - Update shared domain caps and modes
+    - Move domain check inside the fabric lock
+    - Take domain lock to protect concurrent access to domain fields
+    - Return matching fabric/domain in fi_getinfo
+    - Remove duplicated efa_cq_construct_cq_entry
+    - Fix the memleak for efa_rdm_peer
+    - Introduce error status for ope
+    - Cleanup the queue flags after dlist_remove
+    - Allocate cq err_buf on demand
+    - Bypass util cq in the data path of efa-direct
+    - Fix the unsolicited write recv support in unit-test
+    - Add unit-tests for lock types
+    - Shift the src_addr correctly in sreadfrom
+    - Acquire the same lock for qp lifecycle
+    - Ignore stale cqes from destroyed qps
+    - Use IBV_QUERY_QP_DATA_IN_ORDER_DEVICE_ONLY flag when available
+  - OPX
+    - 0 byte write_data Error
+    - 16B 3-nodes seg fault with openmpi
+    - Atomics and bounce buffer fixes
+    - Only open IPC cache if HMEM initialized and IPC enabled
+    - Fix ROCR IPC build errors
+    - Use getpid() instead of gettid() for POSIX compliancy.
+    - Fix compilation error
+  - RXD
+    - Fix return of EAGAIN when not enough tx entries
+  - UCX
+    - Use noop callback in ucx_inject_write
+    - Add a noop callback function for inject send path
+  - UDP
+    - Cleanup CQ parameters
+    - Fix CQ overflow case
+  - Util
+    - Remove unmatched rx entry from unspec unexpected queue
+    - Add status enum to util rx entry
+    - Extract helper function to lookup existing fabric/domain
+    - Use hints name for fabric/domain lookup
+  - Verbs
+    - Return PCI bus information with fi_getinfo()
+    - Fix compiler warning on the bound of 'strncpy' call
+  - Fabtests
+    - efa: Run FI_MORE test with more iterations
+    - efa: Add implicit AV test
+    - Split OOB address exchange function
+    - efa: Fix the av operation
+    - efa: Improve rnr_read_cq_error test
+- Drop prov-opx-fix-compilation-error.patch which was merged upstream.
+
+-------------------------------------------------------------------
 Mon Sep  8 08:54:07 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v2.3.0

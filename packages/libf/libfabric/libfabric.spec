@@ -17,7 +17,7 @@
 
 
 #
-%define git_ver .0.ea52cb54c
+%define git_ver .0.413a2d315
 
 %ifarch aarch64 %power64 x86_64 s390x riscv64
   %if 0%{?suse_version} > 1530
@@ -30,15 +30,15 @@
 %endif
 
 Name:           libfabric
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        baselibs.conf
+Source100:      README.md
 Patch0:         libfabric-libtool.patch
-Patch1:         prov-opx-fix-compilation-error.patch
 URL:            http://www.github.com/ofiwg/libfabric
 BuildRequires:  autoconf
 BuildRequires:  automake
