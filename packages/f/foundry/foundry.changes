@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Wed Oct 29 06:42:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.1:
+  + Flatpak build pipeline
+  + Ensure we have a pipeline to prepare for build
+  + Propagate error when D-Bus is not available
+  + Only queue podman update if db.sql changed
+  + Try to avoid some common data dirs when scanning for files
+  + meson-templates: only set DEVELOPMENT_BUILD when true
+  + Override WAYLAND_DISPLAY for run environment when filtered by
+    flatpak
+
+-------------------------------------------------------------------
+Wed Sep 24 19:48:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Do not run testsuite on ix86, arm and s390x as it fails, and
+  nobody cares enough to fix it.
+
+-------------------------------------------------------------------
+Sat Sep 13 08:35:09 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.0:
+  + Give access to VIM im context from FoundrySourceView
+  + Simplified GActions for many FoundryService-derived managers
+  + Foundry executable is now dynamically linked
+  + FoundrySearchResult gained icon support
+  + New API to allow creating a PTY producer from a consumer FD
+  + Many fit'n'finish fixes for 1.0 API
+  + The FoundryFileManager can now discover content-type from a
+    filename if the content-type is not provided to determine
+    appropriate symbolic icons.
+  + Improvements to terminal palette parsing
+  + A new FoundryMenuProxy enables easily integrationg with
+    GMenuModel with a menu ID referenced in the applications
+    merged menus (See FoundryMenuManager).
+  + The fallback storage for extended attributes (SQLite) now
+    properly ensures uniqueness for columns based on file URI.
+  + Some API was renamed to improve future expansion.
+
+-------------------------------------------------------------------
+Wed Sep  3 07:54:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Initial package, version 1.0.rc

@@ -1,0 +1,8 @@
+<package name="foundry" project="openSUSE:Factory">
+  <title>IDE library and command-line companion tool (development files)</title>
+  <description>This tool aims to extract much of what makes GNOME Builder an IDE into a
+library and companion command-line tool.
+
+This package contains the development headers.</description>
+  <url>https://gitlab.gnome.org/GNOME/foundry</url>
+</package>
