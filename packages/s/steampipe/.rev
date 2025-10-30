@@ -166,4 +166,25 @@
   * Add smoke test workflow (#4602) (forwarded request 1307126 from ph03nix)</comment>
     <requestid>1307154</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c651190b4849133fa5d1227b2efec8e8</srcmd5>
+    <version>2.3.0</version>
+    <time>1761844758</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * v2.3.0
+  * Improve table truncation message for datasets exceeding 10k rows, show the same message in batch queries as well (#4675)
+  * [dep][go](deps): Bump github.com/jackc/pgx/v5 from 5.7.3 to 5.7.6 (#4660)
+  * [dep][go](deps): Bump github.com/hashicorp/go-plugin from 1.6.3 to 1.7.0 (#4662)
+  * [dep][go](deps): Bump github.com/spf13/cobra from 1.9.1 to 1.10.1 (#4659)
+  * [dep][actions](deps): Bump actions/setup-go from 5.5.0 to 6.0.0 (#4663)
+  * [dep][actions](deps): Bump actions/cache from 4.2.4 to 4.3.0 (#4664)
+  * [dep][actions](deps): Bump actions/checkout from 4.2.2 to 5.0.0 (#4666)
+  * [dep][actions](deps): Bump docker/login-action from 3.5.0 to 3.6.0 (#4667)
+  * [dep][actions](deps): Bump actions/stale from 9.1.0 to 10.1.0 (#4669)
+  * [dep][go](deps): Bump github.com/jedib0t/go-pretty/v6 (#4672)
+  * Update embedded postgresql version to 14.19  (#4671)
+  * update changelog v2.2.0 (forwarded request 1314528 from ph03nix)</comment>
+    <requestid>1314571</requestid>
+  </revision>
 </revisionlist>
