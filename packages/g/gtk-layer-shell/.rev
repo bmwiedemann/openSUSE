@@ -216,4 +216,16 @@
   * Depends: require wayland-protocols &gt;=1.16.0 to build</comment>
     <requestid>1281727</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1124478b419ca00f5ac59d14491779c9</srcmd5>
+    <version>0.10.0</version>
+    <time>1761840613</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.10.0:
+  * API: add gtk_layer_set_respect_close()/gtk_layer_get_respect_close()
+  * Fix: ignore .closed event by default, #209
+  * Fix: protocol error on popup menu tooltop, #207
+  * Tests: support optionally running under Valgrind</comment>
+    <requestid>1314503</requestid>
+  </revision>
 </revisionlist>

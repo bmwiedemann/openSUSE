@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 30 07:32:56 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * API: add gtk_layer_set_respect_close()/gtk_layer_get_respect_close()
+  * Fix: ignore .closed event by default, #209
+  * Fix: protocol error on popup menu tooltop, #207
+  * Tests: support optionally running under Valgrind
+
+-------------------------------------------------------------------
 Mon Jun  2 05:30:17 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.2:
