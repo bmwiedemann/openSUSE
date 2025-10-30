@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 30 08:01:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.6.3:
+  * Greater control over showing and hiding empty staves
+  * Dramatically improved real-time playback performance
+  * Major new features for piano, voice, and guitar notation
+  * Completely reworked chord symbol handling
+  * Support for any SMuFL-compliant music font
+  * VST3 plugin support on Linux
+  * Many workflow refinements, and much more
+
+-------------------------------------------------------------------
 Tue Oct 14 23:40:52 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Fix building against Qt 6.10
