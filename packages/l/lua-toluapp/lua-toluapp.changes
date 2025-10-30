@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:51:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 13 14:10:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package buildable with LuaJIT.
+- Add lua-compatibility.patch to cover for the incompatibilities.
+- Remove tolua++-1.0.93-lua52.patch which has been folded into
+  the previous patch.
+
+-------------------------------------------------------------------
 Thu Feb 22 09:54:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

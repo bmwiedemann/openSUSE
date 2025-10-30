@@ -1,8 +1,12 @@
+---
+ SConstruct |    8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
 Index: toluapp-1.0.93/SConstruct
 ===================================================================
---- toluapp-1.0.93.orig/SConstruct
-+++ toluapp-1.0.93/SConstruct
-@@ -16,7 +16,11 @@ elif 'msvc' in env['TOOLS']:
+--- toluapp-1.0.93.orig/SConstruct	2025-10-13 16:32:08.143176758 +0200
++++ toluapp-1.0.93/SConstruct	2025-10-13 16:32:58.631888989 +0200
+@@ -18,7 +18,11 @@
  else:
  	options_file = "posix"
  
@@ -15,3 +19,12 @@ Index: toluapp-1.0.93/SConstruct
  opts.Add('CC', 'The C compiler.')
  opts.Add('CXX', 'The C++ compiler (for the tests)')
  opts.Add('CCFLAGS', 'Flags for the compiler.', ['-O2', '-Wall'])
+@@ -69,7 +73,7 @@
+ 	pkg = open(source, "rt")
+ 
+ 	for linea in pkg:
+-		dep = re.search("^[\t\w]*\$[cphl]file\s*\"([^\"]+)\"", linea)
++		dep = re.search(r"^[\t\w]*\$[cphl]file\s*\"([^\"]+)\"", linea)
+ 		if dep:
+ 			self.Depends(target, '#' + dep.groups()[0]);
+ 

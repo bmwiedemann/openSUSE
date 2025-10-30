@@ -19,12 +19,13 @@
 %define flavor @BUILD_FLAVOR@
 %define mod_name toluapp
 %define lua_suffix %(lua -e 'print(_VERSION)' | cut -d ' ' -f 2 |sed -e 's:\.:_:')
+%if "%{flavor}" == "luajit"
+%define lua_value  52
+%else
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-%if "%{flavor}" == "lua51"
-%define lua_suffix 5_1
 %endif
-%if "%{flavor}" == "lua52"
-%define lua_suffix 5_2
+%if "%{flavor}" == "luajit"
+%define lua_suffix 5_1
 %endif
 %if "%{flavor}" == "lua53"
 %define lua_suffix 5_3
@@ -40,14 +41,16 @@ Group:          Development/Languages/Other
 URL:            https://github.com/LuaDist/toluapp
 Source:         https://github.com/LuaDist/toluapp/archive/%{version}/toluapp-%{version}.tar.gz
 Patch0:         toluapp-libdir.patch
-Patch1:         toluapp-versioned-shared-lib.patch
-Patch2:         toluapp-build-compare.patch
-Patch3:         tolua++-1.0.93-lua52.patch
-Patch4:         toluapp-scons-py3.patch
+Patch1:         toluapp-scons-py3.patch
+Patch2:         toluapp-versioned-shared-lib.patch
+Patch3:         toluapp-build-compare.patch
+#PATCH-FIX-OPENSUSE mlin@suse.com - scons env.Copy() has been deprecated, use env.Clone() instead if needed
+Patch4:         toluapp-fix-deprecared-env-copy.patch
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org - scons Options() is deprecated in 0.98.1, use Variables() instead
 Patch5:         scons-0.98.1-Options-deprecated.patch
-#PATCH-FIX-OPENSUSE mlin@suse.com - scons env.Copy() has been deprecated, use env.Clone() instead if needed
-Patch6:         toluapp-fix-deprecared-env-copy.patch
+# PATCH-FIX-UPSTREAM lua-compatibility.patch bsc#[0-9]+ mcepl@suse.com
+# make the code compatible with all Lua APIs >= 5.1
+Patch6:         lua-compatibility.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc-c++
 BuildRequires:  lua-macros
@@ -92,7 +95,7 @@ This package provides shared libraries for tolua++.
 Summary:        Development headers for tolua++
 Group:          Development/Libraries/C and C++
 Requires:       toluapp-%{lua_version}
-Conflicts:      otherproviders(toluapp-devel)
+Conflicts:      toluapp-devel
 Provides:       toluapp-devel = %{version}
 
 %description -n libtolua++-%{lua_suffix}-devel
@@ -100,15 +103,9 @@ This package provides development headers for tolua++.
 
 %prep
 %setup -q -n toluapp-%{version}
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-%if "%{flavor}" != "lua51"
-%patch -P 3 -p1
-%endif
+find . -name \*.lua -exec sed -i 's/\r/\n/g; s/\n$//' '{}' +
+%autopatch -p1
+
 sed -i "s/@SUFFIX@/%{lua_version}/" SConstruct
 
 %build

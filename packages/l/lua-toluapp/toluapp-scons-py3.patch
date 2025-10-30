@@ -1,8 +1,12 @@
+---
+ SConstruct |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
 Index: toluapp-1.0.93/SConstruct
 ===================================================================
---- toluapp-1.0.93.orig/SConstruct
-+++ toluapp-1.0.93/SConstruct
-@@ -52,9 +52,9 @@ env['TOLUAPP_BOOTSTRAP'] = env['tolua_bi
+--- toluapp-1.0.93.orig/SConstruct	2025-10-13 18:29:14.209840999 +0200
++++ toluapp-1.0.93/SConstruct	2025-10-13 18:29:15.010128928 +0200
+@@ -50,9 +50,9 @@
  env['build_dev'] = int(env['build_dev'])
  
  ## detecting the install directory on win32
@@ -14,7 +18,7 @@ Index: toluapp-1.0.93/SConstruct
  		env['prefix'] = env['MSVS']['PLATFORMSDKDIR']
  
  
-@@ -68,7 +68,7 @@ def pkg_scan_dep(self, target, source):
+@@ -66,7 +66,7 @@
  	## TODO: detectar si el archivo existe antes de abrirlo asi nomas
  	pkg = open(source, "rt")
  
@@ -23,7 +27,7 @@ Index: toluapp-1.0.93/SConstruct
  		dep = re.search("^[\t\w]*\$[cphl]file\s*\"([^\"]+)\"", linea)
  		if dep:
  			self.Depends(target, '#' + dep.groups()[0]);
-@@ -91,7 +91,7 @@ def make_tolua_code(self, target, source
+@@ -89,7 +89,7 @@
  			tolua = 'bin\\'+self['TOLUAPP_BOOTSTRAP']
  		else:
  			tolua = 'bin/'+self['TOLUAPP_BOOTSTRAP']

@@ -92,4 +92,17 @@
     <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1149138</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>b9b4fa1344001b40d0f9eb4c764a1ef0</srcmd5>
+    <version>1.0.93</version>
+    <time>1761840653</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Make the package buildable with LuaJIT.
+- Add lua-compatibility.patch to cover for the incompatibilities.
+- Remove tolua++-1.0.93-lua52.patch which has been folded into
+  the previous patch.</comment>
+    <requestid>1313583</requestid>
+  </revision>
 </revisionlist>

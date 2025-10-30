@@ -1,7 +1,44 @@
+---
+ SConstruct                     |    2 ++
+ config_linux.py                |    4 ++--
+ config_posix.py                |    2 +-
+ include/tolua++.h              |    7 +++++--
+ src/bin/SCsub                  |    4 ++--
+ src/bin/lua/all.lua            |    2 +-
+ src/bin/lua/basic.lua          |   20 ++++++++++++--------
+ src/bin/lua/class.lua          |    6 +++---
+ src/bin/lua/clean.lua          |    4 ++--
+ src/bin/lua/compat-5.1.lua     |    6 +++---
+ src/bin/lua/compat.lua         |   13 ++++++++-----
+ src/bin/lua/declaration.lua    |    4 ++--
+ src/bin/lua/feature.lua        |    2 +-
+ src/bin/lua/function.lua       |    2 +-
+ src/bin/lua/package.lua        |   20 ++++++++++----------
+ src/bin/lua/template_class.lua |    8 ++++----
+ src/bin/tolua.c                |   27 ++++++++++++++++-----------
+ src/lib/tolua_event.c          |   18 +++++++++++++++++-
+ src/lib/tolua_is.c             |    2 +-
+ src/lib/tolua_map.c            |   35 ++++++++++++++++++++++-------------
+ src/lib/tolua_push.c           |    6 ++++--
+ 21 files changed, 119 insertions(+), 75 deletions(-)
+
+Index: toluapp-1.0.93/SConstruct
+===================================================================
+--- toluapp-1.0.93.orig/SConstruct	2025-10-13 18:34:10.155194536 +0200
++++ toluapp-1.0.93/SConstruct	2025-10-13 18:34:11.251071137 +0200
+@@ -89,6 +89,8 @@
+ 	header = target[:-2] + '.h'
+ 	pheader = Dir('.').path + '/' + header
+ 
++	print("Generating ", target, " from ", source)
++
+ 	tolua = ""
+ 	if bootstrap:
+ 		if os.name == 'nt':
 Index: toluapp-1.0.93/config_linux.py
 ===================================================================
---- toluapp-1.0.93.orig/config_linux.py
-+++ toluapp-1.0.93/config_linux.py
+--- toluapp-1.0.93.orig/config_linux.py	2012-08-24 03:01:53.000000000 +0200
++++ toluapp-1.0.93/config_linux.py	2025-10-13 18:34:11.251503108 +0200
 @@ -4,7 +4,7 @@
  
  # Compiler flags (based on Debian's installation of lua)
@@ -11,30 +48,65 @@ Index: toluapp-1.0.93/config_linux.py
  #CCFLAGS = ['-I/usr/include/lua50', '-g']
  
  # this is the default directory for installation. Files will be installed on
-@@ -18,5 +18,5 @@ CCFLAGS = ['-I/usr/include/lua50', '-O2'
+@@ -18,5 +18,5 @@
  prefix = '/usr/local'
  
  # libraries (based on Debian's installation of lua)
 -LIBS = ['lua50', 'lualib50', 'dl', 'm']
 +LIBS = ['lua', 'dl', 'm']
  
-Index: toluapp-1.0.93/SConstruct
+Index: toluapp-1.0.93/config_posix.py
 ===================================================================
---- toluapp-1.0.93.orig/SConstruct
-+++ toluapp-1.0.93/SConstruct
-@@ -85,6 +85,8 @@ def make_tolua_code(self, target, source
- 	header = target[:-2] + '.h'
- 	pheader = Dir('.').path + '/' + header
+--- toluapp-1.0.93.orig/config_posix.py	2012-08-24 03:01:53.000000000 +0200
++++ toluapp-1.0.93/config_posix.py	2025-10-13 18:34:11.251778425 +0200
+@@ -16,7 +16,7 @@
+ prefix = '/usr/local'
  
-+	print("Generating ", target, " from ", source)
+ # libraries
+-LIBS = ['lua', 'lualib', 'm']
++LIBS = ['lua', 'm']
+ 
+ 
+ 
+Index: toluapp-1.0.93/include/tolua++.h
+===================================================================
+--- toluapp-1.0.93.orig/include/tolua++.h	2012-08-24 03:01:53.000000000 +0200
++++ toluapp-1.0.93/include/tolua++.h	2025-10-13 18:34:11.252055068 +0200
+@@ -46,10 +46,13 @@
+ #include "lua.h"
+ #include "lauxlib.h"
+ 
++#if !defined(LUA_VERSION_NUM) || LUA_VERSION_NUM < 502
++#  define luaL_getn(L, i) ((int)lua_objlen(L, i))
++#endif
 +
- 	tolua = ""
- 	if bootstrap:
- 		if os.name == 'nt':
+ struct tolua_Error
+ {
+-	int index;
+-	int array;
++ int index;	int array;
+ 	const char* type;
+ };
+ typedef struct tolua_Error tolua_Error;
+Index: toluapp-1.0.93/src/bin/SCsub
+===================================================================
+--- toluapp-1.0.93.orig/src/bin/SCsub	2012-08-24 03:01:53.000000000 +0200
++++ toluapp-1.0.93/src/bin/SCsub	2025-10-13 18:34:11.252301470 +0200
+@@ -5,8 +5,8 @@
+ 	]
+ 
+ 
+-toluabind = env.LuaBinding('toluabind.c', 'tolua_scons.pkg', 'tolua', bootstrap = True)
++#toluabind = env.LuaBinding('toluabind.c', 'tolua_scons.pkg', 'tolua', bootstrap = True)
+ 
+-env.bin_target = env.Program('#/bin/'+env['tolua_bin'], src + [toluabind], LIBS = ['$tolua_lib'] + env['LIBS'])
++env.bin_target = env.Program('#/bin/'+env['tolua_bin'], src, LIBS = ['$tolua_lib'] + env['LIBS'])
+ 
+ env.bootstrap_target = env.Program('#/bin/'+env['TOLUAPP_BOOTSTRAP'], src + ['toluabind_default.c', env.lib_target_static], LIBS = env['LIBS'])
 Index: toluapp-1.0.93/src/bin/lua/all.lua
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/lua/all.lua
-+++ toluapp-1.0.93/src/bin/lua/all.lua
+--- toluapp-1.0.93.orig/src/bin/lua/all.lua	2025-10-13 18:33:57.203290200 +0200
++++ toluapp-1.0.93/src/bin/lua/all.lua	2025-10-13 18:34:11.252570501 +0200
 @@ -1,8 +1,8 @@
  dofile(path.."compat-5.1.lua")
  dofile(path.."compat.lua")
@@ -47,9 +119,19 @@ Index: toluapp-1.0.93/src/bin/lua/all.lua
  dofile(path.."container.lua")
 Index: toluapp-1.0.93/src/bin/lua/basic.lua
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/lua/basic.lua
-+++ toluapp-1.0.93/src/bin/lua/basic.lua
-@@ -75,8 +75,8 @@ function appendrenaming (s)
+--- toluapp-1.0.93.orig/src/bin/lua/basic.lua	2025-10-13 18:33:57.203847677 +0200
++++ toluapp-1.0.93/src/bin/lua/basic.lua	2025-10-13 18:34:11.252831080 +0200
+@@ -10,7 +10,8 @@
+ -- the author has no obligation to provide maintenance, support, updates,
+ -- enhancements, or modifications.
+ 
+-
++-- Compatibility shim
++local unpack = table.unpack or unpack
+ -- Basic C types and their corresponding Lua types
+ -- All occurrences of "char*" will be replaced by "_cstring",
+ -- and all occurrences of "void*" will be replaced by "_userdata"
+@@ -75,8 +76,8 @@
  end
  
  function applyrenaming (s)
@@ -60,7 +142,7 @@ Index: toluapp-1.0.93/src/bin/lua/basic.lua
  		if n ~= 0 then
  		 return m
  		end
-@@ -252,7 +252,8 @@ end
+@@ -252,7 +253,8 @@
  -- concatenate all parameters, following output rules
  function concatparam (line, ...)
   local i=1
@@ -70,7 +152,7 @@ Index: toluapp-1.0.93/src/bin/lua/basic.lua
    if _cont and not strfind(_cont,'[%(,"]') and
       strfind(arg[i],"^[%a_~]") then
  	    line = line .. ' '
-@@ -263,7 +264,7 @@ function concatparam (line, ...)
+@@ -263,7 +265,7 @@
    end
    i = i+1
   end
@@ -79,7 +161,7 @@ Index: toluapp-1.0.93/src/bin/lua/basic.lua
    _cont=nil line = line .. '\n'
   end
  	return line
-@@ -272,7 +273,8 @@ end
+@@ -272,7 +274,8 @@
  -- output line
  function output (...)
   local i=1
@@ -89,7 +171,7 @@ Index: toluapp-1.0.93/src/bin/lua/basic.lua
    if _cont and not strfind(_cont,'[%(,"]') and
       strfind(arg[i],"^[%a_~]") then
  	    write(' ')
-@@ -283,7 +285,7 @@ function output (...)
+@@ -283,7 +286,7 @@
    end
    i = i+1
   end
@@ -98,7 +180,7 @@ Index: toluapp-1.0.93/src/bin/lua/basic.lua
    _cont=nil write('\n')
   end
  end
-@@ -373,9 +375,10 @@ function pre_register_hook(package)
+@@ -373,9 +376,10 @@
  
  end
  
@@ -106,15 +188,15 @@ Index: toluapp-1.0.93/src/bin/lua/basic.lua
  -- called to output an error message
  function output_error_hook(...)
 -	return string.format(...)
-+	return string.format(table.unpack{...})
++	return string.format(unpack{...})
  end
  
  -- custom pushers
 Index: toluapp-1.0.93/src/bin/lua/class.lua
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/lua/class.lua
-+++ toluapp-1.0.93/src/bin/lua/class.lua
-@@ -92,7 +92,7 @@ function classClass:decltype ()
+--- toluapp-1.0.93.orig/src/bin/lua/class.lua	2025-10-13 18:33:57.204120828 +0200
++++ toluapp-1.0.93/src/bin/lua/class.lua	2025-10-13 18:34:11.253061558 +0200
+@@ -92,7 +92,7 @@
  	self.btype = typevar(self.base)
  	self.ctype = 'const '..self.type
  	if self.extra_bases then
@@ -123,7 +205,7 @@ Index: toluapp-1.0.93/src/bin/lua/class.lua
  			self.extra_bases[i] = typevar(self.extra_bases[i])
  		end
  	end
-@@ -138,9 +138,9 @@ end
+@@ -138,9 +138,9 @@
  -- Expects the name, the base (array) and the body of the class.
  function Class (n,p,b)
  
@@ -137,9 +219,9 @@ Index: toluapp-1.0.93/src/bin/lua/class.lua
  		b = b.."\n}"
 Index: toluapp-1.0.93/src/bin/lua/clean.lua
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/lua/clean.lua
-+++ toluapp-1.0.93/src/bin/lua/clean.lua
-@@ -19,14 +19,14 @@ MASK = { -- the substitution order is im
+--- toluapp-1.0.93.orig/src/bin/lua/clean.lua	2025-10-13 18:33:57.204330493 +0200
++++ toluapp-1.0.93/src/bin/lua/clean.lua	2025-10-13 18:34:11.253247337 +0200
+@@ -19,14 +19,14 @@
  }
  
  function mask (s)
@@ -158,26 +240,27 @@ Index: toluapp-1.0.93/src/bin/lua/clean.lua
   return s
 Index: toluapp-1.0.93/src/bin/lua/compat-5.1.lua
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/lua/compat-5.1.lua
-+++ toluapp-1.0.93/src/bin/lua/compat-5.1.lua
-@@ -25,10 +25,10 @@ local function pp_dofile(path)
+--- toluapp-1.0.93.orig/src/bin/lua/compat-5.1.lua	2025-10-13 18:33:57.204792497 +0200
++++ toluapp-1.0.93/src/bin/lua/compat-5.1.lua	2025-10-13 18:34:11.253449110 +0200
+@@ -25,10 +25,10 @@
  		end
  	end
  
 -	local f = load(getfile, path)
 +	local f, errmsg = load(getfile, path)
  	if not f then
- 	
+-	
 -		error("error loading file "..path)
++
 +		error("error loading file "..path ..": " .. errmsg)
  	end
  	return f()
  end
 Index: toluapp-1.0.93/src/bin/lua/compat.lua
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/lua/compat.lua
-+++ toluapp-1.0.93/src/bin/lua/compat.lua
-@@ -40,15 +40,13 @@ function do_ (f, err)
+--- toluapp-1.0.93.orig/src/bin/lua/compat.lua	2025-10-13 18:33:57.204992803 +0200
++++ toluapp-1.0.93/src/bin/lua/compat.lua	2025-10-13 18:34:11.253523003 +0200
+@@ -40,18 +40,17 @@
    end
  end
  
@@ -195,16 +278,22 @@ Index: toluapp-1.0.93/src/bin/lua/compat.lua
  tinsert = tab.insert
  tremove = tab.remove
  sort = tab.sort
-@@ -78,7 +76,7 @@ floor = math.floor
++unpack = table.unpack or unpack
+ 
+ -------------------------------------------------------------------
+ -- Debug library
+@@ -78,7 +77,9 @@
  frexp = math.frexp
  ldexp = math.ldexp
  log = math.log
 -log10 = math.log10
-+log10 = function(val) return math.log(10, val) end
++-- Lua PCU 5.1 math.log doesn’t read the second argument
++-- and it is ONLY the natural logarithm
++log10 = function(val) return math.log(val) / math.log(10) end
  max = math.max
  min = math.min
  mod = math.mod
-@@ -177,17 +175,19 @@ end
+@@ -177,6 +178,7 @@
  
  function read (...)
    local f = _INPUT
@@ -212,9 +301,7 @@ Index: toluapp-1.0.93/src/bin/lua/compat.lua
    if rawtype(arg[1]) == 'userdata' then
      f = tab.remove(arg, 1)
    end
--  return f:read(unpack(arg))
-+  return f:read(table.unpack(arg))
- end
+@@ -185,6 +187,7 @@
  
  function write (...)
    local f = _OUTPUT
@@ -222,15 +309,11 @@ Index: toluapp-1.0.93/src/bin/lua/compat.lua
    if rawtype(arg[1]) == 'userdata' then
      f = tab.remove(arg, 1)
    end
--  return f:write(unpack(arg))
-+  return f:write(table.unpack(arg))
- end
- 
 Index: toluapp-1.0.93/src/bin/lua/declaration.lua
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/lua/declaration.lua
-+++ toluapp-1.0.93/src/bin/lua/declaration.lua
-@@ -137,7 +137,7 @@ function resolve_template_types(type)
+--- toluapp-1.0.93.orig/src/bin/lua/declaration.lua	2025-10-13 18:33:57.205763647 +0200
++++ toluapp-1.0.93/src/bin/lua/declaration.lua	2025-10-13 18:34:11.253903711 +0200
+@@ -137,7 +137,7 @@
  	if b then
  
  		m = split_c_tokens(string.sub(m, 2, -2), ",")
@@ -239,7 +322,7 @@ Index: toluapp-1.0.93/src/bin/lua/declaration.lua
  			m[i] = string.gsub(m[i],"%s*([%*&])", "%1")
  			if not isbasic(m[i]) then
  				if not isenum(m[i]) then _, m[i] = applytypedef("", m[i]) end
-@@ -522,7 +522,7 @@ function Declaration (s,kind,is_paramete
+@@ -522,7 +522,7 @@
   end
  
   -- check the form: mod type* name
@@ -250,9 +333,9 @@ Index: toluapp-1.0.93/src/bin/lua/declaration.lua
    t[2] = gsub(t[2],'\1','%*') -- restore * in dimension expression
 Index: toluapp-1.0.93/src/bin/lua/feature.lua
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/lua/feature.lua
-+++ toluapp-1.0.93/src/bin/lua/feature.lua
-@@ -132,7 +132,7 @@ function classFeature:cfuncname (n)
+--- toluapp-1.0.93.orig/src/bin/lua/feature.lua	2025-10-13 18:33:57.206592460 +0200
++++ toluapp-1.0.93/src/bin/lua/feature.lua	2025-10-13 18:34:11.254122316 +0200
+@@ -132,7 +132,7 @@
   if not fname or fname == '' then
   	fname = self.name
   end
@@ -263,9 +346,9 @@ Index: toluapp-1.0.93/src/bin/lua/feature.lua
  end
 Index: toluapp-1.0.93/src/bin/lua/function.lua
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/lua/function.lua
-+++ toluapp-1.0.93/src/bin/lua/function.lua
-@@ -520,7 +520,7 @@ end
+--- toluapp-1.0.93.orig/src/bin/lua/function.lua	2025-10-13 18:33:57.206794233 +0200
++++ toluapp-1.0.93/src/bin/lua/function.lua	2025-10-13 18:34:11.254306698 +0200
+@@ -520,7 +520,7 @@
  function join(t, sep, first, last)
  
  	first = first or 1
@@ -276,9 +359,19 @@ Index: toluapp-1.0.93/src/bin/lua/function.lua
  	local loop = false
 Index: toluapp-1.0.93/src/bin/lua/package.lua
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/lua/package.lua
-+++ toluapp-1.0.93/src/bin/lua/package.lua
-@@ -39,7 +39,7 @@ function classPackage:preprocess ()
+--- toluapp-1.0.93.orig/src/bin/lua/package.lua	2025-10-13 18:34:08.677254902 +0200
++++ toluapp-1.0.93/src/bin/lua/package.lua	2025-10-13 18:34:11.254530681 +0200
+@@ -9,7 +9,8 @@
+ -- the author has no obligation to provide maintenance, support, updates,
+ -- enhancements, or modifications.
+ 
+-
++-- Compatibility shim
++local unpack = table.unpack or unpack
+ 
+ -- Package class
+ -- Represents the whole package being bound.
+@@ -39,7 +40,7 @@
   self.code = gsub(self.code,"\n%s*%$%]","\2")
   self.code = gsub(self.code,"(%b\1\2)",       function (c)
                                                 tinsert(L,c)
@@ -287,7 +380,7 @@ Index: toluapp-1.0.93/src/bin/lua/package.lua
                                                end)
   -- avoid preprocessing embedded C code
   local C = {}
-@@ -47,14 +47,14 @@ function classPackage:preprocess ()
+@@ -47,14 +48,14 @@
   self.code = gsub(self.code,"\n%s*%$%>","\4")
   self.code = gsub(self.code,"(%b\3\4)",       function (c)
                                                 tinsert(C,c)
@@ -304,7 +397,7 @@ Index: toluapp-1.0.93/src/bin/lua/package.lua
                                                end)
  
   --self.code = gsub(self.code,"\n%s*#[^d][^\n]*\n", "\n\n") -- eliminate preprocessor directives that don't start with 'd'
-@@ -64,7 +64,7 @@ function classPackage:preprocess ()
+@@ -64,7 +65,7 @@
   local V = {}
   self.code = gsub(self.code,"\n(%s*%$[^%[%]][^\n]*)",function (v)
                                                 tinsert(V,v)
@@ -313,7 +406,7 @@ Index: toluapp-1.0.93/src/bin/lua/package.lua
                                                end)
  
   -- perform global substitution
-@@ -152,14 +152,14 @@ function classPackage:preamble ()
+@@ -152,14 +153,14 @@
  	if flags.t then
  		output("#ifndef Mtolua_typeid\n#define Mtolua_typeid(L,TI,T)\n#endif\n")
  	end
@@ -330,25 +423,16 @@ Index: toluapp-1.0.93/src/bin/lua/package.lua
   output('}')
   output('\n')
  end
-@@ -288,7 +288,7 @@ function Package (name,fn)
- 				local t = {code=s}
- 				extra = string.gsub(extra, "^%s*,%s*", "")
- 				local pars = split_c_tokens(extra, ",")
--				include_file_hook(t, fn, unpack(pars))
-+				include_file_hook(t, fn, table.unpack(pars))
- 				return "\n\n" .. t.code
- 			else
- 				error('#Invalid include directive (use $cfile, $pfile, $lfile or $ifile)')
-@@ -322,7 +322,7 @@ function prep(file)
+@@ -322,7 +323,7 @@
        table.insert(chunk, string.sub(line, 3) .. "\n")
       else
        local last = 1
 -      for text, expr, index in string.gfind(line, "(.-)$(%b())()") do 
-+      for text, expr, index in string.gmatch(line, "(.-)$(%b())()") do 
++      for text, expr, index in string.gmatch(line, "(.-)$(%b())()") do
          last = index
          if text ~= "" then
            table.insert(chunk, string.format('table.insert(__ret, %q )', text))
-@@ -334,10 +334,9 @@ function prep(file)
+@@ -334,10 +335,9 @@
      end
    end
    table.insert(chunk, '\nreturn table.concat(__ret)\n')
@@ -362,9 +446,9 @@ Index: toluapp-1.0.93/src/bin/lua/package.lua
  end
 Index: toluapp-1.0.93/src/bin/lua/template_class.lua
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/lua/template_class.lua
-+++ toluapp-1.0.93/src/bin/lua/template_class.lua
-@@ -22,7 +22,7 @@ function classTemplateClass:throw(types,
+--- toluapp-1.0.93.orig/src/bin/lua/template_class.lua	2025-10-13 18:33:57.207900876 +0200
++++ toluapp-1.0.93/src/bin/lua/template_class.lua	2025-10-13 18:34:11.254772613 +0200
+@@ -22,7 +22,7 @@
  	for i =1 , types.n do
  
  		local Il = split_c_tokens(types[i], " ")
@@ -373,7 +457,7 @@ Index: toluapp-1.0.93/src/bin/lua/template_class.lua
  			error("#invalid parameter count for "..types[i])
  		end
  		local bI = self.body
-@@ -31,16 +31,16 @@ function classTemplateClass:throw(types,
+@@ -31,16 +31,16 @@
  			--Tl[j] = findtype(Tl[j]) or Tl[j]
  			bI = string.gsub(bI, "([^_%w])"..self.args[j].."([^_%w])", "%1"..Il[j].."%2")
  			if self.parents then
@@ -395,9 +479,9 @@ Index: toluapp-1.0.93/src/bin/lua/template_class.lua
  		end
 Index: toluapp-1.0.93/src/bin/tolua.c
 ===================================================================
---- toluapp-1.0.93.orig/src/bin/tolua.c
-+++ toluapp-1.0.93/src/bin/tolua.c
-@@ -67,7 +67,11 @@ static void setfield (lua_State* L, int
+--- toluapp-1.0.93.orig/src/bin/tolua.c	2012-08-24 03:01:53.000000000 +0200
++++ toluapp-1.0.93/src/bin/tolua.c	2025-10-13 18:34:11.254974106 +0200
+@@ -67,7 +67,11 @@
  static void add_extra (lua_State* L, char* value) {
  	int len;
  	lua_getglobal(L, "_extra_parameters");
@@ -409,7 +493,7 @@ Index: toluapp-1.0.93/src/bin/tolua.c
  	lua_pushstring(L, value);
  	lua_rawseti(L, -2, len+1);
  	lua_pop(L, 1);
-@@ -145,7 +149,7 @@ int main (int argc, char* argv[])
+@@ -145,7 +149,7 @@
    }
    lua_pop(L,1);
   }
@@ -418,7 +502,7 @@ Index: toluapp-1.0.93/src/bin/tolua.c
  #ifndef TOLUA_SCRIPT_RUN
   {
    int tolua_tolua_open (lua_State* L);
-@@ -153,16 +157,17 @@ int main (int argc, char* argv[])
+@@ -153,16 +157,17 @@
   }
  #else
   {
@@ -448,8 +532,8 @@ Index: toluapp-1.0.93/src/bin/tolua.c
   return 0;
 Index: toluapp-1.0.93/src/lib/tolua_event.c
 ===================================================================
---- toluapp-1.0.93.orig/src/lib/tolua_event.c
-+++ toluapp-1.0.93/src/lib/tolua_event.c
+--- toluapp-1.0.93.orig/src/lib/tolua_event.c	2012-08-24 03:01:53.000000000 +0200
++++ toluapp-1.0.93/src/lib/tolua_event.c	2025-10-13 18:34:11.255204095 +0200
 @@ -23,12 +23,20 @@
  static void storeatubox (lua_State* L, int lo)
  {
@@ -471,7 +555,7 @@ Index: toluapp-1.0.93/src/lib/tolua_event.c
  		};
  		lua_insert(L, -3);
  		lua_settable(L, -3); /* on lua 5.1, we trade the "tolua_peers" lookup for a settable call */
-@@ -141,7 +149,11 @@ static int class_index_event (lua_State*
+@@ -141,7 +149,11 @@
  	{
  		/* Access alternative table */
  		#ifdef LUA_VERSION_NUM /* new macro on version 5.1 */
@@ -483,7 +567,7 @@ Index: toluapp-1.0.93/src/lib/tolua_event.c
  		if (!lua_rawequal(L, -1, TOLUA_NOPEER)) {
  			lua_pushvalue(L, 2); /* key */
  			lua_gettable(L, -2); /* on lua 5.1, we trade the "tolua_peers" lookup for a gettable call */
-@@ -420,6 +432,8 @@ static int class_gc_event (lua_State* L)
+@@ -420,6 +432,8 @@
  */
  TOLUA_API int class_gc_event (lua_State* L)
  {
@@ -492,7 +576,7 @@ Index: toluapp-1.0.93/src/lib/tolua_event.c
  	void* u = *((void**)lua_touserdata(L,1));
  	int top;
  	/*fprintf(stderr, "collecting: looking at %p\n", u);*/
-@@ -427,7 +441,8 @@ TOLUA_API int class_gc_event (lua_State*
+@@ -427,7 +441,8 @@
  	lua_pushstring(L,"tolua_gc");
  	lua_rawget(L,LUA_REGISTRYINDEX);
  	*/
@@ -502,7 +586,7 @@ Index: toluapp-1.0.93/src/lib/tolua_event.c
  	lua_pushlightuserdata(L,u);
  	lua_rawget(L,-2);            /* stack: gc umt    */
  	lua_getmetatable(L,1);       /* stack: gc umt mt */
-@@ -456,6 +471,7 @@ TOLUA_API int class_gc_event (lua_State*
+@@ -456,6 +471,7 @@
  		lua_rawset(L,-5);           /* stack: gc umt mt */
  	}
  	lua_pop(L,3);
@@ -510,11 +594,33 @@ Index: toluapp-1.0.93/src/lib/tolua_event.c
  	return 0;
  }
  
+Index: toluapp-1.0.93/src/lib/tolua_is.c
+===================================================================
+--- toluapp-1.0.93.orig/src/lib/tolua_is.c	2012-08-24 03:01:53.000000000 +0200
++++ toluapp-1.0.93/src/lib/tolua_is.c	2025-10-13 18:34:11.255501901 +0200
+@@ -116,7 +116,7 @@
+ }
+ 
+ /* the equivalent of lua_is* for usertable */
+-static  int lua_isusertable (lua_State* L, int lo, const const char* type)
++static  int lua_isusertable (lua_State* L, int lo, const char* type)
+ {
+ 	int r = 0;
+ 	if (lo < 0) lo = lua_gettop(L)+lo+1;
 Index: toluapp-1.0.93/src/lib/tolua_map.c
 ===================================================================
---- toluapp-1.0.93.orig/src/lib/tolua_map.c
-+++ toluapp-1.0.93/src/lib/tolua_map.c
-@@ -262,8 +262,12 @@ static int tolua_bnd_setpeer(lua_State*
+--- toluapp-1.0.93.orig/src/lib/tolua_map.c	2012-08-24 03:01:53.000000000 +0200
++++ toluapp-1.0.93/src/lib/tolua_map.c	2025-10-13 18:34:11.255740969 +0200
+@@ -25,7 +25,7 @@
+ /* Create metatable
+ 	* Create and register new metatable
+ */
+-static int tolua_newmetatable (lua_State* L, char* name)
++static int tolua_newmetatable (lua_State* L, const char* name)
+ {
+ 	int r = luaL_newmetatable(L,name);
+ 
+@@ -262,8 +262,12 @@
  
  		lua_pop(L, 1);
  		lua_pushvalue(L, TOLUA_NOPEER);
@@ -528,7 +634,7 @@ Index: toluapp-1.0.93/src/lib/tolua_map.c
  
  	return 0;
  };
-@@ -271,7 +275,11 @@ static int tolua_bnd_setpeer(lua_State*
+@@ -271,7 +275,11 @@
  static int tolua_bnd_getpeer(lua_State* L) {
  
  	/* stack: userdata */
@@ -540,7 +646,34 @@ Index: toluapp-1.0.93/src/lib/tolua_map.c
  	if (lua_rawequal(L, -1, TOLUA_NOPEER)) {
  		lua_pop(L, 1);
  		lua_pushnil(L);
-@@ -411,7 +419,11 @@ TOLUA_API void tolua_beginmodule (lua_St
+@@ -291,15 +299,6 @@
+  {
+   lua_pushstring(L,"tolua_opened"); lua_pushboolean(L,1); lua_rawset(L,LUA_REGISTRYINDEX);
+ 
+-  #ifndef LUA_VERSION_NUM /* only prior to lua 5.1 */
+-  /* create peer object table */
+-  lua_pushstring(L, "tolua_peers"); lua_newtable(L);
+-  /* make weak key metatable for peers indexed by userdata object */
+-  lua_newtable(L); lua_pushliteral(L, "__mode"); lua_pushliteral(L, "k"); lua_rawset(L, -3);                /* stack: string peers mt */
+-  lua_setmetatable(L, -2);   /* stack: string peers */
+-  lua_rawset(L,LUA_REGISTRYINDEX);
+-  #endif
+-
+   /* create object ptr -> udata mapping table */
+   lua_pushstring(L,"tolua_ubox"); lua_newtable(L);
+   /* make weak value metatable for ubox table to allow userdata to be
+@@ -331,10 +330,8 @@
+   tolua_function(L,"releaseownership",tolua_bnd_releaseownership);
+   tolua_function(L,"cast",tolua_bnd_cast);
+   tolua_function(L,"inherit", tolua_bnd_inherit);
+-  #ifdef LUA_VERSION_NUM /* lua 5.1 */
+   tolua_function(L, "setpeer", tolua_bnd_setpeer);
+   tolua_function(L, "getpeer", tolua_bnd_getpeer);
+-  #endif
+ 
+   tolua_endmodule(L);
+   tolua_endmodule(L);
+@@ -411,7 +408,11 @@
  		lua_rawget(L,-2);
  	}
  	else
@@ -552,7 +685,7 @@ Index: toluapp-1.0.93/src/lib/tolua_map.c
  }
  
  /* End module
-@@ -445,7 +457,11 @@ TOLUA_API void tolua_module (lua_State*
+@@ -445,7 +446,11 @@
  	else
  	{
  		/* global table */
@@ -564,7 +697,7 @@ Index: toluapp-1.0.93/src/lib/tolua_map.c
  	}
  	if (hasvar)
  	{
-@@ -473,7 +489,11 @@ TOLUA_API void tolua_module (lua_State*
+@@ -473,7 +478,11 @@
  	else
  	{
  		/* global table */
@@ -578,32 +711,20 @@ Index: toluapp-1.0.93/src/lib/tolua_map.c
  	{
 Index: toluapp-1.0.93/src/lib/tolua_push.c
 ===================================================================
---- toluapp-1.0.93.orig/src/lib/tolua_push.c
-+++ toluapp-1.0.93/src/lib/tolua_push.c
-@@ -79,7 +79,11 @@ TOLUA_API void tolua_pushusertype (lua_S
+--- toluapp-1.0.93.orig/src/lib/tolua_push.c	2012-08-24 03:01:53.000000000 +0200
++++ toluapp-1.0.93/src/lib/tolua_push.c	2025-10-13 18:34:11.255991352 +0200
+@@ -77,10 +77,12 @@
+    lua_pushvalue(L, -2);			/* stack: mt newud mt */
+    lua_setmetatable(L,-2);			/* stack: mt newud */
  
-    #ifdef LUA_VERSION_NUM
+-   #ifdef LUA_VERSION_NUM
     lua_pushvalue(L, TOLUA_NOPEER);
 +#if LUA_VERSION_NUM > 501
 +   lua_setuservalue(L, -2);
 +#else
     lua_setfenv(L, -2);
+-   #endif
 +#endif
-    #endif
    }
    else
-Index: toluapp-1.0.93/src/bin/SCsub
-===================================================================
---- toluapp-1.0.93.orig/src/bin/SCsub
-+++ toluapp-1.0.93/src/bin/SCsub
-@@ -5,8 +5,8 @@ src = [
- 	]
- 
- 
--toluabind = env.LuaBinding('toluabind.c', 'tolua_scons.pkg', 'tolua', bootstrap = True)
-+#toluabind = env.LuaBinding('toluabind.c', 'tolua_scons.pkg', 'tolua', bootstrap = True)
- 
--env.bin_target = env.Program('#/bin/'+env['tolua_bin'], src + [toluabind], LIBS = ['$tolua_lib'] + env['LIBS'])
-+env.bin_target = env.Program('#/bin/'+env['tolua_bin'], src, LIBS = ['$tolua_lib'] + env['LIBS'])
- 
- env.bootstrap_target = env.Program('#/bin/'+env['TOLUAPP_BOOTSTRAP'], src + ['toluabind_default.c', env.lib_target_static], LIBS = env['LIBS'])
+   {
