@@ -1,7 +1,7 @@
 #
 # spec file for package python-simpleeval
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2015-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,15 +20,15 @@
 %define modname simpleeval
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        0.9.13
+Version:        1.0.3
 Release:        0
 Summary:        A simple, safe single expression evaluator library
 License:        MIT
 URL:            https://github.com/danthedeckie/simpleeval
 Source0:        https://files.pythonhosted.org/packages/source/s/simpleeval/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -63,7 +63,7 @@ to give full eval() access, or don’t want to run in javascript on the client s
 %doc README.rst
 %license LICENCE
 %{python_sitelib}/simpleeval.py
-%pycache_only %{python_sitelib}/__pycache__/simpleeval*
-%{python_sitelib}/simpleeval-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/simpleeval*pyc
+%{python_sitelib}/simpleeval-%{version}.dist-info
 
 %changelog

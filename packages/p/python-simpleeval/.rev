@@ -70,4 +70,19 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1285131</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a5dc7e9e022dd2425686b71e0a513598</srcmd5>
+    <version>1.0.3</version>
+    <time>1761840603</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.3:
+  * Fix support for 3.14 (deprecated features actually being removed, so
+    getattr use was incorrect).
+  * Fix a sandbox escape via generators and _frame methods.
+  * Supporting dictionary comprehensions
+  * A custom exception rather than KeyError when names not found
+  * Dropping support for old python versions
+  * Various cleanups &amp; tidying warnings, deprecation warnings etc.</comment>
+    <requestid>1314480</requestid>
+  </revision>
 </revisionlist>
