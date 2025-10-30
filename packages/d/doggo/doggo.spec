@@ -1,7 +1,7 @@
 #
 # spec file for package doggo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           doggo
-Version:        1.0.5
+Version:        1.1.0
 Release:        0
 Summary:        CLI tool and API server DNS client implemented in Go
 License:        GPL-3.0-only
@@ -25,7 +25,7 @@ Group:          Productivity/Networking/DNS/Utilities
 URL:            https://github.com/mr-karan/doggo
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.xz
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.25
 Recommends:     %{name}-bash-completion
 Suggests:       %{name}-fish-completion
 Suggests:       %{name}-zsh-completion

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct 30 07:22:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.0:
+  * New Features
+    - 94cf591: feat: add DNS Additional section support (glue
+      records) (@mr-karan)
+    - ee380c4: feat: add EDNS response parsing and display
+      (@mr-karan)
+    - c2aed51: feat: add EDNS0 options and ECS support (@mr-karan)
+    - ffa1d05: feat: enhance web interface with TerminalCSS and
+      privacy-focused DNS providers (@mr-karan)
+  * Bug fixes
+    - 172b438: fix: add missing --any and query flags to shell
+      completions (@mr-karan)
+    - db20c64: fix: add support for internationalized domain names
+      (IDN) with punycode conversion (@mr-karan)
+    - 25bb955: fix: added a test to file command ( <>)
+    - 754d0ed: fix: display Unicode domain names in output instead
+      of punycode (@mr-karan)
+    - 88a841c: fix: filter system nameservers by IP version when -4
+      or -6 flags are used (@mr-karan)
+    - 32ee7ad: fix: improve DNS-over-QUIC TLS hostname verification
+      (@mr-karan)
+    - 53399fa: fix: prevent panic in DoQ resolver when server
+      returns empty response (@mr-karan)
+    - 26e829b: fix: support bare IPv6 addresses without brackets
+      like dig (@mr-karan)
+  * Others
+    - 432b5e6: Fix slow DNS queries over quic (@sylr)
+    - a646d8f: Update README.md (@mr-karan)
+    - a8ae3de: When no query types are asked for, default to A &
+      AAAA (@nogweii)
+    - fc48667: chore(deps): upgrade all dependencies to latest
+      versions (@mr-karan)
+    - 2acd03b: chore: remove non-working DNS0.eu DoH and DoT
+      endpoints (@mr-karan)
+
+-------------------------------------------------------------------
 Mon Sep 30 16:56:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.0.5:
