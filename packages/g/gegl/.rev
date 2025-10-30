@@ -778,4 +778,14 @@
 - Drop upstreamed eda8ba51.patch</comment>
     <requestid>1309292</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>9a2f0412f690c760371c50bf1149a263</srcmd5>
+    <version>0.4.64</version>
+    <time>1761840580</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1314322 from Andreas_Schwab
+
+- Enable luajit on riscv64</comment>
+    <requestid>1314332</requestid>
+  </revision>
 </revisionlist>
