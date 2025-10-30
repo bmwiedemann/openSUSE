@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 28 04:16:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install. 
+
+-------------------------------------------------------------------
 Thu Jun 19 09:23:37 UTC 2025 - James Oakley <jfunk@funktronics.ca>
 
 - Update to 0.22.0:

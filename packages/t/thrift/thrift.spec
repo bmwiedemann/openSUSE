@@ -1,7 +1,7 @@
 #
 # spec file for package thrift
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,7 +69,9 @@ BuildRequires:  perl(Class::Accessor)
 %endif
 %if %{with python3}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} >= 1550
 # if python multiflavor is available, use it to generate subpackages
@@ -214,7 +216,7 @@ make %{?_smp_mflags}
 
 %if %{with python3}
 pushd lib/py
-%python_build
+%pyproject_wheel
 popd
 %endif
 
@@ -229,7 +231,7 @@ popd
 
 %if %{with python3}
 pushd lib/py
-%python_install
+%pyproject_install
 popd
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
@@ -293,7 +295,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license LICENSE NOTICE
 %doc lib/py/README.md
 %{python_sitearch}/thrift
-%{python_sitearch}/thrift-%{version}*-info
+%{python_sitearch}/thrift-%{version}.dist-info
 %endif
 
 %changelog
