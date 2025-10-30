@@ -1,7 +1,7 @@
 #
 # spec file for package f3d
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define c_lib   libf3d3
 Name:           f3d
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Fast and minimalist 3D viewer
 License:        BSD-3-Clause
@@ -143,7 +143,7 @@ install -Dm644 plugins/occt/configs/config.d/10_occt.json %{buildroot}%{_sysconf
 
 %files
 %doc README.md
-%license LICENSE.md doc/THIRD_PARTY_LICENSES.md
+%license LICENSE.md THIRD_PARTY_LICENSES.md
 %{_bindir}/%{name}
 %{_libdir}/lib%{name}-plugin-*.so
 %{_datadir}/applications/%{name}.desktop
@@ -167,7 +167,7 @@ install -Dm644 plugins/occt/configs/config.d/10_occt.json %{buildroot}%{_sysconf
 
 %files devel
 %doc README.md
-%license LICENSE.md doc/THIRD_PARTY_LICENSES.md
+%license LICENSE.md THIRD_PARTY_LICENSES.md
 %{_libdir}/lib%{name}.so
 
 %files -n %{c_lib}
