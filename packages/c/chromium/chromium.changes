@@ -2,6 +2,26 @@
 Wed Oct 29 04:54:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 142.0.7444.59, the stable channel promotion of 142
+  Security fixes (boo#1252881):
+  * CVE-2025-12428: Type Confusion in V8
+  * CVE-2025-12429: Inappropriate implementation in V8
+  * CVE-2025-12430: Object lifecycle issue in Media
+  * CVE-2025-12431: Inappropriate implementation in Extensions
+  * CVE-2025-12432: Race in V8
+  * CVE-2025-12433: Inappropriate implementation in V8
+  * CVE-2025-12434: Race in Storage
+  * CVE-2025-12435: Incorrect security UI in Omnibox
+  * CVE-2025-12436: Policy bypass in Extensions
+  * CVE-2025-12437: Use after free in PageInfo
+  * CVE-2025-12438: Use after free in Ozone
+  * CVE-2025-12439: Inappropriate implementation in App-Bound Encryption
+  * CVE-2025-12440: Inappropriate implementation in Autofill
+  * CVE-2025-12441: Out of bounds read in V8
+  * CVE-2025-12443: Out of bounds read in WebXR
+  * CVE-2025-12444: Incorrect security UI in Fullscreen UI
+  * CVE-2025-12445: Policy bypass in Extensions
+  * CVE-2025-12446: Incorrect security UI in SplitView
+  * CVE-2025-12447: Incorrect security UI in Omnibox
 - drop chromium-142-dawn_commit_hash.patch, the generation of the
   header was included in the tarball genration
 
