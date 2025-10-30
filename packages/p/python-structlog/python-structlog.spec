@@ -1,7 +1,7 @@
 #
 # spec file for package python-structlog
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-structlog
-Version:        25.4.0
+Version:        25.5.0
 Release:        0
 Summary:        Structured Logging for Python
 License:        Apache-2.0 OR MIT
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module pytest >= 3.3.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module python-rapidjson}
 BuildRequires:  %{python_module simplejson}
+BuildRequires:  %{python_module time-machine}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
