@@ -220,4 +220,37 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1285929</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2fd3ac8be7b53f9e568dc00e4233c611</srcmd5>
+    <version>1.4.2+git20251016.6cfa420</version>
+    <time>1761840594</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * &quot;Attention, &quot;README.md&quot; is not mentioned in spec files as source or patch.&quot;
+
+- Update to version 1.4.2+git20251016.6cfa420:
+  * Android update?
+  * Updated libzip.
+  * Apparently the new default cmake on macos has removed compatibily with this cmake, so let's see if this fixes it.
+  * Fixed some wildcard issues with comparing plugins.
+
+- Updating to use mbedtls-devel v3 (only) for Leap/TW
+  * Default Leap mbedtls-devel v2/v3 don't provide .pc files for pkgconfig
+  * Branched package from security:tls (currently v3.6.4) does
+
+- Update to version 1.4.2+git20250828.33b413c:
+  * Updated CHANGELOG.mdd.
+  * Added in a fix for not inversions not matching addons which have no tags.
+  * Added in a passthrough for cjson.
+  * Updated CHANGELOG.md.
+  * Small issue with passing repostories for run.
+  * Added in a check to ensure we don't get an error when we're trying to run a particular repo's stuff without adding in a branch specifier.
+  * Clarified option.
+  * Updated versions of libgit2 and mbedtls.
+  * Update meson to use mbedtls3 (#174)
+  * Removed test that currently has no live examples in lite-xl-plugin-manager.</comment>
+    <requestid>1314442</requestid>
+  </revision>
 </revisionlist>

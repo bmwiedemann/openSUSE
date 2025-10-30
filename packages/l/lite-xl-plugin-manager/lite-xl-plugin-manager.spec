@@ -1,7 +1,7 @@
 #
 # spec file for package lite-xl-plugin-manager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 %define baseprogramname lite-xl
 Name:           lite-xl-plugin-manager
-Version:        1.4.0+git20250608.906c3e1
+Version:        1.4.2+git20251016.6cfa420
 Release:        0
 Summary:        A %{baseprogramname} plugin manager
 %if 0%{?suse_version} > 1500
@@ -26,13 +26,14 @@ Group:          Productivity/Text/Editors
 %endif
 License:        Apache-2.0 AND BSD-3-Clause AND MIT AND Zlib AND SUSE-GPL-2.0-with-linking-exception
 URL:            https://github.com/lite-xl/lite-xl-plugin-manager
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
+Source100:      README.md
 Patch0:         lpm.c.diff
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
-BuildRequires:  mbedtls-2-devel
-%else
+#%%if 0%%{?suse_version} > 1500 || 0%%{?sle_version} >= 150600
+#BuildRequires:  mbedtls-2-devel
+#%%else
 BuildRequires:  mbedtls-devel
-%endif
+#%%endif
 BuildRequires:  meson
 BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(libzip)

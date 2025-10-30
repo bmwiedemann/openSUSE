@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Oct 29 17:19:36 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * "Attention, "README.md" is not mentioned in spec files as source or patch."
+
+-------------------------------------------------------------------
+Wed Oct 22 14:52:26 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.2+git20251016.6cfa420:
+  * Android update?
+  * Updated libzip.
+  * Apparently the new default cmake on macos has removed compatibily with this cmake, so let's see if this fixes it.
+  * Fixed some wildcard issues with comparing plugins.
+
+-------------------------------------------------------------------
+Wed Sep  3 20:33:04 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating to use mbedtls-devel v3 (only) for Leap/TW
+  * Default Leap mbedtls-devel v2/v3 don't provide .pc files for pkgconfig
+  * Branched package from security:tls (currently v3.6.4) does
+
+-------------------------------------------------------------------
+Wed Sep 03 19:01:19 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.2+git20250828.33b413c:
+  * Updated CHANGELOG.mdd.
+  * Added in a fix for not inversions not matching addons which have no tags.
+  * Added in a passthrough for cjson.
+  * Updated CHANGELOG.md.
+  * Small issue with passing repostories for run.
+  * Added in a check to ensure we don't get an error when we're trying to run a particular repo's stuff without adding in a branch specifier.
+  * Clarified option.
+  * Updated versions of libgit2 and mbedtls.
+  * Update meson to use mbedtls3 (#174)
+  * Removed test that currently has no live examples in lite-xl-plugin-manager.
+
+-------------------------------------------------------------------
 Sun Jun 08 23:19:36 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 1.4.0+git20250608.906c3e1:
