@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 30 07:10:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.2.0:
+  * new options column: linux mount options
+  * new compress column: compression algorithm & level - Fix #98
+
+-------------------------------------------------------------------
 Fri Aug 29 09:15:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.1.0:
