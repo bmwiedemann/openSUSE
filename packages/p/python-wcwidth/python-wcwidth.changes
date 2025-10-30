@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 29 13:02:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.14
+  * Drop Support for Python 2.7 and 3.5. PR #117.
+  * Update tables to include Unicode Specifications 16.0.0 and
+    17.0.0. PR #146.
+  * Bugfix U+00AD SOFT HYPHEN should measure as 1, versions 0.2.9
+    through 0.2.13 measured as 0. PR #149.
+- Drop 0001-Don-t-use-codecs.open-on-Python-3.patch, merged upstream
+
+-------------------------------------------------------------------
 Fri Sep  5 11:56:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-Don-t-use-codecs.open-on-Python-3.patch to fix

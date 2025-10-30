@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-wcwidth
-Version:        0.2.13
+Version:        0.2.14
 Release:        0
 Summary:        Number of Terminal column cells of wide-character codes
 License:        MIT
 URL:            https://github.com/jquast/wcwidth
 Source:         https://github.com/jquast/wcwidth/archive/%{version}.tar.gz#/wcwidth-%{version}.tar.gz
-Patch1:         https://github.com/jquast/wcwidth/commit/ec2d19f90818ea608076dfbb1cb7951ac0b7372d.patch#/0001-Don-t-use-codecs.open-on-Python-3.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

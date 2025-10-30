@@ -225,4 +225,12 @@ add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment
   deprecations for python 3.14</comment>
     <requestid>1302928</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>375418a7955020a42ed3c407aaa09832</srcmd5>
+    <version>0.2.14</version>
+    <time>1761840584</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1314394</requestid>
+  </revision>
 </revisionlist>
