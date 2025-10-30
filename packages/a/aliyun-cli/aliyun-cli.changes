@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Oct 30 11:13:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.0
+  * Update Aliyun OpenAPI meta data
+
+-------------------------------------------------------------------
+Wed Oct 22 10:20:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.0.308
+  * {Sls} Add sls module by @AllyW in (#1268)
+- from version 3.0.307
+  * No changes to previous version
+
+-------------------------------------------------------------------
+Mon Oct 13 08:49:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.0.306
+  * {config} Add --config-path into configuration load from aliyun
+    configuration by @AllyW in (#1266)
+
+-------------------------------------------------------------------
+Tue Sep 30 09:38:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Import initial version 3.0.305 (jsc#PED-13767)
