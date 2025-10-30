@@ -1,7 +1,7 @@
 #
 # spec file for package python-flynt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flynt
-Version:        1.0.1
+Version:        1.0.6
 Release:        0
 Summary:        CLI tool to convert a python project's %-formatted strings to f-strings
 License:        MIT
 URL:            https://github.com/ikamensh/flynt
 Source:         https://github.com/ikamensh/flynt/archive/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astor
-Requires:       python-tomli >= 1.1.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module astor}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tomli >= 1.1.0}
 # /SECTION
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
 %python_subpackages
 
 %description
@@ -55,9 +53,7 @@ CLI tool to convert a python project's %-formatted strings to f-strings.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests that fails with python 3.12 because string formatting changes a bit
-donttest="test_mixed_quote_types_unsafe or test_fstringify[string_in_string.py] or test_fstringify_single_line[string_in_string.py]"
-%pytest -k "not ($donttest)"
+%pytest
 
 %post
 %python_install_alternative flynt
@@ -70,6 +66,6 @@ donttest="test_mixed_quote_types_unsafe or test_fstringify[string_in_string.py] 
 %license LICENSE
 %python_alternative %{_bindir}/flynt
 %{python_sitelib}/flynt
-%{python_sitelib}/flynt-%{version}*-info
+%{python_sitelib}/flynt-%{version}.dist-info
 
 %changelog

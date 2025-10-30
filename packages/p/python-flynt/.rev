@@ -42,4 +42,22 @@
     <comment>- Skip broken tests with python 3.12</comment>
     <requestid>1155196</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1b97f41436b35235aa6953eefe47bd05</srcmd5>
+    <version>1.0.6</version>
+    <time>1761840600</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.6:
+  * minor efficiency improvement by removing some dead code
+  * added -nb / --notebook flag to convert .ipynb files
+  * Multiple bugfixes closing the issues accumulated over the years
+  * Introduced -aa for double aggressive where we do dangerous changes like
+    ignoring int conversion in %d .
+  * better handling of escaped unicode characters, and multibyte unicode
+    characters.
+- Add missing Requires on update-alternatives.
+- Clean up {Build,}Requires.
+- No longer skip any tests.</comment>
+    <requestid>1314471</requestid>
+  </revision>
 </revisionlist>
