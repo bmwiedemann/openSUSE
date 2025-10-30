@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 30 07:11:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.46.0:
+  * chore(deps): bump actions/download-artifact from 5 to 6 (#1051)
+  * chore(deps): bump actions/upload-artifact from 4 to 5 (#1054)
+  * fix(rabbitmq): print valid JSON/YAML output for list cmds
+    (#1043)
+  * fix(objectstorage): print valid JSON/YAML for list cmds (#1041)
+  * fix(git): print valid JSON/YAML output for list cmds (#1039)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.8 to
+    6.6.9 (#1059)
+  * fix(logme): print valid JSON/YAML output for list cmds (#1038)
+  * fix(mariadb): print valid JSON/YAML for list commands (#1036)
+  * chore(deps): bump renovatebot/github-action from 43.0.18 to
+    43.0.19 (#1052)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/resourcemanager
+    (#1053)
+
+-------------------------------------------------------------------
 Thu Oct 23 05:38:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.45.0:
