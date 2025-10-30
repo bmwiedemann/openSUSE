@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 29 14:15:50 UTC 2025 - pgajdos@suse.com
+
+- version update to 7.1.2.8
+  * fixes GHSA-wpp4-vqfq-v4hp (CVE-2025-62594 [bsc#1252749])
+
+-------------------------------------------------------------------
 Mon Oct 20 10:33:08 UTC 2025 - pgajdos@suse.com
 
 - version update to 7.1.2.7

@@ -4168,4 +4168,13 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://github.com/ImageMagick/ImageMagick/compare/7.1.2-2..7.1.2-7</comment>
     <requestid>1312365</requestid>
   </revision>
+  <revision rev="317" vrev="1">
+    <srcmd5>4ff873b8ff58ac64e08c70a6feb4ff68</srcmd5>
+    <version>7.1.2.8</version>
+    <time>1761840585</time>
+    <user>anag_factory</user>
+    <comment>- version update to 7.1.2.8
+  * fixes GHSA-wpp4-vqfq-v4hp (CVE-2025-62594 [bsc#1252749])</comment>
+    <requestid>1314396</requestid>
+  </revision>
 </revisionlist>
