@@ -17,7 +17,7 @@
 
 
 Name:           anubis
-Version:        1.22.0
+Version:        1.23.0
 Release:        0
 Summary:        Web AI Firewall Utility
 License:        MIT
@@ -42,9 +42,9 @@ one or more challenges in order to protect upstream resources from scraper bots.
 %autosetup -n %{name}-src-vendor-npm-%{version}
 
 %build
-export GO_LDFLAGS="-buildmode=pie -mod=vendor -X 'github.com/TecharoHQ/anubis.Version=%{version}'"
+export GO_LDFLAGS="-buildmode=pie -mod=vendor -X 'github.com/TecharoHQ/%{name}.Version=%{version}'"
 
-go build -o .%{_localstatedir}/anubis ./cmd/anubis
+go build -o .%{_localstatedir}/%{name} ./cmd/%{name}
 go build -o .%{_localstatedir}/robots2policy ./cmd/robots2policy
 
 %install

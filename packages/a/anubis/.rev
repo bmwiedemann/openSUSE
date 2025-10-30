@@ -9,4 +9,12 @@
 Use source with the vendor already installed and precompiled JS</comment>
     <requestid>1313503</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>75b6130afa7c54d5d98b77e3b3b76689</srcmd5>
+    <version>1.23.0</version>
+    <time>1761840654</time>
+    <user>anag_factory</user>
+    <comment>Update to the new upstream release 1.23.0</comment>
+    <requestid>1314566</requestid>
+  </revision>
 </revisionlist>

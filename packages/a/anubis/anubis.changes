@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Oct 30 12:22:55 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to the new upstream release 1.23.0
+  * Add Door43 link to known instances documentation by @richmahn in #1136
+  * Update Nynorsk translation by @turtlegarden in #1143
+  * Update nl.json removing literal translated cookie 'koekje' with 'cookie' by @jieter in #1126
+  * Updated REDIRECT_DOMAINS documentation by @zc-devs in #1171
+  * Xe/demote temporal assurance by @Xe in #1090
+  * Xe/show error state by @Xe in #1203
+  * build(deps): bump github.com/docker/docker from 28.3.2+incompatible to 28.3.3+incompatible by @dependabot[bot] in #1131
+  * build(deps): bump github.com/docker/docker from 28.3.2+incompatible to 28.3.3+incompatible in /test by @dependabot[bot] in #1130
+  * build(deps): bump github.com/ulikunitz/xz from 0.5.12 to 0.5.14 by @dependabot[bot] in #1132
+  * build(deps): bump the github-actions group across 1 directory with 6 updates by @dependabot[bot] in #1221
+  * build(deps): bump the github-actions group across 1 directory with 8 updates by @dependabot[bot] in #1071
+  * build(deps): bump the github-actions group with 3 updates by @dependabot[bot] in #1118
+  * build(deps): bump the github-actions group with 4 updates by @dependabot[bot] in #1093
+  * build(deps): bump the npm group with 2 updates by @dependabot[bot] in #1117
+  * build(deps-dev): bump esbuild from 0.25.9 to 0.25.10 in the npm group by @dependabot[bot] in #1147
+  * chore: port client-side JS to TypeScript by @Xe in #1100
+  * chore: remove copilot instructions by @Xe in #1218
+  * ci(ssh): don't print uname -av output by @Xe in #1114
+  * ci: add aarch64 for ssh CI by @Xe in #1112
+  * convert issue templates into issue forms by @NetSysFire in #1115
+  * docs(installation): add SLOG_LEVEL environment variable to configuration by @JasonLovesDoggo in #1086
+  * docs: add link to preact in challenge list by @agoujot in #1111
+  * docs: add reminder for verified signatures in PR template by @JasonLovesDoggo in #1092
+  * docs: document some missing env vars by @JasonLovesDoggo in #1087
+  * docs: point get started button to the per-environment setup docs by @Xe in #1213
+  * enable auto setting of SNI based on host header by @jmcclelland in #1129
+  * feat(default-config): block tencent cloud by default by @Xe in #1216
+  * feat(expressions): add contentLength to bot expressions by @Xe in #1120
+  * feat(lib): Add option for adding difficulty field to JWT claims by @Earl0fPudding in #1063
+  * feat(lib/store): add s3api storage backend by @Xe in #1089
+  * feat(metarefresh): randomly use the Refresh header by @Xe in #1133
+  * feat(store/bbolt): implement actor pattern by @Xe in #1107
+  * feat: Warn on missing signing keys when persisting challenges by @JasonLovesDoggo in #1088
+  * feat: allow to set cookie sameSite mode and fallback to Lax mode if cookie is not secure by @vaab in #1105
+  * feat: default config macro by @Xe in #1186
+  * feat: support reading real client IP from a custom header by @avioletheart in #1138
+  * fix!(policy/checker): make List and-like by @Xe in #1217
+  * fix(algorithms/fast): fix fast challenge on insecure contexts by @Xe in #1198
+  * fix(cmd/containerbuild): support commas in --docker-tags by @Xe in #1099
+  * fix(decaymap): fix lock convoy by @Xe in #1106
+  * fix(default-config): make the default config far less paranoid by @Xe in #1179
+  * fix(default-config): remove preact challenge by @Xe in #1184
+  * fix(default-config): sometimes browsers don't send Upgrade-Insecure-Requests by @Xe in #1189
+  * fix(lib): close open redirect when in subrequest mode by @Xe in #1222
+  * fix(lib): de-flake package lib tests by @Xe in #1187
+  * fix(lib): enable multiple consecutive slash support by @Xe in #1155
+  * fix(lib): serve CSS properly by @Xe in #1158
+  * fix(robots2policy): handle multiple user agents under one block by @JasonLovesDoggo in #925
+  * fix(run/openrc): truncate runtime directory before starting Anubis by @CyberTailor in #1122
+  * fix(store/bbolt): remove actorify by @Xe in #1215
+  * fix: mend auth cookie name stutter by @Xe in #1139
+  * link to docs site from readme by @pushcx in #1214
+  * locale: Update Nynorsk translation by @turtlegarden in #1204
+  * security: npm audit fix for GHSA-hfm8-9jrf-7g9w et. al by @Xe in #1098 
+
+-------------------------------------------------------------------
 Fri Oct 24 14:05:39 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update packaging 
