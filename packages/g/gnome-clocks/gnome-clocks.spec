@@ -25,7 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://live.gnome.org/Design/Apps/Clock
 Source0:        %{name}-%{version}.tar.zst
-BuildRequires:  appstream-glib
+
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
