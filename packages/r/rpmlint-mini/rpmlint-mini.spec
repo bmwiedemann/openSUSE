@@ -1,7 +1,7 @@
 #
 # spec file for package rpmlint-mini
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,8 @@ BuildRequires:  rpmlint >= 2
 #!BuildIgnore:  rpmlint-mini
 Requires:       cpio
 Requires:       polkit-default-privs
+# rpmlint-mini is only necessary inside build environments, and has no real use outside of them
+Requires:       this-is-only-for-build-envs
 
 %description
 rpmlint is a tool to check common errors on RPM packages. Binary and

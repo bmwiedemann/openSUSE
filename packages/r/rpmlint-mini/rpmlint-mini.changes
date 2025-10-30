@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 28 10:50:43 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Add Requires: this-is-only-for-build-envs to mark this package as not for
+  general use
+
+-------------------------------------------------------------------
 Thu Mar 20 09:42:04 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add libcrypto.so to the bundle
