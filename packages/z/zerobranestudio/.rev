@@ -66,4 +66,14 @@
     <comment></comment>
     <requestid>1199744</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>56ea06ec1da677eb641c09e0f398e78b</srcmd5>
+    <version>2.01</version>
+    <time>1761840650</time>
+    <user>anag_factory</user>
+    <comment>Add opensuse-build.patch to fix build problems (gh#pkulchenko/ZeroBraneStudio!1198).
+
+Fix .gitignore.</comment>
+    <requestid>1312548</requestid>
+  </revision>
 </revisionlist>

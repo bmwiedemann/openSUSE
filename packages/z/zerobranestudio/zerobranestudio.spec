@@ -15,13 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if 0%{?suse_version} < 1550
-%define lua_version 5.1
-%define lua_version_nodots 51
-%else
-%define lua_version_nodots %{nil}
-%endif
+%define luaver 54
 Name:           zerobranestudio
 Version:        2.01
 Release:        0
@@ -32,39 +26,36 @@ URL:            https://studio.zerobrane.com/
 Source:         https://github.com/pkulchenko/ZeroBraneStudio/archive/%{version}.tar.gz
 # PATCH-FIX-OPENSUSE use system Lua
 Patch0:         zbstudio.patch
+# PATCH-FIX-UPSTREAM opensuse-build.patch gh#pkulchenko/ZeroBraneStudio!1198 mcepl@suse.com
+# fix dependency on wxLua
+Patch1:         opensuse-build.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconf
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  lua%{lua_version_nodots}-bit32
-BuildRequires:  lua%{lua_version_nodots}-copas
-BuildRequires:  lua%{lua_version_nodots}-devel
-BuildRequires:  lua%{lua_version_nodots}-lpeg
-BuildRequires:  lua%{lua_version_nodots}-luafilesystem
-BuildRequires:  lua%{lua_version_nodots}-luasec
+# BuildRequires:  lua%%{luaver}-bit32
+BuildRequires:  lua%{luaver}-copas
+BuildRequires:  lua%{luaver}-devel
+BuildRequires:  lua%{luaver}-lpeg
+BuildRequires:  lua%{luaver}-luafilesystem
+BuildRequires:  lua%{luaver}-luasec
+BuildRequires:  lua%{luaver}-luasocket
+BuildRequires:  lua-macros
 BuildRequires:  wxlua-devel
+Requires:       Lua(API) = %{lua_version}
 # Yes, we have to include this explicit Require
 Requires:       libwxlua
-Requires:       lua%{lua_version_nodots}-copas
-Requires:       lua%{lua_version_nodots}-lpeg
-Requires:       lua%{lua_version_nodots}-luafilesystem
-Requires:       lua%{lua_version_nodots}-luasec
-Requires:       Lua(API) = %{lua_version}
+Requires:       lua%{luaver}-copas
+Requires:       lua%{luaver}-lpeg
+Requires:       lua%{luaver}-luafilesystem
+Requires:       lua%{luaver}-luasec
+Requires:       lua%{luaver}-luasocket
 Recommends:     luajit
 Provides:       zbstudio
 Provides:       zerobrane-studio
 BuildArch:      noarch
-%if 0%{?suse_version} < 1550
-BuildRequires:  lua%{lua_version_nodots}-luasocket
-%else
-BuildRequires:  luasocket
-%endif
-%if 0%{?suse_version} < 1550
-Requires:       lua%{lua_version_nodots}-luasocket
-%else
-Requires:       luasocket
-%endif
 
 %description
 ZeroBrane Studio is a lightweight cross-platform Lua IDE with code completion,
@@ -82,7 +73,8 @@ rm -rf bin zbstudio/ZeroBraneStudio.app zbstudio.exe
 %build
 cd build
 %cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DLUA_EXECUTABLE=%{_bindir}/lua%{lua_version}
+    -DLUA_EXECUTABLE=%{_bindir}/lua \
+    -DLUA_INCLUDE_DIR:PATH=$(pkgconf --variable=includedir lua)
 %cmake_build
 
 %install

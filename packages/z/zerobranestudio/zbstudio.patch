@@ -5,13 +5,13 @@ Date: Sat, 13 Jun 2020 19:13:45 +0200
 Subject: [PATCH] Use system Lua.
 
 ---
- zbstudio/zbstudio.in | 2 +-
+ zbstudio/zbstudio.in |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/zbstudio/zbstudio.in b/zbstudio/zbstudio.in
-index 68b1e103..b8e5a52d 100644
---- a/zbstudio/zbstudio.in
-+++ b/zbstudio/zbstudio.in
+Index: ZeroBraneStudio-2.01/zbstudio/zbstudio.in
+===================================================================
+--- ZeroBraneStudio-2.01.orig/zbstudio/zbstudio.in	2023-09-27 03:26:58.000000000 +0200
++++ ZeroBraneStudio-2.01/zbstudio/zbstudio.in	2025-10-16 22:45:08.677611047 +0200
 @@ -3,4 +3,4 @@
  if [[ "$(uname -m)" == "x86_64" ]]; then ARCH="x64"; else ARCH="x86"; fi
  CWD="$PWD" # save the current directory, as it's going to change

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 16 20:47:51 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add opensuse-build.patch to fix build problems
+  (gh#pkulchenko/ZeroBraneStudio!1198).
+
+-------------------------------------------------------------------
+Tue Aug  5 16:03:50 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix .gitignore.
+
+-------------------------------------------------------------------
 Sat Sep  7 15:26:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.01:
