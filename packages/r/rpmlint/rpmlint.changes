@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 28 09:32:57 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.8.0+git20251027.5075e84c:
+  * systemd-tmpfiles: whitelist custom Samba printer spool dir (bsc#1251267)
+
+-------------------------------------------------------------------
 Thu Oct 02 13:13:07 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.8.0+git20251002.5cd04141:

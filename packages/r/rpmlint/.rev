@@ -5353,4 +5353,13 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1308638</requestid>
   </revision>
+  <revision rev="513" vrev="1">
+    <srcmd5>deb456a858758a3862ca41552b8c6c3b</srcmd5>
+    <version>2.8.0+git20251027.5075e84c</version>
+    <time>1761840588</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.8.0+git20251027.5075e84c:
+  * systemd-tmpfiles: whitelist custom Samba printer spool dir (bsc#1251267)</comment>
+    <requestid>1314036</requestid>
+  </revision>
 </revisionlist>
