@@ -1,7 +1,7 @@
 #
 # spec file for package brotli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017 Buschmann <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           brotli
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Lossless Compression Algorithm
 License:        MIT
@@ -114,12 +114,9 @@ install -pm0644 docs/*.3 "%buildroot/%_mandir/man3/"
 %check
 %ctest
 
-%post   -n libbrotlicommon%sover -p /sbin/ldconfig
-%postun -n libbrotlicommon%sover -p /sbin/ldconfig
-%post   -n libbrotlidec%sover -p /sbin/ldconfig
-%postun -n libbrotlidec%sover -p /sbin/ldconfig
-%post   -n libbrotlienc%sover -p /sbin/ldconfig
-%postun -n libbrotlienc%sover -p /sbin/ldconfig
+%ldconfig_scriptlets -n libbrotlicommon%sover
+%ldconfig_scriptlets -n libbrotlidec%sover
+%ldconfig_scriptlets -n libbrotlienc%sover
 
 %files
 %license LICENSE

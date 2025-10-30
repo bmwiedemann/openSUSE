@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 29 12:11:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2
+  * python: added Decompressor::can_accept_more_data method
+    and optional output_buffer_limit argument
+    Decompressor::process; that allows mitigation of
+    unexpectedly large output
+  * decoder / encoder: static tables use "small" model
+    (allows 2GiB+ binaries)
+
+-------------------------------------------------------------------
 Tue Oct 17 10:43:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build with optflags again
