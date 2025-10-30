@@ -1,7 +1,7 @@
 #
 # spec file for package python-grpclib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/vmagamedov/grpclib
 Source:         https://github.com/vmagamedov/grpclib/archive/v%{version}.tar.gz#/grpclib-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#vmagamedov/grpclib#205
 Patch0:         support-new-pytest-asyncio.patch
+# PATCH-FIX-UPSTREAM gh#vmagamedov/grpclib#208
+Patch1:         support-python-314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.6.0}
 BuildRequires:  %{python_module wheel}

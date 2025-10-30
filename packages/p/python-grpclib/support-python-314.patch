@@ -1,0 +1,1190 @@
+From 4588acda88e0ecaa3aa8a8194a8af3e1ade13f58 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 17:29:25 -0400
+Subject: [PATCH 01/21] Fixes annotations for python 3.14
+
+---
+ .github/workflows/test.yaml |  2 +-
+ grpclib/events.py           | 22 +++++++++++++++++++++-
+ 2 files changed, 22 insertions(+), 2 deletions(-)
+
+diff --git a/.github/workflows/test.yaml b/.github/workflows/test.yaml
+index 8cad250..cb1d621 100644
+--- a/.github/workflows/test.yaml
++++ b/.github/workflows/test.yaml
+@@ -24,7 +24,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
++        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+     steps:
+     - uses: actions/checkout@v4
+     - uses: actions/cache@v4
+diff --git a/grpclib/events.py b/grpclib/events.py
+index 13629f0..a0bd8ff 100644
+--- a/grpclib/events.py
++++ b/grpclib/events.py
+@@ -12,6 +12,26 @@
+     from ._typing import IEventsTarget, IServerMethodFunc  # noqa
+     from .protocol import Peer
+ 
++try:
++    # annotationlib introduced in Python 3.14 to introspect annotations
++    import annotationlib
++except ImportError:
++    annotationlib = None
++
++
++def _get_annotations(params: dict):
++    """Get annotations that is compatible with Python 3.14's deferred annotations."""
++
++    if "__annotations__" in params:
++        return params["__annotations__"]
++    elif annotationlib is not None:
++        annotate = annotationlib.get_annotate_from_class_namespace(params)
++        return annotationlib.call_annotate_function(
++            annotate, format=annotationlib.Format.FORWARDREF
++        )
++    else:
++        return {}
++
+ 
+ class _Event:
+     __slots__ = ('__interrupted__',)
+@@ -41,7 +61,7 @@ def interrupt(self) -> None:
+ class _EventMeta(type):
+ 
+     def __new__(mcs, name, bases, params):  # type: ignore
+-        annotations = params.get('__annotations__') or {}
++        annotations = _get_annotations(params)
+         payload = params.get('__payload__') or ()
+         params['__slots__'] = tuple(name for name in annotations)
+         params['__readonly__'] = frozenset(name for name in annotations
+
+From 7bdcf836f4102f6d3fd247d560da855e484d4bbf Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 17:37:52 -0400
+Subject: [PATCH 02/21] Adjust for flake8
+
+---
+ grpclib/events.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grpclib/events.py b/grpclib/events.py
+index a0bd8ff..93e20b4 100644
+--- a/grpclib/events.py
++++ b/grpclib/events.py
+@@ -20,7 +20,7 @@
+ 
+ 
+ def _get_annotations(params: dict):
+-    """Get annotations that is compatible with Python 3.14's deferred annotations."""
++    """Get annotations compatible with Python 3.14's deferred annotations."""
+ 
+     if "__annotations__" in params:
+         return params["__annotations__"]
+
+From bbcd93ce168aa249e0963e28ed0925344731d7ee Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 18:23:27 -0400
+Subject: [PATCH 03/21] Fix typing
+
+---
+ grpclib/events.py | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/grpclib/events.py b/grpclib/events.py
+index 93e20b4..fa417f7 100644
+--- a/grpclib/events.py
++++ b/grpclib/events.py
+@@ -16,16 +16,19 @@
+     # annotationlib introduced in Python 3.14 to introspect annotations
+     import annotationlib
+ except ImportError:
+-    annotationlib = None
++    annotationlib = None  # type: ignore
+ 
+ 
+-def _get_annotations(params: dict):
++def _get_annotations(params: dict[str, Any]) -> dict[str, Any]:
+     """Get annotations compatible with Python 3.14's deferred annotations."""
+ 
+     if "__annotations__" in params:
+-        return params["__annotations__"]
++        annotations: dict[str, Any] = params["__annotations__"]
++        return annotations
+     elif annotationlib is not None:
+         annotate = annotationlib.get_annotate_from_class_namespace(params)
++        if annotate is None:
++            return {}
+         return annotationlib.call_annotate_function(
+             annotate, format=annotationlib.Format.FORWARDREF
+         )
+
+From 2fe105368e9261d1f8962410eb48b65e9ecf3c90 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 21:18:31 -0400
+Subject: [PATCH 04/21] Fix typing
+
+---
+ grpclib/events.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/grpclib/events.py b/grpclib/events.py
+index fa417f7..558ec30 100644
+--- a/grpclib/events.py
++++ b/grpclib/events.py
+@@ -19,11 +19,11 @@
+     annotationlib = None  # type: ignore
+ 
+ 
+-def _get_annotations(params: dict[str, Any]) -> dict[str, Any]:
++def _get_annotations(params: Dict[str, Any]) -> Dict[str, Any]:
+     """Get annotations compatible with Python 3.14's deferred annotations."""
+ 
+     if "__annotations__" in params:
+-        annotations: dict[str, Any] = params["__annotations__"]
++        annotations: Dict[str, Any] = params["__annotations__"]
+         return annotations
+     elif annotationlib is not None:
+         annotate = annotationlib.get_annotate_from_class_namespace(params)
+
+From b021daddf0dcb758a516df26b7b27f65f6a6a023 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 21:46:18 -0400
+Subject: [PATCH 05/21] Fix typing issues
+
+---
+ grpclib/events.py | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/grpclib/events.py b/grpclib/events.py
+index 558ec30..4672d81 100644
+--- a/grpclib/events.py
++++ b/grpclib/events.py
+@@ -1,5 +1,6 @@
+ from typing import TYPE_CHECKING, Type, TypeVar, Tuple, FrozenSet, Dict
+ from typing import Optional, Callable, Any, Collection, List, Coroutine
++from types import ModuleType
+ from itertools import chain
+ from collections import defaultdict
+ 
+@@ -12,26 +13,29 @@
+     from ._typing import IEventsTarget, IServerMethodFunc  # noqa
+     from .protocol import Peer
+ 
++annotationlib: Optional[ModuleType]
+ try:
+     # annotationlib introduced in Python 3.14 to introspect annotations
+     import annotationlib
+ except ImportError:
+-    annotationlib = None  # type: ignore
++    annotationlib = None
+ 
+ 
+ def _get_annotations(params: Dict[str, Any]) -> Dict[str, Any]:
+     """Get annotations compatible with Python 3.14's deferred annotations."""
+ 
++    annotations: Dict[str, Any]
+     if "__annotations__" in params:
+-        annotations: Dict[str, Any] = params["__annotations__"]
++        annotations = params["__annotations__"]
+         return annotations
+     elif annotationlib is not None:
+         annotate = annotationlib.get_annotate_from_class_namespace(params)
+         if annotate is None:
+             return {}
+-        return annotationlib.call_annotate_function(
++        annotations = annotationlib.call_annotate_function(
+             annotate, format=annotationlib.Format.FORWARDREF
+         )
++        return annotations
+     else:
+         return {}
+ 
+
+From 3491ad31ae78d83fb0d7abcbc6b98a87c76ea2ae Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 22:11:39 -0400
+Subject: [PATCH 06/21] Fix typing
+
+---
+ grpclib/events.py | 1 -
+ setup.cfg         | 3 +++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/grpclib/events.py b/grpclib/events.py
+index 4672d81..c396c20 100644
+--- a/grpclib/events.py
++++ b/grpclib/events.py
+@@ -13,7 +13,6 @@
+     from ._typing import IEventsTarget, IServerMethodFunc  # noqa
+     from .protocol import Peer
+ 
+-annotationlib: Optional[ModuleType]
+ try:
+     # annotationlib introduced in Python 3.14 to introspect annotations
+     import annotationlib
+diff --git a/setup.cfg b/setup.cfg
+index f54ae6e..b858b20 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -98,3 +98,6 @@ ignore_missing_imports = true
+ 
+ [mypy-google.rpc.*]
+ ignore_missing_imports = true
++
++[mypy-annotationlib.*]
++ignore_missing_imports = true
+
+From cc44208f4a72160c4c0308e0a9ec3fdf9db71c18 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 22:13:27 -0400
+Subject: [PATCH 07/21] Fix typing
+
+---
+ grpclib/events.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/grpclib/events.py b/grpclib/events.py
+index c396c20..9ac7d26 100644
+--- a/grpclib/events.py
++++ b/grpclib/events.py
+@@ -1,6 +1,5 @@
+ from typing import TYPE_CHECKING, Type, TypeVar, Tuple, FrozenSet, Dict
+ from typing import Optional, Callable, Any, Collection, List, Coroutine
+-from types import ModuleType
+ from itertools import chain
+ from collections import defaultdict
+ 
+
+From fc6bc22ed9e8e74a96aeaa8369eb33580e55c383 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 22:31:18 -0400
+Subject: [PATCH 08/21] Update test versions for 3.14
+
+---
+ .github/workflows/test.yaml | 11 +++++++++--
+ requirements/test_314.txt   | 20 ++++++++++++++++++++
+ 2 files changed, 29 insertions(+), 2 deletions(-)
+ create mode 100644 requirements/test_314.txt
+
+diff --git a/.github/workflows/test.yaml b/.github/workflows/test.yaml
+index cb1d621..e3b36cc 100644
+--- a/.github/workflows/test.yaml
++++ b/.github/workflows/test.yaml
+@@ -25,15 +25,22 @@ jobs:
+     strategy:
+       matrix:
+         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
++
+     steps:
+     - uses: actions/checkout@v4
++    - run:
++        if [[ "${{ matrix.python-version }}" == "3.14 "]]; then
++          echo "REQUIREMENTS=requirements/test_314.txt" >> $GITHUB_ENV
++        else
++          echo "REQUIREMENTS=requirements/test.txt" >> $GITHUB_ENV
++        fi
+     - uses: actions/cache@v4
+       with:
+         path: ~/.cache/pip
+-        key: pip-${{ matrix.python-version }}-${{ hashFiles('requirements/test.txt') }}
++        key: pip-${{ matrix.python-version }}-${{ hashFiles( env.REQUIREMENTS )) }}
+     - uses: actions/setup-python@v5
+       with:
+         python-version: ${{ matrix.python-version }}
+-    - run: pip3 install -r requirements/test.txt
++    - run: pip3 install -r ${{ env.REQUIREMENTS }}
+     - run: pip3 install -e .
+     - run: pytest
+diff --git a/requirements/test_314.txt b/requirements/test_314.txt
+new file mode 100644
+index 0000000..2b70483
+--- /dev/null
++++ b/requirements/test_314.txt
+@@ -0,0 +1,20 @@
++# This file was autogenerated by uv via the following command:
++#    uv pip compile -p 3.14 --annotation-style=line requirements/test.in
++async-timeout==5.0.1      # via -r requirements/test.in
++certifi==2025.10.5        # via -r requirements/runtime.in
++coverage==7.10.7          # via pytest-cov
++faker==37.11.0            # via -r requirements/test.in
++googleapis-common-protos==1.70.0  # via -r requirements/runtime.in
++h2==4.1.0                 # via -r requirements/../setup.txt
++hpack==4.0.0              # via h2, -r requirements/../setup.txt
++hyperframe==6.0.1         # via h2, -r requirements/../setup.txt
++iniconfig==2.1.0          # via pytest
++multidict==6.0.5          # via -r requirements/../setup.txt
++packaging==25.0           # via pytest
++pluggy==1.6.0             # via pytest, pytest-cov
++protobuf==6.32.1          # via googleapis-common-protos, -r requirements/runtime.in
++pygments==2.19.2          # via pytest
++pytest==8.4.2             # via pytest-asyncio, pytest-cov, -r requirements/test.in
++pytest-asyncio==1.2.0     # via -r requirements/test.in
++pytest-cov==7.0.0         # via -r requirements/test.in
++tzdata==2025.2            # via faker
+
+From 38c64f3482be5e1a8b652c5ab7a909a95982ad66 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 22:32:07 -0400
+Subject: [PATCH 09/21] Fix formatting
+
+---
+ .github/workflows/test.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/.github/workflows/test.yaml b/.github/workflows/test.yaml
+index e3b36cc..9870289 100644
+--- a/.github/workflows/test.yaml
++++ b/.github/workflows/test.yaml
+@@ -37,7 +37,7 @@ jobs:
+     - uses: actions/cache@v4
+       with:
+         path: ~/.cache/pip
+-        key: pip-${{ matrix.python-version }}-${{ hashFiles( env.REQUIREMENTS )) }}
++        key: pip-${{ matrix.python-version }}-${{ hashFiles( env.REQUIREMENTS ) }}
+     - uses: actions/setup-python@v5
+       with:
+         python-version: ${{ matrix.python-version }}
+
+From 7272c8a2adb5d5faf666f054e03c951137667813 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 22:35:22 -0400
+Subject: [PATCH 10/21] Fix bash formatting
+
+---
+ .github/workflows/test.yaml |  2 +-
+ requirements/test_314.txt   | 44 ++++++++++++++++++++-----------------
+ 2 files changed, 25 insertions(+), 21 deletions(-)
+
+diff --git a/.github/workflows/test.yaml b/.github/workflows/test.yaml
+index 9870289..c70c167 100644
+--- a/.github/workflows/test.yaml
++++ b/.github/workflows/test.yaml
+@@ -29,7 +29,7 @@ jobs:
+     steps:
+     - uses: actions/checkout@v4
+     - run:
+-        if [[ "${{ matrix.python-version }}" == "3.14 "]]; then
++        if [[ "${{ matrix.python-version }}" == "3.14" ]]; then
+           echo "REQUIREMENTS=requirements/test_314.txt" >> $GITHUB_ENV
+         else
+           echo "REQUIREMENTS=requirements/test.txt" >> $GITHUB_ENV
+diff --git a/requirements/test_314.txt b/requirements/test_314.txt
+index 2b70483..8753a59 100644
+--- a/requirements/test_314.txt
++++ b/requirements/test_314.txt
+@@ -1,20 +1,24 @@
+-# This file was autogenerated by uv via the following command:
+-#    uv pip compile -p 3.14 --annotation-style=line requirements/test.in
+-async-timeout==5.0.1      # via -r requirements/test.in
+-certifi==2025.10.5        # via -r requirements/runtime.in
+-coverage==7.10.7          # via pytest-cov
+-faker==37.11.0            # via -r requirements/test.in
+-googleapis-common-protos==1.70.0  # via -r requirements/runtime.in
+-h2==4.1.0                 # via -r requirements/../setup.txt
+-hpack==4.0.0              # via h2, -r requirements/../setup.txt
+-hyperframe==6.0.1         # via h2, -r requirements/../setup.txt
+-iniconfig==2.1.0          # via pytest
+-multidict==6.0.5          # via -r requirements/../setup.txt
+-packaging==25.0           # via pytest
+-pluggy==1.6.0             # via pytest, pytest-cov
+-protobuf==6.32.1          # via googleapis-common-protos, -r requirements/runtime.in
+-pygments==2.19.2          # via pytest
+-pytest==8.4.2             # via pytest-asyncio, pytest-cov, -r requirements/test.in
+-pytest-asyncio==1.2.0     # via -r requirements/test.in
+-pytest-cov==7.0.0         # via -r requirements/test.in
+-tzdata==2025.2            # via faker
++#
++# This file is autogenerated by pip-compile with Python 3.14
++# by the following command:
++#
++#    pip-compile --annotation-style=line --output-file=requirements/test_314.txt requirements/test.in
++#
++async-timeout==4.0.3      # via -r requirements/test.in
++certifi==2024.2.2         # via -r requirements/runtime.in
++coverage[toml]==7.4.4     # via pytest-cov
++faker==24.11.0            # via -r requirements/test.in
++googleapis-common-protos==1.63.0  # via -r requirements/runtime.in
++h2==4.1.0                 # via -r setup.txt
++hpack==4.0.0              # via -r setup.txt, h2
++hyperframe==6.0.1         # via -r setup.txt, h2
++iniconfig==2.0.0          # via pytest
++multidict==6.0.5          # via -r setup.txt
++packaging==24.0           # via pytest
++pluggy==1.4.0             # via pytest
++protobuf==4.25.3          # via -r requirements/runtime.in, googleapis-common-protos
++pytest==8.1.1             # via -r requirements/test.in, pytest-asyncio, pytest-cov
++pytest-asyncio==0.23.6    # via -r requirements/test.in
++pytest-cov==5.0.0         # via -r requirements/test.in
++python-dateutil==2.9.0.post0  # via faker
++six==1.16.0               # via python-dateutil
+
+From 7ebe01dbb5d5e3740a853da43d953102ee346682 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 22:37:43 -0400
+Subject: [PATCH 11/21] Fix yaml
+
+---
+ .github/workflows/test.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/.github/workflows/test.yaml b/.github/workflows/test.yaml
+index c70c167..65e8fd0 100644
+--- a/.github/workflows/test.yaml
++++ b/.github/workflows/test.yaml
+@@ -28,7 +28,7 @@ jobs:
+ 
+     steps:
+     - uses: actions/checkout@v4
+-    - run:
++    - run: |
+         if [[ "${{ matrix.python-version }}" == "3.14" ]]; then
+           echo "REQUIREMENTS=requirements/test_314.txt" >> $GITHUB_ENV
+         else
+
+From 34f8801ffa3420c495df9d1110de543a10b95d7a Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 22:44:04 -0400
+Subject: [PATCH 12/21] Remove requirements file
+
+---
+ requirements/test_314.txt | 44 ++++++++++++++++++---------------------
+ 1 file changed, 20 insertions(+), 24 deletions(-)
+
+diff --git a/requirements/test_314.txt b/requirements/test_314.txt
+index 8753a59..2b70483 100644
+--- a/requirements/test_314.txt
++++ b/requirements/test_314.txt
+@@ -1,24 +1,20 @@
+-#
+-# This file is autogenerated by pip-compile with Python 3.14
+-# by the following command:
+-#
+-#    pip-compile --annotation-style=line --output-file=requirements/test_314.txt requirements/test.in
+-#
+-async-timeout==4.0.3      # via -r requirements/test.in
+-certifi==2024.2.2         # via -r requirements/runtime.in
+-coverage[toml]==7.4.4     # via pytest-cov
+-faker==24.11.0            # via -r requirements/test.in
+-googleapis-common-protos==1.63.0  # via -r requirements/runtime.in
+-h2==4.1.0                 # via -r setup.txt
+-hpack==4.0.0              # via -r setup.txt, h2
+-hyperframe==6.0.1         # via -r setup.txt, h2
+-iniconfig==2.0.0          # via pytest
+-multidict==6.0.5          # via -r setup.txt
+-packaging==24.0           # via pytest
+-pluggy==1.4.0             # via pytest
+-protobuf==4.25.3          # via -r requirements/runtime.in, googleapis-common-protos
+-pytest==8.1.1             # via -r requirements/test.in, pytest-asyncio, pytest-cov
+-pytest-asyncio==0.23.6    # via -r requirements/test.in
+-pytest-cov==5.0.0         # via -r requirements/test.in
+-python-dateutil==2.9.0.post0  # via faker
+-six==1.16.0               # via python-dateutil
++# This file was autogenerated by uv via the following command:
++#    uv pip compile -p 3.14 --annotation-style=line requirements/test.in
++async-timeout==5.0.1      # via -r requirements/test.in
++certifi==2025.10.5        # via -r requirements/runtime.in
++coverage==7.10.7          # via pytest-cov
++faker==37.11.0            # via -r requirements/test.in
++googleapis-common-protos==1.70.0  # via -r requirements/runtime.in
++h2==4.1.0                 # via -r requirements/../setup.txt
++hpack==4.0.0              # via h2, -r requirements/../setup.txt
++hyperframe==6.0.1         # via h2, -r requirements/../setup.txt
++iniconfig==2.1.0          # via pytest
++multidict==6.0.5          # via -r requirements/../setup.txt
++packaging==25.0           # via pytest
++pluggy==1.6.0             # via pytest, pytest-cov
++protobuf==6.32.1          # via googleapis-common-protos, -r requirements/runtime.in
++pygments==2.19.2          # via pytest
++pytest==8.4.2             # via pytest-asyncio, pytest-cov, -r requirements/test.in
++pytest-asyncio==1.2.0     # via -r requirements/test.in
++pytest-cov==7.0.0         # via -r requirements/test.in
++tzdata==2025.2            # via faker
+
+From 64420f67c99991dee43f0eaaabae60b72fb77e46 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 22:57:07 -0400
+Subject: [PATCH 13/21] Fix test for python 3.14
+
+---
+ grpclib/client.py            | 11 ++++++++++-
+ tests/test_client_channel.py |  1 +
+ tests/test_utils.py          |  4 ++--
+ 3 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/grpclib/client.py b/grpclib/client.py
+index 95091f3..5d44274 100644
+--- a/grpclib/client.py
++++ b/grpclib/client.py
+@@ -679,7 +679,16 @@ def __init__(
+ 
+         self._host = host
+         self._port = port
+-        self._loop = loop or asyncio.get_event_loop()
++        if loop is None:
++            try:
++                self._loop = asyncio.get_event_loop()
++            except RuntimeError:
++                # In Python 3.14, if there is no event loop, then `get_event_loop`
++                # will raise an error and not create an event loop.
++                self._loop = asyncio.new_event_loop()
++        else:
++            self._loop = loop
++
+         self._path = path
+         self._codec = codec
+         self._status_details_codec = status_details_codec
+diff --git a/tests/test_client_channel.py b/tests/test_client_channel.py
+index 9c80f94..5d90e10 100644
+--- a/tests/test_client_channel.py
++++ b/tests/test_client_channel.py
+@@ -1,4 +1,5 @@
+ import ssl
++import sys
+ import asyncio
+ import tempfile
+ import contextlib
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 3e57175..0013ec9 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -92,7 +92,7 @@ async def main():
+         await server.wait_closed()
+ 
+ if __name__ == '__main__':
+-    asyncio.get_event_loop().run_until_complete(main())
++    asyncio.run(main())
+ """
+ 
+ 
+@@ -125,7 +125,7 @@ async def main():
+         await asyncio.sleep(10)
+ 
+ if __name__ == '__main__':
+-    asyncio.get_event_loop().run_until_complete(main())
++    asyncio.run(main())
+ """
+ 
+ 
+
+From 0d8833ad6c848b86304722c504168b6c4bbb18be Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomas@modal.com>
+Date: Fri, 10 Oct 2025 22:59:01 -0400
+Subject: [PATCH 14/21] Fix linting
+
+---
+ grpclib/client.py            | 6 ++++--
+ tests/test_client_channel.py | 1 -
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/grpclib/client.py b/grpclib/client.py
+index 5d44274..e094f36 100644
+--- a/grpclib/client.py
++++ b/grpclib/client.py
+@@ -683,8 +683,10 @@ def __init__(
+             try:
+                 self._loop = asyncio.get_event_loop()
+             except RuntimeError:
+-                # In Python 3.14, if there is no event loop, then `get_event_loop`
+-                # will raise an error and not create an event loop.
++                # In Python 3.14, if there is no event loop, then
++                # `get_event_loop` will raise an error and not create an
++                # event loop. To reproduce pre 3.14 behavior, we'll create
++                # one here.
+                 self._loop = asyncio.new_event_loop()
+         else:
+             self._loop = loop
+diff --git a/tests/test_client_channel.py b/tests/test_client_channel.py
+index 5d90e10..9c80f94 100644
+--- a/tests/test_client_channel.py
++++ b/tests/test_client_channel.py
+@@ -1,5 +1,4 @@
+ import ssl
+-import sys
+ import asyncio
+ import tempfile
+ import contextlib
+
+From d5825e89cdbc73a10701dbf15201e9f1f91ce866 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomasjpfan@gmail.com>
+Date: Sun, 12 Oct 2025 12:04:30 -0400
+Subject: [PATCH 15/21] Use matrix to specific the requirements.txt file
+
+---
+ .github/workflows/test.yaml | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/.github/workflows/test.yaml b/.github/workflows/test.yaml
+index 65e8fd0..8961abc 100644
+--- a/.github/workflows/test.yaml
++++ b/.github/workflows/test.yaml
+@@ -25,22 +25,19 @@ jobs:
+     strategy:
+       matrix:
+         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+-
++        include:
++          - requirements: "requirements/test.txt"
++          - python-version: "3.14"
++            requirements: "requirements/test_314.txt"
+     steps:
+     - uses: actions/checkout@v4
+-    - run: |
+-        if [[ "${{ matrix.python-version }}" == "3.14" ]]; then
+-          echo "REQUIREMENTS=requirements/test_314.txt" >> $GITHUB_ENV
+-        else
+-          echo "REQUIREMENTS=requirements/test.txt" >> $GITHUB_ENV
+-        fi
+     - uses: actions/cache@v4
+       with:
+         path: ~/.cache/pip
+-        key: pip-${{ matrix.python-version }}-${{ hashFiles( env.REQUIREMENTS ) }}
++        key: pip-${{ matrix.python-version }}-${{ hashFiles( matrix.requirements ) }}
+     - uses: actions/setup-python@v5
+       with:
+         python-version: ${{ matrix.python-version }}
+-    - run: pip3 install -r ${{ env.REQUIREMENTS }}
++    - run: pip3 install -r ${{ matrix.requirements }}
+     - run: pip3 install -e .
+     - run: pytest
+
+From 2d1ce5a838fb1be137d398adb9eaabe9f17f6f14 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomasjpfan@gmail.com>
+Date: Sun, 12 Oct 2025 17:28:59 -0400
+Subject: [PATCH 16/21] Continue to error in Channel when there is no event
+ loop
+
+---
+ grpclib/client.py            | 13 +------------
+ tests/test_client_channel.py |  9 ++++++---
+ 2 files changed, 7 insertions(+), 15 deletions(-)
+
+diff --git a/grpclib/client.py b/grpclib/client.py
+index e094f36..95091f3 100644
+--- a/grpclib/client.py
++++ b/grpclib/client.py
+@@ -679,18 +679,7 @@ def __init__(
+ 
+         self._host = host
+         self._port = port
+-        if loop is None:
+-            try:
+-                self._loop = asyncio.get_event_loop()
+-            except RuntimeError:
+-                # In Python 3.14, if there is no event loop, then
+-                # `get_event_loop` will raise an error and not create an
+-                # event loop. To reproduce pre 3.14 behavior, we'll create
+-                # one here.
+-                self._loop = asyncio.new_event_loop()
+-        else:
+-            self._loop = loop
+-
++        self._loop = loop or asyncio.get_event_loop()
+         self._path = path
+         self._codec = codec
+         self._status_details_codec = status_details_codec
+diff --git a/tests/test_client_channel.py b/tests/test_client_channel.py
+index 9c80f94..d63fbac 100644
+--- a/tests/test_client_channel.py
++++ b/tests/test_client_channel.py
+@@ -48,7 +48,8 @@ async def create_connection(*args, **kwargs):
+     )
+ 
+ 
+-def test_default_ssl_context():
++@pytest.mark.asyncio
++async def test_default_ssl_context():
+     with patch.object(certifi, "where", return_value=certifi.where()) as po:
+         certifi_channel = Channel(ssl=True)
+         assert certifi_channel._ssl
+@@ -80,7 +81,8 @@ async def create_connection(*args, **kwargs):
+             )
+ 
+ 
+-def test_default_verify_paths():
++@pytest.mark.asyncio
++async def test_default_verify_paths():
+     with contextlib.ExitStack() as cm:
+         tf = cm.enter_context(tempfile.NamedTemporaryFile()).name
+         td = cm.enter_context(tempfile.TemporaryDirectory())
+@@ -98,7 +100,8 @@ def test_default_verify_paths():
+         assert default_verify_paths.openssl_capath_env == "SSL_CERT_DIR"
+ 
+ 
+-def test_no_ssl_support():
++@pytest.mark.asyncio
++async def test_no_ssl_support():
+     with patch.object(grpclib.client, "_ssl", None):
+         Channel()
+         with pytest.raises(RuntimeError) as err:
+
+From 6e5ed94daaa23b47cfd1e4a826f29973eafd228e Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomasjpfan@gmail.com>
+Date: Sun, 12 Oct 2025 17:39:11 -0400
+Subject: [PATCH 17/21] Move implementation to grpclib._compat
+
+---
+ grpclib/_compat.py | 27 +++++++++++++++++++++++++++
+ grpclib/events.py  | 28 ++--------------------------
+ 2 files changed, 29 insertions(+), 26 deletions(-)
+ create mode 100644 grpclib/_compat.py
+
+diff --git a/grpclib/_compat.py b/grpclib/_compat.py
+new file mode 100644
+index 0000000..f4572a0
+--- /dev/null
++++ b/grpclib/_compat.py
+@@ -0,0 +1,27 @@
++from typing import Dict, Any
++import sys
++
++PY314 = sys.version_info >= (3, 14)
++
++
++def get_annotations(params: Dict[str, Any]) -> Dict[str, Any]:
++    """Get annotations compatible with Python 3.14's deferred annotations."""
++
++    # Recipe from https://docs.python.org/3.14/library/annotationlib.html#recipes
++    annotations: Dict[str, Any]
++    if "__annotations__" in params:
++        annotations = params["__annotations__"]
++        return annotations
++    elif PY314:
++        # annotationlib introduced in Python 3.14 to inspect annotations
++        import annotationlib
++
++        annotate = annotationlib.get_annotate_from_class_namespace(params)
++        if annotate is None:
++            return {}
++        annotations = annotationlib.call_annotate_function(
++            annotate, format=annotationlib.Format.FORWARDREF
++        )
++        return annotations
++    else:
++        return {}
+diff --git a/grpclib/events.py b/grpclib/events.py
+index 9ac7d26..dca3645 100644
+--- a/grpclib/events.py
++++ b/grpclib/events.py
+@@ -5,6 +5,7 @@
+ 
+ from .const import Status
+ from .metadata import Deadline, _Metadata
++from ._compat import get_annotations
+ 
+ 
+ if TYPE_CHECKING:
+@@ -12,31 +13,6 @@
+     from ._typing import IEventsTarget, IServerMethodFunc  # noqa
+     from .protocol import Peer
+ 
+-try:
+-    # annotationlib introduced in Python 3.14 to introspect annotations
+-    import annotationlib
+-except ImportError:
+-    annotationlib = None
+-
+-
+-def _get_annotations(params: Dict[str, Any]) -> Dict[str, Any]:
+-    """Get annotations compatible with Python 3.14's deferred annotations."""
+-
+-    annotations: Dict[str, Any]
+-    if "__annotations__" in params:
+-        annotations = params["__annotations__"]
+-        return annotations
+-    elif annotationlib is not None:
+-        annotate = annotationlib.get_annotate_from_class_namespace(params)
+-        if annotate is None:
+-            return {}
+-        annotations = annotationlib.call_annotate_function(
+-            annotate, format=annotationlib.Format.FORWARDREF
+-        )
+-        return annotations
+-    else:
+-        return {}
+-
+ 
+ class _Event:
+     __slots__ = ('__interrupted__',)
+@@ -66,7 +42,7 @@ def interrupt(self) -> None:
+ class _EventMeta(type):
+ 
+     def __new__(mcs, name, bases, params):  # type: ignore
+-        annotations = _get_annotations(params)
++        annotations = get_annotations(params)
+         payload = params.get('__payload__') or ()
+         params['__slots__'] = tuple(name for name in annotations)
+         params['__readonly__'] = frozenset(name for name in annotations
+
+From f7b376dcab16fdfe652d016a01e6b7afd3ab33fa Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomasjpfan@gmail.com>
+Date: Sun, 12 Oct 2025 18:05:09 -0400
+Subject: [PATCH 18/21] Make 3.8 the special one
+
+---
+ .github/workflows/test.yaml |  4 ++--
+ requirements/test.txt       | 47 +++++++++++++++++++------------------
+ requirements/test_314.txt   | 20 ----------------
+ requirements/test_38.txt    | 27 +++++++++++++++++++++
+ 4 files changed, 53 insertions(+), 45 deletions(-)
+ delete mode 100644 requirements/test_314.txt
+ create mode 100644 requirements/test_38.txt
+
+diff --git a/.github/workflows/test.yaml b/.github/workflows/test.yaml
+index 8961abc..d915640 100644
+--- a/.github/workflows/test.yaml
++++ b/.github/workflows/test.yaml
+@@ -27,8 +27,8 @@ jobs:
+         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+         include:
+           - requirements: "requirements/test.txt"
+-          - python-version: "3.14"
+-            requirements: "requirements/test_314.txt"
++          - python-version: "3.8"
++            requirements: "requirements/test_38.txt"
+     steps:
+     - uses: actions/checkout@v4
+     - uses: actions/cache@v4
+diff --git a/requirements/test.txt b/requirements/test.txt
+index cac8b42..8bb27ba 100644
+--- a/requirements/test.txt
++++ b/requirements/test.txt
+@@ -1,27 +1,28 @@
+ #
+-# This file is autogenerated by pip-compile with Python 3.8
++# This file is autogenerated by pip-compile with Python 3.9
+ # by the following command:
+ #
+-#    pip-compile --annotation-style=line requirements/test.in
++#    pip-compile --annotation-style=line --output-file=requirements/test_39.txt requirements/test.in
+ #
+-async-timeout==4.0.3      # via -r requirements/test.in
+-certifi==2024.2.2         # via -r requirements/runtime.in
+-coverage[toml]==7.4.4     # via pytest-cov
+-exceptiongroup==1.2.0     # via pytest
+-faker==24.11.0            # via -r requirements/test.in
+-googleapis-common-protos==1.63.0  # via -r requirements/runtime.in
+-h2==4.1.0                 # via -r requirements/../setup.txt
+-hpack==4.0.0              # via -r requirements/../setup.txt, h2
+-hyperframe==6.0.1         # via -r requirements/../setup.txt, h2
+-iniconfig==2.0.0          # via pytest
+-multidict==6.0.5          # via -r requirements/../setup.txt
+-packaging==24.0           # via pytest
+-pluggy==1.4.0             # via pytest
+-protobuf==4.25.3          # via -r requirements/runtime.in, googleapis-common-protos
+-pytest==8.1.1             # via -r requirements/test.in, pytest-asyncio, pytest-cov
+-pytest-asyncio==0.23.6    # via -r requirements/test.in
+-pytest-cov==5.0.0         # via -r requirements/test.in
+-python-dateutil==2.9.0.post0  # via faker
+-six==1.16.0               # via python-dateutil
+-tomli==2.0.1              # via coverage, pytest
+-typing-extensions==4.11.0  # via faker
++async-timeout==5.0.1      # via -r requirements/test.in
++backports-asyncio-runner==1.2.0  # via pytest-asyncio
++certifi==2025.10.5        # via -r requirements/runtime.in
++coverage[toml]==7.10.7    # via pytest-cov
++exceptiongroup==1.3.0     # via pytest
++faker==37.11.0            # via -r requirements/test.in
++googleapis-common-protos==1.70.0  # via -r requirements/runtime.in
++h2==4.1.0                 # via -r setup.txt
++hpack==4.0.0              # via -r setup.txt, h2
++hyperframe==6.0.1         # via -r setup.txt, h2
++iniconfig==2.1.0          # via pytest
++multidict==6.0.5          # via -r setup.txt
++packaging==25.0           # via pytest
++pluggy==1.6.0             # via pytest, pytest-cov
++protobuf==6.32.1          # via -r requirements/runtime.in, googleapis-common-protos
++pygments==2.19.2          # via pytest
++pytest==8.4.2             # via -r requirements/test.in, pytest-asyncio, pytest-cov
++pytest-asyncio==1.2.0     # via -r requirements/test.in
++pytest-cov==7.0.0         # via -r requirements/test.in
++tomli==2.3.0              # via coverage, pytest
++typing-extensions==4.15.0  # via exceptiongroup, pytest-asyncio
++tzdata==2025.2            # via faker
+diff --git a/requirements/test_314.txt b/requirements/test_314.txt
+deleted file mode 100644
+index 2b70483..0000000
+--- a/requirements/test_314.txt
++++ /dev/null
+@@ -1,20 +0,0 @@
+-# This file was autogenerated by uv via the following command:
+-#    uv pip compile -p 3.14 --annotation-style=line requirements/test.in
+-async-timeout==5.0.1      # via -r requirements/test.in
+-certifi==2025.10.5        # via -r requirements/runtime.in
+-coverage==7.10.7          # via pytest-cov
+-faker==37.11.0            # via -r requirements/test.in
+-googleapis-common-protos==1.70.0  # via -r requirements/runtime.in
+-h2==4.1.0                 # via -r requirements/../setup.txt
+-hpack==4.0.0              # via h2, -r requirements/../setup.txt
+-hyperframe==6.0.1         # via h2, -r requirements/../setup.txt
+-iniconfig==2.1.0          # via pytest
+-multidict==6.0.5          # via -r requirements/../setup.txt
+-packaging==25.0           # via pytest
+-pluggy==1.6.0             # via pytest, pytest-cov
+-protobuf==6.32.1          # via googleapis-common-protos, -r requirements/runtime.in
+-pygments==2.19.2          # via pytest
+-pytest==8.4.2             # via pytest-asyncio, pytest-cov, -r requirements/test.in
+-pytest-asyncio==1.2.0     # via -r requirements/test.in
+-pytest-cov==7.0.0         # via -r requirements/test.in
+-tzdata==2025.2            # via faker
+diff --git a/requirements/test_38.txt b/requirements/test_38.txt
+new file mode 100644
+index 0000000..cac8b42
+--- /dev/null
++++ b/requirements/test_38.txt
+@@ -0,0 +1,27 @@
++#
++# This file is autogenerated by pip-compile with Python 3.8
++# by the following command:
++#
++#    pip-compile --annotation-style=line requirements/test.in
++#
++async-timeout==4.0.3      # via -r requirements/test.in
++certifi==2024.2.2         # via -r requirements/runtime.in
++coverage[toml]==7.4.4     # via pytest-cov
++exceptiongroup==1.2.0     # via pytest
++faker==24.11.0            # via -r requirements/test.in
++googleapis-common-protos==1.63.0  # via -r requirements/runtime.in
++h2==4.1.0                 # via -r requirements/../setup.txt
++hpack==4.0.0              # via -r requirements/../setup.txt, h2
++hyperframe==6.0.1         # via -r requirements/../setup.txt, h2
++iniconfig==2.0.0          # via pytest
++multidict==6.0.5          # via -r requirements/../setup.txt
++packaging==24.0           # via pytest
++pluggy==1.4.0             # via pytest
++protobuf==4.25.3          # via -r requirements/runtime.in, googleapis-common-protos
++pytest==8.1.1             # via -r requirements/test.in, pytest-asyncio, pytest-cov
++pytest-asyncio==0.23.6    # via -r requirements/test.in
++pytest-cov==5.0.0         # via -r requirements/test.in
++python-dateutil==2.9.0.post0  # via faker
++six==1.16.0               # via python-dateutil
++tomli==2.0.1              # via coverage, pytest
++typing-extensions==4.11.0  # via faker
+
+From 32230884e500b669add0fb7136aa68d103b2e20e Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomasjpfan@gmail.com>
+Date: Sun, 12 Oct 2025 18:15:42 -0400
+Subject: [PATCH 19/21] Lint
+
+---
+ grpclib/_compat.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/grpclib/_compat.py b/grpclib/_compat.py
+index f4572a0..cd14661 100644
+--- a/grpclib/_compat.py
++++ b/grpclib/_compat.py
+@@ -7,7 +7,8 @@
+ def get_annotations(params: Dict[str, Any]) -> Dict[str, Any]:
+     """Get annotations compatible with Python 3.14's deferred annotations."""
+ 
+-    # Recipe from https://docs.python.org/3.14/library/annotationlib.html#recipes
++    # This recipe was inferred from
++    # https://docs.python.org/3.14/library/annotationlib.html#recipes
+     annotations: Dict[str, Any]
+     if "__annotations__" in params:
+         annotations = params["__annotations__"]
+
+From e0c43462093bc56e4f46cd119f006c09d7342cc2 Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomasjpfan@gmail.com>
+Date: Sun, 12 Oct 2025 18:18:37 -0400
+Subject: [PATCH 20/21] Run pip-compile again
+
+---
+ requirements/test.txt    |  2 +-
+ requirements/test_38.txt | 10 +++++-----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/requirements/test.txt b/requirements/test.txt
+index 8bb27ba..88fc639 100644
+--- a/requirements/test.txt
++++ b/requirements/test.txt
+@@ -2,7 +2,7 @@
+ # This file is autogenerated by pip-compile with Python 3.9
+ # by the following command:
+ #
+-#    pip-compile --annotation-style=line --output-file=requirements/test_39.txt requirements/test.in
++#    pip-compile --annotation-style=line requirements/test.in
+ #
+ async-timeout==5.0.1      # via -r requirements/test.in
+ backports-asyncio-runner==1.2.0  # via pytest-asyncio
+diff --git a/requirements/test_38.txt b/requirements/test_38.txt
+index cac8b42..70b71ab 100644
+--- a/requirements/test_38.txt
++++ b/requirements/test_38.txt
+@@ -2,7 +2,7 @@
+ # This file is autogenerated by pip-compile with Python 3.8
+ # by the following command:
+ #
+-#    pip-compile --annotation-style=line requirements/test.in
++#    pip-compile --annotation-style=line --output-file=requirements/test_38.txt requirements/test.in
+ #
+ async-timeout==4.0.3      # via -r requirements/test.in
+ certifi==2024.2.2         # via -r requirements/runtime.in
+@@ -10,11 +10,11 @@ coverage[toml]==7.4.4     # via pytest-cov
+ exceptiongroup==1.2.0     # via pytest
+ faker==24.11.0            # via -r requirements/test.in
+ googleapis-common-protos==1.63.0  # via -r requirements/runtime.in
+-h2==4.1.0                 # via -r requirements/../setup.txt
+-hpack==4.0.0              # via -r requirements/../setup.txt, h2
+-hyperframe==6.0.1         # via -r requirements/../setup.txt, h2
++h2==4.1.0                 # via -r setup.txt
++hpack==4.0.0              # via -r setup.txt, h2
++hyperframe==6.0.1         # via -r setup.txt, h2
+ iniconfig==2.0.0          # via pytest
+-multidict==6.0.5          # via -r requirements/../setup.txt
++multidict==6.0.5          # via -r setup.txt
+ packaging==24.0           # via pytest
+ pluggy==1.4.0             # via pytest
+ protobuf==4.25.3          # via -r requirements/runtime.in, googleapis-common-protos
+
+From ba8b7a6db0a561dd2dbe6e7a5e9ad139be880bbd Mon Sep 17 00:00:00 2001
+From: "Thomas J. Fan" <thomasjpfan@gmail.com>
+Date: Sun, 12 Oct 2025 18:26:09 -0400
+Subject: [PATCH 21/21] Go back to old approach
+
+---
+ .github/workflows/test.yaml |  4 ++--
+ requirements/test.txt       | 45 ++++++++++++++++++-------------------
+ requirements/test_314.txt   | 24 ++++++++++++++++++++
+ requirements/test_38.txt    | 27 ----------------------
+ 4 files changed, 48 insertions(+), 52 deletions(-)
+ create mode 100644 requirements/test_314.txt
+ delete mode 100644 requirements/test_38.txt
+
+diff --git a/.github/workflows/test.yaml b/.github/workflows/test.yaml
+index d915640..8961abc 100644
+--- a/.github/workflows/test.yaml
++++ b/.github/workflows/test.yaml
+@@ -27,8 +27,8 @@ jobs:
+         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+         include:
+           - requirements: "requirements/test.txt"
+-          - python-version: "3.8"
+-            requirements: "requirements/test_38.txt"
++          - python-version: "3.14"
++            requirements: "requirements/test_314.txt"
+     steps:
+     - uses: actions/checkout@v4
+     - uses: actions/cache@v4
+diff --git a/requirements/test.txt b/requirements/test.txt
+index 88fc639..cac8b42 100644
+--- a/requirements/test.txt
++++ b/requirements/test.txt
+@@ -1,28 +1,27 @@
+ #
+-# This file is autogenerated by pip-compile with Python 3.9
++# This file is autogenerated by pip-compile with Python 3.8
+ # by the following command:
+ #
+ #    pip-compile --annotation-style=line requirements/test.in
+ #
+-async-timeout==5.0.1      # via -r requirements/test.in
+-backports-asyncio-runner==1.2.0  # via pytest-asyncio
+-certifi==2025.10.5        # via -r requirements/runtime.in
+-coverage[toml]==7.10.7    # via pytest-cov
+-exceptiongroup==1.3.0     # via pytest
+-faker==37.11.0            # via -r requirements/test.in
+-googleapis-common-protos==1.70.0  # via -r requirements/runtime.in
+-h2==4.1.0                 # via -r setup.txt
+-hpack==4.0.0              # via -r setup.txt, h2
+-hyperframe==6.0.1         # via -r setup.txt, h2
+-iniconfig==2.1.0          # via pytest
+-multidict==6.0.5          # via -r setup.txt
+-packaging==25.0           # via pytest
+-pluggy==1.6.0             # via pytest, pytest-cov
+-protobuf==6.32.1          # via -r requirements/runtime.in, googleapis-common-protos
+-pygments==2.19.2          # via pytest
+-pytest==8.4.2             # via -r requirements/test.in, pytest-asyncio, pytest-cov
+-pytest-asyncio==1.2.0     # via -r requirements/test.in
+-pytest-cov==7.0.0         # via -r requirements/test.in
+-tomli==2.3.0              # via coverage, pytest
+-typing-extensions==4.15.0  # via exceptiongroup, pytest-asyncio
+-tzdata==2025.2            # via faker
++async-timeout==4.0.3      # via -r requirements/test.in
++certifi==2024.2.2         # via -r requirements/runtime.in
++coverage[toml]==7.4.4     # via pytest-cov
++exceptiongroup==1.2.0     # via pytest
++faker==24.11.0            # via -r requirements/test.in
++googleapis-common-protos==1.63.0  # via -r requirements/runtime.in
++h2==4.1.0                 # via -r requirements/../setup.txt
++hpack==4.0.0              # via -r requirements/../setup.txt, h2
++hyperframe==6.0.1         # via -r requirements/../setup.txt, h2
++iniconfig==2.0.0          # via pytest
++multidict==6.0.5          # via -r requirements/../setup.txt
++packaging==24.0           # via pytest
++pluggy==1.4.0             # via pytest
++protobuf==4.25.3          # via -r requirements/runtime.in, googleapis-common-protos
++pytest==8.1.1             # via -r requirements/test.in, pytest-asyncio, pytest-cov
++pytest-asyncio==0.23.6    # via -r requirements/test.in
++pytest-cov==5.0.0         # via -r requirements/test.in
++python-dateutil==2.9.0.post0  # via faker
++six==1.16.0               # via python-dateutil
++tomli==2.0.1              # via coverage, pytest
++typing-extensions==4.11.0  # via faker
+diff --git a/requirements/test_314.txt b/requirements/test_314.txt
+new file mode 100644
+index 0000000..e056676
+--- /dev/null
++++ b/requirements/test_314.txt
+@@ -0,0 +1,24 @@
++#
++# This file is autogenerated by pip-compile with Python 3.14
++# by the following command:
++#
++#    pip-compile --annotation-style=line --output-file=requirements/test_314.txt requirements/test.in
++#
++async-timeout==5.0.1      # via -r requirements/test.in
++certifi==2025.10.5        # via -r requirements/runtime.in
++coverage[toml]==7.10.7    # via pytest-cov
++faker==37.11.0            # via -r requirements/test.in
++googleapis-common-protos==1.70.0  # via -r requirements/runtime.in
++h2==4.1.0                 # via -r setup.txt
++hpack==4.0.0              # via -r setup.txt, h2
++hyperframe==6.0.1         # via -r setup.txt, h2
++iniconfig==2.1.0          # via pytest
++multidict==6.0.5          # via -r setup.txt
++packaging==25.0           # via pytest
++pluggy==1.6.0             # via pytest, pytest-cov
++protobuf==6.32.1          # via -r requirements/runtime.in, googleapis-common-protos
++pygments==2.19.2          # via pytest
++pytest==8.4.2             # via -r requirements/test.in, pytest-asyncio, pytest-cov
++pytest-asyncio==1.2.0     # via -r requirements/test.in
++pytest-cov==7.0.0         # via -r requirements/test.in
++tzdata==2025.2            # via faker
+diff --git a/requirements/test_38.txt b/requirements/test_38.txt
+deleted file mode 100644
+index 70b71ab..0000000
+--- a/requirements/test_38.txt
++++ /dev/null
+@@ -1,27 +0,0 @@
+-#
+-# This file is autogenerated by pip-compile with Python 3.8
+-# by the following command:
+-#
+-#    pip-compile --annotation-style=line --output-file=requirements/test_38.txt requirements/test.in
+-#
+-async-timeout==4.0.3      # via -r requirements/test.in
+-certifi==2024.2.2         # via -r requirements/runtime.in
+-coverage[toml]==7.4.4     # via pytest-cov
+-exceptiongroup==1.2.0     # via pytest
+-faker==24.11.0            # via -r requirements/test.in
+-googleapis-common-protos==1.63.0  # via -r requirements/runtime.in
+-h2==4.1.0                 # via -r setup.txt
+-hpack==4.0.0              # via -r setup.txt, h2
+-hyperframe==6.0.1         # via -r setup.txt, h2
+-iniconfig==2.0.0          # via pytest
+-multidict==6.0.5          # via -r setup.txt
+-packaging==24.0           # via pytest
+-pluggy==1.4.0             # via pytest
+-protobuf==4.25.3          # via -r requirements/runtime.in, googleapis-common-protos
+-pytest==8.1.1             # via -r requirements/test.in, pytest-asyncio, pytest-cov
+-pytest-asyncio==0.23.6    # via -r requirements/test.in
+-pytest-cov==5.0.0         # via -r requirements/test.in
+-python-dateutil==2.9.0.post0  # via faker
+-six==1.16.0               # via python-dateutil
+-tomli==2.0.1              # via coverage, pytest
+-typing-extensions==4.11.0  # via faker

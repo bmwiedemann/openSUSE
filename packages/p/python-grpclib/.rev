@@ -24,4 +24,13 @@
   * Support pytest-asyncio 1.0 changes.</comment>
     <requestid>1294918</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>27a4c5947ee5f43795554dd7ec65c4f5</srcmd5>
+    <version>0.4.8</version>
+    <time>1761840604</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-314.patch:
+  * Support Python 3.14 changes.</comment>
+    <requestid>1314482</requestid>
+  </revision>
 </revisionlist>

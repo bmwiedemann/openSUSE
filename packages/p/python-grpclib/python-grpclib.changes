@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 30 04:35:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-314.patch:
+  * Support Python 3.14 changes.
+
+-------------------------------------------------------------------
 Tue Jul 22 02:41:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-pytest-asyncio.patch:
