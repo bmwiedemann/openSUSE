@@ -17,14 +17,14 @@
 
 
 Name:           golangci-lint
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        A fast Go linters runner
 License:        GPL-3.0-only
 URL:            https://golangci-lint.run
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.24
 
 %description
 golangci-lint is a fast Go linters runner. It runs linters in parallel, uses

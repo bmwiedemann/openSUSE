@@ -944,4 +944,41 @@
   * build(deps): bump github.com/golangci/go-printf-func-name from 0.1.0 to 0.1.1 (#6048) (forwarded request 1306375 from jfkw)</comment>
     <requestid>1306376</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b0160674ab5cf9b8712ae3ca1d6cb93e</srcmd5>
+    <version>2.6.0</version>
+    <time>1761840607</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.6.0:
+  * chore: prepare release
+  * dev: update goreleaser configuration (#6155)
+  * build(deps): bump mvdan.cc/unparam to HEAD (#6152)
+  * chore: improve PR template
+  * build(deps): bump github.com/ashanbrown/makezero/v2 from 2.0.1 to 2.1.0 (#6150)
+  * build(deps): bump github.com/ashanbrown/forbidigo/v2 from 2.1.0 to 2.3.0 (#6149)
+  * build(deps): bump github.com/charithe/durationcheck from 0.0.10 to 0.0.11 (#6148)
+  * chore: improve PR template
+  * build(deps): bump github.com/Abirdcfly/dupword from 0.1.6 to 0.1.7 (#6142)
+  * build(deps): bump mvdan.cc/gofumpt from 0.9.1 to 0.9.2 (#6143)
+  * build(deps): bump go.augendre.info/arangolint from 0.3.0 to 0.3.1 (#6141)
+  * build(deps): bump go.augendre.info/arangolint from 0.2.0 to 0.3.0 (#6139)
+  * docs: improve modernize reference (#6136)
+  * gocritic: add new checks
+  * perfsprint: add new options
+  * build(deps): bump github.com/go-critic/go-critic from 0.13.0 to 0.14.0 (#6135)
+  * build(deps): bump github.com/catenacyber/perfsprint from 0.9.1 to 0.10.0 (#6134)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.22.9 to 2.22.10 (#6133)
+  * build(deps): bump github.com/kunwardeep/paralleltest from 1.0.14 to 1.0.15 (#6132)
+  * build(deps): bump github.com/godoc-lint/godoc-lint from 0.10.0 to 0.10.1 (#6131)
+  * build(deps): bump golang.org/x/oauth2 from 0.31.0 to 0.32.0 in /scripts/gen_github_action_config in the scripts group (#6130)
+  * build(deps): bump github/codeql-action from 3 to 4 in the github-actions group (#6129)
+  * feat: add modernize analyzer suite (#6126)
+  * dev: no semaphore if canceled (#6128)
+  * chore: freebsd/arm64 builds (#6125)
+  * build(deps): bump golang.org/x/tools from 0.37.0 to 0.38.0 (#6123)
+  * build(deps): bump github.com/gofrs/flock from 0.12.1 to 0.13.0 (#6124)
+  * docs(revive): add an explanation of the default rules management (#6121)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.21.0 to 0.21.2 (#6118) (forwarded request 1314475 from jfkw)</comment>
+    <requestid>1314476</requestid>
+  </revision>
 </revisionlist>
