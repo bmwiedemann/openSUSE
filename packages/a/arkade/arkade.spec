@@ -17,7 +17,7 @@
 
 
 Name:           arkade
-Version:        0.11.52
+Version:        0.11.54
 Release:        0
 Summary:        Open Source Kubernetes Marketplace
 License:        Apache-2.0
@@ -25,8 +25,8 @@ URL:            https://github.com/alexellis/arkade
 Source:         arkade-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
-BuildRequires:  go >= 1.23
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 arkade provides a portable marketplace for downloading your favourite devops
