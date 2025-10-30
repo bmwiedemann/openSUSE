@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 26 03:24:33 UTC 2025 - William Brown <william.brown@suse.com>
+
+- bsc#1252698 - define default linker when versioned gcc is in use
+  - 0001-Disable-broken-linker-tests.patch
+
+-------------------------------------------------------------------
 Fri Oct  3 05:40:12 UTC 2025 - William Brown <william.brown@suse.com>
 
 - Work around broken server side OBS source validator rules

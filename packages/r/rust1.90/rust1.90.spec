@@ -294,10 +294,8 @@ Patch0:         ignore-Wstring-conversion.patch
 Patch3:         0001-Disable-pidfs-tests-for-15SP3.patch
 %endif
 
-# PATCH-FIX-UPSTREAM - Don't always panic if WASI_SDK_PATH is not set when detecting compilers
-# Patch4:         0001-Don-t-always-panic-if-WASI_SDK_PATH-is-not-set.patch
-# PATCH-FIX-UPSTREAM - Don't include current rustc version string in feature removed help
-# Patch5:         0001-Don-t-include-current-rustc-version-string-in-featur.patch
+# Can't disable these tests individually
+Patch4:         0001-Disable-broken-linker-tests.patch
 
 BuildRequires:  chrpath
 BuildRequires:  curl
@@ -509,10 +507,21 @@ df -h
 # everything will be rebuilt during installation!
 
 %if %{with llvmtools}
+%define rlinker clang
+%else
+%if 0%{?need_gcc_version} != 0
+%define rlinker gcc-%{need_gcc_version}
+%else
+%define rlinker cc
+%endif
+%endif
+
+
+%if %{with llvmtools}
 cat > .env.sh <<EOF
 export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
-export RUSTFLAGS="%{rustflags} -Clinker=clang"
+export RUSTFLAGS="%{rustflags} -Clinker=%{rlinker}"
 EOF
 %else
 
@@ -520,13 +529,13 @@ EOF
 cat > .env.sh <<EOF
 export CC="/usr/bin/gcc-%{need_gcc_version}"
 export CXX="/usr/bin/g++-%{need_gcc_version}"
-export RUSTFLAGS="%{rustflags} -Clinker=gcc-%{need_gcc_version}"
+export RUSTFLAGS="%{rustflags} -Clinker=%{rlinker}"
 EOF
 %else
 cat > .env.sh <<EOF
 export CC="gcc"
 export CXX="g++"
-export RUSTFLAGS="%{rustflags}"
+export RUSTFLAGS="%{rustflags} -Clinker=%{rlinker}"
 EOF
 %endif
 
@@ -590,7 +599,8 @@ RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args
   %{!?with_test: --local-rust-root=%{rust_root} --disable-rpath} \
   --disable-llvm-link-shared --set llvm.link-jobs=0 \
   --set target.%{rust_triple}.profiler=true \
-  %{?with_llvmtools: --set llvm.use-linker=lld --default-linker=clang } \
+  %{?with_llvmtools: --set llvm.use-linker=lld } \
+  --default-linker=%{rlinker} \
   --set rust.lld=true \
   %{?with_sccache: --enable-sccache} \
   %{!?with_sccache: --enable-ccache} \
