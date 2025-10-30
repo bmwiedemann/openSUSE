@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 30 07:11:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.82.0:
+  * Improvements
+    - Updated IDE design and added support for vscode persistence
+      by @agrasth in #3164
+  * Other Changes
+    - fix: help command for generating markdown summary by
+      @sean-perkins in #3157
+    - JGC-421 - Display link only on help by @RemiBou in #3172
+    - use jf evd as separate embedded plugin by @RemiBou in #3186
+
+-------------------------------------------------------------------
 Fri Oct 17 05:06:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.81.0:
