@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 30 07:12:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.10.7:
+  No CLI-related changes in the changelog
+  * build(deps-dev): bump @babel/core from 7.28.4 to 7.28.5 in
+    /web/app (#14661)
+  * build(deps-dev): bump @babel/preset-react in /web/app (#14660)
+  * build(deps): bump actions/download-artifact from 5.0.0 to 6.0.0
+    (#14665)
+  * build(deps): bump actions/download-artifact (#14664)
+  * build(deps): bump actions/upload-artifact from 4.6.2 to 5.0.0
+    (#14663)
+  * build(deps): bump tj-actions/changed-files (#14662)
+  * build(deps-dev): bump @babel/preset-env in /web/app (#14659)
+  * build(deps-dev): bump @babel/eslint-parser in /web/app (#14658)
+  * build(deps): bump backon from 1.5.2 to 1.6.0 (#14656)
+  * build(deps): bump unicode-ident from 1.0.19 to 1.0.20 (#14647)
+  * build(deps): bump openssl-sys from 0.9.109 to 0.9.110 (#14646)
+  * build(deps): bump cfg-if from 1.0.3 to 1.0.4 (#14645)
+  * build(deps): bump indexmap from 2.11.4 to 2.12.0 (#14648)
+
+-------------------------------------------------------------------
 Thu Oct 23 10:49:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.10.6:
