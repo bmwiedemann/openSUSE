@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Fri Oct 24 14:48:10 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Sun Oct 12 20:15:27 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package buildable with LuaJIT.
+
+-------------------------------------------------------------------
+Mon Jun 30 14:42:51 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Initial packaging effort for jsregexp 0.1.0.
