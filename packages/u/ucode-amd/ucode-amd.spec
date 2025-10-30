@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 9b899c779b8add9764bc0ae55d17962a7443361d
+%define git_version 4f72031fc195b612d4d4a694383e0ef3e20cb562
 
 Name:           ucode-amd
-Version:        20251024
+Version:        20251028
 Release:        0
 Summary:        Kernel firmware files for Microcode updates for AMD CPUs
 License:        GPL-2.0-or-later AND SUSE-Firmware

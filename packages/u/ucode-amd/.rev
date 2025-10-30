@@ -56,4 +56,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * amd-ucode: Fix minimum revisions in README</comment>
     <requestid>1313872</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9a6a86aba7fc79e5285606d7ec19f7aa</srcmd5>
+    <version>20251028</version>
+    <time>1761840554</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251028 (git commit 4f72031fc195):
+  * linux-firmware: Update AMD cpu microcode</comment>
+    <requestid>1314269</requestid>
+  </revision>
 </revisionlist>
