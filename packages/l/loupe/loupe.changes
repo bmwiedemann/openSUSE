@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 23 07:00:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Fixed:
+    - The keyboard shortcut for 300 % (Ctrl + 3, 3) now zooms to
+      300% instead of 200 %.
+    - editing: Don't enable option to trash and replace if moving
+      to trash is not supported.
+
+-------------------------------------------------------------------
+Mon Oct 20 18:52:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace appstream-glib with AppStream BuildRequires and command
+  called in check section, use the more modern tool.
+
+-------------------------------------------------------------------
 Mon Sep 15 06:25:26 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:

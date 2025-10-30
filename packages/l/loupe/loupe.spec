@@ -17,7 +17,7 @@
 
 
 Name:           loupe
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        A simple image viewer application
 License:        GPL-3.0-or-later
@@ -25,7 +25,7 @@ URL:            https://gitlab.gnome.org/GNOME/loupe
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  cargo-packaging >= 1.2.0+3
 BuildRequires:  desktop-file-utils
 BuildRequires:  itstool
@@ -62,7 +62,7 @@ export RUSTFLAGS="%{build_rustflags}"
 export RUSTFLAGS="%{build_rustflags}"
 %cargo_test
 # No meson_test exists upstream yet, so run these manually
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Loupe.metainfo.xml
+appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/org.gnome.Loupe.metainfo.xml
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Loupe.desktop
 
 %files
