@@ -17,4 +17,12 @@
 - Run the testsuite.</comment>
     <requestid>1311577</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>56a1d35b9c23dbaf8ad9391bed4f26bf</srcmd5>
+    <version>0.2.0</version>
+    <time>1761840555</time>
+    <user>anag_factory</user>
+    <comment>- build for python 3.11 on sle15 as it requires a minimum of &gt;= 3.8</comment>
+    <requestid>1314282</requestid>
+  </revision>
 </revisionlist>
