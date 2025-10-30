@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 29 06:38:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.5:
+  + Fix some gi-doc annotations
+  + Build system fixes
+  + Improve unit tests
+
+-------------------------------------------------------------------
+Mon Sep 29 07:33:46 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop the nobwrap.helper again: glycin 2.0.1 found a solution to
+  avoid the bwrap when run inside CIs/BuildEnvironments. As such,
+  we can run the test suite without the nobwrap.wrapper again.
+
+-------------------------------------------------------------------
 Thu Sep 18 06:29:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add bubblewrap BuildRequires and inject nobwrap.helper into
@@ -54,7 +69,7 @@ Mon Mar  4 08:44:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
   + Add missing cleanup attribute for GomSorting.
   + Fix sorting example.
   + Add g_critical() on invalid API use.
-  + Async fixes to support concurrent fetch and get_idnex().
+  + Async fixes to suport concurrent fetch and get_idnex().
   + Fix leak of table name.
   + Generate documentation using gi-docgen.
   + Fix improper usage of GHfunc.

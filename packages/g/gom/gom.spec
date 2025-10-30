@@ -17,7 +17,7 @@
 
 
 Name:           gom
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        GObject Data Mapper
 License:        LGPL-2.1-or-later
@@ -77,9 +77,6 @@ Development files for the GObject Data Mapper.
 
 %prep
 %autosetup -p1
-test -d ~/bin || mkdir -p ~/bin
-cp %{_datadir}/doc/packages/bubblewrap/nobwrap.helper ~/bin/bwrap
-chmod 755 ~/bin/bwrap
 
 %build
 %meson
