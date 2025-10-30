@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 30 01:17:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 25.9.2:
+  * fix: update license file to include contributors (#188)
+  * fix: remove obsolete dependency on six (#186)
+  * fix: update pypy version in CI workflow (#187)
+  * fix: setupcfg.py:508: SetuptoolsDeprecationWarning: The license_file
+    parameter is deprecated, use license_files instead.
+- Switch to autosetup macro.
+
+-------------------------------------------------------------------
 Wed Jun  4 06:08:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

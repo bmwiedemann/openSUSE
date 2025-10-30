@@ -134,4 +134,18 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282533</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>78f4cb75cdb3f477a058e562709d1263</srcmd5>
+    <version>25.9.2</version>
+    <time>1761840601</time>
+    <user>anag_factory</user>
+    <comment>- Update to 25.9.2:
+  * fix: update license file to include contributors (#188)
+  * fix: remove obsolete dependency on six (#186)
+  * fix: update pypy version in CI workflow (#187)
+  * fix: setupcfg.py:508: SetuptoolsDeprecationWarning: The license_file
+    parameter is deprecated, use license_files instead.
+- Switch to autosetup macro.</comment>
+    <requestid>1314473</requestid>
+  </revision>
 </revisionlist>

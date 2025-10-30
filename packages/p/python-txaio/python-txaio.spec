@@ -1,7 +1,7 @@
 #
 # spec file for package python-txaio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-txaio
-Version:        23.1.1
+Version:        25.9.2
 Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
@@ -29,11 +29,11 @@ BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-Twisted >= 20.3.0
+Recommends:     python-Twisted >= 22.10.0
 Recommends:     python-zope.interface >= 5.2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Twisted >= 20.3.0}
+BuildRequires:  %{python_module Twisted >= 22.10.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module zope.interface >= 5.2}
 # /SECTION
@@ -44,8 +44,7 @@ WebSocket allows bidirectional real-time messaging on the Web and WAMP adds
 asynchronous Remote Procedure Calls and Publish & Subscribe on top of WebSocket.
 
 %prep
-%setup -q -n txaio-%{version}
-%autopatch -p1
+%autosetup -p1 -n txaio-%{version}
 
 %build
 %pyproject_wheel
@@ -60,6 +59,6 @@ asynchronous Remote Procedure Calls and Publish & Subscribe on top of WebSocket.
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/txaio
-%{python_sitelib}/txaio-%{version}*-info
+%{python_sitelib}/txaio-%{version}.dist-info
 
 %changelog
