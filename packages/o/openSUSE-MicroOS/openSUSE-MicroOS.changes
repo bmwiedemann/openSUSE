@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 28 09:05:56 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Drop systemd-experimental as systemd-pcrlock is in udev
+
+-------------------------------------------------------------------
 Thu Sep 25 12:47:12 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add "umask=0077" for the ESP to keep /boot/efi/loader/random-seed secret

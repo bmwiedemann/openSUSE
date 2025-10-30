@@ -833,7 +833,6 @@
         <package name="disk-encryption-tool"/>
         <package name="systemd-repart-dracut"/>
         <package name="dracut-pcr-signature"/>
-        <package name="systemd-experimental"/>
         <package name="mokutil" arch="aarch64,x86_64"/>
         <package name="shim" arch="aarch64,x86_64"/>
         <package name="uefi_mbr" arch="x86_64"/>
