@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 29 20:14:09 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 37.8.0
+  * Support dynamic ESM imports in non-context isolated preloads
+- Add linux_seccomp-SYS_SECCOMP.patch to fix ftbfs with new glibc
+
+-------------------------------------------------------------------
 Wed Oct 22 19:32:18 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 37.7.1

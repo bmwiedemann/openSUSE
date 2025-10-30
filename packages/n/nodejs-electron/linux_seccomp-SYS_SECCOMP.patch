@@ -1,0 +1,36 @@
+If signal.h is included after this header, this results in a confusing error:
+In file included from ../../sandbox/linux/bpf_dsl/trap_registry.h:13,
+                 from ../../sandbox/linux/bpf_dsl/bpf_dsl.h:18,
+                 from ../../sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc:17:
+../../sandbox/linux/system_headers/linux_seccomp.h:218:39: error: expected identifier before numeric constant
+  218 | #define SYS_SECCOMP                   1
+      |                                       ^
+../../sandbox/linux/system_headers/linux_seccomp.h:218:39: error: expected '}' before numeric constant
+In file included from /usr/include/signal.h:58,
+                 from ../../sandbox/linux/services/syscall_wrappers.h:8,
+                 from ../../sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc:22:
+/usr/include/bits/siginfo-consts.h:218:1: note: to match this '{'
+  218 | {
+      | ^
+../../sandbox/linux/system_headers/linux_seccomp.h:218:39: error: expected unqualified-id before numeric constant
+  218 | #define SYS_SECCOMP                   1
+      |                                       ^
+In file included from /usr/include/features.h:524,
+                 from /usr/include/sys/types.h:25,
+                 from ../../sandbox/linux/seccomp-bpf-helpers/baseline_policy.h:8,
+                 from ../../sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc:5:
+/usr/include/signal.h:393:1: error: expected declaration before '}' token
+  393 | __END_DECLS
+      | ^~~~~~~~~~~
+
+
+--- src/sandbox/linux/system_headers/linux_seccomp.h.orig	2025-10-29 07:16:45.191080342 +0100
++++ src/sandbox/linux/system_headers/linux_seccomp.h	2025-10-29 20:08:39.559745669 +0100
+@@ -5,6 +5,7 @@
+ #ifndef SANDBOX_LINUX_SYSTEM_HEADERS_LINUX_SECCOMP_H_
+ #define SANDBOX_LINUX_SYSTEM_HEADERS_LINUX_SECCOMP_H_
+ 
++#include <signal.h>
+ #include <stdint.h>
+ #include <sys/ioctl.h>
+ 

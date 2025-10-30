@@ -186,7 +186,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        37.7.1
+Version:        37.8.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -386,6 +386,7 @@ Patch3222:      ANNOTATE_CONTIGUOUS_CONTAINER-Wodr.patch
 Patch3223:      v8-simd-flax-vector-conversions.patch
 Patch3224:      swiftshader-llvm21.patch
 Patch3225:      webrtc-pipewire_session-missing-spa_pod_object_find_prop.patch
+Patch3226:      linux_seccomp-SYS_SECCOMP.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.

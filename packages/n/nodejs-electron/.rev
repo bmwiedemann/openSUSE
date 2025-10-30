@@ -1475,4 +1475,14 @@ to Staging:F with it</comment>
 - Add webrtc-pipewire_session-missing-spa_pod_object_find_prop.patch to fix build error with new pipewire</comment>
     <requestid>1313077</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>e6694577ffedba8a4e3dfde3ad00ece5</srcmd5>
+    <version>37.8.0</version>
+    <time>1761840596</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release 37.8.0
+  * Support dynamic ESM imports in non-context isolated preloads
+- Add linux_seccomp-SYS_SECCOMP.patch to fix ftbfs with new glibc</comment>
+    <requestid>1314452</requestid>
+  </revision>
 </revisionlist>
