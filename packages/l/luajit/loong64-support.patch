@@ -39,9 +39,9 @@ Subject: [PATCH] Add support for LoongArch64
 
 Index: luajit2-2.1-20250826/Makefile
 ===================================================================
---- luajit2-2.1-20250826.orig/Makefile	2025-10-09 23:13:50.446088447 +0200
-+++ luajit2-2.1-20250826/Makefile	2025-10-09 23:13:59.702839100 +0200
-@@ -102,6 +102,7 @@
+--- luajit2-2.1-20250826.orig/Makefile
++++ luajit2-2.1-20250826/Makefile
+@@ -102,6 +102,7 @@ FILES_JITLIB= bc.lua bcsave.lua dump.lua
  	      dis_mips64.lua dis_mips64el.lua \
  	      dis_mips64r6.lua dis_mips64r6el.lua \
  	      dis_riscv.lua dis_riscv64.lua \
@@ -51,8 +51,8 @@ Index: luajit2-2.1-20250826/Makefile
  ifeq (,$(findstring Windows,$(OS)))
 Index: luajit2-2.1-20250826/dynasm/dasm_loongarch64.h
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ luajit2-2.1-20250826/dynasm/dasm_loongarch64.h	2025-10-09 23:13:59.703032143 +0200
+--- /dev/null
++++ luajit2-2.1-20250826/dynasm/dasm_loongarch64.h
 @@ -0,0 +1,443 @@
 +/*
 +** DynASM LoongArch encoding engine.
@@ -499,8 +499,8 @@ Index: luajit2-2.1-20250826/dynasm/dasm_loongarch64.h
 +
 Index: luajit2-2.1-20250826/dynasm/dasm_loongarch64.lua
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ luajit2-2.1-20250826/dynasm/dasm_loongarch64.lua	2025-10-09 23:13:59.703286812 +0200
+--- /dev/null
++++ luajit2-2.1-20250826/dynasm/dasm_loongarch64.lua
 @@ -0,0 +1,979 @@
 +------------------------------------------------------------------------------
 +-- DynASM LoongArch module.
@@ -1483,9 +1483,9 @@ Index: luajit2-2.1-20250826/dynasm/dasm_loongarch64.lua
 +
 Index: luajit2-2.1-20250826/src/Makefile
 ===================================================================
---- luajit2-2.1-20250826.orig/src/Makefile	2025-10-09 23:13:50.446195839 +0200
-+++ luajit2-2.1-20250826/src/Makefile	2025-10-09 23:13:59.703845814 +0200
-@@ -53,6 +53,7 @@
+--- luajit2-2.1-20250826.orig/src/Makefile
++++ luajit2-2.1-20250826/src/Makefile
+@@ -53,6 +53,7 @@ CCOPT_arm64=
  CCOPT_ppc=
  CCOPT_mips=
  CCOPT_riscv64=
@@ -1493,7 +1493,7 @@ Index: luajit2-2.1-20250826/src/Makefile
  #
  #CCDEBUG=
  # Uncomment the next line to generate debug information:
-@@ -247,6 +248,10 @@
+@@ -247,6 +248,10 @@ else
  ifneq (,$(findstring LJ_TARGET_S390X ,$(TARGET_TESTARCH)))
    TARGET_LJARCH= s390x
  else
@@ -1504,7 +1504,7 @@ Index: luajit2-2.1-20250826/src/Makefile
  ifneq (,$(findstring LJ_TARGET_ARM64 ,$(TARGET_TESTARCH)))
    ifneq (,$(findstring __AARCH64EB__ ,$(TARGET_TESTARCH)))
      TARGET_ARCH= -D__AARCH64EB__=1
-@@ -283,6 +288,7 @@
+@@ -283,6 +288,7 @@ endif
  endif
  endif
  endif
@@ -1512,7 +1512,7 @@ Index: luajit2-2.1-20250826/src/Makefile
  
  ifneq (,$(findstring LJ_TARGET_PS3 1,$(TARGET_TESTARCH)))
    TARGET_SYS= PS3
-@@ -352,7 +358,9 @@
+@@ -352,7 +358,9 @@ else
      # Find out whether the target toolchain always generates unwind tables.
      TARGET_TESTUNWIND=$(shell exec 2>/dev/null; echo 'extern void b(void);int a(void){b();return 0;}' | $(TARGET_CC) -c -x c - -o tmpunwind.o && { grep -qa -e eh_frame -e __unwind_info tmpunwind.o || grep -qU -e eh_frame -e __unwind_info tmpunwind.o; } && echo E; rm -f tmpunwind.o)
      ifneq (,$(findstring E,$(TARGET_TESTUNWIND)))
@@ -1525,9 +1525,9 @@ Index: luajit2-2.1-20250826/src/Makefile
    ifneq (SunOS,$(TARGET_SYS))
 Index: luajit2-2.1-20250826/src/host/buildvm.c
 ===================================================================
---- luajit2-2.1-20250826.orig/src/host/buildvm.c	2025-10-09 23:13:50.441017227 +0200
-+++ luajit2-2.1-20250826/src/host/buildvm.c	2025-10-09 23:13:59.704043405 +0200
-@@ -71,6 +71,8 @@
+--- luajit2-2.1-20250826.orig/src/host/buildvm.c
++++ luajit2-2.1-20250826/src/host/buildvm.c
+@@ -71,6 +71,8 @@ static int collect_reloc(BuildCtx *ctx,
  #include "../dynasm/dasm_s390x.h"
  #elif LJ_TARGET_RISCV64
  #include "../dynasm/dasm_riscv.h"
@@ -1538,9 +1538,9 @@ Index: luajit2-2.1-20250826/src/host/buildvm.c
  #endif
 Index: luajit2-2.1-20250826/src/host/buildvm_asm.c
 ===================================================================
---- luajit2-2.1-20250826.orig/src/host/buildvm_asm.c	2025-10-09 23:13:50.441145889 +0200
-+++ luajit2-2.1-20250826/src/host/buildvm_asm.c	2025-10-09 23:13:59.704166306 +0200
-@@ -236,6 +236,15 @@
+--- luajit2-2.1-20250826.orig/src/host/buildvm_asm.c
++++ luajit2-2.1-20250826/src/host/buildvm_asm.c
+@@ -236,6 +236,15 @@ rv_reloc_err:
    	    ins, sym);
      exit(1);
    }
@@ -1558,20 +1558,20 @@ Index: luajit2-2.1-20250826/src/host/buildvm_asm.c
  #endif
 Index: luajit2-2.1-20250826/src/jit/bcsave.lua
 ===================================================================
---- luajit2-2.1-20250826.orig/src/jit/bcsave.lua	2025-10-09 23:13:50.441296523 +0200
-+++ luajit2-2.1-20250826/src/jit/bcsave.lua	2025-10-09 23:13:59.704320697 +0200
-@@ -104,6 +104,7 @@
+--- luajit2-2.1-20250826.orig/src/jit/bcsave.lua
++++ luajit2-2.1-20250826/src/jit/bcsave.lua
+@@ -104,6 +104,7 @@ local map_arch = {
    mips64r6el =	{ e = "le", b = 64, m = 8, f = 0xa0000407, },
    s390x =	{ e = "be", b = 64, m = 22, },
-   riscv64 =    { e = "le", b = 64, m = 243, f = 0x00000004, },
+   riscv64 =     { e = "le", b = 64, m = 243, f = 0x00000004, },
 +  loongarch64 = { e = "le", b = 64, m = 258, f = 0x3},
  }
  
  local map_os = {
 Index: luajit2-2.1-20250826/src/jit/dis_loongarch64.lua
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ luajit2-2.1-20250826/src/jit/dis_loongarch64.lua	2025-10-09 23:13:59.704533056 +0200
+--- /dev/null
++++ luajit2-2.1-20250826/src/jit/dis_loongarch64.lua
 @@ -0,0 +1,697 @@
 +----------------------------------------------------------------------------
 +-- LuaJIT LoongArch64 disassembler module.
@@ -2272,9 +2272,9 @@ Index: luajit2-2.1-20250826/src/jit/dis_loongarch64.lua
 +
 Index: luajit2-2.1-20250826/src/lib_jit.c
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lib_jit.c	2025-10-09 23:13:50.446361090 +0200
-+++ luajit2-2.1-20250826/src/lib_jit.c	2025-10-09 23:13:59.704808515 +0200
-@@ -867,7 +867,8 @@
+--- luajit2-2.1-20250826.orig/src/lib_jit.c
++++ luajit2-2.1-20250826/src/lib_jit.c
+@@ -867,7 +867,8 @@ static uint32_t jit_cpudetect(void)
  #endif
  #elif LJ_TARGET_S390X
    /* No optional CPU features to detect (for now). */
@@ -2286,12 +2286,12 @@ Index: luajit2-2.1-20250826/src/lib_jit.c
  
 Index: luajit2-2.1-20250826/src/lj_arch.h
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lj_arch.h	2025-10-09 23:13:50.433083022 +0200
-+++ luajit2-2.1-20250826/src/lj_arch.h	2025-10-09 23:13:59.704965239 +0200
+--- luajit2-2.1-20250826.orig/src/lj_arch.h
++++ luajit2-2.1-20250826/src/lj_arch.h
 @@ -35,6 +35,8 @@
  #define LUAJIT_ARCH_s390x	8
- #define LUAJIT_ARCH_RISCV64	9
  #define LUAJIT_ARCH_riscv64	9
+ #define LUAJIT_ARCH_RISCV64	9
 +#define LUAJIT_ARCH_LOONGARCH64	10
 +#define LUAJIT_ARCH_loongarch64	10
  
@@ -2306,7 +2306,7 @@ Index: luajit2-2.1-20250826/src/lj_arch.h
  #else
  #error "Architecture not supported (in this version), see: https://luajit.org/status.html#architectures"
  #endif
-@@ -489,6 +493,20 @@
+@@ -490,6 +494,20 @@
  #define LJ_TARGET_MASKROT	1
  #define LJ_ARCH_NUMMODE		LJ_NUMMODE_DUAL
  
@@ -2327,7 +2327,7 @@ Index: luajit2-2.1-20250826/src/lj_arch.h
  #else
  #error "No target architecture defined"
  #endif
-@@ -519,6 +537,16 @@
+@@ -520,6 +538,16 @@
  #error "Need at least GCC 4.8 or newer"
  #endif
  #endif
@@ -2344,7 +2344,7 @@ Index: luajit2-2.1-20250826/src/lj_arch.h
  #elif !LJ_TARGET_PS3
  #if __clang__
  #if ((__clang_major__ < 3) || ((__clang_major__ == 3) && __clang_minor__ < 5))
-@@ -576,6 +604,10 @@
+@@ -577,6 +605,10 @@
  #if !defined(__riscv_float_abi_double)
  #error "Only RISC-V 64 double float supported for now"
  #endif
@@ -2357,9 +2357,9 @@ Index: luajit2-2.1-20250826/src/lj_arch.h
  
 Index: luajit2-2.1-20250826/src/lj_asm.c
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lj_asm.c	2025-10-09 23:13:50.439989544 +0200
-+++ luajit2-2.1-20250826/src/lj_asm.c	2025-10-09 23:13:59.705242972 +0200
-@@ -229,6 +229,8 @@
+--- luajit2-2.1-20250826.orig/src/lj_asm.c
++++ luajit2-2.1-20250826/src/lj_asm.c
+@@ -229,6 +229,8 @@ static Reg rset_pickrandom(ASMState *as,
  #include "lj_emit_mips.h"
  #elif LJ_TARGET_RISCV64
  #include "lj_emit_riscv.h"
@@ -2368,7 +2368,7 @@ Index: luajit2-2.1-20250826/src/lj_asm.c
  #else
  #error "Missing instruction emitter for target CPU"
  #endif
-@@ -1714,6 +1716,8 @@
+@@ -1714,6 +1716,8 @@ static void asm_loop(ASMState *as)
  #include "lj_asm_s390x.h"
  #elif LJ_TARGET_RISCV64
  #include "lj_asm_riscv64.h"
@@ -2379,8 +2379,8 @@ Index: luajit2-2.1-20250826/src/lj_asm.c
  #endif
 Index: luajit2-2.1-20250826/src/lj_asm_loongarch64.h
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ luajit2-2.1-20250826/src/lj_asm_loongarch64.h	2025-10-09 23:14:02.153643630 +0200
+--- /dev/null
++++ luajit2-2.1-20250826/src/lj_asm_loongarch64.h
 @@ -0,0 +1,1990 @@
 +/*
 +** LoongArch IR assembler (SSA IR -> machine code).
@@ -4374,8 +4374,8 @@ Index: luajit2-2.1-20250826/src/lj_asm_loongarch64.h
 +}
 Index: luajit2-2.1-20250826/src/lj_ccall.c
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lj_ccall.c	2025-10-09 23:13:50.437724513 +0200
-+++ luajit2-2.1-20250826/src/lj_ccall.c	2025-10-09 23:14:02.155464354 +0200
+--- luajit2-2.1-20250826.orig/src/lj_ccall.c
++++ luajit2-2.1-20250826/src/lj_ccall.c
 @@ -778,6 +778,95 @@
      } \
    }
@@ -4472,7 +4472,7 @@ Index: luajit2-2.1-20250826/src/lj_ccall.c
  #else
  #error "Missing calling convention definitions for this architecture"
  #endif
-@@ -1191,6 +1280,53 @@
+@@ -1191,6 +1280,53 @@ noth:  /* Not a homogeneous float/double
  
  #endif
  
@@ -4526,7 +4526,7 @@ Index: luajit2-2.1-20250826/src/lj_ccall.c
  /* -- Common C call handling ---------------------------------------------- */
  
  /* Infer the destination CTypeID for a vararg argument.
-@@ -1245,7 +1381,9 @@
+@@ -1245,7 +1381,9 @@ static int ccall_set_args(lua_State *L,
  #if LJ_TARGET_RISCV64
    int nff = 0;
  #endif
@@ -4537,7 +4537,7 @@ Index: luajit2-2.1-20250826/src/lj_ccall.c
    /* Clear unused regs to get some determinism in case of misdeclaration. */
    memset(cc->gpr, 0, sizeof(cc->gpr));
  #if CCALL_NUM_FPR
-@@ -1439,7 +1577,7 @@
+@@ -1439,7 +1577,7 @@ static int ccall_set_args(lua_State *L,
      if (isfp && d->size == sizeof(float))
        ((uint32_t *)dp)[1] = 0xffffffffu;  /* Float NaN boxing */
  #endif
@@ -4546,7 +4546,7 @@ Index: luajit2-2.1-20250826/src/lj_ccall.c
      if ((ctype_isinteger_or_bool(d->info) || ctype_isenum(d->info)
  #if LJ_TARGET_MIPS64
  	 || (isfp && nsp == 0)
-@@ -1487,6 +1625,14 @@
+@@ -1487,6 +1625,14 @@ static int ccall_set_args(lua_State *L,
          ((uint64_t *)dp)[i] = 0xffffffff00000000ul | ((uint32_t *)dp)[i];
        } while (i--);
      }
@@ -4561,7 +4561,7 @@ Index: luajit2-2.1-20250826/src/lj_ccall.c
  #else
      UNUSED(isfp);
  #endif
-@@ -1496,7 +1642,7 @@
+@@ -1496,7 +1642,7 @@ static int ccall_set_args(lua_State *L,
    if ((int32_t)nsp < 0) nsp = 0;
  #endif
  
@@ -4572,9 +4572,9 @@ Index: luajit2-2.1-20250826/src/lj_ccall.c
    cc->nsp = (nsp + CTSIZE_PTR-1) & ~(CTSIZE_PTR-1);
 Index: luajit2-2.1-20250826/src/lj_ccall.h
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lj_ccall.h	2025-10-09 23:13:50.437992427 +0200
-+++ luajit2-2.1-20250826/src/lj_ccall.h	2025-10-09 23:13:59.707230811 +0200
-@@ -172,6 +172,21 @@
+--- luajit2-2.1-20250826.orig/src/lj_ccall.h
++++ luajit2-2.1-20250826/src/lj_ccall.h
+@@ -172,6 +172,21 @@ typedef union FPRArg {
    struct { LJ_ENDIAN_LOHI(float f; , float g;) };
  } FPRArg;
  
@@ -4596,7 +4596,7 @@ Index: luajit2-2.1-20250826/src/lj_ccall.h
  #else
  #error "Missing calling convention definitions for this architecture"
  #endif
-@@ -219,7 +234,7 @@
+@@ -219,7 +234,7 @@ typedef LJ_ALIGN(CCALL_ALIGN_CALLSTATE)
    uint8_t resx87;		/* Result on x87 stack: 1:float, 2:double. */
  #elif LJ_TARGET_ARM64
    void *retp;			/* Aggregate return pointer in x8. */
@@ -4607,9 +4607,9 @@ Index: luajit2-2.1-20250826/src/lj_ccall.h
  #if LJ_32
 Index: luajit2-2.1-20250826/src/lj_ccallback.c
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lj_ccallback.c	2025-10-09 23:13:50.438123303 +0200
-+++ luajit2-2.1-20250826/src/lj_ccallback.c	2025-10-09 23:13:59.707376084 +0200
-@@ -95,6 +95,10 @@
+--- luajit2-2.1-20250826.orig/src/lj_ccallback.c
++++ luajit2-2.1-20250826/src/lj_ccallback.c
+@@ -95,6 +95,10 @@ static MSize CALLBACK_OFS2SLOT(MSize ofs
  
  #define CALLBACK_MCODE_HEAD		68
  
@@ -4620,7 +4620,7 @@ Index: luajit2-2.1-20250826/src/lj_ccallback.c
  #else
  
  /* Missing support for this architecture. */
-@@ -330,6 +334,33 @@
+@@ -330,6 +334,33 @@ static void *callback_mcode_init(global_
    }
    return p;
  }
@@ -4654,7 +4654,7 @@ Index: luajit2-2.1-20250826/src/lj_ccallback.c
  #else
  /* Missing support for this architecture. */
  #define callback_mcode_init(g, p)	(p)
-@@ -632,6 +663,31 @@
+@@ -632,6 +663,31 @@ void lj_ccallback_mcode_free(CTState *ct
      if (ngpr < maxgpr) { sp = &cts->cb.gpr[ngpr++]; goto done; } \
    }
  
@@ -4686,7 +4686,7 @@ Index: luajit2-2.1-20250826/src/lj_ccallback.c
  #elif LJ_TARGET_RISCV64
  
  #define CALLBACK_HANDLE_REGARG \
-@@ -812,7 +868,7 @@
+@@ -812,7 +868,7 @@ static void callback_conv_result(CTState
          *(int64_t *)dp = (int64_t)*(int32_t *)dp;
      }
  #endif
@@ -4697,8 +4697,8 @@ Index: luajit2-2.1-20250826/src/lj_ccallback.c
  	(LJ_ABI_SOFTFP || ctype_isinteger_or_bool(ctr->info)))
 Index: luajit2-2.1-20250826/src/lj_emit_loongarch64.h
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ luajit2-2.1-20250826/src/lj_emit_loongarch64.h	2025-10-09 23:13:59.707601939 +0200
+--- /dev/null
++++ luajit2-2.1-20250826/src/lj_emit_loongarch64.h
 @@ -0,0 +1,306 @@
 +/*
 +** LoongArch instruction emitter.
@@ -5008,12 +5008,12 @@ Index: luajit2-2.1-20250826/src/lj_emit_loongarch64.h
 +#define emit_spsub(as, ofs)	emit_addptr(as, RID_SP, -(ofs))
 Index: luajit2-2.1-20250826/src/lj_frame.h
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lj_frame.h	2025-10-09 23:13:50.434938112 +0200
-+++ luajit2-2.1-20250826/src/lj_frame.h	2025-10-09 23:13:59.707792568 +0200
-@@ -155,6 +155,15 @@
- #define CFRAME_SIZE		(10*8)
- #define CFRAME_SIZE_JIT		(CFRAME_SIZE + 9*16 + 4*8)
- #define CFRAME_SHIFT_MULTRES	0
+--- luajit2-2.1-20250826.orig/src/lj_frame.h
++++ luajit2-2.1-20250826/src/lj_frame.h
+@@ -296,6 +296,15 @@ enum { LJ_CONT_TAILCALL, LJ_CONT_FFI_CAL
+ #define CFRAME_OFS_MULTRES	0
+ #define CFRAME_SIZE		256
+ #define CFRAME_SHIFT_MULTRES	3
 +#elif LJ_TARGET_LOONGARCH64
 +#define CFRAME_OFS_ERRF		196
 +#define CFRAME_OFS_NRES		192
@@ -5024,13 +5024,13 @@ Index: luajit2-2.1-20250826/src/lj_frame.h
 +#define CFRAME_OFS_MULTRES	0
 +#define CFRAME_SHIFT_MULTRES	3
  #else
- #define CFRAME_OFS_PREV		(4*8)
- #if LJ_GC64
+ #error "Missing CFRAME_* definitions for this architecture"
+ #endif
 Index: luajit2-2.1-20250826/src/lj_gdbjit.c
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lj_gdbjit.c	2025-10-09 23:13:50.445038431 +0200
-+++ luajit2-2.1-20250826/src/lj_gdbjit.c	2025-10-09 23:13:59.707915800 +0200
-@@ -309,6 +309,9 @@
+--- luajit2-2.1-20250826.orig/src/lj_gdbjit.c
++++ luajit2-2.1-20250826/src/lj_gdbjit.c
+@@ -309,6 +309,9 @@ enum {
  #elif LJ_TARGET_RISCV64
    DW_REG_SP = 2,
    DW_REG_RA = 1,
@@ -5040,7 +5040,7 @@ Index: luajit2-2.1-20250826/src/lj_gdbjit.c
  #else
  #error "Unsupported target architecture"
  #endif
-@@ -388,6 +391,8 @@
+@@ -388,6 +391,8 @@ static const ELFheader elfhdr_template =
    .machine = 8,
  #elif LJ_TARGET_RISCV64
    .machine = 243,
@@ -5049,7 +5049,7 @@ Index: luajit2-2.1-20250826/src/lj_gdbjit.c
  #else
  #error "Unsupported target architecture"
  #endif
-@@ -606,6 +611,13 @@
+@@ -606,6 +611,13 @@ static void LJ_FASTCALL gdbjit_ehframe(G
        DB(DW_CFA_offset|32|9); DUV(29);
        DB(DW_CFA_offset|32|8); DUV(30);
      }
@@ -5065,9 +5065,9 @@ Index: luajit2-2.1-20250826/src/lj_gdbjit.c
  #endif
 Index: luajit2-2.1-20250826/src/lj_jit.h
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lj_jit.h	2025-10-09 23:13:50.446533754 +0200
-+++ luajit2-2.1-20250826/src/lj_jit.h	2025-10-09 23:13:59.708078957 +0200
-@@ -108,6 +108,10 @@
+--- luajit2-2.1-20250826.orig/src/lj_jit.h
++++ luajit2-2.1-20250826/src/lj_jit.h
+@@ -108,6 +108,10 @@ struct riscv_hwprobe {
  
  #endif
  
@@ -5078,7 +5078,7 @@ Index: luajit2-2.1-20250826/src/lj_jit.h
  #else
  
  #define JIT_F_CPUSTRING		""
-@@ -409,7 +413,7 @@
+@@ -409,7 +413,7 @@ enum {
    LJ_K64_M2P64_31 = LJ_K64_M2P64,
  #endif
  #endif
@@ -5087,7 +5087,7 @@ Index: luajit2-2.1-20250826/src/lj_jit.h
    LJ_K64_2P31,		/* 2^31 */
  #if LJ_64
    LJ_K64_2P63,		/* 2^63 */
-@@ -418,7 +422,7 @@
+@@ -418,7 +422,7 @@ enum {
  #endif
    LJ_K64__MAX,
  };
@@ -5096,7 +5096,7 @@ Index: luajit2-2.1-20250826/src/lj_jit.h
  
  enum {
  #if LJ_TARGET_X86ORX64
-@@ -428,16 +432,17 @@
+@@ -428,16 +432,17 @@ enum {
    LJ_K32_2P52_2P31,	/* 2^52 + 2^31 */
    LJ_K32_2P52,		/* 2^52 */
  #endif
@@ -5119,9 +5119,9 @@ Index: luajit2-2.1-20250826/src/lj_jit.h
  #define LJ_KSIMD(J, n) \
 Index: luajit2-2.1-20250826/src/lj_target.h
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lj_target.h	2025-10-09 23:13:50.437284165 +0200
-+++ luajit2-2.1-20250826/src/lj_target.h	2025-10-09 23:13:59.708231764 +0200
-@@ -55,7 +55,7 @@
+--- luajit2-2.1-20250826.orig/src/lj_target.h
++++ luajit2-2.1-20250826/src/lj_target.h
+@@ -55,7 +55,7 @@ typedef uint32_t RegSP;
  /* Bitset for registers. 32 registers suffice for most architectures.
  ** Note that one set holds bits for both GPRs and FPRs.
  */
@@ -5130,7 +5130,7 @@ Index: luajit2-2.1-20250826/src/lj_target.h
  typedef uint64_t RegSet;
  #define RSET_BITS		6
  #define rset_picktop_(rs)	((Reg)lj_fls64(rs))
-@@ -147,6 +147,8 @@
+@@ -147,6 +147,8 @@ typedef uint32_t RegCost;
  #include "lj_target_s390x.h"
  #elif LJ_TARGET_RISCV64
  #include "lj_target_riscv.h"
@@ -5141,8 +5141,8 @@ Index: luajit2-2.1-20250826/src/lj_target.h
  #endif
 Index: luajit2-2.1-20250826/src/lj_target_loongarch64.h
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ luajit2-2.1-20250826/src/lj_target_loongarch64.h	2025-10-09 23:14:02.156250874 +0200
+--- /dev/null
++++ luajit2-2.1-20250826/src/lj_target_loongarch64.h
 @@ -0,0 +1,313 @@
 +/*
 +** Definitions for LoongArch CPUs.
@@ -5459,9 +5459,9 @@ Index: luajit2-2.1-20250826/src/lj_target_loongarch64.h
 +
 Index: luajit2-2.1-20250826/src/lj_trace.c
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lj_trace.c	2025-08-26 14:24:06.000000000 +0200
-+++ luajit2-2.1-20250826/src/lj_trace.c	2025-10-09 23:13:59.708587403 +0200
-@@ -327,17 +327,17 @@
+--- luajit2-2.1-20250826.orig/src/lj_trace.c
++++ luajit2-2.1-20250826/src/lj_trace.c
+@@ -327,17 +327,17 @@ void lj_trace_initstate(global_State *g)
    J->k64[LJ_K64_2P64].u64 = U64x(43f00000,00000000);
    J->k32[LJ_K32_M2P64_31] = LJ_64 ? 0xdf800000 : 0xcf000000;
  #endif
@@ -5484,9 +5484,9 @@ Index: luajit2-2.1-20250826/src/lj_trace.c
    J->k64[LJ_K64_2P63].u64 = U64x(43e00000,00000000);
 Index: luajit2-2.1-20250826/src/lj_vmmath.c
 ===================================================================
---- luajit2-2.1-20250826.orig/src/lj_vmmath.c	2025-10-09 23:13:50.435766430 +0200
-+++ luajit2-2.1-20250826/src/lj_vmmath.c	2025-10-09 23:13:59.708756571 +0200
-@@ -70,7 +70,7 @@
+--- luajit2-2.1-20250826.orig/src/lj_vmmath.c
++++ luajit2-2.1-20250826/src/lj_vmmath.c
+@@ -70,7 +70,7 @@ double lj_vm_foldarith(double x, double
  /* -- Helper functions for generated machine code ------------------------- */
  
  #if (LJ_HASJIT && !(LJ_TARGET_ARM || LJ_TARGET_ARM64 || LJ_TARGET_PPC)) || LJ_TARGET_MIPS \
@@ -5497,8 +5497,8 @@ Index: luajit2-2.1-20250826/src/lj_vmmath.c
    uint32_t y, ua, ub;
 Index: luajit2-2.1-20250826/src/vm_loongarch64.dasc
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ luajit2-2.1-20250826/src/vm_loongarch64.dasc	2025-10-09 23:14:02.156573901 +0200
+--- /dev/null
++++ luajit2-2.1-20250826/src/vm_loongarch64.dasc
 @@ -0,0 +1,4625 @@
 +|// Low-level VM code for LoongArch CPUs.
 +|// Bytecode interpreter, fast functions and helper functions.

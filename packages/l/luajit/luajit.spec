@@ -35,7 +35,7 @@ URL:            https://github.com/openresty/%{name}
 
 Source0:        https://github.com/openresty/luajit2/archive/refs/tags/v%{major}-%{minor}.tar.gz#/luajit2-%{major}-%{minor}.tar.gz
 Source1:        baselibs.conf
-# https://patch-diff.githubusercontent.com/raw/openresty/luajit2/pull/236.patch#/riscv64-support.patch#/riscv64-support.patch
+# https://patch-diff.githubusercontent.com/raw/openresty/luajit2/pull/236.patch#/riscv64-support.patch
 Patch0:         riscv64-support.patch
 # https://github.com/openresty/luajit2/pull/245/commits/8e40aca7b3a919456b15698273e9b00e9250e769.patch#/loong64-support.patch
 Patch1:         loong64-support.patch

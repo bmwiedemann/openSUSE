@@ -523,4 +523,13 @@
 - Updated to 2.1.20241104 (2.1.1728714540).</comment>
     <requestid>1313747</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b63cf5c907734b87e5818b4c29a1a8ef</srcmd5>
+    <version>2.1.20250826</version>
+    <time>1761840537</time>
+    <user>anag_factory</user>
+    <comment>- riscv64-support.patch: update from LuaJIT/LuaJIT#1267
+- loong64-support.patch: rediff</comment>
+    <requestid>1314054</requestid>
+  </revision>
 </revisionlist>
