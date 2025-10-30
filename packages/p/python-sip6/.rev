@@ -404,4 +404,19 @@
 </comment>
     <requestid>1311795</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3a017257418485bf75ae186c2fa8ec65</srcmd5>
+    <version>6.14.0</version>
+    <time>1761840582</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.14.0
+  * sip-sdist now has a --abi-version command line option to be
+    used if a value is not specified in pyproject.toml.
+  * Bugs in the handling of the default target ABI have been fixed.
+  * Fixed a regression in v6.13.1 in the handling of composite
+    modules. Resolves #95
+- Drop sip-issue95.patch
+</comment>
+    <requestid>1314368</requestid>
+  </revision>
 </revisionlist>
