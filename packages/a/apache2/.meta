@@ -31,4 +31,5 @@ Apache distribution.
 See /usr/share/doc/packages/apache2/, http://httpd.apache.org/, and
 http://httpd.apache.org/docs-2.0/upgrading.html.</description>
   <devel project="Apache" package="apache2"/>
+  <bcntsynctag>apache2</bcntsynctag>
 </package>
