@@ -41,4 +41,12 @@
     <comment></comment>
     <requestid>1311459</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>307123f805b9a68f6b8eef0e95d1ad40</srcmd5>
+    <version>1.6.0</version>
+    <time>1761840538</time>
+    <user>anag_factory</user>
+    <comment>- Don't strip debug symbols (forwarded request 1314096 from lmulling)</comment>
+    <requestid>1314097</requestid>
+  </revision>
 </revisionlist>

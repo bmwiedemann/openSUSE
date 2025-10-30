@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Oct 23 13:22:46 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.6.0:
+  * ASN.1: use stack for small generator for small use cases
+  * X.509: Updates required to support the shim boot loader
+  * X.509: add lc_gmtime to convert Epoch to time format
+  * ASN.1: added to Linux kernel (for 64 bit systems only)
+  * Added AES-GCM and AES-XTS
+  * Availability: remove assert() calls throughout the code - in case of a self
+    test error, disable the algorithm. Instead of using assert, apply a centrally
+    managed test manager that stores the test status. This implies that some
+    initalization APIs like lc_hash_init, lc_sym_init, lc_hmac_init are changed
+    such that they return an error code if self tests failed. Thus, the version
+    is now changed as this is considered to be an ABI change. Although this
+    sounds heavy, the test manager is relatively small and the runtime state
+    should be smaller than the old approach considering the old approach uses one
+    global 32 bit integer per self test to maintain the state. This is now
+    replaced with a set of 32 bit atomic integers that hold a 3-bit field for
+    each algorithm. This change also adds the API call of lc_rerun_one_selftest
+    which allows triggering the reruning of a self test for one given algorithm.
+  * FIPS: Rearchitect integrity test control value generator: The build process now
+    uses the host’s objcopy to extract the ELF sections of interest into a separate
+    file, use a build_machine compiled version of sha3-256sum to generate the
+    digest of it and reinsert it into the leancrypto-fips.so. This now allows
+    cross-compilation with FIPS integrity test support. There is no functional
+    change to leancrypto though.
+  * Significant reduction of compilation units by almost half by not having
+    global, but per-test compiled C files.
+  * Linux kernel: add /proc/leancrypto
+  * FIPS: Add negative testing support
+  * Add SHAKE-512 and XDRBG-512 support
+  * FIPS: Add FIPS indicator which implies that libleancrypto.so has the same
+    functionality as libleancrypto-fips.so with the exception that the latter
+    performs an integrity test.
+  * ARMv9: fix BTI for ML-DSA
+- Remove patch:
+  * leancrypto-fix-aarch64-BTI.patch
+- Don't strip debug symbols
+
+-------------------------------------------------------------------
 Tue Oct 14 07:48:02 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix BTI on aarch64:
@@ -66,7 +106,7 @@ Thu Apr 10 08:11:26 UTC 2025 - Marcus Meissner <meissner@suse.com>
 - updated to 1.3.0
   * Allow CPU entropy sources to be used as seed sources with meson option "seedsource=cpu"
   * Ensure full clean run on vintage system without AVX2 (thanks to "David C. Rankin" <drankinatty@gmail.com>)
-  * EFI: compilation support on AARCH64 
+  * EFI: compilation support on AARCH64
   * Meson: reduce number of object files to speed up compilation process
   * Intel assembler: add endbr[64|32] to every function and ensure IBT is enabled
   * ARMv8 assembler / ELF: add BTI and PAC support
@@ -265,7 +305,7 @@ Sun Feb  5 20:56:14 UTC 2023 - Stephan Mueller <smueller@chronox.de>
 -------------------------------------------------------------------
 Sun Jan  8 16:22:33 UTC 2023 - Stephan Mueller <smueller@chronox.de>
 
-- leancrypto version 0.5.1 
+- leancrypto version 0.5.1
 
 -------------------------------------------------------------------
 Fri Nov 25 08:18:22 UTC 2022 - Stephan Mueller <smueller@chronox.de>
@@ -275,7 +315,7 @@ Fri Nov 25 08:18:22 UTC 2022 - Stephan Mueller <smueller@chronox.de>
 -------------------------------------------------------------------
 Fri Nov 25 07:56:44 UTC 2022 - Stephan Mueller <smueller@chronox.de>
 
-- Add Linux kernel module spec file 
+- Add Linux kernel module spec file
 
 -------------------------------------------------------------------
 Fri Nov 25 07:29:26 UTC 2022 - Stephan Mueller <smueller@chronox.de>

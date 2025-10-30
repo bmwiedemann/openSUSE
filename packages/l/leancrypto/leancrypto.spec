@@ -29,24 +29,24 @@
 %define pkgname leancrypto
 %define libname lib%{pkgname}
 Name:           %{pkgname}%{psuffix}
-Version:        1.5.1
-Release:        1.1
+Version:        1.6.0
+Release:        0
+%if %{with kmp}
+Summary:        leancrypto Kernel Module Package
+%else
 Summary:        Cryptographic library with stack-only support and PQC-safe algorithms
+%endif
 License:        BSD-3-Clause OR GPL-2.0-only
 URL:            https://www.leancrypto.org
 Source0:        https://www.leancrypto.org/%{pkgname}/releases/%{pkgname}-%{version}/%{pkgname}-%{version}.tar.xz
 Source1:        https://www.leancrypto.org/%{pkgname}/releases/%{pkgname}-%{version}/%{pkgname}-%{version}.tar.xz.asc
 Source2:        https://leancrypto.org/about/smuellerDD-2024.asc#/leancrypto.keyring
 Source3:        baselibs.conf
-# PATCH-FIX-UPSTREAM - https://github.com/smuellerDD/leancrypto/issues/38
-Patch1:         leancrypto-fix-aarch64-BTI.patch
 BuildRequires:  clang
 BuildRequires:  meson
 %if %{with kmp}
 BuildRequires:  %kernel_module_package_buildreqs
-
 %kernel_module_package -n %{pkgname}
-
 %endif
 
 %description
@@ -54,7 +54,6 @@ Leancrypto provides a general-purpose cryptographic library with PQC-safe
 algorithms. Further it only has POSIX dependencies, and allows all algorithms
 to be used on stack as well as on heap. Accelerated algorithms are transparently
 enabled if possible.
-
 
 %if %{without kmp}
 %package -n %{libname}1
@@ -114,19 +113,19 @@ to be used on stack as well as on heap. Accelerated algorithms are transparently
 enabled if possible.
 
 This subpackage holds the tools provided by the library, such as sha*sum.
-
 %else
-
 %package KMP
-Summary:        Cryptographic library with stack-only support and PQC-safe algorithms
+Summary:        leancrypto Kernel Module Package
 Group:          System/Kernel
 
 %description KMP
-Leancrypto provides a general-purpose cryptographic library with PQC-safe
-algorithms. Further it only has POSIX dependencies, and allows all algorithms
-to be used on stack as well as on heap. Accelerated algorithms are transparently
-enabled if possible.
+Leancrypto for the Linux Kernel. The leancrypto library is intended to provide
+the identical services for user space as well as Linux kernel space. This shall
+allow developers to only have one crypto provider which they need to maintain
+and learn to develop with.
 
+The user space and kernel space versions of leancrypto are fully independent of
+each other. Neither requires the presence of the other for full operation.
 %endif
 
 %prep
@@ -142,17 +141,17 @@ mkdir obj
 %endif
 
 %build
-%meson -Dseedsource=esdm
+%meson -Dseedsource=esdm -Dstrip=false
 # Only build the lib when we need it, if building the kernel module, just build
 # the kernel module.
 %if %{without kmp}
 %meson_build
 %else
 for flavor in %flavors_to_build; do
-	KERNELRELEASE=`make -s -C /%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor kernelrelease`
+	KERNELRELEASE=`make -j${RPM_BUILD_NCPUS} -s -C /%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor kernelrelease`
 	rm -rf obj/$flavor
 	cp -r source obj/$flavor
-	make -C $PWD/obj/$flavor/linux_kernel KERNELRELEASE=$KERNELRELEASE
+	make -j${RPM_BUILD_NCPUS} -C $PWD/obj/$flavor/linux_kernel KERNELRELEASE=$KERNELRELEASE
 done
 %endif
 
@@ -206,6 +205,8 @@ done
 %{_libexecdir}/%{name}/sha3-384sum
 %{_libexecdir}/%{name}/sha3-512sum
 %{_libexecdir}/%{name}/ascon256-sum
+%{_bindir}/lc_pkcs7_generator
+%{_bindir}/lc_x509_generator
 %endif
 
 %changelog
