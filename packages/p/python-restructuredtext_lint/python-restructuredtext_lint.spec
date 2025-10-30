@@ -25,9 +25,12 @@ License:        Unlicense
 Group:          Development/Languages/Python
 URL:            https://github.com/twolfson/restructuredtext-lint
 Source:         https://files.pythonhosted.org/packages/source/r/restructuredtext_lint/restructuredtext_lint-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip-failing-test-66.patch gh#twolfson/restructuredtext-lint#66 mcepl@suse.com
-# skip failing test
-Patch0:         skip-failing-test-66.patch
+# PATCH-FIX-UPSTREAM set-pub-at-inst.patch gh#twolfson/restructuredtext-lint!64 mcepl@suse.com
+# make the package compatible with docutils 0.22
+Patch0:         set-pub-at-inst.patch
+# PATCH-FIX-OPENSUSE skip-failing-test-66.patch gh#twolfson/restructuredtext-lint#66 mcepl@suse.com
+# skip failing test (upstream has more complex solution)
+Patch1:         skip-failing-test-66.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -65,7 +68,7 @@ find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 
 %check
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -m unittest discover
+$python -m unittest discover -v
 }
 
 %pre

@@ -1,0 +1,36 @@
+From feffa41fe2b0575754353913cd71df61e4eea0a6 Mon Sep 17 00:00:00 2001
+From: Dominic Davis-Foster <dominic@davis-foster.co.uk>
+Date: Thu, 14 Aug 2025 13:29:50 +0100
+Subject: [PATCH] Set publusher components at instantiaion
+
+---
+ restructuredtext_lint/lint.py |    9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+Index: restructuredtext_lint-1.4.0/restructuredtext_lint/lint.py
+===================================================================
+--- restructuredtext_lint-1.4.0.orig/restructuredtext_lint/lint.py	2018-11-14 06:55:13.000000000 +0100
++++ restructuredtext_lint-1.4.0/restructuredtext_lint/lint.py	2025-10-30 11:34:26.553577716 +0100
+@@ -1,6 +1,7 @@
+ # Load in our dependencies
+ from __future__ import absolute_import
+ import io
++import docutils
+ from docutils import utils
+ from docutils.core import Publisher
+ from docutils.nodes import Element
+@@ -18,8 +19,12 @@
+     # Generate a new parser (copying `rst2html.py` flow)
+     # http://repo.or.cz/w/docutils.git/blob/422cede485668203abc01c76ca317578ff634b30:/docutils/tools/rst2html.py
+     # http://repo.or.cz/w/docutils.git/blob/422cede485668203abc01c76ca317578ff634b30:/docutils/docutils/core.py#l348
+-    pub = Publisher(None, None, None, settings=None)
+-    pub.set_components('standalone', 'restructuredtext', 'pseudoxml')
++    # https://github.com/twolfson/restructuredtext-lint/pull/64
++    if docutils.__version_info__[:2] < (0, 22):
++        pub = Publisher(None, None, None, settings=None)
++        pub.set_components('standalone', 'restructuredtext', 'pseudoxml')
++    else:
++        pub = Publisher('standalone', 'restructuredtext', 'pseudoxml', settings=None)
+ 
+     # Configure publisher
+     # DEV: We cannot use `process_command_line` since it processes `sys.argv` which is for `rst-lint`, not `docutils`

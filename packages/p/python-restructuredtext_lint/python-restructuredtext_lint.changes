@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 30 10:44:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add set-pub-at-inst.patch making the package compatible with
+  docutils >= 0.22 (gh#twolfson/restructuredtext-lint!64).
+
+-------------------------------------------------------------------
 Thu Sep 25 22:41:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add skip-failing-test-66.patch skipping failing test
-  (gh#twolfson/restructuredtext-lint#66) skipping failing test
+  (gh#twolfson/restructuredtext-lint#66) fixing failing test
   test.test.TestRestructuredtextLintCLI.test_level_fail
 
 -------------------------------------------------------------------
