@@ -4,7 +4,7 @@
     <product>
       <vendor>openSUSE</vendor>
       <name>openSUSE</name>
-      <version>20251028</version>
+      <version>20251029</version>
       <release>0</release>
 
       <productline>openSUSE</productline>
@@ -262,10 +262,6 @@
     <conditional name="i686_replacement"/>
     <packagelist relationship="requires">
       <package name="bitwarden"/>
-      <package name="MozillaFirefox"/>
-      <package name="MozillaFirefox-branding-upstream"/>
-      <package name="MozillaFirefox-translations-common"/>
-      <package name="MozillaFirefox-translations-other"/>
       <package name="MozillaThunderbird"/>
       <package name="MozillaThunderbird-openpgp-librnp"/>
       <package name="MozillaThunderbird-translations-common"/>

@@ -4001,7 +4001,6 @@
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="systemd-experimental" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-presets-branding-Aeon" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

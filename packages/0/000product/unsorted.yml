@@ -4378,6 +4378,8 @@ unsorted:
   - fortune 
   - fossil 
   - fotowall 
+  - foundry 
+  - foundry-devel 
   - four-in-a-row 
   - four-in-a-row-lang 
   - fox16-devel 
@@ -7865,7 +7867,7 @@ unsorted:
   - gpsd 
   - gpsd-clients 
   - gpsd-devel 
-  - gpsd-qt5-devel 
+  - gpsd-qt6-devel 
   - gptfdisk-fixparts 
   - gpu-screen-recorder 
   - gpu-screen-recorder-gtk 
@@ -11989,7 +11991,7 @@ unsorted:
   - libaria2-0 
   - libarm_compute52 
   - libarm_compute_graph52 
-  - libarmadillo14 
+  - libarmadillo15 
   - libarmnn35 
   - libarmnn35-opencl 
   - libarmnnBasePipeServer35 
@@ -13253,6 +13255,8 @@ unsorted:
   - libfontenc1-32bit 
   - libfonts-javadoc 
   - libformula-javadoc 
+  - libfoundry-1-1 
+  - libfoundry-gtk-1-1 
   - libfparser-4_5_2 
   - libfplist-devel 
   - libfplist1 
@@ -14198,11 +14202,11 @@ unsorted:
   - libkea-database76 
   - libkea-dhcp109 
   - libkea-dhcp_ddns68 
-  - libkea-dhcpsrv130 
+  - libkea-dhcpsrv131 
   - libkea-dns71 
   - libkea-eval84 
   - libkea-exceptions45 
-  - libkea-hooks119 
+  - libkea-hooks120 
   - libkea-http87 
   - libkea-log-interprocess3 
   - libkea-log75 
@@ -17718,7 +17722,6 @@ unsorted:
   - lua-resty-websocket 
   - lua-rrdtool 
   - lua51 
-  - lua51-BitOp 
   - lua51-alt-getopt 
   - lua51-argparse 
   - lua51-busted 
@@ -23232,6 +23235,7 @@ unsorted:
   - postgresql18-pltcl 
   - postgresql18-server-devel 
   - postgresql18-test 
+  - postgresql18-timescaledb 
   - postgrey 
   - postorius 
   - postorius-web 
@@ -25581,6 +25585,7 @@ unsorted:
   - python311-guessit 
   - python311-gunicorn 
   - python311-guzzle_sphinx_theme 
+  - python311-gvar 
   - python311-gvm-tools 
   - python311-gwcs 
   - python311-gwdatafind 
@@ -27562,6 +27567,7 @@ unsorted:
   - python311-vdirsyncer 
   - python311-vega 
   - python311-vega_datasets 
+  - python311-vegas 
   - python311-venusian 
   - python311-venusian-doc 
   - python311-verboselogs 
@@ -29348,6 +29354,7 @@ unsorted:
   - python312-guessit 
   - python312-gunicorn 
   - python312-guzzle_sphinx_theme 
+  - python312-gvar 
   - python312-gvm-tools 
   - python312-gwcs 
   - python312-gwdatafind 
@@ -30213,6 +30220,7 @@ unsorted:
   - python312-poetry-plugin-export 
   - python312-polib 
   - python312-policycoreutils 
+  - python312-pony 
   - python312-pooch 
   - python312-pook 
   - python312-port-for 
@@ -31377,6 +31385,7 @@ unsorted:
   - python312-vdirsyncer 
   - python312-vega 
   - python312-vega_datasets 
+  - python312-vegas 
   - python312-venusian 
   - python312-venusian-doc 
   - python312-verboselogs 
@@ -33130,6 +33139,7 @@ unsorted:
   - python313-guessit 
   - python313-gunicorn 
   - python313-guzzle_sphinx_theme 
+  - python313-gvar 
   - python313-gvm-tools 
   - python313-gwcs 
   - python313-gwdatafind 
@@ -34586,6 +34596,7 @@ unsorted:
   - python313-reportlab 
   - python313-repoze.lru 
   - python313-repoze.sphinx.autointerface 
+  - python313-repoze.who 
   - python313-reproject 
   - python313-requestbuilder 
   - python313-requests-aws 
@@ -35116,6 +35127,7 @@ unsorted:
   - python313-vdirsyncer 
   - python313-vega 
   - python313-vega_datasets 
+  - python313-vegas 
   - python313-venusian 
   - python313-venusian-doc 
   - python313-verboselogs 
@@ -48314,6 +48326,8 @@ unsorted:
   - typelib-1_0-Folks-0_7 
   - typelib-1_0-FolksEds-0_7 
   - typelib-1_0-FolksTelepathy-0_7 
+  - typelib-1_0-Foundry-1 
+  - typelib-1_0-FoundryGtk-1 
   - typelib-1_0-GCab-1_0 
   - typelib-1_0-GData-0_0 
   - typelib-1_0-GES-1_0 
