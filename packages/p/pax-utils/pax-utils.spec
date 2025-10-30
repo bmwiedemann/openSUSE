@@ -31,6 +31,7 @@ Patch20:        pax-utils-handle-lib64.patch
 BuildRequires:  libcap-devel
 BuildRequires:  meson
 BuildRequires:  xmlto
+Requires:       python3-pyelftools
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
