@@ -40,7 +40,7 @@ ExclusiveArch:  do_not_build
 
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.10.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
