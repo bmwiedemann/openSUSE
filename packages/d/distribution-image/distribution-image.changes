@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 29 16:55:45 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- switch to a docker based build
+
+-------------------------------------------------------------------
 Mon Sep 29 09:32:28 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove non-reproducible files from container
