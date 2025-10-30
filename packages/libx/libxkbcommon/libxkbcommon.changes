@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 29 10:14:28 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.12.3
+  * Fixed `xkbcli keymap-dump` being kinda broken on Wayland
+    because it would commit an XDG surface without a role object.
+  * X11: Hardened against some malformed XKB responses with
+    erroneous modifiers or LEDs counts.
+
+-------------------------------------------------------------------
 Mon Oct 20 19:07:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.12.2
