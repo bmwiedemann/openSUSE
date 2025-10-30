@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-libreswan
-Version:        1.2.27
+Version:        1.2.28
 Release:        0
 Summary:        Libreswan VPN client plugin for NetworkManager
 License:        GPL-2.0-or-later
