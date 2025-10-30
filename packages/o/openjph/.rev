@@ -120,4 +120,16 @@
   * nlt_type3[i] not initialized when get_nonlinear_transform() == false #220</comment>
     <requestid>1310431</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>62cfc13ec3761896b6fa9caf1f32ed66</srcmd5>
+    <version>0.24.4</version>
+    <time>1761840587</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.24.4:
+  * Fix an issue with ATK marker segment processing #224
+
+- Update to 0.24.3:
+  * Protect against illegally long QCD and QCC marker segments.</comment>
+    <requestid>1314505</requestid>
+  </revision>
 </revisionlist>

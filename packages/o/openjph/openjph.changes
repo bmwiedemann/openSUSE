@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 30 07:42:26 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.4:
+  * Fix an issue with ATK marker segment processing #224
+
+-------------------------------------------------------------------
+Wed Oct 29 10:43:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.3:
+  * Protect against illegally long QCD and QCC marker segments.
+
+-------------------------------------------------------------------
 Fri Oct 10 05:18:47 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.24.2:
