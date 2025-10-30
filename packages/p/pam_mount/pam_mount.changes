@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 30 11:06:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.22
+  * Add per-volume "ignoresource" option to pam_mount.conf.xml to
+    ignore the origin device when testing for already-mountedness.
+  * Fix GDM doing nothing after entering the password.
+
+-------------------------------------------------------------------
 Mon Oct  6 23:47:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.21

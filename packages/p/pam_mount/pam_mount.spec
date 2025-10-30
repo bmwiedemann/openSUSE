@@ -18,7 +18,7 @@
 
 Name:           pam_mount
 %define lname   libcryptmount0
-Version:        2.21
+Version:        2.22
 Release:        0
 Summary:        A PAM Module that can Mount Volumes for a User Session
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
