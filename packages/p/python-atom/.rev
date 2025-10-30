@@ -182,4 +182,18 @@
   * 3.13 support by @MatthieuDartiailh in #214</comment>
     <requestid>1218909</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>35a5bceca8c6bf032eb447f2eb57ded6</srcmd5>
+    <version>0.12.1</version>
+    <time>1761840602</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.1:
+  * remove version_info attribute from version.py
+  * add support for Python 3.14 PR #219
+  * support for Final in member annotations, which sets the member setattr
+    mode as read-only PR #249
+  * support for NewType instances in all places in which a type is
+    accepted PR #218</comment>
+    <requestid>1314474</requestid>
+  </revision>
 </revisionlist>

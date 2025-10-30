@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 30 01:35:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.12.1:
+  * remove version_info attribute from version.py
+  * add support for Python 3.14 PR #219
+  * support for Final in member annotations, which sets the member setattr
+    mode as read-only PR #249
+  * support for NewType instances in all places in which a type is
+    accepted PR #218
+
+-------------------------------------------------------------------
 Tue Oct 29 05:21:28 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.11.0:
