@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 19 15:51:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + depot: set TERM by default on spawn
+  + settings: infinite is represented by -1
+  + Updated translations.
+- Drop e7e8b62e7.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Oct 15 06:25:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add e7e8b62e7.patch: settings: infinite is represented by -1
