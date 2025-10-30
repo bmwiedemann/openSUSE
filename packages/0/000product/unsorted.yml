@@ -519,6 +519,7 @@ unsorted:
   - alevtd 
   - alex 
   - aliftype-amiri-fonts 
+  - aliyun-cli 
   - alkimia 
   - alkimia-devel 
   - alkimia-lang 
@@ -2653,18 +2654,7 @@ unsorted:
   - coturn 
   - coturn-devel 
   - coturn-utils 
-  - courier-authlib 
-  - courier-authlib-devel 
-  - courier-authlib-ldap 
-  - courier-authlib-mysql 
-  - courier-authlib-pgsql 
-  - courier-authlib-pipe 
-  - courier-authlib-sqlite 
-  - courier-authlib-userdb 
-  - courier-imap 
   - courier-prime-fonts 
-  - courier-unicode-devel 
-  - courier-unicode-doc 
   - cowsay 
   - cowsql-devel 
   - coxeter 
@@ -7445,35 +7435,6 @@ unsorted:
   - go-passbolt-cli-zsh-completion 
   - go-race 
   - go-sendxmpp 
-  - go1.13 
-  - go1.13-doc 
-  - go1.13-race 
-  - go1.14 
-  - go1.14-doc 
-  - go1.14-race 
-  - go1.15 
-  - go1.15-doc 
-  - go1.15-race 
-  - go1.16 
-  - go1.16-doc 
-  - go1.16-libstd 
-  - go1.16-race 
-  - go1.17 
-  - go1.17-doc 
-  - go1.17-libstd 
-  - go1.17-race 
-  - go1.18 
-  - go1.18-doc 
-  - go1.18-libstd 
-  - go1.18-race 
-  - go1.19 
-  - go1.19-doc 
-  - go1.19-libstd 
-  - go1.19-race 
-  - go1.20 
-  - go1.20-doc 
-  - go1.20-libstd 
-  - go1.20-race 
   - go1.21 
   - go1.21-doc 
   - go1.21-libstd 
@@ -7494,9 +7455,6 @@ unsorted:
   - go1.25-doc 
   - go1.25-libstd 
   - go1.25-race 
-  - go1.9 
-  - go1.9-doc 
-  - go1.9-race 
   - goaccess 
   - goben 
   - gobject-introspection 
@@ -12680,7 +12638,6 @@ unsorted:
   - libcosmos-devel 
   - libcotp-devel 
   - libcotp3 
-  - libcourier-unicode8 
   - libcowsql0 
   - libcpath-devel 
   - libcpath1 
@@ -17809,6 +17766,7 @@ unsorted:
   - lua53-doc 
   - lua53-editorconfig-core-lua 
   - lua53-fluent 
+  - lua53-jsregexp 
   - lua53-ldbus 
   - lua53-ldoc 
   - lua53-lgi 
@@ -17879,6 +17837,7 @@ unsorted:
   - lua54-doc 
   - lua54-editorconfig-core-lua 
   - lua54-fluent 
+  - lua54-jsregexp 
   - lua54-ldbus 
   - lua54-ldoc 
   - lua54-lgi 
@@ -17935,6 +17894,7 @@ unsorted:
   - luajit-compat-5.3 
   - luajit-compat-5.3-bit32 
   - luajit-devel 
+  - luajit-jsregexp 
   - luajit-luarocks 
   - luajit2 
   - luajit2-devel 
