@@ -32,13 +32,23 @@ function find_mpm
 
   # try to read from sysconfig's APACHE_MPM
   HTTPD_MPM="$APACHE_MPM"
-  # if empty, then choose the one chosen by
-  # update alternatives
+
+  # if the value is empty, we try to determine the MPM based on what's
+  # installed, with the priority that is encoded below
   if [ -z "$HTTPD_MPM" ]; then
-     HTTPD_MPM=$(readlink $(readlink /usr/sbin/httpd) | sed "s:/usr/sbin/httpd-::")
+	if [ -x "$HTTPD_SBIN_BASE-prefork" ]; then
+		HTTPD_MPM="prefork"
+	elif [ -x "$HTTPD_SBIN_BASE-worker" ]; then
+		HTTPD_MPM="worker"
+	elif [ -x "$HTTPD_SBIN_BASE-event" ]; then
+		HTTPD_MPM="event"
+	else
+		echo >&2 "No usable APACHE_MPM was found."
+		echo >&2 "Check your APACHE_MPM setting in /etc/sysconfig/apache2."
+		exit 1
+	fi
   fi
 
-  # in case no 
   export HTTPD_MPM
 }
 

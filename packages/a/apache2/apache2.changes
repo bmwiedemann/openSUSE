@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 21 11:31:28 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Re-introduce /usr/sbin/httpd
+- Links to start_apache2, which now contains the logic to dispatch
+  to the appropriate MPM respecting sysconfig's decision.
+
+-------------------------------------------------------------------
+Mon Oct 13 13:22:43 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Migrate from update-alternatives (bsc#1245830).
+- The APACHE_MPM environment variable now controls which MPM will be used.
+  If an empty string is provided, the script-helpers file implements its own logic
+  to pick an MPM from the currently installed ones.
+  As at least one MPM is always required, this will work just fine.
+
+-------------------------------------------------------------------
 Tue Sep 23 13:37:34 UTC 2025 - pgajdos@suse.com
 
 - httpd testsuite of svn revision 1928711, fixes the failure

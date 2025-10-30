@@ -49,17 +49,11 @@ fi
 # /usr/sbin/httpd-worker, etc.) and serverflags
 #
 find_mpm
-if [ -n "$HTTPD_MPM" ]; then
-    apache_bin="$HTTPD_SBIN_BASE-$HTTPD_MPM"
-    if ! [ -x $apache_bin ]; then
-        echo >&2 "$apache_bin-$APACHE_MPM is not a valid httpd binary."
+apache_bin="$HTTPD_SBIN_BASE-$HTTPD_MPM"
+if ! [ -x $apache_bin ]; then
+	echo >&2 "$apache_bin is not a valid httpd binary."
 	echo >&2 "Check your APACHE_MPM setting in /etc/sysconfig/apache2."
 	exit 1
-    fi
-else
-    # take /usr/sbin/httpd, which will
-    # exist thanks to update alternatives
-    apache_bin="$HTTPD_SBIN_BASE"
 fi
 
 # server flags from APACHE_SERVER_FLAGS

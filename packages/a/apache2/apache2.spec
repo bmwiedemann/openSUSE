@@ -16,6 +16,8 @@
 #
 
 
+%global apache2_evr %{?epoch:%{epoch}:}%{version}-%{release}
+
 %global upstream_name   httpd
 %global testsuite_name  %{upstream_name}-framework
 %global tversion        svn1928711
@@ -37,15 +39,6 @@
 %if "%{flavor}" == "test_prefork" || "%{flavor}" == "test_worker" || "%{flavor}" == "test_event"
 %define unittest        1
 %endif
-%endif
-%if "%{mpm}" == "prefork"
-%define mpm_alt_prio    10
-%endif
-%if "%{mpm}" == "worker"
-%define mpm_alt_prio    20
-%endif
-%if "%{mpm}" == "event"
-%define mpm_alt_prio    30
 %endif
 %define default_mpm     prefork
 %define suse_maintenance_mmn  0
@@ -262,12 +255,15 @@ BuildRequires:  netcfg
 # /SECTION
 %if "%{mpm}" != ""
 Provides:       apache2-MPM
-Requires:       apache2
+Requires:       apache2 = %{apache2_evr}
 %endif
 %if "%{flavor}" == ""
 Requires:       %{_sysconfdir}/mime.types
 Requires:       apache2-MPM
-Suggests:       apache2-%{default_mpm}
+Requires:       (apache2-event   = %{apache2_evr} if apache2-event)
+Requires:       (apache2-prefork = %{apache2_evr} if apache2-prefork)
+Requires:       (apache2-worker  = %{apache2_evr} if apache2-worker)
+Suggests:       apache2-%{default_mpm} = %{apache2_evr}
 Recommends:     apache2-utils
 Requires:       logrotate
 Provides:       %{apache_mmn}
@@ -298,7 +294,6 @@ Obsoletes:      apache2-doc <= %{version}
 Requires(pre):  permissions
 Requires(post): %fillup_prereq
 Requires(post): grep
-Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
 %if %{test} || "%{flavor}" == "manual"
@@ -484,18 +479,9 @@ make DESTDIR=%{buildroot} program-install
 pushd modules
 make DESTDIR=%{buildroot} install -j1
 popd
-# install alternative links (httpd binary, modules)
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -sf %{_sysconfdir}/alternatives/httpd %{buildroot}%{_sbindir}/httpd
-mkdir -p %{buildroot}%{_libdir}/apache2/
-for module in %{dynamic_modules}; do
-  if [ -e %{buildroot}%{libexecdir}/mod_$module.so ]; then
-    ln -sf %{_sysconfdir}/alternatives/mod_$module.so %{buildroot}%{_libdir}/apache2/mod_$module.so
-  fi
-done
 %endif
 
-# main packge install
+# main package install
 %if "%{flavor}" == ""
 mkdir -p %{buildroot}%{logfiledir} \
          %{buildroot}%{proxycachedir} \
@@ -531,7 +517,8 @@ install -m 755 %{SOURCE100} %{buildroot}%{_sbindir}/a2enmod
 ln -s a2enmod %{buildroot}%{_sbindir}/a2dismod
 install -m 755 %{SOURCE101} %{buildroot}%{_sbindir}/a2enflag
 ln -s a2enflag %{buildroot}%{_sbindir}/a2disflag
-install -m 744 %{SOURCE103} %{buildroot}%{_sbindir}/start_apache2
+ln -s start_apache2 %{buildroot}%{_sbindir}/httpd
+install -m 755 %{SOURCE103} %{buildroot}%{_sbindir}/start_apache2
 mkdir -p %{buildroot}/%{_datadir}/apache2/
 install -m 644 %{SOURCE104} %{buildroot}/%{_datadir}/apache2/script-helpers
 
@@ -822,14 +809,8 @@ exit 0
 # MPMs files
 %if ! %{test} && "%{mpm}" != ""
 %files
-%{_sbindir}/httpd
 %{_sbindir}/httpd-%{mpm}
-%ghost %{_sysconfdir}/alternatives/httpd
-# %%ghost %%{_sysconfdir}/alternatives/mod_*.so does not work
-%(for module in %{dynamic_modules}; do echo "%ghost %{_sysconfdir}/alternatives/mod_$module.so"; done)
 %dir %{_libdir}/apache2-%{mpm}
-%dir %{_libdir}/apache2
-%{_libdir}/apache2/*.so
 %{libexecdir}/mod_*.so
 %endif
 
@@ -874,6 +855,7 @@ exit 0
 %{_sbindir}/a2enmod
 %{_sbindir}/a2disflag
 %{_sbindir}/a2dismod
+%{_sbindir}/httpd
 %{_sbindir}/start_apache2
 %{_sbindir}/rcapache2
 %{_datadir}/apache2/script-helpers
@@ -927,26 +909,18 @@ exit 0
 
 # MPMs scriptlets
 %if ! %{test} && "%{mpm}" != ""
-%post
-%{_sbindir}/update-alternatives --quiet --force \
-    --install %{_sbindir}/httpd httpd %{_sbindir}/httpd-%{mpm} %{mpm_alt_prio}
-for module in %{dynamic_modules}; do
-  if [ -e %{libexecdir}/mod_$module.so ]; then
-    %{_sbindir}/update-alternatives --quiet --force \
-        --install %{_libdir}/apache2/mod_$module.so mod_$module.so %{libexecdir}/mod_$module.so %{mpm_alt_prio}
-  fi
-done
-exit 0
-
-%postun
-if [ "$1" = 1 ]; then
-  %apache_request_restart
-fi
+%pre
 if [ "$1" = 0 ]; then
   %{_sbindir}/update-alternatives --quiet --force --remove httpd %{_sbindir}/httpd
   for module in %{dynamic_modules}; do
     %{_sbindir}/update-alternatives --quiet --force --remove mod_$module.so %{_libdir}/apache2/mod_$module.so
   done
+fi
+exit 0
+
+%postun
+if [ "$1" = 1 ]; then
+  %apache_request_restart
 fi
 exit 0
 
