@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          144
-%define mainver        %major.0
-%define orig_version   144.0
+%define mainver        %major.0.2
+%define orig_version   144.0.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -40,7 +40,7 @@
 %define do_profiling   0
 
 # upstream default is clang (to use gcc for large parts set to 0)
-%define clang_build    1
+%define clang_build    0
 
 %bcond_with only_print_mozconfig
 

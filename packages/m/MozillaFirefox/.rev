@@ -7788,4 +7788,41 @@
     Spoofing risk in Android custom tabs</comment>
     <requestid>1311973</requestid>
   </revision>
+  <revision rev="469" vrev="1">
+    <srcmd5>5ce14bdc711c4d84cef87cf596999c95</srcmd5>
+    <version>144.0.2</version>
+    <time>1761840557</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 144.0.2
+  * Fixed: Fixed an issue where the list of available locales in
+    `about:settings` contained more locales than were downloaded
+    or currently supported. (bmo#1994642)
+  * Fixed: Fixed an issue where using the keyboard to open the
+    Unified Search dropdown was inconsistent. The dropdown now
+    expands properly, allowing users to select a search engine
+    using the keyboard. (bmo#1979826)
+  * Fixed: Fixed an issue where curated photo collections on
+    Microsoft OneDrive's Photos “For You” page failed to load,
+    showing a gray screen instead of content. Collections now
+    display as expected. (bmo#1986533)
+  * Fixed: Fixed a startup crash affecting Windows users with
+    Avast or other security software installed. (bmo#1992678)
+  * Fixed: Fixed an issue on macOS where the emoji picker
+    shortcut and menu entry stopped working after switching
+    between apps. (bmo#1980815)
+  * Fixed: Fixed an issue on macOS where dragging images from
+    Firefox into third-party apps like Preview could fail or
+    behave unexpectedly. (bmo#1995345)
+  * Fixed: Fixed performance and video playback issues on macOS
+    26 (Tahoe) that occurred when the system was under heavy
+    load. (bmo#1995638)
+  * Fixed: Fixed a browser hang on macOS 26 (Tahoe) that could
+    occur when bookmark folders contained loops or repeated
+    references to themselves. (bmo#1995621)
+  * Fixed: Security fix.
+  MFSA 2025-86 (bsc#1252815)
+  * CVE-2025-12380 (bmo#1993113)
+    Use-after-free in WebGPU internals triggered from a</comment>
+    <requestid>1314380</requestid>
+  </revision>
 </revisionlist>
