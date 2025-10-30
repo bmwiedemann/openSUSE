@@ -213,4 +213,26 @@
     <comment></comment>
     <requestid>1275022</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6a39b98de343740a4f87b868f16503d8</srcmd5>
+    <version>2.37.1</version>
+    <time>1761840596</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.37.1:
+  * fix: regression in displaying export errors (#1469)
+- includes 2.37.0:
+  * docs: document sub-commands
+  * docs: fix link to guix manual (#1421)
+  * feat(direnv export gha): strengthen export format
+  * fix(python): do not include patch level in virtual environment names (#1423)
+  * fix(use_nix): always restore special variables (#1424)
+  * fix: accept true as valid DIRENV_DEBUG value (#1365)
+  * fix: add trailing newline to error messages (#1426)
+  * fix: delete duplicate ansi escape code
+  * fix(powershell): &quot;export pwsh&quot; to resolve PowerShell special
+    character issues (#1448)
+- rebase resolve-bin-path.patch
+</comment>
+    <requestid>1314455</requestid>
+  </revision>
 </revisionlist>

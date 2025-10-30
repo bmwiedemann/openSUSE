@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 29 17:39:29 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 2.37.1:
+  * fix: regression in displaying export errors (#1469)
+- includes 2.37.0:
+  * docs: document sub-commands
+  * docs: fix link to guix manual (#1421)
+  * feat(direnv export gha): strengthen export format
+  * fix(python): do not include patch level in virtual environment names (#1423)
+  * fix(use_nix): always restore special variables (#1424)
+  * fix: accept true as valid DIRENV_DEBUG value (#1365)
+  * fix: add trailing newline to error messages (#1426)
+  * fix: delete duplicate ansi escape code
+  * fix(powershell): "export pwsh" to resolve PowerShell special
+    character issues (#1448)
+- rebase resolve-bin-path.patch
+
+-------------------------------------------------------------------
 Sat May  3 14:36:54 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.36.0:

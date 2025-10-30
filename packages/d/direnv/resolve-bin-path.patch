@@ -13,4 +13,4 @@ index 78c9557..45b3b7f 100644
 +	selfPath := `/usr/bin/direnv`
  
  	// Convert Windows path if needed
- 	selfPath = strings.Replace(selfPath, "\\", "/", -1)
+ 	selfPath = strings.ReplaceAll(selfPath, "\\", "/")
