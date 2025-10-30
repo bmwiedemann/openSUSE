@@ -53,6 +53,7 @@ Source2:        https://ftp.mozilla.org/pub/firefox/releases/%{version}esr/KEY#/
 # Known failures with system libicu
 Source3:        known_failures.txt
 
+Patch0:         mozjs140-CVE-2025-62813.patch
 # Patches from mozjs78, rebased for mozjs91:
 # PATCH-FIX-OPENSUSE
 Patch01:        fix-soname.patch
@@ -145,6 +146,7 @@ This package contains the header file and tools to develop with JavaScript.
 %setup -q -n firefox-%{version}/js/src
 
 pushd ../..
+%patch -P 00 -p1
 %patch -P 01 -p1
 %patch -P 02 -p1
 %patch -P 03 -p1
