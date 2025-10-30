@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 29 12:55:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.22.1
+  * This is identical to 0.22.0, re-ran with CI fixes
+- from version 0.22.0
+  * Fixes for Python 3.14 (#638)
+  * Add free-threading support (#693)
+
+-------------------------------------------------------------------
 Tue Oct 29 11:20:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.21.0

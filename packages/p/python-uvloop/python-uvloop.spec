@@ -19,7 +19,7 @@
 %define modname uvloop
 %{?sle15_python_module_pythons}
 Name:           python-uvloop
-Version:        0.21.0
+Version:        0.22.1
 Release:        0
 Summary:        An asyncio event loop on top of libuv
 License:        Apache-2.0 AND MIT
