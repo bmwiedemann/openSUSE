@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 21 21:05:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1.1:
+  + Fixed variable usage with text-operators in function definition
+  + Disable 32-bit unsigned right-shift on 32-bit architectures
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 10 04:53:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1:
