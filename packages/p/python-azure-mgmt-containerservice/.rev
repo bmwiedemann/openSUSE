@@ -644,4 +644,15 @@
 - Update Requires from pyproject.toml (forwarded request 1311027 from glaubitz)</comment>
     <requestid>1311067</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>b1005257b5242328a003406fdffd5975</srcmd5>
+    <version>40.1.0</version>
+    <time>1761924520</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 40.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1314803 from glaubitz)</comment>
+    <requestid>1314812</requestid>
+  </revision>
 </revisionlist>
