@@ -1,7 +1,7 @@
 #
 # spec file for package php-memcached
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        PHP MemcacheD client Extension
 License:        PHP-3.01

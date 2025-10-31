@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 23 20:51:35 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 3.4.0
+  * Use Zend/zend_smart_string.h for PHP 8.5 compatibility (#574)
+  * Use zen_ce_exception for PHP 8.5 compatibility (#573)
+
+-------------------------------------------------------------------
 Thu Oct 17 18:46:49 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 3.3.0
