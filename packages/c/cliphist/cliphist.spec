@@ -1,7 +1,7 @@
 #
 # spec file for package cliphist
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Lorenz Holzbauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           cliphist
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        A wayland clipboard manager with support for multimedia
 License:        GPL-3.0-only

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 30 17:38:42 UTC 2025 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
+
+- Update to version 0.7.0
+  * Added min-store-length option
+  * Compact database after wiping
+  * Added contrib scripts and improvements:
+    - fuzzel img script
+    - option to delete specific entry in cliphist-fuzzel-img
+    - systemd service
+    - cliphist-wofi-img: disable cache
+    - drop ImageMagick in cliphist-fuzzel-img
+    - use portable shebang lines
+  * Added support for TIFF images
+  * Fixed error when ID not found during decode
+  * Fixed min-store-length setting max length instead of min 
+
+-------------------------------------------------------------------
 Sat Jan 18 16:55:44 UTC 2025 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
 
 - initial package 
