@@ -7216,4 +7216,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.17.5 &amp; fix for LTP &amp; other fixes; bugs: bsc#1012628 bsc#1252056 bsc#1252059 bsc#1252062 bsc#1252064 bsc#1252065 bsc#1252070 bsc#1252072 bsc#1252073 bsc#1252075 bsc#1252076 bsc#1252301 bsc#1252302 bsc#1252303 bsc#1252310 bsc#1252335 bsc#1252345 bsc#1252346 bsc#1252541</comment>
     <requestid>1313363</requestid>
   </revision>
+  <revision rev="808" vrev="1">
+    <srcmd5>75ddd98cef7b30062e06c16addcc2633</srcmd5>
+    <version>6.17.6</version>
+    <time>1761924465</time>
+    <user>anag_factory</user>
+    <comment>6.17.6; bugs: bsc#1012628</comment>
+    <requestid>1314449</requestid>
+  </revision>
 </revisionlist>
