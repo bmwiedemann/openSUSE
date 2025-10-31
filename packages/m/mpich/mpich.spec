@@ -70,7 +70,7 @@ ExclusiveArch:  do_not_build
 %define package_name %{pname}%{?pack_suff}
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        High-performance and widely portable implementation of MPI
 License:        MIT
@@ -80,6 +80,7 @@ Source0:        http://www.mpich.org/static/downloads/%{version}/mpich-%{version
 Source1:        mpivars.sh
 Source2:        mpivars.csh
 Source100:      _multibuild
+Source101:      README.md
 Patch1:         autogen-only-deal-with-json-yaksa-if-enabled.patch
 Patch2:         autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch
 Patch3:         romio-test-fix-bad-snprintf-arguments.patch
@@ -316,7 +317,7 @@ fi
 
 %files
 %defattr(-,root,root)
-%doc CHANGES COPYRIGHT README README.envvar RELEASE_NOTES
+%doc CHANGES COPYRIGHT README README.envvar
 %dir /usr/%_lib/mpi
 %dir /usr/%_lib/mpi/gcc
 %dir /usr/share/modules
