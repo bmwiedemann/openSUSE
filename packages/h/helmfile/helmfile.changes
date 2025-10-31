@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 31 08:31:50 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.9:
+  * build(deps): bump actions/upload-artifact from 4 to 5 by
+    @dependabot[bot] in #2236
+  * build(deps): bump actions/download-artifact from 5 to 6 by
+    @dependabot[bot] in #2235
+  * feat: update strategy for reinstall by @simbou2000 in #2019
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3
+    from 1.88.7 to 1.89.0 by @dependabot[bot] in #2239
+  * Fix: Handle empty helmBinary in base files with environment
+    values by @Copilot in #2237
+
+-------------------------------------------------------------------
 Mon Oct 27 08:41:12 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.8:
