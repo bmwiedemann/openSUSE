@@ -13211,6 +13211,8 @@ unsorted:
   - libfontenc-devel-32bit 
   - libfontenc1-32bit 
   - libfonts-javadoc 
+  - libformfactor-devel 
+  - libformfactor0_3_2 
   - libformula-javadoc 
   - libfoundry-1-1 
   - libfoundry-gtk-1-1 
@@ -14758,6 +14760,7 @@ unsorted:
   - libnbd-devel 
   - libnbd0 
   - libnblib_gmx0 
+  - libncnn1 
   - libnco-5_3_4 
   - libnco-devel 
   - libnco_c++-5_3_4 
@@ -19497,6 +19500,8 @@ unsorted:
   - nbsdgames 
   - ncdu 
   - ncmpcpp 
+  - ncnn 
+  - ncnn-devel 
   - nco 
   - nco-doc 
   - ncspot 
@@ -36332,6 +36337,7 @@ unsorted:
   - rocm-smi 
   - rocm-smi-devel 
   - rocminfo 
+  - rocprim-devel 
   - rocrand-devel 
   - rocs 
   - rocs-devel 
