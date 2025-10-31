@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Fri Oct 31 09:51:00 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to normalize date in man page (boo#1047218)
+
+-------------------------------------------------------------------
+Sun Oct 19 17:55:38 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 3.3.2
+  * Add vertical movement to fishes.
+  * Change speed of fishes now and then.
+  * Call set_monitor() after setting defaults.
+  * Force to show correct monitor in button.
+- Update to 3.3.1
+  * Add selection of monitor.
+  * Add 'run on all workspaces'.
+  * Remove disabling double-buffer.
+  * Remove -window-id, --window-id from man page
+    we need it for xscreensaver-demo
+  * Move check for 'nomenu' to ui.c
+  * main.c: If running under xscreensaver: set monitor = -1
+    and do not write flags 
+- Update to 3.2.3
+  * add 7 fishes, thanks to Robert "the Old Coder" Kiraly
+  * remove some stray pixels fro fish34a and fish34b (mosasourus)
+  * add copyright to fishes 29a .. 35b
+- Update to 3.2.2
+  * main.c xfishtank.1.tmpl: add --root as flag, next to -root
+    add --window-id as flag, next to -window-id
+  * xfishtank.1.tmpl: correct -v option
+  * src/Makefile.am: install xfishtank in $prefix/bin
+  * change string 'xpenguins' to 'xfishtank' where appropriate
+  * change licence to MIT
+  * remove redundant src/FishList
+  * README: added some text
+  * AUTHORS: added some authors (thanks to Jim Rees)
+  * ChangeLog: added changes from before version 3.0
+  * ixpm.c: guard against unset shapeimage or ximage
+- Update to 3.2.1
+  * main.c: use ^pcmanfm$ in stead of pcmanfm while searching for
+    largest window
+  * utils.c: largest_window_with_name(): add memset() for the search
+    result
+  * main.c: implement -v
+  * addcopyright.sh: make it freebsd-friendly
+- Update to 3.2.0
+  * do not start ui() if option -nomenu is given
+  * same if started under xscreensaver
+  * correct src/fishtank.desktop (No roaches, but fish tank)
+  * main.c: do gtkinit() after parsing the command line parameters
+- Update to 3.1.5
+  * implement working 'hide menu' button and -nomenu flag for
+    not-iconifying WM's
+  * main.c: document -bgc flag
+  * main.c: place parse() after ReadFlags()
+  * main.c: iconify when running in xscreensaver
+  * add xdo.c  xdo-copyright  xdo.h  xdo_search.c  xdo_util.h  xdo_version.h
+  * use xdo.c and xdo_search.c where convenient
+  * simplemake.sh: make it working
+- Update to 3.1.4
+  * wmctrl.c: make compilable with '-Wall -pedantic -Wextra'
+- Update to 3.1.3
+  * better implementation of selfrep
+- Update to 3.1.2
+  * main.c: Thanks(): add XCloseDisplay() when leaving.
+  * Makefile.am: do not use '$<': is not understood by bsd-make
+  * ixpm.c main.c wmctrl.c: make cppcheck happy
+  * ui.c: do_animate(): make sure id gets a value
+- Update to 3.1.1
+  * Define default color for bgcolorstring
+  * Set also default backgroundcolor when clicking 'defaults' button
+  * Use defined background only in xscreensaver mode
+- Update to 3.1.0
+  * Clear screen after exit
+  * Some fixes to configure.ac
+  * Implement -changelog
+  * Implement -selfrep
+- Update to 3.0.1
+  * Added autopkgtest and 'make check'
+  * Added 'dependencies'
+- Update to 3.0.0
+  * Initial release of version with double-buffering, graphical gui
+    and transparent click-through window for the fishes
+- Remove xfishtank-gcc15.patch (no longer needed)
+
+-------------------------------------------------------------------
 Thu Feb 13 14:49:26 UTC 2025 - pgajdos@suse.com
 
 - fix build with gcc 15

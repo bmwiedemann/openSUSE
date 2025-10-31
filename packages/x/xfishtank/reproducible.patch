@@ -1,0 +1,34 @@
+Date: 2025-10-31
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+
+Replace date call with $DATE from configure
+because $DATE already supports repdocuible builds via SOURCE_DATE_EPOCH.
+
+This changes the formatting to %Y-%m-%d to keep the code simple.
+
+diff --git a/Makefile.am b/Makefile.am
+index 8f7a4df..9f3be39 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -34,7 +34,7 @@ EXTRA_DIST = \
+ man_MANS = xfishtank.1
+ 
+ xfishtank.1: xfishtank.1.tmpl
+-	sed "s/VERSION/$(VERSION)/;s/DATE/`date +'%B %Y'`/" < $(top_srcdir)/xfishtank.1.tmpl  > $@
++	sed "s/VERSION/$(VERSION)/;s/DATE/$(DATE)/" < $(top_srcdir)/xfishtank.1.tmpl  > $@
+ 
+ tarfile = $(top_builddir)/xfishtank-$(VERSION).tar.gz
+ 
+diff --git a/Makefile.in b/Makefile.in
+index 208486e..a338603 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -901,7 +901,7 @@ uninstall-man: uninstall-man1
+ 
+ 
+ xfishtank.1: xfishtank.1.tmpl
+-	sed "s/VERSION/$(VERSION)/;s/DATE/`date +'%B %Y'`/" < $(top_srcdir)/xfishtank.1.tmpl  > $@
++	sed "s/VERSION/$(VERSION)/;s/DATE/$(DATE)/" < $(top_srcdir)/xfishtank.1.tmpl  > $@
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -17,37 +17,50 @@
 
 
 Name:           xfishtank
-Version:        2.6
+Version:        3.3.2
 Release:        0
 Summary:        An aquarium in the root window
 License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Background
-URL:            https://jim.rees.org/computers/xfishtank.html
-Source:         %{name}-%{version}.tar.xz
-Patch0:         xfishtank-gcc15.patch
+URL:            https://ratrabbit.nl/ratrabbit/software/xfishtank/index.html
+Source:         https://ratrabbit.nl/downloads/xfishtank/%{name}-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(imlib2)
+BuildRequires:  pkgconfig(gmodule-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(xt)
+BuildRequires:  pkgconfig(xtst)
+Requires:       gnome-icon-theme
 
 %description
 A nice little aquarium with funny fish -- yet another background screen.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
-xmkmf -a
+%configure
 %make_build CCOPTIONS="%{optflags}"
 
 %install
 %make_install
 
+%check
+%make_build check
+
 %files
-%doc README*
+%doc README
+%license COPYING
 %{_bindir}/xfishtank
-%{_mandir}/man1/xfishtank.1*
+%{_mandir}/man1/xfishtank.1%{?ext_man}
+%{_datadir}/applications/xfishtank.desktop
+%{_datadir}/pixmaps/xfishtank.png
 
 %changelog
