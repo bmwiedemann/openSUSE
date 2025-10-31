@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 31 14:23:39 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20251031
+  * Rendering: Use `SDL_BlitScaled()` on Wayland exclusively
+  * Input: Replace mouse delta code with `GetRelativeMouseState()`
+
+-------------------------------------------------------------------
 Sat Aug 16 16:32:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20250816

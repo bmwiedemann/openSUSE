@@ -17,7 +17,7 @@
 
 
 Name:           taradino
-Version:        20250816
+Version:        20251031
 Release:        0
 Summary:        SDL port of the Rise of the Triad engine
 License:        GPL-2.0-or-later
