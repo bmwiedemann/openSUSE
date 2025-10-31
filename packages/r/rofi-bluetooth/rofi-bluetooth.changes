@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 30 16:48:51 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Drop 0001-Fixed-path-to-script-interpreter.patch
+
+-------------------------------------------------------------------
+Sun Apr 20 18:30:58 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Change upstream to personal fork collecting all PRs
+- Update to version 0~git.1745170630.9f2b944:
+  * fix: use proper pkill(1) command instead of the bizarre kill $(pgrep) construct
+  * Remove last non-POSIX echo -e and make the script POSIX compatible
+  * Update rofi-bluetooth
+  * Simplify print_status in rofi-bluetooth
+  * Fix README formatting for Bluetooth module example
+  * updated README
+  * Adding bc as a dependency
+
+-------------------------------------------------------------------
 Tue Jan 23 16:27:28 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Updated versionformat in _service, to be a more useful version

@@ -9,4 +9,22 @@ the rofi interface, for tiling environments like sway, i3,
 hyprland and others.</comment>
     <requestid>1141023</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>27d88393c86ec813590aa24915ccaac8</srcmd5>
+    <version>0+git.1745170630.9f2b944</version>
+    <time>1761924474</time>
+    <user>anag_factory</user>
+    <comment>- Drop 0001-Fixed-path-to-script-interpreter.patch
+
+- Change upstream to personal fork collecting all PRs
+- Update to version 0~git.1745170630.9f2b944:
+  * fix: use proper pkill(1) command instead of the bizarre kill $(pgrep) construct
+  * Remove last non-POSIX echo -e and make the script POSIX compatible
+  * Update rofi-bluetooth
+  * Simplify print_status in rofi-bluetooth
+  * Fix README formatting for Bluetooth module example
+  * updated README
+  * Adding bc as a dependency</comment>
+    <requestid>1314584</requestid>
+  </revision>
 </revisionlist>

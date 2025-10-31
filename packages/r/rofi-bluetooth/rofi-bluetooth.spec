@@ -1,7 +1,7 @@
 #
 # spec file for package rofi-bluetooth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-Name:       rofi-bluetooth
-Version:    0~git20230203.9d91c04
-Release:    0
-Summary:	Bluetooth manager for rofi
-License:    GPL-3.0
-URL:        https://github.com/nickclyde/rofi-bluetooth
-Source:     %{name}-%{version}.tar.xz
-Patch0:		0001-Fixed-path-to-script-interpreter.patch
-BuildArch:	noarch
-Requires:	bluez
+Name:           rofi-bluetooth
+Version:        0+git.1745170630.9f2b944
+Release:        0
+Summary:        Bluetooth manager for rofi
+License:        GPL-3.0-only
+URL:            https://github.com/nickclyde/rofi-bluetooth
+Source:         %{name}-%{version}.tar.xz
+BuildArch:      noarch
+Requires:       bluez
 
 %description
 Bluetooth device and connection manager for use with rofi
@@ -39,11 +38,9 @@ Bluetooth device and connection manager for use with rofi
 %install
 install -Dm 755 %{name} %{buildroot}%{_bindir}/%{name}
 
-
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 
 %changelog
-
