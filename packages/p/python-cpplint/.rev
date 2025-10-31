@@ -130,4 +130,41 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1291007</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f4bcdcefc2d765fbab512ffc35b48fbb</srcmd5>
+    <version>2.0.2</version>
+    <time>1761924490</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.0.2:
+  * Drop Python 3.8
+  * Don't err on non-const references by default
+  * fix(indentation_namespace): false positive for MemInitLists
+  * Fix missing comma between items in _CPP_HEADERS
+  * Fix false positive for indented parameters in namespaces
+  * IWYU: treat stdio.h the same way as cstdio
+  * PEP 621: Migrate from setup.{py, cfg} to pyproject.toml
+  * cpplint_clitest.py: Function names should be lowercase
+  * suppress C++-only categories on C file extensions
+  * You can now specify blocks of code that exclude linting with NOLINTBEGIN
+    and NOLINTEND
+  * The --filter option can now be only applied to a specific file or even a
+    specific line through utilizing colons
+  * NOLINT and NOLINTNEXTLINE comments now support a comma-separated list of
+    categories
+  * NOLINT and NOLINTNEXTLINE will now ignore categories known to be from
+    clang-tidy
+  * build/include-what-you-use no longer supports transitive headers from the
+    header for the current module for parity with the style guide
+  * build/include-what-you-use now supports a plethora of new functions
+  * build/include-what-you-use will no longer err on similarly-named classes
+    from other namespaces
+  * Indented functions inside namespaces will now be correctly erred on
+  * The check for C-style casts now looks for the standard fixed-width
+    integer typenames instead of non-standard ones (e.g. int32_t instead of
+    int32)
+  * readability/braces will realize that C++20 concepts require a semicolon
+  * C++20 headers will no longer be flagged as C headers
+  * Processing C++ files through stdin/piping is now fixed</comment>
+    <requestid>1314617</requestid>
+  </revision>
 </revisionlist>

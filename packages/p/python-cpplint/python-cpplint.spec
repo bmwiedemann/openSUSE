@@ -1,7 +1,7 @@
 #
 # spec file for package python-cpplint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,18 @@
 
 %bcond_without libalternatives
 Name:           python-cpplint
-Version:        1.6.1
+Version:        2.0.2
 Release:        0
 Summary:        An automated checker to make sure a C++ file follows Google's C++ style guide
 License:        BSD-3-Clause
 URL:            https://github.com/cpplint/cpplint
 Source:         https://files.pythonhosted.org/packages/source/c/cpplint/cpplint-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM drop-sre-compile.patch gh#cpplint/cpplint#214
-Patch0:         drop-sre-compile.patch
-# PATCH-FIX-UPSTREAM python312.patch gh#cpplint/cpplint#243
-Patch1:         python312.patch
-# PATCH-FIX-UPSTREAM deprecated-unittest-aliases.patch gh#cpplint/cpplint#182
-Patch2:         deprecated-unittest-aliases.patch
+# PATCH-FIX-UPSTREAM gh#cpplint/cpplint#405
+Patch0:         do-not-use-codecs-open.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testfixtures}
@@ -51,10 +50,6 @@ in hopes that it can be merged in the future.
 
 %prep
 %autosetup -p1 -n cpplint-%{version}
-sed -i -e '/^#!\//, 1d' cpplint.py
-sed -i 's/pytest-runner==5.2//' setup.py
-sed -i 's/pytest-cov//' test-requirements
-sed -i 's/--cov-fail-under=75 --cov=cpplint//' setup.cfg
 
 %build
 %pyproject_wheel
