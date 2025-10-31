@@ -1,7 +1,7 @@
 #
 # spec file for package python-async-lru
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,19 +24,19 @@ Summary:        Simple LRU cache for asyncio
 License:        MIT
 URL:            https://github.com/aio-libs/async-lru
 Source:         https://files.pythonhosted.org/packages/source/a/async_lru/async_lru-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#aio-libs/async-lru#637
+Patch0:         support-python-314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-typing_extensions >= 4.0.0
 Provides:       python-async_lru = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing_extensions >= 4.0.0}
 # /SECTION
 %python_subpackages
 

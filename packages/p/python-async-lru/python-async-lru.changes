@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 31 01:17:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-314.patch:
+  * Support Python 3.14 removals.
+
+-------------------------------------------------------------------
 Wed May 14 09:27:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.0.5
