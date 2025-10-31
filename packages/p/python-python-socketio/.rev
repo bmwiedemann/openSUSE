@@ -119,4 +119,23 @@
   * Add SPDX license identifier</comment>
     <requestid>1309719</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>08fda11adbb31eb74c41f6dba0d28ccc</srcmd5>
+    <version>5.14.3</version>
+    <time>1761924519</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.14.3:
+  * Support Python's native `ConnectionRefusedError` exception to
+    reject a connection #1515 (commit)
+  * Push binary data to the aiopika client manager #1514 (commit)
+  * Restore binary message support in message queue setups #1509
+    (commit)
+  * Fix formatting of client connection error #1507 (commit)
+  * Add 3.14 and pypy-3.11 CI tasks (commit)
+  * Improve documentation of the `BaseManager.get_participants()`
+    method (commit)
+
+- Add missing BuildRequires on pytest-asyncio.</comment>
+    <requestid>1314808</requestid>
+  </revision>
 </revisionlist>

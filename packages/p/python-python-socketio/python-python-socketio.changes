@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 31 11:40:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.14.3:
+  * Support Python's native `ConnectionRefusedError` exception to
+    reject a connection #1515 (commit)
+  * Push binary data to the aiopika client manager #1514 (commit)
+  * Restore binary message support in message queue setups #1509
+    (commit)
+  * Fix formatting of client connection error #1507 (commit)
+  * Add 3.14 and pypy-3.11 CI tasks (commit)
+  * Improve documentation of the `BaseManager.get_participants()`
+    method (commit)
+
+-------------------------------------------------------------------
 Wed Oct  8 03:04:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.14.1:
@@ -22,7 +36,7 @@ Wed Oct  8 03:04:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Tue Aug 12 05:22:00 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add missing BuildRequires on pytest-asyncio. 
+- Add missing BuildRequires on pytest-asyncio.
 
 -------------------------------------------------------------------
 Mon Apr 28 14:20:32 UTC 2025 - Dirk Müller <dmueller@suse.com>

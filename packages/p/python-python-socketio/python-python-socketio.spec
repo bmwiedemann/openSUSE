@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-socketio
-Version:        5.14.1
+Version:        5.14.3
 Release:        0
 Summary:        SocketIO server
 License:        MIT
