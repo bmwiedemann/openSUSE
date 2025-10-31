@@ -1,0 +1,36 @@
+From 002a58144563a15034f982b19ba851326535570a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 29 Oct 2025 10:30:58 +0000
+Subject: [PATCH] Do not break signature verification on latest
+ M2Crypto versions (bsc#1251776)
+
+---
+ salt/crypt.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/salt/crypt.py b/salt/crypt.py
+index 981f633d51f..29fd159b48c 100644
+--- a/salt/crypt.py
++++ b/salt/crypt.py
+@@ -243,7 +243,7 @@ def sign_message(privkey_path, message, passphrase=None):
+         md = EVP.MessageDigest("sha1")
+         md.update(salt.utils.stringutils.to_bytes(message))
+         digest = md.final()
+-        return key.sign(digest)
++        return key.sign(digest, algo="sha1")
+     else:
+         signer = PKCS1_v1_5.new(key)
+         return signer.sign(SHA.new(salt.utils.stringutils.to_bytes(message)))
+@@ -262,7 +262,7 @@ def verify_signature(pubkey_path, message, signature):
+         md.update(salt.utils.stringutils.to_bytes(message))
+         digest = md.final()
+         try:
+-            return pubkey.verify(digest, signature)
++            return pubkey.verify(digest, signature, algo="sha1")
+         except RSA.RSAError as exc:
+             log.debug("Signature verification failed: %s", exc.args[0])
+             return False
+-- 
+2.51.1
+

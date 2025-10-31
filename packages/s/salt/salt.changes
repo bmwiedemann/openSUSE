@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 29 10:35:12 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix payload signature verification on Tumbleweed (bsc#1251776)
+
+- Added:
+  * do-not-break-signature-verification-on-latest-m2cryp.patch
+
+-------------------------------------------------------------------
 Fri Oct 10 10:43:37 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix broken symlink on migration to Leap 16.0 (bsc#1250755)

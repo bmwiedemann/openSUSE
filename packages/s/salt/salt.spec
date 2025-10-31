@@ -585,6 +585,8 @@ Patch182:       add-python3.11-as-preferable-for-salt-ssh-to-avoid-t.patch
 Patch183:       allow-libgit2-to-guess-sysdir-homedir-successfully-b.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/732
 Patch184:       use-versioned-python-interpreter-for-salt-ssh.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/735
+Patch185:       do-not-break-signature-verification-on-latest-m2cryp.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
