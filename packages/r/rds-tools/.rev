@@ -23,4 +23,41 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149862 from dimstar)</comment>
     <requestid>1151442</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>28cf5745513d6008baf8397fb92f1095</srcmd5>
+    <version>2.3.11</version>
+    <time>1761924477</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.11-1
+  - rds-stress: Synchronize burst-mode with other processes (Gerd Rausch) [Orabug: 35861956]
+  - rds-stress: Add &quot;--sync-always-bursty&quot; to usage (Mark Haywood) [Orabug: 36050648]
+  - rds-stress: Fix the receive address for json option exchanges (Mark Haywood) [Orabug: 35800876]
+  - rds-stress: Simplify the json option exchange handshake (Mark Haywood) [Orabug: 35800910]
+  - rds-stress: Exchange the rds-inq value using json (Mark Haywood) [Orabug: 35800936]
+  - rds-stress: Facilitate json option exchange for all new options (Mark Haywood) [Orabug: 35800946]
+  - rds-stress: Add support for option &quot;--always-bursty&quot; (Gerd Rausch) [Orabug: 35792064]
+  - rds-ping: Add missing '-i' option to rds-ping usage (Mark Haywood) [Orabug: 34734493]
+  - man: Add missing '-Q' option to rds-ping(1) (Mark Haywood) [Orabug: 34734543]
+  - rds-stress: Clean up the internal options structure implementation (Mark Haywood) [Orabug: 34979190]
+  - rds-stress: Add new json options exchange logic for rds-stress (Rohit Nair) [Orabug: 34979190]
+  - rds-stress: Use port[0] for rds-stress reset (Rohit Nair) [Orabug: 35156783]
+  - rds-stress: Fix initialization of rtt_threshold (Mark Haywood) [Orabug: 35284851]
+  - rds-stress: Remove trailing whitespace (Mark Haywood) [Orabug: 35284851]
+  - rds-tools: Add a flag to rds-stress and enable rds-inq capability (Devesh Sharma) [Orabug: 35333242]
+  - rds-tools: Add rds-inq description to man page (Devesh Sharma) [Orabug: 35333242]
+  - rds-stress: Fix &quot;-Wstringop-truncation&quot; compiler warnings (Mark Haywood) [Orabug: 35430732]
+  - rds-stress: Fix &quot;-Waddress-of-packed-member&quot; compiler warnings (Mark Haywood) [Orabug: 35430637]
+  - rds-info: Fix &quot;-Waddress-of-packed-member&quot; compiler warnings (Mark Haywood) [Orabug: 35430597]
+  - rds-stress: Add percentage of IO/packet in rds-stress --show-histogram (Allison Henderson) [Orabug: 35360167]
+  - rds-stress: Enable rds-inq by default, disable when asked (Devesh Sharma) [Orabug: 35418380]
+  - rds-stress: update man page to reflect change in options (Devesh Sharma) [Orabug: 35418380]
+  - rds-stress: fix the type-punned build warning (Devesh Sharma) [Orabug: 35418380]
+  - rds-info: Add option to report information for all network namespaces (Greg Jumper) [Orabug: 34270854]
+  - Revert &quot;rds-ping: add transport option&quot; (Mark Haywood) [Orabug: 35658752]
+  - rds-info: Extend rds-info -Iv functionality to display SCQ and RCQ IRQ vectors (Mark Haywood) [Orabug: 34426225]
+  - rds-info: Move the conn_drop_reasons array from rds.h to rds-info.c (Mark Haywood) [Orabug: 34466041]
+  - rds-info: Add missing RDS_INFO_* options to rds.h (Mark Haywood) [Orabug: 34466041]
+  - rds-info: Remove unnecessary headers from rds.h (Mark Haywood) [Orabug: 34466041]</comment>
+    <requestid>1314587</requestid>
+  </revision>
 </revisionlist>

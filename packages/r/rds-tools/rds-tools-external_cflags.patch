@@ -1,16 +1,23 @@
----
- Makefile.in |    1 -
- 1 file changed, 1 deletion(-)
+commit 6ca705ebad532fca898220f54b41dc731332a20d
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Wed Feb 5 13:21:02 2025 +0100
 
-Index: Makefile.in
-===================================================================
---- Makefile.in.orig	2016-07-13 16:56:25.836702005 +0200
-+++ Makefile.in	2016-07-13 16:57:29.248354961 +0200
-@@ -6,7 +6,6 @@ incdir		= $(DESTDIR)@includedir@
+    rds-tools: external_cflags
+    
+    Allow external cflags
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git Makefile.in Makefile.in
+index 2ce961cde1b1..a816bd39379d 100644
+--- Makefile.in
++++ Makefile.in
+@@ -6,7 +6,7 @@ incdir		= $(DESTDIR)@includedir@
  
  all: all-programs
  
 -CFLAGS = -O2 -Wall -Iinclude -g
++CFLAGS += -Iinclude
  CPPFLAGS = -DDEBUG_EXE -DRDS_VERSION=\"@VERSION@\" -MD -MP -MF $(@D)/.$(basename $(@F)).d
  
- HEADERS = kernel-list.h pfhack.h include/rds.h
+ rds-info : LDLIBS += -lcap -ldl

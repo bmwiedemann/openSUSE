@@ -1,17 +1,23 @@
----
- rds-stress.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+commit bbbb0ced7bca7d1cca50462dae139d25255e9f87
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Wed Feb 5 13:22:13 2025 +0100
 
-Index: rds-stress.c
-===================================================================
---- rds-stress.c.orig	2016-06-08 06:45:10.000000000 +0200
-+++ rds-stress.c	2016-11-21 15:56:59.357279004 +0100
-@@ -1253,7 +1253,7 @@ static void rdma_build_cmsg_xfer(struct
+    rds-tools: uninitialized_var
+    
+    Fix uninitialized var in rds-stress
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git rds-stress.c rds-stress.c
+index daeec97f4c54..d925efbe944b 100644
+--- rds-stress.c
++++ rds-stress.c
+@@ -1593,7 +1593,7 @@ static void rdma_build_cmsg_xfer(struct msghdr *msg,
  
  static void build_cmsg_async_send(struct msghdr *msg, uint64_t user_token)
  {
 -	struct rds_asend_args  args;
-+	struct rds_asend_args  args = {0};
++    struct rds_asend_args  args = { 0 };
  
- 	args.flags |= RDS_SEND_NOTIFY_ME;
+ 	args.flags = RDS_SEND_NOTIFY_ME;
  	args.user_token = user_token;
