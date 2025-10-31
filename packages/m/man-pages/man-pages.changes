@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 30 07:35:17 UTC 2025 - pgajdos@suse.com
+
+- version update to 6.16
+- new and rewritten pages
+  * fsconfig.2
+  * fsmount.2
+  * fsopen.2
+  * fspick.2
+  * move_mount.2
+  * open_tree.2
+  * PR_FUTEX_HASH_GET_SLOTS.2const
+  * PR_FUTEX_HASH_SET_SLOTS.2const
+  * mount_attr.2type
+  * _Fork.3
+  * countof.3
+  * memeq.3
+  * streq.3
+- see https://lwn.net/Articles/1044066/ for details
+- modified patches
+  * man-pages-tcp_fack.patch (refreshed)
+  * man-pages_gai.conf-reference.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue Jul 22 10:25:50 UTC 2025 - pgajdos@suse.com
 
 - version update to 6.15

@@ -1,8 +1,8 @@
-Index: man-pages-6.14/man7/tcp.7
+Index: man-pages-6.16/man7/tcp.7
 ===================================================================
---- man-pages-6.14.orig/man7/tcp.7
-+++ man-pages-6.14/man7/tcp.7
-@@ -476,9 +476,31 @@ When enabled, outgoing ECN-setup SYNs th
+--- man-pages-6.16.orig/man7/tcp.7
++++ man-pages-6.16/man7/tcp.7
+@@ -474,9 +474,31 @@ When enabled, outgoing ECN-setup SYNs th
  normal SYN retransmission timeout will be resent with CWR and
  ECE cleared.
  .TP
