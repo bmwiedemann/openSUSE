@@ -302,4 +302,14 @@
   * Update go dependencies</comment>
     <requestid>1309949</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7387b14cff2b4f447579cc3d48c17bcf</srcmd5>
+    <version>20251031.483a2f9</version>
+    <time>1761924516</time>
+    <user>anag_factory</user>
+    <comment>- Update leap.idx with final openSUSE Leap 16.0
+- Update to version 20251031.483a2f9:
+  * Update go module dependencies</comment>
+    <requestid>1314676</requestid>
+  </revision>
 </revisionlist>
