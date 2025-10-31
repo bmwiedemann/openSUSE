@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 30 07:12:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.30.0:
+    - deps: Bump wasmtime patch to 38.0.3 (#1410)
+    - ci: Correctly upload assets after sigstore v3 changes (#1403)
+    - prepare for release (#1400)
+  * Breaking changes
+    - ci!: Update signing for sigstore v3 (#1401)
+    - fix!: sigstore handle multiple rekor keys (#1396)
+  * Bug Fixes
+    - fix(ci): sign blobs with cosign v3 signature bundle. (#1412)
+    - fix(ci): disable new cosign signature bundle format. (#1404)
+    - fix!: sigstore handle multiple rekor keys (#1396)
+  * Maintenance
+    - chore: bump v1.30.0 (#1414)
+    - chore: prepare 1.30.0-rc2 release (#1413)
+    - build(deps): update sigstore/cosign-installer action to v4
+      (#1399)
+    - build(deps): update github-actions (#1398)
+    - build(deps): update all dependencies updates (#1397)
+    - build(deps): update all dependencies updates (#1392)
+    - build(deps): update github-actions (#1393)
+
+-------------------------------------------------------------------
 Tue Oct 14 05:06:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.1:
