@@ -1,0 +1,48 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dbae506..2455c51 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,6 +55,8 @@ find_package(LibHeinz REQUIRED)
+ message(STATUS "LibHeinz: found=${LibHeinz_FOUND}, include_dirs=${LibHeinz_INCLUDE_DIR}, "
+     "version=${LibHeinz_VERSION}")
+ 
++include(GNUInstallDirs)
++
+ ## Source directory.
+ 
+ add_subdirectory(ff)
+@@ -91,13 +93,13 @@ write_basic_package_version_file(
+ install(FILES
+     "${PROJECT_BINARY_DIR}/formfactorConfig.cmake"
+     "${PROJECT_BINARY_DIR}/formfactorConfigVersion.cmake"
+-    DESTINATION cmake)
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/formfactor)
+ 
+ ## Export targets.
+ 
+ install(EXPORT formfactorTargets
+   FILE formfactorTargets.cmake
+-  DESTINATION cmake)
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/formfactor)
+ 
+ export(EXPORT formfactorTargets
+   FILE "${CMAKE_CURRENT_BINARY_DIR}/formfactorTargets.cmake")
+diff --git a/ff/CMakeLists.txt b/ff/CMakeLists.txt
+index ddda6fe..be17ab7 100644
+--- a/ff/CMakeLists.txt
++++ b/ff/CMakeLists.txt
+@@ -29,10 +29,10 @@ set_target_properties(
+ install(
+     TARGETS ${lib}
+     EXPORT formfactorTargets
+-    LIBRARY DESTINATION lib
+-    RUNTIME DESTINATION lib
+-    ARCHIVE DESTINATION lib)
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ install(
+     FILES ${api_files}
+-    DESTINATION include/ff)
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ff)
