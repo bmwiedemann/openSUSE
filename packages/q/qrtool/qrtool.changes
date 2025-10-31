@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 30 21:46:36 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.13.1
+  * Add more archive formats for releases
+  * Add support for encoding rMQR code
+  * Add EPS rendering support
+  * Remove --symbol-version from the required options of --variant
+    
+-------------------------------------------------------------------
 Thu Jun 12 18:39:24 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.12.0
