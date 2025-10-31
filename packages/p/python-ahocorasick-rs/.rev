@@ -18,4 +18,15 @@
   * Dropped support for Python 3.8.</comment>
     <requestid>1255456</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bbb351bc6eb0207823771f3be41cdfbe</srcmd5>
+    <version>1.0.3</version>
+    <time>1761924488</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.3:
+  * Add description on PyPI
+  * Hopefully show more metadata in PyPI
+  * Guaranteed API stability, and Python 3.14 support.</comment>
+    <requestid>1314615</requestid>
+  </revision>
 </revisionlist>
