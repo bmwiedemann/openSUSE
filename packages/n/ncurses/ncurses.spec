@@ -401,6 +401,8 @@ mv tack-* tack
 %patch -P4 -p0
 
 %build
+LANG=C.UTF-8
+export LANG
 #
 # Do not run auto(re)conf here as this will fail later on ncurses
 # is build with special autoconf based on autoconf-2.13 at upstream
@@ -807,6 +809,8 @@ export CFLAGS_SHARED
     popd
 
 %install
+LANG=C.UTF-8
+export LANG
     make -C build.5  install.libs DESTDIR=%{buildroot}
     make -C build.w5 install.libs DESTDIR=%{buildroot}
     make -C build.6  install.libs DESTDIR=%{buildroot} libdir=%{_libdir}/ncurses6nt
@@ -1062,6 +1066,8 @@ gcc -Wall ${RPM_OPT_FLAGS} -o %{buildroot}%{_bindir}/termerase %{S:42} \
 install -m 0644 %{S:43} %{buildroot}%{_mandir}/man1/termerase.1
 
 %check
+LANG=C.UTF-8
+export LANG
 %if 0%{?_crossbuild}
 echo No test here
 %else

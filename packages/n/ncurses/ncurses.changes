@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Oct 27 14:43:35 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20251025
+  + amend local-portability fix in tty_update.c (MidnightCommander #4799,
+    cf: 20240203).
+  + add testing utility report_ctype
+  + update configure macros, improving check for $host_os
+  + correct a recent change to curs_termino.3x, along with formatting
+    fixes for manpages.
+  + corrected note about box() in curs_border.3x (patch by Jakub Horky,
+    cf: 20250201).
+
+-------------------------------------------------------------------
+Mon Oct 20 06:43:24 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20251018
+  + add check for build-time utilities, in case cross-compiling is setup
+    with an invalid $BUILD_CC (prompted by discussion with Stas Sergeev).
+  + modify configure-script and makefiles to make it easier to override
+    the "--with-install-prefix" default with environment variable
+    (report by Stas Sergeev).
+
+-------------------------------------------------------------------
+Mon Oct 13 07:57:46 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20251010
+  + fix stray "\" in curs_extend.3x, regen html manpages.
+  + regen html manpages with man2html 1.42, fixing a few cases where
+    headers were not linked (report by Branden Robinson).
+- Add ncurses patch 20251004
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + in-progress work to merge MinGW/Windows port.
+  + improve configure check for "install".
+
+-------------------------------------------------------------------
+Mon Sep 29 05:46:59 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250927
+  + in-progress work to merge MinGW/Windows port.
+
+-------------------------------------------------------------------
 Tue Sep 23 11:38:34 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add a SUSE helper program and its manual page
@@ -9,6 +50,7 @@ Tue Sep 23 11:38:34 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 Mon Sep 22 06:30:56 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250920
+  + in-progress work to merge MinGW/Windows port.
   + add configure check for <sys/fsuid.h>, build-fix for flatpacks
     (report by Stas Sergeev).
   + update config.guess, config.sub
