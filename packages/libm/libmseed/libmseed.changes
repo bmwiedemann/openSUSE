@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 31 08:14:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.1.11:
+  * Fix byte swapping in ms3_detect() for v3 records for big-endian
+    systems
+  * Add MSF_SKIPADJACENTDUPLICATES to skip adjacent duplicate
+    records while populating a MS3TraceList
+
+-------------------------------------------------------------------
 Sun Oct 26 07:24:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.1.10:
