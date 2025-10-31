@@ -1,7 +1,7 @@
 #
 # spec file for package gomuks
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        AGPL-3.0-only
 URL:            https://github.com/tulir/gomuks
 Source:         https://github.com/tulir/gomuks/archive/refs/tags/v%{version}.tar.gz#/gomuks-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# Revendorization because of bsc#1251459
+Patch0:         patch-go-mod.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  go >= 1.21

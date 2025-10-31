@@ -36,4 +36,12 @@
   * Changed default log directory to ~/.local/state/gomuks on Linux.</comment>
     <requestid>1187957</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>df231e21bbb680dd990567f95b795425</srcmd5>
+    <version>0.3.1</version>
+    <time>1761924518</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1314683</requestid>
+  </revision>
 </revisionlist>

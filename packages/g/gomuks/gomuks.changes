@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 30 11:09:07 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add patch-go-mod.patch revendoring the package to get in
+  the version v0.45.0 of golang.org/x/net (bsc#1251459,
+  CVE-2025-47911) to avoid possible DoS with various algorithms
+  with quadratic complexity when parsing HTML documents.
+
+-------------------------------------------------------------------
+Wed Oct 15 14:11:19 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Revendor the package to get in the version v0.45.0 of
+  golang.org/x/net (bsc#1251459, CVE-2025-47911) to avoid
+  possible DoS with various algorithms with quadratic complexity
+  when parsing HTML documents.
+
+-------------------------------------------------------------------
 Tue Jul 16 12:31:17 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.1:
