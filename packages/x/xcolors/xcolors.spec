@@ -1,7 +1,7 @@
 #
 # spec file for package xcolors
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,8 @@ xmkmf -a
 %make_build CCOPTIONS="%{optflags}"
 
 %install
-%make_install install.man
+%make_install install.man MANPATH=%{_mandir} XAPPLOADDIR=%{_prefix}/%{_xorg7libshare}/X11/app-defaults
+rm -fr %{buildroot}/usr/lib/X11
 
 %files
 %doc Changes

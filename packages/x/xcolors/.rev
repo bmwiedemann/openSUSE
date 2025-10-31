@@ -157,4 +157,12 @@
     <comment></comment>
     <requestid>1246443</requestid>
   </revision>
+  <revision rev="23" vrev="1246">
+    <srcmd5>f11b261d2b00915d5b13b03d9f16c47e</srcmd5>
+    <version>91.10.4</version>
+    <time>1761924491</time>
+    <user>anag_factory</user>
+    <comment>- Make it build even with broken imake/xmkmf setup</comment>
+    <requestid>1314631</requestid>
+  </revision>
 </revisionlist>
