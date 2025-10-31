@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 29 17:22:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 12.1.0
+  * Optimized `buffer::append`, resulting in up to ~16% improvement
+    on spdlog benchmarks.
+  * Made `std::variant` and `std::expected` formatters work with
+    `format_as`.
+  * Added support for cv-qualified types to the `std::optional`
+    formatter.
+
+-------------------------------------------------------------------
 Wed Sep 17 17:46:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 12.0.0
