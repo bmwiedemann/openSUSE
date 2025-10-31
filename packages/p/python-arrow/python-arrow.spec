@@ -25,7 +25,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-arrow%{?psuffix}
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0
@@ -43,7 +43,7 @@ BuildRequires:  %{python_module arrow == %{version}}
 BuildRequires:  %{python_module dateparser}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz >= 2021.1}
+BuildRequires:  %{python_module pytz >= 2025.02}
 BuildRequires:  %{python_module simplejson}
 %endif
 %python_subpackages

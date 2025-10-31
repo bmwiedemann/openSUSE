@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 30 10:47:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.4.0
+  * [ADDED] Added ``week_start`` parameter to ``floor()`` and ``ceil()`` methods. PR #1222
+  * [ADDED] Added ``FORMAT_RFC3339_STRICT`` with a T separator. PR #1201
+  * [ADDED] Added Macedonian in Latin locale support. PR #1200
+  * [ADDED] Added Persian/Farsi locale support. PR #1190
+  * [ADDED] Added week and weeks to Thai locale timeframes. PR #1218
+  * [ADDED] Added weeks to Catalan locale. PR #1189
+  * [ADDED] Added Persian names of months, month-abbreviations and
+    day-abbreviations in Gregorian calendar. PR #1172
+  * [CHANGED] Migrated Arrow to use ZoneInfo for timezones instead of pytz. PR #1217
+  * [FIXED] Fixed humanize month limits. PR #1224
+  * [FIXED] Fixed type hint of ``Arrow.__getattr__``. PR #1171
+  * [FIXED] Fixed spelling and removed poorly used expressions in Korean locale. PR #1181
+  * [FIXED] Updated ``shift()`` method for issue #1145. PR #1194
+  * [FIXED] Improved Greek locale translations (seconds, days, "ago", and month typo). PR #1184
+  * [FIXED] Addressed ``datetime.utcnow`` deprecation warning. PR #1182
+  * [INTERNAL] Added codecov test results. PR #1223
+  * [INTERNAL] Updated CI dependencies (actions/setup-python, actions/checkout,
+    codecov/codecov-action, actions/cache).
+  * [INTERNAL] Added docstrings to parser.py. PR #1010
+  * [INTERNAL] Updated Python versions support and bumped CI dependencies. PR #1177
+  * [INTERNAL] Added dependabot for GitHub actions. PR #1193
+  * [INTERNAL] Moved dateutil types to test requirements. PR #1183
+  * [INTERNAL] Added documentation link for ``arrow.format``. PR #1180
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Fri Jan 12 12:18:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Don't require types-python-dateutil gh#arrow-py/arrow#1169
