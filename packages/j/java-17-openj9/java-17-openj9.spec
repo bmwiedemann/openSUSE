@@ -31,18 +31,18 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       16
-%global buildver        8
+%global updatever       17
+%global buildver        10
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk17/archive
-%global root_revision   34b4be01e57751ebe966db36c72fd2af11d00736
-%global root_branch     v0.53.0-release
+%global root_revision   7c916e0ce446a6ba622b956e4381badec9822393
+%global root_branch     v0.56.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    266a8c6f5b6d202e4aaa09e19ce0d956605f27fd
-%global omr_branch      v0.53.0-release
+%global omr_revision    d4c7e3040fb85d68216d7e422014bcf02acf3df5
+%global omr_branch      v0.56.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 017819f167cbcedd175a3f20e1112992bf4ecc1e
-%global openj9_branch   v0.53.0-release
-%global openj9_tag      openj9-0.53.0
+%global openj9_revision 14b3b2de26cdbab340416bc6b5d367b6ceb11df0
+%global openj9_branch   v0.56.0-release
+%global openj9_tag      openj9-0.56.0
 # priority must be 6 digits in total
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 %global priority        2701
@@ -117,7 +117,7 @@ Patch4:         openj9-openssl.patch
 # Fix: implicit-pointer-decl
 Patch5:         implicit-pointer-decl.patch
 #
-Patch6:         omr-libdwarf-2.patch
+Patch6:         reproducible-version.patch
 #
 Patch10:        system-pcsclite.patch
 #
@@ -128,8 +128,6 @@ Patch30:        aarch64.patch
 # OpenJDK specific patches
 #
 Patch300:       disable-doclint-by-default.patch
-#
-Patch400:       bootcycle.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -375,8 +373,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch -P 300 -p1
 
-%patch -P 400 -p1
-
 cat %{SOURCE100} \
     | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \
     | sed "s/@OPENJ9_BRANCH@/%{openj9_branch}/g" \
@@ -418,7 +414,7 @@ bash configure \
     --with-extra-cflags="$EXTRA_CFLAGS" \
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --with-version-pre="" \
-    --with-version-opt="suse-%{suse_version}-%{_arch}" \
+    --with-version-opt="suse-0%{?suse_version}-%{_arch}" \
     --disable-warnings-as-errors \
     --disable-warnings-as-errors-omr \
     --disable-warnings-as-errors-openj9 \

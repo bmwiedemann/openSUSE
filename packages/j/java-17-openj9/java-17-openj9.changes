@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 31 07:59:36 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 17.0.17 with OpenJ9 0.56.0 virtual machine
+- Including Oracle October 2025 CPU changes
+  * CVE-2025-53057 (bsc#1252414), CVE-2025-53066 (bsc#1252417)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.56/
+- Removed patches:
+  * omr-libdwarf-2.patch
+  * bootcycle.patch
+    + fixed in this version
+- Added patch:
+  * reproducible-version.patch
+    + make the time in generated header reproducible
+
+-------------------------------------------------------------------
 Wed Sep 24 07:27:32 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
