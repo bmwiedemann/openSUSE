@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 31 07:41:49 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 8u472 build 08 with OpenJDK 0.56.0 virtual
+  machine
+- Including Oracle October 2025 CPU changes
+  * CVE-2025-53057 (bsc#1252414), CVE-2025-53066 (bsc#1252417)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.56/
+- Removed patch:
+  * omr-libdwarf-2.patch
+    + fixed in this version
+- Added patch:
+  * reproducible-version.patch
+    + make the time in generated header reproducible
+
+-------------------------------------------------------------------
 Wed Sep 24 07:27:32 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
@@ -19,6 +35,8 @@ Sat Jul 26 21:23:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 - Including Oracle July 2025 CPU changes
   * CVE-2025-30749 (bsc#1246595), CVE-2025-30754 (bsc#1246598),
     CVE-2025-30761 (bsc#1246580), CVE-2025-50059 (bsc#1246575)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.53/
 - Removed patches:
   * fix-build-with-gcc14.patch
   * fix-build-with-gcc15.patch

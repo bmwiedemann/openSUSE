@@ -28,18 +28,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       462
+%global updatever       472
 %global buildver        b08
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   cb4b9ae56eabc82d4f828956d064834f883b6a4d
-%global root_branch     v0.53.0-release
+%global root_revision   4b5a9b28183fd0464e304b4c3dba03a02375ec28
+%global root_branch     v0.56.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    266a8c6f5b6d202e4aaa09e19ce0d956605f27fd
-%global omr_branch      v0.53.0-release
+%global omr_revision    d4c7e3040fb85d68216d7e422014bcf02acf3df5
+%global omr_branch      v0.56.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 017819f167cbcedd175a3f20e1112992bf4ecc1e
-%global openj9_branch   v0.53.0-release
-%global openj9_tag      openj9-0.53.0
+%global openj9_revision 14b3b2de26cdbab340416bc6b5d367b6ceb11df0
+%global openj9_branch   v0.56.0-release
+%global openj9_tag      openj9-0.56.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
@@ -112,8 +112,7 @@ Patch1:         java-atk-wrapper-security.patch
 Patch2:         multiple-pkcs11-library-init.patch
 # Disable doclint for compatibility
 Patch3:         disable-doclint-by-default.patch
-# Fix build with libdwarf 2.x
-Patch4:         omr-libdwarf-2.patch
+Patch4:         reproducible-version.patch
 # Patches for system libraries
 Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch

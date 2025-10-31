@@ -271,4 +271,12 @@
     <comment>fix build with libdwarf 2.x</comment>
     <requestid>1306918</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>bcfb2b24d859e1bd7842acf0efefb640</srcmd5>
+    <version>1.8.0.472</version>
+    <time>1761924493</time>
+    <user>anag_factory</user>
+    <comment>October 2025 CPU</comment>
+    <requestid>1314643</requestid>
+  </revision>
 </revisionlist>
