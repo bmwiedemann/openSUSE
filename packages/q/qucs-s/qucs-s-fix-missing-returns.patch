@@ -1,0 +1,27 @@
+diff -up qucs-s-25.2.0/qucs/healer.cpp.aaaa qucs-s-25.2.0/qucs/healer.cpp
+--- qucs-s-25.2.0/qucs/healer.cpp.aaaa	2025-10-30 21:40:15.447044325 +0100
++++ qucs-s-25.2.0/qucs/healer.cpp	2025-10-30 23:06:31.803371292 +0100
+@@ -106,6 +106,7 @@ QPoint GenericPort::center() const
+             return m_wire->P2();
+     }
+     assert(false);
++    return QPoint(0,0);
+ }
+ 
+ 
+@@ -156,6 +157,7 @@ Node* GenericPort::replaceNodeWith(Node*
+         }
+     }
+     assert(false);
++    return new_node;
+ }
+ 
+ 
+@@ -189,6 +191,7 @@ Node* GenericPort::node() const
+     case PortType::Component:
+       return m_port->Connection;
+     }
++    return 0;
+ }
+ 
+ 

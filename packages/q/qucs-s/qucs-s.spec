@@ -25,7 +25,7 @@
 %endif
 
 Name:           qucs-s
-Version:        25.1.2
+Version:        25.2.0
 Release:        0
 Summary:        Qucs with SPICE
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ Group:          Productivity/Scientific/Electronics
 URL:            https://ra3xdh.github.io/
 Source:         https://github.com/ra3xdh/qucs_s/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        qucs-s.rpmlintrc
+Patch0:         qucs-s-fix-missing-returns.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  dos2unix
@@ -63,6 +64,9 @@ format of Qucs and Qucs-S are fully compatible.
 
 %prep
 %setup -q -n %{name}-%{version}
+%if 0%{?suse_version} >= 1600
+%patch -P 0 -p1
+%endif
 
 %build
 %if 0%{?suse_version} >= 1600
