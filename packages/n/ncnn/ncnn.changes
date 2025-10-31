@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Thu Oct  2 08:34:31 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 20250916
+  * x86 (SSE2/AVX/AVX512): Loop tail optimization for clip, tanh, unaryop, sigmoid,
+    instancenorm, and groupnorm.
+  * ARM (Neon): Optimization for groupnorm.
+  * Loongarch (LSX/LASX): Optimization for sigmoid and some mathematical functions.
+  * RISC-V (RVV/ZFH/ZVFh/XTheadvector): Optimization for shufflechannel and layernorm.
+  * General: Improved support for extra-large tensors by using the size_t type.
+  * Updated ruapu to detect and dynamically dispatch for RISC-V ZFH ZVFH XTheadvector.
+  * Increased maximum supported GPU count to 32.
+  * Added support for nvidia headless vulkan.
+  * Detected new Vulkan extensions including VK_KHR_shader_integer_dot_product,
+    VK_EXT_robustness2, etc.
+  * Supported querying arbitrary cooperative matrix MNK size.
+  * Added support for Vulkan Int8 packing/quantize/dequantize/requantize.
+  * Removed vkimagemat type input/output forward implementation from all layers.
+  * Removed layer support_image_storage and option use_image_storage fields.
+  * Removed all layer pack8 shader implementations.
+  * Supported Vulkan drivers without a graphics queue.
+  * Unified elempack shaders for vulkan convolution (1x1s1d1/gemm/winograd), deconvolution
+    gemm, gemm, absval, sigmoid, activation functions, and unaryop
+
+-------------------------------------------------------------------
+Tue Aug  5 08:35:59 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 20250503
+  * Fix blacklist for amd radv coopmat
+  * workaround for qcom adreno turnip
+  * Read more detail at https://github.com/Tencent/ncnn/compare/20240820...20250503
+
+-------------------------------------------------------------------
+Fri Sep 13 12:39:41 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 20240820
+  * See the changelog at https://github.com/Tencent/ncnn/releases/tag/20240820
+
+-------------------------------------------------------------------
+Thu Jun 13 02:33:53 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 20240410
+  * See the changelog at https://github.com/Tencent/ncnn/releases/tag/20240410
+
+-------------------------------------------------------------------
+Tue Feb 27 12:26:25 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 20240102
+  * See the changelog at https://github.com/Tencent/ncnn/releases/tag/20240102
+
+-------------------------------------------------------------------
+Sun Dec 31 14:18:45 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Set SPIRV-Tools-opt as BuildRequires 
+
+-------------------------------------------------------------------
+Thu Nov  2 05:53:23 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 20231027
+  * See changelog at https://github.com/Tencent/ncnn/releases/tag/20231027
+- Drop gcc-13.patch 
+
+-------------------------------------------------------------------
+Tue May  2 11:22:08 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 20230223
+- Add gcc-13.patch
