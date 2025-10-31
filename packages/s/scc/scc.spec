@@ -1,7 +1,7 @@
 #
 # spec file for package scc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define shortname sccount
 
 Name:           scc
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        CLI tool to report lines of code and other metrics
 License:        MIT

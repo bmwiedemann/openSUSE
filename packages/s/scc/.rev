@@ -19,4 +19,41 @@ Fixed conflict of binary scc with sc-controller. Binary is now named sccount.</c
   * Update to BuildRequires: golang(API) &gt;= 1.24 matching go.mod (forwarded request 1246296 from jfkw)</comment>
     <requestid>1246300</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>441ba20142a34f55272afb30e64a154d</srcmd5>
+    <version>3.6.0</version>
+    <time>1761924522</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.6.0:
+  * release 3.6.0
+  * feat: support D2 (#656)
+  * feat: Automatically provide corrective suggestions when command-line flags contain errors (#655)
+  * add in graph database support (#654)
+  * refactor: testing formatting using Go (#652)
+  * feat: support Algol 68 (#651)
+  * feat: upgrade to Go 1.25.2 (#650)
+  * fix: Remove ComplexityLine from JSON output (#649)
+  * perf: speed up toCSVSummary (#648)
+  * fix: fix sort for CSV outputs (#647)
+  * Fix CoC
+  * Update README.md
+  * Add citation section to README
+  * feat: support Rich Text Format (#643)
+  * feat: format more numbers using current locale (#641)
+  * fix: correct spacing padding (#640)
+  * feat: support POML and ArkTs (#639)
+  * refactor: fix some golangci-lint warnings (#638)
+  * feat: support new language Seed7 (#637)
+  * add in badge tweaks for effort
+  * tweaking formatting (#634)
+  * ensure we know systemd comments (#632)
+  * Added support for JCL files (#630)
+  * feat: reduce allocs in DetectSheBang (#628)
+  * Docs: Fix typo in 'scc for Teams &amp; Enterprise' section of README.md (#629)
+  * fix: fix CountStats performance (#626)
+  * Refactor: simplify printXXX functions usages (#625)
+  * feat: speed up specific languages test (#624)
+  * doc: missing new formatting delivered in #335 (#623) (forwarded request 1314826 from jfkw)</comment>
+    <requestid>1314861</requestid>
+  </revision>
 </revisionlist>

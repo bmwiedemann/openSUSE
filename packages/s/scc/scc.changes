@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Oct 31 12:49:32 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.6.0:
+  * release 3.6.0
+  * feat: support D2 (#656)
+  * feat: Automatically provide corrective suggestions when command-line flags contain errors (#655)
+  * add in graph database support (#654)
+  * refactor: testing formatting using Go (#652)
+  * feat: support Algol 68 (#651)
+  * feat: upgrade to Go 1.25.2 (#650)
+  * fix: Remove ComplexityLine from JSON output (#649)
+  * perf: speed up toCSVSummary (#648)
+  * fix: fix sort for CSV outputs (#647)
+  * Fix CoC
+  * Update README.md
+  * Add citation section to README
+  * feat: support Rich Text Format (#643)
+  * feat: format more numbers using current locale (#641)
+  * fix: correct spacing padding (#640)
+  * feat: support POML and ArkTs (#639)
+  * refactor: fix some golangci-lint warnings (#638)
+  * feat: support new language Seed7 (#637)
+  * Update README.md
+  * add in badge tweaks for effort
+  * tweaking formatting (#634)
+  * ensure we know systemd comments (#632)
+  * Added support for JCL files (#630)
+  * feat: reduce allocs in DetectSheBang (#628)
+  * Docs: Fix typo in 'scc for Teams & Enterprise' section of README.md (#629)
+  * Update README.md
+  * Update README.md
+  * fix: fix CountStats performance (#626)
+  * Refactor: simplify printXXX functions usages (#625)
+  * feat: speed up specific languages test (#624)
+  * doc: missing new formatting delivered in #335 (#623)
+  * feat: format numbers using current locale (#622)
+  * feat: Support .Net 10 CSharp shebang (#621)
+  * feat: Update CMake language information (#620)
+  * Update README.md
+  * RAML support (#619)
+  * Update terraform extensions
+  * Support new language Go+ (#617)
+  * Support GTK Blueprint (#616)
+  * update Perl and Python language information (#615)
+  * Support PostScript (#614)
+  * fix TypeScript and JavaScript language information (#613)
+  * use # as line comment symbol for nix (#612)
+  * Support xmake & update lua and luau (#609)
+  * Silent some CodeFactor issues (#608)
+  * Add OpenTofu (#607)
+  * print command line completions (#337) (#606)
+  * Bump golang.org/x/crypto from 0.33.0 to 0.35.0 (#605)
+  * add koto (#604)
+  * add language scallop (#603)
+  * Change version to next
+  * Add in support for C3 lang (#602)
+  * Accelerating scc startup speed with code generation (#594)
+  * add Tact language (#600)
+  * fix staticcheck warnings (#598)
+  * add elixir template
+  * Update README.md
+  * Update devcontainer to support go1.24 (#596)
+
+-------------------------------------------------------------------
 Mon Feb 17 01:57:10 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.5.0:
