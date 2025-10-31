@@ -1,7 +1,7 @@
 #
 # spec file for package python-port-for
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-port-for
-Version:        0.7.4
+Version:        1.0.0
 Release:        0
 License:        MIT
 Summary:        Utility that helps with local TCP ports managment

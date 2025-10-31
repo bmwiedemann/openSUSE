@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 31 08:35:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Drop support for Python 3.9
+  * port-for supports Windows. Increased code compatibility with
+    Windows (#4)
+  * Replaced docopt with argparse. Package got a bit smaller as a
+    result. (#24)
+  * Added Python 3.14 to the supported Python Versions
+  * Adjust links after repository transfer
+  * Adjust workflows for actions-reuse 3
+  * Changed maximum line length to 100 characters.
+  * Fix test_port_mix again.
+  * Have all code fully typed.
+  * Removed global variable from cli module.
+  * Replace black code formatting tool with ruff-format command.
+  * Rewritten all tests into pytest style tests.
+  * Update formatting with black
+  * Use pre-commit for maintaining code style and linting
+
+-------------------------------------------------------------------
 Thu Oct 31 16:43:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.4:
