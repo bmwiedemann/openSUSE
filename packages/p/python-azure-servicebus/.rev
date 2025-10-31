@@ -434,4 +434,15 @@
     <comment></comment>
     <requestid>1269133</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a6b8e69da9e77eebf5a1574ef1e975e8</srcmd5>
+    <version>7.14.3</version>
+    <time>1761924523</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 7.14.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1314690 from glaubitz)</comment>
+    <requestid>1314908</requestid>
+  </revision>
 </revisionlist>
