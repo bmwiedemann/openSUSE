@@ -23,4 +23,12 @@
     <comment>October 2025 CPU</comment>
     <requestid>1313253</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3439842f511fb206c2f38468c6fc61b0</srcmd5>
+    <version>25.0.1.0</version>
+    <time>1761924489</time>
+    <user>anag_factory</user>
+    <comment>Add bsc#</comment>
+    <requestid>1314652</requestid>
+  </revision>
 </revisionlist>

@@ -3,9 +3,12 @@ Wed Oct 22 10:39:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-25.0.1+8 (October 2025 CPU)
   * Security fixes:
-    + JDK-8360937, CVE-2025-53057: Enhance certificate handling
-    + JDK-8356294, CVE-2025-53066: Enhance Path Factories
-    + JDK-8359454, CVE-2025-61748: Enhance String handling
+    + JDK-8360937, CVE-2025-53057, bsc#1252414: Enhance certificate
+      handling
+    + JDK-8356294, CVE-2025-53066, bsc#1252417: Enhance Path
+      Factories
+    + JDK-8359454, CVE-2025-61748, bsc#1252418: Enhance String
+      handling
     + JDK-8352637: Enhance bytecode verification
   * Other fixes:
     + JDK-8367031: [backout] Change java.time month/day field types
