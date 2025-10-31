@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 23 20:08:54 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update yesod-core to version 1.6.28.1.
+  ## 1.6.28.1
+
+  * Add type arguments to the sub routes [#1866](https://github.com/yesodweb/yesod/pull/1866)
+
+  ## 1.6.28.0
+
+  * Allow users to control generation of the `resourcesSite :: [ResourceTree String]` value. [#1881](https://github.com/yesodweb/yesod/pull/1881)
+
+-------------------------------------------------------------------
 Tue Jul  8 13:54:21 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update yesod-core to version 1.6.27.1.

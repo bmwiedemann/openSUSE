@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.27.1
+Version:        1.6.28.1
 Release:        0
 Summary:        Creation of type-safe, RESTful web applications
 License:        MIT
@@ -124,6 +124,8 @@ BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-streaming-commons-devel
 BuildRequires:  ghc-streaming-commons-prof
+BuildRequires:  ghc-th-abstraction-devel
+BuildRequires:  ghc-th-abstraction-prof
 %endif
 
 %description
