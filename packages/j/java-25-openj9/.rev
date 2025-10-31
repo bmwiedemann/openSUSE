@@ -7,4 +7,12 @@
     <comment>Intial packaging of OpenJDK 25 with OpenJ9 0.55.0 virtual machine</comment>
     <requestid>1307559</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>988a0201aebc878be0b67ed6f44cbd41</srcmd5>
+    <version>25.0.1.0</version>
+    <time>1761924512</time>
+    <user>anag_factory</user>
+    <comment>October 2025 CPU</comment>
+    <requestid>1314651</requestid>
+  </revision>
 </revisionlist>

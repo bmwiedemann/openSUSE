@@ -1,5 +1,5 @@
 #
-# spec file for package java-21-openj9
+# spec file for package java-25-openj9
 #
 # Copyright (c) 2025 SUSE LLC and contributors
 #
@@ -31,18 +31,18 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      25
 %global interimver      0
-%global updatever       0
-%global buildver        36
+%global updatever       1
+%global buildver        8
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk%{featurever}/archive
-%global root_revision   56cc1351c539392bd6cfa724dfa404e04558ccd4
-%global root_branch     v0.55.0-release
+%global root_revision   1b8a2ea057bf94770b166c451d64a68e7eea68ac
+%global root_branch     v0.56.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    b62e200777c764a87a3e0a2b8136c8f9581b3ad7
-%global omr_branch      v0.55.0-release
+%global omr_revision    d4c7e3040fb85d68216d7e422014bcf02acf3df5
+%global omr_branch      v0.56.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 6fb31293be818f750d49927fbe2607fc0117e5b9
-%global openj9_branch   v0.55.0-release
-%global openj9_tag      openj9-0.55.0
+%global openj9_revision 14b3b2de26cdbab340416bc6b5d367b6ceb11df0
+%global openj9_branch   v0.56.0-release
+%global openj9_tag      openj9-0.56.0
 # priority must be 6 digits in total
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 #global priority        3501
@@ -116,8 +116,6 @@ Patch4:         openj9-openssl.patch
 # Fix: implicit-pointer-decl
 Patch5:         implicit-pointer-decl.patch
 #
-Patch6:         omr-libdwarf-2.patch
-#
 Patch10:        system-pcsclite.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
@@ -129,8 +127,6 @@ Patch31:        reproducible-version.patch
 # OpenJDK specific patches
 #
 Patch300:       disable-doclint-by-default.patch
-#
-Patch400:       bootcycle.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -365,7 +361,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
-%patch -P 6 -p1
 
 %if %{with_system_pcsc}
 %patch -P 10 -p1
@@ -377,8 +372,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 31 -p1
 
 %patch -P 300 -p1
-
-%patch -P 400 -p1
 
 cat %{SOURCE100} \
     | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \
@@ -421,7 +414,7 @@ bash configure \
     --with-extra-cflags="$EXTRA_CFLAGS" \
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --with-version-pre="" \
-    --with-version-opt="suse-%{suse_version}-%{_arch}" \
+    --with-version-opt="suse-0%{?suse_version}-%{_arch}" \
     --disable-warnings-as-errors \
     --disable-warnings-as-errors-omr \
     --disable-warnings-as-errors-openj9 \

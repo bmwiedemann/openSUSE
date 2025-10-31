@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 31 08:13:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 25.0.1 with OpenJ9 0.56.0 virtual machine
+- Including Oracle October 2025 CPU changes
+  * CVE-2025-53057 (bsc#1252414), CVE-2025-53066 (bsc#1252417),
+    CVE-2025-61748 (bsc#1252418)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.56/
+- Removed patches:
+  * omr-libdwarf-2.patch
+  * bootcycle.patch
+    + fixed in this version
+
+-------------------------------------------------------------------
 Sun Sep 28 11:10:54 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Intial packaging of OpenJDK 25 with OpenJ9 0.55.0 virtual machine
