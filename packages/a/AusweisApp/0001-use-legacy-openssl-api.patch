@@ -1,110 +1,26 @@
-From cae1fb6e4f5ccbdb9cc6b8401c39d2affe548eb0 Mon Sep 17 00:00:00 2001
-From: John Paul Adrian Glaubitz <glaubitz@suse.com>
-Date: Thu, 6 Mar 2025 11:43:01 +0100
-Subject: [PATCH] Use legacy SSL API to workaround blocked non-approved EC
- curves
+From f5d48a49ea7055b7d4edf5f1398557b475419fb9 Mon Sep 17 00:00:00 2001
+From: rpm-build <rpm-build>
+Date: Thu, 30 Oct 2025 13:51:15 +0100
+Subject: [PATCH] Use legacy OpenSSL API
 
 ---
- src/card/base/asn1/ASN1TemplateUtil.h        |   4 -
- src/card/base/asn1/ASN1Util.cpp              |   4 -
- src/card/base/asn1/ASN1Util.h                |   4 -
- src/card/base/asn1/EFCardSecurity.cpp        |   3 -
- src/card/base/asn1/EcdsaPublicKey.cpp        |  43 ------
+ src/card/base/asn1/EcdsaPublicKey.cpp        |  39 -----
  src/card/base/asn1/EcdsaPublicKey.h          |   6 +-
- src/card/base/pace/CipherMac.cpp             |  87 -----------
- src/card/base/pace/CipherMac.h               |   6 -
- src/card/base/pace/SymmetricCipher.cpp       |   4 -
- src/card/base/pace/ec/EcUtil.cpp             | 144 -------------------
+ src/card/base/pace/ec/EcUtil.cpp             | 145 -------------------
  src/card/base/pace/ec/EcUtil.h               |  12 --
  src/card/base/pace/ec/EcdhGenericMapping.cpp |   5 -
  src/card/base/pace/ec/EcdhGenericMapping.h   |   4 -
- src/card/simulator/SimulatorCard.cpp         |  38 -----
+ src/card/simulator/SimulatorCard.cpp         |  37 -----
  src/card/simulator/SimulatorCard.h           |   4 -
  src/card/simulator/SimulatorFileSystem.cpp   |   9 --
  src/card/simulator/SimulatorFileSystem.h     |   4 -
- test/qt/card/asn1/test_EcdsaPublicKey.cpp    |  15 --
- test/qt/card/asn1/test_SignatureChecker.cpp  |   4 -
- test/qt/card/pace/test_EcUtil.cpp            |   4 -
- 20 files changed, 1 insertion(+), 403 deletions(-)
+ 10 files changed, 1 insertion(+), 264 deletions(-)
 
-diff --git a/src/card/base/asn1/ASN1TemplateUtil.h b/src/card/base/asn1/ASN1TemplateUtil.h
-index a33ad2fc..b1d20038 100644
---- a/src/card/base/asn1/ASN1TemplateUtil.h
-+++ b/src/card/base/asn1/ASN1TemplateUtil.h
-@@ -140,11 +140,7 @@ static const int CB_SUCCESS = 1;
- static const int CB_ERROR = 0;
- 
- 
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 	#define i2d_const_cast(name, object) const_cast<name*>(object)
--#else
--	#define i2d_const_cast(name, object) object
--#endif
- 
- 
- #define IMPLEMENT_ASN1_OBJECT(name)\
-diff --git a/src/card/base/asn1/ASN1Util.cpp b/src/card/base/asn1/ASN1Util.cpp
-index 355cf5b5..13fd5f9d 100644
---- a/src/card/base/asn1/ASN1Util.cpp
-+++ b/src/card/base/asn1/ASN1Util.cpp
-@@ -61,11 +61,7 @@ QString Asn1StringUtil::getValue(const ASN1_STRING* pString)
- }
- 
- 
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- QByteArray Asn1TypeUtil::encode(ASN1_TYPE* pAny)
--#else
--QByteArray Asn1TypeUtil::encode(const ASN1_TYPE* pAny)
--#endif
- {
- 	if (pAny == nullptr)
- 	{
-diff --git a/src/card/base/asn1/ASN1Util.h b/src/card/base/asn1/ASN1Util.h
-index 7d04ead5..d9806d83 100644
---- a/src/card/base/asn1/ASN1Util.h
-+++ b/src/card/base/asn1/ASN1Util.h
-@@ -71,11 +71,7 @@ class Asn1TypeUtil
- 		~Asn1TypeUtil() = delete;
- 
- 	public:
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 		static QByteArray encode(ASN1_TYPE* pAny);
--#else
--		static QByteArray encode(const ASN1_TYPE* pAny);
--#endif
- };
- 
- 
-diff --git a/src/card/base/asn1/EFCardSecurity.cpp b/src/card/base/asn1/EFCardSecurity.cpp
-index 7596721e..89258f09 100644
---- a/src/card/base/asn1/EFCardSecurity.cpp
-+++ b/src/card/base/asn1/EFCardSecurity.cpp
-@@ -73,9 +73,6 @@ QSharedPointer<EFCardSecurity> EFCardSecurity::decode(const QByteArray& pBytes)
- 	const QSharedPointer<const STACK_OF(X509)> certs(CMS_get1_certs(contentInfo.data()), [](STACK_OF(X509)* pInfo){sk_X509_pop_free(pInfo, X509_free);});
- 	for (int i = 0; certs && i < sk_X509_num(certs.data()); ++i)
- 	{
--#if OPENSSL_VERSION_NUMBER >= 0x30000000L
--		const
--#endif
- 		auto* const name = X509_get_subject_name(sk_X509_value(certs.data(), i));
- 		const int index = X509_NAME_get_index_by_NID(name, NID_serialNumber, -1);
- 		const auto* const serial = X509_NAME_ENTRY_get_data(X509_NAME_get_entry(name, index));
 diff --git a/src/card/base/asn1/EcdsaPublicKey.cpp b/src/card/base/asn1/EcdsaPublicKey.cpp
-index 7f54045e..076b3e2d 100644
+index 7f54045..dc7e26b 100644
 --- a/src/card/base/asn1/EcdsaPublicKey.cpp
 +++ b/src/card/base/asn1/EcdsaPublicKey.cpp
-@@ -12,10 +12,6 @@
- 
- #include <functional>
- 
--#if OPENSSL_VERSION_NUMBER >= 0x30000000L
--	#include <openssl/param_build.h>
--#endif
--
- 
- using namespace governikus;
- 
-@@ -182,7 +178,6 @@ QByteArray EcdsaPublicKey::getUncompressedPublicPoint() const
+@@ -182,7 +182,6 @@ QByteArray EcdsaPublicKey::getUncompressedPublicPoint() const
  }
  
  
@@ -112,7 +28,7 @@ index 7f54045e..076b3e2d 100644
  QSharedPointer<EC_GROUP> EcdsaPublicKey::createGroup(const CurveData& pData) const
  {
  	QSharedPointer<EC_GROUP> group = EcUtil::create(EC_GROUP_new_curve_GFp(pData.p.data(), pData.a.data(), pData.b.data(), nullptr));
-@@ -209,8 +204,6 @@ QSharedPointer<EC_GROUP> EcdsaPublicKey::createGroup(const CurveData& pData) con
+@@ -209,8 +208,6 @@ QSharedPointer<EC_GROUP> EcdsaPublicKey::createGroup(const CurveData& pData) con
  }
  
  
@@ -121,7 +37,7 @@ index 7f54045e..076b3e2d 100644
  QSharedPointer<EVP_PKEY> EcdsaPublicKey::createKey(const QByteArray& pPublicPoint) const
  {
  	return createKey(reinterpret_cast<const uchar*>(pPublicPoint.constData()), static_cast<int>(pPublicPoint.size()));
-@@ -239,7 +232,6 @@ QSharedPointer<EVP_PKEY> EcdsaPublicKey::createKey(const uchar* pPublicPoint, in
+@@ -239,7 +236,6 @@ QSharedPointer<EVP_PKEY> EcdsaPublicKey::createKey(const uchar* pPublicPoint, in
  		return nullptr;
  	}
  
@@ -129,7 +45,7 @@ index 7f54045e..076b3e2d 100644
  	const auto& group = createGroup(curveData);
  	if (group.isNull())
  	{
-@@ -275,39 +267,4 @@ QSharedPointer<EVP_PKEY> EcdsaPublicKey::createKey(const uchar* pPublicPoint, in
+@@ -275,39 +271,4 @@ QSharedPointer<EVP_PKEY> EcdsaPublicKey::createKey(const uchar* pPublicPoint, in
  
  	return key;
  
@@ -170,7 +86,7 @@ index 7f54045e..076b3e2d 100644
 -#endif
  }
 diff --git a/src/card/base/asn1/EcdsaPublicKey.h b/src/card/base/asn1/EcdsaPublicKey.h
-index 860bc749..c85e48bd 100644
+index 860bc74..c85e48b 100644
 --- a/src/card/base/asn1/EcdsaPublicKey.h
 +++ b/src/card/base/asn1/EcdsaPublicKey.h
 @@ -13,9 +13,7 @@
@@ -194,204 +110,11 @@ index 860bc749..c85e48bd 100644
  
  	public:
  		static int decodeCallback(int pOperation, ASN1_VALUE** pVal, const ASN1_ITEM* pIt, void* pExarg);
-diff --git a/src/card/base/pace/CipherMac.cpp b/src/card/base/pace/CipherMac.cpp
-index 8968ab9f..b56fa861 100644
---- a/src/card/base/pace/CipherMac.cpp
-+++ b/src/card/base/pace/CipherMac.cpp
-@@ -14,24 +14,14 @@ Q_DECLARE_LOGGING_CATEGORY(card)
- 
- 
- CipherMac::CipherMac(const SecurityProtocol& pSecurityProtocol, const QByteArray& pKeyBytes)
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 	: mKey(nullptr)
--#else
--	: mMac(nullptr)
--	, mCtx(nullptr)
--#endif
- {
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 	const auto* cipher = pSecurityProtocol.getCipher();
--#else
--	const auto* cipher = pSecurityProtocol.getCipherString();
--#endif
- 	if (cipher == nullptr)
- 	{
- 		return;
- 	}
- 
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 	if (pKeyBytes.size() != EVP_CIPHER_key_length(cipher))
- 	{
- 		qCCritical(card) << "Key has wrong size (expected/got):" << EVP_CIPHER_key_length(cipher) << '/' << pKeyBytes.size();
-@@ -40,66 +30,18 @@ CipherMac::CipherMac(const SecurityProtocol& pSecurityProtocol, const QByteArray
- 
- 	mKey = EVP_PKEY_new_CMAC_key(nullptr, reinterpret_cast<const uchar*>(pKeyBytes.constData()), static_cast<size_t>(pKeyBytes.size()), cipher);
- 
--#else
--
--	auto guard = qScopeGuard([this] {
--				EVP_MAC_CTX_free(mCtx);
--				mCtx = nullptr;
--
--				EVP_MAC_free(mMac);
--				mMac = nullptr;
--			});
--
--	mMac = EVP_MAC_fetch(nullptr, "cmac", nullptr);
--	if (!mMac)
--	{
--		qCCritical(card) << "Cannot fetch cmac";
--		return;
--	}
--
--	mCtx = EVP_MAC_CTX_new(mMac);
--	if (!mCtx)
--	{
--		qCCritical(card) << "Cannot create new mac ctx";
--		return;
--	}
--
--	const OSSL_PARAM params[] = {
--		OSSL_PARAM_utf8_string("cipher", const_cast<char*>(cipher), 0),
--		OSSL_PARAM_octet_string("key", const_cast<char*>(pKeyBytes.data()), static_cast<size_t>(pKeyBytes.size())),
--		OSSL_PARAM_END
--	};
--	if (!EVP_MAC_CTX_set_params(mCtx, params))
--	{
--		qCCritical(card) << "Cannot set parameter";
--		return;
--	}
--
--	guard.dismiss();
--#endif
- }
- 
- 
- CipherMac::~CipherMac()
- {
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 	EVP_PKEY_free(mKey);
--#else
--	EVP_MAC_CTX_free(mCtx);
--	EVP_MAC_free(mMac);
--#endif
- }
- 
- 
- bool CipherMac::isInitialized() const
- {
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 	return mKey != nullptr;
--
--#else
--	return mMac != nullptr && mCtx != nullptr;
--
--#endif
- }
- 
- 
-@@ -111,7 +53,6 @@ QByteArray CipherMac::generate(const QByteArray& pMessage) const
- 		return QByteArray();
- 	}
- 
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 	QSharedPointer<EVP_MD_CTX> ctx(EVP_MD_CTX_create(), [](EVP_MD_CTX* pCtx)
- 			{
- 				EVP_MD_CTX_destroy(pCtx);
-@@ -137,34 +78,6 @@ QByteArray CipherMac::generate(const QByteArray& pMessage) const
- 		return QByteArray();
- 	}
- 
--#else
--	auto* ctx = EVP_MAC_CTX_dup(mCtx);
--	const auto guard = qScopeGuard([ctx] {
--				EVP_MAC_CTX_free(ctx);
--			});
--
--	if (!EVP_MAC_init(ctx, nullptr, 0, nullptr))
--	{
--		qCCritical(card) << "Cannot init ctx";
--		return QByteArray();
--	}
--
--	if (!EVP_MAC_update(ctx, reinterpret_cast<const uchar*>(pMessage.constData()), static_cast<size_t>(pMessage.size())))
--	{
--		qCCritical(card) << "Cannot update cmac";
--		return QByteArray();
--	}
--
--	QByteArray value(static_cast<int>(EVP_MAC_CTX_get_mac_size(ctx)), '\0');
--	size_t writtenBytes;
--	if (!EVP_MAC_final(ctx, reinterpret_cast<uchar*>(value.data()), &writtenBytes, static_cast<size_t>(value.size())))
--	{
--		qCCritical(card) << "Cannot finalize cmac";
--		return QByteArray();
--	}
--
--#endif
--
- 	// Use only 8 bytes, according to TR 03110 Part 3, A.2.4.2, E.2.2.2
- 	value.resize(8);
- 	return value;
-diff --git a/src/card/base/pace/CipherMac.h b/src/card/base/pace/CipherMac.h
-index 776e1746..a1a6606f 100644
---- a/src/card/base/pace/CipherMac.h
-+++ b/src/card/base/pace/CipherMac.h
-@@ -18,14 +18,8 @@ class CipherMac final
- 	Q_DISABLE_COPY(CipherMac)
- 
- 	private:
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 		EVP_PKEY * mKey;
- 
--#else
--		EVP_MAC* mMac;
--		EVP_MAC_CTX* mCtx;
--#endif
--
- 	public:
- 		/*!
- 		 * \brief Creates a new instance with cipher algorithm determined by parameter and specified MAC key.
-diff --git a/src/card/base/pace/SymmetricCipher.cpp b/src/card/base/pace/SymmetricCipher.cpp
-index 18514893..1a98efbd 100644
---- a/src/card/base/pace/SymmetricCipher.cpp
-+++ b/src/card/base/pace/SymmetricCipher.cpp
-@@ -67,9 +67,7 @@ QByteArray SymmetricCipher::encrypt(const QByteArray& pPlainData)
- 	}
- 	EVP_CIPHER_CTX_set_padding(mCtx, 0);
- 
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 	#define EVP_CIPHER_CTX_get0_cipher(x) EVP_CIPHER_CTX_cipher(x)
--#endif
- 	if (pPlainData.size() % EVP_CIPHER_block_size(EVP_CIPHER_CTX_get0_cipher(mCtx)) != 0)
- 	{
- 		qCCritical(card) << "Plain data length is not a multiple of the block size";
-@@ -132,9 +130,7 @@ QByteArray SymmetricCipher::decrypt(const QByteArray& pEncryptedData)
- 	}
- 	EVP_CIPHER_CTX_set_padding(mCtx, 0);
- 
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 	#define EVP_CIPHER_CTX_get0_cipher(x) EVP_CIPHER_CTX_cipher(x)
--#endif
- 	if (pEncryptedData.size() % EVP_CIPHER_block_size(EVP_CIPHER_CTX_get0_cipher(mCtx)) != 0)
- 	{
- 		qCCritical(card) << "Encrypted data length is not a multiple of the block size";
 diff --git a/src/card/base/pace/ec/EcUtil.cpp b/src/card/base/pace/ec/EcUtil.cpp
-index 67e970ef..660f0d2a 100644
+index 069ad81..546438f 100644
 --- a/src/card/base/pace/ec/EcUtil.cpp
 +++ b/src/card/base/pace/ec/EcUtil.cpp
-@@ -7,10 +7,6 @@
- #include <QLoggingCategory>
- #include <QScopeGuard>
- 
--#if OPENSSL_VERSION_NUMBER >= 0x30000000L
--	#include <openssl/param_build.h>
--#endif
--
- Q_DECLARE_LOGGING_CATEGORY(card)
- 
- using namespace governikus;
-@@ -103,143 +99,6 @@ QSharedPointer<EC_POINT> EcUtil::oct2point(const QSharedPointer<const EC_GROUP>&
+@@ -103,148 +103,6 @@ QSharedPointer<EC_POINT> EcUtil::oct2point(const QSharedPointer<const EC_GROUP>&
  }
  
  
@@ -441,8 +164,13 @@ index 67e970ef..660f0d2a 100644
 -		return nullptr;
 -	}
 -
--	if (OSSL_PARAM* params = nullptr;
--			pFunc(bld) && (params = OSSL_PARAM_BLD_to_param(bld)) != nullptr)
+-	if (!pFunc(bld))
+-	{
+-		qCCritical(card) << "Cannot initialize parameter builder";
+-		return nullptr;
+-	}
+-
+-	if (OSSL_PARAM* params = OSSL_PARAM_BLD_to_param(bld); params != nullptr)
 -	{
 -		static auto deleter = [](OSSL_PARAM* pParam)
 -				{
@@ -535,7 +263,7 @@ index 67e970ef..660f0d2a 100644
  QByteArray EcUtil::getEncodedPublicKey(const QSharedPointer<EC_KEY>& pKey, bool pCompressed)
  {
  	if (pKey.isNull())
-@@ -288,6 +147,3 @@ QSharedPointer<EC_KEY> EcUtil::generateKey(const QSharedPointer<const EC_GROUP>&
+@@ -293,6 +151,3 @@ QSharedPointer<EC_KEY> EcUtil::generateKey(const QSharedPointer<const EC_GROUP>&
  
  	return key;
  }
@@ -543,7 +271,7 @@ index 67e970ef..660f0d2a 100644
 -
 -#endif
 diff --git a/src/card/base/pace/ec/EcUtil.h b/src/card/base/pace/ec/EcUtil.h
-index 63eb16c6..914c2683 100644
+index 63eb16c..914c268 100644
 --- a/src/card/base/pace/ec/EcUtil.h
 +++ b/src/card/base/pace/ec/EcUtil.h
 @@ -26,24 +26,15 @@ class EcUtil
@@ -589,7 +317,7 @@ index 63eb16c6..914c2683 100644
  {
  	static auto deleter = [](EC_POINT* ecPoint)
 diff --git a/src/card/base/pace/ec/EcdhGenericMapping.cpp b/src/card/base/pace/ec/EcdhGenericMapping.cpp
-index 04cee51d..571c7a0a 100644
+index 04cee51..571c7a0 100644
 --- a/src/card/base/pace/ec/EcdhGenericMapping.cpp
 +++ b/src/card/base/pace/ec/EcdhGenericMapping.cpp
 @@ -49,12 +49,7 @@ bool EcdhGenericMapping::generateEphemeralDomainParameters(const QByteArray& pRe
@@ -606,7 +334,7 @@ index 04cee51d..571c7a0a 100644
  	{
  		qCCritical(card) << "The exchanged public keys are equal.";
 diff --git a/src/card/base/pace/ec/EcdhGenericMapping.h b/src/card/base/pace/ec/EcdhGenericMapping.h
-index e9c97682..188befb6 100644
+index e9c9768..188befb 100644
 --- a/src/card/base/pace/ec/EcdhGenericMapping.h
 +++ b/src/card/base/pace/ec/EcdhGenericMapping.h
 @@ -22,11 +22,7 @@ class EcdhGenericMapping
@@ -622,7 +350,7 @@ index e9c97682..188befb6 100644
  		QSharedPointer<EC_POINT> createNewGenerator(const QSharedPointer<const EC_POINT>& pRemotePubKey, const QSharedPointer<const BIGNUM>& pS);
  
 diff --git a/src/card/simulator/SimulatorCard.cpp b/src/card/simulator/SimulatorCard.cpp
-index 3c4e2188..6588bb93 100644
+index 3c4e218..a39fb54 100644
 --- a/src/card/simulator/SimulatorCard.cpp
 +++ b/src/card/simulator/SimulatorCard.cpp
 @@ -661,42 +661,6 @@ QByteArray SimulatorCard::ecMultiplication(const QByteArray& pPoint) const
@@ -668,17 +396,16 @@ index 3c4e2188..6588bb93 100644
  	const auto& curve = EcUtil::create(EC_GROUP_dup(EC_KEY_get0_group(mCardKey.data())));
  	auto point = EcUtil::oct2point(curve, pPoint);
  	if (!point)
-@@ -714,8 +678,6 @@ QByteArray SimulatorCard::ecMultiplication(const QByteArray& pPoint) const
- 	}
+@@ -715,7 +679,6 @@ QByteArray SimulatorCard::ecMultiplication(const QByteArray& pPoint) const
  
  	return EcUtil::point2oct(curve, result.data(), true);
--
+ 
 -#endif
  }
  
  
 diff --git a/src/card/simulator/SimulatorCard.h b/src/card/simulator/SimulatorCard.h
-index fc9db007..7a881cb6 100644
+index fc9db00..7a881cb 100644
 --- a/src/card/simulator/SimulatorCard.h
 +++ b/src/card/simulator/SimulatorCard.h
 @@ -39,11 +39,7 @@ class SimulatorCard
@@ -694,10 +421,10 @@ index fc9db007..7a881cb6 100644
  		QByteArray mTaSigningData;
  		QByteArray mTaAuxData;
 diff --git a/src/card/simulator/SimulatorFileSystem.cpp b/src/card/simulator/SimulatorFileSystem.cpp
-index 3c0fb355..3f00ae88 100644
+index 5c01caa..4cbe60c 100644
 --- a/src/card/simulator/SimulatorFileSystem.cpp
 +++ b/src/card/simulator/SimulatorFileSystem.cpp
-@@ -357,11 +357,7 @@ QByteArray SimulatorFileSystem::getPassword(PacePasswordId pPasswordId) const
+@@ -347,11 +347,7 @@ QByteArray SimulatorFileSystem::getPassword(PacePasswordId pPasswordId) const
  }
  
  
@@ -709,7 +436,7 @@ index 3c0fb355..3f00ae88 100644
  {
  	if (!mKeys.contains(pKeyId))
  	{
-@@ -377,13 +373,8 @@ QSharedPointer<EC_KEY> SimulatorFileSystem::getKey(int pKeyId) const
+@@ -367,13 +363,8 @@ QSharedPointer<EC_KEY> SimulatorFileSystem::getKey(int pKeyId) const
  		return nullptr;
  	}
  
@@ -724,7 +451,7 @@ index 3c0fb355..3f00ae88 100644
  
  
 diff --git a/src/card/simulator/SimulatorFileSystem.h b/src/card/simulator/SimulatorFileSystem.h
-index 7d8458f5..57065db3 100644
+index 7d8458f..57065db 100644
 --- a/src/card/simulator/SimulatorFileSystem.h
 +++ b/src/card/simulator/SimulatorFileSystem.h
 @@ -43,11 +43,7 @@ class SimulatorFileSystem
@@ -739,77 +466,6 @@ index 7d8458f5..57065db3 100644
  		[[nodiscard]] QSharedPointer<const CVCertificate> getTrustPoint() const;
  		void setTrustPoint(const QSharedPointer<const CVCertificate>& pTrustPoint);
  
-diff --git a/test/qt/card/asn1/test_EcdsaPublicKey.cpp b/test/qt/card/asn1/test_EcdsaPublicKey.cpp
-index 8406529e..647a9282 100644
---- a/test/qt/card/asn1/test_EcdsaPublicKey.cpp
-+++ b/test/qt/card/asn1/test_EcdsaPublicKey.cpp
-@@ -26,20 +26,6 @@ class test_EcdsaPublicKey
- 	private:
- 		QByteArray fetchEcParams(const QSharedPointer<EVP_PKEY>& pKey, BIGNUM** pA, BIGNUM** pB, BIGNUM** pP, BIGNUM** pCofactor, BIGNUM** pOrder)
- 		{
--#if OPENSSL_VERSION_NUMBER >= 0x30000000L
--			EVP_PKEY_get_bn_param(pKey.data(), "a", pA);
--			EVP_PKEY_get_bn_param(pKey.data(), "b", pB);
--			EVP_PKEY_get_bn_param(pKey.data(), "p", pP);
--			EVP_PKEY_get_bn_param(pKey.data(), "cofactor", pCofactor);
--			EVP_PKEY_get_bn_param(pKey.data(), "order", pOrder);
--
--			QByteArray generator(1024, 0);
--			size_t usedSize = 0;
--			EVP_PKEY_get_octet_string_param(pKey.data(), "generator", reinterpret_cast<uchar*>(generator.data()), static_cast<size_t>(generator.size()), &usedSize);
--			generator.resize(static_cast<int>(usedSize));
--			return generator;
--
--#else
- 			const EC_GROUP* ecGroup = EC_KEY_get0_group(EVP_PKEY_get0_EC_KEY(pKey.data()));
- 			EC_GROUP_get_cofactor(ecGroup, *pCofactor, nullptr);
- 			EC_GROUP_get_order(ecGroup, *pOrder, nullptr);
-@@ -53,7 +39,6 @@ class test_EcdsaPublicKey
- 			EC_POINT_point2oct(ecGroup, generator, point_conversion_form_t::POINT_CONVERSION_UNCOMPRESSED, reinterpret_cast<uchar*>(buf.data()), static_cast<size_t>(buf.size()), nullptr);
- 			return QByteArray(buf.data(), buf.size());
- 
--#endif
- 		}
- 
- 	private Q_SLOTS:
-diff --git a/test/qt/card/asn1/test_SignatureChecker.cpp b/test/qt/card/asn1/test_SignatureChecker.cpp
-index 23db7d23..4d2617cc 100644
---- a/test/qt/card/asn1/test_SignatureChecker.cpp
-+++ b/test/qt/card/asn1/test_SignatureChecker.cpp
-@@ -117,11 +117,7 @@ class test_SignatureChecker
- 			QTest::ignoreMessage(QtCriticalMsg, "Cannot init verify ctx");
- 			QSharedPointer<EVP_PKEY> key(EVP_PKEY_new(), [](EVP_PKEY* pKey){EVP_PKEY_free(pKey);});
- 			SignatureChecker::checkSignature(key, QByteArray(), QByteArray(), QCryptographicHash::Algorithm::Sha256);
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 			QCOMPARE(getOpenSslError(), QByteArray("error:0609D09C:digital envelope routines:int_ctx_new:unsupported algorithm | error:0608F096:digital envelope routines:EVP_PKEY_verify_init:operation not supported for this keytype"));
--#else
--			QVERIFY(getOpenSslError().startsWith(QByteArray("error:0308010C:digital envelope routines::unsupported | error:03")));
--#endif
- 		}
- 
- 
-diff --git a/test/qt/card/pace/test_EcUtil.cpp b/test/qt/card/pace/test_EcUtil.cpp
-index ad0b8455..0620566e 100644
---- a/test/qt/card/pace/test_EcUtil.cpp
-+++ b/test/qt/card/pace/test_EcUtil.cpp
-@@ -72,17 +72,13 @@ class test_EcUtil
- 
- 		void createAndFreeEmptyKey()
- 		{
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 			EcUtil::create(static_cast<EC_KEY*>(nullptr));
--#endif
- 		}
- 
- 
- 		void createAndFreeKey()
- 		{
--#if OPENSSL_VERSION_NUMBER < 0x30000000L
- 			EcUtil::create(EC_KEY_new());
--#endif
- 		}
- 
- 
 -- 
-2.48.1
+2.51.0
 

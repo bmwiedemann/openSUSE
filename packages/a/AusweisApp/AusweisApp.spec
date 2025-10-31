@@ -17,7 +17,7 @@
 
 
 Name:           AusweisApp
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        Official authentication app for German ID cards and residence permits
 License:        EUPL-1.2
@@ -41,9 +41,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  qt6-concurrent-devel
 BuildRequires:  qt6-core-devel
 BuildRequires:  qt6-core-private-devel
+BuildRequires:  qt6-declarative-devel
 BuildRequires:  qt6-linguist-devel
 BuildRequires:  qt6-network-devel
 BuildRequires:  qt6-qml-devel
+BuildRequires:  qt6-qmlcore-private-devel
 BuildRequires:  qt6-qmlworkerscript-devel
 BuildRequires:  qt6-quick-devel
 BuildRequires:  qt6-quickcontrols2-devel

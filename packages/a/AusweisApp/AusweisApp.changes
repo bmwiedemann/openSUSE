@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 30 20:28:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.4.0
+    - Accessibility support has been completed.
+    - Visual adjustments and optimization of the graphical interface.
+    - Connecting to a smartphone as card reader is now faster.
+    - Update of Qt to version 6.9.2.
+    - Update of OpenSSL to version 3.5.4.
+    - Update of Android NDK to r28c (28.2.13676358).
+    - Fixed a crash when using the SDK on Android on x86_64.
+- Add qt6-declarative-devel to BuildRequires
+- Add qt6-qmlcore-private-devel to BuildRequires
+- Cherry-pick updated 0001-use-legacy-openssl-api.patch from Fedora
+
+-------------------------------------------------------------------
 Thu Jun 26 19:26:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
