@@ -279,4 +279,22 @@
     with Debain + clang + lld.</comment>
     <requestid>1277323</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3fadde582dce7000f8316fef87c69049</srcmd5>
+    <version>1.3.0</version>
+    <time>1761924468</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.3.0:
+  Features:
+  * defrag.exfat: add a tool to defragment an exFAT filesystem or assess
+    its fragmentation status.  See a man page.
+  Changes:
+  * mkfs.exfat: minimize zero-out initialization work in quick format mode
+    to reduce I/O time.  * fsck.exfat: set the entry after an unused entry as unused.
+  Bug fixes:
+  * mkfs.exfat: fix incorrect FAT byte length calculation.
+  * mkfs.exfat: avoid setting physical sector size into sector_size field.
+  * fsck.exfat: fix a memory leaks in an error path.</comment>
+    <requestid>1314506</requestid>
+  </revision>
 </revisionlist>
