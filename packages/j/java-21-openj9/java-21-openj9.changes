@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 31 08:05:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 21.0.9 with OpenJ9 0.56.0 virtual machine
+- Including Oracle October 2025 CPU changes
+  * CVE-2025-53057 (bsc#1252414), CVE-2025-53066 (bsc#1252417),
+    CVE-2025-61748 (bsc#1252418)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.56/
+- Removed patches:
+  * omr-libdwarf-2.patch
+  * bootcycle.patch
+    + fixed in this version
+
+-------------------------------------------------------------------
 Wed Sep 24 07:27:32 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
@@ -10,6 +24,7 @@ Wed Sep 24 07:27:32 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 Sat Jul 26 20:58:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 21.0.8 with OpenJ9 0.53.0 virtual machine
+- Including Oracle July 2025 CPU changes
   * CVE-2025-30749 (bsc#1246595), CVE-2025-30754 (bsc#1246598),
     CVE-2025-50059 (bsc#1246575), CVE-2025-50106 (bsc#1246584)
   * OpenJ9 changes, see
