@@ -1,0 +1,62 @@
+From b7fb2194b96604898ff1ddd8dd1a394aa71532a9 Mon Sep 17 00:00:00 2001
+From: Patrick Steinhardt <ps@pks.im>
+Date: Thu, 23 Oct 2025 09:14:59 +0200
+Subject: [PATCH] t7528: work around ETOOMANY in OpenSSH 10.1 and newer
+
+In t7528 we spawn an SSH agent to verify that we can sign a commit via
+it. This test has started to fail on some machines:
+
+    +++ ssh-agent
+    unix_listener_tmp: path "/home/pks/Development/git/build/test-output/trash directory.t7528-signed-commit-ssh/.ssh/agent/s.UTulegefEg.agent.UrPHumMXPq" too long for Unix domain socket
+    main: Couldn't prepare agent socket
+
+As it turns out this is caused by a change in OpenSSH 10.1 [1]:
+
+ * ssh-agent(1), sshd(8): move agent listener sockets from /tmp to
+   under ~/.ssh/agent for both ssh-agent(1) and forwarded sockets
+   in sshd(8).
+
+Instead of creating the socket in "/tmp", OpenSSH now creates the socket
+in our home directory. And as the home directory gets modified to be
+located in our test output directory we end up with paths that are
+somewhat long. But Linux has a rather short limit of 108 characters for
+socket paths, and other systems have even lower limits, so it is very
+easy now to exceed the limit and run into the above error.
+
+Work around the issue by using `ssh-agent -T`, which instructs it to
+use the old behaviour and create the socket in "/tmp" again. This switch
+has only been introduced with 10.1 though, so for older versions we have
+to fall back to not using it. That's fine though, as older versions know
+to put the socket into "/tmp" already.
+
+An alternative approach would be to abbreviate the socket name itself so
+that we create it as e.g. "sshsock" in the trash directory. But taking
+the above example we'd still end up with a path that is 91 characters
+long. So we wouldn't really have a lot of headroom, and it is quite
+likely that some developers would see the issue on their machines.
+
+[1]: https://www.openssh.com/txt/release-10.1
+
+Reported-by: Xi Ruoyao <xry111@xry111.site>
+Suggested-by: brian m. carlson <sandals@crustytoothpaste.net>
+Helped-by: Jeff King <peff@peff.net>
+Helped-by: Lauri Tirkkonen <lauri@hacktheplanet.fi>
+Signed-off-by: Patrick Steinhardt <ps@pks.im>
+Signed-off-by: Junio C Hamano <gitster@pobox.com>
+---
+ t/t7528-signed-commit-ssh.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/t7528-signed-commit-ssh.sh b/t/t7528-signed-commit-ssh.sh
+index 0f887a3ebee19b..b50306b9b3952d 100755
+--- a/t/t7528-signed-commit-ssh.sh
++++ b/t/t7528-signed-commit-ssh.sh
+@@ -82,7 +82,7 @@ test_expect_success GPGSSH 'create signed commits' '
+ test_expect_success GPGSSH 'sign commits using literal public keys with ssh-agent' '
+ 	test_when_finished "test_unconfig commit.gpgsign" &&
+ 	test_config gpg.format ssh &&
+-	eval $(ssh-agent) &&
++	eval $(ssh-agent -T || ssh-agent) &&
+ 	test_when_finished "kill ${SSH_AGENT_PID}" &&
+ 	test_when_finished "test_unconfig user.signingkey" &&
+ 	mkdir tmpdir &&

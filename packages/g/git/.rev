@@ -2988,4 +2988,12 @@ git 2.48.0</comment>
       backend to another had a handful of bugs squashed.</comment>
     <requestid>1311738</requestid>
   </revision>
+  <revision rev="330" vrev="2">
+    <srcmd5>06e8e3939d1468161639615fbb79ca80</srcmd5>
+    <version>2.51.1</version>
+    <time>1762036460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1314907</requestid>
+  </revision>
 </revisionlist>

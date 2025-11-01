@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 31 13:06:34 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a test that fails with
+  openssh 10.1:
+  * 0001-t7528-work-around-ETOOMANY-in-OpenSSH-10.1-and-newer.patch
+
+-------------------------------------------------------------------
 Thu Oct 16 14:08:59 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 2.51.1:
