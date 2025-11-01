@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 27 09:56:09 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
+
+- update to snapshot t20251026:
+  * configure updates
+
+-------------------------------------------------------------------
 Thu Jul 24 08:28:01 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
 
-- add "Recommends: rcs" to spec file 
+- add "Recommends: rcs" to spec file
 
 -------------------------------------------------------------------
 Tue Jan  7 23:05:34 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
@@ -16,19 +22,19 @@ Tue Jan  7 23:05:34 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
 Wed Apr 24 14:08:01 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - update to snapshot t20240419:
-  * configure updates 
+  * configure updates
 
 -------------------------------------------------------------------
 Tue Aug  8 14:03:31 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
 
 - update to snapshot t20230130:
-  * configure updates 
+  * configure updates
 
 -------------------------------------------------------------------
 Mon Oct  3 08:53:39 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
 
 - update to snapshot t20221002:
-  * configure updates 
+  * configure updates
 
 -------------------------------------------------------------------
 Mon May  3 10:04:19 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
@@ -38,4 +44,4 @@ Mon May  3 10:04:19 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
 -------------------------------------------------------------------
 Tue Jun  9 15:40:01 UTC 2020 - Manfred Schwarb <manfred99@gmx.ch>
 
-- initial OBS packaging 
+- initial OBS packaging
