@@ -1,7 +1,7 @@
 #
 # spec file for package sdl12_compat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 Name:           sdl12_compat
 %define lname libSDL-1_2-0
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
-Version:        1.2.68
+Version:        1.2.70
 Release:        0
 Summary:        SDL-1.2 Compatibility Layer for Simple DirectMedia Layer 2.0
 License:        MIT
 Group:          Development/Libraries/X11
 URL:            https://github.com/libsdl-org/sdl12-compat
-Source:         https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-%version.tar.gz
+Source:         https://github.com/libsdl-org/sdl12-compat/releases/download/release-%version/sdl12-compat-%version.tar.gz
+Source2:        https://github.com/libsdl-org/sdl12-compat/releases/download/release-%version/sdl12-compat-%version.tar.gz.sig
+Source7:        %name.keyring
 Source8:        baselibs.conf
 Source9:        %name-rpmlintrc
 BuildRequires:  cmake
@@ -45,7 +47,7 @@ against SDL 1.2, but it uses SDL 2.0 behind the scenes.
 %package -n %lname
 Summary:        SDL Graphics Routines for Primitives and Other Support Functions
 Group:          System/Libraries
-%requires_eq    %(rpm --qf "%%{name}" -qf $(readlink -f %{_libdir}/libSDL2.so))
+%requires_eq libSDL2-2_0-0
 
 %description -n %lname
 This is the "Simple DirectMedia Layer" library built from sdl12_compat.
@@ -69,7 +71,7 @@ This package contains files needed for development with the SDL
 library.
 
 %prep
-%autosetup -p1 -n sdl12-compat-release-%version
+%autosetup -p1 -n sdl12-compat-%version
 
 %build
 %cmake
@@ -78,11 +80,13 @@ library.
 %install
 %cmake_install
 b="%buildroot"
+%if 0%{?suse_version} < 1600
+# pkgconfig 0.x does not know "Provides" lines; work around it.
 ln -s sdl12_compat.pc "$b/%_libdir/pkgconfig/sdl.pc"
+%endif
 rm -v "$b/%_libdir"/*.a
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license LICENSE.txt

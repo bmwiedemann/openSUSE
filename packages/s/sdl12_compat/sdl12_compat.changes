@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 31 09:52:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.70
+  * Fixed a black screen in Jamestown and Closure
+  * Fixed being unable to rotate the globe with the mouse in
+    OpenXcom
+  * Fixed runaway framerate in Soldier of Fortune and Unreal
+    Tournament
+  * Fixed audio in the original Cave Story Linux port
+  * Fixed crash at shutdown in Sim City 3000
+  * Added SDL_SetRefreshRate() for StepMania
+  * Fixed window briefly disappearing at startup on X11
+  * Fixed the mouse escaping the window after changing video mode
+  * Fixed repeating modifier keys while they are being held down
+  * Added logging when games are launched with DEBUG_INVOCATION=1
+
+-------------------------------------------------------------------
+Sun Mar 30 02:13:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Document workaround for Leap 15's not-so-capable pkg-config.
+
+-------------------------------------------------------------------
 Thu Mar 13 08:18:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Require x11/xproto (optional components) for building

@@ -68,4 +68,12 @@
   sdl12-compat itself</comment>
     <requestid>1252665</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e9a2a81371dffe0bf6bdba4e3d3c2145</srcmd5>
+    <version>1.2.70</version>
+    <time>1762036476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.70</comment>
+    <requestid>1314689</requestid>
+  </revision>
 </revisionlist>

@@ -1,11 +1,1 @@
-# lto go home you're drunk
-addFilter("lto-no-text-in-archive")
-
-# another false positive
-# [   40s] sdl12_compat-devel.x86_64: E: no-library-dependency-for /usr/lib64/libSDL-1.2.so
-# [   40s] The package misses dependency on a library package that provides the shared
-# [   40s] library.
-addFilter("no-library-dependency-for")
-
-# only triggers on 15.3, hmm
-addFilter("shlib-policy-name-error")
+addFilter("shlib-fixed-dependency")
