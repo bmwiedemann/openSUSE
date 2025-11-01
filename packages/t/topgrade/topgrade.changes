@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Sat Nov 01 14:45:33 UTC 2025 - gerald_chen@foxmail.com
+
+- Update to version 16.1.1:
+  * chore: release v16.1.1 (#1392)
+  * fix(typst): Skip typst when self-update is disabled (#1397)
+  * fix(release): Fix winget release workflow (#1395)
+  * chore: Update from deprecated macos-13 to macos-15-intel (#1394)
+  * fix(release): Fix FreeBSD release (#1393)
+  * fix(release): Fix FreeBSD release (#1391)
+
+-------------------------------------------------------------------
+Sat Nov 01 09:56:40 UTC 2025 - gerald_chen@foxmail.com
+
+- Update cargo_vendor service config
+  * Not update dependencies to avoid rust edition conflict
+  * Unset compression as zst is already default
+  * change srcdir to src
+- Update to version 16.1.0:
+  * chore: release v16.1.0 (#1389)
+  * chore(release): switch to release-plz (#1333)
+  * chore(pre-commit): Make pre-commit.ci use conventional commits (#1388)
+  * feat(deb-get): Skip non-deb-get packages by passing --dg-only (#1386)
+  * chore(pre-commit): pre-commit autoupdate (#1383)
+  * chore(deps): bump actions/upload-artifact from 4.6.2 to 5.0.0 (#1382)
+  * chore(deps): bump github/codeql-action from 4.30.9 to 4.31.0 (#1379)
+  * chore(deps): bump actions/download-artifact from 5.0.0 to 6.0.0 (#1380)
+  * chore(deps): bump taiki-e/install-action from 2.62.33 to 2.62.38 (#1381)
+  * chore(pre-commit): Fix pre-commit-config.yaml (#1378)
+  * fix(freshclam): run with sudo when running without sudo fails (#1118)
+  * feat(typst): add typst step (#1374)
+  * chore(release): Add .deb auto completion script (#1353)
+  * fix(tldr): move tldr to be a generic step (#1370)
+  * chore(deps): bump github/codeql-action from 4.30.8 to 4.30.9 (#1369)
+  * chore(deps): bump taiki-e/install-action from 2.62.28 to 2.62.33 (#1368)
+  * feat(step): Add atuin step (#1367)
+  * feat(nix): support upgrading Determinate Nix (#1366)
+  * chore(deps): bump actions/dependency-review-action from 4.8.0 to 4.8.1 (#1362)
+  * chore(deps): bump softprops/action-gh-release from 2.3.4 to 2.4.1 (#1364)
+  * chore(deps): bump taiki-e/install-action from 2.62.21 to 2.62.28 (#1363)
+  * chore(deps): bump github/codeql-action from 3.30.6 to 4.30.8 (#1365)
+  * fix(nix): fix nix upgrade command selection for profiles in XDG_STATE_HOME (#1354)
+  * fix(containers):  Docker update fails on M Macs due to platform / (#1360)
+  * chore(deps): bump github/codeql-action from 3.30.5 to 3.30.6 (#1355)
+  * chore(deps): bump softprops/action-gh-release from 2.3.3 to 2.3.4 (#1356)
+  * chore(deps): bump taiki-e/install-action from 2.62.13 to 2.62.21 (#1357)
+  * chore(deps): bump ossf/scorecard-action from 2.4.2 to 2.4.3 (#1358)
+  * chore(deps): bump actions/dependency-review-action from 4.7.3 to 4.8.0 (#1350)
+  * chore(deps): bump github/codeql-action from 3.30.3 to 3.30.5 (#1349)
+  * chore(deps): bump taiki-e/install-action from 2.62.1 to 2.62.13 (#1351)
+  * chore(deps): bump actions/cache from 4.2.4 to 4.3.0 (#1352)
+  * Fix WSL distribution name cleanup (#1348)
+  * chore(pyproject): mark version as dynamic (#1347)
+  * feat(sudo): print warning if Windows Sudo is misconfigured
+  * refactor(deps): replace winapi with windows
+  * fix(sudo): reorder require_sudo() after print_separator()
+  * feat(sudo): print warning if steps were skipped due to missing sudo
+  * refactor(sudo): rename interactive to login_shell
+  * fix(sudo): use require_sudo for windows commands
+  * feat(sudo): add SudoKind::Null
+  * feat: detect and warn if running as root
+  * Fix "WSL already reported" panic (#1344)
+  * Move step logic out of Powershell struct (#1345)
+  * chore(deps): bump taiki-e/install-action from 2.61.5 to 2.62.1 (#1335)
+  * chore(deps): bump Swatinem/rust-cache from 2.8.0 to 2.8.1 (#1336)
+  * Fixes for #1188; custom_commands broken  (#1332)
+  * use login shell when executing topgrade (#1327)
+  * feat: add `--no-tmux` flag (#1328)
+  * chore(deps): bump taiki-e/install-action from 2.60.0 to 2.61.5 (#1325)
+  * chore(deps): bump github/codeql-action from 3.30.1 to 3.30.3 (#1324)
+  * chore(pre-commit): add typos with conservative excludes; no content changes (#1317)
+  * feat: add step for mandb - user and system (update man entries) (#1319)
+  * chore: fix simple typos in code and comments (split var, whether, Extensions) (#1318)
+  * feat: support for pkgfile (#1306)
+  * chore(deps): bump github/codeql-action from 3.29.11 to 3.30.1 (#1301)
+  * chore(deps): bump softprops/action-gh-release from 2.3.2 to 2.3.3 (#1302)
+  * chore(deps): bump taiki-e/install-action from 2.58.21 to 2.60.0 (#1303)
+  * chore(deps): bump actions/dependency-review-action from 4.7.2 to 4.7.3 (#1304)
+  * chore(deps): bump actions/attest-build-provenance from 2.4.0 to 3.0.0 (#1305)
+  * Security: update tracing-subscriber to ~0.3.20 (ANSI escape injection fix, GHSA-xwfj-jgwm-7wp5) (#1288)
+  * feat: add "show_skipped" option in config file #1280 (#1286)
+  * chore(deps): bump github/codeql-action from 3.29.8 to 3.29.11 (#1281)
+  * chore(deps): bump actions/dependency-review-action from 4.7.1 to 4.7.2 (#1282)
+  * chore(deps): bump taiki-e/install-action from 2.58.9 to 2.58.21 (#1283)
+  * chore(deps): bump PyO3/maturin-action from 1.49.3 to 1.49.4 (#1285)
+  * chore(deps): bump actions/cache from 4.2.3 to 4.2.4 (#1284)
+  * Support "Insiders" versions of VSCode and VSCodium (#1279)
+  * Sudo preserve env list argument is `--preserve-env` (#1276)
+  * Clippy fixes from rust 1.91 nightly (#1267)
+  * chore(deps): bump actions/checkout from 4.2.2 to 5.0.0 (#1264)
+  * chore(deps): bump actions/download-artifact from 4.3.0 to 5.0.0 (#1263)
+  * chore(deps): bump taiki-e/install-action from 2.58.0 to 2.58.9 (#1261)
+  * chore(deps): bump ossf/scorecard-action from 2.4.0 to 2.4.2 (#1262)
+  * chore(deps): bump github/codeql-action from 3.29.5 to 3.29.8 (#1265)
+  * feat: fix typos (#1221)
+  * chore(ci): Dependabot, workflow security (#1257)
+  * refactor: replace once_cell crate with std equivalent (#1260)
+  * chore(deps): bump tokio from 1.38 to 1.47 (#1256)
+  * i18n(app.yml): fix fr language #1248
+  * refactor(sudo): add SudoKind::WinSudo
+  * refactor(sudo): add SudoExecuteOpts builder functions and preserve_env enum
+  * fix(sudo): prevent sudo_command = "sudo" finding gsudo
+  * refactor(yarn): remove unnecessary Yarn::yarn field
+  * refactor(apt): extract detect_apt() function
+  * refactor: route sudo usage through Sudo::execute*
+  * fix(sudo): set sudo flags depending on kind
+  * refactor: move RunType::execute to ExecutionContext
+  * fix: skip gcloud update step if component manager is disabled (#1237)
+  * fix(i18n): use double-quotes for translations with newlines
+  * refactor(powershell): store powershell path directly
+  * fix(powershell): run microsoft_store command directly
+  * fix(powershell): remove mentions of USOClient
+  * fix(powershell): execution policy check breaks when run in pwsh
+  * fix(powershell): don't use sudo with Update-Module for pwsh
+  * refactor(powershell): cleanup and simplify code
+  * fix(powershell): add -Command to module update cmdline
+  * Move step running into enum for dynamic ordering (#1188)
+  * feat(conda): allow configuring additional envs to update (#1048)
+  * feat(step): nix-helper (#1045)
+  * feat(winget): winget uses sudo when `[windows] winget_use_sudo = true` (#1061)
+  * fix(tmux): support all default `tpm` locations (xdg and both hardcoded locations) (#1146)
+  * Generate artifact attestations for release assets (#1216)
+  * windows update, use explicit reboot policy (#1143)
+  * fixed the German translation for "y/n/s/q" (#1220)
+  * feat: suppress pixi release notes by default (#1225)
+  * docs: add Discord invite link to README (#1203)
+  * Catch secondary uv self-update error (#1201)
+  * Handle another format change in asdf version (#1194)
+  * Preserve custom commmand order from config instead of sorting alphabetically (#1182)
+  * Add support for multiple binary names and idea having multiple binaries (#1167)
+  * ci: fix the invalid action version (#1185)
+  * ci: allow us to re-run AUR CI (#1184)
+  * Update Yazi upgrade step to use ya pkg. (#1163)
+  * ci: use the new tag name and specify shell to bash (#1183)
+  * ci: allow specifying tag when manually run 'create_release_assets.yml' (#1180)
+  * ci: fix homebrew ci, remove duplicate trigger event (#1179)
+  * ci: fix PyPI pipeline duplicate wheel name (#1178)
+  * ci: add event workflow_dispatch to release pipelines (#1177)
+  * ci: fix pipeline relase to PyPI (#1176)
+  * Install rustfmt and clippy where necessary (#1171)
+
+-------------------------------------------------------------------
 Fri Jun 13 11:41:19 UTC 2025 - gerald_chen@foxmail.com
 
 - Update to version 16.0.4:
@@ -390,4 +531,3 @@ Fri May  5 19:48:47 UTC 2023 - Nicolas FORMICHELLA <stigpro@outlook.fr>
   * Assume Fedora Silverblue based on os-release and not on existence of rpm-ostree
   * Replace directories with home & etcetera
   * dependency update
-
