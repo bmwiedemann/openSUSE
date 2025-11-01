@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 27 18:49:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.8.1
+  * Show error when function or variable disabled by
+    "--disable-insecure" is used
+  * New completion method with matches selectable from numbered
+    list.
+  * Configurable completion.
+  * Improve interpretation of function expressions with x, y, or z
+    in object names (e.g. "x year"), or within quotation marks.
+  * Fix compilation with -fsanitize=undefined.
+  * Fix make check with --disable-insecure.
+  * Fix crash after factorization or in RPN mode, with
+    calculate-as-you-type enabled.
+  * Fix unable to write preferences because of missing
+    configuration directory.
+  * Fixes for character encodings other than UTF-8.
+  * Minor bug fixes and feature enhancements.
+
+-------------------------------------------------------------------
 Mon Oct 13 15:47:49 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.8.0
