@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 28 07:03:42 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.46:
+  * ScriptEditor: made Run selection work again on Windows and
+    Linux (bug since 6.4.44).
+- Changes from version 6.4.45:
+  * Made Picture window 60×60 inches (instead of 12×12).
+  * Repaired an old bug that could crash Praat when viewing a
+    Table with 0 rows.
+- Changes from version 6.4.44:
+  * No Linux related changes.
+
+-------------------------------------------------------------------
 Sun Sep 21 20:26:24 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.43:
