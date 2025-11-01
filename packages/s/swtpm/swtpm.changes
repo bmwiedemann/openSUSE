@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 31 09:19:12 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Also load swtpm_libvirt in the selinux subpackage (bsc#1251789)
+
+-------------------------------------------------------------------
 Mon Jun 16 08:49:29 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.10.1:

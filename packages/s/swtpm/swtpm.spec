@@ -1,7 +1,7 @@
 #
 # spec file for package swtpm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@
 %define modulename1 swtpm
 %define modulename2 swtpm_svirt
 %define modulename3 swtpmcuse
+%define modulename4 swtpm_libvirt
 Name:           swtpm
 Version:        0.10.1
 Release:        0
@@ -147,12 +148,14 @@ sed -i "s@\(-L\./\.libs\)@\1 -Wl,--no-as-needed@" src/Makefile
 %selinux_modules_install -s %{selinuxtype} -p 200 %{_datadir}/selinux/packages/targeted/%{modulename1}.pp
 %selinux_modules_install -s %{selinuxtype} -p 200 %{_datadir}/selinux/packages/targeted/%{modulename2}.pp
 %selinux_modules_install -s %{selinuxtype} -p 200 %{_datadir}/selinux/packages/targeted/%{modulename3}.pp
+%selinux_modules_install -s %{selinuxtype} -p 200 %{_datadir}/selinux/packages/targeted/%{modulename4}.pp
 
 %postun selinux
 if [ $1 -eq 0 ]; then
     %selinux_modules_uninstall -s %{selinuxtype} -p 200 %{modulename1}
     %selinux_modules_uninstall -s %{selinuxtype} -p 200 %{modulename2}
     %selinux_modules_uninstall -s %{selinuxtype} -p 200 %{modulename3}
+    %selinux_modules_uninstall -s %{selinuxtype} -p 200 %{modulename4}
 fi
 
 %posttrans selinux
@@ -182,6 +185,7 @@ fi
 %ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename1}
 %ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename2}
 %ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename3}
+%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename4}
 %endif
 
 %changelog
