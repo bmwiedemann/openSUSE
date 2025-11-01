@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 30 02:34:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- enforce recent enough yaml-cpp
+
+-------------------------------------------------------------------
 Fri Oct  3 14:22:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - force new OpenImageIO

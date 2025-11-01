@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pystring-devel >= 1.1.3
 BuildRequires:  python3-devel
 BuildRequires:  python3-pybind11-devel
-BuildRequires:  yaml-cpp-devel >= 0.6.3
+BuildRequires:  yaml-cpp-devel >= 0.8.0
 BuildRequires:  pkgconfig(Imath) >= 3.1.1
 BuildRequires:  pkgconfig(minizip-ng) >= 4.0.4
 Recommends:     %{pkg_name}-doc = %{version}
