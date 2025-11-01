@@ -419,4 +419,12 @@
 - Drop -Duse_libadwaita=true meson option: no longer needed (forwarded request 1305282 from iznogood)</comment>
     <requestid>1305518</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>65fff92f68cbc54a592207c6b54e255d</srcmd5>
+    <version>4.4.2</version>
+    <time>1762036527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1315007</requestid>
+  </revision>
 </revisionlist>
