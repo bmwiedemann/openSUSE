@@ -20,16 +20,16 @@ Index: openssh-8.8p1/Makefile.in
  
 +TARGETS += cavstest-ctr$(EXEEXT)
 +
- XMSS_OBJS=\
- 	ssh-xmss.o \
- 	sshkey-xmss.o \
+ LIBOPENSSH_OBJS=\
+ 	ssh_api.o \
+ 	ssherr.o \
 @@ -245,6 +248,10 @@ sftp-server$(EXEEXT): $(LIBCOMPAT) libss
  sftp$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTP_OBJS)
  	$(LD) -o $@ $(SFTP_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(LIBEDIT)
  
 +# FIPS tests
-+cavstest-ctr$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o cavstest-ctr.o
-+	$(LD) -o $@ cavstest-ctr.o ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2) -lz
++cavstest-ctr$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o cavstest-ctr.o $(P11OBJS)
++	$(LD) -o $@ cavstest-ctr.o ssh-sk.o sk-usbhid.o $(P11OBJS) $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2) -lz
 +
  # test driver for the loginrec code - not built by default
  logintest: logintest.o $(LIBCOMPAT) libssh.a loginrec.o

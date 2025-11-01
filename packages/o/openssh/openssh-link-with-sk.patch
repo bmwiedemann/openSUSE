@@ -8,8 +8,8 @@ Index: openssh-8.8p1/Makefile.in
  
 -sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTPSERVER_OBJS)
 -	$(LD) -o $@ $(SFTPSERVER_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS)
-+sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o $(SFTPSERVER_OBJS)
-+	$(LD) -o $@ $(SFTPSERVER_OBJS) ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2)
++sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o $(P11OBJS) $(SFTPSERVER_OBJS)
++	$(LD) -o $@ $(SFTPSERVER_OBJS) ssh-sk.o sk-usbhid.o $(P11OBJS) $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2)
  
  sftp$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTP_OBJS)
  	$(LD) -o $@ $(SFTP_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(LIBEDIT)

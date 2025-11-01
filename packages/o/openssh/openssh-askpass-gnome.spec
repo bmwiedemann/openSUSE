@@ -18,8 +18,8 @@
 
 %define _name openssh
 Name:           openssh-askpass-gnome
-Version:        10.0p2
-%define wrongly_named_version 10.0p1
+Version:        10.2p1
+%define wrongly_named_version 10.2p1
 Release:        0
 Summary:        A GNOME-Based Passphrase Dialog for OpenSSH
 License:        BSD-2-Clause
@@ -28,9 +28,9 @@ URL:            https://www.openssh.com/
 Source0:        https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{wrongly_named_version}.tar.gz
 Source1:        https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{wrongly_named_version}.tar.gz.asc
 Requires:       %{_name}-clients = %{version}
-Supplements:    packageand(openssh-clients:libgtk-3-0)
+Supplements:    packageand(openssh-clients:gcr)
 %if 0%{?suse_version} >= 1550
-BuildRequires:  gtk3-devel
+BuildRequires:  pkgconfig(gcr-4)
 %else
 BuildRequires:  gtk2-devel
 %endif
@@ -47,7 +47,7 @@ GNOME-based passphrase dialog for OpenSSH.
 cd contrib
 export CFLAGS="%{optflags}"
 %if 0%{?suse_version} >= 1550
-%make_build gnome-ssh-askpass3
+%make_build gnome-ssh-askpass4
 %else
 %make_build gnome-ssh-askpass2
 %endif
@@ -55,7 +55,7 @@ export CFLAGS="%{optflags}"
 %install
 install -d -m 755 %{buildroot}%{_libexecdir}/ssh/
 %if 0%{?suse_version} >= 1550
-install contrib/gnome-ssh-askpass3 %{buildroot}%{_libexecdir}/ssh/gnome-ssh-askpass
+install contrib/gnome-ssh-askpass4 %{buildroot}%{_libexecdir}/ssh/gnome-ssh-askpass
 %else
 install contrib/gnome-ssh-askpass2 %{buildroot}%{_libexecdir}/ssh/gnome-ssh-askpass
 %endif

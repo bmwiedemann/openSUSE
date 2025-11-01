@@ -21,14 +21,14 @@ Index: openssh-8.8p1/Makefile.in
 -TARGETS += cavstest-ctr$(EXEEXT)
 +TARGETS += cavstest-ctr$(EXEEXT) cavstest-kdf$(EXEEXT)
  
- XMSS_OBJS=\
- 	ssh-xmss.o \
+ LIBOPENSSH_OBJS=\
+ 	ssh_api.o \
 @@ -252,6 +253,9 @@ sftp$(EXEEXT): $(LIBCOMPAT) libssh.a $(S
- cavstest-ctr$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o cavstest-ctr.o
- 	$(LD) -o $@ cavstest-ctr.o ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2) -lz
+ cavstest-ctr$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o cavstest-ctr.o $(P11OBJS)
+ 	$(LD) -o $@ cavstest-ctr.o ssh-sk.o sk-usbhid.o $(P11OBJS) $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2) -lz
  
-+cavstest-kdf$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o cavstest-kdf.o
-+	$(LD) -o $@ cavstest-kdf.o ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2) -lz
++cavstest-kdf$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o cavstest-kdf.o $(P11OBJS)
++	$(LD) -o $@ cavstest-kdf.o ssh-sk.o sk-usbhid.o $(P11OBJS) $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2) -lz
 +
  # test driver for the loginrec code - not built by default
  logintest: logintest.o $(LIBCOMPAT) libssh.a loginrec.o

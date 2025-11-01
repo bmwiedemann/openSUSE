@@ -108,7 +108,7 @@ Index: openssh-10.0p1/loginrec.c
  	    !sys_auth_record_login(li->username,li->hostname,li->line,
 @@ -1459,6 +1469,100 @@ wtmpdb_write_entry(struct logininfo *li)
  	default:
- 		logit("%s: invalid type field", __func__);
+ 		logit_f("invalid type field");
  		return (0);
 +	}
 +}

@@ -8,7 +8,7 @@ index e7549470..b68c1710 100644
  	kexsntrup761x25519.o kexmlkem768x25519.o sntrup761.o kexgen.o \
 +	kexgssc.o \
  	sftp-realpath.o platform-pledge.o platform-tracing.o platform-misc.o \
- 	sshbuf-io.o
+ 	sshbuf-io.o misc-agent.o
  
 @@ -125,7 +126,7 @@ SSHDOBJS=sshd.o auth-rhosts.o auth-passwd.o \
  	auth2-chall.o groupaccess.o \
@@ -32,8 +32,8 @@ index e7549470..b68c1710 100644
  	    ln -s `cd $(srcdir) && pwd`/regress/Makefile `pwd`/regress/Makefile
  
  REGRESSLIBS=libssh.a $(LIBCOMPAT)
--TESTLIBS=$(LIBS) $(CHANNELLIBS)
-+TESTLIBS=$(LIBS) $(CHANNELLIBS) $(GSSLIBS)
+-TESTLIBS=$(LIBS) $(CHANNELLIBS) @TESTLIBS@
++TESTLIBS=$(LIBS) $(CHANNELLIBS) @TESTLIBS@ $(GSSLIBS)
  
  regress/modpipe$(EXEEXT): $(srcdir)/regress/modpipe.c $(REGRESSLIBS)
  	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $(srcdir)/regress/modpipe.c \
@@ -855,7 +855,7 @@ index ab3a15f0..6ce56e92 100644
 --- a/gss-serv.c
 +++ b/gss-serv.c
 @@ -1,7 +1,7 @@
- /* $OpenBSD: gss-serv.c,v 1.32 2020/03/13 03:17:07 djm Exp $ */
+ /* $OpenBSD: gss-serv.c,v 1.33 2025/09/29 21:30:15 dtucker Exp $ */
  
  /*
 - * Copyright (c) 2001-2003 Simon Wilkinson. All rights reserved.
@@ -1176,31 +1176,31 @@ index ce85f043..574c7609 100644
  	u_int type;
 @@ -110,6 +113,30 @@ static const struct kexalg kexalgs[] = {
  #endif /* WITH_OPENSSL */
- 	{ NULL, -1, -1, -1},
+ 	{ NULL, -1, -1, -1, 0},
  };
 +static const struct kexalg gss_kexalgs_all[] = {
 +#ifdef GSSAPI
-+	{ KEX_GSS_GEX_SHA1_ID, KEX_GSS_GEX_SHA1, 0, SSH_DIGEST_SHA1 },
-+	{ KEX_GSS_GRP1_SHA1_ID, KEX_GSS_GRP1_SHA1, 0, SSH_DIGEST_SHA1 },
-+	{ KEX_GSS_GRP14_SHA1_ID, KEX_GSS_GRP14_SHA1, 0, SSH_DIGEST_SHA1 },
-+	{ KEX_GSS_GRP14_SHA256_ID, KEX_GSS_GRP14_SHA256, 0, SSH_DIGEST_SHA256 },
-+	{ KEX_GSS_GRP16_SHA512_ID, KEX_GSS_GRP16_SHA512, 0, SSH_DIGEST_SHA512 },
++	{ KEX_GSS_GEX_SHA1_ID, KEX_GSS_GEX_SHA1, 0, SSH_DIGEST_SHA1, KEX_NOT_PQ },
++	{ KEX_GSS_GRP1_SHA1_ID, KEX_GSS_GRP1_SHA1, 0, SSH_DIGEST_SHA1, KEX_NOT_PQ },
++	{ KEX_GSS_GRP14_SHA1_ID, KEX_GSS_GRP14_SHA1, 0, SSH_DIGEST_SHA1, KEX_NOT_PQ },
++	{ KEX_GSS_GRP14_SHA256_ID, KEX_GSS_GRP14_SHA256, 0, SSH_DIGEST_SHA256, KEX_NOT_PQ },
++	{ KEX_GSS_GRP16_SHA512_ID, KEX_GSS_GRP16_SHA512, 0, SSH_DIGEST_SHA512, KEX_NOT_PQ },
 +	{ KEX_GSS_NISTP256_SHA256_ID, KEX_GSS_NISTP256_SHA256,
-+	    NID_X9_62_prime256v1, SSH_DIGEST_SHA256 },
-+	{ KEX_GSS_C25519_SHA256_ID, KEX_GSS_C25519_SHA256, 0, SSH_DIGEST_SHA256 },
++	    NID_X9_62_prime256v1, SSH_DIGEST_SHA256, KEX_NOT_PQ },
++	{ KEX_GSS_C25519_SHA256_ID, KEX_GSS_C25519_SHA256, 0, SSH_DIGEST_SHA256, KEX_NOT_PQ },
 +#endif
-+	{ NULL, 0, -1, -1},
++	{ NULL, 0, -1, -1, 0},
 +};
 +
 +static const struct kexalg gss_kexalgs_fips140_2[] = {
 +#ifdef GSSAPI
-+	{ KEX_GSS_GRP14_SHA256_ID, KEX_GSS_GRP14_SHA256, 0, SSH_DIGEST_SHA256 },
-+	{ KEX_GSS_GRP16_SHA512_ID, KEX_GSS_GRP16_SHA512, 0, SSH_DIGEST_SHA512 },
++	{ KEX_GSS_GRP14_SHA256_ID, KEX_GSS_GRP14_SHA256, 0, SSH_DIGEST_SHA256, KEX_NOT_PQ },
++	{ KEX_GSS_GRP16_SHA512_ID, KEX_GSS_GRP16_SHA512, 0, SSH_DIGEST_SHA512, KEX_NOT_PQ },
 +	{ KEX_GSS_NISTP256_SHA256_ID, KEX_GSS_NISTP256_SHA256,
-+	    NID_X9_62_prime256v1, SSH_DIGEST_SHA256 },
-+	{ KEX_GSS_C25519_SHA256_ID, KEX_GSS_C25519_SHA256, 0, SSH_DIGEST_SHA256 },
++	    NID_X9_62_prime256v1, SSH_DIGEST_SHA256, KEX_NOT_PQ },
++	{ KEX_GSS_C25519_SHA256_ID, KEX_GSS_C25519_SHA256, 0, SSH_DIGEST_SHA256, KEX_NOT_PQ },
 +#endif
-+	{ NULL, 0, -1, -1},
++	{ NULL, 0, -1, -1, 0},
 +};
  
  /* Returns array of macs available depending on selected FIPS mode */
@@ -1231,15 +1231,15 @@ index ce85f043..574c7609 100644
 +static char *
 +kex_alg_list_internal(char sep, const struct kexalg *algs)
  {
- 	char *ret = NULL, *tmp;
- 	size_t nlen, rlen = 0;
+ 	char *ret = NULL;
  	const struct kexalg *k;
+ 	char sep_str[2] = {sep, '\0'};
  
--	for (k = fips_select_kexalgs(); k->name != NULL; k++) {
-+	for (k = algs; k->name != NULL; k++) {
- 		if (ret != NULL)
- 			ret[rlen++] = sep;
- 		nlen = strlen(k->name);
+-	for (k = fips_select_kexalgs(); k->name != NULL; k++)
++	for (k = algs; k->name != NULL; k++)
+ 		xextendf(&ret, sep_str, "%s", k->name);
+ 
+ 	return ret;
 @@ -138,6 +156,18 @@ kex_alg_list(char sep)
  	return ret;
  }
@@ -1331,7 +1331,7 @@ index a5ae6ac0..fe714141 100644
  	int	(*verify_host_key)(struct sshkey *, struct ssh *);
  	struct sshkey *(*load_host_public_key)(int, int, struct ssh *);
 @@ -174,8 +189,10 @@ struct kex {
- int	 kex_nid_from_name(const char *);
+ int	 kex_is_pq_from_name(const char *);
  int	 kex_names_valid(const char *);
  char	*kex_alg_list(char);
 +char	*kex_gss_alg_list(char);
@@ -3132,12 +3132,11 @@ diff -up a/servconf.c.gsskex b/servconf.c
  	case sPasswordAuthentication:
  		intptr = &options->password_authentication;
  		goto parse_flag;
-@@ -2892,6 +2935,10 @@ dump_config(ServerOptions *o)
- #ifdef GSSAPI
+@@ -2892,6 +2935,9 @@ dump_config(ServerOptions *o)
  	dump_cfg_fmtint(sGssAuthentication, o->gss_authentication);
  	dump_cfg_fmtint(sGssCleanupCreds, o->gss_cleanup_creds);
+ 	dump_cfg_fmtint(sGssStrictAcceptor, o->gss_strict_acceptor);
 +	dump_cfg_fmtint(sGssKeyEx, o->gss_keyex);
-+	dump_cfg_fmtint(sGssStrictAcceptor, o->gss_strict_acceptor);
 +	dump_cfg_fmtint(sGssStoreRekey, o->gss_store_rekey);
 +	dump_cfg_string(sGssKexAlgorithms, o->gss_kex_algorithms);
  #endif
@@ -3840,9 +3839,9 @@ index 57995ee6..fd5b7724 100644
 --- a/sshkey.c
 +++ b/sshkey.c
 @@ -127,6 +127,75 @@ static const struct keytype keytypes[] = {
- extern const struct sshkey_impl sshkey_xmss_impl;
- extern const struct sshkey_impl sshkey_xmss_cert_impl;
- #endif
+ extern const struct sshkey_impl sshkey_rsa_sha512_impl;
+ extern const struct sshkey_impl sshkey_rsa_sha512_cert_impl;
+ #endif /* WITH_OPENSSL */
 +
 +static int ssh_gss_equal(const struct sshkey *, const struct sshkey *)
 +{
@@ -3916,9 +3915,9 @@ index 57995ee6..fd5b7724 100644
  const struct sshkey_impl * const keyimpls[] = {
  	&sshkey_ed25519_impl,
 @@ -154,6 +154,7 @@ static const struct keytype keytypes[] = {
- 	&sshkey_xmss_impl,
- 	&sshkey_xmss_cert_impl,
- #endif
+ 	&sshkey_rsa_sha512_impl,
+ 	&sshkey_rsa_sha512_cert_impl,
+ #endif /* WITH_OPENSSL */
 +	&sshkey_gss_kex_impl,
  	NULL
  };

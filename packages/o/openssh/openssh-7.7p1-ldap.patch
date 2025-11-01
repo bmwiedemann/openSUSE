@@ -143,9 +143,9 @@ Index: openssh-8.9p1/Makefile.in
 +INSTALL_SSH_LDAP_HELPER=@INSTALL_SSH_LDAP_HELPER@
 +TARGETS += ssh-ldap-helper$(EXEEXT)
 +
- XMSS_OBJS=\
- 	ssh-xmss.o \
- 	sshkey-xmss.o \
+ LIBOPENSSH_OBJS=\
+ 	ssh_api.o \
+ 	ssherr.o \
 @@ -162,8 +167,8 @@ SFTPSERVER_OBJS=sftp-common.o sftp-serve
  
  SFTP_OBJS=	sftp.o sftp-usergroup.o progressmeter.o $(SFTP_CLIENT_OBJS)

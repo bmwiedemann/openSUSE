@@ -1,0 +1,24 @@
+From 6fa8934d31cb9925c856f1b992fc5e04dd26da21 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Tue, 17 Oct 2023 04:35:17 +0200
+Subject: [PATCH 3/6] auth-pam: Add debugging information when we receive PAM
+ messages
+
+---
+ auth-pam.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/auth-pam.c b/auth-pam.c
+index 21291631011..7a72e724adc 100644
+--- a/auth-pam.c
++++ b/auth-pam.c
+@@ -450,6 +450,9 @@ sshpam_thread_conv(int n, sshpam_const struct pam_message **msg,
+ 			break;
+ 		case PAM_ERROR_MSG:
+ 		case PAM_TEXT_INFO:
++			debug3("PAM: Got message of type %d: %s",
++			       PAM_MSG_MEMBER(msg, i, msg_style),
++			       PAM_MSG_MEMBER(msg, i, msg));
+ 			if ((r = sshbuf_put_cstring(buffer,
+ 			    PAM_MSG_MEMBER(msg, i, msg))) != 0)
+ 				fatal("%s: buffer error: %s",

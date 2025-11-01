@@ -6,10 +6,10 @@ Index: openssh-8.9p1/Makefile.in
  	kexsntrup761x25519.o kexmlkem768x25519.o sntrup761.o kexgen.o \
  	kexgssc.o \
  	sftp-realpath.o platform-pledge.o platform-tracing.o platform-misc.o \
--	sshbuf-io.o
-+	sshbuf-io.o auditstub.o
+-	sshbuf-io.o misc-agent.o
++	sshbuf-io.o misc-agent.o auditstub.o
  
- SKOBJS=	ssh-sk-client.o
+ P11OBJS= ssh-pkcs11-client.o
  
 Index: openssh-8.9p1/audit-bsm.c
 ===================================================================
@@ -57,7 +57,7 @@ Index: openssh-8.9p1/audit-bsm.c
  audit_event(struct ssh *ssh, ssh_audit_event_t event)
  {
 @@ -452,4 +471,28 @@ audit_event(struct ssh *ssh, ssh_audit_e
- 		debug("%s: unhandled event %d", __func__, event);
+ 		debug_f("unhandled event %d", event);
  	}
  }
 +
@@ -89,7 +89,7 @@ Index: openssh-8.9p1/audit-linux.c
 ===================================================================
 --- openssh-8.9p1.orig/audit-linux.c
 +++ openssh-8.9p1/audit-linux.c
-@@ -33,27 +33,40 @@
+@@ -33,29 +33,42 @@
  
  #include "log.h"
  #include "audit.h"
@@ -130,6 +130,10 @@ Index: openssh-8.9p1/audit-linux.c
 -			return 0; /* Must prevent login */
 +			goto fatal_report; /* Must prevent login */
  	}
+-        if (hostname != NULL && strcmp(hostname, "UNKNOWN") == 0)
+-                hostname = NULL;
++        if (ip != NULL && strcmp(ip, "UNKNOWN") == 0)
++                ip = NULL;
 -	rc = audit_log_acct_message(audit_fd, AUDIT_USER_LOGIN,
 +	rc = audit_log_acct_message(audit_fd, event,
  	    NULL, "login", username ? username : "(unknown)",
@@ -345,7 +349,7 @@ Index: openssh-8.9p1/audit-linux.c
 +			ssh_remote_ipaddr(ssh), "ssh", 0, AUDIT_USER_LOGIN);
  		break;
  	default:
- 		debug("%s: unhandled event %d", __func__, event);
+ 		debug_f("unhandled event %d", event);
  		break;
  	}
  }
@@ -1269,9 +1273,9 @@ Index: openssh-8.9p1/monitor.c
  	int r;
 +	Session *s;
  
- 	debug3("%s entering", __func__);
+ 	debug3_f("entering");
  	if ((r = sshbuf_get_cstring(m, &cmd, NULL)) != 0)
- 		fatal("%s: buffer error: %s", __func__, ssh_err(r));
+ 		fatal_fr(r, "buffer error");
 +
  	/* sanity check command, if so how? */
 -	audit_run_command(cmd);
@@ -1518,10 +1522,10 @@ Index: openssh-8.9p1/monitor_wrap.c
  	int r;
 +	int handle;
  
- 	debug3("%s entering command %s", __func__, command);
+ 	debug3_f("entering command %s", command);
  
 @@ -914,6 +930,30 @@ mm_audit_run_command(const char *command
- 		fatal("%s: buffer error: %s", __func__, ssh_err(r));
+ 		fatal_fr(r, "buffer error");
  
  	mm_request_send(pmonitor->m_recvfd, MONITOR_REQ_AUDIT_COMMAND, m);
 +	mm_request_receive_expect(pmonitor->m_recvfd, MONITOR_ANS_AUDIT_COMMAND, m);
@@ -1691,9 +1695,9 @@ Index: openssh-8.9p1/packet.c
   * Returns the IP-address of the remote host as a string.  The returned
   * string must not be freed.
 @@ -579,22 +587,19 @@ ssh_packet_rdomain_in(struct ssh *ssh)
- {
  	struct session_state *state = ssh->state;
  	u_int mode;
+ 	struct packet *p;
 +	u_int had_keys = packet_state_has_keys(state);
  
  	if (!state->initialized)
@@ -1715,9 +1719,9 @@ Index: openssh-8.9p1/packet.c
 +	state->outgoing_packet = NULL;
  	sshbuf_free(state->incoming_packet);
 +	state->incoming_packet = NULL;
- 	for (mode = 0; mode < MODE_MAX; mode++) {
- 		kex_free_newkeys(state->newkeys[mode]);	/* current keys */
- 		state->newkeys[mode] = NULL;
+ 	while ((p = TAILQ_FIRST(&state->outgoing))) {
+ 		sshbuf_free(p->payload);
+ 		TAILQ_REMOVE(&state->outgoing, p, next);
 @@ -634,8 +639,18 @@ ssh_packet_close_internal(struct ssh *ss
  #endif	/* WITH_ZLIB */
  	cipher_free(state->send_context);
@@ -1832,15 +1836,15 @@ Index: openssh-8.9p1/session.c
 ===================================================================
 --- openssh-8.9p1.orig/session.c
 +++ openssh-8.9p1/session.c
-@@ -135,7 +135,7 @@ extern char *__progname;
- extern int debug_flag;
- extern u_int utmp_len;
- extern int startup_pipe;
--extern void destroy_sensitive_data(void);
-+extern void destroy_sensitive_data(struct ssh *);
- extern struct sshbuf *loginmsg;
- extern struct sshauthopt *auth_opts;
- extern char *tun_fwd_ifnames; /* serverloop.c */
+#@@ -135,7 +135,7 @@ extern char *__progname;
+# extern ServerOptions options;
+# extern char *__progname;
+# extern int debug_flag;
+#-extern void destroy_sensitive_data(void);
+#+extern void destroy_sensitive_data(struct ssh *);
+# extern struct sshbuf *loginmsg;
+# extern struct sshauthopt *auth_opts;
+# extern char *tun_fwd_ifnames; /* serverloop.c */
 @@ -644,6 +644,14 @@ do_exec_pty(struct ssh *ssh, Session *s,
  	/* Parent.  Close the slave side of the pseudo tty. */
  	close(ttyfd);
@@ -1855,7 +1859,7 @@ Index: openssh-8.9p1/session.c
 +
  	/* Enter interactive session. */
  	s->ptymaster = ptymaster;
- 	ssh_packet_set_interactive(ssh, 1,
+ 	session_set_fds(ssh, s, ptyfd, fdout, -1, 1, 1);
 @@ -736,15 +744,19 @@ do_exec(struct ssh *ssh, Session *s, con
  	    s->self);
  
@@ -2266,7 +2270,7 @@ Index: openssh-8.9p1/sshkey.c
  #endif
  
  #include "crypto_api.h"
-@@ -400,6 +403,53 @@ sshkey_type_is_valid_ca(int type)
+@@ -400,6 +403,47 @@ sshkey_type_is_valid_ca(int type)
  }
  
  int
@@ -2300,12 +2304,6 @@ Index: openssh-8.9p1/sshkey.c
 +          }
 +#  endif /* OPENSSL_HAS_ECC */
 +# endif /* OPENSSL < 3.0.0 */
-+      case KEY_DSA_CERT:
-+      case KEY_DSA: {
-+              const BIGNUM *priv_key = NULL;
-+              DSA_get0_key(k->dsa, NULL, &priv_key);
-+              return priv_key != NULL;
-+          }
 +#endif /* WITH_OPENSSL */
 +      case KEY_ED25519_CERT:
 +      case KEY_ED25519:

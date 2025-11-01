@@ -1,0 +1,208 @@
+From 598ee34312b541fa7b3988b4896641bf81996e27 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Tue, 17 Oct 2023 04:27:32 +0200
+Subject: [PATCH 4/6] auth-pam: Immediately report interactive instructions to
+ clients
+
+SSH keyboard-interactive authentication method supports instructions but
+sshd didn't show them until an user prompt was requested.
+
+This is quite inconvenient for various PAM modules that need to notify
+an user without requiring for their explicit input.
+
+So, properly implement RFC4256 making instructions to be shown to users
+when they are requested from PAM.
+
+Closes: https://bugzilla.mindrot.org/show_bug.cgi?id=2876
+---
+ auth-pam.c | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/auth-pam.c b/auth-pam.c
+index 7a72e724adc..b756f0e5221 100644
+--- a/auth-pam.c
++++ b/auth-pam.c
+@@ -140,6 +140,7 @@ typedef int SshPamDone;
+ #define SshPamError -1
+ #define SshPamNone 0
+ #define SshPamAuthenticated 1
++#define SshPamAgain 2
+ 
+ struct pam_ctxt {
+ 	sp_pthread_t	 pam_thread;
+@@ -868,6 +869,8 @@ sshpam_query(void *ctx, char **name, char **info,
+ 	**prompts = NULL;
+ 	plen = 0;
+ 	*echo_on = xmalloc(sizeof(u_int));
++	ctxt->pam_done = SshPamNone;
++
+ 	while (ssh_msg_recv(ctxt->pam_psock, buffer) == 0) {
+ 		if (++nmesg > PAM_MAX_NUM_MSG)
+ 			fatal_f("too many query messages");
+@@ -888,15 +891,13 @@ sshpam_query(void *ctx, char **name, char **info,
+ 			return (0);
+ 		case PAM_ERROR_MSG:
+ 		case PAM_TEXT_INFO:
+-			/* accumulate messages */
+-			len = plen + mlen + 2;
+-			**prompts = xreallocarray(**prompts, 1, len);
+-			strlcpy(**prompts + plen, msg, len - plen);
+-			plen += mlen;
+-			strlcat(**prompts + plen, "\n", len - plen);
+-			plen++;
+-			free(msg);
+-			break;
++			*num = 0;
++			free(*info);
++			*info = msg; /* Steal the message */
++			msg = NULL;
++			ctxt->pam_done = SshPamAgain;
++			sshbuf_free(buffer);
++			return (0);
+ 		case PAM_ACCT_EXPIRED:
+ 		case PAM_MAXTRIES:
+ 			if (type == PAM_ACCT_EXPIRED)
+@@ -1001,6 +1002,8 @@ sshpam_respond(void *ctx, u_int num, char **resp)
+ 		return KbdintResultSuccess;
+ 	case SshPamNone:
+ 		break;
++	case SshPamAgain:
++		return KbdintResultAgain;
+ 	default:
+ 		return KbdintResultFailure;
+ 	}
+
+From cc14301ce0542cdbb825eff8041ce98a1da9ef08 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Tue, 17 Oct 2023 06:12:03 +0200
+Subject: [PATCH 5/6] sshconnect2: Write kbd-interactive service, info and
+ instructions as utf-8
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+As per the previous server change now the keyboard-interactive service
+and instruction values could be reported as soon as they are available
+and so they're not prompts anymore and not parsed like them.
+
+While this was already supported by the SSH client, these messages were
+not properly written as the escaped sequences they contained were not
+correctly reported.
+
+So for example a message containing "\" was represented as "\\" and
+similarly for all the other C escape sequences.
+
+This was leading to more problems when it come to utf-8 chars, as they
+were only represented by their octal representation.
+
+This was easily testable by adding a line like the one below to the
+sshd PAM service:
+  auth    requisite pam_echo.so Hello SSHD! Want some 🍕?
+
+Which was causing this to be written instead:
+  Hello SSHD! Want some \360\237\215\225?
+
+To handle this, instead of simply using fmprintf, we're using the notifier
+in a way can be exposed to users in the proper format and UI.
+---
+ sshconnect2.c | 33 ++++++++++++++++++++++++---------
+ 1 file changed, 24 insertions(+), 9 deletions(-)
+
+diff --git a/sshconnect2.c b/sshconnect2.c
+index 5831a00c6d1..543431218c1 100644
+--- a/sshconnect2.c
++++ b/sshconnect2.c
+@@ -1091,6 +1091,7 @@ input_userauth_passwd_changereq(int type, u_int32_t seqnr, struct ssh *ssh)
+ 	char *info = NULL, *lang = NULL, *password = NULL, *retype = NULL;
+ 	char prompt[256];
+ 	const char *host;
++	size_t info_len;
+ 	int r;
+ 
+ 	debug2("input_userauth_passwd_changereq");
+@@ -1100,11 +1101,15 @@ input_userauth_passwd_changereq(int type, u_int32_t seqnr, struct ssh *ssh)
+ 		    "no authentication context");
+ 	host = options.host_key_alias ? options.host_key_alias : authctxt->host;
+ 
+-	if ((r = sshpkt_get_cstring(ssh, &info, NULL)) != 0 ||
++	if ((r = sshpkt_get_cstring(ssh, &info, &info_len)) != 0 ||
+ 	    (r = sshpkt_get_cstring(ssh, &lang, NULL)) != 0)
+ 		goto out;
+-	if (strlen(info) > 0)
+-		logit("%s", info);
++	if (info_len > 0) {
++		struct notifier_ctx *notifier = NULL;
++		debug_f("input_userauth_passwd_changereq info: %s", info);
++		notifier = notify_start(0, "%s", info);
++		notify_complete(notifier, NULL);
++	}
+ 	if ((r = sshpkt_start(ssh, SSH2_MSG_USERAUTH_REQUEST)) != 0 ||
+ 	    (r = sshpkt_put_cstring(ssh, authctxt->server_user)) != 0 ||
+ 	    (r = sshpkt_put_cstring(ssh, authctxt->service)) != 0 ||
+@@ -1938,8 +1943,10 @@ input_userauth_info_req(int type, u_int32_t seq, struct ssh *ssh)
+ 	Authctxt *authctxt = ssh->authctxt;
+ 	char *name = NULL, *inst = NULL, *lang = NULL, *prompt = NULL;
+ 	char *display_prompt = NULL, *response = NULL;
++	struct notifier_ctx *notifier = NULL;
+ 	u_char echo = 0;
+ 	u_int num_prompts, i;
++	size_t name_len, inst_len;
+ 	int r;
+ 
+ 	debug2_f("entering");
+@@ -1949,14 +1956,22 @@ input_userauth_info_req(int type, u_int32_t seq, struct ssh *ssh)
+ 
+ 	authctxt->info_req_seen = 1;
+ 
+-	if ((r = sshpkt_get_cstring(ssh, &name, NULL)) != 0 ||
+-	    (r = sshpkt_get_cstring(ssh, &inst, NULL)) != 0 ||
++	if ((r = sshpkt_get_cstring(ssh, &name, &name_len)) != 0 ||
++	    (r = sshpkt_get_cstring(ssh, &inst, &inst_len)) != 0 ||
+ 	    (r = sshpkt_get_cstring(ssh, &lang, NULL)) != 0)
+ 		goto out;
+-	if (strlen(name) > 0)
+-		logit("%s", name);
+-	if (strlen(inst) > 0)
+-		logit("%s", inst);
++	if (name_len > 0) {
++		debug_f("kbd int name: %s", name);
++		notifier = notify_start(0, "%s", name);
++		notify_complete(notifier, NULL);
++		notifier = NULL;
++	}
++	if (inst_len > 0) {
++		debug_f("kbd int inst: %s", inst);
++		notifier = notify_start(0, "%s", inst);
++		notify_complete(notifier, NULL);
++		notifier = NULL;
++	}
+ 
+ 	if ((r = sshpkt_get_u32(ssh, &num_prompts)) != 0)
+ 		goto out;
+
+#From 99656caabc5cff24122e5b9a140e5a38ab418a5d Mon Sep 17 00:00:00 2001
+#From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+#Date: Tue, 17 Oct 2023 06:05:59 +0200
+#Subject: [PATCH 6/6] auth2-chall: Fix selection of the keyboard-interactive
+# device
+#
+#We were only checking if the prefix of a device name was matching what
+#we had in the devices list, so if the device list contained "pam", then
+#also the device "pam-foo" was matching.
+#---
+# auth2-chall.c | 2 +-
+# 1 file changed, 1 insertion(+), 1 deletion(-)
+#
+#diff --git a/auth2-chall.c b/auth2-chall.c
+#index 047d4e83c33..db658c9b4a7 100644
+#--- a/auth2-chall.c
+#+++ b/auth2-chall.c
+#@@ -170,7 +170,7 @@ kbdint_next_device(Authctxt *authctxt, KbdintAuthctxt *kbdintctxt)
+# 			    "keyboard-interactive", devices[i]->name))
+# 				continue;
+# 			if (strncmp(kbdintctxt->devices, devices[i]->name,
+#-			    len) == 0) {
+#+			    len) == 0 && strlen(devices[i]->name) == len) {
+# 				kbdintctxt->device = devices[i];
+# 				kbdintctxt->devices_done |= 1 << i;
+# 			}

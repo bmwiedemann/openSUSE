@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 14 07:15:46 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- "Update" to openssh 10.2p1:
+  * No changes for askpass, see main package changelog for
+    details.
+- Build with gcr-4 in Factory and SLE-16/Leap 16 instead of gtk-3
+
+-------------------------------------------------------------------
 Thu Apr 10 08:16:09 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - "Update" to openssh 10.0p2:

@@ -15,4 +15,4 @@ Index: openssh-8.8p1/Makefile.in
 +	-e 's|/etc/shosts.equiv|$(sysconfdir)/ssh/shosts.equiv|g' \
  	-e 's|/etc/ssh/ssh_host_key|$(sysconfdir)/ssh_host_key|g' \
  	-e 's|/etc/ssh/ssh_host_ecdsa_key|$(sysconfdir)/ssh_host_ecdsa_key|g' \
- 	-e 's|/etc/ssh/ssh_host_dsa_key|$(sysconfdir)/ssh_host_dsa_key|g' \
+ 	-e 's|/etc/ssh/ssh_host_rsa_key|$(sysconfdir)/ssh_host_rsa_key|g' \

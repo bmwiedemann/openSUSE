@@ -14,10 +14,10 @@ Index: openssh-8.8p1/readconf.c
  	if (options->visual_host_key == -1)
  		options->visual_host_key = 0;
  	if (options->ip_qos_interactive == -1)
--		options->ip_qos_interactive = IPTOS_DSCP_AF21;
+-		options->ip_qos_interactive = IPTOS_DSCP_EF;
 +		options->ip_qos_interactive = IPTOS_LOWDELAY;
  	if (options->ip_qos_bulk == -1)
--		options->ip_qos_bulk = IPTOS_DSCP_CS1;
+-		options->ip_qos_bulk = IPTOS_DSCP_CS0;
 +		options->ip_qos_bulk = IPTOS_THROUGHPUT;
  	if (options->request_tty == -1)
  		options->request_tty = REQUEST_TTY_AUTO;
@@ -30,10 +30,10 @@ Index: openssh-8.8p1/servconf.c
  	if (options->permit_tun == -1)
  		options->permit_tun = SSH_TUNMODE_NO;
  	if (options->ip_qos_interactive == -1)
--		options->ip_qos_interactive = IPTOS_DSCP_AF21;
+-		options->ip_qos_interactive = IPTOS_DSCP_EF;
 +		options->ip_qos_interactive = IPTOS_LOWDELAY;
  	if (options->ip_qos_bulk == -1)
--		options->ip_qos_bulk = IPTOS_DSCP_CS1;
+-		options->ip_qos_bulk = IPTOS_DSCP_CS0;
 +		options->ip_qos_bulk = IPTOS_THROUGHPUT;
  	if (options->version_addendum == NULL)
  		options->version_addendum = xstrdup("");
@@ -46,12 +46,12 @@ Index: openssh-8.8p1/ssh_config.5
  If two values are specified, the first is automatically selected for
  interactive sessions and the second for non-interactive sessions.
  The default is
--.Cm af21
--(Low-Latency Data)
+-.Cm ef
+-(Expedited Forwarding)
 +.Cm lowdelay
  for interactive sessions and
--.Cm cs1
--(Lower Effort)
+-.Cm none
+-(the operating system default)
 +.Cm throughput
  for non-interactive sessions.
  .It Cm KbdInteractiveAuthentication
@@ -64,12 +64,12 @@ Index: openssh-8.8p1/sshd_config.5
  If two values are specified, the first is automatically selected for
  interactive sessions and the second for non-interactive sessions.
  The default is
--.Cm af21
--(Low-Latency Data)
+-.Cm ef
+-(Expedited Forwarding)
 +.Cm lowdelay
  for interactive sessions and
--.Cm cs1
--(Lower Effort)
+-.Cm none
+-(the operating system default)
 +.Cm throughput
  for non-interactive sessions.
  .It Cm KbdInteractiveAuthentication

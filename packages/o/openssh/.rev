@@ -1997,4 +1997,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
 - Run some of the tests to check there are no regressions.</comment>
     <requestid>1306629</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>b4a33ef91a52978b35bd3d03009b61a0</srcmd5>
+    <version>10.2p1</version>
+    <time>1762036450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1313013</requestid>
+  </revision>
 </revisionlist>
