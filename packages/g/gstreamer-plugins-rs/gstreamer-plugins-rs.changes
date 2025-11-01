@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct 31 19:11:30 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop fix-reproducibility.patch and jobs=1 - not needed anymore
+
+-------------------------------------------------------------------
+Fri Oct 31 11:19:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.7+git15.821d1e7c:
+  * Update dependencies (including an update for glib-macros that
+    fixes boo#1237097)
+  * uriplaylistbin: Add details into upstream error message
+  * aws, webrtc, cargo: Remove all constraints on AWS SDK and tune
+    optimizations
+  * threadshare: fix Pad mod diagram
+  * gtk4: Implement cropped imports without viewport
+  * rtp: linear_audio: fix expect string in unit test
+  * rtp: baseaudiopay: Fix marker bit handling
+  * tracers: Fix inability to create new log files
+  * meson: Don't require all gstreamer libraries
+  * meson: Refactor to use auto_plugin_features consistently for
+    all plugins
+  * meson: Add auto_plugin_features option
+  * threadshare: Update to getifaddrs 0.6
+  * Document the tags and branches in this repository
+
+-------------------------------------------------------------------
 Fri Oct 17 07:05:15 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Rebase and re-enable patch:

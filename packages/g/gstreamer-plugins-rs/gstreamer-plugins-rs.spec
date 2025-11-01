@@ -23,7 +23,7 @@
 %bcond_with aws
 
 Name:           gstreamer-plugins-rs
-Version:        1.26.7+git0.6ab75814
+Version:        1.26.7+git15.821d1e7c
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -33,8 +33,6 @@ URL:            https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 Source:         %{_name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
 Source4:        gstreamer-plugins-rs.appdata.xml
-#PATCH-FIX-UPSTREAM alarrosa@suse.com
-Patch0:         fix-reproducibility.patch
 #PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/merge_requests/2162
 Patch1:         0001-cargo_wrapper-deduplicate-Libs_private.patch
 
@@ -63,8 +61,6 @@ Requires:       gstreamer
 Requires:       gstreamer-plugins-base
 Enhances:       gstreamer
 ExclusiveArch:  %{rust_tier1_arches}
-%global _smp_ncpus_max 1
-%global _smp_nthreads_max 1
 
 %description
 GStreamer is a streaming media framework based on graphs of filters
@@ -99,11 +95,6 @@ python3 -c "import json; \
 %endif
 	%{nil}
 
-cat << EOF >> .cargo/config.toml
-
-[build]
-jobs = 1
-EOF
 %meson_build
 
 %install
