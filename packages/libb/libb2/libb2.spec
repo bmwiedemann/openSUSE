@@ -1,7 +1,7 @@
 #
 # spec file for package libb2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        CC0-1.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/BLAKE2/libb2
 Source:         https://github.com/BLAKE2/libb2/releases/download/v%{version}/libb2-0.98.1.tar.gz
+Patch0:         fix-cflags.patch
 BuildRequires:  pkgconfig
 
 %description
@@ -54,7 +55,7 @@ Requires:       %{name}-%{so_suffix} = %{version}-%{release}
 This package contains the development files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-silent-rules \

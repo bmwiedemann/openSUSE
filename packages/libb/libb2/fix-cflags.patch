@@ -1,0 +1,20 @@
+--- libb2-0.98.1/configure.orig	2025-10-26 13:27:29.977396010 +0100
++++ libb2-0.98.1/configure	2025-10-26 13:31:11.324956073 +0100
+@@ -12744,7 +12744,7 @@ char x[42U], fodder = 0;if (fodder > -10
+ }
+ _ACEOF
+ if ac_fn_c_try_compile "$LINENO"; then :
+-  ax_cv_check_cflags___O3=yes
++  ax_cv_check_cflags___O3=no
+ else
+   ax_cv_check_cflags___O3=no
+ fi
+@@ -12754,7 +12754,7 @@ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ax_cv_check_cflags___O3" >&5
+ $as_echo "$ax_cv_check_cflags___O3" >&6; }
+ if test x"$ax_cv_check_cflags___O3" = xyes; then :
+-  CFLAGS=-O3
++  #CFLAGS=-O3
+ else
+   :
+ fi
