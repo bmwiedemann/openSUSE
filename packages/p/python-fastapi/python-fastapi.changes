@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 31 03:36:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop unneeded BuildRequires on databases.
+
+-------------------------------------------------------------------
+Thu Oct 30 11:58:24 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.120.2
+  * Fix separation of schemas with nested models introduced in 0.119.0
+- Update to 0.120.1
+  * Bump Starlette to <0.50.0
+- Update to 0.120.0
+  * Sync German docs
+  * Migrate internal reference documentation from typing_extensions.Doc to
+    annotated_doc.Doc
+  * Update German LLM prompt and test file
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
 Thu Sep 25 05:36:00 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.117.1:

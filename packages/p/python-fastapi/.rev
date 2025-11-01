@@ -564,4 +564,25 @@
 - Drop patch support-starlette-0.47.patch, no longer required.</comment>
     <requestid>1307029</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e55971c8de5d2cca2f8776a0e079184c</srcmd5>
+    <version>0.120.2</version>
+    <time>1762036477</time>
+    <user>dimstar_suse</user>
+    <comment>SR#1314383 is waiting for this
+
+- Drop unneeded BuildRequires on databases.
+- Update to 0.120.2
+  * Fix separation of schemas with nested models introduced in 0.119.0
+- Update to 0.120.1
+  * Bump Starlette to &lt;0.50.0
+- Update to 0.120.0
+  * Sync German docs
+  * Migrate internal reference documentation from typing_extensions.Doc to
+    annotated_doc.Doc
+  * Update German LLM prompt and test file
+  * [pre-commit.ci] pre-commit autoupdate
+</comment>
+    <requestid>1314692</requestid>
+  </revision>
 </revisionlist>

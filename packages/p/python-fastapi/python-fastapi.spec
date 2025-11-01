@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-fastapi%{psuffix}
-Version:        0.117.1
+Version:        0.120.2
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -42,9 +42,10 @@ BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-annotated-doc >= 0.0.2
 Requires:       python-pydantic >= 1.8.2
 Requires:       python-typing_extensions >= 4.8.0
-Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.49.0)
+Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.50.0)
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -61,8 +62,8 @@ BuildRequires:  %{python_module PyYAML >= 5.3.1}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module anyio >= 3.2.1}
+BuildRequires:  %{python_module argon2-cffi}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module databases >= 0.3.2}
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module email-validator >= 1.1.1}
 BuildRequires:  %{python_module fastapi = %{version}}
@@ -71,6 +72,7 @@ BuildRequires:  %{python_module inline-snapshot}
 BuildRequires:  %{python_module orjson >= 3.2.1}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module peewee >= 3.13.0}
+BuildRequires:  %{python_module pwdlib >= 0.2.1}
 BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jose >= 3.3}
@@ -107,6 +109,8 @@ donttest+=" or test_exception_handler_body_access"
 # python-fastapi-cli packages doesn't exists in openSUSE
 donttest+=" or test_fastapi_cli"
 donttest+=" or test_openapi"
+# seems to hang in OBS and only for 3.9 which we don't support anymore
+donttest+=" or test_tutorial003_py39.py"
 %pytest -W ignore::DeprecationWarning -W ignore::PendingDeprecationWarning -W ignore::ResourceWarning -k "not ($donttest)" tests
 %endif
 
