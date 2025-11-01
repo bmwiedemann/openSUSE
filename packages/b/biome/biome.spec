@@ -1,7 +1,7 @@
 #
 # spec file for package biome
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2022-2025 Avindra Goolcharan <avindra@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           biome
-Version:        2.2.7
+Version:        2.3.2
 Release:        0
 Summary:        A JavaScript and TypeScript toolchain
 License:        Apache-2.0 AND MIT

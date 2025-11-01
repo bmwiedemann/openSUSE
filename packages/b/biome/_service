@@ -2,6 +2,7 @@
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
      <param name="src">biome*.tar.gz</param>
+     <param name="filter">true</param>
   </service>
 </services>
 
