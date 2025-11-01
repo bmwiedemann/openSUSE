@@ -132,4 +132,13 @@
   * Protect against illegally long QCD and QCC marker segments.</comment>
     <requestid>1314505</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7060adc951e3b3a879795392365ed163</srcmd5>
+    <version>0.24.5</version>
+    <time>1762036470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.5:
+  * Address openexr oss-fuzz 5747129672073216 #225</comment>
+    <requestid>1314670</requestid>
+  </revision>
 </revisionlist>

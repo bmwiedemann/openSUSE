@@ -17,7 +17,7 @@
 
 
 Name:           openjph
-Version:        0.24.4
+Version:        0.24.5
 Release:        0
 Summary:        An implementation of JPEG2000 Part-15
 License:        BSD-2-Clause

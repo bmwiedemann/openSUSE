@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 31 08:48:02 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.5:
+  * Address openexr oss-fuzz 5747129672073216 #225
+
+-------------------------------------------------------------------
 Thu Oct 30 07:42:26 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.24.4:
