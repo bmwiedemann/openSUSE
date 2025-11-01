@@ -439,4 +439,12 @@ https://build.opensuse.org/request/show/1126958
     * Implement RFC9110 http status names #2939.</comment>
     <requestid>1311810</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0094bb6ea8b3be922e67979eeef6c7ab</srcmd5>
+    <version>0.49.1</version>
+    <time>1762036464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1314383</requestid>
+  </revision>
 </revisionlist>
