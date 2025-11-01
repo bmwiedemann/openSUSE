@@ -31,9 +31,11 @@
 %if 0%{?suse_version} > 1500
 %bcond_without libheif
 %bcond_without python_bindings
+%bcond_without runtests
 %else
 %bcond_with python_bindings
 %bcond_with libheif
+%bcond_with runtests
 %endif
 %bcond_without opencv
 %bcond_with apidocs
@@ -258,6 +260,7 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE*md
 
 %fdupes -s %{buildroot}
 
+%if %{with runtests}
 %check
 # Make sure testsuite can find required fonts. Especially `DroidSerif.ttf` which is not part of our google-droid-fonts package
 # we need
@@ -283,6 +286,7 @@ export disabled_tests="heif|ptex|jpeg-ultrahdr|cmake-consumer|docs-examples-cpp|
 %else
 # Many test cases are failing on PPC, ARM, ix64 ... ignore for now
 %ctest '-E' ${disabled_tests} || true
+%endif
 %endif
 
 %ldconfig_scriptlets -n libOpenImageIO%{so_ver}

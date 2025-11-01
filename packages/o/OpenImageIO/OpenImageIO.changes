@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 30 02:46:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable the testsuite on 15.x as the python version is too old
+
+-------------------------------------------------------------------
 Fri Oct 17 07:36:16 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Gate imageviewer files as needed
