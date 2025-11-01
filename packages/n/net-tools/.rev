@@ -500,4 +500,14 @@ See see http://lists.opensuse.org/opensuse-factory/2015-06/msg00133.html</commen
     <comment></comment>
     <requestid>1303239</requestid>
   </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>4b9a21f02543f11e796bea12c6b25e12</srcmd5>
+    <version>2.10+1</version>
+    <time>1762036469</time>
+    <user>dimstar_suse</user>
+    <comment>Improve changes text
+
+Add context about relation of bsc#142461 and bsc#1243581.</comment>
+    <requestid>1314608</requestid>
+  </revision>
 </revisionlist>

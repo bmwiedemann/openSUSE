@@ -33,8 +33,9 @@ Mon Sep  1 21:00:13 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 Thu Aug 28 18:46:35 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Drop old Fedora patch 0006-Allow-interface-stacking.patch. It
-  provided a fix for CVE-2025-46836 (bsc#142461), but it was fixes
-  by the upstream in 2025 in a different way. Revert interferring
+  provided a fix for the stack corruption (bsc#142461), later
+  reported as CVE-2025-46836 (bsc#1243581) and fixed by the
+  upstream in a different way. Revert interfering
   net-tools-CVE-2025-46836.patch back to the upstream version.
 - Fix stack buffer overflow in parse_hex (bsc#1248687,
   GHSA-h667-qrp8-gj58, net-tools-parse_hex-stack-overflow.patch).
