@@ -12,7 +12,7 @@
   -->
   <service name="tar_scm" mode="manual">
     <param name="revision">v4.4.3</param>
-    <param name="version">4.5.3</param>
+    <param name="version">4.5.4</param>
     <param name="url">https://projects.blender.org/blender/blender-assets.git</param>
     <param name="scm">git</param>
     <param name="lfs">enable</param>
