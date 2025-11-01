@@ -23,7 +23,7 @@ Version:        49.0
 Release:        0
 Summary:        Video player
 License:        GPL-3.0-or-later
-URL:            https://gitlab.gnome.org/GNOME/Incubator/showtime
+URL:            https://gitlab.gnome.org/GNOME/showtime
 Source:         %{name}-%{version}.tar
 
 BuildRequires:  desktop-file-utils
@@ -35,7 +35,9 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.18.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 Requires:       gstreamer-plugins-rs
-Recommends:     gstreame-plugins-libav
+Recommends:     gstreamer-plugins-bad
+Recommends:     gstreamer-plugins-good
+Recommends:     gstreamer-plugins-libav
 Recommends:     gstreamer-plugins-ugly
 BuildArch:      noarch
 

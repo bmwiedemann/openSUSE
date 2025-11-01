@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 31 07:30:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix typo in gstreamer-plugins-libav Recommends.
+- Add gstreamer-plugins-bad and gstreamer-plugins-good Recommends.
+
+-------------------------------------------------------------------
 Mon Sep 15 06:31:58 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
