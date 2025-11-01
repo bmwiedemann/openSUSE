@@ -1,7 +1,7 @@
 #
 # spec file for package wine
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,8 +68,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  10.17
-Version:        10.17
+%define downloadver  10.18
+Version:        10.18
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC

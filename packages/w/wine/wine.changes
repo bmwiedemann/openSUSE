@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov  1 10:12:13 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.18 release
+  - OpenGL memory mapping using Vulkan in WoW64 mode.
+  - Synchronization barriers API.
+  - Support for WinRT exceptions.
+  - SCSI pass-through in WoW64 mode.
+  - Various bug fixes.
+- update staging to 10.18 release
+
+-------------------------------------------------------------------
 Sun Oct 19 12:45:22 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to 10.17 release

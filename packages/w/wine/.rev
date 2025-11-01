@@ -5674,4 +5674,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 10.17 release</comment>
     <requestid>1312350</requestid>
   </revision>
+  <revision rev="475" vrev="1">
+    <srcmd5>a53cb0cedc60c544e8dbe42576218e66</srcmd5>
+    <version>10.18</version>
+    <time>1762036531</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 10.18 release
+  - OpenGL memory mapping using Vulkan in WoW64 mode.
+  - Synchronization barriers API.
+  - Support for WinRT exceptions.
+  - SCSI pass-through in WoW64 mode.
+  - Various bug fixes.
+- update staging to 10.18 release</comment>
+    <requestid>1315020</requestid>
+  </revision>
 </revisionlist>
