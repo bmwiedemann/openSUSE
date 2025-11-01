@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 31 10:05:44 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Add patch 2298.patch to fix issue with SELinux labeling. Is already
+  upstream via 
+  https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2298
+  and can be removed next release (bsc#1248136)
+
+-------------------------------------------------------------------
 Sat Sep 27 11:18:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.54.1:

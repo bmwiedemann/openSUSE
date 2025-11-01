@@ -97,6 +97,8 @@ Patch8:         python3.6-in-sle.patch
 Patch9:         NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch
 # PATCH-FIX-OPENSUSE nm-initrd-generator document static ip setup bsc#1244072
 Patch11:        0001-man-document-static-ip-setup-differences-to-dracut-n.patch
+# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2298.patch
+Patch12:        2298.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -322,6 +324,7 @@ This package is intended to be installed by default for server deployments.
 %patch -P 9 -p1
 %endif
 %patch -P 11 -p1
+%patch -P 12 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:

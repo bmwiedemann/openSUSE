@@ -1,0 +1,256 @@
+From c312390932d1f1198baacca0de3c6a01811728a8 Mon Sep 17 00:00:00 2001
+From: Beniamino Galvani <bgalvani@redhat.com>
+Date: Tue, 14 Oct 2025 10:41:26 +0200
+Subject: [PATCH 1/2] libnm-glib-aux: add temp name argument to
+ nm_utils_file_set_contents()
+
+In some cases it's useful to specify the name of the temporary file to
+be used.
+---
+ src/core/devices/wifi/nm-iwd-manager.c         |  2 +-
+ src/core/main-utils.c                          |  2 +-
+ src/core/nm-core-utils.c                       |  1 +
+ src/core/platform/tests/monitor.c              |  1 +
+ .../plugins/ifcfg-rh/nms-ifcfg-rh-writer.c     |  1 +
+ .../plugins/keyfile/nms-keyfile-utils.c        |  1 +
+ .../plugins/keyfile/nms-keyfile-writer.c       | 10 +++++++++-
+ src/libnm-glib-aux/nm-io-utils.c               | 18 +++++++++++++-----
+ src/libnm-glib-aux/nm-io-utils.h               |  1 +
+ src/nm-initrd-generator/nm-initrd-generator.c  |  2 +-
+ 10 files changed, 30 insertions(+), 9 deletions(-)
+
+diff --git a/src/core/devices/wifi/nm-iwd-manager.c b/src/core/devices/wifi/nm-iwd-manager.c
+index 76a342e206c..bb2e056d39c 100644
+--- a/src/core/devices/wifi/nm-iwd-manager.c
++++ b/src/core/devices/wifi/nm-iwd-manager.c
+@@ -684,7 +684,7 @@ iwd_config_write(GKeyFile              *config,
+      * in the last few filename characters -- it cannot end in .open, .psk
+      * or .8021x.
+      */
+-    return nm_utils_file_set_contents(filepath, data, length, 0600, times, NULL, error);
++    return nm_utils_file_set_contents(filepath, data, length, 0600, times, NULL, NULL, error);
+ }
+ 
+ static const char *
+diff --git a/src/core/main-utils.c b/src/core/main-utils.c
+index 0f62da29024..d1be6814875 100644
+--- a/src/core/main-utils.c
++++ b/src/core/main-utils.c
+@@ -81,7 +81,7 @@ nm_main_utils_write_pidfile(const char *pidfile)
+     char                  pid[16];
+ 
+     nm_sprintf_buf(pid, "%lld", (long long) getpid());
+-    if (!nm_utils_file_set_contents(pidfile, pid, -1, 00644, NULL, NULL, &error)) {
++    if (!nm_utils_file_set_contents(pidfile, pid, -1, 00644, NULL, NULL, NULL, &error)) {
+         fprintf(stderr, _("Writing to %s failed: %s\n"), pidfile, error->message);
+         return FALSE;
+     }
+diff --git a/src/core/nm-core-utils.c b/src/core/nm-core-utils.c
+index 8b7ee1ddf67..33f53a06358 100644
+--- a/src/core/nm-core-utils.c
++++ b/src/core/nm-core-utils.c
+@@ -2865,6 +2865,7 @@ _host_id_read(guint8 **out_host_id, gsize *out_host_id_len)
+                                                0600,
+                                                NULL,
+                                                NULL,
++                                               NULL,
+                                                &error)) {
+             nm_log_warn(
+                 LOGD_CORE,
+diff --git a/src/core/platform/tests/monitor.c b/src/core/platform/tests/monitor.c
+index c83192bbc92..f413facfcdc 100644
+--- a/src/core/platform/tests/monitor.c
++++ b/src/core/platform/tests/monitor.c
+@@ -186,6 +186,7 @@ ip_again:
+                                00644,
+                                NULL,
+                                NULL,
++                               NULL,
+                                NULL);
+ 
+     nm_log_dbg(LOGD_PLATFORM, "dump to file complete");
+diff --git a/src/core/settings/plugins/ifcfg-rh/nms-ifcfg-rh-writer.c b/src/core/settings/plugins/ifcfg-rh/nms-ifcfg-rh-writer.c
+index 42675cf222e..21908090f73 100644
+--- a/src/core/settings/plugins/ifcfg-rh/nms-ifcfg-rh-writer.c
++++ b/src/core/settings/plugins/ifcfg-rh/nms-ifcfg-rh-writer.c
+@@ -320,6 +320,7 @@ write_blobs(GHashTable *blobs, GError **error)
+                                         0600,
+                                         NULL,
+                                         NULL,
++                                        NULL,
+                                         &write_error)) {
+             g_set_error(error,
+                         NM_SETTINGS_ERROR,
+diff --git a/src/core/settings/plugins/keyfile/nms-keyfile-utils.c b/src/core/settings/plugins/keyfile/nms-keyfile-utils.c
+index 7c0e329e2d6..26fb34418d5 100644
+--- a/src/core/settings/plugins/keyfile/nms-keyfile-utils.c
++++ b/src/core/settings/plugins/keyfile/nms-keyfile-utils.c
+@@ -280,6 +280,7 @@ nms_keyfile_nmmeta_write(const char *dirname,
+                                         length,
+                                         0600,
+                                         NULL,
++                                        NULL,
+                                         &errsv,
+                                         NULL)) {
+             NM_SET_OUT(out_full_filename, g_steal_pointer(&full_filename_tmp));
+diff --git a/src/core/settings/plugins/keyfile/nms-keyfile-writer.c b/src/core/settings/plugins/keyfile/nms-keyfile-writer.c
+index b1dd2e446fd..c7c88260790 100644
+--- a/src/core/settings/plugins/keyfile/nms-keyfile-writer.c
++++ b/src/core/settings/plugins/keyfile/nms-keyfile-writer.c
+@@ -133,6 +133,7 @@ cert_writer(NMConnection                     *connection,
+                                              0600,
+                                              NULL,
+                                              NULL,
++                                             NULL,
+                                              &local);
+         if (success) {
+             /* Write the path value to the keyfile.
+@@ -384,7 +385,14 @@ _internal_write_connection(NMConnection                   *connection,
+         }
+     }
+ 
+-    nm_utils_file_set_contents(path, kf_content_buf, kf_content_len, 0600, NULL, NULL, &local_err);
++    nm_utils_file_set_contents(path,
++                               kf_content_buf,
++                               kf_content_len,
++                               0600,
++                               NULL,
++                               NULL,
++                               NULL,
++                               &local_err);
+     if (local_err) {
+         g_set_error(error,
+                     NM_SETTINGS_ERROR,
+diff --git a/src/libnm-glib-aux/nm-io-utils.c b/src/libnm-glib-aux/nm-io-utils.c
+index 9443172b46b..d26ecee4f05 100644
+--- a/src/libnm-glib-aux/nm-io-utils.c
++++ b/src/libnm-glib-aux/nm-io-utils.c
+@@ -415,8 +415,10 @@ nm_utils_file_get_contents(int                         dirfd,
+ 
+ /*
+  * Copied from GLib's g_file_set_contents() et al., but allows
+- * specifying a mode for the new file and optionally the last access
+- * and last modification times.
++ * specifying:
++ * - the file mode (@mode)
++ * - optionally, the last access and modification times (@times)
++ * - optionally, a fixed name for the temporary file (@tmp_name)
+  */
+ gboolean
+ nm_utils_file_set_contents(const char            *filename,
+@@ -424,10 +426,11 @@ nm_utils_file_set_contents(const char            *filename,
+                            gssize                 length,
+                            mode_t                 mode,
+                            const struct timespec *times,
++                           const char            *tmp_name,
+                            int                   *out_errsv,
+                            GError               **error)
+ {
+-    gs_free char *tmp_name = NULL;
++    gs_free char *tmp_name_free = NULL;
+     struct stat   statbuf;
+     int           errsv;
+     gssize        s;
+@@ -442,8 +445,13 @@ nm_utils_file_set_contents(const char            *filename,
+     if (length == -1)
+         length = strlen(contents);
+ 
+-    tmp_name = g_strdup_printf("%s.XXXXXX", filename);
+-    fd       = g_mkstemp_full(tmp_name, O_RDWR | O_CLOEXEC, mode);
++    if (tmp_name) {
++        fd = open(tmp_name, O_CREAT | O_RDWR | O_TRUNC | O_CLOEXEC, mode);
++    } else {
++        tmp_name_free = g_strdup_printf("%s.XXXXXX", filename);
++        tmp_name      = tmp_name_free;
++        fd            = g_mkstemp_full(tmp_name_free, O_RDWR | O_CLOEXEC, mode);
++    }
+     if (fd < 0) {
+         return _get_contents_error_errno(error, out_errsv, "failed to create file %s", tmp_name);
+     }
+diff --git a/src/libnm-glib-aux/nm-io-utils.h b/src/libnm-glib-aux/nm-io-utils.h
+index 0021138f464..ff02ecb108a 100644
+--- a/src/libnm-glib-aux/nm-io-utils.h
++++ b/src/libnm-glib-aux/nm-io-utils.h
+@@ -55,6 +55,7 @@ gboolean nm_utils_file_set_contents(const char            *filename,
+                                     gssize                 length,
+                                     mode_t                 mode,
+                                     const struct timespec *times,
++                                    const char            *tmp_name,
+                                     int                   *out_errsv,
+                                     GError               **error);
+ 
+diff --git a/src/nm-initrd-generator/nm-initrd-generator.c b/src/nm-initrd-generator/nm-initrd-generator.c
+index b89b4e413f5..68993c002f3 100644
+--- a/src/nm-initrd-generator/nm-initrd-generator.c
++++ b/src/nm-initrd-generator/nm-initrd-generator.c
+@@ -78,7 +78,7 @@ output_conn(gpointer key, gpointer value, gpointer user_data)
+         filename      = nm_keyfile_utils_create_filename(basename, TRUE);
+         full_filename = g_build_filename(connections_dir, filename, NULL);
+ 
+-        if (!nm_utils_file_set_contents(full_filename, data, len, 0600, NULL, NULL, &error))
++        if (!nm_utils_file_set_contents(full_filename, data, len, 0600, NULL, NULL, NULL, &error))
+             goto err_out;
+     } else
+         g_print("\n*** Connection '%s' ***\n\n%s", basename, data);
+-- 
+GitLab
+
+
+From 2d438ebef840cc003e423d3d0ad10e5832b5b49a Mon Sep 17 00:00:00 2001
+From: Beniamino Galvani <bgalvani@redhat.com>
+Date: Tue, 14 Oct 2025 10:42:53 +0200
+Subject: [PATCH 2/2] dns: specify a temporary file name when writing
+ no-stub-resolv.conf
+
+Using g_file_set_contents() makes it impossible to write a proper
+SELinux policy because the function creates a file with a random
+suffix, and SELinux file transitions can't match on wildcards.
+
+Use a fixed temporary file name. In this case it's fine because
+/run/NetworkManager is only writable by root and NetworkManager is the
+only process writing into it.
+---
+ src/core/dns/nm-dns-manager.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/dns/nm-dns-manager.c b/src/core/dns/nm-dns-manager.c
+index 57e732264cf..c746e714972 100644
+--- a/src/core/dns/nm-dns-manager.c
++++ b/src/core/dns/nm-dns-manager.c
+@@ -26,6 +26,7 @@
+ 
+ #include "libnm-core-intern/nm-core-internal.h"
+ #include "libnm-glib-aux/nm-str-buf.h"
++#include "libnm-glib-aux/nm-io-utils.h"
+ 
+ #include "NetworkManagerUtils.h"
+ #include "devices/nm-device.h"
+@@ -1006,7 +1007,8 @@ _read_link_cached(const char *path, gboolean *is_cached, char **cached)
+ #define MY_RESOLV_CONF_TMP MY_RESOLV_CONF ".tmp"
+ #define RESOLV_CONF_TMP    "/etc/.resolv.conf.NetworkManager"
+ 
+-#define NO_STUB_RESOLV_CONF NMRUNDIR "/no-stub-resolv.conf"
++#define NO_STUB_RESOLV_CONF     NMRUNDIR "/no-stub-resolv.conf"
++#define NO_STUB_RESOLV_CONF_TMP NMRUNDIR "/no-stub-resolv.conf.tmp"
+ 
+ static void
+ update_resolv_conf_no_stub(NMDnsManager      *self,
+@@ -1019,7 +1021,14 @@ update_resolv_conf_no_stub(NMDnsManager      *self,
+ 
+     content = create_resolv_conf(searches, nameservers, options);
+ 
+-    if (!g_file_set_contents(NO_STUB_RESOLV_CONF, content, -1, &local)) {
++    if (!nm_utils_file_set_contents(NO_STUB_RESOLV_CONF,
++                                    content,
++                                    -1,
++                                    0644,
++                                    NULL,
++                                    NO_STUB_RESOLV_CONF_TMP,
++                                    NULL,
++                                    &local)) {
+         _LOGD("update-resolv-no-stub: failure to write file: %s", local->message);
+         g_error_free(local);
+         return;
+-- 
+GitLab
+
