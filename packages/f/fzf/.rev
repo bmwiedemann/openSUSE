@@ -1122,4 +1122,15 @@ varienvironment able.
 </comment>
     <requestid>1311420</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>3831f3f2f2ada6f6387e2208941afe2c</srcmd5>
+    <version>0.66.1</version>
+    <time>1762036508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.66.1:
+  * Fix bug preventing 'ctrl-h' from being bound to an action (#4556)
+  * Fix --no-color / NO_COLOR theme (#4561)
+</comment>
+    <requestid>1314948</requestid>
+  </revision>
 </revisionlist>

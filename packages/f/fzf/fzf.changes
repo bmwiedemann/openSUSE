@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 31 21:28:01 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.66.1:
+  * Fix bug preventing 'ctrl-h' from being bound to an action (#4556)
+  * Fix --no-color / NO_COLOR theme (#4561)
+
+-------------------------------------------------------------------
 Wed Oct 15 01:45:54 UTC 2025 - Avindra Goolcharan <aavindraa@gmail.com>
 
 - Update to version 0.66.0:
