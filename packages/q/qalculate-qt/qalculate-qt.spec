@@ -17,7 +17,7 @@
 
 
 Name:           qalculate-qt
-Version:        5.8.0
+Version:        5.8.1
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
