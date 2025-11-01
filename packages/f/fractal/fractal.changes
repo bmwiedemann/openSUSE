@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 31 15:36:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 13:
+  + A brand new audio player that loads files lazily and displays
+    the audio stream as a seekable waveform.
+  + Only a single file with an audio stream can be played at a
+    time, which means that clicking on a “Play” button stops the
+    previous media player that was playing.
+  + Clicking on the avatar of the sender of a message now opens
+    directly the user profile instead of a context menu. The
+    actions that were in the context menu could already be
+    performed from that dialog, so UX is more straightforward now.
+  + The GNOME document and monospace fonts are used for messages.
+  + Most of our UI definitions got ported to Blueprint.
+  + Various other improvements and fixes.
+  + Updated translations.
+- Add blueprint-compiler BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Sun Sep 21 16:00:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gstgtk4) BuildRequires: no longer needed, as

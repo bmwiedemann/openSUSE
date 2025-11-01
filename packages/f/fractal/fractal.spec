@@ -25,7 +25,7 @@
 %{?is_beta:%bcond_without beta_build}%{!?is_beta:%bcond_with beta_build}
 
 Name:           fractal
-Version:        12.1
+Version:        13
 Release:        0
 Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
@@ -34,6 +34,7 @@ URL:            https://gitlab.gnome.org/World/fractal/-/tags
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 
+BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  clang-devel
