@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 31 15:41:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.46.2:
+  * Fixed Spaces after QRZ.com name
+  * Fixed SPID Rot1Prog Rotator more 360 deg
+  * Fixed build instructions on Debian
+  * Fixed Bandmap truncated output despite having space
+  * Fixed Statistics - Anti-meridian bug on map
+  * Fixed Binary file in the tarballs
+  * Fixed LOTW & eQSL upload status updated even when nothing is uploaded
+  * Fixed Imported QSOs contain incorrect My DXCC info
+  * Fixed Statistics Dialog does not show confirmed grids
+
+-------------------------------------------------------------------
 Fri Sep 26 20:07:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.46.1:

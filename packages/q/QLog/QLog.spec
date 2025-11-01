@@ -17,7 +17,7 @@
 
 
 Name:           QLog
-Version:        0.46.1
+Version:        0.46.2
 Release:        0
 Summary:        Amateur radio logbook software
 License:        GPL-3.0-or-later
