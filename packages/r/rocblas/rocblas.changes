@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Wed Oct 29 13:42:19 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Better handling of shared libraries
+- Disable tensile usage, it is not in TW
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
+Wed Aug 20 00:00:00 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Consoldiate Python module BuildRequires for SUSE.
+
+-------------------------------------------------------------------
+Sat Aug 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use msgpack on SUSE
+
+-------------------------------------------------------------------
+Wed Aug 13 00:00:00 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Fix build and runtime dependencies of test package.
+
+-------------------------------------------------------------------
+Tue Aug 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- remove roctracer
+- Use distro appropriate blas libs
+
+-------------------------------------------------------------------
+Tue Jul 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove -mtls-dialect cflag
+
+-------------------------------------------------------------------
+Mon Jul 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove experimental gfx950
+- Remove debian dir
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+
+-------------------------------------------------------------------
+Wed Jun 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove suse check for using ldconfig
+
+-------------------------------------------------------------------
+Sun May 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add experimental gfx950
+
+-------------------------------------------------------------------
+Tue May  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- disable roctracer for everyone
+
+-------------------------------------------------------------------
+Tue Apr 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve testing for suse
+
+-------------------------------------------------------------------
+Sat Apr 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add generic gpus
+
+-------------------------------------------------------------------
+Wed Apr 23 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use joblib on sle 15.6 and 16.0
+
+-------------------------------------------------------------------
+Fri Apr 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Thu Apr 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reenable ninja
+
+-------------------------------------------------------------------
+Fri Apr  4 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use rocm-llvm strip
+
+-------------------------------------------------------------------
+Thu Feb 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Enable tensile for RHEL
+
+-------------------------------------------------------------------
+Wed Feb 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Enable tensile for SUSE
+
+-------------------------------------------------------------------
+Sun Feb 23 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use tensile verbosity to avoid OSB timeout
+
+-------------------------------------------------------------------
+Wed Feb 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use tensile cmake from the python location
+
+-------------------------------------------------------------------
+Tue Feb 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove multibuild
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Sat Jan 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread rpm compress
+
+-------------------------------------------------------------------
+Tue Jan 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Fri Dec 20 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Build type should be release
+
+-------------------------------------------------------------------
+Fri Dec  6 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+

@@ -1,0 +1,84 @@
+From 92a6ab08c424830e38fb480079eb3bedf4f48224 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Tue, 12 Aug 2025 08:17:02 -0700
+Subject: [PATCH] rocblas: remove roctracer
+
+Signed-off-by: Tom Rix <Tom.Rix@amd.com>
+---
+ library/CMakeLists.txt          |  3 ---
+ library/src/include/logging.hpp | 24 ------------------------
+ 2 files changed, 27 deletions(-)
+
+diff --git a/library/CMakeLists.txt b/library/CMakeLists.txt
+index 762580d72791..b975ca9a37c8 100644
+--- a/library/CMakeLists.txt
++++ b/library/CMakeLists.txt
+@@ -80,9 +80,6 @@ function( rocblas_library_settings lib_target_ )
+     target_link_libraries( ${lib_target_} PRIVATE hip::device )
+   else()
+     target_link_libraries( ${lib_target_} PRIVATE hip::device -lstdc++fs --rtlib=compiler-rt --unwindlib=libgcc)
+-    if (BUILD_SHARED_LIBS)
+-      target_link_libraries(${lib_target_} PRIVATE -lroctx64)
+-    endif()
+   endif()
+     target_link_libraries( ${lib_target_} PRIVATE Threads::Threads )
+   #  -fno-gpu-rdc compiler option was used with hcc, so revisit feature at some point
+diff --git a/library/src/include/logging.hpp b/library/src/include/logging.hpp
+index 352e4e398485..56d8abfcc321 100644
+--- a/library/src/include/logging.hpp
++++ b/library/src/include/logging.hpp
+@@ -40,10 +40,6 @@
+ #include <unordered_map>
+ #include <utility>
+ 
+-#if !defined(ROCBLAS_STATIC_LIB) && !defined(WIN32)
+-#include <roctracer/roctx.h>
+-#endif
+-
+ /************************************************************************************
+  * Profile kernel arguments
+  ************************************************************************************/
+@@ -453,17 +449,6 @@ class Logger
+ public:
+     Logger() = default;
+ 
+-#if !defined(ROCBLAS_STATIC_LIB) && !defined(WIN32)
+-    void log_range(const std::string& name)
+-    {
+-        if(!m_active)
+-        {
+-            roctxRangePush(name.c_str());
+-            m_active = true;
+-        }
+-    }
+-#endif
+-
+     template <typename H, typename... Ts>
+     void log_arguments(rocblas_internal_ostream& os, const char* sep, H&& head, Ts&&... xs)
+     {
+@@ -472,9 +457,6 @@ public:
+         // ((os << sep << std::forward<Ts>(xs)), ...);
+         (void)(int[]){(os << sep << std::forward<Ts>(xs), 0)...};
+ 
+-#if !defined(ROCBLAS_STATIC_LIB) && !defined(WIN32)
+-        log_range(os.str());
+-#endif
+         os << std::endl;
+     }
+ 
+@@ -527,12 +509,6 @@ public:
+ 
+     ~Logger()
+     {
+-#if !defined(ROCBLAS_STATIC_LIB) && !defined(WIN32)
+-        if(m_active)
+-        {
+-            roctxRangePop();
+-        }
+-#endif
+     }
+ 
+ private:
+-- 
+2.50.1
+
