@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 31 16:47:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20251031:
+  * Remove Vertex Standard radio drivers
+  * ft8800: Add settings support
+  * anytone778uv: Fix duplex and tmode decode logging
+  * tk760g: Fix long-standing typo in base class name
+  * tk760g: Add odd TK-260G lower-p variant support
+  * Update Italian Translation
+
+-------------------------------------------------------------------
 Fri Oct 24 15:35:59 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20251024:
