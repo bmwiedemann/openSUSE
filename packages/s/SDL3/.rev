@@ -176,4 +176,12 @@
     <comment>- Update to release 3.2.24</comment>
     <requestid>1308715</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ed0583826d18a274a5c8fe15eea379a6</srcmd5>
+    <version>3.2.26</version>
+    <time>1762036467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.2.26</comment>
+    <requestid>1314593</requestid>
+  </revision>
 </revisionlist>

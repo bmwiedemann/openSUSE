@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 30 19:21:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.26
+  * Fixed a delay at shutdown when the mouse is grabbed under X11
+  * Fixed destination coordinates when using scale with the
+    software renderer
+  * Fixed the Moonlander MK1 Keyboard being detected as a
+    controller
+  * Fixed the 8BitDo Ultimate 2C Wireless Controller showing up
+    twice on some systems
+  * Added a Linux mapping for the 8BitDo Pro 3 controller
+  * Added support for the Zenaim Arcade Controller
+
+-------------------------------------------------------------------
 Thu Oct  2 21:57:28 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.24
