@@ -2389,4 +2389,14 @@ for 12.3</comment>
 </comment>
     <requestid>1308636</requestid>
   </revision>
+  <revision rev="257" vrev="1">
+    <srcmd5>30d25d7b4b0a742d71c0f967ffca8abe</srcmd5>
+    <version>1550+20251031.036888e</version>
+    <time>1762036472</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20251031.036888e:
+  * profiles: budgie-desktop backlight (bsc#1252691)
+</comment>
+    <requestid>1314674</requestid>
+  </revision>
 </revisionlist>
