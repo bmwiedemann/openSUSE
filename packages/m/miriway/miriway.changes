@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  1 17:11:08 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update version 25.12:
+  * Update example configs following Ubuntu 25.12 release
+  * Fix bug in ext-workspaces (gh#Miriway/Miriway#182)
+  * Fix CMakeLists.txt dependency on xkbcommon
+- Drop 0001-Fix-xkbcommon-includes.patch
+
+-------------------------------------------------------------------
 Fri Oct 17 16:01:38 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update version 25.11:

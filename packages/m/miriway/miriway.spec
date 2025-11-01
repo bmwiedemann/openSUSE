@@ -21,14 +21,12 @@
 %define _name Miriway
 
 Name:           miriway
-Version:        25.11
+Version:        25.12
 Release:        0
 Summary:        Simple Wayland compositor built on Mir
 License:        GPL-3.0-only
 URL:            https://github.com/Miriway/Miriway
 Source:         https://github.com/%{_name}/%{_name}/archive/v%{version}/%{_name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE 0001-Fix-xkbcommon-includes.patch
-Patch0:         0001-Fix-xkbcommon-includes.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  git-core

@@ -84,4 +84,16 @@ Provides the miriway wayland compositor</comment>
   * Improved handling of miriway-shell.settings</comment>
     <requestid>1312078</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5254cf9dc7daa32f43d96d8737cb250c</srcmd5>
+    <version>25.12</version>
+    <time>1762036529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version 25.12:
+  * Update example configs following Ubuntu 25.12 release
+  * Fix bug in ext-workspaces (gh#Miriway/Miriway#182)
+  * Fix CMakeLists.txt dependency on xkbcommon
+- Drop 0001-Fix-xkbcommon-includes.patch</comment>
+    <requestid>1315011</requestid>
+  </revision>
 </revisionlist>
