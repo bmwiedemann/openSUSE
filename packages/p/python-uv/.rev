@@ -1603,4 +1603,41 @@
     * Remove outdated aarch64 musl note (#16385)</comment>
     <requestid>1313007</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>bd47a94dd5744928e8b0463c4800645b</srcmd5>
+    <version>0.9.7</version>
+    <time>1762036521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.7 
+ * Enhancements
+  * Add Windows x86-32 emulation support to interpreter architecture checks 
+  * Improve readability of progress bars 
+  * Add GitHub attestations for uv release artifacts 
+  * Add --clear to uv build to remove old build artifacts 
+  * Add --no-create-gitignore to uv build 
+  * Do not error when a virtual environment directory cannot be removed due to a busy error 
+  * Improve hint on pip install --system when externally managed 
+  * Running uv lock --check with outdated lockfile will print that --check was passed, instead of --locked 
+  * Update uv init template for Maturin 
+  * Improve ordering of Python sources in logs 
+  * Restore DockerHub release images and annotations 
+ * Bug fixes
+  * Check for matching Python implementation during uv python upgrade 
+  * Deterministically order --find-links distributions 
+  * Don't panic in uv export --frozen when the lockfile is outdated 
+  * Fix root of uv tree when --package is used with circular dependencies 
+  * Show package list with pip freeze --quiet 
+  * Limit uv auth login pyx.dev retries to 60s 
+  * Add an empty group with uv add --group ... -r ... 
+  * Drop terminal coloring from uv auth token output 
+  * Don't use UV_LOCKED to enable --check flag 
+- This release contains an upgrade to Astral's fork of async_zip, which addresses potential sources of ZIP
+   parsing differentials between uv and other Python packaging tooling.
+   See GHSA-pqhf-p39g-3x64 for additional details.
+ * Security
+  * Address ZIP parsing differentials (GHSA-pqhf-p39g-3x64)
+ * Documentation
+  * Update docs for maturin build backend init template</comment>
+    <requestid>1315000</requestid>
+  </revision>
 </revisionlist>
