@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 31 09:58:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32.58
+  * Fixed a crash at startup in Hearts of Iron IV
+  * Fixed mouse movement in Heroes of Might and Magic III
+  * Fixed crash under Wayland with Heavy Gear 2
+  * Fixed crash at shutdown in Sim City 3000
+  * Fixed stuck mouse cursor in Seven Kingdoms
+  * Added a fast path for SDL_MapRGB() and SDL_MapRGBA()
+  * Fixed the colorspace for YUV to RGB conversion
+  * Fixed deadlock when opening audio on some systems
+
+-------------------------------------------------------------------
 Fri Jul 25 08:12:54 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Change license to Zlib

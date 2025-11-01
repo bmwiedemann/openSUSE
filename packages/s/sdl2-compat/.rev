@@ -153,4 +153,12 @@ Binary file sdl2-compat-2.32.54.tar.gz.sig (revision 2) deleted</comment>
     <comment>- Change license to Zlib</comment>
     <requestid>1295718</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00ec00e2981fb62266cc8498c6f15164</srcmd5>
+    <version>2.32.58</version>
+    <time>1762036475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.32.58</comment>
+    <requestid>1314688</requestid>
+  </revision>
 </revisionlist>
