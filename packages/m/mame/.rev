@@ -315,4 +315,13 @@
   * /usr/share/doc/packages/mame/whatsnew-0.281.txt</comment>
     <requestid>1307444</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>96966e8585e26d9d6b3129256b42ea4b</srcmd5>
+    <version>0.282</version>
+    <time>1762036511</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.282
+  * /usr/share/doc/packages/mame/whatsnew-0.282.txt</comment>
+    <requestid>1314953</requestid>
+  </revision>
 </revisionlist>

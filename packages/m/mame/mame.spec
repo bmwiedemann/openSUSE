@@ -1,7 +1,7 @@
 #
 # spec file for package mame
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define ver     281
+%define ver     282
 Name:           mame
 Version:        0.%{ver}
 Release:        0
