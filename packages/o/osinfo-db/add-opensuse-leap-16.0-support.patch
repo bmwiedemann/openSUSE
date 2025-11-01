@@ -2,7 +2,7 @@ Index: osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 ===================================================================
 --- /dev/null
 +++ osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
-@@ -0,0 +1,153 @@
+@@ -0,0 +1,170 @@
 +<?xml version="1.0"?>
 +<libosinfo version="0.0.1">
 +  <!-- Licensed under the GNU General Public License version 2 or later.
@@ -10,15 +10,10 @@ Index: osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 +  <os id="http://opensuse.org/opensuse/16.0">
 +    <short-id>opensuse16.0</short-id>
 +    <name>openSUSE Leap 16.0</name>
-+    <name xml:lang="ko">&#xC624;&#xD508;&#xC218;&#xC138; &#xB9BD; 16.0</name>
-+    <name xml:lang="uk">openSUSE Leap 16.0</name>
-+    <name xml:lang="tr">openSUSE Leap 16.0</name>
-+    <name xml:lang="pt_BR">openSUSE Leap 16.0</name>
-+    <name xml:lang="pl">openSUSE Leap 16.0</name>
-+    <name xml:lang="it">openSUSE Leap 16.0</name>
-+    <name xml:lang="id">openSUSE Leap 16.0</name>
 +    <version>16.0</version>
 +    <vendor>openSUSE</vendor>
++    <vendor xml:lang="zh-Hans">openSUSE</vendor>
++    <vendor xml:lang="ka">openSUSE</vendor>
 +    <vendor xml:lang="ko">&#xC624;&#xD508;&#xC218;&#xC138;</vendor>
 +    <vendor xml:lang="uk">openSUSE</vendor>
 +    <vendor xml:lang="tr">openSUSE</vendor>
@@ -36,24 +31,16 @@ Index: osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 +    <upgrades id="http://opensuse.org/opensuse/15.6"/>
 +    <derives-from id="http://opensuse.org/opensuse/15.6"/>
 +    <release-date>2025-10-01</release-date>
-+    <firmware arch="x86_64" type="efi"/>
 +    <variant id="netinst">
 +      <name>openSUSE Leap 16.0</name>
-+      <name xml:lang="ko">&#xC624;&#xD508;&#xC218;&#xC138; &#xB9BD; 16.0</name>
-+      <name xml:lang="uk">openSUSE Leap 16.0</name>
-+      <name xml:lang="tr">openSUSE Leap 16.0</name>
-+      <name xml:lang="pt_BR">openSUSE Leap 16.0</name>
-+      <name xml:lang="pl">openSUSE Leap 16.0</name>
-+      <name xml:lang="it">openSUSE Leap 16.0</name>
-+      <name xml:lang="id">openSUSE Leap 16.0</name>
 +    </variant>
 +    <!-- DVD -->
 +    <media arch="x86_64">
 +      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-x86_64.install.iso</url>
 +      <iso>
 +        <volume-id>Install-Leap-16.0-x86_64</volume-id>
-+        <system-id></system-id>
-+        <publisher-id>SUSE LINUX GmbH</publisher-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
 +      </iso>
 +      <kernel>boot/x86_64/loader/linux</kernel>
 +      <initrd>boot/x86_64/loader/initrd</initrd>
@@ -61,11 +48,11 @@ Index: osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 +    <!-- Network -->
 +    <media arch="x86_64">
 +      <variant id="netinst"/>
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer.x86_64-Leap_16.0.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-x86_64.install.iso</url>
 +      <iso>
 +        <volume-id>Install-Leap-16.0-x86_64</volume-id>
-+        <system-id></system-id>
-+        <publisher-id>SUSE LINUX GmbH</publisher-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
 +      </iso>
 +      <kernel>boot/x86_64/loader/linux</kernel>
 +      <initrd>boot/x86_64/loader/initrd</initrd>
@@ -75,8 +62,8 @@ Index: osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 +      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-aarch64.install.iso</url>
 +      <iso>
 +        <volume-id>Install-Leap-16.0-aarch64</volume-id>
-+        <system-id></system-id>
-+        <publisher-id>SUSE LINUX GmbH</publisher-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
 +      </iso>
 +      <kernel>boot/aarch64/loader/linux</kernel>
 +      <initrd>boot/aarch64/loader/initrd</initrd>
@@ -84,11 +71,11 @@ Index: osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 +    <!-- Network -->
 +    <media arch="aarch64">
 +      <variant id="netinst"/>
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer.aarch64-Leap_16.0.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-aarch64.install.iso</url>
 +      <iso>
 +        <volume-id>Install-Leap-16.0-aarch64</volume-id>
-+        <system-id></system-id>
-+        <publisher-id>SUSE LINUX GmbH</publisher-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
 +      </iso>
 +      <kernel>boot/aarch64/loader/linux</kernel>
 +      <initrd>boot/aarch64/loader/initrd</initrd>
@@ -98,8 +85,8 @@ Index: osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 +      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-ppc64le.install.iso</url>
 +      <iso>
 +        <volume-id>Install-Leap-16.0-ppc64le</volume-id>
-+        <system-id></system-id>
-+        <publisher-id>SUSE LINUX GmbH</publisher-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
 +      </iso>
 +      <kernel>boot/ppc64le/loader/linux</kernel>
 +      <initrd>boot/ppc64le/loader/initrd</initrd>
@@ -107,11 +94,11 @@ Index: osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 +    <!-- Network -->
 +    <media arch="ppc64le">
 +      <variant id="netinst"/>
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer.ppc64le-Leap_16.0.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-ppc64le.install.iso</url>
 +      <iso>
 +        <volume-id>Install-Leap-16.0-ppc64le</volume-id>
-+        <system-id></system-id>
-+        <publisher-id>SUSE LINUX GmbH</publisher-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
 +      </iso>
 +      <kernel>boot/ppc64le/loader/linux</kernel>
 +      <initrd>boot/ppc64le/loader/initrd</initrd>
@@ -121,8 +108,8 @@ Index: osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 +      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-s390x.install.iso</url>
 +      <iso>
 +        <volume-id>Install-Leap-16.0-s390x</volume-id>
-+        <system-id></system-id>
-+        <publisher-id>SUSE LINUX GmbH</publisher-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
 +      </iso>
 +      <kernel>boot/s390x/loader/linux</kernel>
 +      <initrd>boot/s390x/loader/initrd</initrd>
@@ -130,26 +117,56 @@ Index: osinfo-db-20250606/os/opensuse.org/opensuse-16.0.xml
 +    <!-- Network -->
 +    <media arch="s390x">
 +      <variant id="netinst"/>
-+      <url>https://download.opensuse.org/distribution/leap/16.0/installer/iso/agama-installer.s390x-Leap_16.0.iso</url>
++      <url>https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-s390x.install.iso</url>
 +      <iso>
 +        <volume-id>Install-Leap-16.0-s390x</volume-id>
-+        <system-id></system-id>
-+        <publisher-id>SUSE LINUX GmbH</publisher-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>openSUSE</publisher-id>
 +      </iso>
 +      <kernel>boot/s390x/loader/linux</kernel>
 +      <initrd>boot/s390x/loader/initrd</initrd>
 +    </media>
++    <tree arch="x86_64">
++      <url>https://download.opensuse.org/pub/opensuse/distribution/leap/16.0/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>16.0</version>
++        <arch>x86_64</arch>
++      </treeinfo>
++    </tree>
++    <tree arch="aarch64">
++      <url>https://download.opensuse.org/pub/opensuse/distribution/leap/16.0/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>16.0</version>
++        <arch>aarch64</arch>
++      </treeinfo>
++    </tree>
++    <tree arch="ppc64le">
++      <url>https://download.opensuse.org/pub/opensuse/distribution/leap/16.0/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>16.0</version>
++        <arch>ppc64le</arch>
++      </treeinfo>
++    </tree>
++    <tree arch="s390x">
++      <url>https://download.opensuse.org/pub/opensuse/distribution/leap/16.0/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>16.0</version>
++        <arch>s390x</arch>
++      </treeinfo>
++    </tree>
 +    <resources arch="all">
 +      <minimum>
 +        <cpu>1600000000</cpu>
 +        <n-cpus>2</n-cpus>
-+        <ram>1073741824</ram>
 +        <ram>2147483648</ram>
 +        <storage>42949672960</storage>
 +      </minimum>
 +      <recommended>
 +        <cpu>2400000000</cpu>
-+        <n-cpus>4</n-cpus>
 +        <ram>4294967296</ram>
 +        <storage>42949672960</storage>
 +      </recommended>

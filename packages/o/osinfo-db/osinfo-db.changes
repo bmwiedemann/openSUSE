@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 23 15:54:52 MDT 2025 - carnold@suse.com
+
+- bsc#1252429 - virt-manager does not detect Leap 16.0 offline ISO
+  add-opensuse-leap-16.0-support.patch
+
+-------------------------------------------------------------------
 Wed Sep 10 13:52:10 MDT 2025 - carnold@suse.com
 
 - Fix the definition of Leap 16.0 to match the current names of the
