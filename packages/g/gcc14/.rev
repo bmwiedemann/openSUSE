@@ -259,4 +259,13 @@ next week.  Gcc7 can pick it up from there.
 - Tune for z15 for SLES 16.  [jsc#PED-253]</comment>
     <requestid>1294098</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e228d1a265f9e7f12d44c631a88187ca</srcmd5>
+    <version>14.3.1+git12132</version>
+    <time>1762119245</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-14 branch head, dfb81b8cb5eb2fc4908beb65f, git12132
+  to pick change fixing build with glibc 2.42 remove of termio.</comment>
+    <requestid>1315080</requestid>
+  </revision>
 </revisionlist>

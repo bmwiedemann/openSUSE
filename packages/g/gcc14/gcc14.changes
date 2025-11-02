@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 31 14:23:35 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-14 branch head, dfb81b8cb5eb2fc4908beb65f, git12132
+  to pick change fixing build with glibc 2.42 remove of termio.
+
+-------------------------------------------------------------------
 Thu Jul 17 09:25:13 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Remove all %gcc_icecream mode cross-compilers and the corresponding
