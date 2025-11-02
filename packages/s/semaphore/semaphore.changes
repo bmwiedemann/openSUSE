@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 02 07:14:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.37 (.36 was not released):
+  * Bugfixes
+    - Problem: Integrations completely broken after Upgrade to 2.16
+      (#3215)
+
+-------------------------------------------------------------------
 Tue Oct 28 14:26:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.16.35 (.33 and .34 were not released):
