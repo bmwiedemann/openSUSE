@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov  2 14:18:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Updated to 8.2.3
+  * https://github.com/redis/redis/releases/tag/8.2.3
+  - Security fixes
+    - (CVE-2025-62507) Bug in `XACKDEL` may lead to stack overflow
+      and potential RCE
+  - Bug fixes
+    - `HGETEX`: A missing `numfields` argument when `FIELDS` is
+      used can lead to Redis crash
+    - An overflow in `HyperLogLog` with 2GB+ entries may result in
+      a Redis crash
+    - Cuckoo filter - Division by zero in Cuckoo filter insertion
+    - Cuckoo filter - Counter overflow
+    - Bloom filter - Arbitrary memory read/write with invalid
+      filter
+    - Bloom filter - Out-of-bounds access with empty chain
+    - Top-k - Out-of-bounds access
+    - Bloom filter - Restore invalid filter [We thank AWS security
+      for responsibly disclosing the security bug]
+
+-------------------------------------------------------------------
 Sat Oct  4 13:43:20 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 8.2.2 (boo#1250995)
