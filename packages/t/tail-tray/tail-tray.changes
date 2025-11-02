@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Nov 02 16:01:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.25 (0.2.24 was not released):
+  * What's new in this release
+    This release adds support for custom scriptable actions on tail
+    nodes, once you've defined a scripts folder any executable
+    scripts in that folder will be possible to invoke from the
+    menu. More info on how scriptable actions works can be found
+    here
+    https://github.com/SneWs/tail-tray/blob/master/docs/scriptable-actions.md
+    And, this release adds initial support for getting
+    notifications when a new node is discovered, or a node is
+    removed from your tailnet. This feature will continue to expand
+    going forward.
+    And the usual suspect in the form of bug fixes and general
+    improvements.
+  * Changes
+    - Fix for cmake
+    - Minor cleanup
+    - [Feature] show notification, when client connects /
+      disconnects #90
+    - UI layout file - Fix broken constraints and values from using
+      a too old QT creator/designer
+    - cmake - Fix so we don't try to use KNOTIFICATIONS on Windows
+      builds, even if defined
+    - Last few fixes for issue #83
+    - Build/ubuntu 25.10 (#92)
+    - Fix for Issue #88 - Make sure to not spam popup dialogs when
+      not user is set as operator
+    - Minor cleanup and correctness fixes in Script manager
+    - Docs - Add docs for scriptable actions
+    - Scriptable actions - Exclude non-executable script files
+    - Scriptable actions - Fix a bug around what hostname is used
+    - Scriptable actions - Add discovered scripts to a sub menu
+    - First itteration for scriptable actions (#87)
+    - Debian Trixie still doesn't have support for modern KDE :/
+    - Debian Trixie still doesn't have support for modern KDE :/
+    - cmake cleanup for debian-trixie release builds
+    - Debian Trixie - Debian 13 deb files Fixes #84
+    - don't use absoulte paths in desktop file (#82)
+
+-------------------------------------------------------------------
 Tue Jun 03 04:55:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.23:
