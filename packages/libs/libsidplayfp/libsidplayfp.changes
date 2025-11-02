@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  2 09:27:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15.2
+  * Fixed building with pre c++20 standards.
+  * Fixed crash in SidDatabase parser.
+
+-------------------------------------------------------------------
 Wed Oct 22 09:45:19 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Neon SIMD has been removed from 2.15

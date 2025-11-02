@@ -219,4 +219,14 @@ GStreamer.</comment>
     <comment></comment>
     <requestid>1313030</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>36b0475f0f87b3fde140b3215d792603</srcmd5>
+    <version>2.15.2</version>
+    <time>1762119250</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.15.2
+  * Fixed building with pre c++20 standards.
+  * Fixed crash in SidDatabase parser.</comment>
+    <requestid>1315092</requestid>
+  </revision>
 </revisionlist>
