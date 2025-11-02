@@ -35,4 +35,12 @@
     <comment>update to 1.1.0 (forwarded request 1314502 from ojkastl_buildservice)</comment>
     <requestid>1314576</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe54549683c72cda0355074ca75ed49a</srcmd5>
+    <version>1.1.2</version>
+    <time>1762119265</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.1.2 (forwarded request 1315050 from ojkastl_buildservice)</comment>
+    <requestid>1315123</requestid>
+  </revision>
 </revisionlist>

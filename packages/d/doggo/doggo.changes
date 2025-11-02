@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov 02 06:48:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.2:
+  * Bug fixes
+    - 032da72: fix: installer: better arch detection for 32bit ARM
+      systems (@mxlje)
+    - deea977: fix: remove left padding and improve column spacing
+      in borderless table output (@mr-karan)
+  * Others
+    - 1f180dc: chore: installer: don’t log extraction progress
+      (@mxlje)
+
+-------------------------------------------------------------------
+Sun Nov 02 06:44:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.1:
+  * fix: restore compact borderless table output for narrow
+    terminals
+  * fix: correct typo in install.sh file command check
+
+-------------------------------------------------------------------
 Thu Oct 30 07:22:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.0:
