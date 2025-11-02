@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:58:10 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 10.9.3+0:
+  * feat: bump to 10.9.3 for gnome 49.x support
+  * GNOME 49 GSD changes
+- Polkit review (bsc#1252691)
+
+-------------------------------------------------------------------
 Wed Mar 26 12:26:47 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - No longer conflict gnome-shell: Issues have been resolved

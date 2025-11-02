@@ -27,7 +27,7 @@
 %bcond_with magpie
 %endif
 Name:           budgie-desktop
-Version:        10.9.2+3
+Version:        10.9.3+0
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -73,6 +73,9 @@ BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.3
 BuildRequires:  pkgconfig(upower-glib) >= 1.0
+BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(libwacom)
+BuildRequires:  pkgconfig(udev)
 # remove old applet
 Provides:       budgie-trash-applet = 1.7.0
 Obsoletes:      budgie-trash-applet
@@ -87,7 +90,7 @@ Requires:       budgie-screensaver >= 5.1.0+0
 Requires:       typelib-1_0-Budgie-1_0 >= %{version}
 Requires:       typelib-1_0-BudgieRaven-1_0 >= %{version}
 Requires:       budgie-desktop-branding >= 20240412.1
-Requires:       budgie-control-center >= 1.4.0+2
+Requires:       budgie-control-center >= 1.4.1+0
 Requires:       budgie-session >= 0.9.1
 %if %{with magpie}
 Requires:       magpie >= 0.9.3+0
@@ -107,6 +110,7 @@ Requires:       gstreamer
 Requires:       libnotify-tools
 Requires:       libcanberra-gtk3-module
 Requires:       gnome-settings-daemon
+Requires:       labwc
 Requires:       ibus
 Requires:       libgnomesu
 Requires:       xdg-user-dirs-gtk
@@ -223,6 +227,9 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
+# move bad location
+mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/autostart || true
+
 # handled by budgie-screensaver
 rm %{buildroot}%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopScreensaver.desktop
 
@@ -248,12 +255,19 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopSc
 %{_bindir}/budgie-*
 %{_bindir}/org.buddiesofbudgie*
 %{_libexecdir}/budgie-desktop
+%{_libexecdir}/bsd-power
+%{_libexecdir}/bsd-backlight-helper
+%{_libexecdir}/bsd-media-keys
+%{_libexecdir}/bsd-wacom
+%{_libexecdir}/bsd-wacom-oled-helper
 %{_mandir}/man1/*%{?ext_man}
 %{_datadir}/budgie
 %{_datadir}/applications/*.desktop
 %{_datadir}/backgrounds
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_datadir}/glib-2.0/schemas/*.gschema.override
+%{_datadir}/polkit-1/actions/org.buddiesofbudgie.settings-daemon.plugins.power.policy
+%{_datadir}/polkit-1/actions/org.buddiesofbudgie.settings-daemon.plugins.wacom.policy
 %{_datadir}/icons/hicolor/scalable/*/*.svg
 %{_datadir}/gnome-session
 %{_datadir}/xsessions/default.desktop
@@ -286,6 +300,7 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopSc
 
 %files devel
 %{_includedir}/budgie-desktop
+%{_includedir}/budgie-settings-daemon-48
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/Budgie-1.0.gir

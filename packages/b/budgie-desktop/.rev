@@ -531,4 +531,12 @@
     <comment>Un-conflict gnome-shell</comment>
     <requestid>1256242</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>f40b0a8b8abab4edd30de760ea473833</srcmd5>
+    <version>10.9.3+0</version>
+    <time>1762119188</time>
+    <user>dimstar_suse</user>
+    <comment>10.9.3</comment>
+    <requestid>1313571</requestid>
+  </revision>
 </revisionlist>
