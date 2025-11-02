@@ -1,7 +1,7 @@
 #
 # spec file for package xrootd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@
 %bcond_with    ceph
 
 Name:           %{pname}%{psuffix}
-Version:        5.8.4
+Version:        5.9.0
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
@@ -494,6 +494,7 @@ popd
 %{_libdir}/libXrdXml.so.*
 # Section Plugins
 %{_libdir}/libXrdAccSciTokens-%{plugver}.so
+%{_libdir}/libXrdHttpCors-%{plugver}.so
 %{_libdir}/libXrdHttpTPC-%{plugver}.so
 %{_libdir}/libXrdClHttp-%{plugver}.so
 %{_libdir}/libXrdClProxyPlugin-%{plugver}.so

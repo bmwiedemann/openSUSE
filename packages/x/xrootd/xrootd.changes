@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Oct 29 07:33:47 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.9.0:
+  * New features:
+    - [Server] Implement udprefresh option for the xrd.network
+      directive (gh#xrootd/xrootd#1873).
+    - [Server] New redirect intercept plugin for SENSE.
+    - [XrdCors] Add CORS plugin to XrdHttp (gh#xrootd/xrootd#2541,
+      gh#xrootd/xrootd#2552).
+    - [XrdHttp] Make HTTP's maximum open delay configurable via
+      http.maxdelay option (gh#xrootd/xrootd#2532).
+    - [XrdNet] XRootD monitoring information now follows DNS
+      changes (gh#xrootd/xrootd#1873).
+    - [XrdPfc] Implement URL CGI parameters for setting block-size
+      and max number of blocks for prefetching on per file basis
+      (gh#xrootd/xrootd#2606).
+    - [XrdTls] Allow disabling of X.509 client auth
+      (gh#xrootd/xrootd#2269).
+  * Bug fixes:
+    - [XrdCl] Avoid poller callbacks blocking each other
+      (gh#xrootd/xrootd#2578, gh#xrootd/xrootd#2582).
+    - [XrdCl] Fix URL object lifetime issue causing XCache crash
+      (gh#xrootd/xrootd#2587, gh#xrootd/xrootd#2599).
+    - [XrdSsi] Fix XrdSsi server crash due to use after free
+      (gh#xrootd/xrootd#2479, gh#xrootd/xrootd#2481,
+      gh#xrootd/xrootd#2523).
+    - [XrdSys] Fix a race condition in IOEvents that might cause
+      segfault.
+    - [XrdCl] Fix xrdcp crash when running with record plugin
+      enabled (gh#xrootd/xrootd#2579).
+    - [XrdPfc] Fix deadlock when opening/closing many files
+      concurrently (gh#xrootd/xrootd#2561, gh#xrootd/xrootd#2563).
+    - [Server] Make sure tread create counter increases
+      monotonically (gh#xrootd/xrootd#2597).
+    - [XrdCl] PollerBuiltIn, protection against adding socket
+      during shutdown.
+    - [XrdHttp] Do a clean TLS shutdown for HTTPS
+      (gh#xrootd/xrootd#2565).
+    - [XrdHttp] Fix file renaming with token authentication after
+      redirection (gh#xrootd/xrootd#2550, gh#xrootd/xrootd#2570).
+    - [XrdHttpTpc] Improve mapping of error codes to HTTP status
+      in TPC transfers (gh#xrootd/xrootd#2591).
+    - [XrdOssCsi] Handle pathnames not starting with slash and
+      allow access to FD (gh#xrootd/xrootd#2581,
+      gh#xrootd/xrootd#2594).
+    - [XrdOss] Workaround Mac OS X pecularity with RLIMIT_NOFILE
+      (gh#xrootd/xrootd#2577).
+    - [XrdOuc] Fix memory leak in XrdOucGatherConf
+      (gh#xrootd/xrootd#2583).
+    - [XrdPfc] Return error code for set cache evict if the file
+      does not exist (gh#xrootd/xrootd#2608).
+    - [XrdPosix] Add a missed file object unlock.
+    - [XrdPosix] Set errno for errors from pgRead and pgWrite.
+    - [XrdXrootd] Fix multi-stream copy with xrdcp through XCache
+      (gh#xrootd/xrootd#2592, gh#xrootd/xrootd#2593).
+  * Miscellaneous:
+    - [CMake] Downgrade -Werror=null-dereference back to just a
+      warning (gh#xrootd/xrootd#2571).
+    - [Tests] Add an xcache test, using OssCsi to flag corruption.
+    - [Tests] Extend test suite with more tests with token based
+      authentication.
+    - [XrdHttp] Set the sequential I/O flag for simple HTTP
+      requests.
+    - [XrdOssStats] Add documentation for the OSS statistics
+      plugin.
+    - [XrdPfc] Cleanup processing and storage of pfc.dirstats
+      configuration parameters.
+    - [XrdPfc] Pass full environment into the OSS library loader.
+    - [XrdThrottle] Modify XrdThrottle to be an OSS plugin
+      (gh#xrootd/xrootd#2521).
+    - [XrdThrottle] Re-engineered concurrency limits
+      (gh#xrootd/xrootd#2521).
+
+-------------------------------------------------------------------
 Mon Aug  4 18:44:15 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.8.4:
