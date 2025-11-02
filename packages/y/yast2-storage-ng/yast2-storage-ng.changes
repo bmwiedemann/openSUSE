@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 10 09:44:39 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Add umask=0077 fstab option to vfat partitions in order to reduce
+  security risks (bsc#1250510).
+- 5.0.37
+
+-------------------------------------------------------------------
+Wed Sep 24 10:34:05 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Using PbkdFunction::PBKDF2 for none efi systems (bsc#1249670).
+- 5.0.36
+
+-------------------------------------------------------------------
 Mon Jul 28 10:59:39 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Do not generate grub2 error messages and proposals if a BLS
