@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov  1 10:35:46 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.7.0:
+  * Added:
+    + git webhook handling
+    + git setup command that configures a repository for "git send-email" via 
+      the project config file
+    + pages ACL handling
+    + "Update" command for multiple resources
+    + "count" flag for all list commands. The number of items that should be 
+       fetched by hut can now be specified. This is especially useful when 
+       redirecting "stdout" and not using the interactive pager.
+  * Changed:
+    + Some list commands, like ticket list and patchset list, support filtering
+      by status now and will only show actionable items by default (proposed 
+      patches, open tickets)
+    + hut will check all git remotes now instead of just origin
+
+-------------------------------------------------------------------
 Sat Mar 22 14:51:53 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.6.0:

@@ -39,4 +39,28 @@
     <comment></comment>
     <requestid>1255314</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b0af397687b3f0b02339ad048a2abdb9</srcmd5>
+    <version>0.7.0</version>
+    <time>1762119252</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1314990 from amanzini
+
+- Update to version 0.7.0:
+  * Added:
+    + git webhook handling
+    + git setup command that configures a repository for &quot;git send-email&quot; via 
+      the project config file
+    + pages ACL handling
+    + &quot;Update&quot; command for multiple resources
+    + &quot;count&quot; flag for all list commands. The number of items that should be 
+       fetched by hut can now be specified. This is especially useful when 
+       redirecting &quot;stdout&quot; and not using the interactive pager.
+  * Changed:
+    + Some list commands, like ticket list and patchset list, support filtering
+      by status now and will only show actionable items by default (proposed 
+      patches, open tickets)
+    + hut will check all git remotes now instead of just origin</comment>
+    <requestid>1315103</requestid>
+  </revision>
 </revisionlist>
