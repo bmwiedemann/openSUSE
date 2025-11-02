@@ -70,7 +70,6 @@ BuildRequires:  %{python_module Mathics = %{version}}
 BuildRequires:  %{python_module Pillow >= 9.2}
 BuildRequires:  %{python_module Pint}
 BuildRequires:  %{python_module chardet}
-BuildRequires:  %{python_module llvmlite}
 BuildRequires:  %{python_module palettable}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-image >= 0.17}

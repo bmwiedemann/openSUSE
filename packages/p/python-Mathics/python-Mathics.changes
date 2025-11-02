@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 29 13:13:53 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop llvmlite optional requirement for tests; fixes test flavour
+  builds for Tumbleweed which are incompatible with latest
+  llvmlite.
+
+-------------------------------------------------------------------
 Sun Aug 31 04:44:06 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.0.0:
