@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct 28 19:35:08 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.5.0:
+  * New features:
+    - Added the SUNDomEigEstimator interface for estimating the
+      dominant eigenvalue value of a system.
+    - Added the function LSRKStepSetDomEigEstimator in LSRKStep to
+      attach a SUNDomEigEstimator, when using Runge-Kutta-
+      Chebyshev or Runge-Kutta-Legendre methods, as an
+      alternative to supplying a user-defined function to compute
+      the dominant eigenvalue.
+    - A new SUNLinearSolver, SUNLINEARSOLVER_GINKGOBATCH, and
+      corresponding SUNMatrix, SUNMATRIX_GINKGOBATCH, were added
+      for solving block/batched linear systems with the Ginkgo
+      linear solver library.
+    - The functions KINSetMAA and KINSetOrthAA have been updated
+      to allow for setting the Anderson acceleration depth and
+      orthogonalization method after KINInit.
+  * Bug fixes:
+    - Too many to list, see
+      <https://sundials.readthedocs.io/en/latest/Changelog_link.html#changes-to-sundials-in-release-7-5-0>
+- Split out new shared libraries: libsundials_sundomeigestarnoldi1
+  and libsundials_sundomeigestpower1, two different
+  implementations of sundials' new eigen value estimator
+  SUNDomEigEstimator. 
+
+-------------------------------------------------------------------
 Mon Aug  4 12:48:10 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.4.0:

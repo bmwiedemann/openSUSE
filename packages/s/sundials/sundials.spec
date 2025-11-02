@@ -1,7 +1,7 @@
 #
 # spec file for package sundials
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,20 +81,22 @@ ExclusiveArch:  do_not_build
 
 # /SECTION
 
-%define shlib_arkode    libsundials_arkode6%{?my_suffix}
-%define shlib_cvode     libsundials_cvode7%{?my_suffix}
-%define shlib_cvodes    libsundials_cvodes7%{?my_suffix}
-%define shlib_core      libsundials_core7%{?my_suffix}
-%define shlib_ida       libsundials_ida7%{?my_suffix}
-%define shlib_idas      libsundials_idas6%{?my_suffix}
-%define shlib_kinsol    libsundials_kinsol7%{?my_suffix}
-%define shlib_nvec      libsundials_nvec7%{?my_suffix}
-%define shlib_sunlinsol libsundials_sunlinsol5%{?my_suffix}
-%define shlib_sunmatrix libsundials_sunmatrix5%{?my_suffix}
-%define shlib_sunnonlin libsundials_sunnonlin4%{?my_suffix}
+%define shlib_arkode        libsundials_arkode6%{?my_suffix}
+%define shlib_cvode         libsundials_cvode7%{?my_suffix}
+%define shlib_cvodes        libsundials_cvodes7%{?my_suffix}
+%define shlib_core          libsundials_core7%{?my_suffix}
+%define shlib_eigestarnoldi libsundials_sundomeigestarnoldi1%{?my_suffix}
+%define shlib_eigestpower   libsundials_sundomeigestpower1%{?my_suffix}
+%define shlib_ida           libsundials_ida7%{?my_suffix}
+%define shlib_idas          libsundials_idas6%{?my_suffix}
+%define shlib_kinsol        libsundials_kinsol7%{?my_suffix}
+%define shlib_nvec          libsundials_nvec7%{?my_suffix}
+%define shlib_sunlinsol     libsundials_sunlinsol5%{?my_suffix}
+%define shlib_sunmatrix     libsundials_sunmatrix5%{?my_suffix}
+%define shlib_sunnonlin     libsundials_sunnonlin4%{?my_suffix}
 
 Name:           %{package_name}
-Version:        7.4.0
+Version:        7.5.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.
@@ -134,6 +136,8 @@ Requires:       %{shlib_arkode} = %{version}
 Requires:       %{shlib_core} = %{version}
 Requires:       %{shlib_cvodes} = %{version}
 Requires:       %{shlib_cvode} = %{version}
+Requires:       %{shlib_eigestarnoldi} = %{version}
+Requires:       %{shlib_eigestpower} = %{version}
 Requires:       %{shlib_idas} = %{version}
 Requires:       %{shlib_ida} = %{version}
 Requires:       %{shlib_kinsol} = %{version}
@@ -193,6 +197,28 @@ SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
 for use in writing mathematical software.
 
 This package provides the shared libraries for SUNDIALS' generic solver.
+
+%package -n %{shlib_eigestarnoldi}
+Summary:        Suite of nonlinear solvers - sundomeigestarnoldi shared libraries
+
+%description -n %{shlib_eigestarnoldi}
+SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
+for use in writing mathematical software.
+
+This package provides the shared libraries for SUNDIALS' Arnoldi
+implementation for SUNDomEigEstimator, which estimates the
+dominant eigenvalue for a system.
+
+%package -n %{shlib_eigestpower}
+Summary:        Suite of nonlinear solvers - sundomeigestpower shared libraries
+
+%description -n %{shlib_eigestpower}
+SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
+for use in writing mathematical software.
+
+This package provides the shared libraries for SUNDIALS' Power
+Iteration implementation for SUNDomEigEstimator, which estimates
+the dominant eigenvalue for a system.
 
 %package -n %{shlib_ida}
 Summary:        Suite of nonlinear solvers - ida shared libraries
@@ -324,6 +350,8 @@ fi
 %ldconfig_scriptlets -n %{shlib_cvode}
 %ldconfig_scriptlets -n %{shlib_cvodes}
 %ldconfig_scriptlets -n %{shlib_core}
+%ldconfig_scriptlets -n %{shlib_eigestarnoldi}
+%ldconfig_scriptlets -n %{shlib_eigestpower}
 %ldconfig_scriptlets -n %{shlib_ida}
 %ldconfig_scriptlets -n %{shlib_idas}
 %ldconfig_scriptlets -n %{shlib_kinsol}
@@ -366,6 +394,12 @@ fi
 
 %files -n %{shlib_core}
 %{my_libdir}/libsundials_core.so.*
+
+%files -n %{shlib_eigestarnoldi}
+%{my_libdir}/libsundials_sundomeigestarnoldi.so.*
+
+%files -n %{shlib_eigestpower}
+%{my_libdir}/libsundials_sundomeigestpower.so.*
 
 %files -n %{shlib_ida}
 %{my_libdir}/libsundials_ida.so.*

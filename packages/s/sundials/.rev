@@ -170,4 +170,12 @@
 * Clean up %check section.</comment>
     <requestid>1298084</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fbb872b97fe8305faeeb4ff63a44d942</srcmd5>
+    <version>7.5.0</version>
+    <time>1762119192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1315030</requestid>
+  </revision>
 </revisionlist>
