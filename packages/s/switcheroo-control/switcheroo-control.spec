@@ -1,7 +1,7 @@
 #
 # spec file for package switcheroo-control
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,22 @@
 
 
 Name:           switcheroo-control
-Version:        2.6
+Version:        3.0
 Release:        0
-Summary:        D-Bus service to check the availability of dual-GPU
+Summary:        D-Bus service to check the availability of dual GPUs
 License:        GPL-3.0-only
 Group:          Hardware/Other
 URL:            https://gitlab.freedesktop.org/hadess/switcheroo-control
-Source0:        https://gitlab.freedesktop.org/hadess/switcheroo-control/-/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
+Source:         https://gitlab.freedesktop.org/hadess/switcheroo-control/-/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0:         harden_switcheroo-control.service.patch
 BuildRequires:  gtk-doc
+BuildRequires:  kernel-devel
 BuildRequires:  meson >= 0.50
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(udev)
 %{?systemd_requires}
 # SECTION For tests
@@ -41,7 +42,7 @@ BuildRequires:  pkgconfig(umockdev-1.0)
 # /SECTION
 
 %description
-switcheroo-control is a D-Bus service to check the availability of dual-GPU.
+switcheroo-control is a D-Bus service to check the availability of dual GPUs.
 
 %package doc
 Summary:        Documentation for %{name}
@@ -55,10 +56,20 @@ This package contains the documentation for %{name}.
 %autosetup -p1
 
 %build
+%set_build_flags
+if test -f /usr/src/linux/include/uapi/drm/xe_drm.h; then
+	mkdir -pv xinc/drm
+	cp -av /usr/src/linux/include/uapi/drm/xe_drm.h xinc/drm/
+	export CFLAGS="$CFLAGS -I$PWD/xinc"
+	xmeson=""
+else
+	xmeson="-Ddrm_xe=disabled"
+fi
 %meson \
-   -Dsystemdsystemunitdir=%{_unitdir} \
-   -Dhwdbdir=%{_udevhwdbdir} \
-   -Dgtk_doc=true
+	-Dsystemdsystemunitdir=%{_unitdir} \
+	-Dhwdbdir=%{_udevhwdbdir} \
+	-Dgtk_doc=true \
+	$xmeson
 
 %meson_build
 
@@ -87,9 +98,11 @@ This package contains the documentation for %{name}.
 %doc NEWS README.md
 %{_bindir}/switcherooctl
 %{_libexecdir}/switcheroo-control
+%{_libexecdir}/switcheroo-control-check-discrete-*
 %{_mandir}/man1/switcherooctl.1%{?ext_man}
 %{_unitdir}/switcheroo-control.service
 %{_udevhwdbdir}/30-pci-intel-gpu.hwdb
+%{_udevrulesdir}/30-discrete-gpu.rules
 %{_datadir}/dbus-1/system.d/net.hadess.SwitcherooControl.conf
 
 %files doc

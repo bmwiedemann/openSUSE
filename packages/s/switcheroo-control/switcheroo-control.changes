@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov  2 13:00:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Pull in kernel-devel and enable xe-drm.
+
+-------------------------------------------------------------------
+Mon Oct 27 14:45:28 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0:
+  * Add new API to discover discrete GPUs; works with amdgpu,
+    nouveau, i915, xe, and the proprietary NVIDIA driver.
+  * Include environment variable VK_LOADER_DRIVERS_SELECT for
+    selecting the approriate Vulkan driver.
+  * Add Xe and AMDGPU drivers to the Vulkan driver list.
+- Build with discrete-gpu check for Intel Xe disabled because
+  meson cannot find `drm/xe_drm.h`, which for openSUSE kernels is
+  in `/usr/src/linux-<VER>/include/uapi/`. Meson fails at
+  configure unless this is disabled.
+- Drop unnecessary rpmlintrc file since man file has been
+  installed for a while now and rpmlint does not complain about
+  'missing man file'.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:38:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
