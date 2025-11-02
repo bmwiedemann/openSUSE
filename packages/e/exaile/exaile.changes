@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Nov  1 10:05:51 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 4.2.0
+  * Exaile now uses an SQLite database for the music library, replacing 
+    Berkeley DB. Note that you still need the Python bsddb3 or berkeleydb 
+    module installed in order to migrate your existing library to the new 
+    format; without it, Exaile will fail to start.
+  * Fixed sporadic build error due to race condition while processing the 
+    desktop and appdata files 
+  * The somafm plugin should now work on Python >= 3.12 
+  * Fixed showing lyrics with the lyricsmania plugin
+  * Fixed error in Preferences → Plugins 
+  * Fixed exporting playlists when the "Use relative paths to tracks" option 
+    is not selected
+  * There is now an option to show hidden audio devices in 
+    Preferences → Playback
+  * Translation updates
+
+- update to version 4.1.4
+  * Bugfix: .desktop & appdata generation
+  * Bugfix: Exaile stopped playing at end of queue instead of continuing the
+    last playlist
+  * Bugfix: Don’t remove tracks twice during scan 
+  * Bugfix: Create really unique engine names to prevent PulseAudio from 
+    remember last volume set
+  * Bugfix: Queue page breaks when all tracks is removed
+  * Bugfix: Library scan freezes when scanning corrupt wav files
+  * Bugfix: Disable track fading when playing track without known length
+  * Bugfix: Queue repeats first two tracks over and over again
+  * Usability: Fix Settings > Playback > Fade spinner displacement
+  * Improvement: added support for webm videos in files panel
+
+- dropped patch exaile-support-python-313.patch since it's merged in upstream
+
+-------------------------------------------------------------------
 Tue Mar 11 01:05:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch exaile-support-python-313.patch:

@@ -1,6 +1,8 @@
---- a/xl/main.py
-+++ b/xl/main.py
-@@ -393,7 +393,7 @@ class Exaile(object):
+Index: exaile-4.2.0/xl/main.py
+===================================================================
+--- exaile-4.2.0.orig/xl/main.py
++++ exaile-4.2.0/xl/main.py
+@@ -620,7 +620,7 @@ class Exaile:
          splash = None
  
          if self.options.StartGui:
@@ -9,8 +11,10 @@
                  from xlgui.widgets.info import Splash
  
                  splash = Splash()
---- a/xlgui/preferences/appearance.py
-+++ b/xlgui/preferences/appearance.py
+Index: exaile-4.2.0/xlgui/preferences/appearance.py
+===================================================================
+--- exaile-4.2.0.orig/xlgui/preferences/appearance.py
++++ exaile-4.2.0/xlgui/preferences/appearance.py
 @@ -47,7 +47,7 @@ class ShowInfoAreaCoversPreference(widge
  
  

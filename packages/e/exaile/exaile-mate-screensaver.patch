@@ -1,5 +1,7 @@
---- a/plugins/screensaverpause/__init__.py
-+++ b/plugins/screensaverpause/__init__.py
+Index: exaile-4.2.0/plugins/screensaverpause/__init__.py
+===================================================================
+--- exaile-4.2.0.orig/plugins/screensaverpause/__init__.py
++++ exaile-4.2.0/plugins/screensaverpause/__init__.py
 @@ -30,7 +30,12 @@ import dbus
  from xl import event, player, settings
  
