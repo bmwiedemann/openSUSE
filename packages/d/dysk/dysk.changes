@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 02 16:01:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.3.0:
+  * support for getting info by path on windows, eg dysk some/file
+    (was already possible on Linux and Mac)
+  * hide the --strategy argument: there's no reason to use it today
+
+-------------------------------------------------------------------
 Thu Oct 30 07:10:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.2.0:
