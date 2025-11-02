@@ -55,4 +55,12 @@
     <comment>update to 22.1.0</comment>
     <requestid>1311279</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5a07f433d98b0e697fba39dc78dd1b77</srcmd5>
+    <version>22.2.0</version>
+    <time>1762119203</time>
+    <user>dimstar_suse</user>
+    <comment>update to 22.2.0</comment>
+    <requestid>1315061</requestid>
+  </revision>
 </revisionlist>
