@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  2 08:37:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11
+  * vfontas had failed to recognize commands with a leading dash,
+    which was fixed
+
+-------------------------------------------------------------------
 Sat Oct 11 12:05:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.10
