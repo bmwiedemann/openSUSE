@@ -1,7 +1,7 @@
 #
 # spec file for package qalculate-gtk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qalculate-gtk
-Version:        5.5.1
+Version:        5.8.1
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
@@ -31,14 +31,15 @@ BuildRequires:  libnghttp2-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.4
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
-BuildRequires:  pkgconfig(libqalculate) >= %{version}
+BuildRequires:  pkgconfig(libqalculate) >= 5.6.0
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       qalculate-data >= %{version}
 
 %description
-Qalculate! is a multi-purpose cross-platform desktop calculator. It is
+Qalculate is a multi-purpose cross-platform desktop calculator. It is
 simple to use but provides power and versatility normally reserved for
 complicated math packages, as well as useful tools for everyday needs
 (such as currency conversion and percent calculation). Features include a
@@ -47,6 +48,16 @@ symbolic calculations (including integrals and equations), arbitrary
 precision, uncertainty propagation, interval arithmetic, plotting, and a
 user-friendly interface (GTK+ and CLI).
 
+%package -n gnome-shell-search-provider-qalculate-gtk
+Summary:        Search provider for GNOME shell overview for qalculate-gtk
+Requires:       %{name} = %{version}
+Requires:       gnome-shell
+Supplements:    (%{name} and gnome-shell)
+
+%description -n gnome-shell-search-provider-qalculate-gtk
+Qalculate is a multi-purpose cross-platform desktop calculator. This package
+provides a search provider for qalculate on the gnome-shell overview.
+
 %lang_package
 
 %prep
@@ -54,35 +65,30 @@ user-friendly interface (GTK+ and CLI).
 
 %build
 NOCONFIGURE=1 ./autogen.sh
-%configure
+%configure --enable-gnome-search
 %make_build
 
 %install
 %make_install
-%find_lang %{name}
+%find_lang %{name} %{?no_lang_C}
 
 %files
+%license COPYING
 %doc AUTHORS ChangeLog README TODO
 %doc %{_datadir}/doc/%{name}
 %{_bindir}/%{name}
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
-%license COPYING
 %{_mandir}/man?/%{name}.?%{ext_man}
+%{_datadir}/icons/hicolor/*/apps/qalculate.*
+
+%files -n gnome-shell-search-provider-qalculate-gtk
+%license COPYING
 %{_libexecdir}/qalculate-search-provider
 %{_datadir}/dbus-1/services/io.github.Qalculate.SearchProvider.service
 %dir %{_datadir}/gnome-shell/
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/io.github.Qalculate.search-provider.ini
-%{_datadir}/icons/hicolor/128x128/apps/qalculate.png
-%{_datadir}/icons/hicolor/16x16/apps/qalculate.png
-%{_datadir}/icons/hicolor/22x22/apps/qalculate.png
-%{_datadir}/icons/hicolor/24x24/apps/qalculate.png
-%{_datadir}/icons/hicolor/256x256/apps/qalculate.png
-%{_datadir}/icons/hicolor/32x32/apps/qalculate.png
-%{_datadir}/icons/hicolor/48x48/apps/qalculate.png
-%{_datadir}/icons/hicolor/64x64/apps/qalculate.png
-%{_datadir}/icons/hicolor/scalable/apps/qalculate.svg
 
 %files lang -f %{name}.lang
 
