@@ -1,7 +1,7 @@
 #
 # spec file for package vegeta
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           vegeta
-Version:        12.12.0
+Version:        12.13.0
 Release:        0
 Summary:        HTTP load testing tool and library
 License:        MIT
 URL:            https://github.com/tsenart/vegeta
 Source:         vegeta-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  golang(API) >= 1.22
 
 %description
 Vegeta is a versatile HTTP load testing tool built out of a need to drill HTTP

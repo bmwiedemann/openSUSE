@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 02 07:17:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 12.13.0:
+  * Fix sort instability in plot data ordering
+  * Update golden test file for uPlot migration
+  * Migrate plot command from Dygraphs to uPlot
+
+-------------------------------------------------------------------
 Sat Aug 24 00:13:33 UTC 2024 - jgwang@suse.com
 
 - Update to version 12.12.0:
