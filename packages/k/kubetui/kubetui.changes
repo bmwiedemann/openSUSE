@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov 02 16:10:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.1:
+  * Fixes
+    - text widget: Prevent follow flag from becoming permanently
+      false (#863)
+      - Introduced proper state management for user interactions
+      - Separated configuration (follow) from runtime state
+        (interaction_state)
+      - Fixed issue where auto-scroll would stop working after
+        mouse events
+  * Dependencies
+    - Updated clap to v4.5.51 (#865)
+    - Updated ctrlc to v3.5.1 (#864)
+    - Updated flate2 to v1.1.5 (#860)
+    - Lock file maintenance (#866)
+    - Updated GitHub artifact actions (#861)
+
+-------------------------------------------------------------------
 Fri Oct 24 05:09:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.0:
