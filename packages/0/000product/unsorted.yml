@@ -15947,6 +15947,7 @@ unsorted:
   - librmt-devel-doc 
   - librnnoise0 
   - librnp0 
+  - librocblas4 
   - librocfft0 
   - librocksdb10 
   - librocm-core1 
@@ -24277,6 +24278,7 @@ unsorted:
   - python311-amqpstorm 
   - python311-ana 
   - python311-aniso8601 
+  - python311-annotated-doc 
   - python311-annotated-types 
   - python311-annoy 
   - python311-ansel 
@@ -28023,6 +28025,7 @@ unsorted:
   - python312-amqpstorm 
   - python312-ana 
   - python312-aniso8601 
+  - python312-annotated-doc 
   - python312-annotated-types 
   - python312-annoy 
   - python312-ansel 
@@ -31836,6 +31839,7 @@ unsorted:
   - python313-amqpstorm 
   - python313-ana 
   - python313-aniso8601 
+  - python313-annotated-doc 
   - python313-annotated-types 
   - python313-annoy 
   - python313-ansel 
@@ -36301,6 +36305,7 @@ unsorted:
   - robinhood-tests 
   - robinhood-tools 
   - robinhood-webgui 
+  - rocblas-devel 
   - rocfft-devel 
   - rockdodger 
   - rocket.term 
