@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov 02 06:45:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.40.3:
+  * Fixes
+    - Fix OCI compose override support by @ndeloof #13311
+    - Fix help output for "exec --no-tty" option by @tonyo #13314
+    - Prompt default implementation to prevent a panic by @ndeloof
+      #13317
+    - Run hooks on restart by @ndeloof #13321
+    - Fix(run): Ensure images exist only for the target service in
+      run command by @idsulik #13325
+    - Fix(git): Fix path traversal vulnerability in git remote
+      loader by @idsulik #13331
+  * Internal
+    - Test to check writeComposeFile detects invalid OCI artifact
+      by @ndeloof #13309
+    - Code Cleanup by @ndeloof #13315
+  * Dependencies
+    - Bump compose-go to version v2.9.1 by @glours #13332
+
+-------------------------------------------------------------------
 Thu Oct 23 05:49:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.40.2:
