@@ -17,7 +17,7 @@
 
 
 Name:           eksctl
-Version:        0.215.0
+Version:        0.216.0
 Release:        0
 Summary:        The official CLI for Amazon EKS
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         eksctl-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.25 >= 1.25.1
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
 
 %description
 eksctl is a simple CLI tool for creating clusters on EKS - Amazon's new managed
