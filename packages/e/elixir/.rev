@@ -343,4 +343,12 @@
     <comment>Update to v1.19.1</comment>
     <requestid>1312705</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7a020bd379bd73962b48feaf893aa490</srcmd5>
+    <version>1.19.2</version>
+    <time>1762119260</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v1.19.2</comment>
+    <requestid>1315110</requestid>
+  </revision>
 </revisionlist>
