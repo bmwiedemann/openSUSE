@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sun Nov 02 07:18:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.0:
+  * Breaking Changes
+    - Removal of deprecated HCL attributes
+      The skip, retryable_errors, retry_max_attempts and
+      retry_sleep_interval_sec have all been removed from
+      Terragrunt.
+      This is the final planned breaking change on the road to
+      Terragrunt 1.0 related to removal of deprecated
+      functionality. Breaking changes will be minimized before
+      Terragrunt 1.0, but may still occur based on user feedback,
+      or based on the need to stabilize parts of Terragrunt before
+      1.0.
+      If you are currently using the skip attribute, you'll want to
+      adjust your usage to leverage the exclude block instead:
+
+      Before:
+
+        # terragrunt.hcl
+
+        skip = true
+
+      After:
+
+        # terragrunt.hcl
+
+        exclude {
+          if      = true
+          actions = ["all"]
+        }
+
+      If you are currently using the retryable_errors attribute,
+      you'll want to adjust your usage to leverage the errors block
+      instead:
+
+      Before:
+
+        # terragrunt.hcl
+
+        retryable_errors = [
+          ".*Error: transient network issue.*",
+          ".*Error: timeout.*"
+        ]
+
+        retry_max_attempts     = 3
+        retry_sleep_interval_sec = 5
+
+      After:
+
+        # terragrunt.hcl
+
+        errors {
+          retry "transient_errors" {
+            retryable_errors = [
+              ".*Error: transient network issue.*",
+              ".*Error: timeout.*"
+            ]
+            max_attempts = 3
+            sleep_interval_sec = 5
+          }
+        }
+
+      Read the detailed migration guide for more information.
+      https://terragrunt.gruntwork.io/docs/migrate/deprecated-attributes/
+  * What's Changed
+    - feat: removal of deprecated hcl attributes skip,
+      retryable_errors (#5033)
+    - bug: empty paths handling in dependencies (#5016)
+
+-------------------------------------------------------------------
 Wed Oct 29 05:37:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.92.1:
