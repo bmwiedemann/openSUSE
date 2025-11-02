@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 02 06:46:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.131:
+  * fix: fix terragrunt non-interactive flag (#2332)
+  * Revert "Move drift reconciliation to CE (#2346)" (#2357)
+  * Move drift reconciliation to CE (#2346)
+  * token service ui functionality (#2356)
+  * Fix/breardon2011/UI arch lock (#2355)
+  * Fix/breardon2011/UI arch lock (#2354)
+  * adjust arch lock (#2353)
+  * address type errors, bump charts (#2352)
+
+-------------------------------------------------------------------
 Wed Oct 29 05:42:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.130:

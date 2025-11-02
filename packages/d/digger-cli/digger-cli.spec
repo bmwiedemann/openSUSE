@@ -19,7 +19,7 @@
 %define executable_name digger
 
 Name:           digger-cli
-Version:        0.6.130
+Version:        0.6.131
 Release:        0
 Summary:        CLI for the digger open source IaC orchestration tool
 License:        Apache-2.0
