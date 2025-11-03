@@ -28,4 +28,12 @@
     <comment></comment>
     <requestid>889002</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>80c3fe797c399ed060b4fa211db39b00</srcmd5>
+    <version>0.3</version>
+    <time>1762192564</time>
+    <user>anag_factory</user>
+    <comment>- Disable 32b builds as there is no more openmpi available</comment>
+    <requestid>1315291</requestid>
+  </revision>
 </revisionlist>

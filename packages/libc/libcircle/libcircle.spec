@@ -23,6 +23,7 @@ Version:        0.3
 Release:        0
 
 Source:         https://github.com/hpc/libcircle/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source100:      README.md
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 URL:            http://github.com/hpc/libcircle
 Summary:        A library used to distribute workloads
@@ -38,6 +39,9 @@ BuildRequires:  libtool
 BuildRequires:  openmpi-macros-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(check)
+%if 0%{?suse_version} >= 1600
+ExcludeArch:    %ix86 %arm
+%endif
 
 %description
 A simple interface for processing workloads using an automatically distributed global queue.

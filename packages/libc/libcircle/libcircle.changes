@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 31 16:33:24 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable 32b builds as there is no more openmpi available
+
+-------------------------------------------------------------------
 Wed Apr 28 08:07:05 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to version 0.3
