@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  3 07:19:47 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Add python314-compatibility.patch:
+  * Fix python3.14 compatibiliy by adjusting pathlib.PurePath.relative_to() call and guarding removed asyncio.get_child_watcher() API  
+
+-------------------------------------------------------------------
 Mon Apr  1 11:12:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Conflict and don't test with trio 0.25+: Not compatible

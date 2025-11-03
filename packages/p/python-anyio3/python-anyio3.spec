@@ -1,7 +1,7 @@
 #
 # spec file for package python-anyio3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM see gh#agronholm/anyio#626
 Patch2:         tests-test_fileio.py-don-t-follow-symlinks-in-dev.patch
+Patch3:         python314-compatibility.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module exceptiongroup if %python-base < 3.11}
 BuildRequires:  %{python_module idna >= 2.8}

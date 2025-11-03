@@ -1,0 +1,57 @@
+Index: anyio-3.7.1/src/anyio/_backends/_asyncio.py
+===================================================================
+--- anyio-3.7.1.orig/src/anyio/_backends/_asyncio.py
++++ anyio-3.7.1/src/anyio/_backends/_asyncio.py
+@@ -1061,9 +1061,21 @@ def _forcibly_shutdown_process_pool_on_e
+     Forcibly shuts down worker processes belonging to this event loop."""
+     child_watcher: asyncio.AbstractChildWatcher | None
+     try:
+-        child_watcher = asyncio.get_event_loop_policy().get_child_watcher()
+-    except NotImplementedError:
++        policy = asyncio.get_event_loop_policy()
++        if hasattr(policy, "get_child_watcher"):
++            child_watcher = policy.get_child_watcher()
++    except (AttributeError, NotImplementedError):
+         child_watcher = None
++    
++    # If watcher still exists, make remove_child_handler safe
++    def _safe_remove(pid: int) -> None:
++        if not child_watcher:
++            return
++        try:
++            if hasattr(child_watcher, "remove_child_handler"):
++                child_watcher.remove_child_handler(pid)
++        except Exception:
++            pass
+ 
+     # Close as much as possible (w/o async/await) to avoid warnings
+     for process in workers:
+@@ -1076,6 +1088,7 @@ def _forcibly_shutdown_process_pool_on_e
+         process.kill()
+         if child_watcher:
+             child_watcher.remove_child_handler(process.pid)
++        _safe_remove(process.pid)
+ 
+ 
+ async def _shutdown_process_pool_on_exit(workers: set[Process]) -> None:
+Index: anyio-3.7.1/src/anyio/_core/_fileio.py
+===================================================================
+--- anyio-3.7.1.orig/src/anyio/_core/_fileio.py
++++ anyio-3.7.1/src/anyio/_core/_fileio.py
+@@ -506,7 +506,15 @@ class Path:
+         return await to_thread.run_sync(self._path.read_text, encoding, errors)
+ 
+     def relative_to(self, *other: str | PathLike[str]) -> Path:
+-        return Path(self._path.relative_to(*other))
++        # Python 3.14 compatibility: pathlib.PurePath.relative_to no longer accepts multiple arguments
++        if len(other) == 1:
++            rel = self._path.relative_to(other[0])
++        else:
++            rel = self._path
++            for p in other:
++                rel = rel.relative_to(p)
++        return Path(rel)
++
+ 
+     async def readlink(self) -> Path:
+         target = await to_thread.run_sync(os.readlink, self._path)

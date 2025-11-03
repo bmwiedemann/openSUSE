@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1164115</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2d9445042184c38341a828a40e02d95c</srcmd5>
+    <version>3.7.1</version>
+    <time>1762192589</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315240 from mgrossu
+
+- Add python314-compatibility.patch:
+    * Fix python3.14 compatibiliy by adjusting pathlib.PurePath.relative_to() call and guarding removed asyncio.get_child_watcher() API</comment>
+    <requestid>1315327</requestid>
+  </revision>
 </revisionlist>
