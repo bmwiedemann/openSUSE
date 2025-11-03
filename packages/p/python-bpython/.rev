@@ -162,4 +162,18 @@ Drop sphinx doctrees for reproducible builds</comment>
     <comment>- Convert to libalternatives</comment>
     <requestid>1286587</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9b2230f7ae04fca2e4a799fe857bf54a</srcmd5>
+    <version>0.26</version>
+    <time>1762192497</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.26:
+  * Handle unspecified config paths
+  * Align simple_eval with Python 3.10+
+  * Make -q hide the welcome message
+  * Convert sys.ps1 to a string to work-around non-str sys.ps1 from vscode
+  * Support for Python 3.14 has been added. Support for Python 3.9 has been
+    dropped.</comment>
+    <requestid>1315201</requestid>
+  </revision>
 </revisionlist>

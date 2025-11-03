@@ -1,7 +1,7 @@
 #
 # spec file for package python-bpython
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without     test
 %bcond_without libalternatives
 Name:           python-bpython
-Version:        0.25
+Version:        0.26
 Release:        0
 Summary:        Fancy Interface to the Python Interpreter
 License:        MIT
@@ -27,6 +27,7 @@ URL:            https://www.bpython-interpreter.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bpython/bpython-%{version}.tar.gz
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -138,12 +139,9 @@ rm %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython.desktop
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst CHANGELOG.rst README.rst
-%dir %{python_sitelib}/bpython
-%{python_sitelib}/bpython/*
-%dir %{python_sitelib}/bpdb
-%{python_sitelib}/bpdb/*
-%dir %{python_sitelib}/bpython-%{version}*-info
-%{python_sitelib}/bpython-%{version}*-info/*
+%{python_sitelib}/bpython
+%{python_sitelib}/bpdb
+%{python_sitelib}/bpython-%{version}.dist-info
 %python_alternative %{_bindir}/bpython
 %python_alternative %{_bindir}/bpython-urwid
 %python_alternative %{_bindir}/bpdb

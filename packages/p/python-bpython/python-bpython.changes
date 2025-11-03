@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  3 00:00:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.26:
+  * Handle unspecified config paths
+  * Align simple_eval with Python 3.10+
+  * Make -q hide the welcome message
+  * Convert sys.ps1 to a string to work-around non-str sys.ps1 from vscode
+  * Support for Python 3.14 has been added. Support for Python 3.9 has been
+    dropped.
+
+-------------------------------------------------------------------
 Tue Jun 17 09:03:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
