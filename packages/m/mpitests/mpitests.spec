@@ -39,12 +39,12 @@
 
 %endif
 
-%define osu_ver  6.1
-%define imb_ver  2021.3
+%define osu_ver  7.5.1
+%define imb_ver  2021.10
 %define imb_dir  mpi-benchmarks-IMB-v%{imb_ver}
 %define osu_dir  osu-micro-benchmarks-%{osu_ver}
 
-%define mpi_home %{hpc_mpi_home %flavor}
+%define mpi_home %{hpc_mpi_home}
 %define implem_list_dir %{_datadir}/mpitests/implem.d/
 %define sles_pre_or_15 (0%{?sle_version} > 120000 && 0%{?sle_version} <= 150000)
 %define sles_pre_16 (0%{?sle_version} > 120000 && 0%{?sle_version} < 160000)
@@ -68,8 +68,8 @@ Source3:        mpitests-runtests.sh
 Source4:        mpitests-run.sh
 Source100:      mpitests-rpmlintrc
 Source101:      _multibuild
-Patch1:         osu-fix-bad-return-values.patch
-Patch2:         imb-cpp-flags.patch
+Source102:      README.md
+Patch1:         imb-cpp-flags.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
@@ -80,30 +80,14 @@ Requires:       %{flavor}
 BuildRequires:  mpitests = %{version}
 Requires:       mpitests = %{version}
 %endif
-
-%if "%{flavor}" == "mvapich2"
-ExcludeArch:    %{arm}
-%endif
+ExcludeArch:    %{arm}  %ix86
 
 %if "%{flavor}" == "mvapich2-psm2"
 ExclusiveArch:  x86_64
 %endif
 
-%if "%{flavor}" == "mvapich3-ofi"
-ExcludeArch:    %{arm}  %ix86
-%endif
-
-%if "%{flavor}" == "mvapich3-ucx"
-ExcludeArch:    %{arm}  %ix86
-%endif
-
 %if "%{flavor}" == "openmpi4"
-%if %{sles_pre_or_15}
-# Disable openmpi4 builds for SLES up to (including) 15
-ExclusiveArch:  do_not_build
-%else
 ExcludeArch:    ppc64
-%endif
 %endif
 
 %if "%{flavor}" == "openmpi5"
@@ -111,7 +95,7 @@ ExcludeArch:    ppc64
 # Disable openmpi5 builds for SLES < 16
 ExclusiveArch:  do_not_build
 %else
-ExcludeArch:    ppc64 %{arm} %ix86
+ExcludeArch:    ppc64
 %endif
 %endif
 
@@ -121,11 +105,12 @@ Set of popular MPI benchmarks: IMB v%{imb_ver} OSU benchmarks ver %{osu_ver}
 %prep
 %setup -c -q
 %setup -T -D -a 1 -q
-%patch -P 1 -p0
-%patch -P 2 -p0
+%autopatch -p0
+
 
 %if "%{flavor}" != ""
 %build
+
 echo echo %{mpi_home}
 . %{mpi_home}/bin/mpivars.sh
 
@@ -134,13 +119,13 @@ export CXXFLAGS="%{optflags}"
 export LDFLAGS="%{optflags}"
 
 # IMB Build
-make  CC=%{mpi_home}/bin/mpicc CXX=%{mpi_home}/bin/mpicxx \
-     -C %{imb_dir}/ all
+make  CC=mpicc CXX=mpicxx \
+     -C %{imb_dir}/ all WITH_OPENMP=1
 
 # OSU Build
 ( cd %{osu_dir} && \
-  ./configure CC=%{mpi_home}/bin/mpicc CXX=%{mpi_home}/bin/mpicxx &&
-  make all )
+  ./configure CC=mpicc CXX=mpicxx &&
+  make all)
 
 %install
 # IMB

@@ -171,4 +171,23 @@
     <comment></comment>
     <requestid>1297671</requestid>
   </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>b9f0bd88a12e1504a4c5a1e93ba7c8c4</srcmd5>
+    <version>3.2</version>
+    <time>1762192565</time>
+    <user>anag_factory</user>
+    <comment>- Update IMB to 2021.10
+  - Add IMB-RMA-GPU Technical Preview
+  - Add IMB-MPI4 persistent collectives
+  - Migration to icx,icpx compiler
+  - IMB-MPI1: FP16/BF16 data_type support
+  - Change default value for mem_alloc_type to device
+  - Bug fixes
+- Update osu-micro-benchmarks to 7.5.1
+  - See: https://mvapich.cse.ohio-state.edu/static/media/mvapich/CHANGES-OMB.txt
+- Refresh imb-cpp-flags.patch against latest sources
+- Drop patch fixed upstream: osu-fix-bad-return-values.patch
+- Disable 32b builds</comment>
+    <requestid>1315292</requestid>
+  </revision>
 </revisionlist>

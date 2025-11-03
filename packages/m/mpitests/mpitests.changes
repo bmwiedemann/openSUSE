@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 31 18:37:34 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update IMB to 2021.10
+  - Add IMB-RMA-GPU Technical Preview
+  - Add IMB-MPI4 persistent collectives
+  - Migration to icx,icpx compiler
+  - IMB-MPI1: FP16/BF16 data_type support
+  - Change default value for mem_alloc_type to device
+  - Bug fixes
+- Update osu-micro-benchmarks to 7.5.1
+  - See: https://mvapich.cse.ohio-state.edu/static/media/mvapich/CHANGES-OMB.txt
+- Refresh imb-cpp-flags.patch against latest sources
+- Drop patch fixed upstream: osu-fix-bad-return-values.patch
+- Disable 32b builds
+
+-------------------------------------------------------------------
 Fri Aug  1 13:21:10 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add mvapich3 flavors
