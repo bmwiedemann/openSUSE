@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Nov 02 21:32:26 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20251102:
+  * Allow negative position for region
+  * Force QP mode when capturing with software encoder
+    and attempting to use vbr
+  * Add -fallback-cpu-encoding option to use cpu encoding
+    (x264) if gpu encoding is not available on the system
+  * Show better error on vaapi init failure
+  * Disable vaapi debug output
+  * Update for ffmpeg 8: remove hevc vaapi padding (black bars),
+    fix garbage output (workaround ffmpeg 8 issue)
+  * Fix texture size when recording via portal
+  * Remove use of libavcodec/defs.h (fix compile on old ffmpeg)
+  * App audio capture: fix audio sources getting paused
+    when closing gsr
+  * x11: fix incorrect screen ratio in recording when
+    recording the first monitor
+  * Codec resolution check: treat 0, 0 as no limit
+  * Remove compute shader. It doesn't improve performance
+    and it has worse UV quality because of incorrect pixel colors
+  * Dont use glGetTexLevelParameteriv, it's only available
+    in opengl es 3.1
+  * Dont initialize damage tracker if not enabled
+  * Application audio capture: fix unable to capture virtual
+    sources (EasyEffects microphone)
+  * Output error if compiled without app audio support and
+    attempting to use app audio
+  * Revert "Use pipewire audio routing to merge audio when
+    possible (this fixes out of sync audio when using multiple
+    audio inputs for some users)"
+  * Plugin update macro
+  * Re-add portal damage tracking (-fm content)
+  * Use pipewire audio routing to merge audio when possible
+    (this fixes out of sync audio when using multiple audio
+    inputs for some users)
+  * main: check if glibc is defined
+
+-------------------------------------------------------------------
+Fri Aug 29 10:24:00 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20250824:
+  * Call -sc script on screenshot as well, only save screenshot
+    if no error
+  * Add plugin interface version macro
+  * EGL context version 3
+  * Add plugin support (-p option)
+  * Automatically choose video codec based on capture resolution
+  * Add error checks for video capture resolution since some users
+    are retarded
+  * Desktop portal capture: support rotated monitor capture on sway
+  * kms capture: fix incorrect rotation on wayland (kde plasma)
+    when monitor is rotated when a window is fullscreen
+
+-------------------------------------------------------------------
 Tue Jul 22 14:52:31 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20250721:

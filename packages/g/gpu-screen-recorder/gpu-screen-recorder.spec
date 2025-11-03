@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           gpu-screen-recorder
-Version:        20250721
+Version:        20251102
 Release:        0
 Summary:        An extremely fast hardware-accelerated screen recorder
 License:        GPL-3.0-only
@@ -56,6 +56,13 @@ This screen recorder can be used for recording your desktop offline, for
 live streaming and for nvidia ShadowPlay-like instant replay, where only
 the last few minutes are saved.
 
+%package devel
+Summary:        Development files %{name}
+BuildArch:      noarch
+
+%description devel
+This subpackage contains header files for developing plugins %{name}.
+
 %prep
 %autosetup
 
@@ -76,12 +83,16 @@ rm %{buildroot}/usr/lib/modprobe.d/gsr-nvidia.conf
 
 %files
 %license LICENSE
-%doc README.md extra/meson_post_install.sh
+%doc README.md
 %{_bindir}/%{name}
 %{_bindir}/gsr-kms-server
 %{_userunitdir}/%{name}.service
 %if 0%{?suse_version} > 1600
 %{_modprobedir}/gsr-nvidia.conf
 %endif
+
+%files devel
+%dir %{_includedir}/gsr
+%{_includedir}/gsr/plugin.h
 
 %changelog
