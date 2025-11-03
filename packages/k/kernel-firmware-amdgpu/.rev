@@ -421,4 +421,13 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update aliases</comment>
     <requestid>1313865</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3b258adbf6ce5472fc2fae9d000682d5</srcmd5>
+    <version>20251031</version>
+    <time>1762192482</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251031 (git commit 04b323bb64f9):
+  * amdgpu: DMCUB updates for various ASICs</comment>
+    <requestid>1315088</requestid>
+  </revision>
 </revisionlist>
