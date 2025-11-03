@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Nov  3 11:34:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.186.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidmanagement:** Update the api
+  * **bigqueryreservation:** Update the api
+  * **bigtableadmin:** Update the api
+  * **chromemanagement:** Update the api
+  * **compute:** Update the api
+  * **container:** Update the api
+  * **dataplex:** Update the api
+  * **dataproc:** Update the api
+  * **dfareporting:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **docs:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebaseml:** Update the api
+  * **iam:** Update the api
+  * **managedkafka:** Update the api
+  * **networkconnectivity:** Update the api
+  * **notebooks:** Update the api
+  * **oracledatabase:** Update the api
+  * **paymentsresellersubscription:** Update the api
+  * **recommendationengine:** Update the api
+  * **redis:** Update the api
+  * **storagebatchoperations:** Update the api
+  * **texttospeech:** Update the api
+  * **vault:** Update the api
+  * **datastore:** Update the api
+  * **firestore:** Update the api
+
+-------------------------------------------------------------------
 Wed Oct 22 12:44:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.185.0

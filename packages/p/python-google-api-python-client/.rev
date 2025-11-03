@@ -1549,4 +1549,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1313185</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>d5262389b42cca247f4e003bd3d5cf07</srcmd5>
+    <version>2.186.0</version>
+    <time>1762192566</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.186.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidmanagement:** Update the api
+  * **bigqueryreservation:** Update the api
+  * **bigtableadmin:** Update the api
+  * **chromemanagement:** Update the api
+  * **compute:** Update the api
+  * **container:** Update the api
+  * **dataplex:** Update the api
+  * **dataproc:** Update the api
+  * **dfareporting:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **docs:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebaseml:** Update the api
+  * **iam:** Update the api
+  * **managedkafka:** Update the api
+  * **networkconnectivity:** Update the api
+  * **notebooks:** Update the api
+  * **oracledatabase:** Update the api
+  * **paymentsresellersubscription:** Update the api
+  * **recommendationengine:** Update the api
+  * **redis:** Update the api
+  * **storagebatchoperations:** Update the api
+  * **texttospeech:** Update the api
+  * **vault:** Update the api
+  * **datastore:** Update the api
+  * **firestore:** Update the api (forwarded request 1315281 from glaubitz)</comment>
+    <requestid>1315296</requestid>
+  </revision>
 </revisionlist>
