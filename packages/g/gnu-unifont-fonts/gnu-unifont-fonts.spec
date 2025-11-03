@@ -18,7 +18,7 @@
 
 
 Name:           gnu-unifont-fonts
-Version:        17.0.01
+Version:        17.0.03
 Release:        0
 Summary:        GNU Unifont fonts
 License:        GPL-2.0-or-later OR OFL-1.1
