@@ -16,23 +16,21 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-defcon
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        A set of UFO based objects for use in font editing applications
 License:        MIT
 URL:            https://github.com/robotools/defcon
-Source:         https://files.pythonhosted.org/packages/source/d/defcon/defcon-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/d/defcon/defcon-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
-Requires:       python-FontTools >= 4.10.2
+Requires:       python-FontTools >= 4.59.0
 # SECTION fonttools[ufo,unicode]
 Requires:       python-fs >= 2.2
 %if 0%{?python_version_nodots} < 39
@@ -42,7 +40,7 @@ Requires:       python-unicodedata2 >= 13.0.0
 Suggests:       python-fontPens >= 0.1.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module FontTools >= 4.10.2}
+BuildRequires:  %{python_module FontTools >= 4.59.0}
 BuildRequires:  %{python_module fs >= 2.2}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 BuildRequires:  %{python_module unicodedata2 >= 13.0.0 if %python-base < 3.9}

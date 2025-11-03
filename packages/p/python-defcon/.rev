@@ -140,4 +140,20 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282966</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c6dd1d98566b81b25548f6dbf6200e65</srcmd5>
+    <version>0.12.2</version>
+    <time>1762192581</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1314821 from glaubitz
+
+- Update to 0.12.2
+    * simplify use of pyfilesystem2 API in test suite
+    * bump fonttools &gt;= 4.59, remove fs dependency
+  - Remove unzip package from BuildRequires
+  - Switch source archive format to TAR.GZ
+  - Drop support for older Python versions
+  - Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1315320</requestid>
+  </revision>
 </revisionlist>

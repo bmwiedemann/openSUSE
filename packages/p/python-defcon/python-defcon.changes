@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 31 12:47:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.2
+  * simplify use of pyfilesystem2 API in test suite
+  * bump fonttools >= 4.59, remove fs dependency
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Drop support for older Python versions
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Thu Jun  5 06:01:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
