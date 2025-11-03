@@ -17,7 +17,11 @@
 %define full_version 9.12.2
 %define short_version 9.12.2
 
+%if 0%{suse_version} == 1600
+%global llvm_major 15
+%else
 %global llvm_major 19
+%endif
 
 # conditionals
 # disable prof, docs, perf build
@@ -59,7 +63,7 @@
 %endif
 
 %global ghc_llvm_archs s390x
-%global ghc_unregisterized_arches noarch
+%global ghc_unregisterized_arches noarch loongarch64
 
 %global base_ver 4.21.0.0
 %global cabal_ver 3.14.1.0
@@ -79,7 +83,7 @@ License:        BSD-3-Clause
 URL:            https://www.haskell.org/ghc/
 Source:         https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz
 Source2:        ghc-rpmlintrc
-Source4:        9_8_2-bootstrap-sources.tar.gz
+Source4:        9_10_1-bootstrap-sources.tar.gz
 Source5:        ghc-pkg.man
 Source6:        haddock.man
 Source7:        runghc.man
@@ -311,7 +315,7 @@ rm libffi-tarballs/libffi-*.tar.gz
 
 %build
 cp %{SOURCE4} ./
-hadrian/bootstrap/bootstrap.py --bootstrap-sources 9_8_2-bootstrap-sources.tar.gz
+hadrian/bootstrap/bootstrap.py --bootstrap-sources 9_10_1-bootstrap-sources.tar.gz
 
 %global hadrian _build/bin/hadrian
 

@@ -1186,4 +1186,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
 - cleanup deps (forwarded request 1311508 from mimi_vx)</comment>
     <requestid>1311509</requestid>
   </revision>
+  <revision rev="119" vrev="5">
+    <srcmd5>4d2090d1a171a17063a93c7d3ac088b3</srcmd5>
+    <version>9.12.2</version>
+    <time>1762192535</time>
+    <user>anag_factory</user>
+    <comment>- use new bootsrap 9.10.1 compiler</comment>
+    <requestid>1315268</requestid>
+  </revision>
 </revisionlist>
