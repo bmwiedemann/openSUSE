@@ -7327,6 +7327,7 @@ unsorted:
   - gnome-shell-search-provider-gnote 
   - gnome-shell-search-provider-iotas 
   - gnome-shell-search-provider-lollypop 
+  - gnome-shell-search-provider-qalculate-gtk 
   - gnome-shell-search-provider-wike 
   - gnome-shell-theme-adapta 
   - gnome-shell-theme-dracula 
@@ -16353,6 +16354,14 @@ unsorted:
   - libsundials_nvec7-mvapich2 
   - libsundials_nvec7-openmpi4 
   - libsundials_nvec7-openmpi5 
+  - libsundials_sundomeigestarnoldi1 
+  - libsundials_sundomeigestarnoldi1-mvapich2 
+  - libsundials_sundomeigestarnoldi1-openmpi4 
+  - libsundials_sundomeigestarnoldi1-openmpi5 
+  - libsundials_sundomeigestpower1 
+  - libsundials_sundomeigestpower1-mvapich2 
+  - libsundials_sundomeigestpower1-openmpi4 
+  - libsundials_sundomeigestpower1-openmpi5 
   - libsundials_sunlinsol5 
   - libsundials_sunlinsol5-mvapich2 
   - libsundials_sunlinsol5-openmpi4 
