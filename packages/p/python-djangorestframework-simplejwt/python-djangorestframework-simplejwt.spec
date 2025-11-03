@@ -1,7 +1,7 @@
 #
 # spec file for package python-djangorestframework-simplejwt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-djangorestframework-simplejwt
-Version:        5.3.1
+Version:        5.5.1
 Release:        0
 Summary:        JSON Web Token authentication for Django REST Framework
 License:        MIT
 URL:            https://github.com/davesque/django-rest-framework-simplejwt
 Source:         https://files.pythonhosted.org/packages/source/d/djangorestframework-simplejwt/djangorestframework_simplejwt-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/jazzband/djangorestframework-simplejwt/pull/769 Fix tests
-Patch0:         fix-tests.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module cryptography}

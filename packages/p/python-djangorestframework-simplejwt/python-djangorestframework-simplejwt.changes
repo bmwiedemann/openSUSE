@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov  3 09:29:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.5.1 (CVE-2024-22513, bsc#1221568)
+  * Changed string formatting in views
+  * Enhance BlacklistMixin with Generic Type for Accurate Type Inference
+  * Improve type of Token.for_user to allow subclasses
+  * Fix the Null value of the OutstandingToken of the BlacklistMixin.blacklist
+  * Add option to allow inactive user authentication and token generation
+  * Add support for EdDSA and other algorithms in jwt.algorithms.requires_cryptography
+  * Drop Django <4.2, DRF <3.14, Python <3.9. Note, many deprecated versions are only
+    officially not supported but probably still work fine.
+  * Add specific "token expired" exceptions
+  * Fix user_id type mismatch when user claim is not pk
+  * Caching signing key
+  * fix: add missing migration for token_blacklist app
+  * docs: Add warning in docs for for_user usage
+  * feat: log warning if token is being created for inactive user
+  * fix: always stringify user_id claim
+- Drop fix-tests.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Nov 11 16:58:30 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add missing dependency
