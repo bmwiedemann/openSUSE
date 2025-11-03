@@ -1,4 +1,226 @@
 -------------------------------------------------------------------
+Fri Oct 31 10:46:01 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.22.0:
+  * Features:
+    - Make the remote name used by conan config install-pkg
+      --url=<url> public (gh#conan-io/conan#19132).
+    - Add support for macOS 15.7 and iOS 18.7
+      (gh#conan-io/conan#19130).
+    - Group arguments in CLI help (gh#conan-io/conan#19126).
+    - Suggest possible typos for CLI arguments declared as string
+      choices (gh#conan-io/conan#19126).
+    - Add opt-in conf to control making .sh and .ps1 env
+      deactivate functionality into in-memory functions instead of
+      files (gh#conan-io/conan#19105).
+    - Document ExportAPI (gh#conan-io/conan#19103).
+    - Enable parallel download of packages by default, by
+      defaulting core.download:parallel to the available CPU cores
+      (gh#conan-io/conan#19099).
+    - Support conan graph info --package-filter=& pattern
+      (gh#conan-io/conan#19080).
+    - Add new environment variable CONAN_DEFAULT_BUILD_PROFILE for
+      default build profile (gh#conan-io/conan#19040).
+    - Allow nullifying settings from profiles and command line
+      (gh#conan-io/conan#19035).
+    - Support compatibility plugin removal of nullable settings
+      (gh#conan-io/conan#19031).
+    - New tools.gnu:disable_flags configuration to allow disabling
+      the injection of some build system flags
+      (gh#conan-io/conan#19014).
+    - Expose recipe in the ConanFileInterface for information
+      purpose only (gh#conan-io/conan#18995).
+    - New CMakeConfigDeps properties to inject extra dependencies
+      and targets (gh#conan-io/conan#18316).
+  * Bug fixes:
+    - Better error message for CMakeConfigDeps when the
+      package_type or component type is not defined for something
+      with .location defined (gh#conan-io/conan#19096).
+    - Change order of build_modules inclusion in CMakeConfigDeps
+      so it happens after legacy-vars, to support some ConanCenter
+      recipes abusing those variables (gh#conan-io/conan#19094).
+    - Reintroduce settings.yml access to config Sub-API
+      (gh#conan-io/conan#19078).
+    - Raise an error if conan list * --lru=xx, recommending the
+      #<rev-pattern> argument (gh#conan-io/conan#19077).
+    - Sanitize XcodeDeps file and variable names to use only valid
+      xcconfig characters (gh#conan-io/conan#19075).
+    - Explicitly set allow_empty=True in glob() function in
+      BazelDeps (Bazel 8.x compatible) (gh#conan-io/conan#19068).
+    - Fix CMakeConfigDeps when a regular library requires() an
+      application, using components (gh#conan-io/conan#19052).
+    - Add missing final newline when saving lockfiles to disk
+      (gh#conan-io/conan#19043).
+    - Warn when adding requirement to version range with pinned
+      revision, it has no effect (gh#conan-io/conan#19041).
+    - Fix CMakeConfigDeps escaping (gh#conan-io/conan#19034).
+    - Improved Python virtual environment creation in PipEnv by
+      using the system-installed interpreter or a user-defined one
+      via tools.system.pipenv:python_interpreter
+      (gh#conan-io/conan#19030).
+    - Add VS2026 CMake generator mapping
+      (gh#conan-io/conan#19024).
+    - Avoid referencing xcconfig from skipped dependencies
+      required in components in XcodeDeps
+      (gh#conan-io/conan#19023).
+    - Add execution["jobs"] to the generated CMake testPresets
+      with same logic and value as buildPresets
+      (gh#conan-io/conan#19021).
+    - Improve the error message when a workspace super-install
+      defines intermediate packages in the cache depending on
+      workspace packages (gh#conan-io/conan#19013).
+    - Improve support for huge diffs in conan report diff HTML
+      output (gh#conan-io/conan#19012).
+    - MSBuildToolchain explicitly adds the specific toolset .props
+      file when compiler.update is defined, otherwise, activating
+      vcvars is not enough (gh#conan-io/conan#19137).
+    - Fixes an issue where the Apt packages for the build arch
+      would be reported missing, in cross-compiling scenarios,
+      even though they are installed (gh#conan-io/conan#19074).
+    - Solve unexpected conflict when pinning a recipe-revision
+      directly in a conanfile that is not the latest, and having
+      other dependencies resolving first to the latest recipe
+      revision (gh#conan-io/conan#19038).
+    - Fix <host_version> resolution in certain transitive cases
+      (gh#conan-io/conan#18947).
+    - Fix orphan nodes being created when expanding the dependency
+      graph for some cases (gh#conan-io/conan#18947).
+    - Error out if components miss requiring direct dependencies
+      in more cases (gh#conan-io/conan#18830).
+
+-------------------------------------------------------------------
+Wed Oct 29 10:27:46 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.21.0:
+  * Features:
+    - Add support for universal binaries to AutotoolsToolchain
+      (gh#conan-io/conan#18992).
+    - Add support for universal binaries to GnuToolchain
+      (gh#conan-io/conan#18992).
+    - Add --context={build,host} filter to conan audit scan
+      (gh#conan-io/conan#18976).
+    - Default recipe paths to cwd if not specified when calling
+      Conan (gh#conan-io/conan#18964)
+    - Implement a new post_package_id() hook
+      (gh#conan-io/conan#18960).
+    - Add the PipEnv tool to install python tools using pip in an
+      isolated virtual environment (gh#conan-io/conan#18923).
+    - Allow separate build and package directories for multiple
+      CMake builds from single conanfile
+      (gh#conan-io/conan#18905).
+    - Add recipes_only field to remote to control whether a remote
+      can be used to download binaries (gh#conan-io/conan#18896).
+    - Add cmake_extra_variables property for CMakeConfigDeps
+      (gh#conan-io/conan#18822).
+    - Add cmake_extra_variables property for CMakeDeps
+      (gh#conan-io/conan#18822).
+    - Improve conan report diff html UX (gh#conan-io/conan#18686).
+    - Add generation of dotenv environment files with
+      tools.env:dotenv=True conf (gh#conan-io/conan#18266).
+  * Bug fixes:
+    - Avoid CMakePresets adding the jobs field when
+      tools.build:jobs=0 (gh#conan-io/conan#18984).
+    - Warn when exporting recipes with versions containing
+      alphanumeric majors (gh#conan-io/conan#18980).
+    - Set cpp.source.includedirs to include in basic_layout
+      (gh#conan-io/conan#18958).
+    - workspace add can update the package version of an existing
+      package in the workspace (gh#conan-io/conan#18955).
+    - Move test_requires to build_requirements method in tests
+      (gh#conan-io/conan#18929).
+    - Always run validate hooks even if recipe does not define
+      validate() method (gh#conan-io/conan#18928).
+    - Remove deprecated, old and undocumented features, marked for
+      deprecations for a long time (gh#conan-io/conan#18920).
+    - Ensure VCVars generated conanvcvars.bat has normalized path
+      with backward slash (Windows) (gh#conan-io/conan#18907).
+    - Fix compatibility.py migration overwrite when no changes
+      were necessary (gh#conan-io/conan#18882).
+    - Cleaning files and upload-urls from "package lists" after a
+      download or when skipping uploads (gh#conan-io/conan#18878).
+    - Improve the error message and avoid the traceback when a
+      build-scripts package tries to depend on a library in the
+      "host" context (gh#conan-io/conan#18869).
+    - Move legacy CMake vars from xxx-target-<config>.cmake to
+      xxxx-config.cmake file (gh#conan-io/conan#18860).
+    - Ensure conan graph build-order errors out when passing both
+      a recipe path and a --requires reference
+      (gh#conan-io/conan#18964).
+    - MesonToolchain no longer add quotes to linker_script
+      definition (gh#conan-io/conan#18922).
+    - Command conan list with version-ranges can now listen to
+      core.version_ranges:resolve_prereleases=True to list
+      pre-releases (gh#conan-io/conan#18868).
+    - Stabilize PackagesList methods (gh#conan-io/conan#18833).
+- Changes from version 2.20.1:
+  * Bug fixes:
+    - Fix Apt not detecting the correct architecture in multiarch
+      setups (gh#conan-io/conan#18872).
+    - Apt correctly detects arch-independent (all) packages during
+      cross-building to avoid unnecessary reinstalls
+      (gh#conan-io/conan#18872).
+- Changes from version 2.20.0:
+  * Features:
+    - new check_min_compiler_version validator which simplify
+      compiler restriction description in recipes
+      (gh#conan-io/conan#18849).
+    - Adding Clang 21 to the default settings.yml
+      (gh#conan-io/conan#18846)
+    - Avoid the generation of conanintelsetvars script by IntelCC
+      if the tools.intel:installation_path="", similarly to VCVars
+      generation. The user should have already activated the
+      IntelCC environment on their own before running
+      (gh#conan-io/conan#18840).
+    - Improved the CMakeLists.txt file created by the conan new
+      workspace command for super-builds (gh#conan-io/conan#18838)
+    - Add CMAKE_FIND_PACKAGE_PREFER_CONFIG=ON for CMakeConfigDeps
+      generator (gh#conan-io/conan#18832)
+    - Add excludes pattern support for get and unzip methods
+      (gh#conan-io/conan#18831)
+    - Add support for GCC 15.2 (gh#conan-io/conan#18735)
+    - Stabilize and document ConfigAPI public Python sub-API
+      (gh#conan-io/conan#18709)
+    - Print build-order in the conan workspace super-install
+      command (#18693).
+    - Workspace super-build options aggregation
+      (gh#conan-io/conan#18608).
+    - Implement tools.build:install_strip for Autotools
+      (gh#conan-io/conan#18606).
+    - Added support to the system_package tool for defining the
+      system package version to be installed
+      (gh#conan-io/conan#18517).
+  * Bug fixes:
+    - Better error message when there is an existing file called
+      "build" in the same location as the "build" build-folder is
+      expected to be created (gh#conan-io/conan#18842)
+    - The cmake_layout was not taking into account the Apple
+      multi-arch/universal separator when creating folders named
+      after the arch setting (gh#conan-io/conan#18823)
+    - Avoiding issues if passing non-string objects to ConanOutput
+      methods. Still, the input to several .info() and similar
+      methods must be "text", passing arbitrary objects and
+      expecting them to convert to strings internally is not
+      supported (gh#conan-io/conan#18782).
+    - Document public interface for ConanOutput class
+      (gh#conan-io/conan#18782).
+    - Remove Python 3.6 support, End Of Life since 2021
+      (gh#conan-io/conan#18779).
+    - Make all non-documented subapi attributes private
+      (gh#conan-io/conan#18736)
+    - Remove SearchAPI in favour of ListAPI's select()
+      (gh#conan-io/conan#18726).
+    - Relax the "risk" warning for conflicting visibility in
+      test_requires (gh#conan-io/conan#18723)
+    - Fixed an issue that caused APT packages without a defined
+      architecture to be detected if one with the same name was
+      installed for a different architecture
+      (gh#conan-io/conan#18517).
+    - Preserve subfolders for runtime_deploy deployer
+      (gh#conan-io/conan#17848).
+    - Made ConanAPI's home_folder read-only
+      (gh#conan-io/conan#18726).
+
+-------------------------------------------------------------------
 Wed Aug 13 10:27:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.19.1:
