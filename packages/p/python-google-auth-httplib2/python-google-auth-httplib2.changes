@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  3 12:44:01 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.1
+  * **deps:** Require google-auth >= 1.32.0, <= 3.0.0 (a69b725)
+  * **deps:** Require httplib2 >= 0.19.0, <= 1.0.0 (a69b725)
+  * Drop python 3.6; require python 3.7+ (a69b725)
+  * Remove setup.cfg configuration for creating universal wheels (#191)
+- Adjust upstream source name in spec file
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Sat Dec 16 20:16:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.0:

@@ -50,4 +50,18 @@
 - drop python-google-auth-httplib2-no-mock.patch (upstream)</comment>
     <requestid>1133644</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1e40b99bef5be307afa1c212783b4c14</srcmd5>
+    <version>0.2.1</version>
+    <time>1762192568</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2.1
+  * **deps:** Require google-auth &gt;= 1.32.0, &lt;= 3.0.0 (a69b725)
+  * **deps:** Require httplib2 &gt;= 0.19.0, &lt;= 1.0.0 (a69b725)
+  * Drop python 3.6; require python 3.7+ (a69b725)
+  * Remove setup.cfg configuration for creating universal wheels (#191)
+- Adjust upstream source name in spec file
+- Update BuildRequires and Requires from setup.py (forwarded request 1315299 from glaubitz)</comment>
+    <requestid>1315300</requestid>
+  </revision>
 </revisionlist>
