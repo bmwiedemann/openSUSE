@@ -58,13 +58,14 @@ ExcludeArch:    %{ix86} %{arm}
 %endif
 
 Name:           %{package_name}
-Version:        2021.8
+Version:        2021.10
 Release:        0
 Summary:        Intel MPI Benchmarks (IMB)
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://software.intel.com/en-us/articles/intel-mpi-benchmarks
 Source0:        https://github.com/intel/mpi-benchmarks/archive/IMB-v%{version}.tar.gz#/%{pname}_%{version}.tar.gz
+Source100:      README.md
 Patch0:         imb-remove-Werror-flag.patch
 Patch1:         src_c-Fix-multiple-size_t-issues-on-32b-systems.patch
 BuildRequires:  %{flavor}-devel

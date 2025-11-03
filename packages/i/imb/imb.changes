@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 31 17:01:02 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to version 2021.10
+  - Add IMB-RMA-GPU Technical Preview
+  - Add IMB-MPI4 persistent collectives
+  - Bug fixes
+
+-------------------------------------------------------------------
 Sat Mar 29 14:51:40 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Remove support for gnu-hpc build flavours.

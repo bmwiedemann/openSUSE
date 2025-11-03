@@ -168,4 +168,15 @@
     <comment></comment>
     <requestid>1265550</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>52931e5d388ad8d7841fd15e9415cfd5</srcmd5>
+    <version>2021.10</version>
+    <time>1762192564</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2021.10
+  - Add IMB-RMA-GPU Technical Preview
+  - Add IMB-MPI4 persistent collectives
+  - Bug fixes</comment>
+    <requestid>1315290</requestid>
+  </revision>
 </revisionlist>
