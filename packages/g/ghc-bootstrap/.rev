@@ -309,4 +309,12 @@ Add support for ppc64le.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1243920</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5e8d3679446af79213025e14760eca4b</srcmd5>
+    <version>9.10.1</version>
+    <time>1762192536</time>
+    <user>anag_factory</user>
+    <comment>- update bootstrap compiler to ghc-9.10.1</comment>
+    <requestid>1315269</requestid>
+  </revision>
 </revisionlist>

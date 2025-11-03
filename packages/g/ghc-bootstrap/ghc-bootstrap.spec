@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bootstrap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,12 @@
 #
 
 
+%if 0%{suse_version} == 1600
 %global llvm_major 15
+%else
+%global llvm_major 18
+%endif
+
 %ifarch ppc64le
 %define longarch powerpc64le
 # something weird on ghc arch detection
@@ -48,7 +53,7 @@
 %define sysname unknown
 %endif
 Name:           ghc-bootstrap
-Version:        9.8.2
+Version:        9.10.1
 Release:        0
 Summary:        Binary distributions of The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
@@ -60,10 +65,10 @@ Source14:       ghc-%{version}-x86_64-unknown-linux.tar.xz
 Source16:       ghc-%{version}-s390x-ibm-linux.tar.xz
 Source17:       ghc-%{version}-aarch64-unknown-linux.tar.xz
 Source19:       ghc-%{version}-riscv64-unknown-linux.tar.xz
-Source20:       ghc-%{version}-loongarch64-unknown-linux.tar.xz
+# I don't have any loongarch64 machine/worker
+#Source20:       ghc-%{version}-loongarch64-unknown-linux.tar.xz
 BuildRequires:  chrpath
 BuildRequires:  fdupes
-BuildRequires:  gcc-PIE
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  gmp-devel
@@ -84,14 +89,10 @@ AutoReq:        off
 %ifnarch s390x
 BuildRequires:  libnuma-devel
 %endif
-%ifarch s390x riscv64
 Requires:       clang%{llvm_major}
-Requires:       llvm%{llvm_major}
-%endif
-%ifnarch s390x
 Requires:       libffi-devel
 Requires:       libnuma-devel
-%endif
+Requires:       llvm%{llvm_major}
 
 %description
 This package contains a binary distribution of "The Glorious Glasgow
@@ -108,7 +109,7 @@ cp %{SOURCE14} .
 cp %{SOURCE16} .
 cp %{SOURCE17} .
 cp %{SOURCE19} .
-cp %{SOURCE20} .
+# cp %{SOURCE20} .
 
 %build
 tar Jxf ghc-%{version}-%{longarch}-%{sysname}-linux.tar.xz
