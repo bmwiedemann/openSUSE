@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Mon Nov  3 09:25:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.149:
+  * General
+    fix logs @aabidsofi19 (#16354)
+- update to 0.8.148:
+  * General
+    - Add Datadog design to Meshery catalog (#15957) @Amiynarh
+      (#16251)
+    - added yml for simple web deployable architecture
+      @Anik-Bardhan (#16267)
+    - Oracle e-commerce microservices on kubernetes
+      @sharmarahul8222 (#16338)
+    - [Kiali architecture design] for Meshery catalog @Donkross360
+      (#16289)
+    - Mattermost Server Scaling for aws design @sharmarahul8222
+      (#16293)
+    - [Design] Add Spring Cloud Microservices Architecture
+      @KatalKavya96 (#16294)
+    - Create Litmus architecture design and publish it to Meshery
+      catalog @CyrilBaah (#16296)
+    - Mattermost Server Scaling for Azure design @sharmarahul8222
+      (#16310)
+    - Add deployable yml file meshery design of monitoring using
+      Prometheus, Grafana to observe Kubernetes workloads
+      @Antonymegar (#16290)
+  * Meshery CLI
+    - fix: fail of component view tests @Fireentity (#16235)
+  * Maintenance
+    - fix: fail of component view tests @Fireentity (#16235)
+- update to 0.8.147:
+  * General
+    - CI: propagate docker tag with release version to Playground
+      deployment
+- update to 0.8.146:
+  * General
+    - [CI]: Deploy Playground by release tag, not latest #16309
+      @leecalcote
+- update to 0.8.145:
+  * General
+    - update helm chart for playground @aabidsofi19 (#16305)
+  * Documentation
+    - doc(mesheryctl): update cli reference documentation to match
+      real status @lekaf974 (#16303)
+- update to 0.8.144:
+  No mesheryctl-related changes
+- update to 0.8.143:
+  No mesheryctl-related changes
+- update to 0.8.142:
+  * General
+    - Keycloak SSO with OAuth2 Proxy design @sharmarahul8222
+      (#16262)
+    - Create kafka-event-driven-microservices.yaml @Antonymegar
+      (#16253)
+    - [Kubeflow ecosystem architecture design] feat: Add
+      comprehensive Kubeflow ecosystem architecture design
+      @Donkross360 (#16249)
+    - Add ms-microsoftgraph-worker design to Meshery catalog
+      (#16094) @Amiynarh (#16252)
+    - feat(design): add Ditto Operator Helm design @KatalKavya96
+      (#16197)
+    - Design : Add Vald Architecture design @KatalKavya96 (#16241)
+    - [Design] Add LoxiLB K8S External Load Balancer design
+      @KatalKavya96 (#16242)
+    - [wordpress-ha-stack] WordPress High-Availability Stack Design
+      - WordPress deployment designed for high-traffic scenarios
+      @Donkross360 (#16195)
+  * Maintenance
+    - fix: correct typo in GitHub workflow job name from
+      garphql_validate t… @Aditya30ag (#16247)
+- update to 0.8.141:
+  * General
+    - Revert "Fix /auth/redirect endpoint to properly handle
+      post-authentication redirections" @aabidsofi19 (#16244)
+    - Design : Add dremio helm design @KatalKavya96 (#16192)
+
+-------------------------------------------------------------------
 Sat Oct 18 06:10:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.140:
