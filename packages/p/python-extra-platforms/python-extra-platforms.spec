@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-extra-platforms
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        GPL-2.0-or-later
