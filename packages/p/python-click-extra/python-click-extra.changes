@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov  2 10:57:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.1.0:
+  * Add support for JSON5, JSONC and HJSON configuration files.
+  * YAML and XML configuration support is now optional. You need to
+    install the click_extra[yaml] and click_extra[xml] extra
+    dependency groups to enable it.
+  * Add new @lazy_group decorator and LazyGroup class to create
+    groups that only load their subcommands when invoked. Closes
+    {issue}1332.
+  * Move all custom types to click_extra._types module.
+  * Avoid importing all types at runtime to reduce startup time.
+  * Upgrade tests runs from macos-13 to macos-15-intel, and from
+    macos-15 to macos-26.
+  * Use astral-sh/setup-uv action to install uv.
+
+-------------------------------------------------------------------
 Wed Oct 22 03:11:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.0.3:

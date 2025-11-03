@@ -108,4 +108,14 @@
   * Support non-string choices in colored help screens. Closes</comment>
     <requestid>1312922</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>414ed32c4213ddc84cd9e1041a1dd17f</srcmd5>
+    <version>6.1.0</version>
+    <time>1762192586</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315098 from ojkastl_buildservice
+
+update to 6.1.0</comment>
+    <requestid>1315324</requestid>
+  </revision>
 </revisionlist>

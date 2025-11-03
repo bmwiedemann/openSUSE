@@ -19,7 +19,7 @@
 %define module_name click-extra
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        6.0.3
+Version:        6.1.0
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -96,6 +96,9 @@ IGNORED_CHECKS+=" or test_context_meta or test_required_command"
 IGNORED_CHECKS+=" or test_no_option_leaks_between_subcommands or test_unset_conf_debug_message"
 # table rendering with emojis involves extra spaces
 IGNORED_CHECKS+=" or test_all_table_rendering"
+IGNORED_CHECKS+=" or test_conf_default_path"
+IGNORED_CHECKS+=" or test_integrated_show_params_option"
+
 %pytest -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}
