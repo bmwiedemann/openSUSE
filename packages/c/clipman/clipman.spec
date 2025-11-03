@@ -1,7 +1,7 @@
 #
 # spec file for package clipman
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           clipman
-Version:        1.6.4
+Version:        1.6.5
 Release:        0
 Summary:        A clipboard manager for Wayland
 License:        GPL-3.0-only
@@ -26,7 +26,7 @@ Source0:        %{name}-%{version}.tar.zst
 # Run go build && go mod vendor to get vendor/ subdirectory
 Source1:        vendor.tar.zst
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.14
 
 %description
 A clipboard manager for Wayland with support for
@@ -44,6 +44,9 @@ BUILDMOD="-buildmode=pie"
 %endif
 export RPM_OPT_FLAGS="%{optflags}"
 go build -v -x -mod=vendor $BUILDMOD -a -ldflags ""
+
+%check
+go test ./...
 
 %install
 install -Dm755 clipman %{buildroot}%{_bindir}/clipman

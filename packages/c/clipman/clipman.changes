@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 01 09:50:50 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.6.5:
+  * Update dependencies
+  * Update minimum Go version to 1.14 
+  * Add some tests for preprocessData 
+  * Add Unicode NFC normalization flag 
+  * restore show-history (#3)
+
+- added %check section to run unit tests
+
+-------------------------------------------------------------------
 Sun Apr 28 16:37:28 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 1.6.4:
