@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 31 16:19:43 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.769.g693ea004:
+  * fix(multipath): add udev rule 99-z-dm-mpath-late.rules
+  * fix(dmsquash-live): install required stat binary
+  * fix(systemd): install new dlopened libraries
+
+-------------------------------------------------------------------
 Fri Sep 19 12:45:53 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.762.g8903c5e2:

@@ -14,6 +14,7 @@ branch. Currently, these active maintenance branches are:
 - SLE-15-SP7_Update     -> SLE 15 SP7
 - SL-Micro-6.0_Update   -> SL Micro 6.0
 - SL-Micro-6.1_Update   -> SL Micro 6.1
+- SLES-16.0_Update      -> SLES 16.0 and SL Micro 6.2 (both share the same code)
 - SLFO_Main             -> SUSE Linux Framework One
 - SUSE/059              -> Tumbleweed
 
@@ -438,3 +439,5 @@ fa17b6fb fix(systemd-udevd): handle root=gpt-auto for systemd-v258
 f879b04d fix(74nvmf): make sure autoconnect script is run at least once
 51bd1331 fix(fs-lib): include modules for charsets for working vfat support
 89dcdd91 fix(dracut.sh): check that custom fw search patch exists before reading it
+46369b3b fix(dmsquash-live): install required stat binary
+de8b63f5 fix(multipath): add udev rule 99-z-dm-mpath-late.rules
