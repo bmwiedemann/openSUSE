@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Nov  1 20:17:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.1.7.0
+  - openexr: Support for idManifest and deepImageState
+    (experimental) #4877 (3.1.7.0)
+  - openexr: ACES Container hint for exr outputs #4907 (by Oktay
+    Comu) (3.1.7.0)
+  - ffmpeg: 10 bit video had wrong green channel #4935 (by Brecht
+    Van Lommel) (3.1.7.0)
+  - iff: Handle non-zero origin, protect against buffer overflows
+    #4925 (3.1.7.0)
+  - jpeg-xl: Correctly set Quality for JPEG XL #4933 (3.1.7.0)
+  - api/docs: Fix IBA::set_pixels declaration and docs #4926
+    (3.1.7.0)
+  - win: Address Windows crashes from issue 4641 #4914 (3.1.7.0)
+  - fix: Uninitialized value revealed by clang-21 warning #4940
+    (3.1.7.0)
+  - build/deps: Additional auto-build capabilities for dependencies
+    that are not found: GIF library #4921 (by Valery Angelique),
+    OpenJPEG #4911 (by Danny Greenstein) (3.1.7.0)
+  - build: Allow auto-build of just required packages #4927
+    (3.1.7.0)
+  - build: Make dependency report more clear about what was
+    required #4929 (3.1.7.0)
+  - ci: Python wheel building improvements: use ccache #4924 (by
+    Larry Gritz), unbreak wheel release + other enhancements pt 1
+    #4937 (by Zach Lewis) (3.1.7.0)
+  - ci: Drop deprecated macos-13 (intel) platform, add
+    macos-15-intel #4930 (3.1.7.0)
+  - ci: Try to avoid ffmpeg install failures #4936 (3.1.7.0)
+  - ci: Simplify ci workflow by using build-steps for old aswf
+    containers, too #4932 (3.1.7.0)
+  - ci: We were not correctly setting fmt version from job options
+    #4939 (3.1.7.0)
+  - tests: Update ref images for heif #4941 (3.1.7.0)
+  - docs: Update/correct explanation of "openexr:core" attribute,
+    and typo fixes #4943 (3.1.7.0)
+
+-------------------------------------------------------------------
 Thu Oct 30 02:46:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable the testsuite on 15.x as the python version is too old
