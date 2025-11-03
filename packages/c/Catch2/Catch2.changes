@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 28 18:34:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.11.0:
+  * Bug fixes:
+    - Fixed building on non-desktop GDK platforms
+      (gh#catchorg/Catch2#3029).
+    - Fixed message macros being susceptible to race in specific
+      scenario (gh#catchorg/Catch2#3031).
+    - Catch2's SEH filter will call the previously installed
+      filter after reporting the error (gh#catchorg/Catch2#3033).
+  * Improvements
+    - Handling of scoped messages (e.g. CAPTURE) is a bit faster.
+    - Better out-of-the-box support for QNX
+      (gh#catchorg/Catch2#2953).
+    - Improved performance of assertions by up-to 10%
+    - Faster processing of non-escaped strings in --invisibles
+      mode.
+    - Added support for Bazel's TEST_RANDOM_SEED env var
+      (gh#catchorg/Catch2#3021).
+    - Added support for Bazel's TEST_PREMATURE_EXIT_FILE env var
+      (gh#catchorg/Catch2#3020).
+
+-------------------------------------------------------------------
 Sun Sep 21 19:10:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.10.0:
