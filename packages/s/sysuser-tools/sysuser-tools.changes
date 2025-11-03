@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov  1 15:48:03 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove dependency on chage
+
+-------------------------------------------------------------------
 Thu Aug 28 15:16:04 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fallback to useradd if systemd is older than v257 [bsc#1248855]

@@ -313,4 +313,12 @@
     <comment>- Fallback to useradd if systemd is older than v257 [bsc#1248855]</comment>
     <requestid>1301825</requestid>
   </revision>
+  <revision rev="37" vrev="12">
+    <srcmd5>283e0f5db9b9cc1510df6f64f9105e0c</srcmd5>
+    <version>3.3</version>
+    <time>1762192470</time>
+    <user>anag_factory</user>
+    <comment>- Remove dependency on chage</comment>
+    <requestid>1315006</requestid>
+  </revision>
 </revisionlist>

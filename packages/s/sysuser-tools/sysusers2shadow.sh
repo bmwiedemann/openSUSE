@@ -52,7 +52,7 @@ else
 		;;
 		u|u\!)
 			if [ "${1}" = "u!" ]; then
-			    EXPIRE_DATE="1970-01-02"
+			    LOCK_ACCOUNT=1
 			fi
 
 			shift
@@ -97,8 +97,8 @@ else
 			    fi
 
 			    run /usr/sbin/useradd -r -c "$3" -d "${homedir}" $ARGUMENTS
-			    if [ -n "$EXPIRE_DATE" ]; then
-				run chage -E "$EXPIRE_DATE" "$1"
+			    if [ -n "$LOCK_ACCOUNT" ] && [ -x /usr/sbin/usermod ]; then
+				run /usr/sbin/usermod --expiredate 1 "$1"
 			    fi
 			elif [ -x "$busybox" ]; then
 			    if [ -n "$GROUP_ID" ] && [ "$GROUP_ID" != "-" ]; then
