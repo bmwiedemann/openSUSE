@@ -65,4 +65,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Update AMD cpu microcode</comment>
     <requestid>1314269</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fbe1c922d5dd99beee9413cfb9724f76</srcmd5>
+    <version>20251031</version>
+    <time>1762192484</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251031 (git commit 04b323bb64f9):
+  * linux-firmware: Update AMD cpu microcode</comment>
+    <requestid>1315091</requestid>
+  </revision>
 </revisionlist>
