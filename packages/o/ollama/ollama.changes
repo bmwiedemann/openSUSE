@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Nov  2 04:00:05 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
+- Fixed issue with duplicated libraries (/usr/lib, /usr/lib64)
+
+- Update to version 0.12.9
+  * Fix performance regression on CPU-only systems
+
+- Update to version 0.12.8
+  * qwen3-vl performance improvements, including flash attention
+    support by default
+  * qwen3-vl will now output less leading whitespace in the
+    response when thinking
+  * Fixed issue where deepseek-v3.1 thinking could not be disabled
+    in Ollama's new app
+  * Fixed issue where qwen3-vl would fail to interpret images with
+    transparent backgrounds
+  * Ollama will now stop running a model before removing it via
+    ollama rm
+  * Fixed issue where prompt processing would be slower on
+    Ollama's engine
+
+- Update to version 0.12.7
+  * New model: Qwen3-VL: Qwen3-VL is now available in all parameter
+    sizes ranging from 2B to 235B
+  * New model: MiniMax-M2: a 230 Billion parameter model built for
+    coding & agentic workflows available on Ollama's cloud
+  * Model load failures now include more information on Windows
+  * Fixed embedding results being incorrect when running
+    embeddinggemma
+  * Fixed gemma3n on Vulkan backend
+  * Increased time allocated for ROCm to discover devices
+  * Fixed truncation error when generating embeddings
+  * Fixed request status code when running cloud models
+  * The OpenAI-compatible /v1/embeddings endpoint now supports
+    encoding_format parameter
+  * Ollama will now parse tool calls that don't conform to
+    {"name": name, "arguments": args} (thanks @rick-github!)
+  * Fixed prompt processing reporting in the llama runner
+  * Increase speed when scheduling models
+  * Fixed issue where FROM <model> would not inherit RENDERER or
+    PARSER commands
+
+-------------------------------------------------------------------
 Sun Oct 26 19:23:10 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Require groups video and render instead of providing them while

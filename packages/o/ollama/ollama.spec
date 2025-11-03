@@ -20,7 +20,7 @@
 %global force_gcc_version 12
 %endif
 Name:           ollama
-Version:        0.12.6
+Version:        0.12.9
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -83,9 +83,16 @@ export GOFLAGS="-mod=vendor"
 
 export GOFLAGS="${GOFLAGS} -v"
 
+# fix CMAKE_BINARY_DIR / OLLAMA_INSTALL_DIR location
+sed -i -e 's@${CMAKE_BINARY_DIR}/lib/ollama@${CMAKE_BINARY_DIR}/%{_lib}/ollama@' CMakeLists.txt
+sed -i -e 's@${CMAKE_INSTALL_PREFIX}/lib/ollama@${CMAKE_INSTALL_PREFIX}/%{_lib}/ollama@' CMakeLists.txt
+# overwrite ml/path.go so LibOllamaPath is set to our path
+echo -e 'package ml\nvar LibOllamaPath string = "/usr/%{_lib}/ollama"' > ml/path.go
+# for dlopens
+sed -i -e 's@"lib/ollama"@"%{_lib}/ollama"@' ml/backend/ggml/ggml/src/ggml.go
+
 %cmake \
 	-UCMAKE_INSTALL_BINDIR -DCMAKE_INSTALL_BINDIR=%{_libdir}/ollama \
-	-UOLLAMA_INSTALL_DIR -DOLLAMA_INSTALL_DIR=%{_libdir}/ollama \
 	%{nil}
 %cmake_build
 
@@ -94,6 +101,9 @@ go build -mod=vendor -buildmode=pie -o %{name} .
 
 %install
 %cmake_install
+# remove copies of system libraries
+rm -rf %{buildroot}%{_libdir}/%{name}/libvulkan*
+
 install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
 
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
@@ -133,7 +143,6 @@ go test -v ./...
 %{_libdir}/%{name}
 %{_unitdir}/%{name}.service
 %{_sysusersdir}/%{name}-user.conf
-%{_prefix}/lib/ollama
 %{_fillupdir}/sysconfig.%{name}
 %attr(-, ollama, ollama) %{_localstatedir}/lib/%{name}
 
