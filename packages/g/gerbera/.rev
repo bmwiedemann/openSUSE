@@ -303,4 +303,12 @@ Sorry - I missed that on the previous fixup. Now we should be good for sysusers 
     <comment></comment>
     <requestid>1308515</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>21bc19848f9422f6a160909e975581bf</srcmd5>
+    <version>2.6.1</version>
+    <time>1762192513</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1315242</requestid>
+  </revision>
 </revisionlist>

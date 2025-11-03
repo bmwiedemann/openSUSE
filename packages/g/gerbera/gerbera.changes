@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov  2 16:20:08 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Use --preset to build standard release build with NPUPNP
+- BuildRequires minimum versions supported by upstream (rather than
+  recommended versions) to allow building on older Leap versions
+- Don't cap versions of external libraries to tested ones upstream
+  as this doesn't work well with a rolling release (like Tumbleweed)
+  and isn't needed for stable Leap releases
+- Fix rpmlint errors/warnings
+  + add gerbera.rpmlintrc
+  + add gerbera-cmake-pie.patch
+
+-------------------------------------------------------------------
 Wed Oct  1 13:01:51 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Fix build error with newer fmt.

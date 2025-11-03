@@ -1,0 +1,14 @@
+diff -purN gerbera-2.6.1.orig/CMakeLists.txt gerbera-2.6.1/CMakeLists.txt
+--- gerbera-2.6.1.orig/CMakeLists.txt	2025-08-15 15:41:10.000000000 +0200
++++ gerbera-2.6.1/CMakeLists.txt	2025-11-02 17:45:39.166202203 +0100
+@@ -47,6 +47,10 @@ set(CMAKE_INSTALL_BINDIR bin)
+ set(CMAKE_INSTALL_DATADIR share/gerbera)
+ set(CMAKE_INSTALL_MANDIR share/man/man1)
+ 
++# build all executables as PIE
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pie")
++
+ option(WITH_NPUPNP            "Use npupnp instead of libupnp" OFF)
+ option(WITH_MAGIC             "Use libmagic to identify file mime types" ON)
+ option(WITH_MYSQL             "Store media information in MySQL DB" OFF)
