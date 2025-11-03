@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  2 10:50:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.0.0:
+  * Features
+    - Drop Python 3.9 support and add Python 3.14 (22941ac)
+  * Breaking Changes
+    - As of python-gitlab 7.0.0, Python 3.9 is no longer supported.
+      Python 3.10 or higher is required.
+
+-------------------------------------------------------------------
 Mon Oct 20 05:41:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.5.0:

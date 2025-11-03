@@ -324,4 +324,14 @@
     <comment></comment>
     <requestid>1312389</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e22e208714fd0c9e3bd960008cf5fae9</srcmd5>
+    <version>7.0.0</version>
+    <time>1762192585</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315094 from ojkastl_buildservice
+
+update to 7.0.0</comment>
+    <requestid>1315323</requestid>
+  </revision>
 </revisionlist>
