@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 26 09:56:32 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509-store to version 1.6.12 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Oct 23 09:14:59 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509-store to version 1.6.12.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Wed Jul 16 23:14:31 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update crypton-x509-store to version 1.6.11.
