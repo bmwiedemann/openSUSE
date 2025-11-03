@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Mon Nov 03 09:15:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.12.0:
+  * Notable Changes
+    - Experimental App-level Patching: Now supports Python and
+      Node.js applications!
+    - Docker Build Integration: Use the new generate command to
+      patch images. This provides support for any Docker CLI flags.
+    - Local Output for Multi-Platform Patching: Added support for
+      the --oci-dir flag to store patched artifacts locally when
+      performing multi-platform patching.
+    - Enhanced End-of-Life (EOL) Checks: Improved support through
+      --exit-on-eol and --eol-api-url flags for customizable EOL
+      validation.
+  * Dependencies
+    - chore: bump google.golang.org/grpc from 1.75.1 to 1.76.0
+      (#1341)
+    - chore: bump github.com/aquasecurity/trivy from 0.66.0 to
+      0.67.2 (#1340)
+    - chore: bump github.com/docker/docker from 28.5.0+incompatible
+      to 28.5.1+incompatible (#1339)
+    - chore: bump github.com/docker/cli from 28.4.0+incompatible to
+      28.5.1+incompatible (#1338)
+    - chore: bump the all group with 2 updates (#1337)
+    - chore: bump golang.org/x/term from 0.35.0 to 0.36.0 (#1336)
+    - chore: bump github.com/moby/buildkit from 0.24.0 to 0.25.0
+      (#1330)
+    - chore: bump github.com/docker/docker from 28.4.0+incompatible
+      to 28.5.0+incompatible (#1328)
+    - chore: bump the all group across 1 directory with 6 updates
+      (#1333)
+    - chore: bump the all group in /website with 5 updates (#1329)
+    - chore: bump github.com/quay/claircore from 1.5.43 to 1.5.44
+      (#1326)
+    - chore: bump github.com/openvex/go-vex from 0.2.5 to 0.2.7
+      (#1312)
+    - chore: bump the all group in /website with 3 updates (#1317)
+    - chore: bump github.com/quay/claircore from 1.5.39 to 1.5.42
+      (#1311)
+    - chore: bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+      (#1310)
+    - chore: bump google.golang.org/grpc from 1.75.0 to 1.75.1
+      (#1313)
+    - chore: bump the all group with 4 updates (#1318)
+    - chore: bump k8s.io/apimachinery from 0.34.0 to 0.34.1 (#1309)
+    - chore: bump github.com/spf13/viper from 1.20.1 to 1.21.0
+      (#1300)
+    - chore: bump the all group across 1 directory with 3 updates
+      (#1305)
+    - chore: bump github.com/stretchr/testify from 1.11.0 to 1.11.1
+      (#1298)
+    - chore: bump golang.org/x/sync from 0.16.0 to 0.17.0 (#1296)
+    - chore: bump github.com/docker/cli from 28.3.3+incompatible to
+      28.4.0+incompatible (#1297)
+    - chore: bump the all group with 7 updates (#1292)
+    - chore: bump k8s.io/apimachinery from 0.33.4 to 0.34.0 (#1291)
+    - chore: bump github.com/docker/docker from 28.3.3+incompatible
+      to 28.4.0+incompatible (#1290)
+    - chore: bump the all group in /website with 2 updates (#1289)
+    - chore: bump github.com/aquasecurity/trivy from 0.65.0 to
+      0.66.0 (#1288)
+    - chore: bump github.com/docker/buildx from 0.25.0 to 0.28.0
+      (#1286)
+    - chore: bump the all group with 2 updates (#1270)
+    - chore: bump google.golang.org/grpc from 1.74.2 to 1.75.0
+      (#1269)
+    - chore: bump github.com/stretchr/testify from 1.10.0 to 1.11.0
+      (#1267)
+    - chore: bump github.com/go-viper/mapstructure/v2 from 2.3.0 to
+      2.4.0 (#1264)
+    - chore: bump the all group across 1 directory with 2 updates
+      (#1261)
+    - chore: bump k8s.io/apimachinery from 0.33.3 to 0.33.4 (#1259)
+    - chore: bump the all group across 1 directory with 6 updates
+      (#1258)
+
+-------------------------------------------------------------------
 Mon Aug 18 12:38:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.1:

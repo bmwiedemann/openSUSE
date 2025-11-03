@@ -18,14 +18,14 @@
 
 %define executable_name copa
 Name:           copacetic
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        CLI tool for directly patching container images using reports from vulnerability scanners
 License:        Apache-2.0
 URL:            https://github.com/project-copacetic/copacetic
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.23.5
+BuildRequires:  golang(API) >= 1.25
 
 %description
 copa is a CLI tool written in Go and based on buildkit that can be used to
