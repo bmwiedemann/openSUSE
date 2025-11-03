@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 17 16:25:09 MDT 2025 - carnold@suse.com
+
+- bsc#1252105 - Unable to create an SEV-SNP enabled guest with
+  virt-manager. This simplifies the code from what used to be
+  required for sev while adding initial tdx support.
+  virtman-add-launch-security-support.patch
+- Dropped patches rolled into above the patch.
+  virtman-add-sev-memory-support.patch
+  virtinst-dont-require-uefi-for-sev-snp.patch
+
+-------------------------------------------------------------------
 Thu Sep 11 13:52:31 MDT 2025 - carnold@suse.com
 
 - Fix issues with detection of openSUSE Leap 16.
@@ -114,7 +125,7 @@ Tue Aug 12 14:23:56 MDT 2025 - carnold@suse.com
 -------------------------------------------------------------------
 Mon Jul 28 10:49:22 MDT 2025 - carnold@suse.com
 
-- Add support for creating TDX guests in virt-install
+- Add support for creating TDX guests in virt-install (jsc#PED-9265)
   053-virtinst-add-support-for-creating-TDX-guests.patch
 
 -------------------------------------------------------------------

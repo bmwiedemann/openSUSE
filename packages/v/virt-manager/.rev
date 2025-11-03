@@ -2222,4 +2222,12 @@
     <comment>Fix issues with detection of openSUSE Leap 16</comment>
     <requestid>1305196</requestid>
   </revision>
+  <revision rev="281" vrev="3">
+    <srcmd5>1e7ceb118f69f04e07cd90a7443a5421</srcmd5>
+    <version>5.1.0</version>
+    <time>1762192478</time>
+    <user>anag_factory</user>
+    <comment>bsc#1252105 - Unable to create an SEV-SNP enabled guest with virt-manager</comment>
+    <requestid>1314938</requestid>
+  </revision>
 </revisionlist>

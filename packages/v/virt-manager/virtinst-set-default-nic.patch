@@ -5,7 +5,7 @@ Index: virt-manager-5.1.0/virtinst/devices/interface.py
 ===================================================================
 --- virt-manager-5.1.0.orig/virtinst/devices/interface.py
 +++ virt-manager-5.1.0/virtinst/devices/interface.py
-@@ -373,6 +373,9 @@ class DeviceInterface(Device):
+@@ -370,6 +370,9 @@ class DeviceInterface(Device):
              return "e1000e"
          if not guest.os.is_x86():
              return None

@@ -7,7 +7,7 @@ Index: virt-manager-5.1.0/virtManager/object/domain.py
 ===================================================================
 --- virt-manager-5.1.0.orig/virtManager/object/domain.py
 +++ virt-manager-5.1.0/virtManager/object/domain.py
-@@ -1692,7 +1692,7 @@ class vmmDomain(vmmLibvirtObject):
+@@ -1686,7 +1686,7 @@ class vmmDomain(vmmLibvirtObject):
          return self.is_stoppable() or self.status() in [libvirt.VIR_DOMAIN_CRASHED]
  
      def is_runable(self):

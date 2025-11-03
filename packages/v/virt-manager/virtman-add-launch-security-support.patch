@@ -1,0 +1,294 @@
+References: bsc#1196806, bsc#1252105, jsc#SLE-18834
+Add a button on the Customize dialog for launch security.
+Support AMD SEV, SEV-ES, and SEV-SNP
+Support Intel TDX
+
+Index: virt-manager-5.1.0/ui/details.ui
+===================================================================
+--- virt-manager-5.1.0.orig/ui/details.ui
++++ virt-manager-5.1.0/ui/details.ui
+@@ -1927,7 +1927,20 @@
+                                   </packing>
+                                 </child>
+                                 <child>
+-                                  <placeholder/>
++                                  <object class="GtkCheckButton" id="launch-security">
++                                    <property name="label" translatable="yes">Enable launch security</property>
++                                    <property name="visible">True</property>
++                                    <property name="can-focus">True</property>
++                                    <property name="receives-default">False</property>
++                                    <property name="halign">start</property>
++                                    <property name="use-underline">True</property>
++                                    <property name="draw-indicator">True</property>
++                                    <signal name="toggled" handler="on_mem_launch_security_toggled" swapped="no"/>
++                                  </object>
++                                  <packing>
++                                    <property name="left-attach">1</property>
++                                    <property name="top-attach">4</property>
++                                  </packing>
+                                 </child>
+                               </object>
+                               <packing>
+Index: virt-manager-5.1.0/virtManager/details/details.py
+===================================================================
+--- virt-manager-5.1.0.orig/virtManager/details/details.py
++++ virt-manager-5.1.0/virtManager/details/details.py
+@@ -46,6 +46,7 @@ from ..delete import vmmDeleteStorage
+     EDIT_TOPOLOGY,
+     EDIT_MEM,
+     EDIT_MEM_SHARED,
++    EDIT_MEM_LS,
+     EDIT_AUTOSTART,
+     EDIT_BOOTORDER,
+     EDIT_BOOTMENU,
+@@ -72,7 +73,7 @@ from ..delete import vmmDeleteStorage
+     EDIT_FS,
+     EDIT_HOSTDEV_ROMBAR,
+     EDIT_HOSTDEV_USB_STARTUPPOLICY,
+-) = range(1, 39)
++) = range(1, 40)
+ 
+ 
+ # Columns in hw list model
+@@ -413,6 +414,7 @@ class vmmDetails(vmmGObjectUI):
+                 "on_mem_maxmem_changed": _e(EDIT_MEM),
+                 "on_mem_memory_changed": self._curmem_changed_cb,
+                 "on_mem_shared_access_toggled": _e(EDIT_MEM_SHARED),
++                "on_mem_launch_security_toggled": _e(EDIT_MEM_LS),
+                 "on_boot_list_changed": self._boot_list_changed_cb,
+                 "on_boot_moveup_clicked": self._boot_moveup_clicked_cb,
+                 "on_boot_movedown_clicked": self._boot_movedown_clicked_cb,
+@@ -1481,6 +1483,9 @@ class vmmDetails(vmmGObjectUI):
+         if self._edited(EDIT_MEM_SHARED):
+             kwargs["mem_shared"] = self.widget("shared-memory").get_active()
+ 
++        if self._edited(EDIT_MEM_LS):
++            kwargs["lsmem"] = self.widget("launch-security").get_active()
++
+         return self._change_config(self.vm.define_memory, kwargs, hotplug_args=hotplug_args)
+ 
+     def _apply_boot_options(self):
+@@ -1970,6 +1975,14 @@ class vmmDetails(vmmGObjectUI):
+         curmem.set_value(int(round(vm_cur_mem)))
+         maxmem.set_value(int(round(vm_max_mem)))
+ 
++        domcaps = self.vm.get_domain_capabilities()
++        show_ls = domcaps.supports_launch_security()
++        self.widget("launch-security").set_sensitive(show_ls and self.is_customize_dialog)
++        if self.vm.get_launch_security_type():
++            self.widget("launch-security").set_active(True)
++        else:
++            self.widget("launch-security").set_active(False)
++
+         shared_mem, shared_mem_err = self.vm.has_shared_mem()
+         self.widget("shared-memory").set_active(shared_mem)
+         self.widget("shared-memory").set_sensitive(not bool(shared_mem_err))
+Index: virt-manager-5.1.0/virtManager/object/domain.py
+===================================================================
+--- virt-manager-5.1.0.orig/virtManager/object/domain.py
++++ virt-manager-5.1.0/virtManager/object/domain.py
+@@ -680,7 +680,7 @@ class vmmDomain(vmmLibvirtObject):
+         if access_mode != _SENTINEL:
+             guest.memoryBacking.access_mode = access_mode
+ 
+-    def define_memory(self, memory=_SENTINEL, maxmem=_SENTINEL, mem_shared=_SENTINEL):
++    def define_memory(self, memory=_SENTINEL, maxmem=_SENTINEL, mem_shared=_SENTINEL, lsmem=_SENTINEL):
+         guest = self._make_xmlobj_to_define()
+ 
+         if memory != _SENTINEL:
+@@ -689,6 +689,18 @@ class vmmDomain(vmmLibvirtObject):
+             guest.memory = int(maxmem)
+         if mem_shared != _SENTINEL:
+             self._edit_shared_mem(guest, mem_shared)
++        if lsmem != _SENTINEL:
++            if lsmem is True:
++                domcaps = self.get_domain_capabilities()
++                if domcaps.supports_sev_launch_security():
++                    guest.launchSecurity.type = "sev"
++                    guest.launchSecurity.set_defaults(guest)
++                elif domcaps.supports_tdx_launch_security():
++                    guest.launchSecurity.type = "tdx"
++                    guest.launchSecurity.set_defaults(guest)
++            else:
++                guest.launchSecurity.type = None
++                guest.launchSecurity.policy = None
+ 
+         self._redefine_xmlobj(guest)
+ 
+@@ -1371,6 +1383,9 @@ class vmmDomain(vmmLibvirtObject):
+     def get_description(self):
+         return self.get_xmlobj().description
+ 
++    def get_launch_security_type(self):
++        return self.get_xmlobj().launchSecurity.type
++
+     def get_boot_order(self):
+         legacy = not self.can_use_device_boot_order()
+         return self.xmlobj.get_boot_order(legacy=legacy)
+Index: virt-manager-5.1.0/virtinst/domcapabilities.py
+===================================================================
+--- virt-manager-5.1.0.orig/virtinst/domcapabilities.py
++++ virt-manager-5.1.0/virtinst/domcapabilities.py
+@@ -89,16 +89,24 @@ def _make_capsblock(xml_root_name):
+     return TmpClass
+ 
+ 
+-################################
+-# SEV launch security handling #
+-################################
++###################
++# Launch security #
++###################
+ 
+ 
++class _LAUNCHSECURITY(XMLBuilder):
++    XML_NAME = "launchSecurity"
++    supported = XMLProperty("./@supported", is_yesno=True)
++    sectype = XMLProperty("./@sectype")
++
+ class _SEV(XMLBuilder):
+     XML_NAME = "sev"
+     supported = XMLProperty("./@supported", is_yesno=True)
+     maxESGuests = XMLProperty("./maxESGuests")
+ 
++class _TDX(XMLBuilder):
++    XML_NAME = "tdx"
++    supported = XMLProperty("./@supported", is_yesno=True)
+ 
+ #############################
+ # Misc toplevel XML classes #
+@@ -127,6 +135,8 @@ class _Features(_CapsBlock):
+     XML_NAME = "features"
+     gic = XMLChildProperty(_make_capsblock("gic"), is_single=True)
+     sev = XMLChildProperty(_SEV, is_single=True)
++    tdx = XMLChildProperty(_TDX, is_single=True)
++    launchSecurity = XMLChildProperty(_LAUNCHSECURITY, is_single=True)
+     hyperv = XMLChildProperty(_make_capsblock("hyperv"), is_single=True)
+ 
+ 
+@@ -413,19 +423,57 @@ class DomainCapabilities(XMLBuilder):
+             self._features = _lookup_cpu_security_features(self) or []
+         return self._features
+ 
+-    ########################
+-    # Misc support methods #
+-    ########################
++    ###########################
++    # Launch Security Methods #
++    ###########################
+ 
+-    def supports_sev_launch_security(self, check_es=False):
++    def supports_sev_launch_security(self):
+         """
+         Returns False if either libvirt doesn't advertise support for SEV at
+         all (< libvirt-4.5.0) or if it explicitly advertises it as unsupported
+         on the platform
+         """
+-        if check_es:
+-            return bool(self.features.sev.supported and self.features.sev.maxESGuests)
+-        return bool(self.features.sev.supported)
++        if bool(self.features.sev.supported):
++            return True
++        return False
++
++    def supports_tdx_launch_security(self):
++        """
++        Returns False if either libvirt doesn't advertise support for TDX at
++        all (< libvirt-11.5.0) or if it explicitly advertises it as unsupported
++        on the platform
++        """
++        if bool(self.features.tdx.supported):
++            return True
++        return False
++
++    def supports_launch_security(self):
++        """
++        Return True if host supports any kind of launch security.
++        """
++        if self.supports_sev_launch_security() or self.supports_tdx_launch_security():
++            return True
++        return False
++
++    def get_launch_security_type(self):
++        """
++        Return the type of launch security. This is ether AMD's sev-snp,
++        sev-es, or sev. For Intel return tdx. Otherwise return None.
++        """
++        if bool(self.features.sev.supported):
++            if bool(self.features.launchSecurity.supported):
++                if "sev-snp" in self.features.launchSecurity.get_xml():
++                    return "sev-snp"
++            if bool(self.features.sev.maxESGuests):
++                return "sev-es"
++            return "sev"
++        elif bool(self.features.tdx.supported):
++            return "tdx"
++        return None
++
++    ########################
++    # Misc support methods #
++    ########################
+ 
+     def supports_video_bochs(self):
+         """
+Index: virt-manager-5.1.0/virtinst/domain/launch_security.py
+===================================================================
+--- virt-manager-5.1.0.orig/virtinst/domain/launch_security.py
++++ virt-manager-5.1.0/virtinst/domain/launch_security.py
+@@ -1,3 +1,4 @@
++from ..logger import log
+ from ..xmlbuilder import XMLBuilder, XMLProperty
+ 
+ 
+@@ -29,31 +30,38 @@ class DomainLaunchSecurity(XMLBuilder):
+     quoteGenerationSocket = XMLProperty("./quoteGenerationService/@path")
+ 
+     def _set_defaults_sev(self, guest):
+-        if not guest.os.is_q35() or not guest.is_uefi():
+-            raise RuntimeError(_("SEV launch security requires a Q35 UEFI machine"))
++        if not guest.os.is_q35():
++            if self.type == "sev-snp":
++                raise RuntimeError(_("SEV-SNP launch security requires a Q35 UEFI machine"))
++            raise RuntimeError(_("SEV launch security requires a Q35 machine"))
++        # Libvirt will select the appropriate firmware file if not specified
++        # as long as we enable efi.
++        if not guest.is_uefi():
++            guest.os.firmware = 'efi'
+ 
+         # The 'policy' is a mandatory 4-byte argument for the SEV firmware.
+         # If missing, we use 0x03 for the original SEV implementation and
+-        # 0x07 for SEV-ES.
++        # 0x07 for SEV-ES. 0x00030000 for SEV-SNP.
+         # Reference: https://libvirt.org/formatdomain.html#launch-security
+         if self.policy is None:
+             domcaps = guest.lookup_domcaps()
++            sev_type = domcaps.get_launch_security_type()
+             self.policy = "0x03"
+-            if domcaps.supports_sev_launch_security(check_es=True):
+-                self.policy = "0x07"
+-
+-    def _set_defaults_sev_snp(self, guest):
+-        if not guest.os.is_q35() or not guest.is_uefi():
+-            raise RuntimeError(_("SEV-SNP launch security requires a Q35 UEFI machine"))
++            if sev_type is not None:
++                if sev_type == "sev-snp":
++                    self.type = "sev-snp"
++                    self.policy = "0x00030000"
++                elif sev_type == "sev-es":
++                    self.policy = "0x07"
+ 
+     def _set_defaults_tdx(self, guest):
+-        if not guest.os.is_q35() or not guest.is_uefi():
++        if not guest.os.is_q35():
+             raise RuntimeError(_("TDX launch security requires a Q35 UEFI machine"))
++        if not guest.is_uefi():
++            guest.os.firmware = 'efi'
+ 
+     def set_defaults(self, guest):
+-        if self.type == "sev":
++        if self.type == "sev" or self.type == "sev-snp":
+             return self._set_defaults_sev(guest)
+-        elif self.type == "sev-snp":
+-            return self._set_defaults_sev_snp(guest)
+         elif self.type == "tdx":
+             return self._set_defaults_tdx(guest)

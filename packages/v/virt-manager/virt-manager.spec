@@ -1,7 +1,7 @@
 #
 # spec file for package virt-manager
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ Patch156:       virtinst-set-qemu-emulator.patch
 Patch203:       virtman-load-stored-uris.patch
 Patch204:       virtman-add-tooltip-to-firmware.patch
 Patch205:       virtman-modify-gui-defaults.patch
-Patch206:       virtman-add-sev-memory-support.patch
+Patch206:       virtman-add-launch-security-support.patch
 Patch220:       virtinst-default-xen-to-qcow2-format.patch
 Patch221:       virtinst-detect-oes-distros.patch
 Patch222:       virtinst-vol-default-nocow.patch
@@ -98,7 +98,6 @@ Patch284:       virtinst-add-slem60-detection-support.patch
 Patch285:       virtinst-windows-server-detection.patch
 Patch286:       virtinst-drop-removeprefix-usage.patch
 Patch287:       virtinst-add-sle16-detection-support.patch
-Patch288:       virtinst-dont-require-uefi-for-sev-snp.patch
 
 BuildArch:      noarch
 
