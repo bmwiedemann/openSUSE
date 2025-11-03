@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Nov 03 00:49:19 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 3.1.0+git.1762077481.9351a27:
+  * docs: fix link to project page (#39)
+  * Release 3.1.0
+  * Release 3.1.0
+  * Remove usage of pkg_resources
+  * Use entrypoints instead of scripts
+  * Change URLs to hjson.github.io
+  * Publish v3.0.2
+
+-------------------------------------------------------------------
+Mon Nov  3 00:38:39 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Initial packaging effort for python-hjson 3.1.0.
