@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  2 11:07:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.47.0:
+  * Breaking changes
+    - Support Python 3.14 by @tony in #601
+    - Drop Python 3.9 by @tony in #602
+
+-------------------------------------------------------------------
 Thu May 29 06:01:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.46.2:
