@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  2 11:28:37 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 2.4.128
+  * Versions 2.4.126 and 2.4.127 contain an ABI breakage in
+    libdrm_amdgpu. Depending on which Mesa version or commit you
+    use, you may see stack smashing resulting in crashes of AMD
+    Mesa drivers. It's recommended to never package versions
+    2.4.126 and 2.4.127.
+
+-------------------------------------------------------------------
 Tue Oct 14 18:10:05 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 2.4.127

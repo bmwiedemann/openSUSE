@@ -1924,4 +1924,17 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * xf86drm: Drop drmFauxDeviceInfo</comment>
     <requestid>1311400</requestid>
   </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>7b84811d79772b744a992b07199e42f5</srcmd5>
+    <version>2.4.128</version>
+    <time>1762192485</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.128
+  * Versions 2.4.126 and 2.4.127 contain an ABI breakage in
+    libdrm_amdgpu. Depending on which Mesa version or commit you
+    use, you may see stack smashing resulting in crashes of AMD
+    Mesa drivers. It's recommended to never package versions
+    2.4.126 and 2.4.127.</comment>
+    <requestid>1315100</requestid>
+  </revision>
 </revisionlist>
