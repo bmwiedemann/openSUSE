@@ -1,0 +1,11 @@
+<package name="letterize" project="openSUSE:Factory">
+  <title>Find pronounceable letter mnemonics for phone numbers</title>
+  <description>This program uses a table of pronounceable letter-triples derived from a
+dictionary scan. Each potential mnemonic must be such that all of its
+letter-triples are in the table to be emitted. About 30% of possible triples
+are considered pronounceable. A typical 7-digit phone number has 19,683
+possible mnemonics, but this test usually cuts the list down to a few hundred
+or so, a reasonable number to eyeball-check. For some numbers, the list will,
+sadly, be empty.</description>
+  <url>http://www.catb.org/~esr/letterize/</url>
+</package>
