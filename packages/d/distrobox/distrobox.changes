@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Oct 31 17:44:31 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.8.2.0:
+  * Decommission Clearlinux
+  * assemble:
+    - add unshare-groups support (gh#89luca89/distrobox#1675)
+    - extend manifest definitions with include
+      (gh#89luca89/distrobox#1860)
+    - fix accidental file globbing during parsing
+      (gh#89luca89/distrobox#1713)
+  * completion:
+    - Bash completion enhancements (gh#89luca89/distrobox#1848)
+  * create:
+    - Support --userns=keep-id:size= (gh#89luca89/distrobox#1667)
+    - explicitly prefer using crun if present
+    - indentation for --root usage in distrobox-create
+      (gh#89luca89/distrobox#1846)
+    - fix formatting and quoting issues
+      (gh#89luca89/distrobox#1862)
+  * enter:
+    - Allow whitespaces in environment variables
+      (gh#89luca89/distrobox#1811)
+  * export:
+    - fix doas case, fix missing sudo_prefix when local execution
+  * host-exec:
+    - fail for HTTP response codes >= 400 (curl --fail)
+      (gh#89luca89/distrobox#1787)
+  * init:
+    - Support Chimera Linux guests (gh#89luca89/distrobox#1778)
+    - Fixes Vulcan ICD config files for NVIDIA driver host
+      integration (openSUSE, Fedora) (gh#89luca89/distrobox#1688)
+    - add altlinux in distrobox (gh#89luca89/distrobox#1512)
+    - create xdg-open distrobox-host-exec symlink only if --init
+      not used (gh#89luca89/distrobox#1818)
+    - exclude schroot mountpoint from socket search, improve
+      performance (gh#89luca89/distrobox#1836)
+    - fix formatting on /etc/shaddow stat-ing
+      (gh#89luca89/distrobox#1836)
+    - fix missing sudo binary on doas distro, make export aware of
+      it
+    - fix on systemd, we don't do remount in containers
+    - fix passwordless doas
+    - improve nvidia symlinks resolution
+      (gh#89luca89/distrobox#1668)
+    - make the default fish_prompt an autoloaded function
+      (gh#89luca89/distrobox#1672)
+    - mask systemd-resolved in case we use host's network
+    - setup correct chimera base-full-man dep
+      (gh#89luca89/distrobox#1826)
+  * install:
+    - add option to suppress color (gh#89luca89/distrobox#1709)
+  * upgrade:
+    - fix upgrade command when on doas systems
+  * Many updates to Documentation
+
+-------------------------------------------------------------------
 Sat Jan 25 18:24:09 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.8.1.2:
