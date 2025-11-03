@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 03 09:15:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.18:
+  * build(deps): bump github.com/klauspost/compress from 1.18.0 to
+    1.18.1 (#1895)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.16.2 to
+    5.16.3 (#1875)
+  * build(deps): bump github/codeql-action from 4.30.8 to 4.30.9
+    (#1896)
+  * build(deps): bump chainguard-dev/actions from 1.5.6 to 1.5.7
+    (#1898)
+  * build(deps): bump chainguard.dev/sdk from 0.1.41 to 0.1.43
+    (#1897)
+  * build(deps): bump google.golang.org/api from 0.251.0 to 0.253.0
+    (#1900)
+  * Pin test examples to alpine v3.22 due to ongoing usr-merge
+    effort (#1902)
+  * Use cached resolvers to compute disqualifications (#1892)
+
+-------------------------------------------------------------------
 Mon Oct 20 05:38:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.17:
