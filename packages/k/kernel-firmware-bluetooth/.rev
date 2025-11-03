@@ -216,4 +216,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * QCA: Update Bluetooth WCN6856 firmware 2.1.0-00653 to 2.1.0-00659</comment>
     <requestid>1313866</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>73a1e399dd1854b6725dc9f50a5c781c</srcmd5>
+    <version>20251029</version>
+    <time>1762192483</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251029 (git commit bfc84303530a):
+  * rtl_bt: Add firmware and config files for RTL8761CUV</comment>
+    <requestid>1315089</requestid>
+  </revision>
 </revisionlist>
