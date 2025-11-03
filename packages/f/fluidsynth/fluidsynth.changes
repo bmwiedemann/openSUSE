@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 31 19:58:32 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Updat eto version 2.5.1
+  * Previous versions have incorrectly exposed private C++ and
+    inline symbols; they are now hidden from the library.
+  * Fluidsynth now resets DataEntry values when it receives
+    (N)RPN MSB/LSB to prevent off-tuned channels.
+  * Fix a regression introduced in 2.5.0, that could have caused a
+    NULL pointer deref when playing AWE32 NRPN MIDIs.
+  * Fix a regression introduced in 2.5.0, that caused convex
+    unipolar modulators to use a concave mapping.
+  * Fix a regression introduced in 2.4.6, which in rare cases
+    could have caused the cutoff frequency of the IIR filter to
+    get stuck or change abruptly.
+  * Fix a build issue where fluidsynth was trying to find glib
+    even when it shouldn't.
+  * Fix typos in ALSA log messages.
+
+-------------------------------------------------------------------
 Sun Oct  5 19:26:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.0
