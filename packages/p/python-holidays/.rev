@@ -451,4 +451,32 @@
     <comment></comment>
     <requestid>1312435</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a0cf7571b64e3f53030348736f5e1909</srcmd5>
+    <version>0.83</version>
+    <time>1762192582</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1314823 from glaubitz
+
+- Update to 0.83
+    * Add _add_observed/_move_holiday's force_observed support
+    * Introduce HolidayBase::_is_weekday method
+    * Refactor HolidaySum::__init__
+    * Add Western Sahara holidays
+    * Update Denmark holidays: add th l10n support, refactor test cases
+    * Update Islamic holidays calculation
+    * Update Netherlands holidays: add th l10n, refactor test cases
+    * Update Slovakia holidays: additional holidays moved to
+      WORKDAY for 2026
+    * Update Slovakia holidays: move &quot;Struggle for Freedom and
+      Democracy Day&quot; to WORKDAY category for 2025 onwards
+    * Update Switzerland holidays: add Zurich's HALF_DAY,
+      OPTIONAL holidays, th l10n support
+    * Update badges
+    * Update ruff configuration: add flake8-boolean-trap (FBT)
+      errors check
+    * Inline single-use variables, update .py files formatting
+    * Switch to Python 3.14</comment>
+    <requestid>1315321</requestid>
+  </revision>
 </revisionlist>

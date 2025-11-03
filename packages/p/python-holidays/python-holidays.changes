@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 31 12:50:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.83
+  * Add _add_observed/_move_holiday's force_observed support
+  * Introduce HolidayBase::_is_weekday method
+  * Refactor HolidaySum::__init__
+  * Add Western Sahara holidays
+  * Update Denmark holidays: add th l10n support, refactor test cases
+  * Update Islamic holidays calculation
+  * Update Netherlands holidays: add th l10n, refactor test cases
+  * Update Slovakia holidays: additional holidays moved to
+    WORKDAY for 2026
+  * Update Slovakia holidays: move "Struggle for Freedom and
+    Democracy Day" to WORKDAY category for 2025 onwards
+  * Update Switzerland holidays: add Zurich's HALF_DAY,
+    OPTIONAL holidays, th l10n support
+  * Update badges
+  * Update ruff configuration: add flake8-boolean-trap (FBT)
+    errors check
+  * Inline single-use variables, update .py files formatting
+  * Switch to Python 3.14
+
+-------------------------------------------------------------------
 Mon Oct 20 13:48:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.82
