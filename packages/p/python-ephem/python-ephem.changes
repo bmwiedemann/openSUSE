@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 31 12:40:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.2
+  * Fix windows build (#279)
+  * Add twine check job (#280)
+  * Update XEphem links to new URLs (#282)
+  * Remove editable install from `requirements.txt`
+  * Fix #266: limit rising/setting to 7 iterations
+  * Add test for #258 and #266
+  * Fix #244: tweak `rebuild-star-data` for new format
+  * Remove unused C variable from circum.c (#274)
+  * Drop unused variable from deep.c (#275)
+  * Upgrade lunar magnitude routine (#270)
+  * Add basic test of new Moon visual magnitude code
+  * Whitespace and other cleanup to new Moon code
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Mon Jun 23 01:30:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

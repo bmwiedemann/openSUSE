@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-ephem
-Version:        4.1.6
+Version:        4.2
 Release:        0
 Summary:        Scientific-grade astronomy routines for Python
 License:        MIT
