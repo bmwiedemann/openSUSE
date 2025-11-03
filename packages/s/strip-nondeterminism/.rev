@@ -111,4 +111,13 @@ Add strip-nondeterminism-0.029-zipfix.patch
 Improve usage examples in the macro file</comment>
     <requestid>1231395</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>43b06114893ca35463b4aa0aa9b8c330</srcmd5>
+    <version>1.15.0</version>
+    <time>1762192491</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.15.0
+  * Support Erlang/Elixir</comment>
+    <requestid>1315108</requestid>
+  </revision>
 </revisionlist>

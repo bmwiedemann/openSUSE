@@ -1,7 +1,7 @@
 #
 # spec file for package strip-nondeterminism
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           strip-nondeterminism
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        A tool for stripping non-deterministic information
 License:        GPL-3.0-or-later
@@ -29,6 +29,7 @@ Source1:        https://reproducible-builds.org/_lfs/releases/strip-nondetermini
 Source2:        rpmmacros
 Source3:        strip-all-nondeterminism
 Source4:        %{name}.keyring
+Source100:      README.md
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl-base

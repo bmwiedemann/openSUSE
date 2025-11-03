@@ -9,5 +9,4 @@ as part of the Reproducible Builds project.
 
 strip-nondeterminism contains the File::StripNondeterminism Perl module, 
 and the strip-nondeterminism command line utility.</description>
-  <devel project="devel:languages:perl" package="strip-nondeterminism"/>
 </package>
