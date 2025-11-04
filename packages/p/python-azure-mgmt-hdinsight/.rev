@@ -152,4 +152,16 @@
 - Update Requires from setup.py (forwarded request 1200137 from glaubitz)</comment>
     <requestid>1200159</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>37597b9673b9d8f4e2db880f34e3c711</srcmd5>
+    <version>9.1.0~b2</version>
+    <time>1762278228</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 9.1.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1315429 from glaubitz)</comment>
+    <requestid>1315498</requestid>
+  </revision>
 </revisionlist>
