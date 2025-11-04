@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  4 07:18:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.40.4
+  * Patch boto process to cover shap mismatch boto to schema
+  * Update CloudFormation schemas to `2025-10-31`
+- from version 1.40.3
+  * Update CloudFormation schemas to `2025-10-27`
+
+-------------------------------------------------------------------
 Wed Oct 15 10:21:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.40.2
