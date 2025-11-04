@@ -1,0 +1,43 @@
+Index: nose2-0.15.1/nose2/plugins/mp.py
+===================================================================
+--- nose2-0.15.1.orig/nose2/plugins/mp.py
++++ nose2-0.15.1/nose2/plugins/mp.py
+@@ -1,7 +1,9 @@
++import contextlib
+ import logging
+ import multiprocessing
+ import multiprocessing.connection as connection
+ import os
++import platform
+ import select
+ import sys
+ import unittest
+@@ -28,6 +30,11 @@ class MultiProcess(events.Plugin):
+ 
+         self.cases = {}
+ 
++        # This requires the broken 'fork' start method to share state.
++        if sys.version_info[:2] >= (3, 14) and platform.system() == "Linux":
++            with contextlib.suppress(RuntimeError):
++                multiprocessing.set_start_method('fork')
++
+     @property
+     def procs(self):
+         """Get the appropriate number of procs for self.procs if self._procs is
+Index: nose2-0.15.1/nose2/tests/unit/test_plugin_api.py
+===================================================================
+--- nose2-0.15.1.orig/nose2/tests/unit/test_plugin_api.py
++++ nose2-0.15.1/nose2/tests/unit/test_plugin_api.py
+@@ -17,9 +17,9 @@ class TestPluginApi(TestCase):
+ 
+     def test_add_option_adds_option(self):
+         helpt = self.session.argparse.format_help()
+-        assert "-X, --xxx" in helpt, (
+-            "commandLineSwitch arg not found in help text: %s" % helpt
+-        )
++        # Output may be colored
++        assert "-X" in helpt
++        assert "--xxx" in helpt
+ 
+     def test_short_opt_registers_plugin(self):
+         args, argv = self.session.argparse.parse_known_args(["-X"])

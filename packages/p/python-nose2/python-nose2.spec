@@ -1,7 +1,7 @@
 #
 # spec file for package python-nose2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@ Summary:        The successor to the Python testing framework nose, based on uni
 License:        BSD-2-Clause AND Python-2.0
 URL:            https://github.com/nose-devs/nose2
 Source:         https://files.pythonhosted.org/packages/source/n/nose2/nose2-%{version}.tar.gz
-# Required for testsuite. Bring on python-wheel wheel.
-Source1:        https://files.pythonhosted.org/packages/c7/c3/55076fc728723ef927521abaa1955213d094933dc36d4a2008d5101e1af5/wheel-0.42.0-py3-none-any.whl
+# PATCH-FIX-OPENSUSE Support Python 3.14 multiprocessing and argparse changes
+Patch0:         support-python314.patch
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-wheel}
@@ -56,8 +56,6 @@ nose2's purpose is to extend unittest to make testing nicer and easier to unders
 
 %prep
 %autosetup -p1 -n nose2-%{version}
-mkdir ../wheels
-cp %{SOURCE1} ../wheels
 
 %build
 %pyproject_wheel
@@ -73,7 +71,7 @@ export LC_CTYPE=C.UTF8
 %{python_expand # nose must test itself in an editable install
 $python -m venv editable-%{$python_bin_suffix} --system-site-packages
 . editable-%{$python_bin_suffix}/bin/activate
-pip install --no-index --find-links %{_prefix}/lib/python%{$python_bin_suffix}/wheels  --find-links ../wheels -e .
+pip install --no-index --find-links %{_prefix}/lib/python%{$python_bin_suffix}/wheels -e .
 nose2 -v --pretty-assert
 deactivate
 }

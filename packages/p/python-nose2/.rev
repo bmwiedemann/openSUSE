@@ -200,4 +200,15 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300823</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>a71304c6585de9a54191efadfd16ab5b</srcmd5>
+    <version>0.15.1</version>
+    <time>1762278136</time>
+    <user>anag_factory</user>
+    <comment>- Rip out the requirement of the wheel.whl, recent setuptools no longer
+  require it.
+- Add patch support-python314.patch:
+  * Support Python 3.14 multiprocessing and argparse changes.</comment>
+    <requestid>1315401</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  4 01:46:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Rip out the requirement of the wheel.whl, recent setuptools no longer
+  require it.
+- Add patch support-python314.patch:
+  * Support Python 3.14 multiprocessing and argparse changes.
+
+-------------------------------------------------------------------
 Thu Aug 21 10:02:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only
