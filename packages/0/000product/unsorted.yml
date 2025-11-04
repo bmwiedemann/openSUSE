@@ -14412,7 +14412,6 @@ unsorted:
   - liblua5_5-5 
   - libluabind0_9_1 
   - libluajit-5_1-2-32bit 
-  - libluajit2-5_1-2 
   - liblucene++0 
   - libluksde-devel 
   - libluksde-tools 
@@ -17913,8 +17912,6 @@ unsorted:
   - luajit-devel 
   - luajit-jsregexp 
   - luajit-luarocks 
-  - luajit2 
-  - luajit2-devel 
   - luanti 
   - luanti-data 
   - luanti-lang 
@@ -18415,7 +18412,6 @@ unsorted:
   - maven-plugin-testing 
   - maven-plugin-testing-harness 
   - maven-plugin-testing-javadoc 
-  - maven-plugin-testing-tools 
   - maven-plugin-tools-annotations 
   - maven-plugin-tools-ant 
   - maven-plugin-tools-api 
@@ -18481,7 +18477,6 @@ unsorted:
   - maven-surefire-report-parser 
   - maven-surefire-report-plugin 
   - maven-surefire-report-plugin-bootstrap 
-  - maven-test-tools 
   - maven-wagon-file 
   - maven-wagon-ftp 
   - maven-wagon-http 
@@ -20275,7 +20270,6 @@ unsorted:
   - opa-fastfabric 
   - opa-fish-completion 
   - opa-fm 
-  - opa-fmgui 
   - opa-snapconfig 
   - opa-zsh-completion 
   - opam 
@@ -22922,6 +22916,8 @@ unsorted:
   - plexus-resources-javadoc 
   - plexus-sec-dispatcher 
   - plexus-sec-dispatcher-javadoc 
+  - plexus-testing 
+  - plexus-testing-javadoc 
   - plexus-utils 
   - plexus-utils-javadoc 
   - plexus-velocity 
@@ -25072,7 +25068,6 @@ unsorted:
   - python311-dask-diagnostics 
   - python311-dask-distributed 
   - python311-dask-test 
-  - python311-databases 
   - python311-dataclasses-json 
   - python311-datadiff 
   - python311-datashader 
@@ -28835,7 +28830,6 @@ unsorted:
   - python312-dask-diagnostics 
   - python312-dask-distributed 
   - python312-dask-test 
-  - python312-databases 
   - python312-dataclasses-json 
   - python312-datadiff 
   - python312-datashader 
@@ -32633,7 +32627,6 @@ unsorted:
   - python313-dask-diagnostics 
   - python313-dask-distributed 
   - python313-dask-test 
-  - python313-databases 
   - python313-dataclasses-json 
   - python313-datadiff 
   - python313-datashader 
