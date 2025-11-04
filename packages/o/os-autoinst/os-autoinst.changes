@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 04 01:37:03 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1761723693.2b88807:
+  * Propagate C++ exceptions to Perl in image write function
+  * Add support NICPCIADDR variable to QEMU backend
+  * Remove test which causes unhandled output
+  * Allow array keys like `ISSUES[]` as introduced in openQA commit a53b19b
+  * Improve includes in tinycv library
+  * Handle OpenCV exceptions when writing an image
+  * Avoid ignoring errors silently when writing images
+
+-------------------------------------------------------------------
 Wed Oct 22 00:54:27 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1761036042.c43e4ab:

@@ -19,7 +19,7 @@
 %define name_ext -test
 %define         short_name os-autoinst-openvswitch
 Name:           %{short_name}%{?name_ext}
-Version:        5.1761036042.c43e4ab
+Version:        5.1761723693.2b88807
 Release:        0
 Summary:        test package for %{short_name}
 License:        GPL-2.0-or-later
