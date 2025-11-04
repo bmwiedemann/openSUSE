@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 04 09:31:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.0:
+  * Added Features
+    - Add a supported docker image [#222 #279 @wagoodman]
+  * Dependencies
+    - chore(deps): bump github.com/anchore/syft from 1.36.0 to
+      1.37.0 (#298)
+    - chore(deps): bump actions/setup-go from 5.0.0 to 6.0.0 (#302)
+    - chore(deps): bump actions/checkout from 4.1.1 to 5.0.0 (#303)
+    - chore(deps): bump peter-evans/create-pull-request from 7.0.5
+      to 7.0.8 (#301)
+    - chore(deps): bump zizmorcore/zizmor-action from 0.1.1 to
+      0.2.0 (#300)
+    - chore(deps): bump github/codeql-action from 3.23.2 to 4.31.2
+      (#299)
+    - chore(deps): bump github.com/anchore/stereoscope from 0.1.11
+      to 0.1.12 (#297)
+    - chore(deps): bump actions/setup-go in
+      /.github/actions/bootstrap (#296)
+    - chore(deps): update tools to latest versions (#294)
+    - chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.8
+      to 6.6.9 (#291)
+    - chore(deps): bump modernc.org/sqlite from 1.39.1 to 1.40.0
+      (#292)
+
+-------------------------------------------------------------------
 Fri Oct 24 05:08:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.4.0:
