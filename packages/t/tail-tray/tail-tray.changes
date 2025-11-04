@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 03 09:19:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.26:
+  Apparently a re-release of 0.2.25 with a different commit hash
+  (767e2ab). 0.2.25 was yanked.
+
+-------------------------------------------------------------------
 Sun Nov 02 16:01:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.25 (0.2.24 was not released):
