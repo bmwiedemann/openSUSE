@@ -1,7 +1,7 @@
 #
 # spec file for package pentobi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pentobi
-Version:        26.3
+Version:        28.0
 Release:        0
 Summary:        Program to play the board game Blokus
 License:        GPL-3.0-only
@@ -27,6 +27,7 @@ Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar
 BuildRequires:  cmake >= 3.18
 # For hicolor dirs ownership
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  itstool
 BuildRequires:  rsvg-convert
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core) >= 6.5

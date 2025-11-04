@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Nov  1 08:06:43 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 28.0
+  * Support dark mode in help viewer (on platforms/styles where
+    dark mode actually works in Qt).
+  * Generate translated help files during build again (reintroduces
+    a build dependency on itstool).
+  * Fixed aspect ratio of exported Trigon images.
+  * Disabled text selection in help viewer, which sometimes
+    triggered Qt bugs that made clicking on links no longer work.
+- Update to version 27.1
+  * Workaround for a Qt bug on Android that sometimes resulted in
+    empty window if app becomes active again.
+- Update to version 27.0
+  * Minimum required Qt version is now 6.8.
+  * Menu no longer covers menu button in mobile view for better
+    usability on mobile Linux devices.
+  * Added close link in help viewer.
+  * Workaround for QTBUG-140033 (Scrollbar not painted in Fusion
+    style).
+- Update to version 26.4
+  * Fixed comment area colors in dark mode
+  * Workaround for QTBUG-139679 which broke entering text in
+    comment area in Qt 6.9.2.
+
+-------------------------------------------------------------------
 Sat Jun 28 20:27:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Spec cleanup, remove unneeded build dependencies
