@@ -18,7 +18,7 @@
 
 %define apiver  v60
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 10.2.0
+%define pkg_ver 10.3.0
 %define src_ver %{pkg_ver}
 # Image processing library
 %if 0
@@ -56,7 +56,7 @@ Summary:        A High Level Programming Language
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://www.octave.org/
-Source0:        https://ftp.gnu.org/gnu/octave/%{name}-%{src_ver}.tar.lz
+Source0:        https://ftpmirror.gnu.org/gnu/octave/%{name}-%{src_ver}.tar.lz
 Source1:        octave.macros
 Source2:        %{name}-rpmlintrc
 Source3:        %{name}.attr

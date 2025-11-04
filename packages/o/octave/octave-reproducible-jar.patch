@@ -3,10 +3,10 @@
  scripts/java/module.mk |   11 +++++++++--
  2 files changed, 19 insertions(+), 2 deletions(-)
 
-Index: octave-10.2.0/scripts/java/module.mk
+Index: octave-10.3.0/scripts/java/module.mk
 ===================================================================
---- octave-10.2.0.orig/scripts/java/module.mk
-+++ octave-10.2.0/scripts/java/module.mk
+--- octave-10.3.0.orig/scripts/java/module.mk
++++ octave-10.3.0/scripts/java/module.mk
 @@ -52,11 +52,18 @@ $(%canon_reldir%_JAVA_CLASSES) : %.class
  	             -d $(abs_top_builddir)/scripts/java \
  	             $(org_octave_dir)/$(<F) )
@@ -28,11 +28,11 @@ Index: octave-10.2.0/scripts/java/module.mk
  	mv $@-t $@
  endif
  
-Index: octave-10.2.0/configure.ac
+Index: octave-10.3.0/configure.ac
 ===================================================================
---- octave-10.2.0.orig/configure.ac
-+++ octave-10.2.0/configure.ac
-@@ -2703,6 +2703,16 @@ do
+--- octave-10.3.0.orig/configure.ac
++++ octave-10.3.0/configure.ac
+@@ -2710,6 +2710,16 @@ do
      break
    fi
  
