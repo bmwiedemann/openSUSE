@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov 03 13:34:34 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.8.0+git20251103.f505f80e:
+  * sysctl-whitelist: Support old aaa_base whitelisting
+
+-------------------------------------------------------------------
+Mon Nov 03 10:50:55 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.8.0+git20251103.a49f9de0:
+  * Drop dir-or-file-outside-snapshot badness to zero for now (bsc#1253008)
+
+-------------------------------------------------------------------
+Fri Oct 31 09:45:54 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.8.0+git20251031.69a6412f:
+  * lint: Fix rpmlintrc option parsing
+  * sysctl-whitelist: whitelist new default hiding of dmesg (bsc#1249686)
+  * test: Add some tests for AtomicUpdateCheck
+  * Add checks for atomic update compatibility
+  * sysctl-whitelist: add health-checker panic=5 (bsc#1252778)
+  * cli: Remove double check of rpmlintrc file
+  * Permit repeating --rpmlintrc
+  * Fix typo
+
+-------------------------------------------------------------------
 Tue Oct 28 09:32:57 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 2.8.0+git20251027.5075e84c:

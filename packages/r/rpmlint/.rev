@@ -5362,4 +5362,25 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * systemd-tmpfiles: whitelist custom Samba printer spool dir (bsc#1251267)</comment>
     <requestid>1314036</requestid>
   </revision>
+  <revision rev="514" vrev="1">
+    <srcmd5>1063a75a17c3ce6b430122c0745e9612</srcmd5>
+    <version>2.8.0+git20251103.f505f80e</version>
+    <time>1762278024</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.8.0+git20251103.f505f80e:
+  * sysctl-whitelist: Support old aaa_base whitelisting
+- Update to version 2.8.0+git20251103.a49f9de0:
+  * Drop dir-or-file-outside-snapshot badness to zero for now (bsc#1253008)
+- Update to version 2.8.0+git20251031.69a6412f:
+  * lint: Fix rpmlintrc option parsing
+  * sysctl-whitelist: whitelist new default hiding of dmesg (bsc#1249686)
+  * test: Add some tests for AtomicUpdateCheck
+  * Add checks for atomic update compatibility
+  * sysctl-whitelist: add health-checker panic=5 (bsc#1252778)
+  * cli: Remove double check of rpmlintrc file
+  * Permit repeating --rpmlintrc
+  * Fix typo
+</comment>
+    <requestid>1315303</requestid>
+  </revision>
 </revisionlist>
