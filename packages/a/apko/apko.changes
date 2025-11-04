@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 04 08:34:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.20 (.19 was not released):
+  * chore: pin cosign to v2.x (#1913)
+  * auth: Reuse sts exchanger (#1912)
+  * build(deps): bump github/codeql-action from 4.31.0 to 4.31.2
+    (#1908)
+  * build(deps): bump go.step.sm/crypto from 0.72.0 to 0.73.0
+    (#1906)
+  * build(deps): bump google.golang.org/api from 0.253.0 to 0.254.0
+    (#1905)
+  * build(deps): bump sigstore/cosign-installer from 3.10.0 to
+    4.0.0 (#1894)
+  * oci: in docker image history comment set image title and vendor
+    (#1907)
+
+-------------------------------------------------------------------
 Mon Nov 03 09:15:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.18:
