@@ -1,8 +1,0 @@
-<package name="luajit2" project="openSUSE:Factory">
-  <title>luajit2</title>
-  <description>
-This is the official OpenResty branch of LuaJIT. It is not to be considered a fork,
-since we still regularly synchronize changes from the upstream LuaJIT project.
-  </description>
-  <url>https://github.com/openresty/luajit2</url>
-</package>
