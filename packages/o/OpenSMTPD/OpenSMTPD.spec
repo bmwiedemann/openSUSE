@@ -19,19 +19,17 @@
 
 Name:           OpenSMTPD
 %global         name_lowercase %(echo -n "%{name}" | tr '[:upper:]' '[:lower:]')
-Version:        7.7.0p0
+Version:        7.8.0p0
 Release:        0
 Summary:        A free implementation of the server-side SMTP protocol
 License:        BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND ISC
 URL:            https://www.opensmtpd.org/
 Group:          Productivity/Networking/Email/Servers
-Source:         https://github.com/OpenSMTPD/OpenSMTPD/releases/download/%{version}/opensmtpd-%{version}.tar.gz
+Source:         https://www.opensmtpd.org/archives/opensmtpd-%{version}.tar.gz
 Source1:        %{name}-user.conf
 Source2:        %{name}.service
 # PATCH-FIX-OPENSUSE OpenSMTPD-reduced-permissions-on-SMTPD_SOCKET.patch boo#1247781
 Patch1:         OpenSMTPD-reduced-permissions-on-SMTPD_SOCKET.patch
-# PATCH-FIX-UPSTREAM OpenSMTPD-simplified-world-writable-spoolers-handling.patch boo#1247781 and based on 91be977, fc1c10a
-Patch2:         OpenSMTPD-simplified-world-writable-spoolers-handling.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 %sysusers_requires
@@ -64,7 +62,6 @@ It allows ordinary machines to exchange e-mails with other systems speaking the 
 %setup -q -n %{name_lowercase}-%{version}
 ./bootstrap
 %patch -P 1 -p1
-%patch -P 2 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE1} %{name} %{name}-user.conf
@@ -78,6 +75,7 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 mkdir -p %{buildroot}%{_sysconfdir}/mail
 ln -s %{_sysconfdir}/aliases %{buildroot}%{_sysconfdir}/mail/aliases
+mkdir -m 711 -p %{buildroot}%{_localstatedir}/spool/smtpd
 mkdir -m 755 -p %{buildroot}%{dir_mail}
 %make_install
 # We rename the following man page to resolve a conflict with an existing Factory package (vacation)
@@ -121,6 +119,7 @@ make check
 %{_libexecdir}/%{name_lowercase}/mail.mda
 %attr(2755,-,_smtpq) %{_sbindir}/smtpctl
 %{_sbindir}/smtpd
+%dir %{_localstatedir}/spool/smtpd
 # We leave it to the administrator to create a group for users that need to
 # have access to dir_mail and adjust ownership and privileges accordingly.
 %dir %{dir_mail}

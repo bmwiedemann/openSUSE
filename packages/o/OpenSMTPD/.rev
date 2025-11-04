@@ -7,4 +7,12 @@
     <comment>Renamed man page to resolve a conflict with an existing Factory package. This request supersedes #1311199.</comment>
     <requestid>1311981</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c73f8fcb4e2e73f356b9801f1c22d98e</srcmd5>
+    <version>7.8.0p0</version>
+    <time>1762278125</time>
+    <user>anag_factory</user>
+    <comment>Updated to version 7.8.0p0</comment>
+    <requestid>1315473</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  3 20:50:59 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Updated to version 7.8.0p0: (CVE-2025-62875 boo#1250838)
+  - Don't reject single character AUTH PLAIN passwords.
+  - Fix address family typo (PF_INET->PF_INET6).
+  - Various documentation improvements.
+  - Removed support for world-writable mail spools.
+  - Updated contrib mail.local and lockspool.
+  - Don't die if garbage is being sent on the local socket.
+- removed patch included in update
+  OpenSMTPD-simplified-world-writable-spoolers-handling.patch
+
+-------------------------------------------------------------------
 Fri Oct 17 10:40:14 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
 
 - Renamed the 'forward' man page to resolve conflict with an existing
