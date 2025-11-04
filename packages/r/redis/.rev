@@ -102,4 +102,12 @@ Redis 8.0.0 supported atomic HGETDEL, HGETEX and HSETEX, and AGPL-3.0-only licen
       for responsibly disclosing the security bug]</comment>
     <requestid>1315125</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>baee0c20e9a4c729ef8d85e089c3c2a7</srcmd5>
+    <version>8.2.3</version>
+    <time>1762278097</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1315272</requestid>
+  </revision>
 </revisionlist>

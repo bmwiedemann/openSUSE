@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sun Nov  2 14:18:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
-- Updated to 8.2.3
+- Updated to 8.2.3 (boo#1252996 CVE-2025-62507)
   * https://github.com/redis/redis/releases/tag/8.2.3
   - Security fixes
     - (CVE-2025-62507) Bug in `XACKDEL` may lead to stack overflow
