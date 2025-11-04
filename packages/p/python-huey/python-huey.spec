@@ -18,9 +18,9 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-huey
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
-Summary:        huey, a little task queue
+Summary:        A little task queue for Python
 License:        MIT
 URL:            http://github.com/coleifer/huey/
 Source:         https://files.pythonhosted.org/packages/source/h/huey/huey-%{version}.tar.gz
@@ -38,10 +38,33 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-huey, a little task queue
+Huey is a little task queue for Python.
+
+Huey is:
+
+ * a task queue
+ * written in python
+ * clean and simple API
+ * redis, sqlite, file-system, or in-memory storage
+ * example code.
+ * read the documentation.
+
+Huey supports:
+
+ * multi-process, multi-thread or greenlet task execution models
+ * schedule tasks to execute at a given time, or after a given delay
+ * schedule recurring tasks, like a crontab
+ * automatically retry tasks that fail
+ * task prioritization
+ * task result storage
+ * task expiration
+ * task locking
+ * task pipelines and chains
 
 %prep
 %autosetup -p1 -n huey-%{version}
+# Remove empty file from source
+rm huey/contrib/djhuey/models.py
 
 %build
 %pyproject_wheel

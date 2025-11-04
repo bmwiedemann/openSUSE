@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 31 13:55:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.5.4
+  * Minor bug fixes.
+  * Fix multiprocessing start method for python 3.14+.
+- Remove empty file from source
+- Reprase %decription text
+- Rephrase Summary text
+
+-------------------------------------------------------------------
 Mon Apr  7 12:46:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.5.3
