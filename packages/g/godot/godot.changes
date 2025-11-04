@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 30 12:00:00 UTC 2025 - cunix@mail.de
+
+- Update to 4.5.1
+  * Release announcement: https://godotengine.org/article/maintenance-release-godot-4-5-1/
+  * X11 input: prevent non-printable keys from producing empty strings
+  * Workaround X11 crash issue
+  * Enable script templates by default
+  * and more: https://godotengine.github.io/godot-interactive-changelog/#4.5.1
+
+- use system libjpeg-turbo package
+
+-------------------------------------------------------------------
 Tue Sep 16 12:00:00 UTC 2025 - cunix@mail.de
 
 - Update to 4.5

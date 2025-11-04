@@ -29,7 +29,7 @@
 %define compiler_version_leap 13
 
 Name:           godot
-Version:        4.5
+Version:        4.5.1
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -67,6 +67,7 @@ BuildRequires:  pkgconfig(libdecor-0)
 BuildRequires:  pkgconfig(libpcre2-32)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libturbojpeg)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwslay)
@@ -158,7 +159,6 @@ Provides:       bundled(icu4c) = 77.1
 Provides:       bundled(ifaddrs-android)
 Provides:       bundled(jolt_physics) = 5.3.0
 Provides:       bundled(libbacktrace)
-Provides:       bundled(libjpeg-turbo) = 3.1.0
 Provides:       bundled(libktx) = 4.4.0
 Provides:       bundled(manifold)
 Provides:       bundled(meshoptimizer) = 0.24
@@ -265,9 +265,9 @@ sed -i 's/default_update_mode = EngineUpdateLabel::UpdateMode::NEWEST_STABLE;/de
 
 %build
 # Configuring build to use some distribution libraries
-unbundle_libs=('brotli' 'certs' 'freetype' 'libogg' 'libpng' 'libtheora' \
-               'libvorbis' 'libwebp' 'mbedtls' 'miniupnpc' 'pcre2' 'sdl' \
-               'wslay' 'zlib' 'zstd')
+unbundle_libs=('brotli' 'certs' 'freetype' 'libjpeg_turbo' 'libogg' 'libpng' \
+               'libtheora' 'libvorbis' 'libwebp' 'mbedtls' 'miniupnpc' \
+               'pcre2' 'sdl' 'wslay' 'zlib' 'zstd')
 
 # Adding distribution name to build name
 %if 0%{?suse_version}
