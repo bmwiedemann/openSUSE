@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Nov  3 14:43:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.52.0
+  * Add an empty tool.setuptools_scm section to pyproject.toml
+    by @musicinmybrain in (#263)
+  * Enable Py_LIMITED_API to strip down build matrix to one abi3 wheel
+    per platform by @anthrotype in (#264)
+  * [setup.py] Import pkgconfig only when needed by @khaledhosny in (#265)
+  * Bind hb_buffer_serialize() by @khaledhosny in (#266)
+- from version 0.51.7
+  * Update to HarfBuzz 12.1.0 by @khaledhosny in (#259)
+  * Use trusted publishing by @madig in (#256)
+  * Strip debug symbols from Linux wheels by @anthrotype in (#261)
+- from version 0.51.6
+  * Update to HarfBuzz 12.0.0 by @khaledhosny in (#257)
+- from version 0.51.5
+  * Update to HarfBuzz 11.5.0 by @khaledhosny in (#255)
+- from version 0.51.4
+  * Update to HarfBuzz 11.4.5 by @khaledhosny in (#253)
+- from version 0.51.3
+  * Update to HarfBuzz 11.4.4 by @khaledhosny in (#252)
+- from version 0.51.2
+  * Update to HarfBuzz 11.4.1 by @khaledhosny in (#251)
+- from version 0.51.1
+  * Update to HarfBuzz 11.3.3
+- from version 0.51.0
+  * Update to HarfBuzz 11.3.2
+
+-------------------------------------------------------------------
 Tue May 20 11:46:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.50.2
