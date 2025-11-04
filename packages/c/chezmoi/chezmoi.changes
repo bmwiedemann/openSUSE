@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  3 17:24:40 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.67.0:
+  - Features
+    * feat: Make re-add add and remove entries in exact_ directories
+  - Fixes
+    * fix: Make all template funcs available in diff and merge args
+    * fix: Ignore special-use domains when extracting hostname from /etc/hosts
+    * fix: Fix fromIni | toIni template func round trip with quoted strings
+    * fix: Fix pattern in install script
+  - Documentation
+    * docs: Improve description of --create flag
+    * docs: Update VSCode merge tool instructions to handles spaces in paths
+  - Other
+    * Update documentation for --create option in add.md
+
+-------------------------------------------------------------------
 Tue Oct 21 15:49:59 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.66.1:

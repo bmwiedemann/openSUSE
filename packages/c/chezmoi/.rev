@@ -1011,4 +1011,25 @@
 </comment>
     <requestid>1312861</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>dbd4095cf8072aaf77e8ad59a7d7816f</srcmd5>
+    <version>2.67.0</version>
+    <time>1762278090</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.67.0:
+  - Features
+    * feat: Make re-add add and remove entries in exact_ directories
+  - Fixes
+    * fix: Make all template funcs available in diff and merge args
+    * fix: Ignore special-use domains when extracting hostname from /etc/hosts
+    * fix: Fix fromIni | toIni template func round trip with quoted strings
+    * fix: Fix pattern in install script
+  - Documentation
+    * docs: Improve description of --create flag
+    * docs: Update VSCode merge tool instructions to handles spaces in paths
+  - Other
+    * Update documentation for --create option in add.md
+</comment>
+    <requestid>1315354</requestid>
+  </revision>
 </revisionlist>
