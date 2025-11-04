@@ -79,4 +79,25 @@
   - Use Python 3.11 on SLE-15 by default</comment>
     <requestid>1237411</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8341a41b693d7ca44cde613bc95e1d99</srcmd5>
+    <version>1.4.0</version>
+    <time>1762278150</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.0:
+  * Added
+    + Added: ub.Path.relative_to now backports the walk_up feature from
+      Python 3.12
+    + Add keys and values method to IndexableWalker
+  * Changed
+    + Removed support for 3.6 and 3.7
+    + ub.hash_data can how hash dataclasses by default
+    + Add experimental support for &quot;interpreter&quot; backend in Executor.
+    + ub.Path.walk now supports the same signature as the new version in
+      Python 3.12
+    + Support FORCE_COLOR
+  * Fixed
+    + Version checking issue in util-import</comment>
+    <requestid>1315402</requestid>
+  </revision>
 </revisionlist>
