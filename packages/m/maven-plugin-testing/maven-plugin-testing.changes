@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Nov  4 09:30:53 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.4.0
+  * New features and improvements
+    + Use default pom.xml when Basedir is set
+    + Add MavenProject, MojoExecution to session scope
+    + Support classpath in Basedir
+    + Add MavenSession to session scope
+    + Add default mock for MavenProject
+    + Use plexus-testing 2.0.0 and improvements
+    + Add support for Provides annotation
+    + Improve JUnit5 extension, make similar to Maven 4
+      implementation
+    + Add release-drafter and automation GitHub Action
+    + MPLUGINTESTING-91: Maven 3 compatible and improvements
+    + MPLUGINTESTING-90: Get rid of maven-compat
+    + MPLUGINTESTING-84: Support Junit 5 + Maven 3
+    + MPLUGINTESTING-78: Switch to maven 4 and the new api
+    + MPLUGINTESTING-74: Using generics to return the matched type
+      for lookup and getVariableValue methods
+    + MPLUGINTESTING-71: Require Java 8
+  * Documentation updates
+    + Add migration notes for 3.4.0
+    + Update documentation
+    + Convert current documentation to markdown
+  * Maintenance
+    + Update site descriptor to 2.0.0, simple update faq
+    + Add more tests for MojoParameter and Basedir
+    + Cleanups dependencies
+    + Remove unused ResolverExpressionEvaluatorStub in JUnit5
+      implementation
+    + Use getters and setters for testBasedir instead of reflection
+    + MPLUGINTESTING-92: Refresh download page
+    + MNG-6829: Replace any StringUtils#isEmpty(String) and
+      #isNotEmpty(String)
+    + MPLUGINTESTING-70: Move maven-compat to test scope
+    + Get rid of warnings, cleanup
+    + MPLUGINTESTING-67: fix mailing list links
+- Removed patches:
+  * 0001-Port-to-plexus-utils-3.0.21.patch
+  * 0002-Port-to-current-maven-artifact.patch
+  * maven-plugin-testing-blocked.patch
+    + not needed any more with this version
+
+-------------------------------------------------------------------
 Mon Jun 10 16:38:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use plexus-metadata-generator executable directly to simplify
