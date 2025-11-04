@@ -7829,6 +7829,7 @@ unsorted:
   - gpsd-qt6-devel 
   - gptfdisk-fixparts 
   - gpu-screen-recorder 
+  - gpu-screen-recorder-devel 
   - gpu-screen-recorder-gtk 
   - gputils 
   - gputils-doc 
@@ -10268,6 +10269,8 @@ unsorted:
   - kochmorse 
   - kohsuke-pom 
   - koi 
+  - kojan-xml 
+  - kojan-xml-javadoc 
   - kokkos-devel 
   - koko 
   - koko-lang 
@@ -10975,6 +10978,7 @@ unsorted:
   - leptonica-devel 
   - leptonica-tools 
   - letsconnect-client 
+  - letterize 
   - level-zero 
   - level-zero-devel 
   - leveldb 
@@ -25601,6 +25605,7 @@ unsorted:
   - python311-hijri-converter 
   - python311-hiredis 
   - python311-hishel 
+  - python311-hjson 
   - python311-hkdf 
   - python311-hl7apy 
   - python311-holidays 
@@ -29373,6 +29378,7 @@ unsorted:
   - python312-hijri-converter 
   - python312-hiredis 
   - python312-hishel 
+  - python312-hjson 
   - python312-hkdf 
   - python312-hl7apy 
   - python312-holidays 
@@ -33158,6 +33164,7 @@ unsorted:
   - python313-hijri-converter 
   - python313-hiredis 
   - python313-hishel 
+  - python313-hjson 
   - python313-hkdf 
   - python313-hl7apy 
   - python313-holidays 
@@ -36356,6 +36363,7 @@ unsorted:
   - rocs 
   - rocs-devel 
   - rocs-lang 
+  - rocthrust-devel 
   - rofi 
   - rofi-bluetooth 
   - rofi-calc 
