@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 04 09:30:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.3:
+  no CLI-related changes
+  * chore(backport release-1.8): chore(deps): bump the go-patch group with 7 updates (#5333)
+
+-------------------------------------------------------------------
 Wed Oct 29 05:51:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.2 (1.8.1 was not released):
