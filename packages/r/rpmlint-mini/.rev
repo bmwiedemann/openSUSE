@@ -1053,4 +1053,14 @@ undo bootstrap workaround</comment>
     <comment></comment>
     <requestid>1314285</requestid>
   </revision>
+  <revision rev="127" vrev="20">
+    <srcmd5>0baecb1ba86c7f7d825df4a97d78c479</srcmd5>
+    <version>MACRO</version>
+    <time>1762278022</time>
+    <user>anag_factory</user>
+    <comment>- Suppress dir-or-file-outside-snapshot rpmlint errors as this package is not
+  intended for use in transactional systems
+</comment>
+    <requestid>1314904</requestid>
+  </revision>
 </revisionlist>

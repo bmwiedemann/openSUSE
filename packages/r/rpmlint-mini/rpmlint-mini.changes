@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 31 13:50:51 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Suppress dir-or-file-outside-snapshot rpmlint errors as this package is not
+  intended for use in transactional systems
+
+-------------------------------------------------------------------
 Tue Oct 28 10:50:43 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Add Requires: this-is-only-for-build-envs to mark this package as not for
