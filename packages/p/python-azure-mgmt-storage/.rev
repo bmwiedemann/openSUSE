@@ -345,4 +345,16 @@
     <comment></comment>
     <requestid>1308528</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>94137d2015a7dc8b52ebeb7b497bd8dc</srcmd5>
+    <version>24.0.0</version>
+    <time>1762278232</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 24.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1315428 from glaubitz)</comment>
+    <requestid>1315500</requestid>
+  </revision>
 </revisionlist>
