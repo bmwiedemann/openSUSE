@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 04 08:33:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.9:
+  * INS-1561:  Fix nova vulnerabilities (#403)
+  * Managed by Terraform
+
+-------------------------------------------------------------------
 Tue Aug 19 07:04:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.8:
