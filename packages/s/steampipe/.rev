@@ -187,4 +187,18 @@
   * update changelog v2.2.0 (forwarded request 1314528 from ph03nix)</comment>
     <requestid>1314571</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>721e206250eec984d054dca98258fee2</srcmd5>
+    <version>2.3.2</version>
+    <time>1762278083</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.2:
+  * v2.3.2
+  * Fix glibc errors in linux builds (#4692)
+
+- Update to version 2.3.1:
+  * v2.3.1
+  * Fix issue where macOS binaries failed to run due to absolute openssl paths and too-new min OS (#4687) (forwarded request 1315301 from ph03nix)</comment>
+    <requestid>1315350</requestid>
+  </revision>
 </revisionlist>

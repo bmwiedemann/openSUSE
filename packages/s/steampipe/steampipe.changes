@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 03 12:48:33 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.3.2:
+  * v2.3.2
+  * Fix glibc errors in linux builds (#4692)
+
+-------------------------------------------------------------------
+Mon Nov 03 07:24:43 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.3.1:
+  * v2.3.1
+  * Fix issue where macOS binaries failed to run due to absolute openssl paths and too-new min OS (#4687)
+
+-------------------------------------------------------------------
 Thu Oct 30 10:32:25 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.3.0:
