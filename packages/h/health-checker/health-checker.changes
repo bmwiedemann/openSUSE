@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 28 10:20:17 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 1.13+git20251028.c9a2249:
+  * Release version 1.13
+  * Use Automatic Boot Assessment for systemd-boot/grub2-bls
+  * README: clearify services in After section
+
+-------------------------------------------------------------------
 Tue Nov 05 10:07:57 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.12+git20241105.2e2832f15742:

@@ -1,7 +1,7 @@
 #
 # spec file for package health-checker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _dracutmoduledir %(pkg-config --variable=dracutmodulesdir dracut)
 
 Name:           health-checker
-Version:        1.12+git20241105.2e2832f15742
+Version:        1.13+git20251028.c9a2249
 Release:        0
 Summary:        Service for verifying that important services are running
 License:        GPL-2.0-only
@@ -74,6 +74,12 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+mkdir -p %{buildroot}%{_sysconfdir}/kernel
+echo '3' > %{buildroot}%{_sysconfdir}/kernel/tries
+# Add autoreboot on kernel panic
+mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d
+echo 'panic=5' > %{buildroot}%{_prefix}/lib/sysctl.d/health-checker.conf
+%fdupes %{buildroot}%{_mandir}
 %fdupes %{buildroot}%{_mandir}
 
 %pre
@@ -108,6 +114,9 @@ make %{?_smp_mflags}
 %dir %{_sysconfdir}/grub.d
 %{_sysconfdir}/grub.d/*_health_check*
 %{_dracutmoduledir}/50health-checker
+%dir %{_sysconfdir}/kernel
+%config(noreplace) %{_sysconfdir}/kernel/tries
+%{_prefix}/lib/sysctl.d/%{name}.conf
 
 %files plugins-MicroOS
 %{_libexecdir}/health-checker/etc-overlayfs.sh
