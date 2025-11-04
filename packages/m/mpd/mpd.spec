@@ -1,7 +1,7 @@
 #
 # spec file for package mpd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define ver 0.24
 Name:           mpd
-Version:        %{ver}.5
+Version:        %{ver}.6
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later

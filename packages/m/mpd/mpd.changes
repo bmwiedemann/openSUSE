@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  3 18:00:22 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Updated to 0.24.6
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.6/NEWS
+  * decoder
+    * ffmpeg: handle "*.opus" files
+    * mpg123: another workaround for libmpg123 ID3 corruption bug
+    * opus: fix seeking in files with large OpusTags
+    * opus, vorbis: remove METADATA_BLOCK_PICTURE size limit
+
+-------------------------------------------------------------------
 Thu Aug 14 11:30:15 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.24.5

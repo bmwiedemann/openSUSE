@@ -853,4 +853,18 @@
   * output: pipewire: fixed resuming playback after it was paused by &quot;single&quot; mode</comment>
     <requestid>1299391</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>77cdb9ee05da7b6120c7d64e2478c16c</srcmd5>
+    <version>0.24.6</version>
+    <time>1762278118</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 0.24.6
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.6/NEWS
+  * decoder
+    * ffmpeg: handle &quot;*.opus&quot; files
+    * mpg123: another workaround for libmpg123 ID3 corruption bug
+    * opus: fix seeking in files with large OpusTags
+    * opus, vorbis: remove METADATA_BLOCK_PICTURE size limit</comment>
+    <requestid>1315366</requestid>
+  </revision>
 </revisionlist>
