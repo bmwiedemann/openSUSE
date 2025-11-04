@@ -1,7 +1,7 @@
 #
 # spec file for package swig
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,7 +31,7 @@ BuildRequires:  ruby
 BuildRequires:  ruby-devel
 %endif
 Name:           swig
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Simplified Wrapper and Interface Generator
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -39,7 +39,11 @@ Group:          Development/Languages/C and C++
 URL:            https://www.swig.org/
 Source:         https://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  bison >= 3.5
 BuildRequires:  fdupes
+BuildRequires:  libtool
 BuildRequires:  pcre2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
@@ -70,9 +74,6 @@ BuildRequires:  ocaml >= 3.12.0
 BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  ocaml-findlib
 %endif
-
-# for swig-4.3.0-Fix-precedence-of-casts.patch
-BuildRequires:  bison
 
 %description
 SWIG is a compiler that attempts to make it easy to integrate C, C++,
@@ -134,6 +135,7 @@ export CXX=g++-12
 %ifarch s390 s390x
 export CCSHARED="-fPIC"
 %endif
+./autogen.sh
 %configure \
 %if %{without swig_ocaml}
 	--without-ocaml \

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 21 09:00:34 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
+
+- Update to 4.4.0:
+  * Python-3.14 and early Python-3.15 support including modernisations:
+    - Remove some DeprecationWarnings.
+    - Added support for free-threading Python.
+    - Multi-phase module initialization.
+    - Use heap types instead of static types.
+  * Go minimum version is now 1.20.
+  * Removed support for MzScheme/Racket.
+  * Minor typemap improvements.
+  * compactdefaultarg feature improvements and fixes.
+  * Fewer C, C++ and Java compiler warnings in generated code.
+  * c++-14 auto return type parsing fixes.
+  * Various improvements related to parsing expressions.
+  * Runtime type system thread safety fixes.
+  * Minor fixes and improvements specific to:
+    C#, D, Guile, Java, Javascript, Lua, Perl, PHP, Python, Tcl.
+	
+
+-------------------------------------------------------------------
 Mon Jun  9 08:48:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 4.3.1:
