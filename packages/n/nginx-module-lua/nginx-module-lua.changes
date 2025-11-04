@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 29 10:27:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switched to build using LuaJIT packages for Tumbleweed (boo#1252340).
+
+-------------------------------------------------------------------
 Sat Jan 18 09:32:11 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.10.28

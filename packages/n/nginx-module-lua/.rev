@@ -19,4 +19,12 @@ https://build.opensuse.org/request/show/1221483</comment>
   * Fixed setkeepalive failure on TLSv1.3.</comment>
     <requestid>1238649</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d42296fb0fddb5ac59aa82200f366abd</srcmd5>
+    <version>0.10.28</version>
+    <time>1762278216</time>
+    <user>anag_factory</user>
+    <comment>- Switched to build using LuaJIT packages for Tumbleweed (boo#1252340). (forwarded request 1315376 from 13ilya)</comment>
+    <requestid>1315481</requestid>
+  </revision>
 </revisionlist>

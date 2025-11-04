@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-lua
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,16 @@ License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/openresty/%{project_name}
 Source0:        https://github.com/openresty/%{project_name}/archive/refs/tags/v%{version}.tar.gz#/%{project_name}-%{version}.tar.gz
+BuildRequires:  lua-macros
 BuildRequires:  nginx-source
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(luajit2)
+BuildRequires:  pkgconfig(luajit) >= 2.1.1756211046
 Requires:       lua-resty-core
 Requires:       lua-resty-lrucache
 Recommends:     lua-resty-mysql
 Recommends:     lua-resty-redis
-Recommends:     lua51-cjson
-Recommends:     luajit2
+Recommends:     luajit
+Recommends:     luajit-cjson
 %{ngx_conditionals}
 %{ngx_requires}
 
@@ -48,9 +49,8 @@ tar -xzf %{SOURCE0} --strip-components=1 -C %{project_name}
 cp -r %{_prefix}/src/nginx .
 
 %build
-export LUAJIT_INC=%{_includedir}/luajit2-2.1
-export LUAJIT_LIB=%{_libdir}
-sed -i s/luajit-5.1/luajit2-5.1/g %{project_name}/config
+export LUAJIT_INC=%{lua_incdir}
+export LUAJIT_LIB=%{_libdir}/%(pkgconf --variable=libname luajit).so
 cd nginx
 %{ngx_configure} --add-dynamic-module=../%{project_name}
 %make_build modules
