@@ -1,7 +1,7 @@
 #
 # spec file for package sil-abyssinica-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           sil-abyssinica-fonts
-Version:        2.201
+Version:        2.300
 Release:        0
-Summary:        Smart Unicode Font for the Ethiopic Script (Amharic)
+Summary:        Ethiopic script font designed in a calligraphic style
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://software.sil.org/abyssinica/
@@ -34,19 +34,12 @@ BuildArch:      noarch
 %reconfigure_fonts_prereq
 
 %description
-The Ethiopic script is used for writing many of the languages of
-Ethiopia and Eritrea.  Ethiopic (U+1200..U+137F) was added to Unicode
-3.0.  Ethiopic Supplement (U+1380..U+139F) and Ethiopic Extended
-(U+2D80..U+2DDF) were added to Unicode 4.1. Abyssinica SIL supports all
-Ethiopic characters which are in Unicode including the Unicode 4.1
-extensions. Some languages of Ethiopia are not yet able to be fully
-represented in Unicode and, where necessary, we have included
-non-Unicode characters in the Private Use Area (see Private-use (PUA)
-characters supported by Abyssinica SIL).
-
-Abyssinica SIL is based on Ethiopic calligraphic traditions. This
-release is a regular typeface, with no bold or italic version available
-or planned.
+Abyssinica SIL is an Ethiopic font (often called Ge’ez)
+based on calligraphic traditions. The Ethiopic script is
+currently used for writing at least 50 of the languages of
+Ethiopia and Eritrea of sub-Saharan Africa. The traditional
+Ge’ez language, and script, continues to be used
+liturgically in the northern part of the Horn of Africa.
 
 %prep
 %setup -q -T -c sil-abyssinica -n sil-abyssinica
