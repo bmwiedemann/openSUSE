@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Oct 24 01:05:03 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Update to version 1.8.0:
+  * Large release including:
+    - Page cache rewrite, with both platform-specific and
+      language-specific downloads and configuration options
+    - Ability to patch or add new local tldr pages via --edit-page
+      and --edit-patch flags
+    - Ability to set tldr-page source in config file via
+      archive_source option, and ability to override config dir
+      with --config-path flag; e.g. for creating aliases in order
+      to use both default upstream tldr-pages source along with
+      custom sources
+  * Added:
+    - Resolve paths in config [directories] relative to the config
+      directory (#306)
+    - Add common platform to CLI (#401)
+    - Add configuration option for archive_source (#337)
+    - Allows configuring TLS backend (#386)
+    - Add args: --edit-page and --edit-patch (#388)
+    - Add an option to specify a custom config file to be used
+      (#422)
+    - Upload binaries from build step as artifact (#423)
+    - Add search.languages and updates.download_languages settings
+      (#430)
+    - Add search.platforms config option and search all platforms
+      by default (#435)
+    - Add display.show_title option to display command titles in
+      output (#439)
+  * Docs:
+    - Highlight code examples in user docs (#440)
+
+
+-------------------------------------------------------------------
 Wed May  7 04:36:18 UTC 2025 - William Brown <william.brown@suse.com>
 
 - bsc#1242605 - CVE-2025-3416 - openssl use after free

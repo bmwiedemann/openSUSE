@@ -1,7 +1,7 @@
 #
 # spec file for package tealdeer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           tealdeer
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        An implementation of tldr in Rust
 License:        Apache-2.0 OR MIT
