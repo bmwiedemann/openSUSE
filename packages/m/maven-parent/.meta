@@ -3,6 +3,5 @@
   <description>Apache Maven parent POM file used by other Maven projects.
 
 </description>
-  <devel project="Java:packages" package="maven-parent"/>
   <url>http://maven.apache.org</url>
 </package>

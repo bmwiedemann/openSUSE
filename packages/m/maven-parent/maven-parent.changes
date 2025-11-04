@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Nov  3 20:04:53 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to Apache Maven parent POM version 45
+  * New features and improvements
+    + Use a standard tag template for releases
+  * Bug Fixes
+    + Use spotless / palantirJavaFormat - 2.56.0 for all JDKs
+  * Build
+    + Allow manually executing release-drafter
+
+-------------------------------------------------------------------
+Mon Nov  3 19:56:09 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to Apache Maven parent POM version 44
+  * Breaking changes
+    + Move snapshot repositories in a profile
+    + Check test code by checkstyle
+  * New features and improvements
+    + Move snapshot repositories in a profile
+    + Introduce property maven.site.path.suffix to allow override
+      site path
+    + Use v@{project.version} as tag template for releases
+    + import KEYS history from svn
+    + Add licenseText to modello
+    + Update site descriptor to 2.0
+    + Check test code by checkstyle
+    + Add issues templates
+    + Accept all line endings with spotless
+    + Enable automatic formatter when not on CI
+    + Bump com.diffplug.spotless:spotless-maven-plugin to enable the
+      sortpom/quiet option
+  * Bug Fixes
+    + Fix asf.yaml syntax
+
+-------------------------------------------------------------------
 Tue Oct  8 06:49:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to Apache Maven parent POM version 43
@@ -22,7 +57,7 @@ Tue Oct  8 06:49:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
     + MPOM-477: Skip empty PMD reports
     + MPOM-478: Remove manually maintained history from site
     + MPOM-483: Make a separate module for documentation
-    + Skip render empty taglist report (#193) @slawekjaranowski
+    + Skip render empty taglist report
     + MNG-8158: Adding name to empty components section in shared
       site left nav
     + Introduce property for maven-shared-resources version

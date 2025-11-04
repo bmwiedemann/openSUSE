@@ -1,7 +1,7 @@
 #
 # spec file for package maven-parent
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-parent
-Version:        43
+Version:        45
 Release:        0
 Summary:        Apache Maven parent POM
 License:        Apache-2.0
@@ -44,6 +44,7 @@ Apache Maven parent POM file used by other Maven projects.
 %pom_remove_plugin -r :apache-rat-plugin
 %pom_remove_plugin -r :spotless-maven-plugin
 %pom_remove_plugin -r :maven-scm-publish-plugin
+%pom_remove_plugin -r :maven-dependency-plugin
 
 %pom_remove_dep :junit-bom
 
