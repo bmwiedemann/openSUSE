@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov  4 07:31:09 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 1.2.25
+
+  * Improved plugin metadata validation tool in plugin framework.
+  * VST3 data synchronization between DSP and UI is now performed in
+    the UI thread if possible.
+  * Fixed VST3 crash on JUCE-based hosts related to improper IRunLoop
+    handling.
+  * Fixed Room Builder plugin that could not render impulse responses
+    for some built-in rooms.
+  * Fixed possible SIGFPE crash on LADSPA descriptor generation related
+    to division by zero error.
+  * Fixed data transport for LV2 plugins that caused many annoying log
+    messages in Ardour.
+
+-------------------------------------------------------------------
 Sun Oct 26 02:04:22 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update to 1.2.24
