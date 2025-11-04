@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 04 01:24:33 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1762193001.2f6e71ca:
+  * Potentially improve stability of `t/ui/16-tests_job_next_previous.t`
+  * Avoid failing check in `t/16-utils-runcmd.t`
+  * README: Add deepwiki badge
+  * Dependency cron 2025-10-27
+  * Retry image optimizations
+
+-------------------------------------------------------------------
 Fri Oct 24 16:35:40 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1761296552.ae7c17aa:
