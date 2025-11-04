@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Nov 03 17:35:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.46.0:
+  * Highlights of this release are:
+    - gadget-service: Support instance status by @mqasimsarfraz in
+      #4950
+    - Add runc path for MicroK8s by @matthyx in #4993
+  * General Improvements
+    - Makefile: Fix checking image in minikube by @mqasimsarfraz in
+      #4949
+    - operator/ebpf: Take the ExtraParams into consideration in
+      PreStart by @burak-ok in #4976
+    - pkg: signature: Add CopySigningInformation() helper. by
+      @eiffel-fl in #4984
+    - Change community meeting calendar link by @LexiNadolski in
+      #4999
+    - operators/ebpf: reuse records of readers by @flyth in #5023
+    - operators/ebpf: rename snapshotters to iters and make them
+      repeatable by @flyth in #5026
+    - include: add gadget_socket_lookup_with_direction by
+      @mqasimsarfraz in #5025
+  * Security Improvements
+    - pkg: signature: cosign: Add OCI 1.1 way to retrieve cosign
+      signature. by @eiffel-fl in #4924
+    - verifier: Use local store to load notation signatures by
+      @mauriciovasquezbernal in #4971
+    - pkg: signature: Add Puller and Exporter interfaces for cosign
+      legacy .sig tag and OCI 1.1 by @eiffel-fl in #4968
+    - Update go compiler to 1.25.3 (to fix CVEs) by @burak-ok in
+      #5028
+  * Bug Fixes
+    - tracer-collection: Guard tracers map with a mutex by
+      @burak-ok in #4985
+    - socketenricher: avoid EAGAIN on bpf iter read by @alban in
+      #4945
+    - socket-enricher: Fix parameters logic by
+      @mauriciovasquezbernal in #4987
+    - Fix enrichment in networking gadgets by
+      @mauriciovasquezbernal in #4994
+    - gadgets/tcpdump: fix packet length output by @flyth in #5002
+    - operators/kubeipresolver: fix lifecycle by subscribing in
+      PreStart() instead of Start() by @flyth in #5032
+  * Documentation Improvements
+    - docs: Add --service-management-reference when creating
+      application. by @eiffel-fl in #4965
+    - artifacthub: Add tcpdump gadget by @mqasimsarfraz in #4986
+    - docs: Remove unused images by @mauriciovasquezbernal in #5004
+  * Testing and Continue Integration
+    - Ref: Update filter-gadgets step logic in
+      check-artifacthub-tags workflow by @4rivappa in #4753
+    - gadgets/tests: Increase sleep to minimum 1 second by
+      @burak-ok in #4981
+    - testing: Increase kubectl wait timeout to 60s by @burak-ok in
+      #4982
+    - pkg/testing: Add timestamp for start/stop by @burak-ok in
+      #4979
+    - Use testdata to enable local tests for pkg/signature.Verifier
+      and pkg/signature.Exporter by @eiffel-fl in #4996
+    - Revert "ci: bump sigstore/cosign-installer from 3.10.0 to
+      4.0.0" by @eiffel-fl in #4997
+    - automatically builds and push tools/bench(#4904) by
+      @agraharker-shubham in #5009
+    - ci: Fix benchmark image name by @mauriciovasquezbernal in
+      #5016
+    - ci: Fix wrong indentation for cosign-installer release by
+      @eiffel-fl in #5018
+
+-------------------------------------------------------------------
 Tue Oct 07 05:54:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.45.0:
