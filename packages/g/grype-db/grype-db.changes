@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 04 08:35:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.46.1:
+  * chore(deps): update anchore dependencies (#735)
+  * chore(deps): update tools to latest versions (#730)
+  * chore(deps): Bump mxschmitt/action-tmate from 3.22 to 3.23
+    (#728)
+  * chore(deps): Bump astral-sh/setup-uv in
+    /.github/actions/bootstrap (#731)
+  * chore(deps): Bump gorm.io/gorm from 1.31.0 to 1.31.1 (#733)
+  * chore(deps): Bump github.com/hashicorp/go-getter from 1.8.2 to
+    1.8.3 (#734)
+  * git data sync more time (#732)
+  * ci: enables alma provider discovery and validation (#729)
+  * feat: enable AlmaLinux provider (#726)
+
+-------------------------------------------------------------------
 Fri Oct 24 05:08:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.46.0:
