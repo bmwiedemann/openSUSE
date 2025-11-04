@@ -1,0 +1,31 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Fri, 31 Oct 2025 21:46:39 +0100
+Subject: [PATCH] Fix build with SWIG 4.4.0
+References: boo#1252962
+
+From https://bugzilla.opensuse.org/show_bug.cgi?id=1252962
+
+[  109s] subversion/bindings/swig/python/core.c: In function '_wrap_apr_pool_destroy':
+[  109s] subversion/bindings/swig/python/core.c:4562:7: error: implicit declaration of function 'SWIG_Python_TypeError'; did you mean 'SWIG_Python_TypeQuery'? [-Wimplicit-function-declaration]
+[  109s]  4562 |       SWIG_Python_TypeError(SWIG_TypePrettyName(SWIGTYPE_p_apr_pool_t), obj0);
+[  109s]       |       ^~~~~~~~~~~~~~~~~~~~~
+[  109s]       |       SWIG_Python_TypeQuery
+[  109s] make: *** [build-outputs.mk:2594: subversion/bindings/swig/python/core.lo] Error 1
+
+As discussed in:
+https://lists.apache.org/thread/p79p4p6tw4v2t6678mz1mgkylnqzz87y
+https://github.com/swig/swig/issues/3260#issuecomment-3272521479
+
+Index: subversion-1.14.5/subversion/bindings/swig/include/svn_types.swg
+===================================================================
+--- subversion-1.14.5.orig/subversion/bindings/swig/include/svn_types.swg
++++ subversion-1.14.5/subversion/bindings/swig/include/svn_types.swg
+@@ -601,7 +601,7 @@ svn_ ## TYPE ## _swig_rb_closed(VALUE se
+ %typemap(in, noblock=1) apr_pool_t * {
+   /* Verify that the user supplied a valid pool */
+   if ($input != Py_None && $input != _global_py_pool) {
+-    SWIG_Python_TypeError(SWIG_TypePrettyName($descriptor), $input);
++    SWIG_Error(SWIG_TypeError,  "expected '$type'");
+     SWIG_arg_fail($svn_argnum);
+     SWIG_fail;
+   }

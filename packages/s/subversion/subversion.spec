@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2009-2010 Pascal Bleser <pascal.bleser@opensuse.org>
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,8 @@ Patch46:        remove-kdelibs4support-dependency.patch
 # PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1195486 bsc#1193778
 # Fix testCrash_RequestChannel_nativeRead_AfterException test on aarch64 and ppc64le
 Patch47:        fix-javahl-test.patch
+# PATCH-FIX-UPSTREAM andreas.stieger@gmx.de boo#1252962
+Patch48:        subversion-1.14.5-swig-4.4.0.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel >= 2.2.0
 BuildRequires:  apache2-prefork

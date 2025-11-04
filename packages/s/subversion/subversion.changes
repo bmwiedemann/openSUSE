@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 31 20:49:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with SWIG 4.4.0 boo#1252962
+  add subversion-1.14.5-swig-4.4.0.patch
+
+-------------------------------------------------------------------
 Sun Apr  6 15:30:29 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to

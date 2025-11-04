@@ -1771,4 +1771,12 @@
     <comment></comment>
     <requestid>1268460</requestid>
   </revision>
+  <revision rev="201" vrev="4">
+    <srcmd5>df59f73f813336472eec4eed54f02425</srcmd5>
+    <version>1.14.5</version>
+    <time>1762278034</time>
+    <user>anag_factory</user>
+    <comment>fix build with SWIG 4.4.0 boo#1252962 (forwarded request 1314946 from AndreasStieger)</comment>
+    <requestid>1315243</requestid>
+  </revision>
 </revisionlist>
