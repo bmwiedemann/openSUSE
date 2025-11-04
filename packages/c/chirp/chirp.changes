@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  4 11:03:55 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- ensure backwards compatibility for 15.6
+
+-------------------------------------------------------------------
+Tue Nov  4 11:03:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+
+-------------------------------------------------------------------
 Fri Oct 31 16:47:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20251031:

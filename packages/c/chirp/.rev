@@ -343,4 +343,13 @@
     <comment></comment>
     <requestid>1314933</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>461630b45a179ec1d4d1983082a96e41</srcmd5>
+    <version>20251031</version>
+    <time>1762278205</time>
+    <user>anag_factory</user>
+    <comment>- ensure backwards compatibility for 15.6
+- Use pyproject macros to build and install.</comment>
+    <requestid>1315470</requestid>
+  </revision>
 </revisionlist>

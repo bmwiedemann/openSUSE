@@ -1,6 +1,7 @@
 #
 # spec file for package chirp
 #
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2023 Wojciech Kazubski <wk@ire.pw.edu.pl>
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -28,9 +29,11 @@ URL:            https://chirpmyradio.com/projects/chirp/
 Source:         %{name}-%{version}.tar.gz
 Patch0:         chirp-no-phone-home.patch
 Patch1:         quilt-disable-clickwrap-license.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyserial}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wxPython}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -64,10 +67,18 @@ sed -i '1{/^#!\//d}' %{name}/cli/main.py
 pushd chirp/locale
 %make_build
 popd
+%if 0%{?suse_version} < 1600
 %python_build
+%else
+%pyproject_wheel
+%endif
 
 %install
+%if 0%{?suse_version} < 1600
 %python_install
+%else
+%pyproject_install
+%endif
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
 %find_lang CHIRP
 %fdupes %{buildroot}%{_prefix}
@@ -79,8 +90,12 @@ install -Dpm 0644 chirp/share/chirp.png %{buildroot}/%{_datadir}/pixmaps/%{name}
 %license COPYING
 %{_bindir}/*
 %{_datadir}/applications/%{name}.desktop
-%{python_sitelib}/*.egg-info
 %{python_sitelib}/%{name}
+%if 0%{?suse_version} < 1600
+%{python_sitelib}/*.egg-info
+%else
+%{python_sitelib}/%{name}-0.dist-info
+%endif
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/pixmaps/%{name}.png
 
