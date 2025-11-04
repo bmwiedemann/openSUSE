@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-knack
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        A Command-Line Interface framework
 License:        MIT
