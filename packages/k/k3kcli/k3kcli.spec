@@ -17,7 +17,7 @@
 
 
 Name:           k3kcli
-Version:        0.3.5
+Version:        1.0.0
 Release:        0
 Summary:        Kubernetes in Kubernetes
 License:        Apache-2.0

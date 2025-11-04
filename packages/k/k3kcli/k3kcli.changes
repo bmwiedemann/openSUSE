@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Nov 03 17:35:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0:
+  * Bump Chart to v0.3.5 by @galal-hussein in #485
+  * Lb service status sync by @galal-hussein in #451
+  * Rename PodController to StatefulSetController by @enrichman in
+    #482
+  * Adding upgrade path tests by @galal-hussein in #481
+  * change the default storage request size request to 2Gi by
+    @jp-gouin in #490
+  * Fix for pod eviction in host cluster by @enrichman in #484
+  * Add log-format, and cleanup by @enrichman in #494
+  * Fix for HA server deletion by @enrichman in #493
+  * Fix Service reconciliation error loop by @enrichman in #497
+  * Use K3S host cluster for E2E tests by @galal-hussein in #492
+  * Fix extraEnv and other Helm values by @enrichman in #500
+  * Add k8s version upgrade test by @galal-hussein in #503
+  * Promoted v1alpha1 resources to v1beta1 by @enrichman in #505
+  * Renaming webhook from mutator to mutating by @enrichman in #506
+  * Bump Charts to 1.0.0-rc1 by @enrichman in #507
+  * Fix for flaky test by @enrichman in #509
+  * Scale up/down tests for virtual and shared mode by
+    @galal-hussein in #508
+  * Increase timeout and add timeout option by @galal-hussein in
+    #514
+  * Fix pseudo PV deletion by @galal-hussein in #511
+  * Fix for flaky test by @enrichman in #523
+  * Reduce INFO logging and update Helm installation parameters by
+    @enrichman in #519
+  * Cleanup of customCAs spec by @enrichman in #527
+  * Switch to text log format as default by @enrichman in #529
+  * Updated Cluster and VirtualClusterPolicy spec for sync and
+    loadbalancer by @enrichman in #528
+  * Add Conformance Tests for virtual mode by @enrichman in #534
+  * Bump Charts to 1.0.0-rc2 by @enrichman in #535
+  * Cleanup orphaned resources after Cluster deletion by @enrichman
+    in #540
+  * Bump Charts to 1.0.0-rc3 by @enrichman in #542
+  * Improve tests resiliency by @enrichman in #539
+
+-------------------------------------------------------------------
 Wed Oct 01 11:54:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.5:
