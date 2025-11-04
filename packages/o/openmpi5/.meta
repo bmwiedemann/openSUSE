@@ -7,5 +7,4 @@ build the best MPI library available.
 This RPM contains all the tools necessary to compile, link, and run
 Open MPI jobs.
 </description>
-  <devel project="science:HPC" package="openmpi5"/>
 </package>

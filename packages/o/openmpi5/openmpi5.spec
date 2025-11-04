@@ -75,7 +75,7 @@ ExclusiveArch:  do_not_build
 #############################################################################
 
 Name:           openmpi5%{?testsuite:-testsuite}
-Version:        5.0.8
+Version:        5.0.9
 Release:        0
 Summary:        An implementation of MPI/SHMEM (Version 5)
 License:        BSD-3-Clause
@@ -85,9 +85,8 @@ Source0:        https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-%{ve
 Source2:        openmpi5-rpmlintrc
 Source4:        mpivars.sh
 Source5:        mpivars.csh
+Source100:      README.md
 Patch1:         romio341-backport-fixes-from-mpich.patch
-Patch2:         mtl-ofi-fix-missing-definition-of-container_of.patch
-Patch3:         Force-alignment-of-opal_atomic_int128_t-to-be-16B.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Exclude 32b archs

@@ -136,4 +136,35 @@ as the default openmpi implementation is still openmpi4.</comment>
     <comment></comment>
     <requestid>1301458</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f2f43953f289c9a4b2ad2b14fc9b23e3</srcmd5>
+    <version>5.0.9</version>
+    <time>1762278037</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.0.9
+  - Functionality Enhancements
+    - GPFS: Added support for GPFS 5.2.3-0 and newer versions
+    - OFI: Enhanced accelerator memory support with proper rcache flag handling
+    - OFI: Added memory monitor export for better memory management
+    - ROCm: Added missing header for memcpy operations in accelerator component
+    - UCC: Set node local id for better collective operation performance
+    - UCX: Set node local id in PML component for improved communication
+  - Bug Fixes and Minor Enhancements
+    - PML OB1: Fixed critical bug in MCA_PML_OB1_ADD_ACK_TO_PENDING that could cause memory overruns or allocation failures
+    - CUDA: Fixed CUDA detection when multiple libcuda.so files exist in CUDA install directory
+    - Fortran: Fixed off-by-one string copy error in C2F string conversion
+    - Fortran: Fixed ompi string c2f conversion when Fortran string length is less than C string length
+    - Threading: Fixed OMPI_MPI_THREAD_LEVEL environment variable handling to allow useful overrides in threaded library use cases
+    - Threading: Enhanced OMPI_MPI_THREAD_LEVEL to accept both numeric (0-3) and string ('multiple', 'MPI_THREAD_MULTIPLE', etc.) values
+    - OSC: Fixed rdma component when not using ob1 PML
+    - S390x: Fixed alignment of opal_atomic_int128_t to be 16-byte aligned
+    - Configury: Improved Fortran complex(real16) testing and module file cleanup
+    - Documentation: Fixed MCA environment variable prefix documentation for PRRTE
+    - Documentation: Updated MPI_Init*/MPI_Finalize*/MPI_Session_* man pages with numerous improvements
+    - Build system: Removed whitespace from conftestval-style tests and cleaned up configuration
+- Drop patches merged upstream:
+  - Force-alignment-of-opal_atomic_int128_t-to-be-16B.patch
+  - mtl-ofi-fix-missing-definition-of-container_of.patch</comment>
+    <requestid>1315293</requestid>
+  </revision>
 </revisionlist>
