@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Nov 03 17:34:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.3:
+  * Vulnerabilities
+    - GO-2025-4010 / CVE-2025-47912
+    - GO-2025-4011 / CVE-2025-58185
+    Both are minor vulnerabilities in the Go standard library
+    regarding network. Kubecolor does not use the network at all.
+  * Features
+    - add more missing error status colorizing by @larsgerber in
+      #274
+      - PreCreateHookError
+      - PreStartHookError
+      - PostStartHookError
+      - CreateContainerConfigError
+      - CreateContainerError
+  * Dependencies
+    - Switch from bitnami/kubectl to registry.k8s.io/kubectl by
+      @applejag in #276
+    - Bump docker/login-action from 3.5.0 to 3.6.0 in the all group
+      by @dependabot[bot] in #277
+    - Bump the all group with 2 updates by @dependabot[bot] in #281
+    - Go 1.25.3 to resolve CVE-2025-58185 & CVE-2025-47912 by
+      @applejag in #283
+  * Other
+    - Fix CI/CD security to follow zizmor recommendations by
+      @applejag in #273
+
+-------------------------------------------------------------------
 Sun Sep 28 14:51:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.2:
