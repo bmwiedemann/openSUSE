@@ -1,5 +1,5 @@
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 3bb2337..5ad369e 100644
+index 53054e7..5405dca 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -342,9 +342,6 @@ set_target_properties(engine PROPERTIES
@@ -11,4 +11,4 @@ index 3bb2337..5ad369e 100644
 -	BUILD_WITH_INSTALL_RPATH ON
  )
  
- # Install
+ # Windows console wrapper

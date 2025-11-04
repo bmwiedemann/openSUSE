@@ -1,7 +1,7 @@
 #
 # spec file for package ecwolf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ecwolf
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        An opensource implementation of Wolfenstein3D engine
 License:        GPL-2.0-only
@@ -27,10 +27,10 @@ URL:            https://maniacsvault.net/ecwolf
 Source:         https://maniacsvault.net/ecwolf/files/ecwolf/1.x/%{name}-%{version}-src.tar.xz
 Patch1:         ecwolf-no-rpath.patch
 Patch2:         ecwolf-fix-path.patch
-Patch3:         ecwolf-fix-gcc14.patch
 BuildRequires:  cmake
 BuildRequires:  fluidsynth-devel
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_net)
@@ -64,12 +64,18 @@ install -D -m 0755 build/ecwolf %{buildroot}%{_bindir}/ecwolf
 install -D -m 0644 build/ecwolf.pk3 %{buildroot}%{_datadir}/ecwolf/ecwolf.pk3
 install -D -m 0644 docs/ecwolf.6 %{buildroot}%{_mandir}/man6/ecwolf.6
 
+# icons
+for i in 32 128 256 512 ; do
+    install -Dm 0644 src/macosx/icon.iconset/icon_${i}x${i}.png %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}.png
+done
+
 %files
 %license docs/license-gpl.txt docs/license-id.txt
 %doc README.md PHILOSOPHY.md docs/changelog
 %{_bindir}/ecwolf
 %dir %{_datadir}/ecwolf
 %{_datadir}/ecwolf/ecwolf.pk3
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_mandir}/man6/ecwolf.6%{?ext_man}
 
 %changelog

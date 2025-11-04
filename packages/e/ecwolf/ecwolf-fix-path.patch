@@ -1,14 +1,40 @@
+diff --git a/src/versiondefs.h b/src/versiondefs.h
+index 49a840f..317e63d 100644
+--- a/src/versiondefs.h
++++ b/src/versiondefs.h
+@@ -1,4 +1,4 @@
+-#define INSTALL_PREFIX "/usr/local"
++#define INSTALL_PREFIX "/usr"
+ 
+ #define GAMENAME "ECWolf"
+ #define GAMESIG "ECWOLF"
+diff --git a/src/versiondefs.h.in b/src/versiondefs.h.in
+index f82d48f..2cce5a6 100644
+--- a/src/versiondefs.h.in
++++ b/src/versiondefs.h.in
+@@ -1,9 +1,9 @@
+-#define INSTALL_PREFIX "@CMAKE_INSTALL_PREFIX@"
++#define INSTALL_PREFIX "/usr/"
+ 
+ #define GAMENAME "@PRODUCT_NAME@"
+ #define GAMESIG "@PRODUCT_SIGNATURE@"
+ #define BINNAME "@PRODUCT_BINARY@"
+-#define GAME_DIR "@PRODUCT_DIRECTORY@"
++#define GAME_DIR "/usr/share/ecwolf/"
+ 
+ #define DOTVERSIONSTR_NOREV "@VERSION_STRING@"
+ #define SAVEPRODVER @VERSION_INTEGER@ // 0xMMMmmmrr in hex
 diff --git a/src/wl_iwad.cpp b/src/wl_iwad.cpp
-index 94d60b2..8ef4ca0 100644
+index 09d37c6..384c38f 100644
 --- a/src/wl_iwad.cpp
 +++ b/src/wl_iwad.cpp
-@@ -657,8 +657,7 @@ void SelectGame(TArray<FString> &wadfiles, const char* iwad, const char* datawad
+@@ -658,8 +658,7 @@ void SelectGame(TArray<FString> &wadfiles, const char* iwad, const char* datawad
  	while(split != 0);
  
  #if !defined(__APPLE__) && !defined(_WIN32)
 -	LookForGameData(datawadRes, basefiles, "/usr/share/games/wolf3d");
 -	LookForGameData(datawadRes, basefiles, "/usr/local/share/games/wolf3d");
-+	LookForGameData(datawadRes, basefiles, "/usr/share/wolf3d");
++	LookForGameData(datawadRes, basefiles, "/usr/share/ecwolf");
  #endif
  
  	// Look for a steam install. (Basically from ZDoom)
