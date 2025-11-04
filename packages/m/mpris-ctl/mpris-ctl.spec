@@ -1,7 +1,7 @@
 #
 # spec file for package mpris-ctl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,12 @@
 
 
 Name:           mpris-ctl
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Basic mpris player control for linux command line
 License:        MIT
 URL:            https://git.sr.ht/~mariusor/mpris-ctl
-Source:         https://git.sr.ht/~mariusor/mpris-ctl/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM openSUSE-install.patch gh#mariusor/mpris-ctl#21 mcepl@suse.com
-# Fix Makefile for install to create required directories
-Patch0:         openSUSE-install.patch
+Source:         https://git.sr.ht/~mariusor/mpris-ctl/archive/v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
 BuildRequires:  dbus-1-devel
 BuildRequires:  scdoc
 
@@ -34,7 +31,7 @@ Minimalistic cli tool for controlling audio players exposing a MPRIS
 DBus interface, targeted at keyboard based WMs.
 
 %prep
-%autosetup -p1 -n mpris-ctl-v%{version}
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %make_build

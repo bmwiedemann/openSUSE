@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  4 12:59:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.1
+  * New version to release the improvements made by @mcepl to the
+    install target.
+- Drop patch:
+  * openSUSE-install.patch (not longer needed)
+
+-------------------------------------------------------------------
 Sun Feb 23 19:28:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.0.0:
