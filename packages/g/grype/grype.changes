@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 04 08:34:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.103.0:
+  * Added Features
+    - Allow hyphen in version string [#3021 @willmurphyscode]
+    - Respect rpmmod PURL qualifier [#3020 @willmurphyscode]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3029)
+    - chore(deps): bump gorm.io/gorm from 1.31.0 to 1.31.1 (#3028)
+    - chore(deps): bump github/codeql-action from 4.30.9 to 4.31.2
+      (#3025)
+    - chore(deps): bump actions/upload-artifact from 4.6.2 to 5.0.0
+      (#3016)
+    - chore(deps): bump github.com/gabriel-vasile/mimetype (#3022)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.8.2
+      to 1.8.3 (#3026)
+    - chore(deps): update tools to latest versions (#3014)
+    - chore(deps): bump anchore/sbom-action from 0.20.8 to 0.20.9
+      (#3012)
+
+-------------------------------------------------------------------
 Thu Oct 23 12:35:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.102.0:
