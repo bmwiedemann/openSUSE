@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Nov  3 15:44:49 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.44.0:
+  * Allow kitty to read a specified set of environment variables from your
+    login shell at startup using the env directive in kitty.conf (#9042)
+  * A new option draw_window_borders_for_single_window to force kitty to always
+    draw a window border even when only a single window is present (#9112)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.draw_window_borders_for_single_window
+  * Fix a regression in 0.43.0 that caused a black flicker when closing a tab
+    in the presence of a background image (#9060)
+  * Further improvements to rounded corner rendering, especially at low
+    DPI (#9091)
+  * Splits layout: Fix a bug that could cause a corrupted layout in some
+    circumstances (#9059)
+  * Fix a regression in the previous release that broke goto_session -1
+  * Fix rendering broken on ancient GPU drivers that do not support rendering
+    to 16 bit textures (#9068)
+  * Fix tab bar sometimes showing incorrect tabs when it is filtered to show
+    only tabs from the current session (#9079)
+  * macOS: Workaround for bug in macOS Tahoe that caused OS Windows that are
+    fullscreen to crash kitty when returning from sleep on some machines (#8983)
+  * Graphics: Fix animated images sometimes not auto playing or auto playing
+    at the wrong start frame if the same image id is used for a subsequent image
+  * Fix a regression in 0.43.0 that caused high CPU usage when
+    disable_ligatures was set to cursor and the tab bar was visible (#9071)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.disable_ligatures
+  * macOS: Handle dropping of file promises into kitty in addition to file
+    paths (#9084)
+  * macOS: Fix indeterminate progress bar displayed on dock icon increasing
+    speed when indeterminate progress is set without being cleared first (#9114)
+  * macOS: Performance and power usage improvements of about 5-10% (#9131)
+  * macOS: Add an item to the global menu to Cycle through OS windows
+  * macOS: Quick access terminal: Fix a crash when changing font size (#9178)
+  * Wayland: Fix center-sized panels not working on smithay based
+    compositors (#9117)
+  * Wayland: Fix scrolling using some mouse wheels that produce “VALUE120”
+    based scroll events too fast on some compositors (#9128)
+  * Automatic color scheme switching: Fix title bar color not being
+    updated (#9167)
+  * Add support for Unicode 17
+  * Fix a regression in 0.43.0 that caused tab_bar_margin_width to be doubled
+    on the right edge of the tab bar (#9154)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.tab_bar_margin_width
+  * Session files: Add a new focus_tab command to specify which tab should be
+    active when a session is loaded. Accepts either a plain number
+    (0-based index) or a match expression for flexible tab selection,
+    allowing sessions to preserve the active tab state (Sessions)
+  * save_as_session: Add --base-dir option to specify a base directory for
+    saving session files with relative paths, useful when the current working
+    directory is not the desired location (Sessions)
+    - https://sw.kovidgoyal.net/kitty/actions/#action-save_as_session
+    - https://sw.kovidgoyal.net/kitty/sessions/
+  * Add state:focused_os_window match query to select all windows in the
+    currently focused OS window (Matching windows and tabs)
+    - https://sw.kovidgoyal.net/kitty/remote-control/#search-syntax
+  * Session saving now preserves visual tab order and active tab rather than
+    tab activation history as this is generally more important. In the future
+    may have it save tab history as well (#9163)
+
+-------------------------------------------------------------------
 Wed Oct  1 06:28:09 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.43.1:

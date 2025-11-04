@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.43.1
+Version:        0.44.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -87,6 +87,11 @@ BuildRequires:  python3-readthedocs-sphinx-ext
 BuildRequires:  python3-sphinx-inline-tabs
 BuildRequires:  python3-sphinxcontrib-copybutton
 %endif
+### kitty will fail to launch without these;
+###   some trimmed down systems (WSL) may not have them by default
+Requires:       libwayland-cursor0
+Requires:       libwayland-egl1
+#####
 Recommends:     %{name}-shell-integration
 Recommends:     %{name}-terminfo
 Recommends:     python3-importlib_resources
