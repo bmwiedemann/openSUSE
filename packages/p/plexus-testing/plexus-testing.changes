@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Tue Nov  4 08:59:21 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.0.1
+  * Breaking changes
+    + Store all extension data in ExtensionContext
+  * Bug Fixes
+    + Fix setup of test execution context in ThreadLocal
+  * New features and improvements
+    + Add testBasedir property
+    + Allow to customize Plexus container by test class
+  * Maintenance
+    + Prepare simple site for plugin
+    + Use direct dependencies for guava
+    +  Use AutoClosable for cleanups of PlexusContext
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 23 to 24
+    + Bump com.google.guava:guava from 33.4.8-jre to 33.5.0-jre
+
+-------------------------------------------------------------------
+Tue Oct  7 13:07:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.6.0
+  * New features and improvements
+    + Upgrade Guice to 6 - Add support to run test with Jakarta
+      @Inject annotations
+    + Downgrade Guice to 5.1.0 to be in sync with Maven 3.9
+  * Bug Fixes
+    + Set Guice class loading to CHILD - avoid using terminally
+      deprecated methods
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus to 23
+    + Bump versions.eclipse.sisu to 0.9.0.M4
+    + Bump com.google.guava:guava to 33.4.8-jre
+    + Bump junit to 5.12.1
+    + Add dependency to jakarta.annotation-api and more tests
+    + Bump actions/setup-java to 4
+    + Bump org.eclipse.sisu.plexus to 0.3.5
+    + Bump actions/checkout to 4
+    + Bump maven-shared-resources to 5
+    + release-drafter/release-drafter to 6
+
+-------------------------------------------------------------------
+Fri Feb 23 07:08:30 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging

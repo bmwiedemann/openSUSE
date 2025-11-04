@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/codehaus-plexus/plexus-testing.git</param>
+		<param name="revision">plexus-testing-2.0.1</param>
+		<param name="match-tag">plexus-testing-*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">plexus-testing-(.*)</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
