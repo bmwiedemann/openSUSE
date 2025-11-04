@@ -138,4 +138,13 @@
 - use pytest macro</comment>
     <requestid>1293183</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>549b49925c826556d39f12174de3cdf0</srcmd5>
+    <version>1.8.1</version>
+    <time>1762278242</time>
+    <user>anag_factory</user>
+    <comment>- Skip httpd integration tests, we can't run these tests with abuild
+  user in build environment.</comment>
+    <requestid>1315510</requestid>
+  </revision>
 </revisionlist>

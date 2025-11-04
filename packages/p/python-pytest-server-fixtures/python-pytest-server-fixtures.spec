@@ -108,7 +108,10 @@ export SERVER_FIXTURES_HTTPD_MODULES=$(ls -1d /usr/lib*/apache2)
 export SERVER_FIXTURES_HTTPD=httpd
 export SERVER_FIXTURES_REDIS=%{_sbindir}/redis-server
 # gh#man-group/pytest-plugins#177
-%pytest -k 'not test_init'
+donttest="test_init"
+# httpd -f can't be run as abuild user
+# mkdir: cannot create directory ‘/etc/apache2/sysconfig.d/’: Permission denied
+%pytest -k "not ($donttest)" --ignore tests/integration/test_httpd_proxy_server.py
 
 %files %{python_files}
 %doc CHANGES.md README.md

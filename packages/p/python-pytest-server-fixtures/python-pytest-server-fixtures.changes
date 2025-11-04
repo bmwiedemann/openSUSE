@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  4 11:06:31 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip httpd integration tests, we can't run these tests with abuild
+  user in build environment.
+
+-------------------------------------------------------------------
 Mon Jul 14 15:24:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - remove python-jenkins from test requirements (jenkins tests
