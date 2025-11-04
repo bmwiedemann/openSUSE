@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Nov  3 14:19:45 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u472 (icedtea-3.37.0)
+  * CVEs
+    + JDK-8360937, CVE-2025-53057, bsc#1252414: Enhance certificate
+      handling
+    + JDK-8356294, CVE-2025-53066, bsc#1252417: Enhance Path
+      Factories
+  * Import of OpenJDK 8 u472 build 08
+    + JDK-7102969: currency.properties supercede not working
+      correctly
+    + JDK-8041924: [TESTBUG] sun/net/www/http/
+      /ChunkedOutputStream/checkError.java fails on some systems
+    + JDK-8044051: Test jdk/lambda/vm/InterfaceAccessFlagsTest.java
+      gets IOException during compilation
+    + JDK-8056283: @ignore tools/javac/defaultMethods/
+      /Assertions.java until JDK-8047675 is fixed
+    + JDK-8081734: ConcurrentHashMap/ConcurrentAssociateTest.java,
+      times out 90% of time on sparc with 256 cpu.
+    + JDK-8157138: Error while fetching currency instance by
+      Currency.getInstance(currencycode)
+    + JDK-8160767: [TEST_BUG] java/awt/Frame/MaximizedToIconified/
+      /MaximizedToIconified.java
+    + JDK-8185348: Major performance regression in
+      GetMethodDeclaringClass and other JVMTI Method functions
+    + JDK-8185500: [TESTBUG] Add keywords headful/printer in
+      java/awt and javax tests.
+    + JDK-8186259: IOExceptionIfEncodedURLTest.sh versus
+      IOExceptionIfEncodedURLTest.java
+    + JDK-8205653: test/jdk/sun/management/jmxremote/bootstrap/
+      /RmiRegistrySslTest.java and RmiSslBootstrapTest.sh fail with
+      handshake_failure
+    + JDK-8228658: test GetTotalSafepointTime.java fails on fast
+      Linux machines with Total safepoint time 0 ms
+    + JDK-8275303: sun/java2d/pipe/InterpolationQualityTest.java
+      fails with D3D basic render driver
+    + JDK-8312065: Socket.connect does not timeout when profiling
+    + JDK-8335978: [8u] incorrect include file name in
+      semaphore.inline.hpp
+    + JDK-8339414: Fix JDK-8202369 incorrect backport for 8u
+    + JDK-8340387: Update OS detection code to recognize Windows
+      Server 2025
+    + JDK-8345414: Google CAInterop test failures
+    + JDK-8348760: RadioButton is not shown if JRadioButtonMenuItem
+      is rendered with ImageIcon in WindowsLookAndFeel
+    + JDK-8351624: [8u] Xerces-J version wrong in THIRD_PARTY_README
+      after JDK-7150324
+    + JDK-8352302: Test sun/security/tools/jarsigner/
+      /TimestampCheck.java is failing
+    + JDK-8352637: Enhance bytecode verification
+    + JDK-8358328: Bump update version of OpenJDK: 8u472
+    + JDK-8358538: Update GHA Windows runner to 2025
+    + JDK-8361212: Remove AffirmTrust root CAs
+    + JDK-8363965: GHA: Switch cross-compiling sysroots to Debian
+      bookworm
+    + JDK-8365375: Method SU3.setAcceleratorSelectionForeground
+      assigns to acceleratorForeground
+    + JDK-8365389: Remove static color fields from SwingUtilities3
+      and WindowsMenuItemUI
+    + JDK-8365560: [8u] ppc64le MaxRAM default is too low at 4GiB
+    + JDK-8365811: test/jdk/java/net/CookieHandler/B6644726.java
+      failure - "Should have 5 cookies. Got only 4, expires probably
+      didn't parse correctly"
+    + JDK-8366112: [8u] GHA: Fix broken installation of Windows SDK
+    + JDK-8368308: ISO 4217 Amendment 180 Update
+  * Backports
+    + JDK-8354941, GH028: Build failure with glibc 2.42 due to
+      uabs() name collision
+  * Bug fixes
+    + GH030: Remove java/util/TimeZone/CheckDisplayNames.java
+
+-------------------------------------------------------------------
 Sun Sep  7 16:23:11 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u462 (icedtea-3.36.0)
@@ -985,70 +1057,70 @@ Tue Feb  7 17:13:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
   * New features
     + Support for building with autoconf 2.71
   * Import of OpenJDK 8 u362 build 09
-    + JDK-6885993: Named Thread: introduce print() and 
+    + JDK-6885993: Named Thread: introduce print() and
       print_on(outputStream* st) methods
-    + JDK-7124218: [TEST_BUG] [macosx] Space should select cell in 
+    + JDK-7124218: [TEST_BUG] [macosx] Space should select cell in
       the JTable
-    + JDK-8054066: com/sun/jdi/DoubleAgentTest.java fails with 
+    + JDK-8054066: com/sun/jdi/DoubleAgentTest.java fails with
       timeout
     + JDK-8067941: [TESTBUG] Fix tests for OS with 64K page size.
-    + JDK-8071530: Update OS detection code to reflect Windows 10 
+    + JDK-8071530: Update OS detection code to reflect Windows 10
       version change
     + JDK-8073464: GC workers do not have thread names
     + JDK-8079255: [TEST_BUG] [macosx] Test closed/java/awt/Robot/
       /RobotWheelTest/RobotWheelTest fails for Mac only
     + JDK-8129827: [TEST_BUG] Test java/awt/Robot/RobotWheelTest/
       /RobotWheelTest.java fails
-    + JDK-8148005: One byte may be corrupted by 
+    + JDK-8148005: One byte may be corrupted by
       get_datetime_string()
     + JDK-8159599: [TEST_BUG] java/awt/Modal/ModalInternalFrameTest/
       /ModalInternalFrameTest.java
-    + JDK-8159720: Failure of C2 compilation with tiered prevents 
+    + JDK-8159720: Failure of C2 compilation with tiered prevents
       some C1 compilations
-    + JDK-8197859: VS2017 Complains about UINTPTR_MAX definition in 
+    + JDK-8197859: VS2017 Complains about UINTPTR_MAX definition in
       globalDefinitions_VisCPP.hpp
-    + JDK-8206456: [TESTBUG] docker jtreg tests fail on systems 
+    + JDK-8206456: [TESTBUG] docker jtreg tests fail on systems
       without cpuset.effective_cpus / cpuset.effective_mems
-    + JDK-8221529: [TESTBUG] Docker tests use old/deprecated image 
+    + JDK-8221529: [TESTBUG] Docker tests use old/deprecated image
       on AArch64
-    + JDK-8224506: [TESTBUG] TestDockerMemoryMetrics.java fails 
+    + JDK-8224506: [TESTBUG] TestDockerMemoryMetrics.java fails
       with exitValue = 137
     + JDK-8233551: [TESTBUG] SelectEditTableCell.java fails on MacOS
-    + JDK-8241086: Test runtime/NMT/HugeArenaTracking.java is 
+    + JDK-8241086: Test runtime/NMT/HugeArenaTracking.java is
       failing on 32bit Windows
-    + JDK-8253702: BigSur version number reported as 10.16, should 
+    + JDK-8253702: BigSur version number reported as 10.16, should
       be 11.nn
-    + JDK-8255559: Leak File Descriptors Because of 
+    + JDK-8255559: Leak File Descriptors Because of
       ResolverLocalFilesystem#engineResolveURI()
-    + JDK-8265527: tools/javac/diags/CheckExamples.java fails after 
+    + JDK-8265527: tools/javac/diags/CheckExamples.java fails after
       JDK-8078024 8u backport
     + JDK-8269039: Disable SHA-1 Signed JARs
-    + JDK-8269850: Most JDK releases report macOS version 12 as 
+    + JDK-8269850: Most JDK releases report macOS version 12 as
       10.16 instead of 12.0
     + JDK-8270344: Session resumption errors
-    + JDK-8271459: C2: Missing NegativeArraySizeException when 
+    + JDK-8271459: C2: Missing NegativeArraySizeException when
       creating StringBuilder with negative capacity
     + JDK-8273176: handle latest VS2019 in abstract_vm_version
-    + JDK-8274563: jfr/event/oldobject/TestClassLoaderLeak.java 
+    + JDK-8274563: jfr/event/oldobject/TestClassLoaderLeak.java
       fails when GC cycles are not happening
     + JDK-8274840: Update OS detection code to recognize Windows 11
-    + JDK-8275887: jarsigner prints invalid digest/signature 
+    + JDK-8275887: jarsigner prints invalid digest/signature
       algorithm warnings if keysize is weak/disabled
-    + JDK-8280890: Cannot use '-Djava.system.class.loader' with 
+    + JDK-8280890: Cannot use '-Djava.system.class.loader' with
       class loader in signed JAR
     + JDK-8283277: ISO 4217 Amendment 171 Update
-    + JDK-8283903: GetContainerCpuLoad does not return the correct 
+    + JDK-8283903: GetContainerCpuLoad does not return the correct
       result in share mode
-    + JDK-8284389: Improve stability of GHA Pre-submit testing by 
+    + JDK-8284389: Improve stability of GHA Pre-submit testing by
       caching cygwin installer
-    + JDK-8284622: Update versions of some Github Actions used in 
+    + JDK-8284622: Update versions of some Github Actions used in
       JDK workflow
-    + JDK-8286582: Build fails on macos aarch64 when using 
+    + JDK-8286582: Build fails on macos aarch64 when using
       --with-zlib=bundled
-    + JDK-8288928: Incorrect GPL header in pnglibconf.h (backport 
+    + JDK-8288928: Incorrect GPL header in pnglibconf.h (backport
       of JDK-8185041)
     + JDK-8289549: ISO 4217 Amendment 172 Update
-    + JDK-8292762: Remove .jcheck directories from jdk8u 
+    + JDK-8292762: Remove .jcheck directories from jdk8u
       subcomponents
     + JDK-8293181: Bump update version of OpenJDK: 8u362
     + JDK-8293461: Add a test for JDK-8290832
@@ -1057,19 +1129,19 @@ Tue Feb  7 17:13:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
     + JDK-8294307: ISO 4217 Amendment 173 Update
     + JDK-8294357: (tz) Update Timezone Data to 2022d
     + JDK-8294863: Enable partial tier1 testing in GHA for JDK8
-    + JDK-8295164: JDK 8 jdi tests should not use tasklist command 
+    + JDK-8295164: JDK 8 jdi tests should not use tasklist command
       on Windows
     + JDK-8295173: (tz) Update Timezone Data to 2022e
     + JDK-8295288: Some vm_flags tests associate with a wrong BugID
-    + JDK-8295714: GHA ::set-output is deprecated and will be 
+    + JDK-8295714: GHA ::set-output is deprecated and will be
       removed
-    + JDK-8295723: security/infra/wycheproof/RunWycheproof.java 
+    + JDK-8295723: security/infra/wycheproof/RunWycheproof.java
       fails with Assertion Error
     + JDK-8295915: Problemlist compiler/rtm failures specific to 8u
     + JDK-8295950: Enable langtools/tier1 in GHA for 8u
     + JDK-8296108: (tz) Update Timezone Data to 2022f
     + JDK-8296239: ISO 4217 Amendment 174 Update
-    + JDK-8296555: Enable hotspot/tier1 for 64-bit builds in GHA 
+    + JDK-8296555: Enable hotspot/tier1 for 64-bit builds in GHA
       for 8u
     + JDK-8296715: CLDR v42 update for tzdata 2022f
     + JDK-8296959: Fix hotspot shell tests of 8u on multilib systems
@@ -1081,7 +1153,7 @@ Tue Feb  7 17:13:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
     + JDK-8299483: ProblemList java/text/Format/NumberFormat/
       /CurrencyFormat.java
     + JDK-8300178: JDK-8286496 causes build failure on older GCC
-    + JDK-8300225: JDK-8288516 causes build failure on Windows + 
+    + JDK-8300225: JDK-8288516 causes build failure on Windows +
       VS2010
   * Bug fixes
     + Don't run check-aes on Zero builds (pointless and slow)
@@ -1096,7 +1168,7 @@ Thu Dec  1 17:23:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
   * October 2022 CPU
   * CVEs
     + CVE-2022-21619 (bsc#1204473)
-    + CVE-2022-21626 (bsc#1204471) 
+    + CVE-2022-21626 (bsc#1204471)
     + CVE-2022-21624 (bsc#1204475)
     + CVE-2022-21628 (bsc#1204472)
   * Security fixes
@@ -1114,7 +1186,7 @@ Thu Dec  1 17:23:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
     + JDK-7186258: InetAddress$Cache should replace
       currentTimeMillis with nanoTime for more precise and accurate
     + JDK-8028265: Add legacy tz tests to OpenJDK
-    + JDK-8039955: [TESTBUG] jdk/lambda/LambdaTranslationTest1 - 
+    + JDK-8039955: [TESTBUG] jdk/lambda/LambdaTranslationTest1 -
       java.lang.AssertionError: expected [d:1234.000000] but found
       [d:1234,000000]
     + JDK-8049228: Improve multithreaded scalability of InetAddress
