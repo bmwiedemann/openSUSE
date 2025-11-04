@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Nov  3 21:14:53 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+ * VERSION 06.02.00 - 2025-11-03
+
+- MAJOR NEW FEATURE: TkRemind: A new "View..." menu lets you choose a
+  calendar view from the following choices: Entire month, 1 week, 2
+  weeks or 4 weeks.
+
+- NEW FEATURE: remind: The "z" flag for the "-c" option makes Remind
+  turn reminders with a "Url:" INFO string into clickable hyperlinks.
+  Note that your terminal must support the escape sequences at
+  https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda
+  for this feature to work.
+
+- IMPROVEMENT: TkRemind: The Print dialog now allows you to preview
+  (and if you wish, adjust) the command used to print a calendar.
+
+- IMPROVEMENT: TkRemind: The Agenda Mode window ("Show Today's
+  Reminders") has navigation buttons for moving back or forward one
+  day at a time.
+
+- IMPROVEMENT: TkRemind: Add many keyboard shortcuts.  All pop-up
+  windows can be closed with Esc or Control-W.  Other shortcuts are
+  documented in the tkremind man page.
+
+- CHANGE: TkRemind: If you hand-edit a reminder in the "Preview
+  Reminder" dialog box, it is marked as non-editable by TkRemind.
+
+- CHANGE: TkRemind: Remove support for rem2ps.  All printing is now
+  done using rem2pdf.
+
+- IMPROVEMENT: remind: Improve error reporting if there's extraneous
+  content after an expression.
+
+- IMPROVEMENT: tests: test-rem was tweaked to allow testing of an
+  installed Remind installation.  This work was done by Jochen
+  Sprickerhof.
+
+- IMPROVEMENT: rem2pdf: When rendering weekly calendars, reduce the
+  default size when drawing moons; if a day does not have a moon
+  indicator, don't leave a big gap before the first reminder entry.
+
+- IMPROVEMENT: rem2pdf: Draw moon phases left-aligned.
+
+- IMPROVEMENT: rem2pdf: For weekly calendars with 4 weeks per page,
+  make all of the boxes the same height.
+
+- DOCUMENTATION IMPROVEMENT: remind: Document the INFO strings that
+  back-ends should strive to support (Url:, Location: and
+  Description:)
+
+- BUG FIX: TkRemind: Bind the Home/End/PgUp/PgDn keys on the numeric
+  keyboard for navigation.
+
+- FIX: Don't enable -ffat-lto-objects on FreeBSD.
+
+- BUG FIX: remind: Don't segfault if we can't open a .purged output
+  file in purge mode.
+
+- BUG FIX: rem2pdf: Make PANGO @x,y positioning consistent between
+  weekly and monthly calendars.  NOTE: If you use absolute PANGO
+  positioning, you might need to adjust your script because positions
+  are now relative to the centers of the grid lines.
+
+-------------------------------------------------------------------
 Wed Oct 29 11:23:55 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 * VERSION 06.01.08 - 2025-10-27

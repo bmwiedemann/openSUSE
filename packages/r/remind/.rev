@@ -960,4 +960,41 @@
   Solaris derivative.)  &quot;make test&quot; fails because of deficiencies in</comment>
     <requestid>1314335</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>18ca80c6dd8b5825db9429c6006e6cd2</srcmd5>
+    <version>6.2.0</version>
+    <time>1762278126</time>
+    <user>anag_factory</user>
+    <comment> * VERSION 06.02.00 - 2025-11-03
+- MAJOR NEW FEATURE: TkRemind: A new &quot;View...&quot; menu lets you choose a
+  calendar view from the following choices: Entire month, 1 week, 2
+  weeks or 4 weeks.
+- NEW FEATURE: remind: The &quot;z&quot; flag for the &quot;-c&quot; option makes Remind
+  turn reminders with a &quot;Url:&quot; INFO string into clickable hyperlinks.
+  Note that your terminal must support the escape sequences at
+  https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda
+  for this feature to work.
+- IMPROVEMENT: TkRemind: The Print dialog now allows you to preview
+  (and if you wish, adjust) the command used to print a calendar.
+- IMPROVEMENT: TkRemind: The Agenda Mode window (&quot;Show Today's
+  Reminders&quot;) has navigation buttons for moving back or forward one
+  day at a time.
+- IMPROVEMENT: TkRemind: Add many keyboard shortcuts.  All pop-up
+  windows can be closed with Esc or Control-W.  Other shortcuts are
+  documented in the tkremind man page.
+- CHANGE: TkRemind: If you hand-edit a reminder in the &quot;Preview
+  Reminder&quot; dialog box, it is marked as non-editable by TkRemind.
+- CHANGE: TkRemind: Remove support for rem2ps.  All printing is now
+  done using rem2pdf.
+- IMPROVEMENT: remind: Improve error reporting if there's extraneous
+  content after an expression.
+- IMPROVEMENT: tests: test-rem was tweaked to allow testing of an
+  installed Remind installation.  This work was done by Jochen
+  Sprickerhof.
+- IMPROVEMENT: rem2pdf: When rendering weekly calendars, reduce the
+  default size when drawing moons; if a day does not have a moon
+  indicator, don't leave a big gap before the first reminder entry.
+- IMPROVEMENT: rem2pdf: Draw moon phases left-aligned.</comment>
+    <requestid>1315382</requestid>
+  </revision>
 </revisionlist>
