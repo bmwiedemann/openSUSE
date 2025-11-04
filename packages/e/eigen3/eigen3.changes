@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 27 15:19:14 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.4.1:
+  * Many back-ported fixes from 5.0 branch, see
+    <https://gitlab.com/libeigen/eigen/-/issues?state=all&label_name%5B%5D=3.4.1>
+    for full list.
+- Drop fix_ppc64le_always_inline_680.patch: incorporated upstream.
+- Docs no longer build with doxygen >= 1.14, so add upstream
+  pre-generated doc tarball as source, and extract its contents to
+  a doc dir.
+- Drop docs flavor (and _multibuild entirely) since we no longer
+  build the docs; split off separate -doc package directly from
+  main package.
+- Also drop _constraints file which was only being used for the
+  docs flavor.
+
+-------------------------------------------------------------------
 Tue Feb  1 23:06:35 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add _constraints for docs(+test) to avoid OOM build failures

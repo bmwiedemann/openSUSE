@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package eigen3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
 %global pkgname eigen3
 %global srcname eigen
 
@@ -28,21 +27,22 @@
 # Also balloons the resources required: > 32 GiB disk space + >= 12 GiB memory
 %bcond_with tests
 
-%if "%{flavor}" == "docs"
-%define pkgsuffix -doc
-%endif
+# Docs for version 3.4.1 do not build with doxygen 1.14.0 or later: https://gitlab.com/libeigen/eigen/-/issues/2976
+# So, we do not build them but just extract a pre-generated doc tarball from upstream and package its contents
 
-Name:           eigen3%{?pkgsuffix}
-Version:        3.4.0
+%define major_ver 3.4
+%define api_docdir %{_docdir}/%{name}/api
+
+Name:           eigen3
+Version:        %{major_ver}.1
 Release:        0
 Summary:        C++ Template Library for Linear Algebra
 License:        BSD-3-Clause AND LGPL-2.1-only AND MPL-2.0 AND LGPL-2.1-or-later
 URL:            http://eigen.tuxfamily.org/
 Source0:        https://gitlab.com/libeigen/eigen/-/archive/%{version}/%{srcname}-%{version}.tar.bz2
+Source1:        https://libeigen.gitlab.io/eigen/docs-%{major_ver}/eigen-doc.tgz#/%{srcname}-doc-%{major_ver}.tar.bz2
 Patch0:         0001-Disable-Altivec-for-ppc64le.patch
 Patch1:         0001-Do-stack-allignment-on-ppc.patch
-# PATCH-FIX-UPSTREAM -- https://gitlab.com/libeigen/eigen/-/merge_requests/680.patch
-Patch2:         fix_ppc64le_always_inline_680.patch
 %if %{with tests}
 # SECTION Patches to fix tests
 # PATCH-FIX-UPSTREAM eigen3-googlehash-detection.patch badshah400@gmail.com -- GoogleHash needs C++11 std to compile test code and be succesfully detected
@@ -53,6 +53,7 @@ Patch10:        eigen3-fix-forward_adolc-unit-test.patch
 %endif
 BuildRequires:  adolc-devel
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -65,15 +66,6 @@ BuildRequires:  pkg-config
 BuildRequires:  sparsehash-devel
 BuildRequires:  suitesparse-devel
 BuildRequires:  superlu-devel
-%if "%{flavor}" == "docs"
-BuildRequires:  doxygen
-BuildRequires:  fdupes
-BuildRequires:  graphviz
-BuildRequires:  graphviz-gd
-BuildRequires:  texlive-dvips
-BuildRequires:  texlive-latex
-BuildRequires:  tex(newunicodechar.sty)
-%endif
 %if %{with opengl_test}
 BuildRequires:  freeglut-devel
 BuildRequires:  glew-devel
@@ -95,48 +87,41 @@ Obsoletes:      libeigen3-devel < %{version}
 Eigen is a C++ template library for linear algebra: matrices, vectors,
 numerical solvers, and related algorithms.
 
-%if "%{flavor}" == "docs"
+%package doc
 Summary:        Documentation for the Eigen3 C++ Template Library for Linear Algebra
+BuildArch:      noarch
 
-%description
+%description doc
 Documentation in HTML format for the Eigen3 C++ Template Library
 for Linear Algebra
-%endif
 
 %prep
-%autosetup -p1 -n %{srcname}-%{version}
+%autosetup -p1 -b1 -n %{srcname}-%{version}
 
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
 sed -i 's/\r$//' COPYING.MINPACK
 
-# Remove build time references so build-compare can do its work
-echo "HTML_TIMESTAMP = NO" >> doc/Doxyfile.in
-
 %build
 %cmake \
- -DINCLUDE_INSTALL_DIR:PATH=include/eigen3 \
  -DCMAKE_SKIP_RPATH:BOOL=OFF \
  -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+ -DEIGEN_BUILD_BLAS:BOOL=OFF \
+ -DEIGEN_BUILD_LAPACK:BOOL=OFF \
  -DEIGEN_TEST_CXX11:Bool=%{?with_tests:ON}%{!?with_tests:OFF} \
- -DEIGEN_TEST_OPENMP:Bool=%{?with_tests:ON}%{!?with_tests:OFF}
+ -DEIGEN_TEST_OPENMP:Bool=%{?with_tests:ON}%{!?with_tests:OFF} \
+ -DINCLUDE_INSTALL_DIR:PATH=include/eigen3 \
+ %{nil}
 
-%if "%{flavor}" == ""
 %cmake_build all %{?with_tests:buildtests}
-%else
-%cmake_build doc
-%endif
-
-rm -f doc/html/*.tgz
-find doc -name _formulas.log -print -delete
 
 %install
-%if "%{flavor}" == ""
 %cmake_install
-%else
-%fdupes -s build/doc/html/
-%endif
 
-%if "%{flavor}" == ""
+# Install bundled docs
+mkdir -p %{buildroot}%{api_docdir}
+cp -r ../eigen-doc/* %{buildroot}%{api_docdir}
+%fdupes %{buildroot}%{api_docdir}
+
 %if %{with tests}
 %check
 # Run with a fixed seed to prevent random failures: https://gitlab.com/libeigen/eigen/-/issues/2088
@@ -145,13 +130,6 @@ export EIGEN_SEED=100
 export EIGEN_REPEAT=1
 %ctest
 %endif
-%endif
-
-%if "%{flavor}" == "docs"
-%files
-%doc build/doc/html/
-
-%else
 
 %files devel
 %license COPYING.*
@@ -159,6 +137,8 @@ export EIGEN_REPEAT=1
 %{_datadir}/eigen3/
 %{_datadir}/pkgconfig/eigen3.pc
 
-%endif
+%files doc
+%dir %{_docdir}/%{name}
+%doc %{api_docdir}
 
 %changelog
