@@ -2,9 +2,11 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/World/Fragments.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/3.0.1</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">902a2b5c</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v?(.*)\+0</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>

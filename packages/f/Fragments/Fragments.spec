@@ -1,7 +1,7 @@
 #
 # spec file for package Fragments
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 
 Name:           Fragments
-Version:        3.0.1
+Version:        3.0.1+git339.902a2b5
 Release:        0
 Summary:        A GTK4 BitTorrent Client
 License:        GPL-3.0-only

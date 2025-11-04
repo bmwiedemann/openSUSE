@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 03 19:16:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.0.1+git339.902a2b5:
+  * misc: Update crates
+  * misc: Don't use RefCell for primitives
+  * connection_row: Fix missing checkmark icon
+  * misc: Replace ambiguous this with imp or obj
+  * actions: Add verify-local-data action
+  * misc: Reference in-tree crates instead of crates.io
+  * Import transmission-gobject crate
+  * Import transmission-client crate
+  * misc: Use async-std backend for oo7 and ashpd
+  * session: Expose speed limits
+  * torrent: Expose download/upload limits
+  * torrent: Expose verify-local-data
+  * torrent_row: Set halign center for spinner
+  * utils: Make speed translatable
+  * misc: Update deps / set edition to 2024
+  * misc: Fix clippy / rustfmt
+  * misc: Make rustfmt happy
+  * misc: Apply clippy fixes
+  * misc: Upgrade gtk-rs to 0.21
+  * Upgrade to gtk-rs 0.21, add async-compat
+  * Port from isahc to reqwest
+  * Updated translations.
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
 Sun Apr  6 12:04:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Exclude s390x arch as a buildtarget, fails to build.
