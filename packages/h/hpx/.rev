@@ -83,4 +83,14 @@
     <comment></comment>
     <requestid>1306975</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9b1efd121c4c39b6f403209cbb90060c</srcmd5>
+    <version>1.11.0</version>
+    <time>1762278073</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.11.1
+  - See https://hpx-docs.stellar-group.org/tags/v1.11.0-rc1/html/releases/whats_new_1_11_0.html
+- Disable build for SLE &lt; 16.0 as it does not fully support C++17</comment>
+    <requestid>1315345</requestid>
+  </revision>
 </revisionlist>

@@ -18,20 +18,21 @@
 
 
 Name:           hpx
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        General Purpose C++ Runtime System
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 URL:            https://stellar.cct.lsu.edu/tag/hpx/
 Source0:        https://github.com/STEllAR-GROUP/hpx/archive/refs/tags/v%{version}.tar.gz#/%{name}_%{version}.tar.gz
+Source100:      README.md
 Patch1:         remove-dependency-to-obsolete-boot-filesystem-path-basename.patch
 Patch2:         scope-fix-issue-with-GCC-9.patch
 Patch3:         remove-maybe_unused.patch
 BuildRequires:  asio-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++  >= 8
 BuildRequires:  gperftools-devel
 BuildRequires:  hwloc-devel
 BuildRequires:  libboost_atomic-devel >= 1.71
@@ -47,6 +48,10 @@ BuildRequires:  libboost_thread-devel >= 1.71
 BuildRequires:  openmpi-macros-devel
 Requires:       libhpx1 = %{version}-%{release}
 ExcludeArch:    i586 %arm
+%if 0%{?suse_version} < 1600
+# SLE < 16.0  only has GCC < 8 which does not have full C++17 support and fails to build
+ExclusiveArch: do_not_build
+%endif
 
 %description
 HPX is a general purpose C++ runtime system for parallel and distributed applications of any scale.

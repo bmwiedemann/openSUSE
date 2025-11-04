@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 31 16:18:47 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 1.11.1
+  - See https://hpx-docs.stellar-group.org/tags/v1.11.0-rc1/html/releases/whats_new_1_11_0.html
+- Disable build for SLE < 16.0 as it does not fully support C++17
+
+-------------------------------------------------------------------
 Wed Sep 24 09:29:37 CEST 2025 - aschnell@suse.com
 
 - libboost_system was removed upstream (bsc#1249900)
