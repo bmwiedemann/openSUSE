@@ -29,6 +29,7 @@ License:        MIT
 URL:            https://github.com/zellij-org/zellij
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         zellij-update-wasmtime-wasi-to-33.0.2.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
