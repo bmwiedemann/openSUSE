@@ -1,6 +1,6 @@
-diff -Nru google_auth-2.41.1.orig/tests/compute_engine/test_credentials.py google_auth-2.41.1/tests/compute_engine/test_credentials.py
---- google_auth-2.41.1.orig/tests/compute_engine/test_credentials.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/compute_engine/test_credentials.py	2025-10-09 16:33:01.332952583 +0200
+diff -Nru google_auth-2.42.1.orig/tests/compute_engine/test_credentials.py google_auth-2.42.1/tests/compute_engine/test_credentials.py
+--- google_auth-2.42.1.orig/tests/compute_engine/test_credentials.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/compute_engine/test_credentials.py	2025-11-03 13:35:00.328319088 +0100
 @@ -15,7 +15,7 @@
  import datetime
  import os
@@ -10,9 +10,9 @@ diff -Nru google_auth-2.41.1.orig/tests/compute_engine/test_credentials.py googl
  import pytest  # type: ignore
  import responses  # type: ignore
  
-diff -Nru google_auth-2.41.1.orig/tests/compute_engine/test__metadata.py google_auth-2.41.1/tests/compute_engine/test__metadata.py
---- google_auth-2.41.1.orig/tests/compute_engine/test__metadata.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/compute_engine/test__metadata.py	2025-10-09 16:33:01.335529349 +0200
+diff -Nru google_auth-2.42.1.orig/tests/compute_engine/test__metadata.py google_auth-2.42.1/tests/compute_engine/test__metadata.py
+--- google_auth-2.42.1.orig/tests/compute_engine/test__metadata.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/compute_engine/test__metadata.py	2025-11-03 13:35:00.330609617 +0100
 @@ -18,7 +18,7 @@
  import json
  import os
@@ -22,9 +22,9 @@ diff -Nru google_auth-2.41.1.orig/tests/compute_engine/test__metadata.py google_
  import pytest  # type: ignore
  
  from google.auth import _helpers
-diff -Nru google_auth-2.41.1.orig/tests/conftest.py google_auth-2.41.1/tests/conftest.py
---- google_auth-2.41.1.orig/tests/conftest.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/conftest.py	2025-10-09 16:33:01.271167925 +0200
+diff -Nru google_auth-2.42.1.orig/tests/conftest.py google_auth-2.42.1/tests/conftest.py
+--- google_auth-2.42.1.orig/tests/conftest.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/conftest.py	2025-11-03 13:35:00.252989012 +0100
 @@ -15,7 +15,7 @@
  import os
  import sys
@@ -34,9 +34,9 @@ diff -Nru google_auth-2.41.1.orig/tests/conftest.py google_auth-2.41.1/tests/con
  import pytest  # type: ignore
  
  
-diff -Nru google_auth-2.41.1.orig/tests/crypt/test__python_rsa.py google_auth-2.41.1/tests/crypt/test__python_rsa.py
---- google_auth-2.41.1.orig/tests/crypt/test__python_rsa.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/crypt/test__python_rsa.py	2025-10-09 16:33:01.353594896 +0200
+diff -Nru google_auth-2.42.1.orig/tests/crypt/test__python_rsa.py google_auth-2.42.1/tests/crypt/test__python_rsa.py
+--- google_auth-2.42.1.orig/tests/crypt/test__python_rsa.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/crypt/test__python_rsa.py	2025-11-03 13:35:00.352876856 +0100
 @@ -16,7 +16,7 @@
  import json
  import os
@@ -46,9 +46,9 @@ diff -Nru google_auth-2.41.1.orig/tests/crypt/test__python_rsa.py google_auth-2.
  from pyasn1_modules import pem  # type: ignore
  import pytest  # type: ignore
  import rsa  # type: ignore
-diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_challenges.py google_auth-2.41.1/tests/oauth2/test_challenges.py
---- google_auth-2.41.1.orig/tests/oauth2/test_challenges.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/oauth2/test_challenges.py	2025-10-09 16:33:01.316953843 +0200
+diff -Nru google_auth-2.42.1.orig/tests/oauth2/test_challenges.py google_auth-2.42.1/tests/oauth2/test_challenges.py
+--- google_auth-2.42.1.orig/tests/oauth2/test_challenges.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/oauth2/test_challenges.py	2025-11-03 13:35:00.307598245 +0100
 @@ -18,7 +18,7 @@
  import os
  import sys
@@ -58,9 +58,9 @@ diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_challenges.py google_auth-2.
  import pytest  # type: ignore
  import pyu2f  # type: ignore
  
-diff -Nru google_auth-2.41.1.orig/tests/oauth2/test__client.py google_auth-2.41.1/tests/oauth2/test__client.py
---- google_auth-2.41.1.orig/tests/oauth2/test__client.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/oauth2/test__client.py	2025-10-09 16:33:01.307275692 +0200
+diff -Nru google_auth-2.42.1.orig/tests/oauth2/test__client.py google_auth-2.42.1/tests/oauth2/test__client.py
+--- google_auth-2.42.1.orig/tests/oauth2/test__client.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/oauth2/test__client.py	2025-11-03 13:35:00.296759967 +0100
 @@ -18,7 +18,7 @@
  import os
  import urllib
@@ -70,9 +70,9 @@ diff -Nru google_auth-2.41.1.orig/tests/oauth2/test__client.py google_auth-2.41.
  import pytest  # type: ignore
  
  from google.auth import _helpers
-diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_credentials.py google_auth-2.41.1/tests/oauth2/test_credentials.py
---- google_auth-2.41.1.orig/tests/oauth2/test_credentials.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/oauth2/test_credentials.py	2025-10-09 16:33:01.311833584 +0200
+diff -Nru google_auth-2.42.1.orig/tests/oauth2/test_credentials.py google_auth-2.42.1/tests/oauth2/test_credentials.py
+--- google_auth-2.42.1.orig/tests/oauth2/test_credentials.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/oauth2/test_credentials.py	2025-11-03 13:35:00.301089606 +0100
 @@ -18,7 +18,7 @@
  import pickle
  import sys
@@ -82,9 +82,9 @@ diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_credentials.py google_auth-2
  import pytest  # type: ignore
  
  from google.auth import _helpers
-diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_gdch_credentials.py google_auth-2.41.1/tests/oauth2/test_gdch_credentials.py
---- google_auth-2.41.1.orig/tests/oauth2/test_gdch_credentials.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/oauth2/test_gdch_credentials.py	2025-10-09 16:33:01.303284190 +0200
+diff -Nru google_auth-2.42.1.orig/tests/oauth2/test_gdch_credentials.py google_auth-2.42.1/tests/oauth2/test_gdch_credentials.py
+--- google_auth-2.42.1.orig/tests/oauth2/test_gdch_credentials.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/oauth2/test_gdch_credentials.py	2025-11-03 13:35:00.289843323 +0100
 @@ -17,7 +17,7 @@
  import json
  import os
@@ -94,9 +94,9 @@ diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_gdch_credentials.py google_a
  import pytest  # type: ignore
  import requests
  
-diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_id_token.py google_auth-2.41.1/tests/oauth2/test_id_token.py
---- google_auth-2.41.1.orig/tests/oauth2/test_id_token.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/oauth2/test_id_token.py	2025-10-09 16:33:01.304877938 +0200
+diff -Nru google_auth-2.42.1.orig/tests/oauth2/test_id_token.py google_auth-2.42.1/tests/oauth2/test_id_token.py
+--- google_auth-2.42.1.orig/tests/oauth2/test_id_token.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/oauth2/test_id_token.py	2025-11-03 13:35:00.291748012 +0100
 @@ -15,7 +15,7 @@
  import json
  import os
@@ -106,9 +106,9 @@ diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_id_token.py google_auth-2.41
  import pytest  # type: ignore
  
  from google.auth import environment_vars
-diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_reauth.py google_auth-2.41.1/tests/oauth2/test_reauth.py
---- google_auth-2.41.1.orig/tests/oauth2/test_reauth.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/oauth2/test_reauth.py	2025-10-09 16:33:01.313655867 +0200
+diff -Nru google_auth-2.42.1.orig/tests/oauth2/test_reauth.py google_auth-2.42.1/tests/oauth2/test_reauth.py
+--- google_auth-2.42.1.orig/tests/oauth2/test_reauth.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/oauth2/test_reauth.py	2025-11-03 13:35:00.302935053 +0100
 @@ -14,7 +14,7 @@
  
  import copy
@@ -118,9 +118,9 @@ diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_reauth.py google_auth-2.41.1
  import pytest  # type: ignore
  
  from google.auth import exceptions
-diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_service_account.py google_auth-2.41.1/tests/oauth2/test_service_account.py
---- google_auth-2.41.1.orig/tests/oauth2/test_service_account.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/oauth2/test_service_account.py	2025-10-09 16:33:01.309943333 +0200
+diff -Nru google_auth-2.42.1.orig/tests/oauth2/test_service_account.py google_auth-2.42.1/tests/oauth2/test_service_account.py
+--- google_auth-2.42.1.orig/tests/oauth2/test_service_account.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/oauth2/test_service_account.py	2025-11-03 13:35:00.299318239 +0100
 @@ -16,7 +16,7 @@
  import json
  import os
@@ -130,9 +130,9 @@ diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_service_account.py google_au
  import pytest  # type: ignore
  
  from google.auth import _helpers
-diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_sts.py google_auth-2.41.1/tests/oauth2/test_sts.py
---- google_auth-2.41.1.orig/tests/oauth2/test_sts.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/oauth2/test_sts.py	2025-10-09 16:33:01.318275863 +0200
+diff -Nru google_auth-2.42.1.orig/tests/oauth2/test_sts.py google_auth-2.42.1/tests/oauth2/test_sts.py
+--- google_auth-2.42.1.orig/tests/oauth2/test_sts.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/oauth2/test_sts.py	2025-11-03 13:35:00.309483087 +0100
 @@ -16,7 +16,7 @@
  import json
  import urllib
@@ -142,18 +142,18 @@ diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_sts.py google_auth-2.41.1/te
  import pytest  # type: ignore
  
  from google.auth import exceptions
-diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_webauthn_handler_factory.py google_auth-2.41.1/tests/oauth2/test_webauthn_handler_factory.py
---- google_auth-2.41.1.orig/tests/oauth2/test_webauthn_handler_factory.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/oauth2/test_webauthn_handler_factory.py	2025-10-09 16:33:01.322302507 +0200
+diff -Nru google_auth-2.42.1.orig/tests/oauth2/test_webauthn_handler_factory.py google_auth-2.42.1/tests/oauth2/test_webauthn_handler_factory.py
+--- google_auth-2.42.1.orig/tests/oauth2/test_webauthn_handler_factory.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/oauth2/test_webauthn_handler_factory.py	2025-11-03 13:35:00.313186536 +0100
 @@ -1,4 +1,4 @@
 -import mock
 +from unittest import mock
  import pytest  # type: ignore
  
  from google.oauth2 import webauthn_handler
-diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_webauthn_handler.py google_auth-2.41.1/tests/oauth2/test_webauthn_handler.py
---- google_auth-2.41.1.orig/tests/oauth2/test_webauthn_handler.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/oauth2/test_webauthn_handler.py	2025-10-09 16:33:01.306514558 +0200
+diff -Nru google_auth-2.42.1.orig/tests/oauth2/test_webauthn_handler.py google_auth-2.42.1/tests/oauth2/test_webauthn_handler.py
+--- google_auth-2.42.1.orig/tests/oauth2/test_webauthn_handler.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/oauth2/test_webauthn_handler.py	2025-11-03 13:35:00.294618698 +0100
 @@ -1,7 +1,7 @@
  import json
  import struct
@@ -163,9 +163,9 @@ diff -Nru google_auth-2.41.1.orig/tests/oauth2/test_webauthn_handler.py google_a
  import pytest  # type: ignore
  
  from google.auth import exceptions
-diff -Nru google_auth-2.41.1.orig/tests/test_app_engine.py google_auth-2.41.1/tests/test_app_engine.py
---- google_auth-2.41.1.orig/tests/test_app_engine.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_app_engine.py	2025-10-09 16:33:01.292275458 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test_app_engine.py google_auth-2.42.1/tests/test_app_engine.py
+--- google_auth-2.42.1.orig/tests/test_app_engine.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_app_engine.py	2025-11-03 13:35:00.276012147 +0100
 @@ -14,7 +14,7 @@
  
  import datetime
@@ -175,9 +175,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test_app_engine.py google_auth-2.41.1/te
  import pytest  # type: ignore
  
  from google.auth import app_engine
-diff -Nru google_auth-2.41.1.orig/tests/test_aws.py google_auth-2.41.1/tests/test_aws.py
---- google_auth-2.41.1.orig/tests/test_aws.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_aws.py	2025-10-09 16:33:01.367366694 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test_aws.py google_auth-2.42.1/tests/test_aws.py
+--- google_auth-2.42.1.orig/tests/test_aws.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_aws.py	2025-11-03 13:35:00.366320202 +0100
 @@ -18,7 +18,7 @@
  import os
  import urllib.parse
@@ -187,9 +187,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test_aws.py google_auth-2.41.1/tests/tes
  import pytest  # type: ignore
  
  from google.auth import _helpers, external_account
-diff -Nru google_auth-2.41.1.orig/tests/test__cloud_sdk.py google_auth-2.41.1/tests/test__cloud_sdk.py
---- google_auth-2.41.1.orig/tests/test__cloud_sdk.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test__cloud_sdk.py	2025-10-09 16:33:01.298389910 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test__cloud_sdk.py google_auth-2.42.1/tests/test__cloud_sdk.py
+--- google_auth-2.42.1.orig/tests/test__cloud_sdk.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test__cloud_sdk.py	2025-11-03 13:35:00.282317740 +0100
 @@ -18,7 +18,7 @@
  import subprocess
  import sys
@@ -199,9 +199,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test__cloud_sdk.py google_auth-2.41.1/te
  import pytest  # type: ignore
  
  from google.auth import _cloud_sdk
-diff -Nru google_auth-2.41.1.orig/tests/test_credentials.py google_auth-2.41.1/tests/test_credentials.py
---- google_auth-2.41.1.orig/tests/test_credentials.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_credentials.py	2025-10-09 16:33:01.325753524 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test_credentials.py google_auth-2.42.1/tests/test_credentials.py
+--- google_auth-2.42.1.orig/tests/test_credentials.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_credentials.py	2025-11-03 13:35:00.317619651 +0100
 @@ -15,7 +15,7 @@
  import datetime
  import os
@@ -211,21 +211,21 @@ diff -Nru google_auth-2.41.1.orig/tests/test_credentials.py google_auth-2.41.1/t
  import pytest  # type: ignore
  
  from google.auth import _helpers
-diff -Nru google_auth-2.41.1.orig/tests/test__default.py google_auth-2.41.1/tests/test__default.py
---- google_auth-2.41.1.orig/tests/test__default.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test__default.py	2025-10-09 16:33:01.327583772 +0200
-@@ -15,7 +15,7 @@
- import json
+diff -Nru google_auth-2.42.1.orig/tests/test__default.py google_auth-2.42.1/tests/test__default.py
+--- google_auth-2.42.1.orig/tests/test__default.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test__default.py	2025-11-03 13:35:00.320730022 +0100
+@@ -16,7 +16,7 @@
  import os
+ import warnings
  
 -import mock
 +from unittest import mock
  import pytest  # type: ignore
  
  from google.auth import _default
-diff -Nru google_auth-2.41.1.orig/tests/test_downscoped.py google_auth-2.41.1/tests/test_downscoped.py
---- google_auth-2.41.1.orig/tests/test_downscoped.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_downscoped.py	2025-10-09 16:33:01.331194542 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test_downscoped.py google_auth-2.42.1/tests/test_downscoped.py
+--- google_auth-2.42.1.orig/tests/test_downscoped.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_downscoped.py	2025-11-03 13:35:00.325319000 +0100
 @@ -17,7 +17,7 @@
  import json
  import urllib
@@ -235,9 +235,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test_downscoped.py google_auth-2.41.1/te
  import pytest  # type: ignore
  
  from google.auth import _helpers
-diff -Nru google_auth-2.41.1.orig/tests/test__exponential_backoff.py google_auth-2.41.1/tests/test__exponential_backoff.py
---- google_auth-2.41.1.orig/tests/test__exponential_backoff.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test__exponential_backoff.py	2025-10-09 16:33:01.265788363 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test__exponential_backoff.py google_auth-2.42.1/tests/test__exponential_backoff.py
+--- google_auth-2.42.1.orig/tests/test__exponential_backoff.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test__exponential_backoff.py	2025-11-03 13:35:00.247630509 +0100
 @@ -12,7 +12,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -247,23 +247,23 @@ diff -Nru google_auth-2.41.1.orig/tests/test__exponential_backoff.py google_auth
  import pytest  # type: ignore
  
  from google.auth import _exponential_backoff
-diff -Nru google_auth-2.41.1.orig/tests/test_external_account_authorized_user.py google_auth-2.41.1/tests/test_external_account_authorized_user.py
---- google_auth-2.41.1.orig/tests/test_external_account_authorized_user.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_external_account_authorized_user.py	2025-10-09 16:33:01.329465297 +0200
-@@ -16,7 +16,7 @@
- import http.client as http_client
+diff -Nru google_auth-2.42.1.orig/tests/test_external_account_authorized_user.py google_auth-2.42.1/tests/test_external_account_authorized_user.py
+--- google_auth-2.42.1.orig/tests/test_external_account_authorized_user.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_external_account_authorized_user.py	2025-11-03 13:35:00.322985588 +0100
+@@ -17,7 +17,7 @@
  import json
+ import os
  
 -import mock
 +from unittest import mock
  import pytest  # type: ignore
  
- from google.auth import exceptions
-diff -Nru google_auth-2.41.1.orig/tests/test_external_account.py google_auth-2.41.1/tests/test_external_account.py
---- google_auth-2.41.1.orig/tests/test_external_account.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_external_account.py	2025-10-09 16:33:01.267572263 +0200
-@@ -17,7 +17,7 @@
- import json
+ from google.auth import environment_vars
+diff -Nru google_auth-2.42.1.orig/tests/test_external_account.py google_auth-2.42.1/tests/test_external_account.py
+--- google_auth-2.42.1.orig/tests/test_external_account.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_external_account.py	2025-11-03 13:35:00.249316773 +0100
+@@ -18,7 +18,7 @@
+ import os
  import urllib
  
 -import mock
@@ -271,9 +271,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test_external_account.py google_auth-2.4
  import pytest  # type: ignore
  
  from google.auth import _helpers
-diff -Nru google_auth-2.41.1.orig/tests/test_iam.py google_auth-2.41.1/tests/test_iam.py
---- google_auth-2.41.1.orig/tests/test_iam.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_iam.py	2025-10-09 16:33:01.339034329 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test_iam.py google_auth-2.42.1/tests/test_iam.py
+--- google_auth-2.42.1.orig/tests/test_iam.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_iam.py	2025-11-03 13:35:00.335121893 +0100
 @@ -17,7 +17,7 @@
  import http.client as http_client
  import json
@@ -283,9 +283,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test_iam.py google_auth-2.41.1/tests/tes
  import pytest  # type: ignore
  
  from google.auth import _helpers
-diff -Nru google_auth-2.41.1.orig/tests/test_identity_pool.py google_auth-2.41.1/tests/test_identity_pool.py
---- google_auth-2.41.1.orig/tests/test_identity_pool.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_identity_pool.py	2025-10-09 16:33:01.340643557 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test_identity_pool.py google_auth-2.42.1/tests/test_identity_pool.py
+--- google_auth-2.42.1.orig/tests/test_identity_pool.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_identity_pool.py	2025-11-03 13:35:00.338319381 +0100
 @@ -19,7 +19,7 @@
  import os
  import urllib
@@ -295,9 +295,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test_identity_pool.py google_auth-2.41.1
  from OpenSSL import crypto
  import pytest  # type: ignore
  
-diff -Nru google_auth-2.41.1.orig/tests/test_impersonated_credentials.py google_auth-2.41.1/tests/test_impersonated_credentials.py
---- google_auth-2.41.1.orig/tests/test_impersonated_credentials.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_impersonated_credentials.py	2025-10-09 16:33:01.363456113 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test_impersonated_credentials.py google_auth-2.42.1/tests/test_impersonated_credentials.py
+--- google_auth-2.42.1.orig/tests/test_impersonated_credentials.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_impersonated_credentials.py	2025-11-03 13:35:00.362320085 +0100
 @@ -18,7 +18,7 @@
  import json
  import os
@@ -307,9 +307,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test_impersonated_credentials.py google_
  import pytest  # type: ignore
  
  from google.auth import _helpers
-diff -Nru google_auth-2.41.1.orig/tests/test_jwt.py google_auth-2.41.1/tests/test_jwt.py
---- google_auth-2.41.1.orig/tests/test_jwt.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_jwt.py	2025-10-09 16:33:01.343553205 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test_jwt.py google_auth-2.42.1/tests/test_jwt.py
+--- google_auth-2.42.1.orig/tests/test_jwt.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_jwt.py	2025-11-03 13:35:00.340842665 +0100
 @@ -17,7 +17,7 @@
  import json
  import os
@@ -319,9 +319,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test_jwt.py google_auth-2.41.1/tests/tes
  import pytest  # type: ignore
  
  from google.auth import _helpers
-diff -Nru google_auth-2.41.1.orig/tests/test_metrics.py google_auth-2.41.1/tests/test_metrics.py
---- google_auth-2.41.1.orig/tests/test_metrics.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_metrics.py	2025-10-09 16:33:01.301578148 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test_metrics.py google_auth-2.42.1/tests/test_metrics.py
+--- google_auth-2.42.1.orig/tests/test_metrics.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_metrics.py	2025-11-03 13:35:00.287107573 +0100
 @@ -14,7 +14,7 @@
  
  import platform
@@ -331,9 +331,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test_metrics.py google_auth-2.41.1/tests
  
  from google.auth import metrics
  from google.auth import version
-diff -Nru google_auth-2.41.1.orig/tests/test__oauth2client.py google_auth-2.41.1/tests/test__oauth2client.py
---- google_auth-2.41.1.orig/tests/test__oauth2client.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test__oauth2client.py	2025-10-09 16:33:01.294982055 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test__oauth2client.py google_auth-2.42.1/tests/test__oauth2client.py
+--- google_auth-2.42.1.orig/tests/test__oauth2client.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test__oauth2client.py	2025-11-03 13:35:00.277733889 +0100
 @@ -17,7 +17,7 @@
  import os
  import sys
@@ -343,9 +343,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test__oauth2client.py google_auth-2.41.1
  import pytest  # type: ignore
  
  try:
-diff -Nru google_auth-2.41.1.orig/tests/test_pluggable.py google_auth-2.41.1/tests/test_pluggable.py
---- google_auth-2.41.1.orig/tests/test_pluggable.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test_pluggable.py	2025-10-09 16:33:01.365420977 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test_pluggable.py google_auth-2.42.1/tests/test_pluggable.py
+--- google_auth-2.42.1.orig/tests/test_pluggable.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test_pluggable.py	2025-11-03 13:35:00.364120814 +0100
 @@ -16,7 +16,7 @@
  import os
  import subprocess
@@ -355,9 +355,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test_pluggable.py google_auth-2.41.1/tes
  import pytest  # type: ignore
  
  from google.auth import exceptions
-diff -Nru google_auth-2.41.1.orig/tests/test__refresh_worker.py google_auth-2.41.1/tests/test__refresh_worker.py
---- google_auth-2.41.1.orig/tests/test__refresh_worker.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/test__refresh_worker.py	2025-10-09 16:33:01.356329742 +0200
+diff -Nru google_auth-2.42.1.orig/tests/test__refresh_worker.py google_auth-2.42.1/tests/test__refresh_worker.py
+--- google_auth-2.42.1.orig/tests/test__refresh_worker.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/test__refresh_worker.py	2025-11-03 13:35:00.355629928 +0100
 @@ -17,7 +17,7 @@
  import threading
  import time
@@ -367,9 +367,9 @@ diff -Nru google_auth-2.41.1.orig/tests/test__refresh_worker.py google_auth-2.41
  import pytest  # type: ignore
  
  from google.auth import _refresh_worker, credentials, exceptions
-diff -Nru google_auth-2.41.1.orig/tests/transport/aio/test_aiohttp.py google_auth-2.41.1/tests/transport/aio/test_aiohttp.py
---- google_auth-2.41.1.orig/tests/transport/aio/test_aiohttp.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/transport/aio/test_aiohttp.py	2025-10-09 16:33:01.276293895 +0200
+diff -Nru google_auth-2.42.1.orig/tests/transport/aio/test_aiohttp.py google_auth-2.42.1/tests/transport/aio/test_aiohttp.py
+--- google_auth-2.42.1.orig/tests/transport/aio/test_aiohttp.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/transport/aio/test_aiohttp.py	2025-11-03 13:35:00.258192110 +0100
 @@ -15,7 +15,7 @@
  import asyncio
  
@@ -379,9 +379,9 @@ diff -Nru google_auth-2.41.1.orig/tests/transport/aio/test_aiohttp.py google_aut
  import pytest  # type: ignore
  import pytest_asyncio  # type: ignore
  
-diff -Nru google_auth-2.41.1.orig/tests/transport/aio/test_sessions.py google_auth-2.41.1/tests/transport/aio/test_sessions.py
---- google_auth-2.41.1.orig/tests/transport/aio/test_sessions.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/transport/aio/test_sessions.py	2025-10-09 16:33:01.274531697 +0200
+diff -Nru google_auth-2.42.1.orig/tests/transport/aio/test_sessions.py google_auth-2.42.1/tests/transport/aio/test_sessions.py
+--- google_auth-2.42.1.orig/tests/transport/aio/test_sessions.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/transport/aio/test_sessions.py	2025-11-03 13:35:00.256483423 +0100
 @@ -16,7 +16,7 @@
  from typing import AsyncGenerator
  
@@ -391,9 +391,9 @@ diff -Nru google_auth-2.41.1.orig/tests/transport/aio/test_sessions.py google_au
  import pytest  # type: ignore
  
  from google.auth.aio.credentials import AnonymousCredentials
-diff -Nru google_auth-2.41.1.orig/tests/transport/test__custom_tls_signer.py google_auth-2.41.1/tests/transport/test__custom_tls_signer.py
---- google_auth-2.41.1.orig/tests/transport/test__custom_tls_signer.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/transport/test__custom_tls_signer.py	2025-10-09 16:33:01.277921257 +0200
+diff -Nru google_auth-2.42.1.orig/tests/transport/test__custom_tls_signer.py google_auth-2.42.1/tests/transport/test__custom_tls_signer.py
+--- google_auth-2.42.1.orig/tests/transport/test__custom_tls_signer.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/transport/test__custom_tls_signer.py	2025-11-03 13:35:00.259865401 +0100
 @@ -15,7 +15,7 @@
  import ctypes
  import os
@@ -403,9 +403,9 @@ diff -Nru google_auth-2.41.1.orig/tests/transport/test__custom_tls_signer.py goo
  import pytest  # type: ignore
  from requests.packages.urllib3.util.ssl_ import create_urllib3_context  # type: ignore
  import urllib3.contrib.pyopenssl  # type: ignore
-diff -Nru google_auth-2.41.1.orig/tests/transport/test_grpc.py google_auth-2.41.1/tests/transport/test_grpc.py
---- google_auth-2.41.1.orig/tests/transport/test_grpc.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/transport/test_grpc.py	2025-10-09 16:33:01.279598354 +0200
+diff -Nru google_auth-2.42.1.orig/tests/transport/test_grpc.py google_auth-2.42.1/tests/transport/test_grpc.py
+--- google_auth-2.42.1.orig/tests/transport/test_grpc.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/transport/test_grpc.py	2025-11-03 13:35:00.261543389 +0100
 @@ -16,7 +16,7 @@
  import os
  import time
@@ -415,9 +415,9 @@ diff -Nru google_auth-2.41.1.orig/tests/transport/test_grpc.py google_auth-2.41.
  import pytest  # type: ignore
  
  from google.auth import _helpers
-diff -Nru google_auth-2.41.1.orig/tests/transport/test__mtls_helper.py google_auth-2.41.1/tests/transport/test__mtls_helper.py
---- google_auth-2.41.1.orig/tests/transport/test__mtls_helper.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/transport/test__mtls_helper.py	2025-10-09 16:33:01.282968868 +0200
+diff -Nru google_auth-2.42.1.orig/tests/transport/test__mtls_helper.py google_auth-2.42.1/tests/transport/test__mtls_helper.py
+--- google_auth-2.42.1.orig/tests/transport/test__mtls_helper.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/transport/test__mtls_helper.py	2025-11-03 13:35:00.264970803 +0100
 @@ -15,7 +15,7 @@
  import os
  import re
@@ -427,9 +427,9 @@ diff -Nru google_auth-2.41.1.orig/tests/transport/test__mtls_helper.py google_au
  from OpenSSL import crypto
  import pytest  # type: ignore
  
-diff -Nru google_auth-2.41.1.orig/tests/transport/test_mtls.py google_auth-2.41.1/tests/transport/test_mtls.py
---- google_auth-2.41.1.orig/tests/transport/test_mtls.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/transport/test_mtls.py	2025-10-09 16:33:01.284700418 +0200
+diff -Nru google_auth-2.42.1.orig/tests/transport/test_mtls.py google_auth-2.42.1/tests/transport/test_mtls.py
+--- google_auth-2.42.1.orig/tests/transport/test_mtls.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/transport/test_mtls.py	2025-11-03 13:35:00.266704768 +0100
 @@ -12,7 +12,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -439,9 +439,9 @@ diff -Nru google_auth-2.41.1.orig/tests/transport/test_mtls.py google_auth-2.41.
  import pytest  # type: ignore
  
  from google.auth import exceptions
-diff -Nru google_auth-2.41.1.orig/tests/transport/test_requests.py google_auth-2.41.1/tests/transport/test_requests.py
---- google_auth-2.41.1.orig/tests/transport/test_requests.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/transport/test_requests.py	2025-10-09 16:33:01.287219214 +0200
+diff -Nru google_auth-2.42.1.orig/tests/transport/test_requests.py google_auth-2.42.1/tests/transport/test_requests.py
+--- google_auth-2.42.1.orig/tests/transport/test_requests.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/transport/test_requests.py	2025-11-03 13:35:00.269317359 +0100
 @@ -19,7 +19,7 @@
  import sys
  
@@ -451,9 +451,9 @@ diff -Nru google_auth-2.41.1.orig/tests/transport/test_requests.py google_auth-2
  import OpenSSL
  import pytest  # type: ignore
  import requests
-diff -Nru google_auth-2.41.1.orig/tests/transport/test_urllib3.py google_auth-2.41.1/tests/transport/test_urllib3.py
---- google_auth-2.41.1.orig/tests/transport/test_urllib3.py	2025-10-01 00:46:33.000000000 +0200
-+++ google_auth-2.41.1/tests/transport/test_urllib3.py	2025-10-09 16:33:01.272797642 +0200
+diff -Nru google_auth-2.42.1.orig/tests/transport/test_urllib3.py google_auth-2.42.1/tests/transport/test_urllib3.py
+--- google_auth-2.42.1.orig/tests/transport/test_urllib3.py	2025-10-30 17:37:50.000000000 +0100
++++ google_auth-2.42.1/tests/transport/test_urllib3.py	2025-11-03 13:35:00.254724090 +0100
 @@ -16,7 +16,7 @@
  import os
  import sys

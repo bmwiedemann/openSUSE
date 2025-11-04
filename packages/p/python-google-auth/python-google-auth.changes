@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  3 12:35:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.42.1
+  * Catch ValueError for json.loads() (#1842)
+- from version 2.42.0
+  * Add trust boundary support for external accounts. (#1809)
+  * Read scopes from ADC json for impersoanted cred (#1820)
+- Refresh python-google-auth-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Oct  9 14:33:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.41.1

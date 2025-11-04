@@ -612,4 +612,19 @@
     <comment></comment>
     <requestid>1311034</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>6a2dc6b2882e989285d87cad69cf22ac</srcmd5>
+    <version>2.42.1</version>
+    <time>1762278039</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315294 from glaubitz
+
+- Update to version 2.42.1
+    * Catch ValueError for json.loads() (#1842)
+  - from version 2.42.0
+    * Add trust boundary support for external accounts. (#1809)
+    * Read scopes from ADC json for impersoanted cred (#1820)
+  - Refresh python-google-auth-no-mock.patch</comment>
+    <requestid>1315328</requestid>
+  </revision>
 </revisionlist>
