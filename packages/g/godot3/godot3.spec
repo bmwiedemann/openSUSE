@@ -30,7 +30,7 @@
 %define version_text This is branch 3.x with version specific file locations
 
 Name:           %{original_name}%{branch}
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -90,7 +90,7 @@ BuildRequires:  pkgconfig(freetype2) >= 2.10.2
 # Using bundled freetype2 throws build errors, if
 #   we don't use bundled libpng and zlib as well.
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  mbedtls-devel < 3
+BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig(bullet) >= 2.90
 BuildRequires:  pkgconfig(libwslay)
 BuildRequires:  pkgconfig(libzstd)
@@ -102,7 +102,7 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  pkgconfig(libwslay)
 %if 0%{?sle_version} >= 150200
-BuildRequires:  mbedtls-devel < 3
+BuildRequires:  mbedtls-devel
 %endif
 %endif
 %endif
@@ -175,7 +175,7 @@ Provides:       bundled(libpng) = 1.6.43
 Provides:       bundled(libzstd) = 1.5.5
 Provides:       bundled(zlib) = 1.3.1
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.28.10
+Provides:       bundled(mbedtls) = 3.6.5
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay

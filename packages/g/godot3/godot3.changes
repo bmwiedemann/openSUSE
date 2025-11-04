@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 30 12:00:00 UTC 2025 - cunix@mail.de
+
+- Update to 3.6.2
+  * Release announcement: https://godotengine.org/article/maintenance-release-godot-3-6-2/
+  * Fix inability to assign script after clearing
+  * use mbedtls version 3
+  * and more: https://godotengine.github.io/godot-interactive-changelog/#3.6.2
+
+- "certs_fallback.patch" rebased
+
+-------------------------------------------------------------------
 Fri Jun 27 12:00:00 UTC 2025 - cunix@mail.de
 
 - Update to 3.6.1
