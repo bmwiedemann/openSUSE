@@ -1,0 +1,46 @@
+Index: line_profiler-5.0.0/line_profiler/cli_utils.py
+===================================================================
+--- line_profiler-5.0.0.orig/line_profiler/cli_utils.py
++++ line_profiler-5.0.0/line_profiler/cli_utils.py
+@@ -188,9 +188,7 @@ def get_python_executable():
+             Command or path thereto corresponding to
+             :py:data:`sys.executable`.
+     """
+-    if os.path.samefile(shutil.which('python'), sys.executable):
+-        return 'python'
+-    elif os.path.samefile(shutil.which('python3'), sys.executable):
++    if os.path.samefile(shutil.which('python3'), sys.executable):
+         return 'python3'
+     else:
+         return short_string_path(sys.executable)
+Index: line_profiler-5.0.0/tests/test_kernprof.py
+===================================================================
+--- line_profiler-5.0.0.orig/tests/test_kernprof.py
++++ line_profiler-5.0.0/tests/test_kernprof.py
+@@ -184,7 +184,7 @@ def test_kernprof_sys_restoration(capsys
+       {'^Output to stdout': True,
+        r"^Wrote .* '.*script\.py\.lprof'": True,
+        r'^Inspect results with:''\n'
+-       r'python -m line_profiler .*script\.py\.lprof': True,
++       r'.*python.* -m line_profiler .*script\.py\.lprof': True,
+        r'line_profiler\.autoprofile\.autoprofile'
+        r'\.run\(\n(?:.+,\n)*.*\)': False,
+        r'^\[kernprof .*\]': False,
+@@ -194,7 +194,7 @@ def test_kernprof_sys_restoration(capsys
+       {'^Output to stdout': True,
+        r"^Wrote .* '.*script\.py\.lprof'": True,
+        r'^Inspect results with:''\n'
+-       r'python -m line_profiler .*script\.py\.lprof': False,
++       r'.*python.* -m line_profiler .*script\.py\.lprof': False,
+        r'line_profiler\.autoprofile\.autoprofile'
+        r'\.run\(\n(?:.+,\n)*.*\)': False,
+        r'^\[kernprof .*\]': False,
+@@ -204,7 +204,7 @@ def test_kernprof_sys_restoration(capsys
+       {'^Output to stdout': True,
+        r"^\[kernprof .*\] Wrote .* '.*script\.py\.lprof'": True,
+        r'Inspect results with:''\n'
+-       r'python -m line_profiler .*script\.py\.lprof': False,
++       r'.*python.* -m line_profiler .*script\.py\.lprof': False,
+        r'line_profiler\.autoprofile\.autoprofile'
+        r'\.run\(\n(?:.+,\n)*.*\)': True,
+        r'^Function: main': True},

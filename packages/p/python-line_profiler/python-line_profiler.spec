@@ -1,7 +1,7 @@
 #
 # spec file for package python-line_profiler
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-line_profiler
-Version:        4.2.0
+Version:        5.0.0
 Release:        0
 Summary:        Line-by-line profiler
 License:        BSD-3-Clause
 URL:            https://github.com/pyutils/line_profiler
 Source:         https://files.pythonhosted.org/packages/source/l/line_profiler/line_profiler-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE We do not ship bare python, so don't look for it
+Patch0:         no-python-in-path.patch
+# PATCH-FIX-UPSTREAM gh#pyutils/line_profiler#369
+Patch1:         support-python314.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ipython}
@@ -74,9 +78,11 @@ sed -i '1{/env python/d}' line_profiler/line_profiler.py kernprof.py
 %python_uninstall_alternative kernprof
 
 %check
-# test_cli needs ubelt, which we don't have and which is needed just for tests
-# test_assumed_noop removed upstream, stop skipping it with 4.2.0.
-%pytest_arch -k "not (test_cli or test_assumed_noop)" tests
+export PATH=%{buildroot}%{_bindir}:$PATH
+mv line_profiler line_profiler-do-not-import
+# cython_examples not shipped
+%pytest_arch -k 'not cython_source'
+mv line_profiler-do-not-import line_profiler
 
 %files %{python_files}
 %doc README.rst

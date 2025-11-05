@@ -1,0 +1,258 @@
+From 0b32904897bff5d91886cf2476e3bb98638cb31e Mon Sep 17 00:00:00 2001
+From: joncrall <erotemic@gmail.com>
+Date: Tue, 29 Jul 2025 18:35:33 -0400
+Subject: [PATCH 1/9] Update xcookie
+
+---
+ .github/workflows/tests.yml | 46 ++++++++++++++++++++++++-------------
+ docs/source/conf.py         |  6 +++--
+ 2 files changed, 34 insertions(+), 18 deletions(-)
+
+Index: line_profiler-5.0.0/pyproject.toml
+===================================================================
+--- line_profiler-5.0.0.orig/pyproject.toml
++++ line_profiler-5.0.0/pyproject.toml
+@@ -30,7 +30,7 @@ omit =[
+ ]
+ 
+ [tool.cibuildwheel]
+-build = "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
++build = "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-* cp314-*"
+ skip = ["*-win32", "cp313-musllinux_i686"]
+ build-frontend = "build"
+ build-verbosity = 1
+Index: line_profiler-5.0.0/requirements/build.txt
+===================================================================
+--- line_profiler-5.0.0.orig/requirements/build.txt
++++ line_profiler-5.0.0/requirements/build.txt
+@@ -7,7 +7,7 @@ scikit-build>=0.11.1
+ cmake>=3.21.2
+ ninja>=1.10.2
+ 
+-cibuildwheel>=2.11.2    ; python_version < '4.0'  and python_version >= '3.11'    # Python 3.11+
+-cibuildwheel>=2.11.2    ; python_version < '3.11' and python_version >= '3.10'    # Python 3.10
+-cibuildwheel>=2.11.2    ; python_version < '3.10' and python_version >= '3.9'     # Python 3.9
+-cibuildwheel>=2.11.2    ; python_version < '3.9'  and python_version >= '3.8'     # Python 3.8
++cibuildwheel>=3.1.2    ; python_version < '4.0'  and python_version >= '3.11'    # Python 3.11+
++cibuildwheel>=3.1.2    ; python_version < '3.11' and python_version >= '3.10'    # Python 3.10
++cibuildwheel>=3.1.2    ; python_version < '3.10' and python_version >= '3.9'     # Python 3.9
++cibuildwheel>=3.1.2    ; python_version < '3.9'  and python_version >= '3.8'     # Python 3.8
+Index: line_profiler-5.0.0/setup.py
+===================================================================
+--- line_profiler-5.0.0.orig/setup.py
++++ line_profiler-5.0.0/setup.py
+@@ -304,6 +304,7 @@ if __name__ == '__main__':
+         'Programming Language :: Python :: 3.11',
+         'Programming Language :: Python :: 3.12',
+         'Programming Language :: Python :: 3.13',
++        'Programming Language :: Python :: 3.14',
+         'Programming Language :: Python :: Implementation :: CPython',
+         'Topic :: Software Development',
+     ]
+Index: line_profiler-5.0.0/line_profiler/_line_profiler.pyx
+===================================================================
+--- line_profiler-5.0.0.orig/line_profiler/_line_profiler.pyx
++++ line_profiler-5.0.0/line_profiler/_line_profiler.pyx
+@@ -260,7 +260,7 @@ cpdef _code_replace(func, co_code):
+         code = func.__func__.__code__
+     if hasattr(code, 'replace'):
+         # python 3.8+
+-        code = code.replace(co_code=co_code)
++        code = _copy_local_sysmon_events(code, code.replace(co_code=co_code))
+     else:
+         # python <3.8
+         co = code
+@@ -273,6 +273,30 @@ cpdef _code_replace(func, co_code):
+     return code
+ 
+ 
++cpdef _copy_local_sysmon_events(old_code, new_code):
++    """
++    Copy the local events from ``old_code`` over to ``new_code`` where
++    appropriate.
++
++    Returns:
++        code: ``new_code``
++    """
++    try:
++        mon = sys.monitoring
++    except AttributeError:  # Python < 3.12
++        return new_code
++    # Tool ids are integers in the range 0 to 5 inclusive.
++    # https://docs.python.org/3/library/sys.monitoring.html#tool-identifiers
++    NUM_TOOLS = 6  
++    for tool_id in range(NUM_TOOLS):
++        try:
++            events = mon.get_local_events(tool_id, old_code)
++            mon.set_local_events(tool_id, new_code, events)
++        except ValueError:  # Tool ID not in use
++            pass
++    return new_code
++
++
+ cpdef int _patch_events(int events, int before, int after):
+     """
+     Patch ``events`` based on the differences between ``before`` and
+@@ -370,22 +394,26 @@ cdef class _SysMonitoringState:
+         mon = sys.monitoring
+ 
+         # Set prior state
++        # Note: in 3.14.0a1+, calling `sys.monitoring.free_tool_id()`
++        # also calls `.clear_tool_id()`, causing existing callbacks and
++        # code-object-local events to be wiped... so don't call free.
++        # this does have the side effect of not overriding the active
++        # profiling tool name if one is already in use, but it's
++        # probably better this way
+         self.name = mon.get_tool(self.tool_id)
+         if self.name is None:
+             self.events = mon.events.NO_EVENTS
++            mon.use_tool_id(self.tool_id, 'line_profiler')
+         else:
+             self.events = mon.get_events(self.tool_id)
+-            mon.free_tool_id(self.tool_id)
+-        mon.use_tool_id(self.tool_id, 'line_profiler')
+         mon.set_events(self.tool_id, self.events | self.line_tracing_events)
+ 
+-        # Register tracebacks
+-        for event_id, callback in [
+-                (mon.events.LINE, handle_line),
+-                (mon.events.PY_RETURN, handle_return),
+-                (mon.events.PY_YIELD, handle_yield),
+-                (mon.events.RAISE, handle_raise),
+-                (mon.events.RERAISE, handle_reraise)]:
++        # Register tracebacks and remember the existing ones
++        for event_id, callback in [(mon.events.LINE, handle_line),
++                                   (mon.events.PY_RETURN, handle_return),
++                                   (mon.events.PY_YIELD, handle_yield),
++                                   (mon.events.RAISE, handle_raise),
++                                   (mon.events.RERAISE, handle_reraise)]:
+             self.callbacks[event_id] = mon.register_callback(
+                 self.tool_id, event_id, callback)
+ 
+@@ -394,12 +422,11 @@ cdef class _SysMonitoringState:
+         cdef dict wrapped_callbacks = self.callbacks
+ 
+         # Restore prior state
+-        mon.free_tool_id(self.tool_id)
+-        if self.name is not None:
+-            mon.use_tool_id(self.tool_id, self.name)
+-            mon.set_events(self.tool_id, self.events)
+-            self.name = None
+-            self.events = mon.events.NO_EVENTS
++        mon.set_events(self.tool_id, self.events)
++        if self.name is None:
++            mon.free_tool_id(self.tool_id)
++        self.name = None
++        self.events = mon.events.NO_EVENTS
+ 
+         # Reset tracebacks
+         while wrapped_callbacks:
+@@ -1118,7 +1145,7 @@ datamodel.html#user-defined-functions
+                 # function (on some instance);
+                 # (re-)pad with no-op
+                 co_code = base_co_code + NOP_BYTES * npad
+-                code = _code_replace(func, co_code=co_code)
++                code = _code_replace(func, co_code)
+                 try:
+                     func.__code__ = code
+                 except AttributeError as e:
+@@ -1155,6 +1182,9 @@ datamodel.html#user-defined-functions
+                 code_hashes.append(code_hash)
+             # We can't replace the code object on Cython functions, but
+             # we can *store* a copy with the correct metadata
++            # Note: we don't use `_copy_local_sysmon_events()` here
++            # because Cython shim code objects don't support local
++            # events
+             code = code.replace(co_filename=cython_source)
+             profilers_to_update = {self}
+         # Update `._c_code_map` and `.code_hash_map` with the new line
+Index: line_profiler-5.0.0/tests/test_sys_monitoring.py
+===================================================================
+--- line_profiler-5.0.0.orig/tests/test_sys_monitoring.py
++++ line_profiler-5.0.0/tests/test_sys_monitoring.py
+@@ -6,7 +6,7 @@ from functools import partial
+ from io import StringIO
+ from itertools import count
+ from types import CodeType, ModuleType
+-from typing import (Any, Optional, Union,
++from typing import (Any, Optional, Union, Literal,
+                     Callable, Generator,
+                     Dict, FrozenSet, Tuple,
+                     ClassVar)
+@@ -754,3 +754,76 @@ def _test_callback_toggle_local_events_h
+     assert get_loop_hits() == nloop_before_disabling + nloop_after_reenabling
+ 
+     return n
++
++
++@pytest.mark.parametrize('profile_when', ['before', 'after'])
++def test_local_event_preservation(
++        profile_when: Literal['before', 'after']) -> None:
++    """
++    Check that existing :py:mod:`sys.monitoring` code-local events are
++    preserved when a profiler swaps out the callable's code object.
++    """
++    prof = LineProfiler(wrap_trace=True)
++
++    @prof
++    def func0(n: int) -> int:
++        """
++        This function compiles down to the same bytecode as `func()` and
++        ensure that `prof` does bytecode padding with the latter later.
++        """
++        x = 0
++        for n in range(1, n + 1):
++            x += n
++        return x
++
++    def func(n: int) -> int:
++        x = 0
++        for n in range(1, n + 1):
++            x += n  # Loop body
++        return x
++
++    def profile() -> None:
++        nonlocal code
++        nonlocal func
++        orig_code = func.__code__
++        orig_func, func = func, prof(func)
++        code = orig_func.__code__
++        assert code is not orig_code, (
++            '`line_profiler` didn\'t overwrite the function\'s code object')
++
++    lines, first_lineno = inspect.getsourcelines(func)
++    lineno_loop = first_lineno + next(
++        offset for offset, line in enumerate(lines)
++        if line.rstrip().endswith('# Loop body'))
++    names = {func.__name__, func.__qualname__}
++    code = func.__code__
++    callback = LineCallback(lambda code, _: code.co_name in names)
++
++    n = 17
++    try:
++        with ExitStack() as stack:
++            stack.enter_context(restore_events())
++            stack.enter_context(restore_events(code=code))
++            # Disable global line events, and enable local line events
++            disable_line_events()
++            if profile_when == 'before':
++                profile()
++            enable_line_events(code)
++            if profile_when != 'before':
++                # If we're here, the code object of `func()` is swapped
++                # out after code-local events have been registered to it
++                profile()
++            assert MON.get_current_callback() is callback
++            assert func(n) == n * (n + 1) // 2
++            assert MON.get_current_callback() is callback
++            print(callback.nhits)
++            assert callback.nhits[_line_profiler.label(code)][lineno_loop] == n
++    finally:
++        with StringIO() as sio:
++            prof.print_stats(sio)
++            output = sio.getvalue()
++        print(output)
++    line = next(line for line in output.splitlines()
++                if line.endswith('# Loop body'))
++    nhits = int(line.split()[1])
++    assert nhits == n
