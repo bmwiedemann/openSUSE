@@ -1,7 +1,7 @@
 #
 # spec file for package python-html5lib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,11 @@ Patch0:         pytest6.patch
 Patch1:         python-html5lib-no-mock.patch
 # PATCH-FIX-UPSTREAM https://github.com/html5lib/html5lib-python/pull/570 adapt testsuite to changes in pytest 7.4
 Patch2:         pytest74.patch
+# PATCH-FIX-UPSTREAM gh#html5lib/html5lib-python#589
+Patch3:         support-python314.patch
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-expect}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  4 00:18:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python314.patch:
+  * Don't use ast.Str to parse the version if it isn't available.
+
+-------------------------------------------------------------------
 Wed May 28 11:27:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

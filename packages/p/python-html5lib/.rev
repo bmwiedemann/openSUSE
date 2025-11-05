@@ -229,4 +229,13 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1280836</requestid>
   </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>d5da92580218abdf37e449ce6df6e964</srcmd5>
+    <version>1.1</version>
+    <time>1762355870</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Don't use ast.Str to parse the version if it isn't available.</comment>
+    <requestid>1315393</requestid>
+  </revision>
 </revisionlist>
