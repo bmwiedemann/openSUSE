@@ -25,4 +25,20 @@
 - Fix missing dependency on lua-macros (boo#1205612)</comment>
     <requestid>1061052</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3fc358e042d23215fa5eefbdd01bfc56</srcmd5>
+    <version>0.7+git20230101.756ffad</version>
+    <time>1762355909</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Add fix_tests.patch (gh#Phrogz/SLAXML!22) to improve parser
+  strictness and error handling. Goal was originally to make the
+  test suite to pass even on LuaJIT.
+
+- Update to version 0.7+git20230101.756ffad:
+  * Indicate compatibility with 5.1-5.4, inclusive
+  * Update rockspec for v0.8.1</comment>
+    <requestid>1315193</requestid>
+  </revision>
 </revisionlist>

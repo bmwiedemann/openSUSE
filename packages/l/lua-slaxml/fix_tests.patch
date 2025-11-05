@@ -1,0 +1,75 @@
+---
+ slaxml.lua    |   13 +++++++++++--
+ test/test.lua |    9 +++++++--
+ 2 files changed, 18 insertions(+), 4 deletions(-)
+
+Index: lua-slaxml-0.7+git20230101.756ffad/slaxml.lua
+===================================================================
+--- lua-slaxml-0.7+git20230101.756ffad.orig/slaxml.lua	2025-10-13 12:17:02.427586573 +0200
++++ lua-slaxml-0.7+git20230101.756ffad/slaxml.lua	2025-10-13 12:17:19.072469712 +0200
+@@ -74,7 +74,13 @@
+ 	end
+ 	local entityMap  = { ["lt"]="<", ["gt"]=">", ["amp"]="&", ["quot"]='"', ["apos"]="'" }
+ 	local entitySwap = function(orig,n,s) return entityMap[s] or n=="#" and utf8(tonumber('0'..s)) or orig end
+-	local function unescape(str) return gsub( str, '(&(#?)([%d%a]+);)', entitySwap ) end
++	local function unescape(str)
++	    local s = gsub(str, '(&(#?)([%d%a]+);)', "") -- remove all valid entities
++	    if find(s, '&') then
++	        error("Invalid ampersand in string: "..str)
++	    end
++	    return gsub( str, '(&(#?)([%d%a]+);)', entitySwap )
++	end
+ 
+ 	local function finishText()
+ 		if first>textStart and self._call.text then
+@@ -135,7 +141,7 @@
+ 				for i=#nsStack,1,-1 do if nsStack[i]['!'] then currentElement[2] = nsStack[i]['!']; break end end
+ 			end
+ 			currentAttributeCt = 0
+-			push(nsStack,{})
++			push(nsStack,{['__name__']=currentElement[1]})
+ 			return true
+ 		end
+ 	end
+@@ -153,6 +159,8 @@
+ 				if first then
+ 					pos = last+1
+ 					match2 = unescape(match2)
++				else
++					error("Attribute value must be quoted for attribute: "..match1)
+ 				end
+ 			end
+ 		end
+@@ -225,6 +233,7 @@
+ 		end
+ 		if first then
+ 			finishText()
++			if nsStack[#nsStack]['__name__'] ~= match1 then error("Mismatched closing tag: expected "..nsStack[#nsStack]['__name__']..", got "..match1) end
+ 			if self._call.closeElement then self._call.closeElement(match1,nsURI) end
+ 			pos = last+1
+ 			textStart = pos
+Index: lua-slaxml-0.7+git20230101.756ffad/test/test.lua
+===================================================================
+--- lua-slaxml-0.7+git20230101.756ffad.orig/test/test.lua	2025-10-13 12:17:02.428324592 +0200
++++ lua-slaxml-0.7+git20230101.756ffad/test/test.lua	2025-10-13 12:17:19.072959653 +0200
+@@ -1,5 +1,10 @@
+ package.path = '../?.lua;' .. package.path
+-_ENV = require('lunity')()
++local env = require('lunity')()
++if _VERSION:find("5.1") then
++  setfenv(1, env)
++else
++  _ENV = env
++end
+ 
+ local SLAXML = require 'slaxdom'
+ 
+@@ -218,7 +223,7 @@
+ end
+ 
+ function test:invalid_documents()
+-	local silentParser = SLAXML:parser{}
++	local silentParser = SLAXML:parser{ text = function() end }
+ 	assertErrors(silentParser.parse, silentParser, XML['invalid_unquoted']        )
+ 	assertErrors(silentParser.parse, silentParser, XML['invalid_pi_only']         )
+ 	assertErrors(silentParser.parse, silentParser, XML['invalid_unclosed_tags']   )

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:51:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 13 10:02:39 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add fix_tests.patch (gh#Phrogz/SLAXML!22) to improve parser
+  strictness and error handling. Goal was originally to make the
+  test suite to pass even on LuaJIT.
+
+-------------------------------------------------------------------
+Mon Oct 13 09:33:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.7+git20230101.756ffad:
+  * Indicate compatibility with 5.1-5.4, inclusive
+  * Update rockspec for v0.8.1
+
+-------------------------------------------------------------------
 Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix missing dependency on lua-macros (boo#1205612)

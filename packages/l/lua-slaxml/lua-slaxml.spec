@@ -18,13 +18,16 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name slaxml
-Version:        0.7+git20191225.108970c
+Version:        0.7+git20230101.756ffad
 Release:        0
 Summary:        SAX-like streaming XML parser for Lua 
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/Phrogz/SLAXML
 Source:         lua-slaxml-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix_tests.patch gh#Phrogz/SLAXML!22 mcepl@suse.com
+# unescape() function was too lenient
+Patch0:         fix_tests.patch
 BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildArch:      noarch
@@ -49,7 +52,9 @@ it allows certain XML that is syntactically-invalid (not
 well-formed) to be parsed without reporting an error.
 
 %prep
-%autosetup -p1 -n lua-slaxml-%{version}
+%setup -q -n lua-slaxml-%{version}
+find . -name \*.lua -exec sed -i 's/\r/\n/g; s/\n$//' '{}' +
+%autopatch -p1
 
 %build
 
@@ -57,13 +62,11 @@ well-formed) to be parsed without reporting an error.
 install -D -m 0644 -t %{buildroot}%{lua_noarchdir} slaxml.lua slaxdom.lua
 
 %check
-%if "%{flavor}" != "lua51"
 cd test
 lua test.lua
-%endif
 
 %files
 %license LICENSE.txt
-%{lua_noarchdir}/*
+%{lua_noarchdir}/slax*.lua
 
 %changelog
