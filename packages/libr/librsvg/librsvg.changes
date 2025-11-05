@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  4 06:55:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.61.3:
+  + librsvg crate version 2.61.3
+  + librsvg-rebind crate version 0.2.1
+  + Reject file: URIs or UNC paths with hostnames in href
+    references, to avoid NTLM hash leaks on Windows.
+  + Make loading limits work with libxml2 2.15.0 and later.
+  + Make the rsvg-convert test suite not depend on having fonts
+    installed in the system. This helps build systems which
+    otherwise had to disable some of the PDF tests.
+  + rsvg-convert: Fix build when PDF support is disabled in Cairo.
+- Drop adwaita-fonts BuildRequires: Fixed upstream, workaround for
+  tests no longer needed.
+
+-------------------------------------------------------------------
 Mon Oct 20 06:07:59 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.61.2:

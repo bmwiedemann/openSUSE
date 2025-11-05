@@ -20,8 +20,7 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-### FIXME ### - Please check on every versionupgrade if adwaita-fonts are still needed for tests
-Version:        2.61.2
+Version:        2.61.3
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.1-or-later AND MIT
@@ -31,9 +30,6 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source99:       baselibs.conf
 
-# Needed for tests (pdf)
-BuildRequires:  adwaita-fonts
-#
 BuildRequires:  cargo-c >= 0.10.12
 BuildRequires:  cargo-packaging >= 1.3.0
 BuildRequires:  gobject-introspection-devel
