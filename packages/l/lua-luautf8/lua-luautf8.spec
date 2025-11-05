@@ -36,6 +36,9 @@ Group:          Development/Languages/Other
 URL:            https://github.com/starwing/luautf8
 # Source:         %%{mod_name}-%%{version}.tar.zst
 Source:         https://github.com/starwing/luautf8/archive/refs/tags/%{version}.tar.gz
+# PATCH-{FIX|FEATURE}-{OPENSUSE|SLE|UPSTREAM} name-of-file.patch bsc#[0-9]+ mcepl@suse.com
+# this patch makes things totally awesome
+Patch0:         warnings-away.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  lua-macros
@@ -61,17 +64,21 @@ test in lua test suite2.
 %autosetup -n %{mod_name}-%{version}
 
 %build
-%luarocks_build "rockspecs/%{mod_name}-%{rock_version}.rockspec"
+%__cc %{optflags} -fPIC %(pkgconf --cflags lua) -c lutf8lib.c -o lutf8lib.o
+%__cc  -shared %{?build_ldflags} %(pkgconf --libs lua) -o lua-utf8.so lutf8lib.o
 
 %install
-%luarocks_install "%{mod_name}-%{rock_version}.linux-%{luarock_arch}.rock"
+install -dD %{buildroot}%{lua_archdir}
+install -p -m 755 lua-utf8.so %{buildroot}%{lua_archdir}
 
 %check
+for testf in test*.lua
+do
+lua $testf
+done
 
 %files
 %{lua_archdir}
-%{luarocks_treedir}/%{mod_name}
-%docdir %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
-%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/LICENSE
+%license LICENSE
 
 %changelog

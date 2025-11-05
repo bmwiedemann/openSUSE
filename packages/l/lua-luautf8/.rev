@@ -72,4 +72,15 @@
   - Explicitly include limits.h instead of transitively assuming it</comment>
     <requestid>1295831</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b783f9fd33bb564b04aed8fdc4c6adc4</srcmd5>
+    <version>0.1.6</version>
+    <time>1762355902</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Make the package buildable with LuaJIT.
+- Add warnings-away.patch to remove compilation warnings.</comment>
+    <requestid>1315180</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:50:10 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Sun Oct 12 07:52:14 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package buildable with LuaJIT.
+- Add warnings-away.patch to remove compilation warnings.
+
+-------------------------------------------------------------------
 Fri Jul 25 20:57:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.1.6:
