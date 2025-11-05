@@ -68,7 +68,7 @@ This package contains the library.
 
 %build
 # Parallel build settings ...
-limit_jobs="%{?jobs:%{jobs}}"
+limit_jobs="$(echo %{?_smp_mflags} | cut -c 3-)"
 # do not eat all memory
 echo "Available memory:"
 free

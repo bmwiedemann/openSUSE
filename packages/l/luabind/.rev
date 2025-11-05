@@ -55,4 +55,12 @@ Difference to 360232: Fixed build.</comment>
 - Use %license</comment>
     <requestid>1149137</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>0316e199f11e6de7ebee510a4456ffde</srcmd5>
+    <version>0.9.1+git20150408.a0edf58</version>
+    <time>1762355911</time>
+    <user>anag_factory</user>
+    <comment>- Replace usage of %jobs for reproducible builds (boo#1237231)</comment>
+    <requestid>1315197</requestid>
+  </revision>
 </revisionlist>
