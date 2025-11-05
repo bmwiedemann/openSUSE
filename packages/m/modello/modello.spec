@@ -166,7 +166,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:aopalliance:atinject:commons-lang3:google-guice:guava:jackson-core:jakarta-inject:javadoc-parser:jsoup/jsoup:objectweb-asm/asm:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity-engine/velocity-engine-core %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "-Dguice_custom_class_loading=CHILD" modello:aopalliance:atinject:commons-lang3:google-guice:guava:jackson-core:jakarta-inject:javadoc-parser:jsoup/jsoup:objectweb-asm/asm:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity-engine/velocity-engine-core %{name} true
 
 %files -f .mfiles -f .mfiles-core
 %license LICENSE.txt LICENSE-2.0.txt

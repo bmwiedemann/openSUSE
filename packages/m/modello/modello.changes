@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  4 21:33:15 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Add -Dguice_custom_class_loading=CHILD option to the command-line
+  launcher in order to avoid the following warnings with
+  OpenJDK >= 24 :
+
+  WARNING: A terminally deprecated method in sun.misc.Unsafe has
+           been called
+  WARNING: sun.misc.Unsafe::staticFieldBase has been called by
+           com.google.inject.internal.aop.HiddenClassDefiner
+  WARNING: Please consider reporting this to the maintainers of
+           class com.google.inject.internal.aop.HiddenClassDefiner
+  WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a
+           future release
+
+-------------------------------------------------------------------
 Fri Jun  6 19:32:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

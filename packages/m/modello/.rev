@@ -193,4 +193,12 @@
     <comment>Do not bomb on empty velocity parameters</comment>
     <requestid>1283740</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>c9875626f3c755e7c0d71726ae37d13f</srcmd5>
+    <version>2.5.1</version>
+    <time>1762355960</time>
+    <user>anag_factory</user>
+    <comment>Fix warning polution with Java 25</comment>
+    <requestid>1315608</requestid>
+  </revision>
 </revisionlist>
