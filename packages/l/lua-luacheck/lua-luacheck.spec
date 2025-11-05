@@ -17,9 +17,15 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@%{nil}
+%define flavor @BUILD_FLAVOR@
 %define mod_name luacheck
+# Remove file dependency on the interpreter
+%global __requires_exclude ^%{_bindir}/lua(5\\.[1-9]|jit)?$
+%if "%{flavor}" == "luajit"
+%define lua_value  52
+%else
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
+%endif
 Version:        1.1.0
 Release:        0
 Summary:        Command-line tool for linting and static analysis of Lua code
@@ -39,7 +45,7 @@ Requires:       %{flavor}-luafilesystem
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       luacheck
-Obsoletes:      luacheck < 1.0.0
+Obsoletes:      luacheck < %{version}
 BuildArch:      noarch
 %lua_provides
 %if "%{flavor}" == ""
@@ -68,10 +74,10 @@ checked files as Lua comments.
 %install
 mkdir -p %{buildroot}%{lua_noarchdir}
 mkdir -p %{buildroot}%{_bindir}
-cp bin/luacheck.lua %{buildroot}%{_bindir}/luacheck-%{lua_version}
-cp -r src/luacheck %{buildroot}%{lua_noarchdir}
-chmod +x %{buildroot}%{_bindir}/luacheck-%{lua_version}
-sed -i -e 's,%{_bindir}/lua,%{_bindir}/lua%{lua_version},' %{buildroot}%{_bindir}/luacheck-%{lua_version}
+cp -v bin/luacheck.lua %{buildroot}%{_bindir}/luacheck-%{flavor}
+cp -rv src/luacheck %{buildroot}%{lua_noarchdir}
+chmod +x %{buildroot}%{_bindir}/luacheck-%{flavor}
+sed -i -e 's,# *\!%{_bindir}/.*lua,#!%{_bindir}/lua,' %{buildroot}%{_bindir}/luacheck-%{flavor}
 
 # update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
@@ -79,17 +85,16 @@ touch %{buildroot}%{_sysconfdir}/alternatives/luacheck
 ln -sf %{_sysconfdir}/alternatives/luacheck %{buildroot}%{_bindir}/luacheck
 
 %check
-LUA_PATH='%{_datadir}/lua/%{lua_version}/?.lua'
-LUA_PATH="%{buildroot}%{lua_noarchdir}/?/init.lua;${LUA_PATH}"
-export LUA_PATH="%{buildroot}%{lua_noarchdir}/?.lua;${LUA_PATH}"
-%{_bindir}/lua%{lua_version} %{buildroot}%{_bindir}/luacheck-%{lua_version} src/
+LUA_PATH='%{lua_noarchdir}/?.lua;%{lua_noarchdir}/?/init.lua'
+export LUA_PATH="%{buildroot}%{lua_noarchdir}/?.lua;%{buildroot}%{lua_noarchdir}/?/init.lua;${LUA_PATH}"
+lua %{buildroot}%{_bindir}/luacheck-%{flavor} src/
 
 %post
-%{_sbindir}/update-alternatives --install %{_bindir}/luacheck luacheck %{_bindir}/luacheck-%{lua_version} %{lua_value}
+%{_sbindir}/update-alternatives --install %{_bindir}/luacheck luacheck %{_bindir}/luacheck-%{flavor} %{lua_value}
 
 %postun
 if [ "$1" = 0 ] ; then
-	%{_sbindir}/update-alternatives --remove luacheck %{_bindir}/luacheck-%{lua_version}
+	%{_sbindir}/update-alternatives --remove luacheck %{_bindir}/luacheck-%{flavor}
 fi
 
 %files
@@ -97,7 +102,7 @@ fi
 %license LICENSE
 %ghost %{_sysconfdir}/alternatives/luacheck
 %{_bindir}/luacheck
-%{_bindir}/luacheck-%{lua_version}
+%{_bindir}/luacheck-%{flavor}
 %{lua_noarchdir}/luacheck/
 
 %changelog

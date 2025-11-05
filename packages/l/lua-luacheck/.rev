@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1084322</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4eab8afbafadf86402ce8531e398566e</srcmd5>
+    <version>1.1.0</version>
+    <time>1762355893</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Fix shebang in the provide start script
+
+- Allow building with LuaJIT.</comment>
+    <requestid>1315164</requestid>
+  </revision>
 </revisionlist>
