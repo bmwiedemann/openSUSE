@@ -479,4 +479,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment> (forwarded request 1177517 from favogt)</comment>
     <requestid>1177557</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>662887b7ca0812bfe5ce5d94bcf543de</srcmd5>
+    <version>5.15.18</version>
+    <time>1762355939</time>
+    <user>anag_factory</user>
+    <comment>Qt 5.15.18 (forwarded request 1315523 from favogt)</comment>
+    <requestid>1315559</requestid>
+  </revision>
 </revisionlist>
