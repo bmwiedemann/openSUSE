@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:49:05 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Tue Oct 14 23:28:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package build with updated %%luarocks_* macros.
+
+-------------------------------------------------------------------
 Mon Apr  1 01:54:05 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Switch from xz compression to zstd

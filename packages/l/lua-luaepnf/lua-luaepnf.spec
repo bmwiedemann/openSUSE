@@ -66,9 +66,8 @@ cd tests
 for t in *.lua; do lua $t; done
 
 %files
-%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/readme.txt
-%docdir %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
+%license doc/readme.txt
+%doc __rocktree/* README.md
 %{lua_noarchdir}/epnf.lua
-%{luarocks_treedir}/%{mod_name}
 
 %changelog
