@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  3 00:20:49 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Finally broke %lua_provides to be working. I got stumped by the
+  craziness of rpm which runs Lua interpreter with locales and
+  crazy reformatting of integers.
+
+-------------------------------------------------------------------
 Mon Oct 20 21:30:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Rewrite %luarocks_install to use a shell script

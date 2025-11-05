@@ -126,4 +126,14 @@
   install-lua-rock.sh, which is packaged as well.</comment>
     <requestid>1312655</requestid>
   </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>5d513182b0eb1c3ff04edb75e9f5739a</srcmd5>
+    <version>20210827</version>
+    <time>1762355878</time>
+    <user>anag_factory</user>
+    <comment>- Finally broke %lua_provides to be working. I got stumped by the
+  craziness of rpm which runs Lua interpreter with locales and
+  crazy reformatting of integers.</comment>
+    <requestid>1315205</requestid>
+  </revision>
 </revisionlist>

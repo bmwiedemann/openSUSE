@@ -44,14 +44,14 @@ print(rpm.expand("%{_datadir}/lua/%{lua_version}"))
   print(result)
 }
 %lua_version_default %{lua:
-local result = 5.4
+local result = "5.4"
 local ver = rpm.expand("%{?suse_version}")
 if #ver > 0 then
     ver = tonumber(ver)
     if ver < 1500 then
-        result = 5.1
+        result = "5.1"
     elseif ver < 1600 then
-        result = 5.3
+        result = "5.3"
     end
 end
 print(result)
@@ -63,31 +63,39 @@ print(result)
   print(nodots)
 }
 # Lua default version
-# This REQUIRES macro %{mod_name} to be defined.
+# This REQUIRES macro %%{mod_name} to be defined.
 # -e: Exclude lua prefix
 # -n: Specify name
 %lua_provides(en:) %{lua:
 local mod_name = rpm.expand("%{?mod_name}")
-if mod_name == "" then
-    print("-- Error: %{mod_name} is not defined!")
+if mod_name == "" or mod_name == "%{?mod_name}" then
+    print("-- Error: %%{mod_name} is not defined!")
     return
 end
-print([[
-%if "%{lua_version_nodots}" == "%{lua_version_default_nodots}"
-%if 0%{?-n:1}
-Provides: %{-n*} = %{version}-%{release}
-Obsoletes: %{-n*} < %{version}-%{release}
-%else
-%if 0%{?-e:1}
-Provides: %{mod_name} = %{version}-%{release}
-Obsoletes: %{mod_name} < %{version}-%{release}
-%else
-Provides: lua-%{mod_name} = %{version}-%{release}
-Obsoletes: lua-%{mod_name} < %{version}-%{release}
-%endif
-%endif
-%endif
-]])
+
+local lua_ver_nodots = rpm.expand("%{lua_version_nodots}")
+local lua_ver_default_nodots = rpm.expand("%{lua_version_default_nodots}")
+local flavor = rpm.expand("%{flavor}")
+local version = rpm.expand("%{version}")
+local release = rpm.expand("%{release}")
+
+local provides_name
+if rpm.expand("%{-n*}") ~= "" then
+    provides_name = rpm.expand("%{-n*}")
+elseif rpm.expand("%{-e:1}") == "1" then
+    provides_name = mod_name
+else
+    provides_name = "lua-" .. mod_name
+end
+
+if lua_ver_nodots == lua_ver_default_nodots then
+    print("Provides: " .. provides_name .. " = " .. version .. "-" .. release .. "\\n")
+    print("Obsoletes: " .. provides_name .. " < " .. version .. "-" .. release .. "\\n")
+end
+
+if flavor == "luajit" then
+    print("Obsoletes: lua51-" .. mod_name .. " <= " .. version .. "-" .. release .. "\\n")
+end
 }
 
 # LuaRocks
