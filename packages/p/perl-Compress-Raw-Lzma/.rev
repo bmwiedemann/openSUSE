@@ -176,4 +176,47 @@
     <comment></comment>
     <requestid>1203939</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8fc1ac217dea71201fe79022352b9a7e</srcmd5>
+    <version>2.214.0</version>
+    <time>1762355918</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.214.0 (2.214)
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+    2.214 24 October 2025
+        * version 2.214
+          Fri Oct 24 16:16:13 2025 +0100
+          70780d4604b01c15de69128dc50c6eb3dac06efd
+        * Add dependabot.yml file to police workflow files
+          Thu Sep 4 17:00:13 2025 +0100
+          dcd56aa5fe02b1d7b4752f639f393cbb6bc28674
+        * Add perl 5.42 to workflow files
+          Thu Sep 4 16:59:48 2025 +0100
+          d131206fb0452cab425174782c23c7ca3416b113
+        * upstream gh mainline version is now 5.8.1
+          Sat Apr 5 13:49:36 2025 +0100
+          fa22fb1d34b80e627f44c6a5d3680c650313ac24
+        * add xz 5.8.1 to workflow
+          Thu Apr 3 19:47:09 2025 +0100
+          365602dae4e68f73e5da8472fdd2ab41f11b99a0
+        * Add xz 5.8.0 to workflow
+          Tue Mar 25 22:23:12 2025 +0000
+          920b38a54e8e92cf6216ee1937355105e1eaaf6d
+        * upstream master version now uses 5.7.2beta
+          Sat Mar 15 13:06:36 2025 +0000
+          9876aabe6ff9d69d41d53a5ff049bfe17ff5095b
+        * use sudo to install
+          Mon Jan 27 21:31:00 2025 +0000
+          ffed9a55ecbb710cb28f73e53a057e5b1a7f02de
+        * Install lzma library
+          Mon Jan 27 21:28:54 2025 +0000
+          409f73a9e6ab0ec5a57e662bfea48988e3fc7719
+        * Add xz 5.6.4 to workflow
+          Mon Jan 27 21:01:06 2025 +0000
+          868984ef6bf33bfc42a78c79de09e7ca78bef75f
+        * Add xz 5.6.3 to workflow
+          Tue Oct 1 19:42:12 2024 +0100
+          ba88d230309e89d869d7eb41786fe13453b8fd17</comment>
+    <requestid>1315477</requestid>
+  </revision>
 </revisionlist>

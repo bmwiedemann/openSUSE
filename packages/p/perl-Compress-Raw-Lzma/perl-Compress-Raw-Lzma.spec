@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Compress-Raw-Lzma
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Compress-Raw-Lzma
 Name:           perl-Compress-Raw-Lzma
-Version:        2.213.0
+Version:        2.214.0
 Release:        0
-# 2.213 -> normalize -> 2.213.0
-%define cpan_version 2.213
+# 2.214 -> normalize -> 2.214.0
+%define cpan_version 2.214
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Low-Level Perl Interface to lzma compression library
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Pod::Markdown)
@@ -55,7 +56,7 @@ parameter. If you want to compress/uncompress to a single buffer, and have
 when you create the compression/decompression object.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

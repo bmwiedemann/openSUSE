@@ -9,6 +9,5 @@ for use by the 'IO::Compress::Lzma', 'IO::Uncompress::UnLzma',
 its own for simple compression/uncompression tasks.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Compress-Raw-Lzma"/>
   <url>http://search.cpan.org/dist/Compress-Raw-Lzma/</url>
 </package>
