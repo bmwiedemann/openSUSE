@@ -41,4 +41,41 @@
 - Fix missing dependency on lua-macros (boo#1205612)</comment>
     <requestid>1037594</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8fb5c158a47350a9cc6e609e6dad1f52</srcmd5>
+    <version>0.6.3</version>
+    <time>1762355912</time>
+    <user>anag_factory</user>
+    <comment>- My effort to fix the test suite were unsuccesful, so let’s just
+  switch of the tests for now.
+- Split test phase as a special step to break luasystem-busted
+  dependency cycle.
+- Add unused_variable.patch to squelch two unused-variable warnings
+
+- Switch off building lua51 build of the package.
+
+- Change of the upstream project.
+- Update to 0.6.3:
+  - Fix: maximum key-delay, reduced from 0.2 to 0.1 seconds to
+    reduce slugginess feel on some key presses. See #69.
+  - Fix: readansi now only reports printable chars as characters
+    See #70.
+  - Fix: readkey now ignores Windows scancodes if received. See
+    #74.
+  - Fix: readkey now passes errors on. See #74.
+- Update to 0.6.2:
+  - Fix: autotermrestore didn't work because its metatable was
+    overwritten.
+- Update to 0.6.1:
+  - Docs: document readansi internal buffer for incomplete
+    sequences.
+  - Fix: ensure to properly parse &lt;alt&gt;+key key presses
+- Update to 0.6.0:
+  - Fix: when sleep returns an error, pass that on in readkey.
+  - Feat: added detachfds which will create separate file
+    descriptions for stdout and stderr to ensure that related
+    settings (eg. non-blocking flag) will not be shared amongst
+    those streams and stdin.</comment>
+    <requestid>1315343</requestid>
+  </revision>
 </revisionlist>

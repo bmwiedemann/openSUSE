@@ -17,52 +17,74 @@
 
 
 %define flavor @BUILD_FLAVOR@
+%if "%{flavor}" == "test"
+%define flavor lua54
+%bcond_without test
+%else
+%bcond_with test
+%endif
 %define mod_name luasystem
-%define upversion 0.2.1
-Version:        0.21
+Version:        0.6.3
 Release:        0
 Summary:        Platform independent system calls for Lua
 License:        MIT
-URL:            https://github.com/o-lim/luasystem
-Source:         https://github.com/o-lim/luasystem/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
+URL:            https://github.com/lunarmodules/luasystem
+Source:         https://github.com/lunarmodules/luasystem/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM unused_variable.patch gh#lunarmodules/luasystem!78 mcepl@suse.com
+# remove two unused-variable warnings
+Patch0:         unused_variable.patch
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-luarocks
 BuildRequires:  lua-macros
+BuildRequires:  pkgconf
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""
 Name:           lua-luasystem
 ExclusiveArch:  do_not_build
 %else
+%if %{with test}
+Name:           %{flavor}-luasystem-test
+%else
 Name:           %{flavor}-luasystem
+%endif
+%endif
+%if %{with test}
+BuildRequires:  %{flavor}-luasystem
+BuildRequires:  %{flavor}-busted
 %endif
 
 %description
 Adds a Lua API for making platform independent system calls.
 
 %prep
-%setup -q -n %{mod_name}-%{upversion}
+%autosetup -p1 -n %{mod_name}-%{version}
 
 %build
-make %{?_smp_mflags} \
-	CWARNS="%{optflags}" \
-        LUAINC_linux=%{lua_incdir} \
-        CDIR_linux?=%{_lib}/lua/%{lua_version} \
-        LUAPREFIX_linux?=%{_prefix} \
-        linux
+export CFLAGS="%{optflags} $(pkgconf --cflags lua)" \
+	MYLDFLAGS="$(pkgconf --libs lua)"
+%luarocks_build 
 
 %install
-%make_install \
-        CWARNS="%{optflags}" \
-        LUAINC_linux=%{lua_incdir} \
-        LUAPREFIX_linux?=%{_prefix} \
-        CDIR_linux?=%{_lib}/lua/%{lua_version} \
-        linux
-install -v -D -m0644 -p -t %{buildroot}%{lua_noarchdir}/system system/init.lua
+%if %{without test}
+export CWARNS="%{optflags}" \
+	LUAINC_linux=%{lua_incdir} \
+	LUAPREFIX_linux=%{_prefix} \
+	CDIR_linux="%{_lib}/lua/%{lua_version}"
+%luarocks_install ./*.rock
+%endif
 
+%check
+%if %{with test}
+busted || true
+%endif
+
+%if %{without test}
 %files
 %dir %{lua_archdir}/system
 %{lua_archdir}/system/*
 %dir %{lua_noarchdir}/system
 %{lua_noarchdir}/system/*
+%endif
 
 %changelog

@@ -1,0 +1,48 @@
+---
+ src/random.c |    3 +--
+ src/term.c   |    4 ++++
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+Index: luasystem-0.6.3/src/random.c
+===================================================================
+--- luasystem-0.6.3.orig/src/random.c	2025-07-11 22:59:19.000000000 +0200
++++ luasystem-0.6.3/src/random.c	2025-10-28 14:56:11.555621406 +0100
+@@ -60,7 +60,6 @@
+         return 2;
+     }
+ 
+-    ssize_t n;
+     ssize_t total_read = 0;
+ 
+ #ifdef _WIN32
+@@ -99,7 +98,7 @@
+     }
+ 
+     while (total_read < num_bytes) {
+-        n = read(fd, buffer + total_read, num_bytes - total_read);
++        ssize_t n = read(fd, buffer + total_read, num_bytes - total_read);
+ 
+         if (n < 0) {
+             if (errno == EINTR) {
+Index: luasystem-0.6.3/src/term.c
+===================================================================
+--- luasystem-0.6.3.orig/src/term.c	2025-07-11 22:59:19.000000000 +0200
++++ luasystem-0.6.3/src/term.c	2025-10-28 14:56:11.555945957 +0100
+@@ -1226,6 +1226,8 @@
+     int success = TRUE;
+ #ifdef _WIN32
+     SetConsoleCP(cp);
++#else
++    (void)cp;
+ #endif
+     lua_pushboolean(L, success);
+     return 1;
+@@ -1262,6 +1264,8 @@
+     int success = TRUE;
+ #ifdef _WIN32
+     SetConsoleOutputCP(cp);
++#else
++    (void)cp;
+ #endif
+     lua_pushboolean(L, success);
+     return 1;
