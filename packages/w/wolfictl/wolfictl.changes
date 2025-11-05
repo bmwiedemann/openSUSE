@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 04 20:19:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.21:
+  * refactor: use explicit matching instead of prefix
+  * feat(pkg/sbom/cpe.go): include gitlab-operator-fips in the
+    exception for gitlab-* cve matching
+  * build(deps): bump octo-sts/action from 1.0.1 to 1.0.3 (#1779)
+  * build(deps): bump chainguard-dev/actions from 1.5.6 to 1.5.7
+    (#1780)
+  * build(deps): bump actions/upload-artifact from 4.6.2 to 5.0.0
+    (#1781)
+
+-------------------------------------------------------------------
 Mon Nov 03 09:15:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.20:
