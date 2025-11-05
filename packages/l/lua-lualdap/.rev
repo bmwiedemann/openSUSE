@@ -27,4 +27,14 @@ https://prosody.im/doc/packagers#navbar</comment>
   you know what you are doing.</comment>
     <requestid>1298121</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>889160d45800feb00e438a65106eded9</srcmd5>
+    <version>1.3.0</version>
+    <time>1762355896</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Make the package buildable with LuaJIT.</comment>
+    <requestid>1315170</requestid>
+  </revision>
 </revisionlist>
