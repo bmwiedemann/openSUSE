@@ -19,7 +19,7 @@
 %define module_name click-extra
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -36,10 +36,10 @@ BuildRequires:  %{python_module boltons >= 25.0.0}
 BuildRequires:  %{python_module click >= 8.3.0}
 BuildRequires:  %{python_module cloup >= 3.0.7}
 BuildRequires:  %{python_module deepmerge >= 2.0}
-BuildRequires:  %{python_module extra-platforms >= 3.1.0}
-BuildRequires:  %{python_module requests >= 2.32.4}
+BuildRequires:  %{python_module extra-platforms >= 5.0.0}
+BuildRequires:  %{python_module requests >= 2.32.5}
 BuildRequires:  %{python_module tabulate >= 0.9}
-BuildRequires:  %{python_module tomli >= 2.0.1 if %python-base < 3.11}
+BuildRequires:  %{python_module tomli >= 2.3.0 if %python-base < 3.11}
 BuildRequires:  %{python_module wcmatch >= 10.0}
 BuildRequires:  %{python_module xmltodict >= 0.15.1}
 BuildRequires:  git-core
@@ -55,17 +55,17 @@ BuildRequires:  %{python_module pytest-randomly >= 3.16.0}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 6.0.0
+Requires:       python-PyYAML >= 6.0.3
 Requires:       python-boltons >= 25.0.0
-Requires:       python-click >= 8.2.2
+Requires:       python-click >= 8.3.0
 Requires:       python-cloup >= 3.0.7
 Requires:       python-deepmerge >= 2.0
-Requires:       python-extra-platforms >= 3.1.0
-Requires:       python-requests >= 2.32.3
+Requires:       python-extra-platforms >= 5.0.0
+Requires:       python-requests >= 2.32.5
 Requires:       python-tabulate >= 0.9
 Requires:       python-wcmatch >= 10.0
-Requires:       python-xmltodict >= 0.14.2
-Requires:       (python-tomli >= 2.0.1 if python-base < 3.11)
+Requires:       python-xmltodict >= 0.15.1
+Requires:       (python-tomli >= 2.3.0 if python-base < 3.11)
 Suggests:       python-pygments >= 2.14
 Suggests:       python-pygments-ansi-color >= 0.3.0
 BuildArch:      noarch

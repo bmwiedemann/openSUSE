@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  5 05:39:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.2.0:
+  * Add new EnumChoice type for fine-tunable Enum-based
+    choices. Expose EnumChoice and ChoiceSource at the root
+    click_extra module.
+  * Relax dependencies to support Python 3.10. Closes {issue}1385.
+  * Re-introduce tomli dependency for Python 3.10 users.
+  * Skip tests on intermediate Python versions (3.11, 3.12 and 3.13)
+    to reduce CI load.
+
+-------------------------------------------------------------------
 Sun Nov  2 10:57:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.1.0:
