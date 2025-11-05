@@ -16,7 +16,11 @@
 #
 
 
+%ifarch aarch64
 %define gfx_version 580.95.05
+%else
+%define gfx_version 580.105.08
+%endif
 %define cuda_version 580.95.05
 
 %global flavor @BUILD_FLAVOR@%{?nil}

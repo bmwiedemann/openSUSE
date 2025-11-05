@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  4 20:56:49 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- back to 580.95.05 on aarch64, since userspace drivers have not
+  been updated for this platform
+
+-------------------------------------------------------------------
+Sat Nov  1 16:41:55 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to version 580.105.08 (boo#1252978)
+
+-------------------------------------------------------------------
 Thu Oct 16 08:54:52 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - renamed check to %name-check package

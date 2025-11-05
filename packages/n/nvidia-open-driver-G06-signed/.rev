@@ -928,4 +928,15 @@
 - update CUDA variant to 580.95.05</comment>
     <requestid>1311666</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>80265d16fe39ae92b9fa6b7798fad2ec</srcmd5>
+    <version>580.105.08</version>
+    <time>1762355926</time>
+    <user>anag_factory</user>
+    <comment>- back to 580.95.05 on aarch64, since userspace drivers have not
+  been updated for this platform
+
+- update non-CUDA variant to version 580.105.08 (boo#1252978)</comment>
+    <requestid>1315609</requestid>
+  </revision>
 </revisionlist>
