@@ -53,18 +53,17 @@ repository of locale data available.
 %autosetup -n %{mod_name}-lua-%{version}
 
 %build
-%luarocks_build "%{mod_name}-%{rock_version}.rockspec"
+:
 
 %install
-%luarocks_install *.rock
+install -dD %{buildroot}%{lua_noarchdir}
+cp -av cldr/ %{buildroot}%{lua_noarchdir}
 
 %check
 
 %files
-%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/LICENSE
-%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/LICENSE-Unicode
-%docdir %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
+%license LICENSE LICENSE-Unicode
+%doc README.md
 %{lua_noarchdir}/%{mod_name}
-%{luarocks_treedir}/%{mod_name}
 
 %changelog

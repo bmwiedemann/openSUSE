@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:47:22 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Tue Oct 14 16:52:53 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Radical simplification, to make build with LuaJIT.
+
+-------------------------------------------------------------------
 Tue Apr  2 07:08:08 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Switch from xz compression to zstd
