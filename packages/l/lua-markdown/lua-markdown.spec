@@ -45,13 +45,13 @@ A pure-lua implementation of the Markdown text-to-html markup system.
 sed -i '\|%{_bindir}/env |d' markdown.lua
 
 %build
-/bin/true
+:
 
 %install
 install -v -D -m 0644 -p -t %{buildroot}%{lua_noarchdir} markdown.lua
 
 %check
-lua%{lua_version} markdown-tests.lua
+lua markdown-tests.lua
 
 %files
 %license LICENSE

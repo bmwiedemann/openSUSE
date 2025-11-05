@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:50:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Sun Oct 12 00:36:30 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package buildable with LuaJIT.
+
+-------------------------------------------------------------------
 Wed Nov 23 10:39:52 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix missing dependency on lua-macros (boo#1205612)
