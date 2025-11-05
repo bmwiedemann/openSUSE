@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-extra-platforms
-Version:        4.1.1
+Version:        5.0.0
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        GPL-2.0-or-later
 URL:            https://github.com/kdeldycke/extra-platforms
 Source:         https://files.pythonhosted.org/packages/source/e/extra-platforms/extra_platforms-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.11}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module pytest >= 8.3.5}
 BuildRequires:  %{python_module pytest-randomly >= 3.16.0}
 BuildRequires:  %{python_module pytest-xdist >= 3.8.0}
 BuildRequires:  %{python_module requests >= 2.32.3 with %python-requests < 2.33}
+BuildRequires:  %{python_module tomli >= 2.3.0 if %python-base < 3.11}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-distro >= 1.9.0
