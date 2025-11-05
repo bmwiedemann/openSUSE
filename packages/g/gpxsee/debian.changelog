@@ -1,3 +1,15 @@
+gpxsee (15.1) stable; urgency=low
+
+  * Added support for hillshading to all MVT-based maps.
+  * Added layers (landscape, topo) support to COROS 5 maps.
+  * Fixed/Improved WMTS capabilities responses parsing enabling
+    operation with broken WMTS servers like https://data.geopf.fr.
+  * Hillshading in Garmin IMG maps is now only enabled when the map
+    has its own DEM data.
+  * Sprites must now be explicitly referenced in MVT styles.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 03 Nov 2025 22:03:19 +0100
+
 gpxsee (15.0) stable; urgency=low
 
   * Removed QtPBFImagePlugin dependency for MVT tiles rendering.

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  3 21:53:20 CET 2025 - tumic@gpxsee.org
+
+- Update to version 15.1
+  * Added support for hillshading to all MVT-based maps.
+  * Added layers (landscape, topo) support to COROS 5 maps.
+  * Fixed/Improved WMTS capabilities responses parsing enabling
+    operation with broken WMTS servers like https://data.geopf.fr.
+  * Hillshading in Garmin IMG maps is now only enabled when the map
+    has its own DEM data.
+  * Sprites must now be explicitly referenced in MVT styles.
+
+-------------------------------------------------------------------
 Mon Oct 27 05:36:09 CET 2025 - tumic@gpxsee.org
 
 - Update to version 15.0
