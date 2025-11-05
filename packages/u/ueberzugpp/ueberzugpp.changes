@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 28 18:38:17 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.9.8+git20251027.c1c76e3:
+  * bump version
+  * Added CLI11 version safeguard for 2.5.0 and prior.
+  * Added support for CLI11-v2.6.0
+
+-------------------------------------------------------------------
+Thu Sep 18 17:49:18 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.9.7+git20250824.4d62c04:
+  * Guard vips image initialization with try/catch to prevent crashes
+
+-------------------------------------------------------------------
 Thu Jun 12 04:33:23 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 2.9.7+git20250611.55d96e8:

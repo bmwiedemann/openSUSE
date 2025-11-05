@@ -1,7 +1,7 @@
 #
 # spec file for package ueberzugpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define short_name ueberzug
 Name:           ueberzugpp
-Version:        2.9.7+git20250611.55d96e8
+Version:        2.9.8+git20251027.c1c76e3
 Release:        0
 Summary:        Utility to render images in terminals
 License:        GPL-3.0
 URL:            https://github.com/jstkdng/%{name}
-Source:         https://github.com/jstkdng/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
+Source100:      README.md
 BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  cmake(Microsoft.GSL)
