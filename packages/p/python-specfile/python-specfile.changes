@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  4 10:11:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.37.1
+  * We have solved a FutureWarning in our codebase. (#485)
+
+-------------------------------------------------------------------
 Tue Sep 23 10:22:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.37.0
