@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define flavor @BUILD_FLAVOR@
 %define mod_name cosmo
 %define rock_version 16.06.04-1
@@ -34,6 +33,7 @@ BuildRequires:  lua-macros
 BuildRequires:  zstd
 Requires:       %{flavor}
 Requires:       %{flavor}-lpeg
+BuildArch:      noarch
 %lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
@@ -41,7 +41,6 @@ ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
-BuildArch:      noarch
 
 %description
 Cosmo is a "safe templates" engine.  It allows you to fill nested
@@ -54,19 +53,17 @@ engines, without the downside of allowing arbitrary code in the templates.
 sed -i -e '/lpeg >=/d' "rockspec/%{mod_name}-%{rock_version}.rockspec"
 
 %build
-%luarocks_build "rockspec/%{mod_name}-%{rock_version}.rockspec"
+%{luarocks_build} rockspec/%{mod_name}-%{rock_version}.rockspec
 
 %install
-%luarocks_install *.rock
+%{luarocks_install} %{mod_name}-%{rock_version}.*.rock
 
 %check
 cd tests
 lua test_cosmo.lua
 
 %files
-%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/cosmo.md
-%docdir %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
+%doc README __rocktree/*
 %{lua_noarchdir}
-%{luarocks_treedir}/%{mod_name}
 
 %changelog
