@@ -98,4 +98,14 @@
   %patchN.</comment>
     <requestid>1149141</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>639e6ad6d68ee9691ab4fac3c0336722</srcmd5>
+    <version>3.1.0</version>
+    <time>1762355899</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Add luajit version to _multibuild</comment>
+    <requestid>1315174</requestid>
+  </revision>
 </revisionlist>

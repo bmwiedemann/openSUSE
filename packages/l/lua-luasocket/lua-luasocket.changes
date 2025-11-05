@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:49:44 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 20 19:25:31 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add luajit version to _multibuild
+
+-------------------------------------------------------------------
 Thu Feb 22 09:57:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
