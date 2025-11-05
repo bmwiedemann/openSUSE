@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 31 17:54:52 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix ownership of %%{lua_archdir}/luasql directory.
+
+-------------------------------------------------------------------
+Fri Oct 24 14:49:49 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+- Remove already upstreamed luasql-fix-configuration.patch
+  (actually it already happened three commits before, but OBS
+  doesn't read older change records, it seems).
+
+-------------------------------------------------------------------
+Sun Oct 12 00:39:58 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package buildable with LuaJIT.
+
+-------------------------------------------------------------------
 Tue Jul  8 15:05:21 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.7.0:

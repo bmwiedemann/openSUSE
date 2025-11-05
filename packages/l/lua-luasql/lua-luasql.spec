@@ -17,9 +17,7 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%define flavor_dec $(c=%{flavor}; echo ${c:0:-1}.${c: -1})
-%define flavor_ver %{lua:ver, ok = string.gsub(rpm.expand("%{flavor}"), "lua(%{d})(%{d})", "%{1}.%{2}"); print(ver)}
+%global flavor @BUILD_FLAVOR@
 %define mod_name luasql
 Version:        2.7.0
 Release:        0
@@ -41,13 +39,13 @@ BuildRequires:  postgresql-devel
 BuildRequires:  sqlite3-devel
 Requires:       %{flavor}
 Requires:       libmariadb3
-%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
+%lua_provides
 
 %description
 A simple interface from Lua to a DBMS. It enables a Lua program to:
@@ -79,14 +77,13 @@ export LUA_INC="%{lua_incdir}"
 %make_install LUA_LIBDIR='$(DESTDIR)%{lua_archdir}' odbc
 
 %check
-export LUA_PATH='%{buildroot}%{lua_archdir}/?.lua;;'
+export LUA_PATH='%{buildroot}%{lua_archdir}/?.lua;'
 export LUA_CPATH='%{buildroot}%{lua_archdir}/?.so'
-lua%{lua_version} tests/test.lua sqlite3
+lua tests/test.lua sqlite3
 
 %files
 %doc doc/us/*
-%dir %{lua_archdir}/luasql
-%{lua_archdir}/luasql/
+%{lua_archdir}/luasql
 # TODO? Split to subpackages?
 # /usr/lib64/lua/%%{lua_version}/luasql
 # /usr/lib64/lua/%%{lua_version}/luasql/mysql.so

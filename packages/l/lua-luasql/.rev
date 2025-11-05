@@ -97,4 +97,19 @@
   (gh#lunarmodules/luasql#178).</comment>
     <requestid>1294895</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>42420f0639ebd44d73fdd81311d9bc9d</srcmd5>
+    <version>2.7.0</version>
+    <time>1762355900</time>
+    <user>anag_factory</user>
+    <comment>- Fix ownership of %%{lua_archdir}/luasql directory.
+
+- Switch off building lua51 build of the package.
+- Remove already upstreamed luasql-fix-configuration.patch
+  (actually it already happened three commits before, but OBS
+  doesn't read older change records, it seems).
+
+- Make the package buildable with LuaJIT.</comment>
+    <requestid>1315175</requestid>
+  </revision>
 </revisionlist>
