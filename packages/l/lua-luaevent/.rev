@@ -51,4 +51,14 @@
   - Opencode %make_build to prevent build failure when not defined.</comment>
     <requestid>1061042</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>86f3ece0e04d705737a808a0afd8fb79</srcmd5>
+    <version>0.4.6</version>
+    <time>1762355895</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Add luajit version to _multibuild</comment>
+    <requestid>1315167</requestid>
+  </revision>
 </revisionlist>
