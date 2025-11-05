@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:49:53 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 20 19:00:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add luajit version to _multibuild
+
+-------------------------------------------------------------------
 Thu Mar 16 18:17:12 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Change upstream homepage to the current one at Lunar Modules.
