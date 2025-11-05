@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:47:18 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 20 18:33:16 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add luajit version to _multibuild
+
+-------------------------------------------------------------------
 Wed Jul 23 17:01:00 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch upstream from the dead one

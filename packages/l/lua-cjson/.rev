@@ -52,4 +52,14 @@
 - Update 2.1.0.4:</comment>
     <requestid>1295383</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>108c2ed6d8ca7d1e0adbb3fc7c21bbfc</srcmd5>
+    <version>2.1.0.14</version>
+    <time>1762355884</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Add luajit version to _multibuild</comment>
+    <requestid>1315143</requestid>
+  </revision>
 </revisionlist>
