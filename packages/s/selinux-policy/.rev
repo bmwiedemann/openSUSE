@@ -2171,4 +2171,12 @@ https://build.opensuse.org/request/show/1178504 </comment>
 there will be 4 permissive avcs left regarding pcrlock, but those will be fixed by the bigger systemd update that will change systemd-pcrlock</comment>
     <requestid>1312810</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>ebbc3468c8ce48146800708d9bf8aef6</srcmd5>
+    <version>20251104</version>
+    <time>1762355876</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1315475</requestid>
+  </revision>
 </revisionlist>

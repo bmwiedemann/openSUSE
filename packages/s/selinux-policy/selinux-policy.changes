@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 04 10:49:30 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20251104:
+  * Fix syntax error in userdomain.if
+  * Allow nnp_transition for OpenSMTPD (bsc#1252431)
+  * Allow ras-mc-ctl get attributes of the kmod executable
+  * Define file equivalency for /var/opt
+  * Allow virtnodedev_t the perfmon capability
+  * Allow nut_upsdrvctl_t the sys_ptrace capability
+  * Label /usr/lib/systemd/user/graphical-session-pre.target with xdm_unit_file_t
+  * systemd-sysctl: allow rw on binfm_misc_fs_t to set binfmt_misc status
+  * Allow cupsd to manage cupsd_rw_etc_t lnk_files
+  * Set temporary no-stub resolv.conf file from NetworkManager as net_conf_t
+  * Allow spamc read aliases file
+  * Mark configfs_t as mountpoint (bsc#1246080)
+  * Allow systemd-machined watch cgroup files
+  * Allow sshd-auth read generic proc files
+  * Allow sshd-auth read and write user domain ptys
+  * Allow logwatch read and write sendmail unix stream sockets
+  * Allow logwatch domain transition on rpm execution
+  * Allow thumb_t mounton its private tmpfs files
+  * Allow thumb_t create permission in the user namespace
+  * Allow corenet_unconfined_type name_bind to icmp_socket
+  * Allow systemd-networkd to manage systemd_networkd_var_lib_t files
+  * Allow sshd-session get attributes of sshd vsock socket
+- Syncing with upstream rawhide selinux-policy up to:
+  * 95151e3c777301fd291f4db363a6bb24cad8c414
+
+-------------------------------------------------------------------
 Tue Oct 21 09:07:33 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20251021:
