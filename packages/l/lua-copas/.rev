@@ -32,4 +32,14 @@
 </comment>
     <requestid>1072458</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ff41e4e3be37b170beb63cab28597b95</srcmd5>
+    <version>2.0.2</version>
+    <time>1762355885</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Add luajit version to _multibuild</comment>
+    <requestid>1315146</requestid>
+  </revision>
 </revisionlist>
