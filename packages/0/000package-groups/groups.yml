@@ -130,6 +130,7 @@ dvd:
   - patterns-yast-yast2_server: [required]
   # gedit is tested as part of staging
   - gedit
+  - gzip
   - patterns-base-minimal_base: [required]
   - patterns-yast-x11_yast: [required]
   # bnc#431280 (Japanese fonts)
