@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="plexus-sec-dispatcher" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property file="build.properties"/>
+
+  <property name="project.groupId" value="org.codehaus.plexus"/>
+  <property name="project.artifactId" value="plexus-sec-dispatcher"/>
+  <property name="project.version" value="4.1.0"/>
+  <property name="project.url" value="https://github.com/codehaus-plexus/plexus-sec-dispatcher"/>
+  <property name="project.name" value="Plexus Security Dispatcher Component"/>
+  <property name="project.organization.name" value="Sonatype, Inc."/>
+
+  <property name="compiler.release" value="17"/>
+
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <property name="build.mdoDir" value="src/main/mdo"/>
+  <property name="build.mdoOutputDir" value="${build.dir}/generated-sources/modello"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <!-- plexus-utils-3.1.1 plexus-cipher-1.4 classworlds-1.1-alpha-2
+           plexus-container-default-1.0-alpha-9-stable-1.jar -->
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+  <path id="build.test.classpath">
+    <fileset dir="lib">
+     <!-- plexus-utils-3.1.1 plexus-cipher-1.4 classworlds-1.1-alpha-2
+          plexus-container-default-1.0-alpha-9-stable-1.jar junit-3.8.2 -->
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Code generation target                                                 -->
+  <!-- ====================================================================== -->
+
+  <target name="gen-src" description="Generate sources from mdo files">
+    <mkdir dir="${build.mdoOutputDir}"/>
+    <macrodef name="modello-single-mode">
+      <attribute name="file"/>
+      <attribute name="mode"/>
+      <attribute name="version"/>
+      <sequential>
+        <exec executable="modello" failonerror="true">
+          <arg file="@{file}"/> <!-- model file -->
+          <arg value="@{mode}"/> <!-- output type -->
+          <arg file="${build.mdoOutputDir}"/> <!-- output directory -->
+          <arg value="@{version}"/> <!-- model version -->
+          <arg value="false"/> <!-- package with version -->
+          <arg value="8"/> <!-- javaSource -->
+        </exec>
+      </sequential>
+    </macrodef>
+    <macrodef name="modello">
+      <attribute name="file"/>
+      <attribute name="version" default="4.0.0"/>
+      <sequential>
+        <echo taskname="modello" message="Generating sources for @{file}"/>
+        <modello-single-mode file="@{file}" version="@{version}" mode="java"/>
+        <modello-single-mode file="@{file}" version="@{version}" mode="xsd"/>
+        <modello-single-mode file="@{file}" version="@{version}" mode="stax-reader"/>
+        <modello-single-mode file="@{file}" version="@{version}" mode="stax-writer"/>
+      </sequential>
+    </macrodef>
+    <modello file="${build.mdoDir}/settings-security.mdo"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" depends="gen-src" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}"
+           nowarn="false"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           release="${compiler.release}"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+        <pathelement location="${build.mdoOutputDir}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Sisu javax.inject.Named generation target                              -->
+  <!-- ====================================================================== -->
+
+  <target name="sisu"
+          depends="compile"
+          description="Generate javax.inject.Name index">
+    <sequential>
+	  <java classname="org.eclipse.sisu.space.SisuIndex"
+	        failonerror="true"
+			fork="true">
+        <classpath>
+          <path refid="build.classpath"/>
+        </classpath>
+        <arg value="${build.outputDir}"/>
+      </java>
+      <move todir="${build.outputDir}/META-INF">
+        <fileset dir="META-INF"/>
+      </move>
+	</sequential>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc"
+          depends="gen-src"
+          description="Generates the Javadoc of the application">
+    <path id="src.path">
+        <pathelement location="${build.srcDir}"/>
+        <pathelement location="${build.mdoOutputDir}"/>
+    </path>
+    <javadoc sourcepathref="src.path"
+             packagenames="*"
+             destdir="${reporting.outputDirectory}/apidocs"
+             access="protected"
+             source="${compiler.release}"
+             verbose="false"
+             version="true"
+             use="true"
+             author="true"
+             splitindex="false"
+             nodeprecated="false"
+             nodeprecatedlist="false"
+             notree="false"
+             noindex="false"
+             nohelp="false"
+             nonavbar="false"
+             serialwarn="false"
+             charset="ISO-8859-1"
+             linksource="false"
+             breakiterator="false">
+      <classpath refid="build.classpath"/>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="sisu" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
+         excludes="**/package.html">
+      <manifest>
+        <attribute name="Implementation-Title" value="${project.name}"/>
+        <attribute name="Implementation-URL" value="${project.url}"/>
+        <attribute name="Implementation-Vendor" value="${project.organization.name}"/>
+        <attribute name="Implementation-Vendor-Id" value="${project.groupId}"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+        <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
+        <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
+        <attribute name="JavaPackages-Version" value="${project.version}"/>
+        <attribute name="Specification-Title" value="${project.name}"/>
+        <attribute name="Specification-Vendor" value="${project.organization.name}"/>
+        <attribute name="Specification-Version" value="${project.version}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>
