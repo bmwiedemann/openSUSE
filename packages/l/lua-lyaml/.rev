@@ -7,4 +7,14 @@
     <comment>libyaml bindings for lua.</comment>
     <requestid>1156936</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2b6dd10fb88eee76b798bcf3511c7454</srcmd5>
+    <version>6.2.8</version>
+    <time>1762355903</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Add luajit version to _multibuild</comment>
+    <requestid>1315182</requestid>
+  </revision>
 </revisionlist>
