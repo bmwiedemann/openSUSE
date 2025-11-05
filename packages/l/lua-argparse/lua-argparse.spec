@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %if "%{flavor}" == "test"
-%define flavor lua51
+%define flavor lua54
 %bcond_without test
 %else
 %bcond_with test
@@ -67,7 +67,7 @@ help, and error messages, and can generate shell completion scripts.
 /bin/true
 
 %install
-%if ! %{with test}
+%if %{without test}
 install -v -D -m 0644 -t %{buildroot}%{lua_noarchdir} -p src/argparse.lua
 %endif
 
@@ -76,7 +76,7 @@ install -v -D -m 0644 -t %{buildroot}%{lua_noarchdir} -p src/argparse.lua
 busted
 %endif
 
-%if ! %{with test}
+%if %{without test}
 %files
 %license LICENSE
 %doc CHANGELOG.md README.md
