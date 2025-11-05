@@ -1,5 +1,5 @@
 <multibuild>
-<package>lua51</package>
+<package>luajit</package>
 <package>lua53</package>
 <package>lua54</package>
 <package>test</package>
