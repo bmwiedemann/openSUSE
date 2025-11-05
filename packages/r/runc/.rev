@@ -650,4 +650,16 @@ provides).</comment>
     <comment></comment>
     <requestid>1311570</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>7f9f6ebb7136fb240e52aa147f55f5e6</srcmd5>
+    <version>1.3.3</version>
+    <time>1762355861</time>
+    <user>anag_factory</user>
+    <comment>- Update to runc v1.3.3. Upstream changelog is available from
+  &lt;https://github.com/opencontainers/runc/releases/tag/v1.3.3&gt;. bsc#1252232
+  * CVE-2025-31133
+  * CVE-2025-52565
+  * CVE-2025-52881</comment>
+    <requestid>1315710</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Nov  5 10:05:32 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.3.3. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.3.3>. bsc#1252232
+  * CVE-2025-31133
+  * CVE-2025-52565
+  * CVE-2025-52881
+- Remove upstreamed patches for bsc#1252232:
+  - 2025-11-05-CVEs.patch
+
+-------------------------------------------------------------------
+Mon Nov  3 10:25:08 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+[ This update was only released for SLE 12 and 15. ]
+
+- Update to runc v1.2.8. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.2.8>. bsc#1252232
+  * CVE-2025-31133
+  * CVE-2025-52565
+  * CVE-2025-52881
+- Remove upstreamed patches for bsc#1252232:
+  - 2025-11-05-CVEs.patch
+
+-------------------------------------------------------------------
+Thu Oct 16 02:16:12 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+[ This update was only released for SLE 12 and 15. ]
+
+- Backport patches for three CVEs. All three vulnerabilities ultimately allow
+  (through different methods) for full container breakouts by bypassing runc's
+  restrictions for writing to arbitrary /proc files. bsc#1252232
+  * CVE-2025-31133
+  * CVE-2025-52565
+  * CVE-2025-52881
+  + 2025-11-05-CVEs.patch
+
+-------------------------------------------------------------------
 Sat Oct  4 05:01:50 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.3.2. Upstream changelog is available from
