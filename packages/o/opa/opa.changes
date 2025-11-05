@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 05 10:19:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.1:
+  This is a bugfix release for the split builtin: In v1.10.0, it
+  was looping infinitely when used with an empty-string delimiter.
+  The release is otherwise identical to v1.10.0.
+  * topdown: fix split(..., "")
+
+-------------------------------------------------------------------
 Sun Nov 02 07:00:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.0:
