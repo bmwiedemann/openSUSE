@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  3 15:38:01 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.18+kde2, rebased upstream:
+  * Update bundled libtiff to version 4.7.0
+  * Bump version to 5.15.18
+
+-------------------------------------------------------------------
 Wed May 28 08:35:00 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.17+kde2, rebased upstream:
