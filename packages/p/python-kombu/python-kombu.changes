@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Nov  4 10:46:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.6.0
+  * Test on Python 3.14 (#2361)
+  * Revert "Revert "Bump pymongo from 4.10.1 to 4.15.3"" (#2401)
+  * Prepare for release: v5.6.0 (#2402)
+  * Revert "Feature: urllib3 instead of curl" (#2261)
+  * Fix #2286 : SQS - Enhance support for receiving message attributes.
+    Allow string in msg body. (#2300)
+  * Update gcpubsub.txt for protobuf (#2320)
+  * fix body bytes encoding in curl.py (#2322)
+  * Hotfix(aws_ssl): validate secure connection (#2323)
+  * Update setup.py to remove deprecation warning (#2298)
+  * Update protobuf to 5.29.5 (#2199)
+  * Allow setting `tags` in initial `boto3.sqs.create_queue` call
+    via `transport_options` (#2321)
+  * Add sts_token_buffer_time parameter to transport options (#2216)
+  * Docs: Fix incorrect "added in 5.6.0" note for sts_token_timeout
+    in SQS transport docs (#2327)
+  * SQS: when redelivering a message apply visibility timeout based
+    on wait_time_seconds (long polling time) (#2049)
+  * Bump redis requirement to <6 to support v5.3 (#2329)
+  * Pidbox: support queue_exclusive / queue_durable (RabbitMQ 4.x) (#2338)
+  * Prepare for (pre) release: v5.6.0b1 (#2343)
+  * Normalize mongodb options keys (#2347)
+  * Redis: propagate polling_interval from transport options to
+    _brpop_start timeout (#2346)
+  * Add max_prefetch limit to QoS class and related tests (#2348)
+  * Prepare for (pre) release: v5.6.0b2 (#2349)
+  * Remove custom `LifoQueue` class conflicting with recent gevent (#2314)
+  * Replace deprecated datetime.utcnow() with datetime.now(timezone.utc) (#2355)
+  * Prepare for (pre) release: v5.6.0b3 (#2359)
+  * Bump mypy from 1.14.1 to 1.18.1 AGAIN (#2363)
+  * Remove nested query from sqlalchemy _size (#2315)
+  * Remove misused argument for autoflake (#2368)
+  * Support client_name connection parameter for redis transport (#2367)
+  * Prepare for (pre) release: v5.6.0rc1 (#2369)
+  * Update Redis version constraint to <6.2 (#2377)
+  * remove Python 3.8 from CI as EOL (#2241)
+  * Revert "Bump pymongo from 4.10.1 to 4.15.3" (#2384)
+  * Update requirements to remove backports.zoneinfo (#2391)
+  * Update qpid-python and qpid-tools versions (#2392)
+  * Remove Qpid transport from requirements of func test (#2393)
+  * Fix comment grammar in entity_name test (#2394)
+  * Prepare for (pre) release: v5.6.0rc2 (#2396)
+  * Test on Python 3.14 (#2361)
+  * Revert "Revert "Bump pymongo from 4.10.1 to 4.15.3"" (#2401)
+  * Prepare for release: v5.6.0 (#2402)
+
+-------------------------------------------------------------------
 Fri Sep  5 02:43:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Refresh support-pyro-5.patch to no longer use Pyro 4 compatability.

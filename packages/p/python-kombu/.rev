@@ -1037,4 +1037,12 @@
     <comment>- Refresh support-pyro-5.patch to no longer use Pyro 4 compatability.</comment>
     <requestid>1302835</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>b3d27ac65c6d55a01782c0d6cbf80d2e</srcmd5>
+    <version>5.6.0</version>
+    <time>1762355923</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1315516</requestid>
+  </revision>
 </revisionlist>

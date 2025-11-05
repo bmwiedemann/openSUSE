@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kombu
-Version:        5.5.4
+Version:        5.6.0
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
