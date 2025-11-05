@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/apache/maven-filtering.git</param>
+		<param name="revision">84993b07cd1f8b9c8d5b2ecfe04bf08b0176fdc7</param>
+		<param name="versionformat">4.0.0~%cd.git%h</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
