@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 04 20:22:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.3:
+  * Bump cert-manager to v1.19.1
+  * Bump coredns/corefile-migration to v1.0.29 to release 1.11
+  * Bump Go to v1.24.9
+  * update cert-manager to v1.19.0
+  * Bump Go to v1.24.8
+
+-------------------------------------------------------------------
 Wed Oct 08 04:52:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.2:
