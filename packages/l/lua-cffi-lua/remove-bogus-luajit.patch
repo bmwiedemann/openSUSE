@@ -1,0 +1,30 @@
+From 1a8c2207f4689ee746b1df4a390d1b5843ed1161 Mon Sep 17 00:00:00 2001
+From: q66 <daniel@octaforge.org>
+Date: Mon, 20 Oct 2025 20:29:26 +0200
+Subject: [PATCH] tests: remove bogus code making tests fail under luajit
+
+This would replace cffi with regular ffi under luajit for tests,
+we don't actually want that.
+
+Fixes https://github.com/q66/cffi-lua/issues/63
+---
+ tests/runner.lua | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/tests/runner.lua b/tests/runner.lua
+index d08b249..0b2b679 100644
+--- a/tests/runner.lua
++++ b/tests/runner.lua
+@@ -48,12 +48,6 @@ if tl_path and (#tl_path > 0) then
+     end
+ end
+ 
+--- set up luajit compatibility
+-
+-if jit then
+-    package.preload["cffi"] = package.preload["ffi"]
+-end
+-
+ -- test lib
+ 
+ skip_test = function()

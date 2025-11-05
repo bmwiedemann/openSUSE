@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:47:14 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 20 21:36:05 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add remove-bogus-luajit.patch which makes the test suite pass
+  with LuaJIT (gh#q66/cffi-lua#63).
+
+-------------------------------------------------------------------
+Mon Oct 20 17:45:26 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Exclude 32bit architectures from building (gh#q66/cffi-lua#59)
+- Not yet adding luajit version to _multibuild (gh#q66/cffi-lua#63)
+
+-------------------------------------------------------------------
 Tue Aug 26 23:47:19 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add two patches fixing typos in documentation:

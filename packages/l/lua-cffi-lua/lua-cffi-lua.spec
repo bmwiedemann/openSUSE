@@ -31,13 +31,20 @@ Patch0:         0001-Corrects-1st-example-in-introduction.md.patch
 # PATCH-FIX-UPSTREAM 0002-docs-fixed-the-second-example-in-introduction.md.patch mcepl@suse.com
 # fix second typo in introduction.md
 Patch1:         0002-docs-fixed-the-second-example-in-introduction.md.patch
+# PATCH-FIX-UPSTREAM remove-bogus-luajit.patch gh#q66/cffi-lua#63 mcepl@suse.com
+# fix tests for LuaJIT
+Patch2:         remove-bogus-luajit.patch
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-compat-5.3
 BuildRequires:  lua-macros
 BuildRequires:  meson
 BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libffi)
 Requires:       %{flavor}
+Requires: 	%{flavor}-compat-5.3
+# gh#q66/cffi-lua#59
+ExcludeArch:    %{ix86} armv6l armv6hl armv7l armv7hl
 %lua_provides
 %lua_provides -e
 %if "%{flavor}" == ""

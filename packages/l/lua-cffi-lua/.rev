@@ -7,4 +7,18 @@
     <comment>New package, for using C libraries in Lua scripts.</comment>
     <requestid>1307411</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>10c5681b32a427bcbea0c51c5659d05d</srcmd5>
+    <version>0.2.3+git.1748465608.9f2acc9</version>
+    <time>1762355883</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Add remove-bogus-luajit.patch which makes the test suite pass
+  with LuaJIT (gh#q66/cffi-lua#63).
+
+- Exclude 32bit architectures from building (gh#q66/cffi-lua#59)
+- Not yet adding luajit version to _multibuild (gh#q66/cffi-lua#63)</comment>
+    <requestid>1315142</requestid>
+  </revision>
 </revisionlist>
