@@ -57,9 +57,8 @@ A Lua library for packing and unpacking binary data, supporting arbitrary
 %check
 
 %files
+%license COPYING
+%doc CHANGES README.md
 %{lua_noarchdir}/%{mod_name}
-%{luarocks_treedir}/%{mod_name}
-%docdir %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
-%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/COPYING
 
 %changelog
