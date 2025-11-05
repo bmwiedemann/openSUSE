@@ -101,4 +101,14 @@ Our library in SLE is being maintained and patched against all
 those CVEs anyway.</comment>
     <requestid>1297672</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>fd98cc03c0d754604802c96a4364c5d5</srcmd5>
+    <version>1.5.1</version>
+    <time>1762355895</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Add luajit version to _multibuild</comment>
+    <requestid>1315168</requestid>
+  </revision>
 </revisionlist>
