@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Nov  3 14:49:34 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.18+kde109, rebased upstream:
+  * Revert "xcb: handle XI2 input button and motion events from slave devices"
+  * Update the opensource lisence to .sh file
+  * Revert "SQLite: Update SQLite to v3.45.3"
+  * Revert "Update Harfbuzz to 8.4.0"
+  * Update to Harfbuzz 10.0.1
+  * Update bundled libpng to version 1.6.44
+  * Update bundled libjpeg-turbo to version 3.0.4
+  * Update to Harfbuzz 9.0.0
+  * xcb: handle XI2 input button and motion events from slave devices
+  * Document the potential widening effect of upper-casing
+  * Correct documentation of QDateTime's comparisons
+  * Skip 'off-by-one' adjustment in block length during undo operation
+  * tst_QThread: add a test for self-cancellation
+  * Add QTZ::displayName() benchmarks
+  * Remove an unfounded assertion, add the test-case that tripped it
+  * Update Freetype to 2.13.3
+  * Android: enable building AIDL for AGP 4.2.0+
+  * SQLite: Update SQLite to v3.46.1
+  * SQLite: Update SQLite to v3.46.0
+  * SQLite: Update identified license
+  * QTest::formatFailMessage(): fix use of std::mbstowcs()
+  * macOS: Be honest about the system locale
+  * macOS: Initialize standard NSUserDefaults as early as possible
+  * PCRE: upgrade to 10.44
+  * Gui: compile fix with -qreal float
+  * testlib: Share more code between formatFailMessage() implementations
+  * Fix -Wformat issues in our headers
+  * QTest::toString(): Fix format specifier for q(u)int64 on Windows
+  * xcb: fix QWindow::startSystemMove()/Resize() triggered by touch
+  * xcb: fix QWindow::startSystemMove()/Resize() triggered by mouse
+  * QMimeDatabase: pick up XML mimetypes from :/qt-project.org/mime/packages
+  * Change the mimetype database embedded into QtCore
+  * [doc] Q(Persistent)ModelIndex: document behavior of data() on invalid Q(P)MIs
+  * QThread: fix race condition between parallel terminate() calls
+  * tst_QtConcurrentThreadEngine: fix UB (uninitialized boolean)
+  * q(v)snprintf(): mark the functions as obsolete
+  * uic: Prepare for encountering fully qualified enum values in new .ui files
+  * HTTP2: use temporary keychain in the abortOnEncrypted test function
+  * xcb: try to repopulate xinput2 devices when needed
+  * QObject: fix installEventFilterOrder() test flakiness
+  * QObject: add unittest to check the order of eventFilter() calls
+  * Fix leak of QWindowsUiaMainProvider instances
+  * Call VariantClear to free BSTR owned by VARIANT instance
+  * Make it possible to create distance field with specific size
+  * qIsEffectiveTLD: Fix chunk calculation code
+  * generateTLDs: Fix the chunkSize check
+  * QFontEngineFT::alphaMapForGlyph: ask for Format_A8 if glyphs are color
+  * tst_QGlobal: fix -Wmaybe-uninitialized
+  * tst_QDir: fix -Wunused-result
+  * Bump version to 5.15.18
+  * Enable harfbuzz-ng on old macOS versions
+  * Update to Harfbuzz 8.5.0
+  * xcb: Correctly report whether QInternalMimeData::retrieveData_sys() fails
+  * Fix qt_attribution file for libjpeg
+  * Update bundled libjpeg-turbo to version 3.0.3
+  * Android: QtEditText support for full-screen soft keyboard
+  * configure: Fix summary shown standard when passing -c++std c++14
+  * Make it possible to override autodetection of Harfbuzz-NG
+  * Android: Register displayListener after QtLayout initialization
+  * QBitArray: fix potential truncation in QDataStream op>>()
+  * QBitArray: avoid overflow in size-to-storage calculations
+  * QMainWindowLayout: rewrite validateToolBarArea() to return by value
+  * androiddeplyqt: fix more missing pclose() on early returns
+  * androiddeplyqt: fix missing pclose() on early return
+  * QTextLayout: keep strong reference on font engine in a layout loop
+- Rebase big-endian-scroll.patch
+
+-------------------------------------------------------------------
+Mon Jun 30 14:51:37 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.17+kde123:
+  * qDecodeDataUrl(): fix precondition violation in call to QByteArrayView::at()
+- Drop patch, now included:
+  * CVE-2025-5455.patch
+
+-------------------------------------------------------------------
 Fri Jun  6 10:57:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch (CVE-2025-5455, boo#1243958)

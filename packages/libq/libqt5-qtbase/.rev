@@ -2682,4 +2682,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * CVE-2025-5455.patch</comment>
     <requestid>1283610</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>e3f6c7accc1db20b64480e492c55aee7</srcmd5>
+    <version>5.15.18+kde109</version>
+    <time>1762355842</time>
+    <user>anag_factory</user>
+    <comment>Qt 5.15.18 (forwarded request 1315523 from favogt)</comment>
+    <requestid>1315541</requestid>
+  </revision>
 </revisionlist>

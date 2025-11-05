@@ -1,4 +1,4 @@
-From 2c828bf5d4a0332ecece29e4513ae4b0a4a78d08 Mon Sep 17 00:00:00 2001
+From ee940f615cccdf3d4321254164022d2b77323004 Mon Sep 17 00:00:00 2001
 From: q66 <daniel@octaforge.org>
 Date: Mon, 3 Apr 2023 14:36:51 +0200
 Subject: [PATCH] Fix scrolling on big endian platforms
@@ -22,7 +22,7 @@ Fixes: https://bugreports.qt.io/browse/QTBUG-105157
  1 file changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp b/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
-index 27a2526df..cda10b39a 100644
+index 45f66a18b5d0..383a3c9c44bd 100644
 --- a/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
 +++ b/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
 @@ -43,6 +43,7 @@
@@ -43,14 +43,14 @@ index 27a2526df..cda10b39a 100644
  
 @@ -90,7 +92,7 @@ void QXcbConnection::xi2SelectDeviceEvents(xcb_window_t window)
      qt_xcb_input_event_mask_t mask;
-     mask.header.deviceid = XCB_INPUT_DEVICE_ALL_MASTER;
+     mask.header.deviceid = XCB_INPUT_DEVICE_ALL;
      mask.header.mask_len = 1;
 -    mask.mask = bitMask;
 +    mask.mask = qToLittleEndian(bitMask);
      xcb_void_cookie_t cookie =
              xcb_input_xi_select_events_checked(xcb_connection(), window, 1, &mask.header);
      xcb_generic_error_t *error = xcb_request_check(xcb_connection(), cookie);
-@@ -363,7 +365,7 @@ void QXcbConnection::xi2SelectDeviceEventsCompatibility(xcb_window_t window)
+@@ -365,7 +367,7 @@ void QXcbConnection::xi2SelectDeviceEventsCompatibility(xcb_window_t window)
          qt_xcb_input_event_mask_t xiMask;
          xiMask.header.deviceid = XCB_INPUT_DEVICE_ALL_MASTER;
          xiMask.header.mask_len = 1;
@@ -59,7 +59,7 @@ index 27a2526df..cda10b39a 100644
  
          xcb_void_cookie_t cookie =
                  xcb_input_xi_select_events_checked(xcb_connection(), window, 1, &xiMask.header);
-@@ -390,7 +392,7 @@ void QXcbConnection::xi2SelectDeviceEventsCompatibility(xcb_window_t window)
+@@ -392,7 +394,7 @@ void QXcbConnection::xi2SelectDeviceEventsCompatibility(xcb_window_t window)
              tabletDevices.insert(deviceId);
              xiEventMask[i].header.deviceid = deviceId;
              xiEventMask[i].header.mask_len = 1;
@@ -68,7 +68,7 @@ index 27a2526df..cda10b39a 100644
          }
          xcb_input_xi_select_events(xcb_connection(), window, nrTablets, &(xiEventMask.data()->header));
      }
-@@ -406,7 +408,7 @@ void QXcbConnection::xi2SelectDeviceEventsCompatibility(xcb_window_t window)
+@@ -408,7 +410,7 @@ void QXcbConnection::xi2SelectDeviceEventsCompatibility(xcb_window_t window)
  #endif
              xiEventMask[i].header.deviceid = scrollingDevice.deviceId;
              xiEventMask[i].header.mask_len = 1;
@@ -77,7 +77,7 @@ index 27a2526df..cda10b39a 100644
              i++;
          }
          xcb_input_xi_select_events(xcb_connection(), window, i, &(xiEventMask.data()->header));
-@@ -826,6 +828,8 @@ bool QXcbConnection::xi2SetMouseGrabEnabled(xcb_window_t w, bool grab)
+@@ -889,6 +891,8 @@ bool QXcbConnection::xi2SetMouseGrabEnabled(xcb_window_t w, bool grab)
                  | XCB_INPUT_XI_EVENT_MASK_TOUCH_UPDATE
                  | XCB_INPUT_XI_EVENT_MASK_TOUCH_END;
  
@@ -87,5 +87,5 @@ index 27a2526df..cda10b39a 100644
              xcb_generic_error_t *error = nullptr;
              auto cookie = xcb_input_xi_grab_device(xcb_connection(), w, XCB_CURRENT_TIME, XCB_CURSOR_NONE, id,
 -- 
-2.40.1
+2.51.0
 
