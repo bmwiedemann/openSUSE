@@ -8,4 +8,23 @@
 </comment>
     <requestid>1238293</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9c906ff9740d68051ba1849b08c1714d</srcmd5>
+    <version>2.214</version>
+    <time>1762355919</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.214
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+    2.214 24 October 2025
+        * version 2.214
+          Fri Oct 24 16:15:22 2025 +0100
+          5fd4a5676d0e9a283d55fdf7d2a14957292060dd
+        * Add dependbot yml file to police the workflow files
+          Thu Sep 4 16:57:57 2025 +0100
+          af071123f21dbd30cd1c0caab4fd126512007161
+        * Add perl 5.42 to workflow files
+          Thu Sep 4 16:57:06 2025 +0100
+          efd6a1b6cb0e2be7a26747b427575d6aa4bee6d6</comment>
+    <requestid>1315478</requestid>
+  </revision>
 </revisionlist>

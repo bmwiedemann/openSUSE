@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 25 05:30:40 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.214
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.214 24 October 2025
+        * version 2.214
+          Fri Oct 24 16:15:22 2025 +0100
+          5fd4a5676d0e9a283d55fdf7d2a14957292060dd
+        * Add dependbot yml file to police the workflow files
+          Thu Sep 4 16:57:57 2025 +0100
+          af071123f21dbd30cd1c0caab4fd126512007161
+        * Add perl 5.42 to workflow files
+          Thu Sep 4 16:57:06 2025 +0100
+          efd6a1b6cb0e2be7a26747b427575d6aa4bee6d6
+
+-------------------------------------------------------------------
 Sat Aug 31 05:30:38 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.213

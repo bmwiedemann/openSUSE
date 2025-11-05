@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Compress-Raw-Bzip2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Compress-Raw-Bzip2
 Name:           perl-Compress-Raw-Bzip2
-Version:        2.213
+Version:        2.214
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND BSD-3-Clause
@@ -26,6 +26,7 @@ Summary:        Low-Level Interface to bzip2 compression library
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -39,7 +40,7 @@ for use by the 'IO::Compress::Bzip2' and 'IO::Compress::Bunzip2' modules,
 it can be used on its own for simple compression/uncompression tasks.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
