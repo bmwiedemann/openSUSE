@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 05 05:38:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 8.29.0:
+  * Add trace log for skipped archive file when not enabled (#1961)
+  * Respect contexts with timeouts (#1948)
+  * Config min version (#1955)
+  * fix(config): validate rules when [extend] is used (#1592)
+  * feat: add Amazon Bedrock API key detection (#1935)
+  * Add GitHub Sponsors section and Discord link
+  * feat: improve regex  to detect Sonar tokens with prefixes
+    (#1931)
+
+-------------------------------------------------------------------
 Thu Jul 24 11:01:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 8.28.0:
