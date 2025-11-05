@@ -27,12 +27,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-SecretStorage%{psuffix}
-Version:        3.3.3
+Version:        3.4.0
 Release:        0
 Summary:        Python bindings to FreeDesktoporg Secret Service API
 License:        BSD-3-Clause
 URL:            https://github.com/mitya57/secretstorage
-Source:         https://files.pythonhosted.org/packages/source/S/SecretStorage/SecretStorage-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/secretstorage/secretstorage-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -72,7 +72,7 @@ The documentation can be found on `pythonhosted.org`_.
 .. _`pythonhosted.org`: https://pythonhosted.org/SecretStorage/
 
 %prep
-%setup -q -n SecretStorage-%{version}
+%setup -q -n secretstorage-%{version}
 
 %build
 %pyproject_wheel
