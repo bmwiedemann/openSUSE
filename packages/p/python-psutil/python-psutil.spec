@@ -30,7 +30,7 @@ ExclusiveArch:  donotbuild
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-psutil%{psuffix}
-Version:        7.1.1
+Version:        7.1.2
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 30 14:15:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 7.1.2
+  * 2657_: stop publishing prebuilt Linux and Windows wheels for 32-bit Python.
+    32-bit CPython is still supported, but psutil must now be built from source.
+  * 2565_: produce wheels for free-thread cPython 3.13 and 3.14 (patch by
+    Lysandros Nikolaou)
+  * 2650_, [macOS]: `Process.cmdline()`_ and `Process.environ()`_ may incorrectly
+    raise `NoSuchProcess`_ instead of `ZombieProcess`_.
+  * 2658_, [macOS]: double ``free()`` in `Process.environ()`_ when it fails
+    internally. This posed a risk of segfault.
+  * 2662_, [macOS]: massive C code cleanup to guard against possible segfaults
+    which were (not so) sporadically spotted on CI.
+  * 2657_: stop publishing prebuilt Linux and Windows wheels for 32-bit Python.
+
+-------------------------------------------------------------------
 Thu Oct 23 09:47:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Exclude tests to mutibuild due to dependency cycle with python-xdist
