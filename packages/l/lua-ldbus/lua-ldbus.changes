@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:48:14 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Sat Oct 11 15:43:45 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to a version 0.0+git20250404.5cc933b:
+  - Lua 5.4 is now supported
+  - src/message_iter: Bind dbus_mesage_iter_get_element_count()
+  - Added support for DESTDIR
+  - src/message_iter: Maintain reference to underlying DBusMessage 
+- Remove obsolete conditionals for openSUSE/Leap 42.3
+- Remove upstreamed patch:
+  - lua54.patch
+
+-------------------------------------------------------------------
+Sat Oct 11 15:25:16 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to a version 0.0+git20250404.5cc933b:
+  * src/message_iter: Maintain reference to underlying DBusMessage
+  * Added support for DESTDIR
+  * src/message_iter: Bind dbus_mesage_iter_get_element_count()
+  * Lua 5.4 is now supported
+  * Squashed 'vendor/compat-5.3/' changes from daebe77..e245d3a
+
+-------------------------------------------------------------------
 Wed Jan 25 12:37:35 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Blank line required after %%autosetup on SLE12

@@ -57,4 +57,28 @@
     <comment></comment>
     <requestid>1060955</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3ab7c31c09b8f99855dd90f30b62b08d</srcmd5>
+    <version>0.0+git20250404.5cc933b</version>
+    <time>1762355888</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Update to a version 0.0+git20250404.5cc933b:
+  - Lua 5.4 is now supported
+  - src/message_iter: Bind dbus_mesage_iter_get_element_count()
+  - Added support for DESTDIR
+  - src/message_iter: Maintain reference to underlying DBusMessage 
+- Remove obsolete conditionals for openSUSE/Leap 42.3
+- Remove upstreamed patch:
+  - lua54.patch
+
+- Update to a version 0.0+git20250404.5cc933b:
+  * src/message_iter: Maintain reference to underlying DBusMessage
+  * Added support for DESTDIR
+  * src/message_iter: Bind dbus_mesage_iter_get_element_count()
+  * Lua 5.4 is now supported
+  * Squashed 'vendor/compat-5.3/' changes from daebe77..e245d3a</comment>
+    <requestid>1315154</requestid>
+  </revision>
 </revisionlist>
