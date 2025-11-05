@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 30 13:24:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.4.4
+  * Bound `setuptools` to a specific constraint `setuptools>=68,<=81`.
+  * Raised upper bound of mypyc for the optional pre-built extension to v1.18.2
+  * `setuptools-scm` as a build dependency.
+  * Enforced hashes in `dev-requirements.txt` and created `ci-requirements.txt`
+    for security purposes.
+  * Additional pre-built wheels for riscv64, s390x, and armv7l architectures.
+  * Restore ` multiple.intoto.jsonl` in GitHub releases in addition to individual
+    attestation file per wheel.
+
+-------------------------------------------------------------------
 Sun Sep 14 21:00:13 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.3:

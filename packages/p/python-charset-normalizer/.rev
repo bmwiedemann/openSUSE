@@ -394,4 +394,12 @@
     for CPython 3.7 due to a change in cibuildwheel.</comment>
     <requestid>1304688</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1e225b16800b48f93484ec152199155d</srcmd5>
+    <version>3.4.4</version>
+    <time>1762355868</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1315251</requestid>
+  </revision>
 </revisionlist>
