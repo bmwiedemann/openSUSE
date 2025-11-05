@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  3 15:46:11 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.18+kde55, rebased upstream:
+  * Bump version to 5.15.18
+  * Make wheel operations compatible with xcb
+
+-------------------------------------------------------------------
 Wed May 28 08:37:34 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.17+kde57, rebased upstream:
