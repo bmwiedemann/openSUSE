@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:50:05 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 13 11:40:51 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package buildable with LuaJIT.
+
+-------------------------------------------------------------------
 Fri Dec 17 19:04:39 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.0.0:

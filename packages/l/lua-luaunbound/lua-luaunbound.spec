@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define flavor @BUILD_FLAVOR@%{nil}
+%define flavor @BUILD_FLAVOR@
 %define mod_name luaunbound
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
@@ -44,7 +44,7 @@ This is a binding to libunbound for Lua
 %autosetup -n %{mod_name}-%{version} -p1
 
 %build
-%make_build CC=cc LUA_PC=lua%{lua_version} LDLIBS="-llua -lunbound" MYCFLAGS="%{optflags}"
+%make_build CC=cc LUA_PC=lua LDLIBS="%(pkgconf --libs lua) -lunbound" MYCFLAGS="%{optflags}"
 
 %install
 %make_install LUA_LIBDIR=%{lua_archdir}

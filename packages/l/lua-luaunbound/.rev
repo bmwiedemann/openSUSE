@@ -21,4 +21,14 @@
 </comment>
     <requestid>941294</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cf346ce848f909b69f861163c59560c1</srcmd5>
+    <version>1.0.0</version>
+    <time>1762355902</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Make the package buildable with LuaJIT.</comment>
+    <requestid>1315179</requestid>
+  </revision>
 </revisionlist>
