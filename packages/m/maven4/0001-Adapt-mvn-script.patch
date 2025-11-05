@@ -1,0 +1,62 @@
+From 44801a454d940a22b80442386a08dd38ee5b21b9 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Wed, 1 Feb 2017 14:54:26 +0100
+Subject: [PATCH 1/2] Adapt mvn script
+
+---
+ apache-maven/src/assembly/maven/bin/mvn | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/apache-maven/src/assembly/maven/bin/mvn b/apache-maven/src/assembly/maven/bin/mvn
+index 6fd203348f..c67528c9c9 100755
+--- a/apache-maven/src/assembly/maven/bin/mvn
++++ b/apache-maven/src/assembly/maven/bin/mvn
+@@ -32,20 +32,22 @@
+ 
+ if [ -z "$MAVEN_SKIP_RC" ] ; then
+ 
+-  if [ -f /usr/local/etc/mavenrc ] ; then
+-    . /usr/local/etc/mavenrc
+-  fi
+-
+   if [ -f /etc/mavenrc ] ; then
+     . /etc/mavenrc
+   fi
+ 
++  if [ -z "$JAVA_HOME" ] ; then
++    . /etc/java/maven@{maven_version_suffix}.conf
++  fi
++
+   if [ -f "$HOME/.mavenrc" ] ; then
+     . "$HOME/.mavenrc"
+   fi
+ 
+ fi
+ 
++export JAVA_HOME
++
+ # OS specific support. $var _must_ be set to either true or false.
+ cygwin=false;
+ mingw=false;
+@@ -70,7 +72,8 @@ done
+ 
+ saveddir=`pwd`
+ 
+-MAVEN_HOME=`dirname "$PRG"`/..
++MAVEN_HOME="${_FEDORA_MAVEN_HOME:-`dirname "$PRG"`/..}"
++unset _FEDORA_MAVEN_HOME
+ 
+ # make it fully qualified
+ MAVEN_HOME=`cd "$MAVEN_HOME" && pwd`
+@@ -174,7 +177,7 @@ concat_lines() {
+ 
+ MAVEN_PROJECTBASEDIR="`find_maven_basedir "$@"`"
+ MAVEN_OPTS="$MAVEN_OPTS `concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config"`"
+-LAUNCHER_JAR=`echo "$MAVEN_HOME"/boot/plexus-classworlds-*.jar`
++LAUNCHER_JAR=`build-classpath plexus-classworlds`
+ LAUNCHER_CLASS=org.codehaus.plexus.classworlds.launcher.Launcher
+ 
+ # For Cygwin and MinGW, switch paths to Windows format before running java(1) command
+-- 
+2.48.1
+

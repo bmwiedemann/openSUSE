@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Nov  4 21:52:09 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not install some of the pom-only artifacts to avoid clashes
+  with maven 3. For the other, potentially clashing, use
+  mvn_compat_version
+- Added patch:
+  * 0001-Set-Guice-class-loading-to-CHILD-avoid-using-termina.patch
+    + Set Guice class loading to CHILD: avoid using terminally
+      deprecated methods. Default Guice class loading uses a
+      terminally deprecated JDK memory-access classes.
+
+-------------------------------------------------------------------
+Tue Nov  4 15:51:30 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging with version 4.0.0-rc-4
+- Added patches:
+  * 0001-Adapt-mvn-script.patch
+    + adapt the launcher script to our layout
+  * 0002-Invoke-logback-via-reflection.patch
+    + do not depend directly on logback (avoids build cycles)
+  * 0001-Resolver-2.0.11-11043-11115.patch
+  * maven4-resolver-2.0.13.patch
+    + port to maven-resolver 2.0.13
+
+
