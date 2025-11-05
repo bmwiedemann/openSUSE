@@ -18,7 +18,7 @@
 
 %define _piddir /run
 Name:           prosody
-Version:        0.12.5
+Version:        13.0.2
 Release:        0
 Summary:        Communications server for Jabber/XMPP
 License:        MIT
@@ -128,6 +128,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf ||:
 %{_libdir}/prosody/net
 %{_libdir}/prosody/prosody.version
 %{_libdir}/prosody/util
+%{_libdir}/prosody/loader.lua
 %{_mandir}/man1/prosodyctl.1%{?ext_man}
 %dir %attr(-,prosody,prosody) %{_localstatedir}/lib/prosody
 %dir %attr(-,prosody,prosody) %{_localstatedir}/log/prosody

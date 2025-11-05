@@ -717,4 +717,41 @@
   * util.xtemplate: Fix error on applying each() to zero stanzas</comment>
     <requestid>1234586</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c3d5443347595ae0fb13f518f4c7975f</srcmd5>
+    <version>13.0.2</version>
+    <time>1762355911</time>
+    <user>anag_factory</user>
+    <comment>- Update to 13.0.0:
+  Modules:
+  * A number of popular modules have transitioned from community modules into Prosody with this release:
+    + mod_cloud_notify
+    + mod_http_altconnect
+  * And the following modules are completely new:
+    + mod_account_activity
+    + mod_flags
+    + mod_s2s_auth_dane_in
+    + mod_server_info
+  Administration:
+  * New ‘prosodyctl check features’ recommends configuration improvements
+  * mod_announce: Add shell commands to send messages to all users, online users, or limited by roles
+  * New mod_account_activity plugin records last login/logout time of a user account
+  * New ‘watch log’ command to follow live debug logs at runtime
+  * Similarly, ‘watch stanzas’ can be used to capture XML logs in real-time
+  Networking:
+  * Honour ‘weight’ parameter during SRV record selection
+  * Support for RFC 8305 “Happy Eyeballs” to improve IPv4/IPv6 connectivity
+  * Support for TCP Fast Open in server_epoll (pending LuaSocket support)
+  * Support for deferred accept in server_epoll (pending LuaSocket support)
+  MUC:
+  * Component admins are no longer room owners by default. This can be reverted to the
+    old behaviour with component_admins_as_room_owners = true, but this has known
+    incompatibilities with some clients. Instead, use the shell or ad-hoc commands to
+    gain ownership of rooms when necessary.
+  * Permissions updates:
+    + Room creation restricted to local users (of the parent host) by default
+      restrict_room_creation = true restricts to admins, false disables all restrictions
+    + Persistent rooms can only be created by local users (parent host) by default</comment>
+    <requestid>1315198</requestid>
+  </revision>
 </revisionlist>

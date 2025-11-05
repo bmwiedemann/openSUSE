@@ -1,8 +1,9 @@
-diff -urEbw prosody-0.12.0/prosody.cfg.lua.dist prosody-0.12.0.new/prosody.cfg.lua.dist
---- prosody-0.12.0/prosody.cfg.lua.dist	2022-03-08 13:34:39.594708341 +0100
-+++ prosody-0.12.0.new/prosody.cfg.lua.dist	2022-03-18 09:59:19.359175774 +0100
-@@ -95,6 +95,8 @@
- 	-- "posix"; -- POSIX functionality, sends server to background, etc.
+Index: prosody-13.0.2/prosody.cfg.lua.dist
+===================================================================
+--- prosody-13.0.2.orig/prosody.cfg.lua.dist
++++ prosody-13.0.2/prosody.cfg.lua.dist
+@@ -97,6 +97,8 @@ modules_disabled = {
+ 	-- "s2s"; -- Handle server-to-server connections
  }
  
 +-- Unix specific
@@ -10,7 +11,7 @@ diff -urEbw prosody-0.12.0/prosody.cfg.lua.dist prosody-0.12.0.new/prosody.cfg.l
  
  -- Server-to-server authentication
  -- Require valid certificates for server-to-server connections?
-@@ -183,8 +185,8 @@
+@@ -185,8 +187,8 @@ archive_expires_after = "1w" -- Remove a
  -- Logging configuration
  -- For advanced logging see https://prosody.im/doc/logging
  log = {
