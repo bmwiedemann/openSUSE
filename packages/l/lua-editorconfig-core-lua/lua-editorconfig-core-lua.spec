@@ -17,7 +17,6 @@
 
 
 %define flavor @BUILD_FLAVOR@
-%define _name lgi
 %define mod_name editorconfig-core-lua
 Version:        0.3.0
 Release:        0
@@ -26,8 +25,8 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/Other
 URL:            https://github.com/editorconfig/editorconfig-core-lua
 Source:         https://github.com/editorconfig/%{mod_name}/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM build-with-lua51.patch gh#editorconfig/editorconfig-core-lua!5 mcepl@suse.com
-# make package building with Lua 5.1
+# PATCH-FIX-OPENSUSE build-with-lua51.patch gh#editorconfig/editorconfig-core-lua!5 mcepl@suse.com
+# make package building with Lua 5.1 and LuaJIT
 Patch0:         build-with-lua51.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luafilesystem
@@ -68,12 +67,11 @@ as the Editorconfig C Core library.
 %check
 cd build
 export LUA_CPATH="./?.so;%{lua_archdir}/?.so;${LUA_CPATH}"
-lua%{lua_version} ../editorconfig.lua -v
+lua ../editorconfig.lua -v
 
 %files
 %license LICENSE
 %doc README.md
-%dir %{lua_archdir}
-%{lua_archdir}/*
+%{lua_archdir}/editorconfig.so
 
 %changelog

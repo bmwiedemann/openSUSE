@@ -40,4 +40,18 @@
   Lua 5.1 (gh#editorconfig/editorconfig-core-lua!5).</comment>
     <requestid>1309200</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>109e5171c307121a00154c4e3c79b11d</srcmd5>
+    <version>0.3.0</version>
+    <time>1762355888</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Don't depend on lua5.1
+
+- Update the build-with-lua51.patch to work even with LuaJIT,
+  but make the application of the patch conditional (it probably
+  breaks with Lua &gt;= 5.2).</comment>
+    <requestid>1315151</requestid>
+  </revision>
 </revisionlist>

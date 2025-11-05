@@ -1,13 +1,23 @@
 ---
- CMakeLists.txt     |    2 +-
- editorconfig_lua.c |   34 ++++++++++++++++++++++++++++------
- 2 files changed, 29 insertions(+), 7 deletions(-)
+ CMakeLists.txt     |    6 ++++--
+ editorconfig_lua.c |   37 +++++++++++++++++++++++++++++++------
+ 2 files changed, 35 insertions(+), 8 deletions(-)
 
 Index: editorconfig-core-lua-0.3.0/CMakeLists.txt
 ===================================================================
 --- editorconfig-core-lua-0.3.0.orig/CMakeLists.txt	2019-10-04 19:06:29.000000000 +0200
-+++ editorconfig-core-lua-0.3.0/CMakeLists.txt	2025-10-05 23:46:24.364066893 +0200
-@@ -35,7 +35,7 @@
++++ editorconfig-core-lua-0.3.0/CMakeLists.txt	2025-10-10 11:39:03.526268594 +0200
+@@ -24,7 +24,8 @@
+ # POSSIBILITY OF SUCH DAMAGE.
+ #
+ 
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.10)
++cmake_policy(SET CMP0074 NEW)
+ 
+ project(editorconfig-core-lua VERSION 0.3.0 LANGUAGES C)
+ 
+@@ -35,7 +36,7 @@
  include(GNUInstallDirs)
  
  find_package(EditorConfig REQUIRED)
@@ -16,10 +26,18 @@ Index: editorconfig-core-lua-0.3.0/CMakeLists.txt
  find_package(Lua REQUIRED)
  
  set(CMAKE_C_STANDARD 99)
+@@ -55,6 +56,7 @@
+ )
+ target_link_libraries(editorconfig_lua
+     ${EDITORCONFIG_LIBRARIES}
++    ${LUA_LIBRARIES}
+ )
+ # Omit the lib<name>.so prefix from the DSO
+ set_target_properties(editorconfig_lua PROPERTIES
 Index: editorconfig-core-lua-0.3.0/editorconfig_lua.c
 ===================================================================
 --- editorconfig-core-lua-0.3.0.orig/editorconfig_lua.c	2019-10-04 19:06:29.000000000 +0200
-+++ editorconfig-core-lua-0.3.0/editorconfig_lua.c	2025-10-05 23:46:58.750059153 +0200
++++ editorconfig-core-lua-0.3.0/editorconfig_lua.c	2025-10-10 11:38:53.210693172 +0200
 @@ -6,10 +6,10 @@
   * modification, are permitted provided that the following conditions are met:
   *
@@ -34,7 +52,7 @@ Index: editorconfig-core-lua-0.3.0/editorconfig_lua.c
   *
   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-@@ -36,6 +36,28 @@
+@@ -36,6 +36,31 @@
  #error "LEC_VERSION is not defined."
  #endif
  
@@ -43,7 +61,7 @@ Index: editorconfig-core-lua-0.3.0/editorconfig_lua.c
 + * Lua 5.1 compatibility functions.
 + * Adapted from Lua 5.2.x source.
 + */
-+static void
++void
 +luaL_setfuncs(lua_State *L, const luaL_Reg *l, int nup)
 +{
 +    luaL_checkstack(L, nup, "too many upvalues");
@@ -57,13 +75,16 @@ Index: editorconfig-core-lua-0.3.0/editorconfig_lua.c
 +    lua_pop(L, nup);
 +}
 +
++#ifndef luaL_newlib
 +#define luaL_newlib(L, l) (lua_newtable(L), luaL_setfuncs(L, l, 0))
 +#endif
++#endif
++
 +
  /***
   * Lua bindings to the EditorConfig C Core library.
   * @module editorconfig
-@@ -94,7 +116,7 @@
+@@ -94,7 +119,7 @@
      editorconfig_handle eh;
      int name_value_count;
      const char *name, *value;
@@ -72,7 +93,7 @@ Index: editorconfig-core-lua-0.3.0/editorconfig_lua.c
  
      eh = open_ec_handle(L);
      assert(eh != NULL);
-@@ -108,7 +130,7 @@
+@@ -108,7 +133,7 @@
          lua_pushstring(L, name);
          lua_pushstring(L, value);
          lua_settable(L, 1);
@@ -81,7 +102,7 @@ Index: editorconfig-core-lua-0.3.0/editorconfig_lua.c
          lua_pushstring(L, name);
          lua_settable(L, 2);
          idx += 1;
-@@ -149,4 +171,4 @@
+@@ -149,4 +174,4 @@
      luaL_newlib(L, editorconfig_reg);
      add_version(L);
      return 1;
