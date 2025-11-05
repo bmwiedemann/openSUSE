@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.78.0
+Version:        2.79.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -79,7 +79,7 @@ Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.7.0
 Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 14.1.0~b1
-Requires:       %{pythons}-azure-mgmt-containerservice >= 39.1.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 40.0.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.8.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
@@ -87,7 +87,7 @@ Requires:       %{pythons}-azure-mgmt-devtestlabs >= 2.2
 Requires:       %{pythons}-azure-mgmt-eventgrid >= 10.2.0
 Requires:       %{pythons}-azure-mgmt-eventhub >= 12.0.0~b1
 Requires:       %{pythons}-azure-mgmt-extendedlocation >= 1.0.0b2
-Requires:       %{pythons}-azure-mgmt-hdinsight >= 9.0.0
+Requires:       %{pythons}-azure-mgmt-hdinsight >= 9.1.0~b2
 Requires:       %{pythons}-azure-mgmt-imagebuilder >= 1.3.0
 Requires:       %{pythons}-azure-mgmt-iotcentral >= 10.0.0b1
 Requires:       %{pythons}-azure-mgmt-iothub >= 5.0.0~b1
@@ -106,7 +106,7 @@ Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
 Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 1.1.0~b2
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b17
-Requires:       %{pythons}-azure-mgmt-recoveryservices >= 3.1.0
+Requires:       %{pythons}-azure-mgmt-recoveryservices >= 4.0.0
 Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.2.0
 Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.5.0
 Requires:       %{pythons}-azure-mgmt-redis >= 14.5.0
@@ -125,7 +125,7 @@ Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b3
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b2
 Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b22
 Requires:       %{pythons}-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
-Requires:       %{pythons}-azure-mgmt-storage >= 23.1.0
+Requires:       %{pythons}-azure-mgmt-storage >= 24.0.0
 Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
 Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-web >= 9.0.0
