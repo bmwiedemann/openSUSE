@@ -770,4 +770,12 @@ depends on sr#251413</comment>
     <comment>Qt 5.15.17, try #2 (forwarded request 1280892 from favogt)</comment>
     <requestid>1280905</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>17f4e0bbee6730c32eb753f48ef9229c</srcmd5>
+    <version>5.15.18+kde22</version>
+    <time>1762355844</time>
+    <user>anag_factory</user>
+    <comment>Qt 5.15.18 (forwarded request 1315523 from favogt)</comment>
+    <requestid>1315545</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov  4 10:28:16 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.18+kde22, rebased upstream:
+  * Avoid undefined behavior in the JIT
+  * Update opensource license to .frag and .vert files
+  * Doc: Add information about Felgo QML Hot Reload tool
+  * doc: fix reference to nonexistent DragHandler.SnapNever
+  * Fix crash in distance field cache with some glyphs
+  * QQmlListModel: Invalidate ModelObject when necessary
+  * doc: Stop telling users that DragHandler is not for DnD
+  * QQuickAnimation: Fix setting running property
+  * Bump version to 5.15.18
+  * Fix compilation with C++11
+  * Fix documentation of List/GridView count
+  * GridView: add missing properties and signals to the documentation
+  * Fix heap-buffer-overflow in ESTable::remove
+  * V4: Don't call methods on nullptr
+
+-------------------------------------------------------------------
 Wed May 28 08:30:00 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.17+kde21, rebased upstream:
