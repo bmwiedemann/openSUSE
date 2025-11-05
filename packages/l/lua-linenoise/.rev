@@ -25,4 +25,14 @@
     <comment>- Switch from xz compression to zstd</comment>
     <requestid>1163826</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0d5176498680b9d92c522fdad14d4c92</srcmd5>
+    <version>0.9</version>
+    <time>1762355890</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Make the package build with updated %%luarocks_* macros.</comment>
+    <requestid>1315157</requestid>
+  </revision>
 </revisionlist>

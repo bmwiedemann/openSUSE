@@ -68,9 +68,8 @@ things like UTF-8 support and ANSI terminal escape sequence detection.
 %check
 
 %files
+%doc README.md Changes __rocktree/*
+%license COPYING
 %{lua_archdir}
-%{luarocks_treedir}/%{mod_name}
-%docdir %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
-%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/COPYING
 
 %changelog
