@@ -1,7 +1,7 @@
-# The openSUSE Tumbleweed KubeVirt cdi-importer container container image
+# The openSUSE Tumbleweed KubeVirt cdi-importer container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-KubeVirt cdi-importer container container based on the openSUSE Tumbleweed Base Container Image.
+KubeVirt cdi-importer container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
 

@@ -1,7 +1,7 @@
-# The openSUSE Tumbleweed KubeVirt cdi-uploadserver container container image
+# The openSUSE Tumbleweed KubeVirt cdi-uploadserver container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-KubeVirt cdi-uploadserver container container based on the openSUSE Tumbleweed Base Container Image.
+KubeVirt cdi-uploadserver container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
 

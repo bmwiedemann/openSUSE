@@ -1,7 +1,7 @@
-# The openSUSE Tumbleweed KubeVirt cdi-cloner container container image
+# The openSUSE Tumbleweed KubeVirt cdi-cloner container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-KubeVirt cdi-cloner container container based on the openSUSE Tumbleweed Base Container Image.
+KubeVirt cdi-cloner container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
 

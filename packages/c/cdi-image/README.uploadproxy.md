@@ -1,7 +1,7 @@
-# The openSUSE Tumbleweed KubeVirt cdi-uploadproxy container container image
+# The openSUSE Tumbleweed KubeVirt cdi-uploadproxy container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-KubeVirt cdi-uploadproxy container container based on the openSUSE Tumbleweed Base Container Image.
+KubeVirt cdi-uploadproxy container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
 
