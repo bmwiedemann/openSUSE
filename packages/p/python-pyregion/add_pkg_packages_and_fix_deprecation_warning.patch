@@ -1,0 +1,23 @@
+--- pyproject.toml.ori	2025-11-04 11:59:35.069032203 -0400
++++ pyproject.toml	2025-11-04 12:01:02.080708580 -0400
+@@ -14,7 +14,8 @@
+ description = "python parser for ds9 region files"
+ readme.content-type = "text/x-rst"
+ readme.file = "README.rst"
+-license.text = "MIT"
++license = "MIT"
++license-files = [ "LICENSE" ]
+ authors = [
+     {name = "Jae-Joon Lee", email = "lee.j.joon@gmail.com"}
+ ]
+@@ -48,9 +49,7 @@
+ 
+ [tool.setuptools]
+ include-package-data = true
+-
+-[tool.setuptools.packages]
+-find = { namespaces = false }
++packages = ["pyregion", "pyregion.tests", "pyregion.tests.data"]
+ 
+ [tool.setuptools.package-data]
+ "pyregion.tests.data" = [ "*.header", "*.reg" ]
