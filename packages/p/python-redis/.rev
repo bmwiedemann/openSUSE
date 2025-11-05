@@ -554,4 +554,41 @@
     <comment></comment>
     <requestid>1289331</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>7939e19654d7a421196ed5a51ace3700</srcmd5>
+    <version>7.0.1</version>
+    <time>1762355863</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.0.1: (bsc#1252957)
+  * New Features
+    + Support for maintenance push notifications handling during server
+      upgrade or maintenance procedures.
+    + Adding WITHATTRIBS option to vector set's vsim command.
+    + Adding ssl_verify_flags_config argument for ssl connection
+      configuration
+    + Adding new ExternalAuthProviderError that will be raised when we
+      receive 'problem with LDAP service' response from server.
+  * Experimental Features
+    + Multi-database client implementation 
+  * Breaking changes
+    + Adding abstract method declaration for cache property setter in
+      EvictionPolicyInterface
+    + Removing synchronous context manager handling from async RedisCluster.
+    + Removing the threading.Lock locks and replacing them with RLock objects
+      to avoid deadlocks.
+    + Adding score_cast_func argument to zrank, zrevrank and zunion - for
+      consistency with the other sorted sets commands
+- Refreshed patch remove-mock.patch
+
+- update to 6.4.0:
+  * Added epsilon property to the vsim command
+- update to 6.3.0:
+  * Add support for new BITOP operations: DIFF, DIFF1, ANDOR, ONE
+  * Support new VAMANA vector index type
+  * Add new stream commands
+  * add async Retry __eq__ and __hash__ &amp; fix
+    ExponentialWithJitterBackoff __eq__
+  * Fixing sentinel command execution to allow returning of</comment>
+    <requestid>1315210</requestid>
+  </revision>
 </revisionlist>

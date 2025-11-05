@@ -1,26 +1,72 @@
-Index: b/tests/test_asyncio/test_credentials.py
+From fa9c6df7975a7105d265c7e05cc84391060f9478 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 3 Nov 2025 13:56:52 +1100
+Subject: [PATCH] Remove last vestiges of mock.mock
+
+With the minimum Python version now being high enough to drop the usage
+of the external mock module, switch to unittest.mock everywhere.
+---
+ dev_requirements.txt                                | 2 --
+ tests/test_asyncio/test_credentials.py              | 2 +-
+ tests/test_asyncio/test_multidb/test_healthcheck.py | 3 ++-
+ tests/test_credentials.py                           | 2 +-
+ 4 files changed, 4 insertions(+), 5 deletions(-)
+
+Index: redis-7.0.1/dev_requirements.txt
 ===================================================================
---- a/tests/test_asyncio/test_credentials.py
-+++ b/tests/test_asyncio/test_credentials.py
-@@ -8,7 +8,7 @@ from typing import Optional, Tuple, Unio
+--- redis-7.0.1.orig/dev_requirements.txt
++++ redis-7.0.1/dev_requirements.txt
+@@ -2,8 +2,6 @@ build
+ build==1.2.2.post1 ; platform_python_implementation == "PyPy" or python_version < "3.10"
+ click==8.0.4
+ invoke==2.2.0
+-mock
+-mock==5.1.0 ; platform_python_implementation == "PyPy" or python_version < "3.10"
+ packaging>=20.4
+ packaging==24.2 ; platform_python_implementation == "PyPy" or python_version < "3.10"
+ 
+Index: redis-7.0.1/tests/test_asyncio/test_credentials.py
+===================================================================
+--- redis-7.0.1.orig/tests/test_asyncio/test_credentials.py
++++ redis-7.0.1/tests/test_asyncio/test_credentials.py
+@@ -4,11 +4,11 @@ import string
+ from asyncio import Lock as AsyncLock
+ from asyncio import sleep as async_sleep
+ from typing import Optional, Tuple, Union
++from unittest.mock import Mock, call
+ 
  import pytest
  import pytest_asyncio
  import redis
 -from mock.mock import Mock, call
-+from unittest.mock import Mock, call
  from redis import AuthenticationError, DataError, RedisError, ResponseError
  from redis.asyncio import Connection, ConnectionPool, Redis
  from redis.asyncio.retry import Retry
-Index: b/tests/test_credentials.py
+Index: redis-7.0.1/tests/test_asyncio/test_multidb/test_healthcheck.py
 ===================================================================
---- a/tests/test_credentials.py
-+++ b/tests/test_credentials.py
-@@ -7,7 +7,7 @@ from typing import Optional, Tuple, Unio
+--- redis-7.0.1.orig/tests/test_asyncio/test_multidb/test_healthcheck.py
++++ redis-7.0.1/tests/test_asyncio/test_multidb/test_healthcheck.py
+@@ -1,5 +1,6 @@
++from unittest.mock import AsyncMock, Mock
++
+ import pytest
+-from mock.mock import AsyncMock, Mock
+ 
+ from redis.asyncio.multidb.database import Database
+ from redis.asyncio.multidb.healthcheck import (
+Index: redis-7.0.1/tests/test_credentials.py
+===================================================================
+--- redis-7.0.1.orig/tests/test_credentials.py
++++ redis-7.0.1/tests/test_credentials.py
+@@ -4,10 +4,10 @@ import string
+ import threading
+ from time import sleep
+ from typing import Optional, Tuple, Union
++from unittest.mock import Mock, call
  
  import pytest
  import redis
 -from mock.mock import Mock, call
-+from unittest.mock import Mock, call
  from redis import AuthenticationError, DataError, Redis, ResponseError
  from redis.auth.err import RequestTokenErr
  from redis.backoff import NoBackoff

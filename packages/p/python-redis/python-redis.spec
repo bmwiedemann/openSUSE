@@ -1,7 +1,7 @@
 #
 # spec file for package python-redis
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-redis%{psuffix}
-Version:        6.2.0
+Version:        7.0.1
 Release:        0
 Summary:        Python client for Redis key-value store
 License:        MIT
 URL:            https://github.com/redis/redis-py
 Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
+# Based on https://github.com/redis/redis-py/blob/master/dockers/sentinel.conf
+Source1:        sentinel.conf
 Patch0:         increase-test-timeout.patch
+# PATCH-FIX-UPSTREAM Based on gh#redis/redis-py#3830
 Patch1:         remove-mock.patch
 Patch2:         test_add_elem_no_quant.patch
 BuildRequires:  %{python_module async-timeout >= 4.0.2 if %python-base < 3.11.3}
@@ -49,6 +52,7 @@ BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
 %if %{with test}
+BuildRequires:  %{python_module pybreaker >= 1.4}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
@@ -104,10 +108,12 @@ rm tests/test_timeseries.py
 %{_sbindir}/redis-server --version | grep ' v=[78]\.' && redis7args="--enable-debug-command yes --enable-module-command yes"
 %{_sbindir}/redis-server --port 6379 --save "" $redis7args &
 victims="$!"
-trap "kill $victims || true" EXIT
-sleep 2
 # replica
 %{_sbindir}/redis-server --port 6380 --save "" --replicaof localhost 6379  &
+victims="$victims $!"
+# sentinel
+cp %{SOURCE1} .
+%{_sbindir}/redis-sentinel sentinel.conf &
 victims="$victims $!"
 trap "kill $victims || true" EXIT
 sleep 2
@@ -123,7 +129,11 @@ donttest="$donttest or test_xautoclaim"
 donttest+=" or test_re_auth_pub_sub_in_resp3 or test_do_not_re_auth_pub_sub_in_resp2"
 # gh#redis/redis-py#2679
 donttest+=" or test_acl_getuser_setuser or test_acl_log"
-%pytest -m 'not (onlycluster or redismod or ssl or graph)' -k "not ($donttest)" --ignore tests/test_ssl.py --ignore tests/test_asyncio/test_cluster.py --redis-url=redis://localhost:6379/
+# Requires more set up of an endpoint
+donttest+=" or TestPushNotifications"
+# Requires more sentinel services running
+donttest+=" or test_get_sentinels or test_get_master_addr_by_name"
+%pytest -m 'not (onlycluster or redismod or ssl or graph)' -k "not ($donttest)" --ignore tests/test_ssl.py --ignore tests/test_asyncio/test_scenario --ignore tests/test_scenario/test_active_active.py --redis-url=redis://localhost:6379/
 %endif
 
 %if %{without test}

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Nov  3 03:55:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.0.1: (bsc#1252957)
+  * New Features
+    + Support for maintenance push notifications handling during server
+      upgrade or maintenance procedures.
+    + Adding WITHATTRIBS option to vector set's vsim command.
+    + Adding ssl_verify_flags_config argument for ssl connection
+      configuration
+    + Adding new ExternalAuthProviderError that will be raised when we
+      receive 'problem with LDAP service' response from server.
+  * Experimental Features
+    + Multi-database client implementation 
+  * Breaking changes
+    + Adding abstract method declaration for cache property setter in
+      EvictionPolicyInterface
+    + Removing synchronous context manager handling from async RedisCluster.
+    + Removing the threading.Lock locks and replacing them with RLock objects
+      to avoid deadlocks.
+    + Adding score_cast_func argument to zrank, zrevrank and zunion - for
+      consistency with the other sorted sets commands
+- Refreshed patch remove-mock.patch
+
+-------------------------------------------------------------------
+Tue Sep 30 12:33:11 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.0:
+  * Added epsilon property to the vsim command
+- update to 6.3.0:
+  * Add support for new BITOP operations: DIFF, DIFF1, ANDOR, ONE
+  * Support new VAMANA vector index type
+  * Add new stream commands
+  * add async Retry __eq__ and __hash__ & fix
+    ExponentialWithJitterBackoff __eq__
+  * Fixing sentinel command execution to allow returning of
+    actual responses when meaningful - behaviour controlled by
+    'return_responses' argument.
+  * Annotate deprecated_args decorator to preserve wrapped
+    function type signature
+  * Fix ConnectionPool to raise MaxConnectionsError instead of
+    Connection…
+  * add async Retry __eq__ and __hash__ & fix
+    ExponentialWithJitterBackoff __eq__
+  * SentinelManagedConnection searches for new master upon
+    connection failure (#3560)
+
+-------------------------------------------------------------------
 Mon Jun 30 16:54:24 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Added test_add_elem_no_quant.patch to fix test on 32 bit archs.
