@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Nov 04 20:29:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.32.0:
+  * chore: pin cosign to v2.x (#2213)
+  * build(deps): bump chainguard.dev/apko in the gomod group
+    (#2210)
+  * xattrs: filter out XFS specific xattrs (#2208)
+  * chore: fix remaining gosec findings; update local+CI
+    golangci-lint version (#2206)
+  * split/lib: move symlinks as well as files (#2197)
+  * chore: address more findings; improve QEMU host key
+    verification (#2205)
+  * chore: migrate to golangci-lint v2; add config file; address
+    findings (#2204)
+  * chore: avoid building glibc and rust-1.86 in CI (#2203)
+  * build(deps): bump github.com/docker/docker (#2182)
+  * build(deps): bump actions/download-artifact from 5.0.0 to 6.0.0
+    (#2200)
+  * build(deps): bump actions/upload-artifact from 4.6.2 to 5.0.0
+    (#2199)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace (#2177)
+  * build(deps): bump github.com/moby/moby (#2183)
+  * build(deps): bump the gomod group across 1 directory with 10
+    updates (#2201)
+  * fix: add --generate-provenance to compile command (#2202)
+  * build(deps): bump sigstore/cosign-installer from 3.10.0 to
+    4.0.0 (#2190)
+  * build(deps): bump github.com/docker/cli (#2181)
+  * build(deps): bump actions/setup-go from 5.5.0 to 6.0.0 (#2175)
+  * build(deps): bump golang.org/x/time from 0.13.0 to 0.14.0
+    (#2174)
+  * feat: Reorganize linters; improve linter output structure; add
+    support for storing JSON results (#2196)
+  * fetch pipeline: don't adjust ownership when untarring as root
+
+-------------------------------------------------------------------
 Mon Oct 27 05:51:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.31.9:
