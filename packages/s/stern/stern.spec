@@ -17,7 +17,7 @@
 
 
 Name:           stern
-Version:        1.33.0
+Version:        1.33.1
 Release:        0
 Summary:        Multi pod and container log tailing for Kubernetes
 License:        Apache-2.0

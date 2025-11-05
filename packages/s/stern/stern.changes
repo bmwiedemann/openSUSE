@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 04 20:20:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.33.1:
+  * Fix 'no entry for key "COMMIT_AUTHOR_NAME"' in the release
+    workflow (#357)
+  * Update CHANGELOG for v1.33.1 (#356)
+  * Added WinGet release target. (#354)
+
+-------------------------------------------------------------------
 Thu Sep 18 08:56:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.33.0:
