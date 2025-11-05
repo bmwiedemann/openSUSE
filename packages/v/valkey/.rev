@@ -120,4 +120,27 @@
     <comment></comment>
     <requestid>1309281</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4b979e1ed254dc234522b943cbba6e6c</srcmd5>
+    <version>9.0.0</version>
+    <time>1762355864</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.0.0:
+  - Changes since last major version:
+    * https://valkey.io/blog/introducing-valkey-9/
+    * https://github.com/valkey-io/valkey/releases/tag/9.0.0-rc1
+    * https://github.com/valkey-io/valkey/releases/tag/9.0.0-rc2
+    * https://github.com/valkey-io/valkey/releases/tag/9.0.0-rc3
+  - Bug fixes
+    * HSETEX with FXX should not create an object if it does not exist
+    * Fix crash when aborting a slot migration while child snapshot is active
+    * Fix double MOVED reply on unblock at failover
+    * Fix memory leak with CLIENT LIST/KILL duplicate filters
+    * Fix incorrect accounting after completed atomic slot migration
+    * Fix Lua VM crash after FUNCTION FLUSH ASYNC + FUNCTION LOAD
+    * Fix invalid memory address caused by hashtable shrinking during safe
+      iteration
+</comment>
+    <requestid>1315480</requestid>
+  </revision>
 </revisionlist>

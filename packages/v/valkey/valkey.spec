@@ -26,7 +26,7 @@
 %global make_flags CFLAGS="%{build_cflags}" DEBUG="" V="echo" PREFIX=%{buildroot}%{_prefix} BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
 
 Name:           valkey
-Version:        8.1.4
+Version:        9.0.0
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
