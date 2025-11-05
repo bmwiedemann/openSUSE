@@ -1,0 +1,42 @@
+From 894e11120d096b469677830aa94d40e309c22fe6 Mon Sep 17 00:00:00 2001
+From: Lennart Poettering <lennart@poettering.net>
+Date: Tue, 13 May 2025 14:32:00 +0200
+Subject: [PATCH] pkexec: also se $SUDO_UID/$SUDO_GID for compat with sudo
+
+Various tools (including some in systemd) want to slightly change
+behaviour in case they detect they are invoked in a sudo or sudo-like
+context (for example disable certain security-sensitive interfaces).
+They currently mostly check $USER_UID to detect this situation, which
+will work for at least the sudo, run0 sudo-rs implementation of a
+privilege elevation tool. It doesn't work for pkexec however.
+
+Let's change this, and for compatibility with sudo simply set the these
+two env vars too. This would increase compatibility for everyone in a
+simple, generic way.
+
+Yes, it would be great if the env var would be more generically named
+than $SUDO_something, but I think at this point it shouldn't really
+matter, it's just a string.
+
+Fixes: #561
+---
+ src/programs/pkexec.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/programs/pkexec.c b/src/programs/pkexec.c
+index 4274c92b..fcd3f418 100644
+--- a/src/programs/pkexec.c
++++ b/src/programs/pkexec.c
+@@ -960,6 +960,12 @@ main (int argc, char *argv[])
+ 
+   s = g_strdup_printf ("%d", getuid ());
+   g_ptr_array_add (saved_env, g_strdup ("PKEXEC_UID"));
++  g_ptr_array_add (saved_env, g_strdup (s));
++  g_ptr_array_add (saved_env, g_strdup ("SUDO_UID")); /* compat with sudo */
++  g_ptr_array_add (saved_env, s);
++
++  s = g_strdup_printf ("%d", getgid ());
++  g_ptr_array_add (saved_env, g_strdup ("SUDO_GID")); /* compat with sudo */
+   g_ptr_array_add (saved_env, s);
+ 
+   /* set the environment */

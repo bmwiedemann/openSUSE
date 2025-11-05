@@ -47,6 +47,12 @@ Patch1:         polkit-gettext.patch
 Patch3:         polkit-keyinit.patch
 # PATCH-FIX-OPENSUSE polkit-adjust-libexec-path.patch -- Adjust path to polkit-agent-helper-1 (bsc#1180474)
 Patch4:         polkit-adjust-libexec-path.patch
+# PATCH-FEATURE-UPSTREAM systemd-socket-activation.patch -- drop requirement for setuid binaries
+Patch5:         systemd-socket-activation.patch
+# PATCH-FIX-UPSTREAM auth_keep.patch -- fix remembering the authentication for 5 minutes like sudo
+Patch6:         auth_keep.patch
+# PATCH-FEATURE-UPSTREAM auth_keep.patch -- make environment more sudo compatible
+Patch7:         sudo_uid.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -278,6 +284,8 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %dir %{_localstatedir}/lib/polkit
 %{_sysusersdir}/polkit.conf
 %{_unitdir}/polkit.service
+%{_unitdir}/polkit-agent-helper.socket
+%{_unitdir}/polkit-agent-helper@.service
 
 %files devel
 %{_libdir}/libpolkit-agent-1.so

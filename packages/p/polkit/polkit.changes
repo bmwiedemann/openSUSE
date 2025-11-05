@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 13 08:31:45 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Backport for NoNewPrivs support:
+  - systemd-socket-activation.patch: start agent via socket, no setuid
+- Backport of patches for better run0 usability:
+  - auth_keep.patch: do not ask for reauth if new process shares same UID/parent/cgroup/tty
+  - sudo_uid.patch: also set $SUDO_UID/$SUDO_GID for compat with sudo
+
+-------------------------------------------------------------------
 Tue Sep 16 14:46:00 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Skip tests in qemu emulation

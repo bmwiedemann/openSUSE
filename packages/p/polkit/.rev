@@ -874,4 +874,16 @@ can switch the default compiler. (forwarded request 1187079 from jamborm)</comme
     <comment>- Skip tests in qemu emulation (forwarded request 1305226 from Andreas_Schwab)</comment>
     <requestid>1305233</requestid>
   </revision>
+  <revision rev="96" vrev="4">
+    <srcmd5>d8cf1257865cdc8feb5a7f31f61e7160</srcmd5>
+    <version>126</version>
+    <time>1762355876</time>
+    <user>anag_factory</user>
+    <comment>- Backport for NoNewPrivs support:
+  - systemd-socket-activation.patch: start agent via socket, no setuid
+- Backport of patches for better run0 usability:
+  - auth_keep.patch: do not ask for reauth if new process shares same UID/parent/cgroup/tty
+  - sudo_uid.patch: also set $SUDO_UID/$SUDO_GID for compat with sudo (forwarded request 1315266 from kukuk)</comment>
+    <requestid>1315270</requestid>
+  </revision>
 </revisionlist>

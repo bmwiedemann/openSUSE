@@ -1,0 +1,792 @@
+From c007940054392b67b84b6044dda8a215040d8eb5 Mon Sep 17 00:00:00 2001
+From: Luca Boccassi <bluca@debian.org>
+Date: Fri, 6 Sep 2024 17:14:38 +0200
+Subject: [PATCH] agent helper: support separate socket-activated service to
+ run without SETUID
+
+SETUID binaries are considered harmful, as te execution context is
+under the control of unprivileged attackers.
+
+Enhance the polkit pam agent helper with a new mode: when running
+under systemd, add a socket-activated service that the helper will
+run under, as root. The agent talks to this service via AF_UNIX
+instead of spawning it, and STDIN/STDOUT are connected as before.
+The helper can make use of PID FDs and SO_PEERCRED to reliably
+identify the caller. In order to do this, a third version of the
+auth D-Bus method is added, that also takes a subject, built using
+the PID FD.
+If the AF_UNIX socket is not present, the agent will fork the
+helper as before, with no changes.
+
+Fixes https://github.com/polkit-org/polkit/issues/169
+---
+diff -urN polkit-126.orig/data/meson.build polkit-126/data/meson.build
+--- polkit-126.orig/data/meson.build	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/data/meson.build	2025-10-13 10:17:16.302316285 +0200
+@@ -48,6 +48,19 @@
+   )
+ 
+   configure_file(
++    input: 'polkit-agent-helper@.service.in',
++    output: '@BASENAME@',
++    configuration: service_conf,
++    install: true,
++    install_dir: systemdsystemunitdir,
++  )
++
++  install_data(
++    'polkit-agent-helper.socket',
++    install_dir: systemdsystemunitdir,
++  )
++
++  configure_file(
+     input: 'polkit.conf.in',
+     output: '@BASENAME@',
+     configuration: service_conf,
+diff -urN polkit-126.orig/data/polkit-agent-helper@.service.in polkit-126/data/polkit-agent-helper@.service.in
+--- polkit-126.orig/data/polkit-agent-helper@.service.in	1970-01-01 01:00:00.000000000 +0100
++++ polkit-126/data/polkit-agent-helper@.service.in	2025-10-13 10:17:16.303166737 +0200
+@@ -0,0 +1,34 @@
++[Unit]
++Description=Authorization Manager Agent Helper
++Documentation=man:polkit(8)
++
++[Service]
++Type=oneshot
++DeviceAllow=/dev/null rw
++DevicePolicy=strict
++ExecStart=@libprivdir@/polkit-agent-helper-1 --socket-activated
++StandardInput=socket
++StandardOutput=socket
++LimitMEMLOCK=0
++LockPersonality=yes
++MemoryDenyWriteExecute=yes
++NoNewPrivileges=yes
++PrivateDevices=yes
++PrivateNetwork=yes
++PrivateTmp=yes
++ProtectControlGroups=yes
++ProtectHome=yes
++ProtectKernelModules=yes
++ProtectKernelLogs=yes
++ProtectKernelTunables=yes
++ProtectSystem=strict
++ProtectClock=yes
++ProtectHostname=yes
++RemoveIPC=yes
++RestrictAddressFamilies=AF_UNIX
++RestrictNamespaces=yes
++RestrictRealtime=yes
++RestrictSUIDSGID=yes
++SystemCallArchitectures=native
++SystemCallFilter=@system-service
++UMask=0077
+diff -urN polkit-126.orig/data/polkit-agent-helper.socket polkit-126/data/polkit-agent-helper.socket
+--- polkit-126.orig/data/polkit-agent-helper.socket	1970-01-01 01:00:00.000000000 +0100
++++ polkit-126/data/polkit-agent-helper.socket	2025-10-13 10:17:16.303308835 +0200
+@@ -0,0 +1,11 @@
++[Unit]
++Description=Authorization Manager Agent Helper
++Documentation=man:polkit(8)
++
++[Socket]
++Accept=yes
++RemoveOnStop=yes
++ListenStream=/run/polkit/agent-helper.socket
++
++[Install]
++WantedBy=sockets.target
+diff -urN polkit-126.orig/docs/polkit/docbook-interface-org.freedesktop.PolicyKit1.Authority.xml polkit-126/docs/polkit/docbook-interface-org.freedesktop.PolicyKit1.Authority.xml
+--- polkit-126.orig/docs/polkit/docbook-interface-org.freedesktop.PolicyKit1.Authority.xml	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/docs/polkit/docbook-interface-org.freedesktop.PolicyKit1.Authority.xml	2025-10-13 10:17:16.303591518 +0200
+@@ -44,6 +44,9 @@
+                                   IN  <link linkend="eggdbus-struct-Identity">Identity</link>                       identity)
+ <link linkend="eggdbus-method-org.freedesktop.PolicyKit1.Authority.AuthenticationAgentResponse2">AuthenticationAgentResponse2</link>      (IN uint32 uid, IN  String                         cookie,
+                                   IN  <link linkend="eggdbus-struct-Identity">Identity</link>                       identity)
++<link linkend="eggdbus-method-org.freedesktop.PolicyKit1.Authority.AuthenticationAgentResponse3">AuthenticationAgentResponse3</link>      (IN  String                         cookie,
++                                  IN  <link linkend="eggdbus-struct-Identity">Identity</link>                       identity,
++                                  IN  <link linkend="eggdbus-struct-Subject">Subject</link>                       subject)
+ <link linkend="eggdbus-method-org.freedesktop.PolicyKit1.Authority.EnumerateTemporaryAuthorizations">EnumerateTemporaryAuthorizations</link> (IN  <link linkend="eggdbus-struct-Subject">Subject</link>                        subject,
+                                   OUT Array&lt;<link linkend="eggdbus-struct-TemporaryAuthorization">TemporaryAuthorization</link>&gt;  temporary_authorizations)
+ <link linkend="eggdbus-method-org.freedesktop.PolicyKit1.Authority.RevokeTemporaryAuthorizations">RevokeTemporaryAuthorizations</link>    (IN  <link linkend="eggdbus-struct-Subject">Subject</link>                        subject)
+@@ -316,7 +319,7 @@
+ }
+           </programlisting>
+           <para>
+-<para>This struct describes identities such as UNIX users and UNIX groups. It is typically used to check if a given process is authorized for an action.</para><para>The following kinds of identities are known:</para>                   <formalpara><title>Unix User</title><para><literal>identity_kind</literal> should be set to <literal>unix-user</literal> with key <literal>uid</literal> (of type <literal>uint32</literal>).</para></formalpara>                   <formalpara><title>Unix Group</title><para><literal>identity_kind</literal> should be set to <literal>unix-group</literal> with key <literal>gid</literal> (of type <literal>uint32</literal>).</para></formalpara>  
++<para>This struct describes identities such as UNIX users and UNIX groups. It is typically used to check if a given process is authorized for an action.</para><para>The following kinds of identities are known:</para>                   <formalpara><title>Unix User</title><para><literal>identity_kind</literal> should be set to <literal>unix-user</literal> with key <literal>uid</literal> (of type <literal>uint32</literal>).</para></formalpara>                   <formalpara><title>Unix Group</title><para><literal>identity_kind</literal> should be set to <literal>unix-group</literal> with key <literal>gid</literal> (of type <literal>uint32</literal>).</para></formalpara>
+           </para>
+           <variablelist role="struct">
+   <varlistentry>
+@@ -853,6 +856,47 @@
+       </para>
+     </listitem>
+   </varlistentry>
++</variablelist>
++    </refsect2>
++    <refsect2 role="function" id="eggdbus-method-org.freedesktop.PolicyKit1.Authority.AuthenticationAgentResponse3">
++      <title>AuthenticationAgentResponse3 ()</title>
++    <programlisting>
++AuthenticationAgentResponse3 (IN  String cookie,
++                              IN  <link linkend="eggdbus-struct-Identity">Identity</link>  identity,
++                              IN  <link linkend="eggdbus-struct-Subject">Subject</link>  subject)
++    </programlisting>
++    <para>
++Method for authentication agents to invoke on successful
++authentication, intended only for use by a privileged helper process
++running via socket activation. This method will fail unless a sufficiently privileged
++caller invokes it. In contract to other methods this takes a subject as input, which
++allows reliably tracking the requester via PID FD.
++    </para>
++<variablelist role="params">
++  <varlistentry>
++    <term><literal>IN  String <parameter>cookie</parameter></literal>:</term>
++    <listitem>
++      <para>
++The cookie identifying the authentication request that was passed to the authentication agent.
++      </para>
++    </listitem>
++  </varlistentry>
++  <varlistentry>
++    <term><literal>IN  <link linkend="eggdbus-struct-Identity">Identity</link> <parameter>identity</parameter></literal>:</term>
++    <listitem>
++      <para>
++A <link linkend="eggdbus-struct-Identity">Identity</link> struct describing what identity was authenticated.
++      </para>
++    </listitem>
++  </varlistentry>
++  <varlistentry>
++    <term><literal>IN  <link linkend="eggdbus-struct-Subject">Subject</link> <parameter>subject</parameter></literal>:</term>
++    <listitem>
++      <para>
++A <link linkend="eggdbus-struct-Subject">Subject</link> struct describing what entity requested the authentication.
++      </para>
++    </listitem>
++  </varlistentry>
+ </variablelist>
+     </refsect2>
+     <refsect2 role="function" id="eggdbus-method-org.freedesktop.PolicyKit1.Authority.EnumerateTemporaryAuthorizations">
+diff -urN polkit-126.orig/docs/polkit/polkit-1-sections.txt polkit-126/docs/polkit/polkit-1-sections.txt
+--- polkit-126.orig/docs/polkit/polkit-1-sections.txt	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/docs/polkit/polkit-1-sections.txt	2025-10-13 10:17:16.303948059 +0200
+@@ -48,6 +48,8 @@
+ polkit_authority_authentication_agent_response
+ polkit_authority_authentication_agent_response_finish
+ polkit_authority_authentication_agent_response_sync
++polkit_authority_authentication_agent_response_with_subject
++polkit_authority_authentication_agent_response_with_subject_sync
+ polkit_authority_enumerate_temporary_authorizations
+ polkit_authority_enumerate_temporary_authorizations_finish
+ polkit_authority_enumerate_temporary_authorizations_sync
+diff -urN polkit-126.orig/.packit/polkit.spec polkit-126/.packit/polkit.spec
+--- polkit-126.orig/.packit/polkit.spec	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/.packit/polkit.spec	2025-10-13 10:17:16.310431957 +0200
+@@ -125,6 +125,8 @@
+ %{_datadir}/dbus-1/system.d/org.freedesktop.PolicyKit1.conf
+ %{_datadir}/dbus-1/system-services/*
+ %{_unitdir}/polkit.service
++%{_unitdir}/polkit-agent-helper.socket
++%{_unitdir}/polkit-agent-helper@.service
+ %dir %{_datadir}/polkit-1/
+ %dir %{_datadir}/polkit-1/actions
+ %attr(0750,root,polkitd) %dir %{_datadir}/polkit-1/rules.d
+diff -urN polkit-126.orig/src/polkit/polkitauthority.c polkit-126/src/polkit/polkitauthority.c
+--- polkit-126.orig/src/polkit/polkitauthority.c	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/src/polkit/polkitauthority.c	2025-10-13 10:17:16.311005990 +0200
+@@ -1493,6 +1493,67 @@
+  * @authority: A #PolkitAuthority.
+  * @cookie: The cookie passed to the authentication agent from the authority.
+  * @identity: The identity that was authenticated.
++ * @subject: The subject that requested the authentication.
++ * @cancellable: (allow-none): A #GCancellable or %NULL.
++ * @callback: A #GAsyncReadyCallback to call when the request is satisfied.
++ * @user_data: The data to pass to @callback.
++ *
++ * Asynchronously provide response that @identity successfully authenticated
++ * for the authentication request identified by @cookie as requested by @subject.
++ *
++ * This function is only used by the socket-activated agent helper, running as uiid
++ * 0, and will fail otherwise. The requesting process is identified via @subject
++ * which will contain a PID FD identifying the process.
++ *
++ * When the operation is finished, @callback will be invoked in the
++ * <link linkend="g-main-context-push-thread-default">thread-default
++ * main loop</link> of the thread you are calling this method
++ * from. You can then call
++ * polkit_authority_authentication_agent_response_finish() to get the
++ * result of the operation.
++ **/
++void
++polkit_authority_authentication_agent_response_with_subject (PolkitAuthority      *authority,
++                                                             const gchar          *cookie,
++                                                             PolkitIdentity       *identity,
++                                                             PolkitSubject        *subject,
++                                                             GCancellable         *cancellable,
++                                                             GAsyncReadyCallback   callback,
++                                                             gpointer              user_data)
++{
++  /* Unlike the polkit_authority_authentication_agent_response variant,
++   * this one is called from a socket-activated service, rather than a
++   * setuid helper invoked directly by the authenticating process.
++   */
++  g_return_if_fail (POLKIT_IS_AUTHORITY (authority));
++  g_return_if_fail (cookie != NULL);
++  g_return_if_fail (POLKIT_IS_IDENTITY (identity));
++  g_return_if_fail (POLKIT_IS_SUBJECT (subject));
++  g_return_if_fail (cancellable == NULL || G_IS_CANCELLABLE (cancellable));
++
++  g_dbus_proxy_call (authority->proxy,
++                     "AuthenticationAgentResponse3",
++                     g_variant_new ("(s@(sa{sv})@(sa{sv}))",
++                                    cookie,
++                                    polkit_identity_to_gvariant (identity), /* Floating value */
++                                    polkit_subject_to_gvariant (subject)), /* Floating value */
++                     G_DBUS_CALL_FLAGS_NONE,
++                     -1,
++                     cancellable,
++                     generic_async_cb,
++                     g_simple_async_result_new (G_OBJECT (authority),
++                                                callback,
++                                                user_data,
++                                                polkit_authority_authentication_agent_response));
++}
++
++/* ---------------------------------------------------------------------------------------------------- */
++
++/**
++ * polkit_authority_authentication_agent_response:
++ * @authority: A #PolkitAuthority.
++ * @cookie: The cookie passed to the authentication agent from the authority.
++ * @identity: The identity that was authenticated.
+  * @cancellable: (allow-none): A #GCancellable or %NULL.
+  * @callback: A #GAsyncReadyCallback to call when the request is satisfied.
+  * @user_data: The data to pass to @callback.
+@@ -1626,6 +1687,53 @@
+   call_sync_block (data);
+   ret = polkit_authority_authentication_agent_response_finish (authority, data->res, error);
+   call_sync_free (data);
++
++  return ret;
++}
++
++
++/**
++ * polkit_authority_authentication_agent_response_with_subject_sync:
++ * @authority: A #PolkitAuthority.
++ * @cookie: The cookie passed to the authentication agent from the authority.
++ * @identity: The identity that was authenticated.
++ * @subject: The subject that requested the authentication.
++ * @cancellable: (allow-none): A #GCancellable or %NULL.
++ * @error: (allow-none): Return location for error or %NULL.
++ *
++ * Provide response that @identity successfully authenticated for the
++ * authentication request identified by @cookie. See polkit_authority_authentication_agent_response_with_subject()
++ * for limitations on who is allowed is to call this method.
++ *
++ * The calling thread is blocked until a reply is received. See
++ * polkit_authority_authentication_agent_response_with_subject() for the
++ * asynchronous version.
++ *
++ * Returns: %TRUE if @authority acknowledged the call, %FALSE if @error is set.
++ **/
++gboolean
++polkit_authority_authentication_agent_response_with_subject_sync (PolkitAuthority     *authority,
++                                                                  const gchar         *cookie,
++                                                                  PolkitIdentity      *identity,
++                                                                  PolkitSubject       *subject,
++                                                                  GCancellable        *cancellable,
++                                                                  GError             **error)
++{
++  gboolean ret;
++  CallSyncData *data;
++
++  g_return_val_if_fail (POLKIT_IS_AUTHORITY (authority), FALSE);
++  g_return_val_if_fail (cookie != NULL, FALSE);
++  g_return_val_if_fail (POLKIT_IS_IDENTITY (identity), FALSE);
++  g_return_val_if_fail (POLKIT_IS_SUBJECT (subject), FALSE);
++  g_return_val_if_fail (cancellable == NULL || G_IS_CANCELLABLE (cancellable), FALSE);
++  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
++
++  data = call_sync_new ();
++  polkit_authority_authentication_agent_response_with_subject (authority, cookie, identity, subject, cancellable, call_sync_cb, data);
++  call_sync_block (data);
++  ret = polkit_authority_authentication_agent_response_finish (authority, data->res, error);
++  call_sync_free (data);
+ 
+   return ret;
+ }
+diff -urN polkit-126.orig/src/polkit/polkitauthority.h polkit-126/src/polkit/polkitauthority.h
+--- polkit-126.orig/src/polkit/polkitauthority.h	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/src/polkit/polkitauthority.h	2025-10-13 10:17:16.311330470 +0200
+@@ -103,6 +103,13 @@
+                                                                                 GCancellable        *cancellable,
+                                                                                 GError             **error);
+ 
++gboolean                   polkit_authority_authentication_agent_response_with_subject_sync (PolkitAuthority     *authority,
++                                                                                             const gchar         *cookie,
++                                                                                             PolkitIdentity      *identity,
++                                                                                             PolkitSubject       *subject,
++                                                                                             GCancellable        *cancellable,
++                                                                                             GError             **error);
++
+ GList                     *polkit_authority_enumerate_temporary_authorizations_sync (PolkitAuthority     *authority,
+                                                                                      PolkitSubject       *subject,
+                                                                                      GCancellable        *cancellable,
+@@ -186,6 +193,14 @@
+                                                                            GAsyncReadyCallback  callback,
+                                                                            gpointer             user_data);
+ 
++void                       polkit_authority_authentication_agent_response_with_subject (PolkitAuthority     *authority,
++                                                                                        const gchar         *cookie,
++                                                                                        PolkitIdentity      *identity,
++                                                                                        PolkitSubject       *subject,
++                                                                                        GCancellable        *cancellable,
++                                                                                        GAsyncReadyCallback  callback,
++                                                                                        gpointer             user_data);
++
+ gboolean                   polkit_authority_authentication_agent_response_finish (PolkitAuthority *authority,
+                                                                                   GAsyncResult    *res,
+                                                                                   GError         **error);
+diff -urN polkit-126.orig/src/polkitagent/polkitagenthelper-bsdauth.c polkit-126/src/polkitagent/polkitagenthelper-bsdauth.c
+--- polkit-126.orig/src/polkitagent/polkitagenthelper-bsdauth.c	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/src/polkitagent/polkitagenthelper-bsdauth.c	2025-10-13 10:17:16.311551678 +0200
+@@ -114,7 +114,7 @@
+   /* now send a D-Bus message to the polkit daemon that
+    * includes a) the cookie; and b) the user we authenticated
+    */
+-  if (!send_dbus_message (cookie, user_to_auth))
++  if (!send_dbus_message (cookie, user_to_auth, -1, -1))
+     {
+ #ifdef PAH_DEBUG
+       fprintf (stderr, "polkit-agent-helper-1: error sending D-Bus message to polkit daemon\n");
+diff -urN polkit-126.orig/src/polkitagent/polkitagenthelper-pam.c polkit-126/src/polkitagent/polkitagenthelper-pam.c
+--- polkit-126.orig/src/polkitagent/polkitagenthelper-pam.c	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/src/polkitagent/polkitagenthelper-pam.c	2025-10-13 10:17:16.311711779 +0200
+@@ -27,11 +27,22 @@
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/socket.h>
+ #include <syslog.h>
+ #include <security/pam_appl.h>
+ 
+ #include <polkit/polkit.h>
+ 
++#ifndef SO_PEERPIDFD
++#  if defined(__parisc__)
++#    define SO_PEERPIDFD 0x404B
++#  elif defined(__sparc__)
++#    define SO_PEERPIDFD 0x0056
++#  else
++#    define SO_PEERPIDFD 77
++#  endif
++#endif
++
+ static int conversation_function (int n, const struct pam_message **msg, struct pam_response **resp, void *data);
+ 
+ static void
+@@ -74,7 +85,10 @@
+ main (int argc, char *argv[])
+ {
+   int rc;
++  int pidfd = -1;
++  int uid = -1;
+   const char *user_to_auth;
++  char *user_to_auth_free = NULL;
+   char *cookie = NULL;
+   struct pam_conv pam_conversation;
+   pam_handle_t *pam_h;
+@@ -114,7 +128,47 @@
+       goto error;
+     }
+ 
+-  user_to_auth = argv[1];
++  /* We are socket activated and the socket has been set up as stdio/stdout, read user from it */
++  if (argv[1] != NULL && strcmp (argv[1], "--socket-activated") == 0)
++    {
++      socklen_t socklen = sizeof(int);
++      struct ucred ucred;
++
++      user_to_auth_free = read_cookie (argc, argv);
++      if (!user_to_auth_free)
++        goto error;
++      user_to_auth = user_to_auth_free;
++
++      rc = getsockopt(STDIN_FILENO, SOL_SOCKET, SO_PEERPIDFD, &pidfd, &socklen);
++      if (rc < 0)
++        {
++          if (errno == ENOPROTOOPT || errno == ENODATA)
++            {
++              syslog (LOG_ERR, "Pidfd not supported on this platform, disable polkit-agent-helper.socket and use setuid helper");
++              fprintf (stderr, "polkit-agent-helper-1: pidfd not supported on this platform, disable polkit-agent-helper.socket and use setuid helper.\n");
++            }
++          if (errno == EINVAL)
++            {
++              syslog (LOG_ERR, "Caller already exited, unable to get pidfd");
++              fprintf (stderr, "polkit-agent-helper-1: caller already exited, unable to get pidfd.\n");
++            }
++
++          goto error;
++        }
++
++      socklen = sizeof(ucred);
++      rc = getsockopt(STDIN_FILENO, SOL_SOCKET, SO_PEERCRED, &ucred, &socklen);
++      if (rc < 0)
++        {
++          syslog (LOG_ERR, "Unable to get credentials from socket");
++          fprintf (stderr, "polkit-agent-helper-1: unable to get credentials from socket.\n");
++          goto error;
++        }
++
++      uid = ucred.uid;
++    }
++  else
++    user_to_auth = argv[1];
+ 
+   cookie = read_cookie (argc, argv);
+   if (!cookie)
+@@ -206,9 +260,10 @@
+ #endif /* PAH_DEBUG */
+ 
+   /* now send a D-Bus message to the PolicyKit daemon that
+-   * includes a) the cookie; and b) the user we authenticated
++   * includes a) the cookie; b) the user we authenticated;
++   * c) the pidfd and uid of the caller, if socket-activated
+    */
+-  if (!send_dbus_message (cookie, user_to_auth))
++  if (!send_dbus_message (cookie, user_to_auth, pidfd, uid))
+     {
+ #ifdef PAH_DEBUG
+       fprintf (stderr, "polkit-agent-helper-1: error sending D-Bus message to PolicyKit daemon\n");
+@@ -217,6 +272,9 @@
+     }
+ 
+   free (cookie);
++  free (user_to_auth_free);
++  if (pidfd >= 0)
++    close (pidfd);
+ 
+ #ifdef PAH_DEBUG
+   fprintf (stderr, "polkit-agent-helper-1: successfully sent D-Bus message to PolicyKit daemon\n");
+@@ -228,6 +286,9 @@
+ 
+ error:
+   free (cookie);
++  free (user_to_auth_free);
++  if (pidfd >= 0)
++    close (pidfd);
+   if (pam_h != NULL)
+     pam_end (pam_h, rc);
+ 
+diff -urN polkit-126.orig/src/polkitagent/polkitagenthelperprivate.c polkit-126/src/polkitagent/polkitagenthelperprivate.c
+--- polkit-126.orig/src/polkitagent/polkitagenthelperprivate.c	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/src/polkitagent/polkitagenthelperprivate.c	2025-10-13 10:17:16.311990894 +0200
+@@ -78,10 +78,11 @@
+ }
+ 
+ gboolean
+-send_dbus_message (const char *cookie, const char *user)
++send_dbus_message (const char *cookie, const char *user, int pidfd, int uid)
+ {
+   PolkitAuthority *authority = NULL;
+   PolkitIdentity *identity = NULL;
++  PolkitSubject *subject = NULL;
+   GError *error;
+   gboolean ret;
+ 
+@@ -104,11 +105,23 @@
+       goto out;
+     }
+ 
+-  if (!polkit_authority_authentication_agent_response_sync (authority,
+-                                                            cookie,
+-                                                            identity,
+-                                                            NULL,
+-                                                            &error))
++  if (pidfd >= 0 && uid >= 0)
++    {
++      subject = polkit_unix_process_new_pidfd (pidfd, uid, NULL);
++      ret = polkit_authority_authentication_agent_response_with_subject_sync (authority,
++                                                                              cookie,
++                                                                              identity,
++                                                                              subject,
++                                                                              NULL,
++                                                                              &error);
++    }
++  else
++    ret = polkit_authority_authentication_agent_response_sync (authority,
++                                                              cookie,
++                                                              identity,
++                                                              NULL,
++                                                              &error);
++  if (!ret)
+     {
+       g_printerr ("polkit-agent-helper-1: error response to PolicyKit daemon: %s\n", error->message);
+       g_error_free (error);
+@@ -125,6 +138,9 @@
+   if (authority != NULL)
+     g_object_unref (authority);
+ 
++  if (subject != NULL)
++    g_object_unref (subject);
++
+   return ret;
+ }
+ 
+diff -urN polkit-126.orig/src/polkitagent/polkitagenthelperprivate.h polkit-126/src/polkitagent/polkitagenthelperprivate.h
+--- polkit-126.orig/src/polkitagent/polkitagenthelperprivate.h	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/src/polkitagent/polkitagenthelperprivate.h	2025-10-13 10:17:16.312152610 +0200
+@@ -39,7 +39,7 @@
+ 
+ char *read_cookie (int argc, char **argv);
+ 
+-gboolean send_dbus_message (const char *cookie, const char *user);
++gboolean send_dbus_message (const char *cookie, const char *user, int pidfd, int uid);
+ 
+ void flush_and_wait (void);
+ 
+diff -urN polkit-126.orig/src/polkitagent/polkitagenthelper-shadow.c polkit-126/src/polkitagent/polkitagenthelper-shadow.c
+--- polkit-126.orig/src/polkitagent/polkitagenthelper-shadow.c	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/src/polkitagent/polkitagenthelper-shadow.c	2025-10-13 10:17:16.312274649 +0200
+@@ -147,7 +147,7 @@
+   /* now send a D-Bus message to the PolicyKit daemon that
+    * includes a) the cookie; and b) the user we authenticated
+    */
+-  if (!send_dbus_message (cookie, user_to_auth))
++  if (!send_dbus_message (cookie, user_to_auth, -1, -1))
+     {
+ #ifdef PAH_DEBUG
+       fprintf (stderr, "polkit-agent-helper-1: error sending D-Bus message to PolicyKit daemon\n");
+diff -urN polkit-126.orig/src/polkitagent/polkitagentsession.c polkit-126/src/polkitagent/polkitagentsession.c
+--- polkit-126.orig/src/polkitagent/polkitagentsession.c	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/src/polkitagent/polkitagentsession.c	2025-10-13 10:17:16.312316416 +0200
+@@ -91,6 +91,7 @@
+   GOutputStream *child_stdin;
+   int child_stdout;
+   GPid child_pid;
++  GSocketConnection *helper_socket;
+ 
+   GSource *child_stdout_watch_source;
+   GIOChannel *child_stdout_channel;
+@@ -366,6 +367,14 @@
+   if (!session->helper_is_running)
+     goto out;
+ 
++  if (session->helper_socket)
++    {
++      g_io_stream_close (G_IO_STREAM (session->helper_socket), NULL, NULL);
++      g_object_unref (session->helper_socket);
++      session->helper_socket = NULL;
++      session->child_stdout = -1;
++    }
++
+   if (session->child_pid > 0)
+     {
+       gint status;
+@@ -595,35 +604,70 @@
+       goto error;
+     }
+ 
+-  helper_argv[0] = PACKAGE_PREFIX "/libexec/polkit-1/polkit-agent-helper-1";
+-  helper_argv[1] = passwd->pw_name;
+-  helper_argv[2] = NULL;
+-
+   session->child_stdout = -1;
+ 
+-  error = NULL;
+-  if (!g_spawn_async_with_pipes (NULL,
+-                                 (char **) helper_argv,
+-                                 NULL,
+-                                 G_SPAWN_DO_NOT_REAP_CHILD |
+-                                 0,//G_SPAWN_STDERR_TO_DEV_NULL,
+-                                 NULL,
+-                                 NULL,
+-                                 &session->child_pid,
+-                                 &stdin_fd,
+-                                 &session->child_stdout,
+-                                 NULL,
+-                                 &error))
++  /* Let's check if there is a socket, so that we can do the authentication without SETUID */
++  if (g_file_test ("/run/polkit/agent-helper.socket", G_FILE_TEST_EXISTS))
+     {
+-      g_warning ("Cannot spawn helper: %s\n", error->message);
+-      g_error_free (error);
+-      goto error;
+-    }
++      error = NULL;
++      session->helper_socket = g_socket_client_connect (g_socket_client_new (),
++                                                        G_SOCKET_CONNECTABLE (g_unix_socket_address_new ("/run/polkit/agent-helper.socket")),
++                                                        NULL,
++                                                        &error);
++      if (session->helper_socket  == NULL)
++        {
++          g_warning ("Cannot connect to helper via /run/polkit/agent-helper.socket, falling back to spawn suid helper instead: %s\n", error->message);
++          g_error_free (error);
++          /* Fallback to setuid helper */
++        }
++      else
++        {
++          int fd;
++
++          if (G_UNLIKELY (_show_debug ()))
++            g_print ("PolkitAgentSession: connected to helper via /run/polkit/agent-helper.socket\n");
++
++          fd = g_socket_get_fd (g_socket_connection_get_socket (session->helper_socket ));
++          session->child_stdout = fd;
++
++          session->child_stdin = (GOutputStream*)g_unix_output_stream_new (fd, FALSE);
++
++          (void) g_output_stream_write_all (session->child_stdin, passwd->pw_name, strlen (passwd->pw_name),
++                                            NULL, NULL, NULL);
++          (void) g_output_stream_write_all (session->child_stdin, "\n", 1, NULL, NULL, NULL);
++        }
++    }
++
++  if (session->child_stdout == -1)
++    {
++      helper_argv[0] = PACKAGE_PREFIX "/libexec/polkit-1/polkit-agent-helper-1";
++      helper_argv[1] = passwd->pw_name;
++      helper_argv[2] = NULL;
++
++      error = NULL;
++      if (!g_spawn_async_with_pipes (NULL,
++                                    (char **) helper_argv,
++                                    NULL,
++                                    G_SPAWN_DO_NOT_REAP_CHILD |
++                                    0,//G_SPAWN_STDERR_TO_DEV_NULL,
++                                    NULL,
++                                    NULL,
++                                    &session->child_pid,
++                                    &stdin_fd,
++                                    &session->child_stdout,
++                                    NULL,
++                                    &error))
++        {
++          g_warning ("Cannot spawn helper: %s\n", error->message);
++          g_error_free (error);
++          goto error;
++        }
+ 
+-  if (G_UNLIKELY (_show_debug ()))
+-    g_print ("PolkitAgentSession: spawned helper with pid %d\n", (gint) session->child_pid);
++      if (G_UNLIKELY (_show_debug ()))
++        g_print ("PolkitAgentSession: spawned helper with pid %d\n", (gint) session->child_pid);
+ 
+-  session->child_stdin = (GOutputStream*)g_unix_output_stream_new (stdin_fd, TRUE);
++      session->child_stdin = (GOutputStream*)g_unix_output_stream_new (stdin_fd, TRUE);
++    }
+ 
+   /* Write the cookie on stdin so it can't be seen by other processes */
+   (void) g_output_stream_write_all (session->child_stdin, session->cookie, strlen (session->cookie),
+diff -urN polkit-126.orig/src/polkitbackend/polkitbackendauthority.c polkit-126/src/polkitbackend/polkitbackendauthority.c
+--- polkit-126.orig/src/polkitbackend/polkitbackendauthority.c	2025-01-13 15:54:22.000000000 +0100
++++ polkit-126/src/polkitbackend/polkitbackendauthority.c	2025-10-13 10:17:16.313802018 +0200
+@@ -639,6 +639,11 @@
+   "      <arg type='s' name='cookie' direction='in'/>"
+   "      <arg type='(sa{sv})' name='identity' direction='in'/>"
+   "    </method>"
++  "    <method name='AuthenticationAgentResponse3'>"
++  "      <arg type='s' name='cookie' direction='in'/>"
++  "      <arg type='(sa{sv})' name='identity' direction='in'/>"
++  "      <arg type='(sa{sv})' name='subject' direction='in'/>"
++  "    </method>"
+   "    <method name='EnumerateTemporaryAuthorizations'>"
+   "      <arg type='(sa{sv})' name='subject' direction='in'/>"
+   "      <arg type='a(ss(sa{sv})tt)' name='temporary_authorizations' direction='out'/>"
+@@ -1166,6 +1171,87 @@
+     g_object_unref (identity);
+ }
+ 
++static void
++server_handle_authentication_agent_response3 (Server                 *server,
++                                              GVariant               *parameters,
++                                              PolkitSubject          *caller,
++                                              GDBusMethodInvocation  *invocation)
++{
++  const gchar *cookie;
++  GVariant *identity_gvariant;
++  GVariant *subject_gvariant;
++  PolkitIdentity *identity;
++  PolkitSubject *subject;
++  GError *error;
++
++  identity = NULL;
++  subject = NULL;
++
++  g_variant_get (parameters,
++                 "(&s@(sa{sv})@(sa{sv}))",
++                 &cookie,
++                 &identity_gvariant,
++                 &subject_gvariant);
++
++  error = NULL;
++  identity = polkit_identity_new_for_gvariant (identity_gvariant, &error);
++  if (identity == NULL)
++    {
++      g_prefix_error (&error, "Error getting identity: ");
++      g_dbus_method_invocation_return_gerror (invocation, error);
++      g_error_free (error);
++      goto out;
++    }
++
++  error = NULL;
++  subject = polkit_subject_new_for_gvariant (subject_gvariant, &error);
++  if (subject == NULL)
++    {
++      g_prefix_error (&error, "Error getting subject: ");
++      g_dbus_method_invocation_return_gerror (invocation, error);
++      g_error_free (error);
++      goto out;
++    }
++
++  error = NULL;
++  if (polkit_unix_process_get_pidfd (POLKIT_UNIX_PROCESS (subject)) < 0 ||
++      polkit_unix_process_get_pid (POLKIT_UNIX_PROCESS (subject)) <= 0)
++    {
++      g_set_error (&error,
++                   POLKIT_ERROR,
++                   POLKIT_ERROR_FAILED,
++                   "Subject's PIDFD '%d' for PID '%d' is no longer valid.",
++                   polkit_unix_process_get_pidfd (POLKIT_UNIX_PROCESS (subject)),
++                   polkit_unix_process_get_pid (POLKIT_UNIX_PROCESS (subject)));
++      g_dbus_method_invocation_return_gerror (invocation, error);
++      g_error_free (error);
++      goto out;
++    }
++
++  error = NULL;
++  if (!polkit_backend_authority_authentication_agent_response (server->authority,
++                                                               caller,
++                                                               polkit_unix_process_get_uid (POLKIT_UNIX_PROCESS (subject)),
++                                                               cookie,
++                                                               identity,
++                                                               &error))
++    {
++      g_dbus_method_invocation_return_gerror (invocation, error);
++      g_error_free (error);
++      goto out;
++    }
++
++  g_dbus_method_invocation_return_value (invocation, g_variant_new ("()"));
++
++ out:
++  g_variant_unref (identity_gvariant);
++  g_variant_unref (subject_gvariant);
++  if (identity != NULL)
++    g_object_unref (identity);
++  if (subject != NULL)
++    g_object_unref (subject);
++}
++
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+ static void
+@@ -1338,6 +1424,8 @@
+     server_handle_authentication_agent_response (server, parameters, caller, invocation);
+   else if (g_strcmp0 (method_name, "AuthenticationAgentResponse2") == 0)
+     server_handle_authentication_agent_response2 (server, parameters, caller, invocation);
++  else if (g_strcmp0 (method_name, "AuthenticationAgentResponse3") == 0)
++    server_handle_authentication_agent_response3 (server, parameters, caller, invocation);
+   else if (g_strcmp0 (method_name, "EnumerateTemporaryAuthorizations") == 0)
+     server_handle_enumerate_temporary_authorizations (server, parameters, caller, invocation);
+   else if (g_strcmp0 (method_name, "RevokeTemporaryAuthorizations") == 0)
