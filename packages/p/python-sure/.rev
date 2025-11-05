@@ -120,4 +120,15 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301297</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>ce172f25217b8ec2a71d2e6d1dad4598</srcmd5>
+    <version>2.0.1</version>
+    <time>1762355859</time>
+    <user>anag_factory</user>
+    <comment>- Refresh patch python-sure-no-mock.patch:
+  * Actually drop the requirement from setup.py
+- Add patch support-python314.patch:
+  * Support Python 3.14 ast changes.</comment>
+    <requestid>1315625</requestid>
+  </revision>
 </revisionlist>

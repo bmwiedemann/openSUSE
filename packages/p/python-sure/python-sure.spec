@@ -31,6 +31,8 @@ URL:            https://github.com/gabrielfalcao/sure
 Source:         https://files.pythonhosted.org/packages/source/s/sure/sure-%{version}.tar.gz
 # Based on https://github.com/gabrielfalcao/sure/pull/161
 Patch0:         python-sure-no-mock.patch
+# PATCH-FIX-OPENSUSE Support Python 3.14 ast changes
+Patch1:         support-python314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -85,6 +87,6 @@ rm tests/test_old_api.py
 %doc README.rst
 %python_alternative %{_bindir}/sure
 %{python_sitelib}/sure
-%{python_sitelib}/sure-%{version}*-info
+%{python_sitelib}/sure-%{version}.dist-info
 
 %changelog

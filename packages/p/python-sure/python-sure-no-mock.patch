@@ -1,7 +1,7 @@
-Index: sure-2.0.0/sure/core.py
+Index: sure-2.0.1/sure/core.py
 ===================================================================
---- sure-2.0.0.orig/sure/core.py
-+++ sure-2.0.0/sure/core.py
+--- sure-2.0.1.orig/sure/core.py
++++ sure-2.0.1/sure/core.py
 @@ -21,7 +21,10 @@ import os
  try:
      from mock import _CallList
@@ -22,10 +22,10 @@ Index: sure-2.0.0/sure/core.py
  anything = Anything()
  
  
-Index: sure-2.0.0/tests/test_assertion_builder.py
+Index: sure-2.0.1/tests/test_assertion_builder.py
 ===================================================================
---- sure-2.0.0.orig/tests/test_assertion_builder.py
-+++ sure-2.0.0/tests/test_assertion_builder.py
+--- sure-2.0.1.orig/tests/test_assertion_builder.py
++++ sure-2.0.1/tests/test_assertion_builder.py
 @@ -17,7 +17,7 @@
  # along with this program.  If not, see <http://www.gnu.org/licenses/>.
  from __future__ import unicode_literals
@@ -35,3 +35,16 @@ Index: sure-2.0.0/tests/test_assertion_builder.py
  from collections import OrderedDict
  
  from datetime import datetime, timedelta
+Index: sure-2.0.1/setup.py
+===================================================================
+--- sure-2.0.1.orig/setup.py
++++ sure-2.0.1/setup.py
+@@ -81,7 +81,7 @@ def read_readme():
+         return __doc__
+ 
+ 
+-install_requires = ["mock", "six"]
++install_requires = ["six"]
+ tests_require = ["nose"]
+ version = read_version()
+ 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  5 00:30:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Refresh patch python-sure-no-mock.patch:
+  * Actually drop the requirement from setup.py
+- Add patch support-python314.patch:
+  * Support Python 3.14 ast changes.
+
+-------------------------------------------------------------------
 Mon Aug 25 14:05:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

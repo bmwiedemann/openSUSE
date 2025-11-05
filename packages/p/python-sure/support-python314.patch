@@ -1,0 +1,13 @@
+Index: sure-2.0.1/setup.py
+===================================================================
+--- sure-2.0.1.orig/setup.py
++++ sure-2.0.1/setup.py
+@@ -50,7 +50,7 @@ class VersionFinder(ast.NodeVisitor):
+     def visit_Assign(self, node):
+         try:
+             if node.targets[0].id == self.VARIABLE_NAME:
+-                self.version = node.value.s
++                self.version = node.value.value
+         except Exception:
+             pass
+ 
