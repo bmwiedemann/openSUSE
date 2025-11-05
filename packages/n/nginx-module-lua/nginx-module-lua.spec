@@ -19,7 +19,7 @@
 %define project_name lua-nginx-module
 %define so_name ngx_http_lua_module.so
 Name:           nginx-module-lua
-Version:        0.10.28
+Version:        0.10.29
 Release:        0
 Summary:        Embed the power of Lua into Nginx HTTP Servers
 License:        BSD-2-Clause

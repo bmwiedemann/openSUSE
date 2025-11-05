@@ -27,4 +27,13 @@ https://build.opensuse.org/request/show/1221483</comment>
     <comment>- Switched to build using LuaJIT packages for Tumbleweed (boo#1252340). (forwarded request 1315376 from 13ilya)</comment>
     <requestid>1315481</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>57d9e11be923876bdcf4fb493a30e6d0</srcmd5>
+    <version>0.10.29</version>
+    <time>1762355944</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 0.10.29
+  * https://github.com/openresty/lua-nginx-module/compare/v0.10.28...v0.10.29</comment>
+    <requestid>1315578</requestid>
+  </revision>
 </revisionlist>

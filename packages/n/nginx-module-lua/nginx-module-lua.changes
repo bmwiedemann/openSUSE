@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  4 18:45:19 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.10.29
+  * https://github.com/openresty/lua-nginx-module/compare/v0.10.28...v0.10.29
+
+-------------------------------------------------------------------
 Wed Oct 29 10:27:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
-- Switched to build using LuaJIT packages for Tumbleweed (boo#1252340).
+- Switched to build using LuaJIT packages (bsc#1252340).
 
 -------------------------------------------------------------------
 Sat Jan 18 09:32:11 UTC 2025 - Илья Индиго <ilya@ilya.top>
