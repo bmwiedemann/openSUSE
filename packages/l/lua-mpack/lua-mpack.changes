@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct 27 19:22:34 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.0.13:
+  - fix: make the package build with Lua API < 5.2
+  - support various lua executable formats
+- Remove upstreamed patch:
+  - luajit-build.patch
+
+-------------------------------------------------------------------
+Fri Oct 24 14:50:42 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 13 13:21:48 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package buildable with LuaJIT.
+- Removed upstreamed patches:
+  - lua51-mpack-fix-compilation.patch
+  - lua51-mpack-fix-gcc7.patch
+- Add luajit-build.patch to make the source compatible with Lua
+  API < 5.2 (gh#libmpack/libmpack-lua!34).
+
+-------------------------------------------------------------------
 Thu Feb 22 09:55:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -19,24 +19,19 @@
 %define flavor @BUILD_FLAVOR@
 %define libmpack_version 1.0.5
 %define mod_name mpack
-Version:        1.0.6
+Version:        1.0.13
 Release:        0
 Summary:        Implementation of MessagePack for Lua 5.1
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/libmpack/libmpack-lua
-Source:         https://github.com/libmpack/libmpack-lua/archive/%{version}.tar.gz
-# libmpack source is necessary to build lua-mpack, next release should build
-# fine against system version
-# The latest source can be downloaded from: https://github.com/libmpack/libmpack
-Source1:        https://github.com/libmpack/libmpack/archive/%{libmpack_version}/libmpack-%{libmpack_version}.tar.gz
-# PATCH-FIX-UPSTREAM lua51-mpack-fix-gcc7.patch gh#libmpack/libmpack-lua#3 -- Fix compilation error when using GCC7.
-Patch0:         lua51-mpack-fix-gcc7.patch
-# PATCH-FIX-UPSTREAM lua51-mpack-fix-compilation.patch gh#libmpack/libmpack-lua#2 -- Fix compilation error when using `USE_SYSTEM_LUA=1`.
-Patch1:         lua51-mpack-fix-compilation.patch
+Source:         https://github.com/libmpack/libmpack-lua/archive/refs/tags/%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
+# libmpack source is necessary to build lua-mpack, need to package mpack to Factory
+Source1:        https://github.com/libmpack/libmpack/archive/refs/tags/%{libmpack_version}.tar.gz#/libmpack-%{libmpack_version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
 BuildRequires:  lua-macros
 Requires:       %{flavor}
 %lua_provides
@@ -54,12 +49,8 @@ and msgpack-rpc specifications.
 %prep
 %autosetup -p1 -n libmpack-lua-%{version}
 
-# Extract the libmpack source to the right directory.
-mkdir -p mpack-src
-pushd mpack-src
-cp %{SOURCE1} ./
-tar --strip-components=1 -xzf libmpack-%{libmpack_version}.tar.gz
-popd
+( mkdir -p "mpack-src" && cd "mpack-src"
+tar --extract --strip-components=1 --file %{SOURCE1} )
 
 # Fix lua directory.
 sed -i 's|LUA_CMOD_INSTALLDIR :=.*|LUA_CMOD_INSTALLDIR := $(shell echo "%{lua_archdir}")|g' Makefile
@@ -67,15 +58,16 @@ sed -i 's|LUA_CMOD_INSTALLDIR :=.*|LUA_CMOD_INSTALLDIR := $(shell echo "%{lua_ar
 %build
 make %{?_make_output_sync} %{?_smp_mflags} \
     USE_SYSTEM_LUA=yes \
-    MPACK_LUA_VERSION=%{lua_version} \
-    CFLAGS="%{optflags} -fPIC"
+    USE_SYSTEM_MPACK=no \
+    LUA_IMPL="lua" \
+    CFLAGS="%{optflags} -fPIC %(pkgconf --cflags --libs lua)"
 
 %install
-%make_install USE_SYSTEM_LUA=yes
+%make_install USE_SYSTEM_LUA=yes \
+    LUA_CMOD_INSTALLDIR="%{lua_archdir}"
 
 %files
 %doc mpack-src/LICENSE-MIT README.md
-%dir %{lua_archdir}
-%{lua_archdir}/*
+%{lua_archdir}/mpack.so
 
 %changelog
