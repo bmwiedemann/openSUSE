@@ -72,4 +72,14 @@
 </comment>
     <requestid>1233621</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>89a49bac6a24d4b7cc0a5203ca654ae9</srcmd5>
+    <version>2.8.0</version>
+    <time>1762355887</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Don't depend on lua5.1</comment>
+    <requestid>1315150</requestid>
+  </revision>
 </revisionlist>

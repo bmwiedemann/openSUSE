@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:47:53 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Sat Oct 11 15:12:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Don't depend on lua5.1
+
+-------------------------------------------------------------------
 Sat Dec 28 00:26:59 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.8:

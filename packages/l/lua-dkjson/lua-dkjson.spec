@@ -53,14 +53,14 @@ when LPeg is available dkjson can use it to speed up decoding.
 %autosetup -p1 -n dkjson-%{uptag}
 
 %build
-/bin/true
+:
 
 %install
 install -D -m 0644 -t %{buildroot}%{lua_noarchdir} -p dkjson.lua
 
 %check
-lua%{lua_version} speedtest.lua dkjson
-lua%{lua_version} jsontest.lua
+lua speedtest.lua dkjson
+lua jsontest.lua
 
 %files
 # license is included in readme.txt file
