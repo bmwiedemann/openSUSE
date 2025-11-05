@@ -27,15 +27,14 @@
 %define soversion 3
 %define rname kddockwidgets
 Name:           kddockwidgets%{?pkg_suffix}
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Qt dock widget library, suitable for replacing QDockWidget
 License:        GPL-2.0-only OR GPL-3.0-only
 URL:            https://www.kdab.com/development-resources/qt-tools/kddockwidgets
 Source:         https://github.com/KDAB/KDDockWidgets/releases/download/v%{version}/%{rname}-%{version}.tar.gz
-# kddockwidgets 2.3.0 doesn't have its signature file
-# Source1:        https://github.com/KDAB/KDDockWidgets/releases/download/v%%{version}/%%{rname}-%%{version}.tar.gz.asc
-# Source2:        kddockwidgets.keyring
+Source1:        https://github.com/KDAB/KDDockWidgets/releases/download/v%{version}/%{rname}-%{version}.tar.gz.asc
+Source2:        kddockwidgets.keyring
 BuildRequires:  cmake(nlohmann_json)
 %if 0%{?qt5}
 BuildRequires:  libQt5Gui-private-headers-devel

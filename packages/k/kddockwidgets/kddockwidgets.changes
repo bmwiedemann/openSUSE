@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  4 18:26:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.4.0
+  * qtquick: Expose DockWidgetOptions to QML
+  * qtquick: Expose 'DockWidget::lastCloseReason' to QML
+  * qtquick: Add DockWidgetInstantiator::deleteDockWidgetLater
+  * qtwidgets: Support tabs in south location
+
+-------------------------------------------------------------------
 Tue Sep 30 17:15:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.3.0
