@@ -28,7 +28,7 @@ Group:          Development/Libraries/Other
 URL:            https://github.com/cheusov/lua-alt-getopt
 Source:         https://github.com/cheusov/%{rname}/archive/%{upversion}.tar.gz#/%{rname}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-devel
-BuildRequires:  lua-macros
+BuildRequires:  %{flavor}
 Requires:       %{flavor}
 BuildArch:      noarch
 %lua_provides

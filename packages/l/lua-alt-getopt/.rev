@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>1037582</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5de5f0eb4116c22a5217196774cf0893</srcmd5>
+    <version>0.8.1</version>
+    <time>1762355882</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Pull in lua-macros indirectly via %{flavor} (and lua-interepreter)</comment>
+    <requestid>1315138</requestid>
+  </revision>
 </revisionlist>

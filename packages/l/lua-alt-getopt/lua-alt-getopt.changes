@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:46:56 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Wed Aug  6 08:59:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Pull in lua-macros indirectly via %{flavor} (and lua-interepreter)
+
+-------------------------------------------------------------------
 Wed Nov 23 10:05:59 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix missing dependency on lua-macros (boo#1205612)
