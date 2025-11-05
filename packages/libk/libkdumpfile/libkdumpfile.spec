@@ -33,7 +33,7 @@
 # End compatibility cruft
 
 Name:           libkdumpfile
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 %if "%name" == "libkdumpfile"
 Summary:        Kernel dump file access library
@@ -44,7 +44,7 @@ Summary:        Python interface for libkdumpfile
 License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 Group:          Development/Languages/Python
 %endif
-URL:            https://github.com/ptesarik/libkdumpfile
+URL:            https://codeberg.org/ptesarik/libkdumpfile
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake

@@ -1,6 +1,6 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/ptesarik/libkdumpfile</param>
+    <param name="url">https://codeberg.org/ptesarik/libkdumpfile</param>
     <param name="scm">git</param>
     <param name="revision">tip</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.g%h</param>

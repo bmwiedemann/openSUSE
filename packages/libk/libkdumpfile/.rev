@@ -277,4 +277,16 @@
 </comment>
     <requestid>1233434</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>cae575ec5820f6719631fa33d64eebfe</srcmd5>
+    <version>unknown</version>
+    <time>1762355974</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to libkdumpfile version 0.5.6
+  * Move to Codeberg.
+  * Remove legacy Python bindings. Use pykdumpfile instead.
+  * Fix test build failures.
+  * Fix missing -lz in some scenarios.</comment>
+    <requestid>1315673</requestid>
+  </revision>
 </revisionlist>
