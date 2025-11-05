@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  4 00:35:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Insist on anyio >= 4, to drop out anyio3 from the choices.
+
+-------------------------------------------------------------------
 Wed Jan 15 13:25:11 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Use libalternatives instead of update-alternatives, bsc#1235784 

@@ -280,4 +280,12 @@
     <comment></comment>
     <requestid>1238508</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f6994285abf38db3e856d85814c2d5b5</srcmd5>
+    <version>0.28.1</version>
+    <time>1762355871</time>
+    <user>anag_factory</user>
+    <comment>- Insist on anyio &gt;= 4, to drop out anyio3 from the choices.</comment>
+    <requestid>1315394</requestid>
+  </revision>
 </revisionlist>

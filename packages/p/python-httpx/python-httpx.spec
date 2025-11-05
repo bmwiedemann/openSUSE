@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anyio
+Requires:       python-anyio >= 4
 Requires:       python-certifi
 Requires:       python-httpcore >= 0.18.0
 Requires:       python-idna >= 2.0
