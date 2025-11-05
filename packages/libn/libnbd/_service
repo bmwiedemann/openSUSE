@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">libnbd</param>
-    <param name="revision">v1.22.4</param>
+    <param name="revision">v1.22.5</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.com/nbdkit/libnbd.git</param>

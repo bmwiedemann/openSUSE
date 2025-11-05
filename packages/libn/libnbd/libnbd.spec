@@ -1,7 +1,7 @@
 #
 # spec file for package libnbd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 0
 
 Name:           libnbd
-Version:        1.22.4
+Version:        1.22.5
 Release:        0
 Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 28 16:11:08 UTC 2025 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.22.5:
+  * Version 1.22.5.
+  * lib/uri.c: Fix indices in SSH command array
+  * uri: Sanitize user-provided hostnames
+  * examples/connect-benchmark.c: Include <stdatomic.h> or fall back
+  * docs: Minor copyediting to export name documentation
+
+-------------------------------------------------------------------
 Fri Sep 05 21:02:25 UTC 2025 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.22.4:
