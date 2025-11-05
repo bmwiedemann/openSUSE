@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov  3 04:58:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.32.0:
+  * Features
+    + add support for nx/xx/gt/lt options for expireat/pexpire/pexpireat
+  * Bug Fixes
+    + fix:removing use of self.protocol to support redis-py < 5
+    + fix:race condition due to closing socket in
+      TCPFakeRequestHandler:finish
+
+-------------------------------------------------------------------
+Mon Sep 15 08:12:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.31.2
+  * Add native cjson support for lua redis scripts
+  * version init argument typing
+  * include lib_name and lib_version in FakeBaseConnectionMixin
+  * when using FakeValkey, raise valkey.ResponseError instead of
+    redis.ResponseError
+  * fix issue with pytest-asyncio
+  * Sending lib_name and lib_version only when relevant
+  * many fixes in TcpFakeServer
+
+-------------------------------------------------------------------
 Tue Jun 24 11:41:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.30.1

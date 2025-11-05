@@ -375,4 +375,30 @@
     * Replace deprecated event_loop fixture</comment>
     <requestid>1288470</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4551527d76986be11b05ec9e764114b5</srcmd5>
+    <version>2.32.0</version>
+    <time>1762355863</time>
+    <user>anag_factory</user>
+    <comment>Resubmit
+
+- Update to 2.32.0:
+  * Features
+    + add support for nx/xx/gt/lt options for expireat/pexpire/pexpireat
+  * Bug Fixes
+    + fix:removing use of self.protocol to support redis-py &lt; 5
+    + fix:race condition due to closing socket in
+      TCPFakeRequestHandler:finish
+- Update to 2.31.2
+  * Add native cjson support for lua redis scripts
+  * version init argument typing
+  * include lib_name and lib_version in FakeBaseConnectionMixin
+  * when using FakeValkey, raise valkey.ResponseError instead of
+    redis.ResponseError
+  * fix issue with pytest-asyncio
+  * Sending lib_name and lib_version only when relevant
+  * many fixes in TcpFakeServer
+</comment>
+    <requestid>1315309</requestid>
+  </revision>
 </revisionlist>

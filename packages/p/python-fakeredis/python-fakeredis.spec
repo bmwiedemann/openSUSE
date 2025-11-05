@@ -1,7 +1,7 @@
 #
 # spec file for package python-fakeredis
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fakeredis
-Version:        2.30.1
+Version:        2.32.0
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
@@ -41,6 +41,7 @@ BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
 BuildRequires:  %{python_module pytest-mock >= 3.7.0}
 BuildRequires:  %{python_module redis >= 4}
 BuildRequires:  %{python_module sortedcontainers >= 2.4.0}
+BuildRequires:  %{python_module valkey >= 6}
 BuildRequires:  redis
 # /SECTION
 %python_subpackages
@@ -61,12 +62,18 @@ Fake implementation of redis API for testing purposes.
 %check
 export LANG="en_US.UTF8"
 %{_sbindir}/redis-server --port 6390 --save &
-%pytest -m "not slow"
+# Lag is not -1
+donttest="test_zrank_redis7_2 or test_zrevrank_redis7_2"
+donttest+=" or test_xgroup_setid_redis7"
+# Raises unknown command errors
+donttest+=" or (test_save and (StrictRedis2 or StrictRedis3))"
+donttest+=" or (test_raises_valkey_response_error and FakeStrictRedis)"
+%pytest -m "not slow" -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/fakeredis
-%{python_sitelib}/fakeredis-%{version}*-info
+%{python_sitelib}/fakeredis-%{version}.dist-info
 
 %changelog
