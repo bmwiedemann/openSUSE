@@ -399,4 +399,16 @@
     Trusted Platform Module (TPM) device is present (forwarded request 1314301 from rrahl0)</comment>
     <requestid>1314302</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ae13b85939be32c980dfea112b07ae41</srcmd5>
+    <version>1.90.6</version>
+    <time>1762355962</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.90.6:
+  * Routes no longer stall and fail to apply when updated repeatedly in a short
+    period of time
+  * Tailscale SSH no longer hangs for 10s when connecting to tsrecorder. This
+    affected tailnets that use Tailscale SSH recording (forwarded request 1315612 from rrahl0)</comment>
+    <requestid>1315613</requestid>
+  </revision>
 </revisionlist>

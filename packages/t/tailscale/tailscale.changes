@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov  2 11:43:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.90.6:
+  * Routes no longer stall and fail to apply when updated repeatedly in a short
+    period of time
+  * Tailscale SSH no longer hangs for 10s when connecting to tsrecorder. This
+    affected tailnets that use Tailscale SSH recording
+
+-------------------------------------------------------------------
 Wed Oct 29 09:50:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.90.4:
