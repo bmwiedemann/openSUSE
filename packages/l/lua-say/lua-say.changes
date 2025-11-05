@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 27 23:20:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Split the building to separate `test` phase to avoid cycle with
+  busted.
+
+-------------------------------------------------------------------
+Fri Oct 24 14:50:55 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 20 19:57:08 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add luajit version to _multibuild
+- Rewrite to use %luarocks_{build,install}
+
+-------------------------------------------------------------------
 Tue Mar 11 22:56:55 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.4.1:

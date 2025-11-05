@@ -53,4 +53,18 @@
 </comment>
     <requestid>1252172</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7a6ff564688090953359d2258d619cd3</srcmd5>
+    <version>1.4.1</version>
+    <time>1762355908</time>
+    <user>anag_factory</user>
+    <comment>- Split the building to separate `test` phase to avoid cycle with
+  busted.
+
+- Switch off building lua51 build of the package.
+
+- Add luajit version to _multibuild
+- Rewrite to use %luarocks_{build,install}</comment>
+    <requestid>1315191</requestid>
+  </revision>
 </revisionlist>

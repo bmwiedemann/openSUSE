@@ -1,7 +1,7 @@
 #
 # spec file for package lua-say
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# The luarocks_install macro is replaced by the install-rock.sh script
 
 %define flavor @BUILD_FLAVOR@
+%if "%{flavor}" == "test"
+%define flavor lua54
+%bcond_without test
+%else
+%bcond_with test
+%endif
 %define mod_name say
 Version:        1.4.1
 Release:        0
@@ -26,6 +33,7 @@ Group:          Development/Libraries/Other
 URL:            https://github.com/lunarmodules/say
 Source:         https://github.com/lunarmodules/say/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-luarocks
 BuildRequires:  lua-macros
 Requires:       %{flavor}
 BuildArch:      noarch
@@ -34,23 +42,42 @@ BuildArch:      noarch
 Name:           lua-say
 ExclusiveArch:  do_not_build
 %else
+%if %{with test}
+Name:           %{flavor}-say-test
+%else
 Name:           %{flavor}-say
+%endif
+%endif
+%if %{with test}
+BuildRequires:  %{flavor}-say
+BuildRequires:  %{flavor}-busted
 %endif
 
 %description
 Useful for internationalization.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%autosetup -p1 -n %{mod_name}-%{version}
 
 %build
-/bin/true
+%luarocks_build
 
 %install
-install -v -D -m 0644 -p -t %{buildroot}%{lua_noarchdir}/say src/say/init.lua
+%if %{without test}
+%luarocks_install ./%{mod_name}-*.rock
+%endif
 
+%check
+%if %{with test}
+busted
+%endif
+
+%if %{without test}
 %files
-%dir %{lua_noarchdir}/say
-%{lua_noarchdir}/say*
+%license LICENSE
+# Nothing useful in __rocktree/
+%doc README.md CONTRIBUTING.md
+%{lua_noarchdir}/say
+%endif
 
 %changelog
