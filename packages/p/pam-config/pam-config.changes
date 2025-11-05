@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 05 11:05:42 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.13+git.20251105:
+  * Disable SELinux for nonlogin session config, too
+
+-------------------------------------------------------------------
+Tue Nov 04 07:18:04 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.13+git.20251104:
+  * pam_selinux: fix counter for session stacks
+
+-------------------------------------------------------------------
 Fri Oct 03 20:49:54 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.13+git.20251003:

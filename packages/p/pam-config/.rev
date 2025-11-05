@@ -911,4 +911,16 @@
   * Add support for 12 and 13 options</comment>
     <requestid>1308923</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>29f53837c35da51169614ed40fd73d8d</srcmd5>
+    <version>2.13+git.20251105</version>
+    <time>1762355881</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.13+git.20251105:
+  * Disable SELinux for nonlogin session config, too
+
+- Update to version 2.13+git.20251104:
+  * pam_selinux: fix counter for session stacks</comment>
+    <requestid>1315709</requestid>
+  </revision>
 </revisionlist>
