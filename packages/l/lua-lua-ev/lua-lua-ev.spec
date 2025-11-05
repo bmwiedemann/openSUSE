@@ -30,9 +30,9 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/brimworks/lua-ev
 Source:         https://github.com/brimworks/%{mod_name}/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
-# PATCH-FIX-UPSTREAM lua54.patch gh#brimworks/lua-ev#24 mcepl@suse.com
-# Resolve FTBFS with Lua 5.4.
-Patch0:         lua54.patch
+# PATCH-FIX-UPSTREAM lua-independent.patch gh#brimworks/lua-ev#24 mcepl@suse.com
+# Resolve FTBFS with Lua 5.4 and make package building truly Lua version independent.
+Patch0:         lua-independent.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  cmake
 BuildRequires:  libev-devel
@@ -53,6 +53,7 @@ Lua integration with libev (http://dist.schmorp.de/libev)
 %package devel
 Summary:        Header files for %{flavor}-%{mod_name}
 Group:          Development/Languages/Other
+BuildArch:      noarch
 Requires:       %{flavor}-%{mod_name} = %{version}
 %if %{with public_lib}
 Requires:       %{flavor}-libev%{libev_sover}

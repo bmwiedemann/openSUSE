@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:48:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Fri Oct 10 13:31:01 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Rename lua54.patch to lua-independent.patch and make building
+  of the package independent of the version of Lua intepreter
+  (gh#brimworks/lua-ev#24).
+
+-------------------------------------------------------------------
 Fri Jul 25 19:47:59 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CMAKE_POLICY_VERSION_MINIMUM=3.5 configuration to build

@@ -47,4 +47,16 @@
   with current CMake.</comment>
     <requestid>1295836</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>287e6dbed1266bee769b344356a69b1c</srcmd5>
+    <version>1.5</version>
+    <time>1762355892</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Rename lua54.patch to lua-independent.patch and make building
+  of the package independent of the version of Lua intepreter
+  (gh#brimworks/lua-ev#24).</comment>
+    <requestid>1315162</requestid>
+  </revision>
 </revisionlist>
