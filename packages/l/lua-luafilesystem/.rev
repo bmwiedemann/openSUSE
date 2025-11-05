@@ -88,4 +88,14 @@
 </comment>
     <requestid>1072457</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>b30e7ff702ff83f2d4b0a03880440219</srcmd5>
+    <version>1.8.0</version>
+    <time>1762355896</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Add luajit version to _multibuild</comment>
+    <requestid>1315169</requestid>
+  </revision>
 </revisionlist>
