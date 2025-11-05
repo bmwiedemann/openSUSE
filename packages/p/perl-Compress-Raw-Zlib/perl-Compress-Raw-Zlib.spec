@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Compress-Raw-Zlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Compress-Raw-Zlib
 Name:           perl-Compress-Raw-Zlib
-Version:        2.213
+Version:        2.214
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND Zlib
@@ -26,6 +26,7 @@ Summary:        Perl interface to zlib/zlib-ng compression libraries
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -39,7 +40,7 @@ In the text below all references to _zlib_ are also applicable to _zlib-ng_
 unless otherwise stated.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

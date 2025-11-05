@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Oct 25 05:31:40 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.214
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.214 28 October 2025
+        * version 2.214
+          Fri Oct 24 16:14:17 2025 +0100
+          8d4865a68fa3ed38627a9f11477b9b494aa84d5f
+        * remove 1.2.13 from mac upstream zlib build
+          Sun Sep 7 14:54:01 2025 +0100
+          2cd55f3ed1d37999fbdb52d6d16e31cb2ed6a4bb
+        * Disable some older zlib versions
+          Sun Sep 7 14:44:55 2025 +0100
+          faf8fb36de808ca74bc8e9074627851ebee79ef7
+        * Bump actions/checkout from 1 to 5
+          Sun Sep 7 14:36:39 2025 +0100
+          403e03af996851df6875d634ea98159138b6c843
+        * remove target-branch from dependabot
+          Sun Sep 7 11:50:10 2025 +0100
+        * Add dependabot.yml to police workflow files
+          Thu Sep 4 17:16:28 2025 +0100
+          9c497340afa0fc5727efc4d91cfbb603ee07e230
+        * disable push & pull_request
+          Thu Sep 4 17:15:47 2025 +0100
+          f2d9aa48d32f818c92a775fa51af7c851d2557a2
+        * disable push & pull_request
+          Thu Sep 4 17:14:47 2025 +0100
+          3db6fd5a8d102de5bf1125d2db552a3e5ed7c392
+        * Add perl 5.42 to workflow files
+          Thu Sep 4 17:06:15 2025 +0100
+          ca5b472df99022182dc5b3bf80d3bc04ddb3e56b
+        * Add support for zlib-ng 2.2.5
+          Thu Sep 4 17:05:26 2025 +0100
+          8034efa99464af12588d2942d1d69979bfc850e5
+        * get_Bufsize is correct, but the document says get_BufSize - Fixes #34
+          Sat Aug 30 19:15:20 2025 +0100
+          747f25842cc78a544973eff115d0e17145bf3812
+        * add zlib-ng 2.2.4 to workflow
+          Tue Feb 11 11:07:18 2025 +0000
+          d8a2e7581baa11dcc5ad8c71b6252f553478e4d0
+        * add zlib-ng 2.2.3
+          Wed Jan 1 13:24:05 2025 +0000
+          3ade504992471025b61ab024db57dfabd953df48
+        * More updates for zlib-ng 2.2.2 & 2.1.8
+          Tue Sep 17 15:02:20 2024 +0100
+          169e6a371e8f9f0be34561fb2121bed1a14980bd
+        * Add zlib-ng 2.2.2 and 2.18 to GitHub workflows
+          Tue Sep 17 14:52:23 2024 +0100
+          83be37e0a911eb374ea18737c4fa77550d501354
+
+-------------------------------------------------------------------
 Sat Aug 31 05:31:20 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.213

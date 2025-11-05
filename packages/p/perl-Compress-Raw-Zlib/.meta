@@ -5,6 +5,5 @@ compression library (see the /AUTHOR manpage for details about where to get
 _zlib_).
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Compress-Raw-Zlib"/>
   <url>http://cpan.org/modules/by-module/Compress/</url>
 </package>
