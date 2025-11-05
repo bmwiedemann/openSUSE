@@ -31,9 +31,13 @@ License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/luaposix/luaposix
 Source0:        https://github.com/luaposix/luaposix/archive/v%{version}/%{mod_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM setgroups.patch gh#luaposix/luaposix!388 mcepl@suse.com
+# use setgroups before setuid
+Patch0:         setgroups.patch
 BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  ncurses-devel
+BuildRequires:  pkgconf
 BuildRequires:  perl
 Requires:       %{flavor}
 %lua_provides
@@ -51,12 +55,12 @@ BuildArch:      noarch
 This package contains the documentation for %{flavor}-luaposix.
 
 %prep
-%autosetup -n luaposix-%{version}
+%autosetup -p1 -n luaposix-%{version}
 
 %build
 # avoid setting USER tag
 export USER=""
-build-aux/luke PREFIX=%{_prefix} all
+build-aux/luke CFLAGS="$(pkgconf --cflags --libs lua)" PREFIX=%{_prefix} all
 
 %install
 build-aux/luke PREFIX=%{buildroot}%{_prefix} INST_LIBDIR=%{buildroot}%{lua_archdir} \
@@ -69,7 +73,7 @@ build-aux/luke PREFIX=%{buildroot}%{_prefix} INST_LIBDIR=%{buildroot}%{lua_archd
 %{lua_noarchdir}/posix
 
 # Only produce docs during one flavor to avoid duplicate binary.
-%ifluadefault
+%if "%{lua_version_nodots}" == "%{lua_version_default_nodots}"
 %files -n %{mod_name}-doc
 %doc doc/*
 %endif

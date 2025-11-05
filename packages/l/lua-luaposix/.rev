@@ -125,4 +125,16 @@
     <comment></comment>
     <requestid>1060944</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>c0c6cf732d1606d1cdcedd34b1f08aca</srcmd5>
+    <version>35.1</version>
+    <time>1762355897</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Make the package buildable with LuaJIT.
+- Add setgroups.patch to avoid security issue with not calling
+  setgroups() before setuid() (gh#luaposix/luaposix!388).</comment>
+    <requestid>1315171</requestid>
+  </revision>
 </revisionlist>
