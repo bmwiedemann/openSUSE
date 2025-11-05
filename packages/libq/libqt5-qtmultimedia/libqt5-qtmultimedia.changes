@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  3 15:39:49 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.18+kde2, rebased upstream:
+  * Fix stopping of just started sound effect from pending underrun notification
+  * Bump version to 5.15.18
+  * Put private helper classes in unnamed namespace
+
+-------------------------------------------------------------------
 Wed May 28 08:35:21 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.17+kde2, rebased upstream:
