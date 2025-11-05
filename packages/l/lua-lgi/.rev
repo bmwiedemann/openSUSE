@@ -81,4 +81,26 @@
 - Fix missing dependency on lua-macros (boo#1205612)</comment>
     <requestid>1061037</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>d8ab34f8b9277d4b9e7513d6567c4b5b</srcmd5>
+    <version>0.9.2</version>
+    <time>1762355889</time>
+    <user>anag_factory</user>
+    <comment>- An attempt to make test suite working, but not yet.
+- Added patches:
+  - 001-Fix-GLib-2.86-regression.patch
+  - lua54.patch
+  - network_metered-property.patch
+  - pango-1_56_2.patch
+  - warnings-away.patch
+
+- Switch off building lua51 build of the package.
+
+- Make the package buildable with LuaJIT.
+
+- Add Lua54 headers to build lua-lgi:luajit.
+- Fix GLib 2.86 regression (boo#1250526)
+  Refer to https://github.com/lgi-devs/lgi/issues/346</comment>
+    <requestid>1315156</requestid>
+  </revision>
 </revisionlist>

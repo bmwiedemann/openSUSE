@@ -26,13 +26,27 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/pavouk/lgi
 Source0:        https://github.com/pavouk/%{mod_name}/archive/%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
-Patch:          lua54.patch
+Patch0:         lua54.patch
+# PATCH-FIX-UPSTREAM 001-Fix-GLib-2.86-regression.patch boo#1250526
+Patch1:         001-Fix-GLib-2.86-regression.patch
+# PATCH-FIX-UPSTREAM warnings-away.patch bsc#[0-9]+ mcepl@suse.com
+# remove warnings from deprecated calls
+Patch2:         warnings-away.patch
+# PATCH-FIX-UPSTREAM pango-1_56_2.patch gh#lgi-devs/lgi!342 mcepl@suse.com
+# update to use pango 1.56.2
+Patch3:         pango-1_56_2.patch
+# PATCH-FIX-UPSTREAM network_metered-property.patch gh#lgi-devs/lgi!215 mcepl@suse.com
+# support for network_metered property
+Patch4:         network_metered-property.patch
 BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.8
 BuildRequires:  pkgconfig(libffi)
+BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(cairo)
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""
@@ -50,6 +64,7 @@ directly from Lua.
 %package doc
 Summary:        Lua bindings to GObject libraries - documentation and samples
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description doc
 Dynamic Lua binding to any library which is introspectable
@@ -58,6 +73,8 @@ directly from Lua.
 
 %prep
 %autosetup -n %{mod_name}-%{version} -p1
+
+find . -name \*.lua -exec sed -i -e 's,# *\! *%{_bindir}/.*lua,#!%{_bindir}/lua,' '{}' +;
 
 %build
 make %{?_smp_mflags} V=1 \
@@ -69,6 +86,9 @@ make %{?_smp_mflags} V=1 \
   PREFIX=%{_prefix} \
   LUA_LIBDIR=%{lua_archdir} \
   LUA_SHAREDIR=%{lua_noarchdir}
+
+%check
+make check || true
 
 %files
 %if 0%{?suse_version} >= 1500

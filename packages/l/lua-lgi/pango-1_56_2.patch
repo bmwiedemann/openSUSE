@@ -1,0 +1,27 @@
+From 86b60ff99ad267619e117a8a65cc569612cbdcaa Mon Sep 17 00:00:00 2001
+From: Chris Hofstaedtler <zeha@debian.org>
+Date: Wed, 16 Jul 2025 00:00:36 +0200
+Subject: [PATCH] Adapt to new pango bindings
+
+See:
+  https://gitlab.gnome.org/GNOME/pango/-/merge_requests/829
+  https://github.com/fwupd/fwupd/commit/d0d3eff666d2a6d9c09346ea050eed1c78271f0a
+  https://bugs.debian.org/1101238
+---
+ tests/pango.lua |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+Index: lgi-0.9.2/tests/pango.lua
+===================================================================
+--- lgi-0.9.2.orig/tests/pango.lua	2025-10-29 12:16:22.516482739 +0100
++++ lgi-0.9.2/tests/pango.lua	2025-10-29 12:16:39.467334765 +0100
+@@ -35,8 +35,7 @@
+       local offset = items[i].offset
+       local length = items[i].length
+       local analysis = items[i].analysis
+-      local pgs = Pango.GlyphString()
+-      Pango.shape(string.sub(s,1+offset), length, analysis, pgs)
++      pgs = Pango.shape(string.sub(s,1+offset), length, analysis)
+       -- Pull out individual glyphs with pgs.glyphs
+       local glyphs = pgs.glyphs
+       check(type(glyphs) == 'table')

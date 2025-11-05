@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Oct 29 12:14:44 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- An attempt to make test suite working, but not yet.
+- Added patches:
+  - 001-Fix-GLib-2.86-regression.patch
+  - lua54.patch
+  - network_metered-property.patch
+  - pango-1_56_2.patch
+  - warnings-away.patch
+
+-------------------------------------------------------------------
+Fri Oct 24 14:48:22 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 20 18:40:45 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package buildable with LuaJIT.
+
+-------------------------------------------------------------------
+Wed Oct  8 10:13:32 UTC 2025 - Paulo Gomes <pjbgf@linux.com>
+
+- Add Lua54 headers to build lua-lgi:luajit.
+- Fix GLib 2.86 regression (boo#1250526)
+  Refer to https://github.com/lgi-devs/lgi/issues/346 
+
+-------------------------------------------------------------------
 Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix missing dependency on lua-macros (boo#1205612)

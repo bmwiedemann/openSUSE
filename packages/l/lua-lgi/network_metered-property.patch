@@ -1,0 +1,36 @@
+From 05c909b3b9eaf64ac5b37459d9cf101922dc854c Mon Sep 17 00:00:00 2001
+From: Uli Schlachter <psychon@znc.in>
+Date: Fri, 8 Feb 2019 13:03:16 +0100
+Subject: [PATCH] Fix GObject warning in tests
+
+The subclass test caused the following warning:
+
+  (lua5.2:14980): GLib-GObject-CRITICAL **: 13:02:03.551: Object class
+  LgiTestFakeMonitor1 doesn't implement property 'network-metered' from
+  interface 'GNetworkMonitor'
+
+This new property was added in Gio 2.46. The fix here is to implement
+that property. That should not cause problems with older versions of
+Gio, because there the extra property would just be ignored.
+
+Signed-off-by: Uli Schlachter <psychon@znc.in>
+---
+ tests/gobject.lua | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/tests/gobject.lua b/tests/gobject.lua
+index 2eb2b142..82a21b89 100644
+--- a/tests/gobject.lua
++++ b/tests/gobject.lua
+@@ -282,6 +282,11 @@ function gobject.subclass_prop_inherit()
+ 			       'LgiTestFakeMonitor1NetworkAvailable',
+ 			       'Whether the network is available.',
+ 			       false, { GObject.ParamFlags.READABLE })
++   FakeMonitor._property.network_metered =
++      GObject.ParamSpecBoolean('network-metered',
++			       'LgiTestFakeMonitor1NetworkMetered',
++			       'Whether the network is metered.',
++			       false, { GObject.ParamFlags.READABLE })
+    FakeMonitor._property.connectivity =
+       GObject.ParamSpecEnum('connectivity',
+ 			    'LgiTestFakeMonitor1Connectivity',

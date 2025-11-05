@@ -1,8 +1,12 @@
-diff --git a/lgi/callable.c b/lgi/callable.c
-index e96d3af..3234b64 100644
---- a/lgi/callable.c
-+++ b/lgi/callable.c
-@@ -1355,7 +1355,10 @@ closure_callback (ffi_cif *cif, void *ret, void **args, void *closure_arg)
+---
+ lgi/callable.c |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+Index: lgi-0.9.2/lgi/callable.c
+===================================================================
+--- lgi-0.9.2.orig/lgi/callable.c	2017-10-09 20:55:55.000000000 +0200
++++ lgi-0.9.2/lgi/callable.c	2025-10-29 12:16:31.099371249 +0100
+@@ -1233,7 +1233,10 @@
      }
    else
      {

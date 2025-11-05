@@ -1,0 +1,79 @@
+---
+ lgi/marshal.c |    2 +-
+ lgi/object.c  |   46 +++++++++++++++++++++-------------------------
+ 2 files changed, 22 insertions(+), 26 deletions(-)
+
+Index: lgi-0.9.2/lgi/marshal.c
+===================================================================
+--- lgi-0.9.2.orig/lgi/marshal.c	2017-10-09 20:55:55.000000000 +0200
++++ lgi-0.9.2/lgi/marshal.c	2025-10-13 00:39:03.948391950 +0200
+@@ -325,7 +325,7 @@
+ 	    *out_array = (gpointer *) lua_tolstring (L, narg, &size);
+ 
+ 	  if (transfer != GI_TRANSFER_NOTHING)
+-	    *out_array = g_memdup (*out_array, size);
++	    *out_array = g_memdup2 (*out_array, size);
+ 
+ 	  *out_size = size;
+ 	}
+Index: lgi-0.9.2/lgi/object.c
+===================================================================
+--- lgi-0.9.2.orig/lgi/object.c	2017-10-09 20:55:55.000000000 +0200
++++ lgi-0.9.2/lgi/object.c	2025-10-13 00:42:11.527589269 +0200
+@@ -545,35 +545,31 @@
+ 			    lua_toboolean (L, 3));
+   else
+     {
+-      /* Normally Lua code uses GObject.Object.new(), which maps
+-	 directly to g_object_newv(), but for some reason GOI < 1.0 does
+-	 not export this method in the typelib. */
+-
+-      /* Get GType - 1st argument. */
+-      GParameter *params;
+-      size_t size, i;
+-      GIBaseInfo *gparam_info;
++      /* Create new object from properties passed in the table. */
+       GType gtype = lgi_type_get_gtype (L, 1);
+       luaL_checktype (L, 2, LUA_TTABLE);
++      int n_props = 0;
++      lua_pushnil(L);
++      while (lua_next(L, 2) != 0) {
++        n_props++;
++        lua_pop(L, 1);
++      }
+ 
+-      /* Find BaseInfo of GParameter. */
+-      gparam_info = g_irepository_find_by_name (NULL, "GObject", "Parameter");
+-      *lgi_guard_create (L, (GDestroyNotify) g_base_info_unref) = gparam_info;
+-
+-      /* Prepare array of GParameter structures. */
+-      size = lua_objlen (L, 2);
+-      params = g_newa (GParameter, size);
+-      for (i = 0; i < size; ++i)
+-	{
+-	  lua_pushnumber (L, i + 1);
+-	  lua_gettable (L, 2);
+-	  lgi_type_get_repotype (L, G_TYPE_INVALID, gparam_info);
+-	  lgi_record_2c (L, -2, &params[i], TRUE, FALSE, FALSE, FALSE);
+-	  lua_pop (L, 1);
+-	}
++      const char *names[n_props];
++      GValue values[n_props];
++      int i = 0;
++      lua_pushnil(L);
++      while (lua_next(L, 2) != 0) {
++        names[i] = lua_tostring(L, -2);
++        GParamSpec *pspec = g_object_class_find_property(G_OBJECT_GET_CLASS(g_type_class_peek(gtype)), names[i]);
++        g_value_init(&values[i], G_PARAM_SPEC_VALUE_TYPE(pspec));
++        GITypeInfo* ti = g_irepository_find_by_gtype(NULL, G_PARAM_SPEC_VALUE_TYPE(pspec));
++        lgi_marshal_2c(L, ti, NULL, GI_TRANSFER_NOTHING, &values[i], -1, 0, NULL, NULL);
++        i++;
++        lua_pop(L, 1);
++      }
+ 
+-      /* Create the object and return it. */
+-      return lgi_object_2lua (L, g_object_newv (gtype, size, params),
++      return lgi_object_2lua (L, g_object_new_with_properties (gtype, n_props, names, values),
+ 			      TRUE, FALSE);
+     }
+ }
