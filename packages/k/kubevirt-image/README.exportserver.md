@@ -1,7 +1,7 @@
-# The openSUSE Tumbleweed KubeVirt virt-exportserver container container image
+# The openSUSE Tumbleweed KubeVirt virt-exportserver container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-KubeVirt virt-exportserver container container based on the openSUSE Tumbleweed Base Container Image.
+KubeVirt virt-exportserver container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
 

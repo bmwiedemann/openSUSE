@@ -1,7 +1,7 @@
-# The openSUSE Tumbleweed KubeVirt virt-operator container container image
+# The openSUSE Tumbleweed KubeVirt virt-operator container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-KubeVirt virt-operator container container based on the openSUSE Tumbleweed Base Container Image.
+KubeVirt virt-operator container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
 

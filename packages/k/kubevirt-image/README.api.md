@@ -1,7 +1,7 @@
-# The openSUSE Tumbleweed KubeVirt virt-api container container image
+# The openSUSE Tumbleweed KubeVirt virt-api container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-KubeVirt virt-api container container based on the openSUSE Tumbleweed Base Container Image.
+KubeVirt virt-api container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
 

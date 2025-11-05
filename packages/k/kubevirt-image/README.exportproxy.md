@@ -1,7 +1,7 @@
-# The openSUSE Tumbleweed KubeVirt virt-exportproxy container container image
+# The openSUSE Tumbleweed KubeVirt virt-exportproxy container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-KubeVirt virt-exportproxy container container based on the openSUSE Tumbleweed Base Container Image.
+KubeVirt virt-exportproxy container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
 
