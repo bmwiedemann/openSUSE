@@ -18,7 +18,11 @@
 %bcond_without test
 %define flavor @BUILD_FLAVOR@
 %define mod_name luarepl
+%if "%{flavor}" == "luajit"
+%define lua_value  52
+%else
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
+%endif
 %define rock_version 0.10-1
 Version:        0.10
 Release:        0
@@ -70,8 +74,12 @@ sed -i -r '1s/env (lua)/\1%{lua_version}/' rep.lua
 %install
 %luarocks_install *.rock
 
+# Store rep.lua to the system libraries directory
+mv -v __rocktree/bin %{buildroot}%{lua_noarchdir}/
+
 # Version the rep.lua file
 sed -i -r -e "s#%{buildroot}##g" -e "s#(/bin/rep.lua)#\1-%{lua_version}#" \
+    -e "s#%{luarocks_treedir}/%{mod_name}/%{rock_version}/#%{lua_noarchdir}#" \
     "%{buildroot}/usr/bin/rep.lua"
 mv %{buildroot}%{_bindir}/rep.lua{,-%{lua_version}}
 
@@ -79,10 +87,8 @@ mv %{buildroot}%{_bindir}/rep.lua{,-%{lua_version}}
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
 touch %{buildroot}%{_sysconfdir}/alternatives/rep.lua
 ln -sf %{_sysconfdir}/alternatives/rep.lua %{buildroot}%{_bindir}/rep.lua
-mkdir -p %{buildroot}%{luarocks_treedir}/%{mod_name}/%{rock_version}/bin
-touch %{buildroot}%{luarocks_treedir}/%{mod_name}/%{rock_version}/bin/rep.lua-%{lua_version}
-ln -sf %{luarocks_treedir}/%{mod_name}/%{rock_version}/bin/rep.lua \
-%{buildroot}%{luarocks_treedir}/%{mod_name}/%{rock_version}/bin/rep.lua-%{lua_version}
+touch %{buildroot}%{lua_noarchdir}/bin/rep.lua-%{lua_version}
+ln -sf %{lua_noarchdir}/bin/rep.lua %{buildroot}%{lua_noarchdir}/bin/rep.lua-%{lua_version}
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/rep.lua rep.lua %{_bindir}/rep.lua-%{lua_version} %{lua_value}
@@ -98,10 +104,9 @@ make test
 %endif
 
 %files
-%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/COPYING
-%docdir %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
+%license COPYING
+%doc README.md Changes IDEAS.md Roadmap.md plugins.md
 %{lua_noarchdir}
-%{luarocks_treedir}/%{mod_name}
 %ghost %{_sysconfdir}/alternatives/rep.lua
 %{_bindir}/rep.lua
 %{_bindir}/rep.lua-%{lua_version}
