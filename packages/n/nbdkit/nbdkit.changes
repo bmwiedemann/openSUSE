@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Oct 28 16:12:09 UTC 2025 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.44.4:
+  * Version 1.44.4.
+  * linuxdisk: Fix parsing of last line of 'du' command output
+  * ocaml: Don't unregister the thread in close_wrapper
+  * tests/test-ocaml-errorcodes: Check recovery after reading an error
+  * tests/test_ocaml_errorcodes_plugin.ml: Call Gc.compact on unload
+  * configure: Use PRINT_PKG_VERSION macro in more places
+  * configure: Add new macro to print package version
+  * vddk: Don't use FNM_PATHNAME when matching export parameter
+  * ocaml: Don't release OCaml runtime system after caml_shutdown
+  * data: Avoid passing signed int64_t to uint64_t vararg parameter
+  * data: Fix comment about how uint8_t is promoted through varargs
+  * build: Check for qemu-img and disable some tests if not present
+  * tests/curl: Skip test if 'disk' was not created
+  * server/public.c: Use common/include parse_bool function
+  * common/include: Extra bool parsing into a mini-library
+  * docs: Shorter title and tweaks to the description
+  * vddk: Sort synopsis into alphabetical order
+  * ext2: Update docs since filter supports concurrent connections
+  * docs/nbdkit-probing.pod: Rearrange synopsis to match description
+  * docs: Fix bolding of --log=/path option
+
+-------------------------------------------------------------------
 Fri Sep 05 21:07:32 UTC 2025 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.44.3:

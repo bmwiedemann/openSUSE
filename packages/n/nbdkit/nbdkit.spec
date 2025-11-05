@@ -1,7 +1,7 @@
 #
 # spec file for package nbdkit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64 %{ix86}
 
 Name:           nbdkit
-Version:        1.44.3
+Version:        1.44.4
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -179,9 +179,9 @@ This package contains example plugins for %{name}.
 
 
 
+
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
-
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
 Requires:       %{name}-server = %{version}-%{release}
@@ -206,9 +206,9 @@ This package contains cURL (HTTP/FTP) support for %{name}.
 
 
 
+
 # In theory this is noarch, but because plugins are placed in _libdir
 # which varies across architectures, RPM does not allow this.
-
 %package gcs-plugin
 Summary:        Gooogle Cloud Storage plugin %{name}
 Requires:       %{name}-python-plugin = %{version}-%{release}
