@@ -1977,6 +1977,7 @@ unsorted:
   - cargo1.87 
   - cargo1.88 
   - cargo1.90 
+  - cargo1.91 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -3926,8 +3927,10 @@ unsorted:
   - fcitx-gtk3-32bit 
   - fcitx-hangul 
   - fcitx-kkc 
+  - fcitx-libpinyin 
   - fcitx-m17n 
   - fcitx-pinyin-tools 
+  - fcitx-qt5 
   - fcitx-qt5-devel 
   - fcitx-qt6 
   - fcitx-quwei 
@@ -9311,6 +9314,7 @@ unsorted:
   - jcip-annotations 
   - jcip-annotations-javadoc 
   - jcl-over-slf4j 
+  - jcl-over-slf4j2 
   - jcodings 
   - jcodings-javadoc 
   - jcommon 
@@ -9610,6 +9614,7 @@ unsorted:
   - juk 
   - juk-lang 
   - jul-to-slf4j 
+  - jul-to-slf4j2 
   - juliaup 
   - julius 
   - junction 
@@ -9970,6 +9975,7 @@ unsorted:
   - keyutils-devel 
   - keyutils-devel-32bit 
   - kf5-filesystem 
+  - kf5-kcm-fcitx 
   - kf5-kcm-fcitx-icons 
   - kf5-mediainfo 
   - kf6-attica-devel 
@@ -11367,6 +11373,7 @@ unsorted:
   - libQt5PlatformSupport-devel-static 
   - libQt5PlatformSupport-devel-static-32bit 
   - libQt5PlatformSupport-private-headers-devel 
+  - libQt5Positioning5 
   - libQt5Positioning5-32bit 
   - libQt5PositioningQuick5 
   - libQt5PositioningQuick5-32bit 
@@ -11407,7 +11414,9 @@ unsorted:
   - libQt5VirtualKeyboard5 
   - libQt5WaylandClient5-32bit 
   - libQt5WaylandCompositor5-32bit 
+  - libQt5WebChannel5 
   - libQt5WebChannel5-32bit 
+  - libQt5WebChannel5-imports 
   - libQt5WebSockets5 
   - libQt5WebSockets5-32bit 
   - libQt5WebSockets5-imports 
@@ -15647,6 +15656,7 @@ unsorted:
   - libqt5-qtwebchannel-devel-32bit 
   - libqt5-qtwebchannel-examples 
   - libqt5-qtwebchannel-private-headers-devel 
+  - libqt5-qtwebengine 
   - libqt5-qtwebengine-devel 
   - libqt5-qtwebengine-examples 
   - libqt5-qtwebengine-private-headers-devel 
@@ -17590,6 +17600,7 @@ unsorted:
   - log4j-jmx-gui 
   - log4j-nosql 
   - log4j-over-slf4j 
+  - log4j-over-slf4j2 
   - log4j-slf4j 
   - log4j-taglib 
   - log4j-web 
@@ -17695,71 +17706,15 @@ unsorted:
   - lua-resty-websocket 
   - lua-rrdtool 
   - lua51 
-  - lua51-alt-getopt 
-  - lua51-argparse 
   - lua51-busted 
   - lua51-cassowary 
-  - lua51-cffi-lua 
-  - lua51-cffi-lua-doc 
-  - lua51-cjson 
-  - lua51-cldr 
   - lua51-cliargs 
-  - lua51-copas 
-  - lua51-cosmo 
-  - lua51-coxpcall 
-  - lua51-cyrussasl 
   - lua51-devel 
-  - lua51-dkjson 
   - lua51-doc 
-  - lua51-editorconfig-core-lua 
   - lua51-fluent 
-  - lua51-ldbus 
-  - lua51-ldoc 
-  - lua51-lgi 
-  - lua51-lgi-doc 
-  - lua51-linenoise 
-  - lua51-loadkit 
-  - lua51-lpeg 
-  - lua51-lpeg-doc 
   - lua51-lpeg_patterns 
-  - lua51-lua-dbus 
-  - lua51-lua-ev 
-  - lua51-lua-ev-devel 
-  - lua51-lua-mpris 
-  - lua51-luacheck 
   - lua51-luadbi 
-  - lua51-luaepnf 
-  - lua51-luaevent 
-  - lua51-luaexpat 
-  - lua51-luafilesystem 
-  - lua51-lualdap 
-  - lua51-luaposix 
-  - lua51-luarepl 
-  - lua51-luasec 
-  - lua51-luasocket 
-  - lua51-luasocket-devel 
-  - lua51-luasocket-doc 
-  - lua51-luasql 
-  - lua51-luassert 
-  - lua51-luasystem 
-  - lua51-luaterm 
-  - lua51-luaunbound 
-  - lua51-luautf8 
-  - lua51-luv 
-  - lua51-lyaml 
-  - lua51-markdown 
-  - lua51-mediator_lua 
-  - lua51-messagepack 
-  - lua51-moonscript 
-  - lua51-mpack 
-  - lua51-penlight 
-  - lua51-readline 
-  - lua51-say 
   - lua51-shell-games 
-  - lua51-slaxml 
-  - lua51-testmore 
-  - lua51-vstruct 
-  - lua51-zlib 
   - lua53 
   - lua53-alt-getopt 
   - lua53-apk 
@@ -17907,11 +17862,65 @@ unsorted:
   - lua55-doc 
   - luabind-devel 
   - luajit 
+  - luajit-alt-getopt 
+  - luajit-argparse 
+  - luajit-cjson 
+  - luajit-cldr 
   - luajit-compat-5.3 
   - luajit-compat-5.3-bit32 
+  - luajit-copas 
+  - luajit-cosmo 
+  - luajit-coxpcall 
+  - luajit-cyrussasl 
   - luajit-devel 
+  - luajit-dkjson 
+  - luajit-editorconfig-core-lua 
   - luajit-jsregexp 
+  - luajit-ldbus 
+  - luajit-ldoc 
+  - luajit-lgi 
+  - luajit-lgi-doc 
+  - luajit-linenoise 
+  - luajit-loadkit 
+  - luajit-lpeg 
+  - luajit-lpeg-doc 
+  - luajit-lua-dbus 
+  - luajit-lua-ev 
+  - luajit-lua-ev-devel 
+  - luajit-lua-mpris 
+  - luajit-luacheck 
+  - luajit-luaepnf 
+  - luajit-luaevent 
+  - luajit-luaexpat 
+  - luajit-luafilesystem 
+  - luajit-lualdap 
+  - luajit-luaposix 
+  - luajit-luarepl 
   - luajit-luarocks 
+  - luajit-luasec 
+  - luajit-luasocket 
+  - luajit-luasocket-devel 
+  - luajit-luasocket-doc 
+  - luajit-luasql 
+  - luajit-luassert 
+  - luajit-luasystem 
+  - luajit-luaterm 
+  - luajit-luaunbound 
+  - luajit-luautf8 
+  - luajit-luv 
+  - luajit-lyaml 
+  - luajit-markdown 
+  - luajit-mediator_lua 
+  - luajit-messagepack 
+  - luajit-moonscript 
+  - luajit-mpack 
+  - luajit-penlight 
+  - luajit-readline 
+  - luajit-say 
+  - luajit-slaxml 
+  - luajit-testmore 
+  - luajit-vstruct 
+  - luajit-zlib 
   - luanti 
   - luanti-data 
   - luanti-lang 
@@ -18332,6 +18341,8 @@ unsorted:
   - maven-archetype-plugin 
   - maven-archiver 
   - maven-archiver-javadoc 
+  - maven-archiver4 
+  - maven-archiver4-javadoc 
   - maven-artifact-transfer 
   - maven-artifact-transfer-javadoc 
   - maven-assembly-plugin 
@@ -18375,6 +18386,8 @@ unsorted:
   - maven-file-management-javadoc 
   - maven-filtering 
   - maven-filtering-javadoc 
+  - maven-filtering4 
+  - maven-filtering4-javadoc 
   - maven-install-plugin 
   - maven-install-plugin-javadoc 
   - maven-invoker 
@@ -18443,6 +18456,27 @@ unsorted:
   - maven-resolver-transport-http 
   - maven-resolver-transport-wagon 
   - maven-resolver-util 
+  - maven-resolver2-api 
+  - maven-resolver2-connector-basic 
+  - maven-resolver2-generator-gnupg 
+  - maven-resolver2-impl 
+  - maven-resolver2-javadoc 
+  - maven-resolver2-named-locks 
+  - maven-resolver2-named-locks-ipc 
+  - maven-resolver2-spi 
+  - maven-resolver2-supplier-mvn3 
+  - maven-resolver2-supplier-mvn3-javadoc 
+  - maven-resolver2-supplier-mvn4 
+  - maven-resolver2-supplier-mvn4-javadoc 
+  - maven-resolver2-test-util 
+  - maven-resolver2-transport-apache 
+  - maven-resolver2-transport-classpath 
+  - maven-resolver2-transport-file 
+  - maven-resolver2-transport-jdk 
+  - maven-resolver2-transport-jdk-11 
+  - maven-resolver2-transport-jdk-8 
+  - maven-resolver2-transport-wagon 
+  - maven-resolver2-util 
   - maven-resources-plugin 
   - maven-resources-plugin-bootstrap 
   - maven-resources-plugin-javadoc 
@@ -18487,6 +18521,12 @@ unsorted:
   - maven-wagon-ssh 
   - maven-wagon-ssh-common 
   - maven-wagon-ssh-external 
+  - maven4 
+  - maven4-bootstrap 
+  - maven4-javadoc 
+  - maven4-lib 
+  - maven4-testing 
+  - maven4-testing-javadoc 
   - mawk 
   - maxima 
   - maxima-exec-clisp 
@@ -22916,6 +22956,8 @@ unsorted:
   - plexus-resources-javadoc 
   - plexus-sec-dispatcher 
   - plexus-sec-dispatcher-javadoc 
+  - plexus-sec-dispatcher4 
+  - plexus-sec-dispatcher4-javadoc 
   - plexus-testing 
   - plexus-testing-javadoc 
   - plexus-utils 
@@ -22924,6 +22966,8 @@ unsorted:
   - plexus-velocity-javadoc 
   - plexus-xml 
   - plexus-xml-javadoc 
+  - plexus-xml4 
+  - plexus-xml4-javadoc 
   - plib-devel 
   - plistutil 
   - plog-devel 
@@ -26516,6 +26560,7 @@ unsorted:
   - python311-pybind11-stubgen 
   - python311-pybind11_abseil 
   - python311-pybluez 
+  - python311-pybreaker 
   - python311-pybtex 
   - python311-pybugz 
   - python311-pycairo-devel 
@@ -26679,6 +26724,7 @@ unsorted:
   - python311-pyramid-debugtoolbar 
   - python311-pyramid-mako 
   - python311-pyreadstat 
+  - python311-pyregion 
   - python311-pyright 
   - python311-pyroma 
   - python311-pyroomacoustics 
@@ -30315,6 +30361,7 @@ unsorted:
   - python312-pybind11-stubgen 
   - python312-pybind11_abseil 
   - python312-pybluez 
+  - python312-pybreaker 
   - python312-pybtex 
   - python312-pybugz 
   - python312-pycairo 
@@ -30484,6 +30531,7 @@ unsorted:
   - python312-pyramid-debugtoolbar 
   - python312-pyramid-mako 
   - python312-pyreadstat 
+  - python312-pyregion 
   - python312-pyright 
   - python312-pyroma 
   - python312-pyroomacoustics 
@@ -34078,6 +34126,7 @@ unsorted:
   - python313-pybind11-stubgen 
   - python313-pybind11_abseil 
   - python313-pybluez 
+  - python313-pybreaker 
   - python313-pybtex 
   - python313-pybugz 
   - python313-pycairo-devel 
@@ -34239,6 +34288,7 @@ unsorted:
   - python313-pyramid-debugtoolbar 
   - python313-pyramid-mako 
   - python313-pyreadstat 
+  - python313-pyregion 
   - python313-pyright 
   - python313-pyroma 
   - python313-pyroomacoustics 
@@ -36842,6 +36892,8 @@ unsorted:
   - rust1.88-src 
   - rust1.90 
   - rust1.90-src 
+  - rust1.91 
+  - rust1.91-src 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
@@ -37314,6 +37366,13 @@ unsorted:
   - slf4j-manual 
   - slf4j-reload4j 
   - slf4j-sources 
+  - slf4j2 
+  - slf4j2-ext 
+  - slf4j2-javadoc 
+  - slf4j2-jdk-platform-logging 
+  - slf4j2-jdk14 
+  - slf4j2-migrator 
+  - slf4j2-reload4j 
   - slib 
   - slicot-devel-static 
   - slim 
@@ -49446,6 +49505,7 @@ unsorted:
   - xcursorgen 
   - xcwd 
   - xdbedizzy 
+  - xdelta3-devel 
   - xdemorse 
   - xdg-desktop-portal-cosmic 
   - xdg-desktop-portal-devel 

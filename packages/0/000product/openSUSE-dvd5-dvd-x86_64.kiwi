@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20251104" schemaversion="4.1">
+<image name="OBS__openSUSE___20251105" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20251104</productvar>
+      <productvar name="VERSION">20251105</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20251104,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20251105,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20251104/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20251105/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -400,10 +400,8 @@
       <repopackage name="fcitx-googlepinyin"/>
       <repopackage name="fcitx-gtk2"/>
       <repopackage name="fcitx-gtk3"/>
-      <repopackage name="fcitx-libpinyin"/>
       <repopackage name="fcitx-mozc"/>
       <repopackage name="fcitx-pinyin"/>
-      <repopackage name="fcitx-qt5"/>
       <repopackage name="fcitx-table"/>
       <repopackage name="fcitx-table-cn-wubi"/>
       <repopackage name="fcitx-table-cn-wubi-large"/>
@@ -918,7 +916,6 @@
       <repopackage name="kernel-firmware-usb-network"/>
       <repopackage name="kexec-tools"/>
       <repopackage name="keyutils"/>
-      <repopackage name="kf5-kcm-fcitx"/>
       <repopackage name="kf6-attica"/>
       <repopackage name="kf6-baloo-file"/>
       <repopackage name="kf6-baloo-imports"/>
@@ -2451,19 +2448,16 @@
       <repopackage name="libqrtr-glib0"/>
       <repopackage name="libqt5-qtbase-platformtheme-gtk3"/>
       <repopackage name="libqt5-qtgraphicaleffects"/>
-      <repopackage name="libqt5-qtquickcontrols"/>
       <repopackage name="libqt5-qtquickcontrols2"/>
       <repopackage name="libqt5-qtspeech-plugin-speechd"/>
       <repopackage name="libqt5-qtstyleplugins-platformtheme-gtk2"/>
       <repopackage name="libqt5-qttranslations"/>
       <repopackage name="libqt5-qtwayland"/>
-      <repopackage name="libqt5-qtwebengine"/>
       <repopackage name="libqt5-qtxmlpatterns-imports"/>
       <repopackage name="libQt5Core5"/>
       <repopackage name="libQt5DBus5"/>
       <repopackage name="libQt5Gui5"/>
       <repopackage name="libQt5Network5"/>
-      <repopackage name="libQt5Positioning5"/>
       <repopackage name="libQt5PrintSupport5"/>
       <repopackage name="libQt5QuickControls2-5"/>
       <repopackage name="libQt5QuickTemplates2-5"/>
@@ -2474,8 +2468,6 @@
       <repopackage name="libQt5TextToSpeech5"/>
       <repopackage name="libQt5WaylandClient5"/>
       <repopackage name="libQt5WaylandCompositor5"/>
-      <repopackage name="libQt5WebChannel5"/>
-      <repopackage name="libQt5WebChannel5-imports"/>
       <repopackage name="libQt5Widgets5"/>
       <repopackage name="libQt5X11Extras5"/>
       <repopackage name="libQt5Xml5"/>
