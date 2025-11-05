@@ -255,4 +255,12 @@
     <comment>Qt 5.15.17, try #2 (forwarded request 1280892 from favogt)</comment>
     <requestid>1280902</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>37d1616993e7ad951e70e6a4b41fb93c</srcmd5>
+    <version>5.15.18+kde0</version>
+    <time>1762355929</time>
+    <user>anag_factory</user>
+    <comment>Qt 5.15.18 (forwarded request 1315523 from favogt)</comment>
+    <requestid>1315542</requestid>
+  </revision>
 </revisionlist>
