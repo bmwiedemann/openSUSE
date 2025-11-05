@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:48:35 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Sat Oct 11 16:07:42 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Don't depend on lua5.1
+
+-------------------------------------------------------------------
 Tue Jul 11 11:23:08 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 1.1.0

@@ -76,4 +76,14 @@
     <comment></comment>
     <requestid>1098145</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2e24601bd4d597cdf08d15f83aabf6db</srcmd5>
+    <version>1.1.0</version>
+    <time>1762355891</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Don't depend on lua5.1</comment>
+    <requestid>1315159</requestid>
+  </revision>
 </revisionlist>

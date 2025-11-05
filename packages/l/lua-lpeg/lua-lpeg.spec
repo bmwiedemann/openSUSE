@@ -77,11 +77,11 @@ install -Dm 644 re.lua %{buildroot}%{lua_noarchdir}
 LUA_PATH='%{_datadir}/lua/%{lua_version}/?.lua'
 LUA_PATH="%{buildroot}%{lua_noarchdir}/?/init.lua;${LUA_PATH}"
 export LUA_PATH="%{buildroot}%{lua_noarchdir}/?.lua;${LUA_PATH}"
-%{_bindir}/lua%{lua_version} test.lua
+%{_bindir}/lua test.lua
 
 %files
-%{lua_archdir}
-%{lua_noarchdir}
+%{lua_archdir}/lpeg.so
+%{lua_noarchdir}/re.lua
 
 %files doc
 %doc re.html lpeg.html HISTORY
