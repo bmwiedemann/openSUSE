@@ -1,0 +1,69 @@
+From a56567f03d0a84602518127be7d1649d9adb0438 Mon Sep 17 00:00:00 2001
+From: Bogdan Petre <bogdan.petre@aiven.io>
+Date: Mon, 3 Nov 2025 23:57:49 +0100
+Subject: [PATCH 1/2] tests: fix lolwut tests
+
+Starting with Valkey 9.0, the `lolwut` command doesn't contain `Redis
+ver.` in the output, but `Valkey ver.`.
+
+Signed-off-by: Bogdan Petre <bogdan.petre@aiven.io>
+---
+ tests/test_commands.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_commands.py b/tests/test_commands.py
+index dace6ca2..8b543c54 100644
+--- a/tests/test_commands.py
++++ b/tests/test_commands.py
+@@ -845,10 +845,10 @@ def test_lastsave(self, r):
+     @skip_if_server_version_lt("5.0.0")
+     def test_lolwut(self, r):
+         lolwut = r.lolwut().decode("utf-8")
+-        assert "Redis ver." in lolwut
++        assert "Valkey ver." in lolwut
+ 
+         lolwut = r.lolwut(5, 6, 7, 8).decode("utf-8")
+-        assert "Redis ver." in lolwut
++        assert "Valkey ver." in lolwut
+ 
+     @pytest.mark.onlynoncluster
+     @skip_if_server_version_lt("6.2.0")
+
+From 9f8e0c5ad46b1b5c7a02ce6c960823ba5a66cbf2 Mon Sep 17 00:00:00 2001
+From: Bogdan Petre <bogdan.petre@aiven.io>
+Date: Tue, 4 Nov 2025 10:49:16 +0100
+Subject: [PATCH 2/2] tests: make lolwut test pass with versions < 9.0
+
+Signed-off-by: Bogdan Petre <bogdan.petre@aiven.io>
+---
+ tests/test_commands.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_commands.py b/tests/test_commands.py
+index 8b543c54..2e33ac58 100644
+--- a/tests/test_commands.py
++++ b/tests/test_commands.py
+@@ -22,6 +22,7 @@
+ from valkey.client import EMPTY_RESPONSE, NEVER_DECODE
+ 
+ from .conftest import (
++    VALKEY_INFO,
+     _get_client,
+     assert_geo_is_close,
+     assert_resp_response,
+@@ -844,11 +845,13 @@ def test_lastsave(self, r):
+     @pytest.mark.onlynoncluster
+     @skip_if_server_version_lt("5.0.0")
+     def test_lolwut(self, r):
++        version = Version(VALKEY_INFO.get("version", "0"))
++        str_to_match = "Valkey ver." if version >= Version("9.0.0") else "Redis ver."
+         lolwut = r.lolwut().decode("utf-8")
+-        assert "Valkey ver." in lolwut
++        assert str_to_match in lolwut
+ 
+         lolwut = r.lolwut(5, 6, 7, 8).decode("utf-8")
+-        assert "Valkey ver." in lolwut
++        assert str_to_match in lolwut
+ 
+     @pytest.mark.onlynoncluster
+     @skip_if_server_version_lt("6.2.0")

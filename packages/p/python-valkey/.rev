@@ -15,4 +15,13 @@
     <comment>- Use a copy of sentinel.conf, it is modified during the test run.</comment>
     <requestid>1311262</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1d02cab35386c2dff0dc3254ac56dd99</srcmd5>
+    <version>6.1.1</version>
+    <time>1762355866</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-tests-valkey-9.0.patch
+  * Fixes tests with valkey &gt;= 9.0.0 (forwarded request 1315504 from ateixeira)</comment>
+    <requestid>1315506</requestid>
+  </revision>
 </revisionlist>

@@ -26,6 +26,9 @@ Source0:        https://github.com/valkey-io/valkey-py/archive/refs/tags/v%{vers
 Source1:        https://raw.githubusercontent.com/valkey-io/valkey-py/refs/heads/main/dockers/cluster.valkey.conf#/server.conf
 # Based on https://github.com/valkey-io/valkey-py/blob/main/dockers/sentinel.conf
 Source2:        sentinel.conf
+# PATCH-FIX-UPSTREAM fix-tests-valkey-9.0.patch
+# https://github.com/valkey-io/valkey-py/pull/239
+Patch0:         fix-tests-valkey-9.0.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

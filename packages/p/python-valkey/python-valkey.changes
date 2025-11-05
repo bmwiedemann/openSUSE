@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  4 13:27:33 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add fix-tests-valkey-9.0.patch
+  * Fixes tests with valkey >= 9.0.0
+
+-------------------------------------------------------------------
 Tue Oct 14 01:26:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use a copy of sentinel.conf, it is modified during the test run.
