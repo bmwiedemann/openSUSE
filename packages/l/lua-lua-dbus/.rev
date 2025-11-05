@@ -40,4 +40,14 @@
     <comment></comment>
     <requestid>1060956</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>6dae4293acb2b7d59037231156481698</srcmd5>
+    <version>0.0+git20170818.8fe38d0</version>
+    <time>1762355892</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Add luajit version to _multibuild</comment>
+    <requestid>1315161</requestid>
+  </revision>
 </revisionlist>

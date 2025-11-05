@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:48:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 20 19:49:56 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add luajit version to _multibuild
+
+-------------------------------------------------------------------
 Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix missing dependency on lua-macros (boo#1205612)
