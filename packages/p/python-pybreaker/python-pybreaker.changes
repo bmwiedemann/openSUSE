@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Nov  5 04:06:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a test that breaks on 32 bit architectures.
+
+-------------------------------------------------------------------
+Mon Nov  3 02:45:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 1.4.1. 
