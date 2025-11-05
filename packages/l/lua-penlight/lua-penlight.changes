@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:50:46 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Sun Oct 12 00:08:17 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package build with LuaJIT.
+
+-------------------------------------------------------------------
 Thu Jun 13 16:05:42 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to version 0.14.0:

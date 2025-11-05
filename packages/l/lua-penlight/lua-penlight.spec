@@ -20,7 +20,7 @@
 %define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name penlight
 %define rname Penlight
-%ifluadefault
+%if "%{lua_version_nodots}" == "%{lua_version_default_nodots}"
 %define with_main 1
 %endif
 Version:        1.14.0
@@ -75,18 +75,16 @@ cp -av lua/pl %{buildroot}%{lua_noarchdir}
 chmod -x %{buildroot}%{lua_noarchdir}/pl/dir.lua
 
 # build and install README etc.
-lua%{lua_version} %{lua_noarchdir}/markdown.lua *.md
+lua %{lua_noarchdir}/markdown.lua *.md
 
 %check
 LUA_PATH="%{buildroot}%{lua_noarchdir}/?/init.lua;%{buildroot}%{lua_noarchdir}/?.lua;;" \
-lua%{lua_version} run.lua tests
+lua run.lua tests
 
 %files
 %license LICENSE.md
 %doc README.md *.html
 %{lua_noarchdir}/pl
-# Add bash/zsh-completion files
-# from completions/bash/penlight.bash penlight
 
 %if 0%{?with_main}
 %files -n lua-%{mod_name}-doc
