@@ -141,4 +141,15 @@
   python3. (forwarded request 902830 from mcepl)</comment>
     <requestid>902839</requestid>
   </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>6d62c246a2a9f427a2b141cca2b33678</srcmd5>
+    <version>3.1.0</version>
+    <time>1762355860</time>
+    <user>anag_factory</user>
+    <comment>- update URL and Sourceurl, as both don't exist anymore
+- drop ncompress as 0%{?opensuse} is always 0
+- create a new devel package, for the header files
+- use pkgconfig rather than package name (forwarded request 1314985 from rrahl0)</comment>
+    <requestid>1315661</requestid>
+  </revision>
 </revisionlist>

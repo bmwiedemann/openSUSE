@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 29 13:24:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update URL and Sourceurl, as both don't exist anymore
+- drop ncompress as 0%{?opensuse} is always 0
+- create a new devel package, for the header files
+- use pkgconfig rather than package name
+
+-------------------------------------------------------------------
 Mon Jun 28 12:31:01 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - We don't need python2, works perfectly fine with the standard

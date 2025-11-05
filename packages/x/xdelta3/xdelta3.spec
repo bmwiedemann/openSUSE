@@ -1,7 +1,7 @@
 #
 # spec file for package xdelta3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,14 @@ Version:        3.1.0
 Release:        0
 Summary:        A diff utility which works with binary files
 License:        Apache-2.0 AND GPL-2.0-only
-Group:          Productivity/Archiving/Compression
-URL:            http://xdelta.org/
-Source0:        https://github.com/jmacd/xdelta-devel/releases/download/v%{version}/xdelta3-%{version}.tar.gz
+URL:            https://github.com/jmacd/xdelta-gpl
+Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  python3
-BuildRequires:  xz-devel
+BuildRequires:  pkgconfig(liblzma)
 # xdelta is being dropped
 Provides:       xdelta = %{version}
 Obsoletes:      xdelta < %{version}
-%if 0%{?opensuse}
-# Dependency of tests
-BuildRequires:  ncompress
-%endif
 
 %description
 Xdelta3 is a set of tools designed to compute changes between
@@ -41,6 +36,12 @@ binary files.  These changes (delta files) are similar to the output of the
 "diff" program, in that they may be used to store and transmit only the
 changes between files.  The "delta files" that Xdelta3 manages are
 stored in RFC3284 (VCDIFF) format.
+
+%package devel
+Summary:        Header files for %{name}
+
+%description devel
+%{summary}.
 
 %prep
 %autosetup
@@ -68,6 +69,9 @@ ln -sv %{_bindir}/xdelta3 \
 ln -sv %{_mandir}/man1/xdelta3.1 \
   %{buildroot}%{_mandir}/man1/xdelta.1
 
+# installing header files
+find . -maxdepth 1 -type f -name "*.h" -exec install -t %{buildroot}%{_includedir}/%{name} -Dpm0644 {} +
+
 %check
 ./xdelta3regtest
 
@@ -78,5 +82,8 @@ ln -sv %{_mandir}/man1/xdelta3.1 \
 %{_bindir}/xdelta3
 %{_mandir}/man1/xdelta.1%{?ext_man}
 %{_mandir}/man1/xdelta3.1%{?ext_man}
+
+%files devel
+%{_includedir}/%{name}
 
 %changelog
