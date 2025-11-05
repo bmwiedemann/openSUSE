@@ -19,11 +19,11 @@
 %define qt5_snapshot 1
 %define libname libQt5Svg5
 %define base_name libqt5
-%define real_version 5.15.17
-%define so_version 5.15.17
+%define real_version 5.15.18
+%define so_version 5.15.18
 %define tar_version qtsvg-everywhere-src-%{version}
 Name:           libqt5-qtsvg
-Version:        5.15.17+kde5
+Version:        5.15.18+kde5
 Release:        0
 Summary:        Qt 5 SVG Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
