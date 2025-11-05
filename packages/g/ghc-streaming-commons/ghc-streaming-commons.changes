@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 28 07:24:15 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update streaming-commons to version 0.2.3.1.
+  ## 0.2.3.1
+
+  * Fix `!6` host preference incorrectly allows IPv4 connections (https://github.com/fpco/streaming-commons/pull/83)
+  * Fix case of windows header files to allow cross-compilation from linux to windows (https://github.com/fpco/streaming-commons/pull/84)
+
+-------------------------------------------------------------------
 Sun Jan 19 12:26:36 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update streaming-commons to version 0.2.3.0.
