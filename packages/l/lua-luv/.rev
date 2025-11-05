@@ -193,4 +193,14 @@
     - ci: handle EBUSY for udp</comment>
     <requestid>1295834</requestid>
   </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>a8d739236fe2514afa99141e846e2131</srcmd5>
+    <version>MACRO</version>
+    <time>1762355903</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Make the package buildable with LuaJIT.</comment>
+    <requestid>1315181</requestid>
+  </revision>
 </revisionlist>

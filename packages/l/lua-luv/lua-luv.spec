@@ -94,11 +94,15 @@ echo "Name is %{name}, Flavor is %{flavor}"
 
 %build
 %cmake \
--DWITH_SHARED_LIBUV=ON -DWITH_LUA_ENGINE=Lua \
--DLUA_BUILD_TYPE=System -DMODULE_INSTALL_LIB_DIR=%{lua_archdir} \
--DSHAREDLIBS_INSTALL_LIB_DIR=%{_libdir} -DBUILD_SHARED_LIBS=OFF \
--DLUA_COMPAT53_DIR="%{lua_incdir}" \
-%{?lua_default:-DBUILD_SHARED_LIBS=ON}
+    -DWITH_SHARED_LIBUV=ON \
+    -DWITH_LUA_ENGINE=Lua \
+    -DLUA_BUILD_TYPE=System \
+    -DLUA_INCLUDE_DIR=%{lua_incdir} \
+    -DMODULE_INSTALL_LIB_DIR=%{lua_archdir} \
+    -DSHAREDLIBS_INSTALL_LIB_DIR=%{_libdir} \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DLUA_COMPAT53_DIR="%{lua_incdir}" \
+    %{?lua_default:-DBUILD_SHARED_LIBS=ON}
 %cmake_build
 
 %install
