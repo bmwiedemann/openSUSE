@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp-retry
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,12 +34,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp
-Requires:       python-aiohttp-retry
 Recommends:     python-yarl
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp}
-BuildRequires:  %{python_module aiohttp-retry}
 BuildRequires:  %{python_module pytest-aiohttp}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -64,6 +62,6 @@ export PYTHONPATH=.
 
 %files %{python_files}
 %{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}-%{version}*-info
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog

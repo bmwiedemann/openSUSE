@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  5 03:54:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove BuildRequires/Requires of aiotthp-retry (IE, itself).
+
+-------------------------------------------------------------------
 Mon Dec  9 12:26:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Downgrade requirement of python-yarl to Recommends (and don’t

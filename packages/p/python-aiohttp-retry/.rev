@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1231399</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e57cda733a0f8e47af14c0f17adc69ca</srcmd5>
+    <version>2.9.1</version>
+    <time>1762355968</time>
+    <user>anag_factory</user>
+    <comment>- Remove BuildRequires/Requires of aiotthp-retry (IE, itself).</comment>
+    <requestid>1315630</requestid>
+  </revision>
 </revisionlist>
