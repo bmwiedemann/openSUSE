@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  3 20:02:08 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.62:
+  * spec file: remove %udev_rules_update call (bsc#1250664)
+
+-------------------------------------------------------------------
 Tue Oct  7 13:34:07 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.61:
