@@ -80,4 +80,13 @@ VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, so
   * Update to BuildRequires: golang(API) &gt;= 1.25 matching go.mod (forwarded request 1307934 from jfkw)</comment>
     <requestid>1307935</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>80975291a5379a314630b48f6696f609</srcmd5>
+    <version>0.4.1</version>
+    <time>1762355922</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.1:
+  * Reverse platform+os naming scheme (forwarded request 1315537 from jfkw)</comment>
+    <requestid>1315539</requestid>
+  </revision>
 </revisionlist>

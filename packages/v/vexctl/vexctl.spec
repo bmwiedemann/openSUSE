@@ -17,7 +17,7 @@
 
 
 Name:           vexctl
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        CLI tool to create, transform and attest VEX metadata
 License:        Apache-2.0
