@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-cosmos
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-cosmos
-Version:        4.9.0
+Version:        4.14.0
 Release:        0
 Summary:        Microsoft Azure Cosmos client library for Python
 License:        MIT

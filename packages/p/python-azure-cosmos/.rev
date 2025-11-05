@@ -170,4 +170,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1225113 from glaubitz)</comment>
     <requestid>1225153</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1538f6bee1fc9ed0ead94fb64b0df5a9</srcmd5>
+    <version>4.14.0</version>
+    <time>1762355976</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 4.14.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1315668 from glaubitz)</comment>
+    <requestid>1315685</requestid>
+  </revision>
 </revisionlist>
