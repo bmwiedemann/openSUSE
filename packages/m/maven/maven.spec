@@ -38,6 +38,7 @@ Patch2:         0002-Invoke-logback-via-reflection.patch
 Patch3:         0003-Remove-dependency-on-powermock.patch
 Patch4:         0004-Fix-build-with-qdox-2.0.1.patch
 Patch5:         0005-Reproducible-maven.build.timestamp.patch
+Patch6:         0001-Set-Guice-class-loading-to-CHILD-avoid-using-termina.patch
 BuildRequires:  ant
 BuildRequires:  aopalliance
 BuildRequires:  apache-commons-cli
@@ -186,6 +187,7 @@ BuildArch:      noarch
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 # not really used during build, but a precaution
 find -name '*.jar' -not -path '*/test/*' -delete

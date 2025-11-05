@@ -240,4 +240,12 @@ put into adi:2</comment>
     <comment>3.9.11</comment>
     <requestid>1294963</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>89776a34244211c578ac7d634a410fc7</srcmd5>
+    <version>3.9.11</version>
+    <time>1762355960</time>
+    <user>anag_factory</user>
+    <comment>Avoid warning polution with Java 25</comment>
+    <requestid>1315651</requestid>
+  </revision>
 </revisionlist>

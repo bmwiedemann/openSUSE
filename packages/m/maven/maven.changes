@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  4 22:41:54 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Set-Guice-class-loading-to-CHILD-avoid-using-termina.patch
+    + Set Guice class loading to CHILD: avoid using terminally
+      deprecated methods. Default Guice class loading uses a
+      terminally deprecated JDK memory-access classes.
+
+-------------------------------------------------------------------
 Tue Jul 22 07:02:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.11
