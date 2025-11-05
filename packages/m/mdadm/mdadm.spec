@@ -22,7 +22,7 @@
 %endif
 
 Name:           mdadm
-Version:        4.4
+Version:        4.4+10.g7b1f399e
 Release:        0
 BuildRequires:  binutils-devel
 BuildRequires:  groff
@@ -44,16 +44,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         %{name}-%{version}.tar
 Source1:        Software-RAID.HOWTO.tar.bz2
 Source2:        sysconfig.mdadm
-Patch0010:      0010-mdopen-add-sbin-path-to-env-PATH-when-call-system-mo.patch
-Patch1000:      1000-Revert-mdmonitor-Abandon-custom-configuration-files.patch
-Patch1001:      1001-display-timeout-status.patch
-Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
-Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
-Patch1004:      1004-call-mdadm_env.sh-from-usr-libexec-mdadm.patch
-Patch1005:      1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch
-Patch1006:      1006-imsm-Fix-RAID0-to-RAID10-migration.patch
-Patch1007:      1007-mdadm-allow-any-valid-minor-number-in-md-device-name.patch
-Patch1008:      1008-mdmonitor-use-MAILFROM-to-set-sendmail-envelope-send.patch
 
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define _systemdshutdowndir %{_unitdir}/../system-shutdown

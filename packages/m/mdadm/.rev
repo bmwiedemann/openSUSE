@@ -1625,4 +1625,13 @@ which haven't landed upstream yet
   * restart only timers and mdmonitor.service</comment>
     <requestid>1299453</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>ba249e103e97b944d095f880bbcaaac0</srcmd5>
+    <version>4.4+10.g7b1f399e</version>
+    <time>1762355858</time>
+    <user>anag_factory</user>
+    <comment>- _service: pull from github.com/openSUSE/mdadm, patches now managed in git
+- New versioning scheme: add tag offset and git commit from openSUSE/mdadm repo</comment>
+    <requestid>1315586</requestid>
+  </revision>
 </revisionlist>

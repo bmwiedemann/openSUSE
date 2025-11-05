@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  4 17:18:07 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- _service: pull from github.com/openSUSE/mdadm, patches now managed in git
+  * delete 0010-mdopen-add-sbin-path-to-env-PATH-when-call-system-mo.patch
+  * delete 1000-Revert-mdmonitor-Abandon-custom-configuration-files.patch
+  * delete 1001-display-timeout-status.patch
+  * delete 1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
+  * delete 1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
+  * delete 1004-call-mdadm_env.sh-from-usr-libexec-mdadm.patch
+  * delete 1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch
+  * delete 1006-imsm-Fix-RAID0-to-RAID10-migration.patch
+  * delete 1007-mdadm-allow-any-valid-minor-number-in-md-device-name.patch
+  * delete 1008-mdmonitor-use-MAILFROM-to-set-sendmail-envelope-send.patch
+- New versioning scheme: add tag offset and git commit from openSUSE/mdadm repo
+
+-------------------------------------------------------------------
 Thu Aug 14 09:08:19 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Fix systemd unit file handling in spec file (boo#1207266)
