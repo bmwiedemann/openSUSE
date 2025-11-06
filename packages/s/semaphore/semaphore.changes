@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 06 06:44:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.43 (no releases between .37 and this one):
+  * ci: fix pro workflow
+  * ci: download goreleaser binary
+  * ci: upgrade golang
+  * ci: fix go version
+  * feat(integrations): add unit tests
+  * fix(integrations): rename target name for extracted values
+  * fix(integrations): pass extracted vars to playbook
+  * fix(ui): correct placeholders for templates
+
+-------------------------------------------------------------------
 Sun Nov 02 07:14:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.16.37 (.36 was not released):
