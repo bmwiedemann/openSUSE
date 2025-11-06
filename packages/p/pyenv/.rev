@@ -572,4 +572,48 @@ Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.7...v2.4.8</comment>
     <comment></comment>
     <requestid>1300231</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4b56feb58d3ed39d4639ce37bdd679aa</srcmd5>
+    <version>2.6.12</version>
+    <time>1762449317</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315945 from thomas-schraitle
+
+- Update 2.6.12
+    * Add graalpy-25.0.1 by @msimacek in #3350
+    * Add CPython 3.9.25 by @nedbat in #3355
+  - Update 2.6.11
+    * Support building against Homebrew Tcl/Tk 9 by @native-api in #3343
+    * Add CPython 3.13.9 by @nedbat in #3346
+    * Add CPython 3.15.0a1 by @edgarrmondragon in #3347
+  - Update 2.6.10
+    * Add CPython 3.12.12, 3.11.14, 3.10.19, 3.9.24 by @nedbat in #3344
+  - Update 2.6.9
+    * CI: modified-scripts-build: fix CPython-specific jobs never firing
+      by @tuzi3040 in #3338
+    * CI: modified-scripts-build: fix output variable for CPython-specific
+      workflows by @native-api in #3340
+    * Add CPython 3.14.0 by @SnoopJ in #3339
+    * Add CPython 3.13.8 by @jsirois in #3341
+  - Update 2.6.8
+    * Use Zlib from XCode SDK in a way compatible with XCode 16 and CLT by
+      @JarheadStever in #3301
+    * Add miniforge 25.3.0-1, 25.3.0-2, 25.3.0-3, 25.3.1-0, skip miniforge
+      25.3.0-0 by @native-api in #3306
+    * Fix Readline and OpenSSL detection for MacPorts without the corresponding
+      package by @native-api in #3317
+    * Bump actions/checkout from 4 to 5 in the github-actions group by
+      @dependabot[bot] in #3318
+    * Fix rehash hook for pipx/pipx.x/pipx.xx by @rockandska in #3320
+    * Add miniconda 25.7.0-2 by @native-api in #3323
+    * Support curl from a snap by @native-api in #3329
+    * CI: Bats test suite in docker by @rockandska in #3324
+    * Add GraalPy 25.0.0 by @msimacek in #3331
+    * Upgrade pip detetcion in pip-rehash to accept multiple variations by
+      @rockandska in #3330
+    * Add CPython 3.14.0rc3 by @nedbat in #3333
+    * Use TCLTK_* and pkg-config for 3.11+ linking with Homebrew Tcl/Tk; add
+      PYTHON_BUILD_TCLTK_FORMULA envvar by @native-api in #3327</comment>
+    <requestid>1315974</requestid>
+  </revision>
 </revisionlist>
