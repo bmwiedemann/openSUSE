@@ -13,7 +13,7 @@ bind-mount local directories into the container.
 
 ## Usage
 This image may be used to build and containerize application stacks using
-Spack. The stack is installed in a base container such as SLE BCI Base.
+Spack. The stack is installed in a base container such as openSUSE BCI Base.
 To build a containerized application stack, create the file `spack.yaml`
 in an empty directory with the following content:
 ```yaml
