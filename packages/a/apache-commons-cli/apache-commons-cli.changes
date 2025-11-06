@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Nov  5 07:25:32 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.10.0
+  * New Features
+    + CLI-339: Help formatter extension in the new package #314.
+    + CommandLine.Builder implements Supplier<CommandLine>.
+    + DefaultParser.Builder implements Supplier<DefaultParser>.
+    + CLI-340: Add CommandLine.getParsedOptionValues() #334.
+    + CLI-333: org.apache.commons.cli.Option.Builder implements
+      Supplier<Option>.
+  * Fixed Bugs
+    + Deprecate CommandLine.Builder() in favor of
+      CommandLine.builder().
+    + Deprecate DeprecatedAttributes.Builder() in favor of
+      DeprecatedAttributes.builder().
+    + Refactor default parser test #294.
+    + Port to JUnit 5.
+    + Generics for Converter should use Exception not Throwable.
+    + Pick up maven-antrun-plugin version from parent POM
+      org.apache:apache.
+    + Javadoc is missing its Overview page.
+    + Get mockito version from parent pom (#351).
+    + Remove -nouses directive from maven-bundle-plugin. OSGi
+      package imports now state 'uses' definitions for package
+      imports, this doesn't affect JPMS
+      (from org.apache.commons:commons-parent:80).
+    + Deprecate PatternOptionBuilder.PatternOptionBuilder().
+    + CLI-341: HelpFormatter infinite loop with 0 width input.
+    + CLI-349: Fail faster with a more precise NullPointerException:
+      Option.processValue() throws NullPointerException when passed
+      null value with value separator configured.
+    + CLI-344: Fail faster with a more precise NullPointerException:
+      DefaultParser.parse() throws NullPointerException when options
+      parameter is null.
+    + CLI-347: Options.addOptionGroup(OptionGroup) does not remove
+      required options from requiredOpts list.
+    + org.apache.commons.cli.Option.Builder.get() should throw
+      IllegalStateException instead of IllegalArgumentException.
+    + org.apache.commons.cli.Option.processValue(String) should
+      throw IllegalStateException instead of
+      IllegalArgumentException.
+    + org.apache.commons.cli.OptionBuilder.create() should throw
+      IllegalStateException instead of IllegalArgumentException.
+  * Updates
+    + Bump org.apache.commons:commons-parent from 72 to 85 #302,
+      #304, #310, #315, #320, #327, #371.
+    + [test] Bump commons-io:commons-io from 2.16.1 to 2.20.0 #309,
+      #337.
+    + [test] Bump org.apache.commons:commons-text from 1.12.0 to
+      1.14.0 #344.
+    + Update site documentation to
+      https://maven.apache.org/xsd/xdoc-2.0.xsd.
+
+-------------------------------------------------------------------
 Thu Nov  7 09:47:59 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Update to 1.9.0
@@ -8,9 +62,9 @@ Thu Nov  7 09:47:59 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
     + Add 'since' attribute to Option to track when an Option was
       introduced #292
   * Fixed bugs
-    + CLI-334:  Fix Javadoc pathing #280.
-    + CLI-335:  Updated properties documentation #285.
-    + CLI-336:  Deprecation not always reported #284.
+    + CLI-334: Fix Javadoc pathing #280.
+    + CLI-335: Updated properties documentation #285.
+    + CLI-336: Deprecation not always reported #284.
     + Replace internal StringBuffer with StringBuilder.
   * Updates
     + Bump org.apache.commons:commons-parent from 70 to 72 #283.

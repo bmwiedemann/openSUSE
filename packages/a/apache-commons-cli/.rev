@@ -151,4 +151,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>1.9.0</comment>
     <requestid>1222476</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>46a0222070b8f171f2b0cb3d03d8636d</srcmd5>
+    <version>1.10.0</version>
+    <time>1762449307</time>
+    <user>anag_factory</user>
+    <comment>1.10.0</comment>
+    <requestid>1315964</requestid>
+  </revision>
 </revisionlist>
