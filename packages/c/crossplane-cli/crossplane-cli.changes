@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov 06 08:36:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.0:
+  Large update for crossplane itself, see the release notes
+  https://github.com/crossplane/crossplane/releases/tag/v2.1.0
+  No CLI-related changes
+  * Dependencies
+    - chore(deps) bump crossplane-runtime to v2.1.0-rc.0
+    - chore(deps): bump crossplane-runtime to v2.1.0
+    - chore(deps): bump crossplane-runtime to v2.1.0-rc.1
+    - chore(deps): bump github.com/bufbuild/buf and
+      github.com/quic-go/quic-go to compatible versions
+    - chore(deps): update actions/checkout digest to 08eba0b
+    - chore(deps): update docker/login-action digest to 184bdaa
+    - chore(deps): update module github.com/go-chi/chi/v5 to v5.2.2
+      [security]
+    - chore(deps): update module
+      github.com/go-viper/mapstructure/v2 to v2.4.0 [security]
+    - chore(deps): update module github.com/quic-go/quic-go to
+      v0.54.1 [security]
+    - fix(deps): update module github.com/docker/docker to
+      v28.3.3+incompatible [security]
+    - fix(deps): update module github.com/go-git/go-billy/v5 to
+      v5.6.2
+    - fix(deps): update module
+      github.com/google/go-containerregistry to v0.20.6
+
+-------------------------------------------------------------------
 Thu Aug 21 06:53:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.0.2:
