@@ -529,4 +529,14 @@
     CHANGELOG.md file provided with this package (forwarded request 1312431 from glaubitz)</comment>
     <requestid>1312434</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>6b6a45e36588834708c0b31da87a248f</srcmd5>
+    <version>35.0.0</version>
+    <time>1762449334</time>
+    <user>anag_factory</user>
+    <comment>- Revert to upstream version 35.0.0 to address compatibility issues with
+  azure-cli 2.79.0 due to API mismatch with the Azure SDK (bsc#1252300)
+- Update Requires from setup.py (forwarded request 1316012 from glaubitz)</comment>
+    <requestid>1316029</requestid>
+  </revision>
 </revisionlist>
