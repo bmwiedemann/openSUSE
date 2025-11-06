@@ -1,0 +1,73 @@
+From 38db71f19b739623ed55e4794b0ecbd53b4becfc Mon Sep 17 00:00:00 2001
+From: Paulo Gomes <pjbgf@linux.com>
+Date: Wed, 8 Oct 2025 08:22:47 +0100
+Subject: [PATCH] Update CMake to 3.5.0
+
+Signed-off-by: Paulo Gomes <pjbgf@linux.com>
+---
+ CMakeLists.txt                | 11 ++++-------
+ awesomeConfig.cmake           |  1 +
+ tests/examples/CMakeLists.txt |  2 +-
+ 3 files changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9d3d3b4d..bae09a05 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.5.0)
+ project(awesome C)
+ 
+ # Require an out-of-source build. We generate an awesomerc.lua in the build dir
+@@ -16,11 +16,6 @@ directory which you first have to delete. \
+ endif()
+ 
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS  TRUE)
+-
+-if(COMMAND cmake_policy)
+-    cmake_policy(VERSION 2.6)
+-endif()
+-
+ set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+ set(BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
+ 
+@@ -454,7 +449,9 @@ if(LUACHECK_EXECUTABLE)
+     list(APPEND CHECK_QA_TARGETS luacheck)
+ endif()
+ add_custom_target(check-qa DEPENDS ${CHECK_QA_TARGETS})
+-add_dependencies(check check-qa check-examples)
++if(TARGET check-examples)
++    add_dependencies(check check-qa check-examples)
++endif()
+ # }}}
+ 
+ INCLUDE(${CMAKE_SOURCE_DIR}/Packaging.cmake)
+diff --git a/awesomeConfig.cmake b/awesomeConfig.cmake
+index 00b08fd7..0cfc8113 100644
+--- a/awesomeConfig.cmake
++++ b/awesomeConfig.cmake
+@@ -357,6 +357,7 @@ add_custom_target(lgi-check-run ALL
+ add_custom_target(setup_directories DEPENDS lgi-check-run)
+ 
+ add_custom_command(TARGET setup_directories
++        POST_BUILD
+         COMMAND ${CMAKE_COMMAND} -E make_directory ${BUILD_DIR}/script_files/
+         COMMAND ${CMAKE_COMMAND} -E make_directory ${BUILD_DIR}/docs/common/
+         COMMAND ${CMAKE_COMMAND} -E make_directory ${BUILD_DIR}/doc/images/
+diff --git a/tests/examples/CMakeLists.txt b/tests/examples/CMakeLists.txt
+index 1363fde4..f0ee933e 100644
+--- a/tests/examples/CMakeLists.txt
++++ b/tests/examples/CMakeLists.txt
+@@ -14,7 +14,7 @@ if(NOT DEFINED PROJECT_NAME)
+     project(awesome-tests-examples NONE)
+ endif()
+ 
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ # Get and update the LUA_PATH so the scripts can be executed without awesome.
+ execute_process(COMMAND lua -e "p = package.path:gsub(';', '\\\\;'); io.stdout:write(p)"
+-- 
+2.47.1
+
