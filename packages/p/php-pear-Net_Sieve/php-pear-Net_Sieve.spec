@@ -1,7 +1,7 @@
 #
 # spec file for package php-pear-Net_Sieve
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pear_name  Net_Sieve
 
 Name:           php-pear-Net_Sieve
-Version:        1.4.7
+Version:        1.4.8
 Release:        0
 Summary:        PHP module for talking to a sieve server
 License:        BSD-2-Clause

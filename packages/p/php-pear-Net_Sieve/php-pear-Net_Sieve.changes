@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  1 20:13:24 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- New upstream release 1.4.8
+  * Fixed OAUTHBEARER support
+  * Fixed various PHP deprecation warnings
+  * PHPDoc fixes
+
+-------------------------------------------------------------------
 Sun May 26 18:17:59 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - New upstream release 1.4.7
