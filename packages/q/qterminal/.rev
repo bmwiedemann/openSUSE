@@ -310,4 +310,16 @@
     <comment></comment>
     <requestid>1275303</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d864e7a0d4de4a8fe2493cca414e6f02</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449261</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Respect geometry and state options on closing with prompt
+  * Removed &quot;Do not ask again&quot; from prompt dialog
+  * Added bookmarks action to view context menu
+  * Silenced Clang warnings</comment>
+    <requestid>1315887</requestid>
+  </revision>
 </revisionlist>

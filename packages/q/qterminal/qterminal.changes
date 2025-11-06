@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  5 19:27:56 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.3.0:
+  * Respect geometry and state options on closing with prompt
+  * Removed "Do not ask again" from prompt dialog
+  * Added bookmarks action to view context menu
+  * Silenced Clang warnings
+
+-------------------------------------------------------------------
 Mon May  5 23:25:15 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.2.1:
