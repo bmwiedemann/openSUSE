@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-lxqt
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
@@ -25,9 +25,7 @@ URL:            https://github.com/lxqt/xdg-desktop-portal-lxqt
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM -- Qt 610 compat
-Patch0:         xdg-desktop-portal-lxqt-qt610.patch
-BuildRequires:  cmake >= 3.18.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
@@ -55,6 +53,15 @@ functionality needed by nearly all of its components.
 %install
 %{qt6_install}
 
+%pre
+%systemd_user_pre %{name}.service
+
+%post
+%systemd_user_post %{name}.service
+
+%preun
+%systemd_user_preun %{name}.service
+
 %files
 %doc README.md
 %{_libexecdir}/%{name}
@@ -64,6 +71,7 @@ functionality needed by nearly all of its components.
 %{_datadir}/xdg-desktop-portal/portals/lxqt.portal
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.lxqt.service
 %{_datadir}/applications/org.freedesktop.impl.portal.desktop.lxqt.desktop
+%{_userunitdir}/%{name}.service
 %license LICENSE
 
 %changelog

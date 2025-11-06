@@ -69,4 +69,15 @@
     <comment></comment>
     <requestid>1311233</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>41735556e2e9311b7d41319a1a3a560c</srcmd5>
+    <version>1.3.0</version>
+    <time>1762449265</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.0:
+  * Use native systemd service
+  * Fixed building with Qt 6.10
+  * Drop xdg-desktop-portal-lxqt-qt610.patch</comment>
+    <requestid>1315893</requestid>
+  </revision>
 </revisionlist>
