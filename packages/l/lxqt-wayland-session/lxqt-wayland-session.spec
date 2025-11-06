@@ -26,7 +26,7 @@
 %endif
 
 Name:           lxqt-wayland-session
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Files needed for the LXQt Wayland Session
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-4.0
@@ -198,6 +198,7 @@ compositor with LXQt
 %dir %{_datadir}/lxqt/wayland/firstrun
 %dir %{_datadir}/wayland-sessions
 %{_bindir}/startlxqtwayland
+%{_bindir}/lxqt-qdbus
 %{_datadir}/lxqt/wayland/firstrun/autostart
 %{_datadir}/wayland-sessions/lxqt-wayland.desktop
 %{_mandir}/man?/%{name}.?%{?ext_man}

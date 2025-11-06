@@ -1,4 +1,4 @@
-From 211acdd29052c77a0d49c53a252387c88fd8a83e Mon Sep 17 00:00:00 2001
+From 4b9556acf9262d470cdd362a2e4e8927ec0491ea Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Thu, 16 Jan 2025 16:12:51 -0800
 Subject: [PATCH 4/7] configuration adds miriway session
@@ -134,10 +134,10 @@ index 0000000..9f4cf9e
 +ctrl-alt=BackSpace:@exit
 +
 diff --git a/startlxqtwayland.in b/startlxqtwayland.in
-index dda2ee5..f349985 100644
+index c92325c..e48e58b 100644
 --- a/startlxqtwayland.in
 +++ b/startlxqtwayland.in
-@@ -143,6 +143,16 @@ elif [ "$COMPOSITOR" = "kwin_wayland" ]; then
+@@ -142,6 +142,16 @@ elif [ "$COMPOSITOR" = "kwin_wayland" ]; then
      # WARNING: Option '--no-kactivities' can result in crashes with animations and corner actions.
      exec ${COMPOSITOR}_wrapper --exit-with-session lxqt-session --xwayland
  
@@ -155,5 +155,5 @@ index dda2ee5..f349985 100644
      if [ ! -f "$XDG_CONFIG_HOME/lxqt/wayland/lxqt-wayfire.ini" ]; then
          cp "$share_dir"/lxqt/wayland/lxqt-wayfire.ini "$XDG_CONFIG_HOME"/lxqt/wayland/
 -- 
-2.51.0
+2.51.1
 

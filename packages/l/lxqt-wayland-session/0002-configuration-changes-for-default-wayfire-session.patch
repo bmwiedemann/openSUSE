@@ -1,4 +1,4 @@
-From b0dbd896edc163c72e3bfb0408decb7a1666d516 Mon Sep 17 00:00:00 2001
+From e759201617735e37d2d808d7ed938da1dc05ec77 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Wed, 8 Jan 2025 10:47:45 -0800
 Subject: [PATCH 2/7] configuration changes for default wayfire session
@@ -9,7 +9,7 @@ Set openSUSE background in default wayfire session
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configurations/lxqt-wayfire.ini b/configurations/lxqt-wayfire.ini
-index 5a4a15a..abcaf2f 100644
+index 9e3386d..1eea6be 100644
 --- a/configurations/lxqt-wayfire.ini
 +++ b/configurations/lxqt-wayfire.ini
 @@ -129,7 +129,7 @@ toggle = <super> <ctrl> KEY_F
@@ -22,5 +22,5 @@ index 5a4a15a..abcaf2f 100644
  
  # Output configuration
 -- 
-2.51.0
+2.51.1
 

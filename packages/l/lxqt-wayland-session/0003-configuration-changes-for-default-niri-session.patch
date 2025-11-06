@@ -1,4 +1,4 @@
-From c9a32e1bf468ee36d2044da6459284e971c18d65 Mon Sep 17 00:00:00 2001
+From e4061a04dc7a08b05086f03bf30155e9ae2ccc9a Mon Sep 17 00:00:00 2001
 From: Shawn W Dunn <sfalken@opensuse.org>
 Date: Mon, 13 Oct 2025 13:06:00 -0700
 Subject: [PATCH 3/7] configuration changes for default niri session
@@ -9,10 +9,10 @@ Disables "natural scrolling" for scrollwheel in default session
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configurations/lxqt-niri.kdl b/configurations/lxqt-niri.kdl
-index 35b6c2c..82ef9f8 100644
+index 4d65227..d29934e 100644
 --- a/configurations/lxqt-niri.kdl
 +++ b/configurations/lxqt-niri.kdl
-@@ -34,7 +34,7 @@ input {
+@@ -39,7 +39,7 @@ input {
          dwtp
          // drag false
          // drag-lock
@@ -22,5 +22,5 @@ index 35b6c2c..82ef9f8 100644
          // accel-profile "flat"
          // scroll-method "two-finger"
 -- 
-2.51.0
+2.51.1
 

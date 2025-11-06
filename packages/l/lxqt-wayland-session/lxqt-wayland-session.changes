@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  5 20:13:33 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 0.3.0:
+  * lxqt-dbus is added as a wrapper for various qdbus commands, to
+    make them easier to use
+  * Used XDG_SESSION_TYPE=wayland for starting from tty
+  * Updated for labwc 0.9.2, niri 25.08 and hyprland 0.51
+  * Used character classes in sed for freeBSD
+  * Rebased openSUSE patches for new version
+
+-------------------------------------------------------------------
 Mon Oct 13 20:18:20 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 0.2.1:

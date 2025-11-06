@@ -1,4 +1,4 @@
-From 8e8d3d0a99ee7aa55bfc4490120a2bc58daf543e Mon Sep 17 00:00:00 2001
+From 492afe56a7f467d95150d134429923dbd24b2e5e Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Tue, 21 Jan 2025 16:21:14 -0800
 Subject: [PATCH 6/7] configuration changes for default river session
@@ -9,10 +9,10 @@ Subject: [PATCH 6/7] configuration changes for default river session
  1 file changed, 1 insertion(+)
 
 diff --git a/configurations/lxqt-river-init b/configurations/lxqt-river-init
-index e22b8df..438e195 100644
+index d847b76..b1d4e40 100644
 --- a/configurations/lxqt-river-init
 +++ b/configurations/lxqt-river-init
-@@ -162,6 +162,7 @@ done
+@@ -166,6 +166,7 @@ done
  riverctl background-color 0x002b36
  riverctl border-color-focused 0x4ec2e8
  riverctl border-color-unfocused 0x586e75
@@ -21,5 +21,5 @@ index e22b8df..438e195 100644
  # Set keyboard repeat rate
  riverctl set-repeat 50 300
 -- 
-2.51.0
+2.51.1
 

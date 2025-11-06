@@ -1,20 +1,16 @@
-From a34a2fc801e70f518ac86346df6885db05f86ebb Mon Sep 17 00:00:00 2001
-From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
-Date: Wed, 8 Jan 2025 09:24:02 -0800
+From 5407d4b4712f705111da657bdef1c6c477839523 Mon Sep 17 00:00:00 2001
+From: Shawn W Dunn <sfalken@opensuse.org>
+Date: Wed, 5 Nov 2025 12:07:56 -0800
 Subject: [PATCH 1/7] configuration changes for default labwc session
 
-- Combines two prior patches into one, as they're both for the labwc
-session.
 - Sets openSUSE background for labwc session
-- Adjusts the pointerspeed to make the default mouse pointer less twitchy
 - Moves user configs from default labwc locations, to avoid config
   conflicts
-- Add LABWC_CONFIG_DIR env variable for labwc-tweaks compatibility
+- Add LABWC_CONFIG_DIR env variable for labwx-tweaks compatibility
 ---
  configurations/labwc/autostart |  2 +-
- configurations/labwc/rc.xml    |  2 +-
  startlxqtwayland.in            | 10 ++++++----
- 3 files changed, 8 insertions(+), 6 deletions(-)
+ 2 files changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/configurations/labwc/autostart b/configurations/labwc/autostart
 index fa49741..a756d24 100644
@@ -29,24 +25,11 @@ index fa49741..a756d24 100644
  
  # Faster startup for GTK apps:
  dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY > /dev/null 2>&1 &
-diff --git a/configurations/labwc/rc.xml b/configurations/labwc/rc.xml
-index e6bc095..0ea95c5 100644
---- a/configurations/labwc/rc.xml
-+++ b/configurations/labwc/rc.xml
-@@ -644,7 +644,7 @@
-     <device category="default">
-       <naturalScroll></naturalScroll>
-       <leftHanded></leftHanded>
--      <pointerSpeed>1</pointerSpeed>
-+      <pointerSpeed>0.0</pointerSpeed>
-       <accelProfile></accelProfile>
-       <tap>yes</tap>
-       <tapButtonMap></tapButtonMap>
 diff --git a/startlxqtwayland.in b/startlxqtwayland.in
-index ca713c5..dda2ee5 100644
+index 57f6af1..c92325c 100644
 --- a/startlxqtwayland.in
 +++ b/startlxqtwayland.in
-@@ -97,10 +97,10 @@ if  [ -z "$COMPOSITOR" ]; then
+@@ -100,10 +100,10 @@ if  [ -z "$COMPOSITOR" ]; then
  
  elif [ "$COMPOSITOR" = "labwc" ]; then
      # Copy default configuration if not existing and set keyboard layout if different from us
@@ -60,7 +43,7 @@ index ca713c5..dda2ee5 100644
         fi
      fi
  
-@@ -110,7 +110,9 @@ elif [ "$COMPOSITOR" = "labwc" ]; then
+@@ -113,7 +113,9 @@ elif [ "$COMPOSITOR" = "labwc" ]; then
          echo "Running on virtualized hardware"
      fi
  
@@ -72,5 +55,5 @@ index ca713c5..dda2ee5 100644
  elif [ "$COMPOSITOR" = "niri" ]; then
      if [ ! -f "$XDG_CONFIG_HOME/lxqt/wayland/lxqt-niri.kdl" ]; then
 -- 
-2.51.0
+2.51.1
 

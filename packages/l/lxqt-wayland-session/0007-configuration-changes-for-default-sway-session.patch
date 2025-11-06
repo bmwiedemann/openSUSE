@@ -1,4 +1,4 @@
-From 5619ef7a2645952d189d28ca599b0afae5d0db0b Mon Sep 17 00:00:00 2001
+From 2247156ba94d0fa488f4b28dcb5c5c6b8cf8ea79 Mon Sep 17 00:00:00 2001
 From: Shawn W Dunn <sfalken@opensuse.org>
 Date: Mon, 13 Oct 2025 13:10:40 -0700
 Subject: [PATCH 7/7] configuration changes for default sway session
@@ -11,7 +11,7 @@ Subject: [PATCH 7/7] configuration changes for default sway session
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/configurations/lxqt-sway.config b/configurations/lxqt-sway.config
-index 8493e74..badc6fd 100644
+index 3a8d3a4..d655736 100644
 --- a/configurations/lxqt-sway.config
 +++ b/configurations/lxqt-sway.config
 @@ -19,6 +19,9 @@ set $term qterminal
@@ -24,12 +24,12 @@ index 8493e74..badc6fd 100644
  ### Output configuration
  #
  # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-@@ -234,4 +237,4 @@ bindsym $mod+r mode "resize"
+@@ -237,4 +240,4 @@ bindsym $mod+r mode "resize"
      bindsym XF86MonBrightnessDown exec lxqt-config-brightness -d
      bindsym XF86MonBrightnessUp exec lxqt-config-brightness -i
  
 -include /etc/sway/config.d/*
 +# include /etc/sway/config.d/*
 -- 
-2.51.0
+2.51.1
 

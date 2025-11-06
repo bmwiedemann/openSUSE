@@ -1,4 +1,4 @@
-From c95f34926bf8aea630ffdfda784bb691c5121c00 Mon Sep 17 00:00:00 2001
+From 548a4f746742608e7adce0b2acc074580f2e6f75 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Thu, 17 Apr 2025 16:06:12 -0700
 Subject: [PATCH 5/7] configuration changes for default hyprland session
@@ -9,7 +9,7 @@ Subject: [PATCH 5/7] configuration changes for default hyprland session
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configurations/lxqt-hyprland.conf b/configurations/lxqt-hyprland.conf
-index d696997..fb917a0 100644
+index 10b3b07..2cdea32 100644
 --- a/configurations/lxqt-hyprland.conf
 +++ b/configurations/lxqt-hyprland.conf
 @@ -38,7 +38,7 @@ env = QT_PLATFORM_PLUGIN,lxqt
@@ -22,5 +22,5 @@ index d696997..fb917a0 100644
  
  # If not using lxqt-session uncomment components to autostart
 -- 
-2.51.0
+2.51.1
 

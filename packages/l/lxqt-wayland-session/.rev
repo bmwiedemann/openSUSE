@@ -87,4 +87,18 @@
 - Rebase of openSUSE configuration patches</comment>
     <requestid>1311232</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0568cce5234d814ab098a877a63f3b66</srcmd5>
+    <version>0.3.0</version>
+    <time>1762449266</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.0:
+  * lxqt-dbus is added as a wrapper for various qdbus commands, to
+    make them easier to use
+  * Used XDG_SESSION_TYPE=wayland for starting from tty
+  * Updated for labwc 0.9.2, niri 25.08 and hyprland 0.51
+  * Used character classes in sed for freeBSD
+  * Rebased openSUSE patches for new version</comment>
+    <requestid>1315895</requestid>
+  </revision>
 </revisionlist>
