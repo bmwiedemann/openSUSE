@@ -1,7 +1,7 @@
 #
 # spec file for package linode-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module terminaltables}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with python2}
 BuildRequires:  python-enum34
@@ -48,6 +50,7 @@ Requires:       python2-future
 %endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -76,15 +79,17 @@ echo %version" > version
 cp data-* linodecli/
 
 # run the actual build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/%{cli_name}
 
 # move installed bash completions to proper location
 install -d %{buildroot}%{_datarootdir}/bash-completion/completions
-mv %{buildroot}%{_sysconfdir}/bash_completion.d/%{cli_name}.sh  %{buildroot}%{_datarootdir}/bash-completion/completions/%{cli_name}
+mv %{buildroot}%{python_sitelib}%{_sysconfdir}/bash_completion.d/%{cli_name}.sh  %{buildroot}%{_datarootdir}/bash-completion/completions/%{cli_name}
+%python_expand rm -r %{buildroot}%{$python_sitelib}%{_sysconfdir}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
 %python_install_alternative %{cli_name}
@@ -94,7 +99,8 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/%{cli_name}.sh  %{buildroot}%{_d
 
 %files %{python_files}
 %python_alternative %{_bindir}/%{cli_name}
-%{python_sitelib}/*
+%{python_sitelib}/linodecli
+%{python_sitelib}/linode_cli-%{version}.dist-info
 
 %files -n %{name}-bash-completion
 %dir %{_datarootdir}/bash-completion/completions/

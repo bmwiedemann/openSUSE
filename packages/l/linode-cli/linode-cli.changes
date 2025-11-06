@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  5 04:53:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Switch to noarch, it doesn't ship any binaries.
+- List directories under sitelib explicitly.
+- Sprinkle in fdupes.
+
+-------------------------------------------------------------------
 Tue Feb 27 21:22:04 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add dependency on setuptools
