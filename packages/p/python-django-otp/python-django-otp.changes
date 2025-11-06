@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  5 09:18:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.6.3
+  * Add missing gettext strings
+  * Remove tests from wheels
+  * Wrong :rtype: in StaticToken.random_token docstring
+
+-------------------------------------------------------------------
 Sat Jul 12 17:29:59 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.1:

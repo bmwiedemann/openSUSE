@@ -24,4 +24,17 @@
   * Allow a {token} placeholder in :setting:`OTP_EMAIL_SUBJECT`.</comment>
     <requestid>1292439</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>57d492f44dac8e4f66786aaba1abf2a0</srcmd5>
+    <version>1.6.3</version>
+    <time>1762449315</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315674 from mcalabkova
+
+- update to 1.6.3
+    * Add missing gettext strings
+    * Remove tests from wheels
+    * Wrong :rtype: in StaticToken.random_token docstring</comment>
+    <requestid>1315970</requestid>
+  </revision>
 </revisionlist>
