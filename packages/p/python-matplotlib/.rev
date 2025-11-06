@@ -1083,4 +1083,13 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment></comment>
     <requestid>1311511</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>8e4ef7805c7e8c383d1fef3e92fa864b</srcmd5>
+    <version>3.10.7</version>
+    <time>1762449154</time>
+    <user>anag_factory</user>
+    <comment>- Skip tests failing with new package versions in Factory (bsc#1252721)
+</comment>
+    <requestid>1315307</requestid>
+  </revision>
 </revisionlist>

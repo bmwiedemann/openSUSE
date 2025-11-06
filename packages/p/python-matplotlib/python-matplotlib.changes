@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  3 09:06:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Skip tests failing with new package versions in Factory (bsc#1252721)
+
+-------------------------------------------------------------------
 Mon Oct 13 14:51:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.10.7
