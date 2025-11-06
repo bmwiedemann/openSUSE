@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-core
-Version:        0.4.0
+Version:        0.7.0
 Release:        0
 Summary:        Proton VPN core library
 License:        GPL-3.0-or-later
