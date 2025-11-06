@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  5 16:04:57 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.3.0:
+  * Made sure to run Qt6 lupdate
+
+-------------------------------------------------------------------
 Wed Jul  2 19:15:32 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.2.1:

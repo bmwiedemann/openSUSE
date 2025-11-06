@@ -44,4 +44,13 @@
   * Use FindXCB module provided by Qt</comment>
     <requestid>1290044</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>24e064bd7423cee3259271bdfe3a6a37</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449244</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Made sure to run Qt6 lupdate</comment>
+    <requestid>1315863</requestid>
+  </revision>
 </revisionlist>
