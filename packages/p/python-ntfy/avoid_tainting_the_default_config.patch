@@ -1,0 +1,42 @@
+From: Matthias Bach <marix@marix.org>
+Date: Wed, 29 Oct 2025 21:21:09 +0200
+Subject: [PATCH] Avoid tainting the default config
+Upstream: submitted
+References: gh#dschep/ntfy#270
+---
+Index: ntfy/config.py
+<+>UTF-8
+===================================================================
+diff --git a/ntfy/config.py b/ntfy/config.py
+--- a/ntfy/config.py	(revision c4ef3b54f26390b7b51ec612f41f11a1ba284227)
++++ b/ntfy/config.py	(revision 030d3d81ea1941b240eb578fd4ec79023d03b196)
+@@ -9,7 +9,7 @@
+ from ruamel import yaml
+ 
+ from . import __version__
+-from .default_config import config as default_configuration
++from .default_config import get_default_config
+ 
+ if yaml.version_info < (0, 15):
+     safe_load = yaml.safe_load
+@@ -34,7 +34,7 @@
+     except IOError as e:
+         if e.errno == errno.ENOENT and config_path == DEFAULT_CONFIG:
+             logger.info('{} not found'.format(config_path))
+-            config = default_configuration
++            config = get_default_config()
+         else:
+             logger.error(
+                 'Failed to open {}'.format(config_path), exc_info=True)
+Index: ntfy/default_config.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ntfy/default_config.py b/ntfy/default_config.py
+--- a/ntfy/default_config.py	(revision c4ef3b54f26390b7b51ec612f41f11a1ba284227)
++++ b/ntfy/default_config.py	(revision 030d3d81ea1941b240eb578fd4ec79023d03b196)
+@@ -1,1 +1,2 @@
+-config = {}
++def get_default_config():
++    return {}

@@ -29,6 +29,7 @@ URL:            https://github.com/dschep/ntfy
 Source:         ntfy-%{version}.tar.xz
 # https://github.com/dschep/ntfy/issues/247
 Patch0:         python-ntfy-no-mock.patch
+Patch1:         avoid_tainting_the_default_config.patch
 Patch2:         drop-misleading-shebangs.patch
 BuildRequires:  %{python_module appdirs}
 # test requirements
@@ -84,11 +85,7 @@ Quickstart
 
 %check
 export XDG_CONFIG_HOME=/foo/config
-# There is an isolation error. Somewhere in the tests the default configuration dict is modified.
-# For the normal application execution that is not an issue as configuration is loaded only once.
-# So this is the hacky workaround until the issue is fixed upstream.
-%pytest --ignore 'tests/test_xmpp.py' -k 'not test_xmpp' --ignore 'tests/test_config.py'
-%pytest --ignore 'tests/test_xmpp.py' -k 'not test_xmpp' 'tests/test_config.py'
+%pytest --ignore 'tests/test_xmpp.py' -k 'not test_xmpp'
 
 %pre
 %python_libalternatives_reset_alternative ntfy

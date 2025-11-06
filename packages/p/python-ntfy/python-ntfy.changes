@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 29 20:40:00 UTC 2025 - Matthias Bach <marix@marix.org>
+
+- Add avoid_tainting_the_default_config.patch and remove spec-file
+  based workaround for test isolation issues.
+
+-------------------------------------------------------------------
 Tue Oct 28 20:25:23 UTC 2025 - Matthias Bach <marix@marix.org>
 
 - Update to version 2.7.1

@@ -149,4 +149,12 @@
 - Switch service file from old disabled to modern manual run mode.</comment>
     <requestid>1314209</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f4e93cde38ca3254d382a89c534d83a5</srcmd5>
+    <version>2.7.1</version>
+    <time>1762449271</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1315896</requestid>
+  </revision>
 </revisionlist>
