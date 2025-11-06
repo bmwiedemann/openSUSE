@@ -1,7 +1,7 @@
 #
 # spec file for package erlang
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,20 +23,18 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           erlang
-Version:        27.3.4
+Version:        28.1.1
 Release:        0
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
 URL:            https://www.erlang.org
 Source0:        https://github.com/erlang/otp/archive/OTP-%{version}.tar.gz
-# The link comes from ./make/ex_doc_link file
-Source1:        https://github.com/elixir-lang/ex_doc/releases/download/v0.34.1/ex_doc_otp_26
 Source3:        %{name}-rpmlintrc
 Source5:        erlang.sysconfig
 Source6:        macros.erlang
 Source7:        epmd.service
 Source8:        epmd.socket
-Source9:        README.SUSE
+Source9:        README.SUSE.md
 Source10:       epmd-user.conf
 # PATCH-MISSING-TAG -- See http://en.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch0:         otp-R16B-rpath.patch
@@ -45,6 +43,7 @@ Patch4:         erlang-not-install-misc.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  autoconf
 BuildRequires:  dejavu-fonts
+BuildRequires:  ex_doc
 BuildRequires:  fdupes
 BuildRequires:  fop
 BuildRequires:  gcc-c++
@@ -249,7 +248,6 @@ A Graphics System used to write platform independent user interfaces.
 %patch -P 0 -p1 -b .rpath
 %patch -P 4 -p1
 cp %{SOURCE9} .
-install -m 0755 %{SOURCE1} ./bin/ex_doc
 
 # enable dynamic linking for ssl
 sed -i 's|SSL_DYNAMIC_ONLY=no|SSL_DYNAMIC_ONLY=yes|' erts/configure
@@ -356,7 +354,7 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %files
 %license LICENSE.txt
 %doc AUTHORS README.md
-%doc README.SUSE
+%doc README.SUSE.md
 %{_bindir}/*
 %exclude %{_bindir}/dialyzer
 %exclude %{_bindir}/epmd

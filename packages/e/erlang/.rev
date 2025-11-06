@@ -1210,4 +1210,41 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
 - Changes for 27.3.2:</comment>
     <requestid>1276092</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>f21f6fafb79ba08eb504cc3c691c4d7d</srcmd5>
+    <version>28.1.1</version>
+    <time>1762449177</time>
+    <user>anag_factory</user>
+    <comment>- Add README.md mostly for src.opensuse.org
+
+- Changes for 28.1.1:
+  * kernel: With this change group.erl will not crash when
+    receiving unknown message.
+  * erts: Fixed the erl documentation of the default timewarp mode
+    used.
+  * erts: The erlang:suspend_process() BIFs failed to suspend
+    processes currently executing on dirty schedulers.
+  * ssl: Fixed so that sending of application data will adhere to
+    max_fragment_length. This was broken in OTP-27 release by an
+    optimization.
+  * ssl: PR-10046 put to hard requirements on key file content.
+    Make sure same file can be used as keyfile and certfile
+  * ssl: Assert that hello extensions are unique and send an
+    illegal parameter alert if they are not.
+  * ssl: Avoid sending an internal message to the user process in
+    conjunction with handling a key update.
+  * xmerl: The XSD validation failed due to not handling the
+    optional text blocks correctly in an XSD complex type with
+    attribute mixed=true.
+  * diameter: Added documentation about 'proxy' and 'resend'
+    options in diameter:handle_request/3
+
+- Changes for 28.1:
+  * public_key: NIFs and linked-in drivers are now loadable when
+    running in an Erlang source tree on Windows.
+  * public_key: Added missing reference to SignedAttributes so that
+    it now works with the der_encode and der_decode functions.
+  * public_key: Added support for quantum crypto signature</comment>
+    <requestid>1315719</requestid>
+  </revision>
 </revisionlist>

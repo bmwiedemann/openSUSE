@@ -5,6 +5,17 @@ Erlang Port-mapper Daemon in openSUSE uses systemd socket-activation. In order t
 
 For clustering, please, use ```/etc/systemd/system/epmd.socket.d/``` to configure interfaces to listen on. See man systemd.unit(5) for details.
 
+## Build Results
+
+Current state of erlang in openSUSE:Factory is
+
+![Factory build results](https://br.opensuse.org/status/openSUSE:Factory/erlang/standard)
+
+The current state of erlang in the devel project build
+(devel:languages:erlang:Factory)
+
+![Devel project build results](https://br.opensuse.org/status/devel:languages:erlang:Factory/erlang)
+
 ### Upgrading from sysvinit
 ```/etc/sysconfig/erlang``` has no effect now, to configure EPMd use systemd capabilities instead.
 
