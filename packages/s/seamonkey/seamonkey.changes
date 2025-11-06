@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun Nov 02 02:29:10 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.22
+  * Add Turkish (tr) to SeaMonkey Release builds bug 1978825.
+  * Simplify setting context for output window in cZ bug 1958708.
+  * Remove unused onMessageViewMouseDown from cZ bug 1959001.
+  * Inline getViewsContext into initViewsPopup in cZ bug 1959006.
+  * Inline getFontContext into initFont functions in cZ bug 1959007.
+  * Migrate to standard menus for context in cZ bug 1961382.
+  * Move getTabContext and getUserlistContext into menus.js for cZ bug
+    1961385.
+  * Merge file-utils.js into utils.js for cZ bug 1962242.
+  * Deduplicate code for centering dialogs in cZ bug 1962243.
+  * Tidy up install-plugin dialog for cZ bug 1962246.
+  * Colour the security lock in cZ bug 1964838.
+  * Display the viewName for each tab in the statusbar in cZ bug
+    1964841.
+  * Move client header information to title and status bars in cZ bug
+    1964847.
+  * Remove unused motifSettings code from cZ bug 1967073.
+  * Add href link to view names in statusbar in cZ bug 1967075.
+  * Move network connection status information into statusbar in cZ
+    bug 1967076.
+  * Move channel mode and user counts out of header in cZ bug 1967078.
+  * Move user header information into statusbar in cZ bug 1967079.
+  * Move DCC chat information from header to statusbar in cZ bug
+    1967080.
+  * Fix advanceKeyboardFocus in cZ bug 1971036.
+  * Provide context menu to copy view status href in cZ bug 1971037.
+  * Error when double clicking empty space in userlist in cZ bug
+    1972119.
+  * Remove unused Gecko 1.7.x alert rules in cZ bug 1972121.
+  * Remove use of removeUsers in cZ bug 1972122.
+  * Context menu for userlist doesn't toggle both ways for sort and
+    show modes in cZ bug 1972724.
+  * Move and tidy output and splash code from output-window.js to
+    static.js in cZ bug 1973395.
+  * Move changeCSS code from output-window.js to static.js in cZ bug 1973396.
+  * Move scrollToElement function from output-window.js to static.js
+    in cZ bug 1973397.
+  * Provide modern theme for cZ bug 1973583.
+  * Port |Bug 1456035 - Add native QueryInterface helper with fast
+    path for XPCWrappedJS| to SeaMonkey bug 1614671.
+  * Change Windows Line endings in SeaMonkey source bug 1967087.
+  * Null check this.browser in context menu bug 1971038.
+  * Null check designMode in context menu bug 1972125.
+  * Replace in-tree consumer of non-standard Iterator() with
+    Object.{values,entries} in DOMi bug 1991346.
+  * Restart with add-ons disabled is broken in SeaMonkey 2.53.22b1 bug
+    1993788.
+  * Calendar Color Chooser Unresponsive After Calendar Creation bug
+    1892999.
+  * SeaMonkey 2.53.22 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.22 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 115.29
+    and Thunderbird 115.29 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- Remove ix86-specific code in the spec file, since SeaMonkey 2.53.21
+  was the last (upstream) release with official 32-bit support
+- Adapt seamonkey-2.53.20-system-av1.patch for SeaMonkey 2.53.22
+- Adapt seamonkey-2.53.19-bmo1896958.patch for SeaMonkey 2.53.22
+
+-------------------------------------------------------------------
 Fri Aug 29 17:56:48 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - remove unused icons

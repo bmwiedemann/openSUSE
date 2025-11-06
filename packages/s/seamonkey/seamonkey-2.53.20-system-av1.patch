@@ -82,10 +82,3 @@ diff -Nrup mozilla/toolkit/moz.configure mozilla-OK/toolkit/moz.configure
  
  # Built-in fragmented MP4 support.
  # ==============================================================
-@@ -1745,4 +1761,4 @@ def android_package_name(value, moz_app_
-         return 'org.mozilla.fennec_aurora'
-     return 'org.mozilla.%s' % moz_app_name
- 
--set_config('ANDROID_PACKAGE_NAME', android_package_name)
-\ No newline at end of file
-+set_config('ANDROID_PACKAGE_NAME', android_package_name)

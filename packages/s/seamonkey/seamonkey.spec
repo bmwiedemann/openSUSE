@@ -41,12 +41,7 @@
 
 # Compiler/linker options
 %bcond_with     clang
-%ifarch %ix86
-# As of 2.53.3 (and still in 2.53.21) i586 builds fail with LTO
-%bcond_with     lto
-%else
 %bcond_without  lto
-%endif
 %bcond_with     gold
 
 
@@ -56,11 +51,11 @@
 %define gnome_dir      %{_prefix}
 ### build options end
 
-%define releasedate 20250605000000
+%define releasedate 20251031000000
 
 Name:           seamonkey
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
-Version:        2.53.21
+Version:        2.53.22
 Release:        0
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -77,7 +72,7 @@ Source7:        seamonkey-GNUmakefile
 Source8:        seamonkey.desktop.in
 Source9:        seamonkey-composer.desktop.in
 Source10:       seamonkey-mail.desktop.in
-# Read-made desktop files for products that don't support
+# Ready-made desktop files for products that don't support
 # %%translate_suse_desktop.  You can be prompted for the update during the
 # build.
 Source11:       seamonkey.desktop
@@ -194,7 +189,7 @@ Provides:       seamonkey-translations-common = %{version}
 Obsoletes:      seamonkey-translations-common < 2.53.6
 Provides:       seamonkey-translations-other = %{version}
 Obsoletes:      seamonkey-translations-other < 2.53.6
-Provides:       locale(%{name}:cs;de;el;en_GB;es_AR;es_ES;fi;fr;hu;it;ja;ka;nb_NO;nl;pl;pt_BR;pt_PT;ru;sk;sv_SE;zh_CN;zh_TW)
+Provides:       locale(%{name}:cs;de;el;en_GB;es_AR;es_ES;fi;fr;hu;it;ja;ka;nb_NO;nl;pl;pt_BR;pt_PT;ru;sk;sv_SE;tr;zh_CN;zh_TW)
 %endif
 %if %{with irc}
 Provides:       seamonkey-irc = %{version}
@@ -344,9 +339,6 @@ ac_add_options --with-l10n-base=$RPM_BUILD_DIR/seamonkey-%{version}/l10n
 
 %{expand:%endis  gold}
 
-%ifarch %ix86
-ac_add_options --disable-debug-symbols
-%endif
 ac_add_options --disable-debug
 ac_add_options --enable-alsa
 ac_add_options --enable-default-toolkit=cairo-gtk3
@@ -453,14 +445,6 @@ export CXX=g++%{?gcc_version:-%gcc_version}
 
 %define _lto_cflags %{nil}
 MOZ_LD_FLAGS=$RPM_LD_FLAGS
-
-# Reduce memory consumption when building for i586
-%ifarch %ix86
-%if %{without gold}
-MOZ_LD_FLAGS="$MOZ_LD_FLAGS -Wl,--no-keep-memory -Wl,--reduce-memory-overheads -Wl,--no-map-whole-files -Wl,--hash-size=31"
-%endif
-MOZ_OPT_FLAGS="$MOZ_OPT_FLAGS -g1"
-%endif
 
 # LTO settings
 # TODO: Perhaps just let SeaMonkey do this via --enable-lto?
