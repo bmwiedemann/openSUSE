@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Nov  5 09:42:04 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- on openSUSE make it an empty package for now, but provide the
+  sources for review
+
+-------------------------------------------------------------------
+Sun Oct 26 11:49:39 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- added use of neuvector scanner, only on x86_64 and aarch64 for now
+
+-------------------------------------------------------------------
+Sun Oct  5 14:20:27 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- Updated from Orchid usecase to be more generic.
+
+-------------------------------------------------------------------
+Tue Feb 27 14:50:27 UTC 2024 - Marcos Bjoerkelund <marcos.bjoerkelund@suse.com>
+
+- Initial release: Adds hooks to execute clamav and trivy scans after builds

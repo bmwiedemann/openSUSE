@@ -1,0 +1,98 @@
+#!/bin/bash
+#
+# Perform vulnerability scan of a container image built by OBS using ClamAV.
+
+# Strict mode
+set -euo pipefail
+
+TOPDIR="/usr/src/packages"
+# use this now, to cover both docker and kiwi
+#OUTPUTDIR="$TOPDIR/"
+
+# Helper functions
+log() {
+    echo "$@" >&2
+}
+check_required_environment_variables() {
+    local required_environment_variable
+    for required_environment_variable in "$@"; do
+        if [[ -z ${!required_environment_variable:-} ]]; then
+            log "Missing environment variable '$required_environment_variable'"
+            return 1
+        fi
+    done
+}
+containerinfos() {
+    find "$OUTPUTDIR" -type f -name '*.containerinfo'
+}
+clamscan_exec() {
+    local jobs=""
+    if clamscan -j2 --help >/dev/null 2>/dev/null; then
+        jobs="$(getconf _NPROCESSORS_ONLN)"
+    fi
+    if [[ -n $jobs ]]; then
+        clamscan "-j$jobs" "$@"
+    else
+        clamscan "$@"
+    fi
+}
+
+check_required_environment_variables BUILD_DIR BUILD_ROOT
+
+log "Retrieving container image metadata"
+CONTAINERINFO="$(find "$TOPDIR" -name '*.containerinfo' -print -quit)"
+OUTPUTDIR=`dirname $CONTAINERINFO`
+CONTAINER_NAME="$(basename "$CONTAINERINFO" | sed 's/\.containerinfo$//')"
+CONTAINER_TAG="$(python3 -c \
+    'import json, sys; print(json.load(sys.stdin)["tags"][0])' \
+    <"$CONTAINERINFO")"
+
+log "Container image tag to check: $CONTAINER_TAG"
+
+CONTAINER_UNPACKED_DIR=`mktemp -d`
+
+find `dirname $CONTAINER_NAME` -name "*.tar" | while read tarname
+do
+	echo "tarname is $tarname"
+	echo "CONTAINER_UNPACKED_DIR is $CONTAINER_UNPACKED_DIR"
+	echo tar -C $CONTAINER_UNPACKED_DIR -xf $tarname
+	tar -C $CONTAINER_UNPACKED_DIR -xf $tarname
+done
+
+
+log "Scanning image with ClamAV"
+CLAMAV_RESULT="$(mktemp)"
+clamscan_exec --infected --recursive "$CONTAINER_UNPACKED_DIR" \
+    >"$CLAMAV_RESULT"
+
+rm -rf $CONTAINER_UNPACKED_DIR
+
+# Convert file to the Cosign Generic Predicate Spec format
+# https://github.com/sigstore/cosign/blob/main/specs/COSIGN_VULN_ATTESTATION_SPEC.md
+# NOTE: The subject will be filled by OBS during publishing
+CLAMAV_VERSION="$(
+    clamscan --version | awk '{print $2}' | awk -F/ '{print $1}'
+)"
+SCAN_TIMESTAMP="$(date '+%Y-%m-%dT%H:%M:%S.%N%:z')"
+jq --rawfile result "$CLAMAV_RESULT" '.predicate.data = $result' \
+    >"$OUTPUTDIR/$CONTAINER_NAME.clamav.intoto.json" <<EOF
+{
+  "_type": "https://in-toto.io/Statement/v0.1",
+  "predicateType": "https://cosign.sigstore.dev/attestation/v1",
+  "subject": [
+    {
+      "name": "",
+      "digest": {
+        "sha256": ""
+      }
+    }
+  ],
+  "predicate": {
+    "data": "",
+    "timestamp": "$SCAN_TIMESTAMP"
+  }
+}
+EOF
+
+log "Cleaning up"
+rm -rf "$CONTAINER_UNPACKED_DIR" "$CLAMAV_RESULT"
