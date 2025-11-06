@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw32-filesystem
-Version:        20250901
+Version:        20251105
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
@@ -86,7 +86,6 @@ Requires:       mingw32-cross-binutils-utils
 Requires:       mingw32-cross-pkgconf-utils
 Requires:       python3
 Requires:       rpm
-Requires:       rpmlint-mini
 Requires:       sed
 BuildArch:      noarch
 #!BuildIgnore: post-build-checks
