@@ -1,8 +1,7 @@
 #
 # spec file for package xmlunit
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2000-2008, JPackage Project
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,88 +17,142 @@
 
 
 Name:           xmlunit
-Version:        1.6
+Version:        2.11.0
 Release:        0
-Summary:        Provides classes to do asserts on XML
-License:        BSD-3-Clause
+Summary:        XMLUnit for Java
+License:        Apache-2.0 AND BSD-3-Clause
 Group:          Development/Libraries/Java
-URL:            https://xmlunit.sourceforge.net/
-Source0:        https://download.sourceforge.net/%{name}/%{name}-%{version}-src.zip
-Source1:        https://repo1.maven.org/maven2/%{name}/%{name}/%{version}/%{name}-%{version}.pom
+URL:            https://www.xmlunit.org/
+Source0:        %{name}-%{version}.tar.xz
+Source1:        %{name}-build.tar.xz
 BuildRequires:  ant
-BuildRequires:  ant-junit
+BuildRequires:  assertj-core
 BuildRequires:  fdupes
-# Needed for maven conversions
+BuildRequires:  glassfish-jaxb-api
+BuildRequires:  hamcrest
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  jaxb-api
 BuildRequires:  junit
-BuildRequires:  unzip
-BuildRequires:  xalan-j2
-BuildRequires:  xerces-j2
-BuildRequires:  xml-commons-apis >= 1.3
-Requires:       junit
-Requires:       xalan-j2
-Requires:       xerces-j2
-Requires:       xml-commons-apis >= 1.3
+BuildRequires:  jurand
 BuildArch:      noarch
 
 %description
-XMLUnit extends JUnit to simplify unit testing of XML. It compares a control
-XML document to a test document or the result of a transformation, validates
-documents against a DTD, and (from v0.5) compares the results of XPath
-expressions.
+XMLUnit provides you with the tools to verify the XML you emit is the one you
+want to create. It provides helpers to validate against an XML Schema, assert
+the values of XPath queries or compare XML documents against expected outcomes.
+
+%package assertj
+Summary:        XMLUnit with AssertJ fluent API
+License:        Apache-2.0
+Group:          Development/Libraries/Java
+
+%description assertj
+This package provides %{summary}.
+
+%package core
+Summary:        XMLUnit for Java core package
+License:        Apache-2.0
+Group:          Development/Libraries/Java
+
+%description core
+This package provides %{summary}.
+
+%package jakarta-jaxb-impl
+Summary:        XMLUnit for Java JAXB support using Jakarta EE packages
+License:        Apache-2.0
+Group:          Development/Libraries/Java
+
+%description jakarta-jaxb-impl
+This package provides %{summary}.
+
+%package legacy
+Summary:        XMLUnit 1.x Compatibility Layer
+License:        BSD-3-Clause
+Group:          Development/Libraries/Java
+Provides:       %{name} = %{version}
+Obsoletes:      %{name} < %{version}
+
+%description legacy
+This package provides %{summary}.
+
+%package matchers
+Summary:        XMLUnit for Java Hamcrest Matchers
+License:        Apache-2.0
+Group:          Development/Libraries/Java
+
+%description matchers
+This package provides %{summary}.
+
+%package placeholders
+Summary:        XMLUnit for Java Placeholder DSL for Comparisons
+License:        Apache-2.0
+Group:          Development/Libraries/Java
+
+%description placeholders
+This package provides %{summary}.
 
 %package javadoc
 Summary:        Javadoc for %{name}
+License:        Apache-2.0
 Group:          Documentation/HTML
 
 %description javadoc
 Javadoc for %{name}. Also contains userguide.
 
 %prep
-%setup -q
+%autosetup -p1 -a1
 
-perl -pi -e 's/\r$//g' README.txt LICENSE.txt
+# Port to hamcrest 2.1
+%{java_remove_annotations} xmlunit-matchers -p org[.]hamcrest[.]Factory
 
-# remove all binary libs and javadocs
-find . -name "*.jar" -delete
+%pom_disable_module xmlunit-assertj
 
 %build
-
-cat > build.properties << EOF
-junit.lib=$(build-classpath junit)
-xmlxsl.lib=$(build-classpath xalan-j2 xerces-j2 xml-commons-jaxp-1.3-apis)
-test.report.dir=test
-EOF
-
-cat > docbook.properties <<EOF
-db5.xsl=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/
-EOF
-
-export CLASSPATH=
-export OPT_JAR_LIST="junit ant/ant-junit xalan-j2 ant/ant-trax xalan-j2-serializer"
-ant -Djavac.source=1.8 -Djavac.target=1.8 -Dbuild.compiler=modern -Dhaltonfailure=yes jar javadocs
+mkdir -p lib
+build-jar-repository -s lib \
+    assertj-core/assertj-core \
+    glassfish-jaxb-api \
+    hamcrest/hamcrest \
+    jaxb-api/jakarta.xml.bind-api \
+    junit
+ant package javadoc
 
 %install
-mkdir -p %{buildroot}%{_javadir}
-install -m 0644 build/lib/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+for i in assertj3 core jakarta-jaxb-impl legacy matchers placeholders; do
+  cp -r %{name}-${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
+  install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{version}.jar \
+    %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
+  %{mvn_install_pom} %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${i}.pom
+  if [ "${i}" = legacy ]; then
+    %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar -a xmlunit:xmlunit -f ${i}
+  elif [ "${i}" = assertj3 ]; then
+    %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar -a org.xmlunit:xmlunit-assertj -f ${i}
+  else
+    %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar -f ${i}
+  fi
+done
+ln -s -f %{name}/%{name}-legacy.jar %{buildroot}%{_javadir}/%{name}.jar
+%fdupes -s %{buildroot}%{_javadocdir}
 
-# Javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
-cp -pr build/doc/* %{buildroot}%{_javadocdir}/%{name}
-%fdupes -s %{buildroot}%{_javadocdir}/%{name}
+%files assertj -f .mfiles-assertj3
 
-# poms
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-%{mvn_install_pom} %{SOURCE1} \
-    %{buildroot}%{_mavenpomdir}/%{name}.pom
-%add_maven_depmap %{name}.pom %{name}.jar
+%files core -f .mfiles-core
+%doc README.md CONTRIBUTING.md RELEASE_NOTES.md
+%license LICENSE
 
-%files -f .mfiles
-%license LICENSE.txt
-%doc README.txt
+%files jakarta-jaxb-impl -f .mfiles-jakarta-jaxb-impl
+
+%files legacy -f .mfiles-legacy
+%{_javadir}/%{name}.jar
+
+%files matchers -f .mfiles-matchers
+
+%files placeholders -f .mfiles-placeholders
 
 %files javadoc
-%doc userguide
 %{_javadocdir}/%{name}
 
 %changelog
