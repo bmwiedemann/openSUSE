@@ -1,0 +1,37 @@
+diff -ru vendor.orig/vendor/libspa-0.8.0/.cargo-checksum.json vendor/vendor/libspa-0.8.0/.cargo-checksum.json
+--- vendor.orig/vendor/libspa-0.8.0/.cargo-checksum.json	1970-01-01 01:00:00.000000000 +0100
++++ vendor/vendor/libspa-0.8.0/.cargo-checksum.json	2025-11-03 00:11:18.517575921 +0100
+@@ -1 +1 @@
+-{"files":{"Cargo.toml":"8fde8a8e27cc4cf0842c69fb10465e4185a76fb6a88e6a68ffe412d386032c59","LICENSE":"c786d27ff72139f9c5dc2ff460c88fd59a6aed40be33c4d5e50bfaa2c1f43df6","README.md":"7d99b760edf7c914de31f9102e125a95543aa9a6396c2dfbd1ffe17a5bf0ca89","build.rs":"f8ea4d3062359a33fe316fe3d9a662b0f51bc0ee5bd5dae2f52d3cbe479f1c93","src/buffer/mod.rs":"c9ca092f334a845fa4c2d251b5ba64c51383633d2683b305240eae9b47c714b6","src/lib.rs":"10734ff03c4798e849a5a5166585ac361bdda1c9d096a1a4823c10f0e607cf97","src/param/audio/mod.rs":"845c294015c45ed6c3c45f3da91e6e5c95b694ffe64b74d19e32e6207e188daf","src/param/audio/raw.rs":"f50c41e0e6aadae66335feaa0417ec6a6f5d8d1494b5782ac7eb1ef295f44b3e","src/param/format.rs":"b5795823b94d1e53cd0ae663375f960560279e78bc1b7534163030293ef0e48f","src/param/format_utils.rs":"eedbdf36ed0207d967ada6a00f52a9a4c2da3756ad009dee29b53edcdbb6303f","src/param/mod.rs":"2c17f6a4ab189e3587de760a9625d441f79c31dd15d1d8a28f7443fa0d7af8a0","src/param/video/mod.rs":"5bcd6954e527a991b5aa3fc585786a5e442c411500ccfc4f5eb63cf6f28c18f5","src/param/video/raw.rs":"0e811fe30ca3d9d887b95ab4ee56591b70ce73cf445e43a2992e25cddb4d07fe","src/pod/builder.rs":"79912fcdcea683adbabbae14c11c8709245bf981ea328a3480849e99f834ba42","src/pod/deserialize.rs":"8e29f64d811425a2012c33a71ef5e7e8808146d14d5d35300ee59fb200630874","src/pod/mod.rs":"937ad0438ec5f197bab057cba8a8ae0b3d2065321c5a0cb03bf8c4fc30214cf2","src/pod/parser.rs":"903cdbf3ff2abe28c3ac1e0ed782dd33e5eabf290a5a2d6aec81fe6f65a490c8","src/pod/serialize.rs":"2df6037b79b4151d543e7262bdc92ad281acbbe2df4f523a80fee791c63fa6cd","src/support/mod.rs":"28ad015b8f01eedb5c7d65dffd49cfc849c8ac4b6fb027ac4f41a676157622b6","src/support/system.rs":"9e28818601f02ff5d5805e5d47eeb1d88ab5db41f653f230af7a4f58cb6287d1","src/utils/dict.rs":"51bcccbf3bb2304c2434c730e0c16d0c6b94b41945ddd112bc2739eac4212954","src/utils/direction.rs":"d57ffaefe8105eaa2817e9ef157d7922947d1e8735702a61a6640fd71cb7e28e","src/utils/hook.rs":"a79ec9e7243569fa3971003cfb2797ee3831ba516c87d153788112ade59483cc","src/utils/list.rs":"fac38448e6cdeba216cabe6f5cc3af4b32a95bf66cb127420975f9555d8eac0e","src/utils/mod.rs":"8758d99404b9e1ac8ed8a2ddf61680b91d3f24a9f314c32723a401aabaa6347a","src/utils/result.rs":"ff539da2efc929e7a8d612b49db0660a20346eb7553f6df92439e67a593b836e","tests/pod.c":"e0d4994debe7843d20b17f061b581c95fec7478471088401720486a1b00673f2","tests/pod.rs":"4da3c418ec0aaf5d19819956e8a7a8e08310064e4316d47e378f4a8998f44468"},"package":null}
+\ No newline at end of file
++{"files":{"Cargo.toml":"8fde8a8e27cc4cf0842c69fb10465e4185a76fb6a88e6a68ffe412d386032c59","LICENSE":"c786d27ff72139f9c5dc2ff460c88fd59a6aed40be33c4d5e50bfaa2c1f43df6","README.md":"7d99b760edf7c914de31f9102e125a95543aa9a6396c2dfbd1ffe17a5bf0ca89","build.rs":"f8ea4d3062359a33fe316fe3d9a662b0f51bc0ee5bd5dae2f52d3cbe479f1c93","src/buffer/mod.rs":"c9ca092f334a845fa4c2d251b5ba64c51383633d2683b305240eae9b47c714b6","src/lib.rs":"10734ff03c4798e849a5a5166585ac361bdda1c9d096a1a4823c10f0e607cf97","src/param/audio/mod.rs":"845c294015c45ed6c3c45f3da91e6e5c95b694ffe64b74d19e32e6207e188daf","src/param/audio/raw.rs":"c3fa0f6ef8487acc5e38ae59d8ede3d268523df01d765477b4055c80192962e5","src/param/format.rs":"b5795823b94d1e53cd0ae663375f960560279e78bc1b7534163030293ef0e48f","src/param/format_utils.rs":"eedbdf36ed0207d967ada6a00f52a9a4c2da3756ad009dee29b53edcdbb6303f","src/param/mod.rs":"2c17f6a4ab189e3587de760a9625d441f79c31dd15d1d8a28f7443fa0d7af8a0","src/param/video/mod.rs":"5bcd6954e527a991b5aa3fc585786a5e442c411500ccfc4f5eb63cf6f28c18f5","src/param/video/raw.rs":"0e811fe30ca3d9d887b95ab4ee56591b70ce73cf445e43a2992e25cddb4d07fe","src/pod/builder.rs":"79912fcdcea683adbabbae14c11c8709245bf981ea328a3480849e99f834ba42","src/pod/deserialize.rs":"8e29f64d811425a2012c33a71ef5e7e8808146d14d5d35300ee59fb200630874","src/pod/mod.rs":"937ad0438ec5f197bab057cba8a8ae0b3d2065321c5a0cb03bf8c4fc30214cf2","src/pod/parser.rs":"903cdbf3ff2abe28c3ac1e0ed782dd33e5eabf290a5a2d6aec81fe6f65a490c8","src/pod/serialize.rs":"2df6037b79b4151d543e7262bdc92ad281acbbe2df4f523a80fee791c63fa6cd","src/support/mod.rs":"28ad015b8f01eedb5c7d65dffd49cfc849c8ac4b6fb027ac4f41a676157622b6","src/support/system.rs":"9e28818601f02ff5d5805e5d47eeb1d88ab5db41f653f230af7a4f58cb6287d1","src/utils/dict.rs":"51bcccbf3bb2304c2434c730e0c16d0c6b94b41945ddd112bc2739eac4212954","src/utils/direction.rs":"d57ffaefe8105eaa2817e9ef157d7922947d1e8735702a61a6640fd71cb7e28e","src/utils/hook.rs":"a79ec9e7243569fa3971003cfb2797ee3831ba516c87d153788112ade59483cc","src/utils/list.rs":"fac38448e6cdeba216cabe6f5cc3af4b32a95bf66cb127420975f9555d8eac0e","src/utils/mod.rs":"8758d99404b9e1ac8ed8a2ddf61680b91d3f24a9f314c32723a401aabaa6347a","src/utils/result.rs":"ff539da2efc929e7a8d612b49db0660a20346eb7553f6df92439e67a593b836e","tests/pod.c":"e0d4994debe7843d20b17f061b581c95fec7478471088401720486a1b00673f2","tests/pod.rs":"4da3c418ec0aaf5d19819956e8a7a8e08310064e4316d47e378f4a8998f44468"},"package":null}
+diff -ru vendor.orig/vendor/libspa-0.8.0/src/param/audio/raw.rs vendor/vendor/libspa-0.8.0/src/param/audio/raw.rs
+--- vendor.orig/vendor/libspa-0.8.0/src/param/audio/raw.rs	1970-01-01 01:00:00.000000000 +0100
++++ vendor/vendor/libspa-0.8.0/src/param/audio/raw.rs	2025-11-03 00:10:07.203748887 +0100
+@@ -29,7 +29,7 @@
+             flags: AudioInfoRawFlags::UNPOSITIONED.bits(),
+             rate: 0,
+             channels: 0,
+-            position: [0; 64usize],
++            position: [0; spa_sys::SPA_AUDIO_MAX_CHANNELS as usize],
+         })
+     }
+ 
+@@ -65,7 +65,7 @@
+         self.0.channels
+     }
+ 
+-    pub fn set_position(&mut self, position: [u32; 64usize]) {
++    pub fn set_position(&mut self, position: [u32; spa_sys::SPA_AUDIO_MAX_CHANNELS as usize]) {
+         self.0.position = position;
+         if position[0] == 0 {
+             self.0.flags |= AudioInfoRawFlags::UNPOSITIONED.bits();
+@@ -74,7 +74,7 @@
+         };
+     }
+ 
+-    pub fn position(&self) -> [u32; 64usize] {
++    pub fn position(&self) -> [u32; spa_sys::SPA_AUDIO_MAX_CHANNELS as usize] {
+         self.0.position
+     }
+ 

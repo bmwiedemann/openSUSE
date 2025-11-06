@@ -19,7 +19,7 @@
 
 %bcond_without test
 Name:           niri
-Version:        25.08+41
+Version:        25.08+135
 Release:        0
 Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
@@ -30,6 +30,8 @@ URL:            https://github.com/YaLTeR/niri
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
+# PATCH-FIX-OPENSUSE -- Backported fix for API breakage -- gh#YaLTeR/niri#2728
+Patch0:         libspa-0.8.0-compat.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  pango-devel
@@ -97,6 +99,8 @@ install -Dm644 target/release/_%{name} -t \
 
 %if %{with test}
 %check
+# gh#YaLTeR/niri#2377
+ulimit -n 4096
 %cargo_test -- --workspace --exclude niri-visual-tests
 %endif
 

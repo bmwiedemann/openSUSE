@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Sun Nov 02 02:11:18 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Bump open file ulimit for test suite
+  gh#YaLTeR/niri#2377
+- Add libspa-0.8.0-compat.patch
+  Fixes build with recent PipeWire
+  gh#YaLTeR/niri#2728
+- Update to version 25.08+135:
+  * layout: Find preset width for new columns
+  * Avoid triggering hot corner during some grabs
+  * tty: Fix cast for aarch64
+  * tty: Move HDR property reset to session resume
+  * tty: Tone down some property setting messages
+  * Update Smithay (linear dmabuf import fix, damage shaper
+    overflow fix, popup focus fix)
+  * Pin tracing-subscriber to 0.3.19
+  * Add support for custom modes and modelines.
+    gh#YaLTeR/niri#2479
+  * feat: event-stream event for when a screenshot is taken
+    gh#YaLTeR/niri#2565
+  * config: fix parsing of XF86ScreenSaver key
+  * Create parents of screenshots directory
+  * docs: describe screen mirroring with wl-mirror
+    gh#YaLTeR/niri#2633
+  * Use `AsFd` to get rid of re-borrowing of zbus Power Key fd
+  * backend/tty: Consider only primary node in drm udev event
+  * Add --path argument for niri msg screenshot* commands
+    gh#YaLTeR/niri#2126
+  * Add login1 LidClosed monitoring
+  * feat(move-floating-window): percentage change
+    gh#YaLTeR/niri#2371
+  * Redraw cursor if hidden during screenshot
+  * wiki: fix list in tab-indicator section
+  * tty: Retry adding device on change
+  * tty: Improve debug messages
+  * wiki: Mention windowed fullscreen on fullscreen and maximize
+    page
+  * wiki: Add missing Since annotations
+  * wiki: Document fullscreen and maximize
+  * layout: Make resizing actions unmaximize
+  * Implement maximize-to-edges (true Wayland maximize)
+  * layout/monitor: Make between-workspace insert hint narrower
+  * layout/tile: Fade out border for fullscreen
+  * layout/tile: Fade out shadow for fullscreen
+  * layout/tile: Fade out focus ring for fullscreen
+  * layout: Fix anim jump when releasing interactive move in the
+    overview
+  * layout: Unfullscreen before removing for interactive move
+  * tests/floating: Add more edge cases
+  * Add topic regarding managing external displays using Kanshi to
+    FAQ
+  * Upgrade dependencies
+  * Support calibration-matrix in touch input config
+  * wiki: Recommend pick-window instead of focused-window
+  * config: Rename tracy span parse => decode config file
+  * tty: Add support for disabling DRM devices
+  * tty: Close DRM device session fd in device_removed()
+  * wiki/include: Document border special case
+  * wiki: Document config includes
+  * config: Add a nicer error for recursive includes
+  * config: Add merging for Input
+  * config: Add merging for Animations
+  * config: Add merging for Gestures
+  * config: Add merging for misc sections
+  * config: Add merging for Debug
+  * config: Add merging for SwitchBinds
+  * utils/watcher: Support config includes
+  * Partially implement config includes
+  * wiki: Document per-output and per-workspace layout overrides
+  * Add layout overrides to window_opening test
+  * layout/monitor: Fix wrong Clone/Copy generic bounds
+  * Add per-output layout config
+  * Add per-workspace layout config
+  * FAQ: Mention how to escape from a dead screen locker
+  * FAQ: Mention directly opening in column,
+    and focus-follows-mouse on monitor edges
+  * config: Fix discrepancy in default shadow color
+  * config: Fix inability to override
+    border/focus-ring/tab-indicator gradient with color in window
+    rules
+
+-------------------------------------------------------------------
 Sat Sep 20 13:56:09 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 25.08+41:
