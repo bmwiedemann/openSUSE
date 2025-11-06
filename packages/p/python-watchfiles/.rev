@@ -56,4 +56,20 @@
     <comment></comment>
     <requestid>1203337</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c98416cc074139a2c690f238f0551632</srcmd5>
+    <version>1.1.1</version>
+    <time>1762449341</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315518 from mcalabkova
+
+- Update to 1.1.1
+    * Bump PyO3 to 0.25.1, drop Python 3.8 support
+    * allow modify poll_delay_ms argument using an environment variable
+    * switch to uv
+    * try testing with 3.13 free threading
+    * test and build with 3.14 &amp; 3.14t
+  - Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1315967</requestid>
+  </revision>
 </revisionlist>

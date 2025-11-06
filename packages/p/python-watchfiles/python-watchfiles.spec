@@ -1,7 +1,7 @@
 #
 # spec file for package python-watchfiles
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,21 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-watchfiles
-Version:        0.24.0
+Version:        1.1.1
 Release:        0
 Summary:        File watching and code reload in python
 License:        MIT
 URL:            https://github.com/samuelcolvin/watchfiles
 Source0:        https://github.com/samuelcolvin/watchfiles/archive/refs/tags/v%{version}.tar.gz#/watchfiles-%{version}-gh.tar.gz
 Source1:        vendor.tar.xz
-# gh#samuelcolvin/watchfiles#254
-BuildRequires:  %{python_module anyio >= 3.0.0 with %python-anyio < 4}
+BuildRequires:  %{python_module anyio >= 3.0.0}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module maturin >= 0.14.16}
 BuildRequires:  %{python_module pip}
@@ -34,9 +38,14 @@ BuildRequires:  cargo-packaging
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-anyio >= 3.0.0 with python-anyio < 4)
+Requires:       python-anyio >= 3.0.0
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module pytest-mock}
@@ -73,6 +82,9 @@ mv watchfiles watchfiles.movedaway
 
 %postun
 %python_uninstall_alternative watchfiles
+
+%pre
+%python_libalternatives_reset_alternative watchfiles
 
 %files %{python_files}
 %license LICENSE

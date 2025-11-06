@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="manual"></service>
   <service name="cargo_vendor" mode="manual">
-    <param name="srctar">watchfiles-0.24.0-gh.tar.gz</param>
+    <param name="srctar">watchfiles-1.1.1-gh.tar.gz</param>
     <param name="compression">xz</param>
     <param name="update">true</param>
   </service>
