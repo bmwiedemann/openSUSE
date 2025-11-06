@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        2.2.2
+Version:        2.3.0
 Release:        0
 Summary:        LXQt desktop panel
 License:        LGPL-2.1-or-later
@@ -25,8 +25,6 @@ URL:            https://github.com/lxqt/lxqt-panel
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-%dnl Patch1:         001-fix-plugin-loader.patch
-%dnl Patch2:         002-panel-conf-branding.patch
 #PATCH-FIX-OPENSUSE 0001-fix-plugin-loader.patch
 Patch0:         0001-fix-plugin-loader.patch
 #PATCH-CONFIGURATION-OPENSUSE 0002-panel-conf-branding.patch
@@ -34,8 +32,6 @@ Patch1:         0002-panel-conf-branding.patch
 #PATCH-FIX-UPSTREAM 0003-use-wlroots-backend-with-unknown-compositors.patch
 #https://github.com/lxqt/lxqt-panel/pull/2161
 Patch2:         0003-use-wlroots-backend-with-unknown-compositors.patch
-# PATCH-FIX-UPSTREAM -- Qt 6.10 compat
-Patch3:         lxqt-panel-qt610.patch
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -121,7 +117,6 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 %install
 %{qt6_install}
 %fdupes -s %{buildroot}%{_datadir}
-install -Dm 0644 %{buildroot}%{_datadir}/lxqt/panel.conf -t %{buildroot}%{_sysconfdir}/xdg/lxqt/
 
 %find_lang %{name} --with-qt --all-name
 
@@ -137,7 +132,6 @@ install -Dm 0644 %{buildroot}%{_datadir}/lxqt/panel.conf -t %{buildroot}%{_sysco
 %{_datadir}/lxqt/%{name}
 %dir %{_datadir}/lxqt/panel
 %{_datadir}/lxqt/panel/qeyes-types/
-%{_datadir}/lxqt/panel.conf
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %config %{_sysconfdir}/xdg/autostart/%{name}.desktop
 %license LICENSE

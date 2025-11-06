@@ -1346,4 +1346,28 @@
     <comment></comment>
     <requestid>1311234</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ac7aa356aa68e382eb3a4c5fd97aceb8</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449251</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Now Desktop Switcher works with Wayland compositors that
+    support ext-workspaces-v1 protocol (like Labwc, Niri, …), and a
+    backend is specially added for Wayfire
+  * Updated the button of Custom Command every time it recieves
+    output
+  * Added support for structured output to Custom Command
+  * Made the initial config file available outside LXQt
+  * Activate Show Desktop plugin on drag-and-drop
+  * Adjust backlight with mouse wheel on the button of backlight
+    plugin
+  * Fixed building with Qt 6.10 and C++20
+  * Used locale-aware sorting in Fancy Menu and Main Menu
+  * Added a workaround for a Qt regression that prevented plugin
+    move indicators from being removed
+  * Several other small enhancements and fixes
+  * Drop lxqt-panel-qt610.patch</comment>
+    <requestid>1315873</requestid>
+  </revision>
 </revisionlist>
