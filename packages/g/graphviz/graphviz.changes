@@ -2,9 +2,9 @@
 Wed Oct 29 08:03:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop graphviz-2.20.2-interpreter_names.patch: do not set the
-  executable to /usr/bin/lua5.1; the script in question uses
+  executable to /usr/bin/lua5.1; the script in question used
   would not even work with lua 5.1 anymore, as it uses API
-  introduced with lua 5.2 anyway. The patch originally dares back
+  introduced with lua 5.2 anyway. The patch originally dates back
   to 2008 and was barely touched since then.
 
 -------------------------------------------------------------------
