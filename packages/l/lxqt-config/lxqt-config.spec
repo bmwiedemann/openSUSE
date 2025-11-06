@@ -16,9 +16,9 @@
 #
 
 
-%define mainver 2.2.0
+%define mainver 2.3.0
 Name:           lxqt-config
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        LXQt Control Center
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

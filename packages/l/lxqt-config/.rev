@@ -663,4 +663,16 @@ this patch makes lxqt-config also include desktop files with the x-lxqt category
     <comment></comment>
     <requestid>1271086</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>12bc8d5c1260be0d19442a6de36f2430</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449252</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Changed the default cursor size from 16 to 24
+  * Fixed &quot;Open theme folder&quot; context menu showing on empty space
+  * Improved auto-starts
+  * Miscellaneous small fixes and enhancements</comment>
+    <requestid>1315875</requestid>
+  </revision>
 </revisionlist>
