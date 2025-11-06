@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-sudo
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        GUI frontend for sudo
 License:        LGPL-2.1-only
