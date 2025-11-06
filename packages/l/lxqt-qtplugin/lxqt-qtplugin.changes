@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  5 17:05:19 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.3.0:
+  * Changed default cursor size from 16 to 24
+  * Fixed building with Qt 6.10
+  * Drop lxqt-qtplugin-qt610.patch
+
+-------------------------------------------------------------------
 Mon Oct 13 19:26:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

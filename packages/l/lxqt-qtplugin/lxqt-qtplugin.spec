@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-qtplugin
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        LXQt platform integration plugin
 License:        LGPL-2.1-or-later
@@ -25,8 +25,6 @@ URL:            https://github.com/lxqt/lxqt-qtplugin
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM -- Qt 6.10 compat
-Patch0:         lxqt-qtplugin-qt610.patch
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

@@ -368,4 +368,15 @@
     <comment></comment>
     <requestid>1311235</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>30854748c32dc899d245598de868a2b5</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449249</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.0:
+  * Changed default cursor size from 16 to 24
+  * Fixed building with Qt 6.10
+  * Drop lxqt-qtplugin-qt610.patch</comment>
+    <requestid>1315869</requestid>
+  </revision>
 </revisionlist>
