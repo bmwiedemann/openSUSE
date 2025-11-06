@@ -51,9 +51,6 @@ BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  openssl-devel
 BuildRequires:  sysuser-tools
-%ifarch aarch64
-BuildRequires:  binutils-gold
-%endif
 BuildRequires:  libseccomp-devel
 Requires:       squashfs
 Requires:       squashfuse

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 21 15:30:09 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- No need for binutils-gold for aarch64
+
+-------------------------------------------------------------------
 Thu Oct  2 07:57:18 UTC 2025 - Christian Goll <cgoll@suse.com>
 
 - Update to 1.4.3
