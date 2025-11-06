@@ -409,4 +409,13 @@
     <comment></comment>
     <requestid>1270836</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4f0bd05b2ad10952d715f80216e41eb0</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449248</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Added a seperate kie for turning off monitor on Wayland</comment>
+    <requestid>1315868</requestid>
+  </revision>
 </revisionlist>
