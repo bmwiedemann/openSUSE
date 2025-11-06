@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.5.1
+Version:        6.5.2
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
@@ -497,7 +497,8 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_knsrcfilesdir}/wallpaper.knsrc
 %{_kf6_knsrcfilesdir}/wallpaperplugin.knsrc
 %{_kf6_knsrcfilesdir}/xcursor.knsrc
-%{_kf6_kxmlguidir}/kfontview
+%{_kf6_kxmlguidir}/kfontview/
+%{_kf6_kxmlguidir}/kfontviewpart/
 %{_kf6_libdir}/kconf_update_bin/krunnerglobalshortcuts
 %{_kf6_libdir}/kconf_update_bin/krunnerhistory
 %{_kf6_libdir}/kconf_update_bin/plasma6.0-remove-dpi-settings
