@@ -40,7 +40,7 @@ BuildRequires:  maven-reporting-api
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-wagon-provider-api
 BuildRequires:  modello >= 2.0.0
-BuildRequires:  objectweb-asm >= 9.7
+BuildRequires:  objectweb-asm >= 9.9
 BuildRequires:  plexus-ant-factory
 BuildRequires:  plexus-archiver
 BuildRequires:  plexus-bsh-factory
