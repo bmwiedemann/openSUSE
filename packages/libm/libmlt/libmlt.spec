@@ -18,18 +18,18 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.32.0
+%define lversion 7.34.1
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.32.0
+%define lversion_pp 7.34.1
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 %bcond_without Qt6
 %bcond_without rtaudio
 Name:           %{libname}
-Version:        7.32.0
+Version:        7.34.1
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
@@ -44,8 +44,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc13-c++
 BuildRequires:  gcc13-PIE
 %endif
-# PATCH-FIX-UPSTREAM -- mlt-ffmpeg-8.patch - FFmpeg 8 support
-Patch0:         mlt-ffmpeg-8.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -246,8 +244,9 @@ export CC=gcc-13 CXX=g++-13
    -DCMAKE_SKIP_RPATH=1 \
    -DMOD_GLAXNIMATE=ON \
    -DMOD_GLAXNIMATE_QT6=ON \
-%if %{with Qt6}
-   -DMOD_QT6=ON
+   -DMOD_QT=ON \
+%if %{without Qt6}
+   -DMOD_QT6=OFF
 %endif
 
 %cmake_build
