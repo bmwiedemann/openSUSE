@@ -25,7 +25,10 @@ License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/GUI/lua-shell-games
 Source:         https://github.com/GUI/lua-shell-games/archive/v%{version}.tar.gz#/lua-%{mod_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Fix-capture_combined_spec-with-new-shell.patch mcepl@suse.com
 Patch1:         Fix-capture_combined_spec-with-new-shell.patch
+# PATCH-FIX-UPSTREAM luajit-w-capture_combined_spec-with-new-shell.patch gh#GUI/lua-shell-games!5 mcepl@suse.com
+Patch2:         luajit-w-capture_combined_spec-with-new-shell.patch
 BuildRequires:  %{flavor}-busted
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luacheck
@@ -57,6 +60,7 @@ When executing shell commands, shell-games wraps either os.execute or io.popen
 %autosetup -p1 -n lua-%{mod_name}-%{version}
 
 %build
+:
 
 %install
 install -m 0755 -p -d %{buildroot}%{lua_noarchdir}
@@ -64,10 +68,14 @@ install -v -D -m 0644 -p -t %{buildroot}%{lua_noarchdir} lib/%{mod_name}.lua
 
 %check
 ln -sfv lib/%{mod_name}.lua .
-%if "%{flavor}" == "lua51"
-REFUTE_LUA52_BEHAVIOR=true \
+%if "%{flavor}" == "luajit"
+export REFUTE_LUA52_BEHAVIOR="true"
 %endif
-EXPECTED_LUA_VERSION="Lua %{lua_version}" make %{?_make_output_sync} %{?_smp_mflags} test
+%if "%{flavor}" == "luajit"
+export EXPECTED_LUAJIT_VERSION="LuaJIT 2.1"
+%endif
+export EXPECTED_LUA_VERSION="Lua %{lua_version}"
+busted --lua="/usr/bin/lua"
 
 %files
 %license LICENSE.txt

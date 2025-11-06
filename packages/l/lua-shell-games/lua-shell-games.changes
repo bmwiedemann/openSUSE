@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:51:00 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Sun Oct 12 21:51:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package buildable with LuaJIT.
+- Add luajit-w-capture_combined_spec-with-new-shell.patch
+
+-------------------------------------------------------------------
 Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Opencode %make_build to prevent build failure when not defined.

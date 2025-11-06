@@ -1,0 +1,22 @@
+---
+ spec/capture_combined_spec.lua |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+Index: lua-shell-games-1.1.0/spec/capture_combined_spec.lua
+===================================================================
+--- lua-shell-games-1.1.0.orig/spec/capture_combined_spec.lua	2025-10-12 23:42:07.932450126 +0200
++++ lua-shell-games-1.1.0/spec/capture_combined_spec.lua	2025-10-12 23:45:53.594608925 +0200
+@@ -77,10 +77,10 @@
+     if string.match(result["output"], "cd: line 1") then
+       assert.are.same({
+         command = [[sh -c 'cd '"'"'spec/tmp/not existent with spaces'"'"' && ls -1 chdir.txt' 2>&1]],
+-        status = 2,
+-        output = "sh: cd: line 1: can't cd to spec/tmp/not existent with spaces: No such file or directory\n",
++        status = 1,
++        output = "sh: line 1: cd: spec/tmp/not existent with spaces: No such file or directory\n",
+       }, result)
+-      assert.are.equal("Executing command failed (exit code 2): sh -c 'cd '\"'\"'spec/tmp/not existent with spaces'\"'\"' && ls -1 chdir.txt' 2>&1\nOutput: sh: cd: line 1: can't cd to spec/tmp/not existent with spaces: No such file or directory\n", err)
++     assert.are.equal("Executing command failed (exit code 1): sh -c 'cd '\"'\" 'spec/tmp/not existent with spaces'\"'\"' && ls -1 chdir.txt' 2>&1\nOutput: sh: line 1: cd: spec/tmp/not existent with spaces: No such file or directory\n", err)
+     elseif string.match(result["output"], "sh: line 1") then
+       assert.are.same({
+         command = [[sh -c 'cd '"'"'spec/tmp/not existent with spaces'"'"' && ls -1 chdir.txt' 2>&1]],

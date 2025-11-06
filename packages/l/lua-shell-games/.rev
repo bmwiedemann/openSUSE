@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1060938</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d26279bd227927aa2b60a733f31f59dd</srcmd5>
+    <version>1.1.0</version>
+    <time>1762449186</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Make the package buildable with LuaJIT.
+- Add luajit-w-capture_combined_spec-with-new-shell.patch</comment>
+    <requestid>1315192</requestid>
+  </revision>
 </revisionlist>
