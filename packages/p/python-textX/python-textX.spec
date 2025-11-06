@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-textX
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        Meta-language for DSL implementation inspired by Xtext
 License:        MIT

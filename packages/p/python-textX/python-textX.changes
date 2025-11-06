@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 29 13:29:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.2.3
+  * fix: wrong reference/capture in `call_obj_processors` closure
+    leading to memory leak due to keeping reference to the Model object.
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue May 13 06:47:45 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - limit check to tests/functional as upstream does
