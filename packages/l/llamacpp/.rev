@@ -303,4 +303,41 @@
     https://github.com/ggml-org/llama.cpp/compare/b6605...b6690</comment>
     <requestid>1309029</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>385adddc750758e9518adcf4d7b6f92b</srcmd5>
+    <version>6937</version>
+    <time>1762449167</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6937:
+  * New model: Janus Pro
+  * New model: Minimax M2
+  * New model: Granite Hybrid nano types
+  * New model: support for qwen3vl series
+  * New model: support for CogVLM model
+  * New model: LightOnOCR-1B model
+  * New model: BailingMoeV2 support
+  * New model: Granite Hybrid types
+  * New model: Support home-cooked Mistral Small Omni
+  * New model: Support LiquidAI LFM2-MoE hybrid model
+  * New model: Granite docling + Idefics3 preprocessing (SmolVLM)
+  * New model: EmbeddingGemma Adding Support for
+    SentenceTransformers Dense Modules
+  * Server improvements, OpenAI API compatibility, optimizations,
+    and bug fixes
+  * Vulkan backend improvements, optimizations, and bug fixes
+  * OpenCL backend fixes
+  * CPU backend optimizations
+  * Multimodal (mtmd) improvements
+  * WebUI enhancements
+  * Architecture-specific improvements
+  * llama core improvements
+  * Memory management improvements
+  * Conversion and quantization tools enhancements
+  * Grammar and sampling improvements
+  * Chat and prompts enhancements
+  * General fixes and improvements
+  * RPC improvements and bug fixes
+  * Full commit log:</comment>
+    <requestid>1315691</requestid>
+  </revision>
 </revisionlist>
