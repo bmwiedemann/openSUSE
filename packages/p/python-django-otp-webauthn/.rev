@@ -44,4 +44,19 @@
     the browser api has been updated to use</comment>
     <requestid>1279584</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f0ae20cb7062a1ee58a09ab22c879b47</srcmd5>
+    <version>0.7.0</version>
+    <time>1762449314</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315530 from mcalabkova
+
+- update to 0.7.0
+    * allow custom selector for 'next' field in auth config
+    * Use options_to_json_dict to avoid wasteful json parsing and dumping
+    * Add support for Django 6.0 (pending final release) / drop Django 5.0
+    * Add automatic rerun of flaky E2E test
+    * Add Python 3.14, drop Python 3.9</comment>
+    <requestid>1315969</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-otp-webauthn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-django-otp-webauthn
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        FIDO2 WebAuthn support for django-otp
 License:        BSD-3-Clause
@@ -31,7 +31,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 4.2
 Requires:       python-django-otp >= 1.4
 Requires:       python-djangorestframework >= 3.14
-Requires:       python-webauthn >= 2.1.0
+Requires:       python-webauthn >= 2.6
 BuildArch:      noarch
 %python_subpackages
 
