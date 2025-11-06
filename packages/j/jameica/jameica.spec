@@ -1,7 +1,7 @@
 #
 # spec file for package jameica
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,6 @@
 #
 
 
-%define _major 2
-%define _minor 10
-%define _micro 5
-%define _build 488
-%define _buildreleases 488
-%define _version %{_major}.%{_minor}.%{_micro}
-%define _tag V_%{_major}_%{_minor}_%{_micro}_BUILD_%{_build}
-
-Name:           jameica
-Version:        %{_version}
-Release:        0
-Summary:        Runtime environment for Java applications like Hibiscus
-License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
-Group:          Productivity/Office/Finance
-URL:            http://www.willuhn.de/products/jameica/
-Source:         https://github.com/willuhn/jameica/archive/%{_tag}.tar.gz
-Source99:       %{name}-rpmlintrc
-BuildRequires:  ant
-BuildRequires:  dos2unix
-BuildRequires:  fdupes
-BuildRequires:  java-devel >= 17
-BuildRequires:  jpackage-utils
-BuildRequires:  xml-apis
-Requires:       java >= 17
-Requires:       libgthread-2_0-0
-
 %ifarch %{ix86} ppc s390
 %global bits 32
 %endif
@@ -51,6 +25,23 @@ Requires:       libgthread-2_0-0
 %if 0%{?__isa_bits}
 %global bits %{__isa_bits}
 %endif
+Name:           jameica
+Version:        2.12.0
+Release:        0
+Summary:        Runtime environment for Java applications like Hibiscus
+License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
+Group:          Productivity/Office/Finance
+URL:            https://www.willuhn.de/products/jameica/
+Source:         https://github.com/willuhn/jameica/archive/refs/tags/%{version}.tar.gz
+Source99:       %{name}-rpmlintrc
+BuildRequires:  ant
+BuildRequires:  dos2unix
+BuildRequires:  fdupes
+BuildRequires:  java-devel >= 17
+BuildRequires:  jpackage-utils
+BuildRequires:  xml-apis
+Requires:       java >= 17
+Requires:       libgthread-2_0-0
 
 %description
 Serves as a base framework for recurring tasks on Hibiscus.
@@ -78,19 +69,19 @@ BuildArch:      noarch
 Developer documentation for Jameica.
 
 %prep
-%setup -q -n %{name}-%{_tag}
+%setup -q
 # rpmlint
 find . -type f -name '*.txt' -exec chmod -x {} \;
 find . -type f -name '*.html' -exec chmod -x {} \;
 find . -type f -name '*.properties' -exec chmod -x {} \;
 
-rm build/jameica-win32.exe
+##rm build/jameica-win32.exe
+##rm build/launch4j-win32.xml
+##rm build/jameica-openbsd.sh
 rm build/jameica-win64.exe
-rm build/launch4j-win32.xml
-rm build/launch4j-win64.xml
 rm build/jameica-macos64.sh
 rm build/jameica-macos-aarch64.sh
-rm build/jameica-openbsd.sh
+rm build/launch4j-win64.xml
 
 rm -rf lib/swt/macos64
 rm -rf lib/swt/macos-aarch64
@@ -105,19 +96,20 @@ ant -f build/build.xml init compile jar zip src javadoc
 
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/jameica/plugins
-cp -r releases/%{version}-%{_buildreleases}/%{name} %{buildroot}%{_prefix}/lib
+##cp -r releases/%%{version}-%%{_buildreleases}/%%{name} %%{buildroot}%%{_prefix}/lib
+cp -r releases/%{version}/%{name} %{buildroot}%{_prefix}/lib
 chmod +x %{buildroot}%{_prefix}/lib/%{name}/rcjameica
 chmod +x %{buildroot}%{_prefix}/lib/%{name}/jameicaserver.sh
 chmod +x %{buildroot}%{_prefix}/lib/%{name}/jameica.sh
 
-rm %{buildroot}%{_prefix}/lib/%{name}/jameica-win32.jar
+##rm %%{buildroot}%%{_prefix}/lib/%%{name}/jameica-win32.jar
+##rm %%{buildroot}%%{_prefix}/lib/%%{name}/jameica-openbsd.jar
 rm %{buildroot}%{_prefix}/lib/%{name}/jameica-win64.jar
 rm %{buildroot}%{_prefix}/lib/%{name}/jameica-macos64.jar
 rm %{buildroot}%{_prefix}/lib/%{name}/jameica-macos-aarch64.jar
-rm %{buildroot}%{_prefix}/lib/%{name}/jameica-openbsd.jar
 
 %if "%{bits}" == "64"
-rm %{buildroot}%{_prefix}/lib/%{name}/jameica-linux.jar
+  ##rm %%{buildroot}%%{_prefix}/lib/%%{name}/jameica-linux.jar
   %ifarch aarch64 armv7l arm64
   rm %{buildroot}%{_prefix}/lib/%{name}/jameica-linux64.jar
   %else
@@ -138,7 +130,8 @@ ln -sf %{_prefix}/lib/%{name}/jameicaserver.sh %{buildroot}%{_bindir}/jameicaser
 cp -r src %{buildroot}%{_prefix}/lib/jameica
 
 mkdir -p %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -r releases/%{version}-%{_buildreleases}/javadoc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
+##cp -r releases/%%{version}-%%{_buildreleases}/javadoc/* %%{buildroot}%%{_javadocdir}/%%{name}-%%{version}
+cp -r releases/%{version}/javadoc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
 
 %fdupes %{buildroot}%{_prefix}/lib/%{name}
 

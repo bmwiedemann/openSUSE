@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  3 13:23:13 UTC 2025 - ecsos <ecsos@opensuse.org> - 2.12.0
+
+- Update to 2.12.0
+  - CHG: 0192 Support für 32Bit-Windows, 32Bit-Linux und OpenBSD entfernt, Build-Script vereinfacht
+  - NEW: 0191 Update auf SWT 4.37 für linux64, linux-arm64, win64, macos64, macos64-aarch64
+  - BUG: 0190 Das horizontale Skalieren des Hintergrundbildes war falsch - wirkt sich erst in SWT 4.37 aus
+  - BUG: 0189 Die Bilder für die Zoom-Stufen hatten nicht die selben Seitenverhältnisse
+    wie das Original-Bild. Führt in SWT 4.37 zu einer SWTException
+  - NEW: 0188 lib/jakarta_ee/* hinzugefügt
+  - BUG: 0187 Lock-File nur noch löschen, wenn wir es selbst erzeugt haben
+    siehe https://homebanking-hilfe.de/forum/topic.php?t=27446
+  - NEW: 0186 Erster Code für H2-Migration (mehrere Versionen des H2-Treibers im Classpath,
+    kann per „migration-h2=true/false“ in de.willuhn.jameica.system.Config.properties umgeschaltet werden
+
+
+-------------------------------------------------------------------
 Wed Feb 19 08:33:29 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Fix boo#1237326. Jameica can not be start.
