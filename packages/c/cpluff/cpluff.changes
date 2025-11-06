@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  4 21:04:32 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Add proposed patches to fix C++17 compatiblity
+  003-cpp17-const.patch, 004-cpp17-nothrow.patch from
+  https://github.com/jlehtine/c-pluff/pull/12
+
+-------------------------------------------------------------------
 Thu May 27 09:09:09 UTC 2021 - Olaf olaf@aepfle.de
 
 - Pass --enable-gcc-warnings to configure to use a fixed variant

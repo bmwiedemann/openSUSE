@@ -1,0 +1,406 @@
+From fbf94525c605c07a02402d30bc78091f854e97d2 Mon Sep 17 00:00:00 2001
+From: Johannes Lehtinen <johannes.lehtinen@iki.fi>
+Date: Thu, 30 Oct 2025 06:15:44 +0200
+Subject: [PATCH] C++17 compatibility: Remove dynamic exception specifications.
+
+---
+ libcpluffxx/cpluffxx.h          | 28 ++++++++++++++--------------
+ libcpluffxx/framework.cc        | 12 ++++++------
+ libcpluffxx/internalxx.h        | 32 ++++++++++++++++----------------
+ libcpluffxx/plugin_container.cc |  8 ++++----
+ libcpluffxx/plugin_context.cc   | 16 ++++++++--------
+ libcpluffxx/util.cc             |  4 ++--
+ libcpluffxx/util.h              |  2 +-
+ 7 files changed, 51 insertions(+), 51 deletions(-)
+
+diff --git a/libcpluffxx/cpluffxx.h b/libcpluffxx/cpluffxx.h
+index ccfebb0..36614a5 100644
+--- a/libcpluffxx/cpluffxx.h
++++ b/libcpluffxx/cpluffxx.h
+@@ -70,7 +70,7 @@ class framework {
+ 	 * 
+ 	 * @return the release version of the C-Pluff implementation 
+ 	 */
+-	static const char* version() throw ();
++	static const char* version() noexcept;
+ 
+ 	/**
+ 	 * Returns the canonical host type associated with the linked in
+@@ -79,7 +79,7 @@ class framework {
+ 	 * 
+ 	 * @return the canonical host type
+ 	 */ 
+-	static const char* host_type() throw ();
++	static const char* host_type() noexcept;
+ 
+ 	/**
+ 	 * Sets a global fatal error handler. The error handler
+@@ -91,14 +91,14 @@ class framework {
+ 	 * 
+ 	 * @param feh the fatal error handler to be installed
+ 	 */ 
+-	static void fatal_error_handler(::cpluff::fatal_error_handler &feh) throw ();
++	static void fatal_error_handler(::cpluff::fatal_error_handler &feh) noexcept;
+ 
+ 	/**
+ 	 * Resets the default fatal error handler which prints the error message to
+ 	 * standard error and aborts the program. This function is not thread-safe
+ 	 * with regards to other threads simultaneously invoking API.
+ 	 */
+-	static void reset_fatal_error_handler() throw ();
++	static void reset_fatal_error_handler() noexcept;
+ 	
+ 	/**
+ 	 * Initializes the C-Pluff framework. The framework is automatically
+@@ -113,7 +113,7 @@ class framework {
+ 	 * 
+ 	 * @throw api_error if there are not enough system resources
+ 	 */ 
+-	static shared_ptr<framework> init() throw (api_error);
++	static shared_ptr<framework> init();
+ 
+ 	/**
+ 	 * Creates and returns a new plug-in container. The returned plug-in
+@@ -123,7 +123,7 @@ class framework {
+ 	 * @return reference to a new created plug-in container
+ 	 * @throw api_error if there are not enough system resources
+ 	 */
+-	virtual shared_ptr<plugin_container> new_plugin_container() throw (api_error) = 0;
++	virtual shared_ptr<plugin_container> new_plugin_container() = 0;
+ 
+ protected:
+ 
+@@ -160,7 +160,7 @@ class plugin_context {
+ 	 * @throw cpluff::api_error if insufficient memory
+ 	 * @sa cpluff::unregister_logger
+ 	 */
+-	virtual void register_logger(logger* logger, logger::severity minseverity) throw (api_error) = 0;
++	virtual void register_logger(logger* logger, logger::severity minseverity) = 0;
+ 
+ 	/**
+ 	 * Removes a logger registration.
+@@ -168,7 +168,7 @@ class plugin_context {
+ 	 * @param logger the logger object to be unregistered
+ 	 * @sa cpluff::register_logger
+ 	 */
+-	virtual void unregister_logger(logger* logger) throw () = 0;
++	virtual void unregister_logger(logger* logger) noexcept = 0;
+ 
+ 	/**
+ 	 * Emits a new log message.
+@@ -176,7 +176,7 @@ class plugin_context {
+ 	 * @param severity the severity of the event
+ 	 * @param msg the log message (possibly localized)
+ 	 */
+-	virtual void log(logger::severity severity, const char* msg) throw () = 0;
++	virtual void log(logger::severity severity, const char* msg) noexcept = 0;
+ 
+ 	/**
+ 	 * Returns whether a message of the specified severity would get logged.
+@@ -184,7 +184,7 @@ class plugin_context {
+ 	 * @param severity the target logging severity
+ 	 * @return whether a message of the specified severity would get logged
+ 	 */
+-	virtual bool is_logged(logger::severity severity) throw () = 0;
++	virtual bool is_logged(logger::severity severity) noexcept = 0;
+ 
+ protected:
+ 
+@@ -212,7 +212,7 @@ class plugin_container : public virtual plugin_context {
+ 	 * @sa unregister_plugin_collection
+ 	 * @sa unregister_plugin_collections
+ 	 */
+-	virtual void register_plugin_collection(const char* dir) throw (api_error) = 0;
++	virtual void register_plugin_collection(const char* dir) = 0;
+ 
+ 	/**
+ 	 * Unregisters a plug-in collection previously registered with this
+@@ -222,7 +222,7 @@ class plugin_container : public virtual plugin_context {
+ 	 * @param dir the previously registered directory
+ 	 * @sa register_plugin_collection
+ 	 */
+-	virtual void unregister_plugin_collection(const char* dir) throw () = 0;
++	virtual void unregister_plugin_collection(const char* dir) noexcept = 0;
+ 
+ 	/**
+ 	 * Unregisters all plug-in collections registered with this plug-in
+@@ -230,7 +230,7 @@ class plugin_container : public virtual plugin_context {
+ 	 * 
+ 	 * @sa register_plugin_collection
+ 	 */
+-	virtual void unregister_plugin_collections() throw () = 0;
++	virtual void unregister_plugin_collections() noexcept = 0;
+ 
+ 	/**
+ 	 * Loads a plug-in descriptor from the specified plug-in installation
+@@ -244,7 +244,7 @@ class plugin_container : public virtual plugin_context {
+ 	 * @return reference to the plug-in information structure
+ 	 * @throw cp_api_error if loading fails or the plug-in descriptor is malformed
+ 	 */
+-	virtual shared_ptr<plugin_info> load_plugin_descriptor(const char* path) throw (api_error) = 0;
++	virtual shared_ptr<plugin_info> load_plugin_descriptor(const char* path) = 0;
+ 
+ protected:
+ 
+diff --git a/libcpluffxx/framework.cc b/libcpluffxx/framework.cc
+index 529bff3..4a702ff 100644
+--- a/libcpluffxx/framework.cc
++++ b/libcpluffxx/framework.cc
+@@ -13,31 +13,31 @@ static void invoke_fatal_error_handler(const char *msg) {
+ 	current_fatal_error_handler->fatal_error(msg);
+ }
+ 
+-const char* framework::version() throw () {
++const char* framework::version() noexcept {
+ 	return cp_get_version();
+ }
+ 
+-const char* framework::host_type() throw () {
++const char* framework::host_type() noexcept {
+ 	return cp_get_host_type();
+ }
+ 
+-void framework::fatal_error_handler(::cpluff::fatal_error_handler &feh) throw () {
++void framework::fatal_error_handler(::cpluff::fatal_error_handler &feh) noexcept {
+ 	current_fatal_error_handler = &feh;
+ 	cp_set_fatal_error_handler(invoke_fatal_error_handler);
+ }
+ 
+-void framework::reset_fatal_error_handler() throw () {
++void framework::reset_fatal_error_handler() noexcept {
+ 	current_fatal_error_handler = NULL;
+ 	cp_set_fatal_error_handler(NULL);
+ }
+ 
+-shared_ptr<framework> framework::init() throw (api_error) {
++shared_ptr<framework> framework::init() {
+ 	shared_ptr<framework_impl> sp(new framework_impl);
+ 	sp.get()->this_shared(sp);
+ 	return sp;
+ }
+ 
+-CP_HIDDEN shared_ptr<plugin_container> framework_impl::new_plugin_container() throw (api_error) {
++CP_HIDDEN shared_ptr<plugin_container> framework_impl::new_plugin_container() {
+ 	return shared_ptr<plugin_container>(new plugin_container_impl(shared_ptr<framework>(this_weak)));
+ }
+ 
+diff --git a/libcpluffxx/internalxx.h b/libcpluffxx/internalxx.h
+index 5f593d9..1ee810f 100644
+--- a/libcpluffxx/internalxx.h
++++ b/libcpluffxx/internalxx.h
+@@ -68,7 +68,7 @@ class framework_impl : public virtual framework {
+ 		this_weak = ts;
+ 	}
+ 
+-	CP_HIDDEN shared_ptr<plugin_container> new_plugin_container() throw (api_error);
++	CP_HIDDEN shared_ptr<plugin_container> new_plugin_container();
+ 
+ private:
+ 	weak_ptr<framework> this_weak;
+@@ -84,11 +84,11 @@ class plugin_import_impl : public virtual plugin_import {
+ 	 */
+ 	CP_HIDDEN plugin_import_impl(cp_plugin_import_t* pimport);
+ 
+-	CP_HIDDEN const char* plugin_identifier() const throw ();
++	CP_HIDDEN const char* plugin_identifier() const noexcept;
+ 
+-	CP_HIDDEN const char* version() const throw ();
++	CP_HIDDEN const char* version() const noexcept;
+ 
+-	CP_HIDDEN bool is_optional() const throw ();
++	CP_HIDDEN bool is_optional() const noexcept;
+ 
+ private:
+ 
+@@ -107,13 +107,13 @@ class plugin_context_impl : public virtual plugin_context {
+ 	 */
+ 	CP_HIDDEN plugin_context_impl(cp_context_t *context);
+ 
+-	CP_HIDDEN void register_logger(logger* logger, logger::severity minseverity) throw (api_error);
++	CP_HIDDEN void register_logger(logger* logger, logger::severity minseverity);
+ 
+-	CP_HIDDEN void unregister_logger(logger* logger) throw ();
++	CP_HIDDEN void unregister_logger(logger* logger) noexcept;
+ 
+-	CP_HIDDEN void log(logger::severity severity, const char* msg) throw ();
++	CP_HIDDEN void log(logger::severity severity, const char* msg) noexcept;
+ 
+-	CP_HIDDEN bool is_logged(logger::severity severity) throw ();
++	CP_HIDDEN bool is_logged(logger::severity severity) noexcept;
+ 
+ 	/**
+ 	 * Emits a new formatted log message if the associated severity is being
+@@ -122,7 +122,7 @@ class plugin_context_impl : public virtual plugin_context {
+ 	 * @param severity the severity of the event
+ 	 * @param msg the log message (possibly localized)
+ 	 */
+-	CP_HIDDEN void logf(logger::severity severity, const char* msg, ...) throw ();
++	CP_HIDDEN void logf(logger::severity severity, const char* msg, ...) noexcept;
+ 
+ protected:
+ 
+@@ -142,7 +142,7 @@ class plugin_context_impl : public virtual plugin_context {
+ 	 * plug-in context are released and all pointers and references
+ 	 * obtained via it become invalid.
+ 	 */
+-	CP_HIDDEN ~plugin_context_impl() throw ();
++	CP_HIDDEN ~plugin_context_impl() noexcept;
+ 
+ private:
+ 
+@@ -165,12 +165,12 @@ class plugin_context_impl : public virtual plugin_context {
+ 	 * @param apid the identifier of the activating plug-in or NULL for the main program
+ 	 * @param user_data pointer to the associated plug-in context object
+ 	 */
+-	CP_HIDDEN static void deliver_log_message(cp_log_severity_t severity, const char* msg, const char* apid, void* user_data) throw ();
++	CP_HIDDEN static void deliver_log_message(cp_log_severity_t severity, const char* msg, const char* apid, void* user_data) noexcept;
+ 
+ 	/**
+ 	 * Updates the aggregate minimum severity for installed loggers.
+ 	 */
+-	CP_HIDDEN void update_min_logger_severity() throw (); 
++	CP_HIDDEN void update_min_logger_severity() noexcept; 
+ };
+ 
+ class plugin_container_impl : public plugin_container, public plugin_context_impl {
+@@ -181,13 +181,13 @@ class plugin_container_impl : public plugin_container, public plugin_context_imp
+ 	 */
+ 	CP_HIDDEN plugin_container_impl(shared_ptr<framework> fw);
+ 	
+-	CP_HIDDEN void register_plugin_collection(const char* dir) throw (api_error);
++	CP_HIDDEN void register_plugin_collection(const char* dir);
+ 
+-	CP_HIDDEN void unregister_plugin_collection(const char* dir) throw ();
++	CP_HIDDEN void unregister_plugin_collection(const char* dir) noexcept;
+ 
+-	CP_HIDDEN void unregister_plugin_collections() throw ();
++	CP_HIDDEN void unregister_plugin_collections() noexcept;
+ 
+-	CP_HIDDEN shared_ptr<plugin_info> load_plugin_descriptor(const char* path) throw (api_error);
++	CP_HIDDEN shared_ptr<plugin_info> load_plugin_descriptor(const char* path);
+ 
+ private:
+ 
+diff --git a/libcpluffxx/plugin_container.cc b/libcpluffxx/plugin_container.cc
+index 3d63f43..952d285 100644
+--- a/libcpluffxx/plugin_container.cc
++++ b/libcpluffxx/plugin_container.cc
+@@ -17,19 +17,19 @@ CP_HIDDEN plugin_container_impl::plugin_container_impl(shared_ptr<framework> fw)
+ 	this->context = context;
+ }
+ 
+-CP_HIDDEN void plugin_container_impl::register_plugin_collection(const char* dir) throw (api_error) {
++CP_HIDDEN void plugin_container_impl::register_plugin_collection(const char* dir) {
+ 	check_cp_status(cp_register_pcollection(context, dir));
+ }
+ 
+-CP_HIDDEN void plugin_container_impl::unregister_plugin_collection(const char* dir) throw () {
++CP_HIDDEN void plugin_container_impl::unregister_plugin_collection(const char* dir) noexcept {
+ 	cp_unregister_pcollection(context, dir);
+ }
+ 
+-CP_HIDDEN void plugin_container_impl::unregister_plugin_collections() throw () {
++CP_HIDDEN void plugin_container_impl::unregister_plugin_collections() noexcept {
+ 	cp_unregister_pcollections(context);
+ }
+ 
+-CP_HIDDEN shared_ptr<plugin_info> plugin_container_impl::load_plugin_descriptor(const char* path) throw (api_error) {
++CP_HIDDEN shared_ptr<plugin_info> plugin_container_impl::load_plugin_descriptor(const char* path) {
+ 	cp_status_t status;
+ 	cp_plugin_info_t *pinfo = cp_load_plugin_descriptor(context, path, &status);
+ 	check_cp_status(status);
+diff --git a/libcpluffxx/plugin_context.cc b/libcpluffxx/plugin_context.cc
+index 0853b0e..4c9668f 100644
+--- a/libcpluffxx/plugin_context.cc
++++ b/libcpluffxx/plugin_context.cc
+@@ -46,31 +46,31 @@ CP_HIDDEN plugin_context_impl::plugin_context_impl() {
+ 	plugin_context_impl(NULL);
+ }
+ 
+-CP_HIDDEN plugin_context_impl::~plugin_context_impl() throw () {
++CP_HIDDEN plugin_context_impl::~plugin_context_impl() noexcept {
+ 	cp_destroy_context(context);
+ }
+ 
+-CP_HIDDEN void plugin_context_impl::register_logger(logger* logger, logger::severity minseverity) throw (api_error) {
++CP_HIDDEN void plugin_context_impl::register_logger(logger* logger, logger::severity minseverity) {
+ 	// TODO synchronization
+ 	loggers[logger] = minseverity;
+ 	update_min_logger_severity();
+ }
+ 
+-CP_HIDDEN void plugin_context_impl::unregister_logger(logger* logger) throw () {
++CP_HIDDEN void plugin_context_impl::unregister_logger(logger* logger) noexcept {
+ 	// TODO synchronization
+ 	loggers.erase(logger);
+ 	update_min_logger_severity();
+ }
+ 
+-CP_HIDDEN void plugin_context_impl::log(logger::severity severity, const char* msg) throw () {
++CP_HIDDEN void plugin_context_impl::log(logger::severity severity, const char* msg) noexcept {
+ 	cp_log(context, (cp_log_severity_t) severity, msg);
+ }
+ 
+-CP_HIDDEN bool plugin_context_impl::is_logged(logger::severity severity) throw () {
++CP_HIDDEN bool plugin_context_impl::is_logged(logger::severity severity) noexcept {
+ 	return cp_is_logged(context, (cp_log_severity_t) severity);
+ }
+ 
+-CP_HIDDEN void plugin_context_impl::logf(logger::severity severity, const char* msg, ...) throw () {
++CP_HIDDEN void plugin_context_impl::logf(logger::severity severity, const char* msg, ...) noexcept {
+ 	assert(msg != NULL);
+ 	assert(severity >= logger::DEBUG && severity <= logger::ERROR);
+ 
+@@ -86,7 +86,7 @@ CP_HIDDEN void plugin_context_impl::logf(logger::severity severity, const char*
+ 	}	
+ }
+ 
+-CP_HIDDEN void plugin_context_impl::deliver_log_message(cp_log_severity_t sev, const char* msg, const char* apid, void* user_data) throw () {
++CP_HIDDEN void plugin_context_impl::deliver_log_message(cp_log_severity_t sev, const char* msg, const char* apid, void* user_data) noexcept {
+ 	plugin_context_impl* context = static_cast<plugin_context_impl*>(user_data);
+ 	std::map<logger*, logger::severity>::iterator iter;
+ 	// TODO synchronization
+@@ -99,7 +99,7 @@ CP_HIDDEN void plugin_context_impl::deliver_log_message(cp_log_severity_t sev, c
+ 	}
+ }
+ 
+-CP_HIDDEN void plugin_context_impl::update_min_logger_severity() throw () {
++CP_HIDDEN void plugin_context_impl::update_min_logger_severity() noexcept {
+ 	min_logger_severity = static_cast<logger::severity>(logger::ERROR + 1);
+ 	std::map<logger*, logger::severity>::iterator iter;
+ 	// TODO synchronization
+diff --git a/libcpluffxx/util.cc b/libcpluffxx/util.cc
+index bb54d22..63eaefb 100644
+--- a/libcpluffxx/util.cc
++++ b/libcpluffxx/util.cc
+@@ -39,7 +39,7 @@ namespace cpluff {
+  * @param status a status code from C API
+  * @return corresponding error message as C string
+  */
+-static const char* status_to_cs_string(cp_status_t status) throw() {
++static const char* status_to_cs_string(cp_status_t status) noexcept {
+ 	switch (status) {
+ 		case CP_ERR_RESOURCE:
+ 			return _("Insufficient system resources for the operation.");
+@@ -60,7 +60,7 @@ static const char* status_to_cs_string(cp_status_t status) throw() {
+ 	}	
+ }
+ 
+-CP_HIDDEN void check_cp_status(cp_status_t status) throw (api_error) {
++CP_HIDDEN void check_cp_status(cp_status_t status) {
+ 	if (status != CP_OK) {
+ 		throw api_error(
+ 			(api_error::code) status,
+diff --git a/libcpluffxx/util.h b/libcpluffxx/util.h
+index 3ef45bd..99e23ba 100644
+--- a/libcpluffxx/util.h
++++ b/libcpluffxx/util.h
+@@ -42,7 +42,7 @@ namespace cpluff {
+  * @param status the status code from C API
+  * @throw cp_api_error if the status code indicates a failure
+  */
+-CP_HIDDEN void check_cp_status(cp_status_t status) throw (api_error);
++CP_HIDDEN void check_cp_status(cp_status_t status);
+ 
+ }
+ 

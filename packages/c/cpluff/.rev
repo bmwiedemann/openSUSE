@@ -24,4 +24,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>897121</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>210acf0ba642a6e6d1fb29764886d7e9</srcmd5>
+    <version>0.2.0</version>
+    <time>1762449176</time>
+    <user>anag_factory</user>
+    <comment>- Add proposed patches to fix C++17 compatiblity
+  003-cpp17-const.patch, 004-cpp17-nothrow.patch from
+  https://github.com/jlehtine/c-pluff/pull/12 (forwarded request 1315604 from mathletic)</comment>
+    <requestid>1315714</requestid>
+  </revision>
 </revisionlist>
