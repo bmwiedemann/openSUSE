@@ -1,0 +1,41 @@
+From 1357c07d55b8d21dd14be5780ff8eb59faca6818 Mon Sep 17 00:00:00 2001
+From: Pierre Le Marre <dev@wismill.eu>
+Date: Mon, 13 Oct 2025 16:15:47 +0200
+Subject: [PATCH] Make ua(winkeysenhanced) compatible with ckbcomp
+
+It seems `ckbcomp` has only partial support for XKB parsing and fails
+to parse `ua(winkeysenhanced)`. Fixed by rewriting following a more
+standard format.
+
+Part-of: <https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config/-/merge_requests/860>
+---
+ symbols/ua | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/symbols/ua b/symbols/ua
+index 0e457b23..127a2b64 100644
+--- a/symbols/ua
++++ b/symbols/ua
+@@ -168,16 +168,16 @@ xkb_symbols "winkeysenhanced" {
+ 
+     name[Group1] = "Ukrainian (Windows Enhanced)";
+ 
+-    key <LSGT> { type="ALPHABETIC", symbols=[ Ukrainian_ghe_with_upturn, Ukrainian_GHE_WITH_UPTURN ] };
++    key <LSGT> { [ Ukrainian_ghe_with_upturn, Ukrainian_GHE_WITH_UPTURN ], type[Group1]="ALPHABETIC" };
+     key <BKSL> { [ backslash, slash ] };
+-    key <TLDE> { type="ALPHABETIC", symbols[Group1]=[ apostrophe, U20B4 ] };
++    key <TLDE> { [ apostrophe, U20B4 ], type[Group1]="ALPHABETIC" };
+     key <AE03> { [ 3, numerosign ] };
+     key <AE04> { [ 4, semicolon ] };
+     key <AE05> { [ 5, percent ] };
+     key <AE06> { [ 6, colon ] };
+     key <AE07> { [ 7, question ] };
+     key <AE08> { [ 8, asterisk ] };
+-    key <AD07> { type = "FOUR_LEVEL_ALPHABETIC", symbols[Group1] = [ Cyrillic_ghe, Cyrillic_GHE, Ukrainian_ghe_with_upturn, Ukrainian_GHE_WITH_UPTURN ] };
++    key <AD07> { [ Cyrillic_ghe, Cyrillic_GHE, Ukrainian_ghe_with_upturn, Ukrainian_GHE_WITH_UPTURN ], type[Group1]="FOUR_LEVEL_ALPHABETIC" };
+     key <AB10> { [ period, comma ] };
+     include "level3(ralt_switch)"
+ };
+-- 
+2.51.0
+

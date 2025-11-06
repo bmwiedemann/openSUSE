@@ -1053,4 +1053,85 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
   * add a fallback to use cp and rm if rename fails</comment>
     <requestid>1296333</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>cc0bddd8d70edb4ae0b84bfbe0a29c6e</srcmd5>
+    <version>2.46</version>
+    <time>1762449152</time>
+    <user>anag_factory</user>
+    <comment>- replaced hotfix u_ua-winkeysenhanced-fix.patch with official fix
+  U_Make-ua-winkeysenhanced-compatible-with-ckbcomp.patch
+
+- refreshed patches
+  * n_disable-2xalt_2xctrl-toggle.diff
+  * n_fi-kotoistus-metainfo.patch
+  * python-3.11.patch
+- added u_ua-winkeysenhanced-fix.patch in order to fix kbd build
+  '/usr/bin/ckbcomp: garbage in a key definition:
+  &quot;symbols=[Ukrainian_ghe_with_upturn,Ukrainian_GHE_WITH_UPTURN],&quot;'
+
+- update to 2.46
+  * New Layouts
+  • Added Manoonchai layout for Thai as documented in Github repository.
+  • Added ISO/international variants of ANSI and Dvorak US Macintosh layouts.
+  • Added the Ukrainian (Windows Enhanced) keyboard layout variant
+    (winkeysenhanced) which matches the Windows 11 default.
+  • Add pk(pak_urdu_phonetic) variant This layout provides phonetic typing for
+    Urdu, mapping English phonetic equivalents to Urdu script. It is a port of
+    the widely-used Windows-only “Pak Urdu Installer” by mBilalm. Includes
+    comprehensive character coverage with over 160 custom key mappings. Adds
+    support for full Urdu typography including diacritics, punctuation, and
+    special symbols. Introduces U+FDFB (ﷻ) mapped to AltGr+Shift+X.
+  • Added an alternative variant for Gothic in the Ancient layout.
+  * Fixes
+  • Fixed a regression in us(mac) layout resulting in the grave/tilde key
+    inverted with the section key.
+  • Fixed shift:break_caps resulting in rEVERSE cAPS if some keys were operated
+    simultaneously with the Shift keys when trying to unlock Caps. (#74
+    (closed))
+  • Fixed CTRL+ALT incomplete key type, which prevented using some key
+    combinations: e.g. Control+Backspace.
+  * Options
+  • Added hyper:mod2 compatibility option, to maps the virtual modifier Hyper
+    to Mod2; conflicts with NumLock.
+    Use this option if using Hyper, Super and LevelFive, e.g. for layouts with
+    5+ levels. The option numpad:mac should be activated as well, in order to
+    enable the numpad.
+  * Misc
+  • inet: Added mapping to the following new keysyms:
+      □ XF86OK
+      □ XF86Select
+      □ XF86GoTo
+      □ XF86Clear
+      □ XF86Option
+      □ XF86Time
+      □ XF86VendorLogo
+      □ XF86MediaSelectProgramGuide
+      □ XF86NextFavorite
+      □ XF86MediaSelectProgramGuide
+      □ XF86MediaSelectHome
+      □ XF86MediaLanguageMenu
+      □ XF86MediaTitleMenu
+      □ XF86Subtitle
+      □ XF86AudioChannelMode
+      □ XF86MediaSelectPC
+      □ XF86MediaSelectTV
+      □ XF86MediaSelectCable
+      □ XF86MediaSelectVCR
+      □ XF86MediaSelectVCRPlus
+      □ XF86MediaSelectSatellite
+      □ XF86MediaSelectCD
+      □ XF86MediaSelectTape
+      □ XF86MediaSelectRadio
+      □ XF86MediaSelectTuner
+      □ XF86MediaPlayer
+      □ XF86MediaSelectTeletext
+      □ XF86MediaSelectAuxiliary
+    Relevant upstream merge request: xorgproto-93.
+  * Build system/Breaking changes
+  • Remove the build option xkb-base, which was ineffectual since the migration
+    from autotools to meson in xkeyboard-config 2.35, published 3 years ago. (#
+    532 (closed))
+- remove ineffectual xkb-base build option</comment>
+    <requestid>1311204</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xkeyboard-config
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xkeyboard-config
-Version:        2.45
+Version:        2.46
 Release:        0
 Summary:        The X Keyboard Extension
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -30,6 +30,7 @@ Patch110:       n_fi-kotoistus-metainfo.patch
 %if 0%{?suse_version} < 1550
 Patch0:         python-3.11.patch
 %endif
+Patch1:         U_Make-ua-winkeysenhanced-compatible-with-ckbcomp.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  meson
@@ -60,7 +61,6 @@ make keyboards more accessible to people with physical impairments.
 
 %build
 %{meson} \
-    -Dxkb-base=%{_datadir}/X11/xkb \
     -Dcompat-rules=true \
     -Dxorg-rules-symlinks=true
 %{meson_build}

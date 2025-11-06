@@ -1,7 +1,8 @@
-diff -u -r xkeyboard-config-2.42.orig/rules/base.xml xkeyboard-config-2.42/rules/base.xml
---- xkeyboard-config-2.42.orig/rules/base.xml	2024-10-28 11:16:26.702599000 +0100
-+++ xkeyboard-config-2.42/rules/base.xml	2024-10-28 11:36:02.956383000 +0100
-@@ -3375,6 +3375,12 @@
+Index: xkeyboard-config-2.46/rules/base.xml
+===================================================================
+--- xkeyboard-config-2.46.orig/rules/base.xml
++++ xkeyboard-config-2.46/rules/base.xml
+@@ -3408,6 +3408,12 @@
        <variantList>
          <variant>
            <configItem>
