@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 05 16:19:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.3:
+  * Bug Fixes
+    - Fixed a bug where zizmor would crash on an unexpected caching
+      middleware state. zizmor will now exit with a controlled
+      error instead (#1319)
+  * Dependencies
+    - chore(deps): bump the cargo group with 2 updates (#1316)
+    - chore(deps): bump the github-actions group with 3 updates
+      (#1317)
+
+-------------------------------------------------------------------
 Sun Nov 02 06:58:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.16.2:
