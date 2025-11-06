@@ -132,4 +132,22 @@
     <comment></comment>
     <requestid>1270857</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>99fd9102e30d4b7b799d089f6f857e2e</srcmd5>
+    <version>1.3.0</version>
+    <time>1762449253</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 1.3.0:
+  * Fixed handling of wrong passwords with 7z
+  * Added LZ4 support
+  * Set the enabled states of delete and view actions appropriately
+  * Fixed &quot;Re-create folders&quot; on extraction
+  * Fixed crash in parsing lha list output
+  * Fixed an imminent crash with Clang's optimizations
+  * Fixed going back to the root dir after adding/deleting a file
+  * Clear selection in directory list appropriately
+  * Enable the Stop action only when something is in progress
+  * Miscellaneous small fixes and enhancements</comment>
+    <requestid>1315876</requestid>
+  </revision>
 </revisionlist>
