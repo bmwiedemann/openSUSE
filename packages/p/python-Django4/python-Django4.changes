@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  6 07:27:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.26 (bsc#1252926)
+  * CVE-2025-64459: Potential SQL injection via _connector keyword argument
+
+-------------------------------------------------------------------
 Thu Oct  2 09:46:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.2.25 (bsc#1250485, bsc#1250487)
