@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  5 09:45:07 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20251105
+- Removed unnecessary runtime dependency on rpmlint, which is only
+  required for building packages and is installed by default on OBS
+  (bsc#1252998)
+
+-------------------------------------------------------------------
+Tue Nov  4 22:51:49 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20251104
+- Fix 'mingw64-filesystem requires rpmlint-mini' outside
+  open build service on Tumbleweed (bsc#1252998)
+
+-------------------------------------------------------------------
 Mon Sep  1 09:19:16 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 20250901

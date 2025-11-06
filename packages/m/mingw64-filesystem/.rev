@@ -295,4 +295,19 @@
     <comment></comment>
     <requestid>1302200</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>56986b9553653e2e32cdf5e2db0378e7</srcmd5>
+    <version>20251105</version>
+    <time>1762449157</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251105
+- Removed unnecessary runtime dependency on rpmlint, which is only
+  required for building packages and is installed by default on OBS
+  (bsc#1252998)
+- Update to version 20251104
+- Fix 'mingw64-filesystem requires rpmlint-mini' outside
+  open build service on Tumbleweed (bsc#1252998)
+</comment>
+    <requestid>1315684</requestid>
+  </revision>
 </revisionlist>
