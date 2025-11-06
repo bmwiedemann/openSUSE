@@ -395,4 +395,16 @@
     <comment></comment>
     <requestid>1270855</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>390779d125d28bc8e0601af738f893df</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449254</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Set the minimum allowed width to 100
+  * Fixed a very old bug that prevented notifications from
+    remaining open when the mouse cursor was put over their windows
+  * Corrected the tabbing order in the config dialog</comment>
+    <requestid>1315877</requestid>
+  </revision>
 </revisionlist>

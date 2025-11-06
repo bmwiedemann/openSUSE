@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  5 18:21:26 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.3.0:
+  * Set the minimum allowed width to 100
+  * Fixed a very old bug that prevented notifications from
+    remaining open when the mouse cursor was put over their windows
+  * Corrected the tabbing order in the config dialog
+
+-------------------------------------------------------------------
 Thu Apr 17 23:34:04 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.2.0:
