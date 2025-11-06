@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 05 15:18:57 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * "Attention, "README.md" is not mentioned in spec files as source or patch."
+- Update to version 1.0.39+git20251105.c09d0f8:
+  * fix brew install on linux
+
+-------------------------------------------------------------------
+Fri Oct 10 15:54:45 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.0.38+git20251010.ed66133:
+  * Combine flags (#48)
+  * update go version
+  * Bump github.com/stretchr/testify from 1.11.0 to 1.11.1 in the go group (#47)
+  * Bump github.com/stretchr/testify from 1.10.0 to 1.11.0 in the go group (#46)
+
+-------------------------------------------------------------------
 Thu Jul 24 06:24:58 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating copyright year and 'BuildRequires: go >= ...' version

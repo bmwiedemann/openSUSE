@@ -16,16 +16,17 @@
 #
 
 Name:           certinfo
-Version:        1.0.37+git20250707.e2340ba
+Version:        1.0.39+git20251105.c09d0f8
 Release:        0
 Summary:        Print x509 certificate info
 License:        MIT
 URL:            https://github.com/pete911/%{name}
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source100:      README.md
 ### Temporary until go1.22 is default
-#BuildRequires:  golang-packaging
-BuildRequires:  go >= 1.24
+BuildRequires:  golang-packaging
+#BuildRequires:  go >= 1.24
 #####
 BuildRequires:  pkgconfig(x11)
 

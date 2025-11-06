@@ -7,4 +7,22 @@
     <comment>This was requested for inclusion in Factory via a comment at home:sbradnick/certinfo from J.Kastl</comment>
     <requestid>1295634</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7d930a1d24fc199db4152bae6039b62e</srcmd5>
+    <version>1.0.39+git20251105.c09d0f8</version>
+    <time>1762449199</time>
+    <user>anag_factory</user>
+    <comment>- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * &quot;Attention, &quot;README.md&quot; is not mentioned in spec files as source or patch.&quot;
+- Update to version 1.0.39+git20251105.c09d0f8:
+  * fix brew install on linux
+
+- Update to version 1.0.38+git20251010.ed66133:
+  * Combine flags (#48)
+  * update go version
+  * Bump github.com/stretchr/testify from 1.11.0 to 1.11.1 in the go group (#47)
+  * Bump github.com/stretchr/testify from 1.10.0 to 1.11.0 in the go group (#46)</comment>
+    <requestid>1315766</requestid>
+  </revision>
 </revisionlist>
