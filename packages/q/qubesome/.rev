@@ -241,4 +241,12 @@
   * build(deps): bump google.golang.org/grpc from 1.75.0 to 1.75.1 (forwarded request 1309118 from pjbgf)</comment>
     <requestid>1309121</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f8a6814dea3bede4ac36fe459b1c350d</srcmd5>
+    <version>0.0.15</version>
+    <time>1762449179</time>
+    <user>anag_factory</user>
+    <comment>version update to 0.0.15 (forwarded request 1315677 from pjbgf)</comment>
+    <requestid>1315733</requestid>
+  </revision>
 </revisionlist>

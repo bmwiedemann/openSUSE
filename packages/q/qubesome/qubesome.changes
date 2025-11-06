@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 05 09:33:50 UTC 2025 - Paulo Gomes <pjbgf@linux.com>
+
+- Update to version 0.0.15:
+  * Enforce soft failure when mtls data not available The mtls data storage is largely a convenience feature which enables things such as mime handling. This change ensures that a profile can still be started regardless of it.
+  * Disable SELinux for profile and workloads In order for qubesome to work in environments where SELinux is enabled and enforced the container execution needs to opt-out from SELinux.
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump the github-actions-updates group with 4 updates
+  * build(deps): bump github.com/urfave/cli/v3 from 3.4.1 to 3.5.0
+  * build(deps): bump google.golang.org/grpc from 1.75.1 to 1.76.0
+  * build(deps): bump the golang-org group with 2 updates
+
+-------------------------------------------------------------------
+Wed Nov 05 09:28:30 UTC 2025 - Paulo Gomes <pjbgf@linux.com>
+
+- Update to version 0.0.14:
+  * run: Add support for X11/Wayland and NoGPU specific args This provides an easier way to customise a given workload so that it will work effectively regardless of running it on Wayland or X11. It will also avoid issues when no GPU is available.
+  * build(deps): bump google.golang.org/protobuf from 1.36.9 to 1.36.10
+
+-------------------------------------------------------------------
 Sun Oct 05 21:23:01 UTC 2025 - Paulo Gomes <pjbgf@linux.com>
 
 - Update to version 0.0.13:
