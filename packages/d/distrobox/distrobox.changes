@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  6 14:11:47 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to 1.8.2.1:
+    * fix: Alt -> ALT by @x1z53 (gh#89luca89/distrobox#1868)
+    * init: fix wrong $HOME when using --init by @Kamorst (gh#89luca89/distrobox#1871)
+    * chore: bump version to 1.8.2.1 by @dottorblaster (gh#89luca89/distrobox#1872)
+
+-------------------------------------------------------------------
 Fri Oct 31 17:44:31 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.8.2.0:
