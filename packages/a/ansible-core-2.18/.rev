@@ -15,4 +15,12 @@
     <comment>rename package ansible-test to ansible-test-2.18</comment>
     <requestid>1311513</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0f26790e9977624947c00fe867a48c7d</srcmd5>
+    <version>2.18.11</version>
+    <time>1762449169</time>
+    <user>anag_factory</user>
+    <comment>update to 2.18.11</comment>
+    <requestid>1315703</requestid>
+  </revision>
 </revisionlist>

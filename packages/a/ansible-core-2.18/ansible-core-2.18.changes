@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  5 10:15:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.11:
+  * Bugfixes
+    - ansible-doc - prevent crash when scanning collections in
+      paths that have more than one ansible_collections in it
+      (#84909, #85361).
+
+-------------------------------------------------------------------
 Wed Oct 15 15:48:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Rename ansible-test to ansible-test-2.18; this package otherwise
