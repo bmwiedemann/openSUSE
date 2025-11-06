@@ -17,7 +17,7 @@
 
 
 Name:           pcmanfm-qt
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        File manager and desktop icon manager
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.as
 Source2:        %{name}.keyring
 #bsc#1100208 - mvetter@suse.de - set default openSUSE wallpaper
 Patch0:         %{name}-default-wallpaper.patch
-BuildRequires:  cmake >= 3.18.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

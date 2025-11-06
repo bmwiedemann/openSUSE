@@ -660,4 +660,18 @@
     <comment></comment>
     <requestid>1270839</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>54c0fc19b91741f34eb1c6739faa55ef</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449263</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Fixed removal of shortcut items with multi-screen setups on
+    Wayland
+  * Prevented an imminent crash after removing a Wayland screen
+  * Fixed a crash on mount failure after closing a tab
+  * Added an option to disable file tooltips on desktop
+  * Small enhancements and fixes</comment>
+    <requestid>1315890</requestid>
+  </revision>
 </revisionlist>

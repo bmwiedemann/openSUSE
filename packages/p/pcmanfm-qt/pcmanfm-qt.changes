@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  5 19:37:57 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.3.0:
+  * Fixed removal of shortcut items with multi-screen setups on
+    Wayland
+  * Prevented an imminent crash after removing a Wayland screen
+  * Fixed a crash on mount failure after closing a tab
+  * Added an option to disable file tooltips on desktop
+  * Small enhancements and fixes
+
+-------------------------------------------------------------------
 Thu Apr 17 21:32:40 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.2.0:
