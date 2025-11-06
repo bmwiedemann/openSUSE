@@ -19,19 +19,22 @@
 %define flavor @BUILD_FLAVOR@
 %define mod_name luacliargs
 %define rname lua_cliargs
-%define upversion 3.0-2
-Version:        3.02
+Version:        3.0.2
 Release:        0
 Summary:        Command-line argument parsing module for Lua
 License:        MIT
 Group:          Development/Libraries/Other
-URL:            https://github.com/amireh/lua_cliargs
-Source:         https://github.com/amireh/lua_cliargs/archive/v%{upversion}.tar.gz#/%{rname}-%{upversion}.tar.gz
+URL:            https://github.com/lunarmodules/lua_cliargs
+Source:         https://github.com/lunarmodules/lua_cliargs/archive/refs/tags/v%{version}.tar.gz#/%{rname}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 Requires:       %{flavor}
 BuildArch:      noarch
 %lua_provides
+# Temporary workaround, while changing the numbering scheme
+%if "%{flavor}" == "luajit"
+Obsoletes:      lua51-cliargs <= 3.02
+%endif
 %if "%{flavor}" == ""
 Name:           lua-cliargs
 ExclusiveArch:  do_not_build
@@ -46,7 +49,7 @@ notations and argument types.
 cliargs allows you to define required, optional, and flag arguments.
 
 %prep
-%setup -q -n %{rname}-%{upversion}
+%setup -q -n %{rname}-%{version}
 
 %build
 /bin/true

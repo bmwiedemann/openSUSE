@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov  6 10:06:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Change to the new upstream and using expected version number.
+
+-------------------------------------------------------------------
+Fri Oct 24 14:47:26 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 20 18:34:42 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add luajit version to _multibuild
+
+-------------------------------------------------------------------
 Wed Nov 23 10:15:37 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix missing dependency on lua-macros (boo#1205612)

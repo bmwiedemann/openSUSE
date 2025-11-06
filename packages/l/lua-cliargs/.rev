@@ -41,4 +41,16 @@
 - Fix missing dependency on lua-macros (boo#1205612)</comment>
     <requestid>1037586</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>432041e96de30dbbed7c4d469b81ab64</srcmd5>
+    <version>3.0.2</version>
+    <time>1762449188</time>
+    <user>anag_factory</user>
+    <comment>- Change to the new upstream and using expected version number.
+
+- Switch off building lua51 build of the package.
+
+- Add luajit version to _multibuild</comment>
+    <requestid>1316009</requestid>
+  </revision>
 </revisionlist>
