@@ -1,7 +1,7 @@
 #
 # spec file for package jline3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,15 @@ readline/editline capabilities for modern shells (such as bash and tcsh) will\
 find most of the command editing features of JLine to be familiar.\
 \
 JLine 3.x is an evolution of JLine 2.x.
-%bcond_with ssh
+# Requires java >= 22
+%if 0%{?suse_version} >= 1699
+%bcond_without ffm
+%else
 %bcond_with ffm
+%endif
+%bcond_with ssh
 Name:           jline3
-Version:        3.30.4
+Version:        3.30.6
 Release:        0
 Summary:        Java library for handling console input
 License:        BSD-3-Clause

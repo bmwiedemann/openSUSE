@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Nov  5 10:14:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.30.6
+  * New features and improvements
+    + Improve console variable expansion (fixes #1370)
+    + ConsoleEngineImpl: change method and field visibilities
+    + Allow ConsoleEngineImpl subclasses access to
+      VariableReferenceCompleter
+    + feat: add reusable POSIX commands to builtins module
+    + feat: support slurp command to be renamed
+    + feat: Extend InputRC with method/s to directly read ~/.inputrc
+      & /etc/inputrc
+    + Allow system commands to be renamed.
+  * Bug Fixes
+    + Fix macOS hang in pipe operations by removing PTY terminal
+      usage
+    + enhancement: only compute suggestions in the Nano editor if
+      something has changed
+    + fix: refactor TerminalProvider methods to use
+      inputEncoding/outputEncoding parameters
+    + Fix System.out not working after closing dumb terminal
+    + Optimize Display performance and fix terminal capability
+      usage
+  * Dependency updates
+    + chore: Bump com.diffplug.spotless:spotless-maven-plugin from
+      2.44.4 to 2.46.1
+    + chore: Bump groovy.version from 4.0.27 to 4.0.28
+    + chore: Bump com.palantir.javaformat:palantir-java-format from
+      2.67.00 to 2.73.0
+    + chore: Bump junit.version from 5.12.2 to 5.13.4
+    + chore: Bump org.graalvm.sdk:graal-sdk from 24.2.1 to 24.2.2
+    + chore: Bump com.google.jimfs:jimfs from 1.3.0 to 1.3.1
+    + chore: Bump org.apache.maven.plugins:maven-enforcer-plugin
+      from 3.5.0 to 3.6.1
+    + chore: Bump on-headers and compression in /website
+    + chore: Bump org.codehaus.gmavenplus:gmavenplus-plugin from
+      4.2.0 to 4.2.1
+    + chore: Bump org.apache.maven.plugins:maven-clean-plugin from
+      3.4.1 to 3.5.0
+    + chore: Bump org.codehaus.mojo:build-helper-maven-plugin from
+      3.6.0 to 3.6.1
+    + chore: Bump org.apache.maven.plugins:maven-gpg-plugin from
+      3.2.7 to 3.2.8
+    + chore: Bump eu.maveniverse.maven.njord:extension from 0.6.2
+      to 0.7.5
+  * Documentation updates
+    + docs: Link to Nano Customization from Builtins doc page
+    + docs: Add Capability.enter_ca_mode and Capability.exit_ca_mode
+      tip
+  * Maintenance
+    + Remove double docs/docs in edit links on jline.org (fixes#
+      1309)
+    + chore: make downcall handles static final
+
+-------------------------------------------------------------------
+Wed Nov  5 07:41:24 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Build the ffm support in Factory, since we have now the java >= 22
+
+-------------------------------------------------------------------
 Mon Jun 23 09:32:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.30.4

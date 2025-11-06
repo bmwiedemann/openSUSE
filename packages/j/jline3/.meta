@@ -3,6 +3,5 @@
   <description>JLine is a Java library for handling console input. It is similar in functionality to BSD editline and GNU readline but with additional features that bring it in par with ZSH line editor. People familiar with the readline/editline capabilities for modern shells (such as bash and tcsh) will find most of the command editing features of JLine to be familiar.
 
 JLine 3.x is an evolution of JLine 2.x.</description>
-  <devel project="Java:packages" package="jline3"/>
   <url>https://github.com/jline/jline3</url>
 </package>
