@@ -17,7 +17,7 @@
 
 
 Name:           qtxdg-tools
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        User tools for libqtxg
 License:        LGPL-2.1-or-later
