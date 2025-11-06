@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           kgamma6
-Version:        6.5.1
+Version:        6.5.2
 Release:        0
 Summary:        Display gamma configuration
 License:        GPL-2.0-or-later
