@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov  6 14:11:20 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.76:
+  * Security bugfixes:
+    - Service-level multivalued options now override (rather than
+      append to) global defaults, preventing unintended configurations.
+  * Bugfixes:
+    - Fixed enabling/disabling of the default fips=yes property.
+    - Missing OCSP stapling is no longer logged as an error.
+    - Fixed a crash when a PIN was required due to the PKCS#11
+      CKA_ALWAYS_AUTHENTICATE attribute.
+  * Features:
+    - Quantum-resistant hybrid key agreement X25519+ML-KEM-768
+      (X25519MLKEM768) used by default with OpenSSL 3.5+ and TLS 1.3.
+    - Multiple cert sources are supported, allowing a certificate to
+      be fetched from a provider while loading the chain from a file.
+    - Android build switched to a 16 KB page size.
+  * Rebase stunnel-5.69-system-ciphers.patch
+
+-------------------------------------------------------------------
 Tue Jun  3 11:37:37 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to version 5.75:

@@ -1,7 +1,7 @@
 #
 # spec file for package stunnel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           stunnel
-Version:        5.75
+Version:        5.76
 Release:        0
 Summary:        Universal TLS Tunnel
 License:        GPL-2.0-or-later

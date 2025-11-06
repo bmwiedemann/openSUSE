@@ -16,22 +16,20 @@ From-dist-git-commit: 70b3076eb09912b3a11f371b8c523303114fffa3
  src/options.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/src/options.c b/src/options.c
-index 6e4a18b..4d31815 100644
---- a/src/options.c
-+++ b/src/options.c
-@@ -321,9 +321,9 @@ static const char *option_not_found=
+Index: stunnel-5.76/src/options.c
+===================================================================
+--- stunnel-5.76.orig/src/options.c
++++ stunnel-5.76/src/options.c
+@@ -332,10 +332,10 @@ static const char *option_not_found=
      "Specified option name is not valid here";
  
  static const char *stunnel_cipher_list=
 -    "HIGH:!aNULL:!SSLv2:!DH:!kDHEPSK";
 +    "PROFILE=SYSTEM";
+ #ifdef USE_FIPS
  static const char *fips_cipher_list=
 -    "FIPS:!DH:!kDHEPSK";
 +    "PROFILE=SYSTEM";
+ #endif /* USE_FIPS */
  
  #ifndef OPENSSL_NO_TLS1_3
- static const char *stunnel_ciphersuites=
--- 
-2.39.2
-
