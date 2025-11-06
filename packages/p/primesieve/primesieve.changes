@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 03 16:40:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-12.10
+- Fix undefined behavior in Bucket allocation
+- Enable ARM SVE for Mingw-w64 on ARM64
+- Improve Windows libprimesieve.dll support
+- BUILD.md: Add WebAssembly/Emscripten build instructions
+
+-------------------------------------------------------------------
 Sat May 17 08:59:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-12.9
