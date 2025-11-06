@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 04 16:50:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.20 (API & ABI are backwards compatible).
+- pi_gourdon.cpp: Quickly verify pi(x) results.
+- pi_deleglise_rivat.cpp: Quickly verify pi(x) results.
+- pi_lmo_parallel.cpp: Quickly verify pi(x) results.
+- CmdOptions.cpp: Add --double-check option.
+- build_mingw64_arm64.sh: Enable ARM SVE for Mingw-w64 on ARM64.
+- doc/Easy-Special-Leaves.pdf: Converted Markdown to LaTeX.
+- doc/Hard-Special-Leaves.pdf: Converted Markdown to LaTeX.
+- doc/Partial-Sieve-Function.pdf: Converted Markdown to LaTeX.
+- ci.yml: Add WebAssembly/Emscripten test.
+- BUILD.md: Add WebAssembly/Emscripten build instructions.
+- README.md: Updated Algorithms section.
+
+-------------------------------------------------------------------
 Wed Jun 04 11:58:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.19 (API & ABI are backwards compatible).
