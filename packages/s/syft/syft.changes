@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Nov 04 08:34:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.37.0:
+  * Added Features
+    - Refactor fileresolver to not require base path [#4298
+      @Rupikz]
+    - Describe cataloger capabilities via test observations [#4318
+      @wagoodman]
+    - Support Java resource adapter extension .far as a Java
+      archive [#4183 #4193 @kyounghunJang]
+    - Add Java resource adapter extension ".rar" as supported Java
+      archive [#4136 #4137 @thomassui]
+  * Bug Fixes
+    - fix empty PURL Github format [#4312 @rezmoss]
+    - Canonicalize Ghostscript CPE/PURL for ghostscript packages
+      from PE Binaries [#4308 @kdt523]
+    - Respect "rpmmod" PURL qualifier [#4314 @willmurphyscode]
+    - fix dpkg packages that are in deinstalled state should not be
+      in SBOM [#3063 #4231 @rkirk-nos]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#4330)
+    - chore(deps): bump github/codeql-action from 4.31.1 to 4.31.2
+      (#4325)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.8.2
+      to 1.8.3 (#4326)
+    - chore(deps): bump modernc.org/sqlite from 1.39.1 to 1.40.0
+      (#4329)
+    - chore(deps): bump github/codeql-action from 4.31.0 to 4.31.1
+      (#4321)
+    - chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.8
+      to 6.6.9 (#4315)
+    - chore(deps): bump github/codeql-action from 4.30.9 to 4.31.0
+      (#4310)
+    - chore(deps): bump anchore/sbom-action from 0.20.8 to 0.20.9
+      (#4305)
+    - chore(deps): update tools to latest versions (#4307)
+
+-------------------------------------------------------------------
 Thu Oct 23 05:40:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.36.0 (1.35.0 was not released):
