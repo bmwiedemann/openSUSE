@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 05 10:24:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.19.4:
+  * ci: refresh dev dependencies (#3195)
+  * ci: refresh dev dependencies (#3181)
+  * Update maximum galaxy artifact size (#3099) (#3177)
+  * Bump wntrblm/nox to 2025.10.16 (#3170)
+  * docs: clarify dict2items usage in loops with group module
+    (follow-up to ansible#85897) (#3124) (#3157)
+  * Update platform_routeros.rst (#3097) (#3161)
+  * fix 2.19 porting guide for correct option (#3102) (#3153)
+  * ci: refresh dev dependencies (#3147)
+  * remove old summit banner (#3131) (#3135)
+  * ci: refresh dev dependencies (#3126)
+  * Intersphinx (#3089) (#3122)
+  * replace role removed in Ansible 11 (#3118) (#3119)
+  * Add the Ansible community 11.11.0 porting guide (#3108) (#3114)
+  * Add the Ansible community 12.1.0 porting guide (#3109) (#3111)
+  * Update WinRM Listener Code (#3101) (#3106)
+  * bump antsibull-docs-parser to fix build issues (#3098) (#3105)
+
+-------------------------------------------------------------------
 Tue Oct 07 06:32:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.19.3:

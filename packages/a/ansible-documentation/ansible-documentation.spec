@@ -17,7 +17,7 @@
 
 
 Name:           ansible-documentation
-Version:        2.19.3
+Version:        2.19.4
 Release:        0
 Summary:        Ansible community documentation and example files
 License:        GPL-3.0-only
