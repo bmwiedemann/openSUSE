@@ -1,7 +1,7 @@
 #
 # spec file for package python-josepy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname josepy
 %{?sle15_python_module_pythons}
 Name:           python-%{libname}
-Version:        2.0.0
+Version:        2.2.0
 Release:        0
 Summary:        JOSE protocol implementation in Python
 License:        Apache-2.0
@@ -30,15 +30,11 @@ BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module cryptography >= 1.5}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry >= 1.0.8}
-BuildRequires:  %{python_module pyOpenSSL >= 0.13}
+BuildRequires:  %{python_module poetry-core >= 2.0.0}
 BuildRequires:  %{python_module pytest >= 2.8.0}
-BuildRequires:  %{python_module setuptools >= 1.0}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 1.5
-Requires:       python-pyOpenSSL >= 0.13
 Conflicts:      python-acme < 0.21.0
 Obsoletes:      python-%{libname}-doc
 BuildArch:      noarch
@@ -75,7 +71,6 @@ It is used by the certbot project. Formerly Let's Encrypt project.
 %doc CHANGELOG.rst CONTRIBUTING.md
 %{python_sitelib}/%{libname}
 %{python_sitelib}/%{libname}-%{version}.dist-info
-%pycache_only %{python_sitelib}/%{libname}/__pycache__
 # following the certbot-packaging guide, "jws" should not be packaged
 %exclude %{_bindir}/jws
 

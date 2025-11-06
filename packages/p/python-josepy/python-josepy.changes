@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  6 00:12:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2.0:
+  * Added support for Python 3.14.
+  * Dropped support for Python 3.9.0 and 3.9.1 for compatibility with newer
+    versions of the cryptography Python package. Python 3.9.2+ is still
+    supported.
+- Clean up {Build,}Requires.
+
+-------------------------------------------------------------------
 Thu Apr 17 18:07:11 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.0.0
