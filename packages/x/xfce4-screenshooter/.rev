@@ -438,4 +438,22 @@
     <comment></comment>
     <requestid>1287028</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a9797f4ed35d5e9fb7f97b359fe05e96</srcmd5>
+    <version>1.11.3</version>
+    <time>1762449306</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.11.3
+  - Wayland region selection
+  - Fix leaks in screenshooter_show_file_in_folder
+  - Fix string leak in action_idle
+  - wayland: Fullscreen capture with
+    ext_image_capture_source/copy_capture
+  - README.md: Add uninstall info
+  - Stop using xfce_panel_plugin_(block|unblock)_menu
+  - Drop autootols
+  - Translation Updates
+- Experimental Wayland support only for Tumbleweed and Leap 16 (forwarded request 1315909 from mauriziogalli)</comment>
+    <requestid>1315952</requestid>
+  </revision>
 </revisionlist>

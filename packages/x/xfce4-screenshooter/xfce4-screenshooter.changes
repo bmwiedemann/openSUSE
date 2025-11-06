@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov  6 04:03:13 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to 1.11.3
+  - Wayland region selection
+  - Fix leaks in screenshooter_show_file_in_folder
+  - Fix string leak in action_idle
+  - wayland: Fullscreen capture with
+    ext_image_capture_source/copy_capture
+  - README.md: Add uninstall info
+  - Stop using xfce_panel_plugin_(block|unblock)_menu
+  - Drop autootols
+  - Translation Updates
+- Experimental Wayland support only for Tumbleweed and Leap 16
+
+-------------------------------------------------------------------
 Wed Jun 18 12:27:03 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 1.11.2

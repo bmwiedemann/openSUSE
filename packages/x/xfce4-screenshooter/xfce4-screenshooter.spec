@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screenshooter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define plugin screenshooter
 
 Name:           xfce4-screenshooter
-Version:        1.11.2
+Version:        1.11.3
 Release:        0
 Summary:        Screenshot Tool for the Xfce Desktop
 License:        GPL-2.0-or-later
@@ -38,7 +38,6 @@ BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(exo-2) >= %{xfce_version}
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.42.0
@@ -48,9 +47,13 @@ BuildRequires:  pkgconfig(libxfce4ui-2) >= %{xfce_version}
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{xfce_version}
 BuildRequires:  pkgconfig(libxfconf-0) >= %{xfce_version}
 BuildRequires:  pkgconfig(pango) >= 1.44.0
+# We only want wayland on TW and Leap 16
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(wayland-client) >= 1.20
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.20
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.37
 BuildRequires:  pkgconfig(wayland-scanner) >= 1.20
+%endif
 BuildRequires:  pkgconfig(x11) >= 1.6.7
 BuildRequires:  pkgconfig(xext) >= 1.0.0
 BuildRequires:  pkgconfig(xfixes) >= 4.0.0
@@ -91,7 +94,15 @@ This package contains the xfce4-screenshooter Xfce panel plugin.
 %autosetup -p1
 
 %build
+# We only want wayland on TW and Leap 16
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%meson \
+	-D wayland=disabled \
+	%{nil}
+%else
 %meson
+%endif
+
 %meson_build
 
 %install
