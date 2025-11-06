@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  6 08:22:20 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- avoid using SLE in the openSUSE BCI images
+
+-------------------------------------------------------------------
 Wed Oct 29 09:17:22 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - install missing dependency for rails 8

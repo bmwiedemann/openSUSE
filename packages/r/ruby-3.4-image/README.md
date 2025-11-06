@@ -52,7 +52,7 @@ The Ruby image sets the locale environment variable `LANG` to `C.UTF-8`.
 
 ## Additional tools
 
-In addition to the standard SLE BCI development packages the following
+In addition to the standard openSUSE BCI development packages the following
 additional tools are included in the image:
 
 - gcc-c++
