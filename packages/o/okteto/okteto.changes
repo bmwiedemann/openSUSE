@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Nov 05 18:55:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.13.0:
+  * build: update Okteto components and Go version in Dockerfile
+    and go.mod (#4814) (#4815)
+  * add debug logs to troubleshoot context creation timeouts
+    (#4810) (#4811)
+  * Updated the checkout method for circle jobs (#4807) (#4808)
+  * refactor: remove the GetServiceHash function (#4806)
+  * improvement: Only add the args from dependencies in the build
+    (#4805)
+  * fix: improve analytics handling in development container
+    activation (#4804)
+  * fix: improve error handling in log streaming during resource
+    destruction (#4801)
+  * build(deps): bump sinatra from 4.1.0 to 4.2.0 in /samples/ruby
+    (#4799)
+  * refactor: enhance namespace destruction logic in
+    localDestroyAllCommand (#4794)
+  * build(deps): bump github.com/nwaples/rardecode/v2 (#4800)
+  * build(deps): bump rack from 3.1.17 to 3.1.18 in /samples/ruby
+    (#4798)
+  * Remove pipeline from error message indicating files not found
+    (#4797)
+  * build(deps): bump rack from 3.1.16 to 3.1.17 in /samples/ruby
+    (#4795)
+  * refactor: rename release-external job to release-brew-formula
+    and add release-gh-actions job (#4793)
+  * add cache id in run cmds (#4789)
+  * fix: nil pointer exception in build (#4791)
+  * refactor: remove unused function (#4792)
+  * build(deps): upgrade github.com/shirou/gopsutil to v4 (#4790)
+  * Fix Cache tests (#4785)
+  * fix: cves (#4787)
+  * Change prettier pre-commit to a local hook (#4779)
+
+-------------------------------------------------------------------
 Thu Oct 23 10:49:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.12.1:
