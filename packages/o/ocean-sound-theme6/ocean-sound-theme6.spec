@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ocean-sound-theme6
-Version:        6.5.1
+Version:        6.5.2
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
