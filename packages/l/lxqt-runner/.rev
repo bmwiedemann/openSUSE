@@ -386,4 +386,13 @@
     <comment></comment>
     <requestid>1270851</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dfc12dfd194a3db007c652dd1e4b2a13</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449255</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Used locale-aware sorting for results</comment>
+    <requestid>1315879</requestid>
+  </revision>
 </revisionlist>
