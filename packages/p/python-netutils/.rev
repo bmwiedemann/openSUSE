@@ -162,4 +162,15 @@
     <comment></comment>
     <requestid>1303643</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>579c2321e12d085d21dde7c2660e3846</srcmd5>
+    <version>1.15.1</version>
+    <time>1762449316</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315748 from glaubitz
+
+- Update to 1.15.1
+    * Added show running config mapper for 22 additional operating systems.</comment>
+    <requestid>1315973</requestid>
+  </revision>
 </revisionlist>
