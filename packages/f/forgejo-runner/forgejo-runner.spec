@@ -2,6 +2,8 @@
 # spec file for package forgejo-runner
 #
 # Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +21,7 @@
 %define services %{name}.service
 
 Name:           forgejo-runner
-Version:        11.2.0
+Version:        11.3.0
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
 License:        GPL-3.0-or-later

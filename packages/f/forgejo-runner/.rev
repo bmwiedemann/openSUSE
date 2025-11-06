@@ -365,4 +365,14 @@
     interrupted while building (forwarded request 1312512 from rrahl0)</comment>
     <requestid>1312513</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f81b8e25f0a49278ab5e87aaf53e53f8</srcmd5>
+    <version>11.3.0</version>
+    <time>1762449324</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11.3.0:
+  * feat: allow inputs in runs-on
+  * chore: rename NewInterpeter to NewInterpreter (forwarded request 1315997 from rrahl0)</comment>
+    <requestid>1315998</requestid>
+  </revision>
 </revisionlist>
