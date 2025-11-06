@@ -3417,6 +3417,7 @@ unsorted:
   - drbd-utils 
   - drc 
   - drc-doc 
+  - drgn 
   - driverctl 
   - drm_info 
   - droidcam 
@@ -9490,6 +9491,7 @@ unsorted:
   - jline3-remote-telnet 
   - jline3-style 
   - jline3-terminal 
+  - jline3-terminal-ffm 
   - jline3-terminal-jansi 
   - jline3-terminal-jna 
   - jline3-terminal-jni 
@@ -13202,7 +13204,7 @@ unsorted:
   - libfm-qt5-14 
   - libfm-qt5-devel 
   - libfm-qt5-lang 
-  - libfm-qt6-16 
+  - libfm-qt6-17 
   - libfm-qt6-data 
   - libfm-qt6-devel 
   - libfm-qt6-lang 
@@ -17706,15 +17708,8 @@ unsorted:
   - lua-resty-websocket 
   - lua-rrdtool 
   - lua51 
-  - lua51-busted 
-  - lua51-cassowary 
-  - lua51-cliargs 
   - lua51-devel 
   - lua51-doc 
-  - lua51-fluent 
-  - lua51-lpeg_patterns 
-  - lua51-luadbi 
-  - lua51-shell-games 
   - lua53 
   - lua53-alt-getopt 
   - lua53-apk 
@@ -17737,6 +17732,7 @@ unsorted:
   - lua53-doc 
   - lua53-editorconfig-core-lua 
   - lua53-fluent 
+  - lua53-inspect 
   - lua53-jsregexp 
   - lua53-ldbus 
   - lua53-ldoc 
@@ -17808,6 +17804,7 @@ unsorted:
   - lua54-doc 
   - lua54-editorconfig-core-lua 
   - lua54-fluent 
+  - lua54-inspect 
   - lua54-jsregexp 
   - lua54-ldbus 
   - lua54-ldoc 
@@ -17864,8 +17861,11 @@ unsorted:
   - luajit 
   - luajit-alt-getopt 
   - luajit-argparse 
+  - luajit-busted 
+  - luajit-cassowary 
   - luajit-cjson 
   - luajit-cldr 
+  - luajit-cliargs 
   - luajit-compat-5.3 
   - luajit-compat-5.3-bit32 
   - luajit-copas 
@@ -17875,6 +17875,8 @@ unsorted:
   - luajit-devel 
   - luajit-dkjson 
   - luajit-editorconfig-core-lua 
+  - luajit-fluent 
+  - luajit-inspect 
   - luajit-jsregexp 
   - luajit-ldbus 
   - luajit-ldoc 
@@ -17884,11 +17886,13 @@ unsorted:
   - luajit-loadkit 
   - luajit-lpeg 
   - luajit-lpeg-doc 
+  - luajit-lpeg_patterns 
   - luajit-lua-dbus 
   - luajit-lua-ev 
   - luajit-lua-ev-devel 
   - luajit-lua-mpris 
   - luajit-luacheck 
+  - luajit-luadbi 
   - luajit-luaepnf 
   - luajit-luaevent 
   - luajit-luaexpat 
@@ -17917,6 +17921,7 @@ unsorted:
   - luajit-penlight 
   - luajit-readline 
   - luajit-say 
+  - luajit-shell-games 
   - luajit-slaxml 
   - luajit-testmore 
   - luajit-vstruct 
@@ -23094,6 +23099,7 @@ unsorted:
   - posix_cc 
   - posixovl 
   - post-build-checks 
+  - post-build-checks-containers 
   - poster 
   - postfish 
   - postfix-bdb 
@@ -24341,7 +24347,6 @@ unsorted:
   - python311-ansiwrap 
   - python311-antlr4-python3-runtime 
   - python311-anyascii 
-  - python311-anyio3 
   - python311-anymarkup-core 
   - python311-anywidget 
   - python311-apache-libcloud 
@@ -28091,7 +28096,6 @@ unsorted:
   - python312-antlr4-python3-runtime 
   - python312-anyascii 
   - python312-anyio 
-  - python312-anyio3 
   - python312-anymarkup-core 
   - python312-anywidget 
   - python312-apache-libcloud 
@@ -31907,7 +31911,6 @@ unsorted:
   - python313-antlr4-python3-runtime 
   - python313-anyascii 
   - python313-anyio 
-  - python313-anyio3 
   - python313-anymarkup-core 
   - python313-anywidget 
   - python313-apache-libcloud 
@@ -37314,10 +37317,12 @@ unsorted:
   - sispmctl 
   - sispmctl-devel 
   - sisu-inject 
+  - sisu-inject-extender 
   - sisu-javadoc 
   - sisu-mojos 
   - sisu-mojos-javadoc 
   - sisu-plexus 
+  - sisu-plexus-extender 
   - sitar 
   - skaffold 
   - skaffold-bash-completion 
@@ -49697,8 +49702,13 @@ unsorted:
   - xmlto 
   - xmltoman 
   - xmltooling-schemas 
-  - xmlunit 
+  - xmlunit-assertj 
+  - xmlunit-core 
+  - xmlunit-jakarta-jaxb-impl 
   - xmlunit-javadoc 
+  - xmlunit-legacy 
+  - xmlunit-matchers 
+  - xmlunit-placeholders 
   - xmobar 
   - xmonad 
   - xmoontool 
@@ -49724,6 +49734,18 @@ unsorted:
   - xmvn-resolve 
   - xmvn-subst 
   - xmvn-tools-javadoc 
+  - xmvn5-api 
+  - xmvn5-connector 
+  - xmvn5-connector-javadoc 
+  - xmvn5-core 
+  - xmvn5-install 
+  - xmvn5-minimal 
+  - xmvn5-mojo 
+  - xmvn5-mojo-javadoc 
+  - xmvn5-parent 
+  - xmvn5-resolve 
+  - xmvn5-subst 
+  - xmvn5-tools-javadoc 
   - xob 
   - xom 
   - xom-demo 
