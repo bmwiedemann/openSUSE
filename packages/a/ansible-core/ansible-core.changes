@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Nov  5 10:18:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.4:
+  * Bugfixes
+    - Fix issue where play tags prevented executing notified
+      handlers (#85475)
+    - Fix issues with keywords being incorrectly validated on
+      import_tasks (#85855, #85856)
+    - Fix traceback when trying to import non-existing file via
+      nested import_tasks (#69882)
+    - SIGINT/SIGTERM Handling - Make SIGINT/SIGTERM handling more
+      robust by splitting concerns between forks and the parent.
+    - Windows - ignore temporary file cleanup warning when using
+      AnsibleModule to compile C# utils. This should reduce the
+      number of warnings that can safely be ignored when running
+      PowerShell modules - #85976
+    - ansible-doc - prevent crash when scanning collections in
+      paths that have more than one ansible_collections in it
+      (#84909, #85361).
+    - callback plugins - improve consistency accessing the Task
+      object's resolved_action attribute.
+    - config lookup now properly factors in variables and
+      show_origin when checking entries from the global
+      configuration.
+    - option argument deprecations now have a proper alternative
+      help text.
+    - package_facts - typecast bytes to string while returning
+      facts (#85937).
+    - psrp - ReadTimeout exceptions now mark host as unreachable
+      instead of fatal (#85966)
+
+-------------------------------------------------------------------
 Tue Oct  7 06:33:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.19.3:
