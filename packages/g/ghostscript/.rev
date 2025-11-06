@@ -667,4 +667,17 @@
     <comment>Ghostscript version upgrade to 10.06.0 fixes security issues where MITRE has not yet CVEs assigned (forwarded request 1305215 from jsmeix)</comment>
     <requestid>1305216</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>dcdea381705cbea1b70cd0874c21421d</srcmd5>
+    <version>10.06.0</version>
+    <time>1762449173</time>
+    <user>anag_factory</user>
+    <comment>In ghostscript.changes added the CVE numbers
+which are fixed by Ghostscript version 10.06.0
+where MITRE had not yet CVEs assigned at the time
+when Ghostscript version 10.06.0 was released, cf.
+https://build.opensuse.org/requests/1305216
+</comment>
+    <requestid>1315981</requestid>
+  </revision>
 </revisionlist>

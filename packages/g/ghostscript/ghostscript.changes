@@ -4,7 +4,11 @@ Tue Sep 16 13:45:31 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
 - Version upgrade to 10.06.0
   See 'Recent Changes in Ghostscript' at Ghostscript upstream
   https://ghostscript.readthedocs.io/en/gs10.06.0/News.html
-  * This release addresses CVEs: TBC
+  * This release addresses CVEs:
+    CVE-2025-59798 (bsc#1250353)
+    CVE-2025-59799 (bsc#1250354)
+    CVE-2025-59800 (bsc#1250355)
+    CVE-2025-59801 (belongs to GhostXPS not part of Ghostscript)
   * The 10.06.0 removes the non-standard operator "selectdevice"
     (cf. the entry below dated Tue Apr  1 09:56:06 UTC 2025)
 - ghostscript-10.06.0-Fix_32-bit_build.patch is the upstream commit
