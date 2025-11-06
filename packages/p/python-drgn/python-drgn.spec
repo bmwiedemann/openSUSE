@@ -15,9 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if %{undefined primary_python}
+%define primary_python python3
+%endif
 
 Name:           python-drgn
-Version:        0.0.31
+Version:        0.0.33
 Release:        0
 Summary:        Scriptable debugger library
 License:        LGPL-2.1-or-later
@@ -25,8 +28,8 @@ Group:          Development/Tools/Debuggers
 URL:            https://github.com/osandov/drgn
 Source:         drgn-%{version}.tar.xz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module readline}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{pythons}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel
@@ -45,6 +48,21 @@ drgn (pronounced “dragon”) is a debugger with an emphasis on
 programmability. drgn exposes the types and variables in a program
 for easy, expressive scripting in Python.
 
+This package contains the Python module.
+
+%package -n drgn
+Summary:        Scriptable debugger CLI
+Conflicts:      %{python_module drgn < 0.0.33}
+Provides:       %{python_module drgn:/usr/bin/drgn}
+Requires:       %{primary_python}-drgn
+
+%description -n drgn
+drgn (pronounced “dragon”) is a debugger with an emphasis on
+programmability. drgn exposes the types and variables in a program
+for easy, expressive scripting in Python.
+
+This package contains the CLI program.
+
 %prep
 %setup -q -n drgn-%{version}
 
@@ -54,26 +72,22 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/drgn
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %pyunittest_arch discover -v
 
-%post
-%python_install_alternative drgn
-
-%postun
-%python_uninstall_alternative drgn
-
 %files %{python_files}
-%doc README.rst
 %license COPYING
-%python_alternative %{_bindir}/drgn
 %{python_sitearch}/drgn
 %{python_sitearch}/drgn-%{version}*-info
 %{python_sitearch}/_drgn*.pyi
 %{python_sitearch}/_drgn*.so
 %{python_sitearch}/_drgn_util
+
+%files -n drgn
+%doc README.rst
+%license COPYING
+%{_bindir}/drgn
 
 %changelog

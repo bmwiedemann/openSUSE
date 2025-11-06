@@ -136,4 +136,20 @@
   * libdrgn-kdump-simplify-getting-the-PRSTATUS-attribut.patch</comment>
     <requestid>1270555</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cc0140fd58a97a6790626087ed2c874f</srcmd5>
+    <version>0.0.33</version>
+    <time>1762449333</time>
+    <user>anag_factory</user>
+    <comment>- Split off a drgn package with the CLI program.
+
+- Update to drgn-0.0.33:
+  * Lots of new helpers.
+  * Address Identification Improvements
+  * Array Slices
+  * More Reliable Interrupt Stack Traces
+  * Kmodify Bit Field Fix
+  * Linux 6.17 and 6.18 Support</comment>
+    <requestid>1316034</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov  6 13:15:51 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
+
+- Split off a drgn package with the CLI program.
+
+-------------------------------------------------------------------
+Tue Nov  4 19:48:45 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to drgn-0.0.33:
+  * Lots of new helpers.
+  * Address Identification Improvements
+  * Array Slices
+  * More Reliable Interrupt Stack Traces
+  * Kmodify Bit Field Fix
+  * Linux 6.17 and 6.18 Support
+
+-------------------------------------------------------------------
 Thu Apr 17 06:47:43 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
 
 - Update to drgn-0.0.31:
