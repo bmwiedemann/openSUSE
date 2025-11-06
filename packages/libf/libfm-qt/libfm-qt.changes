@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov  5 16:47:58 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Drop libfm-qt-qt610.patch
+
+-------------------------------------------------------------------
+Wed Nov  5 16:45:10 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.3.0:
+  * "Safely Remove" is added to side-pane context menu when
+    possible
+  * A workaround is added for GLib's problem with moving directory
+    over directory
+  * Fixed building with Qt 6.10
+  * Other small fixes and changes
+
+-------------------------------------------------------------------
 Mon Oct 13 19:18:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

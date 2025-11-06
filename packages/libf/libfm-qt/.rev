@@ -398,4 +398,20 @@
     <comment></comment>
     <requestid>1311236</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a6a1210fb3114b994db1686b30c4f607</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449247</time>
+    <user>anag_factory</user>
+    <comment>- Drop libfm-qt-qt610.patch
+
+- Update to version 2.3.0:
+  * &quot;Safely Remove&quot; is added to side-pane context menu when
+    possible
+  * A workaround is added for GLib's problem with moving directory
+    over directory
+  * Fixed building with Qt 6.10
+  * Other small fixes and changes</comment>
+    <requestid>1315867</requestid>
+  </revision>
 </revisionlist>
