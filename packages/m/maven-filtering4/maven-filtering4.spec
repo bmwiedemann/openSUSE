@@ -31,6 +31,7 @@ Source1:        %{name}-build.xml
 Patch0:         %{name}-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local
 BuildRequires:  maven4-lib
 BuildRequires:  plexus-build-api0

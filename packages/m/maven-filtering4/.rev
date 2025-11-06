@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>1315493</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d5cb5bf3f02723b074cb6f7d30cfa86c</srcmd5>
+    <version>4.0.0~20250928.git84993b0</version>
+    <time>1762449295</time>
+    <user>anag_factory</user>
+    <comment>Build with Java &gt;= 17</comment>
+    <requestid>1315939</requestid>
+  </revision>
 </revisionlist>
