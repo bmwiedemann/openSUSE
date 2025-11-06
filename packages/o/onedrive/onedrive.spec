@@ -28,7 +28,7 @@
 %endif
 
 Name:           onedrive
-Version:        2.5.7
+Version:        2.5.8
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
@@ -50,12 +50,12 @@ BuildRequires:  pkgconfig(dbus-1)
 Requires:       libdbus-1-3
 Requires:       libnotify4
 Recommends:     logrotate
-Suggests:       onedrive-completition-bash
-Suggests:       onedrive-completition-zsh
+Suggests:       onedrive-completion-bash
+Suggests:       onedrive-completion-zsh
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %package completion-bash
-Summary:        OneDrive Bash completition
+Summary:        OneDrive Bash completion
 Group:          Productivity/Networking/Other
 BuildRequires:  bash
 BuildRequires:  bash-completion
@@ -67,16 +67,18 @@ Requires:       onedrive = %{version}
 Supplements:    (%{name} and bash-completion)
 
 %package completion-zsh
-Summary:        OneDrive zsh completition
+Summary:        OneDrive zsh completion
 Group:          Productivity/Networking/Other
+BuildRequires:  zsh
 BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
 
 %package completion-fish
-Summary:        OneDrive fish completition
+Summary:        OneDrive fish completion
 Group:          Productivity/Networking/Other
+BuildRequires:  fish
 BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       fish
@@ -96,7 +98,6 @@ OneDrive shell completions for fish.
 
 %prep
 %setup -q
-#sed -i /chown/d Makefile
 sed -i 's/^docdir.*/docdir = @docdir@/g' Makefile.in
 
 %build
@@ -106,7 +107,9 @@ sed -i 's/^docdir.*/docdir = @docdir@/g' Makefile.in
     --with-systemdsystemunitdir=%_unitdir \
     --enable-notifications \
     --enable-completions \
-    --with-bash-completion-dir=/usr/share/bash-completion/completions/
+    --with-bash-completion-dir=%{_datarootdir}/bash-completion/completions/ \
+    --with-zsh-completion-dir=%{_datarootdir}/zsh/site-functions/ \
+    --with-fish-completion-dir=%{_datarootdir}/fish/vendor_completions.d/
 make %{?_smp_mflags} %{name}
 
 %install
@@ -114,6 +117,9 @@ make %{?_smp_mflags} %{name}
 install -D -m 0644 config %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
 install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
 rm %{buildroot}%{_docdir}/%{name}/LICENSE
+
+install -D -m 0644 readme.md %{buildroot}%{_docdir}/%{name}/readme.md
+install -D -m 0644 changelog.md %{buildroot}%{_docdir}/%{name}/changelog.md
 
 %pre
 %service_add_pre %{name}@.service
@@ -133,7 +139,6 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 
 %files
 %license LICENSE
-%doc readme.md changelog.md
 %config(noreplace) %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_bindir}/%{name}
@@ -144,18 +149,18 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 %{_localstatedir}/log/%{name}
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}
+%dir %{_datadir}/icons/hicolor/
+%dir %{_datadir}/icons/hicolor/scalable/
+%dir %{_datadir}/icons/hicolor/scalable/places/
+%{_datadir}/icons/hicolor/scalable/places/onedrive.svg
 
 %files completion-bash
 %{_datadir}/bash-completion/completions/
 
 %files completion-zsh
-%dir %{_prefix}/local/share/zsh/
-%dir %{_prefix}/local/share/zsh/site-functions
-%{_prefix}/local/share/zsh/site-functions/_onedrive
+%{_datarootdir}/zsh/site-functions/_onedrive
 
 %files completion-fish
-%dir %{_prefix}/local/share/fish
-%dir %{_prefix}/local/share/fish/completions
-%{_prefix}/local/share/fish/completions/onedrive.fish
+%{_datarootdir}/fish/vendor_completions.d/onedrive.fish
 
 %changelog

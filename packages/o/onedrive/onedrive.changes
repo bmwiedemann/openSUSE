@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Nov  5 09:40:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- move shell completions out of /usr/local/
+- fix typo completition in Suggests
+
+-------------------------------------------------------------------
+Wed Nov 05 05:38:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.5.8:
+  * Feature Requests
+    - Implement Feature Request: Add that dotfiles in sync_list
+      should be synced even when skip_dotfiles = "true" (#3456)
+    - Implement Feature Request: Add websocket notification support
+      (#3413)
+    - Implement Feature Request: Add --download-file feature
+      (#3459)
+    - Implement Feature Request: Add option to remove source
+      folders when using --upload-only --remove-source-files
+      (#3473)
+    - Implement Feature Request: Add support for AlmaLinux (#3485)
+    - Implement Feature Request: Add ONEDRIVE_THREADS Docker option
+      (#3494)
+    - Implement Feature Request: Implement Desktop Manager
+      Integration for GNOME and KDE (#3500)
+  * Bug Fixes
+    - Fix Bug: Ensure driveId target is cached for modified file
+      uploads (#3454)
+    - Fix Bug: Ensure that 'use_intune_sso' and 'use_device_auth'
+      cannot be used together (#3453)
+    - Fix Bug: Force DNS Timeout when forcing a libcurl fresh
+      connection (#3468)
+    - Fix Bug: Fix WebSocket connection failure on libcurl 8.12.x
+      by forcing HTTP/1.1 and disabling ALPN/NPN (#3482)
+    - Fix Bug: Fix application crash after deleting file locally
+      (#3481)
+    - Fix Bug: Fix missing user information when syncing shared
+      files (#3483)
+    - Fix Bug: Fix Shared Folder data being deleted due to
+      'skip_dir' entry of '.*' (#3476)
+    - Fix Bug: Fix that if using 'sync_list' only add new JSON
+      items early to allow applyPotentiallyChangedItem() to operate
+      as expected (#3505)
+    - Fix Bug: When using --dry-run use tracked renamed directories
+      to avoid falsely indicating local data is new and uploading
+      as new data (#3503)
+    - Fix Bug: Fix the fetching of maximum open files to be more
+      POSIX compliant (#3508)
+    - Fix Bug: Fix the Handling of WebSocket 'echo' from a local
+      change (#3509)
+  * Other Changes | Fixes
+    - Changed how the file path is computed when there are
+      'skip_dir' entries to be consistent (#3484)
+    - Changed checkJSONAgainstClientSideFiltering() to avoid
+      multiple calls to computeItemPath() (#3489)
+    - Updated documentation
+
+-------------------------------------------------------------------
 Tue Sep 23 05:23:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.5.7:
@@ -843,7 +900,7 @@ Thu Mar 10 01:36:22 UTC 2022 - hpj@urpla.net
 -------------------------------------------------------------------
 Thu Jan 20 20:41:06 UTC 2022 - Boris Manojlovic <boris@steki.net>
 
-- rebuild manually tar file to pass Factory legal reqs... 
+- rebuild manually tar file to pass Factory legal reqs...
 
 -------------------------------------------------------------------
 Thu Jan 20 20:13:01 UTC 2022 - boris@steki.net
@@ -917,7 +974,7 @@ Sun Jun 27 11:06:32 UTC 2021 - Boris Manojlovic <boris@steki.net>
 Wed Jun 02 06:33:23 UTC 2021 - egotthold@suse.com
 
 - Update to version 2.4.12:
-  https://github.com/abraunegg/onedrive/releases/tag/v2.4.12 
+  https://github.com/abraunegg/onedrive/releases/tag/v2.4.12
 -------------------------------------------------------------------
 Wed Apr 07 11:33:01 UTC 2021 - egotthold@suse.com
 
@@ -1059,7 +1116,7 @@ Sun Sep 27 10:08:36 UTC 2020 - Enno Gotthold <egotthold@suse.com>
   * onedrive-2.4.5.tar
 - Removed:
   * onedrive-2.4.5.obscpio
-  * onedrive-2.4.5.tar.gz 
+  * onedrive-2.4.5.tar.gz
 
 -------------------------------------------------------------------
 Wed Sep 16 10:21:44 UTC 2020 - egotthold@suse.com
@@ -1100,7 +1157,7 @@ Wed Aug 19 13:26:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 Tue Jul  7 09:01:28 UTC 2020 - Enno Gotthold <egotthold@suse.com>
 
 - Enable notifications via configure switch
-- Enable bash and zsh completitions via configure switch 
+- Enable bash and zsh completitions via configure switch
 
 -------------------------------------------------------------------
 Tue Jul 07 06:22:43 UTC 2020 - egotthold@suse.com
@@ -1136,7 +1193,7 @@ Tue Jul 07 06:22:43 UTC 2020 - egotthold@suse.com
 -------------------------------------------------------------------
 Mon Jun 15 11:42:37 UTC 2020 - Enno Gotthold <egotthold@suse.com>
 
-- Modified service file to exclude bad file 
+- Modified service file to exclude bad file
 
 -------------------------------------------------------------------
 Wed May 27 09:35:51 UTC 2020 - dmacvicar@suse.com
@@ -1248,7 +1305,7 @@ Tue May  5 07:05:04 UTC 2020 - Enno Gotthold <egotthold@suse.com>
 -------------------------------------------------------------------
 Thu Apr 23 15:26:03 UTC 2020 - Boris Manojlovic <boris@steki.net>
 
-- corrected spec file: moved configure macro into build section 
+- corrected spec file: moved configure macro into build section
 
 -------------------------------------------------------------------
 Wed Apr 22 08:15:49 UTC 2020 - Boris Manojlovic <boris@steki.net>
@@ -1404,7 +1461,7 @@ Wed Dec 25 08:57:31 UTC 2019 - boris@steki.net
 Mon Jul 08 21:00:29 UTC 2019 - boris@steki.net
 
 - Update to version 1562145247.ed19175:
-  * 
+  *
 
 -------------------------------------------------------------------
 Mon Jul 08 20:54:41 UTC 2019 - boris@steki.net
@@ -1573,7 +1630,7 @@ Mon Mar 18 21:54:51 UTC 2019 - Boris Manojlovic <boris@steki.net>
 -------------------------------------------------------------------
 Mon Jan  7 01:58:08 UTC 2019 - Boris Manojlovic <boris@steki.net>
 
-- updated to latest release 2.2.4 
+- updated to latest release 2.2.4
 
 -------------------------------------------------------------------
 Tue Oct 23 09:13:34 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
@@ -1589,10 +1646,10 @@ Wed Apr 11 08:52:59 UTC 2018 - boris@steki.net
 -------------------------------------------------------------------
 Wed Feb 14 10:09:46 UTC 2018 - boris@steki.net
 
-- added released version 1.1.1 
+- added released version 1.1.1
 
 -------------------------------------------------------------------
 Tue Jul  4 18:40:41 UTC 2017 - boris@steki.net
 
-- repack of git version as there are no more 
-  standard tagged releases 
+- repack of git version as there are no more
+  standard tagged releases
