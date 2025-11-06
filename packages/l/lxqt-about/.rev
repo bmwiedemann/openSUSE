@@ -359,4 +359,13 @@
     <comment></comment>
     <requestid>1270842</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>48e6fb8fe25d6974884c26317dfe49bd</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449258</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 2.3.0:
+  * Updated wiki link and changed razor-qt link</comment>
+    <requestid>1315882</requestid>
+  </revision>
 </revisionlist>
