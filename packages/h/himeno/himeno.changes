@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  4 20:32:52 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Set C standard to C17 to prevent stricter include rule checks.
+- Run exeutable as part of %check
+
+-------------------------------------------------------------------
 Sat Jan 30 14:43:10 UTC 2016 - mpluskal@suse.com
 
 - Use optfltags when building

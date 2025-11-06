@@ -1,7 +1,7 @@
 #
 # spec file for package himeno
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,10 @@ Poisson's equation folution using Jacobi iteration method.
 %setup -q
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags} -DSSMALL"
+make %{?_smp_mflags} CFLAGS="%{optflags} -DSSMALL -std=c17"
+
+%check
+./bmt s
 
 %install
 install -D -m 0755 bmt %{buildroot}%{_bindir}/bmt
