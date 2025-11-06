@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Nov 06 06:21:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.132:
+  * Update token caching, token service dependencies  (#2396)
+  * support 155 (#2397)
+  * bypass rbac for signed url upload (#2395)
+  * Remove outdated demo repos (#2387)
+  * fix posthog fetching (#2391)
+  * upgrade from mint.json to docs.json (#2392)
+  * set the admin email correctly (#2390)
+  * Changes to speed up UI  (#2385)
+  * added posthog analytics (#2388)
+  * Changelog for week ending October 24th 2025 (#2374)
+  * Add changelog for October 17th, 2025 (#2373)
+  * Log implicit fallback to backendless (#2386)
+  * add duplex to fetch request (#2382)
+  * support env var for gh url, dont duplicate webhook secret (#2381)
+  * feat/onboading flow (#2380)
+  * TFE webhook auth  (#2379)
+  * remove indexes from code, put them into migrations for one
+    source of truth (#2378)
+  * make create modal prettier (#2377)
+  * adjust org resolution  (#2372)
+  * resolve names in cli (#2375)
+  * support signing for upload endpoints (#2376)
+  * ui adjustments (#2371)
+  * ui fix more (#2370)
+  * Align Identity Resolver (#2369)
+  * Fix unique (#2368)
+  * refresh units, fix some log items (#2367)
+  * fix link (#2366)
+  * redirect back to main screen (#2365)
+  * fix org syncing name (#2359)
+  * handle aws endpoint env var (#2362)
+  * fix invitation error (#2361)
+  * wrong header in sync (#2360)
+  * Docs/drift section (#2341)
+
+-------------------------------------------------------------------
 Sun Nov 02 06:46:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.131:
