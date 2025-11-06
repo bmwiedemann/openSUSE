@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Nov 06 06:20:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.3:
+  * Bug Fixes
+    - hcl validate --inputs regression on validation blocks
+      resolved
+      A bug introduced in v0.93.1 preventing hcl validate --inputs
+      from succeeding on OpenTofu/Terraform modules with variables
+      containing validation blocks. This was caused by an error in
+      the update to OpenTofu/Terraform .tf file parsing by
+      Terragrunt in the hcl validate command.
+      That bug has been resolved.
+  * What's Changed
+    - Allow validation blocks in inputs (#5063)
+    - build(deps): bump tar from 7.5.1 to 7.5.2 in /docs-starlight
+      (#5057)
+    - chore: Updating pin to `v0.93.2` for remote references
+      (#5058)
+
+-------------------------------------------------------------------
+Wed Nov 05 16:18:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.2:
+  * New Features
+    - The list command now supports the dot fomat
+      The list command can now render its output in the Graphviz
+      DOT language:
+
+        $ terragrunt list --format=dot --dependencies
+        digraph {
+          "live/dev/vpc" ;
+          "live/dev/db" ;
+          "live/dev/ec2" ;
+          "live/dev/db" -> "live/dev/vpc";
+          "live/dev/ec2" -> "live/dev/db";
+          "live/dev/ec2" -> "live/dev/vpc";
+          "live/prod/vpc" ;
+          "live/prod/db" ;
+          "live/prod/ec2" ;
+          "live/prod/db" -> "live/prod/vpc";
+          "live/prod/ec2" -> "live/prod/db";
+          "live/prod/ec2" -> "live/prod/vpc";
+        }
+
+      This was previously only possible using the dag graph
+      command, but that command has been refactored to be an alias
+      for the list --format=dot --dependencies command, to provide
+      greater flexibility in how graphs are rendered in the DOT
+      language. This includes integration with the experimental
+      Filter feature.
+      You can learn more about this in the list command
+      documentation
+      https://terragrunt.gruntwork.io/docs/reference/cli/commands/list/#dot-format
+  * What's Changed
+    - docs: Documenting `dot` format for the `list` command (#5042)
+    - chore: Refactor `find` & `list` so that they use a single
+      write instead of intermediate writes (#5027)
+    - feat: Moving `dag graph` to `list` (#5013)
+    - fix: Pinning commit until we can fix more permanently
+    - chore: Disable experimental tests ignore in CI
+    - chore: CICD updates (#5056)
+
+-------------------------------------------------------------------
 Tue Nov 04 20:20:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.93.1:
