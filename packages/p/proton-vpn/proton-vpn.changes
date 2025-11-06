@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov  2 15:09:16 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to 4.12.0:
+  * feat: Support 2fa hard-jailing (Luke Titley)
+  * fix: Update spec file (Alexandru Cheltuitor)
+  * feat: Handle U2F PIN (Pep Llaneras)
+- Update to 4.11.0:
+  * feat: add 2fa security device verification (Alexandru Cheltuitor, Luke Titley, Pep Llaneras)
+  * fix: change ST toaster for include mode (Pep Llaneras)
+  * fix: fix add window title word duplication (Alexandru Cheltuitor)
+  * fix: ensure label mode is updated when switching modes (Alexandru Cheltuitor)
+  * feat: add include mode (Alexandru Cheltuitor, Luke Titley, Pep Llaneras)
+  * fix: hide proton vpn app from st (Alexandru Cheltuitor)
+- Update to 4.10.0:
+  * Implement app based split tunneling (Alexandru Cheltuitor, Josep Llaneras, Luke Titley)
+- Update to 4.9.7:
+  * Update early access stable and beta packages
+  * Ensures beta toggling uses correct apt command for debian based distributions
+  * Fixes beta toggle activating with incoherent distribution detection
+  * Fixes server button not reflecting current connection state
+  * Removes reconnect message for Netshield, port forwarding, vpn accelerator and Moderate NAT settings changes
+
+-------------------------------------------------------------------
 Tue Apr  8 17:30:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 4.9.6:

@@ -1,7 +1,7 @@
 #
 # spec file for package proton-vpn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}%{!?sle15_python_module_pythons:%define pythons python3}
 Name:           proton-vpn
-Version:        4.9.6
+Version:        4.12.0
 Release:        0
 Summary:        Official Proton VPN client
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://github.com/ProtonVPN/proton-vpn-gtk-app
-Source0:        https://github.com/ProtonVPN/proton-vpn-gtk-app/archive/refs/tags/%{version}.tar.gz
+Source0:        https://github.com/ProtonVPN/proton-vpn-gtk-app/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module gobject}
@@ -73,7 +73,7 @@ carefully designed to improve your online security.
 %fdupes %{buildroot}%{python_sitelib}
 
 install -Dm0644 rpmbuild/SOURCES/proton-vpn-logo.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/proton-vpn-logo.svg
-install -Dm0644 ./rpmbuild/SOURCES/protonvpn-app.desktop %{buildroot}%{_datadir}/applications/proton-vpn.desktop
+install -Dm0644 ./rpmbuild/SOURCES/proton.vpn.app.gtk.desktop %{buildroot}%{_datadir}/applications/proton-vpn.desktop
 
 %files
 %doc README.md
