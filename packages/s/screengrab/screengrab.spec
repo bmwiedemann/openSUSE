@@ -17,7 +17,7 @@
 
 
 Name:           screengrab
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Qt tool for creating screenshots
 License:        GPL-2.0-only
@@ -26,8 +26,6 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-# PATCH-FIX-OPENSUSE 0001-fix-for-Qt-6.10.patch <sfalken@opensuse.org>
-Patch0:         0001-fix-for-Qt-6.10.patch
 
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
@@ -79,7 +77,7 @@ rm -rf %{buildroot}%{_datadir}/doc
 
 %files
 %license COPYING
-%doc AUTHORS CHANGELOG README.md docs/html
+%doc AUTHORS CHANGELOG README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g

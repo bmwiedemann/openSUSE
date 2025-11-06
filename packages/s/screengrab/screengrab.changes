@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  5 19:09:36 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 3.1.0:
+  * Better border color for selection rectangle on X11
+  * Fixed saving when filename or date format is emtpy in Options
+  * Fixed building with Qt 6.10
+  * Fixed calling of external editors with some apps (especially
+    Flatpak apps)
+  * Drop 0001-fix-for-Qt-6.10.patch
+
+-------------------------------------------------------------------
 Wed Oct 15 14:07:46 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add 0001-fix-for-Qt-6.10.patch for compatibility with Qt 6.10
