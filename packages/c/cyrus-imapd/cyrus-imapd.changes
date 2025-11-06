@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  6 12:20:07 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- cyrus-imapd don't start because of missing "Requires=var-run.mount" from systemd
+  (bsc#1251788)
+  Remove var-run.mount from Requires and After
+
+-------------------------------------------------------------------
 Tue Jul 29 13:48:50 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Only BuildRequire systemd-rpm-macros instead of systemd

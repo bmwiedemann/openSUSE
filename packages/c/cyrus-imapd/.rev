@@ -42,4 +42,14 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/CUQSL
     <comment></comment>
     <requestid>1296361</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2ce06b8c55c55d90547722da5c6ba0bd</srcmd5>
+    <version>3.8.6</version>
+    <time>1762449331</time>
+    <user>anag_factory</user>
+    <comment>- cyrus-imapd don't start because of missing &quot;Requires=var-run.mount&quot; from systemd
+  (bsc#1251788)
+  Remove var-run.mount from Requires and After</comment>
+    <requestid>1316014</requestid>
+  </revision>
 </revisionlist>
