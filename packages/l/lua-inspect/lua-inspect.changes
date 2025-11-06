@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Fri Oct 24 14:48:06 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Mon Oct 20 19:38:35 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add luajit version to _multibuild
+
+-------------------------------------------------------------------
+Mon Oct 13 09:21:41 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Removed the correct_assertion.patch, because it made test suite
+  pass ONLY on aarch64 and broke everything else. Whoopsie!
+
+-------------------------------------------------------------------
+Mon Oct 13 07:17:41 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add correct_assertion.patch to fix failure on LuaJIT with
+  aarch64 (gh#kikito/inspect.lua!75).
+
+-------------------------------------------------------------------
+Sun Oct 12 19:56:53 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix installation (install also spec/ directory)
+- Make %%check section working.
+
+-------------------------------------------------------------------
+Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Opencode %make_build to prevent build failure when not defined.
+
+-------------------------------------------------------------------
+Thu Nov 24 19:18:34 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Lua inspect 3.1.3
