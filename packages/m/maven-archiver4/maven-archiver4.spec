@@ -33,6 +33,7 @@ Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{base_na
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven4-lib
 BuildRequires:  plexus-archiver >= 4.2.0
