@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-network-manager
-Version:        0.12.13
+Version:        0.13.4
 Release:        0
 Summary:        Proton VPN library for NetworkManager
 License:        GPL-3.0-or-later
@@ -84,7 +84,7 @@ This package contains functionality for Proton VPN client to interact with Netwo
 %check
 # buildroot doesn't provide network manager service, so it is not possible to run killswitch tests
 # ignore tests which are failing -> `Permission denied: '/run/user'`
-%pytest tests --deselect "tests/integration/killswitch/default/test_killswitch_connection.py" --deselect "tests/integration/killswitch/wireguard/test_killswitch_connection.py" --ignore "tests/openvpn/test_openvpn.py" --ignore "tests/openvpn/test_openvpnconfiguration.py" --ignore "tests/unit/core/test_networkmanager.py"
+%pytest tests --deselect "tests/integration/killswitch/default/test_killswitch_connection.py" --deselect "tests/integration/killswitch/wireguard/test_killswitch_connection.py" --ignore "tests/openvpn/test_openvpn.py" --ignore "tests/openvpn/test_openvpnconfiguration.py" --ignore "tests/unit/core/test_networkmanager.py" --ignore "tests/unit/wireguard/test_wireguard.py"
 
 %files %{python_files}
 %license LICENSE

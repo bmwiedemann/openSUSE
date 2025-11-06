@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  2 16:21:54 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to 0.13.4::
+  * fix: Silence CancelledError exceptions when cancelling local agent
+
+-------------------------------------------------------------------
 Fri Mar 28 17:14:04 UTC 2025 - Szymon Scholz <raspherdev@pm.me>
 
 - Update to 0.12.13:
