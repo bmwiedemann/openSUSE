@@ -17,16 +17,16 @@
 # nodebuginfo
 
 
-%define real_version 5.15.17
-%define tar_version qt-everywhere-opensource-src-5.15.17
+%define real_version 5.15.18
+%define tar_version qt-everywhere-opensource-src-5.15.18
 Name:           libqt5-qtdoc
-Version:        5.15.17
+Version:        5.15.18
 Release:        0
 Summary:        Qt 5 API Documentation
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
 Group:          Documentation/Other
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/single/%{tar_version}.tar.xz
+Source:         https://download.qt.io/archive/qt/5.15/%{real_version}/single/%{tar_version}.tar.xz
 # Breaks make_jobs
 #!BuildIgnore:  cmake
 BuildRequires:  alsa-devel

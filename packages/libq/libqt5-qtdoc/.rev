@@ -480,4 +480,13 @@
     <comment>Qt 5.15.17, try #2 (forwarded request 1280892 from favogt)</comment>
     <requestid>1280906</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>72e5eebb1c6a0af1d4960965f7ffbde8</srcmd5>
+    <version>5.15.18</version>
+    <time>1762449218</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.15.18:
+  * See individual module packages for changelogs</comment>
+    <requestid>1315849</requestid>
+  </revision>
 </revisionlist>
