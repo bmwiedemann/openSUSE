@@ -1,7 +1,7 @@
 #
 # spec file for package sisu
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,6 @@ BuildRequires:  slf4j
 BuildRequires:  testng
 BuildRequires:  unzip
 BuildRequires:  xz
-Provides:       bundled(objectweb-asm)
 BuildArch:      noarch
 
 %description
