@@ -52,4 +52,15 @@ going forward in lxqt where they make sense to drop</comment>
     <comment></comment>
     <requestid>1270848</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d01fe658c2cd9c9febad81bde7d907e</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449260</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Emoji flags are supported
+  * Moved away from deprecated declarations in pyproject.toml
+  * Updated the example for using PyQt6</comment>
+    <requestid>1315886</requestid>
+  </revision>
 </revisionlist>

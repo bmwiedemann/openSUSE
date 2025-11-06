@@ -19,7 +19,7 @@
 %define  qt_ver 6
 %define  sover  2
 Name:           qtermwidget
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        The terminal widget for QTerminal
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later
