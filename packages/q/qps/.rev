@@ -255,4 +255,13 @@
     <comment></comment>
     <requestid>1279064</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7c3c590aeab2aa6b5e2ce5c3ed941777</srcmd5>
+    <version>2.12.0</version>
+    <time>1762449259</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.12.0:
+  * Gave parent windows to some dialogs</comment>
+    <requestid>1315885</requestid>
+  </revision>
 </revisionlist>
