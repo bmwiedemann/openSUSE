@@ -59,4 +59,14 @@
     <comment></comment>
     <requestid>1311237</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5a958be32e97ae43bbb4225ad07e801b</srcmd5>
+    <version>4.3.0</version>
+    <time>1762449245</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.3.0:
+  * Bumped the version and dependencies
+  * Drop libqt6xdg-qt610.patch</comment>
+    <requestid>1315864</requestid>
+  </revision>
 </revisionlist>

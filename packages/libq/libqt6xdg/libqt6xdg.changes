@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  5 16:12:47 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 4.3.0:
+  * Bumped the version and dependencies
+  * Drop libqt6xdg-qt610.patch
+
+-------------------------------------------------------------------
 Mon Oct 13 18:22:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:
