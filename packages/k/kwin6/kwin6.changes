@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov  4 23:02:29 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.2
+- Changes since 6.5.1:
+  * Fix kwin_wayland crash on FreeBSD
+  * Update version for new release 6.5.2
+  * dpmsinputeventfilter: Disable proximity sensor and add null check
+  * plugins/showfps,-compositing: apply vertical offset to geometry (kde#511232)
+  * plugins/blur: Make contrast opt-in (kde#510818)
+  * Revert "Only keep the saturation component from the old contrast effect"
+  * compositor: fix KWIN_FORCE_SW_CURSOR
+  * plugins/screenshot: filter out decoration and shadows to match the options (kde#510982,kde#511171)
+  * plugins/screencast: on close, reset screencast sources instead of just pausing (kde#511150)
+  * backends/drm: handle changing output layers of virtual outputs correctly
+  * backends/drm: fix warnings when the virtual output is used
+  * backends/drm: fix implicit modifier fallback (kde#511216)
+  * xwayland: Initialize Selection::m_timestamp
+  * xwayland: Drop Selection::setWindow()
+  * xwayland: Avoid potentially creating an X11 source for own proxy data
+  * xwayland: Drop Selection::m_disownPending
+  * scene/cursoritem: always reset the surface item if the surface is nullptr (kde#511075)
+  * backends/drm: prevent using the same cursor plane on multiple screens (kde#511281)
+  * Update version for new release 6.5.2
+  * xwayland: Update clipboard when active window changes (kde#511063)
+  * plugins/mousekeys: Do not release the pointer button on key repeat events (kde#510248)
+
+-------------------------------------------------------------------
 Tue Oct 28 11:50:51 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.1:
