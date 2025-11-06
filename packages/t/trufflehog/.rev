@@ -2471,4 +2471,21 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * Updated Docker source with new test cases and README (#4481) (forwarded request 1314001 from ph03nix)</comment>
     <requestid>1314076</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>e0626bdd19c67bb5bb23801522f2e2f4</srcmd5>
+    <version>3.90.13</version>
+    <time>1762449189</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.90.13:
+  * Add source type label to chunk size metric (#4543)
+  * Updated GDrive proto to support On-Prem Scanning (#4539)
+  * chore: fix feature support to append user agent suffix (#4520)
+  * Implemented Graphql requests for Github PR's, Issues and comments scanning (#4431)
+  * use pr-approval-check@main (#4531)
+  * pr-approval-check: use separate workflow to check approvals (#4530)
+  * Switch to an outside action for pr approval (#4523)
+  * pr approval workflow: use pull_request_target (#4522)
+  * Require product eng approval for PRs (#4478) (forwarded request 1315740 from ph03nix)</comment>
+    <requestid>1315745</requestid>
+  </revision>
 </revisionlist>
