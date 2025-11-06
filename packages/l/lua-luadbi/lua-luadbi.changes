@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov  6 10:49:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.7.5:
+  - Allow selecting values containing NUL byte
+  - Fixed overflow when retreving integer values larger than
+    2^31-1 in SQLite3
+  - Connections and Statements are now capable objects in Lua 5.4
+
+-------------------------------------------------------------------
+Tue Nov  4 13:09:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Use new lua-macros to Obsoletes: lua51-luadbi.
+
+-------------------------------------------------------------------
+Fri Oct 24 14:49:00 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Sun Oct 12 00:38:29 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package buildable with LuaJIT.
+
+-------------------------------------------------------------------
 Fri Jul 25 19:54:10 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Upgrade to 0.7.4:

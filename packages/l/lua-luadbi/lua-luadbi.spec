@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name luadbi
-Version:        0.7.4
+Version:        0.7.5
 Release:        0
 Summary:        A database interface library for Lua
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  postgresql-devel
 BuildRequires:  postgresql-server-devel
 BuildRequires:  sqlite3-devel
 Requires:       %{flavor}
-# %%lua_provides
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
@@ -72,7 +72,7 @@ make install_lua install_mysql install_psql install_sqlite3 \
 
 %check
 # run tests
-lua%{lua_version} %{SOURCE50} %{buildroot}
+lua %{SOURCE50} %{buildroot}
 
 %files
 %license COPYING
