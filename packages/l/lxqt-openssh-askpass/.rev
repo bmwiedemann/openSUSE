@@ -285,4 +285,13 @@
     <comment></comment>
     <requestid>1270847</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>202c88e269b8bdf15d05f0db34fd99c5</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449258</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Updated translations and bumped the version</comment>
+    <requestid>1315881</requestid>
+  </revision>
 </revisionlist>

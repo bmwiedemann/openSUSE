@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-openssh-askpass
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        GUI to query passwords on behalf of SSH agents
 License:        LGPL-2.1-or-later
