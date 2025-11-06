@@ -19,4 +19,12 @@
   * Update version for new release 6.5.1</comment>
     <requestid>1314333</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c6cda14886dae4f1c9ac8566a31c0c3d</srcmd5>
+    <version>6.5.2</version>
+    <time>1762449119</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.5.2 (forwarded request 1315688 from Vogtinator)</comment>
+    <requestid>1315800</requestid>
+  </revision>
 </revisionlist>

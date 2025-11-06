@@ -1,5 +1,6 @@
 <package name="knighttime6" project="openSUSE:Factory">
   <title>Development files for KNightTime</title>
   <description>Development files for KNightTime,  a helper for dark-light day cycles.</description>
+  <devel project="KDE:Frameworks" package="knighttime6"/>
   <url>https://www.kde.org</url>
 </package>
