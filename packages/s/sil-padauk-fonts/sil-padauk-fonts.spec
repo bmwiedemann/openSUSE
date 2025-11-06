@@ -1,6 +1,7 @@
 #
 # spec file for package sil-padauk-fonts
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           sil-padauk-fonts
-Version:        5.100
+Version:        6.000
 Release:        0
 Summary:        A font that supports the many diverse languages that use the Myanmar script
 License:        OFL-1.1
@@ -53,7 +54,7 @@ install -c -m 644 Padauk-%{version}/*.ttf %{buildroot}%{_ttfontsdir}
 %reconfigure_fonts_scriptlets
 
 %files
-%doc Padauk-%{version}/*.txt Padauk-%{version}/documentation/*.pdf
+%doc Padauk-%{version}/*.txt Padauk-%{version}/documentation/pdf/*.pdf
 %{_ttfontsdir}
 
 %changelog

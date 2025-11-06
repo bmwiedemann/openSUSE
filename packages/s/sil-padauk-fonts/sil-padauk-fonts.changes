@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  6 10:20:30 UTC 2025 - MihailJP <mihailjp@gmail.com>
+
+- Update to version 6.000
+  * Removed Graphite and old OpenType (`mymr` and `DFLT`) shaping support
+  * Many shaping improvements (in the newer mym2 OpenType shaper)
+  * Add support for Mon Thai (`mnw-TH`)
+  * Separate packages for the Book weight fonts
+  * More weights (Medium, SemiBold, and ExtraBold)
+
+-------------------------------------------------------------------
 Sun Aug 31 09:07:25 UTC 2025 - MihailJP <mihailjp@gmail.com>
 
 - Fix path to PDF documentations

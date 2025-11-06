@@ -59,4 +59,17 @@
     <comment>- Update to version 5.100</comment>
     <requestid>1302211</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>475a31645a8ea5a64689d54b149dd861</srcmd5>
+    <version>6.000</version>
+    <time>1762449323</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.000
+  * Removed Graphite and old OpenType (`mymr` and `DFLT`) shaping support
+  * Many shaping improvements (in the newer mym2 OpenType shaper)
+  * Add support for Mon Thai (`mnw-TH`)
+  * Separate packages for the Book weight fonts
+  * More weights (Medium, SemiBold, and ExtraBold) (forwarded request 1315984 from MihailJP)</comment>
+    <requestid>1315991</requestid>
+  </revision>
 </revisionlist>
