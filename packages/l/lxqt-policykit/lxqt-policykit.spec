@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-policykit
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        PolicyKit authentication agent
 License:        LGPL-2.1-or-later

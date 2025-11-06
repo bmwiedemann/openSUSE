@@ -303,4 +303,14 @@
     <comment></comment>
     <requestid>1270854</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8452d54dbed1b5548a2282fb37dab533</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449250</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Updated README
+  * Updated translations and bumped the version</comment>
+    <requestid>1315871</requestid>
+  </revision>
 </revisionlist>
