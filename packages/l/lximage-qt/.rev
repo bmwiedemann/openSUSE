@@ -461,4 +461,17 @@
     <comment></comment>
     <requestid>1270858</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3780595d1c19ecc8548e1e7d37b68766</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449263</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Supported multi-page TIFF images
+  * Supported animated WebP images
+  * Supported non-solid (tiled) background
+  * Show dimensions of pasted image on status-bar
+  * Miscellaneous enhancements and small fixes</comment>
+    <requestid>1315889</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           lximage-qt
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        LXQt Image Viewer
 License:        GPL-2.0-or-later
