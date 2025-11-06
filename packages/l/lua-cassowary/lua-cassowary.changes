@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:47:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Tue Oct 14 15:35:51 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package buildable with LuaJIT.
+- Brutal simplification, don’t use luarocks, but just Unix tools.
+
+-------------------------------------------------------------------
 Mon Apr  1 01:46:21 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Switch compression from xz to zstd

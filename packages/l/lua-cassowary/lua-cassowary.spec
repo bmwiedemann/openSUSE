@@ -28,15 +28,14 @@ Group:          Development/Languages/Other
 URL:            https://github.com/sile-typesetter/cassowary.lua
 Source:         cassowary.lua-%{version}.tar.zst
 BuildRequires:  %{flavor}-devel
-BuildRequires:  %{flavor}-luarocks
-BuildRequires:  %{flavor}-penlight
+BuildRequires:  %{flavor}-penlight >= 1.5.4
 BuildRequires:  lua-macros
 BuildRequires:  zstd
 %if %{with test}
 BuildRequires:  %{flavor}-busted
 %endif
 Requires:       %{flavor}
-Requires:       %{flavor}-penlight
+Requires:       %{flavor}-penlight >= 1.5.4
 %lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
@@ -55,10 +54,11 @@ and find the values of unknown variables which satisfy those inequalities.
 %autosetup -n %{mod_name}.lua-%{version}
 
 %build
-%luarocks_build "rockspecs/%{mod_name}-%{rock_version}.rockspec"
+:
 
 %install
-%luarocks_install *.rock
+install -v -D -m 0644 -p cassowary/init.lua %{buildroot}%{lua_noarchdir}/%{mod_name}.lua
+
 
 %if %{with test}
 %check
@@ -66,9 +66,8 @@ busted
 %endif
 
 %files
-%{lua_noarchdir}/%{mod_name}
-%{luarocks_treedir}/%{mod_name}
-%docdir %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
-%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/LICENSE
+%license LICENSE
+%doc README.md
+%{lua_noarchdir}/%{mod_name}.lua
 
 %changelog

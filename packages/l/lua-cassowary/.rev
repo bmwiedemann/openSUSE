@@ -35,4 +35,15 @@
     <comment>- Switch compression from xz to zstd</comment>
     <requestid>1163823</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>fc70168f1ed425845f65bfb741d045b5</srcmd5>
+    <version>2.3.2</version>
+    <time>1762449182</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Make the package buildable with LuaJIT.
+- Brutal simplification, don’t use luarocks, but just Unix tools.</comment>
+    <requestid>1315141</requestid>
+  </revision>
 </revisionlist>
