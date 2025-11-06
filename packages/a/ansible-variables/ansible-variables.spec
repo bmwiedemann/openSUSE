@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-variables
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,13 +50,15 @@ BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.18.0
+
+# https://github.com/hille721/ansible-variables/issues/123
+BuildRequires:  ansible-core-2.18 >= 2.18.0
 BuildRequires:  %{ansible_python}-pytest
 BuildRequires:  %{ansible_python}-rich
 # /SECTION
 BuildRequires:  fdupes
 Requires:       %{ansible_python}-rich
-Requires:       ansible-core >= 2.18.0
+Requires:       ansible-core-2.18 >= 2.18.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

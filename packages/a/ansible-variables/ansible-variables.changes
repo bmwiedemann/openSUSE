@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  6 08:10:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- use ansible-core-2.18 for now, due to
+  https://github.com/hille721/ansible-variables/issues/123
+
+-------------------------------------------------------------------
 Mon Mar 24 14:39:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.9.1:
