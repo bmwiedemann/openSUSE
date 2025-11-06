@@ -1458,4 +1458,15 @@ comply with openSUSE policy
   * 0004-Drop-hyprland-entry-from-available-compositors.patch</comment>
     <requestid>1290560</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8833ed690c133ade431ed32a34f2e7c8</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449264</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Showed auto-start applications in the correct category
+  * Removed &quot;Experimental&quot; from Wayland settings page
+  * Prevented setting of (X11) global scale factors under Wayland</comment>
+    <requestid>1315891</requestid>
+  </revision>
 </revisionlist>

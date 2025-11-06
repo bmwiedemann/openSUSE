@@ -18,7 +18,7 @@
 
 
 Name:           lxqt-session
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
