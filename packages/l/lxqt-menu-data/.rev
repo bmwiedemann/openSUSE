@@ -48,4 +48,13 @@
     <comment></comment>
     <requestid>1270837</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b0cb03106c3f2150860b41aea25fd39b</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449247</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.0:
+  * Added lxqt-panel-applications.menu, especially for Fancy menu</comment>
+    <requestid>1315866</requestid>
+  </revision>
 </revisionlist>

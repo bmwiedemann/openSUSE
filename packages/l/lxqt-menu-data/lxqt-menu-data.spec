@@ -18,7 +18,7 @@
 
 %global debug_package %{nil}
 Name:           lxqt-menu-data
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Menu files for LXQt Panel, Configuration Center and PCManFM-Qt
 License:        LGPL-2.1-or-later
