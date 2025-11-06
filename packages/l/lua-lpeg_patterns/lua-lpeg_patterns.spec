@@ -65,3 +65,5 @@ busted -v
 %doc README.md NEWS
 %dir %{lua_noarchdir}/lpeg_patterns
 %{lua_noarchdir}/lpeg_patterns*
+
+%changelog
