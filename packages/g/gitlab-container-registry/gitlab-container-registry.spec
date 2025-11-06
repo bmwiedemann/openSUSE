@@ -17,7 +17,7 @@
 
 
 Name:           gitlab-container-registry
-Version:        4.30.0
+Version:        4.31.0
 Release:        0
 Summary:        The GitLab Container Registry
 License:        Apache-2.0

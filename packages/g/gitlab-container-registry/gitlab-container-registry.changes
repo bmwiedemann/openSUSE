@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Nov 06 06:20:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.31.0:
+  * Features
+    - add index validation for NullBatchingStrategy in background
+      migrations (90c6880)
+    - datastore: add replica connectivity tracking with quarantine
+      mechanism (e652d0d)
+    - registry: add database prefer mode (7bfefd8)
+    - registry: check for invalid lockfiles state on startup
+      (9d8efa1)
+    - registry: import-command: allow user to determine detail log
+      directory (f7dadb1)
+  * Bug Fixes
+    - add support for recursive introspection of GCSBucketKeyer
+      interface (e35a438)
+    - bbm progress metric collection and log field collition
+      (1dcbaf7)
+    - race condition in TestDBLoadBalancer_ProcessQueryError
+      (78e4646)
+  * Dependencies
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.18.20
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.9.12
+    - build(deps): update module cloud.google.com/go/storage to
+      v1.57.1
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.18.19
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/service/s3 to v1.88.7
+    - build(deps): update module gitlab.com/gitlab-org/labkit to
+      v1.31.5
+
+-------------------------------------------------------------------
 Mon Oct 27 19:34:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.30.0:
