@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-powermanagement
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Power Management and Auto-suspend
 License:        LGPL-2.1-or-later
@@ -25,7 +25,7 @@ URL:            https://github.com/lxqt/lxqt-powermanagement
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.18.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

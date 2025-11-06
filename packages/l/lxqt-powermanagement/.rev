@@ -547,4 +547,15 @@
   * Provides compatibility with lxqt-build-tools &gt;= 2.2.1</comment>
     <requestid>1290045</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>cd877cfc5b44572a47434eb62cb930e7</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449252</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Added a section for turning off monitor on Wayland (supporting
+    KWin, Niri and Hyperland)
+  * Small fixes and enhancements</comment>
+    <requestid>1315874</requestid>
+  </revision>
 </revisionlist>

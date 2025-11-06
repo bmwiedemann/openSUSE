@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  5 18:07:46 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.3.0:
+  * Added a section for turning off monitor on Wayland (supporting
+    KWin, Niri and Hyperland)
+  * Small fixes and enhancements
+
+-------------------------------------------------------------------
 Wed Jul  2 20:11:10 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.2.1:
