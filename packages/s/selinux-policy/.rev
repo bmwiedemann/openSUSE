@@ -2179,4 +2179,13 @@ there will be 4 permissive avcs left regarding pcrlock, but those will be fixed 
     <comment></comment>
     <requestid>1315475</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>ff9deb37d5fc97ec5592c0968523db86</srcmd5>
+    <version>20251106</version>
+    <time>1762449155</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251106:
+* Allow pcscd_t to search cgroup (bsc#1253098)</comment>
+    <requestid>1316047</requestid>
+  </revision>
 </revisionlist>
