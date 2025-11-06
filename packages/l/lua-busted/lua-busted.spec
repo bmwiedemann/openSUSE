@@ -18,8 +18,14 @@
 
 
 %define flavor @BUILD_FLAVOR@
+# Remove file dependency on the interpreter
+%global __requires_exclude ^/usr/bin/lua(5\\.[1-9]|jit)?$
 %define mod_name busted
+%if "%{flavor}" == "luajit"
+%define lua_value  52
+%else
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
+%endif
 %define upversion 2.0.0
 Version:        2.0.0
 Release:        0
@@ -91,7 +97,7 @@ language packs.
 
 %prep
 %setup -q -n %{mod_name}-%{version}
-sed -i 's|^#!%{_bindir}/env lua|#!%{_bindir}/lua%{lua_version}|' bin/busted
+sed -i 's|^#!%{_bindir}/env lua|#!%{_bindir}/lua|' bin/busted
 
 %build
 /bin/true

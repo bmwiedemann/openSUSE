@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 24 14:47:05 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off building lua51 build of the package.
+
+-------------------------------------------------------------------
+Sun Oct 12 19:43:06 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove file dependency on the interpreter.
+
+-------------------------------------------------------------------
+Wed Oct  8 08:38:06 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Don’t depend on /usr/bin/lua%{lua_version}, it breaks LuaJIT.
+
+-------------------------------------------------------------------
 Thu Mar 16 18:09:21 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Change upstream homepage to the current one at Lunar Modules.

@@ -66,4 +66,16 @@
 </comment>
     <requestid>1207471</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>80f908cee79d31355f29fae4e1b79e20</srcmd5>
+    <version>2.0.0</version>
+    <time>1762449182</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Remove file dependency on the interpreter.
+
+- Don’t depend on /usr/bin/lua%{lua_version}, it breaks LuaJIT.</comment>
+    <requestid>1315140</requestid>
+  </revision>
 </revisionlist>
