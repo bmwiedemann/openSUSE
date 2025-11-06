@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  4 23:06:01 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.2
+- Changes since 6.5.1:
+  * Update version for new release 6.5.2
+  * sddm-theme: Avoid rendering invisible contents
+  * Update version for new release 6.5.2
+
+-------------------------------------------------------------------
 Tue Oct 28 11:51:41 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.1:
