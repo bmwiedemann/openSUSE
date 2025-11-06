@@ -410,4 +410,25 @@
 </comment>
     <requestid>1224046</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>15ceb950543be83ef25e0e4cb9fe58c5</srcmd5>
+    <version>1.14.0</version>
+    <time>1762449272</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.14.0:
+  * Add type hints to importinfo.py and add repr to ImportInfo
+  * Introduce the preferred_import_style configuration
+  * Add explicit sphinx.configuration key
+  * Python3.13 compat
+  * Adapt conditional for Python 3.14
+  * Isolate tests that uses external_fixturepkg into a venv
+  * Check for ast.Attributes when finding occurrences in fstrings
+  * add validation to refuse Rename refactoring to a python keyword
+  * Match on module aliases for autoimport suggestions
+  * Remove dependency on build package being installed while running tests
+  * Improved function parser to use ast parser instead of Worder
+- Add patch use-venv-executable-for-uninstall.patch:
+  * Do not system pip to uninstall external_fixturepkg.</comment>
+    <requestid>1315907</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-rope
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rope
-Version:        1.12.0
+Version:        1.14.0
 Release:        0
 Summary:        A python refactoring library
 License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/python-rope/rope
 Source:         https://files.pythonhosted.org/packages/source/r/rope/rope-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#python-rope/rope#824
+Patch0:         use-venv-executable-for-uninstall.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}

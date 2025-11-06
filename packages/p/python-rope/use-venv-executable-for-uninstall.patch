@@ -1,0 +1,31 @@
+From bd57ab3c2fd6052d10a0000e80009bdb3df54b68 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 6 Nov 2025 14:38:59 +1100
+Subject: [PATCH] Do not use sys.executable for pip uninstall
+
+The system executable might be an externally managed environment[1],
+which means pip then refuses to uninstall the installed package, and it
+bubbles up as a teardown error. Use the venv to avoid that.
+
+1: https://packaging.python.org/en/latest/specifications/externally-managed-environments/
+---
+ ropetest/conftest.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/ropetest/conftest.py b/ropetest/conftest.py
+index 30af57e8..819c70ab 100644
+--- a/ropetest/conftest.py
++++ b/ropetest/conftest.py
+@@ -105,4 +105,11 @@ def external_fixturepkg(session_venv, session_venv_python_executable):
+         "ropetest-package-fixtures/external_fixturepkg/dist/external_fixturepkg-1.0.0-py3-none-any.whl",
+     ])
+     yield
+-    check_call([sys.executable, "-m", "pip", "uninstall", "--yes", "external-fixturepkg"])
++    check_call([
++        session_venv_python_executable,
++        "-m",
++        "pip",
++        "uninstall",
++        "--yes",
++        "external-fixturepkg"
++    ])
