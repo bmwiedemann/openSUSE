@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov  6 04:26:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.1.22:
+  * Dropped support for Python 3.9.
+  * Added Python 3.14 to test matrix.
+  * Fixed a bug in bulk walk command when lookupMib is set to False.
+  * Implemented v1arch dispatcher timeout support.
+  * Resolved dispatcher resource leak issue.
+  * Upgraded pysmi dependency to 1.6.1.
+  * Fixed an SNMPv2-SMI issue.
+  * Fixed a few MIB related issues.
+  * Improved shadow cloning patch.
+  * Fixed v1arch local address issue.
+  * Fixed shadow cloning issue.
+  * Fixed a resource leak issue.
+  * Updated built-in MIBs to match latest PySMI compiled results.
+  * Fixed two bugs in MIB related code and improved compatibility layer.
+  * Method names are revised to be PEP 8 compliant. Compatibility layer is
+    added to support most of the old method names, but will be removed in the
+    next major release, 8.0.
+  * Python 3.8 support is dropped.
+  * Python 3.13 support is added.
+  * The pysmi dependency is now optional.
+- Add a script to download MIBs that the testsuite requires.
+- Fix formatting in early changelog entries.
+
+-------------------------------------------------------------------
 Thu Sep 19 18:16:03 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.1.4
@@ -1218,7 +1245,7 @@ Tue Mar 23 13:13:13 CET 2010 - boris@steki.net
   for utils sub package main package.
 
 -------------------------------------------------------------------
-Mon Feb 16 2009 James Oakley <jfunk@funktronics.ca> - 4.1.10-1
+Mon Feb 16 2009 - James Oakley <jfunk@funktronics.ca> - 4.1.10-1
 
 - Update to 4.1.10a
   - Internal MIB indexing method __indexMib() unmangled to facilitate
@@ -1307,7 +1334,7 @@ Mon Feb 16 2009 James Oakley <jfunk@funktronics.ca> - 4.1.10-1
     should be a one-based.
 
 -------------------------------------------------------------------
-Mon Apr 23 2007 James Oakley <jfunk@funktronics.ca> - 4.1.7-1
+Mon Apr 23 2007 - James Oakley <jfunk@funktronics.ca> - 4.1.7-1
 
 - Update to 4.1.7
   - Low-level debugging facility implemented
@@ -1368,22 +1395,22 @@ Mon Apr 23 2007 James Oakley <jfunk@funktronics.ca> - 4.1.7-1
   - A handful of minor fixes applied (SourceForge tracker IDs #1537592,
 
 -------------------------------------------------------------------
-Thu Jun 22 2006 James Oakley <jfunk@funktronics.ca> - 4.1.6-1
+Thu Jun 22 2006 - James Oakley <jfunk@funktronics.ca> - 4.1.6-1
 
 - Update
 
 -------------------------------------------------------------------
-Wed Oct 19 2005 James Oakley <jfunk@funktronics.ca> - 4.1.4-ft.4
+Wed Oct 19 2005 - James Oakley <jfunk@funktronics.ca> - 4.1.4-ft.4
 
 - Fix SNMPv1 requestid problem
 
 -------------------------------------------------------------------
-Wed Oct 12 2005 James Oakley <jfunk@funktronics.ca> - 4.1.4-ft.3
+Wed Oct 12 2005 - James Oakley <jfunk@funktronics.ca> - 4.1.4-ft.3
 
 - Build for SL10
 
 -------------------------------------------------------------------
-Wed Sep 28 2005 James Oakley <jfunk@funktronics.ca> - 4.1.4-ft.2
+Wed Sep 28 2005 - James Oakley <jfunk@funktronics.ca> - 4.1.4-ft.2
 
 - Add requirements
 
