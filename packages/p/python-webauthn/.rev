@@ -58,4 +58,17 @@
     <comment></comment>
     <requestid>1242322</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>73f076867231f2a4cce351f4082396eb</srcmd5>
+    <version>2.7.0</version>
+    <time>1762449314</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315528 from mcalabkova
+
+- Update to 2.7.0
+    * The new webauthn.helpers.options_to_json_dict helper can be used to simplify
+      registration and authentication options into a simple Dict[str, Any] value
+  - Use github tarball because of tests</comment>
+    <requestid>1315968</requestid>
+  </revision>
 </revisionlist>

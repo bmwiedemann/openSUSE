@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  4 15:45:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.7.0
+  * The new webauthn.helpers.options_to_json_dict helper can be used to simplify
+    registration and authentication options into a simple Dict[str, Any] value
+- Use github tarball because of tests
+
+-------------------------------------------------------------------
 Sun Feb  2 06:36:35 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 2.5.1
