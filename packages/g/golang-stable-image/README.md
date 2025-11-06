@@ -82,9 +82,9 @@ $ podman run --rm -v "$PWD":/app:Z -w /app registry.opensuse.org/opensuse/bci/go
 ```
 
 
-### Building from SLE BCI
+### Building from openSUSE BCI
 
-The [SLE BCI General Purpose Base Containers](https://opensource.suse.com/bci-docs/documentation/general-purpose-bci/)
+The [openSUSE BCI General Purpose Base Containers](https://opensource.suse.com/bci-docs/documentation/general-purpose-bci/)
 images offer four different options for deployment, depending on your exact requirements.
 
 ```Dockerfile
@@ -110,15 +110,15 @@ COPY --from=build /hello /usr/local/bin/hello
 CMD ["/usr/local/bin/hello"]
 ```
 
-The above example uses the SLE BCI micro image as the deployment image for
-the resulting application. See the [SLE BCI use with Go
+The above example uses the openSUSE BCI micro image as the deployment image for
+the resulting application. See the [openSUSE BCI use with Go
 documentation](https://opensource.suse.com/bci-docs/guides/use-with-golang/)
 for further details.
 
 
 ## Additional tools
 
-In addition to the standard SLE BCI development packages, the following tools
+In addition to the standard openSUSE BCI development packages, the following tools
 are included in the image:
 
 - go1.25-race
