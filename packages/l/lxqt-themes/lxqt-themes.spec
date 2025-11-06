@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-themes
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Themes, graphics and icons for LXQt
 License:        LGPL-2.1-or-later

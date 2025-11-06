@@ -133,4 +133,16 @@
     <comment></comment>
     <requestid>1270850</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1f7501a67c6bfe9838945899177f51cf</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449256</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Reduced margins for taskbar buttons in the Light theme
+  * Reduced margins/padding for taskbar groups in the Arch-Colors
+    theme
+  * Refactored the Leech and Clearlooks themes</comment>
+    <requestid>1315880</requestid>
+  </revision>
 </revisionlist>
