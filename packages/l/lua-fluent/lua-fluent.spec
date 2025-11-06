@@ -65,8 +65,6 @@ solution (used in Firefox and other apps) into a re-usable specification.
 
 %install
 %luarocks_install *.rock
-luarocks --lua-version="%{lua_version}" --tree="%{buildroot}/usr/" \
- make --deps-mode=none --no-manifest "rockspecs/%{mod_name}-%{rock_version}.rockspec"
 
 %if %{with test}
 %check
@@ -74,9 +72,8 @@ busted
 %endif
 
 %files
-%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/LICENSE
-%doc %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
+%license LICENSE
+%doc __rocktree/* README.md CHANGELOG.md
 %{lua_noarchdir}/%{mod_name}
-%{luarocks_treedir}/%{mod_name}
 
 %changelog

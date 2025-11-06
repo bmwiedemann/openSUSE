@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1061220</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>03780d49dc0d34cff1a1b6022bb2a4dd</srcmd5>
+    <version>0.2.0</version>
+    <time>1762449183</time>
+    <user>anag_factory</user>
+    <comment>- Switch off building lua51 build of the package.
+
+- Make the package build with updated %%luarocks_* macros.</comment>
+    <requestid>1315152</requestid>
+  </revision>
 </revisionlist>
