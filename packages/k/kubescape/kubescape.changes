@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 05 18:57:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.43:
+  * fix: --format sarif logs as expected
+  * removed 'procMount: Unmasked' from host-scanner daemonset
+    definition (refs kubescape/helm-charts#711) (#1886)
+  * fix: update documentation links to include 'controls' path
+  * Test file updated
+  * fixed 404 url issue in kubescape scan
+  * Bump github.com/nwaples/rardecode/v2 from 2.1.1 to 2.2.0
+
+-------------------------------------------------------------------
 Fri Oct 17 05:32:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.42:
