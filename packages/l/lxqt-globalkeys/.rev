@@ -448,4 +448,14 @@
     <comment></comment>
     <requestid>1270840</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b12be8fefba335ee76083445c36ab8da</srcmd5>
+    <version>2.3.0</version>
+    <time>1762449250</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * Capitalized &quot;Id&quot; as &quot;ID&quot;, updated translations, and bumped the
+    version</comment>
+    <requestid>1315872</requestid>
+  </revision>
 </revisionlist>
