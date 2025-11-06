@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  4 18:09:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.3:
+  + This is a bugfix release that contains a stability fix for
+    lengthy, and subsequently cancelled, find/replace operations.
+  + Changes and bugfixes since 48.1:
+    - findrep: Cancelling find ops should allow to search again
+      right away
+    - lib: Fix lifetimes issue with threaded find/rep operations
+  + This release includes libgtkhex 4.10.1.
+
+-------------------------------------------------------------------
 Sat Aug 30 08:47:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:

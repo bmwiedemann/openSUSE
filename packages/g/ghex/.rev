@@ -625,4 +625,19 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
   + This release includes libgtkhex 4.10.0 (forwarded request 1302006 from iznogood)</comment>
     <requestid>1302013</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>12c6969248faf4a06b5393cb793166a8</srcmd5>
+    <version>48.3</version>
+    <time>1762449200</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.3:
+  + This is a bugfix release that contains a stability fix for
+    lengthy, and subsequently cancelled, find/replace operations.
+  + Changes and bugfixes since 48.1:
+    - findrep: Cancelling find ops should allow to search again
+      right away
+    - lib: Fix lifetimes issue with threaded find/rep operations
+  + This release includes libgtkhex 4.10.1. (forwarded request 1315536 from iznogood)</comment>
+    <requestid>1315782</requestid>
+  </revision>
 </revisionlist>
