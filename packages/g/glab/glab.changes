@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Nov 05 10:14:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.76.2:
+  * fix(config): deduplicate paths in config file detection
+  * chore(deps): update dependency golangci-lint to v2.6.1
+
+-------------------------------------------------------------------
+Wed Nov 05 05:38:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.76.1:
+  * fix(ci): snapcraft remove proxy
+
+-------------------------------------------------------------------
+Tue Nov 04 20:19:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.76.0:
+  * chore(ci): snapcraft and build stage
+  * fix(config): maintain backward compatibility with legacy config
+    path
+  * fix(logger): clarify log target
+  * chore(tests): create tests for all ssh-key commands
+  * chore(docs): updates name on docs index page
+  * chore(docs): Move images to source directory
+  * chore(docs): prep for Hugo site
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.158.0
+  * docs(release-process): remove outdated info
+  * feat: migrate Confirm prompts from survey to huh
+  * fix: sign macOS binaries
+  * chore(deps): update dependency golangci-lint to v2.6.0
+
+-------------------------------------------------------------------
+Sun Nov 02 06:52:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.75.0:
+  * chore(snapcraft): add more information on how the package is
+    built
+  * chore(ci): update image versions
+  * chore: use a post-build hook to sign binaries
+  * feat: create shared GitLab theme for Charm libraries
+  * chore(release-docs): update the release docs
+  * feat(auth login): auto-detect GitLab URLs from git remotes
+  * fix(docs): remove index with no underscore
+  * feat(ci-view): view any pipeline via id
+  * docs(repo-list): clarify available options
+  * feat(gpg-key): add gpg-key management commands
+  * chore(deps): update module github.com/docker/cli to
+    v28.5.1+incompatible
+  * fix(config): implement XDG Base Directory Spec compliance
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.157.1
+  * feat(members): add commands to manage project members
+  * build: adding s390x linux build
+  * chore(deps): bump go to v1.25.3
+  * fix(ci view): display masked variables in job logs
+  * fix(auth git-credentials): refresh oauth2 access token when
+    expired
+  * chore(deps): update module github.com/mark3labs/mcp-go to
+    v0.42.0
+  * fix(auth git-credentials): ignore unsupported operations
+  * feat(git-credential): properly support all token types in
+    git-credential plugin
+  * chore(deps): update module github.com/avast/retry-go/v4 to
+    v4.7.0
+  * chore(deps): update module github.com/charmbracelet/huh to
+    v0.8.0
+  * chore: Update Vale rules from GitLab project
+  * chore(deps): update dependency golang to v1.25.3
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.157.0
+  * test(job artifact): simplify zip tests
+  * chore(deps): update module golang.org/x/oauth2 to v0.32.0
+  * chore(deps): update dependency @commitlint/lint to v20
+
+-------------------------------------------------------------------
 Fri Oct 17 05:08:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.74.0:
