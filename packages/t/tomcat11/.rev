@@ -55,4 +55,12 @@
     <comment>Do not use update-alternatives</comment>
     <requestid>1309428</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3caa7fe154a362a83f73a98a7f2cadb6</srcmd5>
+    <version>11.0.13</version>
+    <time>1762536132</time>
+    <user>anag_factory</user>
+    <comment>11.0.13</comment>
+    <requestid>1316082</requestid>
+  </revision>
 </revisionlist>
