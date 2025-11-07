@@ -144,4 +144,12 @@
     <comment>Add the Maven Plugin Report Plugin</comment>
     <requestid>1316030</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f7c4b931a2a64eb553c9b7c3be3685bb</srcmd5>
+    <version>3.15.2</version>
+    <time>1762536149</time>
+    <user>anag_factory</user>
+    <comment>Add the maven-plugin-report-plugin to the _multibuild file</comment>
+    <requestid>1316106</requestid>
+  </revision>
 </revisionlist>
