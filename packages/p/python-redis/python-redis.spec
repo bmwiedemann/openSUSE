@@ -27,6 +27,9 @@
 %bcond_with test
 %endif
 
+# Add needed cli opts when running redis-server if redis/valkey version >= 7.0.0
+%define redis_opts %[v"%(%{_sbindir}/redis-server --version | cut -d " " -f "3" | tr -d "v=")" >= v"7.0.0" ? "--enable-debug-command yes --enable-module-command yes" : ""]
+
 %{?sle15_python_module_pythons}
 Name:           python-redis%{psuffix}
 Version:        7.0.1
@@ -37,6 +40,7 @@ URL:            https://github.com/redis/redis-py
 Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
 # Based on https://github.com/redis/redis-py/blob/master/dockers/sentinel.conf
 Source1:        sentinel.conf
+Source2:        skipped_tests
 Patch0:         increase-test-timeout.patch
 # PATCH-FIX-UPSTREAM Based on gh#redis/redis-py#3830
 Patch1:         remove-mock.patch
@@ -78,16 +82,6 @@ The Python interface to the Redis key-value store.
 %patch -P 1 -p1
 %patch -P 2 -p1
 
-# These tests pass locally but fail in obs with different
-# environment, like ALP build...
-rm tests/test_commands.py*
-rm tests/test_asyncio/test_commands.py
-# The openSUSE redis json, bloom, ts
-# are missing in the repos
-rm tests/test_bloom.py
-rm tests/test_json.py
-rm tests/test_timeseries.py
-
 %if %{without test}
 %build
 %pyproject_wheel
@@ -105,8 +99,7 @@ rm tests/test_timeseries.py
 # We just start two of them locally
 # master
 # https://github.com/redis/redis/pull/9920
-%{_sbindir}/redis-server --version | grep ' v=[78]\.' && redis7args="--enable-debug-command yes --enable-module-command yes"
-%{_sbindir}/redis-server --port 6379 --save "" $redis7args &
+%{_sbindir}/redis-server --port 6379 --save "" %redis_opts &
 victims="$!"
 # replica
 %{_sbindir}/redis-server --port 6380 --save "" --replicaof localhost 6379  &
@@ -117,23 +110,11 @@ cp %{SOURCE1} .
 victims="$victims $!"
 trap "kill $victims || true" EXIT
 sleep 2
-# onlycluster: skip tests which require a full cluster
-# redismod: Not available (https://github.com/RedisLabsModules/redismod)
-# ssl: no stunnel with certs from docker container, fails at test collection
-#
-# broken tests in ppc64le
-donttest="test_geopos or test_georadius"
-# gh#redis/redis-py#2554
-donttest="$donttest or test_xautoclaim"
-# gh#python/cpython#70654 -- Fix only present in python313 so disable the tests
-donttest+=" or test_re_auth_pub_sub_in_resp3 or test_do_not_re_auth_pub_sub_in_resp2"
-# gh#redis/redis-py#2679
-donttest+=" or test_acl_getuser_setuser or test_acl_log"
-# Requires more set up of an endpoint
-donttest+=" or TestPushNotifications"
-# Requires more sentinel services running
-donttest+=" or test_get_sentinels or test_get_master_addr_by_name"
-%pytest -m 'not (onlycluster or redismod or ssl or graph)' -k "not ($donttest)" --ignore tests/test_ssl.py --ignore tests/test_asyncio/test_scenario --ignore tests/test_scenario/test_active_active.py --redis-url=redis://localhost:6379/
+
+# load list of tests to skip from skipped_tests
+source %{SOURCE2}
+
+%pytest "${skipped_tests[@]}" $(%{_sbindir}/redis-server --version | grep -q 'Valkey' && echo "${valkey_skipped_tests[@]}") --redis-url=redis://localhost:6379/
 %endif
 
 %if %{without test}

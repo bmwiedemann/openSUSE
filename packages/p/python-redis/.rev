@@ -591,4 +591,23 @@
   * Fixing sentinel command execution to allow returning of</comment>
     <requestid>1315210</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>7dfec337702287229958b3836e55b38f</srcmd5>
+    <version>7.0.1</version>
+    <time>1762536054</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315726 from ateixeira
+
+- Rewrite logic for skipping tests
+    * Add skipped_tests
+    * Move list of skipped tests from spec to skipped_tests
+    * Add list of tests that need to be skipped exclusively for valkey
+  - Update valkey skipped test list to fix test suite with valkey &gt;= 9.0.0
+    (bsc#1252957)
+  - Update general skipped test list with tests that fail in aarch64 and i586
+  - Add redis_opts rpm macro
+    * Allows us to properly check for redis/valkey &gt;= 7.0.0, instead of
+      grepping for known major versions when adding the needed cli options</comment>
+    <requestid>1315971</requestid>
+  </revision>
 </revisionlist>

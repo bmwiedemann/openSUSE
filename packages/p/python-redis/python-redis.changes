@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  4 21:43:15 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Rewrite logic for skipping tests
+  * Add skipped_tests
+  * Move list of skipped tests from spec to skipped_tests
+  * Add list of tests that need to be skipped exclusively for valkey
+- Update valkey skipped test list to fix test suite with valkey >= 9.0.0
+  (bsc#1252957)
+- Update general skipped test list with tests that fail in aarch64 and i586
+- Add redis_opts rpm macro
+  * Allows us to properly check for redis/valkey >= 7.0.0, instead of
+    grepping for known major versions when adding the needed cli options
+
+-------------------------------------------------------------------
 Mon Nov  3 03:55:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.0.1: (bsc#1252957)

@@ -1,0 +1,55 @@
+skipped_tests=(
+    # onlycluster: skip tests which require a full cluster
+    # redismod: Not available (https://github.com/RedisLabsModules/redismod)
+    # ssl: no stunnel with certs from docker container, fails at test collection
+    -m='not (onlycluster or redismod or ssl)'
+
+    # broken tests in ppc64le
+    --deselect=tests/test_commands.py::TestRedisCommands::test_geopos
+    --deselect=tests/test_commands.py::TestRedisCommands::test_georadius
+
+    # broken in aarch64 and i586
+    --deselect=tests/test_asyncio/test_commands.py::TestRedisCommands::test_geopos
+
+    # broken tests in aarch64
+    --deselect=tests/test_asyncio/test_commands.py::TestRedisCommands::test_georadius_with
+    --deselect=tests/test_asyncio/test_commands.py::TestRedisCommands::test_georadius_store_dist
+    --deselect=tests/test_asyncio/test_commands.py::TestRedisCommands::test_georadiusmember
+    --deselect=tests/test_commands.py::TestRedisCommands::test_geosearch_member
+    --deselect=tests/test_commands.py::TestRedisCommands::test_geosearch_with
+    --deselect=tests/test_commands.py::TestRedisCommands::test_geosearchstore_dist
+
+    # gh#redis/redis-py#2554
+    --deselect=tests/test_commands.py::TestRedisCommands::test_xautoclaim
+
+    # gh#python/cpython#70654 -- Fix only present in python313 so disable the tests
+    --deselect=tests/test_asyncio/test_credentials.py::TestStreamingCredentialProvider::test_re_auth_pub_sub_in_resp3
+    --deselect=tests/test_asyncio/test_credentials.py::TestStreamingCredentialProvider::test_do_not_re_auth_pub_sub_in_resp2
+
+    # gh#redis/redis-py#2679
+    --deselect=tests/test_commands.py::TestRedisCommands::test_acl_list
+
+    # Requires more sentinel services running
+    --deselect=tests/test_sentinel.py::test_get_sentinels
+    --deselect=tests/test_sentinel.py::test_get_master_addr_by_name
+    --deselect=tests/test_asyncio/test_sentinel.py::test_get_sentinels
+    --deselect=tests/test_asyncio/test_sentinel.py::test_get_master_addr_by_name
+
+    # The openSUSE redis json, bloom, ts are missing in the repos
+    --ignore=tests/test_bloom.py
+    --ignore=tests/test_json.py
+    --ignore=tests/test_timeseries.py
+
+    # Tests that may require more set up and are ignored in upstream CI pipelines
+    --ignore=tests/test_scenario
+    --ignore=tests/test_asyncio/test_scenario
+)
+
+valkey_skipped_tests=(
+    # Tests that pass with redis but fail with valkey for various reasons
+    --deselect=tests/test_asyncio/test_commands.py::TestRedisCommands::test_readonly_invalid_cluster_state
+    --deselect=tests/test_asyncio/test_commands.py::TestRedisCommands::test_readonly_invalid_cluster_state
+    --deselect=tests/test_commands.py::TestRedisCommands::test_lolwut
+    --deselect=tests/test_commands.py::TestRedisCommands::test_readonly_invalid_cluster_state
+    --deselect=tests/test_commands.py::TestRedisCommands::test_xgroup_create_entriesread
+)
