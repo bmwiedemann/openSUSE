@@ -498,4 +498,12 @@ and packages them up for the RPi firmware to use.</comment>
   Create empty upstream overlay to silence firmware warnings.</comment>
     <requestid>1313893</requestid>
   </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>e5fffaa9cbc66dbee5eff3675fce8f6d</srcmd5>
+    <version>2025.05.14</version>
+    <time>1762535978</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1315717</requestid>
+  </revision>
 </revisionlist>

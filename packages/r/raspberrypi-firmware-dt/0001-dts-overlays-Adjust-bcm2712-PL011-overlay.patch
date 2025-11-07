@@ -1,0 +1,33 @@
+From 3085cc193b572232a68dc4a4af40fa42d6a21082 Mon Sep 17 00:00:00 2001
+From: "Ivan T. Ivanov" <iivanov@suse.de>
+Date: Wed, 5 Nov 2025 10:43:19 +0200
+Subject: [PATCH] dts: overlays: Adjust bcm2712 PL011 overlay
+
+---
+ arch/arm/boot/dts/overlays/overlay_map.dts | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/arch/arm/boot/dts/overlays/overlay_map.dts b/arch/arm/boot/dts/overlays/overlay_map.dts
+index 6d6c5e6..47ffae4 100644
+--- a/arch/arm/boot/dts/overlays/overlay_map.dts
++++ b/arch/arm/boot/dts/overlays/overlay_map.dts
+@@ -478,6 +478,16 @@
+ 		bcm2711;
+ 	};
+ 
++	uboot-bcm2835-pl011 {
++		bcm2835;
++		bcm2711;
++		bcm2712 = "uboot-bcm2712-pl011";
++	};
++
++	uboot-bcm2712-pl011 {
++		bcm2712;
++	};
++
+ 	upstream {
+ 		bcm2835;
+ 		bcm2711 = "upstream-pi4";
+-- 
+2.51.0
+

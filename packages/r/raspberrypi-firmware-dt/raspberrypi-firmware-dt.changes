@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  5 08:44:30 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Add uboot-bcm2712-pl011-overlay which fixes boot hang (boo#1251192)
+  0001-dts-overlays-Adjust-bcm2712-PL011-overlay.patch
+
+-------------------------------------------------------------------
 Sat Oct 25 00:37:08 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Adjust RPi5 overlays

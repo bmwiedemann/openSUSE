@@ -1,0 +1,17 @@
+/*
+ * Disable Debug UART for U-Boot. This is temporary solution.
+ * See: https://bugzilla.suse.com/show_bug.cgi?id=1251192
+ */
+/dts-v1/;
+/plugin/;
+
+/{
+	compatible = "brcm,bcm2712";
+
+	fragment@0 {
+		target = <&uart10>;
+		__overlay__ {
+			compatible = "brcm,bcm2835-pl011", "arm,pl011", "arm,primecell";
+		};
+	};
+};
