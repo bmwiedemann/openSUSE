@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 30 17:21:11 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix bsc#1195634.
+- Upstream has made changes to its built-in JFreeReport engine, where it no longer
+  requires Apache Commons Logging library.
+  As such, we can fix this bug by following Fedora and Arch Linux, and by shipping
+  the built-in report engine instead of an external one.
+
+-------------------------------------------------------------------
 Sat Oct 11 00:05:31 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 25.8.2.2:

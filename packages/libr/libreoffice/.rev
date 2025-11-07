@@ -3770,4 +3770,12 @@ Petr</comment>
 - Use safer CFLAGS (position-indepent code, stack protections) bsc#1237182.</comment>
     <requestid>1311015</requestid>
   </revision>
+  <revision rev="316" vrev="2">
+    <srcmd5>1aa2298f57a218aedafab3408fcfd246</srcmd5>
+    <version>25.8.2.2</version>
+    <time>1762536060</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1316079</requestid>
+  </revision>
 </revisionlist>

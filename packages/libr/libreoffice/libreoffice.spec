@@ -123,6 +123,18 @@ Source2008:     %{external_url}/pdfium-7012.tar.bz2
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
 Source2010:     %{external_url}/skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz
+# The following dependencies are for building JFreeReport, this fixes bsc#1195634
+Source2011:     %{external_url}/39bb3fcea1514f1369fcfc87542390fd-sacjava-1.3.zip
+Source2012:     %{external_url}/eeb2c7ddf0d302fba4bfc6e97eac9624-libbase-1.1.6.zip
+Source2013:     %{external_url}/d8bd5eed178db6e2b18eeed243f85aa8-flute-1.1.6.zip
+Source2014:     %{external_url}/97b2d4dba862397f446b217e2b623e71-libloader-1.1.6.zip
+Source2015:     %{external_url}/ace6ab49184e329db254e454a010f56d-libxml-1.1.7.zip
+Source2016:     %{external_url}/3404ab6b1792ae5f16bbd603bd1e1d03-libformula-1.1.7.zip
+Source2017:     %{external_url}/3bdf40c0d199af31923e900d082ca2dd-libfonts-1.1.6.zip
+Source2018:     %{external_url}/8ce2fcd72becf06c41f7201d15373ed9-librepository-1.1.6.zip
+Source2019:     %{external_url}/f94d9870737518e3b597f9265f4e9803-libserializer-1.1.6.zip
+Source2101:     %{external_url}/db60e4fde8dd6d6807523deb71ee34dc-liblayout-0.2.10.zip
+Source2102:     %{external_url}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -156,7 +168,6 @@ BuildRequires:  autoconf
 BuildRequires:  awk
 BuildRequires:  bison
 BuildRequires:  bsh2
-BuildRequires:  commons-logging
 BuildRequires:  cups-devel
 BuildRequires:  fixmath-devel
 BuildRequires:  libwebp-devel
@@ -168,7 +179,7 @@ BuildRequires:  zxcvbn-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-8.14.1.tar.xz
+Source2100:     %{external_url}/curl-8.14.1.tar.xz
 Provides:       bundled(curl) = 8.14.1
 %endif
 # Needed for tests
@@ -206,8 +217,6 @@ BuildRequires:  libzstd-devel
 BuildRequires:  lpsolve-devel
 BuildRequires:  make
 BuildRequires:  openldap2-devel
-BuildRequires:  pentaho-libxml
-BuildRequires:  pentaho-reporting-flow-engine
 BuildRequires:  pkgconfig
 BuildRequires:  python3-lxml
 BuildRequires:  python3-xml
@@ -519,7 +528,6 @@ This package provides gdb pretty printers for package %{name}.
 Summary:        LibreOffice Base
 Group:          Productivity/Office/Suite
 Requires:       %{name} = %{version}
-Requires:       pentaho-reporting-flow-engine
 Supplements:    %{name}
 Obsoletes:      %{name}-base-drivers-mysql
 # default database connector
@@ -1333,10 +1341,10 @@ export NOCONFIGURE=yes
         --disable-pdfium \
 %endif
 %endif
+        --without-system-jfreereport \
         --with-libbase-jar=/usr/share/java/libbase.jar \
         --with-libxml-jar=/usr/share/java/libxml.jar \
         --with-flute-jar=/usr/share/java/flute.jar \
-        --with-jfreereport-jar=/usr/share/java/flow-engine.jar \
         --with-liblayout-jar=/usr/share/java/liblayout.jar \
         --with-libloader-jar=/usr/share/java/libloader.jar \
         --with-libformula-jar=/usr/share/java/libformula.jar \
