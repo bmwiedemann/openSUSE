@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 07 13:05:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.28.1:
+  * fix: skip nil response (#2705)
+
+-------------------------------------------------------------------
 Sun Nov 02 06:25:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.28.0:
