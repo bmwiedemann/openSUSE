@@ -193,4 +193,24 @@
     <comment></comment>
     <requestid>1301388</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1800429027c212b21846ec1efa13ad4c</srcmd5>
+    <version>5.2.1</version>
+    <time>1762535989</time>
+    <user>anag_factory</user>
+    <comment>update to 5.2.1
+
+trying the new workflow
+
+(🤖: Submission of python-pytest-benchmark via https://src.opensuse.org/pool/python-pytest-benchmark/pulls/1 by mcalabkova)
+- Update to 5.2.1
+  * Added support for a per-round teardown function to pedantic mode.
+  * Added --benchmark-time-unit option.
+  * Fixed deprecated hook examples in docstrings.
+  * Changed --benchmark-compare-fail to accept percentages higher than 100%.
+  * Replaced the complicated and broken code of pytest_benchmark.utils.clonefunc
+    with a simple return of the input.
+  * Add markers so pytest doesn’t try to assert-rewrite the plugin internals</comment>
+    <requestid>1315724</requestid>
+  </revision>
 </revisionlist>

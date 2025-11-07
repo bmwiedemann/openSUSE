@@ -23,12 +23,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-benchmark
-Version:        5.1.0
+Version:        5.2.1
 Release:        0
 Summary:        A py.test fixture for benchmarking code
 License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/pytest-benchmark
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-benchmark/pytest-benchmark-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest_benchmark/pytest_benchmark-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Ignore DeprecationWarning, some of our dependancies use
 # pkg_resources.
 Patch2:         ignore-deprecationwarning.patch
@@ -66,7 +66,7 @@ A py.test fixture for benchmarking code. It will group the tests into
 rounds that are calibrated to the chosen timer.
 
 %prep
-%autosetup -p1 -n pytest-benchmark-%{version}
+%autosetup -p1 -n pytest_benchmark-%{version}
 # skip nbmake
 rm pytest.ini
 # skip cli tests as we use update-alternatives

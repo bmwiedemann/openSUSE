@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  5 12:35:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.1
+  * Added support for a per-round teardown function to pedantic mode.
+  * Added --benchmark-time-unit option.
+  * Fixed deprecated hook examples in docstrings.
+  * Changed --benchmark-compare-fail to accept percentages higher than 100%.
+  * Replaced the complicated and broken code of pytest_benchmark.utils.clonefunc
+    with a simple return of the input.
+  * Add markers so pytest doesn’t try to assert-rewrite the plugin internals
+
+-------------------------------------------------------------------
 Thu Aug 21 15:41:07 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems
