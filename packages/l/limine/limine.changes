@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov  7 10:33:04 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.3.0:
+  * Change default paths and default path ordering for configuration file
+    search. Mainly, search first for a configuration file in the same
+    directory as the EFI application file of Limine, on EFI ports.
+  * Change default path ordering for stage 3 file search on BIOS ports.
+  * No longer install the limine.h header file on the host.
+  * No longer install PROTOCOL.md (Limine Boot Protocol specification) on
+    the host.
+  * Fix an issue where code assumed that the RSDT address in the RSDP was
+    always non-NULL, which could cause crashes or hangs when using base
+    revision 4 of the Limine Boot Protocol.
+
+-------------------------------------------------------------------
 Wed Oct 29 13:34:51 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.2.1:
@@ -73,7 +88,7 @@ Mon Sep 15 20:13:38 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
  * For the Limine boot protocol, for PE format kernels, do not discard
    discardable sections, as code put to a discardable section like INIT
    might be intended to only be discarded after early kernel init, not
-   before the kernel is even loaded. 
+   before the kernel is even loaded.
 
 -------------------------------------------------------------------
 Sat Sep 13 23:18:14 UTC 2025 - Marvin Friedrich <contact@marvinf.com>

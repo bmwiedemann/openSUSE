@@ -15,7 +15,7 @@
 #
 
 Name:           limine
-Version:        10.2.1
+Version:        10.3.0
 Release:        0
 Summary:        Modern, advanced, portable, multiprotocol bootloader and boot manager
 License:        BSD-2-Clause
@@ -59,16 +59,5 @@ also used as the reference implementation for the Limine boot protocol.
 %{_datadir}/%{name}/limine-uefi-cd.bin
 %{_mandir}/man1/limine.1.gz
 %doc %{_docdir}/%{name}
-
-# Development package
-%package -n limine-devel
-Summary:        Development files for Limine
-BuildArch:      noarch
-
-%description -n limine-devel
-C header with Limine structures.
-
-%files -n limine-devel
-%{_includedir}/limine.h
 
 %changelog
