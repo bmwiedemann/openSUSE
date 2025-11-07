@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 07 13:16:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.11.1:
+  No CLI-related changes in the changelog
+  * build(deps): bump github.com/containerd/containerd from 1.7.28
+    to 1.7.29 (#14691)
+  * build(deps): bump docker/setup-qemu-action (#14688)
+  * build(deps): bump aho-corasick from 1.1.3 to 1.1.4 (#14687)
+  * build(deps): bump tj-actions/changed-files (#14686)
+  * build(deps): bump home from 0.5.11 to 0.5.12 (#14672)
+  * build(deps): bump rustls-pki-types from 1.12.0 to 1.13.0
+    (#14671)
+  * build(deps): bump the clap group with 2 updates (#14670)
+  * build(deps): bump github.com/prometheus/common from 0.67.1 to
+    0.67.2 (#14666)
+  * build(deps): bump openssl from 0.10.73 to 0.10.74 (#14675)
+  * build(deps): bump rustls from 0.23.33 to 0.23.34 (#14673)
+
+-------------------------------------------------------------------
 Thu Oct 30 07:12:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.10.7:
