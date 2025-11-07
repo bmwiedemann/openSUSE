@@ -1,0 +1,17 @@
+Index: pscript-0.8.0/pscript/commonast.py
+===================================================================
+--- pscript-0.8.0.orig/pscript/commonast.py
++++ pscript-0.8.0/pscript/commonast.py
+@@ -1032,7 +1032,11 @@ class NativeAstConverter:
+ 
+     def _convert_index_like(self, n):
+         c = self._convert
+-        if isinstance(n, (ast.Slice, ast.Index, ast.ExtSlice, ast.Ellipsis)):
++        if sys.version_info[:2] >= (3, 14):
++            check_inst = (ast.Slice, ast.Index, ast.ExtSlice)
++        else:
++            check_inst = (ast.Slice, ast.Index, ast.ExtSlice, ast.Ellipsis)
++        if isinstance(n, check_inst):
+             return c(n)  # Python < 3.8 (and also 3.8 on Windows?)
+         elif isinstance(n, ast.Tuple):
+             assert isinstance(n, ast.Tuple)

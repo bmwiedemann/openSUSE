@@ -1,7 +1,7 @@
 #
 # spec file for package python-pscript
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@ Summary:        Python to JavaScript compiler
 License:        BSD-2-Clause
 URL:            https://github.com/flexxui/pscript
 Source:         https://github.com/flexxui/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Do not use removed ast class
+Patch0:         support-python314.patch
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch

@@ -121,4 +121,13 @@
   - Update BuildRequires from pyproject.toml</comment>
     <requestid>1247412</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f9185d3ed9190ce7cd8609383f6b8806</srcmd5>
+    <version>0.8.0</version>
+    <time>1762536164</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Do not use removed ast class.</comment>
+    <requestid>1316370</requestid>
+  </revision>
 </revisionlist>
