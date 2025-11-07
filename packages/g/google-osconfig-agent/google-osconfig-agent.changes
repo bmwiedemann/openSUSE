@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Nov  7 11:04:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20251028.00
+  * Bump go.opentelemetry.io/otel/sdk/metric from 1.35.0 to 1.38.0 (#886)
+  * Bump github.com/tidwall/pretty from 1.2.0 to 1.2.1 (#880)
+- from version 20251023.02
+  * Create multiple_os.yaml (#883)
+- from version 20251023.00
+  * Bump github.com/docker/go-connections from 0.4.0 to 0.6.0 (#877)
+  * Add test runner for e2e tests (#876)
+- Reword previous changelog entry so that the added patches are accepted
+
+-------------------------------------------------------------------
+Tue Oct 14 10:56:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250925.00
+  * Bump cloud.google.com/go/auth/oauth2adapt from 0.2.7 to 0.2.8 (#870)
+  * Bump google.golang.org/protobuf from 1.36.6 to 1.36.9 (#874)
+  * Bump go.opentelemetry.io/otel from 1.35.0 to 1.38.0 (#872)
+  * Bump github.com/golang/glog from 1.2.4 to 1.2.5 (#830)
+
+-------------------------------------------------------------------
+Wed Oct  8 16:20:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2025-47911.patch to fix an issue in the HTML parser where a large
+  number of open elements can cause the parser to become extremely slow by
+  limiting the stack size of open elements (bsc#1251453, CVE-2025-47911)
+- Add CVE-2025-58190.patch to fix an issue in the HTML parser where a specific
+  HTML document can cause the parser to enter an infinite loop when trying
+  to parse a </tbody> and implied </tr> next to each other.
+  (bsc#1251704, CVE-2025-58190)
+
+-------------------------------------------------------------------
 Tue Sep 16 12:12:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250902.01
