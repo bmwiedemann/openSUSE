@@ -125,7 +125,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.20.1_06
+Version:        4.20.1_08
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -172,6 +172,7 @@ Patch102:       xsa472-2.patch
 Patch103:       xsa472-3.patch
 Patch104:       xsa475-1.patch
 Patch105:       xsa475-2.patch
+Patch106:       xsa476.patch
 # EMBARGOED security fixes
 # Our platform specific patches
 Patch400:       xen-destdir.patch

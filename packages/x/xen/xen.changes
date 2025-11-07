@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 27 12:27:21 MDT 2025 - carnold@suse.com
+
+- bsc#1252692 - VUL-0: CVE-2025-58149: xen: incorrect removal of
+  permissions on PCI device unplug allows PV guests to access
+  memory of devices no longer assigned to it (XSA-476)
+  xsa476.patch
+
+-------------------------------------------------------------------
 Wed Oct  8 11:07:57 MDT 2025 - carnold@suse.com
 
 - bsc#1251271 - VUL-0: CVE-2025-58147,CVE-2025-58148: xen:
