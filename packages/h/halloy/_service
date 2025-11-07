@@ -3,6 +3,6 @@
   <service name="cargo_vendor" mode="manual">
      <param name="src">halloy-*.tar.gz</param>
      <param name="compression">zst</param>
-     <param name="update">false</param>
+     <param name="update">true</param>
   </service>
 </services>

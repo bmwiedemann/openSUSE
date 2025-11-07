@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Nov  6 18:35:46 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2025.11:
+  + Fixed:
+    - Regression when loading chat history in channel
+- Update to version 2025.10:
+  + Added:
+    - /sysinfo command to send system info to current buffer
+    - Copy URLs from context menu by right-clicking links
+    - Setting to condense multiple server messages
+    - /detach command to detach from channels (soju)
+    - Support for USERINFO CTCP query
+    - Configurable anti-flood for servers without SAFERATE
+    - Channel modes retrieved on join (shown in title bar)
+    - Display own nickname next to input field
+    - Server messages can be dimmed (default on)
+    - Timestamp context menu to copy time & show date
+    - Setting to open new buffers scrolled to bottom
+    - macOS: adjust content for titlebar
+    - Setting to remove all window decorations
+    - New sounds: Zone, Bloop, Drop, Tweep
+  + Fixed:
+    - Delay enforced between notifications
+    - Large fonts no longer blank sidebar/title bar
+    - Linux primary clipboard supported
+    - Sound effects reload on config refresh
+    - Filters apply only to their server
+    - Filters renormalize after ISUPPORT updates
+    - Crash on typing /bouncer fixed
+    - Scroll state stable with long URL previews
+    - Sidebar opens reliably on first click
+  + Changed:
+    - Logs pane only shows current session logs
+    - Version always visible in user menu
+- change back cargo update from _service to true: it works again
+
+-------------------------------------------------------------------
 Thu Sep 18 18:20:32 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2025.9:
