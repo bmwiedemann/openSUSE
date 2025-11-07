@@ -26,11 +26,18 @@
 %bcond_with    systemd
 %endif
 
-%global lua_abi_version 51
+%global luajit_version luajit
 
 %ifarch %{ix86} x86_64 aarch64
   %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
     %bcond_without hyperscan
+  %endif
+  %if 0%{?suse_version} > 1600
+   %global lua_abi_version jit
+   %bcond_with    mixed_luajit_lua
+  %else
+   %global lua_abi_version 51
+   %bcond_without mixed_luajit_lua
   %endif
   %if 0%{?suse_version} >= 1500
     %bcond_without luajit
@@ -89,7 +96,7 @@ BuildRequires:  jemalloc-devel
 BuildRequires:  libfann-devel
 BuildRequires:  libicu-devel
 %if %{with luajit}
-BuildRequires:  luajit-devel
+BuildRequires:  %{luajit_version}-devel
 %else
 BuildRequires:  lua%{?lua_abi_version}-devel
 %endif
@@ -189,11 +196,13 @@ This package contains an AppArmor profile for Rspamd.
 %autosetup -p1
 
 %build
-%if %{with luajit}
-if ! [ "%{lua_abi_version}" = "$(pkg-config --variable=abiver luajit | tr -d '.')" ] ; then
+%if %{with luajit} && %{with mixed_luajit_lua}
+if ! [ "%{lua_abi_version}" = "$(pkg-config --variable=abiver %{luajit_version} | tr -d '.')" ] ; then
   echo "the lua_abi_version define and the abi version of luajit do not match. please investigate. exiting."
   exit 1
 fi
+%else
+echo "no lua abi version check done"
 %endif
 %if 0%{?force_gcc_version}
 export CC="gcc-%{?force_gcc_version}"

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  7 12:30:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- We finally have natively built packages with for luajit-lpeg in
+  Tumbleweed, we no longer need to mix with lua51 packages there
+  anymore. For older distros we still need it. Guard handling for
+  those distros with bcond mixed_luajit_lua and keep the version
+  comparison there. Also prepare so we can handle luajit2 if
+  needed.
+
+-------------------------------------------------------------------
 Sun Oct 19 11:50:25 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Split AppArmor profile into subpackage
