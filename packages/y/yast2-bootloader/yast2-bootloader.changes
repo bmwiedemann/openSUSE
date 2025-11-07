@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  5 14:22:48 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Upgrade: Improved error message what do if bootloader does
+  not fit. (bnc#1253040)
+- 5.0.27
+
+-------------------------------------------------------------------
 Mon Sep 29 11:27:55 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Update: Reports error if the bootloader is changed to grub2-bls
