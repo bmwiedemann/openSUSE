@@ -1304,4 +1304,31 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1308560</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>6b8eba236158f2eae5ba8e66dcb8fb42</srcmd5>
+    <version>12.2.0</version>
+    <time>1762536031</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12.2.0:
+  + While Windows platform contain the matching of the ChainContext
+    rules to within the syllable for those features that are
+    applied per syllable (in Indic-like and USE shapers), in 2015
+    we decided that in HarfBuzz we would allow the backtrack /
+    lookahead parts of the rule to match across syllables. However,
+    our implementation had a latent bug, causing the backtrack
+    sequences to be matched within syllable most of the time, and
+    inconsistently so. As such, and after empirical testing, we
+    have decided to match the Windows implementation for this, so
+    now both backtrack and lookahead sequences are contained to
+    within the syllable, just like DirectWrite does.
+  + Disable legacy kern table for most shapers, enabling it only
+    for default, Arabic, Hangul, and Hebrew shapers.
+  + When dropping STAT table during subsetting, drop also named IDs
+    that are referenced only by it.
+  + Don’t apply synthetic slant to glyph origin, fixing horizontal
+    shift in slanted glyphs.
+  + Various build and fuzzing fixes.
+  + Documentation fixes. (forwarded request 1315662 from iznogood)</comment>
+    <requestid>1315783</requestid>
+  </revision>
 </revisionlist>
