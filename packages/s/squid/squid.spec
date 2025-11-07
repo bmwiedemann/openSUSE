@@ -1,7 +1,7 @@
 #
 # spec file for package squid
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,14 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        6.12
+Version:        7.3
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Proxy
 URL:            http://www.squid-cache.org
-Source0:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz
-Source1:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz.asc
+Source0:        https://github.com/squid-cache/squid/releases/download/SQUID_7_3/squid-7.3.tar.xz
+Source1:        https://github.com/squid-cache/squid/releases/download/SQUID_7_3/squid-7.3.tar.xz.asc
 Source5:        pam.squid
 Source6:        unsquid.pl
 Source7:        %{name}.logrotate
@@ -48,7 +48,6 @@ Source17:       tmpfilesdir.squid.conf
 Patch1:         missing_installs.patch
 Patch2:         old_nettle_compat.patch
 Patch3:         harden_squid.service.patch
-Patch4:         CVE-2024-33427.patch
 BuildRequires:  cppunit-devel
 BuildRequires:  expat
 BuildRequires:  fdupes
@@ -105,7 +104,6 @@ accelerator.
 %setup -q
 cp %{SOURCE10} .
 %patch -P 3 -p1
-%patch -P 4 -p1
 
 # upstream patches after RELEASE
 perl -p -i -e 's|%{_prefix}/local/bin/perl|%{_bindir}/perl|' `find -name "*.pl"`
@@ -152,11 +150,11 @@ export CXX=g++-11
 	--enable-underscores \
 	--enable-auth \
 %if 0%{?suse_version} < 1599
-	--enable-auth-basic="SMB_LM,DB,fake,getpwnam,LDAP,NCSA,NIS,PAM,POP3,RADIUS,SASL,SMB" \
+	--enable-auth-basic="DB,fake,getpwnam,LDAP,NCSA,NIS,PAM,POP3,RADIUS,SASL,SMB" \
 %else
-        --enable-auth-basic="SMB_LM,DB,fake,getpwnam,LDAP,NCSA,PAM,POP3,RADIUS,SASL,SMB" \
+        --enable-auth-basic="DB,fake,getpwnam,LDAP,NCSA,PAM,POP3,RADIUS,SASL,SMB" \
 %endif
-	--enable-auth-ntlm="SMB_LM,fake" \
+	--enable-auth-ntlm="fake" \
 	--enable-auth-negotiate \
 	--enable-auth-digest \
 	--enable-external-acl-helpers=LDAP_group,eDirectory_userip,file_userip,kerberos_ldap_group,session,unix_group,wbinfo_group,time_quota \
@@ -170,8 +168,8 @@ export CXX=g++-11
 	--enable-security-cert-validators
 #make -O SAMBAPREFIX=%{_prefix} %{?_smp_mflags}
 mkdir src/icmp/tests
-mkdir tools/squidclient/tests
-mkdir tools/sysvinit/tests tools/tests
+#mkdir tools/squidclient/tests
+#mkdir tools/sysvinit/tests tools/tests
 make %{?_smp_mflags}
 %if 0%{?suse_version} >= 1500
 %sysusers_generate_pre %{SOURCE12} squid
@@ -199,18 +197,6 @@ install -Dpm 644 %{SOURCE7} \
 
 install -d -m 755 doc/scripts
 install scripts/*.pl doc/scripts
-cat > doc/scripts/cachemgr.readme <<-EOT
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
-	cachemgr.cgi will now be found in %{squidhelperdir}
-%else
-	cachemgr.cgi will now be found in %{_libdir}/%{name}
-%endif
-EOT
-
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150300
-install -dpm 755 %{buildroot}/%{_libdir}/%{name}
-mv %{buildroot}%{_sbindir}/cachemgr.cgi %{buildroot}/%{_libdir}/%{name}
-%endif
 
 install -dpm 755 doc/contrib
 install %{SOURCE6} doc/contrib
@@ -349,7 +335,6 @@ fi
 %if 0%{?suse_version} >= 1500
 %{_sysusersdir}/squid-user.conf
 %endif
-%config(noreplace) %{squidconfdir}/cachemgr.conf
 %config(noreplace) %{squidconfdir}/errorpage.css
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/%{name}
@@ -358,7 +343,6 @@ fi
 %endif
 %config(noreplace) %{squidconfdir}/mime.conf
 %config(noreplace) %{squidconfdir}/%{name}.conf
-%config %{squidconfdir}/cachemgr.conf.default
 %config %{squidconfdir}/errorpage.css.default
 %config %{squidconfdir}/%{name}.conf.default
 %config %{squidconfdir}/%{name}.conf.documented
@@ -375,8 +359,6 @@ fi
 %{_datadir}/%{name}/mime.conf
 %{_datadir}/%{name}/mime.conf.default
 %{_datadir}/snmp/mibs/SQUID-MIB.txt
-%{_bindir}/purge
-%{_bindir}/squidclient
 %{squidhelperdir}/basic_db_auth
 %{squidhelperdir}/basic_fake_auth
 %{squidhelperdir}/basic_getpwnam_auth
@@ -392,7 +374,6 @@ fi
 %{squidhelperdir}/basic_sasl_auth
 %{squidhelperdir}/basic_smb_auth
 %{squidhelperdir}/basic_smb_auth.sh
-%{squidhelperdir}/basic_smb_lm_auth
 %{squidhelperdir}/cert_tool
 %{squidhelperdir}/digest_file_auth
 %{squidhelperdir}/digest_ldap_auth
@@ -411,7 +392,6 @@ fi
 %{squidhelperdir}/negotiate_kerberos_auth_test
 %{squidhelperdir}/negotiate_wrapper_auth
 %{squidhelperdir}/ntlm_fake_auth
-%{squidhelperdir}/ntlm_smb_lm_auth
 %{squidhelperdir}/pinger
 %{squidhelperdir}/security_fake_certverify
 %{squidhelperdir}/security_file_certgen
@@ -425,10 +405,8 @@ fi
 %{_sbindir}/rcsquid
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %dir %{squidhelperdir}
-%{squidhelperdir}/cachemgr.cgi
 %else
 %dir %{_libdir}/%{name}
-%{_libdir}/%{name}/cachemgr.cgi
 %endif
 
 %changelog

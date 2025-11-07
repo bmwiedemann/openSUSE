@@ -3,7 +3,7 @@ Index: squid-6.2/tools/systemd/squid.service
 --- squid-6.2.orig/tools/systemd/squid.service
 +++ squid-6.2/tools/systemd/squid.service
 @@ -11,6 +11,18 @@ Documentation=man:squid(8)
- After=network.target network-online.target nss-lookup.target
+ After=local-fs.target network.target network-online.target nss-lookup.target
  
  [Service]
 +# added automatically, for details please see

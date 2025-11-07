@@ -1283,4 +1283,41 @@ and CVE references,
 - Disble ESI. The code is removed upstream in 7.x (bsc#1232485, CVE-2024-45802)</comment>
     <requestid>1229399</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>86a5a7dd2cc446636de36c945a86d895</srcmd5>
+    <version>7.3</version>
+    <time>1762536108</time>
+    <user>anag_factory</user>
+    <comment>Since version 6, some previously deprecated features have been removed:
+ * Edge Side Includes (ESI)
+ * access to the cache manager using the cache_object:// scheme - use http instead
+ * the squdclient tool - use curl http://&lt;squid-address&gt;/squid-internal-mgr/menu instead
+ * the cachemgr.cgi tool
+ * the purge tool - use the http PURGE method instead
+ * Ident protocol support
+ * basic_smb_lm_auth and ntlm_smb_lm_auth helpers - use Samba's ntlm_auth instead
+- Update to 7.3
+  - Regression Bug 5520: ERR_INVALID_URL for CONNECT host with leading digit
+  - Quit NTLM authenticate() on missing NTLM authorization header
+  - Fix Auth::User::absorb() IP list transfer logic
+  - Fix type mismatch in new/delete of addrinfo::ai_addr
+  - Fix libntlmauth string parsing on big-endian machines
+  - ... and some code cleanups
+  - ... and some CI improvements
+- changes since squid 6.14 (bsc#1252281, CVE-2025-62168)
+  - Bug 3390: Proxy auth data visible to scripts
+  - Bug 5504: Document that Squid discards invalid rewrite-url
+  - Bug 5407: Support at least 1000 groups per Kerberos user
+  - Fix parsing of malformed quoted squid.conf strings
+  - Fix off-by-one in helper args count assertion
+  - Fix UDP log module opening and closing code
+  - Fix BodyPipe debugging in handleChunkedRequestBody()
+  - Fix debugging of Eui48::lookup() problems
+  - Fix memory leak when parsing deprecated %rG logformat code
+  - Fix SQUID_YESNO 'syntax error near unexpected token'
+  - DNS: fix RRPack memcpy
+  - DNS: Do not leak RR data upon RR data unpacking errors
+  - FTP: Avoid null dereferences when handling ftp_port traffic</comment>
+    <requestid>1316100</requestid>
+  </revision>
 </revisionlist>

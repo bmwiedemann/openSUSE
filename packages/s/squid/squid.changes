@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu Nov  6 18:56:27 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+Since version 6, some previously deprecated features have been removed:
+ * Edge Side Includes (ESI)
+ * access to the cache manager using the cache_object:// scheme - use http instead
+ * the squdclient tool - use curl http://<squid-address>/squid-internal-mgr/menu instead
+ * the cachemgr.cgi tool
+ * the purge tool - use the http PURGE method instead
+ * Ident protocol support
+ * basic_smb_lm_auth and ntlm_smb_lm_auth helpers - use Samba's ntlm_auth instead
+
+- Update to 7.3
+  - Regression Bug 5520: ERR_INVALID_URL for CONNECT host with leading digit
+  - Quit NTLM authenticate() on missing NTLM authorization header
+  - Fix Auth::User::absorb() IP list transfer logic
+  - Fix type mismatch in new/delete of addrinfo::ai_addr
+  - Fix libntlmauth string parsing on big-endian machines
+  - ... and some code cleanups
+  - ... and some CI improvements
+
+- changes since squid 6.14 (bsc#1252281, CVE-2025-62168)
+  - Bug 3390: Proxy auth data visible to scripts
+  - Bug 5504: Document that Squid discards invalid rewrite-url
+  - Bug 5407: Support at least 1000 groups per Kerberos user
+  - Fix parsing of malformed quoted squid.conf strings
+  - Fix off-by-one in helper args count assertion
+  - Fix UDP log module opening and closing code
+  - Fix BodyPipe debugging in handleChunkedRequestBody()
+  - Fix debugging of Eui48::lookup() problems
+  - Fix memory leak when parsing deprecated %rG logformat code
+  - Fix SQUID_YESNO 'syntax error near unexpected token'
+  - DNS: fix RRPack memcpy
+  - DNS: Do not leak RR data upon RR data unpacking errors
+  - FTP: Avoid null dereferences when handling ftp_port traffic
+  - FTP: fix response parsing and error handling memory leaks
+  - HTCP: Check for too-small packed and too-large unpacked fields
+  - HTTP: fix purging of entries by relative [Content-]Location URLs
+  - SNMP: Improve parsing of malformed ASN.1 object identifiers
+  - SNMP: Check for objid memory allocation failures
+  - SNMP: Fix ASN.1 encoding of long OIDs
+  - SNMP: Do not assert when debugging requests with long OIDs
+  - SNMP: Match Var allocation/deallocation methods
+  - digest_edirectory_auth: null-terminate NMAS values array
+  - digest_edirectory_auth: safely return password
+  - ext_ad_group_acl: Fix domain lookup error handling
+  - ext_edirectory_userip_acl: Redact password from stdout
+  - ext_file_userip_acl: harden lookups and memory handling
+  - ext_kerberos_ldap_group_acl: avoid freeing getenv() pointer
+  - ext_kerberos_ldap_group_acl: Improve LDAPMessage freeing
+  - ext_ldap_group_acl: avoid infinite loop on login containing '%s'
+  - negotiate_kerberos_auth: Properly align NDR data
+  - negotiate_sspi_auth: Do not exit on the first request
+  - ntlm_sspi_auth: memcmp not memcpy, send newline, no uninit mem
+  - text_backend: avoid memory leaks when reload/clearing
+  - Reduce UDS/segment name clashes across same-service instances
+  - Reject eui64 ACL addresses with trailing garbage
+  - Validate raw-IPv4 when parsing hostnames
+  - Avoid memory leaks when logging to MS Windows syslog
+  - Flip configure --enable-arch-native default
+  - Support no-digest X509 certificate keys like ML-DSA/EdDSA
+  - Do not allow client_ip_max_connections+1 connections
+  - Remove bundled smblib and librfcnb
+  - Bug 5497: Fix detection of duped IPs returned by getaddrinfo()
+  - Remove basic_smb_lm_auth and ntlm_smb_lm_auth helpers
+  - ... and several code cleanups
+  - ... and some documentation improvements
+
+- CVE-2024-33427.patch: upstreamed, removing
+
+-------------------------------------------------------------------
+Thu Oct 23 13:33:41 UTC 2025 - Joel Baltazor <obs@mtlfab.com>
+
+- Updated harden_squid.service.patch to include new startup sequence
+  local-fs.target
+
+- Update to 6.14
+ - Bug 5352: Do not get stuck in RESPMOD after pausing peer read(2)
+ - Bug 5489: Fix "make check" linking on Solaris
+ - Fix SNMP cacheNumObjCount -- number of cached objects
+ - Do not duplicate received Surrogate-Capability in sent requests
+ - Fix Mem::Segment::open() stub to fix build without shm_open()
+ - ... and CI and documentation updates
+ 
+- changes since squid-6.13
+ - Bug 5352: Do not get stuck when RESPMOD is slower than read(2)
+ - Bug 5405: Large uploads fill request buffer and die
+ - Bug 5093: List http_port params that https_port/ftp_port lack
+ - Bug 5311: clarify configuration byte units
+ - Bug 5091: document that changes to workers require restart
+ - Bug 5481: Fix GCC v14 build [-Wmaybe-uninitialized]
+ - Nil request dereference in ACLExtUser and SourceDomainCheck ACLs
+ - Fix GCC v14 [-Wanalyzer-null-dereference] warnings in Kerberos
+ - Clarify --enable-ecap failure on missing shared library support
+ - Fix syntax error in configure.ac
+ - Remove GNU'ism in release notes Makefile
+ - Annotate PoolMalloc memory in valgrind builds
+ - Fix systemd startup sequence to require active Local Filesystem
+ - Display Linux variant at ./configure time
+ - Refactor peerRefreshDNS() to clarify its (void*)1 logic
+ - Portability: remove explicit check for libdl
+ - ext_time_quota_acl: remove -l option
+ - ... and some documentation updates
+ - ... and some CI updates
+
+-------------------------------------------------------------------
 Mon Dec  9 13:01:22 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 6.12
