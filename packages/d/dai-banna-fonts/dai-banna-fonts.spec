@@ -1,7 +1,7 @@
 #
 # spec file for package dai-banna-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define fontname DaiBanna
 Name:           dai-banna-fonts
-Version:        3.000
+Version:        4.000
 Release:        0
 Summary:        SIL New Tai Lue Font
 License:        OFL-1.1
@@ -36,11 +36,11 @@ Dai Banna SIL is a Unicode font package for rendering New Tai Lue
 (Xishuangbanna Dai) characters.
 
 %prep
-%setup -q -n %{fontname}SIL-%{version}
+%autosetup -n %{fontname}SIL-%{version}
 
 %build
 dos2unix *.txt
-chmod 0644  *.txt doc/DaiBannaSIL.pdf
+chmod a-x *.txt documentation/pdf/*.pdf
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}
@@ -50,7 +50,7 @@ install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
 
 %files
 %license OFL*.txt
-%doc doc/DaiBannaSIL.pdf README.txt FONTLOG.txt
+%doc documentation/pdf/*.pdf README.txt FONTLOG.txt
 %{_ttfontsdir}
 
 %changelog
