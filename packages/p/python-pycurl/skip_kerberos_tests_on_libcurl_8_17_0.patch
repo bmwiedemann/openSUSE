@@ -1,0 +1,30 @@
+From ea92e3ca230a3ff3d464cb6816102fa157177aca Mon Sep 17 00:00:00 2001
+From: Jacek Migacz <jmigacz@redhat.com>
+Date: Fri, 17 Oct 2025 13:55:48 +0200
+Subject: [PATCH] Skip Kerberos tests on libcurl >= 8.17.0
+
+CURLOPT_KRBLEVEL and CURLOPT_KRB4LEVEL were removed in libcurl
+8.17.0 and now return CURLE_NOT_BUILT_IN.
+---
+ tests/option_constants_test.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tests/option_constants_test.py b/tests/option_constants_test.py
+index 1dd862c39..de1b08012 100644
+--- a/tests/option_constants_test.py
++++ b/tests/option_constants_test.py
+@@ -502,12 +502,14 @@ def test_ssl_sessionid_cache(self):
+         curl.setopt(curl.SSL_SESSIONID_CACHE, True)
+         curl.close()
+ 
++    @util.removed_in_libcurl(8, 17, 0)
+     @util.only_gssapi
+     def test_krblevel(self):
+         curl = pycurl.Curl()
+         curl.setopt(curl.KRBLEVEL, 'clear')
+         curl.close()
+ 
++    @util.removed_in_libcurl(8, 17, 0)
+     @util.only_gssapi
+     def test_krb4level(self):
+         curl = pycurl.Curl()

@@ -45,6 +45,8 @@ Patch2:         disable_randomly_failing_tests.patch
 Patch3:         make-leap15-compat.patch
 # PATCH-FIX-UPSTREAM handle-change-debug-curl-8.16.0.patch gh#pycurl/pycurl@eb7f52eeef85
 Patch4:         handle-change-debug-curl-8.16.0.patch
+# PATCH-FIX-UPSTREAM skip_kerberos_tests_on_libcurl_8_17_0.patch gh#pycurl/pycurl@33bf92f
+Patch5:         skip_kerberos_tests_on_libcurl_8_17_0.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

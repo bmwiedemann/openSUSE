@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  6 16:51:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with libcurl >= 8.17.0 boo#1253116
+  skip_kerberos_tests_on_libcurl_8_17_0.patch
+
+-------------------------------------------------------------------
 Fri Sep 12 06:19:06 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch handle-change-debug-curl-8.16.0.patch (bsc#1249448, gh#pycurl/pycurl@eb7f52eeef85)
