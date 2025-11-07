@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  7 14:12:33 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 3.5.1:
+  * This is a patch release to address a security vulnerability in the ODBC storage plugin/extension. 
+  (CVE-2025-9943, bsc#1249394)
+
+-------------------------------------------------------------------
 Thu May 29 10:17:16 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Removed BuildRequires: sysuser-shadow, exit 0, added %sysusers_requires macro according to packaging guidelines and 

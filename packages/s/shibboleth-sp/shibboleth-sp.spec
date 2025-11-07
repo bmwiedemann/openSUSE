@@ -1,7 +1,7 @@
 #
 # spec file for package shibboleth-sp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define realname shibboleth
 %define pkgdocdir %{_docdir}/%{realname}
 Name:           shibboleth-sp
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        System for attribute-based Web Single Sign On
 License:        Apache-2.0
@@ -118,7 +118,7 @@ This package includes files needed for development with Shibboleth.
 %build
 export CXXFLAGS="%{optflags} --std=c++11"
 autoreconf -f -i
-%configure --with-gssapi --enable-systemd --with-memcached
+%configure --with-gssapi --enable-systemd --with-memcached --with-apxs
 %make_build pkgdocdir=%{pkgdocdir}
 
 %install
