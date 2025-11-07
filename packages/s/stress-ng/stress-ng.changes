@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  6 15:25:31 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 0.19.06:
+  * This release contains many minor fixes found with AI bug analysis tools, it
+    is primarily a bug fix release.
+  * --oom-no-child to remove OOM child wrapper, less overhead, more OOM deaths
+  * --randprocname to randomize stressor process names to make process name
+    tracking work harder
+  * --resctrl for ARM MPAM cache resource control (coming soon on new Linux
+    kernels)
+
+-------------------------------------------------------------------
 Thu Oct  2 08:51:43 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 0.19.05:
