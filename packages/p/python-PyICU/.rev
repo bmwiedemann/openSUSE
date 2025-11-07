@@ -242,4 +242,19 @@
     <comment></comment>
     <requestid>1307080</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>961b45b7837812314669ff6ffb01d910</srcmd5>
+    <version>2.16</version>
+    <time>1762536112</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.16
+  * fixed issue #178
+  * added new enums from new unicode release in UBlockCode,
+    UScriptCode
+  * added missing wrappers for ECollationStrength and
+    EComparisonResult
+  * added wrapper for UIndicConjunctBreak
+  * added support for ICU 78.1 (bsc#1253118)</comment>
+    <requestid>1316388</requestid>
+  </revision>
 </revisionlist>

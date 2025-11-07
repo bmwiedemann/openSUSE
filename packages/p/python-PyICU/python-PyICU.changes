@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  7 08:01:07 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.16
+  * fixed issue #178
+  * added new enums from new unicode release in UBlockCode,
+    UScriptCode
+  * added missing wrappers for ECollationStrength and
+    EComparisonResult
+  * added wrapper for UIndicConjunctBreak
+  * added support for ICU 78.1 (bsc#1253118)
+
+-------------------------------------------------------------------
 Thu Sep 25 10:46:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.15.3

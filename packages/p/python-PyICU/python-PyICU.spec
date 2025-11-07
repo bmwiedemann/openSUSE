@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyICU
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global modname PyICU
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        2.15.3
+Version:        2.16
 Release:        0
 Summary:        Python Extension Wrapping the ICU C++ API
 License:        MIT
