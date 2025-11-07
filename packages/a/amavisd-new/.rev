@@ -681,4 +681,41 @@ Please forward to Factory and 13.1
     <comment></comment>
     <requestid>1103584</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>3861d2e77fe45e5c447b06944f226b24</srcmd5>
+    <version>2.14.0</version>
+    <time>1762536256</time>
+    <user>anag_factory</user>
+    <comment>- Remove patch amavisd-new-2.3.0-myhostname.patch. (POSIX::uname)[1] now delivers th FQHN.
+  Fix (bsc#1253038) amavis fails to start due to “Insecure directory in $ENV{PATH}” 
+  — caused by $ENV{'PATH'} = &quot;&quot; in Conf.pm on openSUSE 16 (Perl 5.42)
+- update to version 2.14.0
+  NEW FEATURES
+  o Add decoding support for lzip compressed files.
+    Issue: https://gitlab.com/amavis/amavis/issues/103
+    MR:    https://gitlab.com/amavis/amavis/merge_requests/103
+  o Add CC_UNCHECKED minor content category for ambiguous multipart
+    boundaries. Users are encouraged to defang or quarantine such emails.
+    Thanks to Jiahe Zhang and Jianjun Chen from Tsinghua University and
+    Zhongguancun Lab for reporting the issue confidentially.
+    Issue: https://gitlab.com/amavis/amavis/issues/112
+  BUG FIXES
+  o Resolve double reporting of Amavis::Conf module version.
+    Reported by @teoberi.
+    Issue: https://gitlab.com/amavis/amavis/issues/100
+    MR:    https://gitlab.com/amavis/amavis/merge_requests/100
+  o SmartOS `uptime` regex fix
+    Reported by kb8zqz.
+    On SmartOS (and maybe other Solaris / Illumos related distros?) the
+    uptime command output includes () around the plural 's' in &quot;days&quot;
+    (i.e. &quot;day(s)&quot;).  Extend the regex to understand this.
+    Issue: https://gitlab.com/amavis/amavis/issues/101
+    MR:    https://gitlab.com/amavis/amavis/merge_requests/101
+  o Reestablish pre-2.13 exit-behaviour of one-shot actions.
+    Issue: https://gitlab.com/amavis/amavis/issues/104
+    MR:    https://gitlab.com/amavis/amavis/merge_requests/105
+  o Fix incorrect xz-archive mapping
+    Issue: https://gitlab.com/amavis/amavis/issues/111</comment>
+    <requestid>1316457</requestid>
+  </revision>
 </revisionlist>

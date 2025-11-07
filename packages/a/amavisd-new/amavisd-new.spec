@@ -1,7 +1,7 @@
 #
 # spec file for package amavisd-new
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define logmsg         logger -t %{name}/rpm
 
 Name:           amavisd-new
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        High-Performance E-Mail Virus Scanner
 License:        GPL-2.0-or-later
@@ -32,13 +32,12 @@ Source0:        https://gitlab.com/amavis/amavis/-/archive/v%{version}/amavis-v%
 Source1:        sysconfig.amavis
 Source3:        amavisd-new-rpmlintrc
 Source5:        amavis.service
-# PATCH-FIX-UPSTREAM -- detect myhostname via Net::Domain::hostfqdn()
-Patch2:         amavisd-new-2.3.0-myhostname.patch
 # PATCH-FIX-OPENSUSE -- amavisd-new-no-berkeleydb.patch
 Patch3:         amavisd-new-no-berkeleydb.patch
-BuildRequires:  perl-App-cpanminus
-BuildRequires:  perl-Dist-Zilla
+#BuildRequires:  perl-App-cpanminus
+#BuildRequires:  perl-Dist-Zilla
 BuildRequires:  group(vscan)
+BuildRequires:  perl(Dist::Zilla)
 BuildRequires:  user(vscan)
 Requires:       file
 Requires:       smtp_daemon
