@@ -1,7 +1,7 @@
 #
 # spec file for package cookiecutter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -59,6 +59,7 @@ BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.18.0}
+BuildRequires:  %{python_module tzdata}
 # /SECTION
 # SECTION Documentation requirements
 BuildRequires:  python3-Sphinx

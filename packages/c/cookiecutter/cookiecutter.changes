@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 30 15:30:06 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Add BuildRequires: %{python_module tzdata} to fix timezone test to ensure access to the timezone database
+
+-------------------------------------------------------------------
 Mon Jan 20 07:06:26 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - Add python3-sphinx_rtd_theme as build dependency to fix the doc build fail.
