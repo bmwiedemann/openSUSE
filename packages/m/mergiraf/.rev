@@ -55,4 +55,32 @@
     <comment></comment>
     <requestid>1313234</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>df71d57d996fbe81371e58b57c08e42a</srcmd5>
+    <version>0.16.1</version>
+    <time>1762536127</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.16.1:
+  * Set version to 0.16.1
+  * ci: update action to upload releases (#640)
+- Update to version 0.16.0:
+  * Set version to 0.16.0
+  * feat: use tree-sitter-c to parse `.c` files (#634)
+  * ci: generate release artifacts (#635)
+  * test: allow passing contents to `create_file{s,}_for_{merge,solve}` (#632)
+  * chore: update dependencies (#628)
+  * fix(Rust): restrict commutativity of `derive` attributes (#626)
+  * fix: stack overflow when forcing line-based merges (#623)
+  * fix(merge): don't panic on non-UTF-8 content (#620)
+  * fix(merge): Don't fail if the revisions contain stray conflict markers (#615)
+  * feat(rust): Add `derive` attribute as commutative parent (#614)
+  * fix: preserve CRLF newlines in `solve` and `merge` commands (#608)
+  * fix(toml): Invalid signature for keys (#607)
+  * chore: Better error types for TreeBuilder (#563)
+  * perf: reduce the number of calls to git-check-attr (#602)
+  * chore(lang_profile): rm leftover function (#604)
+  * feat(Git): support reading language from git attributes (#599)
+  * docs: Further improvements to the tutorial to add a language (#597) (forwarded request 1316068 from develop7)</comment>
+    <requestid>1316069</requestid>
+  </revision>
 </revisionlist>
