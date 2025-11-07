@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Nov  7 13:27:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.153:
+  * General
+    - [server] Fix nil pointer panic in meshsync event processing
+      @copilot-swe-agent (#16396)
+  * Maintenance
+    - Update playground workflow to OCI @sangramrath (#16375)
+  * Documentation
+    - Revise compatibility verification guide for extensions
+      @leecalcote (#16377)
+- update to 0.8.152:
+  * General
+    - publish design download event to provider @aabidsofi19
+      (#16368)
+- update to 0.8.151:
+  * General
+    - Add KubeVela Architecture design for Meshery Catalog
+      @aviralgarg05 (#16066)
+    - feat(design): Add ms-catalogs-worker helm chart design
+      @PasanSWijekoon (#16125)
+    - Update MAINTAINERS.md to remove Ashish Tiwari @leecalcote
+      (#16359)
+  * Maintenance
+    - Bump github.com/prometheus/common from 0.66.1 to 0.67.2
+      @dependabot (#16344)
+    - Bump tmp and patch-package in /ui @dependabot (#16209)
+  * Documentation
+    - Add Kyverno Helm chart design for Meshery catalog (#16076)
+      @shri33 (#16126)
+    - Update pushing-pulling-model-images.md @yi-nuo426 (#16203)
+    - docs: Fix inconsistencies in contributor mentions and meta
+      tags @TudorGR (#16245)
+- update to 0.8.150:
+  * General
+  * Add Kafka design to Meshery catalog (#15953) @Amiynarh (#16337)
+    - Added meshery design for Groq AI Integration with X App
+      @Rupa-Rd (#16265)
+    - added k8s-gateway-api @saurabhraghuvanshii (#16339)
+  * Maintenance
+    - Bump @eslint/js from 9.33.0 to 9.39.0 in /provider-ui
+      @dependabot (#16343)
+    - Bump @babel/eslint-parser from 7.27.5 to 7.28.5 in
+      /provider-ui @dependabot (#16348)
+    - Bump fortio.org/fortio from 1.71.2 to 1.73.0 @dependabot
+      (#16345)
+  * Documentation
+    - Document immutable releases for Meshery repositories
+      @leecalcote (#16363)
+    - Add List of Extensions section to index.md @miacycle (#16360)
+
+-------------------------------------------------------------------
 Mon Nov  3 09:25:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.149:
