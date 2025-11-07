@@ -1315,4 +1315,41 @@
   * GO-2025-4015 CVE-2025-61724 CVE-2025-61724 (forwarded request 1314950 from jfkw)</comment>
     <requestid>1314951</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>295213577573d6801c4e604b48d2a135</srcmd5>
+    <version>0.0.20251105T184115</version>
+    <time>1762536152</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20251105T184115 2025-11-05T18:41:15Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3987 CVE-2025-10954 GHSA-fmjh-f678-cv3x
+  * GO-2025-3988 CVE-2025-59937 GHSA-wpwj-69cm-q9c5
+  * GO-2025-3999 CVE-2025-54289 GHSA-3g72-chj4-2228
+  * GO-2025-4000 CVE-2025-54293 GHSA-472f-vmf2-pr3h
+  * GO-2025-4001 CVE-2025-54288 GHSA-7232-97c6-j525
+  * GO-2025-4002 CVE-2025-54290 GHSA-p3x5-mvmp-5f35
+  * GO-2025-4003 CVE-2025-54286 GHSA-p8hw-rfjg-689h
+  * GO-2025-4004 CVE-2025-54287 GHSA-w2hg-2v4p-vmh6
+  * GO-2025-4005 CVE-2025-54291 GHSA-xch9-h8qw-85c7
+  * GO-2025-4017 CVE-2025-59530 GHSA-47m2-4cr7-mhcw
+  * GO-2025-4020 CVE-2025-11579 GHSA-rwvp-r38j-9rgg
+  * GO-2025-4021 CVE-2025-59836 GHSA-4p3p-cr38-v5xp
+  * GO-2025-4022 CVE-2025-61688 GHSA-77r9-w39m-9xh5
+  * GO-2025-4023 CVE-2025-62156 GHSA-p84v-gxvw-73pf
+  * GO-2025-4024 CVE-2025-62157 GHSA-c2hv-4pfj-mm2r
+  * GO-2025-4026 CVE-2025-61524 GHSA-5m9m-j5p7-m7f9
+  * GO-2025-4027 GHSA-fr8m-434r-g3xp
+  * GO-2025-4028 CVE-2025-62375 GHSA-72c7-4g63-hpw5
+  * GO-2025-4029 CVE-2025-41410 GHSA-3q4q-wqm6-hvf3
+  * GO-2025-4030 CVE-2025-10545 GHSA-424h-xj87-m937
+  * GO-2025-4031 CVE-2025-41443 GHSA-7cr3-38jm-6p45
+  * GO-2025-4032 CVE-2025-58073 GHSA-6q7m-p8cc-998r
+  * GO-2025-4033 CVE-2025-61581 GHSA-9m49-p2j3-c6xm
+  * GO-2025-4034 CVE-2025-62506 GHSA-jjjj-jwhf-8rgr
+  * GO-2025-4035 CVE-2025-58075 GHSA-r6qj-894f-5hr2
+  * GO-2025-4036 CVE-2025-54499 GHSA-xr3w-rmvj-f6m7
+  * GO-2025-4038 CVE-2025-26625 GHSA-6pvw-g552-53c5 (forwarded request 1316108 from jfkw)</comment>
+    <requestid>1316109</requestid>
+  </revision>
 </revisionlist>
