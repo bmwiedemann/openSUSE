@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Tue Nov  4 19:41:01 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.13
+  * Fix segmentation fault in Sample_Free (was a regression in
+    3.3.12).
+  * Minor update to webaudio driver.
+- Update to version 3.3.12
+  * Add WebAudio support (see webaudio/README.md for details.).
+  * Dynamically load pulseaudio library at runtime..
+  * New configuration option to exclude module depackers (off by
+    default.)
+  * Fix high cpu usage in ALSA output driver.
+  * Merge vibrato tables/math, fix tremolo ramp down, fix IT vibrato.
+  * Fix XM fine volume slide effects (was broken between
+    libmikmod-3.1.6 and 3.1.7).
+  * Changed XM effect L to behave correctly (e.g. Graff/ant
+    attack.xm or villgust.xm)
+  * Implement MODPlugin ADPCM4 support.
+  * Fix playback of Impulse Tracker modules with more than 99
+    instruments (e.g. many MPT-created ITs -- github bug #33.)
+  * Fix MOD retrigger (E9x) effect bug that would cause it to
+    always retrigger on tick 1.
+  * Fix handling of FAR pattern break byte.
+  * Add support for Mod's Grave WOW files to MOD loader.
+  * Detect more MOD variants: TDZ#, FA04/6/8, LARD, NSMS.
+  * Check M&K! and CD61 signatures in Octalyser modules.
+  * Don't load STM samples with volume==0, fix sample offset
+    calculation.
+  * Fix volume event handling for FAR modules.
+  * Multiple fixes to FAR modules:
+    + Fix player to handle empty patterns.
+    + Handle invalid pattern numbers in position list.
+    + Add support for effect 1 and 2 (porta slide up/down).
+    + Implement effect 3 (tone porta) the right way.
+    + Play with the real tempos.
+    + Support for effects D and E (fine tempo up/down).
+    + Fix effect 6 (vibrato).
+    + Fix effect 4 (retrigger) by adding a new effect.
+    + Fix bug in the sample loader when loading 16-bit samples.
+    + Support for restart position.
+  * Fix GDM empty notes, fine volslide/portamento, and sample
+    volume.
+  * Fix GDM set pan position effect.
+  * Fix MED 9xx command in tempo mode and various BPM mode bugs.
+  * Implement missing OctaMED effects and fix several other MED
+    effects.
+  * Add support for MED song/instrument transpose and octave
+    wrapping.
+  * Use more accurate BPM values for 8-channel mode tempos in
+    OctaMed loader.
+  * Allow speed values of 128-255 for S3M/IT/DSMI/GDM/IMF.
+  * Multiple fixes to DSMI AMF loader.
+  * Support for version 8, 9, and older AMF 1.0 modules.
+  * Fix note tuning for 669 modules.
+  * Fix sample loop-end for 669 modules. (See e.g. in 'Lost in
+    Germany)
+  * Fix UltraTracker sample speed calculation. (e.g. 'Break the
+    beat.ult' now plays correctly.)
+  * Fix UltraTracker portamento to note.
+  * Fix STM blank patterns handling.
+  * Fix sample loop and detection for invalid values in Scream
+    Tracker 2 loader. (e.g. N.S. Beat.stm and Batman.stm.)
+  * Fix unimod version 4 sample flags. (e.g.: 'hundrapporten!'
+    and 'mulla on porkkanaa' modules now play correctly.
+  * Fix unimod version 5 sample flag at bit 6 to be SF_OWNPAN.
+  * Fix ASYLUM Music Format restart byte.
+  * DoPTEffectB, DoPTEffectD: bounds-check the jump target.
+  * StartEnvelope: workaround invalid envelopes with 0 pts.
+  * Sanity-check against bad effects in Asylum loader.
+  * Sanity-check that position values can't be higher than patterns
+    in several loaders.
+  * Fix access to uninitialized memory in M15, IT, STM and STMIK
+    loaders in case of short files.
+  * Fix access to uninitialized memory elsewhere in code
+  * Refuse zero instrument and pattern numbers in STMIK loader.
+  * Revise sanity checks and add boundary checks in UMX loader.
+  * Remove bogus lastnote handling from ConvertNote() in Aylum
+    loader.
+  * Fix inverted argument fed to UniExpand in UniNewline.
+  * Fix off-by-one source buffer boundary check in PP20 depacker.
+  * Fix misaligned pointers in XPK depacker checksum routine.
+  * Add missing sanity check for vebatim block in unsqsh (xpk)
+    depacker.
+  * Fix shifts by invalid exponents in S404 depacker.
+  * Add best case compression ratio bounding to S404 depacker.
+  * Improved sanity checks in S404 depacker to prevent
+    out-of-bound reads.
+  * The library is free of libm dependency.
+  * Multiple other cleanups throughout the code.
+  * Several build and portability fixes/updates.
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Thu Feb 29 17:29:15 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

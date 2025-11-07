@@ -1,7 +1,7 @@
 #
 # spec file for package libmikmod
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libmikmod3
 Name:           libmikmod
-Version:        3.3.11.1
+Version:        3.3.13
 Release:        0
 Summary:        MikMod Sound Library
 License:        LGPL-2.1-or-later
@@ -77,8 +77,8 @@ cmp   %{buildroot}%{_includedir}/mikmod{,_build}.h &&
 ln -f %{buildroot}%{_includedir}/mikmod{,_build}.h
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
+
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/mikmod.info.gz
 
