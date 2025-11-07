@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 07 13:04:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.47.0:
+  * fix(auth): hide misleading parameters in get access token cmd
+    (#1069)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to
+    v6.7.0 (#1071)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#1065)
+  * feat(iaas): Region adjustments and migration to v2 API (#1056)
+  * chore(deps): bump github.com/stackitcloud/stackit-sdk-go/core
+    (#1066)
+  * chore(deps): bump renovatebot/github-action from 43.0.19 to
+    43.0.20 (#1067)
+  * chore(client): Refactor ConfigureClient() function to use a
+    generic function instead (#1058)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/git (#1062)
+
+-------------------------------------------------------------------
 Thu Oct 30 07:11:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.46.0:
