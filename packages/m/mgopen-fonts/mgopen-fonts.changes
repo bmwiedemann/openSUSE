@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  6 16:27:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile constructs, defunct URLs, remove the
+  "essential for Greek" marking for the package manager (there's
+  Noto instead), and update descriptions.
+
+-------------------------------------------------------------------
+Tue Oct 21 11:03:45 UTC 2025 - pgajdos@suse.com
+
+- add LICENSE (verbatim copy of relevant part of README) and tag
+  it as %license [bsc#1252163]
+
+-------------------------------------------------------------------
 Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
 
 - amend spec file to reflect new font packaging scheme

@@ -123,4 +123,17 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="19" vrev="206">
+    <srcmd5>e200f0fec9bbdce5fbb0a09f66bad8d8</srcmd5>
+    <version>0.20050518</version>
+    <time>1762536126</time>
+    <user>anag_factory</user>
+    <comment>- Remove old specfile constructs, defunct URLs, remove the
+  &quot;essential for Greek&quot; marking for the package manager (there's
+  Noto instead), and update descriptions.
+
+- add LICENSE (verbatim copy of relevant part of README) and tag
+  it as %license [bsc#1252163]</comment>
+    <requestid>1316070</requestid>
+  </revision>
 </revisionlist>
