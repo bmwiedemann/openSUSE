@@ -1,11 +1,13 @@
+diff --git a/src/qmmp/output.cpp b/src/qmmp/output.cpp
+index 4739e5c..1fc8c1d 100644
 --- a/src/qmmp/output.cpp
 +++ b/src/qmmp/output.cpp
-@@ -149,7 +149,7 @@ OutputFactory *Output::currentFactory()
-     QString name = settings.value("Output/current_plugin", QMMP_DEFAULT_OUTPUT).toString();
+@@ -148,7 +148,7 @@ OutputFactory *Output::currentFactory()
+     QString name = settings.value(u"Output/current_plugin"_s, QMMP_DEFAULT_OUTPUT).toString();
  #else
  #ifdef Q_OS_LINUX
--    QString name = settings.value("Output/current_plugin", "alsa").toString();
-+    QString name = settings.value("Output/current_plugin", "pulse").toString();
- #elif defined Q_WS_WIN
-     QString name = settings.value("Output/current_plugin", "directsound").toString();
+-    QString name = settings.value(u"Output/current_plugin"_s, u"alsa"_s).toString();
++    QString name = settings.value(u"Output/current_plugin"_s, u"pulse"_s).toString();
+ #elif defined Q_OS_WIN
+     QString name = settings.value(u"Output/current_plugin"_s, u"wasapi"_s).toString();
  #elif defined Q_OS_MAC

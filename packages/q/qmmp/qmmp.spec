@@ -1,7 +1,7 @@
 #
 # spec file for package qmmp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %global __provides_exclude_from ^%{_libdir}/qmmp-[0-9\.]*/
 %define sover   2
-%define mver    2.1
+%define mver    2.3
 %bcond_with faad
 %bcond_with restricted
 Name:           qmmp
-Version:        2.1.9
+Version:        2.3.0
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
@@ -161,9 +161,7 @@ Development files for libqmmp.
 # Do not install weirdly-sized icons.
 rm -r %{buildroot}/%{_datadir}/icons/hicolor/56x56
 
-%post -n lib%{name}%{sover} -p /sbin/ldconfig
-
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files
 %license COPYING
@@ -172,7 +170,7 @@ rm -r %{buildroot}/%{_datadir}/icons/hicolor/56x56
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/com.ylsoftware.qmmp.metainfo.xml
 %{_datadir}/solid/
 
 %files -n lib%{name}%{sover}

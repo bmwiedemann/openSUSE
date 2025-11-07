@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Tue Nov  4 20:01:41 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Use ldconfig_scriptlets macro.
+- Update patch
+  * qmmp-default-pulse.patch
+- Update to version 2.3.0
+  * added shared FFT implementation for visual plugins.
+  * improved group mode:
+    + using separate internal title for track grouping;
+    + automatically update group name when metadata is received.
+    + added feature to show group duration in the main title.
+  * improved simple user interface:
+    + added smooth scrolling.
+    + added hotkeys for seeking by 10/30/60 seconds.
+    + added feature to change status bar.
+    + added more information in the status bar.
+    + improved "View" menu.
+  * improved skinned user interface:
+    + added smooth scrolling.
+    + added hotkeys for seeking by 10/30/60 seconds.
+    + added feature to change skin install path.
+    + added feature to set random skin on startup.
+  * improved mpeg plugin:
+    + using MPG123 decoder by default.
+    + added feature to detect id3v1 tags charset by system locale.
+    + added feature to reset streaming station name in playlist
+      when playback is stopped.
+  * added support for id3v2 tags in the sndfile plugin.
+  * added disambiguation for some hotkey names.
+  * added pkg-config support in the wildmidi plugin.
+  * added popup widget for date selection in the history plugin.
+  * renamed "Hotkey Plugin" to "X11 Hotkey Plugin".
+  * using portable shortcuts names in the configuration file.
+  * renamed "Ok" button to "Close" in the ladspa plugin.
+  * removed WildMidi 0.3.x support.
+  * removed mplayer and mms plugins (moved to qmmp-plugin-pack).
+  * fixed command-line output formatting.
+  * fixed displaying bits per sample in the ffmpeg plugin.
+  * fixed IPC messages charset.
+  * fixed issues with "--pl-help" and "--nowplaying-syntax"
+    command-line options.
+  * fixed audio channel map for WMA.
+  * fixed retrieving song lyrics.
+- Update to version 2.2.8
+  * added AIFF-C support.
+  * added libsidplayfp 2.15 support.
+  * using 48 kHz sample rate by default in the sid plugin.
+  * using https in the stream browser plugin.
+- Update to version 2.2.7
+  * added KWin rules for KDE6.
+  * added display of volume when adjusting it with the mouse wheel
+    in the skinned user interface.
+  * fixed support for multi-line comments when saving and
+    restoring a playlist.
+  * fixed volume adjustment step when using mouse wheel.
+  * fixed some clazy analyzer warnings.
+  * fixed frequencies of the all spectrum analyzers.
+  * fixed handling of the file open errors.
+- Update to version 2.2.5
+  * using system scroll settings for playlists.
+  * using stable order for keys in the playlists.txt file.
+  * added support for float PCM format in the dsound and wasapi
+    plugins.
+  * fixed seeking from command-line.
+  * fixed support for special keys in the shortcut editor dialog.
+  * fixed track index calculation.
+  * fixed saving of the simple user interface settings when
+    projectM visualization is enabled.
+  * fixed possible crash in the library plugin.
+- Update to version 2.2.4
+  * added support for embedded cover art images in the mpris plugin
+  * added .ogg extension for more plugins.
+  * fixed build with TagLib 2.0.
+  * fixed filter list update.
+  * fixed proxy URL.
+  * using case insensitive search for ReplayGain tags in the ffmpeg
+    plugin.
+- Update to version 2.2.3
+  * added simple WildMidi config validation.
+  * updated AppStream metadata.
+  * fixed build without X11 support.
+  * fixed volume level notification.
+  * fixed dts/ac3 support in the ffmpeg plugin.
+  * fixed ignoring of the CUE data file with embedded CUE.
+- Update to version 2.2.2
+  * added SIGTERM signal support.
+  * added additional information in the "about..." dialog.
+  * improved skin unpacking.
+  * fixed double-click behavior of the file system viewer in the
+    simple user interface.
+  * fixed crash in the two-panel file dialog.
+  * fixed playback starting from the file dialog.
+- Update to version 2.2.1
+  * fixed "Always On Top" option for KDE/KWin in the skinned user
+    interface.
+  * improved simple user interface:
+    + enabled floatable dock widgets under Wayland.
+    + disabled "Always on Top" option under Wayland.
+- Update to version 2.2.0
+  * added feature to stop playback after removing of the current
+    track.
+  * moved some duplicated code to the libqmmpui library.
+  * improved simple user interface:
+    + added feature to change group height.
+    + added feature to print cover art in the group.
+    + added feature to show extra information in the group.
+    + added feature to copy tracks between playlists.
+    + added tree view mode in the file browser.
+    + added feature to replace selected playlist from the file
+      browser.
+    + added balance slider.
+    + allow to override group and current track colors when using
+      system palette.
+    + renamed "Show Title Bars" action to "Block Floating Panels".
+  * improved skinned user interface:
+    + added feature to change group height.
+    + added feature to print cover art in the group.
+    + added feature to show extra information in the group.
+    + improved color and font settings.
+  * improved xmp plugin:
+    + added "Emulate sample loop bug" option.
+    + added "Use Paula mixer in Amiga modules" option.
+  * added feature to replace selected playlist in the library
+    plugin.
+  * added feature to set buffer size in milliseconds in the http
+    plugin.
+  * added "--debug" command-line option.
+  * added feature to build cdaudio plugin without libcddb library.
+  * disabled debug output by default.
+  * fixed file type detection by content.
+  * fixed ignoring of data file for large cue sheets.
+
+-------------------------------------------------------------------
 Mon Nov 11 11:11:11 UTC 2024 - olaf@aepfle.de
 
 - Convert BuildRequires from libfaad-devel to pkgconfig(faad2)
