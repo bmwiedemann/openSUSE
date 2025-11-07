@@ -548,4 +548,37 @@
     verboseResults=True are used with unacknowledged writes.</comment>
     <requestid>1294457</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>90b6713af6eb7c0665e0d694ee3d11ca</srcmd5>
+    <version>4.15.3</version>
+    <time>1762536155</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.15.3:
+  * Queryable Encryption text queries beta
+  * Decimal128 encoding/decoding
+  * Preliminary support for Python 3.14, including free-threading
+  * New method: append_metadata
+  * Server selection performance improved when selecting a server
+  * Fixed a bug where AsyncMongoClient would block the event loop while
+    creating new connections, potentially significantly increasing latency
+    for ongoing operations.
+  * Fixed a bug that resulted in confusing error messages after hostname
+    verification errors when using PyOpenSSL.
+  * Fixed a bug that could raise ServerSelectionTimeoutError when using
+    timeouts with AsyncMongoClient.
+  * SRV hostname validation fails when resolver and resolved hostnames are
+    identical with three domain levels
+  * AsyncMongoClient connection error causes UnboundLocalError
+  * Update lockfile for compat with older versions of uv
+  * Support for configuring DEK cache lifetime.
+  * pymongocrypt&gt;=1.13 is now required for In-Use Encryption support.
+  * AsyncMongoClient no longer performs DNS resolution for “mongodb+srv://”
+    connection strings on creation.
+  * Removed PyOpenSSL support from the asynchronous API due to limitations of
+    the CPython asyncio.Protocol SSL implementation.
+  * Allow valid SRV hostnames with less than 3 parts.
+  * WaitQueueTimeoutError should not clear the pool
+  * Allow Database.command to run bulkWrite commands</comment>
+    <requestid>1316360</requestid>
+  </revision>
 </revisionlist>
