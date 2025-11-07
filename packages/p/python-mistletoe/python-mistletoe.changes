@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  5 14:02:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.0
+  * LaTeXRenderer: Render thematic break on a new line (#224).
+  * LaTeXRenderer: Properly escape caret ("^") within raw text (#234).
+  * Incomplete configuration for tox and tests (#220, #221).
+  * Add types to __init__.py's markdown function (#251).
+  * Fix typos in the in-line documentation, while also resolving problems
+    within the docs folder (#226).
+  * Describe Document's constructor and how end-of-lines are treated (#64).
+
+-------------------------------------------------------------------
 Thu Aug 21 09:35:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

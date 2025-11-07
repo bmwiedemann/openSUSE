@@ -56,4 +56,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1301771</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ce0f5d903938eec0f7e7c816c6fec699</srcmd5>
+    <version>1.5.0</version>
+    <time>1762536056</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315735 from glaubitz
+
+- Update to 1.5.0
+    * LaTeXRenderer: Render thematic break on a new line (#224).
+    * LaTeXRenderer: Properly escape caret (&quot;^&quot;) within raw text (#234).
+    * Incomplete configuration for tox and tests (#220, #221).
+    * Add types to __init__.py's markdown function (#251).
+    * Fix typos in the in-line documentation, while also resolving problems
+      within the docs folder (#226).
+    * Describe Document's constructor and how end-of-lines are treated (#64).</comment>
+    <requestid>1315972</requestid>
+  </revision>
 </revisionlist>
