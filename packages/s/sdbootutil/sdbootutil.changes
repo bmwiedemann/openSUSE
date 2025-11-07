@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 07 15:07:55 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20251107.49e9025:
+  * Ask the PIN or PW when enrolling (bsc#1252871)
+  * Read the password from environment when enrolling
+  * Fix when reading password from environment
+  * Clarify the help message
+
+-------------------------------------------------------------------
+Thu Nov 06 14:07:33 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20251106.f0b1a06:
+  * Drop kernel version in title for grub2-bls
+  * Do not always install the dracut module in hostonly mode
+  * snapper: exit when path is not root
+
+-------------------------------------------------------------------
 Wed Oct 29 11:49:05 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20251029.c883722:
