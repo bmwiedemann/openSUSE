@@ -1746,4 +1746,37 @@
     <comment>- Update to version 3.2.7+git0.be4f72dc5:</comment>
     <requestid>1313209</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>be01c82b82aa9bb0734b08c5e18e041d</srcmd5>
+    <version>3.2.8+git0.9200f398d</version>
+    <time>1762536202</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2.8+git0.9200f398d:
+  * [RELEASE] Released version 3.2.8
+  * BUG/MINOR: acme: wrong dns-01 challenge in the log
+  * BUG/MEDIUM: server: close a race around ready_srv when deleting a server
+  * BUG/MEDIUM: connections: permit to permanently remove an idle conn
+  * BUG/MEDIUM: mux-h2: make sure not to move a dead connection to idle
+  * BUG/MEDIUM: mux-h1: fix 414 / 431 status code reporting
+  * SCRIPTS: build-ssl: fix rpath in AWS-LC install for openssl and bssl bin
+  * OPTIM: backend: skip conn reuse for incompatible proxies
+  * BUG/MINOR: resolvers: ensure fair round robin iteration
+  * BUG/MINOR: ssl: returns when SSL_CTX_new failed during init
+  * BUG/MINOR: resolvers: Apply dns-accept-family setting on additional records
+  * BUG/MINOR: init: Do not close previously created fd in stdio_quiet
+  * MINOR: http: fix 405,431,501 default errorfile
+  * MINOR: ssl-sample: add ssl_fc_early_rcvd() to detect use of early data
+  * DOC: config: slightly clarify the ssl_fc_has_early() behavior
+  * BUG/MEDIUM: ssl: Crash because of dangling ckch_store reference in a ckch instance
+  * MINOR: backend: srv_is_up converter
+  * MINOR: backend: srv_queue helper
+  * BUG/MEDIUM: cli: do not return ACKs one char at a time
+  * MINOR: cli: create cli_raw_rcv_buf() from the generic applet_raw_rcv_buf()
+  * MINOR: applet: do not put SE_FL_WANT_ROOM on rcv_buf() if the channel is empty
+  * BUG/MEDIUM: mt_list: Use atomic operations to prevent compiler optims
+  * BUG/MINOR: stick-tables: properly index string-type keys
+  * BUG/MEDIUM: applet: Improve again spinning loops detection with the new API
+  * BUG/MEDIUM: mt_lists: Avoid el-&gt;prev = el-&gt;next = el</comment>
+    <requestid>1316410</requestid>
+  </revision>
 </revisionlist>
