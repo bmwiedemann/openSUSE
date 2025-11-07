@@ -61,4 +61,21 @@
 - Switch to pyproject macros.</comment>
     <requestid>1274275</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cfc8fc1205a93e2f3fdb169e61c3ec50</srcmd5>
+    <version>1.8.0</version>
+    <time>1762535807</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8.0:
+  * New lazy_shared_datadir fixture, which brings the same lazy
+    functionality as lazy_datadir for the shared directory.
+  * Fix LazyDataDir.joinpath typing to also support Path objects as
+    the right-hand side parameter.
+  * py.typed was added to the distribution, enabling users to use
+    LazyDataDir in type annotations
+  * Fixed bug using lazy_datadir to copy a file using a sub-directory
+  * New lazy_datadir fixture that lazily copies files when accessed
+    via joinpath or / operator</comment>
+    <requestid>1316015</requestid>
+  </revision>
 </revisionlist>

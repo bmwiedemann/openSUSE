@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-datadir
-Version:        1.6.1
+Version:        1.8.0
 Release:        0
 Summary:        Plugin for test data directories and files
 License:        MIT

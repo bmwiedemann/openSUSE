@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov  5 18:21:24 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 1.8.0:
+  * New lazy_shared_datadir fixture, which brings the same lazy
+    functionality as lazy_datadir for the shared directory.
+  * Fix LazyDataDir.joinpath typing to also support Path objects as
+    the right-hand side parameter.
+  * py.typed was added to the distribution, enabling users to use
+    LazyDataDir in type annotations
+  * Fixed bug using lazy_datadir to copy a file using a sub-directory
+  * New lazy_datadir fixture that lazily copies files when accessed
+    via joinpath or / operator
+
+-------------------------------------------------------------------
 Mon May  5 02:56:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.6.1:
