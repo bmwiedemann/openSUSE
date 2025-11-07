@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov  7 05:27:39 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.14.0
+
+- Update to 8.14.0
+  * New Features
+   - Tolino driver: Add support for latest firmware
+   - When showing completions for languages show all languages that
+     contain the typed in string instead of only languages that
+     start with the typed in string
+   - When showing completions in substring match mode, order the
+     completions by how close to the start the query is
+   - A new shortcut Ctrl+Alt+Shift+P to switch to the previously
+     applied Virtual library
+  * Bug Fixes
+   - FB2 Input: Fix a remote code execution vulnerability from
+     maliciously crafted FB2 files
+   - E-book viewer: Ignore soft hyphens when looking up words
+   - Catalog export: Fix export of languages in BibTeX format
+   - Windows: Fix Open With not working with Microsoft Paint
+
+-------------------------------------------------------------------
 Fri Oct 17 09:59:17 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.13.0
 
 - Update to 8.13.0
