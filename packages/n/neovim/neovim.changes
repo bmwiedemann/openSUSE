@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Nov  6 15:27:32 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.11.5:
+  * help: gx opens help tag in web browser
+  * vimscript: log function name in "fast" message
+  * api: reduce redundant `win_find_tabpage` calls
+  * vim.lsp.omnifunc should not throw away other items
+  * api: nvim_open_win default to half-size for splits
+  * api: nvim_open_win respects requested split window size
+  * 5aa6257 api: win_set_config error message for splitting from a float
+  * 66b8018 channel: closing socket with pending writes leaks memory
+  * 3237f63 cjson: fix `strbuf_set_length` incorrectness
+  * 95cc675 clipboard: avoid using stale register width
+  * d31953d diagnostics: extend conversion support from/to quickfix format
+  * 7304fc2 excmd: :trust executed even when inside false condition
+  * 0e1c83f filetype: handle invalid `bufnr` in _getlines(), _getline()
+  * 86b2c0f float: crash from nasty :fclose autocmds
+  * d8a7c86 health: errors in :checkhealth with pyenv-virtualenv
+  * 8e00534 health: hard fail on invalid "python-*" bin
+  * 2668a46 lsp: "attempt to index nil config"
+  * 21540d2 lsp: _get_workspace_folders does not handle root_dir() function
+  * 14e74d9 lsp: misleading logs in non-applicable filetypes
+  * a7eb110 lsp: noisy log message when enabling server without config
+  * eb48372 lsp: restore Client:stop() force-stopping behavior
+  * 556d8d0 lsp: treat 2-triggers-at-once as "last char wins"
+  * 7b1ac20 lua: don't leak handle when vim._watch.watch() fails
+  * c84ba83 options: increase t_Co buffer size
+  * 7aea000 paste: don't use :echo immediately before :redraw
+  * 47f6f21 plines: count 'showbreak' in EOL inline virt_text in line size
+  * 4338eea rpc: handle more cases when identifying loopback
+  * d399ed3 socket: avoid stack-use-after-return after timeout
+  * 4cc060b statusline: redraw if Visual selection other end changes
+  * 7f5427b terminal: add various missing redraws
+  * d78d5cf terminal: adjust marks when deleting scrollback lines
+  * f3f6705 terminal: avoid events messing up topline of focused terminal
+  * 8c5bc49 terminal: avoid tailed cursor in focused terminal in events
+  * 934d285 terminal: check size when creating new tabpage
+  * e67fec1 terminal: deleting from wrong buffer
+  * e4db5ed terminal: don't trigger TextChangedT for unrelated redraws
+  * 854b319 terminal: handle OSC 8 split into multiple fragments
+  * a6d8f40 terminal: keep last cursor if it's on the last row
+  * 46d68e5 terminal: patch various autocommand-related holes
+  * 5ee9e3f terminal: possibly wrong wrow/wcol in active terminal
+  * b21ec36 terminal: remove condition that buf is curbuf
+  * 2eea65f terminal: update winopts and focus when switching terminals
+  * 169dc60 terminal: wrong row in TermRequest with full scrollback
+  * 8f05fdb tests: ignore vector math types
+  * 924a8e4 tui: don't wait for DA1 response when stdin is closed (#35745)
+  * 07184aa tui: handle sequence larger than entire buffer
+  * 1c8805e vim.json: fix truncation of decoded numbers outside lua_Integer's range
+  * 8c31138 window: don't add a hsep when out of room if global stl is off
+- disable unittests for leap16, as lua-cffi-lua is missing, and we don't use luajit
+
+-------------------------------------------------------------------
+Thu Nov  6 12:54:42 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Don't use pkgconf(luajit), it confuses between LuaJIT we use
+  (OpenResty) and moonjit.
+- Use luajit-* packages for the LuaJIT build.
+
+-------------------------------------------------------------------
 Tue Oct 28 21:13:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - remove unneeded build and runtime dependencies

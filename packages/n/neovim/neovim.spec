@@ -1,6 +1,7 @@
 #
 # spec file for package neovim
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,13 +17,17 @@
 #
 
 
-%ifarch ppc64le s390x
+%ifarch %{power64} s390x
+%bcond_with luajit
+%else
+%if 0%{?suse_version} < 1699
 %bcond_with luajit
 %else
 %bcond_without luajit
 %endif
+%endif
 Name:           neovim
-Version:        0.11.4
+Version:        0.11.5
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
@@ -42,15 +47,26 @@ BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hostname
 BuildRequires:  libtool
-BuildRequires:  lua51-lpeg
+BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(libluv)
 BuildRequires:  pkgconfig(libutf8proc) >= 2.10.0
 BuildRequires:  pkgconfig(libuv) >= 1.50.0
 %if %{with luajit}
-BuildRequires:  pkgconfig(luajit)
+BuildRequires:  luajit-bit32
+BuildRequires:  luajit-compat-5.3
+BuildRequires:  luajit-devel
+BuildRequires:  luajit-lpeg
+BuildRequires:  luajit-luarocks
+BuildRequires:  luajit-luv
 %else
+BuildRequires:  lua51-bit32
+BuildRequires:  lua51-compat-5.3
+BuildRequires:  lua51-devel
+BuildRequires:  lua51-lpeg
+BuildRequires:  lua51-luarocks
+BuildRequires:  lua51-luv
 BuildRequires:  pkgconfig(lua5.1)
 %endif
 BuildRequires:  pkgconfig(tree-sitter) >= 0.25.3
@@ -59,7 +75,19 @@ BuildRequires:  pkgconfig(vterm) >= 0.3.3
 BuildRequires:  treesitter_grammar(tree-sitter-vimdoc)
 Requires:       gperf
 Requires:       libvterm0 >= 0.3
+%if %{with luajit}
+Requires:       luajit-bit32
+Requires:       luajit-compat-5.3
+Requires:       luajit-lpeg
+Requires:       luajit-luarocks
+Requires:       luajit-luv
+%else
+Requires:       lua51-bit32
+Requires:       lua51-compat-5.3
 Requires:       lua51-lpeg
+Requires:       lua51-luarocks
+Requires:       lua51-luv
+%endif
 Requires:       tree-sitter-c >= 0.23.4
 Requires:       tree-sitter-lua >= 0.3.0
 Requires:       tree-sitter-markdown >= 0.4.1
@@ -152,8 +180,10 @@ ln -sf %{_libdir}/tree_sitter/vimdoc.so runtime/parser
 %make_build USE_BUNDLED=OFF oldtest
 %endif
 # functional tests
-%ifarch aarch64 x86_64
+%if 0%{?suse_version} != 1600
+%ifarch %{arm64} %{x86_64}
 %make_build USE_BUNDLED=OFF unittest
+%endif
 %endif
 %endif
 

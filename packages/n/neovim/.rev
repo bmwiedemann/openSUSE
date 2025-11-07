@@ -1626,4 +1626,41 @@ FIXES (LSP):
     <comment>- remove unneeded build and runtime dependencies (forwarded request 1314205 from rrahl0)</comment>
     <requestid>1314206</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>1e424dfb87639f7e09192057e7b78623</srcmd5>
+    <version>0.11.5</version>
+    <time>1762536135</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.11.5:
+  * help: gx opens help tag in web browser
+  * vimscript: log function name in &quot;fast&quot; message
+  * api: reduce redundant `win_find_tabpage` calls
+  * vim.lsp.omnifunc should not throw away other items
+  * api: nvim_open_win default to half-size for splits
+  * api: nvim_open_win respects requested split window size
+  * 5aa6257 api: win_set_config error message for splitting from a float
+  * 66b8018 channel: closing socket with pending writes leaks memory
+  * 3237f63 cjson: fix `strbuf_set_length` incorrectness
+  * 95cc675 clipboard: avoid using stale register width
+  * d31953d diagnostics: extend conversion support from/to quickfix format
+  * 7304fc2 excmd: :trust executed even when inside false condition
+  * 0e1c83f filetype: handle invalid `bufnr` in _getlines(), _getline()
+  * 86b2c0f float: crash from nasty :fclose autocmds
+  * d8a7c86 health: errors in :checkhealth with pyenv-virtualenv
+  * 8e00534 health: hard fail on invalid &quot;python-*&quot; bin
+  * 2668a46 lsp: &quot;attempt to index nil config&quot;
+  * 21540d2 lsp: _get_workspace_folders does not handle root_dir() function
+  * 14e74d9 lsp: misleading logs in non-applicable filetypes
+  * a7eb110 lsp: noisy log message when enabling server without config
+  * eb48372 lsp: restore Client:stop() force-stopping behavior
+  * 556d8d0 lsp: treat 2-triggers-at-once as &quot;last char wins&quot;
+  * 7b1ac20 lua: don't leak handle when vim._watch.watch() fails
+  * c84ba83 options: increase t_Co buffer size
+  * 7aea000 paste: don't use :echo immediately before :redraw
+  * 47f6f21 plines: count 'showbreak' in EOL inline virt_text in line size
+  * 4338eea rpc: handle more cases when identifying loopback
+  * d399ed3 socket: avoid stack-use-after-return after timeout
+  * 4cc060b statusline: redraw if Visual selection other end changes (forwarded request 1316088 from rrahl0)</comment>
+    <requestid>1316089</requestid>
+  </revision>
 </revisionlist>
