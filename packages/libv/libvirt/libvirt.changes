@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  5 18:33:48 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 11.9.0
+  - bsc#1251789: By default, VMs are now confined by the security
+    framework (apparmor or selinux) active on the host
+  - bsc#1252958: Fix build with wireshark 4.6.0 
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-9-0-2025-11-03
+
+-------------------------------------------------------------------
 Mon Oct  6 17:31:16 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 11.8.0

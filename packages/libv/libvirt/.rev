@@ -4958,4 +4958,17 @@ a previous changelog entry.
     https://libvirt.org/news.html#v11-8-0-2025-10-01</comment>
     <requestid>1309662</requestid>
   </revision>
+  <revision rev="432" vrev="1">
+    <srcmd5>bc39d65420122ea5770a74c1676f38f2</srcmd5>
+    <version>11.9.0</version>
+    <time>1762536049</time>
+    <user>anag_factory</user>
+    <comment>- Update to libvirt 11.9.0
+  - bsc#1251789: By default, VMs are now confined by the security
+    framework (apparmor or selinux) active on the host
+  - bsc#1252958: Fix build with wireshark 4.6.0 
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-9-0-2025-11-03</comment>
+    <requestid>1315884</requestid>
+  </revision>
 </revisionlist>
