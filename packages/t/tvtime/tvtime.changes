@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  6 14:02:15 UTC 2025 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- add tvtime-notermio.patch: There is no termio.h anymore,
+  Use termios.h instead and include sys/ioctl.h.
+
+-------------------------------------------------------------------
 Mon Feb 26 16:20:30 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

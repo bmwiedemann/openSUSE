@@ -1,7 +1,7 @@
 #
 # spec file for package tvtime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Release:        0
 Summary:        High Quality Television Application
 License:        GPL-2.0-or-later
 Group:          Hardware/TV
-Url:            http://tvtime.net/
+URL:            http://tvtime.net/
 Source:         http://www.linuxtv.org/downloads/tvtime/%{name}-%{version}.tar.gz
 Patch0:         tvtime-1.0.11-sysmacros.diff
+Patch1:         tvtime-notermio.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
