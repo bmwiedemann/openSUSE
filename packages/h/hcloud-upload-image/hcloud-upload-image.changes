@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Nov 07 13:04:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  * Features
+    - change minimum required Go version to 1.24 (#130) (5eba2d5)
+    - support zstd compression (#125) (37ebbce), closes #122
+    - update default x86 server type to cx23 (#129) (a205619)
+  * Dependencies
+    - chore(deps): update module
+      github.com/apricote/hcloud-upload-image/hcloudimages to
+      v1.2.0 (#131)
+    - chore(deps): update module
+      github.com/hetznercloud/hcloud-go/v2 to v2.29.0 (#120)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.6.1 (#121)
+    - chore(deps): update docker/login-action digest to 28fdb31
+      (#123)
+    - chore(deps): update dependency go to v1.25.4 (#124)
+    - chore(deps): update docker/login-action digest to 5b7b28b
+      (#119)
+    - chore(deps): update dependency go to v1.25.1 (#106)
+    - chore(deps): update docker/login-action digest to 65c0768
+      (#107)
+    - chore(deps): update actions/setup-go action to v6 (#118)
+    - chore(deps): update actions/checkout action to v5 (#112)
+    - chore(deps): update module github.com/spf13/cobra to v1.10.1
+      (#117)
+    - chore(deps): update actions/upload-pages-artifact action to
+      v4 (#113)
+    - chore(deps): update module
+      github.com/hetznercloud/hcloud-go/v2 to v2.23.0 (#105)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.4.0 (#108)
+    - chore(deps): update actions/checkout digest to 08eba0b (#111)
+    - chore(deps): update dependency rust-lang/mdbook to v0.4.52
+      (#104)
+
+-------------------------------------------------------------------
 Sat May 10 14:46:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.0:
