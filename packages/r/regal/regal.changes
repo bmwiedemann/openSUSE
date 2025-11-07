@@ -1,4 +1,169 @@
 -------------------------------------------------------------------
+Fri Nov 07 08:50:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.0:
+  This release features a new linter rule, several new language
+  server features, and many improvements and fixes. The two major
+  OPA versions bumped since the last release additionally contains
+  several performance improvements that were contributed as part of
+  developing Regal!
+  * New Rule: prefer-equals-comparison
+    The prefer-equals-comparison linter rule recommends using the
+    == operator for equality comparison over the unification
+    operator =. The rule helps improve code clarity by using
+    operators for their intended purposes: := for assignment, ==
+    for equality comparison, and = for unification. The linter
+    identifies when = is used for comparison by checking if both
+    sides of the operator are "unassignable".
+
+    Avoid
+
+      input.request.method = "GET"
+
+    Prefer
+
+      input.request.method == "GET"
+
+    There are some certainly valid use cases for the unification
+    operator! But simple equality comparison is not one. For more
+    information, see the documentation for the rule. As an amusing
+    aside, this fixes one of the first issues created in the
+    project!
+  * Language server: Document highlighting to help show where
+    function args are referenced
+    Document highlighting is one of the more subtle features of the
+    LSP specification, but a really helpful one when implemented
+    well. The experimental first implementation that shipped with
+    Regal v0.36.0 is no longer experimental, and has also been
+    extended to highlight usage of function argument variables
+    inside of a function head or body.
+    (Please find the screencast in the release notes)
+  * Language server: Selection ranges
+    Selection ranges provide smart selection of code that can
+    expand and shrink based on knowledge of the code rather than
+    simple text properties, like hyphens or whitespace. This makes
+    moving code around extremely fast, and without leaving the
+    keyboard. Consult the language server docs for how to enable
+    this in your editor
+    (Please find the screencast in the release notes)
+  * Improvements
+    - The pointless-reassignment rule would previously only flag
+      reassignment at the top level of a rule body. Now it flags
+      pointless reassignments also in nested bodies, like
+      comprehensions, every statements, and so on.
+    - All completion providers are now implemented purely in Rego
+    - Remove the go-semver dependency in favor of a custom, much
+      faster implementation
+    - Build: Reduce permissions granted in update-caps top-level
+      workflow, by @timothyklee
+    - Docs: Update language server page to demonstrate recently
+      added features
+    - Docs: Add kakoune LSP configuration example
+  * Windows compatibility improvements
+    In this release we have fixed various Windows bugs (Language
+    Server Init, Goto Definition, Error Popups) in #1740, #1737,
+    #1736, following #1633, and #1642 last release.
+    These fixes have also made it possible to run our test suites
+    on Windows runners to catch issues sooner in future. A huge
+    thanks to @charlieegan3 for his tireless work on this!
+  * Bugs fixed
+    - Fix false positive in use-some-for-output-vars triggered by
+      nested variables in rule ref heads, like rule[input[i]].allow
+      if ....
+    - Fix false positive in redundant-existence-check when a not
+      check made an existence check necessary, reported by @gusega
+    - Fix false positive in narrow-argument rule, which would
+      incorrectly flag some arrays passed as arguments
+    - Ensure that the language server InitOptions is never nil and
+      don't cause issues with clients that don't provide those
+  * Dependency Updates:
+    - github.com/open-policy-agent/opa: v1.8.0 → v1.10.1
+    - github.com/arl/statsviz: v0.7.1 → v0.7.2
+    - github.com/go-git/go-git/v5: v5.16.2 → v5.16.3
+    - github.com/olekukonko/tablewriter: v0.0.5 → v1.1.0
+    - github.com/spf13/cobra: v1.9.1 → v1.10.1
+    - github.com/spf13/pflag: v1.0.7 → v1.0.10
+    - Removed: github.com/coreos/go-semver: v0.3.1
+  * Changelog
+    - 244459c: docs: Remove some old references (#1689)
+      (@anderseknert)
+    - 4212b5c: build(deps): bump the dependencies group with 2
+      updates (#1690) (@dependabot[bot])
+    - e149c6d: build: reduce update-caps top-level workflow
+      permission to read (#1691) (@timothyklee)
+    - 819bbec: lsp: Fix missing initial root (#1692)
+      (@charlieegan3)
+    - be8b020: docs: Update style guide links to new repo (#1693)
+      (@charlieegan3)
+    - ceb890b: Builtin function completion in Rego (#1694)
+      (@anderseknert)
+    - d36555e: Package ref import suggestions in Rego (#1698)
+      (@anderseknert)
+    - 4e44131: build(deps): bump the dependencies group with 2
+      updates (#1703) (@dependabot[bot])
+    - 14166e9: Avoid multi-line highlighting of issues (#1702)
+      (@anderseknert)
+    - 1685bb8: Move completion handler into Rego router (#1699)
+      (@anderseknert)
+    - 0da5eaa: build(deps): bump the dependencies group with 2
+      updates (#1708) (@dependabot[bot])
+    - e792757: Bump OPA -> v1.9.0, golangci-lint 2.5.0 (#1709)
+      (@anderseknert)
+    - 3092d1d: docs: Address some broken links from OPA report
+      (#1704) (@charlieegan3)
+    - bebfd06: util: use Partial2 for IsAnyError (@srenatus)
+    - f22a570: Fix false positive in redundant-existence-check
+      (#1716) (@anderseknert)
+    - 2703715: Various fixes (#1715) (@anderseknert)
+    - 87981f2: build(deps): bump the dependencies group with 2
+      updates (#1713) (@dependabot[bot])
+    - a6487b6: lsp: document highlighting supporting function args
+      (#1718) (@anderseknert)
+    - fe8cbd3: Rule: prefer-equals-comparison (#1726)
+      (@anderseknert)
+    - f3722ea: Fix false positive in narrow-argument (#1724)
+      (@anderseknert)
+    - 73b8c65: Improve pointless-reassignment to cover nested cases
+      (#1727) (@anderseknert)
+    - 9cf180c: lsp: Implement selection ranges and linked editing
+      range (#1722) (@anderseknert)
+    - bf632d0: build(deps): bump the dependencies group with 2
+      updates (#1725) (@dependabot[bot])
+    - a373ae3: lsp: Use filename path for current buffer for defns
+      (#1732) (@charlieegan3)
+    - d758eaf: lsp: Refactor range utilities (#1729)
+      (@anderseknert)
+    - 13de8a9: Fix incorrect behavior in pointless-import (#1733)
+      (@anderseknert)
+    - fb560c1: Fix false positive in use-some-for-output-vars
+      (#1731) (@anderseknert)
+    - 70449b7: Various small fixes (#1736) (@anderseknert)
+    - 2594719: windows: Better use of slash paths (#1737)
+      (@charlieegan3)
+    - 499125f: Get FindClosestMatchingRoot working on windows
+      (#1740) (@charlieegan3)
+    - 3715085: OPA v1.10.0 (#1742) (@anderseknert)
+    - 781f809: deps: stick to
+      github.com/vektah/gqlparser/v2@v2.5.30 (#1744) (@srenatus)
+    - bbb03db: Use generic client identifier in tests (#1741)
+      (@charlieegan3)
+    - c42ce08: build(deps): bump github/codeql-action in the
+      dependencies group (#1745) (@dependabot[bot])
+    - 4384b0d: Remove go-semver dependency, plus various fixes
+      (#1746) (@anderseknert)
+    - 97dfbd4: docs: update LSP page to show new features (#1748)
+      (@charlieegan3)
+    - 818b33a: docs: Minor fixes to docs typos and links (#1747)
+      (@charlieegan3)
+    - 4138270: Update to OPA v1.10.1 (@charlieegan3)
+    - 55cf029: lsp: ensure that InitOptions is never nil (#1752)
+      (@srenatus)
+    - 8ffa270: docs: add kakoune LSP config snippet (#1751)
+      (@srenatus)
+    - 216341a: reporter,lsp: update URLs for help links (#1750)
+      (@srenatus)
+
+-------------------------------------------------------------------
 Sun Sep 14 12:09:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.36.1 (0.36.0 was not released):
