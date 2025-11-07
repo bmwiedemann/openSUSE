@@ -1,7 +1,7 @@
 #
 # spec file for package libbgcode
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ BuildRequires:  libboost_nowide-devel >= 1.78
 BuildRequires:  zlib-devel
 BuildRequires:  (cmake(Catch2) >= 2.9 with cmake(Catch2) < 3)
 BuildRequires:  cmake(heatshrink)
+# See https://github.com/prusa3d/libbgcode/issues/47
+ExcludeArch:    s390x %mipseb %sparc ppc64 ppc
 
 %description
 A new G-code file format featuring the following improvements over the legacy G-code:

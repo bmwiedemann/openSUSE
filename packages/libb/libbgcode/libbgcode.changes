@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  6 20:16:14 UTC 2025 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Package cannot work on big-endian architectures, see 
+  https://github.com/prusa3d/libbgcode/issues/47. 
+  Claims to be a little-endian format but there is no code 
+  for either writting or reading files correctly on big-endian systems.
+
+-------------------------------------------------------------------
 Thu Aug 29 16:12:03 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.2.0+git20240829.b5c57c4
