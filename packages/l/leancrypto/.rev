@@ -49,4 +49,13 @@
     <comment>- Don't strip debug symbols (forwarded request 1314096 from lmulling)</comment>
     <requestid>1314097</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>88e92edb0b8949f67c70772df95befb7</srcmd5>
+    <version>1.6.0</version>
+    <time>1762535998</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patch to fix GCS on aarch64:
+  * fe9751f2.patch (forwarded request 1315715 from Guillaume_G)</comment>
+    <requestid>1315730</requestid>
+  </revision>
 </revisionlist>

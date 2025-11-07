@@ -1,0 +1,49 @@
+From fe9751f2b13581e938f25b82f3e725372223af81 Mon Sep 17 00:00:00 2001
+From: Stephan Mueller <smueller@chronox.de>
+Date: Wed, 5 Nov 2025 10:01:06 +0100
+Subject: [PATCH] ARM64: Add GCS support in assembly code
+
+The GCS support is properly enabled as seen with the following command:
+
+$ readelf -n build/libleancrypto.so
+
+Displaying notes found in: .note.gnu.property
+  Owner                Data size        Description
+  GNU                  0x00000010       NT_GNU_PROPERTY_TYPE_0
+      Properties: AArch64 feature: BTI, PAC, GCS
+
+Signed-off-by: Stephan Mueller <smueller@chronox.de>
+[EDIT: drop the diff of CHANGES.md]
+---
+ CHANGES.md                       |  2 ++
+ internal/api/assembler_support.h | 14 ++++++++++++--
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/internal/api/assembler_support.h b/internal/api/assembler_support.h
+index be6afb00..bc89efb2 100644
+--- a/internal/api/assembler_support.h
++++ b/internal/api/assembler_support.h
+@@ -73,11 +73,21 @@
+ #  define GNU_PROPERTY_AARCH64_POINTER_AUTH 0
+ # endif
+ 
++# if defined(__ARM_FEATURE_GCS_DEFAULT) && __ARM_FEATURE_GCS_DEFAULT == 1
++#  define GNU_PROPERTY_AARCH64_GCS (1<<2)
++# else
++#  define GNU_PROPERTY_AARCH64_GCS 0 /* No GCS */
++# endif
++
+ /* Add the BTI / PAC support to GNU Notes section */
+-# if GNU_PROPERTY_AARCH64_BTI != 0 || GNU_PROPERTY_AARCH64_POINTER_AUTH != 0
++# if GNU_PROPERTY_AARCH64_BTI != 0 ||                                          \
++     GNU_PROPERTY_AARCH64_POINTER_AUTH != 0 ||                                 \
++     GNU_PROPERTY_AARCH64_GCS != 0
+ #  define LC_GNU_PROPERTY_ALIGN 3 /* 2 on 32 bit systems, which we do not cover here */
+ #  define LC_GNU_PROPERTY_TYPE 0xc0000000
+-#  define LC_GNU_PROPERTY_DATA (GNU_PROPERTY_AARCH64_BTI|GNU_PROPERTY_AARCH64_POINTER_AUTH)
++#  define LC_GNU_PROPERTY_DATA (GNU_PROPERTY_AARCH64_BTI |                     \
++                                GNU_PROPERTY_AARCH64_POINTER_AUTH |            \
++                                GNU_PROPERTY_AARCH64_GCS)
+ # endif
+ #endif
+ 

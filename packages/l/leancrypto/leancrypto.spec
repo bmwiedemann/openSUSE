@@ -42,6 +42,8 @@ Source0:        https://www.leancrypto.org/%{pkgname}/releases/%{pkgname}-%{vers
 Source1:        https://www.leancrypto.org/%{pkgname}/releases/%{pkgname}-%{version}/%{pkgname}-%{version}.tar.xz.asc
 Source2:        https://leancrypto.org/about/smuellerDD-2024.asc#/leancrypto.keyring
 Source3:        baselibs.conf
+# PATCH-FIX-UPSTREAM - https://github.com/smuellerDD/leancrypto/commit/fe9751f2b
+Patch1:         fe9751f2.patch
 BuildRequires:  clang
 BuildRequires:  meson
 %if %{with kmp}
@@ -114,6 +116,7 @@ enabled if possible.
 
 This subpackage holds the tools provided by the library, such as sha*sum.
 %else
+
 %package KMP
 Summary:        leancrypto Kernel Module Package
 Group:          System/Kernel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  5 09:28:31 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix GCS on aarch64:
+  * fe9751f2.patch
+
+-------------------------------------------------------------------
 Thu Oct 23 13:22:46 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 1.6.0:
