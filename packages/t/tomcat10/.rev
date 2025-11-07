@@ -229,4 +229,12 @@
     <comment>Do not use update-alternatives</comment>
     <requestid>1309427</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f808cce83c4db9e0623b6356fcbbd16d</srcmd5>
+    <version>10.1.48</version>
+    <time>1762536131</time>
+    <user>anag_factory</user>
+    <comment>10.1.48</comment>
+    <requestid>1316081</requestid>
+  </revision>
 </revisionlist>
