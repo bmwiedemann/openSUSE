@@ -174,4 +174,26 @@
     needed today and will be available in the next upstream release (forwarded request 1311561 from jfkw)</comment>
     <requestid>1311563</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>be459e2a6e34bea89325fb01052417df</srcmd5>
+    <version>1.25.4</version>
+    <time>1762536104</time>
+    <user>anag_factory</user>
+    <comment>- go1.25.4 (released 2025-11-05) includes fixes to the compiler,
+  the runtime, and the crypto/subtle, encoding/pem, net/url, and os
+  packages.
+  Refs boo#1244485 go1.25 release tracking
+  * go#75480 cmd/link: linker panic and relocation errors with complex generics inlining
+  * go#75775 runtime: build fails when run via QEMU for linux/amd64 running on linux/arm64
+  * go#75790 crypto/internal/fips140/subtle: Go 1.25 subtle.xorBytes panic on MIPS
+  * go#75832 net/url: ipv4 mapped ipv6 addresses should be valid in square brackets
+  * go#75952 encoding/pem: regression when decoding blocks with leading garbage
+  * go#75989 os: on windows RemoveAll removing directories containing read-only files errors with unlinkat ... Access is denied
+  * go#76010 cmd/compile: any(func(){})==any(func(){}) does not panic but should
+  * go#76029 pem/encoding: malformed line endings can cause panics
+- Packaging improvements:
+  * Remove net-url-allow-IP-literals-with-IPv4-mapped-IPv6-addresses.patch
+    No longer needed with go#75832 in latest upstream release (forwarded request 1316085 from jfkw)</comment>
+    <requestid>1316087</requestid>
+  </revision>
 </revisionlist>

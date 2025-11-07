@@ -91,7 +91,7 @@
 %endif
 
 Name:           go1.25
-Version:        1.25.3
+Version:        1.25.4
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -108,7 +108,6 @@ Source100:      llvm-51bfeff0e4b0757ff773da6882f4d538996c9b04.tar.xz
 # PATCH-FIX-OPENSUSE: https://go-review.googlesource.com/c/go/+/391115
 Patch7:         dont-force-gold-on-arm64.patch
 Patch9:         go-fixseccomp.patch
-Patch10:        net-url-allow-IP-literals-with-IPv4-mapped-IPv6-addresses.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 BuildRequires:  %{go_bootstrap_version}
@@ -197,10 +196,6 @@ Go standard library compiled to a dynamically loadable shared object libstd.so
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 %patch -P 9 -p1
 %endif
-
-# net-url-allow-IP-literals-with-IPv4-mapped-IPv6-addresses.patch
-# needed today and will be available in the next upstream release
-%patch -P 10 -p1
 
 cp %{SOURCE4} .
 
