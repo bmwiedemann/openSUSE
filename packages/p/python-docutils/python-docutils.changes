@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov  6 09:20:50 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.22.3:
+  - docutils/parsers/rst/directives/body.py, docutils/parsers/rst/directives/parts.py
+        Do not flag uncategorized, auxiliary elements
+        like sphinx.addnodes.only when testing for
+        invalid parents of topics or sidebars (cf.
+        https://github.com/sphinx-doc/sphinx/issues/14002).
+  - docutils/parsers/rst/states.py
+        More informative error messages when a substitution
+        definition contains problematic or not supported content.
+        Ignore combining characters when extracting a grid table block
+  - docutils/parsers/rst/tableparser.py
+        Ignore combining characters when parsing the grid table
+        structure. Fixes bugs #128 and #512.
+  - docutils/statemachine.py
+        Fix handling of combining characters when extracting
+        2d-block.
+
+-------------------------------------------------------------------
 Mon Sep 22 10:26:15 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.22.2:
@@ -357,7 +377,7 @@ Sun Apr 16 01:30:00 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Jan 24 07:15:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Refactor pygments-2.14.patch to not use distutils. 
+- Refactor pygments-2.14.patch to not use distutils.
 
 -------------------------------------------------------------------
 Tue Jan 10 15:42:55 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
@@ -657,7 +677,7 @@ Fri Aug  9 09:53:07 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 - update to version 0.15.2
   * Docutils 0.14.x is the last version supporting Python 2.4, 2.5,
    3.1, and 3.2.
-  * reStructured text: Allow embedded colons in field list field 
+  * reStructured text: Allow embedded colons in field list field
     names (before, tokens like :this:example: were considered ordinary text).
   * Fixed a bug with the "trim" options of the "unicode" directive.
 
@@ -822,11 +842,11 @@ Tue Sep 24 09:48:27 UTC 2013 - toddrme2178@gmail.com
 - Update to 0.11
   * Fix for the overwritting of document attributes.
   * Support embedded aliases within hyperlink references.
-  * try local import of docutils components (reader, writer, parser, 
+  * try local import of docutils components (reader, writer, parser,
     language module) before global search.
   * Python 3.3 checks CVS syntax only if "strict" is True.
-  * Now, it is easy to add a custom stylesheet to Docutils' default 
-    stylesheet with, e.g., 
+  * Now, it is easy to add a custom stylesheet to Docutils' default
+    stylesheet with, e.g.,
         --stylesheet_path='html4css1.css, mystyle.css'
   * If there is a file html4css1.css in the working directory of the
     process at launch, it is used instead of the one provided by
@@ -834,15 +854,15 @@ Tue Sep 24 09:48:27 UTC 2013 - toddrme2178@gmail.com
   * New default for math-output: HTML math.css.
   * Avoid repeated class declarations in html4css1 writer
   * Drop the simple algorithm replacing straight double quotes with
-    English typographic ones. Activate the SmartQuotes transform if 
+    English typographic ones. Activate the SmartQuotes transform if
     you want this feature.
   * New setting stylesheet_dirs: Comma-separated list of directories
-    where stylesheets are found. Used by stylesheet_path when 
+    where stylesheets are found. Used by stylesheet_path when
     expanding relative path arguments.
   * handle lines starting with a period.
   * Fix option separating comma was bold (thanks to Bill Morris).
 - Use pypi url and download
-- Replace rpmlint-non-executable-scripts.diff with sed in the spec 
+- Replace rpmlint-non-executable-scripts.diff with sed in the spec
   file
 
 -------------------------------------------------------------------
@@ -884,25 +904,25 @@ Tue Nov 20 19:34:53 UTC 2012 - saschpe@suse.de
 Fri Oct 26 08:26:29 UTC 2012 - highwaystar.ru@gmail.com
 
 - patch from upstream for python3.3 support
- * Fix [3541369] Relative __import__ also with Python 3.3 
+ * Fix [3541369] Relative __import__ also with Python 3.3
 
 -------------------------------------------------------------------
 Thu May  3 14:28:17 UTC 2012 - toddrme2178@gmail.com
 
 - Update to version 0.9:
-  * reStructuredText "code" role and directive with syntax 
+  * reStructuredText "code" role and directive with syntax
     highlighting by Pygments_.
   * "code" option of the "include" directive.
-  * Fix [ 3402314 ] allow non-ASCII whitespace, punctuation 
+  * Fix [ 3402314 ] allow non-ASCII whitespace, punctuation
     characters and "international" quotes around inline markup.
   * Fix handling of missing stylesheets.
-  * Fix [ 2971827 ] and [ 3442827 ] extras/roman.py moved to 
+  * Fix [ 2971827 ] and [ 3442827 ] extras/roman.py moved to
     docutils/utils/roman.py
-  * docutils.utils is now a package (providing a place for 
+  * docutils.utils is now a package (providing a place for
     sub-modules)
   * change default for `math-output` setting to MathJax
   * Support the `abbreviation` and `acronym` standard roles.
-  * Record only files required to generate the LaTeX source as 
+  * Record only files required to generate the LaTeX source as
     dependencies.
   * Use ``\setcounter{secnumdepth}{0}`` instead of ``*``-versions
     when suppressing LaTeX section numbering.

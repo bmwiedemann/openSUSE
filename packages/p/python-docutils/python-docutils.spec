@@ -33,7 +33,7 @@
 %endif
 
 Name:           python-docutils%{psuffix}
-Version:        0.22.2
+Version:        0.22.3
 Release:        0
 Summary:        Python Documentation Utilities
 License:        BSD-2-Clause AND Python-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
