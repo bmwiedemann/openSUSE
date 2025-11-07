@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/abraunegg/onedrive.git</param>
-    <param name="revision">v2.5.8</param>
+    <param name="revision">v2.5.9</param>
     <param name="exclude">onedrive/tests/bad-file-name.tar.xz</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
