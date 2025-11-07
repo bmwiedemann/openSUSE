@@ -22,7 +22,7 @@
 %endif
 
 Name:           mdadm
-Version:        4.4+10.g7b1f399e
+Version:        4.4+29.gf8bb524b
 Release:        0
 BuildRequires:  binutils-devel
 BuildRequires:  groff
@@ -41,7 +41,7 @@ Summary:        Utility for configuring "MD" software RAID devices
 License:        GPL-2.0-only
 Group:          System/Base
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source:         %{name}-%{version}.tar
+Source:         %{name}-%{version}.tar.xz
 Source1:        Software-RAID.HOWTO.tar.bz2
 Source2:        sysconfig.mdadm
 
@@ -49,13 +49,20 @@ Source2:        sysconfig.mdadm
 %define _systemdshutdowndir %{_unitdir}/../system-shutdown
 
 %description
-mdadm is a program that can be used to control Linux md devices.
+mdadm is a program that can be used to control Linux Software RAID (md) devices.
+
+%package doc
+Summary:        Linux Software RAID HOWTO
+Group:          Documentation/HTML
+
+%description doc
+This package contains the Linux Software RAID HOWTO.
 
 %prep
 %autosetup -p1 -a1
 
 %build
-%make_build CC="%{__cc}" CXFLAGS="%{optflags} -Wno-error" SUSE=yes BINDIR="%{_sbindir}"
+%make_build CC="%{__cc}" CXFLAGS="%{optflags}" SUSE=yes BINDIR="%{_sbindir}"
 cd Software-RAID.HOWTO
 sgml2html Software-RAID.HOWTO.sgml
 sgml2txt Software-RAID.HOWTO.sgml
@@ -109,9 +116,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
 %files
 %defattr(-,root,root)
 %license COPYING
-%doc CHANGELOG.md documentation/mdadm.conf-example
-%doc documentation/external-reshape-design.txt documentation/mdmon-design.txt
-%doc Software-RAID.HOWTO/Software-RAID.HOWTO*{.txt,.html}
+%doc documentation/mdadm.conf-example
 %doc %{_mandir}/man?/*
 %{_sbindir}/*
 %if 0%{?suse_version} < 1550
@@ -144,5 +149,10 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
 %dir %{_prefix}/libexec/
 %dir %{_prefix}/libexec/mdadm
 %{_prefix}/libexec/mdadm/mdadm_env.sh
+
+%files doc
+%doc CHANGELOG.md
+%doc documentation/external-reshape-design.txt documentation/mdmon-design.txt
+%doc Software-RAID.HOWTO/Software-RAID.HOWTO*{.txt,.html}
 
 %changelog

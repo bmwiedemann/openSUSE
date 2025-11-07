@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov  6 14:47:21 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Split off the Software RAID HOWTO into a -doc package
+- Update to version 4.4+29.gf8bb524b:
+  * fix race between mdcheck_start.service and mdcheck_continue.service
+    (bsc#1243443, bsc#1248097)
+  * various fixes for mdcheck (bsc#1248097)
+  * mdadm_env.sh: ignore MDADM_RAIDDEVICES if MDADM_SCAN is set
+    (bsc#1229997)
+- Upstream bug fixes since 4.4 (bsc#1253060)
+  * mdadm: add attribute nonstring for signature
+  * super-ddf: Prevent crash when handling DDF metadata
+  * platform-intel: Disable legacy option ROM scan on UEFI machines
+  * mdadm: fix --grow with --add for linear
+  * mdadm/raid6check: add xmalloc.h to raid6check.c
+  * Coverity fixes resources leaks
+  * udev: persist properties of MD devices after switch_root
+- _service: switch to tar_scm for better interoperabity with SLFO.
+
+-------------------------------------------------------------------
 Tue Nov  4 17:18:07 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - _service: pull from github.com/openSUSE/mdadm, patches now managed in git
