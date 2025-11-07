@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  5 19:01:51 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.24.10 (released 2025-11-05) includes fixes to the
+  encoding/pem and net/url packages.
+  Refs boo#1236217 go1.24 release tracking
+  * go#75831 net/url: ipv4 mapped ipv6 addresses should be valid in square brackets
+  * go#75951 encoding/pem: regression when decoding blocks with leading garbage
+  * go#76028 pem/encoding: malformed line endings can cause panics
+- Packaging improvements:
+  * Remove net-url-allow-IP-literals-with-IPv4-mapped-IPv6-addresses.patch
+    No longer needed with go#75831 in latest upstream release
+
+-------------------------------------------------------------------
 Mon Oct 13 21:14:38 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.24.9 (released 2025-10-13) includes fixes to the crypto/x509
