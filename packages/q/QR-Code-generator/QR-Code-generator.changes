@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  7 07:52:18 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Building also the Java implementation
+
+-------------------------------------------------------------------
 Mon Jun 23 05:29:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.

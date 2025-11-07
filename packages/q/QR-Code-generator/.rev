@@ -48,4 +48,12 @@
 - List files and directories underneath python_sitelib explicitly.</comment>
     <requestid>1289119</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>87b6a2beb119284059fb3e83fc4c46eb</srcmd5>
+    <version>1.8.0+git17.856ba8a</version>
+    <time>1762536190</time>
+    <user>anag_factory</user>
+    <comment>Add java implementation</comment>
+    <requestid>1316391</requestid>
+  </revision>
 </revisionlist>

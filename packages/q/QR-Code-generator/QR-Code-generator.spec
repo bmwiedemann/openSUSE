@@ -1,7 +1,7 @@
 #
 # spec file for package QR-Code-generator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,11 +32,16 @@ License:        MIT
 URL:            https://github.com/nayuki/QR-Code-generator
 Source0:        %{name}-%{version}.tar.zst
 Source1:        qrcodegen-cmake-%cmake_code_version.tar.zst
+Source2:        %{name}-build.xml
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  ant
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  java-devel >= 9
+BuildRequires:  javapackages-local
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
@@ -77,10 +82,23 @@ Summary:        QR Code generator library
 %description -n %{libcppname}
 C++ QR Code generator library
 
+%package java
+Summary:        QR Code generator library - Java
+
+%description java
+Java implementation of the QR Code generator library
+
+%package javadoc
+Summary:        QR Code generator library - Javadoc
+
+%description javadoc
+The Javadoc for the Java implementaion of the QR Code generator library
+
 %prep
 %autosetup -p1 -a1
 ln -s qrcodegen-cmake-%cmake_code_version/{CMakeLists.txt,cmake} .
 cp qrcodegen-cmake-%cmake_code_version/{README.md,LICENSE} .
+cp %{SOURCE2} java/build.xml
 
 %build
 %cmake
@@ -89,11 +107,26 @@ pushd ../python
 %pyproject_wheel
 popd
 
+pushd ../java
+ant jar javadoc
+popd
+
 %install
 %cmake_install
 
 pushd python
 %pyproject_install
+popd
+
+pushd java
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/qrcodegen.jar %{buildroot}%{_javadir}/qrcodegen.jar
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/qrcodegen.pom
+%add_maven_depmap qrcodegen.pom qrcodegen.jar
+install -dm 0755 %{buildroot}%{_javadocdir}
+cp -r target/site/apidocs %{buildroot}%{_javadocdir}/qrcodegen
+%fdupes -s %{buildroot}%{_javadocdir}
 popd
 
 %ldconfig_scriptlets -n %{libcname}
@@ -124,5 +157,12 @@ popd
 %files -n %{libcppname}
 %license Readme.markdown
 %{_libdir}/libqrcodegencpp.so.*
+
+%files -n QR-Code-generator-java -f java/.mfiles
+%license Readme.markdown
+
+%files -n QR-Code-generator-javadoc
+%{_javadocdir}/qrcodegen
+%license Readme.markdown
 
 %changelog
