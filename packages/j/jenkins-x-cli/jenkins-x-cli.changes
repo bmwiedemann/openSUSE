@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 07 13:04:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.28:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.33
+- Update to version 3.16.27:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.32
+
+-------------------------------------------------------------------
 Wed Oct 29 05:41:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.16.26:
