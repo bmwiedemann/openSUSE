@@ -1,7 +1,7 @@
 #
 # spec file for package hibiscus
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,24 @@
 #
 
 
-%define _major 2
-%define _minor 10
-%define _micro 27
-%define _build 391
-%define _version %{_major}.%{_minor}.%{_micro}
-%define _tag V_%{_major}_%{_minor}_%{_micro}_BUILD_%{_build}
-
 Name:           hibiscus
-Version:        %{_version}
+Version:        2.12.0
 Release:        0
 Summary:        Java online banking client using the HBCI standard
 License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
 URL:            https://www.willuhn.de/products/hibiscus/
-Source:         https://github.com/willuhn/hibiscus/archive/refs/tags/%{_tag}.tar.gz
+Source:         https://github.com/willuhn/hibiscus/archive/refs/tags/%{version}.tar.gz
 Source2:        hibiscus-rpmlintrc
 BuildRequires:  ant
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  jameica-devel >= 2.10.4
-BuildRequires:  java-devel >= 11
+BuildRequires:  jameica-devel >= 2.12.0
+BuildRequires:  java-devel >= 17
 BuildRequires:  jpackage-utils
 BuildRequires:  xml-commons-apis
-Requires:       jameica >= 2.10.4
-
+Requires:       jameica >= 2.12.0
 # Don't offer libraries linked in here to other packages:
 AutoReqProv:    off
 
@@ -52,7 +44,7 @@ key files and PIN/TAN including chipTAN and smsTAN for authentification.
 Supported file formats include MT940, DTAUS, CSV, Moneyplex and PDF/HTML.
 
 %prep
-%setup -q -n %{name}-%{_tag}
+%setup -q
 
 # Remove Windows and Mac libraries
 rm -rf lib/hbci4java-card-*
@@ -76,7 +68,8 @@ ant -f build/build.xml -Ddefine.java.version=1.8 init compile jar zip src
 
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/jameica/plugins
-cp -r releases/%{version}-%{_build}/%{name} %{buildroot}%{_prefix}/lib/jameica/plugins
+##cp -r releases/%%{version}-%%{_build}/%%{name} %%{buildroot}%%{_prefix}/lib/jameica/plugins
+cp -r releases/%{version}/%{name} %{buildroot}%{_prefix}/lib/jameica/plugins
 
 # icons
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/
@@ -92,11 +85,8 @@ install -D -m 0644 %{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.a
 
 %fdupes %{buildroot}
 
-%post
-/sbin/ldconfig
-
-%postun
-/sbin/ldconfig
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %doc build/ChangeLog
