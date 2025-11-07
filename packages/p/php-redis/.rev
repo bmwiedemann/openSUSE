@@ -110,4 +110,23 @@
     <comment></comment>
     <requestid>1255995</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>46f5d62fd5609a0d12a4e28cd8c2eb13</srcmd5>
+    <version>6.3.0</version>
+    <time>1762536150</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 6.3.0
+  * https://pecl.php.net/package-changelog.php?package=redis&amp;release=6.3.0RC1
+  * https://pecl.php.net/package-changelog.php?package=redis&amp;release=6.3.0
+  * Added hash expiration commands HGETEX, HSETEX, HGETDEL and HMGET.
+  * Added GETDEL for RedisCluster.
+  * Added vectorset commands.
+  * Fixed a possible segfault during failover.
+  * Fixed hset fields handling.
+  * Fixed HSetEx expiry argument handling.
+  * Fixed RedisCluster segfault.
+  * Fixed Cloning our objects should not segfault.
+  * Fixed return type for RedisCluster vgetattr and vsetattr.</comment>
+    <requestid>1316103</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov  6 20:30:35 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 6.3.0
+  * https://pecl.php.net/package-changelog.php?package=redis&release=6.3.0RC1
+  * https://pecl.php.net/package-changelog.php?package=redis&release=6.3.0
+  * Added hash expiration commands HGETEX, HSETEX, HGETDEL and HMGET.
+  * Added GETDEL for RedisCluster.
+  * Added vectorset commands.
+  * Fixed a possible segfault during failover.
+  * Fixed hset fields handling.
+  * Fixed HSetEx expiry argument handling.
+  * Fixed RedisCluster segfault.
+  * Fixed Cloning our objects should not segfault.
+  * Fixed return type for RedisCluster vgetattr and vsetattr.
+
+-------------------------------------------------------------------
 Tue Mar 25 04:38:41 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 6.2.0
