@@ -1,7 +1,7 @@
 #
 # spec file for package pdsh
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,7 @@ Summary:        Parallel remote shell program
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/Computing
 Source:         https://github.com/chaos/%{pname}/releases/download/%{pname}-%{version}/%{pname}-%{version}.tar.gz
+Patch:          Add-support-for-C23-gcc-15.patch
 
 %description
 Pdsh is a multithreaded remote shell client which executes commands on
@@ -133,7 +134,7 @@ Conflicts:      pdsh-genders
 Plugin for pdsh to determine nodes to run on from netgroups.
 
 %prep
-%setup -q -n %{pname}-%{version}
+%autosetup -p1 -n %{pname}-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

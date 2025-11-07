@@ -485,4 +485,14 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
     <comment>- Fix version test for munge build (bsc#1236156). (forwarded request 1239224 from eeich)</comment>
     <requestid>1239225</requestid>
   </revision>
+  <revision rev="55" vrev="5">
+    <srcmd5>d06f13fbee37e405472f2cdbdd49f80e</srcmd5>
+    <version>2.35</version>
+    <time>1762536254</time>
+    <user>anag_factory</user>
+    <comment>- Fix build for C23 - gcc-15.
+  This fixes https://github.com/chaos/pdsh/issues/165.
+  Add-support-for-C23-gcc-15.patch</comment>
+    <requestid>1316449</requestid>
+  </revision>
 </revisionlist>
