@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
-Version:        9.6.22
+Version:        9.6.23
 Release:        0
 Summary:        Material theme for mkdocs
 License:        MIT
@@ -65,6 +65,7 @@ Requires:       python-click
 Requires:       python-mkdocs-material-extensions >= 1.1
 Requires:       python-pygments >= 2.16
 Requires:       python-pymdown-extensions >= 10.3
+Requires:       python-regex
 Requires:       (python-mkdocs >= 1.6 with python-mkdocs < 2)
 # Requirements for plugins
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29

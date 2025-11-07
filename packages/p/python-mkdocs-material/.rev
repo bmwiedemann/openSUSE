@@ -783,4 +783,13 @@ update to 9.6.20</comment>
     <comment></comment>
     <requestid>1312062</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>d5e4381df1c2e4cf7e7c8dcd4e1ce1ed</srcmd5>
+    <version>9.6.23</version>
+    <time>1762536133</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.6.23:
+  * Updated Burmese translation</comment>
+    <requestid>1316096</requestid>
+  </revision>
 </revisionlist>
