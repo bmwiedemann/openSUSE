@@ -82,7 +82,7 @@
   %ifarch %{ix86} x86_64
     %define with_vulkan 1
     %if 0%{?suse_version} > 1600
-    %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau
+    %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau,microsoft-experimental
     %else
     %define vulkan_drivers swrast,amd,intel,intel_hasvk
     %endif
@@ -721,6 +721,18 @@ Requires:       Mesa-vulkan-device-select = %{version}
 This package contains the Vulkan parts for Mesa.
 %endif
 
+%ifarch %{ix86} x86_64
+%if 0%{?suse_version} > 1600
+%package -n libvulkan_dzn
+Summary:        Mesa vulkan driver for dzn (D3D12)
+Group:          System/Libraries
+Requires:       Mesa-vulkan-device-select = %{version}
+
+%description -n libvulkan_dzn
+This package contains the Vulkan parts for Mesa.
+%endif
+%endif
+
 %package -n libvulkan_radeon
 Summary:        Mesa vulkan driver for AMD GPU
 Group:          System/Libraries
@@ -947,6 +959,13 @@ rm -fv %{buildroot}/%{_libdir}/libwayland-egl.so* \
 # Delete things that we do not package in the Mesa-drivers variant, but can
 # not disable from buildling and installing.
 
+# in libvulkan_dzn
+%ifarch %{ix86} x86_64
+%if 0%{?suse_version} > 1600
+rm -fv %{buildroot}/%{_libdir}/libspirv_to_dxil.a
+%endif
+%endif
+
 rm -fv %{buildroot}/%{_libdir}/libEGL.so*
 # in Mesa-libEGL-devel
 rm -v %{buildroot}/%{_includedir}/EGL/egl.h \
@@ -995,6 +1014,7 @@ rm -fv %{buildroot}%{_includedir}/gbm.h \
 	%{buildroot}%{_libdir}/pkgconfig/gbm.pc
 
 %else
+
 # package in Mesa-dri
 rm -Rfv %{buildroot}/%{_datadir}/drirc.d
 
@@ -1219,6 +1239,18 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_datadir}/vulkan/icd.d/nouveau_icd.*.json
 %dir %{_datadir}/vulkan
 %dir %{_datadir}/vulkan/icd.d
+%endif
+%endif
+
+%ifarch %{ix86} x86_64
+%if 0%{?suse_version} > 1600
+%files -n libvulkan_dzn
+%{_libdir}/libvulkan_dzn.so
+%{_libdir}/libspirv_to_dxil.so
+%{_bindir}/spirv2dxil
+%dir %{_datadir}/vulkan
+%dir %{_datadir}/vulkan/icd.d
+%{_datadir}/vulkan/icd.d/dzn_icd.*.json
 %endif
 %endif
 

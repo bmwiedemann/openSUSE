@@ -6498,4 +6498,19 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   --&gt;  https://docs.mesa3d.org/relnotes/25.2.6</comment>
     <requestid>1314490</requestid>
   </revision>
+  <revision rev="557" vrev="2">
+    <srcmd5>c5b3723689a5ec09f76ed97f7627548c</srcmd5>
+    <version>25.2.6</version>
+    <time>1762536006</time>
+    <user>anag_factory</user>
+    <comment>- add libvulkan_dzn package to allow vulkan support for openSUSE in
+  WSL.
+- the package is build only for tumbleweed (not sure whether it's
+  okay to add to Leap), and built on ix86 and amd64
+- arm build is not added because DirectX-Headers is not built
+  there yet.
+- I build locally, and tested that vulkan dzn now works in am64 wsl
+  opensuse tumbleweed.</comment>
+    <requestid>1315736</requestid>
+  </revision>
 </revisionlist>

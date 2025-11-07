@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  5 13:17:14 UTC 2025 - Shani Hadiyanto <shanipribadi@gmail.com>
+
+- add libvulkan_dzn package to allow vulkan support for openSUSE in
+  WSL.
+- the package is build only for tumbleweed (not sure whether it's
+  okay to add to Leap), and built on ix86 and amd64
+- arm build is not added because DirectX-Headers is not built
+  there yet.
+- I build locally, and tested that vulkan dzn now works in am64 wsl
+  opensuse tumbleweed.
+
+-------------------------------------------------------------------
 Thu Oct 30 01:20:42 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 25.2.6
