@@ -1,0 +1,6 @@
+<multibuild>
+  <package>base</package>
+  <package>doc</package>
+  <package>nogil</package>
+  <package>nogil-base</package>
+</multibuild>

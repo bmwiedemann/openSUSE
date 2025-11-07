@@ -1,0 +1,175 @@
+From 5754521af1d51aa8e445cba07a093bbc0c88596d Mon Sep 17 00:00:00 2001
+From: Zackery Spytz <zspytz@gmail.com>
+Date: Mon, 16 Dec 2019 18:24:08 -0700
+Subject: [PATCH] bpo-31046: ensurepip does not honour the value of $(prefix)
+
+Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
+---
+ Doc/library/ensurepip.rst                                       |   12 +++++-
+ Lib/ensurepip/__init__.py                                       |   18 +++++++---
+ Lib/test/test_ensurepip.py                                      |   11 ++++++
+ Makefile.pre.in                                                 |    4 +-
+ Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst |    1 
+ 5 files changed, 37 insertions(+), 9 deletions(-)
+ create mode 100644 Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
+
+Index: Python-3.15.0a1/Doc/library/ensurepip.rst
+===================================================================
+--- Python-3.15.0a1.orig/Doc/library/ensurepip.rst	2025-10-14 12:46:08.000000000 +0200
++++ Python-3.15.0a1/Doc/library/ensurepip.rst	2025-10-24 23:53:43.587408643 +0200
+@@ -61,7 +61,11 @@
+ By default, ``pip`` is installed into the current virtual environment
+ (if one is active) or into the system site packages (if there is no
+ active virtual environment). The installation location can be controlled
+-through two additional command line options:
++through some additional command line options:
++
++.. option:: --prefix <dir>
++
++   Installs ``pip`` using the given directory prefix.
+ 
+ .. option:: --root <dir>
+ 
+@@ -102,7 +106,7 @@
+    Returns a string specifying the available version of pip that will be
+    installed when bootstrapping an environment.
+ 
+-.. function:: bootstrap(root=None, upgrade=False, user=False, \
++.. function:: bootstrap(root=None, prefix=None, upgrade=False, user=False, \
+                         altinstall=False, default_pip=False, \
+                         verbosity=0)
+ 
+@@ -112,6 +116,8 @@
+    If *root* is ``None``, then installation uses the default install location
+    for the current environment.
+ 
++   *prefix* specifies the directory prefix to use when installing.
++
+    *upgrade* indicates whether or not to upgrade an existing installation
+    of an earlier version of ``pip`` to the available version.
+ 
+@@ -132,6 +138,8 @@
+    *verbosity* controls the level of output to :data:`sys.stdout` from the
+    bootstrapping operation.
+ 
++   .. versionchanged:: 3.9 the *prefix* parameter was added.
++
+    .. audit-event:: ensurepip.bootstrap root ensurepip.bootstrap
+ 
+    .. note::
+Index: Python-3.15.0a1/Lib/ensurepip/__init__.py
+===================================================================
+--- Python-3.15.0a1.orig/Lib/ensurepip/__init__.py	2025-10-24 23:53:22.118065622 +0200
++++ Python-3.15.0a1/Lib/ensurepip/__init__.py	2025-10-24 23:53:43.587899003 +0200
+@@ -106,27 +106,27 @@
+     os.environ['PIP_CONFIG_FILE'] = os.devnull
+ 
+ 
+-def bootstrap(*, root=None, upgrade=False, user=False,
++def bootstrap(*, root=None, prefix=None, upgrade=False, user=False,
+               altinstall=False, default_pip=False,
+               verbosity=0):
+     """
+     Bootstrap pip into the current Python installation (or the given root
+-    directory).
++    and directory prefix).
+ 
+     Note that calling this function will alter both sys.path and os.environ.
+     """
+     # Discard the return value
+-    _bootstrap(root=root, upgrade=upgrade, user=user,
++    _bootstrap(root=root, prefix=prefix, upgrade=upgrade, user=user,
+                altinstall=altinstall, default_pip=default_pip,
+                verbosity=verbosity)
+ 
+ 
+-def _bootstrap(*, root=None, upgrade=False, user=False,
++def _bootstrap(*, root=None, prefix=None, upgrade=False, user=False,
+               altinstall=False, default_pip=False,
+               verbosity=0):
+     """
+     Bootstrap pip into the current Python installation (or the given root
+-    directory). Returns pip command status code.
++    and directory prefix). Returns pip command status code.
+ 
+     Note that calling this function will alter both sys.path and os.environ.
+     """
+@@ -171,6 +171,8 @@
+         args = ["install", "--no-cache-dir", "--no-index", "--find-links", tmpdir]
+         if root:
+             args += ["--root", root]
++        if prefix:
++            args += ["--prefix", prefix]
+         if upgrade:
+             args += ["--upgrade"]
+         if user:
+@@ -247,6 +249,11 @@
+         help="Install everything relative to this alternate root directory.",
+     )
+     parser.add_argument(
++        "--prefix",
++        default=None,
++        help="Install everything using this prefix.",
++    )
++    parser.add_argument(
+         "--altinstall",
+         action="store_true",
+         default=False,
+@@ -265,6 +272,7 @@
+ 
+     return _bootstrap(
+         root=args.root,
++        prefix=args.prefix,
+         upgrade=args.upgrade,
+         user=args.user,
+         verbosity=args.verbosity,
+Index: Python-3.15.0a1/Lib/test/test_ensurepip.py
+===================================================================
+--- Python-3.15.0a1.orig/Lib/test/test_ensurepip.py	2025-10-24 23:53:23.546712597 +0200
++++ Python-3.15.0a1/Lib/test/test_ensurepip.py	2025-10-24 23:53:43.588286136 +0200
+@@ -105,6 +105,17 @@
+             unittest.mock.ANY,
+         )
+ 
++    def test_bootstrapping_with_prefix(self):
++        ensurepip.bootstrap(prefix="/foo/bar/")
++        self.run_pip.assert_called_once_with(
++            [
++                "install", "--no-cache-dir", "--no-index", "--find-links",
++                unittest.mock.ANY, "--prefix", "/foo/bar/",
++                "pip",
++            ],
++            unittest.mock.ANY,
++        )
++
+     def test_bootstrapping_with_user(self):
+         ensurepip.bootstrap(user=True)
+ 
+Index: Python-3.15.0a1/Makefile.pre.in
+===================================================================
+--- Python-3.15.0a1.orig/Makefile.pre.in	2025-10-24 23:53:39.419910772 +0200
++++ Python-3.15.0a1/Makefile.pre.in	2025-10-24 23:53:43.588889640 +0200
+@@ -2378,7 +2378,7 @@
+ 			install|*) ensurepip="" ;; \
+ 		esac; \
+ 		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
+-			$$ensurepip --root=$(DESTDIR)/ ; \
++			$$ensurepip --root=$(DESTDIR)/ --prefix=$(prefix) ; \
+ 	fi
+ 
+ .PHONY: altinstall
+@@ -2389,7 +2389,7 @@
+ 			install|*) ensurepip="--altinstall" ;; \
+ 		esac; \
+ 		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
+-			$$ensurepip --root=$(DESTDIR)/ ; \
++			$$ensurepip --root=$(DESTDIR)/ --prefix=$(prefix) ; \
+ 	fi
+ 
+ .PHONY: commoninstall
+Index: Python-3.15.0a1/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ Python-3.15.0a1/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst	2025-10-24 23:53:43.589498870 +0200
+@@ -0,0 +1 @@
++A directory prefix can now be specified when using :mod:`ensurepip`.

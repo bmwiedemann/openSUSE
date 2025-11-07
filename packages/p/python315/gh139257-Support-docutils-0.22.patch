@@ -1,0 +1,36 @@
+From 19b61747df3d62c822285c488753d6fbdf91e3ac Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Tue, 23 Sep 2025 10:20:16 +0200
+Subject: [PATCH 1/2] gh-139257: Support docutils >= 0.22
+
+---
+ Doc/tools/extensions/pyspecific.py |   12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+Index: Python-3.15.0a1/Doc/tools/extensions/pyspecific.py
+===================================================================
+--- Python-3.15.0a1.orig/Doc/tools/extensions/pyspecific.py	2025-10-14 12:46:08.000000000 +0200
++++ Python-3.15.0a1/Doc/tools/extensions/pyspecific.py	2025-10-24 23:55:02.700550007 +0200
+@@ -25,11 +25,21 @@
+ SOURCE_URI = 'https://github.com/python/cpython/tree/main/%s'
+ 
+ # monkey-patch reST parser to disable alphabetic and roman enumerated lists
++def _disable_alphabetic_and_roman(text):
++    try:
++        # docutils >= 0.22
++        from docutils.parsers.rst.states import InvalidRomanNumeralError
++        raise InvalidRomanNumeralError(text)
++    except ImportError:
++        # docutils < 0.22
++        return None
++
++
+ from docutils.parsers.rst.states import Body
+ Body.enum.converters['loweralpha'] = \
+     Body.enum.converters['upperalpha'] = \
+     Body.enum.converters['lowerroman'] = \
+-    Body.enum.converters['upperroman'] = lambda x: None
++    Body.enum.converters['upperroman'] = _disable_alphabetic_and_roman
+ 
+ 
+ class PyAwaitableMixin(object):

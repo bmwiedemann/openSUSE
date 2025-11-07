@@ -1,0 +1,20 @@
+---
+ Makefile.pre.in |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+Index: Python-3.15.0a1/Makefile.pre.in
+===================================================================
+--- Python-3.15.0a1.orig/Makefile.pre.in	2025-10-14 12:46:08.000000000 +0200
++++ Python-3.15.0a1/Makefile.pre.in	2025-10-24 23:53:39.419910772 +0200
+@@ -1917,6 +1917,11 @@
+ 	      -DGITBRANCH="\"`LC_ALL=C $(GITBRANCH)`\"" \
+ 	      -o $@ $(srcdir)/Modules/getbuildinfo.c
+ 
++Python/getcompiler.o: $(srcdir)/Python/getcompiler.c Makefile
++	$(CC) -c $(PY_CORE_CFLAGS) \
++		-DCOMPILER='"[GCC]"' \
++		-o $@ $(srcdir)/Python/getcompiler.c
++
+ Modules/getpath.o: $(srcdir)/Modules/getpath.c Python/frozen_modules/getpath.h Makefile $(PYTHON_HEADERS)
+ 	$(CC) -c $(PY_CORE_CFLAGS) -DPYTHONPATH='"$(PYTHONPATH)"' \
+ 		-DPREFIX='"$(host_prefix)"' \

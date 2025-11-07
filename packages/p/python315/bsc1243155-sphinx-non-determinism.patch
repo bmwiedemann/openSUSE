@@ -1,0 +1,45 @@
+From 906a590df191f66f4f0c4a70e3edb6fd82c156ef Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Tue, 1 Jul 2025 12:13:28 +0200
+Subject: [PATCH] Doc: Generate ids for audit_events using docname
+
+This patch generates ids for audit_events using the docname so the id is
+not global but depend on the source file. This make the doc build
+reproducible with multiple cores because it doesn't which file is parsed
+first, the id for audit_events will always be consistent independently
+of what file is parsed first.
+
+https://github.com/python/cpython/issues/130979
+---
+ Doc/tools/extensions/audit_events.py |   11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+Index: Python-3.14.0b3/Doc/tools/extensions/audit_events.py
+===================================================================
+--- Python-3.14.0b3.orig/Doc/tools/extensions/audit_events.py	2025-06-17 17:40:54.000000000 +0200
++++ Python-3.14.0b3/Doc/tools/extensions/audit_events.py	2025-07-02 15:06:57.802539821 +0200
+@@ -68,8 +68,13 @@
+             logger.warning(msg)
+             return
+ 
+-    def id_for(self, name) -> str:
+-        source_count = len(self.sources.get(name, set()))
++    def _source_count(self, name, docname) -> int:
++        """Count the event name in the same source"""
++        sources = self.sources.get(name, set())
++        return len([s for s, t in sources if s == docname])
++
++    def id_for(self, name, docname) -> str:
++        source_count = self._source_count(name, docname)
+         name_clean = re.sub(r"\W", "_", name)
+         return f"audit_event_{name_clean}_{source_count}"
+ 
+@@ -142,7 +147,7 @@
+         except (IndexError, TypeError):
+             target = None
+         if not target:
+-            target = self.env.audit_events.id_for(name)
++            target = self.env.audit_events.id_for(name, self.env.docname)
+             ids.append(target)
+         self.env.audit_events.add_event(name, args, (self.env.docname, target))
+ 
