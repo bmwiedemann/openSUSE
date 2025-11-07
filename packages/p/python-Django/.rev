@@ -1439,4 +1439,19 @@
     <comment></comment>
     <requestid>1308583</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>7a6ce7a5dd550352a3174c8e681a792a</srcmd5>
+    <version>5.2.8</version>
+    <time>1762536057</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1315948 from mcalabkova
+
+- Update to 5.2.8 (bsc#1252926)
+    * CVE-2025-64459: Potential SQL injection via _connector keyword argument
+    * Added compatibility for oracledb 3.4.0
+    * Fixed a bug in Django 5.2 where QuerySet.first() and QuerySet.last()
+      raised an error on querysets performing aggregation that selected all
+      fields of a composite primary key.</comment>
+    <requestid>1315976</requestid>
+  </revision>
 </revisionlist>

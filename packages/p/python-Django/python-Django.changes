@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  6 07:20:08 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.8 (bsc#1252926)
+  * CVE-2025-64459: Potential SQL injection via _connector keyword argument
+  * Added compatibility for oracledb 3.4.0
+  * Fixed a bug in Django 5.2 where QuerySet.first() and QuerySet.last()
+    raised an error on querysets performing aggregation that selected all
+    fields of a composite primary key.
+
+-------------------------------------------------------------------
 Thu Oct  2 09:41:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.7 (bsc#1250485, bsc#1250487)
