@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  6 06:14:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 142.0.7444.134 (boo#1253089):
+  * CVE-2025-12725: Out of bounds write in WebGPU
+  * CVE-2025-12726: Inappropriate implementation in Views
+  * CVE-2025-12727: Inappropriate implementation in V8
+  * CVE-2025-12728: Inappropriate implementation in Omnibox
+  * CVE-2025-12729: Inappropriate implementation in Omnibox
+
+-------------------------------------------------------------------
 Wed Oct 29 04:54:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 142.0.7444.59, the stable channel promotion of 142

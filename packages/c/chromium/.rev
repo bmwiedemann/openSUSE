@@ -5977,4 +5977,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>CVE changelog only additions for boo#1252881</comment>
     <requestid>1314458</requestid>
   </revision>
+  <revision rev="487" vrev="1">
+    <srcmd5>56393599d9f82ccbe73f78aaf9c6d3d7</srcmd5>
+    <version>142.0.7444.134</version>
+    <time>1762536115</time>
+    <user>anag_factory</user>
+    <comment>Chromium 142.0.7444.134 (boo#1253089)</comment>
+    <requestid>1315921</requestid>
+  </revision>
 </revisionlist>
