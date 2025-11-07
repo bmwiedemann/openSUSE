@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov  2 09:27:39 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15.2
+  * Look for builder headers in the correct path.
+
+-------------------------------------------------------------------
+Sun Sep 21 18:24:15 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15.1
+  * Fixed cross-compiling replacing AC_CHECK_FILE.
+  * Adjust song length when forcing C64 model.
+
+-------------------------------------------------------------------
 Tue Jul  1 15:22:58 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.15.0
