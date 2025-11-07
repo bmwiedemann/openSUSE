@@ -4658,4 +4658,37 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1309801</requestid>
   </revision>
+  <revision rev="301" vrev="1">
+    <srcmd5>eb94574731301e9ecb658a3c5e86453b</srcmd5>
+    <version>10.1.2</version>
+    <time>1762535811</time>
+    <user>anag_factory</user>
+    <comment>- Update to stable release 10.1.2:
+  Full backport list here:
+   https://lore.kernel.org/qemu-devel/1761022280.036705.6267.nullmailer@tls.msk.ru/
+  A selection of them is reported here below:
+   linux-user/microblaze: Fix little-endianness binary
+   target/hppa: correct size bit parity for fmpyadd
+   accel/tcg: Hoist first page lookup above pointer_wrap
+   target/i386: user: do not set up a valid LDT on reset
+   async: access bottom half flags with qatomic_read
+   target/i386: fix access to the T bit of the TSS
+   target/i386: fix x86_64 pushw op
+   i386/tcg/smm_helper: Properly apply DR values on SMM entry / exit
+   i386/cpu: Prevent delivering SIPI during SMM in TCG mode
+   i386/kvm: Expose ARCH_CAP_FB_CLEAR when invulnerable to MDS
+   target/i386: Fix CR2 handling for non-canonical addresses
+   block/curl.c: Use explicit long constants in curl_easy_setopt calls
+   target/i386: add compatibility property for pdcm feature
+   target/i386: add compatibility property for arch_capabilities
+   target/riscv: rvv: Fix vslide1[up|down].vx unexpected result when XLEN2 and SEWd
+   target/riscv: Fix ssamoswap error handling
+   target/riscv: Fix SSP CSR error handling in VU/VS mode
+   target/riscv: Fix the mepc when sspopchk triggers the exception
+   target/arm: Don't set HCR.RW for AArch32 only CPUs
+   pcie_sriov: make pcie_sriov_pf_exit() safe on non-SR-IOV devices
+   ...
+</comment>
+    <requestid>1316072</requestid>
+  </revision>
 </revisionlist>
