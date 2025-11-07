@@ -18,9 +18,9 @@
 
 
 # define libraries
-%define libtap libwiretap15
-%define libutil libwsutil16
-%define libwire libwireshark18
+%define libtap libwiretap16
+%define libutil libwsutil17
+%define libwire libwireshark19
 %define org_name org.wireshark.Wireshark
 %if 0%{?suse_version} >= 1500
 %bcond_without lz4
@@ -34,7 +34,7 @@
 %bcond_with qt6
 %endif
 Name:           wireshark
-Version:        4.4.10
+Version:        4.6.0
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -43,8 +43,6 @@ URL:            https://www.wireshark.org/
 Source:         https://www.wireshark.org/download/src/%{name}-%{version}.tar.xz
 Source2:        https://www.wireshark.org/download/SIGNATURES-%{version}.txt#/%{name}-%{version}.tar.xz.hash
 Source3:        https://www.wireshark.org/download/gerald_at_wireshark_dot_org.gpg#/wireshark.keyring
-# PATCH-FEATURE-SLE wireshark-0010-dumpcap-permission-denied.patch bsc#1180102
-Patch10:        wireshark-0010-dumpcap-permission-denied.patch
 BuildRequires:  %{rb_default_ruby_suffix}-rubygem-asciidoctor
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc13
@@ -170,7 +168,7 @@ from a live network or from a capture file on disk.
 Summary:        A Network Traffic Analyser - Qt UI
 Group:          Productivity/Networking/Diagnostic
 Requires:       %{name} = %{version}
-Requires:       hicolor-icon-theme
+Requires:       hicolor-icon-theme >= 0.17
 Requires:       xdg-utils
 Provides:       %{name}-ui = %{version}
 # gtk is the deprecated ui so ensure its uninstall
@@ -232,9 +230,6 @@ cp resources/freedesktop/%{org_name}.desktop %{buildroot}%{_datadir}/application
 sed -i -e 's|Name=Wireshark|Name=Wireshark - Super User Mode|g' %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
 sed -i -e 's|^Exec=wireshark|Exec=xdg-su -c wireshark|g' %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
 
-%suse_update_desktop_file %{org_name}
-%suse_update_desktop_file %{org_name}-su
-
 rm -f %{buildroot}${cmakedocdir}/*.html
 
 %pre
@@ -247,14 +242,6 @@ getent group wireshark >/dev/null || groupadd -r wireshark
 %set_permissions %{_bindir}/dumpcap
 exit 0
 
-%post ui-qt
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun ui-qt
-%desktop_database_postun
-%icon_theme_cache_postun
-
 %ldconfig_scriptlets -n %{libutil}
 %ldconfig_scriptlets -n %{libwire}
 %ldconfig_scriptlets -n %{libtap}
@@ -266,6 +253,7 @@ exit 0
 %{_mandir}/man4/*
 %{_bindir}/capinfos
 %{_bindir}/captype
+%{_bindir}/dftest
 %{_bindir}/editcap
 %{_bindir}/idl2wrs
 %{_bindir}/mergecap
@@ -279,6 +267,16 @@ exit 0
 %verify(not mode caps) %attr(0750,root,wireshark) %caps(cap_net_raw,cap_net_admin=ep) %{_bindir}/dumpcap
 %{_libdir}/wireshark/
 %{_datadir}/wireshark/
+%{_libexecdir}/wireshark
+%{_libexecdir}/wireshark/extcap
+%{_libexecdir}/wireshark/extcap/androiddump
+%{_libexecdir}/wireshark/extcap/ciscodump
+%{_libexecdir}/wireshark/extcap/dpauxmon
+%{_libexecdir}/wireshark/extcap/randpktdump
+%{_libexecdir}/wireshark/extcap/sdjournal
+%{_libexecdir}/wireshark/extcap/sshdump
+%{_libexecdir}/wireshark/extcap/udpdump
+%{_libexecdir}/wireshark/extcap/wifidump
 
 %files -n %{libutil}
 %license COPYING

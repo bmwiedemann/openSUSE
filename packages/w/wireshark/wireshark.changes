@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 15 13:12:46 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.6.0
+  * There are new features, bug fixes and updated protocol
+    support. For an exhaustive list please refer to:
+    https://www.wireshark.org/docs/relnotes/wireshark-4.6.0.html
+- dropped wireshark-0010-dumpcap-permission-denied.patch:
+  functionality not needed anymore, provided natively by the project.
+
+-------------------------------------------------------------------
 Thu Oct  9 09:19:17 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.4.10
