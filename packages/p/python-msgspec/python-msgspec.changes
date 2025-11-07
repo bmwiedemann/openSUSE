@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov  7 03:30:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.19.0:
+  * Improve JSON encoding performance by up to 40%.
+  * Ensure tuple and frozenset default values are treated identically whether
+    specified by value or default_factory.
+  * Fix memory leak of match_args in StructConfig object.
+  * Fix memory leak in Raw.copy().
+  * Update decode signatures for PEP 688.
+  * Generate __replace__ method on Struct types, for use with copy.replace.
+  * Fix incorrect decoding of certain > 64 bit integers.
+  * Call __post_init__ when converting from an object to a Struct.
+  * BREAKING: Expand buffer when encode_into is passed a buffer smaller than
+    offset.
+  * Support Raw objects as inputs to convert.
+  * Error nicely when a dataclass type (instead of an instance) is passed to
+    encode.
+  * Drop support for Python 3.8.
+  * Add support for Python 3.13.
+  * Remove deprecated from_builtins.
+  * Support encoding any Enum type whose .value is a supported type.
+  * Don't fail eagerly when processing generic types with unsupported
+    __parameters__.
+  * Use eval_type_backport to backport type annotations to Python 3.9.
+- Drop patch python313.patch, included upstream.
+- Add patch support-python314.patch:
+  * Support Python 3.14 annontation changes.
+
+-------------------------------------------------------------------
 Wed Sep 17 13:09:18 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

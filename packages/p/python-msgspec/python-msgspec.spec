@@ -1,7 +1,7 @@
 #
 # spec file for package python-msgspec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-msgspec
-Version:        0.18.6
+Version:        0.19.0
 Release:        0
 Summary:        A fast serialization and validation library
 License:        BSD-3-Clause
 URL:            https://jcristharif.com/msgspec/
 Source:         https://github.com/jcrist/msgspec/archive/refs/tags/%{version}.tar.gz#/msgspec-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: gh#jcrist/msgspec#711
-Patch1:         python313.patch
-BuildRequires:  %{python_module devel}
+# PATCH-FIX-UPSTREAM Based on gh#jcrist/msgspec#852 & gh#jcrist/msgspec#854
+Patch0:         support-python314.patch
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -56,7 +56,14 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch
+# Requires to import the module, but other tests require the path
+# Can be dropped next release
+donttest="test_raw_copy_doesnt_leak"
+if [ $(getconf LONG_BIT) = 32 ]; then
+    # Overflow errors on 32 bit arches
+    donttest="$donttest or test_hashtable or test_decoding_large_arrays or test_timestamp"
+fi
+%pytest_arch -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md

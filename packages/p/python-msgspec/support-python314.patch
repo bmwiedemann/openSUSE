@@ -1,0 +1,387 @@
+Index: msgspec-0.19.0/msgspec/_core.c
+===================================================================
+--- msgspec-0.19.0.orig/msgspec/_core.c
++++ msgspec-0.19.0/msgspec/_core.c
+@@ -452,6 +452,7 @@ typedef struct {
+ #endif
+     PyObject *astimezone;
+     PyObject *re_compile;
++    PyObject *get_annotate_from_class_namespace;
+     uint8_t gc_cycle;
+ } MsgspecState;
+ 
+@@ -5814,12 +5815,45 @@ structmeta_is_classvar(
+ 
+ static int
+ structmeta_collect_fields(StructMetaInfo *info, MsgspecState *mod, bool kwonly) {
+-    PyObject *annotations = PyDict_GetItemString(
++    PyObject *annotations = PyDict_GetItemString(  // borrowed reference
+         info->namespace, "__annotations__"
+     );
+-    if (annotations == NULL) return 0;
++    if (annotations == NULL) {
++        if (mod->get_annotate_from_class_namespace != NULL) {
++            PyObject *annotate = PyObject_CallOneArg(
++                mod->get_annotate_from_class_namespace, info->namespace
++            );
++            if (annotate == NULL) {
++                return -1;
++            }
++            if (annotate == Py_None) {
++                Py_DECREF(annotate);
++                return 0;
++            }
++            PyObject *format = PyLong_FromLong(1);  /* annotationlib.Format.VALUE */
++            if (format == NULL) {
++                Py_DECREF(annotate);
++                return -1;
++            }
++            annotations = PyObject_CallOneArg(
++                annotate, format
++            );
++            Py_DECREF(annotate);
++            Py_DECREF(format);
++            if (annotations == NULL) {
++                return -1;
++            }
++        }
++        else {
++            return 0;  // No annotations, nothing to do
++        }
++    }
++    else {
++        Py_INCREF(annotations);
++    }
+ 
+     if (!PyDict_Check(annotations)) {
++        Py_DECREF(annotations);
+         PyErr_SetString(PyExc_TypeError, "__annotations__ must be a dict");
+         return -1;
+     }
+@@ -5869,6 +5903,7 @@ structmeta_collect_fields(StructMetaInfo
+     }
+     return 0;
+ error:
++    Py_DECREF(annotations);
+     Py_XDECREF(module_ns);
+     return -1;
+ }
+@@ -22223,6 +22258,26 @@ PyInit__core(void)
+     Py_DECREF(temp_module);
+     if (st->re_compile == NULL) return NULL;
+ 
++    /* annotationlib.get_annotate_from_class_namespace */
++    temp_module = PyImport_ImportModule("annotationlib");
++    if (temp_module == NULL) {
++        if (PyErr_ExceptionMatches(PyExc_ModuleNotFoundError)) {
++            // Below Python 3.14
++            PyErr_Clear();
++            st->get_annotate_from_class_namespace = NULL;
++        }
++        else {
++            return NULL;
++        }
++    }
++    else {
++        st->get_annotate_from_class_namespace = PyObject_GetAttrString(
++            temp_module, "get_annotate_from_class_namespace"
++        );
++        Py_DECREF(temp_module);
++        if (st->get_annotate_from_class_namespace == NULL) return NULL;
++    }
++
+     /* Initialize cached constant strings */
+ #define CACHED_STRING(attr, str) \
+     if ((st->attr = PyUnicode_InternFromString(str)) == NULL) return NULL
+Index: msgspec-0.19.0/msgspec/_utils.py
+===================================================================
+--- msgspec-0.19.0.orig/msgspec/_utils.py
++++ msgspec-0.19.0/msgspec/_utils.py
+@@ -1,5 +1,6 @@
+ # type: ignore
+ import collections
++import inspect
+ import sys
+ import typing
+ 
+@@ -71,6 +72,13 @@ else:
+     _eval_type = typing._eval_type
+ 
+ 
++if sys.version_info >= (3, 10):
++    from inspect import get_annotations as _get_class_annotations
++else:
++    def _get_class_annotations(cls):
++        return cls.__dict__.get("__annotations__", {})
++
++
+ def _apply_params(obj, mapping):
+     if isinstance(obj, typing.TypeVar):
+         return mapping.get(obj, obj)
+@@ -149,17 +157,17 @@ def get_class_annotations(obj):
+         cls_locals = dict(vars(cls))
+         cls_globals = getattr(sys.modules.get(cls.__module__, None), "__dict__", {})
+ 
+-        ann = cls.__dict__.get("__annotations__", {})
++        ann = _get_class_annotations(cls)
+         for name, value in ann.items():
+             if name in hints:
+                 continue
+-            if value is None:
+-                value = type(None)
+-            elif isinstance(value, str):
++            if isinstance(value, str):
+                 value = _forward_ref(value)
+             value = _eval_type(value, cls_locals, cls_globals)
+             if mapping is not None:
+                 value = _apply_params(value, mapping)
++            if value is None:
++                value = type(None)
+             hints[name] = value
+     return hints
+ 
+Index: msgspec-0.19.0/tests/test_common.py
+===================================================================
+--- msgspec-0.19.0.orig/tests/test_common.py
++++ msgspec-0.19.0/tests/test_common.py
+@@ -1370,14 +1370,14 @@ class TestGenericStruct:
+         dec = proto.Decoder(typ)
+         info = typ.__msgspec_cache__
+         assert info is not None
+-        assert sys.getrefcount(info) == 4  # info + attr + decoder + func call
++        assert sys.getrefcount(info) <= 4  # info + attr + decoder + func call
+         dec2 = proto.Decoder(typ)
+         assert typ.__msgspec_cache__ is info
+-        assert sys.getrefcount(info) == 5
++        assert sys.getrefcount(info) <= 5
+ 
+         del dec
+         del dec2
+-        assert sys.getrefcount(info) == 3
++        assert sys.getrefcount(info) <= 3
+ 
+     def test_generic_struct_invalid_types_not_cached(self, proto):
+         class Ex(Struct, Generic[T]):
+@@ -1545,7 +1545,7 @@ class TestStructPostInit:
+         res = proto.decode(buf, type=typ)
+         assert res == msg
+         assert count == 2  # 1 for Ex(), 1 for decode
+-        assert sys.getrefcount(singleton) == 2  # 1 for ref, 1 for call
++        assert sys.getrefcount(singleton) <= 2  # 1 for ref, 1 for call
+ 
+     @pytest.mark.parametrize("array_like", [False, True])
+     @pytest.mark.parametrize("union", [False, True])
+@@ -1606,14 +1606,14 @@ class TestGenericDataclassOrAttrs:
+         dec = proto.Decoder(typ)
+         info = typ.__msgspec_cache__
+         assert info is not None
+-        assert sys.getrefcount(info) == 4  # info + attr + decoder + func call
++        assert sys.getrefcount(info) <= 4  # info + attr + decoder + func call
+         dec2 = proto.Decoder(typ)
+         assert typ.__msgspec_cache__ is info
+-        assert sys.getrefcount(info) == 5
++        assert sys.getrefcount(info) <= 5
+ 
+         del dec
+         del dec2
+-        assert sys.getrefcount(info) == 3
++        assert sys.getrefcount(info) <= 3
+ 
+     def test_generic_invalid_types_not_cached(self, decorator, proto):
+         @decorator
+@@ -2179,14 +2179,14 @@ class TestTypedDict:
+         dec = proto.Decoder(typ)
+         info = typ.__msgspec_cache__
+         assert info is not None
+-        assert sys.getrefcount(info) == 4  # info + attr + decoder + func call
++        assert sys.getrefcount(info) <= 4  # info + attr + decoder + func call
+         dec2 = proto.Decoder(typ)
+         assert typ.__msgspec_cache__ is info
+-        assert sys.getrefcount(info) == 5
++        assert sys.getrefcount(info) <= 5
+ 
+         del dec
+         del dec2
+-        assert sys.getrefcount(info) == 3
++        assert sys.getrefcount(info) <= 3
+ 
+     def test_generic_typeddict_invalid_types_not_cached(self, proto):
+         TypedDict = pytest.importorskip("typing_extensions").TypedDict
+@@ -2398,14 +2398,14 @@ class TestNamedTuple:
+         dec = proto.Decoder(typ)
+         info = typ.__msgspec_cache__
+         assert info is not None
+-        assert sys.getrefcount(info) == 4  # info + attr + decoder + func call
++        assert sys.getrefcount(info) <= 4  # info + attr + decoder + func call
+         dec2 = proto.Decoder(typ)
+         assert typ.__msgspec_cache__ is info
+-        assert sys.getrefcount(info) == 5
++        assert sys.getrefcount(info) <= 5
+ 
+         del dec
+         del dec2
+-        assert sys.getrefcount(info) == 3
++        assert sys.getrefcount(info) <= 3
+ 
+     def test_generic_namedtuple_invalid_types_not_cached(self, proto):
+         NamedTuple = pytest.importorskip("typing_extensions").NamedTuple
+Index: msgspec-0.19.0/tests/test_convert.py
+===================================================================
+--- msgspec-0.19.0.orig/tests/test_convert.py
++++ msgspec-0.19.0/tests/test_convert.py
+@@ -220,7 +220,7 @@ class TestConvert:
+         x = Custom()
+         res = convert(x, Any)
+         assert res is x
+-        assert sys.getrefcount(x) == 3  # x + res + 1
++        assert sys.getrefcount(x) <= 3  # x + res + 1
+ 
+     def test_custom_input_type_works_with_custom(self):
+         class Custom:
+@@ -229,7 +229,7 @@ class TestConvert:
+         x = Custom()
+         res = convert(x, Custom)
+         assert res is x
+-        assert sys.getrefcount(x) == 3  # x + res + 1
++        assert sys.getrefcount(x) <= 3  # x + res + 1
+ 
+     def test_custom_input_type_works_with_dec_hook(self):
+         class Custom:
+@@ -247,8 +247,8 @@ class TestConvert:
+         x = Custom()
+         res = convert(x, Custom2, dec_hook=dec_hook)
+         assert isinstance(res, Custom2)
+-        assert sys.getrefcount(res) == 2  # res + 1
+-        assert sys.getrefcount(x) == 2  # x + 1
++        assert sys.getrefcount(res) <= 2  # res + 1
++        assert sys.getrefcount(x) <= 2  # x + 1
+ 
+     def test_unsupported_output_type(self):
+         with pytest.raises(TypeError, match="more than one array-like"):
+@@ -397,7 +397,7 @@ class TestInt:
+         x = MyInt(100)
+         sol = convert(x, MyInt)
+         assert sol is x
+-        assert sys.getrefcount(x) == 3  # x + sol + 1
++        assert sys.getrefcount(x) <= 3  # x + sol + 1
+ 
+ 
+ class TestFloat:
+@@ -535,10 +535,10 @@ class TestBinary:
+ 
+         del sol
+ 
+-        assert sys.getrefcount(msg) == 2  # msg + 1
++        assert sys.getrefcount(msg) <= 2  # msg + 1
+         sol = convert(msg, MyBytes)
+         assert sol is msg
+-        assert sys.getrefcount(msg) == 3  # msg + sol + 1
++        assert sys.getrefcount(msg) <= 3  # msg + sol + 1
+ 
+ 
+ class TestDateTime:
+@@ -828,7 +828,7 @@ class TestEnum:
+ 
+         msg = MyInt(1)
+         assert convert(msg, Ex) is Ex.x
+-        assert sys.getrefcount(msg) == 2  # msg + 1
++        assert sys.getrefcount(msg) <= 2  # msg + 1
+         assert convert(MyInt(2), Ex) is Ex.y
+ 
+     def test_enum_missing(self):
+@@ -2223,7 +2223,7 @@ class TestStructPostInit:
+         res = convert(msg, type=typ, from_attributes=from_attributes)
+         assert type(res) is Ex
+         assert called
+-        assert sys.getrefcount(singleton) == 2  # 1 for ref, 1 for call
++        assert sys.getrefcount(singleton) <= 2  # 1 for ref, 1 for call
+ 
+     @pytest.mark.parametrize("union", [False, True])
+     @pytest.mark.parametrize("exc_class", [ValueError, TypeError, OSError])
+Index: msgspec-0.19.0/tests/test_json.py
+===================================================================
+--- msgspec-0.19.0.orig/tests/test_json.py
++++ msgspec-0.19.0/tests/test_json.py
+@@ -898,7 +898,7 @@ class TestDatetime:
+         tz2 = msgspec.json.decode(msg, type=datetime.datetime).tzinfo
+         assert tz is tz2
+         del tz2
+-        assert sys.getrefcount(tz) == 3  # 1 tz, 1 cache, 1 func call
++        assert sys.getrefcount(tz) <= 3  # 1 tz, 1 cache, 1 func call
+         for _ in range(10):
+             gc.collect()  # cache is cleared every 10 full collections
+ 
+@@ -2293,7 +2293,7 @@ class TestStruct:
+         assert x == Person("harry", "potter", 13, False)
+ 
+         # one for struct, one for output of getattr, and one for getrefcount
+-        assert sys.getrefcount(x.first) == 3
++        assert sys.getrefcount(x.first) <= 3
+ 
+         with pytest.raises(
+             msgspec.ValidationError, match="Expected `object`, got `int`"
+Index: msgspec-0.19.0/tests/test_msgpack.py
+===================================================================
+--- msgspec-0.19.0.orig/tests/test_msgpack.py
++++ msgspec-0.19.0/tests/test_msgpack.py
+@@ -684,13 +684,13 @@ class TestTypedDecoder:
+         assert isinstance(res, memoryview)
+         assert bytes(res) == b"abcde"
+         if input_type is memoryview:
+-            assert sys.getrefcount(ref) == 3
++            assert sys.getrefcount(ref) <= 3
+             del msg
+-            assert sys.getrefcount(ref) == 3
++            assert sys.getrefcount(ref) <= 3
+             del res
+-            assert sys.getrefcount(ref) == 2
++            assert sys.getrefcount(ref) <= 2
+         elif input_type is bytes:
+-            assert sys.getrefcount(msg) == 3
++            assert sys.getrefcount(msg) <= 3
+ 
+     def test_datetime_aware_ext(self):
+         dec = msgspec.msgpack.Decoder(datetime.datetime)
+@@ -815,7 +815,7 @@ class TestTypedDecoder:
+         res = dec.decode(enc.encode(x))
+         assert res == x
+         if res:
+-            assert sys.getrefcount(res[0]) == 3  # 1 tuple, 1 index, 1 func call
++            assert sys.getrefcount(res[0]) <= 3  # 1 tuple, 1 index, 1 func call
+ 
+     @pytest.mark.parametrize("typ", [tuple, Tuple, Tuple[Any, ...]])
+     def test_vartuple_any(self, typ):
+Index: msgspec-0.19.0/tests/test_struct.py
+===================================================================
+--- msgspec-0.19.0.orig/tests/test_struct.py
++++ msgspec-0.19.0/tests/test_struct.py
+@@ -931,16 +931,16 @@ def test_struct_reference_counting():
+     data = [1, 2, 3]
+ 
+     t = Test(data)
+-    assert sys.getrefcount(data) == 3
++    assert sys.getrefcount(data) <= 3
+ 
+     repr(t)
+-    assert sys.getrefcount(data) == 3
++    assert sys.getrefcount(data) <= 3
+ 
+     t2 = t.__copy__()
+-    assert sys.getrefcount(data) == 4
++    assert sys.getrefcount(data) <= 4
+ 
+     assert t == t2
+-    assert sys.getrefcount(data) == 4
++    assert sys.getrefcount(data) <= 4
+ 
+ 
+ def test_struct_gc_not_added_if_not_needed():
+@@ -2581,7 +2581,7 @@ class TestPostInit:
+         Ex(1)
+         assert called
+         # Return value is decref'd
+-        assert sys.getrefcount(singleton) == 2  # 1 for ref, 1 for call
++        assert sys.getrefcount(singleton) <= 2  # 1 for ref, 1 for call
+ 
+     def test_post_init_errors(self):
+         class Ex(Struct):
