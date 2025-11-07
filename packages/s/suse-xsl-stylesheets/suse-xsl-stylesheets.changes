@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  6 13:47:08 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.24
+
+- Update to 2.95.24
+  * Header 1.7 update, Integrate shared-header height CSS rule in #759
+  * Add fallback date for JSON-LD and Dublin Core in #760
+
+-------------------------------------------------------------------
 Wed Oct 29 13:16:39 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.23
 
 - Update to 2.95.23
