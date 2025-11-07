@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  6 15:00:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove python-rpm-packaging from BuildRequires on SLE-15
+
+-------------------------------------------------------------------
 Mon Oct 27 11:27:05 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed update-alternatives BuildRequires

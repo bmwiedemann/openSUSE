@@ -1371,4 +1371,12 @@
     <comment>- Remove not needed update-alternatives BuildRequires</comment>
     <requestid>1313826</requestid>
   </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>532d3432e5a36f0b19d4bcb33d367a26</srcmd5>
+    <version>78.1.1</version>
+    <time>1762535805</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1316092</requestid>
+  </revision>
 </revisionlist>

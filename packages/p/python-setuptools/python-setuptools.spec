@@ -64,7 +64,9 @@ Patch0:         sort-for-reproducibility.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?suse_version} > 1500
 BuildRequires:  python-rpm-packaging
+%endif
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module build}
