@@ -1,7 +1,7 @@
 #
 # spec file for package libfsext
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define lname	libfsext1
 Name:           libfsext
-Version:        20240501
+Version:        20251107
 Release:        0
 Summary:        Library and tools to access the Extended File System
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
