@@ -119,4 +119,14 @@
     <comment></comment>
     <requestid>1273154</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e99c806f3b89114b42d42132b7c620cf</srcmd5>
+    <version>3.8.0</version>
+    <time>1762536255</time>
+    <user>anag_factory</user>
+    <comment>- Skip test that is failing for Imagick &gt;= 7.1.2 (gh#Imagick/imagick#737)
+  + imagick-skip-test024.patch
+</comment>
+    <requestid>1316450</requestid>
+  </revision>
 </revisionlist>

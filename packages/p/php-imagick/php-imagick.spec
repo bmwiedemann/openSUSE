@@ -43,6 +43,8 @@ Source1:        php-%{pkg_name}-rpmlintrc
 Patch0:         imagick-reproducible.patch
 # PATCH-FIX-OPENSUSE - test expected to fail because of resource limits in policy.xml
 Patch10:        imagick-xfail-test014.patch
+# PATCH-FIX-OPENSUSE - skip test for Imagick >= 7.1.2 due to changes in similarity
+Patch11:        imagick-skip-test024.patch
 BuildRequires:  %{php_name}-devel >= 7.0.1
 BuildRequires:  ImageMagick-devel >= 6.5.3.10
 BuildRequires:  ghostscript-fonts-std
