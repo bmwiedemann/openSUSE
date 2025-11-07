@@ -1,7 +1,7 @@
 #
 # spec file for package python-vcrpy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ Summary:        Python module to mock and replay HTTP interactions
 License:        MIT
 URL:            https://github.com/kevin1024/vcrpy
 Source:         https://files.pythonhosted.org/packages/source/v/vcrpy/vcrpy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#kevin1024/vcrpy#910
+Patch0:         use-inspect-iscorountinefunction.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-httpbin}
@@ -53,7 +55,7 @@ test runs for deterministic tests.
 This is a Python version of Ruby's VCR library.
 
 %prep
-%setup -q -n vcrpy-%{version}
+%autosetup -p1 -n vcrpy-%{version}
 # online integration tests
 rm -r tests/integration
 

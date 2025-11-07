@@ -157,4 +157,13 @@
     <comment></comment>
     <requestid>1235176</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>b76287c448612e93db74cbf2faeef92a</srcmd5>
+    <version>7.0.0</version>
+    <time>1762536158</time>
+    <user>anag_factory</user>
+    <comment>- Add patch use-inspect-iscorountinefunction.patch:
+  * Use inspect.iscorountinefunction rather than asyncio.</comment>
+    <requestid>1316361</requestid>
+  </revision>
 </revisionlist>

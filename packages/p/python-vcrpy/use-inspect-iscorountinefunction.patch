@@ -1,0 +1,24 @@
+From 8f88f7b5f4ad6198e725f556a3e4c373900e6cf4 Mon Sep 17 00:00:00 2001
+From: Karolina Surma <ksurma@redhat.com>
+Date: Wed, 5 Feb 2025 16:57:16 +0100
+Subject: [PATCH] Import iscoroutinefunction() from inspect rather than asyncio
+
+The asyncio function is deprecated starting from Python 3.14 and
+will be removed from Python 3.16.
+---
+ vcr/cassette.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vcr/cassette.py b/vcr/cassette.py
+index c9f81a14..1ac06dde 100644
+--- a/vcr/cassette.py
++++ b/vcr/cassette.py
+@@ -3,7 +3,7 @@
+ import copy
+ import inspect
+ import logging
+-from asyncio import iscoroutinefunction
++from inspect import iscoroutinefunction
+ 
+ import wrapt
+ 
