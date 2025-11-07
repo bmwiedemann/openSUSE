@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  4 20:36:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.7
+  * Use GNUInstallDirs for installation paths.
+  * Fix warning from libinstpatch-scan.c (gtkdoc).
+  * Eliminate CMake warnings.
+  * Glitched SoundFont attenuation.
+  * Remove sndfile.h from public headers.
+  * Rename variables called "bool".
+  * Update LGPLv2.1 license text and notices for remote-only FSF.
+  * Fix gtk-doc generation.
+- Use ldconfig_scriptlets macro.
+- Use tarball from github
+
+-------------------------------------------------------------------
 Tue Apr  8 11:53:12 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to

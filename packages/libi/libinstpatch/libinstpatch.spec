@@ -1,7 +1,7 @@
 #
 # spec file for package libinstpatch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %define sover   2
 
 Name:           libinstpatch
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        MIDI instrument patch library
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            http://www.swamiproject.org/
-# Fetch source via
-# sh libinstpatch-snapshot.sh latest
-Source0:        libinstpatch-%{version}.tar.gz
+Source:         https://github.com/swami/libinstpatch/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -70,12 +68,11 @@ export CFLAGS="%{optflags} -std=gnu11"
 %install
 %cmake_install
 
-%post -n libinstpatch-1_0-%{sover} -p /sbin/ldconfig
-%postun -n libinstpatch-1_0-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libinstpatch-1_0-%{sover}
 
 %files -n libinstpatch-1_0-%{sover}
 %license COPYING
-%{_libdir}/%{name}*.so.*
+%{_libdir}/%{name}*.so.%{sover}*
 
 %files devel
 %doc AUTHORS ChangeLog README.md
