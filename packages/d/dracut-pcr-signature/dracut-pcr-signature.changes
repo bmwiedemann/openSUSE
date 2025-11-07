@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 06 12:51:58 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.6+4:
+  * Do not always install the dracut module in hostonly mode
+
+-------------------------------------------------------------------
 Fri Aug 01 07:39:40 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.6+3:
