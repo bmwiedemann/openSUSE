@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Nov 07 13:05:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.39:
+  * docs: update CLI reference documentation (#1264)
+  * chore(deps): update dependency siderolabs/talos to v1.11.5
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.11.5
+  * chore(schema): update talos-extensions.yaml JSON schema (#1263)
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.6.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1260)
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.20
+  * chore(schema): update talos-extensions.yaml JSON schema (#1258)
+  * feat(config): allow go templating in `patches`
+  * chore(schema): update talos-extensions.yaml JSON schema (#1256)
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.6.0
+  * chore(lint): shut up golangci-lint
+  * feat(flake): latest go_1_25 is in nixos-25.05 for the moment
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.12.0-alpha.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#1255)
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.19
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.12.7
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.12.6
+  * chore(schema): update talos-extensions.yaml JSON schema (#1247)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1246)
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.18
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.38
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:2.0-bookworm docker digest
+    to 3ba1137 (#1244)
+  * feat: update Scoop for talhelper version v3.0.38
+  * feat: update flake (#1242)
+
+-------------------------------------------------------------------
 Fri Oct 17 06:11:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.38:
