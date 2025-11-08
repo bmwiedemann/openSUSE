@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           dolphin-plugins
-Version:        25.08.2
+Version:        25.08.3
 Release:        0
 Summary:        Version control plugins for Dolphin
 License:        GPL-2.0-or-later
