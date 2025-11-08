@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kio-admin
-Version:        25.08.2
+Version:        25.08.3
 Release:        0
 Summary:        Manage files as administrator using the admin:// KIO protocol
 # 'GPL-2.0-only_OR_GPL-3.0-only_OR_LicenseRef-KDE-Accepted-GPL'
