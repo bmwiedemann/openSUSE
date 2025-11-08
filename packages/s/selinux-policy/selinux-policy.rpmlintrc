@@ -12,3 +12,5 @@ addFilter("selinux-policy-(targeted|minimum|mls|sandbox).* hidden-file-or-dir /e
 # No check section needed
 addFilter("W: no-%check-section")
 
+# Suppress dir-or-file-outside-snapshot until policy is properly transactional (bsc#1253046)
+addFilter("dir-or-file-outside-snapshot")

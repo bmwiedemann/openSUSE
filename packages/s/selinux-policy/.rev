@@ -2188,4 +2188,12 @@ there will be 4 permissive avcs left regarding pcrlock, but those will be fixed 
 * Allow pcscd_t to search cgroup (bsc#1253098)</comment>
     <requestid>1316047</requestid>
   </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>260b8357928637e65dc2a85a41d32ce0</srcmd5>
+    <version>20251106</version>
+    <time>1762616008</time>
+    <user>anag_factory</user>
+    <comment>Suppress dir-or-file-outside-snapshot until policy is properly transactional (bsc#1253046)</comment>
+    <requestid>1316417</requestid>
+  </revision>
 </revisionlist>

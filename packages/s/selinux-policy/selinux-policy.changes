@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  7 10:54:41 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Suppress dir-or-file-outside-snapshot until policy is properly transactional (bsc#1253046)
+
+-------------------------------------------------------------------
 Thu Nov 06 14:50:27 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 20251106:
