@@ -1,7 +1,7 @@
 #
 # spec file for package libogg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _SO_nr 0
 Name:           libogg
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        Ogg Bitstream Library
 License:        BSD-3-Clause
@@ -26,8 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://xiph.org/vorbis/
 Source:         https://downloads.xiph.org/releases/ogg/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
-Patch1:         lib64.dif
-Patch2:         m4.diff
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 
@@ -60,29 +59,19 @@ This package contains all necessary include files and libraries needed
 to compile and develop applications that use libogg.
 
 %prep
-%setup -q
-%patch -P 2
-if [ "%{_lib}" == "lib64" ]; then
-%patch -P 1
-fi
+%autosetup -p1
 
 %build
-# Fix optimization level
-sed -i s,-O20,-O3,g configure
-
-%configure --disable-static
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install docdir="%{_docdir}/%{name}-devel"
-# remove unneeded files
-find %{buildroot} -type f -name "*.la" -delete -print
+%cmake_install
 
 %check
-%make_build check
+%ctest
 
-%post -n libogg%{_SO_nr} -p /sbin/ldconfig
-%postun -n libogg%{_SO_nr} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libogg%{_SO_nr}
 
 %files -n libogg%{_SO_nr}
 %doc AUTHORS CHANGES README.md
@@ -90,11 +79,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libogg.so.%{_SO_nr}*
 
 %files devel
-%{_docdir}/%{name}-devel
+%{_docdir}/%{name}
 %{_includedir}/ogg
 %{_libdir}/libogg.so
-%dir %{_datadir}/aclocal
-%{_datadir}/aclocal/ogg.m4
+%{_libdir}/cmake/Ogg
 %{_libdir}/pkgconfig/ogg.pc
 
 %changelog
