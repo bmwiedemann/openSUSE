@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  6 18:37:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.3/
+- Changes since 25.08.2:
+  * appstream: rename id to drop the legacy .desktop suffix
+  * mpris: rename bus name so flatpak gives us access by default
+  * apply flathub suggestions
+  * Flatpak: Sort finish arguments
+  * Revert "ci: drop qt-next for now"
+
+-------------------------------------------------------------------
 Tue Oct  7 18:48:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.2

@@ -1300,4 +1300,12 @@
     <comment>Update to 25.08.2</comment>
     <requestid>1310289</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>b292a5f36c9e0e16966e6f574e546042</srcmd5>
+    <version>25.08.3</version>
+    <time>1762615828</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.08.3</comment>
+    <requestid>1316140</requestid>
+  </revision>
 </revisionlist>
