@@ -1532,4 +1532,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>KDE release gear 25.08.2 (forwarded request 1309696 from krop)</comment>
     <requestid>1310263</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>c4ece1515ab7af12076416111614fddd</srcmd5>
+    <version>25.08.3</version>
+    <time>1762615737</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.08.3</comment>
+    <requestid>1316333</requestid>
+  </revision>
 </revisionlist>
