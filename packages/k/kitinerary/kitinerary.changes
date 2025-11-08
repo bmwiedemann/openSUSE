@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov  6 18:37:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.3/
+- Changes since 25.08.2:
+  * Add citycity.se iCal extractor script
+  * Tweak Flixbus address extraction patterns
+  * Improve Flixbus PDF extraction patterns
+  * Add extractor script for domestic CFR PDF tickets
+  * Try harder to drop RCT2 dummy arrival times
+  * Add Comboios de Portugal extractor script
+  * Add extractor script for Wiener Linien ticket barcodes
+  * Extract Müpa Budapest tickets correctly (kde#511257)
+  * Make RyanAir times parsing more robust
+  * Adapt NH Hotels extractor to newer variants
+  * Make the United parser even more resilient
+  * Consider names with swapped given/family name as equivalent as well
+  * Update static extractor build dependencies
+
+-------------------------------------------------------------------
 Tue Oct  7 18:49:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.2
