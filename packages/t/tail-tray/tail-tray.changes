@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 07 15:48:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.27:
+  This release finalizes the tail net notifications for when a new
+  device is added and when a device is removed. It als contains
+  some more minor fixes in general.
+  * Bump version to 0.2.27
+  * Minor correctness fixes
+  * KDE Notification integrations for issue #90
+  * And more CMake
+  * Minor fix for CMake file
+
+-------------------------------------------------------------------
 Mon Nov 03 09:19:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.26:
