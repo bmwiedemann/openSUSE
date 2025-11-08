@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  6 18:37:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.3/
+- Changes since 25.08.2:
+  * dolphinView: resetZoomLevel: reset to user defined default zoom (kde#482322)
+  * Revert "Make create folder use selected directory !1026" (kde#510757)
+  * dolphintabpage: when enabling split view without animation reset sizes (kde#510915)
+  * dolphinviewcontainer: in middle-click file opening use targetUrl
+
+-------------------------------------------------------------------
 Tue Oct  7 18:48:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.2
