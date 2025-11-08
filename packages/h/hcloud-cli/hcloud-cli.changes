@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov 07 15:48:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.56.0:
+  * Features
+    - format user provided TXT records when not quoted (#1208)
+  * Bug Fixes
+    - more readable default time format (#1197)
+    - iso: broken --type flag in list command (#1221)
+    - Storage Boxes not listed in hcloud all list (#1222)
+    - consistent tab spacing in describe commands (#1216)
+    - filepaths not correctly resolved on Windows (#1229)
+  * Dependencies
+    - deps: update module github.com/jedib0t/go-pretty/v6 to v6.7.0
+      (#1228)
+    - deps: update dependency go to v1.25.4 (#1227)
+    - deps: update dependency golangci-lint to v2.6.1 (#1226)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.29.0 (#1218)
+    - deps: update dependency golangci-lint to v2.6.0 (#1215)
+    - deps: update actions/upload-artifact action to v5 (#1212)
+    - deps: update module github.com/jedib0t/go-pretty/v6 to v6.6.9
+      (#1214)
+    - deps: update golang.org/x/exp digest to a4bb9ff (#1209)
+
+-------------------------------------------------------------------
 Wed Oct 22 04:47:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.55.0:
