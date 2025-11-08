@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  6 18:38:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.3/
+- Changes since 25.08.2:
+  * Fix parent (it can be null => it can leak)
+  * Fix bug 510551: False positive scam detection when an <a> tag contains the "title" attribute of which the content is the URL with uppercase letters (kde#510551)
+  * Add autotest for BUG-510551 (false positive)
+
+-------------------------------------------------------------------
 Tue Oct  7 18:49:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.2
