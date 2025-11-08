@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           klettres
-Version:        25.08.2
+Version:        25.08.3
 Release:        0
 Summary:        Alphabet Learning Game
 License:        GPL-2.0-or-later
