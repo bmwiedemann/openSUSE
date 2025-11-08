@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov  7 15:40:39 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
+
+- Update to version 0.12.10
+  * Fixed errors when running qwen3-vl:235b and
+    qwen3-vl:235b-instruct
+  * Enable flash attention for Vulkan (currently needs to be built
+    from source)
+  * Add Vulkan memory detection for Intel GPU using DXGI+PDH
+  * Ollama will now return tool call IDs from the /api/chat API
+  * Fixed hanging due to CPU discovery
+  * Ollama will now show login instructions when switching to a
+    cloud model in interactive mode
+  * Fix reading stale VRAM data
+  * 'ollama run' now works with embedding models
+
+-------------------------------------------------------------------
 Sun Nov  2 04:00:05 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
 - Fixed issue with duplicated libraries (/usr/lib, /usr/lib64)
 

@@ -20,7 +20,7 @@
 %global force_gcc_version 12
 %endif
 Name:           ollama
-Version:        0.12.9
+Version:        0.12.10
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
