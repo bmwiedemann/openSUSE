@@ -22,7 +22,7 @@
 %define rname libkgapi
 %bcond_without released
 Name:           libkgapi6
-Version:        25.08.2
+Version:        25.08.3
 Release:        0
 Summary:        Extension for accessing Google data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
