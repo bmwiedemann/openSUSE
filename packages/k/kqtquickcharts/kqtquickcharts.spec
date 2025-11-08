@@ -21,7 +21,7 @@
 #
 %bcond_without released
 Name:           kqtquickcharts
-Version:        25.08.2
+Version:        25.08.3
 Release:        0
 Summary:        Plugin to render beautiful and interactive graphs
 License:        LGPL-2.1-or-later
