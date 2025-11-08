@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kate
-Version:        25.08.2
+Version:        25.08.3
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later

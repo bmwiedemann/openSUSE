@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov  6 18:37:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.3/
+- Changes since 25.08.2:
+  * Fix Context toolview steals focus (kde#510684)
+  * Fix focus not returned to last widget on cancelling quickopen
+  * Capitalize drive letters on windows (kde#509085)
+  * lsp: Save documentation kind when resolving
+  * lsp: Fix completion documentation not being resolved
+  * preview: Delay reacting to viewChanged
+  * lsp: clear formatOnSave connection in updateState (kde#510870)
+  * KateSaveModifiedDialog: Call super showEvent
+  * KateSaveModifiedDialog: Play sound only for non-spontaneous events
+
+-------------------------------------------------------------------
 Tue Oct  7 18:48:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.2
