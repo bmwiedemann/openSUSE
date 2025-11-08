@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           analitza
-Version:        25.08.2
+Version:        25.08.3
 Release:        0
 Summary:        A library to add mathematical features to programs
 License:        LGPL-2.1-or-later
