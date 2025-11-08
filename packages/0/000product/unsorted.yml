@@ -243,6 +243,8 @@ unsorted:
   - QMPlay2 
   - QMPlay2-devel 
   - QR-Code-generator-devel 
+  - QR-Code-generator-java 
+  - QR-Code-generator-javadoc 
   - QSVEnc 
   - QTalarm 
   - QtDMM 
@@ -730,6 +732,7 @@ unsorted:
   - apache-commons-jxpath-javadoc 
   - apache-commons-lang3 
   - apache-commons-lang3-javadoc 
+  - apache-commons-logging 
   - apache-commons-math 
   - apache-commons-math-javadoc 
   - apache-commons-net 
@@ -4281,6 +4284,7 @@ unsorted:
   - fluidsynth 
   - fluidsynth-devel 
   - fluidsynth-dssi 
+  - flute 
   - flute-javadoc 
   - flux2-cli 
   - flux2-cli-bash-completion 
@@ -6977,6 +6981,7 @@ unsorted:
   - ginac-doc-html 
   - ginac-doc-pdf 
   - ginac-doc-tutorial 
+  - ginkgo-devel 
   - gio-branding-upstream 
   - gio-sharp 
   - gio-sharp-devel 
@@ -12115,6 +12120,7 @@ unsorted:
   - libbandicoot1 
   - libbaresip22 
   - libbarvinok23 
+  - libbase 
   - libbase-javadoc 
   - libbaseencode-devel 
   - libbaseencode1 
@@ -13226,9 +13232,11 @@ unsorted:
   - libfontenc-devel 
   - libfontenc-devel-32bit 
   - libfontenc1-32bit 
+  - libfonts 
   - libfonts-javadoc 
   - libformfactor-devel 
   - libformfactor0_3_2 
+  - libformula 
   - libformula-javadoc 
   - libfoundry-1-1 
   - libfoundry-gtk-1-1 
@@ -13475,6 +13483,7 @@ unsorted:
   - libgig-tools 
   - libgig11 
   - libginac13 
+  - libginkgo1_10_0 
   - libgio-2_0-0-32bit 
   - libgiomm-2_4-1-32bit 
   - libgirara-gtk3-4 
@@ -14287,6 +14296,7 @@ unsorted:
   - liblastlog2-devel 
   - liblaszip8 
   - liblaszip_api8 
+  - liblayout 
   - liblayout-javadoc 
   - liblazy-devel 
   - liblazy1 
@@ -14374,6 +14384,7 @@ unsorted:
   - liblo-devel 
   - liblo10k1-0 
   - liblo7 
+  - libloader 
   - libloader-javadoc 
   - libloadpng44-devel 
   - libloadpng4_4 
@@ -15491,6 +15502,9 @@ unsorted:
   - libpython3_14-1_0 
   - libpython3_14-1_0-x86-64-v3 
   - libpython3_14t-1_0 
+  - libpython3_15-1_0 
+  - libpython3_15-1_0-x86-64-v3 
+  - libpython3_15t-1_0 
   - libpython3_9-1_0 
   - libqaccessibilityclient-qt5 
   - libqaccessibilityclient-qt5-0 
@@ -15934,6 +15948,7 @@ unsorted:
   - libreport-web_2 
   - libreport-web_2-devel 
   - libreport_2 
+  - librepository 
   - librepository-javadoc 
   - libreproc++14 
   - libreproc14 
@@ -16079,6 +16094,7 @@ unsorted:
   - libserf-1-1 
   - libserf-devel 
   - libserialdv1 
+  - libserializer 
   - libserializer-javadoc 
   - libserialport-devel 
   - libserialport0 
@@ -16923,6 +16939,7 @@ unsorted:
   - libvtk1 
   - libvtk1-openmpi4 
   - libvulkan1-32bit 
+  - libvulkan_dzn 
   - libvulkan_intel-32bit 
   - libvulkan_nouveau 
   - libvulkan_nouveau-32bit 
@@ -16978,8 +16995,8 @@ unsorted:
   - libwiiuse0 
   - libwim15 
   - libwinpr2-2 
-  - libwireshark18 
-  - libwiretap15 
+  - libwireshark19 
+  - libwiretap16 
   - libwlembed-devel 
   - libwlroots-0_18 
   - libwlroots-0_19 
@@ -17021,7 +17038,7 @@ unsorted:
   - libwsman_client5 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
-  - libwsutil16 
+  - libwsutil17 
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
@@ -17418,7 +17435,6 @@ unsorted:
   - limesuite-devel 
   - limesuite-udev 
   - limine 
-  - limine-devel 
   - linbox-devel 
   - link-grammar 
   - link-grammar-devel 
@@ -18427,6 +18443,8 @@ unsorted:
   - maven-plugin-plugin 
   - maven-plugin-plugin-bootstrap 
   - maven-plugin-plugin-javadoc 
+  - maven-plugin-report-plugin 
+  - maven-plugin-report-plugin-javadoc 
   - maven-plugin-testing 
   - maven-plugin-testing-harness 
   - maven-plugin-testing-javadoc 
@@ -18564,6 +18582,7 @@ unsorted:
   - md4c 
   - md4c-devel 
   - mda-lv2 
+  - mdadm-doc 
   - mdbook 
   - mdbook-linkcheck 
   - mdbtools 
@@ -18674,6 +18693,7 @@ unsorted:
   - mg 
   - mgdiff 
   - mgetty 
+  - mgopen-fonts 
   - mhvtl 
   - mhvtl-kmp-default 
   - miao-fonts 
@@ -21254,7 +21274,9 @@ unsorted:
   - pegtl-devel-doc 
   - peksystray 
   - pen 
+  - pentaho-libxml 
   - pentaho-libxml-javadoc 
+  - pentaho-reporting-flow-engine 
   - pentaho-reporting-flow-engine-javadoc 
   - pentobi 
   - percona-toolkit 
@@ -35353,6 +35375,30 @@ unsorted:
   - python314-tk 
   - python314-tools 
   - python314-x86-64-v3 
+  - python315 
+  - python315-base 
+  - python315-base-x86-64-v3 
+  - python315-curses 
+  - python315-dbm 
+  - python315-devel 
+  - python315-doc 
+  - python315-doc-devhelp 
+  - python315-idle 
+  - python315-nogil 
+  - python315-nogil-base 
+  - python315-nogil-curses 
+  - python315-nogil-dbm 
+  - python315-nogil-devel 
+  - python315-nogil-idle 
+  - python315-nogil-profiling 
+  - python315-nogil-testsuite 
+  - python315-nogil-tk 
+  - python315-nogil-tools 
+  - python315-profiling 
+  - python315-testsuite 
+  - python315-tk 
+  - python315-tools 
+  - python315-x86-64-v3 
   - python39 
   - python39-base 
   - python39-curses 
@@ -36938,6 +36984,7 @@ unsorted:
   - s3fs 
   - sablot 
   - sablot-devel 
+  - sac 
   - sac-javadoc 
   - sacad 
   - sad 
@@ -49655,6 +49702,7 @@ unsorted:
   - xmgrace-devel 
   - xmh 
   - xmined 
+  - xml-commons-apis 
   - xml-commons-apis-bootstrap 
   - xml-commons-apis-javadoc 
   - xml-commons-apis-manual 

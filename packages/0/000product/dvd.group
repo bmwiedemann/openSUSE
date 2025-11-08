@@ -110,7 +110,6 @@
     <package name="amavisd-new-docs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="analitza" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="analitza-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="apache-commons-logging" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="apache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-manual" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-mod_php8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
@@ -435,7 +434,6 @@
     <package name="flatpak-kcm6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="flatpak-remote-flathub" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="flatpak-selinux" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="flute" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="folks-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="folks-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="fontconfig" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1708,7 +1706,6 @@
     <package name="libbabl-0_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbabl-0_1-0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbacktrace0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libbase" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbasicobjects0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libbd_btrfs3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libbd_crypto3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -1969,8 +1966,6 @@
     <package name="libfolks26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfontconfig1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfontenc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libfonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libformula" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfprint-2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libfreebl3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfreecell-solver0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2306,7 +2301,6 @@
     <package name="liblavjpeg-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblavplay-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblavrec-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liblayout" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblc3-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblcms2-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libldac2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2326,7 +2320,6 @@
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libliveMedia112" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="liblmdb-0_9_30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libloader" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="liblognorm5" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="liblouis-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2644,7 +2637,6 @@
     <package name="libreoffice-share-linker" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libreoffice-writer" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libreofficekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="librepository" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librest-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librevenge-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librevenge-stream-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
@@ -2674,7 +2666,6 @@
     <package name="libsensors4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsepol2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libserd-0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libserializer" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsgutils2-1_48-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libshaderc_shared1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3083,7 +3074,6 @@
     <package name="metatheme-adwaita-common" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="metatheme-breeze6-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="metatheme-greybird-geeko-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="mgopen-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="milou6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="milou6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mimetreeparser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3309,8 +3299,6 @@
     <!-- pcsc-gempc not found on x86_64-->
     <package name="pcsc-lite" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pcsc-towitoko" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-towitoko -->
-    <package name="pentaho-libxml" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="pentaho-reporting-flow-engine" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="perl" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="perl-Archive-Zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Authen-SASL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3827,7 +3815,6 @@
     <package name="ruby3.4-rubygem-ruby-augeas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby3.4-rubygem-ruby-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ruby3.4-rubygem-simpleidn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="sac" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="salt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="salt-master" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="salt-minion" supportstatus="unsupported"/> <!-- reason: dvd:salt-minion -->
@@ -4381,7 +4368,6 @@
     <package name="xkeyboard-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="xkeyboard-config-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="xmessage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="xml-commons-apis" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="xmlcharent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xmodmap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xorg-x11-Xvnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

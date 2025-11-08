@@ -108,7 +108,6 @@
       <repopackage name="amavisd-new-docs"/>
       <repopackage name="analitza"/>
       <repopackage name="analitza-lang"/>
-      <repopackage name="apache-commons-logging"/>
       <repopackage name="apache2"/>
       <repopackage name="apache2-manual"/>
       <repopackage name="apache2-mod_php8"/>
@@ -434,7 +433,6 @@
       <repopackage name="flatpak-kcm6-lang"/>
       <repopackage name="flatpak-remote-flathub"/>
       <repopackage name="flatpak-selinux"/>
-      <repopackage name="flute"/>
       <repopackage name="folks-data"/>
       <repopackage name="folks-lang"/>
       <repopackage name="fontconfig"/>
@@ -1276,7 +1274,6 @@
       <repopackage name="libbabl-0_1-0"/>
       <repopackage name="libbabl-0_1-0-x86-64-v3"/>
       <repopackage name="libbacktrace0"/>
-      <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
       <repopackage name="libBasicUsageEnvironment2"/>
       <repopackage name="libbd_btrfs3"/>
@@ -1541,8 +1538,6 @@
       <repopackage name="libfolks26"/>
       <repopackage name="libfontconfig1"/>
       <repopackage name="libfontenc1"/>
-      <repopackage name="libfonts"/>
-      <repopackage name="libformula"/>
       <repopackage name="libfprint-2-2"/>
       <repopackage name="libfreebl3"/>
       <repopackage name="libfreecell-solver0"/>
@@ -2149,7 +2144,6 @@
       <repopackage name="liblavplay-2_2-0"/>
       <repopackage name="liblavrec-2_2-0"/>
       <repopackage name="libLayerShellQtInterface6"/>
-      <repopackage name="liblayout"/>
       <repopackage name="liblc3-1"/>
       <repopackage name="liblcms2-2"/>
       <repopackage name="libldac2"/>
@@ -2171,7 +2165,6 @@
       <repopackage name="libLLVM18"/>
       <repopackage name="libLLVM21"/>
       <repopackage name="liblmdb-0_9_30"/>
-      <repopackage name="libloader"/>
       <repopackage name="liblogging0"/>
       <repopackage name="liblognorm5"/>
       <repopackage name="liblouis-data"/>
@@ -2605,7 +2598,6 @@
       <repopackage name="libreoffice-share-linker"/>
       <repopackage name="libreoffice-writer"/>
       <repopackage name="libreofficekit"/>
-      <repopackage name="librepository"/>
       <repopackage name="librest-1_0-0"/>
       <repopackage name="librevenge-0_0-0"/>
       <repopackage name="librevenge-stream-0_0-0"/>
@@ -2639,7 +2631,6 @@
       <repopackage name="libsensors4"/>
       <repopackage name="libsepol2"/>
       <repopackage name="libserd-0-0"/>
-      <repopackage name="libserializer"/>
       <repopackage name="libsgutils2-1_48-2"/>
       <repopackage name="libsha1detectcoll1"/>
       <repopackage name="libshaderc_shared1"/>
@@ -3092,7 +3083,6 @@
       <repopackage name="metatheme-adwaita-common"/>
       <repopackage name="metatheme-breeze6-common"/>
       <repopackage name="metatheme-greybird-geeko-common"/>
-      <repopackage name="mgopen-fonts"/>
       <repopackage name="milou6"/>
       <repopackage name="milou6-lang"/>
       <repopackage name="mimetreeparser"/>
@@ -3356,8 +3346,6 @@
       <repopackage name="pcsc-cyberjack"/>
       <repopackage name="pcsc-lite"/>
       <repopackage name="pcsc-towitoko"/>
-      <repopackage name="pentaho-libxml"/>
-      <repopackage name="pentaho-reporting-flow-engine"/>
       <repopackage name="perl"/>
       <repopackage name="perl-Archive-Zip"/>
       <repopackage name="perl-Authen-SASL"/>
@@ -3874,7 +3862,6 @@
       <repopackage name="ruby3.4-rubygem-ruby-augeas"/>
       <repopackage name="ruby3.4-rubygem-ruby-dbus"/>
       <repopackage name="ruby3.4-rubygem-simpleidn"/>
-      <repopackage name="sac"/>
       <repopackage name="salt"/>
       <repopackage name="salt-master"/>
       <repopackage name="salt-minion"/>
@@ -4431,7 +4418,6 @@
       <repopackage name="xkeyboard-config"/>
       <repopackage name="xkeyboard-config-lang"/>
       <repopackage name="xmessage"/>
-      <repopackage name="xml-commons-apis"/>
       <repopackage name="xmlcharent"/>
       <repopackage name="xmodmap"/>
       <repopackage name="xorg-x11-driver-video"/>
