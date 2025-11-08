@@ -1,7 +1,7 @@
 #
 # spec file for package fscrypt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fscrypt
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Summary:        Go tool for managing Linux filesystem encryption
 License:        Apache-2.0
