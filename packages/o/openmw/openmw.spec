@@ -22,9 +22,9 @@
 # 1.69 is the first boost version that is supposed to work with C++ 20:
 %define min_boost_version 1.69
 # RCs have archive_ver different than version
-%define archive_ver 50-rc2
+%define archive_ver 0.50.0
 Name:           openmw
-Version:        0.9.50rc2
+Version:        0.50.0
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
