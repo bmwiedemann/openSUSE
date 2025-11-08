@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Fri Nov  7 10:25:59 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.32.3:
+  - various small bugfixes
+
+-------------------------------------------------------------------
+Mon Oct 27 18:06:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.32.2:
+  - Revert "libmain: Catch logger exceptions in `handleExceptions`"
+  - libstore/registerOutputs: Don't try to optimize a non-existent
+    actualPath
+  - Restore `ServeProto::Command::ImportPaths`
+  - libfetchers/git-utils: Be more correct about validating
+    refnames
+  - Improved backwards compatibility hack for git URLs using
+    dir=... attribute
+
+-------------------------------------------------------------------
+Sat Oct 18 14:18:32 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 2.32.1:
+  * libutil: Print stack trace on assertion failure
+  * libutil: Fix renderAuthorityAndPath unreachable for path:/ URLs
+  * libstore: Fix double-quoting of paths in logs
+  * exportReferencesGraph: Handle heterogeneous arrays
+  * Remove validation of URLs passed to FileTransferRequest
+    verbatim
+
+-------------------------------------------------------------------
+Tue Oct  7 16:33:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.32.0:
+  - Incompatible changes
+    - Removed support for daemons and clients older than Nix 2.0
+      [#13951] We have dropped support in the daemon worker
+      protocol for daemons and clients that don't speak at least
+      version 18 of the protocol. This first Nix release that
+      supports this version is Nix 2.0, released in February 2018.
+    - Derivation JSON format now uses store path basenames only
+      [#13570] [#13980] Experience with many JSON frameworks (e.g.
+      nlohmann/json in C++, Serde in Rust, and Aeson in Haskell)
+      has shown that the use of the store directory in JSON formats
+      is an impediment to systematic JSON formats, because it
+      requires the serializer/deserializer to take an extra
+      paramater (the store directory). We ultimately want to
+      rectify this issue with all JSON formats to the extent
+      allowed by our stability promises. To start with, we are
+      changing the JSON format for derivations because the `nix
+      derivation` commands are — in addition to being formally
+      unstable — less widely used than other unstable commands. See
+      the documentation on the JSON format for derivations for
+      further details.
+    - C API: `nix_get_attr_name_byidx`, `nix_get_attr_byidx` take a
+      `nix_value *` instead of `const nix_value *` [#13987] In
+      order to accommodate a more optimized internal representation
+      of attribute set merges these functions require a mutable
+      `nix_value *` that might be modified on access. This does
+      *not* break the ABI of these functions.
+  - New features
+    - C API: Add lazy attribute and list item accessors [#14030]
+      The C API now includes lazy accessor functions for retrieving
+      values from lists and attribute sets without forcing
+      evaluation:
+      - `nix_get_list_byidx_lazy()` - Get a list element without
+        forcing its evaluation
+      - `nix_get_attr_byname_lazy()` - Get an attribute value by
+        name without forcing evaluation
+      - `nix_get_attr_byidx_lazy()` - Get an attribute by index
+        without forcing evaluation
+      These functions are useful when forwarding unevaluated
+      sub-values to other lists, attribute sets, or function calls.
+      They allow more efficient handling of Nix values by deferring
+      evaluation until actually needed. Additionally, bounds
+      checking has been improved for all `_byidx` functions to
+      properly validate indices before access, preventing potential
+      out-of-bounds errors. The documentation for `NIX_ERR_KEY`
+      error handling has also been clarified to specify when this
+      error code is returned.
+    - HTTP binary caches now support transparent compression for
+      metadata HTTP binary cache stores can now compress
+      `.narinfo`, `.ls`, and build log files before uploading them,
+      reducing bandwidth usage and storage requirements. The
+      compression is applied transparently using the
+      `Content-Encoding` header, allowing compatible clients to
+      automatically decompress the files.
+      Three new configuration options control this behavior:
+      - `narinfo-compression`: Compression method for `.narinfo`
+        files
+      - `ls-compression`: Compression method for `.ls` files
+      - `log-compression`: Compression method for build logs in
+        `log/` directory
+
+      Example usage:
+      ```
+      nix copy --to 'http://cache.example.com?narinfo-compression=gzip&ls-compression=gzip' /nix/store/...
+      nix store copy-log --to 'http://cache.example.com?log-compression=br' /nix/store/...
+      ```
+    - Temporary build directories no longer include derivation
+      names [#13839]
+      Temporary build directories created during derivation builds
+      no longer include the derivation name in their path to avoid
+      build failures when the derivation name is too long. This
+      change ensures predictable prefix lengths for build
+      directories under `/nix/var/nix/builds`.
+    - External derivation builders [#14145]
+      These are helper programs that Nix calls to perform
+      derivations for specified system types, e.g. by using QEMU to
+      emulate a different type of platform. For more information,
+      see the `external-builders` setting. This is currently an
+      experimental feature.
+  - Performance improvements
+    - Optimize memory usage of attribute set merges [#13987]
+      Attribute set update operations have been optimized to reduce
+      reallocations in cases when the second operand is small. For
+      typical evaluations of nixpkgs this optimization leads to
+      ~20% less memory allocated in total without significantly
+      affecting evaluation performance. See
+      eval-attrset-update-layer-rhs-threshold
+    - Substituted flake inputs are no longer re-copied to the store
+      [#14041]
+      Since 2.25, Nix would fail to store a cache entry for
+      substituted flake inputs, which in turn would cause them to
+      be re-copied to the store on initial evaluation. Caching
+      these inputs results in a near doubling of performance in
+      some cases — especially on I/O-bound machines and when using
+      commands that fetch many inputs, like `nix flake
+      [archive|prefetch-inputs]`.
+    - `nix flake check` now skips derivations that can be
+      substituted [#13574]
+      Previously, `nix flake check` would evaluate and
+      build/substitute all derivations. Now, it will skip
+      downloading derivations that can be substituted. This can
+      drastically decrease the time invocations take in
+      environments where checks may already be cached (like in CI).
+    - `fetchTarball` and `fetchurl` now correctly substitute (#14138)
+      At some point we stopped substituting calls to `fetchTarball`
+      and `fetchurl` with a set `narHash` to avoid incorrectly
+      substituting things in `fetchTree`, even though it would be
+      safe to substitute when calling the legacy
+      `fetch{Tarball,url}`. This fixes that regression where it is
+      safe.
+    - Started moving AST allocations into a bump allocator [#14088]
+      This leaves smaller, immutable structures in the AST. So far
+      this saves about 2% memory on a NixOS config evaluation.
+
+-------------------------------------------------------------------
 Thu Sep 18 13:04:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.31.2:

@@ -133,4 +133,12 @@ support for software auditability among other things</comment>
     `/nix/var/nix/builds`</comment>
     <requestid>1307210</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8d542d9df6ab2a936d2a07f4524b9a75</srcmd5>
+    <version>2.32.3</version>
+    <time>1762616198</time>
+    <user>anag_factory</user>
+    <comment>Update to version 2.32.3</comment>
+    <requestid>1316478</requestid>
+  </revision>
 </revisionlist>
