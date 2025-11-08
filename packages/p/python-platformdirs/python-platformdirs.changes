@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 31 11:41:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.0:
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump pypa/gh-action-pypi-publish from 1.12.4 to 1.13.0 in the
+    all group
+  * Bump pypa/gh-action-pypi-publish from 1.12.4 to 1.13.0 in
+    /.github/workflows
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add support for Python 3.14
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update Windows file paths in README
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump astral-sh/setup-uv from 6 to 7 in the all group
+  * Drop 3.9 support
+- update to 4.4.0:
+  * feat: improve homebrew path detection
+
+-------------------------------------------------------------------
 Fri May 16 06:03:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.3.8
