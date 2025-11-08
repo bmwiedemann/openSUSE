@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ark
-Version:        25.08.2
+Version:        25.08.3
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
