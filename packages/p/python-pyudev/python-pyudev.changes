@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 31 11:44:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.24.4:
+  * Add device attributes unset():
+    https://github.com/pyudev/pyudev/pull/525
+  * Remove license classifier deprecated by PEP 639:
+    https://github.com/pyudev/pyudev/pull/522
+  * Tidies and Maintenance:
+    https://github.com/pyudev/pyudev/pull/529
+    https://github.com/pyudev/pyudev/pull/528
+    https://github.com/pyudev/pyudev/pull/526
+    https://github.com/pyudev/pyudev/pull/524
+    https://github.com/pyudev/pyudev/pull/521
+    https://github.com/pyudev/pyudev/pull/520
+    https://github.com/pyudev/pyudev/pull/518
+    https://github.com/pyudev/pyudev/pull/512
+    https://github.com/pyudev/pyudev/pull/511
+
+-------------------------------------------------------------------
 Wed Nov  6 14:37:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Skipping test suite completely, it just doesn’t work in the

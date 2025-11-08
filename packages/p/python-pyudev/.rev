@@ -312,4 +312,12 @@
 - Remove unnecessary patch support-pytest-8.patch.</comment>
     <requestid>1221963</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>84f527e1d31a5c420833fedc3e36abad</srcmd5>
+    <version>0.24.4</version>
+    <time>1762616011</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1316423</requestid>
+  </revision>
 </revisionlist>
