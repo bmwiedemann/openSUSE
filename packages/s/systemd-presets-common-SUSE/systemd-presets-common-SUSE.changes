@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  5 05:31:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
+
+- Add the lvm2-blk-availability.service as enabled in the preset
+  file (jsc#PED-12238)
+  * add: enable blk-availability.service
+  * remove: enable lvm2-lvmetad.socket
+
+-------------------------------------------------------------------
 Thu Oct 16 06:45:57 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop default state of issue-generator.path and

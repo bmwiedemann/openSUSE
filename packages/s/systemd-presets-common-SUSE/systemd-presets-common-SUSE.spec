@@ -1,6 +1,7 @@
 #
 # spec file for package systemd-presets-common-SUSE
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties

@@ -7,6 +7,7 @@ enable auditd.service
 enable avahi-daemon.service
 enable backup-rpmdb.timer
 enable backup-sysconfig.timer
+enable blk-availability.service
 enable btrfs-balance.timer
 enable btrfs-defrag.timer
 enable btrfs-scrub.timer
@@ -37,7 +38,6 @@ enable kbdsettings.service
 enable klog.service
 enable logrotate.timer
 enable logwatch.timer
-enable lvm2-lvmetad.socket
 enable lvm2-monitor.service
 enable lvm2-lvmpolld.socket
 enable mandb.timer
