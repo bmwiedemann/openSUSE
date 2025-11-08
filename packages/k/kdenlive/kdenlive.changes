@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov  6 18:37:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.3/
+- Changes since 25.08.2:
+  * Fix incorrectly handled clip length crashing on past clips with different fps
+  * FIx possible crash using newer ui.rc file
+  * Disable native font dialog in subtitle styles on Linux
+  * FIx space check in archive widget
+  * Fix typo
+  * Incorrect regexp use
+  * Fix image with percent in name incorrectly detected as slideshow
+  * Fix image sequence by Mime broken (kde#500542)
+  * Don't consider unused clips when checking if we use VFR clips
+  * Fix some images not rendered in timeline preview (kde#511249)
+  * Only add resize effect to video / image clips
+  * Add svg as supported file type (kde#511250)
+  * Fix crash on normalize track
+  * Fix incorrect font size passed in font selector of subtitle style
+  * Don't stop MLT::Consumer when switching monitors.
+
+-------------------------------------------------------------------
 Tue Oct  7 18:48:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.2
