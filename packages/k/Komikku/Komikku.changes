@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  6 10:25:20 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.91.0:
+  * [Library] Selection mode: Fixed read/unread actions
+  * [Reader] Webtoon pager: Fixed high CPU usage
+  * [Servers] Added Kavita (WIP)
+  * [Servers] Added MangaBall (23 languages)
+  * [Servers] Anime-Sama (FR): Update
+  * [Servers] Flame Comics (EN): Update
+  * [Servers] MangaCrab (ES): Update
+  * [Servers] Raijin Scan (FR): Update
+  * [L10n] Updated Croatian, Czech and Russian translations
+
+-------------------------------------------------------------------
 Thu Oct 23 14:34:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.90.0:
