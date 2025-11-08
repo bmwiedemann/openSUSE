@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ktrip
-Version:        25.08.2
+Version:        25.08.3
 Release:        0
 Summary:        Public transport assistant targeted towards mobile Linux and Android
 License:        GPL-2.0-or-later
