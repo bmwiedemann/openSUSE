@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kaccounts-integration
-Version:        25.08.2
+Version:        25.08.3
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
