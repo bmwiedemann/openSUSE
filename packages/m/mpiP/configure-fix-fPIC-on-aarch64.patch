@@ -1,0 +1,34 @@
+commit 9df174bdffe6cce86961116d6c0842064cb6bef0
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Mon Nov 3 17:41:33 2025 +0100
+
+    configure: fix fPIC on aarch64
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git configure configure
+index 25352125f048..87654cb08d03 100755
+--- configure
++++ configure
+@@ -5049,7 +5049,7 @@ _ACEOF
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking PIC flags" >&5
+ $as_echo_n "checking PIC flags... " >&6; }
+ if `$CC -fpic 2>&1 | grep 'warning' >/dev/null 2>&1` ; then
+-  PIC_FLAGS="-DPIC"
++  PIC_FLAGS="-fPIC -DPIC"
+ else
+   PIC_FLAGS="-fpic -DPIC"
+ fi
+diff --git configure.ac configure.ac
+index ed6cdbb3c18e..717520e2e224 100644
+--- configure.ac
++++ configure.ac
+@@ -422,7 +422,7 @@ AC_CHECK_SIZEOF(void*)
+ 
+ AC_MSG_CHECKING(PIC flags)
+ if `$CC -fpic 2>&1 | grep 'warning' >/dev/null 2>&1` ; then
+-  PIC_FLAGS="-DPIC"
++  PIC_FLAGS="-fPIC -DPIC"
+ else
+   PIC_FLAGS="-fpic -DPIC"
+ fi

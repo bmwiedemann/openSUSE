@@ -210,4 +210,12 @@
     <comment></comment>
     <requestid>1279989</requestid>
   </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>ebe4ca0c026df353a19fd17c5e4090e5</srcmd5>
+    <version>3.5</version>
+    <time>1762718991</time>
+    <user>dimstar_suse</user>
+    <comment>- Add configure-fix-fPIC-on-aarch64.patch to fix -fPIC on aarch64</comment>
+    <requestid>1316643</requestid>
+  </revision>
 </revisionlist>

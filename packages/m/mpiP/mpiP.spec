@@ -62,13 +62,14 @@ Release:        0
 ExcludeArch:    i586 %arm s390
 URL:            https://github.com/LLNL/mpiP
 Source0:        https://github.com/LLNL/mpiP/releases/download/%{version}/mpip-%{version}.tgz#/%{pname}-%{version}.tgz
+Source100:      README.md
 Patch1:         mpip.unwinder.patch
 Patch2:         Add-return-value-to-non-void-function.patch
 Patch3:         pc_lookup-replace-PTR-with-void.patch
 Patch4:         configure-fix-compilation-error-for-GCC-14.patch
 Patch5:         arch-add-generic-arch-using-GCC-builtins.patch
 Patch6:         reproducible.patch
-
+Patch7:         configure-fix-fPIC-on-aarch64.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  binutils-devel
 BuildRequires:  dejagnu
