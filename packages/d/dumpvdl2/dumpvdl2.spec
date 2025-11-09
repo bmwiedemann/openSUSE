@@ -1,8 +1,8 @@
 #
 # spec file for package dumpvdl2
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2017-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           dumpvdl2
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        A VDL Mode 2 message decoder and protocol analyzer
 License:        GPL-3.0-only

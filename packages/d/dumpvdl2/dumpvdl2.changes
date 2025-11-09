@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  2 11:05:06 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  * Added --max-ppm <ppm> option which drops messages if their PPM
+    error exceeds a configured threshold. This is useful for
+    filtering out loud message crosstalk from adjacent channels and
+    avoiding cross-channel duplicates.
+  * --oversample option may now be used for any input type, not
+    only --iq-file.
+  * Decoding of raw frames from standard input is now done without
+    buffering. This improves interaction with 3rd party message
+    generators and simulators.
+
+-------------------------------------------------------------------
 Sat Oct 19 20:23:10 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.0
