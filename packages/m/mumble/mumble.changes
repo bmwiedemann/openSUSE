@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  7 20:03:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.5.857:
+  * fixes for undesired ACL behavior
+  * Client bug fixes: UI, memory leaks, audio mute/volume behavior
+- drop mumble-1.5.735-fix-gcc15.patch, included
+
+-------------------------------------------------------------------
 Fri Jul 18 05:14:45 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Use SHARED_LINKER_FLAGS="-lGL" also for Leap 16, fixes building
