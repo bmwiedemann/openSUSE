@@ -1,7 +1,7 @@
 #
 # spec file for package python-sigstore
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,25 +24,34 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sigstore
-Version:        3.6.2
+Version:        4.1.0
 Release:        0
 Summary:        A tool for signing Python package distributions
 License:        Apache-2.0
 URL:            https://github.com/sigstore/sigstore-python
-Source:         https://github.com/sigstore/sigstore-python/archive/v%{version}.tar.gz#/sigstore-%{version}.tar.gz
+Source0:        https://github.com/sigstore/sigstore-python/archive/v%{version}.tar.gz#/sigstore-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-ecparam-testing.patch gh#sigstore/sigstore-python#1603 mcepl@suse.com
+# Update supported public key algorithms
+Patch0:         fix-ecparam-testing.patch
+# PATCH-FIX-UPSTREAM nofail-neg-test.patch gh#sigstore/sigstore-python!1605 mcepl@suse.com
+# Try to not fail negative key tests if support is not there
+Patch1:         nofail-neg-test.patch
 BuildRequires:  %{python_module PyJWT >= 2.1}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module cryptography >= 42}
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module id >= 1.1.0}
+BuildRequires:  %{python_module importlib-resources >= 5.7 if %python-base < 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 4.2}
 BuildRequires:  %{python_module pyOpenSSL >= 23.0.0}
 BuildRequires:  %{python_module pyasn1 >= 0.6}
 BuildRequires:  %{python_module pydantic >= 2}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module rfc3161-client}
+BuildRequires:  %{python_module rfc3161-client >= 1.0.3}
 BuildRequires:  %{python_module rfc8785 >= 0.1.2}
 BuildRequires:  %{python_module rich >= 13.0}
+BuildRequires:  %{python_module sigstore-models}
 BuildRequires:  %{python_module sigstore-protobuf-specs == 0.3.2}
 BuildRequires:  %{python_module sigstore-rekor-types == 0.0.18}
 BuildRequires:  %{python_module tuf >= 6.0}
@@ -67,6 +76,7 @@ Requires:       python-requests
 Requires:       python-rfc3161-client
 Requires:       python-rfc8785 >= 0.1.2
 Requires:       python-rich >= 13.0
+Requires:       python-sigstore-models
 Requires:       python-sigstore-protobuf-specs == 0.3.2
 Requires:       python-sigstore-rekor-types == 0.0.18
 Requires:       python-tuf >= 6.0
@@ -98,6 +108,7 @@ distributions, or anything else!
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# Fails with https://github.com/sigstore/sigstore-python/issues/1603
 %pytest --skip-online test/unit
 
 %pre

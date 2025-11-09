@@ -19,4 +19,41 @@
   * Updated the embedded TUF root to version 12</comment>
     <requestid>1269750</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>00967375b3d18c7ee2fe9529b35721d1</srcmd5>
+    <version>4.1.0</version>
+    <time>1762718924</time>
+    <user>dimstar_suse</user>
+    <comment>- Add nofail-neg-test.patch to fix OpenSSL configuration on SUSE
+  platforms (gh#sigstore/sigstore-python!1605).
+
+- Update to 4.1.0:
+  - cli: Support using other Sigstore instances with --instance
+    URL. New instances are trusted with new top level command
+    trust-instance ROOTFILE. #1548
+  - Added cryptography 46 to list of compatible cryptography
+    releases (#1544)
+  - Improved error message when verifying bundles with
+    unsupported log entry versions (#1569)
+  - cli: Always read/write UTF-8. This fixes an issue on Windows
+    where the platform default encoding was used: the issue has
+    existed for a while, but became more visible with signature
+    bundles that contain rekor2 entries. #1553
+- Update to 4.0.0:
+  This is a major release with a host of API and functionality
+  changes. The major new feature is Rekor v2 support but many
+  other changes are also included, see list below.
+  - cli: Add --rekor-version to sign command arguments: This
+    can be useful if Sigstore instance provides multiple Rekor
+    versions and user wants to override the default choice #1471
+  - cli: Support parallel signing. When multiple artifacts are
+    signed, the Rekor requests are submitted in parallel: this is
+    especially useful with Rekor v2. #1468, #1478, #1485
+  - oidc (API): Allow custom audience claims via API #1402
+  - rekor (API): Support Rekor v2 (aka rekor-tiles) in both
+    verification and signing. #1370, #1422, #1432
+  - trust (API): Make TrustedRoot, SigningConfig and
+    ClientTrustConfig public API #1496</comment>
+    <requestid>1316573</requestid>
+  </revision>
 </revisionlist>

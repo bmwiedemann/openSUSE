@@ -1,0 +1,298 @@
+From 66ed146adf7942da99c7e2d2b2051876e09c3faa Mon Sep 17 00:00:00 2001
+From: Dustin Ingram <di@users.noreply.github.com>
+Date: Wed, 5 Nov 2025 20:17:24 +0000
+Subject: [PATCH 1/4] Update test to use supported public key algorithms
+
+---
+ test/unit/internal/test_key_details.py | 58 +++-----------------------
+ 1 file changed, 5 insertions(+), 53 deletions(-)
+
+diff --git a/test/unit/internal/test_key_details.py b/test/unit/internal/test_key_details.py
+index b5bdac802..a6b09a6d1 100644
+--- a/test/unit/internal/test_key_details.py
++++ b/test/unit/internal/test_key_details.py
+@@ -15,24 +15,17 @@
+ from unittest.mock import Mock
+ 
+ import pytest
+-from cryptography.hazmat.primitives.asymmetric import dsa, ec, ed25519, padding, rsa
++from cryptography.hazmat.primitives.asymmetric import ec, ed25519, padding, rsa
+ from sigstore_models.common.v1 import PublicKeyDetails
+ 
+ from sigstore._internal.key_details import _get_key_details
+ 
+ 
++# The algorithms tested below are from https://github.com/sigstore/fulcio/blob/4a86d8bf45972b58051ba44d91cd96664cf74711/cmd/app/serve.go#L125-L133
+ @pytest.mark.parametrize(
+     "mock_certificate",
+     [
+         # ec
+-        pytest.param(
+-            Mock(
+-                public_key=Mock(
+-                    return_value=ec.generate_private_key(ec.SECP192R1()).public_key()
+-                )
+-            ),
+-            marks=[pytest.mark.xfail(strict=True)],
+-        ),
+         Mock(
+             public_key=Mock(
+                 return_value=ec.generate_private_key(ec.SECP256R1()).public_key()
+@@ -49,52 +42,21 @@
+             )
+         ),
+         # rsa pkcs1
+-        pytest.param(
+-            Mock(
+-                public_key=Mock(
+-                    return_value=rsa.generate_private_key(
+-                        public_exponent=65537, key_size=2048
+-                    ).public_key()
+-                ),
+-                signature_algorithm_parameters=padding.PKCS1v15(),
+-            ),
+-            marks=[pytest.mark.xfail(strict=True)],
+-        ),
+-        Mock(
+-            public_key=Mock(
+-                return_value=rsa.generate_private_key(
+-                    public_exponent=65537, key_size=3072
+-                ).public_key()
+-            ),
+-            signature_algorithm_parameters=padding.PKCS1v15(),
+-        ),
+         Mock(
+             public_key=Mock(
+                 return_value=rsa.generate_private_key(
+-                    public_exponent=65537, key_size=4096
++                    public_exponent=65537, key_size=2048
+                 ).public_key()
+             ),
+             signature_algorithm_parameters=padding.PKCS1v15(),
+         ),
+-        # rsa pss
+-        pytest.param(
+-            Mock(
+-                public_key=Mock(
+-                    return_value=rsa.generate_private_key(
+-                        public_exponent=65537, key_size=2048
+-                    ).public_key()
+-                ),
+-                signature_algorithm_parameters=padding.PSS(None, 0),
+-            ),
+-            marks=[pytest.mark.xfail(strict=True)],
+-        ),
+         Mock(
+             public_key=Mock(
+                 return_value=rsa.generate_private_key(
+                     public_exponent=65537, key_size=3072
+                 ).public_key()
+             ),
+-            signature_algorithm_parameters=padding.PSS(None, 0),
++            signature_algorithm_parameters=padding.PKCS1v15(),
+         ),
+         Mock(
+             public_key=Mock(
+@@ -102,7 +64,7 @@
+                     public_exponent=65537, key_size=4096
+                 ).public_key()
+             ),
+-            signature_algorithm_parameters=padding.PSS(None, 0),
++            signature_algorithm_parameters=padding.PKCS1v15(),
+         ),
+         # ed25519
+         Mock(
+@@ -111,16 +73,6 @@
+                 signature_algorithm_parameters=None,
+             )
+         ),
+-        # unsupported
+-        pytest.param(
+-            Mock(
+-                public_key=Mock(
+-                    return_value=dsa.generate_private_key(key_size=1024).public_key()
+-                ),
+-                signature_algorithm_parameters=None,
+-            ),
+-            marks=[pytest.mark.xfail(strict=True)],
+-        ),
+     ],
+ )
+ def test_get_key_details(mock_certificate):
+
+From f7b120b04605828dd6cd19358f1bec3e634cb7c8 Mon Sep 17 00:00:00 2001
+From: Dustin Ingram <di@users.noreply.github.com>
+Date: Wed, 5 Nov 2025 20:20:50 +0000
+Subject: [PATCH 2/4] Drop support for unused key algorithms
+
+---
+ sigstore/_internal/key_details.py | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/sigstore/_internal/key_details.py b/sigstore/_internal/key_details.py
+index f9a53b975..f18a0a6fa 100644
+--- a/sigstore/_internal/key_details.py
++++ b/sigstore/_internal/key_details.py
+@@ -44,17 +44,13 @@ def _get_key_details(certificate: Certificate) -> PublicKeyDetails:
+         if public_key.key_size == 3072:
+             if isinstance(params, padding.PKCS1v15):
+                 key_details = PublicKeyDetails.PKIX_RSA_PKCS1V15_3072_SHA256
+-            elif isinstance(params, padding.PSS):
+-                key_details = PublicKeyDetails.PKIX_RSA_PSS_3072_SHA256
+             else:
+                 raise ValueError(
+                     f"Unsupported public key type, size, and padding: {type(public_key)}, {public_key.key_size}, {params}"
+                 )
+         elif public_key.key_size == 4096:
+             if isinstance(params, padding.PKCS1v15):
+-                key_details = PublicKeyDetails.PKIX_RSA_PKCS1V15_3072_SHA256
+-            elif isinstance(params, padding.PSS):
+-                key_details = PublicKeyDetails.PKIX_RSA_PSS_3072_SHA256
++                key_details = PublicKeyDetails.PKIX_RSA_PKCS1V15_4096_SHA256
+             else:
+                 raise ValueError(
+                     f"Unsupported public key type, size, and padding: {type(public_key)}, {public_key.key_size}, {params}"
+
+From 6fabe74648553416397f8fe75a73f4a60e20acd2 Mon Sep 17 00:00:00 2001
+From: Dustin Ingram <di@users.noreply.github.com>
+Date: Wed, 5 Nov 2025 20:21:25 +0000
+Subject: [PATCH 3/4] Add support for PKIX_RSA_PKCS1V15_2048_SHA256
+
+---
+ sigstore/_internal/key_details.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/sigstore/_internal/key_details.py b/sigstore/_internal/key_details.py
+index f18a0a6fa..d3717650a 100644
+--- a/sigstore/_internal/key_details.py
++++ b/sigstore/_internal/key_details.py
+@@ -41,7 +41,14 @@ def _get_key_details(certificate: Certificate) -> PublicKeyDetails:
+         else:
+             raise ValueError(f"Unsupported EC curve: {public_key.curve.name}")
+     elif isinstance(public_key, rsa.RSAPublicKey):
+-        if public_key.key_size == 3072:
++        if public_key.key_size == 2048:
++            if isinstance(params, padding.PKCS1v15):
++                key_details = PublicKeyDetails.PKIX_RSA_PKCS1V15_2048_SHA256
++            else:
++                raise ValueError(
++                    f"Unsupported public key type, size, and padding: {type(public_key)}, {public_key.key_size}, {params}"
++                )
++        elif public_key.key_size == 3072:
+             if isinstance(params, padding.PKCS1v15):
+                 key_details = PublicKeyDetails.PKIX_RSA_PKCS1V15_3072_SHA256
+             else:
+
+From 08b5ef0bf695db52664dfe3d22537c30a43e4df7 Mon Sep 17 00:00:00 2001
+From: Dustin Ingram <di@users.noreply.github.com>
+Date: Wed, 5 Nov 2025 20:27:47 +0000
+Subject: [PATCH 4/4] Add tests for unsupported edge cases
+
+---
+ test/unit/internal/test_key_details.py | 89 +++++++++++++++++++++++++-
+ 1 file changed, 88 insertions(+), 1 deletion(-)
+
+diff --git a/test/unit/internal/test_key_details.py b/test/unit/internal/test_key_details.py
+index a6b09a6d1..23760cc2d 100644
+--- a/test/unit/internal/test_key_details.py
++++ b/test/unit/internal/test_key_details.py
+@@ -15,7 +15,8 @@
+ from unittest.mock import Mock
+ 
+ import pytest
+-from cryptography.hazmat.primitives.asymmetric import ec, ed25519, padding, rsa
++from cryptography.hazmat.primitives import hashes
++from cryptography.hazmat.primitives.asymmetric import dsa, ec, ed25519, padding, rsa
+ from sigstore_models.common.v1 import PublicKeyDetails
+ 
+ from sigstore._internal.key_details import _get_key_details
+@@ -81,3 +82,89 @@ def test_get_key_details(mock_certificate):
+     """
+     key_details = _get_key_details(mock_certificate)
+     assert isinstance(key_details, PublicKeyDetails)
++
++
++@pytest.mark.parametrize(
++    "mock_certificate, error_msg",
++    [
++        # Unsupported EC curve
++        (
++            Mock(
++                public_key=Mock(
++                    return_value=ec.generate_private_key(ec.SECT163K1()).public_key()
++                )
++            ),
++            "Unsupported EC curve: sect163k1",
++        ),
++        # Unsupported RSA padding
++        (
++            Mock(
++                public_key=Mock(
++                    return_value=rsa.generate_private_key(
++                        public_exponent=65537, key_size=2048
++                    ).public_key()
++                ),
++                signature_algorithm_parameters=padding.PSS(
++                    mgf=padding.MGF1(hashes.SHA256()),
++                    salt_length=padding.PSS.MAX_LENGTH,
++                ),
++            ),
++            "Unsupported public key type, size, and padding",
++        ),
++        (
++            Mock(
++                public_key=Mock(
++                    return_value=rsa.generate_private_key(
++                        public_exponent=65537, key_size=3072
++                    ).public_key()
++                ),
++                signature_algorithm_parameters=padding.PSS(
++                    mgf=padding.MGF1(hashes.SHA256()),
++                    salt_length=padding.PSS.MAX_LENGTH,
++                ),
++            ),
++            "Unsupported public key type, size, and padding",
++        ),
++        (
++            Mock(
++                public_key=Mock(
++                    return_value=rsa.generate_private_key(
++                        public_exponent=65537, key_size=4096
++                    ).public_key()
++                ),
++                signature_algorithm_parameters=padding.PSS(
++                    mgf=padding.MGF1(hashes.SHA256()),
++                    salt_length=padding.PSS.MAX_LENGTH,
++                ),
++            ),
++            "Unsupported public key type, size, and padding",
++        ),
++        # Unsupported RSA key size
++        (
++            Mock(
++                public_key=Mock(
++                    return_value=rsa.generate_private_key(
++                        public_exponent=65537, key_size=1024
++                    ).public_key()
++                ),
++                signature_algorithm_parameters=padding.PKCS1v15(),
++            ),
++            "Unsupported RSA key size: 1024",
++        ),
++        # Unsupported key type
++        (
++            Mock(
++                public_key=Mock(
++                    return_value=dsa.generate_private_key(key_size=1024).public_key()
++                )
++            ),
++            "Unsupported public key type",
++        ),
++    ],
++)
++def test_get_key_details_unsupported(mock_certificate, error_msg):
++    """
++    Ensures that we raise a ValueError for unsupported key types and schemes.
++    """
++    with pytest.raises(ValueError, match=error_msg):
++        _get_key_details(mock_certificate)

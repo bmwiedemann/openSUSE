@@ -1,0 +1,115 @@
+From 49ff3d916e96a601e51a3ed97081e2e225f749bd Mon Sep 17 00:00:00 2001
+From: Jussi Kukkonen <jkukkonen@google.com>
+Date: Thu, 6 Nov 2025 13:07:16 +0200
+Subject: [PATCH] tests: Try to not fail negative key tests if support is not
+ there
+
+We want to test the _get_key_details() with some unexpected
+cryptographic material, but we don't want the test suite to fail
+while collecting tests if cryptography itself does not support
+these keys (since we're only testing failure cases here).
+
+Delay the key generation code with a lambda so we can handle
+cryptography exception and skip the test in these negative tests.
+
+Signed-off-by: Jussi Kukkonen <jkukkonen@google.com>
+---
+ test/unit/internal/test_key_details.py |   39 ++++++++++++++++++++++-----------
+ 1 file changed, 27 insertions(+), 12 deletions(-)
+
+Index: sigstore-python-4.1.0/test/unit/internal/test_key_details.py
+===================================================================
+--- sigstore-python-4.1.0.orig/test/unit/internal/test_key_details.py	2025-11-07 22:43:44.453691653 +0100
++++ sigstore-python-4.1.0/test/unit/internal/test_key_details.py	2025-11-07 22:43:45.493549185 +0100
+@@ -15,6 +15,7 @@
+ from unittest.mock import Mock
+ 
+ import pytest
++from cryptography.exceptions import UnsupportedAlgorithm
+ from cryptography.hazmat.primitives import hashes
+ from cryptography.hazmat.primitives.asymmetric import dsa, ec, ed25519, padding, rsa
+ from sigstore_models.common.v1 import PublicKeyDetails
+@@ -84,12 +85,26 @@
+     assert isinstance(key_details, PublicKeyDetails)
+ 
+ 
++def delayed_crypto_mock(mock_func, error_msg):
++    # execute mock_func, mark test as skipped if cryptography does not support this algo.
++    # This is done so missing support does not break the negative test collection
++    try:
++        data = mock_func()
++        return pytest.param(data, error_msg)
++    except UnsupportedAlgorithm as e:
++        return pytest.param(
++            None,
++            error_msg,
++            marks=pytest.mark.skip(reason=f"missing cryptography support: {e}"),
++        )
++
++
+ @pytest.mark.parametrize(
+     "mock_certificate, error_msg",
+     [
+         # Unsupported EC curve
+-        (
+-            Mock(
++        delayed_crypto_mock(
++            lambda: Mock(
+                 public_key=Mock(
+                     return_value=ec.generate_private_key(ec.SECT163K1()).public_key()
+                 )
+@@ -97,8 +112,8 @@
+             "Unsupported EC curve: sect163k1",
+         ),
+         # Unsupported RSA padding
+-        (
+-            Mock(
++        delayed_crypto_mock(
++            lambda: Mock(
+                 public_key=Mock(
+                     return_value=rsa.generate_private_key(
+                         public_exponent=65537, key_size=2048
+@@ -111,8 +126,8 @@
+             ),
+             "Unsupported public key type, size, and padding",
+         ),
+-        (
+-            Mock(
++        delayed_crypto_mock(
++            lambda: Mock(
+                 public_key=Mock(
+                     return_value=rsa.generate_private_key(
+                         public_exponent=65537, key_size=3072
+@@ -125,8 +140,8 @@
+             ),
+             "Unsupported public key type, size, and padding",
+         ),
+-        (
+-            Mock(
++        delayed_crypto_mock(
++            lambda: Mock(
+                 public_key=Mock(
+                     return_value=rsa.generate_private_key(
+                         public_exponent=65537, key_size=4096
+@@ -140,8 +155,8 @@
+             "Unsupported public key type, size, and padding",
+         ),
+         # Unsupported RSA key size
+-        (
+-            Mock(
++        delayed_crypto_mock(
++            lambda: Mock(
+                 public_key=Mock(
+                     return_value=rsa.generate_private_key(
+                         public_exponent=65537, key_size=1024
+@@ -152,8 +167,8 @@
+             "Unsupported RSA key size: 1024",
+         ),
+         # Unsupported key type
+-        (
+-            Mock(
++        delayed_crypto_mock(
++            lambda: Mock(
+                 public_key=Mock(
+                     return_value=dsa.generate_private_key(key_size=1024).public_key()
+                 )

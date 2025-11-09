@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Fri Nov  7 21:48:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add nofail-neg-test.patch to fix OpenSSL configuration on SUSE
+  platforms (gh#sigstore/sigstore-python!1605).
+
+-------------------------------------------------------------------
+Tue Nov  4 22:14:15 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.1.0:
+  - cli: Support using other Sigstore instances with --instance
+    URL. New instances are trusted with new top level command
+    trust-instance ROOTFILE. #1548
+  - Added cryptography 46 to list of compatible cryptography
+    releases (#1544)
+  - Improved error message when verifying bundles with
+    unsupported log entry versions (#1569)
+  - cli: Always read/write UTF-8. This fixes an issue on Windows
+    where the platform default encoding was used: the issue has
+    existed for a while, but became more visible with signature
+    bundles that contain rekor2 entries. #1553
+- Update to 4.0.0:
+  This is a major release with a host of API and functionality
+  changes. The major new feature is Rekor v2 support but many
+  other changes are also included, see list below.
+  - cli: Add --rekor-version to sign command arguments: This
+    can be useful if Sigstore instance provides multiple Rekor
+    versions and user wants to override the default choice #1471
+  - cli: Support parallel signing. When multiple artifacts are
+    signed, the Rekor requests are submitted in parallel: this is
+    especially useful with Rekor v2. #1468, #1478, #1485
+  - oidc (API): Allow custom audience claims via API #1402
+  - rekor (API): Support Rekor v2 (aka rekor-tiles) in both
+    verification and signing. #1370, #1422, #1432
+  - trust (API): Make TrustedRoot, SigningConfig and
+    ClientTrustConfig public API #1496
+  - cli: Improve verify UX when wrong instance is used #1510
+  - deps: replace sigstore_protobuf_specs dependency with
+    sigstore-models #1470
+  - trust: Update embedded TUF root #1515
+  - trust (API): TrustConfig now provides the production()and
+    staging() helpers. Similar methods were removed from
+    SigningConfig, TrustedRoot, SigningContext and Issuer. Use
+    TrustConfig everywhere in code base. #1363
+  - trust (API): support SigningConfig v0.2, remove support for
+    v0.1. The new format now fully defines the sigstore instance
+    the client uses. SigningConfig class now has methods to
+    return actual clients (like RekorClient) instead of just URLs
+    for that sigstore instance. The --trust-config cli option now
+    expects the trust config to contain a v0.2 SigningConfig.
+    #1358, #1407
+  - trust: Support ed25519 keys in trusted root #1377
+  - rekor: resolve circular import of LogEntry #1458
+  - rekor: Fix checkpoint signature lookup when there are
+    multiple signatures #1514
+  - rekor: Fix entry handling so inclusion promise is optional
+    #1382
+  - rekor: Avoid trailing slash in post to /entries #1366
+  - sign: fetch TSA timestamps before submitting an entry to
+    Rekor #1463
+  - timestamp: Specify sha256 in TSA timestamp request #1373
+  - trust: Fail less hard when trusted root contains unknown keys
+    #1424
+  - verify: Fix TSA cert chain construction (fixes issue in the
+    case where certificate is not embedded in the timestamp)
+    #1482
+  - verify: Use TSA hash algorithm specified in the timestamp
+    (SHA-256, SHA-384 and SHA-512 are supported) #1385
+  - verify: Check artifact signing time against all established
+    times #1381
+  - verify: Handle unset TSA timestamp validity end #1368
+- Update to 3.6.6:
+  - Improved error message when verifying bundles with rekor v2
+    entries (#1565)
+  - Added cryptography 46 to list of compatible cryptography
+    releases (#1566)
+- Update to 3.6.5:
+  - Fixed verified time handling so that additional timestamps
+    cannot break otherwise valid signature bundles (#1492)
+  - Added cryptography 45 to list of compatible cryptography
+    releases (#1498)
+- Update to 3.6.4:
+  - Bumped the rfc3161-client dependency to >=1.0.3 to fix a
+    security vulnerability (#1451)
+- Update to 3.6.3:
+  - Verify: Avoid hard failure if trusted root contains
+    unsupported keytypes (as verification may succeed without
+    that key). #1425
+- Add fix-ecparam-testing.patch patch to overcome a FTBFS bug
+  (gh#sigstore/sigstore-python#1603).
+
+-------------------------------------------------------------------
 Wed Apr 16 01:48:26 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.6.2:
