@@ -1,7 +1,7 @@
 #
 # spec file for package swayidle
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           swayidle
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Idle management daemon for Wayland
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/swaywm/swayidle
-Source0:        %{url}/archive/%{version}.tar.gz
+Source0:        %{URL}/releases/download/v%{version}/swayidle-%{version}.tar.gz
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc

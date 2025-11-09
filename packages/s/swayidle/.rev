@@ -120,4 +120,20 @@
 - Remove e81d40fca7533f73319e76e42fa9694b21cc9e6e.patch</comment>
     <requestid>1040533</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d37abe54cf1fa169ef6c77bf65afb48f</srcmd5>
+    <version>1.9.0</version>
+    <time>1762718900</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0:
+  * Add a missing stop in the manpage
+  * Only connect to logind if required
+  * Avoid using wl_display_dispatch
+  * Replace `dpms` commands with `power` in sample command
+  * Drop support for KDE's idle protocol
+  * Allow to ignore idle inhibitors
+  * Handle shell expansion errors gracefully
+  * Add missing period in a config path</comment>
+    <requestid>1316538</requestid>
+  </revision>
 </revisionlist>
