@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov  8 19:02:09 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.12.4:
+  * Back button visible on formatting header bar
+    (glgo#World/iotas#251)
+- Changes from version 0.12.3:
+  * Keyboard focus lost in note list when closing search.
+- Changes from version 0.12.2:
+  * Added:
+    - Swipe out of editor. The tricky interaction between the
+      gesture and touchscreen selection seems to have been
+      resolved so this is enabled for all devices
+      (glgo#World/iotas#208).
+    - Strikethrough now styled in editor for checked task list
+      items and basic markup (glgo#World/iotas#247).
+  * Fixed
+    - Wrapped lines on long checklist items missing indentation in
+      render view.
+    - Reduced cases where keyboard focus in list would jump to an
+      unexpected location, eg. after deleting notes, changing note
+      categories, changing favourite, cancelling selection and
+      more.
+    - Editing the top line of a new note while renaming it could
+      see the rename action overwritten.
+  * Changed: Removed Secret Service direct hole from Flatpak
+    manifest (with tip in FAQs for restoration).
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct 27 14:36:35 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.12.1:
