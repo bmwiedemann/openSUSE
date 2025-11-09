@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Nov  3 16:12:46 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 3.44.4
+  * Layers without attributes will now be correctly sorted by
+    geopdf (commit a4b9733)
+  * Geometryless layers can now be an input for Execute SQL (commit 5de4001)
+  * PostGIS raster will no longer ignore the Transparency NoData
+    setting (commit 5b3f5b9)
+  * Prevents infinite loops in async pointcloud functions if given
+    empty nodes (commit 373160b)
+  * TIFFs will now only be opened to resolve layer descriptions if
+    the OpenLayersToResolveDescriptions setting is set (commit 47ec35a)
+  * Disables editing for read-only layers in the field calculator (commit cb7a745)
+  * Fixes a crash in QgsPointLocator::rebuildIndex() caused by
+    an unhandled exception (commit 84b3ff4)
+  * Uses gdal_merge, instead of gdal_merge.py, for GDAL 3.9+ (commit 5b3f5b9)
+  * Fixes various other issues
+
+- Changes from 3.44.3
+  * Fixes ui elements not matching the set theme with dark themes (PR #62979)
+  * Fixes an issue where UInt, ULong and ULongLong where converted to strings
+    when writing to Mapbox Vector Tiles (MVT) (PR #62985)
+  * Increases the default terrain bounding box, allowing tiles with higher
+    resolutions to be rendered (PR #62864)
+  * Fixes a memory leak in the vertextool (commit 4ac2337)
+  * Fixes a crash, that occured in 'points layer from table' when a required
+    field does not exist (commit d3a1694)
+  * Updates pre-Qt5 signal connection code and fixes a signal connection
+    bug in the oauth2 code (commit fc34d1e)
+  * @layout_page and @layout_numpages will now correctly reflect the
+    page index and count when exporting (commit c0120a6)
+  * Fixes various other issues
+
+-------------------------------------------------------------------
 Tue Sep 30 12:56:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require python3-packaging to eliminate error during startup
