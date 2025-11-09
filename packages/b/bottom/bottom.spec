@@ -18,7 +18,7 @@
 
 
 Name:           bottom
-Version:        0.11.2
+Version:        0.11.3
 Release:        0
 Summary:        Yet another graphical process/system monitor
 License:        Apache-2.0 AND MIT
@@ -27,7 +27,7 @@ URL:            https://github.com/ClementTsang/bottom
 Source:         %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.81
+BuildRequires:  rust >= 1.89
 BuildRequires:  zstd
 
 %description

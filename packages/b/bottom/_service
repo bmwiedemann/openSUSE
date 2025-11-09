@@ -3,7 +3,7 @@
     <param name="url">https://github.com/ClementTsang/bottom.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">0.11.2</param>
+    <param name="revision">0.11.3</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>

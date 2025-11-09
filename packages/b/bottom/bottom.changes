@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov  9 12:07:26 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.11.3:
+  Features:
+    * Add free_arc option to subtract ARC from total memory usage
+  Bug Fixes:
+    * Sort disk I/O using actual value rather than string
+      representation
+    * Fix displayed average CPU value being wrong in graphs.
+  Other:
+    * Add icon for application
+
+-------------------------------------------------------------------
 Fri Oct 10 05:14:19 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.11.2:
