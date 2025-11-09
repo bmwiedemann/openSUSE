@@ -284,4 +284,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l41: Rename various Asus Laptop firmware files to not have Speaker ID</comment>
     <requestid>1313871</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3aea336da366570dbe08337aa80a686a</srcmd5>
+    <version>20251106</version>
+    <time>1762718862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251106 (git commit b055b3e24542):
+  * linux-firmware: Create audio folder in ti folder, and move all the audio firmwares into it</comment>
+    <requestid>1316557</requestid>
+  </revision>
 </revisionlist>
