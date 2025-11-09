@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  9 03:20:34 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 0.16.6
+  * Fixed window icon
+  * Assigned file dialog to the parent window
+  * Translation updates
+
+-------------------------------------------------------------------
 Fri Nov  1 17:52:33 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Ported to Qt6 and updated translations.

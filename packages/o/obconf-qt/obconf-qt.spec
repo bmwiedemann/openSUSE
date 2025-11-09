@@ -17,7 +17,7 @@
 
 
 Name:           obconf-qt
-Version:        0.16.5
+Version:        0.16.6
 Release:        0
 Summary:        OpenBox window manager configuration tool
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
