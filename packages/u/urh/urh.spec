@@ -1,8 +1,8 @@
 #
 # spec file for package urh
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2017-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2017-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 
 Name:           urh
-Version:        2.9.6
+Version:        2.9.8
 Release:        0
 Summary:        Tool for investigating unknown wireless protocols
 License:        GPL-3.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://github.com/jopohl/urh
 Source:         https://github.com/jopohl/urh/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         numpy-version.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -36,6 +37,7 @@ BuildRequires:  python3-PyAudio
 BuildRequires:  python3-devel >= 3.4
 BuildRequires:  python3-numpy
 BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-pip
 BuildRequires:  python3-qt5
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
@@ -64,7 +66,7 @@ The Universal Radio Hacker is a software for investigating unknown wireless
 protocols.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %python3_build \

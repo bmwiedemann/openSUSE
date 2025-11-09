@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  2 13:32:13 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * numpy-version.patch (make it build on TW)
+
+-------------------------------------------------------------------
+Mon Nov 11 18:13:19 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.8
+  * add missing numpy pins and setuptools to setup.py
+- Update to version 2.9.7
+  * Add support for Cython3.
+  * Add exit action and new menu for recent files.
+  * Add conftest.py to awre test dir.
+  * Handle module builtins both as dict or module.
+  * Fixed build with python-3.13.
+  * Add setuptools to requirements.txt.
+  * Requirements: Pin to numpy 1.x.x
+
+-------------------------------------------------------------------
 Mon Jul 29 18:51:08 UTC 2024 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Enable PlutoSDR support
