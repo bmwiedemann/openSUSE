@@ -352,4 +352,12 @@
 - Use pyproject macros to build and install.</comment>
     <requestid>1315470</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>47f477bc44aecf4b0f74b7359f1195c4</srcmd5>
+    <version>20251106</version>
+    <time>1762718929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1316576</requestid>
+  </revision>
 </revisionlist>
