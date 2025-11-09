@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov  8 11:26:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0
+  * Correct logic bug in TaskRequest::isTaskRequestUpdated() that
+    could cause soft-deleted task requests to be incorrectly
+    processed when an associated task exists in the active folder.
+  * Enhanced recurrence pattern validation with better error
+    handling for invalid nday values.
+  * More robust address book entry comparison in
+    compareABEntryIDs().
+  * Code quality improvements and stricter type safety throughout.
+  * Performance optimizations through optimized function usage.
+
+-------------------------------------------------------------------
 Wed Mar 26 23:38:42 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6

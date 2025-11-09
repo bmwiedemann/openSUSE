@@ -63,4 +63,12 @@
     <comment>- Update to release 1.6</comment>
     <requestid>1256364</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>30695a930f09e19a2f7d3f87b6a0df39</srcmd5>
+    <version>2.0</version>
+    <time>1762718920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.0</comment>
+    <requestid>1316566</requestid>
+  </revision>
 </revisionlist>

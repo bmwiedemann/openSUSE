@@ -1,7 +1,7 @@
 #
 # spec file for package mapi-header-php
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,15 @@
 %define _empty_manifest_terminate_build 0
 
 Name:           mapi-header-php
-Version:        1.6
+Version:        2.0
 Release:        0
 Summary:        Common PHP MAPI header files for grommunio
 License:        AGPL-3.0-or-later
 Group:          Productivity/Networking/Email/Servers
 URL:            https://grommunio.com/
-#Git-Clone:     https://github.com/grommunio/mapi-header-php
-Source:         https://github.com/grommunio/mapi-header-php/releases/download/%version/mapi-header-php-%version.tar.zst
-Source2:        https://github.com/grommunio/mapi-header-php/releases/download/%version/mapi-header-php-%version.tar.asc
+#Git-Clone:     https://codeberg.org/grommunio/mapi-header-php
+Source:         https://codeberg.org/grommunio/mapi-header-php/releases/download/%version/mapi-header-php-%version.tar.zst
+Source2:        https://codeberg.org/grommunio/mapi-header-php/releases/download/%version/mapi-header-php-%version.tar.asc
 Source3:        %name.keyring
 BuildRequires:  zstd
 BuildArch:      noarch
