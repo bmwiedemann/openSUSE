@@ -191,4 +191,17 @@
 </comment>
     <requestid>1311203</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e41d162a7e54abf512e603be91475079</srcmd5>
+    <version>3.4.7</version>
+    <time>1762719010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.7:
+  * Fix updating from Codeberg and GitLab
+  * Fixed unescaped \ char
+- Update to 3.4.6:
+  * Improved desktop file support: added support for desktop actions
+</comment>
+    <requestid>1316678</requestid>
+  </revision>
 </revisionlist>
