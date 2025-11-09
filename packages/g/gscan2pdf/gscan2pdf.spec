@@ -1,7 +1,7 @@
 #
 # spec file for package gscan2pdf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gscan2pdf
-Version:        2.13.4
+Version:        2.13.5
 Release:        0
 Summary:        Easy scan to PDF
 License:        GPL-3.0-only
