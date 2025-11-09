@@ -1,12 +1,13 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/rustwasm/wasm-bindgen.git</param>
-    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
     <!-- WARNING WARNING WARNING -->
-    <!-- This version *MUST* be updated in lock-step with wasm-pack -->
+    <!-- This version *MUST* be updated in lock-step -->
+    <!-- and lldap and wasm-pack -->
     <!-- Failure to do so WILL break packages!!! -->
-    <param name="revision">0.2.97</param>
+    <param name="revision">0.2.100</param>
     <!-- WARNING WARNING WARNING -->
     <param name="match-tag">*</param>
     <param name="changesgenerate">enable</param>

@@ -1,7 +1,7 @@
 #
 # spec file for package wasm-bindgen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wasm-bindgen
-Version:        0.2.97~0
+Version:        0.2.100
 Release:        0
 Summary:        Facilitating high-level interactions between Wasm modules and JavaScript
 License:        Apache-2.0 OR MIT
