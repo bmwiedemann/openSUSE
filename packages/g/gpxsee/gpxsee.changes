@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  9 08:13:21 CET 2025 - tumic@gpxsee.org
+
+- Update to version 15.3
+  * Fixed MVT hillshading and text opacity issues (introduced in
+    15.2)
+
+-------------------------------------------------------------------
+Sat Nov  8 20:48:16 CET 2025 - tumic@gpxsee.org
+
+- Update to version 15.2
+  * Fixed broken handling of HiDPI raster maps (introduced in 15.0)
+  * NMEA files exceeding the "official" line length limit (80+2)
+    are now allowed. 
+  * Improved error reporting on ambiguous map formats.
+
+-------------------------------------------------------------------
 Mon Nov  3 21:53:20 CET 2025 - tumic@gpxsee.org
 
 - Update to version 15.1

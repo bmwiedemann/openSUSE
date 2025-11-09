@@ -1,3 +1,19 @@
+gpxsee (15.3) stable; urgency=low
+
+  * Fixed MVT hillshading and text opacity issues (introduced in
+    15.2)
+
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 09 Nov 2025 08:17:54 +0100
+
+gpxsee (15.2) stable; urgency=low
+
+  * Fixed broken handling of HiDPI raster maps (introduced in 15.0)
+  * NMEA files exceeding the "official" line length limit (80+2)
+    are now allowed. 
+  * Improved error reporting on ambiguous map formats.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 08 Nov 2025 20:54:42 +0100
+
 gpxsee (15.1) stable; urgency=low
 
   * Added support for hillshading to all MVT-based maps.
