@@ -3,7 +3,7 @@
     <param name="url">https://github.com/lldap/lldap</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">refs/tags/v0.6.1</param>
+    <param name="revision">refs/tags/v0.6.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
@@ -11,7 +11,7 @@
   <service name="set_version" mode="manual">
   </service>
   <service name="cargo_vendor" mode="manual">
-    <param name="update">true</param>
+    <param name="update">false</param>
     <param name="srcdir">lldap</param>
   </service>
   <!-- services below are running at buildtime -->

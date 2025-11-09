@@ -1,7 +1,7 @@
 #
 # spec file for package lldap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lldap
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Light LDAP implementation
 License:        MIT
@@ -26,10 +26,12 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source11:       %{name}.service
 Source21:       system-user-%{name}.conf
+BuildRequires:  cargo >= 1.87
 BuildRequires:  cargo-packaging
 BuildRequires:  gzip
 BuildRequires:  sysuser-tools
-BuildRequires:  wasm-bindgen
+# https://github.com/lldap/lldap/blob/v0.6.2/app/Cargo.toml#L26
+BuildRequires:  wasm-bindgen >= 0.2.100
 BuildRequires:  wasm-pack
 BuildRequires:  zstd
 ExclusiveArch:  %{rust_tier1_arches}
