@@ -218,6 +218,8 @@ chmod -x %{buildroot}%{_datadir}/virt-manager/virtManager/virtmanager.py
 
 %if %{with test}
 %check
+# bsc#1253017: Set this for testCLI0181virt_install_kvm_session_defaults
+export XDG_DATA_HOME="/tmp/.local/share/libvirt"
 # XML contains hda instead of hdc
 donttest="test_disk_numtotarget"
 # XML contains sd{a,b,c,d} instead of sda{a,b,c,d}

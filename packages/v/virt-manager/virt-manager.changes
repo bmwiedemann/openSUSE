@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  7 12:53:47 MST 2025 - carnold@suse.com
+
+- bsc#1253017 - aaa_base: update to 84.87+git20251030.441f926
+  breaks python-platformdirs:test and virt-manager:test
+  virt-manager.spec
+
+-------------------------------------------------------------------
 Fri Oct 17 16:25:09 MDT 2025 - carnold@suse.com
 
 - bsc#1252105 - Unable to create an SEV-SNP enabled guest with
