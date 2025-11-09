@@ -533,4 +533,14 @@
     <comment></comment>
     <requestid>1254409</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>48d9b1a64f9afa6c462b951db5418e4e</srcmd5>
+    <version>5.5.0</version>
+    <time>1762719008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.5.0
+  * Support for Python 3.9 has been removed. Now the minimum
+    python version supported is 3.10.</comment>
+    <requestid>1316674</requestid>
+  </revision>
 </revisionlist>
