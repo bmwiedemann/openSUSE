@@ -225,4 +225,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_bt: Add firmware and config files for RTL8761CUV</comment>
     <requestid>1315089</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3f39616c5dbbb824300e44555de988b1</srcmd5>
+    <version>20251106</version>
+    <time>1762718856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251106 (git commit b055b3e24542):
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core</comment>
+    <requestid>1316553</requestid>
+  </revision>
 </revisionlist>
