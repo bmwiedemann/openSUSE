@@ -1,7 +1,7 @@
 #
 # spec file for package act
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %global provider_prefix %{provider}.%{provider_tld}/%{project}
 %global import_path     %{provider_prefix}/%{repo}
 Name:           act
-Version:        0.2.68
+Version:        0.2.82
 Release:        0
 Summary:        Run your GitHub Actions locally
 License:        MIT
@@ -34,7 +34,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.16
-Requires:       docker
+Requires:       (docker or podman)
 %{go_nostrip}
 %{go_provides}
 

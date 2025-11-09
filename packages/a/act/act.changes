@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Wed Oct 15 07:14:18 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add podman as an alternative to docker
+- Update to version 0.2.82:
+  * chore: bump VERSION to 0.2.82
+  * build(deps): bump the dependencies group across 1 directory with 10 updates (#5935)
+  * chore: bump VERSION to 0.2.81
+  * fix: matrix expansion logic (#115) (#5294)
+  * fix: step container workdir and mounts (#93) (#5295)
+  * fix: file name (#90) (#5296)
+  * refactor: simplify adding new node versions add node 24 (#5899)
+  * chore: mergify does no longer support queue_conditions != merge_conditions for require status checks to be up to date (#5891)
+  * chore: bump VERSION to 0.2.80
+  * fix: use ubuntu-latest bookworm instead of buster for tests (#5884)
+  * build(deps): bump the dependencies group with 5 updates (#5861)
+  * chore: bump VERSION to 0.2.79
+  * build(deps): bump github.com/go-viper/mapstructure/v2 (#5837)
+  * added info log when container image platform mismatched (#3225)
+  * fix: post step failure is job failure (#5297)
+  * feat: allow workflow description (#5326)
+  * feat: `--validate` and `--strict` (#2717)
+  * ci: fix goreleaser config (#5276)
+  * fix: valueMasker concurrent map write (#5026)
+  * fix: GITHUB_ENV and GITHUB_OUTPUT allow larger lines (#5028)
+  * build(deps): bump the dependencies group across 1 directory with 5 updates (#4986)
+  * feat: log parsed commands and step summary (#2761)
+  * chore: bump VERSION to 0.2.78
+  * fix: wrap subpath in '' (#2754) (#2755)
+  * ci: make codecov informational only (#2924)
+  * feat: add cli option to set concurrent jobs count (#2762)
+  * fix: add missing punctuation to error report (#2752) (#2753)
+  * feat: add models permission level for AI inference responses (#2767)
+  * docs: Remove Gitter (#2678)
+  * chore(ci): disable invalid test case (#2875)
+  * ci: disable stale bot (#2745)
+  * update-choco (#2742)
+  * chore: bump VERSION to 0.2.77
+  * build(deps): bump golang.org/x/net from 0.36.0 to 0.38.0 (#2735)
+  * chore(ci): Only promote if possible (#2721)
+  * build(deps): bump the dependencies group with 3 updates (#2720)
+  * chore: bump VERSION to 0.2.76
+  * feat: Support graceful job step cancellation (#2714)
+  * fix: reporting fetch failure as job error and log the error (#2715)
+  * build(deps): bump the dependencies group across 1 directory with 6 updates (#2706)
+  * build(deps): bump golang.org/x/net from 0.34.0 to 0.36.0 (#2693)
+  * chore(deps): bump to go1.24 due to deps updates (#2705)
+  * build(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.1 to 5.2.2 (#2703)
+  * Report the elapsed time for each workflow step (#2700)
+  * Refer to nektosact.com (#2692)
+  * fixes #2689 Make the external url of cache server configurable if necessary  (#2690)
+  * chore: bump VERSION to 0.2.75
+  * Clarify --no-skip-checkout flag (#2687)
+  * build(deps): bump the dependencies group with 6 updates (#2675)
+  * Disable "unable to get git repo" when none exists. (#2495)
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.6.1 to 5.6.2 (#2611)
+  * fix: use non strict schema to allow some undefined behavior (#2524)
+  * fix: remote docker actions new action cache and dry run mode (#2513)
+  * Add tests against reading config files (#2682)
+  * chore: mergify and codeowners do not request review (#2683)
+  * feat: GoGitActionCache shallow fetch (#2677)
+  * build(deps): bump the dependencies group with 2 updates (#2674)
+  * Update .gitleaksignore (#2676)
+  * chore: Group DependableBot Updates monthly (#2673)
+  * build(deps): bump golangci/golangci-lint-action from 6.2.0 to 6.5.0 (#2670)
+  * build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1 (#2669)
+  * add test workflows to cmd pkg (#2665)
+  * fix: secret file reading (#45) (#2664)
+  * chore: bump VERSION to 0.2.74
+  * build(deps): bump gotest.tools/v3 from 3.5.1 to 3.5.2 (#2655)
+  * build(deps): bump go.etcd.io/bbolt from 1.3.11 to 1.4.0 (#2656)
+  * chore: move to environment secrets (#2653)
+  * chore: remove comments from mergify on merge conflict or check failures (#2652)
+  * Use gh auth token for default GITHUB_TOKEN secret (#2651)
+  * chore: bump VERSION to 0.2.73
+  * Incorporate Debug, Warn, Error logging. (#2490)
+  * refactor logger (#2552)
+  * Detect available flags for extensions (#2557)
+  * build(deps): bump google.golang.org/protobuf from 1.36.3 to 1.36.4 (#2644)
+  * parse_env_file discard utf8 bom (#2638)
+  * chore: bump VERSION to 0.2.72
+  * Added support for dereferenced map properties (#2635)
+  * build(deps): bump github.com/docker/cli (#2634)
+  * build(deps): bump github.com/rhysd/actionlint from 1.7.6 to 1.7.7 (#2624)
+  * build(deps): bump google.golang.org/protobuf from 1.36.2 to 1.36.3 (#2623)
+  * build(deps): bump golangci/golangci-lint-action from 6.1.1 to 6.2.0 (#2622)
+  * Add GitHub Local Actions to README (#2588)
+  * build(deps): bump google.golang.org/protobuf from 1.36.1 to 1.36.2 (#2612)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.13.0 to 5.13.1 (#2604)
+  * build(deps): bump github.com/rhysd/actionlint from 1.7.5 to 1.7.6 (#2603)
+  * build(deps): bump golang.org/x/term from 0.27.0 to 0.28.0 (#2602)
+  * chore: bump VERSION to 0.2.71
+  * Fix typo in `--action-offline-mode` option description (#2590)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.12.0 to 5.13.0 (#2595)
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.6.0 to 5.6.1 (#2594)
+  * build(deps): bump github.com/rhysd/actionlint from 1.7.4 to 1.7.5 (#2593)
+  * fix: prevent unintended input replacement in reusable workflows with workflow_dispatch when using workflow_call (#2502)
+  * ci(mergify): upgrade configuration to current format (#2547)
+  * feat: Adding in logic to check if act needs to be downloaded (#2575)
+  * fix: short sha has at least four digits (#2540)
+  * chore: upgrade dependencies (#2589)
+  * fix: amd64 arch to X64 (#2580)
+  * chore: bump VERSION to 0.2.70
+  * build(deps): bump megalinter/megalinter from 8.2.0 to 8.3.0 (#2541)
+  * build(deps): bump github.com/creack/pty from 1.1.23 to 1.1.24 (#2533)
+  * build(deps): bump codecov/codecov-action from 4 to 5 (#2532)
+  * build(deps): bump megalinter/megalinter from 8.1.0 to 8.2.0 (#2531)
+  * build(deps): bump github.com/rhysd/actionlint from 1.7.3 to 1.7.4 (#2527)
+  * build(deps): bump github.com/adrg/xdg from 0.5.0 to 0.5.3 (#2515)
+  * chore: bump VERSION to 0.2.69
+  * add test for listartifacts v4 filter (#2507)
+  * fix: tests with validation errors were skipped (#2496)
+  * fix: merge-multiple artifacts were broken (#2505)
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.5.0 to 5.6.0 (#2506)
+  * build(deps): bump github.com/opencontainers/selinux (#2498)
+  * build(deps): bump megalinter/megalinter from 8.0.0 to 8.1.0 (#2485)
+  * build(deps): bump google.golang.org/protobuf from 1.34.2 to 1.35.1 (#2484)
+  * feat: improve new action cache logging (#2474)
+  * fix: if condition in composite action misbehaves (#2473)
+  * build(deps): bump golang.org/x/term from 0.24.0 to 0.25.0 (#2480)
+  * build(deps): bump golangci/golangci-lint-action from 6.0.1 to 6.1.1 (#2479)
+
+-------------------------------------------------------------------
 Tue Oct 15 08:05:35 UTC 2024 - kskarthik@disroot.org
 
 - Update to version 0.2.68:
