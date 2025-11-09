@@ -17,7 +17,7 @@
 
 
 Name:           rumdl
-Version:        0.0.161
+Version:        0.0.173
 Release:        0
 Summary:        Markdown Linter written in Rust
 License:        MIT
@@ -25,6 +25,9 @@ URL:            https://github.com/rvben/rumdl
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+
+# rumdl@0.0.172 requires rustc 1.91.0
+BuildRequires:  cargo >= 1.91
 
 %description
 rumdl is a high-performance Markdown linter and formatter that helps ensure

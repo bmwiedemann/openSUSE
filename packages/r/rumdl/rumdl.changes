@@ -1,4 +1,811 @@
 -------------------------------------------------------------------
+Sun Nov 09 09:42:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.173:
+  * Added
+    - MD060: Table format rule with Prettier-style auto-compact
+      - New rule enforcing consistent table column alignment
+        (aligned/compact/tight styles)
+      - Auto-compact threshold: Tables exceeding max-width
+        automatically use compact formatting
+      - Configurable via max-width setting (0 = inherit from
+        MD013's line-length)
+      - Generates informative warnings showing actual width vs
+        threshold
+      - Disabled by default (opt-in feature)
+      - Handles edge cases: zero-width characters, escaped pipes,
+        HTML comments
+      - Respects column alignments (left/center/right) in aligned
+        mode
+    - MD043: Wildcard pattern support for heading structures
+      - New wildcard patterns for flexible heading structure
+        validation
+      - Allows * placeholders in heading text for dynamic content
+      - Expert-level edge case handling for complex heading
+        hierarchies
+    - MD044: HTML elements configuration option
+      - New html-elements configuration to customize proper name
+        handling
+      - Allows project-specific proper name enforcement
+    - RUMDL_CACHE_DIR environment variable
+      - Override default cache directory location via environment
+        variable
+      - Useful for CI/CD pipelines and custom cache management
+  * Fixed
+    - Definition list support in reflow mode (#136)
+      - Definition lists (Extended Markdown syntax) are now
+        correctly preserved during text reflow
+      - Prevents incorrect joining of terms with definitions (e.g.,
+        Term\n: Definition no longer becomes Term : Definition)
+      - Supports PHP Markdown Extra, Kramdown, Pandoc, Hugo, and
+        other extended Markdown flavors
+      - Works with all reflow modes including sentence-per-line
+    - MD054: Error message alignment
+      - Corrected error messages to match implementation behavior
+      - Documentation now accurately reflects link/image style
+        validation
+    - MD041: Front matter title config schema
+      - Added missing front_matter_title options to configuration
+        schema
+      - Fixes config validation errors when using front matter
+        title feature
+    - LSP: pyproject.toml validation
+      - LSP now verifies [tool.rumdl] section exists before using
+        pyproject.toml
+      - Prevents errors when pyproject.toml exists but doesn't
+        contain rumdl config
+    - CLI: Rule registration
+      - Fixed MD057, MD059, MD060 rules not being registered in CLI
+      - All rules now properly available for use
+  * Changed
+    - Documentation: TOML format migration
+      - Converted all configuration examples from YAML to TOML
+      - Reflects modern configuration best practices
+      - Improved clarity for MD013 reflow requirement in README
+
+-------------------------------------------------------------------
+Sat Nov 08 07:39:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.172:
+  * Added
+    - MD059: Link text style rule achieving 100% markdownlint
+      compatibility
+      - New rule for enforcing consistent link text formatting
+      - Matches markdownlint column reporting behavior
+      - Completes full parity with markdownlint rule set
+    - pulldown-cmark BrokenLink callback integration
+      - Enhanced link reference validation using parser callback
+      - Better detection of undefined reference-style links
+      - Improved accuracy for MD052 and related rules
+  * Fixed
+    - Critical: UTF-8 character boundary panic in ordered list
+      detection
+      - Fixed crash when processing markdown with multi-byte UTF-8
+        characters (Japanese, Chinese, Korean, etc.)
+      - Root cause: Character index was incorrectly used as byte
+        index for string slicing
+      - Now converts character positions to byte positions using
+        char_indices().nth()
+      - Discovered during validation on javascript-algorithms
+        repository
+      - Affected any non-English documentation with multi-byte
+        UTF-8 near numbered lists
+    - pulldown-cmark escaped bracket workaround
+      - Workaround for pulldown-cmark bug where \[ and \! are
+        incorrectly parsed as links/images
+      - Violates CommonMark spec Example 14 for backslash escapes
+      - Filters 90% of false positives with byte-level escape
+        pattern detection
+      - Correctly handles: \[escaped\], \![not an image](url)
+      - Known limitation: \[text][ref] reference-style links still
+        produce 1 false positive
+      - Bug report filed for upstream fix
+    - MD042: False positives on autolinks
+      - Fixed empty link detection incorrectly flagging autolinks
+        like <https://example.com>
+      - Autolinks are now correctly excluded from empty link checks
+    - MD033: HTML tags inside HTML comments
+      - Fixed false positives when HTML tags appear inside HTML
+        comments
+      - Centralized HTML comment detection for consistent behavior
+        across rules
+      - HTML comments now properly ignored: <!-- <div>not
+        flagged</div> -->
+    - MD051: GitHub ASCII normalization
+      - Implemented proper GitHub anchor generation with ASCII
+        normalization
+      - Handles edge cases like backtick-wrapped angle brackets:
+        `<FILE>` → #file
+      - Verified against actual GitHub.com rendering behavior
+    - MD052: Complete Jinja template support
+      - Added Jinja template range checks to regex-based shortcut
+        reference detection
+      - Fixes false positives on [reference] patterns in Jinja
+        templates
+      - Completes Jinja support across all link-related rules
+        (MD039, MD042, MD051, MD052)
+    - MD039/MD042/MD051: Jinja template checks
+      - Added Jinja template range checks to prevent false
+        positives
+      - All rules using ctx.links/ctx.images now skip Jinja
+        template markers
+      - Validated on real-world Jinja templates
+        (pyo3/.towncrier.template.md)
+    - Link/image text extraction: Whitespace preservation
+      - Fixed loss of leading/trailing whitespace in link text and
+        image alt text
+      - pulldown-cmark strips newlines from Text events, causing
+        whitespace loss
+      - Now extracts directly from source bytes between brackets
+        for perfect fidelity
+      - Verified: [\nNewline\n](url) → text correctly preserved
+        with newlines
+  * Changed
+    - BREAKING: Removed MD002 (first-heading-h1) and MD006
+      (ul-start-left) rules
+      - Removed for 100% markdownlint compatibility
+      - markdownlint deprecated these rules in favor of more
+        specific alternatives
+      - Migration: Remove MD002 and MD006 from your .rumdl.toml
+        config if present
+    - Refactoring: Modernized codebase with Rust 1.91.0 features
+      - Migrated once_cell::sync::Lazy to std::sync::LazyLock
+        (stable in Rust 1.80)
+      - Improved error handling by replacing unwrap()/expect() with
+        proper error propagation
+      - Replaced defensive fallbacks with unreachable!() where
+        appropriate
+      - Eliminated unreachable panics and improved code robustness
+      - Removed '_fix' boolean redundancy and cleaned up dead code
+    - Refactoring: HTML comment detection centralized
+      - MD033 now uses centralized html_utils::find_html_comments()
+        for consistency
+      - Eliminates duplicate HTML comment parsing logic
+  * Performance
+    - 12-15% speed improvement from pulldown-cmark migration
+      - Migrated link/image parsing from regex-based approach to
+        pulldown-cmark parser
+      - Benchmark results: 12-15% faster on representative markdown
+        files
+      - More accurate CommonMark compliance
+      - Better handling of edge cases and complex markdown
+        structures
+- Update to version 0.0.171:
+  * Added
+    - MD060: Table column formatting with markdownlint
+      compatibility
+      - Full table formatting rule with auto-fix capability
+      - Four formatting styles: aligned, compact, tight, and any
+        (default)
+      - any style detects existing formatting and enforces
+        consistency
+      - Supports CJK characters and emoji
+      - Handles alignment indicators (:---, :---:, ---:)
+      - Skips ZWJ emoji sequences to prevent corruption
+      - Configuration: MD060.enabled = false (opt-in), MD060.style
+        = "any"
+  * Fixed
+    - MD053: CommonMark compliance for list continuations
+      - Fixed false positives when backtick references appear in
+        list continuation paragraphs
+      - Enhanced ordered list marker detection for multi-digit
+        lists (10., 123.)
+      - Implemented column-based indentation model per CommonMark
+        spec
+      - Distinguishes list continuation paragraphs from
+        code-in-lists
+      - Validated against 1,562 markdown files with 0 false
+        positives
+    - LSP: Global config fallback
+      - Fixed global config loading when no project-specific config
+        exists
+      - Now properly falls back to ~/.config/rumdl/.rumdl.toml
+      - Added test coverage for fallback behavior
+    - LSP: Fixed test expectations for camelCase serialization
+      - LSP initialization options use camelCase per LSP
+        specification
+      - Corrected test assertions to match actual camelCase
+        behavior
+    - Fix mode: Type-safe exit code semantics
+      - Added FixMode enum for clear fix/check mode distinction
+      - Improved code maintainability and type safety
+  * Changed
+    - BREAKING: MD013 tables default changed to false
+      - Previously defaulted to true, causing conflicts with table
+        formatting rules
+      - Now defaults to false for better user experience
+      - Migration: If you rely on MD013 checking table line
+        lengths, add to .rumdl.toml:
+          [MD013]
+          tables = true
+      - This prevents false positives when using MD060 or other
+        table formatting tools
+- Update to version 0.0.170:
+  * Added
+    - Include non-standard file extensions (#127)
+      - New --include CLI flag to check files with non-standard
+        extensions
+      - Example: rumdl check --include "*.txt" --include "*.text"
+      - Useful for documentation files with custom extensions
+      - Respects .rumdl.toml configuration: include = ["*.txt",
+        "*.text"]
+  * Fixed
+    - MD055: Preserve user formatting when fixing pipe placement
+      (#129)
+      - Changed from full table reconstruction to surgical pipe
+        addition/removal
+      - User's intentional spacing and alignment are now preserved
+      - Follows Unix philosophy: do one thing (fix pipes) well
+      - Example: | Cell 1   | Cell 2 → | Cell 1   | Cell 2 |
+        (spacing preserved)
+    - MD053: Allow backtick references with :: and spaces (#128)
+      - Fixed false positives for Rust-style references like
+        [`std::vec::Vec`]
+      - Now correctly handles references containing :: within
+        backticks
+      - Improves accuracy for Rust documentation and technical
+        content
+  * Documentation
+    - MD028: Clarified rule behavior for consecutive blockquotes
+      (#126)
+      - Updated documentation to accurately reflect that MD028
+        flags consecutive blockquote starts
+      - Not a bug - working as designed per markdownlint
+        specification
+      - Prevents confusion about expected behavior
+  * Changed
+    - Rust toolchain updated to 1.91.0 (from 1.89.0)
+      - Ensures compatibility with latest Rust features and
+        improvements
+      - Better performance and compilation times
+- Update to version 0.0.169:
+  * Performance
+  * MASSIVE PERFORMANCE IMPROVEMENTS: This release delivers 7-53x
+    faster linting through systematic elimination of O(n²)
+    bottlenecks and algorithmic optimizations. rumdl is now 16-29x
+    faster than markdownlint-cli2 on real-world repositories.
+    - Fix catastrophic O(n²) bottleneck in FilteredLinesIter
+      - Eliminated content.lines().collect() from inside
+        Iterator::next() method
+      - Single-file optimization delivered 7,600x speedup for
+        affected rules
+      - MD011: 6.00s → 0.785ms (7,644x faster)
+      - MD012: 5.95s → 1.643ms (3,621x faster)
+      - Impact: Stress test (10k lines): 9,987ms → 187ms (53x
+        faster)
+      - Impact: Rust Book (478 files): 2,646ms → 269ms (9.8x
+        faster)
+      - Impact: PyO3 (76 files): 2,004ms → 262ms (7.6x faster)
+    - Pre-compute LintContext data structures to eliminate
+      redundant work
+      - LineIndex: Eliminated 46× content cloning across all rules
+      - Jinja template ranges: Pre-computed once instead of O(n×m)
+        scanning
+      - Table blocks: Computed once instead of 4× independent scans
+        per document
+      - HTML comment ranges: Pre-computed with 50-70x speedup
+      - Code block line mapping: Optimized with binary search
+        instead of linear scan
+      - Autodoc blocks (MkDocs): Pre-computed to avoid O(n²)
+        scaling
+    - Optimize link and image parsing with binary search
+      - Replaced linear search with binary search for code span
+        checks
+      - Faster link/image parsing across all reference-based rules
+    - Replace regex with byte-level parsing for better performance
+      - List detection: Manual byte scanning instead of regex
+      - Blockquote prefix: Byte-level parsing instead of regex
+      - Line info parsing: Eliminated redundant blockquote prefix
+        parsing
+    - Streaming parser architecture
+      - Replaced AST parsing with pulldown-cmark streaming for
+        lower memory overhead
+      - Better scalability for very large documents
+    - MD046 optimization
+      - Pre-compute list/tab contexts
+      - Use ctx.code_blocks instead of independent detection
+  * Benchmarks
+  * vs Previous Version (v0.0.168):
+    - Rust Book (478 files): 2,646ms → 269ms (9.8x faster)
+    - Stress Test (10,514 lines): 9,987ms → 187ms (53.4x faster)
+    - PyO3 (76 files): 2,004ms → 262ms (7.6x faster)
+  * vs markdownlint-cli2 (industry standard):
+    - Rust Book: 10.3s vs 0.35s (29.4x faster)
+    - PyO3: 4.4s vs 0.26s (16.9x faster)
+  * Current Performance:
+    - 0.7ms per file (Rust Book)
+    - 6.3x parallelization efficiency
+    - Zero O(n²) algorithmic bottlenecks remaining
+  * Added
+    - MDX and Quarto flavor support
+      - New flavors: MarkdownFlavor::MDX and MarkdownFlavor::Quarto
+      - JSX component handling: Skip linting inside JSX elements
+      - ESM import/export support: Ignore JavaScript import/export
+        statements
+      - Quarto code chunk support: Recognize {r}, {python} chunk
+        delimiters
+      - Essential for modern React-based documentation and data
+        science workflows
+  * Fixed
+    - MD011: Intelligent URL vs text detection in reversed links
+      - Smarter classification of link components as URL or text
+      - Reduces false positives in edge cases like
+        (Generic<T>)[link]
+      - Correctly handles (http://url)[text] vs (text)[#anchor]
+      - Improved heuristics for ambiguous single-word patterns
+    - MD013: Preserve HTML blocks in list items during reflow
+      - HTML blocks inside list items are now preserved during
+        auto-fix
+      - Prevents broken indentation and tag structure
+      - Better handling of complex nested content
+  * Changed
+    - Architecture improvements for pre-computation pattern
+      - LintContext now owns shared data structures
+      - Rules consume pre-computed data instead of duplicating work
+      - Consistent binary search APIs for range lookups
+      - Foundation for future optimizations
+- Update to version 0.0.168:
+  * Added
+    - CLI: Support for Quarto (.qmd) and RMarkdown (.rmd/.Rmd)
+      files
+      - Added support for .qmd (Quarto), .rmd and .Rmd (RMarkdown)
+        file extensions
+      - Enables markdown linting for data science and scientific
+        documentation workflows
+      - Particularly useful for Jupyter-based publishing and
+        reproducible research documents
+    - LSP: will_save_wait_until for proper auto-fix on save
+      - Implemented LSP textDocument/willSaveWaitUntil capability
+      - Provides proper auto-fix on save support in compatible
+        editors
+      - More reliable than textDocument/didSave approach
+      - Ensures fixes are applied before file is actually saved to
+        disk
+    - MD033: LSP Quick Fix to remove HTML tags while keeping
+      content
+      - New code action removes HTML opening and closing tags while
+        preserving inner content
+      - Helps convert inline HTML to plain text when needed
+      - Available through editor Quick Fix menu (Ctrl+. or Cmd+.)
+  * Fixed
+    - MD013: Skip auto-fix for list items containing HTML tags
+      - Prevents broken auto-fix when HTML tags are present in list
+        items
+      - HTML structure (indentation, tag hierarchy) is now
+        preserved
+      - Errors are still reported but no destructive fix is applied
+      - Pragmatic solution until full HTML-aware reflow is
+        implemented
+      - Fixes issues where tags like </details> were split or
+        indentation was lost
+    - MD013: Fix incorrect sentence splitting after abbreviations
+      in sentence-per-line mode
+      - No longer incorrectly splits sentences after common
+        abbreviations (e.g., etc., i.e., Dr., Mr.)
+      - Improved sentence detection algorithm for better accuracy
+      - Prevents unwanted line breaks in the middle of sentences
+    - MD013: Prevent autolinks from being parsed as HTML tags
+      - Autolinks like <https://example.com> are no longer treated
+        as HTML
+      - Fixes false positives in HTML detection that could skip
+        auto-fix unnecessarily
+      - Properly distinguishes between markdown autolinks and
+        actual HTML tags
+    - MD013: Prevent content duplication in sentence-per-line
+      reflow
+      - Fixed bug where content could be duplicated during
+        paragraph reflow
+      - Ensures each sentence appears exactly once in reflowed
+        output
+      - Improves reliability of auto-fix in sentence-per-line mode
+    - MD013: Improve sentence-per-line error messages and
+      highlighting
+      - Better error messages that clearly indicate
+        sentence-per-line violations
+      - More accurate highlighting of problematic text
+      - Helps users understand what needs to be fixed
+    - MD013: Skip template directives at paragraph start in
+      sentence-per-line mode
+      - Template directives (like {{ variable }}) at start of
+        paragraphs no longer cause issues
+      - Prevents false positives in templated markdown files
+      - Improves compatibility with static site generators and
+        template engines
+    - MD013: Treat template directives as paragraph boundaries
+      - Template directives now properly separate paragraphs during
+        reflow
+      - Prevents template syntax from being joined with regular
+        content
+      - Better handling of mixed template and markdown content
+    - MD013: Join single-sentence paragraphs in sentence-per-line
+      mode
+      - Single-sentence paragraphs that span multiple lines are now
+        properly joined
+      - Fixes issues where short paragraphs were incorrectly
+        flagged
+      - Improves consistency of sentence-per-line formatting
+    - MD013: Handle multiple spaces and multi-line paragraphs in
+      sentence-per-line mode
+      - Better handling of paragraphs with inconsistent spacing
+      - Multi-line paragraphs are now correctly reflowed
+      - Fixes edge cases in whitespace handling
+    - MD052: Preserve backtick-wrapped patterns with dots in MkDocs
+      mode
+      - Backtick-wrapped references like `[foo.bar]` now preserve
+        dots in slugs
+      - Matches MkDocs behavior of treating code-wrapped text
+        literally
+      - Prevents false positives for code examples in documentation
+    - MD052: Support Pandoc citations and inline footnotes in
+      RMarkdown/Quarto
+      - Recognizes Pandoc citation syntax: [@citation], @citation,
+        [-@citation]
+      - Recognizes inline footnote syntax: ^[footnote text]
+      - No longer treats these as reference-style links
+      - Essential for academic and scientific writing in RMarkdown
+        and Quarto
+    - MD033: Only report opening HTML tags, not closing tags
+      - MD033 violations now only report the opening tag of an HTML
+        element
+      - Reduces noise in linting output (one violation per element
+        vs two)
+      - Closing tags like </div> are no longer separately reported
+      - Makes HTML-related warnings clearer and less redundant
+    - MD018: Skip CSS selectors and JS code inside HTML blocks
+      - CSS selectors like #slide-1 inside <style> tags no longer
+        trigger MD018
+      - JavaScript code inside <script> tags is properly ignored
+      - Prevents false positives for Quarto and RMarkdown files
+        with embedded HTML/CSS/JS
+      - Particularly important for interactive documents and custom
+        styling
+    - MD012: Enforce exactly 1 newline at EOF and clean LSP logging
+      - Files now must end with exactly one newline character (not
+        zero, not two)
+      - Aligns with POSIX standard and common editor behavior
+      - Improved LSP logging with less noise
+    - CI: Use cargo run instead of release binary in rumdl
+      pre-commit hook
+      - Pre-commit hooks now use cargo run for more reliable
+        execution
+      - Prevents issues with stale release binaries during
+        development
+      - Better integration with cargo workflow
+    - Schema: Allow root-level rule sections like [MD013] in config
+      validation
+      - Configuration schema now correctly allows [MD013] style
+        sections
+      - Fixes false validation errors for valid TOML config
+      - Better compatibility with common configuration patterns
+  * Changed
+    - Refactor: Detect HTML blocks before parsing headings
+      - Reordered LintContext initialization to detect HTML blocks
+        first
+      - Headings are no longer detected inside HTML blocks (like
+        <style> or <script>)
+      - Architectural improvement that prevents multiple false
+        positives
+      - Benefits MD018 and other heading-related rules
+      - More correct parsing aligned with markdown specifications
+    - Refactor: Use filtered_lines() for front-matter handling in
+      MD011 and MD012
+      - Improved front-matter handling using consistent
+        filtered_lines API
+      - Better code reuse and maintainability
+      - More reliable front-matter detection across rules
+- Update to version 0.0.167:
+  * Added
+    - Configuration validation with fuzzy-match suggestions
+      - Comprehensive unknown key detection for .rumdl.toml and
+        pyproject.toml
+      - Intelligent "did you mean?" suggestions using Levenshtein
+        distance algorithm
+      - File path context in validation warnings for easy debugging
+      - Catches typos in global options, rule names, and rule
+        options
+      - Example: line-lenght → suggests line-length, reflw →
+        suggests reflow
+      - Zero-dependency implementation with configurable similarity
+        threshold
+      - Helps users catch configuration mistakes before they cause
+        confusion
+    - MD053: Support for community comment-style references
+      - Recognizes and ignores reference-style link syntax used as
+        comments
+      - Supports widely-used patterns: [//]: # (comment),
+        [comment]: #, [note]: #, [todo]: #, [fixme]: #, [hack]: #
+      - Any reference with just # as URL is treated as a comment
+      - While not in CommonMark/GFM specs, used across 23+ markdown
+        implementations
+      - Complements HTML comments with a less HTML-like syntax
+        option
+      - Improves compatibility with existing markdown practices
+    - MD013: line-length = 0 to disable all line length checks
+      - Setting line-length = 0 now completely disables MD013 rule
+      - Provides explicit way to turn off line length validation
+        entirely
+      - More intuitive than previous workarounds
+      - Useful when line length management is handled by other
+        tools or not desired
+    - MD051: mdbook template support
+      - Added detection and slug generation for mdbook templates
+      - Recognizes {{#template path/to/file.md}} syntax
+      - Properly generates GitHub-compatible slugs for
+        template-included headings
+      - Improves compatibility with mdbook documentation projects
+    - LSP: Manual "Reflow paragraph" code action for MD013 warnings
+      - New code action available for MD013 line length warnings
+        when auto-reflow is disabled
+      - Allows users to manually reflow specific paragraphs without
+        enabling global reflow in config
+      - Appears as "Reflow paragraph" in Quick Fix menu (not marked
+        as preferred, so won't trigger on save)
+      - Intelligently detects paragraph boundaries and reflows
+        entire paragraph, not just the flagged line
+      - Respects line length limit from warning message or defaults
+        to 80 characters
+      - Provides a way to try paragraph reflow before committing to
+        enabling it globally
+      - Gives users fine-grained control over which paragraphs to
+        reflow
+  * Fixed
+    - LSP: Preserve trailing newline in reflow action
+      - Manual reflow code action now correctly preserves trailing
+        newlines
+      - Prevents unwanted file modifications from reflow operations
+      - Maintains document structure integrity
+    - LSP: Improve logging and resolve auto-fix issues
+      - Enhanced LSP server logging for better debugging
+      - Resolved various auto-fix edge cases and reliability issues
+    - MD051: Correct GitHub slug generation for angle brackets
+      - Fixed incorrect slug generation for headings containing
+        angle brackets
+      - Now properly handles special characters in anchor
+        generation
+      - Improves accuracy of link validation for complex headings
+  * Changed
+    - MD033: Remove unhelpful message suffix
+      - Simplified warning messages for inline HTML detection
+      - Removed redundant information to reduce noise
+      - Cleaner, more focused error messages
+    - Code cleanup: Remove dead code
+      - Removed unused LinkImageStyle enum from MD054
+      - General refactoring to improve maintainability
+      - Fixed clippy warnings
+  * Documentation
+    - MD033: Document mdbook use case for semantic HTML
+      - Added documentation about using semantic HTML in mdbook
+        projects
+      - Clarifies when and why inline HTML might be intentionally
+        used
+      - Helps users understand legitimate use cases for HTML in
+        markdown
+- Update to version 0.0.166:
+  * Added
+    - MD013: paragraphs field to control paragraph line length
+      checks (resolves #121)
+      - New boolean config field paragraphs (defaults to true)
+        allows disabling line length warnings for paragraph text
+      - Enables sentence-per-line formatting workflows without line
+        length validation noise
+      - Still checks headings, tables, code blocks, blockquotes,
+        and HTML when paragraphs: false
+      - Useful for semantic line breaks where sentence length is
+        determined by content, not arbitrary limits
+      - Example configuration:
+      - MD013: paragraphs: false  # Don't warn about long
+        paragraphs code-blocks: true  # Still check code blocks
+        tables: true       # Still check tables reflow: true
+        reflow-mode: "sentence-per-line"
+- Update to version 0.0.165:
+  * Fixed
+    - MD040: Always preserve indentation when adding language tags
+      (fixes #122)
+      - The MD040 rule was incorrectly removing indentation from
+        code blocks when adding language tags
+      - This broke list structure when code blocks were part of
+        list items
+      - Root cause: The fix logic had conditional behavior that
+        would remove indentation for "standalone" code blocks
+      - Now always preserves original indentation regardless of
+        context
+      - Removed 50+ lines of unnecessary is_in_nested_context()
+        helper logic
+      - Added comprehensive tests for various indentation scenarios
+        (0, 2, 4, 6 spaces)
+  * Added
+    - Conventional Commits validation hook: Git commit-msg hook
+      validates commit message format
+      - Enforces Conventional Commits specification for all commits
+      - Provides helpful error messages for invalid formats
+      - Ensures consistent commit history for changelog generation
+    - Automated changelog generation with git-cliff:
+      - Added make changelog-draft for previewing CHANGELOG updates
+      - Semi-automated workflow: generate draft, enhance with
+        details, commit
+      - Conventional Commits integration for automatic
+        categorization
+  * Changed
+    - Pre-push hook optimization: Use dev profile instead of full
+      suite for faster testing
+      - Prevents pre-push hook from hanging on slower machines
+      - Maintains adequate test coverage while improving developer
+        experience
+- Update to version 0.0.164:
+  * Added
+    - File-Level Caching (Ruff-inspired): Dramatic performance
+      improvements for repeat runs
+      - Blake3-based content hashing for fast cache lookups
+      - Automatic cache invalidation on content, config, or version
+        changes
+      - Cache stored in .rumdl-cache/{version}/{hash}.json
+      - CLI flags: --no-cache to disable, --cache-dir to customize
+        location
+      - Enabled by default for instant subsequent runs
+    - Thread-Safe Parallel Caching: Best of both worlds -
+      parallelization AND caching
+      - Implemented Arc<Mutex> for safe cache sharing across
+        threads
+      - Mutex locked ONLY for brief cache get/set operations
+      - Full parallelization during expensive linting operations
+      - Matches Ruff's architecture for optimal performance
+    - Convergence Detection: Added hash-based detection to identify
+      when fixes have stabilized
+      - Stops iteration when content hash remains unchanged
+      - More efficient than counting rule applications
+      - Returns convergence status in fix results
+    - Convergence Failure Warnings: Report when auto-fix doesn't
+      converge (Ruff-style)
+      - Warns if 100 iteration limit reached without convergence
+      - Shows rule codes involved in potential infinite loop
+      - Encourages bug reports for convergence failures
+      - Available via RUMDL_DEBUG_FIX_PERF environment variable
+  * Changed
+    - Auto-fix Iteration: Automatic iteration until convergence
+      (fixes #88)
+      - --fix now automatically iterates up to 100 passes until
+        content stabilizes (same as Ruff)
+      - No need to manually re-run rumdl check --fix multiple times
+      - Hash-based convergence detection prevents unnecessary
+        iterations
+      - Significantly improves user experience for multi-pass fix
+        scenarios
+    - Unified Linting Architecture: Removed ~60 lines of duplicate
+      linting logic
+      - Refactored process_file_collect_warnings to use
+        process_file_inner
+      - Single code path for all file processing
+      - Cache works for ALL output formats (text, JSON, GitLab,
+        SARIF, JUnit)
+    - Parallel File Processing for Fix Mode: 4.8x speedup on
+      multi-file fixes
+      - Previously fix mode was always sequential
+      - Now uses parallel processing when safe (multiple
+        independent files)
+      - Each file processes all its fix iterations independently
+  * Fixed
+    - Multi-pass Fixes: No longer require manual re-runs to apply
+      all possible fixes
+      - Previously users had to run rumdl check --fix multiple
+        times
+      - Now automatically handles dependent rule fixes in single
+        command
+      - Examples: MD010 (tabs) before MD007 (list indent), MD013
+        (line length) before MD009 (trailing spaces)
+    - Cache Correctness: Include enabled rules in cache key
+      (Ruff-style)
+      - Cache now respects --enable/--disable CLI flags
+      - Different rule configurations create separate cache entries
+      - Prevents incorrect cached results when switching rule sets
+      - Changed LintWarning.rule_name from Option<&'static str> to
+        Option<String> for proper serialization
+    - Cache Parallelization: Cache now works correctly with
+      parallel processing
+      - No mutex contention during parallel file processing
+      - All output formats benefit from caching (previously only
+        JSON/GitLab/SARIF/JUnit)
+  * Performance
+    - Single file with cache: 943ms → 7ms (135x faster)
+    - Multi-file (21 files) cold cache: 14.4s → 4s (parallel
+      processing)
+    - Multi-file (21 files) warm cache: 14.4s → 0.019s (757x
+      faster!)
+    - JSON format (17 files) with cache: 13.9s → 60ms (231x faster)
+- Update to version 0.0.163:
+  * Changed
+    - MD024: Default siblings_only to true for better usability
+      - Multiple headings with same text now only flagged if
+        they're direct siblings
+      - Reduces false positives in documents with common section
+        headings
+      - More intuitive default behavior matching common use cases
+  * Fixed
+    - MD013: Enforce line length in sentence_per_line mode (fixes
+      #111)
+      - Previously, sentence_per_line mode completely ignored
+        line_length setting
+      - Now warns about single sentences exceeding configured
+        line_length
+      - No auto-fix for long single sentences (requires manual
+        rephrasing)
+      - Still auto-fixes multi-sentence lines by splitting on
+        sentence boundaries
+      - Cleaned up warning messages by removing verbose
+        parentheticals
+      - Maintains semantic integrity (won't split mid-sentence)
+        while respecting configured line_length
+    - HTML Comments: Complete fix to ignore all content inside HTML
+      comments (fixes #119, #20)
+      - All rules now properly ignore content within HTML comment
+        blocks (<!-- ... -->)
+      - Added in_html_comment field to LineInfo for comprehensive
+        tracking
+      - Extended filtered lines API with skip_html_comments()
+        method
+      - Updated MD013, MD049, and other rules to skip HTML comment
+        content
+      - Prevents false positives from commented-out markdown
+        (MD013, MD049, MD005, MD006, MD039, MD042)
+      - Better handling of multi-line HTML comments across all
+        linting rules
+    - MD046: Resolve false positives from Issue #118
+      - Fixed incorrect flagging of valid code block syntax
+      - Improved code block style detection accuracy
+    - MD050: Resolve false positives from Issue #118
+      - Fixed incorrect strong style detection in edge cases
+      - Better handling of emphasis patterns
+    - Tests: Fixed sentence_per_line_detection test assertion
+      - Updated test to match simplified warning message from MD013
+      - Test was expecting verbose message after message was
+        simplified in earlier commit
+- Update to version 0.0.162:
+  * Added
+    - Filtered Line Iterator Architecture: New infrastructure for
+      rule implementation
+      - Provides consistent interface for filtering out front
+        matter, code blocks, and HTML blocks
+      - Eliminates manual context checking in individual rules
+      - Improves code maintainability and reduces duplication
+      - Enables easier implementation of new rules
+  * Fixed
+    - MD052: Skip code blocks in blockquotes when checking
+      references
+      - Prevents false positives for reference syntax inside code
+        blocks within blockquotes
+      - Properly handles nested markdown structures
+    - MD034: Skip URLs in front matter
+      - URLs in YAML/TOML/JSON front matter no longer flagged as
+        bare URLs
+      - Improves compatibility with static site generators
+    - Tests: Fixed flaky profiling::tests::test_concurrent_access
+      test
+      - Added #[serial_test::serial] attribute to prevent race
+        conditions
+      - Ensures reliable test execution in CI/CD environments
+    - Documentation: Build badge now displays correctly
+  * Performance
+    - MD005: Optimized continuation detection from O(n²) to O(n)
+      - Dramatically faster processing of documents with many list
+        items
+      - Eliminates redundant line scanning
+    - General: Consolidated multiple line_info() calls for same
+      line
+      - Reduced redundant lookups across multiple rules
+      - Improved overall linting performance
+  * Changed
+    - Internal Refactoring: Eliminated manual checks across all
+      rules
+      - Removed manual front matter detection from individual rules
+      - Removed manual code block detection from individual rules
+      - Removed manual HTML block detection from individual rules
+      - All rules now use centralized filtering infrastructure
+  * Documentation
+    - Per-File-Ignores: Added comprehensive documentation for
+      per-file-ignores feature
+      - Detailed usage examples with glob patterns
+      - Integration with both .rumdl.toml and pyproject.toml
+
+-------------------------------------------------------------------
 Thu Oct 16 06:30:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package rumdl: a Markdown Linter written in Rust
