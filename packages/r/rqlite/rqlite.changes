@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 08 09:27:49 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.2.3:
+  * New support for Associative responses when using the RETURNING
+    keyword
+  * Optimize the startup time, remove dependency on data set size
+  * Add /licenses endpoint to HTTP API
+
+-------------------------------------------------------------------
 Wed Oct 22 15:51:22 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.1.3:
