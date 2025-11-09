@@ -7,4 +7,12 @@
     <comment>New package useful for Lua development.</comment>
     <requestid>1315153</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>74d16753c5324ec9c23c43e7147bad14</srcmd5>
+    <version>3.1.3</version>
+    <time>1762718879</time>
+    <user>dimstar_suse</user>
+    <comment>Update correct-assert-meta-arch.patch according to the upstream comments.</comment>
+    <requestid>1316495</requestid>
+  </revision>
 </revisionlist>

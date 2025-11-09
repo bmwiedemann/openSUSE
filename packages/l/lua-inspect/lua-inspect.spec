@@ -28,7 +28,7 @@ Source:         https://github.com/kikito/inspect.lua/archive/v%{version}.tar.gz
 # # PATCH-FIX-UPSTREAM correct_assertion.patch gh#kikito/inspect.lua!75 mcepl@suse.com
 # correct assertion for metatable with __metatable=nil
 # seems that the patch fixes the issue with aarch64, but breaks everywhere else
-# Patch0:         correct_assertion.patch
+Patch0:         correct-assert-meta-arch.patch
 BuildRequires:  %{flavor}-busted
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luacheck

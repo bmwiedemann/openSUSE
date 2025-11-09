@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  7 21:32:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update correct-assert-meta-arch.patch according to the upstream
+  comments.
+
+-------------------------------------------------------------------
 Fri Oct 24 14:48:06 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.
