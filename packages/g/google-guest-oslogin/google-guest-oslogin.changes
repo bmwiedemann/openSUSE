@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  7 14:18:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20251022.00
+  * Log the response body when an auth failure occurs;
+    it usually has helpful info in it. (#167)
+
+-------------------------------------------------------------------
 Tue Sep  2 12:50:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250821.00

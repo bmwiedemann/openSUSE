@@ -373,4 +373,14 @@
   * Extract the principal from certs when cloud_run enabled (#164) (forwarded request 1302426 from glaubitz)</comment>
     <requestid>1302435</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>19035cdb1530dfa6c4f23a1738f84190</srcmd5>
+    <version>20251022.00</version>
+    <time>1762718865</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251022.00
+  * Log the response body when an auth failure occurs;
+    it usually has helpful info in it. (#167) (forwarded request 1316455 from glaubitz)</comment>
+    <requestid>1316485</requestid>
+  </revision>
 </revisionlist>
