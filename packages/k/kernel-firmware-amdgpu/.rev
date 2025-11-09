@@ -430,4 +430,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: DMCUB updates for various ASICs</comment>
     <requestid>1315088</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3d08c0fbab644d12a83878926612f339</srcmd5>
+    <version>20251107</version>
+    <time>1762718855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251107 (git commit b918d0b3cb97):
+  * amdgpu: DMCUB updates for various ASICs</comment>
+    <requestid>1316552</requestid>
+  </revision>
 </revisionlist>
