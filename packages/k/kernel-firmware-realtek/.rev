@@ -156,4 +156,19 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 6.18-rc1</comment>
     <requestid>1312189</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d8a07be7193ecf41a105db3db5ada54a</srcmd5>
+    <version>20251106</version>
+    <time>1762718860</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251106 (git commit b055b3e24542):
+  * rtw89: 8851b: update fw to v0.29.41.5
+  * rtw89: 8852b: update fw to v0.29.128.0 with format suffix -2
+  * rtw89: 8852b: update fw to v0.29.29.14
+  * Revert &quot;rtw89: 8852b: update fw to v0.29.128.0&quot;
+  * rtw89: 8852bt: update fw to v0.29.127.0 with format suffix -1
+  * rtw89: 8852bt: update fw to v0.29.122.1
+  * Revert &quot;rtw89: 8852bt: update fw to v0.29.127.0&quot;</comment>
+    <requestid>1316556</requestid>
+  </revision>
 </revisionlist>
