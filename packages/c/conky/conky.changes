@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 29 11:35:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix shebang in extras/convert.lua: set it to LUA 5.3 and thus use
+  the same lua version as the rest of the package (switched to LUA
+  5.3 in 2019).
+
+-------------------------------------------------------------------
 Tue Jul 22 14:47:58 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 1.22.2

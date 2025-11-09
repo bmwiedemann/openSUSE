@@ -1,7 +1,7 @@
 #
 # spec file for package conky
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -214,7 +214,7 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/conky/conky.conf
 install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/conkyconf
 cp %{SOURCE3} .
 sed -i "1d" extras/convert.lua
-sed -i "1s/^/#!\/usr\/bin\/lua5.1\\n/" extras/convert.lua
+sed -i "1s/^/#!\/usr\/bin\/lua5.3\\n/" extras/convert.lua
 install -m 0755 extras/convert.lua %{buildroot}%{_sysconfdir}/conky/
 install -m 0644 data/conky_no_x11.conf data/conky.conf %{buildroot}%{_sysconfdir}/conky/
 # clean
