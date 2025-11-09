@@ -1,8 +1,8 @@
 #
 # spec file for package libacars2
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2019-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover   2
 %define libname libacars-2-%{sover}
 Name:           libacars2
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        A library for decoding various ACARS message payloads
 License:        MIT
@@ -74,7 +74,7 @@ Example applications for for libacars:
    reports)
 
 %prep
-%setup -q -n libacars-%{version}
+%autosetup -n libacars-%{version}
 
 %build
 %cmake \
