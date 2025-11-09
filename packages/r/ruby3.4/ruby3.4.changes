@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  7 22:16:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add BuildRequires for gcc-c++ otherwise the rbconfig.rb now has
+  CXX set to false and makes c++ base extensions fail
+
+-------------------------------------------------------------------
 Tue Oct  7 23:34:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.4.7

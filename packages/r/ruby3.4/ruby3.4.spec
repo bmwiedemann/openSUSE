@@ -117,6 +117,7 @@ Provides:       %{name}-without-jemalloc = %{version}-%{release}
 BuildRequires:  autoconf
 BuildRequires:  ruby3.3
 %endif
+BuildRequires:  gcc-c++
 BuildRequires:  glibc-locale-base
 BuildRequires:  libffi-devel
 BuildRequires:  libyaml-devel

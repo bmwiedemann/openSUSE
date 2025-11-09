@@ -85,4 +85,13 @@
     https://github.com/ruby/ruby/releases/tag/v3_4_6</comment>
     <requestid>1309710</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>743a298d5f97924060dd1559c8f37c30</srcmd5>
+    <version>3.4.7</version>
+    <time>1762718852</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires for gcc-c++ otherwise the rbconfig.rb now has
+  CXX set to false and makes c++ base extensions fail</comment>
+    <requestid>1316510</requestid>
+  </revision>
 </revisionlist>
