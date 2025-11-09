@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 09 09:43:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.4.0:
+  * version 3.4.0
+  * exclude /Library/Developer from normal mounts
+  * use merged lfs-core
+  * Mac: list mounts not backed by a local phys device
+
+-------------------------------------------------------------------
 Sun Nov 02 16:01:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.3.0:
