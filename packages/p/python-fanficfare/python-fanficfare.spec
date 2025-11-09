@@ -20,16 +20,13 @@
 %define modnamedown fanficfare
 %define skip_python2 1
 Name:           python-fanficfare
-Version:        4.49.0
+Version:        4.51.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/JimmXinu/FanFicFare
 Source:         https://github.com/JimmXinu/FanFicFare/archive/v%{version}/FanFicFare-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM otw-login.patch gh#JimmXinu/FanFicFare#1263 mcepl@suse.com
-# fix authorization on OTW sites
-Patch0:         otw-login.patch
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module cloudscraper}

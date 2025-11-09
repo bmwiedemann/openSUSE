@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Nov  7 22:00:23 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the version 4.51.0:
+  - writer_epub: Only do svg check for epub3
+  - writer_epub: More epub3 - prefix & prop cover-image
+  - Don't include default_cover_image with use_old_cover with a
+    different name.
+  - adapter_storiesonlinenet.py - tolerate contest stories with
+    "(Hidden)" author, #1272, thanks bpothier
+  - Find and use epub3 cover on update--relies on Calibre's
+    calibre:title-page property.
+  - writer_epub: Also write the calibre:title-page property for
+    epub3.
+  - writer_epub: Rearrange to detect and flag files containing
+    svg tags for epub3.
+  - Preserve original titles for Reader Post blocks from
+    fiction.live #1269, thanks MacaroonRemarkable!
+  - adapter_ficbooknet: Collect additional metadata #1270, thanks
+    dbhmw!
+  - OTW/AO3: Don't apply series page handling to non-series pages
+- Update to the version 4.50.0:
+  - OTW(AO3): Fix for site change breaking logged in detection.
+    Closes #1263
+  - adapter_literotica: Site change, regex outdated. PR1261,
+    thanks dbhmw!
+  - adapter_storiesonlinenet: Add check for SOL accounts in
+    renewal warning period to verbosely explain to users why
+    their downloads don't work. PR1262, thanks bpothier!
+  - base_otw_adapter: Fix for markedforlater site change
+  - OTW(AO3): Accept /chapter/999 URLs without /works/999 for
+    #1258
+  - Fix tuple vs grouping vs list, closes #1254 (royalroad
+    "'NoneType' object does not support item assignment")
+  - Spiritfanfiction login, closes #1247, thanks kilandra
+  - New site: althistory.com (NOT alternatehistory.com) for #1252
+- Remove upstreamed patch:
+  - otw-login.patch
+
+-------------------------------------------------------------------
 Sat Oct 18 20:48:01 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - add otw-login.patch to fix AO3 login
