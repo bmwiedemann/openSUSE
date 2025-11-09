@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 08 07:06:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.45 (.44 was not released):
+  * Bugfixes
+    - Fix for in Docker container: ERROR!: community.general.yaml
+      has been removed
+
+-------------------------------------------------------------------
 Thu Nov 06 06:44:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.16.43 (no releases between .37 and this one):
