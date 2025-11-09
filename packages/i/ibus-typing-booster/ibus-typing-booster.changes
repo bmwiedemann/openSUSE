@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  7 13:29:48 UTC 2025 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.28.3
+- Fix [Install missing dictionaries] feature in the setup tool
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/821)
+- Prefer hunspell over aspell
+
+-------------------------------------------------------------------
 Thu Oct 30 14:42:51 UTC 2025 - Mike FABIAN <maiku.fabian@gmail.com>
 
 - Update to 2.28.2
