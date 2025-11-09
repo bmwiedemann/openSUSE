@@ -15,8 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define hypr_tgt 0.51.1
-%define pkg_version 0.51.0
+%define hypr_tgt 0.52.0
+%define pkg_version 0.52.0
 
 Name:           hyprland-plugins
 Version:        %{pkg_version}
