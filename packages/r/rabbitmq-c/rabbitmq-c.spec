@@ -82,12 +82,12 @@ amqp-publish        Publish a message on an AMQP server
 %cmake \
   -DBUILD_TOOLS_DOCS:BOOL=ON \
   -DBUILD_STATIC_LIBS:BOOL=ON \
+  -DINSTALL_STATIC_LIBS:BOOL=OFF \
   -DBUILD_TOOLS:BOOL=ON
 %cmake_build
 
 %install
 %cmake_install
-rm %{buildroot}%{_libdir}/%{libname}.a
 
 %check
 # check .pc is usable

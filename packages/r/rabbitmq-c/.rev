@@ -152,4 +152,12 @@
   - Add amqp_literal_bytes macro (#844) (forwarded request 1238855 from elimat)</comment>
     <requestid>1238931</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>639b037c0305a543c21c0f3743b109a7</srcmd5>
+    <version>0.15.0</version>
+    <time>1762718910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1316558</requestid>
+  </revision>
 </revisionlist>
