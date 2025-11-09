@@ -311,4 +311,17 @@
     variable is set to an empty string.</comment>
     <requestid>1314325</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f4d4efbcdda41163ec4fa2c2ebf4b7b7</srcmd5>
+    <version>3.6.0</version>
+    <time>1762718951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.0:
+  * Change default style to yellow instead of red-green
+    To use the other: RIFF=--unchanged-style=red-green
+  * Drop the &quot;experimental&quot; unchanged style option, which was
+    identical to yellow. The old experimental / yellow is
+    the new default, and no options are needed for that any more.</comment>
+    <requestid>1316602</requestid>
+  </revision>
 </revisionlist>
