@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 06 06:36:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.5.8:
+  * fix: bump go version (#19702)
+  * ci: make dist job run on self-hosted runner (backport
+    release-3.5.x) (#19697)
+  * docs: Add pattern ingester to components (backport
+    release-3.5.x) (#19652)
+  * docs: Update variable formatting (#19610) (#19628)
+  * docs: Update TOC entry for unwanted queries (backport
+    release-3.5.x) (#19626)
+  * docs: update note in labels topic (backport release-3.5.x)
+    (#19624)
+  * docs: Update Loki version, add notes (backport release-3.5.x)
+    (#19601)
+  * docs: backport 19594 3.5 branch (#19597)
+  * docs: backport 19532 to 3.5 branch (#19537)
+  * docs: Update Auth topic with nginx instructions (backport
+    release-3.5.x) (#19527)
+  * chore(build): Pull in latest helm tagged releases workflow
+    (#19512)
+  * docs: Update RN for 3.5.7 (backport release-3.5.x) (#19498)
+  * chore(release-3.5.x): release 3.5.7 (#19477)
+
+-------------------------------------------------------------------
 Mon Oct 13 10:26:36 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.5.7:

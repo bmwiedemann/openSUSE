@@ -21,7 +21,7 @@
 %global promtail_datadir /var/lib/promtail
 
 Name:           loki
-Version:        3.5.7
+Version:        3.5.8
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
