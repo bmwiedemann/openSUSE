@@ -29,10 +29,10 @@
 ExclusiveArch:  do_not_build
 %endif
 
-%if "%{flavor}" == "standard"
+%if "%{flavor}" == "ucx"
 %define build_flavor ucx
 %endif
-%if "%{flavor}" == "testsuite"
+%if "%{flavor}" == "ucx-testsuite"
 %define build_flavor ucx
 %define testsuite 1
 %endif
@@ -84,6 +84,7 @@ Source101:      README.md
 Patch1:         autogen-only-deal-with-json-yaksa-if-enabled.patch
 Patch2:         autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch
 Patch3:         romio-test-fix-bad-snprintf-arguments.patch
+Patch4:         ch4-shm-fix-data-type-for-recv_bytes-in-MPIDI_POSIX_mpi_release_gather_release.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  fdupes
@@ -101,6 +102,7 @@ BuildRequires:  libtool
 BuildRequires:  libtool
 BuildRequires:  mpi-selector
 BuildRequires:  python3-devel
+BuildRequires:  hwloc-devel >= 2.0
 
 %if "%{build_flavor}" == "ofi"
 BuildRequires:  libfabric-devel
@@ -114,7 +116,6 @@ BuildRequires:  libuct-devel >= 1.7.0
 # UCX is only available for 64b archs
 ExcludeArch:    %ix86 %arm
 %endif
-
 Provides:       mpi
 BuildRequires:  Modules
 BuildRequires:  gcc-c++
@@ -187,11 +188,15 @@ rm -R modules/{ucx,libfabric,json-c}
 
 # GCC10 needs an extra flag to allow badly passed parameters
 %if 0%{?suse_version} > 1500
-export FFLAGS="-fallow-argument-mismatch $FFLAGS"
-export FCFLAGS="-fallow-argument-mismatch $FCFLAGS"
+export FFLAGS="-fallow-argument-mismatch %{optflags}"
+export FCFLAGS="-fallow-argument-mismatch %{optflags}"
 %endif
-
-./autogen.sh --without-ucx --without-ofi --without-json
+%ifarch aarch64
+# For some reason, configure has random issue with defining this
+# on aarch64 only. Set it to avoid random failure
+export CROSS_F77_SIZEOF_INTEGER=4
+%endif
+autoreconf -fi
 %configure \
     --prefix=%{p_prefix} \
     --exec-prefix=%{p_prefix} \
@@ -205,6 +210,7 @@ export FCFLAGS="-fallow-argument-mismatch $FCFLAGS"
     --sysconfdir=%{p_sysconfdir} \
     --disable-rpath      \
     --disable-wrapper-rpath      \
+    --with-hwloc \
 %if "%{build_flavor}" == "ofi"
    --with-ofi \
    --with-device=ch4:ofi \
@@ -218,6 +224,21 @@ export FCFLAGS="-fallow-argument-mismatch $FCFLAGS"
 	MPICHLIB_CFLAGS="%{optflags}"			\
 	MPICHLIB_CXXFLAGS="%{optflags}"
 
+%if 0%{?testsuite}
+%install
+rm -rf %{buildroot}/*
+
+%check
+# Disable CMA. Modern kernels require specific ptrace capabilities
+# that are not available in OBS
+export MPIR_CVAR_CH4_CMA_ENABLE=0
+for dir in src/mpl src/mpi/romio/test; do
+  (
+      cd $dir &&  make check
+  )
+done
+
+%else
 make %{?_smp_mflags} VERBOSE=1
 
 %install
@@ -250,16 +271,6 @@ find %{buildroot} -name "*.a" -delete
 %fdupes %{buildroot}%{p_mandir}
 %fdupes %{buildroot}%{p_datadir}
 %fdupes %{buildroot}%{p_libdir}/pkgconfig
-
-%if 0%{?testsuite}
-# Remove everything from testsuite package
-# It is all contained by mpich packages
-rm -rf %{buildroot}/*
-
-%check
-make check
-
-%else
 
 # make and install mpivars files
 install -m 0755 -d %{buildroot}%{_bindir}

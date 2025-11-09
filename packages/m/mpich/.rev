@@ -346,4 +346,18 @@
   - Fixes for various test program bugs</comment>
     <requestid>1314585</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>913fd152e4ef5b9e55d5b9c7033f2d19</srcmd5>
+    <version>4.3.2</version>
+    <time>1762718989</time>
+    <user>dimstar_suse</user>
+    <comment>- Use external hwloc
+- Rename standard multibuild flavor to ucx for more clarity
+- Add ch4-shm-fix-data-type-for-recv_bytes-in-MPIDI_POSIX_mpi_release_gather_release.patch
+  to fix a datatype issue on s390x
+- Speed up testsuite by not rebuilding mpich completely
+- Fix random configure failure on aarch64
+- Fix FFLAGS</comment>
+    <requestid>1316642</requestid>
+  </revision>
 </revisionlist>
