@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  8 16:33:08 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.39.9:
+  * fix: do not output matched highlight when --update-all #2317
+  * chore(deps): update dependency @ast-grep/napi to v0.39.7 d6306b1
+  * chore(deps): update dependency oxlint to v1.26.0 85a256e
+  * chore(deps): update dependency oxlint to v1.25.0 0c09885
+
+-------------------------------------------------------------------
 Wed Oct 29 10:40:43 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.39.7:

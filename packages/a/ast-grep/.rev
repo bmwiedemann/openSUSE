@@ -978,4 +978,16 @@
     <comment></comment>
     <requestid>1314324</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>ae2cccea86b3361384cabaa5767ac27a</srcmd5>
+    <version>0.39.9</version>
+    <time>1762718944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.39.9:
+  * fix: do not output matched highlight when --update-all #2317
+  * chore(deps): update dependency @ast-grep/napi to v0.39.7 d6306b1
+  * chore(deps): update dependency oxlint to v1.26.0 85a256e
+  * chore(deps): update dependency oxlint to v1.25.0 0c09885</comment>
+    <requestid>1316597</requestid>
+  </revision>
 </revisionlist>
