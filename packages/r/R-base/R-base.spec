@@ -1,7 +1,7 @@
 #
 # spec file for package R-base
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.5.1
+Version:        4.5.2
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -1322,7 +1322,7 @@ Metapackage, Requires: all recommended Packages
 
 %package -n R-boot
 Summary:        Package provides recommended R-boot
-Version:        1.3.31
+Version:        1.3.32
 Release:        %release
 Requires:       R-base
 
@@ -1567,7 +1567,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.7.3
+Version:        1.7.4
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
