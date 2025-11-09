@@ -1,7 +1,7 @@
 #
 # spec file for package ntl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           ntl
-%define lname	libntl44
-Version:        11.5.1
+%define lname	libntl45
+Version:        11.6.0
 Release:        0
 Summary:        Library for Number Theory
 License:        LGPL-2.1-or-later
@@ -75,22 +75,22 @@ This package contains the documentation for the NTL API.
 %autosetup -p1
 
 %build
-pushd src/
+cd src/
 ./configure CXXFLAGS="%optflags" DEF_PREFIX="%_prefix" LIBDIR="%_libdir" \
-	DOCDIR="%_defaultdocdir" NTL_GF2X_LIB=on SHARED=on NATIVE=off
-make %{?_smp_mflags}
-popd
+	PKGDIR="%_libdir/pkgconfig" DOCDIR="%_defaultdocdir" \
+	NTL_GF2X_LIB=on SHARED=on NATIVE=off
+%make_build
+cd -
 
 %install
-pushd src/
+cd src/
 %make_install
 mv "%buildroot/%_defaultdocdir/NTL" "%buildroot/%_defaultdocdir/ntl"
-popd
+cd -
 rm -fv "%buildroot/%_libdir"/*.la
 %fdupes %buildroot/%_prefix
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libntl.so.*
@@ -99,6 +99,7 @@ rm -fv "%buildroot/%_libdir"/*.la
 %files devel
 %_includedir/NTL/
 %_libdir/libntl.so
+%_libdir/pkgconfig/*.pc
 
 %files doc
 %_defaultdocdir/%name/

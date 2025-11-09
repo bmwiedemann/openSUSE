@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  7 19:53:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.6.0
+  * Add SIMD support for aarch64 and other updates
+
+-------------------------------------------------------------------
 Wed Jun 23 22:26:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.5.1
