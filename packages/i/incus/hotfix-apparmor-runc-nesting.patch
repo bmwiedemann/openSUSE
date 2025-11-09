@@ -1,0 +1,71 @@
+From 1fbe4bffb9748cc3b07aaf5db310d463c1e827d0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?St=C3=A9phane=20Graber?= <stgraber@stgraber.org>
+Date: Wed, 5 Nov 2025 20:24:47 -0500
+Subject: [PATCH] incusd/apparmor/lxc: Don't bother with sys/proc protections
+ when nesting enabled
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When nesting is enabled, it's possible for the container to get a clean
+copy of /proc or /sys mounted anywhere without AppArmor being able to
+mediate. So there's little point in trying to apply safety checks on top
+of the main /proc and /sys.
+
+On top of that, we've recently discovered that AppArmor doesn't properly
+handle file access relative to a file descriptor, causing a bunch of
+those checks to deny access when they shouldn't.
+
+Closes #2623
+
+Signed-off-by: Stéphane Graber <stgraber@stgraber.org>
+---
+ internal/server/apparmor/instance_lxc.profile.go | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/internal/server/apparmor/instance_lxc.profile.go b/internal/server/apparmor/instance_lxc.profile.go
+index 1270600f290..d132f6f5393 100644
+--- a/internal/server/apparmor/instance_lxc.profile.go
++++ b/internal/server/apparmor/instance_lxc.profile.go
+@@ -332,6 +332,7 @@ profile "{{ .name }}" flags=(attach_disconnected,mediate_deleted) {
+   mount options=(rw,move) /sy[^s]*{,/**},
+   mount options=(rw,move) /sys?*{,/**},
+ 
++{{- if not .nesting }}
+   # Block dangerous paths under /proc/sys
+   deny /proc/sys/[^fknu]*{,/**} wklx,
+   deny /proc/sys/f[^s]*{,/**} wklx,
+@@ -431,6 +432,7 @@ profile "{{ .name }}" flags=(attach_disconnected,mediate_deleted) {
+   deny /sys/fs/cgrou[^p]*{,/**} wklx,
+   deny /sys/fs/cgroup?*{,/**} wklx,
+   deny /sys/fs?*{,/**} wklx,
++{{- end }}
+ 
+ {{- if .feature_unix }}
+ 
+@@ -453,6 +455,7 @@ profile "{{ .name }}" flags=(attach_disconnected,mediate_deleted) {
+ 
+ {{- if .feature_stacking }}
+ 
++{{- if not .nesting }}
+   ### Feature: apparmor stacking
+   deny /sys/k[^e]*{,/**} wklx,
+   deny /sys/ke[^r]*{,/**} wklx,
+@@ -478,14 +481,17 @@ profile "{{ .name }}" flags=(attach_disconnected,mediate_deleted) {
+   deny /sys/kernel/security/apparmor?*{,/**} wklx,
+   deny /sys/kernel/security?*{,/**} wklx,
+   deny /sys/kernel?*{,/**} wklx,
++{{- end }}
+ 
+   change_profile -> ":{{ .namespace }}:*",
+   change_profile -> ":{{ .namespace }}://*",
+ {{- else }}
+ 
+   ### Feature: apparmor stacking (not present)
++{{- if not .nesting }}
+   deny /sys/k*{,/**} wklx,
+ {{- end }}
++{{- end }}
+ 
+ {{- if .nesting }}
+ 

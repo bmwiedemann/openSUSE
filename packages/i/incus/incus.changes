@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  8 15:40:15 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Backport workaround for runc's CVE-2025-52881 mitigation breaking under
+  AppArmor with nesting under Incus. <https://github.com/lxc/incus/pull/2624>
+  + hotfix-apparmor-runc-nesting.patch
+
+-------------------------------------------------------------------
 Mon Oct 13 05:29:40 UTC 2025 - Orville Q. Song <orville@anislet.dev>
 
 - Update to Incus 6.17. See upstream changelog online at
