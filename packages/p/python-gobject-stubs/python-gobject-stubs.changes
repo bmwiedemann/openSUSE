@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sat Nov  8 04:41:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix conflicts between -gtk3 and default flavour for python
+  subpackages by using explicit python-<foo> for Conflicts instead
+  of specfile macro.
+
+-------------------------------------------------------------------
+Sat Nov  1 17:12:19 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5cd97315dffd7c7ca6284a08e8372f26</srcmd5>
+    <version>2.14.0</version>
+    <time>1762718867</time>
+    <user>dimstar_suse</user>
+    <comment>Typing stubs for python-gobject to (typically) allow IDEs to provide helpful completion guides and documentation about python-gobject related modules.</comment>
+    <requestid>1316565</requestid>
+  </revision>
+</revisionlist>

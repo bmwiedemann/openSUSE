@@ -1,0 +1,7 @@
+<package name="python-gobject-stubs" project="openSUSE:Factory">
+  <title>Typing stubs for PyGObject</title>
+  <description>This package provides typing stubs for python-gobject to (typically) allow IDEs
+to provide helpful completion guides and documentation about python-gobject
+related modules.</description>
+  <url>https://github.com/pygobject/pygobject-stubs</url>
+</package>
