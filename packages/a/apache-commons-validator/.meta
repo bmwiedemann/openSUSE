@@ -8,5 +8,4 @@ locale. Error messages may also vary by locale. This package attempts
 to address some of these issues and speed development and maintenance
 of validation rules.
 </description>
-  <devel project="Java:packages" package="apache-commons-validator"/>
 </package>
