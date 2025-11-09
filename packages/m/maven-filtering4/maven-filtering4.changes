@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  8 14:28:18 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Be-gracious-with-binary-files-among-the-resources-to.patch
+    + do not fail if among the resources to filter is a binary and
+      thus failing to be parsed as text with the given encoding. In
+      that case, just copy the file.
+
+-------------------------------------------------------------------
 Thu Nov  6 06:59:45 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Build with Java >= 17, since it is the baseline of the whole

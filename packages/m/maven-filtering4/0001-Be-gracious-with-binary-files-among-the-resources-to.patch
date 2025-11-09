@@ -1,0 +1,34 @@
+From 00d7f8b520d134dcc7158601db6717258aa7ed67 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Sat, 8 Nov 2025 15:33:35 +0100
+Subject: [PATCH] Be gracious with binary files among the resources to filter
+
+---
+ .../org/apache/maven/shared/filtering/FilteringUtils.java     | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/main/java/org/apache/maven/shared/filtering/FilteringUtils.java b/src/main/java/org/apache/maven/shared/filtering/FilteringUtils.java
+index aa12a5e..a96da55 100644
+--- a/src/main/java/org/apache/maven/shared/filtering/FilteringUtils.java
++++ b/src/main/java/org/apache/maven/shared/filtering/FilteringUtils.java
+@@ -24,6 +24,7 @@ import java.io.OutputStream;
+ import java.io.Reader;
+ import java.io.Writer;
+ import java.nio.charset.Charset;
++import java.nio.charset.MalformedInputException;
+ import java.nio.file.FileSystemException;
+ import java.nio.file.Files;
+ import java.nio.file.NoSuchFileException;
+@@ -317,6 +318,9 @@ public final class FilteringUtils {
+                         writer.write(buffer, 0, nRead);
+                     }
+                 }
++            } catch (MalformedInputException e) {
++                // Most likely a binary; just copy it then
++                copyFile(from, to, encoding, null, overwrite);
+             }
+         }
+ 
+-- 
+2.51.1
+

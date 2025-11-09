@@ -29,6 +29,7 @@ URL:            https://maven.apache.org/shared/%{name}/index.html
 Source0:        %{base_name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
 Patch0:         %{name}-java8compat.patch
+Patch1:         0001-Be-gracious-with-binary-files-among-the-resources-to.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 17
@@ -59,6 +60,7 @@ This package contains the API documentation for %{name}.
 %setup -q -n %{base_name}-%{version}
 cp %{SOURCE1} build.xml
 %patch -P 0 -p1
+%patch -P 1 -p1
 
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
