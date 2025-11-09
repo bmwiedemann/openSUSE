@@ -233,4 +233,16 @@
   * Fix chpwd error when DIRSTACKSIZE is unset by Claude Code</comment>
     <requestid>1300012</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>15a16ae957d8334b5cd9f8eb33e61971</srcmd5>
+    <version>0.19.25</version>
+    <time>1762718942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.25:
+  * fix refcard generation for grep-excuses &amp; /etc/grml_version
+  * zshrc: asc() check for existance of autossh
+  * zshrc: sync global aliases from zshrc.local to zshrc as abk's
+  * script-functions: drop various functions</comment>
+    <requestid>1316596</requestid>
+  </revision>
 </revisionlist>

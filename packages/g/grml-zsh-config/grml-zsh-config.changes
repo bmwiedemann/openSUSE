@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  8 16:39:17 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.25:
+  * fix refcard generation for grep-excuses & /etc/grml_version
+  * zshrc: asc() check for existance of autossh
+  * zshrc: sync global aliases from zshrc.local to zshrc as abk's
+  * script-functions: drop various functions
+
+-------------------------------------------------------------------
 Mon Aug 18 07:46:32 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.24:
