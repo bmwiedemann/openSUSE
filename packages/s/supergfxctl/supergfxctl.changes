@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 09 14:26:11 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 1762634235.5d503b1:
+  * Added GfxMode::Integrated, GfxMode::Hybrid to the
+    AsusGpuMuxMode::Discreet vec
+
+-------------------------------------------------------------------
 Wed Apr 09 21:49:28 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 1742336779.bcdca4b:

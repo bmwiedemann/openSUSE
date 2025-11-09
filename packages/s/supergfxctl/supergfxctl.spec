@@ -1,7 +1,7 @@
 #
 # spec file for package supergfxctl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now
 
 Name:           supergfxctl
-Version:        1742336779.bcdca4b
+Version:        1762634235.5d503b1
 Release:        0
 Summary:        Super graphics mode controller
 License:        MPL-2.0

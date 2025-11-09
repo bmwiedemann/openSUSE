@@ -42,4 +42,12 @@ This tool can provide dGPU disabling and it will not be available for system and
     <comment></comment>
     <requestid>1268253</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>442fd37bc64003c942a4cf9ebdd6b64e</srcmd5>
+    <version>1762634235.5d503b1</version>
+    <time>1762719014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1316684</requestid>
+  </revision>
 </revisionlist>
