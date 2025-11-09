@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  8 18:37:21 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 37.9.0
+  * Node 22.21.1
+  * Fixed an issue on Wayland where right-clicking in the titlebar could break mouse interactions.
+  * fix crash when inspector agent attempts to evaluate on provisional frames
+  * Fixed draw smoothing round corner issue
+
+-------------------------------------------------------------------
 Wed Oct 29 20:14:09 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 37.8.0

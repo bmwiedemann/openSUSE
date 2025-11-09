@@ -186,7 +186,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        37.8.0
+Version:        37.9.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -413,6 +413,9 @@ BuildRequires:  HdrHistogram_c-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hwdata
 BuildRequires:  ImageMagick
+%if 0%{?fedora} >= 34
+BuildRequires: increase-file-max
+%endif
 %if 0%{?fedora}
 BuildRequires:  libatomic
 %endif

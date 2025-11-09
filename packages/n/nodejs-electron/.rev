@@ -1485,4 +1485,16 @@ to Staging:F with it</comment>
 - Add linux_seccomp-SYS_SECCOMP.patch to fix ftbfs with new glibc</comment>
     <requestid>1314452</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>3a26ef01b0858aa4b07875d019c91e99</srcmd5>
+    <version>37.9.0</version>
+    <time>1762718959</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 37.9.0
+  * Node 22.21.1
+  * Fixed an issue on Wayland where right-clicking in the titlebar could break mouse interactions.
+  * fix crash when inspector agent attempts to evaluate on provisional frames
+  * Fixed draw smoothing round corner issue</comment>
+    <requestid>1316608</requestid>
+  </revision>
 </revisionlist>
