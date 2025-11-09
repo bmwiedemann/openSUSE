@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Fri Nov  7 20:28:03 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.52.0:
+  + Breaking changes:
+    - misc:disable_hyprland_qtutils_check was renamed to
+      misc:disable_hyprland_guiutils_check, as hyprland-qtutils is
+      now deprecated favor of hyprland-guiutils.
+  + New features:
+    - config: add automatic closing to submaps (#11760)
+    - dispatchers: add forceidle (#11922)
+    - dispatchers: add set, unset and toggle to fullscreen (#11893)
+    - input: add option to rotate device input (#11947)
+    - renderer/cm: add more monitor cm options (#11861)
+    - renderer: add "noscreenshare" layer rule (#11664)
+    - renderer: add cursor:zoom_disable_aa for controlling AA on zoom
+      (#12025)
+    - renderer: add more uniforms to the screen shader (#11986)
+    - renderer: add render:non_shader_cm and fixes (#11900)
+    - vkeyboard: update cached mods before IME; add share_states = 2
+      config option (#11720)
+    - windowrules: add modal prop (#12024)
+  + Fixes:
+    - animation: fix slide/slidefade to accept forced direction
+      (#11725)
+    - chore: fix non-relative imports (#12228)
+    - cm: fix primaries to proto scale (#11914)
+    - config: fix crash when some configurations include non-integer
+      values (#12056)
+    - config: fix gesture dispatcher parsing with whitespaces
+      (#11784)
+    - config: fix multi-argument gesture dispatcher parsing (#11721)
+    - config: fix rules with no parameters not being counted as
+      invalid (#11849)
+    - debug: fix data race in Debug::log() (#11931)
+    - dispatchers: fix movecursor not updating client pos (#11672)
+    - functionHook: fix distance check
+    - gestures/float: fix typo
+    - gestures/fs: fix typo
+    - gestures: fix gesture direction detection (#11852)
+    - hookSystem: fix anchor point for mmap
+    - hookSystem: fix anchoring in seekNewPageAddr()
+    - input: fix refocus on grab dismiss (#12014)
+    - input: fix virtual keyboard keymaps (#11763)
+    - internal: fix clang-tidy "errors" (#11862)
+    - keybinds: fix repeat and long press keybinds release (#11863)
+    - layer-shell: fix fullscreen alpha when changing layers (#12124)
+    - managers/helpers: add missing includes (#11969)
+    - monitor/dpms: fix possible invalid state
+    - presentation: fix vrr check for reporting no refresh time
+    - protocols: fix output power protocol not sending mode
+      confirmation (#12072)
+    - render/OpenGL: fix compilation for 32bit systems (#11667)
+    - renderer: add 1fv and 2fv uniform support (#12080)
+    - renderer: clean up surface UV size calcs, fix issues (#12070)
+    - renderer: fix fractional scale artifact (#12219)
+    - renderer: fix inconsistent border thickness for
+      roundingPower < 2 (#11752)
+    - renderer: fix popup fadeout blur (#11756)
+    - renderer: fix uv calculations once and for all (#11770)
+    - renderer: fix uv scaling detection (#11789)
+    - rules: fix some monitor rules (#11873)
+    - screencopy: fix missing XBGR2101010 format with
+      screencopy_force_8b (#12125)
+    - sessionlock: fix crash when sendScale is called on a
+      disconnected (#12171)
+    - solitary: fix check for config error (#11733)
+    - surface: fix xwayland zero scaling damage calcs (#12123)
+    - windows: fix no decorate not disabling borders (#11673)
+    - workspace: fix relative workspaces with monitor descs
+    - workspaces: fix persistence with no monitor specified (#11807)
+  + Other:
+    - EGL: minor egl changes (#12132)
+    - IME: do not share keys/mods states from grabbed keyboards with
+      ime keys/mods (#11917)
+    - build: replace generateVersion.sh (#12110)
+    - cm: follow preferred srgb eotf for screencopy (#12230)
+    - cm: handle inert cm outputs (#11916)
+    - compositor: block parent window interaction when modal dialog
+      children window is open (#12057)
+    - compositor: check for monitor layout issues post rule apply
+    - compositor: make wl_surface::frame follow pending states
+      (#11953)
+    - config/rule: don't populate ID field for automatically
+      id-managed workspaces
+    - config: allow negative to be used with tags. (#11779)
+    - config: increase default anr_missed_pings value
+    - config: support more than 1 window rule per rule line. (#11689)
+    - core/compositor: make wl_surface::frame follow pending states
+      (#11896)
+    - core/compositor: revert make wl_surface::frame follow pending
+      states (#11896)
+    - core: disable lto for hyprland builds (#11972)
+    - core: qtutils -> guiutils (#12231)
+    - cursor: refactor override handling (#12166)
+    - deco: reduce virtual calls in drop shadow
+    - decoration: reduce virtual calls
+    - desktopAnimationMgr: don't set fade 0 for members of a fs group
+      (#12091)
+    - dmabuffer: ensure we only create one texture per buffer
+      (#11990)
+    - dwindle: rework split logic to be fully gap-aware (#12047)
+    - exec: Spawn processes as direct children (#11735)
+    - ext-foreign-toplevel: remove stale entries when remapping
+      (#12037)
+    - foreign-toplevel: continue past skipped invalid windows
+      (#11804)
+    - hookSystem: use a full trampo setup for hooks
+    - hyprctl: include color management presets and sdr information
+      (#12019)
+    - hyprctl: nullptr guard --systeminfo (#11822)
+    - input: handle tablet active area scaling when axes swap due to
+      rotation (#11661)
+    - input: support xkb v2 format (#11482)
+    - internal: prevent early exit processes from being zombies
+      (#11995)
+    - layout: avoid nullptr deref (#11831)
+    - layout: fit floating window on toggle to float (#12139)
+    - layouts: apply [min|max]size window rules to dwindle & master
+      layouts (#11898)
+    - meson: disable lto (#12129)
+    - meson: disable lto explicitly
+    - meson: set minimum version
+    - monitor: remove spammy trace log
+    - monitors: auto apply suggested scale and notify the user.
+      (#11753)
+    - opengl: move from unordered_set to array
+    - pass/surface: check for LS size anim for misaligned fractional
+    - plugins: incorporate hyprdep ABI into plugin info (#12001)
+    - protocols/cm: remove unneeded preferred ref (#11877)
+    - protocols/core: round dnd drop surface box
+    - protocols/dmabuf: handle null pointer in
+      CLinuxDMABufV1Protocol::resetFormatTable (#12207)
+    - protocols/seat: force down rounding of coords at the surface
+      edge (#11890)
+    - render/cm: change non_shader_cm ignore behavior and set default
+      to it (#12210)
+    - renderer/cm: allow gamma 2.2 instead of sRGB EOTF (#12094)
+    - renderer: asynchronously load background tex (#11749)
+    - renderer: clamp blur:passes 1-8
+    - renderer: disable anti-aliasing on cursor:zoom_factor (#6135)
+      (#11828)
+    - renderer: optimize border drawcalls (#11891)
+    - renderer: round box in damageBox
+    - screencopy: wait longer to re-enable DS (#12135)
+    - seat: release depressed modifiers on leave (#11854)
+    - shm: refactor to UP and correct m_data check (#11820)
+    - systeminfo: log system package versions (#11946)
+    - timer: constify methods (#12079)
+    - viewporter: clamp sub-pixel overflow (#11845)
+    - xdg-shell: implement invalid parent errors
+    - xwayland: set _NET_WORKAREA property (#12148)
+    - xwm: attempt to guess mime in sendData for DnD
+- Added "meson-verson-h-location.patch" as the version.h config
+  generation got recently reworked.
+
+-------------------------------------------------------------------
 Tue Sep 23 10:52:45 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.51.1:

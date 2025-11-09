@@ -338,4 +338,12 @@ depends on 1159012</comment>
     <comment></comment>
     <requestid>1306704</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>34a5e0173b7170f47548c64c2ed24dbc</srcmd5>
+    <version>0.52.0</version>
+    <time>1762718877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1316500</requestid>
+  </revision>
 </revisionlist>

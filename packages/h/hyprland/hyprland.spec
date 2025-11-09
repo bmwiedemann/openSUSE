@@ -23,7 +23,7 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.51.1
+Version:        0.52.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -33,6 +33,7 @@ Source99:       %{name}.rpmlintrc
 Patch1:         meson-missing-wayland-include.patch
 Patch2:         disable-donation-nag-popup.patch
 Patch3:         pkg-config-with-deps.patch
+Patch4:         meson-verson-h-location.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 14
 BuildRequires:  git
@@ -47,7 +48,7 @@ BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hyprcursor) >= 0.1.9
-BuildRequires:  pkgconfig(hyprgraphics) >= 0.1.3
+BuildRequires:  pkgconfig(hyprgraphics) >= 0.1.6
 BuildRequires:  pkgconfig(hyprlang) >= 0.3.2
 BuildRequires:  pkgconfig(hyprutils) >= 0.8.2
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.10
@@ -153,19 +154,18 @@ The official zsh completion script for %{name}.
 
 %prep
 %autosetup -p1
-# at this point of time we do not have repository information anymore
-# don't attemt to generate version.h from git, use our own.
-sed -i '/version_h/d' meson.build
-cat > src/version.h << EOF
-#pragma once
-#define GIT_COMMIT_HASH    "0000000000000000000000000000000000000000"
-#define GIT_BRANCH         "openSUSE"
-#define GIT_COMMIT_MESSAGE "Built for %_host"
-#define GIT_COMMIT_DATE    "Thu Jan 01 00:00:00 1970"
-#define GIT_DIRTY          ""
-#define GIT_TAG            "%{version}"
-#define GIT_COMMITS        "-1"
-EOF
+
+# compatability with previous versions
+sed \
+	-e "s/git_hash = .*/git_hash = '0000000000000000000000000000000000000000'/" \
+	-e "s/git_branch = .*/git_branch = 'openSUSE'/" \
+	-e "s/git_message = .*/git_message = 'Built for %_host'/" \
+	-e "s/git_date = .*/git_date = 'Thu Jan 01 00:00:00 1970'/" \
+	-e "s/git_dirty = .*/git_dirty = 'clean'/" \
+	-e "s/git_tag = .*/git_tag = '%{version}'/" \
+	-e "s/git_commits = .*/git_commits = '-1'/" \
+	-i meson.build
+
 sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
 
 %build
