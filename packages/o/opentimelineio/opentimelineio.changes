@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov  6 23:52:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.18.0
+  * Add enabled flag to Effect schema
+  * Drop Imath 2 support
+  * Added a Color primitive structure for assigning colors to
+    elements (this is not meant to represent pixel colors)
+  * Per-Track and Per-Clip Color
+  * Added --remove-effects feature to otiotool
+  * Remove OTIOView from the core library
+- Drop patches:
+  * 0001-Use-system-rapidjson.patch
+  * 0001-Drop-Imath2-support-and-modernize-Imath-includes.patch
+
+-------------------------------------------------------------------
 Fri Oct 10 22:07:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Make sure OTIO is rebuilt after an imath update

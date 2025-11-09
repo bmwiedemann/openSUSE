@@ -17,17 +17,14 @@
 
 
 Name:           opentimelineio
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        API and interchange format for editorial timeline information
 License:        Apache-2.0
 URL:            https://github.com/AcademySoftwareFoundation/OpenTimelineIO
-Source:         https://github.com/AcademySoftwareFoundation/OpenTimelineIO/archive/refs/tags/v0.17.0.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/AcademySoftwareFoundation/OpenTimelineIO/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
-Patch0:         0001-Use-system-rapidjson.patch
-Patch1:         0002-CMake-fixes.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Drop-Imath2-support-and-modernize-Imath-includes.patch
+Patch0:         0002-CMake-fixes.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc13-PIE
@@ -44,17 +41,17 @@ OpenTimelineIO is an interchange format and API for editorial cut information.
 OTIO contains information about the order and length of cuts and references to
 external media. It is not however, a container format for media.
 
-%package -n libopentimelineio0
+%package -n libopentimelineio18
 Summary:        API and interchange format for editorial timeline information
 
-%description -n libopentimelineio0
+%description -n libopentimelineio18
 OpenTimelineIO is an interchange format and API for editorial cut information.
 OTIO contains information about the order and length of cuts and references to
 external media. It is not however, a container format for media.
 
 %package devel
 Summary:        Development files for opentimelineio
-Requires:       libopentimelineio0 = %{version}
+Requires:       libopentimelineio18 = %{version}
 # opentimelineio doesn't link to imath and will break if the soname changes
 %requires_eq    Imath-devel
 
@@ -70,7 +67,10 @@ rm -r src/deps
 export CXX=g++-13
 %endif
 
-%cmake -DOTIO_FIND_IMATH:BOOL=TRUE
+%cmake \
+  -DOTIO_FIND_IMATH:BOOL=TRUE \
+  -DOTIO_FIND_RAPIDJSON:BOOL=TRUE \
+  -DOTIO_DEPENDENCIES_INSTALL:BOOL=FALSE
 
 %cmake_build
 
@@ -80,9 +80,9 @@ export CXX=g++-13
 %check
 %ctest
 
-%ldconfig_scriptlets -n libopentimelineio0
+%ldconfig_scriptlets -n libopentimelineio18
 
-%files -n libopentimelineio0
+%files -n libopentimelineio18
 %license LICENSE.txt
 %doc README.md
 %{_libdir}/libopentime.so.*
