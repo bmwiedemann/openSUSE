@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  8 08:32:52 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.4:
+  * Update layout indicator as soon as layout changes
+  * Check for pending callback on destroy_surface
+  * Clarify setup instructions without PAM
+  * Fix missing include for sigaction
+
+-------------------------------------------------------------------
 Mon Aug  4 06:53:55 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.3:

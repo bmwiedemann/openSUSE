@@ -181,4 +181,16 @@
   * Correct border thickness on typing indicator</comment>
     <requestid>1297390</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e31528a81d01e8821622b432558a5ad8</srcmd5>
+    <version>1.8.4</version>
+    <time>1762718901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.4:
+  * Update layout indicator as soon as layout changes
+  * Check for pending callback on destroy_surface
+  * Clarify setup instructions without PAM
+  * Fix missing include for sigaction</comment>
+    <requestid>1316539</requestid>
+  </revision>
 </revisionlist>
