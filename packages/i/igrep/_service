@@ -1,5 +1,5 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/konradsz/igrep.git</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
@@ -8,18 +8,16 @@
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="tar"/>
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">zst</param>
   </service>
-  <service mode="disabled" name="set_version"/>
-  <service name="cargo_vendor" mode="disabled">
-     <param name="srcdir">igrep</param>
-     <param name="compression">zst</param>
-     <param name="update">true</param>
-  </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">igrep</param>
+  <service mode="manual" name="set_version"/>
+  <service mode="manual" name="cargo_vendor">
+    <param name="srcdir">igrep</param>
+    <param name="compression">zst</param>
+    <param name="update">true</param>
+    <param name="filter">true</param>
   </service>
 </services>

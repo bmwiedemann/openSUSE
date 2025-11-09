@@ -25,4 +25,12 @@
   * fix flushing infinitely when opening nvim with no results found</comment>
     <requestid>1199550</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5795fd95b3617decf961dd66b6b617ff</srcmd5>
+    <version>1.3.0~0</version>
+    <time>1762718978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1316622</requestid>
+  </revision>
 </revisionlist>

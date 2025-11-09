@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov  8 18:04:40 UTC 2025 - munix9@googlemail.com
+
+- Fix build on Factory/TW (update vendor.tar.zst)
+- Remove cargo_config - it's part of the vendor.tar.zst now
+- Clean up spec file
+- Clean up _service file
+  * Rename 'disabled' to 'manual'
+  * Remove cargo_audit (now part of cargo_vendor)
+  * Add '<param name="filter">true</param>' to reduce the size of
+    vendor.tar.zst
+
+-------------------------------------------------------------------
 Mon Sep  9 06:30:10 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.3.0:

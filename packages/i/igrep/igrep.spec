@@ -1,7 +1,7 @@
 #
 # spec file for package igrep
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,17 @@ Version:        1.3.0~0
 Release:        0
 Summary:        Interactive Grep
 License:        MIT
-Group:          Development/Tools/Navigators
 URL:            https://github.com/konradsz/igrep
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 
 %description
-Runs grep in the background, allows interactively pick its results and open selected match in text editor of choice.
+Runs grep in the background, allows interactively pick its results
+and open selected match in text editor of choice.
 
 %prep
 %autosetup -a1
-install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
@@ -45,8 +43,8 @@ install -D -m 644 %{SOURCE2} .cargo/config
 %{cargo_test}
 
 %files
-%{_bindir}/ig
-%doc README.md
 %license LICENSE
+%doc CHANGELOG.md README.md
+%{_bindir}/ig
 
 %changelog
