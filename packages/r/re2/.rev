@@ -571,4 +571,12 @@
     <comment>re2 2025-08-12</comment>
     <requestid>1300568</requestid>
   </revision>
+  <revision rev="68" vrev="69">
+    <srcmd5>d5702f719f42c7198d0d348bc5bbeb8c</srcmd5>
+    <version>MACRO</version>
+    <time>1762718854</time>
+    <user>dimstar_suse</user>
+    <comment>re2 2025-11-05</comment>
+    <requestid>1316533</requestid>
+  </revision>
 </revisionlist>
