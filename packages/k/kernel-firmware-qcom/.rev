@@ -268,4 +268,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: add ADSP firmware for kaanapali platform</comment>
     <requestid>1313870</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8483a07a890188baa1257f74a45fd406</srcmd5>
+    <version>20251106</version>
+    <time>1762718858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251106 (git commit b055b3e24542):
+  * qcom: add SOCCP firmware for kaanapali platform</comment>
+    <requestid>1316555</requestid>
+  </revision>
 </revisionlist>
