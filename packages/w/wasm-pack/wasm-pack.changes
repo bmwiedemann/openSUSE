@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  6 11:56:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- remove TAG_OFFSET from version number, as this makes versioned requires a pain
+- require wasm-bindgen == 0.2.100 (which is needed by lldap)
+
+-------------------------------------------------------------------
 Tue Jan 07 02:18:11 UTC 2025 - william.brown@suse.com
 
 - Explicitly depend on wasm-bindgen version as these must be updated in lockstep.
