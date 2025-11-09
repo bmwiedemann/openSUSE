@@ -166,9 +166,6 @@ sed -i 's/jsr14/1.8/' antlr3-maven-archetype/src/main/resources/archetype-resour
                       runtime/Java/pom.xml \
                       tool/pom.xml
 
-# workarounds bug in filtering (Mark invalid)
-%pom_xpath_remove pom:resource/pom:filtering
-
 %{mvn_package} :antlr-master __noinstall
 %if %{without runtime}
 %{mvn_package} : tool

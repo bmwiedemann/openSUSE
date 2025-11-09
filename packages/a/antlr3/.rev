@@ -79,4 +79,12 @@
     <comment>Fix build with up-coming maven 4</comment>
     <requestid>1287972</requestid>
   </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>0ad134a97899353643655c950d232377</srcmd5>
+    <version>3.5.3</version>
+    <time>1762719121</time>
+    <user>dimstar_suse</user>
+    <comment>Remove workaround not needed any more</comment>
+    <requestid>1316697</requestid>
+  </revision>
 </revisionlist>
