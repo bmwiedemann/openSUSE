@@ -4309,4 +4309,12 @@
   * Correct fix for boo#1247495 (boo#1248158)</comment>
     <requestid>1302580</requestid>
   </revision>
+  <revision rev="513" vrev="1">
+    <srcmd5>a3755091ca0506c1c4d269ed150a9ea1</srcmd5>
+    <version>84.87+git20251030.441f926</version>
+    <time>1762718845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1314569</requestid>
+  </revision>
 </revisionlist>
