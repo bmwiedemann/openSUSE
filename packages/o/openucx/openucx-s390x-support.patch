@@ -1,4 +1,4 @@
-commit ba1d7048df80ee535e01335992f70568e2f88c80
+commit e5fd9ff24191cfd99b5759bdaf291cc36aaa6346
 Author: Nicolas Morey <nmorey@suse.com>
 Date:   Wed Feb 19 16:46:33 2025 +0100
 
@@ -91,7 +91,7 @@ index 000000000000..2beb5de54fab
 +
 +#endif
 diff --git src/ucs/Makefile.am src/ucs/Makefile.am
-index 86a469a60bcc..6751bad764b8 100644
+index 699a4addcd29..2f20f9945411 100644
 --- src/ucs/Makefile.am
 +++ src/ucs/Makefile.am
 @@ -24,6 +24,7 @@ nobase_dist_libucs_la_HEADERS = \
@@ -118,7 +118,7 @@ index 86a469a60bcc..6751bad764b8 100644
  	arch/x86_64/cpu.h \
  	arch/cpu.h \
  	config/ucm_opts.h \
-@@ -149,6 +152,7 @@ libucs_la_SOURCES = \
+@@ -150,6 +153,7 @@ libucs_la_SOURCES = \
  	algorithm/string_distance.c \
  	arch/aarch64/cpu.c \
  	arch/aarch64/global_opts.c \
@@ -140,7 +140,7 @@ index 849647902fab..a328c37e2020 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/bitops.h src/ucs/arch/bitops.h
-index f8e51c45888a..476631d95eb6 100644
+index ae531834451e..d4228b135641 100644
 --- src/ucs/arch/bitops.h
 +++ src/ucs/arch/bitops.h
 @@ -23,6 +23,8 @@ BEGIN_C_DECLS
@@ -235,7 +235,7 @@ index 550d22b8b751..d8e4a7cca694 100644
  #endif
 diff --git src/ucs/arch/s390x/bitops.h src/ucs/arch/s390x/bitops.h
 new file mode 100644
-index 000000000000..ce48ff1ff451
+index 000000000000..88b74558f333
 --- /dev/null
 +++ src/ucs/arch/s390x/bitops.h
 @@ -0,0 +1,37 @@
@@ -262,7 +262,7 @@ index 000000000000..ce48ff1ff451
 +{
 +	if (!n)
 +		return 0;
-+	return 63 - __builtin_clz(n);
++	return 63 - __builtin_clzll(n);
 +}
 +
 +static UCS_F_ALWAYS_INLINE unsigned ucs_ffs32(uint32_t n)
@@ -400,7 +400,7 @@ index 000000000000..4fa0c74034a7
 +#endif
 diff --git src/ucs/arch/s390x/global_opts.h src/ucs/arch/s390x/global_opts.h
 new file mode 100644
-index 000000000000..225e4e5e896a
+index 000000000000..b7c5693266d9
 --- /dev/null
 +++ src/ucs/arch/s390x/global_opts.h
 @@ -0,0 +1,25 @@
@@ -411,8 +411,8 @@ index 000000000000..225e4e5e896a
 +*/
 +
 +
-+#ifndef UCS_PPC64_GLOBAL_OPTS_H_
-+#define UCS_PPC64_GLOBAL_OPTS_H_
++#ifndef UCS_S390X_GLOBAL_OPTS_H_
++#define UCS_S390X_GLOBAL_OPTS_H_
 +
 +#include <ucs/sys/compiler_def.h>
 +
@@ -430,10 +430,10 @@ index 000000000000..225e4e5e896a
 +#endif
 +
 diff --git src/ucs/sys/sys.c src/ucs/sys/sys.c
-index d0b5effe11a3..ce22a2097f18 100644
+index 7cd875e8f7b2..b8b2d3c026be 100644
 --- src/ucs/sys/sys.c
 +++ src/ucs/sys/sys.c
-@@ -1258,8 +1258,19 @@ void *ucs_sys_realloc(void *old_ptr, size_t old_length, size_t new_length)
+@@ -1265,8 +1265,19 @@ void *ucs_sys_realloc(void *old_ptr, size_t old_length, size_t new_length)
      if (old_ptr == NULL) {
          /* Note: Must pass the 0 offset as "long", otherwise it will be
           * partially undefined when converted to syscall arguments */

@@ -30,8 +30,11 @@ URL:            http://openucx.org/
 #Git-Clone:	git://github.com/openucx/ucx
 #Git-Web:	https://github.com/openucx/ucx
 Source:         https://github.com/openucx/ucx/releases/download/v%version%{?version_suf}/ucx-%version.tar.gz
+Source100:      README.md
 Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
+Patch3:         UCP-CORE-Fix-config-type-for-dynamic_tl_progress_factor.patch
+Patch4:         UCT-SELF-Fix-config-type-for-num_devices.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel

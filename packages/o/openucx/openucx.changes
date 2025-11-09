@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  5 16:48:53 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Minor fixes to openucx-s390x-support.patch
+- Add patches to fix a badly initialized value in settings
+  - UCP-CORE-Fix-config-type-for-dynamic_tl_progress_factor.patch
+  - UCT-SELF-Fix-config-type-for-num_devices.patch
+
+-------------------------------------------------------------------
 Wed Jun 25 15:49:50 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to ucx 1.19.0

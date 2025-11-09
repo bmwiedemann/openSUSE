@@ -406,4 +406,15 @@
     <comment></comment>
     <requestid>1298351</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>49f267c7ea9c99d0efaa71d979e6caab</srcmd5>
+    <version>1.19.0</version>
+    <time>1762718862</time>
+    <user>dimstar_suse</user>
+    <comment>45- Minor fixes to openucx-s390x-support.patch
+- Add patches to fix a badly initialized value in settings
+  - UCP-CORE-Fix-config-type-for-dynamic_tl_progress_factor.patch
+  - UCT-SELF-Fix-config-type-for-num_devices.patch</comment>
+    <requestid>1316570</requestid>
+  </revision>
 </revisionlist>
