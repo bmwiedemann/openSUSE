@@ -32,6 +32,9 @@ BuildRequires:  openmpi-macros-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1600
 ExcludeArch:    %ix86 %arm
+%else
+# Do not built for SLE/Leap < 16, they do not provide bash >= 5.2
+ExclusiveArch: do_not_build
 %endif
 
 %description

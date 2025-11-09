@@ -72,4 +72,13 @@
 - Disable 32b builds as there is no more openmpi available</comment>
     <requestid>1314035</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>59c3f13a7685e7df809dee73444c31d1</srcmd5>
+    <version>1.5</version>
+    <time>1762718992</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable build for SLE/Leap &lt; 16, they do not provide compatible
+  bash-devel</comment>
+    <requestid>1316644</requestid>
+  </revision>
 </revisionlist>

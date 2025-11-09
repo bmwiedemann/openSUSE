@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  3 16:27:33 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable build for SLE/Leap < 16, they do not provide compatible
+  bash-devel
+
+-------------------------------------------------------------------
 Tue Oct 28 08:30:56 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v1.5
