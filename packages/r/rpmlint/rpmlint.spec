@@ -23,7 +23,7 @@
 %define name_suffix -%{flavor}
 %endif
 Name:           rpmlint%{name_suffix}
-Version:        2.8.0+git20251103.f505f80e
+Version:        2.8.0+git20251107.a65b622f
 Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 07 09:47:26 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.8.0+git20251107.a65b622f:
+  * polkit-rules-whitelist: extend whitelisting to systemd-mini flavour
+
+-------------------------------------------------------------------
 Mon Nov 03 13:34:34 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.8.0+git20251103.f505f80e:
