@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov  7 21:21:42 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.3.0:
+  + This update breaks ABI.
+  + resources/text: fix alignment layout with center/right
+  + add buffer option to image resource
+
+- Changes from version 0.2.0:
+  + This update breaks ABI.
+  + Image: added svg support
+  + text: various fixes and improvements
+
+- Changes from version 0.1.6:
+  + New module: AsyncResourceGatherer
+  + formats: add optional AVIF image support with libheif
+  + formats: include vector header
+  + png: fix gray pix formats
+
+-------------------------------------------------------------------
 Wed Sep 10 19:58:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.1.5:

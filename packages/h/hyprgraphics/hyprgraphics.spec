@@ -1,8 +1,9 @@
 #
 # spec file for package hyprgraphics
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2024 Florian "sp1rit" <sp1rit@disroot.org>
+# Copyright (c) 2024/25 Florian "sp1rit" <sp1rit@disroot.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +18,10 @@
 #
 
 
-%define sover 0
+%define sover 2
 
 Name:           hyprgraphics
-Version:        0.1.5
+Version:        0.3.0
 Release:        0
 Summary:        Hyprland graphics / resource utilities
 License:        BSD-3-Clause
@@ -30,13 +31,14 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(hyprutils)
+BuildRequires:  pkgconfig(hyprutils) >= 0.8.0
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libjxl_cms)
 BuildRequires:  pkgconfig(libjxl_threads)
 BuildRequires:  pkgconfig(libmagic)
 BuildRequires:  pkgconfig(libpng16)
+BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(pixman-1)
 
