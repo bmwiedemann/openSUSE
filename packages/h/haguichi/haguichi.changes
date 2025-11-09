@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov  9 16:01:39 UTC 2025 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.5.3
+  * Replaced deprecated Gtk.ShortcutsWindow with Adw.ShortcutsDialog when libadwaita 1.8 is available.
+  * Sidebar title is now shown in the headerbar when scrolled down.
+  * Enabled automatic row selection in the network list when searching or after a row is collapsed or removed.
+  * Return and Delete key presses are now passed on to the selected row when search entry is focused.
+  * Search entry can now be refocused by pressing Ctrl+F while search mode is already active.
+  * When using drag and drop to reorder a command the dragged row is now anchored to the point where the drag started.
+  * Added option to duplicate existing commands.
+  * Added Adw.Toast with button to undo removal when removing a command.
+  * Added support for COSMIC Terminal and Files.
+  * Added Hungarian translation (thanks to therealmate).
+  * Updated Swedish translation.
+  * All bundled resource files are now compressed.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
 Wed Apr 30 18:00:53 UTC 2025 - Stephen Brandt <stephen@stephenbrandt.com>
 
 - update to 1.5.2

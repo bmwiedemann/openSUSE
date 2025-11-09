@@ -20,7 +20,7 @@
 
 %define rdnn    com.github.ztefn.%{name}
 Name:           haguichi
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Hamachi Network Manager
 License:        GPL-3.0-or-later
@@ -56,7 +56,7 @@ restore the Hamachi configuration directory.
 %setup -q
 
 %build
-%meson -Dc_args='-Wno-error'
+%meson
 %meson_build
 
 %install
