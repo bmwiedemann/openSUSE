@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov  8 21:56:03 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.20250815.
+  * In textDocument/signatureHelp: add trigger character `{`.
+  * In initializationOptions: add clang.prependArgs.
+  * Support Decl::Concept.
+  * Adapt to LLVM 21 and 22.
+- Remove obsolete patches:
+  * fix-llvm20-build.patch
+  * reformat.patch
+  * llvm21-CompilerInstance-and-PointerUnion.patch
+  * fix-llvm21-build.patch
+
+-------------------------------------------------------------------
 Tue Sep 16 21:57:46 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add llvm21-CompilerInstance-and-PointerUnion.patch and

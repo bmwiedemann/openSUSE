@@ -218,4 +218,22 @@
 </comment>
     <requestid>1305275</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9f77e5e6d1e23abe76ddb1d20a0d6e3b</srcmd5>
+    <version>0.20250815</version>
+    <time>1762718982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20250815.
+  * In textDocument/signatureHelp: add trigger character `{`.
+  * In initializationOptions: add clang.prependArgs.
+  * Support Decl::Concept.
+  * Adapt to LLVM 21 and 22.
+- Remove obsolete patches:
+  * fix-llvm20-build.patch
+  * reformat.patch
+  * llvm21-CompilerInstance-and-PointerUnion.patch
+  * fix-llvm21-build.patch
+</comment>
+    <requestid>1316627</requestid>
+  </revision>
 </revisionlist>
