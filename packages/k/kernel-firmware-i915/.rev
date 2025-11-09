@@ -145,4 +145,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * i915: Xe3LPD_3002 DMC v2.27</comment>
     <requestid>1312184</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>93677dd27d8e69e0a52109474550dbac</srcmd5>
+    <version>20251106</version>
+    <time>1762718858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251106 (git commit b055b3e24542):
+  * xe: Update GUC to v70.53.0 for BMG, LNL, PTL
+  * i915: Update GUC to v70.53.0 for DG2, MTL</comment>
+    <requestid>1316554</requestid>
+  </revision>
 </revisionlist>
