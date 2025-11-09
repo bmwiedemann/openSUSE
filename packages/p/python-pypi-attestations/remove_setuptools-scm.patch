@@ -1,0 +1,15 @@
+---
+ pyproject.toml |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: pypi_attestations-0.0.28/pyproject.toml
+===================================================================
+--- pypi_attestations-0.0.28.orig/pyproject.toml	2025-10-16 18:52:55.000000000 +0200
++++ pypi_attestations-0.0.28/pyproject.toml	2025-11-04 23:10:29.140964762 +0100
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools", "setuptools-scm"]
++requires = ["setuptools"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
