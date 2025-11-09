@@ -152,4 +152,12 @@
     <comment>Add the maven-plugin-report-plugin to the _multibuild file</comment>
     <requestid>1316106</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>09a9544943eb8a3ef6dafb1976a9fc8b</srcmd5>
+    <version>4.0.0~beta2</version>
+    <time>1762718971</time>
+    <user>dimstar_suse</user>
+    <comment>Version that can build maven 3 and maven 4 plugins</comment>
+    <requestid>1316624</requestid>
+  </revision>
 </revisionlist>

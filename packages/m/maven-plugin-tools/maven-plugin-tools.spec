@@ -16,19 +16,21 @@
 #
 
 
+%global base_ver 4.0.0
+%global beta_ver 2
+%global file_ver %{base_ver}-beta-%{beta_ver}
 Name:           maven-plugin-tools
-Version:        3.15.2
+Version:        %{base_ver}~beta%{beta_ver}
 Release:        0
 Summary:        Maven Plugin Tools
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugin-tools/
-Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{name}/%{file_ver}/%{name}-%{file_ver}-source-release.zip
 Source1:        %{name}-build.tar.xz
 Patch0:         0002-Remove-dependency-on-jtidy.patch
 BuildRequires:  ant
 BuildRequires:  atinject
-BuildRequires:  bsh2
 BuildRequires:  fdupes
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
@@ -39,11 +41,8 @@ BuildRequires:  maven-lib
 BuildRequires:  maven-reporting-api
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-wagon-provider-api
-BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm >= 9.9
-BuildRequires:  plexus-ant-factory
 BuildRequires:  plexus-archiver
-BuildRequires:  plexus-bsh-factory
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-languages
 BuildRequires:  plexus-utils
@@ -55,6 +54,9 @@ BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildRequires:  velocity
+BuildRequires:  xmvn-install
+BuildRequires:  xmvn-resolve
+BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildArch:      noarch
 
 %description
@@ -75,27 +77,20 @@ Group:          Development/Libraries/Java
 %description annotations
 This package provides Java 5 annotation tools for use with Apache Maven.
 
-%package ant
-Summary:        Maven Plugin Tool for Ant
-Group:          Development/Libraries/Java
-
-%description ant
-Descriptor extractor for plugins written in Ant.
-
 %package api
 Summary:        Maven Plugin Tools APIs
 Group:          Development/Libraries/Java
+# Packages removed between 3.x and 4.x
+Obsoletes:      %{name}-ant
+Obsoletes:      %{name}-beanshell
+Obsoletes:      %{name}-java
+Obsoletes:      %{name}-model
+Obsoletes:      maven-script-ant
+Obsoletes:      maven-script-beanshell
 
 %description api
 The Maven Plugin Tools API provides an API to extract information from
 and generate documentation for Maven Plugins.
-
-%package beanshell
-Summary:        Maven Plugin Tool for Beanshell
-Group:          Development/Libraries/Java
-
-%description beanshell
-Descriptor extractor for plugins written in Beanshell.
 
 %package generators
 Summary:        Maven Plugin Tools Generators
@@ -105,48 +100,15 @@ Group:          Development/Libraries/Java
 The Maven Plugin Tools Generators provides content generation
 (documentation, help) from plugin descriptor.
 
-%package java
-Summary:        Maven Plugin Tool for Java
-Group:          Development/Libraries/Java
-
-%description java
-Descriptor extractor for plugins written in Java.
-
-%package model
-Summary:        Maven Plugin Metadata Model
-Group:          Development/Libraries/Java
-
-%description model
-The Maven Plugin Metadata Model provides an API to play with the Metadata
-model.
-
-%package -n maven-script-ant
-Summary:        Maven Ant Mojo Support
-Group:          Development/Libraries/Java
-
-%description -n maven-script-ant
-This package provides %{summary}, which write Maven plugins with
-Ant scripts.
-
-%package -n maven-script-beanshell
-Summary:        Maven Beanshell Mojo Support
-Group:          Development/Libraries/Java
-
-%description -n maven-script-beanshell
-This package provides %{summary}, which write Maven plugins with
-Beanshell scripts.
-
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Development/Libraries/Java
-Provides:       %{name}-javadocs = %{version}-%{release}
-Obsoletes:      %{name}-javadocs < %{version}-%{release}
 
 %description javadoc
 API documentation for %{name}.
 
 %prep
-%setup -q -a1
+%setup -q -a1 -n %{name}-%{file_ver}
 %patch -P 0 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
@@ -157,16 +119,20 @@ API documentation for %{name}.
 
 %pom_remove_dep net.sf.jtidy:jtidy maven-plugin-tools-generators
 
+%{mvn_package} :maven-plugin-tools __noinstall
+%{mvn_package} :maven-script __noinstall
+%{mvn_package} :{*} @1
+
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-    ant \
     atinject \
-    bsh2/bsh \
     httpcomponents/httpclient \
     httpcomponents/httpcore \
     jsoup/jsoup \
+    maven/maven-api-plugin \
     maven/maven-artifact \
+    maven/maven-compat \
     maven/maven-core \
     maven/maven-model \
     maven/maven-plugin-api \
@@ -179,9 +145,7 @@ build-jar-repository -s lib \
     objectweb-asm/asm-util \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
-    plexus/ant-factory \
     plexus/archiver \
-    plexus/bsh-factory \
     plexus-classworlds \
     plexus-languages/plexus-java \
     plexus/utils \
@@ -195,36 +159,21 @@ build-jar-repository -s lib \
     -Dtest.skip=true \
     package javadoc
 
-%install
-install -dm 0755 %{buildroot}%{_javadir}/%{name}
-install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+%{mvn_artifact} pom.xml
+mkdir -p target/site/apidocs
 for i in \
     maven-plugin-annotations \
     maven-plugin-tools-annotations \
     maven-plugin-tools-api \
-    maven-plugin-tools-generators \
-    maven-plugin-tools-java; do
-  install -pm 0644 ${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
-  %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
-  %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}
+    maven-plugin-tools-generators; do
+  %{mvn_artifact} ${i}/pom.xml ${i}/target/${i}-%{file_ver}.jar
   if [ -d ${i}/target/site/apidocs ]; then
-    cp -r ${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
+    cp -r ${i}/target/site/apidocs target/site/apidocs/${i}
   fi
 done
-for i in \
-    maven-plugin-tools-ant \
-    maven-plugin-tools-beanshell \
-    maven-plugin-tools-model \
-    maven-script-ant \
-    maven-script-beanshell; do
-  install -pm 0644 maven-script/${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
-  %{mvn_install_pom} maven-script/${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
-  %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}
-  if [ -d maven-script/${i}/target/site/apidocs ]; then
-    cp -r maven-script/${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
-  fi
-done
+
+%install
+%mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -n maven-plugin-annotations -f .mfiles-maven-plugin-annotations
@@ -232,28 +181,12 @@ done
 %files annotations -f .mfiles-maven-plugin-tools-annotations
 %license LICENSE NOTICE
 
-%files ant -f .mfiles-maven-plugin-tools-ant
-
 %files api -f .mfiles-maven-plugin-tools-api
 %license LICENSE NOTICE
 
-%files beanshell -f .mfiles-maven-plugin-tools-beanshell
-
 %files generators -f .mfiles-maven-plugin-tools-generators
 
-%files java -f .mfiles-maven-plugin-tools-java
-
-%files model -f .mfiles-maven-plugin-tools-model
-%license LICENSE NOTICE
-
-%files -n maven-script-ant -f .mfiles-maven-script-ant
-%license LICENSE NOTICE
-
-%files -n maven-script-beanshell -f .mfiles-maven-script-beanshell
-%license LICENSE NOTICE
-
-%files javadoc
-%{_javadocdir}/%{name}
+%files javadoc -f .mfiles-javadoc
 %license LICENSE NOTICE
 
 %changelog

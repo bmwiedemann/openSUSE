@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Nov  8 18:45:34 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.0.0-beta-2
+- Supports generating metadata for plugins using Maven 3 API as well
+  as those using Maven 4 API
+- Principal changes
+  * Removals
+    + MPLUGIN-525: Remove ant and beanshell support
+    + MPLUGIN-527: Remove javadoc annotation support
+  * Deprecated
+    + MPLUGIN-530: Deprecate o.a.m.plugins.annotations.Component
+  * Documentation updates
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + Update document to use Guice constructor injection
+  * Maintenance
+    + Run the v4 mojo
+    + Update site descriptors to 2.0
+    + Cleanup dependencies
+    + Use injection instead of Component annotation
+    + Use properties for versions in components.xml
+    + Bump parent, asm - JDK 25 build
+    + feat: enable prevent branch protection rules
+    + Add support for Maven 4
+      PluginDescriptor.getRequiredJavaVersion() method
+    + MPLUGIN-542: Update QDox to 2.2.0
+    + MPLUGIN-541: Rename report from "Plugin Documentation" to "Plugin
+    + Begin converting this plugin to Guice constructor injection
+    + refactor: Replace Plexus AbstractLogEnabled with SLF4J
+- Modified patch:
+  * maven-plugin-plugin-bootstrap-resouces.patch
+    + rediff from the non-bootstrap build in cycle
+
+-------------------------------------------------------------------
 Thu Nov  6 20:51:03 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add the maven-plugin-report-plugin to the _multibuild file

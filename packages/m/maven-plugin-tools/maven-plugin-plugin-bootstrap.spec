@@ -16,16 +16,19 @@
 #
 
 
+%global base_ver 4.0.0
+%global beta_ver 2
+%global file_ver %{base_ver}-beta-%{beta_ver}
 %global base_name maven-plugin-tools
 %global artifactId maven-plugin-plugin
 Name:           %{artifactId}-bootstrap
-Version:        3.15.2
+Version:        %{base_ver}~beta%{beta_ver}
 Release:        0
 Summary:        Maven Plugin Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugin-tools/
-Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{base_name}/%{file_ver}/%{base_name}-%{file_ver}-source-release.zip
 Source1:        %{base_name}-build.tar.xz
 Patch0:         0002-Remove-dependency-on-jtidy.patch
 # The maven-plugin-plugin is used to generate those descriptors, which
@@ -37,14 +40,15 @@ BuildRequires:  atinject
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
-BuildRequires:  maven-plugin-tools-annotations
 BuildRequires:  maven-plugin-tools-api
 BuildRequires:  maven-plugin-tools-generators
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-resolver-util
+BuildRequires:  objectweb-asm >= 9.9
 BuildRequires:  plexus-build-api0
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
+BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -56,19 +60,15 @@ Xdoc files for the Mojos as well as for updating the plugin registry, the
 artifact metadata and a generic help goal.
 
 %prep
-%setup -q -n %{base_name}-%{version} -a1
+%setup -q -n %{base_name}-%{file_ver} -a1
 %patch -P 0 -p1
-%patch -P 20
+%patch -P 20 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 
 %pom_xpath_inject "pom:project/pom:properties" "
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>"
-
-%pom_remove_dep org.junit:junit-bom
-%pom_remove_dep :maven-plugin-tools-ant maven-plugin-plugin
-%pom_remove_dep :maven-plugin-tools-beanshell maven-plugin-plugin
 
 %build
 mkdir -p lib
@@ -85,6 +85,8 @@ build-jar-repository -s lib \
     maven-plugin-tools/maven-plugin-tools-generators \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-util \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus/plexus-build-api0 \
     plexus/utils \
@@ -100,7 +102,7 @@ popd
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}/%{base_name}
-install -pm 0644 %{artifactId}/target/%{artifactId}-%{version}.jar %{buildroot}%{_javadir}/%{base_name}/%{artifactId}.jar
+install -pm 0644 %{artifactId}/target/%{artifactId}-%{file_ver}.jar %{buildroot}%{_javadir}/%{base_name}/%{artifactId}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{base_name}
 %{mvn_install_pom} %{artifactId}/pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}/%{artifactId}.pom

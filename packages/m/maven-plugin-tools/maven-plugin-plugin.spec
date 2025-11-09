@@ -16,15 +16,18 @@
 #
 
 
+%global base_ver 4.0.0
+%global beta_ver 2
+%global file_ver %{base_ver}-beta-%{beta_ver}
 %global base_name maven-plugin-tools
 Name:           maven-plugin-plugin
-Version:        3.15.2
+Version:        %{base_ver}~beta%{beta_ver}
 Release:        0
 Summary:        Maven Plugin Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugin-tools/
-Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{base_name}/%{file_ver}/%{base_name}-%{file_ver}-source-release.zip
 Patch0:         0002-Remove-dependency-on-jtidy.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
@@ -34,7 +37,6 @@ BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-annotations)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-api)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-generators)
-BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-java)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-api)
 BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
@@ -48,6 +50,7 @@ BuildRequires:  mvn(org.apache.maven:maven-settings)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-velocity)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
+BuildRequires:  mvn(org.ow2.asm:asm) >= 9.9
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 Obsoletes:      %{name}-bootstrap
 #!BuildRequires: maven-compiler-plugin-bootstrap
@@ -71,7 +74,7 @@ Group:          Development/Libraries/Java
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{base_name}-%{version}
+%setup -q -n %{base_name}-%{file_ver}
 %patch -P 0 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
@@ -80,10 +83,6 @@ API documentation for %{name}.
 %pom_xpath_inject "pom:project/pom:properties" "
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>"
-
-%pom_remove_dep org.junit:junit-bom
-%pom_remove_dep :maven-plugin-tools-ant maven-plugin-plugin
-%pom_remove_dep :maven-plugin-tools-beanshell maven-plugin-plugin
 
 %build
 pushd %{name}
