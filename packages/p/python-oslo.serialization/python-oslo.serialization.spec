@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.serialization
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,38 +17,34 @@
 
 
 Name:           python-oslo.serialization
-Version:        5.5.0
+Version:        5.8.0
 Release:        0
 Summary:        OpenStack serialization library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.serialization
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.serialization/oslo.serialization-5.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo_serialization/oslo_serialization-%{version}.tar.gz
+BuildRequires:  %{python_module msgpack >= 0.5.2}
+BuildRequires:  %{python_module netaddr}
+BuildRequires:  %{python_module oslo.i18n}
+BuildRequires:  %{python_module oslo.utils >= 3.33.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-msgpack >= 0.5.2
-BuildRequires:  python3-netaddr
-BuildRequires:  python3-oslo.i18n
-BuildRequires:  python3-oslo.utils >= 3.33.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-stestr
+Requires:       python-msgpack >= 0.5.2
+Requires:       python-oslo.utils >= 3.33.0
+Requires:       python-tzdata
 BuildArch:      noarch
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-oslo.serialization < %{version}
+%endif
+%python_subpackages
 
 %description
 The oslo.serialization library provides support for representing objects
 in transmittable and storable formats, such as Base64, JSON and MessagePack.
-
-%package -n python3-oslo.serialization
-Summary:        OpenStack serialization library
-Requires:       python3-msgpack >= 0.5.2
-Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-pytz >= 2013.6
-
-%description -n python3-oslo.serialization
-The oslo.serialization library provides support for representing objects
-in transmittable and storable formats, such as Base64, JSON and MessagePack.
-
-This package contains the Python 3.x module.
 
 %package -n python-oslo.serialization-doc
 Summary:        Documentation for OpenStack serialization library
@@ -61,29 +57,27 @@ in transmittable and storable formats, such as Base64, JSON and MessagePack.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.serialization-5.5.0
-sed -i -e "s,bandit.*,," test-requirements.txt
-%py_req_cleanup
+%autosetup -p1 -n oslo_serialization-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 # generate html docs
-PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=%{version} %{sphinx_build} -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
 
 %check
 %{openstack_stestr_run}
 
-%files -n python3-oslo.serialization
+%files %{python_files}
 %license LICENSE
 %doc README.rst ChangeLog
-%{python3_sitelib}/oslo_serialization
-%{python3_sitelib}/*.egg-info
+%{python_sitelib}/oslo_serialization
+%{python_sitelib}/oslo_serialization-%{version}.dist-info
 
 %files -n python-oslo.serialization-doc
 %license LICENSE

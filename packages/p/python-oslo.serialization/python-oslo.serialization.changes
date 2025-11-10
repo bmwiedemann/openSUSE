@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov  9 09:50:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.8.0:
+  * add pyproject.toml to support pip 23.1
+  * Update master for stable/2025.1
+  * Drop fallback for Python < 3.9
+  * Skip installation to speed up pep8
+  * Ignore iteritems() and use items() solely
+  * reno: Update master for unmaintained/2023.1
+  * Remove explicit pbr dependency
+  * Add note about requirements lower bounds
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Fix outdated tox minversion
+  * Declare Python 3.12 support
+  * Remove Python 3.8 support
+  * Update master for stable/2024.2
+- switch to singlespec
+
+-------------------------------------------------------------------
 Mon Sep  2 17:30:41 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.5.0
@@ -268,7 +287,7 @@ Sun Jun 19 20:21:39 UTC 2016 - dmueller@suse.com
 
 - update to 2.7.0:
   * Trivial: ignore openstack/common in flake8 exclude list
-  * [Trivial] Remove executable privilege of doc/source/conf.py 
+  * [Trivial] Remove executable privilege of doc/source/conf.py
   * Drop babel as requirement since its not used
   * Updated from global requirements
   * Unified and simplified API for all serializers
@@ -370,7 +389,7 @@ Mon Jun  8 14:08:17 UTC 2015 - tbechtold@suse.com
 -------------------------------------------------------------------
 Wed Jun  3 09:15:44 UTC 2015 - dmueller@suse.com
 
-- remove hacking dep 
+- remove hacking dep
 
 -------------------------------------------------------------------
 Tue Mar 10 15:14:18 UTC 2015 - tbechtold@suse.com
@@ -424,7 +443,7 @@ Thu Jan  8 10:18:38 UTC 2015 - dmueller@suse.com
 -------------------------------------------------------------------
 Fri Oct 17 13:05:27 UTC 2014 - dmueller@suse.com
 
-- add LICENSE 
+- add LICENSE
 
 -------------------------------------------------------------------
 Sun Sep 21 10:22:13 UTC 2014 - tbechtold@suse.com
