@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Mon Nov 10 12:44:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.110.2:
+  * Bug Fixes
+    - fix: run git checkout before git push @olblak (#6617)
+- Update to version 0.110.1:
+  * Bug Fixes
+    - fix: Correctly set default action title based on pipeline
+      title @olblak (#6610)
+    - fix: add missing branch cleaning to compose apply @olblak
+      (#6594)
+  * Maintenance
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.28 to 1.7.29 in the go_modules group across 1 directory
+      @dependabot[bot] (#6583)
+- Update to version 0.110.0:
+  * Features
+    - feat: Add flag to clean git working branches with no changes
+      @olblak (#6488)
+    - feat: Allow to use GitHub search to target multiple GitHub
+      repositories @olblak (#6422)
+    - feat(autodiscover/githubaction): handle composite actions
+      @loispostula (#6428)
+  * Bug Fixes
+    - fix(json): Don't check for query + versionFilter with
+      dasel/v2 @refi64 (#6527)
+    - fix: switch dockerfile matching to exact match instead of
+      prefix @loispostula (#6437)
+    - bug: various Updatecli console output improvement @olblak
+      (#6460)
+    - fix: display correct target/condition id in missing sourceid
+      errors @srishtea-22 (#6427)
+    - fix: partial files should only load yaml/json files @olblak
+      (#6421)
+  * Maintenance
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.18.21
+      @updateclibot[bot] (#6563)
+    - deps: Bump Golang version to 1.25.4 @updateclibot[bot]
+      (#6556)
+    - deps(go): bump module github.com/aws/smithy-go to v1.23.2
+      @updateclibot[bot] (#6537)
+    - deps(go): bump module golang.org/x/mod to v0.29.0
+      @updateclibot[bot] (#6520)
+    - deps: bump golangci-lint to v2.6.0 @updateclibot[bot] (#6513)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.7.3 @updateclibot[bot] (#6516)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.31.16 @updateclibot[bot] (#6495)
+    - deps(go): bump module github.com/jferrl/go-githubauth to
+      v1.5.0 @updateclibot[bot] (#6487)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.4.3 @updateclibot[bot] (#6482)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.31.15 @updateclibot[bot] (#6465)
+    - deps(go): bump module code.gitea.io/sdk/gitea to v0.22.1
+      @updateclibot[bot] (#6453)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.18.19
+      @updateclibot[bot] (#6445)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2 to v1.39.4
+      @updateclibot[bot] (#6438)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.31.14 @updateclibot[bot] (#6430)
+    - Add CODECOV_TOKEN to build pipeline @olblak (#6409)
+
+-------------------------------------------------------------------
+Thu Nov 06 14:37:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.110.0:
+  * fix: helm plugin update compatible keys (#6576)
+  * deps(go): bump module github.com/aws/aws-sdk-go-v2/credentials to v1.18.21 (#6563)
+  * deps: Bump Golang version to 1.25.4 (#6556)
+  * chore: ignore none working branch (#6542)
+  * deps(go): bump module github.com/aws/smithy-go to v1.23.2 (#6537)
+  * deps(go): bump module golang.org/x/mod to v0.29.0 (#6520)
+  * fix(json): Don't check for query + versionFilter with dasel/v2 (#6527)
+  * chore: deps: bump golangci-lint in GitHub Action to v2.6.0 (#6513)
+  * deps(go): bump module github.com/fluxcd/source-controller/api to v1.7.3 (#6516)
+  * feat: Add flag to clean git working branches with no changes (#6488)
+  * fix: switch dockerfile matching to exact match instead of prefix (#6437)
+  * deps(go): bump module github.com/aws/aws-sdk-go-v2/config to v1.31.16 (#6495)
+  * deps(go): bump module github.com/jferrl/go-githubauth to v1.5.0 (#6487)
+  * deps(go): bump module github.com/fluxcd/helm-controller/api to v1.4.3 (#6482)
+  * bug: various Updatecli console output improvement (#6460)
+  * feat: Allow to use GitHub search to target multipe GitHub repositories (#6422)
+  * deps(go): bump module github.com/aws/aws-sdk-go-v2/config to v1.31.15 (#6465)
+  * feat(autodiscover/githubaction): handle composite actions
+  * deps(go): bump module code.gitea.io/sdk/gitea to v0.22.1 (#6453)
+  * deps(go): bump module github.com/aws/aws-sdk-go-v2/credentials to v1.18.19 (#6445)
+  * deps(go): bump module github.com/aws/aws-sdk-go-v2 to v1.39.4 (#6438)
+  * fix: display correct target/condition id in missing sourceid errors (#6427)
+  * deps(go): bump module github.com/aws/aws-sdk-go-v2/config to v1.31.14 (#6430)
+  * fix: partial files should only load yaml/json files (#6421)
+  * Add CODECOV_TOKEN to build pipeline (#6409)
+  * deps: bump updatecli version to v0.109.0 (#6408)
+
+-------------------------------------------------------------------
 Sat Oct 18 06:03:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.109.0:
