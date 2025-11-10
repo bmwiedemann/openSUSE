@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Nov  9 13:30:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.0:
+  * add pyproject.toml to support pip 23.1
+  * Update master for stable/2025.1
+  * Use releases.openstack.org instead of opendev.org
+
+-------------------------------------------------------------------
+Tue Jul  1 21:53:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0:
+  * Skip installation to speed up pep8
+  * deprecate eventlet monkey patch within lockutils
+  * Remove support for running unit tests in Windows
+  * reno: Update master for unmaintained/2023.1
+  * Remove windows support
+  * Check if subprocess module is patched directly
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Fix outdated tox minversion
+  * Declare Python 3.12 support
+  * Remove workaround for eventlet bug #592
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Mon Sep  2 17:34:17 UTC 2024 - cloud-devel@suse.de
 
 - update to version 6.1.0
@@ -522,7 +548,7 @@ Wed Jan 14 10:14:23 UTC 2015 - tbechtold@suse.com
 -------------------------------------------------------------------
 Tue Dec  9 10:04:30 UTC 2014 - dmueller@suse.com
 
-- update to 0.3.0: 
+- update to 0.3.0:
   * Add external lock fixture
   * Add a TODO for retrying pull request #20
   * Allow the lock delay to be provided
@@ -539,5 +565,5 @@ Tue Dec  9 10:04:30 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Sat Nov  1 21:29:50 UTC 2014 - dmueller@suse.com
 
-- Initial package 
+- Initial package
 

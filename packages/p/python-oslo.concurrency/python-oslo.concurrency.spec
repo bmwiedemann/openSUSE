@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.concurrency
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,48 +17,42 @@
 
 
 Name:           python-oslo.concurrency
-Version:        6.1.0
+Version:        7.2.0
 Release:        0
 Summary:        OpenStack oslo.concurrency library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.concurrency
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.concurrency/oslo.concurrency-6.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo-concurrency/oslo_concurrency-%{version}.tar.gz
+BuildRequires:  %{python_module eventlet}
+BuildRequires:  %{python_module fasteners >= 0.7.0}
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module oslo.config >= 5.2.0}
+BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
+BuildRequires:  %{python_module oslo.utils >= 3.33.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-eventlet
-BuildRequires:  python3-fasteners >= 0.7.0
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-oslo.config >= 5.2.0
-BuildRequires:  python3-oslo.i18n >= 3.15.3
-BuildRequires:  python3-oslo.utils >= 3.33.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testscenarios
-BuildRequires:  python3-testtools
+Requires:       python-fasteners >= 0.7.0
+Requires:       python-oslo.config >= 5.2.0
+Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-oslo.utils >= 3.33.0
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-oslo.concurrency < %{version}
+%else
+Conflicts:      python3-oslo.concurrency < %{version}
+%endif
 BuildArch:      noarch
+%python_subpackages
 
 %description
 The oslo.concurrency library has utilities for safely running multi-thread,
 multi-process applications using locking mechanisms and for running
 external processes.
-
-%package -n python3-oslo.concurrency
-Summary:        OpenStack oslo.concurrency library
-Requires:       python3-fasteners >= 0.7.0
-Requires:       python3-oslo.config >= 5.2.0
-Requires:       python3-oslo.i18n >= 3.15.3
-Requires:       python3-oslo.utils >= 3.33.0
-%if 0%{?suse_version}
-Obsoletes:      python2-oslo.concurrency < 4.0.0
-%endif
-
-%description -n python3-oslo.concurrency
-The oslo.concurrency library has utilities for safely running multi-thread,
-multi-process applications using locking mechanisms and for running
-external processes.
-
-This package contains the Python 3.x module.
 
 %package -n python-oslo.concurrency-doc
 Summary:        Documentation for OpenStack concurrency library
@@ -73,11 +67,10 @@ external processes.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.concurrency-6.1.0
-%py_req_cleanup
+%autosetup -p1 -n oslo_concurrency-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
@@ -85,18 +78,29 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
+
+%python_clone -a %{buildroot}%{_bindir}/lockutils-wrapper
+
+%pre
+%python_libalternatives_reset_alternative lockutils-wrapper
+
+%post
+%python_install_alternative lockutils-wrapper
+
+%postun
+%python_uninstall_alternative lockutils-wrapper
 
 %check
 env TEST_EVENTLET=0 %{openstack_stestr_run}
 env TEST_EVENTLET=1 %{openstack_stestr_run}
 
-%files -n python3-oslo.concurrency
+%files %{python_files}
 %license LICENSE
 %doc README.rst ChangeLog
-%{_bindir}/lockutils-wrapper
-%{python3_sitelib}/oslo_concurrency
-%{python3_sitelib}/*.egg-info
+%python_alternative %{_bindir}/lockutils-wrapper
+%{python_sitelib}/oslo_concurrency
+%{python_sitelib}/oslo_concurrency-%{version}.dist-info
 
 %files -n python-oslo.concurrency-doc
 %license LICENSE
