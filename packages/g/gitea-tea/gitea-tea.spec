@@ -39,9 +39,6 @@ local main branch tracks the upstream repo. It also assumes that
 local git state is published on the remote before doing operations.
 Configuration lives in $XDG_CONFIG_HOME/tea.
 
-The binary name has been renamed to "gitea", as "tea" has been
-already taken.
-
 %package bash-completion
 Summary:        Bash Completion for Gitea's tea CLI
 BuildRequires:  bash-completion
@@ -75,7 +72,8 @@ go build \
    -ldflags "-X main.Version=%{version}"
 
 # building docs
-go build \
+go run \
+   docs/docs.go \
    -o docs/CLI.md \
    -mod=vendor \
    -buildmode=pie \
