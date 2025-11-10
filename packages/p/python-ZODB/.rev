@@ -179,4 +179,41 @@
 </comment>
     <requestid>1282859</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9bc22dfd01c0688dfa504354df1e2934</srcmd5>
+    <version>6.1</version>
+    <time>1762798777</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1:
+  * get_transaction().  Use transaction.get() instead.
+    transaction.commit() is a shortcut spelling of
+    transaction.get().commit(), and transaction.abort() of
+    transaction.get().abort().  Note that importing ZODB no
+    longer installs get_transaction as a name in Python's
+    __builtin__ module either.
+  * The begin() method of Transaction objects.  Use the begin()
+    method of a transaction manager instead.  transaction.begin()
+    is a shortcut spelling to call the default transaction
+    manager's begin() method.
+  * The dt argument to Connection.cacheMinimize().
+  * The Connection.cacheFullSweep() method.  Use cacheMinimize()
+    instead.
+  * The Connection.getTransaction() method.  Pass a transaction
+    manager to DB.open() instead.
+  * The Connection.getLocalTransaction() method.  Pass a
+    transaction manager to DB.open() instead.
+  * The cache_deactivate_after and version_cache_deactivate_after
+    arguments to the DB constructor.
+  * The temporary, force, and waitflag arguments to DB.open().
+    DB.open() no longer blocks (there's no longer a fixed limit
+    on the number of open connections).
+  * The transaction and txn_mgr``arguments to ``DB.open().  Use
+    the transaction_manager argument instead.
+  * The getCacheDeactivateAfter, setCacheDeactivateAfter,
+    getVersionCacheDeactivateAfter and
+    setVersionCacheDeactivateAfter methods of DB.
+
+- Update to 5.8.0:</comment>
+    <requestid>1316821</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:25:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1:
+  * get_transaction().  Use transaction.get() instead.
+    transaction.commit() is a shortcut spelling of
+    transaction.get().commit(), and transaction.abort() of
+    transaction.get().abort().  Note that importing ZODB no
+    longer installs get_transaction as a name in Python's
+    __builtin__ module either.
+  * The begin() method of Transaction objects.  Use the begin()
+    method of a transaction manager instead.  transaction.begin()
+    is a shortcut spelling to call the default transaction
+    manager's begin() method.
+  * The dt argument to Connection.cacheMinimize().
+  * The Connection.cacheFullSweep() method.  Use cacheMinimize()
+    instead.
+  * The Connection.getTransaction() method.  Pass a transaction
+    manager to DB.open() instead.
+  * The Connection.getLocalTransaction() method.  Pass a
+    transaction manager to DB.open() instead.
+  * The cache_deactivate_after and version_cache_deactivate_after
+    arguments to the DB constructor.
+  * The temporary, force, and waitflag arguments to DB.open().
+    DB.open() no longer blocks (there's no longer a fixed limit
+    on the number of open connections).
+  * The transaction and txn_mgr``arguments to ``DB.open().  Use
+    the transaction_manager argument instead.
+  * The getCacheDeactivateAfter, setCacheDeactivateAfter,
+    getVersionCacheDeactivateAfter and
+    setVersionCacheDeactivateAfter methods of DB.
+
+-------------------------------------------------------------------
 Wed Jun  4 15:21:36 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - fix usage of libalternatives
@@ -44,7 +76,7 @@ Sun Jan  7 16:42:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Dec  1 20:18:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 5.8.0: 
+- Update to 5.8.0:
   * Add support for Python 3.11.
   * Expand and refactor tests for race conditions.
 
@@ -56,7 +88,7 @@ Wed Sep  7 16:00:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Sep  7 15:57:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 5.7.0: 
+- Update to 5.7.0:
   * Fix TypeError: can't concat str to bytes when running fsoids.py script with Python 3. See issue 350.
   * Readd transaction size information to fsdump output; adapt fsstats to fsdump's exchanged order for
     size and class information in data records; (fixes #354 <https://github.com/zopefoundation/ZODB/issues/354>_).
