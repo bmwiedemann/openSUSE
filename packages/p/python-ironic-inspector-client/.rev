@@ -300,4 +300,27 @@
   - Remove old excludes</comment>
     <requestid>1198505</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>09fb36d77f25b7f6a2804685a3cfd1ac</srcmd5>
+    <version>5.4.0</version>
+    <time>1762798672</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.0:
+  * Remove Python 3.9 support
+  * Drop license classifier
+  * Replace UPPER\_CONSTRAINTS\_FILE
+  * Release note: Inspector is dying/dead
+  * Fix bare metal info order in unit tests
+  * Update master for stable/2025.1
+- switch to singlespec
+
+- update to 5.3.1:
+  * Fix bare metal info order in unit tests
+  * Update TOX\_CONSTRAINTS\_FILE for stable/2025.1
+  * Update .gitreview for stable/2025.1
+  * reno: Update master for unmaintained/2023.1
+  * Remove Python 3.8 support
+  * Update master for stable/2024.2</comment>
+    <requestid>1316843</requestid>
+  </revision>
 </revisionlist>

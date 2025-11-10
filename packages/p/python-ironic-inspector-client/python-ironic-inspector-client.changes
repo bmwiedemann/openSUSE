@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov  9 17:28:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.0:
+  * Remove Python 3.9 support
+  * Drop license classifier
+  * Replace UPPER\_CONSTRAINTS\_FILE
+  * Release note: Inspector is dying/dead
+  * Fix bare metal info order in unit tests
+  * Update master for stable/2025.1
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 22:33:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.1:
+  * Fix bare metal info order in unit tests
+  * Update TOX\_CONSTRAINTS\_FILE for stable/2025.1
+  * Update .gitreview for stable/2025.1
+  * reno: Update master for unmaintained/2023.1
+  * Remove Python 3.8 support
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Tue Sep  3 13:13:01 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.2.0
