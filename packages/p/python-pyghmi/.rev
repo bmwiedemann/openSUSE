@@ -464,4 +464,41 @@
   * Add blink support to Lenovo &quot;IPMI&quot; support</comment>
     <requestid>1248096</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>35ab36588511e620c1146d25618d2fbd</srcmd5>
+    <version>1.6.6</version>
+    <time>1762798688</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.6:
+  * Clear likely modified URLs from cache
+  * Add Manager CA management
+  * Tolerate failure retrieving logs
+  * Restore generic fallback
+  * Enhancements for multi-system, multi-manager
+  * Make storage layer information retrieval a bit more robust
+  * Add vlan id to net configuration
+  * Enhance vague error messages
+  * Normalize components to a set
+  * Initialize variables for disk/adapter fetch
+  * Implement firmware fetch categories
+  * Correct issue with multiple uploads of same file to distinct
+    targets
+  * Fix redfish account creation
+  * Fix SMM3 update process
+  * Fix webclient upload
+  * Fix BMC change handling in XCC3
+  * Fixes to XCC3 module
+  * Randomize boundary
+  * Increase buffer size
+  * Translate non-XCC3 volume policies values to Redfish
+  * Rework the XCC3 changes
+  * Add support for XCC3
+  * Switch to atomic fetch of password in serversession
+  * Replace set\_power manual call to grab\_json\_response
+  * Add SMM3 identify light manipulation
+  * Invalidate media cache an attach/detach
+  * Prefer pkg\_version
+  * Tolerate timeout on reseat</comment>
+    <requestid>1316854</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyghmi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,32 @@
 
 
 Name:           python-pyghmi
-Version:        1.5.76
+Version:        1.6.6
 Release:        0
 Summary:        General Hardware Management Initiative (IPMI and others)
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/pyghmi
-Source0:        https://files.pythonhosted.org/packages/source/p/pyghmi/pyghmi-1.5.76.tar.gz
-BuildRequires:  openstack-macros
-BuildRequires:  python3-cryptography >= 2.1
-BuildRequires:  python3-devel
-BuildRequires:  python3-openstackdocstheme
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-python-dateutil >= 2.8.1
-BuildRequires:  python3-six >= 1.10.0
-BuildRequires:  python3-stestr
+Source0:        https://files.pythonhosted.org/packages/source/p/pyghmi/pyghmi-%{version}.tar.gz
+BuildRequires:  %{python_module cryptography >= 2.1}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil >= 2.8.1}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
+Requires:       python-cryptography >= 2.1
+Requires:       python-python-dateutil >= 2.8.1
+Requires:       python-six
 BuildArch:      noarch
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-pyghmi < %{version}
+%else
+Conflicts:      python3-pyghmi < %{version}
+%endif
+%python_subpackages
 
 %description
 This is a pure python implementation of IPMI protocol.
@@ -40,27 +50,11 @@ This is a pure python implementation of IPMI protocol.
 pyghmicons and pyghmiutil are example scripts to show how one may incorporate
 this library into python code
 
-%package -n python3-pyghmi
-Summary:        General Hardware Management Initiative (IPMI and others)
-Requires:       python3-cryptography >= 2.1
-Requires:       python3-python-dateutil >= 2.8.1
-Requires:       python3-six >= 1.10.0
-%if 0%{?suse_version}
-Obsoletes:      python2-pyghmi < 1.6.0
-%endif
-
-%description -n python3-pyghmi
-This is a pure python implementation of IPMI protocol.
-
-pyghmicons and pyghmiutil are example scripts to show how one may incorporate
-this library into python code
-
-This package contains the Python 3.x module.
-
 %package -n python-pyghmi-doc
 Summary:        General Hardware Management Initiative (IPMI and others) -- Documentation
 Group:          Documentation/HTML
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-pyghmi-doc
 This is a pure python implementation of IPMI protocol.
@@ -70,28 +64,50 @@ this library into python code
 
 %prep
 %autosetup -p1 -n pyghmi-%{version}
-%py_req_cleanup
 
 %build
-%{py3_build}
-PYTHONPATH=. PBR_VERSION=1.5.76 %sphinx_build -b html doc/source doc/build/html
+%pyproject_wheel
+PYTHONPATH=. PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
+
+%python_clone -a %{buildroot}%{_bindir}/pyghmicons
+%python_clone -a %{buildroot}%{_bindir}/pyghmiutil
+%python_clone -a %{buildroot}%{_bindir}/virshbmc
+%python_clone -a %{buildroot}%{_bindir}/fakebmc
+
+%pre
+%python_libalternatives_reset_alternative pyghmicons
+%python_libalternatives_reset_alternative pyghmiutil
+%python_libalternatives_reset_alternative fakebmc
+%python_libalternatives_reset_alternative virshbmc
+
+%post
+%python_install_alternative pyghmicons
+%python_install_alternative pyghmiutil
+%python_install_alternative fakebmc
+%python_install_alternative virshbmc
+
+%postun
+%python_uninstall_alternative pyghmicons
+%python_uninstall_alternative pyghmiutil
+%python_uninstall_alternative fakebmc
+%python_uninstall_alternative virshbmc
 
 %check
-%{openstack_stestr_run}
+%pytest
 
-%files -n python3-pyghmi
-%doc README.md ChangeLog
+%files %{python_files}
+%doc README.md
 %license LICENSE
-%{_bindir}/pyghmicons
-%{_bindir}/pyghmiutil
-%{_bindir}/virshbmc
-%{_bindir}/fakebmc
-%{python3_sitelib}/pyghmi*
-%{python3_sitelib}/*.egg-info
+%python_alternative %{_bindir}/pyghmicons
+%python_alternative %{_bindir}/pyghmiutil
+%python_alternative %{_bindir}/virshbmc
+%python_alternative %{_bindir}/fakebmc
+%{python_sitelib}/pyghmi
+%{python_sitelib}/pyghmi-%{version}.dist-info
 
 %files -n python-pyghmi-doc
 %doc doc/build/html
