@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 10 15:08:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.3.1 (bsc#1251516, CVE-2025-47911,
+  bsc#1251891, CVE-2025-11579, bsc#1251651, CVE-2025-58190,
+  bsc#1248937, CVE-2025-58058):
+  * bump github.com/containerd/containerd (#474)
+  * another fix to tests for new tests (#472)
+  * fixed typo in testdata (#471)
+  * fixed/cleaned new tests (#470)
+  * trying a new way for hauler testing (#467)
+  * update for cosign v3 verify (#469)
+  * added digests view to info (#465)
+  * bump github.com/nwaples/rardecode/v2 from 2.1.1 to 2.2.0 in the go_modules group across 1 directory (#457)
+  * update oras-go to v1.2.7 for security patches (#464)
+  * update cosign to v3.0.2+hauler.1 (#463)
+  * fixed homebrew directory deprecation (#462)
+  * add registry logout command (#460)
+
+-------------------------------------------------------------------
 Mon Oct 27 08:34:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.3.0:
