@@ -42,4 +42,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1285286</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e4fda8fa58b478b1eb0a0e031cc6deda</srcmd5>
+    <version>1.0.0</version>
+    <time>1762798783</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * drop python 2 support</comment>
+    <requestid>1316830</requestid>
+  </revision>
 </revisionlist>
