@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:10:19 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to serpent-1.42:
+  * added test-requirements.txt
+
+-------------------------------------------------------------------
 Thu Jun 12 10:46:13 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -11,7 +17,7 @@ Sun Jun 11 13:53:35 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Fri Oct  7 15:25:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.41 
+- Update to version 1.41
   * support for python up to 3.11 added (__getstate__ behavior change)
   * replaced travis CI by Github actions
   * drop python 3.5 support

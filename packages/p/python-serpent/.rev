@@ -79,4 +79,15 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1285102</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>89fd4cf59d1c8d7910c03a0a0918e342</srcmd5>
+    <version>1.42</version>
+    <time>1762798717</time>
+    <user>dimstar_suse</user>
+    <comment>- update to serpent-1.42:
+  * added test-requirements.txt
+
+- Update to version 1.41</comment>
+    <requestid>1316809</requestid>
+  </revision>
 </revisionlist>
