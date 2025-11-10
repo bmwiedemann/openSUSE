@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov  9 20:42:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.0:
+  * tox: Drop envdir
+  * Fixed --wait flag with l7rule create
+  * Remove Python 3.9 support
+  * Drop explicit dependency on python-subunit
+  * Fix displaying list columns with null values
+  * Replace UPPER\_CONSTRAINTS\_FILE
+  * osc: Use FormattableColumn for formatter
+  * Update master for stable/2025.1
+  * Fix doc job for Ubuntu Noble
+  * Add vip-sg-id support for load balancers
+  * Remove duplicate hacking checks
+  * reno: Update master for unmaintained/2023.1
+  * Add missing FAILOVER\_STOPPED amphora status
+  * Remove Python 3.8 support
+  * Drop unnecessary 'x' bit from doc config file
+  * Fix error message when deleting a non-existing AZ
+  * Update master for stable/2024.2
+- switch to singlespec
+
+-------------------------------------------------------------------
 Tue Sep  3 13:17:18 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.8.0
