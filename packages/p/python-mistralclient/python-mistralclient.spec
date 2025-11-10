@@ -1,7 +1,7 @@
 #
 # spec file for package python-mistralclient
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,49 +16,41 @@
 #
 
 
-%global oldpython python
+%global pythons %{primary_python}
 Name:           python-mistralclient
-Version:        5.3.0
+Version:        6.0.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Mistral
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-mistralclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-mistralclient/python-mistralclient-5.3.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python_mistralclient/python_mistralclient-%{version}.tar.gz
+BuildRequires:  %{python_module PyYAML >= 3.13}
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module openstackclient}
+BuildRequires:  %{python_module osc-lib >= 1.8.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module osprofiler}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-PyYAML >= 3.13
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-openstackclient
-BuildRequires:  python3-osc-lib >= 1.8.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-osprofiler
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-requests-mock
-BuildRequires:  python3-stestr
+Requires:       python-PyYAML >= 3.13
+Requires:       python-cliff >= 2.8.0
+Requires:       python-keystoneclient
+Requires:       python-osc-lib >= 1.8.0
+Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-oslo.utils >= 3.33.0
+Requires:       python-osprofiler
+Requires:       python-requests >= 2.14.2
+Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
+%python_subpackages
 
 %description
 Client library for Mistral built on the Mistral API. It provides a Python API
 (the mistralclient module) and a command-line tool (mistral).
-
-%package -n python3-mistralclient
-Summary:        Python API and CLI for OpenStack Mistral
-Requires:       python3-PyYAML >= 3.13
-Requires:       python3-cliff >= 2.8.0
-Requires:       python3-keystoneclient
-Requires:       python3-osc-lib >= 1.8.0
-Requires:       python3-oslo.i18n >= 3.15.3
-Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-osprofiler
-Requires:       python3-requests >= 2.14.2
-Requires:       python3-stevedore >= 1.20.0
-Conflicts:      %{oldpython}-mistralclient < %version
-
-%description -n python3-mistralclient
-Client library for Mistral built on the Mistral API. It provides a Python API
-(the mistralclient module) and a command-line tool (mistral).
-
-This package contains the Python 3.x module.
 
 %package -n python-mistralclient-doc
 Summary:        Documentation for OpenStack Mistral API client libary
@@ -73,26 +65,25 @@ Client library for Mistral built on the Mistral API. It provides a Python API
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n python-mistralclient-5.3.0
-%py_req_cleanup
+%autosetup -p1 -n python_mistralclient-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 # Build HTML docs
-PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
 
 %check
 %{openstack_stestr_run}
 
-%files -n python3-mistralclient
+%files %{python_files}
 %license LICENSE
-%{python3_sitelib}/mistralclient
-%{python3_sitelib}/*.egg-info
+%{python_sitelib}/mistralclient
+%{python_sitelib}/python_mistralclient-%{version}.dist-info
 %{_bindir}/mistral
 
 %files -n python-mistralclient-doc

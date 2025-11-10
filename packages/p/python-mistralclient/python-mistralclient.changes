@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Nov  9 14:13:22 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * Replace os-client-config
+  * Replace pkg\_resources
+  * Replace deprecated datetime.datetime.utcnow
+  * Remove services from client
+  * Fix tag in README
+  * Remove tags from README
+  * Replace options contining dashes from setup.cfg
+  * Update master for stable/2025.1
+  * Skip installation to speed up pep8
+  * setup.cfg: Replace dashes by underscores
+  * reno: Update master for unmaintained/2023.1
+  * Drop lower-constraints.txt and its testing
+  * Add note about requirements lower bounds
+  * Changed minversion in tox to 3.18.0
+  * Get rid of pkg\_resources
+  * Update master for stable/2023.2
+  * Update master for stable/2023.1
+  * Update master for stable/2024.2
+  * reno: Update master for unmaintained/zed
+  * Update python classifier in setup.cfg
+  * Remove untested lower-constraints.txt
+  * reno: Update master for unmaintained/wallaby
+  * reno: Update master for unmaintained/victoria
+
+-------------------------------------------------------------------
 Fri Jun 13 07:03:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not (ever) use Epoch; it has devestating effects on version
