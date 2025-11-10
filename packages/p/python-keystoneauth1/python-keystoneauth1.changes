@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Sun Nov  9 12:42:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.12.0:
+  * Add required fields for EntraID OidcDeviceAuth
+  * Allow os-access-token-type for device auth
+  * Allow missing verification\_uri\_complete for OidcDeviceAuth
+  * Migrate setup configuration to pyproject.toml
+  * Bump Python version used for linters to 3.10
+  * Add .git-blame-ignore-revs file
+  * typing: Correct type (redux)
+  * Drop logic for requests<2.4.1
+  * Bump Python version used for linters to 3.9
+  * Drop support for Python 3.9
+  * pre-commit: Bump versions
+  * Add missing space in log statement
+  * Fix bug in OIDC Device Authorization
+  * Remove client\_id from OIDC payload
+  * typing: Correct type
+  * Use releases.openstack.org instead of opendev.org
+  * Update master for stable/2025.1
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 22:22:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.10.0:
+  * typing: Move py.typed to correct location
+  * pre-commit: Bump versions
+  * typing: Removing additional unused kwargs (2/2)
+  * typing: Removing additional unused kwargs (1/2)
+  * typing: Deprecate use of AuthConstructor
+  * typing: Use builtins
+  * pre-commit: Bump versions
+  * typing: Remove unused BaseAuthPlugin.get\_token kwargs
+  * typing: Remove unused BaseAuthPlugin.get\_headers kwargs
+  * typing: Remove unused \_Rescoped.get\_unscoped\_auth\_ref
+    kwargs
+  * typing: Remove unused BaseAuthPlugin.get\_auth\_ref kwargs
+  * typing: Remove unused AuthMethod.get\_auth\_data arguments
+  * typing: Simplify some types, other TODOs
+  * docs: Document CLI options, envvars
+  * loading: Add blurb for most plugins
+  * docs: Rework plugin-options doc
+  * doc: Fix indentation
+  * loading.opts: Add 'argparse\_envvars' helper
+  * reno: Update master for unmaintained/2023.1
+  * Allow passing None for username in v2.Password (redux)
+  * Fix misuse of assertTrue
+  * typing: Make loaders broadly generic
+  * Add py.typed file
+  * typing: Move configuration to pyproject.toml
+  * typing: Set remaining 'disallow\_\*' opts to 'true'
+  * typing: Invert module settings
+  * typing: Annotate keystoneauth1.extras (2/2)
+  * typing: Annotate keystoneauth1.loading.\_plugins
+  * typing: Annotate keystoneauth1.loading.\_utils
+  * typing: Annotate keystoneauth1.loading.identity
+  * typing: Annotate keystoneauth1.loading.session
+  * typing: Annotate keystoneauth1.loading.adapter
+  * typing: Annotate keystoneauth1.loading.conf
+  * typing: Annotate keystoneauth1.loading.cli
+  * typing: Annotate keystoneauth1.loading.opts
+  * typing: Annotate keystoneauth1.loading.base
+  * typing: Annotate keystoneauth1.extras (1/2)
+  * typing: Annotate keystoneauth1.identity.v3
+  * typing: Annotate keystoneauth1.identity.generic
+  * identity: Remove kwarg-generation helpers
+  * typing: Annotate keystoneauth1.identity.v2
+  * typing: Annotate keystoneauth1.identity.access
+  * identity: Remove use of kwargs
+  * identity: Remove support for manual OIDC grant type
+  * typing: Annotate keystoneauth1.identity.base
+  * typing: Annotate keystoneauth1.access.access
+  * access: Remove use of \_missingproperty wrapper
+  * access: Add more helper attributes to AccessInfoV3
+  * typing: Annotate keystoneauth1.access.service\_providers
+  * typing: Resolve unnecessary typing ignore
+  * docs: Fix indentation
+  * pre-commit: Bump versions
+  * typing: Annotate keystoneauth1.access.service\_catalog
+  * typing: Annotate keystoneauth1.exceptions
+  * typing: Annotate keystoneauth1.\_utils
+  * typing: Annotate various plugin modules
+  * typing: Annotate keystoneauth1.\_fair\_semaphore
+  * typing: Annotate keystoneauth1.adapter
+  * trivial: Consistent f prefixes
+  * typing: Annotate keystoneauth1.session
+  * typing: Annotate keystoneauth1.plugin
+  * typing: Annotate keystoneauth1.discover
+  * discover: Rework normalization
+  * discover: Expand use of kwargs
+  * Enable mypy
+  * typing: Resolve remaining initial issues
+  * typing: Add variable for auth plugin opts
+  * typing: Synchronise overridden method signatures
+  * typing: Make abstract method actually abstract
+  * Enable ruff, ruff-format
+  * Apply ruff, ruff-format
+  * Drop support for Python 3.8
+  * trivial: Remove errant trailing commas
+  * docs: Remove cruft from configuration files
+  * Add pre-commit
+  * Update betamax extra deps
+  * Update master for stable/2024.2
+  * Pass oidc client id in the body if no client secret provided
+
+-------------------------------------------------------------------
 Mon Sep  2 17:35:47 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.8.0

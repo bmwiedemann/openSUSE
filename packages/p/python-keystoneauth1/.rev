@@ -410,4 +410,12 @@ update to version 2.12.0
   - tox: Migrate to tox v4</comment>
     <requestid>1231835</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e9904302c7e617a061e63837b2b0ee4a</srcmd5>
+    <version>5.12.0</version>
+    <time>1762798624</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316761</requestid>
+  </revision>
 </revisionlist>
