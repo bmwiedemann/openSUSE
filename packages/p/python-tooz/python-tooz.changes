@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Nov  9 18:26:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.0:
+  * Add TLS support for Memcached driver
+  * add pyproject.toml to support pip 23.1
+  * Drop environment for protobuf library
+  * Bump etcd in tests
+  * tox: Remove basepython
+  * Remove remaining uses of oslo.util md5 wrapper
+  * deprecate the eventlet handler from the zookeeper driver
+  * Replace oslo\_utils.encodeutils.exception\_to\_unicode
+  * Add Kubernetes Lock support
+  * Remove Windows support
+  * Add note about requirements lower bounds
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Remove Python 3.8 support
+  * Fix outdated tox minversion
+  * Bump python versions used in tests
+  * Use oslo.utils implementation to compare versions
+  * Use oslo.utils implementation to parse sentinel address
+  * Fix wrong usage of 'wraps'
+  * zookeeper: fix argparse related to ssl
+  * mysql: Use oslo\_utils implementation to parse boolean
+
+-------------------------------------------------------------------
 Mon Sep  2 17:28:25 UTC 2024 - cloud-devel@suse.de
 
 - update to version 6.3.0
@@ -71,7 +96,7 @@ Thu Jan  4 09:04:25 UTC 2024 - cloud-devel@suse.de
 -------------------------------------------------------------------
 Tue Jun 21 13:17:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- drop unneeded dependencies 
+- drop unneeded dependencies
 
 -------------------------------------------------------------------
 Tue Jun  7 08:49:30 UTC 2022 - cloud-devel@suse.de
@@ -357,7 +382,7 @@ Fri Feb 10 14:16:04 UTC 2017 - cloud-devel@suse.de
 Fri Sep 30 13:43:56 UTC 2016 - dmueller@suse.com
 
 - update to 1.43.0:
-  * Makedirs only throws oserror, so only catch that 
+  * Makedirs only throws oserror, so only catch that
 
 -------------------------------------------------------------------
 Wed Aug 10 14:48:50 UTC 2016 - tbechtold@suse.com

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tooz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,65 +16,52 @@
 #
 
 
-%if 0%{?rhel} || 0%{?fedora}
-%global rdo 1
-%endif
 Name:           python-tooz
-Version:        6.3.0
+Version:        7.0.0
 Release:        0
 Summary:        Coordination library for distributed systems
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/tooz/latest/
-Source0:        https://files.pythonhosted.org/packages/source/t/tooz/tooz-6.3.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/t/tooz/tooz-%{version}.tar.gz
+BuildRequires:  %{python_module fasteners >= 0.7}
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module futurist >= 1.2.0}
+BuildRequires:  %{python_module oslo.serialization >= 1.10.0}
+BuildRequires:  %{python_module oslo.utils >= 4.7.0}
+BuildRequires:  %{python_module pifpaf}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pymemcache}
+BuildRequires:  %{python_module stevedore >= 1.16.0}
+BuildRequires:  %{python_module tenacity >= 5.0.0}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module voluptuous >= 0.8.9}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  memcached
 BuildRequires:  openstack-macros
-BuildRequires:  python3-fasteners >= 0.7
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-futurist >= 1.2.0
-BuildRequires:  python3-oslo.serialization >= 1.10.0
-BuildRequires:  python3-oslo.utils >= 4.7.0
-BuildRequires:  python3-pbr
-BuildRequires:  python3-pymemcache
-BuildRequires:  python3-stevedore >= 1.16.0
-BuildRequires:  python3-tenacity >= 5.0.0
-BuildRequires:  python3-testtools
-BuildRequires:  python3-voluptuous >= 0.8.9
 BuildArch:      noarch
-%if ! 0%{?rdo}
-BuildRequires:  python3-pifpaf
-%endif
+Requires:       python-fasteners >= 0.7
+Requires:       python-futurist >= 1.2.0
+Requires:       python-msgpack >= 0.4.0
+Requires:       python-oslo.serialization >= 1.10.0
+Requires:       python-oslo.utils >= 4.7.0
+Requires:       python-stevedore >= 1.16.0
+Requires:       python-tenacity >= 5.0.0
+Requires:       python-voluptuous >= 0.8.9
+%python_subpackages
 
 %description
 The Tooz project aims at centralizing the most common distributed primitives
 like group membership protocol, lock service and leader election by providing
 a coordination API helping developers to build distributed applications.
 
-%package -n python3-tooz
-Summary:        Coordination library for distributed systems
-Requires:       python3-fasteners >= 0.7
-Requires:       python3-futurist >= 1.2.0
-Requires:       python3-msgpack >= 0.4.0
-Requires:       python3-oslo.serialization >= 1.10.0
-Requires:       python3-oslo.utils >= 4.7.0
-Requires:       python3-stevedore >= 1.16.0
-Requires:       python3-tenacity >= 5.0.0
-Requires:       python3-voluptuous >= 0.8.9
-
-%description -n python3-tooz
-The Tooz project aims at centralizing the most common distributed primitives
-like group membership protocol, lock service and leader election by providing
-a coordination API helping developers to build distributed applications.
-
-This package contains the Python 3.x module.
-
-%package -n python-tooz-doc
+%package -n python3-tooz-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/HTML
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
-%description  -n python-tooz-doc
+%description  -n python3-tooz-doc
 The Tooz project aims at centralizing the most common distributed primitives
 like group membership protocol, lock service and leader election by providing
 a coordination API helping developers to build distributed applications.
@@ -82,35 +69,32 @@ a coordination API helping developers to build distributed applications.
 This package contains documentation in HTML format.
 
 %prep
-%autosetup -p1 -n tooz-6.3.0
-%py_req_cleanup
+%autosetup -p1 -n tooz-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 # generate html docs
 PYTHONPATH=. \
-    %sphinx_build -b html doc/source doc/build/html
+    sphinx-build -b html doc/source doc/build/html
 # remove the Sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
-%if ! 0%{?rdo}
 export TOOZ_TEST_DRIVERS="memcached"
 export PATH=%{_prefix}/sbin:$PATH
 export LC_ALL=en_US.UTF-8
 bash run-tests.sh
-%endif
 
 %install
-%{py3_install}
+%pyproject_install
 
-%files -n python3-tooz
+%files %{python_files}
 %license LICENSE
-%{python3_sitelib}/tooz
-%{python3_sitelib}/tooz-*.egg-info
+%{python_sitelib}/tooz
+%{python_sitelib}/tooz-%{version}.dist-info
 
-%files -n python-tooz-doc
+%files -n python3-tooz-doc
 %license LICENSE
 %doc doc/build/html README.rst
 
