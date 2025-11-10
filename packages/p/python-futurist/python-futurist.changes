@@ -1,7 +1,37 @@
 -------------------------------------------------------------------
+Sun Nov  9 14:34:13 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * Fix \`shutdown(wait=True)\` to wait for queued tasks
+  * Use consistent validation error message for worker args
+  * Remove sleeps from DynamicThreadPoolExecutor tests
+  * Add DynamicThreadPoolExecutor that resizes itself
+  * Fix ThreadWorker.stop to stop only this worker
+  * Provide insights into the state of ThreadPoolExecutor
+  * Trivial: avoid noqa in \_\_init\_\_.py
+  * add pyproject.toml to support pip 23.1
+  * Drop explicit dependency on python-subunit
+  * tox: Remove basepython
+- switch to singlespec
+
+-------------------------------------------------------------------
+Fri Jul 18 21:46:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * deprecate eventlet based classes (green executors)
+  * Remove Python 3.8 support
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Use pre-commit hook to run doc8
+  * pre-commit: Bump versions
+  * Declare Python 3.12 support
+  * Replace use of testtools.testcase.TestSkipped
+  * Remove old excludes
+  * reno: Update master for unmaintained/victoria
+
+-------------------------------------------------------------------
 Mon Sep 30 02:13:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Drop monotonic BuildRequires, unneeded since 2.2.0. 
+- Drop monotonic BuildRequires, unneeded since 2.2.0.
 
 -------------------------------------------------------------------
 Fri May 10 08:39:55 UTC 2024 - cloud-devel@suse.de
