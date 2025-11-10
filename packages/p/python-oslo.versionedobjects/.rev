@@ -272,4 +272,12 @@
   - reno: Update master for unmaintained/victoria</comment>
     <requestid>1198359</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ac0d90f593127fbd832849594e37588a</srcmd5>
+    <version>3.8.0</version>
+    <time>1762798659</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316792</requestid>
+  </revision>
 </revisionlist>

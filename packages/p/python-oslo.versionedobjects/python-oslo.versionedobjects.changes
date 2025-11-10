@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov  9 18:29:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.0:
+  * add pyproject.toml to support pip 23.1
+  * tox: Remove basepython
+  * Update master for stable/2025.1
+  * Drop dependency on iso8601
+
+-------------------------------------------------------------------
+Tue Jul  1 22:12:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  * Skip installation to speed up pep8
+  * Get rid of third party mock library
+  * Replace distutils
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Skip grenade job on doc/translation updates
+  * Skip functional tests on pre-commit config update
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * pre-commit: Bump versions
+  * Remove Python 3.8 support
+  * Declare Python 3.12 support
+  * fixture: Drop use of OrderedDict for Python compat
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Mon Sep  2 17:29:42 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.4.0

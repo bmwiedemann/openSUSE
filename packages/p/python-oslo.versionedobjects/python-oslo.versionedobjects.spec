@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.versionedobjects
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,41 @@
 
 
 Name:           python-oslo.versionedobjects
-Version:        3.4.0
+Version:        3.8.0
 Release:        0
 Summary:        Oslo Versioned Objects library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.versionedobjects
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-3.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo_versionedobjects/oslo_versionedobjects-%{version}.tar.gz
+BuildRequires:  %{python_module iso8601}
+BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module oslo.concurrency >= 3.26.0}
+BuildRequires:  %{python_module oslo.config >= 5.2.0}
+BuildRequires:  %{python_module oslo.context >= 2.19.2}
+BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
+BuildRequires:  %{python_module oslo.log >= 3.36.0}
+BuildRequires:  %{python_module oslo.messaging >= 5.29.0}
+BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
+BuildRequires:  %{python_module oslo.utils >= 7.4.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-iso8601 >= 0.1.11
-BuildRequires:  python3-jsonschema
-BuildRequires:  python3-oslo.concurrency >= 3.26.0
-BuildRequires:  python3-oslo.config >= 5.2.0
-BuildRequires:  python3-oslo.context >= 2.19.2
-BuildRequires:  python3-oslo.i18n >= 3.15.3
-BuildRequires:  python3-oslo.log >= 3.36.0
-BuildRequires:  python3-oslo.messaging >= 5.29.0
-BuildRequires:  python3-oslo.serialization >= 2.18.0
-BuildRequires:  python3-oslo.utils >= 4.7.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pbr
-BuildRequires:  python3-stestr
+Requires:       python-WebOb >= 1.7.1
+Requires:       python-iso8601
+Requires:       python-netaddr >= 0.7.18
+Requires:       python-oslo.concurrency >= 3.26.0
+Requires:       python-oslo.config >= 5.2.0
+Requires:       python-oslo.context >= 2.19.2
+Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-oslo.log >= 3.36.0
+Requires:       python-oslo.messaging >= 5.29.0
+Requires:       python-oslo.serialization >= 2.18.0
+Requires:       python-oslo.utils >= 7.4.0
 BuildArch:      noarch
+%python_subpackages
 
 %description
 oslo.versionedobjects library deals with DB schema being at different versions
@@ -50,17 +63,6 @@ code across different services and projects.
 
 %package -n python3-oslo.versionedobjects
 Summary:        Oslo Versioned Objects library
-Requires:       python3-WebOb >= 1.7.1
-Requires:       python3-iso8601 >= 0.1.11
-Requires:       python3-netaddr >= 0.7.18
-Requires:       python3-oslo.concurrency >= 3.26.0
-Requires:       python3-oslo.config >= 5.2.0
-Requires:       python3-oslo.context >= 2.19.2
-Requires:       python3-oslo.i18n >= 3.15.3
-Requires:       python3-oslo.log >= 3.36.0
-Requires:       python3-oslo.messaging >= 5.29.0
-Requires:       python3-oslo.serialization >= 2.18.0
-Requires:       python3-oslo.utils >= 4.7.0
 
 %description -n python3-oslo.versionedobjects
 oslo.versionedobjects library deals with DB schema being at different versions
@@ -82,25 +84,25 @@ BuildRequires:  python3-openstackdocstheme
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n oslo.versionedobjects-3.4.0
-%py_req_cleanup
+%autosetup -p1 -n oslo_versionedobjects-%{version}
 
 %build
-%py3_build
+%pyproject_wheel
 
-PYTHONPATH=. PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=%{version} %{sphinx_build} -b html doc/source doc/build/html
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
-%py3_install
+%pyproject_install
 
 %check
 %{openstack_stestr_run}
 
-%files -n python3-oslo.versionedobjects
+%files %{python_files}
 %license LICENSE
-%{python3_sitelib}/oslo_versionedobjects
-%{python3_sitelib}/*.egg-info
+%doc README.rst
+%{python_sitelib}/oslo_versionedobjects
+%{python_sitelib}/oslo_versionedobjects-%{version}.dist-info
 
 %files -n python-oslo.versionedobjects-doc
 %license LICENSE
