@@ -1,7 +1,7 @@
 #
 # spec file for package python-ironicclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,62 +16,53 @@
 #
 
 
+%global pythons %{primary_python}
 Name:           python-ironicclient
-Version:        5.8.0
+Version:        5.13.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Ironic
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-ironicclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-5.8.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python_ironicclient-%{version}.tar.gz
+BuildRequires:  %{python_module Babel}
+BuildRequires:  %{python_module PyYAML >= 3.13}
+BuildRequires:  %{python_module appdirs}
+BuildRequires:  %{python_module dogpile.cache >= 0.8.0}
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module jsonschema >= 3.2.0}
+BuildRequires:  %{python_module openstacksdk}
+BuildRequires:  %{python_module osc-lib >= 2.0.0}
+BuildRequires:  %{python_module oslo.i18n}
+BuildRequires:  %{python_module oslo.utils >= 3.33.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module python-subunit}
+BuildRequires:  %{python_module requests >= 2.14.2}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-Babel
-BuildRequires:  python3-PyYAML >= 3.13
-BuildRequires:  python3-appdirs
-BuildRequires:  python3-dogpile.cache >= 0.8.0
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-jsonschema >= 3.2.0
-BuildRequires:  python3-openstackclient
-BuildRequires:  python3-osc-lib >= 2.0.0
-BuildRequires:  python3-oslo.i18n
-BuildRequires:  python3-oslo.utils >= 3.33.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-python-subunit
-BuildRequires:  python3-requests >= 2.14.2
-BuildRequires:  python3-requests-mock
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testtools
+Requires:       python-PyYAML >= 3.13
+Requires:       python-appdirs
+Requires:       python-dogpile.cache >= 0.8.0
+Requires:       python-jsonschema >= 3.2.0
+Requires:       python-keystoneauth1 >= 3.11.0
+Requires:       python-osc-lib >= 2.0.0
+Requires:       python-oslo.i18n
+Requires:       python-oslo.serialization
+Requires:       python-oslo.utils >= 3.33.0
+Requires:       python-pbr >= 6.0.0
+Requires:       python-requests >= 2.14.2
 BuildArch:      noarch
+%python_subpackages
 
 %description
 OpenStack Bare Metal Provisioning API Client Library
 
 This is a client for the OpenStack Ironic API. It provides a Python API (the
 ironicclient module) and a command-line interface (ironic).
-
-%package -n python3-ironicclient
-Summary:        Python API and CLI for OpenStack Ironic
-Requires:       python3-PyYAML >= 3.13
-Requires:       python3-appdirs
-Requires:       python3-dogpile.cache >= 0.8.0
-Requires:       python3-jsonschema >= 3.2.0
-Requires:       python3-keystoneauth1 >= 3.11.0
-Requires:       python3-openstackclient
-Requires:       python3-osc-lib >= 2.0.0
-Requires:       python3-oslo.i18n
-Requires:       python3-oslo.serialization
-Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-pbr >= 2.0.0
-Requires:       python3-requests >= 2.14.2
-
-%description -n python3-ironicclient
-OpenStack Bare Metal Provisioning API Client Library.
-
-This is a client for the OpenStack Ironic API. It provides a Python API (the
-ironicclient module) and a command-line interface (ironic).
-
-This package contains the Python 3.x module.
 
 %package -n python-ironicclient-doc
 Summary:        Documentation for OpenStack Ironic API Client
@@ -88,27 +79,27 @@ Each implements 100% of the OpenStack Ironic API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-ironicclient-5.8.0
+%autosetup -p1 -n python_ironicclient-%{version}
 %py_req_cleanup
 
 %build
-%{py3_build}
+%pyproject_wheel
 
-PBR_VERSION=5.8.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
 
 %check
 %{openstack_stestr_run}
 
-%files -n python3-ironicclient
+%files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/ironicclient
-%{python3_sitelib}/*.egg-info
+%{python3_sitelib}/python_ironicclient-%{version}.dist-info
 %{_bindir}/baremetal
 
 %files -n python-ironicclient-doc

@@ -545,4 +545,12 @@
   - Client support port name</comment>
     <requestid>1198507</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>52a796952966d53f7d51287aeac36175</srcmd5>
+    <version>5.13.0</version>
+    <time>1762798623</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316760</requestid>
+  </revision>
 </revisionlist>
