@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov  9 20:41:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * Fix a typo in release note
+  * Remove Python 3.9 support
+  * Revert "Replace license classifier"
+  * Replace license classifier
+  * Bump minimum pbr
+  * add pyproject.toml to support pip 23.1
+  * osc: Use FormattableColumn for formatter
+  * Drop redundant injection of VIRTUAL\_ENV
+  * doc: Use common requirements definition
+  * Use pre-commit to run format check
+  * Add --project param to stack list in OSC plugin
+  * Skip functional tests for .gitreview
+  * Update master for stable/2025.1
+- switch to singlespec
+
+-------------------------------------------------------------------
 Fri Jul  4 14:24:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.0:

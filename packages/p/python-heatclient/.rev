@@ -715,4 +715,12 @@
 - fix test requires</comment>
     <requestid>1290699</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>5d573e1074954d62727c3014876c84d3</srcmd5>
+    <version>4.3.0</version>
+    <time>1762798621</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316758</requestid>
+  </revision>
 </revisionlist>
