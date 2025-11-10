@@ -87,4 +87,33 @@
     <comment></comment>
     <requestid>1285380</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>777e03833eae5e04f2cb11da588a9c16</srcmd5>
+    <version>0.13.0</version>
+    <time>1762798703</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.0:
+  * add pyproject.toml to support pip 23.1
+  * tox: Remove basepython
+  * Update master for stable/2025.1
+  * feat: add option to set chmod to socket
+- switch to singlespec
+
+- update to 0.11.0:
+  * Skip installation to speed up pep8
+  * Restore group permissions to unix socket file
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Introduce pre-commit
+  * reno: Update master for unmaintained/2023.1
+  * Set log level to debug when dispatching metrics
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Drop unnecessary 'x' bit from doc config file
+  * Use PortOpt for prometheus\_port
+  * Declare Python 3.12 support
+  * Update master for stable/2024.2
+
+- Initial packaging (0.3.0)</comment>
+    <requestid>1316889</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov  9 18:17:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * add pyproject.toml to support pip 23.1
+  * tox: Remove basepython
+  * Update master for stable/2025.1
+  * feat: add option to set chmod to socket
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 22:06:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Skip installation to speed up pep8
+  * Restore group permissions to unix socket file
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Introduce pre-commit
+  * reno: Update master for unmaintained/2023.1
+  * Set log level to debug when dispatching metrics
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Drop unnecessary 'x' bit from doc config file
+  * Use PortOpt for prometheus\_port
+  * Declare Python 3.12 support
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Fri Jun 13 07:05:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not (ever) use Epoch; it has devestating effects on version
@@ -62,4 +89,4 @@ Tue Jun  7 08:43:27 UTC 2022 - cloud-devel@suse.de
 -------------------------------------------------------------------
 Mon Dec  6 10:18:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- Initial packaging (0.3.0) 
+- Initial packaging (0.3.0)
