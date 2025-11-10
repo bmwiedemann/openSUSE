@@ -102,4 +102,22 @@
 - Move test_data under the tests directory and run tests there.</comment>
     <requestid>1191565</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>39852aa3734e9067591029e658b0b945</srcmd5>
+    <version>0.4.16</version>
+    <time>1762798788</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.16:
+  * Add support for Numpy versions &gt;= 2.0
+  * Update CI and add Python 3.13 support
+  * Check for csc fix
+  * Fix deployment
+  * Fix deployment: attempt 2
+  * Add support for Numpy versions &gt;= 2.0
+  * Update CI and add Python 3.13 support
+
+  * Allow suitesparse include/library paths to be passed in to
+- skip python 36 build</comment>
+    <requestid>1316826</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-sparse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # For license file
 %define tag     c94f8418b6c36c3ff9db4f87e00fc08bd51cfb4b
 Name:           python-scikit-sparse
-Version:        0.4.15
+Version:        0.4.16
 Release:        0
 Summary:        Scikits sparse matrix package
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

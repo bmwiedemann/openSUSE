@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:29:18 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.16:
+  * Add support for Numpy versions >= 2.0
+  * Update CI and add Python 3.13 support
+  * Check for csc fix
+  * Fix deployment
+  * Fix deployment: attempt 2
+  * Add support for Numpy versions >= 2.0
+  * Update CI and add Python 3.13 support
+
+-------------------------------------------------------------------
 Mon Aug  5 02:43:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.4.15:
@@ -39,7 +51,7 @@ Fri Sep  8 16:56:21 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Thu Aug 31 12:37:47 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.4.12
-  * Allow suitesparse include/library paths to be passed in to 
+  * Allow suitesparse include/library paths to be passed in to
     pip install through environment variables.
   * Added support for python 3.11
   * Fix compilation with Cython>=3.0.0
@@ -58,7 +70,7 @@ Sat Apr 24 16:29:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Feb 12 14:12:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 36 build 
+- skip python 36 build
 
 -------------------------------------------------------------------
 Wed Nov  7 11:42:47 CET 2018 - mcepl@suse.com
