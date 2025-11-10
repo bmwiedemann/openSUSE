@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.exceptions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,12 @@
 %bcond_with test
 %endif
 Name:           python-zope.exceptions%{psuffix}
-Version:        5.2
+Version:        6.0
 Release:        0
 Summary:        Zope Exceptions
 License:        ZPL-2.1
 URL:            https://cheeseshop.python.org/pypi/zope.exceptions
-Source:         https://files.pythonhosted.org/packages/source/z/zope.exceptions/zope.exceptions-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zope_exceptions/zope_exceptions-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -53,7 +53,7 @@ This package contains exception interfaces and implementations which are so
 general purpose that they don't belong in Zope application-specific packages.
 
 %prep
-%autosetup -p1 -n zope.exceptions-%{version}
+%autosetup -p1 -n zope_exceptions-%{version}
 
 %build
 %pyproject_wheel
@@ -76,7 +76,6 @@ general purpose that they don't belong in Zope application-specific packages.
 %dir %{python_sitelib}/zope/
 %{python_sitelib}/zope/exceptions
 %{python_sitelib}/zope[._]exceptions-%{version}.dist-info
-%{python_sitelib}/zope.exceptions-%{version}*-nspkg.pth
 %endif
 
 %changelog

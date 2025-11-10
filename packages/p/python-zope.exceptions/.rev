@@ -165,4 +165,15 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1274295</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>00b9eb78ee67ea0035f0b1bf4ccbb507</srcmd5>
+    <version>6.0</version>
+    <time>1762798786</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0:
+  * Replace pkg_resources namespace with PEP 420 native
+    namespace.
+  * Drop support for Python 3.8.</comment>
+    <requestid>1316833</requestid>
+  </revision>
 </revisionlist>
