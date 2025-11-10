@@ -662,4 +662,12 @@ provides).</comment>
   * CVE-2025-52881</comment>
     <requestid>1315710</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>ef7cc94c090d440582788bd6d93150d7</srcmd5>
+    <version>1.3.3</version>
+    <time>1762798672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1315750</requestid>
+  </revision>
 </revisionlist>
