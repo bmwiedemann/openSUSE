@@ -137,4 +137,26 @@
     <comment></comment>
     <requestid>1198944</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>28635c0378a3375e926462186904dca0</srcmd5>
+    <version>3.2.3</version>
+    <time>1762798592</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.3:
+  * Changes:
+    + Changes how numpy is handled as an optional dependency. Now a
+      NotImplementedError is raised indicating that the function can't be
+      used because numpy couldn't be imported.
+    + Refactors the implementation for the calculation of the derivatives
+      of the power function and improves the corresponding testing.
+  * Fixes:
+    + Adds documentation for ufloat_fromstr behavior for strings which do
+      not contain uncertainty.
+    + Fixes typos in ufloat_fromstr docstring examples (#285)
+    + Fixes a bug that resulted in a ZeroDivisionError while formatting
+      very small numbers with uncertainty (#135)
+- Add patch support-python314.patch:
+  * Support Python 3.14 changes.</comment>
+    <requestid>1316726</requestid>
+  </revision>
 </revisionlist>

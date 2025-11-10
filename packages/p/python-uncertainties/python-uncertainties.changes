@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 10 02:56:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.3:
+  * Changes:
+    + Changes how numpy is handled as an optional dependency. Now a
+      NotImplementedError is raised indicating that the function can't be
+      used because numpy couldn't be imported.
+    + Refactors the implementation for the calculation of the derivatives
+      of the power function and improves the corresponding testing.
+  * Fixes:
+    + Adds documentation for ufloat_fromstr behavior for strings which do
+      not contain uncertainty.
+    + Fixes typos in ufloat_fromstr docstring examples (#285)
+    + Fixes a bug that resulted in a ZeroDivisionError while formatting
+      very small numbers with uncertainty (#135)
+- Add patch support-python314.patch:
+  * Support Python 3.14 changes.
+
+-------------------------------------------------------------------
 Thu Sep  5 09:45:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.2.2

@@ -1,7 +1,7 @@
 #
 # spec file for package python-uncertainties
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uncertainties
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        Uncertainties on the Quantities Involved (aka "Error Propagation")
 License:        BSD-3-Clause
 URL:            https://github.com/lebigot/uncertainties/
 Source:         https://files.pythonhosted.org/packages/source/u/uncertainties/uncertainties-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#lmfit/uncertainties#341
+Patch0:         support-python314.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}

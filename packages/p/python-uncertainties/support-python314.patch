@@ -1,0 +1,31 @@
+From 2f184a480a073473cc8f5ab10cb016eaba3ba867 Mon Sep 17 00:00:00 2001
+From: Will Shanks <wshaos@posteo.net>
+Date: Sun, 7 Sep 2025 09:34:56 -0400
+Subject: [PATCH 1/9] Update `log` exception test to work Python 3.14
+
+---
+ tests/test_umath.py | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+
+Index: uncertainties-3.2.3/tests/test_umath.py
+===================================================================
+--- uncertainties-3.2.3.orig/tests/test_umath.py
++++ uncertainties-3.2.3/tests/test_umath.py
+@@ -241,6 +241,17 @@ def test_math_module():
+         assert err_math_args == err_ufloat.args
+     else:
+         raise Exception("%s exception expected" % exception_class.__name__)
++
++    # Exception message is different for int and float so create the math
++    # exception for float rather than reusing the int one above
++    try:
++        math.log(0.0)
++    except Exception as err_math:
++        # Python 3 does not make exceptions local variables: they are
++        # restricted to their except block:
++        err_math_args = err_math.args
++        exception_class = err_math.__class__
++
+     try:
+         umath_core.log(ufloat(0, 0))
+     except exception_class as err_ufloat:
