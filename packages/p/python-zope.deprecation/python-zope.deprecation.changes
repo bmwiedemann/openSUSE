@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 10 10:32:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0:
+  * Replace pkg_resources namespace with PEP 420 native
+    namespace.
+
+-------------------------------------------------------------------
 Mon May  5 11:23:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

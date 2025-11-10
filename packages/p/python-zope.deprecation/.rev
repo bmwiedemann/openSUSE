@@ -124,4 +124,14 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>1274648</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ccb3c605378803634cd1106490ab79ee</srcmd5>
+    <version>6.0</version>
+    <time>1762798845</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0:
+  * Replace pkg_resources namespace with PEP 420 native
+    namespace.</comment>
+    <requestid>1316892</requestid>
+  </revision>
 </revisionlist>

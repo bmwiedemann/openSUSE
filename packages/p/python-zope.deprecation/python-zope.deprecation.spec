@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.deprecation
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zope.deprecation
-Version:        5.1
+Version:        6.0
 Release:        0
 Summary:        Zope Deprecation Infrastructure
 License:        ZPL-2.1
@@ -69,7 +69,6 @@ sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildin
 %doc CHANGES.rst COPYRIGHT.txt README.rst
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope[_.]deprecation-%{version}*info
-%{python_sitelib}/zope.deprecation-%{version}*-nspkg.pth
 %{python_sitelib}/zope/deprecation
 
 %files -n %{name}-doc
