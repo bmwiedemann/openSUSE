@@ -21,12 +21,14 @@ Name:           orthanc-wsi
 Summary:        Whole Slide Imaging for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        3.2
+Version:        3.3
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancWSI-%{version}.tar.gz
 #%%Source1:        openlayers-3.19.0-dist.zip
-Source1:        https://orthanc.uclouvain.be/downloads/third-party-downloads/WSI/openlayers-10.4.0-package.tar.gz
+Source1:        https://orthanc.uclouvain.be/downloads/third-party-downloads/WSI/openlayers-10.6.1-package.tar.gz
+Source2:        https://orthanc.uclouvain.be/downloads/third-party-downloads/bootstrap-5.3.3.zip
+Source3:        https://orthanc.uclouvain.be/downloads/third-party-downloads/WSI/popper-2.11.8.min.js.gz
 Source11:       orthanc-wsi-readme.SUSE
 
 BuildRequires:  boost-devel
@@ -85,6 +87,8 @@ The Orthanc project provides three official tools to support DICOM for whole-sli
 
 mkdir ViewerPlugin/ThirdPartyDownloads
 cp %{S:1} ViewerPlugin/ThirdPartyDownloads/.
+cp %{S:2} ViewerPlugin/ThirdPartyDownloads/.
+cp %{S:3} ViewerPlugin/ThirdPartyDownloads/.
 
 %build
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200

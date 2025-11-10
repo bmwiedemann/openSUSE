@@ -121,4 +121,24 @@
     <comment>preparation for boost 1.89 (forwarded request 1303619 from DocB)</comment>
     <requestid>1304037</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>332196d9a87a881ae64e592fbbc9884f</srcmd5>
+    <version>3.3</version>
+    <time>1762798579</time>
+    <user>dimstar_suse</user>
+    <comment>- version 3.3
+  * OrthancWSIDicomizer:
+    - New option &quot;--encoding&quot; to specify the specific character set of DICOM instances
+    - Placeholder tags are now automatically inserted when the &quot;--dataset&quot; option
+      provides incomplete data, ensuring the generated DICOM instances remain valid
+    - The version of the DICOM-izer is available in DICOM tag &quot;SoftwareVersions&quot;
+    - ImagedVolumeWidth and ImagedVolumeHeight are swapped with respect to releases &lt;= 3.2:
+      https://discourse.orthanc-server.org/t/5912
+  * Viewer plugin:
+    - Added rotation button in the viewer
+    - The viewer displays a label if the &quot;description&quot; GET parameter is provided
+    - Upgraded to OpenLayers 10.6.1
+</comment>
+    <requestid>1316716</requestid>
+  </revision>
 </revisionlist>

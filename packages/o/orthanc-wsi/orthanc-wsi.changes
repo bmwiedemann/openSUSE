@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  9 09:12:40 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.3
+  * OrthancWSIDicomizer:
+    - New option "--encoding" to specify the specific character set of DICOM instances
+    - Placeholder tags are now automatically inserted when the "--dataset" option
+      provides incomplete data, ensuring the generated DICOM instances remain valid
+    - The version of the DICOM-izer is available in DICOM tag "SoftwareVersions"
+    - ImagedVolumeWidth and ImagedVolumeHeight are swapped with respect to releases <= 3.2:
+      https://discourse.orthanc-server.org/t/5912
+  * Viewer plugin:
+    - Added rotation button in the viewer
+    - The viewer displays a label if the "description" GET parameter is provided
+    - Upgraded to OpenLayers 10.6.1
+
+-------------------------------------------------------------------
 Wed Sep 10 09:37:16 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - remove libboost_system-devel for TW (removed in boost 1.89) 
