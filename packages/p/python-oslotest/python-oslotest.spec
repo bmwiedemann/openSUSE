@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslotest
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,62 +17,80 @@
 
 
 Name:           python-oslotest
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        OpenStack test framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslotest
-Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-5.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-%{version}.tar.gz
+BuildRequires:  %{python_module debtcollector}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module python-subunit >= 1.0.0}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testtools >= 2.2.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-debtcollector
-BuildRequires:  python3-fixtures >= 3.0.0
-BuildRequires:  python3-pbr
-BuildRequires:  python3-python-subunit >= 1.0.0
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testtools >= 2.2.0
+Requires:       python-fixtures
 BuildArch:      noarch
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-oslotest < %{version}
+%else
+Conflicts:      python3-oslotest < %{version}
+%endif
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
+%python_subpackages
 
 %description
 The Oslo Test framework provides common fixtures, support for debugging, and
 better support for mocking results.
-
-%package -n python3-oslotest
-Summary:        OpenStack test framework
-Requires:       python3-debtcollector
-Requires:       python3-fixtures >= 3.0.0
-# NOTE: python-os-client-config is only needed for functional testing
-# Requires:       python3-os-client-config
-Requires:       python3-python-subunit >= 1.0.0
-Requires:       python3-stestr
-Requires:       python3-testtools >= 2.2.0
-
-%description -n python3-oslotest
-The Oslo Test framework provides common fixtures, support for debugging, and
-better support for mocking results.
-
-This package contains the Python 3.x module.
 
 %prep
 %autosetup -p1 -n oslotest-%{version}
 %py_req_cleanup
 
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/oslo_debug_helper
+%python_clone -a %{buildroot}%{_bindir}/oslo_run_cross_tests
+%python_clone -a %{buildroot}%{_bindir}/oslo_run_pre_release_tests
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative oslo_debug_helper
+%python_libalternatives_reset_alternative oslo_run_cross_tests
+%python_libalternatives_reset_alternative oslo_run_pre_release_tests
+
+%post
+%python_install_alternative oslo_debug_helper
+%python_install_alternative oslo_run_cross_tests
+%python_install_alternative oslo_run_pre_release_tests
+
+%postun
+%python_uninstall_alternative oslo_debug_helper
+%python_uninstall_alternative oslo_run_cross_tests
+%python_uninstall_alternative oslo_run_pre_release_tests
 
 %check
 %{openstack_stestr_run}
 
-%files -n python3-oslotest
+%files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%{_bindir}/oslo_debug_helper
-%{_bindir}/oslo_run_cross_tests
-%{_bindir}/oslo_run_pre_release_tests
-%{python3_sitelib}/oslotest
-%{python3_sitelib}/oslotest*egg-info
+%python_alternative %{_bindir}/oslo_debug_helper
+%python_alternative %{_bindir}/oslo_run_cross_tests
+%python_alternative %{_bindir}/oslo_run_pre_release_tests
+%{python_sitelib}/oslotest
+%{python_sitelib}/oslotest-%{version}.dist-info
 
 %changelog

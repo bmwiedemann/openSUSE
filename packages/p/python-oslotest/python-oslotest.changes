@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  5 13:52:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * pre-commit: Bump versions
+  * Declare Python 3.12 support
+  * Remove old excludes
+- switch to singlespec
+
+-------------------------------------------------------------------
 Sun Mar 24 20:05:08 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.0.0
@@ -371,7 +381,7 @@ Tue Sep 16 07:14:53 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Wed Sep  3 12:45:53 UTC 2014 - dmueller@suse.com
 
-- add drop-mox-dependency.diff 
+- add drop-mox-dependency.diff
 
 -------------------------------------------------------------------
 Tue Aug 26 10:02:12 UTC 2014 - dmueller@suse.com

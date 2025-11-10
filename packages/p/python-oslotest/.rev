@@ -383,4 +383,19 @@
   - Bump hacking</comment>
     <requestid>1161184</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4e237c6b63d69f5a4c8a41382db19491</srcmd5>
+    <version>5.0.1</version>
+    <time>1762798685</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.1:
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * pre-commit: Bump versions
+  * Declare Python 3.12 support
+  * Remove old excludes
+- switch to singlespec
+
+- add drop-mox-dependency.diff</comment>
+    <requestid>1316853</requestid>
+  </revision>
 </revisionlist>
