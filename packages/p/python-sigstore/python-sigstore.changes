@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:18:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- remove sigstore-protobuf-specs:
+  * replaced by sigstore-models
+
+-------------------------------------------------------------------
 Fri Nov  7 21:48:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add nofail-neg-test.patch to fix OpenSSL configuration on SUSE

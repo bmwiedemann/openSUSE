@@ -56,4 +56,13 @@
     ClientTrustConfig public API #1496</comment>
     <requestid>1316573</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>66e6d8b76337062f586a873fc7218d35</srcmd5>
+    <version>4.1.0</version>
+    <time>1762798766</time>
+    <user>dimstar_suse</user>
+    <comment>- remove sigstore-protobuf-specs:
+  * replaced by sigstore-models</comment>
+    <requestid>1316812</requestid>
+  </revision>
 </revisionlist>

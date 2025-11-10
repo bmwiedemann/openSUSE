@@ -52,7 +52,6 @@ BuildRequires:  %{python_module rfc3161-client >= 1.0.3}
 BuildRequires:  %{python_module rfc8785 >= 0.1.2}
 BuildRequires:  %{python_module rich >= 13.0}
 BuildRequires:  %{python_module sigstore-models}
-BuildRequires:  %{python_module sigstore-protobuf-specs == 0.3.2}
 BuildRequires:  %{python_module sigstore-rekor-types == 0.0.18}
 BuildRequires:  %{python_module tuf >= 6.0}
 BuildRequires:  python-rpm-macros
@@ -77,7 +76,6 @@ Requires:       python-rfc3161-client
 Requires:       python-rfc8785 >= 0.1.2
 Requires:       python-rich >= 13.0
 Requires:       python-sigstore-models
-Requires:       python-sigstore-protobuf-specs == 0.3.2
 Requires:       python-sigstore-rekor-types == 0.0.18
 Requires:       python-tuf >= 6.0
 Requires:       (python-importlib_resources if python-base < 3.11)
