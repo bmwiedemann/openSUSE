@@ -1,8 +1,23 @@
+<?xml version="1.0"?>
 <services>
-  <service name="download_files" mode="manual" />
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/nokyan/resources.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v1.9.0</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(.*)\+0</param>
+    <param name="versionrewrite-replacement">\1</param>
+<!--   <param name="changesgenerate">enable</param> -->
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
   <service name="cargo_vendor" mode="manual">
-     <param name="src">resources-*.tar.gz</param>
-     <param name="compression">zst</param>
-     <param name="update">true</param>
+  <param name="srcdir">resources</param>
+  <param name="compression">zst</param>
+  <param name="update">true</param>
   </service>
 </services>
