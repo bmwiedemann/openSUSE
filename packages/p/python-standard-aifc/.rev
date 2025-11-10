@@ -7,4 +7,12 @@
     <comment>- Initial release of 3.13.0.</comment>
     <requestid>1230255</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ef6bcdca18dbd4f88437d9b6c88bdac</srcmd5>
+    <version>3.13.0</version>
+    <time>1762798596</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip Python versions to prevent further timebombs.</comment>
+    <requestid>1316728</requestid>
+  </revision>
 </revisionlist>
