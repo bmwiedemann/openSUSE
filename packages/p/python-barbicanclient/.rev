@@ -288,4 +288,12 @@
   - Remove support for certificate order</comment>
     <requestid>1198499</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>22a37268c3512b767eff7a6da6e73524</srcmd5>
+    <version>7.2.0</version>
+    <time>1762798612</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316751</requestid>
+  </revision>
 </revisionlist>

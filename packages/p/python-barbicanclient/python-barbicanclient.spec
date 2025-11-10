@@ -1,7 +1,7 @@
 #
 # spec file for package python-barbicanclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,60 +16,45 @@
 #
 
 
+%global pythons %{primary_python}
 Name:           python-barbicanclient
-Version:        7.0.0
+Version:        7.2.0
 Release:        0
 Summary:        Client for the Barbican Key Management API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-barbicanclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-barbicanclient/python-barbicanclient-7.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python_barbicanclient/python_barbicanclient-%{version}.tar.gz
+BuildRequires:  %{python_module cliff >= 2.8.0}
+BuildRequires:  %{python_module keystoneauth1 >= 5.1.1}
+BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
+BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
+BuildRequires:  %{python_module oslo.utils >= 3.33.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module requests >= 2.14.2}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-cliff >= 2.8.0
-BuildRequires:  python3-keystoneauth1 >= 5.1.1
-BuildRequires:  python3-oslo.i18n >= 3.15.3
-BuildRequires:  python3-oslo.serialization >= 2.18.0
-BuildRequires:  python3-oslo.utils >= 3.33.0
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-requests >= 2.14.2
-BuildRequires:  python3-requests-mock
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testscenarios
-BuildRequires:  python3-testtools
 BuildArch:      noarch
+Requires:       python-cliff >= 2.8.0
+Requires:       python-keystoneauth1 >= 5.1.1
+Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-oslo.serialization >= 2.18.0
+Requires:       python-oslo.utils >= 3.33.0
+Requires:       python-pbr >= 2.0.0
+Requires:       python-requests >= 2.14.2
 %if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
+Obsoletes:      python2-barbicanclient < 4.10.0
 %endif
+%python_subpackages
 
 %description
 This is a client for the Barbican Key Management API. This package includes a
 Python library for accessing the API (the barbicanclient module), and a
 command-line script (barbican).
-
-%package -n python3-barbicanclient
-Summary:        Client for the Barbican Key Management API
-Requires:       python3-cliff >= 2.8.0
-Requires:       python3-keystoneauth1 >= 5.1.1
-Requires:       python3-oslo.i18n >= 3.15.3
-Requires:       python3-oslo.serialization >= 2.18.0
-Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-pbr >= 2.0.0
-Requires:       python3-requests >= 2.14.2
-%if 0%{?suse_version}
-Obsoletes:      python2-barbicanclient < 4.10.0
-%endif
-
-%description -n python3-barbicanclient
-This is a client for the Barbican Key Management API. This package includes a
-Python library for accessing the API (the barbicanclient module), and a
-command-line script (barbican).
-
-This package contains the Python 3.x module.
 
 %package -n python-barbicanclient-doc
 Summary:        Documentation for OpenStack Key Management API Client
@@ -83,11 +68,10 @@ Documentation for the client library for interacting with
 Openstack Key Management API
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
-%py_req_cleanup
+%autosetup -p1 -n python_barbicanclient-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
@@ -95,17 +79,17 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
 
 %check
 %{openstack_stestr_run} \
     --exclude-regex 'barbicanclient.tests.test_barbican.WhenTestingBarbicanCLI.test_should_show_usage_with_help_flag'
 
-%files -n python3-barbicanclient
+%files %{python_files}
 %license LICENSE
-%{python3_sitelib}/python_barbicanclient-%{version}-py?.*.egg-info
-%{python3_sitelib}/barbicanclient
 %{_bindir}/barbican
+%{python_sitelib}/python_barbicanclient-%{version}.dist-info
+%{python_sitelib}/barbicanclient
 
 %files -n python-barbicanclient-doc
 %doc README.rst doc/build/html

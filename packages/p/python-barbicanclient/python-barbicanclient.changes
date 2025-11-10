@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  9 19:08:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.0:
+  * Remove Python 3.8 support
+  * Drop unnecessary 'x' bit from doc config file
+
+-------------------------------------------------------------------
 Tue Sep  3 13:10:11 UTC 2024 - cloud-devel@suse.de
 
 - update to version 7.0.0
@@ -53,7 +60,7 @@ Tue Mar  7 06:53:48 UTC 2023 - cloud-devel@suse.de
 Tue May 24 20:50:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - fix build against python 3.10
-- remove unneeded mock dependency 
+- remove unneeded mock dependency
 
 -------------------------------------------------------------------
 Tue Oct 26 22:14:35 UTC 2021 - cloud-devel@suse.de
