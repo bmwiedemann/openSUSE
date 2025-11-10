@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov  9 21:03:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.6.0:
+  * Drop explicit dependency on python-subunit
+  * Add warning for using the python bindings
+  * Update master for stable/2025.1
+  * Remove unnecessary direct dependency on iso8601
+  * vpnaas: add support for more ciphers (auth, encryption, pfs
+    modes)
+  * reno: Update master for unmaintained/2023.1
+  * vpnaas: show external\_vx\_ip for vpn service show
+  * Remove Python 3.8 support
+  * tox: Drop envdir
+  * Drop unused tempest from test requirements
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Tue Sep  3 13:16:15 UTC 2024 - cloud-devel@suse.de
 
 - update to version 11.3.1
@@ -1304,7 +1321,7 @@ Thu Jun 26 10:00:38 UTC 2014 - opensuse-packaging@opensuse.org
   + 0001-Switch-over-to-mox3.patch (manually)
 
 -------------------------------------------------------------------
-Thu Jun 26 10:00:37 UTC 2014 - 
+Thu Jun 26 10:00:37 UTC 2014 -
 
 - Update to version python-neutronclient-2.3.4.91.gc907df8:
   * Improve help strings
@@ -1319,7 +1336,7 @@ Mon Jun 16 10:17:01 UTC 2014 - opensuse-packaging@opensuse.org
   + 0001-Switch-over-to-mox3.patch (manually)
 
 -------------------------------------------------------------------
-Mon Jun 16 10:16:59 UTC 2014 - 
+Mon Jun 16 10:16:59 UTC 2014 -
 
 - Update to version python-neutronclient-2.3.4.83.g1bce6e4:
   * Make neutronclient parse keystone v3 endpoints correctly
@@ -1360,7 +1377,7 @@ Wed May 28 23:51:55 UTC 2014 -  cloud-devel@suse.de
 -------------------------------------------------------------------
 Tue May 27 10:12:55 UTC 2014 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 - Update to version python-neutronclient-2.3.4.66.g91bea94:
   * Suppress expected help messages caused by wrong CLI inputs
 
@@ -1522,7 +1539,7 @@ Thu Feb 13 10:27:27 UTC 2014 - speilicke@suse.com
 -------------------------------------------------------------------
 Thu Feb 13 10:23:15 UTC 2014 - dmueller@suse.com
 
-- remove hacking dependency 
+- remove hacking dependency
 
 -------------------------------------------------------------------
 Tue Feb 11 15:55:51 UTC 2014 - speilicke@suse.com
@@ -1619,7 +1636,7 @@ Tue Nov 26 00:44:38 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Mon Nov 25 14:19:32 UTC 2013 - dmueller@suse.com
 
-- switch to python-setuptools 
+- switch to python-setuptools
 
 -------------------------------------------------------------------
 Sun Nov 24 00:48:24 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1664,7 +1681,7 @@ Wed Oct  2 00:29:52 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Tue Oct  1 21:26:02 UTC 2013 - dmueller@suse.com
 
-- add bash completion 
+- add bash completion
 
 -------------------------------------------------------------------
 Tue Oct  1 00:25:05 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1694,7 +1711,7 @@ Wed Sep 18 15:00:08 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Wed Sep 18 09:14:19 UTC 2013 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Mon Sep 16 23:35:19 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1775,7 +1792,7 @@ Thu Aug  8 07:58:27 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Fri Jul 19 20:17:12 UTC 2013 - dmueller@suse.com
 
-- fix requires/provides/obsoletes 
+- fix requires/provides/obsoletes
 
 -------------------------------------------------------------------
 Fri Jul 12 23:39:18 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1799,7 +1816,7 @@ Tue Jul  9 09:55:09 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Sun Jul  7 11:57:58 UTC 2013 - dmueller@suse.com
 
-- switch over to neutron git 
+- switch over to neutron git
 
 -------------------------------------------------------------------
 Sun Jul  7 11:57:17 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1810,7 +1827,7 @@ Sun Jul  7 11:57:17 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Thu Jul  4 08:01:38 UTC 2013 - dmueller@suse.com
 
-- renamed to python-neutronclient from python-quantumclient 
+- renamed to python-neutronclient from python-quantumclient
 
 -------------------------------------------------------------------
 Thu Jul  4 08:00:22 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1841,22 +1858,22 @@ Tue Jun 18 12:09:39 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Thu Jun 13 08:12:44 UTC 2013 - dmueller@suse.com
 
-- update doc file names 
+- update doc file names
 
 -------------------------------------------------------------------
 Wed Jun 12 09:48:04 UTC 2013 - dmueller@suse.com
 
-- fix test dependencies 
+- fix test dependencies
 
 -------------------------------------------------------------------
 Sat Jun  1 16:58:58 UTC 2013 - dmueller@suse.com
 
-- remove distribute dependency 
+- remove distribute dependency
 
 -------------------------------------------------------------------
 Mon May 27 08:38:02 UTC 2013 - dmueller@suse.com
 
-- python-pbr/d2to1 requires 
+- python-pbr/d2to1 requires
 
 -------------------------------------------------------------------
 Fri Apr 26 11:18:30 UTC 2013 - speilicke@suse.com
@@ -1884,7 +1901,7 @@ Thu Mar 21 15:42:39 UTC 2013 - cloud-devel@suse.de
 Tue Mar 12 22:14:33 UTC 2013 - dmueller@suse.com
 
 - Update to version 2.2.0:
-  + no change 
+  + no change
 
 --------------------------------------------------------------------
 Mon Mar 11 12:58:10 UTC 2013 - dmueller@suse.com
@@ -2095,7 +2112,7 @@ Wed Aug  8 14:13:59 UTC 2012 - jenkins@suse.de
 -------------------------------------------------------------------
 Fri Jul 27 08:31:17 UTC 2012 - cthiel@suse.com
 
-- add requires to python-cliff 
+- add requires to python-cliff
 
 -------------------------------------------------------------------
 Thu Jul 26 22:05:47 UTC 2012 - jenkins@suse.de

@@ -627,4 +627,12 @@
   - BGPVPN: Fix resource comparison</comment>
     <requestid>1198513</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1bd5b9c46218ad2cf9178fa2e8e0a06a</srcmd5>
+    <version>11.6.0</version>
+    <time>1762798634</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316768</requestid>
+  </revision>
 </revisionlist>
