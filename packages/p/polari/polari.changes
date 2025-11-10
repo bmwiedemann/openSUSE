@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:27:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.0:
+  + Fix closing the join dialog
+  + Use libadwaita spinner widget
+  + Use libadwaita shortcuts dialog
+  + Port to gjs-1.85/girepository-2.0
+  + Fix closing connection properties dialog
+  + Implement backlog search
+  + Make connection to log store asynchronous
+  + Show spinner while logs are loading
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep 17 13:29:03 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0+97:

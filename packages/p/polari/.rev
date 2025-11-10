@@ -478,4 +478,12 @@
 - Add pkgconfig(girepository-2.0) BuildRequires: new dependency (forwarded request 1305419 from dimstar)</comment>
     <requestid>1305529</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>1fe6d74d47fb56e0c091c32ac1247bcd</srcmd5>
+    <version>49.0</version>
+    <time>1762798771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1316839</requestid>
+  </revision>
 </revisionlist>
