@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  4 20:31:05 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Replace call to autogen.sh with autoreconf
+- Speed up testsuite by not rebuilding mvpich2 completely
+- Fix CFLAGS/FFLAGS
+
+-------------------------------------------------------------------
 Fri Jul 11 08:07:56 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Force C std to gnu17 to fix compilation with GCC15
