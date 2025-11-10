@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:36:26 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.3:
+  * Python 3.14: fix buffer overflow on terminal size request
+  * Add guard against empty list on focus complete.
+  * Add extra code type annotations
+  * Bugfix: Corner case: Scrollbar render for only 1 row height
+  * Packaging: drop setup.py and adjust requirements
+  * Python 3.14 compatibility: adjust AsyncioEventLoop
+  * Drop deprecated __super property
+  * Drop deprecated FlowWidget, BoxWidget and FixedWidget widgets
+  * Remove deprecated protected getter methods from the Canvas
+    and AttrSpec
+  * Remove support for the bytes based fonts
+  * Remove deprecated TermScroller
+  * Remove deprecated protected getter methods from the
+    decoration widgets
+  * Remove deprecated protected getter methods from the container
+    widgets
+  * Remove deprecated protected setters in the decoration widgets
+  * Remove deprecated protected methods from the container
+    widgets
+  * Remove deprecated protected method _set_done from the
+    ProgressBar
+  * API Extension: make CommandMap MutableMapping
+  * Make sizing computation much faster for nested containers
+  * MetaSignals subclass ABCMeta
+  * MetaSuper should be the last base for classes
+  * Announce deprecated API removal versions
+  * Fix handling of WEIGHT selectable items in the Pile
+  * Refactoring: micro optimizations of iterable items
+
+-------------------------------------------------------------------
 Wed Oct 30 19:56:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.16:
