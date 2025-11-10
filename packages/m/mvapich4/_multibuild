@@ -1,0 +1,6 @@
+<multibuild>
+  <package>ucx</package>
+  <package>ucx-testsuite</package>
+  <package>ofi</package>
+  <package>ofi-testsuite</package>
+</multibuild>

@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Mon Nov 10 13:53:04 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Refresh upstream tarball (was re-released with same version ID)
+- Drop romio-test-fix-bad-snprintf-arguments.patch as it was merged upstream.
+
+-------------------------------------------------------------------
+Tue Nov  4 20:31:05 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Replace call to autogen.sh with autoreconf
+- Disable CMA in %check as it requires specific user capabilities
+- Add ch4-shm-fix-data-type-for-recv_bytes-in-MPIDI_POSIX_mpi_release_gather_release.patch
+  to fix a datatype issue on s390x
+- Speed up testsuite by not rebuilding mvpich4 completely
+- Fix FFLAGS
+
+-------------------------------------------------------------------
+Fri Aug  1 11:34:18 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add romio-test-fix-bad-snprintf-arguments.patch to fix test failure
+  when build with FORTIFY_SOURCE
+
+-------------------------------------------------------------------
+Fri Jul 11 13:39:24 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Initial version 4.1
