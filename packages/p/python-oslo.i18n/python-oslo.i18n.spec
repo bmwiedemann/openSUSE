@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.i18n
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,29 @@
 
 
 Name:           python-oslo.i18n
-Version:        6.4.0
+Version:        6.6.0
 Release:        0
 Summary:        OpenStack i18n library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.i18n
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.i18n/oslo.i18n-6.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo_i18n/oslo_i18n-%{version}.tar.gz
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testscenarios
 BuildArch:      noarch
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-oslo.i18n < %{version}
+%endif
+%python_subpackages
 
 %description
 The oslo.i18n library contain utilities for working with internationalization
 (i18n) features, especially translation for text strings in an application
 or library.
-
-%package -n python3-oslo.i18n
-Summary:        OpenStack i18n library
-
-%description -n python3-oslo.i18n
-The oslo.i18n library contain utilities for working with internationalization
-(i18n) features, especially translation for text strings in an application
-or library.
-
-This package contains the Python 3.x module.
 
 %package -n python-oslo.i18n-doc
 Summary:        Documentation for OpenStack i18n library
@@ -56,27 +51,26 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the oslo.i18n library.
 
 %prep
-%autosetup -p1 -n oslo.i18n-6.4.0
-%py_req_cleanup
+%autosetup -p1 -n oslo_i18n-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
 
 # generate html docs
-PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=%{version} %{sphinx_build} -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 %{openstack_stestr_run}
 
-%files -n python3-oslo.i18n
+%files %{python_files}
 %license LICENSE
-%{python3_sitelib}/oslo_i18n
-%{python3_sitelib}/*egg-info
+%{python_sitelib}/oslo_i18n
+%{python_sitelib}/oslo_i18n-%{version}.dist-info
 
 %files -n python-oslo.i18n-doc
 %doc doc/build/html ChangeLog CONTRIBUTING.rst README.rst
