@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Nov  9 14:22:37 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.7.1:
+  * Improve handling of empty-string eTags
+  * Optimize unit testing
+  * Don't fail to eject vmedia in case there is no vmedia
+  * Add retry logic to connection failures
+  * Implement set\_datetime method in Manager and refresh local
+    state after PATCH
+  * Revert "Replace license classifier"
+  * Replace license classifier
+  * Add firmware information on NetworkAdapter resource
+  * Fix type of Targets in ShareParameters for Dell
+  * Skipping UsbCd workaround on Supermicro ARS-111GL-NHR
+  * Update master for stable/2025.1
+  * migrate sushy\_oem\_idrac to sushy
+  * explicit oem extn names and fix parallel tests
+  * trivial: fix variable in log message
+  * enable pyupgrade via ruff to Python 3.7
+  * enable flake8 logging checks in ruff
+  * reno: Update master for unmaintained/2023.1
+  * enable pycodestyle and pyflakes checks in ruff
+  * change ambiguous variable name
+  * enable ruff with flake8-bandit rules
+  * ensure all requests calls have a timeout
+  * ignore open coded password from flake8-bandit
+  * switch to pre-commit
+  * trim trailing whitespace
+  * Add Port resource
+  * Provide vmedia username and password if required
+  * Drop unnecessary 'x' bit from doc config file
+  * bump pbr to match what pyproject.toml requests
+  * Remove Python 3.8 support
+  * contributor: links to ironic dev docs, launchpad
+  * Fix setting "HttpBootUri" attributes
+  * add pyproject.toml to support pip 23.1
+  * Make default request timeout configurable on Connector
+  * Update master for stable/2024.2
+  * fix spelling and make codespell pass
+  * EthernetInterface without an Id
+  * add a link to the release notes in the README
+  * drop usage of pkg\_resource for newer python compat
+  * Fix versions in release notes
+- switch to singlespec
+
+-------------------------------------------------------------------
 Tue Sep  3 13:17:42 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.2.0

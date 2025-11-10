@@ -1,7 +1,7 @@
 #
 # spec file for package python-sushy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,37 +17,27 @@
 
 
 Name:           python-sushy
-Version:        5.2.0
+Version:        5.7.1
 Release:        0
 Summary:        Python library to communicate with Redfish based systems
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/sushy
-Source0:        https://files.pythonhosted.org/packages/source/s/sushy/sushy-5.2.0.tar.gz
-BuildRequires:  openstack-macros
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-python-dateutil >= 2.7.0
-BuildRequires:  python3-python-subunit
-BuildRequires:  python3-reno
-BuildRequires:  python3-requests >= 2.14.2
-BuildRequires:  python3-stestr
-BuildRequires:  python3-stevedore >= 1.29.0
-BuildRequires:  python3-testscenarios
-BuildRequires:  python3-testtools
+Source0:        https://files.pythonhosted.org/packages/source/s/sushy/sushy-%{version}.tar.gz
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil >= 2.7.0}
+BuildRequires:  %{python_module requests >= 2.14.2}
+BuildRequires:  %{python_module stevedore >= 1.29.0}
+BuildRequires:  %{python_module wheel}
+Requires:       python-python-dateutil >= 2.7.0
+Requires:       python-requests >= 2.14.2
+Requires:       python-stevedore >= 1.29.0
 BuildArch:      noarch
+%python_subpackages
 
 %description
-Sushy is a Python library to communicate with `Redfish` based systems.
-
-%package -n python3-sushy
-Summary:        Python library to communicate with Redfish based systems
-Requires:       python3-pbr >= 2.0.0
-Requires:       python3-python-dateutil >= 2.7.0
-Requires:       python3-requests >= 2.14.2
-Requires:       python3-stevedore >= 1.29.0
-
-%description -n python3-sushy
 Sushy is a Python library to communicate with `Redfish` based systems.
 
 %package -n python-sushy-doc
@@ -62,25 +52,24 @@ Sushy is a Python library to communicate with `Redfish` based systems.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n sushy-5.2.0
-%py_req_cleanup
+%autosetup -p1 -n sushy-%{version}
 
 %build
-%{py3_build}
-PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+%pyproject_wheel
+PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
 
 %check
-%{openstack_stestr_run}
+%pytest
 
-%files -n python3-sushy
+%files %{python_files}
 %license LICENSE
-%doc AUTHORS ChangeLog README.rst
-%{python3_sitelib}/sushy*
-%{python3_sitelib}/*.egg-info
+%doc README.rst
+%{python_sitelib}/sushy
+%{python_sitelib}/sushy-%{version}.dist-info
 
 %files -n python-sushy-doc
 %doc doc/build/html
