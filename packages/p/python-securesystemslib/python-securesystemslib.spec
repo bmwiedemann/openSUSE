@@ -1,7 +1,7 @@
 #
 # spec file for package python-securesystemslib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-securesystemslib
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Cryptographic and general routines for Secure Systems Lab
 License:        MIT

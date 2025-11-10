@@ -88,4 +88,17 @@
     <comment></comment>
     <requestid>1307338</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>becb429d15b77c9ae3d9669ee43b064f</srcmd5>
+    <version>1.3.1</version>
+    <time>1762798779</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.1:
+  * AWSSigner: Don't send payload to AWS for signing, send hash
+    only
+  * Set Development status classifier to &quot;production/stable&quot; in
+    Python packaging
+  * Minor infrastructure changes</comment>
+    <requestid>1316823</requestid>
+  </revision>
 </revisionlist>
