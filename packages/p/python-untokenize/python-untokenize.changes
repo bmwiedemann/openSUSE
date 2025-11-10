@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 10 01:01:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Ship the license file.
+- Add patch support-python314.patch:
+  * Support Python 3.14 ast changes.
+
+-------------------------------------------------------------------
 Thu Jun 12 05:07:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

@@ -24,4 +24,14 @@
 - No more greedy globs in %files.</comment>
     <requestid>1284984</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>52283e59e59134aee0b570f20da38b45</srcmd5>
+    <version>0.1.1</version>
+    <time>1762798584</time>
+    <user>dimstar_suse</user>
+    <comment>- Ship the license file.
+- Add patch support-python314.patch:
+  * Support Python 3.14 ast changes.</comment>
+    <requestid>1316723</requestid>
+  </revision>
 </revisionlist>

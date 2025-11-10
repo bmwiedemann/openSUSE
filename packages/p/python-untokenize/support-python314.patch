@@ -1,0 +1,26 @@
+From 46cf0233fe18097398f5692f9caf3d2e5d94eb14 Mon Sep 17 00:00:00 2001
+From: Daeho Ro <40587651+daeho-ro@users.noreply.github.com>
+Date: Mon, 20 Oct 2025 14:01:45 +0900
+Subject: [PATCH] feature: support python 3.14
+
+---
+ setup.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+ mode change 100755 => 100644 setup.py
+
+diff --git a/setup.py b/setup.py
+old mode 100755
+new mode 100644
+index 206c57e..0c34cfb
+--- a/setup.py
++++ b/setup.py
+@@ -11,7 +11,8 @@ def version():
+     with open('untokenize.py') as input_file:
+         for line in input_file:
+             if line.startswith('__version__'):
+-                return ast.parse(line).body[0].value.s
++                node = ast.parse(line).body[0].value
++                return getattr(node, 's', None) if hasattr(node, 's') else node.value
+ 
+ 
+ with open('README.rst') as readme:

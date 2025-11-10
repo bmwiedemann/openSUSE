@@ -1,7 +1,7 @@
 #
 # spec file for package python-untokenize
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,10 @@ Release:        0
 Summary:        Python module to transform tokens into original source code
 License:        MIT
 URL:            https://github.com/myint/untokenize
-Source:         https://files.pythonhosted.org/packages/source/u/untokenize/untokenize-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/u/untokenize/untokenize-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/myint/untokenize/refs/heads/master/LICENSE
+# PATCH-FIX-UPSTREAM gh#myint/untokenize#5
+Patch0:         support-python314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -37,7 +40,8 @@ Untokenize transforms tokens into source code. Unlike the standard library's
 tokenize.untokenize(), it preserves the original whitespace between tokens.
 
 %prep
-%setup -q -n untokenize-%{version}
+%autosetup -p1 -n untokenize-%{version}
+cp %{SOURCE1} .
 
 %build
 %pyproject_wheel
@@ -50,8 +54,8 @@ tokenize.untokenize(), it preserves the original whitespace between tokens.
 %python_exec test_untokenize.py
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
+%license LICENSE
 %{python_sitelib}/untokenize.py
 %pycache_only %{python_sitelib}/__pycache__/untokenize.*.pyc
 %{python_sitelib}/untokenize-%{version}.dist-info
