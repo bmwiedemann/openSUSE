@@ -1,4 +1,191 @@
 -------------------------------------------------------------------
+Mon Nov 10 13:09:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.0:
+  CLI-related changes
+  * Feature/add cli completion command (#13905)
+  * Fix/cli docs website urls (#13841)
+  * VAP/MAP params in the CLI (second attempt) (#13734)
+  Depencencies
+  * chore(deps): bump actions/checkout in
+    /.github/actions/run-tests (#13828)
+  * chore(deps): bump actions/github-script from 7.0.1 to 8.0.0
+    (#13957)
+  * chore(deps): bump actions/setup-go in
+    /.github/actions/setup-build-env (#13950)
+  * chore(deps): bump actions/setup-python from 5.6.0 to 6.0.0
+    (#13948)
+  * chore(deps): bump adRise/update-pr-branch from 0.10.1 to 0.10.2
+    (#14156)
+  * chore(deps): bump aquasecurity/trivy-action from 0.31.0 to
+    0.32.0 (#13527)
+  * chore(deps): bump aquasecurity/trivy-action from 0.32.0 to
+    0.33.0 (#13911)
+  * chore(deps): bump aquasecurity/trivy-action from 0.33.0 to
+    0.33.1 (#13951)
+  * chore(deps): bump azure/setup-helm from 4.3.0 to 4.3.1 (#13870)
+  * chore(deps): bump azure/setup-helm in
+    /.github/actions/run-tests (#13869)
+  * chore(deps): bump cbrgm/cleanup-stale-branches-action (#13742)
+  * chore(deps): bump cbrgm/cleanup-stale-branches-action (#13863)
+  * chore(deps): bump codecov/codecov-action from 5.4.3 to 5.5.0
+    (#13881)
+  * chore(deps): bump codecov/codecov-action from 5.5.0 to 5.5.1
+    (#13956)
+  * chore(deps): bump docker/login-action from 3.4.0 to 3.5.0
+    (#13753)
+  * chore(deps): bump docker/login-action from 3.5.0 to 3.6.0
+    (#14091)
+  * chore(deps): bump fluxcd/flux2 from 2.6.3 to 2.6.4 (#13540)
+  * chore(deps): bump fluxcd/flux2 from 2.6.4 to 2.7.0 (#14100)
+  * chore(deps): bump fluxcd/flux2 from 2.7.0 to 2.7.1 (#14123)
+  * chore(deps): bump fluxcd/flux2 from 2.7.1 to 2.7.2 (#14137)
+  * chore(deps): bump github.com/aptible/supercronic from 0.2.34 to
+    0.2.36 (#14064)
+  * chore(deps): bump
+    github.com/awslabs/amazon-ecr-credential-helper/ecr-login
+    (#13706)
+  * chore(deps): bump github.com/cyphar/filepath-securejoin
+    (#14077)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.16.2 to
+    5.16.3 (#14125)
+  * chore(deps): bump github.com/go-viper/mapstructure/v2 (#13882)
+  * chore(deps): bump github.com/google/cel-go from 0.23.2 to
+    0.26.0 (#13579)
+  * chore(deps): bump github.com/google/cel-go from 0.26.0 to
+    0.26.1 (#13914)
+  * chore(deps): bump github.com/onsi/gomega from 1.37.0 to 1.38.0
+    (#13659)
+  * chore(deps): bump github.com/onsi/gomega from 1.38.0 to 1.38.2
+    (#13900)
+  * chore(deps): bump github.com/prometheus/client_golang (#13727)
+  * chore(deps): bump github.com/prometheus/client_golang (#14021)
+  * chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+    (#13942)
+  * chore(deps): bump github.com/spf13/cobra in
+    /hack/controller-gen (#13944)
+  * chore(deps): bump github.com/stretchr/testify from 1.10.0 to
+    1.11.0 (#13892)
+  * chore(deps): bump github/codeql-action from 3.29.11 to 3.30.0
+    (#13938)
+  * chore(deps): bump github/codeql-action from 3.29.2 to 3.29.3
+    (#13648)
+  * chore(deps): bump github/codeql-action from 3.29.3 to 3.29.4
+    (#13667)
+  * chore(deps): bump github/codeql-action from 3.29.4 to 3.29.5
+    (#13713)
+  * chore(deps): bump github/codeql-action from 3.29.7 to 3.29.8
+    (#13814)
+  * chore(deps): bump github/codeql-action from 3.29.8 to 3.29.9
+    (#13832)
+  * chore(deps): bump github/codeql-action from 3.29.9 to 3.29.11
+    (#13884)
+  * chore(deps): bump github/codeql-action from 3.30.0 to 3.30.2
+    (#13979)
+  * chore(deps): bump github/codeql-action from 3.30.2 to 3.30.3
+    (#13984)
+  * chore(deps): bump github/codeql-action from 3.30.3 to 3.30.4
+    (#14074)
+  * chore(deps): bump github/codeql-action from 3.30.4 to 3.30.5
+    (#14083)
+  * chore(deps): bump github/codeql-action from 3.30.5 to 3.30.6
+    (#14118)
+  * chore(deps): bump github/codeql-action from 3.30.6 to 4.30.7
+    (#14133)
+  * chore(deps): bump github/codeql-action from 4.30.7 to 4.30.8
+    (#14157)
+  * chore(deps): bump github/codeql-action from 4.30.8 to 4.30.9
+    (#14196)
+  * chore(deps): bump go.opentelemetry.io/otel/exporters/prometheus
+    (#13649)
+  * chore(deps): bump golang.org/x/crypto from 0.39.0 to 0.40.0
+    (#13551)
+  * chore(deps): bump golang.org/x/crypto from 0.40.0 to 0.41.0
+    (#13787)
+  * chore(deps): bump golang.org/x/crypto from 0.41.0 to 0.42.0
+    (#14014)
+  * chore(deps): bump golang.org/x/crypto from 0.42.0 to 0.43.0
+    (#14141)
+  * chore(deps): bump golang.org/x/sync from 0.15.0 to 0.16.0
+    (#13542)
+  * chore(deps): bump google.golang.org/grpc from 1.73.0 to 1.74.0
+    (#13597)
+  * chore(deps): bump google.golang.org/grpc from 1.74.0 to 1.74.2
+    (#13658)
+  * chore(deps): bump google.golang.org/grpc from 1.74.2 to 1.75.1
+    (#13986)
+  * chore(deps): bump google.golang.org/grpc from 1.75.1 to 1.76.0
+    (#14126)
+  * chore(deps): bump google.golang.org/protobuf from 1.36.6 to
+    1.36.7 (#13786)
+  * chore(deps): bump google.golang.org/protobuf from 1.36.7 to
+    1.36.8 (#13880)
+  * chore(deps): bump google.golang.org/protobuf from 1.36.8 to
+    1.36.9 (#14013)
+  * chore(deps): bump google.golang.org/protobuf from 1.36.9 to
+    1.36.10 (#14120)
+  * chore(deps): bump goreleaser/goreleaser-action from 6.3.0 to
+    6.4.0 (#13844)
+  * chore(deps): bump kyverno/action-install-chainsaw (#13917)
+  * chore(deps): bump kyverno/action-install-chainsaw from 0.2.12
+    to 0.2.13 (#13906)
+  * chore(deps): bump oras-project/setup-oras from 1.2.3 to 1.2.4
+    (#13970)
+  * chore(deps): bump ossf/scorecard-action from 2.4.2 to 2.4.3
+    (#14101)
+  * chore(deps): bump sigs.k8s.io/kustomize/api from 0.20.0 to
+    0.20.1 (#13669)
+  * chore(deps): bump sigs.k8s.io/kustomize/kyaml from 0.20.0 to
+    0.20.1 (#13668)
+  * chore(deps): bump sigs.k8s.io/release-utils from 0.11.1 to
+    0.12.0 (#13613)
+  * chore(deps): bump sigs.k8s.io/release-utils from 0.12.0 to
+    0.12.1 (#13815)
+  * chore(deps): bump sigs.k8s.io/release-utils from 0.12.1 to
+    0.12.2 (#14059)
+  * chore(deps): bump sigs.k8s.io/yaml from 1.5.0 to 1.6.0 (#13686)
+  * chore(deps): bump sigstore/cosign-installer (#13616)
+  * chore(deps): bump sigstore/cosign-installer (#14011)
+  * chore(deps): bump sigstore/cosign-installer (#14188)
+  * chore(deps): bump svenstaro/upload-release-action from 2.11.1
+    to 2.11.2 (#13532)
+  * chore(deps): bump the kubernetes group across 2 directories
+    with 2 updates (#14210)
+  * chore(deps): bump the kubernetes group across 3 directories
+    with 7 updates (#13596)
+  * chore(deps): bump the kubernetes group across 3 directories
+    with 7 updates (#13839)
+  * chore(deps): bump ubuntu from `353675e` to `fdb6c9c` in
+    /.devcontainer (#14110)
+  * chore(deps): bump ubuntu from `440dcf6` to `e356c06` in
+    /.devcontainer (#13590)
+  * chore(deps): bump ubuntu from `590e57a` to `353675e` in
+    /.devcontainer (#14026)
+  * chore(deps): bump ubuntu from `59a458b` to `66460d5` in
+    /.devcontainer (#14172)
+  * chore(deps): bump ubuntu from `728785b` to `59a458b` in
+    /.devcontainer (#14147)
+  * chore(deps): bump ubuntu from `7c06e91` to `9cbed75` in
+    /.devcontainer (#13955)
+  * chore(deps): bump ubuntu from `89ef6e4` to `440dcf6` in
+    /.devcontainer (#13516)
+  * chore(deps): bump ubuntu from `9cbed75` to `590e57a` in
+    /.devcontainer (#14019)
+  * chore(deps): bump ubuntu from `a08e551` to `7c06e91` in
+    /.devcontainer (#13833)
+  * chore(deps): bump ubuntu from `c4570d2` to `a08e551` in
+    /.devcontainer (#13638)
+  * chore(deps): bump ubuntu from `e356c06` to `c4570d2` in
+    /.devcontainer (#13595)
+  * fix(gpols): fetch sources from the cluster in case of
+    in-cluster mode in the CLI (#13603)
+  * fix: evaluate MAPs correctly in the CLI (#13557)
+  * fix: handle nil namespace pointer in CLI mode for
+    ValidatingPolicies with namespaceSelector (#13636)
+  * fix: pass userInfo to VAPs and MAPs in the CLI (#13920)
+  * fix: support beta version in CLI (#14205)
+
+-------------------------------------------------------------------
 Fri Sep 19 05:20:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.15.2:
