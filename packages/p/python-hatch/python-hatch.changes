@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 10 01:24:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use python-uv for Requires, so it explicitly matches the Python version.
+
+-------------------------------------------------------------------
 Thu Oct 16 07:47:48 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.15.0

@@ -60,9 +60,9 @@ Requires:       python-rich >= 11.2.0
 Requires:       python-shellingham >= 1.4.0
 Requires:       python-tomli-w >= 1.0
 Requires:       python-tomlkit >= 0.11.1
+Requires:       python-uv >= 0.5.23
 Requires:       python-virtualenv >= 20.16.2
 Requires:       python-zstandard < 1
-Requires:       uv
 Requires:       (python-pexpect >= 4.8 with python-pexpect < 5)
 Requires:       (python-userpath >= 1.7 with python-userpath < 2)
 %if %{with libalternatives}
@@ -82,7 +82,6 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  cargo
-BuildRequires:  uv
 %else
 BuildArch:      noarch
 %endif
