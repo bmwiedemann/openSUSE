@@ -1671,4 +1671,12 @@
     - added AIXCC Team Atlanta's zero-mq plugin to add testcases from remote (forwarded request 1309618 from msmeissn)</comment>
     <requestid>1309626</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>431ee257eb3601724b0661722615eec5</srcmd5>
+    <version>4.34c</version>
+    <time>1762798847</time>
+    <user>dimstar_suse</user>
+    <comment>- disable LTO, causes gcc ICE on s390x due to mix between clang and gcc lto. (bsc#1252006) (forwarded request 1316893 from msmeissn)</comment>
+    <requestid>1316894</requestid>
+  </revision>
 </revisionlist>

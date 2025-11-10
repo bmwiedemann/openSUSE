@@ -1,7 +1,7 @@
 #
 # spec file for package afl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define _lto_cflags %{nil}
 
 %define afl_rt compiler-rt,llvm-rt,llvm-rt-lto
 
@@ -86,17 +88,19 @@ sed -i 's|#!/usr/bin/env bash|#!/bin/bash|g' afl-cmin.bash
 
 %build
 export CFLAGS="$CFLAGS %{optflags} -fno-lto"
+export CFLAGS_FLTO=""
 %ifnarch %{ix86} x86_64
 export AFL_NO_X86=1
 %endif
-make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir}
+make %{?_smp_mflags} CFLAGS_FLTO=$CFLAGS_FLTO PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir}
 # make radamsa
 
 %install
 %ifnarch %{ix86} x86_64
 export AFL_NO_X86=1
 %endif
-make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir} MAN_PATH=%{_mandir}/man8 DESTDIR=%{buildroot} install
+export CFLAGS_FLTO=""
+make %{?_smp_mflags} PREFIX=%{_prefix} CFLAGS_FLTO=$CFLAGS_FLTO LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir} MAN_PATH=%{_mandir}/man8 DESTDIR=%{buildroot} install
 chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 
 %files

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 10 10:24:31 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- disable LTO, causes gcc ICE on s390x due to mix between clang and gcc lto. (bsc#1252006)
+
+-------------------------------------------------------------------
 Tue Oct  7 12:45:01 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.34c
