@@ -1,7 +1,7 @@
 #
 # spec file for package guvcview
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2013 Marguerite Su <marguerite@opensuse.org>
 #
@@ -18,61 +18,43 @@
 #
 
 
-%define         sover0 2_2-2
-%define         sover1 2_2-2
-%global flavor @BUILD_FLAVOR@%{nil}
-
-%define pname guvcview
-
-%if "%{flavor}" == "qt5"
-%bcond_without qt5
-%define psuffix -qt5
-%else
-%bcond_with qt5
-%endif
-
-Name:           guvcview%{?psuffix}
-Version:        2.1.0
+%define         sover 2_2-2
+Name:           guvcview
+Version:        2.2.1
 Release:        0
-# Reference to GPL-2.0 in some files?
 Summary:        GTK+ UVC Viewer and Capturer
+# Reference to GPL-2.0 in some files?
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://guvcview.sourceforge.net/
+#Git-Clone:     git://git.code.sf.net/p/guvcview/git-master
 Source0:        https://sourceforge.net/projects/guvcview/files/source/guvcview-src-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE guvcview-SUSE.patch -- use SUSE-specific paths
-Patch0:         guvcview-SUSE.patch
-# PATCH-FIX-OPENSUSE guvcview-qt5-nolibs_qt5names.patch -- use libraries from the GTK+ package
-Patch1:         guvcview-qt5-nolibs_qt5names.patch
-# PATCH-FIX-OPENSUSE 0001-Fix-build-with-GCC-14.patch -- Upstream already has the fix (although part of bigger changeset)
-Patch2:         0001-Fix-build-with-GCC-14.patch
-BuildRequires:  automake
+Patch3:         0001-fix-deprecation-warning-with-ffpmeg-7.1-add-Wall-to-.patch
+Patch4:         0002-Fix-desktop-file-for-cmake.patch
+Patch5:         fix-linking.patch
+Patch6:         fix-pkgconfig-path.patch
+#
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gettext
-BuildRequires:  intltool
 BuildRequires:  libpng-devel
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavutil)
+# use ffmpeg7
+BuildRequires:  ffmpeg-7-libavcodec-devel
+BuildRequires:  ffmpeg-7-libavutil-devel
+#
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(sdl2)
-%if %{with qt5}
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(libgviewaudio)
-BuildRequires:  pkgconfig(libgviewencoder)
-BuildRequires:  pkgconfig(libgviewrender)
-BuildRequires:  pkgconfig(libgviewv4l2core)
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -80,39 +62,39 @@ A GTK interface for capturing and viewing video from devices
 supported by the Linux UVC driver, although it should also work with
 any v4l2 compatible device.
 
-%package     -n libgviewaudio-%{sover0}
+%package     -n libgviewaudio-%{sover}
 Summary:        GTK+ UVC Viewer and Capturer
 Group:          System/Libraries
 
-%description -n libgviewaudio-%{sover0}
+%description -n libgviewaudio-%{sover}
 A GTK interface for capturing and viewing video from devices
 supported by the Linux UVC driver, although it should also work with
 any v4l2 compatible device.
 
-%package     -n libgviewencoder-%{sover1}
+%package     -n libgviewencoder-%{sover}
 Summary:        GTK+ UVC Viewer and Capturer
 Group:          System/Libraries
 
-%description -n libgviewencoder-%{sover1}
+%description -n libgviewencoder-%{sover}
 A GTK interface for capturing and viewing video from devices
 supported by the Linux UVC driver, although it should also work with
 any v4l2 compatible device.
 
-%package     -n libgviewrender-%{sover1}
+%package     -n libgviewrender-%{sover}
 Summary:        GTK+ UVC Viewer and Capturer
 Group:          System/Libraries
 
-%description -n libgviewrender-%{sover1}
+%description -n libgviewrender-%{sover}
 A GTK interface for capturing and viewing video from devices
 supported by the Linux UVC driver, although it should also work with
 any v4l2 compatible device.
 
-%package     -n libgviewv4l2core-%{sover1}
+%package     -n libgviewv4l2core-%{sover}
 Summary:        GTK+ UVC Viewer and Capturer
 Group:          System/Libraries
 Recommends:     libgviewv4l2core-lang
 
-%description -n libgviewv4l2core-%{sover1}
+%description -n libgviewv4l2core-%{sover}
 A GTK interface for capturing and viewing video from devices
 supported by the Linux UVC driver, although it should also work with
 any v4l2 compatible device.
@@ -121,10 +103,10 @@ any v4l2 compatible device.
 Summary:        Development files for guvcview
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libgviewaudio-%{sover0} = %{version}-%{release}
-Requires:       libgviewencoder-%{sover1} = %{version}-%{release}
-Requires:       libgviewrender-%{sover1} = %{version}-%{release}
-Requires:       libgviewv4l2core-%{sover1} = %{version}-%{release}
+Requires:       libgviewaudio-%{sover} = %{version}-%{release}
+Requires:       libgviewencoder-%{sover} = %{version}-%{release}
+Requires:       libgviewrender-%{sover} = %{version}-%{release}
+Requires:       libgviewv4l2core-%{sover} = %{version}-%{release}
 Requires:       libpng-devel
 Requires:       pkgconfig(alsa)
 Requires:       pkgconfig(gsl)
@@ -150,94 +132,67 @@ applications that want to make use of the GUVC libraries.
 %package     -n libgviewv4l2core-lang
 Summary:        Languages for libgviewv4l2core
 Group:          System/Localization
-Requires:       libgviewv4l2core-%{sover1} = %{version}
+Requires:       libgviewv4l2core-%{sover} = %{version}
 Provides:       libgviewv4l2core-lang-all = %{version}
-Supplements:    (bundle-lang-other and libgviewv4l2core-%{sover1})
+Supplements:    (bundle-lang-other and libgviewv4l2core-%{sover})
 BuildArch:      noarch
 
 %description -n libgviewv4l2core-lang
 Provides translations to libgviewv4l2core.
 
 %prep
-%setup -q -n %{pname}-src-%{version}
-%patch -P 0 -p1
-%patch -P 2 -p1
-%if %{with qt5}
-%patch -P 1 -p1
-%endif
+%autosetup -p1 -n %{name}-src-%{version}
 
 %build
-# autoconf is too old in Leap
-%if 0%{?suse_version} == 1500
-sed -i '/AC_CHECK_INCLUDES_DEFAULT/d' configure.ac
-%endif
-
-autoreconf -fiv
-%configure --disable-debian-menu \
-           --disable-desktop \
-%if %{with qt5}
-           --disable-gtk3 \
-           --enable-qt5 \
-           --program-suffix=-qt5 \
-%endif
-%{nil}
-%make_build
+%cmake \
+  -DUSE_GTK3=ON \
+  -DUSE_QT6=ON \
+  -DUSE_SDL2=ON \
+  -DINSTALL_DEVKIT=ON
+%make_jobs
 
 %install
-%make_install
-# Create desktop file as disabled during build
-%suse_update_desktop_file -c %{name} "A video viewer and capturer for the linux uvc driver" %{name} %{name} %{name} AudioVideo AudioVideoEditing
+%cmake_install
+
+# wrapper for guvcview-qt6
+echo -e "#!/bin/sh\nexec %{_bindir}/guvcview --gui=qt6 \"\$@\"" > %{buildroot}%{_bindir}/guvcview-qt6
+chmod 755 %{buildroot}%{_bindir}/guvcview-qt6
+
 %find_lang %{name} %{?no_lang_C}
-
-%if %{with qt5}
-mv %{buildroot}%{_datadir}/pixmaps/%{pname}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
-%else
 %find_lang gview_v4l2core libgviewv4l2core.lang %{?no_lang_C}
-%endif
 
-%fdupes %{buildroot}
-
-%if ! %{with qt5}
-rm %{buildroot}%{_libdir}/*.{la,a}
-
-%ldconfig_scriptlets -n libgviewaudio-%{sover0}
-%ldconfig_scriptlets -n libgviewencoder-%{sover1}
-%ldconfig_scriptlets -n libgviewrender-%{sover1}
-%ldconfig_scriptlets -n libgviewv4l2core-%{sover1}
-%endif
+%ldconfig_scriptlets -n libgviewaudio-%{sover}
+%ldconfig_scriptlets -n libgviewencoder-%{sover}
+%ldconfig_scriptlets -n libgviewrender-%{sover}
+%ldconfig_scriptlets -n libgviewv4l2core-%{sover}
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README.md
 %{_bindir}/%{name}
+%{_bindir}/%{name}-qt6
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/pixmaps/%{name}.png
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
-%if ! %{with qt5}
-%files -n libgviewaudio-%{sover0}
-%{_libdir}/libgviewaudio-*.so.*
+%files -n libgviewaudio-%{sover}
+%{_libdir}/libgviewaudio.so.*
 
-%files -n libgviewencoder-%{sover1}
-%{_libdir}/libgviewencoder-*.so.*
+%files -n libgviewencoder-%{sover}
+%{_libdir}/libgviewencoder.so.*
 
-%files -n libgviewrender-%{sover1}
-%{_libdir}/libgviewrender-*.so.*
+%files -n libgviewrender-%{sover}
+%{_libdir}/libgviewrender.so.*
 
-%files -n libgviewv4l2core-%{sover1}
-%{_libdir}/libgviewv4l2core-*.so.*
+%files -n libgviewv4l2core-%{sover}
+%{_libdir}/libgviewv4l2core.so.*
 
 %files devel
-%dir %{_includedir}/guvcview-2
-%dir %{_includedir}/guvcview-2/libgviewaudio
-%dir %{_includedir}/guvcview-2/libgviewencoder
-%dir %{_includedir}/guvcview-2/libgviewrender
-%dir %{_includedir}/guvcview-2/libgviewv4l2core
-%{_includedir}/guvcview-2/libgviewaudio/gviewaudio.h
-%{_includedir}/guvcview-2/libgviewencoder/gviewencoder.h
-%{_includedir}/guvcview-2/libgviewrender/gviewrender.h
-%{_includedir}/guvcview-2/libgviewv4l2core/gview.h
-%{_includedir}/guvcview-2/libgviewv4l2core/gviewv4l2core.h
+%{_includedir}/gviewaudio.h
+%{_includedir}/gviewencoder.h
+%{_includedir}/gviewrender.h
+%{_includedir}/gviewv4l2core.h
 %{_libdir}/libgviewaudio.so
 %{_libdir}/libgviewencoder.so
 %{_libdir}/libgviewrender.so
@@ -248,7 +203,6 @@ rm %{buildroot}%{_libdir}/*.{la,a}
 %{_libdir}/pkgconfig/libgviewv4l2core.pc
 
 %files -n libgviewv4l2core-lang -f libgviewv4l2core.lang
-%endif
 
 %files lang -f %{name}.lang
 

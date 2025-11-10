@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov  4 14:01:22 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Switch to cmake
+- Drop multibuild; use a wrapper script instead
+- Use %ldconfig_scriptlets
+- Update to version 2.2.1
+  * Fix encoder video timestamps
+  * Fix encoder video codec defaults
+  * Move from qt5 to qt6
+  * Change build system from autoconf to cmake
+  * Add support for yuv420p pixel format for MJPG decoding
+- Drop patches (not longer needed):
+  * 0001-Fix-build-with-GCC-14.patch
+  * guvcview-SUSE.patch
+  * guvcview-qt5-nolibs_qt5names.patch
+  * 0001-Fix-build-with-GCC-14.patch
+- Add patches:
+  * 0001-fix-deprecation-warning-with-ffpmeg-7.1-add-Wall-to-.patch
+  * 0002-Fix-desktop-file-for-cmake.patch
+  * fix-linking.patch
+  * fix-pkgconfig-path.patch
+
+-------------------------------------------------------------------
 Thu Mar 13 18:44:01 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Use pkgconfig() to be impervious to package renames.

@@ -1,0 +1,26 @@
+diff --git a/gview_encoder/CMakeLists.txt b/gview_encoder/CMakeLists.txt
+index 8942bae..a39fdaf 100644
+--- a/gview_encoder/CMakeLists.txt
++++ b/gview_encoder/CMakeLists.txt
+@@ -24,7 +24,7 @@ set_target_properties(
+ 
+ pkg_check_modules(FFMPEG REQUIRED libavcodec libavutil)
+ 
+-target_link_libraries(gviewencoder ${FFMPEG_LIBRARIES})
++target_link_libraries(gviewencoder ${FFMPEG_LIBRARIES} m)
+ add_definitions(${FFMPEG_CFLAGS} ${FFMPEG_CFLAGS_OTHER})
+ 
+ include_directories(${CMAKE_SOURCE_DIR}/includes)
+diff --git a/gview_v4l2core/CMakeLists.txt b/gview_v4l2core/CMakeLists.txt
+index 1ca4aa1..e204238 100644
+--- a/gview_v4l2core/CMakeLists.txt
++++ b/gview_v4l2core/CMakeLists.txt
+@@ -31,7 +31,7 @@ set_target_properties(
+ pkg_check_modules(V4L2 REQUIRED
+   libv4l2 libudev libusb-1.0 libavcodec>=57.16 libavutil libpng)
+ 
+-target_link_libraries(gviewv4l2core ${V4L2_LIBRARIES})
++target_link_libraries(gviewv4l2core ${V4L2_LIBRARIES} m)
+ add_definitions(${V4L2_CFLAGS} ${V4L2_CFLAGS_OTHER})
+ 
+ add_compile_definitions(GETTEXT_PACKAGE_V4L2CORE="gview_v4l2core")

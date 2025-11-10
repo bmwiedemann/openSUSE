@@ -1,0 +1,52 @@
+diff --git a/gview_audio/CMakeLists.txt b/gview_audio/CMakeLists.txt
+index 9714745..3bea235 100644
+--- a/gview_audio/CMakeLists.txt
++++ b/gview_audio/CMakeLists.txt
+@@ -42,7 +42,7 @@ if(INSTALL_DEVKIT)
+   install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/gviewaudio.h TYPE INCLUDE)
+   install(
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/libgviewaudio.pc
+-    DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/pkgconfig
++    DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig
+   )
+ endif()
+ 
+diff --git a/gview_encoder/CMakeLists.txt b/gview_encoder/CMakeLists.txt
+index a39fdaf..dae9b1f 100644
+--- a/gview_encoder/CMakeLists.txt
++++ b/gview_encoder/CMakeLists.txt
+@@ -36,7 +36,7 @@ if(INSTALL_DEVKIT)
+ 
+   install(
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/libgviewencoder.pc
+-    DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/pkgconfig
++    DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig
+   )
+ endif()
+ 
+diff --git a/gview_render/CMakeLists.txt b/gview_render/CMakeLists.txt
+index e63ba39..8cc3e7d 100644
+--- a/gview_render/CMakeLists.txt
++++ b/gview_render/CMakeLists.txt
+@@ -53,7 +53,7 @@ if(INSTALL_DEVKIT)
+ 
+   install(
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/libgviewrender.pc
+-    DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/pkgconfig
++    DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig
+   )
+ endif()
+ 
+diff --git a/gview_v4l2core/CMakeLists.txt b/gview_v4l2core/CMakeLists.txt
+index e204238..8eed292 100644
+--- a/gview_v4l2core/CMakeLists.txt
++++ b/gview_v4l2core/CMakeLists.txt
+@@ -44,7 +44,7 @@ if(INSTALL_DEVKIT)
+   install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/gviewv4l2core.h TYPE INCLUDE)
+   install(
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/libgviewv4l2core.pc
+-    DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/pkgconfig
++    DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig
+   )
+ endif()
+ 
