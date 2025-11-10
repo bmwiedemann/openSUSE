@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov  9 19:06:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.1:
+  * Drop redundant import check
+  * Do not cache client and base\_url
+  * Drop explicit dependency on python-subunit
+  * add pyproject.toml to support pip 23.1
+  * Fix AttributeError caused by mocked RequestContext
+  * Drop redundant injection of VIRTUAL\_ENV
+  * Update master for stable/2025.1
+  * Make log levels more adequate
+  * Skip installation to speed up pep8
+  * Drop ceilometer service overrides
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Declare Python 3.12 support
+  * Update master for stable/2024.2
+  * Account for secret.created possibly being None
+
+-------------------------------------------------------------------
 Tue Sep  3 13:05:24 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.1.1

@@ -336,4 +336,12 @@
   - Drop wrong documented choices for barbican_endpoint_type</comment>
     <requestid>1198494</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c468ff36cf32981d35e5d009d677d640</srcmd5>
+    <version>5.4.1</version>
+    <time>1762798613</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316752</requestid>
+  </revision>
 </revisionlist>
