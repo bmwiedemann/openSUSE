@@ -16,7 +16,8 @@
 #
 
 
-%define pythons python313
+%define skip_python311 1
+%define skip_python312 1
 Name:           python-audioop-lts
 Version:        0.2.2
 Release:        0
