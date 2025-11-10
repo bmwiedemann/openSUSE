@@ -1,7 +1,7 @@
 #
 # spec file for package nfdump
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %define nfcapddatadir   %{_localstatedir}/lib/nfcapd
 %define sfcapddatadir   %{_localstatedir}/lib/sfcapd
 %define nfhomedir       %{_var}/lib/%{name}
-%define sover           1_7_6
+%define sover           1_7_7
 Name:           nfdump
-Version:        1.7.6
+Version:        1.7.7
 Release:        0
 Summary:        CLI tools to collect and process netflow data
 License:        BSD-3-Clause
@@ -38,6 +38,8 @@ BuildRequires:  rrdtool
 BuildRequires:  rrdtool-devel
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(libzstd)
 Requires:       rrdtool
 Provides:       group(%{name})
 Provides:       user(%{name})
