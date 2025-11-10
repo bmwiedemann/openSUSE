@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  9 10:03:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.0.0:
+  * Remove URI.value
+  * add pyproject.toml to support pip 23.1
+  * Fix concurrent access crash in \_all\_opt\_infos()
+  * Update master for stable/2025.1
+  * Skip installation to speed up pep8
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * pre-commit: Bump versions
+  * Declare Python 3.12 support
+  * Use opt.name instead opt.dest for generate shell completion
+  * Fix typo for shell\_completion
+  * Update master for stable/2024.2
+  * Fix test\_sub\_command\_multiple on Python 3.12.5+
+
+-------------------------------------------------------------------
 Fri Jun 13 07:05:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not (ever) use Epoch; it has devestating effects on version
@@ -45,7 +65,7 @@ Fri Dec  1 16:25:52 UTC 2023 - cloud-devel@suse.de
 -------------------------------------------------------------------
 Tue Jul 25 19:51:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- restrict to urllib3 1.x 
+- restrict to urllib3 1.x
 
 -------------------------------------------------------------------
 Wed May  3 12:22:46 UTC 2023 - cloud-devel@suse.de
@@ -274,7 +294,7 @@ Wed Feb  6 14:57:47 UTC 2019 - cloud-devel@suse.de
 -------------------------------------------------------------------
 Thu Jan 17 12:09:19 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
-- avoid oslo.log dependency (bsc#1121609) 
+- avoid oslo.log dependency (bsc#1121609)
 
 -------------------------------------------------------------------
 Mon Sep  3 09:12:19 UTC 2018 - cloud-devel@suse.de
@@ -889,7 +909,7 @@ Tue Jul 29 20:23:37 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Fri Jun 27 11:11:26 UTC 2014 - dmueller@suse.com
 
-- go back to released version (1.3.0) 
+- go back to released version (1.3.0)
 
 -------------------------------------------------------------------
 Fri Jun 20 00:02:53 UTC 2014 -  cloud-devel@suse.de
@@ -1130,12 +1150,12 @@ Sat Nov  2 01:04:04 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Fri Oct 25 08:53:22 UTC 2013 - dmueller@suse.com
 
-- switch back to master tarball 
+- switch back to master tarball
 
 -------------------------------------------------------------------
 Fri Sep 27 08:11:13 UTC 2013 - speilicke@suse.com
 
-- Fix service URL 
+- Fix service URL
 
 -------------------------------------------------------------------
 Thu Sep 26 13:18:36 UTC 2013 - dmueller@suse.com
@@ -1155,7 +1175,7 @@ Thu Sep 26 13:18:36 UTC 2013 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon Sep  2 11:15:31 UTC 2013 - dmueller@suse.com
 
-- update to 1.2.0.a4 
+- update to 1.2.0.a4
 
 -------------------------------------------------------------------
 Thu Jul 18 10:08:32 CEST 2013 - berendt@b1-systems.de
@@ -1190,7 +1210,7 @@ Thu Jun 27 09:57:32 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Thu Jun 13 08:18:20 UTC 2013 - dmueller@suse.com
 
-- update test/main requires 
+- update test/main requires
 
 -------------------------------------------------------------------
 Wed Jun 12 13:42:11 UTC 2013 - dmueller@suse.com
@@ -1201,7 +1221,7 @@ Wed Jun 12 13:42:11 UTC 2013 - dmueller@suse.com
 -------------------------------------------------------------------
 Wed Jun 12 09:57:21 UTC 2013 - dmueller@suse.com
 
-- fix requires of test package 
+- fix requires of test package
 
 -------------------------------------------------------------------
 Thu Apr  4 09:02:21 UTC 2013 - dmueller@suse.com

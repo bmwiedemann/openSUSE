@@ -884,4 +884,36 @@ all changed Requires/Buildrequires seem to be available
     <comment></comment>
     <requestid>1285381</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>54e3c99c0d83221b7974c4335a3a2d0e</srcmd5>
+    <version>10.0.0</version>
+    <time>1762798690</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.0.0:
+  * Remove URI.value
+  * add pyproject.toml to support pip 23.1
+  * Fix concurrent access crash in \_all\_opt\_infos()
+  * Update master for stable/2025.1
+  * Skip installation to speed up pep8
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * pre-commit: Bump versions
+  * Declare Python 3.12 support
+  * Use opt.name instead opt.dest for generate shell completion
+  * Fix typo for shell\_completion
+  * Update master for stable/2024.2
+  * Fix test\_sub\_command\_multiple on Python 3.12.5+
+
+- restrict to urllib3 1.x
+- avoid oslo.log dependency (bsc#1121609)
+- go back to released version (1.3.0)
+- switch back to master tarball
+- Fix service URL
+- update to 1.2.0.a4
+- update test/main requires
+- fix requires of test package</comment>
+    <requestid>1316855</requestid>
+  </revision>
 </revisionlist>
