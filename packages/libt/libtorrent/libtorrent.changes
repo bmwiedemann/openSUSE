@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  4 21:39:10 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.2
+  * Added dual listening ports when both IPv4 and IPv6 are bound.
+  * Restart listen when changing bind addresses, etc.
+  * Fixed issue with CURL socket not being removed from polling.
+  * Fixed PEX address corruption bug.
+
+-------------------------------------------------------------------
 Fri Oct 17 11:47:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.1
