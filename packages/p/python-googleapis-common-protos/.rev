@@ -305,4 +305,14 @@
   * add support for Python 3.14 (#14699) (forwarded request 1313038 from glaubitz)</comment>
     <requestid>1313039</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6825c2f51aa9e4a9a0de3a75832fb2d7</srcmd5>
+    <version>1.72.0</version>
+    <time>1762798851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.72.0
+  * add common_resources.proto (#14851)
+  * add field api_version to message ServiceForTransport (#14843) (forwarded request 1316877 from glaubitz)</comment>
+    <requestid>1316907</requestid>
+  </revision>
 </revisionlist>

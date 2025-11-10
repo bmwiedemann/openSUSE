@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 10 09:49:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.72.0
+  * add common_resources.proto (#14851)
+  * add field api_version to message ServiceForTransport (#14843)
+
+-------------------------------------------------------------------
 Wed Oct 22 12:00:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.71.0
