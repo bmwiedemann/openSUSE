@@ -675,4 +675,41 @@
 - Initial package</comment>
     <requestid>1204111</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b73ac004ce5894bebdde57f89b095f88</srcmd5>
+    <version>17.1.0</version>
+    <time>1762798695</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17.1.0:
+  * Remove trailing whitespace from error log message
+  * Replace LOG.warn
+  * Fix inconsistent return value of timeutils.utcnow
+  * Maintain queue managr logic in RabbitMQ driver
+  * add pyproject.toml to support pip 23.1
+  * Fix RPC metric labels being reused incorrectly
+  * Remove quorum options with typo
+  * Update master for stable/2025.1
+  * Drop workaround for old oslotest version with six
+  * Do not un-patch threading
+- switch to singlespec
+
+- update to 16.1.0:
+  * Skip installation to speed up pep8
+  * Fixed: use self.start\_time in QManager shm
+  * Added Docs for Simulator
+  * rabbit: validate input for retry options
+  * Deprecate the Eventlet executor
+  * Remove deprecated aliases of notification options
+  * Remove remaining functional test code for AMQP1 driver
+  * Fix outdated job description
+  * rabbit: Clean up deprecated options
+  * rabbit: Fix wrong section to render connection pool options
+  * kafka: Remove unused connection pool options
+  * Remove pyngus from dependencies
+  * Add a kombu\_reconnect\_splay setting
+  * Revert &quot;Remove explicit pbr dependency&quot;
+  * reno: Update master for unmaintained/2023.1
+  * Remove deprecated AMQP1 driver</comment>
+    <requestid>1316859</requestid>
+  </revision>
 </revisionlist>
