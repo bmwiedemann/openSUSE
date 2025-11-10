@@ -1,7 +1,6 @@
-Index: gerbera-1.12.0/scripts/systemd/gerbera.service.cmake
-===================================================================
---- gerbera-1.12.0.orig/scripts/systemd/gerbera.service.cmake
-+++ gerbera-1.12.0/scripts/systemd/gerbera.service.cmake
+diff -purN gerbera-3.0.0.orig/scripts/systemd/gerbera.service.cmake gerbera-3.0.0/scripts/systemd/gerbera.service.cmake
+--- gerbera-3.0.0.orig/scripts/systemd/gerbera.service.cmake	2025-11-07 11:18:57.000000000 +0100
++++ gerbera-3.0.0/scripts/systemd/gerbera.service.cmake	2025-11-08 22:21:21.672927906 +0100
 @@ -4,6 +4,20 @@ After=${SYSTEMD_AFTER_TARGET}
  Wants=${SYSTEMD_WANTS_TARGET}
  
@@ -21,5 +20,5 @@ Index: gerbera-1.12.0/scripts/systemd/gerbera.service.cmake
 +ReadWritePaths=/usr/share/gerbera/ /etc/gerbera/ /var/log/gerbera
 +# end of automatic additions 
  Type=simple
+ NotifyAccess=all
  User=gerbera
- Group=gerbera

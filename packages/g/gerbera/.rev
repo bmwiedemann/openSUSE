@@ -311,4 +311,12 @@ Sorry - I missed that on the previous fixup. Now we should be good for sysusers 
     <comment></comment>
     <requestid>1315242</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a7b352fe8b3cdffa562fcbb0daa092e0</srcmd5>
+    <version>3.0.0</version>
+    <time>1762798831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1316866</requestid>
+  </revision>
 </revisionlist>

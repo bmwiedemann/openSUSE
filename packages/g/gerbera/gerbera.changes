@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Nov  8 21:31:49 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 3.0.0
+  - Add support for libsystemd
+  - Add Test for formatSizeValue
+  - Allow masking arguments
+  - Block client group
+  - Build for ubuntu-25.10
+  - Bump actions/setup-node from 5 to 6
+  - Bump actions/upload-artifact from 4 to 5
+  - Bump github/codeql-action from 3 to 4
+  - Check Headers in Quirks
+  - CI Tests: Try more alpine versions
+  - clazy fixes
+  - Command line option for even more config details
+  - Command line option to drop database tables
+  - Config XML Schemas
+  - Configure searchable flags via BoxLayout
+  - Documentation on Return Path Filtering
+  - Enable ICU for MacOS
+  - Fix derivedFrom search handling
+  - Fix docker libqxx library pattern
+  - Fix dynamic folders for lowercase trees
+  - Fix formatSizeValue on 32-bit systems
+  - Fix help message for option "-c"
+  - Fix help test
+  - Fix ProxyUrl for external items
+  - Fix title from wrong stream
+  - Fixing Searchable flag in import script
+  - forward declare pugixml classes
+  - Handle title from nfo correctly
+  - Hide boxkey values
+  - Implement new Client Quirk to force SortCriteria 'title'
+  - Improve MacOS build
+  - Introduce sphinx toolbox
+  - New PostgreSQL database backend
+  - nproc missing on MacOS
+  - Quirk to block protocolInfo in CaptionInfoEx
+  - Reduce code duplication in XmlBuilder
+  - Remove loading complete scripts to create virutal layout
+  - remove unique_ptr from ProcListItem vector
+  - Restrict number of subtitle bytes to read
+  - Rotation of thumbnails by ffmpegthumbnailer
+  - Track unused config file entries
+  - Unify doxygen tags
+  - Update CMakeLists.txt for ICU on APPLE
+  - Update to exiv2 v0.28.6
+  - Update to exiv2 v0.28.7
+  - Update to fmt 12.0.0
+  - Update to fmt 12.1.0
+  - Update to pupnp 1.14.25
+  - Update to spdlog 1.16.0
+  - Use new confval links in help
+  - various small cleanups
+  - WavPack under MacOS
+  - WebUI: Show referenced items in details
+  - WebUI: Show spinner on loading
+- Remove upstreamed patch f8e158bc72986e46b93d05358c29db0c10f2fe9f.patch
+
+-------------------------------------------------------------------
 Sun Nov  2 16:20:08 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Use --preset to build standard release build with NPUPNP

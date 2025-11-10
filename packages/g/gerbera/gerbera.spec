@@ -20,7 +20,7 @@
 %global force_gcc_version 12
 %endif
 Name:           gerbera
-Version:        2.6.1
+Version:        3.0.0
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -36,8 +36,6 @@ Source90:       README.SUSE
 Patch0:         harden_gerbera.service.patch
 # PATCH-FIX-OPENSUSE - build executables as PIE
 Patch1:         gerbera-cmake-pie.patch
-# PATCH-FIX-UPSTREAM: Update to fmt 12.0.0
-Patch10:        f8e158bc72986e46b93d05358c29db0c10f2fe9f.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  ccache
 BuildRequires:  cmake >= 3.25
@@ -66,7 +64,10 @@ BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libffmpegthumbnailer) >= 2.2.2
 BuildRequires:  pkgconfig(libmatroska) >= 1.6.3
 BuildRequires:  pkgconfig(libnpupnp) >= 4.2.1
+BuildRequires:  pkgconfig(libpq)
+BuildRequires:  pkgconfig(libpqxx)
 BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pugixml) >= 1.10
 BuildRequires:  pkgconfig(spdlog) >= 1.8.1
 BuildRequires:  pkgconfig(sqlite3) >= 3.7.0
@@ -127,6 +128,9 @@ sed -i -e '/test_server/d' test/CMakeLists.txt
   --preset=release-npupnp \
 %if 0%{?force_gcc_version}
   -DCMAKE_CXX_COMPILER=%{_bindir}/g++-%{?force_gcc_version} \
+%endif
+%if %{pkg_vcmp libpqxx-devel < 7.10.3}
+  -DWITH_PGSQL=OFF \
 %endif
   -DWITH_TESTS=ON
 %cmake_build
@@ -223,15 +227,20 @@ chown -R gerbera:gerbera %{_sysconfdir}/%{name}
 %{_sysusersdir}/gerbera.conf
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{_datadir}/bash-completion/completions/gerbera
+%dir %{_datadir}/gerbera
+%{_datadir}/gerbera/config2.xsd
 %{_datadir}/gerbera/mysql-drop.sql
 %{_datadir}/gerbera/mysql-upgrade.xml
 %{_datadir}/gerbera/mysql.sql
+%{_datadir}/gerbera/sqlite3-drop.sql
 %{_datadir}/gerbera/sqlite3-upgrade.xml
 %{_datadir}/gerbera/sqlite3.sql
-%dir %{_datadir}/gerbera
+%{_datadir}/gerbera/postgres-drop.sql
+%{_datadir}/gerbera/postgres-upgrade.xml
+%{_datadir}/gerbera/postgres.sql
 %dir %{_datadir}/gerbera/js
-%dir %{_datadir}/gerbera/web
 %{_datadir}/gerbera/js/*
+%dir %{_datadir}/gerbera/web
 %{_datadir}/gerbera/web/*
 
 %files apache
