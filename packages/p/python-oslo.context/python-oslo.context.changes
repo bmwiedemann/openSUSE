@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Nov  9 09:14:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * Add build-system to pyproject.toml
+  * pre-commit: Add ruff
+  * Move mypy configuration to pyproject.toml
+  * Enable strict typing
+  * Remove support for deprecated settings
+  * Fix outdated argument in doc examples
+  * Update master for stable/2025.1
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 22:10:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.7.1:
+  * Skip installation to speed up pep8
+  * reno: Update master for unmaintained/2023.1
+  * Stop setting deprecated fields in redacted\_copy
+  * Add note about requirements lower bounds
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Remove Python 3.8 support
+  * Fix outdated tox minversion
+  * Declare Python 3.12 support
+  * Drop SETUPTOOLS\_USE\_DISTUTILS
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Mon Sep  2 17:33:35 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.6.0
@@ -352,7 +380,7 @@ Wed Jul 29 05:51:36 UTC 2015 - tbechtold@suse.com
 -------------------------------------------------------------------
 Wed Jun  3 09:00:31 UTC 2015 - dmueller@suse.com
 
-- remove python-hacking dep 
+- remove python-hacking dep
 
 -------------------------------------------------------------------
 Tue Jun  2 15:45:53 UTC 2015 - tbechtold@suse.com
