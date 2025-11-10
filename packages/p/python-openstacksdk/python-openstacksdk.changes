@@ -1,4 +1,264 @@
 -------------------------------------------------------------------
+Sun Nov  9 13:11:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.1:
+  * image: Provide default import method
+  * Remove dib-nodepool-functional-openstack-ubuntu-noble-src
+  * Update TOX\_CONSTRAINTS\_FILE for stable/2025.2
+  * Update .gitreview for stable/2025.2
+  * Add id to query\_mapping for Networking
+  * Add SDK support for \`\`glance image-tasks\`\`
+  * tests: Use binary mode to open files
+  * Replace CLA with DCO
+  * tests: Cleanup volume attachment tests
+  * tests: Streamline services functional test
+  * tests: Streamline servers functional test
+  * tests: Streamline (compute) images test
+  * tests: Streamline hypervisor test
+  * tests: Streamline flavor test
+  * Remove commented out sections
+  * create\_image: support other import methods
+  * resource: add max\_items parameter to resource
+  * Fix hostname attribute withing request body
+  * Increase swap allocation for devstack-networking
+  * Allow filtering of volumes by properties
+  * Fix Volume.set\_image\_metadata
+  * Remove loop variable
+  * Fix create\_volume\_snapshot() description
+  * Remove duplicate Python version declarations
+  * Migrate setup configuration to pyproject.toml
+  * zuul: Make openstacksdk-functional-devstack-masakari voting
+  * zuul: Make openstacksdk-functional-devstack-ironic voting
+  * Clean small nit comment
+  * Bump python version from 3.9 to 3.13 in testing docs
+  * Add support for inspection rules
+  * Add backup export command
+  * docs: Fix typo
+  * typing: Annotate openstack.config.openstackcloud
+  * config: Handle interface list in
+    CloudRegion.get\_all\_version\_data
+  * typing: Annotate openstack.config.cloud\_config
+  * typing: Annotate openstack.config.loader
+  * typing: Annotate openstack.config.vendors
+  * typing: Annotate openstack.config.cloud\_region
+  * Add shared field to security-groups
+  * Update .git-blame-ignore-revs
+  * Follow-up: Add support for runbooks
+  * tests: Fix random failure
+  * typing: Annotate openstack.common
+  * pre-commit: Bump versions
+  * typing: Correct import
+  * volume: Add volume group replication actions
+  * volume: Add missing fields to Volume
+  * Bump Python version used for linters to 3.10
+  * Drop support for Python 3.9
+  * Replace deprecated datetime.datetime.utcnow
+  * Fix: Quota show defaults
+  * tests: Add tests for v2 volume transfer module
+  * Add listing of groups for a user
+  * typing: Correct types for fake generator
+  * volume: Add Transfer to volume v2 API
+  * pre-commit: Enable bandit checks
+  * Add virtual media attachment and detachment support
+  * Adding basic implementation for Accelerator attribute
+    resource
+  * Add os-extend\_volume\_completion volume action
+  * identity: Add functional tests for limits, registered limits
+  * baremetal: Add 'details' parameter to various 'find' proxy
+    methods
+  * Add support for spice-direct console types
+  * tests: Streamline keypair tests
+  * tests: Use correct cloud
+  * test: Use specific cloud in functional test
+  * typing: Annotate openstack.connection
+  * typing: Annotate openstack.proxy
+  * tests: Remove redundant \_set\_operator\_cloud calls
+  * volume: Add update\_snapshot to v2 API
+  * volume: Stop setting microversion for block storage v2
+  * volume: Add Snapshot.manage, unmanage to volume v2 API
+  * volume: Add backup metadata helpers
+  * volume: Use consistent reset\_\*\_state functions
+  * Adds support for the 'description' field in ports
+  * Add QoS packet rate limit rule object and CRUD operations
+  * zuul: Replace removed jobs
+  * Refactor loader magic fixes
+  * Define the correct QoS rules deletion method
+  * Indicate providers that are dead/unresponsive
+  * Fix argparse integration
+  * Refactor and expand loader backward compat tests
+  * Fix token-based auth loading from config
+  * Update master for stable/2025.1
+  * volume: Use force delete param when possible
+  * volume: Add support for cascaded deletions
+  * docs: Sort proxy docs alphabetically
+  * volume: Add Service to volume v2 API
+  * volume: Add service 'set-log', 'get-log' actions
+  * resource: Drop 'action' arg for '\_get\_microversion'
+  * resource: Make \_assert\_microversion\_for a classmethod
+  * Bump hacking in unit tests
+  * Fix DNS secondary zone creation
+  * Do not pin openstacksdk to master
+  * Bump compute max microversion to 2.100
+  * Support server unshelve to specific availability zone
+  * tests: Drop support for testing identity v2
+  * tests: Rename cloud name variables
+  * exceptions: Deprecate http\_status, request\_id params
+  * identity: Fix limit, registered limit creation
+  * proxy: Remove '\_check\_resource' decorator
+  * typing: Add (more) missing proxy arguments
+  * typing: Remove duplicate TypeVar
+  * typing: Don't abuse Proxy.\_update
+  * typing: Add missing proxy arguments
+  * cloud: Deprecate jmespath-style filters
+  * cloud: Add missing parameter docs
+  * cloud: Switch remaining compute functions to proxy
+  * identity: Extract info from created registered limit
+  * zuul: Make openstacksdk-functional-devstack-masakari voting
+  * zuul: Make openstacksdk-functional-devstack-manila voting
+  * deps: Bump minimum keystoneauth
+  * cloud: Switch remaining identity functions to proxy
+  * cloud: Replace use of cloud methods in identity cloud layer
+  * cloud: Switch remaining block storage functions to proxy
+  * cloud: Switch remaining image functions to proxy
+  * Fix baremetal get\_node\_console
+  * typing: Adapt to typed keystoneauth
+  * network: Set If-Match header properly
+  * volume: Remove \_base\_proxy module
+  * typing: Annotate openstack.utils
+  * typing: Annotate openstack.exceptions
+  * typing: Don't rely on kwargs for \_translate\_response
+  * typing: Annotate openstack.fields (2/2)
+  * typing: Annotate openstack.fields (1/2)
+  * typing: Annotate openstack.format
+  * fields: Be more explicit in our conversion
+  * fields: Tweak \_convert\_type
+  * resource: Rework fields
+  * proxy: Add 'wait\_for\_\*' helpers to all proxy APIs
+  * typing: Annotate Resource.wait\_for\_\* utils
+  * mypy: Enable disallow\_incomplete\_defs
+  * mypy: Enable stricter mode
+  * mypy: Add keystoneauth1 as dependency
+  * mypy: Move configuration to pyproject.toml
+  * cloud: Remove object container cache
+  * pre-commit: Bump versions
+  * pre-commit: Prepare for bump
+  * Support streaming download of the image
+  * Correct docstrings for multiple find\_\* methods
+  * cloud floating ip: fix add\_ip\_list() for single ip
+  * Add "vlan\_qinq" attribute to the "network" resource
+  * Fix TestKeypairAdmin tests and compute.\*\_keypair
+  * BGP: remove debug print added in [1]
+  * dns: Add zone nameservers support
+  * Skip add\_tags test when tag-creation extension disabled
+  * identity: Add support for endpoint/project associations
+  * identity: Add support for project endpoints
+  * identity: Extract info from created limit
+  * compute: Use security group name or ID
+  * docs: Update authentication configuration examples
+  * Replace netifaces library
+  * Skip disabling compute service
+  * Remove reference to removed nova services
+  * Fix swift metadata setting documentation
+  * Add port bindings to SDK
+  * reno: Update master for unmaintained/2023.1
+  * identity: Add tags, options to Domain
+  * pre-commit: Migrate pyupgrade to ruff-format
+  * pre-commit: Bump versions
+  * Timing tests should use a threshold
+  * identity: Add support for endpoint projects
+  * doc: Add multiple examples of authentication configuration
+  * block storage: Add user\_id query param for Volume
+  * compute: Add additional migration parameters
+  * identity: Add functional tests for projects
+  * Add method to create network resource tags
+  * Skip disabling compute service
+  * Fix missing 'f' prefix in exception message
+  * Identity: Support assigning inherited roles
+  * Add options property to User
+  * Add functional test for tags in Neutron resources
+  * Add \`\`trunk\_details\`\` to \`\`ports\`\` resource
+  * compute: Add locked filter for Server
+  * Add TSIG key support for DNS zones in SDK
+  * Fix volume backup restore response
+  * Avoid race condition between rule removal and share deletion
+    in tearDown
+  * Add getting info about the Limit in a DNS SDK
+  * Add support for default volume types
+  * tox: Fix functional tests
+  * cloud: Don't raise error on missing domain
+  * Deprecate unnecessary options, aliases
+  * Add "trusted" attribute to "port" resource
+  * Add create, delete, find, list and UPDATE example connect
+    code
+  * cloud: Stop reimplementing ignore\_missing=False
+  * cloud: Consistently set 'ignore\_missing' arguments
+  * pre-commit: Bump versions
+  * compute, volume: Tweak 'update\_quota\_set' compat shim
+  * Identity: Support \`options\` property for roles
+  * Add getting the status of the services in designate system
+  * tests: Add functional tests for block storage quotas
+  * Fix internal error when floating ip network is not found by
+    name
+  * tests: Add helpers to create, delete temp projects
+  * tests: Migrate quota tests to use a new project
+  * compute: Add support for targeting host during migrate
+  * Followup to I0e5ac1288c0d0423fa3a7a4e63173675b78aae79
+  * Return payload as text only for text/plain secrets
+  * Add timeline for removal of deprecated features
+  * Do not create a class in runtime on a potentially hot path
+  * cloud: Deprecate passing dicts
+  * cloud: Re-add support for passing objects
+  * Fix volume summary passing non-existent all\_projects
+  * Update master for stable/2024.2
+  * stack event loops: handle get None result
+  * pre-commit: Bump mypy
+  * Remove unexpected Resource.update overrides
+  * Fix override of ShareAccessRule.delete
+  * pre-commit: Migrate from black to ruff format
+  * trivial: Remove unnecessary trailing comma
+  * pre-commit: Migrate from flake8 to ruff
+  * pre-commit: Bump versions
+  * Add support for the runbooks feature
+  * config: Minimal validation of config files
+  * Deprecate 'use\_direct\_get' parameter
+  * Support server unshelve to specific host
+  * Remove redundant code
+  * mypy: Run under minimum Python version
+  * Drop support for Python 3.8
+  * Drop support for Python 3.7
+  * Add Python 3.12 classifier
+  * image: Check path is a file before attempting to use it
+    (redux)
+  * Fix parameter name clashing in resource lock query
+  * mypy: Enable checks for openstack.tests.functional
+  * tests: Remove TestClustering functional tests
+  * mypy: Enable checks for openstack.cloud
+  * cloud: Combine networking-related classes
+  * cloud: Misc type fixes
+  * cloud: Reorganize \_OpenStackCloudMixin, Connection (2/2)
+  * cloud: Reorganize \_OpenStackCloudMixin, Connection (1/2)
+  * Added missing stack documentation and rewrite stack proxy
+    document
+  * cloud: Make service mixins subclass \_OpenStackCloudMixin
+  * cloud: Make \_OpenStackCloudMixin subclass ServicesMixin
+  * mypy: Enable checks for openstack.tests.fixtures
+  * cloud: Fix annotations for proxy method
+  * cloud: Remove check for nova extensions
+  * pre-commit: Bump versions
+  * cloud: Replace reference to removed variable
+  * BGP: return list for get\_dragents and
+    get\_bgp\_speakers\_hosted\_by\_dragent
+  * block storage: Add missing 'find\_type' proxy API to v2
+  * block storage: Add 'set\_readonly' action to v2
+  * Cast all header values to string
+  * Allow to override \_max\_microversion for Volume.\_action
+    function
+  * baremetal: Enhance VIF attachment with port and portgroup
+    UUIDs
+  * block\_storage: Add support for project\_id in Limits
+- switch to singlespec
+
+-------------------------------------------------------------------
 Mon Sep  2 17:35:16 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.3.0

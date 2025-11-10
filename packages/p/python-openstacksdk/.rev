@@ -636,4 +636,41 @@
   - Use mypy syntax compatible with older pythons.</comment>
     <requestid>1198370</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fe57335b3f1cf667009bf0bf1f14111a</srcmd5>
+    <version>4.7.1</version>
+    <time>1762798704</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.7.1:
+  * image: Provide default import method
+  * Remove dib-nodepool-functional-openstack-ubuntu-noble-src
+  * Update TOX\_CONSTRAINTS\_FILE for stable/2025.2
+  * Update .gitreview for stable/2025.2
+  * Add id to query\_mapping for Networking
+  * Add SDK support for \`\`glance image-tasks\`\`
+  * tests: Use binary mode to open files
+  * Replace CLA with DCO
+  * tests: Cleanup volume attachment tests
+  * tests: Streamline services functional test
+  * tests: Streamline servers functional test
+  * tests: Streamline (compute) images test
+  * tests: Streamline hypervisor test
+  * tests: Streamline flavor test
+  * Remove commented out sections
+  * create\_image: support other import methods
+  * resource: add max\_items parameter to resource
+  * Fix hostname attribute withing request body
+  * Increase swap allocation for devstack-networking
+  * Allow filtering of volumes by properties
+  * Fix Volume.set\_image\_metadata
+  * Remove loop variable
+  * Fix create\_volume\_snapshot() description
+  * Remove duplicate Python version declarations
+  * Migrate setup configuration to pyproject.toml
+  * zuul: Make openstacksdk-functional-devstack-masakari voting
+  * zuul: Make openstacksdk-functional-devstack-ironic voting
+  * Clean small nit comment
+  * Bump python version from 3.9 to 3.13 in testing docs</comment>
+    <requestid>1316890</requestid>
+  </revision>
 </revisionlist>
