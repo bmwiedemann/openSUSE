@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov  9 18:15:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- switch to singlespec
+
+-------------------------------------------------------------------
 Tue Feb 25 14:18:28 UTC 2025 - cloud-devel@suse.de
 
 - update to version 4.0.1
@@ -22,7 +27,7 @@ Tue Feb 25 14:18:28 UTC 2025 - cloud-devel@suse.de
 -------------------------------------------------------------------
 Fri May 13 18:30:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- fix build against python 3.10 
+- fix build against python 3.10
 
 -------------------------------------------------------------------
 Fri Oct  9 19:18:52 UTC 2020 - cloud-devel@suse.de
@@ -305,5 +310,5 @@ Mon Jan 13 13:57:11 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Fri Dec 20 15:19:42 UTC 2013 - dmueller@suse.com
 
-- Initial package 
+- Initial package
 

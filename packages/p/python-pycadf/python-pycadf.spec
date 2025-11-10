@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycadf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global oldpython python
 Name:           python-pycadf
 Version:        4.0.1
 Release:        0
@@ -24,63 +25,60 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/pycadf
 Source0:        https://files.pythonhosted.org/packages/source/p/pycadf/pycadf-4.0.1.tar.gz
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module oslo.config >= 5.2.0}
+BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-oslo.config >= 5.2.0
-BuildRequires:  python3-oslo.serialization >= 2.18.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pbr
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testscenarios
-BuildRequires:  python3-testtools
+Requires:       python-debtcollector
+Requires:       python-oslo.config >= 5.2.0
+Requires:       python-oslo.serialization >= 2.18.0
+Requires:       python-pytz
+Requires:       python-six
+Requires:       python3-pycadf-common = %{version}
 BuildArch:      noarch
+%python_subpackages
 
 %description
 DMTF Cloud Audit (CADF) data model
 
-%package -n python3-pycadf
-Summary:        DMTF Cloud Audit (CADF) data model
-Requires:       python-pycadf-common
-Requires:       python3-debtcollector
-Requires:       python3-oslo.config >= 5.2.0
-Requires:       python3-oslo.serialization >= 2.18.0
-Requires:       python3-pytz
-Requires:       python3-six
-
-%description -n python3-pycadf
-DMTF Cloud Audit (CADF) data model
-
-This package contains the Python 3.x module.
-
-%package -n python-pycadf-doc
+%package -n python3-pycadf-doc
 Summary:        Documentation for the DMTF Cloud Audit (CADF) data model
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinxcontrib-apidoc
+Provides:       %{oldpython}-pycadf-doc = %{version}
+Obsoletes:      %{oldpython}-pycadf-doc <= 4.0.1
 
-%description -n python-pycadf-doc
+%description -n python3-pycadf-doc
 Documentation for the DMTF Cloud Audit (CADF) data model.
 
-%package -n python-pycadf-common
+%package -n python3-pycadf-common
 Summary:        Common files for the DMTF Cloud Audit (CADF) data model
+Provides:       %{oldpython}-pycadf-common = %{version}
+Obsoletes:      %{oldpython}-pycadf-common <= 4.0.1
 
-%description -n python-pycadf-common
+%description -n python3-pycadf-common
 Configuration files for the DMTF Cloud Audit (CADF) data model.
 
 %prep
-%autosetup -n pycadf-4.0.1
-%py_req_cleanup
+%autosetup -n pycadf-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 # generate html docs
-PBR_VERSION=4.0.1 %sphinx_build -b html doc/source doc/build/html
+sphinx-build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
 # FIXME: pbr/wheel bug installing onfiguration files in /usr/etc
 mkdir -p %{buildroot}/%{_sysconfdir}
 mv %{buildroot}%{_prefix}%{_sysconfdir}/pycadf %{buildroot}/%{_sysconfdir}/
@@ -88,18 +86,18 @@ mv %{buildroot}%{_prefix}%{_sysconfdir}/pycadf %{buildroot}/%{_sysconfdir}/
 %check
 %{openstack_stestr_run}
 
-%files -n python3-pycadf
+%files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python3_sitelib}/pycadf
-%{python3_sitelib}/pycadf-*-py?.*.egg-info
+%{python_sitelib}/pycadf
+%{python_sitelib}/pycadf-%{version}.dist-info
 
-%files -n python-pycadf-common
+%files -n python3-pycadf-common
 %license LICENSE
 %dir %{_sysconfdir}/pycadf
 %config(noreplace) %{_sysconfdir}/pycadf/*.conf
 
-%files -n python-pycadf-doc
+%files -n python3-pycadf-doc
 %license LICENSE
 %doc doc/build/html
 
