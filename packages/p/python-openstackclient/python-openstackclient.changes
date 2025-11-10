@@ -1,4 +1,299 @@
 -------------------------------------------------------------------
+Sun Nov  9 19:19:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2.0:
+  * Adopt sdk\_fakes for compute.test\_flavor
+  * compute: Fix flavor create --id auto
+  * Adds CLI support for \`\`glance md-namespace-properties-
+    delete\`\`
+  * image: Add hashing-related fields
+  * Support image save with chunk-size option
+  * doc: Indicate md-namespace-import as WONTFIX
+  * tests: Avoid unnecessary mocks
+  * tests: Simplify mocking in server tests
+  * Adds CLI support for \`\`glance md-namespace-objects-
+    delete\`\`
+  * Remap custom named Image attributes when unsetting
+  * network: Add '--project' to SG rule list command
+  * volume: Migrate 'volume show' to SDK
+  * volume: Migrate 'volume migrate' to SDK
+  * volume: Migrate 'volume create' to SDK
+  * volume: fix volume service set call
+  * Add is\_shared to security\_groups
+  * Add metadata as a filter condition when listing volumes
+  * Replace deprecated assertItemsEqual
+  * Remove duplicate Python version declarations
+  * Migrate setup configuration to pyproject.toml
+  * Replace deprecated datetime.utcfromtimestamp
+  * Remove leading empty line from server create with --wait
+  * Fix openstack image import --method web-download --uri
+    'invalid value'
+  * docs: Add note about scoping on tokens
+  * Security-groups: Temporarily ignore is\_shared
+  * identity: Remove unnecessary helper
+  * bug fix volume group show command
+  * evacuate: respect original SHUTOFF state in --wait completion
+  * Fix missing 'options' field in 'user show' command
+  * Identity: Migrate 'group' commands to SDK
+  * tests: Simplify mocking in image tests
+  * identity: Normalise output of application credentials
+    commands
+  * network: Allow multiple FIP filter opts
+  * volume: Migrate 'volume delete' to SDK
+  * volume: Temporarily ignore new volume columns
+  * volume: Split v2, v3 create, delete commands
+  * volume: Migrate 'snapshot show', 'snapshot list' to SDK
+  * volume: Migrate 'snapshot set', 'snapshot unset' to SDK
+  * volume: Migrate 'snapshot create' to SDK
+  * volume: Migrate 'snapshot delete' to SDK
+  * volume: Add v3-specific volume snapshot module
+  * tests: Use SDK mocks for SDK-based commands
+  * volume: Migrate 'backup set', 'backup unset' to SDK
+  * volume: Migrate 'service \*' to SDK
+  * volume: Add v3-specific volume service module
+  * volume: Migrate 'block storage log level \*' to SDK
+  * Add a column to all\_projects tag of server list cmd
+  * Fix incorrect warning with --password-prompt option
+  * compute: Fix key used for NIC fixed IP field
+  * identity: Add missing user argument
+  * identity: Fix listing of applications credentials by user
+  * Bump Python version used for linters to 3.10
+  * Drop support for Python 3.9
+  * Add support for spice-direct console types
+  * Update README
+  * Add labels to Dockerfile
+  * Update the docker image to python3.12
+  * zuul: Remove osc-upload-image, osc-promote-image jobs
+  * tests: Stop returning FakeResource in compute tests
+  * tests: Remove sdk prefix
+  * tests: Remove dead code
+  * tests: Remove use of legacy resource helpers
+  * Require confirmation to reset server state
+  * Fix 'openstack keypair list --project <project>'
+  * Don't warn about unsupported version with SDK-based commands
+  * Workaround for failing tests on openstacksdk change
+  * Add support for showing scheduler\_hints in server details
+  * Refactor network fakes to sdk properties PART6
+  * Refactor network fakes to sdk properties PART 5
+  * volume: Make better use of argparse
+  * image: Migrate 'create image' volume calls to SDK
+  * tests: Rename 'compute\_sdk\_client' -> 'compute\_client'
+  * compute: Migrate to 'compute' client alias
+  * Remove use of formatter function
+  * Imported Translations from Zanata
+  * Remove use of formatter function
+  * Prepare for osc-lib changes
+  * pre-commit: Enable mypy
+  * typing: Indicate another tuple to be extended
+  * docs: Remove irrelevant TODO
+  * volume: Remove Cinder v1 support
+  * docs: Migrate remaining block storage commands to autocommand
+  * Remove contributor specs
+  * Permit use of tuple API\_VERSIONS
+  * identity: Migrate 'endpoint' commands to SDK
+  * typing: Resolve incompatible operand issues
+  * typing: Correct type for missing attributes
+  * typing: Remove use of optional imports
+  * typing: Use consistent types
+  * typing: Add types for empty dicts, tuples
+  * typing: Indicate tuples to be extended
+  * pre-commit: Bump versions
+  * Fix neutron typos and formatting
+  * Return the \`\`port\`\` column headers expected in the list
+    command
+  * Add filters to search for enabled/disabled users and projects
+  * [Neutron] Add "qos-policy" parameter to router creation
+    command
+  * Fix networking quota usage show
+  * Replace description-content-type by its underscore name
+  * Specifying project-domain for project
+  * zuul: Make image job non-voting
+  * Remove tags from README
+  * Prepare for ruff bump
+  * Update master for stable/2025.1
+  * Add libpcre3-dev in bindep.txt for pcre.h
+  * Fix image import --disallow-failure flag
+  * Add device ID and device owner to port unset
+  * identity: Fix 'trust' commands to work with SDK
+  * Fix missing space in help messages
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 22:52:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.4.0:
+  * Fix credential creation
+  * [Neutron] Fix the "port show" command for trunk details
+  * [Neutron] Support \`\`uplink-status-propagation-updatable\`\`
+    extension
+  * handle 'router create --flavor' option
+  * [Neutron] "uplink-status-propagation" enabled by default
+  * Add "qinq-vlan" and "no-qinq-vlan" params to the "network
+    create" cmd
+  * Temporary ignore "is\_vlan\_qinq" column in the output
+  * Identity: Deprecate \`--region None\` in limits/registered
+    limits
+  * Get "security\_groups" when port list
+  * Show final image state after image create
+  * Identity: Migrate 'role' commands to SDK
+  * Add the trunk subports information to the port list command
+  * Fix: Volume backup restore output
+  * identity: Migrate 'trust' commands to SDK
+  * tests: Stop setting attributes on class
+  * Adopt sdk\_fakes for compute.test\_server\_volume
+  * Adopt sdk\_fakes for compute.test\_server\_group
+  * Adopt sdk\_fakes for compute.test\_hypervisor
+  * Adopt sdk\_fakes for compute.test\_usage
+  * Adopt sdk\_fakes for compute.test\_service
+  * Adopt sdk\_fakes for compute.test\_keypair
+  * Adopt sdk\_fakes for compute.test\_console
+  * Adopt sdk\_fakes for compute.aggregate
+  * identity: Migrate 'service provider' commands to SDK
+  * quota: Catch correct exception type for Compute quotas
+  * tests: Add functional test for adding, removing SGs
+  * compute: Workaround bug #2089821
+  * network: Make better use of argparse
+  * compute: Add server create --no-security-group option
+  * Remove ceilometer service overrides
+  * identity: Migrate \`region\` commands to SDK
+  * reno: Update master for unmaintained/2023.1
+  * identity: Migrate 'credential' commands to SDK
+  * Replace deprecated datetime.utcnow()
+  * requirements: Remove unused test deps
+  * Skip tips jobs on pre-commit config update
+  * common: Use correct argument for volume limits
+  * Add "trusted" attribute to the "port"
+  * Fix ignored --user-domain in role assignment list
+  * Show Created At column for volume backups in v3
+  * remove project from network flavor profile
+
+  * 7.2.1
+  * -----
+
+  * clientmanager: Check for 'block-storage' service type
+  * Fix volume backup show by name
+
+  * 7.2.0
+  * -----
+
+  * Always resolve domain id
+  * identity: in \`service set\` command, don't pass the enable
+    option when it is None
+  * evacuate SDK actually uses admin\_pass param
+  * identity: Don't pass unset options when creating user
+  * Add status filtering options to port list
+  * identity: Migrate 'access rule' commands to SDK
+  * tests: Add functional test for access rules
+  * evacuate: Fix password parameter name for SDK
+  * Handle NotFoundException when listing floating IPs
+  * pre-commit: Migrate pyupgrade to ruff
+  * pre-commit: Migrate bandit to ruff
+  * Removed the emit\_duplicated\_warning() funtion
+  * compute: Fix --host in server list for new openstacksdk
+  * Update master for stable/2024.2
+  * pre-commit: Migrate from black to ruff format
+  * trivial: Remove unnecessary trailing comma
+  * pre-commit: Migrate from flake8 to ruff
+  * pre-commit: Bump versions
+  * identity: Use previous naming for 'service show' fields
+  * identity: Use previous naming for 'application credential
+    show' fields
+  * compute: Make 'hypervisor show' a bit faster
+  * compute: Add 'uuid' column to aggregate list
+  * compute: Only pass admin\_password on rebuild if set
+  * quota: Allow 'quota set' to function without volume service
+  * Bump requests minimal version
+  * Respect --skip-resource when deleting
+  * Add callback on plugin load failure
+  * Drop support for Python 3.8
+  * Add Python 3.12 classifier
+  * tests: Remove aliasing from extensions test
+  * Remove TestServer base class
+  * Remove python-novaclient
+  * compute: Allow adding, removing multiple SGs
+  * quota: Migrate 'quota \*' to SDK
+  * quota: Split up 'quota list' command
+  * quota: Default network quotas to not force
+  * quota: Add 'quota set --default' option
+  * quota: Remove deprecated quota options
+  * quota: Move nova-network-related quota
+  * tests: Remove references to novaclient methods
+  * network: Replace use of in-tree API client
+  * compute: Migrate 'server create' to SDK
+  * identity: Migrate 'application credential' commands to SDK
+  * identity: Migrate 'service' commands to SDK
+  * compute: Prevent use of conflicting v\*-fixed-ip for 'server
+    create --nic'
+  * compute: Migrate 'server evacuate' to SDK
+  * compute: Migrate remaining server actions to SDK
+  * compute: Migrate 'server rebuild' to SDK
+  * compute: Avoid third API call during 'server show'
+  * compute: Always use SDK client to display server
+  * compute: Migrate 'server set', 'server unset' commands
+  * compute: Migrate 'server migrate' to SDK
+  * compute: Migrate 'server add/remove security group' to SDK
+  * common: Migrate 'limits show' to SDK
+  * volume: Migrate 'volume list' to compute SDK
+  * volume: Migrate 'volume attachment \*' to SDK
+  * tests: Migrate to 'set\_xxx\_api\_version' helpers
+  * tests: Add ability to configure fake server API version
+  * volume: Add v3-specific volume transfer module
+  * volume: add v3-specific volume type module
+  * volume: Add v3-specific volume module
+  * volume: Add v3-specific volume backup module
+  * docs: Remove references to novaclient
+  * compute: Migrate remaining tests to SDK objects
+  * compute: Migrate 'host set' to SDK
+  * compute: Migrate 'agent \*' to SDK
+  * network: Migrate 'port list' to compute SDK
+  * compute: Migrate tests for ShowServer to SDK objects
+  * Fix: incremental volume backup
+  * docs: Fix indentation
+  * compute: Remove unnecessary try-except
+  * Followup: Reduce LOC in volume v3 service
+  * Add cluster to volume service list
+  * Add tests for 'default security group rule create'
+  * Add volume snapshot unmanage support
+  * Add DeleteVolumeSnapshot class to v3
+  * Identity: Migrate 'role assignment' commands to SDK
+  * tox: Add testenv descriptions
+  * Add support for volume unmanage
+  * Remove admin only text from 'port create' help text
+  * Drop direct dependency on simplejson
+  * Show Created At column for volume backups
+  * Remove clients of retired projects
+  * Add DeleteVolume class to v3
+  * Add support for managing volumes
+  * Add CreateVolume class to v3
+  * Fix tests on Python 3.12
+  * identity: Make better use of argparse
+  * Router flavor\_id can be a name
+  * pre-commit: Add pyupgrade hook
+  * reno: Update master for unmaintained/zed
+  * tests: Fix trivial sorting issue
+  * trivial: Prepare for pyupgrade pre-commit hook
+  * tox: Remove bandit skips, run via pre-commit
+  * tox: Add functional-pyNN jobs
+  * pre-commit: Bump versions
+  * Improve output of 'server migrate --wait'
+  * Add image metadef resource type association commands
+    'create', 'list', 'delete'
+  * tests: Remove use of unnecessary fake argparse Namespace
+  * tests: Use consistent shortcut to fake identity client
+  * Identity: Properly list users in a group in 'user list'
+    commands
+  * volume: Deprecate '--retype-policy' in favor of '--migration-
+    policy'
+  * Tox: Fix install commands for unit-tips and functional-tips
+  * identity: Migrate 'user' commands to SDK
+  * tests: Add identity v2, v3 FakeClientMixin
+  * Update master for stable/2024.1
+  * image cache clear: fix value of default target
+  * refectoring: remove duplicate declaration
+  * Fix typo in the list of Glanceclient/OSC commands
+  * refectory: remove unreachable code
+
+-------------------------------------------------------------------
 Thu May  2 16:05:27 UTC 2024 - cloud-devel@suse.de
 
 - update to version 6.6.0

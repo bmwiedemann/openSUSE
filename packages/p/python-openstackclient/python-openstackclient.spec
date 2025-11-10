@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstackclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,121 +16,95 @@
 #
 
 
+%global pythons %{primary_python}
 Name:           python-openstackclient
-Version:        6.6.0
+Version:        8.2.0
 Release:        0
 Summary:        OpenStack Command-line Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-openstackclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python-openstackclient-6.6.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python_openstackclient-%{version}.tar.gz
+BuildRequires:  %{python_module cinderclient}
+BuildRequires:  %{python_module cliff >= 3.5.0}
+BuildRequires:  %{python_module ddt}
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module keystoneclient}
+BuildRequires:  %{python_module openstacksdk >= 4.7.1}
+BuildRequires:  %{python_module os-client-config}
+BuildRequires:  %{python_module osc-lib >= 2.3.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module osprofiler}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module stevedore >= 2.0.1}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module wrapt}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-cinderclient >= 3.3.0
-BuildRequires:  python3-cliff >= 3.5.0
-BuildRequires:  python3-ddt
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-glanceclient
-BuildRequires:  python3-keystoneclient >= 3.22.0
-BuildRequires:  python3-novaclient >= 18.1.0
-BuildRequires:  python3-openstacksdk >= 2.0.0
-BuildRequires:  python3-os-client-config
-BuildRequires:  python3-osc-lib >= 2.3.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-osprofiler
-BuildRequires:  python3-requests
-BuildRequires:  python3-requests-mock
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-stestr
-BuildRequires:  python3-stevedore >= 2.0.1
-BuildRequires:  python3-testtools
-BuildRequires:  python3-wrapt
+Requires:       python-Babel
+Requires:       python-cinderclient
+Requires:       python-cliff >= 3.5.0
+Requires:       python-keystoneclient
+Requires:       python-openstacksdk >= 4.7.1
+Requires:       python-osc-lib >= 2.3.0
+Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-oslo.utils
 BuildArch:      noarch
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-openstackclient < %{version}
+%endif
+%python_subpackages
 
 %description
 python-openstackclient is a unified command-line client for the OpenStack APIs.
 It is a thin wrapper to the stock python-*client modules that implement the
 actual REST API client actions.
 
-%package -n python3-openstackclient
-Summary:        OpenStack Command-line Client
-Requires:       python3-Babel
-Requires:       python3-cinderclient >= 3.3.0
-Requires:       python3-cliff >= 3.5.0
-Requires:       python3-glanceclient
-Requires:       python3-heatclient
-Requires:       python3-keystoneauth1
-Requires:       python3-keystoneclient >= 3.22.0
-Requires:       python3-novaclient >= 18.1.0
-Requires:       python3-openstacksdk >= 2.0.0
-Requires:       python3-osc-lib >= 2.3.0
-Requires:       python3-oslo.i18n >= 3.15.3
-Requires:       python3-oslo.utils
-%if 0%{?suse_version}
-Obsoletes:      python2-openstackclient < 4.0.0
-%endif
-
-%description -n python3-openstackclient
-python-openstackclient is a unified command-line client for the OpenStack APIs.
-It is a thin wrapper to the stock python-*client modules that implement the
-actual REST API client actions.
-
-This package contains the Python 3.x module.
-
-%package -n python-openstackclient-doc
+%package -n python3-openstackclient-doc
 Summary:        Documentation for OpenStack Command-line Client
 Group:          Documentation/HTML
-# Some clients are commented out, since they have not been built yet
-# TODO(jpena): uncomment them to enable their sections in the documentation
 BuildRequires:  python3-Sphinx
-#BuildRequires:  python3-aodhclient
-#BuildRequires:  python3-barbicanclient
-#BuildRequires:  python3-designateclient
-#BuildRequires:  python3-heatclient
-#BuildRequires:  python3-ironicclient
-#BuildRequires:  python3-mistralclient
-#BuildRequires:  python3-muranoclient
-#BuildRequires:  python3-neutronclient
 BuildRequires:  python3-openstackdocstheme
-#BuildRequires:  python3-ironic-inspector-client
-#BuildRequires:  python3-saharaclient
-#BuildRequires:  python3-zaqarclient
 BuildRequires:  python3-sphinxcontrib-apidoc
 
-%description -n python-openstackclient-doc
+%description -n python3-openstackclient-doc
 python-openstackclient is a unified command-line client for the OpenStack APIs.
 It is a thin wrapper to the stock python-*client modules that implement the
 actual REST API client actions.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-openstackclient-6.6.0
-%py_req_cleanup
+%autosetup -p1 -n python_openstackclient-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
-PBR_VERSION=6.6.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=6.6.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=%{version} %sphinx_build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
 # man page
 install -p -D -m 644 doc/build/man/openstack.1 %{buildroot}%{_mandir}/man1/openstack.1
 
 %check
 %{openstack_stestr_run}
 
-%files -n python3-openstackclient
+%files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python3_sitelib}/openstackclient
-%{python3_sitelib}/*.egg-info
+%{python_sitelib}/openstackclient
+%{python_sitelib}/python_openstackclient-%{version}.dist-info
 %{_bindir}/openstack
 %{_mandir}/man1/openstack.1.gz
 
-%files -n python-openstackclient-doc
+%files -n python3-openstackclient-doc
 %license LICENSE
 %doc doc/build/html
 

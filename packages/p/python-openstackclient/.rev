@@ -651,4 +651,41 @@ update to version 3.1.0
   - trivial: Fix typo</comment>
     <requestid>1171414</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f444534fd05fea6a47eba22cb1ed5799</srcmd5>
+    <version>8.2.0</version>
+    <time>1762798670</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.2.0:
+  * Adopt sdk\_fakes for compute.test\_flavor
+  * compute: Fix flavor create --id auto
+  * Adds CLI support for \`\`glance md-namespace-properties-
+    delete\`\`
+  * image: Add hashing-related fields
+  * Support image save with chunk-size option
+  * doc: Indicate md-namespace-import as WONTFIX
+  * tests: Avoid unnecessary mocks
+  * tests: Simplify mocking in server tests
+  * Adds CLI support for \`\`glance md-namespace-objects-
+    delete\`\`
+  * Remap custom named Image attributes when unsetting
+  * network: Add '--project' to SG rule list command
+  * volume: Migrate 'volume show' to SDK
+  * volume: Migrate 'volume migrate' to SDK
+  * volume: Migrate 'volume create' to SDK
+  * volume: fix volume service set call
+  * Add is\_shared to security\_groups
+  * Add metadata as a filter condition when listing volumes
+  * Replace deprecated assertItemsEqual
+  * Remove duplicate Python version declarations
+  * Migrate setup configuration to pyproject.toml
+  * Replace deprecated datetime.utcfromtimestamp
+  * Remove leading empty line from server create with --wait
+  * Fix openstack image import --method web-download --uri
+    'invalid value'
+  * docs: Add note about scoping on tokens
+  * Security-groups: Temporarily ignore is\_shared
+  * identity: Remove unnecessary helper</comment>
+    <requestid>1316841</requestid>
+  </revision>
 </revisionlist>
