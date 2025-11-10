@@ -142,4 +142,14 @@
     <comment></comment>
     <requestid>1312828</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a534b454614d58c9e942843bc2521eb8</srcmd5>
+    <version>2.10.0</version>
+    <time>1762798853</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.0
+  * **exp**: add zone format txt record helper (#578)
+  * add server and load balancer `private_net_for` helper method (#580) (forwarded request 1316895 from glaubitz)</comment>
+    <requestid>1316908</requestid>
+  </revision>
 </revisionlist>
