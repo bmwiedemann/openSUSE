@@ -71,6 +71,7 @@ Source0:        http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich-%
 Source1:        mpivars.sh
 Source2:        mpivars.csh
 Source100:      _multibuild
+Source101:      README.md
 Patch0:         mvapich3-s390_get_cycles.patch
 Patch1:         pass-correct-size-to-snprintf.patch
 # Backport from mpich
@@ -121,6 +122,10 @@ BuildRequires:  libuct-devel
 ExcludeArch:    %ix86 %arm
 %endif
 Requires:       mpi-selector
+
+%if 0%{?testsuite}
+BuildRequires:  %package_name-devel = %{version}
+%endif
 
 %description
 This is an MPI-3 implementation which includes all MPI-1 and MPI-2 features. It
@@ -173,8 +178,8 @@ cp /usr/share/automake*/config.* .
 
 # GCC10 needs an extra flag to allow badly passed parameters
 %if 0%{?suse_version} > 1500
-export FFLAGS="-fallow-argument-mismatch $FFLAGS"
-export CFLAGS="-std=gnu17 $CFLAGS"
+export FFLAGS="-fallow-argument-mismatch %{optflags}"
+export CFLAGS="-std=gnu17 %{optflags}"
 %endif
 
 ./autogen.sh --without-ucx --without-ofi --without-json
@@ -205,21 +210,25 @@ export CFLAGS="-std=gnu17 $CFLAGS"
    --with-device=ch4:ucx \
 %endif
   --without-mpe
-make %{?_smp_mflags} V=1
 
 %if 0%{?testsuite}
-%check
-make V=1 check
-%endif
-
 %install
-
-%if 0%{?testsuite}
-# Remove everything from testsuite package
-# It is all contained by mvapich3 packages
 rm -rf %{buildroot}/*
 
+%check
+# Disable CMA. Modern kernels require specific ptrace capabilities
+# that are not available in OBS
+export MPIR_CVAR_CH4_CMA_ENABLE=0
+for dir in src/mpl src/pm/hydra/mpl; do
+  (
+      cd $dir &&  make check
+  )
+done
+
 %else
+make %{?_smp_mflags} V=1
+
+%install
 make DESTDIR=%{buildroot} V=1 install
 
 rm -f %{buildroot}%{p_libdir}/libfmpich.la \

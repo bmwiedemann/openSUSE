@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  8 23:34:58 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Speed up testsuite by not rebuilding mvpich3 completely
+- Fix CFLAGS/FFLAGS
+
+-------------------------------------------------------------------
 Fri Jul 11 08:16:51 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Force -std to gnu17 to fix compilation with GCC15
