@@ -253,4 +253,41 @@
   - Remove unused reno from test requirements</comment>
     <requestid>1198355</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1e7e30fb8e9d716436c3db5842c04dc1</srcmd5>
+    <version>7.7.0</version>
+    <time>1762798699</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.7.0:
+  * add pyproject.toml to support pip 23.1
+- switch to singlespec
+
+- update to 7.5.1:
+  * Skip installation to speed up pep8
+  * Adjust warning message for eventlet support deprecation
+  * deprecate eventlet monkey patching with oslo.rootwrap
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * pre-commit: Bump versions
+  * Remove Python 3.8 support
+  * Fix outdated tox minversion
+  * Declare Python 3.12 support
+  * Extend timeout before SIGKILL
+  * Update master for stable/2024.2
+  * Fix \_FunctionalBase.test\_run\_as
+
+- update to 7.5.1:
+  * Skip installation to speed up pep8
+  * Adjust warning message for eventlet support deprecation
+  * deprecate eventlet monkey patching with oslo.rootwrap
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * pre-commit: Bump versions
+  * Remove Python 3.8 support
+  * Fix outdated tox minversion
+  * Declare Python 3.12 support</comment>
+    <requestid>1316862</requestid>
+  </revision>
 </revisionlist>
