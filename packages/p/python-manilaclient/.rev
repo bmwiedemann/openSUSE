@@ -537,4 +537,12 @@ update to version 1.10.0
   - Don't set availability_zone for 2.32 version of api</comment>
     <requestid>1198511</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e59046f54977f863ccbb4c4711c79caa</srcmd5>
+    <version>5.6.0</version>
+    <time>1762798630</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316765</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov  9 20:54:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.0:
+  * Add support for out of place share backup restores
+  * Add support of encryption\_key\_ref option for share create
+  * Add option to override API endpoint
+  * Add negative functional test for message
+  * Zuul: do not use USE\_PYTHON3
+  * Remove Python 3.9 support
+  * pre-commit: Bump hacking and use native flake8 hook
+  * [Doc] Address code block issue
+  * Update master for stable/2025.1
+  * bump osc-lib in requirements
+  * Update microversion to 2.89
+  * Run OSC plugin jobs
+  * Add pre-commit
+  * Remove unused Babel
+  * reno: Update master for unmaintained/2023.1
+  * Allow to update access rule for type 'ip'
+  * Fix broken exception handling on unit tests
+  * Use time.sleep() instead of eventlet.sleep()
+  * Add ensure shares command
+  * Remove Python 3.8 support
+  * Update master for stable/2024.2
+  * Metadata for share export location
+
+-------------------------------------------------------------------
 Tue Sep  3 13:15:25 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.0.0
@@ -134,7 +161,7 @@ Thu Dec  1 10:27:54 UTC 2022 - cloud-devel@suse.de
 -------------------------------------------------------------------
 Sat Jun 18 13:48:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add osc-lib dependency 
+- add osc-lib dependency
 
 -------------------------------------------------------------------
 Tue May 24 21:11:48 UTC 2022 - cloud-devel@suse.de
@@ -772,7 +799,7 @@ Wed Jun  3 09:21:14 UTC 2015 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon May  4 10:21:47 UTC 2015 - dmueller@suse.com
 
-- go back to 1.1.0 
+- go back to 1.1.0
 
 -------------------------------------------------------------------
 Sun Apr 19 01:36:29 UTC 2015 -  cloud-devel@suse.de
