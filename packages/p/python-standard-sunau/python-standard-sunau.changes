@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 10 03:35:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip Python versions to prevent further timebombs.
+
+-------------------------------------------------------------------
 Thu Dec 12 03:10:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 3.13.0. 
