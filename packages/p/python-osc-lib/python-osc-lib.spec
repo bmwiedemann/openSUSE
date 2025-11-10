@@ -1,7 +1,7 @@
 #
 # spec file for package python-osc-lib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,52 +17,48 @@
 
 
 Name:           python-osc-lib
-Version:        3.1.0
+Version:        4.2.0
 Release:        0
 Summary:        OpenStackClient Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/osc-lib
-Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-3.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/osc_lib/osc_lib-%{version}.tar.gz
+BuildRequires:  %{python_module cliff >= 4.9.0}
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module keystoneauth1 >= 5.10.0}
+BuildRequires:  %{python_module openstacksdk >= 4.7.1}
+BuildRequires:  %{python_module oslo.i18n >= 6.6.0}
+BuildRequires:  %{python_module oslo.utils >= 9.1.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module osprofiler}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module platformdirs}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module simplejson}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module stevedore >= 1.20.0}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-cliff >= 3.2.0
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-keystoneauth1 >= 3.14.0
-BuildRequires:  python3-openstacksdk >= 0.15.0
-BuildRequires:  python3-oslo.i18n >= 3.15.3
-BuildRequires:  python3-oslo.utils >= 3.33.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-osprofiler
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-platformdirs
-BuildRequires:  python3-requests-mock
-BuildRequires:  python3-simplejson
-BuildRequires:  python3-stestr
-BuildRequires:  python3-stevedore >= 1.20.0
-BuildRequires:  python3-testtools
+Requires:       python-cliff >= 4.9.0
+Requires:       python-keystoneauth1 >= 5.10.0
+Requires:       python-openstacksdk >= 4.7.1
+Requires:       python-oslo.i18n >= 6.6.0
+Requires:       python-oslo.utils >= 9.1.0
+Requires:       python-pbr >= 2.0.0
+Requires:       python-platformdirs
+Requires:       python-simplejson
+Requires:       python-stevedore >= 1.20.0
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-osc-lib < %{version}
+%endif
 BuildArch:      noarch
+%python_subpackages
 
 %description
 OpenStackClient (aka OSC) is a command-line client for OpenStack.  osc-lib
 is a package of common support modules for writing OSC plugins.
-
-%package -n python3-osc-lib
-Summary:        OpenStackClient Library
-Requires:       python3-cliff >= 3.2.0
-Requires:       python3-keystoneauth1 >= 3.14.0
-Requires:       python3-openstacksdk >= 0.15.0
-Requires:       python3-oslo.i18n >= 3.15.3
-Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-pbr >= 2.0.0
-Requires:       python3-platformdirs
-Requires:       python3-simplejson
-Requires:       python3-stevedore >= 1.20.0
-
-%description -n python3-osc-lib
-OpenStackClient (aka OSC) is a command-line client for OpenStack.  osc-lib
-is a package of common support modules for writing OSC plugins.
-
-This package contains the Python 3.x module.
 
 %package -n python-osc-lib-doc
 Summary:        Documentation for the OpenStack client library
@@ -75,14 +71,13 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the OpenStack client library.
 
 %prep
-%autosetup -p1 -n osc-lib-3.1.0
-%py_req_cleanup
+%autosetup -p1 -n osc_lib-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
 
 # generate html docs
 PBR_VERSION=%{version} PYTHONPATH=. %sphinx_build -a -E -d doc/build/doctrees -b html doc/source doc/build/html
@@ -92,11 +87,11 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %check
 %{openstack_stestr_run}
 
-%files -n python3-osc-lib
+%files %{python_files}
 %license LICENSE
 %doc README.rst ChangeLog
-%{python3_sitelib}/osc_lib
-%{python3_sitelib}/*.egg-info
+%{python_sitelib}/osc_lib
+%{python_sitelib}/osc_lib-%{version}.dist-info
 
 %files -n python-osc-lib-doc
 %license LICENSE

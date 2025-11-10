@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Nov  9 16:10:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * mypy: Enable strict mode
+  * Remove duplicate Python version declarations
+  * Migrate setup configuration to pyproject.toml
+  * typing: Set Command.app type
+  * Bump Python version used for linters to 3.10
+  * Revert "Use Python 3.8-style type hints"
+  * Revert "Temporarily revert dependency bumps"
+  * Drop support for Python 3.8, 3.9 (again)
+  * Temporarily revert dependency bumps
+  * Use Python 3.8-style type hints
+  * Temporarily undrop support for Python 3.8, 3.9
+  * Correct getattr call
+  * Drop support for Python 3.8, 3.9
+  * Replace UPPER\_CONSTRAINTS\_FILE
+  * typing: Enable disallow\_subclassing\_any
+  * tests: Resolve TODO
+  * utils: Deprecate legacy client-specific helpers
+  * utils: Remove support for legacy format functions
+  * utils: Group similar utilities together
+  * utils: Don't warn for partial formatter classes
+  * typing: Add typing to osc\_lib.utils
+  * typing: Add typing to osc\_lib.command
+  * clientmanager: Deprecate ClientCache
+  * typing: Add typing to osc\_lib.clientmanager
+  * typing: Add typing to osc\_lib.shell
+  * typing: Add typing to osc\_lib.logs, osc\_lib.i18n
+  * typing: Add typing to osc\_lib.cli
+  * api: Deprecate BaseAPI
+  * typing: Add typing to osc\_lib.api
+  * Remove unused docs Makefile
+  * typing: Add typing to osc\_lib.exceptions
+  * pre-commit: Enable mypy
+  * typing: Fix initial typing issues
+  * Update master for stable/2025.1
+  * Add pagination helpers
+  * pre-commit: Enable ruff S (bandit) checks
+  * pre-commit: Bump versions
+  * tests: Use consistent output widths
+  * reno: Update master for unmaintained/2023.1
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 22:57:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * ruff: Enable pyupgrade rules
+  * pre-commit: Migrate from black to ruff format
+  * pre-commit: Migrate from flake8 to ruff
+  * parseactions: Use ArgumentError, not ArgumentTypeError
+  * Update master for stable/2024.2
+  * Exclude tests directory from coverage calculation
+
+-------------------------------------------------------------------
 Mon Sep  2 17:35:00 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.1.0
