@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 10 14:57:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 11.3.1:
+  * fix: notify the Forgejo instance that the logs of a task can be transferred
+    from the database to storage
+  * chore: fix typo in interpeter.go's file name
+
+-------------------------------------------------------------------
 Thu Nov  6 10:45:57 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 11.3.0:
