@@ -785,4 +785,12 @@ update to version 5.1.0
     <comment></comment>
     <requestid>1285379</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>eb4e32e768d8ea91817e1dd06ec94159</srcmd5>
+    <version>18.11.0</version>
+    <time>1762798636</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316769</requestid>
+  </revision>
 </revisionlist>
