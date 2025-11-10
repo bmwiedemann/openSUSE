@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Nov  9 17:52:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * Fix signal lookup to only include singals
+  * Add comprehensive backend system documentation
+  * Revert "Fix keyword-arg-before-vararg warning"
+  * Don't deprecate the entire oslo\_service.wsgi module
+  * Fix inconsistent interface of ThreadGroup
+  * Fix crash during shutdown by using public shutdown() method
+  * Accept wait\_interval and support multiple launch\_service()
+    calls
+  * Fix keyword-arg-before-vararg warning
+  * Fix ServiceBase mapping when using threading backend
+  * add pyproject.toml to support pip 23.1
+  * Add threading backend implementation using cotyledon and
+    standard threads
+  * Replace os.popen
+  * Drop redundant injection of VIRTUAL\_ENV
+  * Update master for stable/2025.1
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 22:03:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.1:
+  * Fix removed public API
+  * Migrate Eventlet components to the new backend system
+  * Introduce configurable backend system in oslo.service
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Remove Python 3.8 support
+  * Fix outdated tox minversion
+  * Declare Python 3.12 support
+  * Remove workaround for eventlet < 0.27.0
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Tue Sep  3 15:01:33 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.5.0

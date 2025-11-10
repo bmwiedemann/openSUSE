@@ -430,4 +430,12 @@
   - reno: Update master for unmaintained/zed</comment>
     <requestid>1198541</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>59ba82dbb527722c3abf355b6782a4eb</srcmd5>
+    <version>4.3.0</version>
+    <time>1762798654</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316790</requestid>
+  </revision>
 </revisionlist>
