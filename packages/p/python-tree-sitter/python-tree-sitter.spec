@@ -1,7 +1,7 @@
 #
 # spec file for package python-tree-sitter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tree-sitter
-Version:        0.25.1
+Version:        0.25.2
 Release:        0
 Summary:        Python bindings to the Tree-sitter parsing library
 License:        MIT

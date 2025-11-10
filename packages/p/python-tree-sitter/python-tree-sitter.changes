@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:21:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.2:
+  * ci: bump actions/download-artifact from 4 to 5 in the actions
+    group
+  * ci: bump actions/checkout from 4 to 5 in the actions group
+  * build: bump tree_sitter/core from `3624198` to `629093d`
+  * build: properly detect MSVC compiler
+  * ci: bump actions/upload-pages-artifact from 3 to 4 in the
+    actions group
+  * ci: bump actions/setup-python from 5 to 6 in the actions
+    group
+  * build: bump tree_sitter/core from `629093d` to `a467ea8`
+  * fix(parser): fix memleak of source_view
+  * build: bump tree_sitter/core from `a467ea8` to `da6fe9b`
+
+-------------------------------------------------------------------
 Mon Aug 11 00:30:04 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Update to version 0.25.1
@@ -54,7 +71,7 @@ Mon Aug 11 00:30:04 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreut
     - Parser.parse(): added progress_callback parameter
     - LookaheadIterator.__next__(): yields tuple[int, str] !
     - LookaheadIterator.reset(state, language): renamed from reset_state !
- 
+
 -------------------------------------------------------------------
 Tue Jan 28 09:15:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 

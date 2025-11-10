@@ -23,4 +23,24 @@
     <comment></comment>
     <requestid>1298770</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29e578a1a04bfc0d499711467b12251a</srcmd5>
+    <version>0.25.2</version>
+    <time>1762798767</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.25.2:
+  * ci: bump actions/download-artifact from 4 to 5 in the actions
+    group
+  * ci: bump actions/checkout from 4 to 5 in the actions group
+  * build: bump tree_sitter/core from `3624198` to `629093d`
+  * build: properly detect MSVC compiler
+  * ci: bump actions/upload-pages-artifact from 3 to 4 in the
+    actions group
+  * ci: bump actions/setup-python from 5 to 6 in the actions
+    group
+  * build: bump tree_sitter/core from `629093d` to `a467ea8`
+  * fix(parser): fix memleak of source_view
+  * build: bump tree_sitter/core from `a467ea8` to `da6fe9b`</comment>
+    <requestid>1316815</requestid>
+  </revision>
 </revisionlist>
