@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Nov  9 13:26:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.1:
+  * Imported Translations from Zanata
+  * A PipeMutex that works with asyncio eventlet hub
+  * Use upper-constraints for all requirements when testing
+  * Use user\_id from context to fix unit tests
+  * add pyproject.toml to support pip 23.1
+  * tox: Remove basepython
+  * Update master for stable/2025.1
+  * Use updated 'project' keyword for config docs
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 21:55:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0:
+  * Skip installation to speed up pep8
+  * deprecate eventlet monkey patch within oslo.log
+  * Fix outdated envlist
+  * Skip grenade job for doc update
+  * Support running tests w/eventlet monkey patching
+  * reno: Update master for unmaintained/2023.1
+  * Add missing contextmanager interfaces to PipeMutex
+  * Add note about requirements lower bounds
+  * Skip functional tests on pre-commit config  update
+  * Remove Python 3.8 support
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Remove windows support
+  * Fix outdated tox minversion
+  * Declare Python 3.12 support
+  * Remove usage of deprecated RequestContext attributes
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Fri Sep 27 09:26:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - drop unused monotonic dependency

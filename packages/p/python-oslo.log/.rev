@@ -501,4 +501,39 @@
     <comment>- drop unused monotonic dependency</comment>
     <requestid>1204110</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e4bfd441fe8cbe6b52127d2df61a03a6</srcmd5>
+    <version>7.2.1</version>
+    <time>1762798693</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.2.1:
+  * Imported Translations from Zanata
+  * A PipeMutex that works with asyncio eventlet hub
+  * Use upper-constraints for all requirements when testing
+  * Use user\_id from context to fix unit tests
+  * add pyproject.toml to support pip 23.1
+  * tox: Remove basepython
+  * Update master for stable/2025.1
+  * Use updated 'project' keyword for config docs
+- switch to singlespec
+
+- update to 7.1.0:
+  * Skip installation to speed up pep8
+  * deprecate eventlet monkey patch within oslo.log
+  * Fix outdated envlist
+  * Skip grenade job for doc update
+  * Support running tests w/eventlet monkey patching
+  * reno: Update master for unmaintained/2023.1
+  * Add missing contextmanager interfaces to PipeMutex
+  * Add note about requirements lower bounds
+  * Skip functional tests on pre-commit config  update
+  * Remove Python 3.8 support
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Remove windows support
+  * Fix outdated tox minversion
+  * Declare Python 3.12 support
+  * Remove usage of deprecated RequestContext attributes
+  * Update master for stable/2024.2</comment>
+    <requestid>1316857</requestid>
+  </revision>
 </revisionlist>

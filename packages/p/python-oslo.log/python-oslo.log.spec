@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.log
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,53 +17,47 @@
 
 
 Name:           python-oslo.log
-Version:        6.1.2
+Version:        7.2.1
 Release:        0
 Summary:        OpenStack log library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.log
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-6.1.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo_log/oslo_log-%{version}.tar.gz
+BuildRequires:  %{python_module eventlet}
+BuildRequires:  %{python_module oslo.config >= 5.2.0}
+BuildRequires:  %{python_module oslo.context >= 2.21.0}
+BuildRequires:  %{python_module oslo.i18n >= 3.20.0}
+BuildRequires:  %{python_module oslo.serialization >= 2.25.0}
+BuildRequires:  %{python_module oslo.utils >= 3.36.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module python-dateutil >= 2.7.0}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  openstack-macros
-BuildRequires:  python3-eventlet
-BuildRequires:  python3-oslo.config >= 5.2.0
-BuildRequires:  python3-oslo.context >= 2.21.0
-BuildRequires:  python3-oslo.i18n >= 3.20.0
-BuildRequires:  python3-oslo.serialization >= 2.25.0
-BuildRequires:  python3-oslo.utils >= 3.36.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pbr >= 3.1.1
-BuildRequires:  python3-python-dateutil >= 2.7.0
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testtools
+Requires:       python-debtcollector >= 3.0.0
+Requires:       python-oslo.config >= 5.2.0
+Requires:       python-oslo.context >= 2.21.0
+Requires:       python-oslo.i18n >= 3.20.0
+Requires:       python-oslo.serialization >= 2.25.0
+Requires:       python-oslo.utils >= 3.36.0
+Requires:       python-python-dateutil >= 2.7.0
+Requires:       python-systemd
 BuildArch:      noarch
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-oslo.log < %{version}
+%else
+Conflicts:      python3-oslo.log < %{version}
+%endif
+%python_subpackages
 
 %description
 OpenStack logging configuration library provides standardized configuration
 for all openstack projects.It also provides custom formatters, handlers and
 support for context specific logging (like resource id's etc).
-
-%package -n python3-oslo.log
-Summary:        OpenStack log library
-Requires:       python3-debtcollector
-Requires:       python3-oslo.config >= 5.2.0
-Requires:       python3-oslo.context >= 2.21.0
-Requires:       python3-oslo.i18n >= 3.20.0
-Requires:       python3-oslo.serialization >= 2.25.0
-Requires:       python3-oslo.utils >= 3.36.0
-Requires:       python3-python-dateutil >= 2.7.0
-Requires:       python3-systemd
-%if 0%{?suse_version}
-Obsoletes:      python2-oslo.log < 4.0.0
-%endif
-
-%description -n python3-oslo.log
-OpenStack logging configuration library provides standardized configuration
-for all openstack projects.It also provides custom formatters, handlers and
-support for context specific logging (like resource id's etc).
-
-This package contains the Python 3.x module.
 
 %package -n python-oslo.log-doc
 Summary:        Documentation for OpenStack log library
@@ -74,30 +68,41 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the oslo.log library.
 
 %prep
-%autosetup -p1 -n oslo.log-6.1.2
-%py_req_cleanup
+%autosetup -p1 -n oslo_log-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 # generate html docs
-PYTHONPATH=. PBR_VERSION=6.1.2 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=7.1.0 %{sphinx_build} -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
 %fdupes %{buildroot}%{python3_sitelib}
 
-%check
-# skip test_log_config_append_invalid lp#2023684
-%{openstack_stestr_run} --exclude-regex 'test_log_config_append_invalid'
+%python_clone -a %{buildroot}%{_bindir}/convert-json
 
-%files -n python3-oslo.log
+%pre
+%python_libalternatives_reset_alternative convert-json
+
+%post
+%python_install_alternative convert-json
+
+%postun
+%python_uninstall_alternative convert-json
+
+%if 0%{?suse_version} > 1600
+%check
+%{openstack_stestr_run}
+%endif
+
+%files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%{python3_sitelib}/oslo_log
-%{python3_sitelib}/*.egg-info
-%{_bindir}/convert-json
+%python_alternative %{_bindir}/convert-json
+%{python_sitelib}/oslo_log
+%{python_sitelib}/oslo_log-%{version}.dist-info
 
 %files -n python-oslo.log-doc
 %license LICENSE
