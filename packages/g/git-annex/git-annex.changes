@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 29 14:05:57 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20251029.
+  git-annex (10.20251029) upstream; urgency=medium
+
+    * Support ssh remotes with '#' and '?' in the path to the repository,
+      the same way git does.
+    * assistant: Fix reversion that caused files to be added locked by
+      default.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 29 Oct 2025 10:04:43 -0400
+
+-------------------------------------------------------------------
 Mon Sep 29 15:31:07 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20250929.
