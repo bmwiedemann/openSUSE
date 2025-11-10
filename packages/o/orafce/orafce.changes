@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 10 09:26:17 UTC 2025 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Update to version 4.16.2+git0.6a3cfa5:
+  * fix update script from 4.15-4.16 and prepare for 4.16.2
+
+-------------------------------------------------------------------
+Mon Oct 13 15:03:11 UTC 2025 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Update to version 4.16.1+git0.3eaa566:
+  * fix meson build + prepare for 4.16.1
+
+-------------------------------------------------------------------
 Sat Oct 11 17:34:25 UTC 2025 - Emiliano Langella <emiliano.langella@suse.com>
 
 - Update to version 4.16.0+git0.38f69ed:
