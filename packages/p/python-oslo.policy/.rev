@@ -402,4 +402,39 @@
   - Update python classifier in setup.cfg</comment>
     <requestid>1161176</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d824e6edea12fac6708d24bda451c124</srcmd5>
+    <version>4.6.0</version>
+    <time>1762798684</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.6.0:
+  * add pyproject.toml to support pip 23.1
+  * tox: Remove basepython
+  * Skip cross jobs for .gitreview update
+  * Update master for stable/2025.1
+- switch to singlespec
+
+- update to 4.5.1:
+  * Skip installation to speed up pep8
+  * Skip cross jobs for non-functional update
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Use native pre-commit hook for hacking
+  * Drop python 3.8 support
+  * Declare Python 3.12 support
+  * Switch default policy\_file
+  * Update master for stable/2024.2
+  * Add timeout in HTTP requests
+  * pre-commit: Bump versions and integrate bandit
+  * Enable enforce\_scope and enforce\_new\_defaults by default
+  * reno: Update master for unmaintained/zed
+  * Remove old excludes
+  * Update master for stable/2024.1
+  * reno: Update master for unmaintained/xena
+  * reno: Update master for unmaintained/wallaby
+  * reno: Update master for unmaintained/victoria
+  * Remove fallback to DEFAULT section</comment>
+    <requestid>1316852</requestid>
+  </revision>
 </revisionlist>
