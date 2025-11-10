@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  9 12:58:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * Remove tags from README
+  * Update master for stable/2025.1
+  * Add coverage job
+  * Add relevant python versions to setup.cfg description
+  * setup.cfg: Replace dashes with underscores
+  * client can't register in v1
+  * Fix CI for the project
+  * remove unicode from code
+- split to singlespec
+
+-------------------------------------------------------------------
 Wed Jan 10 16:50:13 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.2.0
