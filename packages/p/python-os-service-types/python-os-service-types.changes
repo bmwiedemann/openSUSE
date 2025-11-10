@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Nov  9 12:37:19 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Migrate setup configuration to pyproject.toml
+  * Add typing, mypy
+  * Add ruff
+  * Drop support for Python 3.9
+  * Update python classifier in setup.cfg
+  * Updated from OpenStack Service Type Authority
+  * Bump hacking
+  * Updated from OpenStack Service Type Authority
+  * Update api\_ref for Cyborg project
+  * Add Python 3.8 and 3.9 to supported runtimes
+  * Update CI to use unversioned jobs template
+  * Use py3 as the default runtime for tox
+  * Add doc/requirements
+  * Modernize package a little
+  * setup.cfg: Replace dashes by underscores
+  * Bump hacking to 3.0.1
+  * bump py37 to py38 in tox.ini
+  * Fix pep8 testing for ubuntu focal
+  * Switch to newer openstackdocstheme and reno versions
+  * [ussuri][goal] Drop python 2.7 support and testing
+  * Switch to Ussuri jobs
+  * Bump the openstackdocstheme extension to 1.20
+  * Blacklist sphinx 2.1.0 (autodoc bug)
+  * Update the constraints url
+  * Updated from OpenStack Service Type Authority
+  * Update api-ref location
+  * Add Python 3 Train unit tests
+  * Sync Sphinx requirement
+  * Update testing jobs
+- switch to singlespec
+
+-------------------------------------------------------------------
 Mon Feb 24 12:02:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - explicitly depend on six

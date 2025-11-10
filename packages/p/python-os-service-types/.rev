@@ -98,4 +98,12 @@
     <comment>- explicitly depend on six</comment>
     <requestid>1248120</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e0e08da1d34c99893b39b3e0a3ab79a7</srcmd5>
+    <version>1.8.0</version>
+    <time>1762798639</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316774</requestid>
+  </revision>
 </revisionlist>
