@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 10 12:47:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.1:
+  * Release notes 0.33.1 (#1828)
+  * Release carvel package 2.17.8 (#1826)
+  * Release chart 2.17.8 (#1825)
+
+-------------------------------------------------------------------
+Thu Nov 06 12:09:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.0:
+  * Release notes 0.33 (#1824)
+  * Bump Go to 1.25.4 (#1823)
+  * Bump github.com/onsi/ginkgo/v2 from 2.26.0 to 2.27.2 (#1820)
+  * Bump golang.org/x/crypto from 0.42.0 to 0.43.0 (#1818)
+  * Bump github.com/onsi/ginkgo/v2 from 2.25.3 to 2.26.0 (#1817)
+  * Release carvel package 2.17.7 (#1814)
+  * Release chart 2.17.7 (#1813)
+
+-------------------------------------------------------------------
 Thu Sep 18 08:37:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.32.2:
