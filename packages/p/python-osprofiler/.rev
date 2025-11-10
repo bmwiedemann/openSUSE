@@ -278,4 +278,26 @@
   - Declare Python 3.10 support</comment>
     <requestid>1198357</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bbd71383c60b8c2a724dd49b2ba4d801</srcmd5>
+    <version>4.3.0</version>
+    <time>1762798703</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.0:
+  * tox: Remove basepython
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Drop redundant if-else block
+  * pre-commit: Bump version
+  * Drop remaining pin of elasticsearch
+  * Remove Python 3.8 support
+  * Unpin for newer elasticsearch versions
+  * Replace deprecated constant\_time\_compare
+  * Bump hacking to latest
+  * Update bandit to 1.7.x
+- drop new-elasticsearch.patch (upstream)
+- switch to singlespec
+
+- drop unneeded dependencies</comment>
+    <requestid>1316886</requestid>
+  </revision>
 </revisionlist>

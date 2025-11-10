@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov  9 15:50:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * tox: Remove basepython
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Drop redundant if-else block
+  * pre-commit: Bump version
+  * Drop remaining pin of elasticsearch
+  * Remove Python 3.8 support
+  * Unpin for newer elasticsearch versions
+  * Replace deprecated constant\_time\_compare
+  * Bump hacking to latest
+  * Update bandit to 1.7.x
+- drop new-elasticsearch.patch (upstream)
+- switch to singlespec
+
+-------------------------------------------------------------------
 Mon Sep  2 17:28:50 UTC 2024 - cloud-devel@suse.de
 
 - added new-elasticsearch.patch
@@ -46,7 +63,7 @@ Wed Jun  8 20:10:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue May 24 21:54:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- drop unneeded dependencies 
+- drop unneeded dependencies
 
 -------------------------------------------------------------------
 Mon Dec  6 09:30:11 UTC 2021 - cloud-devel@suse.de

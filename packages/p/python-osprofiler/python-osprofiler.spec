@@ -1,7 +1,7 @@
 #
 # spec file for package python-osprofiler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,45 @@
 
 
 Name:           python-osprofiler
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        OpenStack Profiler Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/osprofiler
-Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-4.2.0.tar.gz
-Patch0:         new-elasticsearch.patch
+Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-%{version}.tar.gz
+BuildRequires:  %{python_module PrettyTable >= 0.7.2}
+BuildRequires:  %{python_module WebOb >= 1.7.1}
+BuildRequires:  %{python_module ddt}
+BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module elasticsearch}
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module opentelemetry-exporter-otlp}
+BuildRequires:  %{python_module oslo.concurrency >= 3.26.0}
+BuildRequires:  %{python_module oslo.config >= 5.2.0}
+BuildRequires:  %{python_module oslo.log}
+BuildRequires:  %{python_module oslo.utils >= 3.33.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pymongo}
+BuildRequires:  %{python_module python-subunit}
+BuildRequires:  %{python_module redis}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-PrettyTable >= 0.7.2
-BuildRequires:  python3-WebOb >= 1.7.1
-BuildRequires:  python3-ddt
-BuildRequires:  python3-docutils
-BuildRequires:  python3-elasticsearch
-BuildRequires:  python3-importlib-metadata
-BuildRequires:  python3-opentelemetry-exporter-otlp
-BuildRequires:  python3-oslo.concurrency >= 3.26.0
-BuildRequires:  python3-oslo.config >= 5.2.0
-BuildRequires:  python3-oslo.log
-BuildRequires:  python3-oslo.utils >= 3.33.0
-BuildRequires:  python3-pymongo
-BuildRequires:  python3-python-subunit
-BuildRequires:  python3-redis
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testtools
+Requires:       python-PrettyTable >= 0.7.2
+Requires:       python-WebOb >= 1.7.1
+Requires:       python-importlib-metadata
+Requires:       python-oslo.concurrency >= 3.26.0
+Requires:       python-oslo.config >= 5.2.0
+Requires:       python-oslo.log
+Requires:       python-oslo.utils >= 3.33.0
 BuildArch:      noarch
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-osprofiler < %{version}
+%else
+Conflicts:      python3-osprofiler < %{version}
+%endif
+%python_subpackages
 
 %description
 OSProfiler provides a tiny but powerful library that is used by
@@ -51,29 +64,6 @@ provides functionality to be able to generate 1 trace per request, that goes
 through all involved services. This trace can then be extracted and used
 to build a tree of calls which can be quite handy for a variety of
 reasons (for example in isolating cross-project performance issues).
-
-%package -n python3-osprofiler
-Summary:        OpenStack Profiler Library
-Requires:       python3-PrettyTable >= 0.7.2
-Requires:       python3-WebOb >= 1.7.1
-Requires:       python3-importlib-metadata
-Requires:       python3-oslo.concurrency >= 3.26.0
-Requires:       python3-oslo.config >= 5.2.0
-Requires:       python3-oslo.log
-Requires:       python3-oslo.utils >= 3.33.0
-%if 0%{?suse_version}
-Obsoletes:      python2-osprofiler < 3.0.0
-%endif
-
-%description -n python3-osprofiler
-OSProfiler provides a tiny but powerful library that is used by
-most (soon to be all) OpenStack projects and their python clients. It
-provides functionality to be able to generate 1 trace per request, that goes
-through all involved services. This trace can then be extracted and used
-to build a tree of calls which can be quite handy for a variety of
-reasons (for example in isolating cross-project performance issues).
-
-This package contains the Python 3.x module
 
 %package -n python-osprofiler-doc
 Summary:        Documentation for OSProfiler
@@ -85,31 +75,41 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for OSProfiler.
 
 %prep
-%autosetup -p1 -n osprofiler-4.2.0
-%py_req_cleanup
+%autosetup -p1 -n osprofiler-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/osprofiler
 
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
+%pre
+%python_libalternatives_reset_alternative osprofiler
+
+%post
+%python_install_alternative osprofiler
+
+%postun
+%python_uninstall_alternative osprofiler
+
 %check
 # otherwise causes import error
 rm osprofiler/tests/unit/drivers/test_jaeger.py
-%{openstack_stestr_run} --exclude-regex '(^osprofiler.tests.unit.drivers.test_jaeger.JaegerTestCase.*$)'
+rm -rf osprofiler/tests/functional
+%{openstack_stestr_run}
 
-%files -n python3-osprofiler
+%files %{python_files}
 %license LICENSE
-%doc README.rst ChangeLog
-%{python3_sitelib}/osprofiler
-%{python3_sitelib}/*.egg-info
-%{_bindir}/osprofiler
+%doc README.rst
+%python_alternative %{_bindir}/osprofiler
+%{python_sitelib}/osprofiler
+%{python_sitelib}/osprofiler-%{version}.dist-info
 
 %files -n python-osprofiler-doc
 %license LICENSE
