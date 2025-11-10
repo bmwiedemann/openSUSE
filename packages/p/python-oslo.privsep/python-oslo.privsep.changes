@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Nov  9 15:37:27 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.0:
+  * Restore compatibility with non-linux operating systems
+  * Imported Translations from Zanata
+  * add pyproject.toml to support pip 23.1
+  * tox: Remove basepython
+  * Update master for stable/2025.1
+  * Add daemon traceback to client logger
+
+-------------------------------------------------------------------
+Tue Jul  1 22:55:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  * Skip installation to speed up pep8
+  * deprecate eventlet monkey patching within oslo.privsep.daemon
+  * Remove guard for non-windows operating systems
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * pre-commit: Bump versions
+  * Remove Python 3.8 support
+  * Declare Python 3.12 support
+  * Bump oslo.log to >=5.0.2
+  * Update master for stable/2024.2
+  * Python 3.13: do not use removed module "pipes"
+
+-------------------------------------------------------------------
 Tue Sep  3 13:07:49 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.4.0
@@ -51,7 +79,7 @@ Sun Oct  2 14:48:40 UTC 2022 - cloud-devel@suse.de
 -------------------------------------------------------------------
 Tue May 24 21:13:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- remove unneded mock dependency 
+- remove unneded mock dependency
 
 -------------------------------------------------------------------
 Fri May 13 18:30:02 UTC 2022 - cloud-devel@suse.de

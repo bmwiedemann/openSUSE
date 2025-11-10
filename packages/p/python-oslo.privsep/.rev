@@ -313,4 +313,34 @@
   - Remove old excludes</comment>
     <requestid>1198496</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d396d584feb4c17dfa354c2adb02c28c</srcmd5>
+    <version>3.8.0</version>
+    <time>1762798698</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.0:
+  * Restore compatibility with non-linux operating systems
+  * Imported Translations from Zanata
+  * add pyproject.toml to support pip 23.1
+  * tox: Remove basepython
+  * Update master for stable/2025.1
+  * Add daemon traceback to client logger
+
+- update to 3.6.0:
+  * Skip installation to speed up pep8
+  * deprecate eventlet monkey patching within oslo.privsep.daemon
+  * Remove guard for non-windows operating systems
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * pre-commit: Bump versions
+  * Remove Python 3.8 support
+  * Declare Python 3.12 support
+  * Bump oslo.log to &gt;=5.0.2
+  * Update master for stable/2024.2
+  * Python 3.13: do not use removed module &quot;pipes&quot;
+
+- remove unneded mock dependency</comment>
+    <requestid>1316860</requestid>
+  </revision>
 </revisionlist>
