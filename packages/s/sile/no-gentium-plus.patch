@@ -1,0 +1,68 @@
+---
+ README.md    |    8 ++++----
+ configure.ac |    2 +-
+ hooks/build  |    2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+Index: sile-0.15.13/README.md
+===================================================================
+--- sile-0.15.13.orig/README.md	2025-06-01 00:09:34.600296412 +0200
++++ sile-0.15.13/README.md	2025-11-09 02:56:06.599444483 +0100
+@@ -48,11 +48,11 @@
+ ```
+ 
+ Note the Homebrew package does not automatically install the [default font](#default-font).
+-The easiest way to install Gentium Plus is through the [Homebrew Fonts caskroom][brewfonts]:
++The easiest way to install Gentium is through the [Homebrew Fonts caskroom][brewfonts]:
+ 
+ ```console
+ $ brew tap homebrew/cask-fonts
+-$ brew install --cask font-gentium-plus
++$ brew install --cask font-gentium
+ ```
+ 
+ ### For Linux
+@@ -79,7 +79,7 @@
+ Not all the fonts are not installed by default, to install them:
+ 
+ ```console
+-$ dnf install sil-gentium-plus-fonts alerque-libertinus-fonts hack-fonts
++$ dnf install sil-gentium-fonts alerque-libertinus-fonts hack-fonts
+ ```
+ 
+ #### OpenSUSE
+@@ -271,7 +271,7 @@
+ 
+ ### Default Font
+ 
+-Since SILE v0.9.5, the default font has been Gentium Plus which is freely available from [SIL’s site][gentium].
++Since SILE v0.9.5, the default font has been Gentium which is freely available from [SIL’s site][gentium].
+ (Previously we used Gentium Basic, but that’s getting harder to get hold of.)
+ The math package uses [Libertinus Math][libertinus] by default to render formulas.
+ Additionally, monospace text by default is set in [Hack][hack].
+Index: sile-0.15.13/configure.ac
+===================================================================
+--- sile-0.15.13.orig/configure.ac	2025-06-01 00:09:34.605296470 +0200
++++ sile-0.15.13/configure.ac	2025-11-09 02:56:06.599864442 +0100
+@@ -233,7 +233,7 @@
+     AX_REQUIRE_PROG([git]) # required for luarocks to install zlib rock
+ ])
+ 
+-QUE_FONT(Gentium Plus)
++QUE_FONT(Gentium)
+ 
+ AC_SUBST([APPKIT_TRUE])
+ AC_SUBST([FONTCONFIG_TRUE])
+Index: sile-0.15.13/hooks/build
+===================================================================
+--- sile-0.15.13.orig/hooks/build	2025-06-01 00:09:34.611296539 +0200
++++ sile-0.15.13/hooks/build	2025-11-09 02:56:06.600187879 +0100
+@@ -6,7 +6,7 @@
+ 
+ REVISION=$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+ 
+-RUNTIME_DEPS='fontconfig freetype2 gentium-plus-font glibc harfbuzz icu libpng luajit zlib'\
++RUNTIME_DEPS='fontconfig freetype2 gentium-font glibc harfbuzz icu libpng luajit zlib'\
+ ' otf-libertinus luarocks noto-fonts-cjk ttf-hack'
+ BUILD_DEPS='base-devel cargo clang git jq mold poppler'
+ 

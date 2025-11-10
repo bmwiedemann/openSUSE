@@ -1,7 +1,7 @@
 #
 # spec file for package sile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,62 +17,71 @@
 
 
 %bcond_without  tests
+%if 0%{?suse_version} < 1699
+%define flavor lua51
+%else
+%define flavor luajit
+%endif
 Name:           sile
-Version:        0.15.7
+Version:        0.15.13
 Release:        0
 Summary:        Simon’s Improved Layout Engine
 License:        MIT
 URL:            https://sile-typesetter.org/
-Source0:        sile-%{version}.tar.zst
+Source:         https://github.com/sile-typesetter/%{name}/releases/download/v%{version}/sile-%{version}.tar.zst#/%{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        sile-rpmlintrc
+# PATCH-FIX-UPSTREAM no-gentium-plus.patch bsc#[0-9]+ mcepl@suse.com
+# font Gentium Plus is since version 7.0.0 called only Gentium again
+Patch0:         no-gentium-plus.patch
 
 # Lua modules
 BuildRequires:  luajit
-BuildRequires:  lua51-bit32
-BuildRequires:  lua51-luarocks
-BuildRequires:  luajit-devel
-Requires:       lua51-bit32
-BuildRequires:  lua51-cassowary
-Requires:       lua51-cassowary
-Requires:       lua51-cldr
-BuildRequires:  lua51-cliargs
-Requires:       lua51-cliargs
-BuildRequires:  lua51-compat-5.3
-Requires:       lua51-compat-5.3
-BuildRequires:  lua51-cosmo
-Requires:       lua51-cosmo
-BuildRequires:  lua51-luaexpat
-Requires:       lua51-luaexpat
-BuildRequires:  lua51-luafilesystem
-Requires:       lua51-luafilesystem
-BuildRequires:  lua51-fluent
-Requires:       lua51-fluent
-BuildRequires:  lua51-linenoise
-Requires:       lua51-linenoise
-BuildRequires:  lua51-loadkit
-Requires:       lua51-loadkit
-Requires:       lua51-lpeg
-Requires:       lua51-luaepnf
-BuildRequires:  lua51-luarepl
-Requires:       lua51-luarepl
-BuildRequires:  lua51-luautf8
-Requires:       lua51-luautf8
-Requires:       lua51-penlight
-BuildRequires:  lua51-luasec
-Requires:       lua51-luasec
-Requires:       lua51-luasocket
-BuildRequires:  lua51-vstruct
-Requires:       lua51-vstruct
-BuildRequires:  lua51-zlib
-# Without this Requires, lua51-zlib isn't counted as a dependency
-Requires:       lua51-zlib
+BuildRequires:  %{flavor}-bit32
+BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-luarocks
+Requires:       %{flavor}-bit32
+BuildRequires:  %{flavor}-cassowary
+Requires:       %{flavor}-cassowary
+Requires:       %{flavor}-cldr
+BuildRequires:  %{flavor}-cliargs
+Requires:       %{flavor}-cliargs
+BuildRequires:  %{flavor}-compat-5.3
+Requires:       %{flavor}-compat-5.3
+BuildRequires:  %{flavor}-cosmo
+Requires:       %{flavor}-cosmo
+BuildRequires:  %{flavor}-luaexpat
+Requires:       %{flavor}-luaexpat
+BuildRequires:  %{flavor}-luafilesystem
+Requires:       %{flavor}-luafilesystem
+BuildRequires:  %{flavor}-fluent
+Requires:       %{flavor}-fluent
+BuildRequires:  %{flavor}-linenoise
+Requires:       %{flavor}-linenoise
+BuildRequires:  %{flavor}-loadkit
+Requires:       %{flavor}-loadkit
+Requires:       %{flavor}-lpeg
+Requires:       %{flavor}-luaepnf
+BuildRequires:  %{flavor}-luarepl
+Requires:       %{flavor}-luarepl
+BuildRequires:  %{flavor}-luautf8
+Requires:       %{flavor}-luautf8
+Requires:       %{flavor}-penlight
+BuildRequires:  %{flavor}-luasec
+Requires:       %{flavor}-luasec
+Requires:       %{flavor}-luasocket
+BuildRequires:  %{flavor}-vstruct
+Requires:       %{flavor}-vstruct
+BuildRequires:  %{flavor}-zlib
+# Without this Requires, %{flavor}-zlib isn't counted as a dependency
+Requires:       %{flavor}-zlib
 
 # Other Dependencies
 %if %{with tests}
 BuildRequires:  poppler-tools
-BuildRequires:  sil-gentium-fonts
+BuildRequires:  sil-gentium-fonts >= 7
 %endif
+BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fontconfig-devel
 Requires:       fontconfig
@@ -95,7 +104,7 @@ BuildRequires:  pkgconf-pkg-config
 BuildRequires:  zlib-devel
 # Default font for SILE
 # Without this, you have to specify the font every time you write a new .sil
-Recommends:     sil-gentium-fonts
+Recommends:     sil-gentium-fonts >= 7
 # Default font for math package
 Suggests:       libertinus-fonts
 # Default font for tate enabled classes
@@ -167,6 +176,8 @@ Zsh command-line completion support for %{name}.
 
 %prep
 %autosetup -p1 -a1
+
+autoreconf --force --install
 
 %build
 # The macros uses this but we have to respect what upstream config.toml

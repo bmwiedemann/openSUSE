@@ -1,4 +1,271 @@
 -------------------------------------------------------------------
+Sun Nov  9 00:56:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make the package building with LuaJIT (bsc#1252922).
+- Add no-gentium-plus.patch eliminating needs for gentium-plus
+  font (it is called just Gentium again).
+
+-------------------------------------------------------------------
+Sun Nov  8 19:45:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.15.13:
+  Work on v0.16 is well underway including finally refactoring
+  the internal module layout for languages, frames, fonts, font
+  managers, and much more. But in the meantime less dramatic (and
+  less disruptive) improvements have accumulated.
+  @Omikhleia has touched up CSL support and added support for
+  position tracking. @turtlegarden sent in some updates to
+  Norwegian localization. I fixed up some handling of unset
+  settings, kept reloading modules from re-registering commands,
+  and sped up development cycles by enabling a debug mode that
+  skips time consuming build time optimizations.
+  - New Features
+    - packages: Add position tracking for bibliography citations
+      (5930a0c)
+    - packages: Support the position condition in CSL engine
+      (0c732a2)
+  - Bug Fixes
+    - build: Pass --enable-debug through to Cargo to actually get
+      a debug-enabled binary (443551a)
+    - fonts: Properly account for settings allowed to be nil
+      (792518e)
+    - languages: Update Bokmål messages (a10e0f4)
+    - languages: Update Nynorsk messages (4ec6654)
+    - packages: Add missing boolean coercion for strip-periods in
+      CSL engine (5af2842)
+    - packages: Always apply punctuation-in-quotes in CSL
+      citations (689c8e2)
+    - packages: Fine-tune CSL post-rendered cleaning hacks
+      (487f3f0)
+    - packages: Fix package reload to not call for command
+      reregistration unless asked (41846f7)
+- Update to 0.15.12:
+  The last release went out with really obnoxious inverted logic
+  for a deprecation message that spammed the terminal warning
+  users when their usage of various modules was correct and up to
+  date and not when they were using a deprecated interface. This
+  just puts the noise to rest.
+  - Bug Fixes
+    - utilities: Correct reversed deprecation warning condition
+      (a97c679), closes #2265
+- Update to 0.15.12:
+  This release isn’t ground breaking, but it is line breaking. A
+  major bug in our hyphenation algorithm went undetected for a
+  long time because (by a virtue of a bug canceling out a bug)
+  it didn’t happen to affect English or Turkish—far and away the
+  most utilized languages in SILE’s history. But it did affect
+  French, where @Omikhleia found and squashed it. Hyphenation
+  minima settings should be properly set for many other languages
+  now and follow the current language. Several languages also got
+  hyphenation pattern updates.
+  In other minor details, length and measurement types no longer
+  silently 'succeeds' when asked to parse non-compliant input.
+  Additionally disabling the (default on) variablespaces setting
+  will actually take effect now and not continue to use any of
+  the related settings in some contexts.
+  - New Features
+    - cli: Include deps file itself as output target so it gets
+      remade (696aafe)
+    - languages: Update hyphenation patterns for Bulgarian
+      (e1bd96e)
+    - languages: Update hyphenation patterns for el/grc (e5e30d6)
+    - languages: Update hyphenation patterns for Portuguese
+      (1298af4)
+    - languages: Update hyphenation patterns for Spanish
+      (cf289b6)
+    - languages: Update hyphenation patterns for Thai (4abed66)
+    - packages: Add revert for space handling bug fix to
+      retrograde (951e47e)
+  - Bug Fixes
+    - cli: Correctly output makedeps files from the Rust CLI the
+      same as from Lua (42a879a)
+    - cli: Pass current binary name of Rust wrapper through for
+      errors and make-deps (62820ce)
+    - core: Error on excess unparsable input on measurements and
+      lengths (#2260) (4d33389)
+    - hyphenators: Correctly apply hyphenation minima, isolate
+      per language (6143d54)
+    - languages: Set proper hyphenation minima for Esperanto
+      (a014353)
+    - outputters: Update cairo backend to work with current API
+      (13bd9d4)
+    - shapers: Actually disable variablespaces if setting set to
+      false (a6628b5)
+    - shapers: Update pango shaper to work with current API
+      (541cb8d)
+- Update to 0.15.10:
+  This release brings yet another layer of improvements
+  contributed by @Omikhleia, especially to the bibliography
+  and indexing features. The bibliography system now uses CSL
+  (Citation Style Language) by default, with enhanced support
+  for grouped citations via \cites, better name formatting, and
+  improved style compliance. The indexer received significant
+  upgrades including page range collapsing, customizable styling
+  hooks, flexible placement in documents, and language-aware
+  sorting. Font handling saw improvements with new ex-height
+  and cap-height adjustments, particularly benefiting code and
+  verbatim text display.
+  The CLI also gained a new argument to streamline the process
+  of loading 3rd party modules. SILE has always found packages
+  in specific system or relative locations easily, but setting
+  the path to custom LuaRocks trees was not trivial. A new
+  --luarocks-tree argument should make it much simpler to match
+  however you install with .
+  Other notable changes include avoiding hyphenation prior to
+  page breaks, and fixes for various language-specific issues
+  including Uyghur hyphenation and UTF-16 handling. Warning
+  messages involving unsupported languages should also make more
+  sense and not spam the terminal over and over.
+  - New Features
+    - build: Add tooling to generate tarball of vendored crates
+      (55be5cd)
+    - cli: Add argument to ease soarch for 3rd party module(s)
+      (4f0d5a4)
+    - core: Support ex-height and cap-height font adjustment
+      (4e16acf)
+    - packages: Add \cites to output grouped bibliographic
+      citations (bdba2ea)
+    - packages: Add \nocite for marking a bibliography entry as
+      cited (f828e9b)
+    - packages: Add indexer options minimal/minimal-two for page
+      range collapsing (e272e43)
+    - packages: Add new styling hooks to the indexer (facf84c)
+    - packages: Add option for filler between item and page in
+      indexer (691bfe2)
+    - packages: Allow indexes to be used anywhere in a document
+      (808aaf4)
+    - packages: Honor bibliography style indentation rules
+      (c08fcaa)
+    - packages: Partial support for name-parts formatting
+      (18c436e)
+    - packages: Support links to pages in the indexer (5953e59)
+    - packages: Support page ranges in indexer (a84d4ef)
+    - packages: Use the CSL implementation by default for
+      bibliographies (d3c352b)
+    - shapers: Warn when asked to measure a character not shaped
+      in a font (e0b5cd8)
+    - typesetters: Add content to text utility to the base
+      typesetter (6af4934)
+    - typesetters: Discourage page breaks after hyphenated lines
+      (ba49c8c)
+  - Bug Fixes
+    - classes,packages: Use ex-height font adjustment for code
+      (5b52afc)
+    - font: Properly cache fonts before use so a hook could look
+      at them (7e24648)
+    - languages: Account for possible null termination in UTF-16
+      → 8 conversion (#2243) (e42b8de)
+    - languages: Fix Uyghur hyphenation (2bff142)
+    - languages: Move language setting declaration to after
+      language supporte exists (447df41)
+    - languages: Update tests for changed ICU defaults (bf6e0bc)
+    - math: Script 'math' is needed for the ssty feature to work
+      properly (cb64f9e)
+    - packages: Always use fake superscripts in bibliography for
+      consistency (97453b1)
+    - packages: Apply default locale on locale overrides without
+      xml:lang (cd70266)
+    - packages: Automatically register the indexer on endpage
+      class hook (d697388)
+    - packages: Correct error handling the locator on some CSL
+      styles (21b751e)
+    - packages: Correct invalid links on CSL DOI, PMID, PMCID
+      with affixes (d8386ab)
+    - packages: CSL choose must inherit delimiter from nearest
+      ancestor (64eaba4)
+    - packages: Honor affixes on multiple CSL citations correctly
+      (5de5607)
+    - packages: Option "plural" on bibliography terms can be
+      false (4d4bae5)
+    - packages: Suppress empty CSL macros (98a7ebe)
+    - packages: Use ex-height font adjustment for verbatim
+      (dae3849)
+    - packages: Use language-dependent sorting (collation) in
+      indexer (5db2dcd)
+    - shapers: Properly calculate metrics of single characters
+      composed of many glyphs (2b109a0)
+    - typesetters: Special punctuation spaces need better italic
+      correction (448ab15)
+- Update to 0.15.9:
+  This release actually fixes build issues for macOS (Darwin)
+  we tried to fix in v0.15.8 but were more involved than first
+  suspected. It also packages some CSL files that were missing
+  from previous source distributions and touches up a few other
+  odds and ends.
+  In non-build related changes, @Omikhleia patched up some
+  bibliography behavior. As a cherry on top I patched up the
+  ability to generate a completely blank PDF without throwing an
+  error and changed the outputter API to include an official way
+  to throw an error without also generating a blank PDF.
+  - New Features
+    - outputters: Add a method to handle empty PDFs vs. cleanup
+      after error (5a7694d)
+  - Bug Fixes
+    - build: Bundle XML and CSL resources with bibtex package
+      (#2201) (73ffcd5)
+    - build: Correct dependencies in non-embedded mode (5805cd4)
+    - build: Re-organize rules so sources don't have platform
+      detection artifacts (15a20e0)
+    - build: Set correct final permissions on intermediary shell
+      completion artifacts (a3de042)
+    - classes: Avoid assuming legacy script tags will return a
+      table (d596d53)
+    - deps: Bump luautf8 dependency to restore building against
+      latest LuaJIT (206f4b7)
+    - docker: Package bootstrap script so Docker images can be
+      built from source tarballs (15a18c0)
+    - packages: CSL subsequent-author-substitute is optional
+      (680df8c)
+- Update to 0.15.8:
+  This release fixes build issues for macOS (Darwin) we
+  introduced back in v0.15.6 that have been holding back releases
+  on Homebrew and Nix's Darwin support. In addition to the build
+  su- pport, the macfonts font loader has been tweaked to support
+  fallback to fontconfig when a font is not found so it will
+  behave more similarly to Linux builds.
+  On all platforms, CLI output is a bit cleaner. Many runtime
+  errors now output cleaner message formatting instead of a
+  jumble of joined lines. Also some error chains where one error
+  would trigger another have been resolved.
+  The math support continues to be refined by @Omikhleia, this
+  release bringing a few new commands and features, better
+  behavior parity with MathML, and a couple bug fixes.
+  - New Features
+    - build: Add rockspec and build tooling for rusile module
+      (d1ed71e)
+    - cli: Output runtime errors pretty-printed for readability
+      (fb45160)
+    - fonts: Configure macOS to fallback from macfonts to
+      fontconfig (4b6aa5e)
+    - math: Add (AMS)LaTeX-like stackrel, overset and underset
+      (bfd41c0)
+    - math: Minimal support for accents in MathML and TeX-like
+      commands (dd0b1b5)
+    - packages: Add handler for passing raw content to verbatim
+      (46b0164)
+  - Bug Fixes
+    - build: Fix Lua module detection to fail if not found
+      (18f707b)
+    - build: Remove obsolete workaround for macOS dependency
+      paths (3fb891a)
+    - build: Set module build flags needed for darwin shared
+      libraries (625ea69)
+    - cli: Correctly pass through font manager preference from
+      Rust CLI (d2fb48a)
+    - core: Avoid internal error when also erroring due to user
+      provided content errors (d83e63c)
+    - inputters: Discard duplicate values being parsed without
+      keys in XML (4bb31f0)
+    - math: Change under/over constructs' inheritance of the base
+      atom type (70d4f69)
+    - math: Erroneous capital H and I in fraktur variant (#2183)
+      (3263be3)
+    - outputters: Don't attempt to create output if we error
+      before processing even starts (d38ff03)
+    - rusile: Adjust module loader to Darwin's shared module
+      extension (2c5ea3e)
+
+-------------------------------------------------------------------
 Sun Dec  8 19:21:39 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 0.15.7

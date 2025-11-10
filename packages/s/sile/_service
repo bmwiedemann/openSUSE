@@ -1,10 +1,5 @@
 <?xml version="1.0"?>
 <services>
-  <service mode="manual" name="download_url">
-     <param name="protocol">https</param>
-     <param name="host">github.com</param>
-     <param name="path">/sile-typesetter/sile/releases/download/v0.15.7/sile-0.15.7.tar.zst</param>
-  </service>
   <service name="cargo_vendor" mode="manual">
      <param name="src">sile*.tar.zst</param>
      <param name="compression">zst</param>
