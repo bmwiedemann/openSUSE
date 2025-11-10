@@ -75,4 +75,14 @@
 - Normalize metadata directory name.</comment>
     <requestid>1266260</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2eaa4b06c642e337a88a19623f83c48a</srcmd5>
+    <version>6.0</version>
+    <time>1762798782</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0:
+  * Replace pkg_resources namespace with PEP 420 native
+    namespace.</comment>
+    <requestid>1316827</requestid>
+  </revision>
 </revisionlist>
