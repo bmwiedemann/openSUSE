@@ -85,4 +85,18 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284985</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1197bfb0f01ecded95bffe3a6a173cb1</srcmd5>
+    <version>4.2.0</version>
+    <time>1762798779</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.0:
+  * Drop support for Python 3.8
+  * Fix bug where already url-encoded values were further escaped
+    and encoded (See https://github.com/python-
+    hyper/uritemplate/issues/99)
+  * Refactor uritemplate/variable.py to enable fixing the
+    aforementioned bug.</comment>
+    <requestid>1316822</requestid>
+  </revision>
 </revisionlist>

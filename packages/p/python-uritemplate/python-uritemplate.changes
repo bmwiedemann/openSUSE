@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:26:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * Drop support for Python 3.8
+  * Fix bug where already url-encoded values were further escaped
+    and encoded (See https://github.com/python-
+    hyper/uritemplate/issues/99)
+  * Refactor uritemplate/variable.py to enable fixing the
+    aforementioned bug.
+
+-------------------------------------------------------------------
 Thu Jun 12 05:01:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
