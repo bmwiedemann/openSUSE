@@ -1,7 +1,7 @@
 #
 # spec file for package python-keystonemiddleware
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,68 +17,65 @@
 
 
 Name:           python-keystonemiddleware
-Version:        10.7.1
+Version:        10.12.0
 Release:        0
 Summary:        Middleware for OpenStack Identity
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/keystonemiddleware
-Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-10.7.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-%{version}.tar.gz
+BuildRequires:  %{python_module WebOb >= 1.7.1}
+BuildRequires:  %{python_module WebTest}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module keystoneauth1 >= 3.12.0}
+BuildRequires:  %{python_module keystoneclient >= 3.20.0}
+BuildRequires:  %{python_module oslo.cache >= 1.26.0}
+BuildRequires:  %{python_module oslo.config >= 5.2.0}
+BuildRequires:  %{python_module oslo.context >= 2.19.2}
+BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
+BuildRequires:  %{python_module oslo.messaging}
+BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
+BuildRequires:  %{python_module oslo.utils >= 3.33.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pycadf >= 1.1.0}
+BuildRequires:  %{python_module python-memcached}
+BuildRequires:  %{python_module requests >= 2.14.2}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module stevedore}
+BuildRequires:  %{python_module testresources}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-WebOb >= 1.7.1
-BuildRequires:  python3-WebTest
-BuildRequires:  python3-cryptography
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-keystoneauth1 >= 3.12.0
-BuildRequires:  python3-keystoneclient >= 3.20.0
-BuildRequires:  python3-oslo.cache >= 1.26.0
-BuildRequires:  python3-oslo.config >= 5.2.0
-BuildRequires:  python3-oslo.context >= 2.19.2
-BuildRequires:  python3-oslo.i18n >= 3.15.3
-BuildRequires:  python3-oslo.messaging
-BuildRequires:  python3-oslo.serialization >= 2.18.0
-BuildRequires:  python3-oslo.utils >= 3.33.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pycadf >= 1.1.0
-BuildRequires:  python3-python-memcached
-BuildRequires:  python3-requests >= 2.14.2
-BuildRequires:  python3-requests-mock
-BuildRequires:  python3-stestr
-BuildRequires:  python3-stevedore
-BuildRequires:  python3-testresources
-BuildRequires:  python3-testtools
+Requires:       python-WebOb >= 1.7.1
+Requires:       python-keystoneauth1 >= 3.12.0
+Requires:       python-keystoneclient >= 3.20.0
+Requires:       python-oslo.cache >= 1.26.0
+Requires:       python-oslo.config >= 5.2.0
+Requires:       python-oslo.context >= 2.19.2
+Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-oslo.log >= 3.36.0
+Requires:       python-oslo.messaging
+Requires:       python-oslo.serialization >= 2.18.0
+Requires:       python-oslo.utils >= 3.33.0
+Requires:       python-pycadf >= 1.1.0
+Requires:       python-python-memcached
+Requires:       python-requests >= 2.14.2
 BuildArch:      noarch
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-keystonemiddleware < %{version}
+%else
+Conflicts:      python3-keystonemiddleware < %{version}
+%endif
+%python_subpackages
 
 %description
 This package contains middleware modules designed to provide authentication
 and authorization features to web services other than Keystone
 The most prominent module is keystonemiddleware.auth_token. This package
 does not expose any CLI or Python API features.
-
-%package -n python3-keystonemiddleware
-Summary:        Middleware for OpenStack Identity
-Requires:       python3-WebOb >= 1.7.1
-Requires:       python3-keystoneauth1 >= 3.12.0
-Requires:       python3-keystoneclient >= 3.20.0
-Requires:       python3-oslo.cache >= 1.26.0
-Requires:       python3-oslo.config >= 5.2.0
-Requires:       python3-oslo.context >= 2.19.2
-Requires:       python3-oslo.i18n >= 3.15.3
-Requires:       python3-oslo.log >= 3.36.0
-Requires:       python3-oslo.messaging
-Requires:       python3-oslo.serialization >= 2.18.0
-Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-pycadf >= 1.1.0
-Requires:       python3-python-memcached
-Requires:       python3-requests >= 2.14.2
-
-%description -n python3-keystonemiddleware
-This package contains middleware modules designed to provide authentication
-and authorization features to web services other than Keystone
-The most prominent module is keystonemiddleware.auth_token. This package
-does not expose any CLI or Python API features.
-
-This package contains the Python 3.x module
 
 %package -n python-keystonemiddleware-doc
 Summary:        Documentation for Middleware for OpenStack Identity
@@ -91,18 +88,17 @@ BuildRequires:  python3-sphinxcontrib-svg2pdfconverter
 Documentation for Middleware for OpenStack Identity.
 
 %prep
-%autosetup -p1 -n keystonemiddleware-10.7.1
-%py_req_cleanup
+%autosetup -p1 -n keystonemiddleware-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
 
 # generate html docs
 export PYTHONPATH=.
-PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+sphinx-build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -110,11 +106,11 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 rm -v keystonemiddleware/tests/unit/audit/test_logging_notifier.py
 %{openstack_stestr_run}
 
-%files -n python3-keystonemiddleware
+%files %{python_files}
 %license LICENSE
-%doc ChangeLog README.rst
-%{python3_sitelib}/keystonemiddleware
-%{python3_sitelib}/*.egg-info
+%doc README.rst
+%{python_sitelib}/keystonemiddleware
+%{python_sitelib}/keystonemiddleware-%{version}.dist-info
 
 %files -n python-keystonemiddleware-doc
 %doc doc/build/html

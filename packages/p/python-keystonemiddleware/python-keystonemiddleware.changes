@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Nov 10 13:13:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add conflicts/obsoletes
+
+-------------------------------------------------------------------
+Sun Nov  9 18:30:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.12.0:
+  * Remove Python 3.9 support
+  * Revert "Switch from python-memcache to pymemcache"
+  * Revert "Strip inet(6) prefix"
+  * Add TLS support to MemcacheClientPool
+  * add pyproject.toml to support pip 23.1
+  * Strip inet(6) prefix
+  * Apply upper constraints to build documentation
+  * Update master for stable/2025.1
+  * Switch from python-memcache to pymemcache
+  * Imported Translations from Zanata
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 22:35:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.9.0:
+  * Fix memcached dependencies's doc bug
+  * Imported Translations from Zanata
+  * Remove Python 3.8 support
+  * Use oslo.utils to escape IPv6 address
+  * Get rid of pkg\_resources
+  * Replace deprecated constant\_time\_compare
+  * Bump hacking (slightly)
+  * Update master for stable/2024.2
+  * s3token: Fix usage of removed Identity v2 API
+  * Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Tue Sep  3 13:06:47 UTC 2024 - cloud-devel@suse.de
 
 - update to version 10.7.1
@@ -737,5 +773,5 @@ Wed Sep 10 11:55:45 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon Jul 21 07:36:58 UTC 2014 - dmueller@suse.com
 
-- Initial package 
+- Initial package
 

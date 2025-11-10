@@ -358,4 +358,39 @@ update to version 4.9.0
   - Python 3.12: do not use utcnow()</comment>
     <requestid>1198495</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3312a07cea9bbbbdd91498875fbda601</srcmd5>
+    <version>10.12.0</version>
+    <time>1762798706</time>
+    <user>dimstar_suse</user>
+    <comment>- add conflicts/obsoletes
+
+- update to 10.12.0:
+  * Remove Python 3.9 support
+  * Revert &quot;Switch from python-memcache to pymemcache&quot;
+  * Revert &quot;Strip inet(6) prefix&quot;
+  * Add TLS support to MemcacheClientPool
+  * add pyproject.toml to support pip 23.1
+  * Strip inet(6) prefix
+  * Apply upper constraints to build documentation
+  * Update master for stable/2025.1
+  * Switch from python-memcache to pymemcache
+  * Imported Translations from Zanata
+- switch to singlespec
+
+- update to 10.9.0:
+  * Fix memcached dependencies's doc bug
+  * Imported Translations from Zanata
+  * Remove Python 3.8 support
+  * Use oslo.utils to escape IPv6 address
+  * Get rid of pkg\_resources
+  * Replace deprecated constant\_time\_compare
+  * Bump hacking (slightly)
+  * Update master for stable/2024.2
+  * s3token: Fix usage of removed Identity v2 API
+  * Imported Translations from Zanata
+
+- Initial package</comment>
+    <requestid>1316920</requestid>
+  </revision>
 </revisionlist>
