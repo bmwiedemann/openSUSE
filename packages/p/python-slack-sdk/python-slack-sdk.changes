@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:22:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.37.0:
+  * ## AI-Enabled Features: Loading States, Text Streaming, and
+    Feedback Buttons
+  * feat(web): add workflows.featured.{add|list|remove|set}
+    methods
+  * feat: support markdown_text parameter
+  * feat(models): add markdown block
+  * feat: add ai-enabled features text streaming methods,
+    feedback blocks, and loading state
+
+-------------------------------------------------------------------
 Fri Jul 25 09:49:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 3.36.0

@@ -210,4 +210,20 @@
     <comment></comment>
     <requestid>1296147</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>60d4aed01e2840e92ce28a7547942971</srcmd5>
+    <version>3.37.0</version>
+    <time>1762798774</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.37.0:
+  * ## AI-Enabled Features: Loading States, Text Streaming, and
+    Feedback Buttons
+  * feat(web): add workflows.featured.{add|list|remove|set}
+    methods
+  * feat: support markdown_text parameter
+  * feat(models): add markdown block
+  * feat: add ai-enabled features text streaming methods,
+    feedback blocks, and loading state</comment>
+    <requestid>1316818</requestid>
+  </revision>
 </revisionlist>
