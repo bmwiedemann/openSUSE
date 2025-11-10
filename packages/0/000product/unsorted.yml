@@ -13939,7 +13939,7 @@ unsorted:
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libhyprcursor0 
-  - libhyprgraphics0 
+  - libhyprgraphics2 
   - libhyprlang2 
   - libhyprutils7 
   - libi2c0 
@@ -14924,7 +14924,7 @@ unsorted:
   - libnsync_cpp1 
   - libntfs-3g-devel 
   - libntk1 
-  - libntl44 
+  - libntl45 
   - libntlm-devel 
   - libntlm0 
   - libntpc1 
@@ -15089,7 +15089,7 @@ unsorted:
   - libopenssl-3-fips-provider-x86-64-v3 
   - libopenssl-devel 
   - libopenssl-fips-provider 
-  - libopentimelineio0 
+  - libopentimelineio18 
   - libopentracing-cpp1 
   - libopenvdb12_0 
   - libopenvino2530 
@@ -15774,7 +15774,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre2-11 
-  - libre37 
+  - libre38 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
@@ -18449,13 +18449,9 @@ unsorted:
   - maven-plugin-testing-harness 
   - maven-plugin-testing-javadoc 
   - maven-plugin-tools-annotations 
-  - maven-plugin-tools-ant 
   - maven-plugin-tools-api 
-  - maven-plugin-tools-beanshell 
   - maven-plugin-tools-generators 
-  - maven-plugin-tools-java 
   - maven-plugin-tools-javadoc 
-  - maven-plugin-tools-model 
   - maven-remote-resources-plugin 
   - maven-remote-resources-plugin-javadoc 
   - maven-reporting-api 
@@ -18506,8 +18502,6 @@ unsorted:
   - maven-scm 
   - maven-scm-javadoc 
   - maven-scm-test 
-  - maven-script-ant 
-  - maven-script-beanshell 
   - maven-script-interpreter 
   - maven-script-interpreter-javadoc 
   - maven-shade-plugin 
@@ -25566,6 +25560,8 @@ unsorted:
   - python311-gns3fy 
   - python311-gnureadline 
   - python311-gobject-devel 
+  - python311-gobject-stubs 
+  - python311-gobject-stubs-gtk3 
   - python311-google-ai-generativelanguage 
   - python311-google-api-core 
   - python311-google-api-python-client 
@@ -26725,6 +26721,7 @@ unsorted:
   - python311-pypdf 
   - python311-pyperclip 
   - python311-pyperf 
+  - python311-pypi-attestations 
   - python311-pypi-search 
   - python311-pypiserver 
   - python311-pypng 
@@ -27249,6 +27246,7 @@ unsorted:
   - python311-signedjson 
   - python311-signxml 
   - python311-sigstore 
+  - python311-sigstore-models 
   - python311-sigstore-protobuf-specs 
   - python311-sigstore-rekor-types 
   - python311-simple-websocket 
@@ -29336,6 +29334,8 @@ unsorted:
   - python312-gobject-Gdk 
   - python312-gobject-cairo 
   - python312-gobject-devel 
+  - python312-gobject-stubs 
+  - python312-gobject-stubs-gtk3 
   - python312-google-ai-generativelanguage 
   - python312-google-api-core 
   - python312-google-api-python-client 
@@ -30531,6 +30531,7 @@ unsorted:
   - python312-pypdf 
   - python312-pyperclip 
   - python312-pyperf 
+  - python312-pypi-attestations 
   - python312-pypi-search 
   - python312-pypiserver 
   - python312-pypng 
@@ -31063,6 +31064,7 @@ unsorted:
   - python312-signedjson 
   - python312-signxml 
   - python312-sigstore 
+  - python312-sigstore-models 
   - python312-sigstore-protobuf-specs 
   - python312-sigstore-rekor-types 
   - python312-simple-websocket 
@@ -33126,6 +33128,8 @@ unsorted:
   - python313-gns3fy 
   - python313-gnureadline 
   - python313-gobject-devel 
+  - python313-gobject-stubs 
+  - python313-gobject-stubs-gtk3 
   - python313-google-ai-generativelanguage 
   - python313-google-api-core 
   - python313-google-api-python-client 
@@ -34287,6 +34291,7 @@ unsorted:
   - python313-pypdf 
   - python313-pyperclip 
   - python313-pyperf 
+  - python313-pypi-attestations 
   - python313-pypi-search 
   - python313-pypiserver 
   - python313-pypng 
@@ -34808,6 +34813,7 @@ unsorted:
   - python313-signedjson 
   - python313-signxml 
   - python313-sigstore 
+  - python313-sigstore-models 
   - python313-sigstore-protobuf-specs 
   - python313-sigstore-rekor-types 
   - python313-simple-websocket 
