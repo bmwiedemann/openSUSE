@@ -1,7 +1,33 @@
 -------------------------------------------------------------------
+Sun Nov  9 14:04:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Log unmaintained warning on import
+  * Add pbr as dep, remove hacking
+  * Add pre-commit, apply ruff
+  * Drop support for Python < 3.10
+  * tests: Remove duplicated tests
+  * Stop using private SDK methods in config unit tests
+  * Fix unit tests to pass locally
+  * Drop usage of six
+  * Bump hacking
+  * Drop usage of extras.hasattr
+  * Update python classifier in setup.cfg
+  * Remove untested lower-constraints.txt
+  * Bump CI jobs to Python 3.11
+  * replace "-" with "\_" in setup.cfg
+  * Remove ceilometerclient
+  * Add support for tox 4
+  * Fix zuul jobs
+  * Switch to newer openstackdocstheme and reno versions
+  * Cap jsonschema 3.2.0 as the minimal version
+  * Cleanup py27 support
+  * Update master for stable/ussuri
+
+-------------------------------------------------------------------
 Tue Jun 21 13:16:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- drop mock dependency 
+- drop mock dependency
 
 -------------------------------------------------------------------
 Mon May  3 16:23:07 UTC 2021 - Dirk Müller <dmueller@suse.com>

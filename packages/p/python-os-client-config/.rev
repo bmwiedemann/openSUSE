@@ -314,4 +314,35 @@
     <comment>- drop mock dependency</comment>
     <requestid>984178</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8e167e32a3981ad4e383e096a4ca551d</srcmd5>
+    <version>2.3.0</version>
+    <time>1762798701</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * Log unmaintained warning on import
+  * Add pbr as dep, remove hacking
+  * Add pre-commit, apply ruff
+  * Drop support for Python &lt; 3.10
+  * tests: Remove duplicated tests
+  * Stop using private SDK methods in config unit tests
+  * Fix unit tests to pass locally
+  * Drop usage of six
+  * Bump hacking
+  * Drop usage of extras.hasattr
+  * Update python classifier in setup.cfg
+  * Remove untested lower-constraints.txt
+  * Bump CI jobs to Python 3.11
+  * replace &quot;-&quot; with &quot;\_&quot; in setup.cfg
+  * Remove ceilometerclient
+  * Add support for tox 4
+  * Fix zuul jobs
+  * Switch to newer openstackdocstheme and reno versions
+  * Cap jsonschema 3.2.0 as the minimal version
+  * Cleanup py27 support
+  * Update master for stable/ussuri
+
+- drop mock dependency</comment>
+    <requestid>1316884</requestid>
+  </revision>
 </revisionlist>

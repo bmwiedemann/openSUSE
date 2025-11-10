@@ -1,7 +1,7 @@
 #
 # spec file for package python-os-client-config
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,44 @@
 #
 
 
-%global sname os-client-config
-%bcond_with test
 %bcond_with docs
-Name:           python-os-client-config
-Version:        2.1.0
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%global pythons %{primary_python}
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+Name:           python-os-client-config%{psuffix}
+Version:        2.3.0
 Release:        0
 Summary:        OpenStack Client Configuration Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/os-client-config
-Source0:        https://files.pythonhosted.org/packages/source/o/os-client-config/os-client-config-2.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/os_client_config/os_client_config-%{version}.tar.gz
+BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-pbr
+Requires:       python-PyYAML
+Requires:       python-appdirs
+Requires:       python-keystoneauth1
+Requires:       python-requestsexceptions
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  python3-extras
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-glanceclient
-BuildRequires:  python3-jsonschema
-BuildRequires:  python3-keystoneclient
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-python-subunit
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testscenarios
-BuildRequires:  python3-testtools
+BuildRequires:  %{python_module extras}
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module glanceclient}
+BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module openstacksdk}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pytest}
 %endif
+%python_subpackages
 
 %description
 os-client-config is a library for collecting client configuration for
@@ -50,23 +62,6 @@ It will find cloud config for as few as 1 cloud and as many as you want
 to put in a config file. It will read environment variables and config
 files, and it also contains some vendor specific default values so that
 you don't have to know extra info to use OpenStack.
-
-%package -n python3-os-client-config
-Summary:        OpenStack Client Configuration Library
-Requires:       python3-PyYAML
-Requires:       python3-appdirs
-Requires:       python3-keystoneauth1
-Requires:       python3-requestsexceptions
-
-%description -n python3-os-client-config
-os-client-config is a library for collecting client configuration for
-using an OpenStack cloud in a consistent and comprehensive manner.
-It will find cloud config for as few as 1 cloud and as many as you want
-to put in a config file. It will read environment variables and config
-files, and it also contains some vendor specific default values so that
-you don't have to know extra info to use OpenStack.
-
-This package contains the Python 3.x module.
 
 %if %{with docs}
 %package -n python-os-client-config-doc
@@ -80,37 +75,39 @@ Documentation for the os-client-config library.
 %endif
 
 %prep
-%autosetup -p1 -n %{sname}-%{version}
-%py_req_cleanup
+%autosetup -p1 -n os_client_config-%{version}
 
+%if !%{with test}
 %build
-%py3_build
+%pyproject_wheel
 %if %{with docs}
 # generate html docs
-PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %install
-%py3_install
+%pyproject_install
+%endif
 
 %if %{with test}
 %check
-export PYTHONPATH="%{python3_sitearch}:%{python3_sitelib}:%{buildroot}%{python3_sitelib}"
-python3 -m stestr.cli run
+%pytest
 %endif
 
-%files -n python3-os-client-config
+%if !%{with test}
+%files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python3_sitelib}/os_client_config
-%{python3_sitelib}/*.egg-info
+%{python_sitelib}/os_client_config
+%{python_sitelib}/os_client_config-%{version}.dist-info
 
 %if %{with docs}
 %files -n python-os-client-config-doc
 %doc doc/build/html
 %license LICENSE
+%endif
 %endif
 
 %changelog
