@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.copy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.copy
-Version:        5.0
+Version:        6.0
 Release:        0
 Summary:        Pluggable object copying mechanism
 License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/zope.copy
-Source:         https://files.pythonhosted.org/packages/source/z/zope.copy/zope.copy-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zope.copy/zope_copy-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -57,7 +57,7 @@ This package provides a pluggable mechanism for copying persistent objects.
 Documentation is hosted at https://zopecopy.readthedocs.io/en/latest/
 
 %prep
-%setup -q -n zope.copy-%{version}
+%setup -q -n zope_copy-%{version}
 
 %build
 %pyproject_wheel
@@ -79,7 +79,6 @@ Documentation is hosted at https://zopecopy.readthedocs.io/en/latest/
 %doc README.rst
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope/copy
-%{python_sitelib}/zope.copy-%{version}-py*-nspkg.pth
 %{python_sitelib}/zope[_.]copy-%{version}.dist-info
 %endif
 

@@ -61,4 +61,15 @@
     <comment>Make it compatible with new setuptools</comment>
     <requestid>1266264</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>36973dcd8c30e49a1f3ee581157dc6b2</srcmd5>
+    <version>6.0</version>
+    <time>1762798718</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0:
+  * Replace pkg_resources namespace with PEP 420 native
+    namespace.
+  * Drop support for Python 3.8.</comment>
+    <requestid>1316810</requestid>
+  </revision>
 </revisionlist>
