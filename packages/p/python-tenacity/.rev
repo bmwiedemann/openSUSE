@@ -273,4 +273,17 @@
     functions</comment>
     <requestid>1199461</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ccadf0853f76535a9fabb31a5bcc4563</srcmd5>
+    <version>9.1.2</version>
+    <time>1762798720</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.1.2:
+  * Test with Python 3.13
+  * ci: remove Python 3.8 support
+  * fix: return &quot;Self&quot; from &quot;BaseRetrying.copy&quot;
+  * ci: upload on PyPI using trusted publishing
+  * Add re.Pattern to allowed match types</comment>
+    <requestid>1316811</requestid>
+  </revision>
 </revisionlist>

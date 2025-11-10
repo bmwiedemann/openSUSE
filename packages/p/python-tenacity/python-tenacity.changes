@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:12:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1.2:
+  * Test with Python 3.13
+  * ci: remove Python 3.8 support
+  * fix: return "Self" from "BaseRetrying.copy"
+  * ci: upload on PyPI using trusted publishing
+  * Add re.Pattern to allowed match types
+
+-------------------------------------------------------------------
 Sun Sep  8 13:40:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.0.0:
