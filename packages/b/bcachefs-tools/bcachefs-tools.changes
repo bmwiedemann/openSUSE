@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov  9 17:39:05 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Update to release 1.32.0
+  * bcachefs: vendorize bio_iov_iter_get_pages()
+  * bcachefs: BCH_ERR_unaligned_io
+  * bcachefs: Don't bail out of check_inode() if
+    check_has_case_sensitive() fails
+  * udev rules: Add per-member links in /dev/disk/by-uuid
+  * A number of documentation updates including:
+  * Added Documentation about how to add Device Labels
+  * Clarified how to remove offline devices
+  * Added data scrub documentation
+  * Added set-fs-option as an alternative for sysfs option
+  * Added casefold_disabled option Documentation, not sure if
+    able to be set other than on mount
+  * bcachefs: don't BUG() if using the btree before initialized
+  * bcachefs: Restrict output size of
+    bch2_snapshot_delete_nodes_to_text()
+  * cmd_fs_top: Fix replication display for erasure coded data
+
+-------------------------------------------------------------------
 Wed Oct 29 16:49:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.31.12

@@ -203,4 +203,12 @@
     <comment>- Update to release 1.31.12</comment>
     <requestid>1314437</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2fbe5f2e6b8e691037085da85568839d</srcmd5>
+    <version>1.32.0</version>
+    <time>1762798577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.32.0</comment>
+    <requestid>1316712</requestid>
+  </revision>
 </revisionlist>
