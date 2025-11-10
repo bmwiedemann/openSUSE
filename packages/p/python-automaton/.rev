@@ -265,4 +265,12 @@
   - Update master for stable/2023.1</comment>
     <requestid>1130294</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0fbaca06e586e01839b6ca5b693eb0e5</srcmd5>
+    <version>3.2.0</version>
+    <time>1762798609</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316750</requestid>
+  </revision>
 </revisionlist>

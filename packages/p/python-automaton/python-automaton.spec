@@ -1,7 +1,7 @@
 #
 # spec file for package python-automaton
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,29 +23,22 @@ Summary:        Friendly state machines for python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/automaton
-Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-3.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-%{version}.tar.gz
+BuildRequires:  %{python_module PrettyTable >= 0.7.2}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-PrettyTable >= 0.7.2
-BuildRequires:  python3-devel
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testtools
+Requires:       python-PrettyTable >= 0.7.2
+Requires:       python-pbr >= 2.0.0
 BuildArch:      noarch
+%python_subpackages
 
 %description
 Friendly state machines for python.
-
-%package -n python3-automaton
-Summary:        Friendly state machines for python
-Requires:       python3-PrettyTable >= 0.7.2
-Requires:       python3-pbr >= 2.0.0
-Requires:       python3-six
-
-%description -n python3-automaton
-Friendly state machines for python.
-
-This package contains the Python 3.x module.
 
 %package -n python-automaton-doc
 Summary:        Documentation for the Automaton Library
@@ -56,28 +49,27 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the Automaton library.
 
 %prep
-%autosetup -p1 -n automaton-3.2.0
-%py_req_cleanup
+%autosetup -p1 -n automaton-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 # generate html docs
-PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
 # remove the Sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
 
 %check
-%{openstack_stestr_run}
+%pytest
 
-%files -n python3-automaton
+%files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python3_sitelib}/automaton
-%{python3_sitelib}/*.egg-info
+%{python_sitelib}/automaton
+%{python_sitelib}/automaton-%{version}.dist-info
 
 %files -n python-automaton-doc
 %license LICENSE
