@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 10 14:00:44 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(libart-2.0) Requires in wxsvg-devel: The libart
+  backend got dropped in version 1.2 (2013).
+
+-------------------------------------------------------------------
 Mon Sep 16 05:53:10 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.5.25

@@ -1,7 +1,7 @@
 #
 # spec file for package wxsvg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012-2019 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2012 Stefan Seyfried <seife+obs@b1-systems.com>
 #
@@ -55,7 +55,6 @@ Requires:       %{name} = %{version}
 Requires:       lib%{name}%{sover} = %{version}
 Requires:       wxGTK3-3_2-devel
 Requires:       pkgconfig(expat)
-Requires:       pkgconfig(libart-2.0)
 
 %description -n lib%{name}-devel
 Include files for developing programs based on %{name}.
