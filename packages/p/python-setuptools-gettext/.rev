@@ -58,4 +58,16 @@
   * Drop python 3.7 support</comment>
     <requestid>1265487</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>482b524089d042f6c013c1277f506886</srcmd5>
+    <version>0.1.16</version>
+    <time>1762798776</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.16:
+  * Upgrade artifact actions
+  * Add missing dollar sign
+  * don't hardcode source dir
+  * Migrate disperse configuration to toml</comment>
+    <requestid>1316820</requestid>
+  </revision>
 </revisionlist>
