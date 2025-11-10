@@ -135,4 +135,13 @@
     <comment></comment>
     <requestid>1280883</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>202e68920f271327139b759cd73d70b3</srcmd5>
+    <version>0.5.3</version>
+    <time>1762798830</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.3:
+  * add explicit_sample_format parameter to WasapiSettings</comment>
+    <requestid>1316848</requestid>
+  </revision>
 </revisionlist>
