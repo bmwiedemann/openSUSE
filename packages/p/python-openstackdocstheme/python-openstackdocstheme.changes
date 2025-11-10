@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov 10 07:41:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * fix: close form element in search.html
+  * Add libpcre3-dev in bindep.txt for pcre.h
+  * Use releases.openstack.org instead of opendev.org
+  * fix: search functionality in search.html
+  * tox: Drop envdir
+  * fix support for py39
+  * Upgrade bootstrap to 5.3
+  * Bump minimum Sphinx version
+  * Resolve Sphinx 8.x warnings
+  * Make Sphinx a required dependency
+  * setup: Update Python classifiers
+  * pre-commit: Add ruff, ruff-format
+  * pre-commit: Bump dependencies
+  * Replace deprecated perl-style regex
+  * Don't offer to show unmaintained versions
+  * Fix series selection and sorting
+  * Fix lack of the Yoga version in dropdown list
+  * zuul: Add tips job
+- switch to singlespec
+
+-------------------------------------------------------------------
 Fri Dec  1 16:18:39 UTC 2023 - cloud-devel@suse.de
 
 - update to version 3.2.0
@@ -38,12 +62,12 @@ Sat Oct  1 12:40:34 UTC 2022 - cloud-devel@suse.de
 -------------------------------------------------------------------
 Wed Jul 13 08:19:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update check section to not run setup.py test anymore 
+- update check section to not run setup.py test anymore
 
 -------------------------------------------------------------------
 Fri May 13 22:32:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- fix build against python 3.10 
+- fix build against python 3.10
 
 -------------------------------------------------------------------
 Tue May 10 11:28:28 UTC 2022 - cloud-devel@suse.de

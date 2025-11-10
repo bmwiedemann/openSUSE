@@ -370,4 +370,34 @@
   - Stop including Sphinx' standard JS files in script_footer.html</comment>
     <requestid>1137424</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ac1b356c1648575cc2e6f6e5eb593147</srcmd5>
+    <version>3.5.0</version>
+    <time>1762798708</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  * fix: close form element in search.html
+  * Add libpcre3-dev in bindep.txt for pcre.h
+  * Use releases.openstack.org instead of opendev.org
+  * fix: search functionality in search.html
+  * tox: Drop envdir
+  * fix support for py39
+  * Upgrade bootstrap to 5.3
+  * Bump minimum Sphinx version
+  * Resolve Sphinx 8.x warnings
+  * Make Sphinx a required dependency
+  * setup: Update Python classifiers
+  * pre-commit: Add ruff, ruff-format
+  * pre-commit: Bump dependencies
+  * Replace deprecated perl-style regex
+  * Don't offer to show unmaintained versions
+  * Fix series selection and sorting
+  * Fix lack of the Yoga version in dropdown list
+  * zuul: Add tips job
+- switch to singlespec
+
+- update check section to not run setup.py test anymore
+- fix build against python 3.10</comment>
+    <requestid>1316806</requestid>
+  </revision>
 </revisionlist>

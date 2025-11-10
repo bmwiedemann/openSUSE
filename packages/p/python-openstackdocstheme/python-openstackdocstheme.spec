@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstackdocstheme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,59 +16,49 @@
 #
 
 
+%global pythons %{primary_python}
 Name:           python-openstackdocstheme
-Version:        3.2.0
+Version:        3.5.0
 Release:        0
 Summary:        OpenStack Docs Theme
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/openstackdocstheme
-Source0:        https://files.pythonhosted.org/packages/source/o/openstackdocstheme/openstackdocstheme-3.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/openstackdocstheme/openstackdocstheme-%{version}.tar.gz
+BuildRequires:  %{python_module dulwich >= 0.15.0}
+BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-dulwich >= 0.15.0
-BuildRequires:  python3-pbr >= 2.0.0
+Requires:       python-Sphinx
+Requires:       python-dulwich >= 0.15.0
 BuildArch:      noarch
+%python_subpackages
 
 %description
 Theme and extension support for Sphinx documentation that is published
 to docs.openstack.org. Intended for use by OpenStack projects.
 
-%package -n python3-openstackdocstheme
-Summary:        OpenStack Docs Theme
-Requires:       python3-Sphinx
-Requires:       python3-dulwich >= 0.15.0
-
-%description -n python3-openstackdocstheme
-Theme and extension support for Sphinx documentation that is published
-to docs.openstack.org. Intended for use by OpenStack projects.
-
 %prep
-%autosetup -p1 -n openstackdocstheme-3.2.0
-
-# we dont need hacking or pre-commit
-sed -i '/^hacking.*/d' test-requirements.txt
-sed -i '/^pre-commit.*/d' test-requirements.txt
-%py_req_cleanup
+%autosetup -p1 -n openstackdocstheme-%{version}
 
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
 
 %check
 PYTHONPATH=. sphinx-build -a -E -j auto -d doc/build/doctrees -b html doc/source doc/build/htm
 
-%files -n python3-openstackdocstheme
+%files %{python_files}
 %license LICENSE
 %doc README.rst
 %{_bindir}/docstheme-build-pdf
 %{_bindir}/docstheme-build-translated.sh
 %{_bindir}/docstheme-lang-display-name.py
-%exclude %{_sysconfdir}/alternatives/*.pyc
-%exclude %{_sysconfdir}/alternatives/*.pyo
-%{python3_sitelib}/openstackdocstheme
-%{python3_sitelib}/openstackdocstheme-*-py?.*.egg-info
+%{python_sitelib}/openstackdocstheme
+%{python_sitelib}/openstackdocstheme-%{version}.dist-info
 
 %changelog
