@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  9 19:24:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.0:
+  * Remove unused dependencies
+  * Use common utility to escape ipv6
+  * add pyproject.toml to support pip 23.1
+  * Update master for stable/2025.1
+- switch to singlespec
+
+-------------------------------------------------------------------
 Tue Jul  1 22:08:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.0:

@@ -471,4 +471,12 @@
 - update to 0.3.0</comment>
     <requestid>1289693</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b8ab9916923c2b017e2e9923da81df91</srcmd5>
+    <version>4.7.0</version>
+    <time>1762798661</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316793</requestid>
+  </revision>
 </revisionlist>
