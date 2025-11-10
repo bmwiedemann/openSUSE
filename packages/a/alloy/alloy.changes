@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 28 05:58:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.11.3:
+  * Enhancements
+    - Schedule new path targets faster in loki.source.file.
+      (@kalleep)
+    - Add prometheus.static.exporter that exposes metrics specified
+      in a text file in Prometheus exposition format. (@kalleep)
+  * Bugfixes
+    - local.file_match now publish targets faster whenever targets
+      in arguments changes. (@kalleep)
+    - Fix otelcol.exporter.splunkhec arguments missing documented
+      otel_attrs_to_hec_metadata block. (@dehaansa)
+    - Support Scrape Protocol specification in CRDS for
+      prometheus.operator.* components. (@dehaansa)
+    - Fix panic in otelcol.receiver.syslog when no tcp block was
+      configured. (@kalleep)
+
+-------------------------------------------------------------------
 Mon Oct 13 06:54:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.11.2 (1.11.1 was not released):
