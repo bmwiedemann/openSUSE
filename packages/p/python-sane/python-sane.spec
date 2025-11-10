@@ -1,7 +1,7 @@
 #
 # spec file for package python-sane
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-sane
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 Summary:        A Python interface to the SANE scanner and frame grabber interface
 License:        NTP

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:22:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.2:
+  * sane.py: Silently ignore exception raised by device.cancel in
+    SaneIterator.__del__ if device was already closed
+  * Silently ignore exception raised by device.cancel in
+    SaneIterator.__del__ if device was already closed
+  * Port to pyproject.toml
+  * Added Python 3.10, 3.11, 3.12, 3.13
+
+-------------------------------------------------------------------
 Thu Jun 12 08:21:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

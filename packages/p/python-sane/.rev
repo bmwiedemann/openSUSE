@@ -36,4 +36,18 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1285067</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8e320daf3147115bf71929dc8a725547</srcmd5>
+    <version>2.9.2</version>
+    <time>1762798769</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.2:
+  * sane.py: Silently ignore exception raised by device.cancel in
+    SaneIterator.__del__ if device was already closed
+  * Silently ignore exception raised by device.cancel in
+    SaneIterator.__del__ if device was already closed
+  * Port to pyproject.toml
+  * Added Python 3.10, 3.11, 3.12, 3.13</comment>
+    <requestid>1316817</requestid>
+  </revision>
 </revisionlist>
