@@ -18,22 +18,16 @@
 
 #
 Name:           supertuxkart
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        A 3D kart racing game
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Amusements/Games/3D/Race
 URL:            https://supertuxkart.net/
-Source:         https://github.com/supertuxkart/stk-code/releases/download/%{version}/supertuxkart-%{version}-src.tar.xz
+Source:         https://github.com/supertuxkart/stk-code/releases/download/%{version}/SuperTuxKart-%{version}-src.tar.gz
 # Geeko kart add-on (CC-BY 3.0)
 Source1:        14e6ba25b17f0d.zip
 Source9:        supertuxkart.6
-# PATCH-FIX-UPSTREAM build with gcc13
-Patch0:         gcc13.patch
-# PATCH-FIX-UPSTREAM build with gcc15
-Patch1:         add-include-work-with-gcc15.patch
-# PATCH-FIX-UPSTREAM - Fix build using cmake 4.0
-Patch2:         supertuxkart-cmake4.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -65,6 +59,7 @@ BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       %{name}-data = %{version}
@@ -101,8 +96,9 @@ rm -rfv ./.github
 
 # fix W: non-executable-script
 rm data/optimize_data.sh
-rm data/po/pull_from_transifex.sh
 rm data/po/update_po_authors.py
+rm data/po/update_desktop_file_appdata.py
+rm data/po/update_translation.py
 
 %build
 mkdir build && cd build
@@ -141,29 +137,17 @@ for file in /usr/include/angelscript.h \
    rm %{buildroot}/$file
 done
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
-%defattr(-,root,root)
 %license COPYING
-%doc README.md CHANGELOG.md
+%doc CHANGELOG.md README.md
 %{_bindir}/supertuxkart
-%{_mandir}/man?/%{name}.?.*
+%{_mandir}/man6/%{name}.6%{?ext_man}
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/supertuxkart.appdata.xml
+%{_datadir}/metainfo/net.supertuxkart.SuperTuxKart.metainfo.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/
 
 %files data
-%defattr(-,root,root)
 %{_datadir}/supertuxkart/
 
 %changelog

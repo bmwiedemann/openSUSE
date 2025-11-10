@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov  8 12:46:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5
+  * Graphical improvements
+  * New soccer fields and egg hunts
+  * Six new themes
+  * New benchmark mode
+  * UI enhancements
+- Drop not longer needed patches:
+  * gcc13.patch
+  * add-include-work-with-gcc15.patch
+  * supertuxkart-cmake4.patch
+
+-------------------------------------------------------------------
 Tue Aug 19 07:16:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add supertuxkart-cmake4.patch: Fix build using cmake 4.
