@@ -1,7 +1,7 @@
 #
 # spec file for package python-boolean.py
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           python-boolean.py
-Version:        4.0
+Version:        5.0
 Release:        0
 Summary:        Module to define boolean algebras and create/parse boolean expressions
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/bastikr/boolean.py
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sphinxcontrib-apidoc}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,6 +59,6 @@ rm -rf html/.{doctrees,buildinfo}
 %license LICENSE.txt
 %doc README.rst CHANGELOG.rst html/
 %{python_sitelib}/boolean
-%{python_sitelib}/boolean[._]py-%{version}*-info
+%{python_sitelib}/boolean[._]py-%{version}.dist-info
 
 %changelog

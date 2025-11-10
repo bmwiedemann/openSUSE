@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 10 05:10:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0:
+  * doc: add API reference
+  * Fix absorption issue
+  * Workaround incompatibility with Python 3.14
+
+-------------------------------------------------------------------
 Thu May 15 11:56:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

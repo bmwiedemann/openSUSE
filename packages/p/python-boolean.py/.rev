@@ -47,4 +47,15 @@
     <comment></comment>
     <requestid>1277723</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a4dfd214a8e3c5d1560f009c78f9c08a</srcmd5>
+    <version>5.0</version>
+    <time>1762798602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0:
+  * doc: add API reference
+  * Fix absorption issue
+  * Workaround incompatibility with Python 3.14</comment>
+    <requestid>1316738</requestid>
+  </revision>
 </revisionlist>
