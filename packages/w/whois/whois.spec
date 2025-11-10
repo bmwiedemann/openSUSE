@@ -1,7 +1,7 @@
 #
 # spec file for package whois
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           whois
-Version:        5.6.4
+Version:        5.6.5
 Release:        0
 Summary:        Intelligent WHOIS client
 License:        GPL-2.0-or-later

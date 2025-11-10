@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 10 10:44:52 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to version 5.6.5: 
+  * Updated the .co TLD server.
+  * Added some large KRNIC networks.
+  * Updated the second level .uk TLD servers.
+  * Removed the .pro TLD server.
+  * Removed 1 new gTLD which is no longer active. 
+
+-------------------------------------------------------------------
 Wed Aug  6 21:03:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 5.6.4:
