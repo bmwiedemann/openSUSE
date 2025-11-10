@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-pycodestyle
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Pytest plugin to run pycodestyle
 License:        MIT
@@ -48,7 +48,9 @@ pytest plugin to run pycodestyle in python tests
 
 %prep
 %setup -q -n pytest_pycodestyle-%{version}
-sed -i -e 's:~=:>=:g' setup.py
+%if 0%{?suse_version} <= 1500
+sed -i 's/license = "MIT"/license = { text = "MIT" }/' pyproject.toml
+%endif
 
 %build
 %pyproject_wheel

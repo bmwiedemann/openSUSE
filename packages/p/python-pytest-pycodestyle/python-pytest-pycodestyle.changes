@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  7 15:04:58 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- update to 2.5.0:
+  * Migrate from setup.py to pyproject.toml
+  * Remove py.io dependency
+- removed the setup.py in spec files
+
+-------------------------------------------------------------------
 Wed May  7 06:58:09 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

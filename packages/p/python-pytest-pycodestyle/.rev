@@ -81,4 +81,15 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275109</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9fed596a5b49b58bc18116f2f552be60</srcmd5>
+    <version>2.5.0</version>
+    <time>1762798891</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.0:
+  * Migrate from setup.py to pyproject.toml
+  * Remove py.io dependency
+- removed the setup.py in spec files</comment>
+    <requestid>1316944</requestid>
+  </revision>
 </revisionlist>
