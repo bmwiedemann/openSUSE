@@ -1,7 +1,7 @@
 #
 # spec file for package python-designateclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,79 +16,73 @@
 #
 
 
+%global pythons %{primary_python}
 Name:           python-designateclient
-Version:        6.0.1
+Version:        6.3.0
 Release:        0
 Summary:        OpenStack DNS as a Service - Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-designateclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-designateclient/python-designateclient-6.0.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python_designateclient/python_designateclient-%{version}.tar.gz
+BuildRequires:  %{python_module jsonschema >= 3.2.0}
+BuildRequires:  %{python_module keystoneauth1 >= 3.4.0}
+BuildRequires:  %{python_module osc-lib >= 1.8.0}
+BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-jsonschema >= 3.2.0
-BuildRequires:  python3-keystoneauth1 >= 3.4.0
-BuildRequires:  python3-osc-lib >= 1.8.0
-BuildRequires:  python3-oslo.serialization >= 2.18.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-requests-mock
-BuildRequires:  python3-stestr
+Requires:       python-debtcollector >= 1.2.0
+Requires:       python-jsonschema >= 3.2.0
+Requires:       python-keystoneauth1 >= 3.4.0
+Requires:       python-osc-lib >= 1.8.0
+Requires:       python-oslo.serialization >= 2.18.0
+Requires:       python-oslo.utils >= 3.33.0
+Requires:       python-requests >= 2.14.2
+Requires:       python-six
 BuildArch:      noarch
+%python_subpackages
 
 %description
 OpenStack DNS as a Service - Client
 
-%package -n python3-designateclient
-Summary:        OpenStack DNS as a Service - Client
-Requires:       python3-debtcollector >= 1.2.0
-Requires:       python3-jsonschema >= 3.2.0
-Requires:       python3-keystoneauth1 >= 3.4.0
-Requires:       python3-osc-lib >= 1.8.0
-Requires:       python3-oslo.serialization >= 2.18.0
-Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-requests >= 2.14.2
-Requires:       python3-six
-
-%description -n python3-designateclient
-OpenStack DNS as a Service - Client
-
-This package contains the Python 3.x module.
-
-%package -n python-designateclient-doc
+%package -n python3-designateclient-doc
 Summary:        Documentation for the OpenStack DNS as a Service - Client
 Group:          Documentation/HTML
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinxcontrib-apidoc
 
-%description -n python-designateclient-doc
+%description -n python3-designateclient-doc
 Documentation for the OpenStack DNS as a Service - Client.
 
 %prep
-%autosetup -p1 -n python-designateclient-6.0.1
-%py_req_cleanup
+%autosetup -p1 -n python_designateclient-%{version}
 
 %build
-%py3_build
+%pyproject_wheel
 
 # generate docs
-PYTHONPATH=. PBR_VERSION=6.0.1 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%py3_install
+%pyproject_install
 
 %check
 %{openstack_stestr_run}
 
-%files -n python3-designateclient
+%files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/designateclient
-%{python3_sitelib}/python_designateclient-%{version}-*.egg-info
+%{python3_sitelib}/python_designateclient-%{version}.dist-info
 
-%files -n python-designateclient-doc
+%files -n python3-designateclient-doc
 %license LICENSE
 %doc doc/build/html ChangeLog
 
