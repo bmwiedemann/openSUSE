@@ -231,4 +231,12 @@
   - Remove old excludes</comment>
     <requestid>1198557</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0b97f77453ca218a30a45957fbbbecbf</srcmd5>
+    <version>3.6.0</version>
+    <time>1762798650</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316787</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov  9 13:55:42 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  * add pyproject.toml to support pip 23.1
+  * tox: Remove basepython
+  * Update master for stable/2025.1
+  * Skip installation to speed up pep8
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Declare Python 3.12 support
+  * Update master for stable/2024.2
+  * Handle shell\_completion option in test suite
+- drop 0001-Handle-shell_completion-option-in-test-suite.patch
+  (upstream)
+- switch to singlespec
+
+-------------------------------------------------------------------
 Tue Sep  3 16:43:45 UTC 2024 - cloud-devel@suse.de
 
 - added 0001-Handle-shell_completion-option-in-test-suite.patch
