@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 10 04:59:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-314.patch:
+  * Use inspect.iscoroutine, rather than asyncio.
+
+-------------------------------------------------------------------
 Mon Jun 16 12:16:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

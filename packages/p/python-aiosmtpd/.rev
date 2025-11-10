@@ -163,4 +163,13 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1286096</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>ac1cfcf0a2bec345c14f3a8570a1a2b3</srcmd5>
+    <version>1.4.6</version>
+    <time>1762798602</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-314.patch:
+  * Use inspect.iscoroutine, rather than asyncio.</comment>
+    <requestid>1316737</requestid>
+  </revision>
 </revisionlist>
