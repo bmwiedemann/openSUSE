@@ -1,7 +1,7 @@
 #
 # spec file for package kustomize
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kustomize
-Version:        5.7.1
+Version:        5.8.0
 Release:        0
 Summary:        Customization of kubernetes YAML configurations
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  golang(API) = 1.24
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 

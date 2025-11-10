@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Nov 10 13:12:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.8.0:
+  https://github.com/kubernetes-sigs/kustomize/releases/tag/kustomize%2Fv5.8.0
+  * Highlights
+    - implements to replacements value in the structured data
+      Now, We can edit yaml/json in yaml manifests with
+      replacements transformer.
+      See #5679
+    - fix: Propagate Namespace correctly to Helm
+      The long-standing bug where kustomize's namespace transformer
+      did not pass namespaces to helmCharts has been fixed.
+      See #5940
+  * Feature
+    - #5679: implements to replacements value in the structured
+      data
+    - #5863: Add regex support for Replacement selectors
+    - #5930: feat: add PatchArgs API type to populate patch options
+  * fix
+    - #5940: fix: Propagate Namespace correctly to Helm
+    - #5971: fix: performance recession when propagating namespace
+      to helm
+    - #5942: fix fnplugin storagemounts validation
+    - #5958: fix: make AbsorbAll conflict error more verbose
+    - #5961: refactor: nested format string
+    - #5967: Fix infinite loop in HTTP client by validating URLs
+      before requests
+    - #5985: fix(kyaml/yaml): minor nil safety fix for
+      RNode.Content etc
+    - #5991: Fix duplicate key error when adding multiple labels
+      with --without-selector
+  * Dependencies
+    - #5962: chore: update dependencies from security alert
+    - #5959: update go 1.24.6
+    - build(deps): bump actions/setup-go from 5 to 6
+    - build(deps): bump github.com/go-viper/mapstructure/v2 from
+      v2.3.0 to v2.4.0
+    - build(deps): bump actions/checkout from 4 to 5
+    - bump github.com/go-viper/mapstructure/v2 from 2.2.1 to 2.3.0
+      in /cmd/gorepomod
+    - bump github.com/go-git/go-git/v5 from 5.11.0 to 5.13.0
+    - build(deps): bump golang.org/x/oauth2 from 0.25.0 to 0.27.0
+  * chore
+    - #6007: Update kyaml to v0.21.0
+    - #6008: Update cmd/config to v0.21.0
+    - #6009: Update api to v0.21.0
+
+-------------------------------------------------------------------
 Thu Jul 24 10:47:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.7.1:
