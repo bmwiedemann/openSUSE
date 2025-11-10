@@ -8276,8 +8276,6 @@ unsorted:
   - guvcview 
   - guvcview-devel 
   - guvcview-lang 
-  - guvcview-qt5 
-  - guvcview-qt5-lang 
   - gv 
   - gvim 
   - gvisor-tap-vsock 
@@ -14845,8 +14843,8 @@ unsorted:
   - libnfc-tools 
   - libnfc6 
   - libnfd1 
-  - libnfdump-1_7_6 
-  - libnffile-1_7_6 
+  - libnfdump-1_7_7 
+  - libnffile-1_7_7 
   - libnfnetlink-devel 
   - libnfnetlink0-32bit 
   - libnfs-devel 
@@ -15984,6 +15982,7 @@ unsorted:
   - librocm-core1 
   - librocrand1 
   - librocsgraphtheory0 
+  - librocsparse1 
   - librrd8 
   - librsb-devel 
   - librsb0 
@@ -16571,7 +16570,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent31 
+  - libtorrent32 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -19330,6 +19329,12 @@ unsorted:
   - mvapich3-ucx 
   - mvapich3-ucx-devel 
   - mvapich3-ucx-doc 
+  - mvapich4-ofi 
+  - mvapich4-ofi-devel 
+  - mvapich4-ofi-doc 
+  - mvapich4-ucx 
+  - mvapich4-ucx-devel 
+  - mvapich4-ucx-doc 
   - mwic 
   - mxml-devel 
   - mxml-doc 
@@ -22937,12 +22942,8 @@ unsorted:
   - playmyvideos 
   - playmyvideos-lang 
   - pleaser 
-  - plexus-ant-factory 
-  - plexus-ant-factory-javadoc 
   - plexus-archiver 
   - plexus-archiver-javadoc 
-  - plexus-bsh-factory 
-  - plexus-bsh-factory-javadoc 
   - plexus-build-api 
   - plexus-build-api-javadoc 
   - plexus-build-api0 
@@ -23616,11 +23617,10 @@ unsorted:
   - python-caja 
   - python-caja-devel 
   - python-caja-lang 
-  - python-castellan-doc 
   - python-cinderclient-doc 
+  - python-cotyledon-doc 
   - python-dbus-python-common-devel 
   - python-debtcollector-doc 
-  - python-designateclient-doc 
   - python-django-pipeline-doc 
   - python-ec2imgutils 
   - python-ec2metadata 
@@ -23633,11 +23633,9 @@ unsorted:
   - python-fuse-doc 
   - python-gcemetadata 
   - python-gevent-doc 
-  - python-glanceclient-doc 
   - python-gobject-common-devel 
   - python-gunicorn-doc 
   - python-happybase-doc 
-  - python-heatclient-doc 
   - python-ironicclient-doc 
   - python-jaraco.stream-doc 
   - python-keystoneauth1-doc 
@@ -23654,10 +23652,7 @@ unsorted:
   - python-magic-wormhole-bash-completion 
   - python-magic-wormhole-fish-completion 
   - python-magic-wormhole-zsh-completion 
-  - python-magnumclient-doc 
-  - python-manilaclient-doc 
   - python-marshmallow-doc 
-  - python-masakariclient-doc 
   - python-md2workflow-common 
   - python-mistralclient-doc 
   - python-mpi4py-common-devel 
@@ -23668,12 +23663,8 @@ unsorted:
   - python-nautilus-common-devel 
   - python-nautilus-common-files 
   - python-ncclient-doc 
-  - python-neutronclient-doc 
   - python-notmuch-doc 
-  - python-novaclient-doc 
   - python-nss-doc 
-  - python-octaviaclient-doc 
-  - python-openstackclient-doc 
   - python-openstacksdk-doc 
   - python-osc-lib-doc 
   - python-oslo.cache-doc 
@@ -23691,9 +23682,7 @@ unsorted:
   - python-oslo.service-doc 
   - python-oslo.utils-doc 
   - python-oslo.versionedobjects-doc 
-  - python-oslo.vmware-doc 
   - python-osprofiler-doc 
-  - python-ovsdbapp-doc 
   - python-paramiko-doc 
   - python-peppercorn-doc 
   - python-pip-requirements-parser-doc 
@@ -23703,8 +23692,6 @@ unsorted:
   - python-pssh 
   - python-py2pack-doc 
   - python-pybind11-common-devel 
-  - python-pycadf-common 
-  - python-pycadf-doc 
   - python-pycairo-common-devel 
   - python-pycurl-doc 
   - python-pygame-doc 
@@ -23727,7 +23714,6 @@ unsorted:
   - python-rpm-packaging 
   - python-rtslib-fb-common 
   - python-segno-doc 
-  - python-senlinclient-doc 
   - python-shodan-doc 
   - python-sip4-common 
   - python-sip4-doc 
@@ -23735,7 +23721,6 @@ unsorted:
   - python-susepubliccloudinfo 
   - python-sushy-doc 
   - python-swiftclient-doc 
-  - python-tooz-doc 
   - python-tqdm-bash-completion 
   - python-translationstring-doc 
   - python-zope.deprecation-doc 
@@ -23761,7 +23746,6 @@ unsorted:
   - python3-ara 
   - python3-arpack-ng 
   - python3-atspi 
-  - python3-automaton 
   - python3-avahi-gtk 
   - python3-avocado 
   - python3-avocado-plugins-golang 
@@ -23777,7 +23761,6 @@ unsorted:
   - python3-babeltrace 
   - python3-babeltrace2 
   - python3-bandit 
-  - python3-barbicanclient 
   - python3-bcc 
   - python3-boost_parallel_mpi 
   - python3-boost_parallel_mpi1_89_0 
@@ -23788,12 +23771,11 @@ unsorted:
   - python3-capng 
   - python3-capstone 
   - python3-casacore 
-  - python3-castellan 
+  - python3-castellan-doc 
   - python3-ccm 
   - python3-ceph-argparse 
   - python3-ceph-common 
   - python3-cephfs 
-  - python3-cinderclient 
   - python3-clang 
   - python3-clang15 
   - python3-clang18 
@@ -23805,9 +23787,8 @@ unsorted:
   - python3-coconut 
   - python3-csound 
   - python3-dbus-presage 
-  - python3-debtcollector 
   - python3-deltarpm 
-  - python3-designateclient 
+  - python3-designateclient-doc 
   - python3-dnf 
   - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
@@ -23826,9 +23807,7 @@ unsorted:
   - python3-evemu 
   - python3-fastjet 
   - python3-fife 
-  - python3-freezerclient 
   - python3-fritzconnection 
-  - python3-futurist 
   - python3-gdcm 
   - python3-geis 
   - python3-genders 
@@ -23836,7 +23815,7 @@ unsorted:
   - python3-gexiv2 
   - python3-gi-docgen 
   - python3-glad2 
-  - python3-glanceclient 
+  - python3-glanceclient-doc 
   - python3-gluster 
   - python3-gmsh 
   - python3-gnucash 
@@ -23850,18 +23829,13 @@ unsorted:
   - python3-grype2html 
   - python3-gv 
   - python3-hawkey 
-  - python3-heatclient 
+  - python3-heatclient-doc 
   - python3-hivex 
   - python3-imapdedup 
   - python3-imobiledevice 
   - python3-inspektor 
   - python3-ipa_hbac 
-  - python3-ironic-inspector-client 
-  - python3-ironicclient 
   - python3-kea 
-  - python3-keystoneauth1 
-  - python3-keystoneclient 
-  - python3-keystonemiddleware 
   - python3-kf6-kcoreaddons 
   - python3-kf6-kguiaddons 
   - python3-kf6-kjobwidgets 
@@ -23912,66 +23886,39 @@ unsorted:
   - python3-lldb21 
   - python3-logreduce 
   - python3-lttngust 
-  - python3-magnumclient 
+  - python3-magnumclient-doc 
   - python3-mailman-hyperkitty 
   - python3-manifold 
-  - python3-manilaclient 
-  - python3-masakariclient 
-  - python3-mistralclient 
+  - python3-manilaclient-doc 
+  - python3-masakariclient-doc 
   - python3-mlt 
-  - python3-monascaclient 
   - python3-monitoring-plugins-http_json 
   - python3-morecvutils 
   - python3-nemo 
   - python3-netgen 
-  - python3-neutronclient 
+  - python3-neutronclient-doc 
   - python3-newt 
   - python3-notcurses 
   - python3-notmuch 
   - python3-notmuch2 
-  - python3-novaclient 
+  - python3-novaclient-doc 
   - python3-ntp 
   - python3-obexftp 
-  - python3-octaviaclient 
+  - python3-octaviaclient-doc 
   - python3-onionshare 
   - python3-openbabel 
   - python3-openqa_review 
   - python3-openshot 
   - python3-openstack-doc-tools 
-  - python3-openstackclient 
-  - python3-openstackdocstheme 
-  - python3-openstacksdk 
+  - python3-openstackclient-doc 
   - python3-openvino 
   - python3-openvino-telemetry 
   - python3-openvswitch 
   - python3-openwsman 
-  - python3-os-client-config 
-  - python3-os-service-types 
-  - python3-osc-lib 
   - python3-osdlyrics 
-  - python3-oslo.cache 
-  - python3-oslo.concurrency 
-  - python3-oslo.config 
-  - python3-oslo.context 
-  - python3-oslo.i18n 
-  - python3-oslo.log 
-  - python3-oslo.messaging 
   - python3-oslo.messaging-doc 
-  - python3-oslo.metrics 
-  - python3-oslo.middleware 
   - python3-oslo.middleware-doc 
-  - python3-oslo.policy 
-  - python3-oslo.privsep 
-  - python3-oslo.reports 
-  - python3-oslo.rootwrap 
-  - python3-oslo.serialization 
-  - python3-oslo.service 
-  - python3-oslo.utils 
-  - python3-oslo.versionedobjects 
-  - python3-oslo.vmware 
-  - python3-oslotest 
-  - python3-osprofiler 
-  - python3-ovsdbapp 
+  - python3-oslo.vmware-doc 
   - python3-pacemaker 
   - python3-paraview 
   - python3-partio 
@@ -23983,9 +23930,9 @@ unsorted:
   - python3-presagemate 
   - python3-pvirsh 
   - python3-pwquality 
-  - python3-pycadf 
+  - python3-pycadf-common 
+  - python3-pycadf-doc 
   - python3-pycdlib-common 
-  - python3-pyghmi 
   - python3-pyginac 
   - python3-pyginac-devel 
   - python3-pylibiio 
@@ -24004,7 +23951,6 @@ unsorted:
   - python3-satyr 
   - python3-sbommage 
   - python3-seccomp 
-  - python3-senlinclient 
   - python3-smbus 
   - python3-spglib 
   - python3-splinter 
@@ -24013,13 +23959,11 @@ unsorted:
   - python3-sss_nss_idmap 
   - python3-sssd-config 
   - python3-stp 
-  - python3-sushy 
-  - python3-swiftclient 
   - python3-talloc-32bit 
   - python3-talloc-devel 
   - python3-tdb-32bit 
   - python3-tevent-32bit 
-  - python3-tooz 
+  - python3-tooz-doc 
   - python3-tpm2-pytss 
   - python3-uhd 
   - python3-unbound 
@@ -24030,7 +23974,6 @@ unsorted:
   - python3-vtk 
   - python3-vtk-openmpi4 
   - python3-xcb-proto-devel 
-  - python3-yaql 
   - python3-yui 
   - python3-z3 
   - python3-zbar 
@@ -24440,6 +24383,7 @@ unsorted:
   - python311-autodocsumm 
   - python311-autoflake 
   - python311-autoimport 
+  - python311-automaton 
   - python311-autopage 
   - python311-autopep8 
   - python311-autoray 
@@ -25077,6 +25021,7 @@ unsorted:
   - python311-copr 
   - python311-copr-cli 
   - python311-cotengra 
+  - python311-cotyledon 
   - python311-covdefaults 
   - python311-coverage 
   - python311-coveralls-check 
@@ -25150,6 +25095,7 @@ unsorted:
   - python311-ddsketch 
   - python311-ddt 
   - python311-deap 
+  - python311-debtcollector 
   - python311-debugpy 
   - python311-decopatch 
   - python311-decorator 
@@ -25516,6 +25462,7 @@ unsorted:
   - python311-furo 
   - python311-fuse 
   - python311-fusepy 
+  - python311-futurist 
   - python311-fuzzywuzzy 
   - python311-fvs 
   - python311-gTTS 
@@ -25889,6 +25836,9 @@ unsorted:
   - python311-keyring-keyutils 
   - python311-keyring-pass 
   - python311-keyrings.alt 
+  - python311-keystoneauth1 
+  - python311-keystoneclient 
+  - python311-keystonemiddleware 
   - python311-khal 
   - python311-khard 
   - python311-kismet-rest 
@@ -26299,6 +26249,7 @@ unsorted:
   - python311-openmesh 
   - python311-openpyxl 
   - python311-openqa_client 
+  - python311-openstacksdk 
   - python311-opentelemetry-api 
   - python311-opentelemetry-exporter-otlp 
   - python311-opentelemetry-exporter-otlp-proto-common 
@@ -26321,10 +26272,33 @@ unsorted:
   - python311-orderedmultidict 
   - python311-orderly-set 
   - python311-orjson 
+  - python311-os-client-config 
+  - python311-os-service-types 
+  - python311-osc-lib 
   - python311-osc-tiny 
   - python311-oscrypto 
+  - python311-oslo.cache 
+  - python311-oslo.concurrency 
+  - python311-oslo.config 
+  - python311-oslo.context 
+  - python311-oslo.i18n 
+  - python311-oslo.log 
+  - python311-oslo.messaging 
+  - python311-oslo.metrics 
+  - python311-oslo.middleware 
+  - python311-oslo.policy 
+  - python311-oslo.privsep 
+  - python311-oslo.reports 
+  - python311-oslo.rootwrap 
+  - python311-oslo.serialization 
+  - python311-oslo.service 
+  - python311-oslo.utils 
+  - python311-oslo.versionedobjects 
+  - python311-oslo.vmware 
+  - python311-oslotest 
   - python311-osmviz 
   - python311-ospd-openvas 
+  - python311-osprofiler 
   - python311-outcome 
   - python311-overrides 
   - python311-ovirt-engine-sdk 
@@ -26586,6 +26560,7 @@ unsorted:
   - python311-pybreaker 
   - python311-pybtex 
   - python311-pybugz 
+  - python311-pycadf 
   - python311-pycairo-devel 
   - python311-pycapnp 
   - python311-pycdio 
@@ -26644,6 +26619,7 @@ unsorted:
   - python311-pygame-devel 
   - python311-pygdbmi 
   - python311-pygerrit2 
+  - python311-pyghmi 
   - python311-pygit2 
   - python311-pyglet 
   - python311-pygls 
@@ -27401,6 +27377,7 @@ unsorted:
   - python311-superqt 
   - python311-sure 
   - python311-surer 
+  - python311-sushy 
   - python311-svglib 
   - python311-svgpathtools 
   - python311-svgwrite 
@@ -27491,6 +27468,7 @@ unsorted:
   - python311-tomlkit 
   - python311-tools 
   - python311-toolz 
+  - python311-tooz 
   - python311-toposort 
   - python311-topy 
   - python311-torch 
@@ -27738,6 +27716,7 @@ unsorted:
   - python311-yamlloader 
   - python311-yapf 
   - python311-yappi 
+  - python311-yaql 
   - python311-yara 
   - python311-yarg 
   - python311-yarl 
@@ -28196,6 +28175,7 @@ unsorted:
   - python312-autodocsumm 
   - python312-autoflake 
   - python312-autoimport 
+  - python312-automaton 
   - python312-autopage 
   - python312-autopep8 
   - python312-autoray 
@@ -28842,6 +28822,7 @@ unsorted:
   - python312-copr 
   - python312-copr-cli 
   - python312-cotengra 
+  - python312-cotyledon 
   - python312-covdefaults 
   - python312-coverage 
   - python312-coveralls-check 
@@ -28918,6 +28899,7 @@ unsorted:
   - python312-ddsketch 
   - python312-ddt 
   - python312-deap 
+  - python312-debtcollector 
   - python312-debugpy 
   - python312-decopatch 
   - python312-decorator 
@@ -29286,6 +29268,7 @@ unsorted:
   - python312-furo 
   - python312-fuse 
   - python312-fusepy 
+  - python312-futurist 
   - python312-fuzzywuzzy 
   - python312-fvs 
   - python312-gTTS 
@@ -29675,6 +29658,9 @@ unsorted:
   - python312-keyring-keyutils 
   - python312-keyring-pass 
   - python312-keyrings.alt 
+  - python312-keystoneauth1 
+  - python312-keystoneclient 
+  - python312-keystonemiddleware 
   - python312-khal 
   - python312-khard 
   - python312-kismet-rest 
@@ -30093,6 +30079,7 @@ unsorted:
   - python312-openmesh 
   - python312-openpyxl 
   - python312-openqa_client 
+  - python312-openstacksdk 
   - python312-opentelemetry-api 
   - python312-opentelemetry-exporter-otlp 
   - python312-opentelemetry-exporter-otlp-proto-common 
@@ -30115,10 +30102,33 @@ unsorted:
   - python312-orderedmultidict 
   - python312-orderly-set 
   - python312-orjson 
+  - python312-os-client-config 
+  - python312-os-service-types 
+  - python312-osc-lib 
   - python312-osc-tiny 
   - python312-oscrypto 
+  - python312-oslo.cache 
+  - python312-oslo.concurrency 
+  - python312-oslo.config 
+  - python312-oslo.context 
+  - python312-oslo.i18n 
+  - python312-oslo.log 
+  - python312-oslo.messaging 
+  - python312-oslo.metrics 
+  - python312-oslo.middleware 
+  - python312-oslo.policy 
+  - python312-oslo.privsep 
+  - python312-oslo.reports 
+  - python312-oslo.rootwrap 
+  - python312-oslo.serialization 
+  - python312-oslo.service 
+  - python312-oslo.utils 
+  - python312-oslo.versionedobjects 
+  - python312-oslo.vmware 
+  - python312-oslotest 
   - python312-osmviz 
   - python312-ospd-openvas 
+  - python312-osprofiler 
   - python312-outcome 
   - python312-overrides 
   - python312-ovirt-engine-sdk 
@@ -30390,6 +30400,7 @@ unsorted:
   - python312-pybreaker 
   - python312-pybtex 
   - python312-pybugz 
+  - python312-pycadf 
   - python312-pycairo 
   - python312-pycairo-devel 
   - python312-pycapnp 
@@ -30452,6 +30463,7 @@ unsorted:
   - python312-pygame-devel 
   - python312-pygdbmi 
   - python312-pygerrit2 
+  - python312-pyghmi 
   - python312-pygit2 
   - python312-pyglet 
   - python312-pygls 
@@ -31221,6 +31233,7 @@ unsorted:
   - python312-superqt 
   - python312-sure 
   - python312-surer 
+  - python312-sushy 
   - python312-svglib 
   - python312-svgpathtools 
   - python312-svgwrite 
@@ -31311,6 +31324,7 @@ unsorted:
   - python312-tomlkit 
   - python312-tools 
   - python312-toolz 
+  - python312-tooz 
   - python312-toposort 
   - python312-topy 
   - python312-torch 
@@ -31562,6 +31576,7 @@ unsorted:
   - python312-yamlloader 
   - python312-yapf 
   - python312-yappi 
+  - python312-yaql 
   - python312-yara 
   - python312-yarg 
   - python312-yarl 
@@ -32012,6 +32027,7 @@ unsorted:
   - python313-autodocsumm 
   - python313-autoflake 
   - python313-autoimport 
+  - python313-automaton 
   - python313-autopage 
   - python313-autopep8 
   - python313-autoray 
@@ -32446,6 +32462,7 @@ unsorted:
   - python313-backports.entry_points_selectable 
   - python313-backports.tarfile 
   - python313-backrefs 
+  - python313-barbicanclient 
   - python313-baron 
   - python313-base-32bit 
   - python313-base58 
@@ -32532,6 +32549,7 @@ unsorted:
   - python313-case 
   - python313-cassandra-driver 
   - python313-cassowary 
+  - python313-castellan 
   - python313-casttube 
   - python313-catkin-pkg 
   - python313-cattrs 
@@ -32574,6 +32592,7 @@ unsorted:
   - python313-cheroot 
   - python313-chest 
   - python313-chroma-hnswlib 
+  - python313-cinderclient 
   - python313-cinemagoer 
   - python313-circuitbreaker 
   - python313-ciso8601 
@@ -32648,6 +32667,7 @@ unsorted:
   - python313-copr 
   - python313-copr-cli 
   - python313-cotengra 
+  - python313-cotyledon 
   - python313-covdefaults 
   - python313-coverage 
   - python313-coveralls-check 
@@ -32718,6 +32738,7 @@ unsorted:
   - python313-ddsketch 
   - python313-ddt 
   - python313-deap 
+  - python313-debtcollector 
   - python313-debugpy 
   - python313-decopatch 
   - python313-deepdiff 
@@ -32731,6 +32752,7 @@ unsorted:
   - python313-deprecation 
   - python313-deprecation-alias 
   - python313-derpconf 
+  - python313-designateclient 
   - python313-devpi-client 
   - python313-devpi-common 
   - python313-devpi-process 
@@ -33070,6 +33092,7 @@ unsorted:
   - python313-freeipa 
   - python313-freetype-py 
   - python313-freezegun 
+  - python313-freezerclient 
   - python313-frozendict 
   - python313-frozenlist 
   - python313-fs 
@@ -33082,6 +33105,7 @@ unsorted:
   - python313-furo 
   - python313-fuse 
   - python313-fusepy 
+  - python313-futurist 
   - python313-fuzzywuzzy 
   - python313-fvs 
   - python313-gTTS 
@@ -33119,6 +33143,7 @@ unsorted:
   - python313-github3.py 
   - python313-gitlabcis 
   - python313-gitlint 
+  - python313-glanceclient 
   - python313-glean 
   - python313-glean-parser 
   - python313-glfw 
@@ -33225,6 +33250,7 @@ unsorted:
   - python313-hdf5plugin 
   - python313-hdf5storage 
   - python313-healpy 
+  - python313-heatclient 
   - python313-helpdev 
   - python313-hepunits 
   - python313-hetzner 
@@ -33342,6 +33368,8 @@ unsorted:
   - python313-ipywebrtc 
   - python313-ipywidgets 
   - python313-irc 
+  - python313-ironic-inspector-client 
+  - python313-ironicclient 
   - python313-isbnlib 
   - python313-isc_dhcp_leases 
   - python313-iso3166 
@@ -33455,6 +33483,9 @@ unsorted:
   - python313-keyring-keyutils 
   - python313-keyring-pass 
   - python313-keyrings.alt 
+  - python313-keystoneauth1 
+  - python313-keystoneclient 
+  - python313-keystonemiddleware 
   - python313-khal 
   - python313-khard 
   - python313-kismet-rest 
@@ -33616,11 +33647,13 @@ unsorted:
   - python313-magic-wormhole-mailbox-server 
   - python313-magic-wormhole-transit-relay 
   - python313-magicalimport 
+  - python313-magnumclient 
   - python313-mailman3-fedmsg-plugin 
   - python313-mailmanclient 
   - python313-maison 
   - python313-makefun 
   - python313-mando 
+  - python313-manilaclient 
   - python313-manuel 
   - python313-manuel-doc 
   - python313-mapserver 
@@ -33629,6 +33662,7 @@ unsorted:
   - python313-markdown-it-py 
   - python313-markdown2 
   - python313-marshmallow 
+  - python313-masakariclient 
   - python313-mashumaro 
   - python313-material-color-utilities-python 
   - python313-mathgl 
@@ -33677,6 +33711,7 @@ unsorted:
   - python313-miniupnpc 
   - python313-misaka 
   - python313-mistletoe 
+  - python313-mistralclient 
   - python313-mistune 
   - python313-mistune2 
   - python313-mitmproxy 
@@ -33787,6 +33822,7 @@ unsorted:
   - python313-netpbmfile 
   - python313-netutils 
   - python313-networkx 
+  - python313-neutronclient 
   - python313-nh3 
   - python313-nibabel 
   - python313-nilearn 
@@ -33815,6 +33851,7 @@ unsorted:
   - python313-nose2 
   - python313-notebook 
   - python313-notebook-shim 
+  - python313-novaclient 
   - python313-nox 
   - python313-npTDMS 
   - python313-nptyping 
@@ -33839,6 +33876,7 @@ unsorted:
   - python313-obs-service-update_changelog 
   - python313-oci-sdk 
   - python313-octave-kernel 
+  - python313-octaviaclient 
   - python313-odfpy 
   - python313-odorik 
   - python313-ogr 
@@ -33872,6 +33910,9 @@ unsorted:
   - python313-openmesh 
   - python313-openpyxl 
   - python313-openqa_client 
+  - python313-openstackclient 
+  - python313-openstackdocstheme 
+  - python313-openstacksdk 
   - python313-opentelemetry-api 
   - python313-opentelemetry-exporter-otlp 
   - python313-opentelemetry-exporter-otlp-proto-common 
@@ -33894,10 +33935,33 @@ unsorted:
   - python313-orderedmultidict 
   - python313-orderly-set 
   - python313-orjson 
+  - python313-os-client-config 
+  - python313-os-service-types 
+  - python313-osc-lib 
   - python313-osc-tiny 
   - python313-oscrypto 
+  - python313-oslo.cache 
+  - python313-oslo.concurrency 
+  - python313-oslo.config 
+  - python313-oslo.context 
+  - python313-oslo.i18n 
+  - python313-oslo.log 
+  - python313-oslo.messaging 
+  - python313-oslo.metrics 
+  - python313-oslo.middleware 
+  - python313-oslo.policy 
+  - python313-oslo.privsep 
+  - python313-oslo.reports 
+  - python313-oslo.rootwrap 
+  - python313-oslo.serialization 
+  - python313-oslo.service 
+  - python313-oslo.utils 
+  - python313-oslo.versionedobjects 
+  - python313-oslo.vmware 
+  - python313-oslotest 
   - python313-osmviz 
   - python313-ospd-openvas 
+  - python313-osprofiler 
   - python313-outcome 
   - python313-overrides 
   - python313-ovirt-engine-sdk 
@@ -34158,6 +34222,7 @@ unsorted:
   - python313-pybreaker 
   - python313-pybtex 
   - python313-pybugz 
+  - python313-pycadf 
   - python313-pycairo-devel 
   - python313-pycapnp 
   - python313-pycares 
@@ -34215,6 +34280,7 @@ unsorted:
   - python313-pygame 
   - python313-pygame-devel 
   - python313-pygerrit2 
+  - python313-pyghmi 
   - python313-pyglet 
   - python313-pygls 
   - python313-pygments-ansi-color 
@@ -34974,6 +35040,7 @@ unsorted:
   - python313-superqt 
   - python313-sure 
   - python313-surer 
+  - python313-sushy 
   - python313-svglib 
   - python313-svgpathtools 
   - python313-svgwrite 
@@ -34981,6 +35048,7 @@ unsorted:
   - python313-svneverever 
   - python313-swagger-spec-validator 
   - python313-swapper 
+  - python313-swiftclient 
   - python313-sybil 
   - python313-sympy 
   - python313-synr 
@@ -35062,6 +35130,7 @@ unsorted:
   - python313-tomlkit 
   - python313-tools 
   - python313-toolz 
+  - python313-tooz 
   - python313-toposort 
   - python313-topy 
   - python313-torch 
@@ -35198,6 +35267,7 @@ unsorted:
   - python313-vim-vint 
   - python313-vine 
   - python313-virtkey 
+  - python313-virtualbmc 
   - python313-virtualenv 
   - python313-virtualenv-clone 
   - python313-virtualenvwrapper 
@@ -35308,6 +35378,7 @@ unsorted:
   - python313-yamlloader 
   - python313-yapf 
   - python313-yappi 
+  - python313-yaql 
   - python313-yara 
   - python313-yarg 
   - python313-yarl 
@@ -36461,6 +36532,7 @@ unsorted:
   - rocs 
   - rocs-devel 
   - rocs-lang 
+  - rocsparse-devel 
   - rocthrust-devel 
   - rofi 
   - rofi-bluetooth 
