@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.cache
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,44 +17,37 @@
 
 
 Name:           python-oslo.cache
-Version:        3.8.0
+Version:        3.12.0
 Release:        0
 Summary:        Cache storage for Openstack projects
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.cache
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.cache/oslo.cache-3.8.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo-cache/oslo_cache-%{version}.tar.gz
+BuildRequires:  %{python_module dogpile.cache >= 1.3.3}
+BuildRequires:  %{python_module oslo.config >= 8.1.0}
+BuildRequires:  %{python_module oslo.i18n >= 5.0.0}
+BuildRequires:  %{python_module oslo.log >= 4.2.1}
+BuildRequires:  %{python_module oslo.utils >= 4.2.0}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pymemcache}
+BuildRequires:  %{python_module pymongo}
+BuildRequires:  %{python_module python-binary-memcached}
+BuildRequires:  %{python_module python-memcached}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-dogpile.cache >= 1.3.1
-BuildRequires:  python3-oslo.config >= 8.1.0
-BuildRequires:  python3-oslo.i18n >= 5.0.0
-BuildRequires:  python3-oslo.log >= 4.2.1
-BuildRequires:  python3-oslo.utils >= 4.2.0
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-pbr
-BuildRequires:  python3-pymemcache
-BuildRequires:  python3-pymongo
-BuildRequires:  python3-python-binary-memcached
-BuildRequires:  python3-python-memcached
-BuildRequires:  python3-stestr
+Requires:       python-dogpile.cache >= 1.3.3
+Requires:       python-oslo.config >= 8.1.0
+Requires:       python-oslo.i18n >= 5.0.0
+Requires:       python-oslo.log >= 4.2.1
+Requires:       python-oslo.utils >= 4.2.0
+Requires:       python-python-memcached
 BuildArch:      noarch
+%python_subpackages
 
 %description
-oslo.cache aims to provide a generic caching mechanism for OpenStack projects
-by wrapping the dogpile.cache library. The dogpile.cache library provides
-support memoization, key value storage and interfaces to common caching
-backends such as Memcached.
-
-%package -n python3-oslo.cache
-Summary:        Cache storage for Openstack projects
-Requires:       python3-dogpile.cache >= 1.3.1
-Requires:       python3-oslo.config >= 8.1.0
-Requires:       python3-oslo.i18n >= 5.0.0
-Requires:       python3-oslo.log >= 4.2.1
-Requires:       python3-oslo.utils >= 4.2.0
-Requires:       python3-python-memcached
-
-%description -n python3-oslo.cache
 oslo.cache aims to provide a generic caching mechanism for OpenStack projects
 by wrapping the dogpile.cache library. The dogpile.cache library provides
 support memoization, key value storage and interfaces to common caching
@@ -70,28 +63,27 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the OpenStack Oslo cache library.
 
 %prep
-%autosetup -p1 -n oslo.cache-3.8.0
-%py_req_cleanup
+%autosetup -p1 -n oslo_cache-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
 
 # generate html docs
-PBR_VERSION=3.8.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 %{openstack_stestr_run}
 
-%files -n python3-oslo.cache
+%files %{python_files}
 %license LICENSE
-%doc README.rst ChangeLog
-%{python3_sitelib}/oslo_cache
-%{python3_sitelib}/*.egg-info
+%doc README.rst
+%{python_sitelib}/oslo_cache
+%{python_sitelib}/oslo_cache-%{version}.dist-info
 
 %files -n python-oslo.cache-doc
 %license LICENSE

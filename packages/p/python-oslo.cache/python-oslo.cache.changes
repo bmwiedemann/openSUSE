@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Nov  9 17:33:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.0:
+  * Imported Translations from Zanata
+  * Drop unused script for etcd tests
+  * Use BMemcacheClientPool if tls\_enabled=true
+  * add pyproject.toml to support pip 23.1
+  * Fix missing ':' in IPv6 example
+  * Update master for stable/2025.1
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 22:37:02 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.1:
+  * Skip installation to speed up pep8
+  * Adjust warning message for eventlet support deprecation
+  * deprecate using memcache\_pool backend into an eventlet env
+  * Skip functional tests for documentation update
+  * Get rid of third party mock library
+  * Detect service ports from pifpaf environments
+  * Fix etcd package
+  * reno: Update master for unmaintained/2023.1
+  * Add note about requirements lower bounds
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Remove Python 3.8 support
+  * Support expiration time in backend
+  * Fix outdated tox minversion
+  * Declare Python 3.12 support
+  * Use oslo.utils implementation to parse sentinel address
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Mon Sep  2 17:34:44 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.8.0
