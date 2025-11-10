@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  9 19:00:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.10.0:
+  * Python 3.13: fix tests
+  * Add support for passing image size to Glance API
+  * Remove Python 3.9 support
+  * Update master for stable/2025.1
+  * Replace oslo\_utils.encodeutils.exception\_to\_unicode
+  * Remove ceilometer service overrides
+  * Remove Python 3.8 support
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
+Fri Jun 13 07:00:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not (ever) use Epoch; it has devestating effects on version
+  comparisons. As Epoch was set to 0, removing it is a NO-OP
+  without side effects here.
+
+-------------------------------------------------------------------
 Tue Sep  3 13:11:37 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.7.0
@@ -1027,7 +1047,7 @@ Thu Nov  6 01:16:20 UTC 2014 -  cloud-devel@suse.de
 -------------------------------------------------------------------
 Fri Oct 31 10:28:34 UTC 2014 - dmueller@suse.com
 
-- add rpmlintrc as a source 
+- add rpmlintrc as a source
 
 -------------------------------------------------------------------
 Thu Oct 16 23:36:58 UTC 2014 -  cloud-devel@suse.de
@@ -1050,7 +1070,7 @@ Thu Oct  9 23:41:01 UTC 2014 -  cloud-devel@suse.de
 -------------------------------------------------------------------
 Thu Oct  9 08:35:18 UTC 2014 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Wed Oct  8 23:41:01 UTC 2014 -  cloud-devel@suse.de
@@ -1316,7 +1336,7 @@ Tue Apr  8 23:47:13 UTC 2014 -  cloud-devel@suse.de
 -------------------------------------------------------------------
 Mon Mar 24 16:56:58 UTC 2014 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Mon Mar 17 00:35:06 UTC 2014 -  cloud-devel@suse.de
@@ -1391,7 +1411,7 @@ Sun Jan 19 01:11:34 UTC 2014 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Thu Jan 16 12:27:32 UTC 2014 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Thu Jan 16 01:07:41 UTC 2014 - opensuse-cloud@opensuse.org
@@ -1547,7 +1567,7 @@ Fri Sep 20 00:04:18 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Wed Sep 18 09:11:55 UTC 2013 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Tue Sep  3 23:54:49 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1642,7 +1662,7 @@ Thu Jun 27 09:43:46 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Wed Jun 12 09:55:33 UTC 2013 - dmueller@suse.com
 
-- fix requires of test package 
+- fix requires of test package
 
 -------------------------------------------------------------------
 Tue Jun  4 12:28:52 UTC 2013 - speilicke@suse.com
@@ -1658,12 +1678,12 @@ Wed May 29 11:22:37 UTC 2013 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon May 27 08:45:20 UTC 2013 - dmueller@suse.com
 
-- python-pbr/d2to1 requires 
+- python-pbr/d2to1 requires
 
 -------------------------------------------------------------------
 Tue Mar 26 13:43:11 UTC 2013 - dmueller@suse.com
 
-- update to 0.8.0.13 
+- update to 0.8.0.13
 
 -------------------------------------------------------------------
 Mon Mar 18 10:42:52 UTC 2013 - speilicke@suse.com

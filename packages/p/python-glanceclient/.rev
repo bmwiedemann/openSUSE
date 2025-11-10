@@ -715,4 +715,33 @@ update to version 2.3.0
   - Python3.12: do not use ssl.wrap_socket</comment>
     <requestid>1198501</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b970726e4f64cefd1813a02e904dca40</srcmd5>
+    <version>4.10.0</version>
+    <time>1762798677</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.10.0:
+  * Python 3.13: fix tests
+  * Add support for passing image size to Glance API
+  * Remove Python 3.9 support
+  * Update master for stable/2025.1
+  * Replace oslo\_utils.encodeutils.exception\_to\_unicode
+  * Remove ceilometer service overrides
+  * Remove Python 3.8 support
+  * Update master for stable/2024.2
+
+- Do not (ever) use Epoch; it has devestating effects on version
+  comparisons. As Epoch was set to 0, removing it is a NO-OP
+  without side effects here.
+
+- add rpmlintrc as a source
+- fix requires
+- fix requires
+- fix requires
+- fix requires
+- fix requires of test package
+- python-pbr/d2to1 requires
+- update to 0.8.0.13</comment>
+    <requestid>1316847</requestid>
+  </revision>
 </revisionlist>
