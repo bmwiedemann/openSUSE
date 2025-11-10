@@ -763,4 +763,12 @@
     <comment></comment>
     <requestid>1285384</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6850d87416859b292c1cc406a2ebc747</srcmd5>
+    <version>5.7.0</version>
+    <time>1762798626</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316762</requestid>
+  </revision>
 </revisionlist>

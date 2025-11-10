@@ -1,8 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov  9 14:46:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.7.0:
+  * Remove Python 3.9 support
+  * Update master for stable/2025.1
+  * Update default envlist
+  * reno: Update master for unmaintained/2023.1
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 22:42:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.0:
+  * Remove Python 3.8 support
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Fri Jun 13 07:02:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Do not (ever) use Epoch; it has devestating effects on version 
-  comparisons. As Epoch was set to 0, removing it is a NO-OP 
+- Do not (ever) use Epoch; it has devestating effects on version
+  comparisons. As Epoch was set to 0, removing it is a NO-OP
   without side effects here.
 
 -------------------------------------------------------------------
@@ -1092,7 +1109,7 @@ Thu Nov 20 14:39:21 UTC 2014 -  cloud-devel@suse.de
 -------------------------------------------------------------------
 Sat Nov  8 12:52:30 UTC 2014 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Sat Nov  8 01:27:51 UTC 2014 -  cloud-devel@suse.de
@@ -2116,7 +2133,7 @@ Fri Jan 17 01:36:19 UTC 2014 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Thu Jan 16 12:35:09 UTC 2014 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Thu Jan 16 01:21:44 UTC 2014 - opensuse-cloud@opensuse.org
@@ -2320,7 +2337,7 @@ Tue Nov 26 10:59:37 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Mon Nov 25 14:23:05 UTC 2013 - dmueller@suse.com
 
-- switch to python-setuptools 
+- switch to python-setuptools
 
 -------------------------------------------------------------------
 Mon Nov 25 00:59:09 UTC 2013 - opensuse-cloud@opensuse.org
@@ -2401,7 +2418,7 @@ Tue Oct  8 12:08:31 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Fri Sep 27 15:08:04 UTC 2013 - dmueller@suse.com
 
-- add 0001-Make-ROOTDIR-determination-more-robust.patch 
+- add 0001-Make-ROOTDIR-determination-more-robust.patch
 
 -------------------------------------------------------------------
 Fri Sep 27 06:32:41 UTC 2013 - dmueller@suse.com
@@ -2439,7 +2456,7 @@ Tue Sep 17 23:57:12 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Tue Sep 17 15:07:22 UTC 2013 - dmueller@suse.com
 
-- 0001-Add-workaround-for-OSError-raised-by-Popen.communica.patch 
+- 0001-Add-workaround-for-OSError-raised-by-Popen.communica.patch
 
 -------------------------------------------------------------------
 Tue Sep 17 00:21:17 UTC 2013 - opensuse-cloud@opensuse.org
@@ -2476,7 +2493,7 @@ Wed Sep  4 23:53:25 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Mon Sep  2 09:59:38 UTC 2013 - dmueller@suse.com
 
-- update requires 
+- update requires
 
 -------------------------------------------------------------------
 Sun Sep  1 00:18:02 UTC 2013 - opensuse-cloud@opensuse.org
@@ -2675,7 +2692,7 @@ Mon Jul  1 09:09:48 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Mon Jun 24 09:09:57 UTC 2013 - dmueller@suse.com
 
-- remove 0001-Python-2.6-compatibility-for-tests-test_keyring.py.patch 
+- remove 0001-Python-2.6-compatibility-for-tests-test_keyring.py.patch
 
 -------------------------------------------------------------------
 Mon Jun 17 10:17:53 UTC 2013 - speilicke@suse.com
@@ -2686,17 +2703,17 @@ Mon Jun 17 10:17:53 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Wed Jun 12 09:53:43 UTC 2013 - dmueller@suse.com
 
-- remove nose dependencies 
+- remove nose dependencies
 
 -------------------------------------------------------------------
 Sat Jun  1 17:02:11 UTC 2013 - dmueller@suse.com
 
-- remove python-distribute dependency 
+- remove python-distribute dependency
 
 -------------------------------------------------------------------
 Mon May 27 21:36:20 UTC 2013 - dmueller@suse.com
 
-- update requires from pip/test-requires 
+- update requires from pip/test-requires
 
 -------------------------------------------------------------------
 Mon May 27 09:39:27 UTC 2013 - speilicke@suse.com
@@ -2714,8 +2731,8 @@ Mon May 27 08:42:13 UTC 2013 - dmueller@suse.com
 -------------------------------------------------------------------
 Thu Apr 25 14:27:54 UTC 2013 - dmueller@suse.com
 
-- add 0001-Pass-memcache_servers-as-array.patch 
- 
+- add 0001-Pass-memcache_servers-as-array.patch
+
 -------------------------------------------------------------------
 Fri Apr  5 12:18:29 CEST 2013 - berendt@b1-systems.de
 
@@ -2827,7 +2844,7 @@ Mon Jan 28 09:09:53 UTC 2013 - dmueller@suse.com
   + Restore Python 2.6 compatibility
   + Allow request timeout to be specified.
   + Remove assertDictEqual for python 2.6 compatibility
-- Remove python-2.6-compat-in-tests.patch, 
+- Remove python-2.6-compat-in-tests.patch,
   0001-Restore-Python-2.6-compatibility.patch: Merged upstream
 
 -------------------------------------------------------------------
@@ -2855,7 +2872,7 @@ Mon Jan 21 12:57:30 UTC 2013 - saschpe@suse.de
 Thu Jan 17 21:58:32 UTC 2013 - dmueller@suse.com
 
 - add support-requests-version-1.0.0.patch:
-  support python-requests also >= 1.0.0 
+  support python-requests also >= 1.0.0
 
 --------------------------------------------------------------------
 Thu Jan 17 14:12:59 UTC 2013 - cloud-devel@suse.de
@@ -3009,7 +3026,7 @@ Thu Aug  2 16:27:37 UTC 2012 - rhafer@suse.de
 -------------------------------------------------------------------
 Sat Jul 28 08:32:28 UTC 2012 - cthiel@suse.com
 
-- add BuildRequires to python-httplib2, to fix documentation building 
+- add BuildRequires to python-httplib2, to fix documentation building
 
 -------------------------------------------------------------------
 Sat Jul 28 08:30:58 UTC 2012 - jenkins@suse.de
@@ -3021,12 +3038,12 @@ Sat Jul 28 08:30:58 UTC 2012 - jenkins@suse.de
 Sat Jul 28 08:29:09 UTC 2012 - cthiel@suse.com
 
 - remove insecure-commandline-argument.patch which has been merged upstream:
-  https://review.openstack.org/#/c/9582/ 
+  https://review.openstack.org/#/c/9582/
 
 -------------------------------------------------------------------
 Fri Jul 27 08:13:20 UTC 2012 - cthiel@suse.com
 
-- rebase insecure-commandline-argument.patch to master 
+- rebase insecure-commandline-argument.patch to master
 - adapt doc paths for building from master
 
 -------------------------------------------------------------------
