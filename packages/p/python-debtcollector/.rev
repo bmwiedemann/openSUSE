@@ -285,4 +285,12 @@
     <comment></comment>
     <requestid>1242950</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>38b0391203a2a6dbcfa0be1f82ca15cd</srcmd5>
+    <version>3.0.0</version>
+    <time>1762798615</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316754</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  5 13:43:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- switch to singlespec
+
+-------------------------------------------------------------------
 Wed Jan 22 04:51:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop unneeded Requires on six, not needed since 2.5.0.
