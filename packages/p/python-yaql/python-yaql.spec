@@ -1,7 +1,7 @@
 #
 # spec file for package python-yaql
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,33 @@
 #
 
 
-%global oldpython python
 Name:           python-yaql
-Version:        3.0.0
+Version:        3.2.0
 Release:        0
 Summary:        YAQL - Yet Another Query Language
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/yaql
-Source0:        https://files.pythonhosted.org/packages/source/y/yaql/yaql-3.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/y/yaql/yaql-%{version}.tar.gz
 BuildRequires:  openstack-macros
 # for testing
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-pbr
-BuildRequires:  python3-ply
-BuildRequires:  python3-python-dateutil
-BuildRequires:  python3-python-subunit
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testscenarios
-BuildRequires:  python3-testtools
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module python-subunit}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
+Requires:       python-python-dateutil
 BuildArch:      noarch
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-yaql < %{version}
+%else
+Conflicts:      python3-yaql < %{version}
+%endif
+%python_subpackages
 
 %description
 YAQL (Yet Another Query Language) is an embeddable and extensible query
@@ -46,40 +51,35 @@ has a vast and comprehensive standard library of frequently used querying
 functions and can be extend even further with user-specified functions. YAQL is
 written in python and is distributed via PyPI.
 
-%package -n python3-yaql
-Summary:        YAQL - Yet Another Query Language
-Requires:       python3-Babel
-Requires:       python3-ply
-Requires:       python3-python-dateutil
-Conflicts:      %{oldpython}-yaql < %version-%release
-
-%description -n python3-yaql
-YAQL (Yet Another Query Language) is an embeddable and extensible query
-language, that allows performing complex queries against arbitrary objects. It
-has a vast and comprehensive standard library of frequently used querying
-functions and can be extend even further with user-specified functions. YAQL is
-written in python and is distributed via PyPI.
-
-This package contains the Python 3.x module.
-
 %prep
-%autosetup -p1 -n yaql-3.0.0
+%autosetup -p1 -n yaql-%{version}
 %py_req_cleanup
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
+
+%python_clone -a %{buildroot}%{_bindir}/yaql
+
+%pre
+%python_libalternatives_reset_alternative yaql
+
+%post
+%python_install_alternative yaql
+
+%postun
+%python_uninstall_alternative yaql
 
 %check
 %{openstack_stestr_run}
 
-%files -n python3-yaql
+%files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%{_bindir}/yaql
-%{python3_sitelib}/yaql
-%{python3_sitelib}/yaql*.egg-info
+%python_alternative %{_bindir}/yaql
+%{python_sitelib}/yaql
+%{python_sitelib}/yaql-%{version}.dist-info
 
 %changelog

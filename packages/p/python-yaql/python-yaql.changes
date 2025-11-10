@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov  9 13:50:42 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Import latest ply library code
+  * Fix wrong section for console script
+  * Migrate setup configuration to pyproject.toml
+  * Use pbr to detect version
+  * add pyproject.toml to support pip 23.1
+  * tox: Remove basepython
+  * pre-commit: Bump versions
+  * Enable E721
+  * Document use of parent context with where operator
+  * Drop unused fixtures library
+  * Use per-commit to run style checks
+  * Remove unnecessary 'x' bit
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Drop unnecessary 'x' bit from doc config file
+  * Declare Python 3.12 support
+  * Remove old excludes
+  * Remove Python 3.6/7 support again
+
+-------------------------------------------------------------------
 Fri May 10 08:42:45 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.0.0
@@ -60,12 +82,12 @@ Mon Dec  6 09:24:06 UTC 2021 - cloud-devel@suse.de
 -------------------------------------------------------------------
 Mon May  3 20:02:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- switch to wallaby template 
+- switch to wallaby template
 
 -------------------------------------------------------------------
 Tue Feb 16 09:27:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add 0b006f07226138ef26ab8296494f1dc1c09908e2.patch 
+- add 0b006f07226138ef26ab8296494f1dc1c09908e2.patch
 
 -------------------------------------------------------------------
 Thu Jun  4 15:47:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
