@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v1.9.1</param>
+    <param name="revision">v1.10.2</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="filename">golang-github-prometheus-node_exporter</param>
   </service>

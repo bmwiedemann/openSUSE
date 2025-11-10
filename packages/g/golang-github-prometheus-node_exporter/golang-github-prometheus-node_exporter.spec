@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-node_exporter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           golang-github-prometheus-node_exporter
-Version:        1.9.1
+Version:        1.10.2
 Release:        0
 Summary:        Prometheus exporter for machine metrics
 License:        Apache-2.0
