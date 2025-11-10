@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Nov 10 10:23:13 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.8
+ * Enhancements
+  * Accept multiple packages in uv export 
+  * Accept multiple packages in uv sync 
+  * Add a uv cache size command 
+  * Add prerelease guidance for build-system resolution failures 
+  * Allow Python requests to include +gil to require a GIL-enabled interpreter 
+  * Avoid pluralizing 'retry' for single value 
+  * Enable first-class dependency exclusions 
+  * Fix inclusive constraints on available package versions in resolver errors 
+  * Improve uv init error for invalid directory names 
+  * Show help on uv build -h 
+  * Include the Python variant suffix in "Using Python ..." messages 
+  * Log most recently modified file for cache-keys 
+ * Configuration
+  * Expose UV_NO_GROUP as an environment variable 
+  * Add UV_NO_SOURCES as an environment variable 
+ * Bug fixes
+  * Allow --check and --locked to be used together in uv lock 
+  * Allow for unnormalized names in the METADATA file
+  * Fix missing value_type for default-groups in schema 
+  * Respect multi-GPU outputs in nvidia-smi 
+ * Documentation
+  * Fix typo in uv tool list doc 
+  * Note uv pip list name normalization in docs 
+
+-------------------------------------------------------------------
 Sat Nov  1 13:56:32 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 0.9.7 

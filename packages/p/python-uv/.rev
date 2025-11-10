@@ -1640,4 +1640,36 @@
   * Update docs for maturin build backend init template</comment>
     <requestid>1315000</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>baf46b5400118c6526173c369e0dcb71</srcmd5>
+    <version>0.9.8</version>
+    <time>1762798840</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.8
+ * Enhancements
+  * Accept multiple packages in uv export 
+  * Accept multiple packages in uv sync 
+  * Add a uv cache size command 
+  * Add prerelease guidance for build-system resolution failures 
+  * Allow Python requests to include +gil to require a GIL-enabled interpreter 
+  * Avoid pluralizing 'retry' for single value 
+  * Enable first-class dependency exclusions 
+  * Fix inclusive constraints on available package versions in resolver errors 
+  * Improve uv init error for invalid directory names 
+  * Show help on uv build -h 
+  * Include the Python variant suffix in &quot;Using Python ...&quot; messages 
+  * Log most recently modified file for cache-keys 
+ * Configuration
+  * Expose UV_NO_GROUP as an environment variable 
+  * Add UV_NO_SOURCES as an environment variable 
+ * Bug fixes
+  * Allow --check and --locked to be used together in uv lock 
+  * Allow for unnormalized names in the METADATA file
+  * Fix missing value_type for default-groups in schema 
+  * Respect multi-GPU outputs in nvidia-smi 
+ * Documentation
+  * Fix typo in uv tool list doc 
+  * Note uv pip list name normalization in docs</comment>
+    <requestid>1316891</requestid>
+  </revision>
 </revisionlist>
