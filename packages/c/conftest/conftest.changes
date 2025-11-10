@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Nov 09 09:43:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.64.0:
+  * New Features
+    - 00b02b2: feat: Include location in the result output (#1196)
+      (@jalseth)
+    - ee91078: feat: Refactor GitHub outputter to support locations
+      from Rego policy (#1197) (@jalseth)
+    - d359466: feat: add conftest-fmt and conftest-pull pre-commit
+      hooks (#1192) (@dkolepp)
+  * Bug Fixes
+    - 997f5ce: fix: Fix XDG writable check on Windows (#1185)
+      (@jalseth)
+    - fb9c88d: fix: Only use XDG directories for plugin if they are
+      writable (#1182) (@jalseth)
+    - 4a2ddd6: fix: Use "python3" instead of "python" in the
+      Makefile (#1184) (@jalseth)
+  * OPA Changes
+    - 347388d: build(deps): bump github.com/open-policy-agent/opa
+      from 1.9.0 to 1.10.1 (#1201) (@dependabot[bot])
+  * Other Changes
+    - 75449c3: build(deps): bump alpine from 3.22.1 to 3.22.2
+      (#1191) (@dependabot[bot])
+    - 0ade44b: build(deps): bump cuelang.org/go from 0.14.1 to
+      0.15.0 (#1202) (@dependabot[bot])
+    - 1ef4588: build(deps): bump github.com/hashicorp/go-getter
+      from 1.8.2 to 1.8.3 (#1199) (@dependabot[bot])
+    - d2e56c3: build(deps): bump github.com/moby/buildkit from
+      0.25.0 to 0.25.2 (#1200) (@dependabot[bot])
+    - 5242185: build(deps): bump golang from 1.25.1-alpine to
+      1.25.3-alpine (#1193) (@dependabot[bot])
+    - 58ace24: build: Add Nix devshell (#1186) (@jalseth)
+    - 6189512: chore: Fix gitignore for acceptance tests (#1195)
+      (@jalseth)
+    - 7d41238: ci: Run validation job on Linux, macOS, Windows
+      (#1181) (@jalseth)
+
+-------------------------------------------------------------------
 Mon Oct 06 05:31:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.63.0:
