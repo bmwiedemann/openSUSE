@@ -643,4 +643,12 @@
   - reno: Update master for unmaintained/wallaby</comment>
     <requestid>1178611</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>75e276195f75f3fe8e19d6a92d8221cf</srcmd5>
+    <version>4.8.0</version>
+    <time>1762798665</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316799</requestid>
+  </revision>
 </revisionlist>

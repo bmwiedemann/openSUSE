@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov  9 16:03:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8.0:
+  * Auth tokens are now truncated when running with `--debug`.
+    Added `--debug-with-secrets` flag to enable previous, less-secure
+    behavior.
+  * Dropped support for Python 3.6.
+  * Now tested under Python 3.13.
+  * Various other minor bug fixes and improvements.
+  * Various minor bug fixes and improvements.
+- switch to singlespec
+
+-------------------------------------------------------------------
 Tue Jun  4 20:08:29 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.6.0
@@ -1122,12 +1135,12 @@ Mon Jan 20 09:28:27 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon Jan 20 09:24:12 UTC 2014 - dmueller@suse.com
 
-- install manpages 
+- install manpages
 
 -------------------------------------------------------------------
 Thu Jan 16 12:01:05 UTC 2014 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Thu Dec 26 01:30:08 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1194,7 +1207,7 @@ Thu Nov 28 01:40:01 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Mon Nov 25 14:13:27 UTC 2013 - dmueller@suse.com
 
-- switch to python-setuptools 
+- switch to python-setuptools
 
 -------------------------------------------------------------------
 Fri Nov 22 00:46:51 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1254,7 +1267,7 @@ Sun Sep 22 23:51:13 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Wed Sep 18 09:17:24 UTC 2013 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Tue Sep 17 00:16:24 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1311,7 +1324,7 @@ Fri Jul  5 23:46:49 UTC 2013 - opensuse-cloud@opensuse.org
 Wed Jun 26 22:30:13 UTC 2013 - dmueller@suse.com
 
 - update to master branch
-- update requires 
+- update requires
 
 -------------------------------------------------------------------
 Wed May 29 10:52:30 UTC 2013 - dmueller@suse.com
@@ -1445,7 +1458,7 @@ Thu Nov  8 11:03:06 UTC 2012 - saschpe@suse.de
 
 - Install LICENSING and README.rst
 - Build HTML documentation and split of doc package
-  + BuildRequire python-Sphinx 
+  + BuildRequire python-Sphinx
 - BuildRequire changes:
   + python-base instead of python-devel, sufficient for Python-only modules
   + python-distribute instead of setuptools
