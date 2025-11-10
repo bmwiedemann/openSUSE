@@ -18,7 +18,7 @@
 
 
 Name:           lua-fennel
-Version:        1.5.3
+Version:        1.6.0
 Release:        0
 Summary:        Lisp dialect that compiles to Lua
 License:        MIT
@@ -27,6 +27,7 @@ Group:          Development/Languages/Lua
 URL:            https://fennel-lang.org/
 Source0:        https://git.sr.ht/~technomancy/fennel/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  lua
+BuildRequires:  lua-macros
 BuildArch:      noarch
 
 %description
@@ -47,19 +48,20 @@ Fennel is a lisp that compiles to Lua. Features include:
 %autosetup -p1 -n fennel-%{version}
 
 %build
-%make_build %{?_make_output_sync} fennel
+%make_build %{?_make_output_sync} PREFIX=%{_prefix} LUA="lua%{lua_version}" fennel
+sed -i -e 's@#!%{_bindir}/env lua$@#!%{_bindir}/lua@' fennel
+
+%install
+%make_install %{?_make_output_sync} PREFIX=%{_prefix} install
 
 %check
 %make_build %{?_make_output_sync} test
-
-%install
-mkdir -p %{buildroot}%{_bindir}
-sed -i s:%{_bindir}/env\ lua:%{_bindir}/lua: fennel
-install -m 755 fennel %{buildroot}%{_bindir}
 
 %files
 %doc README.md api.md changelog.md reference.md tutorial.md
 %license LICENSE
 %{_bindir}/fennel
+%{lua_noarchdir}/fennel.lua
+%{_mandir}/man*/fennel*%{?ext_man}
 
 %changelog

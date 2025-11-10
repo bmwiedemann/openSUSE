@@ -206,4 +206,34 @@
 </comment>
     <requestid>1252167</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a92e9d8f2b8aead17696a01f37f6ff46</srcmd5>
+    <version>1.6.0</version>
+    <time>1762798828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0:
+  - New Features
+    - Support extra-compiler-env in options table when compiling.
+    - Accept path in options table of fennel.install.
+    - Improve printing of large integers in Lua 5.3+.
+    - Allow disk reads from compiler sandbox.
+    - Add --to-be-closed option for better stack traces in
+      with-open on Lua 5.4.
+    - Stack traces from macro errors shouldn't contain compiler
+      internals.
+    - Look for macros in .fnlm files in addition to .fnl files.
+    - Support extra-env in compiler API when evaluating in
+      compiler scope.
+    - Allow --compile-binary to work on .lua and .luac files.
+    - Add --lambda-as-fn option to remove overhead from arg
+      checking.
+  - Bug Fixes
+    - Fix a bug where ,find repl command didn't work on files
+      with long names.
+    - Some 3-decimal string escapes ignored the 3rd digit; e.g.
+      \x7f -&gt; \127 -&gt; \f7.
+    - In PUC Lua 5.1, the escape &quot;\127&quot; compiled to a literal
+      byte in the string.</comment>
+    <requestid>1316850</requestid>
+  </revision>
 </revisionlist>
