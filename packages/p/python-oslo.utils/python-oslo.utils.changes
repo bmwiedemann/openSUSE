@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Nov  9 09:21:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1.0:
+  * add pyproject.toml to support pip 23.1
+  * tox: Remove basepython
+  * Remove constant\_time\_prepare
+  * Fix undocumented functions in secretutils
+  * Update master for stable/2025.1
+  * Fix typo in recent change
+- switch to singlespec
+
+-------------------------------------------------------------------
+Tue Jul  1 22:23:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2.0:
+  * Skip installation to speed up pep8
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Adjust warning message for eventlet support deprecation
+  * Fix wrong warning category
+  * deprecate the eventletutils module
+  * Remove unused private constants
+  * Deprecate redundant exception\_to\_unicode function
+  * Drop compatibility code for Python 3.8
+  * Add image checker to imageutils
+  * Adjust the version in descriptions
+  * Add a release note about the new crypt utilities
+  * Fix get\_my\_ipv4 in absence of IPv4
+  * Fix get\_my\_ipv6 in absence of IPv6
+  * Add utility to replace crypt.mksalt
+  * reno: Update master for unmaintained/2023.1
+  * Add utility to replace crypt.crypt
+  * is\_valid\_ipv4: Enable strict check by default
+  * Add note about requirements lower bounds
+  * Vendor VersionPredicate
+  * Declare Python 3.12 support
+  * Allow multiple format hits if explicitly handled
+  * Abort the stream early if no match
+  * Fix compatibility with netaddr 1.1.0
+  * Drop dependency on netifaces
+  * Use context manager for socket
+  * Clarify GPT structure offset
+  * Deprecate redundant constant\_time\_compare function
+  * Deprecate redundant md5 method
+  * Remove Python 3.8 support
+  * Squelch irrelevant format complaints
+  * Add qemu-img to bindep
+  * Avoid detecting FAT VBR as an MBR
+  * Update master for stable/2024.2
+  * Add LUKSv1 inspector
+
+-------------------------------------------------------------------
 Fri Sep 27 09:33:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - drop obsolete dependencies
