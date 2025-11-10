@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Nov 10 14:05:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.67.2 (bsc#1250625, CVE-2025-11065,
+  bsc#1248897, CVE-2025-58058):
+  * release: v0.67.2 [release/v0.67] (#9639)
+  * fix: Use `fetch-level: 1` to check out trivy-repo in the release workflow [backport: release/v0.67] (#9638)
+  * release: v0.67.1 [release/v0.67] (#9614)
+  * fix: restore compatibility for google.protobuf.Value [backport: release/v0.67] (#9631)
+  * fix: using SrcVersion instead of Version for echo detector [backport: release/v0.67] (#9629)
+  * fix: add `buildInfo` for `BlobInfo` in `rpc` package [backport: release/v0.67] (#9615)
+  * fix(vex): don't use reused BOM [backport: release/v0.67] (#9612)
+  * release: v0.67.0 [main] (#9432)
+  * fix(vex): don't  suppress vulns for packages with infinity loop (#9465)
+  * fix(aws): use `BuildableClient` insead of `xhttp.Client` (#9436)
+  * refactor(misconf): replace github.com/liamg/memoryfs with internal mapfs and testing/fstest (#9282)
+  * docs: clarify inline ignore limitations for resource-less checks (#9537)
+  * fix(k8s): disable parallel traversal with fs cache for k8s images (#9534)
+  * fix(misconf): handle tofu files in module detection (#9486)
+  * feat(seal): add seal support (#9370)
+  * docs: fix modules path and update code example (#9539)
+  * fix: close file descriptors and pipes on error paths (#9536)
+  * feat: add documentation URL for database lock errors (#9531)
+  * fix(db): Dowload database when missing but metadata still exists (#9393)
+  * feat(cloudformation): support default values and list results in Fn::FindInMap (#9515)
+  * fix(misconf): unmark cty values before access (#9495)
+  * feat(cli): change --list-all-pkgs default to true (#9510)
+  * fix(nodejs): parse workspaces as objects for package-lock.json files (#9518)
+  * refactor(fs): use underlyingPath to determine virtual files more reliably (#9302)
+  * refactor: remove google/wire dependency and implement manual DI (#9509)
+  * chore(deps): bump the aws group with 6 updates (#9481)
+  * chore(deps): bump the common group across 1 directory with 24 updates (#9507)
+  * fix(misconf): wrap legacy ENV values in quotes to preserve spaces (#9497)
+  * docs: move info about `detection priority` into coverage section (#9469)
+  * feat(sbom): added support for CoreOS (#9448)
+  * fix(misconf): strip build metadata suffixes from image history (#9498)
+  * feat(cyclonedx): preserve SBOM structure when scanning SBOM files with vulnerability updates (#9439)
+  * docs: Fix typo in terraform docs (#9492)
+  * feat(redhat): add os-release detection for RHEL-based images (#9458)
+  * ci(deps): add 3-day cooldown period for Dependabot updates (#9475)
+  * refactor: migrate from go-json-experiment to encoding/json/v2 (#9422)
+  * fix(vuln): compare `nuget` package names in lower case (#9456)
+  * chore: Update release flow to include chocolatey (#9460)
+  * docs: document eol supportability (#9434)
+  * docs(report): add nuanses about secret/license scanner in summary table (#9442)
+  * ci: use environment variables in GitHub Actions for improved security (#9433)
+  * chore: bump Go to 1.24.7 (#9435)
+  * fix(nodejs): use snapshot string as `Package.ID` for pnpm packages (#9330)
+  * ci(helm): bump Trivy version to 0.66.0 for Trivy Helm Chart 0.18.0 (#9425)
+
+-------------------------------------------------------------------
+Mon Nov 10 10:32:06 UTC 2025 - Christopher Hofmann <cwh@suse.com>
+
+- Fix version number shown for 'trivy -v'
+
+-------------------------------------------------------------------
 Thu Sep 04 13:44:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.66.0 (bsc#1248937, CVE-2025-58058):
