@@ -1,7 +1,7 @@
 #
 # spec file for package python-cinderclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,51 +16,44 @@
 #
 
 
+%global pythons %{primary_python}
 Name:           python-cinderclient
-Version:        9.6.0
+Version:        9.8.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Cinder
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-cinderclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-cinderclient/python-cinderclient-9.6.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-cinderclient/python_cinderclient-%{version}.tar.gz
+BuildRequires:  %{python_module PrettyTable >= 0.7.2}
+BuildRequires:  %{python_module ddt}
+BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module keystoneauth1 >= 5.9.0}
+BuildRequires:  %{python_module oslo.serialization}
+BuildRequires:  %{python_module oslo.utils >= 4.8.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module requests >= 2.25.1}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-PrettyTable >= 0.7.2
-BuildRequires:  python3-ddt
-BuildRequires:  python3-fixtures
-BuildRequires:  python3-keystoneauth1 >= 5.0.0
-BuildRequires:  python3-oslo.serialization
-BuildRequires:  python3-oslo.utils >= 4.8.0
-BuildRequires:  python3-pbr >= 5.5.0
-BuildRequires:  python3-requests >= 2.25.1
-BuildRequires:  python3-requests-mock
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testtools
+Requires:       python-Babel
+Requires:       python-PrettyTable >= 0.7.2
+Requires:       python-keystoneauth1 >= 5.9.0
+Requires:       python-oslo.i18n >= 5.0.1
+Requires:       python-oslo.utils >= 4.8.0
+Requires:       python-requests >= 2.25.1
 BuildArch:      noarch
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-cinderclient < %{version}
+%endif
+%python_subpackages
 
 %description
 This is a client for the OpenStack Cinder API (Block Storage. There's a
 Python API (the cinderclient module), and a command-line script (cinder).
 Each implements 100% of the OpenStack Cinder API.
-
-%package -n python3-cinderclient
-Summary:        Python API and CLI for OpenStack Cinder
-Requires:       python3-Babel
-Requires:       python3-PrettyTable >= 0.7.2
-Requires:       python3-keystoneauth1 >= 5.0.0
-Requires:       python3-oslo.i18n >= 5.0.1
-Requires:       python3-oslo.utils >= 4.8.0
-Requires:       python3-requests >= 2.25.1
-%if 0%{?suse_version}
-Obsoletes:      python2-cinderclient < 6.0.0
-%endif
-
-%description -n python3-cinderclient
-This is a client for the OpenStack Cinder API (Block Storage. There's a
-Python API (the cinderclient module), and a command-line script (cinder).
-Each implements 100% of the OpenStack Cinder API.
-
-This package contains the Python 3.x module.
 
 %package -n python-cinderclient-doc
 Summary:        Documentation for OpenStack Cinder API Client
@@ -76,20 +69,20 @@ Each implements 100% of the OpenStack Cinder API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-cinderclient-9.6.0
-%py_req_cleanup
+%autosetup -p1 -n python_cinderclient-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 export PYTHONPATH=.
-PBR_VERSION=9.6.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=9.6.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=%{version} %sphinx_build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
+
 # man page
 install -p -D -m 644 doc/build/man/cinder.1 %{buildroot}%{_mandir}/man1/cinder.1
 # bash completion
@@ -99,11 +92,11 @@ install -p -D -m 644 tools/cinder.bash_completion %{buildroot}%{_sysconfdir}/bas
 rm cinderclient/tests/unit/test_shell.py
 %{openstack_stestr_run}
 
-%files -n python3-cinderclient
+%files %{python_files}
 %license LICENSE
 %doc README.rst ChangeLog
-%{python3_sitelib}/cinderclient
-%{python3_sitelib}/*.egg-info
+%{python_sitelib}/cinderclient
+%{python_sitelib}/python_cinderclient-%{version}.dist-info
 %{_bindir}/cinder
 %{_mandir}/man1/cinder.1*
 %{_sysconfdir}/bash_completion.d/cinder.bash_completion

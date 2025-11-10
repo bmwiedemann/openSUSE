@@ -882,4 +882,12 @@
   - Fix cinder command execution issue with a token</comment>
     <requestid>1198500</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ec55b763666fee63eacd1282b6919bb5</srcmd5>
+    <version>9.8.0</version>
+    <time>1762798614</time>
+    <user>dimstar_suse</user>
+    <comment>switch to singlespec</comment>
+    <requestid>1316753</requestid>
+  </revision>
 </revisionlist>
