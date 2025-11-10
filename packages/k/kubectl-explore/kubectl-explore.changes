@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 10 13:03:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.14.1:
+  * Fix `--api-version` functionality (#53)
+
+-------------------------------------------------------------------
 Thu Sep 18 10:39:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.14.0:
