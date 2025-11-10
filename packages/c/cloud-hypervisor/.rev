@@ -103,4 +103,21 @@
   * Seccomp filter fixes with glibc v2.42 (forwarded request 1305128 from rrahl0)</comment>
     <requestid>1305129</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f6aaaa62261529288f367e2e7a5ec6bd</srcmd5>
+    <version>49.0</version>
+    <time>1762798897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to verison 49.0:
+  * MSHV Support Improvements
+  * Logging Improvements
+  * Removed Default IP and Mask for virtio-net Devices
+  * Prevent crash on malformed vsock connect requests
+  * Drop the VFIO container when no VFIO devices are active
+  * Gracefully close preserved file descriptors on hot device removal
+  * Fix race condition in pause–resume cycles
+  * Add NetConfig offload parameters to the OpenAPI spec file
+  * Fix seccomp filter violation from the http-server thread (forwarded request 1316949 from rrahl0)</comment>
+    <requestid>1316950</requestid>
+  </revision>
 </revisionlist>
