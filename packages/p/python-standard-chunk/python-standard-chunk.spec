@@ -1,7 +1,7 @@
 #
 # spec file for package python-standard-chunk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,8 @@
 #
 
 
-%define pythons python313
+%define skip_python311 1
+%define skip_python312 1
 Name:           python-standard-chunk
 Version:        3.13.0
 Release:        0
