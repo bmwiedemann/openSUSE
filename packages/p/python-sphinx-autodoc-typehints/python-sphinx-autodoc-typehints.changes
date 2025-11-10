@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:08:18 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.2:
+  * Preserve type information from docstrings if no type
+    annotation is present and parameter has default value.
+- update to 3.5.1:
+  * Declare 3.14 support
+- update to 3.5.0:
+  * Support Union type on its own
+- update to 3.4.0:
+  * Python 3.14 support
+- update to 3.3.0:
+  * Warning types and subtypes
+- update to 3.2.0:
+  * Fixed broken changelog link
+  * Fix issue #481
+  * Don't add :rtype: None
+  * Place rtype after directive
+
+-------------------------------------------------------------------
 Thu Apr  3 12:55:29 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.1.0:
@@ -7,7 +27,7 @@ Thu Apr  3 12:55:29 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
   - Fix roles for types module
   - Update Ruff to 0.9.1
 - Update to 3.0.0:
-  - 🐛 Replace docutils private API use w/ public
+  - Replace docutils private API use w/ public
   - Drop support for nptyping
 - Update to 2.5.0:
   - Fix the type checker
