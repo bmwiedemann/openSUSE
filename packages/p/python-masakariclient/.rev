@@ -164,4 +164,19 @@
     <comment></comment>
     <requestid>1285383</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>214ae7862b383961c8cde1290b6c0a1e</srcmd5>
+    <version>8.7.0</version>
+    <time>1762798668</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.7.0:
+  * reno: Update master for unmaintained/zed
+  * Update master for stable/2024.1
+  * reno: Update master for unmaintained/xena
+  * reno: Update master for unmaintained/wallaby
+  * reno: Update master for unmaintained/victoria
+  * reno: Update master for unmaintained/yoga
+- switch to singlespec</comment>
+    <requestid>1316840</requestid>
+  </revision>
 </revisionlist>

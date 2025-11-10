@@ -1,7 +1,7 @@
 #
 # spec file for package python-masakariclient
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,89 +16,81 @@
 #
 
 
-%global oldpython python
+%global pythons %{primary_python}
 Name:           python-masakariclient
-Version:        8.4.0
+Version:        8.7.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Masakari
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-masakariclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-8.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python_masakariclient-%{version}.tar.gz
+BuildRequires:  %{python_module PrettyTable}
+BuildRequires:  %{python_module ddt}
+BuildRequires:  %{python_module openstacksdk >= 0.13.0}
+BuildRequires:  %{python_module osc-lib >= 1.8.0}
+BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
+BuildRequires:  %{python_module oslo.utils}
+BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module python-subunit}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-BuildRequires:  python3-PrettyTable
-BuildRequires:  python3-ddt
-BuildRequires:  python3-openstacksdk >= 0.13.0
-BuildRequires:  python3-osc-lib >= 1.8.0
-BuildRequires:  python3-oslo.serialization >= 2.18.0
-BuildRequires:  python3-oslo.utils
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-python-subunit
-BuildRequires:  python3-requests-mock
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testscenarios
-BuildRequires:  python3-testtools
+Requires:       python-openstacksdk >= 0.13.0
+Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-oslo.serialization >= 2.18.0
+Requires:       python-oslo.utils
+Requires:       python-pbr >= 2.0.0
 BuildArch:      noarch
+%python_subpackages
 
 %description
 Client library for Masakari built on the Masakari API. It provides a Python API
 (the masakariclient module) and a command-line tool (masakari).
 
-%package -n python3-masakariclient
-Summary:        Python API and CLI for OpenStack Masakari
-Requires:       python3-openstacksdk >= 0.13.0
-Requires:       python3-oslo.i18n >= 3.15.3
-Requires:       python3-oslo.serialization >= 2.18.0
-Requires:       python3-oslo.utils
-Requires:       python3-pbr >= 2.0.0
-Conflicts:      %oldpython-masakariclient < %version
-
-%description -n python3-masakariclient
-Client library for Masakari built on the Masakari API. It provides a Python API
-(the masakariclient module) and a command-line tool (masakari).
-
-This package contains the Python 3.x module.
-
-%package -n python-masakariclient-doc
+%package -n python3-masakariclient-doc
 Summary:        Documentation for OpenStack Masakari API client libary
 Group:          Documentation/HTML
+%define oldpython python
+Provides:       %{oldpython}-masakariclient-doc = %{version}
+Obsoletes:      %{oldpython}-masakariclient-doc < %{version}
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
-%if 0%{?suse_version}
-Obsoletes:      %oldpython-masakariclient < %version
-%endif
 
-%description -n python-masakariclient-doc
+%description -n python3-masakariclient-doc
 Client library for Masakari built on the Masakari API. It provides a Python API
 (the masakariclient module) and a command-line tool (masakari).
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n python-masakariclient-%{version}
-%py_req_cleanup
+%autosetup -p1 -n python_masakariclient-%{version}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 # Build HTML docs and man page
-PBR_VERSION=8.4.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=8.4.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=%{version} %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{py3_install}
+%pyproject_install
 # man pages
 install -p -D -m 644 doc/build/man/python-masakariclient.1 %{buildroot}%{_mandir}/man1/python-masakariclient.1
 
 %check
 %{openstack_stestr_run}
 
-%files -n python3-masakariclient
+%files %{python_files}
 %license LICENSE
-%{python3_sitelib}/masakariclient
-%{python3_sitelib}/*.egg-info
+%{python_sitelib}/masakariclient
+%{python_sitelib}/python_masakariclient-%{version}.dist-info
 
-%files -n python-masakariclient-doc
+%files -n python3-masakariclient-doc
 %license LICENSE
 %doc doc/build/html
 %{_mandir}/man1/python-masakariclient.1.*

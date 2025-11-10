@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov  9 20:57:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.7.0:
+  * reno: Update master for unmaintained/zed
+  * Update master for stable/2024.1
+  * reno: Update master for unmaintained/xena
+  * reno: Update master for unmaintained/wallaby
+  * reno: Update master for unmaintained/victoria
+  * reno: Update master for unmaintained/yoga
+- switch to singlespec
+
+-------------------------------------------------------------------
 Fri Jun 13 07:02:40 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not (ever) use Epoch; it has devestating effects on version
