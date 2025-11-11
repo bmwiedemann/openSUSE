@@ -1,7 +1,7 @@
 #
 # spec file for package superlu
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Name:           superlu
 Summary:        A general purpose library for the direct solution of linear equations
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Math
-Version:        7.0.0
+Version:        7.0.1
 Release:        0
 URL:            https://portal.nersc.gov/project/sparse/superlu/
 Source0:        %{name}-%{version}.tar.gz
@@ -37,6 +37,8 @@ Source3:        superlu.rpmlintrc
 # this routine in the library which, however, remains fully functional
 Patch0:         superlu-remove-mc64ad.patch
 Patch1:         superlu-make.linux.patch
+# PATCH upstream from https://github.com/xiaoyeli/superlu/pull/169
+Patch2:         superlu-restore-compatibility-v6.patch
 BuildRequires:  blas-devel
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
@@ -130,7 +132,9 @@ rm -fr EXAMPLE
 
 %files devel
 %doc README.fortran
-%{_includedir}/*
+%{_includedir}/slu_*.h
+%{_includedir}/superlu_*.h
+%{_includedir}/supermatrix.h
 %{_libdir}/*.so
 %dir %{_libdir}/cmake/
 %dir %{_libdir}/cmake/superlu/

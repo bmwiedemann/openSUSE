@@ -1,0 +1,26 @@
+From 57a7dba4ddb8f3edc2dd2d8c529b2abd31977356 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
+Date: Sat, 8 Nov 2025 10:20:38 +0100
+Subject: [PATCH] Restory compatibility with SuperLU < 7
+
+Removed probably by accident in 0bbd6571bd839d866bff6a8ff1eaa812a8c31463
+---
+ SRC/slu_scomplex.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/SRC/slu_scomplex.h b/SRC/slu_scomplex.h
+index a9b728a6..96703912 100644
+--- a/SRC/slu_scomplex.h
++++ b/SRC/slu_scomplex.h
+@@ -30,6 +30,11 @@ at the top-level directory.
+ 
+ typedef struct { float r, i; } singlecomplex;
+ 
++#if defined(SUPERLU_TYPEDEF_COMPLEX) || DOXYGEN
++//! \brief backward compatibility with older versions of SuperLU
++//! Add -D enable_compatibility_complex=ON to your CMake call
++typedef singlecomplex complex;
++#endif
+ 
+ /* Macro definitions */
+ 

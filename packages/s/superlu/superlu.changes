@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  9 00:25:50 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Back-port fix to regression with compatibility to SuperLU 6 by
+  adding superlu-restore-compatibility-v6.patch
+
+-------------------------------------------------------------------
+Sat Nov  8 04:54:02 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop HPC specific rpmlintrc rules, since hpc flavours were
+  dropped [see commit on: Mon Mar 24 17:01:39 UTC 2025].
+
+-------------------------------------------------------------------
+Sat Nov  8 01:16:41 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Update to version 7.0.1
+  * Matgen small C improvements
+  * Wherever possible declared parameter as pointer to const
+  * Add Fortran package manager (fpm) build system 
+
+-------------------------------------------------------------------
 Mon Mar 24 17:01:39 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable and remove support for gnu-hpc build flavours (bsc#1239982)
