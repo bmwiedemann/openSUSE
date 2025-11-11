@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/fcrozat/image-janitor.git</param>
+    <param name="scm">git</param>
+    <param name="revision">0.2.0</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">(.*)\+0</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="manual" name="set_version" />
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">image-janitor</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+     <param name="method">registry</param>
+  </service>
+</services>
