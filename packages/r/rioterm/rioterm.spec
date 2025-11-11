@@ -17,7 +17,7 @@
 
 
 Name:           rioterm
-Version:        0.2.32
+Version:        0.2.35
 Release:        0
 Summary:        A hardware-accelerated GPU terminal emulator powered by WebGPU
 License:        MIT
@@ -27,8 +27,9 @@ Source1:        vendor.tar.zst
 Source99:       %{name}-rpmlintrc
 %if 0%{?suse_version} <= 1500
 Group:          System/X11/Terminals
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
+BuildRequires:  gcc14
+BuildRequires:  gcc14-c++
+BuildRequires:  libstdc++-devel
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -50,8 +51,8 @@ A hardware-accelerated GPU terminal emulator powered by WebGPU, focusing to run 
 
 %build
 %if 0%{?suse_version} <= 1500
-export CC=gcc-13
-export CXX=g++-13
+export CC=gcc-14
+export CXX=g++-14
 %endif
 %{cargo_build} --no-default-features --features=x11,wayland
 

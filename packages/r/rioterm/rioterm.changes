@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Nov 03 18:08:22 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.35:
+  * prepare v0.2.35
+  * correct memory usage on changelog.md
+  * don't panic
+  * reduce gpu memory
+  * present_after_input
+
+-------------------------------------------------------------------
+Mon Nov 03 14:46:14 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.34:
+  * update the lockfile
+  * prepare v0.2.34
+  * rewrite font loader to fix queries
+  * Revert "update linux deps"
+  * guess who is back, old fontloader
+  * update misc with metainfo.xml
+  * mark as released
+
+-------------------------------------------------------------------
+Mon Nov 03 14:41:25 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.33:
+  * update linux deps
+  * format the code
+  * update lockfile
+  * update changelog
+  * add ScrollPageUp & ScrollPageDown actions (closes #1275)
+  * platform: support env-vars for platform and better merge (closes #1341)
+  * update changelog
+  * improve get_optimal_texture_sample_type
+  * let's make things easier
+  * prepare 0.2.33
+  * update changelog
+  * todo fix wasm32 on loader
+  * remove comment
+  * lock versions on toml;2C
+  * fix lint
+  * migrate loader
+  * fix keyboard protocol
+  * format XTVERSION test
+  * test xtversion report
+  * feat: add XTVERSION support (#1347)
+  * flake.lock: Update (#1344)
+  * in fact TEXTURE_FORMAT_16BIT_NORM should be available for f16 otherwise is too misleading
+  * try full f16 features at first
+  * remove .helix/languages.toml as this repo avoids try to setup configuration for multi editors
+  * Update nix files (#1319)
+  * flake.lock: Update (#1336)
+  * oopsie
+  * fix docs md
+  * changelog moved from /docs/changelog to /changelog
+  * address 'Dimension X value 4096 exceeds the limit of 2048'
+
+-------------------------------------------------------------------
+Mon Oct 20 16:55:00 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating gcc/g++ to v14 for Leap
+- Adding libstdc++-devel BuildRequires for Leap
+  * Throws 'ld: cannot find -lstdc++: No such file or directory' error
+    for sugarloaf without it
+
+-------------------------------------------------------------------
 Fri Oct 17 04:56:36 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.2.32:
