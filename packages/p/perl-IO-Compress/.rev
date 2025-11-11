@@ -8,4 +8,41 @@
 </comment>
     <requestid>1238291</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>046e8dca6f6775888aa7471889274f4c</srcmd5>
+    <version>2.214.0</version>
+    <time>1762885351</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.214.0 (2.214)
+   see /usr/share/doc/packages/perl-IO-Compress/Changes
+    2.214 24 October 2025
+        * version 2.214
+          Fri Oct 24 16:33:36 2025 +0100
+          6eb77023e6c6ad9c6869f396f42fb1fe4f79ace2
+        * IO::Compress::Gzip accidentally modifies the `$EXPORT_TAGS{all}-&gt;@*` of other modules Fixes #64
+          Fri Oct 24 15:51:30 2025 +0100
+          d1774d5b634d0aaa634ecc29db28fcd878adbd87
+        * Fix indentation in Windows workflow YAML
+          Sun Oct 19 14:24:36 2025 +0100
+          bb02b9069f9a7c954ffe27be5bba5464b8882000
+        * Fix indentation in windows.yml exclude section
+          Sun Oct 19 14:19:31 2025 +0100
+          7c573858a7aac83806da6831a84171f4ce6bd19e
+        * Merge pull request #63 from masiuchi/fix/ci-errors
+          Sat Oct 18 16:48:45 2025 +0100
+          8cbbd4a881b53dc54cff309122094327edc376e3
+        * Exclude Perl 5.42 with &quot;strawberry&quot; distribution from GitHub Actions
+          Sat Oct 18 23:25:38 2025 +0900
+          407986d5f45f07b654c649c478e43e05e2b13db9
+        * Update FreeBSD image to 14.3 in Cirrus CI
+          Sat Oct 18 22:43:17 2025 +0900
+          3ffdaa03e98f4f75d1a80bd34d27caa2dabdf576
+        * Add dependabot.yml file to police workflow files
+          Thu Sep 4 17:18:18 2025 +0100
+          4678d7b55393d3bb00f8468b992f33c46f26f847
+        * Add perl 5.42 to workflow files
+          Thu Sep 4 17:17:27 2025 +0100
+          dca22a69dcda62c35bb088df7c3c203a458d3b73</comment>
+    <requestid>1317138</requestid>
+  </revision>
 </revisionlist>

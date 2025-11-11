@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Compress
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,50 +18,51 @@
 
 %define cpan_name IO-Compress
 Name:           perl-IO-Compress
-Version:        2.213.0
+Version:        2.214.0
 Release:        0
-# 2.213 -> normalize -> 2.213.0
-%define cpan_version 2.213
+# 2.214 -> normalize -> 2.214.0
+%define cpan_version 2.214
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        IO Interface to compressed data files/buffers
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Compress::Raw::Bzip2) >= 2.213
-BuildRequires:  perl(Compress::Raw::Zlib) >= 2.213
-Requires:       perl(Compress::Raw::Bzip2) >= 2.213
-Requires:       perl(Compress::Raw::Zlib) >= 2.213
-Provides:       perl(Compress::Zlib) = 2.213
+BuildRequires:  perl(Compress::Raw::Bzip2) >= 2.214
+BuildRequires:  perl(Compress::Raw::Zlib) >= 2.214
+Requires:       perl(Compress::Raw::Bzip2) >= 2.214
+Requires:       perl(Compress::Raw::Zlib) >= 2.214
+Provides:       perl(Compress::Zlib) = 2.214
 Provides:       perl(File::GlobMapper) = 1.001
 Provides:       perl(IO::Compress) = %{version}
-Provides:       perl(IO::Compress::Adapter::Bzip2) = 2.213
-Provides:       perl(IO::Compress::Adapter::Deflate) = 2.213
-Provides:       perl(IO::Compress::Adapter::Identity) = 2.213
-Provides:       perl(IO::Compress::Base) = 2.213
-Provides:       perl(IO::Compress::Base::Common) = 2.213
-Provides:       perl(IO::Compress::Bzip2) = 2.213
-Provides:       perl(IO::Compress::Deflate) = 2.213
-Provides:       perl(IO::Compress::Gzip) = 2.213
-Provides:       perl(IO::Compress::Gzip::Constants) = 2.213
-Provides:       perl(IO::Compress::RawDeflate) = 2.213
-Provides:       perl(IO::Compress::Zip) = 2.213
-Provides:       perl(IO::Compress::Zip::Constants) = 2.213
-Provides:       perl(IO::Compress::Zlib::Constants) = 2.213
-Provides:       perl(IO::Compress::Zlib::Extra) = 2.213
-Provides:       perl(IO::Uncompress::Adapter::Bunzip2) = 2.213
-Provides:       perl(IO::Uncompress::Adapter::Identity) = 2.213
-Provides:       perl(IO::Uncompress::Adapter::Inflate) = 2.213
-Provides:       perl(IO::Uncompress::AnyInflate) = 2.213
-Provides:       perl(IO::Uncompress::AnyUncompress) = 2.213
-Provides:       perl(IO::Uncompress::Base) = 2.213
-Provides:       perl(IO::Uncompress::Bunzip2) = 2.213
-Provides:       perl(IO::Uncompress::Gunzip) = 2.213
-Provides:       perl(IO::Uncompress::Inflate) = 2.213
-Provides:       perl(IO::Uncompress::RawInflate) = 2.213
-Provides:       perl(IO::Uncompress::Unzip) = 2.213
+Provides:       perl(IO::Compress::Adapter::Bzip2) = 2.214
+Provides:       perl(IO::Compress::Adapter::Deflate) = 2.214
+Provides:       perl(IO::Compress::Adapter::Identity) = 2.214
+Provides:       perl(IO::Compress::Base) = 2.214
+Provides:       perl(IO::Compress::Base::Common) = 2.214
+Provides:       perl(IO::Compress::Bzip2) = 2.214
+Provides:       perl(IO::Compress::Deflate) = 2.214
+Provides:       perl(IO::Compress::Gzip) = 2.214
+Provides:       perl(IO::Compress::Gzip::Constants) = 2.214
+Provides:       perl(IO::Compress::RawDeflate) = 2.214
+Provides:       perl(IO::Compress::Zip) = 2.214
+Provides:       perl(IO::Compress::Zip::Constants) = 2.214
+Provides:       perl(IO::Compress::Zlib::Constants) = 2.214
+Provides:       perl(IO::Compress::Zlib::Extra) = 2.214
+Provides:       perl(IO::Uncompress::Adapter::Bunzip2) = 2.214
+Provides:       perl(IO::Uncompress::Adapter::Identity) = 2.214
+Provides:       perl(IO::Uncompress::Adapter::Inflate) = 2.214
+Provides:       perl(IO::Uncompress::AnyInflate) = 2.214
+Provides:       perl(IO::Uncompress::AnyUncompress) = 2.214
+Provides:       perl(IO::Uncompress::Base) = 2.214
+Provides:       perl(IO::Uncompress::Bunzip2) = 2.214
+Provides:       perl(IO::Uncompress::Gunzip) = 2.214
+Provides:       perl(IO::Uncompress::Inflate) = 2.214
+Provides:       perl(IO::Uncompress::RawInflate) = 2.214
+Provides:       perl(IO::Uncompress::Unzip) = 2.214
 Provides:       perl(U64)
 Provides:       perl(Zlib::OldDeflate)
 Provides:       perl(Zlib::OldInflate)
@@ -72,7 +73,7 @@ Provides:       perl(Zlib::OldInflate)
 This is a stub module. It contains no code.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
