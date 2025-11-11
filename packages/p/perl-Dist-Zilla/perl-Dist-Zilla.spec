@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dist-Zilla
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Dist-Zilla
 Name:           perl-Dist-Zilla
-Version:        6.33.0
+Version:        6.34.0
 Release:        0
-# 6.033 -> normalize -> 6.33.0
-%define cpan_version 6.033
+# 6.034 -> normalize -> 6.34.0
+%define cpan_version 6.034
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution builder; installer not included!
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -193,6 +194,7 @@ Provides:       perl(Dist::Zilla::App::Command::smoke) = %{version}
 Provides:       perl(Dist::Zilla::App::Command::test) = %{version}
 Provides:       perl(Dist::Zilla::App::Command::version) = %{version}
 Provides:       perl(Dist::Zilla::App::Tester) = %{version}
+Provides:       perl(Dist::Zilla::App::Tester::Result) = %{version}
 Provides:       perl(Dist::Zilla::Chrome::Term) = %{version}
 Provides:       perl(Dist::Zilla::Chrome::Test) = %{version}
 Provides:       perl(Dist::Zilla::Dist::Builder) = %{version}
@@ -326,7 +328,6 @@ Provides:       perl(Dist::Zilla::Util::AuthorDeps) = %{version}
 Provides:       perl(Test::DZil) = %{version}
 %undefine       __perllib_provides
 Recommends:     perl(App::cpanminus)
-Recommends:     perl(Archive::Tar::Wrapper) >= 0.150
 Recommends:     perl(Data::OptList) >= 0.110
 Recommends:     perl(Term::ReadLine::Gnu)
 %{perl_requires}

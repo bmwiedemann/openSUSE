@@ -410,4 +410,19 @@
 </comment>
     <requestid>1288051</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>edb986dbc2c933c2dd0d3948f01f9d1d</srcmd5>
+    <version>6.34.0</version>
+    <time>1762885352</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.34.0 (6.034)
+   see /usr/share/doc/packages/perl-Dist-Zilla/Changes
+  6.034     2025-11-07 09:20:18-05:00 America/Toronto
+          - add &quot;dzil authordeps --cpanm-versions&quot;
+          - the --cpanm-versions output no longer includes double quotes;
+            that is: it emits Foo~2 rather than Foo~&quot;2&quot;
+          - drop Archive::Tar::Wrapper, which failed when the path contained
+            non-ASCII; the speed improvement was quite small</comment>
+    <requestid>1317140</requestid>
+  </revision>
 </revisionlist>
