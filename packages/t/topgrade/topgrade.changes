@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Nov 11 00:35:39 UTC 2025 - gerald_chen@foxmail.com
+
+- Update to version 16.2.1:
+  * chore: release v16.2.1 (#1462)
+  * fix(release): Use bash in Windows to fix powershell issues (#1461)
+  * fix(release): Fix .deb distribution (#1460)
+  * fix(release): Fix .deb distribution (#1458)
+  * chore: release v16.2.0 (#1407)
+  * fix(release): fix homebrew releases by migrating to dawidd6/action-homebrew-bump-formula (#1457)
+  * fix(mise): fix mise self-update failing when installed via a package manager (#1456)
+  * fix(release): Add man page to .deb distribution (#1455)
+  * fix(self-update): fix windows self-update reporting failure on successful self-update (#1452)
+  * feat(mise): run `mise self-update` (#1450)
+  * fix(pkgfile): make pkgfile opt-in (#1449)
+  * ref: comment run_config_update (#1448)
+  * fix(vcpkg): fix permission denied when updating vcpkg if it's installed as root (#1447)
+  * docs: Expand LLM guidelines in CONTRIBUTING.md (#1445)
+  * fix(zh_TW): fixed zh_TW strings (#1446)
+  * docs: Add AI guidelines to CONTRIBUTING.md (#1444)
+  * ref: add comments to Config::allowed_steps (#1291)
+  * feat(falconf): add falconf step (#1219)
+  * fix(git): fix shellexpand::tilde in git_repos in topgrade.d/* (#1223)
+  * ref(nix): Deduplicate run_nix and run_nix_self_upgrade nix --version checking (#1376)
+  * ref: remove commented-out library code and unnecessary bin declaration (#1373)
+  * ref: Simplify target cfgs (#1346)
+  * feat(hyprpm): add hyprpm step (#1213)
+  * feat(doom): add doom.aot option (#1214)
+  * fix(auto-cpufreq): skip when install script is not used (#1215)
+  * feat: add show_distribution_summary config option (#1259)
+  * ref: tidy up binary-conflict code (#1329)
+  * docs: Improve installation section (#1442)
+  * fix(vim): change nvimrc base_dir for windows (#1433)
+  * fix(guix): fix overcomplicated Guix step (#1290)
+  * fix(gem): fix incorrectly placed debug message in `gem` step (#1212)
+  * feat(rustup): add rustup.channels config (#1206)
+  * fix(conda): replace deprecated `auto_activate_base` (#1158)
+  * fix(containers): fix panic in `containers` step (#1150)
+  * fix(jetbrains-toolbox): fix step not dry running (#1253)
+  * chore(deps): Update jetbrains-toolbox-updater (#1438)
+  * ci: remove template expansion in code contexts (#1434)
+  * feat(os): add AOSC OS support (#1424)
+  * chore(deps): bump github/codeql-action from 4.31.0 to 4.31.2 (#1427)
+  * ci: don't persist credentials in actions/checkout (#1422)
+  * docs: Improve CONTRIBUTING.md (#1420)
+  * docs: Update SECURITY.md (#1421)
+  * chore(pre-commit): Run pre-commit (#1419)
+  * feat: add damp run type (#1217)
+  * ci: Enforce conventional commits in PR titles (#1418)
+  * docs: Improve contributing section
+  * docs: Remove roadmap
+  * docs: Reformat README.md
+  * docs: Update installation methods
+  * chore(release): Fix dispatch error in create_release_assets.yml (#1406)
+  * chore: release v16.1.2 (#1400)
+  * fix(release): Fix cross-compilation for arm requiring glibc>=2.39 (#1405)
+  * fix(release): Fix FreeBSD build (#1404)
+  * chore(release): Fix cross trying to fmt (#1403)
+  * fix(release): Fix FreeBSD build (#1402)
+  * fix(release): Fix manual workflow trigger (#1401)
+  * fix(release): Fix FreeBSD build and add manual workflow trigger (#1399)
+
+-------------------------------------------------------------------
 Sat Nov 01 14:45:33 UTC 2025 - gerald_chen@foxmail.com
 
 - Update to version 16.1.1:
