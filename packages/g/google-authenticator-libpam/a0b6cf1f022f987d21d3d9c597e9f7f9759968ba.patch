@@ -1,0 +1,135 @@
+commit a0b6cf1f022f987d21d3d9c597e9f7f9759968ba
+Author: Johannes Segitz <jsegitz@suse.de>
+Date:   Mon Nov 3 13:20:54 2025 +0100
+
+    Set SELinux type for secret file explicitly
+    
+    Since the file is changed by creating a temporary file and then
+    atomically renaming it the normal file handling rules of SELinux
+    don't work properly. Therefor set the SELinux type explicitly on
+    the temporary file.
+    
+    See https://bugzilla.suse.com/show_bug.cgi?id=1252092 for more details
+
+diff --git a/Makefile.am b/Makefile.am
+index 6be2379..18359f7 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -12,7 +12,7 @@ pam_LTLIBRARIES   = pam_google_authenticator.la
+ dist_doc_DATA  = FILEFORMAT README.md
+ dist_html_DATA = totp.html
+ 
+-MODULES_LDFLAGS = -avoid-version -module -shared -export-dynamic
++MODULES_LDFLAGS = -avoid-version -module -shared -export-dynamic -lselinux
+ 
+ CORE_SRC  = src/util.h   src/util.c
+ CORE_SRC += src/base32.h src/base32.c
+@@ -59,7 +59,7 @@ examples_demo_SOURCES = \
+ 	src/pam_google_authenticator.c \
+ 	$(CORE_SRC) \
+ 	examples/demo.c
+-examples_demo_LDADD  = -lpam
++examples_demo_LDADD  = -lpam -lselinux
+ examples_demo_CFLAGS = $(AM_CFLAGS) -DDEMO=1
+ 
+ 
+diff --git a/src/pam_google_authenticator.c b/src/pam_google_authenticator.c
+index b6fdef0..ee65e66 100644
+--- a/src/pam_google_authenticator.c
++++ b/src/pam_google_authenticator.c
+@@ -30,6 +30,9 @@
+ #include <time.h>
+ #include <unistd.h>
+ 
++#include <selinux/selinux.h>
++#include <selinux/context.h>
++
+ #ifdef HAVE_SYS_FSUID_H
+ // We much rather prefer to use setfsuid(), but this function is unfortunately
+ // not available on all systems.
+@@ -55,11 +58,12 @@
+ 
+ // Module name shortened to work with rsyslog.
+ // See https://github.com/google/google-authenticator-libpam/issues/172
+-#define MODULE_NAME   "pam_google_auth"
++#define MODULE_NAME          "pam_google_auth"
+ 
+-#define SECRET        "~/.google_authenticator"
+-#define CODE_PROMPT   "Verification code: "
+-#define PWCODE_PROMPT "Password & verification code: "
++#define SECRET               "~/.google_authenticator"
++#define SECRET_SELINUX_TYPE  "auth_home_t"
++#define CODE_PROMPT          "Verification code: "
++#define PWCODE_PROMPT        "Password & verification code: "
+ 
+ typedef struct Params {
+   const char *secret_filename_spec;
+@@ -574,6 +578,56 @@ full_write(int fd, const char* buf, size_t len) {
+   }
+ }
+ 
++static int set_selinux_context(int fd) {
++  char *old_context = NULL;
++  int err = 0;
++
++  // skip if SELinux is not enabled
++  if (!is_selinux_enabled()) {
++    err = 1;
++    goto cleanup;
++  }
++
++  // Get the current context
++  if (fgetfilecon(fd, &old_context) < 0) {
++    err = errno;
++    goto cleanup;
++  }
++
++  // Create a new context with the type changed
++  context_t ctx = context_new(old_context);
++  if (!ctx) {
++    err = errno;
++    goto cleanup;
++  }
++  if (context_type_set(ctx, SECRET_SELINUX_TYPE) < 0) {
++    err = errno;
++    goto cleanup;
++  }
++
++  // Get the SC as string
++  const char *new_context = context_str(ctx);
++  if (!new_context) {
++    err = errno;
++    goto cleanup;
++  }
++
++  if (fsetfilecon(fd, new_context) < 0) {
++    err = errno;
++    goto cleanup;
++  }
++
++cleanup:
++  if (ctx) {
++    context_free(ctx);
++  }
++  if (old_context) {
++    freecon(old_context);
++  }
++
++  return err;
++}
++
+ // Safely overwrite the old secret file.
+ // Return 0 on success, errno otherwise.
+ static int write_file_contents(pam_handle_t *pamh,
+@@ -644,6 +698,11 @@ static int write_file_contents(pam_handle_t *pamh,
+     log_message(LOG_ERR, pamh, "write(): %s", strerror(err));
+     goto cleanup;
+   }
++  // adjust SELinux context. No error handling here as this can fail if SELinux
++  // is not enable, which is fine in this case. If it fails when SELinux is
++  // available this will result in AVCs that can be debugged
++  set_selinux_context(fd);
++
+   if (fsync(fd)) {
+     err = errno;
+     log_message(LOG_ERR, pamh, "fsync(): %s", strerror(err));

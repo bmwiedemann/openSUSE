@@ -1,0 +1,40 @@
+commit 665012cf90acadac882db4738b21b7246965ee2a
+Author: Thomas Habets <habets@google.com>
+Date:   Mon Nov 10 18:05:22 2025 +0000
+
+    SELinux: don't jump past variable initialization
+
+diff --git a/src/pam_google_authenticator.c b/src/pam_google_authenticator.c
+index d37374b..d991839 100644
+--- a/src/pam_google_authenticator.c
++++ b/src/pam_google_authenticator.c
+@@ -588,17 +588,16 @@ static int set_selinux_context(int fd) {
+   int err = 0;
+ #ifdef HAVE_SELINUX
+   char *old_context = NULL;
++  const char *new_context = NULL;
+ 
+   // skip if SELinux is not enabled
+   if (!is_selinux_enabled()) {
+-    err = 1;
+-    goto cleanup;
++    return 1;
+   }
+ 
+   // Get the current context
+   if (fgetfilecon(fd, &old_context) < 0) {
+-    err = errno;
+-    goto cleanup;
++    return errno;
+   }
+ 
+   // Create a new context with the type changed
+@@ -613,7 +612,7 @@ static int set_selinux_context(int fd) {
+   }
+ 
+   // Get the SC as string
+-  const char *new_context = context_str(ctx);
++  new_context = context_str(ctx);
+   if (!new_context) {
+     err = errno;
+     goto cleanup;

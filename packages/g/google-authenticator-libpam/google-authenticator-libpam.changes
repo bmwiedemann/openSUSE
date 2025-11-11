@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 11 09:26:21 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Added
+  * 267cbfa31bc17805c4850afd39788d97a7b5374c.patch
+  * 2a1f725e83d3ffc11d229543c4c2980dffd637b9.patch
+  * 6313ae4c2b475e1b73fd272434089cfc4631e14d.patch
+  * 665012cf90acadac882db4738b21b7246965ee2a.patch
+  * 75151df21a19e7182c09ae0118379fae890bdf5b.patch
+  * a0b6cf1f022f987d21d3d9c597e9f7f9759968ba.patch
+  to get proper SELinux type on secrets file (bsc#1252092)
+  Already upstream via
+  https://github.com/google/google-authenticator-libpam/pull/280
+  can be dropped with the next release
+
+-------------------------------------------------------------------
 Wed Jul 24 13:13:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate from tar_scm to obs_scm: be more storage efficient.
