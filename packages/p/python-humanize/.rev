@@ -238,4 +238,12 @@
   * metric: Fix precision format (#159)</comment>
     <requestid>1307743</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>52b1606c40eeb9e6d256dd0026c8a87e</srcmd5>
+    <version>4.14.0</version>
+    <time>1762885357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1317155</requestid>
+  </revision>
 </revisionlist>

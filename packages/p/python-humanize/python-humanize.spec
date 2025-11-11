@@ -19,14 +19,14 @@
 %{?sle15_python_module_pythons}
 %global modname humanize
 Name:           python-humanize
-Version:        4.13.0
+Version:        4.14.0
 Release:        0
 Summary:        Python humanize utilities
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/python-humanize/humanize
 Source:         https://files.pythonhosted.org/packages/source/h/humanize/humanize-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
