@@ -420,4 +420,13 @@
   * Correct IRQ tx/rx affinity core assignment (forwarded request 1305176 from glaubitz)</comment>
     <requestid>1305267</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>db791540d151e34af079b7f9257faddc</srcmd5>
+    <version>20251014.00</version>
+    <time>1762885220</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251014.00
+  * No public description (forwarded request 1316452 from glaubitz)</comment>
+    <requestid>1316981</requestid>
+  </revision>
 </revisionlist>
