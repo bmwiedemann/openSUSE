@@ -23,7 +23,7 @@
 %endif
 %global _sitelibdir %{%{pythons}_sitelib}
 Name:           aws-efs-utils
-Version:        2.3.3
+Version:        2.4.0
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
@@ -35,6 +35,12 @@ Patch0:         disable_mount_efs_test.patch
 Patch1:         harden_amazon-efs-mount-watchdog.service.patch
 Patch2:         skip-styletest.patch
 Patch3:         use_mock_from_unittest.patch
+# PATCH-FIX-UPSTREAM - Initialize arrays as arrays - https://github.com/aws/aws-lc/pull/2042
+Patch4:         initialize-arrays-as-arrays.patch
+# PATCH-FIX-UPSTREAM - Support relro in delocator - https://github.com/aws/aws-lc/pull/2455
+Patch5:         support-relro-in-delocator.patch
+# PATCH-FIX-OPENSUSE - fix cargo checksums after patching
+Patch6:         fix-cargo-checksums.patch
 BuildRequires:  %{pythons}-botocore >= 1.34.140
 BuildRequires:  %{pythons}-coverage >= 7.6.0
 BuildRequires:  %{pythons}-pbr >= 3.1.1
@@ -47,6 +53,8 @@ BuildRequires:  %{pythons}-pytest-metadata >= 3.1.1
 BuildRequires:  %{pythons}-pytest-mock >= 3.14.0
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+BuildRequires:  clang-devel
+BuildRequires:  cmake
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc13
 BuildRequires:  gcc13-c++
@@ -55,6 +63,7 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  openssl
 BuildRequires:  rust
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) >= 1.24
 BuildRequires:  pkgconfig(systemd)
 Requires:       nfs-utils
 Requires:       stunnel >= 4.56
@@ -69,6 +78,9 @@ find src/mount_efs src/watchdog -name "*.py" -exec sed -i 's/env python3/python3
 %patch -P 1 -p1
 %patch -P 2
 %patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 %if 0%{?suse_version} <= 1500

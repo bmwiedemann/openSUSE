@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  7 14:01:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.4.0
+  * Upgrade s2n-tls version in efs-proxy to use AWS-LC
+  * Add ubuntu24 and macOS Tahoe support efs-utils
+- Add clang-devel to BuildRequires
+- Add cmake to BuildRequires
+- Add golang(API) >= 1.24 to BuildRequires
+- Add initialize-arrays-as-arrays.patch to fix build with newer GCC
+- Add support-relro-in-delocator.patch to fix build with newer GCC
+- Add fix-cargo-checksums.patch to fix cargo checksums after patching
+
+-------------------------------------------------------------------
 Fri Oct 24 11:13:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Use RUSTFLAGS over CC/CXX to overwrite default linker on SLE-15
