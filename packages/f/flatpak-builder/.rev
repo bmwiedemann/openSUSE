@@ -367,4 +367,12 @@
 - Add git-lfs Recommends. (forwarded request 1306587 from iznogood)</comment>
     <requestid>1306712</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>28b061ab4ee7f4fad4ac5f8a5b7acc69</srcmd5>
+    <version>1.4.7</version>
+    <time>1762885270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1317056</requestid>
+  </revision>
 </revisionlist>
