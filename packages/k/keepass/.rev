@@ -615,4 +615,12 @@
     + The KeePass KDB import module does not append a new-line character to notes anymore.</comment>
     <requestid>1291784</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f2bce405a55b2c95820cf0539737336b</srcmd5>
+    <version>2.60</version>
+    <time>1762885228</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1316988</requestid>
+  </revision>
 </revisionlist>
