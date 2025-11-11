@@ -17,7 +17,7 @@
 
 
 Name:           anubis
-Version:        1.23.0
+Version:        1.23.1
 Release:        0
 Summary:        Web AI Firewall Utility
 License:        MIT

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov  8 13:00:03 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to the new upstream release 1.23.1
+  * build(deps): bump github/codeql-action from 4.31.0 to 4.31.2 in the github-actions group by @dependabot[bot] in #1239
+  * build(deps): bump the gomod group across 1 directory with 18 updates by @dependabot[bot] in #1237
+  * build(deps-dev): bump the npm group across 1 directory with 3 updates by @dependabot[bot] in #1238
+  * chore(default-config): remove Tencent Cloud block rule by @Xe in #1227
+  * ci: add asset build verification workflow by @Xe in #1254
+  * feat(blog): a short post on how to file abuse reports by @Xe in #1230
+  * fix(data): add ruleset to explicitly allow Docker / OCI clients by @Xe in #1253
+  * fix: SERVE_ROBOTS_TXT works again by @Xe in #1229 
+
+-------------------------------------------------------------------
 Thu Oct 30 12:22:55 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update to the new upstream release 1.23.0

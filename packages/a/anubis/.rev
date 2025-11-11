@@ -17,4 +17,12 @@ Use source with the vendor already installed and precompiled JS</comment>
     <comment>Update to the new upstream release 1.23.0</comment>
     <requestid>1314566</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c82389c77e851a718ced722aa28320ff</srcmd5>
+    <version>1.23.1</version>
+    <time>1762885233</time>
+    <user>dimstar_suse</user>
+    <comment>Update to the new upstream release 1.23.1</comment>
+    <requestid>1316985</requestid>
+  </revision>
 </revisionlist>
