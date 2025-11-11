@@ -4317,4 +4317,20 @@
     <comment></comment>
     <requestid>1314569</requestid>
   </revision>
+  <revision rev="514" vrev="1">
+    <srcmd5>40b22ec4968acc284d659a5083508002</srcmd5>
+    <version>84.87+git20251111.509a363</version>
+    <time>1762885104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20251111.509a363:
+  * Avoid escape sequences on dump terminal of s390
+
+- Update to version 84.87+git20251111.16d9d43:
+  * Set XDG environment variables consistently without trailing slash
+
+- Update to version 84.87+git20251110.af063e6:
+  * Avoid escape sequences on dump terminal of s390
+  * Set erase character from kbs entry of terminfo</comment>
+    <requestid>1317045</requestid>
+  </revision>
 </revisionlist>

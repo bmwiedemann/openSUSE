@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 11 09:27:26 UTC 2025 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 84.87+git20251111.509a363:
+  * Avoid escape sequences on dump terminal of s390
+
+-------------------------------------------------------------------
+Tue Nov 11 08:00:26 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 84.87+git20251111.16d9d43:
+  * Set XDG environment variables consistently without trailing slash
+
+-------------------------------------------------------------------
+Mon Nov 10 15:47:37 UTC 2025 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 84.87+git20251110.af063e6:
+  * Avoid escape sequences on dump terminal of s390
+  * Set erase character from kbs entry of terminfo
+
+-------------------------------------------------------------------
 Thu Oct 30 13:29:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 84.87+git20251030.441f926:
