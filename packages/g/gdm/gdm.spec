@@ -115,6 +115,7 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       %{_bindir}/dbus-run-session
 Requires:       %{name}-branding = %{version}
+Requires:       displaymanager-sysconfig
 Requires:       gdmflexiserver
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
