@@ -19,13 +19,13 @@
 #!BuildTag: opensuse/bci/rust:stable
 #!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%-1.%RELEASE%
 #!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%
-#!BuildTag: opensuse/bci/rust:1.90
+#!BuildTag: opensuse/bci/rust:1.91
 #!BuildTag: opensuse/bci/rust:latest
 
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends rust1.90 cargo1.90
+    zypper -n install --no-recommends rust1.91 cargo1.91
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
@@ -41,8 +41,8 @@ RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shad
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.rust
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.90"
-LABEL org.opencontainers.image.description="Rust 1.90 container based on the openSUSE Tumbleweed Base Container Image."
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.91"
+LABEL org.opencontainers.image.description="Rust 1.91 container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%%RUST_VERSION%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
