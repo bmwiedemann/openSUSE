@@ -93,8 +93,8 @@ rm -r doc/build/html/.{doctrees,buildinfo}
 
 %files %{python_files}
 %license LICENSE
-%{python3_sitelib}/neutronclient
-%{python3_sitelib}/python_neutronclient-%{version}.dist-info
+%{python_sitelib}/neutronclient
+%{python_sitelib}/python_neutronclient-%{version}.dist-info
 
 %files -n python3-neutronclient-doc
 %doc doc/build/html README.rst
