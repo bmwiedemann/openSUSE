@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  3 13:35:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.35.2
+  * Bump aws-c-cal version by @DmitriyMusatkin in (#793)
+- from version 0.35.1
+  * Bind out hkdf by @DmitriyMusatkin in (#791)
+- from version 0.35.0
+  * Latest submodules for preferring PQ TLS by default
+    by @TingDaoK in (#788)
+
+-------------------------------------------------------------------
 Tue Sep 30 08:01:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.34.5
