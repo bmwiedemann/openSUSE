@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  3 13:39:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.8
+  * Move Linux from openssl_hkdf to ref_hkdf by @azkrishpy in (#238)
+- from version 0.9.7
+  * Fix warning when using cpp compiler by @DmitriyMusatkin in (#236)
+- from version 0.9.6
+  * Add functions for sha512 hmac hkdf by @DmitriyMusatkin in (#234)
+- from version 0.9.5
+  * Add helpers for encoding/decoding der ecdsa signatures to raw
+    by @DmitriyMusatkin in (#230)
+  * Refactor ec key import by @DmitriyMusatkin in (#229)
+  * Export logic for ec keys by @DmitriyMusatkin in (#232)
+  * SHA512 HMAC by @DmitriyMusatkin in (#233)
+
+-------------------------------------------------------------------
 Thu Oct 16 09:18:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.4
