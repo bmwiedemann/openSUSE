@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  3 08:41:42 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20251101
+  + adjust generated terminfo.5 to omit tbl "x" column modifier if that
+    is unsupported, i.e., with old nroff/tbl (adapted from patch by
+    Branden Robinson).
+  + in-progress work to merge MinGW/Windows port.
+- Modify patch ncurses-6.4.dif
+  * Remove changes on include/tic.h as now solved upstream
+  * Correct offsets
+
+-------------------------------------------------------------------
 Mon Oct 27 14:43:35 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20251025
-  + amend local-portability fix in tty_update.c (MidnightCommander #4799,
+  + amend locale-portability fix in tty_update.c (MidnightCommander #4799,
     cf: 20240203).
   + add testing utility report_ctype
   + update configure macros, improving check for $host_os

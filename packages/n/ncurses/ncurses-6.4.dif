@@ -3,23 +3,22 @@
  configure                   |   45 +++++++++----------
  include/curses.h.in         |    2 
  include/termcap.h.in        |    2 
- include/tic.h               |    4 -
  man/man_db.renames.in       |    1 
  man/ncurses.3x              |    4 +
  misc/gen-pkgconfig.in       |   25 +++++++++-
  misc/terminfo.src           |  104 ++++++++++++++++++++++++++++++++++++++------
  ncurses/Makefile.in         |    2 
  ncurses/run_cmd.sh          |   11 ++++
- ncurses/tinfo/MKfallback.sh |   14 ++++-
+ ncurses/tinfo/MKfallback.sh |    6 +-
  ncurses/tinfo/lib_setup.c   |    3 +
  progs/Makefile.in           |    4 -
  test/test.priv.h            |    4 -
  test/tracemunch             |    2 
- 16 files changed, 197 insertions(+), 67 deletions(-)
+ 15 files changed, 188 insertions(+), 64 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2025-10-20 06:44:01.963090642 +0000
-@@ -6184,12 +6184,12 @@ cat >>$cf_edit_man <<CF_EOF
++++ aclocal.m4	2025-11-03 08:42:33.961636930 +0000
+@@ -6223,12 +6223,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -34,7 +33,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -6199,7 +6199,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6238,7 +6238,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -43,7 +42,7 @@
  CF_EOF
  fi
  
-@@ -6246,7 +6246,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6285,7 +6285,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -52,7 +51,7 @@
  CF_EOF
  fi
  
-@@ -6255,31 +6255,31 @@ case "$MANPAGE_FORMAT" in
+@@ -6294,31 +6294,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -91,7 +90,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -6289,7 +6289,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6328,7 +6328,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -100,7 +99,7 @@
  							then
  								continue
  							fi
-@@ -6299,18 +6299,18 @@ CF_EOF
+@@ -6338,18 +6338,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -122,7 +121,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -6330,9 +6330,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6369,9 +6369,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -135,7 +134,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -6353,6 +6353,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6392,6 +6392,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -320,23 +319,6 @@
  #include <sys/types.h>
  
  #undef  NCURSES_OSPEED
---- include/tic.h
-+++ include/tic.h	2025-05-05 07:22:16.198714905 +0000
-@@ -236,12 +236,12 @@ struct user_table_entry
-  */
- 
- /* out-of-band values for representing absent capabilities */
--#define ABSENT_BOOLEAN		((signed char)-1)	/* 255 */
-+#define ABSENT_BOOLEAN		(-1)			/* 255 */
- #define ABSENT_NUMERIC		(-1)
- #define ABSENT_STRING		(char *)0
- 
- /* out-of-band values for representing cancels */
--#define CANCELLED_BOOLEAN	((signed char)-2)	/* 254 */
-+#define CANCELLED_BOOLEAN	(-2)			/* 254 */
- #define CANCELLED_NUMERIC	(-2)
- #define CANCELLED_STRING	(char *)(-1)
- 
 --- man/man_db.renames.in
 +++ man/man_db.renames.in	2025-05-05 07:22:16.198714905 +0000
 @@ -310,6 +310,7 @@ wtimeout.3x			wtimeout.3ncurses

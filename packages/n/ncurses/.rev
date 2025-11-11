@@ -5396,4 +5396,12 @@
   + in-progress work to merge MinGW/Windows port.</comment>
     <requestid>1313879</requestid>
   </revision>
+  <revision rev="312" vrev="85">
+    <srcmd5>fd3826d8648c95e4239346c8c6c0a6e9</srcmd5>
+    <version>unknown</version>
+    <time>1762885101</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1316880</requestid>
+  </revision>
 </revisionlist>
