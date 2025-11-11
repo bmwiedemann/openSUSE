@@ -1,7 +1,7 @@
 #
 # spec file for package ardour
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,7 +65,6 @@ BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.18
 BuildRequires:  pkgconfig(gtkmm-2.4) >= 2.24.2
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libart-2.0) >= 2.3.21
 BuildRequires:  pkgconfig(libcurl) >= 7.25.0
 BuildRequires:  pkgconfig(libexslt)
 BuildRequires:  pkgconfig(liblo) >= 0.26
