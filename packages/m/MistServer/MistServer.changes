@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Nov  8 12:51:54 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to the new upstream release 3.9
+  * Behaviour change: Stream processes now default to masking output tracks for other stream processes
+  * Feature: Added MistUtilHealth, a utility intended for (Docker container) health checking
+  * Feature: Very basic SCTE35 support for TS-based outputs (more support to follow later)
+  * Feature: RTMP push output can now override the host/app/stream with precision using URL parameters
+  * Feature: Added ability to have RTMP push outputs close gracefully or gracelessly on request
+  * Feature: Added effective FPS statistic (contains actually measured FPS, rather than metadata-signalled FPS)
+  * Feature: Live streams can now configure max track idle time separately from the DVR window size
+  * Feature: Push stats now also list "latency", a measurement of how close to the live point the push is
+  * Feature: Added PLAY_REWRITE trigger, which lets you change which stream is actually loaded for any request
+  * Feature: Added waitkey URL parameters, which makes the output wait for a new key frame to minimize latency
+  * Feature: Added ability to override external port for WebRTC SDP generation
+  * Feature: Added /whip/ and /whep/ WebRTC URLs that only permit input/output respectively
+  * Feature: Added keepts flag to RTMP output, to not rewrite timestamps to zero
+  * Feature: Support for every feature in the entire Enhanced RTMP 2.0 specification
+  * Feature: Unknown (manual or secondary) pushes can now be auto-detected and will show up in API responses and the web interface
+  * Feature: Added native support for JWT authentication/authorization for input and output (JWT support for admin login to follow at a later date!)
+  * Feature: Added WHEP-based WebRTC player to the built-in player, updated WebSocket-based WebRTC player to use more modern code
+  * Feature: Added keyboard controls to the built-in player
+  * Feature: HTTPS and RTMPS now support TLS SNI, with multiple certificates
+  * Improvement: System statistics are now collected in a more consistent manner
+  * Improvement: Better generic handling of output sockets
+  * Improvement: Robustified and added unit tests for process spawning/handling functions
+  * Improvement: Converted WebSockets to blocking sockets for better efficiency
+  * Improvement: Lowered WebSocket/MP4 client-side buffer for Chrome-based browsers
+  * Improvement: nuke command (and MistUtilNuke) now is much less likely to leave the system in a bad state
+  * Improvement: Massive performance improvement to the RTMP input and output protocols
+  * Improvement: Added AMF library unit tests
+  * Improvement: Triggers now send the X-PID header containing the calling process ID (MIST_PID environment variable for local executable handlers)
+  * Improvement: Stream info JSON now contains H264 level and profile information
+  * Improvement: Improved MP4 progressive startup time and latency
+  * Improvement: Added a 60s idle timeout in HTTP(S) connections
+  * Improvement: Support compiling against the newest libav versions
+  * Improvement: Better subtitle positioning and sizing in the built-in player
+  * Improvement: Updated mbedtls subproject to 3.6.5
+  * Improvement: AAC, Opus and FLAC tracks now read their metadata from the codec private data on ingest automatically (all protocols)
+  * Improvement: HTTPS and RTMPS now print mbedtls log messages at various logging levels
+  * Improvement: Starting a track selector with an exclamation point now expands to 'all,!' since that is almost certainly what a user actually means to do
+  * Improvement: Jitter calculation was made more aggressive, allowing for tighter latency tolerances
+  * Improvement: Updated librist subproject to 0.2.11
+  * Bugfix: Dozens of small bug/crash fixes
+  * Bugfix: Fixed MacOS interrupt signal handling (ctrl+c / sigint works for shutdown again)
+  * Bugfix: Fixed dynamic track switching in WebSocket-based protocols and WebRTC
+  * Bugfix: Added support for negative extended relative timestamps in RTMP
+  * Bugfix: Wait timeout for new data at the end of a track is 25 seconds again instead of the accidental 2.5 seconds it was
+  * Bugfix: Fixed compiling without SSL enabled
+  * Bugfix: Fixed Windows builds file permission issues
+  * Bugfix: Sanitize SRT streamid before using as stream name
+  * Bugfix: Fixed SRT options being ignored for listening SRT inputs
+  * Bugfix: Fixed MP4 files inside playlists not working anymore
+  * Bugfix: Fixed muted autoplay on Safari when using the built-in player
+  * Bugfix: Parse init data for most codecs to find true track properties, rather than blindly believing stream metadata
+  * Bugfix: Fixed push statistics to actually be the things their descriptions suggest them to be
+  * Bugfix: Fixed RIST push output ignoring URL arguments unless a second question mark was appended
+
+-------------------------------------------------------------------
 Thu Aug  7 10:41:52 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update to new upstream release 3.8

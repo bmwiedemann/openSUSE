@@ -17,7 +17,7 @@
 
 
 Name:           MistServer
-Version:        3.8
+Version:        3.9
 Release:        0
 Summary:        Internet streaming media toolkit
 License:        Unlicense
@@ -173,6 +173,7 @@ install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/mistserver.conf
 %{_bindir}/MistTranslateH264
 %{_bindir}/MistUtilAMF
 %{_bindir}/MistUtilCertbot
+%{_bindir}/MistUtilHealth
 %{_bindir}/MistUtilLog
 %{_bindir}/MistUtilMETA
 %{_bindir}/MistUtilNuke

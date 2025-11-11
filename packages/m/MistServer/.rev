@@ -31,4 +31,12 @@
     <comment>Update to new upstream release 3.8. Provide MistServer reported version.</comment>
     <requestid>1298674</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>54a95104a30a9b0f9ea86b078c6f507c</srcmd5>
+    <version>3.9</version>
+    <time>1762885232</time>
+    <user>dimstar_suse</user>
+    <comment>Update to the new upstream release 3.9</comment>
+    <requestid>1316984</requestid>
+  </revision>
 </revisionlist>
