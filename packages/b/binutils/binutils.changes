@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  3 14:06:37 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Update to current 2.45 branch at 94cb1c075 to include fix
+  for PR33584 (a problem related to LTO vs fortran COMMON
+  blocks).
+
+-------------------------------------------------------------------
+Tue Oct 28 14:14:01 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Amend binutils-compat-old-behaviour.diff to not enable
+  '-z gcs=implicit' on aarch64 for old codestreams.
+
+-------------------------------------------------------------------
 Tue Oct 14 16:29:53 UTC 2025 - Michael Matz <matz@suse.com>
 
 - Update to version 2.45:
@@ -41,6 +54,7 @@ Tue Oct 14 16:29:53 UTC 2025 - Michael Matz <matz@suse.com>
 - gold is no longer included
 - Contains fixes for these non-CVEs (not security bugs per upstreams
   SECURITY.md):
+  * bsc#1236632 aka CVE-2025-0840 aka PR32560
   * bsc#1236977 aka CVE-2025-1149 aka PR32576
   * bsc#1236978 aka CVE-2025-1148 aka PR32576
   * bsc#1236999 aka CVE-2025-1176 aka PR32636

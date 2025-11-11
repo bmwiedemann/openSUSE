@@ -25,11 +25,16 @@ of missing support in ld.so.
 (This also disables the few explicit dt-relr tests that don't use the
 proper predicate to guard themself)
 
+(Eventually commit 73ab3b9825d2 introduced calls to _bfd_final_link_relocate
+into scan_relocs to check for overflows.  But that also installs relocations,
+leading to the exact same behaviour of applying reloc values twice.  To
+that end this patch further adds calls to _bfd_clear_contents after those
+ones.)
 
 Index: binutils-2.45/bfd/elf64-x86-64.c
 ===================================================================
---- binutils-2.45.orig/bfd/elf64-x86-64.c	2025-10-14 16:03:09.919180481 +0200
-+++ binutils-2.45/bfd/elf64-x86-64.c	2025-10-14 16:06:15.962329377 +0200
+--- binutils-2.45.orig/bfd/elf64-x86-64.c	2025-10-21 18:04:37.580147518 +0200
++++ binutils-2.45/bfd/elf64-x86-64.c	2025-10-21 18:04:39.438178825 +0200
 @@ -48,127 +48,127 @@ static reloc_howto_type x86_64_elf_howto
  	bfd_elf_generic_reloc, "R_X86_64_NONE",	false, 0, 0x00000000,
  	false),
@@ -208,9 +213,45 @@ Index: binutils-2.45/bfd/elf64-x86-64.c
  	false)
  };
  
+@@ -2095,6 +2095,8 @@ elf_x86_64_convert_load_reloc (bfd *abfd
+       r = _bfd_final_link_relocate (howto, abfd, input_section,
+ 				    contents, irel->r_offset,
+ 				    relocation, raddend);
++      _bfd_clear_contents (howto, abfd, input_section,
++			   contents, irel->r_offset);
+       if (r == bfd_reloc_overflow)
+ 	return true;
+ 
+@@ -2204,6 +2206,8 @@ elf_x86_64_convert_load_reloc (bfd *abfd
+       r = _bfd_final_link_relocate (howto, abfd, input_section,
+ 				    contents, irel->r_offset,
+ 				    relocation, 0);
++      _bfd_clear_contents (howto, abfd, input_section,
++			   contents, irel->r_offset);
+       if (r == bfd_reloc_overflow)
+ 	return true;
+ 
+@@ -2317,6 +2321,8 @@ elf_x86_64_convert_load_reloc (bfd *abfd
+ 					    contents, irel->r_offset,
+ 					    relocation,
+ 					    raddend);
++	      _bfd_clear_contents (howto, abfd, input_section,
++				   contents, irel->r_offset);
+ 	      if (r == bfd_reloc_overflow)
+ 		return true;
+ 
+@@ -2415,6 +2421,8 @@ elf_x86_64_convert_load_reloc (bfd *abfd
+ 	  r = _bfd_final_link_relocate (howto, abfd, input_section,
+ 					contents, irel->r_offset,
+ 					relocation, 0);
++	  _bfd_clear_contents (howto, abfd, input_section,
++			       contents, irel->r_offset);
+ 	  if (r == bfd_reloc_overflow)
+ 	    return true;
+ 
 Index: binutils-2.45/gas/testsuite/gas/i386/rela.d
 ===================================================================
---- binutils-2.45.orig/gas/testsuite/gas/i386/rela.d	2025-07-27 01:00:00.000000000 +0200
+--- binutils-2.45.orig/gas/testsuite/gas/i386/rela.d	2025-10-21 18:02:42.645210812 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,13 +0,0 @@
 -#name: x86-64 rela relocs w/ non-zero relocated fields
@@ -228,7 +269,7 @@ Index: binutils-2.45/gas/testsuite/gas/i386/rela.d
 - 0+0 11 ?11 ?11 ?11 22 ?22 ?22 ?22 33 ?33 ?33 ?33 44 ?44 ?44 ?44 .*
 Index: binutils-2.45/gas/testsuite/gas/i386/rela.s
 ===================================================================
---- binutils-2.45.orig/gas/testsuite/gas/i386/rela.s	2025-07-27 01:00:00.000000000 +0200
+--- binutils-2.45.orig/gas/testsuite/gas/i386/rela.s	2025-10-21 18:02:42.645210812 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,14 +0,0 @@
 -# Note: This file is also used by an ld test case.
@@ -247,7 +288,7 @@ Index: binutils-2.45/gas/testsuite/gas/i386/rela.s
 -	.reloc q, BFD_RELOC_32, l
 Index: binutils-2.45/ld/testsuite/ld-x86-64/rela.d
 ===================================================================
---- binutils-2.45.orig/ld/testsuite/ld-x86-64/rela.d	2025-07-27 01:00:00.000000000 +0200
+--- binutils-2.45.orig/ld/testsuite/ld-x86-64/rela.d	2025-10-21 18:02:42.645210812 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,10 +0,0 @@
 -#name: x86-64 rela relocs w/ non-zero relocated fields
@@ -262,8 +303,8 @@ Index: binutils-2.45/ld/testsuite/ld-x86-64/rela.d
 - *[0-9a-f]*0 .8 ?.. ?.. ?.. 00 ?00 ?00 ?00 .0 ?.. ?.. ?.. 44 ?44 ?44 ?44 .*
 Index: binutils-2.45/ld/testsuite/ld-x86-64/x86-64.exp
 ===================================================================
---- binutils-2.45.orig/ld/testsuite/ld-x86-64/x86-64.exp	2025-10-14 15:59:55.172884281 +0200
-+++ binutils-2.45/ld/testsuite/ld-x86-64/x86-64.exp	2025-10-14 16:06:15.962329377 +0200
+--- binutils-2.45.orig/ld/testsuite/ld-x86-64/x86-64.exp	2025-10-21 18:02:59.867500986 +0200
++++ binutils-2.45/ld/testsuite/ld-x86-64/x86-64.exp	2025-10-21 18:13:03.092666336 +0200
 @@ -314,7 +314,6 @@ run_dump_test "apic"
  run_dump_test "pcrel8"
  run_dump_test "pcrel16"
@@ -287,10 +328,19 @@ Index: binutils-2.45/ld/testsuite/ld-x86-64/x86-64.exp
  run_dump_test "pr30787"
  run_dump_test "pr31047"
  run_dump_test "pr31047-x32"
+@@ -2335,7 +2334,7 @@ if { [check_compiler_available] } {
+ 	] \
+ 	[list \
+ 	    "Build mark-plt-2.so" \
+-	    "-shared -Wl,--no-as-needed,-z,mark-plt,-z,nopack-relative-relocs" \
++	    "-shared -Wl,--no-as-needed,-z,mark-plt" \
+ 	    "-fPIC" \
+ 	    { mark-plt-2.s } \
+ 	    {{readelf {-W --version-info} mark-plt-2.rd}} \
 Index: binutils-2.45/binutils/testsuite/lib/binutils-common.exp
 ===================================================================
---- binutils-2.45.orig/binutils/testsuite/lib/binutils-common.exp	2025-07-27 01:00:00.000000000 +0200
-+++ binutils-2.45/binutils/testsuite/lib/binutils-common.exp	2025-10-14 16:06:15.962329377 +0200
+--- binutils-2.45.orig/binutils/testsuite/lib/binutils-common.exp	2025-10-21 18:02:42.645210812 +0200
++++ binutils-2.45/binutils/testsuite/lib/binutils-common.exp	2025-10-21 18:04:39.439178842 +0200
 @@ -468,6 +468,8 @@ proc supports_persistent_section {} {
  
  # Whether a target support DT_RELR sections.
@@ -302,8 +352,8 @@ Index: binutils-2.45/binutils/testsuite/lib/binutils-common.exp
  	  || [istarget powerpc64*-*-*]
 Index: binutils-2.45/ld/emulparams/dt-relr.sh
 ===================================================================
---- binutils-2.45.orig/ld/emulparams/dt-relr.sh	2025-07-27 01:00:00.000000000 +0200
-+++ binutils-2.45/ld/emulparams/dt-relr.sh	2025-10-14 16:06:15.963329393 +0200
+--- binutils-2.45.orig/ld/emulparams/dt-relr.sh	2025-10-21 18:02:42.645210812 +0200
++++ binutils-2.45/ld/emulparams/dt-relr.sh	2025-10-21 18:04:39.439178842 +0200
 @@ -1,3 +1,8 @@
 +if false; then
 +    # on old codestreams we don't have the DT_RELR support in the dynamic
@@ -321,8 +371,8 @@ Index: binutils-2.45/ld/emulparams/dt-relr.sh
 +fi
 Index: binutils-2.45/ld/testsuite/ld-i386/i386.exp
 ===================================================================
---- binutils-2.45.orig/ld/testsuite/ld-i386/i386.exp	2025-10-14 15:54:33.615441756 +0200
-+++ binutils-2.45/ld/testsuite/ld-i386/i386.exp	2025-10-14 16:06:15.963329393 +0200
+--- binutils-2.45.orig/ld/testsuite/ld-i386/i386.exp	2025-10-21 18:02:42.645210812 +0200
++++ binutils-2.45/ld/testsuite/ld-i386/i386.exp	2025-10-21 18:04:39.439178842 +0200
 @@ -513,8 +513,8 @@ run_dump_test "pr27491-1c"
  run_dump_test "pr27491-2"
  run_dump_test "pr27491-3"
@@ -336,8 +386,8 @@ Index: binutils-2.45/ld/testsuite/ld-i386/i386.exp
  run_dump_test "pr30787"
 Index: binutils-2.45/ld/testsuite/ld-powerpc/powerpc.exp
 ===================================================================
---- binutils-2.45.orig/ld/testsuite/ld-powerpc/powerpc.exp	2025-07-27 01:00:00.000000000 +0200
-+++ binutils-2.45/ld/testsuite/ld-powerpc/powerpc.exp	2025-10-14 16:06:15.963329393 +0200
+--- binutils-2.45.orig/ld/testsuite/ld-powerpc/powerpc.exp	2025-10-21 18:02:42.645210812 +0200
++++ binutils-2.45/ld/testsuite/ld-powerpc/powerpc.exp	2025-10-21 18:04:39.439178842 +0200
 @@ -378,14 +378,14 @@ set ppc64elftests {
  	"-a64" {abs-reloc.s}
  	{{objdump {-sdr} abs-shared.d}
@@ -363,8 +413,8 @@ Index: binutils-2.45/ld/testsuite/ld-powerpc/powerpc.exp
  set ppceabitests {
 Index: binutils-2.45/gas/testsuite/gas/i386/x86-64.exp
 ===================================================================
---- binutils-2.45.orig/gas/testsuite/gas/i386/x86-64.exp	2025-07-27 01:00:00.000000000 +0200
-+++ binutils-2.45/gas/testsuite/gas/i386/x86-64.exp	2025-10-14 16:06:15.963329393 +0200
+--- binutils-2.45.orig/gas/testsuite/gas/i386/x86-64.exp	2025-10-21 18:02:42.645210812 +0200
++++ binutils-2.45/gas/testsuite/gas/i386/x86-64.exp	2025-10-21 18:04:39.439178842 +0200
 @@ -705,7 +705,6 @@ if [is_elf_format] then {
      run_dump_test "x86-64-tls"
      run_list_test "x86-64-inval-tls"
