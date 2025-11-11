@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov 11 10:17:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.11.0:
+  * Fixes
+    - fix: require ansible-core>=2.17.10 (#4835) @ssbarnea
+    - fix: ignore internal types false positives with
+      jinja[invalid] (#4823) @anusshukla
+    - fix: make repository key optional in galaxy.yml (#4798)
+      @rivv0
+    - fix: github action ref doesn't checkout that ref (#4774)
+      @rohun-apex
+    - fix: add set-environment and unset-environment in
+      executable_options for systemctl (#4785) @ziegenberg
+    - Fix typos (#4814) @jsf9k
+  * Maintenance
+    - chore: pre-commit autoupdate (#4834) @pre-commit-ci[bot]
+    - chore: Test cspell configuration (#4828) @alisonlhart
+    - chore(deps): update all dependencies (#4817) @renovate[bot]
+    - Add finalize workflow for secure sonarcloud checks (#4820)
+      @alisonlhart
+    - Update sonar-project.properties (#4815) @alisonlhart
+
+-------------------------------------------------------------------
 Thu Oct  9 05:10:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.9.2:
