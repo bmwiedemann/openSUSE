@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  9 00:55:44 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.7.29. Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.7.29>
+  * CVE-2024-25621 bsc#1253126
+  * CVE-2025-64329 bsc#1253132
+- Rebase patches:
+  * 0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
+
+-------------------------------------------------------------------
+Sat Jul 26 06:23:59 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.7.28. Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.7.28>
+
+-------------------------------------------------------------------
 Wed Apr  9 07:09:30 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.7.27. Upstream release notes:

@@ -1,7 +1,7 @@
 #
 # spec file for package containerd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,14 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 05044ec0a9a75232cad458027ca83437aae3f4da
-%define git_short   05044ec0
+%define git_version 442cb34bda9a6a0fed82a2ca7cade05c5c749582
+%define git_short   442cb34b
 
 %global provider_prefix github.com/containerd/containerd
 %global import_path %{provider_prefix}
 
 Name:           containerd
-Version:        1.7.27
+Version:        1.7.29
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
