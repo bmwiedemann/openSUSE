@@ -93,4 +93,13 @@
 - Clean up Python 2 remains.</comment>
     <requestid>1238137</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0c9af142e83cbc71d5a144c79d19cfb7</srcmd5>
+    <version>5.0.1</version>
+    <time>1762885126</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.1:
+  * Properly handle user and org names with symbols in them</comment>
+    <requestid>1316832</requestid>
+  </revision>
 </revisionlist>
