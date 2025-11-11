@@ -7,4 +7,6 @@
   <package>mvapich2-psm2</package>
   <package>mvapich3-ofi</package>
   <package>mvapich3-ucx</package>
+  <package>mvapich4-ofi</package>
+  <package>mvapich4-ucx</package>
 </multibuild>

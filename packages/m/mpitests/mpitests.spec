@@ -90,7 +90,7 @@ ExclusiveArch:  x86_64
 ExcludeArch:    ppc64
 %endif
 
-%if "%{flavor}" == "openmpi5"
+%if "%{flavor}" == "openmpi5" 
 %if %{sles_pre_16}
 # Disable openmpi5 builds for SLES < 16
 ExclusiveArch:  do_not_build

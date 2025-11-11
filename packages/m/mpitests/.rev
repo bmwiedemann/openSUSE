@@ -190,4 +190,12 @@
 - Disable 32b builds</comment>
     <requestid>1315292</requestid>
   </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>141d10a55799a50bbadf128691ab727e</srcmd5>
+    <version>3.2</version>
+    <time>1762885189</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable mpitests build for mvapich4</comment>
+    <requestid>1316687</requestid>
+  </revision>
 </revisionlist>

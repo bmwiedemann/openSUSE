@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov  9 12:35:42 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Enable mpitests build for mvapich4
+
+-------------------------------------------------------------------
 Fri Oct 31 18:37:34 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update IMB to 2021.10
