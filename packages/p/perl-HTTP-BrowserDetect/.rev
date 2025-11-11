@@ -88,4 +88,23 @@
     <comment></comment>
     <requestid>1235280</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f1ecee767fe142ea0c02da04aa11fb2d</srcmd5>
+    <version>3.450.0</version>
+    <time>1762885349</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.450.0 (3.45)
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+  3.45      2025-10-31 22:41:58Z
+      - Fix browser_version returning robot version for Chrome-based Googlebot
+        (GH#224) (Copilot)
+  3.44      2025-10-31 20:51:55Z
+      - Add Python-urllib robot detection (GH#223) (Copilot)
+  3.43      2025-10-31 19:56:37Z
+      - Fix webview detection false positives for Chrome 30+ on Android (GH#222)
+        (Copilot)
+  3.42      2025-10-29 03:27:34Z
+      - Add Blink engine detection for Chrome 38+ (GH#219) (Copilot)</comment>
+    <requestid>1317133</requestid>
+  </revision>
 </revisionlist>
