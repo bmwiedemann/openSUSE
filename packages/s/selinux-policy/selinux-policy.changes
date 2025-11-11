@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 14:20:46 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20251111:
+  * Allow snapper_sdbootutil_plugin_t manage unlabeled_t files,dirs,symlinks (bsc#1252993)
+  * Allow sshd_auth_t getopt/setopt on tcp_socket (bsc#1252992)
+
+-------------------------------------------------------------------
 Fri Nov  7 10:54:41 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Suppress dir-or-file-outside-snapshot until policy is properly transactional (bsc#1253046)

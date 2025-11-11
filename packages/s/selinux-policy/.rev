@@ -2196,4 +2196,12 @@ there will be 4 permissive avcs left regarding pcrlock, but those will be fixed 
     <comment>Suppress dir-or-file-outside-snapshot until policy is properly transactional (bsc#1253046)</comment>
     <requestid>1316417</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>349d931b2a6d8debf3155ed6bbdaaa57</srcmd5>
+    <version>20251111</version>
+    <time>1762885106</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>1317132</requestid>
+  </revision>
 </revisionlist>
