@@ -1,0 +1,290 @@
+From 7f15657c26c4e5e9fabc72f4da2d9a91353d5d3a Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Tue, 11 Nov 2025 08:46:20 +0100
+Subject: [PATCH] Fix tls and x509 modules for older cryptography
+ module (#737)
+
+---
+ salt/modules/tls.py  |  73 +++++++++++++++++-------
+ salt/modules/x509.py | 128 +++++++++++++++++++++++++++++++++++--------
+ 2 files changed, 158 insertions(+), 43 deletions(-)
+
+diff --git a/salt/modules/tls.py b/salt/modules/tls.py
+index 9d29bd1e9b..4d7db87f93 100644
+--- a/salt/modules/tls.py
++++ b/salt/modules/tls.py
+@@ -104,6 +104,7 @@ import logging
+ import math
+ import os
+ import re
++import sys
+ import time
+ from datetime import datetime
+ 
+@@ -1594,6 +1595,9 @@ def create_pkcs12(ca_name, CN, passphrase="", cacert_path=None, replace=False):
+ 
+         salt '*' tls.create_pkcs12 test localhost
+     """
++    # Necessary for OSes with older cryptography module
++    compat_mode = sys.version_info < (3,12)
++
+     set_ca_path(cacert_path)
+     p12_path = f"{cert_base_path()}/{ca_name}/certs/{CN}.p12"
+     ca_cert_path = f"{cert_base_path()}/{ca_name}/{ca_name}_ca_cert.crt"
+@@ -1605,7 +1609,12 @@ def create_pkcs12(ca_name, CN, passphrase="", cacert_path=None, replace=False):
+ 
+     try:
+         with salt.utils.files.fopen(ca_cert_path, "rb") as fhr:
+-            ca_cert = cryptography.x509.load_pem_x509_certificate(fhr.read())
++            if compat_mode:
++                ca_cert = OpenSSL.crypto.load_certificate(
++                    OpenSSL.crypto.FILETYPE_PEM, fhr.read()
++                )
++            else:
++                ca_cert = cryptography.x509.load_pem_x509_certificate(fhr.read())
+     except OSError:
+         return 'There is no CA named "{}"'.format(ca_name)
+     except ValueError as e:
+@@ -1613,34 +1622,58 @@ def create_pkcs12(ca_name, CN, passphrase="", cacert_path=None, replace=False):
+ 
+     try:
+         with salt.utils.files.fopen(cert_path, "rb") as fhr:
+-            cert = cryptography.x509.load_pem_x509_certificate(fhr.read())
++            if compat_mode:
++                cert = OpenSSL.crypto.load_certificate(
++                    OpenSSL.crypto.FILETYPE_PEM, fhr.read()
++                )
++            else:
++                cert = cryptography.x509.load_pem_x509_certificate(fhr.read())
+         with salt.utils.files.fopen(priv_key_path, "rb") as fhr:
+-            key = cryptography_serialization.load_pem_private_key(
+-                fhr.read(),
+-                password=None,
+-            )
++            if compat_mode:
++                key = OpenSSL.crypto.load_privatekey(
++                    OpenSSL.crypto.FILETYPE_PEM, fhr.read()
++                )
++            else:
++                key = cryptography_serialization.load_pem_private_key(
++                    fhr.read(),
++                    password=None,
++                )
+     except OSError:
+         return 'There is no certificate that matches the CN "{}"'.format(CN)
+     except ValueError as e:
+         return f'Could not load certificate {cert_path}: {e}'
+ 
+-    if passphrase:
+-        encryption_algorithm = cryptography_serialization.BestAvailableEncryption(
+-            salt.utils.stringutils.to_bytes(passphrase)
+-        )
++    if compat_mode:
++        pkcs12 = OpenSSL.crypto.PKCS12()
++
++        pkcs12.set_certificate(cert)
++        pkcs12.set_ca_certificates([ca_cert])
++        pkcs12.set_privatekey(key)
++
++        with salt.utils.files.fopen(
++            "{}/{}/certs/{}.p12".format(cert_base_path(), ca_name, CN), "wb"
++        ) as ofile:
++            ofile.write(
++                pkcs12.export(passphrase=salt.utils.stringutils.to_bytes(passphrase))
++            )
+     else:
+-        encryption_algorithm = cryptography_serialization.NoEncryption()
++        if passphrase:
++            encryption_algorithm = cryptography_serialization.BestAvailableEncryption(
++                salt.utils.stringutils.to_bytes(passphrase)
++            )
++        else:
++            encryption_algorithm = cryptography_serialization.NoEncryption()
+ 
+-    pkcs12 = cryptography_pkcs12.serialize_key_and_certificates(
+-        name=salt.utils.stringutils.to_bytes(CN),
+-        key=key,
+-        cert=cert,
+-        cas=[ca_cert],
+-        encryption_algorithm=encryption_algorithm,
+-    )
++        pkcs12 = cryptography_pkcs12.serialize_key_and_certificates(
++            name=salt.utils.stringutils.to_bytes(CN),
++            key=key,
++            cert=cert,
++            cas=[ca_cert],
++            encryption_algorithm=encryption_algorithm,
++        )
+ 
+-    with salt.utils.files.fopen(p12_path, "wb") as ofile:
+-        ofile.write(pkcs12)
++        with salt.utils.files.fopen(p12_path, "wb") as ofile:
++            ofile.write(pkcs12)
+ 
+     return 'Created PKCS#12 Certificate for "{0}": "{1}/{2}/certs/{0}.p12"'.format(
+         CN,
+diff --git a/salt/modules/x509.py b/salt/modules/x509.py
+index 164541fc76..373e394856 100644
+--- a/salt/modules/x509.py
++++ b/salt/modules/x509.py
+@@ -32,16 +32,20 @@ import tempfile
+ 
+ import salt.exceptions
+ import salt.utils.data
+-import salt.utils.dictupdate
+ import salt.utils.files
+ import salt.utils.path
+ import salt.utils.platform
+ import salt.utils.stringutils
+ import salt.utils.versions
+-import salt.utils.x509 as x509util
+ from salt.state import STATE_INTERNAL_KEYWORDS as _STATE_INTERNAL_KEYWORDS
+ from salt.utils.odict import OrderedDict
+ 
++# Necessary for OSes with older cryptography module
++COMPAT_MODE = sys.version_info < (3,12)
++if not COMPAT_MODE:
++    import salt.utils.dictupdate
++    import salt.utils.x509 as x509util
++
+ try:
+     import M2Crypto
+ 
+@@ -988,35 +992,113 @@ def create_crl(
+ 
+     if revoked is None:
+         revoked = []
++    if COMPAT_MODE:
++        crl = OpenSSL.crypto.CRL()
++        for rev_item in revoked:
++            if "certificate" in rev_item:
++                rev_cert = read_certificate(rev_item["certificate"])
++                rev_item["serial_number"] = rev_cert["Serial Number"]
++                rev_item["not_after"] = rev_cert["Not After"]
+ 
+-    for rev_item in revoked:
+-        if "reason" in rev_item:
+-            salt.utils.dictupdate.set_dict_key_value(
+-                rev_item, "extensions:CRLReason", rev_item["reason"]
++            serial_number = rev_item["serial_number"].replace(":", "")
++            # OpenSSL bindings requires this to be a non-unicode string
++            serial_number = salt.utils.stringutils.to_bytes(serial_number)
++
++            if "not_after" in rev_item and not include_expired:
++                not_after = datetime.datetime.strptime(
++                    rev_item["not_after"], "%Y-%m-%d %H:%M:%S"
++                )
++                if datetime.datetime.now() > not_after:
++                    continue
++
++            if "revocation_date" not in rev_item:
++                rev_item["revocation_date"] = datetime.datetime.now().strftime(
++                    "%Y-%m-%d %H:%M:%S"
++                )
++
++            rev_date = datetime.datetime.strptime(
++                rev_item["revocation_date"], "%Y-%m-%d %H:%M:%S"
+             )
++            rev_date = rev_date.strftime("%Y%m%d%H%M%SZ")
++            rev_date = salt.utils.stringutils.to_bytes(rev_date)
+ 
+-    builder, private_key_obj = x509util.build_crl(
+-        signing_private_key=signing_private_key,
+-        signing_private_key_passphrase=signing_private_key_passphrase,
+-        include_expired=include_expired,
+-        revoked=revoked,
+-        signing_cert=signing_cert,
+-        days_valid=days_valid,
+-    )
++            rev = OpenSSL.crypto.Revoked()
++            rev.set_serial(salt.utils.stringutils.to_bytes(serial_number))
++            rev.set_rev_date(salt.utils.stringutils.to_bytes(rev_date))
++
++            if "reason" in rev_item:
++                # Same here for OpenSSL bindings and non-unicode strings
++                reason = salt.utils.stringutils.to_bytes(rev_item["reason"])
++                rev.set_reason(reason)
++
++            crl.add_revoked(rev)
++
++        signing_cert = _text_or_file(signing_cert)
++        cert = OpenSSL.crypto.load_certificate(
++            OpenSSL.crypto.FILETYPE_PEM, get_pem_entry(signing_cert, pem_type="CERTIFICATE")
++        )
++        signing_private_key = _get_private_key_obj(
++            signing_private_key, passphrase=signing_private_key_passphrase
++        ).as_pem(cipher=None)
++        key = OpenSSL.crypto.load_privatekey(
++            OpenSSL.crypto.FILETYPE_PEM, get_pem_entry(signing_private_key)
++        )
++
++        export_kwargs = {
++            "cert": cert,
++            "key": key,
++            "type": OpenSSL.crypto.FILETYPE_PEM,
++            "days": days_valid,
++        }
++        if digest:
++            export_kwargs["digest"] = salt.utils.stringutils.to_bytes(digest)
++        else:
++            log.warning("No digest specified. The default md5 digest will be used.")
++
++        try:
++            crltext = crl.export(**export_kwargs)
++        except (TypeError, ValueError):
++            log.warning(
++                "Error signing crl with specified digest. Are you using "
++                "pyopenssl 0.15 or newer? The default md5 digest will be used."
++            )
++            export_kwargs.pop("digest", None)
++            crltext = crl.export(**export_kwargs)
++
++        if text:
++            return crltext
++
++        return write_pem(text=crltext, path=path, pem_type="X509 CRL")
+ 
+-    if digest:
+-        hashing_algorithm = x509util.get_hashing_algorithm(digest)
+     else:
+-        log.warning("No digest specified. The default md5 digest will be used.")
+-        hashing_algorithm = x509util.get_hashing_algorithm("MD5")
++        for rev_item in revoked:
++            if "reason" in rev_item:
++                salt.utils.dictupdate.set_dict_key_value(
++                    rev_item, "extensions:CRLReason", rev_item["reason"]
++                )
+ 
+-    crl = builder.sign(private_key_obj, algorithm=hashing_algorithm)
+-    crl_bytes = crl.public_bytes(x509util.serialization.Encoding.PEM)
++        builder, private_key_obj = x509util.build_crl(
++            signing_private_key=signing_private_key,
++            signing_private_key_passphrase=signing_private_key_passphrase,
++            include_expired=include_expired,
++            revoked=revoked,
++            signing_cert=signing_cert,
++            days_valid=days_valid,
++        )
+ 
+-    if text:
+-        return crl_bytes.decode()
++        if digest:
++            hashing_algorithm = x509util.get_hashing_algorithm(digest)
++        else:
++            log.warning("No digest specified. The default md5 digest will be used.")
++            hashing_algorithm = x509util.get_hashing_algorithm("MD5")
+ 
+-    return write_pem(text=crl_bytes, path=path, pem_type="X509 CRL")
++        crl = builder.sign(private_key_obj, algorithm=hashing_algorithm)
++        crl_bytes = crl.public_bytes(x509util.serialization.Encoding.PEM)
++
++        if text:
++            return crl_bytes.decode()
++
++        return write_pem(text=crl_bytes, path=path, pem_type="X509 CRL")
+ 
+ 
+ def sign_remote_certificate(argdic, **kwargs):
+-- 
+2.51.1
+

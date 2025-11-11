@@ -587,6 +587,10 @@ Patch183:       allow-libgit2-to-guess-sysdir-homedir-successfully-b.patch
 Patch184:       use-versioned-python-interpreter-for-salt-ssh.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/735
 Patch185:       do-not-break-signature-verification-on-latest-m2cryp.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/736
+Patch186:       fix-salt-for-python-3.11.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/737
+Patch187:       fix-tls-and-x509-modules-for-older-cryptography-modu.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
@@ -790,6 +794,7 @@ Requires:       %{python_module distro}
 Requires:       %{python_module looseversion}
 Requires:       %{python_module packaging}
 Requires:       %{python_module contextvars}
+Requires:       %{python_module cryptography}
 %if 0%{?suse_version}
 # required for zypper.py
 Requires:       %{python_module rpm}
@@ -807,6 +812,7 @@ Requires:       python-distro
 Requires:       python-looseversion
 Requires:       python-packaging
 Requires:       python-contextvars
+Requires:       python-cryptography
 %if 0%{?suse_version}
 # required for zypper.py
 Requires:       python-rpm
@@ -847,10 +853,17 @@ Recommends:     %{python_module passlib}
 Recommends:     python-passlib
 %endif
 
+%if 0%{?suse_version} >= 1600
+Requires:       %{python_module tornado}
+%if 0%{?python3_version_nodots} > 312
+Requires:       %{python_module legacy-cgi}
+%endif
+%else
 %if 0%{?singlespec_compat}
 Provides:       bundled(%{python_module tornado}) = 4.5.3
 %else
 Provides:       bundled(python-tornado) = 4.5.3
+%endif
 %endif
 
 Provides:       %{name}-call = %{version}-%{release}

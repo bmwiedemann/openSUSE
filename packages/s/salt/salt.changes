@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 11 08:02:12 UTC 2025 - Marek Czernek <marek.czernek@suse.com>
+
+- Fix TLS and x509 modules for OSes with older cryptography module
+- Require python-legacy-cgi only for Python > 3.12
+
+- Added:
+  * fix-tls-and-x509-modules-for-older-cryptography-modu.patch
+
+-------------------------------------------------------------------
+Mon Nov 10 09:46:28 UTC 2025 - Marek Czernek <marek.czernek@suse.com>
+
+- Builds with py >=3.13 require python-legacy-cgi
+
+-------------------------------------------------------------------
+Fri Nov  7 16:36:10 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix Salt for Python > 3.11 (bsc#1252285) (bsc#1252244)
+  * Use external tornado on Python > 3.11
+  * Make tls and x509 to use python-cryptography
+  * Remove usage of spwd
+
+- Added:
+  * fix-salt-for-python-3.11.patch
+
+-------------------------------------------------------------------
 Wed Oct 29 10:35:12 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix payload signature verification on Tumbleweed (bsc#1251776)
