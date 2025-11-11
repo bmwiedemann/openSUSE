@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 10 10:38:41 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.243.0:
+  * container_engine_t: add necessary permissions to ssh in userns container
+
+-------------------------------------------------------------------
 Mon Sep 15 06:15:58 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.242.0:
