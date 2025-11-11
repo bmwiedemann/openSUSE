@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Nov  8 17:08:46 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.76.0:
+  * Core:
+  * Prioritize system CA over bundled CA
+  * event_engine: Introduce a event_engine_poller_for_python
+    experiment
+  * metrics: add grpc.lb.backend_service label
+- Changes from version 1.75.0:
+  * Core:
+  * Spiffe Verification support
+  * python: Add Typeguard to AIO stack in tests
+  * pick_first: fix bug that caused us to stop attempting to
+    connect
+  * C++: implement retry metrics
+- Bump so version in shared lib package in keeping with upstream.
+- Minor rebase of telemetry.patch to apply cleanly against updated
+  version.
+
+-------------------------------------------------------------------
 Sun Jul 27 08:00:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.74.0:

@@ -680,4 +680,12 @@ fixed in that other package, after which it will trickle down.</comment>
     <comment>- Update to version 1.74.0:</comment>
     <requestid>1295957</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>66a05b4eef2e891a676c5f870aa1d1d9</srcmd5>
+    <version>1.76.0</version>
+    <time>1762885112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.76.0:</comment>
+    <requestid>1316610</requestid>
+  </revision>
 </revisionlist>

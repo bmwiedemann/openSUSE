@@ -11,11 +11,11 @@ happened since about 1.63 (last known good 1.62.x)
  CMakeLists.txt |    2 ++
  1 file changed, 2 insertions(+)
 
-Index: grpc-1.74.0/CMakeLists.txt
+Index: grpc-1.76.0/CMakeLists.txt
 ===================================================================
---- grpc-1.74.0.orig/CMakeLists.txt
-+++ grpc-1.74.0/CMakeLists.txt
-@@ -4410,6 +4410,7 @@ add_library(upb_reflection_lib
+--- grpc-1.76.0.orig/CMakeLists.txt
++++ grpc-1.76.0/CMakeLists.txt
+@@ -4479,6 +4479,7 @@ add_library(upb_reflection_lib
    third_party/upb/upb/reflection/method_def.c
    third_party/upb/upb/reflection/oneof_def.c
    third_party/upb/upb/reflection/service_def.c
@@ -23,7 +23,7 @@ Index: grpc-1.74.0/CMakeLists.txt
  )
  
  target_compile_features(upb_reflection_lib PUBLIC cxx_std_17)
-@@ -4464,6 +4465,7 @@ endif()
+@@ -4533,6 +4534,7 @@ endif()
  add_library(upb_textformat_lib ${_gRPC_STATIC_WIN32}
    third_party/upb/upb/text/encode.c
    third_party/upb/upb/text/internal/encode.c
