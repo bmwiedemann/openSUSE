@@ -18,9 +18,9 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           sdbootutil
-Version:        1+git20251107.49e9025
+Version:        1+git20251111.611edd1
 Release:        0
-Summary:        bootctl wrapper for BLS boot loaders
+Summary:        Bootctl wrapper for BLS boot loaders
 License:        MIT
 URL:            https://github.com/openSUSE/sdbootutil
 Source:         %{name}-%{version}.tar
@@ -58,7 +58,7 @@ Implements also the life cycle of a full disk encryption installation,
 based on systemd.
 
 %package snapper
-Summary:        plugin script for snapper
+Summary:        Plugin script for snapper
 Requires:       %{name} = %{version}
 Requires:       btrfsprogs
 Requires:       snapper
@@ -68,7 +68,7 @@ BuildArch:      noarch
 Plugin scripts for snapper to handle BLS config files
 
 %package tukit
-Summary:        plugin script for tukit
+Summary:        Plugin script for tukit
 Requires:       %{name} = %{version}
 Requires:       tukit
 BuildArch:      noarch
@@ -165,16 +165,22 @@ install -D -m 644 jeos-firstboot-enroll %{buildroot}%{_datadir}/jeos-firstboot/m
 
 # Snapper
 install -D -m 755 10-%{name}.snapper %{buildroot}%{_prefix}/lib/snapper/plugins/10-%{name}.snapper
+install -D -m 644 snapper-override.conf \
+	%{buildroot}%{_prefix}/lib/systemd/system/snapperd.service.d/sdbootutil-override.conf
+for service in backup boot cleanup timeline; do
+	install -D -m 644 snapper-override.conf \
+		%{buildroot}%{_prefix}/lib/systemd/system/snapper-"$service".service.d/sdbootutil-override.conf
+done
 
 # Tukit
 install -D -m 755 10-%{name}.tukit %{buildroot}%{_prefix}/lib/tukit/plugins/10-%{name}.tukit
-install -D -m 755 10-%{name}.tukit.conf %{buildroot}%{_prefix}%{_sysconfdir}/tukit.conf.d/10-%{name}.conf
+install -D -m 644 10-%{name}.tukit.conf %{buildroot}%{_prefix}%{_sysconfdir}/tukit.conf.d/10-%{name}.conf
 
 # kernel-install
 install -D -m 755 50-%{name}.install %{buildroot}%{_prefix}/lib/kernel/install.d/50-%{name}.install
 
 # Bash completions
-install -D -m 755 completions/bash_sdbootutil %{buildroot}%{_datadir}/bash-completion/completions/sdbootutil
+install -D -m 644 completions/bash_sdbootutil %{buildroot}%{_datadir}/bash-completion/completions/sdbootutil
 
 # Dracut module
 install -D -m 755 module-setup.sh %{buildroot}%{_prefix}/lib/dracut/modules.d/50measure-pcr/module-setup.sh
@@ -185,7 +191,7 @@ install -D -m 644 measure-pcr-validator.service %{buildroot}/%{_prefix}/lib/drac
 install -d -m 700 %{buildroot}%{_sharedstatedir}/%{name}
 
 # tmpfiles
-install -D -m 755 kernel-install-%{name}.conf \
+install -D -m 644 kernel-install-%{name}.conf \
 	%{buildroot}%{_prefix}/lib/tmpfiles.d/kernel-install-%{name}.conf
 
 %transfiletriggerin -- %{_prefix}/lib/systemd/boot/efi %{_datadir}/grub2/%{_build_arch}-efi %{_datadir}/efi/%{_build_arch}
@@ -251,6 +257,16 @@ fi
 %dir %{_prefix}/lib/snapper
 %dir %{_prefix}/lib/snapper/plugins
 %{_prefix}/lib/snapper/plugins/*
+%dir %{_unitdir}/snapperd.service.d
+%{_unitdir}/snapperd.service.d/sdbootutil-override.conf
+%dir %{_unitdir}/snapper-backup.service.d
+%{_unitdir}/snapper-backup.service.d/sdbootutil-override.conf
+%dir %{_unitdir}/snapper-boot.service.d
+%{_unitdir}/snapper-boot.service.d/sdbootutil-override.conf
+%dir %{_unitdir}/snapper-cleanup.service.d
+%{_unitdir}/snapper-cleanup.service.d/sdbootutil-override.conf
+%dir %{_unitdir}/snapper-timeline.service.d
+%{_unitdir}/snapper-timeline.service.d/sdbootutil-override.conf
 
 %files tukit
 %dir %{_prefix}/lib/tukit
