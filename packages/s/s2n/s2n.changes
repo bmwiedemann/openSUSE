@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Nov  5 14:07:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.6.0
+  * docs: Small doc changes for KTLS (#5521)
+  * ci: install missing rust component for gitthub action workflows (#5528)
+  * refactor(aws-kms-tls-auth): add hmac based psk derivation (#5519)
+  * chore: bindings release 0.3.27 (#5526)
+  * fix(usage-guide): Update book.toml for mdbook 0.5 release (#5535)
+  * bindings(rust): bump extended crates MSRV to 1.72.0 (#5534)
+  * feat(bindings): expose cert validation callback (#5357)
+  * chore: bindings release 0.3.28 (#5540)
+  * chore: add new team member (#5542)
+  * fix: validate protocol version during connection deserialization (#5523)
+  * chore(bindings): revert dependency pins (#5544)
+  * refactor(aws-kms-tls-auth): psk provider using HMAC psks (#5530)
+  * chore: update bindgen version to v0.69.0 (#5396)
+  * refactor 1/2: Fix security policy version in tests to numbered string (#5549)
+  * refactor: add psk receiver (#5552)
+  * build(deps): update rtshark requirement from 3.1.0 to 4.0.0 in /tests/pcap
+    in the all-cargo-updates group across 1 directory (#5555)
+  * fix(aws-kms-tls-auth): supress logging & version bump (#5554)
+  * refactor 2/2: Fix security policy version in tests to numbered string (#5553)
+  * fix(test): Reduce s2n_security_policies_test duration (#5558)
+  * docs: update nix integration test instructions for uvinteg function (#5550)
+  * build(deps): bump the all-gha-updates group across 1 directory with 4 updates (#5548)
+  * build(deps): update zeroize requirement from =1.7.0 to =1.8.2
+    in /bindings/rust/extended (#5537)
+  * build(deps): update regex requirement from =1.9.6 to =1.12.1
+    in /bindings/rust/extended (#5556)
+  * feat: Improve supported cipher suites in RFC9151 policy (#5559)
+  * ci: pin to older kissat version to unblock CBMC (#5581)
+  * fix: update test broken by Openssl dhe generation change (#5580)
+  * feat: output utility for security policy (#5502)
+  * feat: add PQ only policy support (#5545)
+  * fix: update test_pq_only policy snapshot (#5583)
+  * refactor: Adds tls13 ciphersuites to default/default_fips policy (#5560)
+  * build(deps): bump the all-gha-updates group in /.github/workflows
+    with 2 updates (#5585)
+  * ci: scope down GitHub Token permissions (#5570)
+
+-------------------------------------------------------------------
 Fri Sep 26 06:39:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.27
