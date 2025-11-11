@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 10:34:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.1:
+  No CLI-related changes
+  * Fix XR circuit breaker to account for double token consumption
+
+-------------------------------------------------------------------
 Thu Nov 06 08:36:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.0:
