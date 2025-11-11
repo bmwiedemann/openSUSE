@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 11 12:30:12 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 2.0.9
+  * [AMD]
+    - Adding Ryzen Z2 A and Ryzen AI Z2 Extreme
+    - [Turin][Dense] Complete the EPYC Embedded 9005 Series
+    - Adding the Ryzen 5 5500X3D processor
+    - Complete the Ryzen 8000 Series
+    - [Zen5][SHP] Introducing the Shimada Peak architecture
+    - [Family 15h] Provides Package voltage from Core aggregation
+  * [Intel]
+    - [Skylake/X] Provides Package voltage from Core aggregation
+  * [x86_64]
+    - [Virtualization] Initialized DCU_Mask bitmask
+  * [aarch64]
+    - Pass explicit variable-immediate type to fix assembly
+  * [Build]
+    - [x86_64] Fedora v34 api fix detecting RHEL MINOR 99
+    - [Kernel][aarch64] Set mcelsius based on thermal_zone_get_temp()
+    - [Kernel] Preparing for the impacts of kernel version 6.18
+
+-------------------------------------------------------------------
 Wed Aug  6 13:03:56 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - added fix-leap16-compilation.patch to fix compilation on x86_64 Leap 16.0 
