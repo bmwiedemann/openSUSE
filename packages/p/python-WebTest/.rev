@@ -397,4 +397,20 @@
   * Ensure BeautifulSoup 4.13+ compatibility</comment>
     <requestid>1290717</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>5e38e230504fb0daff2e8c2956bf66c8</srcmd5>
+    <version>3.0.7</version>
+    <time>1762885120</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.7:
+  * Response.html is now a cached property to improve form
+    parsing performance
+  * Fix a bug that inputs outside of a &lt;form&gt; tag were considered
+    belonging to that form because they had a HTML representation
+    identical to some input inside that &lt;form&gt;.
+  * Strip &lt;option&gt; text.
+  * Detect form fields outside of &lt;form&gt; tag associated via HTML5
+    form attribute.</comment>
+    <requestid>1316808</requestid>
+  </revision>
 </revisionlist>

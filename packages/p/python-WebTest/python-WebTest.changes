@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:09:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.7:
+  * Response.html is now a cached property to improve form
+    parsing performance
+  * Fix a bug that inputs outside of a <form> tag were considered
+    belonging to that form because they had a HTML representation
+    identical to some input inside that <form>.
+  * Strip <option> text.
+  * Detect form fields outside of <form> tag associated via HTML5
+    form attribute.
+
+-------------------------------------------------------------------
 Fri Jul  4 16:26:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.4:
