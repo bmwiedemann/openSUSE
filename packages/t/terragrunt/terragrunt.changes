@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue Nov 11 10:45:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.5:
+  * Experiments Updated
+    - The filter-flag experiment now supports --filter in stack
+      generate
+      The --filter flag can now be used in the stack generate
+      command, and any command that performs stack generation, e.g.
+      run --all (remember that you must use the filter-flag
+      experiment to try this).
+      The --filter flag works in a slightly unique way when used to
+      control stack generation in that it needs to be explicitly
+      restricted to stacks for it to impact stack generation using
+      the type=stack attribute filter.
+      e.g.
+
+        # Supported: Only generate the stacks that match the
+        # filter, as we are explicitly indicating that we are
+        # targeting stacks.
+        terragrunt stack generate --filter 'name=prod | type=stack'
+
+        # Not supported: This filter will be ignored, as we are not
+        # explicitly indicating that we are targeting stacks.
+        terragrunt stack generate --filter 'name=prod'  # This will not work
+
+      The reason for this is that stack generation can also be done
+      automatically as part of other commands, like run, and thus
+      we need to make it clear that we’re trying to control stack
+      generation rather than run behavior.
+
+        # This will run any unit named 'vpc'
+        terragrunt run --all --filter 'vpc' -- plan
+
+        # This will run any unit named 'vpc', and prevent stack
+        # generation in any stack not named 'dev' (including any
+        # stacks named 'vpc')
+        terragrunt stack run --filter 'vpc' --filter 'name=dev | type=stack' -- apply
+
+      For more information, see the filter feature documentation
+      https://terragrunt.gruntwork.io/docs/features/filter/#stack-generate
+  * What's Changed
+    - docs: Documenting `--filter` for `stack generate` (#5084)
+    - feat: Adding support for `--filter` in `stack generate`
+      (#5073)
+
+-------------------------------------------------------------------
+Mon Nov 10 16:31:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.4:
+  * Updated Experiments
+    - The filter-flag experiment now supports graph expressions
+      The --filter flag now supports usage of graph expressions,
+      allowing users to filter based on the dependency relationship
+      of units discovered by Terragrunt (remember that you must use
+      the filter-flag experiment to try this).
+
+      e.g.
+
+        # Find 'service' and everything it depends on
+        terragrunt find --filter 'service...'
+
+        # Find 'vpc' and everything that depends on it
+        terragrunt find --filter '...vpc'
+
+        # Find 'db' and its complete dependency graph
+        terragrunt find --filter '...db...'
+
+        # Find all dependents of 'vpc' but exclude 'vpc' itself
+        terragrunt find --filter '...^vpc'
+
+      You can learn more about graph-based filtering in the filter
+      feature documentation.
+  * What's Changed
+    - docs: Documenting filter graph expressions (#5050)
+    - fix: Avoiding panic on missing `if_exists` (#5072)
+    - feat: Adding support for graph expressions in `--filter`
+      (#5049)
+    - chore: Adding Travis as a code owner (#5067)
+    - feat: Integrating filters into discovery (#5034)
+    - chore: Refactor direct access of `run` command flags to
+      access in `shared` package (#5062)
+    - bug: discovery parsing errors handling (#5037)
+    - chore: Refactor logic for `run` into dedicated internal
+      package (#5060)
+
+-------------------------------------------------------------------
 Thu Nov 06 06:20:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.93.3:
