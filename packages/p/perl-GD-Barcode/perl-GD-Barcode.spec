@@ -18,10 +18,10 @@
 
 %define cpan_name GD-Barcode
 Name:           perl-GD-Barcode
-Version:        2.10.0
+Version:        2.20.0
 Release:        0
-# 2.01 -> normalize -> 2.10.0
-%define cpan_version 2.01
+# 2.02 -> normalize -> 2.20.0
+%define cpan_version 2.02
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Create barcode image with GD
 URL:            https://metacpan.org/release/%{cpan_name}

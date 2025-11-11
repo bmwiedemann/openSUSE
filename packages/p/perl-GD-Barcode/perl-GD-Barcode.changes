@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 26 05:31:04 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.20.0 (2.02)
+   see /usr/share/doc/packages/perl-GD-Barcode/Changes
+
+  2.02 2025-10-25
+  	- Fix missing import in GD::Barcode::QRCode, reported by
+  	  vslavof-lab
+
+-------------------------------------------------------------------
 Tue Aug 26 13:56:07 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.10.0 (2.01)

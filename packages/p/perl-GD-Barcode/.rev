@@ -144,4 +144,16 @@
             depencendy on GD, reported by eserte</comment>
     <requestid>1309344</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a212f33f7abbc34b8a05bbd2cbfd8a6f</srcmd5>
+    <version>2.20.0</version>
+    <time>1762885351</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.20.0 (2.02)
+   see /usr/share/doc/packages/perl-GD-Barcode/Changes
+  2.02 2025-10-25
+  	- Fix missing import in GD::Barcode::QRCode, reported by
+  	  vslavof-lab</comment>
+    <requestid>1317139</requestid>
+  </revision>
 </revisionlist>
