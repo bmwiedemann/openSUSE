@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 11 13:58:09 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1762780626.92a68246:
+  * Fix check in git_clone for dirty git dir
+  * Prevent `t/24-worker-webui-connection.t` from running into timeout
+  * Be explicit about certain aspects of archiving in the documentation
+  * Fix sporadic failures in `t/ui/10-tests_overview.t`
+  * Adapt os-autoinst-scripts reference after rename
+  * Properly conclude scheduling if there are no jobs
+
+-------------------------------------------------------------------
 Tue Nov 04 01:24:33 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1762193001.2f6e71ca:
