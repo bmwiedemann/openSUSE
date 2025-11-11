@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 11 10:19:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.11.0:
+  * Maintenance
+    - chore(deps): update all dependencies (#543) @renovate[bot]
+    - chore(deps): update all dependencies (#542) @renovate[bot]
+    - chore(deps): update all dependencies (#540) @renovate[bot]
+    - chore(deps): update all dependencies (#539) @renovate[bot]
+    - Add finalize workflow for secure sonarcloud checks (#538)
+      @alisonlhart
+    - Update sonar-project.properties configuration (#536)
+      @alisonlhart
+    - chore(deps): update all dependencies (#537) @renovate[bot]
+    - chore: tell uv to use unreleased ansible-core when running
+      with py314 (#535) @ssbarnea
+    - [pre-commit.ci] pre-commit autoupdate (#534)
+      @pre-commit-ci[bot]
+
+-------------------------------------------------------------------
 Tue Oct  7 04:56:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.8.2:

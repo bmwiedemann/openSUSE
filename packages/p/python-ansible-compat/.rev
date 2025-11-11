@@ -339,4 +339,12 @@ fix build
     <comment></comment>
     <requestid>1309425</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e9a31ccd710d87848e900f9549b46070</srcmd5>
+    <version>25.11.0</version>
+    <time>1762885289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1317071</requestid>
+  </revision>
 </revisionlist>
