@@ -627,4 +627,12 @@
   - Refresh python-google-auth-no-mock.patch</comment>
     <requestid>1315328</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>05ee10753511ff844b1fad123d980d71</srcmd5>
+    <version>2.43.0</version>
+    <time>1762885178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1316970</requestid>
+  </revision>
 </revisionlist>
