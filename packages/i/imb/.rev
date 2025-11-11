@@ -179,4 +179,12 @@
   - Bug fixes</comment>
     <requestid>1315290</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ec1fd7f5a806416663e7019032436213</srcmd5>
+    <version>2021.10</version>
+    <time>1762885191</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mvapich[34] flavors</comment>
+    <requestid>1316689</requestid>
+  </revision>
 </revisionlist>

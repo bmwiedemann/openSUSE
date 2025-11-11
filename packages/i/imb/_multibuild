@@ -3,4 +3,8 @@
   <package>openmpi5</package>
   <package>mpich</package>
   <package>mvapich2</package>
+  <package>mvapich3-ucx</package>
+  <package>mvapich3-ofi</package>
+  <package>mvapich4-ucx</package>
+  <package>mvapich4-ofi</package>
 </multibuild>

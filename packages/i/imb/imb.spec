@@ -27,27 +27,20 @@
 ExclusiveArch:  do_not_build
 %endif
 
-%if "%{flavor}" == "mvapich2"
-%global mpi_flavor mvapich2
-%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
-%endif
-
-%if "%{flavor}" == "mpich"
-%global mpi_flavor mpich
-%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
-%endif
-
-%if "%{flavor}" == "openmpi4"
+%if "%{flavor}" == "openmpi4" 
 %global mpi_flavor openmpi
 %define mpi_vers 4
 %define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
-%endif
-
+%else
 %if "%{flavor}" == "openmpi5"
 %global mpi_flavor openmpi
 %define mpi_vers 5
 %define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
-ExcludeArch:    %{ix86} %{arm}
+%else
+# Anything but openmpi[45]
+%global mpi_flavor %{flavor}
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
 %endif
 
 %define p_bindir /usr/%_lib/mpi/gcc/%{flavor}/bin
@@ -72,6 +65,8 @@ BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 Obsoletes:      imb < %{version}
+# Do not bother with 32b versions.
+ExcludeArch:    %{ix86} %{arm}
 
 %description
 The Intel MPI Benchmarks (IMB) perform a set of MPI performance
