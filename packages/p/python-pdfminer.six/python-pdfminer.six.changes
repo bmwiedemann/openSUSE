@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 10:24:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 20251107 (CVE-2025-64512, bsc#1253228)
+  * Fixed arbitrary code execution when loading pickle cmaps
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Mon Oct 13 14:02:09 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 20250506:

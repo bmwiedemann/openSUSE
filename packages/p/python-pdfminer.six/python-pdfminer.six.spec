@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdfminer.six
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,14 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pdfminer.six
-Version:        20250506
+Version:        20251107
 Release:        0
 Summary:        PDF parser and analyzer
 License:        MIT
@@ -36,11 +41,16 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-charset-normalizer >= 2.0.0
 Requires:       python-cryptography >= 36.0.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Provides:       python-pdfminer3k = %{version}
 Obsoletes:      python-pdfminer3k < %{version}
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -53,7 +63,7 @@ the exact location, font or color of the text.
 %prep
 %autosetup -p1 -n pdfminer.six-%{version}
 sed -i -e '/^#!\//, 1d' pdfminer/psparser.py
-sed -i '1i #!%{_bindir}/python3' tools/dumppdf.py tools/pdf2txt.py
+sed -i '1i #!/usr/bin/python3' tools/dumppdf.py tools/pdf2txt.py
 sed -i "s/__VERSION__/%{version}/g" pdfminer/__init__.py
 
 %build
@@ -79,6 +89,10 @@ mv %{buildroot}%{_bindir}/pdf2txt.py %{buildroot}%{_bindir}/pdf2txt
 %postun
 %python_uninstall_alternative pdf2txt
 %python_uninstall_alternative dumppdf
+
+%pre
+%python_libalternatives_reset_alternative pdf2txt
+%python_libalternatives_reset_alternative dumppdf
 
 %files %{python_files}
 %license LICENSE
