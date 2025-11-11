@@ -796,4 +796,12 @@
   added downloaded nodejs modules</comment>
     <requestid>1311812</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>d31cc4740569acf519830041dc878783</srcmd5>
+    <version>3.13.2</version>
+    <time>1762885166</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1316904</requestid>
+  </revision>
 </revisionlist>
