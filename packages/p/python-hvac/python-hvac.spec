@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-hvac
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        HashiCorp Vault API client
 License:        BSD-3-Clause

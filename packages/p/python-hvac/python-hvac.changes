@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 11 08:59:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.4.0
+  * add audience param to kubernetes role creation (GH-1224)
+  * docs: fix AppRole.login docstring (GH-1182)
+  * Fix a typo in read_secret_version warning message (GH-1219)
+  * Pin consul version in CI (GH-1210)
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Mon Sep  2 11:56:50 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Fix build and runtime requirements
