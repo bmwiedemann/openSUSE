@@ -420,4 +420,12 @@ https://bugzilla.redhat.com/996759) (forwarded request 224089 from mgorse)</comm
     <comment>Fix typo (forwarded request 1293426 from iznogood)</comment>
     <requestid>1293456</requestid>
   </revision>
+  <revision rev="57" vrev="18">
+    <srcmd5>c678248e70ced20c7015f73eba2df653</srcmd5>
+    <version>0.97.3</version>
+    <time>1762885173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1316956</requestid>
+  </revision>
 </revisionlist>

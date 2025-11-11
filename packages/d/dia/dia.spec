@@ -1,7 +1,7 @@
 #
 # spec file for package dia
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,7 +68,6 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libart-2.0)
 BuildRequires:  pkgconfig(libexslt)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(libxml-2.0)

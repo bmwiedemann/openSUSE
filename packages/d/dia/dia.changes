@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 10 14:29:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(libart-2.0) BuildRequires: this library is
+  unmaintained for a long time; Dia uses it as a png export filter
+  next to the cairo based one (which is favored anyway).
+
+-------------------------------------------------------------------
 Fri Jul 11 06:52:00 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Work with newer gettext-runtime. In gettext 0.24.1 the m4 files
