@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-navigator
-Version:        25.9.0
+Version:        25.11.0
 Release:        0
 Summary:        A text-based user interface (TUI) for Ansible
 License:        Apache-2.0

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 11 10:18:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.11.0:
+  * Fixes
+    - fix: avoid using hub.docker.com (#2051) @ssbarnea
+  * Maintenance
+    - chore: rename sonar config file (#2056) @ssbarnea
+    - chore: use ansible/actions/matrix (#2061) @ssbarnea
+    -  [pre-commit.ci] pre-commit autoupdate (#2054)
+    -  chore(deps): update all dependencies (#2053)
+    -  chore(deps): update all dependencies (#2052)
+    -  chore(deps): update all dependencies (#2050)
+    -  chore(deps): update all dependencies (#2049)
+    -  chore(deps): update all dependencies (#2048)
+    -  chore(deps): update all dependencies (#2047)
+    -  chore(deps): update all dependencies (#2046)
+    -  chore(deps): update all dependencies (#2045)
+    -  chore(deps): update all dependencies (#2044)
+    -  chore(deps): update all dependencies (#2043)
+    -  chore(deps): update all dependencies (#2042)
+
+-------------------------------------------------------------------
 Fri Sep 19 12:58:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.9.0:
