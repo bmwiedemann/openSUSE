@@ -141,4 +141,20 @@
   * Address openexr oss-fuzz 5747129672073216 #225</comment>
     <requestid>1314670</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>23665933493476be7c3e4249f1458ea3</srcmd5>
+    <version>0.25.2</version>
+    <time>1762885111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.25.2:
+  * There was a mistake in the version bump earlier. So this
+    is a second bump to fix things.
+
+- Update to 0.25.1:
+  * Fix a bug that was discovered during OSS-Fuzz
+
+- Update to 0.25.0:
+  * Make aligned_alloc/free C functions #227</comment>
+    <requestid>1316603</requestid>
+  </revision>
 </revisionlist>

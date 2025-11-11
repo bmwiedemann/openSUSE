@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov  8 16:37:32 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.2:
+  * There was a mistake in the version bump earlier. So this
+    is a second bump to fix things.
+
+-------------------------------------------------------------------
+Sat Nov  8 16:37:03 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.1:
+  * Fix a bug that was discovered during OSS-Fuzz
+
+-------------------------------------------------------------------
+Sat Nov  8 16:36:44 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.0:
+  * Make aligned_alloc/free C functions #227
+
+-------------------------------------------------------------------
 Fri Oct 31 08:48:02 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.24.5:
