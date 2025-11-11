@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov  4 09:34:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.29.0:
+  * [FEATURE] Add incident.io notifier. #4372
+  * [FEATURE] Add monospace message formatting. #4362
+  * [FEATURE] Add ability to customize interval for maintenance to
+    run. #4541
+  * [ENHANCEMENT] Update Jira notifier to support both Jira cloud
+    API v3 and Jira datacenter API v2. #4542
+  * [ENHANCEMENT] Increase mixin rate intervals for alert
+    FailedToSendAlerts. #4206
+  * [ENHANCEMENT] Make /alertmanager group writable in docker
+    image. #4469
+  * [BUGFIX] Fix logged notification count on error in notify.
+    #4323
+  * [BUGFIX] Fix docker image permissions path. #4288
+  * [BUGFIX] Fix error handling in template rendering for Telegram.
+    #4353
+  * [BUGFIX] Fix duplicate other in error messages for config.
+    #4366
+  * [BUGFIX] Fix logic that considers an alert reopened in Jira.
+    #4478
+  * [BUGFIX] Fix Jira issue count #4615
+- rebased patch 0001-Default-settings.patch
+- drop patch 0002-Bump-x-net.patch
+
+-------------------------------------------------------------------
 Tue May 27 16:18:58 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Security: Fix proxy bypassing using IPv6 zone IDs

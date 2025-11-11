@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-alertmanager
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           golang-github-prometheus-alertmanager
-Version:        0.28.1
+Version:        0.29.0
 Release:        0
 Summary:        Prometheus Alertmanager
 License:        Apache-2.0
@@ -29,10 +29,9 @@ Source2:        prometheus-alertmanager.service
 Source3:        alertmanager.yml
 # Lifted from Debian's alertmanager package
 Patch1:         0001-Default-settings.patch
-Patch2:         0002-Bump-x-net.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.24
 Requires(pre):  group(prometheus)
 Requires(pre):  user(prometheus)
 Provides:       prometheus-alertmanager = %{version}
@@ -70,7 +69,7 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/alertmanager
 %fdupes %{buildroot}/%{_prefix}
 
 %check
-go test -short -x `go list ./... | grep -v cluster`
+go test -short -x `go list ./... | grep -v cluster | grep -v provider/mem`
 %{buildroot}%{_bindir}/prometheus-alertmanager --version
 %{buildroot}%{_bindir}/amtool --version
 

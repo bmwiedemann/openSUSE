@@ -1,28 +1,29 @@
-From 407e5faf4924e1e77bf782fd6e143c412676371b Mon Sep 17 00:00:00 2001
+From b3f20377f2eceaf17b8c7b59927c9412e534ea17 Mon Sep 17 00:00:00 2001
 From: Jan Fajerski <jfajerski@suse.com>
 Date: Fri, 8 Feb 2019 12:14:47 +0100
 Subject: [PATCH] Adjust default settings
 
 Signed-off-by: Jan Fajerski <jfajerski@suse.com>
+Signed-off-by: Johannes Kastl <opensuse_buildservice@ojkastl.de>
 ---
  cmd/alertmanager/main.go | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/cmd/alertmanager/main.go b/cmd/alertmanager/main.go
-index 30b02447..6f2635e4 100644
+index 877e4275..dd91df87 100644
 --- a/cmd/alertmanager/main.go
 +++ b/cmd/alertmanager/main.go
 @@ -143,8 +143,8 @@ func run() int {
  	}
  
  	var (
--		configFile          = kingpin.Flag("config.file", "Alertmanager configuration file name.").Default("alertmanager.yml").String()
--		dataDir             = kingpin.Flag("storage.path", "Base path for data storage.").Default("data/").String()
-+		configFile          = kingpin.Flag("config.file", "Alertmanager configuration file name.").Default("/etc/prometheus/alertmanager.yml").String()
-+		dataDir             = kingpin.Flag("storage.path", "Base path for data storage.").Default("/var/lib/prometheus/alertmanager").String()
- 		retention           = kingpin.Flag("data.retention", "How long to keep data for.").Default("120h").Duration()
- 		maintenanceInterval = kingpin.Flag("data.maintenance-interval", "Interval between garbage collection and snapshotting to disk of the silences and the notification logs.").Default("15m").Duration()
- 		maxSilences         = kingpin.Flag("silences.max-silences", "Maximum number of silences, including expired silences. If negative or zero, no limit is set.").Default("0").Int()
+-		configFile                  = kingpin.Flag("config.file", "Alertmanager configuration file name.").Default("alertmanager.yml").String()
+-		dataDir                     = kingpin.Flag("storage.path", "Base path for data storage.").Default("data/").String()
++		configFile                  = kingpin.Flag("config.file", "Alertmanager configuration file name.").Default("/etc/prometheus/alertmanager.yml").String()
++		dataDir                     = kingpin.Flag("storage.path", "Base path for data storage.").Default("/var/lib/prometheus/alertmanager").String()
+ 		retention                   = kingpin.Flag("data.retention", "How long to keep data for.").Default("120h").Duration()
+ 		maintenanceInterval         = kingpin.Flag("data.maintenance-interval", "Interval between garbage collection and snapshotting to disk of the silences and the notification logs.").Default("15m").Duration()
+ 		maxSilences                 = kingpin.Flag("silences.max-silences", "Maximum number of silences, including expired silences. If negative or zero, no limit is set.").Default("0").Int()
 -- 
-2.47.1
+2.50.1
 
