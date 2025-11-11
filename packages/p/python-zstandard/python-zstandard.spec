@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zstandard
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 Summary:        Zstandard bindings for Python
 License:        BSD-3-Clause
@@ -28,15 +28,19 @@ Source:         https://files.pythonhosted.org/packages/source/z/zstandard/zstan
 Patch0:         feature-detection.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  libzstd-devel = 1.5.7
+BuildRequires:  libzstd-devel >= 1.5.6
 BuildRequires:  python-rpm-macros
-Requires:       libzstd1 = 1.5.7
+Requires:       libzstd1 >= 1.5.6
+%if 0%{?python_version_nodots} >= 314
+Requires:       python-cffi >= 2.0.0
+%else
 Requires:       python-cffi >= 1.17
+%endif
 # SECTION test requirements
-BuildRequires:  %{python_module cffi >= 1.17}
+BuildRequires:  %{python_module cffi >= 2.0.0}
 BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest-xdist}
