@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov  6 16:42:15 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- GNOME: Pre-configure graphical.target: don't let yast guess the
+  default_target based on the presence/absence of xdm, but rather
+  explicitly set graphical when selecting GNOME as system role
+  (follow up to boo#1253102).
+
+-------------------------------------------------------------------
+Mon Sep 29 10:17:29 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- GNOME: no longer mark X11 pattern to be installed by default
+  With the switch to GNOME 49, there is no longer an X-session available
+  and as a consequence, there is no benefit of us requiring the x11
+  patterns when installng gnome (boo#1253102)
+- 20250929
+
+-------------------------------------------------------------------
 Fri Jun 20 10:03:35 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Using systemd_fde in partition proposal (jsc#PED-10703).
