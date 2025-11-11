@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 01:40:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch filter-deprecationwarning.patch, no longer needed.
+- Addd patch ignore-pandas-assignment-futurewarning.patch:
+  * Ignore a FutureWarning raised from the depths of pandas.
+
+-------------------------------------------------------------------
 Thu Jun 26 09:35:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.2.1

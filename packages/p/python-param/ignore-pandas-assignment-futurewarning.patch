@@ -1,0 +1,23 @@
+Index: param-2.2.1/tests/testfiledeserialization.py
+===================================================================
+--- param-2.2.1.orig/tests/testfiledeserialization.py
++++ param-2.2.1/tests/testfiledeserialization.py
+@@ -2,6 +2,7 @@
+ import unittest
+ import param
+ import sys
++import warnings
+ 
+ from unittest import skipIf
+ from tempfile import mkdtemp
+@@ -197,7 +198,9 @@ class TestFileDeserialization(unittest.T
+     @pd_skip
+     def test_data_frame_stata(self):
+         path = '{}/val.dta'.format(self.temp_dir)
+-        P.data_frame.to_stata(path, write_index=False)
++        with warnings.catch_warnings():
++            warnings.simplefilter('ignore', category=FutureWarning)
++            P.data_frame.to_stata(path, write_index=False)
+         self._test_deserialize_array(P, path, 'data_frame')
+ 
+     @pd_skip

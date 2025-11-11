@@ -310,4 +310,14 @@
     <comment></comment>
     <requestid>1288855</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>8cc6fecf55b17207281fd4847e80b536</srcmd5>
+    <version>2.2.1</version>
+    <time>1762885238</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop patch filter-deprecationwarning.patch, no longer needed.
+- Addd patch ignore-pandas-assignment-futurewarning.patch:
+  * Ignore a FutureWarning raised from the depths of pandas.</comment>
+    <requestid>1316996</requestid>
+  </revision>
 </revisionlist>
