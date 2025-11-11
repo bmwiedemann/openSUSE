@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 11 05:00:00 UTC 2025 - Andy Alt <arch_stanton5995@proton.me>
+
+- rmw 0.9.4:
+  * bugfix: Allow rmw to move directories to waste folder on btrfs filesystems
+
+-------------------------------------------------------------------
 Thu Nov 07 04:00:00 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
 
 - rmw 0.9.3:

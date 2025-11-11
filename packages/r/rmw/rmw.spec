@@ -18,7 +18,7 @@
 
 
 Name:           rmw
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        Safe-remove utility for the command line
 License:        GPL-3.0-or-later
