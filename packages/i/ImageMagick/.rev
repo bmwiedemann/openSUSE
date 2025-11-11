@@ -4177,4 +4177,13 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * fixes GHSA-wpp4-vqfq-v4hp (CVE-2025-62594 [bsc#1252749])</comment>
     <requestid>1314396</requestid>
   </revision>
+  <revision rev="318" vrev="2">
+    <srcmd5>26a722384b568cb28ad4d779df79e530</srcmd5>
+    <version>7.1.2.8</version>
+    <time>1762885175</time>
+    <user>dimstar_suse</user>
+    <comment>- fix policy to allow own configuration file reads (ImageMagick_policy_etc.patch)
+  adapt ImageMagick-configuration-SUSE.patch and reorder patch handling</comment>
+    <requestid>1316963</requestid>
+  </revision>
 </revisionlist>

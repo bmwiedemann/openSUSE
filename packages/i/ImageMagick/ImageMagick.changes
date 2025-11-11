@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  6 14:37:08 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix policy to allow own configuration file reads (ImageMagick_policy_etc.patch)
+  adapt ImageMagick-configuration-SUSE.patch and reorder patch handling
+
+-------------------------------------------------------------------
 Wed Oct 29 14:15:50 UTC 2025 - pgajdos@suse.com
 
 - version update to 7.1.2.8
@@ -4933,4 +4939,3 @@ Tue Nov 11 16:08:36 MET 1997 - ro@suse.de
 Mon Nov  3 17:49:58 MET 1997 - ro@suse.de
 
 - ready for autobuild
-

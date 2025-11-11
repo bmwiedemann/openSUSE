@@ -1,5 +1,6 @@
---- ImageMagick-7.1.1-30/config/policy.xml
-+++ ImageMagick-7.1.1-30/config/policy.xml
+diff -ur ImageMagick-7.1.2-8_fix/config/policy-secure.xml ImageMagick-7.1.2-8_fix2/config/policy-secure.xml
+--- ImageMagick-7.1.2-8/config/policy-secure.xml	2025-11-06 15:30:11.995056081 +0100
++++ ImageMagick-7.1.2-8_fix/config/policy-secure.xml	2025-11-06 15:46:05.605527563 +0100
 @@ -62,7 +62,7 @@
    <policy domain="resource" name="disk" value="1GiB"/>
    <!-- Set the maximum length of an image sequence.  When this limit is
@@ -9,7 +10,7 @@
    <!-- Set the maximum width of an image.  When this limit is exceeded, an
         exception is thrown. -->
    <policy domain="resource" name="width" value="8KP"/>
-@@ -83,11 +83,11 @@
+@@ -85,11 +85,11 @@
    <!-- Replace passphrase for secure distributed processing -->
    <!-- <policy domain="cache" name="shared-secret" value="secret-passphrase" stealth="true"/> -->
    <!-- Do not permit any delegates to execute. -->
@@ -22,8 +23,8 @@
 +  <!--policy domain="path" rights="none" pattern="-"/ -->
    <!-- don't read sensitive paths. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
-   <!-- Indirect reads are not permitted. -->
-@@ -103,4 +103,20 @@
+   <!-- but allow to read own data. -->
+@@ -107,4 +107,20 @@
    <!-- Set the maximum amount of memory in bytes that are permitted for
         allocation requests. -->
    <policy domain="system" name="max-memory-request" value="256MiB"/>
@@ -44,4 +45,3 @@
 +  <policy domain="coder" rights="write" pattern="XPS" />
 +  <policy domain="coder" rights="write" pattern="PCL" />
  </policymap>
-

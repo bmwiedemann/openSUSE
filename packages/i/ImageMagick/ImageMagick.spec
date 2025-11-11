@@ -46,9 +46,13 @@ Source0:        https://imagemagick.org/archive/releases/ImageMagick-%{source_ve
 Source1:        baselibs.conf
 Source2:        https://imagemagick.org/archive/releases/ImageMagick-%{source_version}.tar.xz.asc
 Source3:        ImageMagick.keyring
-# suse specific patches
-Patch0:         ImageMagick-configuration-SUSE.patch
+# do not block read access to own config files
+Patch0:         ImageMagick_policy_etc.patch
+# SUSE configuration
+Patch1:         ImageMagick-configuration-SUSE.patch
+# library installation
 Patch2:         ImageMagick-library-installable-in-parallel.patch
+# disable failing tests
 Patch5:         ImageMagick-s390x-disable-tests.patch
 
 BuildRequires:  chrpath
@@ -258,6 +262,10 @@ policy plus disable few other coders for reading and/or writing.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
+%patch -P 0 -p1
+# default policy (SUSE)
+cp config/policy-secure.xml config/policy.xml
+%patch -P 1 -p1
 %patch -P 2 -p1
 %ifarch s390x
 %patch -P 5 -p1
@@ -359,9 +367,6 @@ cd ..
 
 %install
 %make_install pkgdocdir=%{_defaultdocdir}/ImageMagick-7/
-# default policy (SUSE)
-cp config/policy-secure.xml config/policy.xml
-patch --fuzz=0 -p1 < %{PATCH0}
 cp config/policy.xml %{buildroot}%{_sysconfdir}/%{config_dir}
 # symlink header file relative to /usr/include/ImageMagick-7/
 # so that inclusions like wand/*.h and magick/*.h work
