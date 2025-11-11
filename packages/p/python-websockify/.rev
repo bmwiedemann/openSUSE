@@ -278,4 +278,18 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301402</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5bb13b93154ca6f90cb320550416d3b0</srcmd5>
+    <version>0.13.0</version>
+    <time>1762885122</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.0:
+  * Support for Python &lt; 3.6 has been dropped.
+  * SNI is enabled when connecting to an SSL target as an SSL
+    client.
+  * The TokenRedis plugin handles namespaces.
+  * Headers are sanitized before being passed to authentication
+    plugins.</comment>
+    <requestid>1316814</requestid>
+  </revision>
 </revisionlist>

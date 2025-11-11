@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-websockify
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        WebSocket to TCP proxy/bridge
 License:        BSD-2-Clause AND LGPL-3.0-only AND MPL-2.0 AND BSD-3-Clause
