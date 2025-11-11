@@ -286,4 +286,13 @@
   * Add re.Pattern to allowed match types</comment>
     <requestid>1316811</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>0957296ce405a71a5a38b1145770974c</srcmd5>
+    <version>9.1.2</version>
+    <time>1762885246</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python314.patch:
+  * Support Python 3.14 asyncio changes.</comment>
+    <requestid>1317002</requestid>
+  </revision>
 </revisionlist>

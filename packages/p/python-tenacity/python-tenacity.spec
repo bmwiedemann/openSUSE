@@ -22,9 +22,10 @@ Version:        9.1.2
 Release:        0
 Summary:        Python module for retrying code until it succeeeds
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/jd/tenacity
 Source:         https://files.pythonhosted.org/packages/source/t/tenacity/tenacity-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM One commit of gh#jd/tenacity#528
+Patch0:         support-python314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
@@ -52,7 +53,7 @@ Features
 - Customize retrying on expected returned result
 
 %prep
-%setup -q -n tenacity-%{version}
+%autosetup -p1 -n tenacity-%{version}
 
 %build
 %pyproject_wheel

@@ -1,0 +1,44 @@
+From 312a04c2639a8cd8598b8701586889b4f3bd2035 Mon Sep 17 00:00:00 2001
+From: Sandro Bonazzola <sandro.bonazzola@gmail.com>
+Date: Tue, 17 Jun 2025 11:45:23 +0200
+Subject: [PATCH 2/4] Refactor `asynctest` decorator
+
+This refactors the original code to work with Python 3.14,
+leveraging `asyncio.run()` for automatic event loop management,
+which is the recommended approach in modern asyncio.
+
+Fixes #527.
+
+Signed-off-by: Sandro Bonazzola <sandro.bonazzola@gmail.com>
+---
+ tests/test_asyncio.py   | 3 +--
+ tests/test_issue_478.py | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_asyncio.py b/tests/test_asyncio.py
+index 0b74476..f6793f0 100644
+--- a/tests/test_asyncio.py
++++ b/tests/test_asyncio.py
+@@ -40,8 +40,7 @@
+ def asynctest(callable_):
+     @wraps(callable_)
+     def wrapper(*a, **kw):
+-        loop = asyncio.get_event_loop()
+-        return loop.run_until_complete(callable_(*a, **kw))
++        return asyncio.run(callable_(*a, **kw))
+ 
+     return wrapper
+ 
+diff --git a/tests/test_issue_478.py b/tests/test_issue_478.py
+index 7489ad7..83182ac 100644
+--- a/tests/test_issue_478.py
++++ b/tests/test_issue_478.py
+@@ -12,8 +12,7 @@ def asynctest(
+ ) -> typing.Callable[..., typing.Any]:
+     @wraps(callable_)
+     def wrapper(*a: typing.Any, **kw: typing.Any) -> typing.Any:
+-        loop = asyncio.get_event_loop()
+-        return loop.run_until_complete(callable_(*a, **kw))
++        return asyncio.run(callable_(*a, **kw))
+ 
+     return wrapper
