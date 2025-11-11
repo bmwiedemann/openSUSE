@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip-api
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Patch0:         unvendor.patch
 # PATCH-FIX-OPENSUSE Remove a test parameter that is broken with our shipped
 # packaging.
 Patch1:         support-packaging-changes.patch
+# PATCH-FIX-OPENSUSE Support Python 3.14 URI parsing and ast changes.
+Patch2:         support-python314.patch
 BuildRequires:  %{python_module packaging >= 21.0}
 BuildRequires:  %{python_module pip >= 22.1}
 BuildRequires:  %{python_module pretend}
@@ -67,6 +69,6 @@ rm -Rf ./pip_api/_vendor
 %doc README.md
 %license LICENSE
 %{python_sitelib}/pip_api
-%{python_sitelib}/pip_api*info
+%{python_sitelib}/pip_api-%{version}.dist-info
 
 %changelog

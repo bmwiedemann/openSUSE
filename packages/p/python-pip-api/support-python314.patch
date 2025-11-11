@@ -1,0 +1,44 @@
+Index: pip_api-0.0.34/pip_api/_parse_requirements.py
+===================================================================
+--- pip_api-0.0.34.orig/pip_api/_parse_requirements.py
++++ pip_api-0.0.34/pip_api/_parse_requirements.py
+@@ -276,7 +276,7 @@ def _parse_local_package_name(path):
+             and expr.value.func.id == "setup"
+         ][0]
+         value = [kw.value for kw in setup_kwargs if kw.arg == "name"][0]
+-        return value.s
++        return getattr(value, 's', None) if hasattr(value, 's') else value.value
+     except (IndexError, AttributeError, IOError, OSError):
+         raise PipError(
+             "Directory %r is not installable. "
+Index: pip_api-0.0.34/tests/test_parse_requirements.py
+===================================================================
+--- pip_api-0.0.34.orig/tests/test_parse_requirements.py
++++ pip_api-0.0.34/tests/test_parse_requirements.py
+@@ -193,7 +193,7 @@ def test_parse_requirements_editable_fil
+ 
+     assert set(result) == {"django", "pip-api"}
+     assert str(result["django"]) == "Django==1.11"
+-    assert str(result["pip-api"]).startswith("pip-api@ file:///")
++    assert str(result["pip-api"]).startswith("pip-api@ file:/")
+ 
+ 
+ def test_parse_requirements_editable_pyprojecttoml(monkeypatch, data):
+@@ -206,7 +206,7 @@ def test_parse_requirements_editable_pyp
+ 
+     assert set(result) == {"dummyproject_pyproject"}
+     assert str(result["dummyproject_pyproject"]).startswith(
+-        "dummyproject_pyproject@ file:///"
++        "dummyproject_pyproject@ file:/"
+     )
+ 
+ 
+@@ -220,7 +220,7 @@ def test_parse_requirements_editable_esc
+ 
+     assert set(result) == {"dummyproject_pyproject"}
+     assert str(result["dummyproject_pyproject"]).startswith(
+-        "dummyproject_pyproject@ file:///"
++        "dummyproject_pyproject@ file:/"
+     )
+     # The @ in `escapable@path` should be URL-encoded
+     assert "escapable%40path" in str(result["dummyproject_pyproject"])
