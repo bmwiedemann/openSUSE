@@ -455,4 +455,12 @@
     + Rename RFC 2445 to RFC 5545, see `Issue 278</comment>
     <requestid>1289705</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0c6eaf2d13b87fab81c5c3306f378f01</srcmd5>
+    <version>6.3.2</version>
+    <time>1762885275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1317043</requestid>
+  </revision>
 </revisionlist>
