@@ -1561,4 +1561,18 @@ touch version is still build but no desktop file installed. (forwarded request 2
     <comment>KDE release gear 25.08.2 (forwarded request 1309696 from krop)</comment>
     <requestid>1310254</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>bbacabcd8ba9dc090481cd3b5a7bc66d</srcmd5>
+    <version>25.08.3</version>
+    <time>1762885186</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build plasma applets
+
+- Update to 25.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.3/
+- No code change since 25.08.2</comment>
+    <requestid>1317028</requestid>
+  </revision>
 </revisionlist>

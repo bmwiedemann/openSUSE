@@ -28,7 +28,7 @@
 
 %bcond_without released
 Name:           marble
-Version:        25.08.2
+Version:        25.08.3
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
@@ -52,7 +52,8 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
 BuildRequires:  cmake(KF6Runner) >= %{kf6_version}
 BuildRequires:  cmake(Phonon4Qt6)
-BuildRequires:  cmake(Plasma) >= 6.0.0
+# Still uses QtQuick 1
+# BuildRequires:  cmake(Plasma) >= 6.0.0
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
@@ -204,10 +205,6 @@ export SUSE_ASNEEDED=0
 %{_kf6_appstreamdir}/org.kde.marble.appdata.xml
 %{_kf6_appstreamdir}/org.kde.marble.behaim.appdata.xml
 %{_kf6_appstreamdir}/org.kde.marble.maps.appdata.xml
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/org.kde.plasma.worldclock.appdata.xml
-%{_kf6_appstreamdir}/org.kde.plasma.worldmap.appdata.xml
-%endif
 %{_kf6_configkcfgdir}/marble.kcfg
 %{_kf6_debugdir}/marble.categories
 %{_kf6_iconsdir}/hicolor/*/apps/marble.*
@@ -260,8 +257,8 @@ export SUSE_ASNEEDED=0
 %{_kf6_bindir}/marble
 %{_kf6_bindir}/marble-behaim
 %{_kf6_bindir}/marble-maps
-%{_kf6_plasmadir}/plasmoids/org.kde.plasma.worldclock
-%{_kf6_plasmadir}/wallpapers/
+# %%{_kf6_plasmadir}/plasmoids/org.kde.plasma.worldclock
+# %%{_kf6_plasmadir}/wallpapers/
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/marble/
