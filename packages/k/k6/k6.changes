@@ -1,4 +1,292 @@
 -------------------------------------------------------------------
+Mon Nov 10 13:09:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.0:
+  k6 v1.4.0 is here! This release includes:
+  * OpenTelemetry output graduated from experimental to stable
+    status.
+  * Changes in the Browser module:
+    - page.waitForRequest for waiting on specific HTTP requests.
+    - QueryAll methods now return elements in DOM order.
+    - locator.evaluate and locator.evaluateHandle for executing
+      JavaScript code in the page context with access to the
+      matching element.
+    - page.unroute(url) and page.unrouteAll for removing routes
+      registered with page.route.
+  * Breaking changes
+    As per our stability guarantees, breaking changes across minor
+    releases are allowed only for experimental features.
+    - Breaking changes for experimental modules
+      - #5164 OpenTelemetry output now exports rate metrics as a
+        single counter with zero/nonzero labels instead of separate
+        metrics.
+      - #5333 OpenTelemetry output configuration:
+        K6_OTEL_EXPORTER_TYPE is deprecated in favor of
+        K6_OTEL_EXPORTER_PROTOCOL to align with OpenTelemetry
+        standards.
+    - Breaking changes for undefined behaviours
+      - #5320, #5239, #5342 Automatic extension resolution now only
+        inspects ES module import statements and no longer supports
+        CommonJS require() calls. CommonJS require() calls are
+        dynamic, and it is not possible to know for certain if they
+        will be called, or if they will be called with static
+        strings - the only way they were even previously loaded.
+        This functionality was a quirk of the previous
+        implementation and had numerous problems. Additionally, use
+        k6 directives are now only recognized when they appear at
+        the beginning of files (after optional shebang and
+        whitespace/comments). This was the original intention, but
+        due to implementation bugs, it did not accurately reflect
+        what was happening.
+  * New features
+    - OpenTelemetry output graduation #5334
+      The OpenTelemetry output has graduated from experimental
+      status and is now available as a stable output using the name
+      opentelemetry. This change makes OpenTelemetry the
+      recommended vendor-agnostic solution for exporting k6
+      telemetry data.
+      You can now use the stable output name in your k6 commands:
+
+        # Previous experimental usage (still supported for backward compatibility)
+      K6 run --out experimental-opentelemetry script.js
+
+      # New stable usage
+      K6 run --out opentelemetry script.js
+
+      The experimental-opentelemetry name will continue to work for
+      backward compatibility for now but it's deprecated and we
+      might remove it in future versions. We recommend migrating to
+      use the new opentelemetry name.
+    - page.waitForRequest #5330
+      The browser module now supports page.waitForRequest(), which
+      allows you to wait for HTTP requests that match specific URL
+      patterns during browser automation. This method is
+      particularly valuable for testing scenarios where you need to
+      ensure specific network requests are initiated before
+      proceeding with test actions.
+
+      The method supports multiple URL pattern matching strategies:
+
+        // Wait for exact URL match
+        const requestPromise = page.waitForRequest('https://api.example.com/data');
+        await page.click('button[data-testid="load-data"]');
+        const request = await requestPromise;
+
+        // Wait for regex pattern match
+        await page.waitForRequest(/\/api\/.*\.json$/);
+
+        // Use with Promise.all for coordinated actions
+        await Promise.all([
+          page.waitForRequest('https://api.example.com/user-data'),
+          page.click('button[data-testid="load-user-data"]')
+        ]);
+
+      This complements the existing page.waitForResponse() method
+      by focusing on HTTP requests rather than responses, providing
+      more granular control over network-dependent test scenarios.
+    - page.unroute(url) and page.unrouteAll() #5223
+      The browser module now supports page.unroute(url) and
+      page.unrouteAll(), allowing you to remove routes previously
+      registered with page.route.
+
+      Example usage:
+
+        await page.route(/.*\/api\/pizza/, function (route) {
+          console.log('Modifying request to /api/pizza');
+          route.continue({
+            postData: JSON.stringify({
+              customName: 'My Pizza',
+            }),
+          });
+        });
+        ...
+
+        await page.unroute(/.*\/api\/pizza/); // The URL needs to be exactly the same as the one used in the call to the `route` function
+
+        await page.route(/.*\/api\/pizza/, function (route) {
+          console.log('Modifying request to /api/pizza');
+          route.continue({
+            postData: JSON.stringify({
+              customName: 'My Pizza',
+            }),
+          });
+        });
+        ...
+
+        await page.unrouteAll();
+
+    - locator.evaluate and locator.evaluateHandle #5306
+      The browser module now supports locator.evaluate and
+      locator.evaluateHandle, allowing you to execute JavaScript
+      code in the page context with access to the matching element.
+      The only difference between evaluate and evaluateHandle is
+      that evaluateHandle returns a JSHandle.
+      Example usage:
+
+        await check(page, {
+          'calling evaluate': async p => {
+            const n = await p.locator('#pizza-name').evaluate(pizzaName => pizzaName.textContent);
+            return n == 'Our recommendation:';
+          }
+        });
+
+        await check(page, {
+          'calling evaluate with arguments': async p => {
+            const n = await p.locator('#pizza-name').evaluate((pizzaName, extra) => pizzaName.textContent + extra, ' Super pizza!');
+            return n == 'Our recommendation: Super pizza!';
+          }
+        });
+
+        const jsHandle = await page.locator('#pizza-name').evaluateHandle((pizzaName) => pizzaName);
+
+        const obj = await jsHandle.evaluateHandle((handle) => {
+          return { innerText: handle.innerText };
+        });
+        console.log(await obj.jsonValue()); // {"innerText":"Our recommendation:"}
+
+    - New officially supported k6 DNS extension
+      The xk6-dns extension is now officially supported in k6 OSS
+      and k6 Cloud. You can import k6/x/dns directly in your
+      scripts thanks to automatic extension resolution, with no
+      custom build required.
+      Use it to perform DNS resolution testing as part of your
+      tests: resolve names via custom or system DNS, measure
+      resolution latency and errors, validate records before HTTP
+      steps, compare resolvers, and even load test DNS servers in
+      end‑to‑end scenarios.
+      For example:
+
+        import dns from 'k6/x/dns';
+
+        export default function () {
+          const answer = dns.resolve('grafana.com', { recordType: 'A' });
+          console.log(answer.records.map(({ address }) => address).join(', '));
+        }
+
+      The extension currently supports A and AAAA record lookups.
+      If you would like to see additional record types supported,
+      please consider contributing to the extension.
+    - Automatic extension resolution improvements #5320, #5239,
+      #5342, #5332, #5240
+      Automatic extension resolution has been completely
+      reimplemented to use k6's internal module loader instead of
+      the external k6deps/esbuild pipeline. This change brings
+      significant improvements in reliability and maintainability.
+      As part of the rewrite, a few issues and unintended features
+      were found, namely:
+      - Trying to follow require calls, which, due to their dynamic
+        nature, don't work particularly stably. That is, depending
+        on where and how the require call was used, k6 might decide
+        whether it is needed or not. And it definitely doesn't work
+        when using actual string variables. Support for CommonJS is
+        primarily for backward compatibility, so after an internal
+        discussion, we opted not to support it at all. We could
+        bring this back until v2, if there is enough interest.
+        However, in the long term, it is intended that this not be
+        part of k6.
+      - "use k6 with ..." directives were parsed from the whole
+        file instead of just the beginning, which leads to numerous
+        problems, and was not the intended case. As such, they are
+        now only parsed at the beginning of files (not just the
+        main one) with potential empty lines and comments preceding
+        them.
+      Example:
+
+        // main.js
+        "use k6 with k6/x/faker"
+        import { faker } from 'k6/x/faker';
+        import { helper } from './utils.js';
+
+        export default function() {
+          console.log(faker.name());
+          helper();
+        }
+
+     Or, an example using the directive with CommonJS
+
+        // utils.js
+        "use k6 with k6/x/redis"
+        const redis = require('k6/x/redis');
+
+        exports.helper = function() {
+          // Use redis extension
+        }
+
+      In this example, k6 will detect both k6/x/faker and
+      k6/x/redis extensions from the use k6 directives in both
+      files and provision a binary that includes both extensions if
+      needed.
+      Other fixes this brings are:
+      - Fixes for path related issues (irregardless of usage of the
+        feature) on windows, especially between drives. It is
+        possible there were problems on other OSes that were just
+        not reported. #5176
+      - Syntax errors were not reported as such, as the underlying
+        esbuild parsing will fail, but won't be handled well.
+        #5127, #5104
+      - Propagating exit codes from a sub-process running the new
+        k6. This lets you use the result of the exit code.
+  * UX improvements and enhancements
+    - #5307 QueryAll methods now return elements in DOM order.
+      Thank you, @shota3506, for the contribution.
+    - #5159 Simplifies warning message for legacy config files.
+    - #5343 Explictly marks the option's default values.
+  * Bug fixes
+    - #5242 Fixes cleanup errors on Windows for browser tests.
+    - #5246 Fixes the support for TypeScript source code from
+      stdin.
+    - #5322 Fixes browser.newPageInContext bug where pages created
+      in a non-existing browser context.
+  * Maintenance and internal improvements
+    - #5238 Browser: Fix early context cancellation in tests
+    - #5347, #5349 Browser: Move k6ext.Promise to the mapping
+      layer.
+    - #5340 Browser: Simplify page event iteration by using an
+      iterator.
+    - #5315, #5311 Browser: Revamped page event listening internals
+      for addition of new features and better maintainability.
+    - #5339 Browser: Remove unused VU fields.
+    - #5314 Browser: Refactor pattern matcher.
+    - #5222 Browser: Fix linter errors and warnings.
+    - #5207 Browser: Refactor and improve selector parsing. Thank
+      you, @elmiringos for the contribution.
+    - #5313, #5321 Update to k6provider v0.2.0 and update code to
+      use the new API.
+    - #4682 Update go-httpbin dependency to v2 and update tests to
+      accommodate breaking changes.
+    - #5309 Update cdproto dependency and fix syntax changes in
+      browser module.
+    - #5209 Update golangci-lint to v2.5.0 and fix related linting
+      issues.
+    - #5308 Format Go Doc comments. Thank you, @shota3506 for the
+      contribution.
+    - #5184 Migrates Prometheus Remote-Write output configuration
+      parsing to envconfig.
+    - #5304 Bumps the minimum required Go version to 1.24.
+    - #5214 Update release issue template after 1.3.0
+    - #5303 Fixes code scanning alert no. 102: Incorrect conversion
+      between integer types.
+    - #5302, #5244 Refactors Sobek out of business logic and into
+      mapping layer for the browser module.
+    - #5247 Refactors indirection out of locator.go.
+    - #4234, #5301, #5300, #5208 Updates renovate config.
+    - #5355, #5354, #5353, #5352, #5351, #5324, #5293, #5292,
+      #5291, #5290, #5288, #5287, #5286, #5284, #5283, #5282,
+      #5268, #5267, #5266, #5265, #5258, #5257, #5256, #5253,
+      #5252, #5251, Updates dependencies.
+    - #5216 Refactors TestPageOnResponse to fail fast on errors.
+      Thank you, @rMaxiQp for the contribution.
+    - #5203, #5201 Adds WinGet support to the project.
+    - #5220 Switches from gouuid to google/uuid. Thank you,
+      @mikelolasagasti for the contribution.
+    - #5344, #5345 Uses .env context for ghcr login when publishing
+      docker images.
+    - #5331 Reports require calls during the initial loading of
+      modules, instead for each call in all execution of all VUs.
+    - #5218 Adds user AgnesToulet to the auto assign issue
+      workflow.
+
+-------------------------------------------------------------------
 Tue Sep 23 10:39:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.3.0:
