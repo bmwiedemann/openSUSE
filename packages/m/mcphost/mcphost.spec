@@ -36,11 +36,42 @@ BuildRequires:  go >= 1.24
 %if 0%{?suse_version} >= 1500
 BuildRequires:  golang-packaging
 %endif
-       
+
 %description
 A CLI host application that enables Large Language Models (LLMs) to interact
 with external tools through the Model Context Protocol (MCP). Currently
 supports both Claude 3.5 Sonnet and Ollama models.
+
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       bash-completion
+BuildArch:      noarch
+Requires:       %{name}
+Supplements:    (%{name} and bash-completion)
+
+%description bash-completion
+The official bash completion script for %{name}, generated during the build.
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Group:          System/Shells
+BuildArch:      noarch
+Requires:       %{name}
+Supplements:    (%{name} and zsh)
+
+%description zsh-completion
+The official zsh completion script for %{name}, generated during the build.
+
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+BuildArch:      noarch
+Requires:       %{name}
+Supplements:    (%{name} and fish)
+
+%description fish-completion
+The official fish completion script for %{name}, generated during the build.
 
 %prep
 # Setup the main source code
@@ -56,8 +87,31 @@ sed -i -e "s/go1.24.5/go1.24/g" go.mod
 %install
 %{goinstall}
 
+# Build the shell autocomplete files
+%{buildroot}/%{_bindir}/%{name} completion bash > %{name}-autocomplete.bash
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{name}-autocomplete.zsh
+%{buildroot}/%{_bindir}/%{name} completion fish > %{name}-autocomplete.fish
+
+# Install the shell autocomplete files
+install -Dm 644 %{name}-autocomplete.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm 644 %{name}-autocomplete.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+install -Dm 644 %{name}-autocomplete.fish %{buildroot}%{_datadir}/fish/completions/_%{name}
+
+%check
+# execute the binary as a basic check
+%{buildroot}/%{_bindir}/%{name} help
+
 %files
 %license LICENSE
 %{_bindir}/%{name}
+# completions
+%files bash-completion
+%{_datadir}/bash-completion
+
+%files zsh-completion
+%{_datadir}/zsh
+
+%files fish-completion
+%{_datadir}/fish
 
 %changelog
