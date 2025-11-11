@@ -26,10 +26,10 @@ Summary:        An implementation of Universal Plug and Play (UPnP)
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/pupnp/pupnp
-Source:         https://github.com/pupnp/pupnp/archive/refs/tags/release-%version.tar.gz
+Source:         https://github.com/pupnp/pupnp/releases/download/release-%version/%name-%version.tar.bz2
 Source3:        baselibs.conf
-BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.11
 BuildRequires:  pkg-config
 
 %description
@@ -66,22 +66,22 @@ UPnP-compliant control points, devices, and bridges on several operating
 systems.
 
 %prep
-%autosetup -n pupnp-release-%version
-autoreconf -fi
+%autosetup -p1
 
 %build
 # the openssl simply does not compile
-%configure \
-    --disable-samples \
-    --enable-ipv6 \
-    --disable-static \
-    --enable-reuseaddr \
-    --disable-open_ssl \
-    --enable-unspecified_server
-%make_build
+%cmake \
+	-DUPNP_BUILD_SAMPLES=OFF \
+	-DUPNP_ENABLE_IPV6=ON \
+	-DUPNP_BUILD_STATIC=OFF \
+	-DUPNP_MINISERVER_REUSEADDR=ON \
+	-DUPNP_ENABLE_OPEN_SSL=OFF \
+	-DUPNP_ENABLE_UNSPECIFIED_SERVER=ON \
+	-DBUILD_TESTING=ON
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 find "%buildroot" -type f -name "*.la" -delete -print
 
 %ldconfig_scriptlets -n %name%pnpver
@@ -101,5 +101,6 @@ find "%buildroot" -type f -name "*.la" -delete -print
 %_libdir/libixml.so
 %_libdir/libupnp.so
 %_includedir/upnp/
+%_libdir/cmake/
 
 %changelog
