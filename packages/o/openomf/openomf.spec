@@ -18,7 +18,7 @@
 
 
 Name:           openomf
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        Open Source remake of "One Must Fall 2097"
 License:        MIT

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  8 12:23:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.5
+  * Tune down NAT timeouts and correct some log messages.
+  * Locked out stat and color cheats during netplay.
+  * Fix various keybinding issues.
+  * Throw Range Bug.
+
+-------------------------------------------------------------------
 Sat Sep 13 17:19:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.4
