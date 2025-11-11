@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 11 14:10:52 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1762250353.5150272:
+  * Makefile: Fix reruns on incomplete build dir generations
+  * Propagate C++ exceptions to Perl in image write function
+  * Add support NICPCIADDR variable to QEMU backend
+  * Remove test which causes unhandled output
+  * Allow array keys like `ISSUES[]` as introduced in openQA commit a53b19b
+  * Improve includes in tinycv library
+
+-------------------------------------------------------------------
 Tue Nov 04 01:37:03 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1761723693.2b88807:
