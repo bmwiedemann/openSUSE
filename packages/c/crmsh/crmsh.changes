@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Nov 10 12:44:38 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251110.f97886d4:
+  * Fix: unittest: should mock shell calling in SBDTimout.get_default_systemd_start_timeout
+  * Dev: report: mix stderr and stdout in one stream when collecting command outputs
+
+-------------------------------------------------------------------
+Mon Nov 10 03:50:40 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251110.b08198d3:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: report: Collect corosync status in crm report
+
+-------------------------------------------------------------------
+Fri Nov 07 09:21:48 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251107.97dfd3cc:
+  * Dev: ui_sbd: Check if crashdump is configured before purging crashdump options
+
+-------------------------------------------------------------------
+Fri Nov 07 03:27:38 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251107.f762b092:
+  * Fix: bootstrap: ignore ssh authentication failure to localhost when merging known_hosts (#1931)
+
+-------------------------------------------------------------------
+Thu Oct 30 10:32:29 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251030.6e97b04b:
+  * Dev: behave: Adjust functional test for previous commit
+  * Fix: ui_configure: Check if able to set stonith-watchdog-timeout property
+
+-------------------------------------------------------------------
+Thu Oct 30 08:52:59 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251030.eabfc3fa:
+  * Fix: prun: Avoid unnecessary sudo in sftp and ssh commands (bsc#1229416)
+  * Fix: bootstrap: Correctly identify root user with host
+  * Fix: sh: Avoid unnecessary sudo calls in ClusterShell SSH commands (bsc#1229416)
+
+-------------------------------------------------------------------
+Thu Oct 30 04:21:47 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251030.a0dd0550:
+  * Dev: doc: Add formula for crashdump watchdog timeout in TimeoutFormulas section
+
+-------------------------------------------------------------------
 Wed Oct 29 08:55:06 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20251029.0b77b20d:
