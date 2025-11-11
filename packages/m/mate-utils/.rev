@@ -264,4 +264,12 @@
     <comment></comment>
     <requestid>1165609</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>10fe3c4eee3c9b1067328b9bb60acdd6</srcmd5>
+    <version>1.28.0</version>
+    <time>1762885355</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-save-issue.patch, fix cannot save the screenshot(boo#1253170) (forwarded request 1317149 from hillwood)</comment>
+    <requestid>1317150</requestid>
+  </revision>
 </revisionlist>

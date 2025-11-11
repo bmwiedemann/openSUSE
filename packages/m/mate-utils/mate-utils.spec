@@ -1,7 +1,7 @@
 #
 # spec file for package mate-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Patch0:         fix-save-issue.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  inkscape
@@ -194,7 +195,7 @@ BuildArch:      noarch
 This package contains the documentation for mate-utils
 
 %prep
-%autosetup
+%autosetup -p1
 
 # Do not build the pt lingua for the search tool help to solve build issues.
 sed -i 's/^\(IGNORE_HELP_LINGUAS =\)/\1 pt/' gsearchtool/help/Makefile.am
