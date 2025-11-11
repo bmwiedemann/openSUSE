@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov 11 06:59:11 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 140.5.0 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 140.5
+  https://www.mozilla.org/security/advisories/mfsa2025-88
+  MFSA 2025-88 (boo#1253188)
+  * MFSA-RESERVE-2025-1991458 (bmo#1991458)
+    Race condition in the Graphics component
+  * MFSA-RESERVE-2025-1992130 (bmo#1992130)
+    Incorrect boundary conditions in the JavaScript: WebAssembly
+    component
+  * MFSA-RESERVE-2025-1980904 (bmo#1980904)
+    Same-origin policy bypass in the DOM: Notifications component
+  * MFSA-RESERVE-2025-1984940 (bmo#1984940)
+    Mitigation bypass in the DOM: Security component
+  * MFSA-RESERVE-2025-1988412 (bmo#1988412)
+    Same-origin policy bypass in the DOM: Workers component
+  * MFSA-RESERVE-2025-1991945 (bmo#1991945)
+    Mitigation bypass in the DOM: Core & HTML component
+  * MFSA-RESERVE-2025-1995686 (bmo#1995686)
+    Use-after-free in the WebRTC: Audio/Video component
+  * MFSA-RESERVE-2025-1994241 (bmo#1994241)
+    Use-after-free in the Audio/Video component
+  * MFSA-RESERVE-2025-1994164 (bmo#1994164)
+    Spoofing issue in Firefox
+
+-------------------------------------------------------------------
 Wed Oct 15 08:14:11 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Run the "desktop file" actions only on non Leap/SLE distributions.
