@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  6 07:06:09 UTC 2025 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to version 4.5.2:
+  - bugfix release
+  - see https://github.com/appneta/tcpreplay/compare/v4.5.1...v4.5.2
+    for full list of changes since v4.5.1
+  - includes fixes for
+    - CVE-2025-9157 / bsc#1248322
+    - CVE-2025-51006 / bsc#1250356
+- drop build workarounds for SLE11; since %autosetup and %license
+  were introduced into the specfile recently, the package would not
+  build on SLE11 or older anyway
+
+-------------------------------------------------------------------
 Tue Aug 19 10:55:23 UTC 2025 - pgajdos@suse.com
 
 - security update

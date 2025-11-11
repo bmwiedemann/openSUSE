@@ -139,4 +139,13 @@
     <comment></comment>
     <requestid>1306548</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6cadcaf61a5ca500a9e639ebfcc0ad52</srcmd5>
+    <version>4.5.2</version>
+    <time>1762885262</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.5.2
+- drop build workarounds for SLE11</comment>
+    <requestid>1317016</requestid>
+  </revision>
 </revisionlist>

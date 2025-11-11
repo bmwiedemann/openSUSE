@@ -1,6 +1,7 @@
 #
 # spec file for package tcpreplay
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           tcpreplay
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only
@@ -33,12 +34,7 @@ BuildRequires:  libdnet-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  tcpdump
 Requires:       tcpdump
-%if 0%{?suse_version} >= 1130
 BuildRequires:  libnl3-devel
-%else
-# only needed for suse_version < 1130 (i.e. SLE11)
-BuildRequires:  xz
-%endif
 
 %description
 Tcpreplay is a suite of utilities for editing and replaying
