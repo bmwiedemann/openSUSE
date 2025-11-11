@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Nov 10 12:05:23 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1040
+- remove too strict sanity check (bsc#1253037)
+- 4.5.277
+
+--------------------------------------------------------------------
 Sat Oct 4 06:24:33 UTC 2025 - aschnell@suse.com
 
 - Translated using Weblate (Indonesian) (bsc#1149754)
