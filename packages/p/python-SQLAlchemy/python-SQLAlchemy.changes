@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:31:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.44:
+  * Unblocked automatic greenlet installation for Python 3.14 now
+    that there are greenlet wheels on pypi for python 3.14
+  * https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.44
+
+-------------------------------------------------------------------
 Thu Sep 11 09:13:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.0.43

@@ -1301,4 +1301,15 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment></comment>
     <requestid>1304239</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>bb0b16da0ce0ba593e3ebe467e53ece7</srcmd5>
+    <version>2.0.44</version>
+    <time>1762885123</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.44:
+  * Unblocked automatic greenlet installation for Python 3.14 now
+    that there are greenlet wheels on pypi for python 3.14
+  * https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.44</comment>
+    <requestid>1316828</requestid>
+  </revision>
 </revisionlist>
