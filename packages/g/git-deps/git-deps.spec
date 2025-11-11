@@ -34,6 +34,9 @@ Patch1:         pygit2-1.15.0.patch
 # PATCH-FIX-UPSTREAM no-pkg-resources.patch gh#aspiers/git-deps!131 mcepl@suse.com
 # Don't depend on pkg_resources
 Patch2:         no-pkg-resources.patch
+# PATCH-FIX-UPSTREAM pygit2-1.16.0.patch gh#aspiers/git-deps!132 mcepl@suse.com
+# Upgrade pygit2 to 1.16 and fix bugs, test pass on macos
+Patch3:         pygit2-1.16.0.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  python-rpm-macros
@@ -72,8 +75,7 @@ Documentation for git-deps.
 
 %install
 %python3_pyproject_install
-install -D -m 755 %{buildroot}%{python3_sitelib}/git_deps/handler.py \
-    %{buildroot}%{_bindir}/gitfile-handler
+install -D -m 755 git_deps/handler.py %{buildroot}%{_bindir}/gitfile-handler
 %python3_fix_shebang
 %fdupes %{buildroot}%{python3_sitelib}
 

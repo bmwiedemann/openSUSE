@@ -112,4 +112,13 @@ generate the list)
 (🤖: Submission of git-deps via https://src.opensuse.org/pool/git-deps/pulls/2 by mcepl)</comment>
     <requestid>1190347</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>4bc3f53340831efb3002ba783c406f3a</srcmd5>
+    <version>1.1.0+git.1696898573.89d51e8</version>
+    <time>1762885236</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pygit2-1.16.0.patch (gh#aspiers/git-deps!132) upgrade
+  pygit2 to 1.16 and fix bugs.</comment>
+    <requestid>1316991</requestid>
+  </revision>
 </revisionlist>

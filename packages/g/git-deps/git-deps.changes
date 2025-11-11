@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 10 21:42:28 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add pygit2-1.16.0.patch (gh#aspiers/git-deps!132) upgrade
+  pygit2 to 1.16 and fix bugs.
+
+-------------------------------------------------------------------
 Mon Jul 29 22:36:44 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix dont-use-st-markdown.patch (don't list packages explicitly,
