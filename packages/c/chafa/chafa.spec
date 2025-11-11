@@ -1,7 +1,7 @@
 #
 # spec file for package chafa
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           chafa
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        Image-to-text converter for terminal
 License:        LGPL-3.0-or-later
@@ -26,7 +26,7 @@ URL:            https://hpjansson.org/chafa/
 Source0:        https://github.com/hpjansson/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc
-BuildRequires:  glib2-devel >= 2.26
+BuildRequires:  glib2-devel >= 2.58
 BuildRequires:  gtk-doc
 BuildRequires:  libjpeg-devel
 BuildRequires:  librsvg-devel
