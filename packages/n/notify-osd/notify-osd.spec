@@ -63,6 +63,9 @@ and timeouts.
 cp %{_datadir}/automake*/COPYING .
 
 %build
+%if %{pkg_vcmp gcc >= 15}
+export CFLAGS="%{optflags} -std=gnu17"
+%endif
 NOCONFIGURE=1 gnome-autogen.sh
 %configure \
   --disable-schemas-compile

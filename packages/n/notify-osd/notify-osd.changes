@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  7 10:19:14 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build with GCC 15
+
+-------------------------------------------------------------------
 Sat Dec  7 19:59:30 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Replace notify-osd-fix-voidreturn.patch with
