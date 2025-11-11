@@ -592,4 +592,12 @@ because we don't need git-web and the other stuff here (forwarded request 125417
     <comment></comment>
     <requestid>1316476</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>ba4cd1ef5bf75a7fa6e88c8410e3b127</srcmd5>
+    <version>0.12.10</version>
+    <time>1762885346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1317118</requestid>
+  </revision>
 </revisionlist>
