@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 22:53:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18.3:
+  * Fix potential regex DoS vulnerability in FTS5 query
+    validation code (#3005).
+
+-------------------------------------------------------------------
 Fri Oct 17 13:56:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Rename pwiz.py in /usr/bin to pwiz to avoid PYTHONPATH confusion

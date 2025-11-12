@@ -474,4 +474,14 @@
     <comment></comment>
     <requestid>1312391</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>242a5f0fd51bb5db268c51bc866c1a15</srcmd5>
+    <version>3.18.3</version>
+    <time>1762978464</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.18.3:
+  * Fix potential regex DoS vulnerability in FTS5 query
+    validation code (#3005).</comment>
+    <requestid>1317201</requestid>
+  </revision>
 </revisionlist>
