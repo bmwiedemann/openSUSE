@@ -1,7 +1,7 @@
 #
 # spec file for package clhep
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,20 @@
 #
 
 
-%define tagname 2_4_7_1
+%define tagname 2_4_7_2
 %define shlib libCLHEP-%{tagname}
-%define _ver %(echo %{tagname} | tr '_' '.')
 # clhep requires a buildir which is not a subdirectory of the sourcedir
 %global __builddir %{_builddir}/%{name}_build
 
 Name:           clhep
-Version:        2.4.7.1
+Version:        2.4.7.2
 Release:        0
 Summary:        A class library for high energy physics
 License:        GPL-3.0-only OR LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://proj-clhep.web.cern.ch/proj-clhep/
 Source0:        https://gitlab.cern.ch/CLHEP/CLHEP/-/archive/CLHEP_%{tagname}/CLHEP-CLHEP_%{tagname}.tar.bz2#/clhep-%{tagname}.tar.bz2
-# PATCH-FIX-UPSTREAM clhep-respect-build_static_libs.patch badshah400@gmail.com -- Don't build or install static libs if BUILD_STATIC_LIBS is OFF
 Source99:       clhep.macros
-Patch1:         clhep-respect-build_static_libs.patch
 # PATCH-FIX-UPSTREAM clhep-docdir.patch badshah400@gmail.com -- Allow configuring docdir from cmake command
 Patch2:         clhep-docdir.patch
 BuildRequires:  cmake
@@ -143,6 +140,7 @@ This package provides the header-only Utility library from CLHEP.
 %clhep_subpkg_devel -n Vector clhep-Units-devel
 
 # /Section
+
 %prep
 %autosetup -n CLHEP-CLHEP_%{tagname} -p1
 chmod -x README.md ChangeLog
@@ -153,6 +151,7 @@ sed -i "/_clhep_lib_suffix_64()/d" cmake/Modules/ClhepVariables.cmake
 
 %cmake \
   -DCLHEP_BUILD_DOCS:BOOL=ON \
+  -DCLHEP_BUILD_STATIC_LIBS:BOOL=OFF \
   -DCLHEP_DOCDIR:PATH=%{_docdir}/%{name}/ \
 %ifarch x86_64 ppc64 ppc64le aarch64 riscv64
   -DLIB_SUFFIX=64 \

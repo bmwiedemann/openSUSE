@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  9 13:03:26 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.7.2:
+  * support for -std=c++23 
+  * add CLHEP_BUILD_STATIC_LIBS option (ON by default)
+- Drop clhep-respect-build_static_libs.patch: no longer needed;
+  use upstream configure option CLHEP_BUILD_STATIC_LIBS=OFF
+  instead.
+
+-------------------------------------------------------------------
 Sun Jan  7 19:42:44 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add BuildRequires: graphviz for dot, needed by doxygen when
