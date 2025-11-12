@@ -1,7 +1,7 @@
 #
 # spec file for package enc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           enc
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Modern and friendly alternative to GnuPG
 License:        MIT
