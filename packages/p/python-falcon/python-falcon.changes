@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 12 11:43:09 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- 4.2.0
+  * Typing enhancements and performance optimizations
+  * Fix reproducible builds of docs
+
+-------------------------------------------------------------------
 Tue Oct 28 09:03:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.1.0
