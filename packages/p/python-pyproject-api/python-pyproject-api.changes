@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 23:46:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Fix CI for pytest-cov 7
+  * Add support for 3.14 and drop 3.9
+
+-------------------------------------------------------------------
 Mon Sep 29 20:31:37 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.1:

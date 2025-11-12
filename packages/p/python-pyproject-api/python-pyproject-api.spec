@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-api
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        API to interact with the python pyproject.toml based projects
 License:        MIT

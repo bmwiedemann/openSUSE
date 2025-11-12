@@ -77,4 +77,14 @@
   * Create FUNDING.yml</comment>
     <requestid>1308061</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>661b8cb0c55cb66bf73ad974cff7d817</srcmd5>
+    <version>1.10.0</version>
+    <time>1762978472</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.10.0:
+  * Fix CI for pytest-cov 7
+  * Add support for 3.14 and drop 3.9</comment>
+    <requestid>1317218</requestid>
+  </revision>
 </revisionlist>
