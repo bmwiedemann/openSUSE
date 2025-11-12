@@ -1,7 +1,7 @@
 #
 # spec file for package mozo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,9 +51,12 @@ using the freedesktop.org menu specification.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+%if %{pkg_vcmp gettext-devel >= 0.24.1}
+export ACLOCAL_PATH=/usr/share/gettext/m4/
+%endif
 NOCONFIGURE=1 mate-autogen
 %configure
 %make_build
