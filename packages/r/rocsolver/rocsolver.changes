@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Tue Nov 11 14:48:08 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve handled of shared library
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify removal of files
+
+-------------------------------------------------------------------
+Wed Aug  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Default build type RelWithDebInfo
+
+-------------------------------------------------------------------
+Wed Jul 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove -mtls-dialect cflag
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+- Rebase patch1
+- Fix some tabs to spaces in the specfile for consistent formatting
+
+-------------------------------------------------------------------
+Thu Jun 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add hip jobs
+- Remove suse if check for ldconfig
+- Add export compilation database option
+
+-------------------------------------------------------------------
+Tue May 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup module build
+
+-------------------------------------------------------------------
+Fri Apr 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Thu Apr 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reenable ninja
+
+-------------------------------------------------------------------
+Sun Apr  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Document RFE to remove fmt dependency
+
+-------------------------------------------------------------------
+Thu Feb 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove multibuild
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Tue Jan 21 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread compress
+
+-------------------------------------------------------------------
+Sat Jan 18 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jan 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Tue Dec 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+
