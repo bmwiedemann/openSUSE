@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-fmt</param>
-    <param name="revision">f6348c4e64029940d22593491f0d2eaea6c0a351</param>
+    <param name="revision">486ff388311a03e79218111f5259824c1facae91</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/dbuenzli/fmt.git</param>
