@@ -55,6 +55,9 @@ work of Professor Richard Brent.
 %setup -q
 
 %build
+%if %{pkg_vcmp gettext-devel >= 0.24.1}
+export ACLOCAL_PATH=/usr/share/gettext/m4/
+%endif
 NOCONFIGURE=1 mate-autogen
 %configure
 %make_build

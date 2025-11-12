@@ -111,4 +111,12 @@
     <comment></comment>
     <requestid>1165593</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b5a63e8aae1517a98393a422f61e27b9</srcmd5>
+    <version>1.28.0</version>
+    <time>1762978557</time>
+    <user>anag_factory</user>
+    <comment>- Fix build with gettext &gt;= 0.24.1 (forwarded request 1315503 from adkorte)</comment>
+    <requestid>1317344</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  3 19:44:37 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build with gettext >= 0.24.1
+
+-------------------------------------------------------------------
 Wed Mar 27 12:40:56 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.28.0
