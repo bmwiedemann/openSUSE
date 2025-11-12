@@ -30,7 +30,7 @@
 %global psuffix %{nil}
 %endif
 Name:           coreutils%{?psuffix}
-Version:        9.8
+Version:        9.9
 Release:        0
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later
@@ -62,8 +62,6 @@ Patch501:       coreutils-test_without_valgrind.patch
 # tests: skip tests/rm/ext3-perf.sh temporarily as it hangs on OBS.
 Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
 Patch900:       coreutils-tests-workaround-make-fdleak.patch
-# Upstream patch on top of v9.8 for 'tail -nN' for larger N; remove for >v9.8.
-Patch910:       coreutils-9.8-tail-large-num-of-files.patch
 
 BuildRequires:  automake
 BuildRequires:  gmp-devel
@@ -165,7 +163,6 @@ This package contains the documentation for the GNU Core Utilities.
 
 %patch -P 810
 %patch -P 900
-%patch -P 910
 
 # ================================================
 %build

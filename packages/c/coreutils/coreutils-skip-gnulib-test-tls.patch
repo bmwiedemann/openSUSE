@@ -21,7 +21,7 @@ Index: gnulib-tests/gnulib.mk
 ===================================================================
 --- gnulib-tests/gnulib.mk.orig
 +++ gnulib-tests/gnulib.mk
-@@ -3699,9 +3699,10 @@ EXTRA_DIST += test-timespec.c macros.h
+@@ -3844,9 +3844,10 @@ EXTRA_DIST += test-timespec.c macros.h
  
  ## begin gnulib module tls-tests
  

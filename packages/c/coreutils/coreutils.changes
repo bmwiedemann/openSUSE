@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Tue Nov 11 08:12:40 UTC 2025 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Update to 9.9:
+  Bug fixes
+  * `basenc --base58` would not operate correctly with input > 15561475 bytes.
+    [bug introduced with --base58 in coreutils-9.8]
+  * 'cksum --check' now supports base64 encoded input in untagged format:
+     - for all length adjustable algorithms (blake2b, sha2, sha3),
+     - if that base64 input starts with a tag like "SHA1" etc.
+    Previously an error was given, about invalid input format.
+    [bug introduced in coreutils-9.2]
+  * 'cksum --check -a sha2' has better support for tagged format.  Previously
+    an unneeded but explicit '-a sha2' did not match standard tags like SHA256.
+    Also non standard SHA2 tags with a bad length resulted in undefined behavior.
+    [bug introduced in coreutils-9.8]
+  * 'cp' restores performance with transparently compressed files, which
+    regressed due to the avoidance of copy offload, seen with OpenZFS at least.
+    [bug introduced in coreutils-9.8]
+  * `env` on macOS, for now only when built with --disable-nls,
+    will no longer always set a __CF_USER_TEXT_ENCODING environment variable.
+    [bug introduced in coreutils-9.8]
+  * 'nice' now limits the adjusted niceness value to its supported range on
+    GNU/Hurd.
+    [This bug was present in "the beginning".]
+  * 'numfmt' no longer reads out-of-bounds memory with trailing blanks in input.
+    [bug introduced with numfmt in coreutils-8.21]
+  * 'numfmt' no longer outputs invalid characters with multi-byte blanks in input.
+    [bug introduced in coreutils-9.5]
+  * 'rm -d DIR' no longer fails on Ceph snapshot directories.
+    Although these directories are nonempty, 'rmdir DIR' succeeds on them.
+    [bug introduced in coreutils-8.16]
+  * 'sort --compress-program' now diagnoses if it can't write more data to an
+    exited compressor.  Previously sort could have exited silently in this case.
+    [bug introduced in coreutils-6.8]
+  * 'tail' outputs the correct number of lines again for non-small -n values.
+    Previously it may have output too few lines.
+    [bug introduced in coreutils-9.8]
+  * 'unexpand' no longer triggers a heap buffer overflow with --tabs arguments
+    that use the GNU extension /NUM or +NUM formats.
+    [bug introduced in coreutils-8.28]
+  Changes in behavior
+  * 'cp' with default options may again, like with versions before v9.8,
+    miss opportunities to create holes with file systems that support
+    SEEK_HOLE only trivially.  This change is a consequence of the
+    abovementioned copy offload fix.
+  * 'sort --compress-program' will continue without compressing temporary files
+    if the specified program cannot be executed.  Also malformed shell scripts
+    without a "shebang line" will no longer be executed.
+  New Features
+  * 'numfmt' now accepts the --unit-separator=SEP option, to output or accept
+    a separator between the number and unit.  For e.g. "1234 M".
+  Improvements
+  * 'fmt', 'date', 'nl', and 'pr' will now exit promptly upon receiving a write
+    error, which is significant when reading large / unbounded inputs.
+  * install, sort, and split now use posix_spawn() to invoke child programs more
+    efficiently and more independently from their own memory usage.
+  * 'numfmt':
+    - parses numbers with a non-breaking space character before a unit
+    - parses numbers containing grouping characters from the current locale
+    - supports a multi-byte --delimiter character
+    - no longer processes input indefinitely in the presence of write errors
+  *  wc -l now operates 10% faster on hosts that support AVX512 instructions.
+  Build-related
+  * chcon and runcon are not built by default if selinux headers are not present,
+    or if the --without-selinux configure option is specified.
+    This can be overridden with the --with-selinux configure option.
+  * nproc no longer fails to build with Android API level <= 20.
+    [build issue introduced in coreutils-9.8]
+- coreutils-9.8-tail-large-num-of-files.patch: Remove now-upstream patch.
+- coreutils-i18n.patch: Refresh patch.
+- Refresh all other patches.
+
+
+-------------------------------------------------------------------
 Thu Sep 25 18:57:34 UTC 2025 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - coreutils-9.8-tail-large-num-of-files.patch: Add upstream patch:

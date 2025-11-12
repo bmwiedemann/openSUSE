@@ -16,7 +16,7 @@ Subject: [PATCH] coreutils-i18n.patch
  src/expand.c                |   90 ++++-
  src/local.mk                |    4 
  src/pr.c                    |  443 ++++++++++++++++++++++--
- src/sort.c                  |  790 +++++++++++++++++++++++++++++++++++++++++---
+ src/sort.c                  |  791 +++++++++++++++++++++++++++++++++++++++++---
  src/unexpand.c              |  101 ++++-
  tests/Coreutils.pm          |    3 
  tests/expand/mb.sh          |  183 ++++++++++
@@ -29,7 +29,7 @@ Subject: [PATCH] coreutils-i18n.patch
  tests/sort/sort-merge.pl    |   42 ++
  tests/sort/sort.pl          |   40 ++
  tests/unexpand/mb.sh        |  172 +++++++++
- 25 files changed, 2878 insertions(+), 167 deletions(-)
+ 25 files changed, 2879 insertions(+), 167 deletions(-)
  create mode 100644 lib/mbfile.c
  create mode 100644 lib/mbfile.h
  create mode 100644 m4/mbfile.m4
@@ -42,10 +42,10 @@ Index: bootstrap.conf
 ===================================================================
 --- bootstrap.conf.orig
 +++ bootstrap.conf
-@@ -169,6 +169,8 @@ gnulib_modules="
-   maintainer-makefile
+@@ -171,6 +171,8 @@ gnulib_modules="
    malloc-gnu
    manywarnings
+   mbbuf
 +  mbchar
 +  mbfile
    mbrlen
@@ -1100,7 +1100,7 @@ Index: src/expand-common.c
  #include "system.h"
  #include "c-ctype.h"
  #include "fadvise.h"
-@@ -123,6 +124,119 @@ set_increment_size (colno tabval)
+@@ -132,6 +133,119 @@ set_increment_size (colno tabval)
    return ok;
  }
  
@@ -1402,7 +1402,7 @@ Index: src/local.mk
 ===================================================================
 --- src/local.mk.orig
 +++ src/local.mk
-@@ -479,8 +479,8 @@ src_base32_CPPFLAGS = -DBASE_TYPE=32 $(A
+@@ -490,8 +490,8 @@ src_base32_CPPFLAGS = -DBASE_TYPE=32 $(A
  src_basenc_SOURCES = src/basenc.c
  src_basenc_CPPFLAGS = -DBASE_TYPE=42 $(AM_CPPFLAGS)
  
@@ -1412,7 +1412,7 @@ Index: src/local.mk
 +src_unexpand_SOURCES = src/unexpand.c src/expand-common.c lib/mbfile.c lib/mbchar.c
  
  src_wc_SOURCES = src/wc.c
- if USE_AVX2_WC_LINECOUNT
+ if USE_AVX512_WC_LINECOUNT
 Index: src/pr.c
 ===================================================================
 --- src/pr.c.orig
@@ -1761,7 +1761,7 @@ Index: src/pr.c
            h_next = h + chars_per_column;
          }
      }
-@@ -1748,9 +1872,9 @@ static void
+@@ -1751,9 +1875,9 @@ static void
  align_column (COLUMN *p)
  {
    padding_not_printed = p->start_position;
@@ -1773,7 +1773,7 @@ Index: src/pr.c
        padding_not_printed = ANYWHERE;
      }
  
-@@ -2024,13 +2148,13 @@ store_char (char c)
+@@ -2030,13 +2154,13 @@ store_char (char c)
        /* May be too generous. */
        buff = xpalloc (buff, &buff_allocated, 1, -1, sizeof *buff);
      }
@@ -1789,7 +1789,7 @@ Index: src/pr.c
    char *s;
    int num_width;
  
-@@ -2047,22 +2171,24 @@ add_line_number (COLUMN *p)
+@@ -2053,22 +2177,24 @@ add_line_number (COLUMN *p)
        /* Tabification is assumed for multiple columns, also for n-separators,
           but 'default n-separator = TAB' hasn't been given priority over
           equal column_width also specified by POSIX. */
@@ -1818,7 +1818,7 @@ Index: src/pr.c
          output_position = POS_AFTER_TAB (chars_per_output_tab,
                            output_position);
      }
-@@ -2221,7 +2347,7 @@ print_white_space (void)
+@@ -2227,7 +2353,7 @@ print_white_space (void)
    while (goal - h_old > 1
           && (h_new = POS_AFTER_TAB (chars_per_output_tab, h_old)) <= goal)
      {
@@ -1827,7 +1827,7 @@ Index: src/pr.c
        h_old = h_new;
      }
    while (++h_old <= goal)
-@@ -2241,6 +2367,7 @@ print_sep_string (void)
+@@ -2247,6 +2373,7 @@ print_sep_string (void)
  {
    char const *s = col_sep_string;
    int l = col_sep_length;
@@ -1835,7 +1835,7 @@ Index: src/pr.c
  
    if (separators_not_printed <= 0)
      {
-@@ -2252,6 +2379,7 @@ print_sep_string (void)
+@@ -2258,6 +2385,7 @@ print_sep_string (void)
      {
        for (; separators_not_printed > 0; --separators_not_printed)
          {
@@ -1843,7 +1843,7 @@ Index: src/pr.c
            while (l-- > 0)
              {
                /* 3 types of sep_strings: spaces only, spaces and chars,
-@@ -2265,12 +2393,15 @@ print_sep_string (void)
+@@ -2271,12 +2399,15 @@ print_sep_string (void)
                  }
                else
                  {
@@ -1860,7 +1860,7 @@ Index: src/pr.c
            /* sep_string ends with some spaces */
            if (spaces_not_printed > 0)
              print_white_space ();
-@@ -2298,7 +2429,7 @@ print_clump (COLUMN *p, int n, char *clu
+@@ -2307,7 +2438,7 @@ print_clump (COLUMN *p, int n, char *clu
     required number of tabs and spaces. */
  
  static void
@@ -1869,7 +1869,7 @@ Index: src/pr.c
  {
    if (tabify_output)
      {
-@@ -2322,6 +2453,74 @@ print_char (char c)
+@@ -2331,6 +2462,74 @@ print_char (char c)
    putchar (c);
  }
  
@@ -1944,7 +1944,7 @@ Index: src/pr.c
  /* Skip to page PAGE before printing.
     PAGE may be larger than total number of pages. */
  
-@@ -2498,9 +2697,9 @@ read_line (COLUMN *p)
+@@ -2507,9 +2706,9 @@ read_line (COLUMN *p)
            align_empty_cols = false;
          }
  
@@ -1956,7 +1956,7 @@ Index: src/pr.c
            padding_not_printed = ANYWHERE;
          }
  
-@@ -2569,7 +2768,7 @@ print_stored (COLUMN *p)
+@@ -2578,7 +2777,7 @@ print_stored (COLUMN *p)
    COLUMN *q;
  
    int line = p->current_line++;
@@ -1965,7 +1965,7 @@ Index: src/pr.c
    /* FIXME
       UMR: Uninitialized memory read:
       * This is occurring while in:
-@@ -2581,7 +2780,7 @@ print_stored (COLUMN *p)
+@@ -2590,7 +2789,7 @@ print_stored (COLUMN *p)
       xmalloc        [xmalloc.c:94]
       init_store_cols [pr.c:1648]
       */
@@ -1974,7 +1974,7 @@ Index: src/pr.c
  
    pad_vertically = true;
  
-@@ -2601,9 +2800,9 @@ print_stored (COLUMN *p)
+@@ -2610,9 +2809,9 @@ print_stored (COLUMN *p)
          }
      }
  
@@ -1986,7 +1986,7 @@ Index: src/pr.c
        padding_not_printed = ANYWHERE;
      }
  
-@@ -2616,8 +2815,8 @@ print_stored (COLUMN *p)
+@@ -2625,8 +2824,8 @@ print_stored (COLUMN *p)
    if (spaces_not_printed == 0)
      {
        output_position = p->start_position + end_vector[line];
@@ -1997,7 +1997,7 @@ Index: src/pr.c
      }
  
    return true;
-@@ -2636,7 +2835,7 @@ print_stored (COLUMN *p)
+@@ -2645,7 +2844,7 @@ print_stored (COLUMN *p)
     number of characters is 1.) */
  
  static int
@@ -2006,7 +2006,7 @@ Index: src/pr.c
  {
    unsigned char uc = c;
    char *s = clump_buff;
-@@ -2646,10 +2845,10 @@ char_to_clump (char c)
+@@ -2655,10 +2854,10 @@ char_to_clump (char c)
    int chars;
    int chars_per_c = 8;
  
@@ -2019,7 +2019,7 @@ Index: src/pr.c
      {
        width = TAB_WIDTH (chars_per_c, input_position);
  
-@@ -2730,6 +2929,164 @@ char_to_clump (char c)
+@@ -2739,6 +2938,164 @@ char_to_clump (char c)
    return chars;
  }
  
@@ -2188,10 +2188,11 @@ Index: src/sort.c
 ===================================================================
 --- src/sort.c.orig
 +++ src/sort.c
-@@ -29,6 +29,14 @@
- #include <sys/types.h>
+@@ -30,6 +30,15 @@
  #include <sys/wait.h>
  #include <signal.h>
+ #include <spawn.h>
++
 +#if HAVE_WCHAR_H
 +# include <wchar.h>
 +#endif
@@ -2203,7 +2204,7 @@ Index: src/sort.c
  #include "system.h"
  #include "argmatch.h"
  #include "assure.h"
-@@ -158,14 +166,39 @@ static int thousands_sep;
+@@ -160,14 +169,39 @@ static int thousands_sep;
  /* We currently ignore multi-byte grouping chars.  */
  static bool thousands_sep_ignored;
  
@@ -2244,7 +2245,7 @@ Index: src/sort.c
  /* The kind of blanks for '-b' to skip in various options. */
  enum blanktype { bl_start, bl_end, bl_both };
  
-@@ -342,13 +375,11 @@ static bool stable;
+@@ -344,13 +378,11 @@ static bool stable;
  /* An int value outside char range.  */
  enum { NON_CHAR = CHAR_MAX + 1 };
  
@@ -2261,9 +2262,9 @@ Index: src/sort.c
  
  /* Flag to remove consecutive duplicate lines from the output.
     Only the last of a sequence of equal lines will be output. */
-@@ -806,6 +837,46 @@ reap_all (void)
-     reap (-1);
- }
+@@ -386,6 +418,46 @@ struct tempnode
+ static struct tempnode *volatile temphead;
+ static struct tempnode *volatile *temptail = &temphead;
  
 +/* Function pointers. */
 +static void
@@ -2308,7 +2309,7 @@ Index: src/sort.c
  /* Clean up any remaining temporary files.  */
  
  static void
-@@ -1273,7 +1344,7 @@ zaptemp (char const *name)
+@@ -1343,7 +1415,7 @@ zaptemp (char const *name)
    free (node);
  }
  
@@ -2317,7 +2318,7 @@ Index: src/sort.c
  
  static int
  struct_month_cmp (void const *m1, void const *m2)
-@@ -1288,7 +1359,7 @@ struct_month_cmp (void const *m1, void c
+@@ -1358,7 +1430,7 @@ struct_month_cmp (void const *m1, void c
  /* Initialize the character class tables. */
  
  static void
@@ -2326,7 +2327,7 @@ Index: src/sort.c
  {
    size_t i;
  
-@@ -1300,7 +1371,7 @@ inittables (void)
+@@ -1370,7 +1442,7 @@ inittables (void)
        fold_toupper[i] = toupper (i);
      }
  
@@ -2335,7 +2336,7 @@ Index: src/sort.c
    /* If we're not in the "C" locale, read different names for months.  */
    if (hard_LC_TIME)
      {
-@@ -1380,6 +1451,84 @@ specify_nmerge (int oi, char c, char con
+@@ -1450,6 +1522,84 @@ specify_nmerge (int oi, char c, char con
      xstrtol_fatal (e, oi, c, long_options, s);
  }
  
@@ -2420,7 +2421,7 @@ Index: src/sort.c
  /* Specify the amount of main memory to use when sorting.  */
  static void
  specify_sort_size (int oi, char c, char const *s)
-@@ -1611,7 +1760,7 @@ buffer_linelim (struct buffer const *buf
+@@ -1676,7 +1826,7 @@ buffer_linelim (struct buffer const *buf
     by KEY in LINE. */
  
  static char *
@@ -2429,7 +2430,7 @@ Index: src/sort.c
  {
    char *ptr = line->text, *lim = ptr + line->length - 1;
    size_t sword = key->sword;
-@@ -1620,10 +1769,10 @@ begfield (struct line const *line, struc
+@@ -1685,10 +1835,10 @@ begfield (struct line const *line, struc
    /* The leading field separator itself is included in a field when -t
       is absent.  */
  
@@ -2442,7 +2443,7 @@ Index: src/sort.c
            ++ptr;
          if (ptr < lim)
            ++ptr;
-@@ -1653,12 +1802,71 @@ begfield (struct line const *line, struc
+@@ -1718,12 +1868,71 @@ begfield (struct line const *line, struc
    return ptr;
  }
  
@@ -2515,7 +2516,7 @@ Index: src/sort.c
  {
    char *ptr = line->text, *lim = ptr + line->length - 1;
    size_t eword = key->eword, echar = key->echar;
-@@ -1673,10 +1881,10 @@ limfield (struct line const *line, struc
+@@ -1738,10 +1947,10 @@ limfield (struct line const *line, struc
       'beginning' is the first character following the delimiting TAB.
       Otherwise, leave PTR pointing at the first 'blank' character after
       the preceding field.  */
@@ -2528,7 +2529,7 @@ Index: src/sort.c
            ++ptr;
          if (ptr < lim && (eword || echar))
            ++ptr;
-@@ -1722,10 +1930,10 @@ limfield (struct line const *line, struc
+@@ -1787,10 +1996,10 @@ limfield (struct line const *line, struc
       */
  
    /* Make LIM point to the end of (one byte past) the current field.  */
@@ -2541,7 +2542,7 @@ Index: src/sort.c
        if (newlim)
          lim = newlim;
      }
-@@ -1760,6 +1968,130 @@ limfield (struct line const *line, struc
+@@ -1825,6 +2034,130 @@ limfield (struct line const *line, struc
    return ptr;
  }
  
@@ -2672,7 +2673,7 @@ Index: src/sort.c
  /* Fill BUF reading from FP, moving buf->left bytes from the end
     of buf->buf to the beginning first.  If EOF is reached and the
     file wasn't terminated by a newline, supply one.  Set up BUF's line
-@@ -1846,8 +2178,22 @@ fillbuf (struct buffer *buf, FILE *fp, c
+@@ -1911,8 +2244,22 @@ fillbuf (struct buffer *buf, FILE *fp, c
                    else
                      {
                        if (key->skipsblanks)
@@ -2697,7 +2698,7 @@ Index: src/sort.c
                        line->keybeg = line_start;
                      }
                  }
-@@ -1985,12 +2331,10 @@ find_unit_order (char const *number)
+@@ -2050,12 +2397,10 @@ find_unit_order (char const *number)
  
  ATTRIBUTE_PURE
  static int
@@ -2713,7 +2714,7 @@ Index: src/sort.c
  
    int diff = find_unit_order (a) - find_unit_order (b);
    return (diff ? diff : strnumcmp (a, b, decimal_point, thousands_sep));
-@@ -2002,7 +2346,7 @@ human_numcompare (char const *a, char co
+@@ -2067,7 +2412,7 @@ human_numcompare (char const *a, char co
  
  ATTRIBUTE_PURE
  static int
@@ -2722,7 +2723,7 @@ Index: src/sort.c
  {
    while (blanks[to_uchar (*a)])
      a++;
-@@ -2012,6 +2356,25 @@ numcompare (char const *a, char const *b
+@@ -2077,6 +2422,25 @@ numcompare (char const *a, char const *b
    return strnumcmp (a, b, decimal_point, thousands_sep);
  }
  
@@ -2748,7 +2749,7 @@ Index: src/sort.c
  static int
  nan_compare (long double a, long double b)
  {
-@@ -2053,7 +2416,7 @@ general_numcompare (char const *sa, char
+@@ -2118,7 +2482,7 @@ general_numcompare (char const *sa, char
     Return 0 if the name in S is not recognized.  */
  
  static int
@@ -2757,7 +2758,7 @@ Index: src/sort.c
  {
    size_t lo = 0;
    size_t hi = MONTHS_PER_YEAR;
-@@ -2392,15 +2755,14 @@ debug_key (struct line const *line, stru
+@@ -2457,15 +2821,14 @@ debug_key (struct line const *line, stru
            char saved = *lim;
            *lim = '\0';
  
@@ -2775,7 +2776,7 @@ Index: src/sort.c
            else if (key->general_numeric)
              ignore_value (strtold (beg, &tighter_lim));
            else if (key->numeric || key->human_numeric)
-@@ -2546,7 +2908,7 @@ key_warnings (struct keyfield const *gke
+@@ -2611,7 +2974,7 @@ key_warnings (struct keyfield const *gke
        /* Warn about significant leading blanks.  */
        bool implicit_skip = key_numeric (key) || key->month;
        bool line_offset = key->eword == 0 && key->echar != 0; /* -k1.x,1.y  */
@@ -2784,7 +2785,7 @@ Index: src/sort.c
            && ((!key->skipsblanks && !implicit_skip)
                || (!key->skipsblanks && key->schar)
                || (!key->skipeblanks && key->echar)))
-@@ -2594,9 +2956,9 @@ key_warnings (struct keyfield const *gke
+@@ -2659,9 +3022,9 @@ key_warnings (struct keyfield const *gke
    bool number_locale_warned = false;
    if (basic_numeric_field_span)
      {
@@ -2797,7 +2798,7 @@ Index: src/sort.c
          {
            error (0, 0,
                   _("field separator %s is treated as a "
-@@ -2607,9 +2969,9 @@ key_warnings (struct keyfield const *gke
+@@ -2672,9 +3035,9 @@ key_warnings (struct keyfield const *gke
      }
    if (basic_numeric_field_span || general_numeric_field_span)
      {
@@ -2810,7 +2811,7 @@ Index: src/sort.c
          {
            error (0, 0,
                   _("field separator %s is treated as a "
-@@ -2617,19 +2979,19 @@ key_warnings (struct keyfield const *gke
+@@ -2682,19 +3045,19 @@ key_warnings (struct keyfield const *gke
                   quote (((char []) {decimal_point, 0})));
            number_locale_warned = true;
          }
@@ -2834,7 +2835,7 @@ Index: src/sort.c
          }
      }
  
-@@ -2681,11 +3043,87 @@ diff_reversed (int diff, bool reversed)
+@@ -2746,11 +3109,87 @@ diff_reversed (int diff, bool reversed)
    return reversed ? _GL_CMP (0, diff) : diff;
  }
  
@@ -2923,7 +2924,7 @@ Index: src/sort.c
  {
    struct keyfield *key = keylist;
  
-@@ -2766,7 +3204,7 @@ keycompare (struct line const *a, struct
+@@ -2831,7 +3270,7 @@ keycompare (struct line const *a, struct
            else if (key->human_numeric)
              diff = human_numcompare (ta, tb);
            else if (key->month)
@@ -2932,7 +2933,7 @@ Index: src/sort.c
            else if (key->random)
              diff = compare_random (ta, tlena, tb, tlenb);
            else if (key->version)
-@@ -2876,6 +3314,211 @@ keycompare (struct line const *a, struct
+@@ -2941,6 +3380,211 @@ keycompare (struct line const *a, struct
    return diff_reversed (diff, key->reverse);
  }
  
@@ -3144,7 +3145,7 @@ Index: src/sort.c
  /* Compare two lines A and B, returning negative, zero, or positive
     depending on whether A compares less than, equal to, or greater than B. */
  
-@@ -2903,7 +3546,7 @@ compare (struct line const *a, struct li
+@@ -2968,7 +3612,7 @@ compare (struct line const *a, struct li
      diff = - NONZERO (blen);
    else if (blen == 0)
      diff = 1;
@@ -3153,7 +3154,7 @@ Index: src/sort.c
      {
        /* xmemcoll0 is a performance enhancement as
           it will not unconditionally write '\0' after the
-@@ -4289,6 +4932,7 @@ set_ordering (char const *s, struct keyf
+@@ -4340,6 +4984,7 @@ set_ordering (char const *s, struct keyf
            break;
          case 'f':
            key->translate = fold_toupper;
@@ -3161,7 +3162,7 @@ Index: src/sort.c
            break;
          case 'g':
            key->general_numeric = true;
-@@ -4368,7 +5012,7 @@ main (int argc, char **argv)
+@@ -4419,7 +5064,7 @@ main (int argc, char **argv)
    initialize_exit_failure (SORT_FAILURE);
  
    hard_LC_COLLATE = hard_locale (LC_COLLATE);
@@ -3170,7 +3171,7 @@ Index: src/sort.c
    hard_LC_TIME = hard_locale (LC_TIME);
  #endif
  
-@@ -4391,6 +5035,29 @@ main (int argc, char **argv)
+@@ -4442,6 +5087,29 @@ main (int argc, char **argv)
        thousands_sep = NON_CHAR;
    }
  
@@ -3200,7 +3201,7 @@ Index: src/sort.c
    have_read_stdin = false;
    inittables ();
  
-@@ -4661,13 +5328,34 @@ main (int argc, char **argv)
+@@ -4717,13 +5385,34 @@ main (int argc, char **argv)
  
          case 't':
            {
@@ -3239,7 +3240,7 @@ Index: src/sort.c
                  else
                    {
                      /* Provoke with 'sort -txx'.  Complain about
-@@ -4678,9 +5366,11 @@ main (int argc, char **argv)
+@@ -4734,9 +5423,11 @@ main (int argc, char **argv)
                             quote (optarg));
                    }
                }
@@ -3697,7 +3698,7 @@ Index: tests/local.mk
 ===================================================================
 --- tests/local.mk.orig
 +++ tests/local.mk
-@@ -404,6 +404,8 @@ all_tests =					\
+@@ -412,6 +412,8 @@ all_tests =					\
    tests/sort/sort-field-limit.sh		\
    tests/sort/sort-files0-from.pl		\
    tests/sort/sort-float.sh			\
@@ -3706,7 +3707,7 @@ Index: tests/local.mk
    tests/sort/sort-h-thousands-sep.sh		\
    tests/sort/sort-merge.pl			\
    tests/sort/sort-merge-fdlimit.sh		\
-@@ -609,6 +611,7 @@ all_tests =					\
+@@ -618,6 +620,7 @@ all_tests =					\
    tests/du/threshold.sh				\
    tests/du/trailing-slash.sh			\
    tests/du/two-args.sh				\
@@ -3714,7 +3715,7 @@ Index: tests/local.mk
    tests/id/gnu-zero-uids.sh			\
    tests/id/no-context.sh			\
    tests/id/context.sh				\
-@@ -765,6 +768,7 @@ all_tests =					\
+@@ -774,6 +777,7 @@ all_tests =					\
    tests/touch/read-only.sh			\
    tests/touch/relative.sh			\
    tests/touch/trailing-slash.sh			\
@@ -3858,7 +3859,7 @@ Index: tests/misc/unexpand.pl
  my @Tests =
      (
       ['a1', {IN=> ' 'x 1 ."y\n"}, {OUT=> ' 'x 1 ."y\n"}],
-@@ -128,6 +136,37 @@ my @Tests =
+@@ -132,6 +140,37 @@ my @Tests =
       ['ts2', '-t5,8', {IN=>"x\t \t y\n"},    {OUT=>"x\t\t y\n"}],
      );
  

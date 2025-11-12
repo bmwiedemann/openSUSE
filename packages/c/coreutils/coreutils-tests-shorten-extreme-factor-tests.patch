@@ -9,14 +9,14 @@ or arm6l.  Strip the tests down from 37 to 3.
 * tests/local.mk (factor_tests): From the sequence of the tests
 00..36, remove all but t00, t05 and t36.
 ---
- tests/local.mk |   11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ tests/local.mk |    9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
 Index: tests/local.mk
 ===================================================================
 --- tests/local.mk.orig
 +++ tests/local.mk
-@@ -774,13 +774,8 @@ all_tests =					\
+@@ -783,13 +783,8 @@ all_tests =					\
  # See tests/factor/create-test.sh.
  tf = tests/factor
  factor_tests = \
@@ -29,6 +29,6 @@ Index: tests/local.mk
 -  $(tf)/t30.sh $(tf)/t31.sh $(tf)/t32.sh $(tf)/t33.sh $(tf)/t34.sh \
 +  $(tf)/t00.sh \
 +  $(tf)/t05.sh \
-   $(tf)/t35.sh $(tf)/t36.sh $(tf)/t37.sh $(tf)/t38.sh
+   $(tf)/t35.sh $(tf)/t36.sh $(tf)/t37.sh $(tf)/t38.sh $(tf)/t39.sh \
+   $(tf)/t40.sh
  
- $(factor_tests): $(tf)/run.sh $(tf)/create-test.sh
