@@ -1,0 +1,51 @@
+Index: fedora-crypto-policies-20250714.cd6043a/crypto-policies.7.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/crypto-policies.7.txt
++++ fedora-crypto-policies-20250714.cd6043a/crypto-policies.7.txt
+@@ -195,9 +195,8 @@ PROVIDED POLICIES
+ 
+ *FIPS*::
+   A policy to aid conformance to the *FIPS 140* requirements.
+-  This policy is used automatically by a dracut initramfs module and a systemd
+-  service if the kernel is booted with `fips=1` to switch the system into the
+-  *FIPS 140* mode.
++  This policy is used internally by the *fips-mode-setup(8)* tool which can
++  switch the system to the *FIPS 140* mode.
+   This policy provides at least 112-bit security.
+ 
+   * MACs: all *HMAC* with *SHA1* or better
+@@ -310,6 +309,12 @@ COMMANDS
+   back ends and allows the system administrator to change the active
+   cryptographic policy.
+ 
++*fips-mode-setup(8)*::
++  This command allows the system administrator to enable or disable the
++  system FIPS mode and also to apply the *FIPS* cryptographic policy which
++  limits the allowed algorithms and protocols to those allowed by the FIPS
++  140 requirements.
++
+ 
+ NOTES
+ -----
+@@ -509,7 +514,7 @@ FILES
+ 
+ SEE ALSO
+ --------
+-update-crypto-policies(8)
++update-crypto-policies(8), fips-mode-setup(8)
+ 
+ 
+ AUTHOR
+Index: fedora-crypto-policies-20250714.cd6043a/update-crypto-policies.8.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/update-crypto-policies.8.txt
++++ fedora-crypto-policies-20250714.cd6043a/update-crypto-policies.8.txt
+@@ -260,7 +260,7 @@ FILES
+ 
+ SEE ALSO
+ --------
+-crypto-policies(7)
++crypto-policies(7), fips-mode-setup(8)
+ 
+ AUTHOR
+ ------

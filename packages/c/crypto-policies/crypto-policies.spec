@@ -1,7 +1,7 @@
 #
 # spec file for package crypto-policies
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,13 @@
 #
 
 
-# testsuite is disabled by default
+# disable testsuite and manbuild to reduce dependencies in ring0
 %bcond_with testsuite
-# manbuild is disabled by default
 %bcond_with manbuild
 %global _python_bytecompile_extra 0
 
 Name:           crypto-policies
-Version:        20250124.4d262e7
+Version:        20250714.cd6043a
 Release:        0
 Summary:        System-wide crypto policies
 License:        LGPL-2.1-or-later
@@ -31,10 +30,10 @@ Group:          Productivity/Networking/Security
 URL:            https://gitlab.com/redhat-crypto/fedora-%{name}
 Source0:        fedora-%{name}-%{version}.tar.gz
 Source1:        README.SUSE
-Source2:        crypto-policies.7.gz
-Source3:        update-crypto-policies.8.gz
-Source4:        fips-mode-setup.8.gz
-Source5:        fips-finish-install.8.gz
+Source2:        man-crypto-policies.tar.xz
+Source3:        man-fips-scripts.tar.xz
+Source4:        fips-mode-setup
+Source5:        fips-finish-install
 Source6:        crypto-policies-rpmlintrc
 %if %{without manbuild}
 #PATCH-FIX-OPENSUSE Manpages build cycles and dependencies
@@ -46,20 +45,18 @@ Patch1:         crypto-policies-no-build-manpages.patch
 %endif
 #PATCH-FIX-OPENSUSE Skip not needed LibreswanGenerator and SequoiaGenerator
 Patch2:         crypto-policies-policygenerators.patch
-#PATCH-FIX-OPENSUSE bsc#1209998 Mention the supported back-end policies
-Patch3:         crypto-policies-supported.patch
-#PATCH-FIX-OPENSUSE Remove version for pylint from Makefile
-Patch5:         crypto-policies-pylint.patch
-#PATCH-FIX-OPENSUSE Adpat the fips-mode-setup script for SUSE/openSUSE [jsc#PED-4578]
-Patch6:         crypto-policies-FIPS.patch
 #PATCH-FIX-OPENSUSE Skip NSS policy check if not installed mozilla-nss-tools [bsc#1211301]
-Patch7:         crypto-policies-nss.patch
+Patch3:         crypto-policies-nss.patch
 #PATCH-FIX-OPENSUSE enable SHA1 sigver in DEFAULT
-Patch8:         crypto-policies-enable-SHA1-sigver-in-DEFAULT.patch
+Patch4:         crypto-policies-enable-SHA1-sigver-in-DEFAULT.patch
 #PATCH-FIX-OPENSUSE Allow sshd in FIPS mode when using the DEFAULT policy [bsc#1227370]
-Patch9:         crypto-policies-Allow-sshd-in-FIPS-mode-using-DEFAULT.patch
+Patch5:         crypto-policies-Allow-sshd-in-FIPS-mode-using-DEFAULT.patch
+#PATCH-FIX-OPENSUSE Fix the output comments around setting the FIPS mode
+Patch6:         crypto-policies-FIPS-output.patch
+#PATCH-FIX-OPENSUSE Adapt the manpages to SUSE/openSUSE
+Patch7:         crypto-policies-SUSE-manpages.patch
 #PATCH-FIX-OPENSUSE Allow openssl to load when using any policy in FIPS mode [bsc#1243830, bsc#1242233]
-Patch10:        crypto-policies-Allow-openssl-other-policies-in-FIPS-mode.patch
+Patch8:         crypto-policies-Allow-openssl-other-policies-in-FIPS-mode.patch
 BuildRequires:  python3-base >= 3.11
 %if %{with manbuild}
 BuildRequires:  asciidoc
@@ -120,6 +117,20 @@ cp -p %{SOURCE1} .
 
 %build
 export OPENSSL_CONF=''
+
+# The scripts fips-mode-setup and fips-finish-install
+# have been removed upstream and we ship them as sources.
+cp -p %{SOURCE4} %{SOURCE5} .
+
+%if %{with manbuild}
+cp -p %{SOURCE3} .
+tar xf %{SOURCE3}
+# The manpages fips-mode-setup.8.gz and fips-finish-install.8.gz
+# have been removed upstream and we ship them as sources.
+sed -i '/MAN8PAGES=update-crypto-policies.8/s/$/ fips-finish-install.8 fips-mode-setup.8/g' Makefile
+sed -i '/SCRIPTS=update-crypto-policies/s/$/ fips-finish-install fips-mode-setup/g' Makefile
+%endif
+
 %make_build
 
 %install
@@ -143,8 +154,9 @@ mkdir -p -m 755 %{buildroot}%{_mandir}/man7/
 mkdir -p -m 755 %{buildroot}%{_mandir}/man8/
 %if %{without manbuild}
 # Install the manpages from defined sources
-cp %{SOURCE2} %{buildroot}%{_mandir}/man7/
-cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{buildroot}%{_mandir}/man8/
+tar xf %{SOURCE2}
+cp *.7.gz %{buildroot}%{_mandir}/man7/
+cp *.8.gz %{buildroot}%{_mandir}/man8/
 %endif
 
 # Install the executable scripts
@@ -154,7 +166,8 @@ install -p -m 755 fips-finish-install %{buildroot}%{_bindir}/
 
 # Drop pre-generated GOST-ONLY and FEDORA policies, we do not need to ship them
 rm -rf %{buildroot}%{_datarootdir}/crypto-policies/GOST-ONLY
-rm -rf %{buildroot}%{_datarootdir}/crypto-policies/*FEDORA*
+rm -rf %{buildroot}%{_datarootdir}/crypto-policies/FEDORA*
+find  %{buildroot} -type f -name 'FEDORA*.pol' -print -delete
 
 # Drop libreswan and sequoia config files
 find  %{buildroot} -type f -name 'libreswan.*' -print -delete
@@ -177,10 +190,10 @@ for f in %{buildroot}%{_datarootdir}/crypto-policies/DEFAULT/* ; do
     ln -sf %{_datarootdir}/crypto-policies/DEFAULT/$(basename $f) %{buildroot}%{_sysconfdir}/crypto-policies/back-ends/$(basename $f .txt).config
 done
 
-# Fix shebang in scripts
-for f in %{buildroot}%{_datadir}/crypto-policies/python/*
+# Fix shebang env in python scripts
+for f in %{buildroot}%{_datadir}/crypto-policies/python/*.py
 do
-  [ -f $f ] && sed -i "1s@#!.*python.*@#!$(realpath /usr/bin/python3)@" $f
+    sed -i 's|^#!/usr/bin/env python3$|#!/usr/bin/python3|' $f
 done
 
 %py3_compile %{buildroot}%{_datadir}/crypto-policies/python
@@ -191,8 +204,7 @@ install -p -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/crypto-policies
 %check
 %if %{with testsuite}
 export OPENSSL_CONF=''
-%make_build test
-%make_build test-install test-fips-setup || :
+%make_build test SKIP_LINTING=1
 %endif
 
 %post -p <lua>
@@ -238,6 +250,12 @@ if st and st.type == "link" then
    posix.unlink(cfg_path_javasystem)
 end
 
+cfg_path_opensslconfig = "%{_sysconfdir}/crypto-policies/back-ends/openssl.config"
+st = posix.stat(cfg_path_opensslconfig)
+if st and st.type == "link" then
+   posix.unlink(cfg_path_opensslconfig)
+end
+
 %posttrans scripts
 %{_bindir}/update-crypto-policies --no-check >/dev/null 2>/dev/null || :
 
@@ -257,7 +275,6 @@ end
 %ghost %config(missingok,noreplace) %{_sysconfdir}/crypto-policies/config
 
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/gnutls.config
-%ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/openssl.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/opensslcnf.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/openssl_fips.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/openssh.config

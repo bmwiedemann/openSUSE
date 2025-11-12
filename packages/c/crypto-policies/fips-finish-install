@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -e
+
+dracut_cfg_d=/etc/dracut.conf.d
+dracut_cfg=$dracut_cfg_d/40-fips.conf
+
+is_ostree_system=0
+if test -f /run/ostree-booted -o -d /ostree; then
+	is_ostree_system=1
+fi
+
+if test x"$1" != x--complete && test x"$1" != x--undo ; then
+	echo "Complete / undo the installation of FIPS modules."
+	echo "Not to be used directly, see fips-mode-setup(8)."
+	echo "usage: $0 --complete|--undo (unsupported)"
+	exit 2
+fi
+
+if [ $(id -u) != 0 ]; then
+	echo "You must be root to run $(basename $0)"
+	exit 1
+fi
+
+umask 022
+
+# Install required packages: patterns-base-fips and perl-Bootloader
+if test ! -f $dracut_cfg && test ! -x "$(command -v pbl)" ; then
+	zypper -n install patterns-base-fips perl-Bootloader
+elif test ! -f $dracut_cfg ; then
+	zypper -n install patterns-base-fips
+elif test ! -x "$(command -v pbl)" ; then
+	zypper -n install perl-Bootloader
+fi
+
+if test ! -d $dracut_cfg_d -o ! -d /boot -o "$is_ostree_system" = 1 ; then
+	# No dracut configuration or boot directory present, do not try to modify it.
+	# Also, on OSTree systems, we currently rely on the initrd already including
+	# the FIPS module.
+	exit 0
+fi

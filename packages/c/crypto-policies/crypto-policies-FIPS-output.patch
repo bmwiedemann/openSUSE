@@ -1,0 +1,40 @@
+Index: fedora-crypto-policies-20250714.cd6043a/python/update-crypto-policies.py
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/python/update-crypto-policies.py
++++ fedora-crypto-policies-20250714.cd6043a/python/update-crypto-policies.py
+@@ -374,18 +374,14 @@ def apply_policy(pconfig, profile=None,
+             if pconfig.policy == 'FIPS':
+                 if not bootc and not is_in_fips_mode:
+                     eprint("Warning: Using 'update-crypto-policies --set FIPS'"
+-                           " is not sufficient for")
+-                    eprint("         FIPS compliance.")
+-                    eprint("         The kernel must be started with `fips=1`"
+-                           " for FIPS compliance.")
++                           " is not sufficient for FIPS compliance.")
++                    eprint("         Use 'fips-mode-setup --enable' "
++                           "command instead to enable the system FIPS mode.")
+             elif is_in_fips_mode:
+-                eprint("Warning: Using 'update-crypto-policies --set' "
+-                       "in FIPS mode will make the system")
+-                eprint("         non-compliant with FIPS.")
+-                eprint("         It can also break ssh access to the system.")
+-                eprint("         Reboot without `fips=1` on the kernel command"
+-                       " line to disable the")
+-                eprint("         system FIPS mode.")
++                eprint("Warning: Using 'update-crypto-policies --set' in FIPS"
++                       " mode will make the system non-FIPS compliant.")
++                eprint("         Use 'fips-mode-setup --disable' "
++                       "to disable the system FIPS mode.")
+ 
+     if base_dir == DEFAULT_BASE_DIR and os.geteuid() != 0:
+         eprint("You must be root to run update-crypto-policies.")
+@@ -479,8 +475,7 @@ def apply_policy(pconfig, profile=None,
+         print("Note: System-wide crypto policies "
+               "are applied on application start-up.")
+         print("It is recommended to restart the system "
+-              "for the change of policies")
+-        print("to fully take place.")
++              "for the change of policies to fully take place.")
+ 
+     return err
+ 

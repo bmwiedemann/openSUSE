@@ -1,78 +1,25 @@
-diff -PpuriN a/policies/DEFAULT.pol b/policies/DEFAULT.pol
---- a/policies/DEFAULT.pol	2025-04-09 14:18:34.954692496 +0200
-+++ b/policies/DEFAULT.pol	2025-04-09 14:19:26.564391482 +0200
-@@ -90,4 +90,4 @@ hash@RPM = SHA1+
+Index: fedora-crypto-policies-20250714.cd6043a/policies/DEFAULT.pol
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/policies/DEFAULT.pol
++++ fedora-crypto-policies-20250714.cd6043a/policies/DEFAULT.pol
+@@ -91,3 +91,6 @@ etm@SSH = ANY
+ sign@RPM = DSA-SHA1+
+ hash@RPM = SHA1+
  min_dsa_size@RPM = 1024
- 
- # https://fedoraproject.org/wiki/Changes/OpenSSLDistrustSHA1SigVer
--__openssl_block_sha1_signatures = 1
-+__openssl_block_sha1_signatures = 0
-diff -PpuriN a/policies/LEGACY.pol b/policies/LEGACY.pol
---- a/policies/LEGACY.pol	2025-04-09 14:18:34.955756041 +0200
-+++ b/policies/LEGACY.pol	2025-04-09 14:22:03.873723462 +0200
-@@ -82,6 +82,8 @@ min_rsa_size = 1024
- 
- # GnuTLS only for now
- sha1_in_certs = 1
++
 +# https://fedoraproject.org/wiki/Changes/OpenSSLDistrustSHA1SigVer
 +__openssl_block_sha1_signatures = 0
- 
- arbitrary_dh_groups = 1
- ssh_certs = 1
-diff -PpuriN a/policies/modules/SHA1.pmod b/policies/modules/SHA1.pmod
---- a/policies/modules/SHA1.pmod	2025-04-09 14:18:34.957749606 +0200
-+++ b/policies/modules/SHA1.pmod	2025-04-09 14:23:41.203919619 +0200
-@@ -6,4 +6,5 @@ sign = ECDSA-SHA1+ RSA-PSS-SHA1+ RSA-SHA
- 
- sha1_in_certs = 1
- 
-+# https://fedoraproject.org/wiki/Changes/OpenSSLDistrustSHA1SigVer
- __openssl_block_sha1_signatures = 0
-diff -PpuriN a/tests/alternative-policies/DEFAULT.pol b/tests/alternative-policies/DEFAULT.pol
---- a/tests/alternative-policies/DEFAULT.pol	2025-04-09 14:18:34.963027557 +0200
-+++ b/tests/alternative-policies/DEFAULT.pol	2025-04-09 14:24:34.158026329 +0200
-@@ -93,4 +93,4 @@ hash@rpm-sequoia = SHA1+
- min_dsa_size@rpm-sequoia = 1024
- 
- # https://fedoraproject.org/wiki/Changes/OpenSSLDistrustSHA1SigVer
--__openssl_block_sha1_signatures = 1
-+__openssl_block_sha1_signatures = 0
-diff -PpuriN a/tests/alternative-policies/LEGACY.pol b/tests/alternative-policies/LEGACY.pol
---- a/tests/alternative-policies/LEGACY.pol	2025-04-09 14:18:34.963615512 +0200
-+++ b/tests/alternative-policies/LEGACY.pol	2025-04-09 14:25:11.675101933 +0200
-@@ -90,6 +90,8 @@ min_rsa_size = 1024
- 
- # GnuTLS only for now
- sha1_in_certs = 1
-+# https://fedoraproject.org/wiki/Changes/OpenSSLDistrustSHA1SigVer
-+__openssl_block_sha1_signatures = 0
- 
+Index: fedora-crypto-policies-20250714.cd6043a/tests/alternative-policies/DEFAULT.pol
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/tests/alternative-policies/DEFAULT.pol
++++ fedora-crypto-policies-20250714.cd6043a/tests/alternative-policies/DEFAULT.pol
+@@ -86,6 +86,9 @@ sha1_in_certs = 0
  # SHA1 is still prevalent in DNSSec
  sha1_in_dnssec = 1
-diff -PpuriN a/tests/outputs/DEFAULT:GOST-opensslcnf.txt b/tests/outputs/DEFAULT:GOST-opensslcnf.txt
---- a/tests/outputs/DEFAULT:GOST-opensslcnf.txt	2025-04-09 14:18:34.968542814 +0200
-+++ b/tests/outputs/DEFAULT:GOST-opensslcnf.txt	2025-04-09 16:23:01.596169638 +0200
-@@ -11,4 +11,4 @@ Groups = X25519:secp256r1:X448:secp521r1
- alg_section = evp_properties
  
- [evp_properties]
--rh-allow-sha1-signatures = no
-+rh-allow-sha1-signatures = yes
-diff -PpuriN a/tests/outputs/DEFAULT-opensslcnf.txt b/tests/outputs/DEFAULT-opensslcnf.txt
---- a/tests/outputs/DEFAULT-opensslcnf.txt	2025-04-09 14:18:34.967607477 +0200
-+++ b/tests/outputs/DEFAULT-opensslcnf.txt	2025-04-09 16:21:21.456007296 +0200
-@@ -11,4 +11,4 @@ Groups = X25519:secp256r1:X448:secp521r1
- alg_section = evp_properties
- 
- [evp_properties]
--rh-allow-sha1-signatures = no
-+rh-allow-sha1-signatures = yes
-diff -PpuriN a/tests/outputs/DEFAULT:TEST-PQ-opensslcnf.txt b/tests/outputs/DEFAULT:TEST-PQ-opensslcnf.txt
---- a/tests/outputs/DEFAULT:TEST-PQ-opensslcnf.txt	2025-04-09 14:18:34.969495452 +0200
-+++ b/tests/outputs/DEFAULT:TEST-PQ-opensslcnf.txt	2025-04-09 16:21:54.571054558 +0200
-@@ -11,4 +11,4 @@ Groups = ?x25519_kyber768:?p256_kyber768
- alg_section = evp_properties
- 
- [evp_properties]
--rh-allow-sha1-signatures = no
-+rh-allow-sha1-signatures = yes
++# https://fedoraproject.org/wiki/Changes/OpenSSLDistrustSHA1SigVer
++__openssl_block_sha1_signatures = 0
++
+ arbitrary_dh_groups = 1
+ ssh_certs = 1
+ ssh_etm = 1

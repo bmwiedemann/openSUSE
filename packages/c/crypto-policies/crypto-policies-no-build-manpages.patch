@@ -1,8 +1,8 @@
-Index: fedora-crypto-policies-20250124.4d262e7/Makefile
+Index: fedora-crypto-policies-20250714.cd6043a/Makefile
 ===================================================================
---- fedora-crypto-policies-20250124.4d262e7.orig/Makefile
-+++ fedora-crypto-policies-20250124.4d262e7/Makefile
-@@ -34,9 +34,9 @@ install: $(MANPAGES)
+--- fedora-crypto-policies-20250714.cd6043a.orig/Makefile
++++ fedora-crypto-policies-20250714.cd6043a/Makefile
+@@ -35,9 +35,9 @@ install: $(MANPAGES)
  	mkdir -p $(DESTDIR)$(BINDIR)
  	mkdir -p $(DESTDIR)$(LIBEXECDIR)
  	mkdir -p $(DESTDIR)$(UNITDIR)
@@ -15,14 +15,14 @@ Index: fedora-crypto-policies-20250124.4d262e7/Makefile
  	install -p -m 644 $(UNITS) $(DESTDIR)$(UNITDIR)
  	install -p -m 755 $(LIBEXEC_SCRIPTS) $(DESTDIR)$(LIBEXECDIR)
  	mkdir -p $(DESTDIR)$(DIR)/
-@@ -133,8 +133,8 @@ clean:
+@@ -135,8 +135,8 @@ clean:
  	rm -rf output
  
  %: %.txt
 -	$(ASCIIDOC) -v -d manpage -b docbook $<
--	xsltproc --nonet -o $@ ${MANPAGEXSL} $@.xml
-+	#$(ASCIIDOC) -v -d manpage -b docbook $<
-+	#xsltproc --nonet -o $@ ${MANPAGEXSL} $@.xml
+-	$(XSLTPROC) --nonet -o $@ ${MANPAGEXSL} $@.xml
++	# $(ASCIIDOC) -v -d manpage -b docbook $<
++	# $(XSLTPROC) --nonet -o $@ ${MANPAGEXSL} $@.xml
  
  dist:
  	rm -rf crypto-policies && git clone . crypto-policies && rm -rf crypto-policies/.git/ && tar -czf crypto-policies-git$(VERSION).tar.gz crypto-policies && rm -rf crypto-policies

@@ -1,13 +1,13 @@
-Index: fedora-crypto-policies-20250124.4d262e7/python/policygenerators/nss.py
+Index: fedora-crypto-policies-20250714.cd6043a/python/policygenerators/nss.py
 ===================================================================
---- fedora-crypto-policies-20250124.4d262e7.orig/python/policygenerators/nss.py
-+++ fedora-crypto-policies-20250124.4d262e7/python/policygenerators/nss.py
-@@ -422,12 +422,20 @@ class NSSGenerator(ConfigGenerator):
+--- fedora-crypto-policies-20250714.cd6043a.orig/python/policygenerators/nss.py
++++ fedora-crypto-policies-20250714.cd6043a/python/policygenerators/nss.py
+@@ -428,12 +428,19 @@ class NSSGenerator(ConfigGenerator):
          try:
              with os.fdopen(fd, 'w') as f:
                  f.write(config)
 -            try:
--                ret = call(f'/usr/bin/nss-policy-check {options} {path}'
+-                ret = call(f'{nss_policy_check} {options} {path}'
 -                           '>/dev/null',
 -                           shell=True)
 -            except CalledProcessError:
@@ -25,11 +25,10 @@ Index: fedora-crypto-policies-20250124.4d262e7/python/policygenerators/nss.py
 +                # The mozilla-nss-tools package is not installed and we can
 +                # temporarily skip the policy check for mozilla-nss.
 +                ret = 3
-+
          finally:
              os.unlink(path)
  
-@@ -435,6 +443,10 @@ class NSSGenerator(ConfigGenerator):
+@@ -441,6 +448,10 @@ class NSSGenerator(ConfigGenerator):
              cls.eprint("There is a warning in NSS generated policy")
              cls.eprint(f'Policy:\n{config}')
              return False

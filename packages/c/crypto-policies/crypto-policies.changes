@@ -1,4 +1,149 @@
 -------------------------------------------------------------------
+Tue Nov 11 07:49:33 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix the testsuite:
+  * Port all the policy changes to the config files in the test suite.
+  * Use the newly introduced SKIP_LINTING=1 option.
+  * Rebase crypto-policies-Allow-openssl-other-policies-in-FIPS-mode.patch
+
+-------------------------------------------------------------------
+Mon Nov 10 18:42:15 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Adapt the manpages to SUSE/openSUSE:
+  * Add crypto-policies-SUSE-manpages.patch
+  * Compress all the man pages for update-crypto-policies.8.gz,
+    crypto-policies.7.gz, fips-finish-install.8.gz and
+    fips-mode-setup.8.gz into man-crypto-policies.tar.xz
+
+-------------------------------------------------------------------
+Mon Nov 10 14:34:37 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20250714.cd6043a: [bsc#1253025, bsc#1252696]
+  * gnutls: enable ML-DSA, for both secure-sig and secure-sig-for-cert
+  * python, policies, tests: alias X25519-MLKEM768 to MLKEM768-X25519
+  * FIPS: disable MLKEM768-X25519 for openssh (no-op)
+  * FIPS: deprioritize X25519-MLKEM768 over P256-MLKEM768 for openssl...
+  * TEST-PQ: be more careful with the ordering
+  * openssl: send one PQ and one classic key_share; prioritize PQ groups
+  * sequoia: Generate AEAD policy
+  * Do not include EdDSA in FIPS policy
+  * sequoia: Add PQC algorithm
+  * sequoia: Run tests against PQC capable policy-config-check
+  * Revert "openssl, policies: implement group_key_share option"
+  * openssl, policies: implement group_key_share option
+  * FIPS: enable hybrid ML-KEM (TLS only) and pure ML-DSA
+  * python/build-crypto-policies: output diffs on --test mismatches
+  * sequoia, rpm-sequoia: use ignore_invalid with sha3, x25519, ...
+  * policies, alg_lists, openssl: remove KYBER from allowed values
+  * openssl: stricter enabling of Ciphersuites
+  * openssl: make use of -CBC and -AESGCM keywords
+  * openssl: add TLS 1.3 Brainpool identifiers
+  * fix warning on using experimental key_exchanges
+  * update-crypto-policies: don't output FIPS warning in fips mode
+  * openssh: map mlkem768x25519-sha256 to KEM-ECDH & MLKEM768-X25519 & SHA2-256
+  * openssh, libssh: refactor kx maps to use tuples
+  * alg_lists: mark MLKEM768/SNTRUP kex experimental
+  * nss: revert enabling mlkem768secp256r1
+  * nss: add mlkem768x25519 and mlkem768secp256r1, remove xyber
+  * gnutls: add GROUP-X25519-MLKEM768 and GROUP-SECP256R1-MLKEM768
+  * openssl: use both names for SecP256r1MLKEM768 / X25519MLKEM768
+  * openssh, TEST-PQ: rename MLKEM key_exchange to MLKEM768
+  * openssh: add support for sntrup761x25519-sha512 and mlkem768x25519-sha256
+  * LEGACY: enable 192-bit ciphers for nss pkcs12/smime
+  * openssl: map NULL to TLS_SHA256_SHA256:TLS_SHA384_SHA384...
+  * nss: be stricter with new purposes
+  * python/update-crypto-policies: pacify pylint
+  * fips-mode-setup: tolerate fips dracut module presence w/o FIPS
+  * fips-mode-setup: small Argon2 detection fix
+  * SHA1: add __openssl_block_sha1_signatures = 0
+  * fips-mode-setup: block if LUKS devices using Argon2 are detected
+  * update-crypto-policies: skip warning on --set=FIPS if bootc
+  * fips-setup-helper: skip warning, BTW
+  * fips-mode-setup: force --no-bootcfg when UKI is detected
+  * fips-crypto-policy-overlay: automount FIPS policy
+  * nss: rewrite backend for 3.101
+  * cryptopolicies: parent scopes for dumping purposes
+  * policygenerators: move scoping inside generators
+  * openssh: make dss no longer enableble, support is dropped
+  * gnutls: wire GROUP-X25519-KYBER768 to X25519-KYBER768
+  * TEST-PQ: disable pure Kyber768
+  * DEFAULT: switch to rh-allow-sha1-signatures = no...
+  * java: drop unused javasystem backend
+  * java: stop specifying jdk.tls.namedGroups in javasystem
+  * ec_min_size: introduce and use in java, default to 256
+  * java: use and include jdk.disabled.namedCurves
+  * BSI: Update BSI policy for new 2024 minimum recommendations
+  * fips-mode-setup: flashy ticking warning upon use
+  * fips-mode-setup: add another scary "unsupported"
+  * BSI: switch to 3072 minimum RSA key size
+  * java: make hash, mac and sign more orthogonal
+  * java: specify jdk.tls.namedGroups system property
+  * java: respect more key size restrictions
+  * java: disable anon ciphersuites, tying them to NULL...
+  * java: start controlling / disable DTLSv1.0
+  * nss: wire KYBER768 to XYBER768D00
+
+-------------------------------------------------------------------
+Fri Jul 25 15:21:26 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20250425.9267dee:
+  * openssl: fix mistakes in integrity-only cipher definitions
+  * NO-PQ, cryptopolicies: add experimental value suppression
+  * nss: add mlkem768x25519 and mlkem768secp256r1
+  * gnutls: 'allow-rsa-pkcs1-encrypt = false' everywhere but in LEGACY
+  * TEST-PQ, openssh: add support for MLKEM768 key_exchange
+  * LEGACY: drop cipher@pkcs12 = SEED-CBC
+  * fips-crypto-policy-overlay: automount FIPS policy, follow-up fixes
+  * nss: TLS-REQUIRE-EMS in FIPS
+  * DEFAULT: disable RSA key exchange
+  * LEGACY: disable sign = *-SHA1
+  * nss: wire XYBER768D00 to X25519-KYBER768, not KYBER768
+  * Removed patches fixed upstream:
+    - crypto-policies-pylint.patch
+  * Rebased patches:
+    - crypto-policies-nss.patch
+
+-------------------------------------------------------------------
+Thu Jul 10 11:28:22 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Add the FIPS scripts fips-finish-install and fips-mode-setup as
+  sources in the spec file as they have been removed upstream.
+  * We will maintain these scripts downstream.
+  * Update the man pages for update-crypto-policies.8.gz
+  * Rebase crypto-policies-no-build-manpages.patch
+  * Add crypto-policies-FIPS-output.patch
+  * Add man pages in text file in compressed form in the file
+    man-fips-scripts.tar.xz and add them to the Makefile.
+
+-------------------------------------------------------------------
+Thu Jul 10 10:54:36 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20250324.3714354:
+  * NO-PQ: introduce
+  * LEGACY/DEFAULT/FUTURE: enable hybrid ML-KEM and pure ML-DSA
+  * _openssl_block_sha1_signatures: flip the default to 1
+  * sequoia: add sha3, x25519, ed25519, x448, ed448, but not for rpm-sequoia
+  * sequoia: refactor a bit
+  * openssl: specify default key size for req
+  * gnutls: support P384-MLKEM1024
+  * openssl: stop generating `openssl` in favour of `opensslcnf`
+  * gnutls: drop kyber (switching to leancrypto took it away)
+  * openssl: use both names for P384-MLKEM1024
+  * Detect the presence of nss-policy-check
+  * Don't use hardcoded python3 path
+  * Make xsltproc settable as XSLTPROC
+  * python/cryptopolicies/validation/scope.py: fix new ruff rule RUF021
+  * Update the info in the README.SUSE file
+  * Remove the FEDORA policies and directories
+  * Remove patches:
+    - crypto-policies-supported.patch
+    - crypto-policies-FIPS.patch
+  * Rebase patches:
+    - crypto-policies-policygenerators.patch
+    - crypto-policies-enable-SHA1-sigver-in-DEFAULT.patch
+    - crypto-policies-Allow-sshd-in-FIPS-mode-using-DEFAULT.patch
+
+-------------------------------------------------------------------
 Mon Jun 30 08:01:55 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Allow openssl to load when using the DEFAULT policy, and also

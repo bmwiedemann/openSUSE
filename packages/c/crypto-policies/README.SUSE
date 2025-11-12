@@ -1,6 +1,16 @@
-Currently, the supported back-end policies are:
-  * OpenSSL library
-  * GnuTLS library
-  * OpenJDK
+The back-end policies supported in this build are:
+  * GnuTLS TLS library (scope: GnuTLS, SSL, TLS)
+  * OpenSSL TLS library (scope: OpenSSL, SSL, TLS)
+  * NSS TLS library (scope: NSS, SSL, TLS)
+  * OpenJDK runtime environment (scope: java-tls, SSL, TLS)
+  * Kerberos 5 library Libkrb5 (scope: krb5, kerberos)
+  * BIND DNS name server daemon (scope: BIND, DNSSec)
+  * OpenSSH SSH2 protocol implementation (scope: OpenSSH, SSH)
+  * libssh SSH2 protocol implementation (scope: libssh, SSH)
 
-The rest of the modules ignore the policy settings for the time being.
+The back-end policies not supported in this build are:
+  * Libreswan (scope: libreswan, IKE, IPSec)
+  * Sequoia PGP implementation (scope: sequoia)
+  * rpm-sequoia RPM Sequoia PGP (scope: rpm, rpm-sequoia)
+
+Please, refer to 'man 8 update-crypto-policies' for more info.

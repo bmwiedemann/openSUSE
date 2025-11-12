@@ -1,8 +1,8 @@
-Index: fedora-crypto-policies-20250124.4d262e7/python/policygenerators/__init__.py
+Index: fedora-crypto-policies-20250324.3714354/python/policygenerators/__init__.py
 ===================================================================
---- fedora-crypto-policies-20250124.4d262e7.orig/python/policygenerators/__init__.py
-+++ fedora-crypto-policies-20250124.4d262e7/python/policygenerators/__init__.py
-@@ -7,7 +7,7 @@ from .bind import BindGenerator
+--- fedora-crypto-policies-20250324.3714354.orig/python/policygenerators/__init__.py
++++ fedora-crypto-policies-20250324.3714354/python/policygenerators/__init__.py
+@@ -7,25 +7,26 @@ from .bind import BindGenerator
  from .gnutls import GnuTLSGenerator
  from .java import JavaGenerator
  from .krb5 import KRB5Generator
@@ -11,10 +11,7 @@ Index: fedora-crypto-policies-20250124.4d262e7/python/policygenerators/__init__.
  from .libssh import LibsshGenerator
  from .nss import NSSGenerator
  from .openssh import OpenSSHClientGenerator, OpenSSHServerGenerator
-@@ -16,14 +16,13 @@ from .openssl import (
-     OpenSSLFIPSGenerator,
-     OpenSSLGenerator,
- )
+ from .openssl import OpenSSLFIPSGenerator, OpenSSLGenerator
 -from .sequoia import RPMSequoiaGenerator, SequoiaGenerator
 +#from .sequoia import RPMSequoiaGenerator, SequoiaGenerator
  
@@ -27,8 +24,7 @@ Index: fedora-crypto-policies-20250124.4d262e7/python/policygenerators/__init__.
      'LibsshGenerator',
      'NSSGenerator',
      'OpenSSHClientGenerator',
-@@ -31,6 +30,8 @@ __all__ = [
-     'OpenSSLConfigGenerator',
+     'OpenSSHServerGenerator',
      'OpenSSLFIPSGenerator',
      'OpenSSLGenerator',
 -    'RPMSequoiaGenerator',

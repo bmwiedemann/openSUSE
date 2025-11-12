@@ -1,0 +1,299 @@
+#!/bin/bash
+
+umask 022
+
+usage=0
+enable_fips=
+check=0
+boot_config=1
+err_if_disabled=0
+output_text=1
+
+is_ostree_system=0
+if test -f /run/ostree-booted -o -d /ostree; then
+	is_ostree_system=1
+fi
+
+enable2txt () {
+	case "$1" in
+		0)
+			echo "disabled"
+			;;
+		1)
+			echo "enabled"
+			;;
+	esac
+}
+
+cond_echo () {
+	if test "$output_text" != 0;then
+		echo "$@"
+	fi
+}
+
+while test $# -ge 1 ; do
+	case "$1" in
+		--enable)
+			enable_fips=1
+			;;
+		--disable)
+			enable_fips=0
+			;;
+		--check)
+			check=1
+			enable_fips=2
+			;;
+		--is-enabled)
+			check=1
+			enable_fips=2
+			err_if_disabled=1
+			output_text=0
+			;;
+		--no-bootcfg)
+			boot_config=0
+			;;
+		*)
+			usage=1
+			;;
+	esac
+	shift
+done
+
+if test $usage = 1 -o x$enable_fips = x ; then
+	echo "Check, enable, or disable the system FIPS mode."
+	echo "usage: $0 --enable|--disable [--no-bootcfg]"
+	echo "usage: $0 --check"
+	echo "usage: $0 --is-enabled"
+	exit 2
+fi
+
+# We don't handle the boot config on OSTree systems for now; it is assumed to be
+# handled at a higher level. E.g. in Fedora CoreOS and RHEL CoreOS, it is
+# intrinsically tied to the firstboot procedure.
+if test "$is_ostree_system" = 1 && test "$enable_fips" = 1 && test "$boot_config" = 1; then
+	cond_echo "Cannot perform boot config changes on OSTree systems (use --no-bootcfg)"
+	exit 1
+fi
+
+
+if [ "$(id -u)" != 0 ]; then
+	echo >&2 "You must be root to run $(basename "$0")"
+	exit 1
+fi
+
+# This check must be done as root, otherwise it will fail.
+is_transactional_system=0
+if test ! -w /usr ; then
+	is_transactional_system=1
+fi
+
+# We don't handle the setup on transactional systems as the process is
+# quite different and involves several reboots.
+if test "$is_transactional_system" = 1 && test "$check" = 0 ; then
+	cond_echo -n "Cannot handle transactional systems. "
+	cond_echo "Please, refer to the fips-mode-setup man pages for more information."
+	exit 1
+fi
+
+# Detect 1: kernel FIPS flag
+fips_kernel_enabled=$(cat /proc/sys/crypto/fips_enabled)
+
+# Detect 2: initramfs fips module presence; not always can be done
+initramfs_fips_module=0
+initramfs_inspectable=0
+if test -d /boot -a -x /usr/bin/lsinitrd; then
+	initramfs_inspectable=1
+	if lsinitrd -m 2>/dev/null | grep -Fxq fips; then
+		initramfs_fips_module=1
+	fi
+fi
+
+# Detect 3: crypto-policy base policy
+current_policy="$(cat /etc/crypto-policies/state/current)"
+base_policy="$(echo "$current_policy" | cut -f 1 -d :)"
+if test "$base_policy" == "FIPS" ; then
+	base_policy_is_fips=1
+else
+	base_policy_is_fips=0
+fi
+
+if test $check = 1 ; then
+	# Look for signs for both enabling and disabling FIPS mode
+	fips_positive=0
+	fips_negative=0
+
+	# Display 1: kernel FIPS flag
+	cond_echo "FIPS mode is $(enable2txt "$fips_kernel_enabled")."
+
+	# Display 2: initramfs fips module
+	if test "$initramfs_inspectable" = 1 ; then
+		cond_echo -n "Initramfs fips module is "
+		cond_echo "$(enable2txt $initramfs_fips_module)."
+	fi
+
+	# Display 3: active crypto-policy
+	cond_echo -n "The current crypto policy ($current_policy) "
+	if test "$base_policy_is_fips" == 1 ; then
+		cond_echo 'is based on the FIPS policy.'
+	else
+		cond_echo -n 'neither is the FIPS policy '
+		cond_echo 'nor is based on the FIPS policy.'
+	fi
+
+	# Decide 1: kernel FIPS flag
+	if test "$fips_kernel_enabled" = 1 ; then
+		fips_positive=1
+	else
+		fips_negative=1
+	fi
+
+	# Decide 2: initramfs module presence
+	if test "$initramfs_inspectable" = 1 ; then
+		if test "$initramfs_fips_module" != 1 ; then
+			fips_negative=1
+		fi
+		# from dracut ~104 the module will be always enabled,
+		# so *not* having it is a fips_negative sign,
+		# but having it is neither
+	fi
+
+	# Decide 3: active crypto-policy
+	if test "$base_policy_is_fips" = 1 ; then
+		fips_positive=1
+	else
+		fips_negative=1
+	fi
+
+	# Make the FIPS mode consistency decision
+	if test "$fips_positive" = 1 -a "$fips_negative" = 1 ; then
+		cond_echo 'Inconsistent state detected.'
+		exit 1
+	fi
+
+	# Error out if `--is-enabled` was passed and FIPS mode is not enabled
+	if test "$fips_positive" = 0 -a "$err_if_disabled" = 1 ; then
+		cond_echo 'FIPS mode is not enabled.'
+		exit 2
+	fi
+	exit 0
+fi
+
+# Boot configuration
+if test "$boot_config" = 1 && test ! -d /boot ; then
+	echo >&2 "/boot directory is missing, FIPS mode cannot be $(enable2txt $enable_fips)."
+	echo >&2 "If you want to configure the bootloader manually, re-run with --no-bootcfg."
+	exit 1
+fi
+
+if test "$boot_config" = 1 && test -z "$(ls -A /boot)" ; then
+	echo >&2 "/boot directory is empty, FIPS mode cannot be $(enable2txt $enable_fips)."
+	echo >&2 "If you want to configure the bootloader manually, re-run with --no-bootcfg."
+	exit 1
+fi
+
+if test "$FIPS_MODE_SETUP_SKIP_WARNING" != 1 ; then
+	if test $enable_fips = 1 ; then
+		echo >&2 "*****************************************************************"
+		echo >&2 "* PRESS CONTROL-C WITHIN 15 SECONDS TO ABORT...                 *"
+		echo >&2 "*                                                               *"
+		echo >&2 "* ENABLING FIPS MODE AFTER THE INSTALLATION IS NOT RECOMMENDED. *"
+		echo >&2 "* THIS OPERATION CANNOT BE UNDONE.                              *"
+		echo >&2 "*****************************************************************"
+	elif test $enable_fips = 0 ; then
+		echo >&2 "*****************************************************************"
+		echo >&2 "* PRESS CONTROL-C WITHIN 15 SECONDS TO ABORT...                 *"
+		echo >&2 "*                                                               *"
+		echo >&2 "* DISABLING FIPS MODE AFTER THE INSTALLATION IS NOT RECOMMENDED.*"
+		echo >&2 "* THIS OPERATION CANNOT BE UNDONE.                              *"
+		echo >&2 "*****************************************************************"
+	fi
+	for i in {15..1}; do
+		echo >&2 -n "$i... "
+		sleep 1 || exit 77
+	done
+	echo >&2
+fi
+
+if test $enable_fips = 1 ; then
+	if test "$initramfs_fips_module" = 0 ; then
+		fips-finish-install --complete
+		if test $? != 0 ; then
+			echo >&2 "Installation of FIPS modules could not be completed."
+			exit 1
+		fi
+	fi
+	if test "$base_policy_is_fips" == 1 ; then
+		cond_echo -n 'Preserving current FIPS-based policy '
+		cond_echo "${current_policy}."
+		cond_echo -n 'Please review the subpolicies to ensure they '
+		cond_echo 'only restrict, not relax the FIPS policy.'
+	else
+		target=FIPS
+	fi
+	update-crypto-policies --no-reload --set "${target}" 2>/dev/null
+else
+	fips-finish-install --undo
+	update-crypto-policies --no-reload --set DEFAULT 2>/dev/null
+fi
+
+boot_device_opt=" boot=UUID=<your-boot-device-uuid>"
+if test "$boot_config" = 1 ; then
+	boot_device="$(stat -c %d:%m /boot)"
+	root_device="$(stat -c %d:%m /)"  # contrary to findmnt, works in chroot
+	if test "$boot_device" = "$root_device"; then
+		# /boot is not separate from /root
+		boot_device_opt=""
+	else
+		# trigger autofs, when boot is mounted with
+		# automount.boot / systemd-gpt-auto-generator(8)
+		if ! pushd /boot >/dev/null; then
+			echo >&2 "WARNING: Could not change into /boot, boot volume UUID auto-detection might fail."
+		fi
+		FINDMNT_UUID='findmnt --first-only -t noautofs --noheadings --output uuid'
+		boot_uuid=$(
+			$FINDMNT_UUID --mountpoint /boot --fstab ||  # priority
+			$FINDMNT_UUID --mountpoint /boot
+		)
+		# This might fail if auto-mounting failed and the pushd failed; we can just ignore it
+		popd >/dev/null || true
+		if test -z "$boot_uuid"; then
+			echo >&2 "Boot device not identified, you have to configure the bootloader manually."
+			boot_config=0
+		else
+			boot_device_opt=" boot=UUID=$boot_uuid"
+		fi
+	fi
+fi
+
+if test "$boot_config" = 1 ; then
+	# Install required packages: patterns-base-fips and perl-Bootloader
+	if test ! -f /etc/dracut.conf.d/40-fips.conf && \
+		test ! -x "$(command -v pbl)" && \
+		test "$enable_fips" = 1; then
+		zypper -n install patterns-base-fips perl-Bootloader
+	elif test ! -f /etc/dracut.conf.d/40-fips.conf && \
+		test "$enable_fips" = 1 ; then
+		zypper -n install patterns-base-fips
+	elif test ! -x "$(command -v pbl)" ; then
+		zypper -n install perl-Bootloader
+	fi
+	if test $? != 0 ; then
+		echo "The pbl command or the fips pattern are missing, please configure the bootloader manually."
+		boot_config=0
+	fi
+fi
+
+echo "FIPS mode will be $(enable2txt $enable_fips)."
+
+fipsopts="fips=$enable_fips$boot_device_opt"
+
+if test "$boot_config" = 1 ; then
+	pbl --add-option "$fipsopts"
+	pbl --config; pbl --install && dracut -f --regenerate-all
+	echo "Please reboot the system for the settings to take effect."
+else
+	echo "Now you need to configure the bootloader to add kernel options \"$fipsopts\""
+	echo "and reboot the system for the settings to take effect."
+fi
+
+exit 0

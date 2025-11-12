@@ -95,4 +95,41 @@
     <comment></comment>
     <requestid>1289229</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c49cf77b3dea017c05f81ba0f82da33b</srcmd5>
+    <version>20250714.cd6043a</version>
+    <time>1762980093</time>
+    <user>anag_factory</user>
+    <comment>- Fix the testsuite:
+  * Port all the policy changes to the config files in the test suite.
+  * Use the newly introduced SKIP_LINTING=1 option.
+  * Rebase crypto-policies-Allow-openssl-other-policies-in-FIPS-mode.patch
+
+- Adapt the manpages to SUSE/openSUSE:
+  * Add crypto-policies-SUSE-manpages.patch
+  * Compress all the man pages for update-crypto-policies.8.gz,
+    crypto-policies.7.gz, fips-finish-install.8.gz and
+    fips-mode-setup.8.gz into man-crypto-policies.tar.xz
+
+- Update to version 20250714.cd6043a: [bsc#1253025, bsc#1252696]
+  * gnutls: enable ML-DSA, for both secure-sig and secure-sig-for-cert
+  * python, policies, tests: alias X25519-MLKEM768 to MLKEM768-X25519
+  * FIPS: disable MLKEM768-X25519 for openssh (no-op)
+  * FIPS: deprioritize X25519-MLKEM768 over P256-MLKEM768 for openssl...
+  * TEST-PQ: be more careful with the ordering
+  * openssl: send one PQ and one classic key_share; prioritize PQ groups
+  * sequoia: Generate AEAD policy
+  * Do not include EdDSA in FIPS policy
+  * sequoia: Add PQC algorithm
+  * sequoia: Run tests against PQC capable policy-config-check
+  * Revert &quot;openssl, policies: implement group_key_share option&quot;
+  * openssl, policies: implement group_key_share option
+  * FIPS: enable hybrid ML-KEM (TLS only) and pure ML-DSA
+  * python/build-crypto-policies: output diffs on --test mismatches
+  * sequoia, rpm-sequoia: use ignore_invalid with sha3, x25519, ...
+  * policies, alg_lists, openssl: remove KYBER from allowed values
+  * openssl: stricter enabling of Ciphersuites
+  * openssl: make use of -CBC and -AESGCM keywords</comment>
+    <requestid>1317102</requestid>
+  </revision>
 </revisionlist>
