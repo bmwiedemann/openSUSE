@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov 12 15:12:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.42.0:
+  * Release v1.42.0 (#7011)
+  * moving 1.25 website from netlify to gh
+  * updating ansible plugin to v1.42.0 and corresponding
+    dependencies (#7010)
+  * Bump github.com/containerd/containerd from 1.7.28 to 1.7.29
+    (#7008)
+  * updating ansible plugin to v1.40.0 and corresponding
+    dependencies (#7001)
+  * add support to scaffold oci helm registry charts (#6999)
+  * update observability docs to align with prometheus's docs
+    (#7000)
+  * Bump actions/setup-go from 5 to 6 (#6998)
+  * updating go and various dependencies (#6997)
+  * use go version from builder image, instead of downloading in
+    Dockerfile (#6996)
+  * Bump github.com/ulikunitz/xz from 0.5.12 to 0.5.14 (#6993)
+  * Bump actions/checkout from 4 to 5 (#6980)
+  * Bump github.com/go-viper/mapstructure/v2 from 2.3.0 to 2.4.0
+    (#6989)
+  * Bump helm.sh/helm/v3 from 3.18.4 to 3.18.5 (#6986)
+  * Bump github.com/docker/docker (#6976)
+  * Fix missing +/- prefixes in migration diff for v1.39.0.md
+    (#6975)
+  * fix typo of filename kustomization.yaml (#6974)
+
+-------------------------------------------------------------------
 Thu Jul 10 07:37:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.41.1:
