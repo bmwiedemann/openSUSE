@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 29 05:34:40 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.284.0 (1.284)
+   see /usr/share/doc/packages/perl-PPI/Changes
+
+  1.284   2025-10-28 16:56:25Z
+      - fix author tests: pod-no404s.t (GH#315) (Lukas Mai)
+      - fix regex anchors in PPI::Statement::Compound->type (GH#316) (Lukas Mai)
+
+-------------------------------------------------------------------
 Mon May  5 05:38:39 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.283.0 (1.283)

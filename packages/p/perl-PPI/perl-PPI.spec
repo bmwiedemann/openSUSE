@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PPI
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,35 +18,36 @@
 
 %define cpan_name PPI
 Name:           perl-PPI
-Version:        1.283.0
+Version:        1.284.0
 Release:        0
-# 1.283 -> normalize -> 1.283.0
-%define cpan_version 1.283
+# 1.284 -> normalize -> 1.284.0
+%define cpan_version 1.284
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse, Analyze and Manipulate Perl (without perl)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MI/MITHALDU/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Inspector) >= 1.220
 BuildRequires:  perl(Clone) >= 0.300
 BuildRequires:  perl(List::Util) >= 1.33
-BuildRequires:  perl(Params::Util) >= 1.0.0
+BuildRequires:  perl(Params::Util) >= 1.0
 BuildRequires:  perl(Safe::Isa)
 BuildRequires:  perl(Storable) >= 2.17
 BuildRequires:  perl(Task::Weaken)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::NoWarnings)
-BuildRequires:  perl(Test::Object) >= 0.70.0
-BuildRequires:  perl(Test::SubCalls) >= 1.70.0
+BuildRequires:  perl(Test::Object) >= 0.70
+BuildRequires:  perl(Test::SubCalls) >= 1.70
 BuildRequires:  perl(YAML::PP)
 BuildRequires:  perl(parent)
 BuildRequires:  perl(version) >= 0.77
 Requires:       perl(Clone) >= 0.300
 Requires:       perl(List::Util) >= 1.33
-Requires:       perl(Params::Util) >= 1.0.0
+Requires:       perl(Params::Util) >= 1.0
 Requires:       perl(Safe::Isa)
 Requires:       perl(Storable) >= 2.17
 Requires:       perl(Task::Weaken)
@@ -151,7 +152,7 @@ Provides:       perl(PPI::XSAccessor) = %{version}
 Parse, Analyze and Manipulate Perl (without perl)
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
