@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  8 13:52:34 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.0
+  * No functional changes since our last git snapshot (0.4.0)
+- Use ldconfig_scriptlets macro
+
+-------------------------------------------------------------------
 Thu Feb 29 18:42:32 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

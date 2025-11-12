@@ -1,15 +1,29 @@
 #
 # spec file for package libosmo-dsp
 #
+# Copyright (c) 2025 SUSE LLC and contributors
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 # Copyright (c) 2017 Walter Fey DL8FCL
 #
 # This file is under MIT license
 
+
 %define libname libosmodsp0
 Name:           libosmo-dsp
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
-Summary:        SDR DSP primitives
+Summary:        Osmocom DSP utility functions
 License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://osmocom.org/projects/libosmo-dsp
@@ -24,31 +38,36 @@ BuildRequires:  texlive-latex
 BuildRequires:  pkgconfig(fftw3f) >= 3.2
 
 %description
-A library with SDR DSP primitives
+libosmo-dsp is a C language library for common DSP (Digital
+Signal Processing) primitives for SDR (Software Defined Radio).
 
 %package -n %{libname}
 Summary:        SDR DSP primitives
 Group:          System/Libraries
 
 %description -n %{libname}
-A library with SDR DSP primitives
+libosmo-dsp is a C language library for common DSP (Digital
+Signal Processing) primitives for SDR (Software Defined Radio).
 
 %package devel
-Summary:        SDR DSP primitives
+Summary:        Headers for the Osmocom SDR DSP primitives
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
-A library with SDR DSP primitives headers
+libosmo-dsp is a C language library for common DSP (Digital
+Signal Processing) primitives for SDR (Software Defined Radio).
+This subpackage contains the header files.
 
 %package doc
-Summary:        SDR DSP primitives - Documentation
+Summary:        Documentation for the Osmocom SDR DSP primitives
 Group:          Documentation/HTML
-Requires:       %{libname} = %{version}
 BuildArch:      noarch
 
 %description doc
-A library with SDR DSP primitives headers - Documentation
+libosmo-dsp is a C language library for common DSP (Digital
+Signal Processing) primitives for SDR (Software Defined Radio).
+This subpackage contains the API documentation.
 
 %prep
 %autosetup -p1
@@ -57,29 +76,26 @@ A library with SDR DSP primitives headers - Documentation
 echo "%version" >.tarball-version
 autoreconf --force --install
 %configure --disable-static --includedir="%{_includedir}/%{name}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-rm -f "%{buildroot}/%{_libdir}"/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s %{buildroot}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
-%defattr(-,root,root)
-%doc AUTHORS COPYING
+%license COPYING
+%doc AUTHORS
 %{_libdir}/libosmodsp.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libosmodsp.so
 %{_includedir}/%name/
 %{_libdir}/pkgconfig/libosmodsp.pc
 
 %files doc
-%defattr(-,root,root)
 %doc %{_datadir}/doc/libosmodsp
 %exclude %{_datadir}/doc/libosmodsp/html/*.log
 
