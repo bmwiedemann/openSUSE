@@ -359,4 +359,16 @@
 - Update Requires from setup.py (forwarded request 1302184 from glaubitz)</comment>
     <requestid>1302408</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5bc72ecc6b12285b99ac8db809686436</srcmd5>
+    <version>14.0.0</version>
+    <time>1762978528</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 14.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1317290 from glaubitz)</comment>
+    <requestid>1317312</requestid>
+  </revision>
 </revisionlist>
