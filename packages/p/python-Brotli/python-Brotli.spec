@@ -1,7 +1,7 @@
 #
 # spec file for package python-Brotli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Brotli
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Python bindings for the Brotli compression library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://pypi.org/project/Brotli/
-Source:         https://files.pythonhosted.org/packages/source/B/Brotli/Brotli-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/b/brotli/brotli-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +43,7 @@ with deflate but offers more dense compression.
 The specification of the Brotli Compressed Data Format is defined in RFC 7932.
 
 %prep
-%setup -q -n Brotli-%{version}
+%setup -q -n brotli-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -52,6 +52,9 @@ export CFLAGS="%{optflags}"
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%check
+%pyunittest_arch python/tests/*_test.py -v
 
 %files %{python_files}
 %doc README.md

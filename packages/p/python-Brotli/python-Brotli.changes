@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 11 13:31:41 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Run tests in %check section
+- Update to 1.2.0 (bsc#1252945, CVE-2025-6176):
+  # SECURITY
+  - python: added `Decompressor::can_accept_more_data` method and optional
+            `output_buffer_limit` argument `Decompressor::process`;
+            that allows mitigation of unexpectedly large output;
+            reported by Charles Chan (https://github.com/charleswhchan)
+  # Added
+  - **decoder / encoder: added static initialization to reduce binary size**
+  - python: allow limiting decoder output (see SECURITY section)
+  # Improved
+  - python: modernize extension / allow multi-phase module initialization
+  # Changed
+  - decoder / encoder: static tables use "small" model (allows 2GiB+ binaries)
+
+-------------------------------------------------------------------
 Mon May  5 11:35:37 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
