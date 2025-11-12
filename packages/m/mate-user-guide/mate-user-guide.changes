@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 12 14:44:38 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build with gettext >= 0.24.1 
+
+-------------------------------------------------------------------
 Tue Mar 26 12:19:03 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.28.0

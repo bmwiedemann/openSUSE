@@ -119,4 +119,12 @@
     <comment></comment>
     <requestid>1165573</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>00dc866544149be6906ff4951b35db6b</srcmd5>
+    <version>1.28.0</version>
+    <time>1762978562</time>
+    <user>anag_factory</user>
+    <comment>- Fix build with gettext &gt;= 0.24.1 (forwarded request 1317361 from hillwood)</comment>
+    <requestid>1317363</requestid>
+  </revision>
 </revisionlist>
