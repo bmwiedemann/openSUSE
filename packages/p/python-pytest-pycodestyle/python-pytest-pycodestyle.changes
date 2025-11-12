@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 12 09:49:16 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add support-old-pyproject.patch instead of sed command to support
+  old license format in pyproject.toml
+
+-------------------------------------------------------------------
 Fri Nov  7 15:04:58 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - update to 2.5.0:

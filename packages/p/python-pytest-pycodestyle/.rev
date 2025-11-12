@@ -92,4 +92,13 @@
 - removed the setup.py in spec files</comment>
     <requestid>1316944</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b0b98c8c5c3e5148a26c03de3201508f</srcmd5>
+    <version>2.5.0</version>
+    <time>1762978530</time>
+    <user>anag_factory</user>
+    <comment>- Add support-old-pyproject.patch instead of sed command to support
+  old license format in pyproject.toml</comment>
+    <requestid>1317317</requestid>
+  </revision>
 </revisionlist>

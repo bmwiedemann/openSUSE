@@ -1,0 +1,13 @@
+Index: pytest_pycodestyle-2.5.0/pyproject.toml
+===================================================================
+--- pytest_pycodestyle-2.5.0.orig/pyproject.toml
++++ pytest_pycodestyle-2.5.0/pyproject.toml
+@@ -12,7 +12,7 @@ build-backend = "setuptools.build_meta"
+ name = "pytest-pycodestyle"
+ description = "pytest plugin to run pycodestyle"
+ readme = "README.md"
+-license = "MIT"
++license = { text = "MIT" }
+ authors = [
+   { name = "OMOTO Tsukasa", email = "tsukasa@oomo.to" }
+ ]

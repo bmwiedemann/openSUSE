@@ -24,6 +24,9 @@ Summary:        Pytest plugin to run pycodestyle
 License:        MIT
 URL:            https://github.com/henry0312/pytest-pycodestyle
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-pycodestyle/pytest_pycodestyle-%{version}.tar.gz
+# Needed to build correctly in sle-15 with python3.11
+# PATCH-FIX-OPENSUSE support-old-pyproject.patch -- daniel.garcia@suse.com
+Patch0:         support-old-pyproject.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle}
@@ -34,10 +37,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-py
 Requires:       python-pycodestyle
 Requires:       python-pytest
-Requires:       python-setuptools
 Provides:       python-pytest-codestyle = %{version}
 Obsoletes:      python-pytest-codestyle < %{version}
 BuildArch:      noarch
@@ -47,10 +48,7 @@ BuildArch:      noarch
 pytest plugin to run pycodestyle in python tests
 
 %prep
-%setup -q -n pytest_pycodestyle-%{version}
-%if 0%{?suse_version} <= 1500
-sed -i 's/license = "MIT"/license = { text = "MIT" }/' pyproject.toml
-%endif
+%autosetup -p1 -n pytest_pycodestyle-%{version}
 
 %build
 %pyproject_wheel
