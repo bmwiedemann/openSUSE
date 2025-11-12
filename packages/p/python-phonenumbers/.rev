@@ -430,4 +430,13 @@
     * Merge upstream 9.0.16 phonenumber updates</comment>
     <requestid>1311808</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>93001bfa761be467b0072cf64e5e2ce0</srcmd5>
+    <version>9.0.18</version>
+    <time>1762978466</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.0.18
+  * Merge upstream 9.0.18 phonenumber updates</comment>
+    <requestid>1317215</requestid>
+  </revision>
 </revisionlist>
