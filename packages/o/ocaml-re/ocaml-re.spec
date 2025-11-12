@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-re
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-re
 Name:           %pkg%nsuffix
-Version:        1.13.3
+Version:        1.14.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Pure OCaml regular expressions
@@ -39,12 +39,8 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/re
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.12
-BuildRequires:  ocaml-dune >= 3.12
+BuildRequires:  ocaml-dune >= 3.15
 BuildRequires:  ocaml-rpm-macros >= 20240909
-%if 1
-BuildRequires:  ocamlfind(seq)
-BuildRequires:  ocamlfind(str)
-%endif
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(base)

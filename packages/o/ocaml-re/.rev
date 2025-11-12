@@ -90,4 +90,13 @@ It is a dependency of opam.</comment>
     <comment>- Remove ExclusiveArch 64bit</comment>
     <requestid>1267064</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aa5237b14ece903d0678f8e713a88df1</srcmd5>
+    <version>1.14.0</version>
+    <time>1762978545</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.14.0
+  see included CHANGES.md file for details</comment>
+    <requestid>1317331</requestid>
+  </revision>
 </revisionlist>
