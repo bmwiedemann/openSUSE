@@ -17,107 +17,84 @@
 
 
 Name:           easyeffects
-Version:        7.2.5
+Version:        8.0.0
 Release:        0
-Summary:        Audio effects for Pulseaudio applications
+Summary:        Audio Effects for PipeWire Applications
 License:        GPL-3.0-or-later
 URL:            https://github.com/wwmm/easyeffects
-#Source0:        https://github.com/wwmm/easyeffects/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  appstream-glib
 BuildRequires:  cmake
-BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  itstool
+BuildRequires:  glib2-devel
+BuildRequires:  gsl-devel
+BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  ladspa-devel
-BuildRequires:  meson
-BuildRequires:  pkgconfig
+BuildRequires:  libbs2b-devel
+BuildRequires:  libebur128-devel
+BuildRequires:  liblilv-0-devel
+BuildRequires:  libportal-qt6-devel
+BuildRequires:  libsamplerate-devel
+BuildRequires:  libsndfile-devel
+BuildRequires:  libwebrtc-audio-processing-devel
+BuildRequires:  nlohmann_json-devel
+BuildRequires:  pipewire-devel
+BuildRequires:  rnnoise-devel
+BuildRequires:  soundtouch-devel
 BuildRequires:  tbb-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  zita-convolver-devel
-BuildRequires:  pkgconfig(fmt)
-BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(libbs2b)
-BuildRequires:  pkgconfig(libebur128)
-BuildRequires:  pkgconfig(libpipewire-0.3)
-BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(lilv-0)
-BuildRequires:  pkgconfig(nlohmann_json)
-BuildRequires:  pkgconfig(rnnoise)
-BuildRequires:  pkgconfig(samplerate)
-BuildRequires:  pkgconfig(sigc++-3.0)
-BuildRequires:  pkgconfig(sndfile)
-BuildRequires:  pkgconfig(soundtouch)
-Requires:       dconf
-Recommends:     lv2-calf >= 0.90.1
+BuildRequires:  cmake(KF6Config)
+BuildRequires:  cmake(KF6ConfigWidgets)
+BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6I18n)
+BuildRequires:  cmake(KF6IconThemes)
+BuildRequires:  cmake(KF6Kirigami)
+BuildRequires:  cmake(KF6KirigamiAddons)
+BuildRequires:  cmake(KF6QQC2DesktopStyle)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Graphs)
+BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6QuickShapesPrivate)
+BuildRequires:  cmake(Qt6WebEngineQuick)
+Requires:       kf6-kirigami
+Requires:       kirigami-addons6
+Requires:       qt6-graphs-imports
+Requires:       qt6-webengine-imports
+Recommends:     lv2-calf
 Recommends:     lv2-lsp-plugins
 Recommends:     lv2-zam-plugins
+Recommends:     mda-lv2
 
 %description
-Easyeffects is a limiter, compressor, reverberation, stereo equalizer and auto volume
-effects for pipewire applications.
-
-%package doc
-Summary:        Documentation of Audio effects for pipewire applications
-BuildArch:      noarch
-
-%description doc
-This package contains documentation of Audio effects for pipewire applications
+Easy Effects is a collection of audio effects, providing limiter, compressor,
+convolver, equalizer and auto volume and many other plugins for PipeWire
+applications.
 
 %lang_package
 
-%description lang
-Provides translations for the "%{name}" package.
-
 %prep
 %autosetup
-# we don't need this
-sed -i '/^meson.add_install_script/d' meson.build
-
-export QMAKE_CFLAGS_ISYSTEM=-I
 
 %build
-export CC=gcc
-export CXX=g++
-export LDFLAGS="${LDFLAGS} -fPIC -Wl,--gc-sections -Wl,-O1"
-%meson \
-            -Db_ndebug=true \
-            -Dc_args="${CFLAGS}" \
-            -Dcpp_args="${CXXFLAGS}" \
-            || (cat */meson-logs/meson-log.txt; exit 1)
-######## IDIOTIC WORKAROUND ####################
-sed -i s/isystem/I/g $(gcc -dumpmachine)/*.json
-sed -i s/isystem/I/g $(gcc -dumpmachine)/*.ninja
-######## END OF IDIOTIC WORKAROUND #############
-
-%meson_build
+%cmake \
+  -DCMAKE_CXX_FLAGS='-isystem /usr/include/glib-2.0' \
+  -DCMAKE_CXX_FLAGS='-isystem /usr/lib64/glib-2.0/include'
+%cmake_build
 
 %install
-%meson_install
+%cmake_install
 
-%suse_update_desktop_file -r com.github.wwmm.easyeffects "GTK;AudioVideo;Audio;Mixer;"
-
-%find_lang easyeffects
-
-%files lang -f easyeffects.lang
-%exclude %{_datadir}/help/*/%{name}
-%{_datadir}/locale/*/LC_MESSAGES/easyeffects-news.mo
+%find_lang %{name} %{?no_lang_C}
 
 %files
-%{_bindir}/%{name}
-%{_datadir}/applications/com.github.wwmm.%{name}.desktop
-%{_datadir}/dbus-1/services/com.github.wwmm.%{name}.service
-%{_datadir}/icons/hicolor/scalable/apps/com.github.wwmm.easyeffects.svg
-%{_datadir}/icons/hicolor/symbolic/apps/com.github.wwmm.easyeffects-symbolic.svg
-%{_datadir}/glib-2.0/schemas/com.github.wwmm.%{name}.*.xml
-%{_datadir}/metainfo/com.github.wwmm.%{name}.metainfo.xml
-
-%files doc
 %license LICENSE
-%doc CHANGELOG.md README.md
-%{_datadir}/help/*/%{name}
-%exclude %{_datadir}/locale/*
+%doc README.md CHANGELOG.md
+%{_datadir}/icons/hicolor/scalable/apps/com.github.wwmm.%{name}.svg
+%{_datadir}/icons/hicolor/scalable/apps/com.github.wwmm.%{name}-symbolic.svg
+%{_datadir}/metainfo/com.github.wwmm.%{name}.metainfo.xml
+%{_datadir}/applications/com.github.wwmm.%{name}.desktop
+%{_bindir}/%{name}
+
+%files lang -f %{name}.lang
 
 %changelog
