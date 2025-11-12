@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-ctypes</param>
-    <param name="revision">6c2b4f6458a48f396a8a9d0b63693713bae4a832</param>
+    <param name="revision">1962085ff4b4d4bb33a050b413edeeb8fcdd55de</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/yallop/ocaml-ctypes.git</param>

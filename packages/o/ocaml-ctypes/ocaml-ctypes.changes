@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 11:11:11 UTC 2025 - ohering@suse.de
+
+- Update to version 0.24.0
+  see included CHANGES.md file for details
+  remove ocaml-ctypes.patch
+
+-------------------------------------------------------------------
 Mon Mar  3 03:03:03 UTC 2025 - ohering@suse.de
 
 - Update to version 0.23.0

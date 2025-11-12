@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ctypes
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-ctypes
 Name:           %pkg%nsuffix
-Version:        0.23.0
+Version:        0.24.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Combinators for binding to C libraries without writing any C
@@ -40,11 +40,9 @@ License:        ISC
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/ctypes
 Source0:        %pkg-%version.tar.xz
-Patch0:         %pkg.patch
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune >= 2.9
+BuildRequires:  ocaml-dune >= 3.9
 BuildRequires:  ocaml-rpm-macros >= 20240909
-BuildRequires:  ocamlfind(bigarray-compat)
 BuildRequires:  ocamlfind(bisect_ppx)
 BuildRequires:  ocamlfind(dune-configurator)
 BuildRequires:  ocamlfind(findlib)

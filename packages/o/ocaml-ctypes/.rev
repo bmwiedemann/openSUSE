@@ -74,4 +74,14 @@
   add ocaml-ctypes.patch</comment>
     <requestid>1249889</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f07d1f23edd8aa8481001e76289c16f1</srcmd5>
+    <version>0.24.0</version>
+    <time>1762978547</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.24.0
+  see included CHANGES.md file for details
+  remove ocaml-ctypes.patch</comment>
+    <requestid>1317333</requestid>
+  </revision>
 </revisionlist>
