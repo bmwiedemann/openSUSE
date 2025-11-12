@@ -1,14 +1,20 @@
-From: Seeteena Thoufeek <s1seetee@linux.vnet.ibm.com>
-Subject: [PATCH] lmon16q.c: increase CPUMAX to support up to 2048 CPUs
+From: Seeteena Thoufeek <s1seetee@linux.ibm.com>
+Date: Mon, 27 Oct 2025 15:45:00 +0000
+Subject: [PATCH] Increase CPUMAX to support up to 2048 CPUs
 
 nmon currently fails on systems with high CPU counts due to a low CPUMAX setting.
 This patch increases the CPUMAX value to support systems with up to 2048 CPUs.
 
---- a/lmon16q.c	2025-07-03 16:48:03.567956477 +0530
-+++ b/lmon16q.c	2025-07-03 16:53:33.641940838 +0530
-@@ -1443,7 +1443,7 @@
+Signed-off-by: Seeteena Thoufeek <s1seetee@linux.ibm.com>
+
+--- a/lmon16q.c.org	2025-10-27 12:31:04.676588387 +0530
++++ b/lmon16q.c	2025-10-27 12:33:46.300416300 +0530
+@@ -1441,9 +1441,9 @@
+ #define DISKMAX diskmax
+ int diskmax = DISKMIN;
  
- /* Supports up to 780, but not POWER6 595 follow-up with POWER7 */
+-/* Supports up to 780, but not POWER6 595 follow-up with POWER7 */
++/* Supports up to 2048, but not POWER6 595 follow-up with POWER7 */
  /* XXXX needs rework to cope to with fairly rare but interesting higher numbers of CPU machines */
 -#define CPUMAX (192 * 8)	/* MAGIC COOKIE WARNING */
 +#define CPUMAX (256 * 8)	/* MAGIC COOKIE WARNING */

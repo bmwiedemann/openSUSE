@@ -173,4 +173,12 @@
     <comment>- add nmon-incrase-cpumax-to-support-2048-cpus.patch (bsc#1247368)</comment>
     <requestid>1303197</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>132d30e6c97a7866048a91f90c750b99</srcmd5>
+    <version>16q</version>
+    <time>1762978622</time>
+    <user>anag_factory</user>
+    <comment>- refresh nmon-incrase-cpumax-to-support-2048-cpus.patch (bsc#1247368)</comment>
+    <requestid>1317384</requestid>
+  </revision>
 </revisionlist>
