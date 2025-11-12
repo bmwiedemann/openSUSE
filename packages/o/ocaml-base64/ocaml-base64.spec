@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-base64
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-base64
 Name:           %pkg%nsuffix
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Base64 encoding and decoding in OCaml
