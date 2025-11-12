@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  9 09:15:03 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.22.2:
+  * Bugfix: Fix assert when finding compatible binaries of a
+    package that exists in both contexts with different settings
+    (gh#conan-io/conan#19208).
+- Changes from version 2.22.1:
+  * Bugfix: Revert "Error out if components miss requiring direct
+    dependencies in more cases" (gh#conan-io/conan#19168).
+- Add explicit BuildRequires: python3-base >= 3.7.0 to make builds
+  for distros with less than the minimum supported python
+  unresolvable.
+
+-------------------------------------------------------------------
 Fri Oct 31 10:46:01 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.22.0:

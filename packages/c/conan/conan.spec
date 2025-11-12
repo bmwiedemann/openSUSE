@@ -18,7 +18,7 @@
 
 # Note: We only want to build for the default python3
 Name:           conan
-Version:        2.22.0
+Version:        2.22.2
 Release:        0
 Summary:        A C/C++ package manager
 License:        MIT
@@ -26,6 +26,7 @@ URL:            https://github.com/conan-io/conan
 Source:         https://files.pythonhosted.org/packages/source/c/conan/conan-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base >= 3.7.0
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
