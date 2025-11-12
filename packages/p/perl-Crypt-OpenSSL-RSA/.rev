@@ -204,4 +204,20 @@
       - Fully support openSSL 3.x API</comment>
     <requestid>1282000</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a68d968063d4fab7f8acd445f46de943</srcmd5>
+    <version>0.370.0</version>
+    <time>1762980100</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.370.0 (0.37)
+   see /usr/share/doc/packages/perl-Crypt-OpenSSL-RSA/Changes
+  0.37 Oct 29 2025
+       - Fix libressl bitwise logic error in RSA.xs
+  0.36 Oct 29 2025
+       - Fix old openssl on strawberry does not include whrlpool.h
+       - libressl message digest functions md cannot be NULL
+       - Don't support whirlpool in libressl
+       - Add support for use_pkcs1_pss_padding with fatal error if RSA-PSS is used for encryption operations</comment>
+    <requestid>1317137</requestid>
+  </revision>
 </revisionlist>
