@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 11 22:53:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.3:
+  * The DynamoDBStatementParser will now throw a
+    DocumentNotFoundException if the table referenced in the
+    statement was not provided
+  * Support negative numbers (both integers and floats)
+
+-------------------------------------------------------------------
 Tue Feb 25 12:32:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.6.1

@@ -92,4 +92,16 @@
     <comment></comment>
     <requestid>1248540</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>453da48572c268476442f157a0b4d10b</srcmd5>
+    <version>0.6.3</version>
+    <time>1762978465</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.3:
+  * The DynamoDBStatementParser will now throw a
+    DocumentNotFoundException if the table referenced in the
+    statement was not provided
+  * Support negative numbers (both integers and floats)</comment>
+    <requestid>1317203</requestid>
+  </revision>
 </revisionlist>

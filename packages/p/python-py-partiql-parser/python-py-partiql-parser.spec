@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-partiql-parser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-py-partiql-parser
-Version:        0.6.1
+Version:        0.6.3
 Release:        0
 Summary:        Pure Python PartiQL Parser
 License:        MIT
