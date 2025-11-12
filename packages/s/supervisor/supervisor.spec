@@ -1,7 +1,7 @@
 #
 # spec file for package supervisor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           supervisor
-Version:        4.2.5
+Version:        4.3.0
 Release:        0
 Summary:        A system for controlling process state under UNIX
 License:        SUSE-Repoze
@@ -31,7 +31,6 @@ BuildRequires:  fdupes
 BuildRequires:  python3-pytest
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
-Requires:       python3-setuptools
 Suggests:       python3-cElementTree >= 1.0.2
 BuildArch:      noarch
 %{?systemd_requires}

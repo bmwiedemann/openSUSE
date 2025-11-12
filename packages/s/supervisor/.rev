@@ -74,4 +74,34 @@
   of calling ``os.close()`` in a loop.</comment>
     <requestid>1046522</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>66484c80542bfd519631aef56a37b3eb</srcmd5>
+    <version>4.3.0</version>
+    <time>1762978534</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.0:
+  * Fixed a bug where the poller would not unregister a closed
+    file descriptor under some circumstances, which caused
+    excessive polling, resulting in higher CPU usage.  Patch by
+    aftersnow.
+  * Fixed a bug where restarting supervisord may have failed with
+    the message Error: Another program is already listening on a
+    port that one of our HTTP servers is configured to use. if an
+    HTTP request was made during restart.  Patch by Julien Le
+    Cléach.
+  * Fixed a unit test that failed only on Python 3.13.  Only test
+    code was changed; no changes to supervisord itself.  Patch by
+    Colin Watson.
+  * On Python 3.8 and later, setuptools is no longer a runtime
+    dependency.  Patch by Ofek Lev.
+  * On Python versions before 3.8, setuptools is still a runtime
+    dependency (for pkg_resources) but it is no longer declared
+    in setup.py as such.  This is because adding a conditional
+    dependency with an environment marker (setuptools;
+    python_version &lt; '3.8') breaks installation in some
+    scenarios, e.g. setup.py install or older versions of pip.
+    Ensure that setuptools is installed if using Python before
+    3.8.</comment>
+    <requestid>1317295</requestid>
+  </revision>
 </revisionlist>
