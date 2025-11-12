@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 12 15:12:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.45:
+  * fix go mod tidy
+  * Allow artifact-metadata read in release workflow
+  * Allow artifact-metadata read in release workflow
+  * fix workflow permissions
+  * Bump github.com/opencontainers/selinux from 1.12.0 to 1.13.0
+
+-------------------------------------------------------------------
 Fri Nov 07 13:13:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.44:
