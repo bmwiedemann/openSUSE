@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 12 15:02:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.13.1:
+  * [Backport release-3.13] fix: update command for resetting
+    syncthing database (#4818) (#4819)
+
+-------------------------------------------------------------------
 Wed Nov 05 18:55:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.13.0:
