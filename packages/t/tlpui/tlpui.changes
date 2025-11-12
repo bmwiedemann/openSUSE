@@ -1,5 +1,19 @@
 -------------------------------------------------------------------
-Sun Apr 13 01:12:01 HKT 2025 - Vincent Son <szw0407@outlook.com>
+Sat Nov  8 18:11:41 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.8.1:
+  * Set Python 3.10 as minimal supported version.
+  * Add Python 3.14 test support.
+  * Update Python dependencies.
+  * Update to Gnome 49.
+  * Fix pkexec admin selection via UI.
+  * Updated translations.
+- Drop use of %suse_update_desktop_file macro and associated
+  BuildRequires: update-desktop-files; manually install .desktop
+  file instead.
+
+-------------------------------------------------------------------
+Sat Apr 12 17:12:01 UTC 2025 - Vincent Son <szw0407@outlook.com>
 
 - Update to version 1.8.0:
   * Add support for TLP 1.8 release version (gh#d4nj1/TLPUI#163).

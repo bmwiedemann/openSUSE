@@ -1,7 +1,7 @@
 #
 # spec file for package tlpui
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           tlpui
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        A GTK user interface for TLP
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
@@ -33,7 +33,6 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-poetry
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
-BuildRequires:  update-desktop-files
 Requires:       python3-PyYAML
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
@@ -63,16 +62,16 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
 ln -s %{python3_sitelib}/%{name}/icons/themeable/hicolor/scalable/apps/tlpui.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 
 # Install desktop file
-%suse_update_desktop_file -i tlpui
+export APP_DIR=%{buildroot}%{_datadir}/applications
+test -d "${APP_DIR}" || mkdir -p "${APP_DIR}"
+install -m0644 tlpui.desktop ${APP_DIR}
 
 %fdupes %{buildroot}%{python3_sitelib}/%{name}/
-
-%check
 
 %files
 %license COPYING.md LICENSE.md
 %doc README.md
-%{_bindir}/*
+%{_bindir}/%{name}
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
 %{_datadir}/applications/*.desktop
 %{python3_sitelib}/%{name}/
