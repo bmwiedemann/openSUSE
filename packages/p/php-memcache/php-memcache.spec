@@ -43,6 +43,8 @@ Source10:       php-memcache-rpmlintrc
 Patch1:         fixup-unit-tests.patch
 # PATCH-FIX-UPSTREAM https://github.com/websupport-sk/pecl-memcache/pull/118
 Patch2:         memcache-fix-build-PHP-8.5.patch
+# PATCH-FIX-UPSTREAM https://github.com/websupport-sk/pecl-memcache/pull/120
+Patch3:         memcache-clean-deprecated-ini.patch
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{php_name}-cli
 %endif

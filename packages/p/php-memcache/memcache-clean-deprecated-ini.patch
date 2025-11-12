@@ -1,0 +1,23 @@
+From 0fa9b4a7f50bb31da7eb45ed3b3eba82f985f06c Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Wed, 15 Oct 2025 09:56:40 +0200
+Subject: [PATCH] clean deprecated ini
+
+---
+ tests/pecl63142.phpt | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/tests/pecl63142.phpt b/tests/pecl63142.phpt
+index 5eef5f9..bea5697 100644
+--- a/tests/pecl63142.phpt
++++ b/tests/pecl63142.phpt
+@@ -2,9 +2,6 @@
+ PECL bug #63142 (memcache 3.0.7 segfaults with object (un)serialization)
+ --SKIPIF--
+ <?php include 'connect.inc'; ?>
+---INI--
+-;fix me later
+-report_memleaks=0
+ --FILE--
+ <?php
+ 

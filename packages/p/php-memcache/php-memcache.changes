@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 11 18:38:52 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix failing test pecl63142.phpt
+  + memcache-clean-deprecated-ini.patch
+
+-------------------------------------------------------------------
 Fri Oct 24 18:33:29 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Use Zend/zend_smart_string.h for PHP 8.5 compatibility (#574)
