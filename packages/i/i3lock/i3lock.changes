@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 11 23:05:46 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 2.16:
+  * fix crash when the user changes the XKB configuration
+  * when started on Wayland, display an error and usage
+  * switch to clang-format 15 (with InsertBraces)
+  * fix -Werror=calloc-transposed-args by swapping calloc args
+  * reword: remove "dynamic" TWM
+  * update meson setup command in README
+  * do not increase failed_attempts beyond 999
+  * i3lock.1 man page: fix acute accent
+  * fix in_dpi variable checking
+  * meson: use explicit_bzero if it is available
+  * declare a development shell in flake.nix
+
+-------------------------------------------------------------------
 Wed Apr 17 18:40:52 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - remove unneeded %check section
