@@ -1,7 +1,7 @@
 #
 # spec file for package snd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with jack
 %endif
 Name:           snd
-Version:        24.5
+Version:        25.8
 Release:        0
 Summary:        Sound File Editor
 License:        LGPL-2.1-or-later

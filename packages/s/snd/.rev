@@ -397,4 +397,18 @@
     <comment></comment>
     <requestid>1206135</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e17eb25f233d0f400e10ebb91d6979dd</srcmd5>
+    <version>25.8</version>
+    <time>1762978512</time>
+    <user>anag_factory</user>
+    <comment>- update to 25.8:
+  * s7: (*s7* 'scheme-version) which is 's7 by default but can
+  * be set to 'r5rs or 'r7rs.  The r7rs support is built-in.
+  * To get a repl with both the repl and r7rs stuff built-in,
+  * use the compiler switches WITH_R7RS and WITH_NOTCURSES.
+  * added s7_c_object_set_value
+  * added s7_defun</comment>
+    <requestid>1317304</requestid>
+  </revision>
 </revisionlist>
