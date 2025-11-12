@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-camlp5
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 	%nil
 
 Name:           ocaml-camlp5
-Version:        8.03.06
+Version:        8.04.00
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Preprocessor-Pretty-Printer for Objective Caml
