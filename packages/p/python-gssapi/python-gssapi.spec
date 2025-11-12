@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-gssapi
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        A Python interface to RFC 2743/2744 (plus common extensions)
 License:        ISC
