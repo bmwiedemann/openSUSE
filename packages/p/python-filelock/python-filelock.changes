@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 21 09:31:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.20.0
+  * Add tox.toml to sdist
+  * Update docs with example
+  * Add 3.14 support and drop 3.9
+
+-------------------------------------------------------------------
 Wed Sep 17 01:56:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pytest-timeout.
