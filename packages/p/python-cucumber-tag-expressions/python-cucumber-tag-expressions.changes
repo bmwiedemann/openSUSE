@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Nov 12 09:01:54 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- change the name of spec and change files to match the Name: tag to eliminate build error
+
+-------------------------------------------------------------------
+Tue Nov 11 14:58:16 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Initial OBS packaging of python-cucumber-tag-expressions 8.0.0
+ 
