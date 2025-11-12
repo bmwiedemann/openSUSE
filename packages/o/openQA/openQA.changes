@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
-Tue Nov 11 13:58:09 UTC 2025 - okurz@suse.com
+Tue Nov 11 18:10:52 UTC 2025 - okurz@suse.com
 
-- Update to version 5.1762780626.92a68246:
+- Update to version 5.1762879267.52145e9a:
+  * Avoid installing unwanted package versions
   * Fix check in git_clone for dirty git dir
   * Prevent `t/24-worker-webui-connection.t` from running into timeout
   * Be explicit about certain aspects of archiving in the documentation
