@@ -1,7 +1,7 @@
 #
 # spec file for package sshuttle
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           sshuttle
-Version:        1.2.0
+Version:        1.3.2
 Release:        0
 Summary:        VPN over an SSH tunnel
 License:        LGPL-2.1-only
@@ -34,6 +34,7 @@ Source2:        sysconfig.%{name}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-hatch_vcs
 BuildRequires:  python3-pip
 BuildRequires:  python3-poetry-core
 BuildRequires:  python3-pytest

@@ -237,4 +237,22 @@ Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.</comm
   * use Python &amp;gt;= 3.10 for docs</comment>
     <requestid>1245590</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c6a39ae0dc79ff01c835cc64b934e96b</srcmd5>
+    <version>1.3.2</version>
+    <time>1762978518</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.2:
+  * improve broken pipe (EPIPE) error handling in socket
+    operations
+  * Updates sudoers config according to executable
+  * switch to a network namespace on Linux
+  * prevent UnicodeDecodeError parsing iptables rule with
+    comments
+  * remove temp build hack
+  * support ':' sign in password
+  * replace nix-env with nix-shell
+  * update installation instructions</comment>
+    <requestid>1317299</requestid>
+  </revision>
 </revisionlist>
