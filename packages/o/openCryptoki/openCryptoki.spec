@@ -27,7 +27,7 @@
 %define oc_cvs_tag opencryptoki
 
 Name:           openCryptoki
-Version:        3.25.0
+Version:        3.26.0
 Release:        0
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 License:        CPL-1.0
@@ -39,9 +39,7 @@ Source2:        openCryptoki-TFAQ.html
 Source3:        openCryptoki-rpmlintrc
 # Patch 0 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
-Patch000:       ocki-3.25-remove-make-install-chgrp.patch
-#
-Patch010:       ocki-3.25-PKCSSLOTD-Remove-the-use-of-MD5.patch
+Patch000:       ocki-3.26-remove-make-install-chgrp.patch
 #
 BuildRequires:  bison
 BuildRequires:  dos2unix
