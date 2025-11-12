@@ -1,7 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 10 17:27:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.14.3 (CVE-2025-64326, bsc#1253125)
+  * Flag updated translations from repository as “Needs editing” is now
+    available as an add-on.
+  * DELETE /api/projects/(string:project)/labels/(int:label_id)/.
+  * Added multivalue CSV in Downloading translations for multivalue formats.
+  * New global permissions have been added to control viewing teams, users
+    and roles without edit rights, see List of privileges.
+  * Last changed lookup in Searching for strings.
+  * Do not show glossary matches component setting.
+  * Notification hooks improvements.
+  * Improved activity logging for Add missing languages add-on.
+  * Admins can configure Expiring user accounts.
+  * File format parameters can now be configured via the Weblate’s REST API.
+  * Rate limiting of notification e-mails, configurable by RATELIMIT_NOTIFICATION_LIMITS.
+  * Team administrators can no longer edit teams besides membership.
+  * Importing some strings from XLIFF.
+  * Removed Akismet spam protection integration as it was no longer effective
+    and used an unmaintained Python library.
+  * String context are now tracked in changes histoy and displayed when available
+  * Avoid storing inviting user information in the invited user audit log
+- Add upstream site-url.patch to fix one failing test
+
+-------------------------------------------------------------------
 Tue Sep 30 15:57:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
-- Update to 5.13.3 (bsc#1250803, CVE-2025-61587)
+- Update to 5.13.3 (bsc#1250803, CVE-2025-61587, bsc#1249184, CVE-2025-58352)
   * Enhanced Translation Memory management with configurable status
     control.
   * Added cleanup_memory management command to remove obsolete

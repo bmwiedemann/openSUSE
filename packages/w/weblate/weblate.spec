@@ -21,7 +21,7 @@
 %define WLETCDIR %{_sysconfdir}/weblate
 %define _name Weblate
 Name:           weblate
-Version:        5.13.3
+Version:        5.14.3
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
@@ -35,6 +35,8 @@ Source2:        %{name}.keyring
 # skip failing test_ocr and test_ocr_backend
 # most probably some issue on our side
 Patch:          skip-test_ocr.patch
+# PATCH-FIX-UPSTREAM https://github.com/WeblateOrg/weblate/pull/16891 fix: make add_site_url filter more robust
+Patch:          site-url.patch
 BuildRequires:  bitstream-vera
 BuildRequires:  borgbackup >= 1.4.0
 BuildRequires:  fdupes
@@ -63,7 +65,7 @@ BuildRequires:  python3-aliyun-python-sdk-alimt >= 3.2.0
 BuildRequires:  python3-altcha >= 0.2.0
 BuildRequires:  python3-boto3 >= 1.28.62
 BuildRequires:  python3-celery >= 5.5.3
-BuildRequires:  python3-certifi >= 2025.6.15
+BuildRequires:  python3-certifi >= 2025.10.5
 BuildRequires:  python3-charset-normalizer >= 2.0.12
 BuildRequires:  python3-crispy-bootstrap3 >= 2024.1
 BuildRequires:  python3-crispy-bootstrap5 >= 2025.6
@@ -97,7 +99,7 @@ BuildRequires:  python3-google-cloud-translate >= 3.13.0
 BuildRequires:  python3-hiredis >= 3.1.0
 BuildRequires:  python3-html2text >= 2025.4.15
 BuildRequires:  python3-iniparse >= 0.5
-BuildRequires:  python3-jsonschema >= 4.23.0
+BuildRequires:  python3-jsonschema >= 4.24.0
 BuildRequires:  python3-lxml >= 5.4.0
 BuildRequires:  python3-mistletoe >= 1.4.0
 BuildRequires:  python3-nh3 >= 0.2.20
@@ -114,7 +116,6 @@ BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-pytest-django
 BuildRequires:  python3-pytest-profiling
 BuildRequires:  python3-pytest-xdist
-BuildRequires:  python3-python-akismet >= 0.4.2
 BuildRequires:  python3-python-dateutil >= 2.8.2
 BuildRequires:  python3-python-redis-lock >= 4
 BuildRequires:  python3-python3-saml >= 1.2.1
@@ -136,7 +137,7 @@ BuildRequires:  python3-standardwebhooks >= 1.0.0
 BuildRequires:  python3-tesserocr >= 2.8.0
 BuildRequires:  python3-translation-finder >= 2.22
 BuildRequires:  python3-user-agents >= 2.2.0
-BuildRequires:  python3-weblate-language-data >= 2025.7
+BuildRequires:  python3-weblate-language-data >= 2025.9
 BuildRequires:  python3-weblate-schemas = 2025.6
 BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
@@ -161,7 +162,7 @@ Requires:       python3-aeidon >= 1.15
 Requires:       python3-ahocorasick-rs >= 0.22.0
 Requires:       python3-altcha >= 0.2.0
 Requires:       python3-celery >= 5.5.3
-Requires:       python3-certifi >= 2025.6.15
+Requires:       python3-certifi >= 2025.10.5
 Requires:       python3-charset-normalizer >= 2.0.12
 Requires:       python3-crispy-bootstrap3 >= 2024.1
 Requires:       python3-crispy-bootstrap5 >= 2025.6
@@ -192,7 +193,7 @@ Requires:       python3-gobject >= 3.40.1
 Requires:       python3-hiredis >= 3.1.0
 Requires:       python3-html2text >= 2025.4.15
 Requires:       python3-iniparse >= 0.5
-Requires:       python3-jsonschema >= 4.23.0
+Requires:       python3-jsonschema >= 4.24.0
 Requires:       python3-lxml >= 5.4.0
 Requires:       python3-mistletoe >= 1.4.0
 Requires:       python3-nh3 >= 0.2.20
@@ -217,7 +218,7 @@ Requires:       python3-standardwebhooks >= 1.0.0
 Requires:       python3-tesserocr >= 2.8.0
 Requires:       python3-translation-finder >= 2.22
 Requires:       python3-user-agents >= 2.2.0
-Requires:       python3-weblate-language-data >= 2025.7
+Requires:       python3-weblate-language-data >= 2025.9
 Requires:       python3-weblate-schemas = 2025.6
 Requires:       translate-toolkit >= 3.16.1
 Requires:       ((apache2 and apache2-mod_wsgi) or (nginx and uwsgi))
@@ -230,7 +231,6 @@ Recommends:     mercurial >= 6.2
 Recommends:     python3-boto3 >= 1.25.0
 Recommends:     python3-django-auth-ldap >= 1.3.0
 Recommends:     python3-google-cloud-translate >= 3.8.0
-Recommends:     python3-python-akismet >= 0.4.2
 Recommends:     python3-python3-saml >= 1.2.1
 Recommends:     tesseract-ocr-traineddata-english
 Recommends:     tesseract-ocr-traineddata-orientation_and_script_detection
