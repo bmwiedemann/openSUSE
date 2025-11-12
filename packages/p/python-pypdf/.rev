@@ -103,4 +103,15 @@
 </comment>
     <requestid>1313196</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e4d2a21ee4fff79942bdbb0cc8b8ee9c</srcmd5>
+    <version>6.2.0</version>
+    <time>1762978470</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.2.0:
+  * Add 'strict' parameter to PDFWriter
+  * PdfWriter.append fails when there are articles being None
+  * Execute docs examples in CI</comment>
+    <requestid>1317217</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 11 23:45:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.0:
+  * Add 'strict' parameter to PDFWriter
+  * PdfWriter.append fails when there are articles being None
+  * Execute docs examples in CI
+
+-------------------------------------------------------------------
 Thu Oct 23 08:06:21 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 6.1.3 (fixes CVE-2025-62707, bsc#1252507, CVE-2025-62708, bsc#1252533)
