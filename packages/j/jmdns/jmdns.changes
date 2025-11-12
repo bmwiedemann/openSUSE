@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 12 07:42:29 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-jar-plugin 3.5.0
+
+-------------------------------------------------------------------
 Tue Sep 19 11:03:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Do not require maven-javadoc-plugin that we don't use
