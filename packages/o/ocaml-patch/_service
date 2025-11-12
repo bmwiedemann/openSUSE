@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-patch</param>
-    <param name="revision">76fb487c5f2f194c65a79b310c89fc91ee416f21</param>
+    <param name="revision">59a318563d745e63fc69f3d58a8a8ff302e91c4b</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/hannesm/patch.git</param>

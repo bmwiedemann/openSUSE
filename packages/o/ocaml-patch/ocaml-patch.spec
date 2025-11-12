@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-patch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-patch
 Name:           %pkg%nsuffix
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Patch library purely in OCaml
@@ -67,7 +67,7 @@ developing applications that use %name.
 %autosetup -p1 -n %pkg-%version
 
 %build
-dune_release_pkgs='patch'
+dune_release_pkgs='patch,opatch'
 %ocaml_dune_setup
 %if "%build_flavor" == ""
 %ocaml_dune_build
@@ -86,6 +86,7 @@ dune_release_pkgs='patch'
 
 %if "%build_flavor" == ""
 %files -f %name.files
+%_bindir/*
 
 %files devel -f %name.files.devel
 %endif
