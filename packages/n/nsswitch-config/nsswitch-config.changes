@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed Nov 12 11:42:07 UTC 2025 - schubi@suse.com
+
+- Update to version 0.0.5:
+* Create a /etc/nsswitch.conf.rpmnew if a admin created
+  /etc/nsswitch.conf exists.
+* New options:
+  --force :
+  Overwite output file although it has been created by the admin.
+  --admin_changed :
+  Check if the output file has been created by the admin.
+* Templates for creating nsswitch.conf
+
+-------------------------------------------------------------------
+Wed Oct 29 15:22:35 UTC 2025 - schubi@suse.com
+
+- Update to version 0.0.4:
+  * Added comment in nsswitch.conf that it has been created
+    by nsswitch-config.
+  * There is only one backup file if it has not been generated
+    by nsswitch-config
+
+-------------------------------------------------------------------
+Tue Oct 28 12:12:52 UTC 2025 - schubi@suse.com
+
+- Update to version 0.0.3:
+  * Handle multiple versions of backup files.
+
+-------------------------------------------------------------------
+Fri Oct 24 14:52:16 UTC 2025 - schubi@suse.com
+
+- Update to version 0.0.2:
+  * added github build (#1)
+  * fixed memory leaks
+
+-------------------------------------------------------------------
+Thu Oct 23 16:04:02 UTC 2025 - Stefan Schubert <schubi@suse.com>
+
+- initial
+- version 0.0.1

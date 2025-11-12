@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59155069458b93e104ffb12ce8cbd4ab</srcmd5>
+    <version>0.0.5</version>
+    <time>1762978555</time>
+    <user>anag_factory</user>
+    <comment>Version 0.0.5
+* Create a /etc/nsswitch.conf.rpmnew if a admin created /etc/nsswitch.conf
+  exists.
+* New options:
+  --force :
+  Overwite output file although it has been created by the admin.
+  --admin_changed :
+  Check if the output file has been created by the admin.
+* Templates for creating nsswitch.conf</comment>
+    <requestid>1317330</requestid>
+  </revision>
+</revisionlist>
