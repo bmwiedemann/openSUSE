@@ -1,8 +1,8 @@
 diff --git a/client/cmd/login.go b/client/cmd/login.go
-index 92de6ab..3be446f 100644
+index b0c877f..f2a316e 100644
 --- a/client/cmd/login.go
 +++ b/client/cmd/login.go
-@@ -82,9 +82,16 @@ var loginCmd = &cobra.Command{
+@@ -83,9 +83,16 @@ var loginCmd = &cobra.Command{
  func doDaemonLogin(ctx context.Context, cmd *cobra.Command, providedSetupKey string, activeProf *profilemanager.Profile, username string, pm *profilemanager.ProfileManager) error {
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
@@ -23,10 +23,10 @@ index 92de6ab..3be446f 100644
  	defer conn.Close()
  
 diff --git a/client/cmd/root.go b/client/cmd/root.go
-index 8aa0d7c..8beaf4c 100644
+index 11e5228..9a0de31 100644
 --- a/client/cmd/root.go
 +++ b/client/cmd/root.go
-@@ -388,9 +388,16 @@ func getClient(cmd *cobra.Command) (*grpc.ClientConn, error) {
+@@ -390,9 +390,16 @@ func getClient(cmd *cobra.Command) (*grpc.ClientConn, error) {
  
  	conn, err := DialClientGRPCServer(cmd.Context(), daemonAddr)
  	if err != nil {
@@ -47,7 +47,7 @@ index 8aa0d7c..8beaf4c 100644
  
  	return conn, nil
 diff --git a/client/cmd/service_installer.go b/client/cmd/service_installer.go
-index 075ead4..015e29e 100644
+index 2a87e53..05a2012 100644
 --- a/client/cmd/service_installer.go
 +++ b/client/cmd/service_installer.go
 @@ -4,7 +4,7 @@ package cmd
@@ -59,7 +59,7 @@ index 075ead4..015e29e 100644
  	"fmt"
  	"os"
  	"path/filepath"
-@@ -18,6 +18,14 @@ import (
+@@ -20,6 +20,14 @@ import (
  
  var ErrGetServiceStatus = fmt.Errorf("failed to get service status")
  
@@ -74,7 +74,7 @@ index 075ead4..015e29e 100644
  // Common service command setup
  func setupServiceCommand(cmd *cobra.Command) error {
  	SetFlagsFromEnvVars(rootCmd)
-@@ -109,29 +117,7 @@ var installCmd = &cobra.Command{
+@@ -115,29 +123,7 @@ var installCmd = &cobra.Command{
  	Use:   "install",
  	Short: "Install NetBird service",
  	RunE: func(cmd *cobra.Command, args []string) error {
@@ -105,7 +105,7 @@ index 075ead4..015e29e 100644
  	},
  }
  
-@@ -139,29 +125,7 @@ var uninstallCmd = &cobra.Command{
+@@ -145,35 +131,7 @@ var uninstallCmd = &cobra.Command{
  	Use:   "uninstall",
  	Short: "uninstalls NetBird service from system",
  	RunE: func(cmd *cobra.Command, args []string) error {
@@ -130,13 +130,19 @@ index 075ead4..015e29e 100644
 -			return fmt.Errorf("uninstall service: %w", err)
 -		}
 -
+-		if runtime.GOOS == "linux" {
+-			if err := cleanupSystemdNetworkd(); err != nil {
+-				log.Warnf("failed to cleanup systemd-networkd configuration: %v", err)
+-			}
+-		}
+-
 -		cmd.Println("NetBird service has been uninstalled")
 -		return nil
 +		return fmt.Errorf("%s", disabledMessage)
  	},
  }
  
-@@ -171,56 +135,7 @@ var reconfigureCmd = &cobra.Command{
+@@ -183,56 +141,7 @@ var reconfigureCmd = &cobra.Command{
  	Long: `Reconfigures the NetBird service with new settings without manual uninstall/install.
  This command will temporarily stop the service, update its configuration, and restart it if it was running.`,
  	RunE: func(cmd *cobra.Command, args []string) error {
@@ -195,11 +201,11 @@ index 075ead4..015e29e 100644
  }
  
 diff --git a/client/cmd/status.go b/client/cmd/status.go
-index 723f236..a000d25 100644
+index 6e57ceb..b6dc715 100644
 --- a/client/cmd/status.go
 +++ b/client/cmd/status.go
 @@ -124,10 +124,17 @@ func statusFunc(cmd *cobra.Command, args []string) error {
- func getStatus(ctx context.Context) (*proto.StatusResponse, error) {
+ func getStatus(ctx context.Context, shouldRunProbes bool) (*proto.StatusResponse, error) {
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
 -		return nil, fmt.Errorf("failed to connect to daemon error: %v\n"+
@@ -219,12 +225,12 @@ index 723f236..a000d25 100644
 +  }
  	defer conn.Close()
  
- 	resp, err := proto.NewDaemonServiceClient(conn).Status(ctx, &proto.StatusRequest{GetFullPeerStatus: true, ShouldRunProbes: true})
+ 	resp, err := proto.NewDaemonServiceClient(conn).Status(ctx, &proto.StatusRequest{GetFullPeerStatus: true, ShouldRunProbes: shouldRunProbes})
 diff --git a/client/cmd/up.go b/client/cmd/up.go
-index 1fa58e6..c69b8e0 100644
+index 80175f7..7db168f 100644
 --- a/client/cmd/up.go
 +++ b/client/cmd/up.go
-@@ -215,10 +215,17 @@ func runInDaemonMode(ctx context.Context, cmd *cobra.Command, pm *profilemanager
+@@ -216,10 +216,17 @@ func runInDaemonMode(ctx context.Context, cmd *cobra.Command, pm *profilemanager
  
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
