@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 11 20:13:51 UTC 2025 - Mateus Machado <martusguy@proton.me>
+
+- Update to 18.0.0
+  https://www.qt.io/blog/qt-creator-18-released
+- Drop patch:
+  * 0001-QmlDesigner-Compile-fixes-for-Qt-6.10-private-API-ch.patch
+
+-------------------------------------------------------------------
 Wed Oct  8 20:52:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

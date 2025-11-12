@@ -1,7 +1,7 @@
 #
 # spec file for package qt-creator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 17.0.2
-%define short_version 17.0
+%define real_version 18.0.0
+%define short_version 18.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        17.0.2
+Version:        18.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -59,8 +59,6 @@ License:        BSD-3-Clause AND GPL-3.0-only AND GPL-3.0-with-Qt-Company-Qt-exc
 URL:            https://www.qt.io/product/development-tools
 Source:         https://download.qt.io/official_releases/qtcreator/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt-creator-rpmlintrc
-# Patches 0-10 are upstream changes
-Patch0:         0001-QmlDesigner-Compile-fixes-for-Qt-6.10-private-API-ch.patch
 # Patches 11-20 are openSUSE changes
 Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
@@ -186,7 +184,8 @@ rm -r src/shared/qbs
   -DBUILD_TESTING:BOOL=FALSE \
   -DQTC_SEPARATE_DEBUG_INFO:BOOL=FALSE \
   -DBUILD_LIBRARY_QLITEHTML:BOOL=TRUE \
-  -DBUILD_HELPVIEWERBACKEND_QTWEBENGINE:BOOL=FALSE
+  -DBUILD_HELPVIEWERBACKEND_QTWEBENGINE:BOOL=FALSE \
+  -DBUILD_EXECUTABLE_CMDBRIDGE:BOOL=FALSE
 
 %if 0%{?qt6}
 %{qt6_build}

@@ -431,4 +431,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
   * 0001-QmlDesigner-Compile-fixes-for-Qt-6.10-private-API-ch.patch</comment>
     <requestid>1310314</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>80a515bddede32680e3a2873cd4ebe03</srcmd5>
+    <version>18.0.0</version>
+    <time>1762978525</time>
+    <user>anag_factory</user>
+    <comment>Update to 18.0.0 (forwarded request 1317189 from matusguy)</comment>
+    <requestid>1317311</requestid>
+  </revision>
 </revisionlist>
