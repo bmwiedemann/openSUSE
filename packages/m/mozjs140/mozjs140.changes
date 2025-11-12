@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 14:16:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 140.5.0:
+  + Security Vulnerabilities fixed in Firefox ESR 140.5
+  + See https://www.firefox.com/en-US/firefox/140.5.0/releasenotes/
+
+-------------------------------------------------------------------
 Tue Oct 28 11:52:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add mozjs140-CVE-2025-62813.patch: Fix embedded lz4 against
