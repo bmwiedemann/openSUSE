@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 12 03:32:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python314.patch:
+  * Support Python 3.14 repr() changes.
+- Removed uneeded BuildRequires on pytest-mypy.
+
+-------------------------------------------------------------------
 Fri Aug  1 03:56:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-mypy.patch:

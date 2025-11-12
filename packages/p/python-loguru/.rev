@@ -185,4 +185,14 @@
   * Support newer mypy than upstream.</comment>
     <requestid>1296926</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>b1c3a9249d2e19ed24e4b67e1eb58e9b</srcmd5>
+    <version>0.7.3</version>
+    <time>1762978474</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Support Python 3.14 repr() changes.
+- Removed uneeded BuildRequires on pytest-mypy.</comment>
+    <requestid>1317229</requestid>
+  </revision>
 </revisionlist>
