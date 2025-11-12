@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  4 16:09:50 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Add clamav-workaround.patch to work around symbol removals in
+  version 1.5.0 and 1.5.1.
+
+-------------------------------------------------------------------
 Thu Oct 16 16:12:58 UTC 2025 - Reinhard Max <max@suse.com>
 
 - New version: 1.5.1:

@@ -1,0 +1,136 @@
+--- libclamav/clamav.h.orig
++++ libclamav/clamav.h
+@@ -22,6 +22,15 @@
+ #ifndef __CLAMAV_H
+ #define __CLAMAV_H
+ 
++/*
++ * This workaround can be removed once the SONAME version of libclamav
++ * gets bumped beyond 12.
++ */
++#define WA(VER, RET, SYM) __attribute__ ((   \
++        __symver__ (#SYM "@@CLAMAV_PUBLIC"), \
++        __symver__ (#SYM "@CLAMAV_" VER)))   \
++        RET wa_ ## SYM
++
+ #ifdef _WIN32
+ #ifndef OWN_WINSOCK
+ #include <winsock2.h>
+--- libclamav/cvd.c.orig
++++ libclamav/cvd.c
+@@ -416,7 +416,7 @@ cl_error_t cl_cvdverify(const char *file
+     return cl_cvdverify_ex(file, NULL, 0);
+ }
+ 
+-cl_error_t cl_cvdverify_ex(const char *file, const char *certs_directory, uint32_t dboptions)
++WA("1.5.0", cl_error_t, cl_cvdverify_ex)(const char *file, const char *certs_directory, uint32_t dboptions)
+ {
+     struct cl_engine *engine = NULL;
+     cl_error_t ret;
+@@ -749,7 +749,7 @@ done:
+     return status;
+ }
+ 
+-cl_error_t cl_cvdunpack_ex(const char *file, const char *dir, const char *certs_directory, uint32_t dboptions)
++WA("1.5.0", cl_error_t, cl_cvdunpack_ex)(const char *file, const char *dir, const char *certs_directory, uint32_t dboptions)
+ {
+     cl_error_t status            = CL_SUCCESS;
+     cvd_t *cvd                   = NULL;
+@@ -823,7 +823,7 @@ done:
+     return status;
+ }
+ 
+-cl_error_t cl_cvdunpack(const char *file, const char *dir, bool dont_verify)
++WA("1.0.0", cl_error_t, cl_cvdunpack)(const char *file, const char *dir, bool dont_verify)
+ {
+     cl_error_t status          = CL_SUCCESS;
+     cvd_t *cvd                 = NULL;
+@@ -914,7 +914,7 @@ done:
+     return status;
+ }
+ 
+-cl_error_t cl_cvdgetage(const char *path, time_t *age_seconds)
++WA("1.1.0", cl_error_t, cl_cvdgetage)(const char *path, time_t *age_seconds)
+ {
+     STATBUF statbuf;
+     struct dirent *dent;
+--- libclamav/libclamav.map.orig
++++ libclamav/libclamav.map
+@@ -91,6 +91,34 @@ CLAMAV_PUBLIC {
+     cl_scan_layer_get_attributes;
+     cl_engine_set_scan_callback;
+ };
++
++# This block can be removed once the SONAME version of libclamav
++# gets bumped beyond 12...
++#
++CLAMAV_0.104.0 {
++#  local:
++#    wa_cl_engine_set_clcb_engine_compile_progress;
++#    wa_cl_engine_set_clcb_engine_free_progress;
++#    wa_cl_engine_set_clcb_sigload_progress;
++} CLAMAV_PUBLIC;
++CLAMAV_1.0.0 {
++#  local:
++#    wa_cl_cvdunpack;
++#    wa_cl_engine_set_clcb_file_inspection;
++} CLAMAV_0.104.0;
++CLAMAV_1.1.0 {
++#  local:
++#    wa_cl_cvdgetage;
++#    wa_cl_engine_set_clcb_vba;
++} CLAMAV_1.0.0;
++CLAMAV_1.5.0 {
++#  local:
++#    wa_cl_cvdunpack_ex;
++#    wa_cl_cvdverify_ex;
++} CLAMAV_1.1.0;
++#
++# ... up to here
++
+ CLAMAV_PRIVATE {
+   global:
+     cli_sigperf_print;
+--- libclamav/others.c.orig
++++ libclamav/others.c
+@@ -2767,7 +2767,7 @@ void cl_engine_set_clcb_pre_cache(struct
+     engine->cb_pre_cache = callback;
+ }
+ 
+-void cl_engine_set_clcb_file_inspection(struct cl_engine *engine, clcb_file_inspection callback)
++WA("1.0.0", void, cl_engine_set_clcb_file_inspection)(struct cl_engine *engine, clcb_file_inspection callback)
+ {
+     engine->cb_file_inspection = callback;
+ }
+@@ -2793,19 +2793,19 @@ void cl_engine_set_clcb_sigload(struct c
+     engine->cb_sigload_ctx = callback ? context : NULL;
+ }
+ 
+-void cl_engine_set_clcb_sigload_progress(struct cl_engine *engine, clcb_progress callback, void *context)
++WA("0.104.0", void, cl_engine_set_clcb_sigload_progress)(struct cl_engine *engine, clcb_progress callback, void *context)
+ {
+     engine->cb_sigload_progress     = callback;
+     engine->cb_sigload_progress_ctx = callback ? context : NULL;
+ }
+ 
+-void cl_engine_set_clcb_engine_compile_progress(struct cl_engine *engine, clcb_progress callback, void *context)
++WA("0.104.0", void, cl_engine_set_clcb_engine_compile_progress)(struct cl_engine *engine, clcb_progress callback, void *context)
+ {
+     engine->cb_engine_compile_progress     = callback;
+     engine->cb_engine_compile_progress_ctx = callback ? context : NULL;
+ }
+ 
+-void cl_engine_set_clcb_engine_free_progress(struct cl_engine *engine, clcb_progress callback, void *context)
++WA("0.104.0", void, cl_engine_set_clcb_engine_free_progress)(struct cl_engine *engine, clcb_progress callback, void *context)
+ {
+     engine->cb_engine_free_progress     = callback;
+     engine->cb_engine_free_progress_ctx = callback ? context : NULL;
+@@ -2826,7 +2826,7 @@ void cl_engine_set_clcb_file_props(struc
+     engine->cb_file_props = callback;
+ }
+ 
+-void cl_engine_set_clcb_vba(struct cl_engine *engine, clcb_generic_data callback)
++WA("1.1.0", void, cl_engine_set_clcb_vba)(struct cl_engine *engine, clcb_generic_data callback)
+ {
+     engine->cb_vba = callback;
+ }

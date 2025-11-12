@@ -1423,4 +1423,12 @@
 - Use rust 1.86 for SLE-12 and SLE-15-SP2.</comment>
     <requestid>1311754</requestid>
   </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>baa24288c54947606e686abaec4a4cdc</srcmd5>
+    <version>1.5.1</version>
+    <time>1762978451</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1317166</requestid>
+  </revision>
 </revisionlist>

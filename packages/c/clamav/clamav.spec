@@ -67,6 +67,7 @@ Patch1:         clamav-conf.patch
 Patch5:         clamav-obsolete-config.patch
 Patch14:        clamav-document-maxsize.patch
 Patch15:        clamav-format.patch
+Patch16:        clamav-workaround.patch
 ExcludeArch:    %{arml}
 
 BuildRequires:  cargo%{?vrust}
@@ -207,6 +208,7 @@ that want to make use of libclamav.
 %patch -P 5
 %patch -P 14
 %patch -P 15
+%patch -P 16
 chmod -x docs/html/images/flamegraph.svg
 
 %build
