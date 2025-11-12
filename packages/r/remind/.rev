@@ -997,4 +997,19 @@
 - IMPROVEMENT: rem2pdf: Draw moon phases left-aligned.</comment>
     <requestid>1315382</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>2814e59a29a8fcc1761d5c259a343765</srcmd5>
+    <version>6.2.1</version>
+    <time>1762978488</time>
+    <user>anag_factory</user>
+    <comment>* VERSION 06.02.01 - 2025-11-10
+- BUG FIX: remind: Obey $ParseUntriggered in Calendar Mode.  Before,
+  $ParseUntriggered was always being treated as 1 in Calendar Mode.
+- BUG FIX: TkRemind: Fix some buggy interactions between the Options
+  dialog and the font chooser.
+- TEST FIX: One test was consistently failing under MUSL, and it is
+  not clear whether MUSL's or glibc's interpretation is correct.
+  Remove that test so all tests pass under MUSL.</comment>
+    <requestid>1317204</requestid>
+  </revision>
 </revisionlist>
