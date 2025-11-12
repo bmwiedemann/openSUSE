@@ -47,6 +47,9 @@ online help system (also available Postscript format).
 %autosetup -p1 -n %{name}-%{version}
 
 %build
+%if %{pkg_vcmp gcc >= 15}
+export CFLAGS="%{optflags} -std=gnu17"
+%endif
 %configure
 # parallel build fails
 %make_build --jobs=1
