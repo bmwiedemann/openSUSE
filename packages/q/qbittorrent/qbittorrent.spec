@@ -1,7 +1,7 @@
 #
 # spec file for package qbittorrent
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 %endif
 
 Name:           qbittorrent
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
