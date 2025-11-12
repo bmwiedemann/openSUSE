@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Nov 11 16:09:37 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.13.0+127+suse.37f9a4c9
+
+- Major rework of the SCSI Persistent Reservation code in upstream 0.13.0
+
+- Changes in upstream 0.12.0 (see also NEWS.md)
+
+  * Improved the communication with **udev** and **systemd** by triggering
+    uevents when path devices are added to or removed from multipath maps,
+    or when `multipathd reconfigure` is executed after changing blacklist
+    directives in `multipath.conf`.
+  * Maps that were added outside of multipathd (e.g. using the **multipath**
+    command) and that couldn't be reloaded by multipathd used to be ignored
+    by multipathd. multipathd will now monitor them. If some paths were
+    offline while the map was created, multipathd will now add them to the
+    map when they go online again.
+  * multipathd retries persistent reservation commands that have failed on one
+    path on another one.
+
+- Bug fixes in upstream 0.12.0 (see also NEWS.md) (bsc#1253260)
+
+  * Failed paths should be checked every `polling_interval`. In certain cases,
+    this wouldn't happen, because the check interval wasn't reset by multipathd.
+  * It could happen that multipathd would accidentally release a SCSI persistent
+    reservation held by another node. Fix it.
+  * After manually failing some paths and then reinstating them, sometimes
+    the reinstated paths were immediately failed again by multipathd. Fix it.
+  * Fix crash in foreign (nvme native multipath) code, present since 0.8.8.
+  * Various minor fixes reported by coverity.
+
+-------------------------------------------------------------------
 Sat Jul 19 12:28:12 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.11.0+184+suse.9bca786:

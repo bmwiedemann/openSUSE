@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <services>
-  <service name="obs_scm" mode="manual">
+  <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/openSUSE/multipath-tools.git</param>
     <param name="filename">multipath-tools</param>
@@ -11,6 +11,9 @@
     <param name="versionrewrite-replacement">~\2</param>
     <param name="changesgenerate">enable</param>
   </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
   <service name="set_version" mode="manual"/>
-  <service mode="buildtime" name="tar"/>
 </services>

@@ -2107,4 +2107,12 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
     <comment></comment>
     <requestid>1294880</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>c299edc611a3e070ba3017278b6110e0</srcmd5>
+    <version>0.13.0+127+suse.37f9a4c9</version>
+    <time>1762980124</time>
+    <user>anag_factory</user>
+    <comment>- Added bug ref: Bug fixes in upstream 0.12.0 (see also NEWS.md) (bsc#1253260) (forwarded request 1317184 from mwilck)</comment>
+    <requestid>1317185</requestid>
+  </revision>
 </revisionlist>

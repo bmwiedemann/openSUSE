@@ -35,13 +35,13 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.11.0+184+suse.9bca786
+Version:        0.13.0+127+suse.37f9a4c9
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only AND GPL-3.0-or-later
 Group:          System/Base
 URL:            http://christophe.varoqui.free.fr/
-Source:         multipath-tools-%{version}.tar
+Source:         multipath-tools-%{version}.tar.xz
 # modprobe.d configuration file
 Source1:        modprobe_d-scsi_dh.conf
 # SUSE policy: disable partition deletion by default
