@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 11:11:11 UTC 2025 - ohering@suse.de
+
+- Update to version 2.53.8
+  * Add ability to use reflinking instead of copying
+  * Experimental default-off support to detect moves/renames
+
+-------------------------------------------------------------------
 Mon Jan 20 10:31:04 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to verison 2.53.7

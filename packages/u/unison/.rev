@@ -393,4 +393,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1240733</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a84444d9175dd76ea2cbd206b6e83638</srcmd5>
+    <version>2.53.8</version>
+    <time>1762978552</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.53.8
+  * Add ability to use reflinking instead of copying
+  * Experimental default-off support to detect moves/renames</comment>
+    <requestid>1317332</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package unison
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %define     pkg unison
 Name:           %pkg%nsuffix
-Version:        2.53.7
+Version:        2.53.8
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        File synchronization tool
@@ -77,7 +77,7 @@ replica to the other.
 
 %build
 %if "%build_flavor" == "doc"
-%make_build docs
+%make_build docs -j1
 %else
 %make_build PREFIX=%_prefix
 %endif

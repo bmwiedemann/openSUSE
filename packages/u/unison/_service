@@ -1,5 +1,5 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="exclude">.github</param>
     <param name="exclude">.gitignore</param>
     <param name="exclude">CONTRIBUTING.md</param>
@@ -53,7 +53,7 @@
     <param name="exclude">unison-gui.opam</param>
     <param name="exclude">unison.opam</param>
     <param name="filename">unison</param>
-    <param name="revision">96e15a800bb0e619da6f7092ddefc47101c3092f</param>
+    <param name="revision">36bdb88f96477d121d5d7b49a93fc5e316b6534c</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/bcpierce00/unison.git</param>
@@ -61,9 +61,9 @@
     <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>
