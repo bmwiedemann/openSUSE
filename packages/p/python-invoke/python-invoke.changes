@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 11 14:04:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2.1
+  * [Bug] #1038: (fixed in #1040) Python 3.14 tweaked the behavior
+    of fcntl to raise SystemError on buffer overflows, which our
+    interpretation of termios.TIOCGWINSZ technically was (we care
+    only about the first two fields in what is technically a four-
+    field struct with half the fields unused). This has been fixed
+    by unpacking all 4 fields and then discarding the unused fields
+    during processing.
+
+-------------------------------------------------------------------
 Thu Aug 21 08:47:08 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only
