@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>1309081</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dd11fdc98066fd4178107e6e1bcc6425</srcmd5>
+    <version>3.2</version>
+    <time>1762978522</time>
+    <user>anag_factory</user>
+    <comment>Fix build with the upcoming maven-jar-plugin 3.5.0</comment>
+    <requestid>1317307</requestid>
+  </revision>
 </revisionlist>

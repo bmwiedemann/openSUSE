@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-digester3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ This package provides %{summary}.
 %prep
 %setup -q -n %{short_name}-%{version}-src
 %pom_remove_plugin org.sonatype.plugins:jarjar-maven-plugin
+%pom_remove_plugin :maven-jar-plugin
 %{mvn_file} : %{name} %{short_name}
 
 %build

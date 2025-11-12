@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 12 07:44:01 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-jar-plugin 3.5.0
+
+-------------------------------------------------------------------
 Mon Mar 21 15:36:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
