@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 11 21:58:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.12.3:
+  * Reset client queue upon disconnection #414 (commit)
+  * Support `['*']` in addition to `'*'` in the
+    `cors_allowed_origins` option #410 (commit)
+  * Support new monkey-patched gevent `Queue` class in the client
+    #403 (commit)
+  * Better support of the ASGI spec when interpreting WebSocket
+    events #405 (commit)
+  * Accept empty binary values in the async server #404 (commit)
+  * Add SPDX license identifier #401 (commit)
+
+-------------------------------------------------------------------
 Wed Apr 16 10:52:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.12.0

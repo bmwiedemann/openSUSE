@@ -109,4 +109,21 @@
     <comment></comment>
     <requestid>1271277</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dfab0491d43ebe3269e7f2d55a336436</srcmd5>
+    <version>4.12.3</version>
+    <time>1762978463</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.12.3:
+  * Reset client queue upon disconnection #414 (commit)
+  * Support `['*']` in addition to `'*'` in the
+    `cors_allowed_origins` option #410 (commit)
+  * Support new monkey-patched gevent `Queue` class in the client
+    #403 (commit)
+  * Better support of the ASGI spec when interpreting WebSocket
+    events #405 (commit)
+  * Accept empty binary values in the async server #404 (commit)
+  * Add SPDX license identifier #401 (commit)</comment>
+    <requestid>1317194</requestid>
+  </revision>
 </revisionlist>
