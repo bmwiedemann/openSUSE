@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 12 13:56:23 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Drop mozjs115-CVE-2025-62813.patch. The CVE has been rejected,
+  so this patch is not needed after all.
+
+-------------------------------------------------------------------
 Tue Oct 28 21:52:58 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add mozjs115-CVE-2025-62813.patch: fix possible crash when
