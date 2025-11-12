@@ -85,4 +85,15 @@
 - Rebase llvm-do-not-install-static-libraries.patch.</comment>
     <requestid>1313505</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>784a1e57fe36f860f9218d8f008a0d46</srcmd5>
+    <version>21.1.5</version>
+    <time>1762980094</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 21.1.5.
+  * This release contains bug-fixes for the LLVM 21.1.0 release.
+    This release is API and ABI compatible with 21.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.</comment>
+    <requestid>1317105</requestid>
+  </revision>
 </revisionlist>
