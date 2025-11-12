@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-pcre2</param>
-    <param name="revision">313afc034cdecc2f33b1a7c4cf90b9701cf48476</param>
+    <param name="revision">4c932fcb4d9d27a077d02369196ab3f0a5774362</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/camlp5/pcre2-ocaml.git</param>

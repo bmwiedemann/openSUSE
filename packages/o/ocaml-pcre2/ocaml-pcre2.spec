@@ -30,7 +30,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-pcre2
 Name:           %pkg%nsuffix
-Version:        8.0.3
+Version:        8.0.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Bindings to the Perl Compatibility Regular Expressions library (version 2)
