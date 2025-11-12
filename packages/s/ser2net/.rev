@@ -215,4 +215,34 @@
   * Fix showport and showshortport state reporting</comment>
     <requestid>1172242</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7dda86e18006738bae980f276bb67982</srcmd5>
+    <version>4.6.5</version>
+    <time>1762978515</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.6.5:
+  * This release of ser2net improves the failure detection used
+    for timeouts.  It now looks into the transmit queue if
+    possible and sees if the remote end is accepting data instead
+    of just looking at when it sends data.  In conjunction with
+    the drain_timeout changes in version 2.8.15 of gensio, this
+    means you don't have to rely on the TCP timers, which can be
+    very long (like 15 minutes in some situations).
+- update to 4.6.4:
+  * This release fixes a rather embarrassing bug; sending breaks
+    didn't work right in some circumstances.  This happened
+    because I had no way to receive breaks and know if they
+    happened.  I have added receiving breaks in the gensio
+    library, version 2.8.12, and have added tests to make sure
+    that breaks are actually working.
+  * As part of this, you can now also receive breaks and parity
+    errors through the the linestate interface on telnet rfc2217.
+  * You should upgrade, and upgrade gensio, too.  This should
+    compile and work against old version of gensio, but the tests
+    (well, the new break related ones) will not work.
+- update to 4.6.3:
+  * Fixes a bug affecting connect back UDP when losing network
+    connectivity.</comment>
+    <requestid>1317303</requestid>
+  </revision>
 </revisionlist>

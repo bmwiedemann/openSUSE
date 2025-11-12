@@ -1,7 +1,7 @@
 #
 # spec file for package ser2net
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           ser2net
-Version:        4.6.2
+Version:        4.6.5
 Release:        0
 Summary:        Serial port to network proxy
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-URL:            https://github.com/cminyard/ser2net.git
+URL:            https://github.com/cminyard/ser2net
 Source:         https://sourceforge.net/projects/ser2net/files/ser2net/%{name}-%{version}.tar.gz
 Source2:        ser2net.service
 BuildRequires:  pkgconfig
