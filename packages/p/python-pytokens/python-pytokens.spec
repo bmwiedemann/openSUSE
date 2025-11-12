@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytokens
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        A Fast, spec compliant Python 3.12+ tokenizer that runs on older Pythons
 License:        MIT

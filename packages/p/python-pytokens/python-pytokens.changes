@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 16:36:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.0:
+  * add t-string support
+  * bugfixes
+
+-------------------------------------------------------------------
 Wed Oct 29 08:12:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - build for python 3.11 on sle15 as it requires a minimum of >= 3.8
