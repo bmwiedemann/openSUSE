@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package jnr-process
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,8 @@ This package contains the API documentation for %{name}.
 %setup -q -n %{name}-%{name}-%{version}
 
 %pom_remove_plugin :maven-javadoc-plugin
+
+%pom_xpath_remove 'pom:plugin[pom:artifactId="maven-jar-plugin"]/pom:executions'
 
 %{mvn_file} : %{cluster}/%{name}
 
