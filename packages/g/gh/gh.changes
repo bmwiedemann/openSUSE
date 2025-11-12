@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Wed Nov 12 13:41:47 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Bump go from 1.24 to 1.25
+- Update to version 2.83.0:
+  * chore(deps): bump github.com/cli/go-gh/v2 from 2.12.2 to 2.13.0
+  * Apply suggestions from code review
+  * Add note on govulncheck source mode for Go 1.25
+  * docs(pkg/search): fix typo
+  * docs(repo garden): improve func godoc
+  * fix: ignore `nilerr` on intentionally swallowed error
+  * fix: resolve `nilerr` issues
+  * fix: resolve `copyloopvar` issues
+  * fix: resolve `gocritic` issue
+  * test(pkg/httpmock): ignore `bodyclose` on mock response value
+  * refactor(repo garden): return pagination link instead of resp
+  * fix: close resp body (bodyclose)
+  * refactor: remove returned resp from `api.EndpointNeedsScopes`
+  * refactor(pkg/search): remove passing resp for pagination
+  * ci: enable basic linters
+  * Update lint govulncheck to use source mode
+  * chore: add `workflow_dispatch` to govulncheck triggers
+  * Add example for --custom-agent usage
+  * Update error messages in job creation tests
+  * Update pkg/cmd/agent-task/capi/job.go
+  * Add shorthand flag for custom-agent option
+  * Fix: do not swallow job creation error
+  * Clarify custom agent flag description
+  * Add custom agent support to job creation
+  * docs(release list): fix typo
+  * docs(release list): reword comment
+  * feat(release list): add `isImmutable` JSON field
+  * fix(featuredetection): add `ReleaseFeatures` method
+  * docs(api): add example for `--input` option
+  * docs(api): mention use of `@<path>` and `@-` for `--field`
+  * docs: update go version 1.25
+  * refactor: replace backport with `strings.CutSuffix`
+  * chore: exclude `third-party` from Golangci-lint formatting paths
+  * chore: bump Go in devcontainer
+  * chore: apply `go fix` to remove deprecated `// +build` tags
+  * fix: --interval flags docs in gh pr checks
+  * test(gist/edit): add tests for single file edit and interactive multi-file selection
+  * Update Go toolchain version to 1.24.9
+  * docs(run list): mention `pr checks` in help docs
+  * ci: bump Golangci-lint to v2.6.0
+  * chore(deps): bump golang.org/x/crypto from 0.42.0 to 0.43.0
+  * chore(deps): bump golang.org/x/text from 0.29.0 to 0.30.0
+  * test(gist): fix failing tests
+  * fix(gist): prevent fetching full content for already edited files
+  * fix(gist): only include files that have changed in request
+  * fix(gist): fetch full content for truncated files during editing
+  * ✅ (repo delete) remove comprehensive assertions on check stderr output
+  * Fix typo in comment for gh issue develop branch checkout command
+  * 💡 (gh repo delete) Add warning when `--yes` is ignored without a repository, Closes: #12033
+  * chore(deps): bump github.com/rivo/tview
+  * chore(deps): bump actions/download-artifact from 5 to 6
+  * chore(deps): bump actions/upload-artifact from 4 to 5
+  * Remove skipped tests
+  * Make verifier choice more explicit
+  * Return only basic pull request info when reverting a PR
+  * chore(deps): bump mislav/bump-homebrew-formula-action from 3.4 to 3.6
+  * chore(deps): bump goreleaser/goreleaser-action from 6.3.0 to 6.4.0
+  * test fixup
+  * Update release verify commands to use sentinel value
+  * Initial plan
+  * Make PGI verifier initialization non-fatal to allow GitHub attestation verification
+  * Initial plan
+  * improve docstring for release-create
+  * Bump Go to 1.25.3
+  * Address remaining PR comments for revert implementation
+  * Adjust PR revert based on new acceptance criteria
+  * Return nil when err is nil
+  * Fix revert unit tests by using renamed helper
+  * feat: include revert PR info in message output
+  * Undo autoformat changes
+  * feat: implement `pr revert`
+  * test(gist): add tests for handling truncated files in view command
+  * test(gist): add tests for editing truncated gist files
+  * test(gist): add tests for `GetRawGistFile` function
+  * feat(gist): retrieve full content for truncated gist files
+  * feat(gist): retrieve full content for truncated gist files
+  * feat(gist): add `GetRawGistFile` function to retrieve raw gist content
+  * feat(gist): add `RawURL` and `Truncated` fields to `GistFile`
+
+-------------------------------------------------------------------
 Thu Oct 23 07:11:27 UTC 2025 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.82.1:
