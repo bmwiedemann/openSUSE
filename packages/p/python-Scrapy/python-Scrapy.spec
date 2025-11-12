@@ -1,7 +1,7 @@
 #
 # spec file for package python-Scrapy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,60 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%endif
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%bcond_with test
+%endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-Scrapy
+Name:           python-Scrapy%{?psuffix}
 Version:        2.13.3
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
 URL:            https://scrapy.org
 Source:         https://files.pythonhosted.org/packages/source/s/scrapy/scrapy-%{version}.tar.gz
+# New test file added in the gh#scrapy/scrapy#7134, needed for Patch2
+# related to CVE-2025-6176
+Source1:        CVE-2025-6176-testfile-bomb-br-64GiB.bin
 # PATCH-FIX-UPSTREAM gh#scrapy/scrapy#6922
 Patch0:         remove-hoverxref.patch
 # PATCH-FIX-OPENSUSE No sphinx-rtd-dark-mode
 Patch1:         no-dark-mode.patch
+# PATCH-FIX-UPSTREAM CVE-2025-6176.patch gh#scrapy/scrapy#7134
+Patch2:         CVE-2025-6176.patch
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+%if %{with test}
+# Test requirements:
+BuildRequires:  %{python_module Scrapy = %{version}}
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Protego}
 BuildRequires:  %{python_module PyDispatcher >= 2.0.5}
 BuildRequires:  %{python_module Twisted >= 18.9.0}
 BuildRequires:  %{python_module attrs}
-BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module botocore >= 1.4.87}
 BuildRequires:  %{python_module cryptography >= 36.0.0}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module defusedxml >= 0.7.1}
-BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module itemadapter >= 0.1.0}
 BuildRequires:  %{python_module itemloaders >= 1.0.1}
 BuildRequires:  %{python_module lxml >= 4.4.1}
 BuildRequires:  %{python_module parsel >= 1.5.0}
 BuildRequires:  %{python_module pexpect >= 4.8.1}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 21.0.0}
 BuildRequires:  %{python_module pyftpdlib >= 1.5.8}
 BuildRequires:  %{python_module pytest-xdist}
@@ -59,6 +82,7 @@ BuildRequires:  %{python_module tldextract}
 BuildRequires:  %{python_module uvloop}
 BuildRequires:  %{python_module w3lib >= 1.17.0}
 BuildRequires:  %{python_module zope.interface >= 5.1.0}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
@@ -81,9 +105,14 @@ Requires:       python-service_identity >= 18.1.0
 Requires:       python-tldextract
 Requires:       python-w3lib >= 1.17.2
 Requires:       python-zope.interface >= 5.1.0
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -102,6 +131,7 @@ Provides documentation for %{name}.
 
 sed -i -e 's:= python:= python3:g' docs/Makefile
 
+%if %{without test}
 %build
 %pyproject_wheel
 pushd docs
@@ -112,8 +142,12 @@ popd
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/scrapy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
+cp %{SOURCE1} tests/sample_data/compressed/bomb-br-64GiB.bin
+
 # no color in obs chroot console
 skiplist="test_pformat"
 # no online connection to toscrapy.com
@@ -126,6 +160,12 @@ skiplist="$skiplist or test_queue_push_pop_priorities"
     -k "not (${skiplist})" \
     -W ignore::DeprecationWarning \
     tests}
+%endif
+
+%if %{without test}
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative scrapy
 
 %post
 %python_install_alternative scrapy
@@ -142,5 +182,6 @@ skiplist="$skiplist or test_queue_push_pop_priorities"
 
 %files -n %{name}-doc
 %doc docs/build/html
+%endif
 
 %changelog

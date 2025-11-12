@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 12 12:28:41 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use libalternatives
+- Use multibuild to run tests in a subpackage
+- add upstream patch CVE-2025-6176.patch to mitigate brotli and
+  deflate decompression bombs DoS.
+  This patch adds a new bin test file that was added as a new source
+  as CVE-2025-6176-testfile-bomb-br-64GiB.bin
+  gh#scrapy/scrapy#7134, bsc#1252945, CVE-2025-6176)
+
+-------------------------------------------------------------------
 Thu Jul 31 05:18:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.13.3:

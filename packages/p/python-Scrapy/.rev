@@ -328,4 +328,18 @@ Requires python-setuptools 78 to build successfully.
   * Do not use unavailable sphinx-rtd-dark-mode extension.</comment>
     <requestid>1296688</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>3dd68b5e6f24c507142611bdbc61a09d</srcmd5>
+    <version>2.13.3</version>
+    <time>1762978566</time>
+    <user>anag_factory</user>
+    <comment>- Use libalternatives
+- Use multibuild to run tests in a subpackage
+- add upstream patch CVE-2025-6176.patch to mitigate brotli and
+  deflate decompression bombs DoS.
+  This patch adds a new bin test file that was added as a new source
+  as CVE-2025-6176-testfile-bomb-br-64GiB.bin
+  gh#scrapy/scrapy#7134, bsc#1252945, CVE-2025-6176)</comment>
+    <requestid>1317343</requestid>
+  </revision>
 </revisionlist>
