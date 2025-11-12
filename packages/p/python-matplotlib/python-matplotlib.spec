@@ -359,8 +359,6 @@ skip_tests+=" or png or svg or pdf"
 skip_tests+=" or (test_backend_pgf and test_rcupdate)"
 # test failures with newer ghostscript
 skip_tests+=" or test_bbox_inches_tight_raster[pdf] or test_interp_nearest_vs_none[pdf]"
-# test failure uncovered by gc https://github.com/matplotlib/matplotlib/issues/30703
-skip_tests+=" or test_rasterized[svg]"
 # test failures uncovered by xkeyboard-config https://github.com/matplotlib/matplotlib/issues/30703
 skip_tests+=" or (test_getattr and gtk3)"
 skip_tests+=" or test_determinism_check or test_determinism_source_date_epoch"

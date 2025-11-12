@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 11 10:55:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Revert the skipped test with gc, fixed in gc upstream (bsc#1252721)
+
+-------------------------------------------------------------------
 Mon Nov  3 09:06:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Skip tests failing with new package versions in Factory (bsc#1252721)
