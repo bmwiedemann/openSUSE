@@ -4,7 +4,6 @@
 less, but should allow greater flexibility in testing exception-throwing
 code with about the same amount of typing.
 It exports one routine by default: &quot;exception&quot;.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Fatal"/>
   <build>
     <disable repository="openSUSE_Factory"/>
   </build>
