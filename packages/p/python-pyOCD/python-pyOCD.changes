@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 11 23:44:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.40.0:
+  * Add support for multiple concurrent GDB client connections to
+    the same GDB server
+  * Improve logging with support for multiple concurrent GDB
+    clients
+  * Report correct target architecture and align registers with
+    GDB feature names
+  * Add missing secure/non-secure core registers (CONTROL,
+    FAULTMASK, BASEPRI, and PRIMASK)
+  * Update ResetType API for clearer reset handling
+  * Remove reset fallback mechanism for CMSIS-Pack based targets
+    to prevent unintended behavior
+  * Support custom reset sequence execution defined in CMSIS-Pack
+  * Refine debug sequence error handling and breakpoint
+    management across resets
+  * Remove implicit resets between loading multiple application
+    files
+  * Set Reset Catch on all cores when performing primary-core
+    reset before flashing
+  * Perform a hardware reset (nSRST) after flashing to ensure a
+    clean post-load state
+  * CMSIS-Toolbox Run and Debug Management integration:
+  * Add CMSIS-Pack related commands to `commander` interface
+
+-------------------------------------------------------------------
 Fri Oct 10 11:54:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.39.0:

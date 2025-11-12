@@ -131,4 +131,34 @@
   * select target based on `cbuild-run`</comment>
     <requestid>1310583</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>70eacb4ae9f81e5a99febb80004a72d8</srcmd5>
+    <version>0.40.0</version>
+    <time>1762978467</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.40.0:
+  * Add support for multiple concurrent GDB client connections to
+    the same GDB server
+  * Improve logging with support for multiple concurrent GDB
+    clients
+  * Report correct target architecture and align registers with
+    GDB feature names
+  * Add missing secure/non-secure core registers (CONTROL,
+    FAULTMASK, BASEPRI, and PRIMASK)
+  * Update ResetType API for clearer reset handling
+  * Remove reset fallback mechanism for CMSIS-Pack based targets
+    to prevent unintended behavior
+  * Support custom reset sequence execution defined in CMSIS-Pack
+  * Refine debug sequence error handling and breakpoint
+    management across resets
+  * Remove implicit resets between loading multiple application
+    files
+  * Set Reset Catch on all cores when performing primary-core
+    reset before flashing
+  * Perform a hardware reset (nSRST) after flashing to ensure a
+    clean post-load state
+  * CMSIS-Toolbox Run and Debug Management integration:
+  * Add CMSIS-Pack related commands to `commander` interface</comment>
+    <requestid>1317216</requestid>
+  </revision>
 </revisionlist>
