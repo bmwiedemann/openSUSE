@@ -984,4 +984,23 @@ See changelog in:
   * build(deps): bump the k8s-io group with 7 updates</comment>
     <requestid>1304583</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>913f823def21a75383602985614500af</srcmd5>
+    <version>3.19.1</version>
+    <time>1762978485</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.19.1 (bsc#1251649, CVE-2025-58190,
+  bsc#1251442, CVE-2025-47911):
+  * chore(deps): bump github.com/containerd/containerd from 1.7.28
+    to 1.7.29
+  * jsonschema: warn and ignore unresolved URN $ref to match
+    v3.18.4
+  * Avoid &quot;panic: interface conversion: interface {} is nil&quot;
+  * Fix `helm pull` untar dir check with repo urls
+  * Fix deprecation warning
+  * chore(deps): bump github.com/spf13/pflag from 1.0.7 to 1.0.10
+  * Add timeout flag to repo add and update flags
+  * chore(deps): bump golang.org/x/crypto from 0.41.0 to 0.43.0</comment>
+    <requestid>1317198</requestid>
+  </revision>
 </revisionlist>
