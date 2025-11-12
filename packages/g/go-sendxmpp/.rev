@@ -364,4 +364,12 @@
 - bsc#1241814 (CVE-2025-22872): This update includes golang.org/x/net/html 0.43.0</comment>
     <requestid>1300182</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a7a046f5df3688e0418b10aa95173e4e</srcmd5>
+    <version>0.15.1</version>
+    <time>1762978493</time>
+    <user>anag_factory</user>
+    <comment>bsc#1251461, CVE-2025-47911 and bsc#1251677, CVE-2025-58190</comment>
+    <requestid>1317243</requestid>
+  </revision>
 </revisionlist>

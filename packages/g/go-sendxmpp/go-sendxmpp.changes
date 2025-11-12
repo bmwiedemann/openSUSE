@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 11 12:48:38 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 0.15.1:
+  Added
+  * Add XEP-0359 Origin-ID to messages (requires go-xmpp >= v0.2.18).
+  Changed
+  * HTTP upload: Ignore timeouts on disco IQs as some components do
+    not reply.
+- Upgrades the embedded golang.org/x/net to 0.46.0
+  * Fixes: bsc#1251461, CVE-2025-47911: various algorithms with
+    quadratic complexity when parsing HTML documents
+  * Fixes: bsc#1251677, CVE-2025-58190: excessive memory consumption
+    by 'html.ParseFragment' when processing specially crafted input
+
+-------------------------------------------------------------------
 Tue Aug 19 06:18:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.0:
