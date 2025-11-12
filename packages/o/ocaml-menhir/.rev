@@ -87,4 +87,13 @@ ocaml 4.03 (fate#320836)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1287905</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b781c9fcc4411aef11d7a217b89c9779</srcmd5>
+    <version>20250912</version>
+    <time>1762978542</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250912
+  see included CHANGELOG.md file for details</comment>
+    <requestid>1317328</requestid>
+  </revision>
 </revisionlist>
