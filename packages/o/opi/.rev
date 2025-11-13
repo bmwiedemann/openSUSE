@@ -799,4 +799,13 @@
   * Fix handling of None version on Tumbleweed</comment>
     <requestid>1309701</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>22a3829b9667fad28418b942c3fd2353</srcmd5>
+    <version>5.9.0</version>
+    <time>1763051383</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.9.0
+  * Add onlyoffice</comment>
+    <requestid>1317630</requestid>
+  </revision>
 </revisionlist>
