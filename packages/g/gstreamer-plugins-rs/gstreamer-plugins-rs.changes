@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov 11 09:29:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.8:
+  + aws, webrtc, cargo: Remove all constraints on AWS SDK and tune
+    optimizations
+  + closedcaption: Return FlowError from scan_duration
+  + fmp4mux: Fix EAC3 datarate calculation
+  + fmp4mux: Fix EAC3 substream writing in EC3SpecificBox
+  + fmp4mux: Update to dash-mpd 0.19
+  + gtk4: Implement cropped imports without viewport
+  + json: Return FlowError from scan_duration
+  + rtp: baseaudiopay: Fix marker bit handling
+  + threadshare: fix Pad mod diagram
+  + threadshare: Update to getifaddrs 0.6
+  + tracers: Fix inability to create new log files (regression)
+  + tracers: Fix inverted append logic when writing log files
+  + uriplaylistbin: Propagate error message source
+  + webrtc: document grant requirement for livekitwebrtcsink auth
+    token
+  + webrtcsink: Correct lock ordering to prevent Lock (A), Lock (B)
+    Lock(B), Lock(A) deadlock between on_remote_description_set()
+    and handle_ice()
+  + webrtcsrc: Clean up EOS and session handling
+  + meson: Add auto_plugin_features option
+  + meson: Don't require all gstreamer libraries
+  + Document the tags and branches in this repository
+  + Fix a couple of new 1.91 clippy warnings
+  + Update dependencies
+
+-------------------------------------------------------------------
 Fri Oct 31 19:11:30 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop fix-reproducibility.patch and jobs=1 - not needed anymore
