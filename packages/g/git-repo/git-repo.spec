@@ -17,7 +17,7 @@
 
 
 Name:           git-repo
-Version:        2.58
+Version:        2.59
 Release:        0
 Summary:        The Multiple Git Repository Tool
 License:        Apache-2.0

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 05 18:38:43 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.59:
+  * sync: fix saving of fetch times and local state
+  * run_tests: log each command run
+  * sync: Use 'git rebase' during 'repo sync --rebase'
+  * Fix submodule initialization in interleaved sync mode
+  * Follow up "Fix shallow clones when upstream attribute is present"
+  * forall: fix crash with no command
+  * run_tests: add file header checker for licensing blocks
+  * man: regen after sync updates
+  * standardize file header wrt licensing
+  * CONTRIBUTING: rename doc per Google OSS policies
+
+-------------------------------------------------------------------
 Tue Sep 30 07:22:31 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.58:
