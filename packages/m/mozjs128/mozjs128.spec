@@ -90,8 +90,6 @@ Patch25:        mozjs128-CVE-2024-11403.patch
 Patch26:        mozjs128-CVE-2024-11498.patch
 # PATCH-FIX-UPSTREAM libtheora-avoid-negative-shift.patch bsc#1234837 mgorse@suse.com -- avoid negative shift in huffdec.c.
 Patch27:        libtheora-avoid-negative-shift.patch
-# PATCH-FIX-UPSTREAM mozjs128-CVE-2025-62813.patch bsc#1252607 mgorse@suse.com -- fix possible crash when processing untrusted LZ4 frames.
-Patch28:        mozjs128-CVE-2025-62813.patch
 BuildRequires:  cargo
 BuildRequires:  ccache
 BuildRequires:  clang
@@ -181,7 +179,6 @@ pushd ../..
 %patch -P 25 -p1
 %patch -P 26 -p1
 %patch -P 27 -p1
-%patch -P 28 -p1
 
 %if %{pkg_vcmp libicu-devel >= 76.1}
 sed -i 's/icu-i18n/icu-uc &/' js/moz.configure

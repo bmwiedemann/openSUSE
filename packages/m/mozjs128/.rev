@@ -149,4 +149,13 @@
     <comment></comment>
     <requestid>1314210</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ce9c0548522844631d150a72d45b2f55</srcmd5>
+    <version>128.14.0</version>
+    <time>1763051258</time>
+    <user>anag_factory</user>
+    <comment>- Drop mozjs128-CVE-2025-62813.patch. The CVE has been rejected,
+  so this patch is not needed after all. (forwarded request 1317339 from mgorse)</comment>
+    <requestid>1317505</requestid>
+  </revision>
 </revisionlist>
