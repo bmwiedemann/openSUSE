@@ -21,13 +21,16 @@
 %global version_current 1.91.0
 %global version_previous 1.90.0
 
-%if 0%{?gcc_version} < 14
+%if 0%{?gcc_version} < 13
 # We may need a minimum gcc version for some linker flags
 # This is especially true on leap/sle
 #
 # ⚠️   11 or greater is required for a number of linker flags to be supported in sle.
 #
-%global need_gcc_version 14
+%global need_gcc_version 15
+%else
+# Work around SLFO gcc mess.
+%global need_gcc_version %gcc_version
 %endif
 
 # Use correct python-version for SLE-12
@@ -342,18 +345,24 @@ Requires:       lld
 %else
 %if 0%{?need_gcc_version} != 0
 BuildRequires:  gcc%{need_gcc_version}-c++
-Requires:       gcc%{need_gcc_version}
 %else
 BuildRequires:  gcc-c++
+%endif
+%endif
+
+%if 0%{?need_gcc_version} != 0
+Requires:       gcc%{need_gcc_version}
+%else
 Requires:       gcc
 %endif
-%endif
+
 
 # CMake and Ninja required to drive the bundled llvm build.
 # Cmake is also needed in tests.
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150300
 # In these distros cmake is 2.x, or 3.X < 3.13, so we need cmake3 for building llvm.
 BuildRequires:  cmake3 >= 3.20.0
+#!BuildIgnore:  cmake
 %else
 BuildRequires:  cmake >= 3.20.0
 %endif
