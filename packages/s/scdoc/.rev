@@ -214,4 +214,23 @@
     <comment></comment>
     <requestid>1195223</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d66acdc482cc0ad08c2a7d800fc10aa5</srcmd5>
+    <version>1.11.4</version>
+    <time>1763051159</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.11.4:
+  * Makefile: drop -static
+  * parse_preamble: remove useless branch
+  * utf8_size: fix bug with array length
+  * Fix unclosed indent at EOF
+  * Fix make check permissions mask
+  * Emit \(ti and \(ha instead of ~ and ^
+  * Makefile: remove unnecessary path separator
+  * gmtime: handle failure
+  * Fix logical error in comparison with ULONG_MAX
+  * strip indentation after a hard line break `++`
+- Drop scdoc-1.6.1-makefile.patch included upstream</comment>
+    <requestid>1317237</requestid>
+  </revision>
 </revisionlist>

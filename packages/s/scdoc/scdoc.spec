@@ -1,7 +1,7 @@
 #
 # spec file for package scdoc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           scdoc
-Version:        1.11.3
+Version:        1.11.4
 Release:        0
 Summary:        A man page generator written in C99
 License:        MIT
@@ -25,7 +25,6 @@ Group:          Development/Tools/Doc Generators
 URL:            https://git.sr.ht/~sircmpwn/scdoc/
 Source:         https://git.sr.ht/~sircmpwn/scdoc/archive/%{version}.tar.gz
 Source1:        scdoc-rpmlintrc
-Patch0:         scdoc-1.6.1-makefile.patch
 BuildRequires:  autoconf
 BuildRequires:  c_compiler
 BuildRequires:  make

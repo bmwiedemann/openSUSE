@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 12 05:29:57 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.4:
+  * Makefile: drop -static
+  * parse_preamble: remove useless branch
+  * utf8_size: fix bug with array length
+  * Fix unclosed indent at EOF
+  * Fix make check permissions mask
+  * Emit \(ti and \(ha instead of ~ and ^
+  * Makefile: remove unnecessary path separator
+  * gmtime: handle failure
+  * Fix logical error in comparison with ULONG_MAX
+  * strip indentation after a hard line break `++`
+- Drop scdoc-1.6.1-makefile.patch included upstream
+
+-------------------------------------------------------------------
 Wed Aug 21 21:27:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop glibc-devel-static build requirement, it is not exercised
