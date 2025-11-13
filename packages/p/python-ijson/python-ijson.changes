@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Nov 12 20:49:16 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- It's using pytest and we need pytest_arch.
+
+-------------------------------------------------------------------
+Tue Nov 11 11:10:16 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable testsuite atm as it can not find ijson itself in the
+  testsuite run
+
+-------------------------------------------------------------------
+Tue Nov 11 10:48:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.4.0.post0:
+  - Added support for PEP 489 multi-phase initialisation and
+    per-module state for our C extension, allowing us to support
+    sub-interpreters with per-interpreter GIL.
+  - Advertise support for free-threading python mode.
+  - Removed support for Python < 3.9.
+  - Enhanced generators so they yield all possible results to users
+    before errors are raised (#123).
+  - Added `ijson.ALL_BACKENDS` constant listing all supported
+    backends (which might or not be available at runtime).
+  - Added a `capabilities` constant to each backend describing
+    which capabilities it supports.
+  - Exposing backend's name under ``<backend>.backend_name``, and
+    default backend's name under ``ijson.backend_name``. This is
+    similar to the already existing ``name`` constant, only
+    slightly better named to hopefully avoid confusion.
+  - Restructured source code so all code lives under `src/`, and
+    the `ijson.backends._yajl2` extension under
+    `src/ijson/backends/ext/_yajl2`. This allows C backend tests to
+    actually run on cibuildwheel.
+  - Improved performance of `parse` routine in C backend by ~4%.
+  - Fixed several potential stability issues in C backend around
+    correct error handling.
+  - Fixed corner-case wrong behaviour of `yajl2_c` backend, which
+    didn't work correctly with user-provided event names.
+  - Pointing to our own fork of yajl (for when we build it
+    ourselves) that contains fixes for all known CVEs (#126).
+  - Removed leftover compatibility bits in the C backend.
+  - Fixed potential issue with `yajl` and `yajl2` backends where
+    crashes could occur at interpreter shutdown.
+  - Removed tox.
+  - Moved static project metadata to `pyproject.toml`.
+
+-------------------------------------------------------------------
 Wed May 28 12:12:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

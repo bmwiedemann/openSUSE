@@ -1,7 +1,7 @@
 #
 # spec file for package python-ijson
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,11 @@
 #
 
 
+%bcond_without ijson_testsuite
+
 %{?sle15_python_module_pythons}
 Name:           python-ijson
-Version:        3.3.0
+Version:        3.4.0.post0
 Release:        0
 Summary:        Iterative JSON parser with a standard Python iterator interface
 License:        BSD-3-Clause
@@ -29,6 +31,10 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+%if %{with ijson_testsuite}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testsuite}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -50,8 +56,10 @@ export CFLAGS="%{optflags}"
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
+%if %{with ijson_testsuite}
 %check
-%pyunittest -v
+%pytest_arch -v
+%endif
 
 %files %{python_files}
 %doc README.rst
