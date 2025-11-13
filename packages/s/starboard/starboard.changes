@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 13 14:56:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.15.28:
+  * Update go version to 1.24.8 (due to CVE-2025-58188) by
+    @hammerg in #1426
+  * release: prepare v0.15.28 by @hammerg in #1427
+
+-------------------------------------------------------------------
 Thu Sep 18 08:57:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.15.27:

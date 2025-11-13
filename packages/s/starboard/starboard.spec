@@ -17,14 +17,14 @@
 
 
 Name:           starboard
-Version:        0.15.27
+Version:        0.15.28
 Release:        0
 Summary:        Kubernetes-native security toolkit
 License:        Apache-2.0
 URL:            https://github.com/aquasecurity/starboard
 Source:         starboard-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.24 >= 1.24.6
+BuildRequires:  go1.24 >= 1.24.8
 
 %description
 Starboard integrates security tools into the Kubernetes environment, so that
