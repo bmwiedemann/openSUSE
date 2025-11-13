@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  9 14:16:34 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.76.0:
+  * gRPC AsyncIO: Improve CompletionQueue polling performance
+    (gh#grpc/grpc#39993).
+
+-------------------------------------------------------------------
 Fri Oct 24 05:29:25 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.75.1:
