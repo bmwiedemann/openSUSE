@@ -16,11 +16,9 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
-%define skip_python37 1
-%define skip_python38 1
-%if 0%{?suse_version} < 1600
+%if %{defined primary_python}
+%define pythons %primary_python
+%else
 %if 0%{?sle_version} == 150700
 %global pythons python313
 %else
@@ -29,13 +27,15 @@
 %endif
 
 Name:           yt-dlp
-Version:        2025.10.22
+Version:        2025.11.12
+%define ejsver  0.3.1
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/yt-dlp/yt-dlp
 Source:         https://github.com/yt-dlp/yt-dlp/releases/download/%version/yt-dlp.tar.gz
+Source2:        https://github.com/yt-dlp/ejs/releases/download/%ejsver/yt_dlp_ejs-%ejsver-py3-none-any.whl
 Source9:        yt-dlp-rpmlintrc
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -43,6 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  make >= 4
 BuildRequires:  python-rpm-macros
 BuildRequires:  zip
+BuildRequires:  unzip
 BuildArch:      noarch
 Obsoletes:      yt-dlp-bash-completion < %version-%release
 Provides:       yt-dlp-bash-completion = %version-%release
@@ -50,15 +51,7 @@ Obsoletes:      yt-dlp-fish-completion < %version-%release
 Provides:       yt-dlp-fish-completion = %version-%release
 Obsoletes:      yt-dlp-zsh-completion < %version-%release
 Provides:       yt-dlp-zsh-completion = %version-%release
-%if 0%{?suse_version} < 1600
-%if 0%{?sle_version} == 150700
-Requires:       python313-yt-dlp = %version
-%else
-Requires:       python312-yt-dlp = %version
-%endif
-%else
-Requires:       python3-yt-dlp = %version
-%endif
+Requires:       %pythons-yt-dlp = %version
 %define python_subpackage_only 1
 %python_subpackages
 
@@ -79,6 +72,7 @@ This package installs "youtube-dl" as a symlink to yt-dlp.
 Summary:        yt-dlp Python library
 Group:          Development/Languages/Python
 Requires:       ffmpeg
+Requires:       deno
 Suggests:       python-Brotli
 Suggests:       python-certifi
 Suggests:       python-mutagen
@@ -90,6 +84,7 @@ The direct Python interface into yt-dlp.
 
 %prep
 %autosetup -p1 -n %name
+
 # remove shebang
 find . -type f -name "*.py" -exec sed -i '/^#!/d' {} +
 
@@ -103,13 +98,7 @@ rm -f youtube-dl yt-dlp
 # A self-decompressing yt-dlp is built only when python_build is not
 # exercised; else yt-dlp is a loader.
 #
-%if 0%{?suse_version} < 1600
-%if 0%{?sle_version} == 150700
-export PYTHON=%__python313
-%else
-export PYTHON=%__python312
-%endif
-%endif
+export PYTHON=$(type -P "%_bindir/python%{python_bin_suffix}" | xargs --no-run-if-empty readlink -f)
 %pyproject_wheel
 %make_build yt-dlp
 
@@ -128,6 +117,14 @@ rm -Rf "$b/%_datadir/doc"
 # 	2024-09-29T18:11:02
 # 	/usr/lib/python3.12/site-packages/yt_dlp/extractor/screencastomatic.py
 # 	2024-09-29T18:11:01
+
+ejs="$(grep ^EJS_VERSION Makefile | perl -pe 's{^.*?=\s+(.*)}{$1}')"
+%{python_expand #
+d="$b/%$python_sitelib/"
+mkdir -p "$d"
+cd "$d"
+unzip "%_sourcedir/yt_dlp_ejs-$ejs-py3-none-any.whl"
+}
 
 %files -n yt-dlp
 %license LICENSE

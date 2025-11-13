@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 13 08:30:07 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.11.12
+  * An external JavaScript runtime is now used for full YouTube
+    support (e.g. deno).
+
+-------------------------------------------------------------------
+Thu Oct 23 12:34:56 UTC 2025 - olaf@aepfle.de
+
+- Use the pythons macro to reduce the amount of suse_version usage
+
+-------------------------------------------------------------------
 Wed Oct 22 15:41:02 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2025.10.22
