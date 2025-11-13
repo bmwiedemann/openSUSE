@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 11 09:16:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.8:
+  + av1parse: Fix duplicated frames issue in frame splitting
+  + avwait: Unify conditions between the different modes
+  + d3d11converter & d3d12converter: Initialize video_direction
+  + dtlsconnection: Increase DTLS MTU to 1200
+  + h264parser: fix uint32 to int32 truncation
+  + mpegtsmux: ID3 tag handling fixes and cleanup
+  + ristsink: Fix double free regression
+  + scte-section: fix resource leak in splice component parsing
+  + tsmux: Reset PUSI flag after writing stream packet
+  + uvcgadget: always ensure to switch to fakesink
+  + v4l2codecs: Free sub-request on allocation failure
+  + wasapi2: Handle GetActivateResult failure
+  + wayland: Fix using uninitialized value of data.wbuf
+  + gstwasapi2.dll error on machines with no audio devices
+  + x265enc: Calculate latency based on encoder parameters
+
+-------------------------------------------------------------------
 Thu Oct 16 18:12:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.7:
