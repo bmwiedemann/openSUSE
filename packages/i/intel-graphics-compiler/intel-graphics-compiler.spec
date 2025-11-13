@@ -16,13 +16,13 @@
 #
 
 
-%global llvm_version 15.0.7
+%global llvm_version 16.0.6
 %global llvm_major %gsub %{llvm_version} %{quote:%..+} %{quote: }
-%global so_version 2.18.0+0
+%global so_version 2.20.3+0
 %global so_major %gsub %{so_version} %{quote:%..+} %{quote: }
 
 Name:           intel-graphics-compiler
-Version:        2.18.5+git0.gbd67908e0
+Version:        2.20.3
 Release:        0%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
@@ -31,8 +31,9 @@ URL:            http://github.com/intel/intel-graphics-compiler
 Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{llvm_version}/llvm-project-%{llvm_version}.src.tar.xz
 Source1:        https://releases.llvm.org/release-keys.asc
 Patch0:         0001-Include-cstdint-where-needed.patch
-Patch1:         0002-Replace-ciso646-with-version.patch
+Patch1:         0001-Replace-ciso646-with-version.patch
 Patch2:         0003-Empty-check-before-vector-use.patch
+Patch3:         0001-Remove-rpath.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -115,6 +116,7 @@ tar -xJf %{_sourcedir}/llvm-project-%{llvm_version}.src.tar.xz -C llvm-project -
 pushd llvm-project
 %patch -P 0 -p1
 %patch -P 1 -p1
+%patch -P 3 -p1
 popd
 
 mv %{_sourcedir}/vc-intrinsics*/ vc-intrinsics
@@ -152,6 +154,7 @@ cmake ../igc \
   -DIGC_OPTION__LLVM_PREFERRED_VERSION=%{llvm_version} \
   -DCMAKE_VERBOSE_MAKEFILE=ON \
   -DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=%{_includedir}/spirv
+#  -DLLVM_LOCAL_RPATH=""
 
 %make_build
 popd
@@ -165,7 +168,8 @@ rm -fv %{buildroot}%{_bindir}/GenX_IR \
     %{buildroot}%{_bindir}/lld \
     %{buildroot}%{_includedir}/opencl-c.h \
     %{buildroot}%{_includedir}/opencl-c-base.h \
-    %{buildroot}%{_prefix}/lib/debug
+    %{buildroot}%{_prefix}/lib/debug \
+    %{buildroot}%{_prefix}/lib/NewPMPlugin*
 chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.%{llvm_major}
 
 %post -n libigc2 -p /sbin/ldconfig

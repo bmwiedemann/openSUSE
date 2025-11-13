@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
      <param name="url">https://github.com/intel/opencl-clang.git</param>
      <param name="scm">git</param>
-     <param name="revision">refs/tags/v15.0.4</param>
+     <param name="revision">refs/tags/v16.0.5</param>
      <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.g%h</param>
      <param name="versionrewrite-pattern">v?(.*)</param>
      <param name="versionrewrite-replacement">\1</param>
@@ -11,7 +11,7 @@
   <service name="obs_scm" mode="manual">
      <param name="url">https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git</param>
      <param name="scm">git</param>
-     <param name="revision">refs/tags/v15.0.16</param>
+     <param name="revision">refs/tags/v16.0.18</param>
      <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.g%h</param>
      <param name="versionrewrite-pattern">v?(.*)</param>
      <param name="versionrewrite-replacement">\1</param>
@@ -27,7 +27,7 @@
   <service name="obs_scm" mode="manual">
      <param name="url">https://github.com/intel/intel-graphics-compiler.git</param>
      <param name="scm">git</param>
-     <param name="revision">refs/tags/v2.18.5</param>
+     <param name="revision">refs/tags/v2.20.3</param>
      <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.g%h</param>
      <param name="versionrewrite-pattern">v?(.*)</param>
      <param name="versionrewrite-replacement">\1</param>

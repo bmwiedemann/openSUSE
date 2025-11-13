@@ -1,0 +1,28 @@
+From cfc66e8ed539f9de0ed2859d9642a26d378b65f1 Mon Sep 17 00:00:00 2001
+From: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
+Date: Wed, 12 Nov 2025 15:04:43 +0100
+Subject: [PATCH] Remove rpath
+
+Signed-off-by: Patrik Jakobsson <pjakobsson@suse.de>
+---
+ llvm/cmake/modules/AddLLVM.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/llvm/cmake/modules/AddLLVM.cmake b/llvm/cmake/modules/AddLLVM.cmake
+index 93e6d67551de..259e0d7d3282 100644
+--- a/llvm/cmake/modules/AddLLVM.cmake
++++ b/llvm/cmake/modules/AddLLVM.cmake
+@@ -2320,8 +2320,8 @@ function(llvm_setup_rpath name)
+     # FIXME: update this when there is better solution.
+     set(_install_rpath "${LLVM_LIBRARY_OUTPUT_INTDIR}" "${CMAKE_INSTALL_PREFIX}/lib${LLVM_LIBDIR_SUFFIX}" ${extra_libdir})
+   elseif(UNIX)
+-    set(_build_rpath "\$ORIGIN/../lib${LLVM_LIBDIR_SUFFIX}" ${extra_libdir})
+-    set(_install_rpath "\$ORIGIN/../lib${LLVM_LIBDIR_SUFFIX}")
++    set(_build_rpath "" ${extra_libdir})
++    set(_install_rpath "")
+     if(${CMAKE_SYSTEM_NAME} MATCHES "(FreeBSD|DragonFly)")
+       set_property(TARGET ${name} APPEND_STRING PROPERTY
+                    LINK_FLAGS " -Wl,-z,origin ")
+-- 
+2.51.1
+

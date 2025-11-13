@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 12 14:33:46 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to 2.20.3
+  * No changelog was made available
+- Update opencl_clang to v16.0.5
+- Update spirv_llvm_translator to v16.0.18
+- Update llvm to 16.0.6
+- 0002-Replace-ciso646-with-version.patch
+  * Replaced with new version for LLVM16
+- 0001-Replace-ciso646-with-version.patch
+  * Resolves compilation failure with GCC20
+- 0001-Remove-rpath.patch
+  * Remove rpath from libopencl-clang
+
+-------------------------------------------------------------------
 Sun Oct 05 11:15:21 UTC 2025 - Michael Gumsley <gumsley_6@hotmail.com>
 
 - Update to 2.18.5
