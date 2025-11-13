@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  9 09:25:23 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.76.0:
+  * gRPC AsyncIO: Improve CompletionQueue polling performance
+    (gh#grpc/grpc#39993).
+- Minor rebase of fix-return-values.patch to apply cleanly.
+- Drop setting _default_patch_fuzz to 2 as all patches have been
+  rebased to apply cleanly.
+
+-------------------------------------------------------------------
 Fri Oct 24 05:39:05 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add (Build)Requires: python-typing_extensions, needed since

@@ -10,10 +10,10 @@ Fix some terrible code.
  src/core/lib/promise/inter_activity_mutex.h |    2 ++
  3 files changed, 8 insertions(+)
 
-Index: grpc-1.74.0/src/core/call/call_state.h
+Index: grpcio-1.76.0/src/core/call/call_state.h
 ===================================================================
---- grpc-1.74.0.orig/src/core/call/call_state.h
-+++ grpc-1.74.0/src/core/call/call_state.h
+--- grpcio-1.76.0.orig/src/core/call/call_state.h
++++ grpcio-1.76.0/src/core/call/call_state.h
 @@ -155,6 +155,7 @@ class CallState {
        case ClientToServerPullState::kTerminated:
          return "Terminated";
@@ -54,22 +54,22 @@ Index: grpc-1.74.0/src/core/call/call_state.h
    }
    template <typename Sink>
    friend void AbslStringify(Sink& out, ServerTrailingMetadataState state) {
-Index: grpc-1.74.0/src/core/channelz/channelz.h
+Index: grpcio-1.76.0/src/core/channelz/channelz.h
 ===================================================================
---- grpc-1.74.0.orig/src/core/channelz/channelz.h
-+++ grpc-1.74.0/src/core/channelz/channelz.h
-@@ -144,6 +144,7 @@ class BaseNode : public DualRefCounted<B
-       case EntityType::kCall:
-         return "call";
+--- grpcio-1.76.0.orig/src/core/channelz/channelz.h
++++ grpcio-1.76.0/src/core/channelz/channelz.h
+@@ -173,6 +173,7 @@ class BaseNode : public DualRefCounted<B
+       case EntityType::kResourceQuota:
+         return "resource_quota";
      }
 +    return "unknown";
    }
  
    static std::optional<EntityType> KindToEntityType(absl::string_view kind) {
-Index: grpc-1.74.0/src/core/lib/promise/inter_activity_mutex.h
+Index: grpcio-1.76.0/src/core/lib/promise/inter_activity_mutex.h
 ===================================================================
---- grpc-1.74.0.orig/src/core/lib/promise/inter_activity_mutex.h
-+++ grpc-1.74.0/src/core/lib/promise/inter_activity_mutex.h
+--- grpcio-1.76.0.orig/src/core/lib/promise/inter_activity_mutex.h
++++ grpcio-1.76.0/src/core/lib/promise/inter_activity_mutex.h
 @@ -307,6 +307,8 @@ class InterActivityMutex {
          case State::kMovedFrom:
            LOG(FATAL) << "Mutex acquirer already moved from";
