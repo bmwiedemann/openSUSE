@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Nov 11 10:12:52 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.5.83 (1.6 RC3):
+  * This is the third 1.6 release candidate that is API and ABI
+    compatible with previous 1.4.x, 1.2.x and 1.0.x releases.
+  * Highlights
+    - Include the NEWS and updated version number.
+- Update to version 1.5.82 (1.6 RC2):
+  * This is the second 1.6 release candidate that is API and ABI
+    compatible with previous 1.4.x, 1.2.x and 1.0.x releases.
+  * Highlights
+    - The max channel limit is now a compile time option.
+    - The SAP and RTP module have seen some robustness
+      improvements.
+    - Add audio.layout property.
+    - Cleanups to the code here and there.
+  * PipeWire
+    - Handle Tags more like Latency with a NULL param when no ports
+      are linked and some sort of (empty) Tag when the ports are
+      linked.
+  * Modules
+    - Improve the echo-cancel module to keep the streams more
+      aligned and cause less latency.
+    - Improve format parsing errors in most modules.
+    - The RTP module now has extra code for better network
+      robustness, including cases when network interfaces are not
+      yet up and running, and multicast sockets are silently kicked
+      out of IGMP groups.
+    - The direct timestamp mode in the RTP module was effectively
+      broken and is now fixed.
+    - Add support for audio.layout.
+    - Add multichannel support to ROC.
+  * SPA
+    - Rework the maximum number of channel handling. Because this
+      is a potential ABI break, it is now a compile time option
+      with new functions to handle more than the previous 64
+      channels.
+    - The 64 channel limit was removed from the noise shaper.
+    - spa_strbuf is used in more places instead of custom snprintf
+      code.
+    - The volume ramp code was simplified.
+    - The driver node now has properties to configure the clock.
+    - The adapter will try to renegotiate when the driver changes.
+    - Fix relaxed array parsing with odd number of elements.
+      (#4944 (closed))
+    - audio.layout was added to set the channel positions to some
+      predefined layouts.
+    - Added more POD choice checks to ensure the right amount of
+      values are present in the choice.
+    - Fix __has_attribute usage. (#4962 (closed))
+    - Thread RESET_ON_FORK is now disabled for JACK application so
+      that forking will preserve any real-time thread priorities,
+      like JACK.  (#4966 (closed))
+    - Fix some compilation issues. (#4960 (closed) and
+      #4961 (closed)).
+  * Pulse-server
+    - Fix missing subscription events on device port changes.
+    - Increase min.quantum to 256/48000. (#4875 (closed))
+  * GStreamer
+    - Avoid overflow in clock time calculations.
+    - Fix renegotiation.
+  * Docs
+    - Swap the name and id of device.product
+
+-------------------------------------------------------------------
 Thu Oct 16 09:56:12 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.5.81 (1.6 RC1):
