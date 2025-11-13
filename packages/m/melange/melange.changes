@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Nov 13 06:59:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.1:
+  * build(deps): bump github.com/docker/cli (#2232)
+  * build(deps): bump golang.org/x/crypto from 0.43.0 to 0.44.0
+    (#2229)
+  * build(deps): bump golangci/golangci-lint-action from 8.0.0 to
+    9.0.0 (#2228)
+  * build(deps): bump golang.org/x/sync from 0.17.0 to 0.18.0
+    (#2226)
+  * build(deps): bump step-security/harden-runner in the actions
+    group (#2227)
+  * build(deps): bump golang.org/x/sys from 0.37.0 to 0.38.0
+    (#2225)
+  * build(deps): bump the gomod group with 5 updates (#2224)
+
+-------------------------------------------------------------------
+Mon Nov 10 13:02:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.0:
+  * build(deps): bump github.com/containerd/containerd/v2 (#2219)
+  * Don't use github.com/charmbracelet/log directly (#2220)
+  * Include subpackage source data in sboms
+  * Fix update-cache to respect more subtitutions (#2217)
+  * sca: export var LibDirs so it can be appended to (#2216)
+  * build(deps): bump docker/setup-docker-action in the actions
+    group (#2215)
+  * build(deps): bump chainguard.dev/apko in the gomod group
+    (#2214)
+  * feat(build/pipelines/cmake): add opts option to cmake/build
+    (#2211)
+
+-------------------------------------------------------------------
 Tue Nov 04 20:29:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.32.0:
