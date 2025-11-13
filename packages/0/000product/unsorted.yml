@@ -3511,7 +3511,6 @@ unsorted:
   - eartag-lang 
   - easy-rsa 
   - easyeffects 
-  - easyeffects-doc 
   - easyeffects-lang 
   - easyloggingpp-devel 
   - easymock 
@@ -3930,20 +3929,14 @@ unsorted:
   - fcitx-gtk2-32bit 
   - fcitx-gtk3-32bit 
   - fcitx-hangul 
-  - fcitx-kkc 
-  - fcitx-libpinyin 
   - fcitx-m17n 
   - fcitx-pinyin-tools 
-  - fcitx-qt5 
-  - fcitx-qt5-devel 
-  - fcitx-qt6 
   - fcitx-quwei 
   - fcitx-rime 
   - fcitx-sayura 
   - fcitx-skin-classic 
   - fcitx-skin-dark 
   - fcitx-skin-new-air 
-  - fcitx-skk 
   - fcitx-sunpinyin 
   - fcitx-table-amharic 
   - fcitx-table-arabic 
@@ -3984,7 +3977,6 @@ unsorted:
   - fcitx-table-ua-translit 
   - fcitx-table-vi-qr 
   - fcitx-ui-light 
-  - fcitx-unikey 
   - fcitx5 
   - fcitx5-anthy 
   - fcitx5-chewing 
@@ -9985,8 +9977,6 @@ unsorted:
   - keyutils-devel 
   - keyutils-devel-32bit 
   - kf5-filesystem 
-  - kf5-kcm-fcitx 
-  - kf5-kcm-fcitx-icons 
   - kf5-mediainfo 
   - kf6-attica-devel 
   - kf6-baloo-devel 
@@ -11029,17 +11019,17 @@ unsorted:
   - libBulletWorldImporter3_17 
   - libBulletXmlWorldImporter3_17 
   - libCCfits2_7 
-  - libCLHEP-2_4_7_1 
-  - libCLHEP-Cast-2_4_7_1 
-  - libCLHEP-Evaluator-2_4_7_1 
-  - libCLHEP-Exceptions-2_4_7_1 
-  - libCLHEP-GenericFunctions-2_4_7_1 
-  - libCLHEP-Geometry-2_4_7_1 
-  - libCLHEP-Matrix-2_4_7_1 
-  - libCLHEP-Random-2_4_7_1 
-  - libCLHEP-RandomObjects-2_4_7_1 
-  - libCLHEP-RefCount-2_4_7_1 
-  - libCLHEP-Vector-2_4_7_1 
+  - libCLHEP-2_4_7_2 
+  - libCLHEP-Cast-2_4_7_2 
+  - libCLHEP-Evaluator-2_4_7_2 
+  - libCLHEP-Exceptions-2_4_7_2 
+  - libCLHEP-GenericFunctions-2_4_7_2 
+  - libCLHEP-Geometry-2_4_7_2 
+  - libCLHEP-Matrix-2_4_7_2 
+  - libCLHEP-Random-2_4_7_2 
+  - libCLHEP-RandomObjects-2_4_7_2 
+  - libCLHEP-RefCount-2_4_7_2 
+  - libCLHEP-Vector-2_4_7_2 
   - libCSXCAD0 
   - libCbc3 
   - libCgl1 
@@ -14819,8 +14809,6 @@ unsorted:
   - libnetcdf22-openmpi5 
   - libnetcdf_c++-devel 
   - libnetcdf_c++4 
-  - libnetcdf_c++4-1 
-  - libnetcdf_c++4-devel 
   - libnetcontrol-devel 
   - libnetcontrol0 
   - libnetfilter_acct-devel 
@@ -15985,6 +15973,7 @@ unsorted:
   - librocm-core1 
   - librocrand1 
   - librocsgraphtheory0 
+  - librocsolver0 
   - librocsparse1 
   - librrd8 
   - librsb-devel 
@@ -19886,6 +19875,7 @@ unsorted:
   - nss-shared-helper-devel 
   - nss_synth 
   - nss_wrapper 
+  - nsswitch-config 
   - nst 
   - ntfs2btrfs 
   - ntfsprogs-extra 
@@ -25062,6 +25052,7 @@ unsorted:
   - python311-csvkit 
   - python311-ctranslate2 
   - python311-ctypesgen 
+  - python311-cucumber-tag-expressions 
   - python311-curlylint 
   - python311-curtsies 
   - python311-cwcwidth 
@@ -26519,6 +26510,7 @@ unsorted:
   - python311-pure-sasl 
   - python311-puremagic 
   - python311-purl 
+  - python311-pwdlib 
   - python311-py 
   - python311-py-build-cmake 
   - python311-py-cpuinfo 
@@ -28851,6 +28843,7 @@ unsorted:
   - python312-csvkit 
   - python312-ctranslate2 
   - python312-ctypesgen 
+  - python312-cucumber-tag-expressions 
   - python312-curlylint 
   - python312-curtsies 
   - python312-cwcwidth 
@@ -30334,6 +30327,7 @@ unsorted:
   - python312-pure-sasl 
   - python312-puremagic 
   - python312-purl 
+  - python312-pwdlib 
   - python312-py 
   - python312-py-build-cmake 
   - python312-py-cpuinfo 
@@ -32666,6 +32660,7 @@ unsorted:
   - python313-csvkit 
   - python313-ctranslate2 
   - python313-ctypesgen 
+  - python313-cucumber-tag-expressions 
   - python313-curlylint 
   - python313-curtsies 
   - python313-cwcwidth 
@@ -34138,6 +34133,7 @@ unsorted:
   - python313-pure-sasl 
   - python313-puremagic 
   - python313-purl 
+  - python313-pwdlib 
   - python313-py 
   - python313-py-build-cmake 
   - python313-py-cpuinfo 
@@ -36493,6 +36489,7 @@ unsorted:
   - rocs 
   - rocs-devel 
   - rocs-lang 
+  - rocsolver-devel 
   - rocsparse-devel 
   - rocthrust-devel 
   - rofi 
@@ -36582,8 +36579,6 @@ unsorted:
   - rtl-sdr 
   - rtl-sdr-devel 
   - rtl-sdr-udev 
-  - rtl8188gu 
-  - rtl8188gu-kmp-default 
   - rtl88x2bu 
   - rtl88x2bu-kmp-default 
   - rtl_433 
