@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymdown-extensions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-pymdown-extensions
-Version:        10.16.1
+Version:        10.17.1
 Release:        0
 Summary:        Extension pack for Python Markdown
 License:        MIT

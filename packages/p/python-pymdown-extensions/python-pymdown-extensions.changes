@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 12 21:17:06 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 10.17.1:
+  * FIX: Fix an issue where Highlight can override another
+    extension in the "registered" list in Python Markdown.
+- additional changes from 10.17:
+  * NEW: Allow specifying static IDs in caption block headers via
+    #id syntax.
+
+-------------------------------------------------------------------
 Mon Jul 28 18:31:44 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 10.16.1:
