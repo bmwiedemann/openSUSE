@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Nov 13 07:00:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.1:
+  * Bug Fixes
+    - go: update k8s.io/apimachinery ( v0.34.1 → v0.34.2 )
+      (e575811)
+  * CI/CD
+    - github-action: update renovatebot/github-action ( v44.0.0 →
+      v44.0.1 ) (a1c7c15)
+    - github-action: Update renovatebot/github-action ( v43.0.20 →
+      v44.0.0 ) (#215) (cafe324)
+    - github-action: update mirceanton/action-semver-release (
+      v2.0.0 → v2.1.0 ) (6c7aae3)
+    - github-action: update renovatebot/github-action ( v43.0.19 →
+      v43.0.20 ) (a911eef)
+    - github-action: update jdx/mise-action ( v3.3.1 → v3.4.0 )
+      (104a03b)
+    - github-action: update github/codeql-action ( v4.31.0 →
+      v4.31.2 ) (b1dddb7)
+    - github-action: update renovatebot/github-action ( v43.0.18 →
+      v43.0.19 ) (0f0022f)
+    - github-action: update github/codeql-action ( v4.30.9 →
+      v4.31.0 ) (8dc2dfb)
+    - github-action: update renovatebot/github-action ( v43.0.17 →
+      v43.0.18 ) (79e6860)
+    - github-action: update github/codeql-action ( v4.30.8 →
+      v4.30.9 ) (bed930f)
+    - github-action: update renovatebot/github-action ( v43.0.16 →
+      v43.0.17 ) (99d6b85)
+    - github-action: update github/codeql-action ( v4.30.7 →
+      v4.30.8 ) (79e90e0)
+    - github-action: update jdx/mise-action ( v3.3.0 → v3.3.1 )
+      (5038e2d)
+  * Chores
+    - mise: update go ( 1.25.3 → 1.25.4 ) (13da759)
+    - mise: update aqua:golangci/golangci-lint ( 2.6.0 → 2.6.1 )
+      (53328e4)
+    - mise: update aqua:golangci/golangci-lint ( 2.5.0 → 2.6.0 )
+      (45e0fad)
+    - mise: update aqua:goreleaser/goreleaser ( 2.12.6 → 2.12.7 )
+      (b501558)
+    - mise: update aqua:goreleaser/goreleaser ( 2.12.5 → 2.12.6 )
+      (001274b)
+    - mise: update go ( 1.25.2 → 1.25.3 ) (0da3b81)
+
+-------------------------------------------------------------------
 Mon Oct 13 06:53:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.0:
