@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 13 08:03:00 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build again even with latest gcc and xmkmf as well
+  install manual page 
+
+-------------------------------------------------------------------
 Wed Nov  6 07:59:56 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch xtexit-gcc14.patch

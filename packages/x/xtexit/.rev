@@ -124,4 +124,13 @@
   * Make it build even with gcc14</comment>
     <requestid>1221692</requestid>
   </revision>
+  <revision rev="19" vrev="1253">
+    <srcmd5>46b24408b22ed8322238311577dec9a5</srcmd5>
+    <version>0.42</version>
+    <time>1763051288</time>
+    <user>anag_factory</user>
+    <comment>- Make it build again even with latest gcc and xmkmf as well
+  install manual page</comment>
+    <requestid>1317522</requestid>
+  </revision>
 </revisionlist>

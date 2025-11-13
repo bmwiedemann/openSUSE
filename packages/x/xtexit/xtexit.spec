@@ -1,7 +1,7 @@
 #
 # spec file for package xtexit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,10 +61,16 @@ the sample user fvwm menu.
 
 %build
 xmkmf -a
-make
+if ${CC:-gcc} -Werror -std=gnu17 -S -o /dev/null -xc /dev/null >/dev/null 2>&1
+then
+    %make_build CCOPTIONS="%{optflags} -std=gnu17"
+else
+    %make_build CCOPTIONS="%{optflags}"
+fi
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install install.man DESTDIR=%{buildroot} install MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
+rm -fr %{buildroot}/usr/lib/X11
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -75,5 +81,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/xtexit
 %dir %{_appdefdir}
 %config %{_appdefdir}/XTexit
+%{_mandir}/man1/%{name}.1x%{ext_man}
 
 %changelog
