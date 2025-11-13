@@ -12027,9 +12027,9 @@ unsorted:
   - libattr1-32bit 
   - libaubio-devel 
   - libaubio5 
-  - libaudaspace-c1_7 
-  - libaudaspace-py1_7 
-  - libaudaspace1_7 
+  - libaudaspace-c1_8 
+  - libaudaspace-py1_8 
+  - libaudaspace1_8 
   - libaudcore5 
   - libaudgui6 
   - libaudiofile1 
@@ -15028,7 +15028,7 @@ unsorted:
   - libopencascade-modelingalgorithms7_9_1 
   - libopencascade-modelingdata7_9_1 
   - libopencascade-visualization7_9_1 
-  - libopencl-clang15 
+  - libopencl-clang16 
   - libopencloudsync-devel 
   - libopencloudsync0 
   - libopencore-amr-devel 
@@ -24343,6 +24343,7 @@ unsorted:
   - python311-asgiref 
   - python311-asn1crypto 
   - python311-aspectlib 
+  - python311-assertpy 
   - python311-ast-decompiler 
   - python311-asteval 
   - python311-astor 
@@ -27725,7 +27726,6 @@ unsorted:
   - python311-yg.lockfile 
   - python311-yq 
   - python311-yt 
-  - python311-yt-dlp 
   - python311-ytmusicapi 
   - python311-zarr 
   - python311-zc.buildout 
@@ -28130,6 +28130,7 @@ unsorted:
   - python312-asgiref 
   - python312-asn1crypto 
   - python312-aspectlib 
+  - python312-assertpy 
   - python312-ast-decompiler 
   - python312-asteval 
   - python312-astor 
@@ -31553,7 +31554,6 @@ unsorted:
   - python312-yg.lockfile 
   - python312-yq 
   - python312-yt 
-  - python312-yt-dlp 
   - python312-ytmusicapi 
   - python312-zarr 
   - python312-zc.buildout 
@@ -31950,6 +31950,7 @@ unsorted:
   - python313-asgiref 
   - python313-asn1crypto 
   - python313-aspectlib 
+  - python313-assertpy 
   - python313-ast-decompiler 
   - python313-asteval 
   - python313-astor 
