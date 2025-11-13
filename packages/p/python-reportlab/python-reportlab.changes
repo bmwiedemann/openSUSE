@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Nov 13 03:43:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.4.0:
+  * raise an error for table cell flowables given negative width
+  * fix the rotatedEnclosingRect algorithm so it allows variable angles
+  * allow 2 as value for lineplots inFill lines get drawn after fill
+  * support linear gradients for PDF in ShadedRect
+  * add single css like padding property to Label
+  * add Table drop shadow support
+  * raise min python version to 3.9
+  * start implmenting VerticalLineChart
+  * use usedforsecurity=False in most md5 calls
+  * switch to using charset-normalizer
+  * added force option to ttfonts.shapeStr/shapeFragWord
+  * fix wrong lengths in bidiShapedText
+  * add angleRange to Pie & Doughnut to allow less than 360 degrees
+  * fix anchor placement in PlacedStory
+  * preliminary support for glyph shaping in south Asian languages
+  * preliminary support for right-to-left scripts (e.g. Arabic + Hebrew)
+  * added in SHAPING to table styles, cellStyles etc
+  * make default shaping False for canvas drawStrings
+  * bidi works for single frag, shaping for multi
+  * Added PlacedStory flowable; tested in test_platypus_wrapping.py
+  * table styles have 'DIRECTION' for RTL/LTR etc
+  * now using rlbidi with bidiWordList for single frag cases, splitting works
+  * fix most single frag RTL/LTR para measurements
+  * change tables split in row termination
+  * allow for missing flowable.height in Table.splitCell
+  * shapes.py transform.py changes to allow origin change in transforms
+  * test fixes haveDejaVu --> lib/testutils.py
+  * improve attr name test in _addNamedNode
+  * allow for import pyfribidi2 to check for pyfribidi
+  * preliminary changes to allow TTF fonts to be shaped.
+  * fix ordering of drawing 'py' renders, modernise shapes string formatting
+  * modernise paragraph code
+  * renderbase.py change if else ordering, keep better parent record
+  * improve rl_accel.py and its tests
+  * use ast.Constant in rl_safe_eval.py
+  * fix word splitting bug affecting splitword and splitFragWord
+  * make rl_accel.py python sameFrag slightly faster
+  * Fixed code interfering with python 3.7 compatibility
+  * add _rl_repr _rl_docdent functions
+  * fix test outputs to be 3.13 compatible
+  * Use lru_cache in axes.py
+  * fix keyword arguments in renderPDF.py and usage in shapes.py
+  * fix missing import in reportlab/graphics/utils.py
+  * allow changing TableOfContents & Index notification token using keyword
+    argument notifyKind
+  * add support for allowing some magic names in rl_safe_eval.py
+  * fix display layout of multi-line in acroform textfield
+  * rl_safe_eval.py nano-fix for python 3.13.0b1 changes
+  * flowable security fixes discovered by hn13, FionaQX, and lz from Fudan
+    University
+  * added support for XMP packet
+  * change LIItem split to avoid 1/2 line when justified else 1 line widow
+  * add longer text QR code example
+  * allow renderPM + rlPyCairo to produce both RGB & RGBA images
+  * use ttf subsets[0][1:32] fillin
+  * implement drawBoundary as a proper canvas method (removing it from Frame)
+  * fix TTFont hmtx bug and force index 0(.notdef) in subsets as better for
+    PDFUA
+  * fix rparsexml bug contributed by Matt Folwell
+  * allow class ddf attributes for Labels
+  * add rl_settings.defCWRF defined col width reduction fraction
+  * fix table wrapping bug contributed by Manuel Koch
+
+-------------------------------------------------------------------
 Wed Jun 11 10:29:27 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix build without %check (boo#1227364)

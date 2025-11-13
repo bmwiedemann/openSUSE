@@ -464,4 +464,41 @@
     <comment></comment>
     <requestid>1284797</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>236357d5fe1ff7af78bfeaf70b4790b6</srcmd5>
+    <version>4.4.4</version>
+    <time>1763051215</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.4.0:
+  * raise an error for table cell flowables given negative width
+  * fix the rotatedEnclosingRect algorithm so it allows variable angles
+  * allow 2 as value for lineplots inFill lines get drawn after fill
+  * support linear gradients for PDF in ShadedRect
+  * add single css like padding property to Label
+  * add Table drop shadow support
+  * raise min python version to 3.9
+  * start implmenting VerticalLineChart
+  * use usedforsecurity=False in most md5 calls
+  * switch to using charset-normalizer
+  * added force option to ttfonts.shapeStr/shapeFragWord
+  * fix wrong lengths in bidiShapedText
+  * add angleRange to Pie &amp; Doughnut to allow less than 360 degrees
+  * fix anchor placement in PlacedStory
+  * preliminary support for glyph shaping in south Asian languages
+  * preliminary support for right-to-left scripts (e.g. Arabic + Hebrew)
+  * added in SHAPING to table styles, cellStyles etc
+  * make default shaping False for canvas drawStrings
+  * bidi works for single frag, shaping for multi
+  * Added PlacedStory flowable; tested in test_platypus_wrapping.py
+  * table styles have 'DIRECTION' for RTL/LTR etc
+  * now using rlbidi with bidiWordList for single frag cases, splitting works
+  * fix most single frag RTL/LTR para measurements
+  * change tables split in row termination
+  * allow for missing flowable.height in Table.splitCell
+  * shapes.py transform.py changes to allow origin change in transforms
+  * test fixes haveDejaVu --&gt; lib/testutils.py
+  * improve attr name test in _addNamedNode
+  * allow for import pyfribidi2 to check for pyfribidi</comment>
+    <requestid>1317472</requestid>
+  </revision>
 </revisionlist>

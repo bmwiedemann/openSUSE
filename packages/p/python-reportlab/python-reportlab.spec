@@ -1,7 +1,7 @@
 #
 # spec file for package python-reportlab
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-reportlab
-Version:        4.0.7
+Version:        4.4.4
 Release:        0
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause
@@ -26,6 +26,8 @@ URL:            https://www.reportlab.com/
 Source0:        https://files.pythonhosted.org/packages/source/r/reportlab/reportlab-%{version}.tar.gz
 Source1:        encryption.gif
 BuildRequires:  %{python_module Pillow >= 9.0.0}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module charset-normalizer}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -33,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 9.0.0
+Requires:       python-charset-normalizer
 Provides:       python-ReportLab = %{version}
 Obsoletes:      python-ReportLab < %{version}
 %ifpython2
