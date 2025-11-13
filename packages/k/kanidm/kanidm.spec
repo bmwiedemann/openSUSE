@@ -29,21 +29,16 @@ Source:         kanidm-%{version}.tar.zst
 Source1:        vendor.tar.zst
 
 BuildRequires:  cargo
-%if 0%{?is_opensuse}
-BuildRequires:  cargo-packaging
-BuildRequires:  llvm-clang >= 13
-%else
-BuildRequires:  clang >= 13
-BuildRequires:  lld >= 13
-%endif
+BuildRequires:  clang
 BuildRequires:  libselinux-devel
 BuildRequires:  libudev-devel
 BuildRequires:  pam-devel
-BuildRequires:  rust >= 1.69.0
+BuildRequires:  rust >= 1.90.0
 BuildRequires:  sqlite-devel
 %if 0%{?rhel} > 7 || 0%{?fedora}
 BuildRequires:  tpm2-tss-devel
 %else
+BuildRequires:  cargo-packaging
 BuildRequires:  tpm2-0-tss-devel
 # BuildRequires:  tpm2-openssl
 %endif
@@ -120,18 +115,16 @@ find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 %build
 # Set our build profile, this will autodetect our cpu flags
 export KANIDM_BUILD_PROFILE=%{kanidm_profile}
+
 # Show linking info for debugging
 # export RUSTC_LOG='rustc_codegen_ssa::back::link=info'
 # Dump the target features of this cpu.
 rustc --print target-cpus
 
-%if 0%{?is_opensuse}
-# Override buildflags, we want to use clang + lld here. It's much better/faster than bfd.
-%define build_rustflags -C linker=clang -C link-arg=-fuse-ld=/usr/lib/rustlib/%{_arch}-unknown-linux-gnu/bin/gcc-ld/ld.lld
-
-%{cargo_build} --features=kanidm_unix_int/tpm,kanidm_unix_int/selinux
+%if 0%{?rhel} > 7 || 0%{?fedora}
+CARGO_INCREMENTAL=0 CARGO_FEATURE_VENDORED=1 RUSTFLAGS="-Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C strip=none" cargo build --release --features=kanidm_unix_int/selinux
 %else
-CARGO_INCREMENTAL=0 CARGO_FEATURE_VENDORED=1 RUSTFLAGS="-Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C strip=none -C linker=clang -C link-arg=-fuse-ld=lld" cargo build --release --features=kanidm_unix_int/selinux
+%{cargo_build} --features=kanidm_unix_int/tpm,kanidm_unix_int/selinux
 %endif
 
 %install
