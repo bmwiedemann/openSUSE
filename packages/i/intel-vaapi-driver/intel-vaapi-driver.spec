@@ -17,8 +17,9 @@
 #
 
 
+%bcond_with wl_drm
 Name:           intel-vaapi-driver
-Version:        2.4.4
+Version:        2.4.5
 Release:        0
 Summary:        Intel Driver for Video Acceleration (VA) API for Linux
 License:        EPL-1.0 AND MIT
@@ -55,7 +56,9 @@ Intel Driver for Libva is a library providing the VA API video acceleration API.
 %build
 %meson \
 	-Dwith_x11=yes \
-	-Dwith_wayland=yes \
+%if %{with wl_drm}
+	-Dwith_wayland_drm=yes \
+%endif
 	-Denable_hybrid_codec=true \
 	-Denable_tests=false \
 	%{nil}

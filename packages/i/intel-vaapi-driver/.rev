@@ -186,4 +186,12 @@ vaapi-intel-driver needs to be dropped then.</comment>
     <comment></comment>
     <requestid>1309826</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>71ec941a8e8d43d6f54521e913bae158</srcmd5>
+    <version>2.4.5</version>
+    <time>1763051206</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1317459</requestid>
+  </revision>
 </revisionlist>
