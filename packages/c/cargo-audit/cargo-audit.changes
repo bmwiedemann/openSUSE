@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Wed Nov 12 03:48:30 UTC 2025 - william.brown@suse.com
+
+- Update to version 0.22.0~git0.db854b0:
+  * Add test for same repo dependencies
+  * cargo-lock: use custom PartialOrd impl to normalize git sources
+  * cargo-lock: keep impls for the same type together
+  * build(deps): bump comrak from 0.46.0 to 0.47.0
+  * build(deps): bump comrak from 0.45.0 to 0.46.0
+  * build(deps): bump xml from 1.0.1 to 1.1.0
+  * rustsec: drop non-standard format_err!() macro and keep sources
+  * rustsec: store Error::source in Arc to enable cloning
+  * rustsec: avoid unnecessary allocations
+  * Take semver-compatible updates
+  * Upgrade gix to 0.74, tame-index to 0.24
+  * Upgrade to comrak 0.45
+  * build(deps): bump actions-rs/toolchain from 1.0.6 to 1.0.7
+  * build(deps): bump actions-rs/cargo from 1.0.1 to 1.0.3
+  * ci: ratchet down permissions, address other potential weaknesses (#1449)
+  * rustsec: add support for CVSS v4
+  * cvss: bump version to 2.2.0
+  * cvss: add metrics() API
+  * admin: generate per-package OSV JSON files
+  * admin: use struct to store advisory with times
+  * admin: fix CSS syntax error
+  * sarif: remove unused fields
+  * sarif: remove unnecessary Option wrappers
+  * sarif: remove unused API
+  * sarif: inline format arguments
+  * sarif: hoist function call
+  * sarif: extract constructor for Location
+  * sarif: use enum to represent ResultLevel
+  * sarif: use enum to represent ProblemSeverity
+  * sarif: use enum to represent reporting level
+  * sarif: use enum to represent precision values
+  * sarif: use enum to represent tag values
+  * sarif: use custom Serialize implementation for ToolComponent
+  * sarif: privatize API
+  * sarif: push report wrangling down into Run::from_report()
+  * sarif: use custom Serialize implementation for SarifLog
+  * sarif: rename Result to SarifResult
+  * sarif: drop Deserialize derives
+  * admin: limit assigner PR title length
+  * build(deps): bump softprops/action-gh-release from 2.3.4 to 2.4.1
+  * build(deps): bump comrak from 0.41.1 to 0.44.0
+  * build(deps): bump tame-index from 0.23.0 to 0.23.1
+  * build(deps): bump xml from 1.0.0 to 1.0.1
+  * regenerate platform support for 1.92 and bump to platforms@3.7.
+  * build(deps): bump softprops/action-gh-release from 2.3.3 to 2.3.4
+  * build(deps): bump fs-err from 3.1.2 to 3.1.3
+  * build(deps): bump actions/cache from 4.2.4 to 4.3.0
+  * build(deps): bump thiserror from 2.0.16 to 2.0.17
+  * build(deps): bump actions/checkout from 4 to 5
+  * cargo-lock: bump version to 11.0.0
+  * Run cargo-semver-checks in CI (#1408)
+  * cargo-lock: upgrade to petgraph 0.8 (#1424)
+  * build(deps): bump time from 0.3.43 to 0.3.44
+  * cargo-lock: avoid hardcoding master as default branch
+  * build(deps): bump fs-err from 3.1.1 to 3.1.2
+  * build(deps): bump comrak from 0.41.0 to 0.41.1
+  * cvss:  fix parsing "Not Defined (X)" for CR and AR requirements (#1416)
+  * build(deps): bump chrono from 0.4.41 to 0.4.42
+  * build(deps): bump softprops/action-gh-release from 2.3.2 to 2.3.3
+  * rustsec: stop re-exporting fs-err
+  * rustsec: avoid reqwest type in public API
+  * rustsec: avoid gix type in public API
+  * rustsec: avoid toml type in public API
+  * Don't encode dependency sources if they're not needed for disambiguation, for ResolveVersion::V2 and above.
+  * Move input of encoding_unified_registry() test to separate file and import std::fs in tests/lockfile.rs
+  * Upgrade toml to 0.9
+  * build(deps): bump actions/checkout from 4 to 5
+  * Upgrade xml to 1
+  * Update semver-compatible dependencies
+  * build(deps): bump time from 0.3.41 to 0.3.42
+  * Bump cvss to 2.1.1
+  * remove stray dbg!() (#1400)
+  * build(deps): bump thiserror from 2.0.15 to 2.0.16
+  * build(deps): bump thiserror from 2.0.14 to 2.0.15
+  * Enable LTO and strip symbols in release builds
+  * Bump rustsec version to 0.31.0
+  * Upgrade comrak to 0.41
+  * Upgrade tame-index and gix
+  * Upgrade auditable-* crates
+  * Update semver-compatible dependencies
+  * Fix warning from new 1.89 lint
+  * rustsec: raise an error if the database path does not exist
+  * build(deps): bump actions/cache from 4.2.3 to 4.2.4
+  * refactor: revert functional style, remove ruleIndex and to_sarif wrapper per review
+  * fix: use custom fingerprint key to avoid GitHub warnings
+  * refactor: optimise SARIF generation with entry API and functional style
+  *  refactor: address SARIF implementation review feedback
+  * feat(cargo-audit): add SARIF output format support
+  * build(deps): bump xml-rs from 0.8.26 to 0.8.27
+  * build(deps): bump comrak from 0.39.0 to 0.39.1
+  * build(deps): bump softprops/action-gh-release from 2.2.2 to 2.3.2
+  * Bump cargo-audit version to 0.22.0
+  * Remove non-functional ignore source option
+  * rustsec: bump version to 0.30.4
+  * rustsec: track external crates appearing in public API
+  * Upgrade tame-index to 0.22
+  * Make rustsec library compatible with gix's curl backend (#1374)
+  * build(deps): bump fs-err from 3.1.0 to 3.1.1
+  * Update release date in changelog
+  * Update semver-compatible dependencies
+  * chore: remove redundant word in comment
+  * Release cvss 2.1.0
+  * fix doc comment being detached from function, thanks clippy
+  * cargo fmt
+  * Update dependencies (#1367)
+  * regenerate platform support for 1.87 and bump to platforms@3.6.0 (#1366)
+  * rustsec: enable object cache for Repository::open()
+  * rustsec: move timeline_for_advisory() to OsvJsonRange::new()
+  * admin: use early return to reduce rightward drift
+  * admin: remove unnecessary type annotation
+  * admin: clean up path for osv path option
+  * build(deps): bump chrono from 0.4.40 to 0.4.41
+  * Bump rustsec to 0.30.3
+  * Upgrade to 2024 edition
+  * Use match ergonomics where possible
+  * build(deps): bump softprops/action-gh-release from 2.2.1 to 2.2.2
+  * Update semver-compatible dependencies (#1358)
+  * Bump rustsec-admin version to 0.8.10
+  * Bump MSRV to 1.85
+  * Update semver-compatible dependencies
+  * Upgrade to gix 0.71 and tame-index 0.20
+  * Upgrade comrak to 0.38
+  * Upgrade fs-err to 3
+  * Upgrade auditable-info to 0.9
+  * Upgrade askama to 0.13
+  * Upgrade thiserror to 2
+  * Avoid unnecessary cloning
+  * build(deps): bump softprops/action-gh-release from 2.0.8 to 2.2.1
+  * build(deps): bump actions/cache from 4.1.1 to 4.2.3
+  * Introduce Advisory::is_draft() to unify logic (#1351)
+  * Remove v3 feature condition on previously exposed types
+  * Remove version fro; type names
+  * CVSS v4.0 support
+
+-------------------------------------------------------------------
 Wed Sep 10 03:06:38 UTC 2025 - William Brown <william.brown@suse.com>
 
 - bsc#1249012 - CVE-2025-58160 - tracing subscriber ansi escapes
