@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Nov 13 08:18:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.8:
+  * Process Improvements
+    - Terragrunt static executables
+      Release pipeline now publishes statically linked executables
+  * What's Changed
+    - chore: static executables building (#5093)
+    - chore: Re-enable units reading with filter test (#5077)
+    - chore: updated installation steps (#5091)
+
+-------------------------------------------------------------------
+Thu Nov 13 08:07:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.7:
+  * fix(discovery): add OriginalTerragruntConfigPath to parse
+    options and test its functionality (#5090)
+  * chore: release scripts simplification (#5085)
+
+-------------------------------------------------------------------
+Thu Nov 13 07:00:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.6:
+  * Process Improvements
+    - Terragrunt release automation moved to GitHub Actions
+      The release automation for Terragrunt has moved to GitHub
+      Actions. With this move, Terragrunt releases now support:
+      - Windows binary signing
+      - Additional packaging for artifacts (.zip and .tar.gz
+        release artifacts)
+      You can still download standalone executables from release
+      assets for backward compatibility.
+  * Experiments Updated
+    - The filter-flag experiment now supports the source= attribute
+      The --filter flag can now be used to filter units by their
+      usage of particular OpenTofu/Terraform modules in their
+      terraform source blocks (remember that you must use the
+      filter-flag experiment to try this).
+
+        # Filter by exact source match
+        terragrunt find --filter 'source=github.com/acme/foo'
+        terragrunt find --filter 'source=gitlab.com/example/baz'
+        terragrunt find --filter 'source=./module'
+
+        # Filter by source using glob patterns
+        terragrunt find --filter 'source=*github.com**acme/*'
+        terragrunt find --filter 'source=git::git@github.com:acme/**'
+        terragrunt find --filter 'source=**github.com**'
+        terragrunt find --filter 'source=gitlab.com/**'
+
+      For more information, see the filter feature documentation.
+      https://terragrunt.gruntwork.io/docs/features/filter/#source-based-filtering
+  * What's Changed
+    - docs: Documenting `--filter` for `source=` attribute (#5076)
+    - feat: Adding `--filter` `source=` support (#5075)
+    - chore: Github action release improvements (#5066)
+    - chore: Switching to mise for go install in tidy check (#5082)
+
+-------------------------------------------------------------------
 Tue Nov 11 10:45:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.93.5:
