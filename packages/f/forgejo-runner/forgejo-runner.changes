@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 11 15:25:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix version string in the runner binary and reenable %check
+
+-------------------------------------------------------------------
 Mon Nov 10 14:57:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 11.3.1:

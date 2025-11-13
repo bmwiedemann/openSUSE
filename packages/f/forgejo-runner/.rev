@@ -386,4 +386,12 @@
   * chore: fix typo in interpeter.go's file name (forwarded request 1316947 from rrahl0)</comment>
     <requestid>1316948</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>b34de579ea852e3fe66beaaa9e163dda</srcmd5>
+    <version>11.3.1</version>
+    <time>1763051190</time>
+    <user>anag_factory</user>
+    <comment>- Fix version string in the runner binary and reenable %check (forwarded request 1317147 from darix)</comment>
+    <requestid>1317403</requestid>
+  </revision>
 </revisionlist>

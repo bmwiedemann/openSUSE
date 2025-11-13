@@ -80,7 +80,7 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -tags="netgo osusergo" \
-   -ldflags="-X runner.forgejo.org/internal/pkg/ver.version=v%{version}" \
+   -ldflags="-X code.forgejo.org/forgejo/runner/v11/internal/pkg/ver.version=v%{version}" \
    -o bin/%{name}
 
 bin/%{name} generate-config > config.yaml
@@ -112,8 +112,8 @@ install    -m 0640 /dev/null   %{buildroot}%{_sysconfdir}/%{name}/runners
 install -D -m 0750 -d          %{buildroot}%{_localstatedir}/lib/%{name}
 
 # this update forgot to change the version, so disable for 8.0.1, enable when update
-#%%check
-#bin/%%{name} --version | grep %%{version}
+%check
+bin/%{name} --version | grep %{version}
 
 %pre
 %service_add_pre %{services}
