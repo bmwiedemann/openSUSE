@@ -44,6 +44,8 @@ URL:            http://www.iceframework.org/
 Source0:        https://pecl.php.net/get/%{pkg_name}-1.11.0.tgz
 Source1:        https://pecl.php.net/get/%{pkg_name}-1.10.1.tgz
 Source2:        php-%{pkg_name}-rpmlintrc
+# PATCH-FIX-OPENSUSE - fix build with PHP 8.5
+Patch1:         ice-fix-build-PHP-8.5.patch
 BuildRequires:  %{php_name}-ctype
 BuildRequires:  %{php_name}-devel
 BuildRequires:  %{php_name}-mbstring
@@ -65,7 +67,7 @@ PHP classes.
 
 %prep
 %if "%{flavor}" == "php8"
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -p1 -n %{pkg_name}-%{version}
 %else
 %setup -q -n %{pkg_name}-%{version} -T -b 1
 %endif

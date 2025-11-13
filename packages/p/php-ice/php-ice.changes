@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 11 19:20:06 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build with PHP 8.5
+  + ice-fix-build-PHP-8.5.patch
+
+-------------------------------------------------------------------
 Sun Jan 26 15:03:59 UTC 2025 - Mariusz Laczak <mruz@poczta.onet.pl>
 
 - Ice 1.11.0

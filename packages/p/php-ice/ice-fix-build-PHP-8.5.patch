@@ -1,0 +1,60 @@
+diff -purN a/kernel/backtrace.c b/kernel/backtrace.c
+--- a/kernel/backtrace.c	2025-01-26 17:01:58.000000000 +0100
++++ b/kernel/backtrace.c	2025-11-11 19:21:11.875174031 +0100
+@@ -14,7 +14,7 @@
+ 
+ #include <execinfo.h>
+ #include <Zend/zend.h>
+-#include <ext/standard/php_smart_string.h>
++#include <Zend/zend_smart_string.h>
+ #include <zend_smart_str.h>
+ 
+ /**
+diff -purN a/kernel/file.c b/kernel/file.c
+--- a/kernel/file.c	2025-01-26 17:01:58.000000000 +0100
++++ b/kernel/file.c	2025-11-11 19:21:11.875333299 +0100
+@@ -18,7 +18,7 @@
+ #include <php_main.h>
+ #include <main/php_streams.h>
+ #include <ext/standard/file.h>
+-#include <ext/standard/php_smart_string.h>
++#include <Zend/zend_smart_string.h>
+ #include <ext/standard/php_filestat.h>
+ #include <ext/standard/php_string.h>
+ 
+diff -purN a/kernel/filter.c b/kernel/filter.c
+--- a/kernel/filter.c	2025-01-26 17:01:58.000000000 +0100
++++ b/kernel/filter.c	2025-11-11 19:21:11.874966871 +0100
+@@ -18,7 +18,7 @@
+ #include "php.h"
+ #include "php_ext.h"
+ #include "php_main.h"
+-#include <ext/standard/php_smart_string.h>
++#include <Zend/zend_smart_string.h>
+ #include <ext/standard/php_math.h>
+ #include <ext/standard/html.h>
+ 
+diff -purN a/kernel/string.c b/kernel/string.c
+--- a/kernel/string.c	2025-01-26 17:01:58.000000000 +0100
++++ b/kernel/string.c	2025-11-11 19:21:11.874228451 +0100
+@@ -19,7 +19,7 @@
+ #include "php_ext.h"
+ #include "php_main.h"
+ 
+-#include <ext/standard/php_smart_string.h>
++#include <Zend/zend_smart_string.h>
+ #include <ext/standard/php_string.h>
+ #if PHP_VERSION_ID < 80400
+ #include <ext/standard/php_rand.h>
+diff -purN a/kernel/variables.c b/kernel/variables.c
+--- a/kernel/variables.c	2025-01-26 17:01:58.000000000 +0100
++++ b/kernel/variables.c	2025-11-11 19:21:11.875249097 +0100
+@@ -16,7 +16,7 @@
+ #include "php.h"
+ #include "php_ext.h"
+ 
+-#include "ext/standard/php_smart_string.h"
++#include "Zend/zend_smart_string.h"
+ #include "ext/standard/php_var.h"
+ 
+ static zend_always_inline void zephir_smart_str_0(smart_str *str)
