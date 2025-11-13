@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  4 20:41:23 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Make /usr/sbin/httpd a dedicated script again, this fixes building modules
+  while still making Apache free of update-alternatives, relying entirely
+  on sysconfig to dispatch the appropriate MPM.
+
+-------------------------------------------------------------------
+Fri Oct 31 07:40:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure the mpm subpackages sync their rebuild counter with the
+  main package to have the installations work reliably.
+
+-------------------------------------------------------------------
 Tue Oct 21 11:31:28 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Re-introduce /usr/sbin/httpd

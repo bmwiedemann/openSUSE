@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# Copyright (c) 1996, 1997, 1998 S.u.S.E. GmbH
+# Copyright (c) 1998, 1999, 2000, 2001 SuSE GmbH
+# Copyright (c) 2002, 2003, (2004?) SuSE Linux AG
+# Copyright (c) 2004(?), 2005, 2006, 2007, 2008 SUSE Linux Products GmbH
+#
+# Authors: Rolf Haberrecker <apache@suse.de>, 2001
+#          Peter Poeml <apache@suse.de>, 2002, 2003, 2004, 2005, 2006, 2007, 
+#                                        2008, 2009, 2010
+#
+#
+
+. /usr/share/apache2/script-helpers
+
+find_mpm
+apache_bin="$HTTPD_SBIN_BASE-$HTTPD_MPM"
+if ! [ -x $apache_bin ]; then
+	echo >&2 "$apache_bin is not a valid httpd binary."
+	echo >&2 "Check your APACHE_MPM setting in /etc/sysconfig/apache2."
+	exit 1
+fi
+
+exec $apache_bin "$@"

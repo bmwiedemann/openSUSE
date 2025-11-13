@@ -40,6 +40,10 @@
 %define unittest        1
 %endif
 %endif
+%if "%{flavor}" == "prefork" || "%{flavor}" == "worker" || "%{flavor}" == "event"
+# Ensure the mpm packages have a synced rebuild counter, as we insisit on requiring the package = %apache2_evr
+#!BcntSyncTag:  apache2
+%endif
 %define default_mpm     prefork
 %define suse_maintenance_mmn  0
 %define apache_mmn      %(test -s %{SOURCE0} && \
@@ -134,6 +138,7 @@ Source101:      apache2-a2enflag
 Source102:      apache2-systemd-ask-pass
 Source103:      apache2-start_apache2
 Source104:      apache2-script-helpers
+Source105:      apache2-httpd
 # additional support
 Source130:      apache2-gensslcert
 Source131:      apache2-check_forensic
@@ -260,9 +265,6 @@ Requires:       apache2 = %{apache2_evr}
 %if "%{flavor}" == ""
 Requires:       %{_sysconfdir}/mime.types
 Requires:       apache2-MPM
-Requires:       (apache2-event   = %{apache2_evr} if apache2-event)
-Requires:       (apache2-prefork = %{apache2_evr} if apache2-prefork)
-Requires:       (apache2-worker  = %{apache2_evr} if apache2-worker)
 Suggests:       apache2-%{default_mpm} = %{apache2_evr}
 Recommends:     apache2-utils
 Requires:       logrotate
@@ -517,8 +519,8 @@ install -m 755 %{SOURCE100} %{buildroot}%{_sbindir}/a2enmod
 ln -s a2enmod %{buildroot}%{_sbindir}/a2dismod
 install -m 755 %{SOURCE101} %{buildroot}%{_sbindir}/a2enflag
 ln -s a2enflag %{buildroot}%{_sbindir}/a2disflag
-ln -s start_apache2 %{buildroot}%{_sbindir}/httpd
-install -m 755 %{SOURCE103} %{buildroot}%{_sbindir}/start_apache2
+install -m 755 %{SOURCE105} %{buildroot}%{_sbindir}/httpd
+install -m 744 %{SOURCE103} %{buildroot}%{_sbindir}/start_apache2
 mkdir -p %{buildroot}/%{_datadir}/apache2/
 install -m 644 %{SOURCE104} %{buildroot}/%{_datadir}/apache2/script-helpers
 
