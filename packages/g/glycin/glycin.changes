@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Nov 11 18:29:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.7:
+  + This release contains the following new component versions:
+    - glycin 3.0.7
+    - libglycin 2.0.7
+    - libglycin-gtk4 2.0.7
+  + Fixed:
+    - Allow `riscv_hwprobe` syscall.
+    - Fix build error on musl libc since it doesn't has a
+      `close_range` function.
+
+-------------------------------------------------------------------
+Wed Nov  5 07:45:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.5:
+  + This release contains the following new component versions:
+    - glycin-heif 2.0.5
+    - glycin-image-rs 2.0.5
+    - glycin-jpeg2000 2.0.5
+    - glycin-jxl 2.0.5
+    - glycin-raw 2.0.5
+    - glycin-svg 2.0.5
+    - libglycin 2.0.5
+    - libglycin-gtk4 2.0.5
+  + Fixed:
+    - Allow `riscv_hwprobe` syscall.
+    - Fix build error on musl libc since it doesn't has a
+      `close_range` function.
+    - libglycin: Don't mark `gly_image_get_metadata_key_value`
+      return type as const.
+    - libglycin: Don't return a pointer to GStrv for
+      `gly_loader_get_mime_types_finish`.
+  + Changed: Support image/x-win-bitmap to load .cur-files.
+
+-------------------------------------------------------------------
 Tue Oct 21 13:11:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.0.4:
