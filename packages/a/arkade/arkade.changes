@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 13 07:01:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.57:
+  * Handle windows when looking up client OS / arch
+
+-------------------------------------------------------------------
 Tue Nov 11 10:27:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.56:
