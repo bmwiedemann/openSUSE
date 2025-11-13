@@ -1,7 +1,7 @@
 #
 # spec file for package audaspace
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 # See also http://en.opensuse.org/openSUSE:Shared_library_packaging_policy
 # NOTE: sover follows version.
-%define sover 1_7
-%define soversion 1.7
+%define sover 1_8
+%define soversion 1.8
 
 %if %{pkg_vcmp pipewire-devel >= 1.4.0}
 %bcond_without pipewire
@@ -28,7 +28,7 @@
 %endif
 
 Name:           audaspace
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        A High-Level Audio Library
 License:        Apache-2.0

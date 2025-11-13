@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 13 11:02:33 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Adjust .so version
+
+-------------------------------------------------------------------
+Thu Nov 13 09:17:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 1.8.0
+  - Time stretching and pitch scaling including animation and
+    python API added (thanks Kacey La!).
+  - Update API of AUD_readSound to fix interruption logic in
+    Blender.
+  - Minor other fixes including in the PulseAudio, CoreAudio and
+    FFMPEG plugins.
+
+-------------------------------------------------------------------
 Wed Jul  2 21:43:01 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to release 1.7.0
