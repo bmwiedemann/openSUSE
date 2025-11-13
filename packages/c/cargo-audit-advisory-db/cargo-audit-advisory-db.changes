@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 12 03:45:56 UTC 2025 - william.brown@suse.com
+
+- Update to version 20251112:
+  * Assigned RUSTSEC-2025-0114 to tandem_http_client, RUSTSEC-2025-0115 to tandem_http_server, RUSTSEC-2025-0116 to tandem_garble_interop, RUSTSEC-2025-0117 to tandem
+  * Add unmaintained advisory for tandem crates
+  * Synchronize IDs (2025-11-04)
+  * Assigned RUSTSEC-2025-0113 to shaman
+  * shaman unsound and unmaintain (#2321)
+  * Synchronize IDs (2025-10-28)
+  * ci: bump rustsec commit to use
+  * ci: fix typo in permissions key
+  * ci: fix create-pull-request permissions
+  * ci: ratchet down permissions, pin all actions (#2444)
+
+-------------------------------------------------------------------
 Tue Oct 21 02:38:22 UTC 2025 - william.brown@suse.com
 
 - Update to version 20251021:
