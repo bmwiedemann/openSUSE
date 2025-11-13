@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 11 09:19:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.8:
+  + aacparse: support streams which do not have frequent loas
+    config
+  + multifile: verify format identifiers in filename template
+    strings
+  + rtp: Fix usage of uninitialized variable
+  + rtph263pay: Fix Out-of-bounds access (OVERRUN)
+  + rtpvp9depay: fix wrong event referencing, use same packet lost
+    logic from neighboring rtpvp8depay
+  + rtpvp9pay: Fix parsing of show-existing-frame
+  + rtpvp9pay: vavp9lpenc does not work with rtpvp9pay but does
+    with rtpvp9pay2
+  + splitmuxsink: accept pads named 'sink_%u' on the muxer
+  + v4l2: Fix NULL pointer dereference in probe error path
+  + v4l2videoenc: fix memory leak about output state and caps
+
+-------------------------------------------------------------------
 Thu Oct 16 18:06:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.7:
