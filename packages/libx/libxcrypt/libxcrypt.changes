@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 11 13:49:50 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 4.5.2:
+  * Use a more portable implementation for our fallback implementation of
+    explicit_bzero(); also get rid of the need for VLA in the new implementation
+    (issue #212).
+  * Fix compilation of alg-sha1 with optimization level 3 for GCC v11 and newer
+    (issue #179).
+- Includes changes from 4.5.1:
+  * Do not include undefined symbols in version-script. (issue #181, #213).
+- Includes changes from 4.5.0:
+  * Implement the sm3crypt (sm3) hashing algorithm (issue #188).
+  * Implement the sm3-yescrypt (sm3y) hashing algorithm (issue #206).
+  * Fix the implementation of the crypt(3) functions and the crypt_gensalt(3)
+  * functions to not overwrite the output buffer too early. (issue #209).
+  * Fix the strcpy_or_abort() function to call abort() in -DNDEBUG builds.
+  * Add some more testcases.
+  * Several fixes for issues found by Coverity.
+
+-------------------------------------------------------------------
 Tue Jan 14 18:26:25 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 4.4.38
