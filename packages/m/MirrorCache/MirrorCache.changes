@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 06 14:24:56 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.104:
+  * Prepare folder mirrorlist agg during mirror scan (#629)
+
+-------------------------------------------------------------------
+Mon Nov 03 05:20:43 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.103:
+  * Detect vpn from http header variable (#628)
+  * Add parameter MIRRORCACHE_VPN_PREFIX_NEG to escape some vpn ranges (#627)
+
+-------------------------------------------------------------------
 Thu Oct 16 13:26:16 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.102:

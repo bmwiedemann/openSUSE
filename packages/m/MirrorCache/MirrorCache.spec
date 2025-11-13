@@ -23,7 +23,7 @@
 %define main_requires %{assetpack_requires} perl(Mojolicious::Plugin::RenderFile) perl(Mojolicious::Static) perl(Net::OpenID::Consumer) rubygem(sass)
 %define build_requires %{assetpack_requires} rubygem(sass) tidy sysuser-shadow sysuser-tools
 Name:           MirrorCache
-Version:        1.102
+Version:        1.104
 Release:        0
 Summary:        WebApp to redirect and manage mirrors
 License:        GPL-2.0-or-later
