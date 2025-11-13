@@ -1,7 +1,7 @@
 #
 # spec file for package python-dataclasses-json
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/lidatong/dataclasses-json
 Source:         https://github.com/lidatong/dataclasses-json/archive/refs/tags/v%{version}.tar.gz#/dataclasses-json-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#lidatong/dataclasses-json#553
 Patch0:         support-poetry-core-2.patch
+# PATCH-FIX-UPSTREAM gh#lidatong/dataclasses-json#565/commits/20799887ff1d50dc6ca5d90bc1038ff5160b97f3
+Patch1:         support-python314.patch
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module marshmallow}
 BuildRequires:  %{python_module mypy}
@@ -46,7 +48,7 @@ This library provides a simple API for encoding and decoding dataclasses to and 
 It's very easy to get started.
 
 %prep
-%autosetup -n  dataclasses-json-%{version}
+%autosetup -p1 -n dataclasses-json-%{version}
 sed -i '/\[tool.poetry-dynamic-versioning\]/,+1d' pyproject.toml
 sed -i 's/version = "0.0.0"/version = "%{version}"/' pyproject.toml
 

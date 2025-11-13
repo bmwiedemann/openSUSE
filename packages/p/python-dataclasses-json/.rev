@@ -38,4 +38,13 @@
   * Support poetry-core 2.0 changes.</comment>
     <requestid>1236762</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5dce9287003ecca589a42227d3e77487</srcmd5>
+    <version>0.6.7</version>
+    <time>1763051217</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Support Python 3.14 annotation changes.</comment>
+    <requestid>1317475</requestid>
+  </revision>
 </revisionlist>

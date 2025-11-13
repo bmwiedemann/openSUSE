@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 13 04:09:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python314.patch:
+  * Support Python 3.14 annotation changes.
+
+-------------------------------------------------------------------
 Fri Jan 10 04:22:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Correct BuildRequires.
