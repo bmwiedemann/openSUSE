@@ -41,6 +41,8 @@ Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
 # SUSE: Make build reproduceable
 Patch0:         imagick-reproducible.patch
+# PATCH-FIX-UPSTREAM - https://github.com/Imagick/imagick/pull/741
+Patch1:         imagick-fix-build-PHP-8.5.patch
 # PATCH-FIX-OPENSUSE - test expected to fail because of resource limits in policy.xml
 Patch10:        imagick-xfail-test014.patch
 # PATCH-FIX-OPENSUSE - skip test for Imagick >= 7.1.2 due to changes in similarity

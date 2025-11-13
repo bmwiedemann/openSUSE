@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 11 19:30:52 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build with PHP 8.5
+  + imagick-fix-build-PHP-8.5.patch
+
+-------------------------------------------------------------------
 Mon Aug 18 18:11:21 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Skip test that is failing for Imagick >= 7.1.2 (gh#Imagick/imagick#737)
