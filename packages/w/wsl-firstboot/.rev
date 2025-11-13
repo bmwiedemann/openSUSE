@@ -7,4 +7,31 @@
     <comment>wsl-firstboot is a fork of jeos-firstboot customized for WSL images; replacing the functionality of yast2-firstboot-wsl.</comment>
     <requestid>1293194</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dace65ddf4708635b8a7cfddd1e16aa8</srcmd5>
+    <version>1.5.9+git20251110.c1fca4e</version>
+    <time>1763051385</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.9+git20251110.c1fca4e:
+  * Adding Leap/TW check to modules/registration
+  * Changing date tag for modules/switch
+
+- Update to version 1.5.8+git20251110.828658c:
+  * Adding 'or' for when ID == opensuse-tumbleweed so that wsl-config doesn't
+    list 'switch' as an option in TW as well
+
+- Update to version 1.5.7+git20251108.7a67d02:
+  * Adding a check for ID since we have Leap/SLE 16.0
+    - Also will 'continue' when ID == opensuse-leap so that wsl-config
+      doesn't list 'switch' as an option in Leap
+
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * &quot;Attention, &quot;README.md&quot; is not mentioned in spec files as source or patch.&quot;
+- Update to version 1.5.6+git20251104.86be8d4:
+  * Adding 'sleep and clear' to sbin/wsl-firstboot
+  * Adding skip check for SLE16.0 to modules/switch
+  * Removing ability to skip initual user creation</comment>
+    <requestid>1317631</requestid>
+  </revision>
 </revisionlist>

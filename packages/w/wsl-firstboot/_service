@@ -3,7 +3,7 @@
     <param name="url">https://github.com/openSUSE/wsl-firstboot</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="versionformat">1.5.5+git%cd.%h</param>
+    <param name="versionformat">1.5.9+git%cd.%h</param>
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="manual"/>

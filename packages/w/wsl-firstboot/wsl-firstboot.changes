@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Nov 10 20:37:20 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.5.9+git20251110.c1fca4e:
+  * Adding Leap/TW check to modules/registration
+  * Changing date tag for modules/switch
+
+-------------------------------------------------------------------
+Mon Nov 10 18:55:49 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.5.8+git20251110.828658c:
+  * Adding 'or' for when ID == opensuse-tumbleweed so that wsl-config doesn't
+    list 'switch' as an option in TW as well
+
+-------------------------------------------------------------------
+Sat Nov 08 23:54:07 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.5.7+git20251108.7a67d02:
+  * Adding a check for ID since we have Leap/SLE 16.0
+    - Also will 'continue' when ID == opensuse-leap so that wsl-config
+      doesn't list 'switch' as an option in Leap
+
+-------------------------------------------------------------------
+Tue Nov 04 22:03:12 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * "Attention, "README.md" is not mentioned in spec files as source or patch."
+- Update to version 1.5.6+git20251104.86be8d4:
+  * Adding 'sleep and clear' to sbin/wsl-firstboot
+  * Adding skip check for SLE16.0 to modules/switch
+  * Removing ability to skip initual user creation
+
+-------------------------------------------------------------------
 Mon Jul 14 15:24:44 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding 'Source99: wsl-firstboot-rpmlintrc'

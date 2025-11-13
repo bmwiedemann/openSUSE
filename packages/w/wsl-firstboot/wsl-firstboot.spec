@@ -17,7 +17,7 @@
 
 
 Name:           wsl-firstboot
-Version:        1.5.5+git20250710.8ab0b8d
+Version:        1.5.9+git20251110.c1fca4e
 Release:        0
 Summary:        Simple text based WSL first boot wizard
 License:        MIT
@@ -25,6 +25,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/openSUSE/wsl-firstboot
 Source0:        %{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
+Source100:      README.md
 BuildRequires:  systemd-rpm-macros
 # Provides cracklib-check used for password quality checking during user creation
 Requires:       cracklib
