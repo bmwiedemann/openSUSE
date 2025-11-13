@@ -1,0 +1,65 @@
+From 135e00737095b01b0becfb8ef7410654ef1937fe Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Tue, 30 Jan 2024 10:30:19 +0100
+Subject: [PATCH 1/2] Fix incompatible pointer types
+
+---
+ gmagick_methods.c     | 2 +-
+ gmagickdraw_methods.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gmagick_methods.c b/gmagick_methods.c
+index 2f60add..270d5fa 100644
+--- a/gmagick_methods.c
++++ b/gmagick_methods.c
+@@ -4975,7 +4975,7 @@ PHP_METHOD(Gmagick, getimagechannelextrema)
+ {
+ 	php_gmagick_object *intern;
+ 	long channel_type;
+-	size_t minima, maxima;
++	unsigned long minima, maxima;
+ 	unsigned int status;
+ 
+ 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "l", &channel_type) == FAILURE) {
+diff --git a/gmagickdraw_methods.c b/gmagickdraw_methods.c
+index b6f4f4f..eb18913 100644
+--- a/gmagickdraw_methods.c
++++ b/gmagickdraw_methods.c
+@@ -1409,7 +1409,7 @@ static zend_bool php_gmagick_check_font(char *font, int font_len TSRMLS_DC)
+ 	zend_bool retval = 0;
+ 	char **fonts;
+ 	unsigned long i = 0;
+-	size_t num_fonts = 0;
++	unsigned long num_fonts = 0;
+ 
+ 	/* Check that user is only able to set a proper font */
+ 	fonts = MagickQueryFonts("*", &num_fonts);
+
+From 2fed131a3e4a52b9cd9ef07d400ee16915d23d2a Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Thu, 17 Jul 2025 11:25:16 +0200
+Subject: [PATCH 2/2] use zend_ce_exception instead of
+ zend_exception_get_default() for 8.5
+
+---
+ gmagick.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gmagick.c b/gmagick.c
+index 5102a42..72571c0 100644
+--- a/gmagick.c
++++ b/gmagick.c
+@@ -272,11 +272,11 @@ PHP_MINIT_FUNCTION(gmagick)
+ 
+ 	/* Exception */
+ 	INIT_CLASS_ENTRY(ce, "GmagickException", NULL);
+-	php_gmagick_exception_class_entry = zend_register_internal_class_ex(&ce, zend_exception_get_default());
++	php_gmagick_exception_class_entry = zend_register_internal_class_ex(&ce, zend_ce_exception);
+ 	php_gmagick_exception_class_entry->ce_flags |= ZEND_ACC_FINAL;
+ 
+ 	INIT_CLASS_ENTRY(ce, "GmagickPixelException", NULL);
+-	php_gmagickpixel_exception_class_entry = zend_register_internal_class_ex(&ce, zend_exception_get_default());
++	php_gmagickpixel_exception_class_entry = zend_register_internal_class_ex(&ce, zend_ce_exception);
+ 	php_gmagickpixel_exception_class_entry->ce_flags |= ZEND_ACC_FINAL;
+ 
+ 	/* Class entry */

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 12 22:11:20 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Added fix-incompatible-pointer-types-and-PHP-8.5.patch
+
+-------------------------------------------------------------------
 Wed Feb 21 18:57:48 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Change to %autosetup as RPM 4.20 will no longer support %patchN

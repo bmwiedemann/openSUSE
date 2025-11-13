@@ -34,4 +34,12 @@
 </comment>
     <requestid>1148860</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f53a804d2d620bda097d89e59c901fba</srcmd5>
+    <version>2.0.6RC1</version>
+    <time>1763051214</time>
+    <user>anag_factory</user>
+    <comment>- Added fix-incompatible-pointer-types-and-PHP-8.5.patch</comment>
+    <requestid>1317470</requestid>
+  </revision>
 </revisionlist>

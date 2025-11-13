@@ -1,7 +1,7 @@
 #
 # spec file for package php-gmagick
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,8 @@ Source1:        php-%{pkg_name}-rpmlintrc
 Patch1:         ignore-test-GraphicsMagick-1.3.36.patch
 # PATCH-FIX-UPSTREAM: https://github.com/vitoc/gmagick/pull/54
 Patch2:         fix-param-order-in-test.patch
+# PATCH-FIX-UPSTREAM: https://github.com/vitoc/gmagick/pull/59
+Patch3:         fix-incompatible-pointer-types-and-PHP-8.5.patch
 BuildRequires:  %{php_name}-devel
 BuildRequires:  GraphicsMagick-devel
 BuildRequires:  ghostscript-fonts-std
