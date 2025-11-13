@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 13 06:06:42 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- remove kabi assertion change, no longer needed following SLE15-SP6
+  d8b0dbf5846c8 ("kabi: restore layout of struct page_counter ...")
+  * 0001-kabi-drop-page_counter-size-assertion-for-non-SMP.patch
+
+-------------------------------------------------------------------
+Thu Nov 13 03:43:24 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Merge opensuse-kernel/SLE15-SP6 9a6c57dfde472c
+- lkl: systemd: fix udev rule to properly filter for USB devs (bsc#1246536)
+- lkl: fix default build target to include progs
+
+-------------------------------------------------------------------
 Mon Sep  8 07:23:35 UTC 2025 - David Disseldorp <ddiss@suse.de>
 
 - kabi: drop page_counter size assertion for non-SMP (bsc#1249252)

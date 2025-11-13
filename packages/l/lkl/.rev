@@ -102,4 +102,14 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/S4HJD
     <comment></comment>
     <requestid>1303152</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>928b03c2dbc2a23a092a2860304c710c</srcmd5>
+    <version>0.6.4+git.3163.6cd41567ebe</version>
+    <time>1763051227</time>
+    <user>anag_factory</user>
+    <comment>- remove kabi assertion change, no longer needed following SLE15-SP6
+  d8b0dbf5846c8 (&quot;kabi: restore layout of struct page_counter ...&quot;)
+  * 0001-kabi-drop-page_counter-size-assertion-for-non-SMP.patch (forwarded request 1317495 from ddiss)</comment>
+    <requestid>1317496</requestid>
+  </revision>
 </revisionlist>

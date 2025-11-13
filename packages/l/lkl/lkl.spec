@@ -17,7 +17,7 @@
 
 Name:           lkl
 # Downstream made-up version number, reflects corrseponding kernel version.
-Version:        0.6.4+git.1675.efd0ae33d9e
+Version:        0.6.4+git.3163.6cd41567ebe
 Release:        0
 Summary:        EXPERIMENTAL: Linux Kernel Library (LKL) utilities
 License:        GPL-2.0-only
@@ -26,8 +26,6 @@ Url:            https://lkl.github.io
 Source:         %{name}-%{version}.tar.zst
 # mainline:
 Patch1:		0001-tools-build-Fix-s-detection-code-in-tools-build-Make.patch
-# downstream kabi bsc#1249252
-Patch2:		0001-kabi-drop-page_counter-size-assertion-for-non-SMP.patch
 # regular Linux kernel build dependencies
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  bash-sh
