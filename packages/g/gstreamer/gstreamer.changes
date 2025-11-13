@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Nov 11 09:08:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.8:
+  + Highlighted bugfixes:
+    - Fix showtime video player showing washed-out colours for HDR
+      videos when subtitles are active
+    - core: performance improvements for elements with many source
+      pads
+    - aacparse: support streams which do not have frequent LOAS
+      config
+    - av1parse: Fix duplicated frames issue in frame splitting
+    - fmp4mux: Fix EAC3 datarate calculation and substream writing
+    - gtk4painablesink: fixes glitches with padded buffers such as
+      for sub-sampled video formats with odd sizes
+    - mpegtsmux: PUSI flag and ID3 tag handling fixes
+    - rtpbaseaudiopay2: Fix marker bit handling for DISCONT and
+      RESYNC buffer flags
+    - rtpvp9pay: Fix parsing of show-existing-frame flag, fixes
+      compatibility with vavp9lpenc
+    - splitmuxsink: accept pads named 'sink_%u' on the muxer for
+      fmp4 muxer support
+    - webrtcsink: Correct lock ordering to prevent deadlock
+    - gst-plugins-rs meson build gained an auto_plugin_features
+      option and no longer requires all gstreamer libraries to be
+      available
+    - v4l2 device monitor fixes
+    - x265enc: advertise latency based on encoder parameters
+      instead of hard-coding it to 5 frames
+    - cerbero package builder: Add Rust support for 32-bit Linux
+      x86
+    - Various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer:
+    - info : Added parentheses to ensure proper evaluation of
+      conditions in logging level checks
+    - info: Fix test pattern to check for an expected debug log
+      line
+    - pad: make gst_pad_forward not O(n²)
+    - parse: Move g_strfreev() a bit later to avoid use-after-free
+    - structure: Don't crash if GArray has NULL value
+    - utils: Fix leak in gst_util_filename_compare
+    - vasnprintf: free dynamic tmp buffer on error to prevent
+      memory leak
+    - gst-launch-1.0: Print details of error message
+
+-------------------------------------------------------------------
 Thu Oct 16 17:56:59 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.7:
