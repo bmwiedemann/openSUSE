@@ -15,10 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 %define packagename PubChemPy
 Name:           python-PubChemPy
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        A simple Python wrapper around the PubChem PUG REST API
 License:        MIT
@@ -55,7 +55,7 @@ properties.
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG.md README.rst
+%doc README.md
 %{python_sitelib}/pubchempy.py
 %pycache_only %{python_sitelib}/__pycache__/pubchempy.*.pyc
 %{python_sitelib}/[Pp]ub[Cc]hem[Pp]y-%{version}.dist-info

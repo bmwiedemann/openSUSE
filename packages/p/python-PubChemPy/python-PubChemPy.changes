@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Nov 13 10:57:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.5
+  * Fix 'is not' with a literal'
+  * update print instructions in the documentation
+  * update/adjustment of notebooks to Python 3
+  * Add .gitignore file
+  * Remove non-functioning Travis CI
+  * Modernize python packaging
+  * Fix documentation build
+  * Adjust readthedocs.yaml config
+  * Fix readthedocs environment
+  * Better dev tooling
+  * Fix regex to use raw string
+  * API Change for SMILES types
+  * Further updates for SMILES API changes
+  * Further refinement of new SMILES API
+  * Rename default branch to main
+  * Fix missing namespace in docs search example
+  * Fix to_dict for substances lacking any compound record
+  * Better CAS registry numbers docs and notebook
+  * Allow using Mozilla certifi package or custom SSL certs
+  * Fix mol weight float prop types
+  * Fix failing tests due to data changes
+  * Rate-limit tests
+  * Add GitHub Actions CI to run tests
+  * Better error handling
+  * Update docs URLs
+  * Remove python 2 support
+  * Remove wildcard imports in tests
+  * Better enum constants and API docs
+  * Further attempt to fix flaky tests
+  * Formatting, pre-commit, docs
+  * Fix synonyms test
+  * pytest rerun URLError
+  * Documentation improvements
+  * Pathlib support for download function
+  * Update docs URLs to pubchempy.org
+  * README update and other tidying
+  * Add codemeta.json and CITATION.cff
+  * Add conda instructions to README
+  * Tweak README badges
+  * Add code check CI
+  * Add workflow for publishing to PyPI
+  * Bump version 1.0.4 => 1.0.5
+- Remove CHANGELOG.md from %doc section
+- Rename README.rst to README.md in %doc section
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Jun 11 05:52:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
