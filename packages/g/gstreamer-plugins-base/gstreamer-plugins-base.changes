@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 11 09:13:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.8:
+  + encoding-target: Fix memory leak in gst_encoding_target_save
+  + gl: Support DMABuf passthrough with
+    meta:GstVideoOverlayComposition
+  + gl: egl: fix memory leak in _print_all_dma_formats()
+  + gltestsrc: Fix memory leaks on shader creation failure
+  + id3: fix csets memory leak in string_utf8_dup
+  + opusdec: Unref intersected caps when empty to avoid leaks
+  + parsebin: Free missing plugin details and return failure when
+    plugin is not found
+  + pbutils: Don't throw critical for unknown mime codec
+  + rtsp: fix memory leaks in
+    gst_rtsp_connection_connect_with_response_usec
+
+-------------------------------------------------------------------
 Thu Oct 16 18:02:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.7:
