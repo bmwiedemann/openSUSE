@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 13 11:14:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.29:
+  * fix: overwrite existing environment variable
+
+-------------------------------------------------------------------
 Fri Nov 07 13:04:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.16.28:
