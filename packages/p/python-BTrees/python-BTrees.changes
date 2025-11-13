@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 13 07:42:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.2
+  * Drop support for Python 3.8, 3.9.
+  * Add support for Python 3.14.
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Mon Apr 14 05:44:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.

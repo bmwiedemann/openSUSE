@@ -19,13 +19,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-BTrees
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        Persistent B-tree object containers for Python
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/BTrees
 Source:         https://files.pythonhosted.org/packages/source/b/btrees/btrees-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module persistent-devel >= 4.1.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
