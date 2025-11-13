@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 13 14:29:36 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- introduced extra %gfx_aarch64_version and appropriate
+  tarball/pci_id file in the hope that build service will no
+  longer complain
+
+-------------------------------------------------------------------
+Thu Nov 13 12:15:01 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update CUDA variant to 580.105.08
+
+-------------------------------------------------------------------
 Tue Nov  4 20:56:49 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - back to 580.95.05 on aarch64, since userspace drivers have not

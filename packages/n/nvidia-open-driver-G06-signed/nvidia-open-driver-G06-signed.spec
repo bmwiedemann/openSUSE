@@ -16,12 +16,14 @@
 #
 
 
+%define gfx_aarch64_version 580.95.05
+
 %ifarch aarch64
-%define gfx_version 580.95.05
+%define gfx_version %gfx_aarch64_version
 %else
 %define gfx_version 580.105.08
 %endif
-%define cuda_version 580.95.05
+%define cuda_version 580.105.08
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -76,6 +78,9 @@ Source0:        open-gpu-kernel-modules-%{version}.tar.xz
 #Source16:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{cuda_version}.tar.xz#/open-gpu-kernel-modules-%{cuda_version}.tar.xz
 Source16:       open-gpu-kernel-modules-%{cuda_version}.tar.xz
 Source18:       pci_ids-%{cuda_version}
+#Source19:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{gfx_aarch64_version}.tar.xz#/open-gpu-kernel-modules-%{gfx_aarch64_version}.tar.xz
+Source19:       open-gpu-kernel-modules-%{gfx_aarch64_version}.tar.xz
+Source20:       pci_ids-%{gfx_aarch64_version}
 %endif
 Source1:        my-find-supplements
 Source2:        pci_ids-%{version}

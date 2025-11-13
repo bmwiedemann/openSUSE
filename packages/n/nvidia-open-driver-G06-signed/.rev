@@ -939,4 +939,16 @@
 - update non-CUDA variant to version 580.105.08 (boo#1252978)</comment>
     <requestid>1315609</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>10f6cf08c84dfa7956aaaa827fe36455</srcmd5>
+    <version>580.105.08</version>
+    <time>1763051374</time>
+    <user>anag_factory</user>
+    <comment>- introduced extra %gfx_aarch64_version and appropriate
+  tarball/pci_id file in the hope that build service will no
+  longer complain
+
+- update CUDA variant to 580.105.08</comment>
+    <requestid>1317612</requestid>
+  </revision>
 </revisionlist>
