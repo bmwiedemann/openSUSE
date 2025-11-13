@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 12 07:06:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pass --without-long-double to configure in order to fix the build
+  on 32bit targets.
+
+-------------------------------------------------------------------
 Sun Mar  2 08:35:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.59:

@@ -49,8 +49,6 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(pango) >= 1.24.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.24.0
-# https://gitlab.gnome.org/GNOME/goffice/-/issues/70
-ExcludeArch:    %{ix86}
 
 %description
 GOffice is a GLib/GTK+ set of document-centric objects and utilities.
@@ -104,12 +102,19 @@ goffice.
 %prep
 %autosetup -p1
 
+# https://gitlab.gnome.org/GNOME/goffice/-/issues/70
+# We are passing passing --without-long-double to fix the build
+# on 32bit targets
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure \
-    --disable-static\
-    --enable-introspection
-make %{?_smp_mflags}
+    --disable-static \
+    --enable-introspection \
+%ifarch %{ix86} %{arm}
+    --without-long-double \
+%endif
+    %nil
+%make_build
 
 %install
 %make_install
@@ -119,8 +124,7 @@ mkdir -p %{buildroot}%{_libdir}/goffice/0.10/plugins
 %find_lang %{name}-%{version}
 %fdupes %{buildroot}%{_datadir}
 
-%post -n libgoffice-0_10-10 -p /sbin/ldconfig
-%postun -n libgoffice-0_10-10 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgoffice-0_10-10
 
 %files -n libgoffice-0_10-10
 %license COPYING COPYING-gpl2 COPYING-gpl3

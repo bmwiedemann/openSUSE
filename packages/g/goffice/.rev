@@ -915,4 +915,13 @@ The canonical license of the spec file should be GPL-2.0 (forwarded request 1011
     <comment></comment>
     <requestid>1249811</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>d939346b4246a15a6571ded90eba80f2</srcmd5>
+    <version>0.10.59</version>
+    <time>1763051244</time>
+    <user>anag_factory</user>
+    <comment>- Pass --without-long-double to configure in order to fix the build
+  on 32bit targets. (forwarded request 1317248 from iznogood)</comment>
+    <requestid>1317506</requestid>
+  </revision>
 </revisionlist>
