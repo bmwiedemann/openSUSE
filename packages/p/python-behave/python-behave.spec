@@ -1,7 +1,7 @@
 #
 # spec file for package python-behave
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,16 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-behave
-Version:        1.2.6
+Version:        1.3.3
 Release:        0
 Summary:        Behaviour-driven development, Python style
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/behave/behave
 Source:         https://files.pythonhosted.org/packages/source/b/behave/behave-%{version}.tar.gz
-Patch1:         no2to3.patch
-# https://github.com/behave/behave/commit/83906ba779956af9437defcb8975debb18440e0d
-# https://github.com/behave/behave/commit/66fcadb23bea79e60f370e66bf7588de2f1934e3
-Patch2:         python-behave-fix-tests.patch
 # https://github.com/behave/behave/issues/1028
-Patch3:         python-behave-no-mock.patch
+Patch1:         python-behave-no-mock.patch
+BuildRequires:  %{python_module cucumber-tag-expressions}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -63,10 +60,13 @@ Suggests:       python-traceback2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyHamcrest >= 1.8}
+BuildRequires:  %{python_module assertpy >= 1.1}
+BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module parse >= 1.8.2}
 BuildRequires:  %{python_module parse_type >= 0.4.2}
 BuildRequires:  %{python_module path.py >= 10.1}
 BuildRequires:  %{python_module pytest >= 3.0}
+BuildRequires:  %{python_module pytest-html >= 2.0}
 BuildRequires:  %{python_module six >= 1.11}
 # /SECTION
 %python_subpackages
@@ -104,8 +104,6 @@ code.
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/behave
 %{python_sitelib}/behave
-%{python_sitelib}/setuptools_behave.py
-%pycache_only %{python_sitelib}/__pycache__/setuptools_behave*
 %{python_sitelib}/behave-%{version}*-info
 
 %changelog

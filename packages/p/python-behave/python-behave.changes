@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Nov 12 14:13:28 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- update to 1.3.3:
+  * v1.3.2: Broke Python 2.7 support (submitted by: silent-observer)
+- 1.3.2:
+  * Recursive discovery and import in steps directory is now disabled by default.
+  * RTFD: Enable PDF output format again (for download).
+  * Improve command-line option descriptions (show: value).
+  * Use "confval" directive for config-file parameters.
+  * api: Add "Configuration" class description.
+  * Include changes from pull #1258
+  * Fix more deadlinks in docs
+  * behave4cmd0: Update version info to v1.3.1
+  * behave4cmd0.command_shell: Cleanup of BEHAVE_CMD value usage.
+  * Update to python-version: "3.14.0-rc.2" (was: "3.14.0-rc.1")
+  * Update actions/checkout to v5 (was: v4).
+  * Use astral-sh/setup-uv@v6 (was: v3).
+- 1.3.1:
+  * ImportError: cannot import name 'asynccontextmanager' not found in python 3.6 (submitted by: rzuckerm)
+  * AmbiguousStep error on step import with "re" step-matcher (submitted by: VolodymyrDan00)
+  * Add section with description of "Runners" extension point.
+  * Add section with "Cucumber-Expressions".
+  * docs: userdata (provided by: Therdel, fixes: #1234)
+  * userdata_defines configuration file parameter is not up to date (submitted by: vvavrychuk)
+- 1.3.0:
+  * Gherkin v6 support
+  * Native support for cucumber-expressions as step matcher
+  * Native support for async-steps
+  * Support for tag-expressions v2
+  * Distinguish in outcome between failures (assert-failed) and errors (unexpected exceptions at runtime)
+  * Improved captured-output support
+  * Improved logging support and log-to-file support
+  * And many things more ...
+- added new BuildRequires in spec file: 
+  * %{python_module cucumber-tag-expressions}
+  * %{python_module assertpy >= 1.1}
+  * %{python_module chardet}
+- removed the setuptools related files
+- removed the patches not in use anymore and fixed upstream:
+  * no2to3.patch
+  * python-behave-fix-tests.patch
+
+-------------------------------------------------------------------
 Wed Jun  4 15:05:03 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - fix usage of libalternatives

@@ -1,143 +1,220 @@
-diff -upr behave-1.2.6.orig/test/reporters/test_summary.py behave-1.2.6/test/reporters/test_summary.py
---- behave-1.2.6.orig/test/reporters/test_summary.py	2022-05-17 16:51:03.364286060 +0200
-+++ behave-1.2.6/test/reporters/test_summary.py	2022-05-17 16:51:03.432286489 +0200
-@@ -2,7 +2,7 @@
- 
- from __future__ import absolute_import, division
+Index: behave-1.3.3/tests/api/_test_async_step35.py
+===================================================================
+--- behave-1.3.3.orig/tests/api/_test_async_step35.py
++++ behave-1.3.3/tests/api/_test_async_step35.py
+@@ -24,7 +24,7 @@ from platform import python_implementati
  import sys
--from mock import Mock, patch
-+from unittest.mock import Mock, patch
- from nose.tools import *
- from behave.model import ScenarioOutline, Scenario
- from behave.model_core import Status
-diff -upr behave-1.2.6.orig/test/test_formatter.py behave-1.2.6/test/test_formatter.py
---- behave-1.2.6.orig/test/test_formatter.py	2022-05-17 16:51:03.364286060 +0200
-+++ behave-1.2.6/test/test_formatter.py	2022-05-17 16:51:03.432286489 +0200
+ 
+ from hamcrest import assert_that, close_to
+-from mock import Mock
++from unittest.mock import Mock
+ import pytest
+ 
+ from behave._stepimport import use_step_import_modules, SimpleStepContainer
+Index: behave-1.3.3/tests/unit/test_context_cleanups.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/test_context_cleanups.py
++++ behave-1.3.3/tests/unit/test_context_cleanups.py
+@@ -13,7 +13,7 @@ OPEN ISSUES:
+ from __future__ import print_function
+ from behave.configuration import Configuration
+ from behave.runner import Context, Runner, scoped_context_layer
+-from mock import Mock
++from unittest.mock import Mock
+ import pytest
+ 
+ 
+Index: behave-1.3.3/tests/unit/test_formatter.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/test_formatter.py
++++ behave-1.3.3/tests/unit/test_formatter.py
 @@ -6,7 +6,7 @@ import sys
  import tempfile
  import unittest
  import six
 -from mock import Mock, patch
 +from unittest.mock import Mock, patch
- from nose.tools import *    # pylint: disable=wildcard-import, unused-wildcard-import
- 
  from behave.formatter._registry import make_formatters
-diff -upr behave-1.2.6.orig/test/test_log_capture.py behave-1.2.6/test/test_log_capture.py
---- behave-1.2.6.orig/test/test_log_capture.py	2022-05-17 16:51:03.364286060 +0200
-+++ behave-1.2.6/test/test_log_capture.py	2022-05-17 16:51:03.436286514 +0200
-@@ -1,7 +1,7 @@
- from __future__ import absolute_import, with_statement
- 
- from nose.tools import *
--from mock import patch
-+from unittest.mock import patch
- 
- from behave.log_capture import LoggingCapture
- from six.moves import range
-diff -upr behave-1.2.6.orig/test/test_matchers.py behave-1.2.6/test/test_matchers.py
---- behave-1.2.6.orig/test/test_matchers.py	2022-05-17 16:51:03.364286060 +0200
-+++ behave-1.2.6/test/test_matchers.py	2022-05-17 16:51:03.436286514 +0200
+ from behave.formatter import pretty
+ from behave.formatter.base import StreamOpener
+Index: behave-1.3.3/tests/unit/test_log_capture.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/test_log_capture.py
++++ behave-1.3.3/tests/unit/test_log_capture.py
 @@ -1,6 +1,6 @@
  # -*- coding: UTF-8 -*-
  from __future__ import absolute_import, with_statement
+-from mock import patch
++from unittest.mock import patch
+ from behave.log_capture import LoggingCapture
+ from six.moves import range
+ 
+Index: behave-1.3.3/tests/unit/test_matchers.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/test_matchers.py
++++ behave-1.3.3/tests/unit/test_matchers.py
+@@ -2,7 +2,7 @@
+ # ruff: noqa: E731
+ from __future__ import absolute_import, with_statement
+ import pytest
 -from mock import Mock, patch
 +from unittest.mock import Mock, patch
- from nose.tools import *  # pylint: disable=wildcard-import, unused-wildcard-import
  import parse
- from behave.matchers import Match, Matcher, ParseMatcher, RegexMatcher, \
-diff -upr behave-1.2.6.orig/test/test_model.py behave-1.2.6/test/test_model.py
---- behave-1.2.6.orig/test/test_model.py	2022-05-17 16:51:03.364286060 +0200
-+++ behave-1.2.6/test/test_model.py	2022-05-17 16:51:03.436286514 +0200
-@@ -3,7 +3,7 @@
- 
+ from behave.exception import NotSupportedWarning
+ from behave.matchers import (
+Index: behave-1.3.3/tests/unit/test_model.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/test_model.py
++++ behave-1.3.3/tests/unit/test_model.py
+@@ -4,7 +4,7 @@
  from __future__ import absolute_import, print_function, with_statement
  import unittest
+ import pytest
 -from mock import Mock, patch
 +from unittest.mock import Mock, patch
- from nose.tools import *  # pylint: disable=wildcard-import, unused-wildcard-import
  import six
  from six.moves import range     # pylint: disable=redefined-builtin
-diff -upr behave-1.2.6.orig/test/test_runner.py behave-1.2.6/test/test_runner.py
---- behave-1.2.6.orig/test/test_runner.py	2022-05-17 16:51:03.364286060 +0200
-+++ behave-1.2.6/test/test_runner.py	2022-05-17 16:51:03.436286514 +0200
-@@ -12,7 +12,7 @@ import unittest
- import six
+ from six.moves import zip       # pylint: disable=redefined-builtin
+Index: behave-1.3.3/tests/unit/test_runner.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/test_runner.py
++++ behave-1.3.3/tests/unit/test_runner.py
+@@ -8,7 +8,7 @@ import sys
+ import unittest
  from six import StringIO
- 
+ import pytest
 -from mock import Mock, patch
 +from unittest.mock import Mock, patch
- from nose.tools import *  # pylint: disable=wildcard-import, unused-wildcard-import
- 
  from behave import runner_util
-diff -upr behave-1.2.6.orig/test/test_step_registry.py behave-1.2.6/test/test_step_registry.py
---- behave-1.2.6.orig/test/test_step_registry.py	2022-05-17 16:51:03.364286060 +0200
-+++ behave-1.2.6/test/test_step_registry.py	2022-05-17 16:51:03.436286514 +0200
-@@ -1,7 +1,7 @@
- # -*- coding: UTF-8 -*-
- # pylint: disable=unused-wildcard-import
+ from behave.runner import Context, Runner
+ from behave.exception import ConfigError
+Index: behave-1.3.3/tests/unit/test_step_registry.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/test_step_registry.py
++++ behave-1.3.3/tests/unit/test_step_registry.py
+@@ -3,7 +3,7 @@
+ # ruff: noqa: E731
+ 
  from __future__ import absolute_import, with_statement
 -from mock import Mock, patch
 +from unittest.mock import Mock, patch
- from nose.tools import *        # pylint: disable=wildcard-import
  from six.moves import range     # pylint: disable=redefined-builtin
  from behave import step_registry
-diff -upr behave-1.2.6.orig/test/test_tag_matcher.py behave-1.2.6/test/test_tag_matcher.py
---- behave-1.2.6.orig/test/test_tag_matcher.py	2022-05-17 16:51:03.364286060 +0200
-+++ behave-1.2.6/test/test_tag_matcher.py	2022-05-17 16:51:03.436286514 +0200
-@@ -2,7 +2,7 @@
+
+Index: behave-1.3.3/tests/functional/test_capture_on_failed.py
+===================================================================
+--- behave-1.3.3.orig/tests/functional/test_capture_on_failed.py
++++ behave-1.3.3/tests/functional/test_capture_on_failed.py
+@@ -5,7 +5,7 @@ if the TEST ASSUMPTION, that is used her
+ * TEST ASSUMPTION: STORE_CAPTURED_ON_SUCCESS is False (only failures are captured)
+ """
+ 
+-from mock import Mock
++from unittest.mock import Mock
+ import pytest
+ 
+ from behave.configuration import Configuration
+Index: behave-1.3.3/tests/functional/test_capture_on_success.py
+===================================================================
+--- behave-1.3.3.orig/tests/functional/test_capture_on_success.py
++++ behave-1.3.3/tests/functional/test_capture_on_success.py
+@@ -5,7 +5,7 @@ if the TEST ASSUMPTION, that is used her
+ * TEST ASSUMPTION: STORE_CAPTURED_ON_SUCCESS is True (everything is captured)
+ """
+ 
+-from mock import Mock
++from unittest.mock import Mock
+ import pytest
+ 
+ from behave.configuration import Configuration
+Index: behave-1.3.3/tests/issues/test_issue0619.py
+===================================================================
+--- behave-1.3.3.orig/tests/issues/test_issue0619.py
++++ behave-1.3.3/tests/issues/test_issue0619.py
+@@ -20,7 +20,7 @@ so the default behaviour of getattr is n
+ from __future__ import absolute_import
+ from behave.configuration import Configuration
+ from behave.runner import Context, scoped_context_layer
+-from mock import Mock
++from unittest.mock import Mock
+ 
+ 
+ def test_issue__getattr_with_protected_unknown_context_attribute_raises_no_error():
+Index: behave-1.3.3/tests/issues/test_issue0767.py
+===================================================================
+--- behave-1.3.3.orig/tests/issues/test_issue0767.py
++++ behave-1.3.3/tests/issues/test_issue0767.py
+@@ -14,7 +14,7 @@ Behave returns nothing. ::
+ This seems to be an oversight.
+ """
+ 
+-from mock import Mock
++from unittest.mock import Mock
+ from behave.fixture import fixture, use_fixture_by_tag
+ from behave.runner import Context
+ 
+Index: behave-1.3.3/tests/unit/reporter/test_summary.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/reporter/test_summary.py
++++ behave-1.3.3/tests/unit/reporter/test_summary.py
+@@ -1,7 +1,7 @@
+ # -*- coding: UTF-8 -*-
+ 
+ from __future__ import absolute_import, print_function, division
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from behave.model import ScenarioOutline
+ from behave.model_type import Status
+ from behave.reporter.summary import (
+Index: behave-1.3.3/tests/unit/test_deprecated.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/test_deprecated.py
++++ behave-1.3.3/tests/unit/test_deprecated.py
+@@ -11,7 +11,7 @@ from behave.configuration import Configu
+ from behave.python_feature import PythonFeature
+ from behave.runner import Context, ModelRunner
+ from behave.tag_matcher import ActiveTagMatcher
+-from mock import Mock
++from unittest.mock import Mock
+ import pytest
+ 
+ 
+Index: behave-1.3.3/tests/unit/test_runner_context.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/test_runner_context.py
++++ behave-1.3.3/tests/unit/test_runner_context.py
+@@ -7,7 +7,7 @@ import unittest
+ import warnings
+ from platform import python_implementation
+ 
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ import pytest
+ import six
+ 
+Index: behave-1.3.3/tests/unit/test_runner_hook.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/test_runner_hook.py
++++ behave-1.3.3/tests/unit/test_runner_hook.py
+@@ -3,7 +3,7 @@ Tests for :mod:`behave.runner` related t
+ """
+ 
+ from __future__ import absolute_import, print_function
+-from mock import Mock
++from unittest.mock import Mock
+ from behave.capture import CaptureSinkAsCollector
+ from behave.configuration import Configuration
+ from behave.runner import Context, ModelRunner
+Index: behave-1.3.3/tests/unit/test_tag_matcher.py
+===================================================================
+--- behave-1.3.3.orig/tests/unit/test_tag_matcher.py
++++ behave-1.3.3/tests/unit/test_tag_matcher.py
+@@ -9,7 +9,7 @@ Unit tests for active tag-matcher (mod:`
+ """
  
  from __future__ import absolute_import
- from behave.tag_matcher import *
 -from mock import Mock
 +from unittest.mock import Mock
  from unittest import TestCase
- import warnings
- # -- REQUIRES: pytest
-diff -upr behave-1.2.6.orig/tests/api/_test_async_step34.py behave-1.2.6/tests/api/_test_async_step34.py
---- behave-1.2.6.orig/tests/api/_test_async_step34.py	2022-05-17 16:51:03.412286363 +0200
-+++ behave-1.2.6/tests/api/_test_async_step34.py	2022-05-17 16:51:03.436286514 +0200
-@@ -9,7 +9,7 @@ from behave.api.async_step import AsyncC
- from behave._stepimport import use_step_import_modules
- from behave.runner import Context, Runner
- import sys
--from mock import Mock
-+from unittest.mock import Mock
+ import operator
  import pytest
- 
- from .testing_support import StopWatch, SimpleStepContainer
-diff -upr behave-1.2.6.orig/tests/unit/test_capture.py behave-1.2.6/tests/unit/test_capture.py
---- behave-1.2.6.orig/tests/unit/test_capture.py	2022-05-17 16:51:03.412286363 +0200
-+++ behave-1.2.6/tests/unit/test_capture.py	2022-05-17 16:51:03.440286539 +0200
-@@ -6,7 +6,7 @@ Unittests for :mod:`behave.capture` modu
- from __future__ import absolute_import, print_function
- import sys
- from behave.capture import Captured, CaptureController
--from mock import Mock
-+from unittest.mock import Mock
- import pytest
- 
- # -----------------------------------------------------------------------------
-diff -upr behave-1.2.6.orig/tests/unit/test_context_cleanups.py behave-1.2.6/tests/unit/test_context_cleanups.py
---- behave-1.2.6.orig/tests/unit/test_context_cleanups.py	2022-05-17 16:51:03.412286363 +0200
-+++ behave-1.2.6/tests/unit/test_context_cleanups.py	2022-05-17 16:51:03.440286539 +0200
-@@ -13,7 +13,7 @@ OPEN ISSUES:
- from __future__ import print_function
- from behave.runner import Context, scoped_context_layer
- from contextlib import contextmanager
--from mock import Mock, NonCallableMock
-+from unittest.mock import Mock, NonCallableMock
- import pytest
- 
- 
-diff -upr behave-1.2.6.orig/tests/unit/test_fixture.py behave-1.2.6/tests/unit/test_fixture.py
---- behave-1.2.6.orig/tests/unit/test_fixture.py	2022-05-17 16:51:03.412286363 +0200
-+++ behave-1.2.6/tests/unit/test_fixture.py	2022-05-17 16:51:03.440286539 +0200
-@@ -12,7 +12,7 @@ from behave.fixture import \
- from behave.runner import Context, CleanupError, scoped_context_layer
- from behave._types import Unknown
- import pytest
--from mock import Mock
-+from unittest.mock import Mock
- import six
- 
- 
