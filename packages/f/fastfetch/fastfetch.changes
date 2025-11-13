@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 12 17:30:05 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.55.0:
+  * Shell: makes fish shell version detection more robust (v2)
+  * Shell: makes fish shell version detection more robust
+  * Media (Linux): handles invalid percent-encoding in cover metadata
+  * Media: updates naming convention from `mediacover` to `media-cover`
+    for media cover logo sources
+  * Doc: update changelog
+  * Chore: silenses some compiler warnings
+  * Media: moves media cover cleanup logic to media detection
+  * Media: fixes album cover serialization in JSON result
+  * Logo (Builtin): tidy [ci skip]
+
+-------------------------------------------------------------------
 Sat Oct 18 11:16:19 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.54.0:
