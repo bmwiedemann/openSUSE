@@ -1,7 +1,7 @@
 #
 # spec file for package intel-opencl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           intel-opencl
-Version:        25.18.33578.6
+Version:        25.40.35563.4
 Release:        1%{?dist}
 Summary:        Intel Graphics Compute Runtime for OpenCL
 License:        MIT
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(igc-opencl)
 BuildRequires:  pkgconfig(libva)
 Requires:       libigc2
 Requires:       libigdfcl2
-Requires:       libopencl-clang15
+Requires:       libopencl-clang16
 Recommends:     libOpenCL1
 ExclusiveArch:  x86_64
 
@@ -120,8 +120,7 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 
 %if %{with level_zero}
 %files -n libze_intel_gpu1
-%{_libdir}/libze_intel_gpu.so.1
-%{_libdir}/libze_intel_gpu.so.1.6.*
+%{_libdir}/libze_intel_gpu.so.*
 %exclude %{_includedir}/level_zero/
 %endif
 
