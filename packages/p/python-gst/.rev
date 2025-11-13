@@ -604,4 +604,15 @@
     <comment></comment>
     <requestid>1311914</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>095ad8d3e481d0be5681a5599a6b29e6</srcmd5>
+    <version>1.26.8</version>
+    <time>1763051182</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.26.8:
+  + python: Fix GDir leak in gst_python_load_directory
+- Tweak gstreamer versions required, via _version define.
+</comment>
+    <requestid>1317251</requestid>
+  </revision>
 </revisionlist>

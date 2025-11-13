@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 09:21:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.8:
+  + python: Fix GDir leak in gst_python_load_directory
+- Tweak gstreamer versions required, via _version define.
+
+-------------------------------------------------------------------
 Fri Oct 17 06:43:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.7:
