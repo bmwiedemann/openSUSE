@@ -180,4 +180,23 @@
   fixed upstream (forwarded request 1314050 from rrahl0)</comment>
     <requestid>1314051</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fc8d09c1b46088e72e808e1fc775344f</srcmd5>
+    <version>0.27.1</version>
+    <time>1763051198</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.27.1:
+  * Expire nodes with a custom timestamp
+  * Fix issue where node expiry was reset when tailscaled restarts
+  * Fix OIDC authentication when multiple login URLs are opened
+  * Fix node re-registration failing with expired auth keys
+  * Remove old unused database tables and indices
+  * Ignore litestream tables during database validation
+  * Fix exit node visibility to respect ACL rules
+  * Fix SSH policy becoming empty when unknown user is referenced
+  * Fix policy validation when using bypass-grpc mode
+  * Fix autogroup:self interaction with other ACL rules
+  * Fix flaky DERP map shuffle test (forwarded request 1317435 from rrahl0)</comment>
+    <requestid>1317436</requestid>
+  </revision>
 </revisionlist>
