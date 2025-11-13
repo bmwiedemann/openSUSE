@@ -1,8 +1,9 @@
 #
 # spec file for package adaptivecpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Eyad Issa <eyadlorenzo@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +18,10 @@
 #
 
 
+%global llvm_version 20
+
 Name:           adaptivecpp
-Version:        25.02.0
+Version:        25.10.0
 Release:        0
 Summary:        Open implementation of SYCL for CPUs and GPUs
 License:        BSD-2-Clause
@@ -27,7 +30,7 @@ Source:         https://github.com/AdaptiveCpp/AdaptiveCpp/archive/v%{version}/%
 Patch1:         0001-Use-bin-env-python3-instead-of-python3-in-scripts.patch
 Patch2:         0002-Remove-realpath-in-acpp.patch
 BuildRequires:  boost-devel
-BuildRequires:  clang-devel
+BuildRequires:  clang%{llvm_version}-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -35,7 +38,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_context-devel
 BuildRequires:  libboost_fiber-devel
 BuildRequires:  libboost_test-devel
-BuildRequires:  llvm-devel
+BuildRequires:  lld%{llvm_version}
+BuildRequires:  llvm%{llvm_version}-devel
 BuildRequires:  make
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -168,8 +172,7 @@ This package contains the development files for AdaptiveCpp.
 %{_prefix}/lib/cmake/AdaptiveCpp/
 %{_prefix}/lib/cmake/OpenSYCL/
 %{_prefix}/lib/cmake/hipSYCL/
-%dir %{_prefix}%{_sysconfdir}/AdaptiveCpp
-%{_prefix}%{_sysconfdir}/AdaptiveCpp/acpp-core.json
+%{_prefix}%{_sysconfdir}/AdaptiveCpp/
 
 %files -n libacpp-common
 %license LICENSE
