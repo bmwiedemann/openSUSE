@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 11 09:23:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.8:
+  + validate: add missing GST_VALIDATE_API annotation
+  + validate: use meson compile instead of ninja directly
+  + dots-viewer: Update Rust dependencies
+
+-------------------------------------------------------------------
 Fri Oct 17 06:37:29 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.7:

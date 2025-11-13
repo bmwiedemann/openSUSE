@@ -22,7 +22,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           gstreamer-devtools
-Version:        1.26.7
+Version:        1.26.8
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later
