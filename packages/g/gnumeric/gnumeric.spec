@@ -63,7 +63,6 @@ Provides:       gnumeric2 = %{version}
 Obsoletes:      gnumeric2 < %{version}
 %{perl_requires}
 %{?libperl_requires}
-ExcludeArch:    %{ix86}
 
 %description
 Gnumeric is a spreadsheet application with advanced features and
@@ -153,8 +152,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{_datadir}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING COPYING-gpl2 COPYING-gpl3

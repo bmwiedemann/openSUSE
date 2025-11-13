@@ -1101,4 +1101,13 @@
     <comment></comment>
     <requestid>1249812</requestid>
   </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>73236d111cad37aa65e334ff333ca10a</srcmd5>
+    <version>1.12.59</version>
+    <time>1763051248</time>
+    <user>anag_factory</user>
+    <comment>- Drop %{ix86} ExcludeArch: No longer needed after fixes made to
+  goffice. (forwarded request 1317250 from iznogood)</comment>
+    <requestid>1317507</requestid>
+  </revision>
 </revisionlist>
