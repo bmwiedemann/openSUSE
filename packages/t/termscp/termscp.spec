@@ -1,7 +1,7 @@
 #
 # spec file for package termscp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           termscp
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        Feature rich terminal UI file transfer and explorer
 License:        MIT
@@ -53,7 +53,11 @@ install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
 
 %check
-%{cargo_test} --features isolated-tests
+# skip two tests that need network connectivity
+%{cargo_test} \
+        --features isolated-tests \
+        -- --skip 'system::auto_update::test::test_should_check_whether_github_api_is_reachable' \
+        --skip 'system::logging::test::test_system_logging_setup'
 
 %files
 %{_bindir}/%{name}

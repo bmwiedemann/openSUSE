@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 12 15:10:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.19.0:
+    - Issue 297: Added <CTRL+S> keybinding to get the total size of
+      selected paths.
+    - Issue 331: Added new import-ssh-hosts CLI subcommand to
+      import all the hosts from the ssh config as bookmarks.
+    - Issue 335: Changed file overwrite behaviour
+      - Now the user can choose for each file whether to overwrite,
+        skip or overwrite all/skip all.
+    - Issue 354:
+      - Removed error popup message if failed to check for updates.
+      - Prevent long timeouts when checking for updates if the
+        network is down or the DNS is not working.
+    - Issue 356: Fixed SSH auth issue not trying with the password
+      if any RSA key was found.
+    - Issue 334: SMB support for MacOS with vendored build of
+      libsmbclient.
+    - Issue 337: Migrated to libssh.org on Linux and MacOS for
+      better ssh agent support.
+    - Issue 361: Report a message while calculating total size of
+      files to transfer.
+
+-------------------------------------------------------------------
 Wed Jun 11 04:45:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.18.0:
