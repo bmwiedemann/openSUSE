@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 11 22:52:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 142.0.7444.162 (boo#1253267):
+  * CVE-2025-13042: Inappropriate implementation in V8
+
+-------------------------------------------------------------------
 Thu Nov  6 06:14:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 142.0.7444.134 (boo#1253089):

@@ -5985,4 +5985,13 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>Chromium 142.0.7444.134 (boo#1253089)</comment>
     <requestid>1315921</requestid>
   </revision>
+  <revision rev="488" vrev="1">
+    <srcmd5>18dbe5c31e33ba86080b4c32ee425f31</srcmd5>
+    <version>142.0.7444.162</version>
+    <time>1763051189</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 142.0.7444.162 (boo#1253267):
+  * CVE-2025-13042: Inappropriate implementation in V8</comment>
+    <requestid>1317273</requestid>
+  </revision>
 </revisionlist>
