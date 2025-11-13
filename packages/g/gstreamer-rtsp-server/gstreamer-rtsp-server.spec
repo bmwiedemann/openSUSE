@@ -20,7 +20,7 @@
 %define _name gst-rtsp-server
 
 Name:           gstreamer-rtsp-server
-Version:        1.26.7
+Version:        1.26.8
 Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later
