@@ -25,4 +25,12 @@ Use source with the vendor already installed and precompiled JS</comment>
     <comment>Update to the new upstream release 1.23.1</comment>
     <requestid>1316985</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3af840e43c35353b9793c52993fb8ae0</srcmd5>
+    <version>1.23.1</version>
+    <time>1763051192</time>
+    <user>anag_factory</user>
+    <comment>Packaging: remove not needed build dependencies</comment>
+    <requestid>1317402</requestid>
+  </revision>
 </revisionlist>

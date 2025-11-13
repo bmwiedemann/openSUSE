@@ -25,13 +25,8 @@ URL:            https://github.com/TecharoHQ/%{name}
 Source0:        https://github.com/TecharoHQ/%{name}/releases/download/v%{version}/%{name}-src-vendor-npm-%{version}.tar.gz
 Source1:        https://github.com/TecharoHQ/%{name}/releases/download/v%{version}/%{name}-src-vendor-npm-%{version}.tar.gz.asc
 Source3:        %{name}@.service
-BuildRequires:  brotli
-BuildRequires:  esbuild
 BuildRequires:  golang-packaging
-BuildRequires:  nodejs
-BuildRequires:  npm
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  zstd
 %{?systemd_ordering}
 
 %description
