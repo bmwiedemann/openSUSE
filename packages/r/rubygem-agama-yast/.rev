@@ -488,4 +488,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1306642</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>45ed53542dc7fa2961670b674b0b9e58</srcmd5>
+    <version>17.devel439.4e1b20660</version>
+    <time>1763133057</time>
+    <user>anag_factory</user>
+    <comment>- Fixed an error in the calculation of partitions when several
+  MD RAIDs are created (bsc#1253145).</comment>
+    <requestid>1317454</requestid>
+  </revision>
 </revisionlist>
