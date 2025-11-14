@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 13 07:46:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.3.1
+  * Restore missing source distribution (``.tar.gz``) that
+    was not included in v1.3.0.
+- from version 1.3.0
+  * Add compatibility tests and adjustments for Wrapt v2.0.
+    See PR #88 (musicinmybrain).
+  * Add experimental `@deprecated_params` decorator to mark
+    function parameters as deprecated at call-time; emits
+    warnings when deprecated parameters are used with optional
+    messages and configurable warning categories. See PR #93.
+  * Update the Wrapt compatibility matrix to include Python
+    3.13 and 3.14. See PR #91
+  * Limit test coverage collection to the dedicated ``coverage``
+    tox environment to avoid collecting coverage across all test
+    environments and reduce cross-environment coverage noise.
+    See PR #92.
+
+-------------------------------------------------------------------
 Thu Jun  5 06:01:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

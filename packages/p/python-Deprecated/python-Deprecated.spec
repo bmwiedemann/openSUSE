@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Deprecated
-Version:        1.2.18
+Version:        1.3.1
 Release:        0
 Summary:        Python @deprecated decorator
 License:        MIT
