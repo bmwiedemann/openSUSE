@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 13 10:20:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.0.3
+  * __version__ raises DeprecationWarning instead of UserWarning. #487
+  * Adopt multi-phase initialization PEP 489 for the C extension. #494
+  * Build Windows ARM64 wheels. #485
+  * Build Python 3.14 wheels. #503
+  * Build riscv64 wheels. #505
+
+-------------------------------------------------------------------
 Wed Apr 30 09:17:07 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.0.2
