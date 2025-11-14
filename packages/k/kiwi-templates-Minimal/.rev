@@ -271,4 +271,12 @@
   meanwhile obsoleted</comment>
     <requestid>1311137</requestid>
   </revision>
+  <revision rev="34" vrev="34">
+    <srcmd5>25444e1a3359e6ad0636c0dc1efe34a8</srcmd5>
+    <version>84.87.1</version>
+    <time>1763133215</time>
+    <user>anag_factory</user>
+    <comment>- editbootinstall_rpi.sh: Fix loopdev substitute (forwarded request 1317626 from favogt)</comment>
+    <requestid>1317632</requestid>
+  </revision>
 </revisionlist>

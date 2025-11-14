@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 13 15:16:53 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- editbootinstall_rpi.sh: Fix loopdev substitute
+
+-------------------------------------------------------------------
 Mon Oct 13 13:25:46 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Remove issue-generator from packagelist, unnecessary and

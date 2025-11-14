@@ -4,7 +4,7 @@ set -euxo pipefail
 diskname=$1
 devname="$2"
 loopname="${devname%*p?}"
-loopdev=${loopname#/dev/mapper/*}
+loopdev=/dev/${loopname#/dev/*}
 
 #==========================================
 # copy Raspberry Pi firmware to EFI partition
