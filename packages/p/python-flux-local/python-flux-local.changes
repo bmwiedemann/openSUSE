@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Nov 14 12:08:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.0.0:
+  * chore(deps): update dependency pdoc to v16 by @renovate[bot] in
+    #1023
+  * chore(deps): update dependency types-aiofiles to v25 by
+    @renovate[bot] in #1018
+  * chore(deps): update astral-sh/setup-uv action to v7 by
+    @renovate[bot] in #1015
+  * chore(deps): update dependency aiofiles to v25 by
+    @renovate[bot] in #1017
+  * chore(deps): update dependency ruff to v0.14.4 by
+    @renovate[bot] in #1024
+  * Fix arguments to BooleanOptionalAction by @allenporter in #1026
+  * chore(deps): update github artifact actions (major) by
+    @renovate[bot] in #1022
+  * Explicitly create a new asyncio loop in CLI by @allenporter in
+    #1030
+  * Update CI to run correct python version in test matrix by
+    @allenporter in #1032
+  * Attempt to change where the loop is obtained to fix python3.14
+    by @allenporter in #1033
+  * Simplify the task creation in the test by @allenporter in #1034
+  * Support python 3.14 by @allenporter in #1029
+  * chore(deps): update dependency pytest-asyncio to v1.3.0 by
+    @renovate[bot] in #1036
+  * chore(deps): update pre-commit hook psf/black to v25.11.0 by
+    @renovate[bot] in #1035
+  * Apply cruft updates by @allenporter in #1039
+  * Drop support for 3.10, 3.11, and 3.12 by @allenporter in #1040
+
+-------------------------------------------------------------------
 Thu Oct 23 05:40:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.11.0:
