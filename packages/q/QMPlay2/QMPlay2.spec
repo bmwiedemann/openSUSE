@@ -95,6 +95,9 @@ Requires(postun): hicolor-icon-theme
 Requires(postun): shared-mime-info
 Requires(postun): update-desktop-files
 Recommends:     yt-dlp
+%if 0%{?suse_version} >= 1699
+Requires:       deno
+%endif
 Requires:       python3
 
 %description
