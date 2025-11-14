@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-SoundCard
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        Python package to play and record audio
 License:        BSD-3-Clause
@@ -27,7 +27,7 @@ Source0:        https://files.pythonhosted.org/packages/source/s/soundcard/sound
 Source1:        https://raw.githubusercontent.com/bastibe/SoundCard/master/LICENSE
 Source100:      python-SoundCard-rpmlintrc
 BuildRequires:  %{python_module cffi}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy >= 1.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
