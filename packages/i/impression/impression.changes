@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 13 16:54:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 3.5.4:
+  * Rewrite logic of parsing libosinfo to recover gracefully
+    from errors
+
+-------------------------------------------------------------------
 Mon Oct 27 16:55:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 3.5.3:
