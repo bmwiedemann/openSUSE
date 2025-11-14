@@ -23,7 +23,7 @@
 %define buildmode pie
 %endif
 Name:           traefik
-Version:        3.5.3
+Version:        3.5.6
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -152,6 +152,7 @@ fi
 %dir %{_localstatedir}/lib/%{name}
 %config(noreplace) %{_localstatedir}/lib/%{name}/acme.json
 
+%defattr(0644, root, root, 0755)
 %dir %{_localstatedir}/log/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/traefik
 
