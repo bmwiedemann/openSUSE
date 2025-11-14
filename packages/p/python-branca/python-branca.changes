@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 14 09:28:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.8.2
+  * Pre-commit: disable autofix PR's, ignore E203, W503
+  * Make id generation customizable
+
+-------------------------------------------------------------------
 Mon Jan  6 18:30:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.8.1
