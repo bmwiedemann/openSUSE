@@ -1,7 +1,7 @@
 #
 # spec file for package vokoscreenNG
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vokoscreenNG
-Version:        4.4.0
+Version:        4.7.1
 Release:        0
 Summary:        Screencast creator
 License:        GPL-2.0-only

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov 12 14:11:06 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update Feature and Bugfix-Release version 4.7.0 from Oct 01, 2025
+  * Wayland: Removed tooltip for Start and Stop
+  * Bug_report.md: Path for log added
+  * Flatpak: Download page revised
+  * Readme.md: Adjusted
+  * Codec: VP8 removed because not suitable for recording
+  * Translation: Updated
+- Update Feature and Bugfix-Release version 4.6.0 from Jul 01, 2025
+  * Wayland: Countdown better display if screen scaled
+  * Aera: Displayed size doesn't match pixels when scale
+  * Setting: Was not saved
+  * Countdown: Was not displayed in the center of the screen
+  * Translation: Updated
+- Update Feature and Bugfix-Release version 4.5.0 from Apr 01, 2025
+  * Wayland: Removed combobox for formats and video codec
+  * Audio(linux X11): ON-OFF switch for level meter built in
+  * Wayland: Added reset for separate audio tracks
+  * Wayland: Added reset for videopath
+  * Camera: Flip vertical was swapped
+  * Wayland: New video path was not saved
+  * Wayland: Added convert mkv to webm
+  * Formats: AVI and MOV removed because not suitable for recording
+  * Openh264enc: Change multi-thread to 0
+  * Wayland: Added separated audio tracks
+  * Wayland: Preparing the online help
+  * Translation: Updated
+
+-------------------------------------------------------------------
 Wed Jan 15 16:25:37 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
 
 - Update to version 4.4.0
