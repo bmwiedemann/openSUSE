@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 13 14:52:27 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 2.11.31
+  * docker,docker/swarm 
+    - Auto-negotiate Docker API version (gh#traefik/traefik#12262 by kevinpollet)
+
+- Version 2.11.30
+  * http3
+    - Bump github.com/quic-go/quic-go to v0.55.0 (#12156 by kevinpollet)
+  * kv
+    - Fix KV key name used to check if connection is alive (#12162 by kevinpollet)
+  * server
+    - Bump golang.org/x/net to v0.46.0 (#12143 by kevinpollet), fixes boo#1251358
+
+  * tracing
+    - Bump gopkg.in/DataDog/dd-trace-go.v1 to v1.74.6 (#12083 by hannahkm)
+
+-------------------------------------------------------------------
 Fri Sep 26 12:39:36 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated changelog
