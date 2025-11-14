@@ -548,4 +548,13 @@ update to latest version</comment>
     <comment></comment>
     <requestid>1306568</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>6678da3fed2331c081046967239a34f9</srcmd5>
+    <version>27.1.0</version>
+    <time>1763133087</time>
+    <user>anag_factory</user>
+    <comment>- Copy tests to a temporary directory so they can be imported.
+- Drop pytest.ini, it is now shipped in the tarball.</comment>
+    <requestid>1317471</requestid>
+  </revision>
 </revisionlist>

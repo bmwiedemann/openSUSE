@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyzmq
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,6 @@ Summary:        Python bindings for 0MQ
 License:        BSD-3-Clause AND LGPL-3.0-or-later
 URL:            https://github.com/zeromq/pyzmq
 Source:         https://files.pythonhosted.org/packages/source/p/pyzmq/pyzmq-%{version}.tar.gz
-# For test markers
-Source1:        https://raw.githubusercontent.com/zeromq/pyzmq/v%{version}/pytest.ini
 BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
@@ -91,7 +89,6 @@ Development libraries and headers needed to build software using %{name}.
 
 %prep
 %autosetup -n pyzmq-%{version} -p1
-cp %{SOURCE1} ./
 
 # Fix non-executable script rpmlint warning:
 find examples zmq -name "*.py" -exec sed -i "s|#\!\/usr\/bin\/env python||" {} \;
@@ -108,6 +105,10 @@ export CFLAGS="%{optflags}"
 
 %if %{with tests}
 %check
+# make tests importable
+dir=$(mktemp -d)
+cp -a tests $dir
+export PYTHONPATH=$dir
 export LANG=en_US.UTF-8
 # unreliable socket handling in obs environment
 SKIPPED_TESTS+=" or test_log"
@@ -115,7 +116,7 @@ SKIPPED_TESTS+=" or test_log"
 # tries to open a network connection on older distributions
 SKIPPED_TESTS+=" or test_null or test_int_sockopts"
 %endif
-%pytest_arch --pyargs zmq -k "not (${SKIPPED_TESTS:4})" --timeout 1200 tests
+%pytest_arch -v -k "not (${SKIPPED_TESTS:4})"
 %endif
 
 %files %{python_files}
