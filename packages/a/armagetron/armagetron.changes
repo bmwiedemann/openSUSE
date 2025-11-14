@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  8 10:19:33 UTC 2025 - munix9@googlemail.com
+
+- Add fix-sdl12-compat-1_2_70.patch (gh#libsdl-org/sdl12-compat#382)
+- Clean up spec file
+
+-------------------------------------------------------------------
 Wed Jul 17 13:50:11 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)

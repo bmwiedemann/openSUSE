@@ -1,7 +1,7 @@
 #
 # spec file for package armagetron
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,22 +23,23 @@ Version:        %{series}.2.3
 Release:        0
 Summary:        OpenGL Game Similar to the Film Tron
 License:        GPL-2.0-or-later
-Group:          Amusements/Games/Action/Arcade
 URL:            https://www.armagetronad.org
 Source0:        https://launchpad.net/%{src_name}/%{series}/%{version}/+download/%{src_name}-%{version}.tbz
 Patch0:         armagetron-desktop-files-installdir.patch
 # PATCH-FIX-UPSTREAM: https://gitlab.com/armagetronad/armagetronad/-/merge_requests/162
 Patch1:         reproducible.patch
+# PATCH-FIX-OPENSUSE fix-sdl12-compat-1_2_70.patch gh#libsdl-org/sdl12-compat#382
+Patch2:         fix-sdl12-compat-1_2_70.patch
+BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
-BuildRequires:  libSDL_image-devel
-BuildRequires:  libpng-devel
 BuildRequires:  libtool
-BuildRequires:  libxml2-devel
 BuildRequires:  llvm-clang
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libxml-2.0)
 Requires(post): coreutils
 
 %description
@@ -84,17 +85,9 @@ rm %{buildroot}%{_datadir}/armagetronad/scripts/relocate
 rm %{buildroot}%{_bindir}/armagetronad-master
 mv %{buildroot}%{_docdir}/armagetronad ./armagetron_doc
 chmod -x %{buildroot}%{_datadir}/armagetronad/scripts/rcd_*
-%suse_update_desktop_file armagetronad Game ArcadeGame
 
-%files
-%license COPYING
-%doc README armagetron_doc/*
-%config %{_sysconfdir}/armagetronad
-%{_bindir}/armagetronad
-%{_datadir}/armagetronad/
-%{_datadir}/metainfo/armagetronad.appdata.xml
-%{_datadir}/applications/*
-%{_datadir}/pixmaps/*.png
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/armagetronad.desktop
 
 %post
 if [ ! -e %{_datadir}/armagetron/music/fire.xm ]; then
@@ -103,5 +96,15 @@ if [ ! -e %{_datadir}/armagetron/music/fire.xm ]; then
 		%{_datadir}/armagetron/music/fire.xm
     fi
 fi
+
+%files
+%license COPYING
+%doc README armagetron_doc/*
+%config %{_sysconfdir}/armagetronad
+%{_bindir}/armagetronad
+%{_datadir}/applications/armagetronad.desktop
+%{_datadir}/armagetronad/
+%{_datadir}/metainfo/armagetronad.appdata.xml
+%{_datadir}/pixmaps/armagetronad.png
 
 %changelog

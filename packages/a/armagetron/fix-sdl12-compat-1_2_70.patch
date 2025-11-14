@@ -1,0 +1,12 @@
+--- a/src/render/rGL.h
++++ b/src/render/rGL.h
+@@ -34,6 +34,9 @@
+ #endif
+ */
+ 
++#include <GL/gl.h>
++#include <GL/glu.h>
++
+ #else
+ 
+ typedef float GLfloat;
