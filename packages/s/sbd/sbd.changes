@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 14 08:49:54 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.5.2+20250909.68bc946:
+- sbd-cluster: cleanly include <crm/crm.h> for crm_system_name and others
+
+-------------------------------------------------------------------
 Wed Feb 12 17:32:38 UTC 2025 - Yan Gao <ygao@suse.com>
 
 - spec: drop Linux-HA fence agent external/sbd in favor of fence_sbd agent for suse_version >= 1600

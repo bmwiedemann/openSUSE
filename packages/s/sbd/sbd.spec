@@ -55,7 +55,7 @@
 %endif
 
 Name:           sbd
-Version:        1.5.2+20241209.5946119
+Version:        1.5.2+20250909.68bc946
 Release:        0
 Summary:        Shared-storage based death
 License:        GPL-2.0-or-later

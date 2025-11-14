@@ -569,4 +569,13 @@ the sources.</comment>
 - spec: add systemd to BuildRequires (forwarded request 1245460 from yan_gao)</comment>
     <requestid>1245461</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4a89a002e9fb48c1c9d94b9e85fd8b32</srcmd5>
+    <version>1.5.2+20250909.68bc946</version>
+    <time>1763133729</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.2+20250909.68bc946:
+- sbd-cluster: cleanly include &lt;crm/crm.h&gt; for crm_system_name and others (forwarded request 1317744 from yan_gao)</comment>
+    <requestid>1317745</requestid>
+  </revision>
 </revisionlist>
