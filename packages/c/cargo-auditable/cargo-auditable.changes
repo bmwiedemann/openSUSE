@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 12 03:35:57 UTC 2025 - william.brown@suse.com
+
+- Update to version 0.7.2~0:
+  * Bump version
+  * Populate changelog
+  * Update README.md
+  * mention cargo-dist in README
+  * commit Cargo.lock
+  * bump which dev-dependency to 8.0.0
+  * bump object to 0.37
+  * Upgrade cargo_metadata to 0.23
+  * Expand the set of dist platforms in config
+
+-------------------------------------------------------------------
 Tue Oct 21 02:38:44 UTC 2025 - william.brown@suse.com
 
 - Update to version 0.7.1~0:
