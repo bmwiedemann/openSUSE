@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 14 00:07:02 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.93
+  * Fix the problem described in GAP issue 6164
+    (GAP packages having a broken reference in their manuals)
+
+-------------------------------------------------------------------
 Thu Sep 11 20:35:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.92
