@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-colorful
-Version:        0.5.7
+Version:        0.5.8
 Release:        0
 Summary:        Terminal string styling done right, in Python
 License:        MIT

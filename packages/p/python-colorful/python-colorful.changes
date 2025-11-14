@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 14 08:47:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.5.8
+  * Test Python 3.14 support
+  * Drop Python 2 support
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Sun Sep 14 20:40:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.7:
