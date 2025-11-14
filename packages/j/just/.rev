@@ -453,4 +453,12 @@
   * Note [parallel] attribute in parallelism section (forwarded request 1309707 from rrahl0)</comment>
     <requestid>1309708</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3e80dd4e313f38de7fabaeaee61eef7d</srcmd5>
+    <version>1.43.1</version>
+    <time>1763133634</time>
+    <user>anag_factory</user>
+    <comment>- require rust &gt;= 1.80, as that's the minimum requirement (forwarded request 1317742 from rrahl0)</comment>
+    <requestid>1317743</requestid>
+  </revision>
 </revisionlist>

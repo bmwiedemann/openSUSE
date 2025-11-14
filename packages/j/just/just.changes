@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 13 17:07:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.43.1:
+  * Don't suggest private recipes and aliases
+  * Use a case statement to install target dependencies
+  * Preserve module groups when formatting
+  * Preserve module docs when formatting
+  * Fix env() usage in readme
+- require rust >= 1.80, as that's the minimum requirement
+
+-------------------------------------------------------------------
 Tue Oct  7 12:06:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.43.0:
