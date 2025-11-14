@@ -1049,4 +1049,14 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
     <comment> (forwarded request 1298685 from iznogood)</comment>
     <requestid>1298877</requestid>
   </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>1f91468cf9354219536d2ddde8196641</srcmd5>
+    <version>1.16.1</version>
+    <time>1763133105</time>
+    <user>anag_factory</user>
+    <comment>- Drop support to build against dbus &lt; 1.9.18: this was back from
+  2015 and we are not even guaranteed to use dbus-1 over
+  dbus-broker in all cases. (forwarded request 1317557 from dimstar)</comment>
+    <requestid>1317567</requestid>
+  </revision>
 </revisionlist>

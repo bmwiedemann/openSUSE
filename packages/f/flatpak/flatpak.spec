@@ -22,12 +22,7 @@
 %define ostree_version 2020.8
 %define xdg_dbus_proxy_version 0.1.0
 
-# dbus only used config files in /etc until 1.9.18
-%if %{pkg_vcmp dbus-1 < 1.9.18}
-%define _dbusconfigdir %{_sysconfdir}/dbus-1/system.d
-%else
 %define _dbusconfigdir %{_datadir}/dbus-1/system.d
-%endif
 # systemd only supports environment generators since version 233
 %if %{pkg_vcmp systemd < 233}
 %define support_environment_generators 0

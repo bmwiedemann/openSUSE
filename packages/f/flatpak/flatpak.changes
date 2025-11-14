@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 13 10:21:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop support to build against dbus < 1.9.18: this was back from
+  2015 and we are not even guaranteed to use dbus-1 over
+  dbus-broker in all cases.
+
+-------------------------------------------------------------------
 Sun Aug 10 11:47:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add cd80e843435df5ce70d9a2b6710098135ceb9085.patch:
