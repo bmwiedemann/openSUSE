@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 13 14:25:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.7
+  * return in while, for, and with blocks in functions properly signal
+    an immediate exit of the function. (fixes #141)
+  * fix augassign to retain line numbers for exceptions properly. (#140)
+  * make sure that "unsafe_modules" should not be accessed even if imported
+    and exposed by other modules
+  * cleanup unused nodes
+  * tweaks and fixes to docs
+  * drop testing with Python 3.9
+  * add testing for Python 3.14
+  * update pyproject.toml from the endless churn from PyPA, to move the
+    location and formatting for the LICENSE, to continue compliance with
+    the endless churn from PyPA.
+
+-------------------------------------------------------------------
 Mon Jan 27 12:42:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.6
