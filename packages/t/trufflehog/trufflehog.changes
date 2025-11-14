@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 13 10:35:10 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.91.0:
+  * shadow context (#4549)
+  * Added tests for new .msg and .doc file types to skipArchiverMimeTypes (#4546)
+  * Fix Github Wiki Page Links (#4538)
+  * Added .msg and .doc to skipArchiverMimeTypes, in line with THOG fix (#4544)
+  * Scan all images under a namespace for Docker remote registries (#4514)
+  * Remove gh-actions approval workflows in favor of new repo setting (#4525)
+
+-------------------------------------------------------------------
 Wed Nov 05 14:38:16 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.90.13:

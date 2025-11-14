@@ -2488,4 +2488,18 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * Require product eng approval for PRs (#4478) (forwarded request 1315740 from ph03nix)</comment>
     <requestid>1315745</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>0dffd91e5679befe4eca3aa84d78f83f</srcmd5>
+    <version>3.91.0</version>
+    <time>1763133324</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.91.0:
+  * shadow context (#4549)
+  * Added tests for new .msg and .doc file types to skipArchiverMimeTypes (#4546)
+  * Fix Github Wiki Page Links (#4538)
+  * Added .msg and .doc to skipArchiverMimeTypes, in line with THOG fix (#4544)
+  * Scan all images under a namespace for Docker remote registries (#4514)
+  * Remove gh-actions approval workflows in favor of new repo setting (#4525) (forwarded request 1317559 from ph03nix)</comment>
+    <requestid>1317665</requestid>
+  </revision>
 </revisionlist>
