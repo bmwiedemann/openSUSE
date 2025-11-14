@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           manga-tui
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Terminal manga reader and downloader
 License:        MIT
