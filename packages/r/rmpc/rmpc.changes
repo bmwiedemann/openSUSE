@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 13 21:45:58 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.10.0
+  + The highlights
+    - Support for stickers based rating of songs, bunch of new
+      keybinds allowing you to control how exactly are songs added
+      to the queue or saved to playlists, full TUI support for
+      switching partitions and much more!
+    - Rmpc will now also attempt to resolve what terminal emulator
+      you are using to better figure out what image backend to use.
+      This fixes issues in terminals like Konsole which have partial
+      implementation for kitty graphics protocol but report it as a
+      supported feature.
+  + Breaking changes
+    - TabName equality comparison is now case-insensitive, this
+      impacts your SwitchToTab keybinds
+    - $SELECTED_SONGS in queue now contains marked songs as well
+
+-------------------------------------------------------------------
 Mon Jun 23 21:31:12 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.9.0
