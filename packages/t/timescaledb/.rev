@@ -499,4 +499,17 @@ Stop storing build machine kernel version (boo#1101107)</comment>
   https://github.com/timescale/timescaledb/releases/tag/2.22.1</comment>
     <requestid>1314309</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4cfd4eb67d777b5b570c54facb69b073</srcmd5>
+    <version>2.23.1</version>
+    <time>1763133293</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.23.1
+  - #8873 Don't error on failure to update job stats
+  - #8875 Fix decoding of UUID v7 timestamp microseconds
+  - #8879 Fix blocker for multiple hierarchical continuous
+    aggregate policies
+  - #8882 Fix crash in policy creation</comment>
+    <requestid>1317658</requestid>
+  </revision>
 </revisionlist>

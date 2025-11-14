@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 13 19:53:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.23.1
+  - #8873 Don't error on failure to update job stats
+  - #8875 Fix decoding of UUID v7 timestamp microseconds
+  - #8879 Fix blocker for multiple hierarchical continuous
+    aggregate policies
+  - #8882 Fix crash in policy creation
+
+-------------------------------------------------------------------
 Wed Oct 29 10:03:59 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.23.0
