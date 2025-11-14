@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b630fb9ae737b30a171ed7410b56d5ee</srcmd5>
+    <version>1.14.0</version>
+    <time>1763137192</time>
+    <user>anag_factory</user>
+    <comment>Add _constraints file to fix build errors on &gt;= SLE_15_SP6</comment>
+    <requestid>1317774</requestid>
+  </revision>
+</revisionlist>

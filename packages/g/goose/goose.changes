@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Fri Nov 14 11:09:48 UTC 2025 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- add _constraints to fix build errors on other architectures 
+
+-------------------------------------------------------------------
+Wed Nov 12 06:51:04 UTC 2025 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Update to version 1.14.0:
+  * chore(release): release version 1.14.0
+  * bump openapi version directly (#5674)
+  * governance: update MAINTAINERS.md to reflect new maintainers (#5675)
+  * chore: upgrade rmcp to 0.8.5 (#5673)
+  * Update release instructions (#5662)
+  * Swapped out to_string_lossy with display for user facing text (#5666)
+  * the right script (#5671)
+  * use npx in just generate-openapi (#5664)
+  * silence copilot on minor text issues (#5665)
+  * fix: disallow runaway subagent chains (#5659)
+  * chore: remove usage of non-existent env var for log dir (#5658)
+  * clarify agent instructions (#5655)
+  * feat: add check-everything for unified style checks (#5650)
+  * Show errors on failure (#5643)
+  * custom instructions for copilot reviews (#5646)
+  * fix: prevent repeated 404 errors when accessing deleted sessions (#5644)
+  * Flake.nix corrected main (#5600)
+  * fix: goose recipe list can return duplicated entries (#5645)
+  * fix: bedrock creds refresh (#5599)
+  * Fix Claude Code provider to default to Auto mode (#5638) (#5642)
+  * Scheduler cleanup (#5571)
+  * Better search paths and handling of CLI providers (#5554)
+  * docs: description required for "Add Extension" in cli - phase 2 (#5635)
+  * Remove some logging (#5631)
+  * Use session IDs as task IDs for subagents instead of UUIDs (#5398)
+  * Fix the naming (#5628)
+  * fix: default tetrate model is broken, replace with haiku-4.5 (#5535) (#5587)
+  * Fetch less and use the right SHA (#5621)
+  * feat(ui): add custom macOS dock menu with New Window option (#5099)
+  * feat: remove hints from recipe prompts (#5622)
+  * docs: October 2025 Community All-Stars spotlight, Hacktoberfest edition (#5625)
+  * differentiate debug/release in cache key (#5613)
+  * Unify subrecipe and subagent execution through shared recipe pipeline (#5082)
+  * Standardize CLI argument flags and update documentation (#5516)
+  * Release 1.13.0
+  * fix: move goosehints/AGENTS.md handling to goose, and out of developer extension (#5575)
+  * fix: add standard context menu items to prevent empty right-click menu (#5616)
+  * Bump openapi in prepare-release (#5611)
+  * docs: add access control section to Developer tutorial (#5615)
+  * Token state not showing on load, or after message is finished. (#5606)
+  * Change the other location too (#5608)
+  * feat(ui): bring back quick launcher (#5144)
+  * Support platform tools through CLI (#5570)
+  * Avoid web double write (#5601)
+  * fix: gemini flash -> pro for mcp smoke tests (#5574)
+  * Manual compaction test and fix (#5568)
+  * fix: tidy up claude cli handling (#5594)
+  * Remove jetbrains (#5602)
+  * feat(githubcopilot): add support for newer Copilot AI Models (#5603)
+  * fix: customised recipe to yaml string to avoid minininjia parsing error (#5494)
+  * Add pending extension indicator to extension panel (#5493)
+  * Add environment subsition for auth blocks (#5439)
+  * acp: ToolCallLocations and working cancellation (#5588)
+  * feat(providers): add Mistral AI provider (#5009)
+  * Listen for ctrl-c during provider request (#5585)
+  * Also accept null as description, not just missing (#5589)
+  * Document missing recipe param types (#5584)
+  * docs: description required for "Add Extension" in cli (#5573)
+  * fix: Add schema-aware numeric coercion for MCP tool arguments (#5478)
+
+-------------------------------------------------------------------
+Tue Nov 11 17:17:53 UTC 2025 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Initial release 1.13.2~0
+- Disabled self update feature
