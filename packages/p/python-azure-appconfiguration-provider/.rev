@@ -105,4 +105,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1298759 from glaubitz)</comment>
     <requestid>1298825</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>427f5fe1e5bd803e6629532b974f2647</srcmd5>
+    <version>2.3.0</version>
+    <time>1763133792</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 2.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1317719 from glaubitz)</comment>
+    <requestid>1317779</requestid>
+  </revision>
 </revisionlist>
