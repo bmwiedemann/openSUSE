@@ -31,14 +31,12 @@
 %global sh_c_lib libmanifoldc3
 
 Name:           manifold
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Geometry library for topological robustness
 License:        Apache-2.0
 URL:            https://github.com/elalish/manifold
 Source0:        %{name}-%{version}.tar.gz
-Source1:        series
-Patch1:         use-python3.patch
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gtest

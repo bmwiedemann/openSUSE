@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Nov 13 19:56:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.3.0
+  The big theme of this release is a major expansion of our npm
+  module to now expose the script-runner of ManifoldCAD.org to any
+  Node project or website that wants to use it. It even comes in a
+  CLI flavor now that you can use like npx manifold-cad. There have
+  been a number of breaking changes to ManifoldCAD.org scripts,
+  primarily that the classes now need to be explicitly imported and
+  the results explicitly exported. However, now we can import
+  libraries universally, from node installs, from CDNs, and even
+  from local scripts you write on ManifoldCAD.org! A huge thank you
+  to @tonious for making all this happen.
+
+  ManifoldCAD / JS / TS / WASM
+  - Repackage WASM dynamic evaluation and mesh export by @tonious
+    in #1329
+  - Refactor WASM state and export. by @tonious in #1351
+  - Make evaluator asynchronous, and other small TS tweaks. by
+    @tonious in #1360
+  - Remediate top level async calls. by @tonious in #1375
+  - Refactor worker.ts by @tonious in #1380
+  - Set extension on worker.ts imports. by @tonious in #1384
+  - Fall back to packaged type files if not built. by @tonious in
+    #1389
+  - Transform static imports to dynamic by @tonious in #1387
+  - Isomorphic Javascript Libraries by @tonious in #1392
+  - Add specific error messages in wasm bindings. by @tonious in
+    #1396
+  - Automagically bundle manifoldCAD.d.ts by @tonious in #1397
+  - Add missing declarations. by @tonious in #1398
+  - Fetch remote types. by @tonious in #1399
+  - Small bundler improvements. by @tonious in #1400
+  - Require explicit imports in/of manifoldCAD by @tonious in #1401
+  - Refactor stack trace handling. by @tonious in #1403
+  - Remove GlobalDefaults object. by @tonious in #1408
+  - Assume virtual files are typescript by @tonious in #1410
+  - updated involute gear library and exmaple by @elalish in #1416
+  - Update tests. by @tonious in #1417
+- drop use-python3.patch
+
+-------------------------------------------------------------------
 Wed Aug  6 10:59:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update use-python3.patch with the upstream fix
