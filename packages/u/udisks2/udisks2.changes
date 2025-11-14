@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 13 08:22:41 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix dbus daemon requires, it's dbus-service, not dbus-1
+
+-------------------------------------------------------------------
 Thu Sep  4 11:15:39 UTC 2025 - Thomas Blume <thomas.blume@suse.com>
 
 - update to version 2.10.91

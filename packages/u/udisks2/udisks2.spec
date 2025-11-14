@@ -73,7 +73,7 @@ Requires:       libudisks2-%{soversion} = %{version}
 # For LUKS devices
 Requires:       cryptsetup
 # Needed to pull in the system bus daemon
-Requires:       dbus-1 >= 1.4.0
+Requires:       dbus-service
 # For mkfs.vfat
 Requires:       dosfstools
 # For mkfs.ext3, mkfs.ext3, e2label
