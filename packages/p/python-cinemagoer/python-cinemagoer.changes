@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 14 02:54:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python314.patch:
+  * Don't use removed pkgutil function.
+
+-------------------------------------------------------------------
 Mon Jun 16 06:12:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.

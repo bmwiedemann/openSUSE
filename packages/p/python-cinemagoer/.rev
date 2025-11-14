@@ -31,4 +31,13 @@
     <comment>- Switch to pyroject macros.</comment>
     <requestid>1285953</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a56275ab64844675383fbcb21fe286c2</srcmd5>
+    <version>2023.5.1</version>
+    <time>1763133392</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Don't use removed pkgutil function.</comment>
+    <requestid>1317680</requestid>
+  </revision>
 </revisionlist>

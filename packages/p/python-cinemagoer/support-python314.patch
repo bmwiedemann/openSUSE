@@ -1,0 +1,56 @@
+From fec0b1a0f90e2d6201f6fa5fd429f13d9b7a747d Mon Sep 17 00:00:00 2001
+From: Jonas Stendahl <jonas@stendahl.me>
+Date: Fri, 10 Oct 2025 22:59:05 +0200
+Subject: [PATCH] Migrate to find_spec
+
+---
+ imdb/__init__.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+Index: cinemagoer-2023.5.1/imdb/__init__.py
+===================================================================
+--- cinemagoer-2023.5.1.orig/imdb/__init__.py
++++ cinemagoer-2023.5.1/imdb/__init__.py
+@@ -32,7 +32,7 @@ VERSION = __version__
+ 
+ import os
+ import sys
+-from pkgutil import find_loader
++from importlib.util import find_spec
+ from types import FunctionType, MethodType
+ 
+ from imdb import Character, Company, Movie, Person
+@@ -214,9 +214,9 @@ Cinemagoer = IMDb
+ def available_access_systems():
+     """Return the list of available data access systems."""
+     asList = []
+-    if find_loader('imdb.parser.http') is not None:
++    if find_spec('imdb.parser.http') is not None:
+         asList.append('http')
+-    if find_loader('imdb.parser.sql') is not None:
++    if find_spec('imdb.parser.sql') is not None:
+         asList.append('sql')
+     return asList
+ 
+Index: cinemagoer-2023.5.1/imdb/parser/http/piculet.py
+===================================================================
+--- cinemagoer-2023.5.1.orig/imdb/parser/http/piculet.py
++++ cinemagoer-2023.5.1/imdb/parser/http/piculet.py
+@@ -32,7 +32,7 @@ from argparse import ArgumentParser
+ from collections import deque
+ from functools import partial
+ from operator import itemgetter
+-from pkgutil import find_loader
++from importlib.util import find_spec
+ 
+ __version__ = '1.2b1'
+ 
+@@ -202,7 +202,7 @@ def html_to_xhtml(document, omit_tags=No
+ # sigalias: XPathResult = Union[Sequence[str], Sequence[Element]]
+ 
+ 
+-_USE_LXML = find_loader('lxml') is not None
++_USE_LXML = find_spec('lxml') is not None
+ if _USE_LXML:
+     from lxml import etree as ElementTree
+     from lxml.etree import Element

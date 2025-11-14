@@ -1,7 +1,7 @@
 #
 # spec file for package python-cinemagoer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 URL:            https://cinemagoer.sourceforge.io/
 Source:         https://files.pythonhosted.org/packages/source/c/cinemagoer/cinemagoer-%{version}.tar.gz
 Patch0:         do_not_install_scripts.patch
+# PATCH-FIX-UPSTREAM Based on gh#cinemagoer/cinemagoer#543
+Patch1:         support-python314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -64,7 +66,7 @@ copy of the whole database.
 %python_clone -a %{buildroot}%{_bindir}/imdbpy
 
 %check
-# The just about the entire testsuite wants network access
+# Just about the entire testsuite wants network access
 %pytest -k "test_series_full_cast_has_ids"
 
 %post
