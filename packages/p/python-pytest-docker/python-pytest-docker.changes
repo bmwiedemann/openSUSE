@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 13 12:45:16 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.2.5:
+  * ci improvements by @augi in #128
+  * Use --wait in the default setup command by @mikeroll in #129
+- 3.2.4:
+  * chore(deps): pytest 9.x allowed by @augi in #127
+
+-------------------------------------------------------------------
 Fri Jul  4 07:50:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.2.3:

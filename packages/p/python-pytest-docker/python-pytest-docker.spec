@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-docker
-Version:        3.2.3
+Version:        3.2.5
 Release:        0
 Summary:        Simple pytest fixtures for Docker and Docker Compose based tests
 License:        MIT

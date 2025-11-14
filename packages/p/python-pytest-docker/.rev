@@ -35,4 +35,16 @@
   * fix: docker host doesn't need to start with tcp://</comment>
     <requestid>1290627</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2cb3268a95919172abbbe2dfb5733ab5</srcmd5>
+    <version>3.2.5</version>
+    <time>1763133738</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.5:
+  * ci improvements by @augi in #128
+  * Use --wait in the default setup command by @mikeroll in #129
+- 3.2.4:
+  * chore(deps): pytest 9.x allowed by @augi in #127</comment>
+    <requestid>1317748</requestid>
+  </revision>
 </revisionlist>
