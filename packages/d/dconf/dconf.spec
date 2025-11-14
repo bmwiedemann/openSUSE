@@ -1,7 +1,7 @@
 #
 # spec file for package dconf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 # dconf provides a dbus service, but has no dependency on dbus in any way
 # (because it uses gdbus), so we need an explicit Requires
-Requires:       dbus-1
+Requires:       dbus-service
 
 %description
 dconf is a low-level configuration system. Its main purpose is to

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 13 09:00:58 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix requires for dbus daemon, it's dbus-service, not dbus-1
+
+-------------------------------------------------------------------
 Wed Dec 21 13:09:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: there is no known consumer of the -32bit
