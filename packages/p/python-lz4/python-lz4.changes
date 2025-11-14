@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 12 14:42:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.4.5
+  * Enable CPython free-threaded wheel builds
+  * Correct the import of _compression for Python 3.14
+  * Keep GitHub Actions up to date with GitHub's Dependabot
+  * Build wheels for Python 3.14
+  * Fix typos discovered by codespell
+  * Bump pypa/cibuildwheel from 3.2.0 to 3.2.1 in the
+    github-actions group across 1 directory
+- Drop py314.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue Sep  9 14:55:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.4.4

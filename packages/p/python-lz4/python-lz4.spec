@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lz4
-Version:        4.4.4
+Version:        4.4.5
 Release:        0
 Summary:        LZ4 Bindings for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-lz4/python-lz4
 Source:         https://files.pythonhosted.org/packages/source/l/lz4/lz4-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/python-lz4/python-lz4/pull/303 Correct the import of _compression for Python 3.14
-Patch0:         py314.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
