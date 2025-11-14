@@ -1,0 +1,36 @@
+From a84c1a6baf4ba3f8d119da7166a6624ace6b8fc0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Thu, 22 May 2025 20:13:40 +0200
+Subject: [PATCH] Pickle _contextvars.Context objects, for threads in Python
+ 3.14+
+
+Fixes https://github.com/uqfoundation/dill/issues/716
+---
+ dill/_dill.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+Index: dill-0.4.0/dill/_dill.py
+===================================================================
+--- dill-0.4.0.orig/dill/_dill.py
++++ dill-0.4.0/dill/_dill.py
+@@ -54,6 +54,7 @@ OLD312a7 = (sys.hexversion < 0x30c00a7)
+ import builtins as __builtin__
+ from pickle import _Pickler as StockPickler, Unpickler as StockUnpickler
+ from pickle import GLOBAL, POP
++from _contextvars import Context
+ from _thread import LockType
+ from _thread import RLock as RLockType
+ try:
+@@ -2119,6 +2120,12 @@ if HAS_CTYPES and hasattr(ctypes, 'pytho
+ else:
+     _testcapsule = None
+ 
++@register(Context)
++def save_context(pickler, obj):
++    logger.trace(pickler, "Cx: %s", obj)
++    pickler.save_reduce(Context, tuple(obj.items()), obj=obj)
++    logger.trace(pickler, "# Cx")
++
+ 
+ #############################
+ # A quick fix for issue #500
