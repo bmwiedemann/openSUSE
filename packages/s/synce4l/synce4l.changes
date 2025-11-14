@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 12 10:39:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * fix possible resource leak
+  * fix requested thread stack size
+  * fix scorecard.yml
+  * initialize pin ID to -1
+  * fix crash in dpll_rt_recv()
+  * create scorecard.yml
+  * unlink smc_socket_path before binding
+  * check smc_socket_path length
+  * change default smc_socket_path to /run/synce4l_socket
+  * fix more compiler warnings
+
+-------------------------------------------------------------------
 Mon Oct 21 09:38:57 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Update to version 1.1.0
@@ -39,4 +54,4 @@ Tue Mar 26 07:56:19 UTC 2024 - Reinhard Max <max@suse.com>
 -------------------------------------------------------------------
 Thu Feb 22 14:35:15 UTC 2024 - Reinhard Max <max@suse.com>
 
-- Initial packaging of version 1.0.0. 
+- Initial packaging of version 1.0.0.

@@ -1,7 +1,7 @@
 #
 # spec file for package synce4l
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           synce4l
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Synchronous Ethernet (SyncE)
 License:        GPL-2.0-only
@@ -28,11 +28,17 @@ BuildRequires:  libnl3-devel
 %{?systemd_requires}
 
 %description
-synce4l is a software implementation of Synchronous Ethernet (SyncE) according to ITU-T Recommendation G.8264. The design goal is to provide logic to supported hardware by processing Ethernet Synchronization Messaging Channel (ESMC) and control Ethernet Equipment Clock (EEC) on Network Card Interface (NIC).
+synce4l is a software implementation of Synchronous Ethernet (SyncE) according
+to ITU-T Recommendation G.8264. The design goal is to provide logic to
+supported hardware by processing Ethernet Synchronization Messaging Channel
+(ESMC) and control Ethernet Equipment Clock (EEC) on Network Card Interface
+(NIC).
 
-Application can operate in two mutually exclusive input modes: line or external. Both modes are described in next paragraphs.
+Application can operate in two mutually exclusive input modes: line or
+external. Both modes are described in next paragraphs.
 
-The best source selection is done according to ITU-T Recommendations G.781 and G.8264. Two network options are supported: option 1 and option 2.
+The best source selection is done according to ITU-T Recommendations G.781 and
+G.8264. Two network options are supported: option 1 and option 2.
 
 %prep
 %autosetup
