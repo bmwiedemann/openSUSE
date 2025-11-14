@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 13 19:27:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.0:
+  * CLI supports forcing all statements to be sent to /db/execute
+    HTTP API
+  * Don't attempt to stepdown if single node cluster
+  * Small improvements to the CLI help message
+
+-------------------------------------------------------------------
 Sat Nov 08 09:27:49 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.2.3:
