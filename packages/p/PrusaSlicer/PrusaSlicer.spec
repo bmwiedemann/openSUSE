@@ -16,7 +16,7 @@
 #
 
 
-%global base_version 2.9.3
+%global base_version 2.9.4
 
 %global prusa_slicer_version %{base_version}
 %global prusa_slicer_tarball_version %{base_version}
