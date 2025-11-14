@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 13 17:11:12 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1763048144.30f43a0:
+  * Configure ftables in os-autoinst-setup-multi-machine
+  * Makefile: Fix reruns on incomplete build dir generations
+  * Propagate C++ exceptions to Perl in image write function
+  * Add support NICPCIADDR variable to QEMU backend
+  * Remove test which causes unhandled output
+  * Improve includes in tinycv library
+  * Handle OpenCV exceptions when writing an image
+  * Avoid ignoring errors silently when writing images
+  * Avoid saving test results referring to non-existent screenshots
+
+-------------------------------------------------------------------
 Tue Nov 11 14:10:52 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1762250353.5150272:
