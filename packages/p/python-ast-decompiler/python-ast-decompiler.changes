@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 14 10:07:07 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch py314.patch to support Python 3.14
+
+-------------------------------------------------------------------
 Fri Nov  8 10:14:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.8.0

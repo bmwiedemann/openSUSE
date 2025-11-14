@@ -1,0 +1,191 @@
+From 07a9e25c56e4a153488d2173236f2cd4a06065be Mon Sep 17 00:00:00 2001
+From: Jelle Zijlstra <jelle.zijlstra@gmail.com>
+Date: Mon, 12 May 2025 21:29:43 -0700
+Subject: [PATCH 1/2] Support Python 3.14
+
+---
+ .github/workflows/test.yml   |  2 +-
+ CHANGELOG.md                 |  3 ++
+ ast_decompiler/decompiler.py | 71 ++++++++++++++++++++++++++++++------
+ pyproject.toml               |  5 ++-
+ tests/test_pep695.py         | 10 +++++
+ tests/test_py3_syntax.py     | 11 +++++-
+ tox.ini                      | 17 +++++----
+ 7 files changed, 95 insertions(+), 24 deletions(-)
+
+Index: ast_decompiler-0.8.0/ast_decompiler/decompiler.py
+===================================================================
+--- ast_decompiler-0.8.0.orig/ast_decompiler/decompiler.py
++++ ast_decompiler-0.8.0/ast_decompiler/decompiler.py
+@@ -879,7 +879,10 @@ class Decompiler(ast.NodeVisitor):
+         self.write(delimiter)
+ 
+     def visit_FormattedValue(self, node: ast.FormattedValue) -> None:
+-        has_parent = isinstance(self.get_parent_node(), ast.JoinedStr)
++        has_parent = isinstance(self.get_parent_node(), ast.JoinedStr) or (
++            sys.version_info >= (3, 14)
++            and isinstance(self.get_parent_node(), ast.TemplateStr)
++        )
+         with self.f_literalise_if(not has_parent):
+             self.write("{")
+             if isinstance(node.value, ast.JoinedStr):
+@@ -911,20 +914,64 @@ class Decompiler(ast.NodeVisitor):
+             self.write("}")
+ 
+     def visit_JoinedStr(self, node: ast.JoinedStr) -> None:
+-        has_parent = isinstance(self.get_parent_node(), ast.FormattedValue)
++        has_parent = isinstance(self.get_parent_node(), ast.FormattedValue) or (
++            sys.version_info >= (3, 14)
++            and isinstance(self.get_parent_node(), ast.Interpolation)
++        )
+         with self.f_literalise_if(not has_parent):
+             for value in node.values:
+-                if isinstance(value, ast.Constant) and isinstance(value.value, str):
+-                    # always escape '
+-                    self.write(
+-                        value.value.encode("unicode-escape")
+-                        .decode("ascii")
+-                        .replace("'", r"\'")
+-                        .replace("{", "{{")
+-                        .replace("}", "}}")
+-                    )
++                self._write_tf_string_part(value)
++
++    def _write_tf_string_part(self, value: ast.expr) -> None:
++        if isinstance(value, ast.Constant) and isinstance(value.value, str):
++            # always escape '
++            self.write(
++                value.value.encode("unicode-escape")
++                .decode("ascii")
++                .replace("'", r"\'")
++                .replace("{", "{{")
++                .replace("}", "}}")
++            )
++        else:
++            self.visit(value)
++
++    if sys.version_info >= (3, 14):
++
++        def visit_TemplateStr(self, node: ast.TemplateStr) -> None:
++            self.write("t'")
++            for value in node.values:
++                self._write_tf_string_part(value)
++            self.write("'")
++
++        def visit_Interpolation(self, node: ast.Interpolation) -> None:
++            self.write("{")
++            if isinstance(node.value, ast.JoinedStr):
++                raise NotImplementedError(
++                    "ast_decompiler does not support nested f-strings yet"
++                )
++            add_space = isinstance(
++                node.value, (ast.Set, ast.Dict, ast.SetComp, ast.DictComp)
++            )
++            if add_space:
++                self.write(" ")
++            self.write(node.str)
++            if node.conversion != -1:
++                self.write(f"!{chr(node.conversion)}")
++            if node.format_spec is not None:
++                self.write(":")
++                if isinstance(node.format_spec, ast.JoinedStr):
++                    self.visit(node.format_spec)
++                elif isinstance(node.format_spec, ast.Constant) and isinstance(
++                    node.format_spec.value, str
++                ):
++                    self.write(node.format_spec.value)
+                 else:
+-                    self.visit(value)
++                    raise TypeError(
++                        f"format spec must be a string, not {node.format_spec}"
++                    )
++            if add_space:
++                self.write(" ")
++            self.write("}")
+ 
+     def visit_Constant(self, node: ast.Constant) -> None:
+         if isinstance(node.value, str):
+Index: ast_decompiler-0.8.0/pyproject.toml
+===================================================================
+--- ast_decompiler-0.8.0.orig/pyproject.toml
++++ ast_decompiler-0.8.0/pyproject.toml
+@@ -21,12 +21,12 @@ classifiers = [
+     "Operating System :: OS Independent",
+     "Programming Language :: Python :: 3",
+     "Programming Language :: Python :: 3 :: Only",
+-    "Programming Language :: Python :: 3.8",
+     "Programming Language :: Python :: 3.9",
+     "Programming Language :: Python :: 3.10",
+     "Programming Language :: Python :: 3.11",
+     "Programming Language :: Python :: 3.12",
+     "Programming Language :: Python :: 3.13",
++    "Programming Language :: Python :: 3.14",
+     "Topic :: Software Development",
+ ]
+ 
+@@ -40,7 +40,7 @@ email = "jelle.zijlstra@gmail.com"
+ include = ["CHANGELOG", "README.rst", "*/test*.py"]
+ exclude = []
+ 
+-[tool.pyanalyze]
++[tool.pycroscope]
+ paths = ["ast_decompiler", "tests"]
+ import_paths = ["."]
+ 
+@@ -55,7 +55,7 @@ suggested_return_type = true
+ incompatible_override = true
+ 
+ [tool.black]
+-target_version = ['py36']
++target-version = ['py38', 'py39', 'py310', 'py311', 'py312', 'py313']
+ skip-magic-trailing-comma = true
+ preview = true
+ 
+Index: ast_decompiler-0.8.0/tests/test_pep695.py
+===================================================================
+--- ast_decompiler-0.8.0.orig/tests/test_pep695.py
++++ ast_decompiler-0.8.0/tests/test_pep695.py
+@@ -29,3 +29,13 @@ type X = int
+ type Y[T: (int, str), *Ts, *P] = T
+ """
+     )
++
++
++@skip_before((3, 13))
++def test_type_var_default() -> None:
++    check(
++        """
++def f[T=int, *Ts=(int, str), **P=()]() -> None:
++    pass
++"""
++    )
+Index: ast_decompiler-0.8.0/tests/test_py3_syntax.py
+===================================================================
+--- ast_decompiler-0.8.0.orig/tests/test_py3_syntax.py
++++ ast_decompiler-0.8.0/tests/test_py3_syntax.py
+@@ -1,4 +1,4 @@
+-from tests import check
++from tests import check, skip_after, skip_before
+ 
+ 
+ def test_MatMult() -> None:
+@@ -276,6 +276,7 @@ f({})
+     )
+ 
+ 
++@skip_after((3, 14))
+ def test_finally_continue() -> None:
+     check(
+         """
+@@ -335,3 +336,11 @@ def f(x, /):
+ def test_fstring_debug_specifier() -> None:
+     check("f'{user=} {member_since=}'")
+     check("f'{user=!s}  {delta.days=:,d}'")
++
++
++@skip_before((3, 14))
++def test_tstring() -> None:
++    check("t'a'")
++    check("t'{a}'")
++    check("t'{a!s}'")
++    check("t'{a:b}'")

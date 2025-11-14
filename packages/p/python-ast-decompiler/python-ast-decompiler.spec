@@ -1,7 +1,7 @@
 #
-# spec file for package python-ast_decompiler
+# spec file for package python-ast-decompiler
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,14 @@ Source:         https://files.pythonhosted.org/packages/source/a/ast-decompiler/
 # PATCH-FIX-UPSTREAM no-relative-imports.patch gh#JelleZijlstra/ast_decompiler#52 mcepl@suse.com
 # Fix erroring tests
 Patch0:         no-relative-imports.patch
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
+# PATCH-FIX-UPSTREAM https://github.com/JelleZijlstra/ast_decompiler/pull/59 Support Python 3.14
+Patch1:         py314.patch
 BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
