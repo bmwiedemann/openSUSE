@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov 14 15:03:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.32.14:
+  + Fix AVIF and HEIF falsly claiming to support writing meta-data
+  + Fix a couple of ciriticals
+  + Add missing -lm where necessary
+  + Fix issue using RGBA data to store JPEG files when using glycin
+    pixbuf loaders
+  + Correctly export images with an alpha channel rendered on top
+    offset a white background
+  + Allow exporting to formats that do not support writing
+    meta-data
+  + Piwigo:
+    - Fix publishing to instances that have Bot protection enabled
+    - Fix double upload of files
+    - Fix setting bogus ratings
+  + Fix import of HEIC files with glycin loaders
+  + Try work-around for a libgee assertion on startup
+  + Fix a rare assertion when importing videos that already exist
+    in the database
+  + Updated translations.
+- Drop 70aedc48.patch: Fixed upstream.
+- Replace appstream-glib BuildRequires and macro with AppStream
+  equivalent.
+
+-------------------------------------------------------------------
 Wed Sep 17 16:15:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.32.13:

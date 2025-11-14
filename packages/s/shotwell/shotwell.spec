@@ -17,7 +17,7 @@
 
 
 Name:           shotwell
-Version:        0.32.13
+Version:        0.32.14
 Release:        0
 Summary:        Photo Manager for GNOME
 License:        LGPL-2.1-or-later
@@ -26,10 +26,8 @@ URL:            https://wiki.gnome.org/Apps/Shotwell
 
 Source0:        https://download.gnome.org/sources/shotwell/0.32/%{name}-%{version}.tar.xz
 Source99:       shotwell-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch0:         https://gitlab.gnome.org/GNOME/shotwell/-/commit/70aedc48.patch
 
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel >= 0.19.7
@@ -92,7 +90,7 @@ mode, and export them to share with others.
 %meson_test
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Shotwell.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Shotwell-Viewer.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Shotwell.appdata.xml
+appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/org.gnome.Shotwell.appdata.xml
 
 %ldconfig_scriptlets
 
