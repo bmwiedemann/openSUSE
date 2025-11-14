@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 13 12:01:49 UTC 2025 - Marek Czernek <marek.czernek@suse.com>
+
+- Require Python dependencies only for used Python version
+
+-------------------------------------------------------------------
 Tue Nov 11 08:02:12 UTC 2025 - Marek Czernek <marek.czernek@suse.com>
 
 - Fix TLS and x509 modules for OSes with older cryptography module

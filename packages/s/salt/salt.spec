@@ -854,9 +854,9 @@ Recommends:     python-passlib
 %endif
 
 %if 0%{?suse_version} >= 1600
-Requires:       %{python_module tornado}
+Requires:       python-tornado
 %if 0%{?python3_version_nodots} > 312
-Requires:       %{python_module legacy-cgi}
+Requires:       python-legacy-cgi
 %endif
 %else
 %if 0%{?singlespec_compat}
