@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Nov 14 07:05:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.10:
+  * Improved reverse tunnel dialing recovery from default route
+    changes by 1min on average. #61318
+  * Fixed an issue with the Identity Center resource cache that
+    could cause the account resources to be deleted from the cache.
+    #61313
+  * Fixed an issue Postgres database cannot be accessed via
+    Teleport Connect when per-session MFA is enabled and the role
+    does not have wildcard db_names. #61300
+  * Improved conflict detection of application public address and
+    Teleport cluster addresses. #61292
+  * Fixed rare error in the authorized_keys secret scanner when
+    running the Teleport agent on MacOS. #61267
+  * Updated Go to v1.24.10. #61210
+  * Instrumented tbot to better support teleport-update. #61190
+  * Improved error message of tsh when there is a certificate DNS
+    SAN mismatch when connecting to Auth via Proxy. #61187
+  * Improved error handling during desktop sessions that encounter
+    unknown/invalid smartcard commands. This prevents abrupt
+    desktop session termination with a "PDU error" message when
+    using certain applications. #61179
+  * Updated github.com/containerd/containerd dependency to fix
+    GHSA-pwhc-rpq9-4c8w. #61145
+  * Updated quic-go dependency to fix CVE-2025-59530. #61111
+  * Fixed a bug causing tsh to stop waiting for access request
+    approval and incorrectly report that the request had been
+    deleted. #61110
+  * Fixed an issue where resources in Teleport Connect were not
+    always refreshed correctly after re-logging in as a different
+    user. #61100
+  * Fixed an issue which could lead to session recordings saved on
+    disk being truncated. #60965
+
+-------------------------------------------------------------------
+Fri Nov 14 06:18:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.9:
+  * Fixed configuration files such as .kube/config referring to
+    non-existent tsh binaries. #60872
+  * Fixed an issue in the web UI where a bot with zero tokens would
+    show a validation error. #60759
+  * The browser window for SSO MFA is slightly taller in order to
+    accommodate larger elements like QR codes. #60702
+  * Fixed MongoDB topology monitoring connection leak in the
+    Teleport Database Service. #60693
+  * Okta-managed apps are now pinned correctly in the web UI.
+    #60677
+  * Slack access plugin no longer crashes in the event access list
+    is unsupported. #60674
+  * Fixed tsh scp failing on files that grow during transfer.
+    #60608
+  * Allowed moderated session peers to perform file transfers.
+    #60605
+  * Fixed a startup error EADDRINUSE: address already in use in
+    Teleport Connect on macOS and Linux that could occur with long
+    system usernames. #60577
+  * MWI: tbot's auto-generated service names are now simpler and
+    easier to use in the /readyz endpoint. #60459
+  * Client tools managed updates stores OS and ARCH in the
+    configuration. This ensures compatibility when TELEPORT_HOME
+    directory is shared with a virtual instance running a different
+    OS or architecture. #60413
+  * Updated LDAP dial timeout from 15 seconds to 30 seconds. #60392
+  * Fixed a bug that prevented using database role names longer
+    than 30 chars for MySQL auto user provisioning. Now role names
+    as long as 32 chars, which is the MySQL limit, can be used.
+    #60378
+  * Fixed a bug in Proxy Recording Mode that causes SSH sessions in
+    the WebUI to fail. #60368
+  * Added extraEnv and extraArgs to the teleport-operator helm
+    chart. #60356
+  * Fixed malformed audit events breaking the audit log. #60335
+  * Added editing bot description to the web UI. #60213
+
+-------------------------------------------------------------------
 Fri Oct 17 06:32:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.7.8:
