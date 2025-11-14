@@ -429,4 +429,12 @@
     <comment></comment>
     <requestid>1306064</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>f77bae96debb825b73346e9f4150f203</srcmd5>
+    <version>3.6.6</version>
+    <time>1763133622</time>
+    <user>anag_factory</user>
+    <comment>Update to version 3.6.6 (forwarded request 1317717 from eroca)</comment>
+    <requestid>1317718</requestid>
+  </revision>
 </revisionlist>

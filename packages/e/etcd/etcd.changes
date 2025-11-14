@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 14 07:59:59 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.6.6:
+  * v3rpc: add and use getServerMetrics() with global metricsServerCached
+  * Fix the '--force-new-cluster' can't clean up learners issue
+  * etcdserver: follow convention to extract auth token in cluster_util.go
+  * etcdserver: fix cannot promote with auth from follower
+  * Fix endpoint status not retuning the correct storage quota
+  * server/embed: Log EOF on DEBUG in TLS handshake
+  * Reject watch request with -1 revision and make rangeEvents safe against negative revision
+
+-------------------------------------------------------------------
 Fri Sep 19 20:28:42 UTC 2025 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.6.5:
