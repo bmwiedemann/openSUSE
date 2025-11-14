@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Nov 14 06:13:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.136:
+  * Finish bumping go to 1.25 (#2438)
+  * build on push (#2443)
+  * use helm-charts pat for the token (#2442)
+  * automated push and deploy (#2440)
+  * Remove cache configuration from Docker build (#2441)
+  * Upgrade Node.js version to 22-alpine in Dockerfile (#2439)
+  * load projects corretly, dont return on first project failure
+    (#2427)
+  * can end in non alphanumeric (#2435)
+  * fix the package-lock (#2437)
+  * fix workos org sync (#2436)
+  * caching docker builds (#2423)
+
+-------------------------------------------------------------------
+Fri Nov 14 05:56:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.135:
+  * Bump deps addressing Trivy vulns (#2434)
+  * Small fixes to OpenTofu instructions (#2428)
+
+-------------------------------------------------------------------
+Fri Nov 14 05:54:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.134:
+  * Show repo in drift notifications (#2433)
+  * fix: respect block patterns for terragrunt project (#2430)
+  * fix project details page and add local exec method for local
+    testing (#2425)
+  * add depot to the other releases (#2424)
+  * pickup datanase url from secret name (#2422)
+  * logging (#2411)
+  * env-vars-setting (#2421)
+  * Update backend-ee-release.yml
+  * Update backend-ee-release.yml
+  * Update backend-ee-release.yml
+  * Update backend-ee-release.yml
+  * fix repo name (#2420)
+
+-------------------------------------------------------------------
+Fri Nov 14 05:52:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.133:
+  * Persist impacted projects (#2418)
+  * add period, allow up to db limit (#2419)
+  * rebrand banner in docs (#2404)
+  * Revise README for rebranding (#2413)
+  * Chore/breardon2011/token service db (#2416)
+  * Revert "docs (#2398)" (#2417)
+  * token service own db (#2389)
+  * signed url download (#2402)
+  * docs (#2398)
+  * allow spaces and colon (#2414)
+  * workos org sync (#2412)
+  * Fix image filename for Managed Postgres section (#2409)
+  * Create October Fieldnotes for OpenTaco updates (#2403)
+  * support k8s background jobs trigger (#2408)
+  * add projects refresh release workflow (#2407)
+  * Update ui-release.yml (#2405)
+  * add images for fieldnotes (#2401)
+  * Fix/changelog screenshots removed (#2400)
+  * Create changelog for October 31st, 2025 (#2399)
+
+-------------------------------------------------------------------
 Thu Nov 06 06:21:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.132:
@@ -15,7 +81,8 @@ Thu Nov 06 06:21:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
   * Add changelog for October 17th, 2025 (#2373)
   * Log implicit fallback to backendless (#2386)
   * add duplex to fetch request (#2382)
-  * support env var for gh url, dont duplicate webhook secret (#2381)
+  * support env var for gh url, dont duplicate webhook secret
+    (#2381)
   * feat/onboading flow (#2380)
   * TFE webhook auth  (#2379)
   * remove indexes from code, put them into migrations for one
