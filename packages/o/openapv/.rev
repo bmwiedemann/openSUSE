@@ -55,4 +55,19 @@
   * Impoved decoder ctests</comment>
     <requestid>1305167</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a34e95db56ca94285e6f2064069d2009</srcmd5>
+    <version>0.2.0.4</version>
+    <time>1763133237</time>
+    <user>anag_factory</user>
+    <comment>- devel package requires the library
+- primary package requires the library
+- source requires at least gcc 8
+
+- update to version 0.2.0.4:
+  * Support the setting color aspects (color-primaries, color-matrix,
+    color-transfer, and color-range) through encoder application arguments
+  * Update README</comment>
+    <requestid>1317643</requestid>
+  </revision>
 </revisionlist>

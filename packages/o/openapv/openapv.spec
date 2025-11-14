@@ -1,7 +1,7 @@
 #
 # spec file for package openapv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         sover 2
 %define         sname oapv
 Name:           openapv
-Version:        0.2.0.3
+Version:        0.2.0.4
 Release:        0
 Summary:        Open Advanced Professional Video Codec
 License:        BSD-3-Clause
@@ -27,7 +27,9 @@ URL:            https://github.com/AcademySoftwareFoundation/openapv
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         remove-opensuse-release-requirement.patch
 BuildRequires:  cmake
-BuildRequires:  gcc
+%if 0%{suse_version} < 1600
+BuildRequires:  gcc13
+%endif
 ExcludeArch:    %{ix86}
 
 %description
@@ -54,6 +56,7 @@ The APV codec standard has the following features:
 
 %package devel
 Summary:        Development files for %{name}
+Requires:       lib%{sname}%{sover} = %{version}-%{release}
 
 %description devel
 %{summary}.
@@ -68,8 +71,9 @@ Summary:        Library files for %{name}
 %autosetup -p1
 
 %build
-cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B build
-cmake --build build
+test -x "$(type -p gcc-13)" && export CC="$_"
+%cmake
+%cmake_build
 
 %install
 %cmake_install

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 11 11:11:11 UTC 2025 - olaf@aepfle.de
+
+- devel package requires the library
+- primary package requires the library
+- source requires at least gcc 8
+
+-------------------------------------------------------------------
+Tue Oct  7 11:41:32 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.2.0.4:
+  * Support the setting color aspects (color-primaries, color-matrix,
+    color-transfer, and color-range) through encoder application arguments
+  * Update README
+
+-------------------------------------------------------------------
 Tue Sep 16 12:16:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 0.2.0.3:
