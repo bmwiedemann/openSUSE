@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>1316736</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5c7a0e0eaf2bb412a3ddcca85f5a0443</srcmd5>
+    <version>0.20251113.f49c23d</version>
+    <time>1763133079</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.20251113.f49c23d:
+  * Add thunderbird desktop files. (forwarded request 1317462 from sbrabec)</comment>
+    <requestid>1317463</requestid>
+  </revision>
 </revisionlist>
