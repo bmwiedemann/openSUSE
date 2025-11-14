@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Nov 13 08:49:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.11.1:
+  * Fixes
+    - fix: add missing ansible-compat dependency (#526) @adrisala
+- update to 25.11.0:
+  * Fixes
+    - Don't assume running from same dir as git root (#510)
+      @Qalthos
+    - fix: adopt uv.lock (#505) @ssbarnea
+  * Maintenance
+    - chore(deps): update all dependencies (#522) @renovate[bot]
+    - chore(deps): update all dependencies (#521) @renovate[bot]
+    - chore(deps): update all dependencies (#520) @renovate[bot]
+    - Add finalize workflow for secure sonarcloud checks (#519)
+      @alisonlhart
+    - Set relative_files to true when coverage runs (#518)
+      @alisonlhart
+    - Update sonar-project.properties configuration (#516)
+      @alisonlhart
+    - chore: fix for abnormally low coverage reports (#515)
+      @Qalthos
+    - chore(deps): update all dependencies (#517) @renovate[bot]
+    - chore: clean leftover hook (#514) @ssbarnea
+    - chore: rename sonar config file (#513) @ssbarnea
+    - chore(deps): update all dependencies (#511) @renovate[bot]
+    - chore(deps): update all dependencies (#507) @renovate[bot]
+    - chore(deps): update all dependencies (#506) @renovate[bot]
+    - chore(deps): update all dependencies (#504) @renovate[bot]
+    - chore(deps): update all dependencies (#502) @renovate[bot]
+    - chore: replace dependabot with renovate (#501) @ssbarnea
+    - Bump the dependencies group across 1 directory with 16
+      updates (#499) @dependabot[bot]
+    - Bump actions/setup-python from 5 to 6 (#498) @dependabot[bot]
+    - chore: pre-commit autoupdate (#496) @pre-commit-ci[bot]
+    - Bump the dependencies group in /.config with 8 updates (#494)
+      @dependabot[bot]
+
+-------------------------------------------------------------------
 Fri Aug 22 05:57:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.8.0:

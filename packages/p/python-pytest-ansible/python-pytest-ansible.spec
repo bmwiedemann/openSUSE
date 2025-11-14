@@ -44,31 +44,45 @@
 %endif
 
 Name:           python-pytest-ansible
-Version:        25.8.0
+Version:        25.11.1
 Release:        0
 Summary:        Plugin for pytest to simplify calling ansible modules from tests or fixtures
 License:        MIT
 URL:            https://github.com/ansible-community/pytest-ansible
 Source:         pytest-ansible-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.10}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 63.0.0}
-BuildRequires:  %{python_module setuptools_scm >= 7.0.5}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_for_dependencies}-base >= 3.10
+BuildRequires:  %{python_for_dependencies}-pip
+BuildRequires:  %{python_for_dependencies}-setuptools >= 63.0.0
+BuildRequires:  %{python_for_dependencies}-setuptools_scm >= 7.0.5
+BuildRequires:  %{python_for_dependencies}-wheel
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
+# SECTION runtime requirements
+BuildRequires:  %{python_for_dependencies}-cffi >= 1.17.1
+BuildRequires:  %{python_for_dependencies}-ansible-compat >= 25.8.2
+BuildRequires:  %{python_for_dependencies}-packaging >= 25.0
+BuildRequires:  %{python_for_dependencies}-pytest >= 6
+BuildRequires:  %{python_for_dependencies}-pytest-plus >= 0.8.1
+BuildRequires:  %{python_for_dependencies}-pytest-xdist >= 3.8.0
+BuildRequires:  %{python_for_dependencies}-typing_extensions >= 4.15.0
+BuildRequires:  ansible-core > 2.17.4
+# /SECTION
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.15.0
+BuildRequires:  ansible-core >= 2.17.4
+BuildRequires:  %{python_module bracex}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  ansible-test >= 2.15.0
 BuildRequires:  molecule >= 6.0.0
 # /SECTION
 BuildRequires:  fdupes
-Requires:       %{python_for_dependencies}-packaging
+Requires:       %{python_for_dependencies}-ansible-compat >= 25.8.2
+Requires:       %{python_for_dependencies}-cffi >= 1.17.1
+Requires:       %{python_for_dependencies}-packaging >= 25.0
 Requires:       %{python_for_dependencies}-pytest >= 6
-Requires:       %{python_for_dependencies}-typing_extensions
-Requires:       ansible-core > 2.14
-Requires:       python-ansible-compat >= 4.1.11
+Requires:       %{python_for_dependencies}-pytest-plus >= 0.8.1
+Requires:       %{python_for_dependencies}-pytest-xdist >= 3.8.0
+Requires:       %{python_for_dependencies}-typing_extensions >= 4.15.0
+Requires:       ansible-core > 2.17.4
 Suggests:       %{python_for_dependencies}-attrs == 22.2.0
 Suggests:       %{python_for_dependencies}-iniconfig == 2.0.0
 Suggests:       %{python_for_dependencies}-pluggy == 1.0.0
