@@ -478,4 +478,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1306687</requestid>
   </revision>
+  <revision rev="29" vrev="29">
+    <srcmd5>e6c4a9180dd4bafc1c1fc1d1be069ad2</srcmd5>
+    <version>0</version>
+    <time>1763133054</time>
+    <user>anag_factory</user>
+    <comment>- Use the JavaScript/TypeScript parser to extract strings for
+  translation (gh#agama-project/agama#2748).
+
+- Preserve installer options values after successful submission
+  (bsc#1249636).
+  
+
+- Fixed the check about which DASDs can be formatted (bsc#1243795).</comment>
+    <requestid>1317452</requestid>
+  </revision>
 </revisionlist>
