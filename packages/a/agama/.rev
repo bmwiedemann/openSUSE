@@ -517,4 +517,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1306659</requestid>
   </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>33522888c95fc2a711a800b38355722d</srcmd5>
+    <version>0</version>
+    <time>1763133055</time>
+    <user>anag_factory</user>
+    <comment>- Do not log errors when retrieving NetworkManager secrets to prevent
+  leaking them (bsc#1251898).</comment>
+    <requestid>1317453</requestid>
+  </revision>
 </revisionlist>
