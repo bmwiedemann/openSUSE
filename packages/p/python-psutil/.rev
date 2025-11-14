@@ -919,4 +919,18 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment></comment>
     <requestid>1315287</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>223a635acff99cf14c5891c1f45777d0</srcmd5>
+    <version>7.1.3</version>
+    <time>1763133048</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1317109 from mcalabkova
+
+- Update to 7.1.3
+    * Replace strlcat/strlcpy with safe str_copy/str_append
+    * Introduce PSUTIL_TESTING mode. Terminate execution if str_* funcs fail
+    * Replace unsafe sprintf/snprintf/sprintf_s calls with str_format()
+    * Fix BSD compilation err</comment>
+    <requestid>1317430</requestid>
+  </revision>
 </revisionlist>
