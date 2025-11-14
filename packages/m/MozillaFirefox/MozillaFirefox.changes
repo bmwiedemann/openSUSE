@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Sun Nov  9 13:23:48 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 145.0
+  * New: Add, edit, and delete comments to make your own notes in
+    PDFs (summaries, questions, tasks, etc.). The comment sidebar
+    helps you scan all your comments and quickly jump to them,
+    which is handy for long or heavily marked-up PDFs.
+  * New: This version introduces a new phase of privacy
+    protections, building on our research on reducing browser
+    fingerprinting. These new defenses cut the percentage of
+    users seen as unique almost in half, ensuring a safer and
+    more private browsing experience in Private Browsing or when
+    using *Enhanced Tracking Protection* set to *Strict*.
+  * New: Need a reminder of what tabs are in a group? Hover over
+    the tab group name to get a preview of the tabs inside
+    without opening it. (bmo#1992228)
+  * New: You can now access and manage your saved passwords right
+    from the sidebar—no need to open a new tab or window. Stay on
+    the page you’re on and get to your logins faster.
+  * New: Copy Link to Highlight allows users to share arbitrary
+    sections of a page with others by copying a link through the
+    context menu with a given selection
+  * New: The Translations feature has an improved experience when
+    translating between languages with different script
+    directions.
+  * New: New brand-inspired wallpapers are available for New Tab
+    on desktop, with versions for both light and dark mode.
+  * New: With the new Open links from apps next to your active
+    tab setting, you can have links from other applications open
+    next to your active tab instead of at the end of the tab
+    strip.
+  * New: Enhanced Bounce Tracking Protection’s stateless mode is
+    now enabled by default in ETP Strict, blocking more advanced
+    tracking techniques based on redirection
+  * New: For most Windows users, the existing desktop shortcut
+    for launching Firefox has been replaced with the desktop
+    launcher, a small program that will launch Firefox if it is
+    installed, but if it is not installed will prompt the user to
+    install Firefox. This will provide an easy installation point
+    for Firefox users who acquire a new Windows device, where
+    Firefox will not be installed by default, but the desktop
+    launcher program may have synced via OneDrive or other cloud
+    storage product. Learn more.
+  * Changed: Firefox no longer supports 32-bit Linux systems. We
+    recommend installing the 64-bit version for continued updates
+    and support.
+  * Changed: Horizontal tabs are now slightly more rounded to
+    match the look of vertical tabs. Buttons and text inputs,
+    including the address bar, have also been updated for
+    consistency. (bmo#1988794)
+  * Changed: When no extensions are installed, clicking the
+    Extensions button now shows a message highlighting how
+    extensions can enhance your browsing, with links to the
+    Firefox Add-ons store. (bmo#1778684)
+  * Changed: Local translation models are now compressed with
+    Zstandard, reducing download sizes and on-device storage
+    consumption. As always, all Firefox translations happen
+    securely and privately on your local device, unlike other
+    browsers that translate using cloud services.
+  * Changed: We updated default automation preferences to better
+    support Agentic browsing, reducing the steps agents need to
+    complete a task and chances for the agent to get stuck.
+    (bmo#1991970)
+  * HTML5: Support has been added for the `Atomics.waitAsync`
+    proposal, which is a non-blocking, asynchronous version of
+    `Atomics.wait`. This allow synchronization of threads based
+    upon the value in a shared memory location, for more details
+    please consult our MDN documentation.
+  * HTML5: Firefox now supports the new `Integrity-Policy` header
+    for enforcing sub-resource integrity for scripts. Further
+    implementation of this header is underway.
+  * HTML5: Added Matroska support for the most commonly used
+    codecs: AVC, HEVC, VP8, VP9, AV1, AAC, Opus, and Vorbis.
+    (bmo#1991752)
+  * HTML5: The text-autospace property is now supported, allowing
+    automatic spacing adjustments between characters from
+    different scripts.
+  * HTML5: The WebGPU DOM API (spec; MDN) is now available on
+    macOS 26 (Tahoe) on Apple Silicon. For details, see the
+    Mozilla Graphics Team Blog.
+  * Developer: Microsoft UI Automation phased release rollout at
+    100%. Microsoft UI Automation is the new accessibility
+    framework for Microsoft Windows. This will provide better
+    assistive technology (AT) support and performance on Windows
+    for current and future assistive technologies.
+  * Enterprise: You can find information about policy updates and
+    enterprise specific bug fixes in the Firefox for Enterprise
+    145 Release Notes.
+  * Fixed: Various security fixes.
+  MFSA 2025-87 (bsc#1253188)
+  * CVE-2025-13021 (bmo#1986431)
+    Incorrect boundary conditions in the Graphics: WebGPU
+    component
+  * CVE-2025-13022 (bmo#1988488)
+    Incorrect boundary conditions in the Graphics: WebGPU
+    component
+  * CVE-2025-13012 (bmo#1991458)
+    Race condition in the Graphics component
+  * CVE-2025-13023 (bmo#1992032)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: WebGPU component
+  * CVE-2025-13016 (bmo#1992130)
+    Incorrect boundary conditions in the JavaScript: WebAssembly
+    component
+  * CVE-2025-13024 (bmo#1992902)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2025-13025 (bmo#1994022)
+    Incorrect boundary conditions in the Graphics: WebGPU
+    component
+  * CVE-2025-13026 (bmo#1994441)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: WebGPU component
+  * CVE-2025-13017 (bmo#1980904)
+    Same-origin policy bypass in the DOM: Notifications component
+  * CVE-2025-13018 (bmo#1984940)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2025-13019 (bmo#1988412)
+    Same-origin policy bypass in the DOM: Workers component
+  * CVE-2025-13013 (bmo#1991945)
+    Mitigation bypass in the DOM: Core & HTML component
+  * CVE-2025-13020 (bmo#1995686)
+    Use-after-free in the WebRTC: Audio/Video component
+  * CVE-2025-13014 (bmo#1994241)
+    Use-after-free in the Audio/Video component
+  * CVE-2025-13015 (bmo#1994164)
+    Spoofing issue in Firefox
+  * CVE-2025-13027 (bmo#1987237, bmo#1990079, bmo#1991715,
+    bmo#1994994)
+    Memory safety bugs fixed in Firefox 145 and Thunderbird 145
+- Remove upstreamed patch mozilla-bmo998749.patch
+
+-------------------------------------------------------------------
 Wed Oct 29 08:48:09 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Mozilla Firefox 144.0.2

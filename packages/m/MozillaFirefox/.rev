@@ -7825,4 +7825,41 @@
     Use-after-free in WebGPU internals triggered from a</comment>
     <requestid>1314380</requestid>
   </revision>
+  <revision rev="470" vrev="1">
+    <srcmd5>c3e6445080f7ce05081701cee97eff9c</srcmd5>
+    <version>145.0</version>
+    <time>1763133127</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 145.0
+  * New: Add, edit, and delete comments to make your own notes in
+    PDFs (summaries, questions, tasks, etc.). The comment sidebar
+    helps you scan all your comments and quickly jump to them,
+    which is handy for long or heavily marked-up PDFs.
+  * New: This version introduces a new phase of privacy
+    protections, building on our research on reducing browser
+    fingerprinting. These new defenses cut the percentage of
+    users seen as unique almost in half, ensuring a safer and
+    more private browsing experience in Private Browsing or when
+    using *Enhanced Tracking Protection* set to *Strict*.
+  * New: Need a reminder of what tabs are in a group? Hover over
+    the tab group name to get a preview of the tabs inside
+    without opening it. (bmo#1992228)
+  * New: You can now access and manage your saved passwords right
+    from the sidebar—no need to open a new tab or window. Stay on
+    the page you’re on and get to your logins faster.
+  * New: Copy Link to Highlight allows users to share arbitrary
+    sections of a page with others by copying a link through the
+    context menu with a given selection
+  * New: The Translations feature has an improved experience when
+    translating between languages with different script
+    directions.
+  * New: New brand-inspired wallpapers are available for New Tab
+    on desktop, with versions for both light and dark mode.
+  * New: With the new Open links from apps next to your active
+    tab setting, you can have links from other applications open
+    next to your active tab instead of at the end of the tab
+    strip.
+  * New: Enhanced Bounce Tracking Protection’s stateless mode is</comment>
+    <requestid>1317595</requestid>
+  </revision>
 </revisionlist>
