@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 13 13:59:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.7.1
+  * Fix typing for stream.create.just by @vxgmichel in (#134)
+  * Fix: strict zip of items that fail on __eq__ by @vthemelis in (#135)
+  * Fix: Use is instead of isinstance by @vthemelis in (#136)
+  * Add python 3.14 support by @vxgmichel in (#138)
+
+-------------------------------------------------------------------
 Mon Jul 21 05:58:13 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.0:

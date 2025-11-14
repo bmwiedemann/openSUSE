@@ -19,7 +19,7 @@
 %global modname aiostream
 %{?sle15_python_module_pythons}
 Name:           python-aiostream
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Generator-based operators for asynchronous iteration
 License:        Apache-2.0
