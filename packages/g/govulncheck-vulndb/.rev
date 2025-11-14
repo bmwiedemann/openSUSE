@@ -1352,4 +1352,15 @@
   * GO-2025-4038 CVE-2025-26625 GHSA-6pvw-g552-53c5 (forwarded request 1316108 from jfkw)</comment>
     <requestid>1316109</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>69c8f63f79a5f96a15c68a012fcb5e91</srcmd5>
+    <version>0.0.20251113T211203</version>
+    <time>1763133395</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20251113T211203 2025-11-13T21:12:03Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-4116 CVE-2025-47913 (forwarded request 1317686 from jfkw)</comment>
+    <requestid>1317687</requestid>
+  </revision>
 </revisionlist>
