@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=guvcview-qt6
+GenericName=Qt UVC video viewer
+Comment=A video viewer and capturer for the linux uvc driver
+TryExec=guvcview-qt6
+Exec=guvcview-qt6
+Icon=/usr/share/pixmaps/guvcview.png
+Terminal=false
+Type=Application
+Categories=Video;AudioVideo;
+StartupNotify=true

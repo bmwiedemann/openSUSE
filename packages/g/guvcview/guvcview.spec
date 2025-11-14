@@ -29,6 +29,7 @@ Group:          Productivity/Multimedia/Video/Players
 URL:            https://guvcview.sourceforge.net/
 #Git-Clone:     git://git.code.sf.net/p/guvcview/git-master
 Source0:        https://sourceforge.net/projects/guvcview/files/source/guvcview-src-%{version}.tar.bz2
+Source1:        guvcview-qt.desktop
 Patch3:         0001-fix-deprecation-warning-with-ffpmeg-7.1-add-Wall-to-.patch
 Patch4:         0002-Fix-desktop-file-for-cmake.patch
 Patch5:         fix-linking.patch
@@ -158,6 +159,8 @@ Provides translations to libgviewv4l2core.
 echo -e "#!/bin/sh\nexec %{_bindir}/guvcview --gui=qt6 \"\$@\"" > %{buildroot}%{_bindir}/guvcview-qt6
 chmod 755 %{buildroot}%{_bindir}/guvcview-qt6
 
+install -Dpm 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}-qt6.desktop
+
 %find_lang %{name} %{?no_lang_C}
 %find_lang gview_v4l2core libgviewv4l2core.lang %{?no_lang_C}
 
@@ -172,6 +175,7 @@ chmod 755 %{buildroot}%{_bindir}/guvcview-qt6
 %{_bindir}/%{name}
 %{_bindir}/%{name}-qt6
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{name}-qt6.desktop
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/pixmaps/%{name}.png
 %{_mandir}/man1/%{name}.1%{?ext_man}
