@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 13 19:46:20 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.16.0:
+  - [BUGFIX] reorg: List all secrets instead of just top-level
+    folders (#3245)
+  - [chore] Add capability and vulnerability checks (#3266)
+  - [chore] Initial fixes and added a warning for CryptFS and JJFS
+    (#3270)
+  - [chore] Logging improvements (#3273)
+  - [chore] Run linux builds with multiple Go versions (#3272)
+  - [fix] Correctly handle IsGitCommit false in store.Move (#3246)
+  - [fix] Drop Go 1.23 (#3274)
+  - [fix] Fix clipboard issues (#3267)
+  - [fix] Fix version check (#3268)
+  - chore: Update golangci-lint (#3287)
+  - docs: Add GoDoc to pkg and improve markdown files (#3251)
+  - feat(age): Add unlock command to age agent (#3244)
+  - feat: Add cryptfs storage backend for filename encryption
+    (#3249)
+  - feat: Clone remote on init (#3247)
+  - fix: Fix release helper and update capabilities for caplos
+    (#3288)
+- remove the -w flag from the ldflags
+
+-------------------------------------------------------------------
 Fri Sep 19 18:18:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.15.18:
