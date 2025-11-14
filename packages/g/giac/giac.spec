@@ -1,7 +1,7 @@
 #
 # spec file for package giac
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %bcond_with cocoa
 Name:           giac
-%define tarver  1.9.0-97
-Version:        %( echo %{tarver} | sed 's/-/./' )
-%define mainver %( echo %{tarver} | sed 's/-.*//' )
-%define soname  0
+Version:        2.0.0
 Release:        0
 Summary:        Computer algebra system
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://www-fourier.ujf-grenoble.fr/~parisse/giac.html
-Source:         http://www-fourier.ujf-grenoble.fr/~parisse/debian/dists/stable/main/source/giac_%{tarver}.tar.gz
+URL:            https://xcas.univ-grenoble-alpes.fr/
+Source:         https://www-fourier.univ-grenoble-alpes.fr/~parisse/giac/giac-%version.tar.gz
+#Source:        https://www-fourier.univ-grenoble-alpes.fr/~parisse/giac/giac_stable.tgz
+#NEWS:          https://www-fourier.univ-grenoble-alpes.fr/~parisse/install_en.html § What's New
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  byacc
@@ -36,19 +35,15 @@ BuildRequires:  flex
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  glpk-devel
-BuildRequires:  gmp-devel
 BuildRequires:  gmp-ecm-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  lapack-devel
 BuildRequires:  latex2html
 BuildRequires:  libjpeg-devel
 BuildRequires:  mpfi-devel
-BuildRequires:  mpfr-devel
 BuildRequires:  nauty-devel
-BuildRequires:  ntl-devel
 BuildRequires:  pari-devel
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  readline-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  texlive-dvips
@@ -58,9 +53,13 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glpk)
+BuildRequires:  pkgconfig(gmpxx)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(mpfr)
+BuildRequires:  pkgconfig(ntl)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -71,9 +70,10 @@ BuildRequires:  pkgconfig(ao)
 %endif
 
 %description
-A computer algebra system, compatible with existing CAS, as a C++
-library with various user interfaces (GUI with formal spreadsheet and exact
-dynamic geometry, on-line, readline, emacs, texmacs...).
+giac is a computer algebra system, compatible with existing CAS, as a
+C++ library with various user interfaces, such as xcas (GUI with
+formal spreadsheet and exact dynamic geometry), icas (readline),
+on-line mode, and emacs/texmacs integration.
 
 %package     -n xcas
 Summary:        Computer algebra interface
@@ -82,28 +82,38 @@ Requires:       %{name} = %{version}
 
 %description -n xcas
 Xcas is an interface to perform computer algebra, function graphs,
-interactive geometry (2-d and 3-d), spreadsheet and statistics
+interactive geometry (2D and 3D), spreadsheet and statistics
 programmation. It may be used as a replacement for graphic calculators
 for example on netbooks.
 
-%package     -n lib%{name}%{soname}
+%package -n libgiac0
 Summary:        The core library for %{name}
 Group:          System/Libraries
 
-%description -n lib%{name}%{soname}
+%description -n libgiac0
 A computer algebra system, compatible with existing CAS, as a C++
 library with various user interfaces (GUI with formal spreadsheet and exact
 dynamic geometry, on-line, readline, emacs, texmacs...).
+
+%package -n libxcas0
+Summary:        Component library for the icas/xcas frontends
+Group:          System/Libraries
+
+%description -n libxcas0
+Xcas is an interface to perform computer algebra, function graphs,
+interactive geometry (2D and 3D), spreadsheet and statistics
+programmation. It may be used as a replacement for graphic calculators
+for example on netbooks.
 
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       fltk-devel
-Requires:       lib%{name}%{soname} = %{version}
+Requires:       libgiac0 = %{version}
 Requires:       mpfi-devel
-Requires:       mpfr-devel
-Requires:       ntl-devel
 Requires:       pkgconfig(gsl)
+Requires:       pkgconfig(mpfr)
+Requires:       pkgconfig(ntl)
 
 %description    devel
 This package contains header files and libraries needed to develop
@@ -121,14 +131,15 @@ usage of giac, a computer algebra system.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{name}-%{mainver}
+%autosetup -p1
 
 # remove all hidden files
-find . -type f -iname '.*' -delete
+find . -type f "(" -iname ".*" -o -name "*~" ")" -delete
 
 %build
+%set_build_flags
 %if 0%{?suse_version} >= 1550
-export CXXFLAGS+=' -std=c++14'
+export CXXFLAGS="$CXXFLAGS -std=c++14"
 %endif
 %configure \
     --enable-gui \
@@ -138,6 +149,8 @@ export CXXFLAGS+=' -std=c++14'
 %install
 %make_install
 rm -f %{buildroot}/%{_libdir}/*.la
+# No public headers
+rm -f %{buildroot}/%{_libdir}/libxcas.so
 
 # use the freedesktop standard
 rm -rf %{buildroot}%{_datadir}/application-registry
@@ -176,8 +189,8 @@ rm %{buildroot}%{_docdir}/giac/Makefile.am
 %check
 %make_build check
 
-%post   -n lib%{name}%{soname} -p /sbin/ldconfig
-%postun -n lib%{name}%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgiac0
+%ldconfig_scriptlets -n libxcas0
 
 %files
 %license COPYING
@@ -217,9 +230,12 @@ rm %{buildroot}%{_docdir}/giac/Makefile.am
 %{_datadir}/applications/xcas.desktop
 %{_datadir}/metainfo/*.xml
 
-%files -n lib%{name}%{soname}
+%files -n libgiac0
 %license COPYING
 %{_libdir}/libgiac.so.*
+
+%files -n libxcas0
+%{_libdir}/libxcas.so.*
 
 %files devel
 %license COPYING

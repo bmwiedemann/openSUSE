@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>1174055</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f48f6a8a2356d5ce34bb7764e894eee8</srcmd5>
+    <version>2.0.0</version>
+    <time>1763133741</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.0.0
+  * Browser version, full featured, without install and working
+    offline (forwarded request 1316829 from jengelh)</comment>
+    <requestid>1317755</requestid>
+  </revision>
 </revisionlist>
