@@ -1263,6 +1263,7 @@ unsorted:
   - axel 
   - axis 
   - axis-manual 
+  - ayaneo-platform-kmp-default 
   - ayatana-ido-devel 
   - ayatana-indicator7-common 
   - aytests-tests 
@@ -9631,6 +9632,7 @@ unsorted:
   - junit5-minimal-javadoc 
   - juniversalchardet 
   - juniversalchardet-javadoc 
+  - jupiter-dock-updater-bin 
   - jupiter-fan-control 
   - jupyter-anywidget 
   - jupyter-bokeh 
@@ -11162,6 +11164,7 @@ unsorted:
   - libKPim6IdentityManagementQuick6 
   - libKPublicTransport1 
   - libKPublicTransportOnboard1 
+  - libKQuickImageEditor1 
   - libKSeExpr4 
   - libKTorrent6 
   - libKTorrent6-lang 
@@ -11280,7 +11283,7 @@ unsorted:
   - libQCoro6Qml0 
   - libQCoro6Quick0 
   - libQCoro6WebSockets0 
-  - libQXmppQt6-6 
+  - libQXmppQt6-7 
   - libQXmppQt6-devel 
   - libQgpsmm31 
   - libQt53DAnimation-devel 
@@ -11978,8 +11981,6 @@ unsorted:
   - libarrow_dataset2100 
   - libarrow_flight2100 
   - libarrow_flight_sql2100 
-  - libart_lgpl-devel 
-  - libart_lgpl_2-2 
   - libasan4 
   - libasan4-32bit 
   - libasan8-32bit 
@@ -12828,7 +12829,7 @@ unsorted:
   - libdico2 
   - libdict-devel 
   - libdict1_0 
-  - libdigikamcore8_7_0 
+  - libdigikamcore8_8_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit 
   - libdirac_encoder0 
@@ -13148,7 +13149,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla48 
+  - libfilezilla50 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -13474,7 +13475,7 @@ unsorted:
   - libgif7-32bit 
   - libgig-devel 
   - libgig-tools 
-  - libgig11 
+  - libgig13 
   - libginac13 
   - libginkgo1_10_0 
   - libgio-2_0-0-32bit 
@@ -49878,6 +49879,7 @@ unsorted:
   - xom 
   - xom-demo 
   - xom-javadoc 
+  - xone-dongle-firmware 
   - xonotic 
   - xonotic-data 
   - xonotic-server 
