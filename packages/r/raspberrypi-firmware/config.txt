@@ -86,6 +86,10 @@ dtoverlay=vc4-kms-v3d-pi4,cma-default
 # https://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf
 dtoverlay=dwc2
 
+[pi5]
+# Do not let firmware do line muxing (boo#1251192)
+enable_uart=0
+
 [all]
 
 # Allow u-boot to set arm_control

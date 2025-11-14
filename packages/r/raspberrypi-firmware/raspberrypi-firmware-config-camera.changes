@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 12 07:02:35 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Do not let firmware do multiplexing for default debug UART
+  (enable_uart=0). It has its own connector. Fixes boo#1251192.
+
+-------------------------------------------------------------------
 Thu Jun  5 16:30:22 UTC 2025 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to 46ddec9 (2025-06-05)
