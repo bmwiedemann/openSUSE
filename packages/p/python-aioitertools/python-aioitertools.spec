@@ -17,7 +17,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aioitertools
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Itertools and builtins for AsyncIO and mixed iterables
 License:        MIT
