@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 13 14:44:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.92.0:
+  * [Downloader] Improved notifications
+  * [Preferences] Added Support banner on top of General page
+  * [Trackers] Improved handling of access tokens lifetime
+  * [Servers] Comic Book Plus (EN): Update
+  * [Servers] Punk Records (Little Garden): Update
+  * [L10n] Updated Croatian, Finnish, French, Russian and Ukrainian
+
+-------------------------------------------------------------------
 Thu Nov  6 10:25:20 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.91.0:
