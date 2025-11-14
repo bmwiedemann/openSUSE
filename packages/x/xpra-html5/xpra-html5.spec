@@ -1,7 +1,7 @@
 #
 # spec file for package xpra-html5
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,13 @@
 
 Name:           xpra-html5
 Release:        0
-Version:        17.0+git20241211.dad0d37
+Version:        18.1
 Summary:        HTML5 client for Xpra
 License:        GPL-2.0+ AND BSD-3-Clause AND LGPL-3.0+ AND MIT
 URL:            https://xpra.org/
 Source0:        xpra-html5-%{version}.tar.gz
-### To update UglifyJS using npm release:
-###   npm pack uglify-js
-### To update UglifyJS using github release:
-###   osc service runall download_files
-#Source1:        https://registry.npmjs.org/uglify-js/-/uglify-js-%%{uglifyjs_ver}.tgz#/uglify-js-%%{uglifyjs_version}.tgz
 Source1:        https://github.com/mishoo/UglifyJS/archive/refs/tags/v%{uglifyjs_version}.tar.gz#/uglify-js-%{uglifyjs_version}.tar.gz
-#####
+Source100:      README.md
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  nodejs-common
@@ -43,20 +38,12 @@ Requires:       dejavu-fonts
 Requires:       qrencode
 Requires:       xpra
 Requires:       python3-avahi
-Requires:       python3-netifaces
+Requires:       (python3-netifaces2 or python3-netifaces)
 Requires:       python3-paramiko
 Requires:       python3-pyinotify
 Requires:       python3-pyxdg
 Requires:       python3-websockify
 Requires:       python3-zeroconf
-#Provides:       bundled(js-aurora)
-#Provides:       bundled(js-bencode)
-#Provides:       bundled(js-broadway)
-#Provides:       bundled(js-forge)
-#Provides:       bundled(js-jquery) = 3.1.1
-#Provides:       bundled(js-jquery-ui) = 1.12.1
-#Provides:       bundled(js-lz4)
-#Provides:       bundled(js-zlib)
 BuildArch:      noarch
 ExcludeArch:    %ix86
 

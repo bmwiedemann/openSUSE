@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Thu Nov 06 15:35:41 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * "Attention, "README.md" is not mentioned in spec files as source or patch."
+- ccb1aee.diff is no longer needed, removed
+- Update to version 18.1:
+  * version bump + update the release notes
+  * #397 6.3.x uses -1 for 'all-windows'
+  * #267 use monitors and 'configure-display' packet
+  * fix progress bar not moving
+  * revert 327ec87aadfaf046201650cd5aa95795df4c2bc6: brittle string functions
+
+-------------------------------------------------------------------
+Wed Oct 22 19:03:04 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding ccb1aee.diff to deal with authentication issue
+  * https://github.com/Xpra-org/xpra-html5/issues/396
+
+-------------------------------------------------------------------
+Tue Oct 21 16:40:13 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Switching to using tagged release (vs. @PARENT_TAG@+git%cd.%h) naming
+- Update to version 18:
+  * target stable repository
+  * update the release notes
+  * not needed any more?
+  * newer versions use prefixed caps - avoids dpi warning
+  * we can't set 'decorations' too early, as the headerbar may not exist yet
+  * windowtype is an array, don't just use the first item
+  * #393 don't enable offscreen by default with Firefox
+  * remove debug logging
+  * keep offsets and decorations separated
+  * use the correct attribute
+  * remove debug logging
+  * missing refresh due to invalid wid reference
+  * remove redundant call
+  * don't use a timer if we don't need one
+  * client was not defined here, so clipboard-direction was ignored
+  * always also send the relative pointer position
+  * relative pointer coordinates must exclude headerbar offsets
+  * don't use a mouseup event older than the mousedown
+  * simplify, correctly this time
+  * simplify mouse handlers: remove indirection
+  * #392 undo breaking change
+  * update the release notes
+  * #391 always paint without any padding
+  * #391 the video frame has padding, don't copy it
+  * cosmetic: consistent layout
+  * non-resizable windows can be minimized or closed
+  * always add draggable hooks, just hide decorations if not needed
+  * cancel moveresize using a mouseup event, if we have one
+  * missing flag caused missing window icons
+  * update the release notes
+  * #350 add decoder cleanup message
+  * more consistent
+  * #329 abandon the paint worker
+  * derp: pass the real event, not the jquery one
+  * more use of stricter operators
+  * errors must not stall the decode queue
+  * use stricter comparison operator
+  * test wrongly negated
+  * focus confusion
+  * move attributes to display subsystem
+  * visibilitychange events must change refresh rate, not send power events
+  * #389 add toggle for top level widgets in floating menu
+  * beforeunload event attribute had got lost
+  * make audio_state always a string
+  * send keyboard events to the root window if that's all we have
+  * topwindow is no longer used: key events should go to focused window
+  * more stricter comparisons
+  * stricter equality checks, remove unused var
+  * fix string to u8
+  * simplify
+  * minor linter warnings
+  * replace hasOwn invalid argument and just drop legacy fullscreen names
+  * worker has no log functions
+  * invalid argument syntax for Object.hasOwn
+  * decoding error handler fails to request redraw
+  * unused var
+  * can't modify a const!
+  * remove unused functions and use let / const
+  * WebStorm suggested cleanups
+
+-------------------------------------------------------------------
+Fri Sep 05 18:17:33 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 18.0+git20250820.309b781:
+  * Fix debian control file Section value
+  * switch to jpg for background
+  * #205 the float menu should float...
+  * don't move narrow / short windows too far in
+  * add some control channel handlers
+  * should also install logos and backgrounds for EL10
+  * only build v18 in this branch
+  * also bump the version in the debian build scripts
+  * remove copyright end years
+  * better compatibility with newer servers
+  * #335 avoid errors when there is no canvas
+
+-------------------------------------------------------------------
+Wed Mar 26 17:16:07 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 18.0+git20250325.c22e15b:
+  * #364 re-add hmac+sha256 library
+  * more intelligible failure
+  * Revert "fix detection of crypto API"
+  * fix detection of crypto API
+  * #370 don't convert xored strings to hex
+  * feat: Support supplying path for desktop client launchers
+  * Fix typo
+  * Fix wrong cursor offset while in shadow mode
+  * xpra servers will move to using options for non-binary data
+  * version bump
+  * #362 don't check digest
+
+-------------------------------------------------------------------
+Tue Feb 04 21:00:46 UTC 2025 - scott.bradnick@suse.com
+
+- Adding option to accept python3 netifaces or netifaces2 Requires
+  * Note: doesn't appear has netifaces2 support, but xpra-html5 won't conflict
+    if python3-netifaces2 is installed.
+- Update to version 17.0+git20250204.3667972:
+  * derp: challenge must still be sent in hex
+  * chore: Don't use implicit or conflicting vars in rencode
+  * forgot to bump year
+  * #360 enable 'video' decoding on all platforms, not just 64-bit
+  * #356 also honour 'setting-change' message
+  * fix: Fix an issue where Modal focus was broken during minification
+  * #356 Add the ability to override the page title with --session-name
+  * Fix login box not fitting the inner box
+  * Fix desktop sessions not setting cursors correctly
+  * Format all files with format.sh
+  * update the release notes
+  * Make the float menu list and window list open up or down depending on position
+  * chore: Remove some legacy html parts
+  * fix: Properly terminate protocol
+  * fix: Remove check for websocket support in Workers
+  * fix: Don't use the default font for the connecting UI
+
+-------------------------------------------------------------------
+Fri Jan 03 17:58:16 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 17.0+git20241219.9568530:
+  * Fix session info box not being big enough
+  * #342 filter out most characters
+
+-------------------------------------------------------------------
 Wed Dec 11 15:51:05 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 17.0+git20241211.dad0d37:

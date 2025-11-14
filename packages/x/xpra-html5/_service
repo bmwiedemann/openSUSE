@@ -2,18 +2,28 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/Xpra-org/xpra-html5</param>
     <param name="scm">git</param>
-    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="versionformat">v18.1</param>
+    <param name="revision">v18.1</param>
+    <param name="match-tag">*</param>
     <!--
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    -->
+    <param name="versionrewrite-pattern">v(\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+
+    <!-- Original versionrewrite-pattern
+    <param name="versionrewrite-pattern">v(.*)</param>
+    -->
+    <!-- 20251021: Swapping to specific tagged release
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+
       This comes from setup.py which defines
       a 'VERSION = ' based off a tag; current
       release is 'v9.0' (Tags) but master defines
-      it as '17' (per `grep -r '^VERSION =' xpra-html5/setup.py`)
+      it as '18' (per `grep -r '^VERSION =' xpra-html5/setup.py`)
 
-    -->
     <param name="versionrewrite-pattern">v9.0</param>
-    <param name="versionrewrite-replacement">17.0</param>
-    <!--
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">19.0</param>
     -->
     <param name="changesgenerate">enable</param>
   </service>
