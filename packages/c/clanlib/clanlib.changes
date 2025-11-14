@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  5 00:26:14 UTC 2025 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Fix build failure, skip running buggy ./autogen.sh, run autoreconf 
+  instead.
+
+-------------------------------------------------------------------
 Mon Mar 31 15:57:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove unused pcre build dependency

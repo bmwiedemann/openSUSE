@@ -1,7 +1,7 @@
 #
 # spec file for package clanlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -103,7 +103,7 @@ find Examples -name \*.sln -o -name \*.vcproj -o -name \*.vcxproj\* | xargs rm -
 # Fix line ending
 find Examples -name \*.props -exec dos2unix \{\} +
 # Configure
-sh ./autogen.sh
+autoreconf -fiv
 %configure --with-pic --disable-static --enable-docs
 %make_build
 %make_build html
