@@ -6513,4 +6513,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   opensuse tumbleweed.</comment>
     <requestid>1315736</requestid>
   </revision>
+  <revision rev="558" vrev="1">
+    <srcmd5>278b75270b275ca4772cb859a4564391</srcmd5>
+    <version>25.2.7</version>
+    <time>1763133069</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 25.2.7
+  --&gt;  https://docs.mesa3d.org/relnotes/25.2.7</comment>
+    <requestid>1317457</requestid>
+  </revision>
 </revisionlist>
