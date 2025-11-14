@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 12 06:25:51 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Remove RPi5 UART u-boot specific overlay. Better fix will be to
+  set enable_uart to 0 in [pi5] specific section in distribution
+  config.txt. This is verified to work.
+  Delete 0001-dts-overlays-Adjust-bcm2712-PL011-overlay.patch and 
+  uboot-bcm2712-pl011-overlay.dts
+
+-------------------------------------------------------------------
+Fri Nov  7 02:38:57 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Make uboot-bcm2712-pl011-overlay bcm2712 specific.
+
+-------------------------------------------------------------------
 Wed Nov  5 08:44:30 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Add uboot-bcm2712-pl011-overlay which fixes boot hang (boo#1251192)

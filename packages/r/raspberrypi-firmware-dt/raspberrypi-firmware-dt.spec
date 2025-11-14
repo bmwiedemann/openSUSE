@@ -30,7 +30,6 @@ Source3:        disable-v3d-overlay.dts
 Source4:        enable-bt-overlay.dts
 Source5:        smbios-overlay.dts
 Source6:        fixup-blconfig-overlay.dts
-Source7:        uboot-bcm2712-pl011-overlay.dts
 Source100:      get-from-git.sh
 Patch0:         0001-ARM-dts-bcm2711-rpi-Reuse-bcm2836-vchiq-driver.patch
 Patch1:         0001-ARM-dts-bcm27xx-Use-better-name-for-spidev.patch
@@ -42,7 +41,6 @@ Patch6:         0001-ARM-dts-bcm2712-Slow-down-eMMC-interface.patch
 Patch7:         bcm2712-fix-compatible.patch
 Patch8:         0001-Amend-the-RP1-ethernet-node-to-work-with-upstream-dr.patch
 Patch9:         0001-dts-overlays-Adjust-them-for-RPi5.patch
-Patch10:        0001-dts-overlays-Adjust-bcm2712-PL011-overlay.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
@@ -71,7 +69,7 @@ for dts in arch/arm/boot/dts/broadcom/bcm27*dts arch/arm64/boot/dts/broadcom/bcm
 done
 
 export DTC_FLAGS="-R 0 -p 0 -@ -H epapr"
-for dts in arch/arm/boot/dts/overlays/*dts %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7}; do
+for dts in arch/arm/boot/dts/overlays/*dts %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6}; do
     target=$(basename ${dts%*.dts})
     target=${target%*-overlay}
     mkdir -p $PPDIR/overlays
