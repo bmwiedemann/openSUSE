@@ -28,7 +28,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        6.17
+Version:        6.17.1
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
@@ -49,8 +49,6 @@ Provides:       btrfs-progs = %{version}-%{release}
 Provides:       btrfs-progs(%_arch) = %{version}-%{release}
 
 Patch1:         mkfs-default-features.patch
-# PATCH-FIX-BUILD btrfsprogs-libblkid-static-lib-clash.patch sbrabec@suse.com -- Fix name clash for parse_range that appears with libblkid.a from util-linux-2.41.
-Patch2:         btrfsprogs-libblkid-static-lib-clash.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake

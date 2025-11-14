@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 13 00:00:00 CET 2025 - dsterba@suse.cz
+
+- Removed patch: btrfsprogs-libblkid-static-lib-clash.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Nov 10 00:00:00 CET 2025 - dsterba@suse.cz
+
+- update to 6.17.1
+  * dump-tree: print compat-ro bit for fs-verity
+  * check: add ability to repair orphan device extents so kernel does not
+    refuse to mount such filesystem due to strict checks
+  * convert:
+    * print label if it's being copied from the source filesystem
+    * drop alignment check of chunk length, kernel workaround is in place
+  * scrub and device replace: document behaviour in 6.19+ that
+    freezing/suspend will cancel the operation
+  * other:
+    * documentation fixes and updates
+    * updated tests
+
+-------------------------------------------------------------------
 Wed Oct 15 00:00:00 CEST 2025 - dsterba@suse.cz
 
 - update to 6.17

@@ -1511,4 +1511,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- update to 6.17 (forwarded request 1311514 from dsterba)</comment>
     <requestid>1311515</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>bdd46c4546c7750deb23d6eabb00a870</srcmd5>
+    <version>6.17.1</version>
+    <time>1763133113</time>
+    <user>anag_factory</user>
+    <comment>- Removed patch: btrfsprogs-libblkid-static-lib-clash.patch (upstream) (forwarded request 1317587 from dsterba)</comment>
+    <requestid>1317588</requestid>
+  </revision>
 </revisionlist>
