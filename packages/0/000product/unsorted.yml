@@ -1778,7 +1778,6 @@ unsorted:
   - busybox-cpio 
   - busybox-dos2unix 
   - busybox-ether-wake 
-  - busybox-findutils 
   - busybox-hexedit 
   - busybox-iproute2 
   - busybox-iputils 
@@ -7760,6 +7759,7 @@ unsorted:
   - google-worksans-fonts-doc 
   - googleapis-source 
   - googler 
+  - goose 
   - gopass 
   - gopass-bash-completion 
   - gopass-fish-completion 
@@ -15485,7 +15485,9 @@ unsorted:
   - libpython3_10-1_0 
   - libpython3_10-1_0-32bit 
   - libpython3_11-1_0-32bit 
+  - libpython3_12-1_0 
   - libpython3_12-1_0-32bit 
+  - libpython3_12-1_0-x86-64-v3 
   - libpython3_13-1_0-32bit 
   - libpython3_13t1_0 
   - libpython3_14-1_0 
@@ -17105,6 +17107,7 @@ unsorted:
   - libxc12 
   - libxcam-devel 
   - libxcam1 
+  - libxcas0 
   - libxcb-composite0-32bit 
   - libxcb-cursor0-32bit 
   - libxcb-damage0-32bit 
@@ -25436,7 +25439,6 @@ unsorted:
   - python311-flufl.lock 
   - python311-flufl.testing 
   - python311-fluidity-sm 
-  - python311-flux-local 
   - python311-flynt 
   - python311-folium 
   - python311-fontMath 
@@ -27764,11 +27766,13 @@ unsorted:
   - python311-zstd 
   - python311-zxcvbn 
   - python311-zxcvbn-rs-py 
+  - python312 
   - python312-32bit 
   - python312-APScheduler 
   - python312-AnyQt 
   - python312-Arpeggio 
   - python312-Authlib 
+  - python312-Automat 
   - python312-BTrees 
   - python312-BTrees-devel 
   - python312-Babel 
@@ -27981,12 +27985,14 @@ unsorted:
   - python312-TermRecord 
   - python312-Transplant 
   - python312-Trololio 
+  - python312-Twisted 
   - python312-Twisted-all_non_platform 
   - python312-Twisted-conch 
   - python312-Twisted-conch_nacl 
   - python312-Twisted-contextvars 
   - python312-Twisted-http2 
   - python312-Twisted-serial 
+  - python312-Twisted-tls 
   - python312-TxSNI 
   - python312-URLObject 
   - python312-UkPostcodeParser 
@@ -28157,6 +28163,7 @@ unsorted:
   - python312-atomicwrites-doc 
   - python312-atpublic 
   - python312-attr 
+  - python312-attrs 
   - python312-aubio 
   - python312-audible 
   - python312-audio-degrader 
@@ -28606,9 +28613,12 @@ unsorted:
   - python312-backports.tarfile 
   - python312-backrefs 
   - python312-baron 
+  - python312-base 
   - python312-base-32bit 
+  - python312-base-x86-64-v3 
   - python312-base58 
   - python312-bashate 
+  - python312-bcrypt 
   - python312-beartype 
   - python312-beautifulsoup4 
   - python312-before-after 
@@ -28723,6 +28733,7 @@ unsorted:
   - python312-certomancer 
   - python312-certstream 
   - python312-certvalidator 
+  - python312-cffi 
   - python312-cfgdiff 
   - python312-cfgv 
   - python312-cfn-lint 
@@ -28799,6 +28810,7 @@ unsorted:
   - python312-confusable-homoglyphs 
   - python312-confuse 
   - python312-consolekit 
+  - python312-constantly 
   - python312-construct 
   - python312-contexter 
   - python312-contextvars 
@@ -28832,6 +28844,7 @@ unsorted:
   - python312-cron-descriptor 
   - python312-croniter 
   - python312-crontab 
+  - python312-cryptography 
   - python312-cryptography-vectors 
   - python312-css-html-js-minify 
   - python312-css-parser 
@@ -28846,6 +28859,7 @@ unsorted:
   - python312-ctypesgen 
   - python312-cucumber-tag-expressions 
   - python312-curlylint 
+  - python312-curses 
   - python312-curtsies 
   - python312-cwcwidth 
   - python312-cx_Freeze 
@@ -28878,6 +28892,7 @@ unsorted:
   - python312-datrie 
   - python312-dbf 
   - python312-dbfread 
+  - python312-dbm 
   - python312-dbus-deviation 
   - python312-dbus-python 
   - python312-dbus-python-devel 
@@ -29229,7 +29244,6 @@ unsorted:
   - python312-flufl.lock 
   - python312-flufl.testing 
   - python312-fluidity-sm 
-  - python312-flux-local 
   - python312-flynt 
   - python312-folium 
   - python312-fontMath 
@@ -29301,6 +29315,9 @@ unsorted:
   - python312-gmpy2 
   - python312-gns3fy 
   - python312-gnureadline 
+  - python312-gobject 
+  - python312-gobject-Gdk 
+  - python312-gobject-cairo 
   - python312-gobject-devel 
   - python312-gobject-stubs 
   - python312-gobject-stubs-gtk3 
@@ -29450,6 +29467,7 @@ unsorted:
   - python312-hvplot 
   - python312-hypercorn 
   - python312-hyperframe 
+  - python312-hyperlink 
   - python312-hypothesis 
   - python312-hypothesis-fspaths 
   - python312-hypothesmith 
@@ -29459,6 +29477,7 @@ unsorted:
   - python312-id 
   - python312-identify 
   - python312-idle 
+  - python312-idna 
   - python312-ifaddr 
   - python312-ifconfig-parser 
   - python312-igwn-auth-utils 
@@ -29479,6 +29498,7 @@ unsorted:
   - python312-importlib-resources 
   - python312-imread 
   - python312-imreg 
+  - python312-incremental 
   - python312-infinity 
   - python312-inflate64 
   - python312-inflect 
@@ -29694,6 +29714,7 @@ unsorted:
   - python312-ldaptor 
   - python312-ldas-tools-al-swig 
   - python312-leather 
+  - python312-legacy-cgi 
   - python312-legacycrypt 
   - python312-leglight 
   - python312-lesscpy 
@@ -30225,6 +30246,7 @@ unsorted:
   - python312-pilkit 
   - python312-pillow-heif 
   - python312-pingparsing 
+  - python312-pip 
   - python312-pip-api 
   - python312-pip-licenses 
   - python312-pip-requirements-parser 
@@ -30352,6 +30374,7 @@ unsorted:
   - python312-pyLibravatar 
   - python312-pyModis 
   - python312-pyOCD 
+  - python312-pyOpenSSL 
   - python312-pyPEG2 
   - python312-pyRFC3339 
   - python312-pyRXP 
@@ -30364,6 +30387,8 @@ unsorted:
   - python312-pyaml 
   - python312-pyarrow 
   - python312-pyarrow-devel 
+  - python312-pyasn1 
+  - python312-pyasn1-modules 
   - python312-pyasynchat 
   - python312-pyasyncore 
   - python312-pybars3 
@@ -30379,8 +30404,10 @@ unsorted:
   - python312-pybtex 
   - python312-pybugz 
   - python312-pycadf 
+  - python312-pycairo 
   - python312-pycairo-devel 
   - python312-pycapnp 
+  - python312-pycares 
   - python312-pycdio 
   - python312-pycdlib 
   - python312-pycha 
@@ -30391,6 +30418,7 @@ unsorted:
   - python312-pycognito 
   - python312-pycomposefile 
   - python312-pycountry 
+  - python312-pycparser 
   - python312-pycrdt 
   - python312-pycrdt-websocket 
   - python312-pycrowdsec 
@@ -30398,6 +30426,7 @@ unsorted:
   - python312-pycryptodomex 
   - python312-pyct 
   - python312-pycups 
+  - python312-pycurl 
   - python312-pycxx 
   - python312-pycxx-devel 
   - python312-pydantic 
@@ -31016,8 +31045,10 @@ unsorted:
   - python312-seqdiag 
   - python312-serpent 
   - python312-serverfiles 
+  - python312-service_identity 
   - python312-setools 
   - python312-setproctitle 
+  - python312-setuptools 
   - python312-setuptools-declarative-requirements 
   - python312-setuptools-gettext 
   - python312-setuptools-git 
@@ -31303,6 +31334,7 @@ unsorted:
   - python312-torch-openmpi4 
   - python312-torch-openmpi4-devel 
   - python312-tornado 
+  - python312-tornado6 
   - python312-tortilla 
   - python312-towncrier 
   - python312-tox 
@@ -31359,6 +31391,7 @@ unsorted:
   - python312-types-toml 
   - python312-typing-inspect 
   - python312-typing-inspection 
+  - python312-typing_extensions 
   - python312-typish 
   - python312-typogrify 
   - python312-tzdata 
@@ -31499,6 +31532,7 @@ unsorted:
   - python312-wurlitzer 
   - python312-wxPython 
   - python312-wyoming 
+  - python312-x86-64-v3 
   - python312-xapian 
   - python312-xapian-haystack 
   - python312-xapp 
@@ -31580,6 +31614,7 @@ unsorted:
   - python312-zope.exceptions 
   - python312-zope.hookable 
   - python312-zope.i18nmessageid 
+  - python312-zope.interface 
   - python312-zope.location 
   - python312-zope.proxy 
   - python312-zope.proxy-devel 
@@ -31600,6 +31635,7 @@ unsorted:
   - python313-AnyQt 
   - python313-Arpeggio 
   - python313-Authlib 
+  - python313-Automat 
   - python313-BTrees 
   - python313-BTrees-devel 
   - python313-Babel 
@@ -31805,12 +31841,14 @@ unsorted:
   - python313-TermRecord 
   - python313-Transplant 
   - python313-Trololio 
+  - python313-Twisted 
   - python313-Twisted-all_non_platform 
   - python313-Twisted-conch 
   - python313-Twisted-conch_nacl 
   - python313-Twisted-contextvars 
   - python313-Twisted-http2 
   - python313-Twisted-serial 
+  - python313-Twisted-tls 
   - python313-TxSNI 
   - python313-URLObject 
   - python313-UkPostcodeParser 
@@ -32617,6 +32655,7 @@ unsorted:
   - python313-confusable-homoglyphs 
   - python313-confuse 
   - python313-consolekit 
+  - python313-constantly 
   - python313-construct 
   - python313-contexter 
   - python313-contextvars 
@@ -33260,6 +33299,7 @@ unsorted:
   - python313-hvac 
   - python313-hvplot 
   - python313-hypercorn 
+  - python313-hyperlink 
   - python313-hypothesis 
   - python313-hypothesis-fspaths 
   - python313-hypothesmith 
@@ -33289,6 +33329,7 @@ unsorted:
   - python313-importlib-resources 
   - python313-imread 
   - python313-imreg 
+  - python313-incremental 
   - python313-infinity 
   - python313-inflate64 
   - python313-inflect 
@@ -33497,6 +33538,7 @@ unsorted:
   - python313-ldaptor 
   - python313-ldas-tools-al-swig 
   - python313-leather 
+  - python313-legacy-cgi 
   - python313-legacycrypt 
   - python313-leglight 
   - python313-lesscpy 
@@ -34187,6 +34229,7 @@ unsorted:
   - python313-pycadf 
   - python313-pycairo-devel 
   - python313-pycapnp 
+  - python313-pycares 
   - python313-pycdio 
   - python313-pycdlib 
   - python313-pycha 
@@ -34806,6 +34849,7 @@ unsorted:
   - python313-seqdiag 
   - python313-serpent 
   - python313-serverfiles 
+  - python313-service_identity 
   - python313-setproctitle 
   - python313-setuptools-declarative-requirements 
   - python313-setuptools-gettext 
@@ -35374,6 +35418,7 @@ unsorted:
   - python313-zope.exceptions 
   - python313-zope.hookable 
   - python313-zope.i18nmessageid 
+  - python313-zope.interface 
   - python313-zope.location 
   - python313-zope.proxy 
   - python313-zope.proxy-devel 
