@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  8 10:26:12 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 4.4.0.6:
+  * fixed bug which causes wrong score and time after solving level
+  * fixed showing level story from previously selected level set
+  * fixed crash bugs
+
+-------------------------------------------------------------------
 Sun Jul 13 19:03:10 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 4.4.0.5:

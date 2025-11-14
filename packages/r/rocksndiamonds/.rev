@@ -365,4 +365,12 @@ Using the old *changes file which is not in utf-8 as it's difficult get it accpt
     <comment></comment>
     <requestid>1294010</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e555efee728161f92532ced1496e49ec</srcmd5>
+    <version>4.4.0.6</version>
+    <time>1763133265</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1317663</requestid>
+  </revision>
 </revisionlist>

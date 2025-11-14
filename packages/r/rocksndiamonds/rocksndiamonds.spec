@@ -1,7 +1,7 @@
 #
 # spec file for package rocksndiamonds
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rocksndiamonds
-Version:        4.4.0.5
+Version:        4.4.0.6
 Release:        0
 Summary:        Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff
 License:        GPL-2.0-or-later
