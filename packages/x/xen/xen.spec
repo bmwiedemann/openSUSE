@@ -30,7 +30,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.20.1-testing
+%define xen_build_dir xen-4.20.2-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -125,12 +125,12 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.20.1_08
+Version:        4.20.2_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.20.1-testing-src.tar.bz2
+Source0:        xen-4.20.2-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source9:        xen.changes
@@ -160,19 +160,6 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         687a40ac-x86-C6-eoi_errata-include-NEHALEM_EX.patch
-Patch2:         68931694-x86-HPET-defer-LAPIC-EOI.patch
-Patch3:         689b0c0c-EFI-cond-FreePages.patch
-Patch4:         68a2e770-x86-mkelf32-pad-segment-to-2Mb.patch
-Patch5:         68a2e7c8-x86-HVM-ioreq-inverted-condition.patch
-Patch6:         68a6ed85-x86-setup-MMCFG-ahead-of-IOMMU.patch
-Patch7:         68ac5f69-x86-adjustments-to-intel_init_ppin.patch
-Patch101:       xsa472-1.patch
-Patch102:       xsa472-2.patch
-Patch103:       xsa472-3.patch
-Patch104:       xsa475-1.patch
-Patch105:       xsa475-2.patch
-Patch106:       xsa476.patch
 # EMBARGOED security fixes
 # Our platform specific patches
 Patch400:       xen-destdir.patch

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 13 09:18:31 MST 2025 - carnold@suse.com
+
+- Update to Xen 4.20.2 bug fix release (jsc#PED-8907)
+  * No upstream changelog found in sources or webpage
+- Drop patches contained in new tarball
+  687a40ac-x86-C6-eoi_errata-include-NEHALEM_EX.patch
+  68931694-x86-HPET-defer-LAPIC-EOI.patch
+  689b0c0c-EFI-cond-FreePages.patch
+  68a2e770-x86-mkelf32-pad-segment-to-2Mb.patch
+  68a2e7c8-x86-HVM-ioreq-inverted-condition.patch
+  68a6ed85-x86-setup-MMCFG-ahead-of-IOMMU.patch
+  68ac5f69-x86-adjustments-to-intel_init_ppin.patch
+  xsa472-1.patch
+  xsa472-2.patch
+  xsa472-3.patch
+  xsa475-1.patch
+  xsa475-2.patch
+  xsa476.patch
+
+-------------------------------------------------------------------
 Mon Oct 27 12:27:21 MDT 2025 - carnold@suse.com
 
 - bsc#1252692 - VUL-0: CVE-2025-58149: xen: incorrect removal of

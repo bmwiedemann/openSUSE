@@ -3126,4 +3126,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1315761</requestid>
   </revision>
+  <revision rev="369" vrev="1">
+    <srcmd5>4e116f407dca547fccd178ee8734c274</srcmd5>
+    <version>4.20.2_02</version>
+    <time>1763377690</time>
+    <user>anag_factory</user>
+    <comment>Security and Maintenance Update. Fix for bsc#1252692, CVE-2025-58149, XSA-476 and update to bug fix release 4.20.2</comment>
+    <requestid>1317672</requestid>
+  </revision>
 </revisionlist>
