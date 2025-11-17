@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 13 20:58:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Changes since 6.19.0:
+  * Update dependency version to 6.20.0
+  * keep old test code around
+  * Disable kuiserver2jobtrackertest if HAVE_QTDBUS is false
+  * Make the test compile + do the basic thing
+  * Rewrite JobView code to be safer
+  * Update version to 6.20.0
+
+-------------------------------------------------------------------
 Tue Oct  7 17:06:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.0
