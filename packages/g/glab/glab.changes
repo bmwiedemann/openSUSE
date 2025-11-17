@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov 12 15:02:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.77.0:
+  * docs(duo): improve documentation for duo and duo ask commands
+  * chore(deps): update module golang.org/x/crypto to v0.44.0
+  * chore: pin dind version for API mismatch
+  * chore(deps): update module golang.org/x/sync to v0.18.0
+  * chore(deps): update module golang.org/x/oauth2 to v0.33.0
+  * feat(milestone): edit and delete
+  * ci(tests): speed up tests execution by using cache
+  * fix: Revert "feat(milestone): edit and delete milestone"
+  * feat(milestone): edit and delete milestone
+  * fix(docs): update the documentation
+  * feat(milestone): added create, list and get commands
+  * refactor(tests): separate unit from integration tests via build
+    tags
+  * chore(deps): update dependency go to v1.25.4
+  * chore(contributing): fix the vscode debug command
+  * chore(ci): start tests immediately
+  * chore(ci): automate snapcraft build and publishing
+  * feat(label): edit labels
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.159.0
+
+-------------------------------------------------------------------
 Wed Nov 05 10:14:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.76.2:
