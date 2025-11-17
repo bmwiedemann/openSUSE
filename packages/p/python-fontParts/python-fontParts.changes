@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 14 12:36:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.13.3
+  * Mark base.kerning docstrings raw to avoid SyntaxWarning
+  * Upgrade BaseDict normalization
+  * Fix guideline normalization when value is None
+  * Fix getting color and name in _fromMathGlyph`
+  * Fix bug in copyData
+  * insertGlyph will return the inserted glyph object
+  * Fixed python syntax warning errors due to doc strings
+  * Fix .fromMathGlyph for the issue of a guideline color coming from defcon
+
+-------------------------------------------------------------------
 Wed Mar 26 05:21:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Normalize metadata directory name.

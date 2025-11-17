@@ -1,7 +1,7 @@
 #
 # spec file for package python-fontParts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,18 @@
 %endif
 
 Name:           python-fontParts%{psuffix}
-Version:        0.12.3
+Version:        0.13.3
 Release:        0
 Summary:        API for interacting with the parts of fonts
 License:        MIT
 URL:            https://github.com/robotools/fontParts
-Source:         https://files.pythonhosted.org/packages/source/f/fontParts/fontparts-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/f/fontparts/fontparts-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 # install_requires = [FontTools[ufo,lxml,unicode]
 Requires:       python-FontTools >= 4.28.5
 Requires:       python-fs >= 2.2.0
@@ -46,6 +45,7 @@ Requires:       python-lxml >= 4.0
 %if %python_version_nodots < 39
 Requires:       python-unicodedata2
 %endif
+# could be patched out when needed, it is only used in a code that is not run https://github.com/robotools/fontParts/issues/853
 Requires:       python-booleanOperations >= 0.9.0
 Requires:       python-defcon >= 0.10.0
 Requires:       python-fontMath >= 0.9.1
