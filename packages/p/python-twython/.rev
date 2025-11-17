@@ -47,4 +47,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282532</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9c74282605b7873e58d42d24738322c8</srcmd5>
+    <version>3.9.1</version>
+    <time>1763378360</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Check for zstd support in the testsuite.</comment>
+    <requestid>1318112</requestid>
+  </revision>
 </revisionlist>

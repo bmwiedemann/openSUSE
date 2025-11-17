@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 17 01:01:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python314.patch:
+  * Check for zstd support in the testsuite.
+
+-------------------------------------------------------------------
 Wed Jun  4 06:14:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

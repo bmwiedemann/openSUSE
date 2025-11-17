@@ -1,0 +1,19 @@
+Index: twython-3.9.1/tests/test_core.py
+===================================================================
+--- twython-3.9.1.orig/tests/test_core.py
++++ twython-3.9.1/tests/test_core.py
+@@ -285,7 +285,13 @@ class TwythonAPITestCase(unittest.TestCa
+ 
+         self.api.get(endpoint)
+ 
+-        self.assertEqual(b'gzip, deflate', responses.calls[0].request.headers['Accept-Encoding'])
++        accept_encoding = b'gzip, deflate'
++        try:
++            import compression.zstd
++            accept_encoding += b', zstd'
++        except ImportError:
++            pass
++        self.assertEqual(accept_encoding, responses.calls[0].request.headers['Accept-Encoding'])
+ 
+     # Static methods
+     def test_construct_api_url(self):

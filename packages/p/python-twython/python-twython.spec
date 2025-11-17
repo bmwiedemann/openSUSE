@@ -1,7 +1,7 @@
 #
 # spec file for package python-twython
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,10 @@ Version:        3.9.1
 Release:        0
 Summary:        Python wrapper for the Twitter API
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ryanmcgrath/twython
 Source:         https://files.pythonhosted.org/packages/source/t/twython/twython-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Check for zstd compression support in a test
+Patch0:         support-python314.patch
 # PyJWT 1.4.2 isnt compatible with single-spec
 BuildRequires:  %{python_module PyJWT > 1.4.2}
 BuildRequires:  %{python_module pip}
@@ -61,7 +62,7 @@ Features include:
 - Seamless Python 3 support!
 
 %prep
-%setup -q -n twython-%{version}
+%autosetup -p1 -n twython-%{version}
 
 %build
 %pyproject_wheel
