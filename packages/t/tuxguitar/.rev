@@ -193,4 +193,12 @@
     <comment>Require the same eclipse-swt version as present during the build</comment>
     <requestid>1309217</requestid>
   </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>3ca5628a49c76294b0d83071456cecbc</srcmd5>
+    <version>1.6.6</version>
+    <time>1763378024</time>
+    <user>anag_factory</user>
+    <comment>Fix build against SLE 16.0 and 16.1</comment>
+    <requestid>1317835</requestid>
+  </revision>
 </revisionlist>

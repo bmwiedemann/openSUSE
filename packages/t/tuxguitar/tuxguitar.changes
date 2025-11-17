@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 14 13:31:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build for sle16, where apparently the suil-devel package is
+  not present
+
+-------------------------------------------------------------------
 Mon Oct  6 09:38:41 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Require the same eclipse-swt version as present during the build

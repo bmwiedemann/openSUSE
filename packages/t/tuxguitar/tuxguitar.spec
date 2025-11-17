@@ -15,7 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{?suse_version} >= 1500
+%global with_fluidsynth 1
+%else
+%global with_fluidsynth 0
+%endif
+%if 0%{?suse_version} > 1600
+%global with_lv2 1
+%else
+%global with_lv2 0
+%endif
 Name:           tuxguitar
 Version:        1.6.6
 Release:        0
@@ -46,11 +55,11 @@ Requires:       fluid-soundfont-gm
 Recommends:     snd_sf2
 Recommends:     timidity
 Recommends:     wqy-zenhei-fonts
-%if 0%{?suse_version} >= 1500
+%if %{with_fluidsynth}
 BuildRequires:  fluidsynth-devel
 BuildRequires:  liblilv-0-devel
 %endif
-%if 0%{?suse_version} > 1500
+%if %{with_lv2}
 BuildRequires:  suil-devel
 %endif
 
@@ -78,10 +87,10 @@ find . \( -name "*.xml" -or -name "*.gradle"  -or -name "*.properties" -or -name
 # Also set the version in the "Help - About" dialog
 sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME = (TGApplication.NAME + \" %{version}\");/" desktop/TuxGuitar/src/org/herac/tuxguitar/app/view/dialog/about/TGAboutDialog.java
 
-%if 0%{?suse_version} <= 1500
+%if !%{with_lv2}
 %patch -P 1 -p1
 %endif
-%if 0%{?suse_version} < 1500
+%if !%{with_fluidsynth}
 %patch -P 2 -p1
 %endif
 
@@ -154,10 +163,10 @@ cp -a desktop/build-scripts/common-resources/common-linux/share/man/man1/%{name}
 
 ln -sf %{_jnidir}/%{name}/%{name}-alsa.jar %{buildroot}%{_javadir}/%{name}/
 ln -sf %{_jnidir}/%{name}/%{name}-jack.jar %{buildroot}%{_javadir}/%{name}/
-%if 0%{?suse_version} >= 1500
+%if %{with_fluidsynth}
 ln -sf %{_jnidir}/%{name}/%{name}-fluidsynth.jar %{buildroot}%{_javadir}/%{name}/
 %endif
-%if 0%{?suse_version} > 1500
+%if %{with_lv2}
 ln -sf %{_jnidir}/%{name}/%{name}-synth-lv2.jar %{buildroot}%{_javadir}/%{name}/
 %endif
 
@@ -173,10 +182,10 @@ ln -sf %{_jnidir}/%{name}/%{name}-synth-lv2.jar %{buildroot}%{_javadir}/%{name}/
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_javadir}/%{name}/tuxguitar-alsa.jar
 %{_javadir}/%{name}/tuxguitar-jack.jar
-%if 0%{?suse_version} >= 1500
+%if %{with_fluidsynth}
 %{_javadir}/%{name}/tuxguitar-fluidsynth.jar
 %endif
-%if 0%{?suse_version} > 1500
+%if %{with_lv2}
 %{_javadir}/%{name}/tuxguitar-synth-lv2.jar
 %endif
 
